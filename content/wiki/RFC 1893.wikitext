@@ -1,0 +1,4 @@
+---
+tags: email rfcs
+---
+[[RFC 1893]] describes a set of "[[Enhanced Mail System Status Codes]]" designed to provide richer information than the [[SMTP]] reply codes defined in [[RFC 821]].
