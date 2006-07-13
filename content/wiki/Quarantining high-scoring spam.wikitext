@@ -1,0 +1,3 @@
+---
+redirect: [[Automatically deleting high-scoring spam]]
+---
