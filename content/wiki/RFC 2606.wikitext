@@ -1,0 +1,4 @@
+---
+tags: rfcs
+---
+[[RFC 2606]], "[[Reserved Top Level DNS Names]]", specifies a number of top level and second level domain names that can be used for private testing, documentation and example purposes.
