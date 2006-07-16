@@ -1,0 +1,48 @@
+---
+tags: sendmail
+---
+To combine [[sendmail]] rulesets you would name them as subroutines and then call them. For example, to add the two subroutines, "[[Store_postmaster_address]]" and "[[Protect_internal_only]]", to the <tt>Local_check_rcpt</tt> ruleset you would do the following:
+
+<pre>LOCAL_RULESETS
+SLocal_check_rcpt
+R$*          &rarr;$: $1 $| $>"Store_postmaster_address" $1
+R$* $| $#$*  &rarr;$#$2
+R$*          &rarr;$: $1 $| $>"Protect_internal_only" $1
+R$* $| $#$*  &rarr;$#$2
+
+SStore_postmaster_address
+# ... rules for the "Store_postmaster_address" subroutine appear here
+
+SProtect_internal_only
+# ... rules for the "Protect_internal_only" subroutine appear here</pre>
+
+As always in [[sendmail]] configuration files, the &rarr; symbol (right-pointing arrow) indicates a tab.
+
+= Complete example = 
+
+<pre>LOCAL_CONFIG
+Kstorage macro
+F{Internal}/etc/mail/internal.only
+LOCAL_RULESETS
+SStore_postmaster_address
+R$*                           &rarr;$: $>canonify $1
+R$* < @ $=w . >               &rarr;$@ $(storage {postmaster_addr} $@ postmaster@$2 $)
+R$*                           &rarr;$@ $(storage {postmaster_addr} $@ postmaster@example.com $)
+SProtect_internal_only
+R$*                           &rarr;$: <@> $>canonify $1
+R<@> $={Internal} < @ $=w . > &rarr;$: <$1@$2>
+R<@> $={Internal}             &rarr;$: <$1@$j>
+R<@> $+                       &rarr;$@ OK
+R$*                           &rarr;$: $&{client_name}
+R$@                           &rarr;$@ OK
+R$*$=w                        &rarr;$@ OK
+R$*                           &rarr;$#error $@ 5.7.1 $: 551 $&f not allowed to send to recipient
+SLocal_check_rcpt
+R$*                           &rarr;$: $1 $| $>"Store_postmaster_address" $1
+R$* $| $#$*                   &rarr;$#$2
+R$*                           &rarr;$: $1 $| $>"Protect_internal_only" $1
+R$* $| $#$*                   &rarr;$#$2</pre>
+
+= See also =
+
+http://www.sendmail.org/~ca/email/protected.html
