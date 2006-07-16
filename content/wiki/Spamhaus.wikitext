@@ -1,0 +1,11 @@
+---
+tags: email
+---
+[[Spamhaus]] is one of the most reputable and accurate [[DNS-based blacklists]] used to [[combat spam]].
+
+Their [http://www.spamhaus.org/sbl/index.lasso SBL Advisory] is "free for individuals operating small mail servers as long as your email traffic is low". Their [http://www.spamhaus.org/xbl/index.lasso XBL advisory] is also free for users with "normal mail servers". [http://www.spamhaus.org/datafeed/index.html Paid yearly subscriptions] are available for other users not falling into these categories.
+
+= See also =
+
+* Official website: http://www.spamhaus.org/
+* "Guide to Effective Spam Filtering for Networks": http://www.spamhaus.org/effective_filtering.html
