@@ -1,0 +1,66 @@
+---
+tags: sendmail
+---
+The purpose of this custom ruleset is to extract the domain portion of the recipient address and use it as a basis for constructing a postmaster address of the form "postmaster@[[example.com]]". The address is then stored in the <tt>postmaster_addr</tt> macro and is available for use in other rulesets.
+
+= Configuration directives =
+
+<pre>LOCAL_CONFIG
+Kstorage macro
+LOCAL_RULESETS
+SStore_postmaster_address
+R$*             &rarr;$: $>canonify $1
+R$* < @ $=w . > &rarr;$@ $(storage {postmaster_addr} $@ postmaster@$2 $)
+R$*             &rarr;$@ $(storage {postmaster_addr} $@ postmaster@example.com $)</pre>
+
+As always in [[sendmail]] configuration files, the &rarr; symbol (right-pointing arrow) symbol indicates a tab.
+
+See [[combining rulesets]] for an example that combines the functionality of this ruleset with another, and [[DNS-based blacklisting]] for an application of this ruleset.
+
+= Annotated version =
+
+<pre>LOCAL_CONFIG
+Kstorage macro</pre>
+
+The <tt>K</tt> indicates that this line is a key file declaration. Key file declarations follow this syntax:
+
+<pre>Kmapname mapclass arguments</pre>
+
+The ''mapname'' is the handle by which the map is referenced in the rewriting rules. The ''mapclass'' indicates the type of the map, and the ''arguments'' vary according to the ''mapclass''. In the current example the ''mapname'' is <tt>storage</tt> and the ''mapclass'' is <tt>macro</tt>, which means that the map can be used to set or clear macro values. Key file declarations that use the <tt>macro</tt> ''mapclass'' take no arguments.
+
+<pre>LOCAL_RULESETS
+SStore_postmaster_address</pre>
+
+The initial <tt>S</tt> sets the current ruleset being collected to <tt>Store_postmaster_address</tt>. Labelling the ruleset like this is akin to creating a "subroutine". The subsequent lines begin with <tt>R</tt> indicating that they are rewriting rules. Each rewriting rule consists of a left-hand side (LHS) and a right-hand side (RHS), separated by a tab character (indicated here using the &rarr; symbol). Input passed into the ruleset is checked against the pattern in the LHS and if it matches then the input is rewritten as specified by the RHS. An optional third field, delimited by another tab, could be used for comments (ignored by [[Sendmail]]), but no comments are shown here.
+
+<pre>R$*             &rarr;$: $>canonify $1</pre>
+
+Here the RHS matches against any input at all (<tt>$*</tt> matches zero or more tokens).
+
+The LHS has a <tt>$:</tt> prefix, which causes processing to continue to the next rule; this is necessary to avoid an infinite loop because normally rules that match are retried in a loop until they fail.
+
+The <tt>$></tt> directive causes the remainder of the line to be evaluated and then passed to another ruleset, in this case the <tt>canonify</tt> ruleset which returns addresses in a standardized (canonified) form. The "remainder of the line" in this case is <tt>$1</tt> which is equivalent to the first token matched on the RHS (in this case, the entire input).
+
+<pre>R$* < @ $=w . > &rarr;$@ $(storage {postmaster_addr} $@ postmaster@$2 $)</pre>
+
+Processing continues on this next line, where the RHS pattern will match "anything at all" (<tt>$*</tt>, or "zero or more tokens") followed by a left angle bracket (<tt><</tt>), an "at" symbol (<tt>@</tt>) and any phrase in class <tt>w</tt> (<tt>$=w</tt>), where <tt>w</tt> is "the set of all names this host is known by", followed by a period (<tt>.</tt>), followed by a right angle bracket (<tt>></tt>).
+
+This pattern will match addresses in canonical form because the <tt>canonify</tt> ruleset turns addresses like <tt>john@example.com</tt> into <tt>john < @ example . com . ></tt>. Note that although the patten includes whitespace, this is largely for readability and the whitespace will be ignored during pattern matching. The username part of the address will be captured into <tt>$1</tt> and the hostname part will be captured into <tt>$2</tt> for use on the RHS of the rule.
+
+The RHS sets the <tt>postmaster_addr</tt> macro. The initial <tt>$@</tt> prefix causes the ruleset to return with the remainder of the RHS as the value.
+
+The <tt>postmaster_addr</tt> macro is set using the value passed as the first argument in the map lookup. The map itself returns an empty string. The syntax for referencing maps is:
+
+<pre>$(map key $@ arguments $: default $)</pre>
+
+In the current example the ''map'' is the <tt>storage</tt> map declared previously, the ''key'' is <tt>postmaster_addr</tt>, the <tt>$@</tt> introduces the argument list, which in this case contains only one element, <tt>postmaster@$2</tt> where <tt>$2</tt> will be expanded to the host name of the recipient email address. In the current example there is no ''default'' value and the default value marker (<tt>$:</tt>) is omitted.
+
+<pre>R$*             &rarr;$@ $(storage {postmaster_addr} $@ postmaster@example.com $)</pre>
+
+This last rule is processed in the case where the previous rule did not match, as would be the case if the recipient address did not match any of the local names by which the mail server is known.
+
+In this case the RHS matches anything at all (<tt>$*</tt>, or "zero or more tokens") and the LHS stores a default value in the <tt>postmaster_addr</tt> macro (in this case, <tt>postmaster@example.com</tt>). As is habitual, [[example.com]] is used here for the purposes of illustration only.
+
+= See also =
+
+http://www.sendmail.org/~ca/email/doc8.12/op-sh-5.html
