@@ -1,0 +1,8 @@
+---
+tags: email rfcs
+---
+[[RFC 2821]] describes the [[Simple Mail Transfer Protocol]] ([[SMTP]]). It updates and consolidates the original [[RFC 821]].
+
+= See also =
+
+http://rfc-ignorant.org/policy-postmaster.php
