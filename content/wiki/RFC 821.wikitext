@@ -1,0 +1,4 @@
+---
+tags: email rfcs
+---
+[[RFC 821]] describes the [[Simple Mail Transfer Protocol]] ([[SMTP]]). It is updated and consolidated in [[RFC 2821]].
