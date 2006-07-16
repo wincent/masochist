@@ -1,0 +1,3 @@
+---
+redirect: [[Store postmaster address]]
+---
