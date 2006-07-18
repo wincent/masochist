@@ -1,0 +1,49 @@
+---
+tags: email sendmail
+---
+This example shows how to add a [[DNS-based blacklist]] to the [[sendmail]] configuration file. In this case the SBL-XBL list provided by [[Spamhaus]], one of the most reputable and accurate blacklists, is used for the purposes of illustration.
+
+<pre>FEATURE(`dnsbl',`sbl-xbl.spamhaus.org',`"554 Rejected " $&{client_addr} " - see http://www.spamhaus.org/ then contact " $&{postmaster_addr}')dnl</pre>
+
+To minimize the damage done in the unlikely event of obtaining a false positive the error message that is returned to the client includes the following elements:
+
+* A 554 error code (as described in [[RFC 821]]/[[RFC 2821]]).
+* The connecting IP address found in the blacklist.
+* A link to the [[Spamhaus]] website where the sender can find out what the blacklisting means, why it occurred, and how to be removed from the blacklist.
+* An alternative contact address of the form <tt>postmaster@[[example.com]]</tt> that can be used to inform the server administrator, bypassing [[DNS-based blacklist]] checks.
+
+This specification depends on a special ruleset that defines the <tt>postmaster_addr</tt> macro (see "[[Store postmaster address]]"), as well as the modification of the following line in the configuration file:
+
+<pre>dnl FEATURE(delay_checks)dnl</pre>
+
+Which should be changed to:
+
+<pre>FEATURE(`delay_checks', `friend')dnl</pre>
+
+After making these changes the [[Sendmail]] configuration should be rebuilt and the daemon restarted.
+
+Appropriate entries should be added to the <tt>/etc/mail/access</tt> file to ensure that delivery to the <tt>postmaster</tt> and <tt>abuse</tt> addresses is not blocked by the blacklist:
+
+<pre>Spam:abuse@	        &rarr;FRIEND
+Spam:postmaster@	&rarr;FRIEND</pre>
+
+To test that the blacklisting works correctly, messages can be sent to [mailto:nelson-sbl-test@crynwr.com nelson-sbl-test@crynwr.com] and [mailto:nelson-xbl-test@crynwr.com nelson-xbl-test@crynwr.com].
+
+To test that the postmaster address is ''not'' being subjected to DNS-based blacklisting (a requirement of [[RFC 2821]]) you can connect via telnet from the server to be tested to:
+
+telnet://ns1.crynwr.com
+
+The telnet-based test will try sending mail to "postmaster@[[example.com]]", and should the messages should be accepted for delivery.
+
+= Efficacy =
+
+During a test period of 24 hours in mid-July 2006 on the [[wincent.com]] mail server the [[DNS-based blacklist]] described here stopped 261 connection attempts.
+
+For other efficacy statistics see [[combatting spam]].
+
+= See also =
+
+* "Crynwr spam blocking resources": http://www.crynwr.com/spam/
+* "postmaster.rfc-ignorant.org listing policy": http://rfc-ignorant.org/policy-postmaster.php
+* http://www.spamhaus.org/
+* List of DNS-based blacklists: http://spamlinks.net/filter-dnsbl-lists.htm
