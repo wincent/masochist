@@ -1,0 +1,18 @@
+---
+tags: ruby rails
+---
+As an alternative to manually [[installing Ruby on Rail on Mac OS X Tiger]] pre-package drag-and-drop installs of everything required are available in the form of [[Locomotive]]. See the [[Locomotive]] website:
+
+http://locomotive.raaum.org/
+
+= Command line operation =
+
+To operate on a [[Locomotive]] bundle from the command line you need to set the appropriate environment variables (<tt>RUBYLIB</tt>, <tt>DYLD_FALLBACK_LIBRARY_PATH</tt> and <tt>HOME</tt>). First of all, choose "Command Line Tool…" from the [[Locomotive]] "Help" menu and install a symbolic link to the [[Locomotive]] command line tool.
+
+You can then type the following command from inside a [[Rails]] application root to see the necessary environment variables:
+
+<pre>locomotive bash-environment</pre>
+
+You can set these environment variables, once again from inside a [[Rails]] application root, using:
+
+<pre>command `locomotive bash-environment`</pre>
