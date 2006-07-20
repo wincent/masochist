@@ -1,0 +1,26 @@
+---
+tags: email
+---
+Confirm that there are hung [[freshclam]] processes on the system:
+
+<pre>ps auxww | grep fresh</pre>
+
+Kill hung processes:
+
+<pre>sudo killall freshclam</pre>
+
+Confirm that hung processes are no longer present:
+
+<pre>ps auxww | grep fresh</pre>
+
+Perform a manual update:
+
+<pre>sudo /usr/local/bin/freshclam</pre>
+
+Inspect the log:
+
+<pre>sudo less /var/log/freshclam.log</pre>
+
+= See also =
+
+http://wincent.com/a/knowledge-base/archives/2006/06/freshclam_probl.php
