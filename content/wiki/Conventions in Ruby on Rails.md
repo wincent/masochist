@@ -1,0 +1,6 @@
+---
+redirect: [[Rails conventions]]
+tags: 
+---
+
+
