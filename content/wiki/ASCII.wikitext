@@ -1,0 +1,4 @@
+---
+tags:
+---
+See: [[A short C program for printing out ASCII values interactively]]
