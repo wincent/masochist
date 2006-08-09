@@ -1,0 +1,18 @@
+---
+tags:
+---
+# Create <tt>NSButton</tt> subclass
+# Create <tt>NSButtonCell</tt> subclass
+
+Note that overriding the <tt>cellClass</tt> class method of <tt>NSButton</tt> is not enough to force buttons created in Interface Builder (and told to use your custom class) to use your custom button cell class as well. When you drag an <tt>NSButton</tt> from the palette it is instantiated with an <tt>NSButtonCell</tt> cell. Telling Interface Builder that the button is of your custom class has no effect on the class of the cell in the button you just instantiated. You must either create an Interface Builder palette so that your instantiated button cell is of the correct class, or throw away the incorrect cell and replace it with a correct cell in your button's <tt>initWithCoder</tt> method.
+
+= How <tt>NSButtonCell</tt> draws =
+
+Typical redraw order of a standard <tt>NSButtonCell</tt> in Tiger (empirically determined):
+
+# <tt>highlight:withFrame:inView:</tt> calls <tt>drawWithFrame:inView:</tt>
+# <tt>drawWithFrame:inView:</tt> calls <tt>drawBezelWithFrame:inView:</tt>, but only if <tt>isBordered</tt> returns <tt>YES</tt>
+# <tt>drawWithFrame:inView:</tt> then calls <tt>drawInteriorWithFrame:inView:</tt>
+# <tt>drawInteriorWithFrame:inView:</tt> calls <tt>drawTitle:withFrame:inView:</tt>
+
+At least with the button type I was using in my experiments, it appears that <tt>NSDrawWindowBackground</tt> is not called (at least, setting a symbolic breakpoint on it, it never got hit when playing with an empty <tt>NSButton</tt>/<tt>NSButtonCell</tt> subclass pair).
