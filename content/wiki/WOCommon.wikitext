@@ -1,0 +1,6 @@
+---
+tags:
+---
+[[WOCommon]] is a body of modular, reusable code written by [[Wincent]] for use in [[Wincent products]]. See:
+* [[WOCommons set-up notes]]
+* [[Frameworks: pros and cons]]
