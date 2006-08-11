@@ -1,0 +1,10 @@
+---
+tags:
+---
+The <tt>containsObject:</tt> method in <tt>NSArray</tt> determines object equality using <tt>isEqual:</tt>.
+
+The method of the same name in <tt>NSSet</tt> appears to use a pointer comparison.
+
+To achieve the same effect using <tt>NSSet</tt> you must use the <tt>member:</tt> method.
+
+I find this inconsistency to be an annoying trap waiting for the unwary programmer. In addition to the lack of consistency there's also the fact that the naming of the <tt>containsObject:</tt> and <tt>member:</tt> methods of <tt>[[NSSet]]</tt> seems arbitrary rather than intuitive.
