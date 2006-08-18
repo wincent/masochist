@@ -1,0 +1,160 @@
+---
+tags:
+---
+The Xcode User Guide states that: 
+
+<blockquote>When dead-code stripping is enabled, the static linker searches for code that is unreachable from an initial set of live symbols and blocks. The initial list of live symbols and blocks may include ... Objective-C runtime data</blockquote>
+
+Nevertheless, in my own projects, I was seeing critical Objective-C runtime data get stripped away that prevented me from using the BUNDLE_LOADER build setting effectively. Ironically, I was faced with a choice of keeping symbol visibility as low as possible and benefiting from the performance enhancements of dead-code stripping (due to the lower memory footprint) ''or'' being able to easily unit test my code, but not both.
+
+To find out what symbols are being stripped, the guide says:
+
+<blockquote>If you want to know what symbols were stripped by the static linker, you can find out by examining the linker-generated load map. This map lists all of the segments and sections in the linked executable and also lists the dead-stripped symbols. To have the linker generate a load map, add the -M option to your linker command-line options. In Xcode, you can add this option to the Other Linker Flags build setting. Note: If you are passing this option through the cc compiler driver, make sure you pass this flag as -Wl,-M so that it is sent to the linker and not the compiler.</blockquote>
+
+The load map is printed to the build results window. Unfortunately, the load map does not appear to include any indication of the dead code stripped Objective-C symbols (although it does for other types of dead code stripped code and symbols). There are some differences in the output, however. For example, the dead-code stripped version looks like this:
+
+<pre>__OBJC           __class          0x000328c0 0x000002f0
+				  0x00031760 0x00000030 Objects-normal/i386/WOItemsValueTransformer.o:.section_all
+				  0x0002b6e0 0x00000030 Objects-normal/i386/WORegularExpression.o:.section_all
+				  0x0002dc80 0x00000030 Objects-normal/i386/WORolloverButton.o:.section_all
+				  0x0002e2c0 0x00000030 Objects-normal/i386/WORolloverButtonCell.o:.section_all
+				  0x0002c5c0 0x00000030 Objects-normal/i386/WOBundle.o:.section_all
+				  0x0002c2e0 0x00000030 Objects-normal/i386/WOLogManager.o:.section_all
+				  0x00032420 0x00000030 Objects-normal/i386/WOObject.o:.section_all
+				  0x00030c40 0x00000030 Objects-normal/i386/WOSingleton.o:.section_all</pre>
+
+
+But the non-dead-code-stripped version looks like this:
+
+<pre>__OBJC           __class          0x000328a0 0x000002f0
+				  0x000328e0 0x00000030 Objects-normal/i386/WOItemsValueTransformer.o 
+				  0x00032920 0x00000030 Objects-normal/i386/WORegularExpression.o 
+				  0x00032960 0x00000030 Objects-normal/i386/WORolloverButton.o 
+				  0x000329a0 0x00000030 Objects-normal/i386/WORolloverButtonCell.o 
+				  0x000329e0 0x00000030 Objects-normal/i386/WOBundle.o 
+				  0x00032a60 0x00000030 Objects-normal/i386/WOLogManager.o 
+				  0x00032aa0 0x00000030 Objects-normal/i386/WOObject.o 
+				  0x00032ae0 0x00000030 Objects-normal/i386/WOSingleton.o</pre> 
+
+This is true for all subsections in the <tt>__OBJC</tt> section; all have the <tt>.section_all</tt> suffix:
+
+* <tt>__class</tt>
+* <tt>__meta_class</tt>
+* <tt>__cls_meth</tt>
+* <tt>__inst_meth</tt>
+* <tt>__protocol</tt>
+* <tt>__category</tt>
+* <tt>__class_vars</tt>
+* <tt>__instance_vars</tt>
+* <tt>__module_info</tt>
+* <tt>__symbols</tt>
+
+Looking at the assembly language generated for an Objective-C class I see this interesting section:
+
+<pre>Ltext0:
+	.lazy_reference .objc_class_name_NSString
+	.lazy_reference .objc_class_name_NSDictionary
+	.lazy_reference .objc_class_name_NSNumber
+	.lazy_reference .objc_class_name_NSArray
+	.lazy_reference .objc_class_name_NSMutableArray
+	.lazy_reference .objc_class_name_NSAssertionHandler
+	.lazy_reference .objc_class_name_NSMutableDictionary
+	.lazy_reference .objc_class_name_NSMutableString
+	.lazy_reference .objc_class_name_NSScanner
+	.lazy_reference .objc_class_name_NSObject
+	.objc_class_name_WORegularExpression=0
+	.globl .objc_class_name_WORegularExpression
+	.objc_cat_cls_meth
+	.objc_cat_inst_meth
+	.objc_string_object
+	.section __OBJC, __cstring_object, regular, no_dead_strip
+	.objc_message_refs
+	.section __OBJC, __sel_fixup, regular, no_dead_strip
+	.objc_cls_refs
+	.objc_class
+	.objc_meta_class
+	.objc_cls_meth
+	.objc_inst_meth
+	.objc_protocol
+	.objc_class_names
+	.objc_meth_var_types
+	.objc_meth_var_names
+	.objc_category
+	.objc_class_vars
+	.objc_instance_vars
+	.objc_module_info
+	.objc_symbols
+	.objc_meth_var_types</pre>
+
+The two <tt>no_dead_strip</tt> directives above are the only ones in the entire file. Note also that the <tt>.objc_class_name</tt> is marked as <tt>.globl</tt>. If there were a way to cause <tt>no_dead_strip</tt> to be emitted in the assembly source the problem would be solved. The [http://developer.apple.com/documentation/DeveloperTools/Reference/Assembler/ASMDirectives/chapter_5_section_6.html Mac OS X Assembler Reference] describes a <tt>.no_dead_strip</tt> directive that is used as follows:
+
+<pre>.no_dead_strip symbol_name</pre>
+
+I've prepared a <tt>WO_TEST_NO_DEAD_STRIP_CLASS</tt> macro that can be used for inserting such a directive into the source. I've put the macro in [[WOTest]] seeing as the test-bundle scenario is the most likely one in which one would run into this BUNDLE_LOADER problem.
+
+= Alternative workarounds =
+
+Without recourse to the macro, it seems the only way to prevent this undesirable side-effect without turning off dead-code stripping entirely is to provide an EXPORTED_SYMBOLS_FILE containing the class names (using the same symbol format as reported in the linker error) that should not be stripped:
+
+<pre>.objc_class_name_WOClassName</pre>
+
+Unfortunately one must maintain an extensive list of exported symbols in such a file, not just the class names that one wishes to protect from dead-code stripping. For example, in a test project the following compiler warnings were issued for symbols that were not explicitly referenced:
+
+<pre>/usr/bin/ld: warning symbol: _NXArgc referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _NXArgv referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: ___progname referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _environ referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _catch_exception_raise referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _catch_exception_raise_state referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _catch_exception_raise_state_identity referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _clock_alarm_reply referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_mach_notify_dead_name referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_mach_notify_no_senders referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_mach_notify_port_deleted referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_mach_notify_send_once referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_seqnos_mach_notify_dead_name referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_seqnos_mach_notify_no_senders referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_seqnos_mach_notify_port_deleted referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _do_seqnos_mach_notify_send_once referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: _receive_samples referenced dynamically and must be exported
+/usr/bin/ld: warning symbol: __mh_execute_header referenced dynamically and must be exported</pre>
+
+All such symbols should be added to the exported symbols file. At any time in the future if those symbols are no longer implicitly used then they must be removed from the symbols file.
+
+This solution is unworkable because it means that even symbols marked with an <tt>EXPORT</tt> macro will not be exported unless they appear in the file, thus rendering the macro useless and increasing the maintenance costs all round; from the [[ld]] manpage:
+
+<pre>The specified  filename  contains  lists of global symbol names
+that will remain as global symbols  in  the  output  file.   All
+other  global  symbols will be treated as if they were marked as
+__private_extern__ and will not be global in  the  output  file.
+The  symbol names listed in filename must be one per line. Lead-
+ing and trailing white space are not part of  the  symbol  name.
+Lines  starting with # are ignored, as are lines with only white
+space.</pre>
+
+What would be the ideal solution, the GCC <tt>_attribute__((used))</tt> attribute, can't be applied to class names, as far as I know. You may choose from a number of unattractive options:
+
+# Use a basic exported symbols file including only the class names you wish to test and ignore the warnings. In doing so lose the functionality of your <tt>EXPORT</tt> macro.
+# Manually maintain additional entries (dozens of them) in the exported symbols file to avoid the warnings. In doing so lose the functionality of your <tt>EXPORT</tt> macro.
+# Perform two builds of your application: one without dead code stripping (which you use when building the bundle), then another one which you build afterwards with dead code stripping.
+# Define a linker flag when building the bundle to work around the linker error (or example, <tt>-undefined dynamic_lookup</tt>); the downside of specifying such a flag is that it affects ''all'' undefined symbols, not just the one that the linker stripped during dead code stripping.
+# You can't use <tt>-Wl,-U,.objc_class_name_WOClassName</tt> to get around this problem when two-level namespaces are in effect, and you probably wouldn't want to do this anyway if the number of symbols was very large.
+# Two off two-level name spaces for the test bundle and use the <tt>-Wl,-U</tt> switch to pass test class names to the linker.
+
+= Mailing list threads =
+
+This question was posted on the [[xcode-users]] mailing list:
+
+http://lists.apple.com/archives/xcode-users/2006/Aug/msg00083.html
+
+= Additional information =
+
+After much searching on this topic I found this information buried in the [http://developer.apple.com/releasenotes/DeveloperTools/CompilerTools.html Xcode 1.5 release notes]:
+
+<blockquote>The static link editor determines what unreachable code and data can be stripped based on the references from the initial live symbols and blocks. The initial live symbols include the symbols to be exported in the linked output. The set of exported symbols are specified with the -exported_symbols_list option or a list of symbols not to be exported is specified with the -unexported_symbols_list option. If no exported symbols are specified and the output is not an executable (shared library, bundle, etc) it is assumed all global symbols are to be exported. If the output is a shared library and a shared library initialization symbol is specified with -init symbol_name option then that symbol_name is an initial live symbol. If the output is an executable then the block that contains the entry point or the symbol specified with the -e symbol_name is an initial live symbol. Other symbols can be marked by the programmer as an initial live symbols with the GNU compiler's __attribute__((used)). For Objective-C code, the compiler will also mark the blocks of Objective-C runtime data it produces so they are part of the initial live blocks. For symbols marked referenced dynamically (via the REFERENCED_DYNAMICALLY bit in <mach-o/nlist.h>), such as the symbol _environ from /usr/lib/crt1.o, they are also part of the initial live symbols.<br />
+<br />
+Before turning on the -dead_strip option your project will first have to be "ported" to work with dead code stripping. This will include changing from -gused (the default for -g) to -gfull and re-compiling all of the objects files being linked into your program with the new compiler from the Mac OS X June 2004 release. Also if your building an executable that loads plugins, which uses symbols from the executable, you will have to make sure the symbols the plugins use are not stripped (by using __attribute__((used)) or the -exported_symbols_list option). If you are using an export list and building a shared library, or an executable that will be used with ld(1)'s -bundle_loader flag, you need to include the symbols for exception frame information in the export list for your exported C++ symbols. These symbols end with .eh and can be seen with the nm(1) tool.<br />
+<br />
+The .no_dead_strip directive is generated by the new compiler when the __attribute__((used)) is specified on a symbol.<br />
+<br />
+The new section attribute no_dead_strip can be specified on a section to cause its entire contents to not to be dead stripped. The new compiler uses this for all Objective-C sections it creates.</blockquote>
