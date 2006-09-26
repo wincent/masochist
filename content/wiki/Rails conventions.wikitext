@@ -1,0 +1,36 @@
+---
+tags: rails
+---
+[[Rails]] argues for "convention over configuration" to minimize time spent by programmers worrying about menial details and maximize time spent on substantive problem solving.
+
+= Model and controller naming conventions =
+
+* Model and class names are singular (<tt>Weblog</tt>, <tt>Post</tt>) and in [[CamelCase]] (<tt>AccessControlList</tt>); if you use <tt>script/generate model</tt> to create a model the class file will be in lowercase, singular, separated by underscores (<tt>weblog.rb</tt>, <tt>post.rb</tt>, <tt>access_control_list.rb</tt>).
+* Database tables corresponding to models/classes are plural (<tt>weblogs</tt>, <tt>posts</tt>) and in lowercase, separated by underscores (<tt>access_control_lists</tt>). 
+* Controller names are not required to match up with underlying model names, but when they do the convention (not enforced) is to use the plural form of the model name (<tt>WeblogsController</tt>, the corresponding file name would be <tt>weblogs_controller.rb</tt>); if you use <tt>script/generate controller</tt> to create a controller file [[Rails]] will not perform and singular-to-plural conversion but will format the name in lowercase with underscore separators.
+* If you use <tt>script/generate scaffold</tt> to create a scaffold [[Rails]] will create a singular model file and a plural controller file.
+
+= Database naming conventions =
+
+* Table columns of type <tt>datetime</tt> and named <tt>created_at</tt>/<tt>created_on</tt> or <tt>updated_at</tt>/<tt>updated_on</tt> will be automatically updated by [[Rails]] on record creation and record update respectively.
+* Table columns named <tt>lock_version</tt> (type: integer, default: 0, null: false) will be used automatically by [[Rails]] to perform "optimistic locking" (an exception will be raised whenever a race occurs).
+* A column named <tt>counter_cache</tt> can be used to save database lookups (see: http://blog.gorgorg.org/articles/2006/04/04/ruby-on-rails-how-to-actually-use_count-counter_cache).
+
+= Model inheritance conventions =
+
+Given a class hierarchy that looks like this:
+
+* <tt>ActiveRecord::Base</tt>
+** <tt>Furniture</tt>
+**# <tt>Chair</tt>
+**# <tt>Table</tt>
+
+Rails will expect a single table named <tt>furniture</tt> with a column named <tt>type</tt> that will be used to distinguish which rows are used for the <tt>Chair</tt> model and which for the <tt>Table</tt> model. For more information see:
+
+* http://activerecord.rubyonrails.org/show/SingleTableInheritance
+* http://rubyonrails.org/api/classes/ActiveRecord/Base.html
+* http://www.martinfowler.com/eaaCatalog/singleTableInheritance.html
+
+= View conventions =
+
+* If you create a file at <tt>app/views/layouts/application.rhtml</tt> it will automatically be used as a wrapper around all other layouts.
