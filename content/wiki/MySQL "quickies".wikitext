@@ -1,0 +1,21 @@
+---
+tags:
+---
+= Counting the rows in a table =
+
+<pre>SELECT COUNT(*) FROM table;</pre>
+
+= Using <tt>COMMIT</tt> and <tt>ROLLBACK</tt> =
+
+<pre>START TRANSACTION;
+# do something...
+COMMIT;
+# or ROLLBACK;</pre>
+
+See: http://dev.mysql.com/doc/refman/4.1/en/commit.html
+
+= Printing lengthy query results vertically =
+
+For query results with many columns, or very wide columns, you can increase readability by terminating the query with a <tt>\G</tt> instead of a semi-colon:
+
+<pre>SELECT * FROM table\G</pre>
