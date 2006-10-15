@@ -1,0 +1,12 @@
+---
+tags: cheetah.template.engine
+---
+Cheetah is an [[object-oriented template]] engine written in [[Python]].
+
+= Official site =
+
+* http://cheetahtemplate.org/
+
+= See also =
+
+* [[Walrus]] ([[object-oriented template]] engine written in [[Ruby]])
