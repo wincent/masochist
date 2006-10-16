@@ -1,0 +1,8 @@
+---
+tags:
+---
+To convert a bunch of [[FLAC]] files to [[WAV]]:
+
+<pre>flac -d *.flac</pre>
+
+Requires [[FLAC]] to be installed. See [[Installing PAC (Perl Audio Converter) on Mac OS X]].
