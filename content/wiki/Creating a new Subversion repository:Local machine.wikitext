@@ -1,0 +1,27 @@
+---
+tags:
+---
+This is the procedure I use for creating a new repository on my local machine.
+
+= Repository creation =
+
+<pre>sudo svnadmin create ~/Developer/svnrep/project-name
+sudo chown -R svn:svn ~/Developer/svnrep/project-name</pre>
+
+I've also made a script, <tt>new-repository.sh</tt> as a shortcut for this operation.
+
+= Initial import =
+
+<pre>mkdir trunk tags branches
+mv "project-files" trunk/
+svn import http://localhost:8080/svnrep/preoject-name</pre>
+
+= Initial checkout of working copy =
+
+<pre>mkdir pre-import
+mv branches tags trunk pre-import/
+svn co http://localhost:8080/svnrep/project-name/trunk trunk</pre>
+
+= See also =
+
+* [[Creating a new Subversion repository]]
