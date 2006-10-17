@@ -1,0 +1,40 @@
+---
+tags: cheetah.template.engine
+---
+= Obtaining [[Cheetah]] =
+
+http://cheetahtemplate.org/download.html
+<pre>wget http://belnet.dl.sourceforge.net/sourceforge/cheetahtemplate/Cheetah-2.0rc7.tar.gz
+tar zxvf Cheetah-2.0rc7.tar.gz</pre>
+
+= Installing on [[Mac OS X Tiger]] [[10.4.8]]=
+
+http://cheetahtemplate.org/docs/users_guide_html_multipage/gettingStarted.install.html
+
+<pre>cd Cheetah-2.0rc7
+sudo python setup.py install</pre>
+
+In reality this installs into <tt>/System/Library/Frameworks/Python.framework/Versions/2.3/bin</tt> (alongside) python so it makes sense to add this to the path then run the tests:
+
+<pre>PATH=$PATH:/System/Library/Frameworks/Python.framework/Versions/2.3/bin
+cheetah test</pre>
+
+All tests should pass:
+
+<pre>Ran 2050 tests in 31.012s</pre>
+
+= Uninstalling =
+
+<pre>sudo rm -rf /Library/Python/2.3/site-packages/Cheetah
+sudo rm /System/Library/Frameworks/Python.framework/Versions/2.3/bin/cheetah
+sudo rm /System/Library/Frameworks/Python.framework/Versions/2.3/bin/cheetah-compile</pre>
+
+= Installing with Python 2.5 =
+
+After [[installing Python 2.5]] I re-installed Cheetah:
+
+<pre>cd Cheetah-2.0rc7
+sudo python setup.py install
+cheetah test</pre>
+
+This installs the <tt>cheetah</tt> and <tt>cheetah-compile</tt> binaries into <tt>/usr/local/bin/</tt> and the other [[Cheetah]] files into <tt>/usr/local/lib/python2.5/site-packages/Cheetah/</tt>.
