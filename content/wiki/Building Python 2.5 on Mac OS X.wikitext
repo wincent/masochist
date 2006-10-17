@@ -1,0 +1,13 @@
+---
+tags: python os.x
+---
+<pre>wget http://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2
+tar xjvf Python-2.5.tar.bz2 
+cd Python-2.5/
+./configure
+make
+make test
+make test
+sudo make install</pre>
+
+Strangely, <tt>whereis python</tt> reports the older installed version 2.3.5 (in <tt>/usr/bin/</tt>) instead of the new version (in <tt>/usr/local/bin/</tt>) even though <tt>/usr/local/bin/</tt> appears before <tt>/usr/bin/</tt> in the <tt>PATH</tt> environment variable. Typing <tt>python</tt> launches version 2.3.5; typing <tt>env python</tt> launches 2.5. (Update: when opening new console windows typing <tt>python</tt> actually does launch 2.5.)
