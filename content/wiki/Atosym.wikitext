@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[atosym]] is a programmers address to symbol conversion aid for working with the new [[DWARF]] format. The official product page is: http://wincent.com/a/products/atosym/
