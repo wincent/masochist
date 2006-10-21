@@ -1,0 +1,64 @@
+---
+tags: red.hat
+---
+For posterity:
+
+<pre>uptime</pre>
+
+Check for available updates:
+
+<pre>sudo up2date --list</pre>
+
+Echo current release info:
+
+<pre>uname -a
+cat /etc/redhat-release</pre>
+
+Trigger an update of all non-kernel RPMs:
+
+<pre>sudo up2date --nox -u</pre>
+
+Install the new kernel:
+
+<pre>sudo up2date -uf kernel kernel-doc kernel-source kernel-utils</pre>
+
+Confirm that the kernel is installed in /boot:
+
+<pre>cd /boot
+ll</pre>
+
+Check the RPM database:
+
+<pre>rpm -qa | grep kernel</pre>
+
+Check that /boot/grub/grub.conf: contains the appropriate lines at position 0 (first in list):
+
+<pre>title Red Hat Enterprise Linux ES (2.4.21-37.0.1.EL)
+        root (hd0,0)
+        kernel /vmlinuz-2.4.21-37.0.1.EL ro root=/dev/hda3
+        initrd /initrd-2.4.21-37.0.1.EL.img</pre>
+
+Reboot and cross your fingers:
+
+<pre>sudo reboot</pre>
+
+= Post install checks =
+
+<pre>uname -a
+cat /etc/redhat-release</pre>
+
+Check that critical services are running ([[Bansshee]], FTP, HTTP, MySQL, Mailman, <tt>clamd</tt>, IMAP, <tt>ipop3</tt>, [[svn]], [[sendmail]], <tt>xinetd</tt>, [[webmin]] etc):
+
+<pre>sudo service --status-all
+sudo chkconfig --list</pre>
+
+See if up2date is now satisfied:
+
+<pre>sudo up2date --list</pre>
+
+= See also =
+
+Examples (oldest first):
+
+* [[Red Hat kernel-2.4.21-40.EL to kernel-2.4.21-47.EL upgrade notes]]
+* [[Red Hat kernel 2.4.21-47.EL to 2.4.21-47.0.1.EL upgrade notes]]
