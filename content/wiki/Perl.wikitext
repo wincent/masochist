@@ -1,0 +1,8 @@
+---
+tags: perl
+---
+[[Perl]] is a programming language.
+
+= See also =
+
+* http://www.perl.org/
