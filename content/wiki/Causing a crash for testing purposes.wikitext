@@ -1,0 +1,26 @@
+---
+tags:
+---
+= Faking a [[SIGBUS]] =
+In brief:
+
+<pre>raise(SIGBUS);</pre>
+
+<tt>raise</tt> returns -1 on failure and 0 on success, so you should check the return value.
+
+= Causing a real [[SIGBUS]] =
+
+<pre>// cause a crash
+id *ref = NULL;
+*ref = @"foobar";</pre>
+
+= Faking a [[SIGSEGV]] =
+
+<pre>raise(SIGSEGV);</pre>
+
+= Causing a real [[SIGSEGV]] =
+
+I'm not actually sure how to trigger a real [[SIGSEGV]] in a reliable fashion that works in both debug and release builds. For example the following might work in debug builds but fail on release builds:
+
+<pre>char foo[10];
+foo[100000] = 'a';</pre>
