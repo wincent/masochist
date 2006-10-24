@@ -1,0 +1,4 @@
+---
+tags:
+---
+<pre>zip -r target.zip source-dir</pre>
