@@ -1,0 +1,29 @@
+---
+tags:
+---
+* Don't use [[NSCopyObject]]
+* [[NSCell]] uses it (for now...)
+* Don't count on [[NSCell]] using it in the future
+* In [[NSCell]] subclasses when you implement [[copyWithZone:]] don't go through public accessor methods:
+
+<pre>- (id)copyWithZone:(NSZone *)aZone
+{
+    id thing = [super copyWithZone:aZone];
+    [thing setVar:[NSColor greyColor]];
+    return thing;
+}</pre>
+
+* Use dereferencing instead:
+
+<pre>- (id)copyWithZone:(NSZone *)aZone
+{
+    id thing = [super copyWithZone:aZone];
+    thing->var = [var copyWithZone:aZone];
+    return thing;
+}</pre>
+
+* This advice is applicable more generally as well:
+** Don't use public accessor methods in [[init]] methods
+** This is because subclasses would otherwise have to worry within their accessor methods about whether or not they were fully initialized at the time those accessors were used
+** Don't use them in [[copyWithZone:]] either because that method is effectively the [[init]] method of the new object
+** This doesn't break encapsulation because it's just like referring to [[self]] from within [[init]]
