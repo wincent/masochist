@@ -1,0 +1,31 @@
+---
+tags:
+---
+= ppc =
+
+* <tt>self</tt>: $r3
+* first <tt>id</tt> argument: $r5
+* more <tt>id</tt> arguments: $r6, ..., $r10
+* <tt>id</tt> result: $r3
+
+= ppc64 =
+
+* <tt>self</tt>: $r3
+* first <tt>id</tt> argument: $r5
+* more <tt>id</tt> arguments: $r6, ..., $r10
+* <tt>id</tt> result: $r3
+
+= i386 =
+
+* <tt>self</tt>: *(id *)($ebp + 8)
+* <tt>_cmd</tt>: *(SEL)($ebp + 12)
+* first <tt>id</tt> argument: *(id *)($ebp + 16)
+* more <tt>id</tt> arguments: *(id *)($ebp + 20), *(id *)($ebp + 24), ...
+* <tt>id</tt> result: $eax
+
+= x86_64 =
+
+* <tt>self</tt>: $rdi
+* first <tt>id</tt> argument: $rdx
+* more <tt>id</tt> arguments: $rcx, $r8, $r9
+* <tt>id</tt> result: $rax
