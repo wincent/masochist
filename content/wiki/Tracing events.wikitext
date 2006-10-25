@@ -1,0 +1,6 @@
+---
+tags:
+---
+Set <tt>NSUserDefaults</tt> key <tt>NSTraceEvents</tt> to <tt>YES</tt>.
+
+Pass <tt>-NSTraceEvents YES</tt> as an argument to your executable.
