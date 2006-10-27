@@ -1,0 +1,131 @@
+---
+tags: subversion
+---
+= Motivation =
+
+I currently (September 2006) offer [[Subversion]]-based access to the source code for a number of projects. This read-only access occurs over unencrypted channels. These are notes I've made while setting up encrypted access via [[SSH]] for the purposes of write-access (when committing). Even though [[Subversion]] never actually passes passwords over the network as plaintext, and even though the per-transaction design of the protocol is such that vulnerability to snooping-based attacks is minimal, I still think it's good practice to perform write-access over an encrypted channel.
+
+= Background =
+
+As noted in the "[http://svnbook.red-bean.com/nightly/en/svn.serverconfig.multimethod.html Supporting Multiple Repository Access Methods]" section of [http://svnbook.red-bean.com/ the Subversion book], accessing the repository simultaneously via various means is complicated.
+
+Anonymous access is mediated by the <tt>svnserve</tt> daemon running as the <tt>svn</tt> user which has exclusive access to the repository. When accessing via <tt>svn+ssh</tt> then the access is performed as the user who authenticated via [[SSH]], not necessarily the <tt>svn</tt> user and this can cause ownership and permissions conflicts. The solution must carefully take this potential conflict into account.
+
+= Set-up =
+
+* [http://www.nabble.com/svnserve-and-launchd-in-OS-X-t2314532.html This article] offers an excellent guide to setting up access.
+* Subversion itself comes with an "[http://svn.collab.net/repos/svn/trunk/notes/ssh-tricks SSH tricks]" document.
+
+== Key pair generation ==
+
+Each unique user that needs write access to the repository will need a key pair.
+
+<pre>ssh-keygen -t dsa -f ~/.ssh/id_dsa_subversion
+chmod 400 ~/.ssh/id_dsa_subversion</pre>
+
+== Client-side set-up ==
+
+Set the <tt>SVN_SSH</tt> environment variable:
+
+<pre>export SVN_SSH="/usr/bin/ssh -i /Users/wincent/.ssh/id_dsa_subversion"</pre>
+
+To make this setting available to GUI-level apps such as [[SmartSVN]] and [[Xcode]] you should also edit your <tt>~/.MacOSX/environment.plist</tt> file accordingly. A minimal <tt>environment.plist</tt> file might resemble this:
+
+<pre><?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+        <key>SVN_SSH</key>
+        <string>/Users/wincent/.ssh/id_dsa_subversion</string>
+</dict>
+</plist></pre>
+
+You would set such a variable with the following command:
+
+<pre>defaults write ~/.MacOSX/environment SVN_SSH -string "/Users/wincent/.ssh/id_dsa_subversion"</pre>
+
+I also had to add the following to my <tt>.ssh/config</tt> to prevent [[SSH]] from trying to authenticate me as user <tt>wincent</tt> instead of user <tt>svn</tt>:
+
+<pre>Host svn.wincent.com
+  HostName svn.wincent.com
+  User svn</pre>
+
+== Server-side set-up ==
+
+<pre>sudo -s
+cd /var/lib/svn
+sudo -u svn mkdir .ssh
+chmod 700 .ssh
+cd .ssh
+sudo -u svn touch authorized_keys
+chmod 400 authorized_keys</pre>
+
+Edit the <tt>authorized_keys</tt> file to include the public key (<tt>~/.ssh/id_dsa_subversion</tt>) created above; the following is split across multiple lines for readability but in the actual file it must appear all on the same line. Additional users would each have their own line in the file.
+
+<pre>command="/usr/local/bin/svnserve -t 
+                                 --tunnel-user=wincent
+                                 -r /var/lib/svn/repositories",
+no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty 
+ssh-dss AA...WA== wincent@cuzco.local</pre>
+
+Note that there are no spaces between the quoted <tt>command</tt>, the trailing commas, and the <tt>no-port-forwarding</tt> specification and the other restrictions.
+
+The public key itself begins with a key-type marker, <tt>ssh-dss</tt>, followed by the key itself (abbreviated here to <tt>AA...WA==</tt>, and is followed by a comment (in this case, my username and the name of the host on which I generated the key).
+
+== Testing ==
+
+Perform a test checkout via <tt>svn+ssh</tt> to confirm that everything is working as expected:
+
+<pre>svn co svn+ssh://svn.wincent.com/project-name/trunk</pre>
+
+In order for this to work I found that I had to set the shell of the <tt>svn</tt> user to <tt>/bin/sh</tt> (previously it was <tt>/sbin/nologin</tt>). Note that even though a login shell is defined for that user it is not possible to actually gain a login shell because logins are explicitly disallowed for the <tt>svn</tt> user in the <tt>/etc/shadow</tt> file (that is, the password field contains only "*", indicating that the logins are not permitted for that user).
+
+== Using <tt>ssh-agent</tt> ==
+
+If your private key is protected by a passphrase (and it probably should be) then in typical usage Subversion will prompt you many, many times for the passphrase as it makes multiple connection attempts.
+
+There are two ways to avoid these repeated prompts:
+
+# Do not protect your private key with a passphrase: with appropriate filesystem permissions, this is probably about as secure as the standard Subversion method of storing your passwords as plaintext in your <tt>~/.subversion/</tt> directory (although as of Subversion 1.4.0 passwords are stored securely in the keychain; see "[[Keychain-based storage of Subversion passwords]]").
+# Use <tt>ssh-agent</tt> and <tt>ssh-add</tt>: this is the more secure option, detailed below.
+
+You can launch <tt>ssh-agent</tt> from a Terminal window and it will set the required environment variables, <tt>SSH_AUTH_SOCK</tt> and <tt>SSH_AGENT_PID</tt>. The problem with this approach is that such environment variables won't be available to window-based programs like [[Xcode]]. Modifying the <tt>~/.MacOSX/environment.plist</tt> file doesn't necessarily help either; for one thing, the value of <tt>SSH_AUTH_SOCK</tt> will randomly vary (incorporating both a random string component as well as the process ID number of the <tt>ssh-agent</tt> process; for example, <tt>/tmp/ssh-A4yghslTsh/agent.10578</tt>) and the file is read only once at login (that is, if you make changes ''after'' login they will only be read upon the ''next'' login by which time the information will be out of date).
+
+A possible workaround is to set only the <tt>SSH_AUTH_SOCK</tt> variable and use the <tt>-a</tt> switch to force the <tt>ssh-agent</tt> to use that (known ahead of time) value, something like <tt>~/.ssh/agent.sock</tt>, and forget about the <tt>SSH_AGENT_PID</tt> variable seeing as it can't be known ahead of time (although this may break certain commands such as <tt>ssh-agent -k</tt>). If the appropriate permission are set on the <tt>~/.ssh/</tt> directory (700, for example) then the use of a fixed socket file should not pose any security risk. The <tt>SSH_AUTH_SOCK</tt> variable should also be set in your <tt>~/.bash_profile</tt>.
+
+You could put such settings in place with the following commands:
+
+<pre>defaults write ~/.MacOSX/environment SSH_AUTH_SOCK -string "/Users/wincent/.ssh/agent.sock"
+echo 'export SSH_AUTH_SOCK="/Users/wincent/.ssh/agent.sock"' >> ~/.bash_profile</pre>
+
+Once that set-up is in place all that's required is to actually run the <tt>ssh-agent</tt> process at login and kill it off at logout. There are three possible ways of doing this:
+
+# Launch it manually from the terminal once and once only per session.
+# Launch it using [[launchd]] (see [http://www.opendarwin.org/~landonf/misc/launchd-sshagent/ example]; this example shows how to patch <tt>ssh-agent</tt> for use with <tt>launchd</tt> but it is not suitable for use here because the <tt>SSH_AUTH_SOCK</tt> environment variable can't be known prior to login time).
+# Write a wrapper script or program to launch it, and add the wrapper to your login items.
+
+I have not tested whether this <tt>ssh-agent</tt> set-up works with Xcode's integrated Subversion support (I do all my interaction with Subversion from the command line or from within SmartSVN).
+
+== Keychain integration ==
+
+The above methods can be made truly passwordless (that is, even the initial passphrase prompts can be eliminated) by storing the passphrases in the login keychain. When the user logs in he/she effectively unlocks the login keychain and the passphrases stored therein can be accessed without intervention. In this way we get the convenience of passwordless operation with none of the drawbacks of storing passwords insecurely on the disk.
+
+I am currently working on an application that provides the following functionality:
+
+* Launches <tt>ssh-agent</tt> at login
+* Automatically adds identities with <tt>ssh-add</tt>
+* Provides a GUI for entering passphrases (for use from within GUI apps)
+* Optionally stores passphrases in the login keychain
+* Provides a GUI for adding/removing and enabling/disabling identities
+* Checks environment variables at launch and offers to correct any problems detected
+
+The above functionality is already implemented and working. If people express and interest I may release the software publicly and potentially add more features.
+
+== Working copy switching ==
+
+<pre>svn switch --relocate svn://svn.wincent.com/project-name/trunk \
+                      svn+ssh://svn.wincent.com/project-name/trunk</pre>
+
+== See also ==
+
+* [[Setting up additional machines to access Subversion via SSH]]
