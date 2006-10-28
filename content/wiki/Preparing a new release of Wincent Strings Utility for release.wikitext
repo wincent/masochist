@@ -1,0 +1,43 @@
+---
+tags: development wincent
+---
+This example uses version 1.1; change the version numbers as appropriate.
+
+1. Clean up <tt>trunk</tt> directory into its final state.
+
+2. Commit <tt>trunk</tt>.
+
+3. Use SmartSVN to create new tag (<tt>1.1</tt>, <tt>1.2</tt> etc) in repository based on <tt>trunk</tt>.
+
+4. Use SmartSVN to update approach branch in the repository (<tt>1.x</tt>, <tt>2.x</tt> etc) based on <tt>trunk</tt>.
+
+5. "Clean all" in Xcode.
+
+6. "Build" in Xcode.
+
+7. Export a clean copy of the source tree:
+
+<pre>svn export svn://svn.wincent.com/wincent-strings-util/tags/1.1 wincent-strings-util-1.1</pre>
+
+8. Copy the freshly built executable into the exported source tree:
+
+<pre>cp trabajo/build/Release/wincent-strings-util \
+   trabajo/wincent-strings-util/wincent-strings-util-1.1/</pre>
+
+9. Zip the source tree:
+
+<pre>zip -r wincent-strings-util-1.1.zip wincent-strings-util-1.1</pre>
+
+10. Upload zip to server along with updated webpages.
+
+11. Update <tt>download.php</tt> to point at the new version and upload.
+
+12. Submit notification to VersionTracker, MacUpdate.
+
+13. Post announcements to [http://lists.wincent.com/ announcements lists].
+
+14. Post announcement to wincent.org
+
+15. Post announcement to forums.wincent.com
+
+16. There is no step 16.
