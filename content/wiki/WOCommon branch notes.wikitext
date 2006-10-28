@@ -1,0 +1,48 @@
+---
+tags: subversion
+---
+On 28 October 2006 I branched [[WOCommon]]. The existing codebase would continue development on the <tt>tiger</tt> branch and [[Leopard]]-related development would take place on the "trunk".
+
+The initial branching was performed as described in the [[branching]] article:
+
+<pre>svn cp svn+ssh://svn.example.com/WOCommon/trunk svn+ssh://svn.example.com/WOCommon/branches/tiger</pre>
+
+I then moved the existing <tt>trunk</tt> working copy to <tt>tiger</tt> and adjusted the <tt>svn-files</tt> symlink appropriately:
+
+<pre>mv trunk tiger
+rm svn-files
+ln -s tiger svn-files</pre>
+
+It was then necessary to do a "switch" to point the existing working copy at the appropriate location in the repository:
+
+<pre>cd svn-files
+svn info
+svn switch svn+ssh://svn.wincent.com/WOCommon/branches/tiger .
+svn info</pre>
+
+As described in the article, [[Creating branches with Subversion]], all of this is rooted in a hierarchy that begins with <tt>trabajo/tiger/</tt>:
+
+<pre>trabajo/tiger/buildtools/
+trabajo/tiger/WOCommon/tiger/
+trabajo/tiger/WOCommon/svn-files/
+trabajo/tiger/project/svn-files/WOCommon</pre>
+
+In the case of projects which have a [[WOCommon]] external in them, these also need to be updated to point to the appropriate branch:
+
+<pre>cd ~/trabajo/tiger/project/svn-files
+svn propedit svn:externals .</pre>
+
+And change:
+
+<pre>WOCommon svn+ssh://svn.example.com/WOCommon/trunk</pre>
+
+To:
+
+<pre>WOCommon svn+ssh://svn.example.com/WOCommon/branches/tiger</pre>
+
+Then:
+
+<pre>svn proplist --verbose .
+svn up
+svn info WOCommon
+svn commit -m "Update WOCommon external reference to point to newly created Tiger branch"</pre>
