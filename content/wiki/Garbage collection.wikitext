@@ -1,0 +1,6 @@
+---
+tags: development
+---
+[[Garbage Collection]], often abbreviated to "[[GC]]", is a form of automated memory management in which the programmer doesn't need to explicitly release or free allocated memory.
+
+Many interpreted languages like [[Ruby]] and [[Perl]], as well as compiled languages like [[Java]], feature [[Garbage Collection]]. In [[Objective-C 2.0]], new in [[Leopard]], [[Apple]] added optional Garbage Collection to the [[Objective-C]] language.
