@@ -1,0 +1,59 @@
+---
+tags: subversion
+---
+Before going away for the weekend I wanted to set up my laptop so that I could access the [[Subversion]] repository via [[SSH]]. This article is the set of steps I had to perform to do this, and is a simplified version of the original configuration described in [[Setting up multiple repository access methods with Subversion ]]. The laptop is a clean install of a pre-release version of [[Mac OS X]], so it is effectively "empty" and has no configuration in place.
+
+= Procedure =
+
+Check to see what's in the <tt>~/.MacOSX/environment.plist</tt>:
+
+<pre>defaults read ~/.MacOSX/environment</pre>
+
+Nothing, so create it:
+
+<pre>mkdir .MacOSX
+defaults write ~/.MacOSX/environment SVN_SSH -string "/usr/bin/ssh -i /Users/wincent/.ssh/id_dsa_subversion"</pre>
+
+Now run my SSH agent application (automatically sets up <tt>SSH_ASKPASS</tt>, <tt>DISPLAY</tt> and <tt>SSH_AUTH_SOCK</tt>), or set them up manually:
+
+<pre>defaults write ~/.MacOSX/environment SSH_ASKPASS -string "/Users/wincent/bin/SSHPassKey.app/Contents/MacOS/SSHPassKey"
+defaults write ~/.MacOSX/environment SVN_AUTH_SOCK -string "/Users/wincent/.ssh/agent.sock"
+defaults write ~/.MacOSX/environment DISPLAY -string "localhost"</pre>
+
+Note that if you already have an ssh-agent process running or if you have one otherwise configured (for example, as a [[launchd]] process) then there is no need to set the <tt>SSH_AUTH_SOCK</tt> variable.
+
+Now connect to the iMac in the Finder and mount my other home directory so that the necessary pieces can be copied over:
+
+<pre>mkdir bin  
+cp -R /Volumes/wincent/bin/SSHPassKey.app bin/ 
+open bin/SSHPassKey.app
+cp /Volumes/wincent/.ssh/id_dsa_subversion .ssh/</pre>
+
+For convenience, copy over [[Subversion]] config as well:
+
+<pre>mkdir .subversion
+cp /Volumes/wincent/.subversion/config .subversion/</pre>
+
+Launch the SSH agent application with the option key held down so that you can add the private key file to the list of automatically added keys. Choose "Open at Login" from its Dock menu to make set-up automatic.
+
+Finally, log out so that the environment changes will take effect. The <tt>~/.ssh/config</tt> file will need to be modified (or created) to contain the following:
+
+<pre>Host svn.wincent.com
+  HostName svn.wincent.com
+  User svn</pre>
+
+= Extras =
+
+To make life a little bit more bearable on the unconfigured machine, copy over the following as well:
+
+* <tt>.bash_profile</tt>
+* <tt>.inputrc</tt>
+* <tt>.profile</tt>
+
+I also find it pretty frusting to use the Terminal unless Option-Left and Option-Right are bound to <tt>\033b</tt> and <tt>\033f</tt> respectively.
+
+For more information, see [[Quickly setting up a machine for testing with a pre-release seed]].
+
+= Note on the SSH agent application =
+
+The "SSH agent application" referred to in this article is not yet publicly released. To be notified when it is released add yourself to the [[announcements mailing list]]. 
