@@ -1,0 +1,47 @@
+---
+tags:
+---
+These notes are made on the basis of publicly available information:
+
+* http://www.apple.com/macosx/leopard/xcode.html
+* http://developer.apple.com/leopard/overview/
+* http://lists.apple.com/archives/objc-language/2006/Aug/msg00039.html
+* http://lists.apple.com/archives/objc-language/2006/Aug/msg00003.html
+
+Points for converting code to Objective-C 2.0 (with Garbage Collection):
+
+* <tt>self.var</tt> translates to <tt>[self var]</tt>
+* the synthezied instance variable generated based on the <tt>var</tt> property will be <tt>_var</tt>
+* if you want to access the instance variable directly you must therefore use <tt>self->_var</tt> or <tt>_var</tt>
+* <tt>var</tt> on its own will be a undeclared symbol error
+* you should avoid using accessors before an object is fully initialized (ie. in an <tt>init</tt> or <tt>copyWithZone:</tt> method)
+* in such cases use direct access (eg. <tt>self->_var</tt>)
+* with [[GC]], <tt>retain</tt>/<tt>release</tt> ''et al'' are ignored
+* so your <tt>init</tt> methods should look like this:
+
+<pre>- (id)init
+{
+    if ((self = [super init]))
+        self->_var = [NSColor textColor];
+    return self;
+}</pre>
+
+* Note that there is no need to send a <tt>retain</tt> to the returned color
+* Also note that when properties are used there is no need to declare instance variables, accessor methods, or write accessor methods
+* A suitable property declaration in the header would be:
+
+<pre>@property (ivar) NSColor *fooColor;</pre>
+
+* The <tt>ivar</tt> attribute tells the compiler to add an instance variable (in this case, <tt>_fooColor</tt>) and accessor methods (<tt>fooColor</tt> and <tt>setFooColor:</tt>)
+* There is no need for a dealloc method; the color will be deallocated when all references to the object go away
+* Implicit accessor methods are presumably sensitive to whether they are used as a left-hand or a right-hand value in an assignment:
+
+<pre>// presumably equivalent to: [object setName:@"foo"]
+object.name = @"foo";
+
+// presumably equivalent to: var = [object name]
+var = object.name;</pre>
+
+= Is Objective-C 2.0 available? =
+
+Check for built-in macro, <tt>__OBJC2__</tt>?
