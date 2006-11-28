@@ -1,0 +1,4 @@
+---
+tags: mysql
+---
+Official [[MySQL]] website: http://www.mysql.com/
