@@ -1,0 +1,12 @@
+---
+tags:
+---
+Sometimes a programming error will cause a "double free" warning (or some other memory-related problem) to be printed to the console with the following advice:
+
+<pre>set a breakpoint in szone_error to debug</pre>
+
+This doesn't always work. In those cases, try setting a breakpoint on <tt>malloc_printf</tt> as well (because all <tt>malloc</tt>-related error messages do go through that function).
+
+= See also =
+
+* http://www.cocoabuilder.com/archive/message/xcode/2005/10/12/43
