@@ -1,0 +1,15 @@
+---
+tags: doxygen
+---
+To generate a new template without comments:
+
+<pre>doxygen -s -g configname</pre>
+
+With comments:
+
+<pre>doxygen -g configname</pre>
+
+To update an existing config, with or without comments:
+
+<pre>doxygen -s -u configname
+doxygen -u configname</pre>
