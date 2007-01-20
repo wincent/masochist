@@ -1,0 +1,28 @@
+---
+tags: ruby
+---
+= List all locally installed [[gems]] =
+
+<pre>gem list</pre>
+
+= List available remote [[gems]] =
+
+<pre>gem list --remote</pre>
+
+= Self-updating [[RubyGems]] =
+
+<pre>sudo gem update rubygems-update</pre>
+
+= Updating an installed [[gem]] =
+
+Example: updating the [[rake]] [[gem]]:
+
+<pre>sudo gem update rake</pre>
+
+= Installing a new gem for the first time =
+
+Example: installing the [[rspec]] [[gem]] and some helpers:
+
+<pre>sudo gem install rspec
+sudo gem install diff-lcs
+sudo gem install rcov</pre>
