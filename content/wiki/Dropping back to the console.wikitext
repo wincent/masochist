@@ -1,0 +1,4 @@
+---
+tags: unix os.x
+---
+You can [[drop back to the console]] by entering <tt>&gt;console</tt> in the username field of the login window. Do not enter anything in the password field.
