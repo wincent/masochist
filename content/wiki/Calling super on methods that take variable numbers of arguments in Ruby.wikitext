@@ -1,0 +1,50 @@
+---
+tags: ruby
+---
+A possible gotcha:
+
+<pre>def my_method(*optional_params)
+end</pre>
+
+The optional params are passed in as an array. If there are no optional params, <tt>optional_params</tt> will be an empty array.
+
+<pre>def subclass_method(required_param, *optional_params)
+  super optional_params
+end</pre>
+
+Note that <tt>optional_params</tt> is already an array, but it is still packed into an array before being sent to <tt>super</tt>. This means that the method in the subclass sees <tt><nowiki>[]</nowiki></tt>, the method in the superclass will see <tt><nowiki>[[]]</nowiki></tt>. If the subclass sees <tt>[1, 2, 3]</tt>, the superclass will see <tt><nowiki>[[1, 2, 3]]</nowiki></tt>.
+
+= The solution =
+
+Instead of passing <tt>optional_params</tt> pass <tt>*optional_params</tt>:
+
+<pre>def subclass_method(required_param, *optional_params)
+  super *optional_params
+end</pre>
+
+The same trick works when you want to pass a block; instead of doing this:
+
+<pre>def subclass_method(&block)
+  other_method block
+end</pre>
+
+Do this:
+
+<pre>def subclass_method(&block)
+  other_method &block
+end</pre>
+
+= Alternative workaround =
+
+This was the workaround I used before discovering the real solution:
+
+Depending on what kinds of parameters you are prepared to accept the <tt>Array#flatten</tt> method may be useful for handling these quirks, as shown in this [[IRB]] session:
+
+<pre>irb(main):133:0> [].flatten
+=> []
+irb(main):134:0> [1, 2].flatten
+=> [1, 2]
+irb(main):135:0> [[[1, 2]]].flatten
+=> [1, 2]
+irb(main):136:0> [[]].flatten
+=> []</pre>
