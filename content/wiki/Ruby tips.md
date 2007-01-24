@@ -1,0 +1,6 @@
+---
+redirect: [[Ruby recipes]]
+tags: 
+---
+
+
