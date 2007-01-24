@@ -1,0 +1,71 @@
+---
+tags: ruby
+---
+This article describes things that were not immediately obvious to me as a [[Cocoa]] programmer when I started learning [[Ruby]]. For more general tips, see [[Ruby recipes]].
+
+= Avoiding mutual/circular/recursive requires =
+
+See [[Avoiding mutual/circular/recursive requires]].
+
+= Private methods and <tt>self</tt> =
+
+Private methods are available only from within the instances of the class to which they belong. You may not send to private methods from outside. In fact, the protection is so strict that private methods are not allowed to have an explicit receiver at all, ''not even <tt>self</tt>''! This means that the following won't work (yields a <tt>NoMethodError</tt>):
+
+<pre>class A
+  def initialize
+    self.secret # self here is not allowed
+  end
+private
+  def secret
+  end
+end</pre>
+
+Personally I find this restriction (not being allowed to use <tt>self</tt> as a receiver unnecessary and confusing. It also means that you can't give private methods names like <tt>&lt;&lt;</tt>:
+
+<pre>class B
+private
+  def <<(arg)
+    puts "This method can never be called (except by using the send method)."
+    puts "The Ruby interpreter issues a parse error 'unexpected tLSHFT' if you try to call this without self."
+    puts "But if you call it with self you'll get an NoMethodError"
+  end
+end</pre>
+
+= Enabling tab-completion in [[IRB]] =
+
+Start [[IRB]] using:
+
+<pre>irb --readline -r irb/completion</pre>
+
+Or add the following to your <tt>~/.bash_profile</tt>:
+
+<pre>alias irb="irb --readline -r irb/completion"</pre>
+
+Source: http://www.caliban.org/ruby/rubyguide.shtml
+
+= Subclassing <tt>Object</tt> =
+
+''All'' classes ultimately inherit from <tt>Object</tt> so this:
+
+<pre>class Foo
+end</pre>
+
+Is equivalent to:
+
+<pre>class Foo < Object
+end</pre>
+
+Proof (using [[IRB]]):
+
+<pre>class Foo
+end
+Foo.superclass
+=> Object</pre>
+
+The default <tt>initialize</tt> method of <tt>Object</tt> does nothing, so it is not necessary to call <tt>super</tt> (or <tt>super()</tt>) in a class that directly inherits from <tt>Object</tt>:
+
+<pre>class Foo
+  def initialize
+    super() # redundant!
+  end
+end</pre>
