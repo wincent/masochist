@@ -1,0 +1,9 @@
+---
+tags: subversion
+---
+Specific examples in reverse-chronological order:
+
+* [[Subversion 1.4.3 upgrade]] with [[Apache Portable Runtime]] 1.2.8
+* [[Subversion 1.4.2 upgrade]] with [[Apache Portable Runtime]] 1.2.7 (includes notes on producing statically-linked version on [[Mac OS X]]
+* There was no public release of [[Subversion]] 1.4.1
+* [[Subversion 1.4.0 upgrade]] with [[Apache Portable Runtime]] 0.9.7
