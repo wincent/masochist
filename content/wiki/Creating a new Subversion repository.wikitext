@@ -1,0 +1,56 @@
+---
+tags: subversion
+---
+= Creating the repository =
+
+This is the procedure I use for creating a new repository on the remote (public, Internet) machine. Information about the procedure I use on my local machine, see [[Creating a new Subversion repository:Local machine]].
+
+<pre>sudo -u svn svnadmin create /var/lib/svn/repositories/project-name</pre>
+
+Set up appropriate access permissions:
+
+<pre>sudo nano /var/lib/svn/repositories/project-name/conf/svnserve.conf</pre>
+
+For example:
+
+<pre>anon-access = read
+auth-access = write
+password-db = passwd
+realm = project-name repository</pre>
+
+And configure username and password pairs:
+
+<pre># may be able to copy a passwd file from an existing repository as a starting point
+sudo -u svn cp /var/lib/svn/repositories/other-project-name/conf/passwd \
+               /var/lib/svn/repositories/project-name/conf/passwd 
+# edit the passwd file by hand if necessary
+sudo nano /var/lib/svn/repositories/project-name/conf/passwd</pre>
+
+For example:
+
+<pre>username = password</pre>
+
+Finally, tighten the permissions on the <tt>passwd</tt> file:
+
+<pre>sudo chmod 600 /var/lib/svn/repositories/project-name/conf/passwd</pre>
+
+Optionally install a post-commit hook script, using a hook script from another repository as a starting point:
+
+<pre>sudo -u svn cp /var/lib/svn/repositories/other-project-name/hooks/post-commit \
+               /var/lib/svn/repositories/project-name/hooks/post-commit
+sudo chmod 700 /var/lib/svn/repositories/project-name/hooks/post-commit
+sudo nano /var/lib/svn/repositories/project-name/hooks/post-commit</pre>
+ 
+Then create repository content as described below (create <tt>branches</tt>, <tt>tags</tt> and <tt>trunk</tt> and perform initial import) or migrate repository content from existing repository as described in [[Repository migration]].
+
+= Initial import =
+
+<pre>mkdir trunk tags branches
+mv "project-files" trunk/
+svn import svn+ssh://svn.wincent.com/project-name</pre>
+
+= Initial checkout of working copy =
+
+<pre>mkdir pre-import
+mv branches tags trunk pre-import/
+svn co svn+ssh://svn.wincent.com/project-name/trunk trunk</pre>
