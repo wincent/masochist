@@ -1,0 +1,58 @@
+---
+tags: smtp imap
+---
+= Testing [[SMTP]] =
+
+For added security, I use authenticated [[SMTP]] for sending mail, using the <tt>LOGIN</tt> mechanism. This requires that first I had to [[Base64]] encode my username and password:
+
+<pre>perl -MMIME::Base64 -e 'print encode_base64("username");'
+perl -MMIME::Base64 -e 'print encode_base64("password");'</pre>
+
+For example, to test [[SMTP]] you could use something like:
+
+<pre>telnet mail.example.com 25
+EHLO 127.0.0.1
+AUTH LOGIN
+(Base-64 encoded username)
+(Base-64 encoded password)
+MAIL FROM: <user1@example.com>
+RCPT TO: <user2@example.com>
+DATA
+FROM: <user1@example.com>
+Mail test, please ignore.
+.
+QUIT</pre>
+
+As [http://www.sendmail.org/~ca/email/starttls.html documented here], to test [[secure SMTP]] you would need to use [[openssl]] instead of [[telnet]]:
+
+<pre>openssl s_client -starttls smtp -connect host:port</pre>
+
+Where <tt>port</tt> is most likely <tt>25</tt>. In the case of [[SMTP over SSL]] (not using <tt>STARTTLS</tt>) you would use:
+
+<pre>openssl s_client -connect host:port</pre>
+
+In this latter case <tt>port</tt> is most likely to be <tt>465</tt>.
+
+But note that, [http://www.forbiddenweb.org/topic/78761/index.html as commented here], any line beginning with <tt>R</tt> will trigger a renegotiation of the [[SSL/TLS]] session so you must enter:
+
+<pre> RCPT TO:</pre>
+
+And not:
+
+<pre>RCPT TO:</pre>
+
+You can also suppress this behavior by passing in the `-ign_eof` switch.
+
+== Alternative host and port syntax ==
+
+It is possible to pass in the host and port options explicitly:
+
+<pre lang="shell">$ openssl s_client -host smtp.gmail.com -port 587 -starttls smtp</pre>
+
+= Testing [[IMAP]] =
+
+[http://bobpeers.com/technical/telnet_imap.php This page] offers a nice overview.
+
+= See also =
+
+* [http://www.unixreview.com/documents/s=9700/ur0504l/ur0504l.html This page] has lots of examples on how you can use [[telnet]] to manually test various services [February 2010, the link is now dead].
