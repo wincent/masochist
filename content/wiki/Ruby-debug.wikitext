@@ -1,0 +1,11 @@
+---
+tags: ruby.debug
+---
+From the [[ruby-debug]] [http://rubyforge.org/viewvc/trunk/README?revision=1&root=ruby-debug&view=markup|<tt>README</tt> file]:
+
+<blockquote>ruby-debug is a fast implementation of the standard debugger debug.rb. The faster execution speed is achieved by utilizing a new hook Ruby C API.</blockquote>
+
+= Links =
+
+* [[ruby-debug]] project page: http://rubyforge.org/projects/ruby-debug/
+* "Post-mortem debugging" with [[ruby-debug]]: http://www.datanoise.com/articles/2006/12/20/post-mortem-debugging
