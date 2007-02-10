@@ -1,0 +1,142 @@
+---
+tags: ruby.debug
+---
+I installed [[ruby-debug]] (see "[[Installing ruby-debug 0.7.5]]") because I was having trouble getting [[RSpec]] [[specifications]] to run correctly under [[Ruby]]'s built-in debugger:
+
+<pre>ruby -r debug spec/file_to_run_in_debugger_spec.rb</pre>
+
+The problem was that all sorts of superfluous exceptions not related to the code under test were being thrown, making debugging painful and impractical; the same specs ran fine from the command line using the normal [[Ruby]] interpreter (<tt>ruby spec/file_to_run_in_debugger_spec.rb</tt>), using the <tt>spec</tt> tool (<tt>spec spec/file_to_run_in_debugger_spec.rb</tt>) or from a [[Rakefile]] (<tt>rake spec</tt>).
+
+Before I got a chance to figure out why this was happening I discovered [[ruby-debug]] and thought I'd give it a go. Everything worked, so I didn't bother exploring the question any further.
+
+= Launching a spec under [[ruby-debug]] =
+
+<pre>rdebug spec/parser_spec.rb</pre>
+
+= Getting help from inside the debugger =
+
+== Getting a list of commands ==
+
+<pre>h</pre>
+
+== Getting help on a specific command ==
+
+For example, getting help on the <tt>list</tt> command:
+
+<pre>h list</pre>
+
+= Seeing where you are in the source code =
+
+== Listing ==
+
+<pre>l</pre>
+
+== Turning on automatic listing on every stop ==
+
+<pre>set autolist</pre>
+
+== Printing a backtrace ==
+
+<pre>bt</pre>
+
+= Breakpoints =
+
+== Setting a breakpoint on a failing [[spec]] (example) ==
+
+One of my [[specs]] was failing like this:
+
+<pre>1)
+NoMethodError in 'parsing with the parser should be able to mix comments and plain text'
+undefined method `[]' for #<Walrus::WalrusGrammar::Comment:0x348258>
+/Users/wincent/trabajo/unversioned/walrus/svn-files/trunk/spec/parser_spec.rb:102:
+/Users/wincent/trabajo/unversioned/walrus/svn-files/trunk/spec/parser_spec.rb:10:</pre>
+
+To run the [[spec]] under [[ruby-debug]] from the <tt>trunk</tt> directory:
+
+<pre>rdebug spec/parser_spec.rb</pre>
+
+To set a breakpoint ''just before'' the failing [[spec]]:
+
+<pre>b 101</pre>
+
+To continue execution up to the breakpoint:
+
+<pre>c</pre>
+
+== To list currently set breakpoints ==
+
+<pre>b</pre>
+
+= Stepping through code =
+
+== Moving to next line ==
+
+This ''doesn't'' go into methods:
+
+<pre>n</pre>
+
+The full help for the <tt>next</tt> command is:
+
+<pre>n[ext][ nnn]    go over one line or till line nnn</pre>
+
+== Stepping into the next line ==
+
+This ''does'' go into methods:
+
+<pre>s</pre>
+
+The full help for the <tt>step</tt> command is:
+
+<pre>s[tep][ nnn]    step (into methods) one line or till line nnn</pre>
+
+To step out of the current method, you <tt>finish</tt> it:
+
+<pre>fin</pre>
+
+== Moving up and down the stack frames ==
+
+This would normally be used in conjunction with <tt>bt</tt> (to get a list of frames).
+
+=== Moving to the newest frame ===
+
+<pre>f 0</pre>
+
+=== Moving to the oldest frame ===
+
+<pre>f -1</pre>
+
+= Inspecting objects =
+
+<pre>p object</pre>
+
+== Evaluating expressions ==
+
+In fact, <tt>p</tt> is just a synonym for <tt>eval</tt> and can be used to evaluate any [[Ruby]] expression:
+
+<pre>eval 1 + 2</pre>
+
+You can turn on auto-evaluation as well which automatically tries to <tt>eval</tt> any command not recognized by [[ruby-debug]]:
+
+<pre>set autoeval</pre>
+
+This allows you to type things like:
+
+<pre>myvar</pre>
+
+Instead of:
+
+<pre>eval myvar</pre>
+
+== Showing the instance variables of an object ==
+
+Showing the instance variables of the current receiver:
+
+<pre>var i self</pre>
+
+== Showing current local variables ==
+
+<pre>var l</pre>
+
+== Showing global variables ==
+
+<pre>var g</pre>
