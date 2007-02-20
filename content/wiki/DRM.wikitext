@@ -1,0 +1,4 @@
+---
+tags:
+---
+Generally called "[[Digital Rights Management]]" by those who defend corporate interests over the [[Fair Use]] rights of consumers (example: [[Microsoft]]), and "[[Digital Restrictions Management]]" by those who emphasize individual rights and freedoms (example: [[Richard Stallman]]).
