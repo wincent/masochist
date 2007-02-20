@@ -1,0 +1,11 @@
+---
+tags:
+---
+See the [[SoX]] project page (http://www.sourceforge.net/projects/sox) at [[SourceForge]] for an appropriate download link from a local mirror.
+
+<pre>wget http://kent.dl.sourceforge.net/sourceforge/sox/sox-13.0.0.tar.gz
+tar xzvf sox-13.0.0.tar.gz
+cd sox-13.0.0
+./configure
+make
+sudo make install</pre>
