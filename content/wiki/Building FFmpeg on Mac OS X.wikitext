@@ -1,0 +1,35 @@
+---
+tags:
+---
+This requires that [[liba52]] be installed.
+
+<pre>./configure --enable-liba52 --enable-gpl</pre>
+
+This yielded an error. Evidently I needed to install [[liba52]] separately. See "[[Building liba52 on Mac OS X]]". But unfortunately the build did not succeed:
+
+<pre>i686-apple-darwin8-gcc-4.0.1: unrecognized option '-rdynamic'
+/usr/bin/ld: Undefined symbols:
+_libgsm_ms_decoder
+_libgsm_ms_encoder
+collect2: ld returned 1 exit status
+make: *** [ffmpeg_g] Error 1</pre>
+
+So I tried disabling [[MMX]] support, something I'd done when I originally built [[FFmpeg]] (see "[[Installing PAC (Perl Audio Converter) on Mac OS X]]"):
+
+<pre>./configure --enable-liba52 --enable-gpl --disable-mmx
+make clean
+make</pre>
+
+This yielded the same error.
+
+Also failed:
+
+<pre>./configure --enable-liba52 --enable-gpl --disable-mmx --disable-vhook --enable-shared</pre>
+
+Also failed:
+
+<pre>./configure --enable-memalign-hack --enable-libmp3lame --enable-gpl --disable-vhook --disable-ffplay --disable-ffserver --enable-liba52 --enable-pthreads</pre>
+
+= See also =
+
+http://stephenjungels.com/jungels.net/articles/ffmpeg-howto.html
