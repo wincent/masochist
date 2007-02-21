@@ -1,0 +1,21 @@
+---
+tags: wordpress subversion
+---
+= Prerequisites =
+
+In order to perform [[Subversion]]-based upgrades you must first prepare your installation as described in "[[Preparing WordPress for Subversion-based upgrades]]".
+
+= Specific examples =
+
+In reverse chronological order:
+
+* [[Upgrading from WordPress 2.1 to 2.1.1 using Subversion]] (demonstrates conflict resolution)
+* [[Upgrading from WordPress 2.0.7 to 2.1 using Subversion]]
+* [[Upgrading from WordPress 2.0.6 to 2.0.7 using Subversion]] ("5 second" upgrade)
+* [[Upgrading from WordPress 2.0.5 to 2.0.6 using Subversion]] (detailed notes)
+* [[Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion]]
+* [[Upgrading from WordPress 2.0.3 to 2.0.4 using Subversion]]
+
+= See also =
+
+* Manual update instructions: http://codex.wordpress.org/Upgrading_WordPress
