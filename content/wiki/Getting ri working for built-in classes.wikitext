@@ -1,0 +1,40 @@
+---
+tags: ruby
+---
+Ever since installing [[Ruby]] I was puzzled as to why [[ri]] couldn't find the basic documentation for built-in classes like <tt>String</tt>. Typing <tt>ri String</tt> would give me documentation for third-party additions to the <tt>String</tt> class (for example, from [[Rails]]) but would show nothing about the standard methods.
+
+I finally discovered the cause when playing with the command-line switches for [[ri]] and trying:
+
+<pre>ri --site String</pre>
+
+This yielded:
+
+<pre>No ri documentation found in:
+     /usr/local/share/ri/1.8/site
+
+Was rdoc run to create documentation?
+
+
+Installing Documentation
+------------------------
+'ri' uses a database of documentation built by the RDoc utility.
+
+So, how do you install this documentation on your system? It depends on
+how you installed Ruby.
+
+_If you installed Ruby from source files_ (that is, if it some point you
+typed 'make' during the process :), you can install the RDoc
+documentation yourself. Just go back to the place where you have your
+Ruby source and type
+
+   make install-doc
+
+You'll probably need to do this as a superuser, as the documentation is
+installed in the Ruby target tree (normally somewhere under
++/usr/local+.</pre>
+
+So I went back and did this as described in "[[Building and installing Ruby 1.8.5 on Mac OS X Tiger]]". Now <tt>ri String</tt> works as expected.
+
+= See also = 
+
+* [[FastRI]].
