@@ -1,0 +1,16 @@
+---
+tags: ruby
+---
+Being relatively new to [[Ruby]] I am constantly forgetting the differences between the different kinds of equality comparisons, so here is a quick "cheat sheet":
+
+* '''==''' and '''!=''': Determine equivalence of values ("do these two objects have the same value")?
+
+That is: <tt>1.0 == 1</tt> is <tt>true</tt> even though one is a <tt>Float</tt> and the other is a <tt>Fixnum</tt>.
+
+* <tt>eql?</tt> is stricter, requiring the objects to be of the same class to pass.
+
+So: <tt>1.0.eql? 1.0</tt> is <tt>true</tt> but <tt>1.0.eql? 1</tt> is <tt>false</tt>.
+
+* <tt>equal?</tt> is the strictest of all, requiring the two objects to be the exact same instance (have the same <tt>object_id</tt>).
+
+So: <tt>1.0.equal? 1.0</tt> is <tt>false</tt> and <tt>1.equal? 1</tt> is only <tt>true</tt> because [[Ruby]] re-uses the same <tt>Fixnum</tt> instance for <tt>1</tt> and <tt>1</tt> as an optimization.
