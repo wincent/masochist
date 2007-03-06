@@ -1,0 +1,4 @@
+---
+tags:
+---
+<pre>sh -n path_to_script.sh</pre>
