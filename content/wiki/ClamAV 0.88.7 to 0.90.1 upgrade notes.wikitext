@@ -1,0 +1,146 @@
+---
+tags: clamav clamassassin
+---
+= Introduction =
+I wanted to hold off on the [[ClamAV]] upgrade for a while because it is a fairly major release and there were compatibility issues with [[clamassassin]] (see http://lists.jameslick.com/pipermail/clamassassin-announce/2007-February/000030.html). These issues are fixed with [[clamassassin]] 1.2.4 (see http://lists.jameslick.com/pipermail/clamassassin-announce/2007-March/000031.html). So I decided to perform the [[ClamAV]] 0.88.7 to 0.90.1 upgrade simultaneously with the [[clamassassin]] 1.2.3 to 1.2.4 upgrade.
+
+= Resources =
+
+* [[ClamAV]] source download page: http://www.clamav.net/download/sources
+* [[ClamAV]] uninstallation notes: http://wiki.clamav.net/Main/UninstallClamAV
+* [[ClamAV]] 0.90 upgrade notes: http://wiki.clamav.net/Main/UpgradeNotes090
+* [[ClamAV]] 0.90.1 upgrade notes: http://wiki.clamav.net/Main/UpgradeNotes0901
+* [[ClamAV]] configuration updater: http://wiki.clamav.net/twiki/pub/Main/UpgradeNotes090/updateclamconf
+
+= Procedure =
+
+Backup old [[ClamAV]] configuration files:
+
+<pre>sudo cp /etc/freshclam.conf /etc/freshclam.conf.old
+sudo cp /etc/clamd.conf /etc/clamd.conf.old</pre>
+
+Download new [[clamassassin]] and [[ClamAV]] source packages:
+
+<pre>wget http://jameslick.com/clamassassin/clamassassin-1.2.4.tar.gz
+wget http://kent.dl.sourceforge.net/sourceforge/clamav/clamav-0.90.1.tar.gz</pre>
+
+(But see [http://www.clamav.net/download/sources this page] for an appropriate local mirror for the [[ClamAV]] download.)
+
+Extract [[clamassassin]] sources:
+
+<pre>tar xzvf clamassassin-1.2.4.tar.gz</pre>
+
+Extract and build [[ClamAV]] sources:
+
+<pre>tar xzvf clamav-0.90.1.tar.gz
+cd clamav-0.90.1
+./configure --sysconfdir=/etc
+make
+make check</pre>
+
+Uninstall old version of [[ClamAV]] and install new version:
+
+<pre>cd ../clamav-0.88.7
+sudo make uninstall
+cd ../clamav-0.90.1
+sudo make install
+sudo ldconfig -v</pre>
+
+Build and install new version of [[clamassassin]]:
+
+<pre>cd ../clamassassin-1.2.4
+./configure --enable-subject-rewrite=[VIRUS]
+sudo make install</pre>
+
+Migrate [[ClamAV]] configuration files:
+
+<pre>chmod +x updateclamconf
+./updateclamconf /etc/freshclam.conf.old /etc/freshclam.conf > freshclam.conf.new
+./updateclamconf /etc/clamd.conf.old /etc/clamd.conf > clamd.conf.new
+sudo cp freshclam.conf.new /etc/freshclam.conf
+sudo cp clamd.conf.new /etc/clamd.conf</pre>
+
+Post install checks and cleanup:
+
+<pre>whereis freshclam
+sudo freshclam -v</pre>
+
+This failed with the following message:
+
+<pre>ERROR: Parse error at line 86: Option NotifyClamd requires string argument.
+Current working dir is /usr/local/share/clamav
+Max retries == 3
+WARNING: You must specify at least one database mirror.</pre>
+
+I commented out the <tt>NotifyClamd</tt> line in the configuration file and tried again:
+
+<pre>Current working dir is /usr/local/share/clamav
+Max retries == 3
+ClamAV update process started at Tue Mar  6 05:28:07 2007
+Querying current.cvd.clamav.net
+TTL: 314
+Software version from DNS: 0.90.1
+main.cvd version from DNS: 42
+main.cvd is up to date (version: 42, sigs: 83951, f-level: 10, builder: tkojm)
+daily.cvd version from DNS: 2742
+daily.cvd is up to date (version: 2742, sigs: 12685, f-level: 14, builder: ccordes)</pre>
+
+Continue checks:
+
+<pre>sudo freshclam
+sudo service clamd restart
+sudo service --status-all | grep clamd</pre>
+
+Finally I checked the changes to the configuration files (technically I should have done this earlier):
+
+<pre>cd /etc
+diff freshclam.conf freshclam.conf.old</pre>
+
+Yields:
+
+<pre>56d55
+< DatabaseMirror database.clamav.net
+86c85
+< #NotifyClamd
+---
+> NotifyClamd</pre>
+
+And:
+
+<pre>diff clamd.conf clamd.conf.old</pre>
+
+Produces:
+
+<pre>43c43
+< LogSyslog yes
+---
+> LogSyslog
+76c76
+< FixStaleSocket yes
+---
+> FixStaleSocket</pre>
+
+Finally, I tailed my <tt>maillog</tt> for a while observing things to make sure delivery and scanning were still working properly. Have yet to discover any problems.
+
+I also checked to see if the startup script had been modified and there was one minor change; from inside the [[ClamAV]] source directory:
+
+<pre>diff contrib/init/RedHat/clamd /etc/init.d/clamd</pre>
+
+Differences:
+
+<pre>28c28
+<         LANG= daemon $progdir/$prog
+---
+>       daemon $progdir/$prog</pre>
+
+So I decided to upgrade the script as well:
+
+<pre>sudo cp contrib/init/RedHat/clamd /etc/init.d/clamd</pre>
+
+And restart the service to confirm that it works:
+
+<pre>sudo service clamd restart</pre>
+
+= See also =
+
+* Upgrade notes for last upgrade: "[[ClamAV 0.88.6 to 0.88.7 upgrade notes]]"
