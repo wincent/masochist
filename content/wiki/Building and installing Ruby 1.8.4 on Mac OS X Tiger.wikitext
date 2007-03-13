@@ -1,0 +1,30 @@
+---
+tags: ruby tiger updates
+---
+= Note =
+
+These notes are superseded by the article, "[[Building and installing Ruby 1.8.5 on Mac OS X Tiger]]".
+
+= Build =
+
+First, download, extract, configure and build:
+<pre>wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.4.tar.gz
+tar zxvf ruby-1.8.4.tar.gz 
+cd ruby-1.8.4/
+./configure 
+make</pre>
+
+Second, run the tests and install. Note that the full test suite (<tt>make check</tt>) can only be run ''after'' installing:
+
+<pre>make test
+sudo make install
+make check</pre>
+
+Print out the version of the newly installed ruby interpreter:
+
+<pre>/usr/local/bin/ruby -v</pre>
+
+= See also =
+
+* [[Building and installing RubyGems 0.9.0 on Mac OS X Tiger]]
+* [[Building and installing Ruby 1.8.4 on Red Hat Enterprise Linux ES 3]]
