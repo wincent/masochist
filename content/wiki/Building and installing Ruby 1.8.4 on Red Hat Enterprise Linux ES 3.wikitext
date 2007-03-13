@@ -1,0 +1,46 @@
+---
+tags: ruby red.hat updates
+---
+= Note =
+
+These notes are superseded by the article, "[[Building and installing Ruby 1.8.5 on Red Hat Enterprise Linux ES 3]]".
+
+= Build =
+
+<pre>wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.4.tar.gz
+tar zxvf ruby-1.8.4.tar.gz
+cd ruby-1.8.4
+./configure
+make
+make test
+sudo make install
+make check</pre>
+
+= Failed tests =
+
+<pre>  1) Failure:
+test_s_open_no_create(TestGDBM) [./gdbm/test_gdbm.rb:94]:
+<nil> expected but was
+<#<GDBM:0xb6be0490>>.</pre>
+
+The source code for the <tt>test_gdbm.rb</tt> file notes that:
+
+<pre># this test is failed on libgdbm 1.8.0</pre>
+
+And the version of libgdbm installed on [[Red Hat Enterprise Linux]] ES release 3 (Taroon Update 8) is indeed <tt>gdbm-1.8.0-20</tt> so I believe the message is probably harmless.
+
+<pre>  2) Failure:
+test_verify(OpenSSL::TestX509Store) [./openssl/test_x509store.rb:169]:
+This test is expected to be success with OpenSSL 0.9.7c or later.
+<true> expected but was
+<false>.
+
+1356 tests, 15391 assertions, 2 failures, 0 errors
+make: *** [test-all] Error 1</pre>
+
+It's possible that this second test fails because of the version of OpenSSL installed on the server; <tt>openssl-0.9.7a-33.17</tt>, which is up-to-date with ES release 3 (Taroon Update 8) of [[Red Hat Enterprise Linux]]. I believe it is probably a harmless warning, although I can't find any confirmation of that fact on the web.
+
+= See also =
+
+* [[Building and installing RubyGems 0.9.0 on Red Hat Enterprise Linux ES 3]]
+* [[Building and installing Ruby 1.8.4 on Mac OS X Tiger]]
