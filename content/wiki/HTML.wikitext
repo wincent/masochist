@@ -1,0 +1,6 @@
+---
+tags:
+---
+[[HTML]] is an acronym for [[HyperText Markup Language]].
+
+See: http://en.wikipedia.org/wiki/HTML
