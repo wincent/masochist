@@ -1,0 +1,6 @@
+---
+redirect: [[URL]]
+tags: 
+---
+
+
