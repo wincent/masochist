@@ -1,0 +1,205 @@
+---
+tags: tiger rails
+---
+To install [[Ruby on Rails]] using [[RubyGems]], the standard <tt>PATH</tt> environment variable must be overridden to ensure that the custom local copy of [[Ruby]] (version 1.8.4) is used instead of the default system install (version 1.8.2).
+
+The first step is to look at the current <tt>PATH</tt> setting:
+
+<pre>echo $PATH</pre>
+
+The output should be similar to:
+
+<pre>/bin:/sbin:/usr/bin:/usr/sbin:/Users/wincent/bin:/usr/local/bin:/Developer/Tools:/usr/X11R6/bin:/usr/local/mysql/bin</pre>
+
+Set the new <tt>PATH</tt> value, rearranging the order so that <tt>/usr/local/bin</tt> appears first in the list:
+
+<pre>PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/Users/wincent/bin:/Developer/Tools:/usr/X11R6/bin:/usr/local/mysql/bin</pre>
+
+Confirm that the order is correct:
+
+<pre>echo $PATH</pre>
+
+The output should resemble this:
+
+<pre>/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/Users/wincent/bin:/Developer/Tools:/usr/X11R6/bin:/usr/local/mysql/bin</pre>
+
+Go ahead with the [[Ruby on Rails]] install:
+
+<pre>sudo gem install rails --include-dependencies</pre>
+
+= Installation transcript =
+
+<pre>Bulk updating Gem source index for: http://gems.rubyforge.org
+Successfully installed rails-1.1.4
+Successfully installed rake-0.7.1
+Successfully installed activesupport-1.3.1
+Successfully installed activerecord-1.14.3
+Successfully installed actionpack-1.12.3
+Successfully installed actionmailer-1.2.3
+Successfully installed actionwebservice-1.1.4
+Installing ri documentation for rake-0.7.1...
+Installing ri documentation for activesupport-1.3.1...
+Installing ri documentation for activerecord-1.14.3...
+Installing ri documentation for actionpack-1.12.3...
+Installing ri documentation for actionmailer-1.2.3...
+Installing ri documentation for actionwebservice-1.1.4...
+Installing RDoc documentation for rake-0.7.1...
+Installing RDoc documentation for activesupport-1.3.1...
+Installing RDoc documentation for activerecord-1.14.3...
+Installing RDoc documentation for actionpack-1.12.3...
+Installing RDoc documentation for actionmailer-1.2.3...
+Installing RDoc documentation for actionwebservice-1.1.4...</pre>
+
+= Setting up the environment =
+
+For [[Rails]] to actually work you'll need to make changes to your <tt>PATH</tt> and <tt>RUBYLIB</tt> environment variables. I have the following in my <tt>~/.bash_profile</tt> for this purpose:
+
+<pre># /usr/local/bin has to come first so that custom Ruby install will be used (1.8.4)
+PATH=/usr/local/bin:$PATH:$HOME/bin:/Developer/Tools:/usr/X11R6/bin
+PATH=$PATH:/usr/local/mysql/bin
+export PATH
+
+# for Ruby on Rails
+RUBYLIB="/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.7.1:/usr/local/lib/ruby/1.8:/usr/local/lib
+/ruby/1.8/i686-darwin8.7.1"
+export RUBYLIB</pre>
+
+== Update: RUBYLIB with Mac OS X 10.4.8 ==
+
+I later (March 2007) found that this <tt>RUBYLIB</tt> export prevented my new [[Ruby 1.8.6]] install from working and removed it from my <tt>.bash_profile</tt>. See "[[Building and installing Ruby 1.8.6 on Mac OS X Tiger]]" for more information.
+
+= See also =
+
+* [[Building and installing Ruby 1.8.4 on Mac OS X Tiger]]
+* [[Building and installing RubyGems 0.9.0 on Mac OS X Tiger]]
+* [[Installing Ruby on Rails 1.1.4 on Red Hat Enterprise Linux ES 3]]
+* [[Installing Ruby on Rails]]
+
+= An alternative approach =
+
+http://hivelogic.com/articles/2005/12/01/ruby_rails_lighttpd_mysql_tiger
+
+Using the already downloaded archives:
+
+<pre>tar zxvf readline-5.1.tar.gz 
+cd readline-5.1/
+./configure
+make
+sudo make install
+
+tar zxvf ruby-1.8.4.tar.gz 
+cd ruby-1.8.4/
+./configure --enable-pthread --with-readline-dir=/usr/local
+make
+sudo make install
+make check</pre>
+
+When I try to follow those instructions I get a failure during <tt>sudo make check</tt> step:
+
+<pre>  1) Failure:
+test_delete(TestDBM) [./dbm/test_dbm.rb:332]:
+<DBMError> exception expected but none was thrown.
+
+  2) Failure:
+test_s_open_error(TestSDBM) [./sdbm/test_sdbm.rb:123]:
+<Errno::EACCES> exception expected but none was thrown.
+
+1313 tests, 14455 assertions, 2 failures, 0 errors
+make: *** [test-all] Error 1</pre>
+
+But not when doing a <tt>make check</tt> (without <tt>sudo</tt>):
+
+<pre>1313 tests, 14456 assertions, 0 failures, 0 errors</pre>
+
+Then:
+
+<pre>sudo /usr/local/bin/ruby setup.rb</pre>
+
+And I get this error:
+
+<pre>Bulk updating Gem source index for: http://gems.rubyforge.org
+ERROR:  While executing gem ... (ArgumentError)
+    syntax error on line 153073, col 20: ` 
+    executables:'</pre>
+
+Which is the same error as I was getting before when trying to do any remote operations with gem. Funnily enough this was working a few days ago. Now neither my hand-installed copy of RubyGems nor the version bundled with [[Locomotive]] works.
+
+Curiously, running <tt>sudo gem update</tt> fixed all of these warnings:
+
+<pre>sudo gem update
+sudo gem install rails --include-dependencies
+sudo gem install sqlite3-ruby</pre>
+
+Note, however, that I still can't run any unit tests:
+
+<pre>script/generate model User
+ruby test/unit/user_test.rb</pre>
+
+Produces:
+
+<pre>Loaded suite test/unit/user_test
+Started
+E/usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/errors.rb:94:in `check': cannot rollback - no transaction is active (SQLite3::SQLException)
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:76:in `check'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:68:in `commence'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/resultset.rb:61:in `initialize'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/statement.rb:158:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:211:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:186:in `prepare'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:210:in `execute'
+        from /usr/local/lib/ruby/gems/1.8/gems/sqlite3-ruby-1.1.0/lib/sqlite3/database.rb:620:in `rollback'
+         ... 13 levels...
+        from /usr/local/lib/ruby/1.8/test/unit/autorunner.rb:200:in `run'
+        from /usr/local/lib/ruby/1.8/test/unit/autorunner.rb:13:in `run'
+        from /usr/local/lib/ruby/1.8/test/unit.rb:285
+        from test/unit/user_test.rb:7</pre>
+
+The database file does exist (created manually using <tt>sqlite3 db/test.sqlite3</tt> and <tt>.schema</tt> to force changes to be flushed to disk) and the <tt>config/database.yml</tt> file contains this:
+
+<pre>test:
+  adapter: sqlite3
+  dbfile: db/test.sqlite3</pre>
+
+If I change:
+
+<pre>self.use_transactional_fixtures = true</pre>
+
+To:
+
+<pre>self.use_transactional_fixtures = false</pre>
+
+In <tt>test/test_helper.rb</tt> then I get a different error:
+
+<pre>Loaded suite test/unit/user_test
+Started
+E
+Finished in 0.128909 seconds.
+
+  1) Error:
+test_truth(UserTest):
+ActiveRecord::StatementInvalid: SQLite3::SQLException: no such table: users: DELETE FROM users WHERE 1=1
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/abstract_adapter.rb:120:in `log'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:137:in `execute'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:329:in `catch_schema_changes'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:137:in `execute'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/sqlite_adapter.rb:147:in `delete'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:283:in `delete_existing_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:256:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:256:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/connection_adapters/abstract/database_statements.rb:51:in `transaction'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:255:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/base.rb:794:in `silence'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:248:in `create_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:565:in `load_fixtures'
+    /usr/local/lib/ruby/gems/1.8/gems/activerecord-1.14.3/lib/active_record/fixtures.rb:521:in `setup'
+
+1 tests, 0 assertions, 0 failures, 1 errors</pre>
+
+Solution:
+
+<pre>RAILS_ENV='test'
+export RAILS_ENV
+rake migrate
+ruby test/unit/user_test.rb</pre>
+
+Evidently creating the database is not enough. You have to do a <tt>rake migrate</tt> as well.
