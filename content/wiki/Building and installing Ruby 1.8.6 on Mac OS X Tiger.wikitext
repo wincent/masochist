@@ -1,0 +1,144 @@
+---
+tags: ruby tiger updates
+---
+= Build =
+
+<pre>wget ftp://ftp.ruby-lang.org/pub/ruby/1.8/ruby-1.8.6.tar.bz2
+md5 ruby-1.8.6.tar.bz2
+tar xjf ruby-1.8.6.tar.bz2
+cd ruby-1.8.6
+./configure --enable-install-doc --with-readline-dir=/usr/local --enable-pthread
+make
+make test
+sudo make install
+make check</pre>
+
+I had hoped that the [[readline]] workaround needed in the last update (see "[[Building and installing Ruby 1.8.5 on Mac OS X Tiger]]") would no longer be required in this version, but it appears that it is because [[Ruby]] crashes during the <tt>make check</tt> phase unless you pass the <tt>--with-readline-dir=/usr/local</tt> switch to <tt>configure</tt>:
+
+<pre>dyld: NSLinkModule() error
+dyld: Symbol not found: _rl_filename_completion_function
+  Referenced from: /Users/wincent/trabajo/unversioned/ruby/ruby-1.8.6/.ext/i686-darwin8.8.1/readline.bundle
+  Expected in: flat namespace
+
+make: *** [test-all] Trace/BPT trap</pre>
+
+Likewise, unless you pass the <tt>--enable-pthread</tt> you'll get this warning during the <tt>make</tt>:
+
+<pre>*****************************************************************************
+**
+** PTHREAD SUPPORT MODE ERROR: 
+**
+**   Ruby is not compiled with --enable-pthread, but your Tcl/Tk 
+**   library seems to be compiled with pthread support. This
+**   combination may cause frequent hang or segmentation fault
+**   errors when Ruby/Tk is working. We recommend that you NEVER
+**   create the library with such a combination of pthread support.
+**
+**   Please recompile Ruby with the "--enable-pthread" configure option
+**   or recompile Tcl/Tk with the "--disable-threads" configure option.
+**
+*****************************************************************************</pre>
+
+Nor is it necessary to separately install the documentation when passing the <tt>--enable-install-doc</tt> switch to configure.
+
+= Updating [[FastRI]] index =
+
+On trying to update the [[FastRI]] index:
+
+<pre>fastri-server -b</pre>
+
+I found the following error:
+
+<pre>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb:7: ruby lib version (1.8.5) doesn't match executable version (1.8.6) (RuntimeError)
+        from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:10:in `require'
+        from /usr/local/lib/ruby/site_ruby/1.8/rubygems.rb:10
+        from /usr/local/bin/fastri-server:9:in `require'
+        from /usr/local/bin/fastri-server:9</pre>
+
+Similar errors were printed when trying things like <tt>gem list --local</tt> or <tt>rake spec</tt>.
+
+At the top of <tt>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb</tt> we find:
+
+<pre>module Config
+  RUBY_VERSION == "1.8.5" or
+    raise "ruby lib version (1.8.5) doesn't match executable version (#{RUBY_VERSION})"</pre>
+
+And although the <tt>make</tt> output included this:
+
+<pre>rbconfig.rb updated</pre>
+
+The modification date on <tt>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb</tt> shows that the installed copy wasn't touched:
+
+<pre>-rw-r--r--   1 root  wheel  - 6253 Sep 23 17:40 /usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb</pre>
+
+A quick check to see if the file was installed somewhere else:
+
+<pre># have to use "find" for this
+find / -name rbconfig.rb
+
+# "locate" would be quicker, but its database is updated only once per week
+locate rbconfig.rb
+
+# Spotlight would be quick and up-to-date, but directories like /usr are not indexed
+mdfind "kMDItemFSName = 'rbconfig.rb'"</pre>
+
+Here are the relevant entries:
+
+<pre>/usr/lib/ruby/1.8/universal-darwin8.0/rbconfig.rb
+/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb
+/usr/local/lib/ruby/1.8/i686-darwin8.8.1/rbconfig.rb</pre>
+
+Sure enough, the file at <tt>/usr/local/lib/ruby/1.8/i686-darwin8.8.1/rbconfig.rb</tt> corresponds to [[Ruby 1.8.6]]. So it appears that all installed [[gems]] are looking in the wrong directory for <tt>rbconfig.rb</tt>.
+
+I tried downloading [[RubyGems]] and reinstalling it:
+
+<pre>wget http://rubyforge.org/frs/download.php/17190/rubygems-0.9.2.tgz
+tar xzf rubygems-0.9.2.tgz 
+cd rubygems-0.9.2
+sudo ruby setup.rb</pre>
+
+But this yielded:
+
+<pre>/usr/local/lib/ruby/1.8/i686-darwin8.7.1/rbconfig.rb:7: ruby lib version (1.8.5) doesn't match executable version (1.8.6) (RuntimeError)
+        from setup.rb:52:in `require'
+        from setup.rb:52</pre>
+
+The culprit was evidently in my <tt>~/.bash_profile</tt>:
+
+<pre>RUBYLIB="/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.7.1:/usr/local/lib/ruby/1.8:/usr/local/lib
+/ruby/1.8/i686-darwin8.7.1"
+export RUBYLIB</pre>
+
+I temporarily overrode this:
+
+<pre>export RUBYLIB="/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.1:/usr/local/lib/ruby/1.8:/usr/local/lib/ruby/1.8/i686-darwin8.8.1"</pre>
+
+And found that things were working again:
+
+<pre>fastri-server -b
+gem list --local</pre>
+
+The <tt>~/.bash_profile</tt> stuff was something I'd put in when I first starting playing with [[Rails]] and [[Ruby]], knowing absolutely nothing about either (see "[[Installing Ruby on Rails 1.1.4 on Mac OS X Tiger]]"). Even unsetting <tt>RUBYLIB</tt> entirely is fine:
+
+<pre>unset RUBYLIB</pre>
+
+Evidently, the newly built [[Ruby 1.8.6]] already knows in which directories it should look for library files; witness the output of <tt>ruby -e "puts $:"</tt> after performing the <tt>unset</tt>:
+
+<pre>/usr/local/lib/ruby/site_ruby/1.8
+/usr/local/lib/ruby/site_ruby/1.8/i686-darwin8.8.1
+/usr/local/lib/ruby/site_ruby
+/usr/local/lib/ruby/1.8
+/usr/local/lib/ruby/1.8/i686-darwin8.8.1
+.</pre>
+
+= Updating installed gems =
+
+<pre>sudo gem update</pre>
+
+Of my installed gems, only <tt>sqlite3-ruby</tt> needed to be updated.
+
+= See also = 
+
+* Release announcement: http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/f2add90521cf106b/9a64ca26897fe75a
+* User-visible changes: http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/NEWS 
+* All changes: http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/ChangeLog
