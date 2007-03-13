@@ -1,0 +1,50 @@
+---
+tags: ruby tiger updates
+---
+These notes were made during the upgrade from [[Ruby 1.8.4]] to [[Ruby 1.8.5]] on my [[Mac OS X Tiger]] machine.
+
+= Build =
+
+<pre>wget "ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.5.tar.gz"
+tar zxvf ruby-1.8.5.tar.gz
+cd ruby-1.8.5
+./configure
+make 
+make test
+sudo make install
+make check</pre>
+
+= Test failures =
+
+Unlike the last version, this version fails catastrophically at the <tt>make check</tt> phase:
+
+<pre>test succeeded
+./miniruby ./runruby.rb --extout=.ext -- -C "./test" runner.rb --runner=console 
+dyld: NSLinkModule() error
+dyld: Symbol not found: _rl_filename_completion_function
+  Referenced from: /Users/wincent/trabajo/ruby/ruby-1.8.5/.ext/i686-darwin8.7.1/readline.bundle
+  Expected in: flat namespace
+
+make: *** [test-all] Trace/BPT trap</pre>
+
+Based on a suggestion in [http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/5118 this mailing list post] I tried the following and it seems to work:
+
+<pre>cd ext/readline
+ruby extconf.rb
+make
+sudo cp readline.bundle /usr/local/lib/ruby/1.8/i686-darwin8.7.1/
+cd ../..
+make check</pre>
+
+= Documentation =
+
+In order for the documentation to be installed and accessible to [[ri]] you must explicitly install it. I only discovered this months after building Ruby 1.8.5. When I went back to my Ruby source folder and tried <tt>sudo make install-doc</tt> it didn't work because there was no longer a <tt>Makefile</tt>. I therefore had to reconfigure first:
+
+<pre>./configure
+sudo make install-doc</pre>
+
+= See also =
+
+* [[Building and installing Ruby 1.8.4 on Mac OS X Tiger]]
+* [[Building and installing Ruby 1.8.5 on Red Hat Enterprise Linux ES 3]]
+* [[Getting ri working for built-in classes]]
