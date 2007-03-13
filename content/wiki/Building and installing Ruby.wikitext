@@ -1,0 +1,11 @@
+---
+tags: ruby updates
+---
+See:
+
+* [[Building and installing Ruby 1.8.6 on Mac OS X Tiger]]
+* [[Building and installing Ruby 1.8.6 on Red Hat Enterprise Linux ES 3]]
+* [[Building and installing Ruby 1.8.5 on Mac OS X Tiger]]
+* [[Building and installing Ruby 1.8.5 on Red Hat Enterprise Linux ES 3]]
+* [[Building and installing Ruby 1.8.4 on Mac OS X Tiger]]
+* [[Building and installing Ruby 1.8.4 on Red Hat Enterprise Linux ES 3]]
