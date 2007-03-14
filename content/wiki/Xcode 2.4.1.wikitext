@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Xcode 2.4.1]] is the current version of [[Xcode]], as of the time of writing (March 2007).
