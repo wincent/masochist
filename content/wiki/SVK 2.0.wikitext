@@ -1,0 +1,4 @@
+---
+tags: svk
+---
+As of the time of writing (March 2007) [[SVK 2.0]] is the latest released version of [[SVK]].
