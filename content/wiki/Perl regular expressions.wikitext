@@ -1,0 +1,8 @@
+---
+tags: perl
+---
+= Negative (fixed-width) lookbehind =
+
+<pre>/(?<!foo)bar/</pre>
+
+Matches "bar" only if not preceded by "foo".
