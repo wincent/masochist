@@ -1,0 +1,4 @@
+---
+tags: version.control
+---
+[[Version control]] is the practice of using a [[version control system]] (or systems) to track and manage change over time in a project.
