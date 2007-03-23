@@ -1,0 +1,4 @@
+---
+tags: development wincent
+---
+[[WOBezel]] is a framework written for use in [[Wincent]] products that provides [[bezel]] functionality.
