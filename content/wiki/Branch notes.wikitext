@@ -1,0 +1,54 @@
+---
+tags: wincent version.control
+---
+= Overview =
+
+In the lead-up to the [[Leopard]] release I started to use branches seriously for the first time. As a learner I made some mistakes (misnaming branches, branching too early) but by the time [[Leopard]] comes out I expect those mistakes to be amortized. Active development will occur on the trunk (for [[Leopard]]) and maintenance work will occur on the branches (for pre-[[Leopard]] systems).
+
+== [[Install]] ==
+
+* <tt>trunk</tt>: [[Jaguar]] and up.
+
+See "[[Install branch notes]]".
+
+== [[Synergy]] ==
+
+* <tt>trunk</tt>: [[Leopard]] development
+* <tt>jaguar</tt>: [[Jaguar]] development
+** uses <tt>WOCommon/branches/tiger</tt>
+* <tt>panther</tt>: doomed, should have been named <tt>jaguar</tt>, not <tt>panther</tt>
+** uses <tt>WOCommon/branches/tiger</tt>
+
+See "[[Synergy branch notes]]".
+
+== [[Synergy Advance]] ==
+
+* <tt>trunk</tt>: all development occurs on the trunk; currently supports [[Tiger]] and up
+** uses <tt>WOCommon/branches/tiger</tt>
+
+== [[WOBezel]] ==
+
+* <tt>trunk</tt>: all development occurs on the trunk; currently supports [[Tiger]] and up
+** uses <tt>WOCommon/branches/tiger</tt> (non-code resources only)
+
+== [[WOCommon]] ==
+
+* <tt>trunk</tt>: [[Leopard]] development
+* <tt>tiger</tt>: [[Tiger]] development
+
+See "[[WOCommon branch notes]]".
+
+== [[WODebug]] ==
+
+* <tt>trunk</tt>: all development occurs on the trunk; currently supports [[Tiger]] and up
+** uses <tt>WOCommon/branches/tiger</tt> (non-code resources only)
+
+== [[WOHotKey]] ==
+
+* <tt>trunk</tt>: all development occurs on the trunk; currently supports [[Tiger]] and up
+** uses <tt>WOCommon/branches/tiger</tt> (non-code resources only)
+
+== [[WOTest]] ==
+
+* <tt>trunk</tt>: [[Leopard]] development
+* <tt>tiger</tt>: [[Tiger]] development
