@@ -1,0 +1,4 @@
+---
+tags: development wincent
+---
+[[WOBase]] was a framework written for use in [[Wincent]] products that provides general (base) functionality useful across a wide range of scenarios. In 2006 it was superceded by [[WOCommon]]. Examples of shipping products that included the framework are [[WinHex]] and [[Synergy Advance]] (prior to version 0.5).
