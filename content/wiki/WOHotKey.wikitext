@@ -1,0 +1,6 @@
+---
+tags: wohotkey
+---
+[[WOHotKey]] is a framework originally written for use in [[Wincent]] products that provides hot-key functionality.
+
+The code was released as [[open source]] under the [[BSD License]] in August of 2009 (see [https://wincent.com/blog/wohotkey-source-code-repository-now-public the annoucement]).
