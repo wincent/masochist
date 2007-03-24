@@ -1,0 +1,4 @@
+---
+tags: xcode
+---
+The "[[Developer Tools]]" was the former name of the [[Xcode Tools]]. When [[Apple]]'s free development [[IDE]], [[Project Builder]], was re-written and re-branded as [[Xcode]] the [[Developer Tools]] themselves changed their name as well (to "[[Xcode Tools]]").
