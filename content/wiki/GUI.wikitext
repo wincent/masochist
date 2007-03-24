@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[GUI]] is an acronym for [[Graphical User Interface]].
