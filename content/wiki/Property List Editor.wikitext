@@ -1,0 +1,4 @@
+---
+tags: xcode
+---
+The [[Property List Editor]] is an [[Aqua]] application that provides a [[GUI]] for editing property lists. It is part of the [[Xcode Tools]] and installed by default in <tt>/Developer/Applications/Utilities/</tt>.
