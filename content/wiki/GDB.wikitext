@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[GDB]] is the [[GNU]] debugger. It ships as part of [[Apple]]'s [[Xcode Tools]].
