@@ -1,0 +1,8 @@
+---
+tags:
+---
+This [[Knowledge Base]] is an example of a [[wiki]]. A [[wiki]] is a collection of interlinked articles that can be edited directly from within a web browser.
+
+= See also =
+
+* [[Wikipedia]] article on [[wikis]]: http://en.wikipedia.org/wiki/Wiki
