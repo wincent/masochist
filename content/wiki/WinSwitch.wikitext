@@ -1,0 +1,7 @@
+---
+tags: wincent.products winswitch
+---
+[[WinSwitch]] is an enhanced replacement for [[Apple]]'s Fast User Switching menu. It is free software released under the [[BSD license]].
+
+= See also =
+* Official product page: http://winswitch.wincent.com/
