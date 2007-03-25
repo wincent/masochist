@@ -1,0 +1,6 @@
+---
+redirect: [[GCC]]
+tags: 
+---
+
+
