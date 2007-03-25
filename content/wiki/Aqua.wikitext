@@ -1,0 +1,4 @@
+---
+tags: os.x
+---
+[[Aqua]] is the name of the distinctive [[Graphical User Interface]] developed by [[Apple]] for [[Mac OS X]]. It is an umbrella term that covers a large number of technologies which produce the "look and feel" of the menus, windows, icons and so forth in [[Mac OS X]].
