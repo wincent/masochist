@@ -1,0 +1,6 @@
+---
+tags: xcode development
+---
+An [[Integrated Development Environment]] or [[IDE]] is a software application, potentially comprising many components, that aims to serve as an integrated environment for editing, compiling (or otherwise building), testing and debugging software.
+
+An example [[IDE]] is [[Xcode]], the free [[IDE]] provided by [[Apple]] as part of the [[Xcode Tools]] for [[Mac OS X]].
