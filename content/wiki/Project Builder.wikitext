@@ -1,0 +1,6 @@
+---
+tags: xcode
+---
+[[Project Builder]] was the [[IDE]] that shipped with [[Apple]]'s original, free [[Developer Tools]] for [[Mac OS X]].
+
+It was later re-written and re-branded as [[Xcode]] and forms part of the still-free but now renamed [[Xcode Tools]].
