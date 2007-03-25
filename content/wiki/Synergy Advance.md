@@ -1,0 +1,6 @@
+---
+redirect: http://wincent.com/a/products/synergy-advance/
+tags: 
+---
+
+
