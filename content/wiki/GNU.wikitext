@@ -1,0 +1,10 @@
+---
+tags:
+---
+[[GNU]] is a recursive acronym which stands for [[GNU's Not UNIX]].
+
+[[GNU]] software includes [[GCC]], [[GDB]] and many, many other free and open source packages. Many of these packages are included with [[Mac OS X]].
+
+= Official site =
+
+http://gnu.org/
