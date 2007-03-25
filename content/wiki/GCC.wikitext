@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[GCC]] stands for the [[GNU Compiler Collection]]. It is licensed under the [[GPL]] and bundled with [[Apple]]'s [[Xcode Tools]].
