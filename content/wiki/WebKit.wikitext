@@ -1,0 +1,8 @@
+---
+tags: apple
+---
+[[WebKit]] is the open-source browser engine developed by [[Apple]] for use in its [[Safari]] browser. It is an integral part of [[Mac OS X]] and is leveraged by many third-party applications including browsers like [[OmniWeb]] and many, many non-browser applications.
+
+= Official site =
+
+http://webkit.org/
