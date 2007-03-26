@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+An [[RFC]] ("[[Request For Comments]]") is a memorandum, usually on a information technology or networking related issue, published for the purposes of peer review, standardization or simply for conveying concepts and information.
+
+= See also =
+
+* [[Wikipedia]] article on [[RFCs]]: http://en.wikipedia.org/wiki/Request_for_Comments
