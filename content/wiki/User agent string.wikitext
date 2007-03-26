@@ -1,0 +1,5 @@
+---
+tags:
+---
+* [[Wikipedia]] article on [[user agent strings]]: http://en.wikipedia.org/wiki/User_agent
+* An example of a [[PHP]] script to extract information from [[user agent strings]]: http://techpatterns.com/downloads/scripts/browser_detection_php_ar.txt
