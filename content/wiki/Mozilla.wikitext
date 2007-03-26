@@ -1,0 +1,6 @@
+---
+tags:
+---
+[[Mozilla]] is the organization behind the [[Firefox]] browser.
+
+* http://mozilla.org/
