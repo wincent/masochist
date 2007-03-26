@@ -1,0 +1,10 @@
+---
+tags: ruby
+---
+<pre>ruby -c script_to_check.rb</pre>
+
+= See also =
+
+* [[Detecting syntax errors in a Bash script without running it]]
+* [[Detecting syntax errors in a Perl script without running it]]
+* [[Detecting syntax errors in a PHP script without running it]]
