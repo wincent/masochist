@@ -1,0 +1,10 @@
+---
+tags: bash
+---
+<pre>bash -n script_to_check.sh</pre>
+
+= See also =
+
+* [[Detecting syntax errors in a Perl script without running it]]
+* [[Detecting syntax errors in a PHP script without running it]]
+* [[Detecting syntax errors in a Ruby script without running it]]
