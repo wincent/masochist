@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[OmniWeb]] is a commercial [[WebKit]]-based browser for [[Mac OS X]].
+
+= Official site=
+
+http://www.omnigroup.com/applications/omniweb/
