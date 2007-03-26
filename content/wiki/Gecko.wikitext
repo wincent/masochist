@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Gecko]] is the rendering engine behind [[Mozilla]] [[Firefox]] and [[Camino]].
