@@ -1,0 +1,8 @@
+---
+tags: version.control
+---
+[[RCS]] or the [[Revision Control System]] is a primitive [[version control system]] for tracking the change history of a single file over time. Because it only works on single files it is not all that useful for working on software projects which normally consist of collections of many files; [[CVS]] was developed out of [[RCS]] with a view to overcoming this limitation.
+
+= See also =
+
+* [[Wikipedia]] article on [[RCS]]: http://en.wikipedia.org/wiki/Revision_Control_System
