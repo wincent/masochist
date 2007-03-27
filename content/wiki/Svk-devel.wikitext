@@ -1,0 +1,6 @@
+---
+tags: svk
+---
+[[svk-devel]] is the [[SVK]] development mailing list.
+
+It is hosted at: http://lists.bestpractical.com/cgi-bin/mailman/listinfo/svk-devel
