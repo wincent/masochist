@@ -1,0 +1,16 @@
+---
+tags: tiger svk updates
+---
+The basic recipe for upgrading using [[CPAN]] is:
+
+<pre>sudo -H perl -MCPAN -e 'install SVK'</pre>
+
+Or if you have a sufficiently up-to-date copy of the [[CPAN]] module (which installs the <tt>cpan</tt> command-line tool):
+
+<pre>sudo -H cpan SVK</pre>
+
+The first time I tried to update I got an "already up-to-date" message. It seems I need to look for better mirrors. I did a <tt>sudo -H cpan</tt> and entered <tt>o conf init</tt> so as to pick some different mirrors, and then finally <tt>install SVK</tt> worked.
+
+= See also =
+
+* Release announcement posted to [[svk-devel]] mailing list: http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000774.html
