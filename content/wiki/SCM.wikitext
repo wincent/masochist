@@ -1,0 +1,4 @@
+---
+tags: version.control
+---
+[[SCM]] or [[Source Code Management]] generally refers to the storage of code in some kind of [[version control system]].
