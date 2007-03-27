@@ -1,0 +1,4 @@
+---
+tags: subversion
+---
+[[Subversion externals]] or [[svn:externals]] are a feature of the [[Subversion]] [[version control system]] that allow one to incorporate components of other repositories (or entire) repositories inside other working copies by reference.
