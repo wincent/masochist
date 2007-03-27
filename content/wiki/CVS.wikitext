@@ -1,0 +1,10 @@
+---
+tags: version.control
+---
+[[CVS]] or the [[Concurrent Versions System]] is a centralized, free [[version control system]] that has largely been replaced by [[Subversion]]. Old projects and existing infrastructure may continue to employ [[CVS]] but most new projects are built using a [[distributed version control system]] such as [[Git]]. Many existing projects with long histories stored in centralized repos are also switching to [[DVCS]] systems.
+
+Those looking for a free, centralized (client/server) [[version control system]] choose [[Subversion]]. The principal commercial alternative is [[Perforce]].
+
+= See also =
+
+* [[Wikipedia]] article on [[CVS]]: http://en.wikipedia.org/wiki/Concurrent_Versions_System
