@@ -1,0 +1,6 @@
+---
+tags: ruby
+---
+[[RubyForge]] is a home for open source [[Ruby]] projects. I currently use it to distribute the [[gems]] for [[Walrus]] and my [[wikitext]] translator.
+
+See: http://rubyforge.org/
