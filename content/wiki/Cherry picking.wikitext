@@ -1,0 +1,19 @@
+---
+tags: subversion version.control svk
+---
+"[[Cherry picking]]" is the practice of taking a specific change from one [[branch]] of development and [[merging]] it into another. It is different from a wholesale merge of one branch into another (where ''all'' changes are merged). [[Cherry picking]] is easier with a [[version control system]] like [[SVK]] that supports automatic [[merge tracking]] than with a system that doesn't, like [[Subversion]].
+
+For [[cherry picking]] to be effective you need to make sure that there are actually "cherries" to be picked; that is, you need to have one changeset per meaningful change: if you have more than one meaningful change in a single changeset then you are no longer free to [[cherry pick]] only one of those changes.
+
+In practice, this means that you should be disciplined about your commits: one commit per meaningful change.
+
+* Prior to committing always revise your working copy using <tt>svk status</tt> and <tt>svk diff</tt> (if you are using [[SVK]]) or <tt>svn status</tt>/<tt>svn diff</tt> (if using [[Subversion]]).
+* If multiple files have changes, commit them in two or more separate commits if necessary to keep meaningful changes appropriately grouped.
+* Use [[microbranches]] and [[branches]] to keep tasks and streams of development separate; this will make your changes naturally lean towards being meaningfully grouped.
+* In cases where multiple, unrelated changes have been made to a file, if you are using [[SVK]] you can use the <tt>--interactive</tt> switch to selectively commit chunks of a given file.
+
+= See also =
+
+* [[Branching]]
+* [[Microbranching]]
+* [[Merging]]
