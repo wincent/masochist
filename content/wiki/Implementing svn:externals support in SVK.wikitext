@@ -1,0 +1,57 @@
+---
+tags: svk
+---
+So [[SVK]] doesn't yet support [[Subversion externals]]. A number of possible workarounds are discussed in "[[Working around the lack of svn:externals support in SVK]]" but in this article I'd like to propose how I think the feature should be implemented in [[SVK]].
+
+= Nested checkouts =
+
+An [[svn:externals]] property is an instruction to the [[Subversion]] client that it should check out a given repository path at a location inside an existing working copy. It is essentially a reference to a path in another repository, like a symbolic link. It essentially produces a "nested" working copy, one working copy checked out inside another.
+
+Nesting of working copies is not allowed in [[SVK]] so you can't "fake" this by manually checking out the desired path inside an existing working copy. As a precondition for implementing [[svn:externals]] support [[SVK]] therefore has to be modified to allow this special case of nested working copies when [[svn:externals]] are in use.
+
+= Mirroring =
+
+[[SVK]] normally works with a local mirror so if you invoke:
+
+<tt>svk co svn+ssh://svn.example.com/project/trunk</tt>
+
+Where no mirror for that [[URL]] yet exists [[SVK]] will offer to create a (local) mirror at:
+
+<pre>//mirror/project-trunk</pre>
+
+This detail is relevant to implementing [[svn:externals]] support in [[SVK]] because a user could check out a working copy containing a reference to a not-yet-mirrored external repository. In this case [[SVK]] would need to offer to mirror the repository. Given that [[svn:externals]] are a client-level detail this mirroring should be implemented at check out time rather than at the time when the first repository is mirrored.
+
+= Working with [[SVK]] paths =
+
+It should be possible to set <tt>svn:externals</tt> properties that use [[SVK]] paths:
+
+<pre>svk propset svn:externals "nested_path //mirror/mirror_path"</pre>
+
+But this is of limited use because it means that other users who may not be using [[SVK]] and might just be using the [[Subversion]] client will not be able to checkout the externals.
+
+= Working with [[Subversion]] paths =
+
+Much more useful would be the ability for [[SVK]] to work with [[Subversion]] paths in [[svn:externals]] properties:
+
+<pre>svk propset svn:externals "nested_path svn+ssh://svn.example.com/mirror_path"</pre>
+
+The question then becomes, what should [[SVK]] do when it encounters such a path?
+
+* Should it automatically use the local mirror corresponding to that [[Subversion]] path (offering to create the mirror if it doesn't yet exist)?
+* Should it use another mirror dedicated exclusively to that particular instance of <tt>svn:externals</tt>?
+
+The first approach is probably the most straightforward and most closely matches the existing behaviour of [[Subversion externals]].
+
+= Command changes =
+
+From a user perspective, the [[SVK]] commands which would need to be updated are:
+
+* <tt>svk co</tt>: The client should check out any <tt>svn:externals</tt> referenced in the code that is being checked out.
+* <tt>svk st</tt>: The client should separately show the status of the checked out working copy and that of any nested <tt>svn:externals</tt>.
+* <tt>svk up</tt>: The client should update not only the checked out working copy but also any nested <tt>svn:externals</tt>.
+* <tt>svk ci</tt>: When checking in code the client should act on only one thing at a time: either the checked out working copy ''or'' a nested <tt>svn:externals</tt>; this matches the behaviours of the [[Subversion]] client which insists that all commits be atomic and cannot guarantee that a commit to more than two repositories will be atomic.
+
+= See also =
+
+* [[Working around the lack of svn:externals support in SVK]]
+* Initial response to this article by [[Chia-Liang Kao]]: http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000787.html
