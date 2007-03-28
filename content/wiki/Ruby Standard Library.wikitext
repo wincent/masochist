@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+The [[Ruby Standard Library]] comes with [[Ruby]]. It's documentation can be found at: http://ruby-doc.org/stdlib/
