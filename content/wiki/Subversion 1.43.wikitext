@@ -1,0 +1,4 @@
+---
+tags: subversion
+---
+As of March 2007 [[Subversion 1.43]] is the current release of the [[Subversion]] [[version control system]].
