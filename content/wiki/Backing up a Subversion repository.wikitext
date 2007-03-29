@@ -1,0 +1,19 @@
+---
+tags: subversion
+---
+= Options =
+
+There are two main ways of backing up a live [[Subversion]] repository:
+
+# Using <tt>svnadmin hotcopy</tt>
+# Using <tt>svnadmin dump</tt>
+
+In both cases you should run <tt>svnadmin</tt> as the owner of the repository. I chose to go with the second option for two reasons:
+
+# I can pipe the dumpfile through <tt>bzip2</tt> to compress it on the fly
+# I can use the dumpfile with future versions of [[Subversion]]
+
+= Disk usage =
+
+* Repository size on disk: 65[[MB]]
+* Backup size on disk: 78[[MB]] (note that this is actual two backups, "today's" and "yesterday's", because the backup script keeps a copy of the previous dump file; so the actual size per backup is really about 39[[MB]]).
