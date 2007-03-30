@@ -1,0 +1,4 @@
+---
+tags: objective.c
+---
+[[Objective-C]] is a [[object-oriented]] programming language based on [[C]].
