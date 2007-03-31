@@ -1,0 +1,25 @@
+---
+tags: ruby irb
+---
+[[IRB]] is short for [[Interactive Ruby]].
+
+You can start an [[Interactive Ruby]] session by issuing <tt>irb</tt> at the command line.
+
+= Example session =
+
+<pre>$ irb
+irb(main):001:0> puts "Hello, world!"
+Hello, world!
+=> nil
+irb(main):002:0> exit</pre>
+
+= Tips =
+
+== Access the result of the last expression with `_` ==
+
+<pre>$ 4 + 9
+=> 13
+$ _
+=> 13</pre>
+
+Source: http://rubyquicktips.tumblr.com/post/342527837/console-tip-retrieve-the-last-return-value-with
