@@ -1,0 +1,6 @@
+---
+tags: puma
+---
+"[[Puma]]" is the popular name for [[Mac OS X]] version 10.1.
+
+It was released on 24 September 2001 (see [[Mac OS X timeline]] for other dates).
