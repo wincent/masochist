@@ -1,0 +1,14 @@
+---
+tags: rails
+---
+* <tt>:binary</tt>
+* <tt>:boolean</tt>
+* <tt>:date</tt>
+* <tt>:datetime</tt>
+* <tt>:decimal</tt>
+* <tt>:float</tt>
+* <tt>:integer</tt>
+* <tt>:string</tt>
+* <tt>:text</tt>
+* <tt>:time</tt>
+* <tt>:timestamp</tt>
