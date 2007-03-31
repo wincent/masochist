@@ -1,0 +1,4 @@
+---
+tags: tiger mysql
+---
+See "[[Rails application bootstrapping]]".
