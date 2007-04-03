@@ -1,0 +1,13 @@
+---
+tags: xcode
+---
+In the [[Tiger]] version of [[Xcode]] there are some build settings which offer per-architecture variants and some which do not. An example of the latter is the <tt>WARNING_CFLAGS</tt> build setting:
+
+<pre>WARNING_CFLAGS_ppc                  = -Wall -Wextra -Wno-unused-parameter
+WARNING_CFLAGS_i386                 = -Wall -Wno-unused-parameter</pre>
+
+[[Tiger]]'s [[Xcode]] will ignore these build settings. The solution is to do the following:
+
+<pre>WARNING_CFLAGS                      = $(WARNING_CFLAGS_$(CURRENT_ARCH))
+WARNING_CFLAGS_ppc                  = -Wall -Wextra -Wno-unused-parameter
+WARNING_CFLAGS_i386                 = -Wall -Wno-unused-parameter</pre>
