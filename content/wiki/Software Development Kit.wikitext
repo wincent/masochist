@@ -1,0 +1,16 @@
+---
+tags: development
+---
+An [[SDK]] or [[Software Development Kit]] is a package containing any of:
+
+* header files
+* source code
+* frameworks/libraries
+* documentation
+* support materials
+
+that enable a developer to write software for a certain [[API]] or piece of software.
+
+= See also =
+
+* [[Wikipedia]] article on [[SDKs]]: http://en.wikipedia.org/wiki/Software_development_kit
