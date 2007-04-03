@@ -1,0 +1,10 @@
+---
+tags: perl.one.liners
+---
+= Removing spaces from the standard input, echoing to standard output =
+
+<pre>echo -n "foo bar baz bing bong boom" | perl -pe "s/ //g"</pre>
+
+== Output ==
+
+<pre>foobarbazbingbongboom</pre>
