@@ -1,0 +1,131 @@
+---
+tags: svk
+---
+= Creating a new depot =
+
+<pre>svk depotmap --init</pre>
+
+Creates a default depot at:
+
+<pre>~/.svk/local</pre>
+
+= Mirroring a remote repository =
+
+An [[SVK]] mirror is more than just a static mirror (a copy) of a remote repository. It is dynamic in the same way that a real, physical mirror is; that is it "reflects" any changes you check in to it back to the remote repository.
+
+<pre>svk mirror svn+ssh://svn.example.com/project_name //mirrors/project_name</pre>
+
+Then:
+
+<pre>svk sync //mirrors/project_name</pre>
+
+Or:
+
+<pre>svk sync --all</pre>
+
+You can list local mirrors as follows:
+
+<pre>svk mirror --list</pre>
+
+For a real-world example of remote repository mirroring see "[[Mirroring the Growl repository with SVK]]".
+
+= Checking out =
+
+From the mirror (like checking out from the central [[Subversion]] repository):
+
+<pre>svk co //mirrors/project_name/trunk</pre>
+
+From the local branch (see below):
+
+<pre>svk co //local/project_name/trunk</pre>
+
+Telling [[SVK]] to forget about a working copy:
+
+<pre>svk co --detach</pre>
+
+Telling [[SVK]] to forget about all working copies that no longer exist:
+
+<pre>svk co --purge</pre>
+
+Telling [[SVK]] about a moved working copy:
+
+<pre>svk co --relocate DEPOTPATH|PATH PATH</pre>
+
+Getting a list of all existing, known working copies:
+
+<pre>svk co --list</pre>
+
+= Creating a branch =
+
+A branch which will be visible in the main repository:
+
+<pre>svk cp //mirrors/project_name/trunk //mirrors/project_name/branches/foobar</pre>
+
+A local-only branch:
+
+<pre>svk cp //mirrors/project_name/trunk //local/project_name/foobar</pre>
+
+For more examples see "[[Branching]]" and "[[Microbranching]]".
+
+= Setting up default merge editor =
+
+For example, on [[Mac OS X]], you could add the following to your <tt>~/.bash_profile</tt>:
+
+<pre>export SVKMERGE=FileMerge</pre>
+
+Other environment variables and their effects are described on running:
+
+<pre>svk help environment</pre>
+
+= Replacing <tt>svn:externals</tt> dependencies =
+
+* [[Working around the lack of svn:externals support in SVK]]
+* http://lists.bestpractical.com/pipermail/svk-devel/2007-January/000567.html
+* http://cwilliams.textdriven.com/articles/2007/02/16/svn-and-svk
+
+= Typical work cycle =
+
+== Using [[SVK]] like [[Subversion]] ==
+
+Update local mirror:
+
+<pre>svk sync</pre>
+
+Update working copy:
+
+<pre>svk up</pre>
+
+Or both updates in a single step:
+
+<pre>svk up -s</pre>
+
+Or checking for conflicts (not actually updating):
+
+<pre>svk up -C</pre>
+
+== Using [[SVK]] to maintain local-only branches ==
+
+Pushing changes to another repository (pushing changes back to the branch which was originally copied to create the new branch):
+
+<pre>svk push [DEPOTPATH | PATH]</pre>
+
+Get changes from another repository (pulling changes into the branch from the branch which was originally copied to create the new branch):
+
+<pre>svk pull [PATH...]
+svk pull DEPOTPATH</pre>
+
+Until you become familiar with the way <tt>push</tt> and <tt>pull</tt> work it is highly recommended that you use the <tt>-C</tt> (<tt>--check-only</tt>) switch to preview the results before proceeding. 
+
+See [http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000692.html this mailing list thread] for some very helpful clarification on the way <tt>push</tt> and <tt>pull</tt> work. Specifically:
+
+* Working on an [[SVK]] mirror is identical to working directly with the remote repository (apart from the extra layer of indirection) so ''you don't need to use <tt>push</tt> and <tt>pull</tt> at all' in that case.
+* <tt>svk push BRANCH</tt> merges all changes from <tt>BRANCH</tt> back into the stream that <tt>BRANCH</tt> came from.
+* <tt>svk pull</tt> is the reverse of <tt>svk push</tt>; in other words, it pulls all changes from the stream that the branch came from. 
+
+Consequently, if you check out a local working copy of a branch and then use <tt>push</tt> all of the changes made to the branch will be merged back onto the <tt>trunk</tt> (or wherever the branch originated). This may not be what you want. Here is [http://lists.bestpractical.com/pipermail/svk-devel/2006-October/000176.html another mailing list thread] describing the unexpected merging that can take place as the result of <tt>push</tt>/<tt>pull</tt> if you don't understand the way it works.
+
+If you want to use <tt>push</tt> and <tt>pull</tt> without hitting the actual trunk you must create a ''local'' branch (using <tt>svk cp</tt>) from the mirrored remote branch. Then <tt>push</tt> and <tt>pull</tt> will only affect/interoperate with the mirrored remote branch (not the trunk).
+
+= See also =
+
+* http://scottstuff.net/blog/articles/2005/07/07/distributed-development-with-svk
