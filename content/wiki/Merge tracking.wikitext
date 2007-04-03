@@ -1,0 +1,8 @@
+---
+tags: subversion version.control svk perforce
+---
+[[Merge tracking]] is a facility offered by some [[version control systems]]. It is the ability of a [[version control system]] to "remember" which changes have been [[merged]] from one line ([[branch]]) of development to another and act accordingly. Without [[merge tracking]] it is the responsibility of the user of the system to manually record which changes have been previously merged and act appropriately (for example, by not attempting to merge the same change twice).
+
+In all but the simplest cases of [[merging]] [[merge tracking]] is a significant time saver and a real convenience which encourages developers to use [[branches]] in ways that improve their productivity and the quality of their work. A lack of [[merge tracking]] can actually be a disincentive to [[branch]] at all, and for those that choose to [[branch]] anyway it can be a significant drain on their time.
+
+Examples of systems which offer automatic [[merge tracking]] are [[SVK]] (free) and [[Perforce]] (commercial); compare this with [[Subversion]] which does not offer [[merge tracking]] at this point in time (March 2007, [[Subversion 1.43]] is the current version). [[Subversion 1.5]] will offer initial support for merge tracking and the <tt>merge-tracking</tt> branch was [http://svn.collab.net/viewvc/svn?view=rev&revision=24027 merged into the trunk] on 22 March 2007. More information can be read [http://svn.collab.net/viewvc/svn/trunk/notes/merge-tracking.txt?revision=HEAD&view=markup here].
