@@ -1,0 +1,4 @@
+---
+tags: development
+---
+One of the target architectures for [[Mac OS X]]. Abbreviated in [[Xcode]] build settings to <tt>ppc</tt>.
