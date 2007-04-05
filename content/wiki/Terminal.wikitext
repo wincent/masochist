@@ -1,0 +1,4 @@
+---
+tags: os.x
+---
+A [[terminal]] is a [[Command Line Interface]] for interacting with [[CLI]] programs. On [[Mac OS X]] "[[the Terminal]]" is an application, <tt>Terminal.app</tt>, that can be found in <tt>/Applications/Utilities/</tt>.
