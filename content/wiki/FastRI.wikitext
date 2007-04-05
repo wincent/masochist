@@ -1,0 +1,24 @@
+---
+tags: ruby
+---
+[[FastRI]] is a faster replacement for [[ri]] which produces colorized output. It can be installed as follows:
+
+<pre>sudo gem install fastri</pre>
+
+The index can then be generated (or updated) using:
+
+<pre>fastri-server -b</pre>
+
+Local queries can then be run using commands like this:
+
+<pre>qri String#chomp!</pre>
+
+Instead of the standard:
+
+<pre>ri String#chomp!</pre>
+
+Note that in order to search the built-in classes you must explicitly install the documentation for them as described in "[[Getting ri working for built-in classes]]".
+
+= See also =
+
+* Official [[FastRI]] page: http://eigenclass.org/hiki.rb?fastri
