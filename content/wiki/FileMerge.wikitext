@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[FileMerge]] is a visual diffing and [[merging]] tool provided by [[Apple]] as part of its [[Xcode Tools]] for [[Mac OS X]].
