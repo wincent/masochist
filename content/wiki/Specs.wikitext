@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[Specifications]] or "[[specs]]" for short are used in [[Behaviour-Driven Development]]. They are used to specify the desired behaviour.
