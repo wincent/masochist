@@ -1,0 +1,4 @@
+---
+tags: development
+---
+<tt>[[opendiff]]</tt> is a [[CLI]] front-end for [[Apple]]'s [[FileMerge]] tool.
