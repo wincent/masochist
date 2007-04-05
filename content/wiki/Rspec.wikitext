@@ -1,0 +1,17 @@
+---
+tags: rspec
+---
+[[RSpec]] is a [[Behaviour-Driven Development]] framework for [[Ruby]].
+
+= See also =
+
+* Official website: http://rspec.info/ (formerly http://rspec.rubyforge.org/)
+* Repositories:
+** [[RSpec 2]]: http://github.com/rspec
+** RSpec 1: http://github.com/dchelimsky
+
+= Alteratives to RSpec =
+
+* [[Context]]
+* [[Shoulda]]
+* [[Micronaut]] (used as the basis for [[RSpec 2]])
