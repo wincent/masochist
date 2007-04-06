@@ -1,0 +1,48 @@
+---
+tags: development
+---
+In the process of preparing a personalized "cheat sheet" for [[TextMate]] I wanted to include graphical representations of the different modifier keys (Command, Shift, Control etc). It is possible to find and view these from the [[Mac OS X]] character palette but the huge size of the [[Unicode]] space can make this difficult unless you store such characters in your favorites list.
+
+I'm recordings some of the useful codes here to save me the hassle of looking them up again in the future:
+
+* &#9099; (escape): <tt>U+238B</tt>
+* &#8677; (tab): <tt>U+21E5</tt>
+* &#8682; (caps lock): <tt>U+21EA</tt>
+* &#8679; (shift): <tt>U+21E7</tt>
+* &#8963; (control): <tt>U+2303</tt>
+* &#8997; (option): <tt>U+2325</tt>
+* &#63743; (Apple): <tt>U+F8FF</tt> (in some [[Apple]]-provided fonts only)
+* &#8984; (command): <tt>U+2318</tt>
+* &#9251; (space): <tt>U+2423</tt>
+* &#9166; (return): <tt>U+23CE</tt>
+* &#9003; (backspace): <tt>U+232B</tt>
+* &#8998; (delete): <tt>U+2326</tt>
+* &#8689; (home): <tt>U+21F1</tt>
+* &#8690; (end): <tt>U+21F2</tt>
+* &#8670; (page up): <tt>U+21DE</tt>
+* &#8671; (page down): <tt>U+21DF</tt>
+* &#8593; (up arrow): <tt>U+2191</tt>
+* &#8673; (up arrow): <tt>U+21E1</tt> (dotted form)
+* &#8595; (down arrow): <tt>U+2193</tt>
+* &#8675; (down arrow): <tt>U+21E3</tt> (dotted form)
+* &#8592; (left arrow): <tt>U+2190</tt>
+* &#8672; (left arrow): <tt>U+21E0</tt> (dotted form)
+* &#8594; (right arrow): <tt>U+2192</tt>
+* &#8674; (right arrow): <tt>U+21E2</tt> (dotted form)
+* &#8999; (clear): <tt>U+2327</tt>
+* &#8685; (num lock): <tt>U+21ED</tt>
+* &#8996; (enter): <tt>U+2324</tt>
+* &#9167; (eject): <tt>U+23CF</tt>
+* &#9021; (power): <tt>U+233D</tt>
+
+Of the arrow forms I prefer the dotted forms because that is how they appear on my current [[Apple]] keyboard.
+
+To include these [[Unicode]] characters in the [[HTML]] of this page I converted the numbers from [[hexadecimal]] to [[decimal]] as in this example:
+
+# Get [[Unicode]] for the escape key: <tt>U+238B</tt>
+# Convert <tt>238B</tt> [[hex]] to 9099 [[decimal]]; you can use a tool like [[WinHex]] to do this.
+# Include in document as an [[HTML entity]]: <tt>&amp;#9099;</tt>
+
+= See also =
+
+* Source: http://macbiblioblog.blogspot.com/2005/05/special-key-symbols.html
