@@ -1,0 +1,6 @@
+---
+redirect: [[Hexadecimal]]
+tags: 
+---
+
+
