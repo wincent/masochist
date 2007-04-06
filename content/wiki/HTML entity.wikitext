@@ -1,0 +1,16 @@
+---
+tags: html
+---
+[[HTML entities]] are a means of inserting a character or symbol into the source of an [[HTML]] document in an encoding-independent fashion.
+
+* <tt>&amp;copy;</tt> should appear in the browser as a copyright symbol: &copy;
+
+They are also used for characters that would otherwise have special meaning within the source; for example:
+
+* <tt>&amp;lt;</tt> should appear in the browser as a less-than symbol: &lt;
+
+[[HTML entities]] can be used to embed any [[Unicode]] character (as shown in "[[Unicode representations of modifier keys]]").
+
+= Other examples =
+
+* `#`: `&amp;#35;`
