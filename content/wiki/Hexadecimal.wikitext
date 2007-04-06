@@ -1,0 +1,6 @@
+---
+tags: development
+---
+[[Hexadecimal]] or [[hex]] numbers are integers written in [[base-16]]. The possible range for each digit is from 0 through to 9 then a through f (inclusive). That is "a" in [[hexadecimal]] is equivalent to 10 in [[decimal]].
+
+You can use a tool like [[WinHex]] to perform conversions between numbers of different bases.
