@@ -1,0 +1,8 @@
+---
+tags:
+---
+A [[RAID]] or [[Redundant Array of Inexpensive Disks]] is a collection of hard drives grouped together to form one or more logical volumes.
+
+= See also =
+
+* [[Wikipedia]] article on [[RAID]]: http://en.wikipedia.org/wiki/RAID
