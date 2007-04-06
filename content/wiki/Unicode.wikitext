@@ -1,0 +1,5 @@
+---
+tags: development
+---
+* http://unicode.org/
+* [[Wikipedia]] article on [[Unicode]]: http://en.wikipedia.org/wiki/Unicode
