@@ -1,0 +1,82 @@
+---
+tags: os.x
+---
+= Disclaimer =
+
+These are notes I made while trying to extract the audio from public domain (not copyrighted) DVDs of live convert performances. This information should not be used (and probably wouldn't help anyway) on copyrighted or copy-protected material. On the one hand, copyright law provides you with "[[Fair Use]]" rights that allow you time-shift and format-shift the content you purchased. On the other hand, laws like the [[DMCA]] make it illegal to circumvent the [[DRM]] on DVDs that you've purchased, and this [[DRM]] prevents you from exercising your [[Fair Use]] rights.
+
+Because of the [[DMCA]] I am not going to link to software that would enable you to circumvent any [[DRM]], nor will I provide instructions on how to do so.
+
+= Demuxing =
+
+I usually try using [[bbDEMUX]] directly on the DVD first and if that fails I fall back to using [[MacTheRipper]] to extract the [[VOB]] files and then I try running [[bbDEMUX]] on those.
+
+[[bbDEMUX]] is fairly out of date, no [[Universal Binary]] version is available, and it runs slowly under [[Rosetta]]. The drag-and-drop feature seems broken in the main window (although dragging to the Dock icon seems to work, as does the "Open" item in the "File" menu). [[bbDEMUX]] can fail even on non-copy-protected DVDs, but the [[MacTheRipper]] step often helps.
+
+= [[AC3]] conversion =
+
+After demuxing you will have a bunch of [[AC3]] files, one per [[VOB]], but neither [[QuickTime]] nor [[iTunes]] can read them. See "[[Installing PAC (Perl Audio Converter) on Mac OS X]]" for a description of using [[PAC]] to perform the conversion; I've never been able to get that technique to work (I always get a message like "Unsupported codec (id=86020) for input stream #0.0").
+
+I then tried using the "Streaming/Export Wizard" of [[VLC]]:
+
+# Drag the [[AC3]] files to the [[VLC]] playlist window.
+# From the "File" menu choose "Streaming/Export Wizard".
+# Choose "Transcode/Save to file".
+# Choose an audio-only transcode. I choose to use the [[FLAC]] codec because it is lossless, and a [[RAW]] container type.
+
+I then tried using [[PAC]] as follows:
+
+<pre>pacpl --rawtoflac --file *.raw</pre>
+
+I was told that I needed [[SoX]], so I installed that (see "[[Installing SoX 13.0.0 on Mac OS X]]").
+
+Then [[PAC]] couldn't find the <tt>sox</tt> executable so I ended up editing the configuration file at <tt>/etc/pacpl/pacpl.conf</tt>.
+
+This time [[PAC]] worked and converted the files to [[FLAC]]. I then used <tt>flac</tt> to convert them to [[WAV]] format.
+
+<pre>flac -d *.flac</pre>
+
+Finally I had something I could play in [[iTunes]] (and there convert to [[Apple Lossless]]) but on playing the tracks I discovered that they were all 100% white noise. I checked and the [[FLAC]] files were white noise as well. I checked the "raw" files and [[VLC]] couldn't play them despite the fact that it created them, so here I think [[VLC]] is to blame.
+
+I tried transcoding again, this time using [[FLAC]]/[[OGG]] instead of [[FLAC]]/[[RAW]]. The resulting [[OGG]] files couldn't be played in [[VLC]] (why then did it create them with reporting any errors?).
+
+I decided to forget about trying with VLC. Back to trying with [[PAC]]:
+
+<pre>pacpl --ac3towav --file *.ac3</pre>
+
+Failed:
+
+<pre>Unsupported codec (id=86020) for input stream #0.0</pre>
+
+A search yielded this post: http://lists.mplayerhq.hu/pipermail/ffmpeg-user/2006-March/002426.html
+
+So I decided to update/recompile my [[FFmpeg]] install. See "[[Building FFmpeg on Mac OS X]]". 
+
+I believe that once [[FFmpeg]] is successfully built with [[A52]] support that the above [[PAC]] invocation will work, although a quick test with the GUI wrapper for [[FFMpeg]] (see http://www.ffmpegx.com/) yielded the following:
+
+<pre>FFmpeg version CVS, Copyright (c) 2000-2004 Fabrice Bellard
+Tue Feb 20 14:01:14 CET 2007
+Mac OSX universal build for ffmpegX
+  libavutil version: 49.0.0
+  libavcodec version: 51.9.0
+  libavformat version: 50.4.0
+Input #0, ac3, from '/Users/wincent/tmp/demuxed/VTS_01_1S189SS129.ac3':
+  Duration: 00:34:14.0, start: 0.000000, bitrate: 384 kb/s
+  Stream #0.0: Audio: ac3, 48000 Hz, stereo, 384 kb/s
+Could not find input stream #0.1</pre>
+
+Given that I was unable to build [[FFmpeg]] I was able to use the copy which comes inside the GUI version as follows:
+
+<pre>/Applications/ffmpegX.app/Contents/Resources/ffmpeg -ab 256 -i in.ac3 out.mp3</pre>
+
+Not exactly the conversion I wanted (I wanted a lossless format) but it will suffice. Better:
+
+<pre>/Applications/ffmpegX.app/Contents/Resources/ffmpeg -ab 256 -i in.ac3 out.wav</pre>
+
+The same or similar techniques will work on [[AVI]] files:
+
+<pre>/Applications/ffmpegX.app/Contents/Resources/ffmpeg -ab 256 -i in.avi out.mp3</pre>
+
+= Alternatives =
+
+See also [[vobinfo]] for an alternative to [[bbDEMUX]]; I've never gotten [[vobinfo]] to work.
