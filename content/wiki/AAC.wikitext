@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[AAC]] or [[Advanced Audio Codec]] is a lossy audio codec that offers superior sound quality than [[MP3]].
+
+= See also =
+
+* [[Wikipedia]] article on [[AAC]]: http://en.wikipedia.org/wiki/Advanced_Audio_Coding
