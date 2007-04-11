@@ -1,0 +1,9 @@
+---
+tags:
+---
+[[MPC]] or [[Musepak]] is an audio codec.
+
+= See also =
+
+* [[mppdec]]
+* [[Wikipedia]] article on [[Musepak]]: http://en.wikipedia.org/wiki/Musepack
