@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[AIFF]] or the [[Audio Interchange File Format]] is a lossless audio codec.
+
+= See also =
+
+* [[Wikipedia]] article on [[AIFF]]: http://en.wikipedia.org/wiki/AIFF
