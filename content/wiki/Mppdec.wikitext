@@ -1,0 +1,12 @@
+---
+tags: os.x
+---
+[[mppdec]] is an [[MPC]] decoder for [[Mac OS X]].
+
+= Download =
+
+* http://www.musepack.net/index.php?pg=osx
+
+= Example =
+
+* [[Converting MPC audio files to MP3]]
