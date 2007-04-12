@@ -1,0 +1,10 @@
+---
+tags:
+---
+[[Tidy]], also commonly known as [[HTML Tidy]], is a tool for correcting malformed [[HTML]] and/or applying uniform formatting to that [[HTML]].
+
+The <tt>tidy</tt> [[command line]] tool is shipped as part of the standard [[Mac OS X]] distribution. Type <tt>man tidy</tt> at the [[Terminal]] for more information. 
+
+= See also =
+
+* [[Wikipedia]] article on [[Tidy]]: http://en.wikipedia.org/wiki/Tidy
