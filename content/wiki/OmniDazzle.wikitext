@@ -1,0 +1,15 @@
+---
+tags: os.x
+---
+[[OmniDazzle]] is a visual mouse pointer enhancer for [[Mac OS X]]. Its two principal uses are:
+
+* Visual adornment.
+* Making the mouse pointer more obvious in live presentations and [[screencasts]].
+
+For an example [[screencast]] showing [[OmniDazzle]] in use see this [[screencast]]:
+
+* http://wincent.com/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php
+
+= See also =
+
+* Official site: http://www.omnigroup.com/applications/omnidazzle/
