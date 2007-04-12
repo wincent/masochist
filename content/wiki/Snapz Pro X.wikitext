@@ -1,0 +1,8 @@
+---
+tags: os.x
+---
+[[Snapz Pro X]] is a screen capture utility for [[Mac OS X]]. I use it to capture screenshots for all of my [http://wincent.com/ products]. It can also be used to capture video, but for the purposes of [[screencasting]] I prefer [[iShowU]].
+
+= See also =
+
+* Official site: http://www.ambrosiasw.com/utilities/snapzprox/
