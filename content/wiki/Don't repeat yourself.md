@@ -1,0 +1,6 @@
+---
+redirect: [[DRY]]
+tags: 
+---
+
+
