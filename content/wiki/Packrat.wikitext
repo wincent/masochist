@@ -1,0 +1,6 @@
+---
+tags:
+---
+A [[packrat parser]] is a memoizing parser that recognizes [[Parsing Expression Grammars]].
+
+My [[object-oriented templating]] system, [[Walrus]], includes a [[packrat parser]]. The generator itself (written in [[Ruby]]) is available in a separate project, [[Walrat]].
