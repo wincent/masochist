@@ -1,0 +1,8 @@
+---
+tags: os.x
+---
+[[iShowU]] is screencasting software for [[Mac OS X]]. It's principal competition comes from [[Snapz Pro X]]. It costs US$20. I use it to make the [[screencasts]] archived [http://wincent.com/a/about/wincent/weblog/archives/screencasts/ here].
+
+= See also =
+
+* Official site: http://shinywhitebox.com/home/home.html
