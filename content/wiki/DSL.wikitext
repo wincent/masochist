@@ -1,0 +1,8 @@
+---
+tags: development
+---
+A [[Domain Specific Language]] or [[DSL]] is a custom programming language designed exclusively for use with a specific task. [[DSLs]] are commonly used in [[Ruby]], where [[Ruby]]'s flexible syntax allows you to build and embed [[DSLs]] within the [[Ruby]] source. For example, in [[Walrus]] I use a [[DSL]] for the purposes of defining grammars.
+
+= See also =
+
+* [[Wikipedia]] article on [[DSLs]]: http://en.wikipedia.org/wiki/Domain-specific_programming_language
