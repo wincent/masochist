@@ -1,0 +1,6 @@
+---
+tags: cocoa
+---
+[[Cocoa]] is the umbrella term for a set of [[Objective-C]] [[APIs]] provided by [[Apple]] for [[Mac OS X]].
+
+It includes high-level [[APIs]] in a framework called [[AppKit]] and lower-level ones in a framework called [[Foundation]].
