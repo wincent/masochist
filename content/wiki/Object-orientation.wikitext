@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[Object-orientation]] is a design approach using in various fields of computer science such as [[object-oriented programming]] and [[object-oriented templating]].
