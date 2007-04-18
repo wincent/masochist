@@ -1,0 +1,4 @@
+---
+tags: c
+---
+[[C99]] is the current, most up-to-date version of the [[C]] language standard.
