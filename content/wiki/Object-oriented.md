@@ -1,0 +1,6 @@
+---
+redirect: [[Object-orientation]]
+tags: 
+---
+
+
