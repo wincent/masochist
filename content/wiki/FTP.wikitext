@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[FTP]] or [[File Transfer Protocol]] is a network file transport and manipulation protocol. It has largely been replaced by the secure alternative, [[SFTP]], for authenticated transport, but it continues to be widely used for anonymous (non-authenticated), unencrypted transfers.
+
+= See also =
+
+* [[Wikipedia]] article on [[FTP]]: http://en.wikipedia.org/wiki/FTP
