@@ -1,0 +1,9 @@
+---
+tags: movable.type
+---
+Specific examples:
+
+* [[Movable Type 3.2 to 3.31 upgrade notes]]
+* [[Upgrading from Movable Type version 3.31 to 3.33]] (detailed)
+* [[Upgrading from Movable Type version 3.33 to 3.34]] (detailed, clarified)
+* [[Upgrading from Movable Type version 3.34 to 3.35]] (updated, using a script for backup)
