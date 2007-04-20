@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[SFTP]], the [[SSH file transfer protocol]], is a secure transport mechanism that has largely replaced [[FTP]] for the purposes of authenticated transfer and file manipulation ([[FTP]] continues to be popular for anonymous, unauthenticated, unencrypted transfers).
+
+= See also =
+
+* [[Wikipedia]] article on [[SFTP]]: http://en.wikipedia.org/wiki/SSH_file_transfer_protocol
