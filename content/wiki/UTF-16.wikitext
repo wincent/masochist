@@ -1,0 +1,4 @@
+---
+tags:
+---
+* [[Wikipedia]] article on [[UTF-16]]: http://en.wikipedia.org/wiki/UTF-16
