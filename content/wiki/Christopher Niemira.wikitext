@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[Christopher Niemira]] is the author of [[phpMyID]].
+
+= See also =
+
+* http://siege.org/resume/
