@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[MD5]] is a popular, one-way cryptographic hash function.
+
+= See also =
+
+* [[Wikipedia]] article on [[MD5]]: http://en.wikipedia.org/wiki/MD5
