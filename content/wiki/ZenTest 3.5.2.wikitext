@@ -1,0 +1,8 @@
+---
+tags: zentest
+---
+[[ZenTest 3.5.2]] was released on 30 April 2007.
+
+= See also =
+
+* [[Upgrading to ZenTest 3.5.2 using RubyGems]]
