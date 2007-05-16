@@ -1,0 +1,8 @@
+---
+tags: development
+---
+[[dSYM]] is the new debugging information format used by [[Apple]]'s [[Xcode Tools]].
+
+= See also =
+
+* [[Automated moving of files using find]].
