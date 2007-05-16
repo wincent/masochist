@@ -1,0 +1,4 @@
+---
+tags: unix
+---
+A [[man page]] is a textual information page accessed using the <tt>man</tt> [[command line]] utility. For more information, type <tt>man man</tt> in the [[Terminal]].
