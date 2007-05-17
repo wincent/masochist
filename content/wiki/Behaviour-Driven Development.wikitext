@@ -1,0 +1,24 @@
+---
+tags: development testing
+---
+[[Behaviour-Driven Development]] or [[BDD]] is a reformulation of [[Test-Driven Development]] expressed in terms of desired behaviours. It is not fundamentally different from existing [[TDD]] best practices, but the vocabulary employed is intended to gently guide people towards those best practices by making it easy to think about things the "right way".
+
+An example of a [[BDD]] framework is [[RSpec]]. I've used it in the development of pretty much every [[Ruby]] project I've ever written (see [[Walrus]] and [[Wikitext]] for examples; the [[Rails]] application that powers this site, which isn't yet [[open source]], also heavily uses RSpec).
+
+= See also =
+
+== Related ==
+
+* [[Rails model testing cheatsheet]]
+* [[Rails view testing cheatsheet]]
+* [[Rails controller testing cheatsheet]]
+* [[Rails helper testing cheatsheet]]
+* [[Rails mailer testing cheatsheet]]
+* [[RR cheatsheet]]
+* [[Steak cheatsheet]]
+
+== Older ==
+
+* [[Behaviour-Driven Development with Rails]]
+* [[Independently testing models, views and controllers]]
+* [[Mocking in Rails]]
