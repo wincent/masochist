@@ -1,0 +1,12 @@
+---
+tags: ruby rails
+---
+= Version and platform-specific notes =
+
+* [[Installing Ruby on Rails 1.1.4 on Mac OS X Tiger]]
+* [[Installing Ruby on Rails 1.1.4 on Red Hat Enterprise Linux ES 3]]
+
+= See also =
+
+* [[Ruby on Rails]]
+* [[Rails application bootstrapping]]
