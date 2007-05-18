@@ -1,0 +1,10 @@
+---
+tags:
+---
+[[ISO 8859-1]] or [[Latin-1]] is a popular 8-bit text encoding.
+
+It is the default encoding for [[MySQL]] databases (see "[[Finding out the encoding of a MySQL database]]" and "[[Setting the encoding of a MySQL database]]").
+
+= See also =
+
+* [[Wikipedia]] article on [[ISO 8859-1]]: http://en.wikipedia.org/wiki/ISO-8859-1
