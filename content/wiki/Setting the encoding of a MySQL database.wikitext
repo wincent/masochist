@@ -1,0 +1,4 @@
+---
+tags: rails mysql
+---
+A number of ways for setting character encodings in [[MySQL]] are described in "[[Unicode support in Rails]]".
