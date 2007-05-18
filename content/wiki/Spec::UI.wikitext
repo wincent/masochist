@@ -1,0 +1,10 @@
+---
+tags: rspec rails
+---
+[[Spec::UI]] provides high-level integration testing for [[RSpec]] and [[Rails]].
+
+For more information see "[[Using Watir with RSpec and Rails]]".
+
+= See also =
+
+* First-time installation notes: "[[Installing Spec::UI 0.2.0 on Mac OS X Tiger]]"
