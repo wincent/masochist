@@ -1,0 +1,8 @@
+---
+tags: xcode
+---
+[[Xcode]] is [[Apple]]'s [[IDE]]. It is part of the [[Xcode Tools]] (formerly just known as the "Developer Tools") which includes [[GCC]] and a range of supporting utilities.
+
+= See also =
+
+* [[Xcode tips]]
