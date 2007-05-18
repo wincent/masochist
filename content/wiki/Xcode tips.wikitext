@@ -1,0 +1,55 @@
+---
+tags: xcode
+---
+= Keyboard navigation among methods =
+
+When an editor view is active and has focus hitting Control-2 will cause the function pop-up menu to activate; it can then be navigated using the cursor keys. Hitting Return jumps to the method.
+
+I learnt about this trick in [http://inessential.com/?comments=1&postid=3405 this weblog post].
+
+= Cancelling builds =
+
+About once a day I find myself unexpectedly provoking a build by pressing Command-B when all I really wanted to do was paste something (Command-V); an easy enough mistake to make because the B and V keys are adjacent. When this happens I hit Command-Period to cancel the build.
+
+Peter Hosey reveals another way of cancelling an in progress build in [http://boredzo.org/blog/archives/2006-04-11/know-your-xcode this post]:
+
+<blockquote>Most commands that start an operation stop it as well. ⌘B, for example, starts ''and stops'' a build.</blockquote>
+
+He goes further to describe the general pattern employed:
+
+<blockquote>Rule of key commands: With ⌘ and no other modifiers, the key command does at least a build. ⌘⌥ will do that thing alone, without building first. ⇧⌘ opens the progress window for that operation, without actually doing it.</blockquote>
+
+See [http://boredzo.org/blog/archives/2006-04-11/know-your-xcode his post] for full details.
+
+= Build phase ordering =
+
+[http://talblog.info/archives/2007/05/fail_faster.html This weblog post] argues that you should move your Compile Sources build phases as high up in the build phases lists as possible so as to catch syntax errors as quickly as possible. This is predicated on two notions:
+
+# Syntax errors are much more likely than mistakes in your other build phases, such as Copy Bundle Resources phases.
+# Executing a Copy Bundle Resources phase early on in the build process may needlessly delay the discovery of syntax errors.
+
+This advice can be generalized to the following: move your Compile Sources build phases as high up in the build phases lists as possible. In other words, don't just look at the relative ordering of your Compile Sources and Copy Bundle Resources phases; consider all the phases and move the Compile Sources and Link Binary With Libraries phases up as high as you can without breaking anything. Do this for all targets in your project.
+
+As a concrete example, take the [[Synergy Advance]] application target (this is the target that builds the application only; there are many other targets for building other components such as plug-ins): before re-ordering the build phase order was:
+
+# Run Script (Update Strings Files)
+# Copy Bundle Resources
+# Copy Frameworks
+# Compile Sources
+# Link Binary With Libraries
+# Run Script (AppleScript Support)
+# Run Script (Strip)
+# Run Script (InfoPlist.strings preprocessing)
+
+After re-ordering we have:
+
+# Compile Sources
+# Link Binary With Libraries
+# Run Script (Update Strings Files)
+# Copy Bundle Resources
+# Copy Frameworks
+# Run Script (AppleScript Support)
+# Run Script (Strip)
+# Run Script (InfoPlist.strings preprocessing)
+
+In other words, I was able to move three phases down the list and make Compile Sources and Link Binary With Libraries the very first phases in the target. Note that even the Copy Frameworks phase can be moved down despite the fact that linking occurs before it; this is because the linking is performed against the frameworks in the <tt>TARGET_BUILD_DIR</tt>, and they can later be copied into place inside the application bundle.
