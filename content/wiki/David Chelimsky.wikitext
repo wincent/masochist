@@ -1,0 +1,6 @@
+---
+tags: rspec
+---
+[[David Chelimsky]] is currently one of the core developers on the [[rspec]] team.
+
+* Weblog: http://blog.davidchelimsky.net/
