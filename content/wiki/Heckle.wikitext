@@ -1,0 +1,8 @@
+---
+tags: heckle
+---
+[[Heckle]] is a mutation tool for [[Ruby]]. I use it in conjunction with [[RSpec]] to do [[Behaviour-Driven Development]]. For more information, see "[[Behaviour-Driven Development with Rails]]".
+
+= See also =
+
+* Official project page: http://rubyforge.org/projects/seattlerb/
