@@ -1,0 +1,4 @@
+---
+tags: rspec
+---
+[[Aslak Hellesoy]] is one of the core developers on the [[RSpec]] team.
