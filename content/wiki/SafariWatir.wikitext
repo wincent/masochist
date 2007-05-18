@@ -1,0 +1,11 @@
+---
+tags: watir
+---
+[[SafariWatir]] is a port of the [[Watir]] project compatible with [[Apple]]'s [[Safari]] browser.
+
+For more information, see "[[Using Watir with RSpec and Rails]]" and "[[Installing SafariWatir on Mac OS X Tiger]]".
+
+= See also =
+
+* Official project page: http://safariwatir.rubyforge.org/
+* Mailing list: http://rubyforge.org/mailman/listinfo/safariwatir-general
