@@ -1,0 +1,6 @@
+---
+tags: c
+---
+[[C]] is a popular programming language.
+
+Most of my development work on [[Mac OS X]] takes place in an [[object-oriented]] superset of [[C]] called [[Objective-C]].
