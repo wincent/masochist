@@ -1,0 +1,9 @@
+---
+tags: rspec
+---
+[[RSpec 0.9.4]] was the last [[RSpec]] release prior to the [[API]]-freeze and the release of [[RSpec 1.0.0]]. It was released on 10 May 2007.
+
+= See also =
+
+* Official release notes: http://rubyforge.org/frs/shownotes.php?release_id=11611
+* My upgrade notes: [[Upgrading to RSpec 0.9.4]]
