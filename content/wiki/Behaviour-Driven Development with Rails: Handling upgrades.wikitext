@@ -1,0 +1,18 @@
+---
+tags: rspec rails
+---
+The general procedure for handling upgrades in the [[Behaviour-Driven Development]] cycle fits within the [[continuous integration]] style.
+
+Prior to the upgrade, all [[specs]] should be passing (as verified by [[Autotest]]).
+
+We stop [[Autotest]] and then perform the upgrade (or upgrades). For example, see:
+
+* [[Upgrading to Heckle 1.4.0 on Mac OS X Tiger]]
+* [[Upgrading to RSpec 1.0.0 on Mac OS X Tiger]]
+* [[Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger]]
+
+Finally, we resume [[Autotest]] and everything should just keep working.
+
+= See also =
+
+* [[Behaviour-Driven Development with Rails]]
