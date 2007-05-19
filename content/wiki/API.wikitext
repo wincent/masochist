@@ -1,0 +1,8 @@
+---
+tags: development
+---
+An [[API]] is an [[Application Programming Interface]].
+
+= See also =
+
+* [[Wikipedia]] article on [[APIs]]: http://en.wikipedia.org/wiki/API
