@@ -1,0 +1,24 @@
+---
+tags: rails mysql
+---
+Doing [[Behaviour-Driven Development with Rails]] I recently discovered that [[MySQL]] does case-insensitive comparisons by default, and more importantly, that ''even if you tell Rails to force case-sensitive comparisons you won't get them''.
+
+This means that if you have validations like the following in your <tt>ActiveRecord</tt> subclasses:
+
+<pre>validates_uniqueness_of :login_name, :case_sensitive => false</pre>
+
+Then you'll get case-insensitive comparisons. But if you change this to:
+
+<pre>validates_uniqueness_of :login_name, :case_sensitive => true</pre>
+
+Then you ''will still get case-insensitive comparisons''. Note that <tt>case_sensitive</tt> defaults to <tt>true</tt>.
+
+I discovered this because the [[BDD]] development model gets you to work in a cycle:
+
+# Write a [[spec]] describing the behaviour you want: it should fail because you haven't written the code to make it pass yet
+# Write the code to make the [[spec]] pass
+# Repeat
+
+The order of the steps is important: you want the [[spec]] to fail first before you make it pass because that confirms that your [[spec]] tests the thing you actually think it tests.
+
+So this was an unexpected benefit of the [[BDD]] approach: it made me learn something about the way [[Rails]] and [[MySQL]] interact that I might not have found out about otherwise, and which could potentially one day help me to identify particularly tricky case-sensitivity bugs which might crop up.
