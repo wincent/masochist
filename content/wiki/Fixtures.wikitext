@@ -1,0 +1,30 @@
+---
+tags: rspec rails
+---
+[[Fixtures]], in [[Rails]] parlance, are files containing sample data to be inserted into the test database for testing purposes.
+
+= Set up and tear down =
+
+It is important not to be mislead by [http://rspec.rubyforge.org/documentation/rails/writing/models.html the example] on the [[RSpec]] website:
+
+<pre>fixtures :people, :animals
+
+before(:each) do
+  # fixtures are setup before this
+end
+
+after(:each) do
+  # fixtures are torn down after this
+end</pre>
+
+It is true that they are "set up" by the time you hit the <tt>before</tt> block. That is, the data is in the database (most likely, inserted when the <tt>fixtures</tt> method is first encountered) and the local variable for accessing them is set-up (<tt>people</tt>).
+
+But what you may think from the example is that after the <tt>after</tt> block they get removed from the database. This is not the case. I don't know what "torn down" actually means in this context; I suspect it means that the contents of the local <tt>people</tt> variable get cleaned out or reset.
+
+If you run your specs and then check the database you'll see that the fixture data is still present, and the "tear down" does ''not'' include wiping clean the database.
+
+But note that the [[specs]] ''are'' run inside a database transaction; on leaving the <tt>describe</tt> block the contents of the database will revert back to how things were when the fixtures were first declared.
+
+= See also =
+
+* [[Fixtures considered harmful?]]
