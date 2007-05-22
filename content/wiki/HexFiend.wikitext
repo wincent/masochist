@@ -1,0 +1,9 @@
+---
+tags: os.x
+---
+[[HexFiend]] if an [[open source]] hex editor for [[Apple]]'s [[Mac OS X]], written in [[Objective-C]].
+
+= See also =
+
+* Official website: http://ridiculousfish.com/hexfiend/
+* [[Testing whether a bit is set]]
