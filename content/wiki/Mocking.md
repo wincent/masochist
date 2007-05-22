@@ -1,0 +1,6 @@
+---
+redirect: [[Mock objects]]
+tags: 
+---
+
+
