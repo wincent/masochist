@@ -1,0 +1,13 @@
+---
+tags: development
+---
+= Types of testing =
+
+* [[Unit testing]]
+* [[Functional testing]], also known as [[integration testing]]
+
+= See also =
+
+* [[Behaviour-Driven Development]]
+* [[RSpec]]
+* [[WOTest]]
