@@ -1,0 +1,8 @@
+---
+tags: development
+---
+[[Stubs]] are [[test doubles]] which are closely related to [[mock objects]] but offer a subset of the functionality of [[mocks]].
+
+[[Stubs]] can stand in for other classes during [[testing]] and [[Behaviour-Driven Development]] in order to keep tests focussed only on the code being tested and not on any of its external dependencies. See "[[Independently testing models, views and controllers]]" for more information.
+
+An example of a testing framework that provides a [[stubbing]] [[API]] is [[RSpec]].
