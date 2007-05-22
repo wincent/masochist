@@ -1,0 +1,8 @@
+---
+tags: email rfcs
+---
+[[RFC 2822]] is an [[RFC]] describing the "Internet Message Format". It is the updated successor to [[RFC 822]].
+
+= See also =
+
+* Full text of [[RFC 2822]]: http://tools.ietf.org/html/rfc2822
