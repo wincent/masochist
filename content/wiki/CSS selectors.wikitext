@@ -1,0 +1,40 @@
+---
+tags:
+---
+This is not an exhaustive list of [[CSS selectors]] but it shows the basic patterns that are useful:
+
+= ID selectors =
+
+<tt>#foo</tt>: selects the element whose <tt>id</tt> is <tt>foo</tt>.
+
+Example:
+
+<pre><div id="foo">hello world</div></pre>
+
+= Class selectors =
+
+<tt>.bar</tt>: matches all elements whose <tt>class</tt> is <tt>bar</tt>.
+
+<tt>h2.baz</tt>: matches all <tt>h2</tt> elements whose <tt>class</tt> is <tt>baz</tt>.
+
+Examples:
+
+<pre><p class="bar">hello world</p>
+
+<h2 class="baz">hello world</h2></pre>
+
+= Universal selectors =
+
+<tt>*</tt>: selects all elements on the page.
+
+= Adjacent selectors =
+
+<tt>h2 + h3</tt>: selects any <tt>h3</tt> element which follows an <tt>h2</tt>
+
+= Child selectors =
+
+<tt>div.foo>div.bar</tt>: selects any <tt>div</tt> element of class <tt>bar</tt> that is an immediate child of a <tt>div</tt> element of class <tt>foo</tt>
+
+= Descendant selectors =
+
+<tt>div table</tt>: selects any <tt>table</tt> element that is a descendant of a <tt>div</tt> element; note that unlike the case of child selectors it need not be an immediate child.
