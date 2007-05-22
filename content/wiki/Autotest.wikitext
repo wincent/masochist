@@ -1,0 +1,11 @@
+---
+tags: zentest ruby rails
+---
+[[autotest]] is a part of [[ZenTest]] a testing framework for doing [[Continuous Integration]] in [[Ruby]] and [[Rails]].
+
+= See also =
+
+* [[Setting up autotest]]
+* [[Using autotest with Rails]]
+* [[Setting up autotest to use Growl]]
+* [[Behaviour-Driven Development with Rails]]
