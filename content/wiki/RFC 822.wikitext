@@ -1,0 +1,8 @@
+---
+tags: email rfcs
+---
+[[RFC 822]] is an [[RFC]] describing "STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES". It was later updated and superceded by [[RFC 2822]].
+
+= See also =
+
+* Full text of [[RFC 822]]: http://www.ietf.org/rfc/rfc0822.txt
