@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[Functional testing]] is a high-level form of [[testing]] that confirms that the various components of a system function in concert as they are intended. It is also referred to as [[integration testing]].
