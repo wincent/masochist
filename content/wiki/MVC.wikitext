@@ -1,0 +1,15 @@
+---
+tags: development
+---
+[[MVC]] or [[Model-View-Controller]] is an approach to [[object-oriented programming]] which divides the concerns of an application into three separate types, each corresponding to a class:
+
+* [[Model]]: a class that describes the ''what'' or thing being modelled.
+* [[View]]: a class that provides a user with a way of interacting with the thing being modelled; it both shows a representation of the model and (possibly) allows the user to make changes to the model. Multiple different views may simultaneously offer different representations of the same underlying model object.
+* [[Controller]]: a class that mediates between the model and its view or views.
+
+The key benefits of applying the [[MVC]] approach stem from maintaining a separation of concerns; this in turn leads to greater readability, modularity and maintainability. It also helps break the design into segments that can be independently tested (see "[[Independently testing models, views and controllers]]").
+
+Examples of popular systems that are designed to use the [[MVC]] pattern include:
+
+* [[Apple]]'s [[Cocoa]] [[API]], as seen in [[Mac OS X]]
+* [[Ruby on Rails]]
