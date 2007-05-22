@@ -1,0 +1,4 @@
+---
+tags: development
+---
+A [[view]] is one of the three components in the [[MVC]] pattern.
