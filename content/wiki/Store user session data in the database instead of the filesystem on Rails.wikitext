@@ -1,0 +1,78 @@
+---
+tags: rails
+---
+= Note =
+
+When this article was originally written storing the session in the database was the faster way of storing session data. It should be noted that once the number of sessions grows pruning the table can become quite expensive (see "[[Clearing out old Rails session records from a MySQL database]]" and the related ticket, ticket #1142, "Set-up automated pruning of sessions table").
+
+Since then, alternative stores have become available, such as the cookie-based store.
+
+= Storing user session data in the database =
+
+For better performance, see:
+
+http://weblog.textdrive.com/article/196/on-rails-sessions
+
+In summary, uncomment this line in your <tt>config/environment.rb</tt> file:
+
+<pre>config.action_controller.session_store = :active_record_store</pre>
+
+Then to create the sessions table run:
+
+<pre>rake db:sessions:create</pre>
+
+To have the migration take effect you could do the following:
+
+<pre>rake migrate</pre>
+
+Or to do this for a specific environment:
+
+<pre>rake RAILS_ENV=test migrate</pre>
+
+= Example =
+
+After performing several iterations of [[Behaviour-Driven Development]] as described in [[Behaviour-Driven Development with Rails]] I decided that I wanted to create a <tt>Session</tt> model to handle user sessions (login, logout). At the same time it made sense to start storing [[Rails]]' user session data in the database as described in this article.
+
+<pre># create sessions migration
+rake db:sessions:create
+
+# create Session model and spec files
+script/generate rspec_model Session --skip-migration
+
+# create Session controller with appropriate actions
+script/generate rspec_controller sessions create destroy
+
+# perform the migrations on the development and test databases
+rake db:migrate
+env RAILS_ENV=test rake db:migrate
+
+# make sure all the specs still pass
+rake spec
+
+# check changes into SVK
+svk st | grep '?' | awk '{print $2}' | xargs svk add
+svk ci -m "Sessions model and controller (initial creation)"</pre>
+
+The <tt>--skip-migration</tt> switch is needed because without it <tt>script/generate rspec_model</tt> will create an additional, duplicate migration to create the <tt>sessions</tt> table in the database (already created on the previous step).
+
+In fact, creating the <tt>Session</tt> model may not be necessary at all, unless you wish to add some custom behaviour. A basic controller similar to the following may be all that is needed:
+
+<pre>class SessionsController < ApplicationController
+  
+  def create
+    if current_user = User.authenticate(params[:login_name], params[:password])
+      flash[:notice]  = 'Successfully logged in.'
+      redirect_to home_path
+    else
+      flash[:error]   = 'Invalid login or password.'
+      render :action => 'new'
+    end
+  end
+  
+  def destroy
+    session.delete
+    flash[:notice]  = 'You have logged out successfully.'
+    redirect_to home_path
+  end
+  
+end</pre>
