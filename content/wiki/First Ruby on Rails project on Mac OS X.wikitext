@@ -1,0 +1,168 @@
+---
+tags: ruby rails
+---
+These notes were made while trying to put together my first ever [[Rails]] project. I recorded the steps taken so that it would be easier for me to repeat them in the future. I later expanded and improved upon these notes in "[[Rails application bootstrapping]]", and then went on to refine them further in "[[Behaviour-Driven Development with Rails]]".
+
+= Basic setup =
+
+# Install and run [[Locomotive]].
+# Choose "Create New…" from the [[Locomotive]] "File" menu.
+# Choose "Edit in TextMate" from the "File" menu.
+# In the Terminal, change to your [[Rails]] project's application root.
+# Run <tt>command `locomotive bash-environment`</tt> to enable command line manipulation.
+# Set up your initial databases as described in "[[Using SQLite for Ruby on Rails development on Mac OS X Tiger]]"; skip over the "Manual database creation" step.
+
+= Creating your database files =
+
+# Create initial databases and an empty schema
+
+<pre>rake db_schema_dump</pre>
+
+This will occur in the default (development) environment. Repeat for the other environments and then restore the <tt>RAILS_ENV</tt> to its original value.
+
+<pre>export RAILS_ENV=production
+rake db_schema_dump
+export RAILS_ENV=test
+rake db_schema_dump
+export RAILS_ENV=development</pre>
+
+Alternatively using the <tt>env</tt> command:
+
+<pre>env RAILS_ENV=production rake db_schema_dump
+env RAILS_ENV=test rake db_schema_dump
+env RAILS_ENV=development rake db_schema_dump</pre>
+
+# Creating your first table:
+
+One way of doing this:
+
+<pre>script/generate model wikis</pre>
+
+This command actually creates the first migration file in db/migrate.
+
+From:
+
+<pre>class CreateWikis < ActiveRecord::Migration
+  def self.up
+    create_table :wikis do |t|
+      #t.column :name, :string
+    end
+  end
+
+  def self.down
+    drop_table :wikis
+  end
+end</pre>
+
+To:
+
+<pre>class CreateWikis < ActiveRecord::Migration
+  def self.up
+    create_table :wikis do |table|
+      table.column :name, :string
+    end
+  end
+
+  def self.down
+    drop_table :wikis
+  end
+end</pre>
+
+<pre>rake migrate</pre>
+
+Adding columns to a table:
+
+<pre>script/generate migration weblogs</pre>
+
+<pre>class Weblogs < ActiveRecord::Migration
+  def self.up
+  end
+
+  def self.down
+  end
+end</pre>
+
+<pre>class Weblogs < ActiveRecord::Migration
+  def self.up
+    create_table :weblogs do |table|
+      table.column :name, :string
+    end
+  end
+
+  def self.down
+    drop_table :weblogs
+  end
+end</pre>
+
+<pre>rake migrate</pre>
+
+== Keeping <tt>db/schema.rb</tt> automatically in sync during migrations ==
+
+In the file, <tt>config/environment.rb</tt>, change:
+
+<pre>  # Use SQL instead of Active Record's schema dumper when creating the test database.
+  # This is necessary if your schema can't be completely dumped by the schema dumper, 
+  # like if you have constraints or database-specific column types
+  # config.active_record.schema_format = :sql</pre>
+
+To:
+
+<pre>  # Use SQL instead of Active Record's schema dumper when creating the test database.
+  # This is necessary if your schema can't be completely dumped by the schema dumper, 
+  # like if you have constraints or database-specific column types
+  config.active_record.schema_format = :ruby</pre>
+
+== Adding a column to an existing table ==
+
+<pre>script/generate migration add_creation_date_to_weblogs</pre>
+
+<pre>class AddCreationDateToWeblogs < ActiveRecord::Migration
+  def self.up
+    add_column "weblogs", "created", :datetime
+  end
+
+  def self.down
+    remove_column "weblogs", "created"
+  end
+end</pre>
+
+<pre>rake migrate</pre>
+
+= The main controller =
+
+<pre>script/generate controller main welcome</pre>
+
+In <tt>config/routes.rb</tt>
+
+<pre>map.connect '', :controller => 'main', :action => 'welcome'</pre>
+
+And delete <tt>public/index.html</tt>
+
+= Creating a scaffold =
+
+<pre>script/generate scaffold weblog</pre>
+
+(Accessible at <nowiki>"http://localhost:3000/weblogs/"</nowiki>).
+
+= Creating a base layout (used site-wide) =
+
+Create a file at <tt>app/views/layouts/application.rhtml</tt>, indicating where included content should go with <tt><%= @content_for_layout %></tt>. For example:
+
+<pre><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" version="-//W3C//DTD XHTML 1.1//EN" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title><%= @page_title %></title>
+</head>
+<body>
+<%= @content_for_layout %>
+</body>
+</html></pre>
+
+= See also =
+
+* "UsingMigrations": http://wiki.rubyonrails.org/rails/pages/UsingMigrations
+* "UnderstandingMigrations": http://wiki.rubyonrails.com/rails/pages/UnderstandingMigrations
+* "Using migrations to evolve your database schema without loosing [sic] your data": http://media.rubyonrails.org/video/migrations.mov
+* "Using Ruby on Rails for Web Development on Mac OS X": http://developer.apple.com/tools/rubyonrails.html
