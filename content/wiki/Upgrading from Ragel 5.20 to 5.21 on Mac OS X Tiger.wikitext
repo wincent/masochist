@@ -1,0 +1,30 @@
+---
+tags: tiger ragel updates
+---
+These notes were made while installing [[Ragel 5.21]] on [[Mac OS X]] [[Tiger]].
+
+= Prerequisites =
+
+As noted in "[[Installing Ragel 5.2.0 on Mac OS X Tiger]]", in order to build [[Ragel]] from [[Subversion]] you need to have [[Kelbt]] installed. Alternatively, you can build using the tarball.
+
+= Upgrading [[Kelbt]] =
+
+[[Kelbt]] (by [[Ragel]]'s author) is used when building from [[Subversion]]. A new version, [[Kelbt 0.12]], was available; for more information see "[[Installing Kelbt 0.12 on Mac OS X Tiger]]".
+
+= Installation using the tarball =
+
+I tried to install via [[Subversion]]:
+
+<pre>svn co svn://mambo.cs.queensu.ca/ragel/tags/ragel-5.21</pre>
+
+But the server was down, so I fell back to using the tarball instead:
+
+<pre>wget 'http://www.cs.queensu.ca/~thurston/ragel/ragel-5.21.tar.gz'
+tar xzvf ragel-5.21.tar.gz 
+cd ragel-5.21/
+./configure 
+make
+cd test
+./runtests 
+cd ..
+sudo make install</pre>
