@@ -1,0 +1,4 @@
+---
+tags: development
+---
+[[ABNF]] or [[Augmented BNF for Syntax Specifications]] is documented in [[RFC 2234]].
