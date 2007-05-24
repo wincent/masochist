@@ -1,0 +1,4 @@
+---
+tags: rspec tiger updates
+---
+Before I had a chance to install [[RSpec 1.0.1]] the [[RSpec]] team came out with a new version. See "[[Upgrading to RSpec 1.0.2 on Mac OS X Tiger]]" for notes.
