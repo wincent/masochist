@@ -1,0 +1,80 @@
+---
+tags: rails
+---
+= Resources =
+
+My initial attempts at testing cookies while doing [[Behaviour-Driven Development with Rails]] were not successful so I started to look for resources to investigate the problem:
+
+* Recipe 7.14 of the [[Rails Cookbook]], "Examining the Contents of a Cookie", goes into great details about how to test cookies in controller tests.
+** I was lead to the [[Rails Cookbook]] by this post, "Assert Cookie", (http://blog.testingrails.com/2006/8/28/testing-tidbits-what-s-interesting-lately-in-testing-ruby-on-rails)
+* This article, "Rails Cookies Mangles the Hash Interface" (http://www.40withegg.com/2007/1/5/rails-cookies-mangles-the-hash-interface/) -- also noted in [[Rails "gotchas"]] -- explains why you can't easily test the values set in <tt>cookies</tt>.
+** The [[Rails]] [[API]] [http://api.rubyonrails.org/classes/ActionController/Cookies.html documentation itself] actually recognizes this, but it's easy to overlook:
+
+<blockquote>The cookies being read are what were received along with the request, the cookies being written are what will be sent out with the response.</blockquote>
+
+* http://blog.codefront.net/2006/09/03/some-functional-testing-gotchas-in-ruby-on-rails/
+** Which in turn lead me to: http://www.pluitsolutions.com/2006/08/02/rails-functional-test-with-cookie/
+
+<blockquote>Use a string for [the] cookie name, symbol [sic] somehow returns nil in functional test.</blockquote>
+
+* http://www.robbyonrails.com/articles/2006/08/28/testing-cookies-in-ruby-on-rails
+** http://blog.brightredglow.com/articles/2006/08/27/assert_cookie-for-ooey-gooey-fun
+
+= Summary =
+
+Adapting the available information for use with [[RSpec]], we have:
+
+== Setting up a request cookie before a spec ==
+
+<pre>before do
+  request.cookies['foo'] = CGI::Cookie.new('name' => 'foo', 'value' => '12')
+  
+  # shorter alternative
+  request.cookies['foo'] = CGI::Cookie.new('foo', '12')
+end</pre>
+
+Note that: 
+
+* You ''must'' use <tt>request.cookies</tt>, not <tt>cookies</tt>
+* You ''must'' use a <tt>String</tt> key, not a <tt>Symbol</tt>
+* You ''must'' set a <tt>CGI::Cookie</tt> value, not just a <tt>String</tt>
+
+If you get any of those things wrong then your controller won't be able to get the cookies that you've set in your [[specs]].
+
+To confirm that you really did set the cookie you can check it; unlike the normal <tt>cookie</tt>, <tt>request.cookies</tt> does allow key look-ups:
+
+<pre>request.cookies['foo'].should == '12'</pre>
+
+== Firing a controller method ==
+
+You may then fire off a controller method:
+
+<pre># example: getting the "show" action
+get 'show'</pre>
+
+Directly calling a method using <tt>send</tt>, for example, will not work because the cookies will not be set up for the controller.
+
+== In the controller ==
+
+Inside the controller itself you can read and write cookies as normal. Note the use of <tt>Symbol</tt> keys:
+
+<pre># reading
+cookies[:foo]
+
+# writing
+cookies[:foo] = 'hello world'
+
+# deleting (clears cookie from user's browser as well
+cookies.delete :foo</pre>
+
+== Checking a response cookie is set in a spec ==
+
+After firing off the controller you can confirm that it set or unset any cookies before sending the result back to the user:
+
+<pre>cookies['user_id'].should be_blank</pre>
+
+Note that:
+
+* This time we use <tt>cookies</tt> and not <tt>request.cookies</tt>
+* Again it is compulsory to use a <tt>String</tt> as a key, not a <tt>Symbol</tt>
+* Use the <tt>blank?</tt> method because it [http://dev.rubyonrails.org/browser/trunk/activesupport/lib/active_support/core_ext/blank.rb handles more cases] than <tt>empty?</tt>
