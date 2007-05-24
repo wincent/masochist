@@ -1,0 +1,85 @@
+---
+tags: rails
+---
+These are an older version of the notes at "[[Using autotest with Rails]]". These were written for use in conjunction with versions of [[ZenTest]] prior to version 3.5.0.
+
+= Prerequisites =
+
+* [[ZenTest]] (see "[[Setting up autotest]]")
+* [[diff-lcs]] (already installed in my case)
+* [[RSpec]] (again, already installed in my case)
+
+= Installing the [[RSpec]] [[Rails]] plugin =
+
+You have to use the version of the plug-in corresponding with your installed version of [[RSpec]] so in my case at the time of writing this corresponds to the <tt>REL_0_9_0_BETA_1</tt> tag (see "[[Trying out the rspec version 0.9 preview]]"). From the top of the application directory:
+
+<pre>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_0_BETA_1/rspec_on_rails</pre>
+
+After installing you must "bootstrap" [[RSpec]] as follows:
+
+<pre>script/generate rspec</pre>
+
+Output:
+
+<pre>      create  spec
+      create  spec/spec_helper.rb
+      create  spec/spec.opts
+      create  previous_spec_failures.txt
+      create  script/spec_server
+      create  script/spec</pre>
+
+For more information see http://rspec.rubyforge.org/documentation/rails/install.html
+
+I later installed [[RSpec]] itself as a plug-in alongside of <tt>rspec_on_rails</tt>:
+
+<pre>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_0_BETA_2/rspec
+script/plugin install --force svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_0_BETA_2/rspec_on_rails</pre>
+
+This was necessary in order to get [[autotest]] from the new version of [[ZenTest]] (3.5.0 at the time of writing) working. Note that I took the opportunity to upgrade to the latest beta. I had to supply the <tt>--force</tt> switch in order to force the upgrade to overwrite the existing copy of the plug-in.
+
+= Installing <tt>rspec_autotest</tt> =
+
+<pre>script/plugin install http://svn.caldersphere.net/svn/main/plugins/rspec_autotest</pre>
+
+Exactly how to uninstall a previously-installed copy of the plugin depends on how you installed it and whether it is under [[source control]] or not. In my case, it was stored in my [[SVK]] repository and so I uninstalled as follows:
+
+<pre># from top-level of the application in a checked out working copy:
+cd vendor/plugins
+svk rm rspec_autotest</pre>
+
+= Starting [[autotest]] =
+
+<pre>rake spec:autotest</pre>
+
+= Tweaks =
+
+I was seeing a lot of warnings, <tt>invalid option: -s (OptionParser::InvalidOption)</tt>, due to the fact that the plug-in is passing a switch that [[RSpec]] no longer supports in 0.9.0 beta 1 (and in fact I can't find any information on what it used to do); I assume it was for specifying an individual specification. I was able to silence these by changing the <tt>-s</tt> to an <tt>-e</tt> because specifications are now called examples in [[RSpec]] 0.9:
+
+<pre>methods.each { |meth| cmds << "#{spec_command} -s #{meth.inspect} #{klass}" }</pre>
+
+To:
+
+<pre>methods.each { |meth| cmds << "#{spec_command} -e #{meth.inspect} #{klass}" }</pre>
+
+At line 91 of  <tt>rspec_autotest.rb</tt>.
+
+Here's a ticket for the issue with a basic patch: http://trac.caldersphere.net/projects/main/ticket/125
+
+= Additional [[Rails]] configuration =
+
+[[David Chelimsky]] points out in [http://rubyforge.org/pipermail/rspec-users/2007-May/001650.html this] [[rspec-users]] mailing list post that you should remove the following lines from the <tt>spec/spec.opts</tt> file:
+
+<pre>--format
+failing_examples:previous_failures.txt
+--example
+previous_failures.txt</pre>
+
+This prevents the tests from failing continuously when an example fails; [[autotest]] will run the specs again automatically once changes have been made.
+
+= See also =
+
+* [[Using autotest with Rails]]
+* [[Setting up autotest]]
+* [[Behaviour-Driven Development with Rails]]
+* Official plug-in announcement: http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin
+* "Developing a Rails model using BDD and RSpec": http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1
