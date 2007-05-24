@@ -1,0 +1,8 @@
+---
+tags: development
+---
+[[O'Reilly]] is a highly-regarded computer book publisher.
+
+= Official site =
+
+* http://www.oreilly.com/
