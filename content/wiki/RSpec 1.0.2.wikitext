@@ -1,0 +1,14 @@
+---
+tags: rspec
+---
+[[RSpec 1.0.2]] was released immediately after [[RSpec 1.0.1]] on 24 May 2007.
+
+= Release notes =
+
+<blockquote>This is just to align the version numbers in rspec and rspec_on_rails.</blockquote>
+
+* http://rubyforge.org/frs/shownotes.php?release_id=11901
+
+= See also =
+
+* [[Upgrading to RSpec 1.0.2 on Mac OS X Tiger]]
