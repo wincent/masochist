@@ -1,0 +1,12 @@
+---
+tags: rspec
+---
+[[Spec::UI 0.2.3]] is the new version of [[Spec::UI]], released jointly with [[RSpec 1.0.1]]. It was released on 24 May 2007.
+
+Neither the [[RSpec 1.0.1]] nor [[RSpec 1.0.2]] release notes make any specific mention of changes in [[Spec::UI 0.2.3]].
+
+= See also =
+
+* [[Upgrading to Spec::UI 0.2.3 on Mac OS X Tiger]]
+* [[Upgrading to RSpec 1.0.1 on Mac OS X Tiger]]
+* [[Upgrading to RSpec 1.0.2 on Mac OS X Tiger]]
