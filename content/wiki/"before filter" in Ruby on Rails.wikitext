@@ -1,0 +1,8 @@
+---
+tags: ruby rails
+---
+If you define a <tt>before_filter</tt> it must not return <tt>false</tt> or nothing will be done or rendered to the browser. There is extensive documentation on filters here, but it doesn't seem to mention this:
+
+http://api.rubyonrails.org/classes/ActionController/Filters/ClassMethods.html
+
+Returning <tt>nil</tt> is fine.
