@@ -1,0 +1,8 @@
+---
+tags: rails
+---
+The [[Rails trac]] can be found at: http://dev.rubyonrails.org/
+
+= See also =
+
+* [[Rails trac tickets]]
