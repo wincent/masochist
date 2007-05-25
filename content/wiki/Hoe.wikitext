@@ -1,0 +1,10 @@
+---
+tags: hoe
+---
+From the [http://rubyforge.org/frs/shownotes.php?group_id=1513&release_id=11840 release notes] for the latest released version ([[hoe 1.2.1]] at the time of writing):
+
+<blockquote>Hoe is a simple rake/rubygems helper for project Rakefiles. It generates all the usual tasks for projects including rdoc generation, testing, packaging, and deployment.</blockquote>
+
+= See also =
+
+* Official [[hoe]] project page: http://rubyforge.org/projects/seattlerb/
