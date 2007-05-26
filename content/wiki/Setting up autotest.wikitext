@@ -1,0 +1,32 @@
+---
+tags: ruby
+---
+An older version of these notes can be found at "[[Setting up autotest (with ZenTest versions prior to 3.6.0)]]". These notes apply to [[ZenTest 3.6.0]] or later.
+
+= Install [[autotest]] =
+
+<pre># installation
+sudo gem install ZenTest
+
+# update fast documentation index
+fastri-server -b</pre>
+
+= Set up a project for use with [[autotest]] =
+
+Unlike previous versions of [[RSpec]] and [[ZenTest]], as of [[RSpec 1.0.3]] and [[ZenTest 3.6.0]] no special setup is necessary. You can remove any <tt>rspec_autotest.rb</tt> files that you previously installed (as described in "[[Setting up autotest (with ZenTest versions prior to 3.6.0)]]").
+
+The only prerequisite is that your project should use parallel <tt>lib</tt> and <tt>spec</tt> folders.
+
+You can start [[autotest]] using:
+
+<pre>autotest</pre>
+
+= Tweaks =
+
+No special tweaks are necessary, unlike in previous versions.
+
+= See also =
+
+* For use with [[Rails]]: http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin
+* For use with non-[[Rails]] [[Ruby]] projects: http://blog.nicksieger.com/articles/2007/01/30/rspec-autotest-for-standalone-projects
+* [[ZenTest]] [[API]] docs: http://zentest.rubyforge.org/ZenTest/
