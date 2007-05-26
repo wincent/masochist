@@ -1,0 +1,66 @@
+---
+tags: ruby
+---
+These are an older version of the notes on [[setting up autotest]]. They apply to versions of [[ZenTest]] prior to [[ZenTest 3.6.0]].
+
+= Install [[autotest]] =
+
+<pre># installation
+sudo gem install ZenTest
+
+# update fast documentation index
+fastri-server -b</pre>
+
+= Set up a project for use with [[autotest]] =
+
+= Prior to [[ZenTest]] 3.5.0 =
+
+Add <tt>rspec_autotest.rb</tt> to your <tt>spec</tt> directory:
+
+<pre>cd spec
+svn export http://svn.caldersphere.net/svn/main/rspec_autotest/trunk/lib/rspec_autotest.rb
+cd ..</pre>
+
+Add the following to your <tt>Rakefile</tt>:
+
+<pre>namespace :spec do
+  task :autotest do
+    require './spec/rspec_autotest'
+    RspecAutotest.run
+  end
+end</pre>
+
+Start the autotest:
+
+<pre>rake spec:autotest</pre>
+
+Or if you really want a [[Rake]] task for the job, add this to the <tt>Rakefile</tt>:	 
+<pre>namespace :spec do	 
+  task :autotest do	 
+    system 'autotest'	 
+  end	 
+end</pre>
+
+And start using:
+
+<pre>rake spec:autotest</pre>
+
+= [[ZenTest]] 3.5.0 or later =
+
+As above but export <tt>rspec_autotest.rb</tt> one level higher (not inside the <tt>directory</tt>):
+
+<pre>svn export http://svn.caldersphere.net/svn/main/rspec_autotest/trunk/lib/rspec_autotest.rb</pre>
+
+No modifications are necessary to the <tt>Rakefile</tt>. You can start [[autotest]] using:
+
+<pre>autotest</pre>
+
+= Tweaks =
+
+Exactly the same tweak mentioned in "[[Using autotest with Rails]]" is necessary here. In <tt>rspec_autotest.rb</tt> an <tt>-s</tt> switch is passed to the <tt>spec</tt> tool, but as of [[RSpec]] version that switch has been replaced with <tt>-e</tt>.
+
+= See also =
+
+* For use with [[Rails]]: http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin
+* For use with non-[[Rails]] [[Ruby]] projects: http://blog.nicksieger.com/articles/2007/01/30/rspec-autotest-for-standalone-projects
+* [[ZenTest]] [[API]] docs: http://zentest.rubyforge.org/ZenTest/
