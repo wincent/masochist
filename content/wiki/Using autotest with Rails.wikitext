@@ -1,0 +1,46 @@
+---
+tags: rails
+---
+An older version of these notes (for use with versions of [[ZenTest]] prior to 3.6.0) can be found at "[[Using autotest with Rails (with ZenTest prior to 3.6.0)]]".
+
+Installing is considerably easier now than it was in the past. It basically consists of installing [[ZenTest]], installing [[RSpec]] and starting development. This is described in detail in the [[RSpec 1.0.3]] [http://rubyforge.org/pipermail/rspec-users/2007-May/001742.html release announcement] posted to the [[rspec-users]] mailing list.
+
+= Prerequisites =
+
+* [[ZenTest]] (see "[[Setting up autotest]]")
+* [[diff-lcs]] (already installed in my case)
+* [[RSpec]] (again, already installed in my case)
+
+= Installing the [[RSpec]] [[Rails]] plugin =
+
+At the time of writing the latest notes I've made on this subject can be found at "[[Upgrading to RSpec 1.0.3 on Mac OS X Tiger]]".
+
+== Configuration ==
+
+It is no longer necessary to customize your <tt>~/.autotest</tt> file.
+
+= Starting [[autotest]] =
+
+<pre>autotest</pre>
+
+= Tweaks =
+
+It's no longer necessary to perform any tweaks to [[ZenTest]] as in the past. First, the [[RSpec]] developers put back in the old <tt>-s</tt> switch for compatibility with [[ZenTest]]. And as of [[ZenTest 3.6.0]], inspection reveals that it has been updated to use the new <tt>-e</tt> switch anyway.
+
+= Additional [[Rails]] configuration =
+
+It was previously necessary to do some configuration as described by [[David Chelimsky]] in [http://rubyforge.org/pipermail/rspec-users/2007-May/001650.html this] [[rspec-users]] mailing list post; it was recommended to remove the following lines from the <tt>spec/spec.opts</tt> file:
+
+<pre>--format
+failing_examples:previous_failures.txt
+--example
+previous_failures.txt</pre>
+
+This prevented the tests from failing continuously when an example fails; [[autotest]] will run the specs again automatically once changes have been made. But it appears that as of [[RSpec 1.0.3]] it is no longer necessary to make this change.
+
+= See also =
+
+* [[Setting up autotest]]
+* [[Behaviour-Driven Development with Rails]]
+* Official plug-in announcement: http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin
+* "Developing a Rails model using BDD and RSpec": http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1
