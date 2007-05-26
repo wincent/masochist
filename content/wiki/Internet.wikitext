@@ -1,0 +1,4 @@
+---
+tags:
+---
+* [[Wikipedia]] article on the [[Internet]]: http://en.wikipedia.org/wiki/Internet
