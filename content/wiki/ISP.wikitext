@@ -1,0 +1,8 @@
+---
+tags:
+---
+An [[ISP]] or [[Internet Service Provider]] provides [[Internet]] connectivity to home and business users.
+
+= See also =
+
+* [[Wikipedia]] article on [[ISPs]]: http://en.wikipedia.org/wiki/ISP
