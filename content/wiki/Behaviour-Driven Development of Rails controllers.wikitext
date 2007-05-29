@@ -1,0 +1,8 @@
+---
+tags: rspec rails
+---
+Of the three components in the [[Model-View-Controller]] paradigm I think that [[controllers]] are the hardest to test in an isolated, independent fashion. This is because by definition their job is to mediate between [[views]] and [[models]]. Testing them either requires involving the other classes (good for [[integration testing]], not so good when isolated testing is your goal) or setting up potentially complicated [[mock object]] structures.
+
+= See also =
+
+* [[Independently testing models, views and controllers]]
