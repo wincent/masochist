@@ -1,0 +1,8 @@
+---
+tags: zentest ruby
+---
+[[ZenTest]] if a testing framework for [[Ruby]] written by [[Ryan Davis]].
+
+= See also =
+
+* Official page: http://www.zenspider.com/ZSS/Products/ZenTest/
