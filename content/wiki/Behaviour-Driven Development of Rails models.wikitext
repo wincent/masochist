@@ -1,0 +1,9 @@
+---
+tags: rspec rails
+---
+Unlike [[controllers]], [[models]] are fairly easy to test independently. In many cases the [[model]] is a self-sufficient object and in others the relationships with other classes can be easily simulated using [[mock objects]]; this is especially true if the relationships between [[model]] classes are kept simple, as they should be in a cleanly designed [[Rails]] application.
+
+= See also =
+
+* [[Independently testing models, views and controllers]]
+* [[Model-View-Controller]]
