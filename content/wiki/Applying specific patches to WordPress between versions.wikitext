@@ -1,0 +1,28 @@
+---
+tags: wordpress
+---
+The [[Upgrading from WordPress 2.0.7 to 2.1 using Subversion|last WordPress upgrade]] (to version 2.1) introduced a [http://trac.wordpress.org/ticket/3642 major bug] that rendered the "Manage -> Posts" section of the administration interface inoperable.
+
+The fix for the 2.1 branch is [http://trac.wordpress.org/changeset/4857 here].
+
+To apply this fix I put [http://trac.wordpress.org/changeset/4857?format=diff&new=4857 the patch] in a file <tt>~/wp-patch.diff</tt> and executed the following:
+
+<pre># check current status of install
+cd path_to_wordpress_install
+svn info
+
+# apply the patch
+sudo -u user_that_apache_runs_as patch -b -p3 &lt; ~/wp-patch.diff
+
+# inspect patch results
+svn diff
+
+# remove the backup files
+cd wp-includes
+sudo rm cache.php.orig version.php.orig</pre>
+
+I passed the <tt>-b</tt> switch to <tt>patch</tt> so that backups of the files would be made before making changes to the files, but given that I am using a [[Subversion]]-based install I could have just as easily reverted using <tt>svn revert</tt> in the event that the patching didn't work out.
+
+The <tt>-p3</tt> switch tells <tt>patch</tt> to strip three levels (<tt>/</tt>, <tt>branches/</tt> and <tt>2.1/</tt>) from the absolute path names (such as <tt>/branches/2.1/wp-includes/cache.php</tt>) in the patch file.
+
+When the time for the next upgrade comes around I am not sure if the <tt>svn switch</tt> will work given that I'll already have local changes. I may have to run <tt>svn revert</tt> beforehand, or manually resolve conflicts. ('''Update:''' I manually resolved the conflicts; see "[[Upgrading from WordPress 2.1 to 2.1.1 using Subversion]]".)
