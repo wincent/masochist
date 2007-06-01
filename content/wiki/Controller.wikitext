@@ -1,0 +1,9 @@
+---
+tags: development
+---
+A [[controller]] is one of the three components in the [[MVC]] pattern.
+
+Examples of frameworks which come with [[API]] for designing controllers out of the box include:
+
+* [[Apple]]'s [[Cocoa]] frameworks: Starting with [[Mac OS X]] 10.3 ([[Panther]]) [[Apple]] has provided the <tt>NSController</tt> class.
+* [[Rails]] provides <tt>ActionController</tt> for writing controllers; for more information see "[[Rails controllers]]".
