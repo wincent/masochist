@@ -1,0 +1,23 @@
+---
+tags: mldonkey tiger updates
+---
+These notes were made while performing the upgrade to [[mldonkey 2.8.6]] on [[Mac OS X]] [[Tiger]].
+
+<pre>wget "http://puzzle.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.8.6.tar.bz2"
+tar xjvf mldonkey-2.8.6.tar.bz2 
+cd mldonkey-2.8.6
+./configure
+make
+sudo make install</pre>
+
+= Running =
+
+<pre>/usr/local/bin/mlnet</pre>
+
+= Using the web interface =
+
+Connect to: http://localhost:4080/
+
+= Using the [[telnet]] interface =
+
+<pre>telnet localhost 4000</pre>
