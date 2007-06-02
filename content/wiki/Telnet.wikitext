@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[telnet]]: http://en.wikipedia.org/wiki/Telnet
