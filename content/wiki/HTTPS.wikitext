@@ -1,0 +1,9 @@
+---
+tags:
+---
+[[HTTPS]] is an encrypted version of the [[Hypertext Transfer Protocol]].
+
+= See also =
+
+* [[Wikipedia]] article on [[HTTPS]]: http://en.wikipedia.org/wiki/HTTPS
+* Related protocol: [[HTTP]]
