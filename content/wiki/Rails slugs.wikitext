@@ -1,0 +1,126 @@
+---
+tags: rails
+---
+= Opinions on [[Rails]] [[URLs]] and slugs =
+
+== "Transparent opaque changeable permanent URLs" ==
+
+[http://plasmasturm.org/about/ Aristotle Pagaltzis] [http://plasmasturm.org/log/358/ argues] that:
+
+* [[URLs]] should never change, and so unique id numbers in [[URLs]] are good: slugs based on titles aren't so good because the title can be edited, thus breaking the [[URL]]
+* [[URLs]] are valuable for search engine ranking, and so meaningful words in the slug are a good idea
+* These conflicting priorities can be reconciled by starting the slug with an opaque, constant component (the id) and appending a meaningiful, title-derived textual component, yielding [[URLs]] like:
+
+http://example.com/123-pink-elephants
+
+* The web application should ignore the textual component and use only the id in deciding what to render; for example, the following [[URL]] is equivalent:
+
+http://example.com/123-blue-elephants
+
+* These latter [[URLs]] should use a [[HTTP]] 301 status code (permanent redirect) to send the browser to the definitive, non-changing version of the [[URL]]
+
+== "How to get more literal URLs and still use IDs" ==
+
+The [http://weblog.rubyonrails.org/ official Rails weblog] echoes this position in [http://weblog.rubyonrails.org/2007/2/4/how-to-get-more-literal-urls-and-still-use-ids this article], where it is recommended that [[URLs]] like this one be used:
+
+http://example.com/123-blue-elephants
+
+Commenters on that post add the following opinions:
+
+* That [[URLs]] beginning with strings like <tt>123-</tt> are ugly and a [[URL]] like http://example.com/blue-elephants would be preferable
+* That a less ugly alternative is to use the id as a separate path component (as in http://example.com/123/blue-elephants); there is no problem with having two articles with the same title using this method, but searching only on the textual part of the permalink requires the textual part to be unique
+* Using the full-title to derive the slug can lead to titles that are too long
+* People are "too obsessed" with "pretty" [[URLs]] and "normal users" don't pay attention
+* There are instances ([[wikis]] for example) where "hackable" [[URLs]] add value
+
+== "SEO Optimization of URLs in Rails with to_param" ==
+
+Referenced by the above article is [http://jroller.com/page/obie?entry=seo_optimization_of_urls_in this post] by [http://jroller.com/page/obie Obie Fernandez] which explains the technical details behind getting [[URL]] permalinks to work as previously advocated.
+
+Points of interest:
+
+* [[Rails]] calls <tt>to_param</tt> when processing incoming parameters; in the case of <tt>ActiveRecord</tt> it returns the <tt>id</tt> as a string (<tt>"1"</tt>, <tt>"2"</tt> etc, or <tt>nil</tt> if no <tt>id</tt> is set yet).
+* You can therefore override the <tt>to_param</tt> method in your [[models]] to return something else other than the plain id; for example: <tt>"#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"</tt> (but note that that won't catch accented characters).
+* If you use RESTful route helpers, then this override will be picked up automatically.
+* If you instead manually construct links using <tt>link_to</tt> then you must remember to pass the model object (<tt>@user</tt>, for example) instead of just the <tt>id</tt> (<tt>@user.id</tt>) otherwise your <tt>to_param</tt> override will have no effect.
+* [[Rails]] calls <tt>to_i</tt> when searching by <tt>id</tt>, so a <tt>find</tt> message like <tt>User.find('1-john')</tt> will actually use [[SQL]] like <tt>SELECT * FROM users WHERE (users.id = 1)</tt>.
+
+Commenters add:
+
+* A normalizer for converting to [[ASCII]] prior to auto-generating slugs: http://www.ruby-forum.com/topic/94688
+* [http://jroller.com/page/obie?entry=seo_optimization_of_urls_in#comment10 Normalization] using the [[Unicode]] module
+
+== "URLs on Rails" ==
+
+[http://www.notsostupid.com/blog/2006/07/07/urls-on-rails/ This] is an older article by [http://www.zonageek.com/ Sebastian Delmont] on the subject, linked to by Obie Fernandez.
+
+Nothing new to see there, although the commenters do provide a couple of ways of handling accented characters in the textual portion of the slug:
+
+* Using an [http://www.notsostupid.com/blog/2006/07/07/urls-on-rails/#comment-4373 explicit lookup and substitution]
+* Using <tt>CGI::escape</tt>: http://pastie.textmate.org/66219
+
+== "Search Engine Friendly URLs with Ruby on Rails" ==
+
+[http://gabrito.com/post/search-engine-friendly-urls-in-rails A summary] of approaches and plug-ins for implementing so-called "search engine friendly" [[URLs]]:
+
+* acts_as_sluggable: http://tore.darell.no/pages/5-acts-as-sluggable
+* acts_as_urlnameable: http://gabriel.gironda.org/articles/2006/03/09/acts_as_urlnameable-released
+* acts_as_slugable: http://multi-up.ca/code/
+* acts_as_friendly_param: http://www.chrisfarms.com/2007/2/11/seo-friendly-urls-in-rails
+* permalink_fu: http://mephistoblog.com/2007/1/14/improved-url-escaping-for-permalinks
+
+== "Even better looking URLs with permalink_fu" ==
+
+Source: http://www.seoonrails.com/even-better-looking-urls-with-permalink_fu
+
+== "SEO for Ruby on Rails" ==
+
+Source: http://www.tonyspencer.com/2007/01/26/seo-for-ruby-on-rails/
+
+== "Blank Slate" ==
+
+While not specifically related to [[Rails]], [[John Gruber]] has [http://daringfireball.net/2007/03/blank_slate this to say] on slugs:
+
+<blockquote>Yes, even URLs are designed. When I started DF in August 2002, nearly all Movable Type-powered weblogs used URLs such as: http://example.com/archives/003495.html, where the number is a unique sequential identifier for each entry generated by Movable Type. Almost nothing in such URLs is useful.
+
+* The word “archives” is superfluous.
+* The number is meaningful only to the software, not to the reader. Additionally, this structure makes it difficult to switch to different software while continuing to use the same URLs.
+* The .html extension is unsightly and needless.
+
+DF’s article URLs look like this: /2007/03/blank_slate, following a very simple and self-evident pattern: /year/month/slug. I considered the perhaps more obvious /year/month/date/slug, but decided against it. Including the day of the month would add three extra characters to each URL, and add very little useful information – monthly granularity is good enough in the long run for a web site where I seldom publish more than one article on any given day (unless I wished to repeat the same slug line within the same month, which strikes me as counter to the purpose of including a slug within the URL). The year, month, and slug provide useful context – just by looking at the URL alone, you know when it was written and perhaps have a rough idea what it is about. I can usually look at one of DF’s URLs and remember which specific article it refers to.</blockquote>
+
+= My take =
+
+I personally don't like [[URLs]] which jam together an opaque identifier and a human-readable slug. I think they're ugly. When I first saw [[URLs]] of this type, I thought, "Who was this designed for? A computer or a human being?"; in trying to simultaneously please both target audiences these [[URLs]] only succeed in looking unclean.
+
+I am also wary because implementing such [[URLs]] requires knowledge of an internal implementation detail in [[Rails]]; if [[Rails]] changes in the future you may need to jump through hoops to get your [[URLs]] working again.
+
+This last reason alone is enough to stop me from implementing these "[[SEO]]-friendly" [[URLs]], although admittedly the fact that [[37signals]] uses them (example, http://www.37signals.com/svn/posts/247-calling-all-basecamp-customers-in-nyc-or-chicago) makes it unlikely that [[Rails]] will be introducing a breaking change in the future.
+
+Above all, I have a lot of faith in [[Google]]'s ability to index the best content without needing keywords in the [[URL]] to locate it; there are plenty of other ways in which you can make your pages easy to index that don't require you making uncomfortable compromises about your [[URL]] design.
+
+So given a choice between numeric IDs and number-plus-text, I will opt for numeric IDs. Take [http://gabrito.com/post/search-engine-friendly-urls-in-rails this post] for example, where the author sustains that this:
+
+http://gearandboats.com/forums/1-boats/topics/51-fantasia-35-mark-ii-cruiser
+
+Is an improvement over this:
+
+http://gearandboats.com/forums/1/topics/51
+
+I personally think the latter is much, much better. Dynamic, user-provided content like forums really isn't a field that I consider ripe for [[search engine optimization]].
+
+I also agree with John Gruber that every element of the site should be designed, and that includes the slugs. This especially applies to things like [[weblog]] posts; unlike forums, [[weblog]] posts should have some kind of permanence. I don't think the slug should be automatically generated; I think the user should take some time thinking about what they want it to be (and so the threat of your [[URLs]] changing goes away).
+
+So for me I think the optimal solution is:
+
+* Use numeric IDs in your [[URLs]].
+* Allow the user to tailor a textual slug if he or she so desires; this should only be in appropriate sections of your site (weblog posts) and only when the user wants to take the time to do it.
+* Textual slugs should be optional.
+* Textual slugs should be unique.
+* Textual slugs should be permanent.
+
+I also don't care too much about [[SEO]]. I believe that if your content is good then you'll get a high ranking. But I do think it is important to strive for human readable [[URLs]] on important articles (stuff that you expect to get linked to a lot) because many humans will mouse over a link and make a decision about whether to click on it based on what they see the destination [[URL]] is.
+
+== Implementation details ==
+
+The solution I'm recommending here requires that [[models]] with slugs should have a slug column in the database. The slug should be guaranteed unique in that model. The model should have a <tt>to_param</tt> method that returns the slug if it is available, otherwise falls back to the <tt>id</tt>. The model should have a <tt>find_by_id_or_slug</tt> method (or similar) so that both numeric and slug-based [[URLs]] will automatically work. This could fairly easily be factored into a plug-in for use by multiple models. Ideally, because you want your slugs to be permanent, only the superuser should be allowed to change them once set. Similarly, it would be nice to have a mechanism to redirect from old slugs to new slugs in the event of a change (once again the uniqueness requirement would dictate that no old slug names collided with any current slug names).
