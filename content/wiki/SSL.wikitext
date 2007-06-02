@@ -1,0 +1,19 @@
+---
+tags: ssl
+---
+[[SSL]] or [[Secure Sockets Layer]] is a mechanism for encrypted network transport.
+
+== See also ==
+
+* [[Wikipedia]] article on [[SSL]]: http://en.wikipedia.org/wiki/Transport_Layer_Security
+* My "[[SSL certificate renewal notes]]"
+
+== Tools ==
+
+* Server & certificate diagnostics: https://www.ssllabs.com/ssltest/
+
+== Resellers ==
+
+* http://www.rapidsslonline.com/rapidssl-certificates.php
+* https://www.servertastic.com/rapidssl/: the cheapest I've found ($10 per year for normal certificates, $135.20 per year for wildcard certificates)
+* http://certificatesforexchange.com/: cheapest I've seen for [[SAN]] certificates
