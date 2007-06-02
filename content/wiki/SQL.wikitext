@@ -1,0 +1,8 @@
+---
+tags: mysql development
+---
+[[SQL]] or [[Structured Query Language]] is a database language used by [[MySQL]] and many other databases.
+
+= See also =
+
+* [[Wikipedia]] article on [[SQL]]: http://en.wikipedia.org/wiki/SQL
