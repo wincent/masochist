@@ -1,0 +1,4 @@
+---
+tags: apple
+---
+[[John Gruber]] is the author of the popular, [[Apple]]-centric [[weblog]], [[Daring Fireball]].
