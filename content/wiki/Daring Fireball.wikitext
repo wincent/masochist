@@ -1,0 +1,4 @@
+---
+tags: apple
+---
+[[Daring Fireball]] is a popular, [[Apple]]-centric [[weblog]] written by [[John Gruber]]. It can be found at: http://daringfireball.net/
