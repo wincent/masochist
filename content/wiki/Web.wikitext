@@ -1,0 +1,3 @@
+---
+redirect: [[World Wide Web]]
+---
