@@ -1,0 +1,8 @@
+---
+tags:
+---
+The [[World Wide Web]], or simply the [[web]], is the collection of pages and media accessible over the [[Internet]] using the [[HTTP]] or [[HTTPS]] protocols.
+
+= See also =
+
+* [[Wikipedia]] article on the [[web]]: http://en.wikipedia.org/wiki/World_Wide_Web
