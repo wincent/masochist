@@ -1,0 +1,9 @@
+---
+tags:
+---
+[[HTTP]] stands for [[Hypertext Transfer Protocol]].
+
+= See also =
+
+* [[Wikipedia]] article on [[HTTP]]: http://en.wikipedia.org/wiki/HTTP
+* Related protocol: [[HTTPS]]
