@@ -1,0 +1,29 @@
+---
+tags: acl
+---
+= [[Linux]] =
+
+* Example of [[ACLs]] in action on [[Linux]]: "[[Git repository access control]]"
+
+= [[Mac OS X]] =
+
+To show existing ACLs on an entity, e.g `foo`:
+
+<pre lang="shell">$ ls -le foo</pre>
+
+To add an item to the ACL for `foo`:
+
+<pre lang="shell">$ chmod +a 'username:allow read,write' foo</pre>
+
+For a full list of possible perimissions, see [http://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man1/chmod.1.html the Mac OS X chmod man page].
+
+For a concerete example of setting up ACLs on Mac OS X, see "[[Installing nginx 0.8.54 on Mac OS X 10.6.6 Snow Leopard]]".
+
+== Links ==
+
+* Review of ACL functionality introduced in Mac OS X [[Tiger]]: http://arstechnica.com/apple/reviews/2005/04/macosx-10-4.ars/8
+* Nice walkthrough of using ACLs on Mac OS X: http://aplawrence.com/MacOSX/acl.html
+
+= See also =
+
+* [[Wikipedia]] article on [[ACLs]]: http://en.wikipedia.org/wiki/Access_control_list
