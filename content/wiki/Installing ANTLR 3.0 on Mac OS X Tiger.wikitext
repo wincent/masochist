@@ -1,0 +1,25 @@
+---
+tags: tiger antlr
+---
+Having downloaded the [[ANTLR 3.0]] distribution (<tt>antlr-3.0.tar.gz</tt>) from the [[ANTLR]] website, installation is straightforward.
+
+<pre>tar xzvf antlr-3.0.tar.gz
+
+# move expanded archive into position
+sudo mv antlr-3.0 /usr/local/
+
+# remove old symbolic link
+cd /usr/local/
+sudo rm -f antlr
+
+# set up new symbolic link
+sudo ln -s antlr-3.0 antlr</pre>
+
+To actually use [[ANTLR]] the jars must be in your classpath:
+
+<pre>export CLASSPATH="/usr/local/antlr/lib/antlr-3.0.jar"
+export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar" 
+export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-runtime-3.0.jar"
+export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar"</pre>
+
+These <tt>export</tt> statements can be added to your <tt>~/.bash_profile</tt> if you plan on using [[ANTLR]] often.
