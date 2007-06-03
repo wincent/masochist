@@ -1,0 +1,8 @@
+---
+tags: scriptaculous javascript
+---
+[[Scriptaculous]] is an easy-to-use [[JavaScript]] library for adding [[AJAX]] functionality to modern [[web]] applications. Personally, I much prefer using an [[Unobtrusive JavaScript]] approach with the aid of [[jQuery]].
+
+= Official site =
+
+* http://script.aculo.us/
