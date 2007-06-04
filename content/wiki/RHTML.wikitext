@@ -1,0 +1,6 @@
+---
+tags: rails
+---
+= See also =
+
+* [[Wikipedia]] article on [[RHTML]]: http://en.wikipedia.org/wiki/RHTML
