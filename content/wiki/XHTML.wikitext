@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[XHTML]]: http://en.wikipedia.org/wiki/XHTML
