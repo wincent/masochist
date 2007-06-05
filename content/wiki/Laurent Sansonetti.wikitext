@@ -1,0 +1,8 @@
+---
+tags: rubycocoa
+---
+[[Laurent Sansonetti]] is the maintainer of the [[RubyCocoa]] project and the principal [[Apple]] employee involved in preparing [[RubyCocoa]] for integration with [[Mac OS X]] [[Leopard]].
+
+= See also =
+
+* [[Laurent Sansonetti]]'s [[weblog]]: http://chopine.be/lrz/diary
