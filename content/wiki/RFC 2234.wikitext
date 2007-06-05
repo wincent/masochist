@@ -1,0 +1,10 @@
+---
+tags: rfcs
+---
+[[RFC 2234]] is an [[RFC]] describing the "Augmented BNF for Syntax Specifications: ABNF".
+
+[[ABNF]] is widely used, including in other [[RFCs]] (such as [[RFC 2822]] and [[RFC 3986]], for example).
+
+= See also =
+
+* Full text of [[RFC 2234]]: http://www.ietf.org/rfc/rfc2234.txt
