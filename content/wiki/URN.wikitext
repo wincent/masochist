@@ -1,0 +1,14 @@
+---
+tags:
+---
+A [[URN]] or [[Uniform Resource Name]] is a special subclass of [[URI]]. For example, a book's [[ISBN]] number can be written as a [[URN]] like <tt>urn:isbn:0451450523</tt>.
+
+= See also =
+
+* [[Wikipedia]] article on [[URNs]]: http://en.wikipedia.org/wiki/Uniform_Resource_Name
+
+= Related [[RFCs]] =
+
+* [[RFC 1737]] ("Functional Requirements for Uniform Resource Names")
+* [[RFC 2141]] ("URN Syntax")
+* [[RFC 3986]] ("Uniform Resource Identifier (URI): Generic Syntax")
