@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 2141]] is a [[RFC]] titled, "URN Syntax".
+
+= See also =
+
+* [[URN]]
