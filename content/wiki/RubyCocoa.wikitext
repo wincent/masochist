@@ -1,0 +1,14 @@
+---
+tags: rubycocoa
+---
+[[RubyCocoa]] is the [[Ruby]]-[[Cocoa]] scripting bridge that will be officially supported in and included with [[Mac OS X]] [[Leopard]].
+
+= Official resources =
+
+* Official [[RubyCocoa]] website: http://rubycocoa.sourceforge.net/
+* [[SourceForge]] project page: http://sourceforge.net/projects/rubycocoa
+
+= Other sites =
+
+* [[Laurent Sansonetti]]'s ([[Apple]] employee and [[RubyCocoa]] maintainer) [[weblog]]: http://chopine.be/lrz/diary
+* http://www.rubycocoa.com/
