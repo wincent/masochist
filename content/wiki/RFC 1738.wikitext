@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 1738]] is an [[RFC]] describing [[Uniform Resource Locators]] ([[URLs]]).
+
+= See also =
+
+* Full text of [[RFC 1738]]: http://www.ietf.org/rfc/rfc1738.txt
