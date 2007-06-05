@@ -1,0 +1,10 @@
+---
+tags:
+---
+A [[URI]] or [[Uniform Resource Identifier]] is a string that identifies a resource. A [[URI]] may be considered a [[URL]], a [[URN]], or both.
+
+= See also =
+
+* [[Wikipedia]] article on [[URIs]]: http://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+* [[RFC 3986]] ("Uniform Resource Identifier (URI): Generic Syntax")
+* [[RFC 1630]] ("Universal Resource Identifiers in WWW")
