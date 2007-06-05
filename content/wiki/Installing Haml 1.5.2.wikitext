@@ -1,0 +1,83 @@
+---
+tags: haml
+---
+These notes were made while installing [[Haml]] for the first time.
+
+= Installing =
+
+The [http://haml.hamptoncatlin.com/download/ official Haml download page] states that [[Haml]] can be installed from the top-level of an existing [[Rails]] application by executing this command:
+
+<pre>script/plugin install http://svn.hamptoncatlin.com/haml/tags/stable</pre>
+
+This command, however, results in the plug-in being installed in a folder called <tt>stable</tt> when it really should be called <tt>haml</tt>. So I instead installed as follows:
+
+<pre>svn export http://svn.hamptoncatlin.com/haml/tags/stable vendor/plugins/haml</pre>
+
+My bug report for this posted to the [http://groups.google.com/group/haml Haml Google group] can be found [http://groups.google.com/group/haml/t/9852907f142ebd8d here]. [http://unspace.ca/discover/haml/ This page] suggests that an alternative which might work would be:
+
+<pre># use undocumented optional target name parameter
+script/plugin install http://svn.hamptoncatlin.com/haml/tags/stable haml</pre>
+
+Out of curiosity I tried that out and as of [[Rails]] 1.2.3 it no longer works:
+
+<pre>Plugin not found: ["http://svn.hamptoncatlin.com/haml/tags/stable", "haml"]</pre>
+
+= First template conversion =
+
+I started off by taking a simple [[view]] template, <tt>index.rhtml</tt>:
+
+<pre><% for user in @users %>
+<div id="userlist">
+  <div class="<%= cycle('odd', 'even') %>">
+    <div class="label"><%= _('Login name:') %></div>
+    <div class="info"><%=h user.login_name %></div>
+    <div class="label"><%= _('Display name:') %></div>
+    <div class="info"><%=h user.display_name %></div>
+    <div class="label"><%= _('Email address:') %></div>
+    <div class="info"><%=h user.email_address %></div>
+  </div>
+</div>
+<% end %></pre>
+
+And converting it to [[Haml]]:
+
+<pre>- for user in @users
+  #userlist
+    %div{:class => cycle('odd', 'even')}
+      .label= _('Login name:')
+      .info= h user.login_name
+      .label= _('Display name:')
+      .info= h user.display_name
+      .label= _('Email address:')
+      .info= h user.email_address</pre>
+
+The [[Haml]] version is 3 lines shorter, and its character count is 269 (compared with 439 for the original version).
+
+It is easy to migrate to [[Haml]] because [[Haml]] templates coexist with [[RHTML]] templates. In the current example the <tt>index.haml</tt> file will be used, if present, otherwise [[Rails]] will fall back to <tt>index.rhtml</tt>. If the changes don't work out, you can easily switch back to [[RHTML]].
+
+Because I'm doing [[Behaviour-Driven Development]] using [[RSpec]] I was able to immediately confirm that the output continues to pass all [[specs]]; this is again confirmed by visual inspection of the output:
+
+<pre><div id='userlist'>
+  <div class='odd'>
+    <div class='label'>Login name:</div>
+    <div class='info'>example login name 1</div>
+    <div class='label'>Display name:</div>
+    <div class='info'>example display name 1</div>
+    <div class='label'>Email address:</div>
+    <div class='info'>example email address 1</div>
+  </div>
+</div>
+<div id='userlist'>
+  <div class='even'>
+    <div class='label'>Login name:</div>
+    <div class='info'>example login name 2</div>
+    <div class='label'>Display name:</div>
+    <div class='info'>example display name 2</div>
+    <div class='label'>Email address:</div>
+    <div class='info'>example email address 2</div>
+  </div>
+</div></pre>
+
+= See also =
+
+* [[Installing the Haml TextMate bundle]]
