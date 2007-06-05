@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 1737]] is an [[RFC]] titled, "Functional Requirements for Uniform Resource Names".
+
+= See also =
+
+* [[URNs]]
