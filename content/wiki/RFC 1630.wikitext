@@ -1,0 +1,9 @@
+---
+tags: rfcs
+---
+[[RFC 1630]], or "Universal Resource Identifiers in WWW", is an [[RFC]] proposing the formalization of a distinction between [[URLs]], [[URIs]] and [[URNs]].
+
+= See also =
+
+* Full text of [[RFC 1630]]: http://www.ietf.org/rfc/rfc1630.txt
+* [[Wikipedia]] article on [[URIs]]: http://en.wikipedia.org/wiki/Uniform_Resource_Identifier
