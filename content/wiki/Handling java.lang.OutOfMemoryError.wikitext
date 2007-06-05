@@ -1,0 +1,14 @@
+---
+tags: antlr java
+---
+While working on an [[ANTLR]] lexer for recognizing [[RFC 3986]]-compliant [[URIs]] I ran into the following error:
+
+<pre>Exception in thread "main" java.lang.OutOfMemoryError: Java heap space</pre>
+
+[http://hausheer.osola.com/docs/5 This page] reveals how to increase the heap limits; in the following example I pass use the <tt>-Xms</tt> switch to set the starting heap size to 32 MB, and the <tt>-Xmx</tt> switch to set the maximum heap size to 512 MB:
+
+<pre>java -Xms32m -Xmx512m org.antlr.Tool RFC3986.g</pre>
+
+It turns out that no amount of memory I can throw at [[ANTLR]] allows it to successfully complete, and I suspect the likely cause is something in my grammar provoking an infinite loop. My post to the [[ANTLR]] mailing list asking about how to troubleshoot this further can be found [http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021088.html here].
+
+So even though the <tt>-Xms</tt> and <tt>-Xmx</tt> switches didn't help me in this case, I think they're important things to have in your [[Java]] toolbox.
