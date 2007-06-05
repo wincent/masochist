@@ -1,0 +1,6 @@
+---
+tags: python
+---
+[[Python]] is a (mostly) [[object-oriented]], dynamic programming language, sometimes referred to as a scripting language, that is both popular and powerful.
+
+It comes with [[Mac OS X]], along with [[Ruby]].
