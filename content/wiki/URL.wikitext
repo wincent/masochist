@@ -1,0 +1,12 @@
+---
+tags:
+---
+A [[URL]] is a [[Uniform Resource Locator]]. "Officially", the term [[URI]] is recommended for most [[web]] applications because it is a "generic term best suited to the concept", but in reality [[URL]] is used almost exclusively among users of the [[web]], partly because the term has been in use for longer than [[URI]] and partly because for all practical purposes almost all [[URIs]] on the web are [[URLs]] (a [[URL]] is a specific class of [[URI]]; the other is a [[URN]]).
+
+= See also =
+
+* [[Wikipedia]] article on [[URLs]]: http://en.wikipedia.org/wiki/URL
+* [[RFC 1738]] ("Uniform Resource Locators (URL)")
+* [[RFC 1630]] ("Universal Resource Identifiers in WWW")
+* [[RFC 3986]] ("Uniform Resource Identifier (URI): Generic Syntax")
+* [[RFC 3305]] ("Report from the Joint W3C/IETF URI Planning Interest Group: Uniform Resource Identifiers (URIs), URLs, and Uniform Resource Names (URNs): Clarifications and Recommendations")
