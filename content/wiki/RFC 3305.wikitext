@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 3305]] is an [[RFC]] titled, "Report from the Joint W3C/IETF URI Planning Interest Group: Uniform Resource Identifiers (URIs), URLs, and Uniform Resource Names (URNs): Clarifications and Recommendations".
+
+= See also =
+
+* Full text of [[RFC 3305]]: http://www.ietf.org/rfc/rfc3305.txt
