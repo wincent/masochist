@@ -1,0 +1,16 @@
+---
+tags: parsetree
+---
+The new version of [[ParseTree]], [[ParseTree 1.7.1]], was released on 5 June 2007.
+
+= Changes =
+
+* 3 bug fixes:
+** Add [[zentest]] as a heckle dependency. Closes #10996
+** Fixed heckling of call with blocks.
+** Fix test_unit_heckler's test_pass? so it returns the result of the run rather than ARGV.clear
+
+= See also =
+
+* Official [[weblog]] announcement by the author ([[Ryan Davis]]): http://blog.zenspider.com/archives/2007/06/parsetree_version_171_has_been_released.html
+* [[RubyForge]] release notes: http://rubyforge.org/frs/shownotes.php?release_id=12194
