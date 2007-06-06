@@ -1,0 +1,8 @@
+---
+tags: ruby
+---
+[[Ryan Davis]] is the author of [[ZenTest]], [[ruby2ruby]], [[ParseTree]] and [[Heckle]], among other things.
+
+= See also =
+
+* [[Ryan Davis]]' [[weblog]]: http://zenspider.com/
