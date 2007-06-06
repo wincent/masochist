@@ -1,0 +1,10 @@
+---
+tags: parsetree
+---
+From the [http://blog.zenspider.com/archives/2007/06/parsetree_version_171_has_been_released.html description] by the author ([[Ryan Davis]]):
+
+<blockquote>ParseTree is a C extension (using RubyInline) that extracts the parse tree for an entire class or a specific method and returns it as a s-expression (aka sexp) using ruby's arrays, strings, symbols, and integers.</blockquote>
+
+= See also =
+
+* Official [[ParseTree]] page: http://zenspider.com/ZSS/Products/ParseTree/index.html
