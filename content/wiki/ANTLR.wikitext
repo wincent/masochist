@@ -1,0 +1,16 @@
+---
+tags: antlr
+---
+[[ANTLR]] is a free parser generator.
+
+= Official site =
+
+* http://antlr.org/
+
+= Documentation =
+
+See the [[ANTLR book]].
+
+== Third-party articles ==
+
+* A nice article on using [[ANTLR]] with [[Xcode]], although it is for the previous version of [[ANTLR]]: http://homepage.mac.com/gerard_iglesias/ANTLRWithXcode-Part-1/Text.html
