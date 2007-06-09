@@ -1,0 +1,8 @@
+---
+tags: ruby
+---
+[[Kevin Clark]] is the author of [[mkrf]].
+
+= See also =
+
+* [[Kevin Clark]]'s [[weblog]]: http://glu.ttono.us/
