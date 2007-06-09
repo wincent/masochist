@@ -1,0 +1,152 @@
+---
+tags: antlr
+---
+Here are some "quickstart" notes made while learning [[ANTLR]]. Mostly stuff that I needed to know coming from experience with [[Walrus]] (which uses a custom [[Ruby]] [[DSL]] to define [[Parsing Expression Grammars]]), and [[Ragel]] (which creates state machines).
+= Installation =
+
+<pre>wget http://www.antlr.org/download/antlr-3.0b7.tar.gz
+sudo mv antlr-3.0b7.tar.gz /usr/local
+cd /usr/local
+sudo tar xzvf antlr-3.0b7.tar.gz
+sudo rm antlr-3.0b7.tar.gz
+sudo ln -s antlr-3.0b7 antlr</pre>
+
+To use the [[C language target]] some additional set-up is required (see "[[C language target (ANTLR)]]").
+
+= Overview =
+
+* Grammar name must match the file name (case sensitive):
+
+<pre>grammar Walrus; /* file must be named Walrus.g */</pre>
+
+= Lexing and parsing =
+
+The lexer and the parser are not unified even though they are (often) declared in the same file; the lexing phase is completely separate from the parsing phase.
+
+This was actually fairly difficult for me to get a grip on because I came from working with [[Walrus]], where the parser and the lexer are effectively merged into a single step.
+
+To illustrate the difficulty, consider how the characters <tt>hello</tt> might be an identifier, but if found inside a string literal (for example, <tt>"foo hello bar"</tt> they are just part of the literal. Now, it is possible to make complex lexer rules which recognize things like string literals, and by carefully ordering them ensure that tokens are correctly identified.
+
+But the lexer produces a linear (one-dimensional) stream of tokens and you want your parser to produce a tree. To go further with our example, you don't want a single "string literal" token because in reality a string literal may possess a tree-like structure; for example, <tt>"foo\n#{bar}"</tt> might be broken down to:
+
+* String literal
+** Raw text
+** Escape sequence
+** Interpolated variable (which may itself have a tree-like structure
+
+Or at the very least as more than one token, some of which may not be passed on to the parser (the delimiters, for instance):
+
+# String literal delimiter (<tt>"</tt>)
+# Raw text (<tt>foo</tt>)
+# Escape sequence (<tt>\n</tt>)
+# Interpolated variable start delimiter (<tt>#{</tt>)
+# Interpolated variable (<tt>bar</tt>)
+# Interpolated variable end delimiter (<tt>}</tt>)
+# String literal delimiter (<tt>"</tt>)
+
+So in order to recognize this kind of structure, the lexer ends up taking on parser-like (structure recognition) responsibilities but only in order to produce linear stream of tokens. The parser then has to do the actual transformation into a tree representation, and that starts to sound like duplication of effort.
+
+The answer may be to use syntactic predicates (see http://www.doc.ic.ac.uk/lab/secondyear/Antlr/lexer.html for a [[ANTLR]] version 2 discussion on the topic). These allow the lexer to have some notion of scope (ie. where it is in the structure of the input) and hence whether <tt>foo</tt> should be classified as an identifier, or raw text, or something else. The alternative is to have the lexer do less (identify few tokens) and let most of this stuff be done in the parser.
+
+== Lexer rules ==
+
+* Recognize terminal symbols (tokens which describe the input linearly).
+* Start with a capital letter:.
+
+<pre>IDENTIFIER : ('a'..'z' | '_')('a'..'z' | 'A'..'Z' | '0'..'9' | '_')* ;</pre>
+
+* Operate at the character level: the input stream is a stream of characters.
+* Do not contain whitespace: that is, <tt>'a' 'b'</tt> matches <tt>ab</tt>.
+* May refer to other lexer rules:
+
+<pre>INSTANCE_VARIABLE : '@' IDENTIFIER ;</pre>
+
+* May ''not'' refer to parser rules.
+
+* Precedence is determined by order in which they appear:
+
+<pre>FOO : 'a'..'z'+; // FOO gobbles up everything because it appears first
+BAR : 'a'..'f'+; // BAR can never match anything
+// note that ANTLR will generate a warning here: "The following token definitions are unreachable: BAR"
+
+// change the order and ANTLR will not longer warn
+BAR : 'a'..'f'+;
+FOO : 'a'..'z'+;
+
+// note that ordering is irrelevant in a case like this
+FOO : 'aaaa'; // ANTLR will greedily match this if it can
+BAR : 'aaa'; // but can still match this if only three "a" characters present</pre>
+
+* The <tt>fragment</tt> keyword marks rules which are included only by reference in other rules:
+
+<pre>fragment FOO = '0'..'9'+;
+NUM = '(' FOO ')'; # produces a single token
+
+# the above is equivalent to writing
+NUM = '(' '0'..'9'+ ')';</pre>
+
+The method for recognizing <tt>FOO</tt> will still exist separately in the lexer, but it will only be called from within the <tt>NUM</tt> rule.
+
+* Can override the textual content of an emitted token using the <tt>setText()</tt> method (this for the Java target, I don't yet know the equivalent technique in the C target); the related <tt>!</tt> operator which was available in [[ANTLR]] 2 does not appear to be available in version 3 (see http://www.antlr.org:8080/pipermail/antlr-interest/2007-April/020280.html):
+
+<pre>fragment ESCAPED_HASH : BACKSLASH! HASH { setText("#"); };</pre>
+
+* As a convenience, you can implicitly define lexer rules in the parser:
+
+<pre># this is a parser rule with a literal string in it
+# the literal string corresponds to an implicitly-defined "anonymous" lexer rule
+foo: bar '+' baz;</pre>
+
+== Parser rules ==
+
+* Recognize non-terminal symbols (describes the tree structure of the input).
+* May refer to lexer rules:
+
+<pre>single_line_comment : '##' ~(NEWLINE | EOF)* (NEWLINE | EOF) ;</pre>
+
+* May refer to other parser rules:
+
+<pre>comment	: 	single_line_comment
+	|	multi_line_comment ;</pre>
+
+* The <tt>EOF</tt> token may be used to match the end-of-file.
+
+* A dot is a wildcard for "any token", ''not'' "any character"
+
+<pre>multi_line_comment
+	:	'#*' (options { greedy = false; } : .)* '*#'
+	;</pre>
+
+* Operate at the token level: the input stream is a stream of tokens.
+* Do expect their input tokens to be separated (typically by whitespace): that is, <tt>'a' 'b'</tt> matches <tt>a b</tt>.
+* You can define "rule local" temporary variables to refer to elements in the rule:
+
+<pre>// here the result of a subrule expression is assigned to "e";
+// it can then be referenced in actions using "$e": 
+escape_sequence
+    : e=(ESCAPED_HASH | ESCAPED_DOLLAR | ESCAPED_BACKSLASH)
+    { System.out.println("PARSER: escape sequence " + $e.text); }</pre>
+
+== Using the <tt>filter</tt> option ==
+
+<pre>options {
+  filter = true;
+}</pre>
+
+<tt>filter</tt> only applies to lexers. Using it effectively precludes you from using a parser at the same time (as [[Terence Parr]] [http://www.antlr.org:8080/pipermail/antlr-interest/2007-May/020942.html explains here]). I've tried using a parser and a lexer at the same time in this case; the parser "works" and calls the lexer, but <tt>@after</tt> and action blocks are not executed, making it next to impossible to created a useful parser.
+
+= Using the C language target =
+
+The [[C]] language target doesn't yet seem to be documented and there are no examples, so I've made some notes on its use that I've cobbled together from experimenting and reading mailing list posts:
+
+* [[C language target (ANTLR)]]
+
+= Island parsers =
+
+[http://svn.perl.org/viewcvs/parrot/trunk/languages/plumhead/src/antlr3/Plumhead.g?view=markup An alternative to island parsers using gated semantic predicates].
+
+= See also =
+
+* An excellent tutorial, unfortunately written for [[ANTLR]] 2: http://javadude.com/articles/antlrtut/
+* [[ANTLR command line options]]
+* Incredibly useful [[ANTLR]]-centric glossary covering a large number of terms and concepts related to [[lexing]] and [[parsing]]: http://www.antlr.org/doc/glossary.html
