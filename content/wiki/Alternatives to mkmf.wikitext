@@ -1,0 +1,25 @@
+---
+tags: ruby
+---
+In this article I describe a couple of the alternatives to [[mkmf]] that I learnt about while exploring some questions about [[mkmf]]. The questions were:
+
+* "Doing rake-like stuff with mkmf?": http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/6c11ef6b608e03d8/
+* "Forcing mkmf to use static libraries instead of dynamic ones": http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/7342fead8ff64c59/
+
+= [[mkrf]] =
+
+[[mkrf]] is a replacement for [[mkmf]] written by [[Kevin Clark]]. It was a [[Google]] Summer of Code project in 2006. It creates [[Rakefiles]] instead of [[Makefiles]].
+
+* [[RubyForge]] project page: http://rubyforge.org/projects/mkrf/
+* Podcast demonstrating [[mkrf]] basics: http://podcast.sdruby.com/podcasts/003_mkmf.m4v
+* http://www.oreillynet.com/ruby/blog/2006/06/mkmf_mkrf.html
+
+The author has stated that he'd like to see [[mkrf]] absorbed into [[Rake]] itself. At the time of writing, the latest release of [[mkrf]] is version 0.2.1 (released 14 April 2007).
+
+= [[mkmf2]] =
+
+[[mkmf2]] also aims to replace [[mkmf]] but still creates [[Makefiles]] (not [[Rakefiles]]).
+
+* Official project page: http://mkmf2.rubyforge.org/
+* [[RDoc]] documentation: http://mkmf2.rubyforge.org/doc/
+* [[RubyForge]] project page: http://rubyforge.org/projects/mkmf2/
