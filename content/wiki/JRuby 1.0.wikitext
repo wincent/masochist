@@ -1,0 +1,4 @@
+---
+tags: jruby
+---
+[[JRuby 1.0]] was released on 10 June 2007. I discovered this [http://www.rubyinside.com/jruby-10-released-522.html here]. This is a fairly big deal, as it goes some way towards addressing many critics' (justified) claims that [[Rails]] doesn't scale.
