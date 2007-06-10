@@ -1,0 +1,4 @@
+---
+tags: java
+---
+[[JUnit]] is a [[unit testing]] framework for [[Java]]. I had to install it for the first time in order to [[rebuild ANTLR]].
