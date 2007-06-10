@@ -1,0 +1,3 @@
+---
+redirect: [[Frequently Asked Question]]
+---
