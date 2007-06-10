@@ -1,0 +1,9 @@
+---
+tags: jruby
+---
+[[JRuby]] is a [[Ruby]] interpreter written in [[Java]].
+
+= See also =
+
+* Current official [[JRuby]] site: http://jruby.codehaus.org/
+* Previous official [[JRuby]] site: http://jruby.sourceforge.net/
