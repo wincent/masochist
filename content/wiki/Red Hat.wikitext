@@ -1,0 +1,4 @@
+---
+tags: red.hat
+---
+[[Red Hat]] is a commercial [[Linux]] vendor. They are the creators of [[Red Hat Enterprise Linux]], among other things.
