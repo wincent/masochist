@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[Linux]] is a popular [[open source]] operating system kernel. The term "[[Linux]]" is often used to refer to the entire operating system, not just the kernel, although strictly speaking the term [[GNU/Linux]] would be more appropriate given that the vast bulk of the operating system comprises [[GNU]] software.
+
+= See also =
+
+* [[Wikipedia]] article on [[Linux]]: http://en.wikipedia.org/wiki/Linux
