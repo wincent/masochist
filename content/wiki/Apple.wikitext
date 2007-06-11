@@ -1,0 +1,8 @@
+---
+tags: apple
+---
+[[Apple]] are the makers of [[Mac OS X]], the best desktop operating system in the world.
+
+= See also =
+
+* Official [[Apple]] website: http://apple.com/
