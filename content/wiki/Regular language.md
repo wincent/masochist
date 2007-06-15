@@ -1,0 +1,6 @@
+---
+redirect: [[Regular languages]]
+tags: 
+---
+
+
