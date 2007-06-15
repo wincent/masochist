@@ -1,0 +1,8 @@
+---
+tags:
+---
+A [[regular language]] is one that can be recognized by a [[regular expression]] or [[DFA]]. It may contain repeating elements but not recursive ones.
+
+= See also =
+
+* [[Wikipedia]] article on [[regular languages]]: http://en.wikipedia.org/wiki/Regular_language
