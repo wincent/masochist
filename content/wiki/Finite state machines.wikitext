@@ -1,0 +1,3 @@
+---
+redirect: [[Finite state machine]]
+---
