@@ -1,0 +1,15 @@
+---
+tags:
+---
+A [[DFA]], also known as a [[Deterministic Finite Automata]] or "[[deterministic finite state machine]]" is a [[finite state machine]] capable of recognizing [[regular languages]] (languages recognizable using regular expressions). It can recognize repeated but not recursive structures.
+
+[[DFAs]] are called "deterministic" because for each state and input symbol there is one and only one transition to the next state.
+
+= Software that uses [[DFAs]] =
+
+* [[ANTLR]] constructs [[DFAs]] for the purposes of predicting alternatives.
+* [[Ragel]] is a state machine compiler.
+
+= See also =
+
+* [[Wikipedia]] article on [[DFAs]]: http://en.wikipedia.org/wiki/Deterministic_finite_state_machine
