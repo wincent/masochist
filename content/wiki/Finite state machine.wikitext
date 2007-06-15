@@ -1,0 +1,9 @@
+---
+tags:
+---
+A [[finite state machine]] or [[finite state automaton]] is a machine comprised of a finite number of states, transitions between those states, and actions.
+
+= See also =
+
+* [[Wikipedia]] article on [[finite state machines]]: http://en.wikipedia.org/wiki/Finite_state_machine
+* [[DFA]]
