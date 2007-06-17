@@ -1,0 +1,33 @@
+---
+tags: antlr
+---
+[[LL(*)]] is the new top-down recognition algorithm developed by [[Terence Parr]] for [[ANTLR 3]].
+
+= Differences from [[LL(k)]] =
+
+Previously, [[ANTLR]] used an [[LL(k)]] algorithm that was capable of differentiating between alternatives by using a fixed amount of lookahead:
+
+<pre>foo
+  : A B C D '!'
+  | A B C D '?'
+  ;</pre>
+
+In order to predict which alternative to match, an [[LL(k)]] algorithm must use 5 symbols of lookahead to see past the initial '''A B C D''' to the '''!''' or '''?''' which distinguish the two alternatives. The prediction is made using an acyclic [[DFA]] (one which does not contain any loops).
+
+[[LL(k)]] is not capable of predicting alternatives which contain arbitrary repetition:
+
+<pre>bar
+  : A B* '!'
+  | A B* '?'
+  ;</pre>
+
+This is because [[LL(k)]] uses acyclic [[DFAs]] and arbitrary repetition is not possible. No fixed <tt>k</tt> will allow the prediction of rule '''bar''' using an acyclic [[DFA]].
+
+[[LL(*)]] instead uses cyclic [[DFAs]] and can therefore handle the kind of repetition expressed in rule '''bar'''.
+
+= Limitations =
+
+Although [[LL(*)]] is much more powerful than [[LL(k)]] it is still limited to recognizing only regular language structures (that is, structures that can be recognized using a [[DFA]] or [[regular expression]]). It cannot recognize recursive structures. Therefore, to recognize recursive structures using [[ANTLR]] it is necessary to provide some "help" to the [[LL(*)]] algorithm in one of the following ways:
+
+* Turn on backtracking for a non-[[LL(*)]] decision; in this way [[ANTLR]] doesn't have to predict the right alternative, it can instead just try it and rewind if it doesn't work out
+* Use a semantic predicate to help [[ANTLR]] resolve the decision
