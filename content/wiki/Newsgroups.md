@@ -1,0 +1,6 @@
+---
+redirect: [[Usenet]]
+tags: 
+---
+
+
