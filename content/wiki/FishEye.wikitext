@@ -1,0 +1,13 @@
+---
+tags: java
+---
+[[FishEye]] is a sophisticated source code repository browser. It is a [[web]] application written in [[Java]].
+
+= Official site =
+
+* http://www.cenqua.com/fisheye
+
+= Example installations =
+
+* [[ANTLR]]: http://fisheye2.cenqua.com/browse/antlr/
+* [[ANTLR examples]]: http://fisheye2.cenqua.com/browse/antlr-examples/
