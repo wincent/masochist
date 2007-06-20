@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 3977]] is the updated version of [[RFC 977]]. Its full title is "[[Network News Transfer Protocol]] ([[NNTP]])".
+
+= See also =
+
+* Full text of [[RFC 3977]]: http://www.ietf.org/rfc/rfc3977.txt
