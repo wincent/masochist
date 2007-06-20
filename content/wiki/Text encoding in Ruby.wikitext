@@ -1,0 +1,91 @@
+---
+tags:
+---
+When writing a [[C]] extension for [[Ruby]] it may be necessary to have knowledge about the [[text encoding]] of strings used at runtime. In my specific case I needed to take an input string and convert it to [[UCS-2]] before handing it off to an external library, because that is the encoding expected by the library. In order to perform the conversion, I needed to be sure of the source encoding as well. The question is, how?
+
+I asked about this on [[comp.lang.ruby]] [http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/ceaca6e814073d5c/ here] but didn't receive any replies. The following are the results of my own research and analysis.
+
+= Build time =
+
+Analysis of <tt>configure.in</tt> and <tt>configure</tt> suggests that the default <tt>$KCODE</tt> value is <tt>KCODE_NONE</tt>, although it can be manually overridden with the <tt>--with-default-kcode</tt> switch to <tt>configure</tt>. Before compilation the default is added to <tt>config.h</tt> as a <tt>DEFAULT_KCODE</tt> macro.
+
+In <tt>defines.h</tt> and in the case that <tt>DEFAULT_KCODE</tt> is not set, it will be set to either <tt>KCODE_SJIS</tt> or <tt>KCODE_EUC</tt>, depending on the build platform. However, in reality <tt>DEFAULT_KCODE</tt> should never be unset (in all the files I've looked at, including <tt>ruby.h</tt>, <tt>config.h</tt> is included before <tt>defines.h</tt>) so I don't believe this ever occurs.
+
+It appears that in reality, the only place that <tt>DEFAULT_KCODE</tt> is used is in <tt>re.c</tt>.
+
+= Analysis of <tt>string.c</tt> =
+
+There are three main string creation methods defined in <tt>string.c</tt> and they appear to be largely encoding-agnostic:
+
+* <tt>str_new</tt>
+* <tt>rb_str_new</tt>
+* <tt>rb_str_new2</tt>
+
+Ultimately it seems that <tt>String</tt> objects are nothing more than containers for bytes of data. There is no default encoding enforced at the [[Ruby]] level.
+
+== <tt>str_new</tt> ==
+
+Merely allocates memory and copies memory using <tt>memcpy</tt>. Expects a pointer and length describing the source block from which to copy. No notion of encoding, just works with raw bytes. Takes a <tt>klass</tt> parameter which allows you to create instances of <tt>String</tt>-like classes.
+
+== <tt>rb_str_new</tt> ==
+
+Calls <tt>str_new</tt> and uses it to create a standard <tt>String</tt> instance. Expects a pointer and length describing the source block from which to copy. No notion of encoding.
+
+== <tt>rb_str_new2</tt> ==
+
+Expects a pointer to a null-terminated string. Calls <tt>strlen</tt> to determine string length. <tt>strlen</tt> should be encoding-agnostic insofar as it just counts bytes until it hits a terminating <tt>NUL</tt> character. This means that all standard [[C]] strings should work. Non-[[ASCII]] encodings ''might'' work unless it contains embedded (non-terminating) <tt>NUL</tt> bytes.
+
+= Analysis of <tt>io.c</tt> =
+
+Methods like <tt>puts</tt> eventually end up calling the <tt>io_write</tt> function, which in turn calls <tt>io_fwrite</tt> which in turn calls <tt>write</tt>. So there is generally no awareness of encoding when emitting strings, just like when creating strings.
+
+Basically, then, the input encoding depends on one of several things:
+
+* The input file encoding, if reading from a file
+* The terminal encoding, if running inside a [[terminal]] (for example, when using <tt>IRB</tt>)
+* The transmission encoding, if sent by a client to a [[web]] server
+* The database encoding, if the input comes from a database
+
+= Empirical analysis =
+
+== [[Mac OS X]], [[PowerPC]] ([[big-endian]]) ==
+
+Output of <tt>uname -psrv</tt>:
+
+<pre>Darwin 8.9.0 Darwin Kernel Version 8.9.0: Thu Feb 22 20:54:07 PST 2007; root:xnu-792.17.14~1/RELEASE_PPC powerpc</pre>
+
+Output of <tt>ruby -v</tt>:
+
+<pre>ruby 1.8.2 (2004-12-25) [powerpc-darwin8.0]</pre>
+
+On [[Mac OS X]] the environment settings in <tt>LANG</tt> and <tt>LC_*</tt> have no effect. The encoding setting in the [[Terminal]] (accessible by pressing Command-I) controls what encoding is used for input text, and also how output is interpreted.
+
+== [[Mac OS X]], [[Intel]] ([[little-endian]]) ==
+
+Output of <tt>uname -psrv</tt>:
+
+<pre>Darwin 8.9.1 Darwin Kernel Version 8.9.1: Thu Feb 22 20:55:00 PST 2007; root:xnu-792.18.15~1/RELEASE_I386 i386</pre>
+
+Output of <tt>ruby -v</tt>:
+
+<pre>ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-darwin8.8.1]</pre>
+
+== [[Red Hat Enterprise Linux]], [[AMD]] ([[little-endian]]) ==
+
+Output of <tt>uname -srvmpio</tt>:
+
+<pre>Linux 2.4.21-50.EL #1 Tue May 8 17:18:10 EDT 2007 i686 athlon i386 GNU/Linux</pre>
+
+Output of <tt>ruby -v</tt>:
+
+<pre>ruby 1.8.6 (2007-03-13 patchlevel 0) [i686-linux]</pre>
+
+== [[Windows]], [[Intel]] ([[little-endian]]) ==
+
+Banner on running <tt>cmd.exe</tt>:
+
+<pre>Microsoft Windows XP [Version 5.1.2600]</pre>
+
+Output of <tt>ruby -v</tt>:
+
+<pre>ruby 1.8.6 (2007-03-13 patchlevel 0) [i386-mswin32]</pre>
