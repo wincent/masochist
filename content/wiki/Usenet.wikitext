@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[Usenet]] is a distributed discussion network organized into hierarchically-ordered [[newsgroups]] and accessed via the [[NNTP]] protocol or using a [[web]] interface such as that provided by [[Google]] at http://groups.google.com/.
+
+= See also =
+
+* [[Wikipedia]] article on [[Usenet]]: http://en.wikipedia.org/wiki/Usenet
