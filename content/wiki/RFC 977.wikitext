@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 977]] is the predecessor of [[RFC 3977]]. Its full title is "[[Network News Transfer Protocol]]".
+
+= See also =
+
+* Full text of [[RFC 977]]: http://www.ietf.org/rfc/rfc977.txt
