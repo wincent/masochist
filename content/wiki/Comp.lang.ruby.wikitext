@@ -1,0 +1,8 @@
+---
+tags: ruby usenet
+---
+[[comp.lang.ruby]] is a popular [[Usenet]] news group for technical discussion of the [[Ruby]] programming language.
+
+= See also =
+
+* [[Google]] interface to [[comp.lang.ruby]]: http://groups.google.com/group/comp.lang.ruby
