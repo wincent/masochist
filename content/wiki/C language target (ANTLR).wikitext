@@ -1,0 +1,61 @@
+---
+tags: antlr
+---
+These notes supersede the older notes in "[[C language target (ANTLR 3.0 prerelease)]]". Prior to the final release of [[ANTLR 3.0]] there were no examples demonstrating the use of the [[C language target]], but with the final release there are extensive examples which make the older notes redundant.
+
+= Installing [[ANTLR]] =
+
+See "[[Installing ANTLR 3.0 on Mac OS X Tiger]]".
+
+= Building the [[C]] runtime =
+
+Given a clean copy of the [[ANTLR]] source archive, <tt>antlr-3.0.tar.gz</tt>:
+
+<pre>tar xvzf antlr-3.0.tar.gz 
+cd antlr-3.0/runtime/C/dist
+tar xzvf libantlr3c-3.0.0-rc8.tar.gz 
+cd libantlr3c-3.0.0-rc8
+./configure
+make
+make check # doesn't do anything yet
+sudo make install</pre>
+
+Note that although the runtime included with the official 3.0 release is labelled as being 3.0.0-rc8, the [http://fisheye2.cenqua.com/changelog/antlr/runtime/C/dist?cs=3721 changelog] seems to indicate that this is indeed the final version of the runtime.
+
+This installs these libraries:
+
+* <tt>/usr/local/lib/libantlr3c.dylib</tt>
+* <tt>/usr/local/lib/libantlr3c.la</tt>
+* <tt>/usr/local/lib/libantlr3c.a</tt>
+
+And the headers are installed as well:
+
+* <tt>/usr/local/include/antlr3.h</tt> (and many others)
+
+Technically, I think it would be more correct if these were installed in <tt>/usr/local/lib/antlr/</tt> because there are quite a few of them.
+
+= Lexer debugging tricks =
+
+== Echoing the content of a token ==
+
+<pre>LEXER_RULE : . {printf("\%s\n", GETTEXT()->chars);};</pre>
+
+= Using gated semantic predicates in lexers =
+
+Variables like this cannot be used safely in a multi-threaded context, because the resulting variable is a file-scoped static:
+
+<pre>@lexer::members
+{
+  static ANTLR3_BOOLEAN in_link = ANTLR3_FALSE;
+}</pre>
+
+Example rule:
+
+<pre>INTERNAL_LINK_START: { !in_link }?=> '[[' { in_link = ANTLR3_TRUE; };</pre>
+
+To overcome the thread-safety issues you'll need to allocate your own tracking structure and store a pointer to it in <tt>your_lexer->pLexer->rec->userp</tt>. For an example, see "[[Context sensitive lexers]]".
+
+= See also =
+
+* Official [[C language target]] page on the [[ANTLR]] [[wiki]]: http://www.antlr.org/wiki/display/ANTLR3/ANTLR3+Code+Generation+-+C
+** Further usage notes: http://www.antlr.org/wiki/display/ANTLR3/Using+the+ANTLR3+C+Target
