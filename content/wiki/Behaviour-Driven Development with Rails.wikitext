@@ -1,0 +1,316 @@
+---
+tags: rspec rails
+---
+= Note =
+
+This article was originally written in 2007. For more up-to-date information, see:
+
+* [[Rails model testing cheatsheet]]
+* [[Rails view testing cheatsheet]]
+* [[Rails controller testing cheatsheet]]
+* [[Rails helper testing cheatsheet]]
+* [[Rails mailer testing cheatsheet]]
+* [[RR cheatsheet]]
+* [[Steak cheatsheet]]
+
+= Background =
+
+I first used [[Behaviour-Driven Development]] in a relatively disciplined way when writing [[Walrus]]. [[BDD]] is an incredible safety net for a beginner ([[Walrus]] was my first ever real [[Ruby]] project; previously I had only written 10-line scripts). It allows you to ensure the correctness of your code at every step of development, and provides you with confidence about your code that you otherwise couldn't possibly have as a beginner.
+
+As I learned more about [[Ruby]] I needed to lean less and less heavily on [[BDD]] as a development aid, but I continued to write [[specs]] in parallel with new code. In the end [[BDD]] allowed me to develop a fully working prototype (in use in production) of a very complex system ([[object-oriented templating]] built using an automated [[packrat]] [[PEG]] parser generator). I am almost certain that I wouldn't have been able to complete the project without [[BDD]]. Having made this journey I can now claim to "know" [[Ruby]].
+
+So for a beginning [[Rails]] programmer [[BDD]] is also an excellent fit. The notes in this article describe how to set up a new [[Rails]] application and incorporate [[BDD]] from the very first moment.
+
+= Creating the application =
+
+After [[installing Ruby on Rails]] and any other prerequisites (see "[[Rails application bootstrapping]]") we can go ahead and create a new application:
+
+<pre>rails application_name
+cd application_name</pre>
+
+= [[SVK]] set-up =
+
+Seeing as I am working inside an [[SVK]] working copy I also do:
+
+<pre>svk add .
+svk ci -m "Create new Rails application"</pre>
+
+There are some files and folders which shouldn't really be stored in [[version control]] (see "[[Checking a new Rails application into an existing Subversion repository]]") so these need to be removed and ignored:
+
+<pre>svk rm log/*
+svk propset svn:ignore '*.log' log
+svk rm tmp/*
+svk propset svn:ignore '*' tmp
+svk mv config/database.yml config/database.example
+svk propset svn:ignore 'database.yml' config
+svk ci -m "Set-up ignored files"</pre>
+
+= Setting up the database =
+
+First we need to set-up the <tt>config/database.yml</tt> file:
+
+<pre>cp config/database.example config/database.yml</pre>
+
+Default settings will work just fine if using a [[MySQL]] set-up as described in "[[Rails application bootstrapping]]" but we'll add <tt>encoding: utf8</tt> to each database as described in "[[Unicode support in Rails]]". Now to actually create the development and test databases:
+
+<pre>sudo -s
+mysqld_safe &
+exit
+mysql -u root -e "CREATE DATABASE application_name_development CHARACTER SET 'UTF8';"
+mysql -u root -e "CREATE DATABASE application_name_test CHARACTER SET 'UTF8';"
+rake db:migrate
+env RAILS_ENV=test rake db:migrate</pre>
+
+As explained in "[[Unicode support in Rails]]", note that I explicitly force the databases to be created with a default [[UTF-8]] character set.
+
+And set-up for [[SVK]]:
+
+<pre>svk add db/schema.rb
+svk ci -m "Initial database schema"</pre>
+
+= Installing the [[RSpec]] plug-ins =
+
+When I first wrote this, the latest [[RSpec]] release was 0.9.4, so I used the following commands:
+
+<pre>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_4/rspec
+script/plugin install svn://rubyforge.org/var/svn/rspec/tags/REL_0_9_4/rspec_on_rails</pre>
+
+But nowadays the latest release is always tagged as <tt>CURRENT</tt> so the following can be used instead:
+
+<pre>script/plugin install svn://rubyforge.org/var/svn/rspec/tags/CURRENT/rspec
+script/plugin install svn://rubyforge.org/var/svn/rspec/tags/CURRENT/rspec_on_rails</pre>
+
+After this:
+
+<pre>script/generate rspec
+rake spec</pre>
+
+And if working with [[SVK]]:
+
+<pre>svk add script/spec* vendor/plugins/rspec* spec
+svk propset svn:ignore previous_failures.txt .
+svk ci -m "Install RSpec 0.9.4 plug-ins"</pre>
+
+Unfortunately, [[SVK]] doesn't (yet) support [[Subversion externals]], so we have to install the plug-ins as shown here (at the time of writing, the latest version of [[SVK]] is 2.0.1). When [[SVK]] adds the required support we'll be able to pass the <tt>-x</tt> switch to <tt>script/plugin install</tt> for a slightly more elegant solution.
+
+The official [[Rspec]] installation instructions for [[Rails]] can be found at: http://rspec.rubyforge.org/documentation/rails/install.html
+
+= Setting up [[Autotest]] =
+
+As part of the [[BDD]] approach we'll be using [[Autotest]] to do [[continuous integration]]. After installing and configuring [[Autotest]] as described in "[[Using autotest with Rails]]" we can start it by invoking:
+
+<pre>autotest</pre>
+
+= Beginning development =
+
+As an example, create a <tt>User</tt> model:
+
+<pre>script/generate rspec_model User
+svk st | grep '?' | awk '{print $2}' | xargs svk add
+svk ci -m "Create User model"</pre>
+
+[[Autotest]] should notice the newly created files and run automatically:
+
+<pre>F
+
+1)
+ActiveRecord::StatementInvalid in 'User should be valid'
+Mysql::Error: Table 'application_name_test.users' doesn't exist: SHOW FIELDS FROM users
+./spec/models/user_spec.rb:5:in `new'
+./spec/models/user_spec.rb:5:
+script/spec:4:
+
+Finished in 0.051379 seconds
+
+1 example, 1 failure</pre>
+
+So the spec is failing because the <tt>users</tt> table hasn't been set up yet. To be fully [[behaviour-driven]] we should do the minimum required to get the spec passing, and that means running <tt>rake db:migrate</tt> to set up the table in the database. This may be counter-intuitive because you haven't actually specified any behaviour yet, but you'll remain truer to the [[BDD]] philosophy if you always employ this "minimum change to get the spec passing" approach; this approach is described and demonstrated in great detail by lead [[RSpec]] developer [[David Chelimsky]] in [http://blog.davidchelimsky.net/articles/2007/05/14/an-introduction-to-rspec-part-i this weblog post].
+
+<pre>rake db:migrate
+env RAILS_ENV=test rake db:migrate
+svk ci -m "Perform migration for User model"</pre>
+
+As soon as you do this the specs will start passing again:
+
+<pre>Finished in 0.050375 seconds
+
+1 example, 0 failures</pre>
+
+= Setting up [[RCov]] =
+
+Now that the first examples are running it's a good time to set up [[RCov]] to ensure code coverage by our [[specs]]. In the <tt>Rakefile</tt> we add:
+
+<pre>require 'spec/rake/spectask'
+
+desc 'Run all examples with RCov'
+Spec::Rake::SpecTask.new('coverage') do |t|
+  t.spec_files = FileList['spec/**/*.rb']
+  t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec']
+end</pre>
+
+Now running <tt>rake coverage</tt> will run all the [[specs]] and measure the code coverage at the same time, writing a report out to a <tt>coverage</tt> directory.
+
+The first run shows 100%, apart from 10 lines in <tt>config/boot.rb</tt>. We can exclude this file from the coverage analysis for two reasons:
+
+# The file is part of [[Rails]] itself, there is no need to test it ([[Rails]] has its own tests).
+# It is impossible to cover all 100% of this file because it depends on the method in which [[Rails]] is installed (there are two different code paths depending on whether [[Rails]] is frozen into <tt>vendor/rails</tt> or loaded via [[RubyGems]].
+
+So we update the <tt>rcov_opts</tt> in the <tt>Rakefile</tt> to:
+
+<pre>t.rcov_opts = ['--exclude', 'config,spec']</pre>
+
+This brings code coverage up to 100%; to keep it this way we add a new task to the <tt>Rakefile</tt>:
+
+<pre>require 'spec/rake/verify_rcov'
+
+RCov::VerifyTask.new(:verify => :spec) do |t|
+  t.threshold = 100.0 # only adjust upwards, never downwards
+  t.index_html = 'coverage/index.html'
+end</pre>
+
+Now you can verify coverage using <tt>rake verify</tt>; output should resemble:
+
+<pre>Finished in 0.049242 seconds
+
+1 example, 0 failures
+Coverage: 100.0% (threshold: 100.0%)</pre>
+
+We can keep the <tt>coverage</tt> directory out of [[version control]] as follows:
+
+<pre># add coverage to svn:ignore list
+svk propedit svn:ignore</pre>
+
+= Heckle =
+
+You can further enhance your testing efforts by using [[Heckle]] to test the quality of your [[specs]]. After [[installing Heckle using RubyGems]] you can specify a [[spec]] and class (or module, or method) to mutate:
+
+<pre>spec spec/models/user_spec.rb --heckle User</pre>
+
+As noted by the author of [[Heckle]] in [http://glu.ttono.us/articles/2006/12/19/tormenting-your-tests-with-heckle this post]:
+
+<blockquote>'''If it modifies code, can’t bad things happen?'''<br />
+Well, yes. Heckle could feasibly break things. It throws crap into your code on purpose. It flips unless and while loops so infinite loops will probably occur at some point. For the next release I’m planning to put in some sort of timeout to avoid that.<br />
+<br />
+Additionally, know what your code is doing. If randomly changing a string is going to actually break things irrevocably in testing, you probably should be stubbing those dangerous methods (eg. You probably shouldn’t run Heckle against methods that really delete files during testing if it’s based on a string)</blockquote>
+
+For this reason there is no way to automatically invoke [[Heckle]]; you have to select a target to mutate and then perform the mutation manually.
+
+= Developing iteratively =
+
+From here on development takes place iteratively: write a new [[spec]] (should fail), write code necessary to make [[spec]] pass (should pass).
+
+For example, let's start with a simple requirement for our <tt>User</tt> model:
+
+* A User without a login name
+** should be invalid
+
+We express this with the following [[spec]] in <tt>user_spec.rb</tt>:
+
+<pre>describe User, 'without a login name' do
+  
+  before(:each) do
+    @user = User.new
+  end
+  
+  it 'should be invalid' do
+    @user.should_not be_valid
+  end
+  
+end</pre>
+
+This spec fails because we don't have any code to make a user without a login name be considered invalid. We correct this by editing the <tt>user.rb</tt> file and adding a <tt>validates_presence_of</tt> call:
+
+<pre>class User < ActiveRecord::Base
+  validates_presence_of :login_name
+end</pre>
+
+Now the ''other'' spec in the <tt>user_spec.rb</tt> file will start failing because the previously valid instance is no longer considered to be valid:
+
+<pre>describe User do
+  before(:each) do
+    @users = User.new
+  end
+
+  it "should be valid" do
+     @users.should be_valid
+  end
+end</pre>
+
+We make it valid by adding a login name:
+
+<pre>describe User do
+  before(:each) do
+    @users = User.new(:login_name => 'Bob')
+  end
+
+  it "should be valid" do
+     @users.should be_valid
+  end
+end</pre>
+
+But now we still have a failing [[spec]] because there is not yet a <tt>login_name=</tt> accessor. We therefore create a new migration:
+
+<pre>script/generate migration add_login_name_to_users</pre>
+
+The contents will be:
+
+<pre>class AddLoginNameToUsers < ActiveRecord::Migration
+  def self.up
+    add_column 'users', 'login_name', :string, :null => false
+  end
+
+  def self.down
+    remove_column 'users', 'login_name'
+  end
+end</pre>
+
+We run the migration:
+
+<pre>rake db:migrate
+env RAILS_ENV=test rake db:migrate</pre>
+
+And all the specs start passing again. Now we can check our changes into [[SVK]]:
+
+<pre>svk add db/migrate/002_add_login_name_to_users.rb
+svk ci -m "Add login_name to User model"</pre>
+
+Development will now continue iteratively:
+
+# Decide on a new required behaviour
+# Write a spec for it (should fail)
+# Write code (or take other actions such as performing database migrations as shown above) to make spec pass
+# Check changes into [[version control]]
+# Repeat
+
+Periodically we will also do the following
+
+* Check code coverage using <tt>rake coverage</tt> and/or <tt>rake verify</tt>; you should try to keep coverage at 100%
+* If necessary, refactor [[specs]] to avoid duplicated code; if any of your specs break then you know that your refactoring introduced an error
+* Selectively run [[Heckle]] against specific specs, classes, modules and methods to look for holes, flaws or weaknesses in the specs
+
+I've [http://wincent.com/a/about/wincent/weblog/archives/2007/05/behaviourdriven.php posted this screencast] to my personal [[weblog]] showing one cycle of this iterative development approach in action.
+
+= General guidelines =
+
+== Try to keep coupling between models, views and controllers to a minimum ==
+
+The above example tests a model in isolation with no involvement from any views or controllers. This is a good thing because it means that bugs in those views and controllers won't have a cascade effect which causes your model specs to fail.
+
+[http://blog.davidchelimsky.net/articles/2006/11/06/view-spec-tutorial This post] by [[David Chelimsky]] shows how to tests views in isolation with the help of [[mock objects]]. In this way views can be tested before the corresponding models and controllers are even written.
+
+For more information see "[[Independently testing models, views and controllers]]".
+
+== Test the coupling too ==
+
+I know I just said that it's a good thing to keep coupling to a minimum, but you ''also'' need to separately test that all of the components work effectively together. In [[Rails]] parlance this is called "integration testing". [[RSpec]] doesn't directly support that yet (as of version 0.9.4, the latest at the time of writing) but it ''does'' allow you to use third-party add-ons to perform high-level testing. For more information see "[[Using Watir with RSpec and Rails]]".
+
+== Don't test [[Rails]] ==
+
+Make sure that you are testing the behaviour of ''your'' application and not that of [[Rails]] itself. [[Rails]] is already pretty thoroughly tested. In the example above, we are ''not'' testing the functionality of [[Rails]]' <tt> validates_presence_of</tt> method; we take it as a given that it works as advertised. What we ''are'' testing is the required behaviour of our application, as specified in the example, a "User without a login name should be invalid". That is the externally visible behaviour that we care about and it is what we use [[RSpec]] to confirm; the internal implementation details are not relevant and your [[specs]] should be written in an implementation-detail-neutral way (that is, when the implementation details change the [[spec]] should continue to pass).
+
+= See also =
+
+* Nice article on doing Behaviour-Driven Development in Ruby on Rails: http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1 (now slightly out of date but still useful)
+* [[Behaviour-Driven Development with Rails: Handling upgrades]]
+* [[Store user session data in the database instead of the filesystem on Rails]]
