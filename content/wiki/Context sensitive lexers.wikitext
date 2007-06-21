@@ -1,0 +1,118 @@
+---
+tags: antlr
+---
+As noted in the page on the [[C language target]], you may need or want a context sensitive [[lexer]]. This requires you to store lexer state information somewhere. In the simplest case you could store this in the <tt>@lexer::members</tt> section:
+
+<pre>@lexer::members
+{
+  static ANTLR3_BOOLEAN in_link = ANTLR3_FALSE;
+}</pre>
+
+And then reference the variable using a [[gated semantic predicate]]:
+
+<pre>INTERNAL_LINK_START: { !in_link }?=> '[[' { in_link = ANTLR3_TRUE; };</pre>
+
+The problem with this approach is that variables like this cannot be used safely in a multi-threaded context, because the resulting variable is a file-scoped static.
+
+To overcome the thread-safety issues you'll need to allocate your own tracking structure and store a pointer to it in <tt>your_lexer->pLexer->rec->userp</tt>.
+
+= A simple example =
+
+I was in a situation where I found it would be useful if the lexer rules knew what the last-matched token was. Here is an example, parsing a '''blockquote''' block in [[wikitext]]; '''blockquote''' blocks are started by a greater-than symbol in the first line, optionally followed by a space:
+
+<pre>BLOCKQUOTE : { COLUMN == 0 }?=> '>' ' '? ;</pre>
+
+Note the use of the <tt>COLUMN</tt> macro to make the predicate as readable as possible. The macro is defined as follows in the <tt>@lexer::members</tt> section:
+
+<pre>// convenience macro for calling char_position_in_line function using a more compact form
+#define COLUMN char_position_in_line(ctx)</pre>
+
+It depends on the following function, also in the <tt>@lexer::members</tt> section:
+
+<pre>// at beginning of input GETCHARPOSITIONINLINE will return -1
+// this function normalizes that to 0
+ANTLR3_UINT32 ANTLR3_INLINE char_position_in_line(pWikiTextLexer ctx)
+{
+    ANTLR3_UINT32 pos = GETCHARPOSITIONINLINE();
+    return pos == -1 ? 0 : pos;
+}</pre>
+
+Now, if we want to allow nested blockquotes the rule above will no longer be sufficient. We could change it to:
+
+<pre>BLOCKQUOTE : { COLUMN == 0 }?=> ('>' ' '?)+ ;</pre>
+
+This would allow repeated matches starting in the leftmost column, but it would require the parser to do more work because it would have to look inside the token and determine how many greater-than symbols appeared. We could define an action in the [[lexer]] to pack this count into the token before handing it off to the parser (the <tt>ANTLR3_COMMON_TOKEN_struct</tt> includes a <tt>custom</tt> member that can be used to store either an integer or a pointer to arbitrary storage), but this would make for a somewhat complicated action which would make the grammar less readable.
+
+If we had a context sensitive lexer which remember the "last seen" token then we could write our rule like this:
+
+<pre>BLOCKQUOTE : { COLUMN == 0 || LAST_TOKEN == BLOCKQUOTE }?=> '>' ' '? ;</pre>
+
+In this way multiple tokens would be emitted, one for each greater-than symbol, with no complicated action required by either the lexer or the parser.
+
+The first thing we need to do is implement the <tt>LAST_TOKEN</tt> macro (in the <tt>@lexer::members</tt> section):
+
+<pre>// convenience macro for pulling out the last-remembered token by accessing the userp field
+#define LAST_TOKEN ((ANTLR3_UINT32)ctx->pLexer->rec->userp)</pre>
+
+Note that as we only need to store a single integer we don't allocate any custom storage, we just stick the integer in the <tt>userp</tt> field of the recognizer. This is considerably simpler than having to worry about allocating, managing, and later freeing custom storage.
+
+The second thing that needs to be done is ensure that the last token gets stored in the <tt>userp</tt> field after each token is recognized. We could do this manually with a macro:
+
+<pre>// convenience macro for remembering the last token by stuffing it into the userp field
+#define RECOGNIZED(token) ctx->pLexer->rec->userp = (void *)token</pre>
+
+This would require each and every rule to have an action added that invoked the macro; for example:
+
+<pre>BLOCKQUOTE : { COLUMN == 0 || LAST_TOKEN == BLOCKQUOTE }?=> '>' ' '? { RECOGNIZED(BLOCKQUOTE); };</pre>
+
+This is very simple, but its drawback is that it clutters up the grammar with actions and it is error prone (easy to forget to add the action when adding new rules).
+
+An alternative approach is to override the <tt>nextToken()</tt> implementation so that it does the following:
+
+# Call the ''original'' nextToken implementation, which returns the token.
+# Store the token for use by the <tt>LAST_TOKEN</tt> macro.
+# Return the token to the caller.
+
+As an example, here is how I declare storage for the function pointer to the original <tt>nextToken()</tt> implementation:
+
+<pre>pANTLR3_COMMON_TOKEN (*original_next_token)(struct ANTLR3_TOKEN_SOURCE_struct * tokenSource);</pre>
+
+Here is how I instantiate my [[wikitext]] lexer:
+
+<pre>pWikiTextLexer lexer = WikiTextLexerNew(stream);
+if ((ANTLR3_UINT64)lexer == (ANTLR3_UINT64)ANTLR3_ERR_NOMEM)
+{
+    exception = lexer_memory;
+    goto clean_up_input_stream;
+}
+else if ((ANTLR3_UINT64)lexer < 0)
+{
+    exception = lexer_other;
+    goto clean_up_input_stream;
+}</pre>
+
+I then record the original implementation address and install the custom override:
+
+<pre>// install custom nextToken() override
+original_next_token = lexer->pLexer->tokSource->nextToken;
+lexer->pLexer->tokSource->nextToken = _wiki_text_next_token;</pre>
+
+Finally, here is the implementation of the override itself:
+
+<pre>// simple override of generated nextToken function that remembers the last-matched token, providing a small amount of context sensitivity
+static pANTLR3_COMMON_TOKEN _wiki_text_next_token(pANTLR3_TOKEN_SOURCE toksource)
+{
+    // grab token using the generated function
+    pANTLR3_COMMON_TOKEN token = original_next_token(toksource);
+    
+    // store it in last-matched field
+    pANTLR3_LEXER lexer = (pANTLR3_LEXER)(toksource->super);
+    lexer->rec->userp = (void *)token->type;
+    
+    // return token as per usual
+    return token;
+}</pre>
+
+= A more complex example =
+
+A [[lexer]] that required more context information (more than a single integer as in the example above) would require custom storage to be allocated and referenced using the <tt>userp</tt> member. The <tt>antlr3collections.h</tt> header file details a number of collections (lists, hashes, vectors, stacks) that can be used in a pseudo-[[object-oriented]] way to dynamically store context information.
