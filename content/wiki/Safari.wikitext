@@ -1,0 +1,6 @@
+---
+tags: safari
+---
+[[Safari]] is the free, [[WebKit]]-based browser developed by [[Apple]] and bundled with [[Mac OS X]] since [[Jaguar]].
+
+As of version 3.0 it is available for [[Windows]] also.
