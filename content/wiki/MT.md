@@ -1,0 +1,6 @@
+---
+redirect: [[Movable Type]]
+tags: 
+---
+
+
