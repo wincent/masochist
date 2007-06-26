@@ -1,0 +1,174 @@
+---
+tags:
+---
+= Overview =
+== Block-level elements ==
+
+* <tt>BLOCKQUOTE</tt>
+* <tt>PRE</tt>
+* <tt>OL</tt>
+* <tt>UL</tt>
+* <tt>LI</tt>
+* <tt>H1</tt>, <tt>H2</tt>, <tt>H3</tt>, <tt>H4</tt>, <tt>H5</tt>, <tt>H6</tt>
+* <tt>P</tt>
+
+In general, block elements may appear in the outermost scope, with some special considerations to note:
+
+* Any block-level element may be nested inside <tt>BLOCKQUOTE</tt>, including other <tt>BLOCKQUOTE</tt> elements; the exception to this rule is <tt>LI</tt>, which may only be nesetd inside list elements (<tt>OL</tt> and <tt>LI</tt>)
+* Nested lists can be created by nesting <tt>OL</tt> and <tt>LI</tt> inside an <tt>LI</tt>
+* All other nesting of block-level elements is disallowed
+* The [[HTML]] specification states that heading elements (<tt>H1</tt>, <tt>H2</tt>, <tt>H3</tt>, <tt>H4</tt>, <tt>H5</tt>, <tt>H6</tt>) should only appear in order in the document: that is, <tt>H2</tt> may only appear after <tt>H1</tt> and so on; at least in the initial implementation I have no plans on enforcing this restriction
+
+== Inline elements ==
+
+* <tt>NO_WIKI</tt>
+* <tt>EM</tt>
+* <tt>STRONG</tt>
+* <tt>ENTITY</tt>
+* <tt>PRINTABLE</tt>
+* <tt>DEFAULT</tt>
+
+Inline elements always and only appear nested inside block-level elements.
+
+Inline elements are intended for use within a single-line span, so a <tt>CRLF</tt> token automatically closes any open span-level tags (for parity with [[MediaWiki]]); the exception to this rule is the <tt>NO_WIKI</tt> span where everything including <tt>CRLF</tt> tokens loses its special significance. That is, even though <tt>NO_WIKI</tt> is a span-level element, it is not automatically closed upon seeing a <tt>CRLF</tt> token; this again is for parity with the established [[MediaWiki]] behaviour.
+
+As noted on the [[Wincent wikitext]] page, nesting of inline elements inside one another is allowed provided that the same element is not nested inside itself (either directly or indirectly). Block-level elements may never be nested inside inline elements.
+
+== Entities ==
+
+<tt>ENTITY</tt> tokens always have special meaning, even inside <tt>PRE</tt> blocks and <tt>NOWIKI</tt> spans. That is, a string like <tt>&amp;copy;</tt> inside a <tt>PRE</tt> or <tt>NOWIKI</tt> will be passed through literally into the [[HTML]] output as <tt>&amp;copy;</tt> rather than being converted to <tt>&amp;amp;copy;</tt>.
+
+= Details =
+
+== Block-level elements ==
+
+=== <tt>BLOCKQUOTE</tt> ===
+
+* May be nested inside:
+** Outermost (root) scope
+** <tt>BLOCKQUOTE</tt> (recursive nesting)
+* Elements that can be nested inside: 
+** <tt>BLOCKQUOTE</tt> (recursive nesting)
+** <tt>PRE</tt>
+** <tt>OL</tt>
+** <tt>UL</tt>
+** <tt>H1</tt>, <tt>H2</tt>, <tt>H3</tt>, <tt>H4</tt>, <tt>H5</tt>, <tt>H6</tt>
+** <tt>P</tt>
+
+'''Note''': Although <tt>BLOCKQUOTE</tt> sections are introduced using the relatively common <tt>&gt;</tt> character, the [[lexer]] screens out false positives by only emitting <tt>BLOCKQUOTE</tt> tokens when they appear in the first column of the input ''or'' are immediately preceded by other <tt>BLOCKQUOTE</tt> token(s).
+
+=== <tt>PRE</tt> ===
+
+* May be nested inside:
+** Outermost (root) scope
+** <tt>BLOCKQUOTE</tt>
+* Elements that can be nested inside: 
+** Any (but note that all elements lose their special meaning inside a <tt>PRE</tt>)
+
+'''Note''': Although <tt>PRE</tt> sections are introduced using the relatively common space character, the [[lexer]] screens out false positives by only emitting <tt>PRE</tt> tokens when they appear in the first column of the input ''or'' are immediately preceded by one or more <tt>BLOCKQUOTE</tt> tokens.
+
+=== <tt>OL</tt> ===
+
+* May be nested inside:
+** Outermost (root) scope
+** <tt>BLOCKQUOTE</tt>
+** <tt>LI</tt>
+* Elements that can be nested inside: 
+** <tt>OL</tt> (indirect recursive nesting)
+** <tt>UL</tt>
+
+'''Note''': Although <tt>OL</tt> sections are introduced using the relatively common <tt>#</tt> character, the [[lexer]] screens out false positives by only emitting <tt>OL</tt> tokens when they appear in the first column of the input ''or'' are immediately preceded by <tt>OL</tt>, <tt>UL</tt> or <tt>BLOCKQUOTE</tt> token(s).
+
+=== <tt>UL</tt> ===
+
+* May be nested inside:
+** Outermost (root) scope
+** <tt>BLOCKQUOTE</tt>
+** <tt>LI</tt>
+* Elements that can be nested inside: 
+** <tt>OL</tt>
+** <tt>UL</tt> (indirect recursive nesting)
+
+'''Note''': Although <tt>UL</tt> sections are introduced using the relatively common <tt>*</tt> character, the [[lexer]] screens out false positives by only emitting <tt>UL</tt> tokens when they appear in the first column of the input ''or'' are immediately preceded by <tt>OL</tt>, <tt>UL</tt> or <tt>BLOCKQUOTE</tt> token(s).
+
+=== <tt>LI</tt> ===
+
+* May be nested inside:
+** <tt>OL</tt>
+** <tt>UL</tt>
+* Elements that can be nested inside: 
+** Inline elements only
+
+'''Note''': <tt>LI</tt> is an imaginary token and is never actually emitted by the lexer.
+
+=== <tt>H1</tt>, <tt>H2</tt>, <tt>H3</tt>, <tt>H4</tt>, <tt>H5</tt>, <tt>H6</tt> ===
+
+* May be nested inside:
+** Outermost (root) scope
+** <tt>BLOCKQUOTE</tt> (recursive nesting)
+* Elements that can be nested inside: 
+** Inline elements only
+
+'''Note''': The lexer again avoids false positives by only emitting heading start tokens when they appear in the first column of the input, or are immediately preceded by a <tt>BLOCKQUOTE</tt> token. Similarly, heading end tokens are only emitted when they appear as the last non-whitespace symbol on a given line; this allows inputs such as the following to be correctly parsed as an <nowiki><h2></nowiki> heading containing the text <tt>Does foo == bar?</tt>:
+
+<pre>== Does foo == bar? ==</pre>
+
+=== <tt>P</tt> ===
+
+* May be nested inside:
+** Outermost (root) scope
+** <tt>BLOCKQUOTE</tt> (recursive nesting)
+* Elements that can be nested inside: 
+** Inline elements only
+
+'''Note''': <tt>P</tt> is an imaginary token and is never actually emitted by the lexer.
+
+== Inline elements ==
+
+=== <tt>NO_WIKI</tt> ===
+
+* May be nested inside:
+** Any block-level element
+** Any inline element except for <tt>NO_WIKI</tt> itself (directly or indirectly)
+* Elements that can be nested inside: 
+** Any (but note that all elements lose their special meaning inside a <tt>NO_WIKI</tt>)
+
+=== <tt>EM</tt> ===
+
+* May be nested inside:
+** Any block-level element
+** Any inline element except for <tt>EM</tt> itself (directly or indirectly)
+* Elements that can be nested inside: 
+** Any inline element except for <tt>EM</tt> itself (directly or indirectly)
+
+=== <tt>STRONG</tt> ===
+
+* May be nested inside:
+** Any block-level element
+** Any inline element except for <tt>STRONG</tt> itself (directly or indirectly)
+* Elements that can be nested inside: 
+** Any inline element except for <tt>STRONG</tt> itself (directly or indirectly)
+
+=== <tt>ENTITY</tt> ===
+
+* May be nested inside:
+** Any block-level element
+** Any inline element
+* Elements that can be nested inside: 
+** Not applicable (<tt>ENTITY</tt> is an atomic element, not a span)
+
+=== <tt>PRINTABLE</tt> ===
+
+* May be nested inside:
+** Any block-level element
+** Any inline element
+* Elements that can be nested inside: 
+** Not applicable (<tt>PRINTABLE</tt> is an atomic element, not a span)
+
+=== <tt>DEFAULT</tt> ===
+
+* May be nested inside:
+** Any block-level element
+** Any inline element
+* Elements that can be nested inside: 
+** Not applicable (<tt>DEFAULT</tt> is an atomic element, not a span)
