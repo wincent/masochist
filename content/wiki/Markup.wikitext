@@ -1,0 +1,12 @@
+---
+tags:
+---
+[[Markup]] is plain text that includes additional information about the text. Examples of [[markup]] formats include:
+
+* [[Markdown]]
+* [[Textile]]
+* [[Wikitext]]
+
+= See also =
+
+* [[Wikipedia]] article on [[markup]]: http://en.wikipedia.org/wiki/Markup_language
