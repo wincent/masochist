@@ -1,0 +1,16 @@
+---
+tags: antlr
+---
+In order to fully understand [[ANTLR]] you need to master the following topics. Total mastery of all topics is not always necessary to build a working parser, but without it is very easy to build a non-working one, or fail to even build one at all.
+
+* How to write rules using [[ANTLR]]'s extended [[BNF]] notation (by far the easiest topic)
+* What are the differences between [[lexers]], [[parsers]] and [[tree parsers]]
+* How [[ANTLR]]-generated recognizers work at runtime; and as sub-topics:
+** How [[ANTLR]]-generated recognizers use prediction
+** The role of [[predicates]] (these seem simple at first but predicates can wind up in other rules' decision making logic and so the inter-rule interactions can be very, very complex)
+** "First" and "follow" sets
+* How [[ANTLR]] performs analysis of a grammar
+
+= See also =
+
+* [[ANTLR bird's eye view]]
