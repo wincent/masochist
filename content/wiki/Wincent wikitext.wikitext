@@ -1,0 +1,92 @@
+---
+tags:
+---
+[[Wincent wikitext]] is a specific flavor of [[wikitext]] based on the version implemented in the popular [[MediaWiki]] [[wiki]] software.
+
+= Rationale =
+
+Over the years I've had to edit text in a number of [[markup]] formats, including [[Markdown]] (often), [[Textile]] (sometimes) and [[HTML]] itself (often). Upon installing [[MediaWiki]] and working with it I gradually came to warm to its [[wikitext]] [[markup]] and it is now my preferred markup format when the target output is [[HTML]].
+
+So when working on a [[Rails]] rewrite of my website I decided that [[wikitext]] would be ''the'' markup format used ubiquitously throughout. As it would be heavily used I wanted it to be fast, so I wanted a [[C]] solution rather than a pure [[Ruby]] one.
+
+So I started working on an [[ANTLR]] grammar for [[parsing]] [[wikitext]] and transforming it to [[HTML]]. This page contains notes on the grammar design.
+
+= Grammar =
+
+== Overall characteristics ==
+
+* '''The input markup should be extremely simple and clean''': As a result I plan to support only a subset of the [[MediaWiki]] [[markup]]; this means omitting complex features like tables and supporting a single syntax for each desired output style (for example, <nowiki>'''apostrophes around text'''</nowiki> to indicate strong) rather than multiple alternative syntaxes (such as <nowiki><strong>HTML tags</strong></nowiki> for the same effect).
+* '''The parser should be extremely tolerant of bad input''': Like [[MediaWiki]], the parser should never bail upon receiving bad input and it should do an excellent job of cleaning up illegal tags, invalid nesting and the like.
+* '''The parser should handle [[Unicode]]'''.
+* '''The parser should be fast''': this was why I decided to use the [[ANTLR]] [[C target]], combined with a [[Ruby]] extension written in [[C]].
+
+== Nesting ==
+
+As the target output of the parser is [[HTML]] the [[HTML]] nesting rules apply to the input source as well. There are two basic classes of elements:
+
+* '''Block-level elements''': these are elements which can appear in the outermost scope of the input; these include <nowiki><pre></nowiki>, <nowiki><blockquote></nowiki>, <nowiki><p></nowiki>, <nowiki><ol></nowiki>, <nowiki><ul></nowiki> and the headings (<nowiki><h1></nowiki> through <nowiki><h6></nowiki>). 
+* '''Inline  elements''': these elements may online appear within blocks; they include <nowiki><em></nowiki>, <nowiki><strong></nowiki> and <nowiki><tt></nowiki> spans, links, [[entities]] and regular characters.
+
+Some nesting of block-level elements is permitted:
+
+* ''Any'' block-level element may be nested inside <nowiki><blockquote></nowiki>, including other <nowiki><blockquote></nowiki> elements.
+* List block-level elements (<nowiki><ol></nowiki> and <nowiki><ul></nowiki>) may be nested inside list items (<nowiki><li></nowiki>); this allows nested, multi-level lists.
+
+All other nesting of block-level elements is disallowed.
+
+In general, nesting of inline elements is allowed provided the same element is not nested twice. For example:
+
+* An <nowiki><em></nowiki> span may be nested inside a <nowiki><strong></nowiki> span
+* A <nowiki><strong></nowiki> span may be nested inside an <nowiki><em></nowiki> span
+* An <nowiki><em></nowiki> span may ''not'' be nested inside another <nowiki><em></nowiki> span, directly or indirectly; neither may a <nowiki><strong></nowiki> span be nested inside another <nowiki><strong></nowiki> span
+
+This complex, context-sensitive nesting requirement made it prohibitively difficult to produce an [[ANTLR]] [[parser]], especially when combined with the need for the parser to accept and reasonably handle even the most malformed input. So I decided to use a filtering [[ANTLR]] [[lexer]] to tokenize the input and process it with a hand-written [[parser]].
+
+For a detailed list of supported tags and their nesting restrictions, see "[[Wincent wikitext nesting]]".
+
+== Error-handling strategy ==
+
+If we could be sure that the input were always perfectly formed the translator could perform a fairly simple sweep over the tokens in the input stream, substituting appropriate [[HTML]] tags for each special piece of markup encountered.
+
+Such a parser would most likely produce invalid [[HTML]] when fed bad input, so we need an appropriate error-handling strategy. Our error handling strategy must balance the following concerns:
+
+* '''Speed''': the strategy shouldn't be so involved as to be slow
+* '''Complexity''': the strategy shouldn't be so complex that maintenance of the translator becomes difficult
+* '''Correctness''': the strategy should produce correct [[HTML]]
+* '''Cleverness''': the strategy should try to "guess" what the input author intended and "correct" the input to match it
+
+I chose the simplest possible strategy, valuing speed and correctness while keeping complexity down, and pretty much ignoring the "cleverness" criterion. The basic strategy is to emit [[HTML]] tags upon seeing  markup symbols, and upon seeing an invalid or unexpected symbol either automatically inserting any missing HTML tags required for correctness, or outputting the unexpected symbol in plain text (thus providing feedback to the author).
+
+In this example an unexpected tag in the input is output literally using [[HTML entities]]:
+
+<pre># input
+this tag is </em> unexpected!
+ 
+# output
+this tag is &amp;lt;/em&amp;gt; unexpected!</pre>
+
+This strategy results in highly visible feedback to the author that the markup is invalid and needs to be corrected.
+
+In this example a missing closing tag is automatically inserted:
+
+<pre># input
+== My great heading without an end marker
+
+# output
+<h2>My great heading without an end marker</h2></pre>
+
+This is a "harmless" error and so is silently corrected.
+
+== Parser design ==
+
+As the grammar involves recursion (nested structures) a regular expression or [[DFA]]-based parser is insufficient to process the token stream. The context-sensitive nature of the stream requires that the parser have some sort of notion of what it has "seen" before in order to decide what to do. One way of providing it with this memory is to explicitly record pertinent "seen" tokens on a stack. Another way is to use recursive function calls (where the recursion itself embodies the stack).
+
+Normally this later way is the most obvious and easy (and it is indeed how recursive descent parsers work) but given that I am using the [[C target]] I don't have the luxury of such [[object-oriented]] niceties as instance variables and the like and it is actually fairly tricky to come up with a clean recursive design. Also, as I want to accept any input, no matter how invalid, I don't really want a backtracking design (which would be slower anyway); I just want to transform input into reasonable, valid [[HTML]] as I see it. In any case, without exceptions (which [[C]] doesn't have) handling backtracking starts to get quite verbose. By not having backtracking I avoid the complexity of doing it in [[C]] and the slowness of doing it in another language which does support exceptions.
+
+So the solution I am currently working on is based on a giant <tt>switch</tt> statement that takes different actions depending on the current token received from the lexer. I manually manage a scope stack indicating what the current nesting context is, and I use that to inform my decisions as to what kind of input to accept and what kind needs to be transformed (corrected). This can get a little complex for some parts of the language (mixed and nested lists, for example), but it seems like it is doable this way.
+
+I did experiment with a recursive design but I wasn't convinced by it; too much information had to be passed up and down the the call stack. For example: given a method to match <tt>em</tt> spans and another to match <tt>strong</tt> spans, I had to pass information about "already seen" tokens into each function because as stated elsewhere, either span can contain the other but it may not contain itself indirectly. That is, the following syntax is illegal:
+
+<pre><em>outer <strong>inner <em>innermost</em> ... </strong> ... </em></pre>
+
+The <tt>strong</tt> method only knows that <tt>em</tt> is disallowed inside its span if the <tt>em</tt> method tells it so. The need to pass all this scope information along with the function calls lead me to conclude that I may as well just use the gigantic <tt>switch</tt> statement anyway. Time will tell if this is the best approach.
