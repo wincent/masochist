@@ -1,0 +1,7 @@
+---
+tags: regex
+---
+= See also =
+
+* [[Wikipedia]] article on [[regular expressions]]: http://en.wikipedia.org/wiki/Regular_expressions
+* [[Regular expression cheatsheet]]
