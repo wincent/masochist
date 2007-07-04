@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[UCS-2]]: http://en.wikipedia.org/wiki/UCS-2
