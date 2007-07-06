@@ -1,0 +1,40 @@
+---
+tags: tar
+---
+= Checking/listing archive contents =
+
+For a <tt>tgz</tt> archive:
+
+<pre lang="shell">$tar -t --gunzip -f archive.tgz</pre>
+
+or:
+
+<pre lang="shell">$ tar -tzf archive.tgz</pre>
+
+For a <tt>tbz2</tt> archive:
+
+<pre lang="shell">$ tar -tjf archive.tbz2</pre>
+
+= Copying a directory across filesystems =
+
+For example, to move `/home/jenkins` to `/var/lib/jenkins`:
+
+<pre lang="shell"># cd /var/lib
+# mkdir jenkins
+# chown jenkins:jenkins jenkins
+# cd jenkins
+# sudo -u jenkins tar -cpf - /home/jenkins | tar xpf -</pre>
+
+= Copying the ''contents'' of a folder into another =
+
+<pre lang="shell">$ tar cpf - -C $SRC_DIR . | tar xpf - -C $DEST_DIR</pre>
+
+* `c` &rarr; compress
+* `x` &rarr; extract
+* `p` &rarr; preserve permissions, ownership, attributes, timestamps etc
+* `f ''directory''` &rarr; read from/write to file (in this case, `-`, which stands for standard in and standard out)
+* `-C ''directory''` &rarr; change into specified directory before proceeding
+
+== See also ==
+
+* [[unzip cookbook]]
