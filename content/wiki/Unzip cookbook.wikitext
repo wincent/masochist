@@ -1,0 +1,10 @@
+---
+tags:
+---
+= Checking/listing archive contents =
+
+<pre>unzip -t archive.zip</pre>
+
+= See also =
+
+* [[tar cookbook]]
