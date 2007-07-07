@@ -1,0 +1,855 @@
+---
+tags: antlr
+---
+= Preliminaries =
+
+These simple examples demonstrate some [[lexer]] basics for [[ANTLR]]. They assume that [[ANTLR 3]] is installed and in the <tt>CLASSPATH</tt>; likewise the current directory should also be in the <tt>CLASSPATH</tt>:
+
+<pre>export CLASSPATH=".:/usr/local/antlr/lib/antlr-3.0.jar"
+export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar" 
+export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-runtime-3.0.jar"
+export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar"</pre>
+
+Each example uses a <tt>Simple</tt> grammar in a file called <tt>Simple.g</tt>.
+
+The grammar can be compiled using:
+
+<pre>java org.antlr.Tool Simple.g</pre>
+
+An executable can then be produced with:
+
+<pre>javac Simple.java SimpleLexer.java SimpleParser.java</pre>
+
+This requires a <tt>Simple.java</tt> file containing a <tt>main</tt> method:
+
+<pre>import org.antlr.runtime.*; 
+
+public class Simple {
+  public static void main(String[] args) throws Exception {
+    ANTLRInputStream input = new ANTLRInputStream(System.in); 
+    SimpleLexer lexer = new SimpleLexer(input); 
+    CommonTokenStream tokens = new CommonTokenStream(lexer); 
+    SimpleParser parser = new SimpleParser(tokens); 
+    System.out.println("\n"); // blank line before printing other output
+    parser.thing(); 
+  } 
+}</pre>
+
+Note that the start rule in these examples is <tt>thing</tt>.
+
+The compiled executable can be run using:
+
+<pre>java Simple</pre>
+
+Input is read from the [[standard input]]. Hit Control-D twice to signal the end of the input.
+
+= Unrecognized tokens =
+
+This grammar demonstrates how [[ANTLR]] responds to input not recognized by the [[lexer]]:
+
+<pre>grammar Simple;
+
+// lexer rules
+FOO: 'foo' { System.out.println("foo"); };
+BAR: 'bar' { System.out.println("bar"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+== Invalid input ==
+
+For input:
+
+<pre>hello</pre>
+
+[[ANTLR]] prints:
+
+<pre>line 1:0 no viable alternative at character 'h'
+line 1:1 no viable alternative at character 'e'
+line 1:2 no viable alternative at character 'l'
+line 1:3 no viable alternative at character 'l'
+line 1:4 no viable alternative at character 'o'
+done</pre>
+
+Note that the [[lexer]] emits warnings for unrecognized characters and then moves on. Ultimately no tokens are recognized and no tokens are passed on to the parser, other than the <tt>EOF</tt> token.
+
+== Valid input ==
+
+For input:
+
+<pre>foobar</pre>
+
+Prints:
+
+<pre>foo
+bar
+done</pre>
+
+== Mixed input (valid/invalid) ==
+
+For input:
+
+<pre>*foo+bar=</pre>
+
+
+Prints:
+
+<pre>line 1:0 no viable alternative at character '*'
+foo
+line 1:4 no viable alternative at character '+'
+bar
+line 1:8 no viable alternative at character '='
+done</pre>
+
+Here we clearly see the unrecognized characters being skipped over by the [[lexer]]; the [[parser]] only sees the valid tokens.
+
+= The <tt>tokens</tt> section =
+
+== Basics ==
+
+This example uses the <tt>tokens</tt> section instead of the lexer rule for <tt>FOO</tt> like in the previous example:
+
+<pre>grammar Simple;
+
+tokens {
+  FOO = 'foo';
+}
+
+// lexer rules
+BAR: 'bar' { System.out.println("bar"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+=== Invalid input ===
+
+Input:
+
+<pre>hello</pre>
+
+Output:
+
+<pre>line 1:0 no viable alternative at character 'h'
+line 1:1 no viable alternative at character 'e'
+line 1:2 no viable alternative at character 'l'
+line 1:3 no viable alternative at character 'l'
+line 1:4 no viable alternative at character 'o'
+done</pre>
+
+Note that this example behaves identically to the one above.
+
+=== Valid input ===
+
+Input:
+
+<pre>foobar</pre>
+
+Output:
+
+<pre>bar
+done</pre>
+
+Note that tokens declared in the <tt>tokens</tt> section can't have actions attached to them; this is why nothing is printed when <tt>FOO</tt> is recognized.
+
+=== Mixed input ===
+
+Input:
+
+<pre>*foo+bar=</pre>
+
+Output:
+
+<pre>line 1:0 no viable alternative at character '*'
+line 1:4 no viable alternative at character '+'
+bar
+line 1:8 no viable alternative at character '='
+done</pre>
+
+== Precedence ==
+
+This grammar explores whether tokens declared in the <tt>tokens</tt> section take precedence over those defined in normal [[lexer]] rules; note how both <tt>FOO</tt> and <tt>BAR</tt> now compete, trying to match <tt>foo</tt>:
+
+<pre>grammar Simple;
+
+tokens {
+  FOO = 'foo';
+}
+
+// lexer rules
+BAR: 'foo' { System.out.println("bar"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+Upon compilation, [[ANTLR]] prints:
+
+<pre>warning(208): Simple.g:8:1: The following token definitions are unreachable: BAR</pre>
+
+Note that the relative ordering within the file has no effect; upon changing the order:
+
+<pre>grammar Simple;
+
+// lexer rules
+BAR: 'foo' { System.out.println("bar"); };
+
+tokens {
+  FOO = 'foo';
+}
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+[[ANTLR]] still emits:
+
+<pre>warning(208): Simple.g:8:1: The following token definitions are unreachable: BAR</pre>
+
+Now for a slightly more subtle example; there is no longer a literal duplication of the two tokens but <tt>BAR</tt> will still try to match the same thing as <tt>FOO</tt>:
+
+<pre>grammar Simple;
+
+tokens {
+  FOO = 'foo';
+}
+
+// lexer rules
+BAR: 'a'..'z' 'a'..'z' 'a'..'z' { System.out.println("bar"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+This compiles without warning.
+
+For input:
+
+<pre>foo</pre>
+
+[[ANTLR]] prints:
+
+<pre>done</pre>
+
+And for input:
+
+<pre>bar</pre>
+
+It prints:
+
+<pre>bar
+done</pre>
+
+Thus demonstrating that '''tokens defined in the <tt>tokens</tt> section take precedence over those defined in normal lexer rules'''.
+
+= Tokens defined implicitly in the parser =
+
+In this section we show that '''tokens defined implicitly in the parser (using string literals) are exactly equivalent to tokens defined in the <tt>tokens</tt> section''':
+
+<pre>grammar Simple;
+
+// lexer rules
+BAR: 'bar' { System.out.println("bar"); };
+
+// parser rules
+thing: ('foo' | BAR)* EOF { System.out.println("done"); };</pre>
+
+Behaves as follows:
+
+<pre>#input
+foo
+
+# output
+done
+
+# input
+bar
+
+# output
+bar
+done
+
+# input
+foobar
+
+# output
+bar
+done</pre>
+
+And changing the grammar slightly in order to compare precedence (note that lexer rule <tt>BAR</tt> and the implicitly-defined token <tt>'foo'</tt> will now try to match the same thing):
+
+<pre>grammar Simple;
+
+// lexer rules
+BAR: 'a'..'z' 'a'..'z' 'a'..'z' { System.out.println("bar"); };
+
+// parser rules
+thing: ('foo' | BAR)* EOF { System.out.println("done"); };</pre>
+
+Behaves as follows:
+
+<pre>#input
+foo
+
+# output
+done
+
+# input
+bar
+
+# output
+bar
+done
+
+# input
+foobar
+
+# output
+bar
+done</pre>
+
+Note that the behaviour of implicitly-defined tokens is identical to that from the previous section, where tokens were explicitly defined in the <tt>tokens</tt> section.
+
+= Precedence among lexer rules =
+
+== Literal tokens ==
+
+This grammar demonstrates that when matching input that could match multiple lexer rules, [[ANTLR]] will choose the longest match. This is clearest in the case of literal tokens (see below for an example using non-literal tokens):
+
+<pre>grammar Simple;
+
+// lexer rules
+SHORT: 'aaa' { System.out.println("short"); };
+LONG: 'aaaa' { System.out.println("long"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+Behaviour is as follows:
+
+<pre># input
+aaa
+
+# output
+short
+done
+
+# input
+aaaa
+
+# output
+long
+done
+
+# input
+aaaaaaa
+
+# output
+long
+short
+done</pre>
+
+Of special interest is the last example; note how [[ANTLR]] choose the longest match over the shorter possibility even though the <tt>SHORT</tt> lexer rule appears first in the grammar.
+
+== Non-literal tokens ==
+
+Non-literal tokens are different to literal tokens in that '''the order in which the lexer rules are specified is critical''', as shown in this example grammar:
+
+<pre>grammar Simple;
+
+// lexer rules
+FOO: 'a'..'z'+ { System.out.println("foo"); };
+BAR: 'a'..'f'+ { System.out.println("bar"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+Here [[ANTLR]] warns that <tt>warning(208): Simple.g:5:1: The following token definitions are unreachable: BAR</tt>.
+
+Changing the order:
+
+<pre>grammar Simple;
+
+// lexer rules
+BAR: 'a'..'f'+ { System.out.println("bar"); };
+FOO: 'a'..'z'+ { System.out.println("foo"); };
+
+// parser rules
+thing: .* EOF { System.out.println("done"); };</pre>
+
+[[ANTLR]] will now preferentially match <tt>BAR</tt>, if possible and '''all else being equal''':
+
+<pre># input
+aaa
+
+# output
+bar
+done
+
+# input
+zzz
+
+# output
+foo
+done
+
+# input
+aaaaaaaazzz
+
+# output
+foo
+done</pre>
+
+Note how when the the input can match <tt>FOO</tt> or <tt>BAR</tt>, [[ANTLR]] prefers <tt>BAR</tt> because it appears first '''but''' in the case where [[ANTLR]] could match the input as two tokens (<tt>BAR</tt> followed by <tt>FOO</tt>) or as a single, longer token (just <tt>FOO</tt>), it opts for the greedy match.
+
+So ordering is critical for non-literal lexer rules, but in general ''this ordering is only relevant during the analysis phase''; the following example rules should make this clear:
+
+<pre>LETTERS: 'a'..'z'+;
+LETTERS_SUBSET: 'a'..'f'+; // unreachable according to analysis
+
+NUMBERS_SUBSET: '0'..'5'+; // reachable according to analysis
+NUMBERS: '0'..'9'+;</pre>
+
+If we take the two number-matching rules, note that the ordering was important during the analysis phase. But when the lexer is actually run the ordering is overridden by ANTLR's preference for greedy matches:
+
+<pre># inputs
+012345 # could match either rule
+       # but ANTLR will choose NUMBERS_SUBSET
+       # because it appears first in the lexer
+
+0123456 # could match NUMBERS_SUBSET, followed by NUMBERS
+        # alternatively, could just match one NUMBERS token
+        # ANTLR chooses the greedy match (one NUMBERS token)</pre>
+
+The only case in which strict ordering is preserved at both analysis and runtime ''regardless of length'' is when filtering is turned on; (see the section on filtering below).
+
+= Prediction =
+
+[[ANTLR]] builds predictive lexers; that is, they attempt to use a small amount of "lookahead" to see what kind of token they are scanning without actually scanning the entire token. By default the lookahead in lexers is one character. ANTLR will automatically increase this in order to disambiguate cases like this:
+
+<pre># when ANTLR sees an "f" it must look ahead 7 more characters
+# (until it sees the "d" or the "t")
+# only then can it predict either FOOD or FOOT
+FOOD: 'fooooood...';
+FOOT: 'foooooot...';</pre>
+
+Once lookahead has determined the type of token to be expected, [[ANTLR]] races forward and tries to scan the entire thing, raising an exception if the token didn't match the prediction. The following simple grammar illustrates this:
+
+<pre>grammar Simple;
+
+FOO: BAR ':' BAZ {System.out.println("FOO");};
+fragment BAR: 'bar' {System.out.println("bar");};
+fragment BAZ: 'baz' {System.out.println("baz");};
+EVERYTHING_ELSE: . {System.out.println("EVERYTHING_ELSE");};
+
+thing: .* EOF {System.out.println("done");};</pre>
+
+And here is the behaviour:
+
+<pre># input
+bar:.
+
+# output
+bar
+line 1:4 mismatched character '.' expecting 'b'
+done</pre>
+
+Here the lexer sees <tt>bar</tt>, sees a <tt>:</tt>, and assumes that this is a <tt>FOO</tt> token. It therefore expects a <tt>b</tt> character after the colon but instead finds a period, and so throws an exception.
+
+<pre># input
+bar.
+
+# output
+bar
+line 1:3 mismatched character '.' expecting ':'
+done</pre>
+
+Note that with even less input (before seeing even the semi-colon), the lexer has already decided that this is a <tt>FOO</tt> token and so expects to see a semi-colon after the <tt>r</tt>; when it actually finds a period instead it throws an exception.
+
+<pre># input
+baz:.
+
+# output
+line 1:2 mismatched character 'z' expecting 'r'
+EVERYTHING_ELSE
+done</pre>
+
+Now we try a different input before the semi-colon to see if the lexer will identify this as <tt>EVERYTHING_ELSE</tt> or not; evidently when it sees the <tt>ba</tt> it has ''already'' predicted that this will be a <tt>FOO</tt> token, and so fails. Note that even though it throws the exception, it continues on and scans one more character. If we chop one more letter off the input, not that it doesn't continue scanning one character:
+
+<pre># input
+baz:
+
+# output
+line 1:2 mismatched character 'z' expecting 'r'
+done</pre>
+ 
+Likewise, if we chop off yet another character, the lexer still expects to find a <tt>FOO</tt> token:
+
+<pre># input
+baz
+
+# output
+line 1:2 mismatched character 'z' expecting 'r'
+done</pre>
+
+The same is true if we chop off another character:
+
+<pre># input
+ba
+
+# output
+line 1:2 mismatched character 'z' expecting 'r'
+done</pre>
+
+Only when we replace the second character with something other than <tt>a</tt> do we can an exception-free recognition:
+
+<pre># input
+b.
+
+# output
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+done</pre>
+
+Likewise, a lone <tt>b</tt> or any other string that doesn't start with <tt>ba</tt> is recognized without any problems:
+
+<pre># input
+b
+
+# output
+EVERYTHING_ELSE
+done
+
+# input
+foo
+
+# output
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+done</pre>
+
+But note that embedding a <tt>ba</tt> anywhere in the input is enough to trigger the exceptions again:
+
+<pre>#input
+fooba
+
+# output
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+line 1:5 mismatched character '<EOF>' expecting 'r'
+done</pre>
+
+I believe <tt>ba</tt> will trigger the exception while <tt>b</tt> will not because [[ANTLR]] uses one character of lookahead in order to make predictions. When scanning through the input and looking ahead to a lone <tt>b</tt> character, ANTLR doesn't yet know enough to predict whether the next token will be <tt>FOO</tt> or <tt>EVERYTHING_ELSE</tt>. On the other hand, when scanning a <tt>b</tt> character and looking ahead to find an <tt>a</tt>, ANTLR assumes that a <tt>FOO</tt> token has been found.
+
+This prediction behaviour makes [[ANTLR]] lexers exceedingly difficult to get right. There is no "backtracking" like you might find in a hand-coded recursive descent parser. If you want the example grammar to handle strings like <tt>fooba</tt> without raising an exception then the only practical way that I know to do so is to use the <tt>filter</tt> option:
+
+<pre>grammar Simple;
+options {filter=true;}
+
+FOO: BAR ':' BAZ {System.out.println("FOO");};
+fragment BAR: 'bar' {System.out.println("BAR");};
+fragment BAZ: 'baz' {System.out.println("BAZ");};
+EVERYTHING_ELSE: . {System.out.println("EVERYTHING_ELSE");};
+
+thing: .* EOF {System.out.println("done");};</pre>
+
+This grammar will handle things input strings like <tt>....foobaaaaa....bar:baz...</tt> and correctly identify the <tt>bar:baz</tt> string embedded in the middle of the string without raising exceptions for the incomplete substrings elsewhere in the input.
+
+= Filtering =
+
+As already mentioned above, filtering mode changes the precedence and matching behaviour of the generated lexer in the following ways:
+
+* ANTLR synthesizes a <tt>Tokens</tt> rule that will try the lexer rules one at a time ''in the exact order that they appear in the grammar''.
+* Greedy matching does not apply; the first match found wins regardless of length.
+* If no rules match, the lexer skips a character (throwing it away) and tries again, restarting from the top of the rules list.
+* This behaviour is equivalent to having backtracking turned on (failing options do not result in an exception message being emitted; the lexer merely rewinds ready to try the next option) with a fixed lookahead of <tt>k = 1</tt>, combined with a strict ordering of the alternatives.
+
+== Limitations ==
+
+When <tt>filter</tt> is set to <tt>true</tt>, <tt>@after</tt> and action blocks have no effect. This means that when set to <tt>true</tt> you can only generate a lexer, not a combined lexer/parser (this is confirmed in [http://www.antlr.org:8080/pipermail/antlr-interest/2007-May/020942.html this post] to the [[antlr-interest]] mailing list by [[Terence Parr]]):
+
+<pre>grammar Simple;
+options {filter=true;}
+
+FOO: 'foo' {System.out.println("FOO");};
+EVERYTHING_ELSE: . {System.out.println("EVERYTHING_ELSE");};
+
+thing
+@init { System.out.println("init"); }   // printed regardless of filter setting
+@after { System.out.println("after"); } // not printed when filter = true
+: .* EOF {System.out.println("done");}; // not printed when filter = true</pre>
+
+Results:
+
+<pre># input
+init
+FOO
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+
+# output
+</pre>
+
+Results with <tt>filter = true</tt> commented out:
+
+<pre># output
+init
+FOO
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+EVERYTHING_ELSE
+done
+after</pre>
+
+Note that in non-filtering mode, the action block is executed, along with the <tt>@init</tt> and <tt>@after</tt> blocks. In filtering mode, only the <tt>@init</tt> block is executed. Due to this limitation there isn't really any sense in trying to write a parser when filtering is turned on, even in a case like this example grammar where the catch-all rule guarantees that everything will be tokenized. See "[[Patches to ANTLR 3.0]]" for a patch that I submitted that addresses this limitation.
+
+= Ambiguity =
+
+<pre>grammar Simple;
+
+BAR: .+ { System.out.println("BAR"); };    // The following alternatives are unreachable: 1
+FOO: 'foo' { System.out.println("FOO"); }; // The following token definitions are unreachable: FOO
+
+thing: .* EOF;</pre>
+
+Feeding input such as "abc" to this lexer yields:
+
+<pre>line 1:0 required (...)+ loop did not match anything at character 'a'
+line 1:1 required (...)+ loop did not match anything at character 'b'
+line 1:2 required (...)+ loop did not match anything at character 'c'</pre>
+
+Likewise, input of "foo" yields:
+
+<pre>line 1:0 required (...)+ loop did not match anything at character 'f'
+line 1:1 required (...)+ loop did not match anything at character 'o'
+line 1:2 required (...)+ loop did not match anything at character 'o'</pre>
+
+To consider why this is the case, we look at the generated lexer:
+
+* The <tt>mTokens</tt> method will always predict <tt>BAR</tt> and never predict <tt>FOO</tt> (in keeping with the "unreachable" warning for <tt>FOO</tt>.
+* The <tt>mBAR</tt> method will throw an <tt>EarlyExitException</tt> exception for the first character scanned, no matter what the character is; this is once again in keeping with the "unreachable" alternative warning within <tt>BAR</tt>.
+* The parser will catch the exception and keep asking the lexer for tokens, resulting in two more exceptions before the input is exhausted.
+
+Both warnings go away if the <tt>BAR</tt> rule is rewritten as follows:
+
+<pre>BAR: '\u0000'..'\uFFFE'+;</pre>
+
+[[ANTLRWorks]] shows <tt>.+</tt> in its syntax diagram as exactly equivalent to <tt>'\u0000'..'\uFFFE'</tt> but do not let that fool you; the answer lies on page 101 of the [[ANTLR book]] when it describes how <tt>.+</tt> and <tt>.*</tt> default to non-greedy behaviour:
+
+<blockquote>ANTLR considers them idioms for "Match any symbol until you see what lies beyond the subrule."</blockquote>
+
+In other words:
+
+<pre># this rule:
+BAR: .+;
+
+# is really equivalent to:
+BAR: (options { greedy = false; }: '\u0000'..'\uFFFE')+;
+
+# which is not the same as:
+BAR: '\u0000'..'\uFFFE'+;
+
+# or (written in a different way):
+BAR: (options { greedy = true; }: '\u0000'..'\uFFFE')+;</pre>
+
+Setting <tt>greedy = true</tt> to this kind of subrule doesn't make sense because "what lies beyond the subrule" is not specified (there ''is'' no subrule in fact). A counter example will make this clear:
+
+<pre># here a non-greedy subrule (really the ".*") makes sense
+# because the "what lies beyond" is clearly stated
+# in this case, "what lies beyond" is the sequence '*/'
+COMMENT: '/*' .* '*/';</pre>
+
+In fact, it is never correct to have <tt>greedy = false</tt> on the right edge of a rule and ANTLR will always warn about it:
+
+<pre>FOO: (options { greedy = false; } : 'foo')+; </pre>
+
+This explains why a rule like <tt>.+</tt> is described as containing an unreachable alternative; although I'd still like someone wiser in the ways of ANTLR to confirm my hypothesis.
+
+Also, I am not sure why the warning for <tt>FOO</tt> goes away because it still is unreachable (input "foo" is recognized as <tt>BAR</tt>).
+
+The generated code is different in the following ways:
+
+* The <tt>mBAR</tt> method uses <tt>matchRange('\u0000','\uFFFE')</tt> range under the covers, instead of <tt>matchAny()</tt>.
+* The <tt>mBAR</tt> method uses look-ahead to see if the input character is in the range of <tt>0000</tt> to <tt>FFFE</tt> (it always is); this is different from the other lexer which did not use lookahead and which by default assumes that no match is possible and never follows the <tt>matchAny()</tt> path.
+
+With the rule order inverted ANTLR issues no warnings:
+
+<pre>grammar Simple;
+
+FOO: 'foo' { System.out.println("FOO"); };
+BAR: .+ { System.out.println("BAR"); };
+
+thing: .* EOF;</pre>
+
+For this grammar:
+
+<pre># input
+foo
+
+# output
+FOO
+
+# input
+abc
+
+# output
+line 1:0 required (...)+ loop did not match anything at character 'a'
+line 1:1 required (...)+ loop did not match anything at character 'b'
+line 1:2 required (...)+ loop did not match anything at character 'c'</pre>
+
+Clearly, using the <tt>.</tt> (match any character) symbol in conjunction with <tt>+</tt> doesn't work in the current version of [[ANTLR]]. If we replace <tt>.+</tt> with <tt>'\u0000'..'\uFFFE'</tt> then the behaviour is as expected:
+
+<pre># input
+foo
+
+# output
+FOO
+
+# input
+abc
+
+# output
+BAR</pre>
+
+When we change <tt>BAR</tt> to match a single character ANTLR won't issue any warnings even though the rule appears first (and an <tt>f</tt> could match <tt>BAR</tt> or potentially be the first character of <tt>FOO</tt>):
+
+<pre>BAR: . { System.out.println("BAR"); };
+FOO: 'foo' { System.out.println("FOO"); };</pre>
+
+Behaviour:
+
+<pre># input
+foo
+
+# output (longest match wins)
+FOO
+
+# input
+abc
+
+# output
+BAR
+BAR
+BAR</pre>
+
+And for comparison (reverse order):
+
+<pre>FOO: 'foo' { System.out.println("FOO"); };
+BAR: . { System.out.println("BAR"); };</pre>
+
+Behaviour:
+
+<pre># input
+foo
+
+# output
+FOO
+
+# input
+abc
+
+# output
+BAR
+BAR
+BAR</pre>
+
+The above examples again confirm that all else being equal, the longest match will win regardless of lexer rule order.
+
+<pre>BAR: . . . { System.out.println("BAR"); };
+FOO: 'foo' { System.out.println("FOO"); };</pre>
+
+Behaviour:
+
+<pre># input
+foo
+
+# output
+BAR
+
+# input
+abc
+
+# output
+BAR</pre>
+
+Note how when the length of the two possible matches is equal, the first lexer rule (<tt>BAR</tt> in this case) wins even if the other lexer rule may appear to be more specific.
+
+On changing the order:
+
+<pre>FOO: 'foo' { System.out.println("FOO"); };
+BAR: . . . { System.out.println("BAR"); };</pre>
+
+The behaviour is:
+
+<pre># input
+foo
+
+# output
+FOO
+
+# input
+abc
+
+# output
+BAR
+
+# input (first character could match FOO)
+fbc
+
+# output
+BAR
+
+# input (first two characters could match FOO)
+foc
+
+# output
+BAR</pre>
+
+It is interesting how in this example <tt>FOO</tt> is not predicted despite the presence of two characters <tt>fo</tt>; this is different from the findings above which showed prediction kicking in after seeing only two characters. I believe the reason why prediction doesn't occur in this case is because both <tt>FOO</tt> and <tt>BAR</tt> are known to be of the same length at analysis time and so ANTLR won't predict <tt>FOO</tt> until it has seen the whole thing. Witness this counter example:
+
+<pre># input
+fo
+
+# output
+line 1:0 no viable alternative at character 'f'</pre>
+
+Here ANTLR doesn't predict <tt>FOO</tt>, but nor can it recognize <tt>BAR</tt> because three characters are required and only two are present.
+
+== Analysis problems ==
+
+Here is another example of how ambiguity can cause problems. Consider the following examples:
+
+<pre>// OK
+ANYTHING : . ;
+thing : ANYTHING* EOF;
+
+// OK
+ANYTHING : . ;
+thing : element? EOF;
+element : ANYTHING+ ;
+
+// OK
+ANYTHING : . ;
+thing : element EOF;
+element : ANYTHING* ;
+
+// not OK
+ANYTHING : . ;
+thing : element* EOF;
+element : ANYTHING+ ;</pre>
+
+All is well in the first three cases. The last case causes ANTLR to complain "Decision can match input such as "ANYTHING" using multiple alternatives: 1, 2". In this case given input like "abcdef", ANTLR doesn't know whether to match it as a series of <tt>element</tt> objects or as a single <tt>element</tt>.
+
+This is discussed on pages 283 and 285 of the [[ANTLR book]], discussing an ambiguity problem with semi-colons (emphasis added):
+
+<blockquote>The solution is to either make semicolons required or make them only statements. Semicolons should not be both statement terminators and statements as shown previously. Naturally, a good language designer would simply fix the language. With the grammar as is, though, ANTLR automatically resolves the nondeterminism greedily.
+
+''ANTLR generates a warning, but you can safely ignore it. At some point ANTLR will let you silence warnings for decisions that ANTLR properly 
+resolves.''</blockquote>
+
+= Empty lexer rules =
+
+Empty lexer rules are a "no no"; that is, <tt>*</tt> and <tt>?</tt> are bad in the lexer if they are entire production, and can lead to hanging the [[ANTLRWorks]] debugger or a non-working lexer (source: [http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021279.html this] [[antlr-interest]] post by [[Terence Parr]]).
+
+= See also =
+
+* [[ANTLR prediction]]
