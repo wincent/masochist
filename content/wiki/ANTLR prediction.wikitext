@@ -1,0 +1,61 @@
+---
+tags: antlr
+---
+[[ANTLR]]'s prediction mechanisms can make it behave in surprising ways if you don't know what it's doing under the covers.
+
+= A simple example =
+
+In my [[wikitext]] parser I was trying to tokenize [[URIs]] in such a way that input text like:
+
+<pre>http://example.com/</pre>
+
+would be recognized as a URI, whereas:
+
+<pre>http://example.com/.</pre>
+
+would be recognized as a URI followed by a (non-URI) period. I only want the URI portion to be turned into a hyperlink, not the terminating period (which most likely serves to indicate the end of a sentence). This is tricky because the period can be part of a URI in one place (in the middle of a URI), and excluded from it in another (at the end of the URI).
+
+We describe this using the concepts of <tt>URI_CHARS</tt> (legal URI characters) and <tt>SPECIAL_URI_CHARS</tt> (characters such as the period which may form part of a URI if and only if they are followed by <tt>URI_CHARS</tt>).
+
+This would be fairly easy to parse using a [[Perl]]-style [[regular expression]]; something like:
+
+<pre>/http:\/\/[a-zA-Z\/]+(\.[a-zA-Z\/]+)*/</pre>
+
+ANTLR's prediction mechanisms make it slightly more complicated than just "translating" the regular expression into ANTLR syntax.
+
+= Initial (broken) solution =
+
+<pre>URI : (HTTP | FTP | SVN) URI_CHARS (SPECIAL_URI_CHARS URI_CHARS)*;</pre>
+
+This rule produces the following results for the shown inputs:
+
+<pre># correctly recognized as URI:
+http://example.com/
+
+# not recognized at all
+http://example.com/.</pre>
+
+Note that in the latter case it doesn't merely fail to exclude the trailing period from the match; it actually doesn't match anything at all.
+
+To understand why this is so we must look at the generated code. Looking at the generated <tt>mURI</tt> function we see that ANTLR's approach is the following:
+
+# Based on lookahead of <tt>h</tt>, <tt>f</tt> or <tt>s</tt>, predict <tt>HTTP</tt>, <tt>FTP</tt> or <tt>SVN</tt> subrules.
+# Match <tt>URI_CHARS</tt>
+# Look ahead for <tt>SPECIAL_URI_CHARS</tt>
+# On seeing <tt>SPECIAL_URI_CHARS</tt>, predict <tt>SPECIAL_URI_CHARS</tt> followed by <tt>URI_CHARS</tt>
+
+So you can see how any time we see <tt>SPECIAL_URI_CHARS</tt> ANTLR will expect to find <tt>URI_CHARS</tt> afterwards, and upon failure will jump out of the <tt>mURI</tt> function using <tt>return</tt> (here I am using the [[C target]]), failing to match anything at all.
+
+Unlike the regular expression version, there is no backtracking or fallback. The <tt>*</tt> operator here behaves in what may appear to be a counter-intuitive fashion: rather than settling for "zero or more matches", if any match of the subrule fails the prediction then the entire <tt>URI</tt> rule will fail. This is true even in a filtering (backtracking) [[lexer]] as is the case in the example shown here.
+
+To understand why this is so you need to understand the ANTLR philosophy, which is to be as fast and efficient as possible, principally via prediction. As soon as a possible path can be predicted, [[ANTLR]] assumes that it ''will'' succeed; and in this case failure causes the entire rule to fail. The approach is clearly visible when you examine the generated code; all ANTLR functions are divided into two parts: a prediction part and then a matching part that races ahead expecting to succeed based on the prediction. This works well for highly-structured, strictly defined languages like [[C]] but it doesn't work so well for free-form "pseudo-languages" like [[wikitext]] markup.
+
+= Working solution =
+
+Knowing how ANTLR works we can now implement a solution, which here is to use a [[syntactic predicate]]:
+
+<pre>URI : (HTTP | FTP | SVN) URI_CHARS ((SPECIAL_URI_CHARS URI_CHARS)=> (SPECIAL_URI_CHARS URI_CHARS ))*;</pre>
+
+This basically tells ANTLR to only try matching the <tt>SPECIAL_URI_CHARS URI_CHARS</tt> subrule if it is guaranteed to succeed. If you look at the generated code you will see that ANTLR has added a syntactic predicate to the prediction part of the <tt>mURI</tt> function. As such it will now behave as desired.
+
+Note that syntactic predicates only make sense in rules for which there are multiple alternatives; the predicate helps ANTLR decide which path to take. If you try using a syntactic predicate in a rule for which there is only one alternative then ANTLR will ignore it. It might appear in this case that there are no explicit alternatives and so the predicate will have no effect, but there is an implicit alternative thanks to the <tt>*</tt> operator: the decision ANTLR has to make is whether to match another <tt>SPECIAL_URI_CHARS URI_CHARS</tt> pair, so there is in fact a choice between two options (to match and not to match).
