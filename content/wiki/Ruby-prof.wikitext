@@ -1,0 +1,8 @@
+---
+tags: ruby.prof
+---
+[[ruby-prof]] is a profiler for [[Ruby]].
+
+= See also =
+
+* [[RubyForge]] project page: http://rubyforge.org/projects/ruby-prof/
