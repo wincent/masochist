@@ -1,0 +1,11 @@
+---
+tags: haml
+---
+[[Haml 1.7]] was apparently released on 7 July 2007 (according to the [[RubyForge]] [http://rubyforge.org/frs/?group_id=2760 project files page]) but I only found out about it on 10 July 2007.
+
+It primarily brings speed increases and enhancements to the Sass.
+
+= See also =
+
+* Release notes: http://haml.hamptoncatlin.com/release-notes
+* My upgrade notes: [[Upgrading to Haml 1.7 on Mac OS X Tiger]]
