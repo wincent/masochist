@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[applications]]: http://en.wikipedia.org/wiki/Application_software
