@@ -1,0 +1,10 @@
+---
+tags: smtp
+---
+[[SMTP]] or [[Simple Mail Transport Protocol]] is defined in [[RFC 821]] and extended/refined in [[RFC 2821]].
+
+In November 2009 [/blog/outgoing-mail-changes I started] using [[AuthSMTP]] as an external [[SMTP]] host.
+
+= See also =
+
+* [[Wikipedia]] article on [[SMTP]]: http://en.wikipedia.org/wiki/SMTP
