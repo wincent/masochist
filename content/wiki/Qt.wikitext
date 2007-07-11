@@ -1,0 +1,12 @@
+---
+tags:
+---
+[[Qt]] is a cross-platform application development framework. Examples of Qt-based applications include [[QGit]].
+
+The [[Qt]] libraries for [[Mac OS X]] can be downloaded from:
+
+* http://trolltech.com/developer/downloads/qt/mac
+
+= See also =
+
+* My first-time installation notes for [[Qt]]: [[Installing QGit 2.0rc1 on Mac OS X Tiger]]
