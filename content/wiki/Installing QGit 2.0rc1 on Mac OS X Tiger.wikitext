@@ -1,0 +1,38 @@
+---
+tags: git
+---
+These notes were made while installing [[QGit]] for the first time on [[Mac OS X]] [[Tiger]]. As this was the first time I had built a [[Qt]]-based [[app]] on [[Mac OS X]] I had to first download and build the Qt frameworks.
+
+<pre># download latest version of Qt
+# http://trolltech.com/developer/downloads/qt/mac
+wget http://wftp.tu-chemnitz.de/pub/Qt/qt/source/qt-mac-opensource-src-4.3.0.tar.gz
+
+# extract
+tar xzvf qt-mac-opensource-src-4.3.0.tar.gz 
+cd qt-mac-opensource-src-4.3.0/
+
+# build
+./configure
+make
+sudo make install
+
+# download QGit
+cd ..
+wget "http://dfn.dl.sourceforge.net/sourceforge/qgit/qgit-2.0rc1.tar.bz2"
+
+# extract
+tar xjvf qgit-2.0rc1.tar.bz2 
+cd qgit
+
+# ensure that qmake is in path
+export PATH="/usr/local/Trolltech/Qt-4.3.0/bin/:$PATH"
+
+# build
+qmake qgit.pro 
+make
+
+# test built application
+open bin/qgit.app
+
+# install (into $HOME/bin/)
+sudo make install</pre>
