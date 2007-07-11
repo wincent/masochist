@@ -1,0 +1,8 @@
+---
+tags: git
+---
+[[gitk]] is a repository visualizer for [[Git]].
+
+= See also =
+
+* Official documentation for [[gitk]]: http://www.kernel.org/pub/software/scm/git/docs/gitk.html
