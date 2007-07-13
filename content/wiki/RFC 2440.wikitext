@@ -1,0 +1,9 @@
+---
+tags: rfcs
+---
+[[RFC 2440]] describes the [[OpenPGP Message Format]].
+
+= See also =
+
+* Full text of [[RFC 2440]]: http://www.ietf.org/rfc/rfc2440.txt
+* [[GPG]]
