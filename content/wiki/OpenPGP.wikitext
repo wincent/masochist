@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[OpenPGP]] is an encryption standard defined in [[RFC 2440]]. It is implemented by [[GPG]].
+
+= Official site =
+
+* http://www.openpgp.org/
