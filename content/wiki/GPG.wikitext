@@ -1,0 +1,8 @@
+---
+tags: gpg
+---
+[[GNU Privacy Guard]] (or [[GnuPG]] for short, or [[GPG]] after the `gpg` [[command line]] tool) is a user-level cryptography package that implements the [[OpenPGP]] standard. It can be used for encryption, decryption, signing and verification, as well as key management.
+
+= Official site =
+
+* http://www.gnupg.org/
