@@ -1,0 +1,12 @@
+---
+tags:
+---
+A [[CLI]] or [[Command Line Interface]] is a textual-only interface. It is often also referred to as a [[shell]]. In [[Mac OS X]] a [[CLI]] app is one which you interact with through the [[Terminal]].
+
+Examples of [[command line]] tools made by Wincent include:
+
+* [[Wincent Strings Utility]]
+
+= See also =
+
+* [[GUI]]
