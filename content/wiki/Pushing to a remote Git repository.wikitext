@@ -1,0 +1,23 @@
+---
+tags: git
+---
+= Tips =
+
+Generally anonymous public checkouts (clones) are served via the <tt>git-daemon</tt> (see <tt>man git-daemon</tt>) and accessed using [[URLs]] that start with <tt>git://</tt>.
+
+Write access, on the other hand, is generally performed over [[SSH]].
+
+So if you plan to push modifications back to a remote [[Git]] repository then you should clone it using an <tt>ssh://</tt> URL and not a <tt>git://</tt> one. If you mistakenly make the wrong type of clone and then try to push you will get a message like this:
+
+<pre>fatal: The remote end hung up unexpectedly
+error: failed to push to 'git://git.example.com/repo'</pre>
+
+Perform a <tt>git config -l | grep remote</tt> or <tt>git remote show origin</tt> to see how access to the remote repository is configured. You'll see that the access URL uses the <tt>git</tt> protocol (<tt>'git://git.example.com/repo'</tt>).
+
+To correct the problem you can use the <tt>git config</tt> command to update the URL to the [[SSH]] equivalent:
+
+<pre>git config remote.origin.url ssh://git.example.com/pub/git/path_to_public_repos/repo.git</pre>
+
+Note how the publicly-visible path to your repository for anonymous users is not necessarily the same as the absolute path that you'll use when accessing over SSH, and this depends on the parameters you pass to the <tt>git-daemon</tt> (see "[[Migrating Subversion repositories to Git]]" for information on how I set up these repositories).
+
+Now <tt>git push</tt> will work.
