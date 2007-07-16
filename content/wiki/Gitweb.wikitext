@@ -1,0 +1,8 @@
+---
+tags: git
+---
+[[Gitweb]] or <tt>gitweb.cgi</tt> is a [[CGI]] script included with [[Git]] that provides read-only browser-based access to a repository (or repositories).
+
+My notes on setting up [[gitweb]] can be found under "[[Setting up gitweb]]".
+
+My public [[gitweb]] installation can be browsed at: http://git.wincent.com/.
