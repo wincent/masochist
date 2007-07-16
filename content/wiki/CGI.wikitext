@@ -1,0 +1,10 @@
+---
+tags:
+---
+[[CGI]] or [[Common Gateway Interface]] is a protocol implemented by a [[web]] server to facilitate the exchange of information to and from a connecting client and an executable running on the server.
+
+An example of a [[CGI]] program is the [[gitweb]] script that is included with [[Git]].
+
+= See also =
+
+* [[Wikipedia]] article on [[CGI]]: http://en.wikipedia.org/wiki/Common_Gateway_Interface
