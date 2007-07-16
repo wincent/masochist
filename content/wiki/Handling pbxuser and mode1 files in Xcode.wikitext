@@ -1,0 +1,62 @@
+---
+tags:
+---
+According to [http://lists.apple.com/archives/Xcode-users/2005/Jul/msg00541.html Apple's Chris Espinosa]:
+
+<blockquote>One thing you could do is take your daniel.pbxuser and rename it to default.pbxuser, then commit it with the project. Xcode loads default.pbxuser unless there's a username-matching pbxuser file.</blockquote>
+
+= What is actually stored in a <tt>.pbxuser</tt> file? =
+
+* Scott Tooker (Apple): "the locations for built products and intermediates files."
+* David Ewing (Apple): "The currently active target, executable, and build style are all stored in the file ... Other information includes window/view sizes, bookmarks, breakpoints, custom executables, smart groups and code sense settings."
+
+= What is actually stored in a <tt>.mode1</tt> file? =
+
+* Scott Tooker: "The .mode1 file contains layout information for the project (like window positions and sizes, including sizes of sub-views and the like)."
+* Scott Tooker: "<nowiki>[T]</nowiki>he various *.mode* files track information about your workspace configuration. It's nothing critical to the project so it is safe to throw them away."
+
+Another post from Scott:
+
+<blockquote>Currently we already separate project settings data into two parts:
+
+project.pbxproj - per project data (file & group hierarchy, target build settings, for example)
+<username>.pbxuser - per user per project data (user bookmarks, custom executables, UI layout)
+
+In future releases we want to separate project data from UI layout data (so the <username>.pbxuser file would split into two files). The .mode1 files are step in this direction.
+
+We've also talked about separating out target-specific data from the project.pbxproj file.</blockquote>
+
+= Suggested action =
+
+== Git ==
+
+If using [[Git]], you can add a <tt>.gitignore</tt> file inside your project bundle with contents like this:
+
+<pre>*.mode1
+*.pbxuser
+!default.pbxuser</pre>
+
+== Subversion ==
+
+After closing Xcode:
+
+<pre>svn mv wincent.pbxuser default.pbxuser
+svn mv wincent.mode1 default.mode1
+svn commit</pre>
+
+Although it appears that Xcode ignores the <tt>default.mode1</tt> file. So consider this instead:
+
+<pre>cd path_to_project_bundle
+svn commit -m "Pre-rename pbxuser commit" 
+svn mv wincent.pbxuser default.pbxuser
+svn commit -m "Create default.pbxuser"
+svn propset svn:ignore 'wincent.*' .
+svn commit -m "Ignore wincent.pbxuser, wincent.mode1 etc"</pre>
+
+You can still check-in the files occasionally but will no longer see them in status listings.
+
+If the files in question are already in the repository you'll need to get rid of them:
+
+<pre>svn del URL_TO_PBXUSER_FILE_IN_REPOSITORY
+svn del URL_TO_MODE1_FILE_IN_REPOSITORY
+svn up</pre>
