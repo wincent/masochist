@@ -1,0 +1,50 @@
+---
+tags: svk
+---
+When I first started working with [[SVK]] I was working alone and from a single machine. My work cycle was basically:
+
+<pre># make changes
+svk ci -m "Commit message"
+
+# make more changes
+svk ci -m "Commit message"</pre>
+
+When working with multiple branches my pattern was:
+
+<pre># make changes
+svk ci -m "Commit message"
+
+# push changes from branch back to trunk
+svk push --verbatim
+
+# or, pulling changes from trunk into branch
+svk pull
+
+# now working in another branch; get most recent changes
+svk up
+
+# make changes
+svk ci -m "Commit message"</pre>
+
+When I started doing development work in [[Leopard]] itself and finally got [[SVK]] working (my initial attempts at installing [[SVK]] failed and so I fell back to working with vanilla [[Subversion]]) I no longer had a single-machine set-up; I now had two depots (two mirrors).
+
+I was surprised to see that after working on another branch my commits were failing even though I had done an <tt>svk up</tt> beforehand:
+
+<pre>Commit into mirrored path: merging back directly.
+Merging back to mirror source svn://svn.wincent.com/WOTest.
+A checksum mismatch occurred: Base checksum mismatch on '/trunk/NSException+WOTest.m':
+   expected:  ab5055a21d72459b6fe6c8bd4c959e20
+     actual:  7d57db2ecf5e25fc15762d8bb1feb6cb</pre>
+
+This is because in any multi-user (multi-depot) environment <tt>svk up</tt> is not enough to ensure that your depot reflects the latest changes in the remote repository. Instead you must perform an <tt>svk sync</tt> (see <tt>svk help sync</tt> for information about options) to bring the local depot up to date, or pass the <tt>-s</tt> switch to <tt>svk up</tt> to achieve the same effect:
+
+<pre># alternative 1:
+svk sync //mirrors/mirrored_repo_name
+svk up
+
+# alternative 2:
+svk up -s</pre>
+
+When you're working from a single machine (single depot) and nobody else is updating the repository from anywhere else you don't run into this problem, even when working on many branches and using <tt>svk push</tt> and <tt>svk pull</tt> extensively. This is because every time you do an <tt>svk ci</tt> the local depot is updated to reflect those changes and they are then transmitted to the repository; in this way the remote repository never sees any changes which the local depot doesn't see.
+
+As soon as you switch to a multi-user (multi-depot) pattern then you'll need to start using <tt>svk sync</tt>.
