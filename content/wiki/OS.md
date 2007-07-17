@@ -1,0 +1,6 @@
+---
+redirect: [[Operating system]]
+tags: 
+---
+
+
