@@ -1,0 +1,11 @@
+---
+tags:
+---
+= Examples of operating systems =
+
+* [[Mac OS X]]
+* [[Linux]]
+
+= See also =
+
+* [[Wikipedia]] article on [[operating systems]]: http://en.wikipedia.org/wiki/Operating_system
