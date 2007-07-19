@@ -1,0 +1,7 @@
+---
+title: Add RDoc documentation to post-receive script (snippets, 238877e)
+---
+
+Now all modules, classes and methods are documented via RDoc.
+
+Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
