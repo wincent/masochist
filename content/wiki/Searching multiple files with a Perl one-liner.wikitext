@@ -1,0 +1,16 @@
+---
+tags: perl.one.liners
+---
+"[[Search and replace in multiple files with a Perl one-liner]]" showed how to search multiple files and perform in-line replacements in them, but sometimes you just want to know if a particular file matches something.
+
+<pre>perl -ne "exit 1 if m/foobar/;"  file1</pre>
+
+The <tt>-n</tt> switch causes [[perl]] to loop over the lines in the input file without printing them (use <tt>-p</tt> for that, as seen in "[[Search and replace in multiple files with a Perl one-liner]]"). The <tt>-e</tt> switch tells perl an expression to evaluate.
+
+This one-liner will return an exit code of 1 if the file matches, or 0 if there is no match.
+
+Alternatively, if you want to search for matches in multiple files at once you could do this:
+
+<pre>perl -ne 'print "match: $ARGV.\n" if m/foobar/;'  file1 file2 file3</pre>
+
+This would print the name of each matching file (multiple times for multiple matches).
