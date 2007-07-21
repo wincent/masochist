@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[FireWire]]: http://en.wikipedia.org/wiki/FireWire
