@@ -1,0 +1,10 @@
+---
+tags: os.x
+---
+Backup software for [[Mac OS X]] made by [[Shirt Pocket]].
+
+You can read how [[SuperDuper!]] saved my butt in [http://wincent.com/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php this weblog post]. (It has since then saved my butt in August 2008 as well.)
+
+= See also =
+
+* Official site: http://shirt-pocket.com/SuperDuper/
