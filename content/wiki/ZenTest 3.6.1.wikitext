@@ -1,0 +1,17 @@
+---
+tags: zentest
+---
+[[ZenTest 3.6.1]] was released on 23 July 2007.
+
+= Changes =
+
+* Test::Rails::ViewTestCase now uses assert_select.
+* assert_form and friends now work with blocks like assert_select does.
+* Allow path_parameters in view tests to be ammended, making working with routes easier.
+* New version of autotest/notify.rb uses notify-send.
+* Fixed rdoc formatting on autotest and a couple plugins.
+
+= See also =
+
+* [[Upgrading to ZenTest 3.6.1 using RubyGems on Mac OS X Tiger]]
+* Official release announcement: http://blog.zenspider.com/archives/2007/07/zentest_version_361_has_been_released.html
