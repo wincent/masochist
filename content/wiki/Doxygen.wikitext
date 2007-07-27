@@ -1,0 +1,10 @@
+---
+tags: doxygen
+---
+[[Doxygen]] is the source code documentation generator that I use to produce the documentation for my [[Objective-C]] products.
+
+= See also =
+
+* Official home page: http://www.stack.nl/~dimitri/doxygen/index.html
+* [[Wikipedia]] article on [[Doxygen]]: http://en.wikipedia.org/wiki/Doxygen
+* All resources on this site tagged with "[/tags/doxygen doxygen]"
