@@ -1,0 +1,9 @@
+---
+tags: doxygen
+---
+[[Doxygen 1.5.3]] was released on 27 July 2007.
+
+= See also =
+
+* Official changelog: http://www.stack.nl/~dimitri/doxygen/changelog.html
+* [[Upgrading to Doxygen 1.5.3 on Mac OS X Tiger]]
