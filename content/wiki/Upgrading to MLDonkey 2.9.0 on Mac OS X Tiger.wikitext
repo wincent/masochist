@@ -1,0 +1,22 @@
+---
+tags: mldonkey updates
+---
+These notes were made while upgrading to [[MLDonkey 2.9.0]] on [[Mac OS X]] [[Tiger]].
+
+= Building and installing =
+
+<pre>wget "http://surfnet.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.9.0.tar.bz2"
+tar xjvf mldonkey-2.9.0.tar.bz2 
+cd mldonkey-2.9.0
+./configure && make
+sudo make install</pre>
+
+= Testing =
+
+To make sure things work first run <tt>mlnet</tt>:
+
+<pre>mlnet</pre>
+
+You can then test using the web interface (connect to: http://localhost:4080/) or via [[telnet]]:
+
+<pre>telnet localhost 4000</pre>
