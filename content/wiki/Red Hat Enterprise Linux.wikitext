@@ -1,0 +1,8 @@
+---
+tags: red.hat
+---
+[[Red Hat Enterprise Linux]], often abbreviated to [[RHEL]], is a commercial [[Linux]] distribution created and supported by [[Red Hat]]. Although I wouldn't recommend it for casual desktop use, I do think it is the best option for business applications where commercial support is required.
+
+= See also =
+
+* [[Wikipedia]] article on [[Red Hat Enterprise Linux]]: http://en.wikipedia.org/wiki/Red_Hat_Enterprise_Linux
