@@ -1,0 +1,42 @@
+---
+tags: tiger git updates os.x
+---
+These notes were made while upgrading to [[Git 1.5.3.1]] on [[Mac OS X]] [[Tiger]], using a local clone of the central [[Git]] repository.
+
+For notes on upgrading to 1.5.3.1 from the tarball, see "[[Upgrading to Git 1.5.3.1 on Red Hat Enterprise Linux]]".
+
+<pre># get new stuff from upstream
+git fetch
+
+# check the signature on the tag
+git tag -v v1.5.3.1
+
+# switching working tree to 1.5.3.1
+git checkout v1.5.3.1
+
+# clean up any cruft that might be lying around
+make clean
+
+# build
+make prefix=/usr/local all
+
+# run tests
+make prefix=/usr/local test
+
+# install
+sudo make prefix=/usr/local install</pre>
+
+= Installing the documentation =
+
+As before I didn't bother building the documentation myself -- it just takes too long; instead I just downloaded and installed it:
+
+<pre># get man pages
+wget http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.3.1.tar.bz2 \
+     http://www.kernel.org/pub/software/scm/git/git-manpages-1.5.3.1.tar.bz2.sign
+
+# verify
+gpg --verify git-manpages-1.5.3.1.tar.bz2.sign git-manpages-1.5.3.1.tar.bz2
+
+# install
+cd /usr/local/man
+sudo tar xjvf full_path_to_manpages_archive/git-manpages-1.5.3.1.tar.bz2</pre>
