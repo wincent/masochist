@@ -1,0 +1,29 @@
+---
+tags: perl
+---
+The [[CPAN]] or [[Comprehensive Perl Archive Network]] is an archive of [[Perl]] software and a package manager for working with (installing, upgrading, removing) that software.
+
+= Basic use =
+
+== Getting into the shell ==
+
+<pre>sudo -H cpan</pre>
+
+== Installing a module ==
+
+<pre>sudo -H perl -MCPAN -e 'install Bundle::CPAN'</pre>
+
+Or alternatively:
+
+<pre>sudo -H cpan Bundle::CPAN</pre>
+
+== Upgrading all installed modules ==
+
+<pre>sudo -H cpan upgrade</pre>
+
+= See also =
+
+* Official [[CPAN]] site: http://www.cpan.org/
+* [[Wikipedia]] article on the [[CPAN]]: http://en.wikipedia.org/wiki/CPAN
+* "Life with CPAN": http://sial.org/howto/perl/life-with-cpan/
+* [[Finding out which CPAN modules are installed]]
