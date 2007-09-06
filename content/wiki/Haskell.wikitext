@@ -1,0 +1,9 @@
+---
+tags: haskell
+---
+[[Haskell]] is a modern, [[functional programming]] language.
+
+= See also =
+
+* http://haskell.org/
+* [[Wikipedia]] article on [[Haskell]]: http://en.wikipedia.org/wiki/Haskell_%28programming_language%29
