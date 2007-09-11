@@ -1,0 +1,84 @@
+---
+tags: git
+---
+Things you need to now about [[Git]] before starting to work with it.
+
+= Distributed version control =
+
+[[Git]] is a distributed [[version control system]] like [[SVK]] and unlike [[Subversion]] (which uses a server-client model). In fact it goes one step further than SVK in that every single checkout (every ''clone'' or ''cloned repository'' in Git terminology) is a complete copy of the entire repository and all its history; SVK on the other hand creates only a single mirror and each new checkout is just a shallow working copy.
+
+This may seem wasteful at first glance but Git uses very efficient compression such that in many cases the entire repository and all its history is similar in size to a shallow Subversion checkout. If space is a concern you can do shallow clones if you wish, or just checkout submodules of a larger project, but for local clones (on the same filesystem) the default is to create hard links anyway which yields a massive space saving (note that if you are worried about filesystem integrity and are making a local clone for backup purposes then you probably want to pass the <tt>--no-hardlinks</tt> switch to <tt>git clone</tt>). It most cases you don't need to worry about space and just enjoy the benefits that having full local access to the history brings, such as excellent speed when viewing the history.
+
+Under distributed version control things like "revision numbers" become meaningless. This is totally unlike the Subversion model wherein history advances as shown here:
+
+<pre>A -> B -> C -> D -> E</pre>
+
+And revisions are identified by steadily increasing integers: 1, 2, 3, 4 and 5 in the case of the example above. Instead, a single Git repository can have a development history that looks like this:
+
+<pre>A -> B -> F -> G-> H -> I
+      \           /
+       C -> D -> E </pre>
+
+Here revisions (''commits'' in Git-speak) are identified by [[SHA-1]] hashes which are based on their content. Imagine that another developer clones this repository; they now receive an exact copy of the entire history, and can continue development as they please:
+
+<pre>A -> B -> F -> G-> H -> I -> J -> K
+      \           /
+       C -> D -> E </pre>
+
+At the same time the original author may have made other, independent changes:
+
+<pre>A -> B -> F -> G-> H -> I -> L -> M
+      \           /
+       C -> D -> E </pre>
+
+It's clear here that the distributed nature of Git makes integral revision numbers like those used in Subversion meaningless. Here we see that in one repo development produce revisions <tt>J</tt> and <tt>K</tt>, and in another <tt>L</tt> and <tt>M</tt>, and that they share some common history. It would be useless to refer to these as revisions 10 and 11 because they clearly refer to different things. The only way to uniquely identify such revisions is with a cryptographic hash.
+
+Sounds like chaos? Not really. Because of these cryptographic underpinnings, either developer can pull in revisions from the other; in fact, they can pull in revisions from any repository anywhere. In the example above the result will look like this:
+
+<pre>A -> B -> F -> G-> H -> I -> J -> K
+      \           /      \
+       C -> D -> E        L -> M</pre>
+
+The development history is modelled as a [[DAG]] ([[Directed Acyclic Graph]]) which means that it cannot ever contain any cyclic structures: this means that merely sharing revisions between repositories can never lead to any conflicts; you can literally fetch revisions from ''any'' Git repository out there and add them to your local object graph.
+
+And because Git is so good at merging the history is easily unified to create a new revision, here labelled <tt>N</tt>:
+
+<pre>A -> B -> F -> G-> H -> I -> J -> K
+      \           /      \         \
+       C -> D -> E        L -> M -> N</pre>
+
+Merging is so easy in Git that you will find yourself doing it all the time, even when you don't realise that you're doing it. Every time you do a <tt>git pull</tt> to grab changes from a remote repository and integrate them into your own Git is actually doing a <tt>git fetch</tt> (getting the new revisions) and a <tt>git merge</tt> (integrating them into your own development) under the covers. As another example, every time you do a <tt>git stash</tt> to store away some temporary changes, Git actually stores your working state as a commit with two parents, which is itself a form of merging (see the <tt>git-stash</tt> man page for more information); when you later apply a stash you're doing a merge as well. In short, with Git you merge all the time, painlessly, often without even needing to think about it.
+
+All of this is enabled by and itself enables the distributed nature of Git. At first it may seem odd but once you understand it you see that it permits some fantastic and powerful new workflows.
+
+= The index =
+
+[[Git]] uses a staging area called "the index" to determine what will be included in a commit. Other [[version control systems]] like [[Subversion]] use the working copy itself as a staging area (ie. <tt>svn ci</tt> will check in all changes in the working copy), but Git instead will only commit the changes that you explicitly tell it to commit; here "telling" Git means "adding to the index".
+
+So a typical Subversion or [[SVK]] workflow might be:
+
+<pre># make changes
+vi file
+
+# commit
+svk ci</pre>
+
+Whereas in Git you must explicitly tell it to "add" the changes to the index:
+
+<pre># make changes
+vi file
+
+# nothing will be committed!
+git commit
+
+# now the index "knows" about the changes
+git add file
+
+# now we can commit
+git commit</pre>
+
+At first this may seem like an unnecessary additional step, but it allows for some new workflows not possible with other version control systems; for example, the ability to have a "dirty" working copy (with temporary changes) while performing selective "clean" commits. It also allows for more nuanced <tt>diff</tt> and <tt>status</tt> operations because it permits you to distinguish between "finalized changes ready to be committed" and "local modifications not yet ready to be committed".
+
+Note that the semantics of "add" are different in Git than they are in systems like Subversion. In the latter "add" means "add these new files/directories to the repository" while in Git it means "add ''the modifications'' in these files/directories to the index" (and "the index" itself means "the content of the next commit").
+
+It is still possible to work according to the old paradigm by using <tt>git commit -a</tt>, which automatically adds modified files in the working tree to the index before performing the commit.
