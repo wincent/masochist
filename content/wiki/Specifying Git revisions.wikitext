@@ -1,0 +1,33 @@
+---
+tags: git
+---
+There are many, many ways of specifying revisions in [[Git]] which are described in detail in the <tt>git-rev-parse</tt> [http://www.kernel.org/pub/software/scm/git/docs/git-rev-parse.html man page]. This article summarizes some of the more useful ones:
+
+= Accessing parents of a commit =
+
+Given a commit, <tt>rev</tt>:
+
+* <tt>rev^</tt> is the ''first'' parent (remember that a commit can have multiple parents)
+* <tt>rev^1</tt> is the more explicit form of referring to the first parent
+* <tt>rev^2</tt> would refer to the second parent (''not'' the grand-parent, but the second parent, such as in cases where you have two parents that are merged to produce a new commit).
+* <tt>rev^0</tt> is the commit itself
+* <tt>rev^^</tt> is the first ''grandparent'' (first parent of first parent)
+* <tt>rev^1^1</tt> is equivalent
+* <tt>rev^^2</tt> is a different grandparent (second parent of first parent)
+* <tt>rev^1^2</tt> alternative form of the same
+* <tt>rev^2^2</tt> second parent of second parent
+* <tt>rev^2^1</tt> first parent of second parent
+* <tt>rev^2^</tt> alternative form of the same
+* <tt>rev~1</tt> is another way of referring to the ''first'' parent
+* <tt>rev~2</tt> is another way of referring to the ''first'' grandparent (first parent of first parent)
+* <tt>rev~3</tt> is another way of referring to the ''first'' great-grandparent (first parent of first parent of first parent)
+
+Putting all this together means that you can make some downright hideous references; for example:
+
+* <tt>maint~52^2^2~5</tt>: refers to a distant ancestor of the <tt>HEAD</tt> of the <tt>maint</tt> branch; specifically, the 52nd generation grandparent's second parent's second parent's 5th generation grandparent.
+
+= Accessing prior values of a ref =
+
+* <tt>ref@{1}</tt> is the immediate prior value of a ref (for example, <tt>master@{1}</tt>)
+* <tt>ref@{2}</tt> is the second prior value, and so on
+* <tt>@{2}</tt> would refer to the same thing if you were already on branch <tt>ref</tt>
