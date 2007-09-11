@@ -1,0 +1,109 @@
+---
+tags: haskell
+---
+= Comments =
+
+<pre>-- comments start with two consecutive hyphens
+
+</pre> 
+
+= Truth values =
+
+<pre>True
+False</pre>
+
+= Types =
+
+'''Constructor identifiers''' are used to name types; they must start with a capital letter.
+
+* <tt>Integral</tt> class; two possible types:
+** <tt>Int</tt> (fixed precision, overflow on hitting an architecture-specific size)
+** <tt>Integer</tt> (arbitrary precision, unbounded)
+* <tt>Float</tt> (floating point type)
+* <tt>Double</tt> (higher precision than <tt>Float</tt>)
+* <tt>Bool</tt> (boolean type)
+* <tt>Char</tt> (character type)
+* <tt>String</tt> (convenience type, equivalent to a list of <tt>Char</tt> types: <tt>[Char]</tt>)
+
+Compare this with '''variable identifiers''' which are used to name functions; they must start with a lowercase letter. Identifier names are case-sensitive.
+
+New types can be formed as follows:
+
+* By list-formation eg. for type <tt>a</tt>, <tt>[a]</tt> is the type, "list of <tt>a</tt>"
+* By tuple-formation eg. type <tt>(a, b)</tt> is the type, "a pair of type <tt>a</tt> then type <tt>b</tt>" (works for pairs, triples, quadruples and so forth)
+* By function definition eg. type <tt>a -> b</tt> is the type of the function that expects arguments of type <tt>a</tt> and has a return value of type <tt>b</tt>
+* Custom types defined using <tt>data</tt>
+
+= Definition, identity and non-identity =
+
+* "defined as": <tt>=</tt>
+* "identity": <tt>==</tt>
+* "non-identity: <tt>/=</tt>
+
+Types with which you can test for identity belong to the <tt>Eq</tt> class; types for which you can make ordinality comparisons are said to belong to the <tt>Ord</tt> class (a subclass of <tt>Eq</tt>):
+
+* <tt>&gt;</tt>
+* <tt>&gt;=</tt>
+* <tt>&lt;</tt>
+* <tt>&lt;=</tt>
+
+A [[Haskell]] '''equation''' takes the form of <tt>foo t = ...</tt>, where <tt>foo</tt> is a '''function''' and <tt>t</tt> is an argument; arguments may be multiple:
+
+<pre>-- this equation defines an "add" function
+add x y = x + y
+
+-- and this is how the function would be used:
+add 10 15</pre>
+
+An optional-but-recommended, explicit '''type declaration''' could be prepended to the <tt>add</tt> function as follows:
+
+<pre>-- indicate that two Integer input parameters are expected, and the result is an Integer too
+add :: Integer -> Integer -> Integer</pre>
+
+= Operators =
+
+* Addition: <tt>+</tt>
+* Greater-than: <tt>&gt;</tt>
+* Exponentiation: <tt>^</tt>
+* Less-than-or-equal-to: <tt>&lt;=</tt>
+
+= Equation guarding and the condition operator =
+
+<tt>|</tt> is the Haskell condition operator. It is used in the following example function to determine which equation in the definition of the function, <tt>foo</tt>, should apply, depending on the input parameters:
+
+<pre>-- raises x to the y if x and y sum to less than 100
+-- otherwise multiplies x and y
+foo x y | x + y < 100 = x ^ y
+        | otherwise   = x * y</pre>
+
+This is actually a shorthand for the longer form:
+
+<pre>foo x y | x + y < 100 = x ^ y
+foo x y |             = x * y</pre>
+
+= Keywords =
+
+These are reserved keywords which cannot be used as function names:
+
+* <tt>case</tt>
+* <tt>class</tt>
+* <tt>data</tt>
+* <tt>default</tt>
+* <tt>deriving</tt>
+* <tt>do</tt>
+* <tt>else</tt>
+* <tt>if</tt>
+* <tt>import</tt>
+* <tt>in</tt>
+* <tt>infix</tt>
+* <tt>infixl</tt>
+* <tt>infixr</tt>
+* <tt>instance</tt>
+* <tt>let</tt>
+* <tt>module</tt>
+* <tt>newtype</tt>
+* <tt>of</tt>
+* <tt>then</tt>
+* <tt>type</tt>
+* <tt>where</tt>
+* <tt>_</tt>
