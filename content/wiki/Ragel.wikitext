@@ -1,0 +1,24 @@
+---
+tags: development ragel
+---
+[[Ragel]] is a finite state machine compiler capable of generating [[C]], [[Objective-C]], and other types of code.
+
+= Official site =
+
+* Current: http://www.complang.org/ragel/
+* Old: http://www.cs.queensu.ca/~thurston/ragel/
+
+= Ragel quickstart =
+
+For a quick example of producing a very simple executable with [[Ragel]], see "[[Ragel quickstart]]".
+
+= Examples =
+
+[http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl This lexer] is an extended example of a scanner written using Ragel (part of my [[Wikitext]] project).
+
+= See also =
+
+* User guide (for version 5.2.4): http://www.cs.queensu.ca/~thurston/ragel/ragel-guide-5.24.pdf (check the [https://wincent.com/tags/search?q=ragel+updates Ragel updates] category for the latest version)
+* Articles on [[Xcode]] integration:
+** http://www.entropy.ch/software/macosx/docs/ragel-xcode-graphviz/
+** http://www.alanz.com/2006/08/ragel-xcode/
