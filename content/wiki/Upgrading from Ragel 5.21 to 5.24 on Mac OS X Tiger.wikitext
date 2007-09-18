@@ -1,0 +1,23 @@
+---
+tags: tiger ragel updates
+---
+<pre>wget http://www.cs.queensu.ca/~thurston/ragel/ragel-5.24.tar.gz http://www.cs.queensu.ca/~thurston/ragel/ragel-5.24.tar.gz.asc
+gpg --verify ragel-5.24.tar.gz.asc ragel-5.24.tar.gz
+tar xzvf ragel-5.24.tar.gz
+cd ragel-5.24/
+./configure
+make
+cd test/
+./runtests 
+cd ..
+sudo make install</pre>
+
+Note that in order to verify the signature you will require the public key:
+
+<pre>wget http://www.cs.queensu.ca/home/thurston/thurston.asc
+gpg --import thurston.asc</pre>
+
+Now trying out the new build on a sample input file:
+
+<pre>wget http://www.cs.queensu.ca/~thurston/ragel/examples/rlscan.rl
+ragel rlscan.rl | rlgen-cd -G2</pre>
