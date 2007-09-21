@@ -1,0 +1,9 @@
+---
+tags: git
+---
+[[Git 1.5.3.2]] was released on 19 September 2007.
+
+= See also =
+
+* [[Upgrading to Git 1.5.3.2 on Red Hat Enterprise Linux]]
+* [[Upgrading to Git 1.5.3.2 on Mac OS X Tiger]]
