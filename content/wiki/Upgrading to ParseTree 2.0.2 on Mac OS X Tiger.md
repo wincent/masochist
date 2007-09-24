@@ -1,0 +1,59 @@
+---
+tags: tiger parsetree updates
+---
+
+These notes were made while upgrading to the latest version of [ParseTree](/wiki/ParseTree), [ParseTree 2.0.2](/wiki/ParseTree_2.0.2), on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
+
+    $ sudo gem install ParseTree
+    Password:
+    Bulk updating Gem source index for: http://gems.rubyforge.org
+    Install required dependency hoe? [Yn]  Y
+    Install required dependency rubyforge? [Yn]  Y
+    Successfully installed ParseTree-2.0.2
+    Successfully installed hoe-1.3.0
+    Successfully installed rubyforge-0.4.4
+    Installing ri documentation for ParseTree-2.0.2...
+    Installing ri documentation for hoe-1.3.0...
+    Installing ri documentation for rubyforge-0.4.4...
+    Installing RDoc documentation for ParseTree-2.0.2...
+    Installing RDoc documentation for hoe-1.3.0...
+    Installing RDoc documentation for rubyforge-0.4.4...
+    $ fastri-server -b
+    Indexing RI docs for ParseTree version 2.0.2.
+    Indexing RI docs for RubyInline version 3.6.3.
+    Indexing RI docs for ZenTest version 3.6.1.
+    Indexing RI docs for actionmailer version 1.3.3.
+    Indexing RI docs for actionpack version 1.13.3.
+    Indexing RI docs for actionwebservice version 1.2.3.
+    Indexing RI docs for activerecord version 1.15.3.
+    Indexing RI docs for activesupport version 1.4.2.
+    Indexing RI docs for cmdparse version 2.0.2.
+    Indexing RI docs for dhaka version 2.2.1.
+    Indexing RI docs for diff-lcs version 1.1.2.
+    Indexing RI docs for fastri version 0.3.0.1.
+    Indexing RI docs for haml version 1.7.0.
+    Indexing RI docs for heckle version 1.4.1.
+    Indexing RI docs for hoe version 1.3.0.
+    Indexing RI docs for hpricot version 0.5.
+    Indexing RI docs for meta_project version 0.4.15.
+    Indexing RI docs for model_security_generator version 0.0.9.
+    Indexing RI docs for rake version 0.7.3.
+    Indexing RI docs for rcodetools version 0.5.0.0.
+    Indexing RI docs for rcov version 0.8.0.2.
+    Indexing RI docs for rspec version 1.0.5.
+    Indexing RI docs for ruby-debug version 0.9.3.
+    Indexing RI docs for ruby-debug-base version 0.9.3.
+    Indexing RI docs for ruby-prof version 0.5.2.
+    Indexing RI docs for ruby2ruby version 1.1.6.
+    Indexing RI docs for rubyforge version 0.4.4.
+    Indexing RI docs for rubygems version 0.9.2.
+    Indexing RI docs for spec_ui version 0.2.3.
+    Indexing RI docs for sqlite3-ruby version 1.2.1.
+    Indexing RI docs for syntax version 1.0.0.
+    Indexing RI docs for walrus version 0.1.
+    Indexing RI docs for webgen version 0.4.4.
+    Building index.
+    Indexed:
+    * 13254 methods
+    * 2709 classes/modules
+    Needed 3.246854 seconds
