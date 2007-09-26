@@ -1,0 +1,4 @@
+---
+tags: version.control
+---
+[[Distributed version control]] is a decentralized approach to [[version control]] implemented by systems like [[Git]], and to a lesser extent, [[SVK]]. It can be usefully contrasted with the client/centralized-server approach exemplified by systems like [[Subversion]], [[Perforce]] and [[CVS]].
