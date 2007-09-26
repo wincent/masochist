@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[UI]] or [[User Interface]] generally falls under one of two categories: [[GUI]] or [[command line]].
