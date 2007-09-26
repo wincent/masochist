@@ -1,0 +1,57 @@
+---
+tags: movable.type
+---
+[[Movable Type]]'s upgrade procedure effectively amounts to a performing a full reinstallation. This wouldn't be much of a problem if it weren't for the fact that custom files and modifications in an existing installation must be painstakingly identified and copied over into the new version prior to re-uploading the 1,100+ files that make up [[Movable Type]] (using <tt>find . -type f | wc -l</tt> from the top level of the [[Movable Type]] 3.35 archive counts 1,158 distinct files).
+
+These tips describe the basic procedure for performing the merge. Here we assume that the old version was installed in <tt>mt</tt>. Version 3.34 is used in this example:
+
+* On the local host, rename the old <tt>mt</tt> folder to <tt>mt-3.34</tt>
+* Move the newly extracted files into position, naming the folder <tt>mt</tt>
+* Use <tt>diff</tt> to examine the differences between the trees:
+
+<pre>diff mt-3.34 mt
+diff -r mt-3.34 mt | less
+diff -r mt-3.34 mt | grep "Only in"</pre>
+
+When you see lines like <tt>Only in mt-old: mt-config.cgi</tt>, this is most likely an indication of a file that should be copied over to the new directory.
+
+In my case, there were 4 files that needed to be copied for the 3.34 to 3.35 upgrade:
+
+<pre>cp mt-3.34/.htaccess mt/
+cp mt-3.34/mt-config.cgi mt/
+cp mt-3.34/plugins/Markdown.pl mt/plugins/
+cp mt-3.34/plugins/wikitext.pl mt/plugins/</pre>
+
+In the case of the 3.35 to 4.0.1 upgrade the files I copied over were:
+
+<pre>.htaccess
+mt-config.cgi
+plugins/wikitext.pl</pre>
+
+I could then double-check the result as using:
+
+<pre>diff -r mt-3.34 mt | grep "Only in"</pre>
+
+== Useful data-mining commands ==
+
+Numbers shown are for the example upgrade from 3.34 to 3.35.
+
+=== Total number of lines in the diff ===
+
+<pre>diff -r mt-3.34 mt | wc -l # 3512</pre>
+
+This line count reflects changed lines, removed lines, modified lines, and of course custom files not present in the vanilla [[Movable Type]] distribution, such as the <tt>Markdown.pl</tt> and <tt>wikitext.pl</tt> plugins mentioned above.
+
+=== Total number of substantive lines ===
+
+This line count excludes metadata and counts only lines showing the actual changes:
+
+<pre>diff -r mt-3.34 mt | grep '^[><]' | wc -l # 2063</pre>
+
+Many of the changed lines just contain [[RCS]] tags, which can be excluded from the count as follows:
+
+<pre>diff -r mt-3.34 mt | grep '^[><]' | grep -v '\$Id' | wc - l # 1815</pre>
+
+= See also =
+
+For an example of using this procedure in the context of an upgrade, see "[[Upgrading from Movable Type version 3.34 to 3.35]]".
