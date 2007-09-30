@@ -1,0 +1,6 @@
+---
+tags: development
+---
+= See also =
+
+* [[Wikipedia]] article on [[Directed Acyclic Graphs]]: http://en.wikipedia.org/wiki/Directed_acyclic_graph
