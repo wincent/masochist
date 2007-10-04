@@ -1,0 +1,4 @@
+---
+tags: os.x
+---
+"[[Mail.app]]" is a colloquial nickname for the mail application that [[Apple]] ships with [[Mac OS X]].
