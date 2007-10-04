@@ -1,0 +1,124 @@
+---
+tags: rspec rails
+---
+"[[Fixtures considered harmful?]]" is [http://rubyforge.org/pipermail/rspec-users/2007-May/001608.html a thread] I started on the [[rspec-users]] mailing list to clarify some doubts I had about the use of [[fixtures]] in [[RSpec]] and [[Rails]].
+
+= Problems =
+
+Basically, I was confused because the [[RSpec]] website [http://rspec.rubyforge.org/documentation/rails/index.html says]:
+
+<blockquote>we really don’t recommend the use of rails fixtures</blockquote>
+
+But the [http://rspec.rubyforge.org/documentation/rails/writing/models.html provided examples] make heavy use of fixtures.
+
+[[Aslak Hellesoy]] offered [http://rubyforge.org/pipermail/rspec-users/2007-May/001610.html this clarification]:
+
+<blockquote>The reason why we don't recommend them is along the lines why we're not crazy about DRYing up specs. Let me repeat David's Agile Spec Manifesto (of which I am the second subscriber):
+
+"We prefer clear spec over well factored specs. (Clarity is king)."
+
+When everything is in your face you can picture it easier than when it's in several different locations (fixture files, helper files etc).
+
+All I can say is that in most situations I prefer to work without fixtures, but there are a few situations where they might be useful.</blockquote>
+
+Scott Taylor [http://rubyforge.org/pipermail/rspec-users/2007-May/001614.html offered another reason] for avoiding fixtures:
+
+<blockquote>I've started using fixtures *only* for field validations. This quickly tells me that I have a good record, that I can unset a field, and that it is invalid.
+
+Fixtures really start to become a pain, though, if the fixture has a foreign key, and so largely I stay away from them.</blockquote>
+
+(Incidentally Scott has written a [http://replacefixtures.rubyforge.org/ FixtureReplacement] plug-in.)
+
+So I tried a couple of different [[spec]]-writing styles, with and without fixtures. One approach is to explicitly create the objects in your <tt>begin</tt> blocks.
+
+But setting up objects for each example can become quite repetitive after a while; this is specially true if you start breaking up your [[specs]] into many different <tt>describe</tt> blocks.
+
+= Workarounds =
+
+Luke Redpath offers [http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1 this approach] to [[DRYing]] things up. You basically define a helper method (or methods) that makes it more convenient to create new objects with valid attributes. But as Aslak argues, clarity is crucial and this approach may make things harder to understand if there is a large distance between the actual examples and the helper methods.
+
+= My position =
+
+After working with this for a while I think that judicious use of fixtures is probably the best compromise. In other words, having a couple of simple objects in your fixtures for the majority of specs is probably ok. If foreign keys are involved (or worse, foreign key constraints) then fixtures become less attractive.
+
+Take a real example, the <tt>user_spec.rb</tt> file I am currently working on. It has a bunch of <tt>describe</tt> blocks that all require set-up:
+
+<pre>before do
+  @joe    = User.create(:login_name => 'Joe', :email_address => 'joe@example.com')    # recored saved to database
+  @harry  = User.new(:login_name => 'Harry', :email_address => 'harry@example.com')   # new (unsaved) record
+end</pre>
+
+I don't like this repetition because if I change the object model and require a new parameter then I have to change the <tt>User.create</tt> and <tt>User.new</tt> messages in multiple places.
+
+As an alternative I can write something like the following:
+
+<pre>module UserSpecHelper
+  def valid_user_attributes
+    {
+      :login_name => 'Joe',
+      :email_address => 'joe@example.com'
+    }
+  end
+end</pre>
+
+And use it like this:
+
+<pre>before do
+  @joe = User.new(UserSpecHelper::valid_user_attributes)
+end</pre>
+
+But that only works for one user. What happens when I want to create a second user? Do I make a second method? That seems decidedly worse than using fixtures. Do I change the <tt>valid_user_attributes</tt> method to dynamically return new attributes each time? That sounds risky (the specs should be kept as simple as possible, or you'll need specs to test your specs) and it's hardly clear (requires understanding of how the <tt>valid_user_attributes</tt> method works).
+
+= Final assessment =
+
+So at least for simple cases like this it seems that fixtures aren't the most evil thing. There is still a locality of reference problem because fixtures are defined in a different file and so you have to switch between [[spec]] and fixture files if you want to have both in your head at the same time; but we already have exactly that kind of issue between [[spec]] and implementation files.
+
+One way we could reduce the need to refer to the fixture file is to access the attributes programmatically rather than hard-coding them. For example, imagine a [[spec]] confirming that a certain attribute must be unique:
+
+<pre>it 'should be invalid without a unique login name' do
+  # at this point user @joe has already been setup and name 'Joe' is in use
+  @harry.login_name = 'Joe'
+  @harry.should_not be_valid
+  @harry.should have_at_least(1).error_on(:login_name)
+end</pre>
+
+You could remove the hard-coded string 'Joe' as follows:
+
+<pre>it 'should be invalid without a unique login name' do
+  @harry.login_name = @joe.login_name
+  @harry.should_not be_valid
+  @harry.should have_at_least(1).error_on(:login_name)
+end</pre>
+
+This is reasonably clear but we are now assuming the implementation of the <tt>login_name</tt> accessors is fool-proof. But it is not necessarily so: an unrelated error in the implementation could cause these specs to incorrectly pass or fail.
+
+So in a case like this (testing for uniqueness) I think that defining a new context and explicitly creating some new user objects is the clearest way to go. If there are a lot of specs like this then using Luke Redpath's idea of a <tt>valid_user_attributes</tt>, combined with some additional <tt>Hash</tt> methods may be the best way to go:
+
+<pre># this in spec/spec_helper.rb
+module HashExtensions
+  
+  # for excluding keys
+  def except(*exclusions)
+    self.reject { |key, value| exclusions.include? key.to_sym }
+  end
+
+  # for overriding keys
+  def with(overrides = {})
+    self.merge overrides
+  end
+
+end
+
+# and this in the UserSpecHelper module
+def self.valid_user_attributes
+  hash = {
+    :login_name     => 'Bob',
+    :email_address  => 'bob@example.com'
+  }
+  hash.extend(HashExtensions)
+end</pre>
+
+This allows us to define new users fairly conveniently as follows:
+
+<pre>@bob = User.new(UserSpecHelper::valid_user_attributes)
+@harry = User.new(UserSpecHelper::valid_user_attributes.with(:login_name => 'Harry')</pre>
