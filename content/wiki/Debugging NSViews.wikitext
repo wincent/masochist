@@ -1,0 +1,12 @@
+---
+tags: cocoa
+---
+When I recently wrote a [[weblog]] [http://wincent.com/a/about/wincent/weblog/archives/2007/10/appkit_vs_found.php entry] about the difficulty of working with NSView subclasses Gus Mueller of [http://flyingmeat.com/ Flying Meat] was kind enough to send [http://borkware.com/quickies/single?id=205 this link] to me.
+
+In short, you can get [[AppKit]] to highlight all views in an application, with nested subviews in different colors.
+
+<pre># method 1: set persistent user defaults
+defaults write com.wincent.MyAppBundleIdentifier NSShowAllViews YES
+
+# method 2: pass default at launch time
+Example.app/Contents/MacOS/Example -NSShowAllViews YES</pre>
