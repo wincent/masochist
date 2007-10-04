@@ -1,0 +1,8 @@
+---
+tags: os.x
+---
+"[[The Dock]]" is part of [[Mac OS X]] that serves as an application and document launcher, application switcher and shortcut holder.
+
+= See also =
+
+* [[Wikipedia]] article on docks (not just the [[Mac OS X]] [[Dock]]): http://en.wikipedia.org/wiki/Dock_%28computing%29
