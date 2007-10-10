@@ -1,0 +1,12 @@
+---
+tags: css
+---
+[[CSS]] is an acronym for [[Cascading Style Sheets]].
+
+= Working with CSS =
+
+[[Sass]] is a language for authoring CSS documents in a concise and maintainable fashion, as well as a library/tool for converting said Sass source documents into actual CSS.
+
+= See also =
+
+* [[Wikipedia]] article on [[CSS]]: http://en.wikipedia.org/wiki/CSS
