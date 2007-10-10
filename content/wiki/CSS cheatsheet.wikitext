@@ -1,0 +1,130 @@
+---
+tags: css
+---
+= Type selectors =
+
+Style all <tt>p</tt> elements:
+
+<pre>p { ... }</pre>
+
+= Class selectors =
+
+Style all elements of class foo:
+
+<pre>.foo { ... }</pre>
+
+Note that an element may contain multiple space-separated classes; for example, you could apply classes <tt>foo</tt> and <tt>bar</tt> to a <tt>p</tt> element with:
+
+<pre><p class="foo bar">baz</p></pre>
+
+= Combined type/class selectors =
+
+Style all <tt>li</tt> elements of class <tt>foo</tt>:
+
+<pre>li.foo { ... }</pre>
+
+= ID selectors =
+
+Style the element with ID <tt>foo</tt> (must be only one such element on the page):
+
+<pre>#foo { ... }</pre>
+
+= Combined class/ID selectors =
+
+Style the <tt>div</tt> element with ID <tt>foo</tt> (must be only one such element on the page):
+
+<pre>div#foo { ... }</pre>
+
+= Descendant selectors =
+
+Style all <tt>em</tt> elements that are descendants (direct or indirect) of a <tt>p</tt> element:
+
+<pre>p em { ... }</pre>
+
+= Child selectors =
+
+Style all <tt>em</tt> elements that are immediate children of a <tt>p</tt> element:
+
+<pre>p > em { ... }</pre>
+
+= Universal selectors =
+
+Style all elements on the page:
+
+<pre>* { ... }</pre>
+
+= Adjacent sibling selectors =
+
+Style any <tt>h3</tt> element that immediately follows an <tt>h2</tt> element:
+
+<pre>h2 + h3 { ... }</pre>
+
+= Attribute selectors =
+
+Style any <tt>img</tt> element that has an <tt>alt</tt> attribute:
+
+<pre>img[alt] { ... }</pre>
+
+Style any <tt>img</tt> element whose <tt>alt</tt> attribute has the exact value <tt>foo</tt>:
+
+<pre>img[alt="foo"] { ... }</pre>
+
+Style any <tt>img</tt> element whose <tt>alt</tt> attribute ''contains'' the space-delimited word <tt>foo</tt>:
+
+<pre>img[alt~="foo"] { ... }</pre>
+
+Style any <tt>img</tt> element whose <tt>alt</tt> attribute ''contains'' the hyphen-delimited word <tt>foo</tt> (in other words, the attribute must contain the substring, <tt>foo-</tt>):
+
+<pre>img[alt|="foo"] { ... }</pre>
+
+Other selectors:
+
+* `a[href^="http:"]`: attribute ''starts with'' "http:"
+* `a[href$=".png"]`: attribute ''ends with'' ".png"
+* `a[href*="foo"]`: attribute ''contains'' "foo"
+
+Note that selectors can be combined; eg:
+
+* `a[href^="http:"][href$=".png"]`: attribute ''starts with'' "http:" and ''ends with'' ".png"
+
+See also:
+
+* http://reference.sitepoint.com/css/css3attributeselectors
+
+= Pseudo-class selectors =
+
+<pre>a { ... }
+a:link { ... }
+a:visited { ... }
+a:hover { ... }
+a:active { ... }</pre>
+
+The order is important, because if multiple possible matches are found the last-specified selector will be applied in the event of a conflict. So, for example, if combining the style declarations in pairs the ordering (<tt>link</tt>/<tt>visited</tt> followed by <tt>hover</tt>/<tt>active</tt>) should be maintained:
+
+<pre>a:link, a:visited { ... }
+a:hover, a:active { ... }</pre>
+
+Other pseudo-class selectors:
+
+* <tt>:first-child</tt>
+* <tt>:focus</tt>
+* <tt>:lang(n)</tt>
+
+= Pseudo-element selectors =
+
+Style the first line of the <tt>p</tt> element:
+
+<pre>p:first-line { ... }</pre>
+
+Style the first letter of the <tt>p</tt> element:
+
+<pre>p:first-letter</pre>
+
+Other pseudo-element selectors:
+
+* <tt>:before</tt>
+* <tt>:after</tt>
+
+= See also =
+
+* The best [[CSS]] selector tutorial on the web: http://css.maxdesign.com.au/selectutorial/index.htm
