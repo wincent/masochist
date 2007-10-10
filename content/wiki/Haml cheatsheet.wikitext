@@ -1,0 +1,71 @@
+---
+tags: haml
+---
+= <tt>%</tt> (elements) =
+<pre>%p thing</pre>
+
+Yields:
+
+<pre><p>thing</p></pre>
+
+= <tt>{}</tt> (attributes) = 
+
+<pre>%meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/</pre>
+
+Yields:
+
+<pre><meta http-equiv='Content-Type' content='text/html; charset=utf-8' /></pre>
+
+Note that this example also shows how to produce a self-closing tag; more on this below.
+
+= <tt>/</tt> (comments and self-closing tags) = 
+
+<pre>%br/
+/ a comment</pre>
+
+Yields:
+
+<pre><br />
+<!-- a comment --></pre>
+
+= <tt>.</tt> (class) = 
+
+<pre>%p.date foo
+%p.article.body baz</pre>
+
+Yields:
+
+<pre><p class="date">foo</p>
+<p class="article body">baz</p></pre>
+
+= <tt>#</tt> (id) = 
+
+<pre>%p#banner bing</pre>
+
+Yields:
+
+<pre><p id="banner">bing</p></pre>
+
+= Implicit divs = 
+
+If no element is specified with a class (<tt>.</tt>) or id (<tt>#</tt>) then <tt>div</tt> is implicitly assumed:
+
+<pre>#foo bar
+.baz bing</pre>
+
+Yields:
+
+<pre><div id="foo">bar</div>
+<div class="baz">bing>/div></pre>
+
+= <tt>[]</tt> ("SimplyHelpful" syntax) = 
+
+<pre>%div[@model_object] foo</pre>
+
+Yields:
+
+<pre><div class="class_of_model" id="class_of_model_id">foo</div></pre>
+
+= See also =
+
+* Official [[Haml]] documentation: http://haml.hamptoncatlin.com/docs/haml
