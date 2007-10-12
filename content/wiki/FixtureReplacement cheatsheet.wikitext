@@ -1,0 +1,43 @@
+---
+tags: rspec rails fixture.replacement
+---
+'''Note:''' This cheatsheet applies to the the original 1.x series of FixtureReplacement. Version 2.0, which I've never bothered updating to ("if it ain't broke..."), uses a completely different syntax (see http://replacefixtures.rubyforge.org/ for full details). 
+
+= The <tt>db/example_data.rb</tt> file =
+
+Given a model class, <tt>Foo</tt>:
+
+<pre>module FixtureReplacement
+  def foo_attributes
+    {
+      :thing             => "a value",
+      :other             => "other value",
+      :another           => String.random,     # random string 10 characters long
+      :one_more          => String.random(15)  # 15 characters long
+      :associated_object => default_bar        # expects bar_attributes to be defined
+    }
+  end
+end</pre>
+
+= Methods available =
+
+* <tt>String.random</tt>: generates a random string as shown above.
+* <tt>new_foo</tt>: equivalent to <tt>Foo.new(foo_attributes)</tt>.
+* <tt>create_foo</tt>: equivalent to <tt>Foo.create!(foo_attributes)</tt>.
+* <tt>default_foo</tt>: for use inside <tt>_attributes</tt> definitions; this basically returns a <tt>Proc</tt> object which allows the actual creation of the object to be deferred until it is actually needed: in this way unnecessary object creation is avoided until it is known for sure that that particular attribute is not going to be overridden.
+
+= Overriding the default attributes =
+
+* <tt>new_foo(:thing => "overridden")</tt>
+* <tt>create_post(:thing => "overridden")</tt>
+
+= <tt>script/console</tt> use =
+
+<pre>$ script/console
+>> include FixtureReplacement</pre>
+
+= Use with [[RSpec]] =
+
+Add the following to your <tt>spec/spec_helper.rb</tt> file:
+
+<pre>include FixtureReplacement</pre>
