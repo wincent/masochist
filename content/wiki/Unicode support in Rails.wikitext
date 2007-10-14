@@ -1,0 +1,119 @@
+---
+tags: rails mysql
+---
+As of [[Rails]] 1.2 ([http://weblog.rubyonrails.org/2007/1/19/rails-1-2-rest-admiration-http-lovefest-and-utf-8-celebrations see here]) [[Unicode]] support is included right out of the box.
+
+Set up a brand new application with a simple scaffold and check the HTML output returned by the browser; it will include a line like this:
+
+<pre><meta http-equiv="content-type" content="text/html;charset=UTF-8" /></pre>
+
+Likewise, the actual [[HTTP]] headers returned to the browser will be appropriately set. You can test this out using <tt>curl</tt>:
+
+<pre>curl -i http://example.com/rails_app</pre>
+
+Note the <tt>charset=utf-8</tt> in the returned header:
+
+<pre>HTTP/1.1 200 OK 
+Cache-Control: no-cache
+Connection: Keep-Alive
+Date: Mon, 02 Apr 2007 19:10:27 GMT
+Content-Type: text/html; charset=utf-8
+Server: WEBrick/1.3.1 (Ruby/1.8.6/2007-03-13)
+Content-Length: 1317</pre>
+
+But there is one extra thing you have to do to complete the configuration; in your <tt>config/database.yml</tt> file add a line like this for each [[MySQL]] database:
+
+<pre>encoding: utf8</pre>
+
+Note that as of [[Rails 2.0]] this configuration is included by default in the <tt>database.yml</tt> file.
+
+= MySQL =
+
+Although [[Rails]] itself is (almost) set-up to use [[UTF-8]] out of the box [[MySQL]] is not necessarily the same. The default character set is [[ISO 8859-1]], otherwise known as [[Latin-1]].
+
+Confirming this, I installed the latest version from the 4.1 series on my [[Mac OS X]] box (see "[[Installing MySQL 4.1.22 (binary) on Mac OS X 10.4.9]]") and on performing a <tt>SHOW CREATE TABLE example_table;</tt> the table information included the following:
+
+<pre>ENGINE=InnoDB DEFAULT CHARSET=latin1</pre>
+
+[[InnoDB]] tables are fairly nice, offering transactions, row-level locking, and foreign-key constraints (see http://dev.mysql.com/doc/refman/4.1/en/innodb-overview.html), but the charset value is not what we want. I have seen [http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/ some posts] that claim that [[InnoDB]] tables don't support full-text searching if [[UTF-8]] is used, but [http://dev.mysql.com/doc/refman/4.1/en/fulltext-restrictions.html the MySQL documentation] clarifies this further stating that full-text searching is not support in [[InnoDB]] tables with ''any'' encoding at all.
+
+== Database creation time ==
+
+In theory, you can set the default charset at the moment you create the database. Instead of:
+
+<pre>mysqladmin -u root create application_name_development</pre>
+
+You would do this:
+
+<pre>mysqladmin -u root create application_name_development --default-character-set=utf8</pre>
+
+But in practice this didn't work for me. The setting is apparently ignored.
+
+The alternative approach [http://www.devpals.com/showthread.php?t=136 described here] is to create the database from inside the [[MySQL]] shell:
+
+<pre>$ mysql -u root
+mysql> CREATE DATABASE application_name_development CHARACTER SET 'UTF8';</pre>
+
+The same thing, from the command line:
+
+<pre>mysql -u root -e "CREATE DATABASE application_name_development CHARACTER SET 'UTF8';"</pre>
+
+Unlike the other method, this one does seem to work (see "[[Finding out the encoding of a MySQL database]]"):
+
+<pre>mysql> USE application_name_development;
+Database changed
+mysql> SHOW VARIABLES LIKE 'character\_set\_%';
++--------------------------+--------+
+| Variable_name            | Value  |
++--------------------------+--------+
+| character_set_client     | latin1 |
+| character_set_connection | latin1 |
+| character_set_database   | utf8   |
+| character_set_results    | latin1 |
+| character_set_server     | latin1 |
+| character_set_system     | utf8   |
++--------------------------+--------+
+6 rows in set (0.00 sec)</pre>
+
+To start a [[MySQL]] session and issue the <tt>CREATE DATABASE</tt> command in a single operation you can do:
+
+<pre>mysql -u root -e "CREATE DATABASE application_name_development CHARACTER SET 'UTF8';"</pre>
+
+Yet another way, when working with [[Rails]], is to use [[Rake]] tasks; assuming you have your <tt>database.yml</tt> file correctly configured then you can just:
+
+<pre>rake db:create:all</pre>
+
+== Across all databases on the server ==
+
+The [http://www.fngtps.com/2007/02/ruby-and-mysql-encoding-flakiness same post] explains how, if you control the entire [[MySQL]] server, you can set the following in your <tt>/etc/mysql/my.cnf</tt> file:
+
+<pre>[mysqld]
+character-set-server = utf8
+
+[client]
+default-character-set = utf8</pre>
+
+If you do this then all databases will be automatically created using [[UTF-8]] as the default character set. There is no need to pass any special command line options or to manually pass the <tt>CHARACTER SET</tt> parameter when creating a database.
+
+Although this is convenient, it may not be possible for all users and it may also cause compatibility issues with other software which might incorrectly assume that the database is running with [[Latin-1]] text encoding; as such my preferred method is to create new databases from within the [[MySQL]] shell as described above.
+
+== Migration time ==
+
+If you cannot set this at the database level you can also do it from inside your migrations. Modify your migrations from:
+
+<pre>create_table :examples do |t|</pre>
+
+To:
+
+<pre>create_table :examples, :options => 'default charset=utf8' do |t|</pre>
+
+Then your tables will have the appropriate charsets regardless of the database settings.
+
+= External links =
+
+* http://happygiraffe.net/presentations/rails-unicode/rails-unicode-notes.pdf
+* http://media.fngtps.com/audio/2006/rstm01-unicode_in_rails.m4a
+* http://woss.name/2006/10/25/migrating-your-rails-application-to-unicode/
+* http://ruby.org.ee/wiki/Unicode_in_Ruby/Rails
+* http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/
+* http://www.devpals.com/showthread.php?t=136
