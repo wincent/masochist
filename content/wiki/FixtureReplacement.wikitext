@@ -1,0 +1,12 @@
+---
+tags: rspec rails object.mother fixture.replacement
+---
+[[FixtureReplacement]] is one of many [[fixture replacements]] available for creating test objects in [[Ruby]].
+
+= Official site =
+
+* http://replacefixtures.rubyforge.org/
+
+= See also =
+
+* [[FixtureReplacement cheatsheet]]
