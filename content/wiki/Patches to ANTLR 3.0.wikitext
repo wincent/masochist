@@ -1,0 +1,62 @@
+---
+tags: antlr
+---
+This page contains patches to [[ANTLR 3]] that address some issues in version 3.0 for which there seem to be no other viable workarounds, or for which the difficulty of applying the patch is less than the inconvenience of applying a workaround.
+
+= Pending patches =
+
+== Bug in C runtime column handling ==
+
+* "Bug in C runtime column handling": http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/021949.html
+
+This patch should be applied to <tt>antlr3inputstream.c</tt>:
+
+<pre>166c166
+<     input->charPositionInLine = -1;
+---
+>     input->charPositionInLine = 0;</pre>
+
+== Filter mode ==
+
+* "Patch for filter mode" (http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html); patch to <tt>antlr-3.0/src/org/Antlr/codegen/CodeGenerator.java</tt>:
+
+<pre>301c301,302
+<                                                         grammar.getOption("filter").equals("true");
+---
+>                                                         grammar.getOption("filter").equals("true") &&
+>                                                         ( grammar.type==Grammar.LEXER );</pre>
+
+= Accepted patches =
+
+== Missing parentheses around predicates ==
+
+* "Bug in C output (may after other targets as well)": http://www.antlr.org:8080/pipermail/antlr-interest/2007-July/022025.html
+
+This patch should be applied to the <tt>C.stg</tt> output template:
+
+<pre>2274c2283
+< andPredicates(left,right) ::= "( <left> && <right> )"
+---
+> andPredicates(left,right) ::= "( (<left>) && (<right>) )"</pre>
+
+Not sure when this one was applied but it made it into ANTLR 3.0.1.
+
+== [[GCC]] [[lexer]] warnings [[C target]] ==
+
+* "GCC lexer warnings with C target" (http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021330.html); patch to <tt>antlr-3.0/src/org/antlr/codegen/templates/C/C.stg</tt>:
+
+<pre>714c714
+< <rules:{r | static <headerReturnType(ruleDescriptor=r.ruleDescriptor)>        <if(!r.ruleDescriptor.isSynPred)>m<endif><r.ruleDescriptor.name>    (p<name> ctx<if(r.ruleDescriptor.parameterScope)>, <endif><r.ruleDescriptor.parameterScope:parameterScope(scope=it)>);}; separator="\n";>
+---
+> <rules:{r | static <if(!r.ruleDescriptor.isSynPred)>ANTLR3_INLINE<endif> <headerReturnType(ruleDescriptor=r.ruleDescriptor)>  <if(!r.ruleDescriptor.isSynPred)>m<endif><r.ruleDescriptor.name>    (p<name> ctx<if(r.ruleDescriptor.parameterScope)>, <endif><r.ruleDescriptor.parameterScope:parameterScope(scope=it)>);}; separator="\n";></pre>
+
+* Applied in [http://fisheye2.cenqua.com/changelog/antlr/src/org/antlr/codegen/templates/C?cs=3831 revision 3831].
+
+= Rejected patches =
+
+* None so far.
+
+= See also =
+
+* [[Rebuilding ANTLR]]
+* [[Patches to ANTLR 3.0.1]]
