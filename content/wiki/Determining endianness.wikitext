@@ -1,0 +1,20 @@
+---
+tags: objective.c
+---
+I just had cause to remove some code from a project I was working on; where previously I had to detect endianness I now no longer need to. But the code snippet may be useful in the future so I am pasting it in here:
+
+<pre>BOOL is_little_endian(void)
+{
+#if defined(__LITTLE_ENDIAN__)
+    return YES;
+#elif defined(__BIG_ENDIAN__)
+    return NO;
+#else
+    // try to figure out endianness dynamically
+    int i = 0;
+    ((char *)(&i))[0] = 1;
+    return (i == 1);
+#endif
+}</pre>
+
+This isn't the exact code I used, but it demonstrates the idea.
