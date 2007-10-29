@@ -1,0 +1,128 @@
+---
+tags: antlr
+---
+While investigating a possible [[ANTLR]] [http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html bugfix] I came to a point where I wanted to build a modified [[ANTLR]] jar and try it out. The [http://www.antlr.org/wiki/pages/viewpage.action?pageId=732 instructions] on the [[ANTLR]] [[wiki]] were helpful but did not tell the full story.
+
+= Initial problems =
+
+Upon executing <tt>ant build</tt> from the top level of the [[ANTLR]] distribution (at the same level as the <tt>build.xml</tt> file, the build process failed with this output (truncated for brevity here):
+
+<pre>Buildfile: build.xml
+
+generator:
+
+compile:
+    [mkdir] Created dir: /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+    [javac] Compiling 112 source files to /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+    [javac] /Users/wincent/Desktop/ANTLR/antlr-3.0/src/org/antlr/test/BaseTest.java:30: package junit.framework does not exist
+    [javac] import junit.framework.TestCase;
+    [javac]                        ^
+
+...
+
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+    [javac] 100 errors
+
+BUILD FAILED
+/Users/wincent/Desktop/ANTLR/antlr-3.0/build.xml:72: Compile failed; see the compiler error output for details.
+
+Total time: 12 seconds</pre>
+
+= Installing the [[JUnit]] dependency =
+
+I headed over to the [http://www.junit.org/index.htm JUnit website] and downloaded [http://downloads.sourceforge.net/junit/junit4.3.1.zip?use_mirror=internap the latest version] (4.3.1 at the time of writing).
+
+<pre>wget http://internap.dl.sourceforge.net/sourceforge/junit/junit4.3.1.zip</pre>
+
+Then, with the help of the [[JUnit]] [[FAQ]] ("[http://junit.sourceforge.net/doc/faq/faq.htm#started_2 How do I install JUnit?]") I installed into <tt>/usr/local/</tt>:
+
+<pre>unzip junit4.3.1.zip 
+sudo mv junit4.3.1 /usr/local/
+cd /usr/local
+sudo ln -s junit4.3.1 junit
+cd junit
+sudo ln -s junit-4.3.1.jar junit.jar</pre>
+
+Note that to test I had to insert not only the [[JUnit]] jar itself into the <tt>CLASSPATH</tt>:
+
+<pre>export CLASSPATH="$CLASSPATH:/usr/local/junit/junit.jar"</pre>
+
+But the installation directory itself as well:
+
+<pre>export CLASSPATH="$CLASSPATH:/usr/local/junit"</pre>
+
+Only then would the self-tests work:
+
+<pre>java org.junit.runner.JUnitCore org.junit.tests.AllTests</pre>
+
+Output:
+
+<pre>JUnit version 4.3.1
+...............................................................................................................................................................................................................................................................I.II......................................
+Time: 3,785
+
+OK (294 tests)</pre>
+
+= Building [[ANTLR]] =
+
+Now I was able to build [[ANTLR]] without problems (note that [[JUnit]] was still in the <tt>CLASSPATH</tt>):
+
+<pre># from the top-level of the ANTLR distribution
+ant build</pre>
+
+Output:
+
+<pre>Buildfile: build.xml
+
+generator:
+
+compile:
+    [javac] Compiling 112 source files to /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+
+version-bcel:
+
+version:
+     [echo] Install bcel in the classpath to have automatic version in jar name
+
+templates:
+     [copy] Copying 35 files to /Users/wincent/Desktop/ANTLR/antlr-3.0/build/classes
+
+build:
+      [jar] Building jar: /Users/wincent/Desktop/ANTLR/antlr-3.0/lib/antlr.jar
+
+BUILD SUCCESSFUL
+Total time: 5 seconds</pre>
+
+= Trying out the new build =
+
+In order to try out the new build I had to alter my <tt>CLASSPATH</tt> so as to use the new version.
+
+My existing <tt>CLASSPATH</tt> was:
+
+* .
+* <tt>/usr/local/antlr/lib/antlr-3.0.jar</tt>
+* <tt>/usr/local/antlr/lib/antlr-2.7.7.jar</tt>
+* <tt>/usr/local/antlr/lib/antlr-runtime-3.0.jar</tt>
+* <tt>/usr/local/antlr/lib/stringtemplate-3.0.jar</tt>
+
+The basic procedure then is:
+
+<pre># save old CLASSPATH so we can revert to it later
+OLD_CLASSPATH="$CLASSPATH"
+
+# prepend new ANTLR jar to CLASSPATH
+# it appears first and so will take precedence over the old jar
+export CLASSPATH="/Users/wincent/Desktop/ANTLR/antlr-3.0/lib/antlr.jar:$CLASSPATH"
+
+# run the ANTLR tool (here using a Walrus grammar as an example)
+java org.antlr.Tool Walrus.g
+
+# put the CLASSPATH back the way it was before
+export CLASSPATH="$OLD_CLASSPATH"</pre>
+
+= See also =
+
+* "How do I rebuild ANTLR v3?": http://www.antlr.org/wiki/pages/viewpage.action?pageId=732
