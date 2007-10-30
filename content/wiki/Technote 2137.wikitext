@@ -1,0 +1,10 @@
+---
+tags: development os.x
+---
+[[Apple]] [[Technote 2137]], 'Building Universal Binaries from "configure"-based Open Source Projects', can be found at:
+
+* http://developer.apple.com/technotes/tn2005/tn2137.html
+
+= See also =
+
+* [[Building Universal Binaries from "configure"-based open source projects]]
