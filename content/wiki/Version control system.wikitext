@@ -1,0 +1,11 @@
+---
+tags: version.control
+---
+A [[version control system]] is a software package that provides [[version control]] (change tracking and management) facilities.
+
+Examples of [[version control systems]] include:
+
+* [[Git]] (free, distributed)
+* [[SVK]] (free, pseudo-distributed)
+* [[Subversion]] (free, client/server)
+* [[Perforce]] (commercial, client/server)
