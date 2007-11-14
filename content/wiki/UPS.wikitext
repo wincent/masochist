@@ -1,0 +1,3 @@
+---
+redirect: [[Uninterruptable Power Supply]]
+---
