@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[RAID-Z]] is a special type of software [[RAID]] implemented as part of [[ZFS]].
+
+= See also =
+
+* [[Wikipedia]] article on [[RAID-Z]]: http://en.wikipedia.org/wiki/RAID-Z
