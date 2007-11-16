@@ -1,0 +1,13 @@
+---
+tags: objective.c
+---
+[[Objective-C 2.0]] is the new version of [[Objective-C]] that ships with [[Mac OS X]] [[Leopard]]. Highights include:
+
+* Garbage collection
+* Properties
+* Fast enumeration (<tt>for</tt>/<tt>in</tt> syntax)
+
+= See also =
+
+* [[Wikipedia]] article on [[Objective-C 2.0]]: http://en.wikipedia.org/wiki/Objective-C#Objective-C_2.0
+* [[Objective-C 2.0 cheatsheet]]
