@@ -1,0 +1,30 @@
+---
+tags: development unix
+---
+I recently wanted to add a shell-script build phase to one of my projects to automatically collect all the [[dSYM]] bundles produced during the build into a separate folder. Rather than maintaining a fragile, brittle list of bundles to be copied I decided to use the <tt>find</tt> tool to locate all [[dSYM]] bundles and copy them automatically.
+
+= First attempt =
+
+The key line of the script is this one:
+
+<pre>find . -name "*.dSYM" -exec mv {} "${DSYM_FOLDER}/" \;</pre>
+
+This works, but prints an error message for every bundle and causes <tt>find</tt> to return a non-zero exit status. Evidently this is because <tt>find</tt> first performs the <tt>-exec</tt> and ''then'' tries to access the file in some way, presumably to retrieve some kind of information about it. This fails because the file has already moved by the time this access attempt takes place.
+
+= Second attempt =
+
+I couldn't see any switch in the <tt>find</tt> [[man page]] which would allow me to work around this undesired behaviour, so I decided to try coupling it with <tt>xargs</tt>. The problem with <tt>xargs</tt> is that it provides no convenient way to indicate where the arguments should be inserted within the command to be executed; rather than using the <tt>{}</tt> shorthand we must use the <tt>-J</tt> switch:
+
+<pre>find . -name "*.dSYM" | xargs -J % mv -v % "${DSYM_FOLDER}/"</pre>
+
+This solution works but will choke if any of the supplied paths contains spaces.
+
+= Final version =
+
+We work around the space problem by piping the output through [[perl]] and escaping all spaces. This should work for just about any path, except for bizarre paths with spaces preceded by literal backslashes or other wierdness:
+
+<pre>find . -name "*.dSYM" | perl -pe 's/ /\\ /g' | xargs -J % mv -v % "${DSYM_FOLDER}/"</pre>
+
+= See also =
+
+* [[Find tricks]]
