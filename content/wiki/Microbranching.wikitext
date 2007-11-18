@@ -1,0 +1,57 @@
+---
+tags: version.control
+---
+[[Microbranching]], better known as "[[using topic branches]]",  is a technique that I use when I wish to develop a specific, small feature without distrupting the main line of development or degrading its stability. It is also commonly used when submitting patches to an "upstream" project which you do not control; you group together a logical set of changes on a "topic branch" where they can be easily managed (revised, or kept up to date using [[rebasing]]) and then submitted as a patch series (see "[[Creating and submitting a patch via email with Git]]").
+
+The technique consists of creating a local-only branch using a branch-savvy [[version control system]] such as [[Git]] or [[SVK]], working on the feature, and then using <tt>git merge</tt>, <tt>svk push</tt> or similar to propagate the changes back to the trunk, ''or'' publishing them upstream as a patch series sent via email (for projects which you don't control directly). These [[topic branches]] or [[microbranches]] are short-lived.
+
+= An example using [[SVK]] =
+
+This is an example of a creating a [[microbranch]] for the purposes of adding the <tt>#include</tt> directive to [[Walrus]]. This feature is well-suited to a [[microbranch]] because it is a relatively complicated directive (it requires a sub-parser to be spawned for each included file) but it is still reasonable to implement it within a short time frame (no more than a few days).
+
+== Creating the branch ==
+
+<pre># use the "-p" switch to create "//local/Walrus/" if needed
+svk cp -p //mirrors/Walrus/trunk //local/Walrus/include-directive \
+       -m "Microbranch for implementing '#include' directive"
+
+# check out a working copy of the microbranch
+svk co //local/Walrus/include-directive include-directive
+
+# make sure all specs pass
+cd include-directive
+rake make
+rake spec</pre>
+
+== Pulling changes in from the trunk ==
+
+It's unlikely that any changes will be made on the trunk while working on this feature because this will be such a short-lived branch.
+
+<pre>svk pull</pre>
+
+== Pushing back changes ==
+
+<pre>svk push --verbatim</pre>
+
+The <tt>--verbatim</tt> switch prevents [[SVK]] from including [[SVK]]-specific meta-information (such as local revision numbers) in the log entries.
+
+== Disposing of the microbranch ==
+
+<pre>svk co --detach
+cd ..
+rm -r include-directive</pre>
+
+== Updating existing copies of the trunk ==
+
+Assuming there is a checked-out copy of the trunk in <tt>src</tt>:
+
+<pre>cd src
+svk up -s</pre>
+
+And again ensuring that all specs pass:
+
+<pre>rake spec</pre>
+
+= See also =
+
+* [[Branching]].
