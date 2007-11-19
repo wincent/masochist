@@ -1,0 +1,12 @@
+---
+tags: asciidoc
+---
+[[AsciiDoc]] is both a text document format and a tool for converting documents in the format into other formats. It is used by [[Git]] for its documentation source, which is then converted into [[man pages]] and [[HTML]].
+
+= Official site =
+
+* http://www.methods.co.nz/asciidoc/
+
+= See also =
+
+* [[Setting up the Git documentation build chain on Mac OS X Leopard]]
