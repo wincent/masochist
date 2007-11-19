@@ -1,0 +1,6 @@
+---
+tags: unix
+---
+= See also =
+
+* [[Wikipedia]] article on [[man pages]]: http://en.wikipedia.org/wiki/Man_pages
