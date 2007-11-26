@@ -1,0 +1,3 @@
+---
+redirect: [[Filesystem Hierarchy Standard]]
+---
