@@ -1,0 +1,311 @@
+---
+tags: subversion git
+---
+I used to host a number of public [[Subversion]] repositories for [[open source]] projects at svn.wincent.com. Due to long-standing dissatisfaction with Subversion's inadequate support for [[branching]] and [[merging]], in early 2007 I started using [[SVK]] locally as an additional layer while maintaining the server-side infrastructure.
+
+But although SVK is very good, it is written in [[Perl]] and has proved to be quite slow. SVK's local mirroring eliminates the network bottleneck for some operations, but still proves to be quite slow overall. [[Git]] on the other hand delivers most of the advantages of SVK (see "[[Git advantages]]" and "[[SVK advantages]]") but additionally offers unrivalled speed for most operations, is more powerful and more robust in my judgement, and offers excellent documentation (see "[[Git documentation]]" on par or better than Subversion's and far in advance of SVK's).
+
+Although Git, like SVK, can be used as a gateway to/from a central Subversion server, I've decided to simplify my infrastructure by eventually ''replacing'' my existing Subversion repositories with Git ones rather than just layering Git over the top.
+
+Once the initial set-up is done (describe below) migrating additional repositories is very easy. The basic pattern for a shallow (no-history) import is:
+
+<pre># For *public* repositories:
+# on the remote (public) machine:
+# create a new bare repository
+cd /pub/git/path_to_public_repositories
+sudo -u git mkdir repo.git
+cd repo.git
+sudo -H -u git git --bare init
+sudo -u git touch git-daemon-export-ok
+
+# Alternatively, for private repositories:
+cd /pub/git/path_private_repositories
+sudo -u git mkdir repo.git
+cd repo.git
+sudo -H u git git --bare init
+
+# on the local (private) machine:
+# create a new empty repository and prepare the initial commit
+svn export svn://svn.example.com/repo/trunk repo
+cd repo
+git init
+git add .
+git commit -s
+
+# actually push
+git remote add origin git.example.com:/pub/git/path_to_public_repositories/repo.git
+git config branch.master.remote origin
+git config branch.master.merge refs/heads/master
+git push --all
+
+# add a tag corresponding to Subversion revision number (eg r79)
+git tag -s r79
+git push --tags
+
+# now, back on the remote machine:
+# for *public* repositories, set up gitweb
+cd path_to_repo
+echo "Description of this repository" | sudo -u git tee description
+echo "repository.git Owner+Name+<owner@example.com>" | sudo -u git tee -a /pub/git/conf/gitweb-projects
+echo "git://git.example.com/repository.git" | sudo -u git tee cloneurl</pre>
+
+= Preliminaries =
+
+The standard location for repositories served by <tt>git-daemon</tt> (see <tt>man git-daemon</tt>) is inside <tt>/pub/git</tt> so I began by creating the <tt>/pub</tt> directory:
+
+<pre>cd /
+sudo mkdir pub</pre>
+
+Seeing as I was planning on locking down access with <tt>git-shell</tt> (see <tt>man git-shell</tt>) I added the appropriate line into my <tt>/etc/shells</tt> list:
+
+<pre>sudo -s
+
+# tailor according to where you installed git-shell
+echo "/usr/local/bin/git-shell" >> /etc/shells</pre>
+
+I then created a <tt>git</tt> user and set its shell to <tt>/usr/local/bin/git-shell</tt>, disabled login (that is, in the <tt>/etc/shadow</tt> file the <tt>git</tt> user should have only a <tt>*</tt> in its password field), and set its home directory to <tt>/pub/git</tt>; seeing as I used [[Webmin]] the home directory and corresponding <tt>git</tt> group were automatically set up for me. 
+
+Then for some once-only global set-up for git user:
+
+<pre># turn on new 1.5 features which break backwards compatibility
+sudo -H -u git git config --global core.legacyheaders false
+sudo -H -u git git config --global repack.usedeltabaseoffset true</pre>
+
+I also had to add this to <tt>/etc/services</tt>:
+
+<pre>git             9418/tcp                        # Git version control system</pre>
+
+And add this file, <tt>/etc/xinetd.d/git</tt>:
+
+<pre>service git
+{
+        port = 9418
+        socket_type = stream
+        protocol = tcp
+        user = git
+        server = /usr/local/bin/git-daemon
+        server_args = --inetd --base-path=/pub/git/path_to_public_repos -- /pub/git/path_to_public_repos
+        type = UNLISTED
+        wait = no
+        max_load = 5
+        instances = 5
+}</pre>
+
+Finally I had to get <tt>xinetd</tt> to re-read its configuration by sending it a <tt>SIGHUP</tt>.
+
+= [[SSH]] set up =
+
+While anonymous, read-only access is provided by the <tt>git-daemon</tt>, write access for developers takes place over [[SSH]]. As I am the only contributor on these projects at this stage the set-up is quite straight forward as there are no tricky permissions or shared repository concerns to worry about.
+
+First of all, on my local machine I generated a public/private key pair for authentication:
+
+<pre>ssh-keygen -t dsa -f ~/.ssh/id_dsa_git
+chmod 400 ~/.ssh/id_dsa_git</pre>
+
+I copied the public key to the remote machine, adding a corresponding entry to the <tt>~/.ssh/authorized_keys</tt> file in the <tt>git</tt> user home directory. 
+
+<pre>no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty ssh-dss AAAAB...CkiWA== wincent@example.com (git)</pre>
+
+On local machine, in <tt>~/.ssh/config</tt> add:
+
+<pre>Host git.example.com
+  IdentityFile ~/.ssh/id_dsa_git
+  HostName git.example.com
+  User git</pre>
+
+I also added the key to the list of keys managed by <tt>ssh-agent</tt> so that I wouldn't have to repeatedly enter my password. If this is all correctly set-up you should be able to perform a <tt>ssh git.example.com</tt> and see this error:
+
+<pre>fatal: What do you think I am? A shell?</pre>
+
+This is not actually a bad thing; the error message demonstrates that you were able to log in via public key authentication (good) and that you were given only restricted access thanks to <tt>git-shell</tt> (again, a good thing).
+
+If this doesn't work the first thing to check should be the permissions on your remote (and local) <tt>~/.ssh</tt> directory and its contents. I recommend permissions of 500 on the directory and 400 on the contents.
+
+= Importing from the Subversion repository =
+
+As [http://utsl.gen.nz/talks/git-svn/intro.html noted here] there are a number of ways to get an existing [[Subversion]] repository into [[Git]]. Among them, we have:
+
+* Use <tt>git svn init</tt> to set up a local, two-way mirror of an existing Subversion repository and all its history; this is similar to creating an [[SVK]] mirror
+* Use <tt>git svnimport</tt> to do a once-off import of an existing Subversion repository and all its history
+* Create a new Git repository and import only the tip of the current trunk from an existing Subversion repository (no history is imported)
+
+I tried the first method first and the import failed half-way through:
+
+<pre>$ git svn init -t tags -b branches -T trunk svn+ssh://svn.example.com/repo
+$ git svn fetch
+...
+r76 = b5a75a3212b6620ec0a6967275cdfcec4844461d (trunk)
+Malformed network data: Malformed network data at /usr/local/bin/git-svn line 964</pre>
+
+Without really knowing the cause of the failure it seemed wise to try another method, and in any case, I didn't really want a two-way gateway but a once-off import so that I could eventually decommission the public Subversion server.
+
+So I then tried the second alternative:
+
+<pre>echo "wincent = Wincent Colaiuta <win@wincent.com>" >> ~/.svn-authors
+git svnimport -i -v -I .gitignore -A ~/.svn-authors -C WOTest svn://svn.example.com/repo</pre>
+
+Although this worked on my local ([[Mac OS X]] [[Tiger]]) machine, it failed on my remote [[Red Hat Enterprise Linux]] machine because it didn't have the necessary prerequisites installed (<tt>SVN::Core</tt> and friends). It had worked on the [[Mac OS X]] box because I had already built the [[Subversion]] [[Perl]] bindings when installing [[SVK]]. I tried to build the bindings on the [[Red Hat]] box but withot success (see "[[Upgrading to Subversion 1.4.4]]").
+
+So this left me with two options:
+
+* Forget importing the history and seed a clean [[Git]] repository with only the tip of the current head
+* Use <tt>git svnimport</tt> to do the set-up on the [[Mac OS X]] box and then transfer the repository over to the [[Red Hat]] machine
+
+The former was the easiest so that's the approach I tried first. (I latter tried the other approach too and wrote it up in "[[Doing a one-off migration from Subversion to Git]]").
+
+So, on the remote machine:
+
+<pre># set up remote repo, bare
+sudo -H -u git mkdir test.git
+cd test.git
+
+# note that --bare comes before the init subcommand
+# it is equivalent to --git-dir=pwd
+sudo -H -u git git --bare init
+sudo -H -u git touch git-daemon-export-ok</pre>
+
+Now on the local machine, create a new empty repository and prepare the initial commit:
+
+<pre># grab tip of trunk to seed git repo
+svn export svn://svn.example.com/repo/trunk test
+cd test
+git init
+git add .
+git commit -s
+
+# add a tag corresponding to Subversion revision number
+git tag -s r208
+
+# actually push
+git push git.example.com:/pub/git/path_to_public_repos/test.git master</pre>
+
+Note how the default protocol is [[SSH]] and it is not necessary to specify it explicitly.
+
+This pushed only the initial contents of the tree, not the tag. I believe if could have included the <tt>--tags</tt> switch to <tt>git push</tt> to have the tag included.
+
+I also decided to set up a mapping from local master to remote master to make these pushes easier in the future. For example, I could set up a file (locally) at <tt>.git/remotes/my_shortcut</tt> with contents like this:
+
+<pre>URL: git.example.com:/pub/git/path_to_public_repos/test.git
+Push: master</pre>
+
+And then push the tag (for example) by doing:
+
+<pre>git push my_shortcut r208</pre>
+
+I explained this in a write-up to the mailing list [http://marc.info/?l=git&m=118437962422071&w=2 here], and it was clarified that the "new" way of setting up these remote references is to add them to your <tt>.git/config</tt>:
+
+<pre>[remote "origin"]
+        url = ssh://git.example.com/pub/git/path_to_public_repos/test
+        fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+        remote = origin
+        merge = refs/heads/master</pre>
+
+You can get this remote configuration (the same as would be produced by <tt>git clone</tt>) by using the <tt>git remote</tt> command:
+
+<pre>git init
+git remote add origin git.example.com:/pub/git/path_to_public_repos/test.git
+git config branch.master.remote origin
+git config branch.master.merge refs/heads/master</pre>
+
+Yet another alternative is to just clone the now-populated remote repository; cloning a totally empty repository won't work but now that it has some content cloning will work fine and doing a <tt>git clone</tt> will automatically set you up to <tt>push</tt> and <tt>pull</tt>:
+
+<pre>git clone ssh://git.example.com/pub/git/path_to_public_repos/test</pre>
+
+I later also tried the approach of creating a repository on my local machine with full history, zipping up the repository and transferring it to a remote server, unpacking it and configuring it on the remote server. This approach worked roughly as follows:
+
+<pre># extract the repository
+cd path_to_git_repositories
+sudo -u git cp ~/walrus.zip .
+sudo -u git unzip walrus.zip 
+sudo rm walrus.zip
+sudo -u git mv walrus/.git Walrus.git
+sudo rm -r walrus
+
+# repository set-up
+cd Walrus.git
+sudo -u git touch git-daemon-export-ok
+echo "Walrus.git win@wincent.com" | sudo tee -a path_to_conf_dir/gitweb-projects 
+echo "Object-oriented templating system" | sudo tee description 
+
+# remove local junk
+sudo rm qgit_cache.dat svn2git svn-authors 
+
+# remove now irrelevant "origin" head
+sudo rm refs/heads/origin</pre>
+
+But in the end I decided that instead of keeping the legacy history in the Git repository I preferred to make a clean break and start with a brand new (historyless) repository. I was mostly motivated by:
+
+* The fact that Git encourages certain conventions for formatting commit messages that I hadn't previously followed in the Subversion era; for example some of my commit messages are too wide and so don't display well in [[Gitweb]]
+* The desire for a clean "psychological break" with the old code and a "fresh start"; the history is still available in the Subversion repository my real attention is focussed on the present codebase, not where it came from
+* A desire to adopt a more disciplined approach in the future
+
+About 3 years later, though, I decided that it wouldn't hurt to keep the old history in the new Git repo after all, under a different branch. This is because I let the legacy Subversion server go offline when I changed my hosting arrangements from [[INetU]] to [[Amazon Web Services]]. With no way convenient way to access the old revisions any more, it seemed appropriated to retrospectively import the old history into the Git repo. This is described in the next section:
+
+= Importing Subversion history "after the fact" =
+
+According to the `git-svn` man page, `git svn init` and `git svn clone` are designed to work with new/empty Git repositories. My procedure, then, was to create a new Git repo from the Subversion repository, and then `git fetch` from that into the other Git repository.
+
+I had a local [[rsync]] backup of everything from the old server, including the Subversion repositories, so I could use local `file://` [[URLs]] for the `git svn clone`:
+
+<pre lang="shell">$ cd /Seguridad/remote/wincent1.inetu.net/var/lib/svn/repositories
+$ git svn clone --stdlayout \
+                --no-metadata \
+                -A ~/.svn-authors \
+                file:///Seguridad/remote/wincent1.inetu.net/var/lib/svn/repositories/Walrus \
+                Walrus.git</pre>
+
+Subversion doesn't have real tags; rather it advises users to create "tags" by copying the desired revision into a subdirectory of `tags` at the top level of the repository. Given that tags should be static, the user should then refrain from ever making changes in that subdirectory.
+
+When Git imports these tags it actually creates branch-like references for them, under `refs/remote/tags` (you can see them with `git branch -r`), in recognition of the fact that in the Subversion model these things aren't actually static but are more like branches.
+
+In my case, however, I always followed the standard `tags`/`branches`/`trunk` layout and I never made changes to my "tags" after creating them, so I wanted to convert these branch-like tags to actual Git tags. I created and used this `tagger.sh` script for this purpose:
+
+<pre>#!/bin/sh
+
+# modelled after:
+#   http://www.gitready.com/advanced/2009/02/16/convert-git-svn-tag-branches-to-real-tags.html
+#   http://github.com/nothingmuch/git-svn-abandon/blob/master/git-svn-abandon-fix-refs
+git for-each-ref --format='%(refname)' refs/remotes/tags | while read REF; do
+  echo "Processing: $REF"
+  TAG=${REF#refs/remotes/tags/}
+  COMMIT=$(git rev-parse $REF)
+  echo "Tag $TAG points to commit $COMMIT"
+
+  MERGE=$(git merge-base refs/remotes/trunk $COMMIT)
+  echo "Merge base is $MERGE"
+
+  git show --pretty='format:%s%n%n%b' $COMMIT | \
+    env GIT_COMMITTER_NAME="$(git show --pretty='format:%an' $COMMIT)" \
+        GIT_COMMITTER_EMAIL="$(git show --pretty='format:%ae' $COMMIT)" \
+        GIT_COMMITTER_DATE="$(git show --pretty='format:%ad' $COMMIT)" \
+        git tag -a -F - $TAG $MERGE
+done</pre>
+
+Having done this, in the real Git repository, I could do the following:
+
+<pre lang="shell">$ git fetch /Seguridad/remote/wincent1.inetu.net/var/lib/svn/repositories/Walrus.git trunk
+$ git branch trunk FETCH_HEAD
+$ git fetch --tags /Seguridad/remote/wincent1.inetu.net/var/lib/svn/repositories/Walrus.git trunk</pre>
+
+= See also =
+
+== Articles in this [[knowledge base]] ==
+
+* [[Setting up gitweb]]
+* [[Git repository maintenance]]
+* [[Setting up a brand new public Git repository]]
+* [[Setting up a brand new private Git repository]]
+
+== External links ==
+
+* http://blog.madduck.net/vcs/2007.07.11_publishing-git-repositories
+
+= Additional notes =
+
+My initial attempts at importing were done on the remote server directly, so I also added this to the <tt>~/.gitconfig</tt> for the <tt>git</tt> user, seeing as I'll be the only one doing commits for the foreseeable future:
+
+<pre>sudo -H -u git git config --global user.email win@wincent.com
+sudo -H -u git git config --global user.name "Wincent Colaiuta"</pre>
+
+I suspect that this information is not actually required when pushing from an appropriately configured ''local'' repository, because the author information from the local repository should be used.
