@@ -1,0 +1,89 @@
+---
+tags:
+---
+= C =
+
+* <tt>if</tt>: <tt>if</tt> block, <tt>if/else</tt> block 
+* <tt>for</tt>: <tt>for</tt> block 
+* <tt>fori</tt>: <tt>for</tt> block
+* <tt>while</tt>: <tt>while</tt> block (alias to w) 
+* <tt>switch</tt>: <tt>switch</tt> block
+* <tt>case</tt>: <tt>case</tt> block
+* <tt>pm</tt>: <tt>#pragma mark</tt> (customized)
+* <tt>pim</tt>: <tt>#import</tt> statement
+* <tt>pif</tt>: <tt>#if/#else/#endif</tt> statement
+
+= Objective-C =
+
+* <tt>a</tt>: alloc/init pattern
+* <tt></tt>: 
+* <tt></tt>: 
+* <tt></tt>: 
+* <tt></tt>:
+ * <tt></tt>: 
+
+= Doxygen =
+
+* <tt>dc</tt>: Doxygen comment
+* <tt>dgs</tt>: Doxygen group start
+* <tt>dge</tt>: Doxygen group end
+
+= Customization =
+
+== Xcode 3.x ==
+
+According to [http://www.cocoabuilder.com/archive/message/xcode/2007/11/29/17777 this post] this actually ''is'' a documented feature, but seeing as the [[Xcode]] release notes don't actually appear to be shipped with Xcode (at least, nothing comes up when you search for "Xcode release notes" in the documentation window) I guess this qualifies as an undocumented feature; your templates now need to be stored here:
+
+<pre>~/Library/Application Support/Developer/Shared/Xcode/Specifications</pre>
+
+Or here:
+
+<pre>~/Library/Application Support/Developer/3.0/Xcode/Specifications</pre>
+
+You can base your specifications of the Apple-provided ones here:
+
+<pre>/Developer/Library/Xcode/Specifications/</pre>
+
+== Xcode 2.x ==
+
+To override an Apple specification, copy the file from:
+
+<pre>/Developer/Applications/Xcode.app/Contents/PlugIns/TextMacros.xctxtmacro/Contents/Resources</pre>
+
+To:
+
+<pre>~/Library/Application Support/Apple/Developer Tools/Specifications</pre>
+
+Open the copied file in [[Property List Editor]] and save it as an [[ASCII Property List]]; this will strip the comments but will also have the effect of tidying up the formatting and making editing easier.
+
+Now you can override Apple's definitions, delete those you don't wish to override, and add your own. Settings "cascade". For example, I changed the C <tt>BlockSeparator</tt> setting and all the C-language block definitions inherited the new behaviour (after restarting [[Xcode]]):
+
+<pre>    {
+        ComputerLanguages = (c); 
+        DefaultSettings = {
+            BlockSeparator = "\n"; 
+            CaseStatementSpacing = ""; 
+            InExpressionsSpacing = ""; 
+            PostBlockSeparator = "\n"; 
+            PreExpressionsSpacing = " "; 
+        }; 
+        Identifier = c; 
+        IsMenu = YES; 
+        Name = C; 
+    }, </pre>
+
+To:
+
+<pre>    {
+        ComputerLanguages = (c); 
+        DefaultSettings = {
+            BlockSeparator = " "; 
+            CaseStatementSpacing = ""; 
+            InExpressionsSpacing = ""; 
+            PostBlockSeparator = "\n"; 
+            PreExpressionsSpacing = " "; 
+        }; 
+        Identifier = c; 
+        IsMenu = YES; 
+        Name = C; 
+    }, </pre>
