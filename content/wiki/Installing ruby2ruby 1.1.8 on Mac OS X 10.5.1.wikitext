@@ -1,0 +1,22 @@
+---
+tags: ruby.ruby
+---
+Notes made while installing [[ruby2ruby 1.1.8]] on [[Mac OS X]] [[Leopard]].
+
+= Installation =
+
+<pre>$ sudo gem install ruby2ruby
+Password:
+Successfully installed ruby2ruby-1.1.8
+1 gem installed
+Installing ri documentation for ruby2ruby-1.1.8...
+Installing RDoc documentation for ruby2ruby-1.1.8...</pre>
+
+= Updating the [[FastRI]] index =
+
+<pre>$ fastri-server -b
+Building index.
+Indexed:
+* 7710 methods
+* 1364 classes/modules
+Needed 0.741635 seconds</pre>
