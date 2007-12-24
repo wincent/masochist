@@ -1,0 +1,16 @@
+---
+tags: textmate haml
+---
+This article describes how to install the [[Haml]] bundle for [[TextMate]] via [[Subversion]].
+
+= Installation =
+
+<pre>cd Library/Application\ Support/TextMate/Bundles
+# previously:
+# svn co http://macromates.com/svn/Bundles/trunk/Bundles/Haml.tmbundle
+# now:
+svn co http://macromates.com/svn/Bundles/trunk/Bundles/Ruby%20Haml.tmbundle</pre>
+
+= Post-installation =
+
+If [[TextMate]] is running, go to the <tt>Bundles</tt> menu, open the <tt>Bundle Editor</tt> submenu and choose <tt>Reload Bundles</tt>.
