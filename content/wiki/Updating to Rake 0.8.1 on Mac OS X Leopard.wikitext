@@ -1,0 +1,22 @@
+---
+tags: leopard rake updates
+---
+Notes made while upgrading to [[Rake 0.8.1]] on [[Mac OS X]] [[Leopard]] (10.5.1).
+
+= Installation =
+<pre>$ sudo gem install rake
+Password:
+Bulk updating Gem source index for: http://gems.rubyforge.org
+Successfully installed rake-0.8.1
+1 gem installed
+Installing ri documentation for rake-0.8.1...
+Installing RDoc documentation for rake-0.8.1...</pre>
+
+= Updating the [[FastRI]] index =
+
+<pre>$ fastri-server -b
+Building index.
+Indexed:
+* 7710 methods
+* 1364 classes/modules
+Needed 1.20278 seconds</pre>
