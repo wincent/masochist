@@ -1,0 +1,7 @@
+---
+tags: rake
+---
+[[Rake]] is a [[make]]-like task runner written in (and for) [[Ruby]]. It is documented at:
+
+* http://rake.rubyforge.org/
+* http://docs.rubyrake.org/
