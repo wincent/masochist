@@ -1,0 +1,10 @@
+---
+tags: development
+---
+[[Make]] is a task-running tool most often used to automate the dependency analysis and compilation of software from source code.
+
+= See also =
+
+* [[GNU]] Make: http://www.gnu.org/software/make/
+* [[Wikipedia]] article on [[make]]: http://en.wikipedia.org/wiki/Make_%28software%29
+* [[Ruby]]'s make: [[Rake]]
