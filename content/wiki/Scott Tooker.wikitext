@@ -1,0 +1,4 @@
+---
+tags: xcode
+---
+[[Scott Tooker]] is an [[Apple]] employee working on the [[Xcode]] team. His helpful posts can often be found on the [[xcode-users]] mailing list.
