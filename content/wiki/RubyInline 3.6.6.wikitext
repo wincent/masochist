@@ -1,0 +1,8 @@
+---
+tags: rubyinline
+---
+* Release notes: http://rubyforge.org/frs/shownotes.php?release_id=17444
+
+= See also =
+
+* [[Upgrading to RubyInline 3.6.6 on Mac OS X Leopard 10.5.1]]
