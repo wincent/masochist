@@ -1,0 +1,6 @@
+---
+tags: os.x
+---
+Just found [http://discussions.apple.com/thread.jspa?threadID=1260029&tstart=195 this gem] describing how to eliminate the annoying dyld warnings that "shared cached file is corrupt" (<tt>/var/db/dyld/dyld_shared_cache_ppc</tt>):
+
+<pre>sudo update_dyld_shared_cache -force</pre>
