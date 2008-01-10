@@ -1,0 +1,8 @@
+---
+tags: zentest
+---
+* Release notes: http://rubyforge.org/frs/shownotes.php?release_id=17997
+
+= See also =
+
+* [[Upgrading to ZenTest 3.7.2 on Mac OS X 10.5.1]]
