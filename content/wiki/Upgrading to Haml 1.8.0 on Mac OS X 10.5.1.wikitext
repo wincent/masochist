@@ -1,0 +1,54 @@
+---
+tags: leopard haml updates
+---
+These notes were made while upgrading to [[Haml 1.8.0]] via [[RubyGems]] on [[Mac OS X]] 10.5.1
+
+= Installation =
+
+As recommended in the [http://haml.hamptoncatlin.com/release-notes release notes], I upgraded using the <tt>--no-ri</tt> switch. This suppresses the warning messages I saw last time I upgraded (see "[[Upgrading to Haml 1.7 on Mac OS X Tiger]]").
+
+<pre>$ sudo gem install haml --no-ri
+Password:
+Successfully installed haml-1.8.0
+1 gem installed
+Installing RDoc documentation for haml-1.8.0...</pre>
+
+= Updating existing [[Rails]] applications =
+
+== Installing by referencing the [[gem]] ==
+
+Seeing as the project in question is being managed by [[Git]] I did the following:
+
+<pre>cd path_to_rails_application_root
+git rm -r vendor/plugins/haml
+haml --rails .
+git add vendor/plugins/haml</pre>
+
+But if I wanted to do the same without [[Git]] I just would have done:
+
+<pre>cd path_to_rails_application_root
+rm -r vendor/plugins/haml
+haml --rails .</pre>
+
+== Installing without depending on the [[gem]] ==
+
+If you prefer to tie your application to a known working version of [[Haml]] rather than depending on a [[gem]] installed somewhere on the system (whose version you may not control), you would do something like this with [[Git]]:
+
+<pre>cd path_to_rails_application_root
+git rm -r vendor/plugins/haml
+svn export svn://hamptoncatlin.com/haml/tags/rel_1-8-0 vendor/plugins/haml
+git add vendor/plugins/haml</pre>
+
+And without [[Git]]:
+
+<pre>cd path_to_rails_application_root
+rm -r vendor/plugins/haml
+svn export svn://hamptoncatlin.com/haml/tags/rel_1-8-0 vendor/plugins/haml</pre>
+
+= Updating the [[Haml]] [[TextMate]] bundle =
+
+Apparently there have been no changes to the bundle recently:
+
+<pre>$ cd ~/Library/Application\ Support/TextMate/Bundles/Ruby Haml.tmbundle
+$ svn up
+At revision 8772.</pre>
