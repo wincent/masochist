@@ -1,0 +1,8 @@
+---
+tags: rspec
+---
+* Release notes: http://rubyforge.org/frs/shownotes.php?release_id=18147
+
+= See also =
+
+* [[Upgrading to RSpec 1.1.2 on Mac OS X Leopard]]
