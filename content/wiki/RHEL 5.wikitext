@@ -1,0 +1,49 @@
+---
+tags: red.hat
+---
+[[Red Hat Enterprise Linux 5]] or simply [[RHEL 5]] was released in March 2007, and will be supported by [[Red Hat]] in one way or another until 2014 (see "[[Red Hat Enterprise Linux support policy (EOL dates)]]").
+
+I wasn't able to find an "official" list of installed software packages with [[RHEL 5]] but I did find [http://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/ this listing] of [[RPMs]], which indicates that the base versions of the following packages are included:
+
+* [[Apache]] 2.2.3
+* [[MySQL]] 5.0.22
+* [[PHP]] 5.1.6
+* [[Ruby]] 1.8.5
+* [[Python]] 2.4.3
+* [[Perl]] 5.8.8
+* [[GCC]] 4.1.1
+* [[Subversion]] 1.4.2
+* [[Mailman]] 2.1.9
+* [[Sendmail]] 8.13.8
+* [[procmail]] 3.22
+* [[Squirrelmail]] 1.4.8
+* [[SpamAssassin]] 3.1.7/3.1.8/3.1.9
+
+For reference, compare this with the corresponding [http://ftp.redhat.com/pub/redhat/linux/enterprise/3/en/os/i386/SRPMS/ list] from [[RHEL 3]]:
+
+* [[Apache]] 2.0.46
+* [[MySQL]] 3.23.58
+* [[PHP]] 4.3.2
+* [[Ruby]] 1.6.8
+* [[Python]] 2.2.3
+* [[Perl]] 5.8.0
+* [[GCC]] 3.2.3
+* [[Subversion]] not in listing (I thought it was included)
+* [[Mailman]] not in listing (I thought it was included)
+* [[Sendmail]] 8.12.10
+* [[procmail]] 3.22
+* [[Squirrelmail]] 1.2.11
+* [[SpamAssassin]] 2.55
+
+There is some software which is included in neither [[RHEL 5]] nor [[RHEL 3]] which I consider to be pretty much essential:
+
+* [[ClamAV]]
+* [[ClamAssassin]]
+* [[Git]]
+
+= See also =
+
+* Features page: http://www.redhat.com/rhel/features/
+* Comparison with previous versions: http://www.redhat.com/rhel/compare/
+* Information on moving to [[RHEL 5]]: http://www.redhat.com/rhel/moving/
+* Package listing: http://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/
