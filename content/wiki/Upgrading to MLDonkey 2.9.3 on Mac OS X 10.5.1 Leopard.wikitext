@@ -1,0 +1,44 @@
+---
+tags: mldonkey updates
+---
+These notes were made while upgrading to [[MLDonkey 2.9.3]] on [[Mac OS X]] 10.5.1 [[Leopard]].
+
+= Building =
+
+<pre>wget http://garr.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.9.3.tar.bz2
+tar xjvf mldonkey-2.9.3.tar.bz2 
+cd mldonkey-2.9.3
+./configure</pre>
+
+Note that seeing as this is the first time I've tried to build [[MLDonkey]] on [[Leopard]], I received the following prompt during configuration:
+
+<pre>--------------------------------
+     Checking Ocaml compiler.
+--------------------------------
+checking for ocamlc.opt... no
+checking for ocamlc... no
+checking for camlp4... no
+********  Objective-Caml 3.10.1 is required  *********
+*******  Check http://caml.inria.fr/  ********
+Do you want this script to try to download and install ocaml
+LOCALLY in mldonkey directory ?
+y
+Downloading ...</pre>
+
+When that is done (several minutes later):
+
+<pre>make</pre>
+
+= Testing =
+
+To make sure things work first run <tt>mlnet</tt>:
+
+<pre>./mlnet</pre>
+
+You can then test using the web interface (connect to: http://localhost:4080/) or via [[telnet]]:
+
+<pre>telnet localhost 4000</pre>
+
+= Installing =
+
+<pre>sudo make install</pre>
