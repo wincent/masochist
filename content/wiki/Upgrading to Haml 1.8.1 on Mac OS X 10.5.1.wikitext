@@ -1,0 +1,32 @@
+---
+tags: leopard haml updates
+---
+These notes were made while upgrading to [[Haml 1.8.1]] on [[Mac OS X]] 10.5.1
+
+= Installation =
+
+<pre>$ sudo gem install haml --no-ri
+Password:
+Updating metadata for 106 gems from http://gems.rubyforge.org
+..........................................................................................................
+complete
+Successfully installed haml-1.8.1
+1 gem installed
+Installing RDoc documentation for haml-1.8.1...</pre>
+
+= Updating existing [[Rails]] applications =
+
+I prefer to tie my application to a known working version of [[Haml]] rather than depending on a [[gem]] installed somewhere on the system (whose version you may not control). Seeing as I use [[Git]] I do this:
+
+<pre>cd path_to_rails_application_root
+git rm -r vendor/plugins/haml
+svn export svn://hamptoncatlin.com/haml/tags/rel_1-8-1 vendor/plugins/haml
+git add vendor/plugins/haml</pre>
+
+= Updating the [[Haml]] [[TextMate]] bundle =
+
+Apparently there have been no changes to the bundle recently:
+
+<pre>$ cd ~/Library/Application\ Support/TextMate/Bundles/Ruby Haml.tmbundle
+$ svn up
+At revision 8813.</pre>
