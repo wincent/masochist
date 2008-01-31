@@ -1,0 +1,14 @@
+---
+tags: zentest updates
+---
+= Upgrade =
+
+<pre>sudo gem install ZenTest</pre>
+
+Update [[FastRI]] index:
+
+<pre>fastri-server -b</pre>
+
+= See also =
+
+* Release notes: http://rubyforge.org/frs/shownotes.php?release_id=11173
