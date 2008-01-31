@@ -1,0 +1,11 @@
+---
+tags: rspec
+---
+= Release notes =
+
+* http://rubyforge.org/frs/shownotes.php?release_id=18674
+
+= See also =
+
+* [[Upgrading to RSpec 1.1.3 on Mac OS X Leopard]]
+* [[Upgrading to ZenTest 3.9.0 on Mac OS X 10.5.1]]
