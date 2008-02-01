@@ -1,0 +1,12 @@
+---
+tags: zentest leopard updates
+---
+Notes made while upgrading to [[ZenTest 3.9.1]] on [[Mac OS X]] [[Leopard]] 10.5.1.
+
+= Installation =
+
+<pre>$ sudo gem install ZenTest</pre>
+
+= Updating the [[FastRI]] index =
+
+<pre>$ fastri-server -b</pre>
