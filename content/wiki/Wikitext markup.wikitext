@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[Wikitext markup]] is my preferred form of entering text in web applications. It's used by [[MediaWiki]] (the software which powers this [[wiki]]).
+
+I've written my own [[open source]] wikitext-to-[[HTML]] converter, a [[Ruby]] extension written in [[C]] for use in a [[Rails]] application of mine. You can browse the source here:
+
+* http://git.wincent.com/wikitext.git
