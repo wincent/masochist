@@ -1,0 +1,11 @@
+---
+tags: leopard fastri updates
+---
+These notes were made while upgrading to [[FastRI 0.3.1]] on [[Mac OS X]] 10.5.1 [[Leopard]].
+
+<pre>$ wget http://rubyforge.org/frs/download.php/31654/fastri-0.3.1.tar.gz
+$ tar xzvf fastri-0.3.1.tar.gz 
+$ cd fastri-0.3.1
+$ sudo ruby setup.rb</pre>
+
+As recommended in the release notes, I decided to install directly using <tt>setup.rb</tt> so as to avoid the [[RubyGems]] overhead.
