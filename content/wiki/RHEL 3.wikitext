@@ -1,0 +1,4 @@
+---
+tags: red.hat
+---
+[[RHEL 3]] is [[Red Hat Enterprise Linux]] version 3.
