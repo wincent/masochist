@@ -1,0 +1,170 @@
+---
+tags: git
+---
+= Installation =
+
+See my installation notes at "[[Installing Git 1.5.2.3 on Mac OS X Tiger]]".
+
+= Optional modules =
+
+See:
+
+* "[[Installing Net::SMTP::SSL for sending patches with Git over secure SMTP]]"
+
+= Initial configuration =
+
+<pre># personalize these with your own name and email address
+git config --global user.name "Wincent Colaiuta"
+git config --global user.email "win@wincent.com"
+
+# decorate logs
+git config --global log.decorate short
+
+# colorize output (Git 1.5.5 or later)
+git config --global color.ui auto
+
+# and from 1.5.4 onwards, this will works:
+git config --global color.interactive auto
+
+# user-friendly paging of some commands which don't use the pager by default
+# (other commands like "git log" already do)
+# to override pass --no-pager or GIT_PAGER=cat
+git config --global pager.status true
+git config --global pager.show-branch true
+
+# shortcut aliases
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.co checkout
+
+# use Apple opendiff (FileMerge) for resolving conflicts
+# it will be invoked when you do a "git mergetool"
+git config --global merge.tool opendiff
+
+# this so I can submit patches using git send-email
+git config --global sendemail.smtpserver smtp.example.com
+git config --global sendemail.aliasesfile ~/.gitaliases
+git config --global sendemail.aliasfiletype mailrc
+
+# as of Git 1.5.4 you'll also be able to add this for SMTP-AUTH
+git config --global sendemail.smtpuser "user@example.com"
+git config --global sendemail.smtppass password
+git config --global sendemail.smtpssl true
+
+# shortcut aliases for submitting patches for Git itself
+# refer to the "See also" section below for additional information
+echo "alias git git@vger.kernel.org" >> ~/.gitaliases
+echo "alias junio gitster@pobox.com" >> ~/.gitaliases
+echo "alias me win@wincent.com" >> ~/.gitaliases
+
+# another feature that will be available in 1.5.4 onwards
+# this is useful when you use topic branches for grouping together logically related changes
+git config --global format.numbered auto
+
+# turn on new 1.5 features which break backwards compatibility
+git config --global core.legacyheaders false
+git config --global repack.usedeltabaseoffset true</pre>
+
+The <tt>--global</tt> switch causes changes to be written into <tt>~/.gitconfig</tt> rather than the repository-level <tt>config</tt>.
+
+For more information on configuration type <tt>man git-config</tt> in the [[Terminal]].
+
+= Useful aliases =
+
+<pre># support habits from Subversion/CVS
+git config --global alias.st status
+git config --global alias.co checkout
+git config --global alias.ci commit
+
+# show difference between the HEAD and the index
+git config --global alias.staged "diff --cached"
+
+# show difference between working tree and the index; seeing as this is just a synonym for "diff" I almost never use it
+git config --global alias.unstaged diff
+
+# show staged and unstaged changes (what would be committed with "git commit -a"); I almost never use this
+git config --global alias.both "diff HEAD"
+
+# quick access to oneline log format
+git config --global alias.oneline "log --oneline"
+
+# I'm always amending, so "git amend" is easier than "git ci --amend"
+git config --global alias.amend "commit --amend"
+
+# misc
+git config --global alias.abbrev 'rev-parse --short'</pre>
+
+= Global ignores =
+
+Directory-specific ignores can be specified in a file called <tt>.gitignore</tt> at the top of the directory.
+
+Repository-wide ignores can be specified in <tt>.git/info/exclude</tt>.
+
+Global ignores can be placed in a file of your choosing (for example, <tt>~/.gitignore</tt>) and turned on using:
+
+<pre>git config --global core.excludesfile ~/.gitignore</pre>
+
+An example <tt>~/.gitignore</tt> file might be as simple as:
+
+<pre>.DS_Store</pre>
+
+For more information type:
+
+<pre>man gitignore</pre>
+
+= PGP setup =
+
+[[Git]] supports signing of tags using [[PGP]] keys.
+
+<pre># download latest version of GnuPG
+wget "ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.7.tar.bz2"
+
+# verify integrity of download
+openssl sha1 gnupg-1.4.7.tar.bz2
+
+# extract 
+tar xjvf gnupg-1.4.7.tar.bz2 
+cd gnupg-1.4.7
+
+# build
+./configure
+make
+make check
+
+# install
+sudo make install
+
+# create a new private/public key pair
+gpg --gen-key
+
+# export ASCII version of public key
+# (to upload to homepage or public keyserver)
+gpg --export -a</pre>
+
+To actually sign a tag you pass the <tt>-s</tt> (or <tt>-u</tt>) flag to <tt>git-tag</tt>.
+
+= <tt>gitk</tt> setup =
+
+<tt>gitk</tt> works out of the box; for example:
+
+<pre># clone an existing repository
+git clone git://git.kernel.org/pub/scm/git/git.git
+
+# inspect repository history using gitk
+cd git
+gitk</pre>
+
+Although <tt>gitk</tt> works with no modifications, it [http://scie.nti.st/2006/12/20/gitk-on-mac-os-x-screenshot can be tailored] to use more readable fonts; I added these lines to my <tt>~/.gitk</tt> file:
+
+<pre>set mainfont {Monaco 10}
+set textfont {Monaco 10}
+set uifont {Monaco 10}</pre>
+
+A superior alternative to <tt>gitk</tt> is [[QGit]], although it requires compilation.
+
+= See also =
+
+* [[Git cheatsheet]]
+* [[Git cookbook]]
+* [[Git recipes]]
+* [[Creating and submitting a patch via email with Git]]
