@@ -1,0 +1,21 @@
+---
+tags: syntax
+---
+This is a relatively new prerequisite for running the <tt>pre_commit</tt> [[Rake]] task for [[RSpec]] (required before submitting patches.
+
+= Installation =
+
+<pre>$ sudo gem install syntax
+Successfully installed syntax-1.0.0
+1 gem installed
+Installing ri documentation for syntax-1.0.0...
+Installing RDoc documentation for syntax-1.0.0...</pre>
+
+= Updating the [[FastRI]] index =
+
+<pre>$ fastri-server -b
+Building index.
+Indexed:
+* 7733 methods
+* 1368 classes/modules
+Needed 1.149122 seconds</pre>
