@@ -1,0 +1,26 @@
+---
+tags: leopard rcov updates
+---
+These notes were made while upgrading from [[rcov 0.8.1.0]] to [[rcov 0.8.1.2.0]] on [[Mac OS X]] [[Leopard]] 10.5.1 via [[RubyGems]]. This upgrade was necessary in order to get the <tt>pre_commit</tt> [[Rake]] task working again in the current [[RSpec]] trunk (post-1.1.3 release).
+
+= Installation =
+
+<pre>$ sudo gem install rcov
+Password:
+Updating metadata for 48 gems from http://gems.rubyforge.org
+................................................
+complete
+Building native extensions.  This could take a while...
+Successfully installed rcov-0.8.1.2.0
+1 gem installed
+Installing ri documentation for rcov-0.8.1.2.0...
+Installing RDoc documentation for rcov-0.8.1.2.0...</pre>
+
+= Updating the [[FastRI]] index =
+
+<pre>$ fastri-server -b
+Building index.
+Indexed:
+* 7733 methods
+* 1368 classes/modules
+Needed 1.880463 seconds</pre>
