@@ -1,0 +1,19 @@
+---
+tags:
+---
+See: http://en.wikipedia.org/wiki/Microsoft_Compressed_HTML_Help
+
+= Converting [[CHM]] files to [[HTML]] for use on [[Mac OS X]] =
+
+My usual routine for decompiling [[CHM]] archives is to do the following:
+
+# Fire up [[Windows XP]] in [[Parallels]].
+# From the "Start" menu, navigate to "All Programs", "HTML Help Workshop", "HTML Help Workshop" (see download link below).
+# From the "File" menu, select "Decompile".
+# Choose source [[CHM]] file and desired output folder and hit the "OK" button.
+# This will produce an incomprehensibly named set of files and folders; I generally stick everything in a folder to keep it out of sight, and create an alias to the contents file (discovered using trial and error).
+
+== Tools from [[Microsoft]] ==
+
+* '''HtmlHelp.exe''': downloadable from: http://www.microsoft.com/office/orkarchive/XPddl.htm
+* '''hh.exe''': included with [[Windows]]
