@@ -1,5 +1,6 @@
 ---
 tags: zentest
+cache_breaker: 1
 ---
 [[ZenTest 3.9.2]] was released on 20 March 2008.
 
