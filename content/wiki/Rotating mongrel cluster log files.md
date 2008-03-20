@@ -1,5 +1,6 @@
 ---
 tags: rails log.rotation mongrel
+cache_breaker: 1
 ---
 
 In my set-up both [mongrel cluster](/wiki/mongrel_cluster) and my [Rails](/wiki/Rails) application itself log to the same directory, and I wind up with a bunch of log files that look like this:
