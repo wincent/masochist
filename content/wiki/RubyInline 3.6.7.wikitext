@@ -1,5 +1,6 @@
 ---
 tags: rubyinline
+cache_breaker: 1
 ---
 [[RubyInline 3.6.7]] was released on 20 March 2008.
 
