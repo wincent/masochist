@@ -1,5 +1,6 @@
 ---
 tags: git updates
+cache_breaker: 1
 ---
 I performed the upgrade to [[Git 1.5.2.4]] on two different machines, each using a different technique:
 
