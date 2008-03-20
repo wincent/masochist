@@ -1,5 +1,6 @@
 ---
 tags: nginx log.rotation
+cache_breaker: 1
 ---
 
 # Overview
