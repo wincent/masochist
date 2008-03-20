@@ -1,5 +1,6 @@
 ---
 tags: tiger git updates os.x
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [Git 1.5.3.2](/wiki/Git_1.5.3.2) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger), using a local clone of the central [Git](/wiki/Git) repository.
