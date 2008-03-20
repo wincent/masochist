@@ -1,5 +1,6 @@
 ---
 tags: version.control
+cache_breaker: 1
 ---
 This article provides a comparative overview of the major [[version control systems]] that I've worked with over the years. The following is a summary of my experience with each system:
 
