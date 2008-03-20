@@ -1,0 +1,27 @@
+---
+tags: leopard rubyinline rubygems updates os.x
+---
+These notes were made while upgrading to [[RubyInline 3.6.7]] on [[Mac OS X]] [[Leopard]] 10.5.2.
+
+= Installing =
+
+ sudo gem install RubyInline
+
+== Output ==
+
+<pre>Successfully installed RubyInline-3.6.7
+1 gem installed
+Installing ri documentation for RubyInline-3.6.7...
+Installing RDoc documentation for RubyInline-3.6.7...</pre>
+
+= Updating the [[FastRI]] index =
+
+ fastri-server -b
+
+== Output ==
+
+<pre>Building index.
+Indexed:
+* 7733 methods
+* 1368 classes/modules
+Needed 2.666181 seconds</pre>
