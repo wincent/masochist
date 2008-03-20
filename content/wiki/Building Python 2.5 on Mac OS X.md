@@ -1,5 +1,6 @@
 ---
 tags: python os.x
+cache_breaker: 1
 ---
 
     wget http://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2
