@@ -1,5 +1,6 @@
 ---
 tags: updates os.x
+cache_breaker: 1
 ---
 I performed the upgrade to [[Git 1.5.3.1]] on two different machines, each using a different technique:
 
