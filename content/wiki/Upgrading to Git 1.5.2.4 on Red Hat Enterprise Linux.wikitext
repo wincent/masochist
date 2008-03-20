@@ -1,5 +1,6 @@
 ---
 tags: red.hat git updates
+cache_breaker: 1
 ---
 These notes were made while upgrading to [[Git 1.5.2.4]] on [[Red Hat Enterprise Linux]] from the tarball.
 
