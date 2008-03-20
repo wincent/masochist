@@ -1,5 +1,6 @@
 ---
 tags: rspec stories
+cache_breaker: 1
 ---
 
 # Links
