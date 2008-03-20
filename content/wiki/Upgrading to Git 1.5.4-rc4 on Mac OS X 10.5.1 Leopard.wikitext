@@ -1,5 +1,6 @@
 ---
 tags: leopard git updates os.x
+cache_breaker: 1
 ---
 These notes were made while upgrading to [[Git 1.5.4-rc4]] on [[Mac OS X]] 10.5.1 [[Leopard]], using a local clone of the central [[Git]] repository. I didn't perform the same upgrade on the server.
 
