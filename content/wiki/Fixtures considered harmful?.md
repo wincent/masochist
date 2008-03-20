@@ -1,5 +1,6 @@
 ---
 tags: rspec rails
+cache_breaker: 1
 ---
 
 "[Fixtures considered harmful?](/wiki/Fixtures_considered_harmful%3f)" is [a thread](http://rubyforge.org/pipermail/rspec-users/2007-May/001608.html) I started on the [rspec-users](/wiki/rspec-users) mailing list to clarify some doubts I had about the use of [fixtures](/wiki/fixtures) in [RSpec](/wiki/RSpec) and [Rails](/wiki/Rails).
