@@ -1,5 +1,6 @@
 ---
 tags: git updates
+cache_breaker: 1
 ---
 Normally I perform [[Git]] upgrades on two different machines, each using a different technique:
 
