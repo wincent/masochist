@@ -1,5 +1,6 @@
 ---
 tags: rails administration interface
+cache_breaker: 1
 ---
 
 ## Integrated administration interfaces
