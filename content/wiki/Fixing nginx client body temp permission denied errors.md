@@ -1,5 +1,6 @@
 ---
 tags: nginx
+cache_breaker: 1
 ---
 
 This is a problem that I stumbled across because of the particular way in which I use [nginx](/wiki/nginx) to host multiple [Rails](/wiki/Rails) applications.
