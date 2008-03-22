@@ -1,5 +1,6 @@
 ---
 tags: web
+cache_breaker: 1
 ---
 
 While principally a hype or [buzzword](/wiki/buzzword) which I initially resisted using, the term "[Web 2.0](/wiki/Web_2.0)" has gained enough currency now that it actually has come to mean a set of more or less agreed-upon characteristics. In other words, despite its origins as an empty, vacuous, mindlessly bandied-about hype term, it has, through widespread usage over an extended period of time, come to acquire a real symbolic value and is useful for communicative purposes.
