@@ -1,5 +1,6 @@
 ---
 tags: subversion
+cache_breaker: 1
 ---
 
 Notes made while migrating the [Wincent Strings Util](/wiki/Wincent_Strings_Util) repository from the local repository to the public (Internet) repository.
