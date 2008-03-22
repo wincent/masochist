@@ -1,0 +1,11 @@
+---
+tags: subversion git migration
+---
+This page was previously about migrating a [[Subversion]] repository from one machine to another. That content has now been moved to:
+
+* [[Migrating a Subversion repository from one machine to another]]
+
+== See also ==
+
+* [[Migrating Subversion repositories to Git]]
+* [[Doing a one-off migration from Subversion to Git]]
