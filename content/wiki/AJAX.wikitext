@@ -1,5 +1,6 @@
 ---
 tags: development web
+cache_breaker: 1
 ---
 [[AJAX]] or [[Asynchronous JavaScript and XML]] is a collection of techniques for making dynamic [[web]] applications that behave more like desktop applications rather than traditional [[web]] applications.
 
