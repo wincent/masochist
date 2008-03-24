@@ -1,5 +1,6 @@
 ---
 tags: 
+cache_breaker: 1
 ---
 
 A [URL](/wiki/URL) is a [Uniform Resource Locator](/wiki/Uniform_Resource_Locator). "Officially", the term [URI](/wiki/URI) is recommended for most [web](/wiki/web) applications because it is a "generic term best suited to the concept", but in reality [URL](/wiki/URL) is used almost exclusively among users of the [web](/wiki/web), partly because the term has been in use for longer than [URI](/wiki/URI) and partly because for all practical purposes almost all [URIs](/wiki/URIs) on the web are [URLs](/wiki/URLs) (a [URL](/wiki/URL) is a specific class of [URI](/wiki/URI); the other is a [URN](/wiki/URN)).
