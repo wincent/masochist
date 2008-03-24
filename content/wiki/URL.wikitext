@@ -1,5 +1,6 @@
 ---
 tags:
+cache_breaker: 1
 ---
 A [[URL]] is a [[Uniform Resource Locator]]. "Officially", the term [[URI]] is recommended for most [[web]] applications because it is a "generic term best suited to the concept", but in reality [[URL]] is used almost exclusively among users of the [[web]], partly because the term has been in use for longer than [[URI]] and partly because for all practical purposes almost all [[URIs]] on the web are [[URLs]] (a [[URL]] is a specific class of [[URI]]; the other is a [[URN]]).
 
