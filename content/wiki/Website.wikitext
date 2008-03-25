@@ -1,0 +1,6 @@
+---
+tags: web
+---
+== See also ==
+
+* [[Wikipedia]] article on [[websites]]: http://en.wikipedia.org/wiki/Website
