@@ -1,0 +1,9 @@
+---
+tags: atom rfc
+---
+The [[Atom Syndication Format]] is a [[web]] standard for providing feeds that can be read by any of numerous clients that understand the format.
+
+== See also ==
+
+* Full text of the [[RFC]]: http://www.ietf.org/rfc/rfc4287.txt
+* [[Atom]]
