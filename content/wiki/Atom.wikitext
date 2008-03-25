@@ -1,0 +1,15 @@
+---
+tags: atom rfc
+---
+[[Atom]] is a pair of [[web]] standards for content syndication (feeds) and publishing (creating and updating resources over [[HTTP]]). The feeds on this site are delivered in Atom syndication format.
+
+== See also ==
+
+* [[Wikipedia]] page on the [[Atom]] standard: http://en.wikipedia.org/wiki/Atom_%28standard%29 
+* Official Atom website: http://atomenabled.org/
+* [[Atom Syndication Format]]:
+** [[RFC]]: [[RFC 4287]]
+** Full specification: http://atomenabled.org/developers/syndication/atom-format-spec.php
+** Nice summary: http://www.atomenabled.org/developers/syndication/
+* [[Atom Publishing Protocol]]:
+** RFC: [[RFC 5023]]
