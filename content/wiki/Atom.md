@@ -1,5 +1,6 @@
 ---
 tags: atom rfc
+cache_breaker: 1
 ---
 
 [Atom](/wiki/Atom) is a pair of [web](/wiki/web) standards for content syndication (feeds) and publishing (creating and updating resources over [HTTP](/wiki/HTTP)). The feeds on this site are delivered in Atom syndication format.
