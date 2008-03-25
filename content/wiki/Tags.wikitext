@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[Tags]] are arguably one of the defining elements of "[[Web 2.0]]".
+
+= See also =
+
+* [[Wikipedia]] article on [[tags]]: http://en.wikipedia.org/wiki/Tag_%28metadata%29
