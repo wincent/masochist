@@ -1,5 +1,6 @@
 ---
 tags: web
+cache_breaker: 1
 ---
 
 ## See also
