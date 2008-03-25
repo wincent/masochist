@@ -1,5 +1,6 @@
 ---
 tags: atom rfc
+cache_breaker: 1
 ---
 The [[Atom Syndication Format]] is a [[web]] standard for providing feeds that can be read by any of numerous clients that understand the format.
 
