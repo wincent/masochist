@@ -1,5 +1,6 @@
 ---
 tags: apple hardware imac
+cache_breaker: 1
 ---
 
 # See also
