@@ -1,0 +1,6 @@
+---
+redirect: [[hard reset]]
+tags: 
+---
+
+
