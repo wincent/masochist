@@ -1,0 +1,8 @@
+---
+tags:
+---
+The [[kernel]] is the lowest-level or core of an [[operating system]]. Everything else on the system runs "on top of" the [[kernel]].
+
+[[Kernels]] are described in considerable depth in the [[Wikipedia]] article on the subject:
+
+* http://en.wikipedia.org/wiki/Kernel_%28computer_science%29
