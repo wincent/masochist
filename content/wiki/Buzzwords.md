@@ -1,0 +1,6 @@
+---
+redirect: [[buzzword]]
+tags: 
+---
+
+
