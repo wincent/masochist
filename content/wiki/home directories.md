@@ -1,0 +1,6 @@
+---
+redirect: [[home directory]]
+tags: 
+---
+
+
