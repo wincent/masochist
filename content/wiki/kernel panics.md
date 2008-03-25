@@ -1,0 +1,6 @@
+---
+redirect: [[kernel panic]]
+tags: 
+---
+
+
