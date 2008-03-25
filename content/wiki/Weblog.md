@@ -1,5 +1,6 @@
 ---
 tags: web
+cache_breaker: 1
 ---
 
 A [weblog](/wiki/weblog) is a reverse chronological order log-like online journal published to the web.
