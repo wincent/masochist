@@ -1,0 +1,14 @@
+---
+tags: ragel
+---
+In order to verify the signatures on the [[Ragel]] source distributions you'll need a copy of [[Adrian Thurston]]'s public key.
+
+You can get it and import it into [[GPG]] as follows:
+
+ wget http://www.cs.queensu.ca/home/thurston/thurston.asc
+ gpg --import thurston.asc
+
+But don't just take my word for it: go to the official [[Ragel]] website and Adrian's homepage and confirm the authenticity of the public key for yourself:
+
+* Official [[Ragel]] website: http://www.cs.queensu.ca/home/thurston/ragel/
+* [[Adrian Thurston]]'s homepage: http://www.cs.queensu.ca/home/thurston/
