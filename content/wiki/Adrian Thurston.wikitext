@@ -1,0 +1,8 @@
+---
+tags: ragel
+---
+[[Adrian Thurston]] is the mastermind behind [[Ragel]].
+
+== See also ==
+
+* Official homepage: http://www.cs.queensu.ca/home/thurston/
