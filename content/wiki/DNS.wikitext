@@ -1,0 +1,10 @@
+---
+tags: dns
+---
+[[DNS]], or the [[Domain Name System]], is infrastructure that enables clients on a network to translate human-readable symbolic addresses like "wincent.com" to their numeric [[IP]] addresses (209.235.192.161). DNS is often also used as a short hand to refer to an specific, individual [[Domain Name Server]] (that is "the DNS" rather than "the DNS server").
+
+In  November 2009 [/blog/dns-changes I started] using [[Nettica]] as an external DNS provider for this site.
+
+= See also =
+
+* [[Wikipedia]] article on [[DNS]]: http://en.wikipedia.org/wiki/Domain_Name_System
