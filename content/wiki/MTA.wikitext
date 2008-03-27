@@ -1,0 +1,8 @@
+---
+tags: mail
+---
+A [[MTA]] or [[Mail Transfer Agent]] (sometimes also [[Mail Transport Agent]]) is a program that transfers [[mail]] from one computer to another over a network using a protocol like [[SMTP]]. [[Sendmail]] is an example of a popular MTA.
+
+== See also ==
+
+* [[Wikipedia]] article on [[MTAs]]: http://en.wikipedia.org/wiki/Mail_transfer_agent
