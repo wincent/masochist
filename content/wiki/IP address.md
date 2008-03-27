@@ -1,0 +1,6 @@
+---
+redirect: [[IP]]
+tags: 
+---
+
+
