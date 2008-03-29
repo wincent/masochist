@@ -1,5 +1,6 @@
 ---
 tags: rubygems
+cache_breaker: 1
 ---
 [[RubyGems 1.1.0]] was released on 29 March 2008.
 
