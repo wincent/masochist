@@ -1,5 +1,6 @@
 ---
 tags: email sendmail
+cache_breaker: 1
 ---
 
 This example shows how to add a [DNS-based blacklist](/wiki/DNS-based_blacklist) to the [sendmail](/wiki/sendmail) configuration file. In this case the SBL-XBL list provided by [Spamhaus](/wiki/Spamhaus), one of the most reputable and accurate blacklists, is used for the purposes of illustration.
