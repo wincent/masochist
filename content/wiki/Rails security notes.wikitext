@@ -1,5 +1,6 @@
 ---
 tags: rails security
+cache_breaker: 1
 ---
 [[Rails]] is a relatively secure [[web]] framework out of the box provided you follow some standard (basic) security practices such as sanitizing user input and the like. A good security strategy will pursue "[[defense in depth]]", meaning that the application (and its deployment) will be design and executed with security in mind at many levels, not just at the outer "perimeter" level. In this way the fallout from a break-in can hopefully be mitigated by limiting just how far an intruder can penetrate and how much damage can be done.
 
