@@ -1,6 +1,7 @@
 ---
 title: Synergy 3.5a6 release
 tags: synergy releases
+cache_breaker: 1
 ---
 
 I'm pleased to announce the availability of version 3.5a6 of [Synergy](/wiki/Synergy), the sixth alpha release in the brand new 3.5 series. The last release, version 3.2, was [Leopard](/wiki/Leopard)-compatible but would also run on all versions of [Mac OS X](/wiki/Mac_OS_X) from [Jaguar](/wiki/Jaguar) onwards.
