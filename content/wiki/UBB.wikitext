@@ -1,0 +1,4 @@
+---
+tags: ubb
+---
+[[UBB]], also known as [[Ultimate Bulletin Board]], was a popular forum backend written in [[Perl]]. It was later replaced by [[UBB.threads]], written in [[PHP]].
