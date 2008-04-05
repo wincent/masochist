@@ -1,5 +1,6 @@
 ---
 tags: ubb.threads ubb
+cache_breaker: 1
 ---
 
 [UBB.threads](/wiki/UBB.threads) is popular commercial forum software written in [PHP](/wiki/PHP) and sold by [Groupee](/wiki/Groupee).
