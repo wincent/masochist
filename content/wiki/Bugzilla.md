@@ -1,5 +1,6 @@
 ---
 tags: bugzilla
+cache_breaker: 1
 ---
 
 [Bugzilla](/wiki/Bugzilla) is a very popular [open source](/wiki/open_source) bug tracking system written in [Perl](/wiki/Perl). It is both immensely powerful, scalable, customizable, and immensely hard to use for the average non-technical user. For this reason it is particularly popular within hardcore "hacker" communities, but is also the antithesis of "[Web 2.0](/wiki/Web_2.0)" design.
