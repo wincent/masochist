@@ -1,6 +1,7 @@
 ---
 title: New issue tracker
 tags: site
+cache_breaker: 1
 ---
 
 I'm just about to put the new [issue tracker](/wiki/issue_tracker) online. Click the "Support" link in the navigation bar to check it out.
