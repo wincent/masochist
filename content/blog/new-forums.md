@@ -1,6 +1,7 @@
 ---
 title: New forums
 tags: site
+cache_breaker: 1
 ---
 
 The new [forums](/wiki/forums) are now online.
