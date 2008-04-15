@@ -1,5 +1,6 @@
 ---
 tags: mediawiki
+cache_breaker: 1
 ---
 [[MediaWiki]] is the powerful, scalable and extremely popular [[wiki]] software used to power [[Wikipedia]] and a great many other wikis on the Internet. I myself used it for over a year to host my "[[Knowledge base]]", before replacing it with the custom wiki that you're reading now.
 
