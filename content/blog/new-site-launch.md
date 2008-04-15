@@ -1,6 +1,7 @@
 ---
 title: New site launch
 tags: site
+cache_breaker: 1
 ---
 
 At the end of last month I completed my migration from my old webhost ([Rackspace](/wiki/Rackspace)) to my new one ([INetU](/wiki/INetU)), but that was only half the story. For some time now I've been working on a custom [Rails](/wiki/Rails) application which would replace the mish-mash of software that I previously used on the old server:
