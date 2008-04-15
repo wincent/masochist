@@ -1,6 +1,7 @@
 ---
 title: Apple fixes cover art bug in iTunes 7.6.2?
 tags: synergy itunes
+cache_breaker: 1
 ---
 
 I was hopeful that in [iTunes](/wiki/iTunes) 7.6.2 [Apple](/wiki/Apple) had fixed the cover art bug that they previously introduced in version 7.6.1.
