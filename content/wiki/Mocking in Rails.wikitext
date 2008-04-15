@@ -1,5 +1,6 @@
 ---
 tags: rspec rails
+cache_breaker: 1
 ---
 [http://rubyforge.org/pipermail/rspec-users/2007-May/001728.html An interesting thread] came up in the [[rspec-users]] mailing list about the costs and overheads of using [[mocks]] compared with the benefits (as discussed in "[[Independently testing models, views and controllers]]").
 
