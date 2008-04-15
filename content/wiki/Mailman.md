@@ -1,5 +1,6 @@
 ---
 tags: mailman gnu
+cache_breaker: 1
 ---
 
 [Mailman](/wiki/Mailman) is a server-side mailing list application written in [Python](/wiki/Python).
