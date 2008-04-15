@@ -1,5 +1,6 @@
 ---
 tags: movable.type
+cache_breaker: 1
 ---
 
 [Movable Type](/wiki/Movable_Type) is a widely used weblog application (described by the makers as a "Blogging Platform"). It was initially open source, free, and very popular. It played a large role in popularizing weblogging. It has since then taken an increasingly commercial tone and estranged many formerly loyal fans, many of whom have flocked in droves to the free and open [WordPress](/wiki/WordPress). In the meantime [Six Apart](/wiki/Six_Apart), the company behind [Movable Type](/wiki/Movable_Type), orients itself further and further towards "Enterprise" and corporate customers because that's where the money is, and the usability, usefulness, and level of interest of their site has spiralled downwards as a result.
