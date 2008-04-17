@@ -1,5 +1,6 @@
 ---
 tags: rspec rails
+cache_breaker: 1
 ---
 
 ## Background
