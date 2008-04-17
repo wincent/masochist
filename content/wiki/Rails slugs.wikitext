@@ -1,5 +1,6 @@
 ---
 tags: rails
+cache_breaker: 1
 ---
 = Opinions on [[Rails]] [[URLs]] and slugs =
 
