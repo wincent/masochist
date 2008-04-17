@@ -1,5 +1,6 @@
 ---
 tags: ruby
+cache_breaker: 1
 ---
 [[Ruby]] is an interpreted, object-oriented scripting language that is often compared to [[Python]] and [[Smalltalk]]. It has a very "pure" object model in the sense that ''everything'' is an object, even literal values like <tt>1</tt>, <tt>2</tt> and <tt>3</tt>, and values such as <tt>nil</tt>, <tt>true</tt> and <tt>false</tt>.
 
