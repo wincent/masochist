@@ -1,5 +1,6 @@
 ---
 tags: rails
+cache_breaker: 1
 ---
 
 # Opinions on [Rails](/wiki/Rails) [URLs](/wiki/URLs) and slugs
