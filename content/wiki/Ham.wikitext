@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Ham]] is the opposite of [[spam]].
