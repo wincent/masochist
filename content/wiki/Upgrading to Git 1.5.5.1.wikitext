@@ -1,5 +1,6 @@
 ---
 tags: git updates
+cache_breaker: 1
 ---
 These notes were made while doing the upgrade to [[Git 1.5.5.1]] on two machines:
 
