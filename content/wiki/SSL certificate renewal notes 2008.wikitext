@@ -1,0 +1,110 @@
+---
+tags: ssl
+---
+My previous [[SSL]] certificate was a [[RapidSSL]]-issued certificate, and the cheapest reseller I could find at time of renewal (late April 2008) was [http://www.servertastic.com/ ServerTastic] (a 5-year renewal for $50, or $10 per year).
+
+The basic process for renewal is:
+
+# Go to servertastic
+# Go through the checkout process
+# Receive email with link to page where you submit your CSR (Certificate Signing Request)
+# Generate the CSR and paste it into the web page from the previous step
+# Receive another email requesting approval to generate a new certificate
+# Install the new certificate
+
+== Generating the CSR ==
+
+Instructions for how to do this appear [http://www.rapidssl.com/freessl/freessl-csr.html here], and for [[Apache]] with [[mod_ssl]] specifically [http://www.rapidssl.com/resources/csr/apache_mod_ssl.htm here].
+
+<pre>cd path/to/ssl/certs/and/keys
+
+# move old CSR out the way
+mv secure.wincent.com.csr.rapidssl secure.wincent.com.csr.rapidssl.2007
+
+# create a new CSR
+openssl req -new -key server.key -out secure.wincent.com.csr.rapidssl.2008
+
+# review the new CSR, comparing it against the previous one for correctness
+openssl req -noout -text -in secure.wincent.com.csr.rapidssl.2008
+openssl req -noout -text -in secure.wincent.com.csr.rapidssl.2007</pre>
+
+Here is how I answered the questions during CSR generation:
+
+<pre>You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [GB]:AU
+State or Province Name (full name) [Berkshire]:South Australia
+Locality Name (eg, city) [Newbury]:Rundle Mall
+Organization Name (eg, company) [My Company Ltd]:wincent.com
+Organizational Unit Name (eg, section) []:
+Common Name (eg, your name or your server's hostname) []:secure.wincent.com
+Email Address []:win@wincent.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:
+An optional company name []:</pre>
+
+== Installing the new certificate ==
+
+=== Apache ===
+
+[[RapidSSL]] provides [http://www.rapidssl.com/ssl-certificate-support/install-ssl-certificate/apache_apache_ssl.htm installation instructions] for [[Apache]] running [[mod_ssl]].
+
+<pre># move old certificate backup out of the way
+mv secure.wincent.com.crt.rapidssl secure.wincent.com.crt.rapidssl.2007
+
+# put the new certificate where Apache expects to find it
+cp secure.wincent.com.crt.rapidssl.2008 secure.wincent.com.crt
+
+# go live with the new certificate
+apachectl configtest
+apachectl graceful</pre>
+
+Visting a secure [[URL]] confirms that the new certificate is valid until 23 May 2013.
+
+=== Sendmail ===
+
+<pre>cd /etc/pki/tls/certs
+
+# move old backup out the way
+mv sendmail.pem.rapidssl sendmail.pem.rapidssl.2007
+
+# install new certificate
+cp /path/to/secure.wincent.com.crt.rapidssl.2008 sendmail.pem.rapidssl.2008
+cp sendmail.pem.rapidssl.2008 sendmail.pem
+
+# go live with the new certificate
+service sendmail restart</pre>
+
+I first did some elementary testing from [[Mail.app]] using the "Connection Inspector" window. I then followed this up with a [[telnet]]-style test:
+
+ openssl s_client -starttls pop -connect secure.wincent.com:25
+
+=== Cyrus ===
+
+<pre>cd /etc/pki/cyrus-imapd
+
+# make backup
+cp cyrus-imapd.pem cyrus-imapd.pem.rapidssl.2007
+
+# install new certificate, ensuring correct permissions
+cp /etc/pki/tls/certs/sendmail.pem.rapidssl.2008 cyrus-imapd.pem.rapidssl.2008
+chown cyrus:mail cyrus-imapd.pem.rapidssl.200*
+cp cyrus-imapd.pem.rapidssl.2008 cyrus-imapd.pem
+
+# go live with the new certificate
+service cyrus-imapd restart</pre>
+
+Again, I tested using [[Mail.app]] and also did the following tests in the [[Terminal]]:
+
+<pre># test secure IMAP
+openssl s_client -connect secure.wincent.com:993
+
+# test secure POP
+openssl s_client -connect secure.wincent.com:995</pre>
