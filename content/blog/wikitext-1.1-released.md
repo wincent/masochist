@@ -1,6 +1,7 @@
 ---
 title: Wikitext 1.1 released
 tags: wikitext
+cache_breaker: 1
 ---
 
 Yesterday I pushed out a minor feature release of my [wikitext](/wiki/wikitext) module, version 1.1. The principal enhancement in this release is the addition of a special tokenizer for the purposes of performing full-text search indexing of wikitext markup. More [detailed release notes](http://rubyforge.org/frs/shownotes.php?release_id=21531) are also available.
