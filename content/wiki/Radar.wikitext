@@ -1,4 +1,5 @@
 ---
 tags: apple
+cache_breaker: 1
 ---
 "[[Radar]]" is the nickname for the internal bug-tracking system used by [[Apple]]. Anyone with an [[ADC]] account can file bug reports at http://bugreporter.apple.com/, but the tracker is private, meaning that you can only see issues which you yourself have opened but not those opened by other people.
