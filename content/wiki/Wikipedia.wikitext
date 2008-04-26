@@ -1,5 +1,6 @@
 ---
 tags: mediawiki
+cache_breaker: 1
 ---
 [[Wikipedia]] is an free, community-driven online encyclopedia. The software used to power [[Wikipedia]], [[MediaWiki]], is [[open source]].
 
