@@ -1,0 +1,9 @@
+---
+title: Wikitext 1.1 released
+tags: wikitext
+---
+Yesterday I pushed out a minor feature release of my [[wikitext]] module, version 1.1. The principal enhancement in this release is the addition of a special tokenizer for the purposes of performing full-text search indexing of wikitext markup. More [http://rubyforge.org/frs/shownotes.php?release_id=21531 detailed release notes] are also available.
+
+[[Wikitext]] is a fast wikitext-to-[[HTML]] translator with a syntax very close to that used by [[MediaWiki]]. It is a [[Ruby]] extension written with speed and robustness in mind using a [[Ragel]]-generated scanner and a hand-coded parser, all in [[C]]. It has an enormous spec suite.
+
+You can browse the source code repo [http://git.wincent.com/wikitext.git here], or download the [[gem]] from the [[RubyForge]] [http://rubyforge.org/frs/?group_id=5483 downloads page]. For an overview check out the [[RDoc]] [http://wikitext.rubyforge.org/ here]. If you have [[RubyGems]] then you can install it with `sudo gem install wikitext`.
