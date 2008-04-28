@@ -1,6 +1,7 @@
 ---
 title: Involuntary Reboot Log #30
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 
 Only 10 minutes after the last power cut another one, and again the [UPS](/wiki/UPS) fails to protect the machine. Again the machine won't boot up afterwards until I've unplugged the UPS and turned it off and on again.
