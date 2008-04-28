@@ -1,6 +1,7 @@
 ---
 title: Involuntary Reboot Log #31
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 Just had a kernel panic while mounting/dismounting disk images. Still one of the buggier areas of [[Mac OS X]], it seems. Remember the MOAB circus? I seem to recall that quite a few of the bugs published that month were related to mounting volumes and disk images.
 
