@@ -1,5 +1,6 @@
 ---
 tags: development
+cache_breaker: 1
 ---
 
 [Garbage Collection](/wiki/Garbage_Collection), often abbreviated to "[GC](/wiki/GC)", is a form of automated memory management in which the programmer doesn't need to explicitly release or free allocated memory.
