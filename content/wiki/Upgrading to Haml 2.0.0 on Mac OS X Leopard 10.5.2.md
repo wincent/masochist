@@ -1,5 +1,6 @@
 ---
 tags: haml updates
+cache_breaker: 1
 ---
 
 Updating the [gem](/wiki/gem) itself is easy:
