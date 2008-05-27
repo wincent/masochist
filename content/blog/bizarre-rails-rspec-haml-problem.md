@@ -1,6 +1,7 @@
 ---
 title: Bizarre Rails/RSpec/Haml problem
 tags: rspec rails git haml
+cache_breaker: 1
 ---
 
 Not really sure what's going on here but I've run into some really bizarre breakage in the development version of the [Rails](/wiki/Rails) app that powers this site; not on this server, but on my development machine running [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).
