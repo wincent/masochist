@@ -1,0 +1,6 @@
+---
+tags: rspec
+---
+== See also ==
+
+* [[Installing RSpec 1.1.4 on Mac OS X Leopard 10.5.2]]
