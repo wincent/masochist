@@ -1,0 +1,42 @@
+---
+title: Bizarre Rails/RSpec/Haml problem
+tags: rspec rails git haml
+---
+Not really sure what's going on here but I've run into some really bizarre breakage in the development version of the [[Rails]] app that powers this site; not on this server, but on my development machine running [[Mac OS X]] [[Leopard]].
+
+Here's what my work over the last few hours has looked like:
+
+# Confirm that all [[specs]] are passing
+# Make a bugfix, including specs to catch any future regressions
+# Confirm that all specs pass
+# Commit changes
+# Upgrade to [[RSpec 1.1.4]]
+# Fix breakage to specs caused by changes in 1.1.4
+# Confirm that all specs are passing again
+# Commit changes
+# Upgrade to [[Haml 2.0]]
+# Confirm that all specs are still passing
+# Commit changes
+# Make use of Haml 2.0's "ugly" option
+# Confirm that all specs are still passing
+# Commit changes
+# Drop use of `preserve` helper made redundant by recent changes to Haml; really this part consisted of multiple steps:
+## Search for `preserve` in [[TextMate]]'s project-wide search
+## Get out-of-memory warning because it tried to search the log files which were far too big
+## Delete the log files
+## Perform the search again and make the substitutions
+# Run the specs and note that there are zillions of failures, all of them relating to [[RSpec]]'s mocks returning `nil` values rather than the requested return values
+# Drop back to previous commit and note that those specs fail as well (these were the same specs and the same code that previously worked)
+# Note that the specs ''do'' work when run from a single file within [[TextMate]]; `ruby the_spec.rb` and `spec the_spec.rb` also work, although `spec the_spec_dir` doesn't
+# Note that hitting the app in the web browser shows that it works and isn't failing where the specs say there is a problem
+# Run `git bisect` and note that ''all'' commits are failing
+# Go back to a really old commit (one month old) and note that the specs are failing
+# Try a fresh clone of the remote repo, which has none of the new changes, and note that the specs are failing
+# Try cleaning out old [[gem]] versions; specs still failing
+# Try uninstalling [[RSpec]], forcing the app to run from the version "frozen" into `vendor/plugins`; specs still failing
+# Try rebooting
+# Completely obliterating all versions of [[RSpec]] on my system and going back to 1.1.3
+# Completely obliterating all versions of [[Haml]] on my system and going back to 1.8.2
+# Log into remote deployment machine and check that the specs work on it &mdash; bafflingly they don't work there either, despite the fact that I run the specs with every `cap deploy` and have seen the "0 failures" green light on dozens upon dozens of occasions and have never seen a failure
+
+So all very puzzling and with a couple of wild goose chases thrown in. It turns out that after much investigation the cause was an abuse of mocks in my partials templates specs. A painful lesson and many hours wasted; perhaps I should have known better. In the end, the resulting specs are slightly leaner, so it hasn't been a total waste and at least now I know what's "the" approved way to set up locals in specs for partials.
