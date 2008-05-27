@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 [Git 1.5.5.1](/wiki/Git_1.5.5.1) was released on or about 21 April 2008.
