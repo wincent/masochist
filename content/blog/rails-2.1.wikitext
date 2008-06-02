@@ -1,0 +1,5 @@
+---
+title: Rails 2.1
+tags: rails
+---
+Of the [http://weblog.rubyonrails.com/2008/6/1/rails-2-1-time-zones-dirty-caching-gem-dependencies-caching-etc more than 1600 patches] that were committed to [[Rails]] between 2.0 and 2.1, looks like [http://github.com/rails/rails/commit/71528b1825ce5184b23d09f923cb72f4073ce8ed mine] was the very last one to make it in!
