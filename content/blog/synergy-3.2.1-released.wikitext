@@ -1,0 +1,9 @@
+---
+title: Synergy 3.2.1 released
+tags: synergy releases
+---
+I'm pleased to announce the availability of the latest release in the [[Synergy]] stable 3.2 series (3.2.1). This release includes the final fix for the cover art breakage caused by [[iTunes]] 7.6.1 and 7.6.2.
+
+A full changelog appears [http://wincent.com/a/products/synergy-classic/history/ here].
+
+You can download the new release from [http://wincent.com/a/products/synergy-classic/download/ this page] ([http://wincent.com/download.php?item=SynergyJaguar.zip direct link]) and purchase a license using [https://secure.wincent.com/a/products/synergy-classic/purchase/ this page].
