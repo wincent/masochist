@@ -1,6 +1,7 @@
 ---
 title: Involuntary Reboot Log #34
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 Hot on the heels of [[involuntary reboot]] #33 we have another one, this time a [[kernel panic]], cause unknown.
 
