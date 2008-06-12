@@ -1,0 +1,6 @@
+---
+redirect: [[involuntary reboot]]
+tags: 
+---
+
+
