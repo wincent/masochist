@@ -1,0 +1,4 @@
+---
+tags:
+---
+An [[involuntary reboot]] is a catastrophic system failure such as a [[hard reset]] or [[kernel panic]]. I keep a log of [[involuntary reboots]] for the purposes of measuring system reliability (see "[[Involuntary Reboot Log]]").
