@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 
 Backup software for [Mac OS X](/wiki/Mac_OS_X) made by [Shirt Pocket](/wiki/Shirt_Pocket).
