@@ -1,0 +1,4 @@
+---
+tags: hfs
+---
+[[HFS+]] is an infamously unreliable [[Apple]] filesystem which has caused countless [[Mac OS X]] users no end of grief. Unlike most serious [[UNIX]] filesystems, HFS+ is not case-sensitive by default (although it can optionally be made so), and it performs a lossy Unicode "normalization" on paths which can cause multiple headaches when working in a cross-platform environment.
