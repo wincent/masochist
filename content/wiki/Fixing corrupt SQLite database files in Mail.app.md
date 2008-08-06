@@ -1,5 +1,6 @@
 ---
 tags: sqlite mail.app
+cache_breaker: 1
 ---
 
 On rebooting after my latest [kernel panic](/wiki/kernel_panic) I found that I couldn't launch [Mail.app](/wiki/Mail.app); it would just [beachball](/wiki/beachball) endlessly each time I tried to launch it. I knew the kernel panic occurred at 23:13 and by inspecting the modification dates on the items in `~/Library/Mail/` I was able to see that the likely culprit was a corrupt `Envelope Index` database file, which had a modification date of 23:13.
