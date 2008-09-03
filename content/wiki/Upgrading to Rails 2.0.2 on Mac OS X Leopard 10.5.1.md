@@ -1,5 +1,6 @@
 ---
 tags: rails updates
+cache_breaker: 1
 ---
 
 Notes made while upgrading to [Rails 2.0.2](/wiki/Rails_2.0.2) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
