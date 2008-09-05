@@ -1,5 +1,6 @@
 ---
 tags: rails updates
+cache_breaker: 1
 ---
 
 ## Installing the [Rails](/wiki/Rails) [gem](/wiki/gem)
