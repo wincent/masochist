@@ -1,0 +1,5 @@
+---
+tags: haml updates
+---
+
+$ sudo gem install haml --no-ri
