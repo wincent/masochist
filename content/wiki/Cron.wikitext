@@ -1,0 +1,8 @@
+---
+tags: unix
+---
+[[Cron]] is a tool for scheduling periodic tasks.
+
+== See also ==
+
+* [[Wikipedia]] article on [[cron]]: http://en.wikipedia.org/wiki/Cron
