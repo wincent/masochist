@@ -1,5 +1,6 @@
 ---
 tags: rails mysql
+cache_breaker: 1
 ---
 == Manually clearing ==
 
