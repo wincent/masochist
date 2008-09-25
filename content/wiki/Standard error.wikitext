@@ -1,0 +1,6 @@
+---
+tags: development
+---
+== See also ==
+
+* [[Wikipedia]] article on the [[standard error]]: http://en.wikipedia.org/wiki/Standard_error_stream
