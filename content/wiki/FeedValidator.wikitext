@@ -1,0 +1,6 @@
+---
+tags: ruby xml
+---
+== See also ==
+
+* [[RDoc]] documentation: http://feedvalidator.rubyforge.org/
