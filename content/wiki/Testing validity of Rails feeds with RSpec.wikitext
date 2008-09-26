@@ -1,5 +1,6 @@
 ---
 tags: rspec rails atom xml
+cache_breaker: 1
 ---
 It's actually quite hard to find information about testing feeds because ''so'' many pages out there feature the words "feed" nowadays, but some of the first results that I turned up talked about the [[FeedValidator]] [[gem]].
 
