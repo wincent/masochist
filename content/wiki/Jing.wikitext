@@ -1,0 +1,7 @@
+---
+tags: xml schema jing
+---
+== See also ==
+
+* Official site: http://www.thaiopensource.com/relaxng/jing.html
+* [[Trang]] (schema-translator which uses [[Jing]])
