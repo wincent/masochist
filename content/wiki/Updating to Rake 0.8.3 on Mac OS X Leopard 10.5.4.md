@@ -1,5 +1,6 @@
 ---
 tags: rake updates
+cache_breaker: 1
 ---
 
 Decided to perform this upgrade when running `rake` started complaining like this whenever run:
