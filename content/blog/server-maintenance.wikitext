@@ -1,6 +1,7 @@
 ---
 title: Server maintenance
 tags: site
+cache_breaker: 1
 ---
 The server will be going down for minor maintenance at approximately 12:20 PM EDT today (Sunday 28 September 2008). Service should be interrupted only for a couple minutes while the server is rebooting.
 
