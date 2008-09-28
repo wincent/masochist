@@ -1,5 +1,6 @@
 ---
 tags: red.hat updates
+cache_breaker: 1
 ---
 First we check what updated kernel packages are available:
 
