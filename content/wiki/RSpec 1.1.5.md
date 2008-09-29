@@ -1,5 +1,6 @@
 ---
 tags: rspec
+cache_breaker: 1
 ---
 
 Seeing as the [official release notes are mangled](http://rubyforge.org/frs/shownotes.php?release_id=26546), here's a version I cleaned up by hand:
