@@ -1,0 +1,5 @@
+---
+tags:
+---
+* Official release notes: http://rubyforge.org/frs/shownotes.php?release_id=27976
+* Local update notes: [[Updating to ruby2ruby 1.2.1 on Mac OS X Leopard 10.5.5]]
