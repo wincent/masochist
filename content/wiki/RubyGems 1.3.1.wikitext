@@ -1,0 +1,5 @@
+---
+tags: rubygems
+---
+* Official release notes: http://rubyforge.org/frs/shownotes.php?release_id=27655
+* Local update notes: [[Updating to RubyGems 1.3.1 on Mac OS X Leopard 10.5.5]]
