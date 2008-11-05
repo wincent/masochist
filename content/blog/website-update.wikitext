@@ -1,0 +1,7 @@
+---
+title: Website update
+tags: site
+---
+Hot on the heels of the [http://rails.wincent.com/blog/november-server-maintenance server maintenance] (an operating system update) earlier today we have an application-level update to the software that powers this website. Should only be down for a few minutes. Please report any anomalies you find using the [http://rails.wincent.com/issues/ issue tracker].
+
+'''Update:''' We're back.
