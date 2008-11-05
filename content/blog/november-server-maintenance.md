@@ -1,6 +1,7 @@
 ---
 title: November server maintenance
 tags: site
+cache_breaker: 1
 ---
 
 The website and other services will be going down shortly for maintenance. Downtime should hopefully be only a few minutes or less, while the server reboots and comes back online.
