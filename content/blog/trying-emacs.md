@@ -1,6 +1,7 @@
 ---
 title: Trying Emacs
 tags: textmate emacs
+cache_breaker: 1
 ---
 
 [TextMate](/wiki/TextMate) is a great editor, but there are two things which annoy me about it.
