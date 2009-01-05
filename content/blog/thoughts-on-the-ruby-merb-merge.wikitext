@@ -1,6 +1,7 @@
 ---
 title: Thoughts on the Ruby/Merb merge
 tags: rails merb
+cache_breaker: 1
 ---
 Seeing as I was living under a rock at the time I only heard about [http://rubyonrails.org/merb this one] a few days ago, well over a week after it was announced. What a bombshell.
 
