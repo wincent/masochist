@@ -1,5 +1,6 @@
 ---
 tags: emacs
+cache_breaker: 1
 ---
 == Show line numbers on the left-hand side of the buffer ==
 
