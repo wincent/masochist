@@ -1,5 +1,6 @@
 ---
 tags: rails
+cache_breaker: 1
 ---
 
 This article is about [Rails "gotchas"](/wiki/Rails_%22gotchas%22): things that may be puzzling or confounding if you don't know about them. Beware that this is a long-lived document and the behaviour in some or all of these "gotchas" might have changed since they were originally written.
