@@ -1,0 +1,17 @@
+---
+tags: vim
+---
+[[Vim]] is an extremely powerful and efficient text editor particularly well suited for editing program source code. It's most distinctive distinguishing feature is that it is a modal editor, unlike almost every other editor in widespread use today. 
+
+= Official site =
+
+* http://www.vim.org/
+
+= Other resources =
+
+* http://www.viemu.com/a-why-vi-vim.html: "Why, oh WHY, do those #?@! nutheads use vi?"
+
+= See also =
+
+* [[MacVim]]: a [[Mac OS X]]-specific [[GUI]] version of [[Vim]]
+* [[Command-T]]: a plug-in I wrote for VIM that brings fast file navigation inspired by the "Command-T" feature in [[TextMate]]
