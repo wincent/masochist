@@ -1,6 +1,7 @@
 ---
 title: Updating Capistrano
 tags: rails capistrano
+cache_breaker: 1
 ---
 [[Capistrano]] is a very, very important piece of software to those who use it. If Capistrano breaks, then you can't deploy your [[Rails]] application. And it is a very [http://rubyhitsquad.com/Ruby_Hit_Squad.html complicated, delicate] piece of software, so updates which break your recipes are a definite possibility.
 
