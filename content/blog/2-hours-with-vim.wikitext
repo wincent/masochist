@@ -1,6 +1,7 @@
 ---
 title: 2 hours with Vim
 tags: vim ack
+cache_breaker: 1
 ---
 An oft-repeated prerequisite of any coding editor is that it should have a fast way of jumping around files in a project (like Command-T in [[TextMate]]) and that it needs a nice "Find in project" interface.
 
