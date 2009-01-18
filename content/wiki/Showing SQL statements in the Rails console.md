@@ -1,5 +1,6 @@
 ---
 tags: rails
+cache_breaker: 1
 ---
 
 Found in a comment on [this weblog post](http://frozenplague.net/2008/12/showing-sql-statements-in-scriptconsole/); stick this in your `~/.irbrc`:
