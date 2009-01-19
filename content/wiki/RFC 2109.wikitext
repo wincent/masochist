@@ -1,0 +1,8 @@
+---
+tags: rfcs
+---
+[[RFC 2109]], or "HTTP State Management Mechanism", basically describes what [[cookies]] are.
+
+== [[RFC]] text ==
+
+* http://www.w3.org/Protocols/rfc2109/rfc2109
