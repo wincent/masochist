@@ -1,5 +1,6 @@
 ---
 tags: nginx
+cache_breaker: 1
 ---
 
 Up until now I've used [Mongrel](/wiki/Mongrel) for local testing purposes when developing [Rails](/wiki/Rails) applications, started using `script/server`, but now I need to do some testing over [SSL](/wiki/SSL) and Mongrel doesn't work over SSL.
