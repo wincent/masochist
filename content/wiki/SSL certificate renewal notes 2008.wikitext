@@ -1,5 +1,6 @@
 ---
 tags: ssl
+cache_breaker: 1
 ---
 My previous [[SSL]] certificate was a [[RapidSSL]]-issued certificate, and the cheapest reseller I could find at time of renewal (late April 2008) was [http://www.servertastic.com/ ServerTastic] (a 5-year renewal for $50, or $10 per year).
 
