@@ -1,5 +1,6 @@
 ---
 tags: ssl
+cache_breaker: 1
 ---
 
 I [recently wrote](http://wincent.com/a/about/wincent/weblog/archives/2007/01/ssl_fun.php) about obtaining a new [SSL](/wiki/SSL) certificate. Here are some notes made during the procedure.
