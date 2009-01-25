@@ -1,0 +1,6 @@
+---
+redirect: /issues/new
+tags: 
+---
+
+
