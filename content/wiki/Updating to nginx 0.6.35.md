@@ -1,5 +1,6 @@
 ---
 tags: nginx updates
+cache_breaker: 1
 ---
 
 Notes made while updating my local [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6 install to [nginx 0.6.35](/wiki/nginx_0.6.35):
