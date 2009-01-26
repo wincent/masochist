@@ -1,6 +1,7 @@
 ---
 title: Ruby "in" method
 tags: ruby
+cache_breaker: 1
 ---
 Do you ever find yourself writing:
 
