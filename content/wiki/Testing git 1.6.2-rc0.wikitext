@@ -1,0 +1,11 @@
+---
+tags: git updates
+---
+Just making sure that [[Git 1.6.2-rc0]] builds and passes the test suite on [[Mac OS X]] [[Leopard]] 10.5.6:
+
+<pre>git fetch
+git tag -v v1.6.2-rc0
+git co v1.6.2-rc0
+make clean && make prefix=/usr/local test</pre>
+
+'''Note:''' `git co` is an alias for `git checkout`.
