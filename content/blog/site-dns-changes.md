@@ -1,6 +1,7 @@
 ---
 title: Site DNS changes
 tags: site
+cache_breaker: 1
 ---
 
 A little later today the DNS records will be updated as wincent.com and www.wincent.com will be moving to a new IP address (209.235.214.139) from the old address (209.235.192.161).
