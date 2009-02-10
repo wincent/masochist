@@ -1,6 +1,7 @@
 ---
 title: Scaling Rails screencasts
 tags: rails
+cache_breaker: 1
 ---
 
 So I just checked out the [5th part](http://railslab.newrelic.com/2009/02/05/episode-5-advanced-page-caching) of Gregg Pollack's [Scaling Rails screencasts](http://railslab.newrelic.com/scaling-rails), skipping straight to that part because my curiosity was piqued on seeing it labelled as containing his "first rant of the series".
