@@ -1,6 +1,7 @@
 ---
 title: Lack of stability in the Rails/Ruby ecosystem (rant)
 tags: rspec ruby rails capistrano
+cache_breaker: 1
 ---
 Please bear with me. This is going to be a rant. I'm suspending the usual rationality, objectivity, and verifiability standards and giving full vent to my most visceral impulses. Stand back a few paces; I wouldn't want to see anybody get flecked with the speckles of foam soon to start describing outwards arcs from my mouth.
 
