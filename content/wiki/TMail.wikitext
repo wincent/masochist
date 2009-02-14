@@ -1,0 +1,6 @@
+---
+tags: ruby
+---
+== Links ==
+
+* [[RDoc]]: http://tmail.rubyforge.org/rdoc/index.html
