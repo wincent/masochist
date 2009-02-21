@@ -1,6 +1,7 @@
 ---
 title: Firefox and self-signed SSL certificates
 tags: firefox rant
+cache_breaker: 1
 ---
 I guess I arrived late at [http://www.google.com/search?q=firefox+self-signed+ssl+certificate this party], but I only just discovered that [[Firefox]] makes working with self-signed [[SSL]] certificates an <em><strong>enormous</strong> pain in the butt</em>.
 
