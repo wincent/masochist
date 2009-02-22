@@ -1,6 +1,7 @@
 ---
 title: Rails page caching vs nginx
 tags: rails nginx
+cache_breaker: 1
 ---
 Just ran into a surprising conflict between [http://brainspl.at/nginx.conf.txt the "canonical", recommended way] of setting up [[nginx]] to take advantage of [[Rails]] page caching, and Rails RESTful routes.
 
