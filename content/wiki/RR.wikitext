@@ -1,0 +1,20 @@
+---
+tags: rr
+---
+[[RR]] is one of several [[test double]] frameworks available for [[Ruby]]. I switched to it in mid-2010 after using the [[RSpec]] mocking library for several years.
+
+= See also =
+
+== Official resources ==
+
+* [[Git repository]]: http://github.com/btakita/rr/tree/master
+* Official announcement: http://pivotallabs.com/users/brian/blog/articles/352-introducing-rr
+** Other posts in the [[RR]] category: http://pivotallabs.com/users/brian/blog/articles/category/201-rr
+
+== Resources in this wiki ==
+
+* [[RR cheatsheet]]
+
+== Third-party resources ==
+
+* A nice intro to [[RR]]: http://technicalpickles.com/posts/ruby-stubbing-and-mocking-with-rr
