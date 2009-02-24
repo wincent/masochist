@@ -1,0 +1,6 @@
+---
+tags:
+---
+See:
+
+* [[Proxy (test double)]]
