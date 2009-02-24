@@ -1,0 +1,7 @@
+---
+tags:
+---
+= See =
+
+* [[Wikipedia]] article: http://en.wikipedia.org/wiki/Human_interface_guidelines
+* [[Apple]] resources: http://developer.apple.com/documentation/UserExperience/index.html
