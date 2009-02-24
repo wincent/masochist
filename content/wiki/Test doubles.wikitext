@@ -1,0 +1,9 @@
+---
+tags:
+---
+[[Test doubles]] are objects that stand in for other objects during testing. They can include:
+
+* [[Mocks]]
+* [[Stubs]]
+* [[Proxies]]
+* [[Spies]]
