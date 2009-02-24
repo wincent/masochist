@@ -1,5 +1,6 @@
 ---
 tags: development
+cache_breaker: 1
 ---
 
 [Test-Driven Development](/wiki/Test-Driven_Development) or [TDD](/wiki/TDD) is a development style in which programmers write tests prior to writing the code to be tested. Test-writing therefore drives development and serves as a guide as to what should be implemented next. The process of designing the software becomes intimately entwined with that of designing the tests.
