@@ -1,5 +1,6 @@
 ---
 tags: development
+cache_breaker: 1
 ---
 
 [Stubs](/wiki/Stubs) are [test doubles](/wiki/test_doubles) which are closely related to [mock objects](/wiki/mock_objects) but offer a subset of the functionality of [mocks](/wiki/mocks).
