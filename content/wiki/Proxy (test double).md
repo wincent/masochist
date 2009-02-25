@@ -1,5 +1,6 @@
 ---
 tags: rspec
+cache_breaker: 1
 ---
 
 I first heard the word [proxy](/wiki/proxy) in the context of [test doubles](/wiki/test_doubles) in [this weblog post](http://pivotallabs.com/users/brian/blog/articles/352-introducing-rr). In it, Brian Takita describes a "proxy" as a test double which does two things:
