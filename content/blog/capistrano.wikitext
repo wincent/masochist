@@ -1,6 +1,7 @@
 ---
 title: Capistrano
 tags: capistrano
+cache_breaker: 1
 ---
 So Jamis just [http://weblog.jamisbuck.org/2009/2/25/net-ssh-capistrano-and-saying-goodbye announced] that [[Capistrano]] development is over.
 
