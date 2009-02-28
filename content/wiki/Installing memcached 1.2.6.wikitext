@@ -1,0 +1,72 @@
+---
+tags: libevent memcached
+---
+= Installing on [[Mac OS X]] [[Leopard]] 10.5.6 =
+
+First we install [[libevent]], a prerequisite for installing [[memcached]]:
+
+<pre>wget http://www.monkey.org/~provos/libevent-1.4.9-stable.tar.gz
+tar xzvf libevent-1.4.9-stable.tar.gz 
+cd libevent-1.4.9-stable
+./configure
+make
+make verify
+sudo make install</pre>
+
+Now moving on to [[memcached]] itself:
+
+<pre>cd ..
+wget http://www.danga.com/memcached/dist/memcached-1.2.6.tar.gz
+tar xzvf memcached-1.2.6.tar.gz 
+cd memcached-1.2.6
+./configure
+make
+make test
+sudo make install</pre>
+
+= Installing on [[Red Hat Enterprise Linux]] 5.1 =
+
+When I tried the same procedure on [[RHEL]] I found that [[memcached]] wasn't able to find the [[libevent]] library at runtime.
+
+This is because it gets installed by default in `/usr/local/lib` and that is not in the dynamic loadpath.
+
+== Troubleshooting options ==
+
+ # confirm "not found" for libevent
+ ldd -v ./memcached
+ # see where memcached is looking for the library
+ LD_DEBUG=libs ./memcached -vv
+
+== Workarounds ==
+ 
+ # export path before launching memcached
+ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+ ./memcached
+
+== Final solution ==
+
+That run-time workaround strikes me as a bit ugly. I tried some other tricks at compile-time, but nothing worked.
+
+In the end I decided that installing [[libevent]] into `/usr/lib` rather than `/usr/local/lib` was the least hideous alternative.
+
+So the final installation incantation was:
+
+<pre>wget http://www.monkey.org/~provos/libevent-1.4.9-stable.tar.gz
+tar xzvf libevent-1.4.9-stable.tar.gz 
+cd libevent-1.4.9-stable
+./configure --libdir=/usr/lib
+make
+make verify
+sudo make install
+cd ..
+wget http://www.danga.com/memcached/dist/memcached-1.2.6.tar.gz
+tar xzvf memcached-1.2.6.tar.gz 
+cd memcached-1.2.6
+./configure
+make
+make test
+sudo make install</pre>
+
+= See also =
+
+* [[Testing memcached with telnet]]
