@@ -1,5 +1,6 @@
 ---
 tags: libevent memcached
+cache_breaker: 1
 ---
 
 # Installing on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6
