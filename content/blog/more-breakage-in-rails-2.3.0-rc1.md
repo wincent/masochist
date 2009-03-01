@@ -1,6 +1,7 @@
 ---
 title: More breakage in Rails 2.3.0 RC1
 tags: rails
+cache_breaker: 1
 ---
 
 The update to Rails 2.3.0 RC1 was deceptively quiet. It looked like everything went smoothly, and all the specs kept passing with very few of the adjustments I'm used to having to perform when updating Rails.
