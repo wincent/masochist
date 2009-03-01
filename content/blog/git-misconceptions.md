@@ -1,6 +1,7 @@
 ---
 title: Git misconceptions
 tags: git
+cache_breaker: 1
 ---
 
 I just had the misfortune of being directed to read [this anti-Git rant](http://robey.lag.net/2008/07/13/git-for-the-real-world.html) by a guy named Robey Pointer, who apparently works for Twitter. It's about 7 months old now, but [apparently](http://gitlog.wordpress.com/2009/03/01/git-monthly-links-2009-02/) it's been getting linked to a little bit lately.
