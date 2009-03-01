@@ -1,6 +1,7 @@
 ---
 title: JavaScript-backed flash
 tags:
+cache_breaker: 1
 ---
 So up until recently I had only been caching [[Atom]] feeds seeing as they are what gets hammered the most. Then about a week ago I added a new resource to the site and figured that if I was caching the Atom feed I may as well cache the HTML pages as well; it was probably less than 5% additional effort for twice as much caching.
 
