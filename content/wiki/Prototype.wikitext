@@ -1,0 +1,8 @@
+---
+tags: javascript prototype
+---
+[[Prototype]] is a popular [[JavaScript]] framework that ships with [[Rails]] (although it can easily be used elsewhere as well). Personally, I much prefer [[jQuery]].
+
+= Links =
+
+* Official site: http://www.prototypejs.org/
