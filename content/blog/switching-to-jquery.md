@@ -1,6 +1,7 @@
 ---
 title: Switching to JQuery
 tags: rails javascript jquery prototype
+cache_breaker: 1
 ---
 
 For some time now I've wanted to switch to [JQuery](/wiki/JQuery) from [Prototype](/wiki/Prototype) for writing [JavaScript](/wiki/JavaScript). My initial desire to do so was the result of a purely aesthetic evaluation: in short, I just liked the look of the JQuery syntax better. I could actually feel good about writing a function using JQuery; but whenever I had to do the same with Prototype I ended up feeling somehow "icky". Things just didn't feel right.
