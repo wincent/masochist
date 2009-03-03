@@ -1,0 +1,8 @@
+---
+tags: git gitx
+---
+[[GitX]] is a graphical [[Git]] repository viewer for [[Mac OS X]], combining some of the features of `gitk` and `git gui`.
+
+= Links =
+
+* Official site: http://gitx.frim.nl/
