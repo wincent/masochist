@@ -1,0 +1,8 @@
+---
+tags: rails javascript jquery
+---
+A compatibility layer for using [[JQuery]] as a drop-in replacement for [[Prototype]] in [[Rails]] applications.
+
+= Links =
+
+* Official site: http://ennerchi.com/projects/jrails
