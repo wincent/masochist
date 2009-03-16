@@ -1,0 +1,5 @@
+---
+title: Quiet Rails 2.3.2 release
+tags: rails updates
+---
+No word mentioned on [http://weblog.rubyonrails.org/ the official weblog], no 2.3.2 tag in [http://github.com/rails/rails/tree the official Git repo], no mention on [http://groups.google.com/group/rubyonrails-core the core] or [http://groups.google.com/group/rubyonrails-talk talk mailing lists], but nevertheless the version number has been [http://github.com/rails/rails/commit/73fc42cc0b5e94541480032c2941a50edd4080c2 bumped to 2.3.2] and a 2.3.2 gem has been released (but with [http://rubyforge.org/frs/shownotes.php?release_id=32262 no release notes] for [http://rubyforge.org/frs/shownotes.php?release_id=32261 either format]).
