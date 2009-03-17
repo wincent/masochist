@@ -1,0 +1,19 @@
+---
+title: More Rails breakage in 2.3.2
+tags: rails
+---
+For me the [[Rails]] 2.3 release cycle was pretty painful. Here are the posts that I wrote during the cycle chronicling my suffering, in chronological order:
+
+* [https://wincent.com/blog/lack-of-stability-in-the-rails-ruby-ecosystem-rant Lack of stability in the Rails/Ruby ecosystem (rant)]
+* [https://wincent.com/blog/rails-update-headaches Rails update headaches]
+* [https://wincent.com/blog/more-breakage-in-rails-2.3.0-rc1 More breakage in Rails 2.3.0 RC1]
+* [https://wincent.com/blog/living-in-a-world-of-bugs Living in a world of bugs]
+* [https://wincent.com/blog/what-is-a-release-candidate What is a "release candidate"]
+
+I had thought that by installing the release candidates I could at least mitigate the pain by distributing it over a period of time, and by filing bug reports I could at least contribute and stop any show-stoppers from making it into the final release.
+
+After doing that penance, I thought I had earned a smooth and trouble-free transition to the final release, version 2.3.2. It turns out that I was wrong. I just tried to deploy my shiny new 2.3.2 update to the staging environment and lo and behold, `rake gem:build` is broken, which in turn means deployment is broken for me. I haven't yet delved into the code to find out what was broken, but it looks like [http://github.com/rails/rails/commit/99d75a7b02bf430a124b9c3e2515850959d78acf this massive refactoring], wedged into the codebase on the eve of the final release, or perhaps [http://github.com/rails/rails/commit/9d906707bea997016fd370e33e12dbc21cfcc531 this load path tinkering], is likely to be the culprit.
+
+= Update (45 minutes later) =
+
+[http://rails.lighthouseapp.com/projects/8994/tickets/2266 Here is the ticket] I've filed against Rails for the bug. I've wasted over an hour on this issue already, so I hope it doesn't sap too much more time. All up the 2.3 release cycle has probably cost me about a dozen hours dealing with upstream bugs. Not very fun at all.
