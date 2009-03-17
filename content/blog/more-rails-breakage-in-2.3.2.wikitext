@@ -1,6 +1,7 @@
 ---
 title: More Rails breakage in 2.3.2
 tags: rails
+cache_breaker: 1
 ---
 For me the [[Rails]] 2.3 release cycle was pretty painful. Here are the posts that I wrote during the cycle chronicling my suffering, in chronological order:
 
