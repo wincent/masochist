@@ -1,0 +1,4 @@
+---
+tags:
+---
+Made a couple of usability improvements to the site search (ticket #1257 and ticket #1259). Will deploy soon.
