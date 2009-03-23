@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://rspec.lighthouseapp.com/projects/5645/tickets/755 Regression] in [[RSpec]]? Or just a usability wart?
