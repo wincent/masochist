@@ -1,6 +1,7 @@
 ---
 title: Rails memory leaks
 tags: rails
+cache_breaker: 1
 ---
 
 Since [deploying a new version of the site yesterday](/twitter/1) I've been very interested in monitoring the memory usage of the [Mongrel](/wiki/Mongrel) processes. You see, somewhere in the move from [Rails](/wiki/Rails) 2.1.2 to 2.2.2, the formerly leak-free servers started to leak steadily. Mongrels which had previously run for literally months on end without a restart were slowly filling up memory until hitting the cap and being restarted by [Monit](/wiki/Monit) every few days or so.
