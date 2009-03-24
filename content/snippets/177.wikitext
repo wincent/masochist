@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Sudo and paths]]. Time to untrain my fingers and start typing `sudo -i` instead of `sudo -s`.
