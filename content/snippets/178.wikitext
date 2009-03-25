@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just had some "fun" with [[Perl]] and [[sendmail]]; see [[Troubleshooting "git send-email" problems]].
