@@ -1,0 +1,4 @@
+---
+tags:
+---
+I want to check out the [[Vim]] [[Taglist]] plugin soon. Described as "the top-rated and most-downloaded plugin for the Vim editor".
