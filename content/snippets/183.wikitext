@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://mail.python.org/pipermail/python-dev/2009-March/087931.html Python chooses Mercurial]; [[Git]] "provokes strong antipathies".
