@@ -1,0 +1,4 @@
+---
+tags:
+---
+For me, the most interesting presentation at Mountain West Ruby Conference 2009 was Ben Mabey's [http://mwrc2009.confreaks.com/14-mar-2009-15-00-bdd-with-cucumber-ben-mabey.html BDD with Cucumber] talk.
