@@ -1,0 +1,6 @@
+---
+redirect: [[weblog]]
+tags: 
+---
+
+
