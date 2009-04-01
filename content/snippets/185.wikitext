@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[INetU]] (my current host) in the [http://news.netcraft.com/archives/2009/04/01/most_reliable_hosting_company_sites_in_march_2009.html Netcraft Top Ten] again. Rackspace (my old host) [http://uptime.netcraft.com/perf/reports/performance/Hosters?tn=march_2009 languishing] in 24th place.
