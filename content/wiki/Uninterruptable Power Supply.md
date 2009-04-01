@@ -1,5 +1,6 @@
 ---
 tags: 
+cache_breaker: 1
 ---
 
 A [UPS](/wiki/UPS) or [Uninterruptable Power Supply](/wiki/Uninterruptable_Power_Supply) is a peripheral that delivers a battery-backed and surge-protected supply of electricity to a computer (and possibly its other peripherals as well) in the event of a power failure or other irregularity in the input stream.
