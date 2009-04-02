@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.coffeepowered.net/2009/03/24/announcing-scrap/ Scrap] is a new tool for exploring [[Rails]] app memory usage. Looking at the [http://tachyonsix.com/scrap.htm sample report] I am not sure if there's enough info in there to actually locate the source of a leak.
