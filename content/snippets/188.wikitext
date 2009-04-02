@@ -1,0 +1,4 @@
+---
+tags:
+---
+[/blog/synergy-3.2.2-released Synergy 3.2.2] is out.
