@@ -1,0 +1,4 @@
+---
+tags:
+---
+A Google "Summer of Code" [http://article.gmane.org/gmane.comp.version-control.git/115514 proposal] for [[Git]] that I would very much like to see succeed.
