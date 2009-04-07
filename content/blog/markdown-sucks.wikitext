@@ -1,0 +1,28 @@
+---
+title: Markdown sucks
+tags: wikitext
+---
+As the author of a [http://wikitext.rubyforge.org/ lightweight markup translator], it was with some interest that I read [http://eigenclass.org/R2/writings/fast-extensible-simplified-markdown-in-ocaml this post] by Mauricio Fernández titled "On the sad state of markdown processors, and getting thousandfold speed-ups".
+
+I know of [http://fukamachi.org/ some people] who will no doubt be delighted to hear John Gruber's [http://daringfireball.net/projects/markdown/ Markdown] described thusly:
+
+<blockquote>To add insult to injury, Bluecloth, markdown and python-markdown are ugly hacks that boil down to iterated regexp-based gsubs. I can see why they have a long history of bugs: it is easy for a gsub pass to interfere accidentally with another, and such regexp-based transformations are full of corner cases.</blockquote>
+
+= The test =
+
+Mauricio takes the Markdown README, concatenates it 32 times, and feeds it through a number of translators. Gruber's "reference" implementation crashes ignominiously with a segfault on the 10,912-line file. The "standard" [[Ruby]] implementation, Bluecloth, takes 2.16 seconds. The [[Python]] equivalent requires 0.35 seconds. Pandoc, written in [[Haskell]], takes 0.55 seconds.
+
+Mauricio runs the same test against his own implementation written in OCaml, "Simple_markup", and it clocks in at about 43 milliseconds on his 3 GHz AMD64 test box.
+
+Seeing as one of the primary design goals in my own [[wikitext]] translator is speed, I thought I'd compare its throughput. Sure, this is wikitext, not Markdown, but I can still measure the raw throughput anyway, can't I?
+
+<pre>Rehearsal -------------------------------------------------------------------------
+markdown README concatenated 32 times   0.030000   0.000000   0.030000 (  0.033340)
+---------------------------------------------------------------- total: 0.030000sec
+
+                                            user     system      total        real
+markdown README concatenated 32 times   0.040000   0.000000   0.040000 (  0.033533)</pre>
+
+So that's 33 milliseconds on my lowly 1.83 GHz iMac, not bad at all... The truth is, a single 10,912-line file (354,400 bytes) isn't really long enough to produce a meaningful benchmark with a fast translator. The [http://git.wincent.com/wikitext.git?a=tree;f=benchmarks;h=cb26bbf2c3b48dbde3b5e618d5df902e0fa42385;hb=112a5772ff64ec95a0d606726972be7d7a93831b benchmarks I normally] use with wikitext actually use four different input samples, each repeated 100,000 times.
+
+I'd also like to compare memory use, but I'm not really sure what the best way to do that would be.
