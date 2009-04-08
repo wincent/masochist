@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 The structure of the [main Git repository](/wiki/main_Git_repository) for [Git](/wiki/Git) itself is explained here:
