@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://groups.google.com/group/vim_mac/browse_thread/thread/524c68aa13d56de4 A faster text renderer] for [[MacVim]]. Yum.
