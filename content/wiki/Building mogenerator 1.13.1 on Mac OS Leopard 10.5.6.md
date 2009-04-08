@@ -1,5 +1,6 @@
 ---
 tags: mogenerator
+cache_breaker: 1
 ---
 
 **Note:** [mogenerator](/wiki/mogenerator) 1.13.1 isn't actually an official release; 1.13.1 was just the version number at the HEAD of the source repo at the time I made these notes.
