@@ -1,6 +1,7 @@
 ---
 title: Your branch is ahead of 'origin/master' by 1 commit
 tags: git
+cache_breaker: 1
 ---
 
 I noticed that some of my [Git](/wiki/Git) repos give me nice status messages like "Your branch is ahead of 'origin/master' by 1 commit" whenever I do a `git status` while others do not.
