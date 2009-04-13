@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Nginx]] [http://survey.netcraft.com/Reports/200904/ breaks the 6-million-domain barrier]. Back in January it had [http://survey.netcraft.com/Reports/200901/ only 3.5 million] domains.
