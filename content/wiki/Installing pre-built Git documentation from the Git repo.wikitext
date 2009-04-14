@@ -1,0 +1,25 @@
+---
+tags: git
+---
+= The new way =
+
+As noted in [/comments/7325 this comment below], the way originally documented in this article no longer applies.
+
+You now need a clone of the separate "git-manpages" repo at the same level as your "git.git" clone. For an example showing how the install works in this case, see "[[Installing Git 1.7.10 on CentOS 5.7]]".
+
+= The old way =
+
+I learnt some time ago via [http://article.gmane.org/gmane.comp.version-control.git/116538 this mailing list post] that there is a [[make]] target that will install the pre-built man pages that are stored in "man" and "html" branches of the official [[Git]] repository.
+
+<pre lang="ruby">$ cd path/to/your/clone/of/the/official/git.git/repo
+$ make quick-install-man
+$ make quick-install-html</pre>
+
+This is ''considerably'' easier than building the documentation yourself.
+
+'''Note:''' This only works from inside a clone of the "git.git" repository, because it works by grabbing the docs from the other branches in the repository. It won't work if run from inside a downloaded tarball of the source tree.
+
+= See also =
+
+* [[Setting up the Git documentation build chain on Mac OS X Leopard]] (for those who really want to do things the hard way)
+* [[Git documentation]]
