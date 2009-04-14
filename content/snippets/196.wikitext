@@ -1,0 +1,4 @@
+---
+tags:
+---
+Didn't know that you could [[install pre-built Git documentation from the Git repo]] without going through the hassle of setting up your own build chain.
