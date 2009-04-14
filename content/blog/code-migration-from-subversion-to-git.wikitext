@@ -1,0 +1,13 @@
+---
+title: Code migration from Subversion to Git
+tags: site
+---
+A couple more codebases have been moved across from the legacy [[Subversion]] repositories to new [[Git]] ones over the last week or so:
+
+* [[WinSwitch]] ([http://git.wincent.com/WinSwitch.git browse repository])
+* [[atosym]] ([http://git.wincent.com/atosym.git browse repository])
+
+A couple of other Git repos were actually set up some months ago but I don't think I mentioned them here on the [/blog blog]:
+
+* [http://mkdtemp.rubyforge.org/ mkdtemp] ([http://git.wincent.com/mkdtemp.git browse repository])
+* [[wopen3]] ([http://git.wincent.com/wopen3.git browse repository])
