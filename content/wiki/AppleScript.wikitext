@@ -1,0 +1,7 @@
+---
+tags: applescript
+---
+= Links =
+
+* Official [[Apple]] page: http://www.apple.com/applescript/
+* [[Wikipedia]] article: http://en.wikipedia.org/wiki/AppleScript
