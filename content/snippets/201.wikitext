@@ -1,0 +1,4 @@
+---
+tags:
+---
+One step closer to [/blog/switching-to-jquery eliminating] [[Prototype]]/[[Scriptaculous]]: AJAX checkboxes now done using [[jQuery]] and [[Unobtrusive JS]].
