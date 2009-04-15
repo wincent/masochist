@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://learnyouahaskell.com/ Learn You a Haskell for Great Good!] is a pretty nice [[Haskell]] tutorial written in the style of [http://poignantguide.net/ Why's (Poignant) Guide to Ruby].
