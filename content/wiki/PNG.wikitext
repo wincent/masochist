@@ -1,0 +1,8 @@
+---
+tags:
+---
+The [[PNG]] or [[Portable Network Graphics]] format is an image format featuring lossless compression and optional transparency.
+
+= See also =
+
+* [[Wikipedia]] article on [[PNG]]: http://en.wikipedia.org/wiki/Portable_Network_Graphics
