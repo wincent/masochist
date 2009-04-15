@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.hatfulofhollow.com/posts/code/visualisingsorting/index.html This] may be helpful when choosing and understanding sorting algorithms.
