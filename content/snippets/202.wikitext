@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://groups.google.com/group/rubyonrails-security/browse_thread/thread/1d2fb5dc524f9ff4 Yet another reason] to use `attr_accessible`, eschewing `attr_protected`.
