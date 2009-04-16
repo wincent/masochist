@@ -1,0 +1,4 @@
+---
+tags:
+---
+RubyGems 1.3.2 is [http://rubyforge.org/frs/shownotes.php?release_id=33411 out]. Worth updating? Or will it only break stuff?
