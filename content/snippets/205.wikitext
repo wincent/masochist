@@ -1,0 +1,4 @@
+---
+tags:
+---
+Another step towards [/blog/switching-to-jquery eliminating] [[Prototype]]/[[Scriptaculous]]: AJAX select pop-ups done using [[jQuery]] and [[Unobtrusive JS]] now support an "include blank" option.
