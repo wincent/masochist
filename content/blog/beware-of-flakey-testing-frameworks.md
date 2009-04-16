@@ -1,6 +1,7 @@
 ---
 title: Beware of flakey testing frameworks
 tags: rspec rant cucumber
+cache_breaker: 1
 ---
 
 We write tests because we want our software to be robust. But it's hard to feel that your development infrastructure as a whole is solid when your testing frameworks keep breaking every time there's unusually high sunspot activity, or the wind blows from the north, or somebody looks at them.
