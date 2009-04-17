@@ -1,0 +1,4 @@
+---
+tags:
+---
+Getting serious about eradicating [[Prototype]] and [[Scriptaculous]] once and for all (ticket #1278).
