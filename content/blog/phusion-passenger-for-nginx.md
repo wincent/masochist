@@ -1,6 +1,7 @@
 ---
 title: Phusion Passenger for nginx
 tags: rails nginx passenger
+cache_breaker: 1
 ---
 
 Geez. [This news](http://blog.phusion.nl/2009/04/16/phusions-one-year-anniversary-gift-phusion-passenger-220/) surprised the hell out of me.
