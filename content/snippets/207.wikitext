@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://github.com/rails/rails/commit/256b0ee8e3c1610967dfc89f864e24b98ed3c236 This commit] to the [[Rails]] codebase should help simplify [[AJAX]] posts a little bit.
