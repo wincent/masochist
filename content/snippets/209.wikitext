@@ -1,0 +1,4 @@
+---
+tags:
+---
+Another [http://www.alistapart.com/articles/indefenseofeyecandy great piece]. Almost everything on [http://www.alistapart.com/ A List Apart] is worth reading.
