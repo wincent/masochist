@@ -1,6 +1,7 @@
 ---
 title: Site updates
 tags: site
+cache_breaker: 1
 ---
 I just deployed an updated version of the site so if you notice any anomalies please let me know (either by opening a [/issues/new ticket] or [mailto:win@wincent.com emailing me]). A full list of changes appears below.
 
