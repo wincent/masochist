@@ -1,6 +1,7 @@
 ---
 title: Ubuntu poised to take over the world
 tags: 
+cache_breaker: 1
 ---
 
 According to [this journalist](http://news.cnet.com/8301-1001_3-10226746-92.html), Ubuntu is about to knock [Mac OS X](/wiki/Mac_OS_X) and Windows out of the game. Apparently, the new version of the operating system features windows that move "without jerkiness", apps which launch "fast", and a [UI](/wiki/UI) which has everything "where it should be". High praise indeed. Although one wonders what Ubuntu used to be like *before* this version. (In my personal experience, the windows on my [OS](/wiki/OS) have been moving "without jerkiness" for close to a decade now.)
