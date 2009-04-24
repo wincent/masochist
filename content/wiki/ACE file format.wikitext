@@ -1,5 +1,6 @@
 ---
 tags:
+cache_breaker: 1
 ---
 The [[ACE file format]] can be decompressed on [[Mac OS X]] using the freeware (but closed-source) unace port available from [http://www.winace.com/ the WinAce website]. At the time of writing the latest version (2.5) is not a [[Universal Binary]] but can run on Intel-eqipped machines under the [[Rosetta]] compatibility layer. In my tests <tt>unace</tt> reproducibly exited with  segmentation faults but only ''after'' completing the listing/extraction operations, so the tool is usable despite the flaw.
 
