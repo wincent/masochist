@@ -1,5 +1,6 @@
 ---
 tags: site
+cache_breaker: 1
 ---
 
 This is a list of user-visible changes to the custom [Rails](/wiki/Rails) application running this site since it went public. These really are only the *user-visible* changes; there are generally *lots* of other modifications made "under the hood".
