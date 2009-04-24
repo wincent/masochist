@@ -1,5 +1,6 @@
 ---
 tags: selenium
+cache_breaker: 1
 ---
 
 # Basic installation
