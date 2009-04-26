@@ -1,0 +1,4 @@
+---
+tags:
+---
+Every web developer should write his/her own blog software at least once in his career. It's a (trivial) rite of passage.
