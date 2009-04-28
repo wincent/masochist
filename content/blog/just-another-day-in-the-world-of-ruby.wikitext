@@ -1,6 +1,7 @@
 ---
 title: Just another day in the world of Ruby
 tags: ruby rails passenger rack
+cache_breaker: 1
 ---
 From [http://www.rubyinside.com/interesting-ruby-tidbits-that-don%E2%80%99t-need-separate-posts-23-1716.html Ruby Inside]:
 
