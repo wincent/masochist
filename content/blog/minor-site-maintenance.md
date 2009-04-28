@@ -1,6 +1,7 @@
 ---
 title: Minor site maintenance
 tags: site
+cache_breaker: 1
 ---
 
 The site will shortly be going down for a few minutes in order to deploy a couple of minor bugfixes ([ticket \#1288](/issues/1288), [ticket \#1285](/issues/1285), [ticket \#1289](/issues/1289)).
