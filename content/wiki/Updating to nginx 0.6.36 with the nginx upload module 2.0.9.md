@@ -1,5 +1,6 @@
 ---
 tags: leopard nginx nginx.upload.module
+cache_breaker: 1
 ---
 
 I wasn't going to update to [nginx 0.6.36](/wiki/nginx_0.6.36) but seeing as I am about to start testing the [nginx upload module](/wiki/nginx_upload_module) (see [ticket \#1193](/issues/1193)) and I would have to rebuild [nginx](/wiki/nginx) anyway for that, I thought I'd use the latest stable release.
