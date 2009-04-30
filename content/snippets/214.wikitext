@@ -1,0 +1,4 @@
+---
+tags:
+---
+RSpec 1.2.5 ([http://rubyforge.org/pipermail/rspec-users/2009-April/014163.html rspec announcement], [http://rubyforge.org/pipermail/rspec-users/2009-April/014164.html rspec-rails announcement]) was a painless update.
