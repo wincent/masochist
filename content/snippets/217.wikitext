@@ -1,0 +1,4 @@
+---
+tags:
+---
+Spolsky [http://www.readwriteweb.com/archives/anthropology_the_art_of_building_a_successful_soci.php explained] that "while SQL Server licenses cost $5000 per box, the Microsoft stack is paying for itself in terms of reduced hardware." Exceedingly hard to believe...
