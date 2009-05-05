@@ -1,5 +1,6 @@
 ---
 tags: site
+cache_breaker: 1
 ---
 
 # Links
