@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Vim]] [http://www.vim.org/scripts/script.php?script_id=2337 ku]; looks like it might be an interesting alternative to [http://www.vim.org/scripts/script.php?script_id=1984 vim-fuzzyfinder].
