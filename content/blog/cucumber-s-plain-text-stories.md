@@ -1,6 +1,7 @@
 ---
 title: Cucumber's plain text stories
 tags: cucumber
+cache_breaker: 1
 ---
 
 There's something that I've always been skeptical about with regard to [Cucumber](/wiki/Cucumber) and it's plain text stories.
