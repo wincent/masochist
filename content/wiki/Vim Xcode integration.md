@@ -1,5 +1,6 @@
 ---
 tags: xcode vim
+cache_breaker: 1
 ---
 
 # `.vimrc` configuration
