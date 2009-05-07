@@ -1,0 +1,4 @@
+---
+tags:
+---
+"Scripting the Vim editor, Part 1: Variables, values, and expressions": the [http://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html first part] in what could prove to be a useful series.
