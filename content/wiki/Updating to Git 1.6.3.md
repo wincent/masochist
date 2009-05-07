@@ -1,5 +1,6 @@
 ---
 tags: git updates
+cache_breaker: 1
 ---
 
 Notes made while updating to [Git 1.6.3](/wiki/Git_1.6.3) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6:
