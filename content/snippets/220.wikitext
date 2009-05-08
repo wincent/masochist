@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html 1972] &mdash; Dennis Ritchie invents a powerful gun that shoots both forward and backward simultaneously. Not satisfied with the number of deaths and permanent maimings from that invention he invents C and Unix."
