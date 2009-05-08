@@ -1,6 +1,7 @@
 ---
 title: On the 80-column limit
 tags: development
+cache_breaker: 1
 ---
 
 How many times over the years have I agonized over the question of source code line lengths?
