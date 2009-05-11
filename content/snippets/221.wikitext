@@ -1,0 +1,4 @@
+---
+tags:
+---
+Wonderful to see [http://blog.gitorious.org/2009/05/11/welcome-qt/ Gitorious] [http://labs.trolltech.com/blogs/2009/05/11/qt-public-repository-launched/ chosen] as the host for Qt's revamped [http://www.qtsoftware.com/developer/the-qt-contribution-model development] efforts. It's very pleasing to see investment in an [[open source]] solution which predates the closed-source, proprietary GitHub.
