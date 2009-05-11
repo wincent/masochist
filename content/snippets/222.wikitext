@@ -1,0 +1,4 @@
+---
+tags:
+---
+Will have some awesome speed improvements in the (already lightening-fast) [[Wikitext]] extension to report soon. More than twice as fast with more improvements expected.
