@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just added `set autoread` to my `~/.vimrc` &mdash; makes switching [[Git]] branches a ''lot'' more pleasant (see `:h 'ar'` for details).
