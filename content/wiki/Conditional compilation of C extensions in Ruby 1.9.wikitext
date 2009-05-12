@@ -1,0 +1,27 @@
+---
+tags: ruby
+---
+Was just wondering how to do conditional compilation of a [[Ruby]] [[C]] extension for Ruby 1.8/1.9.
+
+My [http://git.wincent.com/wikitext.git?a=commitdiff;h=7051f619c2f094bcb995a43a0add33f0ba20f6c5 first attempt] didn't work, but I was able to implement a [http://git.wincent.com/wikitext.git?a=commitdiff;h=33cd74fd262cd6dde29f692d4dbe7e1f1e98f537 working solution] after finding this [http://banisterfiend.wordpress.com/2009/02/13/updating-a-c-extension-for-ruby-191/ tip here].
+
+It basically consists of adding some lines like this to your `extconf.rb`:
+
+<pre>case RUBY_VERSION
+when /\A1\.8/
+  $CFLAGS += ' -DRUBY_1_8_x'
+when /\A1\.9/
+  $CFLAGS += ' -DRUBY_1_9_x'
+else
+  raise "unsupported Ruby version: #{RUBY_VERSION}"
+end</pre>
+
+And then in your [[C]] code you can:
+
+<pre>#if defined(RUBY_1_9_x)
+    ...
+#elif defined(RUBY_1_8_x)
+    ...
+#else
+#error unsupported RUBY_VERSION
+#endif</pre>
