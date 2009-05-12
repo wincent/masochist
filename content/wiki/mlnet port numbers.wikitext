@@ -1,0 +1,5 @@
+---
+tags: mlnet
+---
+* [[Telnet]]: 4000
+* Built-in [[HTTP]]: 4080 (eg. http://localhost:4080/)
