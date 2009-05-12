@@ -1,0 +1,4 @@
+---
+tags:
+---
+After [http://groups.google.com/group/vim_use/browse_thread/thread/35531fbbec109156/fbc34586e48e60a2 thinking about it] for almost 3 months(!), finally decided to add `set ww=h,l,<,>,[,]` to my `~/.vimrc`.
