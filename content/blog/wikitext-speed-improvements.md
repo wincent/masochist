@@ -1,6 +1,7 @@
 ---
 title: Wikitext speed improvements
 tags: wikitext
+cache_breaker: 1
 ---
 
 As [twittered earlier](/twitter/52), the already-fast [Wikitext](/wiki/Wikitext) module has seen some pretty spectacular speed improvements lately.
