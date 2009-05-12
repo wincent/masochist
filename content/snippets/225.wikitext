@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just got a copy of [http://www.realworldhaskell.org/ Real World Haskell] and am really looking forward to reading it. Got the 3rd edition of "[http://en.wikipedia.org/wiki/21st_Century_Compilers the Dragon book]" last week.
