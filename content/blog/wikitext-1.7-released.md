@@ -1,6 +1,7 @@
 ---
 title: Wikitext 1.7 released
 tags: wikitext
+cache_breaker: 1
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.7, is now available. It contains a couple of bugfixes and a sizeable rewrite of the internals leading to a [big performance boost](/blog/wikitext-speed-improvements) (double the speed or more in many cases). See the [high-level](http://wikitext.rubyforge.org/files/doc/RELEASE-NOTES.html) or [low-level release notes](http://rubyforge.org/frs/shownotes.php?release_id=34439) for more details.
