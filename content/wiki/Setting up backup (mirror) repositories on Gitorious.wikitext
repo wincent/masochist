@@ -1,0 +1,54 @@
+---
+tags: git
+---
+= For the impatient =
+
+Once the initial set-up is done, it's a simple matter of:
+
+<pre># given local user $GIT_USER, $GITORIOUS_PROJECT, and $GITORIOUS_REPO
+cd /path/to/repo
+sudo -u $GIT_USER git remote add --mirror gitorious git@gitorious.org:$GITORIOUS_PROJECT/$GITORIOUS_REPO
+
+# either wait for the cron job to propagate the changes, or...
+sudo -u $GIT_USER -s -H
+git push gitorious</pre>
+
+= Set-up =
+
+Most of the set-up is described in "[[Setting up backup (mirror) repositories on GitHub]]". I'm using the same public key that I described on that page under "Setting up a private/public key pair".
+
+I also added a block like this to my `~/.ssh/config`; it's not strictly necessary but I think it's nice to be explicit:
+
+ Host gitorious.org
+   IdentityFile /path/to/git/home/.ssh/id_dsa
+   HostName gitorious.org
+   User git
+
+With this set-up in place you have the option of specifying the repository using:
+
+ gitorious.org:wopublic/wopublic.git
+
+Instead of the longer:
+
+ git@gitorious.org:wopublic/wopublic.git
+
+= Creating the new repository on Gitorious =
+
+# Click on the "[http://gitorious.org/projects All Projects]" link
+# Click the "[http://gitorious.org/projects/new Create a New Project]" button
+# Enter:
+## Title (for example "WOHotKey")
+## Slug (for example "wohotkey")
+## Categories (for example "objective-c mac-os-x")
+## License (for example "BSD License")
+## Home URL (for example, http://git.wincent.com/WOHotKey.git)
+## Bugtracker URL (for example, https://wincent.com/issues/)
+# Disable the wiki
+# Provide a Description (for example, "Mirror of the official WOHotKey repository at git.wincent.com")
+# Click on "Create project"
+
+Now create a new repository:
+
+# Fill in:
+## Name (for example, "WOHotKey")
+## Description (for example, "Mirror of the official WOHotKey repository at git.wincent.com")
