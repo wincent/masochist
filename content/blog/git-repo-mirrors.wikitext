@@ -1,0 +1,21 @@
+---
+title: Git repo mirrors
+tags: git
+---
+I've just set up a couple of [[Git]] repository mirrors for my [[open source]] projects.
+
+The ''authoritative, official'' repositories continue to be hosted at [http://git.wincent.com/ git.wincent.com].
+
+But now there are ''mirror, backup'' repositories hosted at:
+
+* http://gitorious.org/~wincent; and
+* http://github.com/wincent/
+
+Changes are automatically pushed out from the authoritative repo to the backup/mirror repos on an hourly basis.
+
+The sheer flexibility of [[distributed version control]], and the ability to trivially set up mirrors like this, is really fantastic.
+
+For the curious, here are some notes I made on the process:
+
+* [[Setting up backup (mirror) repositories on GitHub]]
+* [[Setting up backup (mirror) repositories on Gitorious]]
