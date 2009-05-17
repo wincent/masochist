@@ -1,0 +1,4 @@
+---
+tags:
+---
+Trying out [http://www.vim.org/scripts/script.php?script_id=1218 The NERD Commenter].
