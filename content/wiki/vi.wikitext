@@ -1,0 +1,6 @@
+---
+tags: vim
+---
+[[vi]] is a ubiquitous text editor found on just about every [[UNIX]] operating system you're likely to run across. It has been copied and cloned many times, and now exists in much improved form under the guise of [[Vim]], the most successful and powerful of the [[vi]] clones.
+
+It's distinguishing feature is that it is a [[modal editor]]. Perhaps in the days when [[vi]] was first invented that wasn't such a special thing at all; but in modern times (perhaps as much as two or three decades) non-modal editors such as [[Emacs]] and just about every word processor out there today have become so dominant that well over 95% of computer users have probably never seen a modal editor.
