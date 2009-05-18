@@ -1,0 +1,4 @@
+---
+tags:
+---
+Trying out the awesome [http://www.vim.org/scripts/script.php?script_id=2611 XP Template] for [[Vim]] (first had to [http://groups.google.com/group/xptemplate/browse_thread/thread/6515039393cc8d45 overcome my ignorance] though).
