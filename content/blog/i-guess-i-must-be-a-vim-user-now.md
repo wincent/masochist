@@ -1,6 +1,7 @@
 ---
 title: I guess I must be a Vim user now
 tags: vim
+cache_breaker: 1
 ---
 
 After being an occasional [vi](/wiki/vi) user for over a decade, on 16 January this year [I decided](/blog/0-minutes-with-vim) to give [Vim](/wiki/Vim) a proper try as a possible candidate for duties as my full-time coding editor (this after a decent [trial](/blog/trying-emacs) of [Emacs](/wiki/Emacs) in the prior weeks).
