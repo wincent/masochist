@@ -1,0 +1,4 @@
+---
+tags:
+---
+The interesting idea from [http://railscasts.com/episodes/162-tree-based-navigation the latest Railscast]: use a ''separate'' tree model to describe the relationship of other, heterogenous resources in your site.
