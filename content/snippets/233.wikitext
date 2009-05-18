@@ -1,0 +1,4 @@
+---
+tags:
+---
+A ''very'' [http://arstechnica.com/open-source/guides/2009/05/vim-made-easy-how-to-get-your-favorite-ide-features-in-vim.ars short list] of enabling/using [[IDE]]-like features in [[Vim]].
