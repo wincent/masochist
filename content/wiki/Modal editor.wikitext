@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 A [[modal text editor]] is a, nowadays rare, text editor that offers multiple interaction modes which are optimized for specific types of action and interaction. The rationale is that each mode is a finely-tuned tool which allows the user to realize their objectives in an efficient and powerful manner. This does require  more learning than you might be accustomed to as a user of a non-modal editor, but the reward is hopefully increased efficiency and power.
 
