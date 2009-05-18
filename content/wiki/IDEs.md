@@ -1,0 +1,6 @@
+---
+redirect: [[IDE]]
+tags: 
+---
+
+
