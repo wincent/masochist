@@ -1,0 +1,8 @@
+---
+tags: vim
+---
+* [[Set the Vim statusline]]
+
+= See also =
+
+* [https://wincent.com/tags/search?q=vim+recipe All items tagged with "vim" and "recipe"]
