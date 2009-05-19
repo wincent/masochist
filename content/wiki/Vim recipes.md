@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 
 -   [Set the Vim statusline](/wiki/Set_the_Vim_statusline)
