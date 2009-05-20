@@ -1,0 +1,4 @@
+---
+tags:
+---
+Tim Pope's [http://www.tpope.net/node/108 interesting ideas] on how to take his work environment with him wherever he goes.
