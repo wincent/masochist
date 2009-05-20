@@ -1,5 +1,6 @@
 ---
 tags: bash
+cache_breaker: 1
 ---
 For years now I've used my <tt>~/.bash_profile</tt> to give me a custom, colorized [[Bash]] prompt and show the current working directory in the title bar of the [[Terminal]].
 
