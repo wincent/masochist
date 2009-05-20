@@ -1,0 +1,4 @@
+---
+tags:
+---
+Trying out [[git-vim]] as recommended [http://vim.runpaint.org/extending/integrating-vim-with-git/ here].
