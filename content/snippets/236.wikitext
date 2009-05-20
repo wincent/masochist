@@ -1,0 +1,4 @@
+---
+tags:
+---
+I've started [http://git.wincent.com/wincent.git a new repository] for tracking my dot files.
