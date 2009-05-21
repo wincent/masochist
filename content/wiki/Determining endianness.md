@@ -1,5 +1,6 @@
 ---
 tags: objective.c
+cache_breaker: 1
 ---
 
 I just had cause to remove some code from a project I was working on; where previously I had to detect endianness I now no longer need to. But the code snippet may be useful in the future so I am pasting it in here:
