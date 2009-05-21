@@ -1,5 +1,6 @@
 ---
 tags: git vim
+cache_breaker: 1
 ---
 [[git-vim]] is a plugin that provides access to some [[Git]] functionality from within [[Vim]].
 
