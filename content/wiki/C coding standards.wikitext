@@ -1,0 +1,6 @@
+---
+tags: c
+---
+= See also =
+
+* [[Coding standards]]
