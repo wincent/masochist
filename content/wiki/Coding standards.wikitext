@@ -1,5 +1,6 @@
 ---
 tags: development
+cache_breaker: 1
 ---
 Most communities &mdash; both "language communities" like "the [[Ruby]] community", "the [[Objective-C]] community", and to a lesser-extent "the [[C]] community"; and "project-based communities" like "the [[Git]] community" and "the [[Rails]] community" and so on &mdash; have a set of relatively stable conventions and notions about coding standards.
 
