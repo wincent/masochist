@@ -1,0 +1,6 @@
+---
+tags: objective.c
+---
+= See also =
+
+* [[Coding standards]]
