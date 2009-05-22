@@ -1,6 +1,7 @@
 ---
 title: Looking for a more pleasant man-page authoring solution
 tags: perl documentation
+cache_breaker: 1
 ---
 
 I've written [man pages](/wiki/man_pages) before. It's horrible. Just [look at this syntax](http://git.wincent.com/wincent-strings-util.git?a=blob_plain;f=wincent-strings-util.1;hb=HEAD).
