@@ -1,0 +1,6 @@
+---
+redirect: [[coding standards]]
+tags: 
+---
+
+
