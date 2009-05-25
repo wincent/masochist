@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://mytechrants.wordpress.com/2009/05/22/debugging-a-segmentation-fault-using-gdb/ Apparently], "[i]f you ''really'' know what you are doing, gdb shouldn't be required". (I imagine he's talking about people who don't write code with bugs.)
