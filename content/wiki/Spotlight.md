@@ -1,5 +1,6 @@
 ---
 tags: spotlight
+cache_breaker: 1
 ---
 
 -   <http://www.thexlab.com/faqs/stopspotlightindex.html>
