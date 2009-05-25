@@ -1,0 +1,4 @@
+---
+tags:
+---
+He [/blog/nginx-0.7-series-to-become-the-new-stable-release said] it was going to happen and [http://article.gmane.org/gmane.comp.web.nginx.english/12531 now it has]. ([[nginx]] 0.7.x is now the new "stable" series, specifically in the form of [[nginx 0.7.59]].)
