@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just updated my iMac to [[Mac OS X]] 10.5.7 and [[Spotlight]] has decided to reindex all volumes, bringing the machine to a crawl.
