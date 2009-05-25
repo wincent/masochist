@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[http://tottinge.blogsome.com/use-vim-like-a-pro/ Use Vim Like A Pro]". With that title, I almost expected it to be a parody, but it turns out to be a serious tutorial.
