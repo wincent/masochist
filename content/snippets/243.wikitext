@@ -1,0 +1,4 @@
+---
+tags:
+---
+Tried the [http://deveiate.org/projects/Darkfish-Rdoc/ Darkfish] [[RDoc]] templates new in [http://blog.segment7.net/articles/2009/01/28/rdoc-rdoc_chm-rdoc_html_templates-2-3-0-released RDoc 2.3.0 and above], but they are a horrible usability regression in the name of prettier CSS colors.
