@@ -1,0 +1,11 @@
+---
+title: Wikitext 1.8 released
+tags: wikitext
+---
+A new version of the [[Wikitext]] gem, version 1.8, is now available. It adds one new feature &mdash; the ability to specify a CSS class on `<nowiki><pre></pre></nowiki>` blocks so that they can be targeted by [[JavaScript]], or other, syntax-highliters &mdash; and some performance enhancements. See the [http://wikitext.rubyforge.org/files/doc/RELEASE-NOTES.html high-level] or [http://rubyforge.org/frs/shownotes.php?group_id=5483&release_id=34957 low-level release notes] for more details.
+
+[[Wikitext]] is a fast wikitext-to-[[HTML]] translator with a syntax very close to that used by [[MediaWiki]]. It is a [[Ruby]] extension written with speed and robustness in mind using a [[Ragel]]-generated [http://git.wincent.com/wikitext.git?a=blob;f=ext/wikitext_ragel.rl;hb=HEAD scanner] and a [http://git.wincent.com/wikitext.git?a=blob;f=ext/parser.c;hb=HEAD hand-coded parser], all in [[C]]. It has an enormous [http://git.wincent.com/wikitext.git?a=tree;f=spec;hb=HEAD spec suite].
+
+You can browse the source code repo [http://git.wincent.com/wikitext.git here], or download the [[gem]] from the [[RubyForge]] [http://rubyforge.org/frs/?group_id=5483 downloads page]. For an overview of how to use the extension check out the [[RDoc]] [http://wikitext.rubyforge.org/ here]. If you have [[RubyGems]] then you can install it with `sudo gem install wikitext`.
+
+If you find the extension useful please consider making a [https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&item_name=Wikitext+donation&no_note=1&currency_code=EUR&lc=GB donation] via PayPal to win@wincent.com.
