@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.cpubenchmark.net/cpu_list.php Found the info] I [/twitter/74 was looking for]: my Intel Core Duo T2400 @ 1.83 GHz scores 835 (rank 471), compared with the current king, the Intel Xeon W 570 @ 3.20 GHz, which scores 6770 (rank 1); a speed differential of 8.11x. The quad-CPU king is an Intel Xeon X7350 @ 2.93 GHz system, which scores 16715 (speed differential: 20x).
