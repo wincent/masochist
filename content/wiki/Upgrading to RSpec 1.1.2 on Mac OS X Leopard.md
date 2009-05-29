@@ -1,5 +1,6 @@
 ---
 tags: leopard rspec updates
+cache_breaker: 1
 ---
 
 Notes made while upgrading from [RSpec 1.1.1](/wiki/RSpec_1.1.1) to [RSpec 1.1.2](/wiki/RSpec_1.1.2) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
