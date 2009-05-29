@@ -1,5 +1,6 @@
 ---
 tags: leopard ragel updates
+cache_breaker: 1
 ---
 These notes were made while upgrading from [[Ragel 5.24]] to [[Ragel 6.0]] on [[Mac OS X]] 10.5.1 [[Leopard]].
 
