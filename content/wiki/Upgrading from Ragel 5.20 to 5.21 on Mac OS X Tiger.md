@@ -1,5 +1,6 @@
 ---
 tags: tiger ragel updates
+cache_breaker: 1
 ---
 
 These notes were made while installing [Ragel 5.21](/wiki/Ragel_5.21) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
