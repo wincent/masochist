@@ -1,5 +1,6 @@
 ---
 tags: rubyforge updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [rubyforge 0.4.2](/wiki/rubyforge_0.4.2), the new release of the [gem](/wiki/gem) that provides a programmatic [Ruby](/wiki/Ruby) interface to [RubyForge](/wiki/RubyForge).
