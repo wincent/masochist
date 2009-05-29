@@ -1,5 +1,6 @@
 ---
 tags: leopard rubygems updates
+cache_breaker: 1
 ---
 Notes made while upgrading to [[RubyGems 1.0.1]] (skipping over [[RubyGems 1.0.0]] on [[Mac OS X]] [[Leopard]] 10.5.1.
 
