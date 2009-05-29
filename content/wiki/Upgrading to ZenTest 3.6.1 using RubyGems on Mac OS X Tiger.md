@@ -1,5 +1,6 @@
 ---
 tags: zentest updates
+cache_breaker: 1
 ---
 
 These notes were made while updating to [ZenTest 3.6.1](/wiki/ZenTest_3.6.1) using [RubyGems](/wiki/RubyGems) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
