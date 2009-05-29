@@ -1,5 +1,6 @@
 ---
 tags: rcov updates
+cache_breaker: 1
 ---
 
     $ sudo gem install rcov
