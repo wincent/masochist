@@ -1,5 +1,6 @@
 ---
 tags: zentest rubygems tiger updates
+cache_breaker: 1
 ---
 
 These notes were made while performing the upgrade to [ZenTest 3.6.0](/wiki/ZenTest_3.6.0) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger) via [RubyGems](/wiki/RubyGems).
