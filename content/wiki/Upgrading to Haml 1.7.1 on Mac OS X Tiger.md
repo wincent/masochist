@@ -1,5 +1,6 @@
 ---
 tags: tiger haml updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [Haml 1.7.1](/wiki/Haml_1.7.1) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger) using [RubyGems](/wiki/RubyGems).
