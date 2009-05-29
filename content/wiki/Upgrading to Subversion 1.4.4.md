@@ -1,5 +1,6 @@
 ---
 tags: subversion updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading from [Subversion](/wiki/Subversion) 1.4.3 to [Subversion 1.4.4](/wiki/Subversion_1.4.4) on both [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger) and [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux).
