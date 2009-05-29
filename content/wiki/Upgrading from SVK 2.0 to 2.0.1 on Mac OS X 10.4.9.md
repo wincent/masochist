@@ -1,5 +1,6 @@
 ---
 tags: tiger svk updates
+cache_breaker: 1
 ---
 
 The basic recipe for upgrading using [CPAN](/wiki/CPAN) is:
