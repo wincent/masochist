@@ -1,5 +1,6 @@
 ---
 tags: zentest updates
+cache_breaker: 1
 ---
 Notes made while upgrading to [[ZenTest 3.8.0]] on [[Mac OS X]] [[Leopard]] 10.5.1.
 
