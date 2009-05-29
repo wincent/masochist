@@ -1,5 +1,6 @@
 ---
 tags: tiger heckle updates
+cache_breaker: 1
 ---
 
 Notes made while upgrading from my previous install of [Heckle](/wiki/Heckle), [Heckle 1.4.0](/wiki/Heckle_1.4.0), to the new version, [Heckle 1.4.1](/wiki/Heckle_1.4.1), on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
