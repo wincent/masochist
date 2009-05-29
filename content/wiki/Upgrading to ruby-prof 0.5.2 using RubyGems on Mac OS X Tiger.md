@@ -1,5 +1,6 @@
 ---
 tags: tiger ruby.prof updates
+cache_breaker: 1
 ---
 
 These notes were made while updating to [ruby-prof 0.5.2](/wiki/ruby-prof_0.5.2) using [RubyGems](/wiki/RubyGems) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
