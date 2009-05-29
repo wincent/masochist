@@ -1,5 +1,6 @@
 ---
 tags: tiger dhaka updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading from [Dhaka 2.2.0](/wiki/Dhaka_2.2.0) to [Dhaka 2.2.1](/wiki/Dhaka_2.2.1) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
