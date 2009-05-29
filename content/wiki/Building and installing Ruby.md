@@ -1,5 +1,6 @@
 ---
 tags: ruby updates
+cache_breaker: 1
 ---
 
 See:
