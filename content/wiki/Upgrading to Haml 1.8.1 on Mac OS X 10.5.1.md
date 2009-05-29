@@ -1,5 +1,6 @@
 ---
 tags: leopard haml updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [Haml 1.8.1](/wiki/Haml_1.8.1) on [Mac OS X](/wiki/Mac_OS_X) 10.5.1
