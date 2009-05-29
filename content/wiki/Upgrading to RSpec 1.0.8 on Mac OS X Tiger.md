@@ -1,5 +1,6 @@
 ---
 tags: rspec tiger updates
+cache_breaker: 1
 ---
 
 I haven't done any [Rails](/wiki/Rails) development for a while and so haven't touched [RSpec](/wiki/RSpec) since my last upgrade (see, "[Upgrading to RSpec 1.0.5 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.5_on_Mac_OS_X_Tiger)"). This is therefore an upgrade from [RSpec 1.0.5](/wiki/RSpec_1.0.5) to [RSpec 1.0.8](/wiki/RSpec_1.0.8).
