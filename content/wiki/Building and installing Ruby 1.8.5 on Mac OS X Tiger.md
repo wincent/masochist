@@ -1,5 +1,6 @@
 ---
 tags: ruby tiger updates
+cache_breaker: 1
 ---
 
 These notes were made during the upgrade from [Ruby 1.8.4](/wiki/Ruby_1.8.4) to [Ruby 1.8.5](/wiki/Ruby_1.8.5) on my [Mac OS X Tiger](/wiki/Mac_OS_X_Tiger) machine.
