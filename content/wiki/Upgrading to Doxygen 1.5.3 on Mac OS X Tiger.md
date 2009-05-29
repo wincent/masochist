@@ -1,5 +1,6 @@
 ---
 tags: doxygen updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [Doxygen 1.5.3](/wiki/Doxygen_1.5.3) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
