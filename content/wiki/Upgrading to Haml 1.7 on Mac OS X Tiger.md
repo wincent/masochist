@@ -1,5 +1,6 @@
 ---
 tags: haml updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [Haml 1.7](/wiki/Haml_1.7) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
