@@ -1,5 +1,6 @@
 ---
 tags: updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [ruby2ruby 1.1.6](/wiki/ruby2ruby_1.1.6) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
