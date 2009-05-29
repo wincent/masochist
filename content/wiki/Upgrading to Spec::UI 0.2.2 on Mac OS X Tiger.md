@@ -1,5 +1,6 @@
 ---
 tags: rspec tiger updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading from [Spec::UI 0.2.0](/wiki/Spec%3a%3aUI_0.2.0) to [Spec::UI 0.2.2](/wiki/Spec%3a%3aUI_0.2.2) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
