@@ -1,5 +1,6 @@
 ---
 tags: leopard rubyinline updates
+cache_breaker: 1
 ---
 
 Notes made while upgrading to [RubyInline 3.6.6](/wiki/RubyInline_3.6.6) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
