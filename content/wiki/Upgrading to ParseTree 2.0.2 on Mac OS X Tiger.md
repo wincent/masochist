@@ -1,5 +1,6 @@
 ---
 tags: tiger parsetree updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to the latest version of [ParseTree](/wiki/ParseTree), [ParseTree 2.0.2](/wiki/ParseTree_2.0.2), on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
