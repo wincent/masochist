@@ -1,5 +1,6 @@
 ---
 tags: tiger hoe updates
+cache_breaker: 1
 ---
 These notes were made while updating to [[hoe 1.2.2]] using [[RubyGems]] on [[Mac OS X]] [[Tiger]].
 
