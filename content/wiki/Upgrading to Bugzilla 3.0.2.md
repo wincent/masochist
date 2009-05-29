@@ -1,5 +1,6 @@
 ---
 tags: bugzilla updates
+cache_breaker: 1
 ---
 
 These notes were made while performing the upgrade from [Bugzilla 3.0.1](/wiki/Bugzilla_3.0.1) to [Bugzilla 3.0.2](/wiki/Bugzilla_3.0.2).
