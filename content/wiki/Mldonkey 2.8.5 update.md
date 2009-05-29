@@ -1,5 +1,6 @@
 ---
 tags: mldonkey updates
+cache_breaker: 1
 ---
 
     wget http://switch.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.8.5.tar.bz2
