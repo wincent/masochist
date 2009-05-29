@@ -1,5 +1,6 @@
 ---
 tags: bugzilla updates
+cache_breaker: 1
 ---
 
 These notes were made during the upgrade of my [Bugzilla](/wiki/Bugzilla) install (at <http://bugs.wincent.com/>) from [Bugzilla](/wiki/Bugzilla) 2.22.2 to 3.0.
