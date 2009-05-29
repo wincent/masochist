@@ -1,5 +1,6 @@
 ---
 tags: rspec tiger updates
+cache_breaker: 1
 ---
 These notes were made while upgrading from [[RSpec 1.0.2]] to [[RSpec 1.0.3]] on [[Mac OS X]] [[Tiger]].
 
