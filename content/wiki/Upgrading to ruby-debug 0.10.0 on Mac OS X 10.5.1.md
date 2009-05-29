@@ -1,5 +1,6 @@
 ---
 tags: leopard ruby.debug updates
+cache_breaker: 1
 ---
 
 Notes made while upgrading to [ruby-debug 0.10.0](/wiki/ruby-debug_0.10.0) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
