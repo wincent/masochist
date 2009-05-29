@@ -1,5 +1,6 @@
 ---
 tags: leopard doxygen updates
+cache_breaker: 1
 ---
 
 Notes made while upgrading to [Doxygen 1.5.5](/wiki/Doxygen_1.5.5) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
