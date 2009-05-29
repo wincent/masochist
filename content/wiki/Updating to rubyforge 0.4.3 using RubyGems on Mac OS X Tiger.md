@@ -1,5 +1,6 @@
 ---
 tags: tiger rubyforge updates
+cache_breaker: 1
 ---
 
 These notes were made while updating to [rubyforge 0.4.3](/wiki/rubyforge_0.4.3) using [RubyGems](/wiki/RubyGems) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
