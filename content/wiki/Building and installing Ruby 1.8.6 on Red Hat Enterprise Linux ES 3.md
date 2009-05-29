@@ -1,5 +1,6 @@
 ---
 tags: ruby red.hat updates
+cache_breaker: 1
 ---
 
 These notes were made during the upgrade from [Ruby 1.8.5](/wiki/Ruby_1.8.5) to [Ruby 1.8.6](/wiki/Ruby_1.8.6) on my [Red Hat Enterprise Linux ES 3](/wiki/Red_Hat_Enterprise_Linux_ES_3) box.
