@@ -1,5 +1,6 @@
 ---
 tags: subversion mediawiki updates
+cache_breaker: 1
 ---
 The procedure for upgrading [[MediaWiki]] using [[Subversion]] is very similar to the one documented in "[[Upgrading WordPress using Subversion]]".
 
