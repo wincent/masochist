@@ -1,5 +1,6 @@
 ---
 tags: bugzilla updates
+cache_breaker: 1
 ---
 
 # Upgrade procedure
