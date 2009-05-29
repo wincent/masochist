@@ -1,5 +1,6 @@
 ---
 tags: leopard fastri updates
+cache_breaker: 1
 ---
 
 These notes were made while upgrading to [FastRI 0.3.1](/wiki/FastRI_0.3.1) on [Mac OS X](/wiki/Mac_OS_X) 10.5.1 [Leopard](/wiki/Leopard).
