@@ -1,5 +1,6 @@
 ---
 tags: leopard rake updates
+cache_breaker: 1
 ---
 Notes made while upgrading to [[Rake 0.8.1]] on [[Mac OS X]] [[Leopard]] (10.5.1).
 
