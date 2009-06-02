@@ -1,0 +1,4 @@
+---
+tags:
+---
+More [http://github.com/blog/441-announcing-github-fi closed-source, proprietary hotness] from the lads at GitHub, shipped as compiled [[Java]] so you can't inspect the source.
