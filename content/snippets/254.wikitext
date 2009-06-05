@@ -1,0 +1,4 @@
+---
+tags:
+---
+I'm currently using [http://www.vim.org/scripts/script.php?script_id=2611 xptemplate] with [[Vim]], but [http://www.vim.org/scripts/script.php?script_id=2540 snipMate] doesn't [http://vimeo.com/3535418 look] too bad.
