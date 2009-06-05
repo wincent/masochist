@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.osnews.com/story/21556/Using_Git_With_Vim More tips] on using [[Git]] from inside [[Vim]].
