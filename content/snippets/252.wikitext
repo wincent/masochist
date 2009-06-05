@@ -1,0 +1,4 @@
+---
+tags:
+---
+([[Python]]-centric) [http://dancingpenguinsoflight.com/2009/02/code-navigation-completion-snippets-in-vim/ tips on code-navigation, completion and snippets] in [[Vim]].
