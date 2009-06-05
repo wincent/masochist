@@ -1,0 +1,4 @@
+---
+tags: version.control
+---
+A [[Distributed Version Control System]] or [[DVCS]] is a [[version control system]] such as [[Git]], that has the capability to operate in a distributed rather than a centralized fashion.
