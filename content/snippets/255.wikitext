@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://images.apple.com/macosx/technology/docs/GrandCentral_TB_brief_20090608.pdf Grand Central Dispatch] looks pretty interesting, especially given the new "block" syntax.
