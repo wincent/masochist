@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://alephnullplex.appspot.com/blog/view/20090610/haskell-week-one-update This ''might'' turn out to be interesting]; a "year with Haskell" experiment.
