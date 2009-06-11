@@ -1,6 +1,7 @@
 ---
 title: Internet access problems
 tags: 
+cache_breaker: 1
 ---
 
 I've just moved and for the time being am without real Internet access.
