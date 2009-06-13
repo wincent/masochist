@@ -1,6 +1,7 @@
 ---
 title: Internet access update
 tags:
+cache_breaker: 1
 ---
 Just received notification that the Alfa AWUS036H I [/blog/internet-access-problems ordered] last Wednesday has arrived in Madrid and is waiting to be picked up from the post office. I'm quite impressed that it only took a week to get here; I'd have it already if I had been in when they tried to deliver it.
 
