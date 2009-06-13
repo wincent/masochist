@@ -1,0 +1,4 @@
+---
+tags:
+---
+I see that [[Xcode]] in [[Snow Leopard]] will [http://www.apple.com/macosx/refinements/enhancements-refinements.html support static analysis].
