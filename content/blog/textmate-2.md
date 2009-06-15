@@ -1,6 +1,7 @@
 ---
 title: TextMate 2
 tags: textmate emacs vim
+cache_breaker: 1
 ---
 
 As I [mentioned yesterday](/twitter/92), there has finally been official word that [TextMate](/wiki/TextMate) 2 is apparently not dead after all.
