@@ -1,0 +1,7 @@
+---
+title: June server maintenance
+tags: site
+---
+The server was just power-cycled in order to apply a kernel update. Downtime was about 135 seconds, by the looks of it.
+
+I made [[Updating the kernel from version 2.6.18-128.1.1.el5 to 2.6.18-128.1.14.el5 on Red Hat Enterprise Linux 5.1 | notes on the process here]].
