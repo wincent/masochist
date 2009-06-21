@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.embedded.com/columns/barrcode/216200567?printable=true Ten bug-killing rules] for [[C]] programmers.
