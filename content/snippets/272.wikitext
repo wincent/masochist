@@ -1,0 +1,4 @@
+---
+tags: red.hat firewall
+---
+Setting up [[iptables]].
