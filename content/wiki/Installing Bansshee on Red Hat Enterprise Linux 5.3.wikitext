@@ -1,0 +1,35 @@
+---
+tags: red.hat bansshee
+---
+= Installing the latest source code from the [[Git]] repository =
+
+<pre lang="shell">$ git clone git://git.wincent.com/bansshee.git
+$ cd bansshee
+$ sudo make install</pre>
+
+= Testing required dependencies =
+
+<pre lang="shell">$ perl -c /usr/local/sbin/bansshee
+Can't locate Proc/Daemon.pm in @INC
+$ sudo -H cpan Proc::Daemon
+$ perl -c /usr/local/sbin/bansshee 
+Can't locate File/Tail.pm in @INC
+$ sudo -H cpan File::Tail
+$ perl -c /usr/local/sbin/bansshee 
+/usr/local/sbin/bansshee syntax OK</pre>
+
+= Setting up [[iptables]] =
+
+First, customize firewall rules as desired (beyond the scope of this document) in `/etc/sysconfig/iptables`.
+
+Start `iptables`:
+
+<pre lang="shell">$ sudo service iptables start</pre>
+
+Set up [[iptables]] to automatically launch at boot time:
+
+<pre lang="shell">$ sudo chkconfig iptables on</pre>
+
+= Setting up [[Bansshee]] configuration and support files =
+
+See the `contrib` directory for support files specific to [[RHEL]] 5.3.
