@@ -1,0 +1,8 @@
+---
+tags: shoulda
+---
+[[Shoulda]] is a [[BDD]] test framework for [[Ruby]] designed to run on top of [[Test::Unit]]. It can also be used on top of [[RSpec]].
+
+= See also =
+
+* Official site: http://thoughtbot.com/projects/shoulda/
