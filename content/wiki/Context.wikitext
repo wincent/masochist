@@ -1,0 +1,8 @@
+---
+tags: context
+---
+[[Context]] is a small [[Ruby]] test framework that brings a [[DSL]] similar to those of [[RSpec]] and [[Shoulda]] to [[Test::Unit]].
+
+= See also =
+
+* Official [[Git]] repository: http://github.com/jeremymcanally/context/tree/master
