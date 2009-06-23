@@ -1,0 +1,4 @@
+---
+tags: rspec
+---
+I'm late seeing this, but here's [http://www.caboo.se/articles/2008/11/4/we-ve-stopped-using-rspec somebody who's stopped using RSpec].
