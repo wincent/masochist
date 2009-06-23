@@ -1,0 +1,4 @@
+---
+tags: rspec rr
+---
+Cost of moving to [[RR]]? `1296 examples, 217 failures`. Hard to muster the enthusiasm.
