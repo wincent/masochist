@@ -1,0 +1,4 @@
+---
+tags: rspec
+---
+[[RSpec]] 1.2.7 is out, but from [http://rubyforge.org/frs/shownotes.php?release_id=36011 the release notes] I am not entirely sure what's new. Wish they were more detailed.
