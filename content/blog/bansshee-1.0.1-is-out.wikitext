@@ -1,0 +1,9 @@
+---
+title: Bansshee 1.0.1 is out
+tags: bansshee releases
+---
+I'm pleased to announce the release of a new version of [http://bansshee.wincent.com/ Bansshee], the lightweight daemon written in [[Perl]] for defending against brute-force/dictionary attacks on [[SSH]] servers.
+
+This release adds support files for [[Red Hat Enterprise Linux]] 5.3, and a license change from the [[GPL]] to the more permissive [[BSD]] license. See the [http://git.wincent.com/bansshee.git web-based repository browser] for more details on all the changes.
+
+If you find the software useful, please consider making a [http://wincent.com/a/products/bansshee/#donations donation].
