@@ -1,6 +1,7 @@
 ---
 title: Why merging hurts in Subversion but is easy in Git
 tags: subversion git
+cache_breaker: 1
 ---
 
 Andreas Ericsson summed it up nicely in [a post](http://news.gmane.org/find-root.php?message_id=%3c4A434D6F.2090105%40op5.se%3e) to the [Git mailing list](/wiki/Git_mailing_list) earlier today:
