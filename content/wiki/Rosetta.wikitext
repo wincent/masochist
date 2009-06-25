@@ -1,0 +1,6 @@
+---
+tags: rosetta
+---
+= See also =
+
+* [[Wikipedia]] page on [[Rosetta]]: http://en.wikipedia.org/wiki/Rosetta_(software)
