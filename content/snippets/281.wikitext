@@ -1,0 +1,4 @@
+---
+tags: capistrano ssh
+---
+Looks like it's not [/twitter/110 Capistrano's fault]. [[SSH]] will try any keys you have in `~/.ssh` automatically before it even prompts [[Capistrano]] for a password. So to fix the issue I've dumped passwords and have switched to public key authentication; probably should have done that all along (why didn't I?).
