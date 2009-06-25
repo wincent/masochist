@@ -1,0 +1,4 @@
+---
+tags:
+---
+The "SynergyApp" target of the 3.5 series is now building again in the wake of recent refactorings.
