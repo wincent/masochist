@@ -1,6 +1,7 @@
 ---
 title: Minor tweaks to site
 tags: site
+cache_breaker: 1
 ---
 Just deployed a few minor tweaks to the site:
 
