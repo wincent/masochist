@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Been doing a lot of highly disruptive cross-project refactoring lately, now trying to fix the breakage. Currently moving to [[Git]] submodules to have a bit more control over when this kind of integration takes place.
