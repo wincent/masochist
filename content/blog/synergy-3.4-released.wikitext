@@ -1,0 +1,11 @@
+---
+title: Synergy 3.4 released
+tags: synergy releases
+---
+I'm pleased to announce the availability of the latest release in the [[Synergy]] stable series (version 3.4). Synergy is a lightweight, customizable and reliable [[iTunes]] controller.
+
+A full changelog appears [http://wincent.com/a/products/synergy-classic/history/#3.4 here].
+
+You can download the new release from [http://wincent.com/a/products/synergy-classic/download/ the download page] ([http://wincent.com/download.php?item=SynergyJaguar.zip direct link]) and purchase a license using [https://secure.wincent.com/a/products/synergy-classic/purchase/ this page]. Please note that 3.4 is not a free update for users who received a free copy of Synergy as part of the MacHeist Giving Tree bundle.
+
+I'll be following this up with a release in the experimental alpha (3.5) series shortly.
