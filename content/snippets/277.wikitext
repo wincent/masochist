@@ -1,0 +1,4 @@
+---
+tags: site
+---
+Deploying a new version of the site shortly, so expect the [/blog blog], [/wiki wiki], [/issues issue tracker], [/forums forums] and so on to go down momentarily.
