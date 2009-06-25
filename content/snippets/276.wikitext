@@ -1,0 +1,4 @@
+---
+tags: subversion svk git cvs
+---
+Coming up this July to my two year anniversary of switching to [[Git]] (from [[SVK]], from [[Subversion]], from [[CVS]]).
