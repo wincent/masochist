@@ -1,0 +1,4 @@
+---
+tags: security
+---
+[http://www.daemonology.net/blog/2009-06-24-encrypt-then-mac.html One of those articles] which looks fascinating but which I don't have the time to read right now.
