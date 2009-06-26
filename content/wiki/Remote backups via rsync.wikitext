@@ -1,0 +1,10 @@
+---
+tags: rsync
+---
+I originally set up remote backups back in 2006:
+
+* [[Remote backups via rsync between RHEL 3 and Mac OS X]]
+
+In 2009 I did it again, this time using [[RHEL]] 5.3 and [[Mac OS X]] 10.5.7 [[Leopard]]:
+
+* [[Remote backups via rsync between RHEL 5.3 and Mac OS X 10.5.7 Leopard]]
