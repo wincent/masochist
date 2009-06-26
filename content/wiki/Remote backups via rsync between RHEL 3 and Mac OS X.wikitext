@@ -1,5 +1,6 @@
 ---
 tags: rsync
+cache_breaker: 1
 ---
 <em><strong>Note:</strong> these notes were made with older versions of [[RHEL]] and [[Mac OS X]]. See "[[Remote backups via rsync]]" for links to other articles using other [[operating system]] versions.</em>
 
