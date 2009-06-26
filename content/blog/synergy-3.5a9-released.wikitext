@@ -1,0 +1,11 @@
+---
+title: Synergy 3.5a9 released
+tags: synergy releases
+---
+I'm pleased to announce the availability of the latest release in the [[Synergy]] alpha/experimental series (version 3.5a9). Synergy is a lightweight, customizable and reliable [[iTunes]] controller.
+
+A full changelog appears [http://wincent.com/a/products/synergy-classic/history/#3.5a9 here].
+
+You can download the new release from [http://wincent.com/a/products/synergy-classic/download/ the download page] ([http://wincent.com/download.php?item=SynergyBeta.zip direct link]) and purchase a license using [https://secure.wincent.com/a/products/synergy-classic/purchase/ this page]. Please note that 3.5a9 is not a free update for users who received a free copy of Synergy as part of the MacHeist Giving Tree bundle.
+
+This release follows hot on the heels of the release of 3.4 (stable series) from yesterday. If you're curious about the difference between the two series and would like to know which one you should use, please see my [/blog blog] post, "[/blog/clearing-up-confusion-about-synergy-version-numbers Clearing up confusion about Synergy version numbers]".
