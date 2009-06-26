@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 `git show-branch` is a tool that I use infrequently enough that every time I do so I end up having to look up the output format in the [[man page]]. This is a weakness I've developed while leaning on the crutch that is `gitk --all`.
 
