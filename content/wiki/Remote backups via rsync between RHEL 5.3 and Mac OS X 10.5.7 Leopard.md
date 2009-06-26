@@ -1,5 +1,6 @@
 ---
 tags: leopard red.hat rsync
+cache_breaker: 1
 ---
 
 I first set up remote backups between [RHEL](/wiki/RHEL) (specifically, RHEL 3) and [Mac OS X](/wiki/Mac_OS_X) back in 2006 ([Tiger](/wiki/Tiger), if I recall correctly), and detailed that process in "[Remote backups via rsync between RHEL 3 and Mac OS X](/wiki/Remote_backups_via_rsync_between_RHEL_3_and_Mac_OS_X)".
