@@ -1,0 +1,4 @@
+---
+tags: rsync
+---
+Currently doing a [[rsync]] test backup and looks to be working nicely. Now to script it.
