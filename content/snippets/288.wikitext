@@ -1,0 +1,4 @@
+---
+tags: safari
+---
+Just had my first crash with [[Safari]] 4.
