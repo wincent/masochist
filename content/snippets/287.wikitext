@@ -1,0 +1,4 @@
+---
+tags: rspec
+---
+Not sure in which version this started, but [[RSpec]] now puts routing specs in the `spec/routing` subfolder. A nice reorganization. I was also pleased to see the introduction of the `spec/integration` subfolder.
