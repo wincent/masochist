@@ -1,0 +1,4 @@
+---
+tags: git
+---
+[http://www.viget.com/extend/backup-your-database-in-git/ Storing database dumps] in [[Git]]? Might be workable for some sites, with modifications.
