@@ -1,0 +1,4 @@
+---
+tags: adium
+---
+Hopefully a fix for [http://trac.adium.im/ticket/12480 this annoying new behaviour] in Adium will make it into a released version soon.
