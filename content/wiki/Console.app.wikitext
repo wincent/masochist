@@ -1,0 +1,6 @@
+---
+tags: os.x
+---
+The [[Console.app]] is a graphical application for viewing log files that [[Apple]] supplies as part of [[Mac OS X]].
+
+It can be found at `/Applications/Utilities/Console.app`.
