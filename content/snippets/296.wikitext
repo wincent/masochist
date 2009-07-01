@@ -1,0 +1,4 @@
+---
+tags: jquery
+---
+A [http://view.jquery.com/trunk/tools/api-browser/jquery-api-browser.zip downloadable offline version] of the [[jQuery]] [[API]] docs. (Unfortunately a little out of date.)
