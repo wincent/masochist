@@ -1,0 +1,4 @@
+---
+tags: css
+---
+[http://www.barelyfitz.com/screencast/html-training/css/positioning/ Nice explanation] of [[CSS]] absolute and relative positioning.
