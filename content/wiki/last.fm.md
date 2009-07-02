@@ -1,5 +1,6 @@
 ---
 tags: synergy last.fm
+cache_breaker: 1
 ---
 
 [last.fm](/wiki/last.fm) is a music-based social networking website. It was originally known as "[Audioscrobbler](/wiki/Audioscrobbler)" and is still sometimes referred to as such.
