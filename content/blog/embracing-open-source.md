@@ -1,6 +1,7 @@
 ---
 title: Embracing open source
 tags: development open.source
+cache_breaker: 1
 ---
 
 Back in March Eric S Raymond [made some controversial statements](http://dotcommie.net/feed/index.php?id=160) about how we don't need the GPL any more. His basic argument was that [open source](/wiki/open_source) has already "won", it produces better software than closed source processes can, and there is no need for reciprocal licenses (like the GPL) which "punish" people for trying to take open source code closed, when the market itself will carry out that "punishment" in any case.
