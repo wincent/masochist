@@ -1,0 +1,4 @@
+---
+tags: safari javascript
+---
+<pre lang="js">window.console.log('hello world!');</pre>
