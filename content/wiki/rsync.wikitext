@@ -1,0 +1,10 @@
+---
+tags: rsync
+---
+= Official site =
+
+* http://rsync.samba.org/
+
+= See also =
+
+* [[Wikipedia]] article on [[rsync]]: http://en.wikipedia.org/wiki/Rsync
