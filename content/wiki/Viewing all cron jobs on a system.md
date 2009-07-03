@@ -1,5 +1,6 @@
 ---
 tags: cron
+cache_breaker: 1
 ---
 
 # [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux)
