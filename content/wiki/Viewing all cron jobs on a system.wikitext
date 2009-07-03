@@ -1,0 +1,26 @@
+---
+tags: cron
+---
+= [[Red Hat Enterprise Linux]] =
+
+As root:
+
+<pre lang="shell"># ls -l /var/spool/cron/*
+# cat /var/spool/cron/*</pre>
+
+You'll also want to inspect:
+
+* `/etc/crontab`
+
+And the contents of:
+
+* `/etc/cron.d/`
+* `/etc/cron.daily`
+* `/etc/cron.hourly`
+* `/etc/cron.monthly`
+* `/etc/cron.weekly`
+
+For this purpose `find` might come in handy:
+
+<pre lang="shell"># find /etc -type f -path '/etc/cron*'
+# find /etc -type f -path '/etc/cron*' -exec cat {} \;</pre>
