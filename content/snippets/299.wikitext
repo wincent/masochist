@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.codinghorror.com/blog/archives/001283.html Yet another example] of why [[open source]] is awesome and Microsoft is evil.
