@@ -1,6 +1,7 @@
 ---
 title: Weekly progress report #4
 tags: progress
+cache_breaker: 1
 ---
 Time for another progress report. As always, the usual disclaimers apply. This is just an overview of commits on the currently checked-out branch in each repository, so any work done on side branches doesn't show up. The time limits involved are also only approximate; for example, I produced this report by passing in `10.days.ago` to my [[Git]] script, so some overlap or gap relative to the [/blog/weekly-progress-report-3 the last report] is possible.
 
