@@ -1,0 +1,16 @@
+---
+title: WOBezel source code repository now public
+tags: wobezel open.source
+---
+I've just released some more source code under the [[BSD]] license, this time the [[WOBezel]] framework. WOBezel is an [[Objective-C]] framework for [[Mac OS X]] which provides things like notification bezels, splash screens, about boxes, and some other basic window-related functionality.
+
+This is part of a general move towards [[open source]] that I've been working on for a long, long time now. If you're interested to hear about my motivation, see the post I published last month, "[/blog/embracing-open-source Embracing open source]".
+
+The [[Git]] source code repository can be browsed here:
+
+* http://git.wincent.com/WOBezel.git
+
+Periodically-updated backup mirrors are already in place at [[GitHub]] and [[Gitorous]]:
+
+* http://github.com/wincent/WOBezel/
+* http://gitorious.org/wobezel
