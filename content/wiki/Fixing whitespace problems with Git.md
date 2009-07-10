@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 This was posted to the [Git mailing list](/wiki/Git_mailing_list) by Larry D'Anna:
