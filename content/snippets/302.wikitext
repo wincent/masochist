@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+A [http://groups.google.com/group/vim_mac/browse_thread/thread/5044b070a7184525 new MacVim snapshot] (46) is out.
