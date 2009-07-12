@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Just discovered the awesome [[MacVim fullscreen mode]].
