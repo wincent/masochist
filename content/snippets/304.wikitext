@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+[[Rails]] 2.3.3 apparently out. [http://rubyforge.org/frs/shownotes.php?release_id=36991 No release notes] supplied, and nothing posted to the [http://weblog.rubyonrails.org/ official weblog], so no idea what's new.
