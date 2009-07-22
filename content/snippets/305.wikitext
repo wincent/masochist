@@ -1,0 +1,4 @@
+---
+tags: humor
+---
+[http://browsertoolkit.com/fault-tolerance.png A distributed map reduce function in Erlang]?
