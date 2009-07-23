@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+Excellent overview of [http://innig.net/software/ruby/closures-in-ruby.rb closures in Ruby].
