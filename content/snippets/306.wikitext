@@ -1,0 +1,4 @@
+---
+tags: humor
+---
+"[http://xkcd.com/612/ The author of the Windows file copy dialog visits some friends]"
