@@ -1,0 +1,4 @@
+---
+tags: rspec
+---
+Won't be worrying about the update to [[RSpec]] 1.2.8; `rake gems:unpack` gives me "`can't activate , already activated rspec-1.2.7`".
