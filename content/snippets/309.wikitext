@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Annoying change in [[Rails]] 2.3.3: complains that "The following gems have native components that need to be built" if you clean up your `Makefile` after building. At least it doesn't complain if you delete your object and log files.
