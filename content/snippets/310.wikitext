@@ -1,0 +1,4 @@
+---
+tags: spindump
+---
+Stop `spindump` from making the problem even worse when your machine is under heavy load: `sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.spindump.plist`
