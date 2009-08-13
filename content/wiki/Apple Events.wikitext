@@ -1,0 +1,4 @@
+---
+tags: applescript
+---
+[[Apple Events]] are the underlying inter-application communication mechanism provided by [[Apple]] as a foundation for [[AppleScript]].
