@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Fixed the [/twitter/142 broken public access] to git.wincent.com. Full details [[fatal: protocol error: bad line length character|here]].
