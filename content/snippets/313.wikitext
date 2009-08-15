@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Browser-based access to [http://git.wincent.com/ git.wincent.com] broken now too (moved to 1.6.4 trying to fix the other issue, but the update broke [[gitweb]]). Still looking into both issues.
