@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 `fatal: protocol error: bad line length character` is an error I started seeing when trying to perform `git clone`, `git fetch` or `git pull` from public [Git](/wiki/Git) repositories hosted at git.wincent.com. I am not entirely sure when the problem started but I first noticed it after updating my local Git install to version 1.6.4 (see "[Updating to Git 1.6.4](/wiki/Updating_to_Git_1.6.4)"), with the server still running 1.6.3.3 (see "[Updating to Git 1.6.3.3](/wiki/Updating_to_Git_1.6.3.3)").
