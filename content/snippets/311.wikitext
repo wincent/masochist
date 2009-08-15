@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[MacVim]] Snapshot 48 (preview release) was [http://groups.google.com/group/vim_mac/browse_thread/thread/9b07547a7e70905f?hl=en just announced].
