@@ -1,0 +1,4 @@
+---
+tags: synergy
+---
+Putting together a new [[Synergy]] release, version 3.5.4a. Will perform final testing over the weekend and if all goes well release during the week.
