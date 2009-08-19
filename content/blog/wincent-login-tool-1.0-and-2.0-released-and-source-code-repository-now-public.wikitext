@@ -1,6 +1,7 @@
 ---
 title: Wincent Login Tool 1.0 and 2.0 released and source code repository now public
 tags: releases login.tool open.source
+cache_breaker: 1
 ---
 Wincent Login Tool is a small [[command line]] utility for managing login items. It was never really intended to be a separate product, but others started using it because they had seen me using it inside the [[Synergy]] installer to update the login items (see "[[Install]]" for more information on the installer itself).
 
