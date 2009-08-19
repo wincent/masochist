@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Derek Wyatt [http://groups.google.com/group/vim_use/browse_thread/thread/92bff0cfbc1130f9?hl=en announces] that he's posting [[Vim]] screencasts [http://www.vimeo.com/user1690209/videos here on Vimeo], and short tips [http://twitter.com/derekwyatt here on Twitter].
