@@ -1,0 +1,4 @@
+---
+tags: watir cucumber selenium celerity htmlunit rhino
+---
+On [http://groups.google.com/group/cukes/msg/327816b0621fa362?hl=en Cucumber + Celerity] (Watir API wrapper for HtmlUnit using Rhino JS VM) over Selenium.
