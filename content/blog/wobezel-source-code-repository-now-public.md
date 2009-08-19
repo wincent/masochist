@@ -1,6 +1,7 @@
 ---
 title: WOBezel source code repository now public
 tags: wobezel open.source
+cache_breaker: 1
 ---
 
 I've just released some more source code under the [BSD](/wiki/BSD) license, this time the [WOBezel](/wiki/WOBezel) framework. WOBezel is an [Objective-C](/wiki/Objective-C) framework for [Mac OS X](/wiki/Mac_OS_X) which provides things like notification bezels, splash screens, about boxes, and some other basic window-related functionality.
