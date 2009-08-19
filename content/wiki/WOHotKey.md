@@ -1,5 +1,6 @@
 ---
 tags: wohotkey
+cache_breaker: 1
 ---
 
 [WOHotKey](/wiki/WOHotKey) is a framework originally written for use in [Wincent](/wiki/Wincent) products that provides hot-key functionality.
