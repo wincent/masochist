@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+As I find working in [[Xcode]] to be more and more annoying, I'm forced to set up [[Vim]] to do some [[IDE]]-like things. Just installed [http://www.vim.org/scripts/script.php?script_id=31 a.vim] to make switching between alternate files (source and header files, for example) easy.
