@@ -1,6 +1,7 @@
 ---
 title: WOHotKey source code repository now public
 tags: wohotkey open.source
+cache_breaker: 1
 ---
 
 I've just released some more source code under the [BSD](/wiki/BSD) license, this time the [WOHotKey](/wiki/WOHotKey) framework. WOHotKey is an [Objective-C](/wiki/Objective-C) framework for [Mac OS X](/wiki/Mac_OS_X) which provides hot key functionality for Cocoa applications. This is part of a general move towards [open source](/wiki/open_source) that I've been working on for a long, long time now. If you're interested to hear about my motivation, see the post I published last month, "[Embracing open source](/blog/embracing-open-source)".
