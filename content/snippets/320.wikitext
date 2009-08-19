@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Just found out about [http://www.syntevo.com/smartgit/index.html SmartGit]. Not really in the market for this kind of thing, but it may interest some.
