@@ -1,6 +1,7 @@
 ---
 title: The Vim epiphany
 tags: vim
+cache_breaker: 1
 ---
 
 Switching from the world of easy-to-use modeless editors (Notepad, [TextMate](/wiki/TextMate), [BBEdit](/wiki/BBEdit), [Xcode](/wiki/Xcode) etc) to the unfamiliar modal landscape of [Vim](/wiki/Vim) requires a large effort. I suspect that a fairly common outcome is that, without sufficient motivation and commitment, many people end up giving up and going back to what they were comfortable with before.
