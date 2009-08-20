@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Derek Wyatt starts a [[Vim]] blog: http://derekwyatt.wordpress.com/ ('''Update:''' moved to http://derekwyatt.org/.)
