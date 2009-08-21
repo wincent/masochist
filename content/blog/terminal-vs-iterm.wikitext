@@ -1,6 +1,7 @@
 ---
 title: Terminal vs iTerm
 tags:
+cache_breaker: 1
 ---
 In a directory with a bunch of source files, `time cat *.{m,h}` in iTerm yields:
 
