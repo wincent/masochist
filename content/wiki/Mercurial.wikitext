@@ -1,0 +1,10 @@
+---
+tags: mercurial
+---
+[[Mercurial]] is a [[distributed version control system]] written in [[Python]]. Personally, I prefer [[Git]].
+
+= Links =
+
+* Official site: http://www.selenic.com/mercurial/
+** Downloads: http://mercurial.selenic.com/downloads/
+* [[Wikipedia]] article on [[Mercurial]]: http://en.wikipedia.org/wiki/Mercurial_(software)
