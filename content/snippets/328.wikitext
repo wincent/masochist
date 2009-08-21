@@ -1,0 +1,4 @@
+---
+tags: doxygen
+---
+[[Updating to Doxygen 1.6.0 on Mac OS X Leopard 10.5.8|The new Doxygen]] produces some pretty nice-looking documentation.
