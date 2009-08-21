@@ -1,0 +1,4 @@
+---
+tags: mercurial
+---
+`export PYTHONPATH=/usr/local/lib/python2.5/site-packages` is what [/twitter/155 was needed].
