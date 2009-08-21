@@ -1,0 +1,4 @@
+---
+tags: mercurial
+---
+Reluctantly installed [[Mercurial]] from source in order to clone an upstream project, but doesn't work without some magic `PYTHONPATH` setting which I don't know: `abort: couldn't find mercurial libraries`. Too bad. ('''Update:''' found [/twitter/156 the answer].)
