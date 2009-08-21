@@ -1,0 +1,4 @@
+---
+tags:
+---
+Utterly sick to death of the fact that in a [[Terminal]] window with 20 tabs open, all have "bash" as the tab title. Useless. [http://pseudogreen.org/blog/set_tab_names_in_leopard_terminal.html I am not the only one who thinks this.]
