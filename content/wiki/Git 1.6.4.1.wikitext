@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 From the official release announcement posted to the [[Git mailing list]] on 22 August 2009:
 
