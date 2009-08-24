@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just turned off the firewall on [ftp://ftp.dlink.eu/datasheets/DSL-2740B.pdf my router] ([[PDF]] datasheet) to see if I can stop it from dropping packets under moderate traffic.
