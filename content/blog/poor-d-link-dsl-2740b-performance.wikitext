@@ -1,6 +1,7 @@
 ---
 title: Poor D-Link DSL-2740B performance
 tags:
+cache_breaker: 1
 ---
 Anybody have any experience with the D-Link DSL-2740B ADSL router? Of all the routers I've had over the years, this seems to be among the worst as far as handling BitTorrent traffic is concerned.
 
