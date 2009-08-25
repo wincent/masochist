@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 [[Snow Leopard]] is version 10.6 of [[Mac OS X]], released 28 August 2009.
 
