@@ -1,0 +1,4 @@
+---
+tags: snow.leopard
+---
+I've made a couple of updates to my [/blog/snow-leopard-product-compatibility Snow Leopard product compatibility post].
