@@ -1,0 +1,4 @@
+---
+tags: xcode
+---
+Absolutely loving [[Xcode]]'s new static analysis features.
