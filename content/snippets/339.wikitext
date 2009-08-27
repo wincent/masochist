@@ -1,0 +1,4 @@
+---
+tags: xcode
+---
+I am absolutely speechless about how much faster compilation is under Clang/LLVM. Haven't done scientific measurements but it certainly feels like 1000% faster.
