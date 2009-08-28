@@ -1,6 +1,7 @@
 ---
 title: Wincent Strings Utility 2.0 released
 tags: releases wincent.strings.util
+cache_breaker: 1
 ---
 
 I expect to be releasing a lot of product updates over the coming days to coincide with the release of the new version of [Mac OS X](/wiki/Mac_OS_X), [Snow Leopard](/wiki/Snow_Leopard). The first of these is [Wincent Strings Utility](/wiki/Wincent_Strings_Utility) version 2.0. Wincent Strings Utility is a [command-line](/wiki/command-line) tool designed to help developers with the task of localization. [This plaintext copy of the manpage](http://wincent.com/a/products/wincent-strings-util/wincent-strings-util.1.txt) describes its different modes of operation.
