@@ -1,6 +1,7 @@
 ---
 title: Wincent Strings Utility 2.0.1 released
 tags: releases wincent.strings.util
+cache_breaker: 1
 ---
 This is a tiny update to [[Wincent Strings Utility]], following on from the release of 2.0 [/blog/wincent-strings-utility-2.0-released yesterday]. The only significant change is that using the installer package on versions of [[Mac OS X]] older than 10.6 [[Snow Leopard]] will now trigger a dialog explaining the system version requirement. Also, the source distribution now includes the [[buildtools]] submodule so that it doesn't have to be fetched separately.
 
