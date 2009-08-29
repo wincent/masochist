@@ -1,0 +1,9 @@
+---
+tags: wincent.icon.utility
+---
+[[Wincent Icon Utility]] is a small [[command line]] tool for taking an ".icns" icons file and applying it to a directory as a custom folder icon. A plaintext copy of the [[man page]] can be found [http://wincent.com/a/products/wincent-icon-util/wincent-icon-util.1.txt here].
+
+= See also =
+
+* Web-based repository browser: http://git.wincent.com/wincent-icon-util.git
+* [[Wincent Icon Utility]] version 2.0.1 [/blog/wincent-icon-utility-2.0.1-released release announcement]
