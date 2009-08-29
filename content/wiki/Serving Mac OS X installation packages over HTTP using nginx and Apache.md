@@ -1,5 +1,6 @@
 ---
 tags: apache nginx
+cache_breaker: 1
 ---
 
 I was wondering if it would be wise to serve [Mac OS X](/wiki/Mac_OS_X) installation packages (`.pkg`) files directly over [HTTP](/wiki/HTTP), or whether browsers would choke on them and do silly things like display them as garbled text in the browser window rather than writing them out to disk. (Up till now I've always wrapped them up in a [zip](/wiki/zip) archive just to be on the safe side, despite the fact that this requires users to perform an additional extraction step before using the package, which has always annoyed me.)
