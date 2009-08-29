@@ -1,5 +1,6 @@
 ---
 tags: buildtools
+cache_breaker: 1
 ---
 The [[Wincent Build Tools]], or simply "[[buildtools]]", are a collection of helpful scripts and configuration files that simplify some build tasks when working with [[Xcode]]. All [[Wincent products]] make use of the [[buildtools]]. The official project page is:
 
