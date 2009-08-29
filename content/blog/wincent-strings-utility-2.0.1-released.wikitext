@@ -1,0 +1,13 @@
+---
+title: Wincent Strings Utility 2.0.1 released
+tags: releases wincent.strings.util
+---
+This is a tiny update to [[Wincent Strings Utility]], following on from the release of 2.0 [/blog/wincent-strings-utility-2.0-released yesterday]. The only significant change is that using the installer package on versions of [[Mac OS X]] older than 10.6 [[Snow Leopard]] will now trigger a dialog explaining the system version requirement. Also, the source distribution now includes the [[buildtools]] submodule so that it doesn't have to be fetched separately.
+
+Wincent Strings Utility is a [[command-line]] tool designed to help developers with the task of localization. [http://wincent.com/a/products/wincent-strings-util/wincent-strings-util.1.txt This plaintext copy of the manpage] describes its different modes of operation.
+
+This release will ''only'' run on [[Snow Leopard]], but older versions of the software which will work on older versions of [[Mac OS X]] are still available from [http://strings.wincent.com/ strings.wincent.com].
+
+You can download the [http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.1.zip installer package], [http://wincent.com/a/products/wincent-strings-util/download/wincent-strings-util-2.0.1-src.tar.gz source tarball], or check out the [http://strings.wincent.com/ official product page] for information about obtaining the source via [[Git]]. An online repository browser is also available [http://git.wincent.com/wincent-strings-util.git here].
+
+This is an [[open source]] product licensed under the [[GPL]], so if you find it useful please consider [https://www.paypal.com/xclick/business=win@wincent.com&item_name=Wincent+Strings+Utility+donation&no_note=1&currency_code=EUR&lc=GB making a donation].
