@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Really liking [[Git submodules]], thanks to the strict control they provide over what code gets updated and when. Much better for my workflow than SVN externals.
