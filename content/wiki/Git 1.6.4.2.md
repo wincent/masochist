@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 From the official announcement posted to the [Git mailing list](/wiki/Git_mailing_list):
