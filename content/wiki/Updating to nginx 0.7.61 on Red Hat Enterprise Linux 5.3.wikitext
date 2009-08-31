@@ -1,0 +1,44 @@
+---
+tags: red.hat nginx updates nginx.upload.module
+---
+= Updating [[PCRE]] =
+
+Although we updated [[PCRE]] as part of our [[Mac OS X]] 10.6 [[Snow Leopard]] install, we won't update here because we don't want to lose the automatic updates of the [[Red Hat]]-supplied version.
+
+= Updating [[nginx]] and using the [[nginx upload module]] =
+
+Although I have tried the upload module previously on my development machine (see "[[Updating to nginx 0.6.36 with the nginx upload module 2.0.9]]" and "[[Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard]]") this is the first time I am deploying it on the remote server.
+
+<pre lang="shell">$ wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.10.tar.gz
+$ tar xzvf nginx_upload_module-2.0.10.tar.gz 
+$ wget http://sysoev.ru/nginx/nginx-0.7.61.tar.gz
+$ tar xzvf nginx-0.7.61.tar.gz 
+$ cd nginx-0.7.61
+$ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx_upload_module-2.0.10
+$ make</pre>
+
+For the actual installation we use a somewhat more elaborate process than the one we use on the development machine, principally because we want a rapid retreat path in case something goes wrong. As noted in "[[Updating to nginx 0.6.34 on Red Hat Enterprise Linux 5.1]]", it is in theory possible to do a zero-downtime update by swapping in a new binary on the fly. It's something I may try next time (and if I do, I will make notes at "[[Updating to a new nginx binary on the fly]]"), but for now I used the more conservative approach of stopping the server, moving the entire old `/usr/local/nginx/` folder out of the way, installing the new version, and restarting.
+
+<pre lang="shell">$ sudo -i
+# monit summary
+# monit stop all
+# monit summary
+# mv /usr/local/nginx /usr/local/nginx-old
+# cd /path/to/nginx/src/nginx-0.7.61
+# make install
+# cd /usr/local
+# cp nginx-old/conf/nginx-staging.conf nginx/conf/
+# mv nginx/conf/nginx.conf nginx/conf/nginx.conf.vendor
+# cp nginx-old/conf/nginx.conf nginx/conf/
+# sbin/nginx -t -c conf/nginx.conf
+# cp -R ../nginx-old/conf/certs conf/
+# cp -R ../nginx-old/conf/keys conf/
+# sbin/nginx -t -c conf/nginx.conf
+# sbin/nginx -t -c conf/nginx-staging.conf
+# monit start all
+# monit summary
+# exit</pre>
+
+= See also =
+
+* [[Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard]]
