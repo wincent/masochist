@@ -1,0 +1,32 @@
+---
+tags: nginx
+---
+This is described on the official wiki at:
+
+* http://wiki.nginx.org/NginxCommandLine#Upgrading_To_a_New_Binary_On_The_Fly
+
+Basically it boils down to the following:
+
+Get [[PID]] of old master process by inspecting output of `ps`:
+
+<pre lang="shell">$ ps auxwww | grep nginx</pre>
+
+(You could also just `cat /var/run/nginx.pid`.)
+
+Now, install the new binary:
+
+<pre lang="shell">$ sudo make install</pre>
+
+Advise old master process to start a new master process using the updated binary:
+
+<pre lang="shell">$ sudo kill -s USR2 2941</pre>
+
+Gracefully shut down old worker processes:
+
+<pre lang="shell">$ sudo kill -s WINCH 2941</pre>
+
+Gracefully exit old master process:
+
+<pre lang="shell">$ sudo kill -s QUIT 2941</pre>
+
+See the official wiki for more info on how to do other things like backing out of an update.
