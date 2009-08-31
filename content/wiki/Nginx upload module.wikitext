@@ -1,0 +1,12 @@
+---
+tags: nginx.upload.module
+---
+= See also =
+
+* Official site: http://www.grid.net.ru/nginx/upload.en.html
+* Example installation instructions:
+** [[Updating to nginx 0.6.36 with the nginx upload module 2.0.9]]
+** [[Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3]]
+* Example update instructions:
+** [[Installing nginx 0.7.65 on Mac OS X 10.6.2 Snow Leopard]]
+** [[Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard]]
