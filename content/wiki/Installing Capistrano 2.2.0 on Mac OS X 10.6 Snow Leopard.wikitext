@@ -1,0 +1,30 @@
+---
+tags: capistrano snow.leopard
+---
+= Why we need [[Capistrano]] 2.2.0 =
+
+[[Snow Leopard]] comes with version 2.5.2 of [[Capistrano]], but version 2.2.0 is the last know-working version of [[Capistrano]] for me (successive versions included enough pointless code-churn to break deployment) so I froze my old Capistrano install at 2.2.0.
+
+= Installing =
+
+<pre lang="shell">$ sudo gem install --version 2.2.0 capistrano
+Successfully installed capistrano-2.2.0
+1 gem installed
+Installing ri documentation for capistrano-2.2.0...
+Installing RDoc documentation for capistrano-2.2.0...</pre>
+
+Running `cap`, however, will cause the later version to be used.
+
+<pre lang="shell">$ cap --version
+Capistrano v2.5.2</pre>
+
+= Short term solution =
+
+The older version must be explicitly targeted like this:
+
+<pre lang="shell">$ cap _2.2.0_ --version
+Capistrano v2.2.0</pre>
+
+= Long term solution =
+
+Replace use of Capistrano with something non-brittle. Even a hand-coded shell-script would be better. Wish noted in feature request #1376.
