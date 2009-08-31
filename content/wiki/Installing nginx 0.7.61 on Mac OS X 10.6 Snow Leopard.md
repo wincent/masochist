@@ -1,5 +1,6 @@
 ---
 tags: nginx pcre upload
+cache_breaker: 1
 ---
 
 # Installing [PCRE](/wiki/PCRE)
