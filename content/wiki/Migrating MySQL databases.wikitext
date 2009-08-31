@@ -1,0 +1,24 @@
+---
+tags: mysql
+---
+= Example: one local [[OS]] partition to another =
+
+In this example we have a [[Rails]] application that has three databases &mdash; development, production and test &mdash; on a volume with [[Mac OS X]] [[Leopard]] installed. We want a textual dump of these that we can then import on a different volume on the same machine, but with [[Snow Leopard]] installed.
+
+Boot into [[Leopard]] and dump:
+
+<pre lang="shell">$ mysqldump -u root app_ development > dev.sql
+$ mysqldump -u root app_production > prod.sql
+$ mysqldump -u root app_test > test.sql</pre>
+
+Then, booted into the second [[Snow Leopard]], create the target databases:
+
+<pre lang="shell">$ mysql -u root -e "CREATE DATABASE app_development CHARACTER SET 'UTF8';"
+$ mysql -u root -e "CREATE DATABASE app_production CHARACTER SET 'UTF8';"
+$ mysql -u root -e "CREATE DATABASE app_test CHARACTER SET 'UTF8';"</pre>
+
+And import the tables and data:
+
+<pre lang="shell">$ mysql -u root app_development < dev.sql
+$ mysql -u root app_production < prod.sql 
+$ mysql -u root app_test < test.sql</pre>
