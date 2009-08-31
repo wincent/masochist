@@ -1,5 +1,6 @@
 ---
 tags: mysql snow.leopard
+cache_breaker: 1
 ---
 The official [http://dev.mysql.com/downloads/mysql/5.0.html downloads page] doesn't yet list any binary distributions for [[Snow Leopard]], so before trying to install a [[Leopard]] binary distribution I will see if it builds cleanly from source.
 
