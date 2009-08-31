@@ -1,5 +1,6 @@
 ---
 tags: capistrano snow.leopard
+cache_breaker: 1
 ---
 
 # Why we need [Capistrano](/wiki/Capistrano) 2.2.0
