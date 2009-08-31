@@ -1,0 +1,39 @@
+---
+tags: libevent memcached
+---
+= Installing [[libevent]] =
+
+[[libevent]] is a prerequisite for [[memcached]]:
+
+<pre lang="shell">$ curl -O http://www.monkey.org/~provos/libevent-1.4.12-stable.tar.gz
+$ tar xzvf libevent-1.4.12-stable.tar.gz 
+$ cd libevent-1.4.12-stable
+$ ./configure
+$ make
+$ make verify
+$ sudo make install</pre>
+
+= Installing [[memcached]] =
+
+<pre lang="shell">$ curl -O http://memcached.googlecode.com/files/memcached-1.4.1.tar.gz
+$ tar xzvf memcached-1.4.1.tar.gz 
+$  cd memcached-1.4.1
+$ ./configure
+$ make
+$ make test
+$ sudo make install</pre>
+
+= Testing =
+
+In my case I have a script in the `script` dir of a [[Rails]] application that I call whenever I want to start or stop [[memcached]], so I just used that:
+
+<pre lang="shell">$ script/memcached 
+memcached not running: starting
+$ script/memcached 
+memcached running: stopping</pre>
+
+(The script basically just does `memcached -d -P pidfile -l 127.0.0.1` to start [[memcached]].)
+
+= See also =
+
+* [[Updating to memcached 1.4.1 on Red Hat Enterprise Linux 5.3]]
