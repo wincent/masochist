@@ -1,5 +1,6 @@
 ---
 tags: nginx updates
+cache_breaker: 1
 ---
 
 These notes were made during the upgrade from nginx 0.6.32 to nginx 0.6.34 on [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) 5.1.
