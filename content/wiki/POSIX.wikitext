@@ -1,0 +1,6 @@
+---
+tags: posix
+---
+= See also =
+
+* [[Wikipedia]] article on [[POSIX]]: http://en.wikipedia.org/wiki/POSIX
