@@ -1,5 +1,6 @@
 ---
 tags: site
+cache_breaker: 1
 ---
 I currently abuse [[wiki]] links throughout the site as a means of quickly inserting shortcuts to key pages.
 
