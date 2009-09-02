@@ -1,0 +1,4 @@
+---
+tags: snow.leopard
+---
+`ping` in [[Snow Leopard]] now reports `Request timeout for icmp_seq 198` when packets don't come back in time. Used to just be silent.
