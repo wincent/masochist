@@ -1,0 +1,16 @@
+---
+tags: red.hat updates
+---
+Update everything at once, including the kernel:
+
+<pre lang="shell"># yum --disableexcludes=all check-update
+# yum --disableexcludes=all update</pre>
+
+Check if there is anything more to be installed (there was):
+
+<pre lang="shell"># yum --disableexcludes=all check-update
+# yum --disableexcludes=all update</pre>
+
+Reboot:
+
+<pre lang="shell"># reboot</pre>
