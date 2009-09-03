@@ -1,5 +1,6 @@
 ---
 tags: haproxy
+cache_breaker: 1
 ---
 
 # Links
