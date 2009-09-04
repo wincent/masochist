@@ -1,5 +1,6 @@
 ---
 tags: snow.leopard lynx
+cache_breaker: 1
 ---
 
 ```shell
