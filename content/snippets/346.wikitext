@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Update those [[Rails]] apps to get the latest [http://weblog.rubyonrails.org/2009/9/4/ruby-on-rails-2-3-4 security fixes] in version 2.3.4. Hope you've got a [/blog/getting-rid-of-capistrano pain-free deployment solution].
