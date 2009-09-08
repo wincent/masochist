@@ -1,6 +1,7 @@
 ---
 title: Frequently Asked Questions about Synergy and Macheist
 tags: synergy macheist
+cache_breaker: 1
 ---
 
 I occasionally get emails and support tickets from users who acquired [Synergy](/wiki/Synergy) through the [Macheist](http://macheist.com) promo last Christmas. I'm putting this [FAQ](/wiki/FAQ) up here to help clear up some of the questions which you might have.
