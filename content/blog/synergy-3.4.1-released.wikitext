@@ -1,0 +1,16 @@
+---
+title: Synergy 3.4.1 released
+tags: synergy jaguar releases
+---
+I've just prepared an update to the [[Synergy]] 3.4 series, version 3.4.1, whose sole purpose is to backport a bugfix (see ticket #1383) for the benefit of users who don't want to or can't upgrade to the 4.0 series yet, ''but'' still want to run on [[Mac OS X]] 10.6 [[Snow Leopard]].
+
+If you are a 3.4 user and aren't using [[Snow Leopard]] yet then there is absolutely no reason to update to 3.4.1.
+
+[[Synergy]] is a lightweight, highly-customizable [[iTunes]] controller. You can download the new release from [/products/synergy/download the download page] and purchase a license using [https://secure.wincent.com/a/products/synergy-classic/purchase/ this page]. The Synergy product pages were recently completely revamped for 4.0, so be sure to [/products/synergy check them out].
+
+See also:
+
+* [/blog/synergy-4.0-upgrades FAQs on upgrading to Synergy 4.0]
+* [/blog/frequently-asked-questions-about-synergy-and-macheist FAQs for MacHeist users]
+* [/blog/clearing-up-confusion-about-synergy-version-numbers An explanation of the differences between the 3.4 and 4.0 series]
+* [/products/synergy/history Changelog]
