@@ -1,0 +1,15 @@
+---
+title: Synergy 4.0.1 released
+tags: synergy releases snow.leopard
+---
+The beta-testing period is over and [[Synergy]], the lightweight, highly-customizable [[iTunes]] controller has been updated to version 4.0.1. The 4.0 series is a brand new line of development especially for [[Mac OS X]] 10.6 [[Snow Leopard]].
+
+This release has been tested with the new-released iTunes 9.0.0, and given feedback on the stability of the last release moves from "beta" to "final" status.
+
+Note that the 4.0 series will ''only'' run on [[Snow Leopard]]. (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [/products/synergy/history here].
+
+For many users this release will be a free upgrade: see [/blog/synergy-4.0-upgrades this blog post] to find out whether you qualify. If you got Synergy through the MacHeist Giving Tree bundle see  [/blog/frequently-asked-questions-about-synergy-and-macheist the MacHeist FAQ].
+
+The [[Synergy]] product pages were recently completely revamped for 4.0, so be sure to [/products/synergy check them out].
+
+You can download the new release from [/products/synergy/download the download page] and purchase a license using [https://secure.wincent.com/a/products/synergy-classic/purchase/ this page].
