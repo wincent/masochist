@@ -1,5 +1,6 @@
 ---
 tags: nginx
+cache_breaker: 1
 ---
 
 This is described on the official wiki at:
