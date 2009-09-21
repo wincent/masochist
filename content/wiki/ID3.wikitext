@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[ID3]] tags: http://en.wikipedia.org/wiki/ID3
