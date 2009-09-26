@@ -1,0 +1,4 @@
+---
+tags: snow.leopard
+---
+Mac OS X 10.6.1 is out. Why doesn't Software Update seem to notice this stuff any more?
