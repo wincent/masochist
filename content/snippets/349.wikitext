@@ -1,0 +1,4 @@
+---
+tags:
+---
+Bad luck to all the people that actually trusted proprietary/for-profit [[GitHub]] to serve as a reliable, permanent [[gem]]-distribution mechanism. They [http://github.com/blog/515-gem-building-is-defunct decided they weren't interested in continuing]. My own gems continue to be hosted on [http://rubyforge.org RubyForge], where they belong.
