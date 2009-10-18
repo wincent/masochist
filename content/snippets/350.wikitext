@@ -1,0 +1,4 @@
+---
+tags: rails haml
+---
+[http://nex-3.com/posts/86-rails-xss-protection-and-haml Upcoming changes] in [[Rails]] and [[Haml]].
