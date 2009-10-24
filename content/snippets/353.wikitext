@@ -1,0 +1,4 @@
+---
+tags: subversion apple perforce git
+---
+Digging around looking for background on [/twitter/182 Apple's ZFS discontinuation], found [http://jobs.apple.com/index.ajs?method=mExternal.showJob&RID=42559 this post] that indicates that [[Apple]] is using [[Subversion]] and [[Git]] internally. Nice to see that they're not wedded to a proprietary system like [[Perforce]].
