@@ -1,0 +1,4 @@
+---
+tags: zfs os.x
+---
+[[ZFS]] for [[Mac OS X]] [http://zfs.macosforge.org/ discontinued]. I wonder why... Was rather looking forward to having a modern, robust filesystem on my Mac.
