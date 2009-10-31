@@ -1,0 +1,6 @@
+---
+tags:
+---
+= See also =
+
+* [[Wikipedia]] article on [[chroot]] jails: http://en.wikipedia.org/wiki/Chroot
