@@ -1,0 +1,8 @@
+---
+tags: gpg
+---
+I use a [[GPG]] key to make signed tags in [[Git]] repositories. To change the passphrase I first bring up the interactive menu:
+
+<pre lang="shell">$ gpg --edit-key user@example.com</pre>
+
+And then enter `passwd` and follow the prompts.
