@@ -1,6 +1,7 @@
 ---
 title: September site maintenance
 tags: site
+cache_breaker: 1
 ---
 
 The site will be rebooted shortly to apply some maintenance updates to the server. Downtime is expected to be only a couple of minutes.
