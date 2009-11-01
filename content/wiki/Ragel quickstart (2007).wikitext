@@ -1,5 +1,6 @@
 ---
 tags: ragel
+cache_breaker: 1
 ---
 For historical interest, this article demonstrates the basic work flow for [[Ragel]] development as it was back in 2007, when it was necessary to do a two-step process involving separate "frontend" and "backend" tools. Since then things have become considerably easier and it is now only necessary to run a single [[command line]] tool. For an example based on the current version of [[Ragel]], see "[[Ragel quickstart]]".
 
