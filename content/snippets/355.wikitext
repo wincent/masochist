@@ -1,0 +1,4 @@
+---
+tags:
+---
+Still very frustrated with the state of in-browser automated testing. I've had nothing but trouble with it, no matter which toolset I've tried.
