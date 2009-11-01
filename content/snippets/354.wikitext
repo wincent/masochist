@@ -1,0 +1,4 @@
+---
+tags: thawte
+---
+[http://news.slashdot.org/story/09/10/05/234241/Thawte-Will-End-Web-of-Trust-On-November-16 Slashdot coverage] of Thawte's [/twitter/181 "Web of Trust" shutdown].
