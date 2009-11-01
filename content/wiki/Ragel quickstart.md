@@ -1,5 +1,6 @@
 ---
 tags: ragel
+cache_breaker: 1
 ---
 
 This article demonstrates the basic work flow for [Ragel](/wiki/Ragel) development.
