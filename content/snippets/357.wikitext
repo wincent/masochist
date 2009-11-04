@@ -1,0 +1,4 @@
+---
+tags:
+---
+So if Gemcutter, [/twitter/186 the new canonical gem host], is [http://wiki.github.com/qrush/gemcutter/transition being hosted] by [[Rackspace]] (one of the most expensive hosts in the game), who's paying for it? And will it be economically sustainable?
