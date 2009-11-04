@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.rubyinside.com/gemcutter-is-the-new-official-default-rubygem-host-2659.html Gemcutter topples RubyForge] as "canonical" [[gem]] host. Can they be trusted, [/twitter/179 unlike GitHub]?
