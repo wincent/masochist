@@ -1,0 +1,4 @@
+---
+tags:
+---
+Using [http://jira.openqa.org/browse/SRC-743 Selenium] with [https://bugzilla.mozilla.org/show_bug.cgi?id=513747 Firefox] is currently broken on [[Snow Leopard]]. Is ''anybody'' actually successfully doing automated in-browser testing? It has to be the most wonky, brittle, unstable, teetering pile of kludgery I've had the displeasure of dealing with.
