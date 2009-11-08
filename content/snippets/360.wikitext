@@ -1,0 +1,4 @@
+---
+tags:
+---
+I currently use expensive dedicated managed hosting, but I think that when my contract expires I'll be moving my Rails app to [http://www.engineyard.com/products/cloud/pricing/price-estimator Engine Yard Cloud] or similar (or even just doing the Amazon set-up myself), and moving my mail, [[Git]], and other [[HTTP]] hosting to a cheaper virtual host solution.
