@@ -1,0 +1,36 @@
+---
+tags: red.hat nginx updates
+---
+= Updating [[PCRE]] =
+
+We won't update [[PCRE]] here because we don't want to lose the automatic updates of the [[Red Hat]]-supplied version.
+
+= Updating [[nginx]] and using the [[nginx upload module]] =
+
+The [[nginx upload module]] was already in extracted in place (see "[[Installing nginx 0.7.62 on Red Hat Enterprise Linux 5.3]]") so we just download the updated [[nginx]] source and extract that alongside it:
+
+<pre lang="shell">$ wget http://sysoev.ru/nginx/nginx-0.7.63.tar.gz
+$ tar xzvf nginx-0.7.63.tar.gz 
+$ cd nginx-0.7.63</pre>
+
+Note in this case we stop to apply [http://sysoev.ru/nginx/patch.cve-2009-3555.txt a patch] for the well-publicized [[SSL]] renegotiation vulnerability before continuing with the build:
+
+<pre lang="shell">$ wget http://sysoev.ru/nginx/patch.cve-2009-3555.txt
+$ patch -p 0 <patch.cve-2009-3555.txt
+$ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx_upload_module-2.0.10
+$ make</pre>
+
+Now we gracefully update the binary in place without dropping any existing connections (see "[[Updating to a new nginx binary on the fly]]" for more details).
+
+The first step is to get the [[PID]] of the old [[nginx]] master process &mdash; in this example it is 2961 &mdash; and then perform the update in place by sending the appropriate signals to that process:
+
+<pre lang="shell">$ ps auxww|grep nginx
+$ sudo make install
+$ sudo kill -s USR2 2961
+$ sudo kill -s WINCH 2961
+$ sudo kill -s QUIT 2961</pre>
+
+= See also =
+
+* Example of an update that didn't use the "updating the binary on the fly" method: [[Installing nginx 0.7.62 on Red Hat Enterprise Linux 5.3]]
+* [[Updating to a new nginx binary on the fly]]
