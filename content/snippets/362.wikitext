@@ -1,0 +1,4 @@
+---
+tags:
+---
+Ouch. To license [[Red Hat Enterprise Linux]] for use in Amazon's [http://aws.amazon.com/ec2/ Elastic Compute Cloud] will [http://www.redhat.com/solutions/cloud/ cost you about 150 bucks a month]. Hard not to choose a truly free distro.
