@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
     The latest maintenance release GIT 1.6.5.2 is available at the
