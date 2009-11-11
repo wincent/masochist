@@ -1,0 +1,34 @@
+---
+tags: red.hat git updates snow.leopard
+---
+= Local update =
+
+Notes made while performing the update to [[Git 1.6.5.2]] on my local [[Mac OS X]] 10.6.1 [[Snow Leopard]] install.
+
+<pre># start off in local clone of official upstream Git repo
+git fetch
+
+# verify the tag
+git tag -v v1.6.5.2
+
+# note that "co" is a shorthand alias I have configured for "checkout"
+git co v1.6.5.2
+
+# proceed with the build
+make clean
+make prefix=/usr/local test
+sudo make prefix=/usr/local install
+sudo make prefix=/usr/local quick-install-man
+
+# check for changes in the Bash completion script
+diff -u ~/.git-completion.sh contrib/completion/git-completion.bash 
+
+# there were no changes, so no need to install the new version
+#cp contrib/completion/git-completion.bash ~/.git-completion.sh 
+
+# go back to master branch rather than hanging around on detached HEAD
+git co master</pre>
+
+= Remote update =
+
+I didn't perform a remote update this time. For an example of such an update see "[[Updating to Git 1.6.5.1]]".
