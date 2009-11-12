@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[nginx]] is patched, and [[Red Hat]] has [[Apache]] [http://kbase.redhat.com/faq/docs/DOC-20491 covered], so looks like the [[SSL]] renegotiation vulnerability is under control.
