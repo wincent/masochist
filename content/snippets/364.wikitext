@@ -1,0 +1,4 @@
+---
+tags:
+---
+I see that [http://litanyagainstfear.com/blog/2009/10/14/gem-bundler-is-the-future/ Gem Bundler is the Future], apparently. See also [http://tomafro.net/2009/11/a-rails-template-for-gem-bundler this guide] to getting started using it. I'll probably be waiting until [[Rails]] 3 forces me to change my existing set-up (if it ain't broke...).
