@@ -1,0 +1,8 @@
+---
+tags: dns nettica
+---
+[[Nettica]] are [[DNS]] service providers. I [/blog/dns-changes started using them] in November 2009.
+
+= See also =
+
+* Official site: http://nettica.com/
