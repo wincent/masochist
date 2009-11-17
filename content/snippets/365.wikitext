@@ -1,0 +1,4 @@
+---
+tags: hirb
+---
+[http://tagaholic.me/2009/03/13/hirb-irb-on-the-good-stuff.html Hirb] looks to be pretty helpful for those `script/console` sessions.
