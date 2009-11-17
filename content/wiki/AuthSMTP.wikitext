@@ -1,0 +1,8 @@
+---
+tags: smtp authsmtp
+---
+[[AuthSMTP]] provides an authenticated outgoing ([[SMTP]]) mail service. I [/blog/outgoing-mail-changes started using them] in November 2009, and stopped in November 2011, when I switched to Google Apps.
+
+= See also =
+
+* Official site: http://www.authsmtp.com/
