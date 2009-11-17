@@ -1,0 +1,24 @@
+---
+tags: aws amazon
+---
+[[Amazon Web Services]], or [[AWS]], is a collection of network-based services sold by [[Amazon]]. The services enable a variety of things like hosting websites, computation, storage, using Amazon's infrastructure.
+
+= See also =
+
+* [[S3]] ([[Simple Storage Service]])
+* [[EC2]] ([[Elastic Compute Cloud]])
+* [[EBS]] ([[Elastic Block Store]])
+* [[Amazon Linux AMI]]
+
+= Links =
+
+* Official site: http://aws.amazon.com/
+* [[Wikipedia]] article on AWS: http://en.wikipedia.org/wiki/Amazon_Web_Services
+
+== Third-party links ==
+
+* `aws`: a simplified [[command line]] interface to [[AWS]]: http://timkay.com/aws/ (see also "[[aws (command line tool)]]")
+* `aws`: Amazon's own command line tool, released 26 August 2013:
+** Announcement: http://aws.typepad.com/aws/2013/09/new-aws-command-line-interface-cli.html
+** Source: https://github.com/aws/aws-cli
+** Hacker News discussion: https://news.ycombinator.com/item?id=6324797
