@@ -1,0 +1,4 @@
+---
+tags:
+---
+Never bothered to update to [[FixtureReplacement]] 2.0 (if it ain't broke don't fix it), but looking at [http://github.com/smtlaissezfaire/fixturereplacement what's gone into 3.0], I think I'll be moving. Most interesting is the solution of the "cyclic dependencies" problem.
