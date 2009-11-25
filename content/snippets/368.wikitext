@@ -1,0 +1,4 @@
+---
+tags:
+---
+Have been running [[Snow Leopard]] full-time since release, and haven't needed to go back to my old [[Leopard]] or [[Tiger]] installs at all, so time to format them and repurpose the partitions as backup destinations.
