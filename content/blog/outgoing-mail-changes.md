@@ -1,6 +1,7 @@
 ---
 title: Outgoing mail changes
 tags: site
+cache_breaker: 1
 ---
 
 Following on from [yesterday's "outsourcing" of the DNS nameservers](/blog/dns-changes), today outgoing mail was delegated to a new third-party provider, [AuthSMTP](http://authsmtp.com/).
