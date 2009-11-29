@@ -1,6 +1,7 @@
 ---
 title: Automatic deployment numbering in Git
 tags: git
+cache_breaker: 1
 ---
 
 A frequently-asked [Git](/wiki/Git) question is, "How do I get Git to embed an automatically and atomically-incrementing revision number in my files?", or some related variant. (Strictly speaking, the question is not included in [the official FAQ](http://git.or.cz/gitwiki/GitFaq), bit it does crop up on the mailing list pretty often).
