@@ -1,6 +1,7 @@
 ---
 title: Upcoming site changes: repo browsing functionality
 tags: site
+cache_breaker: 1
 ---
 Seeing as my [/tags/progress weekly progress reports] have proved to be everything but weekly, given that they rely on me actually remembering to prepare them, I've started work on integrating [[Git]] repository browsing functionality right into the site.
 
