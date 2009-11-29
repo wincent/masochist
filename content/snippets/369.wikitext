@@ -1,0 +1,4 @@
+---
+tags:
+---
+A [http://journal.uggedal.com/vps-performance-comparison cloud computing comparison] by Eivind Uggedal; Reddit commentary [http://www.reddit.com/r/programming/comments/a98a4/performance_comparison_between_ec2_slicehost/ here].
