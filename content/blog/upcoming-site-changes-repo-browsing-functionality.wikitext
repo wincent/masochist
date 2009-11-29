@@ -1,0 +1,11 @@
+---
+title: Upcoming site changes: repo browsing functionality
+tags: site
+---
+Seeing as my [/tags/progress weekly progress reports] have proved to be everything but weekly, given that they rely on me actually remembering to prepare them, I've started work on integrating [[Git]] repository browsing functionality right into the site.
+
+Instead of a weekly progress report, you'll be able to subscribe to an [[Atom]] feed of all commits as they get published. This will also replace the [[GitWeb]] installation that I currently have running at http://git.wincent.com/. Unlike GitWeb, which is only for public, [[open source]] code, the integrated repository browser will allow me to publish info about private, closed source repositories as well (commit logs, for example, but not the actual source code itself).
+
+As [/blog/embracing-open-source I've written elsewhere], I expect to migrate more and more of my code from closed to open source as time goes by, and having an integrated repository browser will make things like the [[issue tracker]] even more useful.
+
+Still early (design) stages yet, but solid progress is being made. Feel free to watch ticket #1135 (there is an [[Atom]] feed on the page) if you'd like to keep abreast of developments.
