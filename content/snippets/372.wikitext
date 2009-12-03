@@ -1,0 +1,4 @@
+---
+tags:
+---
+You can now [http://aws.amazon.com/about-aws/whats-new/2009/12/03/amazon-ec2-instances-now-can-boot-from-amazon-ebs/ boot your Amazon EC2 instance from EBS volumes].
