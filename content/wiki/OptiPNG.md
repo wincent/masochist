@@ -1,5 +1,6 @@
 ---
 tags: png
+cache_breaker: 1
 ---
 
 [OptiPNG](/wiki/OptiPNG) is a lossless PNG optimizer which attempts to compress PNG input files by trialling different compression settings and selecting the most effective.
