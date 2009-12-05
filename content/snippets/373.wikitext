@@ -1,0 +1,4 @@
+---
+tags: php
+---
+Surprised to see that [[PHP]]'s "Safe Mode" is already [http://php.net/manual/en/ini.sect.safe-mode.php deprecated and in fact removed] from PHP 6.0.
