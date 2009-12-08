@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+[[Amazon Web Services]] just [http://aws.amazon.com/about-aws/whats-new/2009/12/08/aws-announces-pricing-changes/ got even cheaper].
