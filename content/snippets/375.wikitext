@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[http://www.foothills.wjduquette.com/blog/archives/1813 Interesting blog post on Vim]: basically, the author gives up on [[Vim]] because it's too good, and becoming used to Vim causes you to become dissatisfied with every other text-editing interface you have to deal with (email clients, web forms etc).
