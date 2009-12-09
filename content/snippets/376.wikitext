@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+[[Monkey patching]] is [http://github.com/aslakhellesoy/cucumber-rails/blob/master/lib/cucumber/rails/capybara_javascript_emulation.rb evil].
