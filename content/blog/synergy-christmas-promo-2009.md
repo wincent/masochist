@@ -1,6 +1,7 @@
 ---
 title: Synergy Christmas Promo 2009
 tags: synergy
+cache_breaker: 1
 ---
 
 To celebrate the 2009 festive season, if you purchase a [Synergy](/products/synergy) license between now and the end of the year you'll have the option of receiving an additional, complementary license as a free gift for a recipient of your choice.
