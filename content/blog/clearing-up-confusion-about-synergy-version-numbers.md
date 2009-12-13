@@ -1,6 +1,7 @@
 ---
 title: Clearing up confusion about Synergy version numbers
 tags: synergy
+cache_breaker: 1
 ---
 
 I occasionally get questions on the [forums](/forums) and in emails asking me about the different versions of [Synergy](/wiki/Synergy). Here's an example:
