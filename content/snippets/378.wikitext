@@ -1,0 +1,4 @@
+---
+tags:
+---
+Gruber [http://daringfireball.net/2009/12/html5_video_unusable misses the boat]. From the [http://www.reddit.com/r/programming/comments/ah68g/why_the_html5_video_element_is_effectively/ Reddit commentary] I think [http://www.reddit.com/r/programming/comments/ah68g/why_the_html5_video_element_is_effectively/c0hjnhq this remark] most hits the spot.
