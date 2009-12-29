@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.codinghorror.com/blog/archives/001317.html Markdown sucks]. I vote for [[wikitext]].
