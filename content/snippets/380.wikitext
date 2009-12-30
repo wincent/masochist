@@ -1,0 +1,4 @@
+---
+tags:
+---
+Ah, I should have known. [http://daringfireball.net/linked/2009/10/23/github-flavored-markdown Markdown is perfect]. It's the users of it which are stupid, according to Gruber.
