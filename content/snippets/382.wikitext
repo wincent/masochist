@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just sent in notice of termination to my current hosting provider, [[INetU]]. They've been very, very good, but the economic advantage of moving to "[[the cloud]]" is [/blog/moving-to-the-cloud just too compelling].
