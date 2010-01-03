@@ -1,6 +1,7 @@
 ---
 title: Objective-C licensing engine for sale
 tags:
+cache_breaker: 1
 ---
 Back in late 2007 I was approached to create a licensing engine (serial number scheme) for a Mac software bundle. In the end the bundle was never launched and the person who commissioned the work has disappeared off the map. I've been sitting on the source code since then.
 
