@@ -1,6 +1,7 @@
 ---
 title: On piracy
 tags: piracy
+cache_breaker: 1
 ---
 
 Obviously every developer, product, and market is different, *but...*
