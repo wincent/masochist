@@ -1,0 +1,4 @@
+---
+tags:
+---
+Stupidity: `RubyGem version error: rack(1.1.0 not ~> 1.0.1)`
