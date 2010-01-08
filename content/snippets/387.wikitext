@@ -1,0 +1,4 @@
+---
+tags: jquery
+---
+[[jQuery]] 1.4 will be [http://jquery14.com/ out soon]. First new goodness: a much-improved [http://jquery14.com/pre-release-1/new-jquery-api-site API reference].
