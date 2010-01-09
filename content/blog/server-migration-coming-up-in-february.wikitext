@@ -1,0 +1,11 @@
+---
+title: Server migration coming up in February
+tags: site aws
+---
+Back in November last year I [/blog/moving-to-the-cloud posted] about my decision to move from dedicated hosting to "[[the cloud]]".
+
+This post is just a little reminder that the move is coming up soon now, in February. I migrated the [[DNS]] [/blog/dns-changes back in November] and the outgoing mail ([[SMTP]]) was moved [/blog/outgoing-mail-changes at the same time]. More recently I've cancelled my contract with my old host, and am getting serious about preparing things at the [[AWS]] end of things.
+
+As with my last big move (from [[Rackspace]] to [[INetU]]) I'll be doing my best to keep downtime to a minimum (last time it was literally only a few minutes), so hopefully access to everything on the site should be next to uninterrupted.
+
+In the meantime, keep your eye on this space for updates.
