@@ -1,0 +1,8 @@
+---
+tags: cyrus
+---
+Cyrus is the standard [[POP]] and [[IMAP]] server on many [[Linux]] distributions.
+
+= See also =
+
+* Official site: http://cyrusimap.web.cmu.edu/
