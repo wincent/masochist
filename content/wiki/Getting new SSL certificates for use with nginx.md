@@ -1,5 +1,6 @@
 ---
 tags: nginx ssl
+cache_breaker: 1
 ---
 
 I just got two new SSL certificates for use with wincent.com and rails.wincent.com.
