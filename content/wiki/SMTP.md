@@ -1,5 +1,6 @@
 ---
 tags: smtp
+cache_breaker: 1
 ---
 
 [SMTP](/wiki/SMTP) or [Simple Mail Transport Protocol](/wiki/Simple_Mail_Transport_Protocol) is defined in [RFC 821](/wiki/RFC_821) and extended/refined in [RFC 2821](/wiki/RFC_2821).
