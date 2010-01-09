@@ -1,5 +1,6 @@
 ---
 tags: dns
+cache_breaker: 1
 ---
 [[DNS]], or the [[Domain Name System]], is infrastructure that enables clients on a network to translate human-readable symbolic addresses like "wincent.com" to their numeric [[IP]] addresses (209.235.192.161). DNS is often also used as a short hand to refer to an specific, individual [[Domain Name Server]] (that is "the DNS" rather than "the DNS server").
 
