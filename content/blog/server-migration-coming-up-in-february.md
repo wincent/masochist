@@ -1,6 +1,7 @@
 ---
 title: Server migration coming up in February
 tags: site aws
+cache_breaker: 1
 ---
 
 Back in November last year I [posted](/blog/moving-to-the-cloud) about my decision to move from dedicated hosting to "[the cloud](/wiki/the_cloud)".
