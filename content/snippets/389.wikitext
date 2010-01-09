@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 [http://redhat.com Red Hat] ("redhat.com will be back soon") and RHN ("Red Hat Network is currently unavailable for scheduled maintenance") down for maintenance?  I had no idea they did this kind of no-service maintenance. Or perhaps they are dealing with an attack.
