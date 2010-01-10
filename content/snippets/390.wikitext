@@ -1,0 +1,4 @@
+---
+tags: php
+---
+[http://www.steike.com/code/php-must-die/ PHP warts].
