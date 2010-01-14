@@ -1,5 +1,6 @@
 ---
 tags: subversion git
+cache_breaker: 1
 ---
 Elsewhere I've written about how to take code from a [[Subversion]] repository and migrate it (permanently) to [[Git]] repository (see "[[Migrating Subversion repositories to Git]]").
 
