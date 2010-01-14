@@ -1,5 +1,6 @@
 ---
 tags: apple adc
+cache_breaker: 1
 ---
 
 The [ADC](/wiki/ADC) or [Apple Developer Connection](/wiki/Apple_Developer_Connection) is [Apple](/wiki/Apple)'s developer network. There are a number of membership options available, including free "online" membership.
