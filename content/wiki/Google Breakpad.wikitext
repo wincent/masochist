@@ -1,0 +1,7 @@
+---
+tags: google
+---
+= See also =
+
+* Official site: http://code.google.com/p/google-breakpad/
+* Example of forking and tracking the Google Breakpad [[Subversion]] repository: "[[Forking and tracking upstream Subversion repositories with Git]]"
