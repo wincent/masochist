@@ -1,0 +1,11 @@
+---
+tags: doxygen graphviz snow.leopard
+---
+<pre lang="shell">$ curl -O http://www.graphviz.org/pub/graphviz/stable/macos/snowleopard/graphviz-2.26.0.pkg
+$ open graphviz-2.26.0.pkg</pre>
+
+= Note on using [[Graphviz]] with [[Doxygen]] =
+
+The package installs the `dot` [[command line]] tool into `/usr/local/bin/`, so if you are using [[Graphviz]] with [[Doxygen]] you may need to ensure that your `Doxyfile` contains an entry like:
+
+<pre>DOT_PATH  = /usr/local/bin</pre>
