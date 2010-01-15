@@ -1,5 +1,6 @@
 ---
 tags: doxygen
+cache_breaker: 1
 ---
 
 [Doxygen](/wiki/Doxygen) is the source code documentation generator that I use to produce the documentation for my [Objective-C](/wiki/Objective-C) products.
