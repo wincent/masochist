@@ -1,6 +1,7 @@
 ---
 title: Blocks for basic enumeration and array mutation
 tags: ruby objective.c
+cache_breaker: 1
 ---
 A fairly common pattern in many programming languages is iterating over a collection and mutating the elements in some way. Some languages provide built-in support for this kind of thing, while others need a simple in-place implementation such as an explicit `for` loop. In languages without built-in support, we could consider trying to extract this common pattern into a reusable unit in some way.
 
