@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://gojko.net/2010/01/25/designing-applications-for-cloud-deployment/ Tips for cloud deployed apps].
