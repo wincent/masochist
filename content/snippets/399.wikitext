@@ -1,0 +1,4 @@
+---
+tags: jquery
+---
+[[jQuery]] 1.4.1 [http://jquery14.com/day-12/jquery-141-released out already].
