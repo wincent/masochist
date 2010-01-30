@@ -1,6 +1,7 @@
 ---
 title: Highlighting overlength lines in Vim
 tags: vim
+cache_breaker: 1
 ---
 
 After defining a couple of colors in my [Vim](/wiki/Vim) color scheme:
