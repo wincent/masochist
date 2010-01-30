@@ -1,6 +1,7 @@
 ---
 title: Making Vim highlight "suspicious" characters
 tags: vim
+cache_breaker: 1
 ---
 There's one thing that I wanted [[Vim]] to do but couldn't get to work, and that was highlight "strange" or "suspicious" characters in my source files.
 
