@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+[[AWS]]: "[w]e are lowering AWS pricing for outbound data transfer by $0.02 across all of our services, in all usage tiers, and in all Regions."
