@@ -1,0 +1,4 @@
+---
+tags: rails rake css haml sass html
+---
+Currently creating a small static website using [[Haml]], [[Sass]], and [[Rake]]. Now that I am used to producing websites within the context of [[Rails]] I can't really stand the tedium and ugliness of working with raw [[HTML]] and [[CSS]] in other contexts.
