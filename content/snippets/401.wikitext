@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+[http://weblog.rubyonrails.org/2010/2/5/rails-3-0-beta-release Rails 3 beta out] ([http://www.engineyard.com/blog/2010/rails-3-beta-is-out-a-retrospective/ another take], and also the [http://guides.rails.info/3_0_release_notes.html release notes]). Seeing as I already have a very complicated server migration that has to be completed before 20 February I  won't be testing it myself yet though; will instead probably wait until [[release candidate]] stage.
