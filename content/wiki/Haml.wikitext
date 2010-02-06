@@ -1,5 +1,6 @@
 ---
 tags: haml
+cache_breaker: 1
 ---
 [[Haml]] or [[HTML Abstraction Markup Language]] is an alternative templating engine for [[Rails]] that aims to provide:
 
