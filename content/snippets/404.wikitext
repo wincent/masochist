@@ -1,0 +1,4 @@
+---
+tags: mongrel monit unicorn
+---
+Server move coming up in about a week; I'm going to see if I can switch from [[Mongrel]] to [[Unicorn]] as part of the migration. Wonder if that will put an end to those periodic restarts (dead mongrel processes needing to be restart by [[Monit]] every couple of days).
