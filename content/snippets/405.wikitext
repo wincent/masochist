@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[GitHub]] is probably the most popular [[Git]] hosting provider, despite its proprietary nature. For those people who prefer Mercurial over Git, there's [http://bitbucket.org/ Bitbucket]. Imitation is the sincerest form of flattery, they say, so Bitbucket must be a ''very'' flattering website; everything, right down to the font choice and CSS, is painstakingly replicated.
