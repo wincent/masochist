@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[RubyGems]] 1.3.6.pre.1 [http://rubyforge.org/pipermail/rubygems-developers/2010-February/005212.html out]. Period separators around the "pre" string brought you courtesy of RubyGem's bizarre version number sorting algorithm.
