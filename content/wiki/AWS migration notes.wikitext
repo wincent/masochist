@@ -1,5 +1,6 @@
 ---
 tags: aws
+cache_breaker: 1
 ---
 Notes made while migrating from [[INetU]] to [[Amazon Web Services]].
 
