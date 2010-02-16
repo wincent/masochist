@@ -1,0 +1,4 @@
+---
+tags:
+---
+`git-daemon` now up and running too, so public repositories can again be cloned.
