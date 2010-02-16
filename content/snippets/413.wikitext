@@ -1,0 +1,4 @@
+---
+tags:
+---
+Webalizer installed and configured; haven't tested it yet though.
