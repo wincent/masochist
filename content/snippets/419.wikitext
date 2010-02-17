@@ -1,0 +1,4 @@
+---
+tags:
+---
+Doing one last [[rsync]] from the old server to my local machine just for old time's sake.
