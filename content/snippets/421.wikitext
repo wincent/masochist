@@ -1,0 +1,4 @@
+---
+tags:
+---
+[/twitter/250 The reboot] didn't fix it; `mds` at 90% CPU, 237 MB real memory, 1.6 GB virtual memory.
