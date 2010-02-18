@@ -1,5 +1,6 @@
 ---
 tags: ruby red.hat updates
+cache_breaker: 1
 ---
 = Note =
 
