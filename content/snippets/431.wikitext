@@ -1,0 +1,4 @@
+---
+tags:
+---
+Fixed a bunch of broken absolute paths in nearly 5,000 PHP files with a handy one-liner: `find . -name '*.php' -exec perl -i -p -e 's/old_path/new_path/g' {} \;`
