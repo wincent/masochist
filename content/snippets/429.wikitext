@@ -1,0 +1,4 @@
+---
+tags:
+---
+Outgoing mail isn't set up on the new server just yet, so signing up or requesting a forgotten password reminder is currently a no-op.
