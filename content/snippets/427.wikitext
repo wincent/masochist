@@ -1,0 +1,4 @@
+---
+tags:
+---
+Installed flex, bison and monit.
