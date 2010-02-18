@@ -1,0 +1,4 @@
+---
+tags:
+---
+Have been working today on a new EC2 instance for running Rails apps. Going with [[Unicorn]], still using [[nginx]], and taking the opportunity to update to the latest version of [[Monit]].
