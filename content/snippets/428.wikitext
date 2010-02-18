@@ -1,0 +1,4 @@
+---
+tags:
+---
+Ok, the [[Rails]] app is now running on AWS. There is likely to be ''a lot'' of broken links right now because the old part of the site is still running on the old machine, and the wincent.com DNS has been updated to point at the new machine. I'm moving over the old part of the site now.
