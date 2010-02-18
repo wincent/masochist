@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 More one-line shenanigans &mdash; `find . \( -name '*.php' -or -name '*.html' \) -exec perl -i -p -e 's/http:\/\/wincent\.com\//http:\/\/www.wincent.com\//g' {} \;` &mdash; this one because actually having a different hostname (www.wincent.com rather than wincent.com) makes for a cleaner distinction between the old site and the new site, as they are now running on separate machines.
