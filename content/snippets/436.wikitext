@@ -1,0 +1,4 @@
+---
+tags:
+---
+Moving `/var/lib/imap` and `/var/spool/imap` onto separate EBS storage.
