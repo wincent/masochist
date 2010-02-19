@@ -1,0 +1,4 @@
+---
+tags:
+---
+Updated DNS to point secure.wincent.com at the new server; the change should bubble out within the next hour.
