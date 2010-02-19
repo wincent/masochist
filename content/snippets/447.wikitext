@@ -1,0 +1,4 @@
+---
+tags:
+---
+Fixed [/twitter/276 the issue]. [[Monit]] is now configured to correctly drop privileges before launching [[Unicorn]].
