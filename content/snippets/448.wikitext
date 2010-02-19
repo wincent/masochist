@@ -1,0 +1,4 @@
+---
+tags:
+---
+I only slept 90 minutes last night. That is probably why I had `worker_processes = 4` instead of `worker_processes 4` in my [[Unicorn]] config and couldn't figure out why only one worker process was being spawned.
