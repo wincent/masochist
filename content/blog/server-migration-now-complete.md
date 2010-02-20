@@ -1,6 +1,7 @@
 ---
 title: Server migration now complete
 tags: site
+cache_breaker: 1
 ---
 
 The server migration [started a few days ago](/blog/server-migration-now-underway) is now done.
