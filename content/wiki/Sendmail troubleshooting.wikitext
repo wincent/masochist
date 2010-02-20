@@ -1,0 +1,12 @@
+---
+tags: sendmail
+---
+= Testing where messages will be delivered for a given address =
+
+ sendmail -bv address@example.com
+
+= Address testing mode =
+
+ sendmail -bt
+
+To exit the console type CTRL-D.
