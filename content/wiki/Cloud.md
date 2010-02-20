@@ -1,0 +1,6 @@
+---
+redirect: [[cloud computing]]
+tags: 
+---
+
+
