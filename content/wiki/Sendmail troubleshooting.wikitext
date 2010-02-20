@@ -1,5 +1,6 @@
 ---
 tags: sendmail
+cache_breaker: 1
 ---
 = Testing where messages will be delivered for a given address =
 
