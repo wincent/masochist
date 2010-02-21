@@ -1,0 +1,4 @@
+---
+tags:
+---
+Have started work on my home-brewn monitoring solution. Gee, [[RRDTool]] has a ''lot'' of dependencies, and the dependencies have their own dependencies... turtles all the way down...
