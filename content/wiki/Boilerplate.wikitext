@@ -1,0 +1,8 @@
+---
+tags:
+---
+[[Boilerplate code]] is repetitive set-up and support code that must be in place before any "real" work can be performed.
+
+= Links =
+
+* [[Wikipedia]] page on [[boilerplate code]]: http://en.wikipedia.org/wiki/Boilerplate_(text)
