@@ -1,0 +1,4 @@
+---
+tags: network.monitoring
+---
+Trying to choose a network monitoring service; the number of choices is bewildering. [[Nagios]] is probably the most popular [[open source]] solution, but it seems massively overengineered and complex for my simple needs (of monitoring a handful of services on two hosts). [[Zabbix]] looks decent but also looks like overkill. I am thinking of writing a really simple script, using [[RRDTool]] for storage (nice example of how to do that [http://martybugs.net/linux/rrdtool/traffic.cgi here]). Could put a simple [[Sinatra]]-based front-end on it.
