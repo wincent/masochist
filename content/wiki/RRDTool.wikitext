@@ -1,5 +1,6 @@
 ---
 tags: network.monitoring rrdtool
+cache_breaker: 1
 ---
 = Links =
 
