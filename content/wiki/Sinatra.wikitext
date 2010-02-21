@@ -1,0 +1,8 @@
+---
+tags: ruby sinatra
+---
+[[Sinatra]] is a tiny framework for making [[Ruby]] web applications with minimal [[boilerplate]] code.
+
+= Links =
+
+* Official [[Sinatra]] site: http://www.sinatrarb.com/
