@@ -1,6 +1,7 @@
 ---
 title: Vigil: homebrewed network monitoring solution
 tags: vigil
+cache_breaker: 1
 ---
 With the [/blog/server-migration-now-complete server migration over] I turned my attention yesterday to [/twitter/282 finding a network monitoring solution]. Back when I was with a dedicated server from a managed hosting provider, I left the monitoring entirely in their hands. Now that I'm in [[the cloud]] it's up to me.
 
