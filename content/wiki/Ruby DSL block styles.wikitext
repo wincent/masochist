@@ -1,5 +1,6 @@
 ---
 tags: ruby
+cache_breaker: 1
 ---
 [http://blog.grayproductions.net/articles/dsl_block_styles This article] provides an excellent overview of the two main DSL "block styles" available in Ruby:
 
