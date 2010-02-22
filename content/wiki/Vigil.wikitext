@@ -1,0 +1,6 @@
+---
+tags: vigil
+---
+[[Vigil]] is a simple networking monitoring application that I am currently working on.
+
+It uses [[RRDTool]] to make pretty graphs, [[SQLite]] as a data store, and [[Sinatra]] for the web front end.
