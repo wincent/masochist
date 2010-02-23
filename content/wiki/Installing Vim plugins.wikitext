@@ -1,0 +1,12 @@
+---
+tags: vim
+---
+= Updating help=
+
+From inside [[Vim]]:
+
+ :helptags ~/.vim/doc
+
+Or from the [[command line]]:
+
+ vim -c "helptags ~/.vim/doc"
