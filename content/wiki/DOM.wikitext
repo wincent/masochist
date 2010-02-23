@@ -1,0 +1,6 @@
+---
+tags: dom
+---
+= See also =
+
+* [[Wikipedia]] article on the [[DOM]]: http://en.wikipedia.org/wiki/Document_Object_Model
