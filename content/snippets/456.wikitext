@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 Interesting: [http://github.com/mynyml/harmony Harmony] can be used for doing browser-less [[DOM]]/[[JavaScript]] testing from within [[Ruby]] code like, for example, [[RSpec]] ([http://www.rubyinside.com/harmony-javascript-and-a-dom-environment-in-ruby-3001.html via RubyInside]).
