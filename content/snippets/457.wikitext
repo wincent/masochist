@@ -1,0 +1,4 @@
+---
+tags: aws ebs
+---
+Thinking of using the [http://github.com/grempe/amazon-ec2 amazon-ec2 gem] for my [[EBS]] backup script so that I don't have to use the horridly bloated Java toolset provided by Amazon.
