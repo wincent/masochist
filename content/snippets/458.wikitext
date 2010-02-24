@@ -1,0 +1,4 @@
+---
+tags: ebs
+---
+Basic script for making [[EBS]] snapshots is done.
