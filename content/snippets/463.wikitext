@@ -1,0 +1,4 @@
+---
+tags:
+---
+Have some basic classes in place now: a `Scanner` for scanning directories, a `Matcher` for selecting files, and a `Base` class that just hooks the other two together in a convenient package.
