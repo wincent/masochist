@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Nice articles on writing [[Vim]] plugins [http://www.akbarhome.com/2007/6/6/ruby-on-vim in Ruby] and [http://items.sjbach.com/97/writing-a-vim-plugin other languages].
