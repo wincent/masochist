@@ -1,0 +1,4 @@
+---
+tags:
+---
+Benchmarking various ways of prefetching the names of all files in a directory tree (shelling out to `find`,  staying in [[Ruby]], and doing it in a [[C]] extension).
