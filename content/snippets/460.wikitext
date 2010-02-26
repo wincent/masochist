@@ -1,0 +1,4 @@
+---
+tags:
+---
+Weekend project: trying to make something for [[Vim]] that beats the [[TextMate]] Command-T functionality.
