@@ -1,0 +1,4 @@
+---
+tags: git vim
+---
+`:Gblame` alone is probably reason enough to use [/twitter/294 fugitive.vim].
