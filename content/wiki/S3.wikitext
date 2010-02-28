@@ -1,0 +1,10 @@
+---
+tags: aws s3
+---
+[[S3]] or the [[Amazon Simple Storage Service]] is part of Amazon's [[cloud]] computing offering, [[Amazon Web Services]].
+
+The abbreviation is the result of turning "[[Simple Storage Service]]" into an acronym, SSS, and then replacing the run of repeated "Ss" with "S3" (in other words "S three times").
+
+= See also =
+
+* Official Amazon [[S3]] page: http://aws.amazon.com/s3/
