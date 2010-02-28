@@ -1,5 +1,6 @@
 ---
 tags: aws ec2
+cache_breaker: 1
 ---
 
 [EC2](/wiki/EC2) or [Amazon Elastic Compute Cloud](/wiki/Amazon_Elastic_Compute_Cloud) is a part of [Amazon Web Services](/wiki/Amazon_Web_Services).
