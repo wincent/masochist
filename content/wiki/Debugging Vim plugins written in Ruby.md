@@ -1,5 +1,6 @@
 ---
 tags: ruby vim
+cache_breaker: 1
 ---
 
 If your plug-in raises a Ruby error from inside a `ruby` eval during initial execution you won't see the exception, nor can you `rescue` it and print it via `VIM::command "echo #{exception}"`.
