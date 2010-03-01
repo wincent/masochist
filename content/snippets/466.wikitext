@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Just [[Building MacVim from source | built MacVim from source]] for the first time. It contains some nice fixes for redrawing glitches under the new Core Text renderer. Looking forward to the next "snapshot" release, although this "master" branch build looks stable enough to stick to in the meantime.
