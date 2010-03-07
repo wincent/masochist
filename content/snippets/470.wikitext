@@ -1,0 +1,4 @@
+---
+tags:
+---
+Way back in January 2006 I [http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/my_favorite_pro.php posted] a photo of my favorite programming book. Yesterday this battered old manual was given a second life in the form of spiral binding. Now the pages are no longer in danger of falling out, and it can [https://wincent.com/system/images/spiral-bound-c-pocket-reference.jpg sit flat on the desktop] (3072x2304 JPEG, 3.5MB).
