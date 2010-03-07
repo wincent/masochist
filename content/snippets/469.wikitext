@@ -1,0 +1,4 @@
+---
+tags:
+---
+Given that I'm finding myself using [http://lab.arc90.com/experiments/readability/ "Readability"] to revise my own [/blog blog posts], I'm thinking about making some changes to the [[CSS]] around here (narrower column, larger font, possibly even a different font and different background color).
