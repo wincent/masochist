@@ -1,6 +1,7 @@
 ---
 title: Pricing of Amazon Web Services
 tags: site aws
+cache_breaker: 1
 ---
 
 A little over a couple of weeks have passed since the [completion of the server move](/blog/server-migration-now-complete) to [Amazon Web Services](/wiki/Amazon_Web_Services), and enough time has passed to make a reasonable assessment of the costs.
