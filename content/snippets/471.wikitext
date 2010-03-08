@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[http://www.reddit.com/r/programming/comments/bamim/ask_proggit_tips_on_how_to_write_a_mmorpg_web/ Hi Reddit], Any advice for how I could write a game like World of Warcraft while learning Perl or Python? Thanks in advance." Sigh...
