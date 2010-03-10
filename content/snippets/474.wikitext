@@ -1,0 +1,4 @@
+---
+tags: mongrel monit unicorn
+---
+[[Unicorn]] has been running for over 19 days without a restart now with no visible increase in memory footprint. A welcome change from [[Mongrel]], which tended to gradually swell and stop responding every few days, requiring constant vigilance with [[Monit]].
