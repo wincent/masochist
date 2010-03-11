@@ -1,0 +1,4 @@
+---
+tags: git vim
+---
+Great, a little bug I reported in [[fugitive.vim]] has been [http://github.com/tpope/vim-fugitive/commit/b812cb3bcdd80bd0b9cb491981e86815a5ea5870 fixed].
