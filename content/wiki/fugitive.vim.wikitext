@@ -1,0 +1,8 @@
+---
+tags: git vim
+---
+[[fugitive.vim]] is a [[VIM]] plug-in by Tim Pope for performing operations on [[Git]] repos without leaving the editor. 
+
+= Links =
+
+* Official repo: http://github.com/tpope/vim-fugitive
