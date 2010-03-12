@@ -1,0 +1,4 @@
+---
+tags:
+---
+Thanks to the wonders of [[XFS]] and [[ACLs]] I've been able to set up some very tight permissions to allow read-only cloning of private [[Git]] repositories for the purposes of deployment within Amazon's [[EC2]]. See "[[Git repository access control]]" for an overview.
