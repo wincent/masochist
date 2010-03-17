@@ -1,0 +1,4 @@
+---
+tags:
+---
+After 4 days and 10 hours since [/twitter/311 the last boot] the [[Unicorn]] master process and all its children are now using 240,200 KB of memory (up from 234,340 KB at boot). The increase looks small enough to me to be part of normal operation and not indicative of a leak.
