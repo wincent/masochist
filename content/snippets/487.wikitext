@@ -1,0 +1,4 @@
+---
+tags:
+---
+Someone is [http://pivotallabs.com/users/alex/blog/articles/1201-textmate-the-last-straw sick of TextMate]. My advice to anyone unhappy with their editor: try [[Vim]]. Unless your brain is wired in either the "Emacs" or the "Monolithic Java IDE" way, you'll never look back.
