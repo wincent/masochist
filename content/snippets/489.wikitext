@@ -1,0 +1,4 @@
+---
+tags:
+---
+Was wondering why the [http://www.lacie.com/us/products/product.htm?pid=11225 Lacie iamaKey] USB drive that I bought the other day was so darn slow. Turns out that the USB hub I have is USB 1.1 (12 Mbps) instead of the much faster USB 2.0 (480 Mbps). Funny that I never realized. One nice thing at least: whereas on the old iMac I could never plug USB drives into the port on the keyboard because it always complained that there was not enough power to drive the device, on the new iMac I can plug them in and the speed is 480 MBps.
