@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Rails]] is doing something braindead here; not sure why, but `sudo rake gems:unpack` unpacks and subsequent `rake gems:build` succeeds, but `rake gems:unpack` complains "You don't have write permissions into the /Library/Ruby/Gems/1.8 directory" and fails to actually unpack. So the question is, why on earth is it trying to write to `/Library/` when I'm asking it to write to `vendor`?
