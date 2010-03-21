@@ -1,5 +1,6 @@
 ---
 tags: rails mysql nginx memcached snow.leopard
+cache_breaker: 1
 ---
 
 **Note:** These build notes were made while working with a first-generation Intel-powered iMac, and as such are specific to a 32-bit architecture. For notes made building on a 64-bit platform see "[Setting up Ruby on Rails on Max OS X 10.6.2 Snow Leopard](/wiki/Setting_up_Ruby_on_Rails_on_Max_OS_X_10.6.2_Snow_Leopard)".
