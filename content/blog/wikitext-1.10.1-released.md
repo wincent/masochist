@@ -1,6 +1,7 @@
 ---
 title: Wikitext 1.10.1 released
 tags: releases wikitext
+cache_breaker: 1
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.10.1, is now available. This is a bugfix release which fixes [building on 64-bit Darwin machines](http://git.wincent.com/wikitext.git/commitdiff/1ed09cd482c3430dad339e90eb186a2c774bf876) and [corrects the CSS class applied to explicit "mailto" URIs](http://git.wincent.com/wikitext.git/commitdiff/90230bc1fa4f6396db49f0045ec4258f2efbbff4).
