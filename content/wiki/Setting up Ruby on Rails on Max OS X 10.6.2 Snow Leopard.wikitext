@@ -1,5 +1,6 @@
 ---
 tags: rails snow.leopard
+cache_breaker: 1
 ---
 '''Note:''' These build notes were made while working with a late-2009 (64-bit) iMac, and as such are specific to a 64-bit architecture. For notes made building on a 32-bit platform see "[[Setting up Ruby on Rails on Mac OS X 10.6 Snow Leopard]]".
 
