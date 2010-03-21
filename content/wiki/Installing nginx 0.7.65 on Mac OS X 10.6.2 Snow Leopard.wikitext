@@ -1,5 +1,6 @@
 ---
 tags: nginx snow.leopard pcre nginx.upload.module
+cache_breaker: 1
 ---
 '''Note:''' these notes show the use of [[wget]] and [[gpg]] which are not standard parts of [[Mac OS X]]. See "[[Installing wget 1.12 on Mac OS X 10.6.2 Snow Leopard]]" and "[[Installing GPG 1.4.10 on Mac OS X 10.6.2 Snow Leopard]]" for details.
 
