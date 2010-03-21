@@ -1,5 +1,6 @@
 ---
 tags: nginx.upload.module
+cache_breaker: 1
 ---
 
 # See also
