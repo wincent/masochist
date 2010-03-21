@@ -1,0 +1,15 @@
+---
+tags: snow.leopard wget
+---
+'''Note:''' [[GPG]] is not a standard part of [[Mac OS X]] so must be installed separately; see "[[Installing GPG 1.4.10 on Mac OS X 10.6.2 Snow Leopard]]" for more information.
+
+<pre lang="shell">$ curl -O http://ftp.gnu.org/gnu/wget/wget-1.12.tar.bz2
+$ curl -O http://ftp.gnu.org/gnu/wget/wget-1.12.tar.bz2.sig
+$ gpg --recv-keys --keyserver keys.gnupg.net 4A1B4EB1 # first time only
+$ gpg --verify wget-1.12.tar.bz2.sig wget-1.12.tar.bz2
+$ tar xjvf wget-1.12.tar.bz2
+$ cd wget-1.12
+$ ./configure
+$ make
+$ make check
+$ sudo make install</pre>
