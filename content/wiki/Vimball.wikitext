@@ -1,0 +1,6 @@
+---
+tags: vim vimball
+---
+[[Vimballs]] are files in the "[[vimball]]" format which are intended to make installing and managing [[Vim]] plugins easy.
+
+The format was created by Charles Campbell, and the plugin for working with vimballs is available from [http://www.vim.org/scripts/script.php?script_id=1502 here]. The plugin is included with all recent versions of [[Vim]].
