@@ -1,0 +1,4 @@
+---
+tags:
+---
+Installing [[MySQL]] on my development machine.
