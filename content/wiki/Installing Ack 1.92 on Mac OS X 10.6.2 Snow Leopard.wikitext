@@ -1,0 +1,4 @@
+---
+tags: ack snow.leopard
+---
+<pre lang="shell">$ sudo cpan App::Ack</pre>
