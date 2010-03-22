@@ -1,0 +1,4 @@
+---
+tags:
+---
+After 9 days 6 hours of uptime, the memory footprint of my [[Unicorn]] master process and all its children has grown to 245,708 KB (up from 240,200 KB a few days ago and 234,340 KB at boot). Quite happy with it.
