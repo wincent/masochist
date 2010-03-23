@@ -1,0 +1,4 @@
+---
+tags:
+---
+To embed QuickTime movies in web pages is to open up a [http://developer.apple.com/safari/library/documentation/QuickTime/Conceptual/QTScripting_HTML/QTScripting_HTML_Document/ScriptingHTML.html horrible can of worms].
