@@ -1,0 +1,4 @@
+---
+tags:
+---
+Capybara 0.3.6 [http://groups.google.com/group/ruby-capybara/browse_thread/thread/298b587866f363db is out].
