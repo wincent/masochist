@@ -1,0 +1,4 @@
+---
+tags:
+---
+A couple of tiny enhancements to my web-based [[Git]] repository browser at http://git.wincent.com/: each project's summary page now shows the `git clone` [[URL]] so that people won't make the mistake of trying to clone over [[HTTP]]; and the "owner" field is now a full-name-plus-email pair rather than just an email address.
