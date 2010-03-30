@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.tug.org/mactex/2009/ MacTeX distribution] size: 1.3G (yes, that's the sound of my jaw hitting the floor).
