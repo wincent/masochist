@@ -1,0 +1,4 @@
+---
+tags: emacs
+---
+[http://tim.theenchanter.com/2010/02/emacs-baggage.html Emacs has too much baggage].
