@@ -1,5 +1,6 @@
 ---
 tags: subversion
+cache_breaker: 1
 ---
 = Introduction =
 [[Subversion]] is an [[open source]] [[version control system]] developed by [http://www.tigris.org/ Tigris] and volunteers. 
