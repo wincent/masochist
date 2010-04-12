@@ -1,6 +1,7 @@
 ---
 title: Command-T 0.5.1 released
 tags: releases command.t
+cache_breaker: 1
 ---
 
 Early last month I posted about [a plug-in that I was working on](/blog/bringing-textmate-style-command-t-to-vim) for [VIM](/wiki/VIM). It's a powerful, [open source](/wiki/open_source) file-navigation plug-in inspired by the "Command-T" feature in [TextMate](/wiki/TextMate).
