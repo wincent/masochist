@@ -1,0 +1,13 @@
+---
+title: Command-T 0.5.1 released
+tags: releases command.t
+---
+Early last month I posted about [/blog/bringing-textmate-style-command-t-to-vim a plug-in that I was working on] for [[VIM]]. It's a powerful, [[open source]] file-navigation plug-in inspired by the "Command-T" feature in [[TextMate]].
+
+I released the first version of the plug-in soon after and since then I've been quietly uploading updates to the [http://www.vim.org/scripts/script.php?script_id=3025 plug-in's page] at www.vim.org, but I haven't announced them here as I wanted to get some decent screencasts up first.
+
+Well, the screencasts are now up on the [/products/command-t Command-T product page] so from here on I'll be posting release announcements here.
+
+The latest release is 0.5.1, made available yesterday. This is a maintenance release that fixes a compatibility regression with Ruby 1.9.1.
+
+So, if you're a [[VIM]] user check out the [/products/command-t screencasts] and give the plug-in a try. If you'd like to support development you can use [/products/command-t/donations the donations page] to make a donation, or consider submitting a patch for the project (the source code can be browsed [http://git.wincent.com/command-t.git here]).
