@@ -1,6 +1,7 @@
 ---
 title: Bringing TextMate-style "Command-T" to VIM
 tags: ruby textmate vim command.t
+cache_breaker: 1
 ---
 What is the best feature of [[TextMate]], the one that no other text editor comes close to matching?
 
