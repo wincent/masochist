@@ -1,6 +1,7 @@
 ---
 title: Synergy 4.0 upgrades
 tags: synergy
+cache_breaker: 1
 ---
 A new version of [[Synergy]], version 4.0, [/blog/synergy-4.0.1a-released was released on 1 September 2009] to celebrate the arrival of [[Snow Leopard]]. This article explains who qualifies for a free upgrades.
 
