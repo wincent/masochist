@@ -1,5 +1,6 @@
 ---
 tags: memcached
+cache_breaker: 1
 ---
 
 By default, [memcached](/wiki/memcached) listens on port 11211.
