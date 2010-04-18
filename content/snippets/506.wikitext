@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://gembundler.com/ Bundler] looks great, in that it offers a way out from the horrible pain of trying to keep Gem dependencies satisfied while "vendoring" gems for reliable deployments. Only today what should have been a simple operation &mdash; trying to update my vendor gems to the latest versions in readiness for Rails 3 &mdash; turned out to be another frustrating bashing-my-head-against-the-wall session. Only trouble is, `bundle install` is currently hanging indefinitely, so I can't use it.
