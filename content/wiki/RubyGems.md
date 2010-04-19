@@ -1,5 +1,6 @@
 ---
 tags: rubygems
+cache_breaker: 1
 ---
 
 # Links
