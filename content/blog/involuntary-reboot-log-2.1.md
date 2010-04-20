@@ -1,6 +1,7 @@
 ---
 title: Involuntary Reboot Log 2.1
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 
 Just had my first [involuntary reboot](/wiki/involuntary_reboot) with this machine. The log for the old machine had gotten [as high as 60](/blog/involuntary-reboot-log-60), so "resetting" the counter and will now count from 2.1, 2.2, 2.3 and so on.
