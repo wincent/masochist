@@ -1,6 +1,7 @@
 ---
 title: Involuntary Reboot Log 2.3
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 Same symptoms as the [/blog/involuntary-reboot-log-2.1 earlier] [/blog/involuntary-reboot-log-2.2 entries]; that makes 3 [[hard resets]] in 24 hours, so looks like I have a fairly serious problem.
 
