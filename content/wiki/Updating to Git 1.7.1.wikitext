@@ -1,0 +1,19 @@
+---
+tags: git snow.leopard
+---
+= Local update ([[Mac OS X]] 10.6.3 [[Snow Leopard]]) =
+
+Notes made while updating from [[Git 1.7.0.4]] to [[Git 1.7.1]] (skipped over [[Git 1.7.0.5]]) from within a local clone of the official upstream [[Git]] repository on [[Mac OS X]] 10.6.3 [[Snow Leopard]]:
+
+<pre lang="shell">$ git fetch
+$ git tag -v v1.7.1
+$ git co v1.7.1                                                       # "co" is an alias for "checkout"
+$ make clean
+$ make prefix=/usr/local test
+$ sudo make prefix=/usr/local install quick-install-man
+$ diff -u ~/.git-completion.sh contrib/completion/git-completion.bash # any changes to Bash completion?
+$ cp contrib/completion/git-completion.bash ~/.git-completion.sh      # yes, install it</pre>
+
+= Remote update (Fedora Linux) =
+
+Not yet performed. See ticket #1489.
