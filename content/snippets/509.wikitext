@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Anyone know of an online resource to read the [[Rails]] 3 [[API]] documentation? The [http://api.rubyonrails.org official site] is still showing the 2.3-series docs, and all the other sites which publish the API docs that I know of seem to be doing the same thing.
