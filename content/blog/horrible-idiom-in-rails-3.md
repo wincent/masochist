@@ -1,6 +1,7 @@
 ---
 title: Horrible idiom in Rails 3
 tags: rails
+cache_breaker: 1
 ---
 
 Not sure whether this is something that's only started happening with Rails 3 or whether the codebase was already pockmarked with this horrible little idiom, but lately I've noticed a lot of examples of this pattern in Rails:
