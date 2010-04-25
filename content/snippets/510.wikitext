@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Ok looks like [http://railsapi.com/doc/rails-v3.0.0.beta.3/ I found] what I [/twitter/339 was looking for].
