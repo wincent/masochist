@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+A new milestone since [/blog/getting-ready-for-rails-3 I started making small moves] towards [[Rails]] 3 a couple of weeks ago: the application server now boots!
