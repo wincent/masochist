@@ -1,0 +1,4 @@
+---
+tags: rails mysql
+---
+Having no luck so far getting [[MySQL]] support working in [[Rails]] 3. `uninitialized constant Mysql::Error` in fresh demo app, and `uninitialized constant MysqlCompat::MysqlRes` in existing app updated to Rails 3.
