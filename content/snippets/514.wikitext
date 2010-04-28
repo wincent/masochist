@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[http://ffmpeg.org/%7Emru/hardwarebug.org/2010/03/03/ogg-objections/index.html Ogg sucks]". "[http://people.xiph.org/~xiphmont/lj-pseudocut/o-response-1.html#1 No it doesn't!]". Both sides of the argument too long and boring to read, especially the rebuttal.
