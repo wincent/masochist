@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Another "milestone" in my experimental update to [[Rails]] 3: the front page of the site (actually, the blog index) now displays rather than bailing with an exception, albeit with some serious breakage.
