@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+The new routing DSL in Rails 3 actually is a pretty awesome improvement. It's not just a cosmetic thing (the more pervasive use of blocks replaces a lot of punctuation and clutter); it's also allowed me to remove some kludgey repetition and hacks that I previously had to employ to work around limitations in the old routing code.
