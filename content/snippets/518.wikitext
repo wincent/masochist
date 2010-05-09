@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://carsonified.com/blog/dev/steve-huffman-on-lessons-learned-at-reddit/ Scaling lessons from Reddit]. I can't really imagine ever having to deal with this kind of scaling issue, but I certainly enjoy reading about it.
