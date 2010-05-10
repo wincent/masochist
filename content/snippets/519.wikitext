@@ -1,0 +1,4 @@
+---
+tags:
+---
+So [http://nex-3.com/posts/101-haml-sass-3-released Haml/Sass 3 is out], and funnily enough, I couldn't really care less about the star of the show, SCSS; the thing I'm most happy about is the tweak which allows multi-line Ruby in Haml, provided the lines are broken after a comma. This will definitely help the readability of some of my view templates.
