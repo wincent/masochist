@@ -1,0 +1,45 @@
+---
+tags: aws ebs
+---
+= Example: deleting all or some snapshots from a prior month =
+
+== Using Amazon's Java-based [[command line]] tools ==
+
+These tools have a tremendously long startup time and slam the CPU for as long as you're running them; for example, deleting a couple months' of snapshots (about 4 per day, so let's say 240 snapshots will peg your CPUs at 100% for half an hour or more). For an alternative, see further down for the procedure with the lightweight [[aws]] tool.
+
+=== Get a date-sorted overview of all snapshots ===
+
+<pre lang="shell">$ ec2-describe-snapshots | sort -k 5</pre>
+
+=== Delete all snapshots from the specified prior month ===
+
+<pre lang="shell">$ # list all snapshots   | sort by date | target month  | get snapshot ID  | delete snapshots 1 at a time 
+$ ec2-describe-snapshots | sort -k 5    | grep 2010-03- | awk '{print $2}' | xargs -n 1 -t ec2-delete-snapshot</pre>
+
+=== Delete all snapshots for the month but keep the first four ===
+
+We can add `sed 1,4d` to the pipeline (in this example I keep the first four because I have 2 instances and 2 volumes on each instance):
+
+<pre lang="shell">$ ec2-describe-snapshots | sort -k 5 | grep 2010-03- | sed 1,4d | awk '{print $2}' | xargs -n 1 -t ec2-delete-snapshot</pre>
+
+=== Delete all snapshots except from the current month ===
+
+Here we exclude 2011-07 in this example:
+
+<pre lang="shell">$ ec2-describe-snapshots | grep -v 2011-07- | awk '{print $2}' | xargs -n 1 -t ec2-delete-snapshot</pre>
+
+=== Get another overview of all remaining snapshots ===
+
+<pre lang="shell">$ ec2-describe-snapshots | sort -k 5</pre>
+
+== Using the [[aws]] script ==
+
+Using the [[aws]] script is literally an order of magnitude faster than using the Java command line tools. Not only is the rate at which snapshots can be deleted higher, the CPU usage during the run is less than half, making the machine much more pleasant to use while the process is going on.
+
+=== Overview ===
+
+<pre lang="shell">$ aws describe-snapshots</pre>
+
+=== Delete all snapshots except from the current month ===
+
+<pre lang="shell">$ aws describe-snapshots | grep -v 2011-09- | grep snap- | awk '{print $2}' | xargs -n 1 -t aws delete-snapshot</pre>
