@@ -1,0 +1,4 @@
+---
+tags:
+---
+Good to see [http://www.engadget.com/2010/06/07/steve-jobs-live-from-wwdc-2010/ Steve Jobs back on stage again], although I'm disappointed that the entire keynote was about iPad/iPhone (was hoping for some Xcode nerd news).
