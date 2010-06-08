@@ -1,0 +1,4 @@
+---
+tags:
+---
+Apple's Chris Lattner wins a well-deserved [http://www.acm.org/press-room/news-releases/2010/sigplan-software-award/view award from SIGPLAN] for his work on LLVM.
