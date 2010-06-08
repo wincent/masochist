@@ -1,0 +1,4 @@
+---
+tags: rrdtool
+---
+Been collecting data with [[rrdtool]] for a while now, but today I actually produced my first graphs with the data. I feel like I've progressed to a new level of "nerdom".
