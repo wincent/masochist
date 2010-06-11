@@ -1,0 +1,4 @@
+---
+tags:
+---
+Yep, [/twitter/362 tried it] and it works.
