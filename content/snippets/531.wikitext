@@ -1,0 +1,4 @@
+---
+tags: unicorn
+---
+I didn't know that Twitter had switched to [[Unicorn]] but apparently [http://engineering.twitter.com/2010/03/unicorn-power.html it has]. Unicorn is a great project and it's great to see it pick up such a high-profile user. (I was impressed enough with Unicorn to dump my long-running [[Mongrel]]-based set-up when I moved to the [[cloud]] back in February.)
