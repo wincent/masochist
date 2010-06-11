@@ -1,5 +1,6 @@
 ---
 tags: mongrel
+cache_breaker: 1
 ---
 [[Mongrel]] is a web application server for [[Ruby]] applications. Although it was very popular in the early days of [[Rails]] hosting it effectively stagnated and was dropped by the original maintainer; it has since been somewhat eclipsed by alternatives like [[Unicorn]] (itself a derivative of Mongrel) and Passenger.
 
