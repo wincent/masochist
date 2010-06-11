@@ -1,0 +1,4 @@
+---
+tags: haml
+---
+Haven't tried it out yet, but it [http://github.com/tpope/vim-haml/commit/567c6d8f4708231b154330a302038a4a39d262e8 looks like] good old [http://github.com/tpope Tim Pope] has already addressed the problem with Haml syntax highlighting that I [https://wincent.com/twitter/360 mentioned earlier today].
