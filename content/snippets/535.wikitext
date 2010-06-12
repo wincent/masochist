@@ -1,0 +1,4 @@
+---
+tags:
+---
+So [http://github.com/geemus/fog Fog] is another library for interacting with [[AWS]] and other [[cloud]] services. I'm actually quite happy with the existing tools, but a little bit of competition never hurt.
