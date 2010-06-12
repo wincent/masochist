@@ -1,0 +1,4 @@
+---
+tags:
+---
+Getting the [[Wikitext]] extension ready for Rails 3 now that [http://railsdispatch.com/posts/how-rails-3-enables-more-choices-part-1 this specification] of changes to the plug-in/gem architecture is now out.
