@@ -1,0 +1,12 @@
+---
+tags: yard
+---
+[[YARD]] is an alternative [[Ruby]] code documentation system which looks likely to replace the incumbent [[RDoc]].
+
+= Official site =
+
+* http://yardoc.org/
+
+= Example site using YARD-generated documentation =
+
+* http://wikitext.rubyforge.org/
