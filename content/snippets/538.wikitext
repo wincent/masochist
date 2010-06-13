@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 [http://mongrel2.org/index mongrel2] is apparently a new project by Zed Shaw. Looking at the description of it, can't yet decide whether it's a reinvention of the wheel, a "solution" to a non-existent problem, or simply vaporware. Wouldn't recommend experimenting with it anyway, given Zed's history. Sticking with [[Unicorn]].
