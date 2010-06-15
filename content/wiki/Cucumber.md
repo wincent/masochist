@@ -1,5 +1,6 @@
 ---
 tags: testing cucumber
+cache_breaker: 1
 ---
 
 [Cucumber](/wiki/Cucumber) is an acceptance testing framework written in [Ruby](/wiki/Ruby).
