@@ -1,0 +1,4 @@
+---
+tags: cucumber capybara steak
+---
+Just stumbled across [http://gist.github.com/397977 the one missing piece] of the puzzle that enables me to switch from [[Cucumber]] to [[Steak]]: the ability to elegantly switch [[Capybara]] drivers on a per-scenario basis.
