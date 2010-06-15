@@ -1,5 +1,6 @@
 ---
 tags: ruby irb
+cache_breaker: 1
 ---
 
 [IRB](/wiki/IRB) is short for [Interactive Ruby](/wiki/Interactive_Ruby).
