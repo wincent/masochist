@@ -1,6 +1,7 @@
 ---
 title: Rails 3: worth the upgrade?
 tags: rails
+cache_breaker: 1
 ---
 
 It's a trick question, really, as you don't actually have any choice.
