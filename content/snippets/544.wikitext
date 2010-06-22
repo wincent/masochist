@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://groups.google.com/group/ruby-capybara/browse_thread/thread/f913355c1867f8f Got bitten] by a "bug" in Capybara which is actually a "bug" in Culerity which is actually a "bug" in Celerity which is actually a (real) bug in HtmlUnit (already fixed, fortunately). Now I just need the fix to [http://github.com/jarib/celerity/issues/issue/19 bubble up to where it's needed].
