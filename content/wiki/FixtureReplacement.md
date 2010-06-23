@@ -1,5 +1,6 @@
 ---
 tags: rspec rails object.mother fixture.replacement
+cache_breaker: 1
 ---
 
 [FixtureReplacement](/wiki/FixtureReplacement) is one of many [fixture replacements](/wiki/fixture_replacements) available for creating test objects in [Ruby](/wiki/Ruby).
