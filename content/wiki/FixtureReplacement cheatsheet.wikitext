@@ -1,5 +1,6 @@
 ---
 tags: rspec rails fixture.replacement
+cache_breaker: 1
 ---
 '''Note:''' This cheatsheet applies to the the original 1.x series of FixtureReplacement. Version 2.0, which I've never bothered updating to ("if it ain't broke..."), uses a completely different syntax (see http://replacefixtures.rubyforge.org/ for full details). 
 
