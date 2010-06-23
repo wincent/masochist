@@ -1,0 +1,4 @@
+---
+tags: wikitext
+---
+Just regenerated and published [http://wikitext.rubyforge.org/ the documentation] for the [[Wikitext]] gem using [[YARD]]. It is hopefully prettier and more navigable than the [http://wikitext.rubyforge.org/classes/Wikitext/Parser.html old version] of the docs, generated using [[RDoc]].
