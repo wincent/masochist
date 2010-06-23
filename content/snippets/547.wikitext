@@ -1,0 +1,4 @@
+---
+tags: factory.girl
+---
+Incredibly impressed with [[Factory Girl]]; it's dispatching even the thorniest edge cases with incredibly simple, readable set-up.
