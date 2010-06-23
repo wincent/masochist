@@ -1,5 +1,6 @@
 ---
 tags: yard
+cache_breaker: 1
 ---
 [[YARD]] is an alternative [[Ruby]] code documentation system which looks likely to replace the incumbent [[RDoc]].
 
