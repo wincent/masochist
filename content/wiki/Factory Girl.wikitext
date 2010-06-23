@@ -1,0 +1,10 @@
+---
+tags: factory.girl object.mother
+---
+[[Factory Girl]] is an "[[object mother]]" framework written in [[Ruby]]. It plays nicely with [[RSpec]] and [[Rails]].
+
+I've been a Factory Girl user since mid-2010, after a long period using [[FixtureReplacement]]. I switched principally because it doesn't pollute the global namespace with `create_model` methods, and it handles edge cases and associations very elegantly and powerfully.
+
+= Source code repo =
+
+* http://github.com/thoughtbot/factory_girl
