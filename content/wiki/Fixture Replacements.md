@@ -1,0 +1,6 @@
+---
+redirect: [[Object mother]]
+tags: 
+---
+
+
