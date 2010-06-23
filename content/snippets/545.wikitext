@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Favorite Vim command of the moment: `zt` (mnemonic "top"), `zb` (mnemonic "bottom"), and `zz` (mnemonic "er, the other one"). These keep the cursor on the current line, but scroll the document so that said line is at the top, bottom, or middle of the viewport.
