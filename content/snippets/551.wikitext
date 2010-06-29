@@ -1,0 +1,4 @@
+---
+tags: bundler
+---
+My many hours of bug-hunting culminate in [http://github.com/carlhuda/bundler/issues/issue/407 this Bundler ticket].
