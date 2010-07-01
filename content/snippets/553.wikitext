@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Coming soon ([[Git 1.7.2.rc1]]): "git cherry-pick" can now pick a range of commits, and "git checkout --orphan newbranch" can be used to create new, parentless branches that start from a root commit.
