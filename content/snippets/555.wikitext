@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+From the "[http://dailyvim.tumblr.com/ Daily Vim Devotional]", today: [http://dailyvim.tumblr.com/post/759267451/x backspace] delete in Normal mode using `X`.
