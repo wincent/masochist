@@ -1,0 +1,4 @@
+---
+tags: memprof
+---
+[http://github.com/ice799/memprof memprof], a [[Ruby]] memory profiling tool that might be worth checking out.
