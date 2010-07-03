@@ -1,0 +1,6 @@
+---
+tags: ruby
+---
+Want to know when it's really "safe" to switch production projects over to [[Ruby]] 1.9? Look at [http://survey.hamptoncatlin.com/survey/stats Hampton's Ruby Survey] and wait until 1.9 usage hits over 50% (it's currently at about 25% and growing fast; I think it will hit 50% in the 2011 edition of the survey).
+
+The survey population is probably unrealistically biased towards early adopters, so a figure of 50% probably equates to something like 20% or less of actual, global, real-world usage. It's still not a very large number, but by the time we get that far 1.9 will have been out for literally years and most major projects will have done at least a modicum of compatibility work, so it will be safe to move.
