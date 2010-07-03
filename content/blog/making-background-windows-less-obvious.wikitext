@@ -1,6 +1,7 @@
 ---
 title: Making background windows less obvious
 tags: vim
+cache_breaker: 1
 ---
 Lately I've been spending a lot of time with my entire screen covered by [[MacVim]] and [[Terminal]] windows. As you can see, I use the same "legal pad yellow" background color for both because I find it much easier on my eyes.
 
