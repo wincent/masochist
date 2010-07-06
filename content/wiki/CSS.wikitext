@@ -1,5 +1,6 @@
 ---
 tags: css
+cache_breaker: 1
 ---
 [[CSS]] is an acronym for [[Cascading Style Sheets]].
 
