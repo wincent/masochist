@@ -1,0 +1,4 @@
+---
+tags:
+---
+The [http://vimeo.com/10789674 pleasure of Java development].
