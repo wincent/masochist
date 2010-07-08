@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+I should really get some practice at using [http://www.linux.com/archive/feature/114138 the folding feature] in [[Vim]].
