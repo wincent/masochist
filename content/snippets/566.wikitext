@@ -1,0 +1,4 @@
+---
+tags: rr
+---
+Pleasantly surprised to see that the current HEAD of the [[RR]] master branch, even though it's several months since the last commit, fixes two issues that were affecting me (inability to `proxy` private methods, and inability to `raise` from inside `ActionMailer` doubles). Now there's only [http://github.com/btakita/rr/issues/40 one issue left] on my list.
