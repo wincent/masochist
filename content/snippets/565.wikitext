@@ -1,0 +1,4 @@
+---
+tags: bundler
+---
+So a recent beta of Bundler now stores bin stubs in `./bin`, right next to the `Gemfile`. After working with it for a few days I like using these stubs (ie. as `bin/rspec`, `bin/rails`, `bin/rake` etc) much more than having to do `bundle exec` (even if aliased as `b`), or otherwise messing with my `PATH`.
