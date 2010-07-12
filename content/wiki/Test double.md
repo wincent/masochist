@@ -1,5 +1,6 @@
 ---
 tags: testing
+cache_breaker: 1
 ---
 
 A [test double](/wiki/test_double) is an object which stands in for a real object during automated testing.
