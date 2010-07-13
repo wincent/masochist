@@ -1,5 +1,6 @@
 ---
 tags: factory.girl object.mother
+cache_breaker: 1
 ---
 
 [Factory Girl](/wiki/Factory_Girl) is an "[object mother](/wiki/object_mother)" framework written in [Ruby](/wiki/Ruby). It plays nicely with [RSpec](/wiki/RSpec) and [Rails](/wiki/Rails).
