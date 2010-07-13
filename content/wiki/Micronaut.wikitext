@@ -1,0 +1,8 @@
+---
+tags: rspec micronaut
+---
+[[Micronaut]] is [[Ruby]] testing framework written as a lightweight, [[API]]-compatible alternative to [[RSpec]]. The project was compelling enough that it was used as a basis for [[RSpec 2]] (effectively a ground-up rewrite of the original [[RSpec]]).
+
+= Official site =
+
+* http://github.com/spicycode/micronaut
