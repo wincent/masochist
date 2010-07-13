@@ -1,5 +1,6 @@
 ---
 tags: rspec rails
+cache_breaker: 1
 ---
 '''Note:''' This article was originally written in early 2007; for a more up-to-date overview of Rails view testing, see [[Rails view testing cheatsheet]].
 
