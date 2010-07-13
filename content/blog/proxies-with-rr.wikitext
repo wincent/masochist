@@ -1,6 +1,7 @@
 ---
 title: Proxies with RR
 tags: rspec rr
+cache_breaker: 1
 ---
 Back in November I wrote about how I was [/blog/thinking-about-switching-to-rr thinking of switching to RR] because it has both proxies and test spies.
 
