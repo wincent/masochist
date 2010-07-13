@@ -1,5 +1,6 @@
 ---
 tags: rspec
+cache_breaker: 1
 ---
 [[RSpec]] is a [[Behaviour-Driven Development]] framework for [[Ruby]].
 
