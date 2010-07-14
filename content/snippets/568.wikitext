@@ -1,4 +1,5 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 Favorite [[Vim]] commands of the day: `*` and `#` (find, and highlight, all occurrences of the word currently under the cursor). `*` searches forwards, `#` backwards.
