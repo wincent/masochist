@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.ericsink.com/entries/veracity_early.html Yet another DVCS]? I really don't know why anyone would bother. (Funnily enough, I've read several articles on that weblog criticizing Git from a perspective of misunderstanding.)
