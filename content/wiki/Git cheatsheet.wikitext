@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 = Retrieving a file from a specific revision =
 
