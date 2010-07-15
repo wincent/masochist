@@ -1,4 +1,5 @@
 ---
 tags: aws ec2
+cache_breaker: 1
 ---
 Amazon [http://developer.amazonwebservices.com/connect/entry.jspa?externalID=3979&categoryID=42 adds support] for running using "User Managed Kernels" on [[EC2]] ([http://developer.amazonwebservices.com/connect/entry.jspa?categoryID=174&externalID=3967 more details here]). I have no need for this right now, but can see how it might be useful in the future.
