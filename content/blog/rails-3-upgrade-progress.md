@@ -1,6 +1,7 @@
 ---
 title: Rails 3 upgrade progress
 tags: rails
+cache_breaker: 1
 ---
 
 In my post from a few weeks back, "[Rails 3: worth the upgrade?](/blog/rails-3-worth-the-upgrade)", I basically argued that you don't really have a choice but to upgrade, because [Rails](/wiki/Rails) development culture is such that all eyes are on the master branch and "legacy" releases aren't really maintained in any serious way. I noted, however, that on the bright side there are *a lot* of significant improvements that will positively impact your development. You should upgrade.
