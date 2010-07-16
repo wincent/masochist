@@ -1,0 +1,4 @@
+---
+tags: vim snipmate xptemplate
+---
+[http://www.vim.org/scripts/script.php?script_id=2611 xptemplate] froze up on me last night; had to quit [[Vim]] in order to get my buffer editable again. So going to try [http://www.vim.org/scripts/script.php?script_id=2540 snipMate].
