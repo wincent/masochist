@@ -1,5 +1,6 @@
 ---
 tags: rr
+cache_breaker: 1
 ---
 
 [RR](/wiki/RR) is one of several [test double](/wiki/test_double) frameworks available for [Ruby](/wiki/Ruby). I switched to it in mid-2010 after using the [RSpec](/wiki/RSpec) mocking library for several years.
