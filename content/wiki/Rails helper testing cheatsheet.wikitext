@@ -1,0 +1,37 @@
+---
+tags: rspec rails testing rr cheatsheet helpers
+---
+= Tools =
+
+* [[RSpec 2]] (spec framework)
+* [[RR]] ([[mocking]] library)
+* [[Factory Girl]] ([[object mother]] library)
+* [[Rails 3]] (application framework)
+
+= Mocking and stubbing =
+
+Although helper methods are mixed into the example group itself:
+
+<pre lang="ruby">describe FooHelper do
+  describe '#funky_method' do
+    it 'returns true' do
+      funky_method.should be_true
+    end
+  end
+end</pre>
+
+If you need to set up mock expectations you will need to use the explicit `helper` instance that is available inside example groups:
+
+<pre lang="ruby">it 'delegates to #foo_method' do
+  mock(helper).foo_method
+  helper.funky_method
+end</pre>
+
+= Related =
+
+* [[Rails model testing cheatsheet]]
+* [[Rails view testing cheatsheet]]
+* [[Rails controller testing cheatsheet]]
+* [[Rails mailer testing cheatsheet]]
+* [[RR cheatsheet]]
+* [[Steak cheatsheet]]
