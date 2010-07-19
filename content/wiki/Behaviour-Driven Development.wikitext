@@ -1,5 +1,6 @@
 ---
 tags: development testing
+cache_breaker: 1
 ---
 [[Behaviour-Driven Development]] or [[BDD]] is a reformulation of [[Test-Driven Development]] expressed in terms of desired behaviours. It is not fundamentally different from existing [[TDD]] best practices, but the vocabulary employed is intended to gently guide people towards those best practices by making it easy to think about things the "right way".
 
