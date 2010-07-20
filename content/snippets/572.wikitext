@@ -1,0 +1,4 @@
+---
+tags: vim snipmate xptemplate
+---
+[/twitter/400 Switching to snipMate] seems to have been a winning move. After using it for a few days, it feels very simple and solid compared to xptemplate.
