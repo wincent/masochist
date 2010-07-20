@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+866 commits since last deploy. The entire history has 2711 commits, so this is going to be a pretty significant one. Blame [[Rails 3]].
