@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 From the ''Great Commit Messages of Our Time'' series, today we have this pearl: `Don't refer to Mr Krinkle directly`.
