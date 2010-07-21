@@ -1,0 +1,4 @@
+---
+tags:
+---
+Very surprised at [http://gist.github.com/484464 the size of some of the gems] in my `vendor/cache` directory.
