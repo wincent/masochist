@@ -1,0 +1,4 @@
+---
+tags:
+---
+I had always wondered what happened to the rather enjoyable Rails Envy podcast. Now I belatedly discover the explanation from the hosts, [http://blog.envylabs.com/2010/04/rails-envy/ Gregg] and [http://jasonseifer.com/2010/04/08/rails-envy Jason].
