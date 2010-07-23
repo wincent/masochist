@@ -1,5 +1,6 @@
 ---
 tags: mercurial
+cache_breaker: 1
 ---
 
 [Mercurial](/wiki/Mercurial) is a [distributed version control system](/wiki/distributed_version_control_system) written in [Python](/wiki/Python). Personally, I prefer [Git](/wiki/Git).
