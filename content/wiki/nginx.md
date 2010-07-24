@@ -1,5 +1,6 @@
 ---
 tags: nginx
+cache_breaker: 1
 ---
 
 -   Official site: <http://nginx.net/>
