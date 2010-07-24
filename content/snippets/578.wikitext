@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+New [[MacVim]] 7.3 beta [http://groups.google.com/group/vim_mac/browse_thread/thread/17424a79bffb99c0 is out].
