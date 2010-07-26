@@ -1,5 +1,6 @@
 ---
 tags: nginx updates fedora
+cache_breaker: 1
 ---
 
 ```shell
