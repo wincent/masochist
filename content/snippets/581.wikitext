@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Lots of [http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/622328f03ae1f3f5 angry people] that Rails 3 is taking so long. Personally, I'm in no hurry. I see lots of work happening, and bugs getting squished. It'll be released when it's ready, and that's the right time.
