@@ -1,5 +1,6 @@
 ---
 tags: nginx updates fedora
+cache_breaker: 1
 ---
 <pre lang="shell">$ wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.12.tar.gz \
        http://nginx.org/download/nginx-0.7.67.tar.gz \
