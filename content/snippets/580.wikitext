@@ -1,0 +1,4 @@
+---
+tags: github
+---
+GitHub is [http://techcrunch.com/2010/07/24/github-one-million/ now hosting more than a million repos]. About 60% of these are actual project repos (I wonder how many are mere forks or mirrors, though) and the rest are non-project repos (eg. things like Gists, which each have a repo backing them).
