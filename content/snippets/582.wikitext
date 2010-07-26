@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Looks like Rails 3 RC is [http://github.com/rails/rails/commit/856fc4bbc379b330d11702adbc2b26850dca6206 about to be cut].
