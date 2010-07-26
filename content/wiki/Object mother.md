@@ -1,5 +1,6 @@
 ---
 tags: object.mother
+cache_breaker: 1
 ---
 
 An "[object mother](/wiki/object_mother)" is a test fixture replacement.
