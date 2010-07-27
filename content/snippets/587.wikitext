@@ -1,0 +1,4 @@
+---
+tags: bundler
+---
+I wish Bundler were more verbose. It hangs literally all the time, and has always hung ever since I started using it, and I am never sure if it's because it's waiting on a network resource which is overloaded, or because of a bug in Bundler.
