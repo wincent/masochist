@@ -1,0 +1,22 @@
+---
+tags: rspec
+---
+= Expecting an exception =
+
+<pre lang="ruby">expect do
+  ...
+end.to raise_error</pre>
+
+Arguably, this reads more nicely than the alternative:
+
+<pre lang="ruby">lambda {
+  ...
+}.should raise_error</pre>
+
+= See also =
+
+* [[Rails model testing cheatsheet]]
+* [[Rails view testing cheatsheet]]
+* [[Rails controller testing cheatsheet]]
+* [[Rails helper testing cheatsheet]]
+* [[Rails mailer testing cheatsheet]]
