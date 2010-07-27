@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Trying out the Rails 3 RC now. Quite a bit of breakage in the move from beta 4 &mdash; `3415 examples, 218 failures, 46 pending`. Almost all of it due to the removal of the `returning` method, which [[Haml]] uses all over the place.
