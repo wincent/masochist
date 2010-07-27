@@ -1,5 +1,6 @@
 ---
 tags: snow.leopard postgresql
+cache_breaker: 1
 ---
 I found a bug in Rails 3.0.0.rc, specifically in Action Dispatch, and in order to submit a failing test case I need to install PostgreSQL, unfortunately. (The tests won't run without doing `bundle install` first, and `bundle install` wants the "pg" gem to be on the system, which in turn depends on a working PostgreSQL install and headers.)
 
