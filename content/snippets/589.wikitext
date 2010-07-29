@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+I found [http://exviva.posterous.com/upgrading-a-rails-3-beta-4-application-to-rai this post] to be helpful in tracking down where a couple of new deprecation warnings that had sprung up moving to [[Rails]] 3.0.0.rc (from 3.0.0.beta4). I wonder how long it would have taken me to realize that I had to drop the `map` block parameter in my routes file...
