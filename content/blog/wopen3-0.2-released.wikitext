@@ -1,6 +1,7 @@
 ---
 title: Wopen3 0.2 released
 tags: releases wopen3
+cache_breaker: 1
 ---
 Version 0.2 of the [[Wopen3]] gem was just released. Wopen3 is a replacement for Open3 in the standard library. Unlike Open3, Wopen3 does not throw away the exit status of the executed (grandchild) process. Only a child process it spawned and the exit status is returned in `$?` as normal.
 
