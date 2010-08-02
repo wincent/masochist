@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Another day, another [[MacVim]] preview release; this time, [http://github.com/downloads/b4winckler/macvim/MacVim-7_3c-BETA-52_5.tar.bz2 7.3c BETA 52.5].
