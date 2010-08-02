@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 
 [MacVim](/wiki/MacVim) is a [Cocoa](/wiki/Cocoa) port of [Vim](/wiki/Vim) for [Mac OS X](/wiki/Mac_OS_X) maintained by Björn Winckler.
