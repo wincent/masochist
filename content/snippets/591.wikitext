@@ -1,0 +1,4 @@
+---
+tags: php
+---
+Having to write some [[PHP]] code for a company that I work with. Sure brings back some memories, but makes me especially glad that I get to spend most of my time writing [[Ruby]] and [[Objective-C]].
