@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 [[Vim]] is an extremely powerful and efficient text editor particularly well suited for editing program source code. It's most distinctive distinguishing feature is that it is a modal editor, unlike almost every other editor in widespread use today. 
 
