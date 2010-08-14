@@ -1,5 +1,6 @@
 ---
 tags: python
+cache_breaker: 1
 ---
 
 [Python](/wiki/Python) is a (mostly) [object-oriented](/wiki/object-oriented), dynamic programming language, sometimes referred to as a scripting language, that is both popular and powerful.
