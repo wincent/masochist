@@ -1,5 +1,6 @@
 ---
 tags: subversion git
+cache_breaker: 1
 ---
 
 I used to host a number of public [Subversion](/wiki/Subversion) repositories for [open source](/wiki/open_source) projects at svn.wincent.com. Due to long-standing dissatisfaction with Subversion's inadequate support for [branching](/wiki/branching) and [merging](/wiki/merging), in early 2007 I started using [SVK](/wiki/SVK) locally as an additional layer while maintaining the server-side infrastructure.
