@@ -1,6 +1,7 @@
 ---
 title: Wopen3 0.3 released
 tags: releases wopen3
+cache_breaker: 1
 ---
 
 I'm belatedly announcing the release of version 0.3 of the [Wopen3](/wiki/Wopen3) gem. It was actually released a couple of weeks ago but I somehow overlooked posting an official announcement here.
