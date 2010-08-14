@@ -1,5 +1,6 @@
 ---
 tags: cheetah.template.engine
+cache_breaker: 1
 ---
 Cheetah is an [[object-oriented template]] engine written in [[Python]].
 
