@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] 7.3 [http://groups.google.com/group/vim_use/browse_thread/thread/62b455367e55050a almost here].
