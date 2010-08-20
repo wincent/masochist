@@ -1,0 +1,8 @@
+---
+tags: ruby
+---
+[[MRI]], or [[Matz's Ruby Interpreter]], refers to the definitive reference implementation of Ruby 1.8 created by the language's inventor.
+
+= See also =
+
+* [[Wikipedia]] article on [[MRI]]: http://en.wikipedia.org/wiki/Ruby_MRI
