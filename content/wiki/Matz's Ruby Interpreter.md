@@ -1,0 +1,6 @@
+---
+redirect: [[MRI]]
+tags: 
+---
+
+
