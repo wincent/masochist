@@ -1,6 +1,7 @@
 ---
 title: Walrat 0.1 released
 tags: releases walrat
+cache_breaker: 1
 ---
 
 [Walrat](/wiki/Walrat) is a sophisticated parser generator written in [Ruby](/wiki/Ruby). It can be used to dynamically generate (at runtime):
