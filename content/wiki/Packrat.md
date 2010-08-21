@@ -1,5 +1,6 @@
 ---
 tags: 
+cache_breaker: 1
 ---
 
 A [packrat parser](/wiki/packrat_parser) is a memoizing parser that recognizes [Parsing Expression Grammars](/wiki/Parsing_Expression_Grammars).
