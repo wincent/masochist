@@ -1,0 +1,6 @@
+---
+tags:
+---
+See:
+
+* [[Shell here documents]]
