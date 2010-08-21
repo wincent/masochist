@@ -1,0 +1,6 @@
+---
+redirect: [[here document]]
+tags: 
+---
+
+
