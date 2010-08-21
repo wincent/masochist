@@ -1,6 +1,7 @@
 ---
 title: Walrus 0.2 released
 tags: walrus releases
+cache_breaker: 1
 ---
 I just pushed out version 0.2 of the [[Walrus]] gem. This is a maintenance release which doesn't include any new features or even bugfixes. It is largely just work towards Ruby 1.9 compatibility, but there is still more required, so for now this continues to be a Ruby 1.8-only project.
 
