@@ -1,0 +1,23 @@
+---
+title: Walrus 0.3 released
+tags: walrus releases
+---
+Version 0.3 of the [[Walrus]] gem has just been released. Walrus is an [[object-oriented templating]] system written in [[Ruby]] and heavily inspired by the [[Cheetah template engine]] (which is written in [[Python]]). It doesn't set out to be a full clone of Cheetah, but it does implement a very large subset of its functionality, and it employs the same directive syntax wherever possible.
+
+For over 3 years now, Walrus has been powered by its own sophisticated, embedded "[[packrat]]" parser generator. The generator has at last been extracted into a separate gem called [[Walrat]] for ease of use in other projects (see [/blog/walrat-0.1-released the release announcement]). Version 0.3 of Walrus is the first release without the embedded parser generator, and instead depends on Walrat as an external dependency.
+
+= Changelog and source code =
+
+A full list of changes in this release can be viewed [http://git.wincent.com/Walrus.git/shortlog/refs/tags/0.3 here]. The source code can be explored via [http://git.wincent.com/Walrus.git the project source code repository].
+
+= Installation =
+
+<pre lang="shell">$ sudo gem install walrus</pre>
+
+= Donations =
+
+[[Walrus]] is free, [[open source]] software released under the BSD license. If you find it useful and would like to support further development you can [/products/walrus/donations make a donation] via PayPal to win@wincent.com.
+
+= See also =
+
+For more information see the [[Walrus]] product pages.
