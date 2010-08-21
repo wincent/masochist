@@ -1,0 +1,6 @@
+---
+redirect: /products/walrat
+tags: 
+---
+
+
