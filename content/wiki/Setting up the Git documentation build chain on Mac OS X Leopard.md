@@ -1,5 +1,6 @@
 ---
 tags: git asciidoc docs xmlto
+cache_breaker: 1
 ---
 
 Installing the documentation build chain on [Mac OS X](/wiki/Mac_OS_X) is quite tedious, as it involves a lengthy dependency chain. For an alternative that does not involve installing the tools, see "[Installing pre-built Git documentation from the Git repo](/wiki/Installing_pre-built_Git_documentation_from_the_Git_repo)".
