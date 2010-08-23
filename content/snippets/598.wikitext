@@ -1,0 +1,4 @@
+---
+tags: rr
+---
+[[RR]] 1.0.0 is out. Congratulations to Brian Takita for taking his excellent [[Ruby]] [[test double]] framework to version 1.0.0.
