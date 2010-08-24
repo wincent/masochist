@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+[[Rails]] 3.0.0.rc2 [http://weblog.rubyonrails.org/2010/8/24/rails-3-0-release-candidate-2 is out]. Interestingly the [[mysql2]] gem is now the default, thus eliminating one of the major pain points for [[Bundler]].
