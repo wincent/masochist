@@ -1,0 +1,4 @@
+---
+tags: git vim conque
+---
+[[fugitive.vim]] is a great interface to [[Git]] from inside [[Vim]]. The only thing which bugs me about it is that when you stage changes on a per-hunk basis you don't get the nice syntax highlighting that you would in the [[Terminal]] using `git add --interactive`. The answer? [http://code.google.com/p/conque/ Conque]: it allows you to run [[command-line]] programs from inside [[Vim]], including running [[Bash]] with color.
