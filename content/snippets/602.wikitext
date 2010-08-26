@@ -1,0 +1,4 @@
+---
+tags: ssh sftp scp
+---
+`sftp` works great with non-shell accounts given to untrusted users; you can use the built-in [[SFTP]] server provided by [[OpenSSH]] to chroot them into their home directories. The problem: you lose the scriptability that `scp` provides (eg. uploading files from a [[Rake]] task). The solution: `sftp -b` to the rescue!
