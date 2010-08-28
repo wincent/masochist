@@ -1,0 +1,6 @@
+---
+redirect: [[CamelCase]]
+tags: 
+---
+
+
