@@ -1,0 +1,4 @@
+---
+tags: walrus
+---
+Just tried the [[Walrus]] test suite under Ruby 1.9 for the first time in a long time; happily, it runs! Plenty of failures to be fixed though.
