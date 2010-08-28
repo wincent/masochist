@@ -1,0 +1,4 @@
+---
+tags:
+---
+Installing "[http://github.com/tenderlove/horo Horo]" so that I could run the [[Rails]] test suite in order to submit a failing test case has broken [[RDoc]] installation for all gems on the system: `ERROR: RDoc documentation generator not installed: can't activate rdoc (~> 2.5, runtime) for ["horo-1.0.2"], already activated rdoc-2.3.0 for []`. Solution: nuke Horo.
