@@ -1,6 +1,7 @@
 ---
 title: Walrus compatibility and performance on different Ruby implementations
 tags: walrus
+cache_breaker: 1
 ---
 
 For the longest time I only ever ran [Walrus](/wiki/Walrus) on the stock [Ruby](/wiki/Ruby) that ships with [Mac OS X](/wiki/Mac_OS_X). As of [Snow Leopard](/wiki/Snow_Leopard), that currently means Ruby 1.8.7 ([MRI](/wiki/MRI)).
