@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+[[Rails 3]] officially [http://weblog.rubyonrails.org/2010/8/29/rails-3-0-it-s-done released]. After the long beta and RC periods, I'm surprised the final release comes so soon after the last RC. Time for some final testing, and then my first deploy in a long, long time.
