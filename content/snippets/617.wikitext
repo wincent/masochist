@@ -1,0 +1,4 @@
+---
+tags:
+---
+The [http://github.com/ninjudd/memcache memcache gem] is the new "mysql gem" of the deployment world. The latter has long been infamous for its quirkiness, requiring machine-specific build-time flags. The memcache gem goes one step further, requiring hand-editing of the `extconf.rb` file and then manually producing a gemspec.
