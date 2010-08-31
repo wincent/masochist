@@ -1,6 +1,7 @@
 ---
 title: Extended site maintenance
 tags: site
+cache_breaker: 1
 ---
 There will be extended site maintenance later this morning (around 10 AM GMT/7AM EDT) in order to migrate the site to the updated [[Rails 3]] code base. By "extended" I mean approximately 1 hour, although it may be less.
 
