@@ -1,5 +1,6 @@
 ---
 tags: rails
+cache_breaker: 1
 ---
 
 [Rails 3](/wiki/Rails_3) is a major new release of the [Rails](/wiki/Rails) web application framework, released on 29 August 2010.
