@@ -1,6 +1,7 @@
 ---
 title: Capistrano retrospective
 tags: capistrano
+cache_breaker: 1
 ---
 
 Back in September 2009 I wrote about [getting rid of Capistrano](/wiki/getting_rid_of_Capistrano), replacing about 6,000 lines of flakey, fragile [Ruby](/wiki/Ruby) code with a 268-line shell script. I finished that post with:
