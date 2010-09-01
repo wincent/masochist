@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[PEBKAC]] is a slang acronym standing for [[Problem Exists Between Keyboard And Chair]], and is usually used with humorous intent to attribute computer problems to user error.
