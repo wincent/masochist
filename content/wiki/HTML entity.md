@@ -1,5 +1,6 @@
 ---
 tags: html
+cache_breaker: 1
 ---
 
 [HTML entities](/wiki/HTML_entities) are a means of inserting a character or symbol into the source of an [HTML](/wiki/HTML) document in an encoding-independent fashion.
