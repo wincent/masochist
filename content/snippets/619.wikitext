@@ -1,0 +1,4 @@
+---
+tags: skein
+---
+Schneier [http://www.schneier.com/blog/archives/2010/09/more_skein_news.html update on Skein]. Crypto is hard. I think I can safely say that I'll never try to write a digest algorithm.
