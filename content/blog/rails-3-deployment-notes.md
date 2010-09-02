@@ -1,6 +1,7 @@
 ---
 title: Rails 3 deployment notes
 tags: rails site
+cache_breaker: 1
 ---
 
 As part of [yesterday's "extended" maintenance](/extended-site-maintenance) I deployed a new version of the site, moving from [Rails](/wiki/Rails) 2 to [Rails 3](/wiki/Rails_3) in a process involving nearly [1,000 commits](/blog/site-updates-0.18). I followed this up with [some additional tweaks and fixes today](/blog/site-updates-0.19).
