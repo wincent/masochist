@@ -1,5 +1,6 @@
 ---
 tags: memcached
+cache_breaker: 1
 ---
 Start up a server on the localhost listening to some arbitrary port:
 
