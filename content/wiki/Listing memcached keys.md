@@ -1,5 +1,6 @@
 ---
 tags: memcached
+cache_breaker: 1
 ---
 
 You officially can't do this, but unofficially you can, at least good enough for debugging purposes in the development environment, by [testing memcached with telnet](/wiki/testing_memcached_with_telnet).
