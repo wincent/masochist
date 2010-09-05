@@ -1,0 +1,4 @@
+---
+tags: mysql mongodb
+---
+[http://highscalability.com/blog/2010/9/5/hilarious-video-relational-database-vs-nosql-fanbois.html MySQL vs MongoDB].
