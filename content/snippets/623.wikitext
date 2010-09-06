@@ -1,0 +1,4 @@
+---
+tags: cucumber
+---
+[[Cucumber]] has a large fan base, but it also has a growing number of critics [http://afewgoodlines.com/post/1077316188/integration-testing-retrospective-part-i like this one], and has spawned a number of aggressively different alternatives like [[Steak]] too, which explicit reject Cucumber's key tenets. I don't want to offend [http://github.com/aslakhellesoy Aslak Hellesøy] or any of the Cucumber contributors who have collectively invested thousands of man-hours in developing Cucumber, but from my perspective, it's '''''the worst thing that ever happened to Ruby testing'''''. The best thing? [[RSpec]], despite a couple of dark moments. The neatest, perhaps [[RR]]. Well-deserved gold stars also go to [[Capybara]] and [[Factory Girl]].
