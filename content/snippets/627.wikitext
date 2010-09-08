@@ -1,0 +1,4 @@
+---
+tags: bash
+---
+Another [[Bash]] trick for repeating the last argument of the ''current'' command (ie. not the last argument of the ''last'' command, for which you would just use `!$`), bracket expansion: `mv some/really/long/path{,.old}`.
