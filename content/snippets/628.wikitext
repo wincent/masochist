@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+Wow, Amazon announces "micro" [[EC2]] instances, which have 613MB of memory and cost a mere $0.02/hour. That's the "on demand" price. The reserved instance price is an astonishingly low $0.007/hour. See [http://aws.amazon.com/ec2/#pricing the full list of prices].
