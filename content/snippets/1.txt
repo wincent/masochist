@@ -1,0 +1,39 @@
+---
+title: Site updates 0.22
+tags: site
+---
+d93802f Tidy up parse_tag_list implementation
+efacb1f Be more specific about ignored exception in add_tag method
+2545e27 Reformat ActsAsTaggable specs
+63d5e18 Make counter cache decrement properly after untagging
+b4a94e4 Refactor 'save_pending_tags' callback for efficiency
+32d9a23 Update spec_helper.rb to match RSpec 2.0.0.beta.19
+68485d8 Add Snippet model
+572509a Require spec_helper using relative path
+86e0a8c Edit acceptance_helper for consistency with spec_helper
+513559f Fixes to Factory Girl require paths
+dcaa484 Add snippet factory
+9542e96 Add public and comments_count fields to snippet model
+1d00b8d Rename Snippet#markup to #markup_type
+e649547 Add validations and body_html method to snippets model
+c04f83a Add snippets routing specs
+56cfd48 Reformat snippet routing specs for better display on narrow terminals
+7d71805 Add accepts_comments attribute to snippets model
+8cf9529 Article: replace recent_with_offset with recent.offset
+eb0e62f Work around surprising RSpec behavior
+1bfd6b9 Teach Snippet#body_html to take an options hash
+1a885e5 Remove workarounds for now-fixed Rails bug #4825
+a9542c2 Add snippet_title helper
+1721520 DRY up page model markup type validation
+85c6106 Teach comments controller about snippets
+04e53ac Add last_comment* fields to snippet model
+437a47d Add navbar links to snippets and tweets (in a submenu)
+f849234 Stop visible entities from appearing in tags#show
+7f0538b Add snippet-specific CSS
+babec61 Add (empty) snippets helper
+9e4d680 Add snippet sweeper
+35f785b Use non-racy pattern in snippets sweeper
+8b4df36 Flesh out snippets controller and specs
+4d98cfc Merge _snippets partial into index template
+0789b18 Whitespace fix
+12760ef Use idiomatic Ruby enumeration instead of 'for'
