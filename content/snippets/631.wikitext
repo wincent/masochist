@@ -1,0 +1,4 @@
+---
+tags: openoffice.org
+---
+Been a while since I used [http://www.openoffice.org/ OpenOffice.org] (was 3.1.1 on my old machine). Downloading 3.2.1 now. Will be interested to see how it is.
