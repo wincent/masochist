@@ -1,0 +1,4 @@
+---
+tags: site
+---
+Just deployed [/snippets/2 a tiny little update] to the site.
