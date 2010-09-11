@@ -1,0 +1,4 @@
+---
+tags: rails mail bundler
+---
+[[Bundler]]'s relatively new "conservative updates" feature allows you to update just one gem in a dependency hierarchy. Example: today Mail 2.2.6 [http://groups.google.com/group/rubyonrails-talk/browse_thread/thread/df567cab7f3d5215 is released], with the note that it is, "a bug fix release mainly, all users of the 2.2 series should definitely update." In order to pull this in to an existing [[Rails 3]] app you just do `bundle update mail` and it updates that one dependency without touching any of the others.
