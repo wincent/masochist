@@ -1,0 +1,14 @@
+---
+title: Site updates 0.24
+tags: site
+---
+b158ae0 script/deploy: add "summary" subcommand
+7ec8784 script/deploy: print summary only after enable subcommand is run
+0dcfb97 script/deploy: make unlock/lock subcommands non-chatty
+44c6894 Update to Mail 2.2.6
+0cc1ca7 searches#create: show query in major title
+f53bbda Stop "snowman" from showing up in GET query strings
+852aca5 Big scale rationalization of search forms
+af25edd Fix broken navbar search form alignment
+5a617b8 Add JRuby to path (for server)
+55e0b41 Work around acceptance spec failure in server environment
