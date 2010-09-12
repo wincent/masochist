@@ -1,5 +1,6 @@
 ---
 tags: jruby os.x
+cache_breaker: 1
 ---
 
 ```shell
