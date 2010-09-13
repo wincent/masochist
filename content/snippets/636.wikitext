@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Loving `log.decorate=short` in my [[Git]] config.
