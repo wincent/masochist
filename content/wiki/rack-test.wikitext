@@ -1,0 +1,9 @@
+---
+tags: rack.test
+---
+The [[rack-test]] [[gem]] is a tiny test harness for testing [[Rack]]-based web applications.
+
+= Links =
+
+* https://rubygems.org/gems/rack-test
+* http://github.com/brynary/rack-test
