@@ -1,5 +1,6 @@
 ---
 tags: hpricot
+cache_breaker: 1
 ---
 = Parsing XML =
 
