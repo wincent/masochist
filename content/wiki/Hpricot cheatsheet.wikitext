@@ -1,0 +1,31 @@
+---
+tags: hpricot
+---
+= Parsing XML =
+
+Given:
+
+<pre lang="ruby">doc = Hpricot.XML(input)</pre>
+
+== Finding elements ==
+
+<pre lang="ruby"># find all "entry" elements
+doc / 'entry'
+
+# return a specific "entry" element from the array of found elements
+(doc / 'entry')[3]</pre>
+
+== Finding a single element ==
+
+<pre lang="ruby"># find the first "entry" element
+doc.at('entry')
+
+# finding the first element within another element, within another element
+doc.at('entry').at('author').at('name')
+
+# same, but using a single XPath query
+doc.at('entry/author/name')</pre>
+
+== Getting the contents of an element ==
+
+<pre lang="ruby">element.innerHTML</pre>
