@@ -1,5 +1,6 @@
 ---
 tags: xpath
+cache_breaker: 1
 ---
 
 # See also
