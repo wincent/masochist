@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just dropped Hpricot for Nokogiri. One less dependency, seeing as Nokogiri was getting pulled in by Capybara anyway. A little bit more verbose, but that's because it actually handles namespaces properly.
