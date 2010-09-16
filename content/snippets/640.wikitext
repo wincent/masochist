@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+Amazon has just announced the new "[http://aws.amazon.com/amazon-linux-ami/ Amazon Linux AMI]" for [[EC2]]. What this means: availability of ongoing security updates and official vendor support, rather than leaving such updates entirely in the hands of the user.
