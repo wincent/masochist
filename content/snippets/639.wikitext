@@ -1,0 +1,4 @@
+---
+tags:
+---
+Trying to use a `table` element to display [[Git]] diffs. [[CSS]] `border-collapse` property to the rescue.
