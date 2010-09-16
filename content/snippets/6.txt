@@ -1,0 +1,173 @@
+---
+tags:
+---
++ echo ''
++ test_expect_success 'automatic remapping to ancestor with filename filters' '
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ test 2 = 3
++ prereq=
++ test 2 = 2
++ test_skip 'automatic remapping to ancestor with filename filters' '
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ test_count=30
++ to_skip=
++ test -z ''
++ test -n ''
++ case "$to_skip" in
++ false
++ say 'expecting success: 
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ say_color info 'expecting success: 
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ TERM=xterm-color
++ export TERM
++ case "$1" in
++ tput setaf 3
++ shift
++ printf %s 'expecting success: 
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ tput sgr0
++ echo
++ test_run_ '
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ test_cleanup=:
++ eval '
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ eval_ret=128
++ eval :
++ test '' = t
++ return 0
++ '[' 0 = 0 -a 128 = 0 ']'
++ test_failure_ 'automatic remapping to ancestor with filename filters' '
+	git checkout master &&
+	git reset --hard A &&
+	test_commit add-foo2 foo 1 &&
+	git branch moved-foo2 &&
+	test_commit add-bar2 bar a &&
+	git branch invariant2 &&
+	orig_invariant=$(git rev-parse invariant2) &&
+	git branch moved-bar2 &&
+	test_commit change-foo2 foo 2 &&
+	git filter-branch -f \
+		moved-foo2 moved-bar2 A..master \
+		-- -- foo &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse moved-bar2) &&
+	test $(git rev-parse moved-foo2) = $(git rev-parse master^) &&
+	test $orig_invariant = $(git rev-parse invariant2)
+'
++ test_failure=1
++ say_color error 'not ok - 30 automatic remapping to ancestor with filename filters'
++ TERM=xterm-color
++ export TERM
++ case "$1" in
++ tput bold
++ tput setaf 1
++ shift
++ printf %s 'not ok - 30 automatic remapping to ancestor with filename filters'
+not ok - 30 automatic remapping to ancestor with filename filters+ tput sgr0
++ echo
