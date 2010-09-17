@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Ruby]] is "[http://www.tuttoaster.com/ruby-for-php-developers/ a strongly typed language]", apparently.
