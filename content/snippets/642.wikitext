@@ -1,0 +1,4 @@
+---
+tags: yard
+---
+Just found out [http://gnuu.org/2009/12/15/using-yri-for-ruby-core-classes/ here] that you can use `yri` for fast access to [[Ruby]] core class documentation. Install with `sudo gem install yard-doc-core -v 1.8.7` and try it out with something like `yri Enumerable`.
