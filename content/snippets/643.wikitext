@@ -1,0 +1,4 @@
+---
+tags: site
+---
+I'm soon going to be deploying built-in [[Git]] repo browsing, which will eventually replace the separate [[GitWeb]] installation currently hosted at http://git.wincent.com/. For now it's just a simple history viewer which permits you to see a list of repos, and see commits (and diffs) on the master branch. More to follow.
