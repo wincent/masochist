@@ -1,5 +1,6 @@
 ---
 tags: rails
+cache_breaker: 1
 ---
 
 As of the time of writing, the default Rack middleware stack for [Rails](/wiki/Rails) ([Rails 3](/wiki/Rails_3) to be precise) looks like this (generated using `rake middleware`):
