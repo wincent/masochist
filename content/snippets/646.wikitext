@@ -1,0 +1,4 @@
+---
+tags:
+---
+The [[Steak]] 1.0.0 beta [http://groups.google.com/group/steakrb/browse_thread/thread/6dcee90fd22d5b38 is out] (specifically, 1.0.0.beta.2). Stop drinking the Cucumber Kool-Aid and switch to the wholesome goodness of Steak today! You won't regret it.
