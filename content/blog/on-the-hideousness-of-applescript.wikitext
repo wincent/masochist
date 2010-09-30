@@ -1,6 +1,7 @@
 ---
 title: On the hideousness of AppleScript
 tags: applescript
+cache_breaker: 1
 ---
 In my various interactions with AppleScript over the last decade, I haven't ever had a single interaction with it in which I thought "gee, that was neat!". On the contrary, every time I reluctantly accept using it &mdash; invariably because there is no other choice &mdash; I find myself grimacing at just how clumsy, painful and awkward it is to use. It is frankly hideous.
 
