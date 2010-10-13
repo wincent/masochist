@@ -1,0 +1,93 @@
+---
+title: Site updates 0.25
+tags: site
+---
+9768824 script/deploy: fix "summary" subcommand with multiple commits
+353856e Remove unnecessary explicit 'self' receiver
+c22d0ae Use "git for-each-ref" rather than "git show-ref"
+2d121e3 snippets#show view specs (HTML format)
+ef35b64 Add Git::Commit#subject method
+356d9cf Basic repos#index and repos#show implementations
+77ec08d Tweak spec to make it pass under RSpec 2.0.0.beta.22
+f54b52b Update to RSpec 2.0.0.beta.22
+ef23673 Switch to Akephalos, thus removing dependency on JRuby
+cf1847c Remove JRuby hack from spec/spec_helper.rb
+296ebea Extract _snippet partial
+0325b1e Add missing snippet view specs
+6cc324d Avoid chained at() calls by using a single XPath query
+6b6ebf2 Eliminate dependency on Hpricot
+faf5661 Git: handle "Binary files X and Y differ" in diffs
+83d3d33 Fix a parameter-ordering bug in Git::Hunk
+c3ff98d Embed original hunk header in Hunk object
+77fc294 Fix various bugs in hunk parsing
+ef53cce Fix variable name typo in Git::Repo
+d0e5ffe First cut at commit viewing
+0d07cba Fix another bug in hunk parsing
+26aa39a Drop --word-diff=porcelain
+cad3674 Be more lax in checks for 'Binary files X and Y differ'
+831b815 Drink the --patience diff kool aid
+2984148 Add intra-line highlighting of changes for adjacent +/- lines
+b7c36a8 CSS prettification for commits#show view
+da22584 Clarify code comment docs for segments_for_line_pair method
+5948c77 Replace to_a with [...].flatten for Ruby 1.9.2 compatibility
+98de42b Prepare repos/commits controllers for deployment
+1627c42 Drop unnecessary parens
+49cc41f Handle unreachable commits at controller level
+404b74f Display more info, and prettier, in commits#show
+1dfce2b Include repos#index in commits#show breadcrumb
+fa4e435 Accept mixed case or abbreviated hashes in URLs
+83b297c Handle binary diffs
+5a2f79d Fix code comment documentation typo (cosmetic)
+9e74fb3 Collapse a two-line Haml construct to a one-liner
+c3b52ee CSS: target .annotation class more specifically
+2de0290 Handle "\ No newline at end of file" lines in diffs
+d527a14 Correct label in repos#new
+a56e281 Teach Git::Commit#diff to handle merge commits
+5c2278a Don't let optional attributes trigger db-level constraints
+67bec79 Bump Thor from 0.14.0 to 0.14.1
+2286a2e Workaround Rails bug #5513, fixing broken constraint on commit :id
+01fe3a2 Finish off repo routing specs
+01a6900 Fix bug in snippets controller spec
+64f3537 Add breadcrumbs to repo#show
+2dba370 Add remaining actions to repos controller
+dbe59a4 Git::Repo.new: add specs for non-directory argument
+a460c69 Render commits using a partial
+b791ac1 Redirect commits#index to repo#show
+02e7501 Add 'branch' methods to Git::Repo and Git::Branch
+c307032 Refactor repo views (extract form into partial)
+9c5a5ef Add branches controller
+4f72fa7 Rename set_bundle_identifier to check_optional_attributes
+1733837 Set descriptive page title for commits#show
+63ead70 Add specs for Branch#branch
+fff12bd Add branches/branch partial for collection rendering
+5ad31f9 Add stlying for commit lists
+3ff2e6a Extract commit diff CSS into separate file for re-use
+37b90c6 Extract bulk of commits#show template into separate file
+5d0e579 Add support for (Git) tag browsing
+baa2817 Minor tweak to code documentation comment
+3535c3b Don't display "requested git_tag not found" in flash
+e567dd5 Routes: accept shorter commit hashes
+023cc31 Add links at top of repos#show for jumping to anchors
+7438e99 Include full commit message in log views, but don't display it (yet)
+4675aa6 branches#show: toggle full commit message with a click
+c3789ea Extract Git-specific JavaScript into separate file and re-use it
+c917625 Update specs for methods moved between helpers
+640d1ee Add specs for branches controller
+435d98b Add 'render_template' expectation for branches#show
+ee4d1dd Fix/add comments for/to comments controller
+f994612 Add commits controller specs
+e260005 Cacheable flash overhaul (after_filter -> middleware)
+d46e6f0 Update to Steak 1.0.0.beta.2
+406c76d Update to Akephalos 0.2.4
+8417c97 CSS is now the default selector type in Capybara
+4afc6f1 Update to Git version of Akephalos
+74986ab Update Akephalos to "capybara-head" branch
+93615ad Highlight "active fragment" if URL includes a fragment
+264177b Use Steak in development environment as well
+6792481 Add acceptance spec for active fragment highlighting
+e9c601a RSpec 2.0.0.rc (Bundler also dragged in Haml 3.0.21)
+9d6ed3d Bundle update
+82cec32 Fix missing submit button in topics#new template
+8e2dd67 Update to Capybara 0.4.0.rc
+d2892a0 Update to Steak 1.0.0.rc.1
+fb6df0d Require Bundler 1.0.2 or higher (up from 1.0.0)
