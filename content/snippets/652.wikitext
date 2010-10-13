@@ -1,0 +1,4 @@
+---
+tags:
+---
+Yehuda Katz: [[Steak]] is "[http://twitter.com/wycats/status/26769271290 essentially a scam]". He's right that Steak is indeed "just" a set of aliases for RSpec, but he misses that it's precisely that fact which is its major selling point. (He too could replace the thousands of lines of over-engineered complexity that is Cucumber and work in an overhead-free acceptance-testing environment.)
