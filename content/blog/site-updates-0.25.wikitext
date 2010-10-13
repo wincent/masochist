@@ -1,6 +1,7 @@
 ---
 title: Site updates (0.25)
 tags: site
+cache_breaker: 1
 ---
 Just deployed some updates to the site ([/snippets/9 full change list here]). Most of these changes are part of the integrated [[Git]] [/repos repo browsing] functionality (nothing to see there yet as I haven't yet configured any repos, but most of the groundwork is now laid) but there are a couple of user-visible fixes and enhancements:
 
