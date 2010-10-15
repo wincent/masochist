@@ -1,0 +1,4 @@
+---
+tags:
+---
+Updating to Rails 3.0.1/RSpec 2.0.1... Will it break any specs? Changes look minimal, so hopefully not. [Holds breath.]
