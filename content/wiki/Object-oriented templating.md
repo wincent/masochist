@@ -1,5 +1,6 @@
 ---
 tags: development
+cache_breaker: 1
 ---
 
 [Object-oriented templating](/wiki/Object-oriented_templating) is a [object-oriented](/wiki/object-oriented) templating approach inspired by [object-oriented programming](/wiki/object-oriented_programming).
