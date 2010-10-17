@@ -1,6 +1,7 @@
 ---
 title: Wikitext 2.1 released
 tags: releases wikitext
+cache_breaker: 1
 ---
 
 A minor update to the [Wikitext](/wiki/Wikitext) gem, version 2.1, is now available. This release adds the ability to apply a `rel="nofollow"` attribute to external links, which [may be useful for search-engine optimization purposes](http://en.wikipedia.org/wiki/Nofollow); for example, if you use wikitext markup in your blog you may wish to add "nofollow" links to all user-submitted comments, but omit them from the content that you yourself write for your blog posts. Thanks to Mike Stangel for submitting the patch to implement this feature.
