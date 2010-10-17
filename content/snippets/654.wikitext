@@ -1,0 +1,4 @@
+---
+tags:
+---
+For the last several months now, `gem install [anything at all]` times out for me about 60% of the time. As a result, `bundle [pretty much anything at all]` also suffers constant timeouts.
