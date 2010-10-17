@@ -1,5 +1,6 @@
 ---
 tags: rdoc
+cache_breaker: 1
 ---
 
 [RDoc](/wiki/RDoc) is, or was, the *de facto* standard for producing documentation from code comments embedded inline in [Ruby](/wiki/Ruby) and [C](/wiki/C) extension code. At the time of writing (October 2010) it is rapidly being displaced by superior alternatives such as [YARD](/wiki/YARD).
