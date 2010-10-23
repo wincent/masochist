@@ -1,0 +1,4 @@
+---
+tags:
+---
+Plenty of "MongoDB is web-scale" remarks in the comments to [http://ayende.com/Blog/archive/2010/10/22/you-saved-5-cents-and-your-code-is-not-readable.aspx this post].
