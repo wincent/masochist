@@ -1,0 +1,4 @@
+---
+tags:
+---
+Irresponsible reporting: new cross-platform Java worm [http://arstechnica.com/apple/news/2010/10/new-java-trojan-attacks-mac-os-x-via-social-networking-sites.ars labelled as "Mac OS X trojan"]. Check the comments on the article to see screenshots of the warning dialogs you have to click through in order to allow the "video" access to your system.
