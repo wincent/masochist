@@ -1,5 +1,6 @@
 ---
 tags: code.signing
+cache_breaker: 1
 ---
 
 # Self-signed vs certificates from a "trusted" Certificate Authority
