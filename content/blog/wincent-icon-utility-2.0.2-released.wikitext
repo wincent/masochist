@@ -1,0 +1,14 @@
+---
+title: Wincent Icon Utility 2.0.2 released
+tags: releases wincent.icon.util
+---
+Version 2.0.2 of [[Wincent Icon Utility]] is now available. Wincent Icon Utility is a small [[command line]] tool for [[Mac OS X]] 10.6 [[Snow Leopard]] which can be used to take an `.icns` icons file and apply it to a directory as a custom folder icon.
+
+* [http://s3.wincent.com/wincent-icon-util/releases/wincent-icon-util-2.0.2.pkg Binary installer] (29KB)
+* [http://s3.wincent.com/wincent-icon-util/releases/wincent-icon-util-2.0.2-src.tar.bz Source code archive] (205KB)
+* [http://s3.wincent.com/wincent-icon-util/wincent-icon-util.1.txt Manual page]
+* [http://s3.wincent.com/wincent-icon-util/releases/wincent-icon-util-2.0.2-release-notes.txt Code-level change log] (commit subject lines only)
+* [http://s3.wincent.com/wincent-icon-util/releases/wincent-icon-util-2.0.2-detailed-release-notes.txt Detailed code-level change log] (including full commit messages)
+* [http://git.wincent.com/wincent-icon-util.git Web-based repository browser]
+
+Wincent Icon Utility is [[open source]] code released under the [[GPL]]. If you find it useful please consider [https://www.paypal.com/xclick/business=win@wincent.com&item_name=Wincent+Icon+Utility+donation&no_note=1&currency_code=EUR&lc=GB making a donation].
