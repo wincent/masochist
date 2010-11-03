@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 Why IE9 did so well in [http://test.w3.org/html/tests/reporting/report.htm the much publicized HTML5 test]: "[T]he test looks at only a fraction of the HTML5 spec. In other words, the test is very limited. Even better, it's limited to things IE9 is good at." (Source: [http://www.wired.com/epicenter/2010/11/ie9-leads-pack-in-html5-support-not-exactly/ Wired])
