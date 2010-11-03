@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.reddit.com/r/programming/comments/e0hlp/when_it_comes_to_debugging_nothing_beats_a_few/ Hilarious]: "When it comes to debugging, ''nothing'' beats a few strategic print statements..."
