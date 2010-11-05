@@ -1,5 +1,6 @@
 ---
 tags: dynamic.linker os.x
+cache_breaker: 1
 ---
 
 **Note:** *this article is actually about the `@executable_path`, `@load_path` and `@rpath` install paths used by the linker on [Mac OS X](/wiki/Mac_OS_X); wiki titles can't include underscores, however, because they are ambiguous with spaces.*
