@@ -1,0 +1,4 @@
+---
+tags: git
+---
+No idea what the original attribution of [http://perl.plover.com/classes/git-is-awesome/samples/slide034.html this quote] is, but it's pretty funny: "It is easy to shoot your foot off with git, but also easy to revert to a previous foot and merge it with your current leg".
