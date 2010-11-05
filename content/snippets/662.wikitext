@@ -1,0 +1,4 @@
+---
+tags:
+---
+Last night spent a couple hours banging my head against the wall with a linking issue. Let's see if today with fresh eyes I can figure it out.
