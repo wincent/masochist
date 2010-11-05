@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 [http://www.engadget.com/2010/11/05/apple-xserve-sales-end-january-31-support-will-continue-indefin/ Xserve R.I.P.]: they were pretty machines, although I was never in the market for them (before the advent of [[the cloud]] this was true, but now even more so).
