@@ -1,0 +1,52 @@
+---
+title: Command-T 1.0b released
+tags: releases command.t
+---
+I've just released version 1.0b of the [[Command-T]] plug-in for [[Vim]]. This is a powerful, [[open source]] file-navigation plug-in inspired by the "Command-T" feature in [[TextMate]].
+
+= What's new =
+
+This release includes a workaround for a crippling bug in Vim 7.3 on some platforms (if you've tried Command-T on such a platform, you'll definitely know about [/issues/1617 the issue]) and fixes [/issues/1724 one "polish" issue] (eating up a buffer number each time you use Command-T).
+
+As always, a full change-log appears under HISTORY in [http://git.wincent.com/command-t.git/blob/HEAD:/README.txt the documentation], and all commits in this release are listed [http://git.wincent.com/command-t.git/shortlog/refs/tags/1.0b here].
+
+= The 1.0 milestone =
+
+I started Command-T back in February this year and within a few days had a working implementation which I [/blog/bringing-textmate-style-command-t-to-vim posted about here]. The source code was always [http://git.wincent.com/command-t.git out in the open], but I published the first "official" release (version 0.1) to [http://www.vim.org/scripts/script.php?script_id=3025 the plug-in's page at vim.org] on 22 March 2010. Since then, I've used it heavily every day and it has enjoyed fairly good take up by Vim users out there.
+
+It [/blog/command-t-0.6-released didn't take long] to get to a point where I considered it stable enough and feature-complete enough to be considered for 1.0 release. But I held off because installing it was sometimes a pain.
+
+Command-T is a combination of C, Ruby and Vim's built-in scripting language, which means that you need not only Ruby and a suitable C compiler on your system, but you also have to make sure you use compatible versions. That is, you can't link your Vim against Ruby 1.9.2 and Command-T against Ruby 1.8.7 without things going "Boom!". For some reason, people ''love'' playing with different Ruby versions, via [[RVM]] and other means, and this has generated no small number of tickets in the [[issue tracker]].
+
+Windows is the worst platform of all, unsurprisingly. Getting Ruby, Vim and Command-T working together on Windows is similar in difficulty to transmuting lead into gold; if anything, transmuting may be easier.
+
+I've come to the point where I realize that these installation difficulties are never going to go away, and they shouldn't hold up a 1.0 release. So here it is: 1.0b, which I'll follow up with 1.0 proper within the next week or three if I don't hear any reports of Command-T-induced poisoning or explosions.
+
+And as far as installing goes: if you're unfortunate enough to be using Windows, or if you're the sort that likes to play with different versions of Ruby, all I can do is encourage you to read [http://git.wincent.com/command-t.git/blob_plain/HEAD:/README.txt the documentation] very, very carefully &mdash; I've done my best to make it accurate and comprehensive &mdash; and maybe watch the installation screencasts on [/products/command-t the Command-T product page].
+
+Other than that, I hope you have fun with Command-T.
+
+= Where to get it =
+
+== [[Pathogen]] users ==
+
+<pre lang="shell">$ cd path/to/your/pathogen/bundle # probably ~/.vim/bundle
+$ git clone git://git.wincent.com/command-t.git
+$ cd command-t
+$ rake make</pre>
+
+And in Vim:
+
+ :call pathogen#helptags()
+
+See [http://git.wincent.com/command-t.git/blob_plain/HEAD:/README.txt the docs] for more info on installing (and updating) Command-T via Pathogen.
+
+== Everybody else ==
+
+* Download the vimball from [/products/command-t the Command-T product page] (or [http://www.vim.org/scripts/script.php?script_id=3025 www.vim.org], if you prefer)
+* Open the vimball archive in vim, and do `:so %` to unpack it
+* `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
+
+= Screencasts, donations and source code =
+
+If you're a [[Vim]] user check out the [/products/command-t screencasts] and give the plug-in a try. If you'd like to support development you can use [/products/command-t/donations the donations page] to make a donation, or consider submitting a patch for the project (the source code can be browsed [http://git.wincent.com/command-t.git here]).
