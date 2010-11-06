@@ -1,6 +1,7 @@
 ---
 title: Wikitext 2.1.1 released
 tags: releases wikitext
+cache_breaker: 1
 ---
 A minor bugfix release of the [[Wikitext]] gem, version 2.1.1, is now available. It handles a couple of edge cases in which supplying invalid link markup would cause the unexpected token to be omitted from the output (the desired behavior is for the link to be "rolled back" and the unexpected token to be included in the output so as to provide feedback to the markup author about his/her mistake).
 
