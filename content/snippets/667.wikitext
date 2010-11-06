@@ -1,0 +1,4 @@
+---
+tags:
+---
+A couple comments [http://www.reddit.com/r/programming/comments/e238v/refactoring_youre_doing_it_wrong/ in here] made me laugh, pointing out that writing blog posts containing the phrase "You're doing it wrong" are becoming cliched (I'd argue that it was already getting old on the second or third copy), just like "considered harmful": [http://www.reddit.com/r/programming/comments/e238v/refactoring_youre_doing_it_wrong/c14o84h this guy suggests] he's feeling inspired to write a blog post titled, "'Considered harmful posts' -- You're doing it wrong".
