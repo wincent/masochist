@@ -1,0 +1,4 @@
+---
+tags:
+---
+Oracle: [http://www.theregister.co.uk/2010/11/06/oracle_dueling_jvms/ a class act]. I'm not a Java programmer, thankfully, but if I was I'd probably already have jumped ship by now. As I've alluded elsewhere, I'm anticipating that jumping from the MySQL ship (to PostgreSQL, evidently) will eventually become inevitable as well.
