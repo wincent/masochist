@@ -1,6 +1,7 @@
 ---
 title: New site section: repos
 tags: site
+cache_breaker: 1
 ---
 For a while now I've wanted to have a [[Git]] repo browser integrated into the site (see ticket #1135).
 
