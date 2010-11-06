@@ -1,0 +1,13 @@
+---
+title: Site updates 0.27
+tags: site
+---
+Just pushed out an update. The real motivation for this update was that I wanted to deploy [[Wikitext]] version 2.1.1 which contains a bug fix that I need (it really should have been a commit of its own but in an oversight it got squashed into commit 5883320, "Add stubs for Git::Blob and Git::Tree implementations"):
+
+<pre>70297a8 Update to Wikitext 2.1
+1239689 Update to jQuery 1.4.3
+a395dde Update to Haml 3.0.22
+121f6e0 Update to Capybara 0.4.0
+5883320 Add stubs for Git::Blob and Git::Tree implementations
+88e0e73 Add Git::Hunk spec file
+8d0417d Set up autoloads for Git::Blob and Git::Tree</pre>
