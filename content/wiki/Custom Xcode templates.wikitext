@@ -1,5 +1,6 @@
 ---
 tags: xcode
+cache_breaker: 1
 ---
 Factory templates can be found in `/Developer/Library/Xcode/`.
 
