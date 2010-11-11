@@ -1,0 +1,4 @@
+---
+tags:
+---
+Flash sucks. Just scroll down and look at the number of vulnerabilities [http://support.apple.com/kb/HT4435 listed] as fixed in the latest update.
