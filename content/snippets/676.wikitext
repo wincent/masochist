@@ -1,0 +1,4 @@
+---
+tags:
+---
+Rails 3.0.3 [http://weblog.rubyonrails.org/2010/11/15/rails-3-0-3-faster-active-record-plus-plenty-of-fixes is out]. What happened to 3.0.2, you ask? A number of critical bugs were discovered after the release was pushed to the gem servers, so the Rails team opted to fix them quickly and skip any official 3.0.2 announcement. This is not the first time we've seen this release-oops-release-again pattern, so the moral of the story is: in general don't be in a hurry to deploy new Rails versions to your production environments, even seemingly minor maintenance updates.
