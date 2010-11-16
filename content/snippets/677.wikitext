@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://blog.jgc.org/2010/11/things-make-got-right-and-how-to-make.html make vs rake]
