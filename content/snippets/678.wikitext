@@ -1,0 +1,4 @@
+---
+tags:
+---
+[https://www.eff.org/pages/how-deploy-https-correctly Quoth the EFF]: "ultimately we expect HTTPS ... to replace HTTP entirely, the way SSH replaced Telnet and rsh". Needless to say, I agree completely.
