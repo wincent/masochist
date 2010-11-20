@@ -1,0 +1,4 @@
+---
+tags:
+---
+<irony>The power of [[open source]]. [https://bugzilla.mozilla.org/show_bug.cgi?id=59314 This Mozilla bug] initially reported in November 2000, fixed today (10 years later).</irony>
