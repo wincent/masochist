@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Ok, found the cause of the [[Rails]] bug I just [/twitter/512 wrote about]; reported in [https://rails.lighthouseapp.com/projects/8994/tickets/6028 Lighthouse ticket 6028].
