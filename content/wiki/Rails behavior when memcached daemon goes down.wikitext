@@ -1,5 +1,6 @@
 ---
 tags: rails memcached
+cache_breaker: 1
 ---
 I was curious about how [[Rails]] would behave if the [[memcached]] server used by an application went offline.
 
