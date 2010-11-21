@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+You think you're [http://blog.extracheese.org/2010/11/screencast-custom-vim-refactorings.html fast at using Vim]?
