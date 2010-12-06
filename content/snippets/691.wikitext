@@ -1,0 +1,4 @@
+---
+tags: aws route.53
+---
+[[Amazon Route 53]] is the new hosted [[DNS]] service in Amazon's [[cloud computing]] empire. Like other parts of [[AWS]], it's designed to be scalable and extremely economic ($1 per zone month, plus $0.50 per million queries, dropping to $0.25 after the first billion). I'm currently using [[Nettica]], which is already high robust and quite cheap too, but it's nice to have options.
