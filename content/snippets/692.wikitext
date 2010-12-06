@@ -1,0 +1,4 @@
+---
+tags:
+---
+Parsing is one of my pet interests, so I'm looking forward to reading [http://arxiv.org/abs/1010.5023 Yacc is dead], and a counter-argument [http://research.swtch.com/2010/12/yacc-is-not-dead.html Yacc is Not Dead].
