@@ -1,0 +1,4 @@
+---
+tags:
+---
+[https://github.com/blog/760-the-tree-slider A treat] from GitHub for users of decent browsers.
