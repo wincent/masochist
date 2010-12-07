@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[http://blogs.computerworlduk.com/simon-says/2010/12/the-risky-cloud/index.htm Dangers of cloud computing]"; there's nothing really new here, nor specific to [[cloud computing]]. If you want to publish something with a reasonable expectation that any major government or large transnational corporation might wish to suppress it, good luck finding a host. Everybody else can just relax and enjoy the benefits of cheap, scalable, robust hosting in the cloud.
