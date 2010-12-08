@@ -1,0 +1,4 @@
+---
+tags:
+---
+Just found [http://wiki.nginx.org/Pitfalls the "Pitfalls" page] on the [[nginx]] wiki, which has a bunch of tips for improving the efficiency, correctness and security of your config file.
