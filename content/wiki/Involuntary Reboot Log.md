@@ -1,5 +1,6 @@
 ---
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 
 I maintain an [Involuntary Reboot Log](/wiki/Involuntary_Reboot_Log) — a series of posts about major system failures ([kernel panics](/wiki/kernel_panics) and [hard resets](/wiki/hard_resets)) — as a means of measuring hardware and software reliability in a relatively objective fashion. By keeping a record of such failures and when they happened I'm able to make assessments of reliability trends (rather than make vague pronouncements like, "I don't think it's crashed in a while") and identify possible patterns and causes.
