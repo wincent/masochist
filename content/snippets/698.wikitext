@@ -1,0 +1,4 @@
+---
+tags: vim command.t
+---
+A [https://github.com/downloads/b4winckler/macvim/MacVim-snapshot-56.tbz new MacVim snapshot] is out (snapshot 56), including a fix for [http://groups.google.com/group/vim_mac/browse_thread/thread/a6c2e541a1382a8d a redraw bug] that affects [[Command-T]].
