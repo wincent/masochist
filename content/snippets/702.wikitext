@@ -1,0 +1,4 @@
+---
+tags:
+---
+According to [http://blinkymach12.blogspot.com/2011/01/stylistic-defaults-and-awareness.html this post], good programmers use variable names like `rgs`, `sRg`, `ixrgs` and `cRgsIxDog`.
