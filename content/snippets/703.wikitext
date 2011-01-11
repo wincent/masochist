@@ -1,0 +1,4 @@
+---
+tags:
+---
+Oracle [http://www.hudson-labs.org/content/hudsons-future continues to get bad press] for being [http://hudson-labs.org/content/whos-driving-thing big and evil].
