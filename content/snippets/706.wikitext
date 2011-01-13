@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://arstechnica.com/web/news/2011/01/googles-dropping-h264-from-chrome-a-step-backward-for-openness.ars/ More] on Google's decision to drop H.264 support from Chrome.
