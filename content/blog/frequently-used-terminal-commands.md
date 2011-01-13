@@ -1,6 +1,7 @@
 ---
 title: Frequently used Terminal commands
 tags: bash zsh
+cache_breaker: 1
 ---
 
 Apparently this "meme" has been spreading rampantly for a while now, but I only just found out about it [here](http://blog.codefront.net/2008/04/18/command-history-meme/), [here](http://diveintomark.org/archives/2008/04/15/history-meme) and [here](http://benjamin.smedbergs.us/blog/2008-04-15/history-meme/).
