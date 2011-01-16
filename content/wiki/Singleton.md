@@ -1,5 +1,6 @@
 ---
 tags: 
+cache_breaker: 1
 ---
 
 I was first exposed to the [singleton](/wiki/singleton) pattern when I started using the [Cocoa](/wiki/Cocoa) [APIs](/wiki/APIs) on [Mac OS X](/wiki/Mac_OS_X). It's a very frequently used pattern there. I dutifully copied the pattern where it seemed appropriate in my own [Objective-C](/wiki/Objective-C) coding.
