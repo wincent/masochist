@@ -1,5 +1,6 @@
 ---
 tags:
+cache_breaker: 1
 ---
 I was first exposed to the [[singleton]] pattern when I started using the [[Cocoa]] [[APIs]] on [[Mac OS X]]. It's a very frequently used pattern there. I dutifully copied the pattern where it seemed appropriate in my own [[Objective-C]] coding.
 
