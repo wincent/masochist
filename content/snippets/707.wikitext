@@ -1,0 +1,4 @@
+---
+tags:
+---
+Google [http://blog.chromium.org/2011/01/more-about-chrome-html-video-codec.html responds] to criticism of its decision to drop H.264 support in Chrome. Their comments confirm [https://wincent.com/twitter/534 the point I made the other day]; that the move will end up bolstering Flash, which is very unfortunate as it is the number one source of browser crashes and is not a worthy technology.
