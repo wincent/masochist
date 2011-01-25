@@ -1,0 +1,4 @@
+---
+tags:
+---
+A new record! [[Mail.app]] informs me that it has synchronized 237 of 18446744073707457165 messages.
