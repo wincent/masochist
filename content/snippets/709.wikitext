@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+[[Amazon Simple Email Service]] is the [http://aws.amazon.com/ses/ latest offering] to be added to the stable of [[AWS]].
