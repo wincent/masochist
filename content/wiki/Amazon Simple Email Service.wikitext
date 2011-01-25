@@ -1,0 +1,9 @@
+---
+tags: aws ses
+---
+[[Amazon Simple Email Service]], [[Amazon SES]], or simply [[SES]] is the bulk email delivery service offered by Amazon as part of its [[Amazon Web Services]].
+
+= Links =
+
+* Official site: http://aws.amazon.com/ses/
+* Getting Started Guide: http://docs.amazonwebservices.com/ses/latest/GettingStartedGuide
