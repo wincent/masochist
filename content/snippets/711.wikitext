@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.youtube.com/watch?v=hE7k0_9k0VA Peter Norvig's shirt].
