@@ -1,0 +1,18 @@
+---
+title: Involuntary Reboot Log 2.15
+tags: involuntary.reboot.log
+---
+Just like entries [/snippets/14 2.9, 2.10, 2.11] and [/snippets/15 2.12, 2.13], this latest one, a [[kernel panic]] is due to buggy Realtek 8187L drivers.
+
+It seems that sometimes when the connection goes down it won't come back no matter how many times you try to rejoin the network, and when you try to reboot you get a kernel panic.
+
+If it weren't for these 8187L-related failures, this would definitely be one of my most reliable machines ever; it would be at a mean time between failures of over 35 days, and climbing, not at the 21.2 days it actually is at.
+
+= Statistics so far =
+
+* Kernel panics: 8
+* Hard resets: 7
+* Total failures: 15
+* Start of recording keeping: 17 March 2010
+* Total days to date: 318 days
+* Average time between failures: 21.2 days
