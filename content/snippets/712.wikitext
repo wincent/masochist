@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[T]he security situation with JavaScript [http://blog.jgc.org/2009/09/javascript-must-die.html is so poor that the only solution] is to kill it". Good luck with that!
