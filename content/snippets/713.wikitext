@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[MacVim]] snapshot 57 [http://groups.google.com/group/vim_mac/browse_thread/thread/5b03d436ba8eeeed is out].
