@@ -1,0 +1,4 @@
+---
+tags: site aws
+---
+Coming up soon on 20 February will be the anniversary of my [/blog/server-migration-now-complete move to the cloud]. Have saved a ''lot'' of money this last year thanks to [[AWS]], and so far hasn't skipped a beat.
