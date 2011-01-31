@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.centos.org/ CentOS] is a repackaging of [[Red Hat Enterprise Linux]], basically just built using Red Hat's source ''sans'' Red Hat logos and trademarks. The sad thing is that while [http://en.wikipedia.org/wiki/CentOS Wikipedia describes] CentOS as "a community-supported, mainly free software operating system based on Red Hat Enterprise Linux", the CentOS website itself describes itself as "an Enterprise-class Linux Distribution derived from sources freely provided to the public by a prominent North American Enterprise Linux vendor." It seems crazy that you can't even refer to the ''name'' of the vendor whose work you're using &mdash; completely legally &mdash; as a basis for your derived work, for fear of litigation. Note here that I am talking about stating the origin of the derivation, not tacitly implying endorsement from the upstream vendor.
