@@ -1,0 +1,6 @@
+---
+redirect: [[fugitive.vim]]
+tags: 
+---
+
+
