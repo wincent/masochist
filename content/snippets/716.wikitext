@@ -1,0 +1,4 @@
+---
+tags:
+---
+A new year's resolution: try to get more done from within [[Vim]], reducing the number of "context switches" I make to and from the terminal every day. As one example, trying to use [[fugitive.vim]] and [[Conque]] more often.
