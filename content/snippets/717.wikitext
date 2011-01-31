@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://sergeitsar.blogspot.com/2011/01/mongodb-vs-clustrix-comparison-part-1.html MongoDB fails] and 100 million fan boys scream out in anger.
