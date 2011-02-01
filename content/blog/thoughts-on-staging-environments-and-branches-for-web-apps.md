@@ -1,6 +1,7 @@
 ---
 title: Thoughts on "staging" environments and branches for web apps
 tags: rails
+cache_breaker: 1
 ---
 
 Until I stepped into the world of [Ruby on Rails](/wiki/Ruby_on_Rails), none of my web development work had ever entertained the notion of having separate "staging" and "production" environments. You simply deployed and if things didn't work you fixed them.
