@@ -1,0 +1,4 @@
+---
+tags:
+---
+[[Amazon]] announces [http://aws.amazon.com/rds/oracle/ forthcoming support for Oracle] in its AWS RDS service. Oracle seems to be the new Microsoft &mdash; that is, the obnoxious 900-pound gorilla romping around and smashing things &mdash; and seems well on the way to becoming "Public Enemy Number One", at least as far as the community of [[open source]] users is concerned. With any luck Oracle will end up going the way of Microsoft; increasingly antiquated and irrelevant.
