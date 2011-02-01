@@ -1,0 +1,67 @@
+---
+title: Site updates 0.32
+tags: site
+---
+Look at commit 42e0f26 for evidence of a breach of discipline on my part. Out of habit, I was working directly on the master branch when [/snippets/19 news of a security vulnerability] in the Mail gem used by [[Rails]] persuaded me to do [/snippets/20 a hasty deployment], even though I suspected that in my app the vulnerability in the gem was unlikely to be exploitable.
+
+The breach of discipline referred to above was that I was working on the master branch when I should have been on a topic branch. I had a bunch of commits already pushed out, but the feature was not yet completed, so I couldn't use the tip of the master branch for deployment purposes.
+
+Now I ''could'' have created another branch containing only the fix (eg. "security") and then deployed that, but I didn't really want to create another branch in the repo that I would then be obliged to keep around forever.
+
+So I created a new branch for my topic (that's the "unobtrusive" branch mentioned in the commit message for 42e0f26) and then rewound the master branch and applied the security fix. This required a forced update when pushing, something which I only allowed myself to do because I am the sole consumer of this particular repo.
+
+Once all this was done, I was free to merge the changes on the master branch into the "unobtrusive" topic branch (although I could have just rebased too, and perhaps I should have in order to hide this little slip up on my part). Finally when the topic was finished I could just merge the "unobtrusive" topic branch back into "master" and delete the former.
+
+Lessons learned?
+
+* be more disciplined about using topic branches when starting on features or refactorings that will take many commits to complete
+* consider reviving the old "maint" branch that I used to use and keeping it around for these cases where you need to deploy a one-commit fix ''right now''
+
+It's funny. I stopped using the "maint" branch a while back because I thought it was a mistake (see [/blog/thoughts-on-staging-environments-and-branches-for-web-apps my blog post], "Thoughts on staging environments and branches for web apps").
+
+Now I'm thinking that I wasn't quite right there; while it's true that equating "master" with "staging" and "maint" with "production" is a mistake, I think this little episode clearly demonstrates the utility of having a "maint" branch which closely tracks the "master" branch, usually lagging a little behind (at the previously deployed commit) so that you can easily push out quick fixes when required. Keeping this kind of branch is dead easy in [[Git]], seeing as it will basically always be fast-forwarded.
+
+<pre>42e0f26 Merge branch 'master' into unobtrusive
+04e90cb Update to Steak 1.0.1
+950d776 Update database_cleaner to 0.6.1
+dc399b6 Update to Capybara 0.4.1.1
+97ce4fa Remove unnecessary require
+a1f119a deploy: bump Bundler version requirement to 1.0.9
+44f91e3 Update to jQuery 1.5
+840b85b Be more radical about avoiding HTML layout around non-HTML requests
+3e879aa Inline template_exists? method in JsController
+88d0e41 Drop unnecessary call to #scoped
+df7b8cb Drop unnecessary parens
+d7df7bb Remove last use of #sort_options method
+3803ccf Remove #sort_options and #default_sort_options (now unused)
+c99119e Rename #arel_sort_options and #default_arel_sort_options
+e49fa5c Replace ternary with more concise && operator
+a5db146 Fix indenting
+d29cfdd Edit lib/sortable for brevity
+bba9ccd Remove unnecessary temporary variable
+5aaf171 Avoid repeated calls to #map in lib/sortable
+d18370b Fix breakage in lib/sortable when no sort param present
+191c0b3 Use define_method rather than class_eval in lib/sortable
+a79fc60 Make controller instance methods added by lib/sortable private
+bbf719a Temporarily revert 840b85b (layout suppression for non-HTML requests)
+089b4b2 Unobtrusive topic deletion with graceful degradation
+8f1379f Make #button_to_destroy_model degrade gracefully
+c3a142c Drop explicit call to polymorphic_path
+71ed189 Implement graceful degredation for comment destruction
+5de7f2b Remove superfluous button_to_destroy_{issue,topic,comment} helpers
+447410a Remove button_to_destroy_page helper
+df6aa2a Update stale routing spec to reflect newly added routes
+96f7a3a Add unobtrusive AJAX-y post deletion in admin/posts
+6240c6f Replace longhand button_to call with shortcut helper call
+810a20d Remove non-functional tag destroy button
+3158b47 Use button_to_destroy_model helper in issue awaiting moderation template
+98ecfdd Add 'ham' button to issue awaiting moderation template
+8ad41e4 Use button_to_destroy_model helper in issues#show
+31b727a Implement link deletion
+11896cb Add destroy button to links#edit
+fd01aac Use #button_to_destroy_model in repos#edit
+00f9340 Use #button_to_destroy_model in snippets#edit
+ac9cf6f Comment out non-functional tag delete button in tags#edit
+c82c3c6 Use #button_to_destroy_model in tweets#edit
+abb624e Mark a tags#edit view spec as pending
+bbe76bd deploy: insist on having Bundler 1.0.10 on the server</pre>
