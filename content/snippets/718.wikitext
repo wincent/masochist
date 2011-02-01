@@ -1,0 +1,4 @@
+---
+tags: jquery
+---
+[[jQuery]] 1.5 [http://blog.jquery.com/2011/01/31/jquery-15-released/ is out].
