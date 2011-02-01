@@ -1,0 +1,4 @@
+---
+tags: jquery
+---
+[http://www.erichynds.com/jquery/using-deferreds-in-jquery/ Excellent intro to "deferreds"] in [[jQuery]] 1.5. I found this considerably clearer than the official documentation.
