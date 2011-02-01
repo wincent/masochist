@@ -1,0 +1,4 @@
+---
+tags: flash
+---
+[http://uxmyths.com/ UX Myths] (User Experience Myths) is a great little site that sets out to debunk myths about web application design. Most of it seems pretty sensible except for "Myth" #18, [http://uxmyths.com/post/717781129/myth-18-flash-is-evil Flash is evil]. That's a not a myth at all. Flash ''is'' evil. It punched me in the arm and rode off on my bike.
