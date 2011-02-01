@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.32
 tags: site
+cache_breaker: 1
 ---
 Look at commit 42e0f26 for evidence of a breach of discipline on my part. Out of habit, I was working directly on the master branch when [/snippets/19 news of a security vulnerability] in the Mail gem used by [[Rails]] persuaded me to do [/snippets/20 a hasty deployment], even though I suspected that in my app the vulnerability in the gem was unlikely to be exploitable.
 
