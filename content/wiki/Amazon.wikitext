@@ -1,5 +1,6 @@
 ---
 tags: amazon
+cache_breaker: 1
 ---
 [[Amazon]], originally an online bookstore, is currently (as of February 2011) the largest online retailer in the US. With the advent of [[Amazon Web Services]] it has also become probably the largest and best-known player in the [[cloud computing]] arena.
 
