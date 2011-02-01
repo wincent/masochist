@@ -1,5 +1,6 @@
 ---
 tags: vim recipe
+cache_breaker: 1
 ---
 
 # Deleting matching lines
