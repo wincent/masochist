@@ -1,4 +1,5 @@
 ---
 tags: walrat
+cache_breaker: 1
 ---
 Just learned about [http://kschiess.github.com/parslet/ Parslet], yet another Ruby [[PEG]] implementation. Back when [http://treetop.rubyforge.org/ Treetop] came out a couple of years ago I remember thinking, meh, guess they didn't know about ''my'' PEG implementation (see [[Walrat]]). Well, let's chalk up another one! I guess everybody has to build their own parser generator and/or compiler at some point; it's kind of a rite of passage. If anybody knows of any non-toy [https://github.com/kschiess/parslet/tree/master/example/ examples] it would be interesting to see them.
