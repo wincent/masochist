@@ -1,0 +1,64 @@
+---
+tags: rails
+---
+Kind of annoyed by the way `request.format` is handled in Rails.
+
+In an ideal world you would be able to do stuff like `request.format.atom?`, `request.format.js?`, `request.format.html?` and have it work robustly as you would expect.
+
+In the actual world, you run into all sorts of subtle problems.
+
+I've found, for example, that while a real browser like Safari sends an HTTP `Accept` header of `application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5` for most requests, the headless browser I'm using in my acceptance specs sends `*/*`.
+
+This means that for any requests for HTML pages made in acceptance specs, `request.format.html?` will return `false`. This in turn will break any specs which depend on that value being accurate. (I had some of these, which change the layout depending on what format the request is in. More on this below.)
+
+Ironically, [[Safari]] will send an `Accept` header of `*/*` when requesting a URL like https://example.com/js/issues/show.js when it encounters the following kind of HTML, despite the explicit `type` attribute:
+
+<pre lang="html"><script src="/js/issues/show.js" type="text/javascript"></script></pre>
+
+Nevertheless, the request succeeds. The same URL requested directly in the browser (by typing it in the location bar) will send the lengthier `Accept` header mentioned above, failing with a "406 Not Acceptable error".
+
+In both cases, `request.format.js?` and `request.format.html?` are useless (both returning false), but things like the following do work, at least some of the time:
+
+<pre lang="ruby">def show
+  respond_to do |format|
+    format.js {
+      # works as you would hope for <script> tags
+      # fails for direct requests (returns 406 Not Acceptable error)
+    }
+  end
+end</pre>
+
+So, evidently `respond_to` is doing something subtly different than `request.format.js?` and other such methods. I haven't dug into to the code yet, but it looks like its examining the extension on the URL when the `Accept` header is `*/*`, and deciding that the appropriate format is the JavaScript one.
+
+You see, the main reason I run into this is that at several times over the years I've had breakage of things like Atom feeds and JavaScript files where they were getting rendered inappropriately inside an HTML layout. I basically came to the shockingly obvious conclusion that you ''never'' want an HTML layout for a non-HTML request, and so wanted to put something like this in my application controller:
+
+<pre lang="ruby">layout Proc.new { |c| c.request.format.html? && 'application' }</pre>
+
+This would set up the "application" layout for use in all HTML requests, and suppress the layout for all others.
+
+But no... it doesn't work for the reasons already stated above. It will work when manually driving the browser, but it will fall down on acceptance tests in the headless browser.
+
+So I'm instead forced to do something much less satisfying; firstly, in the application controller:
+
+<pre lang="ruby"># this one will work for those cases where the user agent
+# happens to send the right Accept header, which will be some of the time
+layout Proc.new { |c|
+  format = c.request.format
+  (format.atom? || format.js?) ? false : 'application'
+}</pre>
+
+And then elsewhere in the app, stuff like:
+
+<pre lang="ruby"># for a JavaScript-only controller:
+layout false</pre>
+
+This doesn't feel right. It would feel right to do this in one place, the application controller, and then override it elsewhere only for special cases. Instead of that, we are doing it in the application controller, and then doing it again elsewhere not for special cases, but for when our general case is failing unexpectedly.
+
+Given that the ability of `respond_to` to correctly identify the appropriate request format is demonstrated, it is frustrating that `request.format` can't do the same. I am beginning to think that perhaps the best workaround is to make my own helper methods which do the right thing in the application controller and dispense with using `request.format` entirely.
+
+'''Update:''' on thinking about it a little more, it would be quite tricky to "do the right thing" exclusively in the application controller thanks to tricky resources like these:
+
+* a wiki article with title "node.js" (path: `/wiki/node.js`)
+* a tag for the same article, "node.js" (path: `/tags/node.js`)
+
+Right now, `GET` requests for such times are correctly processed as HTML requests; if we just blindly acted on the basis of the apparent "extension" then in the `articles#show` and `tags#show` actions then we would end up breaking this behavior. I'm not sure if this is a deal-breaker (it's nearly 5:30 AM), or merely a sign that a general approach would be fine as lone as we put specific overrides in place in those few "tricky" controllers which accept such params that can match arbitrary `/\.[a-z]+$/` patterns.
