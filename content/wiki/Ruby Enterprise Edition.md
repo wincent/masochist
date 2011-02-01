@@ -1,5 +1,6 @@
 ---
 tags: ruby
+cache_breaker: 1
 ---
 
 "[Ruby Enterprise Edition](/wiki/Ruby_Enterprise_Edition)" (REE) is a fork of the official [MRI](/wiki/MRI) implementation of [Ruby](/wiki/Ruby) that patches the memory allocator and garbage collector for better performance.
