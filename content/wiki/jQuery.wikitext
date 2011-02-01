@@ -1,5 +1,6 @@
 ---
 tags: javascript jquery
+cache_breaker: 1
 ---
 [[jQuery]] is a modern, robust and efficient [[JavaScript]] framework, with excellent cross-browser compatibility and an enormous test suite. It is particularly popular among proponents of [[Unobtrusive JavaScript]].
 
