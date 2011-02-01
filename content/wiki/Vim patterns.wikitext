@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 [[Vim]] features a regular expression matching engine which, while roughly as powerful as Perl's, is unfortunately quite different in terms of syntax.
 
