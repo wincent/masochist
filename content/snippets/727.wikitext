@@ -1,0 +1,4 @@
+---
+tags:
+---
+Following up on [/twitter/552 this tweet] from earlier, [http://www.zdnet.com/blog/microsoft/microsoft-we-do-not-copy-googles-results/8557 Microsoft says] they're not really just spying on their users to copy Google's search results, and [http://googleblog.blogspot.com/2011/02/microsofts-bing-uses-google-search.html Google replies] "Oh, yes you are!".
