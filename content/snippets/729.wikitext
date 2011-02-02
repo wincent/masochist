@@ -1,0 +1,4 @@
+---
+tags:
+---
+Not a Hadoop user myself, but love seeing [http://infoworld.com/d/data-management/yahoo-drops-its-own-hadoop-distribution-120 forks turn into mergers].
