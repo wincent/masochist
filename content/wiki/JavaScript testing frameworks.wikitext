@@ -1,0 +1,14 @@
+---
+tags: testing javascript
+---
+= "[[BDD]]" testing frameworks =
+
+* [[JsTestDriver]]
+* [[Jasmine]]
+* [[JSpec]]
+* [[QUnit]]
+* [[Screw.unit]]
+
+= See also =
+
+* All items tagged with "[/tags/javascript javascript]" and "[/tags/testing testing]": https://wincent.com/tags/search?q=javascript+testing
