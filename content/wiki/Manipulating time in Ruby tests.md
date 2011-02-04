@@ -1,5 +1,6 @@
 ---
 tags: ruby testing timecop delorean time.warp
+cache_breaker: 1
 ---
 
 There are lots of possibilities discussed in [this question](http://stackoverflow.com/questions/1215245/ruby-unit-testing-how-to-fake-time-now) on Stack Overflow, "Ruby unit testing: how to fake Time.now?", but basically the answers boil down to:
