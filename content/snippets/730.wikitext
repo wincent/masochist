@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://lwn.net/Articles/425919/ IANA assigns the last IPv4 blocks]. Yep, the last ones, forever.
