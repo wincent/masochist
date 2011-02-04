@@ -1,5 +1,6 @@
 ---
 tags: rails testing
+cache_breaker: 1
 ---
 
 # The pitfall
