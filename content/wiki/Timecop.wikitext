@@ -1,0 +1,10 @@
+---
+tags: ruby testing timecop
+---
+= Official site =
+
+* https://github.com/jtrupiano/timecop
+
+= See also =
+
+* Comparison with other [[Ruby]] time-stubbing libraries: [[Manipulating time in Ruby tests]]
