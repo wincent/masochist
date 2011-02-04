@@ -1,0 +1,10 @@
+---
+tags: ruby testing delorean
+---
+= Official site =
+
+* https://github.com/bebanjo/delorean
+
+= See also =
+
+* Comparison with other [[Ruby]] time-stubbing libraries: [[Manipulating time in Ruby tests]]
