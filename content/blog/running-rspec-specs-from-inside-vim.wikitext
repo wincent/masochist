@@ -1,6 +1,7 @@
 ---
 title: Running RSpec specs from inside Vim
 tags: rspec vim
+cache_breaker: 1
 ---
 Continuing in my experiment with [[Vim]], I was looking for a way to run [[RSpec]] specs from inside vim.
 
