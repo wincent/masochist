@@ -1,0 +1,4 @@
+---
+tags:
+---
+Living dangerously, [/snippets/25 just deployed] using a [[Rails]] release candidate (3.0.4.rc1 to be precise). Normally not one for such shenanigans, but the RC looks pretty solid.
