@@ -1,0 +1,53 @@
+---
+title: Site updates 0.33
+tags: site
+---
+ecbdcb3 Update to Rails 3.0.4.rc1
+404af8e Revert workaround for Rails 3.0.3 routing bug
+5605ffe Add plain text format for snippets#show
+f59d1ef Ensure that model.comments.published gets lazily executed
+ae058f8 Remove unused #ham and #ham_count methods
+93fbbed Drop unused #unmoderated_count method
+45e3a0b Drop unused #published_count method
+0e13327 Use before block instead of helper in commentable specs
+e0ae533 Avoid some more repeated #add_comment calls
+9d48bf8 Add timecop gem
+0490331 Overhaul timestamp-related tests for lib/commentable
+336b129 Fix a spec which was supposed to do an ordered, not unordered comparison
+738e299 Use more descriptive variable names in lib/commentable specs
+936d7e9 Refactor to remove unseemly before block in lib/commentable specs
+ba2e7ae Extract helper method into a module for DRYness in lib/commentable specs
+57066bf Restructure and reword lib/commentable specs for better readability
+72a82ac Lock us to mysql2 0.2.x for now (until Rails 3.1)
+6320bc8 Remove unnecessary historical comment in Gemfile
+79a1889 Switch to Akephalos master branch
+d517e29 Drop mongrel from Gemfile (not needed under Akephalos)
+df6906e Drop RUBYOPT workaround for Bundler bug
+c85359a Remove explicit mail gem from Gemfile
+df88223 Remove unnecessary/unused configurability in exception reporter
+b1d9ba7 Do not explicitly include Capybara in acceptance tests
+349c156 Remove manual reset of Capybara sessions
+165138c Remove Capybara-specific set-up file
+e031189 Remove custom handling of Capybara JavaScript driver
+874624f Rejig Steak support files
+f18bc47 Update to Akephalos 0.2.5
+79a229d Get Vim RSpec formatter working with RSpec 2.4
+523de7c Vim formatter: drop unnecessary require
+21d6676 Growl formatter: drop unnecessary requires
+fa44581 Extract common formatter code
+f40ca5f Drop unnecessary extension from require path
+455d592 Use autotest-rails, not autotest
+c08aa5d Adapt autotest to allow for temporary directory scoping
+c3ab7a9 Add an assertion to a test rather than just expecting it to not throw
+0f6f144 Ruby 1.9: Pathname needs an explicit to_s
+f827098 Re-nest link specs prior to refactoring
+068abea Add Linking module
+5fb0492 Replace code in Article model with new Linking module
+55bac95 Reuse existing LINK_REGEX constant in #wiki_redirect? method
+f0546a3 Raise can take a class rather than an instance
+d4f36ca Make #url_for_link a private method
+ddfbc7a Teach Link model to validate uri
+adc11c4 Update Article redirect validation message for consistency
+e0a42ce Add #redirection_url method to Link model
+2e7d5b8 Teach links#show to use the Link#redirection_url method
+c369c97 Show link to raw format on snippets#show page
