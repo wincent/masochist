@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+According to [http://www.ruby-forum.com/topic/143266 these guys], [/twitter/567 implicit string concatenation] in [[Ruby]] does occur during lexing/parsing, prior to runtime evaluation.
