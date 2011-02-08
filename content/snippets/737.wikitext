@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+Wow. Just learned that [[Ruby]] does implicit string concatenation, just like [[C]] does (ie. `"foo" "bar"` evaluates to `"foobar"`). I wonder whether it is actually doing a message send to join the strings, or whether this is happening at the lexer/parser level prior to evaluation.
