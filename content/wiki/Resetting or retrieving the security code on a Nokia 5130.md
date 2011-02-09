@@ -1,5 +1,6 @@
 ---
 tags: nokia 5130
+cache_breaker: 1
 ---
 
 # Resetting the code
