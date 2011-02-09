@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+4 security vulnerabilities just reported in [[Rails]] (see [https://wincent.com/tags/search?q=rails+cve Rails CVEs]). My initial assessment is that 2 of them are complete non-issues for my configuration, 1 is likely to be non-exploitable in my app, and the last one looks to be fairly low-risk. Nevertheless, working now on deploying with Rails 3.0.4 (which includes fixes for all 4 issues).
