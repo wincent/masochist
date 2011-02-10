@@ -1,0 +1,11 @@
+---
+tags: leopard mysql
+---
+Based on instructions found [http://akrabat.com/computing/uninstalling-mysql-on-mac-os-x-leopard/ here]:
+
+<pre lang="shell">$ sudo mysqladmin shutdown
+$ sudo rm -rf /usr/local/mysql*
+$ sudo rm -rf /Library/StartupItems/MySQLCOM
+$ sudo rm -rf /Library/Receipts/mysql*
+$ sudo rm -rf /Library/Receipts/MySQL*
+$ sudo vim /etc/hostconfig # remove the MYSQLCOM line</pre>
