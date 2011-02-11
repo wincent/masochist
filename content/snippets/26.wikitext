@@ -1,6 +1,7 @@
 ---
 title: On the recent Rails CVEs
 tags: rails
+cache_breaker: 1
 ---
 Following up on [/twitter/569 my earlier tweet] about the just-announced [[Rails]] vulnerabilities.
 
