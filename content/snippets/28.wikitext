@@ -1,0 +1,11 @@
+---
+title: Web server market share trends, February 2011
+tags: nginx
+---
+It's been a couple of years since [/blog/kool-aid-drinking-rails-fanbois-flocking-to-phusion-passenger-in-inebriated-droves I last looked] at the NetCraft server survey.
+
+Nice to see that in [http://news.netcraft.com/archives/2011/02/15/february-2011-web-server-survey.html the latest installment of the survey], [[nginx]] has risen  [http://news.netcraft.com/archives/2009/02/18/february_2009_web_server_survey.html from] 1.60% to 7.57% market share (in absolute numbers this corresponds to an increase of about 17 million servers).
+
+Also nice to see is how Microsoft's market share has dropped from about 29% down to around 20%, the lion's share of which seems to have gone to Apache, whose market share rose from 48.59% to 60.10%. Microsoft's loss represents not only a drop in market share, but also a drop in absolute numbers from around 63 million servers down to 57 million.
+
+Good to see superior [[open source]] products trumping meritless proprietary cruft.
