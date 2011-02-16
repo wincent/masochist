@@ -1,6 +1,7 @@
 ---
 title: Kool-aid-drinking Rails "fanbois" flocking to Phusion Passenger in inebriated droves
 tags: nginx passenger
+cache_breaker: 1
 ---
 
 Ok, the post title was just to grab your attention.
