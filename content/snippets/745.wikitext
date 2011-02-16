@@ -1,0 +1,4 @@
+---
+tags:
+---
+I'd never heard of HBGary, but supposedly they are "security experts". [http://arstechnica.com/tech-policy/news/2011/02/anonymous-speaks-the-inside-story-of-the-hbgary-hack.ars/ This article] for a fairly non-technical audience goes into detail about their total failure with respect to securing their own servers.
