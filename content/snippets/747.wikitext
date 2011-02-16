@@ -1,0 +1,4 @@
+---
+tags:
+---
+[https://github.com/mojombo/egitd An invention] born out of [http://en.wikipedia.org/wiki/Not_Invented_Here Not Invented Here Syndrome], apparently broken (don't know, never had any interest at all in trying it), and one person's [http://andrew.hijacked.us/article/324/optimizing-egitd-introduction attempt to fix it].
