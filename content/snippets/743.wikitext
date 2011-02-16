@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://people.mozilla.com/~prouget/ie9/ A Mozilla developer explains] why he doesn't consider IE9 to be a "modern" browser. [http://blogs.msdn.com/b/tims/archive/2011/02/15/a-modern-browser.aspx Microsoft replies that yes it is], after redefining what "modern" means.
