@@ -1,6 +1,7 @@
 ---
 title: Web server market share trends, February 2011
 tags: nginx
+cache_breaker: 1
 ---
 It's been a couple of years since [/blog/kool-aid-drinking-rails-fanbois-flocking-to-phusion-passenger-in-inebriated-droves I last looked] at the NetCraft server survey.
 
