@@ -1,0 +1,4 @@
+---
+tags: command.t
+---
+Cool. [https://github.com/tmm1 Aman Gupta] has added [[Command-T]]-like functionality [https://github.com/blog/793-introducing-the-file-finder directly in your browser] while viewing repos on GitHub.
