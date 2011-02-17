@@ -1,0 +1,4 @@
+---
+tags:
+---
+Dear oh dear, `bundle update` (and friends) is still all too slow. I know the GemCutter people [http://groups.google.com/group/gemcutter/browse_thread/thread/53be5eb64be79a86 were discussing the problem], but sadly no advances have been made yet.
