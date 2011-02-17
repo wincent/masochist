@@ -1,5 +1,6 @@
 ---
 tags: steak
+cache_breaker: 1
 ---
 [[Steak]] is a minimalist acceptance testing framework for [[Rails]] built on top of [[RSpec]].
 
