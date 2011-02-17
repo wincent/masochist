@@ -1,5 +1,6 @@
 ---
 tags: capybara
+cache_breaker: 1
 ---
 
 [Capybara](/wiki/Capybara) provides a [Ruby](/wiki/Ruby) [DSL](/wiki/DSL) for interacting with web applications for the purposes of testing. It offers multiple "drivers" for interacting with the application via various mechanisms (for example, via Rack, or Culerity, or Selenium) but the discrepancies among these backend mechanisms are abstracted away behind the DSL.
