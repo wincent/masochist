@@ -1,0 +1,31 @@
+---
+title: Site updates 0.34
+tags: site
+---
+ec4cff0 Flush snippets cache when comment added or otherwise modified
+44cfed2 Teach #nested_comment_path to handle comments on snippets
+56b710e Teach #link_to_parent helper about snippets
+bb06a7d Add specs for #link_to_parent
+67c131c Drop #link_to_parent helper
+bdeef4f Use #tweet_title helper in #link_to_commentable
+2c2705b Simplify path generation in #link_to_commentable
+d0b9e70 Remove some duplication in the #link_to_commentable helper
+9a33b8c Remove unused methods
+381a759 Slight future-proofing of #polymorphic_comments_path method
+7e59f59 Avoid an "N + 1" SELECT issue
+e5d2171 Simplify path generation in #taggable_link helper
+a95e945 Merge redundant 'when' clause
+3f6a4c2 Refactor #taggable_link for brevity
+08e9354 Replace unnecessary #send with normal method call
+87add36 Refactor #link_to_commentable for brevity
+956fb98 Brevity in code comments is the soul of wit
+90b49bd Simplify #nested_comment_path method
+e3cdef0 Future-proof #nested_comment_path method
+eb4f974 Move #nested_comment_path in CommentsController
+6992375 Use shorter "raise" syntax
+95b7655 Rename #taggable_link to #link_to_model, and move it
+bb3bb4a Add some missing specs for the #link_to_model method
+461a649 Work around Rails' "magical" constant unloading side-effects in development
+73ff436 Fix a couple of specs broken in recent refactorings
+7bfe307 Merge #link_to_commentable method into #link_to_model method
+e586925 Fix spec breakage caused by sensitive #polymorphic_comments_path method
