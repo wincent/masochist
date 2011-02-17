@@ -1,5 +1,6 @@
 ---
 tags: gpg
+cache_breaker: 1
 ---
 Notes made while installing [[GnuPG]] on a very old PowerBook. For comparison with the process on a newer, 64-bit machine, see "[[Installing GnuPG 1.4.10 on Mac OS X 10.6.2 Snow Leopard]]".
 
