@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+[[Amazon]] doesn't rest: [http://docs.amazonwebservices.com/AmazonS3/latest/dev/WebsiteHosting.html new changes] make it possible to host entire static sites directly on [[S3]].
