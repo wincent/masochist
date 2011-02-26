@@ -1,0 +1,4 @@
+---
+tags:
+---
+[https://github.com/scrooloose/syntastic Syntastic] is a syntax-checking plug-in for [[Vim]].
