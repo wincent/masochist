@@ -1,0 +1,4 @@
+---
+tags:
+---
+Funny [http://teddziuba.com/2011/02/stupid-unix-tricks-workflow-control-with-gnu-make.html use of make] on the network to glue together a sequence of fragile, dependent operations.
