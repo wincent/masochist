@@ -1,5 +1,6 @@
 ---
 tags: rspec css webrat xpath
+cache_breaker: 1
 ---
 
 # [RSpec](/wiki/RSpec)
