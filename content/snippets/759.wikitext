@@ -1,0 +1,4 @@
+---
+tags: ssh macfuse sshfs
+---
+Wanting to mount remote filesystems over [[SSH]] using MacFUSE and SSHFS? [http://www.turingtarpit.com/2009/04/mounting-remote-filesystems-on-osx-leopard-using-sshfs-macfuse-and-macfusion/ Here is a great write-up on how to do so].
