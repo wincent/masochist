@@ -1,0 +1,6 @@
+---
+tags: ssh
+---
+<pre lang="shell">$ ssh-keygen -p -f .ssh/id_dsa</pre>
+
+Note this works for adding  a passphrase to an unencrypted key, and also for removing a passphrase from an encrypted key.
