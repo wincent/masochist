@@ -1,5 +1,6 @@
 ---
 tags: development os.x
+cache_breaker: 1
 ---
 
 [BBEdit](/wiki/BBEdit) is a text editor for [Mac OS X](/wiki/Mac_OS_X) popular among developers and web designers. It's principal competition comes from [TextMate](/wiki/TextMate).
