@@ -1,5 +1,6 @@
 ---
 tags: nginx snow.leopard
+cache_breaker: 1
 ---
 
 **Note:** these notes show the use [gpg](/wiki/gpg) which is not a standard part of [Mac OS X](/wiki/Mac_OS_X). See "[Installing GnuPG 1.4.11 on Mac OS X 10.6.6 Snow Leopard](/wiki/Installing_GnuPG_1.4.11_on_Mac_OS_X_10.6.6_Snow_Leopard)" for details.
