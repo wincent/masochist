@@ -1,0 +1,5 @@
+---
+tags: git tag
+---
+<pre lang="shell">$ git tag -d doomed-tag
+$ git push origin :refs/tags/doomed-tag</pre>
