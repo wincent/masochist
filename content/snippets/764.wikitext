@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Cool, just discovered the joys of the `submodule.<name>.ignore` [http://www.kernel.org/pub/software/scm/git/docs/gitmodules.html setting]. [http://git.wincent.com/wincent.git/commitdiff/7505e264e5df359d2b329cba3c60aa25cba0ebf7 Example use].
