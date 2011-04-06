@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+[[Rails]] 3.0.6 [http://weblog.rubyonrails.org/2011/4/6/rails-3-0-6-has-been-released is out].
