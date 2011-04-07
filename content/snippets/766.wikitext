@@ -1,0 +1,4 @@
+---
+tags: bash
+---
+A [[Bash]] shortcut I keep forgetting: `Ctrl-k` to kill (delete) to the end of the line.
