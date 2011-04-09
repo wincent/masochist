@@ -1,0 +1,8 @@
+---
+tags: iterm.2
+---
+
+# See also
+
+-   Official site: <http://www.iterm2.com/>
+
