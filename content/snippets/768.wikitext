@@ -1,0 +1,4 @@
+---
+tags: iterm.2
+---
+Trying out [[iTerm 2]] because I am sick of [[Vim]] looking so ugly in the [[Snow Leopard]] [[Terminal]] due to its lack of 256-color support. Observations so far: its rendering looks to be about half as fast as the Snow Leopard Terminal, but other than that it looks pretty solid.
