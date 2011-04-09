@@ -1,0 +1,30 @@
+---
+title: Site updates 0.35
+tags: site
+---
+7e0e77c Bundle update (rspec, database_cleaner, factory_girl)
+10c4529 Make sure autotest uses Bundler
+a615b26 Update to Rails 3.0.4 from 3.0.4.rc1
+72be953 Remove legacy files
+35e562e Merge branch 'maint'
+8299729 Bundle update Rails to 3.0.5
+430ec07 script/mysqld: use Bundler to run rake tasks
+5634f3c script/mysqld: automatically run hdiutil detach when shutting down
+54c28a2 script/mysqld: tweaks to run on new system
+590f9d8 script/mysqld: actually abort when not run from Rails root
+1e1e9dc script/mysqld: be quiet when unmounting ramdisk
+09d9f46 script/mysqld: mount ramdisk as case-sensitive HFS
+8d83953 script/mysqld: don't advise how to unmount ramdisk
+93e72f8 Reminimize JavaScript with the latest version of Closure compiler
+60152e2 Update to config/boot.rb from Rails 3.0.5
+4b1c7e1 Update to Rails 3.0.6.rc2
+a616356 Add initial version of script/staging, under development
+764e317 script/staging: add zone class for listing zones
+feb2087 script/staging: add methods for inspecting instance attributes
+8103e7c script/staging: simplify describe_instances method
+81c4867 script/staging: add reservation and id_str attributes
+54a9647 script/staging: find Rails instance and print the latest completed snapshot ids
+775e042 script/staging: rename mount_point to device
+29f3e68 script/staging: improvements to the Volume model
+fc09a3b script/staging: map out future direction
+3792f5b Update to Rails 3.0.6
