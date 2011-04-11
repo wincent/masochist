@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] tip: jump to a specific line when opening a file with `vim file.txt +123`
