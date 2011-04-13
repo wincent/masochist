@@ -1,0 +1,4 @@
+---
+tags: vim iterm.2
+---
+So I was trying [[iTerm 2]] to see if the [[Vim]] syntax highlighting looked any better with 256 colors. Alas, it doesn't really... So back to the [[Apple]] [[Terminal]] for now.
