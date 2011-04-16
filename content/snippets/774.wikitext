@@ -1,0 +1,4 @@
+---
+tags: rspec css webrat capybara nokogiri
+---
+[https://gist.github.com/922147 This gist] provides lightweight [[CSS]] matching without [[Webrat]] or [[Capybara]] (thin [[RSpec]] wrapper over [[Nokogiri]]).
