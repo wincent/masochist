@@ -1,4 +1,5 @@
 ---
 tags: mail.app
+cache_breaker: 1
 ---
 Getting rather annoyed with [[Mail.app]]: for well over three hours now I've been trying to get it to send an email, but it is hanging almost indefinitely during SMTP authentication. Tested Thunderbird and it works fine. Additionally annoying, of the three accounts I have configured, two don't work, and any stalled mail from one of the non-working accounts prevents mail from going out through the working one.
