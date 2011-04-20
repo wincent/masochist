@@ -1,0 +1,10 @@
+---
+title: Site updates 0.36
+tags: site updates
+---
+81bf715 Update to Rails 3.0.7.rc1
+8252064 Update to Rails 3.0.7.rc2
+67d4830 Fix broken and commented-out articles#show view spec
+c758528 Add #redirected_from helper for custom admin logic
+0bbecc2 Flesh out #redirected_from specs
+a81b265 Update to Rails 3.0.7
