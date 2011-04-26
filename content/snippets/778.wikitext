@@ -1,0 +1,4 @@
+---
+tags: comcast cable
+---
+Just got Comcast cable at home and the fairly non-scientific [http://www.speedtest.net/ speed test] results are: 18.02 Mbps down, 4.17 Mbps up. Not bad for $19.95 a month.
