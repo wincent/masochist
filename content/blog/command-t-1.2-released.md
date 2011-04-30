@@ -1,6 +1,7 @@
 ---
 title: Command-T 1.2 released
 tags: releases command.t
+cache_breaker: 1
 ---
 
 I've just released version 1.2 of the [Command-T](/wiki/Command-T) plug-in, a powerful, [open source](/wiki/open_source) file and buffer-navigation plug-in inspired by the "Command-T" feature in [TextMate](/wiki/TextMate).
