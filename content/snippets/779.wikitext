@@ -1,0 +1,4 @@
+---
+tags: javascript zombie
+---
+[http://zombie.labnotes.org/ zombie.js] looks very interesting. Could it be that we'll soon have (may already have) a fast, headless browser for full-stack testing, without relying on any bloated Java?
