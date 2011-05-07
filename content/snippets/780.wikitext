@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+How to open a new scratch buffer in [[Vim]]: `:enew` (or `:ene` for short)... I always forget this.
