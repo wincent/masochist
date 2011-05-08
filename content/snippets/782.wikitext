@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://www.reddit.com/r/programming/comments/h4vxq/lastpass_setting_an_example_for_all/ Entrusting all your passwords to a third party running in the cloud]. Can't see myself ever doing that.
