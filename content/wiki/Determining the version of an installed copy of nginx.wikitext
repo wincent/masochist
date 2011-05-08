@@ -1,0 +1,6 @@
+---
+tags: nginx
+---
+<pre lang="shell">$ /usr/nginx/sbin/nginx -v</pre>
+
+The actual path to [[nginx]] may vary.
