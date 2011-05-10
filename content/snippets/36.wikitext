@@ -1,0 +1,14 @@
+---
+title: Involuntary Reboot Log 3.3
+tags: involuntary.reboot.log
+---
+User error. Pressed the power button too long on waking from sleep.
+
+= Statistics so far =
+
+* Kernel panics: 0
+* Hard resets: 3
+* Total failures: 3
+* Start of recording keeping: 14 March 2011
+* Total days to date: 57 days
+* Average time between failures: 19 days
