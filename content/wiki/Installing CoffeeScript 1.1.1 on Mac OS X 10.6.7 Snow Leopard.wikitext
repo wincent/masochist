@@ -1,0 +1,11 @@
+---
+tags: coffeescript os.x
+---
+We install via [[npm]], so we have a couple of prerequisites:
+
+* [[node.js]]: see "[[Installing node.js 0.4.7 on Mac OS X 10.6.7 Snow Leopard]]"
+* [[npm]]: see "[[Installing npm 1.0.6 on Mac OS X 10.6.7 Snow Leopard]]"
+
+The actual installation is simple:
+
+<pre lang="shell">$ npm install -g coffee-script</pre>
