@@ -1,0 +1,8 @@
+---
+tags: npm node
+---
+[[npm]] or [[node package manager]] is a package manager for [[node.js]].
+
+= Official Site =
+
+* http://npmjs.org/
