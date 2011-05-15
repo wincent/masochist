@@ -1,5 +1,6 @@
 ---
 tags: rubygems
+cache_breaker: 1
 ---
 The RubyGems team has gone on a deprecation frenzy, meaning that after running `sudo gem update --system` every `gem` command is likely to spew a bunch of deprecation warnings across the screen.
 
