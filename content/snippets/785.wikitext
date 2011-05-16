@@ -1,0 +1,4 @@
+---
+tags: rails haml
+---
+Trying to figure out why any [[Haml]] template that includes a partial seems to be broken under the [[Rails]] 3.1 beta.
