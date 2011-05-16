@@ -1,0 +1,4 @@
+---
+tags: xcode
+---
+Just discovered that support for external editors (ie. [[Vim]]) has been removed in [[Xcode]] 4. Ouch, baby. Very ouch.
