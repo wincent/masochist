@@ -1,5 +1,6 @@
 ---
 tags: development
+cache_breaker: 1
 ---
 
 The [BSD license](/wiki/BSD_license) is one of the big two [open source](/wiki/open_source) [free software licenses](/wiki/free_software_licenses) (the other is the [GPL](/wiki/GPL)). Whereas the GPL is the most well-known and widely-used example of a "non-permissive" free software license, the BSD license is probably the most well-known and widely-used "permissive" free software license.
