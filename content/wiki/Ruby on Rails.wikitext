@@ -1,5 +1,6 @@
 ---
 tags: ruby rails
+cache_breaker: 1
 ---
 [[Ruby on Rails]] is a web application stack written in [[Ruby]] with a focus on "convention over configuration", testing, and rapid application development.
 
