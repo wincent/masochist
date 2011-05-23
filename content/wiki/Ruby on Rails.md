@@ -1,5 +1,6 @@
 ---
 tags: ruby rails
+cache_breaker: 1
 ---
 
 [Ruby on Rails](/wiki/Ruby_on_Rails) is a web application stack written in [Ruby](/wiki/Ruby) with a focus on "convention over configuration", testing, and rapid application development.
