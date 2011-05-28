@@ -1,5 +1,6 @@
 ---
 tags: development ragel
+cache_breaker: 1
 ---
 
 [Ragel](/wiki/Ragel) is a finite state machine compiler capable of generating [C](/wiki/C), [Objective-C](/wiki/Objective-C), and other types of code.
