@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Rails 3.1 progress: `4388 examples, 23 failures`. Almost there.
