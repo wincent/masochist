@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 "ICMP echo request called. He wants his reply back" (via [http://protolol.com/post/6279949657/icmp-echo-request-called-he-wants-his-reply-back protolol]).
