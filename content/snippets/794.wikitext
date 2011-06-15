@@ -1,0 +1,4 @@
+---
+tags: capybara
+---
+[http://groups.google.com/group/ruby-capybara/browse_thread/thread/b4568c21b36225ff Capybara 1.0.0 is out].
