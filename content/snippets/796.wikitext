@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Down with `gdgg`, long live `:%d`... or at least I think so (not entirely sure whether 2 shifted and 1 unshifted character beats 4 unshifted characters).
