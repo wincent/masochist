@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Two motions not to forget when editing [[HTML]] or [[ERB]]: `it` and `at` (eg. `vit` to do a visual selection inside a tag, `vat` to do a visual selection of a tag and its contents).
