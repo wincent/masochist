@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://schmichael.com/files/schmongodb/Scaling%20with%20MongoDB%20%28with%20notes%29.pdf How to scale MongoDB] by switching to PostgreSQL.
