@@ -1,0 +1,6 @@
+---
+tags:
+---
+<pre lang="shell">$ cat file.text | awk '{print length, $0}' | sort -nr | head -1</pre>
+
+Source: http://wtanaka.com/node/7719
