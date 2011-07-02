@@ -1,0 +1,12 @@
+---
+tags: solarized
+---
+[[Solarized]] is a highly readable color scheme for textual environments (editors, [[command lines]] etc).
+
+= Official site =
+
+* http://ethanschoonover.com/solarized
+
+= Other links =
+
+* Color presets for the [[Mac OS X]] [[Lion]] [[Terminal.app]]: https://github.com/tomislav/osx-lion-terminal.app-colors-solarized
