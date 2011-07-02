@@ -1,0 +1,6 @@
+---
+redirect: [[command line]]
+tags: 
+---
+
+
