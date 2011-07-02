@@ -1,0 +1,8 @@
+---
+tags: os.x
+---
+[[Terminal.app]] is the official [[Terminal]] application shipped by [[Apple]] with [[Mac OS X]].
+
+It was fairly primitive in early versions of Mac OS X, but a number of improvements have been added over the years which have made it into quite a nice [[command line]] interface.
+
+The most viable alternative on Mac OS X is [[iTerm 2]].
