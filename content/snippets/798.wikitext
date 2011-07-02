@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] trick of the day: `g,` to jump back to where you last were.
