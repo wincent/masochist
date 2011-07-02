@@ -1,4 +1,5 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 [[Vim]] tip: just yanked text and want to paste it somewhere, but ended up deleting something first, thus overwriting the yanked text in the unnamed register? Use register 0: `"0p` &mdash; it holds the last-yanked text. Registers 1 through 9 hold recently deleted text.
