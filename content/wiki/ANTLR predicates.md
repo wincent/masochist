@@ -1,5 +1,6 @@
 ---
 tags: antlr
+cache_breaker: 1
 ---
 
 This page provides an overview of the different types of predicate available in [ANTLR](/wiki/ANTLR):
