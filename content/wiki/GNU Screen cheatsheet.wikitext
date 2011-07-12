@@ -1,0 +1,6 @@
+---
+tags: screen
+---
+= Create a new, named [[Screen]] session =
+
+<pre lang="shell">$ screen -S overnighters</pre>
