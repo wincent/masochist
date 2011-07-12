@@ -1,5 +1,6 @@
 ---
 tags: screen
+cache_breaker: 1
 ---
 = Official site =
 
