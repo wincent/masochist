@@ -1,0 +1,4 @@
+---
+tags: lion
+---
+While [http://arstechnica.com/apple/reviews/2011/07/mac-os-x-10-7.ars/1 John Siracusa's review] of [[Lion]] is, as always, impossibly pedantic, I certainly see eye to eye with him as far as [http://arstechnica.com/apple/reviews/2011/07/mac-os-x-10-7.ars/12 his dissatisfaction] with Apple's [[HFS+]] goes.
