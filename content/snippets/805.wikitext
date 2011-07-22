@@ -1,0 +1,4 @@
+---
+tags: lion surprise
+---
+[[Lion]] surprise: the whole whole-disk encryption thing was unexpected, but a welcome change. Seems much more elegant than those sparse disk images used by the old FileVault.
