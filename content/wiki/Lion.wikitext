@@ -1,0 +1,6 @@
+---
+tags: lion os.x
+---
+[[Lion]] is version 10.7 of [[Mac OS X]], released 20 July 2011.
+
+For information about dates and other versions see [[Mac OS X timeline]].
