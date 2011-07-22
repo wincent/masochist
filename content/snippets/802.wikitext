@@ -1,4 +1,5 @@
 ---
 tags: lion surprise
+cache_breaker: 1
 ---
 The `~/Library` folder is now hidden by default, although you can still [http://hints.macworld.com/article.php?story=20110720140120641 get to it] in the [[GUI]] or [http://hints.macworld.com/article.php?story=20110704093233123 unhide it]. (I suspect that last one might end up getting undone with every point update of the [[OS]], though.)
