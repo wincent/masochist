@@ -1,0 +1,4 @@
+---
+tags: xcode lion
+---
+[[Xcode]] 4.1 for [[Lion]] is free again, as it always should have been.
