@@ -1,0 +1,4 @@
+---
+tags: lion surprises
+---
+Return your [[Finder]] and [[Mail.app]] "sidebar" icons to a more reasonable size with [http://hints.macworld.com/article.php?story=20110720153625822 this hint]. (I haven't really had time to explore any of the system-wide or per-application preferences properly, but I have been browsing Mac OS X Hints.)
