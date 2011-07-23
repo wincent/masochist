@@ -1,0 +1,6 @@
+---
+tags: finder os.x
+---
+= See also =
+
+* [[Wikipedia]] article on the [[Finder]]: http://en.wikipedia.org/wiki/Finder_%28software%29
