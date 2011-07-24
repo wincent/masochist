@@ -1,0 +1,36 @@
+---
+tags: bash
+---
+`man bash` has a wealth of information on redirection (grep for `REDIRECTION`) but here is a quick cheat sheet:
+
+= Redirect nothing =
+
+<pre lang="shell">$ command</pre>
+
+= Redirect standard out =
+
+<pre lang="shell">$ command > target</pre>
+
+= Redirect standard error =
+
+<pre lang="shell">$ command 2> target</pre>
+
+= Redirect standard error and standard out =
+
+<pre lang="shell">$ command > target &2>1</pre>
+
+Or, as short-hand:
+
+<pre lang="shell">$ command &> target</pre>
+
+Redirecting to a command rather than a file or device:
+
+<pre lang="shell">$ command 2>&1 | mail username@localhost</pre>
+
+Redirecting ''and'' displaying, using `tee`:
+
+<pre lang="shell">$ command 2>&1 | tee target</pre>
+
+Appending rather than clobbering:
+
+<pre lang="shell">$ command >> target &2>1</pre>
