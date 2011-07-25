@@ -1,0 +1,44 @@
+---
+tags: mail.app gmail
+---
+There are plenty of articles on how to do this out there, as well as official instructions from Google, but the most useful write-up I've found is [http://complexdiagrams.com/2009/01/imap-for-gmail-mailapp-iphone/ this one].
+
+Note that the advice here actually contradicts Google's advice, but seems to work well in practice:
+
+# Set up Gmail settings:
+## Under "Forwarding and POP/IMAP":
+### Under "IMAP Access:"/"Status:", select "Enable IMAP"
+### Under "Auto-Expunge", select "Do not automatically expunge messages"
+### Under "When a message is expunged from the last visible IMAP folder", "Move the message to the Trash"
+## Under "Labels":
+### Only "Show in IMAP" the following folders:
+###* "Sent Mail"
+###* "Drafts"
+###* "Spam"
+###* "Trash"
+# Set up [[Mail.app]]:
+## Under "Preferences" > "Accounts" > [your Gmail account] > "Mailbox Behaviors":
+### Under "Drafts", check the box, "Store draft messages on the server"
+### Under "Sent":
+#### Check the box, "Store sent messages on the server"
+#### Make sure "Delete sent messages when" is set to "Never"
+### Under "Junk":
+#### Check the box, "Store junk messages on the server"
+#### Make sure "Delete junk messages when" is set to "Never"
+### Under "Trash":
+#### Check the box, "Move deleted messages to the Trash mailbox"
+#### Check the box, "Store deleted messages on the server"
+#### Make sure "Permanently erase deleted messages when" is set to "One month old"
+## Trust Gmail to handle filtering of your Gmail account, which means turning off junk mail filtering; in my case, as I use SpamSieve and want to continue using it for my other accounts, I set up a special rule to stop processing further rules for any messages coming into my Gmail account, and all other messages will hit the next rule which is SpamSieve's own "handle everything" rule.
+## Tell Mail.app to use Gmail's folders for Sent, Drafts, Trash and Junk, by selecting the corresponding folders ("[Gmail] Sent Mail" and so on) and then choosing "Use This Mailbox For" from the "Mailbox" menu
+# Set up the Gmail account on the iPhone; under "Settings" > "Mail, Contacts, Calendars" > [your Gmail account]
+## Make sure "Mail" is turned on (I have "Notes" turned off, instead syncing those with my own IMAP account on my own server)
+## Under the account settings, in the "Advanced" section:
+### Set "Drafts Mailbox" to your Gmail Drafts mailbox
+### Set "Sent Mailbox" to your Gmail Sent Mail mailbox
+### Set "Deleted Mailbox" to your Gmail Trash mailbox
+### Make sure "Deleted Messages" > "Remove" is set to "After one month"
+
+So these instructions differ from Google's official instructions in that it recommends that you don't store sent messages on their servers. In the past, it was reported that this would cause duplicates to appear in your local mail client, but this no longer seems to be the case.
+
+Likewise, there should be no problem with keeping deleted messages on the server either.
