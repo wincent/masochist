@@ -1,0 +1,4 @@
+---
+tags: lion
+---
+The Address Book in [[Lion]] at last allows you to enter yearless birthdays. Shame the rest of the UI is horrid.
