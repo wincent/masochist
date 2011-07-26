@@ -1,5 +1,6 @@
 ---
 tags: lion
+cache_breaker: 1
 ---
 
 [Lion](/wiki/Lion) introduces new window animations which make things like spawning new windows frustratingly sluggish on underpowered or overloaded machines (and mine generally tends to be both of those things!). Instead of appearing instantly, windows will noticeably stutter as they grow, shrink or move into position.
