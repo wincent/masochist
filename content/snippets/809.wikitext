@@ -1,4 +1,5 @@
 ---
 tags: lion airport
+cache_breaker: 1
 ---
 Interesting to see that [http://osxdaily.com/2011/07/22/wifi-dropping-in-os-x-lion-fixes/ I am not the only one] who has noticed that the the Wi-Fi on [[Mac OS X]] [[Lion]] seems to be a little flakey. Since upgrading I've found that the connection has gone dead on several occasions, despite excellent signal strength and I've had to turn AirPort off and back on again to kick the connection back to life.
