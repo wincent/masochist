@@ -1,0 +1,4 @@
+---
+tags: lion surprises
+---
+In [[Mac OS X]] [[Lion]] Server, [[PostgreSQL]] replaces [[MySQL]] as the pre-installed database server.
