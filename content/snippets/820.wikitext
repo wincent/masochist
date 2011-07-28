@@ -1,0 +1,4 @@
+---
+tags: vim surround
+---
+Something I always forget with [[surround.vim]]: if you specify the thing to surround as left bracket, you get an additional space of padding. If you instead use a right bracket, you don't.
