@@ -1,0 +1,4 @@
+---
+tags: mail.app
+---
+On the subject of my Mail.app unread count problems, I notice that a couple files in my `~/Library/Mail` folder have values of 9223372036854775807, which happens to be the largest positive number you can represent in a signed 64-bit integer. The values in question are `MailboxUnreadCount` in `mboxes.INBOX` in `.mboxCache.plist`, and `IMAPMailboxUnseenCount` in `<nowiki>IMAP-account@example.com</nowiki>/INBOX.mbox/Info.plist`.
