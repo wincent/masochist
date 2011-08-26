@@ -1,0 +1,4 @@
+---
+tags: lion wifi os.x
+---
+[[Mac OS X]] [[Lion]] 10.7.1 is out. Notably, [http://support.apple.com/kb/HT4764 boasts] improvements to "the reliability of Wi-Fi connections".
