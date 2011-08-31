@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+The official [[Rails]] [[API]] docs ([http://api.rubyonrails.org/ api.rubyonrails.org]) are finally in a usable state, thanks to [http://weblog.rubyonrails.org/2011/8/29/the-rails-api-switches-to-sdoc the same tools] used to power [http://railsapi.com/ railsapi.com].
