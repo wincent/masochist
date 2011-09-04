@@ -1,5 +1,6 @@
 ---
 tags: rvm os.x
+cache_breaker: 1
 ---
 Follow the instructions from https://rvm.beginrescueend.com/rvm/install/:
 
