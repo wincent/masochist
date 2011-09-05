@@ -1,0 +1,136 @@
+---
+title: Site updates 0.37
+tags: site updates
+---
+e1ce564 Initial try at updating to Rails 3.1.0.beta1
+f90d4ba Note fruits of efforts to update mysql2 gem
+b678d47 Update mysql2 gem
+9cbe077 Remove debug_rjs for compatibility with Rails 3
+2fe616e Add tilt executable, previously added by Bundler
+b998d83 Update to RSpec 2.6.0
+3903439 Rails 3.1: silence a deprecation warning (class_inheritable_attribute)
+8162abb Bundle update, hoping to make some Rails 3.1-provoked errors go away
+697442a Add Sass gem, silences deprecation warning
+3f6765a Tweaks to get spec suite running after re-installing bundle
+fdb93c3 Fix Rails 3.1 bustage of #build method
+7f69d1b Update to Rails 3.1.0.rc1
+a0cb54c Remove custom .irbrc set-up for logging Active Record queries
+63acc92 Bundle updates for Rails 3.1.0.rc1 vs RSpec breakage
+dcae3c2 Update rspec-core to 2.6.3
+8ccfd28 Bundle update (rspec-rails 2.6.1, tilt 1.3.2)
+07562ad Be as relaxed as possible in specifying versions in Gemfile
+f33ae0d Update to Wikitext 3.0b
+f6c3bfe Avoid validation errors triggered by #create!
+0ed2caf Refactor authentication logic
+2d44bf7 RSpec config tweak to make running focussed examples easier
+810421d Fix widespread controller spec breakage caused by Rails 3.1
+cffc71c Fix users controller spec breakage caused by Rails 3.1
+428ffc1 Remove unused methods
+b65d186 Fix new builder view spec failures under Rails 3.1
+326fd78 Tweak view spec to match Rails 3.1 "submit" button changes
+5e556d4 Fix user spec breakage under Rails 3.1
+f2dc6dc Fix topic spec breakage caused by Rails 3.1
+137afbb Fix breakage to lib specs caused by Rails 3.1
+b98951b Fix the last of the specs broken by Rails 3.1
+ef10381 Reduce tt/code font size
+8b3b453 Bundle update (rake 0.9.0)
+6c77c1d Add notes to Gemfile about planned changes
+69fc94b Fix commit timestamp offsets
+56e73ce Always show full SHA-1 hash in a tooltip for abbreviated SHA-1s
+142fcf4 Fill in pending #commit_{author,committer}_time specs
+49af729 Get rid of #as_admin block spec helper, used in only one place
+35707bb RSpec switch to documentation formatter by default
+a036e9d Update to jQuery 1.6
+ad67575 Update to jQuery 1.6.1
+6a85912 Clean-up of lib/authentication.rb
+7dc40e6 Move #send_new_issue_alert into observer
+86f435d Move issue annotation code into observer
+f928728 Edit a comment for accuracy
+07693f8 Remove inline (block) version of require_admin
+9c44820 Fix innocuous bug in user#edit template
+deed690 Set up emails#edit form action the right way
+35b6a89 Add ability to edit #default attribute from emails#edit
+fa28f7d Add emails#show template
+d4b4b7b Drop "Software for your Mac" from header
+f8c76db Update "about" text to reflect current focus
+8d5edef Redo emails#show using table instead of form
+de436d3 Users#edit: show emails as nested list
+742c5c7 Add emails#new and emails#create actions
+757099a Email requires a user in order to be valid
+ea3e70c Add db-level null constraint for Emails#user_id
+71721e1 users#create now requires both user and email validation to succeed
+59e0a0a Greatly simplify users#update action
+d26ede5 Unify confirm_email_and_redirect handling
+90c0569 Add CommentObserver
+b178202 Move observers into app/observers folder
+84e21d9 Replace hard-coded list of observers with dynamically-generated one
+1e42064 Switch to Capybara 1.0.0 HEAD, drop Steak and Webrat
+f51435e Update list of open-source projects used
+898d1e3 Update spec to match recent email UI refactoring
+ea63e2f Swap assertion order put failing assertion last
+b862a67 Fix another spec broken in the move to Capybara 1.0.0 HEAD
+09afbec Update specs for Capybara changes
+bad3bd2 Simplify comment URL routing by only ever nesting inside parent
+e1a6f0c Fix a typo in a code comment
+17e60c0 Reformatting and rewording to eliminate some overlength lines
+fb343a2 Remove unnecessary explicit self receiver
+f5dbee7 Avoid repeated set-up of before filter in admin controllers
+8a9e70a Generalize data-remote handling
+75dab2e Hide #comment-form rather than replacing it
+61b1da0 More clean-up in ajax_comment_form
+23b0b1d More ajax_comment_form() refactoring
+bfad1fa Whitespace fix
+9b35ed1 Remove unnecessary quoting
+44d781a Remove more unnecessary quoting
+b8d7297 Extract comment rendering out into partial
+63072ac Update to Rails 3.1.0.rc3
+3764003 Rails 3.1.0.rc3: fix associated model validation spec breakage
+24704b1 Rails 3.1.0.rc3: can no longer mutate an ActiveSupport::SafeBuffer
+d84784e Fix whitespace bug in field_error_proc
+886c371 Update to Rails 3.1.0rc4
+f1651da Add rdoc and ri executable binstubs
+ef1c151 Update to Capybara 1.0.0
+2d88fe6 Use (and adapt) comments partial in topics#show
+5726484 Fix up broken active-fragment highlighting on comment boxes
+4449c73 Fix comment#update routing
+b45a505 Don't show extra linebreak for anonymous user comments
+fd50a62 Make issues#show use comments partial
+14e8899 Tweak comment_class helper
+4429838 Extract common border-radius CSS out into a SASS mixin
+3d7581d Extensive use of Sass mixins to eliminate repetition
+68f557d Clean-up assignment of #comments id
+6d17866 Disable form submit buttons during AJAX requests
+a8cfd46 First cut at AJAX comment submission
+61d4bd3 Quick and dirty prevention of double AJAX comment forum submission
+cf35f26 Fix class on topics#show comments listing
+a713881 Generalize comment_class for use by topics
+a919308 Update to jQuery 1.6.2
+0ba75da Fix broken comments#update routing (partially reverts 4449c73)
+e53f6b5 Avoid N+1 SELECTs in comments#index
+053b837 Finalize the saga of the comments#update routing
+d11e696 Update to Rails 3.1.0.rc5
+512912b Update mysql2 gem (0.3.2 -> 0.3.6)
+8fba0eb Fix new spec failures caused by the move to Rails 3.1.0.rc5
+7ffff80 Set up jQuery function for date relativization
+4ea23d9 Wrap overlength line
+230010d Relativize dates on comments inserted into DOM via AJAX
+5d6d482 Apply syntax highlighting to comments loaded via AJAX
+99f50bf Update to Rails 3.1.0
+db664f7 Update bundle
+31eb1a6 Update to jQuery 1.6.3
+0ce03ec Add wikitext 3.0b to vendor/cache
+4e4ea48 Update Bundler bin stubs
+119852b Don't specify BUNDLE_PATH in local .bundle/config
+8351c8a Clean up user#edit template, particularly email handling
+c842238 Changes to stop the spec suite exploding under Ruby 1.9.2
+235b3b5 Update to mkdtemp 1.2.1
+92fddef Move debugger into test environment as well
+b5aeec4 Tweaks to make specs pass under Ruby 1.9.2
+08c5e84 Update to Unicorn 4.1.1
+c3f80f3 Update db/schema.rb
+1364f53 Only use git-protocol URLs in Gemfile
+a7c3ea2 Don't install test and development gems during deploy
+55acbea Remove spec-related stuff from script/deploy
+c4b3f35 Install development gems after all
+247d2d6 Final battle in war against linecache19
+2ca5e3f script/deploy: suppress color and pager when preparing change list
