@@ -1,5 +1,6 @@
 ---
 tags: aws ebs
+cache_breaker: 1
 ---
 = Example: deleting all or some snapshots from a prior month =
 
