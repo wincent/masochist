@@ -1,0 +1,6 @@
+---
+title: Site updates 0.38
+tags: site updates
+---
+a2e249 script/{nginx,memcached}: compatibility fixes for Ruby 1.9
+2c36d7f Don't produce issue annotations in respons to moderation events
