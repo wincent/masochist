@@ -1,5 +1,6 @@
 ---
 tags: aws
+cache_breaker: 1
 ---
 `aws` is a simplified [[command line]] interface to [[Amazon Web Services]].
 
