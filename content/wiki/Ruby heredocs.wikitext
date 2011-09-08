@@ -1,0 +1,20 @@
+---
+tags: ruby
+---
+= Basic =
+
+<pre lang="shell"><<HERE
+Hi, #{foo}
+HERE</pre>
+
+= Optionally indented end-marker =
+
+<pre lang="shell"><<-HERE
+Hi, #{foo}
+    HERE</pre>
+
+= Non-interpolating =
+
+<pre lang="shell"><<'HERE'
+#{foo} won't be interpolated
+HERE</pre>
