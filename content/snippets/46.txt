@@ -1,0 +1,7 @@
+---
+title: Site updates 0.40
+tags: site updates
+---
+8b31410 Don't get tripped up by nil request.format
+27e869c Remove unnecessary variable in rescue blocks
+8c3cca7 Use shorter Ruby 1.9 proc syntax
