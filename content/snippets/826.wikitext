@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[[tmux]] is just too darn good.
