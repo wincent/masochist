@@ -1,0 +1,4 @@
+---
+tags: mail.app lion
+---
+Sick of [/twitter/648 having a -1 for my unread mail count], finally got around to "fixing" the issue by deleting my account configuration and recreating it; had already tried blowing away just the mbox file, requiring a resync, but that wasn't enough. Two resyncs later, the Mac is done.
