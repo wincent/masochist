@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Nice little change in [[Git]] [https://raw.github.com/gitster/git/master/Documentation/RelNotes/1.7.7.txt 1.7.7]: `git stash` learned an `--include-untracked option`.
