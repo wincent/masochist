@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Stuff to practice: `[m` (and friends, `[m`, `]m` and `]M`), `g;`/`g,`/`:changes`, `:jumps`.
