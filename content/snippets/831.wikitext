@@ -1,4 +1,5 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 Wish I had learned about `CTRL-o` and `CTRL-i` sooner.
