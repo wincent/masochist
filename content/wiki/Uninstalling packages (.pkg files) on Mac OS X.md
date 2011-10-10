@@ -1,5 +1,6 @@
 ---
 tags: pkg os.x
+cache_breaker: 1
 ---
 
 It used to be the case that you could install packages on Mac OS X by using `lsbom` to inspect the list of installed files recorded in the files under `/Library/Receipts`.
