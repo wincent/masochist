@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Something I'd never noticed about [[Vim]] text objects: if you do something like `ci"` when you're not even inside a double-quote string, it will operate on the first such string it finds to the right of the cursor on the current line. If there is no such string, or the string is to the left, it does nothing ([http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/ source]).
