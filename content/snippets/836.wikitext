@@ -1,0 +1,6 @@
+---
+tags: textmate
+---
+For old time's sake, just checked out the [[TextMate]] blog. They've [http://blog.macromates.com/2011/whats-next/ officially announced] that an alpha release will be made available to registered users before the end of the year. Too little, too late, I'm afraid. About the only feature which might tempt me to switch from Vim now would be Vim-style modal editing, but even that wouldn't be enough. The whole TextMate 2 debacle illustrates why [[open source]] is the best way to develop software. See also [http://www.reddit.com/r/mac/comments/krppp/public_textmate_20_alpha_coming_this_year/ Reddit] and [http://news.ycombinator.com/item?id=3038247 Hacker News] commentary.
+
+P.S. This is tweet number #666!
