@@ -1,0 +1,14 @@
+---
+title: Involuntary Reboot Log 3.12
+tags: involuntary.reboot.log
+---
+Today, a [[kernel panic]] trying to quit/exit from VLC fullscreen mode.
+
+= Statistics so far =
+
+* Kernel panics: 4
+* Hard resets: 8
+* Total failures: 12
+* Start of recording keeping: 14 March 2011
+* Total days to date: 229 days
+* Average time between failures: 19.08 days
