@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[http://blog.hawkhost.com/2010/06/28/tmux-the-terminal-multiplexer/ Nice visual tutorial] (with screenshots) covering common bindings for [[tmux]].
