@@ -1,5 +1,6 @@
 ---
 tags: tmux
+cache_breaker: 1
 ---
 [[tmux]] is a [[BSD]]-licensed [[terminal]] multiplexer much like [[GNU]] [[screen]], but, in my opinion, better documented and easier to use. It is also under relatively active development, compared to screen.
 
