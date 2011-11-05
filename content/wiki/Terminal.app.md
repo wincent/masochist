@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 
 [Terminal.app](/wiki/Terminal.app) is the official [Terminal](/wiki/Terminal) application shipped by [Apple](/wiki/Apple) with [Mac OS X](/wiki/Mac_OS_X).
