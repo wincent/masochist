@@ -1,0 +1,4 @@
+---
+tags: mongo
+---
+"[http://pastebin.com/raw.php?i=FD3xe6Jt Don't use MongoDB]".
