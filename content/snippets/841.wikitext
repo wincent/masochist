@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+The new hotness: `C-a s` in [[tmux]] for switching rapidly between sessions on the fly.
