@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Ugh... Another painful [[Rails]] points upgrade (3.1.1 to 3.1.2). Looks like the application won't boot if you're not using the asset pipeline, and switching to it requires a fair bit of manual migration. I'd refrained from using the asset pipeline as it looked to be a very "alpha"-quality feature, but looks like now I have no choice.
