@@ -1,0 +1,5 @@
+---
+title: Site updates 0.47
+tags: site updates
+---
+d4f5d36 Prevent "search" .excerpt class from clobbering blog styles
