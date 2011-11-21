@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Another annoying thing about the [[Rails]] asset pipeline: a missing asset isn't just a 404 (which would allow the page to render, albeit incompletely), it's a full-blown 500. Seems like insane behavior if you ask me.
