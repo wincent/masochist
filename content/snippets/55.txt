@@ -1,0 +1,5 @@
+---
+title: Site updates 0.46
+tags: site updates
+---
+349a9e2 Add missing precompiled assets
