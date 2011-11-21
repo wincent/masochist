@@ -1,0 +1,13 @@
+---
+title: Site updates 0.44
+tags: site updates
+---
+b20901f Don't pollute global namespace in application.js
+0a05a9a Update wikitext gem to version 3.0
+6bff66a Update to Rails 3.1.2, switching to assets pipeline at same time
+6e9cee0 Concatenate JS files
+d260669 More pipeline refinements, particularly with respect to Sass
+2197265 Make static pages use new assets paths
+b4b64ac Add therubyracer gem
+075e01d Add Linux version of libv8 gem to vendor/cache
+8a9d6ef Fix typo in script/deploy
