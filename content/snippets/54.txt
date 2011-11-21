@@ -1,0 +1,9 @@
+---
+title: Site updates 0.45
+tags: site updates
+---
+1798f3c script/deploy: suppress all assets:precompile output
+43fad6a Fix improper center of forms
+d220a96 Remove stale specs
+0c45385 Remove unnecessary self-require in application JS
+cab0c36 Update bin directory
