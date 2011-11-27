@@ -1,0 +1,4 @@
+---
+tags: s3 arq
+---
+[[Arq]] looks to be a great tool for doing backup of your Mac to [[Amazon]] [[S3]]. After playing with the trial version for a few hours, I'm sold. Together with [[SuperDuper!]], this makes your data pretty damn safe.
