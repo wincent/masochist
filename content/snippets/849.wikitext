@@ -1,0 +1,4 @@
+---
+tags: filemaker
+---
+Yay, I was able to export the contents of those FileMaker Pro databases. Wasn't sure it would let me do that from the trial version, nor that I would remember the usernames/passwords on the databases after several years of non-access (and even in the days when I used to access them, the access credentials were stored in the keychain). Luckily, all went well. Goodbye, FileMaker; it was nice knowing you.
