@@ -1,0 +1,12 @@
+---
+tags: lion
+---
+<pre lang="shell">$ diskutil info
+$ diskutil info /Volumes/Suanzes/
+$ diskutil cs convert /dev/disk2s2 -stdinpassphrase
+$ diskutil cs list
+$ diskutil cs changeVolumePassphrase /dev/disk2s3 -stdinpassphrase</pre>
+
+= A note about [[OS X]] [[Mavericks]] =
+
+This has become considerably easier on [[Mavericks]]; just right-click on the volume in the Finder, choose "Encrypt Volume..." and follow the prompts.
