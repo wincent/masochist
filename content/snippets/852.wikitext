@@ -1,0 +1,4 @@
+---
+tags: arq isolator
+---
+Pro-tip: if your machine is acting sluggish under heavy load (e.g. when [[Arq]] is running a backup), free up some cycles by turning off the "Desaturate" filter in [[Isolator]]. This can make the difference between the Arq pegging an entire core and the `WindowServer` process soaking up 40-60% on the other core, and the latter using a mere 2 or 3%, freeing up the rest of the core for user interactivity. This makes a ''huge'' difference to system responsiveness; so much so that I am tempted to leave the "Desaturate" filter off forever.
