@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 There are many, many ways of specifying revisions in [Git](/wiki/Git) which are described in detail in the `git-rev-parse` [man page](http://www.kernel.org/pub/software/scm/git/docs/git-rev-parse.html). This article summarizes some of the more useful ones:
