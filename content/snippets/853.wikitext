@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+Funny. Just got an email from [[Amazon]] telling me that two of my [[EC2]] instances are scheduled for [http://aws.amazon.com/maintenance-help/ rebooting]. First time I've seen such a thing since moving to [[AWS]] in February 2010.
