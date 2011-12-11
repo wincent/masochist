@@ -1,0 +1,4 @@
+---
+tags: aws puppet
+---
+So I'm "puppetizing" my [[EC2]] servers. The approach I used to use before [[Puppet]] was to create a base, [[EBS]]-backed [[AMI]] and push as much configuration as possible out onto a separate EBS "data" volume. That configuration would get pulled in via `include` directives (where the service in question supported it) or via creative mounting (eg. setting up `/etc/fstab` to mount `/data/mysql` at `/var/lib/mysql`). Moving towards Puppet means less of that, and more of just sticking the configuration files in Puppet and telling it to put them where they belong on the base AMI.
