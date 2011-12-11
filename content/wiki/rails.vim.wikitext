@@ -1,0 +1,8 @@
+---
+tags: rails vim tim.pope
+---
+[[rails.vim]] is a [[Rails]] plug-in for [[Vim]] written by [[Tim Pope]].
+
+= Official site =
+
+* https://github.com/tpope/vim-rails
