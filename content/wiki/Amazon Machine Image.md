@@ -1,0 +1,6 @@
+---
+redirect: [[AMI]]
+tags: 
+---
+
+
