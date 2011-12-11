@@ -1,0 +1,4 @@
+---
+tags: middleman
+---
+Just bashed out a one-page static site using [[Middleman]]. It's pretty much just what the doctor ordered: a quick and easy way to throw together a static site using [[Rails]]-like conventions (eg. layouts, helpers and such) and familiar tools from the Rails ecosystem ([[Haml]], [[Sass]], [[CoffeeScript]] etc).
