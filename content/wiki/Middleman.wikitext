@@ -1,0 +1,8 @@
+---
+tags: middleman
+---
+[[Middleman]] is a static site generator written in Ruby. It follows patterns that will be familiar to users of [[Rails]] or [[Sinatra]] (such as layouts, helpers) and integrates nicely with tools like [[Haml]], [[Sass]] and [[CoffeeScript]].
+
+= Official site =
+
+* http://middlemanapp.com/
