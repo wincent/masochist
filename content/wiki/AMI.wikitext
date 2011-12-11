@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+[[AMI]] or [[Amazon Machine Image]] is parlance for a preconfigured virtual machine for use on [[Amazon]] [[EC2]].
