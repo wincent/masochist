@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] movement keys which I keep forgetting: `ge` ("''go'' back to the ''end'' of the previous word") and `gE` ("''go'' back to the ''end'' of the previous WORD").
