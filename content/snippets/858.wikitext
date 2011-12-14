@@ -1,0 +1,4 @@
+---
+tags: textmate
+---
+Checked out the [[TextMate]] 2 alpha ([http://blog.macromates.com/2011/textmate-2-0-alpha/ link]). Found it to be underwhelming. Back to [[Vim]].
