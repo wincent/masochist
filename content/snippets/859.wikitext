@@ -1,0 +1,4 @@
+---
+tags:
+---
+[http://google-engtools.blogspot.com/2011/12/bug-prediction-at-google.html Interesting article] on bug prediction from [[Google]].
