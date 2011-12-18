@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Probably long overdue, I just made my first [http://www.vim.org/sponsor/index.php donation] to support future [[Vim]] development.
