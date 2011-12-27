@@ -1,4 +1,5 @@
 ---
 tags: godaddy sopa
+cache_breaker: 1
 ---
 [http://www.causes.com/causes/638465-stop-sopa-save-the-internet/actions/1476818 Take the pledge] to move your domains away from [[GoDaddy]].
