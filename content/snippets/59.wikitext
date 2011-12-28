@@ -1,0 +1,9 @@
+---
+title: Amazon S3 object expiration
+tags: aws s3
+---
+Amazon never stops improving its [[AWS]] infrastructure, constantly offering more for less.
+
+The latest goodness:
+
+> You can define Object Expiration rules for a set of objects in your bucket. Each expiration rule allows you to specify a prefix and an expiration period in days. The prefix field (e.g. “logs/”) identifies the object(s) subject to the expiration rule, and the expiration period specifies the number of days from creation date (i.e. age) after which object(s) should be removed. You may create multiple expiration rules for different prefixes. After an Object Expiration rule is added, the rule is applied to objects with the matching prefix that already exist in the bucket as well as new objects added to the bucket. Once the objects are past their expiration date, they will be queued for deletion. You will not be charged for storage for objects on or after their expiration date. Amazon S3 doesn’t charge you for using Object Expiration. You can use Object Expiration rules on objects stored in both Standard and Reduced Redundancy storage. Using Object Expiration rules to schedule periodic removal of objects eliminates the need to build processes to identify objects for deletion and submit delete requests to Amazon S3.
