@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[[tmux]] Pro-Tip: when reattaching using `tmux attach -t session`, you can abbreviate the session name to an unambiguous prefix. For example, given sessions "workstation-config" and "custom-open-graph", you could attach to the former with `tmux attach -t w`.
