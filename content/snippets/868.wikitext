@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[[tmux]] Pro-Tip: use `<Prefix>=` for paste-on-steroids (it will show you a list of recent selections made in copy mode; choose one to paste it).
