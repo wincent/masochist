@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[[tmux]] Pro-Tip: if you have multiple sessions running already (ie. there is a tmux server process running), don't expect changes to your `~/.tmux.conf` to be picked up, even by new sessions that you create. (Noticed while trying to get a new `default-terminal` setting to stick.)
