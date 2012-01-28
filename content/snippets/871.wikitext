@@ -1,0 +1,4 @@
+---
+tags: rspec
+---
+Nice perk added in a recent version of [[RSpec]] (not sure exactly which), if your specs are in the default `spec` dir, you can run them with `rspec` alone (ie. you don't need to do `rspec spec`).
