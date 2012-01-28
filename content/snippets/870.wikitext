@@ -1,0 +1,4 @@
+---
+tags:
+---
+Random segfaults under Ruby 1.9.2 with Rails 3.2.1 on Mac OS X Lion. Trying latest rvm and Ruby 1.9.3.
