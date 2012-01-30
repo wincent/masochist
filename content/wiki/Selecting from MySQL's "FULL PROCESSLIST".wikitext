@@ -1,5 +1,6 @@
 ---
 tags: mysql
+cache_breaker: 1
 ---
 Starting with [[MySQL]] 5.1.7 you can do:
 
