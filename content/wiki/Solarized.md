@@ -1,5 +1,6 @@
 ---
 tags: solarized
+cache_breaker: 1
 ---
 
 [Solarized](/wiki/Solarized) is a highly readable color scheme for textual environments (editors, [command lines](/wiki/command_lines) etc).
