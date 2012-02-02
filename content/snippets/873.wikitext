@@ -1,0 +1,4 @@
+---
+tags: bash
+---
+Cool [[Bash]]/readline trick: `<Control-x> <Control-e>` edits the current line in `EDITOR`.
