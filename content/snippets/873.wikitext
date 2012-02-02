@@ -1,4 +1,5 @@
 ---
 tags: bash
+cache_breaker: 1
 ---
 Cool [[Bash]]/readline trick: `<Control-x> <Control-e>` edits the current line in `EDITOR`.
