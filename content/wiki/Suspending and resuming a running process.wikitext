@@ -1,5 +1,6 @@
 ---
 tags: bash
+cache_breaker: 1
 ---
 <pre lang="shell">$ kill -s STOP 1234
 $ kill -s CONT 1234</pre>
