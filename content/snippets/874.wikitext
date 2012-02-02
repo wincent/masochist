@@ -1,0 +1,4 @@
+---
+tags: git mercurial
+---
+A [http://mercurial.selenic.com/wiki/WhatsNew new Mercurial release]. Don't think I could muster the effort to work on Mercurial, in the face of the [[Git]] juggernaut.
