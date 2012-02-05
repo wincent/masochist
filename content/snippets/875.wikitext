@@ -1,0 +1,4 @@
+---
+tags: vim solarized
+---
+The one downside of using Solarized in 16-color mode: the "low" visibility setting for whitespace markers in Vim is actually invisible, thus forcing you to use "normal". '''Update:''' discovered that it's actually iTerm meddling with the color values.
