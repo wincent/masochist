@@ -1,0 +1,6 @@
+---
+title: Site updates 0.50
+tags: site updates
+---
+d53f03d Use fixed-width, centered layout
+c85d122 Make #content shadow more subtle
