@@ -1,6 +1,7 @@
 ---
 title: 10 minutes with Vim
 tags: emacs vim
+cache_breaker: 1
 ---
 As [http://rails.wincent.com/blog/0-minutes-with-vim promised], here's an update with some first impressions of [[Vim]]:
 
