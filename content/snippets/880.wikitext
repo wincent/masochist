@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+Time to [http://vimcasts.org/blog/2010/12/a-text-object-for-ruby-blocks/ try out the textobj-rubyblock plug-in] for [[Vim]]. Have wanted to do this for a while, but haven't had to time for it.
