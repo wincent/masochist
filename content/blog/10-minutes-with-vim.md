@@ -1,6 +1,7 @@
 ---
 title: 10 minutes with Vim
 tags: emacs vim
+cache_breaker: 1
 ---
 
 As [promised](/blog/0-minutes-with-vim), here's an update with some first impressions of [Vim](/wiki/Vim):
