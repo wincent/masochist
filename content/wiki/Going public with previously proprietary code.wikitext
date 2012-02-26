@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 [http://marc.info/?l=git&m=126847146521839&w=2 This mailing list post] by [[Git]] maintainer, Junio Hamano, on "unparenting" branches, talks about the scenario wherein you have a closed-source codebase and after a certain point you create a new parentless branch within that repository that you can then publish as open source by pushing only that branch to a remote/public repository while keeping the historic proprietary data in the existing/local repository only.
 
