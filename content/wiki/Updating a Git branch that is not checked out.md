@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 If you're on branch `foo` and want to make branch `bar` point at the HEAD of `foo` without having to first checkout `bar`, you can use:
