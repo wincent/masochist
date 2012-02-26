@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 These notes describe my procedure for starting a new project and setting up a *public* [Git](/wiki/Git) repository for it. For projects managed under legacy [version control systems](/wiki/version_control_systems) see, "[Migrating Subversion repositories to Git](/wiki/Migrating_Subversion_repositories_to_Git)". For *private* repositories see "[Setting up a brand new private Git repository](/wiki/Setting_up_a_brand_new_private_Git_repository)".
