@@ -1,0 +1,12 @@
+---
+tags: gitorious
+---
+[[Gitorious]] provided free [[Git]] hosting for [[open source]] projects. It was a free, open source alternative to the free-but-proprietary [[GitHub]].
+
+I used to use it to host mirrored copies of the repos at git.wincent.com.
+
+In March 2015 [https://about.gitlab.com/2015/03/03/gitlab-acquires-gitorious/ it was announced] that Gitorious had been acquired by GitLab and would shut down at the end of May 2015.
+
+= Official site =
+
+* http://gitorious.org/
