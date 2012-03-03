@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 <pre lang="shell">$ git blame -t $FILE | \
   cut -f 2 -d '(' | \
