@@ -1,5 +1,6 @@
 ---
 tags: divvy
+cache_breaker: 1
 ---
 
 # Official site
