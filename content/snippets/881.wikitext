@@ -1,0 +1,4 @@
+---
+tags: lion digital.color.meter os.x
+---
+Pro-tip: the Digital Color Meter application in [[Lion]] actually [https://discussions.apple.com/thread/3193567 can display colors in hex] after all; you just have to select "Display Values -> as Hexadecimal" from the "View" menu.
