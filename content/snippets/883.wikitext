@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[[tmux]] Pro-tip: hit `v` in copy mode to toggle block selection mode (like `C-v` in [[Vim]]).
