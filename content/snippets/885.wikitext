@@ -1,0 +1,4 @@
+---
+tags: xscope
+---
+While I recently [/twitter/711 discovered] that [[Lion's]] Digital Color Meter isn't as broken as I thought it was, I have to recognize that the awesomeness of [[xScope]] means that I'm unlikely to ever use the Digital Color Meter again anyway.
