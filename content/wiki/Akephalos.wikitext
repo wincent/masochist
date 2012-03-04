@@ -1,5 +1,6 @@
 ---
 tags: akephalos
+cache_breaker: 1
 ---
 [[Akephalos]] was a great little [[Capybara]] driver that wrapped [[HtmlUnit]] to provide a [[JavaScript]]-aware, headless browser for full-stack acceptance testing which was an order of magnitude faster than the then-incumbent king, Selenium.
 
