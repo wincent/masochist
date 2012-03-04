@@ -1,0 +1,4 @@
+---
+tags: capybara akephalos
+---
+Very impressed with [[capybara-webkit]]; it's over twice as fast as [[Akephalos]] in my initial testing, and just as reliable.
