@@ -1,0 +1,4 @@
+---
+tags: bash
+---
+[[Bash]] Pro-tip: `!foo` to re-run the most recent command in the history beginning with "foo".
