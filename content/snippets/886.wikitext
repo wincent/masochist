@@ -1,0 +1,4 @@
+---
+tags: bash
+---
+A bad habit of mine to get out of: typing `ps auxww | grep foo` when `ps ax | grep foo` would do. (The `w` switches aren't required when you're piping, only when the output is to a tty, and I have no idea why I got into the pattern of supplying the `u` switch.)
