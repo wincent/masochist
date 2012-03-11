@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] Pro-Tip: `gq` rewraps the selection; `gqq` rewraps the current line.
