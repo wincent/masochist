@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] Pro-tip: use `R` to enter "replace" mode and replace runs of characters.
