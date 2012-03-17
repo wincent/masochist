@@ -1,5 +1,6 @@
 ---
 tags: rspec rails testing rr cheatsheet views
+cache_breaker: 1
 ---
 = Tools =
 
