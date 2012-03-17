@@ -1,5 +1,6 @@
 ---
 tags: testing
+cache_breaker: 1
 ---
 = Reasons for doing automated testing =
 
