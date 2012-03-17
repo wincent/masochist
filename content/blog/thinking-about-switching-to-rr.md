@@ -1,6 +1,7 @@
 ---
 title: Thinking about switching to RR
 tags: rspec rr
+cache_breaker: 1
 ---
 
 The use of mocks and stubs continues to be one of the areas which causes me most pain in my [Ruby](/wiki/Ruby) testing using [RSpec](/wiki/RSpec). All too often I find myself having to go through hoops to do stuff which I feel should be simple.
