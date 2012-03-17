@@ -1,5 +1,6 @@
 ---
 tags: rspec development
+cache_breaker: 1
 ---
 
 [Mock objects](/wiki/Mock_objects) or simply [mocks](/wiki/mocks) are [test doubles](/wiki/test_doubles) used in [Behaviour-Driven Development](/wiki/Behaviour-Driven_Development) to stand in for other objects during [testing](/wiki/testing). They serve two purposes:
