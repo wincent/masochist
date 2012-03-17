@@ -1,5 +1,6 @@
 ---
 tags: rspec rails development
+cache_breaker: 1
 ---
 
 It is often recommended that you use [mock objects](/wiki/mock_objects) and [stubs](/wiki/stubs) to independently test your [models](/wiki/models), [views](/wiki/views) and [controllers](/wiki/controllers) when doing not only [Behaviour-Driven Development](/wiki/Behaviour-Driven_Development) but any [testing](/wiki/testing) of code which follows the [MVC](/wiki/MVC) pattern. (The original version of this article penned in 2007 started with "*I highly recommend*"; since then I've realized that there are trade-offs involved and the right thing to do is seldom so clear-cut.)
