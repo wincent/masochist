@@ -1,0 +1,4 @@
+---
+tags: git
+---
+"[http://blog.plover.com/prog/git-habits.html For the most complicated cases], I will print out the diffs, read them over, and mark them up in six colors of highlighter: code to throw away gets marked in orange; code that I suspect is erroneous is pink. I make many notes in pen to remind me how I want to divide up the changes into commits. When a commit occurs to me I'll jot a numbered commit message, and then mark all the related parts of the diff with that number." (While I'm an avid user of `git rebase`, I can't see myself doing this, ever...)
