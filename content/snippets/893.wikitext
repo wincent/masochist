@@ -1,0 +1,4 @@
+---
+tags: git
+---
+[[Git]] Pro-tip: `git stash branch` is nice for inspecting and possibly building on old stashes which have non-trivial conflicts when you try to pop or apply them.
