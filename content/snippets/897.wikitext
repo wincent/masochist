@@ -1,0 +1,4 @@
+---
+tags: php git
+---
+[http://www.php.net/archive/2012.php#id2012-03-20-1 PHP migrates to Git]. Unfortunately, it's still [[PHP]].
