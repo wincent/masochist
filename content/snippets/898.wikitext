@@ -1,0 +1,4 @@
+---
+tags: git
+---
+[http://lwn.net/Articles/487131/ Talk] of changing [[Git's]] `push.default` default to "upstream" (from the current default of "matching"). Funnily enough, I set my own global `push.default` to "upstream" not that long ago.
