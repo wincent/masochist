@@ -1,0 +1,4 @@
+---
+tags: zsh
+---
+[[Zsh]] win: incremental search works in a sane way, because your search text is displayed on a separate line from your current match, making it much easier to see what's going on.
