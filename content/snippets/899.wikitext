@@ -1,0 +1,4 @@
+---
+tags: zsh
+---
+[[Zsh]] win: error messages from the shell itself get prefixed with "zsh:"
