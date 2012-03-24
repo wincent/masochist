@@ -1,0 +1,4 @@
+---
+tags: bash vim zsh
+---
+I love [[Vim]], but I can't bring myself to use Vim bindings in [[Bash]] or [[Zsh]]; the capabilities are just too watered down (eg. you can't do things like `ge`, or make visual selections, or stuff like `ci(`). Given that, I prefer to maintain a stark separation between my editor world and my command line work rather than have a fuzzy blur between the capabilities of one world and the other.
