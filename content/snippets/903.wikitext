@@ -1,0 +1,4 @@
+---
+tags: zsh
+---
+[[Zsh]] win: completion works while typing within braces (e.g. `cp /Users/{w<tab>,g<tab>}` does what you would want).
