@@ -1,0 +1,4 @@
+---
+tags: git zsh
+---
+The version of [[Zsh]] that comes with [[Mac OS X]] [[Lion]] (4.3.11) doesn't work very well with [[Git's]] autocompletion script. Build 4.3.17 from source and it works fine.
