@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Rejoice: new in [[Git]] 1.7.10 is [https://github.com/gitster/git/commit/9b25a0b52e09400719366f0a33d0d0da98bbf7b0 the ability to include other git config files] by reference.
