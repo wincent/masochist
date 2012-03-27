@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] Pro-tip: `<CTRL-r> <CTRL-w>` in command mode will insert the word under the cursor (in the current buffer) into the command line.
