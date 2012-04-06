@@ -1,0 +1,4 @@
+---
+tags: security
+---
+[http://www.codinghorror.com/blog/2012/04/speed-hashing.html Time to start using longer passphrases].
