@@ -1,5 +1,6 @@
 ---
 tags: git centos
+cache_breaker: 1
 ---
 
 On CentOS I install into my home directory:
