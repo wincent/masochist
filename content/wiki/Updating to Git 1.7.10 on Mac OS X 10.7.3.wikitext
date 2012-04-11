@@ -1,5 +1,6 @@
 ---
 tags: git lion os.x
+cache_breaker: 1
 ---
 <pre lang="shell">$ cd path/to/local/clone/of/git.git
 $ git fetch
