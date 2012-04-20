@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 
 Use `<C-r>{register}` to paste the text from the specified register into the command linea
