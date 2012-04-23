@@ -1,0 +1,4 @@
+---
+tags: mongodb node
+---
+[http://www.youtube.com/watch?v=bzkRVzciAZg Node.js Is Bad Ass Rock Star Tech], I believe from the same guy who brought you "MongoDB is web-scale".
