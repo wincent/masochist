@@ -1,0 +1,14 @@
+---
+title: Involuntary Reboot Log 3.20
+tags: involuntary.reboot.log
+---
+Perma-beach-ball at the login screen, requiring a hard reset.
+
+= Statistics so far =
+
+* Kernel panics: 4
+* Hard resets: 16
+* Total failures: 20
+* Start of recording keeping: 14 March 2011
+* Total days to date: 409 days
+* Average time between failures: 20.45 days
