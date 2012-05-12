@@ -1,0 +1,23 @@
+---
+tags: git
+---
+[https://github.com/torvalds/linux/pull/17 Torvalds] on [[GitHub]] pull requests:
+
+<blockquote>I don't do github pull requests.
+
+github throws away all the relevant information, like having even a valid email address for the person asking me to pull. The diffstat is also deficient and useless.
+
+Git comes with a nice pull-request generation module, but github instead decided to replace it with their own totally inferior version. As a result, I consider github useless for these kinds of things. It's fine for ''hosting'', but the pull requests and the online commit editing, are just pure garbage.</blockquote>
+
+More golden snippets from the thread:
+
+* "the braindamaged crap that github does when you ask it to request a pull"
+* "those commits are invariably pure crap"
+* "totally unreadable descriptions"
+* "github is a total ghetto of crap commit messages and unreadable and unusable pull requests"
+* "People should try to compare the quality of the kernel git logs with some other projects, and cry themselves to sleep."
+* "You're a moron."
+
+[http://www.reddit.com/r/programming/comments/tionj/linus_torvalds_doesnt_do_github_pull_requests/c4n7gx5 Amusing summary] of [http://www.reddit.com/r/programming/comments/tionj/linus_torvalds_doesnt_do_github_pull_requests/ entire thing] by a Redditor:
+
+<blockquote>TL;DR Dumbass rails "developer" with zero community contributions of his own feels that a Github account qualifies him to comment on Linux kernel commits and gets called a moron by Linus. Reddit explodes.</blockquote>
