@@ -1,0 +1,4 @@
+---
+tags: objective.c clang
+---
+Nice: [http://llvm.org/releases/3.1/docs/ClangReleaseNotes.html Clang now supports] additional [http://clang.llvm.org/docs/ObjectiveCLiterals.html object literals] (eg. arrays, dictionarys, `NSNumber` instances etc) in [[Objective-C]].
