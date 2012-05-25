@@ -1,4 +1,5 @@
 ---
 tags: keyboards
+cache_breaker: 1
 ---
 [http://www.keyboardco.com/keyboard_details.asp?PRODUCT=848 Keyboard] [http://www.diatec.co.jp/en/det.php?prod_c=774 porn] (for some context, see "[[Mechanical keyboards]]".)
