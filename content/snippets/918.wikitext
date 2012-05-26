@@ -1,0 +1,4 @@
+---
+tags: tmux
+---
+[[tmux]] Pro-Tip: `:break-pane` to break the current pane into a new window of its own; `:join-pane -t N` to put it back.
