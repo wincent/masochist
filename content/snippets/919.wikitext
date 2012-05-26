@@ -1,0 +1,4 @@
+---
+tags: typing
+---
+"If you really think refactoring tools are a substitute for typing, it's like you're telling us that it's OK for you to saw your legs off because you have a car. We're not fucking buying it." Source: [http://steve-yegge.blogspot.com/2008/09/programmings-dirtiest-little-secret.html Yegge].
