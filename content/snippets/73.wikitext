@@ -1,6 +1,7 @@
 ---
 title: Thoughts on touch-typing
 tags: typing
+cache_breaker: 1
 ---
 I used to be pretty good at typing, then I went to Spain and swapped my beloved US keyboard for a Spanish one, and everything fell to pieces.
 
