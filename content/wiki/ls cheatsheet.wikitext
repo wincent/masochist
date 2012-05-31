@@ -1,0 +1,6 @@
+---
+tags: ls
+---
+Sort by file size:
+
+<pre lang="shell">$ ls -S</pre>
