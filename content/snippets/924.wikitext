@@ -1,0 +1,5 @@
+---
+tags: vim
+---
+A couple [[Vim]] search commands I didn't know: `ggn` goes to the first match in the file;
+`Gn` goes to the last.
