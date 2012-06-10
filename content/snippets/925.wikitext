@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[http://mattkirman.com/2012/04/18/relative-line-numbers-in-vim/ Interesting idea]: use absolute numbers in insert mode (`au InsertEnter * :set nu`) and relative numbers elsewhere (`au InsertLeave * :set rnu`).
