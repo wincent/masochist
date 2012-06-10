@@ -1,5 +1,6 @@
 ---
 tags: bash here.doc
+cache_breaker: 1
 ---
 
 # Simple form
