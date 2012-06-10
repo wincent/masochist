@@ -1,0 +1,4 @@
+---
+tags: ssh
+---
+<pre lang="shell">$ ssh-keygen -R hostname</pre>
