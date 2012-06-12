@@ -1,0 +1,4 @@
+---
+tags: vim
+---
+[[Vim]] macros, hardcore: [http://blog.sanctum.geek.nz/advanced-vim-macros/ Advanced Vim Macros]
