@@ -1,0 +1,21 @@
+---
+title: Site updates 0.53
+tags: site updates
+---
+15174a5 Trial innod_flush_method=nosync in test environment
+9c5e177 Use an RVM gemset
+2508299 Add compass-rails to the Gemfile
+8b51e96 Kill some bytes under app/assets/stylesheets
+1781ff7 Replace akephalos with capybara-webkit
+cfe5a31 Remove config/initializers/misc in favor of built-in setting
+ba2c9e8 Add routes and generated files for {Blobs,Trees}Controller
+dddc9e4 Update to Rails 3.2.3
+1df1f3a Update to Rails 3.2.6
+eb370d4 Switch from memcache-client to Dalli
+036cee9 Rewrite all sweepers for better isolation
+8c04cc3 script/deploy: add an explanatory comment
+0e8c7d6 Update bundle
+055bf74 Silence a bunch of Factory Girl warnings
+655a0e5 Silence deprecation warnings in factory definitions
+656f043 Modernize attribute whitelist handling
+b52622d Generate static files with ":ugly" => true
