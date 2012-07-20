@@ -1,0 +1,8 @@
+---
+tags: git awk
+---
+Example: seeing how many commits you were involved in in a Git repo:
+
+<pre lang="shell">$ git shortlog -s | grep you | awk '{s+=$1} END {print s}'</pre>
+
+(Assuming your name appears in multiple lines of the `git shortlog` output, because you paired with various people along the way and so you appear as "<nowiki>you+other@example.com</nowiki>" and "<nowiki>other+you@example.com</nowiki>".)
