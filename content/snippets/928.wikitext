@@ -1,0 +1,4 @@
+---
+tags: safari chrome
+---
+[[Safari]] is a memory and CPU hog, so switching to Chrome for everything. (Previously, I used Chrome as my "general" browser, Chrome Canary as my "development" browser, and Safari as my "work" browser, which I would use for interacting with www.pivotaltracker.com and Google calendar etc; I liked having each browser fulfill a different "role" for easy Command-Tab switching.) Not sure why the performance is so different, given that they are both WebKit.
