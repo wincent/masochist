@@ -1,5 +1,6 @@
 ---
 tags: git awk
+cache_breaker: 1
 ---
 Example: seeing how many commits you were involved in in a Git repo:
 
