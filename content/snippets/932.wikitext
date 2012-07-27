@@ -1,0 +1,4 @@
+---
+tags: mountain.lion favorite feature
+---
+[[Mountain Lion]] goodness: You can turn off "smart" quotes.
