@@ -1,0 +1,4 @@
+---
+tags: mountain.lion favorite feature
+---
+[[Mountain Lion]] goodness: Scrollbars become substantially thicker when you interact with them (the dynamic is a little clunky &mdash; you effectively have to scroll a little first and then move the pointer over the scrollbar; you can't just do the two-finger tap because that will be interpreted as a right-click, and you can't just hover the pointer over the edge of the scroll area either &mdash; but it's still a massive improvement).
