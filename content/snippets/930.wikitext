@@ -1,0 +1,4 @@
+---
+tags: mountain.lion favorite feature
+---
+[[Mountain Lion]] goodness: Resting two fingers on the track pad reveals the scrollbars.
