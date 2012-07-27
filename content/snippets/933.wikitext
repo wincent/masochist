@@ -1,0 +1,4 @@
+---
+tags: mountain.lion favorite feature
+---
+[[Mountain Lion]] goodness: You can turn off auto-correction of spelling "mistakes". This almost invariably ends up mutating symbols and identifiers into something unwanted. For actual spelling mistakes I'm happy to just take the hint from the squiggly underline and fix it myself.
