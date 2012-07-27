@@ -1,0 +1,23 @@
+---
+tags: ruby os.x
+---
+= Release dates =
+
+* [[Mac OS X]] Public Beta: 13 September 2000
+* [[Mac OS X]] 10.0: [[Cheetah]], released 24 March 2001 (192 days after the Public Beta)
+* [[Mac OS X]] 10.1: [[Puma]], released 24 September 2001 (184 days after [[Cheetah]])
+* [[Mac OS X]] 10.2: [[Jaguar]], released 23 August 2002 (333 days after [[Puma]])
+* [[Mac OS X]] 10.3: [[Panther]], released 24 October 2003 (427 days after [[Jaguar]])
+* [[Mac OS X]] 10.4: [[Tiger]], released 29 April 2005 (553 days after [[Panther]])
+** [[Mac OS X]] 10.4.4: [[Tiger]] for x86 processors, released 10 January 2006 (256 days after the original [[Tiger]] release for PowerPC processors)
+* [[Mac OS X]] 10.5: [[Leopard]], released 26 October 2007 (910 days after [[Tiger]])
+* [[Mac OS X]] 10.6: [[Snow Leopard]], released 28 August 2009 (672 days after [[Leopard]])
+* [[Mac OS X]] 10.7: [[Lion]], released 20 July 2011 (691 days after [[Snow Leopard]])
+* [[OS X]] 10.8: [[Mountain Lion]], released 25 July 2012 (371 days after [[Lion]])
+* [[OS X]] 10.9: [[Mavericks]], released 22 October 2013 (454 days after [[Mountain Lion]])
+* [[OS X]] 10.10: [[Yosemite]], released 16 October 2014 (359 days after [[Mavericks]])
+* [[OS X]] 10.11: [[El Capitan]], released 30 September 2015 (349 days after [[Yosemite]])
+
+The date calculations above were done with [[Ruby]]:
+
+<pre lang="shell">$ ruby -r date -e 'puts (Date.new(2015, 9, 30) - Date.new(2014, 10, 16)).to_i'</pre>
