@@ -1,0 +1,10 @@
+---
+tags: os.x
+---
+Considered by many to be the best operating system in the world (and by me to be the best ''desktop'' operating system in the world), [[OS X]] is [[Apple]]'s current flagship operating system.
+
+See: http://www.apple.com/osx/
+
+For a long time the official name of the [[OS]] was "Mac OS X" (pronounced "Mac OS Ten"). There were few who actually referred to it this way. Common usage was often "OS X" (either pronounced as-is or as "OS Ten").
+
+With the release of [[Mountain Lion]] [[Apple]] finally started referring to it as "OS X" in marketing materials and the "About this Mac" dialog.
