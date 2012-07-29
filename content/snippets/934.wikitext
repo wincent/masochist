@@ -1,0 +1,4 @@
+---
+tags: adium
+---
+[[Adium]] Pro-Tip™:  long contact list? Just type letters and the find field (also accessible with Command-F) will start filtering for you.
