@@ -1,0 +1,5 @@
+---
+tags: webkit
+---
+
+<http://trac.webkit.org/wiki/WebInspector#ShortcutKeys>
