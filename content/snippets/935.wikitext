@@ -1,0 +1,4 @@
+---
+tags:
+---
+"[A] line of code is a liability, not an asset" ([http://continuousdelivery.com/2012/08/why-software-development-methodologies-suck/ source]).
