@@ -1,4 +1,5 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 [https://steveko.wordpress.com/2012/02/24/10-things-i-hate-about-git/ A blog post] by somebody who doesn't get [[Git]]. About the only item I (partially) agree with is "Crazy command line syntax"; most of the others range from patently false to downright trolling, with the rest being either red herrings or at least strongly debatable, although I fear arguing about them would be too tedious.
