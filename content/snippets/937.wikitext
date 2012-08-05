@@ -1,0 +1,4 @@
+---
+tags:
+---
+One of the things I hate about Flash: it steals keyboard focus, rendering useful keyboard shortcuts like `Command-L` utterly useless.
