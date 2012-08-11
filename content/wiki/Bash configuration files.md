@@ -1,5 +1,6 @@
 ---
 tags: bash
+cache_breaker: 1
 ---
 
 This is my attempt to phrase the "INVOCATION" section of the [Bash](/wiki/Bash) [man page](/wiki/man_page) in the clearest possible terms.
