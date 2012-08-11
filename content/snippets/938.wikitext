@@ -1,0 +1,4 @@
+---
+tags: git causes
+---
+Today at [http://www.causes.com/ work] I gave a 5-minute lightning talk on how to use [[Git]] to automatically maintain an [[open source]] subset of your [[closed source]] repo. Slides [http://ghurrell.github.com/git-filter-branch-lightning-talk/ here] ("How to open-source your repo (without open-sourcing your repo)").
