@@ -1,0 +1,9 @@
+---
+title: Site updates 0.55
+tags: site updates
+---
+8241705 unicorn.rb: simplify and tidy
+ea72138 script/deploy: big refactor using `run` function
+4bb7f28 Add memcache-dump.rb script for diagnostic purposes
+70c62db Update a stale comment
+be2bb50 Upgrade to jQuery 1.8.0
