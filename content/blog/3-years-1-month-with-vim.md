@@ -1,6 +1,7 @@
 ---
 title: 3 years, 1 month with Vim
 tags: emacs vim
+cache_breaker: 1
 ---
 
 Back in January of 2009 I was feeling experimental. I was unhappy with [TextMate](/wiki/TextMate) and wanted to try a "real" editor. Not just in a dabbling kind of way, but in a use-it-the-way-it-was-meant-to-be-used way.
