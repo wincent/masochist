@@ -1,0 +1,4 @@
+---
+tags: responsive.design
+---
+[http://responsive.victorcoulon.fr/ This is] a ridiculously cool [[Responsive Design]] bookmarklet (thanks to Joe, a colleague of mine at [[Causes]], for sharing this with me).
