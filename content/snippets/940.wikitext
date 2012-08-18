@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Most painless [[Rails]] update ever: 3.2.6 to 3.2.8.
