@@ -1,0 +1,4 @@
+---
+tags: mysql postgresql oracle
+---
+[http://blog.mariadb.org/disappearing-test-cases/ More signs] that [[Oracle]] is bent on slowly strangulating [[MySQL]] into irrelevance. Long live [[PostgreSQL]].
