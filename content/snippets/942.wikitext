@@ -1,0 +1,4 @@
+---
+tags: os.x
+---
+[http://www.rdoxenham.com/?p=259 Radical], but considering trying it out to see if it helps my appalling performance problems of late, many of which come accompanied with extremely high kernel load.
