@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 
 # Official site
