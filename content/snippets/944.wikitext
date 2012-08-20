@@ -1,0 +1,4 @@
+---
+tags: os.x
+---
+[[Temperature Monitor]]: indispensable for diagnosing heating and cooling problems on an [[OS X]] machine, and free to boot!
