@@ -1,0 +1,8 @@
+---
+tags: os.x
+---
+
+# Official site
+
+-   <http://www.bresink.com/osx/TemperatureMonitor.html>
+
