@@ -1,0 +1,4 @@
+---
+tags: stay mountain.lion
+---
+Thank goodness, a [[Stay]] bug that has been driving me up the wall on [[Mountain Lion]] has been fixed in 1.2.2: "Fixed a bug that could cause windows to briefly flicker and the frontmost app to lose focus when launching an app with windows stored in Stay."
