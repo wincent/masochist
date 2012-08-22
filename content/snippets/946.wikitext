@@ -1,0 +1,4 @@
+---
+tags: git
+---
+Something I want to start using and keep forgetting about `git log -p --full-diff -- [path]` (ie. `[path]` limits which commits should be shown, but `--full-diff` shows the entire commit diff for those commits, not just the parts touching the path).
