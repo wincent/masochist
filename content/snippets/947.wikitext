@@ -1,0 +1,4 @@
+---
+tags: testing kent.beck
+---
+"''I get paid for code that works, not for tests, so my philosophy is to test as little as possible to reach a given level of confidence'' (I suspect this level of confidence is high compared to industry standards, but that could just be hubris). If I don't typically make a kind of mistake (like setting the wrong variables in a constructor), I don't test for it. I do tend to make sense of test errors, so I'm extra careful when I have logic with complicated conditionals. When coding on a team, I modify my strategy to carefully test code that we, collectively, tend to get wrong." ([http://stackoverflow.com/a/153565/1626737 Kent Beck on Stack Overflow])
