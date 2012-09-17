@@ -1,0 +1,9 @@
+---
+title: Site updates 0.57
+tags: site updates
+---
+77121fd Update dependencies on "about" page
+6d65fea Make button elements use "hand" cursor
+a679cbc Fix float issues on box-style comment boxes (issues, forums)
+3f51164 Make sure separator extends to bottom in box-style comments
+c918142 Remove unnecessary `Q` from `%Q{}`
