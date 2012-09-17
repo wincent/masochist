@@ -1,0 +1,14 @@
+---
+title: Involuntary Reboot Log 3.26
+tags: involuntary.reboot.log
+---
+System freeze while playing a YouTube video fullscreen. (Remember: "If it crashes, it's probably Flash".) Hard reset.
+
+= Statistics so far =
+
+* Kernel panics: 5
+* Hard resets: 21
+* Total failures: 26
+* Start of recording keeping: 14 March 2011
+* Total days to date: 552 days
+* Average time between failures: 21.23 days
