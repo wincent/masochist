@@ -1,0 +1,10 @@
+---
+tags: go
+---
+# Install binary installer from http://golang.org/doc/install
+# Set up the [[Vim]] go files; eg. http://git.wincent.com/wincent.git/commit/6c1685ae016b551c6096dd836f51d20f44fcc12d
+# Set up `~/.vimrc` settings; eg. http://git.wincent.com/wincent.git/commit/b71620b1620893341bc582d8469086aa52e87add
+# `sudo go get -u github.com/nsf/gocode`
+# `git clone git://github.com/nsf/gocode.git`
+# `cd gocode/vim`
+# `./pathogen_update.bash`
