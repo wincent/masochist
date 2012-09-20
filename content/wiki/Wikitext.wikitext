@@ -1,5 +1,6 @@
 ---
 tags: wikitext
+cache_breaker: 1
 ---
 [[Wikitext]] is an easily editable, plaintext markup language for producing [[HTML]] output. It is used as the source text format for popular wiki software such as [[MediaWiki]].
 
