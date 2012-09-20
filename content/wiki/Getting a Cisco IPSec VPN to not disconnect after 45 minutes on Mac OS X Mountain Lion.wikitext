@@ -1,0 +1,22 @@
+---
+tags: vpn cisco ipsec
+---
+Found [https://discussions.apple.com/thread/3275811 here]:
+
+<blockquote># Connect to the VPN (so OSX generates the racoon configuration file)
+# Copy the generated configuration file to /etc/racoon: `$ sudo cp /var/run/racoon/1.1.1.1.conf /etc/racoon`
+# Edit the racoon configuration file with your favorite editor (vim): `$ sudo vim /etc/racoon/racoon.conf`
+# At the bottom of the file comment out the line: `include "/var/run/racoon/*.conf" ;`
+# ... and instead include the copied file (which we will edit): `include "/etc/racoon/1.1.1.1.conf" ;`
+# Edit the generated configuration file with your favorite editor (vim): `$ sudo vim /etc/racoon/1.1.1.1.conf`
+# Disable dead peer detection: `dpd_delay 0;`
+# Change proposal check to claim from obey: `proposal_check claim;`
+# Change the proposed lifetime in each proposal (24 hours instead of 3600 seconds): `lifetime time 24 hours;`
+# Disconnect and reconnect (this time racoon will use your custom configuration)
+# Use the VPN for at least 45 minutes and hopefully it won't drop! </blockquote>
+
+In my case "24 hours" didn't work (and even "12 hours" was too much) but "8 hours" worked just fine.
+
+Also, disabling dead peer detection wasn't necessary for me (and possibly not a good idea anyway).
+
+This is an inglorious hack, but beats having to manually reenter your credentials every 45 minutes.
