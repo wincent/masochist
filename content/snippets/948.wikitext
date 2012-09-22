@@ -1,0 +1,4 @@
+---
+tags: passenger unicorn
+---
+At [[Causes]] we're now free of Phusion Passenger. [[Unicorn]] to the rescue. I won't miss Phusion's hyped up marketing language ([http://blog.phusion.nl/2012/09/21/the-right-way-to-deal-with-frozen-processes-on-unix/ example]).
