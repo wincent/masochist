@@ -1,0 +1,4 @@
+---
+tags: go
+---
+The Riculous Fish [http://ridiculousfish.com/blog/posts/go_bloviations.html on Go].
