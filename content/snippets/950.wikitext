@@ -1,0 +1,4 @@
+---
+tags: typescript
+---
+[[TypeScript]] is (yet another) attempt at making [[JavaScript]] safer to use and more suitable for build large-scale, maintainable codebases.
