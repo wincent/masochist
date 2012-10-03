@@ -1,0 +1,4 @@
+---
+tags: sha.3 keccak nist
+---
+NIST has [http://www.nist.gov/itl/csd/sha-100212.cfm declared] that the winner of the SHA-3 contest is Keccak (pronounced "catch-ack").
