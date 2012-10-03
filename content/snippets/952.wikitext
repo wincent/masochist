@@ -1,0 +1,4 @@
+---
+tags: ruby xkcd
+---
+[http://xkcd.com/936/ xkcd-style random password generator]: `ruby -e "puts File.open('/usr/share/dict/words').read.split.shuffle.first(4).join(' ').downcase"`
