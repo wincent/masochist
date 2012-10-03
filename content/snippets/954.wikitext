@@ -1,0 +1,4 @@
+---
+tags: perforce git
+---
+Perforce [http://www.perforce.com/git-fusion announces "Git Fusion"] in a gibe-filled product page. As far as I can tell, few ''voluntarily'' use Perforce; if Git could somehow be adapted to better handle enormous non-source-code assets (eg. gigabytes or terabytes of media) then there'd be no reason for Perforce to exist. People are working on it.
