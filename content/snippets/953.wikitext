@@ -1,0 +1,4 @@
+---
+tags:
+---
+http://howsecureismypassword.net/ tells me that "password123" would take a desktop PC "about a year" to crack.
