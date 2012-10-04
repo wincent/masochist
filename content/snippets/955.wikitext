@@ -1,0 +1,4 @@
+---
+tags:
+---
+Wow; I just read [http://nerds-central.blogspot.com.au/2012/08/facebook-moving-to-jvm.html this rumor] that Facebook is looking into running PHP on the JVM. Not clear whether this will be a source-to-source compiler (PHP-to-Java, like [http://developers.facebook.com/blog/post/2010/02/02/hiphop-for-php--move-fast/ HipHop] was for PHP-to-C++) or something more like JRuby, which is an implementation of Ruby written in Java (ie. you write your source in Ruby, and it effectively gets turned directly into bytecode that can run on the JVM).
