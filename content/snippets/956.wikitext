@@ -1,0 +1,4 @@
+---
+tags: chrome
+---
+[http://www.igvita.com/slides/2012/devtools-tips-and-tricks/ A handy presentation] on some well-hidden features of the Chrome web inspector.
