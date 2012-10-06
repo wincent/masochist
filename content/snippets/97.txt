@@ -1,0 +1,6 @@
+---
+title: Site updates 0.66
+tags: site updates
+---
+6c20c8f Remove bold styling from links
+9ad0e8e Bump base font size
