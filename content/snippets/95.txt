@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.64
 tags: site updates
+cache_breaker: 1
 ---
 ee65e5b Configure Amazon CloudFront static asset hosts
