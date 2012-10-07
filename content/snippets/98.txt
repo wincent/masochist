@@ -1,0 +1,11 @@
+---
+title: Site updates 0.67
+tags: site updates
+---
+f3fe3b1 Add oily_png for faster PNG manipulation during asset compilation
+6b61f16 Remove unnecessary executable bit on bg.jpg
+e93f8e4 Add rel="next"/rel="prev" to pagination links
+03bf2fc Spritify pagination icons
+27ff95e Move Google Web Fonts into separate style link tag
+50fb5c5 Move JS to the bottom of the page
+d8311da Remove unnecessary jQuery document.ready wrappers
