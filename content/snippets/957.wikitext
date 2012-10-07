@@ -1,4 +1,5 @@
 ---
 tags: nginx gzip cloud.front
+cache_breaker: 1
 ---
 I've long had [[nginx]] set up to gzip compress static assets. Scratching my head now trying to figure out why putting CloudFront in front is delivering all my assets in an uncompressed state. [Update: see [http://www.cdnplanet.com/blog/gzip-nginx-cloudfront/ this].]
