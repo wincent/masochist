@@ -1,0 +1,10 @@
+---
+title: Site updates 0.68
+tags: site updates
+---
+96845d5 Add google_web_fonts config to sample app_config.yml
+75f0544 Set gzip_http_version to 1.0 for the benefit of CloudFront
+c58bb96 Add gzip_vary on via add_header
+f5f1fc4 "use strict" in wincent.js
+31857fe Collapse padding rules into a single line
+6282022 Lighten font weight in drop down menus
