@@ -1,5 +1,6 @@
 ---
 tags: nginx gzip curl
+cache_breaker: 1
 ---
 Example session diagnosing a failure of [[nginx] to gzip compress static assets:
 
