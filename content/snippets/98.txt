@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.67
 tags: site updates
+cache_breaker: 1
 ---
 f3fe3b1 Add oily_png for faster PNG manipulation during asset compilation
 6b61f16 Remove unnecessary executable bit on bg.jpg
