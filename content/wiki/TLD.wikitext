@@ -1,0 +1,8 @@
+---
+tags: domain tld
+---
+[[TLD]] or [[Top Level Domain]].
+
+= See also =
+
+* [[Wikipedia]] page on [[TLDs]]: http://en.wikipedia.org/wiki/TLD
