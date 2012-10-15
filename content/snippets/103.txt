@@ -1,0 +1,7 @@
+---
+title: Site updates 0.70
+tags: site updates
+---
+1f10633 Remove stray tick image
+89be57a Send email via Google Apps SMTP
+ea6efa2 Trial Google Analytics
