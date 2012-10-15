@@ -1,5 +1,6 @@
 ---
 tags: sendmail postfix
+cache_breaker: 1
 ---
 <pre lang="shell"># /etc/init.d/sendmail stop
 # yum install postfix system-switch-mail
