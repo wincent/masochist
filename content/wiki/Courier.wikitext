@@ -1,5 +1,6 @@
 ---
 tags: courier
+cache_breaker: 1
 ---
 [[Courier]] is an [[MTA]] and [[POP]]/[[IMAP]] server that I used for several years before switching to [[Cyrus]] and later Google Apps.
 
