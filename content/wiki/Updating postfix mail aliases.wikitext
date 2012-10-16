@@ -1,0 +1,7 @@
+---
+tags: postfix
+---
+<pre lang="shell"># vim /etc/aliases
+# postalias /etc/aliases
+# newaliases
+# postfix reload</pre>
