@@ -1,0 +1,8 @@
+---
+tags: courier
+---
+[[Courier]] is an [[MTA]] and [[POP]]/[[IMAP]] server that I used for several years before switching to [[Cyrus]] and later Google Apps.
+
+= See also =
+
+* Official site: http://www.courier-mta.org/
