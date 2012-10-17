@@ -1,0 +1,6 @@
+---
+title: Site updates 0.71
+tags: site updates
+---
+a855440 Fix typo in SMTP config
+61616ec Make route route to the blog
