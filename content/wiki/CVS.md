@@ -1,5 +1,6 @@
 ---
 tags: version.control
+cache_breaker: 1
 ---
 
 [CVS](/wiki/CVS) or the [Concurrent Versions System](/wiki/Concurrent_Versions_System) is a centralized, free [version control system](/wiki/version_control_system) that has largely been replaced by [Subversion](/wiki/Subversion). Old projects and existing infrastructure may continue to employ [CVS](/wiki/CVS) but most new projects are built using a [distributed version control system](/wiki/distributed_version_control_system) such as [Git](/wiki/Git). Many existing projects with long histories stored in centralized repos are also switching to [DVCS](/wiki/DVCS) systems.
