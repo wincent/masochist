@@ -1,0 +1,10 @@
+---
+title: Site updates 0.74
+tags: site updates
+---
+0026cf2 Make prompt unselectable in shell-syntax "pre" elements
+d2c39cc Add new version of libv8 gem to vendor/cache
+958619a Update to Ruby 1.9.3-p327
+e0fe4b1 Ruby 1.9-ize Hash syntax in the Gemfile
+0dd0446 Update to Rails 3.2.9
+eca85b3 Update bundle, except for Factory Girl
