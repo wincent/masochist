@@ -1,0 +1,451 @@
+---
+title: Arq S3 data format
+tags: arq
+---
+Arq stores backup data in S3 in a format similar to that of the open-source
+version control system 'git'.  
+
+When you first run Arq and give it your public and private S3 keys, it creates
+an S3 "bucket" with the name "<yourpublickey>.com.haystacksoftware.arq". It
+also creates a "universally unique identifier" (UUID) for your computer.
+
+
+Folder Configuration Files
+--------------------------
+
+Each time you add a folder for backup, Arq creates a UUID for it and stores 2
+objects in your S3 "bucket":
+
+S3 object: /<computer_uuid>/buckets/<folder_uuid>
+
+    This file contains a "plist"-format XML document that looks like this:
+
+        <plist version="1.0">
+            <dict>
+                <key>BucketUUID</key>
+                <string>408E376B-ECF7-4688-902A-1E7671BC5B9A</string>
+                <key>BucketName</key>
+                <string>company</string>
+                <key>ComputerUUID</key>
+                <string>600150F6-70BB-47C6-A538-6F3A2258D524</string>
+                <key>LocalPath</key>
+                <string>/Users/stefan/src/company</string>
+                <key>IsEncrypted</key>
+                <true></true>
+                <key>Excludes</key>
+                <dict>
+                    <key>Enabled</key>
+                    <false></false>
+                    <key>MatchAny</key>
+                    <true></true>
+                    <key>Conditions</key>
+                    <array></array>
+                </dict>
+            </dict>
+        </plist>
+
+    NOTE: The folder's UUID and name are called "BucketUUID" and "BucketName"
+    in the plist; this is a holdover from previous iterations of Arq and is not
+    to be confused with S3's "bucket" concept.
+
+
+S3 object: /<computer_uuid>/bucketnames/company/uuids/<folder_uuid>
+
+    This is a cross-reference file so that Arq can find a folder by name.
+    It is always 36 bytes long and contains the folder's UUID.
+
+
+Commits, Trees and Blobs
+------------------------
+
+When Arq backs up a folder, it creates 3 types of objects in S3, "commits",
+"trees" and "blobs". 
+
+Each backup that you see in Arq corresponds to a "commit" object in the backup
+data.  Its name is the SHA1 hash of its contents. The commit contains the SHA1
+of a "tree" object in the backup data. This tree corresponds to the folder
+you're backing up.  
+
+Each tree contains "nodes"; each node has either the SHA1 of another tree, or
+the SHA1 of a file (or multiple SHA1s, see "Tree format" below).
+
+
+S3 Storage Basics
+-----------------
+At the most basic level, Arq stores name/blob pairs in S3. The name of each
+blob is its SHA1 hash.
+
+Because of this naming, each unique blob is stored only once. If 2 files on
+your system have the same contents, only 1 copy of the contents will be stored
+in S3. If the contents of a file change, the SHA1 hash is different and the
+file is stored as a different blob.
+
+Files are blobs, and commits and trees are blobs as well.
+
+Encryption
+----------
+Each blob is encrypted using AES-256 with the encryption key you chose when
+you first ran Arq.
+
+The SHA1 used for the blob's name is the SHA1 of the *encrypted* blob.
+
+Arq version 1 used your encryption password as the encryption key.
+Arq version 2 derives a key from your encryption password using the PKCS5_PBKDF2_HMAC_SHA1() function.
+See the CryptoKey.m source code for more details: https://github.com/sreitshamer/arq_restore/blob/master/io/CryptoKey.m
+
+
+Compression
+-----------
+Starting with version 2, Arq now compresses all data chunks, extended attributes, and ACLs.
+Compression is gzip format.
+In the Tree and Node formats below, the fields "xattrs_are_compressed", "acl_is_compressed", and "data_are_compressed"
+indicate whether the data referred to by the SHA1 needs to be unzipped (after it's decrypted).
+
+
+Commit Format
+-------------
+
+A commit contains the following bytes (see "Data Format Documentation" below
+for explanation of [String], [UInt32] and [Date]):
+
+    43 6f 6d 6d 69 74 56 30 30 36      "CommitV006"
+    [String:"<author>"]
+    [String:"<comment>"]
+    [UInt64:num_parent_commits] 
+    (
+        [String:"<parent_commit_sha1>"]
+        [Bool:is_commit_encryption_key_stretched] /* only present for Commit version 4 or later */
+    )   /* repeat num_parent_commits times */
+    [String:"<tree_sha1>"]
+    [Bool:is_tree_encryption_key_stretched] /* only present for Commit version 4 or later */
+    [String:"file://<hostname><path_to_folder>"]
+    [String:"<merge_common_ancestor_sha1>"]
+    [Bool:is_merge_common_ancestor_encryption_key_stretched] /* only present for Commit version 4 or later */
+    [Date:creation_date]
+    [UInt64:num_failed_files] /* only present for Commit version 3 or later */
+    (
+        [String:"<relative_path>"] /* only present for Commit version 3 or later */
+        [String:"<error_message>"] /* only present for Commit version 3 or later */
+    )   /* repeat num_failed_files times */
+    [Data:config_plist_xml] /* a copy of the XML file as described above */
+
+
+    
+Tree Format
+-----------
+
+A tree contains the following bytes:
+
+    54 72 65 65 56 30 31 35             "Treev015"
+    [Bool:xattrs_are_compressed] /* only present for Tree version 12 or later */
+    [Bool:acl_is_compressed] /* only present for Tree version 12 or later */
+    [String:"<xattrs sha1>"]
+    [Bool:is_xattrs_encryption_key_stretched] /* only present for Tree version 14 or later */
+    [UInt64:xattrs_size]
+    [String:"<acl sha1>"]
+    [Bool:is_acl_encryption_key_stretched] /* only present for Tree version 14 or later */
+    [Int32:uid]
+    [Int32:gid]
+    [Int32:mode]
+    [Int64:mtime_sec]
+    [Int64:mtime_nsec]
+    [Int64:flags]
+    [Int32:finderFlags]
+    [Int32:extendedFinderFlags]
+    [Int32:st_dev]
+    [Int32:st_ino]
+    [UInt32:st_nlink]
+    [Int32:st_rdev]
+    [Int64:ctime_sec]
+    [Int64:ctime_nsec]
+    [Int64:st_blocks]
+    [UInt32:st_blksize]
+    [UInt64:aggregate_size_on_disk] /* only present for Tree version 11 or later */
+    [Int64:create_time_sec] /* only present for Tree version 15 or later */
+    [Int64:create_time_nsec] /* only present for Tree version 15 or later */
+    [UInt32:node_count] 
+    (
+        [String:"<file name>"]
+        [Node]
+    )   /* repeat <node_count> times */
+
+
+Each [Node] contains the following bytes:
+
+    [Bool:isTree]
+    [Bool:data_are_compressed] /* only present for Tree version 12 or later */
+    [Bool:xattrs_are_compressed] /* only present for Tree version 12 or later */
+    [Bool:acl_is_compressed] /* only present for Tree version 12 or later */
+    [Int32:data_sha1s_count] 
+    (
+        [String:"<data sha1>"]
+        [Bool:is_data_encryption_key_stretched] /* only present for Tree version 14 or later */
+    )   /* repeat <data_sha1s_count> times */
+    [UIn64:data_size]
+    [String:"<thumbnail sha1>"]
+    [Bool:is_thumbnail_encryption_key_stretched] /* only present for Tree version 14 or later */
+    [String:"<preview sha1>"]
+    [Bool:is_preview_encryption_key_stretched] /* only present for Tree version 14 or later */
+    [String:"<xattrs sha1>"]
+    [Bool:is_xattrs_encryption_key_stretched] /* only present for Tree version 14 or later */
+    [UInt64:xattrs_size]
+    [String:"<acl sha1>"]
+    [Bool:is_acl_encryption_key_stretched] /* only present for Tree version 14 or later */
+    [Int32:uid]
+    [Int32:gid]
+    [Int32:mode]
+    [Int64:mtime_sec]
+    [Int64:mtime_nsec]
+    [Int64:flags]
+    [Int32:finderFlags]
+    [Int32:extendedFinderFlags]
+    [String:"<finder file type>"]
+    [String:"<finder file creator>"]
+    [Bool:is_file_extension_hidden]
+    [Int32:st_dev]
+    [Int32:st_ino]
+    [UInt32:st_nlink]
+    [Int32:st_rdev]
+    [Int64:ctime_sec]
+    [Int64:ctime_nsec]
+    [Int64:create_time_sec]
+    [Int64:create_time_nsec]
+    [Int64:st_blocks]
+    [UInt32:st_blksize]
+
+Notes:
+
+- A Node can have multiple data SHA1s if the file is very large. Arq breaks up
+  large files into multiple blobs using a rolling checksum algorithm. This way
+  Arq only backs up the parts of a file that have changed.
+- "<thumbnail sha1>" is currently unused.
+- "<preview sha1>" is currently unused.
+- "<xattrs sha1>" is the SHA1 of a blob containing the sorted extended
+  attributes of the file (see "XAttrSet Format" below). Note this means
+  extended-attribute sets are "de-duplicated".
+- "<acl sha1>" is the SHA1 of the blob containing the result of acl_to_text()
+  on the file's ACL. Note this means the ACLs are "de-duplicated".
+- "create_time_sec" and "create_time_nsec" contain the value of the
+  ATTR_CMN_CRTIME attribute of the file
+
+
+XAttrSet Format
+---------------
+
+Each XAttrSet blob contains the following bytes:
+
+    58 41 74 74 72 53 65 74  56 30 30 32    "XAttrSetV002"
+    [UInt64:xattr_count]
+    (
+        [String:"<xattr name>"]
+        [Data:xattr_data]
+    )
+
+
+More on S3 Storage
+------------------
+
+In general, each blob is stored as an S3 object with a path of the form:
+
+    /<computer_uuid>/objects/<sha1>
+
+But for small files, the overhead associated with putting and getting the
+objects to/from S3 makes backing them up very inefficient.
+
+So, small files (files under 64KB in length) are stored in "packs", which are
+explained below.
+
+
+Packs
+-----
+
+Each folder configured for backup maintains 2 "packsets", one for trees and
+commits, and one for all other small files. The packsets are named:
+
+    <folder_uuid>-trees
+    <folder_uuid>-blobs
+
+Small files are separated into 2 packsets because the trees and commits are
+cached locally (so that Arq gives reasonable performance for browsing backups);
+all other small blobs don't need to be cached.
+
+A packset is a set of "packs". When Arq is backing up a folder, it combines
+small files into a single larger packfile; when the packfile reaches 10MB, it
+is stored on S3. Also, when Arq finishes backing up a folder it stores its
+unsaved packfiles no matter their sizes.
+
+When storing a pack, Arq stores the packfile as:
+
+    /<computer_uuid>/packsets/<folder_uuid>-(blobs|trees)/<sha1>.pack
+
+It also stores an index of the SHA1s contained in the pack as:
+
+    /<computer_uuid>/packsets/<folder_uuid>-(blobs|trees)/<sha1>.index
+
+
+Pack Index Format
+-----------------
+
+magic number                ff 74 4f 63  
+version (2)                 00 00 00 02 network-byte-order
+fanout[0]                   00 00 00 02 (4-byte count of SHA1s starting with 0x00)
+...
+fanout[255]                 00 00 f0 f2 (4-byte count of total objects == count of SHA1s starting with 0xff or smaller)
+object[0]                   00 00 00 00 (8-byte network-byte-order offset)
+                            00 00 00 00
+                            00 00 00 00 (8-byte network-byte-order data length)
+                            00 00 00 00
+                            00 xx xx xx (sha1 starting with 00)
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            00 00 00 00 (4 bytes for alignment)
+object[1]                   00 00 00 00 (8-byte network-byte-order offset)
+                            00 00 00 00
+                            00 00 00 00 (8-byte network-byte-order data length)
+                            00 00 00 00
+                            00 xx xx xx (sha1 starting with 00)
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            00 00 00 00 (4 bytes for alignment)
+object[2]                   00 00 00 00 (8-byte network-byte-order offset)
+                            00 00 00 00
+                            00 00 00 00 (8-byte network-byte-order data length)
+                            00 00 00 00
+                            00 xx xx xx (sha1 starting with 00)
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            00 00 00 00 (4 bytes for alignment)
+...
+object[f0f1]                00 00 00 00 (8-byte network-byte-order offset)
+                            00 00 00 00
+                            00 00 00 00 (8-byte network-byte-order data length)
+                            00 00 00 00
+                            ff xx xx xx (sha1 starting with ff)
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            00 00 00 00 (4 bytes for alignment)
+20-byte SHA1 of all of the  xx xx xx xx
+above                       xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+
+
+Pack File Format
+----------------
+
+signature                   50 41 43 4b ("PACK")
+version (2)                 00 00 00 02 (network-byte-order 4 bytes)
+object count                00 00 f0 f2 (network-byte-order 4 bytes)
+object[0] mimetype not null 01          (1 byte)
+object[0] mimetype strlen   00 00 00 00 (network-byte-order 8 bytes)
+                            00 00 00 08
+object[0] mimetype string   xx xx xx xx (n bytes)
+                            xx xx xx xx
+object[0] name not null     01          (1 byte)
+object[0] name strlen       00 00 00 00 (network-byte-order 8 bytes)
+                            00 00 00 08
+object[0] name string       xx xx xx xx (n bytes)
+                            xx xx xx xx
+object[0] data length       00 00 00 00 (network-byte-order 8 bytes)
+                            00 00 00 06
+object[0] data              xx xx xx xx (n bytes)
+                            xx xx
+...
+object[f0f2] mimetype not null 01          (1 byte)
+object[f0f2] mimetype len   00 00 00 00 (network-byte-order 8 bytes)
+                            00 00 00 08
+object[f0f2] mimetype str   xx xx xx xx (n bytes)
+                            xx xx xx xx
+object[f0f2] name not null  01          (1 byte)
+object[f0f2] name strlen    00 00 00 00 (network-byte-order 8 bytes)
+                            00 00 00 08
+object[f0f2] name string    xx xx xx xx (n bytes)
+                            xx xx xx xx
+object[f0f2] data length    00 00 00 00 (network-byte-order 8 bytes)
+                            00 00 00 04
+object[f0f2] data           12 34 12 34
+20-byte SHA1 of all of the  xx xx xx xx
+above                       xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+                            xx xx xx xx
+
+
+
+Data Format Documentation Conventions
+-------------------------------------
+
+We used a few shortcuts in some of the data format explanations above:
+
+[Bool:value]
+
+    A [Bool] is stored as 1 byte, either 00 or 01.
+
+[String:"<string>"]
+
+    A [String] is stored as:
+
+        00 or 01    isNull flag
+
+        if not null:
+
+            00 00 00 00    8-byte network-byte-order length
+            00 00 00 0c
+            xx xx xx xx    UTF-8 string data
+            xx xx xx xx    
+            xx xx xx xx    
+        
+[UInt32:<the_number>]
+
+    A [UInt32] is stored as:
+
+            00 00 00 00     network-byte-order uint32_t
+
+[Int32:<the_number>]
+
+    An [Int32] is stored as:
+
+            00 00 00 00     network-byte-order int32_t
+
+[UInt64:<the_number>]
+
+    A [UInt64] is stored as:
+
+            00 00 00 00     network-byte-order uint64_t
+            00 00 00 00
+
+[Int64:<the_number>]
+
+    An [Int64] is stored as:
+
+            00 00 00 00     network-byte-order int64_t
+            00 00 00 00
+
+[Date:<the_date>]
+    
+    A [Date] is stored as:
+
+        00 or 01        isNull flag
+        if not null:
+
+            00 00 01 26     8-byte network-byte-order milliseconds 
+            a8 79 09 48     since the first instant of 1 January 1970, GMT.
+
+[Data:<xattr_data>]
+
+    A [Data] is stored as:
+
+        [UInt64:<length>]       data length
+        xx xx xx xx             bytes
+        xx xx xx xx
+        xx xx xx xx
+        ...
