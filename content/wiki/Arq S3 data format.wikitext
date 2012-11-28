@@ -1,0 +1,6 @@
+---
+tags: arq
+---
+The [[Arq S3 data format]] is documented [http://www.haystacksoftware.com/arq/s3_data_format.txt here].
+
+For posterity's sake, [/snippets/112 this is a local mirror] of the document.
