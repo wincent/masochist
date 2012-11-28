@@ -1,5 +1,6 @@
 ---
 tags: s3 arq
+cache_breaker: 1
 ---
 
 [Arq](/wiki/Arq) is a great little [Mac OS X](/wiki/Mac_OS_X) application for backing up your personal data to [Amazon](/wiki/Amazon) [S3](/wiki/S3). It provides transparent, automatic, incremental, encrypted backup to S3 using a solid application with fine control over inclusion/exclusion criteria and nice little bonuses like S3 budget and network throughput preferences.
