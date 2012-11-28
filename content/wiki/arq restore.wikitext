@@ -1,0 +1,8 @@
+---
+tags: arq
+---
+[[arq_restore]] is an [[open source]] restore tool for restoring files backed up using (the [[closed source]]) [[Arq]] backup tool in the [[Arq S3 data format]].
+
+= Official site =
+
+* http://sreitshamer.github.com/arq_restore/
