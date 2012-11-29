@@ -1,0 +1,4 @@
+---
+tags: bash awk
+---
+<pre lang="shell">$ awk '{s+=$1} END {print s}' some_file</pre>
