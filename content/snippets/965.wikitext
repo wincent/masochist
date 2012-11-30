@@ -1,0 +1,4 @@
+---
+tags: arq
+---
+My [[Arq]] backup to [[Glacier]] is now 17% done. Could easily take another week to finish, although it's hard to predict.
