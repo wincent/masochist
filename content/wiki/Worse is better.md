@@ -1,5 +1,6 @@
 ---
 tags: unix worse.is.better
+cache_breaker: 1
 ---
 
 > -   **Simplicity** — design must be simple, both in implementation and interface. It is more important for the implementation to be simple than the interface. Simplicity is the most important consideration in a design.
