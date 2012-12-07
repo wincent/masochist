@@ -1,0 +1,4 @@
+---
+tags: arq
+---
+Arq backup progress: almost there now (86%); started it on Tuesday, November 27 at around 7 PM, so it's been running for 9 days and 3 hours.
