@@ -1,4 +1,5 @@
 ---
 tags:
+cache_breaker: 1
 ---
 Wow. So Google Apps is no longer free, at least for new sign-ups. Looks like I made the switch just in time... "Starting today, we're no longer accepting new sign-ups for the free version of Google Apps (the version you're currently using). Because you're already a customer, this change has no impact on your service, and you can continue to use Google Apps for free." Hopefully they won't change their mind about it. Press coverage [http://arstechnica.com/information-technology/2012/12/google-kills-free-version-of-google-apps-for-businesses/ here].
