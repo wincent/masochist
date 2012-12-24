@@ -1,0 +1,17 @@
+---
+title: Northbridge, Southbridge, and the move to everything-on-the-CPU architecture
+tags: northbridge southbridge
+---
+Idly paging around today I learnt that some of my long-held assumptions about the way functionality is distributed across motherboard components were wrong.
+
+Back in the old days, the core functionality of the motherboard was spread across [http://en.wikipedia.org/wiki/Northbridge_%28computing%29 northbridge] (coordinating communications among CPU, RAM, high-speed expansion bus, video card etc) and [http://en.wikipedia.org/wiki/Southbridge_%28computing%29 southbridge] (slower communications such as USB and other I/O). The southbridge would not be connected directly to the CPU; rather the northbridge would sit between them.
+
+So, it turns out there's a new trend towards "[http://en.wikipedia.org/wiki/System_on_a_chip System-on-a-chip]" designs in which the functionality of the northbridge is largely rolled in to the CPU itself, and the southbridge connects to the CPU. This trend looks set to continue, as it reduces motherboard cost and purportedly improves performance as well.
+
+My [http://www.everymac.com/systems/apple/macbook-air/specs/macbook-air-core-2-duo-2.13-13-late-2010-specs.html late-2010 MacBook Air] features the [http://en.wikipedia.org/wiki/Sandy_Bridge Sandy Bridge] architecture, which has most of the northbridge on the CPU and uses a separate [http://en.wikipedia.org/wiki/Comparison_of_Nvidia_graphics_processing_units#GeForce_300M_.283xxM.29_series GeForce 320M] graphics chipset. This fails pretty hard at driving an external 30" monitor.
+
+The 2011 [http://en.wikipedia.org/wiki/Ivy_Bridge_%28microarchitecture%29 Ivy Bridge] architecture went into volume production in Q3 2011 and features [http://en.wikipedia.org/wiki/Intel_HD_Graphics Intel HD Graphics] on the CPU itself. The [http://www.everymac.com/systems/apple/macbook-air/specs/macbook-air-core-i7-2.0-13-mid-2012-specs.html current (mid-2012) MacBook Air] uses the "seventh generation" [http://en.wikipedia.org/wiki/Comparison_of_Intel_graphics_processing_units Intel HD Graphics 4000].
+
+It's rumored that the successor to Ivy Bridge, [http://en.wikipedia.org/wiki/Haswell_%28microarchitecture%29 2013's Haswell], will roll even the southbridge functions on the CPU.
+
+I'm looking at benchmarks, but I'm hoping that one of these systems will actually be able to adequately drive a large external monitor without overheating.
