@@ -1,0 +1,4 @@
+---
+tags: torvalds
+---
+[http://article.gmane.org/gmane.linux.kernel/1414106 Torvalds rage]. Always fun to watch.
