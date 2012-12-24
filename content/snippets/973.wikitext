@@ -1,0 +1,4 @@
+---
+tags:
+---
+Despite taking [http://www.apple.com/batteries/notebooks.html great care] to look after the battery on my MacBook Air, after 651 days of use and 1,107 cycles it's definitely starting to show its age. It's full charge capacity is purportedly now only 3,451 mAh (it was 6,694 mAh the first time I measured it), or about half.
