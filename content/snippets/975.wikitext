@@ -1,0 +1,4 @@
+---
+tags: ssh rsa
+---
+Currently torn: shorter RSA key size, changing keys every few months (giving fast logins)? or longer key size, changing, um, never?
