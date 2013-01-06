@@ -1,0 +1,5 @@
+---
+title: Site updates 0.76
+tags: site updates
+---
+a6e361a Make page background fixed
