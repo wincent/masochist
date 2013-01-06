@@ -1,0 +1,4 @@
+---
+tags: rsa
+---
+Having just rotated my SSH keys, I wanted to know what [http://en.wikipedia.org/wiki/Shor%27s_algorithm the current state-of-the-art] is for factorization with a quantum computer. Looks like a new record was set in 2012, when a quantum computer was able to factor the number 21 in polynomial time. I'm guessing even the most paranoid don't expect even some secret NSA quantum computer to be able to factor their 2048-bit RSA keys any time within the next few years.
