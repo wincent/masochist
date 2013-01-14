@@ -1,6 +1,7 @@
 ---
 title: Involuntary Reboot Log 3.34
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 Left the machine open and the power ran out; presumably it entered deep sleep. On plugging it into the power and trying to wake it up, fans came on hard but screen remained blank indefinitely. Wasn't `ping`-able or `ssh`-able from the outside. [[Hard reset]].
 
