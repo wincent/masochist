@@ -1,0 +1,26 @@
+---
+title: Browser wars
+tags: jquery ie
+---
+Deciding whether to [http://blog.jquery.com/2013/01/15/jquery-1-9-final-jquery-2-0-beta-migrate-final-released/ stick to jQuery 1.9 or jump to 2.0], here are some numbers from Google Analytics:
+
+# Chrome: 49.34%
+# Firefox: 22.97%
+# Safari: 20.94%
+# Internet Explorer: 3.16%
+# Opera: 1.65%
+# Opera Mini: 0.84%
+# Mozilla Compatible Agent: 0.33%
+# Android Browser: 0.23%
+# Safari (in-app): 0.16%
+# Nokia5130c-2: 0.06%
+
+Drilling down into that IE segment:
+
+# 9.0: 38.70%
+# 8.0: 37.01%
+# 10.0: 9.60%
+# 7.0: 9.04%
+# 6.0: 5.65%
+
+So, only 1.63% of all visitors would have potentially broken functionality if I were to jump to 2.0.
