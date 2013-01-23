@@ -1,0 +1,4 @@
+---
+tags: aws ec2
+---
+New [[EC2]] instance type from [[Amazon]], "Eight Extra Large": "sixteen virtual cores that can deliver 35 EC2 Compute Units (ECUs) of CPU performance, 117 GiB of RAM, and 48 Terabytes of storage capacity across 24 hard disk drives. Customers using hs1.8xlarge instances for their applications can expect over 2.4 Gigabytes per second of sequential read and write I/O performance." Awesome.
