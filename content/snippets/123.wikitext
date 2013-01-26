@@ -1,0 +1,16 @@
+---
+title: Involuntary Reboot Log 3.35
+tags: involuntary.reboot.log
+---
+Left the machine open and the power ran out; like last time, presumably it entered deep sleep. On plugging it into the power and trying to wake it up, fans came on hard but screen remained blank. This time I didn't bother waiting more than a few minutes. [[Hard reset]].
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* Uptime at moment of failure: < 1 day
+* Kernel panics: 7
+* Hard resets: 28
+* Total failures: 35
+* Start of recording keeping: 14 March 2011
+* Total days to date: 683 days
+* Average time between failures: 19.51 days
