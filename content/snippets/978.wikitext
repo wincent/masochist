@@ -1,0 +1,4 @@
+---
+tags: aws ec2
+---
+I Heart [[Amazon]]. "We are reducing Linux On Demand prices for First Generation Standard (M1) instances, Second Generation Standard (M3) instances, High Memory (M2) instances and High CPU (C1) instances in all regions. All prices are effective from February 1, 2013. These reductions vary by instance type and region, but typically average 10-20% price drops."
