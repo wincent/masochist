@@ -1,0 +1,17 @@
+---
+title: Site updates 0.79
+tags: site updates
+---
+7d4183a Fix JS error on wiki pages with quotes in names
+2974fc3 Teach script/start to show usage information
+8267f2b Spec updates for new version of Capybara
+49c25e4 Silence some Factory Girl deprecation warnings
+409b9b6 Take first step towards flexible/responsive layout
+60b990f Convert _display.sass from SASS to SCSS
+1e66b6c SCSS-ify _mixins.sass
+58e2da9 Drop #content margin on small screens
+548222c Update JSON gem 1.7.6 -> 1.7.7
+74a4b88 Swap in some 3-letter hex codes for 6-letter ones
+26b2773 Modernize some hash syntax
+9888d26 Fix a cosmetic typo in the comment edit template
+388b903 Add viewport settings for better responsiveness
