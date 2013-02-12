@@ -1,0 +1,4 @@
+---
+tags: rails
+---
+Starting to get sick of [[Rails]] vulnerabilities.
