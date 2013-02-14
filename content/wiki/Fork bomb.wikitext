@@ -1,5 +1,6 @@
 ---
 tags: bash
+cache_breaker: 1
 ---
 = Example =
 
