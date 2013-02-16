@@ -1,0 +1,20 @@
+---
+title: Site updates 0.80
+tags: site updates
+---
+f728ed3 Update to Haml 4.0.0
+0ceaff4 Don't bother telling Haml to output HTML5
+d3b3434 Ruby 1.9-ize some hash syntax
+16219af Simplify setUpLoginLogoutLinks
+fd83831 Remove comment and special case from date-parsing JS
+2fb3563 Drop explicit `return` from `setCookie` function
+28be387 Modernize wincent.js.erb
+433ad95 Replace legacy `live()` calls with `on()` hotness
+2b05ff8 Tighten up use of attr() and prop()
+b4e6f15 CamelCase global_spinner_counter
+1bf5d56 Update to jQuery 1.9.1
+6b0d698 Add zeus.json
+6cfd5b6 Add Ruby and Zeus to misc/legal page
+e8b7961 Update wikitext gem to version 3.1
+a6195a9 Add "red link" support for wiki link targets that don't exist yet
+fa9b79b Regenerate static files with Haml 4.0
