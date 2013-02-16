@@ -1,0 +1,8 @@
+---
+tags: chrome
+---
+[[Chrome]] is the best web browser.
+
+= Official site =
+
+* https://ww.google.com/chrome
