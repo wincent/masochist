@@ -1,5 +1,6 @@
 ---
 tags: open.source
+cache_breaker: 1
 ---
 
 [Open source](/wiki/Open_source) software is software for which the access to the underlying source code is available to the public. There are many types of [open source](/wiki/open_source) licenses, but the most well-known examples are actually [free software](/wiki/free_software) licenses. Note that all [free software](/wiki/free_software) licenses are [open source](/wiki/open_source), but not all [open source](/wiki/open_source) licenses are [free software](/wiki/free_software) licenses.
