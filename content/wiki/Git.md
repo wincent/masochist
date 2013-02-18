@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 [Git](/wiki/Git) is a lightweight, fast, portable distributed [version control system](/wiki/version_control_system) with excellent [branching](/wiki/branching)/[merging](/wiki/merging) capabilities, flexible support for many different workflows, and very high performance.
