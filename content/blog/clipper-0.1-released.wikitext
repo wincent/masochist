@@ -1,0 +1,11 @@
+---
+title: Clipper 0.1 released
+tags: clipper
+---
+[[Clipper]] is an [[OS X]] "launch agent" that runs in the background providing a service that exposes the local clipboard to [[tmux]] sessions and other processes running both locally and remotely.
+
+A binary download (for OS X 10.8 [[Mountain Lion]]) can be found on the [/products/clipper Clipper product page].
+
+For more details, see [http://git.wincent.com/clipper.git/blob/a36d3601b21ea9938ed97203d7973bd5e8436625:/README.md the 0.1 README].
+
+'''Update:''' I've added a screencast to the [/products/clipper Clipper product page] demonstrating what it can do.
