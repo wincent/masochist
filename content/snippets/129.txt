@@ -1,0 +1,19 @@
+---
+title: Site updates 0.81
+tags: site updates
+---
+3e7d572 Bust "redlink" cache when modifying articles
+91c1a91 Fix a (harmless) typo in a code comment
+3bbc3af Move known link concern into ArticleObserver
+f430c20 Misc JS modernization
+fd3bca5 Misc modernization of AJAX JS
+9f772f8 Move jQuery into vendor
+5eea35b Add Jasmine
+501937b Add Object.subclass
+f57ffe2 Rename ajax_comment_form -> ajaxCommentForm
+5bc1a08 Rename edit_in_place -> editInPlace()
+e7adacc Rename ajax_check_box -> ajaxCheckBox
+6ebd942 Rename ajax_select -> ajaxSelect
+4ce530a Rename observe_field -> observeField
+889ffc4 Rename setup_preview_link -> setupPreviewLink
+eff829c Switch variables to camelCase in ajax.js
