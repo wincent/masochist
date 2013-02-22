@@ -1,6 +1,7 @@
 ---
 title: Clipper 0.1 released
 tags: clipper
+cache_breaker: 1
 ---
 
 [Clipper](/wiki/Clipper) is an [OS X](/wiki/OS_X) "launch agent" that runs in the background providing a service that exposes the local clipboard to [tmux](/wiki/tmux) sessions and other processes running both locally and remotely.
