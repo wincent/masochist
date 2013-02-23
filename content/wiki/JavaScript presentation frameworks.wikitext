@@ -1,5 +1,6 @@
 ---
 tags: javascript html
+cache_breaker: 1
 ---
 * http://bartaz.github.com/impress.js/ (fancy schmancy 3D)
 * http://lab.hakim.se/reveal-js/ (also pretty fancy)
