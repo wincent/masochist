@@ -1,0 +1,4 @@
+---
+tags: haswell
+---
+The thing I am most looking forward to about [http://en.wikipedia.org/wiki/Haswell_%28microarchitecture%29 Haswell]: "Up to double the performance of the integrated GPU. (Haswell GT3 vs Ivy Bridge HD4000)".
