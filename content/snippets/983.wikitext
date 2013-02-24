@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+[http://www.ruby-lang.org/en/news/2013/02/24/ruby-2-0-0-p0-is-released/ Ruby 2.0.0]
