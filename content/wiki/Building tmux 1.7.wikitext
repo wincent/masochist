@@ -1,0 +1,7 @@
+---
+tags: tmux
+---
+= See =
+
+* [[Building tmux 1.7 on OS X 10.8 Mountain Lion]]
+* [[Building tmux 1.7 on CentOS 5.8]]
