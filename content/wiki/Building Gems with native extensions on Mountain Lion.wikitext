@@ -1,5 +1,6 @@
 ---
 tags: gem mountain.lion homebrew gcc
+cache_breaker: 1
 ---
 So with the update to [[Mountain Lion]] most attempts to build [[RubyGems]] with native components fail spectacularly with variants of the form:
 
