@@ -1,0 +1,11 @@
+---
+title: Site updates 0.83
+tags: site updates
+---
+623ad87 Bump Ruby to 1.9.3-p392
+a523368 Goodbye RVM
+d5af8de Switch to rbenv
+421a5d6 Update to Ruby 2.0.0-p0, updating bundle in the process
+8fa9b17 script/deploy: require Bundler 1.3.0 release
+f99fa3c Bump a copyright year
+ffa5fe8 Update wikitext gem (4.0 -> 4.0.1)
