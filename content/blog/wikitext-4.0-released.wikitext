@@ -1,0 +1,17 @@
+---
+title: Wikitext 4.0 released
+tags: releases wikitext
+---
+A new release of the [[Wikitext]] gem, version 4.0, is out. The major version number has been bumped because this release breaks compatibility with versions of [[Ruby]] prior to 2.0.0. For older versions of Ruby the 3.x series will continue to be supported and available from RubyGems with a `[sudo] gem install wikitext --version 3.1` or similar.
+
+The reason I'm doing it this way is to avoid the overhead of maintaining a single package which is compatible across multiple versions of Ruby; this is a trade off I need to make because I only have time for [[open source]] projects like Wikitext outside of my fulltime day-job at [[Causes]].
+
+See the [/products/wikitext/doc/file.RELEASE-NOTES.html release notes for more details].
+
+= About the gem =
+
+[[Wikitext]] is a fast wikitext-to-[[HTML]] translator with a syntax very close to that used by [[MediaWiki]]. It is a [[Ruby]] extension written with speed and robustness in mind using a [[Ragel]]-generated [http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl scanner] and an extremely fast [http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c hand-coded parser], all in [[C]]. It has an enormous [http://git.wincent.com/wikitext.git/tree/HEAD:/spec spec suite].
+
+You can browse the source code repo [http://git.wincent.com/wikitext.git here] or [/repos/wikitext here], or download the [[gem]] from the [http://rubygems.org/gems/wikitext rubygems.org downloads page]. For an overview of how to use the extension check out the docs [/products/wikitext/doc/ here]. If you have [[RubyGems]] then you can install it with either `gem install wikitext` or `sudo gem install wikitext`.
+
+If you find the extension useful please consider making a [https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&item_name=Wikitext+donation&no_note=1&currency_code=EUR&lc=GB donation] via PayPal to win@wincent.com.
