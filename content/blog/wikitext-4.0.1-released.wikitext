@@ -1,0 +1,7 @@
+---
+title: Wikitext 4.0.1 released
+tags: releases wikitext
+---
+Hot on the heels of [[Wikitext]] 4.0, I've just released version 4.0.1, which gets things building again on Linux distros which use GNU install.
+
+See [/blog/wikitext-4.0-released the 4.0 release announcement] for the usual details; I won't repeat them here.
