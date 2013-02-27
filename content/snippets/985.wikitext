@@ -1,0 +1,4 @@
+---
+tags: site
+---
+Wanting to live dangerously, I've updated to Ruby 2.0.0-p0. [mailto:win@wincent.com Let me know] if you see anything fishy.
