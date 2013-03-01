@@ -1,0 +1,4 @@
+---
+tags: zopfli compression
+---
+Zopfli, from [[Google]], the "[http://googledevelopers.blogspot.com.au/2013/02/compress-data-more-densely-with-zopfli.html state of the art in Deflate-compatible compression]".
