@@ -1,0 +1,28 @@
+---
+title: Site updates 0.84
+tags: site updates
+---
+46e2a72 Replace image-based blockquote pull quotes with pure CSS
+586fbec Swap out hand-rolled box-shadow mix-in for Compass one
+b812a65 Remove hand-rolled border-radius mix-in in favor of Compass one
+f459a41 Port application.css from Sass to SCSS
+aed68a9 Replace comment bubble triangles with pure CSS
+0031051 DRY up comment-bubbles.sass a little
+2215cc6 Remove useless element prefix on id selector
+d1b87ff Initial clean-up of comment-boxes.sass
+e221e1c More clean-up of comment-boxes.sass
+317db4a Add $active-fragment-background-color
+a5f1785 Replace `#cycle` with equivalent nth-child selectors
+4209beb DRY up comment bubble CSS
+191b2bb Use more nesting in comment bubble CSS
+a3de4ae Fix regression in comment bubble styling (list items)
+226e86a DRY up comment-box styles
+a17c3df More DRY up of comment box CSS
+afe3811 Set body font-size using a calculation
+ed04b80 CSS: use hyphens, not underscores, in respond-to
+4a4b89d Alphabetize some CSS properties
+68cda05 First cut at modular scaling for headings
+2ab8d5b Abbreviate some hex codes
+a9d0f6b Abbreviate and clean-up some property declarations
+448d210 Kill an old and low-value comment
+f4c1207 Force Compass to store generated sprites centrally
