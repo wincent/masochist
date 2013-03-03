@@ -1,5 +1,6 @@
 ---
 tags: css
+cache_breaker: 1
 ---
 [[Modular scale]] is the application of historically/culturally pleasing ratios to type and layout. For example, we can take a base value (like 14px) and scale it upwards and downwards in steps of 1.618 (the golden ratio), or some other ratio such as a musical interval.
 
