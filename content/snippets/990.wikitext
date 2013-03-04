@@ -1,0 +1,4 @@
+---
+tags: chef
+---
+So [http://www.opscode.com/blog/2013/02/20/aws-opsworks-uses-opscode-chef-as-default-automation-engine/ here] I learn that Chef 11, which was released in February, ditches CouchDB for [[PostgreSQL]], and rewrites the API in Erlang for better scalability. Interesting.
