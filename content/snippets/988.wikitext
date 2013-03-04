@@ -1,0 +1,4 @@
+---
+tags: aws ec2 puppet chef
+---
+I'm revamping some of my [[EC2]] infrastructure, with the hope of boot-strapping new instances using [[Puppet]] or [[Chef]] (we use [[Chef]] at work, but [[Puppet]] seems somehow better supported by [[Amazon]]). But where to store the authoritative config? Local [[Git]] repo? Remote [[Git]] repo (itself hosted in [[EC2]])? Feels like a chicken and egg problem.
