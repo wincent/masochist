@@ -1,0 +1,18 @@
+---
+title: Involuntary Reboot Log 4.1 and 4.2
+tags: involuntary.reboot.log
+---
+Two instant [[kernel panics]] trying to mount an Amazon [[S3]] bucket as a disk using [[Transmit]].
+
+Not off to a very good start, with an average time between failures of only 0.5 days. Only one way to go from here.
+
+= Statistics so far =
+
+* Failure type: [[kernel panic]]
+* Uptime at moment of failure: a few hours (4.1); a few minutes (4.2)
+* Kernel panics: 2
+* Hard resets: 0
+* Total failures: 2
+* Start of recording keeping: 6 March 2013
+* Total days to date: 1 days
+* Average time between failures: 0.5 days
