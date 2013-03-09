@@ -1,0 +1,4 @@
+---
+tags: nvidia
+---
+The Nvidia GeForce GTX Titan comes with [http://www.tomshardware.com/reviews/geforce-gtx-titan-gk110-review,3438.html 6 GB of GDDR5 RAM]. It'll set you back $1,000.
