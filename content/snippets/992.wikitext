@@ -1,0 +1,4 @@
+---
+tags:
+---
+Two apps I've been blown away by in the last few days: one [[open source]], [[Slate]], and another closed, [[iStat Menus]].
