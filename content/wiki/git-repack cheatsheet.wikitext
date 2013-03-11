@@ -1,0 +1,12 @@
+---
+tags: git
+---
+Expensive but effective repacking:
+
+<pre lang="shell">$ git repack -a -d -f --depth=250 --window=250</pre>
+
+Probably a bad idea:
+
+<pre lang="shell">$ git gc --aggressive</pre>
+
+'''Source:''' http://metalinguist.wordpress.com/2007/12/06/the-woes-of-git-gc-aggressive-and-how-git-deltas-work/
