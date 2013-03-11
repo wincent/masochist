@@ -1,4 +1,5 @@
 ---
 tags: consolas
+cache_breaker: 1
 ---
 Just spent some time playing with the possible settings for `[[AppleFontSmoothing]]`. Turns out `defaults -currentHost write -g AppleFontSmoothing -int 1` is best for Consolas 13 on my screen. I took some screenshots at normal size and zoomed in; "4" is clearly too thin, and "3" is clearly too thick, so it comes down to "1" and "2". While most of the comments I've seen on the web seem to come down in favor of "2", and in isolation a snippet of text with "2" does look better to my eyes, I find that that the contrast between bold and normal is much more useful with "1". This corresponds to the "Light" font smoothing setting that Apple used to expose in the System Preferences UI.
