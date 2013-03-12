@@ -1,5 +1,6 @@
 ---
 tags: memcached
+cache_breaker: 1
 ---
 `memcache-top` is a handy perl script for getting insight into things like cache misses and utilization rates for running [[memcached]] instances.
 
