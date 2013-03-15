@@ -1,5 +1,6 @@
 ---
 tags: bash
+cache_breaker: 1
 ---
 <pre lang="shell">$ history -d 23</pre>
 
