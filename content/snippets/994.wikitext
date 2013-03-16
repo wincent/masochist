@@ -1,0 +1,4 @@
+---
+tags: tdd
+---
+"[http://stoneship.org/essays/tdd-bypasses-your-brain/ TDD Bypasses Your Brain]". The title and first line certainly got my attention. (The content of the argument doesn't really live up to the promise of the title, however.)
