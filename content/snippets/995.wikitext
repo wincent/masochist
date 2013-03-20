@@ -1,0 +1,4 @@
+---
+tags:
+---
+[https://github.com/blog/1440-today-s-email-incident GitHub leaked some customer email addresses]. Dramah ensues.
