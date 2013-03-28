@@ -1,0 +1,4 @@
+---
+tags: ruby
+---
+Apparently, [http://madhadron.com/a-criticism-of-ruby Ruby sucks].
