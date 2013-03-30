@@ -1,5 +1,6 @@
 ---
 tags: tmux centos
+cache_breaker: 1
 ---
 Having done this for [[tmux]] 1.7 in "[[Building tmux 1.7 on CentOS 5.8]]", all that was required was:
 
