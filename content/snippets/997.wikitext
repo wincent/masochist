@@ -1,0 +1,4 @@
+---
+tags: tmux clipper
+---
+Awesome. [[tmux]] 1.8 is out, and the new `copy-pipe` command [/repos/clipper/commits/9cc918c0bec016 makes it possible] to  use [[Clipper]] to seamlessly get anything you copy in tmux copy mode into the [[OS X]] system clipboard (ie. with no additional key-presses).
