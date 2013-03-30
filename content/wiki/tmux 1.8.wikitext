@@ -1,5 +1,6 @@
 ---
 tags: tmux
+cache_breaker: 1
 ---
 This release has some really nice new features, like `copy-pipe` (great for integration with [[Clipper]]) and pane "zooming".
 
