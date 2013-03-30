@@ -1,5 +1,6 @@
 ---
 tags: tmux
+cache_breaker: 1
 ---
 My initial naïve attempt at this didn't work, nor did the tip provided in [https://gist.github.com/sturadnidge/4185338 this gist]. Finally, I (mostly) followed the recipe found [http://simon.heimlicher.com/articles/2012/10/19/compile-tmux-on-rhel-5 here], which installs static versions of both the libevent and ncurses libraries:
 
