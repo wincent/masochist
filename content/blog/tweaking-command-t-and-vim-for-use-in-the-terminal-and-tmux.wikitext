@@ -1,6 +1,7 @@
 ---
 title: Tweaking Command-T and Vim for use in the terminal and tmux
 tags: vim command.t tmux
+cache_breaker: 1
 ---
 For a long time I used [[Command-T]] principally only inside of [[MacVim]]. Partly because the version of [[Vim]] that comes with [[Mac OS X]] doesn't have the necessary [[Ruby]] support, and partly because MacVim has some niceties that make it pleasant to use compared to using [[Apple's]] `vim` inside [[Terminal.app]]:
 
