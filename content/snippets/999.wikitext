@@ -1,0 +1,4 @@
+---
+tags: javascript promise callback node
+---
+"[http://blog.jcoglan.com/2013/03/30/callbacks-are-imperative-promises-are-functional-nodes-biggest-missed-opportunity/ Callbacks are imperative, promises are functional: Node’s biggest missed opportunity]". An enjoyable read.
