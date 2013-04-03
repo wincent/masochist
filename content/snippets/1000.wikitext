@@ -1,0 +1,4 @@
+---
+tags: aws amazon
+---
+[[Amazon]]: "we are reducing Amazon S3 request prices in all nine of our regions. We are lowering the prices for GET requests by 60% and the prices for PUT, LIST, COPY, and POST requests by 50%."
