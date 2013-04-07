@@ -1,5 +1,6 @@
 ---
 tags: html5 video
+cache_breaker: 1
 ---
 Relatively up-to-date information is available [http://diveintohtml5.com/video.html here].
 
