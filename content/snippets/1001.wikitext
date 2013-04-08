@@ -1,0 +1,4 @@
+---
+tags: iterm
+---
+So I see that iTerm 3 will [https://github.com/gnachman/iTerm2/pull/85 likely have support] for italic fonts. Nice.
