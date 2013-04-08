@@ -1,5 +1,6 @@
 ---
 tags: consolas windows os.x
+cache_breaker: 1
 ---
 
 At the time of writing you can get an [OS X](/wiki/OS_X) installer for the excellent [Consolas](/wiki/Consolas) programming front by installing Microsoft's "Open XML File Format Converter for Mac" from here:
