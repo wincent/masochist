@@ -1,0 +1,17 @@
+---
+tags: data.structures
+---
+* [[Bitmap]]
+* [[Array]]
+* [[Vector]]
+* Lists:
+** [[Singly-linked list]]
+** [[Doubly-linked list]]
+* [[Hash table]] (also known as [[Hash]], [[Dictionary]], [[Hashmap]], [[Map]])
+* [[Trie]]
+* [[Heap]]
+* [[Tree]]
+** [[B-Tree]]
+** [[Binary tree]]
+** [[Binary search tree]]
+* [[Union-Find]]
