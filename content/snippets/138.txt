@@ -1,0 +1,9 @@
+---
+title: Site updates 0.86
+tags: site updates
+---
+9bbaf13 Update bundle
+dd38257 Update Factory Girl
+f6432e0 Add HTML support to snippets model
+5e0dfc3 Update Bundle
+55f560c Fix typo in ajax.js.erb, causing product AJAX menu to not work
