@@ -1,0 +1,4 @@
+---
+tags: iterm
+---
+Awesomeness. Italic support is [https://code.google.com/p/iterm2/issues/detail?id=391 on the way] to [[iTerm]].
