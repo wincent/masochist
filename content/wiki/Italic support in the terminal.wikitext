@@ -1,5 +1,6 @@
 ---
 tags: iterm
+cache_breaker: 1
 ---
 To test for it:
 
