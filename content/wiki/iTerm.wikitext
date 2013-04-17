@@ -1,0 +1,3 @@
+---
+redirect: [[iTerm 2]]
+---
