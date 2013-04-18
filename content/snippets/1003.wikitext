@@ -1,0 +1,4 @@
+---
+tags: tetex mactex
+---
+Installed [[MacTex]]. Downloaded half the internet.
