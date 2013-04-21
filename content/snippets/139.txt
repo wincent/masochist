@@ -1,0 +1,14 @@
+---
+title: Site updates 0.87
+tags: site updates
+---
+a115979 Update to jQuery 2.0.0
+a3745cf Add twitter gem
+2006ab7 Set up Twitter client at boot
+b2bb874 Use #strip_heredoc in one place to get rid of some noisy punctuation
+d80d120 Add twitter_id, twitter_id_str to tweets table
+182ae6a Add Nokogiri as an explicit dependency to the Gemfile
+753ef7c Tidy up set-up of URL options
+9d3f732 Twitter integration
+fbc6325 Fix recording of tweet "id_str"
+9eb1087 Update schema.rb
