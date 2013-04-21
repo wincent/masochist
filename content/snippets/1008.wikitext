@@ -1,0 +1,4 @@
+---
+tags: iterm
+---
+Just made a donation to support further development of [[iTerm 2]]. [https://github.com/gnachman George Nachman], the maintainer, is doing a great job.
