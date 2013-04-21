@@ -1,0 +1,4 @@
+---
+tags: vim tmux iterm
+---
+Finally got italic support working inside [[Vim]], [[tmux]] and [[iTerm]].
