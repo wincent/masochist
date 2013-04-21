@@ -1,0 +1,4 @@
+---
+tags: ssh github
+---
+GitHub Pro-Tip: if you have two accounts and only one SSH key that you'd like to share between them, you can still push to both accounts by adding them as "collaborators" to one another's projects (normally, GitHub won't let you associate the same SSH key with two accounts).
