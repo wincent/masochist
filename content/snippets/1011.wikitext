@@ -1,0 +1,4 @@
+---
+tags: iterm
+---
+[[iTerm]] nightlies have been broken for a while; now they're fixed. This means italic support without compiling from scratch.
