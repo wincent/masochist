@@ -1,0 +1,11 @@
+---
+title: Site updates 0.88
+tags: site updates
+---
+a053d83 Use shorter URLs in tweets
+04bd957 Use base-36-encoded short IDs on /t/ links
+080c58f Use Base-79 in short links
+f5ec9fe Eliminate temporary variable in Tweet.short_link_from_id
+ff03156 Don't try to talk to Twitter in the test suite
+d31c360 Add specs for link shortening methods
+331a592 Use shorter domain in shortened URLs
