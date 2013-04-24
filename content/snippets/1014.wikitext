@@ -1,0 +1,4 @@
+---
+tags: js
+---
+Just replaced my hand-rolled JS "class" implementation with a faster, simpler one.
