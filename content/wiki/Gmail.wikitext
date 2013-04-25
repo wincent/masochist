@@ -1,0 +1,4 @@
+---
+tags: gmail
+---
+* [[Wikipedia]] article on [[Gmail]]: https://en.wikipedia.org/wiki/Gmail
