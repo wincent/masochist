@@ -1,5 +1,6 @@
 ---
 tags: homebrew os.x
+cache_breaker: 1
 ---
 
 Notes made moving from dying old machine to newer one with a smaller hard drive.
