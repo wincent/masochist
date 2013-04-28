@@ -1,0 +1,4 @@
+---
+tags: aphorisms
+---
+"The cheapest, fastest and most reliable components of a ... system are those that aren't there" (Gordon Bell).
