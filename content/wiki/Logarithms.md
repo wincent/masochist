@@ -1,5 +1,6 @@
 ---
 tags: 
+cache_breaker: 1
 ---
 
 Useful for the [OS X](/wiki/OS_X) Grapher application, which apparently only knows about the natural logarithm (ie. base "e") `ln x`, and perhaps also the common (base 10) logarithm, `log x`:
