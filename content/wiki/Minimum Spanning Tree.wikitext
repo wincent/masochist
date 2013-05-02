@@ -1,0 +1,21 @@
+---
+tags: algorithms
+---
+A [[minimum spanning tree]] is a tree that, for a connected graph '''''G''''':
+
+* is a subgraph of '''''G'''''; that
+* spans the entire graph (ie. connects all vertices in '''''G'''''); and
+* has minimum cost (where cost is based on edge weights); and
+* is free of cycles
+
+Algorithms for computing [[minimum spanning trees]] include:
+
+* [[Prim's Algorithm]]: a [[greedy algorithm]] that can run &mdash; for a graph with ''m'' edges and ''n'' vertices &mdash; in ''O(m log n)'' time (using a [[heap]] data structure), or ''O(mn)'' for the naïve approach
+* [[Kruskal's Algorithm]]: another greedy algorithm with performance comparable to Prim's Algorithm, ie. ''O(m log n)'' (using a [[Union-Find]] data structure) or ''O(mn)'' for the naïve approach
+* [[Karger, Klein & Targen's Expected linear time MST algorithm]]: is a randomized, greedy, divide-and-conquer algorithm with an expected ''O(n)'' running time
+
+
+= See also =
+
+* [[Wikipedia]] article on [[minimum spanning trees]]: http://en.wikipedia.org/wiki/Minimum_spanning_tree
+* [[Wikipedia]] article on [[Karger, Klein & Targen's Expected linear time MST algorithm]]: http://en.wikipedia.org/wiki/Expected_linear_time_MST_algorithm
