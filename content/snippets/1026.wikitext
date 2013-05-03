@@ -1,0 +1,4 @@
+---
+tags: aws ec2
+---
+Back when I first got my EC2 reserved instances, they cost 3 cents/hour plus a $350 upfront payment for the three-year term. That was already a good deal. Renewing them today, the cost is down to 1.2 cents/hour plus a $257 upfront fee. Even better. Where will we be in three more years? I'm guessing 0.5 cents/hour plus a $195 upfront fee.
