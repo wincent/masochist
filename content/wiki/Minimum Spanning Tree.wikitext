@@ -1,5 +1,6 @@
 ---
 tags: algorithms
+cache_breaker: 1
 ---
 A [[minimum spanning tree]] is a tree that, for a connected graph '''''G''''':
 
