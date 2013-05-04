@@ -1,0 +1,6 @@
+---
+redirect: [[greedy algorithm]]
+tags: 
+---
+
+
