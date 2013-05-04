@@ -1,5 +1,6 @@
 ---
 tags: algorithms
+cache_breaker: 1
 ---
 A [[greedy algorithm]] is one that seeks to solve a problem for which brute force search would be prohibitively expensive by making a series of short-term greedy decisions that are "myopic" in nature (ie. they rely on only partial or local information) but which nevertheless sum to produce a result that is both correct (or even optimal, or sufficiently accurate) in an efficient manner.
 
