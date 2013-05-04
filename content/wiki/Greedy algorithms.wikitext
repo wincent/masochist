@@ -1,0 +1,3 @@
+---
+redirect: [[greedy algorithm]]
+---
