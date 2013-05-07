@@ -1,5 +1,6 @@
 ---
 tags: data.structures
+cache_breaker: 1
 ---
 
 The [Union-Find](/wiki/Union-Find) data structure, also known as the [Disjoint-set](/wiki/Disjoint-set) data structure, can be used to track and manage membership within partitions of a set.
