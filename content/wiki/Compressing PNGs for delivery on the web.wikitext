@@ -1,0 +1,11 @@
+---
+tags: png optipng pngquant
+---
+= Prerequisites =
+
+<pre lang="shell">$ brew install pngquant optipng</pre>
+
+= Usage example =
+
+<pre lang="shell">$ pngquant --force --ext .png --speed 1 file.png
+$ optipng -o7 file.png</pre>
