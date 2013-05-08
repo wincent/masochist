@@ -1,5 +1,6 @@
 ---
 tags: png optipng pngquant
+cache_breaker: 1
 ---
 = Prerequisites =
 
