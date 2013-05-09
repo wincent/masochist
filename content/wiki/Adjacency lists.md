@@ -1,0 +1,6 @@
+---
+redirect: [[adjacency list]]
+tags: 
+---
+
+
