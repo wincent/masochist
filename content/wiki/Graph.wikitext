@@ -1,0 +1,7 @@
+---
+tags: data.structures graph
+---
+= Graph data structures =
+
+* [[Adjacency matrix]]
+* [[Adjacency list]]
