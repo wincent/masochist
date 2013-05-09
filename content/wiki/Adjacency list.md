@@ -1,5 +1,6 @@
 ---
 tags: data.structures graph
+cache_breaker: 1
 ---
 
 Used to store [graphs](/wiki/graphs), especially sparse graphs. (For dense graphs, see "[Adjacency matrix](/wiki/Adjacency_matrix)".)
