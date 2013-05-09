@@ -1,0 +1,12 @@
+---
+tags: data.structures
+---
+A [[sparse matrix]] is a matrix containing mostly zeros.
+
+= Related =
+
+* [[Adjacency matrix]]
+
+= See also =
+
+* [[Wikipedia]] article on [[sparse matrices]]: http://en.wikipedia.org/wiki/Sparse_matrix
