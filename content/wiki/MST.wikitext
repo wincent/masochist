@@ -1,0 +1,3 @@
+---
+redirect: [[minimum spanning tree]]
+---
