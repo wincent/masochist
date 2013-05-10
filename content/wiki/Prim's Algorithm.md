@@ -1,5 +1,6 @@
 ---
 tags: algorithms
+cache_breaker: 1
 ---
 
 [Prim's Algorithm](/wiki/Prim%27s_Algorithm) is a fast algorithm for computing the [MST](/wiki/MST) ([minimum spanning tree](/wiki/minimum_spanning_tree)) of a connected graph.
