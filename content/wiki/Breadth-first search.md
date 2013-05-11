@@ -1,5 +1,6 @@
 ---
 tags: algorithms graphs
+cache_breaker: 1
 ---
 
 [Breadth-first search](/wiki/Breadth-first_search) or [BFS](/wiki/BFS) is a "conservative" graph search algorithm in which nodes in a given "layer" are explored before proceeding to explore lower layers.
