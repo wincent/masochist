@@ -1,0 +1,13 @@
+---
+tags: algorithms graphs
+---
+[[Depth-first search]] (or [[DFS]]) is an aggressive search of a graph where each exploration continues as far as possible, only backtracking when absolutely necessary.
+
+It is commonly implemented using recursion, but can also be implemented in terms of a [[stack]] (ie. where freshly expanded nodes are pushed onto a stack).
+
+Exploring a [[directed acyclic graph]] using [[depth-first search]] gives a [[topological ordering]] (ie. every edge has a starting point earlier in the ordering than the ending point of the edge); this is useful for computing dependencies.
+
+= See also =
+
+* [[Wikipedia]] article on [[depth-first search]]: http://en.wikipedia.org/wiki/Depth-first_search
+* [[Breadth-first search]]
