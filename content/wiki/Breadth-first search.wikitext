@@ -1,0 +1,11 @@
+---
+tags: algorithms graphs
+---
+[[Breadth-first search]] or [[BFS]] is a "conservative" graph search algorithm in which nodes in a given "layer" are explored before proceeding to explore lower layers.
+
+It is commonly implemented using a [[queue]] data structure, and runs in ''O(m + n)'' time (where ''m'' is the number of edges in the graph, and ''n'' the number of nodes).
+
+= See also =
+
+* [[Wikipedia]] article on [[breadth-first search]]: http://en.wikipedia.org/wiki/Breadth-first_search
+* [[Depth-first search]]
