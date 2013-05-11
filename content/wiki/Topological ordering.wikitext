@@ -1,0 +1,8 @@
+---
+tags: algorithms graphs
+---
+A [[topological ordering]] of a [[directed acyclic graph]] (or [[DAG]]) is one in which every edge has a starting point earlier in the ordering than the ending point of the edge. It is useful for computing dependency relationships, and is frequently obtained using a [[depth first search]].
+
+= See also =
+
+* [[Wikipedia]] article on [[topological ordering]] (actually, a subsection of the article on [[directed acyclic graphs]]): http://en.wikipedia.org/wiki/Directed_acyclic_graph
