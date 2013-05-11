@@ -1,5 +1,6 @@
 ---
 tags: algorithms graphs
+cache_breaker: 1
 ---
 
 [Depth-first search](/wiki/Depth-first_search) (or [DFS](/wiki/DFS)) is an aggressive search of a graph where each exploration continues as far as possible, only backtracking when absolutely necessary.
