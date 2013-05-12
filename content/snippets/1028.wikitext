@@ -1,0 +1,4 @@
+---
+tags: zsh
+---
+Nice demonstration of some [[Zsh]] features I don't use yet [http://www.slideshare.net/jaguardesignstudio/why-zsh-is-cooler-than-your-shell-16194692 in this presentation].
