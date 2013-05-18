@@ -1,0 +1,4 @@
+---
+tags: itunes
+---
+Kind of crazy that [http://appleinsider.com/articles/13/05/16/apple-releases-itunes-1103-with-new-miniplayer-improved-songs-view the new version of iTunes] is a 196.6 megabyte download.
