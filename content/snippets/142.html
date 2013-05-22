@@ -1,0 +1,111 @@
+---
+title: z-index bug demo
+tags: css
+---
+<style>
+.demo-wrapper {
+  background-color: #eee;
+  font-style: italic;
+  margin: 0;
+  padding: 10px;
+}
+
+.demo-wrapper header {
+  background-color: #ddd;
+  position: relative;
+  margin: 0;
+}
+
+.demo-wrapper nav {
+  display: inline;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.demo-wrapper p {
+  margin: 0;
+}
+
+.demo-wrapper nav p {
+  background-color: #fee;
+  border: 1px solid red;
+}
+
+.demo-wrapper ul {
+  background-color: #efe;
+  border: 1px solid green;
+  margin: 0;
+  z-index: 1; // no effect, because ul is not positioned
+}
+
+.demo-wrapper .main {
+  background-color: #ccc;
+  min-height: 10em;
+  position: relative; /* this is the bug */
+}
+</style>
+
+<section class="demo-wrapper">
+  <p>.demo-wrapper</p>
+  <header>
+    <p>header</p>
+    <nav>
+      <p>Menu</p>
+      <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+      </ul>
+    </nav>
+  </header>
+  <div class="main">
+    <p>.main</p>
+  </div>
+</section>
+
+<p>In this example we have:</p>
+
+<ul>
+<li>a <code>position: absolute</code> <em>nav</em> element, positioned relative to...</li>
+<li>the <code>position: relative</code> <em>header</em> element which is its immediate parent.</li>
+</ul>
+
+<p>Despite the fact the <em>nav</em> has <code>z-index: 1</code>, it appears underneath the <em>.main</em> <em>div</em> element that appears later in the markup.</p>
+
+<p>So, thanks to "<a href="http://philipwalton.com/articles/what-no-one-told-you-about-z-index/">What no one told you about z-index</a>", we know the following:</p>
+
+<h2>Ways to create a stacking context</h2>
+
+<ol>
+<li>Root <code>html</code> element</li>
+<li>Elements with <code>position</code> other than <code>static</code> and <code>z-index</code> other than <code>auto</code></li>
+<li>Elements with <code>opacity</code> other than <code>1</code></li>
+</ol>
+
+<h2>Ordering of elements within a stacking context</h2>
+
+<ol>
+<li>Stacking context root element</li>
+<li>Positioned elements (and children) with negative <code>z-index</code> values (ties broken by order of appearance in the DOM)</li>
+<li>Non-positioned elements (in the order they appear in the DOM)</li>
+<li>Positioned elements (and children) with <code>z-index: auto</code> (in the order they appear in the DOM)</li>
+<li>Positioned elements (and children) with positive <code>z-index</code> values (ties broken by order of appearance in DOM)</li>
+</ol>
+
+<p>The fact that no value of <code>z-index</code> on the <em>nav</em> element is sufficient to make it appear in front of the <em>.main</em> element indicates that we must have two stacking contexts at play here.</p>
+
+<p>If we remove the erroneous <code>position: relative</code> on the <em>.main</em> element, then our <code>z-index</code> takes effect.</p>
+
+<p>What could be creating a stacking context other than the root <code>html</code> element, given that no elements in our example have <code>opacity</code> other than <code>1</code>, and no elements have non-<code>static</code> <code>position</code> and non-<code>auto</code> <code>z-index</code>?</p>
+
+<p>Here <code>header</code> and <code>.main</code> are peers, and both are positioned. Neither has a <code>z-index</code>. Clearly, however, <code>header</code> forms a stacking context, because the <code>z-index</code> of elements inside it are unable to ever appear in front of anything outside the <code>header</code>.</p>
+
+<p><code>.main</code> ends up trumping anything in <code>header</code>, because <code>.main</code> appears after it in the DOM.</p>
+
+<p>So, the stacking context is formed inside <code>header</code> because it is positioned, and it contains a descendent with a <code>z-index</code>. "Creation rule #2" above, "[e]lements with <code>position</code> other than <code>static</code> and <code>z-index</code> other than <code>auto</code>", makes it sound like the <code>position</code> and <code>z-index</code> must be on the <em>same element</em>, but this example makes it clear that that is not the case. Perhaps it is true that the non-<code>auto</code> <code>z-index</code> on the descendant forces the parent to have an implicit <code>z-index</code> of <code>0</code> (although the DOM inspector seems to refute this, showing an inherited value of <code>auto</code>).</p>
+
+<p>An alternative explanation is that the two peers that are positioned will always appear relative to one another in the DOM due to "ordering rule #4". This in turn makes <code>z-index</code> pretty useless inside positioned elements, at least with respect to other positioned elements. Note that even setting a smaller <code>z-index</code> on the trumping value is not enough to fix the problem.</p>
+
+<p>I think to fully lay this to rest I'll need to get a university degree in <a href="http://www.w3.org/TR/CSS2/zindex.html">the spec</a>.</p>
