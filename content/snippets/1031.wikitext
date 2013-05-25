@@ -1,0 +1,4 @@
+---
+tags:
+---
+iOS often foreshadows things coming to OS X. I'm excited that iOS is [http://josh.io/apples-wwdc-invite-suddenly-makes-sense/ going to be "flat"], because I think OS X could/should be flatter.
