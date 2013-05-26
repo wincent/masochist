@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 For Rails deployments I want to eliminate third-party dependencies on places like rubygems.org or github.com (I don't want downtime of either of those services to prevent me from deploying.)
 
