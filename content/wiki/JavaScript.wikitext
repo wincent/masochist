@@ -1,5 +1,6 @@
 ---
 tags: development javascript
+cache_breaker: 1
 ---
 [[JavaScript]] was originally a client-side scripting language commonly used in [[web]] browsers. Initially it was used for simple tasks such as client-side form validation, but has in recent years been integral in the growing success of AJAX applications, ultimately resulting in the development of popular "thick client" applications such as Google Maps and Gmail, which involve enormous and complex bodies of logic that execute entirely on the client side.
 
