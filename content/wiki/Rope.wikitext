@@ -1,0 +1,6 @@
+---
+tags: data.structures
+---
+= See also =
+
+* [[Wikipedia]] article on the [[rope]] data structure: http://en.wikipedia.org/wiki/Rope_%28data_structure%29
