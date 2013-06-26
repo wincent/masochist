@@ -1,0 +1,4 @@
+---
+tags: salt ansible
+---
+[https://news.ycombinator.com/item?id=5932608 Interesting reading] on [[Salt]] and [[Ansible]]. Think I might have to give Ansible [http://missingm.co/2013/06/ansible-and-salt-a-detailed-comparison/ a try].
