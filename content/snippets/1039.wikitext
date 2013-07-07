@@ -1,0 +1,4 @@
+---
+tags:
+---
+I just learnt that [[Textual]] is [https://github.com/Codeux/Textual open source] and simultaneously for sale on the App Store. I like that business model.
