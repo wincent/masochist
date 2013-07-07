@@ -1,0 +1,4 @@
+---
+tags:
+---
+We've started using IRC at [[work]], so I've been playing with [[ZNC]]. Arcane, but very useful.
