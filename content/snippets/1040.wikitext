@@ -1,0 +1,4 @@
+---
+tags: ec2
+---
+Nice. Just learnt that [http://aws.amazon.com/ec2/faqs/#Can_I_configure_the_reverse_DNS_record_for_my_Elastic_IP_address you can get Amazon to configure reverse DNS] for your elastic IPs.
