@@ -1,0 +1,4 @@
+---
+tags: aws
+---
+You can't switch security groups of a launched [[EC2]] instance; but thankfully, you can add/remove rules to a group.
