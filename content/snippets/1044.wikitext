@@ -1,0 +1,4 @@
+---
+tags: git
+---
+I [https://github.com/git/git/blob/master/Documentation/RelNotes/1.8.2.txt just learnt] that you can point a [[Git]] submodule at the HEAD of a branch rather than a specific commit, as of 1.8.2.
