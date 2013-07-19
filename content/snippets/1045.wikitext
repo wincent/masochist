@@ -1,0 +1,4 @@
+---
+tags:
+---
+Sad face: when adding and removing external monitors, [[Slate]] gets confused by the position of the Dock.
