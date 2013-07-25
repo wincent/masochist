@@ -1,0 +1,4 @@
+---
+tags: git
+---
+I think I am using [[Git]] too much when I am typing `git host blah` when I mean to type `host blah`.
