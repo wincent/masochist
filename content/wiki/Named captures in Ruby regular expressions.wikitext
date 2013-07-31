@@ -1,5 +1,6 @@
 ---
 tags: ruby
+cache_breaker: 1
 ---
 <pre lang="ruby">"foo 1234" =~ /(?<word>\w+) (?<numbers>\d+)/
 $1 #=> foo
