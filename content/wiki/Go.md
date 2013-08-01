@@ -1,5 +1,6 @@
 ---
 tags: go
+cache_breaker: 1
 ---
 
 # Links
