@@ -1,0 +1,4 @@
+---
+tags: vim notational.velocity
+---
+Awesome [[Notational Velocity]] shortcut: `Command-Shift-E` to edit in [[MacVim]].
