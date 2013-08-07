@@ -1,5 +1,6 @@
 ---
 tags: ios game.center
+cache_breaker: 1
 ---
 
 Universally regarded as the most annoying app ever, I finally thought I'd found out how to permanently disable it [here](http://sharechair.wordpress.com/2013/01/02/how-to-stop-annoying-game-center-pop-ups-on-the-iphone-and-ipad/):
