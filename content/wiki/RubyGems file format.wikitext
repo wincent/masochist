@@ -1,0 +1,29 @@
+---
+tags: gems
+---
+A `.gem` package is a `.tar` archive containing:
+
+* a `.tar.gz` archive of contents; and
+* a `.gz` file containing metadata (in [[YAML]] format)
+* a `.gz` file containing checksums (also in [[YAML]] format)
+
+To break out the outer archive:
+
+<pre lang="shell">$ tar xvf somegem-0.0.1.gem
+x metadata.gz
+x data.tar.gz
+x checksums.yaml.gz</pre>
+
+To inspect or break out the metadata:
+
+<pre lang="shell">$ zless metadata.gz
+$ gunzip metadata.gz</pre>
+
+To inspect or break out the checksums:
+
+<pre lang="shell">$ zless checksums.yaml.gz
+$ gunzip checksums.yaml.gz</pre>
+
+To extract the contents:
+
+<pre lang="shell">$ tar xzvf data.tar.gz</pre>
