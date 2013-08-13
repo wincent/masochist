@@ -1,0 +1,4 @@
+---
+tags: ansible
+---
+AnsibleWorks [http://techcrunch.com/2013/08/12/ansibleworks-raises-6m-for-popular-open-source-and-easy-to-use-it-automation-framework/ gets $6M] in funding; great to hear. I really like [[Ansible]].
