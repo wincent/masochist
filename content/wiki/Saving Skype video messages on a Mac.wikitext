@@ -1,0 +1,11 @@
+---
+tags: skype
+---
+Grab the video URL from the local database:
+
+<pre lang="shell">$ sqlite3 Library/Application\ Support/Skype/$SKYPE_HANDLE/main.db
+> select * from VideoMessages;</pre>
+
+Then retrieve it using `curl`; eg:
+
+<pre lang="shell">$ curl 'https://example.net/foo.mov' > foo.mov</pre>
