@@ -1,0 +1,4 @@
+---
+tags: python
+---
+<pre lang="shell">$ python -m SimpleHTTPServer 4567</pre>
