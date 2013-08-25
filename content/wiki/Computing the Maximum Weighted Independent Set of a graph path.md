@@ -1,5 +1,6 @@
 ---
 tags: algorithms dynamic.programming
+cache_breaker: 1
 ---
 
 This is a simple example of a [dynamic programming](/wiki/dynamic_programming) algorithm.
