@@ -1,0 +1,14 @@
+---
+tags: algorithms dynamic.programming
+---
+Abstract characteristics of dynamic programming algorithms:
+
+# Small (linear) number of subproblems
+# Can solve larger subproblems quickly based on the solutions to previously computed subproblems (memoization)
+# Solving all the subproblems makes it trivial to provide final solution
+
+An example of a dynamic programming algorithm is [[Computing the Maximum Weighted Independent Set of a graph path]].
+
+= See also =
+
+* [[Wikipedia]] article on [[dynamic programming]]: http://en.wikipedia.org/wiki/Dynamic_programming
