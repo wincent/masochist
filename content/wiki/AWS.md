@@ -1,5 +1,6 @@
 ---
 tags: aws amazon
+cache_breaker: 1
 ---
 
 [Amazon Web Services](/wiki/Amazon_Web_Services), or [AWS](/wiki/AWS), is a collection of network-based services sold by [Amazon](/wiki/Amazon). The services enable a variety of things like hosting websites, computation, storage, using Amazon's infrastructure.
