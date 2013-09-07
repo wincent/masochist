@@ -1,5 +1,6 @@
 ---
 tags: vpn os.x
+cache_breaker: 1
 ---
 
 ```shell
