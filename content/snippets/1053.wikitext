@@ -1,0 +1,4 @@
+---
+tags:
+---
+Schneier on [http://www.theguardian.com/world/2013/sep/05/nsa-how-to-remain-secure-surveillance the scope of the NSA's data snooping activities]. It's about as bad as you could have imagined.
