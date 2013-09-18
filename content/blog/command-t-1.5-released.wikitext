@@ -1,0 +1,10 @@
+---
+title: Command-T 1.5 released
+tags: command.t
+---
+Available from:
+
+* [[GitHub]]: https://github.com/wincent/command-t
+* www.vim.org: http://www.vim.org/scripts/script.php?script_id=3025
+
+For more details, see [/blog/command-t-1.4-released the previous release announcement], where I go into considerably more detail.
