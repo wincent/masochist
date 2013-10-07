@@ -1,0 +1,6 @@
+---
+tags: os.x
+---
+Apparently, [http://osxdaily.com/2010/10/11/sleepimage-mac/ it's safe to kill it], saving 4 GB (or whatever your Mac may have as memory).
+
+<pre lang="shell">$ sudo rm /private/var/vm/sleepimage</pre>
