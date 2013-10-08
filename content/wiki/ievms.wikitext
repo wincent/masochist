@@ -1,0 +1,8 @@
+---
+tags: ie windows virtualbox ievms
+---
+[[ievms]] is an [[open source]] project that can download and configure the free VM images that Microsoft provides for the purposes of testing IE.
+
+It's a great project. This free tool could help you replace a paid service like www.browserstack.com; if it does, consider [https://pledgie.com/campaigns/15995 making a donation].
+
+For an example usage, see "[[Testing web pages in IE with ievms and VirtualBox on OS X]]".
