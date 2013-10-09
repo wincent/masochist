@@ -1,0 +1,67 @@
+---
+title: Site updates 0.89
+tags: site updates
+---
+3cf32e4 Make JS class inheritance simpler and more explicit
+ed13554 Use Active Relation and scopes better in Post and Tweet models
+6b68621 Ruby 1.9-ize a Hash
+211b137 Add spin.js as a submodule
+71f24ab Try switching to "debugger" gem
+523d70e Create separate file for Sass functions
+b58a20b Refresh styles
+95d43cf Modernize routes file a little
+8e2bef7 Make things a little wider
+ab9300a Center-align footer elements, after all
+b32baea Make table fonts smaller
+a63827b Make tweets sidebar font smaller
+9f5ab97 Remove border from tweets sidebar
+b02fe27 Use smaller font in flashes
+9ab060f Add style reset
+945e058 Single quotes for life
+21a9711 Add Vary header for better Ajax vs non-Ajax browser caching
+634ae7a Update to capybara-webkit 1.0.0
+98ee201 Remove explicit dependency on capybara from Gemfile
+4b7adce Set up Zeus
+e766b51 Add jQuery as a submodule
+c955bf9 Add Rake task to build custom jQuery 2.0.1 build
+ebc0cca Replace lambdas and procs with stabby lambdas
+f298ec0 Add backbone and underscore as submodules
+5f08535 Bump spin.js submodule to 1.3.0
+c2221e2 (Mostly) remove logo from nav bar
+7ab6da2 Remove more references to deprecated jQuery functions
+79dc94f Use a real placeholder for the search form
+4aae912 Apply assorted style fixes
+a481e2f Add first cut mobile nav
+5d1b439 Use Compass prefixed-for-transition
+50d0510 Get rid of prefix transition hack
+4e97b74 Rework drop-downs in nav
+c74a4c0 Update to Rails 4.0.0
+b55637f Fix routing specs for Rails 4.0
+5e0c442 Fix spec failures and deprecation warnings caused by Rails 4
+8e71723 Fix missing reference to deprecated jQuery function on products.js
+84e1d47 Fix menu styling
+43c5085 Smoothen menu animations
+cae9ba3 Don't let menu capture clicks before its time
+218d451 Apply various responsive/styling fixes
+83c7b48 Fix misguided load() call in products.js
+73a7e55 Make minor tweaks to old migrations to keep MariaDB happy
+cc3c739 Fix product menu padding
+bda2608 Update to latest Ruby 2.0.0 (-p247)
+ba2a147 Remove MySQL-specific script/* file and code
+5d79957 Remove glitchy lightbox scroll animation
+8bee700 Update Comments and IssuesControllers to use strong params
+fbf5996 Remove Atom feeds and page caching
+e80d612 Remove one last straggling `role` reference
+4314713 Pass CSRF tokens along with Ajax requests
+3da49bf Add go subdirectory files
+12e2aeb Move client files into client subdirectory
+e42e006 Replace Compass reset stylesheet with normalize.css 2.1.3
+4ae3cad Apple additional tweaks for nice display with normalize.css
+cfe3629 Replace image-based spinner with spin.js one
+f5a18fc Use lighter font weight for navbar links
+3e3f476 Apply tiny stylefix to products.js.erb
+e3616e6 Responsify pagination links
+572d755 Update db/schema.rb
+793cf11 Update specs to reflect recent changes
+6a4548f Simplify static pages
+afbb4f1 Use git:// URLs for public submodules
