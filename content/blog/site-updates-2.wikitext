@@ -1,0 +1,7 @@
+---
+title: Site updates
+tags:
+---
+I just deployed a fairly big update to the site, the first one in about six months. Lots of things changed at all levels of the app (Rails 4.0, the beginnings of a responsive design etc).
+
+I'm aware of some busted styles, but if you notice anything substantially wrong, [mailto:win@wincent.com drop me a line] and let me know.
