@@ -1,0 +1,4 @@
+---
+tags:
+---
+So scary that when I type `yo backbone` I get nearly 12k files dumped into a directory. What could possibly go wrong?
