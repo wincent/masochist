@@ -1,0 +1,8 @@
+---
+title: Site updates 0.92
+tags: site updates
+---
+1724ebe Try to fix Sass precompilation failure by updating gem
+eaee871 Update the rest of the bundle too
+64147ee Try to force the assets pipeline to process font files
+4e204c0 Fix bad configuration
