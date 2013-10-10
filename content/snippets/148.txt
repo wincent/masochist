@@ -1,0 +1,24 @@
+---
+title: Site updates 0.91
+tags: site updates
+---
+7bcb70d Add Font Awesome
+687f627 Remove unused background image asset
+7094ae4 Switch out sprite icons for Font Awesome fonts
+c69869d Move normalize.css into vendor
+9632961 Teach Paginator class to use Font Awesome class names
+1c45e5f Switch comment bubbles and flash icons to font-based vectors
+480e08a Silence lengthy Rails warning about binstubs
+1f042e8 Fix clash between Font Awesome and Compass
+5191528 Replace spin.js submodule with Bower-installed equivalent
+75c981e Switch manual normalize download over to Bower-managed one
+6bc95b4 Add spinner.js file
+6725cac Replace more submodules with Bower dependencies
+e79b386 Add Twitter Bootstrap
+75a66c8 Remove now-useless include of Compass reset functionality
+d9a3337 Replace mailto and external icons with fonts
+ff98d32 Produce comment icon without additional inline elements
+e740034 Tweak pagination font icon handling
+9403ab0 Replace more icon images with font equivalents
+c305c70 Vectorize table sort indicators
+6bcfb8b Replace update icon with font-based version
