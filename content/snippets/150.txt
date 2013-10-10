@@ -1,0 +1,11 @@
+---
+title: Site updates 0.93
+tags: site updates
+---
+7ceff1b script/deploy: don't install binstubs
+f139679 script/deploy: provide better error message when static pages are stale
+256d0d4 Remove useless config.assets.paths setting
+d74c518 script/deploy: try to trick Rails into actually minifying things
+c639260 Solve asset compilation problems "once and for all"
+3099936 Remove the blight that is CoffeeScript from the codebase
+a12646a Compile assets ready for deployment
