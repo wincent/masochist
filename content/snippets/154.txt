@@ -1,0 +1,6 @@
+---
+title: Site updates 0.97
+tags: site updates
+---
+6fe27c0 Fix release note generation
+c15fcf4 Make deploys faster by using a local mirror
