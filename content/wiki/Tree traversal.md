@@ -1,5 +1,6 @@
 ---
 tags: data.structures algorithms trees
+cache_breaker: 1
 ---
 
 While [depth-first search](/wiki/depth-first_search) ([DFS](/wiki/DFS)) and [breadth-first search](/wiki/breadth-first_search) ([BFS](/wiki/BFS)) refer to means of finding nodes within a tree (or graph), [traversal](/wiki/traversal) refers to the exhaustive exploration of a tree (or graph); ie. every node is visited in a traversal.
