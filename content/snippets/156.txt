@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.99
 tags: site updates
+cache_breaker: 1
 ---
 7e37033 script/deploy: quieten deploy fetch
