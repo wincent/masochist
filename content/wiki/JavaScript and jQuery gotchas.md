@@ -1,5 +1,6 @@
 ---
 tags: javascript jquery
+cache_breaker: 1
 ---
 
 # Scope
