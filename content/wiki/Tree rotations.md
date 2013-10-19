@@ -1,5 +1,6 @@
 ---
 tags: data.structures algorithms trees
+cache_breaker: 1
 ---
 
 A tree rotation, used in such data structures as [AVL trees](/wiki/AVL_trees) and [Red-Black trees](/wiki/Red-Black_trees) (so-called "self-balancing" [binary search trees](/wiki/binary_search_trees)), can be used to change the depth of a pair of subtrees while preserving the older that the elements would be visited using an in-order traversal.
