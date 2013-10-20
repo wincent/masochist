@@ -1,0 +1,4 @@
+---
+tags: mongodb
+---
+"Being able to walk with them doesn’t change the fact that as of right now, [http://nyeggen.com/blog/2013/10/18/the-genius-and-folly-of-mongodb/ MongoDB is clown shoes]."
