@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 
 [Mavericks](/wiki/Mavericks) is the 10.9 release of [OS X](/wiki/OS_X), released on 22 October 2013.
