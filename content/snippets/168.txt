@@ -1,0 +1,21 @@
+---
+title: Site updates 0.111
+tags: site updates
+---
+b1b2ddd Disable user scaling
+05c5fc3 Make most (or all?) buttons responsive
+1cee5d5 Replace last use of spinner.gif asset
+9dabd5f Remove unnecessary .erb extension from ajax.js asset
+97a1791 Remove spinner-large.gif, replacing with spin.js
+d4fc39a Make Ajax checkbox handling declarative
+dac585c Extend data-ajax to handle select menus
+7c276ad Switch product selection menu over to data-ajax
+d1013bd Switch issues kind dropdown to use data-ajax
+e1a48d6 Remove now-dead ajaxSelect() code
+d2768a2 Beef up some select-handling code comments
+852852f Simplify some issues#show markup
+32456fe Update to Rails 4.0.2
+b92c6af Add controller code for new Ajax updates
+8a6ef68 Kill and unnecessary explicit `self` receiver
+3e4548b Apply style fixes to tags#index view
+b0bc25d Apply Ruby style fixes to lib/authentication.rb
