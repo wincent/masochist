@@ -1,5 +1,6 @@
 ---
 tags: ruby
+cache_breaker: 1
 ---
 <pre lang="shell">$ ruby -r rbconfig -e 'puts RbConfig::CONFIG["configure_args"]'</pre>
 
