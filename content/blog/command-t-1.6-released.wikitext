@@ -1,0 +1,44 @@
+---
+title: Command-T 1.6 released
+tags: releases command.t
+---
+I just released version 1.6 of [[Command-T]], the powerful, [[open source]] file and buffer-navigation plug-in inspired by the "Command-T" feature in [[TextMate]].
+
+= What's new =
+
+On systems with POSIX threads (such as OS X, Linux), Command-T will now parallelize search operations, making it significantly faster to navigate large projects. As this is a fairly invasive and low-level change, please [mailto:win@wincent.com let me know] if you see anything odd.
+
+As always, a full change-log appears under HISTORY in [http://git.wincent.com/command-t.git/blob_plain/1.6:/doc/command-t.txt the documentation], and you can explore the commits in the release [/repos/command-t/tags/1.6 here]. (Note: the integrated repository browser that I'm linking to here is still relatively new and doesn't have a full feature set yet. You may prefer to view the commits in [http://git.wincent.com/command-t.git/shortlog/refs/tags/1.6 the old GitWeb repository browser] in the meantime.)
+
+= Installation =
+
+Command-T is a combination of C, Ruby and Vim's built-in scripting language, which means that you need not only Ruby and a suitable C compiler on your system, but you also have to make sure you use compatible versions. That is, you can't link your Vim against Ruby 1.9.3 and Command-T against Ruby 1.8.7 without things going "Boom!". For some reason, people ''love'' playing with different Ruby versions, via [[RVM]], [[rbenv]] and other means, and this has generated no small number of tickets in the [[issue tracker]].
+
+Windows is the worst platform of all, unsurprisingly. Getting Ruby, Vim and Command-T working together on Windows is similar in difficulty to transmuting lead into gold; if anything, transmuting may be easier.
+
+So, if you're unfortunate enough to be using Windows, or if you're the sort that likes to play with different versions of Ruby, all I can do is encourage you to read [http://git.wincent.com/command-t.git/blob_plain/HEAD:/doc/command-t.txt the documentation] very, very carefully &mdash; I've done my best to make it accurate and comprehensive &mdash; stick to the recommended, known-working versions, and maybe watch the installation screencasts on [/products/command-t the Command-T product page].
+
+== [[Pathogen]] users ==
+
+<pre lang="shell">$ cd path/to/your/pathogen/bundle # probably ~/.vim/bundle
+$ git clone git://git.wincent.com/command-t.git
+$ cd command-t
+$ rake make</pre>
+
+And in Vim:
+
+ :call pathogen#helptags()
+
+See [http://git.wincent.com/command-t.git/blob_plain/HEAD:/doc/command-t.txt the docs] for more info on installing (and updating) Command-T via Pathogen.
+
+== Everybody else ==
+
+* Download the vimball from [/products/command-t the Command-T product page] (or [http://www.vim.org/scripts/script.php?script_id=3025 www.vim.org], if you prefer)
+* Open the vimball archive in vim, and do `:so %` to unpack it
+* `cd ~/.vim/ruby/command-t && ruby extconf.rb && make`
+
+Beware that vimballs aren't the most robust packaging system; if your vimball doesn't extract completely on the first try (ie. if only some of the files are extracted), just try again.
+
+= Screencasts, donations and source code =
+
+If you're a [[Vim]] user check out the [/products/command-t screencasts] and give the plug-in a try. If you'd like to support development you can use [/products/command-t/donations the donations page] to make a donation, or consider submitting a patch for the project (the source code can be browsed [/repos/command-t here]).
