@@ -1,0 +1,321 @@
+---
+tags:
+---
+From 5a10ea623cefdd23b5fa9ab4d83318eb09b76c7d Mon Sep 17 00:00:00 2001
+From: Wincent Colaiuta <win@wincent.com>
+Date: Thu, 19 Dec 2013 07:55:01 -0800
+Subject: [PATCH] Defer processor count detection until runtime
+
+As suggested here:
+
+  https://wincent.com/issues/2133
+
+Copying the text of the linked issue:
+
+  You assume, that the Ruby extension is build on the same machine,
+  where the code is executed. This assumption is invalid for Fedora.
+  When I package command-t for use with Fedora, the extension is built
+  on Koji builder. There might be powerful CPUs with plenty of cores,
+  but it says nothing about my machine.
+
+I've moved the processor count detection into a runtime method on a new
+CommandT::Util module (seeing as there isn't any other obvious place to
+put it right now). The count is memoized to avoid exposure.
+
+In the C code that consumes the count (the Matcher#sorted_matches_for
+method), I do do a `nil` check because there are a few callers in places
+like the test suite that shouldn't have to bother with passing it in,
+but I don't worry about more robust sanity checking, leaving that up to
+the CommandT::Util method instead.
+
+Signed-off-by: Wincent Colaiuta <win@wincent.com>
+---
+ bin/benchmark.rb             |  10 ++--
+ ruby/command-t/controller.rb |   7 ++-
+ ruby/command-t/extconf.rb    |  60 -----------------------
+ ruby/command-t/matcher.c     |   5 +-
+ ruby/command-t/util.rb       | 112 +++++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 127 insertions(+), 67 deletions(-)
+ create mode 100644 ruby/command-t/util.rb
+
+diff --git a/bin/benchmark.rb b/bin/benchmark.rb
+index 472879f..42ed66c 100755
+--- a/bin/benchmark.rb
++++ b/bin/benchmark.rb
+@@ -27,12 +27,14 @@
+ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+ 
+ require 'command-t/ext'
++require 'command-t/util'
+ require 'benchmark'
+ require 'ostruct'
+ require 'yaml'
+ 
+-yaml = File.expand_path('../data/benchmark.yml', File.dirname(__FILE__))
+-data = YAML.load_file(yaml)
++yaml    = File.expand_path('../data/benchmark.yml', File.dirname(__FILE__))
++data    = YAML.load_file(yaml)
++threads = CommandT::Util.processor_count
+ 
+ puts "Starting benchmark run (PID: #{Process.pid})"
+ 
+@@ -42,7 +44,9 @@
+     matcher = CommandT::Matcher.new(scanner)
+     b.report(test['name']) do
+       test['times'].times do
+-        test['queries'].each { |query| matcher.sorted_matches_for(query) }
++        test['queries'].each do |query|
++          matcher.sorted_matches_for(query, :threads => threads)
++        end
+       end
+     end
+   end
+diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
+index a837362..1d6d523 100644
+--- a/ruby/command-t/controller.rb
++++ b/ruby/command-t/controller.rb
+@@ -28,6 +28,7 @@
+ require 'command-t/match_window'
+ require 'command-t/prompt'
+ require 'command-t/vim/path_utilities'
++require 'command-t/util'
+ 
+ module CommandT
+   class Controller
+@@ -342,7 +343,11 @@ def match_limit
+     end
+ 
+     def list_matches
+-      @matches = @active_finder.sorted_matches_for @prompt.abbrev, :limit => match_limit
++      @matches = @active_finder.sorted_matches_for(
++        @prompt.abbrev,
++        :limit   => match_limit,
++        :threads => CommandT::Util.processor_count
++      )
+       @match_window.matches = @matches
+     end
+ 
+diff --git a/ruby/command-t/extconf.rb b/ruby/command-t/extconf.rb
+index 65a08c2..eedeae0 100644
+--- a/ruby/command-t/extconf.rb
++++ b/ruby/command-t/extconf.rb
+@@ -30,61 +30,6 @@ def header(item)
+   end
+ end
+ 
+-# Stolen, with minor modifications, from:
+-#
+-#   https://github.com/grosser/parallel/blob/d11e4a3c8c1a2091a0cc2896befa71a94a88d1e7/lib/parallel.rb
+-#
+-# Number of processors seen by the OS and used for process scheduling.
+-#
+-# * AIX: /usr/sbin/pmcycles (AIX 5+), /usr/sbin/lsdev
+-# * BSD: /sbin/sysctl
+-# * Cygwin: /proc/cpuinfo
+-# * Darwin: /usr/bin/hwprefs, /usr/sbin/sysctl
+-# * HP-UX: /usr/sbin/ioscan
+-# * IRIX: /usr/sbin/sysconf
+-# * Linux: /proc/cpuinfo
+-# * Minix 3+: /proc/cpuinfo
+-# * Solaris: /usr/sbin/psrinfo
+-# * Tru64 UNIX: /usr/sbin/psrinfo
+-# * UnixWare: /usr/sbin/psrinfo
+-#
+-def processor_count
+-  os_name = RbConfig::CONFIG['target_os']
+-  if os_name =~ /mingw|mswin/
+-    require 'win32ole'
+-    result = WIN32OLE.connect('winmgmts://').ExecQuery(
+-        'select NumberOfLogicalProcessors from Win32_Processor')
+-    result.to_enum.collect(&:NumberOfLogicalProcessors).reduce(:+)
+-  elsif File.readable?('/proc/cpuinfo')
+-    IO.read('/proc/cpuinfo').scan(/^processor/).size
+-  elsif File.executable?('/usr/bin/hwprefs')
+-    IO.popen(%w[/usr/bin/hwprefs thread_count]).read.to_i
+-  elsif File.executable?('/usr/sbin/psrinfo')
+-    IO.popen('/usr/sbin/psrinfo').read.scan(/^.*on-*line/).size
+-  elsif File.executable?('/usr/sbin/ioscan')
+-    IO.popen(%w[/usr/sbin/ioscan -kC processor]) do |out|
+-      out.read.scan(/^.*processor/).size
+-    end
+-  elsif File.executable?('/usr/sbin/pmcycles')
+-    IO.popen(%w[/usr/sbin/pmcycles -m]).read.count("\n")
+-  elsif File.executable?('/usr/sbin/lsdev')
+-    IO.popen(%w[/usr/sbin/lsdev -Cc processor -S 1]).read.count("\n")
+-  elsif File.executable?('/usr/sbin/sysconf') and os_name =~ /irix/i
+-    IO.popen(%w[/usr/sbin/sysconf NPROC_ONLN]).read.to_i
+-  elsif File.executable?('/usr/sbin/sysctl')
+-    IO.popen(%w[/usr/sbin/sysctl -n hw.ncpu]).read.to_i
+-  elsif File.executable?('/sbin/sysctl')
+-    IO.popen(%w[/sbin/sysctl -n hw.ncpu]).read.to_i
+-  else
+-    puts 'Unknown platform: ' + RbConfig::CONFIG['target_os']
+-    puts 'Assuming 1 processor.'
+-    1
+-  end
+-rescue => e
+-  puts "#{e}: assuming 1 processor."
+-  1
+-end
+-
+ # mandatory headers
+ header('float.h')
+ header('ruby.h')
+@@ -96,9 +41,4 @@ def processor_count
+ 
+ RbConfig::MAKEFILE_CONFIG['CC'] = ENV['CC'] if ENV['CC']
+ 
+-count = processor_count
+-count = 1 if count < 1   # sanity check
+-count = 32 if count > 32 # sanity check
+-RbConfig::MAKEFILE_CONFIG['DEFS'] += " -DPROCESSOR_COUNT=#{count}"
+-
+ create_makefile('ext')
+diff --git a/ruby/command-t/matcher.c b/ruby/command-t/matcher.c
+index c409cc2..5598825 100644
+--- a/ruby/command-t/matcher.c
++++ b/ruby/command-t/matcher.c
+@@ -139,6 +139,7 @@ VALUE CommandTMatcher_sorted_matches_for(int argc, VALUE *argv, VALUE self)
+ 
+     // check optional options has for overrides
+     VALUE limit_option = CommandT_option_from_hash("limit", options);
++    VALUE threads_option = CommandT_option_from_hash("threads", options);
+ 
+     // get unsorted matches
+     VALUE scanner = rb_iv_get(self, "@scanner");
+@@ -152,14 +153,12 @@ VALUE CommandTMatcher_sorted_matches_for(int argc, VALUE *argv, VALUE self)
+         rb_raise(rb_eNoMemError, "memory allocation failed");
+ 
+     int err;
+-    int thread_count = 1;
++    long thread_count = NIL_P(threads_option) ? 1 : NUM2LONG(threads_option);
+ 
+ #ifdef HAVE_PTHREAD_H
+ #define THREAD_THRESHOLD 1000 /* avoid the overhead of threading when search space is small */
+     if (path_count < THREAD_THRESHOLD)
+         thread_count = 1;
+-    else
+-        thread_count = PROCESSOR_COUNT; // passed in as preprocessor macro
+     pthread_t *threads = malloc(sizeof(pthread_t) * thread_count);
+     if (!threads)
+         rb_raise(rb_eNoMemError, "memory allocation failed");
+diff --git a/ruby/command-t/util.rb b/ruby/command-t/util.rb
+new file mode 100644
+index 0000000..62ca35d
+--- /dev/null
++++ b/ruby/command-t/util.rb
+@@ -0,0 +1,112 @@
++# Copyright 2013 Wincent Colaiuta. All rights reserved.
++#
++# Redistribution and use in source and binary forms, with or without
++# modification, are permitted provided that the following conditions are met:
++#
++# 1. Redistributions of source code must retain the above copyright notice,
++#    this list of conditions and the following disclaimer.
++# 2. Redistributions in binary form must reproduce the above copyright notice,
++#    this list of conditions and the following disclaimer in the documentation
++#    and/or other materials provided with the distribution.
++#
++# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
++# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
++# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
++# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
++# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
++# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
++# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
++# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
++# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
++# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
++# POSSIBILITY OF SUCH DAMAGE.
++
++module CommandT
++  module Util
++    class << self
++      def processor_count
++        @processor_count ||= begin
++          count = processor_count!
++          count = 1 if count < 1   # sanity check
++          count = 32 if count > 32 # sanity check
++          count
++        end
++      end
++
++    private
++
++      # This method derived from:
++      #
++      #   https://github.com/grosser/parallel/blob/d11e4a3c8c1a/lib/parallel.rb
++      #
++      # Number of processors seen by the OS and used for process scheduling.
++      #
++      # * AIX: /usr/sbin/pmcycles (AIX 5+), /usr/sbin/lsdev
++      # * BSD: /sbin/sysctl
++      # * Cygwin: /proc/cpuinfo
++      # * Darwin: /usr/bin/hwprefs, /usr/sbin/sysctl
++      # * HP-UX: /usr/sbin/ioscan
++      # * IRIX: /usr/sbin/sysconf
++      # * Linux: /proc/cpuinfo
++      # * Minix 3+: /proc/cpuinfo
++      # * Solaris: /usr/sbin/psrinfo
++      # * Tru64 UNIX: /usr/sbin/psrinfo
++      # * UnixWare: /usr/sbin/psrinfo
++      #
++      # Copyright (C) 2013 Michael Grosser <michael@grosser.it>
++      #
++      # Permission is hereby granted, free of charge, to any person obtaining
++      # a copy of this software and associated documentation files (the
++      # "Software"), to deal in the Software without restriction, including
++      # without limitation the rights to use, copy, modify, merge, publish,
++      # distribute, sublicense, and/or sell copies of the Software, and to
++      # permit persons to whom the Software is furnished to do so, subject to
++      # the following conditions:
++      #
++      # The above copyright notice and this permission notice shall be
++      # included in all copies or substantial portions of the Software.
++      #
++      # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
++      # EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
++      # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++      # NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
++      # LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
++      # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
++      # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++      #
++      def processor_count!
++        os_name = RbConfig::CONFIG['target_os']
++        if os_name =~ /mingw|mswin/
++          require 'win32ole'
++          result = WIN32OLE.connect('winmgmts://').ExecQuery(
++              'select NumberOfLogicalProcessors from Win32_Processor')
++          result.to_enum.collect(&:NumberOfLogicalProcessors).reduce(:+)
++        elsif File.readable?('/proc/cpuinfo')
++          IO.read('/proc/cpuinfo').scan(/^processor/).size
++        elsif File.executable?('/usr/bin/hwprefs')
++          IO.popen(%w[/usr/bin/hwprefs thread_count]).read.to_i
++        elsif File.executable?('/usr/sbin/psrinfo')
++          IO.popen('/usr/sbin/psrinfo').read.scan(/^.*on-*line/).size
++        elsif File.executable?('/usr/sbin/ioscan')
++          IO.popen(%w[/usr/sbin/ioscan -kC processor]) do |out|
++            out.read.scan(/^.*processor/).size
++          end
++        elsif File.executable?('/usr/sbin/pmcycles')
++          IO.popen(%w[/usr/sbin/pmcycles -m]).read.count("\n")
++        elsif File.executable?('/usr/sbin/lsdev')
++          IO.popen(%w[/usr/sbin/lsdev -Cc processor -S 1]).read.count("\n")
++        elsif File.executable?('/usr/sbin/sysconf') and os_name =~ /irix/i
++          IO.popen(%w[/usr/sbin/sysconf NPROC_ONLN]).read.to_i
++        elsif File.executable?('/usr/sbin/sysctl')
++          IO.popen(%w[/usr/sbin/sysctl -n hw.ncpu]).read.to_i
++        elsif File.executable?('/sbin/sysctl')
++          IO.popen(%w[/sbin/sysctl -n hw.ncpu]).read.to_i
++        else # unknown platform
++          1
++        end
++      rescue
++        1
++      end
++    end
++  end # module Util
++end # module commandT
+-- 
+1.8.4.1
