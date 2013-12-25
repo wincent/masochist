@@ -1,0 +1,15 @@
+---
+title: Wikitext 4.0.3 released
+tags: releases wikitext
+---
+A new release of the [[Wikitext]] gem, version 4.0.3, is out. This version adds support for Ruby 2.1.0 (and continues to work on Ruby 2.0.x; for older versions of Ruby, you'll need to use the 3.x series of the Wikitext gem).
+
+See the [/products/wikitext/doc/file.RELEASE-NOTES.html release notes for full details].
+
+= About the gem =
+
+[[Wikitext]] is a fast wikitext-to-[[HTML]] translator with a syntax very close to that used by [[MediaWiki]]. It is a [[Ruby]] extension written with speed and robustness in mind using a [[Ragel]]-generated [http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl scanner] and an extremely fast [http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c hand-coded parser], all in [[C]]. It has an enormous [http://git.wincent.com/wikitext.git/tree/HEAD:/spec spec suite].
+
+You can browse the source code repo [http://git.wincent.com/wikitext.git here] or [/repos/wikitext here], or download the [[gem]] from the [http://rubygems.org/gems/wikitext rubygems.org downloads page]. For an overview of how to use the extension check out the docs [/products/wikitext/doc/ here]. If you have [[RubyGems]] then you can install it with either `gem install wikitext` or `sudo gem install wikitext`.
+
+If you find the extension useful please consider making a [https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=win@wincent.com&item_name=Wikitext+donation&no_note=1&currency_code=EUR&lc=GB donation] via PayPal to win@wincent.com.
