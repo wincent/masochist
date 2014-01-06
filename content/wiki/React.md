@@ -1,5 +1,6 @@
 ---
 tags: javascript react facebook
+cache_breaker: 1
 ---
 
 [React](/wiki/React) is a [JavaScript](/wiki/JavaScript) library for building user interfaces from [Facebook](/wiki/Facebook). You can think of it as the "V" (or the "VC") in [MVC](/wiki/MVC). It can be used in concert with other libraries such as [Backbone](/wiki/Backbone).
