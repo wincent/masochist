@@ -1,0 +1,24 @@
+---
+tags: javascript iife
+---
+Putting content inside a closure (ie. by putting it in a function) allows you to create temporary variables without polluting the global scope. However, if you name your function, the name itself will pollute the scope, and if you make your function anonymous, you'll get a syntax error:
+
+<pre lang="javascript">// not valid syntax!
+function() { /* ... */ }();
+</pre>
+
+By preceding your anonymous function with a bang, you turn it into a function expression with valid syntax:
+
+<pre lang="javascript">!function() {
+  var foo, bar, baz;
+  // etc...
+}();</pre>
+
+This is a byte shorter than the alternatives with valid syntax:
+
+<pre lang="javascript">(function() { /* ... */ }());
+(function() { /* ... */ })();</pre>
+
+= See also =
+
+* [[IIFE]]
