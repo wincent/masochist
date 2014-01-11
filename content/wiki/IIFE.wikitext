@@ -1,0 +1,3 @@
+---
+redirect: [[Immediately Invoked Function Expression]]
+---
