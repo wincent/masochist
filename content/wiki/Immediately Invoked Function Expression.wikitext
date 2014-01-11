@@ -1,0 +1,8 @@
+---
+tags: javascript iife
+---
+An [[Immediately Invoked Function Expression]], or [[IIFE]] (pronounced "iffy"), is a common construct used in [[JavaScript]] for hiding information inside closures.
+
+= See also =
+
+* http://benalman.com/news/2010/11/immediately-invoked-function-expression/
