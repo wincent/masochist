@@ -1,0 +1,136 @@
+---
+title: Site updates 0.112
+tags: site updates
+---
+d565a77 Apply style fixes to comments#form partial
+fafa950 Remove zeus.json, in preparation for Rails 4.1 upgrade
+3f16a84 Update to Rails 4.1.0.beta1
+d7bee49 Remove unnecessary executable bit from Rake task file
+7dca0d9 Add Spring to Gemfile, updating binstubs accordingly
+50f783b Add Spring RSpec support
+02d0c67 Remove unused db Rake tasks
+a70d872 Modify IssuesController queries for Rails 4.1
+94729da Update to latest Compass for Rails 4.1.0 beta support
+ac1f473 Replace editInPlace with declarative style in 2 places
+1c277bf Remove dynamic JS support
+d8876a1 Remove unnecessary quoting around JS property names
+5064088 Edit CommentsController for conciseness
+2641170 Apply some style fixes in the ApplicationHelper
+60f9882 Make things simpler by defining User#to_s
+791f489 Submit only partial (PATCH) requests for Ajax updates
+57a1189 Trim whitespace off contenteditable lines on submission
+be8d436 Use variables for keycodes in ajax.js
+f4e5bfa Replace use of editInPlace on links#index
+88ff83a Robustify Ajax link editing
+6a032d0 Fix edit_link_path on links#index
+8be3716 Kill a straggling reference to dynamic_javascript.rb
+65c4bd3 Don't use editInPlace on admin/tags#index
+0d65a69 Remove editInPlace from forum views
+12deb8d Remove last caller of editInPlace
+de6cda5 Remove `go` subdirectory
+8a44f1a Add "issues" subdirectory
+6f33cf9 Fix spec failures caused by link_to_function
+bbb9d10 Make a minor style fix in a couple of issues views
+9359267 Add React "hello world"
+9d4dd4c Use Bower to install React locally
+5a491b7 React: add TagPill skeleton
+537b808 Add react-page playground
+ee2f1c7 Add static stylesheet to react-page app
+41f801c Add TagInput component
+b87ff33 Sync react-page and vanilla index.html versions of tagging project
+64ac43b React: break components out into separate files
+b00c907 Add some styles using react-styles
+c6d65ea React: clean up some unused files
+a54953f React: add a (no-op) close widget and apply some styling to it
+b64cfb0 Upgrade to Ruby 2.1.0
+b04ea74 Work around Ruby 2.1.0 GC bug
+07f66f1 Apply spec fixes/workarounds for Rails 4.1.0 and Ruby 2.1.0
+9bac3e3 Update vendor/cache
+968578b React: add self-adjusting "invisible" input field
+32f67a9 React: escape when setting innerHTML
+73d0f9f React: clicking anywhere in the widget focuses the input field
+76ee78a React: add a new tag on hitting enter
+f574984 React: only allow valid chars in the tag input
+6fc219d React: clean up tags on insertion
+952eb94 React: prevent runs of multiple spaces on pressing space
+0289d68 React: add some local variables for readability
+270d98d React: handle space input with 'foo [bar] baz' selection
+1effd99 React: handle some more space insertion edge cases
+e16bd53 Improve and simplify space handling
+1edae40 Remove an irrelevant copyright notice
+5a77136 Make "/pages/about.html" work again
+a9826ef Hitting delete with empty input deletes a tag
+f20866c Tidy up TagWidget render() method
+cf1a3b9 Implement better "delete to pop" behavior
+8ee47dc Mimic Google tag deletion behavior
+553c5d3 Eliminate lag from tag deletion via backspace
+034624c Move draggable pill styling into a CSS class
+c3b094d Wire up tag delete controls
+9ce10e4 Improve tag pill close widget styling
+2502a5c Use hsl() values as poor man's substitute for Sass/Compass
+ac9775e Fix a (cosmetic) typo in a code comment
+2703a16 Add useless (for now) autocomplete component
+93e7ad0 More styling enhancements for autocomplete entries
+2a102e4 Remove unnecessary .js extensions
+d4e7f60 Fix visual glitch on deleting last tag pill
+16e3b88 Convert another color to use hsl()
+2205d80 Add beginnings of keyboard navigation of autocomplete menu
+f79f785 Get autocomplete filtering working
+c2d6569 Scroll autocomplete suggestions when there are many of them
+cf32503 Clear autocomplete suggestions on adding a new tag
+e3de3a2 Don't show suggestions if the user hasn't inputed anything
+88264f1 Teach tag widget to add selected autocomplete suggestion on return
+3215601 Apply misc cleanup to JSX files
+46296e2 More clean up and edge-case handling
+7886f6c Add support for using tab to accept an autocomplete suggestion
+0562500 Improve jank code with the magic of commenting
+0637c53 Exclude duplicates from autocomplete suggestions
+c5f4c90 Hide autocomplete menu on pressing the escape key
+7ce652e DRY up escape-handling in TagWidget's handleKeyDown method
+b3f9ae2 Kill some dead code
+50d2b4e Let clicking on an autocomplete suggestion add the tag
+2ff05ad Let tab key jump to first autocomplete suggestion
+aceaf7d Mousing over a autocomplete suggestion changes selection
+d70caae Use a less strident :active color for autocomplete suggestions
+3c00026 Add sample tags.json file
+7bdf7a7 Increase the accuracy and detail of a comment
+0b4b9e1 Pull autocomplete recommendations down via Ajax
+c29cb46 Reduce size of JSON payload
+c852133 Add an index on `tags` for faster autocomplete
+1de73df Teach tags#index to return JSON for use by the tag widget
+a80c504 Upgrade .ruby-version to 2.1.0
+51bb71f Highlight duplicate tags on entry
+111e063 Clear duplicate marker on clicking a tag pill close widget
+02314d4 Also clear duplicate marker on backspacing to pop a tag
+ad0d8b6 Lay some groundwork for showing pending tag edits
+e25044d Remove pending removal code
+4b08c06 Scroll autocomplete if required during keyboard navigation
+abcdcf2 Sketch out handling of saved vs unsaved resources
+8324a1f Move Ajax tagging creation into separate function
+20676da Fix subtle bug in createTagging function
+3f054c4 Change order of title element content for better usability
+8e3c0bf Show Twitter tweets (from Twitter) in blog sidebar
+bedbf49 Speed up searchable model updates by adding an index
+d7141b8 Add Rake task for migrating tweets to snippets
+1a10322 Add nuke task, twitter:destroy
+c474b2b Remove unneeded styling from tweets sidebar
+dd71548 Update script/deploy hints to use bin-less paths
+13cdf83 Update db/schema.rb
+48f6c7e script/deploy: remove some unnecessary single quotes from a hint
+2babdd0 Remove Twitter rake tasks
+ad4d2ea Remove a bunch of tweet-related code
+7ac22a6 Restyle tag links
+9baaa14 DRY up references to to Twitter URL
+6aca394 Make 'no tags' language more explicit
+71427e2 Apply formatting updates to LinksController
+6c5b95b Apply formatting updates for the TagsController
+59b497a Apply minor formatting updates to the ApplicationHelper
+42ee463 Apply minor formatting updates to the ForumsHelper
+4c9ebdd Replace one straggling reference to the archaic 'weblog'
+11b48fc Make Twitter placeholder text more subtle
+a2a7ba1 Move bower_components into vendor/assets/
+540fa91 Attempt upgrade to latest Font Awesome
+e1aaa25 Update asset precompilation task to work with new Bower location
+84dfa6c Update stylesheets for new version of Font Awesome
+0a3afb2 Coax Font Awesome and the asset pipeline into working in dev
+3bfd918 script/deploy: bump Bundler version
