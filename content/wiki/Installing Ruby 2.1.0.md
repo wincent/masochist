@@ -1,5 +1,6 @@
 ---
 tags: ruby os.x
+cache_breaker: 1
 ---
 
 # On [OS X](/wiki/OS_X) [Mavericks](/wiki/Mavericks) 10.9.1 (using [Homebrew](/wiki/Homebrew))
