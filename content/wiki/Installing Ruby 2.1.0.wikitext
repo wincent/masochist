@@ -1,5 +1,6 @@
 ---
 tags: ruby os.x
+cache_breaker: 1
 ---
 = On [[OS X]] [[Mavericks]] 10.9.1 (using [[Homebrew]]) =
 
