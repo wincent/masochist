@@ -1,6 +1,7 @@
 ---
 title: Managing Side-effects With the Pub-Sub Model
 tags: ruby causes
+cache_breaker: 1
 ---
 [Where I used to work] at [[Causes]] we just shipped a small Ruby library for applying the Publish-Subscribe pattern to any [[Ruby]] codebase, and I just wrote a quick blog post on the subject.
 
