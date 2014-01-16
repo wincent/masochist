@@ -1,0 +1,53 @@
+---
+title: Site updates 0.114
+tags: site updates
+---
+54cbbc8 Update to pre-release Compass
+3d861da Set up base vertical rhythm functionality
+435654b Split colors out from _variables.scss into separate file
+14a49ed Move a color variable from _display.scss to _colors.scss
+2895d2f Remove now-unused ems calculation function
+b24c4fd Add modular-scale Sass extension
+3e171ac Overhaul modular scaling on headings
+d67e2e5 Apply vertical rhythm treatment to global nav
+04cfad6 Fix degraded #link_to_user method
+bb70886 Fold separate permalinks into timestamps
+612b64e Convert remaining Sass files to SCSS
+88ab37a Clean up some duplicate/redundant CSS
+f3bd2d1 Add rows attributes to textareas
+ff67c25 Use :target pseudo-selector for active fragment highlighting
+19466cc Fix mangling caused by syntax-highlighting edge case
+442526e Simplify a regex
+33b1518 Fix a couple of issues with the syntax highlighter
+a91440b Update to wikitext-4.1
+964aed9 Prep for use of :wikitext filter in Haml templates
+a268138 Do partial state updates in TagWidget
+0b2fce8 Plug in custom form builder
+85ce16e Make CustomFormBuilder reload itself in dev environment
+2c61786 Revamp issues form styling
+92ae683 Replace ugly :ruby usage in template with ugly | multiline markers
+e86d11c Update posts forms styling
+61394d8 Put inputs inside labels
+7111efb Replace some invalid elements in custom form builder
+388fa53 Update and DRY up article forms
+2f26d9d DRY up the post forms a little more
+a7115e3 Unbreak issue forms
+5782841 Tone down comment bubble styling
+71f507c Add focused form styling, with example
+b28edd3 Suppress custom form builder on issues#show
+2619572 Handle special case for Ajax checkboxes
+01aa112 Fix issue moderation
+8acf495 Fix broken orientation of "Previous" pagination control
+ff9340b Revamp user forms
+5aa21d3 Update login form
+47b4b83 Mark issue summary field as required
+3265d38 Mark article summaries as required form fields
+feec812 Update repo form styling
+3f4c866 Make form field focus a little more obvious
+4774f18 Revamp snippet forms
+94be067 Make checkbox field row clickability more evident
+a36dd30 Suppress unsightly text selection on clicking checkbox labels
+253854c Update topic form styling
+0e0beaa Update tag form styling
+b4b6319 Tweak ApplicationHelper to take advantage of Tag#to_s
+58c0a7d Update a comment
