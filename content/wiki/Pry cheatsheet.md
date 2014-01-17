@@ -1,5 +1,6 @@
 ---
 tags: ruby pry
+cache_breaker: 1
 ---
 
 -   `binding.pry`: drop into a Pry console (similar to setting a breakpoint with `byebug` or `debugger`)
