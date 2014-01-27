@@ -1,0 +1,4 @@
+---
+tags: linux
+---
+<pre lang="shell">$ cat /proc/version</pre>
