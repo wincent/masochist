@@ -1,5 +1,6 @@
 ---
 tags: sqlite
+cache_breaker: 1
 ---
 
 -   `.help`: get help
