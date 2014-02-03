@@ -1,5 +1,6 @@
 ---
 tags: facebook
+cache_breaker: 1
 ---
 [[Facebook]] is the world's largest social network.
 
