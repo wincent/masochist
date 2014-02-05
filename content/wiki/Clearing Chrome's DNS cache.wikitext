@@ -1,5 +1,6 @@
 ---
 tags: dns chrome
+cache_breaker: 1
 ---
 Go to `chrome://net-internals/#dns` and hit "Clear host cache".
 
