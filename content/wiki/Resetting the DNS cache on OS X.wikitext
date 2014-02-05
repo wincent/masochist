@@ -1,0 +1,12 @@
+---
+tags: dns os.x
+---
+<pre lang="shell">$ sudo killall -HUP mDNSResponder</pre>
+
+= Source =
+
+* http://support.apple.com/kb/ht5343
+
+= See also =
+
+* [[Clearing Chrome's DNS cache]]
