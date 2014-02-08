@@ -1,5 +1,6 @@
 ---
 tags: apple itunes
+cache_breaker: 1
 ---
 I've lived in multiple countries, and wound up with multiple Apple IDs (because Apple insists on having unique email addresses per account, and one account per country, and one credit card on file per country too which must have a billing address in that country).
 
