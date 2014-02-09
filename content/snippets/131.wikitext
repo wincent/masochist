@@ -1,6 +1,7 @@
 ---
 title: On Homebrew
 tags: homebrew
+cache_breaker: 1
 ---
 I get the impression that [[Homebrew]] is now the most popular [[OS X]] "package manager".
 
