@@ -1,0 +1,14 @@
+---
+tags: spotify
+---
+There is a long thread about this [http://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/spotify-unable-to-initialize-the-storage-of-temporary-files/td-p/30293 here].
+
+In my case, the necessary steps to fix were:
+
+# Delete `/Applications/Spotify.app`
+# Delete `~/Library/Caches/com.spotify.*`
+# Delete `~/Library/Application Support/Spotify`
+# Log out and log in again (a full reboot wasn't required)
+# Run the Spotify installer
+
+Probably unrelated, but my machine was sluggish and unresponsive after logging in again, so I ended up rebooting anyway.
