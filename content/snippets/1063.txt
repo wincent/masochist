@@ -1,0 +1,32 @@
+---
+title: Site updates 0.115
+tags: site updates
+---
+a41c5c0 Make it easier to use factories from the command line
+97a9ee4 Use Pry in development
+0243318 Set up .pryrc
+9bc9682 Add missing sham file
+6272863 Re-integrate Hirb in development mode
+0b14a51 Fix spec breakage
+3ec5637 Robustify field_error_proc
+1adbdf4 Update bundle
+6f5e605 Remove unnecessary filetype hint
+a8bbaa6 Update legal copy
+aca6273 Remove Ruby 2.1.0 bug workaround
+bdfb697 Trim some fat from the User model
+bf679b3 Trim some more fat
+9c0e21b Move React files up one level
+c86bb49 Rename React directory
+5475739 Rename a variable for future clarity
+1bed5c1 Quell warnings about already defined `input` variable
+56d6a4c First cut at keyboard based pill selection and deletion
+fdbcc24 Handle clicking-with-selected-pill edge case
+4a4338f Allow pill selection by clicking
+ef36294 Reduce nastiness of handleKeyDown() method
+afc13e8 Remove an unnecessary `bind(this)` call
+3a68ee7 Reduce unnecessary vertical spread
+0a57f0d On tabbing into TagWidget, forward focus to TagInput
+00d12c6 Add some code doc comments
+6eed1e5 Add calendar icon to .when spans
+39911f9 Update to Rails 4.1.0.rc1
+17524b6 Update db/schema.rb
