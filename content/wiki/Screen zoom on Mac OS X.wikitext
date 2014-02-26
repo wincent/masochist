@@ -1,0 +1,4 @@
+---
+tags: os.x
+---
+It's fully described [http://support.apple.com/kb/PH11488?viewlocale=en_US here], but the short version: if you turn this on in the Accessibility pane of the System Preferences, you can zoom the screen with Control+Scroll (ie. Control plus a two-finger drag on a trackpad).
