@@ -1,5 +1,6 @@
 ---
 tags: firefox chrome retina
+cache_breaker: 1
 ---
 = Firefox =
 
