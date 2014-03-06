@@ -1,5 +1,6 @@
 ---
 tags: ruby python vim libevent command.t tmux centos redhat ncurses
+cache_breaker: 1
 ---
 
 Historically, building [tmux](/wiki/tmux) on [CentOS](/wiki/CentOS) has been a pretty delicate subject, with specific requirements for each version.
