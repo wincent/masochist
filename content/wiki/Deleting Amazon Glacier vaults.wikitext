@@ -1,5 +1,6 @@
 ---
 tags: aws amazon glacier
+cache_breaker: 1
 ---
 Amazon Glacier vaults are notoriously hard to delete, because they can't be deleted until empty, getting a list of their contents is a multi-hour operation, and they can grow to be immensely large, requiring a lot of time to actually delete the contained archives.
 
