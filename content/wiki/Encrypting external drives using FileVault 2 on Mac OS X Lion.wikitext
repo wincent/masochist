@@ -1,5 +1,6 @@
 ---
 tags: lion
+cache_breaker: 1
 ---
 <pre lang="shell">$ diskutil info
 $ diskutil info /Volumes/Suanzes/
