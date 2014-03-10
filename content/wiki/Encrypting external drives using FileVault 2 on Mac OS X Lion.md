@@ -1,5 +1,6 @@
 ---
 tags: lion
+cache_breaker: 1
 ---
 
 ```shell
