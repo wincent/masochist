@@ -1,6 +1,7 @@
 ---
 title: USB snapshot script
 tags:
+cache_breaker: 1
 ---
 #!/usr/bin/env ruby
 
