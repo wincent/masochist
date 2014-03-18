@@ -1,0 +1,16 @@
+---
+title: Involuntary Reboot Log 6.2
+tags: involuntary.reboot.log
+---
+Major pause (multiple seconds) while typing in Vim, followed by a longer pause (a minute), spinning beach ball, and ultimately a hard lock-up (couldn't even move the mouse pointer). Waited about 3 minutes and decided to do a [[hard reset]].
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* Uptime at moment of failure: unknown (days)
+* Kernel panics: 0
+* Hard resets: 2
+* Total failures: 2
+* Start of recording keeping: 21 January 2014
+* Total days to date: 56 days
+* Average time between failures: 28 days
