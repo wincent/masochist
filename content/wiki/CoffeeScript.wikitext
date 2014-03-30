@@ -1,5 +1,6 @@
 ---
 tags: coffeescript
+cache_breaker: 1
 ---
 = Official site =
 
