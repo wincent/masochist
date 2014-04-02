@@ -1,0 +1,16 @@
+---
+title: Involuntary Reboot Log 6.3
+tags: involuntary.reboot.log
+---
+Closed laptop on leaving work; on coming home and opening it was back at the initial boot screen. No idea why it decided to [[hard reset]] itself.
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* Uptime at moment of failure: unknown (days)
+* Kernel panics: 0
+* Hard resets: 3
+* Total failures: 3
+* Start of recording keeping: 21 January 2014
+* Total days to date: 70 days
+* Average time between failures: 23.33 days
