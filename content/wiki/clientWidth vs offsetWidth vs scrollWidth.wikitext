@@ -1,5 +1,6 @@
 ---
 tags: css
+cache_breaker: 1
 ---
 * Short answer:
 ** `clientWidth` is the inner width (ie. the space inside an element including padding but excluding borders and scrollbars)
