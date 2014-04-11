@@ -1,0 +1,6 @@
+---
+title: Site updates 0.119
+tags:
+---
+e250027 Force assets to expire
+2e94416 Include config files in asset compilation fingerprint
