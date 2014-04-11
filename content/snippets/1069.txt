@@ -1,0 +1,8 @@
+---
+title: Site updates 0.118
+tags: site updates
+---
+e1ba490 Make FontAwesome work in Firefox
+bddd99f Style fixes
+ea0245b Upgrade Spring
+b192b01 Update binstubs
