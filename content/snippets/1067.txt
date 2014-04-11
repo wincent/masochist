@@ -1,0 +1,13 @@
+---
+title: Site updates 0.116
+tags: site updates
+---
+3f1504b Revert "Update db/schema.rb"
+c9d8769 Get shift-tab working in tag widget
+f2178d5 Fix a (cosmetic) typo in a code comment
+8d5bacb React: remove some cruft (demo page)
+573ef73 React: use Facebook formatting style
+b3a56f4 Make naming conventions more consistent
+8795bf3 Improve links in moderation emails
+818e3f5 Update to Rails 4.1.0
+62a1433 Coax bundle into working state
