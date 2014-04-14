@@ -1,0 +1,16 @@
+---
+title: Involuntary Reboot Log 6.4
+tags: involuntary.reboot.log
+---
+Hard freeze while trying to get external display to come on (various pluggings and unpluggings). [[Hard reset]].
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* Uptime at moment of failure: unknown (days)
+* Kernel panics: 0
+* Hard resets: 4
+* Total failures: 4
+* Start of recording keeping: 21 January 2014
+* Total days to date: 83 days
+* Average time between failures: 20.75 days
