@@ -1,5 +1,6 @@
 ---
 tags: rails javascript browserify
+cache_breaker: 1
 ---
 I've been using [[Browserify]] in a [[Rails]] side project of mine and am really enjoying the benefits. Specifically, I've converted my JS to modules and am bundling it using Browserify. The Rails JavaScript manifest becomes a one-liner which just references the Browserify bundle. I'm still letting the Rails pipeline handle minification, via the excellent Google Closure compiler.
 
