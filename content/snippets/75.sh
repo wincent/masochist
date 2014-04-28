@@ -1,6 +1,7 @@
 ---
 title: git-daemon init.d script
 tags: git
+cache_breaker: 1
 ---
 #!/bin/sh
 #
