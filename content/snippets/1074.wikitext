@@ -1,0 +1,16 @@
+---
+title: Involuntary Reboot Log 6.5
+tags: involuntary.reboot.log
+---
+On re-opening the closed laptop, immediate [[kernel panic]].
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* Uptime at moment of failure: unknown (days)
+* Kernel panics: 1
+* Hard resets: 4
+* Total failures: 5
+* Start of recording keeping: 21 January 2014
+* Total days to date: 111 days
+* Average time between failures: 22.2 days
