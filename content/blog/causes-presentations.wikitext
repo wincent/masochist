@@ -1,6 +1,7 @@
 ---
 title: Causes presentations
 tags: rails git javascript sass jasmine causes compass prolog gerrit submodules
+cache_breaker: 1
 ---
 Over the last year and a half at [[Causes]] I've given a number of tech and lightning talks. I've just spent some time putting them online under my "work" [[GitHub]] profile, https://github.com/ghurrell (my other profile containing non-work projects is https://github.com/wincent).
 
