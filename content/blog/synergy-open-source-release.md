@@ -1,6 +1,7 @@
 ---
 title: Synergy open source release
 tags: synergy open.source
+cache_breaker: 1
 ---
 
 [Synergy](/wiki/Synergy) was originally released in November 2002, and over the years has received many updates. Due to competing demands on my time, the release rate slowed down as the years went on, and at the time of writing, the last release was version 4.5.2, on February 1, 2011.
