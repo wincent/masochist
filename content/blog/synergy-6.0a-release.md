@@ -1,6 +1,7 @@
 ---
 title: Synergy 6.0a release
 tags: synergy releases mavericks
+cache_breaker: 1
 ---
 
 If you're feeling bold — or perhaps just want something for free — the new alpha preview of the next version of [Synergy](/wiki/Synergy) (6.0a) is now out. Synergy is a lightweight, customizable [iTunes](/wiki/iTunes) controller.
