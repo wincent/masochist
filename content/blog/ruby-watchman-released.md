@@ -1,6 +1,7 @@
 ---
 title: RubyWatchman released
 tags: ruby watchman ruby.watchman
+cache_breaker: 1
 ---
 
 For a recent [Facebook](/wiki/Facebook) hackathon I submitted [a pull request](https://github.com/facebook/watchman/pull/37) to the [Watchman](/wiki/Watchman) project adding a gem for easily talking to Watchman from [Ruby](/wiki/Ruby) using the high-performance binary protocol. This is code written in C for speed, which I had prepared for [Command-T](/wiki/Command-T), so the job here was to extract it and package it into an easy-to-use format.
