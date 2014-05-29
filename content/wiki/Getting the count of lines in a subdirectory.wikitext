@@ -1,0 +1,19 @@
+---
+tags:
+---
+Example: cumulative total:
+
+<pre lang="shell">$ find . -type f -exec cat {} + | wc -l</pre>
+
+Example: per file counts and total:
+
+<pre lang="shell">$ find . -regex '.+\.js$' | xargs wc -l</pre>
+
+= Source =
+
+* http://stackoverflow.com/questions/13727917/use-wc-on-all-subdirectories-to-count-the-sum-of-lines
+* http://stackoverflow.com/questions/104756/how-do-you-count-your-lines-of-code
+
+= Alternatives =
+
+* http://cloc.sourceforge.net/ ([[Perl]] tool for counting source code)
