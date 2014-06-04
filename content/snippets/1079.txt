@@ -1,0 +1,44 @@
+---
+title: Site updates 0.122
+tags: site updates
+---
+c2b3667 Update assets/deploy processes to automate Browserify bundling
+34609d7 Make deploy quieter for non-error case
+18fc8a7 Attempted workaround for annoying Sprockets/Sass bug
+e38ed46 Apply tweaks to get tag widget rendering in Rails context
+c725213 Prevent unwanted form submissions
+441295e Update Browserify bundling strategy
+a98f8bf More better Browserification
+8726663 Use source maps in local dev
+d0502c9 Fix React warnings about unique keys
+4afc350 Make forward-delete delete selected tag pills
+1ab8fec Reuse generic escapeHTML function
+93fcf69 Handle a tag transformation edge case
+a28aa2c Partial stab at progressive enhancement
+3662fba Remove React seed files
+283f1ac Progressively enhance TagWidget
+da6afda Add grunt and node-jsx
+9bd4254 Add Article.js
+c0ee583 Set up Grunt to build server-side modules
+8e17bf3 Don't include browserify bundle in Grunt server-side build
+829a2f8 Remove dead JsController code
+0a306bf Try to unbreak assets pipeline
+5b4ea9f Remove tedious and verbose license headers
+b996fde Unbreak assets
+6fbcb2c Unbreak some in-place editing JS
+736593a Lighten headings
+6f07a9f Make content-editable styling more subtle
+41322b9 Brevity is the soul of wit
+e1cbb4c Fix layout issue on issues pages
+7fa31e0 Revamp issue styling
+ec1a91b Use less heavy-handed table styling
+8bb8f8d Revamp boxed comment styles
+7e85b07 Simplify comment box coloring
+a452fa8 Say goodbye to comment bubbles; hello comment boxes
+31e5fb3 Inline comment-box mixin
+16b524c Remove files associated with dead JsController
+e9dba4f Update some stale tests
+4cd743e Move asset config into an initializer
+196c734 Bump to Rails 4.1.2.rc1
+a81fa4f Get rid of TagWidget progressive enhancement
+f7af2a0 Update JS bundle
