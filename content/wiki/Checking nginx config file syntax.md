@@ -1,5 +1,6 @@
 ---
 tags: nginx
+cache_breaker: 1
 ---
 
 Assuming an [nginx](/wiki/nginx) installation under `/usr/nginx`:
