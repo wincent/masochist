@@ -1,0 +1,28 @@
+---
+tags:
+---
+Installing capybara 2.1.0
+
+Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.
+
+    /Users/glh/.rbenv/versions/2.0.0-p451/bin/ruby extconf.rb
+cd src/ && /usr/local/bin/qmake /Users/glh/code/wincent.com/src/.bundle/ruby/2.0.0/gems/capybara-webkit-1.1.1/src/webkit_server.pro -spec /usr/local/Cellar/qt/4.8.6/mkspecs/macx-g++ -o Makefile.webkit_server
+cd src/ && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f Makefile.webkit_server
+g++ -pipe -O2 -arch x86_64 -Xarch_x86_64 -mmacosx-version-min=10.5 -Wall -W -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/local/Cellar/qt/4.8.6/mkspecs/macx-g++ -I. -I/usr/local/Cellar/qt/4.8.6/lib/QtCore.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtCore.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtNetwork.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtNetwork.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtGui.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtGui.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtWebKit.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtWebKit.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/include -Ibuild -F/usr/local/Cellar/qt/4.8.6/lib -x c++-header -c stable.h -o build/webkit_server.gch/c++
+g++: error: unrecognized command line option '-Xarch_x86_64'
+make[1]: *** [build/webkit_server.gch/c++] Error 1
+make: *** [sub-src-webkit_server-pro-make_default-ordered] Error 2
+Command 'make' failed
+
+make "DESTDIR="
+cd src/ && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f Makefile.webkit_server
+g++ -pipe -O2 -arch x86_64 -Xarch_x86_64 -mmacosx-version-min=10.5 -Wall -W -DQT_NO_DEBUG -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED -I/usr/local/Cellar/qt/4.8.6/mkspecs/macx-g++ -I. -I/usr/local/Cellar/qt/4.8.6/lib/QtCore.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtCore.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtNetwork.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtNetwork.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtGui.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtGui.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtWebKit.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/lib/QtWebKit.framework/Versions/4/Headers -I/usr/local/Cellar/qt/4.8.6/include -Ibuild -F/usr/local/Cellar/qt/4.8.6/lib -x c++-header -c stable.h -o build/webkit_server.gch/c++
+g++: error: unrecognized command line option '-Xarch_x86_64'
+make[1]: *** [build/webkit_server.gch/c++] Error 1
+make: *** [sub-src-webkit_server-pro-make_default-ordered] Error 2
+
+
+Gem files will remain installed in /Users/glh/code/wincent.com/src/.bundle/ruby/2.0.0/gems/capybara-webkit-1.1.1 for inspection.
+Results logged to /Users/glh/code/wincent.com/src/.bundle/ruby/2.0.0/gems/capybara-webkit-1.1.1/./gem_make.out
+An error occurred while installing capybara-webkit (1.1.1), and Bundler cannot continue.
+Make sure that `gem install capybara-webkit -v '1.1.1'` succeeds before bundling.
