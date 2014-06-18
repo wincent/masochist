@@ -1,0 +1,4 @@
+---
+tags: ssl csr
+---
+<pre lang="shell">$ openssl req -noout -text -in path/to/example.com.csr</pre>
