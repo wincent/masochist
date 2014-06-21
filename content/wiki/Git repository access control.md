@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 One of the nice design decisions made by the [Git](/wiki/Git) developers is that access control should not be the responsibility of the [SCM](/wiki/SCM) tool. This means that the tool is free to concentrate on doing its job (tracking content), while leaving questions of authentication and authorization in the hands of other tools which are much more flexible and better suited to the job: tools like [SSH](/wiki/SSH), filesystem permissions, [ACLs](/wiki/ACLs), and a host of other mechanisms.
