@@ -1,5 +1,6 @@
 ---
 tags: ruby javascript json
+cache_breaker: 1
 ---
 
 ```ruby
