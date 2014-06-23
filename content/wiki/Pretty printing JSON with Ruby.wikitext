@@ -1,5 +1,6 @@
 ---
 tags: ruby javascript json
+cache_breaker: 1
 ---
 <pre lang="ruby">require 'json'
 JSON.pretty_generate(JSON[input])</pre>
