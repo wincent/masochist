@@ -1,0 +1,9 @@
+---
+tags: ruby javascript json
+---
+<pre lang="ruby">require 'json'
+JSON.pretty_generate(JSON[input])</pre>
+
+= Source =
+
+* http://stackoverflow.com/questions/86653/how-can-i-pretty-format-my-json-output-in-ruby-on-rails
