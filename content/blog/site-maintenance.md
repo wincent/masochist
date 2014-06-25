@@ -1,6 +1,7 @@
 ---
 title: Site maintenance
 tags: site updates
+cache_breaker: 1
 ---
 
 I'm going to be doing some maintenance on the site tonight that will require me to take it offline for perhaps an hour.
