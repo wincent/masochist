@@ -1,5 +1,6 @@
 ---
 tags: chef
+cache_breaker: 1
 ---
 [[Chef]] is an automated configuration and management tool similar to [[Puppet]].
 
