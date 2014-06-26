@@ -1,5 +1,6 @@
 ---
 tags: aws
+cache_breaker: 1
 ---
 
 **Note:** *On 2 December 2011 Amazon introduced [new pricing](http://aws.amazon.com/ec2/reserved-instances/), which can drop the rate as low as 2c/hr, for even greater savings. On 6 March 2012 they lowered the prices [even further](http://aws.amazon.com/ec2/pricing/), bringing the hourly rate as low as 1.3c. Then on 1 February 2013 the prices were again dropped. I haven't yet updated the following analysis to reflect this. As of June 2014 [Amazon's pricing page](http://aws.amazon.com/ec2/pricing/) has nice tables which clearly show the savings you can earn by using reserved instances (ie. up to 60% over a three-year term for "Heavy Utilization" instances).*
