@@ -1,5 +1,6 @@
 ---
 tags: puppet
+cache_breaker: 1
 ---
 [[Puppet]] is a server configuration and management tool written in [[Ruby]].
 
