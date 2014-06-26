@@ -1,5 +1,6 @@
 ---
 tags: salt
+cache_breaker: 1
 ---
 
 # Official site
