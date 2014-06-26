@@ -1,0 +1,13 @@
+---
+tags: chef
+---
+[[Chef]] is an automated configuration and management tool similar to [[Puppet]].
+
+= Official site =
+
+* http://www.getchef.com/
+
+= See also =
+
+* [[Wikipedia]] article on [[Chef]]: http://en.wikipedia.org/wiki/Chef_(software)
+* Chef (formerly Opscode) company info on CrunchBase: http://www.crunchbase.com/organization/opscode
