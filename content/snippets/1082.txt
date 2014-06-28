@@ -1,0 +1,15 @@
+---
+title: Site updates 0.124
+tags: site updates
+---
+705b0b1 script/deploy: don't migrate all databases
+de49c77 Bump Bundler version requirement
+3fe3e63 Downgrade Ruby to version 2.0.0-p451
+bd838d3 Revert "Downgrade Ruby to version 2.0.0-p451"
+1c0e930 Switch to Ruby 2.1.2
+377728f Switch to Ruby 2.0.0-p451, again...
+341a57a Revert "Switch to Ruby 2.0.0-p451, again..."
+4bed632 Revert "Revert "Switch to Ruby 2.0.0-p451, again...""
+2f01961 Mark blog permalinks as optional
+c55586f Update broken product links
+c51e6d5 Update bundle.js
