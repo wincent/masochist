@@ -1,0 +1,5 @@
+---
+title: Site updates 0.126
+tags: site updates
+---
+a880019 Improve short link 404s
