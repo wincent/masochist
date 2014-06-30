@@ -1,0 +1,9 @@
+---
+title: Site updates 0.125
+tags: site updates
+---
+bacc73c script/deploy: update user handling for new instance
+85e9757 script/deploy: fix bundler invocation on remote host
+47cb657 Short links, again
+a0485d6 Use 302 redirect from links#show
+f3e5f88 Match short link routes with higher priority
