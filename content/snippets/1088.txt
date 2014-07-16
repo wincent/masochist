@@ -1,0 +1,11 @@
+---
+title: Site updates 0.130
+tags: site updates
+---
+7888b89 Tweak issues#show styling
+27fa30b Apply further tweaks to issues#show styling
+84d3a4d Update to Rails 4.1.4
+5f50861 Update public/LICENSE.txt authorship and year range
+f4c6629 Fix tiny typo in TagInput class
+4cf450a Implement form changes
+352afc5 Update Browserify bundle
