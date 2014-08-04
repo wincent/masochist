@@ -1,0 +1,4 @@
+---
+tags: homebrew
+---
+<pre lang="shell">$ brew cleanup</pre>
