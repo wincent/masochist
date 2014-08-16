@@ -1,5 +1,6 @@
 ---
 tags: powerpc qemu
+cache_breaker: 1
 ---
 I tried to do this the other day. My first attempt progressed fairly well, although with a lot of [[yak shaving]], but ultimately didn't work. I began a second attempt but ended up aborting it because somebody else did the big-endian testing for me, obviating the need.
 
