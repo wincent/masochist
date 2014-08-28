@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 With recent versions of [Git](/wiki/Git) you can do this with `git push --follow-tags`.
