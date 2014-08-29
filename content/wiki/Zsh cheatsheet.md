@@ -1,5 +1,6 @@
 ---
 tags: zsh
+cache_breaker: 1
 ---
 
 # Miscellaneous
