@@ -1,6 +1,7 @@
 ---
 title: Command-T 1.11.2 released
 tags: releases command.t
+cache_breaker: 1
 ---
 This is a quick bugfix release that contains only one change, [https://github.com/wincent/command-t/commit/763fcfe84631e0c108db05c428b337ba52200e10 a fix] for [https://github.com/wincent/command-t/issues/109 GitHub issue <nowiki>#</nowiki>109]. For more details, see the original [/blog/command-t-1.11.1-released 1.11.1 release announcement].
 
