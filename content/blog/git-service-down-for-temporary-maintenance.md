@@ -1,6 +1,7 @@
 ---
 title: Git service down for temporary maintenance [updated]
 tags: site maintenance
+cache_breaker: 1
 ---
 
 Due to the still-unresolved Bash "shellshock" vulnerability (see "[CVE-2014-6271: Remote code execution through bash](https://news.ycombinator.com/item?id=8361574)" and "[CVE-2014-7169: Bash Fix Incomplete, Still Exploitable](https://news.ycombinator.com/item?id=8365158)") I've temporarily taken down the Git service (both the web interface and the Git protocol interface) as a precaution until some definitive patches are available.
