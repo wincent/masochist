@@ -1,0 +1,15 @@
+---
+title: Site updates 0.131
+tags: site updates
+---
+a71a511 Update to React 0.11
+d313d54 Update reactify as well (to v0.14.0)
+79b6282 Update to Browserify 4.2.1
+ac166b6 Update to grunt 0.4.5
+6c2d5ee Update to watchify 0.10.2
+d97ed2a Use React namespacing
+ccc9ad1 Add keybase.io identity file
+d124513 Update to Rails 4.1.6
+b412221 Fix botched node module versions
+3ea9fcb Update JS modules
+652f1e8 Update Browserify bundle
