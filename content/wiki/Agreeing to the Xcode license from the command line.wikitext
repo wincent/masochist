@@ -1,5 +1,6 @@
 ---
 tags: xcode
+cache_breaker: 1
 ---
 You may be prompted to do this by a message like:
 
