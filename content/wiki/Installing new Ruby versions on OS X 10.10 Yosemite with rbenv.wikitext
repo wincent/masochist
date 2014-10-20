@@ -1,0 +1,6 @@
+---
+tags: ruby clang os.x rbenv yosemite
+---
+On updating to [[Yosemite]] I found that [[rbenv]], which I installed via [[Homebrew]], would only allow me to add new versions if I prefixed the `rbenv install` command with `CC=clang`; eg:
+
+<pre lang="shell">$ CC=clang rbenv install 2.1.3</pre>
