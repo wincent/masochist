@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 This can be useful for working with command output that may be very verbose. For example, here we capture the output of the `:au` command to into the `@a` register:
 
