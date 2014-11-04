@@ -1,5 +1,6 @@
 ---
 tags: git github
+cache_breaker: 1
 ---
 Go to the file, and hit `y`.
 
