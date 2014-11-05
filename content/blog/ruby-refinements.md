@@ -1,6 +1,7 @@
 ---
 title: Ruby refinements
 tags: ruby refinements
+cache_breaker: 1
 ---
 
 Playing with [Ruby](/wiki/Ruby) [refinements](http://www.ruby-doc.org/core-2.1.3/doc/syntax/refinements_rdoc.html) for the first time. Disappointed that you can't just do something like:
