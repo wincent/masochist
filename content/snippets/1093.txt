@@ -1,0 +1,5 @@
+---
+title: Site updates 0.134
+tags: site updates
+---
+e6f7a3c Prevent wide images in posts/articles from breaking responsive layout
