@@ -1,0 +1,29 @@
+---
+title: Involuntary reboot log 6.8
+tags: involuntary.reboot.log
+---
+Network connection was spotty, so tried to turn off Wi-Fi and switch to tethering. Wi-Fi stayed on. Successively more apps started to beachball. Tried quitting as many as possible, but in the end even the clock stopped updating so I decided to do a [[hard reset]].
+
+This is my first [[involuntary reboot]] on [[Yosemite]], and this machine is doing well, approaching the best MTBF I've had so far (currently at 37.875 days, previous record was 41.86 days).
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* OS version: 10.10.1
+* Uptime at moment of failure: approximately 2 days
+* Kernel panics: 1
+* Hard resets: 7
+* Total failures: 8
+* Start of recording keeping: 21 January 2014
+* Total days to date: 303 days
+* Average time between failures: 37.875 days
+
+= Historical data =
+
+For comparison, previous generations of machines (from most oldest to most recent) that I've used have had averages of:
+
+* [/blog/involuntary-reboot-log-60 22.73] days (over 1,364 days)
+* [/snippets/23 20.06] (over 321 days)
+* [/snippets/128 19.11] (over 707 days)
+* [/snippets/170 41.86] (over 293 days); and:
+* [/snippets/171 2.0 days] (over 2 days)
