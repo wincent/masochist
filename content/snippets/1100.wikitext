@@ -1,6 +1,7 @@
 ---
 title: Involuntary reboot log 6.12
 tags: involuntary.reboot.log
+cache_breaker: 1
 ---
 Failure after waking from sleep (log-in screen froze after entering password, fans came on, permanent [[beachball]]), leading to a [[hard reset]].
 
