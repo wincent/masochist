@@ -1,0 +1,27 @@
+---
+title: Involuntary reboot log 6.13
+tags: involuntary.reboot.log
+---
+Woke from sleep and tried to log in; stuck at log-in screen for minutes with no response. Tried closing laptop and re-opening; it let me enter my password but wouldn't proceed past the lock screen. [[Hard reset]].
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* OS version: 10.10.1
+* Uptime at moment of failure: approximately 3 days
+* Kernel panics: 1
+* Hard resets: 12
+* Total failures: 13
+* Start of recording keeping: 21 January 2014
+* Total days to date: 351 days
+* Average time between failures: 27.0 days
+
+= Historical data =
+
+For comparison, previous generations of machines (from most oldest to most recent) that I've used have had averages of:
+
+* [/blog/involuntary-reboot-log-60 22.73] days (over 1,364 days)
+* [/snippets/23 20.06] (over 321 days)
+* [/snippets/128 19.11] (over 707 days)
+* [/snippets/170 41.86] (over 293 days); and:
+* [/snippets/171 2.0 days] (over 2 days)
