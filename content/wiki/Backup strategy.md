@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 
 -   [Backup strategy (2015)](/wiki/Backup_strategy_%282015%29)
