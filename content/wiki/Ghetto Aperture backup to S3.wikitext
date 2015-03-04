@@ -1,5 +1,6 @@
 ---
 tags: s3 aperture
+cache_breaker: 1
 ---
 As a relatively early adopter of the internet, my first decade online was marked by a desire to accumulate and retain as much data as possible. I collected and never threw anything away.
 
