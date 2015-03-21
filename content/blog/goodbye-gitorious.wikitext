@@ -1,0 +1,7 @@
+---
+title: Goodbye Gitorious
+tags: git github gitorious
+---
+I've long maintained a mirror on [[Gitorious]] of all my public [[Git]] repos, but with the [https://about.gitlab.com/2015/03/03/gitlab-acquires-gitorious/ recent announcement] that they are being acquired by GitLab, I'm turning off the mirroring and I won't be setting up a replacement.
+
+My public repos will continue to be hosted at [http://git.wincent.com/ git.wincent.com], with mirrors under [https://github.com/wincent my GitHub account]. I figure that's probably enough redundancy.
