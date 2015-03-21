@@ -1,5 +1,6 @@
 ---
 tags: gitorious
+cache_breaker: 1
 ---
 
 [Gitorious](/wiki/Gitorious) provided free [Git](/wiki/Git) hosting for [open source](/wiki/open_source) projects. It was a free, open source alternative to the free-but-proprietary [GitHub](/wiki/GitHub).
