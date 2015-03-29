@@ -1,5 +1,6 @@
 ---
 tags: make
+cache_breaker: 1
 ---
 = Automatic variables =
 
