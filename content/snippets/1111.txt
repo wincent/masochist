@@ -1,0 +1,21 @@
+---
+title: Site updates 0.142
+tags: site updates
+---
+1478907 Silence `deliver` deprecation messages
+a76aab9 Put quotes around regexes for compatibility with RSpec 3.2.2
+2b75dff RSpec 3: `be_true` -> `== true`
+55287e2 Update to RSpec 3
+2467f77 Rspec: `be_false` -> `== false`
+7426173 Update misc#legal template
+8cf386d Fix a couple more actually broken tests
+5de262d Update binstubs
+7acf513 Improve security of salts and session keys
+b8b1a0b Make randomly generated passwords more random
+3554e1b Don't overflow database columns
+1651df5 Get redirect-after-login working again
+1786839 Fix Rails 4 binstubs
+3a88d63 Add hash_version column to users table
+a5bff5a Use SecureRandom in the {Confirmation,Reset} models
+51baf3b Apply minor tweak to users table migration before running it
+3d218d0 Update password hashing algorithm
