@@ -1,0 +1,7 @@
+---
+title: git-cipher
+tags: git git.cipher
+---
+A few days ago I released [https://github.com/wincent/git-cipher git-cipher], a tool for storing encrypted content in Git. It provides a convenient command-line interface for encrypting and decrypting, and your sensitive content appears in the Git repo [https://github.com/wincent/wincent/blob/c1d1469abafd0066e6469c4b693cafb99fb9e041/roles/ssh/files/.ssh_config.encrypted like this].
+
+Head over and checkout [https://github.com/wincent/git-cipher the README] for more details.
