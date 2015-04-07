@@ -1,5 +1,6 @@
 ---
 tags: javascript nvm node
+cache_breaker: 1
 ---
 
 [nvm](/wiki/nvm) is the "Node Version Manager".
