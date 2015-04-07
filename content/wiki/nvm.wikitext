@@ -1,0 +1,12 @@
+---
+tags: javascript nvm node
+---
+[[nvm]] is the "Node Version Manager".
+
+= Official site =
+
+* https://github.com/creationix/nvm
+
+= See also =
+
+* [[Managing multiple versions of node with nvm]]
