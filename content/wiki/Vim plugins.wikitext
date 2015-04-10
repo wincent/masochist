@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 This is a list of [[Vim]] plugins which I find useful and robust enough to warrant recommending them.
 
