@@ -1,0 +1,13 @@
+---
+title: Site updates 0.144
+tags: site updates
+---
+52e62b2 Fix controller spec failures caused by Rails 4 API changes
+3bad3eb Fix stale snippets#index view spec
+7a15fb5 Silence some RSpec deprecation warnings
+e6dea1f Squish another RSpec deprecation warning
+40b6bfe Unmark a spurious failure as spurious
+124f6a0 Convert specs to RSpec 3.2.2 syntax with Transpec
+19c3ddc Update .rpec
+4cde25b Fix sole new failure introduced by Transpec conversion
+f87be9b Don't double-escape ampersands from paginator
