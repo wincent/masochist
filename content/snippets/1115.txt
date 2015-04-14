@@ -1,0 +1,5 @@
+---
+title: Site updates 0.146
+tags: site releases
+---
+5640af2 Show closed issues with strikethrough text on index
