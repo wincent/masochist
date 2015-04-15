@@ -1,5 +1,6 @@
 ---
 tags: tmux
+cache_breaker: 1
 ---
 Not a comprehensive cheatsheet, but stuff that I keep forgetting and want to remember:
 
