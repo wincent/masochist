@@ -1,6 +1,7 @@
 ---
 title: Indenting and dedenting in Vim
 tags: vim
+cache_breaker: 1
 ---
 I frequently indent or dedent text in [[Vim]] with `>` or `<`. This works in both normal and visual/select modes.
 
