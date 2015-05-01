@@ -1,5 +1,6 @@
 ---
 tags: ssl
+cache_breaker: 1
 ---
 [[SSL]] or [[Secure Sockets Layer]] is a mechanism for encrypted network transport.
 
