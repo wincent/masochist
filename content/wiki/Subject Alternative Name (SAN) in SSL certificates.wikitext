@@ -1,5 +1,6 @@
 ---
 tags: ssl
+cache_breaker: 1
 ---
 * Clients check the Common Name (CN), but also the Subject Alternative Names (SAN)
 * The CN should be included in among the SANs
