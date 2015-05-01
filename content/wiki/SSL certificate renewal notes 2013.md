@@ -1,5 +1,6 @@
 ---
 tags: ssl
+cache_breaker: 1
 ---
 
 **Note:** I'm no longer maintaining these renewal notes, as I now have the whole process pretty much automated via [Ansible](/wiki/Ansible) (I just run a script to generate a new CSR, then dump the signed certificate from the CA into my Ansible configs repo and tell Ansible to install it).
