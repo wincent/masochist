@@ -1,0 +1,27 @@
+---
+title: Site updates 0.148
+tags: site updates
+---
+b1aaa26 Fix React key warning
+a6b79f4 Sort props in TagWidget
+8b62da9 Prefer arrow functions over bind in TagWidget
+a9361d5 Update node_modules
+94de9b6 Changes to make React 0.13.2 happy
+b9c66e6 More alphabetizing
+c1a1bb1 Switch to ES6 classes
+17d1e90 Update injectTagWidget.js
+dab675e Clean up node_modules a little
+9272aad Get rid of jQuery in injectTagWidget
+e5a8da8 Add -v flag to watchify invocation
+1be67ee Fix nasty React bug
+c5f9358 Switch from reactify to babelify
+2a7108f Remove unnecessary `@jsx` pragma
+6accae5 Add missing callback bind calls
+5985459 Switch to ES6 module syntax
+17d3db1 Use classnames module instead of react/addons
+2a245a1 Remove straggling references to react/addons
+81f2949 More ES6 exports/imports
+6c19848 Add documentation to main.js
+cd02b10 Use more ES6 goodness
+618674e Update browserify bundle
+b1f1193 Believe in assets:browserify:check again
