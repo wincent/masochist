@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 `git status` shows files with conflicts under "Unmerged paths".
 
