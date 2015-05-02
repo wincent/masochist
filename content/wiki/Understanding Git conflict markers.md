@@ -1,5 +1,6 @@
 ---
 tags: git
+cache_breaker: 1
 ---
 
 When looking at [Git](/wiki/Git) conflict markers it can sometimes be confusing which half of the conflicting section belongs to which branch:
