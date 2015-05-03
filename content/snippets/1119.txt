@@ -1,0 +1,10 @@
+---
+title: Site updates 0.149
+tags: site updates
+---
+2d2de16 Remove straggling references to Zeus
+eba20a9 Update tool list, a bit
+723d674 Remove never-used bootstrap
+21ab1fe Make buttons more lightweight
+0d5fa57 Make tables more bootstrap-y
+af086a6 Regulate sortable table column headers better
