@@ -1,0 +1,9 @@
+---
+title: Site updates 0.155
+tags: site updates
+---
+0dfcc8d Revamp pagination
+5ed57e0 Get rid of unwanted list styling on taggable results
+7b43c97 Fix unwanted array literals in flashes, multiple flashes
+05a3de6 Remove unused #error and #notice selectors
+9e23570 Cure issue search form of ugliness and amnesia
