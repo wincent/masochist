@@ -1,0 +1,17 @@
+---
+title: Site updates 0.154
+tags: site updates
+---
+dac346d Add initial version of TagMapping
+a5c6063 Implement "soft" tag redirects in TagsController
+c6f2ee8 Implement TagMapping.canonicalize!
+d6dfe1d Improve TagMapping docs
+560f773 Commit TODOs
+bf14a9f Update vendor/cache, which had fallen out of sync
+ac23e52 Kill off some unused CSS
+f60e229 Add a clarifying comment to ArticleObserver
+9c5184a Add a Clipper link to the product nav
+f9dba4d Remove a few references to win@wincent.com
+48690f9 Add a TODO missed in previous sweep
+f370dbe Likely fix for Spring-woes
+c43676e Update Browserify bundle
