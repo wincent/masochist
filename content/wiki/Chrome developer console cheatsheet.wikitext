@@ -1,5 +1,6 @@
 ---
 tags: javascript chrome
+cache_breaker: 1
 ---
 * `time('foo')` and `timeEnd('foo')`: print elapsed time
 * `keys(window)`: shows current global variables ([https://twitter.com/ChromiumDev/status/423880231758213120 source])
