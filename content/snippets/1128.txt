@@ -1,0 +1,19 @@
+---
+tags:
+---
+Error detected while processing /Users/glh/code/wincent/roles/dotfiles/files/.vim/plugin/settings.vim:
+line   66:
+E487: Argument must be positive: softtabstop=-1
+Error detected while processing function <SNR>25_CheckColorScheme:
+line   15:
+E185: Cannot find color scheme base16-ocean
+Error detected while processing function <SNR>25_CheckColorScheme..functions#italicize_group:
+line    2:
+E411: highlight group not found: Comment
+Error detected while processing function <SNR>25_CheckColorScheme:
+line   24:
+E416: missing equal sign: -1
+Error detected while processing function statusline#update_highlight..functions#italicize_group:
+line    1:
+E121: Undefined variable: l:group
+Press ENTER or type command to continue
