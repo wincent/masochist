@@ -1,5 +1,6 @@
 ---
 tags: gpg
+cache_breaker: 1
 ---
 = Export a public key =
 
