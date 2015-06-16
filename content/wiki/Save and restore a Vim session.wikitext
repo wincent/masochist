@@ -1,0 +1,14 @@
+---
+tags: vim
+---
+Inside vim:
+
+ :mks
+
+Outside vim:
+
+<pre lang="shell">$ vim -S Session.vim</pre>
+
+= See also =
+
+ :h session
