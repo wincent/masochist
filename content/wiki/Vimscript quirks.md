@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 
 -   `map()` mutates the collection in place; if you want to avoid this you have to make a copy first
