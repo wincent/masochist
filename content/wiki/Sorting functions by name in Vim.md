@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 
 This can be tricky. The basic idea is:
