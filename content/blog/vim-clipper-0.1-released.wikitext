@@ -1,6 +1,7 @@
 ---
 title: vim-clipper 0.1 released
 tags: releases vim clipper vim.clipper
+cache_breaker: 1
 ---
 [https://github.com/wincent/vim-clipper vim-clipper] is another small [[Vim]] plug-in that I just extracted from [https://github.com/wincent/wincent my dotfiles].
 
