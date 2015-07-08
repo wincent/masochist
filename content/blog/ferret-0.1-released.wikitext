@@ -1,0 +1,12 @@
+---
+title: Ferret 0.1 released
+tags: releases vim ferret
+---
+[https://github.com/ferret Ferret] is another [[Vim]] plug-in I've extracted from [https://github.com/wincent/wincent my dotfiles], following hot on the heels of [/blog/terminus-0.1-released Terminus], [/blog/loupe-0.1-released Loupe], and [/blog/vim-clipper-0.1-released vim-clipper].
+
+While [https://github.com/loupe Loupe] enhances within-file search in Vim, Ferret enhances multi-file search:
+
+* Multi-file search via `ag`, `ack` or `grep` using the `:Ack` and `:Lack` commands
+* Multi-file replace via `:Acks`
+* Quickfix listing enhancements for better usability (deletion mappings, enhanced `:cn`, `:cnf` and friends, optimized settings)
+* A `:Qargs` command for performing bulk operations on files in the quickfix listing
