@@ -1,5 +1,6 @@
 ---
 tags: javascript
+cache_breaker: 1
 ---
 
 # Sample code
