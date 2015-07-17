@@ -1,0 +1,7 @@
+---
+title: Ferret 0.2 released
+tags: releases vim ferret
+---
+I just cut version 0.2 of [https://github.com/wincent/ferret Ferret], which adds `FerretDidWrite` and `FerretWillWrite` autocommands, and a mapping for bringing up `:Acks` with the last search term pre-populated.
+
+For more info on Ferret, see [/blog/ferret-0.1-released the original release announcement] or [https://github.com/wincent/ferret the README].
