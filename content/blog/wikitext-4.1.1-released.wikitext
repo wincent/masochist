@@ -1,6 +1,7 @@
 ---
 title: Wikitext 4.1.1 and 4.1.2 released
 tags: releases wikitext
+cache_breaker: 1
 ---
 ['''Update:''' A faulty build led to version 4.1.1 shipping with a broken `wikitext` executable; this has been corrected in 4.1.2, although there are no code changes in the gem.]
 
