@@ -1,6 +1,7 @@
 ---
 title: Syntax coloring shoot-out
 tags: textmate emacs bbedit vim
+cache_breaker: 1
 ---
 As a follow-up to the [http://rails.wincent.com/blog/trying-emacs comments] on Emacs that I posted earlier, I thought I'd check out how BBEdit is doing lately, seeing as a new version is out (9.1) and that latest I'd seen was 8.7.2.
 
