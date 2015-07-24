@@ -1,6 +1,7 @@
 ---
 title: Software release announcements moving to Twitter
 tags: releases
+cache_breaker: 1
 ---
 
 I'm kind of sad that my blog is mostly just brief announcements of new versions of software projects that I maintain and very little blog-like content, so from here on I think I'm going to hold off posting such announcements here and just tweet instead. I might even find some time to write some real blog-like content again.
