@@ -1,5 +1,6 @@
 ---
 tags: consolas
+cache_breaker: 1
 ---
 I was mortified this evening to discover that after reading [http://www.iterm2.com/#/section/documentation/fonts the "Fonts" section] of the [[iTerm 2]] documentation:
 
