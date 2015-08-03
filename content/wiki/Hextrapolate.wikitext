@@ -1,5 +1,6 @@
 ---
 tags: wincent.products
+cache_breaker: 1
 ---
 [[Hextrapolate]] (formerly known as [[WinHex]]) is a fast and convenient number conversion tool for programmers. It can convert between numbers in [[hexadecimal]] ([[base-16]]), [[decimal]] ([[base-10]]), [[octal]] ([[base-8]]) and [[binary]] ([[base-2]]); in fact it can convert to and from any base at all in the range of [[base-2]] through to [[base-36]].
 
