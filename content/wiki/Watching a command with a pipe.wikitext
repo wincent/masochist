@@ -1,5 +1,6 @@
 ---
 tags: watch
+cache_breaker: 1
 ---
 Ideally you'd express the command as a single invocation with options to do what you want, but if you must use a pipe, enclose the whole thing in quotes; eg:
 
