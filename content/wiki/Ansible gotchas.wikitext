@@ -1,0 +1,31 @@
+---
+tags: ansible
+---
+= Adding a `changed_when` to a script means that non-zero exit codes are not considered a failure =
+
+You need to add an explicit `failed_when` as well:
+
+<pre>- name: mysql | upgrade database
+  script: upgrade-mysql.sh
+  register: result
+  changed_when: '"no change" not in result.stdout'
+  failed_when: 'result.rc != 0'
+  sudo: yes
+  notify: mysql | restart</pre>
+
+= Role dependencies may run multiple times =
+
+Force them to run once only with an explicit `set_fact` guard clause:
+
+<pre>---
+# Make sure we only run once, even when multiple roles depend on us.
+- include: base.yml
+  when: git_repo_role_done is not defined
+
+- set_fact: git_repo_role_done=true</pre>
+
+= `sudo`, `become_user` and friends may not work with the `script` module =
+
+Reported [https://github.com/ansible/ansible/issues/11902 here].
+
+For now, the workaround is to inline your `sudo` calls inside the scripts.
