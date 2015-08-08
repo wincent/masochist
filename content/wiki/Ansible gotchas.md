@@ -1,5 +1,6 @@
 ---
 tags: ansible
+cache_breaker: 1
 ---
 
 # Adding a `changed_when` to a script means that non-zero exit codes are not considered a failure
