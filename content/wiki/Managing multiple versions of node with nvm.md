@@ -1,5 +1,6 @@
 ---
 tags: javascript nvm node
+cache_breaker: 1
 ---
 
 On [OS X](/wiki/OS_X), use [Homebrew](/wiki/Homebrew) to get [nvm](/wiki/nvm):
