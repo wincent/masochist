@@ -1,5 +1,6 @@
 ---
 tags: dvorak colemak workman minimak asset norman
+cache_breaker: 1
 ---
 On several occasions I've toyed with the idea of learning a new keyboard layout — first, out of an interest for speed; and second, out of a desire to reduce wrist pain and the risk of RSI as I grow older — but each time the fear that learning how to be productive in Vim with the new layout (especially with the `h`/`j`/`k`/`l` keys, which are remembered positionally rather than mnemonically) has held me back.
 
