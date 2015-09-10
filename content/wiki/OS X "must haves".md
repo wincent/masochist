@@ -1,5 +1,6 @@
 ---
 tags: os.x
+cache_breaker: 1
 ---
 
 This is a list of software which I consider to be pretty much a "must have" on any Mac I own. I'm not mentioning here command-line apps like [Git](/wiki/Git), [tmux](/wiki/tmux) and [Vim](/wiki/Vim) — which I also consider to be essential — but am instead confining myself to [GUI](/wiki/GUI) apps only.
