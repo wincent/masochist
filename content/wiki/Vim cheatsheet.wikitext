@@ -1,5 +1,6 @@
 ---
 tags: vim
+cache_breaker: 1
 ---
 I'll eventually publish a more comprehensive listing, but for now I just want to make some notes of commands that I discover and don't want to forget.
 
