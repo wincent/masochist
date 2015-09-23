@@ -1,0 +1,30 @@
+---
+title: Site updates 0.160 to 0.165
+tags: site updates
+---
+2c4e2c7 Import new static dump of forum code
+dae16a4 Revert "Revert removal of forum code" and friends
+fe9f6b2 Hack around link_to_user breakage on forum pages
+2f5ec1e Provide titles for static forum content
+50552a3 Revert removal of forum code
+739985b Fix up comment permalinks on static pages
+e90a02f 404 for comment links related to deleted classes
+55ca7d6 Fix a syntax error
+dd71697 Obliterate all traces of dynamic forums
+0e129c8 Add static mirror of forums/
+14b7ae6 Remove more code that should have been removed
+7a2e9eb Update bundle
+f8fff20 Remove a couple more irrelevant/dead references to topics
+ce9b2aa Remove forums link from navbar
+ee276dc Fix some failing specs
+c663c8d Prepare to make forum pages stati
+7533c99 Remove pagination from forum topics listing
+f89ae3c Mostly make forums read only
+4a13313 Obliterate all traces of full-text search
+a6fc24e Redirect /search to Google
+43b9f16 Fix navbar selection highlighting for IssuesController
+cab2593 Purge support copy from links
+0568e66 Do a 301 redirect for /support requests
+7805332 Remove links to support overview
+94a6bcc Remove SupportController and related code
+825474b Make /support point at issues#index
