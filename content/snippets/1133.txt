@@ -1,0 +1,20 @@
+---
+title: Site updates 0.166 and 0.167
+tags: site updates
+---
+5c36730 Remove repo browser
+cb74b8c Remove Word model
+d96c713 Kill off monitorships
+e3cb251 Kill off attachments
+fd0d4af fixup! Kill off monitorships
+e4c8f8b Mostly make issues (and partly comments) reat-only
+c5be75a Get rid of all traces of React scratch directory
+623284e Fix an innocuous typo
+9d42b08 Make issues pages more suitable for static mirroring
+df6cdea Remove dynamic elements from layout unconditionally
+75a8c24 Rip out new user creation, resets, confirmations
+ed68573 More dead code removal and streamlining
+62b0764 Replace TweetsController with router logic
+9fc7dc2 Remove straggling reference to Git module
+1ebaca3 Update bundle
+52f261a Remove more dead code
