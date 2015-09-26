@@ -1,36 +1,47 @@
+var Promise = require('bluebird');
 var express = require('express');
 var http = require('http');
 
 var app = express();
 
-app.get('/', function(request, response) {
-  var wikitext = http.request(
-    {
-      hostname: 'localhost',
-      port: 8080,
-      path: '/wikitext',
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Wikitext-Corpus-Digest': 'foo',
-      },
-    },
-    function(r) {
-      r.setEncoding('utf8');
-      r.on('data', function(chunk) {
-        console.log('BODY: ' + chunk);
-        response.send(chunk);
+function wikify(objects) {
+  return new Promise(
+    function(resolve, reject) {
+      var request = http.request(
+        {
+          hostname: 'localhost',
+          port: 8080,
+          path: '/wikitext',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Wikitext-Corpus-Digest': 'foo',
+          },
+        },
+        function(response) {
+          var chunks = [];
+          response.setEncoding('utf8');
+          response.on('data', function(chunk) {
+            chunks.push(chunk);
+          });
+          response.on('end', function() {
+            resolve(chunks.join());
+          })
+        }
+      );
+      request.on('error', function(error) {
+        reject(error);
       });
-      r.on('end', function() {
-        console.log('No more data in response.')
-      })
-    }
-  );
-  wikitext.write(JSON.stringify([
-    {wikitext: '= What ='},
-  ]));
-  wikitext.end();
+      request.write(JSON.stringify(objects));
+      request.end();
+    });
+}
 
+app.get('/', function(request, response) {
+  wikify([{wikitext: '= What ='}])
+    .then(function(result) {
+      response.send(JSON.stringify(result));
+    });
 });
 
 var server = app.listen(3000, function() {

@@ -9,6 +9,7 @@
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "2.10.1",
     "express": "4.13.3"
   }
 }
