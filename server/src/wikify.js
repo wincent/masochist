@@ -1,10 +1,28 @@
+/**
+ * @flow
+ */
+
 'use strict';
 
 import Promise from 'bluebird';
 import http from 'http';
 
-// TODO: flow types
-export default function wikify(objects) {
+type WikiRequest = {
+  wikitext: string;
+  autolink?: boolean;
+  baseHeadingLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  externalLinkClass?: string;
+  externalLinkRel?: string;
+  imgPrefix?: string;
+  internalLinkPrefix?: string;
+  lineEnding?: string;
+  mailtoClass?: string;
+  minimumFulltextTokenLength?: number;
+  outputStyle?: 'html' | 'xml';
+  spaceToUnderscore?: boolean;
+};
+
+export default function wikify(objects: Array<WikiRequest>) {
   return new Promise(
     (resolve, reject) => {
       // TODO: make this configurable, maybe
