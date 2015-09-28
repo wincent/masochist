@@ -3,13 +3,40 @@
   "version": "0.0.1",
   "description": "Masochist server",
   "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wincent/masochist.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Greg Hurrell <greg@hurrell.net>",
+  "author": {
+    "name": "Greg Hurrell",
+    "email": "greg@hurrell.net",
+    "url": "https://github.com/wincent"
+  },
   "license": "MIT",
+  "devEngines": {
+    "node": ">= 4.x",
+    "npm": ">= 2.x"
+  },
   "dependencies": {
+    "babel-core": "5.8.25",
     "bluebird": "2.10.1",
-    "express": "4.13.3"
+    "express": "4.13.3",
+    "graphql": "0.4.4"
+  },
+  "devDependencies": {
+    "babel": "5.8.23",
+    "babel-eslint": "4.1.3",
+    "expect": "1.11.1",
+    "gulp": "3.9.0",
+    "gulp-babel": "5.2.1",
+    "gulp-eslint": "1.0.0",
+    "gulp-flowtype": "0.4.8",
+    "gulp-spawn-mocha": "2.2.1",
+    "gulp-util": "3.0.6",
+    "mocha": "2.3.3",
+    "sinon": "1.17.1"
   }
 }
