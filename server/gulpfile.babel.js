@@ -1,7 +1,7 @@
 import babel from 'gulp-babel';
 import eslint from 'gulp-eslint';
-import flow from 'gulp-flowtype';
 import gulp from 'gulp';
+import shell from 'gulp-shell';
 import gutil from 'gulp-util';
 import mocha from 'gulp-spawn-mocha';
 
@@ -54,14 +54,7 @@ gulp.task('lint', () => (
     .pipe(eslint.format())
 ));
 
-gulp.task('typecheck', () => {
-  return gulp.src('src/**/*.js', {read: false})
-    .pipe(gutil.noop());
-
-  // TODO: enable this once Flow groks ES2015/ES2016 features.
-  return gulp.src('src/**/*.js')
-    .pipe(wrap(flow()))
-});
+gulp.task('typecheck', shell.task(['flow check src']));
 
 gulp.task('test', () => (
   gulp.src(
