@@ -3,13 +3,16 @@
 import 'babel/polyfill';
 
 import App from './components/App';
-import AppHomeRoute from './routes/AppHomeRoute';
+import AppQueries from './routes/AppQueries';
+import {createHistory} from 'history';
+import {Route, Router} from 'react-router';
+import ReactRouterRelay from 'react-router-relay';
 
-// TODO actually use router
+const history = createHistory();
+
 ReactDOM.render(
-  <Relay.RootContainer
-    Component={App}
-    route={new AppHomeRoute()}
-  />,
+  <Router history={history} createElement={ReactRouterRelay.createElement}>
+    <Route path="/" component={App} queries={AppQueries} />
+  </Router>,
   document.getElementById('relay-root')
 );

@@ -9,9 +9,7 @@ import path from 'path';
 const app = express();
 
 // curl /
-app.get('/', (request, response) => {
-  response.send('root');
-});
+app.use('/', express.static(path.join(__dirname, '..', 'public', 'index.html')));
 
 // curl 'localhost:3000/graphql?query=query+Query\{hello\}'
 app.use('/graphql', graphqlHTTP(request => ({schema})));
