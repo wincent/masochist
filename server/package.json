@@ -15,7 +15,8 @@
     "email": "greg@hurrell.net",
     "url": "https://github.com/wincent"
   },
-  "license": "MIT",
+  "license": "CC-BY-NC-SA-4.0",
+  "private": true,
   "devEngines": {
     "node": ">= 4.x",
     "npm": ">= 2.x"
