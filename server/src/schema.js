@@ -7,15 +7,47 @@ import {
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
+import {
+  fromGlobalId,
+  nodeDefinitions,
+  globalIdField,
+} from 'graphql-relay';
 import mysql from 'mysql';
 import wikify from './wikify';
 
 const {host, user, password} = config.db;
 
+const {nodeField, nodeInterface} = nodeDefinitions(
+  function resolveObjectFromID(globalId) {
+    const {type, id} = fromGlobalId(globalId);
+    return null;
+  },
+  function resolveGraphQLTypeFromObject(object) {
+    return null;
+  },
+);
+
+const userType = new GraphQLObjectType({
+  name: 'User',
+  description: 'A person who uses the application',
+  fields: () => ({
+    id: globalIdField('User'),
+    name: {
+      type: GraphQLString,
+      description: "The user's name",
+    },
+  }),
+});
+
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
+      node: nodeField,
+      viewer: {
+        type: userType,
+        resolve: () => ({name: 'Greg'}),
+      },
       hello: {
         type: GraphQLString,
         resolve() {

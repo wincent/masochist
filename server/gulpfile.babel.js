@@ -1,9 +1,11 @@
+import productionConfig from './webpack.production.config.js';
 import babel from 'gulp-babel';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
 import shell from 'gulp-shell';
 import gutil from 'gulp-util';
 import mocha from 'gulp-spawn-mocha';
+import webpack from 'webpack';
 
 let watching = false;
 
@@ -36,12 +38,27 @@ function wrap(stream) {
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['js']);
+gulp.task('build', ['js', 'webpack:build']);
 
 gulp.task('flow', ['typecheck']);
 
 gulp.task('js', ['babel', 'lint', 'test', 'typecheck']);
 
+gulp.task('webpack:build', callback => {
+  webpack(productionConfig, (error, stats) => {
+    if (error) {
+      ringBell();
+      throw new gutil.PluginError('webpack:build', error);
+    }
+    if (stats.compilation.errors) {
+      ringBell();
+    }
+    if (!watching) {
+      gutil.log('[webpack:build]', stats.toString({colors: true}));
+    }
+    callback();
+  });
+});
 gulp.task('babel', () => (
   gulp.src('src/**/*.js')
     .pipe(wrap(babel()))

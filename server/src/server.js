@@ -1,12 +1,10 @@
 'use strict';
 
+import schema from './schema';
 import Promise from 'bluebird';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
-
-// Non-Relay demo.
-import schema from './schema';
 
 const app = express();
 
@@ -18,6 +16,7 @@ app.get('/', (request, response) => {
 // curl 'localhost:3000/graphql?query=query+Query\{hello\}'
 app.use('/graphql', graphqlHTTP(request => ({schema})));
 
+// nginx normally handles this, but as a fallback for development:
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
 const server = app.listen(3000, () => {
