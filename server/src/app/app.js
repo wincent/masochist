@@ -7,6 +7,8 @@ import AppQueries from './routes/AppQueries';
 import {createHistory} from 'history';
 import {Route, Router} from 'react-router';
 import ReactRouterRelay from 'react-router-relay';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 const history = createHistory();
 

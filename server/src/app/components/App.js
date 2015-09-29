@@ -1,5 +1,8 @@
 'use strict';
 
+import React from 'react';
+import Relay from 'react-relay';
+
 import './App.css';
 
 class App extends React.Component {
