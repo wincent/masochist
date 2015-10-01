@@ -4,7 +4,7 @@ require 'fileutils'
 require 'pathname'
 require 'shellwords'
 
-ROOT = Pathname.new(__dir__)
+ROOT = Pathname.new(__dir__) + 'content'
 
 Update = Struct.new(:model, :created_at)
 
