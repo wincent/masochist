@@ -1,0 +1,12 @@
+---
+tags: node el.capitan os.x git javascript
+---
+My first naive attempt at this (`npm install --save nodegit`) didn't work, so I had to install the Xcode "Command Line Tools" first:
+
+<pre lang="shell">$ xcode-select --install</pre>
+
+After that, a simple `npm install --save nodegit` worked.
+
+= See also =
+
+* [https://github.com/nodegit/nodegit/issues/728 nodegit #728]: "Error configuring libssh2 - cannot find OpenSSL or Libgcrypt".
