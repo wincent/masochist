@@ -4,6 +4,165 @@ tags: involuntary.reboot.log
 ---
 First [[kernel panic]] under [[El Capitan]], and first one since I switched shells on this machine (there were 17 failures in the old shell, but I am resetting the counter).
 
+Nothing immediately suspicious in the "System Diagnostic Report":
+
+<pre>Anonymous UUID:       9B3DC31E-BA89-BFA0-7C50-7390DC89253D
+
+Fri Oct  2 14:41:29 2015
+
+*** Panic Report ***
+panic(cpu 0 caller 0xffffff80003d6a9a): Kernel trap at 0xffffff800010e16d, type 14=page fault, registers:
+CR0: 0x0000000080010033, CR2: 0xffffff826d22a3d0, CR3: 0x000000023ee7d109, CR4: 0x00000000001627e0
+RAX: 0x0000000001800000, RBX: 0x000000000000007c, RCX: 0x0000000000000000, RDX: 0xffffff80d16a0000
+RSP: 0xffffff910b47bbc0, RBP: 0xffffff910b47bc30, RSI: 0xfffffe98aac69000, RDI: 0xffffff826d22a3d0
+R8:  0x0000000000000001, R9:  0xffffff910b47be28, R10: 0x00000001092230f8, R11: 0x0000000000000000
+R12: 0xffffff8017d62000, R13: 0xfffffe98aac69000, R14: 0x0000000000000000, R15: 0x0000000000000000
+RFL: 0x0000000000010286, RIP: 0xffffff800010e16d, CS:  0x0000000000000008, SS:  0x0000000000000000
+Fault CR2: 0xffffff826d22a3d0, Error code: 0x0000000000000000, Fault CPU: 0x0, PL: 1
+
+Backtrace (CPU 0), Frame : Return Address
+0xffffff910b47b850 : 0xffffff80002e5357 
+0xffffff910b47b8d0 : 0xffffff80003d6a9a 
+0xffffff910b47bab0 : 0xffffff80003f4093 
+0xffffff910b47bad0 : 0xffffff800010e16d 
+0xffffff910b47bc30 : 0xffffff800034b27f 
+0xffffff910b47bc90 : 0xffffff8000349c17 
+0xffffff910b47bcd0 : 0xffffff800034c2bb 
+0xffffff910b47bd00 : 0xffffff80003568d7 
+0xffffff910b47bf20 : 0xffffff80003d708f 
+0xffffff910b47bfb0 : 0xffffff80003f3fa5 
+
+BSD process name corresponding to current thread: Google Chrome He
+
+Mac OS version:
+15A284
+
+Kernel version:
+Darwin Kernel Version 15.0.0: Wed Aug 26 16:57:32 PDT 2015; root:xnu-3247.1.106~1/RELEASE_X86_64
+Kernel UUID: 37BC582F-8BF4-3F65-AFBB-ECF792060C68
+__HIB  text base: 0xffffff8000100000
+System model name: MacBookAir6,2 (Mac-7DF21CB3ED6977E5)
+
+System uptime in nanoseconds: 26034121961985
+last loaded kext at 21192923506151: com.apple.driver.AppleXsanScheme	3 (addr 0xffffff7f82f41000, size 32768)
+last unloaded kext at 22625377303343: com.apple.driver.IOBluetoothHIDDriver	4.4.0f4 (addr 0xffffff7f82d71000, size 73728)
+loaded kexts:
+com.carbonblack.CbOsxSensorNetmon	402.2.17
+com.carbonblack.CbOsxSensorProcmon	402.2.17
+org.pqrs.driver.Karabiner	10.9.0
+com.apple.driver.AudioAUUC	1.70
+com.apple.driver.AGPM	110.20.19
+com.apple.driver.ApplePlatformEnabler	2.5.1d0
+com.apple.driver.X86PlatformShim	1.0.0
+com.apple.filesystems.autofs	3.0
+com.apple.driver.AppleHDA	272.50
+com.apple.driver.AppleUpstreamUserClient	3.6.1
+com.apple.driver.AppleOSXWatchdog	1
+com.apple.driver.pmtelemetry	1
+com.apple.driver.AppleLPC	3.1
+com.apple.driver.AppleSMCLMU	208
+com.apple.driver.AppleIntelHD5000Graphics	10.0.8
+com.apple.iokit.IOUserEthernet	1.0.1
+com.apple.driver.AppleCameraInterface	5.41.0
+com.apple.driver.AppleBacklight	170.8.1
+com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport	4.4.0f4
+com.apple.iokit.IOBluetoothSerialManager	4.4.0f4
+com.apple.Dont_Steal_Mac_OS_X	7.0.0
+com.apple.driver.AppleHV	1
+com.apple.driver.AppleIntelSlowAdaptiveClocking	4.0.0
+com.apple.driver.AppleThunderboltIP	3.0.8
+com.apple.driver.AppleMCCSControl	1.2.13
+com.apple.driver.AppleIntelFramebufferAzul	10.0.8
+com.apple.driver.AppleUSBCardReader	3.7.1
+com.apple.driver.AppleTopCaseHIDEventDriver	81.2
+com.apple.AppleFSCompression.AppleFSCompressionTypeDataless	1.0.0d1
+com.apple.AppleFSCompression.AppleFSCompressionTypeZlib	1.0.0
+com.apple.BootCache	37
+com.apple.iokit.IOAHCIBlockStorage	2.8.0
+com.apple.driver.AppleAHCIPort	3.1.5
+com.apple.driver.AirPort.Brcm4360	1000.13.1a3
+com.apple.driver.AppleRTC	2.0
+com.apple.driver.AppleSmartBatteryManager	161.0.0
+com.apple.driver.AppleACPIButtons	4.0
+com.apple.driver.AppleHPET	1.8
+com.apple.driver.AppleSMBIOS	2.1
+com.apple.driver.AppleACPIEC	4.0
+com.apple.driver.AppleAPIC	1.7
+com.apple.nke.applicationfirewall	163
+com.apple.security.quarantine	3
+com.apple.security.TMSafetyNet	8
+com.apple.kext.triggers	1.0
+com.apple.driver.DspFuncLib	272.50
+com.apple.kext.OSvKernDSPLib	525
+com.apple.driver.AppleHDAController	272.50
+com.apple.iokit.IOHDAFamily	272.50
+com.apple.iokit.IOAudioFamily	203.8
+com.apple.vecLib.kext	1.2.0
+com.apple.driver.X86PlatformPlugin	1.0.0
+com.apple.driver.IOPlatformPluginFamily	6.0.0d7
+com.apple.driver.AppleBacklightExpert	1.1.0
+com.apple.iokit.IONDRVSupport	2.4.1
+com.apple.iokit.IOBluetoothHostControllerUSBTransport	4.4.0f4
+com.apple.iokit.IOSurface	108.0.1
+com.apple.iokit.IOSerialFamily	11
+com.apple.iokit.IOBluetoothFamily	4.4.0f4
+com.apple.driver.CoreCaptureResponder	1
+com.apple.iokit.IOSlowAdaptiveClockingFamily	1.0.0
+com.apple.driver.AppleSMC	3.1.9
+com.apple.driver.AppleSMBusController	1.0.14d1
+com.apple.AppleGraphicsDeviceControl	3.11.31
+com.apple.iokit.IOAcceleratorFamily2	203.7.1
+com.apple.iokit.IOGraphicsFamily	2.4.1
+com.apple.iokit.IOSCSIBlockCommandsDevice	3.7.7
+com.apple.iokit.IOUSBMassStorageDriver	1.0.0
+com.apple.iokit.IOSCSIArchitectureModelFamily	3.7.7
+com.apple.driver.usb.IOUSBHostHIDDevice	1.0.1
+com.apple.driver.usb.AppleUSBHostCompositeDevice	1.0.1
+com.apple.driver.usb.AppleUSBHub	1.0.1
+com.apple.driver.AppleMultitouchDriver	304.9
+com.apple.driver.AppleHIDTransport	5
+com.apple.driver.CoreStorage	517
+com.apple.driver.AppleHIDKeyboard	181
+com.apple.driver.AppleHSSPIHIDDriver	41.6
+com.apple.iokit.IOAHCIFamily	2.8.0
+com.apple.driver.AppleThunderboltDPInAdapter	4.1.2
+com.apple.driver.AppleThunderboltDPAdapterFamily	4.1.2
+com.apple.driver.AppleThunderboltPCIDownAdapter	2.0.2
+com.apple.driver.AppleThunderboltNHI	4.0.1
+com.apple.iokit.IOThunderboltFamily	5.0.6
+com.apple.iokit.IO80211Family	1100.23
+com.apple.driver.mDNSOffloadUserClient	1.0.1b8
+com.apple.iokit.IONetworkingFamily	3.2
+com.apple.driver.corecapture	1.0.4
+com.apple.driver.AppleHSSPISupport	41.6
+com.apple.driver.AppleIntelLpssSpiController	2.0.57
+com.apple.driver.AppleIntelLpssGspi	2.0.57
+com.apple.driver.AppleIntelLpssDmac	2.0.57
+com.apple.driver.usb.AppleUSBXHCIPCI	1.0.1
+com.apple.driver.usb.AppleUSBXHCI	1.0.1
+com.apple.iokit.IOUSBFamily	900.4.1
+com.apple.iokit.IOUSBHostFamily	1.0.1
+com.apple.driver.AppleUSBHostMergeProperties	1.0.1
+com.apple.driver.AppleEFINVRAM	2.0
+com.apple.driver.AppleEFIRuntime	2.0
+com.apple.iokit.IOHIDFamily	2.0.0
+com.apple.iokit.IOSMBusFamily	1.1
+com.apple.security.sandbox	300.0
+com.apple.kext.AppleMatch	1.0.0d1
+com.apple.driver.AppleKeyStore	2
+com.apple.driver.AppleMobileFileIntegrity	1.0.5
+com.apple.driver.AppleCredentialManager	1.0
+com.apple.driver.DiskImages	414
+com.apple.iokit.IOStorageFamily	2.1
+com.apple.iokit.IOReportFamily	31
+com.apple.driver.AppleFDEKeyStore	28.30
+com.apple.driver.AppleACPIPlatform	4.0
+com.apple.iokit.IOPCIFamily	2.9
+com.apple.iokit.IOACPIFamily	1.4
+com.apple.kec.Libm	1
+com.apple.kec.pthread	1
+com.apple.kec.corecrypto	1.0</pre>
+
 = Statistics so far =
 
 * Failure type: [[kernel panic]]
