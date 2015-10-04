@@ -10,6 +10,7 @@ import nodegit from 'nodegit';
 import path from 'path';
 import process from 'process';
 import {Extensions} from './Markup';
+import Cache from './Cache';
 import git from './git';
 
 async function loadArticle(key): Promise {
@@ -39,35 +40,49 @@ async function loadArticle(key): Promise {
 
   const blob = await treeEntry.getBlob();
 
-  // This is committer time, which is appropriate for articles (where recency of
-  // update matters). For posts, creation order matters, so we'll go with
-  // topological search (which workes because I imported old content in-order)
-  // and we'll get creation date from the author date.
-  const revs = await git(
-    'rev-list',
-    '--date-order',
-    'content',
-    '--',
-    path.relative(
-      path.resolve(process.cwd()),
-      path.resolve(__dirname, '..', '..', 'content', 'wiki', `${key}.${extension}`),
-    ),
+  const metadata = await Cache.get(
+    // TODO: better keys here
+    // can't have spaces, likely want globalId
+    'Article:' + head.sha() + ':' + treeEntry.sha() + ':metadata',
+    async cacheKey => {
+      // This is committer time, which is appropriate for articles (where recency of
+      // update matters). For posts, creation order matters, so we'll go with
+      // topological search (which workes because I imported old content in-order)
+      // and we'll get creation date from the author date.
+      const revs = await git(
+        'rev-list',
+        '--date-order',
+        'content',
+        '--',
+        path.relative(
+          path.resolve(process.cwd()),
+          path.resolve(__dirname, '..', '..', 'content', 'wiki', `${key}.${extension}`),
+        ),
+      );
+      const mostRecent = revs.slice(0, 40);
+      const oldest = revs.trim().slice(-40);
+
+      return {
+        createdAt: oldest ?
+          // Author date of earliest.
+          new Date((await repo.getCommit(oldest)).author().when().time() * 1000) :
+          null,
+        updatedAt: mostRecent ?
+          // Commit date of latest.
+          (await repo.getCommit(mostRecent)).date() :
+          null,
+      };
+    }
   );
-  const mostRecent = revs.slice(0, 40);
-  const oldest = revs.trim().slice(-40);
 
   return Promise.resolve({
     id: key,
     title: key,
     body: blob.toString(),
-    createdAt: oldest ?
-      // Author date of earliest.
-      new Date((await repo.getCommit(oldest)).author().when().time() * 1000) :
-      null,
-    updatedAt: mostRecent ?
-      // Commit date of latest.
-      (await repo.getCommit(mostRecent)).date() :
-      null,
+    // Need to handle real Date objects (cache miss), or stringified dates (read
+    // from memcached).
+    createdAt: metadata.createdAt ? new Date(metadata.createdAt) : null,
+    updatedAt: metadata.updatedAt ? new Date(metadata.updatedAt) : null,
   });
 }
 
