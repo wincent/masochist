@@ -4,7 +4,7 @@
 
 import 'babel-core/polyfill';
 
-import schema from '../schema';
+import schema from '../server/schema';
 import Promise from 'bluebird';
 import fs from 'fs';
 import {graphql} from 'graphql';
