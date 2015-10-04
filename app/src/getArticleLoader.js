@@ -42,7 +42,7 @@ async function loadArticle(key): Promise {
   const blob = await treeEntry.getBlob();
 
   const metadata = await Cache.get(
-    toGlobalId('Article', key) + ':metadata',
+    toGlobalId('Article', key) + ':' + head.sha() + ':metadata',
     async cacheKey => {
       // This is committer time, which is appropriate for articles (where recency of
       // update matters). For posts, creation order matters, so we'll go with
