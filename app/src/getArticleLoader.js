@@ -9,6 +9,7 @@ import DataLoader from 'dataloader';
 import nodegit from 'nodegit';
 import path from 'path';
 import process from 'process';
+import {toGlobalId} from 'graphql-relay';
 import {Extensions} from './Markup';
 import Cache from './Cache';
 import git from './git';
@@ -41,9 +42,7 @@ async function loadArticle(key): Promise {
   const blob = await treeEntry.getBlob();
 
   const metadata = await Cache.get(
-    // TODO: better keys here
-    // can't have spaces, likely want globalId
-    'Article:' + head.sha() + ':' + treeEntry.sha() + ':metadata',
+    toGlobalId('Article', key) + ':metadata',
     async cacheKey => {
       // This is committer time, which is appropriate for articles (where recency of
       // update matters). For posts, creation order matters, so we'll go with
