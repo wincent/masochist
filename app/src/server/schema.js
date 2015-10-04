@@ -2,6 +2,7 @@
 
 import Promise from 'bluebird';
 import {
+  GraphQLList,
   GraphQLObjectType,
   GraphQLScalarType,
   GraphQLSchema,
@@ -16,20 +17,19 @@ import {
   nodeDefinitions,
   globalIdField,
 } from 'graphql-relay';
+import Article from './Article';
 import wikify from './wikify';
 
 class User {}
-class Article {}
 
 const {nodeField, nodeInterface} = nodeDefinitions(
-  function resolveObjectFromID(globalId) {
+  function resolveObjectFromID(globalId, {rootValue}) {
     const {type, id} = fromGlobalId(globalId);
     if (type === 'User') {
       // TODO: change this, obviously
       return {name: 'Greg'};
     } else if (type === 'Article') {
-      // TODO: plug-in article loader here
-      return {id: globalId, title: 'yep'};
+      return rootValue.loaders.articleLoader.load(id);
     } else {
       return null;
     }
@@ -73,6 +73,16 @@ const DateTime = new GraphQLScalarType({
     }
     return date;
   },
+});
+
+const tagType = new GraphQLScalarType({
+  name: 'Tag',
+  description: 'A tag',
+  serialize: String,
+  parseValue: String,
+  parseLiteral(ast) {
+    return ast.kind === Kind.STRING ? ast.value : null;
+  }
 });
 
 const userType = new GraphQLObjectType({
@@ -124,6 +134,13 @@ const articleType = new GraphQLObjectType({
       description: 'Date and time when article was last updated',
       resolve(article) {
         return article.updatedAt;
+      },
+    },
+    tags: {
+      // TODO: make this tags{name}
+      type: new GraphQLList(tagType),
+      resolve(article) {
+        return article.tags;
       },
     },
   }),
