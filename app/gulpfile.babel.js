@@ -42,7 +42,7 @@ gulp.task('build', ['js', 'webpack:build']);
 
 gulp.task('flow', ['typecheck']);
 
-gulp.task('js', ['babel', 'lint', 'test', 'typecheck']);
+gulp.task('js', ['babel', 'lint', 'test'/*, 'typecheck'*/]);
 
 gulp.task('webpack:build', callback => {
   webpack(productionConfig, (error, stats) => {

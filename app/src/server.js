@@ -1,5 +1,10 @@
 'use strict';
 
+// BUG: I shouldn't have to do this.
+import 'babel-runtime/regenerator/runtime';
+
+import getArticleLoader from './getArticleLoader';
+import getSnippetLoader from './getSnippetLoader';
 import schema from './schema';
 import Promise from 'bluebird';
 import express from 'express';
@@ -14,7 +19,21 @@ const app = express();
 app.use('/', express.static(path.join(__dirname, '..', 'public', 'index.html')));
 
 // curl 'localhost:3000/graphql?query=query+Query\{hello\}'
-app.use('/graphql', graphqlHTTP(request => ({schema})));
+app.use('/graphql', (request, response, next) => {
+  const options = {
+    rootValue: {
+      loaders: {
+        articleLoader: getArticleLoader(),
+        // postLoader: new DataLoader(ids => []),
+        snippetLoader: getSnippetLoader(),
+      },
+    },
+    graphiql: !!'prod', // TODO: replace with actual test
+    schema,
+  };
+
+  return graphqlHTTP(request => options)(request, response, next);
+});
 
 // nginx normally handles this, but as a fallback for development:
 app.use(express.static(path.join(__dirname, '..', 'public')));
