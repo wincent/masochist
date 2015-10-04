@@ -15,7 +15,7 @@ import Cache from './Cache';
 import git from './git';
 
 async function loadArticle(key): Promise {
-  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../.git'));
+  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
   const head = await repo.getReferenceCommit('content');
   const tree = await head.getTree();
 
@@ -55,7 +55,7 @@ async function loadArticle(key): Promise {
         '--',
         path.relative(
           path.resolve(process.cwd()),
-          path.resolve(__dirname, '..', '..', 'content', 'wiki', `${key}.${extension}`),
+          path.resolve(__dirname, '..', '..', '..', 'content', 'wiki', `${key}.${extension}`),
         ),
       );
       const mostRecent = revs.slice(0, 40);

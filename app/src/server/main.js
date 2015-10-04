@@ -16,7 +16,7 @@ const APP_PORT = 3000;
 const app = express();
 
 // curl /
-app.use('/', express.static(path.join(__dirname, '..', 'public', 'index.html')));
+app.use('/', express.static(path.join(__dirname, '..', '..', 'public', 'index.html')));
 
 // curl 'localhost:3000/graphql?query=query+Query\{hello\}'
 app.use('/graphql', (request, response, next) => {
@@ -36,7 +36,7 @@ app.use('/graphql', (request, response, next) => {
 });
 
 // nginx normally handles this, but as a fallback for development:
-app.use(express.static(path.join(__dirname, '..', 'public')));
+app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 const server = app.listen(APP_PORT, () => {
   console.log('Listening at http://localhost:%s', APP_PORT);

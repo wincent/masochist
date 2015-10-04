@@ -2,5 +2,5 @@
 
 ```
 npm install
-node server.js
+node dist/server/main.js
 ```

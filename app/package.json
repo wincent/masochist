@@ -2,7 +2,7 @@
   "name": "server",
   "version": "0.0.1",
   "description": "Masochist server",
-  "main": "server.js",
+  "main": "dist/server/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/wincent/masochist.git"
