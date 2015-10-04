@@ -101,7 +101,7 @@ content.each do |model|
         headers['redirect'] = model.redirect
         f.puts format_headers(headers)
       else
-        headers['tag_names'] = get_tag_names(model)
+        headers['tags'] = get_tag_names(model)
         f.puts format_headers(headers)
         f.puts sanitize(model.body)
       end
