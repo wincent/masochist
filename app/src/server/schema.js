@@ -3,6 +3,7 @@
 import Promise from 'bluebird';
 import {
   GraphQLList,
+  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLScalarType,
   GraphQLSchema,
@@ -115,8 +116,7 @@ const markupType = new GraphQLObjectType({
   description: 'The textual markup for a piece of content',
   fields: () => ({
     raw: {
-      // TODO: make this non-null
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'Unprocessed plain-text source of the markup',
       resolve: markup => markup.raw,
     },
@@ -150,7 +150,7 @@ const articleType = new GraphQLObjectType({
   fields: () => ({
     id: globalIdField('Article'),
     title: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: "The article's title",
       resolve(article) {
         return article.title;
