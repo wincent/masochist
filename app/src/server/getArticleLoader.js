@@ -15,6 +15,7 @@ import Cache from './Cache';
 import {Extensions} from './Markup';
 import extractTags from './extractTags';
 import git from './git';
+import stripMetadata from './stripMetadata';
 
 async function loadArticle(title): Promise {
   const id = toGlobalId('Article', title);
@@ -42,8 +43,7 @@ async function loadArticle(title): Promise {
     return Promise.resolve(null);
   }
 
-  const blob = await treeEntry.getBlob();
-  const body = blob.toString();
+  const blob = (await treeEntry.getBlob()).toString();
 
   const metadata = await Cache.get(
     id + ':' + head.sha() + ':metadata',
@@ -64,7 +64,7 @@ async function loadArticle(title): Promise {
       );
       const mostRecent = revs.slice(0, 40);
       const oldest = revs.trim().slice(-40);
-      const tags = extractTags(body);
+      const tags = extractTags(blob);
 
       return {
         createdAt: oldest ?
@@ -77,13 +77,14 @@ async function loadArticle(title): Promise {
           null,
         tags,
       };
+      // BUG: created at is in pst, updated at in pdt (is that right?)
     }
   );
 
   return Promise.resolve(new Article({
     id,
     title,
-    body, // TODO: strip metadata
+    body: stripMetadata(blob),
     // Need to handle real Date objects (cache miss), or stringified dates (read
     // from memcached).
     createdAt: metadata.createdAt ? new Date(metadata.createdAt) : null,
