@@ -44,6 +44,6 @@ function parseHeaders(string: string): Object {
 
 export default function extractTags(blob: string): Array<string> {
   const headers = extractHeaders(blob);
-  const tags = (headers && parseHeaders(headers)['tag_names']) || '';
-  return tags.split(/\s+/);
+  const tags = (headers && parseHeaders(headers)['tags']);
+  return tags ? tags.split(/\s+/) : [];
 }
