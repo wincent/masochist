@@ -2,8 +2,6 @@
  * @flow
  */
 
-'use strict';
-
 export default class Article {
   constructor(values) {
     this.id = values.id;

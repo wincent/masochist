@@ -1,0 +1,9 @@
+{
+  "env": {
+    "node": true
+  },
+  "rules": {
+    // key: 0 = allow, 1 = warn, 2 = error
+    "strict": [2, "global"]
+  }
+}

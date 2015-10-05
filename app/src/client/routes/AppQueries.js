@@ -1,5 +1,3 @@
-'use strict';
-
 import Relay from 'react-relay';
 
 const AppQueries = {

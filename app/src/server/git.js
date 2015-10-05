@@ -2,8 +2,6 @@
  * @flow
  */
 
-'use strict';
-
 import type Promise from 'bluebird';
 import {spawn} from 'child_process';
 

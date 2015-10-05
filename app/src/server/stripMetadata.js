@@ -2,8 +2,6 @@
  * @flow
  */
 
-'use strict';
-
 function measureHeaderLength(blob: string): number {
   // Simple approach would be to split on linebreaks and process line by line,
   // but blob may be quite large, so we make a RegExp-based scanner to avoid the

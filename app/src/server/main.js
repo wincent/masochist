@@ -1,4 +1,4 @@
-'use strict';
+'use strict'; // eslint-disable-line
 
 // BUG: I shouldn't have to do this.
 import 'babel-runtime/regenerator/runtime';

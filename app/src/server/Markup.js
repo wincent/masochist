@@ -2,8 +2,6 @@
  * @flow
  */
 
-'use strict';
-
 export const Extensions = {
   C: 'c',
   HTML: 'html',

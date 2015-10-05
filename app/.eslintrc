@@ -11,6 +11,6 @@
     "no-underscore-dangle": [0],
     "no-use-before-define": [0],
     "quotes": [1, "single", "avoid-escape"],
-    "strict": [2, "global"]
+    "strict": [2, "never"]
   }
 }

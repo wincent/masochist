@@ -2,8 +2,6 @@
  * @flow
  */
 
-'use strict';
-
 // NOTE: this will probably become a separate module, or at least a separate
 // export
 function extractHeaders(blob: string): ?string {

@@ -2,8 +2,6 @@
  * @flow
  */
 
-'use strict';
-
 import Promise from 'bluebird';
 import DataLoader from 'dataloader';
 
