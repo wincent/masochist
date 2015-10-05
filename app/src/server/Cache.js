@@ -21,7 +21,7 @@ const CACHE_VERSION = '1';
  */
 const STARTUP_SEED = Date.now().toString(36);
 
-function getBreaker(): string {
+function getCacheBreaker(): string {
   if (__DEV__) {
     return STARTUP_SEED;
   } else {
@@ -33,7 +33,7 @@ function getBreaker(): string {
 // forever(?))
 const Cache = {
   get(key: string, missCallback: Promise<value, Error>): Promise<value, Error> {
-    key = key + getBreaker();
+    key = key + getCacheBreaker();
 
     return new Promise((resolve, reject) => {
       memcached.get(key, (error, data) => {
