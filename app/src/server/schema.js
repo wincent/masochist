@@ -14,8 +14,8 @@ import {
   connectionDefinitions,
   connectionFromPromisedArray,
   fromGlobalId,
-  nodeDefinitions,
   globalIdField,
+  nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
 import wikify from './wikify';

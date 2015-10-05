@@ -18,7 +18,6 @@ import git from './git';
 import stripMetadata from './stripMetadata';
 
 async function loadArticle(title): Promise {
-  const id = toGlobalId('Article', title);
   const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
   const head = await repo.getReferenceCommit('content');
   const tree = await head.getTree();
@@ -45,8 +44,9 @@ async function loadArticle(title): Promise {
 
   const blob = (await treeEntry.getBlob()).toString();
 
+  const cacheKey = toGlobalId('Article', title) + ':' + head.sha() + ':metadata';
   const metadata = await Cache.get(
-    id + ':' + head.sha() + ':metadata',
+    cacheKey,
     async cacheKey => {
       // This is committer time, which is appropriate for articles (where recency of
       // update matters). For posts, creation order matters, so we'll go with
@@ -82,7 +82,7 @@ async function loadArticle(title): Promise {
   );
 
   return Promise.resolve(new Article({
-    id,
+    id: title,
     title,
     body: stripMetadata(blob),
     format: extension,
