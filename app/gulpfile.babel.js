@@ -76,11 +76,7 @@ gulp.task('babel', () => (
 ));
 
 gulp.task('lint', () => (
-  gulp.src([
-    'src/**/*.js',
-    '!src/**/__tests__/**/*.js',
-    '!src/**/__mocks__/**/*.js',
-  ])
+  gulp.src('src/**/*.js')
     .pipe(eslint())
     .pipe(eslint.format())
 ));
