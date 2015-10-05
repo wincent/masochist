@@ -8,6 +8,7 @@ process.on('unhandledRejection', function(reason, promise) {
 });
 
 global.expect = require('expect');
+global.__DEV__ = true;
 
 require('babel/register')(
   JSON.parse(

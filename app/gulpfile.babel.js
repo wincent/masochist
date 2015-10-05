@@ -1,4 +1,3 @@
-import productionConfig from './webpack.production.config.js';
 import babel from 'gulp-babel';
 import eslint from 'gulp-eslint';
 import gulp from 'gulp';
@@ -6,8 +5,14 @@ import shell from 'gulp-shell';
 import gutil from 'gulp-util';
 import mocha from 'gulp-spawn-mocha';
 import webpack from 'webpack';
+import devBabelPlugin from './babel/devBabelPlugin';
+import productionConfig from './webpack.production.config.js';
 
 let watching = false;
+
+const babelOptions = {
+  plugins: [devBabelPlugin],
+};
 
 /**
  * Ring the terminal bell.
@@ -61,7 +66,7 @@ gulp.task('webpack:build', callback => {
 });
 gulp.task('babel', () => (
   gulp.src('src/**/*.js')
-    .pipe(wrap(babel()))
+    .pipe(wrap(babel(babelOptions)))
     .pipe(gulp.dest('dist'))
 ));
 
