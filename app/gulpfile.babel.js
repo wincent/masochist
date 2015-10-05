@@ -64,14 +64,23 @@ gulp.task('webpack:build', callback => {
     callback();
   });
 });
+
 gulp.task('babel', () => (
-  gulp.src('src/**/*.js')
+  gulp.src([
+    'src/**/*.js',
+    '!src/**/__tests__/**/*.js',
+    '!src/**/__mocks__/**/*.js',
+  ])
     .pipe(wrap(babel(babelOptions)))
     .pipe(gulp.dest('dist'))
 ));
 
 gulp.task('lint', () => (
-  gulp.src('src/**/*.js')
+  gulp.src([
+    'src/**/*.js',
+    '!src/**/__tests__/**/*.js',
+    '!src/**/__mocks__/**/*.js',
+  ])
     .pipe(eslint())
     .pipe(eslint.format())
 ));
