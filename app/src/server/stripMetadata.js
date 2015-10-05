@@ -17,12 +17,10 @@ function measureHeaderLength(blob: string): number {
   }
 
   // Consume lines until hitting header end marker.
-  const start = match[0].length;
   while ((match = regExp.exec(blob))) {
     if (match[1] === '---\n' || match[1] === '---') {
       // Found end marker.
-      const finish = regExp.lastIndex + match[0].length;
-      return finish;
+      return regExp.lastIndex;
     } else if (!match[0].length) {
       // Got all the way to the end of the input without seeing the end marker.
       return 0;

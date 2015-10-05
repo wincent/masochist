@@ -110,6 +110,40 @@ const userType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
+const markupType = new GraphQLObjectType({
+  name: 'Markup',
+  description: 'The textual markup for a piece of content',
+  fields: () => ({
+    raw: {
+      // TODO: make this non-null
+      type: GraphQLString,
+      description: 'Unprocessed plain-text source of the markup',
+      resolve: markup => markup.raw,
+    },
+    format: {
+      // TODO: use an enum for this
+      type: GraphQLString,
+      description: 'The format of the markup source',
+      resolve: markup => markup.format,
+    },
+    html: {
+      type: GraphQLString,
+      description: 'HTML output of transformed markup',
+      resolve(markup) {
+        if (markup.format === 'wikitext') {
+          // TODO: allow variables here do control format (eg base heading level
+          // etc)
+          // TODO: make wikify interface a little more pleasant to use
+          return wikify([{wikitext: markup.raw}])
+            .then(data => JSON.parse(data).results[0]);
+        } else {
+          throw new Error('Unsupported markup format `' + markup.format + '`');
+        }
+      },
+    },
+  }),
+});
+
 const articleType = new GraphQLObjectType({
   name: 'Article',
   description: 'A wiki article',
@@ -143,6 +177,16 @@ const articleType = new GraphQLObjectType({
         return article.tags;
       },
     },
+    body: {
+      type: markupType,
+      resolve(article) {
+        // TODO: handle redirects
+        return {
+          raw: article.body,
+          format: article.format,
+        };
+      },
+    }
   }),
   interfaces: [nodeInterface],
 });
@@ -160,13 +204,6 @@ const schema = new GraphQLSchema({
         // TODO: get actual user
         resolve: () => ({name: 'Greg'}),
       },
-      hello: {
-        type: GraphQLString,
-        resolve() {
-          // Demo only.
-          return wikify([{wikitext: "'''world'''"}]);
-        }
-      }
     }
   })
 });

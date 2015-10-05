@@ -85,6 +85,8 @@ async function loadArticle(title): Promise {
     id,
     title,
     body: stripMetadata(blob),
+    format: extension,
+
     // Need to handle real Date objects (cache miss), or stringified dates (read
     // from memcached).
     createdAt: metadata.createdAt ? new Date(metadata.createdAt) : null,
