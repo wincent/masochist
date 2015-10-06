@@ -22,7 +22,7 @@ process.on('unhandledRejection', reason => {
 });
 
 const KEY_PREFIX = 'masochist';
-const INDEX_HASH = KEY_PREFIX + ':last-indexed-hash';
+const LAST_INDEXED_HASH = KEY_PREFIX + ':last-indexed-hash';
 const ARTICLES_INDEX = KEY_PREFIX + ':articles-index';
 
 function log(format, ...args: Array<string>): void {
@@ -83,7 +83,7 @@ async function getIsAncestor(
   const client = redis.createClient();
   const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
   const head = (await repo.getReferenceCommit('content')).sha();
-  const lastIndexedHash = await client.getAsync(INDEX_HASH);
+  const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
   if (head === lastIndexedHash) {
     console.log('Index already up-to-date at revision %s', head);
     process.exit(0);
@@ -143,7 +143,7 @@ async function getIsAncestor(
     throw new Error('Failed to consume input');
   }
 
-  updates.push(['set', INDEX_HASH, head]);
+  updates.push(['set', LAST_INDEXED_HASH, head]);
   log('Sending index updates to Redis.');
   await client.multi(updates).execAsync();
   log('Finished updating index for revision %s.', head);
