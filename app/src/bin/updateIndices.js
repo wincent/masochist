@@ -2,6 +2,12 @@
 
 /**
  * Intended for use as a post-checkout or perhaps a post-receive hook.
+ *
+ * Builds up indices that can be queried like this:
+ *
+ * ```
+ * redis-cli> zrevrange masochist:articles-index 0 10
+ * ```
  */
 
 'use strict';
