@@ -105,7 +105,7 @@ async function getIsAncestor(
     '\\n[a-f0-9]{40} (\\d{1,10}) (\\d{1,10})\\n|' + // Commit SHA, author date, committer date.
     ':\\d{6} \\d{6} ' + // Modes.
     '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' + // Before/after tree or blob.
-    '([ADM])\0' + // Added, Deleted or Moved.
+    '([ADM])\0' + // Added, Deleted or Modified.
     '([^\0]+)\0\0?', // Path, optional commit terminator.
     'g'
   );
