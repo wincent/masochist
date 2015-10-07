@@ -17,6 +17,7 @@ import {
   nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
+import {getClient} from '../common/redis';
 import wikify from './wikify';
 
 class User {}
@@ -44,6 +45,15 @@ const {nodeField, nodeInterface} = nodeDefinitions(
   },
 );
 
+function unbase64(i) {
+  return ((new Buffer(i, 'base64')).toString('ascii'));
+}
+
+function cursorToOffset(cursor) {
+  const PREFIX = 'arrayconnection:';
+  return parseInt(unbase64(cursor).substring(PREFIX.length), 10);
+}
+
 function coerceDate(value) {
   if (value instanceof Date) {
     // 1. Stringify from object to: '"2015-10-04T00:31:05.300Z"'.
@@ -67,7 +77,7 @@ const DateTime = new GraphQLScalarType({
     if (isNaN(date.getTime())) {
       return null; // Invalid date.
     }
-    if (valueAST.value !== JSON.parse(JSON.stringify(date))) {
+    if (valueAST.value !== coerceDate(date)) {
       return null; // Invalid date format.
     }
     return date;
@@ -97,11 +107,15 @@ const userType = new GraphQLObjectType({
       type: articleConnection,
       description: 'Articles visible to this user',
       args: connectionArgs,
-      resolve: (user, args, {rootValue}) => {
+      resolve: async (user, args, {rootValue}) => {
+        const offset = args.after ? cursorToOffset(args.after) : 0;
+        // TODO make this a static method on Article?
+        const results = await getClient()
+          .zrevrangeAsync('masochist:articles-index', offset, offset + args.first);
+        const paddedResults = new Array(offset).concat(...results);
         return connectionFromPromisedArray(
-          // TODO: plug-in article intex here
-          rootValue.loaders.articleLoader.loadMany(['ABNF', 'OS X "must haves"']),
-          args // eg. first: 10
+          rootValue.loaders.articleLoader.loadMany(paddedResults),
+          args
         );
       },
     },

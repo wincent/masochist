@@ -17,19 +17,18 @@ import 'babel-core/polyfill';
 import Promise from 'bluebird';
 import nodegit from 'nodegit';
 import path from 'path';
-import redis from 'redis';
+import {
+  getKey,
+  getClient,
+} from '../common/redis';
 import git from '../server/git';
-
-Promise.promisifyAll(redis.RedisClient.prototype);
-Promise.promisifyAll(redis.Multi.prototype);
 
 process.on('unhandledRejection', reason => {
   throw reason;
 });
 
-const KEY_PREFIX = 'masochist';
-const LAST_INDEXED_HASH = KEY_PREFIX + ':last-indexed-hash';
-const ARTICLES_INDEX = KEY_PREFIX + ':articles-index';
+const LAST_INDEXED_HASH = getKey('last-indexed-hash');
+const ARTICLES_INDEX = getKey('articles-index');
 
 function log(format, ...args: Array<string>): void {
   const time = new Date().toLocaleTimeString();
@@ -86,7 +85,7 @@ async function getIsAncestor(
 }
 
 (async () => {
-  const client = redis.createClient();
+  const client = getClient();
   const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
   const head = (await repo.getReferenceCommit('content')).sha();
   const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
