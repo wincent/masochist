@@ -25,7 +25,7 @@ module.exports = {
         loader: 'babel',
         query: {
           stage: 0,
-          plugins: ['./getRelayBabelPlugin.js'],
+          plugins: ['./babel/getRelayBabelPlugin.js'],
           // include: path.join(__dirname, 'src')
         },
       }, {
