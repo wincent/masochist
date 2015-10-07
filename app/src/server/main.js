@@ -28,7 +28,7 @@ app.use('/graphql', (request, response, next) => {
         snippetLoader: getSnippetLoader(),
       },
     },
-    graphiql: !!'prod', // TODO: replace with actual test
+    graphiql: __DEV__,
     schema,
   };
 
