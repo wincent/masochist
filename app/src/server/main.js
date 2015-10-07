@@ -16,7 +16,10 @@ const APP_PORT = 3000;
 const app = express();
 
 // curl /
-app.use('/', express.static(path.join(__dirname, '..', '..', 'public', 'index.html')));
+app.use(
+  '/',
+  express.static(path.join(__dirname, '..', '..', 'public', 'index.html'))
+);
 
 // curl 'localhost:3000/graphql?query=query+Query\{hello\}'
 app.use('/graphql', (request, response, next) => {
