@@ -1,11 +1,13 @@
+'use strict';
+
 var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  entry: path.join(__dirname, 'src', 'client', 'app.js'),
+  entry: path.resolve(__dirname, 'src', 'client', 'app.js'),
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   plugins: [
@@ -25,13 +27,15 @@ module.exports = {
         loader: 'babel',
         query: {
           stage: 0,
-          plugins: ['./babel/getRelayBabelPlugin.js'],
-          // include: path.join(__dirname, 'src')
+          plugins: [
+            './babel/devBabelPlugin.js',
+            './babel/getRelayBabelPlugin.js',
+          ],
         },
       }, {
         test: /\.css$/,
         loader: 'style-loader!css-loader',
-        include: path.join(__dirname, 'src')
+        include: path.resolve(__dirname, 'src')
       },
     ],
   }
