@@ -19,11 +19,11 @@ function measureHeaderLength(blob: string): number {
     if (match[1] === '---\n' || match[1] === '---') {
       // Found end marker.
       return regExp.lastIndex;
-    } else if (!match[0].length) {
-      // Got all the way to the end of the input without seeing the end marker.
-      return 0;
     }
   }
+
+  // Got all the way to the end of the input without seeing the end marker.
+  return 0;
 }
 
 export default function stripMetadata(blob: string): string {
