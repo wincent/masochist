@@ -85,10 +85,18 @@ const userType = new GraphQLObjectType({
       resolve: async (user, args, {rootValue}) => {
         const offset = args.after ? cursorToOffset(args.after) : 0;
         // TODO make this a static method on Article?
-        const results = await getClient()
-          .zrevrangeAsync('masochist:articles-index', offset, offset + args.first);
+        const client = getClient();
+        const results = await client.zrevrangeAsync(
+          'masochist:articles-index',
+          offset,
+          offset + args.first
+        );
         const paddedResults = new Array(offset).concat(...results);
-        paddedResults.length++;
+        const count = await client.zcardAsync('masochist:articles-index');
+        if (count > offset + args.first) {
+          // Trick hasNextPage into returning true.
+          paddedResults.length++;
+        }
         return connectionFromPromisedArray(
           rootValue.loaders.articleLoader.loadMany(paddedResults),
           args
