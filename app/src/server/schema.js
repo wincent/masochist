@@ -11,12 +11,15 @@ import {Kind} from 'graphql/language';
 import {
   connectionArgs,
   connectionDefinitions,
-  connectionFromPromisedArray,
   fromGlobalId,
   globalIdField,
   nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
+import {
+  connectionFromArraySlice,
+  cursorToOffset,
+} from './schema/connectionFromArraySlice';
 import DateTimeType from './schema/types/DateTimeType';
 import {getClient} from '../common/redis';
 import wikify from './wikify';
@@ -49,15 +52,6 @@ const {nodeField, nodeInterface} = nodeDefinitions(
   },
 );
 
-function unbase64(i) {
-  return ((new Buffer(i, 'base64')).toString('ascii'));
-}
-
-function cursorToOffset(cursor) {
-  const PREFIX = 'arrayconnection:';
-  return parseInt(unbase64(cursor).substring(PREFIX.length), 10);
-}
-
 const tagType = new GraphQLScalarType({
   name: 'Tag',
   description: 'A tag',
@@ -83,7 +77,7 @@ const userType = new GraphQLObjectType({
       description: 'Articles visible to this user',
       args: connectionArgs,
       resolve: async (user, args, {rootValue}) => {
-        const offset = args.after ? cursorToOffset(args.after) : 0;
+        const offset = args.after ? cursorToOffset(args.after) + 1 : 0;
         // TODO make this a static method on Article?
         const client = getClient();
         const results = await client.multi([
@@ -91,7 +85,7 @@ const userType = new GraphQLObjectType({
             'zrevrange',
             'masochist:articles-index',
             offset,
-            offset + args.first,
+            offset + args.first - 1,
           ],
           [
             'zcard',
@@ -99,14 +93,14 @@ const userType = new GraphQLObjectType({
           ]
         ]).execAsync();
         const [articles, count] = [results[0], results[1]];
-        const paddedResults = new Array(offset).concat(...articles);
-        if (count > offset + args.first) {
-          // Trick hasNextPage into returning true.
-          paddedResults.length++;
-        }
-        return connectionFromPromisedArray(
-          rootValue.loaders.articleLoader.loadMany(paddedResults),
-          args
+
+        return connectionFromArraySlice(
+          rootValue.loaders.articleLoader.loadMany(articles),
+          args,
+          {
+            sliceStart: offset,
+            arrayLength: count,
+          },
         );
       },
     },
