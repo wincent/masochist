@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import Wikitext from './Wikitext';
 
 import './App.css';
 
@@ -18,12 +19,13 @@ class App extends React.Component {
         <ul>
           {
             this.props.viewer.articles.edges.map(edge => {
-              const {id, title, createdAt, updatedAt, tags} = edge.node;
+              const {id, title, createdAt, updatedAt, tags, body} = edge.node;
               return (
                 <li key={id}>
                   <a href={'/wiki/' + title.replace(/ /g, '_')}>
                     {title}
                   </a>
+                  <Wikitext html={body.html} />
                   <ul>
                     {
                       tags.map((tag, i) => (
@@ -50,7 +52,7 @@ class App extends React.Component {
 
 export default Relay.createContainer(App, {
   initialVariables: {
-    count: 10,
+    count: 3,
   },
   fragments: {
     viewer: () => Relay.QL`
@@ -64,6 +66,9 @@ export default Relay.createContainer(App, {
               createdAt
               updatedAt
               tags
+              body {
+                html
+              }
             }
           }
           pageInfo {
