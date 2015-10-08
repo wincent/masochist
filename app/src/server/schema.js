@@ -88,6 +88,7 @@ const userType = new GraphQLObjectType({
         const results = await getClient()
           .zrevrangeAsync('masochist:articles-index', offset, offset + args.first);
         const paddedResults = new Array(offset).concat(...results);
+        paddedResults.length++;
         return connectionFromPromisedArray(
           rootValue.loaders.articleLoader.loadMany(paddedResults),
           args
