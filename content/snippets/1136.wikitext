@@ -1,0 +1,29 @@
+---
+title: Involuntary reboot log 7.2
+tags: involuntary.reboot.log
+---
+[[Hard reset]], necessitated by gradual degradation (Fantastical 2 failing to sync, Calendar.app crashing, MailMate crashing and eventually getting stuck in the Dock even though it wasn't in the process listing any more, system gradually getting slower). Tried to reboot but ultimately had to pull the plug.
+
+= Statistics so far =
+
+* Failure type: [[hard reset]]
+* OS version: 10.11
+* Uptime at moment of failure: unknown, but multiple days
+* Kernel panics: 1
+* Hard resets: 1
+* Total failures: 2
+* Start of recording keeping: 2 June 2015
+* Total days to date: 128 days
+* Average time between failures: 64.0 days
+
+= Historical data =
+
+For comparison, previous generations of machines (from most oldest to most recent) that I've used have had averages of:
+
+* [/blog/involuntary-reboot-log-60 22.73] days (over 1,364 days)
+* [/snippets/23 20.06] (over 321 days)
+* [/snippets/128 19.11] (over 707 days)
+* [/snippets/170 41.86] (over 293 days)
+* [/snippets/171 2.0 days] (over 2 days)
+* [/snippets/1117 27.176 days] (over 462 days): MacBook Air (Mid-2013)
+* current machine: MacBook Air (Mid-2013, new shell)
