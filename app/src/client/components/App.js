@@ -5,8 +5,8 @@ import Wikitext from './Wikitext';
 import './App.css';
 
 class App extends React.Component {
-  // TODO: swap this for autobind decorator
-  _handleSeeMore = () => {
+  _handleSeeMore = event => {
+    event.preventDefault();
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
     });
@@ -22,9 +22,11 @@ class App extends React.Component {
               const {id, title, createdAt, updatedAt, tags, body} = edge.node;
               return (
                 <li key={id}>
-                  <a href={'/wiki/' + title.replace(/ /g, '_')}>
-                    {title}
-                  </a>
+                  <h2>
+                    <a href={'/wiki/' + title.replace(/ /g, '_')}>
+                      {title}
+                    </a>
+                  </h2>
                   <Wikitext html={body.html} />
                   <ul>
                     {

@@ -21,14 +21,17 @@ import DateTimeType from './schema/types/DateTimeType';
 import {getClient} from '../common/redis';
 import wikify from './wikify';
 
-class User {}
+class User {
+  constructor() {
+    this.name = 'Gregory';
+  }
+}
 
 const {nodeField, nodeInterface} = nodeDefinitions(
   function resolveObjectFromID(globalId, {rootValue}) {
     const {type, id} = fromGlobalId(globalId);
     if (type === 'User') {
-      // TODO: change this, obviously
-      return {name: 'Greg'};
+      return new User();
     } else if (type === 'Article') {
       return rootValue.loaders.articleLoader.load(id);
     } else {
@@ -73,6 +76,7 @@ const userType = new GraphQLObjectType({
     name: {
       type: GraphQLString,
       description: "The user's name",
+      resolve: user => user.name,
     },
     articles: {
       type: articleConnection,
@@ -184,8 +188,7 @@ const schema = new GraphQLSchema({
       node: nodeField,
       viewer: {
         type: userType,
-        // TODO: get actual user
-        resolve: () => ({name: 'Greg'}),
+        resolve: () => new User(),
       },
     }
   })
