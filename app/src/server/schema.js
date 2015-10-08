@@ -86,13 +86,20 @@ const userType = new GraphQLObjectType({
         const offset = args.after ? cursorToOffset(args.after) : 0;
         // TODO make this a static method on Article?
         const client = getClient();
-        const results = await client.zrevrangeAsync(
-          'masochist:articles-index',
-          offset,
-          offset + args.first
-        );
-        const paddedResults = new Array(offset).concat(...results);
-        const count = await client.zcardAsync('masochist:articles-index');
+        const results = await client.multi([
+          [
+            'zrevrange',
+            'masochist:articles-index',
+            offset,
+            offset + args.first,
+          ],
+          [
+            'zcard',
+            'masochist:articles-index',
+          ]
+        ]).execAsync();
+        const [articles, count] = [results[0], results[1]];
+        const paddedResults = new Array(offset).concat(...articles);
         if (count > offset + args.first) {
           // Trick hasNextPage into returning true.
           paddedResults.length++;
