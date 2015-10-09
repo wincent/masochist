@@ -66,7 +66,7 @@ This is a low-level list of desiderata. As the design gets further fleshed out I
 - Note that not being able to create content extends even to things like tagging; tags are embedded in files and mostly only get set up at initial creation time, with later (infrequent) updates requiring a push.
 - Things should be fast by default (assets should be efficiently packaged, for example).
 - Old URLs should not break, so that means having a router smart enough to redirect to static mirrors of pages from the old Rails app, or to migrated content on GitHub if necessary. Note that a lot of this can possibly be baked into the nginx config, allowing for more simplicity in the router.
-- Don't rebuild an auth system. Delegate to a trusted company like Facebook for [login](https://developers.facebook.com/docs/facebook-login/web), and use their [comment board](https://developers.facebook.com/docs/plugins/comment) and [social plugin](https://developers.facebook.com/docs/plugins/like-button) to get interactivity and distribution "for free".
+- Don't rebuild an auth system. Delegate to a trusted company like Facebook for [login](https://developers.facebook.com/docs/facebook-login/web), and use their [comment board](https://developers.facebook.com/docs/plugins/comments) and [social plugin](https://developers.facebook.com/docs/plugins/like-button) to get interactivity and distribution "for free".
 - End goal includes complete elimination of dependency on the business logic in the Rails app, and eventually turning it off entirely.
 
 ## Migration plan
