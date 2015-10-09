@@ -19,6 +19,7 @@ import {
 } from 'graphql-relay';
 import Article from './Article';
 import DateTimeType from './schema/types/DateTimeType';
+import TagType from './schema/types/TagType';
 import {getClient} from '../common/redis';
 import wikify from './wikify';
 
@@ -49,16 +50,6 @@ const {nodeField, nodeInterface} = nodeDefinitions(
     }
   },
 );
-
-const tagType = new GraphQLScalarType({
-  name: 'Tag',
-  description: 'A tag',
-  serialize: String,
-  parseValue: String,
-  parseLiteral(ast) {
-    return ast.kind === Kind.STRING ? ast.value : null;
-  }
-});
 
 const userType = new GraphQLObjectType({
   name: 'User',
@@ -167,7 +158,7 @@ const articleType = new GraphQLObjectType({
     },
     tags: {
       // TODO: make this tags{name}
-      type: new GraphQLList(tagType),
+      type: new GraphQLList(TagType),
       resolve(article) {
         return article.tags;
       },
