@@ -14,6 +14,7 @@ import {
   connectionFromPromisedArraySlice,
   cursorToOffset,
   fromGlobalId,
+  getOffsetWithDefault,
   globalIdField,
   nodeDefinitions,
 } from 'graphql-relay';
@@ -67,7 +68,7 @@ const userType = new GraphQLObjectType({
       resolve: async (user, args, {rootValue}) => {
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
-        const offset = args.after ? cursorToOffset(args.after) + 1 : 0;
+        const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [articles, totalCount] = await Article.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
           rootValue.loaders.articleLoader.loadMany(articles),
