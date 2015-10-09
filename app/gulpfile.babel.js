@@ -81,7 +81,7 @@ gulp.task('lint', () => (
     .pipe(eslint.format())
 ));
 
-gulp.task('typecheck', shell.task(['flow check src']));
+gulp.task('typecheck', shell.task(['flow check --color=always src']));
 
 gulp.task('test', () => (
   gulp.src(
