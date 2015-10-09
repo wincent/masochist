@@ -66,16 +66,16 @@ end
 
 OPTIONS = {
   'autolink' => :autolink,
-  'base_heading_level' => :base_heading_level,
-  'external_link_class' => :external_link_class,
-  'external_link_rel' => :external_link_rel,
-  'img_prefix' => :img_prefix,
-  'internal_link_prefix' => :internal_link_prefix,
-  'line_ending' => :line_ending,
-  'mailto_class' => :mailto_class,
-  'minimum_fulltext_token_length' => :minimum_fulltext_token_length,
-  'output_style' => :output_style,
-  'space_to_underscore' => :space_to_underscore,
+  'baseHeadingLevel' => :base_heading_level,
+  'externalLinkClass' => :external_link_class,
+  'externalLinkRel' => :external_link_rel,
+  'imgPrefix' => :img_prefix,
+  'internalLinkPrefix' => :internal_link_prefix,
+  'lineEnding' => :line_ending,
+  'mailtoClass' => :mailto_class,
+  'minimumFulltextTokenLength' => :minimum_fulltext_token_length,
+  'outputStyle' => :output_style,
+  'spaceToUnderscore' => :space_to_underscore,
 }
 
 def extract_options(options)
