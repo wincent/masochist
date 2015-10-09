@@ -1,9 +1,11 @@
 #!/bin/sh
 
-tmux new-session -d -s masochist -n vim || exit
+set -e
+
+tmux new-session -d -s masochist -n vim
 
 # 1. Main window: vim, server, shell.
-tmux send-keys -t masochist:vim vim Enter
+tmux send-keys -t masochist:vim "vim -c CommandT" Enter
 tmux split-window -t masochist:vim -h -c app
 tmux send-keys -t masochist:vim.right "npm run start" Enter
 tmux split-window -t masochist:vim.2
