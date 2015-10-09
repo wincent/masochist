@@ -2,6 +2,11 @@
 
 set -e
 
+if tmux has-session -t masochist; then
+  tmux attach -t masochist
+  exit
+fi
+
 tmux new-session -d -s masochist -n vim
 
 # 1. Main window: vim, server, shell.
