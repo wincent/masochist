@@ -120,7 +120,7 @@ const markupType = new GraphQLObjectType({
       resolve: markup => markup.raw,
     },
     format: {
-      type: MarkupFormatType,
+      type: new GraphQLNonNull(MarkupFormatType),
       description: 'The format of the markup source',
       resolve: markup => markup.format,
     },
