@@ -1,5 +1,6 @@
 import Promise from 'bluebird';
 import {
+  GraphQLEnumType,
   GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
@@ -95,6 +96,20 @@ function validateBaseHeadingLevel(level: ?number): ?number {
   return level;
 }
 
+const MarkupFormatType = new GraphQLEnumType({
+  name: 'MARKUP_FORMAT_TYPE',
+  values: {
+    WIKITEXT: { value: 'wikitext' },
+    TXT: { value: 'txt' },
+    HTML: { value: 'html' },
+    C: { value: 'c' },
+    PATCH: { value: 'patch' },
+    M: { value: 'm' },
+    RB: { value: 'rb' },
+    SH: { value: 'sh' },
+  },
+});
+
 const markupType = new GraphQLObjectType({
   name: 'Markup',
   description: 'The textual markup for a piece of content',
@@ -105,8 +120,7 @@ const markupType = new GraphQLObjectType({
       resolve: markup => markup.raw,
     },
     format: {
-      // TODO: use an enum for this
-      type: GraphQLString,
+      type: MarkupFormatType,
       description: 'The format of the markup source',
       resolve: markup => markup.format,
     },
