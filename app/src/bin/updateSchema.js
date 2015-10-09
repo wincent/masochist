@@ -28,11 +28,13 @@ function prettify(stringifiable) {
       'error: schema introspection failure: ',
       prettify(result.errors)
     );
+    process.exit(1);
   } else {
     await writeFile(
       path.join(__dirname, '../../schema.json'),
       prettify(result)
     );
+    console.log('Wrote schema.json.');
   }
 
   // Emit human-readable type system shorthand of schema.
@@ -40,4 +42,6 @@ function prettify(stringifiable) {
     path.join(__dirname, '../../schema.graphql'),
     printSchema(schema)
   );
+  console.log('Wrote schema.graphql.');
+  process.exit(0);
 })();
