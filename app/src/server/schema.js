@@ -20,7 +20,6 @@ import {
 import Article from './Article';
 import DateTimeType from './schema/types/DateTimeType';
 import TagType from './schema/types/TagType';
-import {getClient} from '../common/redis';
 import wikify from './wikify';
 
 class User {
@@ -66,29 +65,16 @@ const userType = new GraphQLObjectType({
       description: 'Articles visible to this user',
       args: connectionArgs,
       resolve: async (user, args, {rootValue}) => {
+        // Cap count to avoid abuse.
+        const count = Math.max(args.first, 10);
         const offset = args.after ? cursorToOffset(args.after) + 1 : 0;
-        // TODO make this a static method on Article?
-        const client = getClient();
-        const results = await client.multi([
-          [
-            'zrevrange',
-            'masochist:articles-index',
-            offset,
-            offset + args.first - 1,
-          ],
-          [
-            'zcard',
-            'masochist:articles-index',
-          ]
-        ]).execAsync();
-        const [articles, count] = [results[0], results[1]];
-
+        const [articles, totalCount] = await Article.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
           rootValue.loaders.articleLoader.loadMany(articles),
           args,
           {
             sliceStart: offset,
-            arrayLength: count,
+            arrayLength: totalCount,
           },
         );
       },
