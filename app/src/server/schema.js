@@ -11,15 +11,13 @@ import {Kind} from 'graphql/language';
 import {
   connectionArgs,
   connectionDefinitions,
+  connectionFromPromisedArraySlice,
+  cursorToOffset,
   fromGlobalId,
   globalIdField,
   nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
-import {
-  connectionFromArraySlice,
-  cursorToOffset,
-} from './schema/connectionFromArraySlice';
 import DateTimeType from './schema/types/DateTimeType';
 import {getClient} from '../common/redis';
 import wikify from './wikify';
@@ -94,7 +92,7 @@ const userType = new GraphQLObjectType({
         ]).execAsync();
         const [articles, count] = [results[0], results[1]];
 
-        return connectionFromArraySlice(
+        return connectionFromPromisedArraySlice(
           rootValue.loaders.articleLoader.loadMany(articles),
           args,
           {
