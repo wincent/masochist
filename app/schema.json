@@ -538,7 +538,18 @@
             {
               "name": "html",
               "description": "HTML output of transformed markup",
-              "args": [],
+              "args": [
+                {
+                  "name": "baseHeadingLevel",
+                  "description": "Base heading level [0-6]",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
               "type": {
                 "kind": "SCALAR",
                 "name": "String",

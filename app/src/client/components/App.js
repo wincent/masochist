@@ -69,7 +69,7 @@ export default Relay.createContainer(App, {
               updatedAt
               tags
               body {
-                html
+                html(baseHeadingLevel: 3)
               }
             }
           }

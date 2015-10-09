@@ -1,5 +1,6 @@
 import Promise from 'bluebird';
 import {
+  GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
   GraphQLObjectType,
@@ -84,6 +85,16 @@ const userType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
+function validateBaseHeadingLevel(level: ?number): ?number {
+  if (level == null) {
+    return;
+  }
+  if (level < 0 || level > 6) {
+    throw new Error(`Invalid heading level ${level}`);
+  }
+  return level;
+}
+
 const markupType = new GraphQLObjectType({
   name: 'Markup',
   description: 'The textual markup for a piece of content',
@@ -102,12 +113,22 @@ const markupType = new GraphQLObjectType({
     html: {
       type: GraphQLString,
       description: 'HTML output of transformed markup',
-      resolve(markup) {
+      args: {
+        baseHeadingLevel: {
+          description: 'Base heading level [0-6]',
+          type: GraphQLInt,
+        },
+      },
+      resolve(markup, {baseHeadingLevel}) {
         if (markup.format === 'wikitext') {
           // TODO: allow variables here do control format (eg base heading level
           // etc)
           // TODO: make wikify interface a little more pleasant to use
-          return wikify([{wikitext: markup.raw}])
+          const level = validateBaseHeadingLevel(baseHeadingLevel);
+          return wikify([{
+            wikitext: markup.raw,
+            baseHeadingLevel: level,
+          }])
             .then(data => JSON.parse(data).results[0]);
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
