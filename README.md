@@ -3,7 +3,7 @@
 
 # What
 
-This repo contains an in-development version of the source code for my website at [wincent.com](). It's called "masochist" because I never learn, or perhaps because I'm slow to learn the one lesson that really matters: that there is no silver bullet.
+This repo contains an in-development version of the source code for my website at [wincent.com](). It's called "masochist" because I never learn, and I find myself yet again moving my online presence into a new home. The software lives on [the master branch](https://github.com/wincent/masochist/tree/master) and the content lives on [the content branch](https://github.com/wincent/masochist/tree/content).
 
 # Background
 
