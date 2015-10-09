@@ -25,7 +25,7 @@ import wikify from './wikify';
 
 class User {
   constructor() {
-    this.name = 'Gregory';
+    this.name = 'Anonymous visitor';
   }
 }
 
