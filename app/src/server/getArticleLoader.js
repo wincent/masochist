@@ -55,7 +55,7 @@ async function loadArticle(options: LoaderOptions): Promise {
     async cacheKey => {
       // This is committer time, which is appropriate for articles (where recency of
       // update matters). For posts, creation order matters, so we'll go with
-      // topological search (which workes because I imported old content in-order)
+      // topological search (which works because I imported old content in-order)
       // and we'll get creation date from the author date.
       const revs = await git(
         'rev-list',
@@ -84,19 +84,18 @@ async function loadArticle(options: LoaderOptions): Promise {
     }
   );
 
-  return new Article({
+  return {
     id: file,
-    title: file,
     body,
     format: extension,
 
-    // Need to handle real Date objects (cache miss), or stringified dates (read
-    // from memcached).
+    // `new Date()` here to handle real Date objects (cache miss), or
+    // stringified dates (read from memcached).
     createdAt: timestamps.createdAt ? new Date(timestamps.createdAt) : null,
     updatedAt: timestamps.updatedAt ? new Date(timestamps.updatedAt) : null,
     tags,
     ...metadata,
-  });
+  };
 }
 
 async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
@@ -106,7 +105,11 @@ async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>>
       subdirectory: 'wiki',
       typeName: 'Article',
     }))
-    .map(loadArticle);
+    .map(loadArticle)
+    .map(dataPromise => dataPromise.then(data => new Article({
+      ...data,
+      title: data.id,
+    })));
 }
 
 export default function getArticleLoader() {
