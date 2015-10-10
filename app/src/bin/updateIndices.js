@@ -156,6 +156,7 @@ async function getIsAncestor(
     // when we see only [Delete, Add] and therefore omit step 3 above.
     const seenFiles = {};
 
+    const indexName = getKey(contentType + '-index');
     let match;
     let updatedAt;
     let createdAt;
@@ -169,16 +170,16 @@ async function getIsAncestor(
         if (!seenFiles[file]) {
           switch (status) {
             case 'A':
-              updates.push(['zadd', contentType, createdAt, file]);
+              updates.push(['zadd', indexName, createdAt, file]);
               seenFiles[file] = true;
               break;
             case 'D':
-              updates.push(['zrem', contentType, file]);
+              updates.push(['zrem', indexName, file]);
               seenFiles[file] = orderBy === 'updatedAt';
               break;
             case 'M':
               if (orderBy === 'updatedAt') {
-                updates.push(['zadd', contentType, updatedAt, file]);
+                updates.push(['zadd', indexName, updatedAt, file]);
                 seenFiles[file] = true;
               }
               break;

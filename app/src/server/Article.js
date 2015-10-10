@@ -10,13 +10,13 @@ export default class Article {
     const results = await client.multi([
       [
         'zrevrange',
-        'masochist:articles-index',
+        'masochist:wiki-index',
         offset,
         offset + count - 1,
       ],
       [
         'zcard',
-        'masochist:articles-index',
+        'masochist:wiki-index',
       ]
     ]).execAsync();
 
