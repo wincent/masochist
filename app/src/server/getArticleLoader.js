@@ -15,7 +15,14 @@ import extractTags from './extractTags';
 import git from './git';
 import stripMetadata from './stripMetadata';
 
-async function loadArticle(title): Promise {
+type LoaderOptions = {
+  subdirectory: 'wiki' | 'blog' | 'snippets';
+  file: string; // Filename without extension.
+  typeName: 'Article' | 'Post' | 'Snippet';
+}
+
+async function loadArticle(options: LoaderOptions): Promise {
+  const {subdirectory, file, typeName} = options;
   const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
   const head = await repo.getReferenceCommit('content');
   const tree = await head.getTree();
@@ -29,7 +36,9 @@ async function loadArticle(title): Promise {
   for (let i = 0; i < extensions.length; i++) {
     extension = Extensions[extensions[i]];
     try {
-      treeEntry = await tree.getEntry('content/wiki/' + title + '.' + extension);
+      treeEntry = await tree.getEntry(
+        'content/' + subdirectory + '/' + file + '.' + extension
+      );
       break;
     } catch(e) {
       // Keep looking.
@@ -42,7 +51,7 @@ async function loadArticle(title): Promise {
 
   const blob = (await treeEntry.getBlob()).toString();
 
-  const cacheKey = toGlobalId('Article', title) + ':' + head.sha() + ':metadata';
+  const cacheKey = toGlobalId(typeName, file) + ':' + head.sha() + ':metadata';
   const metadata = await Cache.get(
     cacheKey,
     async cacheKey => {
@@ -57,7 +66,7 @@ async function loadArticle(title): Promise {
         '--',
         path.relative(
           path.resolve(process.cwd()),
-          path.resolve(__dirname, '..', '..', '..', 'content', 'wiki', `${title}.${extension}`),
+          path.resolve(__dirname, '..', '..', '..', 'content', subdirectory, `${file}.${extension}`),
         ),
       );
       const mostRecent = revs.slice(0, 40);
@@ -80,8 +89,8 @@ async function loadArticle(title): Promise {
   );
 
   return Promise.resolve(new Article({
-    id: title,
-    title,
+    id: file,
+    title: file,
     body: stripMetadata(blob),
     format: extension,
 
@@ -94,7 +103,13 @@ async function loadArticle(title): Promise {
 }
 
 async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
-  return await* keys.map(loadArticle);
+  return await* keys
+    .map(key => ({
+      file: key,
+      subdirectory: 'wiki',
+      typeName: 'Article',
+    }))
+    .map(loadArticle);
 }
 
 export default function getArticleLoader() {
