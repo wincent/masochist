@@ -2,7 +2,6 @@
  * @flow
  */
 
-import Promise from 'bluebird';
 import DataLoader from 'dataloader';
 import nodegit from 'nodegit';
 import path from 'path';
@@ -45,7 +44,7 @@ async function loadArticle(options: LoaderOptions): Promise {
   }
 
   if (!treeEntry || !treeEntry.isBlob()) {
-    return Promise.resolve(null);
+    return null;
   }
 
   const blob = (await treeEntry.getBlob()).toString();
@@ -85,7 +84,7 @@ async function loadArticle(options: LoaderOptions): Promise {
     }
   );
 
-  return Promise.resolve(new Article({
+  return new Article({
     id: file,
     title: file,
     body,
@@ -97,7 +96,7 @@ async function loadArticle(options: LoaderOptions): Promise {
     updatedAt: timestamps.updatedAt ? new Date(timestamps.updatedAt) : null,
     tags,
     ...metadata,
-  }));
+  });
 }
 
 async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
