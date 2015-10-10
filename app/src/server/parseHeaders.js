@@ -2,6 +2,11 @@
  * @flow
  */
 
+type Headers = {
+  tags: Array<string>;
+  [metadata:string]: string;
+};
+
 // NOTE: this will probably become a separate module, or at least a separate
 // export
 function extractHeaders(blob: string): ?string {
@@ -30,7 +35,7 @@ function extractHeaders(blob: string): ?string {
   }
 }
 
-function parseHeaders(string: string): Object {
+function unpackHeaders(string: string): Object {
   const headers = {};
   const regExp = /(\w+)\s*:\s*([^\n]*)(?:\n|$)/g
   let match;
@@ -40,8 +45,13 @@ function parseHeaders(string: string): Object {
   return headers;
 }
 
-export default function extractTags(blob: string): Array<string> {
-  const headers = extractHeaders(blob);
-  const tags = (headers && parseHeaders(headers)['tags']);
-  return tags ? tags.split(/\s+/) : [];
+export default function parseHeaders(blob: string): Headers {
+  const headers = extractHeaders(blob) || '';
+  const unpackedHeaders = unpackHeaders(headers);
+  if (unpackedHeaders.tags) {
+    unpackedHeaders.tags = unpackedHeaders.tags.split(/\s+/);
+  } else {
+    unpackedHeaders.tags = [];
+  }
+  return unpackedHeaders;
 }

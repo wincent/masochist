@@ -11,7 +11,7 @@ import {toGlobalId} from 'graphql-relay';
 import Article from './Article';
 import Cache from './Cache';
 import {Extensions} from './Markup';
-import extractTags from './extractTags';
+import parseHeaders from './parseHeaders';
 import git from './git';
 import stripMetadata from './stripMetadata';
 
@@ -71,7 +71,7 @@ async function loadArticle(options: LoaderOptions): Promise {
       );
       const mostRecent = revs.slice(0, 40);
       const oldest = revs.trim().slice(-40);
-      const tags = extractTags(blob);
+      const {tags, ...metadata} = parseHeaders(blob);
 
       return {
         createdAt: oldest ?
