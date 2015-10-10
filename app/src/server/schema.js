@@ -23,7 +23,6 @@ import {
 import Article from './Article';
 import DateTimeType from './schema/types/DateTimeType';
 import TagType from './schema/types/TagType';
-import wikify from './wikify';
 
 class User {
   constructor() {
@@ -133,17 +132,13 @@ const markupType = new GraphQLObjectType({
           type: GraphQLInt,
         },
       },
-      resolve(markup, {baseHeadingLevel}) {
+      resolve(markup, {baseHeadingLevel}, {rootValue}) {
         if (markup.format === 'wikitext') {
-          // TODO: allow variables here do control format (eg base heading level
-          // etc)
-          // TODO: make wikify interface a little more pleasant to use
           const level = validateBaseHeadingLevel(baseHeadingLevel);
-          return wikify([{
+          return rootValue.loaders.wikitextLoader.load({
             wikitext: markup.raw,
             baseHeadingLevel: level,
-          }])
-            .then(data => JSON.parse(data).results[0]);
+          });
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
         }
