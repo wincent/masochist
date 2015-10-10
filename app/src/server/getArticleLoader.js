@@ -11,9 +11,8 @@ import {toGlobalId} from 'graphql-relay';
 import Article from './Article';
 import Cache from './Cache';
 import {Extensions} from './Markup';
-import parseHeaders from './parseHeaders';
 import git from './git';
-import stripMetadata from './stripMetadata';
+import unpackContent from './unpackContent';
 
 type LoaderOptions = {
   subdirectory: 'wiki' | 'blog' | 'snippets';
@@ -50,9 +49,9 @@ async function loadArticle(options: LoaderOptions): Promise {
   }
 
   const blob = (await treeEntry.getBlob()).toString();
-
+  const {body, tags, ...metadata} = unpackContent(blob);
   const cacheKey = toGlobalId(typeName, file) + ':' + head.sha() + ':metadata';
-  const metadata = await Cache.get(
+  const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {
       // This is committer time, which is appropriate for articles (where recency of
@@ -71,7 +70,6 @@ async function loadArticle(options: LoaderOptions): Promise {
       );
       const mostRecent = revs.slice(0, 40);
       const oldest = revs.trim().slice(-40);
-      const {tags, ...metadata} = parseHeaders(blob);
 
       return {
         createdAt: oldest ?
@@ -82,7 +80,6 @@ async function loadArticle(options: LoaderOptions): Promise {
           // Commit date of latest.
           (await repo.getCommit(mostRecent)).date() :
           null,
-        tags,
       };
       // BUG: created at is in pst, updated at in pdt (is that right?)
     }
@@ -91,14 +88,15 @@ async function loadArticle(options: LoaderOptions): Promise {
   return Promise.resolve(new Article({
     id: file,
     title: file,
-    body: stripMetadata(blob),
+    body,
     format: extension,
 
     // Need to handle real Date objects (cache miss), or stringified dates (read
     // from memcached).
-    createdAt: metadata.createdAt ? new Date(metadata.createdAt) : null,
-    updatedAt: metadata.updatedAt ? new Date(metadata.updatedAt) : null,
-    tags: metadata.tags,
+    createdAt: timestamps.createdAt ? new Date(timestamps.createdAt) : null,
+    updatedAt: timestamps.updatedAt ? new Date(timestamps.updatedAt) : null,
+    tags,
+    ...metadata,
   }));
 }
 
