@@ -4,6 +4,7 @@
 import 'babel-runtime/regenerator/runtime';
 
 import getArticleLoader from './getArticleLoader';
+import getPostLoader from './getPostLoader';
 import getSnippetLoader from './getSnippetLoader';
 import getWikitextLoader from './getWikitextLoader';
 import schema from './schema';
@@ -41,7 +42,7 @@ app.use('/graphql', (request, response, next) => {
     rootValue: {
       loaders: {
         articleLoader: getArticleLoader(),
-        // postLoader: new DataLoader(ids => []),
+        postLoader: getPostLoader(),
         snippetLoader: getSnippetLoader(),
         wikitextLoader: getWikitextLoader(),
       },

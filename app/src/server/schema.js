@@ -23,6 +23,7 @@ import {
 import Article from './Article';
 import DateTimeType from './schema/types/DateTimeType';
 import Snippet from './Snippet';
+import Post from './Post';
 import TagType from './schema/types/TagType';
 
 class User {
@@ -38,6 +39,8 @@ const {nodeField, nodeInterface} = nodeDefinitions(
       return new User();
     } else if (type === 'Article') {
       return rootValue.loaders.articleLoader.load(id);
+    } else if (type === 'Post') {
+      return rootValue.loaders.postLoader.load(id);
     } else if (type === 'Snippet') {
       return rootValue.loaders.snippetLoader.load(id);
     } else {
@@ -49,6 +52,8 @@ const {nodeField, nodeInterface} = nodeDefinitions(
       return userType;
     } else if (object instanceof Article) {
       return articleType;
+    } else if (object instanceof Post) {
+      return postType;
     } else if (object instanceof Snippet) {
       return snippetType;
     } else {
@@ -69,7 +74,7 @@ const userType = new GraphQLObjectType({
     },
     articles: {
       type: articleConnection,
-      description: 'Articles visible to this user',
+      description: 'Wiki articles visible to this user',
       args: connectionArgs,
       resolve: async (user, args, {rootValue}) => {
         // Cap count to avoid abuse.
@@ -78,6 +83,25 @@ const userType = new GraphQLObjectType({
         const [articles, totalCount] = await Article.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
           rootValue.loaders.articleLoader.loadMany(articles),
+          args,
+          {
+            sliceStart: offset,
+            arrayLength: totalCount,
+          },
+        );
+      },
+    },
+    posts: {
+      type: postConnection,
+      description: 'Blog posts visible to this user',
+      args: connectionArgs,
+      resolve: async (user, args, {rootValue}) => {
+        // Cap count to avoid abuse.
+        const count = Math.max(args.first, 10);
+        const offset = getOffsetWithDefault(args.after, -1) + 1;
+        const [posts, totalCount] = await Post.readIndex(count, offset);
+        return connectionFromPromisedArraySlice(
+          rootValue.loaders.postLoader.loadMany(posts),
           args,
           {
             sliceStart: offset,
@@ -221,6 +245,54 @@ const articleType = new GraphQLObjectType({
 const {connectionType: articleConnection} =
   connectionDefinitions({name: 'Article', nodeType: articleType});
 
+const postType = new GraphQLObjectType({
+  name: 'Post',
+  description: 'A blog post',
+  fields: () => ({
+    id: globalIdField('Post'),
+    title: {
+      type: GraphQLString,
+      description: "The blog post's title",
+      resolve(post) {
+        return post.title;
+      }
+    },
+    createdAt: {
+      type: DateTimeType,
+      description: 'Date and time when blog post was first created',
+      resolve(post) {
+        return post.createdAt;
+      },
+    },
+    updatedAt: {
+      type: DateTimeType,
+      description: 'Date and time when blog post was last updated',
+      resolve(post) {
+        return post.updatedAt;
+      },
+    },
+    tags: {
+      type: new GraphQLList(TagType),
+      resolve(post) {
+        return post.tags;
+      },
+    },
+    body: {
+      type: markupType,
+      resolve(post) {
+        return {
+          raw: post.body,
+          format: post.format,
+        };
+      },
+    }
+  }),
+  interfaces: [nodeInterface],
+});
+
+const {connectionType: postConnection} =
+  connectionDefinitions({name: 'Post', nodeType: postType});
+
 const snippetType = new GraphQLObjectType({
   name: 'Snippet',
   description: 'A snippet',
@@ -265,6 +337,7 @@ const snippetType = new GraphQLObjectType({
   }),
   interfaces: [nodeInterface],
 });
+
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: snippetType});
 
