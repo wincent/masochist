@@ -172,34 +172,26 @@ async function getIsAncestor(
       } else {
         const status = match[3];
         const file = extractFile(match[4]);
-        switch (status) {
-          case 'A':
-            if (
-              orderBy === 'createdAt' && !seenFiles[file] ||
-              orderBy === 'updatedAt' && !seenFiles[file]
-            ) {
+        if (!seenFiles[file]) {
+          switch (status) {
+            case 'A':
               updates.push(['zadd', indexName, createdAt, file]);
               seenFiles[file] = true;
-            }
-            break;
-          case 'D':
-            if (
-              orderBy === 'createdAt' && !seenFiles[file] ||
-              orderBy === 'updatedAt' && !seenFiles[file]
-            ) {
+              break;
+            case 'D':
               updates.push(['zrem', indexName, file]);
               seenFiles[file] = orderBy === 'updatedAt';
-            }
-            break;
-          case 'M':
-            if (orderBy === 'updatedAt' && !seenFiles[file]) {
-              updates.push(['zadd', indexName, updatedAt, file]);
-              seenFiles[file] = true;
-            }
-            break;
-          default:
-            throw new Error(`Unrecognized status: '${status}'`);
-            break;
+              break;
+            case 'M':
+              if (orderBy === 'updatedAt') {
+                updates.push(['zadd', indexName, updatedAt, file]);
+                seenFiles[file] = true;
+              }
+              break;
+            default:
+              throw new Error(`Unrecognized status: '${status}'`);
+              break;
+          }
         }
       }
     }
