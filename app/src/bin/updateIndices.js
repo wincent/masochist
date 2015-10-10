@@ -28,9 +28,6 @@ process.on('unhandledRejection', reason => {
 });
 
 const LAST_INDEXED_HASH = getKey('last-indexed-hash');
-const ARTICLES_INDEX = getKey('articles-index');
-const SNIPPETS_INDEX = getKey('snippets-index');
-const POSTS_INDEX = getKey('posts-index');
 
 function log(format, ...args: Array<string>): void {
   const time = new Date().toLocaleTimeString();
@@ -103,24 +100,21 @@ async function getIsAncestor(
   await* [
     {
       contentType: 'wiki',
-      indexName: ARTICLES_INDEX,
       orderBy: 'updatedAt',
     },
     {
       contentType: 'snippets',
-      indexName: SNIPPETS_INDEX,
       orderBy: 'createdAt',
     },
     {
       contentType: 'blog',
-      indexName: POSTS_INDEX,
       orderBy: 'createdAt',
     },
-  ].map(async ({contentType, indexName, orderBy}) => {
+  ].map(async ({contentType, orderBy}) => {
     log(`Getting ${contentType} changes in range: ${range}.`);
     const commits = await getWhatChanged(range, contentType);
 
-    log(`Preparing ${indexName} updates.`);
+    log(`Preparing ${contentType} index updates.`);
     const regExp = new RegExp(
       // Commit SHA, author date, committer date.
       '\\n[a-f0-9]{40} (\\d{1,10}) (\\d{1,10})\\n|' +
@@ -175,16 +169,16 @@ async function getIsAncestor(
         if (!seenFiles[file]) {
           switch (status) {
             case 'A':
-              updates.push(['zadd', indexName, createdAt, file]);
+              updates.push(['zadd', contentType, createdAt, file]);
               seenFiles[file] = true;
               break;
             case 'D':
-              updates.push(['zrem', indexName, file]);
+              updates.push(['zrem', contentType, file]);
               seenFiles[file] = orderBy === 'updatedAt';
               break;
             case 'M':
               if (orderBy === 'updatedAt') {
-                updates.push(['zadd', indexName, updatedAt, file]);
+                updates.push(['zadd', contentType, updatedAt, file]);
                 seenFiles[file] = true;
               }
               break;
