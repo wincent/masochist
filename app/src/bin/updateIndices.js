@@ -35,9 +35,9 @@ function log(format, ...args: Array<string>): void {
   console.log(format, ...args);
 }
 
-function extractFile(pathString: string): string {
+function extractFile(pathString: string, contentType: string): string {
   return pathString
-    .slice('content/wiki/'.length) // Strip prefix.
+    .slice(`content/${contentType}/`.length) // Strip prefix.
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
@@ -166,7 +166,7 @@ async function getIsAncestor(
         createdAt = match[2];
       } else {
         const status = match[3];
-        const file = extractFile(match[4]);
+        const file = extractFile(match[4], contentType);
         if (!seenFiles[file]) {
           switch (status) {
             case 'A':
