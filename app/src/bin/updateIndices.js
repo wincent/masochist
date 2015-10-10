@@ -29,6 +29,8 @@ process.on('unhandledRejection', reason => {
 
 const LAST_INDEXED_HASH = getKey('last-indexed-hash');
 const ARTICLES_INDEX = getKey('articles-index');
+const SNIPPETS_INDEX = getKey('snippets-index');
+const POSTS_INDEX = getKey('posts-index');
 
 function log(format, ...args: Array<string>): void {
   const time = new Date().toLocaleTimeString();
@@ -36,13 +38,13 @@ function log(format, ...args: Array<string>): void {
   console.log(format, ...args);
 }
 
-function extractTitle(pathString: string): string {
+function extractFile(pathString: string): string {
   return pathString
     .slice('content/wiki/'.length) // Strip prefix.
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-function getWhatChanged(range): Promise {
+function getWhatChanged(range: string, subdirectory: string): Promise {
   // Custom log format (^@ here represents the NUL \0 byte):
   //
   // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
@@ -58,7 +60,7 @@ function getWhatChanged(range): Promise {
     '--',
     path.relative(
       path.resolve(process.cwd()),
-      path.resolve(__dirname, '..', '..', '..', 'content', 'wiki'),
+      path.resolve(__dirname, '..', '..', '..', 'content', subdirectory),
     ),
   );
 }
@@ -96,44 +98,104 @@ async function getIsAncestor(
 
   const isAncestor = await getIsAncestor(lastIndexedHash, head);
   const range = isAncestor ? [lastIndexedHash, head].join('..') : head;
-  log('Getting changes in range: %s.', range);
-  const commits = await getWhatChanged(range);
 
-  log('Preparing index updates.');
-  const regExp = new RegExp(
-    '\\n[a-f0-9]{40} (\\d{1,10}) (\\d{1,10})\\n|' + // Commit SHA, author date, committer date.
-    ':\\d{6} \\d{6} ' + // Modes.
-    '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' + // Before/after tree or blob.
-    '([ADM])\0' + // Added, Deleted or Modified.
-    '([^\0]+)\0\0?', // Path, optional commit terminator.
-    'g'
-  );
-
-  const seenTitles = {};
   const updates = [];
-  let match;
-  let updatedAt;
-  let createdAt;
-  while ((match = regExp.exec(commits))) {
-    if (match[1] && match[2]) {
-      updatedAt = match[1];
-      createdAt = match[2];
-    } else {
-      // For articles, we want our index ordered by "updated at", so we only
-      // touch the index the first time we see each path.
-      const status = match[3];
-      const title = extractTitle(match[4]);
-      if (!(title in seenTitles)) {
-        seenTitles[title] = true;
+  await* [
+    {
+      contentType: 'wiki',
+      indexName: ARTICLES_INDEX,
+      orderBy: 'updatedAt',
+    },
+    {
+      contentType: 'snippets',
+      indexName: SNIPPETS_INDEX,
+      orderBy: 'createdAt',
+    },
+    {
+      contentType: 'blog',
+      indexName: POSTS_INDEX,
+      orderBy: 'createdAt',
+    },
+  ].map(async ({contentType, indexName, orderBy}) => {
+    log(`Getting ${contentType} changes in range: ${range}.`);
+    const commits = await getWhatChanged(range, contentType);
+
+    log(`Preparing ${indexName} updates.`);
+    const regExp = new RegExp(
+      // Commit SHA, author date, committer date.
+      '\\n[a-f0-9]{40} (\\d{1,10}) (\\d{1,10})\\n|' +
+
+      // Modes.
+      ':\\d{6} \\d{6} ' +
+
+      // Before/after tree or blob.
+      '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
+
+      // Added, Deleted or Modified.
+      '([ADM])\0' +
+
+      // Path, optional commit terminator.
+      '([^\0]+)\0\0?',
+
+      'g'
+    );
+
+    // For articles, we want our index ordered by "updated at", so we only
+    // touch the index the first time we see each path in our (reverse-
+    // chronological order traversal).
+    //
+    // For posts and snippets, we want "created at" ordering. We still use the
+    // `seenFiles` map, though to handle sequences like [Add, Delete, Add]. In
+    // that case, we:
+    //
+    // 1. See the most recent "Add":
+    //   - Update the index.
+    //   - Record that we've seen the file in `seenFiles`.
+    // 2. See the preceding "Delete":
+    //   - Ignore the change (don't update the index, as we know the file exists
+    //     later on).
+    // 3. See the original "Add":
+    //   - Ignore the change (ie. we use the most recent creation date, not the
+    //     original one).
+    //
+    // Note that this does the right thing for incremental updates too, such as
+    // when we see only [Delete, Add] and therefore omit step 3 above.
+    const seenFiles = {};
+
+    let match;
+    let updatedAt;
+    let createdAt;
+    while ((match = regExp.exec(commits))) {
+      if (match[1] && match[2]) {
+        updatedAt = match[1];
+        createdAt = match[2];
+      } else {
+        const status = match[3];
+        const file = extractFile(match[4]);
         switch (status) {
           case 'A':
-            updates.push(['zadd', ARTICLES_INDEX, createdAt, title]);
+            if (
+              orderBy === 'createdAt' && !seenFiles[file] ||
+              orderBy === 'updatedAt' && !seenFiles[file]
+            ) {
+              updates.push(['zadd', indexName, createdAt, file]);
+              seenFiles[file] = true;
+            }
             break;
           case 'D':
-            updates.push(['zrem', ARTICLES_INDEX, title]);
+            if (
+              orderBy === 'createdAt' && !seenFiles[file] ||
+              orderBy === 'updatedAt' && !seenFiles[file]
+            ) {
+              updates.push(['zrem', indexName, file]);
+              seenFiles[file] = orderBy === 'updatedAt';
+            }
             break;
           case 'M':
-            updates.push(['zadd', ARTICLES_INDEX, updatedAt, title]);
+            if (orderBy === 'updatedAt' && !seenFiles[file]) {
+              updates.push(['zadd', indexName, updatedAt, file]);
+              seenFiles[file] = true;
+            }
             break;
           default:
             throw new Error(`Unrecognized status: '${status}'`);
@@ -141,12 +203,12 @@ async function getIsAncestor(
         }
       }
     }
-  }
-  if (regExp.lastIndex) {
-    // We expect to get all the way to the end of the input, in which case
-    // `lastIndex` should reset to 0.
-    throw new Error('Failed to consume input');
-  }
+    if (regExp.lastIndex) {
+      // We expect to get all the way to the end of the input, in which case
+      // `lastIndex` should reset to 0.
+      throw new Error('Failed to consume input');
+    }
+  });
 
   updates.push(['set', LAST_INDEXED_HASH, head]);
   log('Sending index updates to Redis.');
