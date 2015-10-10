@@ -21,10 +21,10 @@ import {
   nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
-import DateTimeType from './schema/types/DateTimeType';
 import Snippet from './Snippet';
 import Post from './Post';
 import TagType from './schema/types/TagType';
+import timestampFields from './schema/fields/timestampFields';
 
 class User {
   constructor() {
@@ -207,20 +207,6 @@ const articleType = new GraphQLObjectType({
         return article.title;
       }
     },
-    createdAt: {
-      type: DateTimeType,
-      description: 'Date and time when article was first created',
-      resolve(article) {
-        return article.createdAt;
-      },
-    },
-    updatedAt: {
-      type: DateTimeType,
-      description: 'Date and time when article was last updated',
-      resolve(article) {
-        return article.updatedAt;
-      },
-    },
     tags: {
       // TODO: make this tags{name}
       type: new GraphQLList(TagType),
@@ -237,7 +223,8 @@ const articleType = new GraphQLObjectType({
           format: article.format,
         };
       },
-    }
+    },
+    ...timestampFields,
   }),
   interfaces: [nodeInterface],
 });
@@ -257,20 +244,6 @@ const postType = new GraphQLObjectType({
         return post.title;
       }
     },
-    createdAt: {
-      type: DateTimeType,
-      description: 'Date and time when blog post was first created',
-      resolve(post) {
-        return post.createdAt;
-      },
-    },
-    updatedAt: {
-      type: DateTimeType,
-      description: 'Date and time when blog post was last updated',
-      resolve(post) {
-        return post.updatedAt;
-      },
-    },
     tags: {
       type: new GraphQLList(TagType),
       resolve(post) {
@@ -285,7 +258,8 @@ const postType = new GraphQLObjectType({
           format: post.format,
         };
       },
-    }
+    },
+    ...timestampFields,
   }),
   interfaces: [nodeInterface],
 });
@@ -305,20 +279,6 @@ const snippetType = new GraphQLObjectType({
         return snippet.title;
       }
     },
-    createdAt: {
-      type: DateTimeType,
-      description: 'Date and time when snippet was first created',
-      resolve(snippet) {
-        return snippet.createdAt;
-      },
-    },
-    updatedAt: {
-      type: DateTimeType,
-      description: 'Date and time when snippet was last updated',
-      resolve(snippet) {
-        return snippet.updatedAt;
-      },
-    },
     tags: {
       type: new GraphQLList(TagType),
       resolve(snippet) {
@@ -333,7 +293,8 @@ const snippetType = new GraphQLObjectType({
           format: snippet.format,
         };
       },
-    }
+    },
+    ...timestampFields,
   }),
   interfaces: [nodeInterface],
 });
