@@ -22,6 +22,7 @@ import {
 } from 'graphql-relay';
 import Article from './Article';
 import DateTimeType from './schema/types/DateTimeType';
+import Snippet from './Snippet';
 import TagType from './schema/types/TagType';
 
 class User {
@@ -37,6 +38,8 @@ const {nodeField, nodeInterface} = nodeDefinitions(
       return new User();
     } else if (type === 'Article') {
       return rootValue.loaders.articleLoader.load(id);
+    } else if (type === 'Snippet') {
+      return rootValue.loaders.snippetLoader.load(id);
     } else {
       return null;
     }
@@ -46,6 +49,8 @@ const {nodeField, nodeInterface} = nodeDefinitions(
       return userType;
     } else if (object instanceof Article) {
       return articleType;
+    } else if (object instanceof Snippet) {
+      return snippetType;
     } else {
       return null;
     }
@@ -73,6 +78,25 @@ const userType = new GraphQLObjectType({
         const [articles, totalCount] = await Article.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
           rootValue.loaders.articleLoader.loadMany(articles),
+          args,
+          {
+            sliceStart: offset,
+            arrayLength: totalCount,
+          },
+        );
+      },
+    },
+    snippets: {
+      type: snippetConnection,
+      description: 'Snippets visible to this user',
+      args: connectionArgs,
+      resolve: async (user, args, {rootValue}) => {
+        // Cap count to avoid abuse.
+        const count = Math.max(args.first, 10);
+        const offset = getOffsetWithDefault(args.after, -1) + 1;
+        const [snippets, totalCount] = await Snippet.readIndex(count, offset);
+        return connectionFromPromisedArraySlice(
+          rootValue.loaders.snippetLoader.loadMany(snippets),
           args,
           {
             sliceStart: offset,
@@ -194,8 +218,55 @@ const articleType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
-var {connectionType: articleConnection} =
+const {connectionType: articleConnection} =
   connectionDefinitions({name: 'Article', nodeType: articleType});
+
+const snippetType = new GraphQLObjectType({
+  name: 'Snippet',
+  description: 'A snippet',
+  fields: () => ({
+    id: globalIdField('Snippet'),
+    title: {
+      type: GraphQLString,
+      description: "The snippet's title",
+      resolve(snippet) {
+        return snippet.title;
+      }
+    },
+    createdAt: {
+      type: DateTimeType,
+      description: 'Date and time when snippet was first created',
+      resolve(snippet) {
+        return snippet.createdAt;
+      },
+    },
+    updatedAt: {
+      type: DateTimeType,
+      description: 'Date and time when snippet was last updated',
+      resolve(snippet) {
+        return snippet.updatedAt;
+      },
+    },
+    tags: {
+      type: new GraphQLList(TagType),
+      resolve(snippet) {
+        return snippet.tags;
+      },
+    },
+    body: {
+      type: markupType,
+      resolve(snippet) {
+        return {
+          raw: snippet.body,
+          format: snippet.format,
+        };
+      },
+    }
+  }),
+  interfaces: [nodeInterface],
+});
+const {connectionType: snippetConnection} =
+  connectionDefinitions({name: 'Snippet', nodeType: snippetType});
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
