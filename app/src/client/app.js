@@ -2,11 +2,15 @@ import 'babel/polyfill';
 
 import {toGlobalId} from 'graphql-relay';
 import App from './components/App';
+import Article from './components/Article';
+import Articles from './components/Articles';
 import Post from './components/Post';
 import Posts from './components/Posts';
 import Snippet from './components/Snippet';
 import Snippets from './components/Snippets';
 import AppQueries from './routes/AppQueries';
+import ArticleQueries from './routes/ArticleQueries';
+import ArticlesQueries from './routes/ArticlesQueries';
 import PostQueries from './routes/PostQueries';
 import PostsQueries from './routes/PostsQueries';
 import SnippetQueries from './routes/SnippetQueries';
@@ -28,9 +32,27 @@ function getPrepareParams(contentType) {
   return (params, route) => ({id: toGlobalId(contentType, params.id)});
 }
 
+/**
+ * Wiki articles are an extension to the above rule, because our internal IDs
+ * use spaces while our URLs use underscores instead, to avoind ugly %20 URL
+ * encoding in a user-visible place.
+ */
+function prepareArticleParams(params, route) {
+  return {
+    id: toGlobalId('Article', params.id.replace(/_/g, ' ')),
+  };
+}
+
 ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
     <Route component={App} path="/" queries={AppQueries}>
+      <Route component={Articles} path="wiki" queries={ArticlesQueries} />
+      <Route
+        component={Article}
+        path="wiki/:id"
+        prepareParams={prepareArticleParams}
+        queries={ArticleQueries}
+      />
       <Route component={Posts} path="blog" queries={PostsQueries} />
       <Route
         component={Post}

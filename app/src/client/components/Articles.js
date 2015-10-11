@@ -1,8 +1,8 @@
 import React from 'react';
 import Relay from 'react-relay';
-import Post from './Post';
+import Article from './Article';
 
-class Posts extends React.Component {
+class Articles extends React.Component {
   _handleSeeMore = event => {
     event.preventDefault();
     this.props.relay.setVariables({
@@ -13,21 +13,21 @@ class Posts extends React.Component {
   render() {
     return (
       <div>
-        <h1>Blog</h1>
+        <h1>Wiki</h1>
         <ul>
           {
-            this.props.viewer.posts.edges.map(edge => {
-              const post = edge.node;
+            this.props.viewer.articles.edges.map(edge => {
+              const article = edge.node;
               return (
-                <li key={post.id}>
-                  <Post post={post} />
+                <li key={article.id}>
+                  <Article article={article} />
                 </li>
               );
             })
           }
         </ul>
         {
-          this.props.viewer.posts.pageInfo.hasNextPage ?
+          this.props.viewer.articles.pageInfo.hasNextPage ?
             <a href="#more" onClick={this._handleSeeMore}>Load more&hellip;</a> :
             null
         }
@@ -36,18 +36,18 @@ class Posts extends React.Component {
   }
 }
 
-export default Relay.createContainer(Posts, {
+export default Relay.createContainer(Articles, {
   initialVariables: {
     count: 3,
   },
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        posts(first: $count) {
+        articles(first: $count) {
           edges {
             node {
               id
-              ${Post.getFragment('post')}
+              ${Article.getFragment('article')}
             }
           }
           pageInfo {

@@ -43,7 +43,6 @@ export default Relay.createContainer(Snippets, {
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        name
         snippets(first: $count) {
           edges {
             node {
