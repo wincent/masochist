@@ -33,7 +33,7 @@ const MarkupFormatType = new GraphQLEnumType({
 const MarkupType = new GraphQLObjectType({
   name: 'Markup',
   description: 'The textual markup for a piece of content',
-  fields: () => ({
+  fields: {
     raw: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'Unprocessed plain-text source of the markup',
@@ -65,7 +65,7 @@ const MarkupType = new GraphQLObjectType({
         }
       },
     },
-  }),
+  },
 });
 
 export default MarkupType;
