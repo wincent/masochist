@@ -134,7 +134,7 @@ const userType = new GraphQLObjectType({
 const articleType = new GraphQLObjectType({
   name: 'Article',
   description: 'A wiki article',
-  fields: () => ({
+  fields: {
     id: globalIdField('Article'),
     title: {
       type: new GraphQLNonNull(GraphQLString),
@@ -153,7 +153,7 @@ const articleType = new GraphQLObjectType({
     },
     ...tagsField,
     ...timestampFields,
-  }),
+  },
   interfaces: [nodeInterface],
 });
 
@@ -163,14 +163,12 @@ const {connectionType: articleConnection} =
 const postType = new GraphQLObjectType({
   name: 'Post',
   description: 'A blog post',
-  fields: () => ({
+  fields: {
     id: globalIdField('Post'),
     title: {
       type: new GraphQLNonNull(GraphQLString),
       description: "The blog post's title",
-      resolve(post) {
-        return post.title;
-      }
+      resolve: post => post.title,
     },
     body: {
       type: MarkupType,
@@ -183,7 +181,7 @@ const postType = new GraphQLObjectType({
     },
     ...tagsField,
     ...timestampFields,
-  }),
+  },
   interfaces: [nodeInterface],
 });
 
@@ -193,14 +191,12 @@ const {connectionType: postConnection} =
 const snippetType = new GraphQLObjectType({
   name: 'Snippet',
   description: 'A snippet',
-  fields: () => ({
+  fields: {
     id: globalIdField('Snippet'),
     title: {
       type: GraphQLString,
       description: "The snippet's title",
-      resolve(snippet) {
-        return snippet.title;
-      }
+      resolve: snippet => snippet.title,
     },
     body: {
       type: MarkupType,
@@ -213,7 +209,7 @@ const snippetType = new GraphQLObjectType({
     },
     ...tagsField,
     ...timestampFields,
-  }),
+  },
   interfaces: [nodeInterface],
 });
 
