@@ -238,7 +238,7 @@ const postType = new GraphQLObjectType({
   fields: () => ({
     id: globalIdField('Post'),
     title: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: "The blog post's title",
       resolve(post) {
         return post.title;
