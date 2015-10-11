@@ -5,6 +5,7 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
+import escapeHTML from '../../escapeHTML';
 
 function validateBaseHeadingLevel(level: ?number): ?number {
   if (level == null) {
@@ -61,7 +62,7 @@ const MarkupType = new GraphQLObjectType({
             baseHeadingLevel: level,
           });
         } else if (markup.format === 'txt') {
-          return markup.raw;
+          return '<pre>' + escapeHTML(markup.raw) + '</pre>';
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
         }
