@@ -52,6 +52,7 @@ def commit(document, model, message)
   system "git -C #{Shellwords.escape ROOT} add #{Shellwords.escape document}"
   system %{
     GIT_AUTHOR_DATE=#{model.created_at.iso8601}
+    GIT_COMMITTER_DATE=#{model.created_at.iso8601}
     git -C #{Shellwords.escape ROOT} commit
     -m #{Shellwords.escape message}
     -- #{Shellwords.escape document}
