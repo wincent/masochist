@@ -1,13 +1,11 @@
 import React from 'react';
+import Time from './Time';
 
 export default class When extends React.Component {
   render() {
-    const humanReadable = this.props.createdAt;
     return (
       <div>
-        <time title={humanReadable} datetime={this.props.createdAt}>
-          {humanReadable}
-        </time>
+        <Time datetime={this.props.createdAt} />
       </div>
     );
   }
