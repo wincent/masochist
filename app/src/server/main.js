@@ -30,12 +30,14 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express();
 
-app.get(
-  '/',
-  (request, response) => (
-    response.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'))
-  ),
+const appHandler = (request, response) => (
+  response.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'))
 );
+
+app.get('/', appHandler);
+app.get('/blog/*', appHandler);
+app.get('/wiki/*', appHandler);
+app.get('/snippets/*', appHandler);
 
 app.use('/graphql', (request, response, next) => {
   const options = {

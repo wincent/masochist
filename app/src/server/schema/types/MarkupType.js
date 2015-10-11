@@ -60,6 +60,8 @@ const MarkupType = new GraphQLObjectType({
             wikitext: markup.raw,
             baseHeadingLevel: level,
           });
+        } else if (markup.format === 'txt') {
+          return markup.raw;
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
         }

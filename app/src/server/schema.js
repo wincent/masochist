@@ -196,7 +196,7 @@ const snippetType = new GraphQLObjectType({
     title: {
       type: GraphQLString,
       description: "The snippet's title",
-      resolve: snippet => snippet.title,
+      resolve: snippet => snippet.title || `Snippet #${snippet.id}`,
     },
     body: {
       type: MarkupType,
