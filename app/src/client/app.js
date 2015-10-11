@@ -3,8 +3,10 @@ import 'babel/polyfill';
 import {toGlobalId} from 'graphql-relay';
 import App from './components/App';
 import Snippet from './components/Snippet';
+import Snippets from './components/Snippets';
 import AppQueries from './routes/AppQueries';
 import SnippetQueries from './routes/SnippetQueries';
+import SnippetsQueries from './routes/SnippetsQueries';
 import {createHistory} from 'history';
 import {Route, Router} from 'react-router';
 import ReactRouterRelay from 'react-router-relay';
@@ -22,6 +24,7 @@ function prepareSnippetParams(params, route) {
 ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
     <Route component={App} path="/" queries={AppQueries} />
+    <Route component={Snippets} path="/snippets/" queries={SnippetsQueries} />
     <Route
       component={Snippet}
       path="/snippets/:id"

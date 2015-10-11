@@ -21,6 +21,9 @@ class Snippet extends React.Component {
 }
 
 export default Relay.createContainer(Snippet, {
+  initialVariables: {
+    baseHeadingLevel: 2,
+  },
   fragments: {
     snippet: () => Relay.QL`
       fragment on Snippet {
@@ -30,7 +33,7 @@ export default Relay.createContainer(Snippet, {
         updatedAt
         tags
         body {
-          html(baseHeadingLevel: 2)
+          html(baseHeadingLevel: $baseHeadingLevel)
         }
       }
     `,
