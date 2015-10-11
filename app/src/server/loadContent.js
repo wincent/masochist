@@ -73,7 +73,6 @@ export default async function loadContent(options: LoaderOptions): Promise {
           (await repo.getCommit(mostRecent)).date() :
           null,
       };
-      // BUG: created at is in pst, updated at in pdt (is that right?)
     }
   );
 
