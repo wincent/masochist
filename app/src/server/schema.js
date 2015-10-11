@@ -207,6 +207,11 @@ const snippetType = new GraphQLObjectType({
         };
       },
     },
+    url: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: "URL for the snippet",
+      resolve: snippet => `/snippets/${snippet.id}`,
+    },
     ...tagsField,
     ...timestampFields,
   },
