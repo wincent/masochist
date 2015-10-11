@@ -19,35 +19,33 @@ import ReactDOM from 'react-dom';
 
 const history = createHistory();
 
-function preparePostParams(params, route) {
-  return {
-    id: toGlobalId('Post', params.id),
-  };
-}
-
-function prepareSnippetParams(params, route) {
-  return {
-    id: toGlobalId('Snippet', params.id),
-  };
+/**
+ * We use classical opaque GraphQL IDs internally ("Type:id", Base64-encoded)
+ * but in our URLs we use human-readable ID strings, so we need this function to
+ * convert for us.
+ */
+function getPrepareParams(contentType) {
+  return (params, route) => ({id: toGlobalId(contentType, params.id)});
 }
 
 ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
-    <Route component={App} path="/" queries={AppQueries} />
-    <Route component={Posts} path="/blog/" queries={PostsQueries} />
-    <Route
-      component={Post}
-      path="/blog/:id"
-      prepareParams={preparePostParams}
-      queries={PostQueries}
-    />
-    <Route component={Snippets} path="/snippets/" queries={SnippetsQueries} />
-    <Route
-      component={Snippet}
-      path="/snippets/:id"
-      prepareParams={prepareSnippetParams}
-      queries={SnippetQueries}
-    />
+    <Route component={App} path="/" queries={AppQueries}>
+      <Route component={Posts} path="blog" queries={PostsQueries} />
+      <Route
+        component={Post}
+        path="blog/:id"
+        prepareParams={getPrepareParams('Post')}
+        queries={PostQueries}
+      />
+      <Route component={Snippets} path="snippets" queries={SnippetsQueries} />
+      <Route
+        component={Snippet}
+        path="snippets/:id"
+        prepareParams={getPrepareParams('Snippet')}
+        queries={SnippetQueries}
+      />
+    </Route>
   </Router>,
   document.getElementById('relay-root')
 );
