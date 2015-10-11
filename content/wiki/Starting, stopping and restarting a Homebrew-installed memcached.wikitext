@@ -1,0 +1,10 @@
+---
+tags: memcached homebrew
+---
+= Starting =
+
+<pre lang="shell">$ launchctl load ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist</pre>
+
+= Stopping =
+
+<pre lang="shell">$ launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.memcached.plist</pre>
