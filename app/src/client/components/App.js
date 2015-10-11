@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import Wikitext from './Wikitext';
+import PrerenderedMarkup from './PrerenderedMarkup';
 
 import './App.css';
 
@@ -27,7 +27,7 @@ class App extends React.Component {
                       {title}
                     </a>
                   </h2>
-                  <Wikitext html={body.html} />
+                  <PrerenderedMarkup html={body.html} />
                   <ul>
                     {
                       tags.map((tag, i) => (
