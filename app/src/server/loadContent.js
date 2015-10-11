@@ -51,13 +51,8 @@ export default async function loadContent(options: LoaderOptions): Promise {
   const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {
-      // This is committer time, which is appropriate for articles (where recency of
-      // update matters). For posts, creation order matters, so we'll go with
-      // topological search (which works because I imported old content in-order)
-      // and we'll get creation date from the author date.
       const revs = await git(
         'rev-list',
-        '--date-order', // Do I really need to vary this? --author-date--order
         'content',
         '--',
         path.relative(
