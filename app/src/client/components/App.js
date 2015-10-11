@@ -30,7 +30,7 @@ class App extends React.Component {
                   </h2>
                   <When
                     createdAt={createdAt}
-                    primary={updatedAt}
+                    primary="updatedAt"
                     updatedAt={updatedAt}
                   />
                   <PrerenderedMarkup html={body.html} />
