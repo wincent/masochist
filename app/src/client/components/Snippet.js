@@ -1,14 +1,17 @@
 import React from 'react';
 import Relay from 'react-relay';
 import PrerenderedMarkup from './PrerenderedMarkup';
+import When from './When';
 
 
 class Snippet extends React.Component {
 
   render() {
+    const {snippet} = this.props;
     return (
       <div>
-        <h1>{this.props.snippet.title}</h1>
+        <h1>{snippet.title}</h1>
+        <When createdAt={snippet.createdAt} updatedAt={snippet.updatedAt} />
         <div>
           <PrerenderedMarkup html={this.props.snippet.body.html} />
         </div>
