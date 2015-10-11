@@ -2,7 +2,6 @@ import Promise from 'bluebird';
 import {
   GraphQLEnumType,
   GraphQLInt,
-  GraphQLList,
   GraphQLNonNull,
   GraphQLObjectType,
   GraphQLScalarType,
@@ -23,7 +22,7 @@ import {
 import Article from './Article';
 import Snippet from './Snippet';
 import Post from './Post';
-import TagType from './schema/types/TagType';
+import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 
 class User {
@@ -203,16 +202,7 @@ const articleType = new GraphQLObjectType({
     title: {
       type: new GraphQLNonNull(GraphQLString),
       description: "The article's title",
-      resolve(article) {
-        return article.title;
-      }
-    },
-    tags: {
-      // TODO: make this tags{name}
-      type: new GraphQLList(TagType),
-      resolve(article) {
-        return article.tags;
-      },
+      resolve: article => article.title,
     },
     body: {
       type: markupType,
@@ -224,6 +214,7 @@ const articleType = new GraphQLObjectType({
         };
       },
     },
+    ...tagsField,
     ...timestampFields,
   }),
   interfaces: [nodeInterface],
@@ -244,12 +235,6 @@ const postType = new GraphQLObjectType({
         return post.title;
       }
     },
-    tags: {
-      type: new GraphQLList(TagType),
-      resolve(post) {
-        return post.tags;
-      },
-    },
     body: {
       type: markupType,
       resolve(post) {
@@ -259,6 +244,7 @@ const postType = new GraphQLObjectType({
         };
       },
     },
+    ...tagsField,
     ...timestampFields,
   }),
   interfaces: [nodeInterface],
@@ -279,12 +265,6 @@ const snippetType = new GraphQLObjectType({
         return snippet.title;
       }
     },
-    tags: {
-      type: new GraphQLList(TagType),
-      resolve(snippet) {
-        return snippet.tags;
-      },
-    },
     body: {
       type: markupType,
       resolve(snippet) {
@@ -294,6 +274,7 @@ const snippetType = new GraphQLObjectType({
         };
       },
     },
+    ...tagsField,
     ...timestampFields,
   }),
   interfaces: [nodeInterface],
