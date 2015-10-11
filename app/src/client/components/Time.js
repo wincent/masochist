@@ -32,7 +32,7 @@ export default class Time extends React.Component {
     );
 
     return (
-      <time title={date.toLocaleDateString()} dateTime={date}>
+      <time title={date.toLocaleString()} dateTime={date}>
         {humanReadable}
       </time>
     );
