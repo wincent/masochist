@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import PrerenderedMarkup from './PrerenderedMarkup';
+import When from './When';
 
 import './App.css';
 
@@ -27,6 +28,11 @@ class App extends React.Component {
                       {title}
                     </a>
                   </h2>
+                  <When
+                    createdAt={createdAt}
+                    primary={updatedAt}
+                    updatedAt={updatedAt}
+                  />
                   <PrerenderedMarkup html={body.html} />
                   <ul>
                     {
