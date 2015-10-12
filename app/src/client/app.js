@@ -16,7 +16,7 @@ import PostsQueries from './routes/PostsQueries';
 import SnippetQueries from './routes/SnippetQueries';
 import SnippetsQueries from './routes/SnippetsQueries';
 import {createHistory} from 'history';
-import {Route, Router} from 'react-router';
+import {IndexRoute, Route, Router} from 'react-router';
 import ReactRouterRelay from 'react-router-relay';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -46,6 +46,7 @@ function prepareArticleParams(params, route) {
 ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
     <Route component={App} path="/" queries={AppQueries}>
+      <IndexRoute component={Posts} queries={PostsQueries} />
       <Route component={Articles} path="wiki" queries={ArticlesQueries} />
       <Route
         component={Article}
