@@ -151,6 +151,11 @@ const articleType = new GraphQLObjectType({
         };
       },
     },
+    url: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'URL for the article',
+      resolve: article => `/wiki/${article.id.replace(/ /g, '_')}`,
+    },
     ...tagsField,
     ...timestampFields,
   },
