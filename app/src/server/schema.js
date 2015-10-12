@@ -186,7 +186,7 @@ const postType = new GraphQLObjectType({
     },
     url: {
       type: new GraphQLNonNull(GraphQLString),
-      description: "URL for the post",
+      description: 'URL for the post',
       resolve: post => `/blog/${post.id}`,
     },
     ...tagsField,
@@ -219,7 +219,7 @@ const snippetType = new GraphQLObjectType({
     },
     url: {
       type: new GraphQLNonNull(GraphQLString),
-      description: "URL for the snippet",
+      description: 'URL for the snippet',
       resolve: snippet => `/snippets/${snippet.id}`,
     },
     ...tagsField,
