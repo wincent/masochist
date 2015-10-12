@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import {Link} from 'react-router';
 import PrerenderedMarkup from './PrerenderedMarkup';
 import When from './When';
 
@@ -8,7 +9,11 @@ class Post extends React.Component {
     const {post} = this.props;
     return (
       <div>
-        <h1>{post.title}</h1>
+        <h1>
+          <Link to={post.url}>
+            {post.title}
+          </Link>
+        </h1>
         <When createdAt={post.createdAt} updatedAt={post.updatedAt} />
         <div>
           <PrerenderedMarkup html={this.props.post.body.html} />
@@ -29,6 +34,7 @@ export default Relay.createContainer(Post, {
         title
         createdAt
         updatedAt
+        url
         tags
         body {
           html(baseHeadingLevel: $baseHeadingLevel)

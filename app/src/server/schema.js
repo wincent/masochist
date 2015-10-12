@@ -179,6 +179,11 @@ const postType = new GraphQLObjectType({
         };
       },
     },
+    url: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: "URL for the post",
+      resolve: post => `/blog/${post.id}`,
+    },
     ...tagsField,
     ...timestampFields,
   },
