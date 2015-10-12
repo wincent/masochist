@@ -12,11 +12,11 @@ export default class Time extends React.Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    this._clearTimer;
+    this._clearTimer();
   }
 
   componentWillUnmount() {
-    this._clearTimer;
+    this._clearTimer();
   }
 
   render() {
