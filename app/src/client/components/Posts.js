@@ -14,18 +14,11 @@ class Posts extends React.Component {
     return (
       <div>
         <h1>Blog</h1>
-        <ul>
-          {
-            this.props.viewer.posts.edges.map(edge => {
-              const post = edge.node;
-              return (
-                <li key={post.id}>
-                  <Post post={post} />
-                </li>
-              );
-            })
-          }
-        </ul>
+        {
+          this.props.viewer.posts.edges.map(({node}) => (
+            <Post key={node.id} post={node} />
+          ))
+        }
         {
           this.props.viewer.posts.pageInfo.hasNextPage ?
             <a href="#more" onClick={this._handleSeeMore}>Load more&hellip;</a> :

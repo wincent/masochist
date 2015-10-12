@@ -9,7 +9,7 @@ class Article extends React.Component {
     const {article} = this.props;
     // TODO handle redirects
     return (
-      <div>
+      <article>
         <h1>
           <Link to={article.url}>
             {article.title}
@@ -19,7 +19,7 @@ class Article extends React.Component {
         <div>
           <PrerenderedMarkup html={this.props.article.body.html} />
         </div>
-      </div>
+      </article>
     );
     // TODO tags
   }

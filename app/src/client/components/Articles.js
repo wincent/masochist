@@ -14,18 +14,11 @@ class Articles extends React.Component {
     return (
       <div>
         <h1>Wiki</h1>
-        <ul>
-          {
-            this.props.viewer.articles.edges.map(edge => {
-              const article = edge.node;
-              return (
-                <li key={article.id}>
-                  <Article article={article} />
-                </li>
-              );
-            })
-          }
-        </ul>
+        {
+          this.props.viewer.articles.edges.map(({node}) => (
+            <Article key={node.id} article={node} />
+          ))
+        }
         {
           this.props.viewer.articles.pageInfo.hasNextPage ?
             <a href="#more" onClick={this._handleSeeMore}>Load more&hellip;</a> :

@@ -14,18 +14,11 @@ class Snippets extends React.Component {
     return (
       <div>
         <h1>Snippets</h1>
-        <ul>
-          {
-            this.props.viewer.snippets.edges.map(edge => {
-              const snippet = edge.node;
-              return (
-                <li key={snippet.id}>
-                  <Snippet snippet={snippet} />
-                </li>
-              );
-            })
-          }
-        </ul>
+        {
+          this.props.viewer.snippets.edges.map(({node}) => (
+            <Snippet key={node.id} snippet={node} />
+          ))
+        }
         {
           this.props.viewer.snippets.pageInfo.hasNextPage ?
             <a href="#more" onClick={this._handleSeeMore}>Load more&hellip;</a> :

@@ -9,7 +9,7 @@ class Snippet extends React.Component {
   render() {
     const {snippet} = this.props;
     return (
-      <div>
+      <article>
         <h1>
           <Link to={snippet.url}>
             {snippet.title}
@@ -19,7 +19,7 @@ class Snippet extends React.Component {
         <div>
           <PrerenderedMarkup html={this.props.snippet.body.html} />
         </div>
-      </div>
+      </article>
     );
   }
 }

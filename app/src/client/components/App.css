@@ -1,9 +1,32 @@
 html {
   box-sizing: border-box;
+
+  /* http://aestheticallyloyal.com/public/optimize-legibility/ */
+  text-rendering: optimizeLegibility;
 }
 
 *,
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+body {
+  font-family: Tahoma, Arial, Verdana, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #333;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-weight: normal;
+}
+
+code,
+pre {
+  font-family: 'Courier New', Courier, monospace;
 }

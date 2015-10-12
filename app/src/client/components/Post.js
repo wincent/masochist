@@ -8,7 +8,7 @@ class Post extends React.Component {
   render() {
     const {post} = this.props;
     return (
-      <div>
+      <article>
         <h1>
           <Link to={post.url}>
             {post.title}
@@ -18,7 +18,7 @@ class Post extends React.Component {
         <div>
           <PrerenderedMarkup html={this.props.post.body.html} />
         </div>
-      </div>
+      </article>
     );
   }
 }
