@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
 import PrerenderedMarkup from './PrerenderedMarkup';
+import Tags from './Tags';
 import When from './When';
 
 
@@ -19,6 +20,7 @@ class Snippet extends React.Component {
         <div>
           <PrerenderedMarkup html={this.props.snippet.body.html} />
         </div>
+        <Tags taggable={snippet} />
       </article>
     );
   }
@@ -36,10 +38,10 @@ export default Relay.createContainer(Snippet, {
         title
         createdAt
         updatedAt
-        tags
         body {
           html(baseHeadingLevel: $baseHeadingLevel)
         }
+        ${Tags.getFragment('taggable')}
       }
     `,
   },

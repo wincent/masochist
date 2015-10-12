@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
 import PrerenderedMarkup from './PrerenderedMarkup';
+import Tags from './Tags';
 import When from './When';
 
 class Article extends React.Component {
@@ -17,11 +18,11 @@ class Article extends React.Component {
         </h1>
         <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
         <div>
-          <PrerenderedMarkup html={this.props.article.body.html} />
+          <PrerenderedMarkup html={article.body.html} />
         </div>
+        <Tags taggable={article} />
       </article>
     );
-    // TODO tags
   }
 }
 
@@ -36,11 +37,11 @@ export default Relay.createContainer(Article, {
         title
         createdAt
         updatedAt
-        tags
         url
         body {
           html(baseHeadingLevel: $baseHeadingLevel)
         }
+        ${Tags.getFragment('taggable')}
       }
     `,
   },

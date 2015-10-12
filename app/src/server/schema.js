@@ -1,7 +1,9 @@
 import Promise from 'bluebird';
 import {
   GraphQLInt,
+  GraphQLInterfaceType,
   GraphQLNonNull,
+  GraphQLList,
   GraphQLObjectType,
   GraphQLSchema,
   GraphQLString,
@@ -23,12 +25,35 @@ import Post from './Post';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import MarkupType from './schema/types/MarkupType';
+import TagType from './schema/types/TagType';
 
 class User {
   constructor() {
     this.name = 'Anonymous visitor';
   }
 }
+
+const taggableInterface = new GraphQLInterfaceType({
+  name: 'Taggable',
+  description: 'An object with a tags field',
+  fields: {
+    tags: {
+      type: new GraphQLList(TagType),
+      description: 'A list of tag names'
+    },
+  },
+  resolveType: object => {
+    if (object instanceof Article) {
+      return articleType;
+    } else if (object instanceof Post) {
+      return postType;
+    } else if (object instanceof Snippet) {
+      return snippetType;
+    } else {
+      return null;
+    }
+  },
+});
 
 const {nodeField, nodeInterface} = nodeDefinitions(
   function resolveObjectFromID(globalId, {rootValue}) {
@@ -159,7 +184,7 @@ const articleType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface],
+  interfaces: [nodeInterface, taggableInterface],
 });
 
 const {connectionType: articleConnection} =
@@ -192,7 +217,7 @@ const postType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface],
+  interfaces: [nodeInterface, taggableInterface],
 });
 
 const {connectionType: postConnection} =
@@ -225,7 +250,7 @@ const snippetType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface],
+  interfaces: [nodeInterface, taggableInterface],
 });
 
 const {connectionType: snippetConnection} =

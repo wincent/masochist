@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
 import PrerenderedMarkup from './PrerenderedMarkup';
+import Tags from './Tags';
 import When from './When';
 
 class Post extends React.Component {
@@ -16,8 +17,9 @@ class Post extends React.Component {
         </h1>
         <When createdAt={post.createdAt} updatedAt={post.updatedAt} />
         <div>
-          <PrerenderedMarkup html={this.props.post.body.html} />
+          <PrerenderedMarkup html={post.body.html} />
         </div>
+        <Tags taggable={post} />
       </article>
     );
   }
@@ -35,10 +37,10 @@ export default Relay.createContainer(Post, {
         createdAt
         updatedAt
         url
-        tags
         body {
           html(baseHeadingLevel: $baseHeadingLevel)
         }
+        ${Tags.getFragment('taggable')}
       }
     `,
   },
