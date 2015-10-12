@@ -1,8 +1,5 @@
 'use strict'; // eslint-disable-line
 
-// BUG: I shouldn't have to do this.
-import 'babel-runtime/regenerator/runtime';
-
 import getArticleLoader from './getArticleLoader';
 import getPostLoader from './getPostLoader';
 import getSnippetLoader from './getSnippetLoader';

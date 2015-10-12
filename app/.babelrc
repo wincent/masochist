@@ -5,6 +5,7 @@
     "es7.decorators",
     "es7.functionBind",
     "es7.objectRestSpread",
-    "es7.trailingFunctionCommas"
+    "es7.trailingFunctionCommas",
+    "runtime"
   ]
 }
