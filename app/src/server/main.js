@@ -35,8 +35,11 @@ const appHandler = (request, response) => (
 );
 
 app.get('/', appHandler);
+app.get('/blog', appHandler);
 app.get('/blog/*', appHandler);
+app.get('/wiki', appHandler);
 app.get('/wiki/*', appHandler);
+app.get('/snippets', appHandler);
 app.get('/snippets/*', appHandler);
 
 app.use('/graphql', (request, response, next) => {
