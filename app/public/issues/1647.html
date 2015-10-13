@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1647: Using Command-T with Vim 7.3 on Windows leads to Vim crash
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1647</div>
+<div class='issue' id='issue_1647'>
+<form class="edit_issue" id="edit_issue_1647" action="/issues/1647" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="8lENFXv09P8kQEGgy1gmctqxub0kv3DAxFZVt1uGKU/Go7Oi3Hkuqv3Mclf6cXXGbzPQgS9T/tzkSYBJf15Oaw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1647:
+<span data-name='issue[summary]'>
+Using Command-T with Vim 7.3 on Windows leads to Vim crash
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-08-17T03:19:31Z</time>, updated <time data-relative="true">2011-08-16T09:27:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Environment: Vim 7.3, Ruby 1.9.1p430, Windows 7.</p>
+<p>I switched to Vim 7.3 and recompiled Command-T, otherwise it did not run properly with new version of Vim. Using ESC after Ctrl-T leads Vim to crash.</p>
+<p>Step to reproduce:</p>
+<ol>
+<li>Open Vim</li>
+<li>Change to some directory (I think this is not a neccessary step, but I do include it)</li>
+<li>Press Ctrl-T, list of files will be shown</li>
+<li>Press Esc</li>
+<li>Vim crashes!</li>
+</ol>
+<p>I tried version 0.7 and 0.8b of Command-T, both of them leads to crash.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6093'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6093"><time data-relative="true">2010-08-18T16:26:13Z</time></a></span>
+</cite>
+<blockquote><p>So you say, &quot;otherwise it did not run properly&quot;. Do you mean to say that it <em>does</em> run properly after recompiling?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6096'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6096"><time data-relative="true">2010-08-18T23:19:22Z</time></a></span>
+</cite>
+<blockquote><p>I mean, that Command-T compiled for Vim 7.2 does not run in Vim 7.3 (problem with loading C-extension), so it should be recompiled. I think, this is because Vim 7.3 uses Ruby 1.9.1.</p>
+<p>-- Dmitry Maksimov</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6097'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6097"><time data-relative="true">2010-08-19T02:12:22Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for clarifying that. What you describe is actually expected behavior; Command-T must always be compiled and linked against the same version of Ruby that Vim itself is linked against.</p>
+<p>I try to cover this in <a href="http://git.wincent.com/command-t.git/blob/ead2d887f45eaa9fbd4313074f5842825d1b9798:/README.txt" class="external">the documentation</a>, particularly the &quot;TROUBLE-SHOOTING&quot; section, although I am going to update it now that 7.3 is officially out, and at least on Windows, it is now linked against Ruby 1.9.1.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6098'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6098"><time data-relative="true">2010-08-19T02:30:02Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've updated the docs in <a href="http://git.wincent.com/command-t.git/commitdiff/276260419ffa86d0f22ac9b9f769da9a7a0e3310" class="external">this commit</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6099'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6099"><time data-relative="true">2010-08-19T02:30:19Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6101'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6101"><time data-relative="true">2010-08-19T09:44:55Z</time></a></span>
+</cite>
+<blockquote><p>Wincent, I reported bug not about command-t compilation issues with Vim 7.3. Sorry, if I was unclear. The bug is about Vim 7.3 crash on pressing Esc button after calling :CommandT.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6102'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6102"><time data-relative="true">2010-08-19T11:13:42Z</time></a></span>
+</cite>
+<blockquote><p>Sounds like you've miscompiled Command-T.</p>
+<p>What was the output when you ran <code>ruby exconf.rb</code> and <code>make</code>?</p>
+<p>What is the output of <code>vim --version</code>?</p>
+<p>What is the output of <code>ruby --version</code>?</p>
+<p>What version of Vim are you running? Is this a binary download from www.vim.org is it a build that you've compiled yourself from source?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6103'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6103"><time data-relative="true">2010-08-20T03:42:54Z</time></a></span>
+</cite>
+<blockquote><h3><code>ruby --version</code></h3>
+<pre>ruby 1.9.1p430 (2010-08-16 revision 28998) [i386-mingw32]</pre>
+<h3><code>vim --version</code></h3>
+<pre>VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Aug 15 2010 15:06:59)
+MS-Windows 32-bit console version
+Compiled by Bram@KIBAALE
+Big version without GUI.  Features included (+) or not (-):
++arabic +autocmd -balloon_eval -browse ++builtin_terms +byte_offset +cindent
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con +diff +digraphs
+-dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path
++find_in_path +float +folding -footer +gettext/dyn -hangul_input +iconv/dyn
++insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent
++listcmds +localmap -lua +menu +mksession +modify_fname +mouse -mouseshape
++multi_byte +multi_lang -mzscheme -netbeans_intg -osfiletype +path_extra -perl
++persistent_undo -postscript +printer -profile -python -python3 +quickfix
++reltime +rightleft -ruby +scrollbind +signs +smartindent -sniff +startuptime
++statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white
+-tcl -tgetent -termresponse +textobjects +title -toolbar +user_commands
++vertsplit +virtualedit +visual +visualextra +viminfo +vreplace +wildignore
++wildmenu +windows +writebackup -xfontset -xim -xterm_save -xpm_w32
+   system vimrc file: &quot;$VIM\vimrc&quot;
+     user vimrc file: &quot;$HOME\_vimrc&quot;
+ 2nd user vimrc file: &quot;$VIM\_vimrc&quot;
+      user exrc file: &quot;$HOME\_exrc&quot;
+  2nd user exrc file: &quot;$VIM\_exrc&quot;
+Compilation: cl -c /W3 /nologo  -I. -Iproto -DHAVE_PATHDEF -DWIN32   -DFEAT_CSCOPE       -DWINVER=0x0400 -D_WIN32_WINNT=
+0x0400  /Fo.\ObjC/ /Ox /GL -DNDEBUG  /Zl /MT -DDYNAMIC_ICONV -DDYNAMIC_GETTEXT -DFEAT_BIG /Fd.\ObjC/ /Zi
+Linking: link /RELEASE /nologo /subsystem:console /LTCG:STATUS oldnames.lib kernel32.lib advapi32.lib shell32.lib gdi32.
+lib  comdlg32.lib ole32.lib uuid.lib /machine:i386 /nodefaultlib  libcmt.lib   user32.lib             /PDB:vim.pdb -debug</pre>
+<h3><code>ruby extconf.rb</code></h3>
+<pre>checking for ruby.h... yes
+creating Makefile</pre>
+<h3><code>make</code></h3>
+<pre>gcc -I. -Id:/bin/ruby191/include/ruby-1.9.1/i386-mingw32 -I/d/bin/ruby191/include/ruby-1.9.1/ruby/backward -I/d/bin/ruby
+191/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -Wall -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter
+ -o ext.o -c ext.c
+gcc -I. -Id:/bin/ruby191/include/ruby-1.9.1/i386-mingw32 -I/d/bin/ruby191/include/ruby-1.9.1/ruby/backward -I/d/bin/ruby
+191/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -Wall -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter
+ -o match.o -c match.c
+gcc -I. -Id:/bin/ruby191/include/ruby-1.9.1/i386-mingw32 -I/d/bin/ruby191/include/ruby-1.9.1/ruby/backward -I/d/bin/ruby
+191/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -Wall -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter
+ -o matcher.o -c matcher.c
+gcc -shared -s -o ext.so ext.o match.o matcher.o -L. -Ld:/bin/ruby191/lib -L.  -Wl,--enable-auto-image-base,--enable-aut
+o-import   -lmsvcrt-ruby191  -lshell32 -lws2_32</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6105'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6105"><time data-relative="true">2010-08-20T12:11:44Z</time></a></span>
+</cite>
+<blockquote><p>According the the output you pasted in from <code>vim --version</code>, your Vim wasn't compiled with <a href="/wiki/Ruby">Ruby</a> support (note the <code>-ruby</code> in the output, and the lack of Ruby-related flags in the compilation and linking output.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6141'>
+<cite>
+<a href="/users/alva">Alva</a>
+<span class='when'><a href="#comment_6141"><time data-relative="true">2010-08-26T03:38:37Z</time></a></span>
+</cite>
+<blockquote><p>I suffered the same problem too.</p>
+<p>I am using win7, Chinese Simple Pro Edition. the following is about my environment:</p>
+<pre>--&gt; ruby 1.9.1p429 (2010-07-02 revision 28523) [i386-mingw32]
+
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Aug 15 2010 15:14:24)
+
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff 
++digraphs -dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi 
++file_in_path +find_in_path +float +folding -footer +gettext/dyn -hangul_input 
++iconv/dyn +insert_expand +jumplist +keymap +langmap +libcall +linebreak 
++lispindent +listcmds +localmap -lua +menu +mksession +modify_fname +mouse 
++mouseshape +multi_byte_ime/dyn +multi_lang -mzscheme +netbeans_intg +ole 
+-osfiletype +path_extra +perl/dyn +persistent_undo -postscript +printer 
+-profile +python/dyn +python3/dyn +quickfix +reltime +rightleft +ruby/dyn 
++scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop 
++syntax +tag_binary +tag_old_static -tag_any_white +tcl/dyn -tgetent 
+-termresponse +textobjects +title +toolbar +user_commands +vertsplit 
++virtualedit +visual +visualextra +viminfo +vreplace +wildignore +wildmenu 
++windows +writebackup -xfontset -xim -xterm_save +xpm_w32 
+  
+Compiled : cl -c /W3 /nologo  -I. -Iproto -DHAVE_PATHDEF -DWIN32   -DFEAT_CSCOPE 
+-DFEAT_NETBEANS_INTG   -DFEAT_XPM_W32   -DWINVER=0x0400 -D_WIN32_WINNT=0x0400  
+/Fo.\ObjGOLYHTR/ /Ox /GL -DNDEBUG  /Zl /MT -DFEAT_OLE -DFEAT_MBYTE_IME -DDYNAMIC_IME 
+-DFEAT_GUI_W32 -DDYNAMIC_ICONV -DDYNAMIC_GETTEXT -DFEAT_TCL -DDYNAMIC_TCL 
+-DDYNAMIC_TCL_DLL=\&quot;tcl83.dll\&quot; -DDYNAMIC_TCL_VER=\&quot;8.3\&quot; -DFEAT_PYTHON 
+-DDYNAMIC_PYTHON -DDYNAMIC_PYTHON_DLL=\&quot;python27.dll\&quot; -DFEAT_PYTHON3 
+-DDYNAMIC_PYTHON3 -DDYNAMIC_PYTHON3_DLL=\&quot;python31.dll\&quot; -DFEAT_PERL -DDYNAMIC_PERL 
+-DDYNAMIC_PERL_DLL=\&quot;perl512.dll\&quot; -DFEAT_RUBY -DDYNAMIC_RUBY -DDYNAMIC_RUBY_VER=191 
+-DDYNAMIC_RUBY_DLL=\&quot;msvcrt-ruby191.dll\&quot; -DFEAT_BIG /Fd.\ObjGOLYHTR/ /Zi
+Linking: link /RELEASE /nologo /subsystem:windows /LTCG:STATUS oldnames.lib kernel32.lib 
+advapi32.lib shell32.lib gdi32.lib  comdlg32.lib ole32.lib uuid.lib /machine:i386 /nodefaultlib gdi32.lib 
+version.lib   winspool.lib comctl32.lib advapi32.lib shell32.lib  /machine:i386 /nodefaultlib libcmt.lib 
+oleaut32.lib  user32.lib      /nodefaultlib:python27.lib /nodefaultlib:python31.lib   e:\tcl\lib\tclstub83.lib 
+WSock32.lib e:\xpm\lib\libXpm.lib /PDB:gvim.pdb -debug</pre>
+<p>make:</p>
+<pre>gcc -I. -IC:/Ruby19/include/ruby-1.9.1/i386-mingw32 -I/C/Ruby19/include/ruby-1.9
+.1/ruby/backward -I/C/Ruby19/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -Wal
+l -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter -o ext.o -c ex
+t.c
+gcc -I. -IC:/Ruby19/include/ruby-1.9.1/i386-mingw32 -I/C/Ruby19/include/ruby-1.9
+.1/ruby/backward -I/C/Ruby19/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -Wal
+l -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter -o match.o -c
+match.c
+gcc -I. -IC:/Ruby19/include/ruby-1.9.1/i386-mingw32 -I/C/Ruby19/include/ruby-1.9
+.1/ruby/backward -I/C/Ruby19/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -Wal
+l -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter -o matcher.o -
+c matcher.c
+gcc -shared -s -o ext.so ext.o match.o matcher.o -L. -LC:/Ruby19/lib -L.  -Wl,--
+enable-auto-image-base,--enable-auto-import   -lmsvcrt-ruby191  -lshell32 -lws2_
+32</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6142'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6142"><time data-relative="true">2010-08-26T03:52:25Z</time></a></span>
+</cite>
+<blockquote><p>I'm on a Mac here so I don't know too much about the nuances of compiling this on Windows.</p>
+<p>At least at a glance things look ok (ie. Vim seems to want <code>msvcrt-ruby191.dll</code> and Command-T was linked against <code>msvcrt-ruby191</code> during the <code>make</code>, so they seem to match).</p>
+<p>I see you're using MinGW. Never used it myself, but did you use it to compile your own Ruby? Did you compile your own Vim? You could try doing that, although it may be opening a can of worms. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6148'>
+<cite>
+<a href="/users/alva">Alva</a>
+<span class='when'><a href="#comment_6148"><time data-relative="true">2010-08-26T05:45:34Z</time></a></span>
+</cite>
+<blockquote><p>thanks for your reply.</p>
+<p>I download vim 7.3 from official site</p>
+<p>ant MinGw is shipped with ruby dev-kit</p>
+<p>I have googled this problem for the whole afternoon, I noticed that someone encounter problem with c extensions on ruby 1.9.1. here is the test module.</p>
+<pre>// Demonstrating what's presumed to be a Ruby 1.9 bug
+
+// Where test.rb contains:
+//   require 'rubygems'
+
+// The error raised is that Mutex can't find the method 'synchronize'
+
+[/tags/include #include] &lt;ruby.h&gt;
+
+static char ** s_argv;
+static int s_argc = 1;
+
+int main() {
+  s_argv = (char **) calloc(2, sizeof(char *));
+  s_argv[0] = &quot;Embedded Ruby&quot;;
+  s_argv[1] = NULL;
+
+  ruby_sysinit(&amp;s_argc, &amp;s_argv);
+  {
+    RUBY_INIT_STACK;
+    ruby_init();
+    ruby_script(&quot;BrowserPlus Embedded Ruby&quot;);      
+    ruby_init_loadpath();
+  
+    rb_require(&quot;test.rb&quot;);
+  }
+}</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6149'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6149"><time data-relative="true">2010-08-26T05:46:49Z</time></a></span>
+</cite>
+<blockquote><p>As an alternative then you could try using the Vim 7.3 build from the Cream project, which links against 1.8.7, not 1.9.</p>
+<p><a href="http://sourceforge.net/projects/cream/files/Vim" class="external">http://sourceforge.net/projects/cream/files/Vim</a></p>
+<p>This is just normal Vim without any of the Cream stuff added.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6150'>
+<cite>
+<a href="/users/alva">Alva</a>
+<span class='when'><a href="#comment_6150"><time data-relative="true">2010-08-26T05:51:13Z</time></a></span>
+</cite>
+<blockquote><p>for a project I want to use Python 2.7 and official Vim7.3 support this python version, but the cream version doesn't.</p>
+<p>command-t is one of my favorite vim plugins, I just want it became better, so I reported this issue. if you have time, please try to fix this, it would be good, if it get fixed before vim7.3 get popular. best regards.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6151'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6151"><time data-relative="true">2010-08-26T06:00:55Z</time></a></span>
+</cite>
+<blockquote><p>Yes, I'd like to fix it. But from what you're suggesting, it looks to be a bug in Ruby 1.9. It might be possible to work around it inside Vim itself, or perhaps in Command-T, but I'm not sure about it.</p>
+<p>If you're forced to use Ruby 1.8 but also need Python 2.7, then I guess compiling your own Vim might be the only option, and I imagine that might be difficult on Windows.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6152'>
+<cite>
+<a href="/users/alva">Alva</a>
+<span class='when'><a href="#comment_6152"><time data-relative="true">2010-08-26T22:21:12Z</time></a></span>
+</cite>
+<blockquote><p>I did a little research into command-t last night. I don't think the problem is ruby's fault now. I tested the phrase of crash and read command-t source code The C extension is only used for quick match, am I right? but the matcher works! the result lines can be selected. the highlight line can be moved</p>
+<p>I think the problem is on closing the matcher/prompt window, I am not familiar with VIM script nor Ruby so I cann't do more about this. If you have time, you can take some time to test this issue. thanks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6153'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6153"><time data-relative="true">2010-08-27T10:32:45Z</time></a></span>
+</cite>
+<blockquote><p>So, what actually happens when you try to open the selection? Is anything printed?</p>
+<p>It <em>may</em> be related to <a href="/issues/1617">ticket #1617</a>, &quot;$curbuf.number always returns 0 (zero) instead of actual buffer number on some platforms/Vim versions&quot;, so take a look at that one. Does <code>:ruby puts $curbuf.number</code> ouput 0 for you?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6164'>
+<cite>
+<a href="/users/alva">Alva</a>
+<span class='when'><a href="#comment_6164"><time data-relative="true">2010-08-29T21:58:43Z</time></a></span>
+</cite>
+<blockquote><p>$curbuf.number is not zero for me.</p>
+<p>BTW, vim7.3's with ruby 191 is really buggy, not only just with command-t, when you open a ruby file, some errors like prompt, sometimes when vim crashs when you use aotocomplete of ruby. Have you notice that? or just I am using windows platform?</p>
+<p>BTW, I compiled vim7.3.3 with Python 2.7 and  Ruby 187 on windows, it was not so hard as imagine, vim works well now! And I noticed command-t ruby extension cann't be compiled with MS VS compiler, because MS VS doesn't support c99, and command-t doesn't always declare variable at begining lines of a function.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6165'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6165"><time data-relative="true">2010-08-30T04:35:35Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Have you notice that?</p>
+</blockquote>
+<p>No I haven't noticed it as I am not using Ruby 1.9, nor in Vim nor anywhere. (In fact, I only have it installed under <a href="/wiki/RVM">RVM</a> so that I can test different versions of my software against it.) I've always been a bit puzzled by people's desire to start using 1.9 <em>everywhere</em> and <em>as soon as possible</em>; for me Vim is a tool for getting jobs done, and Ruby too, so there's no reason why I would ever use anything other than the system Ruby (which for me right now means 1.8.7).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6167'>
+<cite>
+<a href="/users/alva">Alva</a>
+<span class='when'><a href="#comment_6167"><time data-relative="true">2010-08-30T21:10:17Z</time></a></span>
+</cite>
+<blockquote><p>I totally agree with you. But in open source ecosystem, many things (software) are linked together just like food chain.</p>
+<p>For me, I am not using Ruby, instead, I use python everywhere ruby may be used, but I like command-t, so I have to install ruby :), I even thought about to learn the spirits of your code and rewrite command-t in Python!. Just because I want to use Python 2.7 and utilize some new features, vim 7.3 involved and then ruby 19, the food chain has been established. After the struggling, I think I will just stay on Ruby 1.8.7 as Long as possible, as my present requirement is just make command-t work, and it works well in Ruby 1.8.7. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6534'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6534"><time data-relative="true">2010-12-17T10:48:40Z</time></a></span>
+</cite>
+<blockquote><p>I had the same problems with gvim 7.3 and Ruby 1.9.1 as mentioned above. After investigating this a little bit, I realized it has something to do with the Ruby binding itself. For example, VIM crashed after accessing a global variable in Ruby plugin code.</p>
+<p>However, I found a solution in installing &quot;Vim without Cream&quot; from the Cream website, together with Ruby 1.8.7. This combo works like a charm with command-t and other Ruby plugins, like LustyJuggler for example.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6543'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6543"><time data-relative="true">2010-12-26T11:22:50Z</time></a></span>
+</cite>
+<blockquote><p>This issue was recently patched in vim - [<a href="http://ftp.vim.org/vim/patches/7.3/7.3.088" class="external">http://ftp.vim.org/vim/patches/7.3/7.3.088</a>].</p>
+<p>I have uploaded a patched gvim binary [<a href="https://github.com/downloads/codito/vim-config/gvim.win32.7.3.89.zip" class="external">https://github.com/downloads/codito/vim-config/gvim.win32.7.3.89.zip</a>|here]. It has vim 7.3 + Ruby 1.9.2. Works great for me on Windows 7 :)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6544'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6544"><time data-relative="true">2010-12-27T03:10:48Z</time></a></span>
+</cite>
+<blockquote><p>Above drop of gvim.exe doesn't work. Here's another patched drop which works - <a href="http://wyw.dcweb.cn/vim/gvim73.zip" class="external">http://wyw.dcweb.cn/vim/gvim73.zip</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6751'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6751">Created <time data-relative="true">2011-03-14T10:58:36Z</time>, edited <time data-relative="true">2011-03-16T16:48:34Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Above drop of gvim.exe doesn't work. Here's another patched drop which works - <a href="http://wyw.dcweb.cn/vim/gvim73.zip" class="external">http://wyw.dcweb.cn/vim/gvim73.zip</a></p>
+</blockquote>
+<p>It works smoothly on XP with vim version 7.3.138 </p>
+<p>cheers</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7017'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7017"><time data-relative="true">2011-08-16T09:27:16Z</time></a></span>
+</cite>
+<blockquote><p>I couldn't download the file from dcweb.cn for some reason. But I grabbed the one from <a href="https://github.com/downloads/codito/vim-config/gvim.win32.7.3.89.zip" class="external">https://github.com/downloads/codito/vim-config/gvim.win32.7.3.89.zip</a> and it worked for me once I put libstdc++-6.dll and libgcc_s_sjlj-1.dll from the RubyDevKit in to the vim73 directory.</p>
+<p>You guys should put a link to this issue on the front page. I put up without Command-T on Windows for a whole year :) But the fix is actually pretty simple.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

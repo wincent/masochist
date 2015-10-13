@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1724: Command-T eats up buffer numbers each time the match window is shown
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1724</div>
+<div class='issue' id='issue_1724'>
+<form class="edit_issue" id="edit_issue_1724" action="/issues/1724" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OTEDTm9zlsI6aw9JR0/VJmmUMoV36IYZruWDcPuIimsNw735yP5Ml+PnPL52ZoaS3BZbuXwECAWO+laO31DtTw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1724:
+<span data-name='issue[summary]'>
+Command-T eats up buffer numbers each time the match window is shown
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-11-04T02:02:30Z</time>, updated <time data-relative="true">2012-12-12T16:30:46Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Each time a command-t window is opened a new buffer number is assigned to it, and then the buffer gets deleted once the window is closed. Since I use to command-t to navigate between buffers I easily get to 3 digits buffer numbers after a while when I only work with 20-30 files.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6401'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6401"><time data-relative="true">2010-11-04T07:39:52Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. It's an interesting observation which I hadn't really noticed myself.</p>
+<p>The reason why I chose to dispose of the match listing buffer in this way (ie. with <code>:bwipeout!</code>) is because I wasn't sure how merely hiding the buffer would interact with people's different Vim set-ups (ie. depending on whether they have <code>'hidden'</code> or <code>'nohidden'</code> set, depending on whether vim was compiled with the <code>+listcmds</code> feature or not etc).</p>
+<p>I'm happy to have a play around with different approaches, although I am a little worried that it might not work for all set-ups; ie. the last thing I want is when someone tries to open a file using Command-T, that Vim beeps at them and tells them &quot;No write since last change&quot; (for the match listing buffer) or similar.</p>
+<p>I suppose that setting <code>'bufhidden'</code> to <code>hide</code> or perhaps <code>unload</code> on the match listing buffer might address that. And then I can probably use <code>:bunload!</code> instead of <code>:bwipeout!</code> to get rid of the match listing.</p>
+<p>I'll have a look into it anyway; please do post if you have any other comments or suggestions.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6402'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6402"><time data-relative="true">2010-11-04T09:14:29Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is the patch I'm playing with at the moment. Seems to work for me but I am going to run with it for a while and see if I can discover any issues with it:</p>
+<pre class="diff-syntax">commit 01edbd47f51aac3479dfe5bb21348a7c02a19142 (HEAD, master)
+Author: Wincent Colaiuta &lt;win@wincent.com&gt;
+Date:   Thu Nov 4 10:07:54 2010 +0100
+
+    Dispose of match listing using :bunload! rather than :bwipeout!
+    
+    Previously we created a new buffer every time we showed the match
+    listing and then disposed of it each time with :bwipeout!. This caused
+    the buffer numbers to steadily grow.
+    
+    Now, we dispose of the match listing using :bunload!; this frees the
+    contents of the buffer and closes the window, but the buffer sticks
+    around and can be re-used next time we show the match listing. In this
+    way we always have a stable buffer number of the match listing and
+    repeatedly using Command-T doesn't drive the buffer numbers up any more.
+    
+    For more info see:
+    
+      <a href="https://wincent.com/issues/1724" class="external">https://wincent.com/issues/1724</a>
+    
+    One concern with this change is that it increases our reliance on the
+    accuracy of the buffer number, and there is a known bug in Vim 7.3 when
+    built with --enable-largefile; see this ticket for full details:
+    
+      <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
+    
+    If you are affected by this bug the solution is to build Vim using
+    --disable-largefile. Until the issue gets fixed upstream I am thinking
+    of adding a workaround in Command-T (falling back to buffer name rather
+    than number for people with a broken Vim).
+    
+    Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+
+diff --git a/ruby/command-t/match_window.rb b/ruby/command-t/match_window.rb
+index eae0f87..da08fa4 100644
+--- a/ruby/command-t/match_window.rb
++++ b/ruby/command-t/match_window.rb
+@@ -29,6 +29,7 @@ module CommandT
+     @@selection_marker  = '&gt; '
+     @@marker_length     = @@selection_marker.length
+     @@unselected_marker = ' ' * @@marker_length
++    @@buffer            = nil
+ 
+     def initialize options = {}
+       @prompt = options[:prompt]
+@@ -52,28 +53,35 @@ module CommandT
+       ::VIM::set_option 'sidescrolloff=0' # don't sidescroll automatically
+       ::VIM::set_option 'noequalalways'   # don't auto-balance window sizes
+ 
+-      # create match window and set it up
++      # show match window
+       split_location = options[:match_window_at_top] ? 'topleft' : 'botright'
+-      split_command = &quot;silent! #{split_location} 1split GoToFile&quot;
+-      [
+-        split_command,
+-        'setlocal bufhidden=delete',  # delete buf when no longer displayed
+-        'setlocal buftype=nofile',    # buffer is not related to any file
+-        'setlocal nomodifiable',      # prevent manual edits
+-        'setlocal noswapfile',        # don't create a swapfile
+-        'setlocal nowrap',            # don't soft-wrap
+-        'setlocal nonumber',          # don't show line numbers
+-        'setlocal nolist',            # don't use List mode (visible tabs etc)
+-        'setlocal foldcolumn=0',      # don't show a fold column at side
+-        'setlocal foldlevel=99',      # don't fold anything
+-        'setlocal nocursorline',      # don't highlight line cursor is on
+-        'setlocal nospell',           # spell-checking off
+-        'setlocal nobuflisted',       # don't show up in the buffer list
+-        'setlocal textwidth=0'        # don't hard-wrap (break long lines)
+-      ].each { |command| ::VIM::command command }
+-
+-      # sanity check: make sure the buffer really was created
+-      raise &quot;Can't find buffer&quot; unless $curbuf.name.match /GoToFile/
++      if @@buffer # still have buffer from last time
++        ::VIM::command &quot;silent! #{split_location} #{@@buffer.number}sbuffer&quot;
++        raise &quot;Can't re-open GoToFile buffer&quot; unless $curbuf.number == @@buffer.number
++        $curwin.height = 1
++      else        # creating match window for first time and set it up
++        split_command = &quot;silent! #{split_location} 1split GoToFile&quot;
++        [
++          split_command,
++          'setlocal bufhidden=unload',  # unload buf when no longer displayed
++          'setlocal buftype=nofile',    # buffer is not related to any file
++          'setlocal nomodifiable',      # prevent manual edits
++          'setlocal noswapfile',        # don't create a swapfile
++          'setlocal nowrap',            # don't soft-wrap
++          'setlocal nonumber',          # don't show line numbers
++          'setlocal nolist',            # don't use List mode (visible tabs etc)
++          'setlocal foldcolumn=0',      # don't show a fold column at side
++          'setlocal foldlevel=99',      # don't fold anything
++          'setlocal nocursorline',      # don't highlight line cursor is on
++          'setlocal nospell',           # spell-checking off
++          'setlocal nobuflisted',       # don't show up in the buffer list
++          'setlocal textwidth=0'        # don't hard-wrap (break long lines)
++        ].each { |command| ::VIM::command command }
++
++        # sanity check: make sure the buffer really was created
++        raise &quot;Can't find GoToFile buffer&quot; unless $curbuf.name.match /GoToFile/
++        @@buffer = $curbuf
++      end
+ 
+       # syntax coloring
+       if VIM::has_syntax?
+@@ -94,11 +102,10 @@ module CommandT
+       @selection  = nil
+       @abbrev     = ''
+       @window     = $curwin
+-      @buffer     = $curbuf
+     end
+ 
+     def close
+-      ::VIM::command &quot;bwipeout! #{@buffer.number}&quot;
++      ::VIM::command &quot;bunload! #{@@buffer.number}&quot;
+       restore_window_dimensions
+       @settings.restore
+       @prompt.dispose
+@@ -197,7 +204,7 @@ module CommandT
+       unlock
+       clear
+       @window.height = 1
+-      @buffer[1] = &quot;-- #{msg} --&quot;
++      @@buffer[1] = &quot;-- #{msg} --&quot;
+       lock
+     end
+ 
+@@ -231,7 +238,7 @@ module CommandT
+     def print_match idx
+       return unless VIM::Window.select(@window)
+       unlock
+-      @buffer[idx + 1] = match_text_for_idx idx
++      @@buffer[idx + 1] = match_text_for_idx idx
+       lock
+     end
+ 
+@@ -252,10 +259,10 @@ module CommandT
+         @window.height = actual_lines
+         (1..actual_lines).each do |line|
+           idx = line - 1
+-          if @buffer.count &gt;= line
+-            @buffer[line] = match_text_for_idx idx
++          if @@buffer.count &gt;= line
++            @@buffer[line] = match_text_for_idx idx
+           else
+-            @buffer.append line - 1, match_text_for_idx(idx)
++            @@buffer.append line - 1, match_text_for_idx(idx)
+           end
+         end
+         lock</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6413'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6413"><time data-relative="true">2010-11-04T17:32:39Z</time></a></span>
+</cite>
+<blockquote><p>Ok, going to mark this as closed. The above change is already pushed out in the master branch, so if you want to try it out you can get it from the repo (git://git.wincent.com/command-t.git), or you can wait until the next release.</p>
+<p>Do let me know if you find any issues with it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6414'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6414"><time data-relative="true">2010-11-04T17:32:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6425'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_6425"><time data-relative="true">2010-11-05T01:39:02Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the quick response! I've pulled from the master branch and it seems to be working great.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10067'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10067"><time data-relative="true">2012-12-12T16:30:46Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent, I encounter this every time I use Command-t: Exception raised every time I try to use leader t ruby/command-t/match_window.rb:93</p>
+<pre>raise &quot;Can't find GoToFile buffer&quot; unless $curbuf.name.match</pre>
+<p>the name of the buffer is the buffer I am currently in, not GoToFile.</p>
+<p>I commented the line for testing, and it kind of works but not for me: I use a lot of splits piled on top of eachother, the current one being maximized. When opening a file with (modified) command-t it obliterates all of them :(</p>
+<p>Note: My usual usage is ctags and C-] I can replace only the current one with the new file. also, using C-w C-] I can open the definition in a new one.</p>
+<p>seeing you say this: &quot;The reason why I chose to dispose of the match listing buffer in this way (ie. with :bwipeout!) is because I wasn't sure how merely hiding the buffer would interact with people's different Vim set-ups &quot;  I thought this feedback might help.</p>
+<p>Thanks, Dan Baragan</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

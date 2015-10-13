@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1306: CFPropertyListCreateFromXMLData() &quot;plist parse failed&quot; messages in console
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1306</div>
+<div class='issue' id='issue_1306'>
+<form class="edit_issue" id="edit_issue_1306" action="/issues/1306" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ZXcThlkzZFaWLh4CmN3xTNwFgKmRxMIH985ygn44Zp5Rha0x/r6+A0+iLfWp9KL4aYfplZooTBvX0ad8WuABug==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1306:
+<span data-name='issue[summary]'>
+CFPropertyListCreateFromXMLData() &quot;plist parse failed&quot; messages in console
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-06-03T15:33:26Z</time>, updated <time data-relative="true">2009-06-16T04:41:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Odd message in console log - appears both in version 3.2.1. and 3.2.2. Synergy appears to be functional, notwithstanding.</p>
+<p>2009-06-03 20:22:43.846 Synergy[562] CFLog (0):  &#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be: &#x0009;/Users/..../..../..../SomePlistOrOther.plist &#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.</p>
+<p>The file name given changes &quot;randomly&quot; each time the message appears, although generally seems to refer to some plist or other.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4658'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4658"><time data-relative="true">2009-06-05T16:52:11Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4661'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4661"><time data-relative="true">2009-06-05T16:56:07Z</time></a></span>
+</cite>
+<blockquote><p>Can you give me a complete example path for one of the plist files that appears in the log?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4662'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4662"><time data-relative="true">2009-06-05T16:56:40Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Synergy </li>
+<li><strong>To:</strong> CFPropertyListCreateFromXMLData() &quot;plist parse failed&quot; messages in console</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_4663'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4663">Created <time data-relative="true">2009-06-06T08:00:40Z</time>, edited <time data-relative="true">2009-06-08T05:34:55Z</time></a></span>
+</cite>
+<blockquote><p>Here's a few of the most recent console log entries. Each entry is followed by a version check failure. Perhaps connected in some way ? Curious that the &quot;suggested&quot; file name is not always the same. A google search of &quot;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8.&quot; produces many hits.</p>
+<pre>2009-05-27 03:31:17.442 Synergy[339] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Autosave Information/org.wincent.Synergy.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-05-27 03:31:17.448 Synergy[339] Error while attempting automatic version check
+
+2009-05-27 21:00:47.339 Synergy[228] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Cookies/Cookies.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-05-27 21:00:47.345 Synergy[228] Error while attempting automatic version check
+
+
+2009-06-01 06:27:29.820 Synergy[228] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Autosave Information/org.wincent.Synergy.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-01 06:27:29.826 Synergy[228] Error while attempting automatic version check
+
+
+2009-06-02 06:27:29.876 Synergy[228] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Autosave Information/org.wincent.Synergy.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-02 06:27:29.883 Synergy[228] Error while attempting automatic version check
+
+
+2009-06-03 00:16:28.218 Synergy[293] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Cookies/Cookies.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-03 00:16:28.223 Synergy[293] Error while attempting automatic version check
+
+2009-06-05 09:13:22.290 Synergy[562] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Cookies/Cookies.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-05 09:13:22.301 Synergy[562] Error while attempting automatic version check
+
+2009-06-06 09:13:22.391 Synergy[562] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Cookies/Cookies.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-06 09:13:22.402 Synergy[562] Error while attempting automatic version check</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4665'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4665"><time data-relative="true">2009-06-08T05:38:17Z</time></a></span>
+</cite>
+<blockquote><p>Interesting. Both of the paths mentioned &mdash; the &quot;autosave&quot; one and the &quot;cookies&quot; one &mdash; are managed by the system and are never explicitly manipulated by Synergy itself.</p>
+<p>Can I suggest quitting Synergy, deleting both of those files, and seeing what happens?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4666'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4666"><time data-relative="true">2009-06-09T15:29:45Z</time></a></span>
+</cite>
+<blockquote><p>Even stranger:</p>
+<p>The &quot;Autosave Information&quot; file does not exist. Did it ever ? I wonder &quot;who&quot; makes it ? Since 6 June no further console messages.</p>
+<p>I'll delete the &quot;Cookies&quot; file, relaunch as suggested, and report back one way or the other. After an appropriate elapse of time, reboot, etc.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4667'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4667">Created <time data-relative="true">2009-06-09T17:56:25Z</time>, edited <time data-relative="true">2009-06-10T04:51:35Z</time></a></span>
+</cite>
+<blockquote><p>Well, didn't take too long. Console message reappeared :-)</p>
+<p>Before deleting file and restarting Synergy:</p>
+<pre>2009-06-09 21:02:42.788 Synergy[562] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Application Support/Synergy/Album Covers/Artist-BBCRadio4,Album-ReithLectures2009.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-09 21:02:42.795 Synergy[562] Error while attempting automatic version check
+
+And first time we restart Synergy:
+
+2009-06-09 22:32:38.066 Synergy[5023] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Autosave Information/org.wincent.Synergy.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-09 22:32:38.073 Synergy[5023] Error while attempting automatic version check
+
+Restart Synergy again:
+
+2009-06-09 22:34:55.232 Synergy[5028] CFLog (0): 
+&#x0009;CFPropertyListCreateFromXMLData(): plist parse failed; the data is not proper UTF-8. The file name for this data could be:
+&#x0009;/Users/foo/Library/Autosave Information/org.wincent.Synergy.plist
+&#x0009;The parser will retry as in 10.2, but the problem should be corrected in the plist.
+2009-06-09 22:34:55.239 Synergy[5028] Error while attempting automatic version check</pre>
+<p>Something odd. Possibly the file name diagnostic is simply an unhelpful red herring. Many google hits, here's one at randomish:</p>
+<ul>
+<li><a href="http://lists.apple.com/archives/syncservices-dev/2006/Dec/msg00007.html" class="external">http://lists.apple.com/archives/syncservices-dev/2006/Dec/msg00007.html</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4668'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4668"><time data-relative="true">2009-06-10T04:58:29Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the autosave information I have no idea how or why that one gets created. There are a lot of places in Mac OS X where you request a resource or perform an operation and the system itself will create this kind of settings file, or cache, or whatever, and will supposedly clean up after itself. Undoubtedly it's being triggered indirectly by use of some other API. I might be able to set a breakpoint on <code>CFLog()</code> and find out where it's originating from.</p>
+<p>As for the other messages, eg the <code>/Users/foo/Library/Application Support/Synergy/Album Covers/Artist-BBCRadio4,Album-ReithLectures2009.plist</code>; those <em>are</em> specifically created by Synergy, so I will look at the place where that's happening and see if I can switch to a different <a href="/wiki/API">API</a> which doesn't trigger those messages.</p>
+<p>Needless to say, you shouldn't worry too much about these messages as they're not actually indicative of any real problem. But I will see if I can remove them as a cosmetic clean up anyway.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4669'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4669"><time data-relative="true">2009-06-10T18:48:47Z</time></a></span>
+</cite>
+<blockquote><p>Thanks - I wasn't (worrying) :) </p>
+<p>I did wonder if they might in some way be related to the version check message (it is consistently close in time). Unless/until you release a new version I shall not know whether the version check is actually working as intended. I do recall not becoming aware that there was a version 3.2.2 available until I checked the web-site for some reason, so perhaps there is a real defect.</p>
+<p>Regards</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4672'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4672"><time data-relative="true">2009-06-16T04:41:51Z</time></a></span>
+</cite>
+<blockquote><p>Ok, will look into the version check stuff as well to make sure it's all working as intended.</p>
+<p>Still don't have proper Internet access yet, but the technicians are apparently coming tomorrow so should be able to make some progress soon.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

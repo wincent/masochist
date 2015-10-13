@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+  Pause/Play starts a new song
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo;   Pause/Play starts a new song</div>
+<h1 class='major'>  Pause/Play starts a new song</h1>
+<div class='topic' id='topic_400'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/400"><time data-relative="true">2008-12-21T18:21:05Z</time></a>
+</span>
+</cite>
+<blockquote><p>I just downloaded synergy from the free Mac Heist bundle and I'm having an issue where the podcast I'm listening too is not continued upon playing play (from pause). So I'm listening to a podcast, I hit pause on the synergy buttons and a few minutes later I come back and hit play. Instead of my podcast starting up at the point I left it, the first song in my library starts playing instead. This problem doesn't happen every time, which is adding to the frustration. Any thoughts?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3986'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3986"><time data-relative="true">2008-12-21T22:07:47Z</time></a></span>
+</cite>
+<blockquote><p>If I remember correctly, when you hit the button Synergy is actually issuing a &quot;playpause&quot; command to iTunes (ie. &quot;if playing, pause; if paused, play&quot;). It's up to iTunes exactly what action to take when you send it the &quot;playpause&quot; command, and sometimes you get unexpected results, depending on what playlist is selected and so forth.</p>
+<p>You can reproduce and experiment with this using the AppleScript editor (<code>/Applications/AppleScript/Script Editor</code>). Try running a script like:</p>
+<pre>tell application &quot;iTunes.app&quot; to playpause</pre>
+<p>And you should observe pretty much the same behaviour as you see with Synergy. It's a quirk in iTunes, I think. I could issue &quot;play&quot; and &quot;pause&quot; explicitly instead of &quot;playpause&quot; but that's actually more problematic than you might think, seeing as iTunes doesn't always correctly report its playing/paused status (and how do you know which command to use if iTunes doesn't tell you its state?).</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Another Vim: Caught deadly signal SEGV
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Another Vim: Caught deadly signal SEGV</div>
+<h1 class='major'>Another Vim: Caught deadly signal SEGV</h1>
+<div class='topic' id='topic_494'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/494"><time data-relative="true">2011-12-10T16:32:01Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>I've just installed command-t, the 1.3 version from the vim.org website.</p>
+<p>I'm using it in gvim, I've compiled it with the standard ruby (I'm NOT using rvm).</p>
+<p>These are the specs:</p>
+<ul>
+<li>Ubuntu 11.04 32 bit</li>
+<li>ruby 1.8.7 (2010-08-16 patchlevel 302) [i686-linux]</li>
+<li>command-t-1.3.vba&#x0009;1.3&#x0009;2011-11-28 from the vim.org website</li>
+</ul>
+<pre>$ gvim --version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Mar 24 2011 07:07:00)
+Included patches: 1-35
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version with GTK2 GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff 
++digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi 
++file_in_path +find_in_path +float +folding -footer +fork() +gettext 
+-hangul_input +iconv +insert_expand +jumplist +keymap +langmap +libcall 
++linebreak +lispindent +listcmds +localmap +lua/dyn +menu +mksession 
++modify_fname +mouse +mouseshape +mouse_dec +mouse_gpm -mouse_jsbterm 
++mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte +multi_lang -mzscheme 
++netbeans_intg -osfiletype +path_extra +perl/dyn +persistent_undo +postscript 
++printer +profile +python/dyn +python3/dyn +quickfix +reltime +rightleft +ruby 
++scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop 
++syntax +tag_binary +tag_old_static -tag_any_white +tcl +terminfo +termresponse
+ +textobjects +title +toolbar +user_commands +vertsplit +virtualedit +visual 
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup 
++X11 -xfontset +xim +xsmp_interact +xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/atk-1.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/libdrm -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pixman-1     -Wall -g -O2 -D_FORTIFY_SOURCE=1    -I/usr/include/tcl8.4  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  -I/usr/lib/ruby/1.8/i686-linux -DRUBY_VERSION=18 
+Linking: gcc -L/usr/lib/i386-linux-gnu    -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,--as-needed -o vim   -pthread -L/usr/lib/i386-linux-gnu -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lselinux   -lacl -lgpm -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.10/CORE -L/usr/lib -ltcl8.4 -lieee -lruby1.8 -lrt -lm   
+stefan@thoth:/tmp/command-t$ ruby -v
+ruby 1.8.7 (2010-08-16 patchlevel 302) [i686-linux]</pre>
+<p>I've ran it with strace but I can't see anything obvious.</p>
+<pre>[pid  8217] open(&quot;/home/stefan/download/truecrypt1/linux_puppet/puppet/&quot;, O_RDONLY|O_NONBLOCK|O_LARGEFILE|O_DIRECTORY|O_CLOEXEC) = 20
+[pid  8217] lseek(20, 0, SEEK_SET)      = 0
+[pid  8217] getdents64(20, /* 4 entries */, 32768) = 112
+[pid  8217] --- SIGSEGV (Segmentation fault) @ 0 (0) ---
+[pid  8217] rt_sigaction(SIGHUP, {SIG_IGN, [HUP], SA_RESTART}, {0x815e010, [], 0}, 8) = 0
+[pid  8217] write(1, &quot;Vim: Caught deadly signal SEGV\r\n&quot;, 32Vim: Caught deadly signal SEGV</pre>
+<p>It doesn't die on first invocation of \t. I do maybe 3 invocations in different directories before it dies.</p>
+<p>I must say that Gvim never died before installing command-t, that and the fact that it dies during the invocation of \t makes me suspect Command-T as the culprit.</p>
+<p>Anything jumping at you ? I can't see anything useful in strace. It is just showing opening files.</p>
+<p>Is there a way I can debug the plugin further ? I've ran it through gdb also, but I'm not familiar with gdb, so I couldn't get much out of it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7331'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7331"><time data-relative="true">2011-12-15T06:25:22Z</time></a></span>
+</cite>
+<blockquote><p>I wouldn't bother with <code>strace</code> or <code>gdb</code> for this issue as there are no known crashing bugs in <a href="/wiki/Command-T">Command-T</a>. Literally every case of crashing has been due to either:</p>
+<ul>
+<li>miscompilation (compiling Command-T with a version of <a href="/wiki/Ruby">Ruby</a> different from the one that was used when building <a href="/wiki/Vim">Vim</a>)</li>
+<li>a known buggy version of Vim that shipped with Ubuntu 11.04; the fix in that case is to grab a later version of Vim and build it</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7334'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7334"><time data-relative="true">2011-12-17T01:39:22Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>Thank you for your help!</p>
+<p>Apparently the version of Vim shipped with Ubuntu 11.04 is indeed buggy !</p>
+<p>After recompiling Vim, Command-T doesn't crash my Gvim window anymore.</p>
+<p>Unfortunately I still can't use it as it introduces some side effect with another plugin that I'm using called NERDTree-tabs. Whenever I try to press t (in the NERDTree tree) to open a file in a new tab , the new tab opens but it is empty. When I get some time I'll try to make NERDTree behave like NERDTree-tabs, maybe it will work if I get rid of NERDTree-tabs.</p>
+<p>Cheers</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7451'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7451">Created <time data-relative="true">2012-02-28T10:25:46Z</time>, edited <time data-relative="true">2012-02-29T07:50:36Z</time></a></span>
+</cite>
+<blockquote><p>Hey Wincent,</p>
+<p>I've finally managed to set some time apart to clean up my vim plugins. I've started using pathogen I've stopped running NERDTree-tabs. I'm just using NERDTree. Same version of the os as above, same recompiled Vim, now Command-T WORKS fine :)</p>
+<p>Conclusion: Command-T works with the below</p>
+<ul>
+<li>using just standard NERDTree + all my other plugins via pathogen</li>
+<li>using the recompiled version of vim (the ubuntu shipped version is indeed broken )</li>
+</ul>
+<p>Thanks for your help and keep up the good work with command-t!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7579'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7579">Created <time data-relative="true">2012-06-19T12:27:36Z</time>, edited <time data-relative="true">2012-07-05T07:17:37Z</time></a></span>
+</cite>
+<blockquote><p>I am suffering from the same segmentation fault on Debian testing:</p>
+<p>dpkg version: vim-nox  2:7.3.547-1</p>
+<pre>$ vim general.py
+[;t]
+Vim: Caught deadly signal SEGV
+Vim: Finished.
+Segmentation fault</pre>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

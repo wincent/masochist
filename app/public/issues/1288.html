@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1288: AJAX product pop-up always set to &quot;no product&quot; (blank) in issues#show
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1288</div>
+<div class='issue' id='issue_1288'>
+<form class="edit_issue" id="edit_issue_1288" action="/issues/1288" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="sNIpF3CjMF+kjaNdRvQk7yrrlqkJNcVOxj2oJ8yexQeEIJeg1y7qCn0BkKp33Xdbn2n/lQLZS1LmIn3Z6EaiIw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1288:
+<span data-name='issue[summary]'>
+AJAX product pop-up always set to &quot;no product&quot; (blank) in issues#show
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-04-27T05:07:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+none
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4523'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4523"><time data-relative="true">2009-04-27T05:07:47Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4525'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4525"><time data-relative="true">2009-04-27T05:11:52Z</time></a></span>
+</cite>
+<blockquote><p>The pop-up is not broken for all products. Some examples:</p>
+<ul>
+<li>wincent.com: this ticket, <a href="/issues/1288">ticket #1288</a>, works</li>
+<li>Synergy: eg. <a href="/issues/59">ticket #59</a>, broken</li>
+<li>Synergy Advance: eg. <a href="/issues/61">ticket #61</a>, broken</li>
+<li>WinSwitch: eg. <a href="/issues/85">ticket #85</a>, broken</li>
+<li>WOCommon: eg. <a href="/issues/494">ticket #494</a>, broken</li>
+<li>Wincent Strings Utility: eg. <a href="/issues/1104">ticket #1104</a>, broken</li>
+</ul>
+<p>Basically looks like all are broken except for the wincent.com tickets.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4529'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4529"><time data-relative="true">2009-04-27T05:17:03Z</time></a></span>
+</cite>
+<blockquote><h3>Broken</h3>
+<ul>
+<li>Hextrapolate: eg. <a href="/issues/1275">ticket #1275</a>, broken</li>
+<li>Install: eg. <a href="/issues/235">ticket #235</a>, broken</li>
+<li>WODebug: eg. <a href="/issues/448">ticket #448</a>, broken</li>
+<li>REnamer: eg. <a href="/issues/1126">ticket #1126</a>, broken</li>
+</ul>
+<h3>Working</h3>
+<ul>
+<li>atosym: eg. <a href="/issues/1273">ticket #1273</a>, works</li>
+<li>buildtools: (no example available), appears to work</li>
+<li>wikitext: eg. <a href="/issues/1251">ticket #1251</a>, works</li>
+</ul>
+<h3>Unknown</h3>
+<p>There are a few products for which there aren't any tickets, so I don't know if they work:</p>
+<ul>
+<li>WOHotKey</li>
+<li>Walrus</li>
+<li>etc...</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4530'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4530"><time data-relative="true">2009-04-27T05:19:19Z</time></a></span>
+</cite>
+<blockquote><p>As a first guess I'd say we have a case-sensitivity issue here.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4531'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4531"><time data-relative="true">2009-04-27T05:44:21Z</time></a></span>
+</cite>
+<blockquote><p>Ok, as the fix was pretty minor (see below), I've just uploaded a new ajax.js file rather than doing a full deployment:</p>
+<pre>diff --git a/public/javascripts/ajax.js b/public/javascripts/ajax.js
+index e1dee88..3c98f23 100644
+--- a/public/javascripts/ajax.js
++++ b/public/javascripts/ajax.js
+@@ -133,14 +133,14 @@ function ajax_select(selector, class_name, attribute_name, options, include_blan
+   var model_id = $(selector).attr('id'); // issue_22
+   var record_id = model_id.match(/_(\d+)$/)[1]; // 22
+   var field_id = $('#' + model_id + '_' + attribute_name); // issue_22_status
+-  var field_text = field_id.text(); // eg. New, Open, Closed (first letter capitalized by humanize method)
++  var field_text = field_id.text(); // eg. New, Open, Closed
+   var new_contents = '&lt;select id=&quot;' + class_name + '_' + attribute_name + '&quot; name=&quot;' + class_name + '[' + attribute_name + ']&quot;&gt;';
+   if (include_blank) {
+     new_contents = new_contents + '&lt;option value=&quot;&quot;&gt;&lt;/option&gt;';
+   }
+   var selection_found = false;
+   for (var i = 0; i &lt; options.length; i++) {
+-    if (field_text.toLowerCase() == options[i][0]) {
++    if (field_text.toLowerCase() == options[i][0].toLowerCase()) {
+       new_contents = new_contents + '&lt;option value=&quot;' + options[i][1] + '&quot; selected=&quot;selected&quot;&gt;' + options[i][0] + '&lt;/option&gt;';
+       selection_found = true;
+     } else {</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4532'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4532"><time data-relative="true">2009-04-27T05:44:35Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

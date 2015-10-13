@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #253: iTunes videos break album art display
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #253</div>
+<div class='issue' id='issue_253'>
+<form class="edit_issue" id="edit_issue_253" action="/issues/253" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="yDSkdiNjm+KQwu3mMrmPEpRjn2UsbQ33sS/vMvquzfz8xhrBhO5Bt0lO3hEDkNymIeH2WSeBg+uRMDrM3naq2A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #253:
+<span data-name='issue[summary]'>
+iTunes videos break album art display
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-06-08T00:10:52Z</time>, updated <time data-relative="true">2006-07-05T02:06:00Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-206">bugzilla user 206</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've been purchasing some of the video content on the iTunes Music Store and noticed a small bug. It  seems that when there are videos or cover art PDFs with an album, iTunes will sort them to the top of the  list. I've tried changing track numbers to no avail, the extra content always floats to the top.</p>
+<p>As a side effect of this, it seems that Synergy pulls the cover art from these files and displays it for every  track on the album. So the new Coldplay album purchased from the iTMS has a black bar where its cover  art should be.</p>
+<p>Perhaps Synergy should ignore that stuff?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2061'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2061"><time data-relative="true">2005-06-08T02:37:25Z</time></a></span>
+</cite>
+<blockquote><p>So where exactly is the black bar coming from? From which track? How would Synergy know which art to  ignore and which to accept?</p>
+<p>The code I currently have in Synergy Advance pulls the embedded art across from each track individually  (ie. not just from one track which is then used for the whole album) so the behaviour will probably be a  little different.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2062'>
+<cite>
+<a href="/users/bugzilla-user-206">bugzilla user 206</a>
+<span class='when'><a href="#comment_2062"><time data-relative="true">2005-06-08T03:51:44Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=26) Bugged view</p>
+<p>Notice that the album art is visible in iTunes, but the Synergy notification to Growl does not display the album art. It instead displays the black opening frame of the video file.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2063'>
+<cite>
+<a href="/users/bugzilla-user-206">bugzilla user 206</a>
+<span class='when'><a href="#comment_2063"><time data-relative="true">2005-06-08T03:52:32Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=27) Normal view</p>
+<p>Unlike this version, where we can see that the album art in iTunes matches the Synergy Growl notification.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2064'>
+<cite>
+<a href="/users/bugzilla-user-206">bugzilla user 206</a>
+<span class='when'><a href="#comment_2064"><time data-relative="true">2005-06-08T03:54:56Z</time></a></span>
+</cite>
+<blockquote><p>I attached two images to help show the difference. The bugged view shows that even though there's an  audio track file playing and you can see its album art in iTunes, Synergy uses the cover art from the video  file instead for every track on the album.</p>
+<p>It's likely that the approach you mentioned for Synergy Advanced would not have this issue, as it would  properly extract the covert art image from the individual audio file, instead of using the image from the  first file listed for the album. Honestly, the Synergy Advanced approach makes more sense. Is that  something you're planning to back port to Synergy?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2065'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2065"><time data-relative="true">2006-07-05T02:06:00Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

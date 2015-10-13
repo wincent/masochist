@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1652: Installing Command-T with Vim 7.3 on Windows XP
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1652</div>
+<div class='issue' id='issue_1652'>
+<form class="edit_issue" id="edit_issue_1652" action="/issues/1652" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="PvAKJPH5Wx7yDb1G+87RFjqV9fUjvMmUirweaHs06L0KArSTVnSBSyuBjrHK54KijxecyShQR4iqo8uWX+yPmQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1652:
+<span data-name='issue[summary]'>
+Installing Command-T with Vim 7.3 on Windows XP
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-08-22T15:22:27Z</time>, updated <time data-relative="true">2012-01-12T02:30:53Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>Hello Win,</p>
+<p>I'm trying to install the command-t plugin for vim.</p>
+<p>But I come until the command ruby extconf.rb.</p>
+<p>The output of this command is:</p>
+<pre>checking for ruby.h ... ***extconf.rb failed ****
+Could not create Make file due to some reason, probably....
+[...]
+</pre>
+<p>What can be wrong?</p>
+<p>What should I do to make it work?</p>
+<p>Some info about what I have and what I've done:</p>
+<ul>
+<li>I'm using windows XP</li>
+<li>I use the gvim73.exe from the officeal vim site</li>
+<li>When I open a dosbox, the command &quot;vim --version&quot; says ... -ruby ...</li>
+</ul>
+<p>- I've downloaded ruby 191p340  from <a href="http://rubyinstaller.org/download.html" class="external">http://rubyinstaller.org/download.html</a> and installed it in c:\ruby191</p>
+<p>- I've downloaded the development kit from <a href="http://github.com/oneclick/rubyinstaller/downloads" class="external">http://github.com/oneclick/rubyinstaller/downloads</a> and extracted the files in the C;\Ruby191 I choose the version 3.4.5. Version 4.5.0 is from the same day, but I thought 3.4.5 is more stable to try it first.</p>
+<ul>
+<li>I rebooted the pc.</li>
+<li>In a dosbox I typed the command path and then it says (amongst others) c:\Ruby191\bin;</li>
+<li>Go to C:\program files\vim\vimfiles\ruby\command-t</li>
+<li>Typed ruby extconf.rb and got the error.</li>
+</ul>
+<p>Rgds, Jeri</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6114'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6114"><time data-relative="true">2010-08-22T15:28:30Z</time></a></span>
+</cite>
+<blockquote><p>Hi Jeri,</p>
+<p>Not being able to find the <code>ruby.h</code> header is a problem, but it seems that your version of Vim wasn't built with Ruby support at all (indicated by the <code>-ruby</code> in the <code>--version</code> output).</p>
+<p>I've seen a couple of threads on the vim_use group asking about Ruby support in Vim 7.3:</p>
+<ul>
+<li><a href="http://groups.google.com/group/vim_use/browse_thread/thread/f908089b90f46bf1" class="external">http://groups.google.com/group/vim_use/browse_thread/thread/f908089b90f46bf1</a> (this one is your thread, actually)</li>
+<li><a href="http://groups.google.com/group/vim_use/browse_thread/thread/6386d0475ed34ca0" class="external">http://groups.google.com/group/vim_use/browse_thread/thread/6386d0475ed34ca0</a> (thread by another person)</li>
+</ul>
+<p>I'm not actually sure what the problem with 7.3 is here, as under 7.2 Ruby support was definitely included in the binary download from www.vim.org.</p>
+<p>Perhaps one of those vim_use threads will receive an answer from somebody who knows about getting a working Ruby set-up with Vim on Windows. In the meantime, you could go back to 7.2.</p>
+<p>When 7.3 came out I updated the installation instructions for 7.3:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/276260419ffa86d0f22ac9b9f769da9a7a0e3310" class="external">http://git.wincent.com/command-t.git/commitdiff/276260419ffa86d0f22ac9b9f769da9a7a0e3310</a></li>
+</ul>
+<p>But it looks like I may have to revert that commit and go back to recommending 7.2 and 1.8.7, at least on Windows.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6118'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6118"><time data-relative="true">2010-08-23T03:55:21Z</time></a></span>
+</cite>
+<blockquote><p>Wincent wrote: ....In the meantime, you could go back to 7.2.....</p>
+<p>I checked my 7.2 version (offical release of aug 2008) with: vim --version and there it also says -ruby.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6120'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6120"><time data-relative="true">2010-08-23T05:42:03Z</time></a></span>
+</cite>
+<blockquote><p>I'm on a Mac here, but I've got a virtual machine with Windows XP in it so will see if I can reproduce the issue and find out how to get things working.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6122'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6122"><time data-relative="true">2010-08-23T07:17:19Z</time></a></span>
+</cite>
+<blockquote><p>From the vim group I got the message:</p>
+<blockquote>
+<p>I think you want Vim for Windows? See 'Vim without Cream' at: <a href="http://vim.wikia.com/wiki/download" class="external">http://vim.wikia.com/wiki/download</a></p>
+<p>That gives you a 'huge' build which includes Ruby. The release notes include: -DDYNAMIC_RUBY_DLL=&quot;msvcrt-ruby18.dll&quot; -DDYNAMIC_RUBY_VER=18</p>
+<p>I guess that specifies what version is required?</p>
+</blockquote>
+<p>I've installed that vim version which says when I type <code>vim --version</code>: <code>... +ruby ...</code> However When I (in a dosbox) go to <code>C:\program files\vim\vimfiles\ruby\command-t</code> And type again: <code>ruby extconf.rb</code> I get the same error message </p>
+<pre>Could not create Make file due to some reason, probably....
+[...]</pre>
+<p>Is that now because this vim version is compiled with 181, and my ruby is 191?</p>
+<p>Rgds, Jeri</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6123'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6123"><time data-relative="true">2010-08-23T07:52:27Z</time></a></span>
+</cite>
+<blockquote><p>I don't know why <code>ruby extconf.rb</code> is failing, but even if it weren't, you do need to use the same version of Ruby for both Command-T and Vim. So if you've got a version of Vim now that links against Ruby 1.8, you'll need to build with Ruby 1.8.</p>
+<p>So I guess the 1.8.7 download from <a href="http://rubyinstaller.org/downloads/" class="external">http://rubyinstaller.org/downloads/</a> would be worth a try.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6124'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6124"><time data-relative="true">2010-08-23T09:19:59Z</time></a></span>
+</cite>
+<blockquote><p>Downloaded 1.8.7</p>
+<p>Doing &quot;ruby extconf.rb&quot; again</p>
+<pre>checking for ruby.h... no
+couldn't find ruby.h (required)
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, ......</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6125'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6125"><time data-relative="true">2010-08-23T09:27:34Z</time></a></span>
+</cite>
+<blockquote><p>The <code>extconf.rb</code> failure is something to do with your Ruby installation. My guess is that you are missing the dev kit:</p>
+<ul>
+<li><a href="http://wiki.github.com/oneclick/rubyinstaller/development-kit" class="external">http://wiki.github.com/oneclick/rubyinstaller/development-kit</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6126'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6126"><time data-relative="true">2010-08-23T09:53:37Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've had a chance to test this on Windows XP. Works fine.</p>
+<h3>Downloading</h3>
+<p>From the page you reference, <a href="http://vim.wikia.com/wiki/Download" class="external">http://vim.wikia.com/wiki/Download</a>, which directs us to <a href="http://sourceforge.net/projects/cream/files/" class="external">http://sourceforge.net/projects/cream/files/</a>. I picked the top download in the list, <a href="http://sourceforge.net/projects/cream/files/Vim/7.3.3/gvim-7-3-3.exe/download" class="external">gvim-7.3.3.exe</a>:</p>
+<p><img src="/system/images/issue-1652/01-downloading-vim.png" alt="issue-1652/01-downloading-vim.png"></p>
+<h3>Installing</h3>
+<p><img src="/system/images/issue-1652/02-installing-vim.png" alt="issue-1652/02-installing-vim.png"></p>
+<h3>Downloading the latest Command-T vimball</h3>
+<p><img src="/system/images/issue-1652/03-downloading-command-t.png" alt="issue-1652/03-downloading-command-t.png"></p>
+<h3>Opening the Command-T vimball</h3>
+<p><img src="/system/images/issue-1652/04-opening-the-vimball-archive.png" alt="issue-1652/04-opening-the-vimball-archive.png"></p>
+<h3>Extracting the vimball using <code>:so %</code></h3>
+<p><img src="/system/images/issue-1652/05-installing-the-vimball-archive.png" alt="issue-1652/05-installing-the-vimball-archive.png"></p>
+<h3>Opening the command prompt</h3>
+<p><img src="/system/images/issue-1652/06-opening-the-command-prompt.png" alt="issue-1652/06-opening-the-command-prompt.png"></p>
+<h3>Compiling</h3>
+<p><img src="/system/images/issue-1652/07-compiling.png" alt="issue-1652/07-compiling.png"></p>
+<h3>Opening Vim</h3>
+<p><img src="/system/images/issue-1652/08-opening-vim.png" alt="issue-1652/08-opening-vim.png"></p>
+<h3>Using Command-T</h3>
+<p><img src="/system/images/issue-1652/09-using-command-t.png" alt="issue-1652/09-using-command-t.png"></p>
+<p>So I'd say if you install the dev kit (the 3.4.5 one from <a href="http://rubyinstaller.org/downloads/" class="external">http://rubyinstaller.org/downloads/</a>) you should be fine. The procedure is shown in detail in the Windows installation screencast on the <a href="https://wincent.com/products/command-t" class="external">Command-T product page</a>, and also in <a href="http://git.wincent.com/command-t.git/blob/HEAD:/README.txt" class="external">the documentation</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6127'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6127"><time data-relative="true">2010-08-23T10:04:57Z</time></a></span>
+</cite>
+<blockquote><p>I've updated the docs with the latest links etc for installation on Windows:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/0ad647a6dad3c74f5a20673269398d1c0694675b" class="external">http://git.wincent.com/command-t.git/commitdiff/0ad647a6dad3c74f5a20673269398d1c0694675b</a></li>
+</ul>
+<p>Going to mark this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6128'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6128"><time data-relative="true">2010-08-23T10:05:06Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6132'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6132"><time data-relative="true">2010-08-23T14:31:24Z</time></a></span>
+</cite>
+<blockquote><p>installing the development kit did do the trick</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6320'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6320"><time data-relative="true">2010-09-28T18:24:33Z</time></a></span>
+</cite>
+<blockquote><p>I followed these instructions to a T, twice, but was still getting an error from the 'ruby extconf.rb' command: checking for ruby.h... no</p>
+<p>Looking around in my C:\Ruby187 directory, I noticed a file called devkitvars.bat, which is used to manually configure the environment to use the DevKit for compiling native ruby extensions. So I ran that, then went back to vim\vimfiles\ruby\command-t directory and ran 'ruby extconf.rb' again and it worked.</p>
+<p>I assume the 'Start command prompt with Ruby' command on the Windows Start Menu should set up the environment correctly, but in my case, it didn't. (Windows XP Professional SP3)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6686'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6686"><time data-relative="true">2011-02-10T05:01:25Z</time></a></span>
+</cite>
+<blockquote><p>Running devkitvars.bat did the trick.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7145'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7145"><time data-relative="true">2011-09-21T22:27:39Z</time></a></span>
+</cite>
+<blockquote><p>Here (<a href="http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window" class="external">http://rfbrazier.posterous.com/installing-the-command-t-vim-plugin-on-window</a>) is a good step-for-step instruction.</p>
+<p>(I had problems because my cygwin installation interacted with RubyInstaller)</p>
+<p>Thanks for command-T!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7368'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7368">Created <time data-relative="true">2012-01-12T02:30:53Z</time>, edited <time data-relative="true">2012-01-14T16:45:13Z</time></a></span>
+</cite>
+<blockquote><p>I too had to run 'devkitvars.bat' in a command window with ruby support, then with the window still open finish the remaining two steps:</p>
+<pre>ruby extconf.rb
+make</pre>
+<p>Now I have command-t working in Windows with Vim 7.3 and Ruby 193</p>
+<p>And yeah, thanks for Command-T!!! Love it so much at home on the mac I had to get it onto my work windows machine.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

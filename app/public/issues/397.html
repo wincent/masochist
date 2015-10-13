@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #397: CFRunLoopDoObservers crash
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #397</div>
+<div class='issue' id='issue_397'>
+<form class="edit_issue" id="edit_issue_397" action="/issues/397" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="DUJ0Qps8pWIzP05RBSfYbjvXPd3xxwdcX3GKGGCtAB45sMr1PLF/N+qzfaY0DovajlVU4foriUB/bl/mRHVnOg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #397:
+<span data-name='issue[summary]'>
+CFRunLoopDoObservers crash
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-05T13:28:31Z</time>, updated <time data-relative="true">2006-05-05T12:21:13Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Will attach a crash report (Intel) from a user. Here's the relevant snippet:</p>
+<p>Thread 0 Crashed: 0   libobjc.A.dylib            &#x0009;0x90a4e380 objc_msgSend + 16 1   com.apple.CoreFoundation   &#x0009;0x90824419 __CFRunLoopDoObservers + 342 2   com.apple.CoreFoundation   &#x0009;0x908234bb CFRunLoopRunSpecific + 827 3   com.apple.CoreFoundation   &#x0009;0x90823179 CFRunLoopRunInMode + 61 4   com.apple.HIToolbox        &#x0009;0x92ef9c5c RunCurrentEventLoopInMode + 285 5   com.apple.HIToolbox        &#x0009;0x92ef9363 ReceiveNextEventCommon + 385 6   com.apple.HIToolbox        &#x0009;0x92ef91ba BlockUntilNextEventMatchingListInMode + 81 7   com.apple.AppKit           &#x0009;0x9339aad1 _DPSNextEvent + 576 8   com.apple.AppKit           &#x0009;0x9339a6be -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 137 9   com.apple.AppKit           &#x0009;0x93394443 -[NSApplication run] + 512 10  com.apple.AppKit           &#x0009;0x93388397 NSApplicationMain + 573 11  com.wincent.SynergyAdvance &#x0009;0x0000824a start + 590 12  com.wincent.SynergyAdvance &#x0009;0x0000810a start + 270 13  com.wincent.SynergyAdvance &#x0009;0x00008025 start + 41</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2571'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2571"><time data-relative="true">2006-04-05T13:29:32Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=57) crash report</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2572'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2572"><time data-relative="true">2006-04-09T10:51:28Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=58) very similar crash report from same user</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2577'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2577"><time data-relative="true">2006-04-13T11:05:47Z</time></a></span>
+</cite>
+<blockquote><p>(From update of attachment 61) Mistakenly attached to this bug. Really belongs on <a href="/issues/388">bug #388</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2578'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2578"><time data-relative="true">2006-04-16T19:53:35Z</time></a></span>
+</cite>
+<blockquote><p>I believe I've now fixed this. Took me several days to track it down. (For the curious, I'll write a short article about it and post it to my weblog -- <a href="http://colaiuta.net/" class="external">http://colaiuta.net/</a> -- soon.) Adding the &quot;fixed-in-prerelease&quot; keyword. Once the new version out and people have tested it and confirm that this crash is indeed gone will mark this as FIXED/CLOSED. Will do the same for <a href="/issues/388">bug #388</a> as I suspect that the underlying cause of the two issues is the same and has now been fixed; it's just that the problem manifested itself with slightly different crash logs on Intel and PowerPC platforms.</p>
+<p>To be notified of the next release you can subscribe to the announcements mailing list:</p>
+<p><a href="http://lists.wincent.com/" class="external">http://lists.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2579'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2579"><time data-relative="true">2006-04-16T20:01:28Z</time></a></span>
+</cite>
+<blockquote><p>Potentially also related to <a href="/issues/396">bug #396</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2580'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2580"><time data-relative="true">2006-05-05T12:21:13Z</time></a></span>
+</cite>
+<blockquote><p>0.4 is now out. Full announcement here:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/synergy_advance_8.php" class="external">http://wincent.com/a/news/archives/2006/05/synergy_advance_8.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

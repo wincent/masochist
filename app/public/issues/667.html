@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #667: Hide &quot;communication rate&quot; slider in preferences UI
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #667</div>
+<div class='issue' id='issue_667'>
+<form class="edit_issue" id="edit_issue_667" action="/issues/667" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pBDZBRLq5Tl4lIEsy/Y318stCI/R5o/Gm910lra5VFCQ4meytWc/bKEYstv632Rjfq9hs9oKAdq7wqFokmEzdA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #667:
+<span data-name='issue[summary]'>
+Hide &quot;communication rate&quot; slider in preferences UI
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-04-13T07:50:17Z</time>, updated <time data-relative="true">2008-05-28T12:35:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The &quot;Advanced&quot; tab of the preferences includes a slider for altering the communication rate between <a href="/wiki/Synergy">Synergy</a> and <a href="/wiki/iTunes">iTunes</a>, but it is ghosted (disabled) when running versions of iTunes older than 4.7.</p>
+<p>I occasionally get bug reports claiming that the slider isn't working (even though there is a tool tip that explains why the slider is ghosted); so although things are working perfectly it <em>is</em> arguably a UI design bug that the interface is too subtle and allows this kind of misunderstanding to arise.</p>
+<p>In 3.5 I can afford to hide the slider because 3.5 is <a href="/wiki/Leopard">Leopard</a>-only and it is not even possible to run a pre-4.7 iTunes on Leopard.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_3221'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3221"><time data-relative="true">2008-04-15T13:30:12Z</time></a></span>
+</cite>
+<blockquote><p>is it possible to not require an internet connection to display album artwork? synergy just showed me a 'michael buble' cover while 'the band' was playing...why can't synergy just use the artwork already in itunes' database?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3224'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3224"><time data-relative="true">2008-04-15T14:00:32Z</time></a></span>
+</cite>
+<blockquote><p>There are actually a couple issues here:</p>
+<ul>
+<li>one is that there's a bug in versions of <a href="/wiki/iTunes">iTunes</a> since 7.6.1 which often prevents the artwork from coming through (see <a href="/issues/668">bug #668</a> for more details); so under these circumstances Synergy will fall back to looking on the Internet and as you've seen it sometimes gets undesirable results.</li>
+<li>the other issue is that once Synergy has downloaded art for a particular track it prefers the downloaded art over the art in iTunes &mdash; this was originally for efficiency reasons because it is much quicker to read a file off the disk than it is to retrieve artwork from iTunes &mdash; but there is a ticket open for this (see feature <a href="/issues/54">request #54</a>) which proposes changing that prioritization.</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3303'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3303"><time data-relative="true">2008-04-29T10:24:39Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've now removed the slider. This change will become available in the next release in the 3.5 series (just released 3.5a7 today, so we're talking 3.5a8 or 3.5b).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3346'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3346"><time data-relative="true">2008-05-28T12:35:17Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

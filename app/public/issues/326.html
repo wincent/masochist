@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #326: Automatic check for updates is not working
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #326</div>
+<div class='issue' id='issue_326'>
+<form class="edit_issue" id="edit_issue_326" action="/issues/326" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="84eccsZl7e0RJvD1yLj2eetrRI8FTVUkC8n6bPlHdVDHdSLFYeg3uMiqwwL5kaXNXuktsw6h2zgr1i+S3Z8SdA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #326:
+<span data-name='issue[summary]'>
+Automatic check for updates is not working
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-11-03T22:35:07Z</time>, updated <time data-relative="true">2007-05-15T12:23:32Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/john">john</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have synergy advance set to check daily for updates though today when I opened the preferences I noticed that it had not checked for the past couple of days. I posted a screenshot here:  <a href="http://homepage.mac.com/johnmm/images/sa.dailyCheck.png" class="external">http://homepage.mac.com/johnmm/images/sa.dailyCheck.png</a></p>
+<p>I'll keep an eye on this over the next few days to confirm its persistence.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2297'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2297"><time data-relative="true">2005-11-10T04:37:35Z</time></a></span>
+</cite>
+<blockquote><p>Yes, unless I'm not remembering things right, the &quot;automatic&quot; version check is not all that automatic right now. It was an oversight on my part that the last release went out with the &quot;Check now&quot; button hooked up, but the daily/weekly/monthly pop-up has no effect.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2298'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2298"><time data-relative="true">2006-05-06T11:26:54Z</time></a></span>
+</cite>
+<blockquote><p>I believe this is now fixed in the latest released version (0.4), with some caveats.</p>
+<p>The automatic version checking code is now complete and in place. After releasing 0.4 I discovered a silly omission on my part that means that the automatic version check timer isn't started when you first launch the app, but only when you touch the automatic version checking preferences. I've already corrected this oversight in the current development build.</p>
+<p>So it's now &quot;working&quot; in the current release (0.4), as long as you tickle the preferences after launching.</p>
+<p>And it will work properly without the tickling in the next version (not yet sure whether I'll be numbering it 0.4.1 or 0.5; depends on the number of changes). I mean to release the next version fairly soon.</p>
+<p>Unfortunately won't be able to mark this as confirmed fixed until the version *after* 0.4.1 or 0.5, because you'll need to install 0.4.1 or 0.5 first, and only when the *next* version comes out will be know for sure that the problem has been addressed.</p>
+<p>In the meantime, adding the &quot;fixed-in-prerelease&quot; keyword.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2299'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2299"><time data-relative="true">2006-07-05T02:06:51Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2300'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2300"><time data-relative="true">2007-04-04T09:35:22Z</time></a></span>
+</cite>
+<blockquote><p>If you wish to confirm that this bug is fixed you can try out one of the Synergy Advance nightly builds. As noted in the nightlies page, these are automated builds which represent a snapshot of the current development status. They are not tested and may have issues of their own; the latest official release (0.4) is still the one that's recommended for daily use.</p>
+<p>More information on nightlies here: </p>
+<p><a href="http://wincent.com/s/nightlies/" class="external">http://wincent.com/s/nightlies/</a></p>
+<p>A list of all Synergy Advance nightlies:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/</a></p>
+<p>Concretely, I believe this issues is fixed in revision 429 (link follows), or any later revision:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2301'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2301"><time data-relative="true">2007-05-15T12:23:32Z</time></a></span>
+</cite>
+<blockquote><p>Now that 0.5b is out removing &quot;fixed-in-prerelease&quot; keyword and marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

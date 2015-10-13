@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #50: Hang with Synergy 1.5b and iTunes 4.7
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #50</div>
+<div class='issue' id='issue_50'>
+<form class="edit_issue" id="edit_issue_50" action="/issues/50" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="O4iQPIfs6DJOxDRh5MXrG0pu7wK7ruMNBFsbuMO1PrYPei6LIGEyZ5dIB5bV7Liv/+yGPrBCbREkRM5G521Zkg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #50:
+<span data-name='issue[summary]'>
+Hang with Synergy 1.5b and iTunes 4.7
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-03T01:02:12Z</time>, updated <time data-relative="true">2004-12-04T00:01:22Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nathaniel-madura">Nathaniel Madura</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Synergy works great all day, but when I leave the computer overnight both Synergy and iTunes hang. Steps to reproduce: Use Synergy for about 8-9 hours Issue a pause to synergy, and go home  Return 15-16 hours later Synergy is hung</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_1275'>
+<cite>
+<a href="/users/nathaniel-madura">Nathaniel Madura</a>
+<span class='when'><a href="#comment_1275"><time data-relative="true">2004-12-03T01:06:58Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=5) Synergy Sample from activity montior</p>
+<p>I also tried submitting a system profile, but it was too large, let me know if there is an alternate way of getting it to you</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1276'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1276"><time data-relative="true">2004-12-03T01:09:44Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for filing the report. I suspect this could be a duplicate of <a href="/issues/39">bug #39</a>, but without more  information I can't be sure.</p>
+<p>Can you take a look at this article and add some more information?</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p>Particularly useful would be samples taken in Activity Monitor, and info about other third-party stuff  installed on your machine. For what it's worth, I also have Panther and iTunes 4.7; I leave Synergy,  iTunes and the computer running 24 hours a day, and I've never seen a hang like you describe. (And  needless to say, I do pause Synergy when I leave the computer.) So we'll need more precise info to  identify the cause and eliminate it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1277'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1277"><time data-relative="true">2004-12-03T01:11:17Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the sample report. About the System Profile. The most important parts are the configuration  info at the top. You can strip off the rest. You can email it to me if you want (my email address appears  on this page).</p>
+<p>And as I said in the post I just made, info about third-party software that could potentially cause a  conflict would be very useful.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1278'>
+<cite>
+<a href="/users/nathaniel-madura">Nathaniel Madura</a>
+<span class='when'><a href="#comment_1278"><time data-relative="true">2004-12-03T01:49:12Z</time></a></span>
+</cite>
+<blockquote><p>I looked at bug 39 and I believe this bug is different, SetiChatStatus isn't running on my computer (at least it isnn't listed in the Activity Monitor), I never even launch iChat on this machine</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1279'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1279"><time data-relative="true">2004-12-03T06:14:37Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 51 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1280'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1280"><time data-relative="true">2004-12-03T07:15:47Z</time></a></span>
+</cite>
+<blockquote><p><a href="/issues/52">Bug #52</a> may be related to this, although in that bug, the &quot;hang&quot; is not a total block (ie. the global menu  keeps working).  I'm interested to know if the hang referred to in *this* bug (<a href="/issues/50">bug #50</a>) and <a href="/issues/39">bug #39</a> is a  total (spinning beachball) hang, or if the global menu keeps working etc. I doubt that it does, but it's  good to be explicit.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1281'>
+<cite>
+<a href="/users/nathaniel-madura">Nathaniel Madura</a>
+<span class='when'><a href="#comment_1281"><time data-relative="true">2004-12-03T07:20:53Z</time></a></span>
+</cite>
+<blockquote><p>The hang is a total hang, both synergy and iTunes have a spinning beach ball, and the preference pane can't stop the synergy application</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1282'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1282"><time data-relative="true">2004-12-04T00:01:03Z</time></a></span>
+</cite>
+<blockquote><p>Based on the information that's being reported it looks like this and <a href="/issues/39">bug #39</a> actually refer to the same  underlying issue. Please file any further comments in that bug. Marking this one as a duplicate.</p>
+<ul>
+<li>** This bug has been marked as a duplicate of 39 ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1283'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1283"><time data-relative="true">2004-12-04T00:01:22Z</time></a></span>
+</cite>
+<blockquote><p>Marking as  CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

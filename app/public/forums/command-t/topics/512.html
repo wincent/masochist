@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Command-T Ignoring certain directory
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Command-T Ignoring certain directory</div>
+<h1 class='major'>Command-T Ignoring certain directory</h1>
+<div class='topic' id='topic_512'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/512"><time data-relative="true">2012-03-12T13:30:01Z</time></a>
+</span>
+</cite>
+<blockquote><p>Command-T is ignoring a certain directory.I removed and reinstalled Command-T but it still keeps ignoring my 'apps' directory.</p>
+<p>Anybody know what might be causing it? </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10039'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10039"><time data-relative="true">2012-11-20T09:01:57Z</time></a></span>
+</cite>
+<blockquote><p>I have the same error. Commant-T ignores directory named &quot;apps&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10040'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10040"><time data-relative="true">2012-11-21T17:57:55Z</time></a></span>
+</cite>
+<blockquote><p>Could be you have more files in your hierarchy than allowed by the <code>g:CommandTMaxFiles</code> setting (which defaults to 10,000).</p>
+<p>Note that if you have something like a circular reference (via a symlink) in your hierarchy, you could easily shoot past any such limit, even if the number of actual files in the hierarchy is less than 10,000. It's the filesystem equivalent of an infinite loop and should probably be fixed.</p>
+<p>The other possibility is that your <code>'wildignore'</code> settings might be excluding the <code>apps/</code> directory, although that does seem an old thing to have in <code>'wildignore'</code>.</p>
+<p>See the docs for some more info on both of those settings.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

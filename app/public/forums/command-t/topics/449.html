@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Command-T Crashes On Second Use
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Command-T Crashes On Second Use</div>
+<h1 class='major'>Command-T Crashes On Second Use</h1>
+<div class='topic' id='topic_449'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/wavded">wavded</a>
+<span class='when'>
+<a href="/forums/command-t/topics/449"><time data-relative="true">2011-01-06T18:01:36Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm running Vim 7.3, Ruby 1.8.7, on Ubuntu Linux 10.10.  And sometime either around my upgrade to Vim 7.3 or upgrade to Command-T 1.0.1, it will crash the second time I use the command w/ all this error output:</p>
+<pre>Vim: Caught deadly signal SEGV                                               [11:56:40]
+Vim: Finished.</pre>
+<p>Any ideas?  Any way I can get more helpful information to you?</p>
+<p>Thanks, wavded</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6556'>
+<cite>
+<a href="/users/wavded">wavded</a>
+<span class='when'><a href="#comment_6556"><time data-relative="true">2011-01-06T18:15:13Z</time></a></span>
+</cite>
+<blockquote><p>Looks like it varies, I can't put my finger on it.  Sometimes its twice, sometimes I can use it longer.  If I type fast it seems to crash more than if I wait for it to populate.. but even that could be a sketchy observation.  Sorry, wish I had better tests for you.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6558'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6558"><time data-relative="true">2011-01-06T18:53:01Z</time></a></span>
+</cite>
+<blockquote><p>There are a couple of theories on why this kind of crash might be produced.</p>
+<p>One is that there are some bugs in Vim 7.3's Ruby support, and that dropping back to 7.2 fixes the problem.</p>
+<p>I actually think that the more likely explanation is simply that the plug-in was miscompiled (ie. a different version of Ruby was used when building Command-T than was used when building Vim). This mistake comes up over and over again, and is always fixed by using the same version of Ruby for both:</p>
+<ul>
+<li><a href="/issues/1741">issue #1741</a> (fixed by rebuilding using matching version of Ruby)</li>
+<li><a href="/issues/1647">issue #1647</a> (various opinions, but finally fixed by using matching version of Ruby)</li>
+<li>thread, &quot;<a href="/forums/command-t/topics/443">segmentation fault after make in command-t</a>&quot; (fixed by re-building, which I'll bet really means, building using, you guess it, matching version of Ruby)</li>
+<li>thread, &quot;<a href="/forums/command-t/topics/425">VIM stopped working after installing Command-T even though Ruby 1.8.x is installed</a>&quot; (fixed by re-building; again, using a matching version of Ruby)</li>
+</ul>
+<p>Those are just a few examples from &quot;recent&quot; history here. But if you look back through <a href="/forums/command-t">the forums</a> and on the <a href="/wiki/issue_tracker">issue tracker</a> you'll see literally dozens of issues where people miscompiled and fixed the problem by compiling correctly.</p>
+<p>I wish there were a way of making the whole process more foolproof, but it's unfortunately a quite complex ecosystem in which people love playing around with their tools and the result is that mismatching Ruby versions are dishearteningly common, but nothing I can do about that.</p>
+<p>Check out the troubleshooting section in the docs for information that you can collect in order to check to see you're actually using matching versions.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6561'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6561"><time data-relative="true">2011-01-07T00:56:06Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for your feedback Wincent.  I upgraded to Vim 7.3 on Ubuntu through a PPA which seems to have compiled with the system Ruby, here's the line in vim --version:</p>
+<pre>GEFILE64_SOURCE=1  -I/usr/lib/ruby/1.8/i686-linux -DRUBY_VERSION=18 </pre>
+<p>When running <code>which ruby</code>, I get</p>
+<pre>/usr/bin/ruby</pre>
+<p>Which has only one Ruby folder, which is 1.8, and I also have the folder listed in vim version, although I don't have a file called i686-linux in there.  I'll keep looking.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6562'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6562"><time data-relative="true">2011-01-07T07:21:57Z</time></a></span>
+</cite>
+<blockquote><p>Can you post the full output of <code>vim --version</code> and the full output of your <code>ruby extconf.rb &amp;&amp; make</code> from the Command-T build?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6563'>
+<cite>
+<a href="/users/jonathan">Jonathan</a>
+<span class='when'><a href="#comment_6563"><time data-relative="true">2011-01-07T16:45:04Z</time></a></span>
+</cite>
+<blockquote><p>Hi everyone, having a similar problem. Command-T built and works in Vim the first time, but when invoking for a second time it segfaults. Os is ubuntu 10.04, ruby version is 1.8.7, Vim is 7.3. Ruby and Vim installed from ppas (e.g. as binary not compiled from source).</p>
+<p>vim --version: </p>
+<pre>
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Aug 16 2010 19:19:29)
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version with GTK2-GNOME GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff 
++digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi 
++file_in_path +find_in_path +float +folding -footer +fork() +gettext 
+-hangul_input +iconv +insert_expand +jumplist +keymap +langmap +libcall 
++linebreak +lispindent +listcmds +localmap +lua/dyn +menu +mksession 
++modify_fname +mouse +mouseshape +mouse_dec +mouse_gpm -mouse_jsbterm 
++mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte +multi_lang -mzscheme 
++netbeans_intg -osfiletype +path_extra +perl/dyn +persistent_undo +postscript 
++printer +profile +python/dyn +python3/dyn +quickfix +reltime +rightleft +ruby 
++scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop 
++syntax +tag_binary +tag_old_static -tag_any_white +tcl +terminfo +termresponse
+ +textobjects +title +toolbar +user_commands +vertsplit +virtualedit +visual 
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup 
++X11 -xfontset +xim +xsmp_interact +xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -D_REENTRANT -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12   -DORBIT2=1 -pthread -D_REENTRANT -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-keyring-1 -I/usr/include/libgnome-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/gio-unix-2.0/ -I/usr/include/pixman-1 -I/usr/include/directfb -I/usr/include/libpng12     -Wall -g -O2    -I/usr/include/tcl8.4  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  -I/usr/lib/ruby/1.8/i486-linux -DRUBY_VERSION=18 
+Linking: gcc   -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,--as-needed -o vim   -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0     -lgnomeui-2 -lbonoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgconf-2 -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lselinux   -lacl -lgpm -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.10/CORE -L/usr/lib -ltcl8.4 -lieee -lruby1.8 -lrt -lm   
+</pre>
+<p>Output from ruby extconf.rb &amp;&amp; make: </p>
+<pre>
+checking for ruby.h... yes
+creating Makefile
+gcc -I. -I/usr/lib/ruby/1.8/i486-linux -I/usr/lib/ruby/1.8/i486-linux -I. -DHAVE_RUBY_H  -D_FILE_OFFSET_BITS=64  -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/usr/lib/ruby/1.8/i486-linux -I/usr/lib/ruby/1.8/i486-linux -I. -DHAVE_RUBY_H  -D_FILE_OFFSET_BITS=64  -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+gcc -I. -I/usr/lib/ruby/1.8/i486-linux -I/usr/lib/ruby/1.8/i486-linux -I. -DHAVE_RUBY_H  -D_FILE_OFFSET_BITS=64  -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -shared -o ext.so ext.o matcher.o match.o -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6565'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6565"><time data-relative="true">2011-01-07T20:00:14Z</time></a></span>
+</cite>
+<blockquote><p>As far as I can tell there are no glaring discrepancies here between the Ruby-related flags used at link time, so one thing you could try would be building Vim from source so that you can have more control over exactly what flags are passed in.</p>
+<p>It might be related to a known bug in Vim 7.3's &quot;largefile&quot; support (see <a href="/issues/1617">ticket #1617</a>), although if that's true, this is the first time it's actually caused a crash. To find out if it's the case, you'd build Vim from source using a <code>configure</code> line something like this:</p>
+<pre class="shell-syntax">$ ./configure --with-features=huge \
+              --enable-luainterp \
+              --enable-perlinterp \
+              --enable-pythoninterp \
+              --enable-rubyinterp \
+              --enable-gui=gtk2 \
+              --disable-largefile</pre>
+<p>(You probably want to explicitly enable some other features and disable others, but for the purposes of testing this out you definitely need <code>--enable-rubyinterp</code> and <code>--disable-largefile</code>).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6571'>
+<cite>
+<a href="/users/wavded">wavded</a>
+<span class='when'><a href="#comment_6571"><time data-relative="true">2011-01-08T21:05:23Z</time></a></span>
+</cite>
+<blockquote><p>vim version is: I doubled checked with the author of the binary and it was compiled using the default ruby.</p>
+<pre>VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Oct  2 2010 10:59:19)
+Compiled by buildd@
+Huge version with GTK2-GNOME GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff 
++digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi 
++file_in_path +find_in_path +float +folding -footer +fork() +gettext 
+-hangul_input +iconv +insert_expand +jumplist +keymap +langmap +libcall 
++linebreak +lispindent +listcmds +localmap -lua +menu +mksession +modify_fname 
++mouse +mouseshape +mouse_dec +mouse_gpm -mouse_jsbterm +mouse_netterm 
+-mouse_sysmouse +mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg 
+-osfiletype +path_extra +perl +persistent_undo +postscript +printer +profile 
++python -python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs 
++smartindent -sniff +startuptime +statusline -sun_workshop +syntax +tag_binary 
++tag_old_static -tag_any_white +tcl +terminfo +termresponse +textobjects +title
+ +toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
++vreplace +wildignore +wildmenu +windows +writebackup +X11 -xfontset +xim 
++xsmp_interact +xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -DORBIT2=1 -pthread -D_REENTRANT -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-keyring-1 -I/usr/include/libgnome-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/gio-unix-2.0/ -I/usr/include/pixman-1 -I/usr/include/libpng12     -Wall -g -O2    -I/usr/include/tcl8.4  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  -I/usr/lib/ruby/1.8/i686-linux -DRUBY_VERSION=18 
+Linking: gcc   -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,--as-needed -o vim   -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpng12 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0     -lgnomeui-2 -lbonoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lpng12 -lgconf-2 -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lselinux  -lacl -lgpm -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.10/CORE -lperl -L/usr/lib/python2.6/config -lpython2.6 -lutil -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions  -L/usr/lib -ltcl8.4 -lieee -lruby1.8 -lrt -lm</pre>
+<p>Here is extconf.rb &amp;&amp; make</p>
+<pre>gcc -shared -o ext.so ext.o match.o matcher.o -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_6576'>
+<cite>
+<a href="/users/wavded">wavded</a>
+<span class='when'><a href="#comment_6576"><time data-relative="true">2011-01-10T23:03:47Z</time></a></span>
+</cite>
+<blockquote><p>I ended up reverting to Vim 7.2 (default Ubuntu 10.10) package, I can live without 7.3 features for the time being.  I hope this gets resolved.  Hopefully 11.04 will come prepackaged with 7.3.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6595'>
+<cite>
+<a href="/users/wavded">wavded</a>
+<span class='when'><a href="#comment_6595"><time data-relative="true">2011-01-25T04:37:26Z</time></a></span>
+</cite>
+<blockquote><p>Just to follow up on this post.  I built vim from source with the configuration options Wincent had specified above (minus the largefile one) and it worked great, haven't had any crashes.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7080'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7080"><time data-relative="true">2011-09-04T23:45:08Z</time></a></span>
+</cite>
+<blockquote><p>Installed vim from source and things worked perfectly. :) </p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

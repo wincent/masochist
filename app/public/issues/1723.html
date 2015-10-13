@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1723: Prompt dissapears on 
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1723</div>
+<div class='issue' id='issue_1723'>
+<form class="edit_issue" id="edit_issue_1723" action="/issues/1723" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="VymbZVleBUf/OxAZg8eQ7Ec31A0z524o4fEmqoLbrhpj2yXS/tPfEia3I+6y7sNY8rW9MTgL4DTB7vNUpgPJPg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1723:
+<span data-name='issue[summary]'>
+Prompt dissapears on 
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-11-03T15:22:05Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>On newer versions of MacVim, the CommandT prompt is not visible most of the time. When typing text, the prompt will appear and disappear as keys are pressed.</p>
+<p>This does not happen on older versions of MacVim. In-particular, MacVim 7.2 stable 1.2 (33.3) does not exhibit this bug.</p>
+<p>OS 10.6.4</p>
+<p>MacVim Version 7.3 (53)</p>
+<pre>:version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Aug 15 2010 22:03:01)
+MacOS X (unix) version
+Compiled by Bjorn Winckler &lt;*************@gmail.com&gt;
+Huge version with MacVim GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard
++cmdline_compl +cmdline_hist +cmdline_info +comments +conceal +cryptv +cscope +cursorbind +cursorshape
++dialog_con_gui +diff +digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi
++file_in_path +find_in_path +float +folding -footer +fork() +fullscreen -gettext -hangul_input +iconv
++insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap -lua
++menu +mksession +modify_fname +mouse +mouseshape +mouse_dec -mouse_gpm -mouse_jsbterm +mouse_netterm
+-mouse_sysmouse +mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg +odbeditor -osfiletype
++path_extra +perl +persistent_undo +postscript +printer +profile +python -python3 +quickfix +reltime
++rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax
++tag_binary +tag_old_static -tag_any_white -tcl +terminfo +termresponse +textobjects +title +toolbar
++transparency +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo +vreplace
++wildignore +wildmenu +windows +writebackup -X11 -xfontset +xim -xsmp -xterm_clipboard -xterm_save
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMA
+COS_X_UNIX -no-cpp-precomp  -g -O2 -arch i386 -arch x86_64 -D_FORTIFY_SOURCE=1
+Linking: gcc   -L.    -L.         -arch i386 -arch x86_64 -L/usr/local/lib -o Vim -framework Cocoa -fram
+ework Carbon      -lncurses  -liconv -framework Cocoa    -L/usr/local/lib  -L/System/Library/Perl/5.10.0
+/darwin-thread-multi-2level/CORE -lperl -lm -lutil -lc -framework Python   -framework Ruby</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6396'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6396"><time data-relative="true">2010-11-03T15:28:53Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report.</p>
+<p>This is a dupe of <a href="/issues/1692">ticket #1692</a>, so will mark this one as closed. If you have any further comments to add please add them there.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6398'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6398"><time data-relative="true">2010-11-03T15:29:15Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

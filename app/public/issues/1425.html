@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1425: Synergy hangs when iTunes is on a different Space and has a dialog open
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1425</div>
+<div class='issue' id='issue_1425'>
+<form class="edit_issue" id="edit_issue_1425" action="/issues/1425" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ypMGF10A6qJRBPm/DprAW+BlWLmpd4dq6SPNYIMz05L+Ybig+o0w94iIykg/s5PvVecxhaKbCXbJPBiep+u0tg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1425:
+<span data-name='issue[summary]'>
+Synergy hangs when iTunes is on a different Space and has a dialog open
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-10-25T13:53:02Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<h2>Repro Steps</h2>
+<ol>
+<li>Ensure Spaces is enabled (mine is set to the default 4 spaces)</li>
+<li>Open iTunes on one Space</li>
+<li>Begin playing a tune in iTunes</li>
+<li>Press CMD + I to bring up the Info dialog, e.g. for lyrics</li>
+<li>Switch to another space</li>
+<li>Attempt to click on the Pause button in Synergy</li>
+</ol>
+<h2>Result</h2>
+<p>Synergy hangs - beach ball comes up after a short while, and never recovers while you are on the same Space.</p>
+<h2>Expected Result</h2>
+<p>Should work whether a dialog is up in iTunes on the other Space or not.</p>
+<h2>Workarounds</h2>
+<p>This does not happen if you Pause while on the same Space as iTunes.</p>
+<p>Also, switching back to the iTunes Space releases Synergy.</p>
+<h2>Notes</h2>
+<p>I tested this with iTunes set to only appear on Space 3 (my normal setup). I did not test without this setting, so mention it just in case it is related.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5113'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5113"><time data-relative="true">2009-10-25T14:16:46Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, but I don't think this has anything to do with Spaces, actually.</p>
+<p>In order for this to happen the only thing that is necessary is for iTunes to not be frontmost. So, if you bring up the info dialog and then bring some other app to the front (eg. a Safari window), then Synergy will hang until you bring iTunes to the front.</p>
+<p>This is actually an iTunes issue and there isn't really anything that I can do about it from the Synergy side. Basically, Synergy issues the instruction to iTunes and waits for the reply, but doesn't get one. When you bring iTunes to the front it finally wakes up and actually sends the reply to Synergy and Synergy &quot;unblocks&quot;.</p>
+<p>iTunes has actually improved a little in recent versions in this respect, as in the old days it was <em>completely</em> unresponsive whenever a dialog was up. At least now it responds provided it is frontmost. You could file a feature request or bug report with Apple if you'd like them to correct the issue; the important thing to include in your report is that iTunes doesn't respond to Apple Events if it has a dialog box up, except when it is the frontmost app.</p>
+<p>Working around this in Synergy would severely break the current working model. Instead of staying &quot;in sync&quot; with iTunes, it would have to become a &quot;blind&quot; controller; that is, issue commands and not wait for replies and not have confirmation of what state iTunes was in. It would thus avoid these &quot;blocking&quot; incidents, but it would be at risk of getting &quot;out of sync&quot; with the iTunes state. My &quot;developer's intuition&quot; leads me to believe that getting out of sync would be much more common and lead to a lot more support tickets than this non-responsiveness problem, so it's not a direction I would really want to explore, especially when the power is in Apple's hands to fix the unresponsive behaviour in iTunes.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

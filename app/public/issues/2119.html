@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2119: Clipper doesn't copy UTF-8 correctly
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2119</div>
+<div class='issue' id='issue_2119'>
+<form class="edit_issue" id="edit_issue_2119" action="/issues/2119" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SbWEdKqt0nX9MvgWyrMEPDmBQ4+DUUqLR0WteLrUHWp9RzrDDSAIICS+y+H7mleIjAMqs4i9xJdnWniGngx6Tg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2119:
+<span data-name='issue[summary]'>
+Clipper doesn't copy UTF-8 correctly
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Clipper
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-11-01T22:04:08Z</time>, updated <time data-relative="true">2013-11-03T03:35:52Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Clipper doesn't copy UTF-8 text correctly. For instance, I have a file foo with <code>&#x00a6;&#x00e6;&#x00e4;&#x00eb;&#x00e7;</code>, and run <code>nc localhost 8377 &lt; foo</code>. Upon pasting (into either iTerm2 or TextEdit), the output is <code>&#x00ac;&#x00b6;&#x221a;&#x00b6;&#x221a;&#x00a7;&#x221a;&#x00b4;&#x221a;&#x00df;</code> (plus newline).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10634'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10634"><time data-relative="true">2013-11-03T02:12:11Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. Looks like this only happens when run as a Launch Agent. I suspect the cause is no <code>LANG</code> environment variable being set, causing <code>pbcopy</code> to revert to default C encoding (see the <code>pbcopy</code> man page).</p>
+<p>We might be able to get around this by tweaking the launchd plist file to set an appropriate <code>LANG</code> setting.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10635'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10635"><time data-relative="true">2013-11-03T02:25:27Z</time></a></span>
+</cite>
+<blockquote><p>Yep, looks like you can get it to work by modifying the plist, adding a section like:</p>
+<pre class="diff-syntax">diff --git a/com.wincent.clipper.plist b/com.wincent.clipper.plist
+index d37bb09..921eb1d 100644
+--- a/com.wincent.clipper.plist
++++ b/com.wincent.clipper.plist
+@@ -12,6 +12,11 @@
+                &lt;string&gt;--port&lt;/string&gt;
+                &lt;string&gt;8377&lt;/string&gt;
+        &lt;/array&gt;
++       &lt;key&gt;EnvironmentVariables&lt;/key&gt;
++       &lt;dict&gt;
++               &lt;key&gt;LANG&lt;/key&gt;
++               &lt;string&gt;en_US.UTF-8&lt;/string&gt;
++       &lt;/dict&gt;
+        &lt;key&gt;KeepAlive&lt;/key&gt;
+        &lt;true/&gt;
+        &lt;key&gt;LimitLoadToSessionType&lt;/key&gt;</pre>
+<p>Where this file is depends on how you installed. If you installed using Homebrew, it's at <code>/usr/local/Cellar/clipper/0.1/homebrew.mxcl.clipper.plist</code> and you'll be able to fix things by stopping Clipper:</p>
+<pre class="shell-syntax">$ launchctl unload /usr/local/Cellar/clipper/0.1/homebrew.mxcl.clipper.plist</pre>
+<p>Editing the property list:</p>
+<pre class="shell-syntax">$ vim /usr/local/Cellar/clipper/0.1/homebrew.mxcl.clipper.plist</pre>
+<p>And restarting Clipper:</p>
+<pre class="shell-syntax">$ launchctl load -w -S Aqua /usr/local/Cellar/clipper/0.1/homebrew.mxcl.clipper.plist</pre>
+<p>If you installed it yourself, the steps are much the same but the property list most likely is at <code>~/Library/LaunchAgents/com.wincent.clipper.plist</code>.</p>
+<p>UTF-8 seems like a reasonable default &#x2014; and it's what the <code>pbcopy</code> man page recommends &#x2014; so I'll push an update to the Clipper repo that includes this in the sample plist file, and probably also a pull request to update the <a href="https://github.com/mxcl/homebrew/blob/master/Library/Formula/clipper.rb" class="external">Homebrew recipe</a> as well.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10636'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10636"><time data-relative="true">2013-11-03T03:35:48Z</time></a></span>
+</cite>
+<blockquote><p>0.2 is released, and <a href="https://github.com/mxcl/homebrew/pull/23908" class="external">here is the matching Homebrew pull request</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10637'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10637"><time data-relative="true">2013-11-03T03:35:52Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

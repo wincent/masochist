@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+&lt;Leader&gt;t in empty buffer, [No Name], does nothing
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; &lt;Leader&gt;t in empty buffer, [No Name], does nothing</div>
+<h1 class='major'>&lt;Leader&gt;t in empty buffer, [No Name], does nothing</h1>
+<div class='topic' id='topic_514'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/514"><time data-relative="true">2012-03-31T19:26:51Z</time></a>
+</span>
+</cite>
+<blockquote><p>When I start vim in a directory, my first inclination is to type &lt;Leader&gt;t to open a file. However, there is no response. Plugin like VCSCommand seems to work with &lt;Leader&gt;c. So, there is some logic that isn't getting triggered in command-t.</p>
+<p>To work around this, I invoke vim via a function which starts up with NERDTreeToggle. &lt;Leader&gt;t works whenever you have a directory or a file open. But, empty buffers, it doesn't work.</p>
+<p>I have v1.3.1 installed. Any help much appreciated.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7498'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7498"><time data-relative="true">2012-04-06T21:12:18Z</time></a></span>
+</cite>
+<blockquote><p>Not enough detail here to be sure of what problem you're seeing, but you may be referring to a known issue where dismissing the match listing (either by canceling or selecting a file) under the circumstances you describe leads Vim to emit:</p>
+<pre>E90: Cannot unload last buffer
+Error detected while processing BufLeave Auto commands for &quot;&lt;buffer=5&gt;&quot;:</pre>
+<p><a href="/issues/1778">Bug #1778</a> is the relevant ticket.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

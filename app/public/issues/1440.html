@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1440: Transition to Amazon EC2 (Elastic Compute Cloud)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1440</div>
+<div class='issue' id='issue_1440'>
+<form class="edit_issue" id="edit_issue_1440" action="/issues/1440" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="xi23KnM/ibelyfKP6Udh1xSUyoQdh/rJS+PsKx+9rLny3wmd1LJT4nxFwXjYbjJjoRajuBZrdNVr/DnVO2XLnQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1440:
+<span data-name='issue[summary]'>
+Transition to Amazon EC2 (Elastic Compute Cloud)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-11-11T17:36:42Z</time>, updated <time data-relative="true">2010-04-03T19:27:21Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Will have to do the numbers on this but I suspect that moving to EC2 will bring my hosting costs down significantly. See:</p>
+<ul>
+<li><a href="http://aws.amazon.com/ec2/" class="external">http://aws.amazon.com/ec2/</a></li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5151'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5151"><time data-relative="true">2009-11-11T17:43:18Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li><a href="http://ec2onrails.rubyforge.org/" class="external">http://ec2onrails.rubyforge.org/</a></li>
+<li><a href="http://railspikes.com/2007/4/5/rails-on-ec2" class="external">http://railspikes.com/2007/4/5/rails-on-ec2</a> (old)</li>
+<li><a href="http://blog.reddit.com/2009/11/moving-to-cloud.html" class="external">http://blog.reddit.com/2009/11/moving-to-cloud.html</a> (Reddit just posted about moving)</li>
+<li><a href="http://aws.amazon.com/rds/" class="external">http://aws.amazon.com/rds/</a> (Amazon Relational Database Service &mdash; Amazon RDS)</li>
+<li><a href="http://aws.amazon.com/ebs" class="external">http://aws.amazon.com/ebs</a> (Amazon Elastic Block Store, persistent reliable block storage well suited for things like website files, email, database files)</li>
+<li><a href="http://aws.amazon.com/s3" class="external">http://aws.amazon.com/s3</a> (Amazon S3, cheap data storage, well suited for large downloads)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5152'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5152"><time data-relative="true">2009-11-11T17:45:03Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li><a href="http://www.engineyard.com/products/cloud/features" class="external">http://www.engineyard.com/products/cloud/features</a> (Engine Yard's offering, built on AWS)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5155'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5155"><time data-relative="true">2009-11-12T15:01:04Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li><a href="http://blog.rightscale.com/2008/03/26/dns-elastic-ips-and-how-things-fit-together-when-upgrading-a-server/" class="external">http://blog.rightscale.com/2008/03/26/dns-elastic-ips-and-how-things-fit-together-when-upgrading-a-server/</a> (explanation of what Elastic IPs are and how they work)</li>
+<li><a href="http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1346" class="external">http://developer.amazonwebservices.com/connect/entry.jspa?externalID=1346</a> (Amazon's own article on the same subject)</li>
+<li><a href="http://alestic.com/2009/06/ec2-elastic-ip-internal" class="external">http://alestic.com/2009/06/ec2-elastic-ip-internal</a> (article on how looking up the <em>external</em> Elastic IP from an EC2 instance actually returns the <em>internal</em> IP address)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5156'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5156"><time data-relative="true">2009-11-12T16:29:23Z</time></a></span>
+</cite>
+<blockquote><h3>Pricing comparison</h3>
+<h4>Engine Yard Cloud</h4>
+<p>Quoted prices do not include sales tax.</p>
+<ul>
+<li>Minimum monthly usage fee: $25</li>
+<li>Small instance: 1ECU, 1.7GB RAM, 160 GB (non-persistent) storage: $0.145/hour (approx $104.40/month)</li>
+<li>Bandwidth: $0.10/GB inbound, $0.17/GB outbound</li>
+<li>EBS storage: $0.10/GB + $0.10/million I/O accesses</li>
+<li>S3 (EBS backups etc):
+<ul>
+<li>storage $0.15/GB</li>
+<li>inbound data $0.10/GB</li>
+<li>outbound data $0.17/GB</li>
+<li>requests:
+<ul>
+<li>$0.01 per 1,000 PUT/COPY/POST/LIST requests</li>
+<li>$0.01 per 10,000 GET requests</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4>Amazon</h4>
+<p>All prices are in US zone.</p>
+<ul>
+<li>Small instance:
+<ul>
+<li>&quot;on-demand&quot;: $0.085/hour (approx $61.20/month)</li>
+<li>reserved:
+<ul>
+<li>1-year term: $227.50 up-front then $0.03/hour (approx $40.85/month)</li>
+<li>3-year term: $350 up-front then $0.03/hour (approx $31.62/month)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Bandwidth: $0.10/GB inbound, $0.17/GB outbound</li>
+<li>EBS storage: $0.10/GB + $0.10/million I/O accesses</li>
+<li>S3 (EBS backups etc):
+<ul>
+<li>storage $0.15/GB-month</li>
+<li>requests:
+<ul>
+<li>$0.01 per 1,000 PUT requests</li>
+<li>$0.01 per 10,000 GET requests</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Elastic IP addresses: $0.01 per non-attached IP address per complete hour</li>
+<li><a href="http://aws.amazon.com/rds/" class="external">Amazon RDS</a> (database):
+<ul>
+<li>Small instance: $0.11/hour (approx $79.20/month)</li>
+<li>Storage: $0.10/GB (minimum 5 GB, or $0.50/month) + $0.10/million I/O requests</li>
+</ul>
+</li>
+</ul>
+<h4><a href="http://www.rackspacecloud.com/" class="external">Rackspace Cloud</a></h4>
+<ul>
+<li>&quot;Cloud Servers&quot;:
+<ul>
+<li>Pricing overview: <a href="http://www.rackspacecloud.com/cloud_hosting_products/servers/pricing" class="external">http://www.rackspacecloud.com/cloud_hosting_products/servers/pricing</a></li>
+<li>Midrange virtual server roughly equivalent to minimum EC2 instance (2GB memory, 80 GB of disk): $0.12/hour (approx $87.60/month)</li>
+<li>Bandwidth: $0.08/GB inbound, $0.22/GB outbound</li>
+</ul>
+</li>
+<li>&quot;Cloud Sites&quot;:
+<ul>
+<li>Pricing overview: <a href="http://www.rackspacecloud.com/cloud_hosting_products/sites/pricing" class="external">http://www.rackspacecloud.com/cloud_hosting_products/sites/pricing</a></li>
+<li>Base price of $100/month includes:
+<ul>
+<li>50 GB of storage</li>
+<li>500 GB of bandwidth</li>
+<li>10,000 &quot;compute cycles&quot;: <a href="http://www.rackspacecloud.com/cloud_hosting_faq#cloudsitespricing" class="external">supposedly enough</a> for about 11 million page views</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5159'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5159"><time data-relative="true">2009-11-12T17:54:42Z</time></a></span>
+</cite>
+<blockquote><p><a href="http://www.ducea.com/2009/06/01/howto-update-dns-hostnames-automatically-for-your-amazon-ec2-instances/" class="external">This</a> is an article on updating a DNS server when an instance is recreated and acquires a new dynamic IP.</p>
+<p>With Elastic IPs this isn't exactly relevant any more but one still needs to have some kind of DNS in place to resolve to that external IP; at this  stage not sure if it is feasible to run a server (or servers) inside EC2 instances themselves, or whether an external paid service would be required, or if Amazon offers or sells DNS services.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5160'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5160"><time data-relative="true">2009-11-13T02:31:19Z</time></a></span>
+</cite>
+<blockquote><h3>Email</h3>
+<p>Looks like a common problem cropping up on the forums is sending email from EC2 instances.</p>
+<p>Amazon can't/won't set up reverse DNS lookups for Elastic IP addresses, so if you send mail from an instance there is a chance it might get rejected by a spam filter as the forward lookup (example.com mapping to 1.2.3.4) doesn't match up with the reverse lookup (1.2.3.4 mapping to something-ec2.amazon.com).</p>
+<p>One recommendation is to use an external service like <a href="http://authsmtp.com/mail-server/index.html" class="external">this one</a> from authsmtp.com (prices start at $24/year).</p>
+<p>Another possible idea is to set up your DNS so that your MX is set as &quot;something-ec2.amazon.com&quot;, and your <a href="/wiki/SPF" class="redlink">SPF</a> TXT records specify where outgoing mail should be coming from for your domain.</p>
+<h3>DNS</h3>
+<p>Relatedly, on the idea of running your own DNS server in an instance: instances can only have one IP address, so you can't really put a primary and secondary name server on the same instance. It <em>may</em> be possible to point two external Elastic IPs at the same instance, I am not sure, although with the obvious reliability implications.</p>
+<p>An alternative would be to use an external DNS service like:</p>
+<ul>
+<li><a href="http://www.nettica.com/" class="external">Nettica</a> (for example, their <a href="http://www.nettica.com/Domain/Bulk.aspx" class="external">Bulk DNS service</a>, which runs at $50/year for up to 50 domains).</li>
+<li><a href="http://www.dnsmadeeasy.com/s0306/price/dns.html" class="external">http://www.dnsmadeeasy.com/s0306/price/dns.html</a> ($30 or $60/year)</li>
+<li><a href="http://www.zoneedit.com/" class="external">http://www.zoneedit.com/</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5161'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5161"><time data-relative="true">2009-11-13T04:43:25Z</time></a></span>
+</cite>
+<blockquote><p>More links (posting anonymously from another computer):</p>
+<ul>
+<li>Managing Amazon EC2 virtual machines 101 - part 1: creating AMI images: <a href="http://blog.taggesell.de/index.php?/archives/66-Managing-Amazon-EC2-virtual-machines-101-part-1-creating-AMI-images.html" class="external">http://blog.taggesell.de/index.php?/archives/66-Managing-Amazon-EC2-virtual-machines-101-part-1-creating-AMI-images.html</a> (fairly detailed instructions on setting up new AMIs)</li>
+<li><a href="http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/" class="external">http://docs.amazonwebservices.com/AWSEC2/latest/GettingStartedGuide/</a> (entry point)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5162'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5162"><time data-relative="true">2009-11-13T05:34:01Z</time></a></span>
+</cite>
+<blockquote><p>More links:</p>
+<ul>
+<li>Amazon Elastic Compute Cloud User Guide: <a href="http://docs.amazonwebservices.com/AWSEC2/2009-08-15/UserGuide/" class="external">http://docs.amazonwebservices.com/AWSEC2/2009-08-15/UserGuide/</a></li>
+<li>Amazon Elastic Compute Cloud Developer Guide: <a href="http://docs.amazonwebservices.com/AWSEC2/2009-08-15/DeveloperGuide/" class="external">http://docs.amazonwebservices.com/AWSEC2/2009-08-15/DeveloperGuide/</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5165'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5165"><time data-relative="true">2009-11-17T07:17:49Z</time></a></span>
+</cite>
+<blockquote><p>Pretty important info relevant to using authsmtp.com:</p>
+<ul>
+<li><a href="http://pauldowman.com/2008/02/17/smtp-mail-from-ec2-web-server-setup/" class="external">http://pauldowman.com/2008/02/17/smtp-mail-from-ec2-web-server-setup/</a></li>
+</ul>
+<p>Basically:</p>
+<blockquote>
+<p>Rather than deliver directly to the AuthSMTP mail server from your web app it&#x2019;s a good idea to deliver to a local queueing mail server, which will forward via the AuthSMTP gateway. Your web app will deliver mail to localhost (or perhaps a dedicated instance if you prefer), port 25.</p>
+</blockquote>
+<p>This is important because you have a single username/password for AuthSMTP and you don't want to share that password among all your email account users. Instead, you want them to continue to connect to the SMTP server that you control, authenticating with their own usernames and passwords, and have that server relay through the AuthSMTP one.</p>
+<p>The article linked to above shows how it's done with Postfix and a <code>/etc/postfix/main.cf</code> which looks like this:</p>
+<pre>myhostname = www.YOURDOMAIN.com
+mydomain = YOURDOMAIN.com
+myorigin = $mydomain
+
+smtpd_banner = $myhostname ESMTP $mail_name
+biff = no
+append_dot_mydomain = no
+
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+mydestination = localdomain, localhost, localhost.localdomain, localhost
+mynetworks = 127.0.0.0/8
+mailbox_size_limit = 0
+recipient_delimiter = +
+
+# SECURITY NOTE: Listening on all interfaces. Make sure your firewall is
+# configured correctly
+inet_interfaces = all
+
+relayhost = [mail.authsmtp.com]
+smtp_connection_cache_destinations = mail.authsmtp.com
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = static:YOUR_AUTHSMPT_USER_ID:YOUR_AUTHSMTP_PW
+smtp_sasl_security_options = noanonymous
+
+default_destination_concurrency_limit = 4
+
+soft_bounce = yes</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5166'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5166"><time data-relative="true">2009-11-17T07:31:47Z</time></a></span>
+</cite>
+<blockquote><p>See also:</p>
+<ul>
+<li><a href="https://cloud-support.engineyard.com/faqs/questions/ssmtp" class="external">https://cloud-support.engineyard.com/faqs/questions/ssmtp</a></li>
+</ul>
+<p>This is what they say:</p>
+<blockquote>
+<p>Edit <code>/etc/ssmtp/ssmtp.conf</code> (a config file for ssmtp sendmail) and make it look like the following:</p>
+<pre>mailhub=mail.authsmtp.com:2525</pre>
+<p>Where will the mail seem to come from? Replace me with the hostname you want email to come from:</p>
+<pre>rewriteDomain=example.com</pre>
+<p>Set FromLineOverride to make the the &quot;From:&quot; use the from line from the envelope. The only exception is if no from line is given.</p>
+<pre>FromLineOverride=YES</pre>
+<p>Use SSL/TLS to send secure messages to server:</p>
+<pre>UseSTARTTLS=YES</pre>
+<p>Make sure that this isn't <code>UseTLS=YES</code>. If you're getting errors like:</p>
+<pre>SSL connection to host = Success, Cannot open mail.authsmtp.com:2525</pre>
+<p>then you have the wrong variable. <code>UseTLS</code> doesn't work with authsmtp, only <code>UseSTARTTLS</code> does.</p>
+<p>Add your own user/pass here:</p>
+<pre>AuthUser=username
+AuthPass=password
+AuthMethod=DIGEST-MD5</pre>
+<p>Set your action mailer setting in <code>RAILS_ROOT/config/environment.rb</code> (or an env specific env file if you prefer)</p>
+<pre>ActionMailer::Base.delivery_method = :sendmail</pre>
+<p>Ensure permissions on the three files above (<code>/etc/ssmtp/ssmtp.conf</code>, <code>/usr/sbin/ssmtp</code>, <code>/usr/bin/sendmail</code>) are properly set:</p>
+<pre class="shell-syntax">$ sudo chmod +x /usr/sbin/ssmtp /usr/bin/sendmail
+$ sudo chown username:username /etc/ssmtp/ssmtp.conf</pre>
+<p>(where username is the name of your SSH user you logged into your instance with) And that's it! You can now send emails from your app via your SMTP relay.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5167'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5167"><time data-relative="true">2009-11-17T09:53:09Z</time></a></span>
+</cite>
+<blockquote><p>Article describing how to transition from <a href="/wiki/Sendmail">Sendmail</a> to sSMTP:</p>
+<ul>
+<li><a href="http://www.linux.com/archive/feature/132006" class="external">http://www.linux.com/archive/feature/132006</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5168'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5168"><time data-relative="true">2009-11-17T10:05:13Z</time></a></span>
+</cite>
+<blockquote><p>Instructions for <a href="/wiki/Sendmail">Sendmail</a>:</p>
+<ul>
+<li><a href="http://www.scalix.com/wiki/index.php?title=Configuring_Sendmail_with_smarthost_Ubuntu_Gutsy" class="external">http://www.scalix.com/wiki/index.php?title=Configuring_Sendmail_with_smarthost_Ubuntu_Gutsy</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5169'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5169"><time data-relative="true">2009-11-17T11:26:02Z</time></a></span>
+</cite>
+<blockquote><p>Turns out to be pretty easy. Added this to <code>/etc/mail/sendmail.mc</code>:</p>
+<pre>define(`SMART_HOST', `mail.authsmtp.com')dnl
+FEATURE(`authinfo', `hash /etc/mail/authinfo')dnl</pre>
+<p>Created root-owned, not-world-readable <code>/etc/mail/sendmail.mc</code> containing:</p>
+<pre>AuthInfo:mail.authsmtp.com &quot;U:username&quot; &quot;P:password&quot; &quot;M:DIGEST-MD5&quot;</pre>
+<p>Rebuild config files and restart <a href="/wiki/Sendmail">Sendmail</a>:</p>
+<pre class="shell-syntax"># cd /etc/mail
+# make
+# service sendmail restart</pre>
+<p>Domains listed in <code>/etc/mail/local-host-names</code> will be delivered locally rather than relayed through the &quot;smarthost&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5527'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5527"><time data-relative="true">2010-04-03T19:27:21Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

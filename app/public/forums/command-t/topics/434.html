@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Command T 0.9, gVim 7.3 &amp; Ruby 1.9.1
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Command T 0.9, gVim 7.3 &amp; Ruby 1.9.1</div>
+<h1 class='major'>Command T 0.9, gVim 7.3 &amp; Ruby 1.9.1</h1>
+<div class='topic' id='topic_434'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/crocked">crocked</a>
+<span class='when'>
+<a href="/forums/command-t/topics/434"><time data-relative="true">2010-10-15T04:10:01Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi, I tried to install gVim 7.3 (official windows final build win32 on 32bit XP SP3 machine) which is built against Ruby 1.9.1 with the latest version of Command T. However when I attempt to open a file with Command T I get an error an unhandled win32 exception occurred in gvim.exe 8236. </p>
+<p>I used the devkit 3.4.5 and the install seemed to go through without issue.</p>
+<p>I had originally tried using Ruby 1.8.7 but with this I got the message that I needed to take a version of vim that is compiled against Ruby (probably as it now uses a higher version). 1.9.1 would be better as this is what we are using at work anyway but if I had to use 1.8.7 I guess I'd need to revert to gvim 7.2</p>
+<p>Do you have any idea what could be causing this? Kind Regards, Crocked</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6346'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6346"><time data-relative="true">2010-10-15T12:38:16Z</time></a></span>
+</cite>
+<blockquote><p>I've tried various combinations of Vim and Ruby on Windows (Windows XP to be precise), and the only one which I could get working reliably was the one mentioned in the readme (Vim 7.2 from www.vim.org, Ruby 1.8.7, and the 3.4.5 devkit).</p>
+<p>I'm not a Windows expert (my desktop runs Mac OS X) so I don't really know what would need to be done to get Vim 7.3 and/or Ruby 1.9.x playing nicely with Command-T.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6689'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6689"><time data-relative="true">2011-02-11T09:08:28Z</time></a></span>
+</cite>
+<blockquote><p>I downloaded a recent build of the Windows VIM 7.3 from <a href="http://wyw.dcweb.cn/" class="external">http://wyw.dcweb.cn/</a> and used that in combination with Ruby 1.9.2 (which has a 191 dll) to fix my crash issues in combination with CommandT. The VIM binary from vim.org has Ruby-related bugs that have been fixed in later versions for which no new binary exists on the vim.org site, unfortunately. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6831'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6831"><time data-relative="true">2011-04-20T16:20:04Z</time></a></span>
+</cite>
+<blockquote><p>Solution provided in the comment above worked for me. Only had to move Ruby SDK files from C:\Ruby192\mingw into C:\Ruby192.</p>
+<p>-- Yaroslav Bunyak</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7381'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7381"><time data-relative="true">2012-01-19T20:05:56Z</time></a></span>
+</cite>
+<blockquote><p>FYI,</p>
+<p>Standard Vim 73_46 exes for Windows (from <a href="http://www.vim.org/download.php#pc" class="external">http://www.vim.org/download.php#pc</a>) have the crashing issue with Ruby 1.9.x, but require 1.9.x.</p>
+<p>Instead, you can use Wu Yongwei's build of Vim for Windows (currently 7.3.393) which include the fixes to the Ruby crash.  Go here and grab the vim73.zip from <a href="http://wyw.dcweb.cn/#download" class="external">http://wyw.dcweb.cn/#download</a> and copy it to your standard vim install.  His zip doesn't include the runtime so you should install the standard vim first.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7417'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7417"><time data-relative="true">2012-02-08T20:16:15Z</time></a></span>
+</cite>
+<blockquote><p>Wincent,</p>
+<p>I want to thank you for creating this awesome plugin. It has been a tremendous productivity boon. I was able to get Command-T to work based on the instructions in the documentation. Though I could not find a way to make it work with 7.3</p>
+<p>Today, I finally cracked the nut.</p>
+<p>Here's the step by step guide:</p>
+<p><a href="https://github.com/SolutionYogi/VimSetup/blob/master/software/README.txt" class="external">https://github.com/SolutionYogi/VimSetup/blob/master/software/README.txt</a></p>
+<p>[I have stored all associated installation packages in <a href="https://github.com/SolutionYogi/VimSetup/tree/master/software" class="external">https://github.com/SolutionYogi/VimSetup/tree/master/software</a> ]</p>
+<p>I am now a super happy user of Vim 7.3 (Persistent Undo FTW!) and Command-T. </p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

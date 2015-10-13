@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1461: Configurable minimum length (50-100%) before last.fm submission
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1461</div>
+<div class='issue' id='issue_1461'>
+<form class="edit_issue" id="edit_issue_1461" action="/issues/1461" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="KSqklraaVFCr2mnGIxQMK2V6ANlxcX6MCZdvbGuGazMd2BohEReOBXJWWjESPV+f0Php5Xqd8JApiLqST14MFw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1461:
+<span data-name='issue[summary]'>
+Configurable minimum length (50-100%) before last.fm submission
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-01-17T06:14:28Z</time>, updated <time data-relative="true">2010-04-01T14:22:56Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Copied from <a href="/forums/synergy/topics/418">this forum topic</a>:</p>
+<blockquote>
+<p>When you use the official last.fm scrobbler, you can configure the minimum length before submitting the song (between 50 and 100%) and last.fm display that the track is now playing. It would be nice to add those features to synergy.</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5267'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5267"><time data-relative="true">2010-01-17T06:26:40Z</time></a></span>
+</cite>
+<blockquote><p>Interesting, didn't know about that one. I've actually never used the official scrobbler (nor any other); I just implemented the scrobbling support by sitting down with the official scrobbling protocol documentation and making Synergy conform to it exactly.</p>
+<p>The original version of the protocol I developed against was 1.1 (<a href="http://www.audioscrobbler.net/wiki/Protocol1.1.merged" class="external">http://www.audioscrobbler.net/wiki/Protocol1.1.merged</a>). Of interest here, it says:</p>
+<blockquote>
+<ul>
+<li>Each song should be posted to the server when it is 50% or 240 seconds complete, whichever comes first.</li>
+<li>If a user seeks (i.e. manually changes position) within a song before the song is due to be submitted, do not submit that song.</li>
+</ul>
+</blockquote>
+<p>So at least according to that version of the protocol it says to submit <em>at</em> 50%, not <em>at or after</em> 50%. The wording seems quite clear that there is no leeway for submitting the information at any other time.</p>
+<p>The next version of the protocol is version 1.2 (<a href="http://www.audioscrobbler.net/development/protocol/" class="external">http://www.audioscrobbler.net/development/protocol/</a>) and it has the following modification:</p>
+<blockquote>
+<ul>
+<li>&quot;No skipping&quot; rule removed (50%/240 seconds must still be played).</li>
+</ul>
+</blockquote>
+<p>Digging a little deeper it says:</p>
+<blockquote>
+<ol>
+<li>The track must be submitted once it has finished playing. Whether it has finished playing naturally or has been manually stopped by the user is irrelevant.</li>
+<li>The track must have been played for a duration of at least 240 seconds or half the track's total length, whichever comes first. Skipping or pausing the track is irrelevant as long as the appropriate amount has been played.</li>
+</ol>
+</blockquote>
+<p>So my understanding of this is that the exact moment for submission is once again strictly determined, but this time rather than <em>at</em> the 50% point it is <em>at</em> the end of the song. It would appear that if the official client is allowing the user to determine the moment at which stuff gets submitted then it isn't actually adhering to the official 1.2 protocol.</p>
+<p>Apparently, the very latest version of the protocol is version 1.2.1 (<a href="http://www.lastfm.es/api/submissions" class="external">http://www.lastfm.es/api/submissions</a>). As far as I can tell, it includes the exact same rules about when to submit, and the only modifications are described as:</p>
+<blockquote>
+<p>The only change is an additional, optional, handshake mechanism to allow third-parties to use Last.fm web services authentication to create new scrobbling sessions.</p>
+</blockquote>
+<p>So on the protocol front, I'm inclined to reject this feature request. At least until we get official clarification from last.fm that the protocol is incorrect or ambiguous and will be updated in a future revision.</p>
+<p>On the technical front, I don't see any real technical obstacle to implementing it, as it just means that the places where the 50% point is hard-coded into the algorithm would just need to be replaced with a user-controllable variable ranging between 50% and 100%, and of course the accompanying <a href="/wiki/UI">UI</a> for actually manipulating that setting.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5268'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5268"><time data-relative="true">2010-01-17T11:15:26Z</time></a></span>
+</cite>
+<blockquote><p>And about the now playing part? The official scrobbler shows when a track is playing (not necessarily scrobbled), could this be implemented as well?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5269'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5269"><time data-relative="true">2010-01-17T23:16:44Z</time></a></span>
+</cite>
+<blockquote><p>Hm, I'm not sure. The protocol says nothing about &quot;now playing&quot; notifications, it only talks about scrobbling. Perhaps it is being scrobbled early (as you say, as early as 50% through the track) and the website shows that as &quot;now playing&quot;?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5270'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5270"><time data-relative="true">2010-01-19T17:02:29Z</time></a></span>
+</cite>
+<blockquote><p>No, the official scrobbler really display &quot;now playing&quot; for the hole time the track plays. If you stop it before 50% it is removed from the list, if it plays passed 50% then it is scrobbled and remain on the list when the track change.</p>
+<p>So it's basically: Track start to play -&gt; set status to now playing on that track -&gt; track is marked as scrobbled, still showing now playing -&gt; next track -&gt; track remain on the list -&gt; next track start to play Or : Track start to play -&gt; set status to now playing on that track -&gt; next track -&gt; track is removed from the list -&gt; next track start to play</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5271'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5271"><time data-relative="true">2010-01-20T13:26:21Z</time></a></span>
+</cite>
+<blockquote><p>Interesting. So they must be using some as-yet-unpublished API because the behavior you're describing doesn't conform even remotely to what's required by the protocol.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5511'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5511"><time data-relative="true">2010-04-01T14:22:56Z</time></a></span>
+</cite>
+<blockquote><p>Changes are in the wind:</p>
+<ul>
+<li><a href="http://www.lastfm.es/forum/21716/_/611779" class="external">http://www.lastfm.es/forum/21716/_/611779</a>: &quot;Request for feedback on the next version of the Scrobble API&quot;</li>
+<li><a href="http://blog.last.fm/2010/03/19/but-does-it-scrobble" class="external">http://blog.last.fm/2010/03/19/but-does-it-scrobble</a>: &quot;But does it scrobble?&quot;</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

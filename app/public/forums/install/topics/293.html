@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Install progress report
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/install">Install</a> &raquo; Install progress report</div>
+<h1 class='major'>Install progress report</h1>
+<div class='topic' id='topic_293'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/install/topics/293"><time data-relative="true">2004-02-20T19:01:57Z</time></a>
+</span>
+</cite>
+<blockquote><p>Been very busy working on Install the last few days adding a few powerful new features:</p>
+<pre>  Ability to specify multiple installation configurations, each tailored for a particular version (or range of versions) of Mac OS X</pre>
+<p>Ability to add or remove login items Ability to execute shell scripts, with or without root privileges, as part of &quot;preflight&quot; or &quot;postflight&quot; installation phases Ability to execute shell scripts, again with or without root privileges, and then act on the basis of the exit code from the script No limits on which shell you use (Bash, Perl etc) Can pass arguments to the shell scripts New Item in the Install Application menu to take you to the Install website Lots of internal changes to make the code more extensible and flexible, preparing the way for a new kind of license (a Framework+Binary license) so that developers can customize the installer even further by adding their own subclasses; the new license will be offered as an alternative to the existing Binary-Only and Full-Source licenses Much-improved &quot;Finish&quot; install step, allowing more complicated post-install actions; it is now possible to specify with much more flexibility which files to open and with what applications Ongoing code-auditing to tighten up the code and make it more robust; I haven't found any memory leaks or bugs yet, but I have been making minor adjustments to the code which make it more &quot;future-proof&quot; As part of the above, I've developed some new exception macros to make working with exceptions easier under both the old and the new-style exception models Much more that I can't remember right now... Looks like it's going to be a ripper of a release, and it will enable me to finally release another product I have waiting in the wings, but for which I didn't yet have an installer that could do the necessary bits and pieces to get it deployed...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_920'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'><a href="#comment_920"><time data-relative="true">2004-02-21T09:31:12Z</time></a></span>
+</cite>
+<blockquote><p>Not that I am trying to dampen your enthusiasm, but have any developers bought licensing for Install yet?</p>
+<p>Another new product sounds fun... although you imply some sort of system level utility.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_921'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_921"><time data-relative="true">2004-03-07T08:21:04Z</time></a></span>
+</cite>
+<blockquote><p>It's important to remember that I developed Install because I needed a tool to deploy Synergy. I was getting overwhelmed with questions about how to install it (even though it is a simple prefPane).</p>
+<p>It's been a highly valuable experience because in writing the program I have created code that has been rolled directly into GetSmart Pro, Synergy Advance and WinHex.</p>
+<p>And there's plenty of useful stuff in Install that I can leverage elsewhere: the ability to run stuff with root privileges, the ability to run shell scripts, code for adding and removing login items etc.</p>
+<p>Install 1.1 came out last week, and yesterday Install 1.1.1. Version 1.1.2 is already in the pipeline.</p>
+<p>To answer your question: yes, I'm not the only developer using Install, although I never expect to license a huge number of copies and I don't think Install will ever &quot;pay the rent&quot; for me. Perhaps once more developers start to see Install being used for deploying software they'll want to license it and thus avoid &quot;reinventing the wheel&quot; when it comes to installing their own software. Compared to the competition, Install is very competitively priced.</p>
+<p>But in the case of this application, it's definitely about much more than just the money...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_922'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_922"><time data-relative="true">2004-11-05T14:24:00Z</time></a></span>
+</cite>
+<blockquote><p>How about giving free licences of Install to freeware app developers?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_923'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_923"><time data-relative="true">2004-11-08T10:29:49Z</time></a></span>
+</cite>
+<blockquote><p>Your idea is a very good one. Although I am not planning on offering free licenses, I do have plans to offer a very cheap license for use with open source projects and freeware.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_924'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_924"><time data-relative="true">2005-03-13T08:52:54Z</time></a></span>
+</cite>
+<blockquote><p>Instead of keeping separate progress logs for each topic I think I'll just keep one single progress log for all of them. I am putting a lot of work into frameworks that get used by more than one app so it makes some sense to combine the logs. See the new combined log here:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=481" class="external">http://wincent.com/a/support/forums/showflat.php?Number=481</a></p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/install">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

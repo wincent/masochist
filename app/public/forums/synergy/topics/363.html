@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+give me hope before I pay for something else
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; give me hope before I pay for something else</div>
+<h1 class='major'>give me hope before I pay for something else</h1>
+<div class='topic' id='topic_363'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'>
+<a href="/forums/synergy/topics/363"><time data-relative="true">2008-04-25T12:02:33Z</time></a>
+</span>
+</cite>
+<blockquote><p>Just today a new app has been released. It is very nice and priced decently. I will not name it here. Can you tell us any more information about when things might be right? You say it's an issue with iTunes. And it may be it is as Synergy works with iTunes. But this other app today works perfectly with any art whether originally from ITMS or from wherever I got it. CoverSutra works with all my iTunes art but otherwise I think it's crap. I'd hate to give up on Synergy.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3255'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3255"><time data-relative="true">2008-04-25T12:17:45Z</time></a></span>
+</cite>
+<blockquote><p>See <a href="/issues/668">bug #668</a> for coverage of the cover art problems. I also wrote <a href="http://rails.wincent.com/blog/apple-fixes-cover-art-bug-in-itunes-7.6.2" class="external">this weblog post</a> on the subject; here's a snippet:</p>
+<blockquote>
+<p>I am planning on introducing an artificial delay in the next release to work around this problem (see <a href="/issues/668">bug #668</a>), although I am still hopeful that Apple will fix the problem in a later iTunes release. In the meantime I've received multiple reports that going back to 7.6 fixes the problem.</p>
+</blockquote>
+<p>Basically, this is an Apple bug introduced in <a href="/wiki/iTunes">iTunes</a> 7.6.1 and unfortunately still present in 7.6.2. It looks like a timing issue, so my suspicion is that the faster your machine is the more likely you are to see the bug.</p>
+<p>I've heard reports like yours of other products which <em>don't</em> have trouble getting art, and reports of other products which <em>do</em> have trouble. Once again I suspect this is a timing thing: those apps which query iTunes immediately for art (like Synergy) are the ones hit by the bug.</p>
+<p>As noted in <a href="/issues/668">bug #668</a> and the weblog post linked to above, I have a workaround in mind involving delaying querying iTunes for art. I wish I didn't have to do this as it strikes me as an ugly kludge, but it seems I have no choice. Luckily, I think the delay we're talking about will probably be fairly small (0.1 of a second? 0.25?). The next Synergy release will incorporate this workaround whenever it detects that you're running a buggy version of iTunes; I'm hopeful that Apple will fix the bug soon so that I can remove the hack.</p>
+<p>Another option you have in the meantime is dropping back to iTunes 7.6, which doesn't have the bug.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3256'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3256"><time data-relative="true">2008-04-25T13:06:15Z</time></a></span>
+</cite>
+<blockquote><p>I appreciate the quick reply and all that you wrote (of which the blog and bug report I had already read about). What I was hoping to hear was some kind of time reference other than what you had previously written: &quot;I am planning ...&quot; and &quot;I have a workaround in mind ...&quot; neither of which says anything is actually being done. Reverting iTunes versions is not an option.</p>
+<p>Since the new app is lacking one semi-critical aspect (keyboard control) I will be anxiously waiting for a little while longer, but I fear time is running out for both me and Synergy. CoverSutra is winning fans (me, never) and now this other app.</p>
+<p>I have beta tested many apps and so now volunteer if possible.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3257'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3257"><time data-relative="true">2008-04-25T13:21:54Z</time></a></span>
+</cite>
+<blockquote><p>I'm planning on putting out a new release early next week, so if you haven't already, add the Atom feed for <a href="/issues/668">bug #668</a> to your list of subscriptions so that you'll be the first to know when the new version is out.</p>
+<p>I will most likely be doing a new release in the stable 3.2 series, as well as a new release in the experimental 3.5 alpha series. And it would be very helpful if you could test to make sure the workaround is effective seeing as my humble old iMac appears to be too slow to actually manifest the bug in iTunes.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3258'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3258"><time data-relative="true">2008-04-25T14:51:05Z</time></a></span>
+</cite>
+<blockquote><p>Sounds good!</p>
+<p>Ouch. I can not imagine coding blind.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3272'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3272"><time data-relative="true">2008-04-28T08:00:34Z</time></a></span>
+</cite>
+<blockquote><p>Take a look at <a href="/issues/668">bug #668</a> for an update. I've got a preview build on the server and I am looking for help from testers, seeing as I can't reproduce the problem here locally and I'm dependent on others to confirm for me whether the workaround will actually work.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3274'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3274"><time data-relative="true">2008-04-28T10:58:55Z</time></a></span>
+</cite>
+<blockquote><p>No good here. Besides no art I have crashes within a few minutes (also had before, with other versions of the standalone app). I went to the trouble of uninstalling all my unsanity haxies. Booted in Safe Mode and then logged in with no startup items loading. Also dis all this with a fresh user. No art. Crashes. Will try another Leopard Intel machine tomorrow.</p>
+<p>2.16 GHz Core 2 Duo MacBook 2 GB RAM OS X 10.5.2</p>
+<p>Want the crash logs?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3279'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3279"><time data-relative="true">2008-04-28T15:23:32Z</time></a></span>
+</cite>
+<blockquote><p>I suspect that if you look at the crash logs it will be the infamous NSAppleScript bug that's covered in <a href="/issues/640">bug #640</a>. Check out that report and if your crash logs look the same then there is no need to send them over as it is already a known issue. Apple is aware of the problem and has announced their intention to ship a fix, but they don't say when. As such, I am officially recommending that people stick with the 3.2 series for now (the 3.2 series doesn't use the new Garbage Collection technology in Leopard, which is where the bug is).</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

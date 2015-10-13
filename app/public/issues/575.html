@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #575: music on external drive not shown on menubar
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #575</div>
+<div class='issue' id='issue_575'>
+<form class="edit_issue" id="edit_issue_575" action="/issues/575" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="aXebvEn3YbSBBC4NUIoixZg2EV8Lu4wL50CIDGNdbsxdhSUL7nq74ViIHfpho3FxLbR4YwBXAhfHX13yR4UJ6A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #575:
+<span data-name='issue[summary]'>
+music on external drive not shown on menubar
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-05-19T00:59:37Z</time>, updated <time data-relative="true">2007-05-23T09:27:48Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/edgar-rodriguez">Edgar Rodriguez</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When i look on Artists and etc. I only see music i have on the internal disk, all the other music resides on my external disk, and i cant see it on synergy advance.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3017'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3017"><time data-relative="true">2007-05-19T05:20:37Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for filing this issue. In order to solve it I'll need a bit more information about your set-up.</p>
+<p>Can you tell me how the drive is connected? FireWire? USB 2.0? Network mount? etc.</p>
+<p>And how is your iTunes library configured? What's its location as defined in the &quot;Advanced-&gt;General&quot; tab of the iTunes preferences?</p>
+<p>How did you add the music that's on the external drive to iTunes? Via drag-and-drop? Some other method? Are you accessing this iTunes Shared Playlist (network) functionality?</p>
+<p>Can you send me a copy of your iTunes Library XML file? Either attach it to this bug report, or if you are concerned about confidentiality email it directly to me at <a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>. The XML file normally resides at &quot;~/Music/iTunes/iTunes Music Library.xml&quot;, unless you've changed the location of your Library from the default.</p>
+<p>Basically, the more information you can provide, the better.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3018'>
+<cite>
+<a href="/users/edgar-rodriguez">Edgar Rodriguez</a>
+<span class='when'><a href="#comment_3018"><time data-relative="true">2007-05-19T18:16:37Z</time></a></span>
+</cite>
+<blockquote><p>It's a Firewire Drive. and the Itunes music folder location is miniStack:Media: Drag and Drop, all my music is located there..</p>
+<p>i will send a copy of the XML thru email.</p>
+<p>(In reply to comment #1)</p>
+<blockquote>
+<p>Thanks for filing this issue. In order to solve it I'll need a bit more information about your set-up.</p>
+<p>Can you tell me how the drive is connected? FireWire? USB 2.0? Network mount? etc.</p>
+<p>And how is your iTunes library configured? What's its location as defined in the &quot;Advanced-&gt;General&quot; tab of the iTunes preferences?</p>
+<p>How did you add the music that's on the external drive to iTunes? Via drag-and-drop? Some other method? Are you accessing this iTunes Shared Playlist (network) functionality?</p>
+<p>Can you send me a copy of your iTunes Library XML file? Either attach it to this bug report, or if you are concerned about confidentiality email it directly to me at <a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>. The XML file normally resides at &quot;~/Music/iTunes/iTunes Music Library.xml&quot;, unless you've changed the location of your Library from the default.</p>
+<p>Basically, the more information you can provide, the better.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3019'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3019"><time data-relative="true">2007-05-19T18:56:11Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>It's a Firewire Drive. and the Itunes music folder location is miniStack:Media: Drag and Drop, all my music is located there..</p>
+</blockquote>
+<p>Ah, I understood from your initial post that you had some music on an external drive and the rest in the default location.</p>
+<blockquote>
+<p>i will send a copy of the XML thru email.</p>
+</blockquote>
+<p>Thanks for that.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3020'>
+<cite>
+<a href="/users/edgar-rodriguez">Edgar Rodriguez</a>
+<span class='when'><a href="#comment_3020"><time data-relative="true">2007-05-19T18:58:56Z</time></a></span>
+</cite>
+<blockquote><p>ok too big to email. but you can check it here <a href="http://idisk.mac.com/zerock-Public" class="external">http://idisk.mac.com/zerock-Public</a>   there is a folder titled wincent, its inside.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3021'>
+<cite>
+<a href="/users/edgar-rodriguez">Edgar Rodriguez</a>
+<span class='when'><a href="#comment_3021"><time data-relative="true">2007-05-19T19:00:52Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #3)</p>
+<blockquote>
+<p>(In reply to comment #2)</p>
+<blockquote>
+<p>It's a Firewire Drive. and the Itunes music folder location is miniStack:Media: Drag and Drop, all my music is located there..</p>
+</blockquote>
+<p>Ah, I understood from your initial post that you had some music on an external drive and the rest in the default location.</p>
+<blockquote>
+<p>i will send a copy of the XML thru email.</p>
+</blockquote>
+<p>Thanks for that.</p>
+</blockquote>
+<p>Actually it shows  some music from another music library, which is odd, considering i'm not using it right now. And yeah that  one is located in the default location.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3022'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3022"><time data-relative="true">2007-05-19T19:03:58Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #4)</p>
+<blockquote>
+<p>ok too big to email. but you can check it here <a href="http://idisk.mac.com/zerock-Public" class="external">http://idisk.mac.com/zerock-Public</a>   there is a folder titled wincent, its inside.</p>
+</blockquote>
+<p>Ok, pulling it down now. Should take about half an hour at the current rate.</p>
+<p>The XML file is raw text, so you'd probably get a pretty good compression rate if you zipped it up. (Just something to consider in the future).</p>
+<p>It's 2 AM here so I'll take a look at this tomorrow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3023'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3023"><time data-relative="true">2007-05-23T09:27:48Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #5)</p>
+<blockquote>
+<p>Actually it shows  some music from another music library, which is odd, considering i'm not using it right now. And yeah that  one is located in the default location.</p>
+</blockquote>
+<p>Ok, I've had a look at this and I can't see any clues as to why some music might be shown and other music not.</p>
+<p>Note that when you define the location of your iTunes Music Library in the iTunes preferences you are not actually limiting it to only the music files in the selected folder. If you drag music onto iTunes or otherwise add it, iTunes will show it in the library view (and it will be recorded in the XML file).</p>
+<p>There's also the preference for &quot;keeping the music library organized&quot;, which means that iTunes will actually copy all added files into the folder; but I think most users don't have that turned on (not sitting at a clean account right now, but I think the setting defaults to off).</p>
+<p>So I'm actually at a bit of a loss as to why the music isn't showing up in the menu.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

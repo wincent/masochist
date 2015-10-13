@@ -34,7 +34,6 @@ function staticHandler(...resource) {
 }
 
 const appRoutes = [
-  '/',
   '/blog',
   '/blog/*',
   '/wiki',
@@ -100,10 +99,11 @@ if (__DEV__) {
   });
 
   proxy.on('error', error => console.log('Proxy error: %s', error));
-} else {
-  // In production, nginx should handle this, but in case it doesn't:
-  app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 }
+
+// In production, nginx should handle this, but in case it doesn't:
+// TODO: need to handle cases like: /issues/2220 -> /issues/2220.html
+app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 const server = app.listen(APP_PORT, () => {
   console.log('Listening at http://localhost:%s', APP_PORT);

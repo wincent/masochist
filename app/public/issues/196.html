@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #196: REQUEST: Optional Dock-independent positioning of Floater
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #196</div>
+<div class='issue' id='issue_196'>
+<form class="edit_issue" id="edit_issue_196" action="/issues/196" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Kz/jzFtW7fWN2lPdBJwLgjNbZNQkCMTmaUI6ixfJZUofzV17/Ns3oFRWYCo1tVg2htkN6C/kSvpJXe91MxECbg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #196:
+<span data-name='issue[summary]'>
+REQUEST: Optional Dock-independent positioning of Floater
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-20T07:32:23Z</time>, updated <time data-relative="true">2006-07-05T02:05:10Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/william-hall">William Hall</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Problem: the floater location chnages based on toggling Dock hiding. This causes the lower portion of  the floater, including the rating stars, to be off-screen.</p>
+<p>Steps to reproduce: 1) Make sure dock hiding is off. 2) Situate the floater at bottom right. 3) Turn on dock hiding. 4) Cause the floater to be displayed.</p>
+<p>If I turn dock hiding off, the floater correctly displays again.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1878'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1878"><time data-relative="true">2005-04-20T08:38:05Z</time></a></span>
+</cite>
+<blockquote><p>I can't reproduce this bug.</p>
+<p>The Floater respects the position of the Dock (ie. when it calculates the &quot;visible screen area&quot; it excludes  the Dock). If you move the Dock, the visible screen area changes, and the Floater position changes. If  you move it back, the area changes back and the Floater moves back. At no point does the Floater move   of screen.</p>
+<p>On which edge of the screen is your Dock? Mine is on the bottom and no amount of hiding or unhiding  the Dock can make the Floater move off screen.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1879'>
+<cite>
+<a href="/users/william-hall">William Hall</a>
+<span class='when'><a href="#comment_1879"><time data-relative="true">2005-04-20T10:37:57Z</time></a></span>
+</cite>
+<blockquote><p>It's definitely reproducible on my machine. If you can suggest a software-based way to record a movie  of the display, I'll do so. For now I've tried ordered screenshots.</p>
+<p>My dock is bottom-oriented on the left-hand of two displays. The floater is bottom-right of the left- hand display. I took screenshots with and without dock hiding. Page 1 of each is the left-hand display,  and page 2 is the right-hand display. They'll also give you an idea of the size of my dock.</p>
+<p>Without hiding: <a href="http://analogkid.net/Picture1.pdf" class="external">http://analogkid.net/Picture1.pdf</a></p>
+<p>And the only change to the next picture is to toggle dock-hiding via right-click interface on the dock,  then re-display the floater: <a href="http://analogkid.net/Picture2.pdf" class="external">http://analogkid.net/Picture2.pdf</a></p>
+<p>I think the problem stems from my setting the floater position with dock-hiding off such that the  bottom of the floater is below the top edge of the dock. Starting from scratch, here is me setting the  floater position  with dock hiding off. The floater is completely on-screen. <a href="http://analogkid.net/Picture3.pdf" class="external">http://analogkid.net/Picture3.pdf</a></p>
+<p>I then display the floater, and it's still fully on-screen. <a href="http://analogkid.net/Picture4.pdf" class="external">http://analogkid.net/Picture4.pdf</a></p>
+<p>But if I turn on dock hiding and show the floater again it is off-screen. <a href="http://analogkid.net/Picture5.pdf" class="external">http://analogkid.net/Picture5.pdf</a></p>
+<p>None of this is inconsistent with these statements of yours - this all matches the behavior that I see:</p>
+<blockquote>
+<p>The Floater respects the position of the Dock (ie. when it  calculates the &quot;visible screen area&quot; it excludes  the Dock). If you move the Dock, the visible screen area  changes, and the Floater position changes. If  you move it back, the area changes back and the Floater moves back.</p>
+</blockquote>
+<p>Except this one of course, which is contrary to the description of the bug.</p>
+<blockquote>
+<p>At no point does the Floater move off screen.</p>
+</blockquote>
+<p>Can you reproduce by setting the floater with dock-hiding on as I have in screenshot #3?</p>
+<p>I should expect that in addition to moving along with the dock as it grows/shrinks in size or moves up/ down due to hiding, that the floater would never move such that it's bottom edge was off-screen.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1880'>
+<cite>
+<a href="/users/william-hall">William Hall</a>
+<span class='when'><a href="#comment_1880"><time data-relative="true">2005-04-20T13:30:54Z</time></a></span>
+</cite>
+<blockquote><p>This happens on my powerbook at home, single-display, same sort of position for the floater (lower  edge below the top of Dock, bottom right anchored, Dock on bottom). That rules out dual-display at  least.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1881'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1881"><time data-relative="true">2005-04-20T18:57:55Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for posting the screenshots. Now I know what's happening.</p>
+<p>This is consistent with what I described above. As I said, when it calculates the &quot;visible screen area&quot; it  excludes the Dock. To be more precise, it uses the visibleFrame method in Cocoa's NSScreen class.  According to this method, the place where you have the Floater is actually outside of the visible screen  area (because the bottom of the floater is below the top edge of the Dock, which is what defines the  border of the visible screen area for Cocoa; the &quot;visible screen area&quot; is a rectangle, and the blank spaces  on either side of the Dock are not part of it). So when you later hide the dock, the visibleFrame changes  (gets a bit bigger) and the Floater moves to maintain its old position, which is several pixels below the  visible screen area.</p>
+<p>There is no way to fix this &quot;bug&quot; and have Synergy continue to respect the position of the Dock. There  are no methods in Cocoa for determining how tall the Dock is or how wide (nor in Carbon or any other  API as far as I know). Basically the APIs assume that if you ask for the visible frame rectangle then you  will not put things in the space on either size of the Dock. It's a &quot;no go&quot; zone.</p>
+<p>The only way to resolve the issue would be to ignore the Dock entirely when calculating the screen size  (using the frame method instead of the visibleFrame method). This is a shame because many people  position the Floater above the Dock and if I make the change then they will consider the new behaviour  to be a bug (people will see this who have a Dock that occupies the entire width of their screen; as they  add and remove items it will grow and shrink, and the Synergy Floater should adjust itself along the  way).</p>
+<p>So I am going to leave this bug report open for a while and will wait for comments before making a  decision about how to handle it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1882'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1882"><time data-relative="true">2005-08-01T01:02:47Z</time></a></span>
+</cite>
+<blockquote><p>See this forum posting:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=806" class="external">http://wincent.com/a/support/forums/showflat.php?Number=806</a></p>
+<p>Another user would like Dock-independent positioning of the Floater. Sounds like there is enough interest  in implementing this to make it worthwhile (ie. as an option, not as a default behaviour).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1883'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1883"><time data-relative="true">2005-08-01T01:05:01Z</time></a></span>
+</cite>
+<blockquote><p>Changing the summary and flagging this as an enhancement request.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1884'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1884"><time data-relative="true">2006-07-05T02:05:10Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

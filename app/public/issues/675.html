@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #675: Control Icons gone while using word and iPhoto
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #675</div>
+<div class='issue' id='issue_675'>
+<form class="edit_issue" id="edit_issue_675" action="/issues/675" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="gkohN6yOcCTcYUj6TRejkDXIpjrebHOR+tTuhjLBcJ22uJ+ACwOqcQXtew18PvAkgErPBtWA/Y3ayzt4FhkXuQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #675:
+<span data-name='issue[summary]'>
+Control Icons gone while using word and iPhoto
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-04-30T15:50:50Z</time>, updated <time data-relative="true">2008-05-28T12:38:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hey,</p>
+<p>I noticed that the synergy control icons do not appear in the menu bar while I am using word or/and iPhoto. How can this be fixed? (Mac 2.16 Intel, 10.5.2)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3305'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3305"><time data-relative="true">2008-04-30T18:24:42Z</time></a></span>
+</cite>
+<blockquote><p>At a guess, I'd imagine that you're running out of menu bar real estate.</p>
+<p>If you have a lot of &quot;menu extras&quot; and &quot;status items&quot; on the right-hand side of the menu bar, and then you run an application with a lot of menus (or wide menus) you will eventually run out of space.</p>
+<p>In that case, the system will let the left side &quot;win&quot; and the items on the right hand side will be hidden from view, starting from the left and moving right.</p>
+<p>You can test this by seeing if the Synergy hot keys still work when the menu bar controls disappear. This will indicate that it's still running but you just can't see it.</p>
+<p>So you have a number of options to deal with this:</p>
+<ul>
+<li>Turn off some of the less important &quot;menu extras&quot; and &quot;status items&quot;</li>
+<li>Try to get Synergy to appear further to the right (see notes on this below)</li>
+<li>Buy a bigger screen (yes, I know, not always an option)</li>
+<li>Run at a higher res (again, not always an option)</li>
+</ul>
+<p>So, how do you make Synergy appear further to the right? First up you need to know that Synergy is a &quot;status item&quot; and status items always appear to the left of menu extras. There is no way to make a status item appear to the right of a menu extra. The best you can hope to do is make it appear to the right of other status items, and you do this by controlling their load order. First loaded appears on the right. So have a look in your login items (if you have Synergy set to launch at login) and see if you can move it up in the list; to do this you'll need to look in the &quot;Accounts&quot; tab of the System Preferences.</p>
+<p>Hope this sheds some light on the issue for you.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3350'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3350"><time data-relative="true">2008-05-28T12:38:42Z</time></a></span>
+</cite>
+<blockquote><p>Ok, going to mark this issue as CLOSED due to lack of response. Please feel free to add a new comment if you'd like me to reopen it.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

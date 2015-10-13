@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1436: &quot;Gists&quot; or &quot;pasties&quot; like feature
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1436</div>
+<div class='issue' id='issue_1436'>
+<form class="edit_issue" id="edit_issue_1436" action="/issues/1436" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="8vnOcu6Ves4jIOekBSo3JSDzIM0Xp0nHSX+T69OWKyTGC3DFSRigm/qs1FM0A2SRlXFJ8RxLx9tpYEYV905MAA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1436:
+<span data-name='issue[summary]'>
+&quot;Gists&quot; or &quot;pasties&quot; like feature
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-11-06T16:07:56Z</time>, updated <time data-relative="true">2010-09-09T10:08:38Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I often want to write a slab of text that is simultaneously:</p>
+<ul>
+<li>too long for a &quot;<a href="/twitter">tweet</a>&quot;</li>
+<li>not on-topic enough for a <a href="/blog">blog post</a></li>
+<li>too ephemeral to warrant a <a href="/wiki">wiki article</a> (ie something of only transitory importance, like some notes I'm making on a problem I'm working on)</li>
+</ul>
+<p>So what's needed I think is another model in the application, akin to GitHub's &quot;gists&quot;, or the ubiquitous &quot;pasties&quot;.</p>
+<p>Of course, I may be over-thinking this one and perhaps I should just be writing wiki articles for these things, perhaps tagging them appropriately with &quot;gist&quot; or &quot;throwaway&quot; or some other suitable tag.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6223'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6223"><time data-relative="true">2010-09-07T16:50:53Z</time></a></span>
+</cite>
+<blockquote><p>Just started working on this, going to call it a &quot;Snippet&quot; model. As starting formats will have:</p>
+<ul>
+<li>Wikitext (run content through <a href="/wiki/Wikitext">Wikitext</a> parser before display)</li>
+<li><code>pre</code>, with syntax highlighting using the existing <a href="/wiki/JavaScript">JavaScript</a>-based highlighting:
+<ul>
+<li>C</li>
+<li>Git diffs/patches</li>
+<li>Objective-C </li>
+<li>Ruby</li>
+<li>Shell (ie. shell session, not actual Bash syntax)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6239'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6239"><time data-relative="true">2010-09-09T10:08:26Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is basically done. Just need to fill in some holes in the specs. Will be included in next deployment.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6240'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6240"><time data-relative="true">2010-09-09T10:08:38Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

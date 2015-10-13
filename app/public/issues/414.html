@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #414: REQUEST: Auto-launch Synergy when iTunes launches
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #414</div>
+<div class='issue' id='issue_414'>
+<form class="edit_issue" id="edit_issue_414" action="/issues/414" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="mESeFh6wKSuPlguqwL9Lfn2K7T2m96ApRIJT/D8RCEystiChuT3zflYaOF3xlhjKyAiEAa0bLjVknYYCG8lvaA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #414:
+<span data-name='issue[summary]'>
+REQUEST: Auto-launch Synergy when iTunes launches
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-27T11:49:45Z</time>, updated <time data-relative="true">2007-02-09T08:59:09Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;Can Synergy 2.7 be configured to automatically start when itunes 6.0.4 starts?  How?  If not, please add this feature as I have an older mac running 10.3.9.  Thank you in advance. &quot;</p>
+<p>The short answer: no it can't be configured.</p>
+<p>The long answer: the reason it can't be configured to do so is that in order to watch for iTunes launching something else has to already by running (to watch for the launches). So you'd need a separate process, let's call it &quot;iTunes watcher&quot; that would launch at login and watch for iTunes launches, then launch Synergy when appropriate.</p>
+<p>If you're going to run an extra process that watches iTunes you may as well just let Synergy run at login and do the watching itself. There are preferences for hiding Synergy when iTunes is not running.</p>
+<p>A side note:</p>
+<p>This feature is already implemented in Synergy Advance, which includes a light-weight daemon called synergyd for precisely this purpose. I'm opening this feature request in the database to see if there's sufficient interest among users for adding this feature to Synergy as well.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2660'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2660"><time data-relative="true">2006-07-05T02:07:46Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2661'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2661"><time data-relative="true">2007-02-09T08:58:24Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 543 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2662'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2662"><time data-relative="true">2007-02-09T08:59:09Z</time></a></span>
+</cite>
+<blockquote><p>I've made extensive comments on the duplicate feature <a href="/issues/543">request #543</a> before closing it, so please see those.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1759: symbol lookup error using Rubinius
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1759</div>
+<div class='issue' id='issue_1759'>
+<form class="edit_issue" id="edit_issue_1759" action="/issues/1759" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="eql8AIYq8bY09yjukdxC18hYL8iakT30V4W+pgxMy+dOW8K3Iacr4+17Gxmg9RFjfdpG9JF9s+h3mmtYKJSsww==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1759:
+<span data-name='issue[summary]'>
+symbol lookup error using Rubinius
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-12-14T01:31:36Z</time>, updated <time data-relative="true">2010-12-15T00:11:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jc00ke">jc00ke</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I'm using rbx-head through rvm ([rubinius 1.1.1 (1.8.7 94f68ec0 2010-11-16 JI)] and I'm not able to update Command-T to 1.0. I'm on Ubuntu 10.10.</p>
+<ol>
+<li>Download <a href="http://s3.wincent.com/command-t/releases/command-t-1.0.vba" class="external">http://s3.wincent.com/command-t/releases/command-t-1.0.vba</a> to /tmp</li>
+<li>cd /tmp &amp;&amp; vim command-t-1.0.vba</li>
+<li>:so %</li>
+<li>&lt;CR&gt;</li>
+<li>:qa&lt;CR&gt;</li>
+<li>cd ~/.vim/ruby/command-t</li>
+<li>ruby extconf.rb</li>
+<li>make</li>
+</ol>
+<pre>gcc -I. -I. -I/home/jesse/.rvm/rubies/rbx-head/include -I. -DHAVE_RUBY_H  -fPIC -ggdb3 -O2 -fPIC  -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I. -I/home/jesse/.rvm/rubies/rbx-head/include -I. -DHAVE_RUBY_H  -fPIC -ggdb3 -O2 -fPIC  -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I. -I/home/jesse/.rvm/rubies/rbx-head/include -I. -DHAVE_RUBY_H  -fPIC -ggdb3 -O2 -fPIC  -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+matcher.c: In function &#x2018;CommandTMatcher_sorted_matchers_for&#x2019;:
+matcher.c:118: warning: comparison between signed and unsigned integer expressions
+matcher.c:129: warning: comparison between signed and unsigned integer expressions
+cc -shared -o ext.so match.o ext.o matcher.o -L. -L/home/jesse/.rvm/rubies/rbx-head/lib</pre>
+<p>Then when I run vim I get:</p>
+<pre>vim: symbol lookup error: /home/jesse/.vim/ruby/command-t/ext.so: undefined symbol: capi_get_constant</pre>
+<p>Any ideas? I use Rubinius as my default ruby and would LOVE IT if Command-T worked with it.</p>
+<p>I'm also not able to downgrade successfully. I tried using 1.9.2 but that doesn't seem to work. I'll try MRI 1.8.7.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6521'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6521"><time data-relative="true">2010-12-14T16:32:39Z</time></a></span>
+</cite>
+<blockquote><p>I have no experience with Rubinius myself, but I understand from <a href="http://www.engineyard.com/blog/2010/rubinius-wants-to-help-you-make-ruby-better/" class="external">this article</a> that not all C extensions will be out of the box compatible with it.</p>
+<p>One thing I notice is the signed/unsigned comparison warning in your <code>make</code> output there. Building against MRI there is no such warning, seeing as both variables are of long/pointer type. So I don't know what Rubinius is doing with the <code>RARRAY_LEN</code> macro, but whatever it is, it's expecting a different type.</p>
+<p>That's probably not the issue though. When you start playing around with different versions of Ruby, you will need to build and link Vim against the same version of Ruby as you're using to build Command-T. A simpler solution may be just to go with stock standard Ruby, which is what I'd recommend (your system's Ruby install should be a tool that enables you to get things done, not a toy for you to play around with). Just my opinion though.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6522'>
+<cite>
+<a href="/users/jc00ke">jc00ke</a>
+<span class='when'><a href="#comment_6522"><time data-relative="true">2010-12-14T22:25:47Z</time></a></span>
+</cite>
+<blockquote><p>Do you have any ideas on how to support command-t using different rubies via RVM? I'd be willing to donate to the project if it took some time.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6523'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6523"><time data-relative="true">2010-12-14T22:31:23Z</time></a></span>
+</cite>
+<blockquote><p>Well, it all boils down to one simple rule of thumb, whether you're using RVM or anything else: you must build Command-T using the exact same Ruby that was used to build Vim. On most operating systems/distros, that means using the stock system Ruby. If you don't want that, then you'll have to get your hands dirty and build both Command-T and Vim yourself.</p>
+<p>If you are using RVM and want to build Command-T using the system Ruby, see the note in the docs about switching back to the system Ruby temporarily for the build.</p>
+<p>As for supporting different Rubies, there will always only be a subset that can be supported, which are those which support the building of C extensions. So this immediately rules out JRuby and I imagine a few others as well. When you posted this ticket originally I was quite surprised, as I had no idea that Rubinius even remotely supported the notion of C extensions.</p>
+<p>The Command-T code itself should work fine with both Ruby 1.8.7 and 1.9 as well, but I generally don't recommend using 1.9 as there are issues with it that go beyond the scope of Command-T. (If you check this issue tracker you'll see some previous tickets describing these issues.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6524'>
+<cite>
+<a href="/users/jc00ke">jc00ke</a>
+<span class='when'><a href="#comment_6524"><time data-relative="true">2010-12-15T00:00:01Z</time></a></span>
+</cite>
+<blockquote><p>Well, I went back and built it with 1.8.7-p302 and it works. I'm pretty sure I tried that but maybe I didn't. Even worked after switching to Rubinius and 1.9.2.</p>
+<p>Yeah, Rubinius has had pretty good support for C extensions for a while now.</p>
+<p>Regardless, thanks! Building it with 1.8.7 did the trick.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6525'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6525"><time data-relative="true">2010-12-15T00:11:18Z</time></a></span>
+</cite>
+<blockquote><p>Glad to hear you got it sorted out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6526'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6526"><time data-relative="true">2010-12-15T00:11:26Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

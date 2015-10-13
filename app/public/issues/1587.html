@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1587: Show confirmation page for &quot;destroy&quot; buttons when JavaScript disabled
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1587</div>
+<div class='issue' id='issue_1587'>
+<form class="edit_issue" id="edit_issue_1587" action="/issues/1587" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="z7mTws/p855yroxYXw9H8irnz3DXTeOhzMWCzkU4+yb7Sy11aGQpy6siv69uJhRGn2WmTNyhbb3s2lcwYeCcAg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1587:
+<span data-name='issue[summary]'>
+Show confirmation page for &quot;destroy&quot; buttons when JavaScript disabled
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-06-22T13:44:40Z</time>, updated <time data-relative="true">2010-06-27T09:38:18Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p><a href="/issues/1585">Ticket #1585</a> was about fixing the broken &quot;destroy&quot; buttons under Rails 3.</p>
+<p>I first set up unobtrusive JavaScript, which worked, but the button (actually link) had no effect when JavaScript was disabled; it just took the user to the <code>issues#show</code> action.</p>
+<p>This is not a new thing, as Rails has always degraded in that way when JavaScript is not enabled.</p>
+<p>So I swapped in <code>button_to</code> for <code>link_to</code>, thus making the button work even without JavaScript, but we still don't get a confirmation.</p>
+<p>Hence the purpose of this ticket: to set up an intermediate confirmation page which is shown only when JavaScript is turned off.</p>
+<p>My first attempt was to add a special <code>GET</code> route for <code>/issues/:id/destroy</code>, which would hit the existing <code>issues#destroy</code> action. I could then distinguish between JavaScript and non-JavaScript requests (eg. JavaScript requests would be <code>POST</code> requests and non-JavaScript requests would be <code>GET</code> requests, and have the trailing <code>destroy</code> component in the URL too).</p>
+<p>Alas, it appears I can't do that with the router. eg. given:</p>
+<pre class="ruby-syntax">resources :issues do
+  get :destroy, :on =&gt; :member
+  get :delete, :on =&gt; :member
+end</pre>
+<p>The <code>:destroy</code> line has no effect. Evidently the &quot;destroy&quot; action set up as one of the default RESTful actions takes precedence.</p>
+<p>The <code>:delete</code> line, does work, but it doesn't give us what we want (it would add an entirely new action to our controllers).</p>
+<p>The alternative would be to do the following:</p>
+<ul>
+<li>use a standard <code>button_to</code> link</li>
+<li>via JavaScript, add a hidden field indicating that JavaScript was involved in the submission</li>
+<li>in <code>issues#destroy</code>:
+<ul>
+<li>if the field is present, continue as normal</li>
+<li>if it is not present, we know we got here without JavaScript enabled and the user didn't see the confirmation dialog, so we render the confirmation template, which itself includes a form with the confirmation flag already embedded in it</li>
+</ul>
+</li>
+</ul>
+<p>The question, really is, which one of these is the bigger kludge?</p>
+<p>Is the lesser evil having an additional controller action, or having an additional hidden field?</p>
+<p>I must admit that at first glance, the additional controller action seems the simpler and therefore more attractive option. But the pattern will need to be repeated for every model that has a &quot;destroy&quot; action.</p>
+<p>So going to let it simmer here in the tracker for a while, while I decide what to do.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_5779'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5779"><time data-relative="true">2010-06-27T09:38:18Z</time></a></span>
+</cite>
+<blockquote><p>(Posting anonymously from another computer seeing as I don't have my login details with me.)</p>
+<p>Thinking about this more, I don't need to worry about this if I just follow through with <a href="/issues/734">ticket #734</a> (&quot;Replace confirm-then-delete pattern with delete-then-undo&quot;).</p>
+<p>Once implemented, a user without JavaScript active can just delete without confirmation, and always have the option of clicking &quot;undo&quot; afterwards or otherwise recovering the deleted item (via the admin interface). As noted in that ticket, this is a nicer workflow anyway for things like deleting many spam comments in a row.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+VIM stopped working after installing Command-T even though Ruby 1.8.x is installed.
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; VIM stopped working after installing Command-T even though Ruby 1.8.x is installed.</div>
+<h1 class='major'>VIM stopped working after installing Command-T even though Ruby 1.8.x is installed.</h1>
+<div class='topic' id='topic_425'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/adam-siddhi">adam siddhi</a>
+<span class='when'>
+<a href="/forums/command-t/topics/425"><time data-relative="true">2010-07-16T18:39:32Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi Wincent;</p>
+<p>I installed Command-T (command-t-0.8b.vba) on Linux Xubuntu 10.04 and now when I try to run VIM I get an error:</p>
+<pre>siddhion@siddhion-laptop:~$ vim
+vim: symbol lookup error: /home/siddhion/.vim/ruby/command-t/ext.so: undefined symbol: rb_intern2</pre>
+<p>I understand this is a Ruby issue. Previously I only had Ruby 1.9.1 and found out that I need Ruby 1.8.x installed. So when I installed Ruby 1.8, restarted my laptop and tried to run VIM again, it still did not work. </p>
+<p>How can I get Command-T working?  If I can not then how can I uninstall Command-T?</p>
+<p>Thanks, Adam</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5887'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5887"><time data-relative="true">2010-07-17T05:19:37Z</time></a></span>
+</cite>
+<blockquote><p>First up, to unbreak Vim:</p>
+<p>You can see a list of all the files <a href="http://git.wincent.com/command-t.git/tree/HEAD" class="external">here</a>. So to uninstall you'd need to change to your <code>~/.vim</code> directory and do:</p>
+<pre class="shell-syntax">$ rm -r doc/command-t.txt \
+        plugin/command-t.vim \
+        ruby/command-t \
+        ruby/vim.rb \
+        ruby/vim/screen.rb \
+        ruby/vim/window.rb</pre>
+<p>I am probably going to move <em>all</em> of the Ruby code under <code>ruby/command-t</code> so that it can be removed more easily.</p>
+<p>Secondly, to get things installed correctly. This is most certainly a discrepancy between the version of Ruby used when compiling the plugin, and the version of Ruby that Vim itself links against.</p>
+<p>Try this in Vim:</p>
+<pre>:ruby p RUBY_VERSION</pre>
+<p>It should print something like &quot;1.8.7&quot;.</p>
+<p>You can also get Vim to reveal how it was compiled with:</p>
+<pre>:version</pre>
+<p>In my case one of the things I see is:</p>
+<pre>Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-precomp
+-g -O2 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -D_FORTIFY_SOURCE=1
+Linking: gcc   -L.   -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -L/usr/local/l
+ib -o Vim -framework Cocoa -framework Carbon      -lm -lncurses  -liconv    -framework Python  -framework Ruby</pre>
+<p>You can see how it is using the system Ruby framework (<code>-framework Ruby</code>). So, you can compare this to the output of <code>ruby extconf.rb &amp;&amp; make</code> when you build the extension:</p>
+<pre>checking for ruby.h... yes
+creating Makefile
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/
+Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-commo
+n -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unu
+sed-parameter -c ext.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/
+Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-commo
+n -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unu
+sed-parameter -c match.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/
+Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-commo
+n -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unu
+sed-parameter -c matcher.c
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frame
+works/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64     -lruby  -lpthread -ldl</pre>
+<p>Note how it is also using the system Ruby framework, so, no problems! If you can get the Ruby versions to match like this you should be fine. About the only other problem that could arise could be a 32-bit vs 64-bit discrepancy (ie. the <code>-arch</code> flags could be different), but that can be fixed too as seen in <a href="/issues/1604">ticket #1604</a>.</p>
+<p>If you look at <a href="/issues/1604">ticket #1604</a> you'll see that I would like to make this process easier, but it is tricky with so many platform variations. One idea I have is trying to get the plug-in to compile itself from inside Vim. If you look at <code>extconf.rb</code> you'll see that it boils down to:</p>
+<pre class="ruby-syntax">require 'mkmf'
+have_header('ruby.h') or raise 'could not find ruby.h'
+create_makefile('ext')</pre>
+<p>That part at least could be run fairly easy from inside Vim itself, and would hopefully ensure that the same version of Ruby gets used as Vim itself expects to be used. But then again, maybe not... There's not way to tell without trying it I guess.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5888'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5888"><time data-relative="true">2010-07-17T12:58:04Z</time></a></span>
+</cite>
+<blockquote><p>so command-t will not work with out Ruby 1.8.7 being the chosen Ruby version. You see I am using RVM to be able to select between different versions of Ruby. I plan on developing in Ruby 1.9.1 primarily for some time. </p>
+<p>So before I try to fix Command-T I should explain my situation a bit more in detail.</p>
+<p>When I installed Command-T I had Ruby 1.9.1 as my main Ruby version. Then when I realized that I needed Ruby 1.8.x I installed it via command line. AFter that VIM still did not load. Then I tried installing RVM and 'rvm install 1.9.1' and 'rvm install 1.8.7'. I then did 'rvm use 1.8.7' and still VIM did not work. So to have Command -T really work, you are saying that I would need to have installed it when Ruby 1.8.7 was my main system Ruby version?</p>
+<p>Thank you, Adam</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5889'>
+<cite>
+<a href="/users/adam-siddhi">adam siddhi</a>
+<span class='when'><a href="#comment_5889"><time data-relative="true">2010-07-17T13:01:14Z</time></a></span>
+</cite>
+<blockquote><p>So you are saying that before I install Command-T that I will need Ruby 1.8.7 to be my system Ruby version? </p>
+<p>Will using RVM to switch to Ruby 1.9.1 affect the ability to use Command-T and VIM even if Ruby 1.8.7 is my system Ruby version?</p>
+<p>Thanks for the info, Adam</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5890'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5890"><time data-relative="true">2010-07-17T13:09:50Z</time></a></span>
+</cite>
+<blockquote><p>No, you don't have to change your system Ruby.</p>
+<p>You just need to ensure that the version of Ruby you use to build the Command-T extension is the same version that was used when Vim was built. Once you've built the extension you can do whatever you want with your system Ruby. Vim doesn't care about your system Ruby, it only cares about the one it was built against (which most likely was 1.8).</p>
+<p>As for Ruby 1.9 specifically, Command-T itself is compatible with it. Early on I had a couple of people report incompatibilities with it and they were fixed.</p>
+<p>The main issue is that Vim itself doesn't yet officially support 1.9; there are some patches for it floating around and it can be done, but it's not official yet. 7.3 is apparently coming out soon and we'll see if those patches have been accepted (I don't know as I don't follow the official Vim repo).</p>
+<p>You might have a version of Vim on your system that's linked against 1.9, but if you do, it's because you, or some package maintainer upstream, jumped through hoops patching Vim to get it to work.</p>
+<p>So specifically, your first task is to find out what version of Ruby your copy of Vim is linked against. As noted above, what do <code>:ruby p RUBY VERSION</code> and <code>:version</code> print out from inside Vim? Once you know that, you have to build the extension under the same environment.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5891'>
+<cite>
+<a href="/users/adam-siddhi">adam siddhi</a>
+<span class='when'><a href="#comment_5891"><time data-relative="true">2010-07-17T16:45:16Z</time></a></span>
+</cite>
+<blockquote><p>I removed Command-T but deleted the /.vim/doc folder by accident. oops. </p>
+<p>Anyways, </p>
+<pre>:ruby p RUBY_VERSION = 1.8.7
+:version</pre>
+<p>i could not paste it so i ran 'vim --version' in terminal</p>
+<pre>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Apr 16 2010 12:40:58)
+Included patches: 1-330
+Compiled by buildd@
+Huge version with GTK2-GNOME GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++cryptv +cscope +cursorshape +dialog_con_gui +diff +digraphs +dnd -ebcdic 
++emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path +find_in_path 
++float +folding -footer +fork() +gettext -hangul_input +iconv +insert_expand 
++jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap 
++menu +mksession +modify_fname +mouse +mouseshape +mouse_dec +mouse_gpm 
+-mouse_jsbterm +mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte 
++multi_lang -mzscheme +netbeans_intg -osfiletype +path_extra +perl +postscript 
++printer +profile +python +quickfix +reltime +rightleft +ruby +scrollbind 
++signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax 
++tag_binary +tag_old_static -tag_any_white +tcl +terminfo +termresponse 
++textobjects +title +toolbar +user_commands +vertsplit +virtualedit +visual 
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup 
++X11 -xfontset +xim +xsmp_interact +xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -D_REENTRANT -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/directfb -I/usr/include/libpng12 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include   -DORBIT2=1 -pthread -D_REENTRANT -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-keyring-1 -I/usr/include/libgnome-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/gio-unix-2.0/ -I/usr/include/pixman-1 -I/usr/include/directfb -I/usr/include/libpng12     -Wall -g -O2    -D_REENTRANT -D_GNU_SOURCE -DDEBIAN  -fstack-protector -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -I/usr/lib/perl/5.10/CORE  -I/usr/include/python2.6 -pthread -I/usr/include/tcl8.4  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  -I/usr/lib/ruby/1.8/i486-linux 
+Linking: gcc   -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,--as-needed -o vim   -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lgio-2.0 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0     -lgnomeui-2 -lbonoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lgio-2.0 -lpango-1.0 -lfreetype -lfontconfig -lgconf-2 -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lselinux  -lacl -lgpm -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.10/CORE -lperl -L/usr/lib/python2.6/config -lpython2.6 -lutil -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions -L/usr/lib -ltcl8.4 -lieee -lruby1.8 -lrt -lm</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5892'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5892"><time data-relative="true">2010-07-17T17:08:35Z</time></a></span>
+</cite>
+<blockquote><p>So you can see in there there it was built and linked with these flags:</p>
+<pre>-I/usr/lib/ruby/1.8/i486-linux 
+-lruby1.8</pre>
+<p>Which I presume is the standard, system Ruby. So when you compile the Command-T extension, you should either remove all the RVM stuff from your <code>PATH</code> or tell RVM to use the system Ruby before you do the build. If you get it right you'll see in the <code>make</code> output that the library paths match the ones used by Vim.</p>
+<p>Let me know how you go with it. If it doesn't work, please paste in the output so we can inspect it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5893'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5893"><time data-relative="true">2010-07-17T23:45:48Z</time></a></span>
+</cite>
+<blockquote><p>Yes I see this but can't believe it since I installed Ruby 1.8.x after installing VIM. Before installing Ruby I had Ruby 1.9.1 installed. Could it be that Ruby 1.8 was pre-installed with my Xubuntu 10.04 OS I wonder. </p>
+<p>In anycase, I will tell RVM to use system ruby and then re-install Command-T. </p>
+<p>But:</p>
+<p>If I find out that my system Ruby build is 1.9.1 I will come back here and tell you. </p>
+<p>If I find out that my system Ruby build is 1.8 I will go ahead with building and if there is error I shall post the output.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6536'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6536"><time data-relative="true">2010-12-18T11:30:41Z</time></a></span>
+</cite>
+<blockquote><p>for non rvm users</p>
+<p>reinstall command-t using ruby1.8 compiler this time</p>
+<h3>remove old command-t</h3>
+<pre class="shell-syntax">$ rm -rf ~/.vim/ruby
+$ rm -rf ~/.vim/doc/command-t.txt
+$ rm -rf ~/.vim/plugin/command-t.vim</pre>
+<h3>install it</h3>
+<pre class="shell-syntax">$ vim command-t.vba</pre>
+<p>then source it (:so %)</p>
+<pre class="shell-syntax">$ cd ~/.vim/ruby/command-t &amp;&amp; ruby1.8 extconf.rb &amp;&amp; make</pre>
+<p>thats it</p>
+<p>-Manish Kasera</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+segmentation fault after make in command-t
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; segmentation fault after make in command-t</div>
+<h1 class='major'>segmentation fault after make in command-t</h1>
+<div class='topic' id='topic_443'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/443"><time data-relative="true">2010-11-29T14:36:29Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I am under ubuntu 64bit, ruby 1.9.2p0, I did:</p>
+<pre>cd ~/.vim/ruby/command-t
+ruby extconf.rb
+make
+
+houdini@moz:~/.vim/bundle/Command-T/ruby/command-t$ vim
+Vim: Caught deadly signal SEGV
+Vim: Finished.
+Segmentation fault</pre>
+<p>Any ideas to solve this?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6498'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6498"><time data-relative="true">2010-11-29T16:07:46Z</time></a></span>
+</cite>
+<blockquote><p>Almost certainly this is due to building Command-T with a different version of Ruby than the one that Vim itself was built with and links against. By &quot;version&quot; I am refering not only to the version number, but also whether a 32-bit or 64-bit Ruby was used.</p>
+<p>Have a look at the documentation (<code>:h command-t</code>) for troubleshooting tips, and there are also a lot of tickets in the issue tracker which you can look at and see how other people have misbuilt the plug-in and solved it by building with a matching version of Ruby.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6546'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6546"><time data-relative="true">2011-01-05T15:20:40Z</time></a></span>
+</cite>
+<blockquote><pre class="shell-syntax">$ cd ~/.vim/ruby/command-t
+$ /opt/local/bin/ruby extconf.rb
+$ make</pre>
+<p>solved the problem</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7173'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7173"><time data-relative="true">2011-10-10T21:10:25Z</time></a></span>
+</cite>
+<blockquote><p>If you use RVM, then first issue</p>
+<pre>   whereis ruby</pre>
+<p>This will give you the version of the system ruby (say, 1.8). Then,</p>
+<pre>   rvm use 1.8.7 # or rvm install if you don't have it yet
+   rake make # inside ~/.vim/bundle/command-t if you use pathogen, check the command-t readme otherwise</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7174'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7174"><time data-relative="true">2011-10-10T22:38:42Z</time></a></span>
+</cite>
+<blockquote><p>With:</p>
+<pre class="shell-syntax">$ rvm use system</pre>
+<p>you don't even need to check which version of Ruby you should switch to; it just switches to it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7386'>
+<cite>
+<a href="/users/flaviu">Flaviu</a>
+<span class='when'><a href="#comment_7386">Created <time data-relative="true">2012-01-27T19:35:44Z</time>, edited <time data-relative="true">2012-01-28T01:31:04Z</time></a></span>
+</cite>
+<blockquote><p>I've had this problem and solved it by unsetting the GEM_PATH and GEM_HOME before running this command, by adding this to your .bashrc :</p>
+<pre>vim() {
+  (unset GEM_PATH GEM_HOME; command vim &quot;$@&quot;)
+}</pre>
+<p>I got this from <a href="https://github.com/carlhuda/janus/issues/215#issuecomment-3003126" class="external">here</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_12338'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_12338"><time data-relative="true">2014-06-25T07:16:30Z</time></a></span>
+</cite>
+<blockquote><p>After use @Flaviu's method, I got this:</p>
+<pre>Vim: Caught deadly signal SEGV</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12339'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12339"><time data-relative="true">2014-06-25T07:22:20Z</time></a></span>
+</cite>
+<blockquote><p>Anonymous, likely due to miscompilation (see <a href="/comments/6498">above</a>).</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

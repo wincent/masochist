@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1423: GitWeb &quot;Use of uninitialized value&quot; errors since updating to Git 1.6.3.3
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1423</div>
+<div class='issue' id='issue_1423'>
+<form class="edit_issue" id="edit_issue_1423" action="/issues/1423" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7RfELQukoapiguYbrlsiJYE1S53hQMSo/XC0ANy0ipvZ5XqarCl7/7sO1eyfcnGRNLcioeqsSrTdb2H++Gztvw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1423:
+<span data-name='issue[summary]'>
+GitWeb &quot;Use of uninitialized value&quot; errors since updating to Git 1.6.3.3
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-10-17T09:22:12Z</time>, updated <time data-relative="true">2010-04-14T17:41:39Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Looking through server error logs, started seeing error messages like the following on 12 July 2009, which corresponds with the update to GitWeb from Git 1.6.3.3 (see &quot;<a href="/wiki/Updating_to_Git_1.6.3.3">Updating to Git 1.6.3.3</a>&quot;).</p>
+<pre>[Sun Jul 12 08:28:01 2009] [error] [client 65.55.232.25] [Sun Jul 12 08:28:01 2009] gitweb.cgi: Use of uninitialized value in exists at gitweb.cgi line 461.
+[Sun Jul 12 08:28:01 2009] [error] [client 65.55.232.25] [Sun Jul 12 08:28:01 2009] gitweb.cgi: Use of uninitialized value in exists at gitweb.cgi line 458.</pre>
+<p>Later on the line numbers change (I think due to another update), but the errors are still basically the same:</p>
+<pre>[Sat Oct 17 09:14:14 2009] [error] [client 72.30.142.177] [Sat Oct 17 09:14:14 2009] gitweb.cgi: Use of uninitialized value in hash element at gitweb.cgi line 493.
+[Sat Oct 17 09:14:14 2009] [error] [client 72.30.142.177] [Sat Oct 17 09:14:14 2009] gitweb.cgi: Use of uninitialized value in exists at gitweb.cgi line 496.</pre>
+<p>Here is the corresponding part of the <code>gitweb.cgi</code> file:</p>
+<pre>    488 # process alternate names for backward compatibility
+    489 # filter out unsupported (unknown) snapshot formats
+    490 sub filter_snapshot_fmts {
+    491         my @fmts = @_;
+    492 
+    493         @fmts = map {
+    494                 exists $known_snapshot_format_aliases{$_} ?
+    495                        $known_snapshot_format_aliases{$_} : $_} @fmts;
+    496         @fmts = grep {
+    497                 exists $known_snapshot_formats{$_} } @fmts;
+    498 }</pre>
+<p>Also seeing these errors:</p>
+<pre>[Sat Oct 17 07:04:12 2009] [error] [client 72.30.142.177] [Sat Oct 17 07:04:12 2009] gitweb.cgi: Use of uninitialized value in string eq at gitweb.cgi line 943.</pre>
+<p>Which corresponds to:</p>
+<pre>    935                 # Next, we put hash_parent_base:/file_parent..hash_base:/file_name,
+    936                 # stripping nonexistent or useless pieces
+    937                 $href .= &quot;/&quot; if ($params{'hash_base'} || $params{'hash_parent_base'}
+    938                         || $params{'hash_parent'} || $params{'hash'});
+    939                 if (defined $params{'hash_base'}) {
+    940                         if (defined $params{'hash_parent_base'}) {
+    941                                 $href .= esc_url($params{'hash_parent_base'});
+    942                                 # skip the file_parent if it's the same as the file_name
+    943                                 delete $params{'file_parent'} if $params{'file_parent'} eq $params{'file_name'};
+    944                                 if (defined $params{'file_parent'} &amp;&amp; $params{'file_parent'} !~ /\.\./) {
+    945                                         $href .= &quot;:/&quot;.esc_url($params{'file_parent'});
+    946                                         delete $params{'file_parent'};
+    947                                 }
+    948                                 $href .= &quot;..&quot;;
+    949                                 delete $params{'hash_parent'};
+    950                                 delete $params{'hash_parent_base'};
+    951                         } elsif (defined $params{'hash_parent'}) {
+    952                                 $href .= esc_url($params{'hash_parent'}). &quot;..&quot;;
+    953                                 delete $params{'hash_parent'};
+    954                         }
+    955 
+    956                         $href .= esc_url($params{'hash_base'});
+    957                         if (defined $params{'file_name'} &amp;&amp; $params{'file_name'} !~ /\.\./) {
+    958                                 $href .= &quot;:/&quot;.esc_url($params{'file_name'});
+    959                                 delete $params{'file_name'};
+    960                         }
+    961                         delete $params{'hash'};
+    962                         delete $params{'hash_base'};
+    963                 } elsif (defined $params{'hash'}) {
+    964                         $href .= esc_url($params{'hash'});
+    965                         delete $params{'hash'};
+    966                 }</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5100'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5100"><time data-relative="true">2009-10-18T07:52:20Z</time></a></span>
+</cite>
+<blockquote><p>Just updated the server to 1.6.5.1, and had a quick glance at the changes; looks like these error messages might be squished now, so will keep an eye on the logs to confirm.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5557'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5557"><time data-relative="true">2010-04-14T17:41:19Z</time></a></span>
+</cite>
+<blockquote><p>Definitely looks squished. Will mark as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5558'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5558"><time data-relative="true">2010-04-14T17:41:39Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

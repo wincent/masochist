@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+artwork not downloading, did I muck about too much
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; artwork not downloading, did I muck about too much</div>
+<h1 class='major'>artwork not downloading, did I muck about too much</h1>
+<div class='topic' id='topic_223'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/pointless">pointless</a>
+<span class='when'>
+<a href="/forums/synergy/topics/223"><time data-relative="true">2007-10-04T14:58:04Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hiya, I've used synergy for quite a while now and have developed this problem. Backstory, I added artwork manually for about 90% av my itunes library and then flaked out and removed the lot (saving a grand total of a pittance). And now I find that synergy refuses to even look for artwork online, does it think that the tracks have artwork because it once actually had?  My artwork folders are painfully empty, could you give me an idea of something that might work to fix this maybe? I miss those nice little pics in the left corner of my screen. I'm barely listening to music anymore... it's too depressing.</p>
+<p>In any case, the keyboard controls are still awesome... Thanks for creating this beautiful piece of code so that I could buy it and feel really cool... I'm really not... to be honest... </p>
+<p>With a bunch of thanks and a hope to hear from someone. /Jonny</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_621'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_621"><time data-relative="true">2007-10-04T17:26:01Z</time></a></span>
+</cite>
+<blockquote><p>Well the basic approach that Synergy takes is to see if it has art on disk (in ~/Library/Application Support/Synergy) and if not, ask iTunes, and if iTunes says that it has no art then it tries asking Amazon (strictly speaking it doesn't ask immediately but instead puts the request in a queue and fires of queries at intervals).</p>
+<p>There are a number of trouble-shooting steps you can take to find out what's actually happening under the covers, like:</p>
+<p>- checking the Library folder to see if there's anything in there</p>
+<p>- asking iTunes if it has art via AppleScript to see if its telling the truth or not; for example, try this in the script editor:</p>
+<p>&nbsp;Code:tell application &quot;iTunes&quot; to get data of front artwork of current track</p>
+<p>- use a program like Little Snitch to confirm that Synergy really is making connections to Amazon</p>
+<p>- you can get even lower down and snoop the actual traffic between Synergy and Amazon using the tcpdump command-line tool, but it's fairly tricky and requires you to know your way around the command-line and the tcpdump man page</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_622'>
+<cite>
+<a href="/users/pointless">pointless</a>
+<span class='when'><a href="#comment_622"><time data-relative="true">2007-10-05T18:29:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for responding so swiftly.</p>
+<p>I checked the synergy folder in the library. It was empty. I tried the applescript for a few songs (not good at scripting, didn't know what I was looking for) it reported a &quot;1&quot; for every track I tried. None of the tracks had artwork visible in itunes btw.</p>
+<p>Installed Little snitch and it reported that something wanted to connect to an ip I looked up to be amazon.com property.</p>
+<p>Also tried it all on another account with the same lack of results.</p>
+<p>Going lower is a tad out of my league. </p>
+<p>From all this one question pops up, does the &quot;1&quot; I got out of the script mean that itunes think the music has art or that it doesn't?</p>
+<p>Oh, and could reinstalling the music do any good? Just removing all music from itunes and putting it back in again? </p>
+<p>Well... with a tired thank you for listening and an even more tired hope to hear from you I'm signing off.</p>
+<p>/Jonny</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_623'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_623"><time data-relative="true">2007-10-07T07:42:58Z</time></a></span>
+</cite>
+<blockquote><p>If the album has artwork and you try running that AppleScript then you should see something that starts like this and runs on for many pages:</p>
+<p>&nbsp;Code:</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

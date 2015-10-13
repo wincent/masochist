@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy crashing
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy crashing</div>
+<h1 class='major'>Synergy crashing</h1>
+<div class='topic' id='topic_239'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/monnsunina">monnsunina</a>
+<span class='when'>
+<a href="/forums/synergy/topics/239"><time data-relative="true">2007-12-21T22:37:15Z</time></a>
+</span>
+</cite>
+<blockquote><p>Been using Synergy for years, love it. Ever since upgrading to Leopard it's been crashing on me on a regular basis, requiring me to head back into the pref pane and hit &quot;start,&quot; and I'm finally getting around to figuring it out. Unfortunately I don't have a clue.</p>
+<p>I've tried deleting it entirely, upgrading, downgrading. Synergy launches on startup, so the only recent relevant thread doesn't do the trick. Currently using freshly installed (not upgraded) 3.5a2. Here's the crash log with the relevant thread crash, any help at all on this would be greatly appreciated. Thanks!</p>
+<h5></h5>
+<p>Process:         Synergy [3084] Path:            /Users/~/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy Identifier:      org.wincent.Synergy Version:         Synergy version 3.5a2 (release) (3.5a2 (release)) Code Type:       PPC (Native) Parent Process:  launchd [120]</p>
+<p>Date/Time:       2007-12-20 15:42:15.971 -0800 OS Version:      Mac OS X 10.5.1 (9B18) Report Version:  6</p>
+<p>Exception Type:  EXC_BAD_ACCESS (SIGSEGV) Exception Codes: KERN_INVALID_ADDRESS at 0x0000000041820018 Crashed Thread:  0</p>
+<p>Thread 0 Crashed: 0   libobjc.A.dylib               &#x0009;0xfffeff40 objc_msgSend_rtp + 64 1   org.wincent.Synergy           &#x0009;0x00010700 start + 56136 2   org.wincent.Synergy           &#x0009;0x0000c590 start + 39384 3   com.apple.Foundation          &#x0009;0x91dc069c _nsnote_callback + 196 4   com.apple.CoreFoundation      &#x0009;0x955e1524 __CFXNotificationHandleMessage + 356 5   com.apple.CoreFoundation      &#x0009;0x955e16b0 __CFXNotificationReceiveFromServer + 188 6   com.apple.CoreFoundation      &#x0009;0x955dc808 __CFMachPortPerform + 180 7   com.apple.CoreFoundation      &#x0009;0x955fe908 CFRunLoopRunSpecific + 2504 8   com.apple.HIToolbox           &#x0009;0x9014dab4 RunCurrentEventLoopInMode + 264 9   com.apple.HIToolbox           &#x0009;0x9014d8d8 ReceiveNextEventCommon + 412 10  com.apple.HIToolbox           &#x0009;0x9014d718 BlockUntilNextEventMatchingListInMode + 84 11  com.apple.AppKit              &#x0009;0x9228c7a0 _DPSNextEvent + 580 12  com.apple.AppKit              &#x0009;0x9228c1f0 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 112 13  com.apple.AppKit              &#x0009;0x92285eac -[NSApplication run] + 736 14  com.apple.AppKit              &#x0009;0x9225692c NSApplicationMain + 440 15  org.wincent.Synergy           &#x0009;0x00002bf8 start + 64</p>
+<p>....thread 1, 2, &amp; 3 didn't crash...</p>
+<p>Thread 0 crashed with PPC Thread State 32:</p>
+<pre> srr0: 0xfffeff40  srr1: 0x0000f030   dar: 0x41820018 dsisr: 0x00200000
+   r0: 0x92c30278    r1: 0xbfffd860    r2: 0x41820018    r3: 0x05301a30
+   r4: 0x0002cfa8    r5: 0x000003e8    r6: 0xffffffff    r7: 0x0400078c
+   r8: 0x67ce6700    r9: 0x00000a8c   r10: 0x91c9297c   r11: 0xf0200a98
+  r12: 0xa04f88e8   r13: 0x0003882c   r14: 0x0003880c   r15: 0x000387fc
+  r16: 0x0003a234   r17: 0x0003ac6c   r18: 0x66666667   r19: 0xa098d424
+  r20: 0xa09885c4   r21: 0x00000011   r22: 0x00000009   r23: 0xa098c724
+  r24: 0xa09885c4   r25: 0x05324720   r26: 0x000388ec   r27: 0x05310d10
+  r28: 0x91d1d07c   r29: 0x0003a494   r30: 0x0003a218   r31: 0x05301a30
+   cr: 0x44042422   xer: 0x00000000    lr: 0x00010718   ctr: 0x95cad094</pre>
+<p>vrsave: 0x00000000</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_665'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_665"><time data-relative="true">2007-12-22T09:46:51Z</time></a></span>
+</cite>
+<blockquote><p>&nbsp;Originally Posted By: monnsuninaBeen using Synergy for years, love it. Ever since upgrading to Leopard it's been crashing on me on a regular basis, requiring me to head back into the pref pane and hit &quot;start,&quot; and I'm finally getting around to figuring it out. Unfortunately I don't have a clue.</p>
+<p>I've tried deleting it entirely, upgrading, downgrading. Synergy launches on startup, so the only recent relevant thread doesn't do the trick. Currently using freshly installed (not upgraded) 3.5a2. Here's the crash log with the relevant thread crash, any help at all on this would be greatly appreciated. Thanks!</p>
+<p>I'd recommend switching to 3.2, which is the last stable release and is basically 100% compatible with Leopard. The issues with the 3.5 alpha release are being tracked here:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=613" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=613</a></p>
+<p>I am getting very close to releasing a new alpha, and there have been [em]lots[/em] of changes, so we'll see if the stability is improved.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_666'>
+<cite>
+<a href="/users/nickt">nickt</a>
+<span class='when'><a href="#comment_666"><time data-relative="true">2008-01-14T05:43:05Z</time></a></span>
+</cite>
+<blockquote><p>Sorry Wincent, but 3.2 is doing the same thing!!</p>
+<p>I am also getting the same behaviour as the original poster. Tried the betas, and now using 3.2, and it's behaving the same.</p>
+<p>All since Leopard.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_667'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_667"><time data-relative="true">2008-01-14T05:50:22Z</time></a></span>
+</cite>
+<blockquote><p>I believe you must be seeing a different issue, then. Can you send me the crash log(s)? My email is: <a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_668'>
+<cite>
+<a href="/users/nickt">nickt</a>
+<span class='when'><a href="#comment_668"><time data-relative="true">2008-01-15T21:43:53Z</time></a></span>
+</cite>
+<blockquote><p>sorry to show my ignorance, but how do I find that info?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_669'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_669"><time data-relative="true">2008-01-16T04:25:18Z</time></a></span>
+</cite>
+<blockquote><p>Look inside your home folder in the Library/Logs/CrashReporter/ subfolder. You should see files with names like &quot;Synergy_2008-01-08-165147_cuzco.crash&quot;, one for each crash. As you can see, they contain the process name, the date/timestamp, and the host name (yours will be different).</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

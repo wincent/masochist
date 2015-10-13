@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #52: Menu bar buttons don't respond to left-click events, but right-clicks work
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #52</div>
+<div class='issue' id='issue_52'>
+<form class="edit_issue" id="edit_issue_52" action="/issues/52" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="wx8xIPAaUcCwE4TURAEnDrRoO/trsnaVNlfYy6UFXin37Y+XV5eLlWmftyN1KHS6AepSx2Be+IkWSA01gd05DQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #52:
+<span data-name='issue[summary]'>
+Menu bar buttons don't respond to left-click events, but right-clicks work
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-03T07:10:28Z</time>, updated <time data-relative="true">2006-07-05T02:03:27Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email: &quot;I'm using synergy 1.4 and have one button (play/pause) in the menu bar, using the  TigerWhite button set. After a while (possibly after waking from sleep?) it begins to not respond to  clicking on it to pause or play, although right-clicking still yields the Synergy menu, and the keyboard  controls still work. Changing the button set and then changing back gets it working again. I don't know  if it's specific to this button set or not as it's the only one I like and have used.&quot;</p>
+<p>This issue sounds suspiciously similar to <a href="/issues/39">bug #39</a> and <a href="/issues/50">bug #50</a>, but filing it as a separate report for  now.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1286'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1286"><time data-relative="true">2004-12-03T07:14:55Z</time></a></span>
+</cite>
+<blockquote><p>It would be useful if you could use the Activity Monitor to take a sample the next time you see this  hang, to see if this is related to <a href="/issues/39">bug #39</a> and/or <a href="/issues/50">bug #50</a>.</p>
+<p>See:</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1287'>
+<cite>
+<a href="/users/chris-decker">Chris Decker</a>
+<span class='when'><a href="#comment_1287"><time data-relative="true">2004-12-05T05:22:00Z</time></a></span>
+</cite>
+<blockquote><p>I'm having the same problem, only I'm using Synergy 1.5b.  I can't pin down when exactly the issue  happens, but occasionally the buttons don't work.  I can control-click and see the menu, but the  buttons still won't work.  iTunes works just fine the entire time BTW.  The only way I can get the buttons  to respond again is either to stop and start Synergy.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1288'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1288"><time data-relative="true">2004-12-05T06:09:20Z</time></a></span>
+</cite>
+<blockquote><p>It's good to have independent confirmation of this from another user. This makes it fairly clear that this  is NOT a dupe of <a href="/issues/39">bug #39</a>, which is a total hang. </p>
+<p>I haven't ever seen this on Panther (running 10.3.6). What version are you running on?</p>
+<p>Evidently something really weird is going on if left-clicks are not getting passed down to the Synergy  NSView, but right-clicks are. At least the defect is a very specific one, so hopefully it can be tracked  down. I'll bet control-click doesn't get through either (but you could confirm that for me?).</p>
+<p>Is anything written to the console? If something weird is happening Synergy might print a message  there that helps us.</p>
+<p>Marking this as ASSIGNED again. (Please leave it that way!)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1289'>
+<cite>
+<a href="/users/hans-tobeason">Hans Tobeason</a>
+<span class='when'><a href="#comment_1289"><time data-relative="true">2005-02-05T08:32:34Z</time></a></span>
+</cite>
+<blockquote><p>The menu bar controls become non-responsive every so often, requiring a stop/start cycle in the pref  pane.  I can't reproduce this on demand, but it usually seems to happen overnight.  This is a new  problem, possibly post Synergy 1.6.1, possibly post OS X 10.3.7.  I'm running on a PowerMac G4 AGP  450 768 Mb iTunes 4.7.1 (though this was happening with 4.7 as well).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1290'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1290"><time data-relative="true">2005-02-05T09:11:50Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 116 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1291'>
+<cite>
+<a href="/users/hans-tobeason">Hans Tobeason</a>
+<span class='when'><a href="#comment_1291"><time data-relative="true">2005-02-05T11:26:22Z</time></a></span>
+</cite>
+<blockquote><p>Right now, Synergy is frozen - not hung, per se, it just won't respond to any mouse input at all - there's  no beach ball.  iTunes is responsive, and, in fact, the Synergy menu icon for Play/Pause changes to  reflect the current play/pause condition of iTunes.  I've copied an Activity Monitor sample of Synergy  below.  The only way I'm aware of to snap Synergy out of its coma is to do something like Stop/Start  cycle it in System Preferences (or change the button set).</p>
+<p>Analysis of sampling pid 467 every 10.000000 milliseconds Call graph:</p>
+<pre>   6810 Thread_110b
+     6810 _dyld_start
+       6810 0x9470
+         6810 0x92eba2b8
+           6810 0x92dfdc30
+             6810 0x92de98c8
+               6810 0x92dd2e44
+                 6810 0x927fe6a0
+                   6810 0x927dc6c8
+                     6810 0x927d5f60
+                       6810 CFRunLoopRunSpecific
+                         6810 __CFRunLoopRun
+                           6810 mach_msg
+                             6810 mach_msg_trap
+                               6810 mach_msg_trap
+   6810 Thread_1203
+     6810 _pthread_body
+       6810 __ape_agent
+         6810 __ape_internal
+           6810 mach_msg
+             6810 mach_msg_trap
+               6810 mach_msg_trap</pre>
+<p>Total number in stack (recursive counted multiple, when &gt;=5):</p>
+<p>Sort by top of stack, same collapsed (when &gt;= 5):</p>
+<pre>       mach_msg_trap        13620</pre>
+<p>Sample analysis of process 467 written to file /dev/stdout Sampling process 467 each 10 msecs 300 times</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1292'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1292"><time data-relative="true">2005-02-07T03:03:46Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 118 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1293'>
+<cite>
+<a href="/users/hans-tobeason">Hans Tobeason</a>
+<span class='when'><a href="#comment_1293"><time data-relative="true">2005-02-11T10:27:00Z</time></a></span>
+</cite>
+<blockquote><p>Happened again.  The Synergy process sample is identical to the sample I already submitted.  Is there  anything else I can supply that would help diagnose this?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1294'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1294"><time data-relative="true">2005-02-11T10:32:56Z</time></a></span>
+</cite>
+<blockquote><p>Not really that I can think of. I haven't been able to reproduce this even running Synergy 24 hours a  day, 7 days a week. I can't fix it if I can't reproduce it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1295'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1295"><time data-relative="true">2006-07-05T02:03:27Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

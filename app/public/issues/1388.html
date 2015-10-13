@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1388: Atom feeds for products (for Sparkle-like product updates)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1388</div>
+<div class='issue' id='issue_1388'>
+<form class="edit_issue" id="edit_issue_1388" action="/issues/1388" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="57JgZW19fa4jRAU154FICCf8KC0qsae8zWtbFjQyhzzTQN7SyvCn+/rINsLWqBu8kn5BESFdKaDtdI7oEOrgGA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1388:
+<span data-name='issue[summary]'>
+Atom feeds for products (for Sparkle-like product updates)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-09-07T02:21:40Z</time>, updated <time data-relative="true">2010-09-10T18:05:25Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+<a title="2 items tagged with &#39;appcast&#39;" href="/tags/appcast">appcast</a>
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The <code>products#index</code> action currently doesn't do anything interesting but eventually will want the Atom format to serve as a kind of all-product <a href="/wiki/AppCast">AppCast</a>.</p>
+<p>Likewise for each product we'll want the Atom format of <code>products#show</code> to be a per-product <a href="/wiki/AppCast">AppCast</a>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4971'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4971"><time data-relative="true">2009-09-07T02:23:32Z</time></a></span>
+</cite>
+<blockquote><p><strong>Tags</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> </li>
+<li><strong>To:</strong> appcast</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4972'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4972"><time data-relative="true">2009-09-07T02:24:40Z</time></a></span>
+</cite>
+<blockquote><p>Note that officially an <a href="/wiki/AppCast">AppCast</a> is based on the &quot;enclosure&quot; feature of <a href="/wiki/RSS" class="redlink">RSS</a> and I use <a href="/wiki/Atom">Atom</a> for everything. Will have to look into that and see if there are any technical obstacles.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5231'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5231"><time data-relative="true">2010-01-04T07:35:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Atom feeds for products</li>
+<li><strong>To:</strong> Atom feeds for products (for Sparkle-like product updates)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5232'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5232"><time data-relative="true">2010-01-04T07:44:59Z</time></a></span>
+</cite>
+<blockquote><p>Looks like using Atom would require a minor re-invention of the wheel, seeing as the most popular self-update framework out there (<a href="/wiki/Sparkle" class="redlink">Sparkle</a>) uses only RSS.</p>
+<p>As far as having the <code>products#index</code> Atom format deliver &quot;appcast&quot; style info, it's probably not such an interesting feature seeing as the only clients which would realistically hit such a URL would be the apps themselves, and they may as well hit the per-app feeds.</p>
+<p>So I am thinking that it should probably be a more human-readable feed, with release notifications and a link to the appropriate release page.</p>
+<p>The per-product feeds are the interesting ones, and I am now thinking that I'll want a new &quot;Release&quot; model as a nested resource under products. e.g. you would hit <code>/products/synergy/releases.atom</code> for the appcast for <a href="/wiki/Synergy">Synergy</a>, and <code>/products/synergy/releases/4.3</code> would show you either metadata for the release or just the release notes themselves (ie a PDF, RTF, HTML or whatever file).</p>
+<p>To create a new release you'd really need to provide two things &mdash; the downloadable asset and the release notes &mdash; in addition to the actual version string.</p>
+<p>I don't think I necessarily need Rails to serve up the assets, but I would like to keep count of the number of times resources were fetched. Perhaps it would be a good idea to make this a non-RESTful resource, so that I could have URLs like:</p>
+<ul>
+<li><code>/products/synergy/releases/4.3/notes</code> (release notes in &quot;native&quot; format: PDF, HTML, RTF etc)</li>
+<li><code>/products/synergy/releases/4.3/dmg</code> (downloadable disk image)</li>
+</ul>
+<p>In this way I could keep count of how many people viewed the release notes from within the app, and compare it with how many actually proceeded to download it. Hitting those URLs would just increment the counter and then redirect to the real download URL, which would then just be served up by <a href="/wiki/nginx">nginx</a>. As such, creating new releases would involve first uploading the resources and <em>then</em> setting up the release model. I am not sure whether this is ideal, or whether I should set up some kind of upload mechanism within the app.</p>
+<p>I could also replace the existing links (using the &quot;Link&quot; model) on the downloads page with links to the &quot;releases&quot; resources. I don't think I would go so far as to replace the hand-coded downloads page with a link to the <code>/products/synergy/releases</code> page, because I do value the ability to add additional information to the page.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5233'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5233"><time data-relative="true">2010-01-04T07:49:30Z</time></a></span>
+</cite>
+<blockquote><p>Another thought: if we decide to be more flexible than hard-wiring the expectation about having release notes and a downloadable archive, then we would require another nested resource. I've already got an &quot;attachments&quot; resource in the works for use with the issue tracker. Perhaps that could be used for this purpose. Or, if that is too fiddly, may need to add another &quot;Asset&quot; resource. Will have to think about it.</p>
+<p>This is probably a fairly desirable feature because it would allow me to offer a number of downloadable assets with each release (the archive itself, release notes, maybe a localization pack, for example).</p>
+<p>I guess the appcast feed would just need to point to the appropriate URLs for the release notes and the archive.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5234'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5234"><time data-relative="true">2010-01-04T07:50:30Z</time></a></span>
+</cite>
+<blockquote><p>For reference, the ticket for the &quot;attachment&quot; feature is <a href="/issues/1193">ticket #1193</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6222'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6222"><time data-relative="true">2010-09-07T16:41:26Z</time></a></span>
+</cite>
+<blockquote><p>Been playing with Sparkle today and I fear I can't really drop it in as-is. Some wheel re-invention, regrettably, may be required.</p>
+<p>As a first step anyway, I want to get this &quot;Releases&quot; model in place so that I can get my app feeds published.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6245'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6245"><time data-relative="true">2010-09-10T16:59:28Z</time></a></span>
+</cite>
+<blockquote><p>Cursory examination of <a href="http://www.atomenabled.org/developers/syndication" class="external">http://www.atomenabled.org/developers/syndication</a>:</p>
+<p>Basic structure of the feed:</p>
+<ul>
+<li><code>&lt;feed&gt;</code>
+<ul>
+<li><code>&lt;id&gt;</code> (required): unique, permanent, identifying URL for the feed</li>
+<li><code>&lt;title&gt;</code> (required)</li>
+<li><code>&lt;updated&gt;</code> (required)</li>
+<li><code>&lt;author&gt;</code> (recommended)</li>
+<li><code>&lt;link&gt;</code>(recommended): related web page
+<ul>
+<li>&quot;A feed should contain a link back to the feed itself&quot; ie. <code>&lt;link rel=&quot;self&quot; href=&quot;<a href="https://wincent.com/products.atom" class="external">https://wincent.com/products.atom</a>&quot; /&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>&lt;entry&gt;</code>
+<ul>
+<li><code>&lt;id&gt;</code> (required): unique, permanent, identifying URL for entry</li>
+<li><code>&lt;title&gt;</code>(required): human-readable, non-blank title for entry</li>
+<li><code>&lt;update&gt;</code> (required): last significant (ie not just a typo fix) modification</li>
+<li><code>&lt;author&gt;</code> (recommended)</li>
+<li><code>&lt;link&gt;</code> (recommended)
+<ul>
+<li>can use the <code>enclosure</code> (see below)</li>
+<li>can also provide an alternate web page for more info (eg. <code>&lt;link rel=&quot;alternate&quot; href=&quot;/products/synergy/releases/5.0&quot;&gt;)</code></li>
+</ul>
+</li>
+<li><code>&lt;summary&gt;</code> (recommended, &quot;should be provided if ... content is not inline&quot;)</li>
+<li><code>&lt;content&gt;</code> (recommended): &quot;Contains or links to the complete content of the entry&quot;; can probably be skipped as &quot;Content must be provided if there is no <code>alternate</code> link, and should be provided if there is no <code>summary</code>&quot;, but we will provide both</li>
+<li><code>&lt;published&gt;</code> (optional): original publication date</li>
+</ul>
+</li>
+</ul>
+<h3><code>&lt;link&gt;</code> element</h3>
+<ul>
+<li><a href="http://www.atomenabled.org/developers/syndication/#link" class="external">http://www.atomenabled.org/developers/syndication/#link</a></li>
+</ul>
+<p>Our <code>&lt;entry&gt;</code> elements will need to have <code>&lt;link&gt;</code> elements of the form:</p>
+<pre>&lt;link href=&quot;<a href="http://s3.wincent.com/products/synergy/releases/synergy-5.0.zip" class="external">http://s3.wincent.com/products/synergy/releases/synergy-5.0.zip</a>&quot;
+      rel=&quot;enclosure&quot; 
+      title=&quot;Synergy 5.0&quot;
+      length=&quot;1743241&quot; /&gt;</pre>
+<h3><code>&lt;content&gt;</code> element</h3>
+<p>Note that if we want to insert additional meta info such as minimum OS requirement or such, &quot;[t]he atom content element is designed to support the direct inclusion of other XML vocabularies.&quot;</p>
+<ul>
+<li><a href="http://www.atomenabled.org/developers/syndication/#contentElement" class="external">http://www.atomenabled.org/developers/syndication/#contentElement</a></li>
+</ul>
+<blockquote>
+<p>Otherwise, if the type attribute ends in +xml or /xml, then an xml document of this type is contained inline.</p>
+</blockquote>
+<p>So we can really pack anything we need in there.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6246'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6246"><time data-relative="true">2010-09-10T17:07:22Z</time></a></span>
+</cite>
+<blockquote><p>Example appcasting format built on top of Atom:</p>
+<ul>
+<li><a href="http://pandion.pbworks.com/Appcasting" class="external">http://pandion.pbworks.com/Appcasting</a></li>
+</ul>
+<pre>&lt;entry xmlns=&quot;<a href="http://www.w3.org/2005/Atom" class="external">http://www.w3.org/2005/Atom</a>&quot;
+            xmlns:appcast=&quot;<a href="http://pandion.im/protocol/appcast/1.0" class="external">http://pandion.im/protocol/appcast/1.0</a>&quot;
+            appcast:name=&quot;Pandion&quot;
+            appcast:track=&quot;development&quot;
+            appcast:version=&quot;2.6.84&quot;&gt;
+&lt;title&gt;Update: Pandion 2.6.84&lt;/title&gt;
+&lt;summary type=&quot;html&quot;&gt;Development build&lt;/summary&gt;
+&lt;id&gt;urn:uuid:e01a5712-aa81-466d-ac9f-f2fabfd11886&lt;/id&gt;
+&lt;published&gt;2010-02-13T16:25:59.942+01:00&lt;/published&gt;
+&lt;updated&gt;2010-02-13T16:25:59.942+01:00&lt;/updated&gt;
+&lt;link appcast:arguments=&quot;/passive LAUNCHAPP=yes&quot;
+      href=&quot;<a href="http://downloads.sourceforge.net/project/pandion/builds/Pandion_2.6.84.msi" class="external">http://downloads.sourceforge.net/project/pandion/builds/Pandion_2.6.84.msi</a>&quot;
+      length=&quot;1801676&quot;
+      rel=&quot;enclosure&quot;
+      title=&quot;Pandion 2.6.84&quot;
+      type=&quot;application/x-msi&quot; /&gt;
+&lt;link href=&quot;<a href="http://build.pandion.im/job/Pandion/84/changes" class="external">http://build.pandion.im/job/Pandion/84/changes</a>&quot;
+      rel=&quot;alternate&quot;
+      title=&quot;Release Notes&quot;
+      type=&quot;text/html&quot; /&gt;
+&lt;/entry&gt;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6247'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6247"><time data-relative="true">2010-09-10T17:26:00Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li><a href="http://www.ibm.com/developerworks/xml/library/x-extatom1/index.html" class="external">http://www.ibm.com/developerworks/xml/library/x-extatom1/index.html</a>: &quot;Atom 1.0 extensions, Part 1: Feed history, ordering entries, and expiration timestamps&quot;</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6248'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6248"><time data-relative="true">2010-09-10T17:26:47Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li><a href="http://www.ibm.com/developerworks/library/x-atom10.html" class="external">http://www.ibm.com/developerworks/library/x-atom10.html</a>: &quot;An overview of the Atom 1.0 Syndication Format&quot;</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6249'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6249"><time data-relative="true">2010-09-10T17:36:47Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li><a href="http://www.ibm.com/developerworks/xml/library/x-extatom2.html" class="external">http://www.ibm.com/developerworks/xml/library/x-extatom2.html</a>: &quot;Atom 1.0 Extensions, Part 2: Copyright licenses, automated processing of links, and syndicating threads&quot;</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6250'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6250"><time data-relative="true">2010-09-10T18:05:25Z</time></a></span>
+</cite>
+<blockquote><p>Elements/attributes that I'll need to add to the custom appcast namespace:</p>
+<ul>
+<li>product: so that I can have an all-products feed if I desire with different <code>&lt;entry&gt;</code> elements corresponding to different products</li>
+<li>minimum system version</li>
+<li>maximum system version</li>
+<li>type (release, beta, alpha, nightly): so users can subscribe to different levels of stability</li>
+<li>autoupdate/noautoupdate (boolean): there may be major updates that I don't <em>ever</em> want to apply automatically, and always want the user to approve before clicking &quot;Install&quot; (ie. paid upgrades, major new releases with backwards compatibility breaking changes etc)</li>
+<li>platform/arch: again, this may come in handy if a product ever switches from ppc/i386 to, say, i386/x86_64 etc</li>
+<li>digest: for the download</li>
+<li>signature: cryptographically sign the download (so digest itself is probably redundant)</li>
+<li>version (feed-level addition): the version number of the Atom extension itself, just in case I ever need to change it</li>
+<li>version (entry-level addition): machine-readable version number so that the applications can decide whether the entry refers to a newer version or not (done by comparison with <code>Info.plist</code> values)</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

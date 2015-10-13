@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1299: Cover art not being pulled from iTunes or Amazon with iTunes 8
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1299</div>
+<div class='issue' id='issue_1299'>
+<form class="edit_issue" id="edit_issue_1299" action="/issues/1299" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="hFrc6sYp6Iv6fPG3NZPOeVooq/kV45Y3CA6OuHycQemwqGJdYaQy3iPwwkAEup3N76rCxR4PGCsoEVtGWEQmzQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1299:
+<span data-name='issue[summary]'>
+Cover art not being pulled from iTunes or Amazon with iTunes 8
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-05-22T13:55:46Z</time>, updated <time data-relative="true">2009-09-20T13:31:31Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I recently re-installed my OS (10.5.7) on a MacPro Intel and have installed Synergy 3.5a7 and now the album cover art no longer shows up in the floater. I have tried unistalling and re-installing but same result.</p>
+<p>All of my iTunes files have the album cover art imbedded in them and not stored in a separate folder.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4624'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4624"><time data-relative="true">2009-05-23T07:51:13Z</time></a></span>
+</cite>
+<blockquote><p>It may be a corrupt preferences file or some other such cause. See <a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a> for some troubleshooting tips along those lines.</p>
+<p>I would also recommend trying with a release from the 3.2 stable series instead and see if you can reproduce the problem there. (For me it works with both 3.2 stable and 3.5 alpha series.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4647'>
+<cite>
+<a href="/users/winglet">winglet</a>
+<span class='when'><a href="#comment_4647"><time data-relative="true">2009-06-01T03:23:20Z</time></a></span>
+</cite>
+<blockquote><p>I have the same issue. Synergy just shows a question mark symbol instead of cover art. My iTunes files have cover art embedded. </p>
+<p>Synergy 3.2, OS 10.5.6, MB Pro Intel, iTunes 8.1.1</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4652'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4652"><time data-relative="true">2009-06-03T12:03:44Z</time></a></span>
+</cite>
+<blockquote><p>Can you try updating to the latest version in the stable series? (3.2.2)</p>
+<p>Did you also try the trouble-shooting hints mentioned above?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4995'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4995"><time data-relative="true">2009-09-09T11:58:22Z</time></a></span>
+</cite>
+<blockquote><p>Is 3.2.2 still available anywhere?  I can't seem to find it.  I've (long since, but only now investigating) lost cover art downloads, as well as the handoff of art from iTunes to Synergy.  I've just tried 3.5.5, after being on 3.4 for a very long time.  Little Snitch reports that Synergy is trying to contact Amazon, but nothing ends up in the Album Covers folder.  Seems like I should try 3.2.</p>
+<p>Currently on OS X 10.5.8 and iTunes 8.2.1.  I've deleted all prefs and reinstalled, </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4998'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4998"><time data-relative="true">2009-09-09T16:59:51Z</time></a></span>
+</cite>
+<blockquote><p>Yes, it's still on the server:</p>
+<ul>
+<li><a href="http://wincent.com/a/products/synergy-classic/download/tiger/Synergy3.2.2.zip" class="external">http://wincent.com/a/products/synergy-classic/download/tiger/Synergy3.2.2.zip</a></li>
+</ul>
+<p>But I don't see why 3.2.2 would work and the other versions wouldn't. If Synergy isn't even picking up art from iTunes I would do some troubleshooting (see <a href="/l/bugs">here</a> for some tips on that).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5003'>
+<cite>
+<a href="/users/rotorglow">rotorglow</a>
+<span class='when'><a href="#comment_5003"><time data-relative="true">2009-09-10T11:37:49Z</time></a></span>
+</cite>
+<blockquote><p>(Sorry, I posted anonymously before.)</p>
+<p>Yeah, I've tried those troubleshooting tips, and have had no luck, even on separate machines.  Might have an opportunity to try with a completely clean OS install soon, though.  And thanks for the link to 3.2.2  I might try it just to see what happens.</p>
+<p>I did look in the console to see what might be logged.  All I get are messages like this (regarding the handoff of art from iTunes), every time it fails: 9/9/09 11:38:38 Synergy[298] Warning: Exception caught while attempting to process cover art data from iTunes </p>
+<p>Is there any way to see what (if anything) Synergy is getting back from Amazon? </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5004'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5004"><time data-relative="true">2009-09-10T11:51:41Z</time></a></span>
+</cite>
+<blockquote><p>Ok, that's excellent info. That message very clearly indicates that it is choking on something that it is getting handed by iTunes. Have you noticed any pattern about which tracks it happens with? Does it happen with all? Some?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5006'>
+<cite>
+<a href="/users/rotorglow">rotorglow</a>
+<span class='when'><a href="#comment_5006"><time data-relative="true">2009-09-10T16:36:33Z</time></a></span>
+</cite>
+<blockquote><p>Only with some files, all of which have art that displays fine in iTunes (so it's not like there're glitches in the art; or maybe there are, but iTunes itself doesn't mind them).  AAC (not from iTunes Music Store) and MP3 files alike.</p>
+<p>Unfortunately, I upgraded to iTunes 9 on this machine without thinking.  And that exception is no longer ocurring, even with the same files that were causing the problem before.  (Using Synergy 3.5.5a or 3.4.1)  My other machine still has iTunes 8.2.1, but is running Snow Leopard.  I move the same songs over to that to see if I can replicate the problem, but I don't know how valid that will be with Snow Leopard in the mix.</p>
+<p>Here're some other problems showed up in the console, not immediately after each other:</p>
+<p>9/9/09 16:29:20 Synergy[298] Error while cleaning out Synergy &quot;Temporary Album Covers&quot; folder  9/9/09 16:47:45 [0x0-0x99099].org.wincent.Synergy[2029] Synergy: unknown type name &quot;tdta&quot;. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5007'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5007"><time data-relative="true">2009-09-10T17:20:18Z</time></a></span>
+</cite>
+<blockquote><p>Not sure what might be causing that error but I will check to see if I can reproduce it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5021'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5021"><time data-relative="true">2009-09-15T17:36:55Z</time></a></span>
+</cite>
+<blockquote><p>Ok, not sure if it's related to the problem you're having but I have added some instrumentation and through using it I've found one problem that I'll hopefully be able to fix.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5022'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5022"><time data-relative="true">2009-09-15T17:37:02Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5047'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5047"><time data-relative="true">2009-09-20T13:31:17Z</time></a></span>
+</cite>
+<blockquote><p>Version 4.1 is going to be out soon (within the next day or so) and it includes a complete rewrite of all the cover art stuff. I did find a couple of bugs and fix them, and have done a lot of testing and everything seems to be working perfectly. So I am going to mark this one as closed for now. If there turn out to be any problems in 4.1 we can open a new ticket for that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5048'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5048"><time data-relative="true">2009-09-20T13:31:31Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #34: CRASH: Synergy dies in NSMoveHelper skipping tracks on Mac OS X 10.2
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #34</div>
+<div class='issue' id='issue_34'>
+<form class="edit_issue" id="edit_issue_34" action="/issues/34" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="43J2TOGYdSe/BCPOQk6A0YY7cOKjAGPVjFhMsq5I6EHXgMj7RhWvcmaIEDlzZ9NlM7kZ3qjs7cmsR5lMipCPZQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #34:
+<span data-name='issue[summary]'>
+CRASH: Synergy dies in NSMoveHelper skipping tracks on Mac OS X 10.2
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-11-24T06:31:29Z</time>, updated <time data-relative="true">2006-06-10T08:43:13Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email: &quot;When I use hotkeys to switch to the previous song, and then immediately back  again to the original song.  The Floater does not display the info and Synergy quits.&quot;</p>
+<p>I cannot reproduce this, but the user has sent me a crash log. Will attach.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1171'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1171"><time data-relative="true">2004-11-24T06:33:30Z</time></a></span>
+</cite>
+<blockquote><p>As the crash log is fairly short, pasting it straight in rather than attaching separately:</p>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-23 13:21:38 -0500 OS Version: 10.2.8 (Build 6R73) Host:       ***</p>
+<p>Command:    Synergy PID:        7099</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x00017800 in 0x17800
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x20000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffe950   r2: 0x44000280   r3: 0x00000008
+   r4: 0x016a2d70   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x0007e290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x016f6d60
+  r24: 0x017028a0  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x016a2d70  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-23 13:28:51 -0500 OS Version: 10.2.8 (Build 6R73) Host:       ***</p>
+<p>Command:    Synergy PID:        9625</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000020</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x901361f8 in __CFRunLoopFindMode
+#1   0x9016266c in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x00017800 in 0x17800
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x901361f8 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x901361f4  ctr: 0x90162534   mq: 0x00000000
+   r0: 0x00001a00   r1: 0xbfffe930   r2: 0x44000280   r3: 0xbfffe970
+   r4: 0xbfffe970   r5: 0x00000000   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0131690  r10: 0x000be290  r11: 0xa3073a38
+  r12: 0x90162534  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x01718f40
+  r24: 0x0171bb10  r25: 0xa0131680  r26: 0x00000000  r27: 0x00000000
+  r28: 0xa0131660  r29: 0x00000000  r30: 0xa0131680  r31: 0x901361bc</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1172'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1172"><time data-relative="true">2004-11-24T09:07:55Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 36 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1173'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1173"><time data-relative="true">2004-11-24T09:11:31Z</time></a></span>
+</cite>
+<blockquote><p>Changing summary from &quot;Crash on using hotkeys to switch to previous track then next track&quot; to &quot;Crash  on skipping tracks on Mac OS X 10.2.8&quot;. <a href="/issues/36">Bug #36</a>, which looks like a duplicate of this bug, as the crash  logs are nearly identical.</p>
+<p>So far, the common factor looks to be that both users in question are running Mac OS X 10.2.8. The  crashes are obviously timer related. Will see if I can see anything in the source that might be provoking  this.</p>
+<p>Those who are seeing this bug, can you confirm for me that you are running iTunes 4.7?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1174'>
+<cite>
+<a href="/users/chris-morello">Chris Morello</a>
+<span class='when'><a href="#comment_1174"><time data-relative="true">2004-11-24T10:34:33Z</time></a></span>
+</cite>
+<blockquote><p>I reported <a href="/issues/36">Bug #36</a> (duplicate of #34) and am indeed using iTunes 4.7 and OS X 10.2.8.</p>
+<p>Synergy 1.4 does not have the same problem, and I did search the bugs before submitting Bug </p>
+<ol>
+<li>36.</li>
+</ol>
+<p>Thanks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1175'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1175"><time data-relative="true">2004-11-24T10:38:52Z</time></a></span>
+</cite>
+<blockquote><p>Well, the crashes are ocurring in timer-related code, and there's really only one place in the whole code  base which is related to timers and which has changed substantively in this release. So hopefully I can  figure out *why* it's happening and fix it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1176'>
+<cite>
+<a href="/users/jeff-phillips">Jeff Phillips</a>
+<span class='when'><a href="#comment_1176"><time data-relative="true">2004-11-24T16:27:59Z</time></a></span>
+</cite>
+<blockquote><p>I sent original <a href="/issues/34">bug #34</a>.  Occurs when using hot keys to move to next track when floater is still  present.  I tried restarting and fidlling with and even replacing the preferences as suggested by  Wincent.  The problem persisted.  My hotkey for next song is  [openapple]F11</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1177'>
+<cite>
+<a href="/users/jeff-phillips">Jeff Phillips</a>
+<span class='when'><a href="#comment_1177"><time data-relative="true">2004-11-24T16:35:36Z</time></a></span>
+</cite>
+<blockquote><p>Sorry for the second email... If I use as hotkey for next track to [openapple]F8 then the problem does not occur.  </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1178'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1178"><time data-relative="true">2004-11-24T21:49:06Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've made some changes and prepared a new build. Can you please download it and give it a good  hammering and tell me if the crashes are fixed? If not, back to the old drawing board. Thanks for your  collaboration.</p>
+<p><a href="http://wincent.com/download.php?item=Synergy1.5b-20041124.dmg" class="external">http://wincent.com/download.php?item=Synergy1.5b-20041124.dmg</a></p>
+<p>MD5 checksum: cbbd9c9cc08f04a44530c573735ec226</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1179'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1179"><time data-relative="true">2004-11-25T02:23:33Z</time></a></span>
+</cite>
+<blockquote><p>A new build. The was breakage in the last build's preference pane:</p>
+<p><a href="http://wincent.com/download.php?item=Synergy1.5b-20041124-2.dmg" class="external">http://wincent.com/download.php?item=Synergy1.5b-20041124-2.dmg</a></p>
+<p>MD5 checksum: f8083405e2dc3cde126f580450a725b7             </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1180'>
+<cite>
+<a href="/users/chris-morello">Chris Morello</a>
+<span class='when'><a href="#comment_1180"><time data-relative="true">2004-11-25T05:23:37Z</time></a></span>
+</cite>
+<blockquote><p>I reported <a href="/issues/36">Bug #36</a> with crash on using menu bar skipping tracks, and the new build (1.5b- 20041124-2) still has the same problem.  It seemed to work better when I first installed it, but  now it's back to crashing every time.</p>
+<p>Synergy.crash.log says:</p>
+<p>Date/Time:  2004-11-24 10:50:10 -0800 OS Version: 10.2.8 (Build 6R73) Host:       Chriss-G4-Titan.local.</p>
+<p>Command:    Synergy PID:        3871</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f26c in 0x1f26c
+#5   0x0001fac0 in 0x1fac0
+#6   0x0001437c in 0x1437c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x97dfab40 in _nsNotificationCenterCallBack
+#10  0x9016847c in _postNotification
+#11  0x90165b90 in _CFNotificationCenterPostLocalNotification
+#12  0x90173120 in _localPortCallBack
+#13  0x9015bd38 in __CFMachPortPerform
+#14  0x9015bba4 in __CFRunLoopDoSource1
+#15  0x90148be4 in __CFRunLoopRun
+#16  0x90180f04 in CFRunLoopRunSpecific
+#17  0x969a3b70 in RunCurrentEventLoopInMode
+#18  0x969b3b00 in ReceiveNextEventCommon
+#19  0x969dabbc in BlockUntilNextEventMatchingListInMode
+#20  0x9308dcfc in _DPSNextEvent
+#21  0x9309ff78 in -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:]
+#22  0x930b1b48 in -[NSApplication run]
+#23  0x9315fd04 in NSApplicationMain
+#24  0x00009470 in 0x9470
+#25  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc000a954 in __ape_internal
+#3   0xc0001328 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0000f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffdb00   r2: 0x44004282   r3: 0x00000008
+   r4: 0x017df450   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000001
+  r16: 0x017426b0  r17: 0x00000000  r18: 0x00000002  r19: 0x00000001
+  r20: 0x017bc2a0  r21: 0xbb047c72  r22: 0x017cb620  r23: 0x01743530
+  r24: 0x017d4ff0  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x017df450  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1181'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1181"><time data-relative="true">2004-11-25T08:43:56Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for trying out the new build. It's a bit baffling as to why this is happening, but at least the crash  reports all show the crash occurring in pretty much the same part of the code. I can't think for the life  of me why this is happening in 1.5b yet not in 1.4. Will keep thinking about it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1182'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1182"><time data-relative="true">2004-11-25T09:21:57Z</time></a></span>
+</cite>
+<blockquote><p>Changing summary to read &quot;10.2&quot; instead of 10.2.8. I now have three or four people reporting this  issue, a couple of them running 10.2.8, one running 10.2.6, and another running 10.2.x (not sure).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1183'>
+<cite>
+<a href="/users/nick-mckellip">Nick McKellip</a>
+<span class='when'><a href="#comment_1183"><time data-relative="true">2004-11-26T17:46:49Z</time></a></span>
+</cite>
+<blockquote><p>Date/Time:  2004-11-25 01:47:53 -0700 OS Version: 10.2.8 (Build 6R73) Host:       home.local.</p>
+<p>Command:    Synergy PID:        1207</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014e18 in 0x14e18
+#10  0x000178f4 in 0x178f4
+#11  0x0000a5c8 in 0xa5c8
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc0002544 in __ape_internal
+#3   0xc0001330 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>Thread 2:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0x0024729c in ah_serv_loop
+#3   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x20000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffeaf0   r2: 0x44000280   r3: 0x00000008
+   r4: 0x017cfef0   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x013674d0
+  r24: 0x017e5860  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x017cfef0  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-25 01:48:15 -0700 OS Version: 10.2.8 (Build 6R73) Host:       home.local.</p>
+<p>Command:    Synergy PID:        1214</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x000177e0 in 0x177e0
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc0002544 in __ape_internal
+#3   0xc0001330 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>Thread 2:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0x0024729c in ah_serv_loop
+#3   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x20000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffeaf0   r2: 0x44000280   r3: 0x00000008
+   r4: 0x017e1450   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x017e4c70
+  r24: 0x017e4c30  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x017e1450  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-25 01:49:13 -0700 OS Version: 10.2.8 (Build 6R73) Host:       home.local.</p>
+<p>Command:    Synergy PID:        1223</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x000177e0 in 0x177e0
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc0002544 in __ape_internal
+#3   0xc0001330 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>Thread 2:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0x0024729c in ah_serv_loop
+#3   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffeaf0   r2: 0x44000280   r3: 0x00000008
+   r4: 0x01346ee0   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x017dacd0
+  r24: 0x017ce890  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x01346ee0  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-25 01:50:01 -0700 OS Version: 10.2.8 (Build 6R73) Host:       home.local.</p>
+<p>Command:    Synergy PID:        1226</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014e18 in 0x14e18
+#10  0x000178f4 in 0x178f4
+#11  0x0000a5c8 in 0xa5c8
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc0002544 in __ape_internal
+#3   0xc0001330 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>Thread 2:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0x0024729c in ah_serv_loop
+#3   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x20000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffeaf0   r2: 0x44000280   r3: 0x00000008
+   r4: 0x017e8020   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x017dd9d0
+  r24: 0x017eb620  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x017e8020  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-25 01:52:16 -0700 OS Version: 10.2.8 (Build 6R73) Host:       home.local.</p>
+<p>Command:    Synergy PID:        1235</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x000177e0 in 0x177e0
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc0002544 in __ape_internal
+#3   0xc0001330 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>Thread 2:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0x0024729c in ah_serv_loop
+#3   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0000f030                vrsave: 0x00000000
+  xer: 0x20000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffeaf0   r2: 0x44000280   r3: 0x00000008
+   r4: 0x001ae070   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x017ea580
+  r24: 0x017ead00  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x001ae070  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1184'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1184"><time data-relative="true">2004-11-26T20:44:15Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot for adding the crash reports (although seeing as they are all basically identical probably  one would have been enough! Hehe).</p>
+<p>I am still a bit baffled as to why this is happening on 10.2, but I will try making some more changes and  put another test build up soon.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1185'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1185"><time data-relative="true">2004-11-27T00:43:01Z</time></a></span>
+</cite>
+<blockquote><p>For those 10.2 users who want to go back to Synergy 1.4 while this problem is being investigated, here  is a link:</p>
+<p><a href="http://us.wincent.com/files/Synergy1.4.dmg" class="external">http://us.wincent.com/files/Synergy1.4.dmg</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1186'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1186"><time data-relative="true">2004-11-28T02:37:26Z</time></a></span>
+</cite>
+<blockquote><p>Here's another build with some more changes. Seeing as all the crash reports have timers in common,  I've eliminated just about all the places where timers get fired. Let's see if this fixes it. Thanks for  checking it out for me:</p>
+<p><a href="http://wincent.com/download.php?item=Synergy1.5-20041127.dmg" class="external">http://wincent.com/download.php?item=Synergy1.5-20041127.dmg</a></p>
+<p>MD5 checksum: 29f1854968bb5002ec9794f8ea1f9ae5</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1187'>
+<cite>
+<a href="/users/jeff-phillips">Jeff Phillips</a>
+<span class='when'><a href="#comment_1187"><time data-relative="true">2004-11-29T04:10:33Z</time></a></span>
+</cite>
+<blockquote><p>There still seems to be a bug in 1.5b.  I tried 1.4 and could not generate the crash.  When using  the new 1.5 with &quot;just about all the places where timers get fired&quot; eliminated I can still get Synergy  to crash if I try another hot key before the floater appears that was supposed to appear for the  previous hotkey command.  Again, this does not cause a problem with 1.4  </p>
+<p>The bug I first noticed with Synergy crashing if hotkey [openapple-F11] was pressed before the  floater was done displaying is still no longer present in 1.5  This problem seems to have been  fixed.  </p>
+<p>Here is the error-log:   Date/Time:  2004-11-23 13:21:38 -0500 OS Version: 10.2.8 (Build 6R73) Host:       </p>
+<p>Command:    Synergy PID:        7099</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x00017800 in 0x17800
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x20000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffe950   r2: 0x44000280   r3: 0x00000008
+   r4: 0x016a2d70   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x0007e290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x016f6d60
+  r24: 0x017028a0  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x016a2d70  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1188'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1188"><time data-relative="true">2004-11-29T09:42:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks once again for your help. I've done a line-by-line analysis of the diff between 1.4 and 1.5b and I  can't see anything that would cause the crash on 10.2.</p>
+<p>I'm beginning to suspect that something else is responsable. I ask myself, what has changed between  1.4 and 1.5b. </p>
+<p>1. The code: but I really can't see which changes could cause the crashes. 2. Apple released the GCC 3.3 updater on 18 November. 3. Apple released Mac OS X 10.3.6 on 5 November.</p>
+<p>So I'm wondering if &quot;2&quot; or &quot;3&quot; is causing Xcode to produce different code. I went back to the 1.4 source  and built it on my current setup (ie. the one running 10.3.6 and the GCC updater), and then I stripped  the prebinding information off the resulting executable. I then stripped the prebinding info off the 1.4  build that's still sitting on the website. I then compared the MD5 checksums for the two executables,  and they're different...</p>
+<p>The question is, does the old code (1.4) built when using 10.3.6/GCC 3.3 produce the crashes? Rather  than getting you all to test this out I am going to see if I can find an 10.2 install disc and try it out  myself. Will report back soon.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1189'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1189"><time data-relative="true">2004-12-03T06:20:42Z</time></a></span>
+</cite>
+<blockquote><p>I've installed 10.2 on my laptop and confirmed that the crash only occurs with iTunes 4.7. Now that I  have a running copy of 10.2 I'll be able to fix the bug without bothering you all with test builds.</p>
+<p>Worst case scenario is that I'll have to roll-back the new communications code when running on 10.2  with 4.7. But I will try to fix it without resorting to anything so drastic.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1190'>
+<cite>
+<a href="/users/jim-withington">Jim Withington</a>
+<span class='when'><a href="#comment_1190"><time data-relative="true">2004-12-04T12:12:33Z</time></a></span>
+</cite>
+<blockquote><p>Just like mentioned in the forums, it seems that once you use &quot;track ahead&quot; about 3 times, the  program crashes.  It doesn't make a difference if you click the button or use the hotkey.  This was  not a problem until I upgraded to the new version.</p>
+<p>Using 10.2.8 as reported in the posts  below.  I've got a G4 iMac. 1 Gb processor.</p>
+<p>Crash log from system profiler:</p>
+<p>Date/Time:  2004-12-01 19:12:51 -0600 OS Version: 10.2.8 (Build 6R73) Host:       James-Withingtons-Computer.local.</p>
+<p>Command:    Synergy PID:        2011</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x00017800 in 0x17800
+#11  0x0000a668 in 0xa668
+#12  0x00009b8c in 0x9b8c
+#13  0x930b1b6c in -[NSApplication run]
+#14  0x9315fd04 in NSApplicationMain
+#15  0x00009470 in 0x9470
+#16  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffeb30   r2: 0x44000280   r3: 0x00000008
+   r4: 0x01b94ec0   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x026ca010  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x00000000  r17: 0x00000000  r18: 0x00000000  r19: 0x00000000
+  r20: 0x00000000  r21: 0x00000000  r22: 0x00000000  r23: 0x02686ea0
+  r24: 0x02816320  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x01b94ec0  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1191'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1191"><time data-relative="true">2004-12-05T22:30:21Z</time></a></span>
+</cite>
+<blockquote><p>From a user email: &quot;The crashes occur when I change tracks or stop playing from within Synergy, but  they no longer occur if I turn floater off!!! Maybe this point may be helpful to clear the bug (I just  downloaded the latest version).&quot;</p>
+<p>So now we have two workarounds until I get a permanent fix worked out: Turn off the floater (I know,  it's fairly unlikely you'd want to do this); or go back to 1.4 (download link already posted in comment </p>
+<ol>
+<li>15 above).</li>
+</ol>
+<p>This comment confirms what we're seeing in the crash reports. The crashes have something to do with  NSTimers. You can see that these timers are being fired as the floater is fading in and/or resizing. This  is only happening with 4.7 because only 4.7 sends notifications; those notifications are obviously  coming at a bad time, when Synergy isn't prepared, and so it crashes.</p>
+<p>Now there are two issues here. One is that you shouldn't be able to make Synergy crash just because  you send it a notification when it's not ready for it (this is a bug). The other is the curious question of  why this bug is only exposed on 10.2 and not on 10.3. It is remotely possible that there's a weird bug  in Apple's code on 10.2 which explains this, but I doubt it. My job therefore is to find out why this is  happening and try to fix it, but at least now I have a sizeable number of clues as well as a copy of  10.2.7 installed here so that I can test it. I am very confident I'll be able to fix this, one way or another.  Thanks for your ongoing patience and contributions!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1192'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1192"><time data-relative="true">2004-12-08T05:18:29Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I think this bug is now fixed. After applying the fix I can no longer crash Synergy on 10.2.7 with  iTunes 4.7, even if I click like crazy. Please try the new build and report back here letting us know if the  crashes are gone:</p>
+<p><a href="http://wincent.com/download.php?item=Synergy1.5-20041207.dmg" class="external">http://wincent.com/download.php?item=Synergy1.5-20041207.dmg</a></p>
+<p>MD5 checksum: cc6336bca63c522b62afcbe95d648d45</p>
+<p>A side benefit of the change I made was that Synergy should be more responsive now when you click  repeatedly to skip multiple tracks in a row.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1193'>
+<cite>
+<a href="/users/chris-morello">Chris Morello</a>
+<span class='when'><a href="#comment_1193"><time data-relative="true">2004-12-08T05:59:16Z</time></a></span>
+</cite>
+<blockquote><p>Try as I might, I cannot get the new version 1.5 -20041207 to crash in OS X 10.2 Jaguar.  Looks  like we have a winner.  Thanks Wincent.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1194'>
+<cite>
+<a href="/users/christopher-merritt">Christopher Merritt</a>
+<span class='when'><a href="#comment_1194"><time data-relative="true">2004-12-08T06:03:49Z</time></a></span>
+</cite>
+<blockquote><p>Well - I thought it worked fine. But after playing songs for about 10 minutes, I hit the pause button &amp; Synergy disappeared again. Crap.</p>
+<p>OK - now I just hit pause again &amp; it works OK. I'll keep uing throughout the day, maybe it's my problem...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1195'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1195"><time data-relative="true">2004-12-08T06:21:26Z</time></a></span>
+</cite>
+<blockquote><p>Christopher, can you check to see for a crash log (~/Library/Logs/CrashReporter) for that crash you  saw after installing the new build?</p>
+<p>To produce this fix, I only changed the code in one place. It is possible I need to make changes  elsewhere as well (but I am hoping not!).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1196'>
+<cite>
+<a href="/users/christopher-merritt">Christopher Merritt</a>
+<span class='when'><a href="#comment_1196"><time data-relative="true">2004-12-08T08:14:50Z</time></a></span>
+</cite>
+<blockquote><p>Well - it seems to be working now! Don't know why it crashed before - but for now I'm gonna say it's working. Sorry for the false alarm!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1197'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1197"><time data-relative="true">2004-12-08T10:07:08Z</time></a></span>
+</cite>
+<blockquote><p>Okay, I'm going to mark this as FIXED as I've now received four independent reports that the new build  fixes this bug. If anyone is still seeing the same crash with the new build then we'll reopen the report.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1198'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1198"><time data-relative="true">2004-12-08T10:07:45Z</time></a></span>
+</cite>
+<blockquote><p>I'm the eternal optimist, so marking as CLOSED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1199'>
+<cite>
+<a href="/users/christopher-merritt">Christopher Merritt</a>
+<span class='when'><a href="#comment_1199"><time data-relative="true">2004-12-10T06:22:37Z</time></a></span>
+</cite>
+<blockquote><p>OK - it's been working fine since yesterday, then another crash just now when I hit pause. It seems to be working much better - but with an occasional crash, just not every time. Here's my crash report:</p>
+<p>Date/Time:  2004-12-09 11:43:29 -0800 OS Version: 10.2.8 (Build 6R73) Host:       Christopher-Merritts-Computer.local.</p>
+<p>Command:    Synergy PID:        401</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000020</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x901361f8 in __CFRunLoopFindMode
+#1   0x9016266c in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f274 in 0x1f274
+#5   0x00014138 in 0x14138
+#6   0x97dfab40 in _nsNotificationCenterCallBack
+#7   0x9016847c in _postNotification
+#8   0x90165b90 in _CFNotificationCenterPostLocalNotification
+#9   0x90173120 in _localPortCallBack
+#10  0x9015bd38 in __CFMachPortPerform
+#11  0x9015bba4 in __CFRunLoopDoSource1
+#12  0x90148be4 in __CFRunLoopRun
+#13  0x90180f04 in CFRunLoopRunSpecific
+#14  0x969a3b70 in RunCurrentEventLoopInMode
+#15  0x969b3a78 in ReceiveNextEventCommon
+#16  0x969dabbc in BlockUntilNextEventMatchingListInMode
+#17  0x9308dcfc in _DPSNextEvent
+#18  0x9309ff78 in -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:]
+#19  0x930b1b48 in -[NSApplication run]
+#20  0x9315fd04 in NSApplicationMain
+#21  0x00009470 in 0x9470
+#22  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x901361f8 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x901361f4  ctr: 0x90162534   mq: 0x00000000
+   r0: 0x00001a00   r1: 0xbfffdfa0   r2: 0x44004282   r3: 0xbfffdfe0
+   r4: 0xbfffdfe0   r5: 0x00000000   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0131690  r10: 0x000be290  r11: 0xa3073a38
+  r12: 0x90162534  r13: 0x00000000  r14: 0x00000000  r15: 0x00000001
+  r16: 0x00fa0440  r17: 0x00000000  r18: 0x00000002  r19: 0x00000001
+  r20: 0x0017f9b0  r21: 0xbb047c72  r22: 0x00edbcf0  r23: 0x00f94ae0
+  r24: 0x00fa1c60  r25: 0xa0131680  r26: 0x00000000  r27: 0x00000000
+  r28: 0xa0131660  r29: 0x00000000  r30: 0xa0131680  r31: 0x901361bc</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1200'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1200"><time data-relative="true">2004-12-10T06:55:25Z</time></a></span>
+</cite>
+<blockquote><p>This last remaining crash could be a little harder to track down, seeing as it doesn't happen very often.  Will keep an eye on things and if I can see any places were the code can be made more robust will do  so.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1201'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1201"><time data-relative="true">2006-06-10T08:43:13Z</time></a></span>
+</cite>
+<blockquote><p>I believe this is no longer an issue, so marking as FIXED/CLOSED. Also making summary more accurate.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

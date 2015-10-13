@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #670: Synergy does not start at login
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #670</div>
+<div class='issue' id='issue_670'>
+<form class="edit_issue" id="edit_issue_670" action="/issues/670" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="MdJfFYUcZ9INIumsUjklTGv5lTGkSiU17/8adkM/VVYFIOGiIpG9h9Su2ltjEHb43nv8Da+mqynP4M+IZ+cycg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #670:
+<span data-name='issue[summary]'>
+Synergy does not start at login
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-04-16T09:02:55Z</time>, updated <time data-relative="true">2008-09-14T17:03:20Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/will-n">Will N</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Although the check box next to &quot;Start Synergy at Login&quot; is checked, the application never seems to be running when I have started my mac...</p>
+<p>2 x 2.66 GHz Dual-Core Intel Xeon 4 GB 667 MHz DDR2 FB-DIMM</p>
+<p>Mac OSX 10.4.11</p>
+<p>Synergy 3.2</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3226'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3226"><time data-relative="true">2008-04-16T09:38:19Z</time></a></span>
+</cite>
+<blockquote><p>The most common cause of this is out-of-date entries in your login items. You can force a refresh by doing the following:</p>
+<ol>
+<li>Uncheck the &quot;launch at login&quot; checkbox</li>
+<li>Click &quot;Apply&quot;</li>
+<li>Recheck the checkbox</li>
+<li>Click &quot;Apply&quot;</li>
+</ol>
+<p>I've got code in 3.5 to automatically check for stale items at launch time, so this problem should arise much less often in the future, but I don't recommend that you upgrade to 3.5 yet because it is still in alpha and there are some known crashing issues.</p>
+<p>Let me know if the above recipe fixes your problem.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3236'>
+<cite>
+<a href="/users/will-n">Will N</a>
+<span class='when'><a href="#comment_3236"><time data-relative="true">2008-04-21T04:30:06Z</time></a></span>
+</cite>
+<blockquote><p>Thanks very much for the tip, but I'm afraid this has not fixed the issue :0(</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3237'>
+<cite>
+<a href="/users/will-n">Will N</a>
+<span class='when'><a href="#comment_3237"><time data-relative="true">2008-04-21T04:47:23Z</time></a></span>
+</cite>
+<blockquote><p>I have had a look in the &quot;StartupItems&quot; within Library and System/Library and my user account Library, and I cannot see any Synergy files. Is this where there should be something?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3238'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3238"><time data-relative="true">2008-04-21T06:55:44Z</time></a></span>
+</cite>
+<blockquote><p>No. The place to look is actually in the System Preferences in the &quot;Accounts&quot; pane. There are two tabs in there, one labelled &quot;Password&quot; and the other one something like &quot;Login&quot; or &quot;Login items&quot; (I'm not sure because I'm using a Spanish machine right now and the text is obviously different).</p>
+<p>There you'll see a list of items that are set to launch and login and Synergy should be in there.</p>
+<p>Can you paste in a dump of the output of the following command?</p>
+<pre>defaults read ~/Library/Preferences/loginwindow</pre>
+<p>That should show all of the configured login items.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3240'>
+<cite>
+<a href="/users/will-n">Will N</a>
+<span class='when'><a href="#comment_3240"><time data-relative="true">2008-04-21T12:21:21Z</time></a></span>
+</cite>
+<blockquote><p>Ok - had a look there. No mention of Synergy in Login items.</p>
+<p>I assume that was a terminal command? (I'm no power user!)  :0)</p>
+<p>This is the response:</p>
+<pre>&lt;{
+    AutoLaunchedApplicationDictionary = (
+        {
+            AliasData = &lt;00000000 01aa0002 00010c4d 6163696e 746f7368 20484400 00000000 00000000 00000000 0000c22e b70b482b 00000001 3b441069 54756e65 7348656c 7065722e 61707000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001 4412c0f0 3e140000 00000000 0000ffff ffff0000 09200000 00000000 00000000 00000000 00095265 736f7572 63657300 00100008 0000c22e a8fb0000 00110008 0000c0f0 30040000 00010010 00013b44 00013b38 00013b37 0000014b 00020048 4d616369 6e746f73 68204844 3a417070 6c696361 74696f6e 733a6954 756e6573 2e617070 3a436f6e 74656e74 733a5265 736f7572 6365733a 6954756e 65734865 6c706572 2e617070 000e0022 00100069 00540075 006e0065 00730048 0065006c 00700065 0072002e 00610070 0070000f 001a000c 004d0061 00630069 006e0074 006f0073 00680020 00480044 0012003b 4170706c 69636174 696f6e73 2f695475 6e65732e 6170702f 436f6e74 656e7473 2f526573 6f757263 65732f69 54756e65 7348656c 7065722e 61707000 00130001 2f00ffff 0000&gt;; 
+            Hide = 0; 
+            Path = &quot;/Applications/iTunes.app/Contents/Resources/iTunesHelper.app&quot;; 
+        }, 
+        {
+            Hide = 0; 
+            Path = &quot;/Applications/Microsoft AutoUpdate.app/Contents/MacOS/Microsoft AU Daemon.app&quot;; 
+        }, 
+        {
+            Hide = 0; 
+            Path = &quot;/Applications/Microsoft Office 2004/Office/Microsoft Database Daemon&quot;; 
+        }, 
+        {
+            AliasData = &lt;00000000 01be0002 00010c4d 6163696e 746f7368 20484400 00000000 00000000 00000000 0000c22e b70b482b 00000001 21e81669 43616c41 6c61726d 53636865 64756c65 722e6170 70000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000001 2332c0cd 729f0000 00000000 0000ffff ffff0000 09200000 00000000 00000000 00000000 00095265 736f7572 63657300 00100008 0000c22e a8fb0000 00110008 0000c0cd 648f0000 00010010 000121e8 000121e3 000121e2 0000014b 0002004c 4d616369 6e746f73 68204844 3a417070 6c696361 74696f6e 733a6943 616c2e61 70703a43 6f6e7465 6e74733a 5265736f 75726365 733a6943 616c416c 61726d53 63686564 756c6572 2e617070 000e002e 00160069 00430061 006c0041 006c0061 0072006d 00530063 00680065 00640075 006c0065 0072002e 00610070 0070000f 001a000c 004d0061 00630069 006e0074 006f0073 00680020 00480044 0012003f 4170706c 69636174 696f6e73 2f694361 6c2e6170 702f436f 6e74656e 74732f52 65736f75 72636573 2f694361 6c416c61 726d5363 68656475 6c65722e 61707000 00130001 2f00ffff 0000&gt;; 
+            Hide = 1; 
+            Path = &quot;/Applications/iCal.app/Contents/Resources/iCalAlarmScheduler.app&quot;; 
+        }, 
+        {
+            AliasData = &lt;00000000 01880002 00010c4d 6163696e 746f7368 20484400 00000000 00000000 00000000 0000c22e b70b482b 0000001b e3290a4d 79204461 792e6170 70000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000 0000001b f730c37a 56db0000 00000000 0000ffff ffff0000 09200000 00000000 00000000 00000000 00064f66 66696365 00100008 0000c22e a8fb0000 00110008 0000c37a 56db0000 0001000c 001be329 001bdd08 0000014b 00020041 4d616369 6e746f73 68204844 3a417070 6c696361 74696f6e 733a4d69 63726f73 6f667420 4f666669 63652032 3030383a 4f666669 63653a4d 79204461 792e6170 7000000e 0016000a 004d0079 00200044 00610079 002e0061 00700070 000f001a 000c004d 00610063 0069006e 0074006f 00730068 00200048 00440012 00344170 706c6963 6174696f 6e732f4d 6963726f 736f6674 204f6666 69636520 32303038 2f4f6666 6963652f 4d792044 61792e61 70700013 00012f00 ffff0000 &gt;; 
+            Hide = 0; 
+            Path = &quot;/Applications/Microsoft Office 2008/Office/My Day.app&quot;; 
+        }
+    ); 
+    BuildVersionStampAsNumber = 18026208; 
+    BuildVersionStampAsString = 8S2167; 
+    SystemVersionStampAsNumber = 168037120; 
+    SystemVersionStampAsString = &quot;10.4.11&quot;; 
+}
+aards-hd2-protools-computer:~ HD2PT$ &gt;</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_3241'>
+<cite>
+<a href="/users/will-n">Will N</a>
+<span class='when'><a href="#comment_3241"><time data-relative="true">2008-04-21T12:23:12Z</time></a></span>
+</cite>
+<blockquote><p>[deleted duplicate post, <em>ed</em>]</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3242'>
+<cite>
+<a href="/users/will-n">Will N</a>
+<span class='when'><a href="#comment_3242"><time data-relative="true">2008-04-21T12:23:51Z</time></a></span>
+</cite>
+<blockquote><p>Ooops. Sorry!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3243'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3243"><time data-relative="true">2008-04-21T12:56:23Z</time></a></span>
+</cite>
+<blockquote><pre>Process:         Synergy [34773]
+Path:            /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
+Identifier:      org.wincent.Synergy
+Version:         version 3.5a6 (69d0d56)
+Code Type:       X86 (Native)
+Parent Process:  launchd [119]</pre>
+<p>[crash log moved to <a href="/issues/657">bug #657</a> as it doesn't really belong here, <em>ed</em>]</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3246'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3246"><time data-relative="true">2008-04-21T16:42:09Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for pasting that in, Will.</p>
+<p>Well, as you can see from looking at that list, Synergy isn't in it! Basically, when you click the &quot;Launch at login&quot; checkbox and then hit &quot;Apply&quot; it is supposed to get added to the list. Does anything get printed to the console (<code>/Applications/Utilities/Console.app</code>) when you try adding Synergy?</p>
+<p>Perhaps you have a corrupt preferences file or something else that is destabilizing things. I've got some troubleshooting tips for ruling out things like that on <a href="http://wincent.com/s/bugs/" class="external">this page</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3247'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3247"><time data-relative="true">2008-04-21T16:43:27Z</time></a></span>
+</cite>
+<blockquote><p>In response to the anonymous commenter who pasted in the unrelated crash log, I think the issue you're looking for is <a href="/issues/657">bug #657</a>. Please file any future comments about that problem in that ticket.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3764'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3764"><time data-relative="true">2008-09-14T17:03:05Z</time></a></span>
+</cite>
+<blockquote><p>Marked <a href="/issues/612">bug #612</a> as a duplicate of this issue.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3765'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3765"><time data-relative="true">2008-09-14T17:03:20Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to inactivity. Feel free to re-open and post a comment if you have anything more to add.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

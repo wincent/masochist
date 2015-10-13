@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Difficulty finding files in /usr/share/vim/vimcurrent ...
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Difficulty finding files in /usr/share/vim/vimcurrent ...</div>
+<h1 class='major'>Difficulty finding files in /usr/share/vim/vimcurrent ...</h1>
+<div class='topic' id='topic_421'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/421"><time data-relative="true">2010-05-19T04:30:26Z</time></a>
+</span>
+</cite>
+<blockquote><p>I've tried :cd / and :cd /usr</p>
+<p>I've tried various patterns like:</p>
+<p>usvv</p>
+<p>but all I get is stuff in /lib/ or other dirs... /usr/ never shows up.</p>
+<p>What am I doing wrong?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5636'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5636"><time data-relative="true">2010-05-19T09:46:16Z</time></a></span>
+</cite>
+<blockquote><p>Take a look at the help documentation (<code>:h command-t</code>) and particularly these two settings:</p>
+<ul>
+<li><code>g:CommandTMaxFiles</code></li>
+<li><code>g:CommandTMaxDepth</code></li>
+</ul>
+<p>The default settings mean that Command-T will stop scanning after 10,000 files and will never descend more than 15 levels down into a directory hierarchy. You're probably not seeing the stuff in <code>/usr/</code> because scanning hits 10,000 files and stops way way way before getting to <code>/usr</code>.</p>
+<p>You can up those limits to whatever you want, but bear in mind that while the tool is designed with large project navigation in mind, it's going to be much less useful for navigating absolutely enormous, non-project collections of files (like entire disk drives, for example).</p>
+<p>I've done tests with things like a max depth of 100 and a max file count of 500,000, but even if your machine is powerful enough to actually handle this volume of data, the interface simply isn't designed for this kind of problem. &quot;Drilling down&quot; with tab completion is actually a much more appropriate user interface for that kind of problem space.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5638'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5638"><time data-relative="true">2010-05-19T18:24:15Z</time></a></span>
+</cite>
+<blockquote><p>Ok. That makes sense. Use the right tool for the right job. Thanks, Wincent.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

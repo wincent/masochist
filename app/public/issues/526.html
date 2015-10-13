@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #526: Visual feedback with growl
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #526</div>
+<div class='issue' id='issue_526'>
+<form class="edit_issue" id="edit_issue_526" action="/issues/526" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="IKjDX4I78ItFvE+zCUcEL1+3TwMK2mIFr9V1Mj1Q/44UWn3oJbYq3pwwfEQ4bleb6jUmPwE27BmPyqDMGYiYqg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #526:
+<span data-name='issue[summary]'>
+Visual feedback with growl
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-12-29T12:25:42Z</time>, updated <time data-relative="true">2006-12-30T11:59:06Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bastian">bastian</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>when the &#x201c;extra visual feedback for play, pause... etc&#x201d; option is on, the visual feedback laggs all my computer, synergy uses lots of processor when showing, and the fadeout is very slow... a good alternative is showing that images of &#x201c;play&#x201d; &#x201c;pause&#x201d; &#x201c;volume bezel&#x201d; etc. with growl, because growl is more cuztomizable, cool and fast. :D</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2910'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2910"><time data-relative="true">2006-12-30T10:15:09Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the suggestion. I'll look into this and see if there is a way of getting Growl to display a centred bezel with only an icon and no textual content. I am not aware of any way to tell Growl what kind of notification to display; as far as I know you can only give it text and an optional image and it is up to the user to configure how they want the notifications to display. I suspect that a better and easier solution might be to identify the cause of the poor performance on your machine and implement changes/optimization in Synergy's own bezel-drawing code.</p>
+<p>Can you provide a bit more information about the specs on your machine? Also, have you tried taking a sample of Synergy (using the Activity Monitor) while the bezel is fading out?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2911'>
+<cite>
+<a href="/users/bastian">bastian</a>
+<span class='when'><a href="#comment_2911"><time data-relative="true">2006-12-30T11:59:06Z</time></a></span>
+</cite>
+<blockquote><p>ok, i have a PPC iMac, mac os X 10.3.9, 400 mhz cpu, 512 ram. in the activity monitor, synergy uses 29% of my processor when the bezel-thing is displayed. i think 29% isn't a huge processor use, but the animation is so slow, and with growl maybe it can be faster. and yes, in growl can be displayed images (like with &#x201c;HardwareGrowler&#x201d;, it displays in a bezel style images of USB devices, and that style can be good for synergy)</p>
+<p>this is the sample what you are looking for???:</p>
+<p>2006-12-30 14:56:16.286 sample[1462] Couldn't start c++filt for C++ name demangling Analysis of sampling pid 531 every 10.000000 milliseconds Call graph:</p>
+<pre>   199 Thread_0e0b
+     199 0x6cf0
+       199 0x6e70
+         199 NSApplicationMain
+           199 -[NSApplication run]
+             148 0x734c
+               134 0x1521c
+                 129 0x12a7c
+                   95 0xff0c
+                     93 0x16e58
+                       93 AESend
+                         93 aeSend
+                           93 AESendMessage
+                             93 CFRunLoopRunSpecific
+                               93 __CFRunLoopRun
+                                 93 mach_msg
+                                   93 mach_msg_trap
+                                     93 mach_msg_trap
+                     2 0x16db8
+                       1 0x1fabc
+                         1 GetProcessInformation
+                           1 CPSPBGetProcessInfo
+                             1 _CGSGetProcessInfo
+                               1 mach_msg
+                                 1 mach_msg_trap
+                                   1 mach_msg_trap
+                       1 0x1fb0c
+                         1 GetNextProcess
+                           1 CPSGetNextProcess
+                             1 _CGSGetNextProcess
+                               1 mach_msg
+                                 1 mach_msg_trap
+                                   1 mach_msg_trap
+                   17 0x11aa8
+                     16 0x1d648
+                       16 -[NSImage isValid]
+                         16 -[NSImage _expand]
+                           16 -[NSImage _expandRep:]
+                             16 +[NSImageRep imageRepsWithContentsOfFile:]
+                               16 +[NSBitmapImageRep _imageRepsWithData:hfsFileType:extension:]
+                                 16 +[NSBitmapImageRep _imagesWithData:hfsFileType:extension:zone:]
+                                   16 -[NSBitmapImageRep _initWithImageReader:]
+                                     16 -[NSJPEGImageReader loadImage:]
+                                       16 _NS_jpeg_read_scanlines
+                                         16 process_data_context_main
+                                           10 sep_upsample
+                                             5 h2v2_fancy_upsample
+                                               5 h2v2_fancy_upsample
+                                             5 ycc_rgb_convert
+                                               5 ycc_rgb_convert
+                                           6 decompress_onepass
+                                             5 _NS_jpeg_idct_islow
+                                               5 _NS_jpeg_idct_islow
+                                             1 decompress_onepass
+                                               1 _NS_jpeg_idct_islow
+                                                 1 _NS_jpeg_idct_islow
+                     1 0x1d564
+                       1 -[NSFileManager fileExistsAtPath:]
+                         1 _NSFileExistsAtPath
+                           1 +[NSMutableString allocWithZone:]
+                             1 NSAllocateObject
+                               1 _internal_class_createInstanceFromZone
+                                 1 malloc_zone_calloc
+                                   1 0x90121e18
+                                     1 0x90121e18
+                   14 0xff34
+                     14 -[NSAppleScript executeAndReturnError:]
+                       14 OSAExecute
+                         14 CallComponent
+                           14 GenericComponent
+                             14 _ZN15AGenericManager13HandleOSACallEP19ComponentParameters
+                               14 CallComponent
+                                 14 AppleScriptComponent
+                                   14 CallComponentFunctionCommon
+                                     14 _Z9ASExecutemmlPm
+                                       14 _Z10UASExecuteh
+                                         14 _Z11UASExecute1v
+                                           10 _Z10UASGetDatahP19TUASClassIdentifier
+                                             10 _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+                                               10 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                 10 _Z13UASRemoteSendhhhhhPh
+                                                   8 _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+                                                     8 _Z13ComponentSendPK6AEDescPS_ll
+                                                       8 InvokeOSASendUPP
+                                                         8 _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+                                                           8 AESend
+                                                             8 aeSend
+                                                               8 AESendMessage
+                                                                 8 CFRunLoopRunSpecific
+                                                                   8 __CFRunLoopRun
+                                                                     8 mach_msg
+                                                                       8 mach_msg_trap
+                                                                         8 mach_msg_trap
+                                                   2 _Z13UASBuildEventP25TStackFrame_UASRemoteSendhP6AEDesc
+                                                     1 AEPutParamDesc
+                                                       1 _ZN12AERecordImpl8putValueEmmPK6AEImpl
+                                                         1 _ZNK6AEImpl19duplicateAndSetTypeEm
+                                                           1 _ZNK12AERecordImpl9duplicateEv
+                                                             1 _ZN12AERecordImplC4EPKS_
+                                                               1 _Znam
+                                                                 1 _Znwm
+                                                                   1 malloc
+                                                                     1 malloc_zone_malloc
+                                                                       1 szone_malloc
+                                                                         1 szone_malloc
+                                                     1 _ZN9TUASValue20BecomeAEDescLocationER6AEDescP15TUASApplicationh
+                                                       1 _Z24UASFinishObjectSpecifierR8AEStream
+                                                         1 _ZN9TUASValue14WriteForTargetER8AEStreamh
+                                                           1 _ZN15TUASApplication7_EqualsEPS_P9TUASValue
+                                                             1 _ZN15TUASApplication7AddressER6AEDesch
+                                                               1 _Z25AEConvertToCurrentProcessRK6AEDescRS_
+                                                                 1 AEDuplicateDesc
+                                                                   1 _ZNK10AEDescImpl9duplicateEv
+                                                                     1 _Znwm
+                                                                       1 malloc
+                                                                         1 malloc_zone_malloc
+                                                                           1 malloc_zone_malloc
+                                           3 _Z8BCCoercev
+                                             3 _ZN9TUASValue13DidBecomeTypeE14TUASClassIndexRPS_P19TUASClassIdentifier
+                                               3 _ZN15TUASObjectAlias13DidBecomeTypeE14TUASClassIndexRP9TUASValueP19TUASClassIdentifier
+                                                 1 _Z10UASGetDatahP19TUASClassIdentifier
+                                                   1 _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+                                                     1 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                       1 _Z13UASRemoteSendhhhhhPh
+                                                         1 _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+                                                           1 _Z13ComponentSendPK6AEDescPS_ll
+                                                             1 InvokeOSASendUPP
+                                                               1 _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+                                                                 1 AESend
+                                                                   1 aeSend
+                                                                     1 AESendMessage
+                                                                       1 CFRunLoopRunSpecific
+                                                                         1 __CFRunLoopRun
+                                                                           1 mach_msg
+                                                                             1 mach_msg_trap
+                                                                               1 mach_msg_trap
+                                                 1 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                   1 _Z13UASRemoteSendhhhhhPh
+                                                     1 _Z13UASBuildEventP25TStackFrame_UASRemoteSendhP6AEDesc
+                                                       1 _ZN9TUASValue20BecomeAEDescLocationER6AEDescP15TUASApplicationh
+                                                         1 _Z24UASFinishObjectSpecifierR8AEStream
+                                                           1 _Z24UASFinishObjectSpecifierR8AEStream
+                                                             1 _Z24UASFinishObjectSpecifierR8AEStream
+                                                               1 AEStream_CloseRecord
+                                                                 1 AEStreamCloseRecord
+                                                                   1 0x91725b10
+                                                                     1 _ZN12AERecordImpl8putValueEmmPK6AEImpl
+                                                                       1 _ZNK6AEImpl19duplicateAndSetTypeEm
+                                                                         1 _ZNK12AERecordImpl9duplicateEv
+                                                                           1 _ZN12AERecordImplC4EPKS_
+                                                                             1 _Znam
+                                                                               1 _Znwm
+                                                                                 1 malloc
+                                                                                   1 malloc_zone_malloc
+                                                                                     1 szone_malloc
+                                                                                       1 __spin_unlock
+                                                                                         1 __spin_unlock
+                                                 1 _ZN9TUASValue13DidBecomeTypeE14TUASClassIndexRPS_P19TUASClassIdentifier
+                                                   1 _ZN11TUASInteger13DidBecomeTypeE14TUASClassIndexRP9TUASValueP19TUASClassIdentifier
+                                                     1 0x80687360
+                                                       1 0x80687360
+                                           1 _Z10BCNotEqualv
+                                             1 _Z7BCEqualv
+                                               1 _Z29UASObjectAlias_BinaryOperatorPFvvEm24TUASSupportsOperatorFlag
+                                                 1 _Z10UASGetDatahP19TUASClassIdentifier
+                                                   1 _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+                                                     1 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                       1 _Z13UASRemoteSendhhhhhPh
+                                                         1 _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+                                                           1 _Z13ComponentSendPK6AEDescPS_ll
+                                                             1 InvokeOSASendUPP
+                                                               1 _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+                                                                 1 AESend
+                                                                   1 aeSend
+                                                                     1 AESendMessage
+                                                                       1 CFRunLoopRunSpecific
+                                                                         1 CFRunLoopRunSpecific
+                   1 0x1045c
+                     1 -[NSAppleEventDescriptor stringValue]
+                       1 -[NSAppleEventDescriptor data]
+                         1 _NS_AEGetDescData
+                           1 AEGetDescData
+                             1 AEGetDescDataRange
+                               1 AEGetDescDataRange
+                   1 0xfebc
+                     1 -[NSDistributedNotificationCenter postNotificationName:object:userInfo:options:]
+                       1 _CFXNotificationPostNotification
+                         1 __CFXNotificationSendToServer
+                           1 mach_msg
+                             1 mach_msg_trap
+                               1 mach_msg_trap
+                   1 0xfed8
+                     1 0x1fa48
+                       1 GetNextProcess
+                         1 CPSGetNextProcess
+                           1 _CGSGetNextProcess
+                             1 mach_msg
+                               1 mach_msg_trap
+                                 1 mach_msg_trap
+                 3 0x12a60
+                   2 0x12c3c
+                     2 0x1fabc
+                       2 GetProcessInformation
+                         2 CPSPBGetProcessInfo
+                           1 __memcpy
+                             1 __memcpy
+                           1 vm_deallocate
+                             1 mach_msg
+                               1 mach_msg_trap
+                                 1 mach_msg_trap
+                   1 0x12cd0
+                     1 AESend
+                       1 _ZN12EventAddressD1Ev
+                         1 _ZN12EventAddressD1Ev
+                 2 0x12978
+                   1 0x1fabc
+                     1 GetProcessInformation
+                       1 CPSPBGetProcessInfo
+                         1 _CGSGetProcessInfo
+                           1 mach_msg
+                             1 mach_msg_trap
+                               1 mach_msg_trap
+                   1 0x1fb0c
+                     1 GetNextProcess
+                       1 CPSGetNextProcess
+                         1 _CGSGetNextProcess
+                           1 mach_msg
+                             1 mach_msg_trap
+                               1 mach_msg_trap
+               12 0x1532c
+                 8 -[NSWindow display]
+                   8 -[NSView displayIfNeeded]
+                     8 -[NSView _displayRectIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:]
+                       8 -[NSNextStepFrame _recursiveDisplayRectIfNeededIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:topView:]
+                         8 -[NSView _recursiveDisplayRectIfNeededIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:topView:]
+                           8 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]
+                             8 CFArrayApplyFunction
+                               8 _recursiveDisplayInRect2
+                                 8 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]
+                                   8 CFArrayApplyFunction
+                                     8 _recursiveDisplayInRect2
+                                       8 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]
+                                         8 -[NSView _drawRect:clip:]
+                                           8 0x20504
+                                             7 _CGSInvalidateWindowShadow
+                                               7 mach_msg
+                                                 7 mach_msg_trap
+                                                   7 mach_msg_trap
+                                             1 -[NSWindow invalidateShadow]
+                                               1 -[NSWindow invalidateShadow]
+                 4 0x20f88
+                   4 -[NSWindow _reallyDoOrderWindow:relativeTo:findKey:forCounter:force:isModal:]
+                     3 CGSOrderFrontConditionally
+                       3 _CGSOrderFrontConditionally
+                         3 mach_msg
+                           3 mach_msg_trap
+                             3 mach_msg_trap
+                     1 SyncWindowToCGSWindow
+                       1 _Z22CalculateWindowRegionsP10WindowDatab
+                         1 _Z17SyncStructurePortP10WindowData
+                           1 PortSize
+                             1 RectRgn
+                               1 RectRgn
+               2 objc_msgSend
+                 2 objc_msgSend
+             50 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:]
+               50 _DPSNextEvent
+                 50 BlockUntilNextEventMatchingListInMode
+                   50 ReceiveNextEventCommon
+                     50 RunCurrentEventLoopInMode
+                       50 CFRunLoopRunSpecific
+                         50 __CFRunLoopRun
+                           50 __CFRunLoopDoSource1
+                             50 __CFMachPortPerform
+                               50 __CFXNotificationReceiveFromServer
+                                 50 __CFXNotificationHandleMessage
+                                   50 __CFXNotificationPostEntry
+                                     50 _nsnote_callback
+                                       37 0x17c34
+                                         21 0x11aa8
+                                           20 0x1d648
+                                             20 -[NSImage isValid]
+                                               20 -[NSImage _expand]
+                                                 20 -[NSImage _expandRep:]
+                                                   20 +[NSImageRep imageRepsWithContentsOfFile:]
+                                                     19 +[NSBitmapImageRep _imageRepsWithData:hfsFileType:extension:]
+                                                       19 +[NSBitmapImageRep _imagesWithData:hfsFileType:extension:zone:]
+                                                         19 -[NSBitmapImageRep _initWithImageReader:]
+                                                           19 -[NSJPEGImageReader loadImage:]
+                                                             19 _NS_jpeg_read_scanlines
+                                                               18 process_data_context_main
+                                                                 10 sep_upsample
+                                                                   7 h2v2_fancy_upsample
+                                                                     7 h2v2_fancy_upsample
+                                                                   3 ycc_rgb_convert
+                                                                     3 ycc_rgb_convert
+                                                                 8 decompress_onepass
+                                                                   6 _NS_jpeg_idct_islow
+                                                                     6 _NS_jpeg_idct_islow
+                                                                   2 decode_mcu
+                                                                     1 _NS_jpeg_fill_bit_buffer
+                                                                       1 _NS_jpeg_fill_bit_buffer
+                                                                     1 _NS_jpeg_huff_decode
+                                                                       1 _NS_jpeg_fill_bit_buffer
+                                                                         1 _NS_jpeg_fill_bit_buffer
+                                                               1 _NS_jpeg_read_scanlines
+                                                     1 _NSNewDataOnImage
+                                                       1 -[NSData initWithContentsOfMappedFile:]
+                                                         1 _NSReadBytesFromFile
+                                                           1 open
+                                                             1 open
+                                           1 0x1d520
+                                             1 -[NSImage dealloc]
+                                               1 -[NSImage _freeRepresentation:]
+                                                 1 -[NSBitmapImageRep dealloc]
+                                                   1 -[NSBitmapImageRep _freeImage]
+                                                     1 szone_free
+                                                       1 deallocate_pages
+                                                         1 vm_deallocate
+                                                           1 mach_msg
+                                                             1 mach_msg_trap
+                                                               1 mach_msg_trap
+                                         9 0xff34
+                                           9 -[NSAppleScript executeAndReturnError:]
+                                             9 OSAExecute
+                                               9 CallComponent
+                                                 9 GenericComponent
+                                                   9 _ZN15AGenericManager13HandleOSACallEP19ComponentParameters
+                                                     9 CallComponent
+                                                       9 AppleScriptComponent
+                                                         9 CallComponentFunctionCommon
+                                                           9 _Z9ASExecutemmlPm
+                                                             9 _Z10UASExecuteh
+                                                               9 _Z11UASExecute1v
+                                                                 4 _Z10UASGetDatahP19TUASClassIdentifier
+                                                                   4 _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+                                                                     3 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                                       3 _Z13UASRemoteSendhhhhhPh
+                                                                         2 _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+                                                                           2 _Z13ComponentSendPK6AEDescPS_ll
+                                                                             2 InvokeOSASendUPP
+                                                                               2 _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+                                                                                 2 AESend
+                                                                                   2 aeSend
+                                                                                     2 AESendMessage
+                                                                                       2 _Z19sendToModernProcessP12__CFMachPortmPK6AEDescl
+                                                                                         2 mach_msg
+                                                                                           2 mach_msg_trap
+                                                                                             2 mach_msg_trap
+                                                                         1 AEDisposeDesc
+                                                                           1 _ZdlPv
+                                                                             1 free
+                                                                               1 szone_size
+                                                                                 1 szone_size
+                                                                     1 _Z15UASGetDataLocalRP15TUASApplication
+                                                                       1 _Z15UASGetDataLocalRP15TUASApplication
+                                                                 4 _Z8BCCoercev
+                                                                   4 _ZN9TUASValue13DidBecomeTypeE14TUASClassIndexRPS_P19TUASClassIdentifier
+                                                                     4 _ZN15TUASObjectAlias13DidBecomeTypeE14TUASClassIndexRP9TUASValueP19TUASClassIdentifier
+                                                                       2 _Z10UASGetDatahP19TUASClassIdentifier
+                                                                         2 _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+                                                                           2 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                                             2 _Z13UASRemoteSendhhhhhPh
+                                                                               1 AEDisposeDesc
+                                                                                 1 AEDisposeDesc
+                                                                               1 _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+                                                                                 1 _Z13ComponentSendPK6AEDescPS_ll
+                                                                                   1 InvokeOSASendUPP
+                                                                                     1 _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+                                                                                       1 AESend
+                                                                                         1 aeSend
+                                                                                           1 AESendMessage
+                                                                                             1 CFRunLoopAddSource
+                                                                                               1 CFSetAddValue
+                                                                                                 1 __CFSetFindBuckets2
+                                                                                                   1 __CFSetFindBuckets2
+                                                                       2 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                                         2 _Z13UASRemoteSendhhhhhPh
+                                                                           2 _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+                                                                             2 _Z13ComponentSendPK6AEDescPS_ll
+                                                                               2 InvokeOSASendUPP
+                                                                                 2 _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+                                                                                   2 AESend
+                                                                                     2 aeSend
+                                                                                       2 AESendMessage
+                                                                                         1 CFRunLoopRunSpecific
+                                                                                           1 __CFRunLoopRun
+                                                                                             1 mach_msg
+                                                                                               1 mach_msg_trap
+                                                                                                 1 mach_msg_trap
+                                                                                         1 _Z19sendToModernProcessP12__CFMachPortmPK6AEDescl
+                                                                                           1 mach_msg
+                                                                                             1 mach_msg_trap
+                                                                                               1 mach_msg_trap
+                                                                 1 _Z10BCNotEqualv
+                                                                   1 _Z7BCEqualv
+                                                                     1 _Z29UASObjectAlias_BinaryOperatorPFvvEm24TUASSupportsOperatorFlag
+                                                                       1 _Z10UASGetDatahP19TUASClassIdentifier
+                                                                         1 _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+                                                                           1 _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+                                                                             1 _Z13UASRemoteSendhhhhhPh
+                                                                               1 _Z13UASBuildEventP25TStackFrame_UASRemoteSendhP6AEDesc
+                                                                                 1 _ZN9TUASValue20BecomeAEDescLocationER6AEDescP15TUASApplicationh
+                                                                                   1 _Z24UASFinishObjectSpecifierR8AEStream
+                                                                                     1 _ZN9TUASValue14WriteForTargetER8AEStreamh
+                                                                                       1 _ZN15TUASApplication7_EqualsEPS_P9TUASValue
+                                                                                         1 _ZN15TUASApplication7AddressER6AEDesch
+                                                                                           1 AEGetDescData
+                                                                                             1 AEGetDescData
+                                         3 0xff0c
+                                           3 0x16db8
+                                             2 0x1fb0c
+                                               2 GetNextProcess
+                                                 2 CPSGetNextProcess
+                                                   2 _CGSGetNextProcess
+                                                     2 mach_msg
+                                                       2 mach_msg_trap
+                                                         2 mach_msg_trap
+                                             1 0x1fabc
+                                               1 GetProcessInformation
+                                                 1 CPSPBGetProcessInfo
+                                                   1 _CGSGetProcessInfo
+                                                     1 mach_msg
+                                                       1 mach_msg_trap
+                                                         1 mach_msg_trap
+                                         2 0x12738
+                                           2 0xf330
+                                             2 -[NSMenu insertItem:atIndex:]
+                                               2 -[NSNotificationCenter postNotificationName:object:userInfo:]
+                                                 2 _CFXNotificationPostNotification
+                                                   2 __CFXNotificationPost
+                                                     2 _nsnote_callback
+                                                       2 -[NSCarbonMenuImpl itemAdded:]
+                                                         1 0x90b495bc
+                                                           1 0x90b495bc
+                                                         1 objc_msgSend
+                                                           1 objc_msgSend
+                                         2 0xfed8
+                                           2 0x1fa04
+                                             2 GetProcessInformation
+                                               2 CPSPBGetProcessInfo
+                                                 2 _CGSGetProcessInfo
+                                                   2 mach_msg
+                                                     2 mach_msg_trap
+                                                       2 mach_msg_trap
+                                       7 +[GrowlApplicationBridge notifyWithDictionary:]
+                                         6 _objc_msgForward
+                                           6 -[NSObject(NSForwardInvocation) forward::]
+                                             6 -[NSConnection sendInvocation:]
+                                               4 -[NSConcretePortCoder sendBeforeTime:sendReplyPort:]
+                                                 4 -[NSMachPort sendBeforeTime:streamData:components:from:msgid:]
+                                                   4 +[NSMachPort sendBeforeTime:streamData:components:to:from:msgid:reserved:]
+                                                     4 mach_msg
+                                                       4 mach_msg_trap
+                                                         4 mach_msg_trap
+                                               1 CFRunLoopRunSpecific
+                                                 1 __CFRunLoopRun
+                                                   1 __CFRunLoopDoObservers
+                                                     1 __NSPortDelegateTickler
+                                                       1 objc_msgSend
+                                                         1 objc_msgSend
+                                               1 _NSAddHandler2
+                                                 1 _NSAddHandler2
+                                         1 +[NSConnection connectionWithRegisteredName:host:usingNameServer:]
+                                           1 -[NSConnection initWithReceivePort:sendPort:]
+                                             1 -[NSConcreteNotification release]
+                                               1 objc_msgSend
+                                                 1 objc_msgSend
+                                       6 0x182b0
+                                         6 -[NSImage TIFFRepresentationUsingCompression:factor:]
+                                           6 +[NSBitmapImageRep TIFFRepresentationOfImageRepsInArray:]
+                                             5 -[NSBitmapImageRep _writeTIFF:usingCompression:factor:]
+                                               5 _NXTIFFWrite
+                                                 5 _NXTIFFWriteScanline
+                                                   5 DumpModeEncode
+                                                     3 __memcpy
+                                                       3 __memcpy
+                                                     2 _NXTIFFFlushData1
+                                                       2 TIFFAppendToStrip
+                                                         2 NXDefaultWrite
+                                                           1 NXFlush
+                                                             1 memory_flush
+                                                               1 memory_extend
+                                                                 1 vm_deallocate
+                                                                   1 mach_msg
+                                                                     1 mach_msg_trap
+                                                                       1 mach_msg_trap
+                                                           1 __memcpy
+                                                             1 __memcpy
+                                             1 _NSRemoveHandler2
+                                               1 _NSRemoveHandler2
+             1 NSPopAutoreleasePool
+               1 CFRelease
+                 1 __CFDictionaryDeallocate
+                   1 CFDictionaryRemoveAllValues
+                     1 0x34068
+                       1 0x34068
+   199 Thread_0f03
+     199 _pthread_body
+       199 __ape_agent
+         199 mach_msg
+           199 mach_msg_trap
+             199 mach_msg_trap
+   199 Thread_1003
+     199 _pthread_body
+       199 forkThreadForFunction
+         199 +[NSURLConnection(NSURLConnectionInternal) _resourceLoadLoop:]
+           199 -[NSRunLoop run]
+             199 -[NSRunLoop runMode:beforeDate:]
+               199 CFRunLoopRunSpecific
+                 199 __CFRunLoopRun
+                   199 mach_msg
+                     199 mach_msg_trap
+                       199 mach_msg_trap
+   199 Thread_1103
+     199 _pthread_body
+       199 _loadRunLoop
+         199 select
+           199 select
+   199 Thread_1203
+     199 _pthread_body
+       199 forkThreadForFunction
+         199 +[NSURLCache _diskCacheSyncLoop:]
+           199 -[NSRunLoop run]
+             199 -[NSRunLoop runMode:beforeDate:]
+               199 CFRunLoopRunSpecific
+                 199 __CFRunLoopRun
+                   199 mach_msg
+                     199 mach_msg_trap
+                       199 mach_msg_trap
+   199 Thread_1303
+     199 _pthread_body
+       199 TS_exception_listener_thread
+         199 mach_msg
+           199 mach_msg_trap
+             199 mach_msg_trap</pre>
+<p>Total number in stack (recursive counted multiple, when &gt;=5):</p>
+<pre>       25       mach_msg
+       25       mach_msg_trap
+       9       CFRunLoopRunSpecific
+       8       AESend
+       8       _Z13UASRemoteSendhhhhhPh
+       8       _Z16UASRemoteGetDataP15TUASObjectAliasP15TUASApplicationP19TUASClassIdentifierPh
+       8       __CFRunLoopRun
+       7       AESendMessage
+       7       aeSend
+       6       InvokeOSASendUPP
+       6       _Z10UASGetDatahP19TUASClassIdentifier
+       6       _Z13ComponentSendPK6AEDescPS_ll
+       6       _Z17AEDefaultSendProcPK6AEDescPS_lslPFhP11EventRecordPlPP15OpaqueRgnHandleEPFhS4_llS1_El
+       6       _Z25UASGetDataNoCircularitieshP19TUASClassIdentifier
+       6       _ZN15TUASApplication4SendEP25TStackFrame_UASRemoteSendP6AEDescS3_hhh
+       5       CPSPBGetProcessInfo
+       5       GetProcessInformation
+       5       _Z24UASFinishObjectSpecifierR8AEStream
+       5       _pthread_body</pre>
+<p>Sort by top of stack, same collapsed (when &gt;= 5):</p>
+<pre>       mach_msg_trap        930
+       select        199
+       _NS_jpeg_idct_islow        12
+       h2v2_fancy_upsample        12
+       ycc_rgb_convert        8
+       __memcpy        5
+       objc_msgSend        5</pre>
+<p>Sample analysis of process 531 written to file /dev/stdout Sampling process 531 each 10 msecs 300 times</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

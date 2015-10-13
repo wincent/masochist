@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Recently committed fix for Command-T crashing vim on 2nd use
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Recently committed fix for Command-T crashing vim on 2nd use</div>
+<h1 class='major'>Recently committed fix for Command-T crashing vim on 2nd use</h1>
+<div class='topic' id='topic_470'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/mike-crittenden">Mike Crittenden</a>
+<span class='when'>
+<a href="/forums/command-t/topics/470"><time data-relative="true">2011-05-02T18:34:05Z</time></a>
+</span>
+</cite>
+<blockquote><p>I've been having this problem (as have others in your forums) where the 2nd time Command-T is used during a vim session, it crashes with this: </p>
+<pre>
+Vim: Caught deadly signal SEGV
+Vim: Finished.
+
+Segmentation fault
+</pre>
+<p>...and it looks like it's due to this bug: <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=614336" class="external">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=614336</a> which was apparently fixed in vim 7.3.154 (Ubuntu 11.04 comes stock with 7.3.35 so 11.04 users don't have this fix).</p>
+<p>Just thought I'd share that knowledge for anyone else finding these issues.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6847'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6847"><time data-relative="true">2011-05-03T03:46:05Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for sharing.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6848'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6848"><time data-relative="true">2011-05-05T21:29:00Z</time></a></span>
+</cite>
+<blockquote><p>I'm having a similar problem on MacVim Version 7.3 (53), it seems to crash after I compile the script and try to run Vim</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6849'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6849"><time data-relative="true">2011-05-06T06:37:54Z</time></a></span>
+</cite>
+<blockquote><p>Most likely cause is linking against a different version of Ruby than MacVim links against. MacVim links against the system Ruby by default (unless you built it yourself and took explicit steps to make it link against some other Ruby), so you have to build Command-T using the system Ruby. No RVM or any other stuff.</p>
+<p>Check the forums and the issue tracker for many examples of people who make this mistake and were able to correct it by compiling using the right version of Ruby.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6872'>
+<cite>
+<a href="/users/mike-crittenden">Mike Crittenden</a>
+<span class='when'><a href="#comment_6872"><time data-relative="true">2011-05-16T14:02:58Z</time></a></span>
+</cite>
+<blockquote><p>For any Ubuntu 11.04 users, here's a guide to updating vim to a version that has ruby support fixed so Command-T works as expected. <a href="http://kresimirbojcic.com/2011/05/14/installing-command-t-ubunutu-11.04-ruby-1.9.2.html" class="external">http://kresimirbojcic.com/2011/05/14/installing-command-t-ubunutu-11.04-ruby-1.9.2.html</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10069'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10069">Created <time data-relative="true">2012-12-24T21:30:13Z</time>, edited <time data-relative="true">2012-12-29T05:36:35Z</time></a></span>
+</cite>
+<blockquote><p>Just ran into this post while trying to fix the problem on a recently updated ubuntu 12.10 box.</p>
+<p>The solution was to find which version of ruby vim had been compiled against (I preferred to use the vim-nox package and not compile vim from source) - in this case it was ruby 1.9.1. After that I got myself ruby 1.9.1 from rvm, switched to that and compiled command-t. no more crashing.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

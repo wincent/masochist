@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy 3.2.1 Latest &quot;Stable&quot; Release Issues or Known Issues with Leopard 10.5.6 
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy 3.2.1 Latest &quot;Stable&quot; Release Issues or Known Issues with Leopard 10.5.6 </div>
+<h1 class='major'>Synergy 3.2.1 Latest &quot;Stable&quot; Release Issues or Known Issues with Leopard 10.5.6 </h1>
+<div class='topic' id='topic_404'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/atort13">atort13</a>
+<span class='when'>
+<a href="/forums/synergy/topics/404"><time data-relative="true">2009-02-05T20:37:27Z</time></a>
+</span>
+</cite>
+<blockquote><p>I recently installed Synergy 3.2.1 on my Mac Pro Tower and am running 10.5.6 version of Leopard and am experiencing some instability issues and having applications such as my finder crashing on me for some reason and these types of things are getting logged in my Log Console....2/4/09 1:16:49 AM   Feb. 4, 2009 Synergy[119] Error executing AppleScript (audioscrobblerTimerFired:) </p>
+<p>Does anyone know what to make of this or has there been any known issues with Leopard that I should be aware of?  Also, is the Finder crashing a possibility from something Synergy has installed on the system?  Any info will be appreciated.</p>
+<p>Thank you.</p>
+<p>@.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4169'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4169"><time data-relative="true">2009-02-05T22:22:26Z</time></a></span>
+</cite>
+<blockquote><p>There are no known issues in the 3.2 series.</p>
+<p>Mac OS X uses protected memory so a normal application like Synergy cannot make any other application (such as the Finder crash). In any case, Synergy makes no attempt to even communicate with or touch the Finder; the only other application it tries to interact with is iTunes, and it does that via AppleScript (and there too the protected memory means that all applications are isolated from all other applications and one process should not be able to make another process crash).</p>
+<p>As for the error messages in the log, could you post a full excerpt so that we can see what's going on?</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1598: Eliminate counter-intuitive results by using recursive &quot;best match&quot; strategy
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1598</div>
+<div class='issue' id='issue_1598'>
+<form class="edit_issue" id="edit_issue_1598" action="/issues/1598" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="kLJHAGZbgvtkZ0/B1qeeCervUi6ULuR3GtAciRK22BukQPm3wdZYrr3rfDbnjs29X207Ep/Cams6z8l3Nm6/Pw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1598:
+<span data-name='issue[summary]'>
+Eliminate counter-intuitive results by using recursive &quot;best match&quot; strategy
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-07-09T09:15:11Z</time>, updated <time data-relative="true">2010-07-11T06:11:13Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<h2>The problem</h2>
+<p>Given search string &quot;artcon&quot;, and files:</p>
+<ul>
+<li><code>heartbeat_controller.rb</code></li>
+<li><code>articles_controller.rb</code></li>
+</ul>
+<p>The first file will be scored higher due to the location of the matched characters:</p>
+<pre>heartbeat_controller.rb
+  ^^^     ^^^
+articles_controller.rb
+^^^ ^     ^^</pre>
+<p>While the &quot;art&quot; in <code>articles_controller.rb</code> scores very highly, the following <code>c</code> and <code>on</code> do not score all that well. Compare that with the <code>art</code> run in <code>heartbeat_controller.rb</code>, which scores acceptably, followed by the very-well scoring <code>con</code>.</p>
+<p>In reality, if we use the full paths to the files the difference becomes even clearer:</p>
+<pre>app/controllers/heartbeat_controller.rb
+^       ^           ^     ^^^
+app/controllers/articles_controller.rb
+^       ^         ^ ^     ^^</pre>
+<p>Looking at the entire path, <code>heartbeat_controller.rb</code> has a high-scoring run of <code>art</code>, whereas the second path only has <code>on</code> as a run, and it is not in a particularly high-scoring location.</p>
+<p>This is counter-intuitive. A user typing &quot;artcon&quot; should have a reasonable expectation that <code>articles_controller.rb</code> should be among the highest scoring results.</p>
+<h2>The solution</h2>
+<p>The above scores are determined by the left-to-right nature of the search. The first-found character to the left always &quot;wins&quot; and alternatives are not considered.</p>
+<p>If we could instead look for alternative matches, we might find higher scoring ones which would change the ordering of results.</p>
+<p>In the cited examples, the highest scoring matches are probably the following:</p>
+<pre>app/controllers/articles_controller.rb
+                ^^^      ^^^
+         and
+
+app/controllers/heartbeat_controller.rb
+^                  ^^     ^^^
+         or
+
+app/controllers/heartbeat_controller.rb
+                  ^^^     ^^^</pre>
+<p>And given files like these:</p>
+<ul>
+<li><code>art.txt</code></li>
+<li><code>app/models/article.rb</code></li>
+<li><code>app/controllers/articles_controller.rb</code></li>
+</ul>
+<p>The highest scoring matches for the search string &quot;art&quot; would be:</p>
+<pre>art.txt
+^^^
+app/models/article.rb
+           ^^^
+app/controllers/articles_controller.rb
+                ^^^</pre>
+<p>ie. we preserve the existing behavior or giving more weight to words at the beginning of a string or immediately after special characters like path separators, and of giving more weight to matches which occupy a proportionally larger part of the overall string, while searching for multiple different ways of matching, and finally choosing the one that gives us the highest score.</p>
+<p>At least my instincts suggest that this will produce the most intuitive results. The only case I am not sure about is this one:</p>
+<p>Which of these should score highest for the search string &quot;avid&quot;?:</p>
+<pre>app/views/issues/demo.html.haml
+^   ^     ^      ^
+vendor/libraries/avid-setup.txt
+                 ^^^^</pre>
+<p>ie. same overall string length, and all matching characters in &quot;high-value&quot; positions. I guess we fall back to alphabetical sorting in that case.</p>
+<h2>Implementation</h2>
+<p>The basic algorithm is the following:</p>
+<ul>
+<li>Call <code>match()</code> function and <em>only</em> if the string matches, start looking for a better, alternative match, starting from the next character after the first matched character.</li>
+</ul>
+<p>This is important because we don't want to engage in a letter-by-letter recursive search until we are sure that we have a matching string. (Imagine a folder with 10,000 files; for a string like &quot;artcon&quot; only a handful may match, so any time spent recursing over the non-matching files &mdash; the majority; is a waste.)</p>
+<ul>
+<li>We look for this alternative match by recursively calling <code>match()</code>, but with a new starting index that gives us a substring.</li>
+</ul>
+<p>The <code>match()</code> function doesn't just tell us if something matches or not; it returns a score between 0 and 1 (ranging from no match at all to perfect match).</p>
+<p>In this way during recursion we can detect whether to accept the returned value (if it is better than our own), give up on recursion (because no match was possible) and/or keep our own result (if it is better).</p>
+<p>Note that the existing implementation has <code>Match</code> and <code>Matcher</code> classes. The key methods are:</p>
+<ul>
+<li><code>Matcher#sorted_matches_for</code></li>
+<li><code>Matcher#matches_for</code></li>
+<li><code>Match#matches?</code></li>
+<li><code>Match#score</code></li>
+</ul>
+<p><code>sorted_matches_for</code> itself just calls <code>matches_for</code>, and then sorts the results by calling the <code>Match#score</code> method on each. It then returns the sorted results.</p>
+<p><code>matches_for</code> interrogates its associated <code>Scanner</code> object for its paths, then iterates over the paths calling <code>Match#matches?</code> on each in turn. Note that the actual determination of whether or not there is a match takes place as soon as we call <code>Match#new</code>.</p>
+<p>So, really, to implement this new algorithm, we want to change the output of the <code>score</code> method. We want it to return the best possible score instead of just the first score found for the left-to-right scan.</p>
+<p>In practice, it may make sense to alter the <code>new</code> method, so that it ends up calculating the best possible score as part of its natural initialization process. The <code>score</code> method then just becomes a dumb accessor instead of the method that calculates the score.</p>
+<p>For the 10,000 file case, given a search string like &quot;a&quot; we might still have 4,000 matching files. We do not want to necessarily start recursing on so many strings. It is possible that most of the the strings will end up getting culled with the next letter in the search query (&quot;r&quot;), but if it turns out to be a problem we might make it that we only start performing this recursive searching when the search query exceeds a certain length (which may be as little as 3 or 4 characters).</p>
+<h2>Example</h2>
+<pre>Search string: &quot;art&quot;
+         Path: &quot;articles_controller.rb&quot;
+
+* match &quot;a&quot;:
+    articles_controller.rb
+    ^
+* calculate score so far: let's say 0.1
+  * recurse, trying to find better match for &quot;a&quot; in &quot;rticles_controller.rb&quot;: fail, so return score 0
+* recursion returned 0, so proceed to next letter in search string (&quot;r&quot;)
+* match &quot;r&quot;:
+    articles_controller.rb
+    ^^
+* calculate score so far: let's say 0.2
+  * recurse, trying to find better match for &quot;r&quot; in &quot;ticles_controller.rb&quot;
+  * match &quot;r&quot;:
+      articles_controller.rb
+      ^            ^
+  * calculate score so far (over entire string, not just substring): let's say 0.15
+    * recurse, trying to find better match for &quot;r&quot; in &quot;oller.rb&quot;
+    * match &quot;r&quot;:
+        articles_controller.rb
+        ^                 ^
+    * calculate score so far: 0.13
+      * recurse, trying to find better match for &quot;r&quot; in &quot;.rb&quot;
+      * match &quot;r&quot;:
+          articles_controller.rb
+          ^                   ^
+      * calculate score so far: 0.14
+        * recurse, trying to find better match for &quot;r&quot; in &quot;b&quot;: fail, so return score 0
+      * recursion returned 0, so proceed to next letter in search string (&quot;t&quot;)
+      * match &quot;t&quot; and fail, so return 0
+    * recursion returned 0, so proceed to next letter in search string (&quot;t&quot;)
+    * match &quot;t&quot; and fail, so return 0
+  * recursion returned 0, so proceed to next letter in search string (&quot;t&quot;)
+  * match &quot;t&quot; and fail, so return 0
+* recursion returned 0, so proceed to next letter in search string (&quot;t&quot;)
+* match &quot;t&quot;:
+    articles_controller.rb
+    ^^^
+* calculate score so far: 0.3
+  * recurse, trying to find better match for &quot;t&quot; in &quot;icles_controller.rb&quot;
+  * match &quot;t&quot;:
+      articles_controller.rb
+      ^^          ^
+  * calculate score so far: 0.25
+    * recurse, trying to find better match for &quot;t&quot; in &quot;roller.rb&quot;: fail, so return score 0
+  * recursion returned 0, so proceed to next letter in search string (&quot;c&quot;)
+  * match &quot;c&quot; and fail, so return 0
+* recursion returned 0, so proceed to next letter in search string (&quot;c&quot;)
+* match &quot;c&quot;:
+    articles_controller.rb
+    ^^^ ^
+* calculate score so far: 0.35
+  * recurse, trying to find better match for &quot;c&quot; in &quot;les_controller.rb&quot;
+  * match &quot;c&quot;:
+      articles_controller.rb
+      ^^^      ^
+  * calculate score so far: 0.4
+    * recurse, trying to find better match for &quot;c&quot; in &quot;ontroller.rb&quot;: fail, so return score 0
+  * recursion returned 0, so proceed to next letter in search string (&quot;o&quot;)
+  * match &quot;o&quot;:
+      articles_controller.rb
+      ^^^      ^^
+  * calculate score so far: 0.5
+    * recurse, trying to find better match for &quot;o&quot; in &quot;ntroller.rb&quot;
+    * match &quot;o&quot;:
+        articles_controller.rb
+        ^^^      ^    ^
+    * calculate score so far: 0.45
+      * recurse, trying to find better match for &quot;o&quot; in &quot;ller.rb&quot;: fail, so return score 0
+    * recursion returned 0, so proceed to next letter in search string (&quot;n&quot;)
+    * match &quot;n&quot; and fail, so return 0
+  * recursion returned 0, so proceed to next letter in search string (&quot;n&quot;)
+  * match &quot;n&quot;:
+      articles_controller.rb
+      ^^^      ^^^
+  * calculate score so far: 0.6
+    * recurse, trying to find better match for &quot;n&quot; in &quot;troller.rb&quot;: fail, so return score 0
+  * recursion returned 0, so proceed to next letter in search string (no letters left)
+  * return score 0.6
+* recursion return 0.6, record and continue with next letter in search string (&quot;o&quot;)
+* match &quot;o&quot;:
+    articles_controller.rb
+    ^^^ ^     ^
+* calculate score so far: 0.45
+  * recurse, trying to find better match for &quot;o&quot; in &quot;ntroller.rb&quot;
+  * match &quot;o&quot;:
+      articles_controller.rb
+      ^^^ ^         ^
+  * calculate score so far: 0.43
+    * recurse, trying to find better match for &quot;o&quot; in &quot;ller.rb&quot;: fail, so return score 0
+  * recursion returned 0, so proceed to next letter in search string (&quot;n&quot;)
+  * match &quot;n&quot; and fail, so return 0
+* recursion returned 0, so proceed to next letter in search string (&quot;n&quot;)
+* match &quot;n&quot;:
+    articles_controller.rb
+    ^^^ ^     ^^
+* calculate score so far: 0.5
+  * recurse, trying to find better match for &quot;n&quot; in &quot;troller.rb&quot;: fail, so return score 0
+* recursion returned 0, so proceed to next letter in search string (no letters left)
+* compare our score (0.5) with best score returned via recursion (0.6)
+* return the winner (0.6)</pre>
+<p>As you can see, the recursive nature of the search increases the amount of computation that must be done exponentially. Will have to test to see if this is going to be prohibitively expensive or not. It may be necessary to look for optimization opportunities such as short-circuits, to reduce the amount of work done.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5834'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5834"><time data-relative="true">2010-07-09T16:12:08Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've whipped up a quick test implementation of this and the results so far look good:</p>
+<pre>&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'artcon').score
+=&gt; 0.95
+&gt;&gt; CommandT::Match.new('app/controllers/heartbeat_controller.rb', 'artcon').score
+=&gt; 0.809259259259259
+&gt;&gt; CommandT::Match.new('app/controllers/heartbeat_controller.rb', 'art').score
+=&gt; 0.685185185185185
+&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'art').score
+=&gt; 0.966666666666667
+&gt;&gt; CommandT::Match.new('app/models/article.rb', 'art').score
+=&gt; 0.966666666666667</pre>
+<p>Still tweaking to do, and lots of testing, but it's at least a working demo of the &quot;recurse to find best score&quot; approach.</p>
+<p>The score of the last two needs to be differentiated, I think, seeing as in the latter case you've entered a higher proportion of the string being searched, so it should be worth more I think.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5835'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5835"><time data-relative="true">2010-07-09T16:16:42Z</time></a></span>
+</cite>
+<blockquote><p>Perhaps this:</p>
+<pre>&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'art').score
+=&gt; 0.0763157894736842
+&gt;&gt; CommandT::Match.new('app/models/article.rb', 'art').score
+=&gt; 0.138095238095238
+&gt;&gt; CommandT::Match.new('app/models/article.rb', 'a').score
+=&gt; 0.0476190476190476
+&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'a').score
+=&gt; 0.0263157894736842
+&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'artcon').score
+=&gt; 0.15
+&gt;&gt; CommandT::Match.new('app/controllers/heartbeat_controller.rb', 'artcon').score
+=&gt; 0.124501424501424
+&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'articlescontroller').score
+=&gt; 0.46578947368421
+&gt;&gt; CommandT::Match.new('app/controllers/articles_controller.rb', 'aca').score
+=&gt; 0.0736842105263158
+&gt;&gt; CommandT::Match.new('app/controllers/heartbeat_controller.rb', 'aca').score
+=&gt; 0.0505494505494506</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5843'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5843"><time data-relative="true">2010-07-11T06:11:06Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is pretty much done now. Performance degradation <em>is</em> noticeable on large trees (eg. my home directory; half a million files, but with match ceiling set to 10,000) but is still acceptable for smaller projects.</p>
+<p>So optimization is definitely going to be required seeing as one of the selling points of the add-on is its performance, <em>but</em>, the quality of the ranking seems so much better in the hands-on testing that I've done that it seems like continuing down this path is an absolute no-brainer.</p>
+<p>So going to close this ticket and put some optimization ideas in a separate one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5844'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5844"><time data-relative="true">2010-07-11T06:11:13Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

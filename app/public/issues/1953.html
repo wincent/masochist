@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1953: Not responding to ESC key under mintty or Puttycyg
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1953</div>
+<div class='issue' id='issue_1953'>
+<form class="edit_issue" id="edit_issue_1953" action="/issues/1953" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="zSqZpKKzb+PUQ7CKXftXW1odOMfYfMfkw1x9uQLjb/v52CcTBT61tg3Pg31s0gTv759R+9OQSfjjQ6hHJjsI3w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1953:
+<span data-name='issue[summary]'>
+Not responding to ESC key under mintty or Puttycyg
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-02-28T00:30:40Z</time>, updated <time data-relative="true">2012-03-01T04:07:22Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/asgeo1">asgeo1</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When using the command-t plugin with Vim, if you press ESC that will typically close the window (and cancel the search)</p>
+<p>But it doesn't work for me when run in a terminal emulator like mintty or Puttycyg.</p>
+<p>In all other aspects when using these terminals, the ESC key works fine in Vim. I.e. when changing to &quot;normal&quot; mode that works, or anything else.</p>
+<p>It's only command-t that is not responding to ESC.</p>
+<p>What could be going on that it doesn't work in command-t ?</p>
+<p>Mintty v1.0.3    or    Puttycyg (not sure) Vim 7.3 Cygwin 1.7.10 Windows XP</p>
+<p>Cheers, -adam</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7458'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7458"><time data-relative="true">2012-02-29T07:53:30Z</time></a></span>
+</cite>
+<blockquote><p>If the <code>TERM</code> type is anything like xterm, you'll probably need to make a special mapping to make the ESC key work. For an example, see <a href="/blog/tweaking-command-t-and-vim-for-use-in-the-terminal-and-tmux">this post</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7463'>
+<cite>
+<a href="/users/asgeo1">asgeo1</a>
+<span class='when'><a href="#comment_7463"><time data-relative="true">2012-03-01T04:07:22Z</time></a></span>
+</cite>
+<blockquote><p>Ah, thanks Wincent. This worked a treat:</p>
+<p>if &amp;term =~ &quot;xterm&quot; || &amp;term =~ &quot;screen&quot;</p>
+<pre>   let g:CommandTCancelMap = ['&lt;ESC&gt;', '&lt;C-c&gt;']</pre>
+<p>endif</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

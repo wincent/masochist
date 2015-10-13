@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1489: Update to Git 1.7.2 on server
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1489</div>
+<div class='issue' id='issue_1489'>
+<form class="edit_issue" id="edit_issue_1489" action="/issues/1489" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ms6Anomwvii9KeWvLndgv/Xob30UDMMdfrzTxIAD0v+uPD4pLj1kfWSl1lgfXjMLQGoGQR/gTQFeowY6pNu12w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1489:
+<span data-name='issue[summary]'>
+Update to Git 1.7.2 on server
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-01T04:22:02Z</time>, updated <time data-relative="true">2010-07-22T03:58:33Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<ol>
+<li>Create a new <a href="/wiki/EC2">EC2</a> instance based on latest snapshots</li>
+<li>Build and test the update on the cloned instance</li>
+<li>If all is well, repeat procedure on production instance</li>
+<li>Shut down cloned instance</li>
+</ol>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5337'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5337"><time data-relative="true">2010-03-06T09:51:51Z</time></a></span>
+</cite>
+<blockquote><p>Changes listed in &quot;<a href="/wiki/Git_1.7.0.1">Git 1.7.0.1</a>&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5348'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5348"><time data-relative="true">2010-03-07T18:05:36Z</time></a></span>
+</cite>
+<blockquote><p><a href="/wiki/Git_1.7.0.2">Git 1.7.0.2</a>&#x00a0;is out, so changing the ticket summary.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5349'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5349"><time data-relative="true">2010-03-07T18:05:43Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.0.1 on server</li>
+<li><strong>To:</strong> Update to Git 1.7.0.2 on server</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5381'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5381"><time data-relative="true">2010-03-22T03:30:08Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.0.2 on server</li>
+<li><strong>To:</strong> Update to Git 1.7.0.3 on server</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5514'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5514"><time data-relative="true">2010-04-02T06:44:33Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.0.3 on server</li>
+<li><strong>To:</strong> Update to Git 1.7.0.4 on server</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5578'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5578"><time data-relative="true">2010-04-24T13:10:19Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.0.4 on server</li>
+<li><strong>To:</strong> Update to Git 1.7.1 on server</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5803'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5803"><time data-relative="true">2010-06-30T10:29:07Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.1 on server</li>
+<li><strong>To:</strong> Update to Git 1.7.1.1 on server</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5904'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5904"><time data-relative="true">2010-07-22T01:52:07Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.1.1 on server</li>
+<li><strong>To:</strong> Update to Git 1.7.2 on server</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5905'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5905"><time data-relative="true">2010-07-22T03:58:33Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

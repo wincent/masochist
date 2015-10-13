@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1142: Set-up automated pruning of sessions table
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1142</div>
+<div class='issue' id='issue_1142'>
+<form class="edit_issue" id="edit_issue_1142" action="/issues/1142" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="nB80sJjG3jX0/+HDdKMlOxXys5+8dGySpPI9Lxltv2Co7YoHP0sEYC1z0jRFinaPoHDao7eY4o6E7ejRPbXYRA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1142:
+<span data-name='issue[summary]'>
+Set-up automated pruning of sessions table
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-09-22T17:26:09Z</time>, updated <time data-relative="true">2009-01-16T21:34:44Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<ol>
+<li>Set up a new database user that has permission to <code>DELETE</code> from the <code>sessions</code> table and not perform any other operation.</li>
+<li>Check that the user can actually perform a query like <code>DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY);</code> (ie a <code>DELETE</code> with a <code>WHERE</code> clause) despite not having read access.</li>
+<li>Wait for a reasonable number of sessions to accumulate in the database (30 days' worth, for example) and confirm that the query runs fast enough to permit automated execution without causing any lock contention problems.</li>
+<li>Set up <a href="/wiki/cron">cron</a> job to perform the pruning once per day.</li>
+</ol>
+<p>The use of extremely limited privileges is desirable because the job will be running from cron, and that means either storing the password in plaintext the cron job or allowing passwordless access from the localhost for that user. I think I prefer the latter so that other users on the system can't snoop the password by looking at the output of <code>ps</code>. In the unlikely event that that user is compromised there isn't really any scope for data leakage nor impersonation (because reading isn't permitted and writing isn't either), and deletion of sessions records is basically harmless.</p>
+<p>See also &quot;<a href="/wiki/Clearing_out_old_Rails_session_records_from_a_MySQL_database">Clearing out old Rails session records from a MySQL database</a>&quot;.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3803'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3803"><time data-relative="true">2008-09-23T02:43:00Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've done steps 1 and 2.</p>
+<pre>GRANT DELETE ON the_db.sessions TO pruner@localhost IDENTIFIED BY 'foobar';</pre>
+<p>Turns out that <code>DELETE</code> privileges alone are not enough due to the <code>WHERE</code> clause in the query:</p>
+<pre>ERROR 1143 (42000): SELECT command denied to user 'pruner'@'localhost' for column 'updated_at' in table 'sessions'</pre>
+<p>So we add the minimal <code>SELECT</code> privilege on the required column only.</p>
+<pre>GRANT SELECT (updated_at) ON the_db.sessions TO pruner@localhost;
+FLUSH PRIVILEGES;</pre>
+<p>Now just have to wait for sufficient records to build up and do some performance testing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3898'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3898"><time data-relative="true">2008-11-06T05:59:56Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so it looks like automated clearing every 30 days is just not going to be an option; it's just too slow:</p>
+<pre>mysql&gt; select count(*) from sessions;
++----------+
+| count(*) |
++----------+
+|   534861 | 
++----------+
+1 row in set (1.33 sec)</pre>
+<p>So that's about 6 weeks' sessions. Pruning sessions older than 30 days would delete just over 200k sessions:</p>
+<pre>mysql&gt; select count(*) from sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY);
++----------+
+| count(*) |
++----------+
+|   201177 | 
++----------+
+1 row in set (0.27 sec)</pre>
+<p>So I decided to try the deletion:</p>
+<pre>mysql&gt; DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY);</pre>
+<p>After several minutes the query was still running and so I decided to throw up a maintenance webpage on the website to reduce contention for the database:</p>
+<pre>$ mysqladmin -u root -p processlist
+Enter password: 
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+
+| Id | User     | Host      | db       | Command | Time | State    | Info                                                                         |
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+
+| 16 | foo      | localhost | foo      | Sleep   | 17   |          |                                                                              |
+| 17 | foo      | localhost | foo      | Sleep   | 18   |          |                                                                              |
+| 18 | foo      | localhost | foo      | Sleep   | 16   |          |                                                                              |
+| 19 | foo      | localhost | foo      | Sleep   | 17   |          |                                                                              |
+| 20 | foo      | localhost | foo      | Query   | 496  | updating | DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY) |
+| 25 | root     | localhost |          | Query   | 0    |          | show processlist                                                             |
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+</pre>
+<p>By the time the query had been running for 10 minutes I decided to go even further and shut down the background <a href="/wiki/mongrel">mongrel</a> processes which were sitting idle (not handling any requests because all queries were being directed to the maintenance page, but still with active connections to the database):</p>
+<pre>$ mysqladmin -u root -p processlist
+Enter password: 
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+
+| Id | User     | Host      | db       | Command | Time | State    | Info                                                                         |
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+
+| 20 | foo      | localhost | foo      | Query   | 649  | updating | DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY) |
+| 28 | root     | localhost |          | Query   | 0    |          | show processlist                                                             |
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+</pre>
+<p>After 1000 seconds the query was still running:</p>
+<pre>$ mysqladmin -u root -p processlist
+Enter password: 
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+
+| Id | User     | Host      | db       | Command | Time | State    | Info                                                                         |
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+
+| 20 | foo      | localhost | foo      | Query   | 1000 | updating | DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY) |
+| 30 | root     | localhost |          | Query   | 0    |          | show processlist                                                             |
++----+----------+-----------+----------+---------+------+----------+------------------------------------------------------------------------------+</pre>
+<p>So I decided to abort it:</p>
+<pre>Query aborted by Ctrl+C</pre>
+<p>But note that the abort didn't take effect immediately; five minutes later it was still in progress:</p>
+<pre>$ mysqladmin -u root -p processlist
+Enter password: 
++----+----------+-----------+----------+---------+------+-------+------------------------------------------------------------------------------+
+| Id | User     | Host      | db       | Command | Time | State | Info                                                                         |
++----+----------+-----------+----------+---------+------+-------+------------------------------------------------------------------------------+
+| 20 | foo      | localhost | foo      | Query   | 1459 | end   | DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY) |
+| 37 | root     | localhost |          | Query   | 0    |       | show processlist                                                             |
++----+----------+-----------+----------+---------+------+-------+------------------------------------------------------------------------------+</pre>
+<p>So I decided to go a step further and kill the corresponding thread:</p>
+<pre>$ mysqladmin -u root -p kill 20</pre>
+<p>After five or six minutes the thread was still lingering:</p>
+<pre>$ mysqladmin -u root -p processlist
+Enter password: 
++----+----------+-----------+----------+---------+------+-------+------------------------------------------------------------------------------+
+| Id | User     | Host      | db       | Command | Time | State | Info                                                                         |
++----+----------+-----------+----------+---------+------+-------+------------------------------------------------------------------------------+
+| 20 | foo      | localhost | foo      | Killed  | 1839 | end   | DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY) |
+| 42 | root     | localhost |          | Query   | 0    |       | show processlist                                                             |
++----+----------+-----------+----------+---------+------+-------+------------------------------------------------------------------------------+</pre>
+<p>But finally exited!</p>
+<pre>ERROR 1053 (08S01): Server shutdown in progress</pre>
+<p>So now with the maintenance page up and no other threads in the database I tried once again:</p>
+<pre>mysql&gt; DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+ERROR 2006 (HY000): MySQL server has gone away
+No connection. Trying to reconnect...
+Connection id:    44
+Current database: foo
+
+Query OK, 201177 rows affected (24 min 46.31 sec)</pre>
+<p>So as you can see, nearly 25 minutes to execute the query, which is clearly too long to ever turn this into an automated process.</p>
+<p>I need to consider two options now:</p>
+<ol>
+<li>Keep fewer sessions in the database and purge them more often (for example, every seven days); will need to test if the lower number of rows in the table leads to sufficiently short queries.</li>
+<li>Alternatively, forget about using the <a href="/wiki/MySQL">MySQL</a>-backed session store and switch to something that either doesn't need purging (ie. the <a href="/wiki/cookie">cookie</a>-based store) or is sufficiently fast (not sure what my options might be there).</li>
+</ol>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4072'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4072"><time data-relative="true">2009-01-14T18:29:37Z</time></a></span>
+</cite>
+<blockquote><p>A little over two months since my last post and just checked the session count: 1,294,381 records. Of those, about two thirds are old enough to be pruned:</p>
+<pre>mysql&gt; SELECT COUNT(*) FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY);
++----------+
+| count(*) |
++----------+
+|   865682 | 
++----------+
+1 row in set (0.90 sec)</pre>
+<p>I'm going to shut down the server and prune one more time. I am curious to see if a deletion based on the primary key (the <code>id</code>) is any faster.</p>
+<pre>mysql&gt; SELECT id FROM sessions WHERE updated_at &lt; DATE_SUB(CURDATE(), INTERVAL 30 DAY) ORDER BY id DESC LIMIT 1;
++---------+
+| id      |
++---------+
+| 1066871 | 
++---------+
+1 row in set (0.89 sec)
+
+mysql&gt; DELETE FROM sessions WHERE id &lt; 1066871;
+Query OK, 865688 rows affected (2 hours 6 min 37.96 sec)</pre>
+<p>Evidently no faster. Going to audit the codebase for possible security implications of moving to the cookie-backed session store.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4074'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4074"><time data-relative="true">2009-01-14T18:32:17Z</time></a></span>
+</cite>
+<blockquote><p>How would I get a histogram of session sizes in my current database? Would the <a href="/wiki/MySQL">MySQL</a> <code>LENGTH</code> function work?</p>
+<p>Here's a test done on the staging database:</p>
+<pre>mysql&gt; CREATE TEMPORARY TABLE session_lengths (id int, session_length int);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql&gt; INSERT INTO session_lengths SELECT id, length(data) FROM sessions;
+Query OK, 425014 rows affected (53.00 sec)
+Records: 425014  Duplicates: 0  Warnings: 0
+
+mysql&gt; SELECT session_length, COUNT(*) AS frequency FROM session_lengths GROUP BY session_length ORDER BY frequency DESC;
++----------------+-----------+
+| session_length | frequency |
++----------------+-----------+
+|             86 |    378495 | 
+|            139 |     46504 | 
+|            106 |         4 | 
+|            212 |         2 | 
+|            159 |         2 | 
+|            171 |         2 | 
+|            122 |         1 | 
+|            143 |         1 | 
+|            114 |         1 | 
+|            167 |         1 | 
+|            163 |         1 | 
++----------------+-----------+
+11 rows in set (0.21 sec)</pre>
+<p>Almost all records are 86 chars (that's the marshalled, encrypted form), with a smallish minority 129 chars, and some outliers. Evidently 86 chars is probably the baseline for an &quot;empty&quot; session; whatever Rails happens to be sticking in there by default, plus the overhead of marshalling, encryption, and encoding.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4075'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4075"><time data-relative="true">2009-01-14T18:37:54Z</time></a></span>
+</cite>
+<blockquote><p>Same thing, except done on production database:</p>
+<pre>mysql&gt; CREATE TEMPORARY TABLE session_lengths (id int, session_length int);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; INSERT INTO session_lengths SELECT id, length(data) FROM sessions;
+Query OK, 428845 rows affected (2 min 0.11 sec)
+Records: 428845  Duplicates: 0  Warnings: 0
+
+mysql&gt; SELECT session_length, COUNT(*) AS frequency FROM session_lengths GROUP BY session_length ORDER BY frequency DESC;
++----------------+-----------+
+| session_length | frequency |
++----------------+-----------+
+|             86 |    405663 | 
+|            139 |     20927 | 
+|            143 |       451 | 
+|            155 |       339 | 
+|            147 |       302 | 
+|            163 |       183 | 
+|            159 |       142 | 
+|            151 |       131 | 
+|            167 |       119 | 
+|            171 |       114 | 
+|            135 |       107 | 
+|            175 |        83 | 
+|            179 |        60 | 
+|            183 |        56 | 
+|            212 |        28 | 
+|            192 |        24 | 
+|            208 |        21 | 
+|            188 |        21 | 
+|            196 |        18 | 
+|            232 |        16 | 
+|            240 |         7 | 
+|            228 |         6 | 
+|            131 |         5 | 
+|            236 |         4 | 
+|            297 |         4 | 
+|            106 |         3 | 
+|            338 |         2 | 
+|            200 |         2 | 
+|            301 |         1 | 
+|            216 |         1 | 
+|            114 |         1 | 
+|            305 |         1 | 
+|            346 |         1 | 
+|            362 |         1 | 
+|            249 |         1 | 
++----------------+-----------+
+35 rows in set (0.22 sec)</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4076'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4076"><time data-relative="true">2009-01-14T19:19:48Z</time></a></span>
+</cite>
+<blockquote><p>See <a href="http://fukamachi.org/wp/2008/09/19/couchdb-session-model-for-rails/" class="external">http://fukamachi.org/wp/2008/09/19/couchdb-session-model-for-rails/</a> for discussion with Sho about Rails session storage.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4077'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4077"><time data-relative="true">2009-01-14T19:48:22Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to trial the cookie-based store in my staging environment.</p>
+<p>Not sure whether <a href="http://rails.learnhub.com/lesson/page/1858-how-to-switch-your-default-session-store" class="external">this issue</a> will come up, but wanted to save the link here just in case I see any <code>TamperedWithCookie</code> errors pop up.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4078'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4078"><time data-relative="true">2009-01-14T20:19:45Z</time></a></span>
+</cite>
+<blockquote><p>Yep, first page view was a <code>TamperedWithCookie</code> error, seen by the user as an internal server error. Second page view was fine. Existing login session continued uninterrupted because that's not stored in the Rails session anyway.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4079'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4079"><time data-relative="true">2009-01-14T20:24:17Z</time></a></span>
+</cite>
+<blockquote><p>To address the <code>TamperedWithCookie</code> problem when I go live on the production server will do the following:</p>
+<ol>
+<li>Deploy as usual, but before going live...</li>
+<li><code>cap deploy:web:disable</code></li>
+<li>Edit <code>session_key</code> (config file on server)</li>
+<li>Go live as normal</li>
+</ol>
+<p>This effectively invalidates the session, but given the things that are stored in the session (flashes etc) this is probably not a problem at all.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4080'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4080"><time data-relative="true">2009-01-14T20:27:53Z</time></a></span>
+</cite>
+<blockquote><p>Doing all this has made me realize that the stuff I am storing in the session is totally transitory in nature (redirection counts, &quot;original URI&quot; for login etc) and keeping hold of it for a month at a time is <em>totally</em> unnecessary.</p>
+<p>The only thing that I really care about persisting is the login, and that was <em>never</em> stored in the Rails session. So I think I'm going to do some tests on purging the sessions table with really small record counts (1 hour of sessions, for example). Any user preferences which should persist for longer than an hour will go in the user table anyway.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4081'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4081"><time data-relative="true">2009-01-14T20:53:51Z</time></a></span>
+</cite>
+<blockquote><p>Will be trying out something like:</p>
+<pre>DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 1 HOUR);</pre>
+<p>Hoping that it is fast enough to run without slowing down other requests.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4082'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4082"><time data-relative="true">2009-01-14T20:57:29Z</time></a></span>
+</cite>
+<blockquote><p>One thing which I've discovered is that if you have a page open with a form, wait long enough for your session to be purged on the database, and then try to submit, you'll get the 422.html error page (internally, <code>InvalidAuthenticityToken</code> is raised).</p>
+<p>I'm going to have to clean up the 422.html error template so as not to confuse users and give them a helpful suggestion.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4083'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4083"><time data-relative="true">2009-01-15T15:11:06Z</time></a></span>
+</cite>
+<blockquote><p>I've looked at my web stats to see when the best time of day would be to do this pruning (in the case that I end up doing it once every 24 hours).</p>
+<p>For rails.wincent.com:</p>
+<ul>
+<li>quietest hour 5:00 AM EST, traffic (hits) drops to 82% of baseline (average hits per hour)</li>
+<li>busiest hour 11:00 AM EST, traffic (hits) climbs to 120% of baseline</li>
+<li>record hour for last month, traffic rose to 301% of baseline</li>
+</ul>
+<p>And for wincent.com (non-<a href="/wiki/Rails">Rails</a> part of the site):</p>
+<ul>
+<li>quietest, 1:00 AM EST, 75% of baseline</li>
+<li>busiest, 15:00 PM EST, 128% of baseline</li>
+<li>record, peaked at 909% of baseline</li>
+</ul>
+<p>So I'll be testing how slow pruning is once 24 hours of records have built up. If its really slow and could interrupt service or impact performance noticeably I'd prefer to take the hit once per day instead of every hour. But if its fast then I'd rather do it every hour (still keeping 24 hours of records).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4084'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4084"><time data-relative="true">2009-01-16T09:36:11Z</time></a></span>
+</cite>
+<blockquote><p>More test results:</p>
+<pre>mysql&gt; truncate sessions;
+Query OK, 51 rows affected (0.03 sec)
+
+mysql&gt; SELECT COUNT(*) FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR);
++----------+
+| COUNT(*) |
++----------+
+|      571 | 
++----------+
+1 row in set (0.00 sec)
+
+mysql&gt; DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR);
+Query OK, 571 rows affected (0.75 sec)
+
+mysql&gt; SELECT COUNT(*) FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR);
++----------+
+| COUNT(*) |
++----------+
+|        9 | 
++----------+
+1 row in set (0.00 sec)
+
+mysql&gt; DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR);
+Query OK, 13 rows affected (0.03 sec)
+
+mysql&gt; DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR);
+Query OK, 1920 rows affected (0.22 sec)
+
+mysql&gt; quit</pre>
+<p>Summarizing the above, you have:</p>
+<ol>
+<li>We <code>TRUNCATE</code> the <code>sessions</code> table entirely, emptying it.</li>
+<li>After just over 24 hours, we check to see how many &quot;stale&quot; sessions (sessions not active in the last 24 hours) exist (971 sessions).</li>
+<li>We <code>DELETE</code> those sessions; the query takes 0.75 seconds.</li>
+<li>We immediately perform another <code>DELETE</code> to see if the query runs any faster when the number of stale sessions is lower (13 sessions that had become stale since the previous query); this time it takes 0.03 seconds.</li>
+<li>We wait about three hours and do another <code>DELETE</code>; this time we delete 1920 records in 0.22 seconds.</li>
+</ol>
+<p>So on the basis of these figures, looks like it will be perfectly safe, performance-wise, to set up an hourly cron job that will prune old sessions (anything over 24 hours without activity).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4085'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4085"><time data-relative="true">2009-01-16T11:59:43Z</time></a></span>
+</cite>
+<blockquote><p>I have two options here for doing this database maintenance from a cronjob:</p>
+<p><strong>Either</strong>, set up a limited-privileges account solely for the purposes of cleaning up the database; something like:</p>
+<pre>mysql&gt; GRANT SELECT, DELETE ON database_name.sessions TO purge_user@localhost identified by 'kewl_pass';
+mysql&gt; FLUSH PRIVILEGES;</pre>
+<p>And run this from cron using:</p>
+<pre>mysql -u purge_user -pkewl_pass \
+      -e 'DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR)' \
+      database_name</pre>
+<p><strong>Or</strong>, set up a rake task to do the same using the normal database account already used by the application; something which basically does:</p>
+<pre>SomeModel.connection.execute 'DELETE FROM sessions WHERE updated_at &lt; DATE_SUB(NOW(), INTERVAL 24 HOUR)'</pre>
+<p>Although I like the idea of keeping things all &quot;in the app&quot; and not having to create a separate user, I don't like the fact that breakage in the app could prevent the second solution from executing properly. Will have to think about it a little.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4087'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4087"><time data-relative="true">2009-01-16T21:34:44Z</time></a></span>
+</cite>
+<blockquote><p>Ok, in the end going with the second solution (the <a href="/wiki/Rake">Rake</a> task) because:</p>
+<ul>
+<li>keeps the maintenance code in the repository, so all code related to the project is together</li>
+<li>avoids creation of additional database account</li>
+<li>avoids duplicate storage of database password</li>
+<li>although loading the Rails environment is heavyweight just to run a tiny Rake task, the task only need run once per hour</li>
+<li>although app breakage will prevent the job from running, consequences of not running are insignificant</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

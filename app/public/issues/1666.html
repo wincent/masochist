@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1666: JRuby infrastructure needed on production server in order to run full acceptance test suite
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1666</div>
+<div class='issue' id='issue_1666'>
+<form class="edit_issue" id="edit_issue_1666" action="/issues/1666" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="u/GankduVUqy695HBDV6qhg4VWKnY5UmqJHAjTZvs0OPAyQp4OOPH2tn7bA1HCkerbo8XqyPGzqIjhVzErfUZw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1666:
+<span data-name='issue[summary]'>
+JRuby infrastructure needed on production server in order to run full acceptance test suite
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-08-30T14:58:33Z</time>, updated <time data-relative="true">2010-09-12T08:06:20Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>As noted in <a href="/issues/1655">ticket #1655</a>, until this is installed and set up, won't be able to run the full suite on the production server.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6262'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6262"><time data-relative="true">2010-09-11T23:56:18Z</time></a></span>
+</cite>
+<blockquote><p>Starting to test this out now:</p>
+<pre class="shell-syntax">#&#x00a0;yum install java-1.7.0-icedtea
+# java -version</pre>
+<p>This is enough to get a downloaded JRuby to run; I just need to decide where I am going to install it and how to set the <code>PATH</code> appropriately so that when I issue commands remotely over SSH during deployment things will just work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6263'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6263"><time data-relative="true">2010-09-12T00:01:40Z</time></a></span>
+</cite>
+<blockquote><pre class="shell-syntax"># wget <a href="http://jruby.org.s3.amazonaws.com/downloads/1.5.2/jruby-bin-1.5.2.tar.gz" class="external">http://jruby.org.s3.amazonaws.com/downloads/1.5.2/jruby-bin-1.5.2.tar.gz</a>
+# tar xzvf jruby-bin-1.5.2.tar.gz -C /usr/local
+# cd /usr/local
+# ln -s jruby-1.5.2 jruby</pre>
+<p>As for SSH and the <code>PATH</code>, the man page says it is &quot;Set to the default PATH, as specified when compiling ssh&quot;, so I probably have to issue my commands using <code>env</code> like this:</p>
+<pre class="shell-syntax">$ ssh user@server &quot;sh -c 'cd $DEPLOY &amp;&amp; env PATH=/usr/local/jruby/bin:\$PATH bin/rspec -f progress spec'&quot;</pre>
+<p>No idea if escaping the remote <code>$PATH</code> like that will work; will have to try it out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6264'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6264"><time data-relative="true">2010-09-12T00:04:38Z</time></a></span>
+</cite>
+<blockquote><p>Will have to keep researching:</p>
+<pre class="shell-syntax">$ ssh user@server &quot;sh -c 'env PATH=/usr/local/jruby/bin:\$PATH echo \$PATH'&quot;
+/usr/local/bin:/bin:/usr/bin</pre>
+<p>Unfortunately will have to leave it for another day though.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6265'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6265"><time data-relative="true">2010-09-12T00:13:06Z</time></a></span>
+</cite>
+<blockquote><pre class="shell-syntax">#&#x00a0;export PATH=/usr/local/jruby/bin:$PATH # for now
+# jruby -S gem update --system
+# jruby -S gem install bundler</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6267'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6267"><time data-relative="true">2010-09-12T00:30:27Z</time></a></span>
+</cite>
+<blockquote><p>Just did a manual test (<code>bin/rspec spec</code>) on the server with JRuby in the <code>PATH</code> and the acceptance specs (which depend on JRuby) all pass, bar one, which I'll have to investigate:</p>
+<pre> 1) Logging in to the site: dynamic &quot;log in&quot;/&quot;log out&quot; links (when logged out)
+    Failure/Error: page.should have_content('log in')
+    expected #has_content?(&quot;log in&quot;) to return true, got false
+    # ./spec/acceptance/sessions_spec.rb:47</pre>
+<p>Surprised, actually, seeing as I didn't even have to run <code>bundle install</code> under JRuby... Although running <code>bundle show</code> does complain with:</p>
+<pre>Could not find bouncy-castle-java-1.5.0145.2 in any of the sources</pre>
+<p>Ditto for <code>jruby -S bundle show</code>.</p>
+<p>(Compare that with my local machine where I get a long list for <code>bundle show</code> and the shorter JRuby platform list for <code>jruby -S bundle show</code>.)</p>
+<p>Try:</p>
+<pre class="shell-syntax">$ jruby -S bundle install --quiet --deployment --local --binstubs --path /path/to/shared/bundle</pre>
+<p>And <code>bundle check</code>, <code>jruby -S bundle check</code>, <code>bundle show</code>, and <code>jruby -S bundle show</code> all work without errors, but <code>bundle show</code> (running under <a href="/wiki/MRI">MRI</a>) only shows the JRuby gems.</p>
+<p>Re-running: </p>
+<pre class="shell-syntax">$ bundle install --quiet --deployment --local --binstubs --path /path/to/shared/bundle
+$ bundle show</pre>
+<p>Doesn't fix the short listings.</p>
+<p>Re-ran the acceptance specs and running <code>bundle install</code> under <a href="/wiki/JRuby">JRuby</a> didn't fix that one broken spec. Will still have to investigate.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6268'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6268"><time data-relative="true">2010-09-12T07:51:44Z</time></a></span>
+</cite>
+<blockquote><p>Ok, there are two ways of setting up the <code>PATH</code>:</p>
+<pre class="shell-syntax">$ ssh user@server &quot;sh -c 'cd /path/to/deploy/current &amp;&amp; env PATH=/usr/local/jruby/bin:\$PATH bin/rspec -f progress spec'&quot;</pre>
+<p>Does work.</p>
+<p>Adding this hack to the <code>spec/spec_helper.rb</code> does also:</p>
+<pre class="ruby-syntax">unless ENV['PATH'].to_s =~ /jruby/
+  ENV['PATH'] = ['/usr/local/jruby/bin', ENV['PATH']].join(':')
+end</pre>
+<p>Troubleshooting that spec failure is not easy, however, as Capybara's <code>save_and_open_page</code> method doesn't work on the server (obviously it can't open, but it appears that it doesn't save either).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6269'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6269"><time data-relative="true">2010-09-12T08:00:16Z</time></a></span>
+</cite>
+<blockquote><p>I take back what I said about <code>save_and_open_page</code>. Looks like it was changed recently to write the files to <code>RAILS_ROOT/tmp/capybara/</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6270'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6270"><time data-relative="true">2010-09-12T08:06:20Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

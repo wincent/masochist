@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1524: Linker errors with MacVim and Ruby 1.9.1 (&quot;dlyd: Symbol not found: _rb_intern2&quot;)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1524</div>
+<div class='issue' id='issue_1524'>
+<form class="edit_issue" id="edit_issue_1524" action="/issues/1524" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OHqOJ6GwgS216cySa0Jgm9adWT2dWgqDk3LyDF1pA7MMiDCQBj1beGxl/2VaazMvYx8wAZa2hJ+zbSfyebFklw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1524:
+<span data-name='issue[summary]'>
+Linker errors with MacVim and Ruby 1.9.1 (&quot;dlyd: Symbol not found: _rb_intern2&quot;)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-28T05:16:51Z</time>, updated <time data-relative="true">2010-03-30T10:34:30Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>Me again :)</p>
+<p>I've compiled it again on my mac (Snow Leo; MacVim compiled from source with ruby support; Ruby 1.9.1; hash check commented out in ext.c), but I get this error when I want to launch vim:</p>
+<pre>[ktamas@espell-mac:~/Prog]$ vim helloworld.rb
+dyld: lazy symbol binding failed: Symbol not found: _rb_intern2
+  Referenced from: /Users/ktamas/.vim/ruby/command-t/ext.bundle
+  Expected in: flat namespace
+
+dyld: Symbol not found: _rb_intern2
+  Referenced from: /Users/ktamas/.vim/ruby/command-t/ext.bundle
+  Expected in: flat namespace
+
+Vim: Caught deadly signal TRAP
+Vim: Finished.
+Trace/BPT trap</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5473'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5473"><time data-relative="true">2010-03-28T05:26:22Z</time></a></span>
+</cite>
+<blockquote><p>Sounds to me like there is something pretty &quot;funky&quot; with your Ruby 1.9.1 install on that machine. The presence of the dynamic linker error convinces me that we're not talking about a bug in Command-T now, or a compatibility quirk that could be worked around, but actually a problem in your environment.</p>
+<p>I'm using the stock Ruby (1.8.7) that comes with Snow Leopard, but I also have a couple of other Ruby versions installed under <code>~/.multiruby</code> using the <a href="/wiki/multiruby">multiruby</a> from the <a href="/wiki/ZenTest">ZenTest</a> gem. So I can run the spec suite against different versions of Ruby but I've only done in-VIM testing using the stock Ruby that comes with the system. If I recall from your other ticket, your own tests in <a href="/wiki/IRB">IRB</a> worked fine, didn't they? It's only under VIM that there's a problem.</p>
+<p>The fact that the dynamic linker cannot resolve the <code>rb_intern()</code> function indicates to me that there's something pretty funky going on. It's like at the time you build the extension it's using one set of headers and libraries, but at the time of building MacVim it was using another, or perhaps at runtime it is using another. So I'd ask here:</p>
+<ul>
+<li>How did you build MacVim (and what was the output of the build)?</li>
+<li>How did you build Ruby 1.9.1 (and the output)?</li>
+<li>What's the output when you do the <code>ruby extconf.rb &amp;&amp; make</code> thing to build the Command-T extension?</li>
+<li>What have you got set in your environment (ie. the output of <code>export</code>) and where is it coming from (ie. do you have anything in <code>~/.MacOSX/environment.plist</code>?)</li>
+<li>How are you launching MacVim (<code>mvim</code>? double-click? full path to <code>/Applications/MacVim.app/Contents/MacOS/Vim</code>?)</li>
+</ul>
+<p>I'm going to close your old <a href="/issues/1520">ticket #1520</a> seeing as that exception doesn't exist in the codebase any more and we can continue here. (0.4 is out anyway, which doesn't include that particular check any more; but the dynamic linker error is indicative of a real problem because in a working install even if you pass a non-hash options parameter you should be seeing an exception, not a linker error.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5474'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5474"><time data-relative="true">2010-03-28T05:40:46Z</time></a></span>
+</cite>
+<blockquote><p>Okay, so:</p>
+<ul>
+<li>Ruby 1.9.1 was installed with RVM (<a href="http://rvm.beginrescueend.com/" class="external">http://rvm.beginrescueend.com/</a>)</li>
+<li>MacVim was installed with <code>./configure --with-features=huge --enable-pythoninterp --enable-rubyinterp</code></li>
+<li>The output of MacVim's build is here: <a href="http://pastie.org/private/paqhvdsnzcrcw5ly2e3hq" class="external">http://pastie.org/private/paqhvdsnzcrcw5ly2e3hq</a></li>
+<li>I've done a <code>alias vim=/Applications/MacVim.app/Contents/MacOS/Vim</code> after that i just launch <code>vim</code></li>
+<li>The output of the make is: <a href="http://pastie.org/private/z0wi3a0dw5rknp7ptcik6g" class="external">http://pastie.org/private/z0wi3a0dw5rknp7ptcik6g</a></li>
+<li>The output of export is here: <a href="http://pastie.org/private/izrv2kmcjzeyyozo2pa27w" class="external">http://pastie.org/private/izrv2kmcjzeyyozo2pa27w</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5475'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5475"><time data-relative="true">2010-03-28T05:41:27Z</time></a></span>
+</cite>
+<blockquote><p>the previous anonymous post was me, just forgot to log in...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5476'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5476"><time data-relative="true">2010-03-28T05:53:38Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I don't have any direct experience with RVM (although I like the look of it!) but from the information you've pasted it looks like:</p>
+<ul>
+<li>During the build of MacVim it found and used the files for the correct version of Ruby:</li>
+</ul>
+<pre>checking for ruby... /Users/ktamas/.rvm/rubies/ruby-1.9.1-p376/bin/ruby
+checking Ruby version... OK
+checking Ruby header files... /Users/ktamas/.rvm/rubies/ruby-1.9.1-p376/include/ruby-1.9.1
+checking --enable-cscope argument... no</pre>
+<ul>
+<li>At least from the command line your environment has the <code>PATH</code> set up to look in the right place for Ruby binaries:</li>
+</ul>
+<pre>declare -x PATH=&quot;/sw/bin:/sw/sbin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/Users/ktamas/.rvm/rubies/ruby-1.9.1-p376/bin:/Users/ktamas/.rvm/gems/ruby-1.9.1-p376/bin:/Users/ktamas/.rvm/gems/ruby-1.9.1-p376@global/bin:/Users/ktamas/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/X11R6/bin&quot;
+</pre>
+<ul>
+<li>When building the extension the right version of Ruby was also consulted:</li>
+</ul>
+<pre>gcc -I. -I/Users/ktamas/.rvm/rubies/ruby-1.9.1-p376/include/ruby-1.9.1/i386-darwin10.2.0 -I/Users/ktamas/.rvm/rubies/ruby-1.9.1-p376/include/ruby-1.9.1/ruby/backward -I/Users/ktamas/.rvm/rubies/ruby-1.9.1-p376/include/ruby-1.9.1 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common  -O2 -g -Wall -Wno-parentheses -pipe -fno-common  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -o ext.o -c ext.c</pre>
+<p>If you were only using the GUI version of VIM then I would wonder if it's getting the same environment as the one you've got on the command line (that's why I asked about if you had anything in <code>~/.MacOSX/environment.plist</code>), but I see you're testing from the command line...</p>
+<p>I am going to install RVM here and try to reproduce the problem here.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5477'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5477"><time data-relative="true">2010-03-28T09:37:49Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the good news is I've been able to reproduce the problem and I am now fairly sure it's something to do with RVM, which should hopefully be easy enough to troubleshoot.</p>
+<h3>Initial <a href="/wiki/RVM">RVM</a> set-up</h3>
+<pre class="shell-syntax">$ sudo gem install rvm
+$ rvm-install
+$ echo &quot;if [[ -s /Users/wincent/.rvm/scripts/rvm ]] ; then source /Users/wincent/.rvm/scripts/rvm ; fi&quot; &gt;&gt; ~/.bash_profile</pre>
+<p>Then in a new shell:</p>
+<pre class="shell-syntax">$ rvm install 1.9.1 # set up 1.9.1
+$ rvm 1.9.1         # use 1.9.1 for the rest of the session</pre>
+<h3>Rebuild MacVim</h3>
+<pre class="shell-syntax">$ cd trabajo/vendor/MacVim/MacVim.git # this is my local clone of the MacVim Git repp
+$ git pull # make sure it's up to date
+$ make clean 
+$ ./configure --with-features=huge --with-macarchs=i386 --enable-rubyinterp --enable-pythoninterp --enable-cscope --disable-nls
+$ make
+$ cd ~/.vim/ruby/command-t #&#x00a0;now rebuild the Command-T extension
+$ ruby extconf.rb 
+$ make # and we're ready to try it out using the just-built MacVim
+$ ~/trabajo/vendor/MacVim/macVim.git/src/MacVim/build/Release/MacVim.app/Contents/MacOS/Vim</pre>
+<p>Here I get this error, which is what is usually shown when the extension can't be loaded and raises a <code>LoadError</code>:</p>
+<pre>command-t.vim could not load the necessary modules                                                                          
+Please double-check the installation instructions
+For more information type:  :help command-t</pre>
+<p>So I add in a logging statement to see exactly what the error is and it's this:</p>
+<pre>#&lt;LoadError: dlopen(/Users/wincent/.vim/ruby/command-t/ext.bundle, 9): no suitable image found.  Did find:^@^I/Users/wincent/.vim/ruby/command-t/ext.bundle: mach-o, but wrong architecture - /Users/wincent/.vim/ruby/command-t/ext.bundle&gt;</pre>
+<p>So looks like I have to drop the <code>--with-macarchs=i386</code> from my <code>configure</code> invocation because the extension is probably getting built using an <code>x86_64</code> arch. So after rebuilding MacVim and the extension we now get:</p>
+<pre>#&lt;LoadError: no such file to load -- vim&gt;dyld: lazy symbol binding failed: Symbol not found: _rb_intern2
+  Referenced from: /Users/wincent/.vim/ruby/command-t/ext.bundle
+  Expected in: flat namespace
+
+dyld: Symbol not found: _rb_intern2
+  Referenced from: /Users/wincent/.vim/ruby/command-t/ext.bundle
+  Expected in: flat namespace
+
+Vim: Caught deadly signal TRAP
+
+Vim: Finished.
+Trace/BPT trap</pre>
+<p>So that's good; I've now reproduced the error.</p>
+<h3>The missing <code>_rb_intern2</code> symbol</h3>
+<p>So I Google to see if I can find out more about this dynamic linker problem and find a number of results like these:</p>
+<ul>
+<li><a href="http://fourthiteration.com/blog/?p=436" class="external">http://fourthiteration.com/blog/?p=436</a></li>
+<li><a href="http://github.com/danmayer/churn/issues/closed#issue/2" class="external">http://github.com/danmayer/churn/issues/closed#issue/2</a></li>
+</ul>
+<p>That second one looks the most promising, and it's what makes me think this is actually an RVM thing. One of the tips there is to not use the RVM, but rather try the cutting-edge HEAD from the repp, so I'll do that presently and report back here.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5478'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5478"><time data-relative="true">2010-03-28T10:44:39Z</time></a></span>
+</cite>
+<blockquote><p>Now this is interesting:</p>
+<pre class="shell-syntax">$ rvm use 1.9.1
+$ ruby --version
+ruby 1.9.1p378 (2010-01-10 revision 26273) [i386-darwin10.2.0]
+$ ~/trabajo/vendor/MacVim/macVim.git/src/MacVim/build/Release/MacVim.app/Contents/MacOS/Vim</pre>
+<p>Now, inside VIM:</p>
+<pre>:ruby p RUBY_VERSION
+&quot;1.8.7&quot;
+:ruby p ENV['PATH']
+&quot;/Users/wincent/.rvm/rubies/ruby-1.9.1-p378/bin:/Users/wincent/.rvm/gems/ruby-1.9.1-p378/bin:/Users/wincent/.rvm/gems/ruby-1.9.1-p378%
+global/bin:/Users/wincent/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/local/sbin:/Users/wincent/bin:/Devel
+oper/Tools:/usr/X11R6/bin:/usr/local/mysql/bin:/usr/local/jruby/bin:/Users/wincent/bin/ec2-api-tools-1.3-46266/bin&quot;</pre>
+<p>So as you can see, even though we are apparently using 1.9.1 on the command line, once we get inside VIM it thinks we're using 1.8.7 despite the <code>PATH</code> being set to use 1.9.1 and also the fact that MacVim was built with 1.9.1 active.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5479'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5479"><time data-relative="true">2010-03-28T10:49:09Z</time></a></span>
+</cite>
+<blockquote><p>And more:</p>
+<pre class="shell-syntax">$ otool -L ~/trabajo/vendor/MacVim/macVim.git/src/MacVim/build/Release/MacVim.app/Contents/MacOS/Vim
+MacVim/build/Release/MacVim.app/Contents/MacOS/Vim:
+&#x0009;/System/Library/Frameworks/Cocoa.framework/Versions/A/Cocoa (compatibility version 1.0.0, current version 15.0.0)
+&#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Carbon (compatibility version 2.0.0, current version 152.0.0)
+&#x0009;/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 125.0.0)
+&#x0009;/usr/lib/libncurses.5.4.dylib (compatibility version 5.4.0, current version 5.4.0)
+&#x0009;/usr/lib/libiconv.2.dylib (compatibility version 7.0.0, current version 7.0.0)
+&#x0009;/System/Library/Frameworks/Python.framework/Versions/2.6/Python (compatibility version 2.6.0, current version 2.6.1)
+&#x0009;/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/libruby.1.dylib (compatibility version 1.8.0, current version 1.8.7)
+&#x0009;/usr/lib/libobjc.A.dylib (compatibility version 1.0.0, current version 227.0.0)
+&#x0009;/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices (compatibility version 1.0.0, current version 44.0.0)
+&#x0009;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (compatibility version 150.0.0, current version 550.13.0)
+&#x0009;/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 751.14.0)
+&#x0009;/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (compatibility version 45.0.0, current version 1038.25.0)</pre>
+<p>Note the linkage against the system 1.8 Ruby.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5480'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5480"><time data-relative="true">2010-03-28T12:24:15Z</time></a></span>
+</cite>
+<blockquote><p>Wow. Weird. I guess i'll stop using RVM and install Ruby 1.9.1 through brew/macports/fink...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5482'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5482"><time data-relative="true">2010-03-28T12:58:19Z</time></a></span>
+</cite>
+<blockquote><p>Let me know how you go with that. I don't think it's necessarily specific for RVM, because I also tried with Multiruby and got identical results.</p>
+<p>In the meantime I posted to MacVim newsgroup asking for help:</p>
+<ul>
+<li><a href="http://groups.google.com/group/vim_mac/browse_thread/thread/b56b36265c507aa8" class="external">http://groups.google.com/group/vim_mac/browse_thread/thread/b56b36265c507aa8</a></li>
+</ul>
+<p>I figure that there might be people hanging around there that have experience with MacVim and 1.9.1.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5483'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5483"><time data-relative="true">2010-03-28T12:59:22Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> MacVim and Command-T</li>
+<li><strong>To:</strong> Linker errors with MacVim and Ruby 1.9.1 (&quot;dlyd: Symbol not found: _rb_intern2&quot;)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5484'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5484"><time data-relative="true">2010-03-28T13:04:45Z</time></a></span>
+</cite>
+<blockquote><p>Another post worth looking at, this one from the <a href="http://groups.google.com/group/vim_dev/" class="external">vim_dev</a> group:</p>
+<ul>
+<li><a href="http://groups.google.com/group/vim_dev/browse_thread/thread/a34ba9d02c57af9a/57ab7457327c81d8" class="external">http://groups.google.com/group/vim_dev/browse_thread/thread/a34ba9d02c57af9a/57ab7457327c81d8</a></li>
+</ul>
+<p>Subject is &quot;Ruby 1.9 compatibility status&quot; and it's dated 10 February 2010. Pasting in the message body for reference:</p>
+<pre>All, 
+
+Vim does not currently support integration with Ruby 1.9, 
+but it's on the list (see :help todo). 
+
+Masaki Suketa supplied a patch[1] to the vim_dev mailing list in 
+July 2009, under the subject line &quot;Patch for Vim with Ruby 1.9&quot;. 
+Using this patch, I'm able to build Vim with support for Ruby 
+1.9 (on Arch Linux), as well as Ruby 1.8 (on Fedora 12 Linux). 
+The Ruby-based plugins I use (LustyExplorer[2] and 
+LustyJuggler[3]) work fine Ruby 1.8 and Masaki's patch.  With 
+Ruby 1.9, LustyExplorer is throwing an exception[4], but I think 
+it's a problem with the plugin and the changing Ruby language 
+definition, not a problem with integrating Ruby into Vim. 
+
+Until Ruby 1.9 is supported in Vim, it will be more difficult 
+for plugin authors to try Ruby 1.9 and fix any problems.  Arch 
+Linux uses Ruby-1.9, so the Arch packager for Vim has disabled 
+Ruby integration[5] pending a Vim patch that works with Ruby 
+1.9.  This leave Arch users somewhat out in the cold for Ruby 
+integration. 
+
+Is Masaki's patch ready to be incorporated, or is more testing 
+required?  Masaki had done testing with multiple versions of 
+Ruby, including 1.8.7, 1.9.1, and 1.9.2dev.  It's working for me 
+with Ruby 1.8 on Fedora, so it looks harmless for Ruby 1.8 
+users, while allowing Ruby 1.9 users a chance to more widely 
+exercise Ruby-based plugins and shake out compatibility bugs. 
+
+Thanks, 
+Michael Henry 
+
+[1]: <a href="http://www.google.com/url?sa=D&amp;q=http://groups.google.com/group/vim_dev/browse_thread/thread/699c65598bc6348b/e5c0a53a8a26624e%3Flnk%3Draot%26pli%3D1&amp;usg=AFQjCNHvdVE_uVASeufLGbYEY2lWnXDCUA" class="external">http://www.google.com/url?sa=D&amp;q=http://groups.google.com/group/vim_dev/browse_thread/thread/699c65598bc6348b/e5c0a53a8a26624e%3Flnk%3Draot%26pli%3D1&amp;usg=AFQjCNHvdVE_uVASeufLGbYEY2lWnXDCUA</a>
+[2]: <a href="http://www.vim.org/scripts/script.php?script_id=1890" class="external">http://www.vim.org/scripts/script.php?script_id=1890</a> 
+[3]: <a href="http://www.vim.org/scripts/script.php?script_id=2050" class="external">http://www.vim.org/scripts/script.php?script_id=2050</a> 
+[4]: The exception looks like this: 
+      type mismatch: Fixnum given 
+      (eval):118:in `index' 
+      (eval):118:in `block in buildScoreArray' 
+      (eval):117:in `each_byte' 
+      (eval):117:in `buildScoreArray' 
+      (eval):103:in `score' 
+      (eval):326:in `block in matching_entries' 
+      (eval):325:in `select' 
+      (eval):325:in `matching_entries' 
+      (eval):312:in `compute_ordered_matching_entries' 
+      (eval):246:in `refresh' 
+      (eval):222:in `key_pressed' 
+      (eval):560:in `block in key_pressed' 
+      (eval):492:in `time' 
+      (eval):531:in `key_pressed' 
+      (eval):1:in `&lt;main&gt;' 
+[5]: <a href="http://bugs.archlinux.org/task/16710" class="external">http://bugs.archlinux.org/task/16710</a></pre>
+<p>So perhaps you're trying to do something that isn't officially supported yet, but the patch linked to in the post might be enough to get you up and running?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5485'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5485"><time data-relative="true">2010-03-28T13:04:46Z</time></a></span>
+</cite>
+<blockquote><p>Okay, that's really messed up. Installed Ruby 1.9.1 with Brew, compiled MacVim with that... yet MacVim still defaults to the system Ruby 1.8.7 :((</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5486'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5486"><time data-relative="true">2010-03-28T13:05:55Z</time></a></span>
+</cite>
+<blockquote><p>Oooooh... not supported, huh. Bleh. Gonna fall back to the system ruby 1.8.7, then....</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5487'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5487"><time data-relative="true">2010-03-28T16:38:47Z</time></a></span>
+</cite>
+<blockquote><p>If you look at a few other tickets in the database you'll see that on some operating systems at least people are reporting success with 1.9.1:</p>
+<ul>
+<li><a href="/issues/1505">ticket #1505</a>: Arch Linux</li>
+<li><a href="/issues/1512">ticket #1512</a>: Linux</li>
+</ul>
+<p>So I'm guessing that degree of &quot;support&quot; for 1.9.1 in VIM varies from platform to platform, as it is still very new. As I noted, 7.2 fails to compile miserably, but the trunk version from Subversion gets quite a bit further. I wouldn't be surprised if it works better on Linux than on Mac OS X. Perhaps very soon support on Mac OS X will get even better.</p>
+<p>For the time being however, I think I've made all the changes possible for 1.9.1 compatibility, so I'm going to mark this one as closed for now. I expect that once VIM's 1.9 support improves, the plug-in should work fine on it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5488'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5488"><time data-relative="true">2010-03-28T16:38:53Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5494'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5494"><time data-relative="true">2010-03-30T10:34:30Z</time></a></span>
+</cite>
+<blockquote><p>For reference, thread in MacVim newsgroup asking if anybody has had success building MacVim with 1.9.1 support:</p>
+<ul>
+<li><a href="http://groups.google.com/group/vim_mac/browse_thread/thread/b56b36265c507aa8" class="external">http://groups.google.com/group/vim_mac/browse_thread/thread/b56b36265c507aa8</a></li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

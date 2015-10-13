@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1568: Ability to serve static HTML files under the &quot;products&quot; namespace
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1568</div>
+<div class='issue' id='issue_1568'>
+<form class="edit_issue" id="edit_issue_1568" action="/issues/1568" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="lsJqjLTW1g8V/I7J47LRjHZ9bCgeg9kOQ/05R65JrNCiMNQ7E1sMWsxwvT7Sm4I4w/8FFBVvVxJj4uy5ipHL9A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1568:
+<span data-name='issue[summary]'>
+Ability to serve static HTML files under the &quot;products&quot; namespace
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-06-13T13:44:17Z</time>, updated <time data-relative="true">2010-07-24T12:20:52Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Would be nice to be able to upload static HTML files somewhere &quot;under&quot; the &quot;products&quot; namespace.</p>
+<p>For example, the generated <a href="/wiki/RDoc">RDoc</a> pages for the <a href="/products/wikitext">Wikitext</a> extension could be accessed at:</p>
+<ul>
+<li><a href="https://wincent.com/products/wikitext/rdoc" class="external">https://wincent.com/products/wikitext/rdoc</a></li>
+</ul>
+<p>Or similar.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5684'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5684"><time data-relative="true">2010-06-14T13:38:24Z</time></a></span>
+</cite>
+<blockquote><p>I was going to say that perhaps the existing page model could be abused for this purpose.</p>
+<p>We currently have the ability to pull wikitext markup or HTML out of the database for the product pages.</p>
+<p>A third option could be to somehow reference the content on the disk (sendfile style or something, ugh).</p>
+<p>But really, the whole point of having this kind of static content is to allow <a href="/wiki/nginx">nginx</a> to serve it without <a href="/wiki/Rails">Rails</a> ever being touched.</p>
+<p>Not really sure though if the rewrite trickery that would be required is worth it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5717'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5717"><time data-relative="true">2010-06-20T13:23:00Z</time></a></span>
+</cite>
+<blockquote><h3><a href="/wiki/nginx">nginx</a> notes</h3>
+<p>Will need to check this, but I believe <a href="/wiki/nginx">nginx</a> will only hit <a href="/wiki/Rails">Rails</a> if the requested <em>filename</em> does not exist:</p>
+<pre>if (-f $request_filename) {
+  break;
+}</pre>
+<p>ie. if the <em>directory</em> exists, but no file does, it will still hit Rails.</p>
+<p>This is actually what we want.</p>
+<p>That is, given these directories <code>/public/products/synergy/</code>, we don't want nginx to try to serve those itself and effectively mask the <code>products#show</code> action for URLs like <a href="https://wincent.com/products/synergy" class="external">https://wincent.com/products/synergy</a>.</p>
+<p>But we <em>do</em> want it to serve a static file like <code>/public/products/synergy/docs/index.html</code> if one is uploaded.</p>
+<p>Still, like I said, must test it. The config <em>does</em> have this set up:</p>
+<pre>index index.html;</pre>
+<p>So I don't know whether the presence of the directory alone will be enough to make it look for <code>index.html</code> and if it can't find it, return a 404 rather than forwarding the request to Rails.</p>
+<h3>Static page types</h3>
+<p>There are really two types of static content that we might wish to serve:</p>
+<ul>
+<li>stand-alone HTML pages: we want these to be served by nginx without hitting Rails at all if possible</li>
+<li>HTML fragments, to be embedded in the existing site layout: by necessity, these need to be mediated by Rails itself</li>
+</ul>
+<h3>The alternative</h3>
+<p>If the nginx thing doesn't work out for the first page type, there is an alternative.</p>
+<p>We can use the &quot;asset host&quot; trick to give us URLs which at least in part look similar to the product URLs on the main site; eg.</p>
+<ul>
+<li>use: <a href="http://assets.wincent.com/products/synergy/doc" class="external">http://assets.wincent.com/products/synergy/doc</a> (or whatever other subdomain may seem more appropriate than &quot;assets&quot;)</li>
+<li>matching: <a href="https://wincent.com/products/synergy/" class="external">https://wincent.com/products/synergy/</a></li>
+</ul>
+<p>So will do some more investigation and see which option we have to pursue.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5718'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5718"><time data-relative="true">2010-06-20T16:17:51Z</time></a></span>
+</cite>
+<blockquote><p>Ah, silly me. I just remembered that the way page caching works under nginx, I already know the answer to my doubts above.</p>
+<p>For example, we have a bunch of static cache files like:</p>
+<ul>
+<li><code>/twitter.html</code></li>
+<li><code>/twitter.atom</code></li>
+<li><code>/twitter/1.html</code></li>
+</ul>
+<p>So, yes, in the absence of an <code>/twitter/index.html</code> file, requests for <code>/twitter</code> still wind up at the Rails <code>twitter#index</code> action whenever the cache files are cleared.</p>
+<p>The only question remaining, then, for this type of static file, is how do we preserve such files across deployments (following the <a href="/wiki/Capistrano">Capistrano</a> pattern, everything in <code>public</code> is blown away (including all the cache files) except for stuff under <code>public/system</code> which is actually a symlink elsewhere.</p>
+<p>The question about what to do about the other type of static file (the one we want to render embedded in the <a href="/wiki/Rails">Rails</a>-provided layout) still remains. But I have to pop out now, so no time to think it through.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5719'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5719"><time data-relative="true">2010-06-20T17:13:11Z</time></a></span>
+</cite>
+<blockquote><p>Thinking about it, switching to an &quot;assets&quot; subdomain would have a pretty big downside: would lose the ability to enter &quot;relative&quot; URLs in links (that is, <code>/products/foo/baz</code> rather than <code><a href="http://assets.wincent.com/products/foo/baz" class="external">http://assets.wincent.com/products/foo/baz</a></code>).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5928'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5928"><time data-relative="true">2010-07-23T13:54:36Z</time></a></span>
+</cite>
+<blockquote><p>One idea to make the deployments easier would be to have a parallel hierarchy which nginx checks first. This would slow it down, but the thing is so fast that it might not even be measurable.</p>
+<p>ie. given Rails app at <code>/rails/current</code> and static files at <code>/rails/static</code>, nginx would do something like:</p>
+<pre># check static area first
+if (-f $static_root/$request_filename) {
+  break;
+}
+
+# serve static content without hitting Rails
+location ~ ^/(images|javascripts|stylesheets)/ {
+  expires 10y;
+}
+if (-f $request_filename) {
+  break;
+}
+
+# show maintenance page (added by deploy script) if present
+if (-f $document_root/system/maintenance.html) {
+  rewrite ^(.*)$ /system/maintenance.html last;
+  break;
+}
+
+# cached pages: only for GET requests
+set $cache_extension '';
+if ($request_method = GET) {
+  set $cache_extension '.html';
+}
+
+# the above is a hack because nginx doesn't allow nested or ANDed ifs
+if (-f $request_filename$cache_extension) {
+  rewrite (.*) $1.html break;
+}
+
+# everything else goes to Unicorn
+if (!-f $request_filename) {
+  proxy_pass <a href="http://unicorn" class="external">http://unicorn</a>;
+  break;
+}</pre>
+<p>The above is based on quite an old config, and I suspect it could be simplified at least in part by using the <code>try_files</code> directive.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5930'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5930"><time data-relative="true">2010-07-24T11:59:50Z</time></a></span>
+</cite>
+<blockquote><p>Ok, have a first cut at this working now:</p>
+<pre>location / {
+  set $cache_extension '';
+  if ($request_method = GET) {
+    set $cache_extension '.html';
+  }
+
+  if (-f $request_filename) {
+    break;
+  }
+
+  if (-f $request_filename$cache_extension) {
+    rewrite (.*) $1.html break;
+  }
+
+  if (-f $static_root$uri) {
+    root $static_root;
+    break;
+  }
+
+  if (-f $static_root$uri$cache_extension) {
+    root $static_root;
+    rewrite (.*) $1.html break;
+  }
+
+  if (!-f $request_filename) {
+    proxy_pass <a href="http://unicorn" class="external">http://unicorn</a>;
+    break;
+  }
+}</pre>
+<p>My initial stab at this didn't work because I tried to incorporate <code>try_files</code> and that seems to interact horribly with <code>if</code> blocks (see &quot;<a href="http://wiki.nginx.org/IfIsEvil" class="external">If Is Evil</a>&quot; on the nginx wiki). So it seems there is no choice but to have this string of <code>if</code> blocks testing one thing after another.</p>
+<p>Note that this will give us access to, for example, <code>/products/wikitext/rdoc/index.html</code> but not <code>/products/wikitext/rdoc</code> (with automatic fallback to <code>index.html</code>). I am not sure whether this can be done safely:</p>
+<ol>
+<li>test for directory at <code>$static_root$uri</code></li>
+<li>if $uri is just <code>/</code>, then test succeeds (not confirmed whether trailing slash matters yet)</li>
+<li>if we then set <code>root</code>, we rule out the possibility of a match happening in the real root (although, not sure I'll ever want an <code>index.html</code> there anyway)</li>
+</ol>
+<p>Perhaps I could just add another test:</p>
+<pre>if (-f $static_root$uri/index.html) {
+  root $static_root;
+  rewrite $static_root$uri/index.html break;
+}</pre>
+<p>Again, want to find out what happens with trailing slashes here.</p>
+<p>And looking at it, can probably drop the <code>$cache_extension</code> block when looking under <code>$static_root</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5931'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5931"><time data-relative="true">2010-07-24T12:20:52Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

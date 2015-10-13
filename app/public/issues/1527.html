@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1527: Can't access any files from a specific directory
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1527</div>
+<div class='issue' id='issue_1527'>
+<form class="edit_issue" id="edit_issue_1527" action="/issues/1527" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="I5D6WFSMU0eF3ciL3WlNl+WfeBC/bS2AcT07OGK+bhoXYkTv8wGJElxR+3zsQB4jUB0RLLSBo5xRIu7GRmYJPg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1527:
+<span data-name='issue[summary]'>
+Can't access any files from a specific directory
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-03-30T10:51:08Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I saw this vim script and watched the screencast and seems like the missing I was always looking for. :)</p>
+<p>But when I try to use it on my computer (MacOS 10.6.2, MacVim) that doesn't work.</p>
+<p>I have a hierachy like this : </p>
+<pre>$HOME/
+# find . -type d -iname &quot;[a-zA-Z]*&quot; -depth 1
+./Applications
+./Desktop
+./Documents
+./Downloads
+./FontExplorer X
+./Library
+./Movies
+./Music
+./Pictures
+./Public
+./Source
+./bin
+./binaries
+./compile
+./glibc
+./gtk
+./macports_local
+./metatrader
+./pkg</pre>
+<p>With that much (approx. in it)</p>
+<pre># ls -alR | wc -l
+  489896
+# ls compile 
+HandBrake       aiccu  gnupg-1.4.10  tuntaposx
+ffmpeg-mt       gpac  
+.....</pre>
+<p>and for example there is this file : <code>compile/ffmpeg-mt/ffplay.c</code></p>
+<p>I load MacVim and if I issue <code>:pwd</code> I get  <code>/Volumes/dat/myusername</code></p>
+<p>then <code>:CommandT</code></p>
+<p>and in the prompt I type cfffpl  but nothing comes from the compile dir so I try compffmp  and again nothing shows up. I tried many many others pattern but even compile won't list me the directories inside &quot;compile&quot;</p>
+<p>Is that bug or am I doing something wrong ?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5496'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5496"><time data-relative="true">2010-03-30T10:58:51Z</time></a></span>
+</cite>
+<blockquote><p>Take a look at <a href="http://git.wincent.com/command-t.git/blob/HEAD:/doc/command-t.txt" class="external">the documentation</a> and in particular the <code>g:CommandTMaxFiles</code> setting.</p>
+<p>The default setting is to stop scanning after seeing 10,000 files, so in a case like the directory you're talking about only a tiny percentage of it is actually getting scanned. The idea is to set the limit to something that is useful in whatever is the largest project that you usually work on; and by keeping the default low (10,000) we prevent a user from inadvertently causing his or her hard drive to churn for 15 or 30 seconds because he/she accidentally hit <code>&lt;Leader&gt;t</code> when the <code>:pwd</code> was <code>/</code> or something similar.</p>
+<p>So depending on how beefy your machine is you can change that setting by putting something like this:</p>
+<pre>let g:CommandTMaxFiles=100000</pre>
+<p>Or even this:</p>
+<pre>let g:CommandTMaxFiles=500000</pre>
+<p>In your <code>~/.vimrc</code>.</p>
+<p>That might fix the issue.</p>
+<p>The other thing to bear in mind is that given that Command-T will look for matching characters anywhere within the path name, when you are scanning 500,000 files with a search string like &quot;cfffpl&quot; you are probably going to match against hundreds and hundreds of files, and so in order to narrow down the number of matches as quickly as possible you'll want to supply more letters from the leading path components.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5498'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5498"><time data-relative="true">2010-03-30T11:37:31Z</time></a></span>
+</cite>
+<blockquote><p>Ah I should have read the documentation sorry.</p>
+<p>But that doesn't solve my issue. I tried a really high value after trying more sane value (99 999 999 999) that get bound to 1 215 752 191 which I think should be large enough.</p>
+<pre># time find . -type f | wc -l                   (~)
+  261169
+find . -type f  0,79s user 11,77s system 17% cpu 1:12,78 total
+wc -l  0,04s user 0,03s system 0% cpu 1:12,77 total
+# find . -type f -depth 15 |wc -l               (~)
+   18293</pre>
+<p>then :</p>
+<pre>:CommandTFlush
+:CommandT
+&gt;&gt;&gt; compileffmp</pre>
+<p>the directory and the file still didn't show up. :(</p>
+<p>But when I :</p>
+<pre>:lcd ~/compile
+:CommandT
+&gt;&gt;&gt; ffmffpl</pre>
+<p>I can get to my file.</p>
+<p>Also when changing the Maxfiles <code>:CommandT</code> takes a little bit longer but take at most 10seconds.</p>
+<p>Is it possible to 'dump' the searched/stored files for debug purpose ? Or am I again missing an option ?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5499'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5499"><time data-relative="true">2010-03-30T12:21:04Z</time></a></span>
+</cite>
+<blockquote><p>The delay of about 10 seconds is normal when scanning such a large directory tree (as you can see from how long it takes <code>find</code> to scan it), but it should only be slow the first time you bring up Command-T. The second time you bring it up it should just use the already-scanned list of files rather than rescanning.</p>
+<p>Perhaps the number of matches is simply too large for them to all fit in the match window? ie. you type &quot;compileffmp&quot; and you get a bunch of results, filling up the entire window, but not the one you want?</p>
+<p>As for being able to &quot;dump&quot; the scanned files, there is no built-in option for this, but you could just insert one by editing the file <code>~/.vim/ruby/command-t/scanner.rb</code>. It will probably slow things down quite a lot though... eg. around line 78, in the <code>add_paths_for_directory</code> method you could add a <code>puts</code> to dump the paths as they are scanned:</p>
+<pre class="ruby-syntax">    def add_paths_for_directory dir, accumulator
+      Dir.foreach(dir) do |entry|
+        next if ['.', '..'].include?(entry)
+        path = File.join(dir, entry)
+        unless path_excluded?(entry)
+          if File.file?(path)
+            @files += 1
+            raise FileLimitExceeded if @files &gt; @max_files
+            accumulator &lt;&lt; path[@prefix_len + 1..-1]
+            puts path[@prefix_len + 1..-1] # &lt;&lt;------ add this line to print out paths during scanning
+          elsif File.directory?(path)
+            next if (entry.match(/\A\./) &amp;&amp; !@scan_dot_directories)
+            @depth += 1
+            raise DepthLimitExceeded if @depth &gt; @max_depth
+            add_paths_for_directory path, accumulator
+            @depth -= 1
+          end
+        end
+      end
+    rescue Errno::EACCES
+      # skip over directories for which we don't have access
+    end</pre>
+<p>As you can see from that method, there are a few ways in which a path won't get included:</p>
+<ul>
+<li>it is skipped if <code>path_excluded</code> returns <code>true</code> (ie. if your VIM 'wildignore' contains a pattern which matches the file or directory)</li>
+<li>it is skipped if it is neither a file nor a directory (symbolic links to files or directories seem to be fine)</li>
+<li>it is skipped once the total number of scanned files exceeds the limit you set using <code>g:CommandTMaxFiles</code></li>
+<li>it is skipped if you descend down too many levels (in excess of the limit defined by <code>g:CommandTMaxDepth</code>)</li>
+<li>it is skipped if you don't have read permission</li>
+</ul>
+<p>This discussion has, however, made me notice one bug in the scanning method. Looks like if the depth limit gets hit early on in the scan, the entire scan gets aborted instead of just aborting the recursion into the subdirectory currently being scanned. So I'll fix that. Not sure if it might be responsible for your missing file problem.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5500'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5500"><time data-relative="true">2010-03-30T12:31:44Z</time></a></span>
+</cite>
+<blockquote><p>Just pushed the fix for the bug mentioned in my last comment:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/eb167abdbf7ec1360492fca9cfd4559394c409c7" class="external">http://git.wincent.com/command-t.git/commitdiff/eb167abdbf7ec1360492fca9cfd4559394c409c7</a></li>
+</ul>
+<p>Like I said, not sure if it might fix your problem, but in any case it was a bug that needed to be fixed.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5506'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5506"><time data-relative="true">2010-03-30T16:54:04Z</time></a></span>
+</cite>
+<blockquote><p>In fact for me the delay was too short compared to the time taken by find. So I was wondering if command-t was so fast that he can outperform the old 'find' ;)</p>
+<p>The number of matches was really 'short' a dozen lines at most.</p>
+<p>But the bug you discovered solved my problem. :) Thanks for your time and command-t</p>
+<p>And as you suggested searching trough a 10K+ files is a bit slow but that's not a problem I know there are limits and I'm okay with that. Now the first call to CommandT takes a little bit longer. But I should point out that my homedir is a real mess to say the least ;)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5507'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5507"><time data-relative="true">2010-03-30T16:57:16Z</time></a></span>
+</cite>
+<blockquote><p>Cool. Glad to hear that that solved the problem.</p>
+<p>As for the speed, I must admit that the biggest project I use it on is somewhat over 7,000 files and the performance is great. If it turns out that more people start to use it and start demanding good performance on even larger projects there is still plenty of scope for optimization in the project. I just took the &quot;low hanging fruit&quot; and stopped once performance for my use case became satisfactory (and the truth is, I am very very satisfied with it on that size project).</p>
+<p>Will mark this one as closed for now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5508'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5508"><time data-relative="true">2010-03-30T16:57:22Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

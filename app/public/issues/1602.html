@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1602: Degraded performance on large trees
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1602</div>
+<div class='issue' id='issue_1602'>
+<form class="edit_issue" id="edit_issue_1602" action="/issues/1602" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="a0h9AUvmYhMl3nHJdxla4qyKCcvs1OILq7FqdlP9HdFfusO27Gu4RvxSQj5GMAlWGQhg9+c4bBeLrr+IdyV69Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1602:
+<span data-name='issue[summary]'>
+Degraded performance on large trees
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-07-11T06:38:05Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p><a href="/issues/1598">Ticket #1598</a> describes the new recursive &quot;best score&quot; algorithm that was recently implemented, but it is a na&#x00ef;ve implementation with no explicit optimization attempted.</p>
+<p>This ticket is for recording ideas for improving the performance under the new algorithm:</p>
+<h2>Idea 1: do a full &quot;pre-match&quot; before trying recursion</h2>
+<p>Complete a full pass to confirm we definitely have a match before doing another recursive pass. In this way we don't waste time recursing through possibilities that will never end up being a match.</p>
+<p>Note that this &quot;pre-match&quot; pass can be ultra-quick (no scoring, just a blind left-to-right match, and can probably skip most of the dot-file logic too).</p>
+<p>So it is spending more time up-front doing work that might end up saving us a lot more work otherwise. It remains to be seen whether the overall effect will be a net gain.</p>
+<p>For pathological cases it is easy to see that it will bring a benefit; eg. given search string &quot;ax&quot; and path <code>aaaaaaaaaaaaaaaaaaaaax</code>, we end up matching at every single position because we recurse to see if we can find a better score (and incidentally, we don't). If we do the same with a path like <code>aaaaaaaaaaaaaaaaaaaaay</code> we will never find the desired <code>x</code> and will have done the same amount of futile recursion, for nothing.</p>
+<p>Depending on the number and composition of paths in a directory, and the nature of the search string, this kind of futile recursion could either be very frequent or not common at all.</p>
+<h2>Idea 2: do depth-first rather than breadth-first recursion</h2>
+<p>This is a variation of idea 1, with the idea being to avoid wasting time searching the &quot;match space&quot; of paths which will never actually end up being complete matches.</p>
+<p>In this variant, instead of recursing in order to bump our search one char to the right and seek a better match, we recurse in order to try the next character in the search string.</p>
+<p>So, given a search string like &quot;abcd&quot;, we:</p>
+<ul>
+<li>scan until we find an &quot;a&quot;</li>
+</ul>
+<pre>* recurse to find &quot;b&quot;
+ * recurse to find &quot;c&quot;
+  * recurse to find &quot;d&quot;: at this point we have a guaranteed match, so we return
+ * recursion returned a match, bump one char right and see if we can find a better one
+  * recurse looking for better match
+ * if recursion returned a better match, record it, keep bumping right until we run out of room
+* recursion returned its best match, bump right and check for better scores etc</pre>
+<ul>
+<li>recursion returned its best match, bump right and check for better scores etc</li>
+</ul>
+<p>So given a really long search string we are still going to potentially recurse to a fairly low depth (20 character search string means up to 20 levels of recursion), and this is not going to be as fast as an inline scan for a match, but it will saved us from doing lots of futile recursion on strings that will never match.</p>
+<h2>Idea 3: use a heuristic to determine when to give up early</h2>
+<p>I'm doubtful that this one will work, to be honest, but I'll mention it anyway. Given the example search string of &quot;ax&quot; and path <code>aaaaaaaaaaaaaaaaax</code>, it is fairly easy to see that the first match for <code>a</code> is going to be the best one that we'll ever get and trying the others is pointless.</p>
+<p>It actually wouldn't be too hard to do an inline check for this kind of thing; ie: find <code>a</code>, and then keep scanning anyway to see if there is a later <code>a</code> with a higher score.</p>
+<p>The problem with this approach is that we can only really &quot;look ahead&quot; one character at a time and that won't help us to discern between scorings like this:</p>
+<pre>a..............articles
+^               ^^^^^^^
+a..............articles
+               ^^^^^^^^</pre>
+<p>Here if we search for &quot;articles&quot;, we'll see the first <code>a</code> and when we look for a better one we'll find that the second <code>a</code> has a lower score. If we decide not to pursue that alternative path because that one character has a lower score, then we prematurely discard the possibility of matching a high-scoring run of &quot;articles&quot;, which may actually give us a better score.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

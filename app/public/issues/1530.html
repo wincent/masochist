@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1530: Drop table-based CSS for comment display
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1530</div>
+<div class='issue' id='issue_1530'>
+<form class="edit_issue" id="edit_issue_1530" action="/issues/1530" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="CsKrNOzpeg4rDgAqe1DgrSKBel0o9GcPJChrFBAjJBI+MBWDS2SgW/KCM91KebMZlwMTYSMY6RMEN77qNPtDNg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1530:
+<span data-name='issue[summary]'>
+Drop table-based CSS for comment display
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-04-02T06:59:16Z</time>, updated <time data-relative="true">2010-06-26T12:01:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>In the issue tracker and elsewhere comments are displayed inside a table.</p>
+<p>If such a comment includes a <code>&lt;pre&gt;&lt;/pre&gt;</code> block then the table will expand to be as wide as is necessary in order to display the block without any wrapping. This can cause a horizontal scrollbar to appear and horizontal scrolling is seldom a comfortable thing.</p>
+<p>So to get around this problem I've always had CSS which artificially imposes a <code>max-width</code> of <code>640px</code> to any <code>&lt;pre&gt;&lt;/pre&gt;</code> block matching the <code>table pre</code> selector.</p>
+<p>See <a href="/issues/1528">ticket #1528</a> for an example of what this looks like. It is definitely the lesser of two evils, but it still looks ugly having artificially contrained <code>&lt;pre&gt;&lt;/pre&gt;</code> blocks.</p>
+<p>I know that when I initially did the CSS I tried to do the comments without using tables, but couldn't get it to work nicely with alternating row colors.</p>
+<p>Note that blog comments use a different style entirely involving speech bubbles (see <a href="/blog/bringing-textmate-style-command-t-to-vim">this post</a>, for example) and so don't suffer from either problem: tables aren't used so we don't have artificial constraints, and neither do we have unwanted horizontal scrolling.</p>
+<p>So I'm opening this ticket as a reminder to revisit this issue.</p>
+<p>I don't really want to switch to the &quot;speech bubble&quot; model for issue tracker comments or the forums, but I could potentially borrow some of the elements involved.</p>
+<p>Once that problem is solved the remaining one will be the issue descriptions themselves, which also appear in tables and therefore also use the <code>max-width</code> constraint.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5766'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5766"><time data-relative="true">2010-06-24T09:52:28Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1591">issue #1591</a>, where I talk about changing the speech bubble DOM just a little (replacing nested &quot;div&quot; elements with &quot;ol&quot; and &quot;li&quot; elements).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5770'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5770"><time data-relative="true">2010-06-26T11:50:49Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so this is kind of sorted out now.</p>
+<p>I've made issue comments into &quot;ol&quot; lists, and have applied styling that makes them <em>look</em> like tables. They don't look exactly like the old ones because it was basically impossible to achieve an identical look:</p>
+<ul>
+<li>the background coloring is applied to the entire row (caption and comment) rather than just the comment side on the right</li>
+<li>if the window is made very narrow the caption and the comment will end up wrapping (ie. caption will appear above and comment below)</li>
+<li>may not look nice in crappy browsers (but as most of the traffic I am interested in is either Mac-using or tech savvy, I can probably assume that most visitors are coming with Firefox 3, Safari 4, Google Chrome or above)</li>
+</ul>
+<p>Gonna roll with it anyway and see how it goes.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5771'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5771"><time data-relative="true">2010-06-26T12:01:17Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

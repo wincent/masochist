@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #173: 1.8 ignores cover art downloaded by previous versions if composer tag is set
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #173</div>
+<div class='issue' id='issue_173'>
+<form class="edit_issue" id="edit_issue_173" action="/issues/173" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="zeavwVRzcEKve3oeB4gJTfqvtX9UnTylfEkln/9PUyb5FBF28/6qF3b3Sek2oVr5Ty3cQ19xsrlcVvBh25c0Ag==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #173:
+<span data-name='issue[summary]'>
+1.8 ignores cover art downloaded by previous versions if composer tag is set
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-13T23:31:13Z</time>, updated <time data-relative="true">2005-04-18T16:17:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/hiroshi-eiyama">hiroshi eiyama</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hello. I'm using everyday this great software. I like it very much!</p>
+<p>From version 1.8, Synergy has a nice feature that display composer's name in a floater. But that name is aiso included in album cover art file name (~/Application Support/Synergy/Album  Cover), so now there is some album cover art file that is not displayed (and were nomally displayed at  1.7.1).</p>
+<p>So I wish add a switch in preference for display &quot;composer&quot;, or stop to include composer's name at  album cover art file. </p>
+<p>Currently I use previous Synergy 1.7.1. This is not a bug, but inconvinience for me.. Please fix it if you  can.</p>
+<p>Regards, eiyama</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1758'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1758"><time data-relative="true">2005-04-14T00:45:50Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the report. This is definitely a bug but I hope it's not one that will cause too  many problems. I've reworded the summary a little bit to better describe the issue.</p>
+<p>Version 1.8 won't &quot;see&quot; the art downloaded by previous versions because it now considers the  composer (if set) to form part of the identifier of the track, therefore the identifiers have changed  between versions.</p>
+<p>If you just wait a while it should re-download the art and use the new, updated name.</p>
+<p>The other alternative is to drag your art into iTunes and then Synergy will just use that.</p>
+<p>If other problems come up (such as picking the wrong art when it's re-downloaded) then I'll investigate  ways to go back to the old behaviour. I'll keep this bug report open so people can report their  experiences. </p>
+<p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1759'>
+<cite>
+<a href="/users/kim">kim</a>
+<span class='when'><a href="#comment_1759"><time data-relative="true">2005-04-15T22:49:35Z</time></a></span>
+</cite>
+<blockquote><p>I want an option whether composer's name shows or not. The album covers which have ID tag of composer's name have not been downloaded. but Im not sure about it. Please make sure!!</p>
+<p>I want you to fix this bug ASAP.</p>
+<p>Thanks for Great Software</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1760'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1760"><time data-relative="true">2005-04-16T20:40:32Z</time></a></span>
+</cite>
+<blockquote><p>It's been pointed out that albums which have the same artist, same album title, but different composers  on each track also cause some complications:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=687" class="external">http://wincent.com/a/support/forums/showflat.php?Number=687</a></p>
+<p>I am marking this issue as major because I think it's fairly important.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1761'>
+<cite>
+<a href="/users/richard-brown">Richard Brown</a>
+<span class='when'><a href="#comment_1761"><time data-relative="true">2005-04-17T06:27:30Z</time></a></span>
+</cite>
+<blockquote><p>I think the track identifier and the floater contents should be independent of each other.  Users may  want to show the composer in the floater but this should not effect the track identifier and,  consequently, the album art.</p>
+<p>The change to the track identifier potentially requires re-downloading all album artwork as well as  probably multiplying the amount of album art cached on the hard disk (the same way that compilation  albums have multiple copies of the same album art).</p>
+<p>I believe the best solution, if possible, would be to change the track identifier back to the pre-version  1.8 method but still display the composer information in the floater for those that want it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1762'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1762"><time data-relative="true">2005-04-17T21:33:19Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this issue is now fixed. The on-disk filenames no longer make use of the composer information.</p>
+<p>Adding the fixed-in-prerelease tag. The fix will be available to the public version 1.8.1. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1763'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1763"><time data-relative="true">2005-04-18T00:33:46Z</time></a></span>
+</cite>
+<blockquote><p>The new version is now on the servers.</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/" class="external">http://wincent.com/a/products/synergy-classic/download/</a></p>
+<p>Official release will take place tomorrow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1764'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1764"><time data-relative="true">2005-04-18T16:16:36Z</time></a></span>
+</cite>
+<blockquote><p>Marking as FIXED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1765'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1765"><time data-relative="true">2005-04-18T16:17:17Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

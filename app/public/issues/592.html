@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #592: Keyboard shortcuts become disabled
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #592</div>
+<div class='issue' id='issue_592'>
+<form class="edit_issue" id="edit_issue_592" action="/issues/592" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="miK4QxjyQ/QIk7sODRFjfTAJGMCNoU7/X2t8yDBT7dOu0Ab0v3+ZodEfiPk8ODDJhYtx/IZNwON/dKk2FIuK9w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #592:
+<span data-name='issue[summary]'>
+Keyboard shortcuts become disabled
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-07-06T10:16:42Z</time>, updated <time data-relative="true">2007-07-07T12:29:38Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/morley-chalmers">Morley Chalmers</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I'm using keyboard shortcuts to increase or decrease the &quot;star&quot; rating for pieces of music. Mostly it works, but occasionally it fails. The problem has been around for a while (at least three months) and continues in 3.1.3.</p>
+<p>I can solve the problem by quitting Synergy and then restarting. No need to reboot the Mac. </p>
+<p>There's no pattern to which keyboard shortcuts become disabled. For instance, I use Command-F13 to start and stop music, Shift-Command-&gt; to increase star value, Shift-Command-&lt; to decrease star value. This morning the increase command failed but the start and stop music command still functioned. There have been other occasions when the reverse has been the case. </p>
+<p>I'm using Mac OS 10.4.10.</p>
+<p>I'm willing to run some tests, if that would help.</p>
+<p>Kind regards,</p>
+<p>Morley Chalmers</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3054'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3054"><time data-relative="true">2007-07-06T12:51:21Z</time></a></span>
+</cite>
+<blockquote><p>I haven't heard of a problem like this before, so all I can really suggest is trying to narrow it down to eliminate possible external causes (preferences corruption etc) using the basic troubleshooting tips here:</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a></p>
+<p>And trying to come up with a recipe for reproducing the fault reliably, because without that I won't be able to work on a fix. You could also try other combinations, like instead of quitting Synergy see if quitting iTunes makes things go away... or looking for patterns... seeing if it happens when particular tracks or types of tracks are playing etc.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3055'>
+<cite>
+<a href="/users/morley-chalmers">Morley Chalmers</a>
+<span class='when'><a href="#comment_3055"><time data-relative="true">2007-07-06T16:10:29Z</time></a></span>
+</cite>
+<blockquote><p>By removing the org.wincent.Synergy.plist from the Preferences Library introduces a new &quot;bug&quot;. My registration of Synergy is lost and I'm asked to pay for the program.</p>
+<p>Is there an easy way to rectify.</p>
+<p>Note: I've done programming myself. I'm well aware that unless and until the bug can reliably and predictably be reproduced, it's nearly impossible to resolve. </p>
+<p>I will try and see if I can isolate the conditions causing this intermittent behaviour.</p>
+<p>Kind regards,</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3056'>
+<cite>
+<a href="/users/morley-chalmers">Morley Chalmers</a>
+<span class='when'><a href="#comment_3056"><time data-relative="true">2007-07-06T16:14:51Z</time></a></span>
+</cite>
+<blockquote><p>This is annoying. By restoring the original plist for Synergy I remain with an Unregistered copy. </p>
+<p>Definitely needs sorting out.</p>
+<p>Thanks,</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3057'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3057"><time data-relative="true">2007-07-06T16:33:13Z</time></a></span>
+</cite>
+<blockquote><p>By blowing away your preferences file you blow away your registration details.</p>
+<p>So, yes, you do need to re-enter them. If you've lost your backup of your license notice you can have it remailed to you by this automated system:</p>
+<p><a href="https://secure.wincent.com/a/support/registration/" class="external">https://secure.wincent.com/a/support/registration/</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3058'>
+<cite>
+<a href="/users/morley-chalmers">Morley Chalmers</a>
+<span class='when'><a href="#comment_3058"><time data-relative="true">2007-07-06T20:40:51Z</time></a></span>
+</cite>
+<blockquote><p>Yikes!!! This has become a nightmare. I paid for it an unknown time ago via PayPal, but from an eMail address since discontinued. Passwords for those PayPal accounts long since deleted from 1Passwd.</p>
+<p>What can be done?</p>
+<p>Thanks,</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3059'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3059"><time data-relative="true">2007-07-07T05:09:07Z</time></a></span>
+</cite>
+<blockquote><p>Let me know the email address you used (or email addresses if you're not sure) and I'll retrieve the info for you. If you don't want to post the details publicly here you can email me instead (<a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>).</p>
+<p>Alternatively, if you didn't actually delete your old preferences file you can just look inside it under &quot;Registered email address&quot; and &quot;Serial number&quot;. If you have the Xcode Tools installed then you can use the Property List Editor to do that.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3060'>
+<cite>
+<a href="/users/morley-chalmers">Morley Chalmers</a>
+<span class='when'><a href="#comment_3060"><time data-relative="true">2007-07-07T07:26:59Z</time></a></span>
+</cite>
+<blockquote><p>Used the Property List Editor to retrieve the serial number. Thanks.</p>
+<p>Recommend you amend the instructions on how to delete the current preferences to include comments that this process will also lose the serial number.</p>
+<p>Thanks for your help. I'll get back to you if I can track down the specific circumstances that trigger the bug.</p>
+<p>Kind regards,</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3061'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3061"><time data-relative="true">2007-07-07T12:29:38Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #7)</p>
+<blockquote>
+<p>Recommend you amend the instructions on how to delete the current preferences to include comments that this process will also lose the serial number.</p>
+</blockquote>
+<p>Ok, I've done that.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

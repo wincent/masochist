@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+ SEGV error on ubuntu
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo;  SEGV error on ubuntu</div>
+<h1 class='major'> SEGV error on ubuntu</h1>
+<div class='topic' id='topic_503'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/flebber">flebber</a>
+<span class='when'>
+<a href="/forums/command-t/topics/503"><time data-relative="true">2012-01-31T06:21:26Z</time></a>
+</span>
+</cite>
+<blockquote><p>I intitally posted this question n stackoverflow but it cannot be solved. <a href="http://stackoverflow.com/questions/9052646/ruby-command-t-segv" class="external">link text</a> This is what I have done.</p>
+<p>I am on ubuntu 11.10 and have had vim-gnome installed and working. Using vundle and have installed seeral packages all working.</p>
+<p>I have installed command-t but it will not function until C extensions are compiled. Reading the manual this is the solution.</p>
+<pre>rake make</pre>
+<p>For me the location is actually:</p>
+<pre>~/.vim/bundle/command-t</pre>
+<p>Anyway so I turned rvm off and installed the system 1.8 as advised in the command-t help guide. I checked the documentation and the most common cause of command-t errors is compiling against the wrong ruby.</p>
+<p>So I found this command to check the compiled version.</p>
+<pre>renshaw@renshaw-TravelMate-5740G:~/.vim/bundle/command-t$ ldd `which vim` | grep ruby
+libruby1.8.so.1.8 =&gt; /usr/lib/libruby1.8.so.1.8 (0x00007f913932c000)</pre>
+<p>So I installed rake for the ruby 1.8 and compiled with rake make</p>
+<pre>renshaw@renshaw-TravelMate-5740G:~/.vim/bundle/command-t$ sudo rake make
+/usr/bin/ruby1.8 extconf.rb
+checking for ruby.h... yes</pre>
+<p>and off it goes and compiles.</p>
+<p>however start gvim and run \t for command-t and</p>
+<pre>Vim: Caught deadly signal SEGV
+Vim: Finished.
+Segmentation fault</pre>
+<p>Built Gvim from sources using</p>
+<pre>hg clone <a href="https://vim.googlecode.com/hg/" class="external">https://vim.googlecode.com/hg/</a> vim
+cd vim
+sudo ./configure --enable-rubyinterp=yes --enable-pythoninterp=yes --enable-gui=gtk2
+make 
+make install
+vim --version | grep ruby</pre>
+<p>The vim version command returns correct that ruby support is built against my installed system 1.8 but it still SEGV when using command T.</p>
+<p>So found and tried this</p>
+<pre>cd ~/.vim/ruby/command-t
+/usr/bin/ruby extconf.rb
+make</pre>
+<p>This failed as well. I then add this to bashrc from a previous support ticket.</p>
+<pre>vim() {
+     (unset GEM_PATH GEM_HOME; command vim &quot;$@&quot;)
+ }</pre>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

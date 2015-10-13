@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #456: REQUEST: reimplement WinSwitch to control launch as Startup Item
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #456</div>
+<div class='issue' id='issue_456'>
+<form class="edit_issue" id="edit_issue_456" action="/issues/456" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="NBdQij9RgbCjrRuMLeLgQUtj7fCctaeB3MyEorB3ICQA5e49mNxb5XohKHscy7P1/uGEzJdZKZ3801FclK9HAA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #456:
+<span data-name='issue[summary]'>
+REQUEST: reimplement WinSwitch to control launch as Startup Item
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-08-30T09:47:06Z</time>, updated <time data-relative="true">2006-09-14T21:03:32Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jim">jim</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Currently WinSwitch never appears in the Accounts Preferences Pane's Startup Items list, so it always loads unless it has been manually uninstalled. I'm not an experienced developer, so I'm guessing, but I'm pretty sure that Menu Extras are not managed through this Pref pane interface, only applications. </p>
+<p>I have some other utilities in use that add Menu Extras, but they do this by using an application which launches and then triggers the menu extra. Whether the app launches at startup is controllable in the Prefs pane.</p>
+<p>This enhancement would give people (for example, people who have a need to run with an otherwise &quot;standard&quot; menu bar for things like making screen shots and creating training video) boot-by-boot control over WinSwitch without having to install/reinstall.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2763'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2763"><time data-relative="true">2006-08-30T10:19:23Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #0)</p>
+<blockquote>
+<p>Currently WinSwitch never appears in the Accounts Preferences Pane's Startup Items list, so it always loads unless it has been manually uninstalled. I'm not an experienced developer, so I'm guessing, but I'm pretty sure that Menu Extras are not managed through this Pref pane interface, only applications.</p>
+</blockquote>
+<p>That's correct. True menu extras (NSMenuExtra) are not applications but loadable bundles. The System UI Server maintains a list of loaded menu extras and each time you log in or boot up it loads the same menu extras; no applications are involved. Menu extras are added/removed by telling the System UI Server to load/unload those bundles.</p>
+<p>Things which aren't &quot;true&quot; menu extras are implemented using NSStatusItem and they are not loadable bundles. They need a separate application to host them. Such an application could be added/removed to your startup items list. Most third-party tools use this technique.</p>
+<p>What this in effect means is that true menu extras can't be managed using startup items; only applications can be managed that way.</p>
+<blockquote>
+<p>I have some other utilities in use that add Menu Extras, but they do this by using an application which launches and then triggers the menu extra. Whether the app launches at startup is controllable in the Prefs pane.</p>
+</blockquote>
+<p>WinSwitch is a true menu extra because that's the only way to get it to appear all the way over to the right side, as the user expects for a fast user switching menu.</p>
+<p>It could be changed into an application that runs at login time and loads the loadable bundle, but it would also have to remove itself on every logout otherwise it would appear automatically on the next login anyway (because as noted above, the System UI Server maintains a list of loaded menu extras and automatically reloads them on subsequent logins).</p>
+<p>This effectively amounts to installing/uninstalling itself automatically on every single run, which is not very efficient.</p>
+<pre></pre>
+<blockquote>
+<p>This enhancement would give people (for example, people who have a need to run with an otherwise &quot;standard&quot; menu bar for things like making screen shots and creating training video) boot-by-boot control over WinSwitch without having to install/reinstall.</p>
+</blockquote>
+<p>I think a better workaround for the purposes of taking screenshots is the following:</p>
+<p>1. Before the screenshot, hold down the &quot;Command&quot; key and drag WinSwitch out of the menu bar.</p>
+<p>2. After the screenshot, double-click the &quot;Activate WinSwitch&quot; script installed into /Users/Shared to restore it to the menu bar.</p>
+<p>Admittedly, this is not fully-automated, but the alternatively is just too ugly from a design standpoint because it would mean using NSMenuExtra in a way that violates its intended usage pattern.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2764'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2764"><time data-relative="true">2006-08-30T10:20:02Z</time></a></span>
+</cite>
+<blockquote><p>For the reasons stated above, marking this one as &quot;WONTFIX&quot; but seeing as the source is available anyone interested in going down this path knows what to do...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2765'>
+<cite>
+<a href="/users/jim">jim</a>
+<span class='when'><a href="#comment_2765"><time data-relative="true">2006-09-14T21:03:32Z</time></a></span>
+</cite>
+<blockquote><p>Reasonable conclusion. (Sorry for the delay in my response.) Perhaps there's a way to automate unloading the bundle through applescripts, and triggering the status of those scripts through the Winswitch UI...I'll have to think it over. But your response and thoughtful comments are appreciated.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #179: Graphic for rating stars muddled and small
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #179</div>
+<div class='issue' id='issue_179'>
+<form class="edit_issue" id="edit_issue_179" action="/issues/179" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="gE3PSdRslHSxVWIsfKTImDvL7yOLyn6pY05TgcvRl3y0v3H+c+FOIWjZUdtNjZssjkmGH4Am8LVDUYZ/7wnwWA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #179:
+<span data-name='issue[summary]'>
+Graphic for rating stars muddled and small
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-15T01:55:09Z</time>, updated <time data-relative="true">2006-03-09T08:23:30Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jason-mcleod">Jason McLeod</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The rating stars are no longer clear defined shapes, they are more like 5 pointed blobs.  Can the graphic  be updated back to the original image?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1789'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1789"><time data-relative="true">2005-04-15T02:17:27Z</time></a></span>
+</cite>
+<blockquote><p>They're not actually graphics but unicode characters printing using the system font... It would be  interesting to know when you noticed the change (ie. in which version). The code Synergy uses to draw  the stars hasn't changed, but perhaps something in the system or its fonts has.</p>
+<p>This may be an aliasing issue, in which case it's related to <a href="/issues/128">bug #128</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1790'>
+<cite>
+<a href="/users/jason-mcleod">Jason McLeod</a>
+<span class='when'><a href="#comment_1790"><time data-relative="true">2005-04-15T02:29:39Z</time></a></span>
+</cite>
+<blockquote><p>I did just notice it in Tiger, so it may have something to do with the changes made to the graphic layer.  I'd  wait and see what happens with the release build at the end of the month.  I'm running the last Dev build  currently.  I couldn't tell you when it started. But iTunes uses the same font (I believe) and it looks fine.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1791'>
+<cite>
+<a href="/users/ckd">ckd</a>
+<span class='when'><a href="#comment_1791"><time data-relative="true">2005-05-01T11:06:06Z</time></a></span>
+</cite>
+<blockquote><p>This appears to be a Tiger issue; I upgraded today, and noticed it immediately afterward.</p>
+<p>(Release version of Tiger, build 8A428)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1792'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1792"><time data-relative="true">2005-05-01T11:36:37Z</time></a></span>
+</cite>
+<blockquote><p>I also have upgraded to Tiger now and see it too. To me they actually look smaller. I wonder if something  font-related has changed.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1793'>
+<cite>
+<a href="/users/drew-pauley">Drew Pauley</a>
+<span class='when'><a href="#comment_1793"><time data-relative="true">2005-05-02T10:29:35Z</time></a></span>
+</cite>
+<blockquote><p>Yes, the stars got very dinky when I upgraded to Tiger. The font Synergy uses for the floater must have  been changed without warning.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1794'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1794"><time data-relative="true">2005-05-02T16:58:32Z</time></a></span>
+</cite>
+<blockquote><p>Synergy uses the standard system font (as returned by Cocoa's NSFont -systemFontOfSize: method, and it  does look like it's changed. The unicode character for &quot;black star&quot; is much smaller on Tiger compared to  &quot;white star&quot;. So looks like I'll have to do one of two things: either start using the &quot;white star&quot; on Tiger, or  stop using fonts to draw stars.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1795'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1795"><time data-relative="true">2005-05-03T18:43:58Z</time></a></span>
+</cite>
+<blockquote><p>I've &quot;fixed&quot; this in Synergy Advance by using &quot;white star&quot; instead of &quot;black star&quot;. Will soon apply the same  fix to Synergy Classic.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1796'>
+<cite>
+<a href="/users/dan">Dan</a>
+<span class='when'><a href="#comment_1796"><time data-relative="true">2005-05-08T07:24:28Z</time></a></span>
+</cite>
+<blockquote><p>Just a ditto, under Tiger Synergy Classic seems to work just fine, except that the star icons for ratings are  very small.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1797'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1797"><time data-relative="true">2005-05-13T20:14:08Z</time></a></span>
+</cite>
+<blockquote><p>Fixed in Synergy 1.9, which will be released later today.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1798'>
+<cite>
+<a href="/users/daniel-s-dunnam">Daniel S Dunnam</a>
+<span class='when'><a href="#comment_1798"><time data-relative="true">2005-05-17T03:28:56Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #9)</p>
+<blockquote>
+<p>Fixed in Synergy 1.9, which will be released later today.</p>
+</blockquote>
+<p>since 1.9 and the &quot;white star fix&quot; i now HAVE the problem, where i didn't have it before 1.9. I too am using  Tiger. maybe setting which star is used could be a pref so that it could be set to be 'black star' or 'white  star' depending on which works on the user's machine.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1799'>
+<cite>
+<a href="/users/darkside">Darkside</a>
+<span class='when'><a href="#comment_1799"><time data-relative="true">2005-05-25T14:25:54Z</time></a></span>
+</cite>
+<blockquote><p>I hope the current &quot;white star&quot; solution (whatever it is) for Tiger is temporary, because I really dislike the new look: for me, the rating star now has a white outline instead of being solid white.  It's backtracking from an Enhancement in 0.9.9 (6 May 2003): Rating stars in floaters now look more &quot;solid&quot;.  :-)</p>
+<p>Was this change in appearance intended, or just something to put up with in the short term until a permanent solution is decided upon?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1800'>
+<cite>
+<a href="/users/darkside">Darkside</a>
+<span class='when'><a href="#comment_1800"><time data-relative="true">2005-05-25T14:42:19Z</time></a></span>
+</cite>
+<blockquote><p>Just thought of this after talking to a friend and reading Comment #10: Daniel, what sort of instal did you do for Tiger?  Clean Install, Upgrade, Archive?</p>
+<p>My friend did an Upgrade, and was having problems with the black star in another program, which appears to be fine on my end, and I did a Clean Install.  Could hat have any affect on the issue?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1801'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1801"><time data-relative="true">2005-07-04T08:39:51Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 269 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1802'>
+<cite>
+<a href="/users/ckd">ckd</a>
+<span class='when'><a href="#comment_1802"><time data-relative="true">2005-08-11T23:42:28Z</time></a></span>
+</cite>
+<blockquote><p>See <a href="http://daringfireball.net/2005/08/star_star" class="external">http://daringfireball.net/2005/08/star_star</a> for more information about this issue.  It is apparently a  difference in the Unicode font that's getting picked for this glyph.</p>
+<p>The apparent fix is to specifically use the glyph from &quot;Hiragino Kaku Gothic Pro&quot;, or &quot;Osaka&quot;, or &quot;Zapf  Dingbats&quot;...and avoid getting the one from &quot;Mshtakan&quot;.</p>
+<p>(Since I prefer the look of the old &quot;black star&quot; glyph, I'd love to see this fixed such that we can get those, or  have a preference option, or something.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1803'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1803"><time data-relative="true">2005-09-11T21:43:25Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 296 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1804'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1804"><time data-relative="true">2006-02-18T21:44:41Z</time></a></span>
+</cite>
+<blockquote><p>You'll be pleased to know that I've finally found what appears to be a reliable workaround for this problem. The stars now look equally good on Tiger as they do on Jaguar/Panther.</p>
+<p>This fix will be publicly available when version 2.6 comes out (soon). To be notified of the release announcement by email subscribe here:</p>
+<p><a href="http://lists.wincent.com/" class="external">http://lists.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1805'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1805"><time data-relative="true">2006-03-09T08:23:30Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+<p>The 2.6 release which includes the fix is now available for download.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/03/synergy_26_rele.php" class="external">http://wincent.com/a/news/archives/2006/03/synergy_26_rele.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Use a menu rather than a buffer?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Use a menu rather than a buffer?</div>
+<h1 class='major'>Use a menu rather than a buffer?</h1>
+<div class='topic' id='topic_461'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/marcus">Marcus</a>
+<span class='when'>
+<a href="/forums/command-t/topics/461"><time data-relative="true">2011-02-20T04:51:51Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm a recent convert from fuzzyfindertextmate (still using it for buffers actually, but command-t for files). I'm loving command-t so far, especially the ease of installation and the fact that it's actively maintained. </p>
+<p>I was wondering if there was a reason behind using a new buffer for results rather than the type of menu fuzzyfinder uses that overlays existing buffers? I find it a bit jarring to have the whole screen shift around as results are shown and filtered. Perhaps it could be a preference to have results come up in a menu?</p>
+<p>Again, thanks for your work on command-t, it's great.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6727'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6727"><time data-relative="true">2011-02-20T14:41:49Z</time></a></span>
+</cite>
+<blockquote><p>I don't actually know how FuzzyFinder is doing that overlay thing. I have noticed, however, that it seems to be quite slow and flakey, so I am not sure if it is exactly the model to emulate. I would be interested, however, in knowing exactly how it does it.</p>
+<p>The buffer trick that Command-T uses is modelled on the same technique used in Lusty Explorer. As I note in the readme, this is the first Vim plug-in I've made, so I studied Lusty Explorer for tips on how to get a lot of basic stuff done, as it is a good example of a fairly large and complex plug-in written in Ruby.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6728'>
+<cite>
+<a href="/users/marcus">Marcus</a>
+<span class='when'><a href="#comment_6728"><time data-relative="true">2011-02-21T19:27:28Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for your reply. I'll look at FuzzyFinder and see how he does the overlay. I haven't found it to be flakey, but it does feel slower. I am not sure if that's a product of the menu style being used to show results or something else going on.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6800'>
+<cite>
+<a href="/users/david-lee">David Lee</a>
+<span class='when'><a href="#comment_6800"><time data-relative="true">2011-04-12T05:53:05Z</time></a></span>
+</cite>
+<blockquote><p>It might just be that fuzzyfinder_textmate is slow at retrieving the results. Rendering a menu might be just as fast as using a buffer.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9951'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_9951"><time data-relative="true">2012-08-10T22:16:18Z</time></a></span>
+</cite>
+<blockquote><p>Any updates? Would be really glad to have that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9953'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9953"><time data-relative="true">2012-08-11T18:46:35Z</time></a></span>
+</cite>
+<blockquote><p>The current buffer-based solution works well for me, and represents a fairly large part of the logic in the code base, so I haven't spent any time looking at alternative implementations.</p>
+<p>If somebody is sufficiently interested in the idea, it would be up to him or her to whip it up. I'd be happy to look at patches, although any patch that I would apply would probably have to support both methods, keeping the buffer-based method as the default, as the user base is probably pretty used to it by now.</p>
+<p>One point of the original poster that I never addressed was about the current implementation being &quot;pretty jarring&quot; because it cause so many screen elements to move around. My personal take on this is that you can make that problem goes away entirely with a couple of settings in your <code>~/.vimrc</code>:</p>
+<pre>let g:CommandTMatchWindowReverse   = 1
+let g:CommandTMaxHeight            = 10</pre>
+<p>Those limit the match listing to a maximum of 10 rows, and reverse the order of it so the best match is always closest to the bottom (ie. immediately next to the prompt). Other variations are possible, but I think limiting the maximum height is the key one.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

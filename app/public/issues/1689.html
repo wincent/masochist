@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1689: Lines with a single space and no subsequent characters should not parse to &lt;pre&gt; element
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1689</div>
+<div class='issue' id='issue_1689'>
+<form class="edit_issue" id="edit_issue_1689" action="/issues/1689" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="WRIu1Vlg/ShtrNRK2V6DdXkpkgr/YaAtAPDMD9YtWUFt4JBi/u0nfbQg573od9DBzKv7NvSNLjEg7xnx8vU+ZQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1689:
+<span data-name='issue[summary]'>
+Lines with a single space and no subsequent characters should not parse to &lt;pre&gt; element
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-09-12T15:32:12Z</time>, updated <time data-relative="true">2010-09-14T07:28:18Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Sorry for the lame bug report, but I have fairly non-technical users of my wiki, and this issue is very frustrating for them.</p>
+<p>What happens: If I put a space character in a line with no subsequent text (most often comes up when I copy and past from an html document), your wikitext library parses it to include a &quot;pre&quot; tag.</p>
+<p>What I expect: if the line has no printable/visible characters, it should render as a blank line; probably as a &lt;br /&gt; element, based on the behavior of the mediawiki parser.A</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6271'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6271"><time data-relative="true">2010-09-12T17:56:31Z</time></a></span>
+</cite>
+<blockquote><p>If you check out the <a href="https://wincent.com/products/wikitext/doc/" class="external">list of design goals</a> you'll see that one of the goals was to be &quot;informative: when provided invalid markup the translator should fail gracefully and emit HTML that provides useful visual feedback about where the errors are in the input&quot;.</p>
+<p>So that's why it behaves the way it does; if you've got a stray space in your markup then you almost certainly inserted it by mistake, so the presentation of it as a <code>&lt;pre&gt;&lt;/pre&gt;</code> span brings your attention to an error that you otherwise would've overlooked.</p>
+<p>Having said that, this strict behavior is probably appealing to me because I'm a programmer; I can see why this might be puzzling for non-technical users, so I'll have a think about changing it.</p>
+<p>P.S. Your bug report isn't &quot;lame&quot;.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6282'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6282"><time data-relative="true">2010-09-14T01:55:42Z</time></a></span>
+</cite>
+<blockquote><p>All fair points. In defense of the bug, design goal five of <em>easy to use</em> identifies the importance of being &quot;as close as possible&quot; to mediawiki.</p>
+<p>To the point of being informative: it's not exactly a question of invalid markup and/or graceful failure, because it's <em>valid</em> in the mediawiki reference implementation. The only question is whether it's a valid &quot;pre&quot; tag or a valid &lt;/p&gt; tag, right?</p>
+<p>One other thing that occurred to me: it will fail silently if the page's css doesn't have visible formatting for a &quot;pre&quot; element (ie - no border, no background, etc), so you're basing your putative benefits on assumed page behavior.</p>
+<p>Having said that, It's an easy change for me to make as a work around downstream, too. It just comes at the cost of my preferred &quot;pre&quot; formatting when it's deliberate :)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6285'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6285"><time data-relative="true">2010-09-14T07:28:18Z</time></a></span>
+</cite>
+<blockquote><p>Yep, you're right that one of the other goals is being &quot;as close as possible&quot; to MediaWiki syntax. But like all things it has to be balanced ie. it is not &quot;as close as possible to MediaWiki, at any cost&quot;.</p>
+<p>I remember when I first implemented the parser (back in 2007) I minutely studyied the output of the MediaWiki parser using dozens of permutations of inupt, and copyied its behavior <em>where it made sense to do so</em>. I explicitly avoided replicating things which I considered to be buggy or inconsistent behavior in MediaWiki (and there are <em>lots</em> of strange edge cases in the MediaWiki parser which are products of its implementation details rather than intentional design).</p>
+<p>So what I'm saying here is that the different design goals are not always going to point you in the same direction, and you sometimes have to make trade-offs. Being close to MediaWiki syntax is one goal, but these things are also goals:</p>
+<ul>
+<li>providing visible feedback in the face of mangled input</li>
+<li>simplicity and consistency of rules (ie. once you understand the basic rules of the translator you should be able to predict what it is going to emit for any given output; you should not have to be aware of exceptions or have to think about things like &quot;if X then Y, but if Z then X&quot; and so on... an example of a simple rule here is &quot;a line beginning with a space is a <code>&lt;pre&gt;&lt;/pre&gt;</code> span)</li>
+<li>feasibility and simplicity of implementation (ie. simple, consistent rules are the easiest ones to implement, so any place where things are complicated &mdash; things like nested lists, for example &mdash; are going to add to the complexity of the translator and bring with them the risk of bugs; this means that whenever you talk about adding complexity or exceptions to the translator you have to ask yourself if it is worth the cost)</li>
+</ul>
+<p>At this point, given that the base syntax of the Wikitext extension is &quot;close enough&quot; to MediaWiki syntax to (generally) be non-surprising to people who use it, when it comes to edge cases like this one (a non-empty line containing only whitespace) merely because MediaWiki does something in that particular edge case is not very compelling (ie. I am more interested in being faithful to the <em>general</em> behavior of MediaWiki rather than copying mere edge cases).</p>
+<p>I am more swayed by the simple argument that it should be &quot;easy to use&quot; or &quot;non-surprising&quot; for non-technical users (not because of the comparison with MediaWiki, but simply because a stray space can certainly creep in easily enough as you point out, like when copying-and-pasting).</p>
+<p>The only things which concerns me are:</p>
+<ul>
+<li>What kind of behavior do you expect when we start seeing multiple non-empty lines filled only with whitespace? or whitespace-only non-empty lines which are adjacent to &quot;real&quot; <code>&lt;pre&gt;&lt;/pre&gt;</code> spans eg:</li>
+</ul>
+<pre>normal para
+
+ &lt;--- whitespace
+ &lt;--- more whitespace
+ &lt;--- more whitespace
+ line 1
+ line 2
+ line 3
+
+another normal para</pre>
+<p>So here what are you expecting to be done with those leading &quot;blank&quot; lines? Currently, they would appear as part of the <code>&lt;pre&gt;&lt;/pre&gt;</code> span. Should they be deemed a mistake and silently eaten? Should they be converted to <code>&lt;br /&gt;</code> tags? It's fairly obvious that the <code>line 1</code>, <code>line 2</code>, <code>line 3</code> part of the input is supposed to be a <code>&lt;pre&gt;&lt;/pre&gt;</code> span &mdash; and if it's not supposed to be that then the user should get some visible feedback about the problem in their markup &mdash; but it's not clear whether those leading lines are intentional or mistaken.</p>
+<p>I'm inclined to think that:</p>
+<ul>
+<li>such lines are most likely to be a mistake, so should be left in the output so that the user can see the mistake</li>
+<li>even if they're not a mistake, then they should be left in the output; there is nothing more infuriating than some dumb program trying &quot;correct&quot; my &quot;mistakes&quot; when they are actually intentional, and even more so when there is no way of escaping the input in some way to force it to do what I want (although in this case I suppose I could use explicit <code>&lt;pre&gt;&lt;/pre&gt;</code> tags instead of using the leading-space syntax)</li>
+</ul>
+<p>I am not much of a copy-and-paster myself when it comes to writing using wikitext markup, but I do occasionally make a mistake like this:</p>
+<pre>para 1 blah blah blah
+ &lt;-- typing fast, so accidentally insert a space here too
+para 2</pre>
+<p>It's fairly obvious that this is not intentional, and could be automatically corrected for the user. My doubt is about where to draw the line. If there are multiple such lines, should they be corrected? Or translated to <code>&lt;br /&gt;</code> tags? If there is lots of whitespace on the line should it be corrected?</p>
+<p>From the implementation perspective this is a little complicated, although not impossible, because it requires the translator to buffer the input tokens as it scans multiple lines, waiting to see if anything meaningful eventually gets scanned, and only at the end can it decide whether to emit all the buffered markup as a <code>&lt;pre&gt;&lt;/pre&gt;</code> tag or something else. Things are definitely simpler when the translator can mark things up a line at a time (or better still, a token at a time).</p>
+<p>Anyway, sorry for the lengthy response. It's just that this is a much more complicated issue than it might seem at first (compare that with <a href="/issues/1690">ticket #1690</a> which you opened, which is actually a much clearer case).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

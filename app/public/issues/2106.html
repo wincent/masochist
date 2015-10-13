@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2106: Another Command-T segfault thread..
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2106</div>
+<div class='issue' id='issue_2106'>
+<form class="edit_issue" id="edit_issue_2106" action="/issues/2106" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ZHp+ZERMJg4SP2bQcrVfOxsbNEJYpFw35Lx5I6hakrhQiMDT48H8W8uzVSdDnAyPrpldflNI0ivEo6zdjIL1nA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2106:
+<span data-name='issue[summary]'>
+Another Command-T segfault thread..
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-08-20T19:10:56Z</time>, updated <time data-relative="true">2014-03-22T20:35:03Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi there, thanks for making this plugin available</p>
+<p>I'd like to report &quot;yet-another&quot; segfault bug. I realize that most of the times this happens because a mismatch between Ruby versions, however this does not seem to be the case with me.</p>
+<p>I am using Homebrew on mac and I use the homebrew's Ruby 2.0.0 version to compile both vim 7.4 and to make Command-T.</p>
+<p><code>which ruby</code> returns</p>
+<pre>/usr/local/bin/ruby</pre>
+<p><code>ruby -v</code> returns</p>
+<pre>ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.0]</pre>
+<p>inside vim running ':ruby puts RUBY_VERSION' yields '2.0.0'</p>
+<p>My command-t plugin directory shows revision 8866bbc, from 4 months ago.</p>
+<p>It works fine but after some minutes it invariably throws the infamous: &quot;Vim: Caught deadly signal SEGV&quot;</p>
+<p>I don't know how to reproduce it as it seems a bit erratic, but it always happens at some point.</p>
+<p>I don't know exactly how to obtain a stack trace, but I can certainly do so if instructed.</p>
+<p>Hope this helps.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10348'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10348"><time data-relative="true">2013-08-21T04:56:10Z</time></a></span>
+</cite>
+<blockquote><p>Haven't seen this one myself. I'm also using Homebrew-installed Vim, but mine is using the system Ruby (1.8.7). I do know that colleagues at my work are using Command-T with Vim 7.4 with Ruby 2.0.0, albeit on a different OS (CentOS).</p>
+<p>(I don't really feel any urgency to have Vim use the latest and greatest Ruby, so I haven't bothered updating my local dev environment yet.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10986'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10986"><time data-relative="true">2014-03-22T20:35:00Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to lack of activity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10987'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10987"><time data-relative="true">2014-03-22T20:35:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

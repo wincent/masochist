@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1930: command-t suddenly stopped indexing some files
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1930</div>
+<div class='issue' id='issue_1930'>
+<form class="edit_issue" id="edit_issue_1930" action="/issues/1930" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="NX63mf9eLxxQKidzcIEHB81+mmQQ/6sKjLK+ij4C9k4BjAkuWNP1SYmmFIRBqFSzePzzWBsTJRasrWt0GtqRag==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1930:
+<span data-name='issue[summary]'>
+command-t suddenly stopped indexing some files
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-11-30T09:19:43Z</time>, updated <time data-relative="true">2011-12-01T09:16:30Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Opening command-t and typing 'faqcontr' suddenly doesn't list the app/controllers/faqs_controller.rb like before</p>
+<p>Instead it only shows the following three files:</p>
+<pre>test/functional/admin/faqs_controller_test.rb
+test/functional/admin/faq_categories_controller_test.rb
+test/functional/inquiries_controller_test.rb</pre>
+<p>It might be that I've mashed the wrong keys somehow during hard vim usage that somehow made command-t stop indexing some directories.</p>
+<p>It doesn't help to restart vim. Haven't tried restarting the whole system.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7286'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7286"><time data-relative="true">2011-11-30T18:16:28Z</time></a></span>
+</cite>
+<blockquote><p>Sounds like the number of files in your directory exceeds the <code>g:CommandTMaxFiles</code> setting (which defaults to 10,000). You can increase that.</p>
+<p>Alternatively, your <a href="/wiki/Vim">Vim</a> <code>'wildignore'</code> setting might be excluding those files, if you've changed that recently (which I doubt).</p>
+<p>See the docs for more info.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7287'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7287"><time data-relative="true">2011-11-30T18:16:32Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7291'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7291"><time data-relative="true">2011-12-01T05:19:35Z</time></a></span>
+</cite>
+<blockquote><p>That seems to be the case. Is there some way to check how many files are indexed so you know when you need to consider updating wildignore or changing the max files setting?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7292'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7292"><time data-relative="true">2011-12-01T08:20:58Z</time></a></span>
+</cite>
+<blockquote><p>You could get an approximate idea (ie. not taking into account ignored files) in the shell with:</p>
+<pre class="shell-syntax">$ find . -type f | wc -l</pre>
+<p>In general you can just up the limit until you notice some kind of performance degradation. On my machine, for example, I've upped it to 30,000 with no problems. This gives me considerable headroom in the largest project I'm currently working on (about 11k files).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7294'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7294"><time data-relative="true">2011-12-01T08:53:28Z</time></a></span>
+</cite>
+<blockquote><p>Well that's gonna count files inside dot directories too right?</p>
+<p>I think command-t feels a little bit sluggish already with 10k files. But I'll try upping it to 20k and see what happens.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7295'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7295"><time data-relative="true">2011-12-01T08:59:47Z</time></a></span>
+</cite>
+<blockquote><p>Well I remembered you can do it with find | grep -v '/\.' | wc -l</p>
+<p>And I upped the limit to 20k and yeah it's still really fast. I don't where I got it from that it sometimes feels a little bit sluggish.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7296'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7296"><time data-relative="true">2011-12-01T09:16:30Z</time></a></span>
+</cite>
+<blockquote><p>In my experience the three things that can make it feel sluggish are:</p>
+<ul>
+<li>opening it in a directory with a million files and the <code>g:CommandTMaxFiles</code> set too high</li>
+<li>not having <code>'wildignore'</code> appropriately set to ignore hierarchies that you're not interested in</li>
+<li>having an ambiguous mapping that Vim has to wait for to disambiguate</li>
+</ul>
+<p>That last one is particularly subtle. In my case I had Command-T mapped to <code>&lt;Leader&gt;t</code> (ie. <code>\t</code>), and there was a noticeable delay every time I opened it, even though it was instant for colleagues who have identical machines to mine.</p>
+<p>Turned out that the <a href="/wiki/Align.vim">Align.vim</a> plug-in defined a bunch of other mappings that all began with <code>&lt;Leader&gt;t</code>, which meant that whenever <a href="/wiki/Vim">Vim</a> saw <code>&lt;Leader&gt;t</code> it had to pause for a second to see if I was going to continue typing one of the letters corresponding to those other mappings.</p>
+<p>In the end I got around it by preventing Align.vim from loading the file that sets up those conflicting mappings with a line like this in my <code>~/.vimrc</code>:</p>
+<pre>let g:loaded_AlignMapsPlugin = &quot;v41&quot;</pre>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

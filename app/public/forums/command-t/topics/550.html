@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+fatal error: 'match.h' file not found
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; fatal error: &#39;match.h&#39; file not found</div>
+<h1 class='major'>fatal error: 'match.h' file not found</h1>
+<div class='topic' id='topic_550'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/sander">Sander</a>
+<span class='when'>
+<a href="/forums/command-t/topics/550"><time data-relative="true">2013-10-11T12:11:39Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello all,</p>
+<p>I run into an issue with compiling command-t. Can anyone help me out here?</p>
+<p>Unfortunately I've got no clue where to go, so I am asking here.</p>
+<p>Some details:</p>
+<ul>
+<li>Mac OS X 10.8.5</li>
+<li>VIM version: Vi IMproved 7.3 (2010 Aug 15, compiled Jul 16 2013 22:39:04) (with Ruby support)</li>
+<li>Ruby version: ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]</li>
+</ul>
+<p>Here is the output of the make:</p>
+<pre>
+sander@*:~/.vim/ruby/command-t$ ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+sander@*:~/.vim/ruby/command-t$ make
+xcrun cc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin12.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -c ext.c
+ext.c:24:10: fatal error: 'match.h' file not found
+[/tags/include #include] &quot;match.h&quot;
+         ^
+1 error generated.
+make: *** [ext.o] Error 1
+</pre>
+<p>What is wrong? :)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10577'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10577"><time data-relative="true">2013-10-11T15:12:39Z</time></a></span>
+</cite>
+<blockquote><p>Where did you get the Command-T source code from? It looks like a file is missing. If you got it as a Vimball, I would try re-extracting it; it is a known issue that it sometimes (often?) fails to extract all the files...</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1732: Search through file names
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1732</div>
+<div class='issue' id='issue_1732'>
+<form class="edit_issue" id="edit_issue_1732" action="/issues/1732" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="aKISyWQiAw3DfBYH6zPuc4RpY6HZVo99xWX8gEHaxBJcUKx+w6/ZWBrwJfDaGr3HMesKndK6AWHleil+ZQKjNg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1732:
+<span data-name='issue[summary]'>
+Search through file names
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-11-09T08:57:13Z</time>, updated <time data-relative="true">2015-04-10T05:52:24Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>I have a pretty big folder with source files (about 30000 files). There are a lot of subfolders with names I'm not interested in. Is it even possible to search through filenames only?</p>
+<p>Actually, I use <a href="http://www.wholetomato.com/products/features/fis.asp" class="external">http://www.wholetomato.com/products/features/fis.asp</a> a lot. It would be nice to get some features in Command-T.</p>
+<p>E.g. I miss multiple file opening (when you search for Foo, find files Foo.h and Foo.cpp, and then select and open them simultaneously).</p>
+<p>Thank you</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6440'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6440"><time data-relative="true">2010-11-09T10:39:14Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>I have a pretty big folder with source files (about 30000 files). There are a lot of subfolders with names I'm not interested in. Is it even possible to search through filenames only?</p>
+</blockquote>
+<p>I gather from this that you mean that if you type &quot;foo&quot;, for example, only the filename part of the path would be searched so &quot;a/b/c/foo.txt&quot; would be considered a match but &quot;foo/hello.txt&quot; would not. Is that right?</p>
+<p>If that's the case, see <a href="/issues/1516">ticket #1516</a>. The short version is: Command-T is designed to use a &quot;path-centric&quot; mentality and not a &quot;filename-centric&quot; one. So if you're thinking in terms of filenames only, it's not going to be the right tool for the job. You either need to change your mindset, or change your tool. (And I'd suggest changing your mindset, as thinking in a &quot;filename-centric&quot; way when you're looking for one file among 30,000 is unlikely to be effective.)</p>
+<p>You might also want to check out <a href="/forums/command-t/topics/421">this forum topic</a>, which specifically talks about searching massive hierarchies.</p>
+<p>Having said that, you have three options here:</p>
+<ol>
+<li>Use Vim's <code>'wildignore'</code> setting to tell Command-T which subfolders should be ignored. One nice benefit of this is that other file-opening mechanisms in Vim will also ignore the same files (it also means that this really is only for stuff that you never want to open). See the help (<code>:h command-t-wildignore</code> and also <code>:h 'wildignore'</code>) for more info.</li>
+<li>If you want to really focus on a specific sub-area of your project, you can reduce the scope of Command-T's search by providing it with a specific starting path argument (eg. <code>:CommandT path/to/some/subdirectory</code>).</li>
+<li>Use a different plug-in which <em>does</em> use a &quot;filename-centric&quot; philosophy &mdash; for example, you could use FuzzyFinder in conjunction with a searchstring like &quot;**/foo&quot; &mdash;  but I would recommend that you try embracing the &quot;path-centric&quot; mindset first as I really do think it's more effective (that's why I wrote Command-T in the first place, after having tried the alternatives and not being satisfied with them).</li>
+</ol>
+<blockquote>
+<p>Actually, I use <a href="http://www.wholetomato.com/products/features/fis.asp" class="external">http://www.wholetomato.com/products/features/fis.asp</a> a lot. It would be nice to get some features in Command-T.</p>
+<p>E.g. I miss multiple file opening (when you search for Foo, find files Foo.h and Foo.cpp, and then select and open them simultaneously).</p>
+</blockquote>
+<p>Can you please file separate tickets for each request, so that nothing gets overlooked?</p>
+<p>As far as that specific feature you mention, I'm not really sure if it first with the Command-T way. The tool is optimized to help you open that one file which you know you want, but which happens to be buried in a project among a bunch of others, and you want to get to it as fast as possible. There are plug-ins like the excellent <a href="http://www.vim.org/scripts/script.php?script_id=31" class="external">a.vim</a> for opening alternate files (eg. opening the header when you're looking at the implementation, and such), and other plug-ins extend that functionality (for a good example, see how <a href="http://www.vim.org/scripts/script.php?script_id=1567" class="external">rails.vim</a> adds the ability to easily jump between models, views and controllers and such).</p>
+<p>In the 30,000 file project you mention, I'll bet that if you type &quot;Foo&quot; you'll get a lot more than just two results returned. How many of them would you want to open? 2? 3? 10? How likely is it that the top 10 results will contain the exact file you want?</p>
+<p>I think a better way to operate would be just open the file you want to work on right now, and then open the alternates when you want to edit them (either with a.vim or with Command-T). Note that I am planning on adding buffer navigation to Command-T (<a href="/issues/1608">ticket #1608</a>) in the future, so this will make jumping between already open files easier.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6441'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6441"><time data-relative="true">2010-11-09T11:49:39Z</time></a></span>
+</cite>
+<blockquote><p>OK, I see.</p>
+<p>It seems Command-T is just a fast way of navigation through well-know hierarchies. Like a turbo jump to /usr/local/bin by firing ulb. Anyway, you can't do that as you will stuck with / scanning :-)</p>
+<p>Sorry, but &quot;path-centric&quot; mindset seems pretty useless to me. Actually, most of files in our project have unique names. And I don't remember those names (tens of thousands). Sure, I don't remember most of folder names (thousands of them). I just remember that we have, say, notification broadcaster, somewhere. So, I just type &quot;broad notif&quot; and got the correct result like: SynchNotificationBroadcastingEngine.h/cpp and similar files. Here it is.</p>
+<p>Possible, &quot;path-centric&quot; is good enough for pretty small projects or middle-sized web projects with lots of the similar filenames like index.html :-)</p>
+<p>Anyway, thanks a lot for you answer and work. Vim became a lot better with Command-T.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6442'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6442"><time data-relative="true">2010-11-09T16:44:00Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Sorry, but &quot;path-centric&quot; mindset seems pretty useless to me. Actually, most of files in our project have unique names. And I don't remember those names (tens of thousands). Sure, I don't remember most of folder names (thousands of them). I just remember that we have, say, notification broadcaster, somewhere. So, I just type &quot;broad notif&quot; and got the correct result like: SynchNotificationBroadcastingEngine.h/cpp and similar files. Here it is.</p>
+</blockquote>
+<p>Well, I think you've got it back to front. It is precisely in your type of project that a path-centric mentality will help you navigate faster than you could with just file names.</p>
+<p>As you said, there are fewer folder names than there are file names, so by definition they are &quot;rarer&quot; and therefore more valuable, statistically speaking, as a means of specifying location. Include <em>some</em> letters from your path, and you'll narrow down the list of possible results much faster. Note that you don't have to spell out the entire path; pretty much any characters you supply from the earlier path components will be better than not specifying any at all (ie. just say it is a file inside <code>spec/controllers/admin/notifications/</code>, you don't have to spell out &quot;specconadmnot&quot;; including any substring from there will help narrow things down). Also note that some positions in the path are weighted more highly than others (eg. searching for &quot;ab&quot; will rank <code>annotated_bank</code> more highly than <code>delegate_subdomain</code>), so you should try to enter characters which appear after slashes, underscores, hyphens and such.</p>
+<p>I honestly think that if you actually used the tool the way it is meant to be used that you'd find it to be the best way to get things done.</p>
+<p>I do wonder about how your 30,000 file project must be organized, if you have no notion of where files appear in its hierarchy. Don't you have things organized in modules or anything like that?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13033'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13033"><time data-relative="true">2015-04-10T05:51:47Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13034'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13034"><time data-relative="true">2015-04-10T05:52:24Z</time></a></span>
+</cite>
+<blockquote><p>Closing as a &quot;won't fix&quot; kind of thing.</p>
+<p>The ability to open multiple files at once is also kind of handed via the quickfix binding (<code>&lt;C-q&gt;</code>).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

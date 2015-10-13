@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1494: Don't show dotfiles unless query contains a dot
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1494</div>
+<div class='issue' id='issue_1494'>
+<form class="edit_issue" id="edit_issue_1494" action="/issues/1494" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="lMBwzjbOIOqvhclpvMnrOIfPs+vAz/1XocRlR1OZqFmgMs55kUP6v3YJ+p6N4LiMMk3a18sjc0uB27C5d0HPfQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1494:
+<span data-name='issue[summary]'>
+Don't show dotfiles unless query contains a dot
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-07T14:43:41Z</time>, updated <time data-relative="true">2010-03-08T03:38:03Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Just need to decide whether to apply this only at the start of the path; eg:</p>
+<pre>.gitignore
+.cpan/...</pre>
+<p>Or at the beginning of any path component in the path eg:</p>
+<pre>stuff/.gitignore</pre>
+<p>I am leaning towards the latter, but that presents a problem with a search string like:</p>
+<pre>sgi</pre>
+<p>Or:</p>
+<pre>s.gi</pre>
+<p>Because we can't start our query with a dot in that case.</p>
+<p>Perhaps any query that includes a dot (anywhere at all) should be enough to trigger the exception.</p>
+<p>Likewise, may want to enforce alphabetical sorting whenever the query string is <em>only</em> a dot and nothing else.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5341'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5341"><time data-relative="true">2010-03-07T15:05:29Z</time></a></span>
+</cite>
+<blockquote><p>Current behaviour:</p>
+<ul>
+<li><code>Match</code> class returns <code>true</code> for <code>matches?</code> with empty search string.</li>
+<li><code>Matcher</code> class uses alphabetical sorting in <code>sorted_matches_for</code> method when search string is empty.</li>
+</ul>
+<p>So, would need to:</p>
+<ul>
+<li>Make <code>Match</code> class return <code>false</code> for <code>matches?</code> when <em>any</em> path component in the path begins with a dot, <em>unless</em> the search string contains a dot</li>
+<li>Make <code>Matcher</code> class use alphabetical sorting in <code>sorted_matches_for</code> not only for empty search strings but also for search strings which contain <em>only</em> a dot</li>
+</ul>
+<p>And I think with those changes we'll basically have the desired behavior.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5342'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5342"><time data-relative="true">2010-03-07T15:07:06Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Don't show dotfiles unless query starts with a dot</li>
+<li><strong>To:</strong> Don't show dotfiles unless query contains a dot</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5343'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5343"><time data-relative="true">2010-03-07T15:13:17Z</time></a></span>
+</cite>
+<blockquote><p>Note might be one tiny little gotcha with the &quot;only if contains a dot&quot; requirement; namely, that the offset corresponding to the dot must actually match up with a dot at the beginning of a path component.</p>
+<p>ie. given:</p>
+<pre>foo/bar/.secret/baz</pre>
+<p>And abbrev:</p>
+<pre>fb.baz</pre>
+<p>We want to match.</p>
+<p>But given:</p>
+<pre>foo/bar/wincent.com/.secret/baz
+foo/bar/wincent.com/baz
+foo/bar/.secret/baz</pre>
+<p>Is it really so clear which one we are expecting to match? Maybe the user does want the first result, but because the first dot appears in the middle of a component, they won't be shown the match if we impose that restriction on &quot;must actually match up with a dot at the beginning of a path component&quot;. Alternatively, maybe they don't care about invisible files at all. How can we know this?</p>
+<p>The pitfall here is given paths like:</p>
+<pre>.Trash/wanted.docs/other/map/baz
+web/wincent.com/baz</pre>
+<p>And a search string like:</p>
+<pre>w.comb</pre>
+<p>It's hard to know which one the user really wanted, and if they actually care to see hidden files at all.</p>
+<p>Will need to think more on this.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5344'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5344"><time data-relative="true">2010-03-07T15:19:50Z</time></a></span>
+</cite>
+<blockquote><p>To summarize:</p>
+<ul>
+<li>if we require the dot to be at the start of the search string we lose the ability to search by specifying chars in the entire path</li>
+</ul>
+<p>eg. can't search for:</p>
+<pre>foo/bar/xyz/.gitignore</pre>
+<p>with:</p>
+<pre>fbz.g</pre>
+<ul>
+<li>if we allow the dot anywhere then we might be pulling in a whole bunch of rubbish we're not interested in</li>
+</ul>
+<p>eg. thousands of files under:</p>
+<pre>.cpan/...</pre>
+<p>For an innocent query like:</p>
+<pre>foo.c</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5345'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5345"><time data-relative="true">2010-03-07T15:34:57Z</time></a></span>
+</cite>
+<blockquote><p>I guess in most working directories the number of dotfiles isn't high enough that  pulling in too many dotfiles by accident is much of a problem.</p>
+<p>It only is a problem with pathological cases like the home directory with literally thousands of files inside dot directories (mine, for example, has about 12k paths that are either dot files or are an item inside a dot directory hierarchy).</p>
+<p>So I guess we have to optimize the design for the most common workflow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5346'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5346"><time data-relative="true">2010-03-07T16:59:37Z</time></a></span>
+</cite>
+<blockquote><p>Two thoughts have occurred to me.</p>
+<p>One: even though this approach of displaying dot files whenever a period appears may end up with some &quot;false positives&quot;, it's still better than what we have now (where we <em>always</em> show dotfiles).</p>
+<p>Two: there might actually be a fairly elegant algorithm for checking whether to display a dotfile or not, which I will describe below.</p>
+<p>Basically, in pseudo-code:</p>
+<pre># this is the Match class, when deciding whether or not
+# to classify something as a match
+if match contains a dot at the beginning of any path component
+  (note that this conditional doesn't require a separate pass through the string,
+   it can be done on the initial pass while trying to detect a match; we flag such
+   strings for a separate pass through the string as described here)
+  scan through each letter of query string
+    if character is a dot
+      if offset is zero
+        this is a path starting with a dot: we have a match!
+      else
+        look up character just to left (offset - 1)
+        if it is a path separator (/)
+          this is a path component starting with a dot: we have a match!
+        else
+          this particular dot isn't enough to consider this a match
+          but seeing as the match algorithm always picks the leftmost match
+          there might actually be another qualifying dot up ahead before
+          the next match... so:
+          scan ahead up to but not including next matched offset
+          if we see a dot before we hit the next offset
+            and if that dot is right after a path separator
+            then we have a match
+        end
+      end
+    end
+  end
+end</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5347'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5347"><time data-relative="true">2010-03-07T17:19:25Z</time></a></span>
+</cite>
+<blockquote><p>Applying the algorithm to the examples cited so far in the thread:</p>
+<p>Path:</p>
+<ul>
+<li><code>stuff/.gitignore</code> (filtered)</li>
+</ul>
+<p>Queries:</p>
+<ul>
+<li><code>sgi</code>: no match (good)</li>
+<li><code>s.gi</code>: match (good)</li>
+</ul>
+<p>Paths:</p>
+<ul>
+<li><code>foo/bar/.secret/baz</code> (filtered)</li>
+<li><code>foo/bar/wincent.com/.secret/baz</code> (filtered)</li>
+<li><code>foo/bar/wincent.com/baz</code></li>
+<li><code>foo/bar/.secret/baz</code> (filtered)</li>
+</ul>
+<p>Query:</p>
+<ul>
+<li><code>fb.baz</code>: finds paths 1 (good), 2 (good), 3 (good) and 4 (good)</li>
+</ul>
+<p>Paths:</p>
+<ul>
+<li><code>.Trash/wanted.docs/other/map/baz</code> (filtered)</li>
+<li><code>web/wincent.com/baz</code></li>
+</ul>
+<p>Query:</p>
+<ul>
+<li><code>w.comb</code>: finds path 2 (good) but not path 1 (good)</li>
+</ul>
+<p>Path:</p>
+<ul>
+<li><code>foo/bar/xyz/.gitignore</code> (filtered)</li>
+</ul>
+<p>Query:</p>
+<ul>
+<li><code>fbz.g</code>: finds path (good)</li>
+</ul>
+<p>So looks to be pretty good.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5350'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5350"><time data-relative="true">2010-03-08T03:37:58Z</time></a></span>
+</cite>
+<blockquote><p>Implemented. Will mark as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5351'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5351"><time data-relative="true">2010-03-08T03:38:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

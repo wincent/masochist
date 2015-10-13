@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #530: iscrobber in v3.1 not always sending to last.fm
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #530</div>
+<div class='issue' id='issue_530'>
+<form class="edit_issue" id="edit_issue_530" action="/issues/530" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SNbEkxGA3yCL2kWAzpxDZd8jv+z1PyIe8w99bHyxZg58JHoktg0FdVJWdnf/tRDRaqHW0P7TrALTEKiSWGkBKg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #530:
+<span data-name='issue[summary]'>
+iscrobber in v3.1 not always sending to last.fm
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-01-12T18:19:52Z</time>, updated <time data-relative="true">2007-01-15T13:29:32Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/patrickjoseph">patrickjoseph</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Occassionally the built in iscrobbler won't register what I've listenend to and won't display it on my last.fm page. I have to &quot;relogin&quot; by going into the synergy preferences and retyping my password in the iscrobber setup. Afterwards all the songs I had just listened to will show up correctly on my last.fm page. I don't know if it has anything to do with putting my computer to sleep, I can't seem to find a pattern. Thanks, I would like to just run synergy, don't want to have to run the iscrobber plugin too.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2922'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2922"><time data-relative="true">2007-01-13T09:09:14Z</time></a></span>
+</cite>
+<blockquote><p>Can you turn on logging and collect some information? See this message for how it's done:</p>
+<p><a href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html" class="external">http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html</a></p>
+<p>Pasting in a bit of text from there:</p>
+<p>It is recommended that you turn on Audioscrobbler logging by entering   the following command in the Terminal when Synergy is not running:</p>
+<p>&#x0009;defaults write org.wincent.Synergy LogAudioscrobblerEvents -bool yes</p>
+<p>This will cause detailed information about all Audioscrobbler-related   operations to be logged to the console. To turn the logging off you   may use this command when Synergy is not running:</p>
+<p>&#x0009;defaults write org.wincent.Synergy LogAudioscrobblerEvents -bool no</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2923'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'><a href="#comment_2923"><time data-relative="true">2007-01-15T01:40:45Z</time></a></span>
+</cite>
+<blockquote><p>Ok I've turned on logging... do you want me to just give you log info after a few days? or are you looking for something specific?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2924'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2924"><time data-relative="true">2007-01-15T03:22:52Z</time></a></span>
+</cite>
+<blockquote><p>No, I'm not looking for anything specific. The log will most likely provide an explanation of why the tracks aren't being submitted. There's no need to send the entire log; just a segment containing the messages printed when your tracks aren't being submitted.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2925'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'><a href="#comment_2925"><time data-relative="true">2007-01-15T04:24:08Z</time></a></span>
+</cite>
+<blockquote><p>I'm pasting a bit of my log below:</p>
+<p>Jan 15 02:38:38 Saturn /Applications/System Preferences.app/Contents/MacOS/System Preferences: CMSCreateDataProviderOrGetInfo : Invalid colorspace type Jan 15 02:38:47 Saturn /Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy: CMSCreateDataProviderOrGetInfo : Invalid colorspace type Jan 15 02:38:47 Saturn /Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy: CMSCreateDataProviderOrGetInfo : Invalid colorspace type Jan 15 02:38:47 Saturn /Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy: CMSCreateDataProviderOrGetInfo : Invalid colorspace type Jan 15 02:38:47 Saturn /Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy: CMSCreateDataProviderOrGetInfo : Invalid colorspace type 2007-01-15 02:38:47.500 Synergy[7851] Audioscrobbler: Read preferences 2007-01-15 02:38:47.501 Synergy[7851] Audioscrobbler: Perform first-time initialization 2007-01-15 02:38:47.529 Synergy[7851] Audioscrobbler: Initializing WOAudioscrobbler object 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: Read new username 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: Read new password 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: First time we've read the preferences; will start a new session 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: Start Audioscrobbler session 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: Will request handshake 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: Handshake URL is <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes</a> 2007-01-15 02:38:47.571 Synergy[7851] Audioscrobbler: Starting connection attempt 2007-01-15 02:38:47.573 Synergy[7851] Audioscrobbler: Waiting for handshake reply 2007-01-15 02:39:06.836 Synergy[7851] Audioscrobbler: Received notification from iTunes 2007-01-15 02:39:06.836 Synergy[7851] Audioscrobbler: Received notification of playing status 2007-01-15 02:39:06.836 Synergy[7851] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;Facts And Figures&quot;; 
+   WOAudioscrobblerArtist = &quot;The Legends&quot;; 
+   WOAudioscrobblerLength = 127; 
+   WOAudioscrobblerTrack = &quot;Lucky Star&quot;; </pre>
+<p>} 2007-01-15 02:39:06.836 Synergy[7851] Audioscrobbler: This track appears to be a new submission 2007-01-15 02:39:06.836 Synergy[7851] Audioscrobbler: Cancelling previously existing submission timer, if any 2007-01-15 02:39:06.837 Synergy[7851] Audioscrobbler: Setting up new submission timer (63 seconds) 2007-01-15 02:39:47.576 Synergy[7851] NSURLConnection for URL <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes</a> returned error: timed out 2007-01-15 02:40:09.837 Synergy[7851] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2007-01-15 02:40:09.839 Synergy[7851] Audioscrobbler: Position matches, will submit to Audioscrobbler 2007-01-15 02:40:09.839 Synergy[7851] Audioscrobbler: Adding song to submission queue; song information: {</p>
+<pre>   WOAlbum = &quot;Facts And Figures&quot;; 
+   WOArtist = &quot;The Legends&quot;; 
+   WODate = &quot;2007-01-15 07:40:09&quot;; 
+   WOLength = 127; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Lucky Star&quot;; </pre>
+<p>} 2007-01-15 02:40:09.839 Synergy[7851] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;Facts And Figures&quot;; 
+   WOArtist = &quot;The Legends&quot;; 
+   WODate = &quot;2007-01-15 07:40:09&quot;; 
+   WOLength = 127; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Lucky Star&quot;; </pre>
+<p>} 2007-01-15 02:40:09.839 Synergy[7851] Audioscrobbler: Number of items currently on the queue: 1 2007-01-15 02:40:09.839 Synergy[7851] Audioscrobbler: Queue was empty: processing item 2007-01-15 02:40:09.839 Synergy[7851] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 2007-01-15 02:40:10.839 Synergy[7851] Audioscrobbler: Handshake previously failed, will retry 2007-01-15 02:40:10.839 Synergy[7851] Audioscrobbler: Will request handshake 2007-01-15 02:40:10.839 Synergy[7851] Audioscrobbler: Handshake URL is <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes</a> 2007-01-15 02:40:10.839 Synergy[7851] Audioscrobbler: Starting connection attempt 2007-01-15 02:40:10.840 Synergy[7851] Audioscrobbler: Waiting for handshake reply 2007-01-15 02:41:14.754 Synergy[7851] Audioscrobbler: Received notification from iTunes 2007-01-15 02:41:14.754 Synergy[7851] Audioscrobbler: Received notification of playing status 2007-01-15 02:41:14.754 Synergy[7851] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;Facts And Figures&quot;; 
+   WOAudioscrobblerArtist = &quot;The Legends&quot;; 
+   WOAudioscrobblerLength = 233; 
+   WOAudioscrobblerTrack = Closer; </pre>
+<p>} 2007-01-15 02:41:14.754 Synergy[7851] Audioscrobbler: This track appears to be a new submission 2007-01-15 02:41:14.754 Synergy[7851] Audioscrobbler: Cancelling previously existing submission timer, if any 2007-01-15 02:41:14.754 Synergy[7851] Audioscrobbler: Setting up new submission timer (116 seconds) 2007-01-15 02:41:17.574 Synergy[7851] NSURLConnection for URL <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes</a> returned error: timed out 2007-01-15 02:43:10.755 Synergy[7851] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2007-01-15 02:43:10.755 Synergy[7851] Audioscrobbler: Position matches, will submit to Audioscrobbler 2007-01-15 02:43:10.756 Synergy[7851] Audioscrobbler: Adding song to submission queue; song information: {</p>
+<pre>   WOAlbum = &quot;Facts And Figures&quot;; 
+   WOArtist = &quot;The Legends&quot;; 
+   WODate = &quot;2007-01-15 07:43:10&quot;; 
+   WOLength = 233; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = Closer; </pre>
+<p>} 2007-01-15 02:43:10.756 Synergy[7851] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;Facts And Figures&quot;; 
+   WOArtist = &quot;The Legends&quot;; 
+   WODate = &quot;2007-01-15 07:43:10&quot;; 
+   WOLength = 233; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = Closer; </pre>
+<p>} 2007-01-15 02:43:10.756 Synergy[7851] Audioscrobbler: Number of items currently on the queue: 2 2007-01-15 02:43:10.756 Synergy[7851] Audioscrobbler: Queue was non-empty, last attempt failed: processing item 2007-01-15 02:43:10.756 Synergy[7851] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 2007-01-15 02:43:11.756 Synergy[7851] Audioscrobbler: Handshake previously failed, will retry 2007-01-15 02:43:11.756 Synergy[7851] Audioscrobbler: Will request handshake 2007-01-15 02:43:11.756 Synergy[7851] Audioscrobbler: Handshake URL is <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes</a> 2007-01-15 02:43:11.756 Synergy[7851] Audioscrobbler: Starting connection attempt 2007-01-15 02:43:11.756 Synergy[7851] Audioscrobbler: Waiting for handshake reply 2007-01-15 02:44:11.756 Synergy[7851] NSURLConnection for URL <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=pizzapancakes</a> returned error: timed out 2007-01-15 02:45:08.277 Synergy[7851] Audioscrobbler: Received notification from iTunes 2007-01-15 02:45:08.277 Synergy[7851] Audioscrobbler: Received notification of playing status 2007-01-15 02:45:08.277 Synergy[7851] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;Facts And Figures&quot;; 
+   WOAudioscrobblerArtist = &quot;The Legends&quot;; 
+   WOAudioscrobblerLength = 198; 
+   WOAudioscrobblerTrack = &quot;Another Sunday&quot;; </pre>
+<p>}</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2926'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2926"><time data-relative="true">2007-01-15T05:25:55Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for posting the log output. I see several failure messages in there, all saying that the connection to last.fm timed out. This indicates a problem with the network somewhere outside of Synergy's control; the problem could be anywhere between your computer (Mac OS X firewall, for example), your modem/router, your local network, any of the nodes between your machine and the last.fm servers, or even the last.fm servers themselves.</p>
+<p>All you can really do is wait, Synergy will keep trying to submit, maintaining the tracks in a queue so your submissions won't be lost even if they do arrive late. You could try troubleshooting to find the cause of the timeout but given that there are so many links in the chain between the source and the destination, the odds of the problem actually being at your end and something that you have control over are probably not too high.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2927'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'><a href="#comment_2927"><time data-relative="true">2007-01-15T12:50:15Z</time></a></span>
+</cite>
+<blockquote><p>thanks for your help. the only thing that leads me to think that it's synergy is the fact that if i run the iscrobber app by last.fm it connects fine and submits my played tracks. </p>
+<p>any ideas? thanks again.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2928'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2928"><time data-relative="true">2007-01-15T13:29:32Z</time></a></span>
+</cite>
+<blockquote><p>Two possible explanations:</p>
+<p>(1) The network problems might be (and almost certainly are) transient in nature</p>
+<p>(2) The other client may be overriding the default timeout value and waiting longing for the server to respond. I don't actually know what the default timeout value set by Cocoa is, but it's most likely a not-very-surprising interval like 30 or 60 seconds (and looking at the time stamps on the log messages, their looks to be about 60 or seconds between starting the connection and timing out).</p>
+<p>I could add a user-settable preference to override the default timeout value, although I am a bit sceptical about the value of doing so given that Synergy retries and so the submissions will succeed eventually anyway, and if the Audioscrobbler servers are struggling then timing out and trying again later is probably a good thing for their servers.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

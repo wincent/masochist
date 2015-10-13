@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Switch-In items called on login?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/winswitch">WinSwitch</a> &raquo; Switch-In items called on login?</div>
+<h1 class='major'>Switch-In items called on login?</h1>
+<div class='topic' id='topic_334'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/emd">emd</a>
+<span class='when'>
+<a href="/forums/winswitch/topics/334"><time data-relative="true">2006-09-30T08:20:47Z</time></a>
+</span>
+</cite>
+<blockquote><p>Are the apps in my Switch-In folder called when I log in?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_992'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_992"><time data-relative="true">2006-10-01T06:43:21Z</time></a></span>
+</cite>
+<blockquote><p>They're called whenever the system sends a NSWorkspaceSessionDidBecomeActiveNotification. The Cocoa docs say, &quot;Posted after a user session is switched in. This allows an application to re-enable some processing when a switched out session gets switched back in, for example.&quot;</p>
+<p>You could find out whether the items in that folder are called when logging in by testing it out. From memory, I don't recall whether they are or not.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/winswitch">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

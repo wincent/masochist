@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #455: REQUEST: simultaneous log out &amp; user switch
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #455</div>
+<div class='issue' id='issue_455'>
+<form class="edit_issue" id="edit_issue_455" action="/issues/455" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="lW1xj4KYpmu8Yh+3FvUoLNrCoqH6LVRDWr8G6W7Zn0+hn884JRV8PmXuLEAn3HuYb0DLnfHB2l96oNMXSgH4aw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #455:
+<span data-name='issue[summary]'>
+REQUEST: simultaneous log out &amp; user switch
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-08-30T09:34:39Z</time>, updated <time data-relative="true">2010-08-12T10:09:37Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jim">jim</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Currently, logging out and switching are two separate actions. I don't know if Apple's User Switching allows for a logout and login in one (perceived) single action, but it would take a step out of user switching for me. </p>
+<p>This is the only behavioral enhancement I can imagine for WinSwitch currently. This puts WS in the top handful of things I've ever used that make using my computer easier and better, great at what it does and without any obvious need of improvement in almost all ways. Thanks!</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_2761'>
+<cite>
+<a href="/users/jim">jim</a>
+<span class='when'><a href="#comment_2761"><time data-relative="true">2006-08-30T09:37:54Z</time></a></span>
+</cite>
+<blockquote><p>Perhaps using the Option modifier on the list of users could be the user action for such a feature. Holding Option would change the &quot;[User Picture/Name]&quot; entry to &quot;Log out [Current User] and switch to [User Picture/Name]&quot;--a long menu item string, okay, but something like that would be clear (and useful).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2762'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2762"><time data-relative="true">2006-08-30T10:07:51Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #1)</p>
+<blockquote>
+<p>Perhaps using the Option modifier on the list of users could be the user action for such a feature.</p>
+</blockquote>
+<p>Agreed, that's the way I would do it. I personally have quite a few other higher-priority projects that need to get done before I'll be able to dedicate the time needed to WinSwitch (the donation rate of less than one donation per 1000 downloads means that I just can't justify the time).</p>
+<p>To anyone interested in working on this feature, the source is avaialble for download. Implementing this feature would require changes to be made to the &quot;switchToUser:&quot; method; something like this:</p>
+<p>0. If &quot;Option&quot; key is currently held down, adopt the following special behaviour; otherwise just use the default behaviour.</p>
+<p>1. Launch the CGSession process (responsible for displaying the switch dialog). Watch the process to see when it exits.</p>
+<p>2. If a switched-out notification is received, we know that the switch worked and can proceed to log out.</p>
+<p>3. If no switch-out notification is received AND the CGSession process exits, we have to assume that the dialog failed (likely causes: wrong password or user cancelled) so we do not proceed with the log out.</p>
+<p>There may be some &quot;fuzziness&quot; involved in determining whether &quot;2&quot; or &quot;3&quot; is happening, seeing as we can't be sure of the order in which events will take place (ie. we may see CGSession exit before receiving a notification, or we may see the notification first and then see CGSession exit; alternatively, we may receive no notification at all and only see the exit). So there may need to be some margin for error (1 second? 2? 5? it will need to be determined experimentally), and also take into account the fact that the user can do stuff like bring up the switch dialog and then leave it on screen for seconds, minutes or even hours.</p>
+<p>But even taking into account the &quot;fiddly&quot; nature of this I don't think it should be too hard to implement.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6027'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6027"><time data-relative="true">2010-08-12T10:09:01Z</time></a></span>
+</cite>
+<blockquote><p>I'm marking all WinSwitch issues closed seeing as I personally no longer use it, and in fact haven't for around 4 years now.</p>
+<p>WinSwitch addressed a real problem with the initial implementation of Fast User Switching in <a href="/wiki/Panther">Panther</a> (released October 2003), namely, the excessive screen real estate that it chewed up. Apple fixed that problem in Tiger, if I recall correctly, which came out in April 2005 (or if I'm wrong about it being <a href="/wiki/Tiger">Tiger</a>, then it was definitely fixed by the time <a href="/wiki/Leopard">Leopard</a> came out, in October 2007).</p>
+<p>With this change, most of the justification for WinSwitch's existence went away, at least for me. So that's why I'm going to close all these tickets: I can't really support something that I don't use myself.</p>
+<p>But it's open source (see <a href="http://git.wincent.com/WinSwitch.git" class="external">http://git.wincent.com/WinSwitch.git</a>), so if any one wants to tackle any of these issues and submit patches, I'll be happy to accept them.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6035'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6035"><time data-relative="true">2010-08-12T10:09:37Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

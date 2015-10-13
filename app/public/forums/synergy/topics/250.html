@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Artwork Not Working At All?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Artwork Not Working At All?</div>
+<h1 class='major'>Artwork Not Working At All?</h1>
+<div class='topic' id='topic_250'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/mikej">mikej</a>
+<span class='when'>
+<a href="/forums/synergy/topics/250"><time data-relative="true">2008-03-11T16:42:38Z</time></a>
+</span>
+</cite>
+<blockquote><p>I recently noticed the artwork problem with Synergy and iTunes 7.6, and during troubleshooting trashed all my prefs, album covers etc. After doing this Synergy started getting all of the artwork it was fetching (as in 100% of it) totally wrong, and now it doesn't seem to be working at all. I tried updating to the latest 3.5 nightly and still no joy.</p>
+<p>Any ideas?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_704'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_704"><time data-relative="true">2008-03-12T07:22:41Z</time></a></span>
+</cite>
+<blockquote><p>Are you sure that you're running iTunes 7.6? I have received reports that artwork retrieval is broken in 7.6.1 and not 7.6; see this report for details:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=601" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=601</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_705'>
+<cite>
+<a href="/users/mikej">mikej</a>
+<span class='when'><a href="#comment_705"><time data-relative="true">2008-03-12T13:51:58Z</time></a></span>
+</cite>
+<blockquote><p>You're right, it's 7.6.1.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_706'>
+<cite>
+<a href="/users/ovandalish">ovandalish</a>
+<span class='when'><a href="#comment_706"><time data-relative="true">2008-03-15T11:58:13Z</time></a></span>
+</cite>
+<blockquote><p>i am still can't retrieve artwork from iTunes although update 7.6 and 7.6.1 any ideas?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_707'>
+<cite>
+<a href="/users/ovandalish">ovandalish</a>
+<span class='when'><a href="#comment_707"><time data-relative="true">2008-03-15T13:02:40Z</time></a></span>
+</cite>
+<blockquote><p>sorry...my bad!! its working.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1036'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1036"><time data-relative="true">2008-04-05T08:35:56Z</time></a></span>
+</cite>
+<blockquote><p>I'm extremely pleased to report that Apple's fixed the issue in <a href="/wiki/iTunes">iTunes</a> 7.6.2.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1037'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1037"><time data-relative="true">2008-04-05T11:17:54Z</time></a></span>
+</cite>
+<blockquote><p>An update: I've just received an email from a user saying that he's still seeing the problem with 7.6.2. Not sure why this would be the case as for me it was very clearly working in 7.6, broken in 7.6.1, and is now definitely working for me in 7.6.2.</p>
+<p>Please add a comment if you can confirm this either way.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3222'>
+<cite>
+<a href="/users/liz">Liz</a>
+<span class='when'><a href="#comment_3222"><time data-relative="true">2008-04-15T13:39:22Z</time></a></span>
+</cite>
+<blockquote><p>I can confirm that this bug still exists with iTunes 7.6.2 on multiple recent Macs.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3223'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3223"><time data-relative="true">2008-04-15T13:48:30Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the confirmation, Liz.</p>
+<p>I've added a new ticket (see <a href="/issues/668">bug #668</a>) to track this issue. I didn't want to have to do this but looks like I'll have to insert a small delay before querying <a href="/wiki/iTunes">iTunes</a> for artwork. I'll make this conditional on 7.6.1/7.6.2 being detected, and will remove the workaround once <a href="/wiki/Apple">Apple</a> fixes the bug.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3230'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3230"><time data-relative="true">2008-04-18T01:21:47Z</time></a></span>
+</cite>
+<blockquote><p>Artwork is  also broken for me. I'm using Synergy 3.2 and 3.5a6 and iTunes 7.6.2. Thanks Wincent!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3232'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3232"><time data-relative="true">2008-04-18T07:38:50Z</time></a></span>
+</cite>
+<blockquote><p>Just another confirmation that artwork retrieval is not working for me using Synergy 3.5a6 and iTunes 7.6.2. Looking forward to a fix.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3235'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3235"><time data-relative="true">2008-04-19T10:58:45Z</time></a></span>
+</cite>
+<blockquote><p>Confirming bug. Synergy 3.5a6, iTunes 7.6.2</p>
+<p>Deleted all references to Synergy (application support , preferences plist, etc) and it still persists.</p>
+<p>Thanks for your great program!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3271'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3271"><time data-relative="true">2008-04-28T07:59:29Z</time></a></span>
+</cite>
+<blockquote><p>People who are seeing this problem, please go and visit <a href="/issues/668">bug #668</a>.</p>
+<p>I have a preview build available which I am hoping can solve his problem, but I need help from testers who can reproduce the bug. For me iTunes 7.6.2 works fine, so I'm not able to actually confirm that the workaround will work; I need some help from testers.</p>
+<p>So, head on over to <a href="/issues/668">bug #668</a> for the full story.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3322'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3322"><time data-relative="true">2008-05-13T00:42:22Z</time></a></span>
+</cite>
+<blockquote><p>artwork retrieval is not working here...  3.5a7 iTunes 7.6.2</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3324'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3324"><time data-relative="true">2008-05-13T03:50:36Z</time></a></span>
+</cite>
+<blockquote><p>Do you mean that artwork is not coming across from <a href="/wiki/iTunes">iTunes</a>, or that the cover search and download from Amazon isn't working?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3336'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3336"><time data-relative="true">2008-05-21T19:00:19Z</time></a></span>
+</cite>
+<blockquote><p>I use iTune 7.6.2, and Synergy 3.2 wasn't fetching album artwork. After updating to 3.2.1b, the artwork works correctly.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3341'>
+<cite>
+<a href="/users/fabiofava">fabiofava</a>
+<span class='when'><a href="#comment_3341"><time data-relative="true">2008-05-26T22:59:05Z</time></a></span>
+</cite>
+<blockquote><p>I was having this problem with Synergy 3.2 and iTunes 7.6.2 until today. I've just downloaded and installed Synergy 3.2.1b and, after Uninstalling and re-installing (for All Users) the covers are back. It's comming instantly, directly from iTunes. The machine is MacBook Pro 2.4 - 4 Gb RAM. It's 100% functional here.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

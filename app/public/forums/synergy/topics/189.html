@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy not sending CD track names to last.fm?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy not sending CD track names to last.fm?</div>
+<h1 class='major'>Synergy not sending CD track names to last.fm?</h1>
+<div class='topic' id='topic_189'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/requiemx">RequiemX</a>
+<span class='when'>
+<a href="/forums/synergy/topics/189"><time data-relative="true">2006-12-10T12:41:01Z</time></a>
+</span>
+</cite>
+<blockquote><p>I've been really happy with Synergy's support for last.fm so far. I've been able to remove iScrobbler from my system and gain a few pixels of menubar space.</p>
+<p>For some reason, though, the tracks names of CD's I play (as opposed to MP3's) aren't submitted.</p>
+<p>Is there something I need to change? Or should I submit a bug?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_561'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_561"><time data-relative="true">2006-12-10T13:50:31Z</time></a></span>
+</cite>
+<blockquote><p>Perhaps Synergy is not seeing these as regular files (the Audioscrobbler protocol requires that only regular file tracks be submitted, not non-file tracks like Internet radio etc). Can you turn on logging and let me know what gets logged when you play CDs?</p>
+<p>Instructions for how to turn on logging appear in the beta announcement:</p>
+<p><a href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html" class="external">http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_562'>
+<cite>
+<a href="/users/requiemx">RequiemX</a>
+<span class='when'><a href="#comment_562"><time data-relative="true">2006-12-10T16:26:18Z</time></a></span>
+</cite>
+<blockquote><p>You're right. It appears to not submit because it's not a &quot;regular file&quot;:</p>
+<p>2006-12-10 15:22:22.356 Synergy[5776] Audioscrobbler: Read preferences 2006-12-10 15:22:22.356 Synergy[5776] Audioscrobbler: Perform first-time initialization 2006-12-10 15:22:22.356 Synergy[5776] Audioscrobbler: Initializing WOAudioscrobbler object 2006-12-10 15:22:22.491 Synergy[5776] Audioscrobbler: Read new username 2006-12-10 15:22:22.492 Synergy[5776] Audioscrobbler: Read new password 2006-12-10 15:22:22.492 Synergy[5776] Audioscrobbler: First time we've read the preferences; will start a new session 2006-12-10 15:22:22.492 Synergy[5776] Audioscrobbler: Start Audioscrobbler session 2006-12-10 15:22:22.503 Synergy[5776] Audioscrobbler: Will request handshake 2006-12-10 15:22:22.503 Synergy[5776] Audioscrobbler: Handshake URL is <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=RequiemX" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=RequiemX</a> 2006-12-10 15:22:22.504 Synergy[5776] Audioscrobbler: Starting connection attempt 2006-12-10 15:22:22.508 Synergy[5776] Audioscrobbler: Waiting for handshake reply 200 206-12-10 15:22:23.095 Synergy[5776] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2006-12-10 15:22:23.096 Synergy[5776] Audioscrobbler: Received an INTERVAL directive 2006-12-10 15:22:23.096 Synergy[5776] Audioscrobbler: Storing interval value: 1 2006-12-10 15:22:23.096 Synergy[5776] Audioscrobbler: Processing handshake reply 2006-12-10 15:22:23.096 Synergy[5776] Audioscrobbler: Received UPTODATE message 2006-12-10 15:24:57.407 Synergy[5776] Audioscrobbler: Received notification from iTunes 2006-12-10 15:24:57.407 Synergy[5776] Audioscrobbler: Current track cannot be submitted because it is not a regular file 2006-12-10 15:24:57.407 Synergy[5776] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-12-10 15:24:57.416 GrowlHelperApp[252] 2006-12-10 15:24:57 -0600 Synergy: Playing: Caught In A Web (Awake Dream Theater ) - Priority 0</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_563'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_563"><time data-relative="true">2006-12-10T17:22:06Z</time></a></span>
+</cite>
+<blockquote><p>I had a dialogue about this with another user via email, in whose case the tracks were being played directly off an iPod. I'm going to see if I can find the relevant bits of the exchange... Actually no, it wasn't via email, it was here:</p>
+<p><a href="http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1098" class="external">http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1098</a></p>
+<p>In particular look at this post:</p>
+<p><a href="http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1098&amp;page=1#Post1102" class="external">http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1098&amp;page=1#Post1102</a></p>
+<p>Can you please collect the necessary information to see if a workaround is possible?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_564'>
+<cite>
+<a href="/users/requiemx">RequiemX</a>
+<span class='when'><a href="#comment_564"><time data-relative="true">2006-12-10T17:39:52Z</time></a></span>
+</cite>
+<blockquote><p>Cool. First the output of that terminal program:</p>
+<p>Notification received 2006-12-10 16:38:44 -0600:</p>
+<pre>   Name: com.apple.iTunes.playerInfo
+   Info: {
+   Album = Awake; 
+   Artist = &quot;Dream Theater&quot;; 
+   Composer = &quot;Dream Theater&quot;; 
+   &quot;Disc Count&quot; = 1; 
+   &quot;Disc Number&quot; = 1; 
+   Genre = Metal; 
+   Name = &quot;Lifting Shadows Off A Dream&quot;; 
+   &quot;Player State&quot; = Playing; 
+   &quot;Store URL&quot; = &quot;itms://itunes.com/link?n=Lifting%20Shadows%20Off%20A%20Dream&amp;an=Dream%20Theater&amp;pn=Awake&amp;cn=Dream%20Theater&quot;; 
+   &quot;Total Time&quot; = 365133; 
+   &quot;Track Count&quot; = 11; 
+   &quot;Track Number&quot; = 9; 
+   Year = 1994; </pre>
+<p>}</p>
+<p>And the output of that script:</p>
+<p>alias &quot;Awake:9 Lifting Shadows Off A Dream.aiff&quot;</p>
+<p>Does that help at all? I know it must at least be possible since iScrobbler seems to handle it fine.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_565'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_565"><time data-relative="true">2006-12-10T19:32:11Z</time></a></span>
+</cite>
+<blockquote><p>So it's the same problem, no &quot;location&quot; field in the notification. Well of course, it's always possible to workaround these things but it's a question of whether it can be done efficiently. iScrobbler is probably querying iTunes to get more information about the track (requiring an Apple Event exchange), whereas Synergy is just working with the info that iTunes pushes out (essentially &quot;free&quot;). The workaround will probably be to double-check with iTunes just before submitting, at least that way the overhead won't be incurred for tracks which never end up getting submitted.</p>
+<p>Will open a ticket for this in the database to track the issue:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=522" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=522</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_566'>
+<cite>
+<a href="/users/requiemx">RequiemX</a>
+<span class='when'><a href="#comment_566"><time data-relative="true">2006-12-11T09:23:05Z</time></a></span>
+</cite>
+<blockquote><p>Okay. Cool.</p>
+<p>Thanks!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

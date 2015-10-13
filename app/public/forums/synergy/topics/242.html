@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Floater in Spaces (leopard)
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Floater in Spaces (leopard)</div>
+<h1 class='major'>Floater in Spaces (leopard)</h1>
+<div class='topic' id='topic_242'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/keving">KevinG</a>
+<span class='when'>
+<a href="/forums/synergy/topics/242"><time data-relative="true">2007-11-13T12:12:16Z</time></a>
+</span>
+</cite>
+<blockquote><p>Does anyone know how to make the floater window appear in all spaces?  Right now the floater is only in the space where I opened synergy.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_675'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_675"><time data-relative="true">2007-11-13T14:43:53Z</time></a></span>
+</cite>
+<blockquote><p>Please see:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=609" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=609</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_676'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_676"><time data-relative="true">2008-01-10T21:16:28Z</time></a></span>
+</cite>
+<blockquote><p>Hi, I am just wondering how this feature is coming along as it is something I would find very useful. Will we be able to see this feature in the final of version 3.5?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_677'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_677"><time data-relative="true">2008-01-11T03:15:52Z</time></a></span>
+</cite>
+<blockquote><p>At the moment no progress has been made with respect to Spaces. My goal for the 3.5 series is just to have exact feature parity with 3.2 (ie. exactly the same feature set, nothing more, nothing less) but with all of the internals rewritten in Objective-C 2.0 with full Garbage Collection and use of updated Leopard APIs.</p>
+<p>It's not very glamorous work seeing as it all occurs under the hood, but it is a very big deal and will make Synergy easier to maintain and expand in the future.</p>
+<p>Stuff like the Spaces issue will be a 3.5.1 thing, or very soon after.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_678'>
+<cite>
+<a href="/users/ukengb">UKenGB</a>
+<span class='when'><a href="#comment_678"><time data-relative="true">2008-02-16T14:31:19Z</time></a></span>
+</cite>
+<blockquote><p>Can I add weight to the request to get the floater working in Spaces. One of my main reasons for using Synergy is to provide a nice floater that displays the Now Playing info all the time. Sadly, with the advent of Spaces in Leopard I cannot get this facility without hiding the floater and showing it again with keyboard shortcuts.</p>
+<p>ASAP please.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4024'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4024"><time data-relative="true">2008-12-30T11:31:58Z</time></a></span>
+</cite>
+<blockquote><p>Just became a Synergy user from the MacHeist Giving Tree. Very nice app.</p>
+<p>I too would like to put my vote in for a Leopard Spaces ubiquitous floater that would also have the option to be &quot;under&quot; all windows, or in other words, &quot;pinned&quot; to the desktop. This would make this a must have app for me, and I would gladly pay for a future upgrade if this existed.</p>
+<p>Thanks! And again, great app!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4037'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4037"><time data-relative="true">2009-01-03T06:33:17Z</time></a></span>
+</cite>
+<blockquote><p>You already can make the floater appear &quot;under&quot; all windows. It's not really prominently documented seeing as it's considered a &quot;power user&quot; feature, but the notes on how to activate it are in the <a href="http://wincent.com/a/products/synergy-classic/history/" class="external">version history</a> for version 1.3. Specifically:</p>
+<blockquote>
+<p>[Feature] New &quot;power user&quot; feature (accessible from command-line), display floater on desktop. To activate, enter <code>defaults write org.wincent.Synergy desktopFloater -bool true</code> in the Terminal and restart Synergy. To deactivate, enter <code>defaults write org.wincent.Synergy desktopFloater -bool false</code>.</p>
+</blockquote>
+<p>Having the Floater appear on all spaces under <a href="/wiki/Leopard">Leopard</a> is being tracked in <a href="/issues/609">ticket #609</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4246'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_4246"><time data-relative="true">2009-02-16T21:01:02Z</time></a></span>
+</cite>
+<blockquote><p>Just to add to this, I have got around Synergy's lack of support for Spaces by using the program's built in Growl support (Growl does support Spaces).</p>
+<p>I have also just found a really good looking skin for Growl too (as this was the main reason I was still using Synergy for notifications - it looked better then Growl).</p>
+<p>[<a href="http://macthemes2.net/forum/viewtopic.php?id=16783761&amp;p=1" class="external">http://macthemes2.net/forum/viewtopic.php?id=16783761&amp;p=1</a>&quot; iPhonesque Growl Skin]</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4247'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4247"><time data-relative="true">2009-02-17T04:32:42Z</time></a></span>
+</cite>
+<blockquote><p>Just adding an updated link to <a href="/issues/609">ticket #609</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5112'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_5112"><time data-relative="true">2009-10-24T14:10:32Z</time></a></span>
+</cite>
+<blockquote><p>Just wanted to resurrect this old thread, to say many thanks for fixing this bug. It's good to be able to use the built-in floater again. It's a lot nicer then the growl one I've been using since Leopard.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

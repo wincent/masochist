@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #262: Cannot create or delete accounts
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #262</div>
+<div class='issue' id='issue_262'>
+<form class="edit_issue" id="edit_issue_262" action="/issues/262" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="DNcTJep9bT+yN3G3i/qJVanQn51eTON53sx9blaur8E4Ja2STfC3amu7QkC609rhHFL2oVWgbWX+06iQcnbI5Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #262:
+<span data-name='issue[summary]'>
+Cannot create or delete accounts
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-06-23T08:12:29Z</time>, updated <time data-relative="true">2010-08-12T10:12:55Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;With WinSwitch 3.1 installed on Tiger 10.4.1, I can neither create nor delete accounts.  To do this, I have  to uninstall WinSwitch.  Dual 2 GHz G5.  If I get time, I'll try it on my laptop tonight.</p>
+<p>I don't do this often enough to know whether this happened in 10.3 or a previous version of the software.&quot;</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2094'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2094"><time data-relative="true">2005-06-23T08:13:34Z</time></a></span>
+</cite>
+<blockquote><p>For what it's worth I can't see how WinSwitch would prevent you from creating or deleting accounts. It  doesn't patch the system in any way. If you look at the source code (available for download on the website)  you'll see that it doesn't write to the NetInfo database, it only reads from it, and it doesn't make any other  changes to your system.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2095'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2095"><time data-relative="true">2006-07-05T02:06:08Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6060'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6060"><time data-relative="true">2010-08-12T10:12:26Z</time></a></span>
+</cite>
+<blockquote><p>I'm marking all WinSwitch issues closed seeing as I personally no longer use it, and in fact haven't for around 4 years now.</p>
+<p>WinSwitch addressed a real problem with the initial implementation of Fast User Switching in <a href="/wiki/Panther">Panther</a> (released October 2003), namely, the excessive screen real estate that it chewed up. Apple fixed that problem in Tiger, if I recall correctly, which came out in April 2005 (or if I'm wrong about it being <a href="/wiki/Tiger">Tiger</a>, then it was definitely fixed by the time <a href="/wiki/Leopard">Leopard</a> came out, in October 2007).</p>
+<p>With this change, most of the justification for WinSwitch's existence went away, at least for me. So that's why I'm going to close all these tickets: I can't really support something that I don't use myself.</p>
+<p>But it's open source (see <a href="http://git.wincent.com/WinSwitch.git" class="external">http://git.wincent.com/WinSwitch.git</a>), so if any one wants to tackle any of these issues and submit patches, I'll be happy to accept them.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6067'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6067"><time data-relative="true">2010-08-12T10:12:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

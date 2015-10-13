@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #562: CRASH: Dies in CoreGraphics _CGSWindowBounds
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #562</div>
+<div class='issue' id='issue_562'>
+<form class="edit_issue" id="edit_issue_562" action="/issues/562" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="dkf1sSy1Li/0zTl6WGcq0dxbxUP4A7GmdrQpSbfQoslCtUsGizj0ei1BCo1pTnlladmsf/PvP7pWq/y3kwjF7Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #562:
+<span data-name='issue[summary]'>
+CRASH: Dies in CoreGraphics _CGSWindowBounds
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2007-04-20T10:26:59Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Just received this crash report from a user (will attach, pasting excerpt below):</p>
+<p>Thread 0 Crashed: 0   com.apple.CoreGraphics     &#x0009;0x90332db8 _CGSWindowBounds + 60 1   com.apple.CoreGraphics     &#x0009;0x9037b340 CGSSetWindowOpacity + 297 2   com.apple.AppKit           &#x0009;0x932a712c CreateWindowNamed + 312 3   com.apple.AppKit           &#x0009;0x932a6cef NewCacheWindowInfo + 76 4   com.apple.AppKit           &#x0009;0x932a6b32 _NXAllocateImageCache + 2172 5   com.apple.AppKit           &#x0009;0x932a5f8a -[NSCachedImageRep _initWithSize:depth:separate:alpha:allowDeep:] + 350 6   com.apple.AppKit           &#x0009;0x932a5e26 -[NSCachedImageRep initWithSize:depth:separate:alpha:] + 78 7   com.apple.AppKit           &#x0009;0x932a5d25 -[NSImage lockFocus] + 285 8   SynergyAdvance             &#x0009;0xe1001a57 0xe1000000 + 6743 9   SynergyAdvance             &#x0009;0xe1007b25 0xe1000000 + 31525 10  com.wincent.SynergyAdvance &#x0009;0x0000e2a3 start + 25323 11  com.apple.Foundation       &#x0009;0x927e817b _nsnote_callback + 230 12  com.apple.CoreFoundation   &#x0009;0x90862c42 __CFXNotificationHandleMessage + 375 13  com.apple.CoreFoundation   &#x0009;0x90862a4a __CFXNotificationReceiveFromServer + 173 14  com.apple.CoreFoundation   &#x0009;0x9083e385 __CFMachPortPerform + 136 15  com.apple.CoreFoundation   &#x0009;0x9082e62d CFRunLoopRunSpecific + 2904 16  com.apple.CoreFoundation   &#x0009;0x9082dace CFRunLoopRunInMode + 61 17  com.apple.HIToolbox        &#x0009;0x92dde8d8 RunCurrentEventLoopInMode + 285 18  com.apple.HIToolbox        &#x0009;0x92dddfe2 ReceiveNextEventCommon + 385 19  com.apple.HIToolbox        &#x0009;0x92ddde39 BlockUntilNextEventMatchingListInMode + 81 20  com.apple.AppKit           &#x0009;0x93264465 _DPSNextEvent + 572 21  com.apple.AppKit           &#x0009;0x93264056 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 137 22  com.apple.AppKit           &#x0009;0x9325dddb -[NSApplication run] + 512 23  com.apple.AppKit           &#x0009;0x93251d2f NSApplicationMain + 573 24  com.wincent.SynergyAdvance &#x0009;0x00008206 start + 590 25  com.wincent.SynergyAdvance &#x0009;0x000080c6 start + 270 26  com.wincent.SynergyAdvance &#x0009;0x00007fe1 start + 41</p>
+<p>This is occurring upon receiving a piece of cover art from iTunes. Synergy Advance hands the art off to CoreImage so that it can composite a badge for the Dock icon.</p>
+<p>Looking at the stack trace I suspect that there is some problem with the image and CoreImage is choking on it; as such there is probably nothing that I can do to avoid this kind of issue.</p>
+<p>But you may wish to try one of the newer nightly builds to see if you can reproduce the issue there (all of the Dock icon code has been completely rewritten):</p>
+<p><a href="http://wincent.com/s/nightlies/" class="external">http://wincent.com/s/nightlies/</a></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #445: REQUEST: Display confirmation sheet when clicking &quot;Defaults&quot; or &quot;Revert&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #445</div>
+<div class='issue' id='issue_445'>
+<form class="edit_issue" id="edit_issue_445" action="/issues/445" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SIxm0X9O8m4IVgVU3ZFFqAVg41k9uDCMI72P2J54mBB8fthm2MMoO9HaNqPsuBYcsOKKZTZUvpADolomuqD/NA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #445:
+<span data-name='issue[summary]'>
+REQUEST: Display confirmation sheet when clicking &quot;Defaults&quot; or &quot;Revert&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-07-12T16:11:47Z</time>, updated <time data-relative="true">2006-09-05T04:13:01Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jeff-shepherd">Jeff Shepherd</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I clicked the &quot;Defaults&quot; button in the Preference Pane I thought it was going to set all the options on the visible tab back to defaults.  I was very suprised when *all* the settings were reverted back to default.  </p>
+<p>It doesn't seem right that clicking a button on one tab would make changes to hidden items on other tabs.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2746'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2746"><time data-relative="true">2006-09-03T09:25:53Z</time></a></span>
+</cite>
+<blockquote><p>Yes, that's the intended behaviour because the buttons at the bottom of the pane (&quot;Defaults&quot;, &quot;Revert&quot; and &quot;Apply&quot;) are outside of the tabview. If they were inside the tabs of the tab view then you would expect them to apply to the contents of the containing tab; but seeing as they are outside the tabview you expect them to apply to everything in the tabview.</p>
+<p>If you compare this to the Apple-provided preference panes you'll see that it's consistent. For example, check out any of the panes which show a tabview and a padlock for authentication purposes; the padlock appears outside the tabview and therefore has effect over all the tabs in the tabview.</p>
+<p>The behaviour might have taken you by surprise because you expected the &quot;Defaults&quot; button to be a bit more conservative. But imagine if the &quot;Apply&quot; button behaved in that way: if you made changes in a bunch of tabs and then hit &quot;Apply&quot; once, and only the settings you'd made in the currently visible tab took effect. If you then tried to exit or switch preference panes then you'd be warned about unapplied changes, and you'd probably think, &quot;But I just clicked 'Apply'!&quot;.</p>
+<p>Synergy's pattern is also the way the &quot;Apply&quot; and &quot;Cancel&quot; buttons work in Windows dialogs as well, so it should be familiar to switchers as well.</p>
+<p>For these reasons I wouldn't change the behaviour of any of those buttons to be per-tab. (And even if I wanted to it would be technically complicated because it would require me to maintain multiple temporary lists of preferences instead of just a single list. The Cocoa architecture is built around the idea of &quot;application-wide&quot; or &quot;per-application&quot; preferences rather than &quot;subsections of preferences&quot;.)</p>
+<p>I think an acceptable compromise would be to display a confirmation sheet when the user clicks &quot;Defaults&quot; or &quot;Revert&quot;, with wording along the lines of &quot;This will set all preferences, including preferences in other tabs, back to their default values. Are you sure you want to do this?&quot;. I don't think the &quot;Apply&quot; button would warrant such a sheet. Rewording the summary accordingly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2747'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2747"><time data-relative="true">2006-09-04T08:30:56Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've added confirmation sheets for the &quot;Defaults&quot; and &quot;Revert&quot; buttons to Synergy version 3.0. As users don't use these buttons very often (compared with the &quot;Apply&quot; button) I don't think the extra step should be too much of an annoyance.</p>
+<p>Adding the &quot;fixed-in-prerelease&quot; keyword.</p>
+<p>To be notified when version 3.0 comes out you can subscribe to the announcements mailing list:</p>
+<p><a href="http://lists.wincent.com/" class="external">http://lists.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2748'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2748"><time data-relative="true">2006-09-05T04:13:01Z</time></a></span>
+</cite>
+<blockquote><p>Synergy 3.0 is now out. Release announcement:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/09/synergy_30_now.php" class="external">http://wincent.com/a/news/archives/2006/09/synergy_30_now.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1190: Very long form content gets truncated during post
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1190</div>
+<div class='issue' id='issue_1190'>
+<form class="edit_issue" id="edit_issue_1190" action="/issues/1190" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="NJaY9zR4HISF/WAzt+MVTEzc70krCUK4JwhJss4ehFoAZCZAk/XG0VxxU8SGykb4+V6GdSDlzKQHF5xM6sbjfg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1190:
+<span data-name='issue[summary]'>
+Very long form content gets truncated during post
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-01-12T05:49:50Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Discovered while trying to post a really long <code>&lt;pre&gt;&lt;/pre&gt;</code> excerpt to <a href="/issues/1189">bug #1189</a>, the posted content appears to be truncated.</p>
+<p>On editing the comment only part of the post appears in the form, so it looks like only that segment got stored in the database. (Inspection of db using MySQL client confirms this.)</p>
+<p>Wonder if this is an nginx limit that I can change via configuration. Or if it is a Mongrel thing. Or neither.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4054'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4054"><time data-relative="true">2009-01-12T06:02:32Z</time></a></span>
+</cite>
+<blockquote><p>According to the docs (<a href="http://wiki.codemongers.com/NginxHttpCoreModule#client_max_body_size" class="external">http://wiki.codemongers.com/NginxHttpCoreModule#client_max_body_size</a>), the max client body size (<code>client_max_body_size</code>) defaults to 1 meg, which should be more than large enough to handle the post in question.</p>
+<p>The post in question had about 81K characters, and got cut off at around the 44K mark.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4055'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4055"><time data-relative="true">2009-01-12T06:05:42Z</time></a></span>
+</cite>
+<blockquote><p>Excess from <code>access_log</code> at time of last request:</p>
+<pre>85.53.13.249 - - [12/Jan/2009:05:44:30 -0500] &quot;POST /issues/1189/comments HTTP/1.1&quot; 302 102 &quot;<a href="http://rails.wincent.com/issues/1189" class="external">http://rails.wincent.com/issues/1189</a>&quot; &quot;
+Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_5; es-es) AppleWebKit/525.27.1 (KHTML, like Gecko) Version/3.2.1 Safari/525.27.1&quot; &quot;-&quot;
+85.53.13.249 - - [12/Jan/2009:05:44:30 -0500] &quot;GET /issues/1189 HTTP/1.1&quot; 200 27425 &quot;<a href="http://rails.wincent.com/issues/1189" class="external">http://rails.wincent.com/issues/1189</a>&quot; &quot;Mozilla/
+5.0 (Macintosh; U; Intel Mac OS X 10_5_5; es-es) AppleWebKit/525.27.1 (KHTML, like Gecko) Version/3.2.1 Safari/525.27.1&quot; &quot;-&quot;</pre>
+<p>No evidence of misbehaviour...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4056'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4056"><time data-relative="true">2009-01-12T11:53:48Z</time></a></span>
+</cite>
+<blockquote><p>There is a size-limit in MySQL itself because Rails creates <code>TEXT</code> type columns, which have a limit of 65535 bytes. Witness this experiment in the development environment:</p>
+<pre>$ script/console
+&gt;&gt; i = Issue.first
+&gt;&gt; c = i.comments.create
+&gt;&gt; c.body = &quot;x&quot; * 70000
+&gt;&gt; c.body.length
+=&gt; 70000
+&gt;&gt; c.reload
+&gt;&gt; c.body.length
+=&gt; 65535</pre>
+<p>But I am not sure if that's what I'm running into here; look at this in the production database:</p>
+<pre>&gt;&gt; Comment.find(4051).body.length
+=&gt; 65535</pre>
+<p>Er, ok. That's definitely it. Not sure why <a href="/wiki/BBEdit">BBEdit</a> was telling me that the text was cut off at the 44K mark; it's <a href="/wiki/UTF-8">UTF-8</a> but all in the <a href="/wiki/ASCII">ASCII</a> range, so one byte per character, so I guess BBEdit only counts &quot;letters&quot; and not spaces and newlines.</p>
+<p>Looks like I'll have to do a migration to <code>MEDIUMTEXT</code> type.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4057'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4057"><time data-relative="true">2009-01-12T12:40:47Z</time></a></span>
+</cite>
+<blockquote><p>Doing a manual test run of the migration in the development environment on the local test machine:</p>
+<pre>change_column :comments, :body, :text, :limit =&gt; 16777215</pre>
+<p>Actual <a href="/wiki/SQL">SQL</a> on running <code>rake db:migrate</code>:</p>
+<pre>ALTER TABLE `comments` CHANGE `body` `body` text(16777215) DEFAULT '' NOT NULL</pre>
+<p><code>db/schema.rb</code> before:</p>
+<pre>t.text     &quot;body&quot;,                                   :null =&gt; false</pre>
+<p>After:</p>
+<pre>t.text     &quot;body&quot;,                :limit =&gt; 2147483647,                    :null =&gt; false</pre>
+<p>Console test:</p>
+<pre>&gt;&gt; c.body = &quot;x&quot; * 100_000
+&gt;&gt; c.body.length
+=&gt; 100000
+&gt;&gt; c.save
+&gt;&gt; c.body.length
+=&gt; 100000
+&gt;&gt; c.reload
+&gt;&gt; c.body.length
+=&gt; 100000</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4060'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4060"><time data-relative="true">2009-01-12T18:20:31Z</time></a></span>
+</cite>
+<blockquote><p>In the end the migration I ended up to stop MySQL from rolling over into the <code>LONGTEXT</code> column type was:</p>
+<pre>change_column :comments, :body, :text, :limit =&gt; 262143</pre>
+<p>Definitely enough to push us into <code>MEDIUMTEXT</code> territory, but not enough to accidentally roll on into <code>LONGTEXT</code> if <a href="/wiki/MySQL">MySQL</a> decides to multiple the limit by 3 because the table uses <a href="/wiki/UTF-8">UTF-8</a> encoding.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4061'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4061"><time data-relative="true">2009-01-12T18:21:50Z</time></a></span>
+</cite>
+<blockquote><p>In any case, all fixed now locally. Will test in the staging environment and deploy to production soon. Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

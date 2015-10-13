@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2150: SEGV from Command-T
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2150</div>
+<div class='issue' id='issue_2150'>
+<form class="edit_issue" id="edit_issue_2150" action="/issues/2150" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="qRfUYbEdHjZEHmjm1S/KF8DGz3b6YlIrHN9cj3OqswWd5WrWFpDEY52SWxHkBpmjdUSmSvGO3Dc8wIlxV3LUIQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2150:
+<span data-name='issue[summary]'>
+SEGV from Command-T
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-01-21T14:44:01Z</time>, updated <time data-relative="true">2014-01-22T06:10:47Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/andri-moell">Andri Moell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Just ugpraded from 89896bd to f9d168c, compiled and now CommandT's bundle is SEGVing with the top of the stack looking as such:</p>
+<pre>
+Thread 0 Crashed:: Dispatch queue: com.apple.main-thread
+0   libsystem_kernel.dylib        &#x0009;0x00007fff8878ad46 __kill + 10
+1   Vim                           &#x0009;0x00000001024a4698 mch_exit + 216
+2   Vim                           &#x0009;0x00000001024a75fe deathtrap + 526
+3   libsystem_c.dylib             &#x0009;0x00007fff8869990a _sigtramp + 26
+4   libruby.1.dylib               &#x0009;0x00000001029545d9 st_lookup + 24
+5   libruby.1.9.1.dylib           &#x0009;0x000000010452626c rb_intern3 + 140
+6   ext.bundle                    &#x0009;0x00000001044afff6 CommandT_option_from_hash + 61
+7   ext.bundle                    &#x0009;0x00000001044b05b5 CommandTMatcher_initialize + 92
+8   libruby.1.dylib               &#x0009;0x00000001028fe5f9 0x1028d9000 + 153081
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_10900'>
+<cite>
+<a href="/users/andri-moell">Andri Moell</a>
+<span class='when'><a href="#comment_10900"><time data-relative="true">2014-01-21T15:00:28Z</time></a></span>
+</cite>
+<blockquote><p>My bad. Turns out this was a system configuration issue of extconf.rb finding the newer Ruby in /usr/local/bin and not using the system's v1.8.7. Jeesh the shit we have to deal with as developers.</p>
+<p>PS. I'm not sure I can close this issue myself...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10902'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10902"><time data-relative="true">2014-01-22T06:10:44Z</time></a></span>
+</cite>
+<blockquote><p>Excellent. Glad to hear you got it sorted out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10903'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10903"><time data-relative="true">2014-01-22T06:10:47Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

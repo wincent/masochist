@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1830: Duplicate tag failure also in the latest 1.2.1 Versioin
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1830</div>
+<div class='issue' id='issue_1830'>
+<form class="edit_issue" id="edit_issue_1830" action="/issues/1830" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="E4TriYTT4UNorXfUtpR68GpNEGwXu0ABdtdyodMetCkndlU+I147FrEhRCOHvSlE3895UBxXzh1WyKdf98bTDQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1830:
+<span data-name='issue[summary]'>
+Duplicate tag failure also in the latest 1.2.1 Versioin
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-06-08T13:50:49Z</time>, updated <time data-relative="true">2015-09-12T22:24:24Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi, </p>
+<p>the Duplicate tag failure occures also in the 1.2.1 vimball :(  </p>
+<pre>E154: Duplicate tag &quot;command-t&quot; in file /Users/man/.vim_runtime/doc/command-t.txt
+E154: Duplicate tag &quot;command-t-contents&quot; in file /Users/man/.vim_runtime/doc/command-t.txt
+E154: Duplicate tag &quot;command-t-intro&quot; in file /Users/man/.vim_runtime/doc/command-t.txt
+E154: Duplicate tag &quot;command-t.txt&quot; in file /Users/man/.vim_runtime/doc/command-t.txt</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6919'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6919"><time data-relative="true">2011-06-09T03:43:35Z</time></a></span>
+</cite>
+<blockquote><p>Vim can get confused if documentation files move or change names. This happened recently in these two commits:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commit/2328b949f17cdc617248b0882f5ca4d60d10f8cc" class="external">http://git.wincent.com/command-t.git/commit/2328b949f17cdc617248b0882f5ca4d60d10f8cc</a></li>
+<li><a href="http://git.wincent.com/command-t.git/commit/15c2f61f40e0ad12fb78c3a5423726fbc4142076" class="external">http://git.wincent.com/command-t.git/commit/15c2f61f40e0ad12fb78c3a5423726fbc4142076</a></li>
+</ul>
+<p>The solution seems to be to blow away your tags file and then get Vim to regenerate the helptags (see <code>:h :helptags</code>). I've found that Vim doesn't cope well if you simply blow the tags file away; you have to replace it with an empty file (eg. <code>rm ~/.vim/doc/tags &amp;&amp; touch ~/.vim/doc/tags</code>). At least, that's what I've found when using Pathogen to manage my Vim plug-ins.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13164'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13164"><time data-relative="true">2015-09-12T22:24:24Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

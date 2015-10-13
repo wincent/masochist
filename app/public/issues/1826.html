@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1826: Segmentation fault when using command-t
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1826</div>
+<div class='issue' id='issue_1826'>
+<form class="edit_issue" id="edit_issue_1826" action="/issues/1826" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="aLDAsPM0h/ScvwTP+j5MzdmV/smWSd4BQyZo9yF7pqhcQn4HVLldoUUzNzjLFx95bBeX9Z2lUB1jOb0JBaPBjA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1826:
+<span data-name='issue[summary]'>
+Segmentation fault when using command-t
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-06-01T10:31:00Z</time>, updated <time data-relative="true">2011-06-16T16:37:45Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I get a segmentation fault when using command-t. I can switch to a file maybe once, but the second time I open the command-t window I get a segmentation fault after typing a few characters.</p>
+<p>:version inside vim</p>
+<pre>
+:version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Mar 24 2011 07:07:46)
+Included patches: 1-35
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version with GTK2-GNOME GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments +conceal +cryptv +cscope +cursorbind +cursorshape
++dialog_con_gui +diff +digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path +find_in_path +float +folding -footer +fork() +gettext -hangul_input +iconv +insert_expand
++jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap +lua/dyn +menu +mksession +modify_fname +mouse +mouseshape +mouse_dec +mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse
++mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg -osfiletype +path_extra +perl/dyn +persistent_undo +postscript +printer +profile +python/dyn +python3/dyn +quickfix +reltime +rightleft +ruby
++scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white +tcl +terminfo +termresponse +textobjects +title +toolbar +user_commands
++vertsplit +virtualedit +visual +visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup +X11 -xfontset +xim +xsmp_interact +xterm_clipboard -xterm_save
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/atk-1.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.
+0/include -I/usr/include/freetype2 -I/usr/include/libpng12 -I/usr/include/libdrm -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pixman-1
+ -pthread -DORBIT2=1 -D_REENTRANT -I/usr/include/glib-2.0 -I/usr/lib/i386-linux-gnu/glib-2.0/include -I/usr/include/pango-1.0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/include/gio-unix-2.0/ -I/u
+sr/include/libpng12 -I/usr/include/libdrm -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/usr/include/gconf/2 -I/usr/include/gnome-keyring-1 -I/usr/include/libgnome-2.0 -I/usr/include/libbonoboui-
+2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include/gtk-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/libbonobo-2.0
+-I/usr/include/bonobo-activation-2.0 -I/usr/include/libxml2 -I/usr/include/gail-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/pixman-1     -Wall -g -O2 -D_FORTIFY_SOURCE=1    -I/usr/incl
+ude/tcl8.4  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  -I/usr/lib/ruby/1.8/i686-linux -DRUBY_VERSION=18
+Linking: gcc -L/usr/lib/i386-linux-gnu    -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,--as-needed -o vim   -pthread -L/usr/lib/i386-linux-gnu -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0
+ -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0   -L/usr/lib/i386-linux-gnu   -lgnomeui-2 -lb
+onoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0
+-lcairo -lpango-1.0 -lfreetype -lfontconfig -lgconf-2 -lgmodule-2.0 -lgobject-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lselinux   -lacl -lgpm -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib
+/perl/5.10/CORE -L/usr/lib -ltcl8.4 -lieee -lruby1.8 -lrt -lm
+</pre>
+<p>Version of ruby used to run extconf.rb:</p>
+<pre>
+&gt; ruby --version
+ruby 1.8.7 (2010-08-16 patchlevel 302) [i686-linux]
+</pre>
+<p>Build output:</p>
+<pre>
+&gt; make
+gcc -I. -I/usr/lib/ruby/1.8/i686-linux -I/usr/lib/ruby/1.8/i686-linux -I. -DHAVE_RUBY_H  -D_FILE_OFFSET_BITS=64  -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/usr/lib/ruby/1.8/i686-linux -I/usr/lib/ruby/1.8/i686-linux -I. -DHAVE_RUBY_H  -D_FILE_OFFSET_BITS=64  -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+gcc -I. -I/usr/lib/ruby/1.8/i686-linux -I/usr/lib/ruby/1.8/i686-linux -I. -DHAVE_RUBY_H  -D_FILE_OFFSET_BITS=64  -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -shared -o ext.so ext.o matcher.o match.o -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc
+</pre>
+<p>I might add that I haven't used this computer in a while and at some point command-T started having problems on it. I am not sure if it was after I dist-upgraded ubuntu to 11.04 or if I accidentally pressed some odd modifier + key-combo when using command-T. I tried wiping my .vim/ruby/command-t folder and then sourcing the latest (command-t-1.2.1.vba) vimball to try to do a re-install of command-T to get it working again. The problems I had been having involved some weird Zero Count errors when running command-T's functions. The result of this was that I could never close the command-T window and had to stop the process and kill vim instead to get out.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6906'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6906"><time data-relative="true">2011-06-01T15:56:54Z</time></a></span>
+</cite>
+<blockquote><p>This is a bug in the version of <a href="/wiki/Vim">Vim</a> that ships with Ubuntu 11.04. See <a href="/forums/command-t/topics/470">this forum topic</a> for more info.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6907'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6907"><time data-relative="true">2011-06-01T15:57:01Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6935'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6935"><time data-relative="true">2011-06-16T13:26:53Z</time></a></span>
+</cite>
+<blockquote><p>Although vim works fine (except of I couldn't close finder window hitting &quot;q&quot;, like it was using gvim on Ubuntu 10.10), gvim segfaults on Ubuntu 11.04 and latest vim build:</p>
+<pre>
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Jun 15 2011 10:58:16)
+Included patches: 1-154
+Compiled by gmile@gmile-K52Jr
+Huge version without GUI.  Features included (+) or not (-):
++arabic +autocmd -balloon_eval -browse ++builtin_terms +byte_offset +cindent 
+-clientserver -clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con +diff +digraphs 
+-dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path 
++find_in_path +float +folding -footer +fork() +gettext -hangul_input +iconv 
++insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent 
++listcmds +localmap -lua +menu +mksession +modify_fname +mouse -mouseshape 
++mouse_dec -mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse 
++mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg -osfiletype 
++path_extra -perl +persistent_undo +postscript +printer +profile -python 
+-python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent 
+-sniff +startuptime +statusline -sun_workshop +syntax +tag_binary 
++tag_old_static -tag_any_white -tcl +terminfo +termresponse +textobjects +title
+ -toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
++vreplace +wildignore +wildmenu +windows +writebackup -X11 -xfontset -xim -xsmp
+ -xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/usr/local/share/vim&quot;
+Compilation: 
+gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -D_FORTIFY_SOURCE=1      
+Linking: gcc   -L.  -rdynamic -Wl,-export-dynamic  -L/usr/local/lib -Wl,--as-needed -o vim       -lm -lncurses -lnsl         -Wl,-R -Wl,/home/gmile/.rvm/rubies/ruby-1.9.2-p180/lib -L/home/gmile/.rvm/rubies/ruby-1.9.2-p180/lib -lruby -lpthread -lrt -ldl -lcrypt -lm
+</pre>
+<p>Ruby:</p>
+<pre>
+ruby 1.9.2p180 (2011-02-18 revision 30909) [i686-linux]
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6938'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6938"><time data-relative="true">2011-06-16T16:37:45Z</time></a></span>
+</cite>
+<blockquote><p>This is caused by a buggy Vim shipped with Ubuntu 11.04. Fix is installing a newer version of Vim.</p>
+<p>Plenty of tickets and forum threads on the subject &mdash; for example, <a href="/forums/command-t/topics/470">this one</a> &mdash; so will mark this one closed as a duplicate.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

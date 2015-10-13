@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1710: Provide hints about fewest number of keystrokes required to target a specific file
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1710</div>
+<div class='issue' id='issue_1710'>
+<form class="edit_issue" id="edit_issue_1710" action="/issues/1710" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="X3HPClWjfvvjAeWThnyB7G1kd1twLqWl0xuGgT6emlprg3G98i6krjqN1mS3VdJY2OYeZ3vCK7nzBFN/Gkb9fg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1710:
+<span data-name='issue[summary]'>
+Provide hints about fewest number of keystrokes required to target a specific file
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-10-12T10:12:02Z</time>, updated <time data-relative="true">2010-10-16T17:11:18Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Received via email:</p>
+<blockquote>
+<p>A cool extension to command-T would be a program that takes the entire list of files and outputs the fewest keystrokes required to access each file.  And, of course, tells you what those keystrokes are.  (Or, better yet, next to each file in Command-T display the letters that the user must type in order to access that file directly.)</p>
+<p>I often find myself in the command-T prompt trying to figure out what's the quickest way for me to access a file.  Do you ever do this?</p>
+<p>In forgiveness and vim, -joseph</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6339'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6339"><time data-relative="true">2010-10-12T10:45:04Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the request, Joseph. I have two thoughts about this:</p>
+<h3>1. Computational complexity</h3>
+<p>One is that the amount of computation required to calculate this &quot;shortest string&quot; would be absolutely enormous. Consider a typical project with anywhere from a few hundred to several thousand files in it, and think about how many possible permutations of search strings you would need to consider and compare in order to determine the best/shortest string for each file.</p>
+<p>Imagine a path which has 40 or 50 characters in it, like <code>spec/controllers/issues_controller_spec.rb</code>; there are perhaps thousands of search strings of lengths ranging from as little as 1 to as many as 42 characters which could conceivably match this path:</p>
+<ul>
+<li>one-letter strings: s, p, e, c, /, o, n, t, r, l, i, u, _, ., b</li>
+<li>two-letter strings: sp, se, sc, s/, so, sn ... pe, pc, p/, po ...</li>
+<li>three-letter stings: ...</li>
+</ul>
+<p>The number of permuations is absolutely enormous, and for each of these you would need to calculate a &quot;score&quot; between 0.0 and 1.0 indicating the ranking for that path given that search pattern. Multiply that by 4 or 5,000 paths in the project and we're already talking about millions of scores.</p>
+<p>Once you've got all these score you then need to grind through them and figure out which one is the shortest &quot;winning&quot; score for each path, and it's quite possible that there will be a tie and you'll then have to decide which one is the &quot;best&quot; or most intuitive one which you should show as a hint to the user. The amount of work needed to perform this comparison would grow exponentially as the number of files in the project increases.</p>
+<p>I don't actually think this could be viably done for anything but the most trivial projects; for real-world projects with typical file counts in the hundreds and thousands performance would quickly degrade to the point of being untenable.</p>
+<h3>2. The right way to solve the problem</h3>
+<p>My other thought is that if finding files with Command-T isn't intuitive and easy for you, then the solution is <em>not</em> having you look at or memorize a list of shortcuts (which in themselves may not seem at all intuitive to you; you may end up asking yourself, why did the program end up choosing <em>those</em> letters for that path?). I think instead you'd benefit much more from a deeper understanding of how results are scored, and when you understand the way the algorithm works, it becomes much easier to find what you're looking for.</p>
+<p>I'll try to sum it up for you in a nutshell here:</p>
+<ul>
+<li>Command-T looks at characters in the entire path, not just the file name (ie. if you want to open <code>foo/bar</code> then you're not limited to typing &quot;bar&quot; but can type &quot;fb&quot; instead)</li>
+<li>by including characters from the initial path components rather than just the filename you help narrow down the range of possible matches (ie. given file <code>spec/models/issue_spec.rb</code> you will probably narrow down the search more decisively by typing &quot;smi&quot; than by typing &quot;iss&quot;)</li>
+<li>some characters are weighted more heavily in the scoring algorithm; that is, characters which appear immediately after a slash or an underscore will be given more weight than those buried in the middle of a run of letters (ie. given file <code>lib/authentication/ssl_wrapper.rb</code> a string like &quot;lasw&quot; will score more highly than one like &quot;bclr&quot;; both of those strings match the path, but the first one is a &quot;better&quot; match because the matching characters fall after boundary characters)</li>
+</ul>
+<p>As a general rule of thumb the most important things to remember are:</p>
+<ul>
+<li>characters that follow &quot;boundary&quot; markers (like &quot;/&quot; and &quot;_&quot;) are the most important ones, and are the ones that you should prefer when typing your search string</li>
+<li>as the number of files in the project grows, the more important it becomes to provide letters from higher up in the path components (eg. in a 10-file project then it is fine to type &quot;bar&quot; in order to find <code>foo/bar</code>, but in a 10,000-file project if you want to open <code>foo/bing/bang/bong/buzz/bar</code> then you'd best get in the habit of typing something like &quot;fbbbbbar&quot; rather than just &quot;bar&quot;)</li>
+</ul>
+<p>Hope this helped.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6340'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6340"><time data-relative="true">2010-10-12T21:37:39Z</time></a></span>
+</cite>
+<blockquote><p>Wincent,</p>
+<p>Thanks for the thoughtful response.  Agreed on point 1 - way too computationally complex.</p>
+<p>As an alternative, what if users could create their own file of mappings and command-T could process those are overrides to its own algorithm?  That way, for those fifteen or so files that I am constantly going to, I can have those mappings memorized and count on just my fingers to get me where I need to go, rather than viewing the output from Command-T and verifying that I've highlighted the file I want.</p>
+<p>So, billing_report.php could have the mapping &quot;br&quot;.  I type in &quot;br&quot; and that file is auto-selected.  Type &quot;Enter&quot; and bam, it opens.  Just as easily I should be able to alternatively choose &quot;bphp&quot; as the mapping, update my mappings file, and have that work.</p>
+<p>What are your thoughts on this approach?</p>
+<p>-Joseph</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6341'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6341"><time data-relative="true">2010-10-13T06:37:49Z</time></a></span>
+</cite>
+<blockquote><p>Take a look at <a href="/issues/1541">ticket #1541</a> ('&quot;Learn&quot; from previous selections'). The idea proposed there is that the plug-in remembers which files you choose for any given search string and then in future searches adds a &quot;bonus&quot; to the score of such items when you enter that same search string again.</p>
+<p>So in your example, you type &quot;br&quot;, wanting to open <code>billing_report.php</code>, and it's not the top search result so you actually end up using the cursor keys to move down and select it. The next time you type &quot;br&quot;, Command-T applies a small bonus to <code>billing_report.php</code>, pushing it slightly higher up the results listing. You again use the cursor keys to move down and select it and so the bonus is bumped up a little higher. Next time you type &quot;br&quot;, the bonus is big enough to make <code>billing_report.php</code> the top result.</p>
+<p>What do you think of that one? I'm inclined to think that this would be a nice, intuitive way to transparently give you the behavior you're looking for without obliging users to spend time maintaing a special mappings file.</p>
+<p>The only tricky part of this would be fine-tuning the implementation details (how much should the &quot;bonus&quot; fluctuate up or down when you select a file or later select a different one?) but nothing insurmountable.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6343'>
+<cite>
+<a href="/users/joseph">joseph</a>
+<span class='when'><a href="#comment_6343">Created <time data-relative="true">2010-10-14T17:24:45Z</time>, edited <time data-relative="true">2010-10-15T12:02:20Z</time></a></span>
+</cite>
+<blockquote><p>The bonus is an interesting idea, though the bottom line is that it will take some time for the program to learn.  Plus, what if I want to use a keystroke series that is not a match for the resource - it will never appear in the matches.  </p>
+<p>I delved into the Command-T source code last night and put a little something together.  Let me know what you think.  My co-worker and I are already using this and we like it a good bit.   Eager to hear your thoughts, Wincent.</p>
+<p>Inside controller.rb:</p>
+<p>Add this line near the other requires:</p>
+<pre class="ruby-syntax">require 'yaml'</pre>
+<p>Change this function:</p>
+<pre class="ruby-syntax">def list_matches
+  matches = @finder.sorted_matches_for @prompt.abbrev, :limit =&gt; match_limit
+  override_file = &quot;command-t-overrides.yaml&quot;
+  if File.file?(override_file)
+    file_contents = IO.read(override_file)
+    ruby_obj = YAML::load(file_contents)
+    overrides = ruby_obj[&quot;overrides&quot;]
+    overrides.each_pair do |k,v|
+      if @prompt.abbrev == k
+        matches.insert(0, v)
+      end
+    end
+  end
+  @match_window.matches = matches
+end</pre>
+<p>And then in my directory where I usually launch vim, I have my command-t-overrides.yaml file:</p>
+<pre>overrides: {
+  pr : scripts/billing/payment_report.php,
+  br : scripts/billing/billing_report.php,
+  cto : command-t-overrides.yaml
+} </pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6355'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6355"><time data-relative="true">2010-10-16T17:11:18Z</time></a></span>
+</cite>
+<blockquote><p>Nice to see you could implement this without having to make deep changes to the algorithm, but instead just insert it at a higher layer.</p>
+<p>A few suggestions:</p>
+<ul>
+<li>wouldn't <code>command-t-overrides.yaml</code> be better as an invisible dot-file?</li>
+<li>do you really need to wrap things inside the &quot;overrides&quot; hash? (if the file contains only key-value pairs <code>YAML::load</code> will return a hash anyway); if you're envisioning additional future possible uses for this file, of which shortcut overrides would be just one, then it should probably be called <code>.command-t.yaml</code> and not have &quot;overrides&quot; in the file name at all</li>
+<li>I'd suggest reading the overrides file once only at the beginning of the search, rather than for each key press (<code>list_matches</code> is called once for each new key press)</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

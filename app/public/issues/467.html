@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #467: CRASH: Dies trying to &quot;Transfer cover to iTunes&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #467</div>
+<div class='issue' id='issue_467'>
+<form class="edit_issue" id="edit_issue_467" action="/issues/467" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="s2PcaKEU3zgbtGmvqoLeSANyyQ+BzqLVzleC3ZW6MbaHkWLfBpkFbcI4Wlibq438tvCgM4oiLMnuSFcjsWJWkg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #467:
+<span data-name='issue[summary]'>
+CRASH: Dies trying to &quot;Transfer cover to iTunes&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-09-10T06:21:28Z</time>, updated <time data-relative="true">2009-04-27T05:04:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user post in the forums:</p>
+<p>&quot;I'm using iTunes 6.04, Panther 10.3.9 and Synergy 3 (though it also happened in Synergy 2.9), and whenever I choose the Transfer Cover to iTunes option from the menu bar, Synergy locks up and eventually crashes. I couldn't find anyhting abou this in a quick search. Any ideas?&quot;</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=1059" class="external">http://wincent.com/a/support/forums/showflat.php?Number=1059</a></p>
+<p>My reply:</p>
+<p>Thanks for reporting the crash. No one else has reported this issue so can you perform some troubleshooting as recommended here to see if you can rule out other possible causes:</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a> </p>
+<p>If you can reliably reproduce the crash (and even if you can't) can you please send me a copy of your crash log (stored in ~/Library/Logs/CrashReporter/) and also a copy of the album cover file that you are trying to import (get it by selecting &quot;Show Album Covers folder&quot; from the Synergy Global Menu.</p>
+<p>The more information you can provide, the better. For example, what kind of music track are you trying to embed the art in? (An MP3? An AAC-encoded file? etc).</p>
+<p>If you don't want to create a Bugzilla account and attach the crash log(s) and the cover art file, you can send them to me via email. My email address is referenced on this page.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2772'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2772"><time data-relative="true">2006-09-10T06:22:42Z</time></a></span>
+</cite>
+<blockquote><p>Correcting summary (incorrectly filled-in by autocomplete)...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2773'>
+<cite>
+<a href="/users/william-mcdonald">William McDonald</a>
+<span class='when'><a href="#comment_2773"><time data-relative="true">2006-09-30T17:16:43Z</time></a></span>
+</cite>
+<blockquote><p>I am not computer literate but this ame thing happens when i try to transferr art to itunes   i think this is a crash log or may help.  thanx</p>
+<p>Sep 30 14:24:26 William-McDonalds-Computer kernel: System Sleep Sep 30 14:24:28 William-McDonalds-Computer kernel: System Wake Sep 30 14:24:28 William-McDonalds-Computer kernel: Wake event 0008 Sep 30 14:24:29 William-McDonalds-Computer kernel: AppleNMI unmask NMI Sep 30 14:24:29 William-McDonalds-Computer kernel: Sound assertion &quot;0 != err&quot; failed in &quot;AppleLegacyAudio/AppleTexas2Audio/AppleTexas2Audio.cpp&quot; at line 960 goto Exit Sep 30 14:24:29 William-McDonalds-Computer kernel: &#x0010;AirPortFirmware: start Sta f/w download Sep 30 14:24:29 William-McDonalds-Computer kernel: ADB present:8c Sep 30 14:24:29 William-McDonalds-Computer kernel: UniNEnet::monitorLinkStatus - Link is up at 100 Mbps - Full Duplex Sep 30 14:24:30 William-McDonalds-Computer mDNSResponder[173]: mDNSResponder Waking at 597899258 Sep 30 14:24:30 William-McDonalds-Computer mDNSResponder[173]:    -1: DNSServiceRegister(&quot;William McDonald&#x2019;s Music&quot;, &quot;_daap._tcp.&quot;, &quot;local.&quot;, 3689) failed: Client id -1 invalid (-65549) Sep 30 14:24:30 William-McDonalds-Computer mDNSResponder[173]:    -1: DNSServiceRegister(&quot;iTunes_Ctrl_0266779886F261E4&quot;, &quot;_dacp._tcp.&quot;, &quot;local.&quot;, 3689) failed: Client id -1 invalid (-65549) 2006-09-30 14:24:35.468 SoftwareUpdateCheck[4107] Checking for updates Sep 30 14:58:00 William-McDonalds-Computer /Applications/Safari.app/Contents/MacOS/Safari: *** Warning: ATSUSetFontFallbacks has been deprecated.  Use ATSUFontFallbacks objects instead. *** Sep 30 14:58:00 William-McDonalds-Computer /Applications/Safari.app/Contents/MacOS/Safari: *** Warning: Line option kATSLineIsDisplayOnly has been deprecated. *** Sep 30 15:02:10 William-McDonalds-Computer kernel: jnl: journal start/end pointers reset! (jnl 0x1149b4c; s 0x159400 e 0x159400) Sep 30 15:05:29 William-McDonalds-Computer diskarbitrationd[88]: TruBlueEnvironment [3924]:31187 not responding. Sep 30 15:05:31 William-McDonalds-Computer kernel: jnl: close: flushing the buffer cache (start 0x1d8200 end 0x1da600) Sep 30 15:06:31 William-McDonalds-Computer kernel: jnl: journal start/end pointers reset! (jnl 0x1149b4c; s 0x1da600 e 0x1da600) Sep 30 15:21:47 William-McDonalds-Computer crashdump: Started writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:21:52 William-McDonalds-Computer crashdump: Finished writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log 2006-09-30 15:22:20.579 Synergy[4165] LSCopyItemInfoForURL() returned -43 for path /Users/williammcdonald/Library/PreferencePanes/Synergy.prefPane. Sep 30 15:24:54 William-McDonalds-Computer crashdump: Started writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:24:54 William-McDonalds-Computer crashdump: Finished writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:26:59 William-McDonalds-Computer crashdump: Started writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:27:00 William-McDonalds-Computer crashdump: Finished writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Updating login items Removing login item with name: Synergy.app Adding login item with path: ~/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app (show on launch) Running lsregister in the User domain Sep 30 15:29:44 William-McDonalds-Computer crashdump: Started writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:29:46 William-McDonalds-Computer crashdump: Finished writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:31:10 William-McDonalds-Computer crashdump: Started writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:31:11 William-McDonalds-Computer crashdump: Finished writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. yylex: ERROR. Sep 30 15:57:51 William-McDonalds-Computer crashdump: Started writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log Sep 30 15:57:52 William-McDonalds-Computer crashdump: Finished writing crash report to: /Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2774'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2774"><time data-relative="true">2006-09-30T17:47:19Z</time></a></span>
+</cite>
+<blockquote><p>Can you attach the actual crash log? The stuff you've posted only says that the crash log has been written to the following location, it's not the actually crash log itself:</p>
+<p>/Users/williammcdonald/Library/Logs/CrashReporter/Synergy.crash.log</p>
+<p>Also helpful would be more information about exactly what happens when the crash occurs... for example, what type of image are you trying to transfer (jpg, gif etc)? To what type of file (mp3, aac-encoded file etc)? Have you tried the trouble-shooting steps listed on the following page?</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a></p>
+<p>If you can reliably reproduce the flaw, you could attach a sample image and ideally a sample target file.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2775'>
+<cite>
+<a href="/users/william-mcdonald">William McDonald</a>
+<span class='when'><a href="#comment_2775"><time data-relative="true">2006-10-01T02:00:35Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=79) Synergy Crash log</p>
+<p>This is for bug 467</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2776'>
+<cite>
+<a href="/users/william-mcdonald">William McDonald</a>
+<span class='when'><a href="#comment_2776"><time data-relative="true">2006-10-01T02:04:54Z</time></a></span>
+</cite>
+<blockquote><p>For an Ibook g3.  When i select transfer timages to itunes after control clicking the play/pause key synergy turns off.  I think the attac. is the chrash log.  As for knowing what image to what file i was under the assumption it had all that figuered out due to its connection to the internet.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2777'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2777"><time data-relative="true">2006-10-01T05:39:50Z</time></a></span>
+</cite>
+<blockquote><p>Thanks very much for attaching the crash log. The crash is indeed occurring in the Foundation framework when Synergy tries to prepare the Apple Event needed to send the image to iTunes:</p>
+<p>Thread 0 Crashed: 0   com.apple.AE                   &#x0009;0x923c8518 _ZN11AEEventImplC4EmmPK6AEDescll + 0x88 1   com.apple.AE                   &#x0009;0x923c9918 AECreateAppleEvent + 0x54 2   com.apple.Foundation           &#x0009;0x90aa605c _NS_AECreateAppleEvent + 0x78 3   com.apple.Foundation           &#x0009;0x90aa5f94 -[NSAppleEventDescriptor initWithEventClass:eventID:targetDescriptor:returnID:transactionID:] + 0x34 4   com.apple.Foundation           &#x0009;0x90aa5f44 +[NSAppleEventDescriptor appleEventWithEventClass:eventID:targetDescriptor:returnID:transactionID:] + 0x60</p>
+<p>I am not sure what the cause might be. Perhaps a corrupted image file? Or an oversize image file?</p>
+<p>(In reply to comment #5)</p>
+<blockquote>
+<p>For an Ibook g3.  When i select transfer timages to itunes after control clicking the play/pause key synergy turns off.  I think the attac. is the chrash log.  As for knowing what image to what file i was under the assumption it had all that figuered out due to its connection to the internet.</p>
+</blockquote>
+<p>Does this happen with all images or only just some of them? Can you please attach an image which exhibits the fault so that I can test it here locally? You can find such an image by selecting &quot;Show Album Covers folder&quot; from the Synergy Global Menu. The image file for the currently playing track will be selected in the Finder.</p>
+<p>Did you perform the trouble-shooting steps recommended in the article I linked to above? (<a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a>) For example, trying from a different user account etc. Ruling out other potential causes will help us narrow down our focus and find the cause of the crash.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2778'>
+<cite>
+<a href="/users/william-mcdonald">William McDonald</a>
+<span class='when'><a href="#comment_2778"><time data-relative="true">2006-10-01T10:25:10Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=80) Possible corrupt image</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2779'>
+<cite>
+<a href="/users/william-mcdonald">William McDonald</a>
+<span class='when'><a href="#comment_2779"><time data-relative="true">2006-10-01T10:26:12Z</time></a></span>
+</cite>
+<blockquote><p>It crashes with every type.  I tried with many different songs and image types.  The way I get around it is to play the song and see if syn. finds the cover. if it does I highlight all the tracks from that album and hit apple i.  I open the cover art folder and drag and click in the artwork feild i opened when pressed apple i.  While not a quick method to emmbed the art to the tracks it gets the job done.  This is why I don't think it is the images because it crashes on all ( itried five different times with different songs and they are mostly jpgs {which is what syn. seems to find most frequently.)  I will attach a cover i know it crashed on.  There is only one user on this computer.  Thanx for all this help.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2780'>
+<cite>
+<a href="/users/bugzilla-user-390">bugzilla user 390</a>
+<span class='when'><a href="#comment_2780"><time data-relative="true">2006-11-02T04:04:37Z</time></a></span>
+</cite>
+<blockquote><p>Hi there! It seems I have exact same problem.Also running on a g3 with panther 10.3.9 and using iTunes 6.0.4. My crash.log seems to be too long to be posted here?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2781'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2781"><time data-relative="true">2006-11-02T13:54:35Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=84) other crash log</p>
+<p>Attaching the report emailed me by Julius, looks identical to the other one. Still no idea what might cause this but the set-ups seem identical. Would be interested to see if the problem goes away with iTunes 7.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2782'>
+<cite>
+<a href="/users/bugzilla-user-390">bugzilla user 390</a>
+<span class='when'><a href="#comment_2782"><time data-relative="true">2006-11-02T16:16:19Z</time></a></span>
+</cite>
+<blockquote><p>I don't know...I've heard ro many complains about iTunes 7,I kind of wanna stay with the old one...not using musik store anyway,don't watch movies with iTunes...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2783'>
+<cite>
+<a href="/users/delysid">Delysid</a>
+<span class='when'><a href="#comment_2783"><time data-relative="true">2007-06-26T01:31:46Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=137) &quot;Transfer Cover to iTunes&quot; Synergy.crash.log in OS X 10.2.8</p>
+<p>I think there are several crashes recorded in this file, all caused by selecting &quot;Transfer Cover to iTunes&quot; in the Synergy menu.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2784'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2784"><time data-relative="true">2007-06-26T02:32:57Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #12)</p>
+<blockquote>
+<p>I think there are several crashes recorded in this file, all caused by selecting &quot;Transfer Cover to iTunes&quot; in the Synergy menu.</p>
+</blockquote>
+<p>Indeed, and they all crash inside the AECreateAppleEvent function. What version of Synergy are you running?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2785'>
+<cite>
+<a href="/users/bugzilla-user-390">bugzilla user 390</a>
+<span class='when'><a href="#comment_2785"><time data-relative="true">2007-06-26T04:13:04Z</time></a></span>
+</cite>
+<blockquote><p>This bug occurs with every version of iTunes (various versions from 6-7) and Synergy (1.4,3.0) I've tested it on, so it seems to be a problem between Synergy the OS (10.3.9).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4518'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4518"><time data-relative="true">2009-04-27T05:04:46Z</time></a></span>
+</cite>
+<blockquote><p>This no longer looks to be an issue so will mark as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4519'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4519"><time data-relative="true">2009-04-27T05:04:51Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

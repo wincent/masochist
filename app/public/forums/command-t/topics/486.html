@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+horizontal split window not working with command-t
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; horizontal split window not working with command-t</div>
+<h1 class='major'>horizontal split window not working with command-t</h1>
+<div class='topic' id='topic_486'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/karl-baum">Karl Baum</a>
+<span class='when'>
+<a href="/forums/command-t/topics/486"><time data-relative="true">2011-09-21T14:32:58Z</time></a>
+</span>
+</cite>
+<blockquote><p>I am able to open a vertical split but when i enter &lt;C-s&gt; nothing happens and when i enter &lt;C-CR&gt; it just opens the file without split.</p>
+<p>I am using command-t for macvim 7.3.107 on snow leopard 10.6.8 and most of the janus vim configuration.</p>
+<p><a href="https://github.com/carlhuda/janus" class="external">https://github.com/carlhuda/janus</a></p>
+<p>thx!</p>
+<p>-karl</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7153'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7153"><time data-relative="true">2011-10-09T05:14:58Z</time></a></span>
+</cite>
+<blockquote><p>I believe this is depends on what <code>TERM</code> you are using.</p>
+<p>If you are using a graphical client like <a href="/wiki/MacVim">MacVim</a> then all the mappings will work out of the box, but if you are using <a href="/wiki/Vim">Vim</a> in the terminal, it is possible that some of the default mappings won't work because your key presses end up getting mapped to escape sequences and other weirdness may happen.</p>
+<p>You can try twiddling your <code>TERM</code> settings, but generally the most straightforward workaround in this case is just to set up your own mapping which works in your terminal. Depending on how deeply you want to investigate, you can try to find out what key sequence is actually being sent to Vim by the terminal when you hit <code>CTRL-&lt;CR&gt;</code>. Or you can just pick an alternative mapping that makes sense to you.</p>
+<p>You can set up your own mapping with the <code>g:CommandTAcceptSelectionSplitMap</code> setting. By default, <code>CTRL-&lt;CR&gt;</code> and <code>CTRL-S</code> are set to open the selection in a horizontal split. You may find that <code>CTRL-S</code> works already in your terminal.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7180'>
+<cite>
+<a href="/users/karl-baum">Karl Baum</a>
+<span class='when'><a href="#comment_7180"><time data-relative="true">2011-10-19T16:32:43Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent.  I was able to get it working with this setting in my .vimrc.local</p>
+<p>let g:CommandTAcceptSelectionSplitMap=['&lt;CR&gt;', '&lt;C-g&gt;']</p>
+<p>I am honestly not sure how to figure out what is exactly being sent to vim.  The interesting thing is that my friend also has janus installed and had the same issue with &lt;C-s&gt; for split windows.</p>
+<p>Thanks for your help!</p>
+<p>-karl</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7353'>
+<cite>
+<a href="/users/roovo">roovo</a>
+<span class='when'><a href="#comment_7353"><time data-relative="true">2011-12-31T11:41:06Z</time></a></span>
+</cite>
+<blockquote><p>I've just hit the same issue (using iTerm2 on OSX Lion).  The solution I've found (to getting the &lt;C-s&gt; combination working) is to put:</p>
+<p>stty -ixon</p>
+<p>in your .bashrc (or equivalent shell startup script).  Understanding this is beyond my comprehension of things tty, but I got the info from the following thread where the same key combo wasn't getting through to readline.</p>
+<p><a href="http://groups.google.com/group/iterm2-discuss/browse_thread/thread/47700851d59386fb" class="external">http://groups.google.com/group/iterm2-discuss/browse_thread/thread/47700851d59386fb</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_13120'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_13120"><time data-relative="true">2015-06-12T14:10:48Z</time></a></span>
+</cite>
+<blockquote><p>Solved: You dont need to modify anything in your .vimrc to use ctrl + s with command-t. The only thing you need to do is to add this to your ~/.bashrc :</p>
+<p>stty -ixon</p>
+<p>Thank you roovo</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

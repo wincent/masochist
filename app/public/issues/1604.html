@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #1604: Can't install Command-T
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1604</div>
+<div class='issue' id='issue_1604'>
+<form class="edit_issue" id="edit_issue_1604" action="/issues/1604" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="fjpVN7spJ0Yz4X8BH0KnTdDTQWeIfo0FLqijHe6CJdhKyOuAHKT9E+ptTPYua/T5ZVEoW4OSAxkOt3bjylpC/A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #1604:
+<span data-name='issue[summary]'>
+Can't install Command-T
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-07-12T05:12:14Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've followed the installation instructions and looked at another ticket which had seemingly the same issue but I can't seem to figure out how to resolve the issue. </p>
+<p>So post installation, I try and activate command-t and I get this error:</p>
+<pre>command-t.vim could not load the C extension </pre>
+<p><code>:version</code>:</p>
+<pre>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Mar  5 2010 15:46:30)
+MacOS X (unix) version
+Included patches: 1-376
+Compiled by Bjorn Winckler &lt;bjorn.winckler@gmail.com&gt;
+Huge version with MacVim GUI.  Features included (+) or not (-):
++arabic +autocmd -balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard +cmdline_compl
++cmdline_hist +cmdline_info +comments +cryptv +cscope +cursorshape +dialog_con_gui +diff +digraphs +dnd -ebcdic +emacs_tags
+ +eval +ex_extra +extra_search +farsi +file_in_path +find_in_path +float +folding -footer +fork() +fullscreen -gettext
+-hangul_input +iconv +insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap +menu
++mksession +modify_fname +mouse +mouseshape +mouse_dec -mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse
++mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg +odbeditor -osfiletype +path_extra -perl +postscript +printer
+ +profile +python +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime +statusline
+-sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white -tcl +terminfo +termresponse +textobjects +title +toolbar
++transparency +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo +vreplace +wildignore +wildmenu +windows
+ +writebackup -X11 -xfontset +xim -xsmp -xterm_clipboard -xterm_save
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-p
+recomp  -g -O2 -isysroot /Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -D_FORTIFY_SOURCE=
+1
+Linking: gcc   -L.   -Wl,-syslibroot,/Developer/SDKs/MacOSX10.5.sdk -mmacosx-version-min=10.5 -arch i386 -arch x86_64 -L/usr
+/local/lib -o Vim -framework Cocoa -framework Carbon      -lm -lncurses  -liconv    -framework Python  -framework Ruby</pre>
+<p>Result from make:</p>
+<pre>/usr/bin/gcc-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.7.0 -I/opt/local/lib/ruby/1.8/i686-darwin9.7.0 -I. -DHAVE_RUBY_H -I/opt/local/include  -fno-common -O2  -fno-common -pipe -fno-common  -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+/usr/bin/gcc-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.7.0 -I/opt/local/lib/ruby/1.8/i686-darwin9.7.0 -I. -DHAVE_RUBY_H -I/opt/local/include  -fno-common -O2  -fno-common -pipe -fno-common  -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+/usr/bin/gcc-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9.7.0 -I/opt/local/lib/ruby/1.8/i686-darwin9.7.0 -I. -DHAVE_RUBY_H -I/opt/local/include  -fno-common -O2  -fno-common -pipe -fno-common  -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/opt/local/lib -L. -L/opt/local/lib    -lruby  -lpthread -ldl -lobjc </pre>
+<p>This is on a core 2 duo (64 bit) machine running Os X 10.5.7</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5853'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5853"><time data-relative="true">2010-07-12T05:23:14Z</time></a></span>
+</cite>
+<blockquote><p>I gather from the <code>/opt/local</code> in the output of your <code>make</code> invocation that you are using some kind of package manager to provide a non-standard Ruby installation.</p>
+<p>I think the most likely cause, then, will be a discrepancy between the version of Ruby linked to by Vim (which I expect is the standard system Ruby via <code>/System/Library/Ruby.framework</code>) and the one linked to by the extension that you built.</p>
+<p>Can you try temporarily deactivating your package management system (I presume it inserts itself by altering your PATH or something, so just temporarily modify your PATH accordingly) and doing the <code>make</code> again? Then I'd expect it to work.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5854'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5854"><time data-relative="true">2010-07-12T07:11:04Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent, </p>
+<p>Thanks so much for your quick reply! </p>
+<p>So after running a make distclean, then ruby extconf.rb and make again:</p>
+<pre>gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -DHAVE_RUBY_H   -fno-common -arch ppc -arch i386 -Os -pipe -fno-common  -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -DHAVE_RUBY_H   -fno-common -arch ppc -arch i386 -Os -pipe -fno-common  -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -DHAVE_RUBY_H   -fno-common -arch ppc -arch i386 -Os -pipe -fno-common  -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -arch ppc -arch i386 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch ppc -arch i386    -lruby  -lpthread -ldl -lm</pre>
+<p>I still have no joy:</p>
+<pre>&quot;command-t.vim could not load the C extension&quot;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5855'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5855"><time data-relative="true">2010-07-12T07:32:06Z</time></a></span>
+</cite>
+<blockquote><p>You could try manually loading the extension yourself from inside Vim and see if it reports more error info or throws an exception. Try:</p>
+<pre>:ruby p(require 'command-t/ext')</pre>
+<p>You should see either <code>true</code> (loaded successfully), <code>false</code> (was already loaded), or some exception message.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5856'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5856"><time data-relative="true">2010-07-12T07:36:00Z</time></a></span>
+</cite>
+<blockquote><pre>LoadError: /Users/tcrins01/.vim/ruby/command-t/ext.bundle: dlopen(/Users/tcrins01/.vim/ruby/command-t/ext.bundle, 9): no suitable image found.  Did find:</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5857'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5857"><time data-relative="true">2010-07-12T07:44:59Z</time></a></span>
+</cite>
+<blockquote><p>Hm. That's the kind of message you might see if you try loading a 64-bit extension into a 32-bit Ruby build, or vice versa.</p>
+<p>You could try forcing a 64-bit build like this:</p>
+<pre class="shell-syntax">$ cd ~/.vim/ruby/command-t
+$ env ARCHFLAGS=&quot;-arch x86_64&quot; ruby extconf.rb
+$ env ARCHFLAGS=&quot;-arch x86_64&quot; make</pre>
+<p>Probably a Snow Leopard vs Leopard thing. I've also got a 64-bit machine, but on Snow Leopard, and when <em>I</em> do <code>ruby extconf.rb &amp;&amp; make</code> I get <code>ARCHFLAGS</code> of <code>-arch i386 -arch x86_64</code> by default, whereas you are getting <code>-arch ppc -arch i386</code>:</p>
+<pre>gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64     -lruby  -lpthread -ldl</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_5858'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5858"><time data-relative="true">2010-07-12T07:54:47Z</time></a></span>
+</cite>
+<blockquote><p>Ahh! Perfect! That did the trick. Thank you so much for your help. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5859'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5859"><time data-relative="true">2010-07-12T07:59:33Z</time></a></span>
+</cite>
+<blockquote><p>Glad to hear it. Kind of annoying that the installation is so sensitive to that kind of discrepancy. Would love to find a way around it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5860'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5860"><time data-relative="true">2010-07-12T07:59:40Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5861'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5861"><time data-relative="true">2010-07-12T08:03:03Z</time></a></span>
+</cite>
+<blockquote><p>Well if you need a test system, I can try to help? It is a shame, I saw the other issue that was just like this but couldn't think how to force the architecture. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5862'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5862"><time data-relative="true">2010-07-12T08:13:08Z</time></a></span>
+</cite>
+<blockquote><p>Thanks. Well the two possible ideas I have for this are:</p>
+<ul>
+<li>install time: add some more checks either in the <code>extconf.rb</code> file or the <code>Makefile</code> itself, to at least catch the major likely causes of incompatibility and print some kind of warning</li>
+<li>run time: add a command that can be called from inside Vim itself to try building the extension; at least that should rule out external package management systems as a possible cause</li>
+</ul>
+<p>Will try to get at least something like that sorted out before the 1.0 release.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5863'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5863"><time data-relative="true">2010-07-12T08:22:05Z</time></a></span>
+</cite>
+<blockquote><p>Either sound, like a good idea to me. I guess the problem is probably with the user though, I'm not the greatest linux user about so didn't know where to go. I think an obvious warning at install time would be the more standard approach? From a new to vim users perspective though I like the idea of vim installing it for me :)</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

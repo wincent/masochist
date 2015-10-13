@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #362: Conflict with Rogue Amoeba Airfoil
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #362</div>
+<div class='issue' id='issue_362'>
+<form class="edit_issue" id="edit_issue_362" action="/issues/362" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Qj0ze/1fFO32VOATqViFdcSSlXLvyH0vLDXv7Lm9YmF2z43MWtLOuC/Y0+SYcdbBcRD8TuQk8zMMKjoSnWUFRQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #362:
+<span data-name='issue[summary]'>
+Conflict with Rogue Amoeba Airfoil
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-02-05T18:48:46Z</time>, updated <time data-relative="true">2006-07-05T02:07:15Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>There seems to be a conflict between Airfoil (by Rogue Amoeba) and Synergy Advance. I got some emails from a customer that is seeing a lot of erratic crashes and hangs in Synergy Advance. All of the crash logs look different but all of the crashes are occurring deep down in the system APIs (about the only Synergy Advance code that appears in the stack trace is &quot;main&quot;).</p>
+<p>From the customer's email:</p>
+<p>&quot;The program that's causing the problem is Airfoil. It uses the same engine(?) as Audio Hijack but to a more specialized end. And yes, it does seem to be part of the problem. Even if Synergy Advanced doesn't outright crash while it's running, it does hang after a short period of time: spinning beach ball if I move the cursor over the menu bar icon, &quot;Application Not Responding&quot; in the dock. If I quit Airfoil (written by Rogue Amoeba) and relaunch Synergy Advanced, life is good again.&quot;</p>
+<p>I've opened this report with the hope that we can gather information from Rogue Amoeba and figure out what the exact nature of the conflict is and how it can be worked around. Will attach some crash reports to this issue.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2395'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2395"><time data-relative="true">2006-02-05T18:51:19Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=48) Crash log</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2396'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2396"><time data-relative="true">2006-02-05T18:59:18Z</time></a></span>
+</cite>
+<blockquote><p>Just a note; one possible theory as to the nature of the conflict:</p>
+<p>Synergy Advance does a &quot;poseAsClass&quot; on NSThread very early on in the execution of the program (ie. in &quot;main&quot;) so that it can provide some useful thread information (it doesn't actually change behaviour, it just provides some conveniences methods for reporting info). Observations:</p>
+<p>1. The stack traces of these crashes are entirely composed of system routines (ie .NSApplicationMain is being called, lots of system methods follow suit, and execution does not even get to any Synergy Advance code before the crash occurs.</p>
+<p>2. Airfoil/APE appear as separate threads in the thread listing.</p>
+<p>3. The crashes occur only when Airfoil is running.</p>
+<p>4. The only code run before NSApplicationMain is a poseAsClass (NSThread).</p>
+<p>5. It therefore seems likely that my Airfoil is doing something thread-related that is causing the crash.</p>
+<p>I'll need more information from the developers in order to pursue this further. Perhaps they are doing a poseAsClass as well, or something even lower-level.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2397'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2397"><time data-relative="true">2006-07-05T02:07:15Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

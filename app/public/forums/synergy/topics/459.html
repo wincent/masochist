@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Can't use option-command-space as hot key
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Can&#39;t use option-command-space as hot key</div>
+<h1 class='major'>Can't use option-command-space as hot key</h1>
+<div class='topic' id='topic_459'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/459"><time data-relative="true">2011-02-14T16:52:30Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>I've been using Synergy for a while on an iMac G5 running Tiger. I recently replaced it with a new machine (Mac Mini running Snow Leopard) and installed Synergy on it. </p>
+<p>On the old machine, I used option-command-space as the hot key for play/pause, option-command-up arrow for volume up, etc. </p>
+<p>On the new machine, the old hot keys all work except for option-command-space -- the Synergy prefs won't let me enter it. (I know that this key combination defaults to showing the Spotlight window, but I have unchecked that in the Keyboard preference pane.)</p>
+<p>I wondered if this had something to do with Snow Leopard, so I installed it on another Snow Leopard machine, and it worked fine.</p>
+<p>Any ideas of why I can't select this hot key?</p>
+<p>Thanks</p>
+<p>Ben</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6706'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6706"><time data-relative="true">2011-02-15T09:52:16Z</time></a></span>
+</cite>
+<blockquote><p>Well, that would have been my first idea as well (ie. that the system was intercepting that combination and sending it off to Spotlight before letting any other app &quot;see&quot; it).</p>
+<p>Sounds like you've already tried everything that I would have tried. One other thing which I would give a shot is plugging in a different type of keyboard just to see if the results are any different. But really, no idea.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6707'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6707"><time data-relative="true">2011-02-15T13:42:06Z</time></a></span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>Thanks for the response. I've done a little more experimentation and come up with more information and a workaround. It looks like for whatever reason, you can't enter option-command-space in Snow Leopard. Maybe, as you say, the system intercepts the Spotlight shortcuts even if you turn them off. But you can enter it in Tiger as I had done on my old iMac. (I was mistaken when I said that it had worked on another Snow Leopard machine -- that machine was Tiger.) So I did the following:</p>
+<ol>
+<li>Installed Synergy 3.4.1 (trial) on a Tiger machine. </li>
+<li>Changed the hot keys as desired on that machine. </li>
+<li>Copied the org.Wincent.Synergy.plist file from the Tiger machine onto the target (Snow Leopard) machine.</li>
+<li>Installed Synergy 3.4.1 on the target machine.</li>
+<li>Moved the plist file into the ~\Library\Preferences folder on the target machine, replacing the newly created plist file.</li>
+<li>Open the preference pane and confirm that the hot keys are set as desired.</li>
+<li>Download and install Synergy 4.5.2. Enter registration info. </li>
+</ol>
+<p>Done and done.</p>
+<p>best</p>
+<p>Ben</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6708'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6708"><time data-relative="true">2011-02-15T17:02:33Z</time></a></span>
+</cite>
+<blockquote><p>Interesting!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1262: Wrong CSS class applied to [mailto:user@example.com email me]
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1262</div>
+<div class='issue' id='issue_1262'>
+<form class="edit_issue" id="edit_issue_1262" action="/issues/1262" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="O0AOuldDMzwTYzkZSMIIcrK4Icu8d4nZKLLOUdd5XHgPsrAN8M7pacrvCu5561vGBzpI97ebB8UIrRuv86E7XA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1262:
+<span data-name='issue[summary]'>
+Wrong CSS class applied to [mailto:user@example.com email me]
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-03-26T19:49:06Z</time>, updated <time data-relative="true">2009-03-27T07:12:02Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>In the example:</p>
+<pre>[<a href="mailto:win@wincent.com" class="mailto">mailto:win@wincent.com</a> email]</pre>
+<p>This is a &quot;mailto&quot; URL and it ends up with the &quot;external&quot; CSS class being applied to it rather than the &quot;mailto&quot; class.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4358'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4358"><time data-relative="true">2009-03-26T20:04:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4365'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4365"><time data-relative="true">2009-03-26T20:20:06Z</time></a></span>
+</cite>
+<blockquote><p>At the same time as fixing the class, probably makes sense to fix up the linked text as well.</p>
+<p>ie. Note how we given:</p>
+<pre><a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a></pre>
+<p>We produce:</p>
+<pre>&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;</pre>
+<p>When it would perhaps be nicer if we produced:</p>
+<pre>&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot;&gt;user@example.com&lt;/a&gt;</pre>
+<p>Another possibility is that we could also (or instead) start accepting input like:</p>
+<pre>[user@example.com email me]</pre>
+<p>Not sure if that is too lax and could lead to false positives, though.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4370'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4370"><time data-relative="true">2009-03-27T06:09:37Z</time></a></span>
+</cite>
+<blockquote><p>Bah; I wasn't thinking to clearly late last night when I wrote that comment. On reflecting further on the desirable behaviour today I've come up with the following changes to the spec suite:</p>
+<pre>diff --git a/spec/autolinking_spec.rb b/spec/autolinking_spec.rb
+index 382a93c..743ae46 100755
+--- a/spec/autolinking_spec.rb
++++ b/spec/autolinking_spec.rb
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env ruby
+-# Copyright 2007-2008 Wincent Colaiuta
++# Copyright 2007-2009 Wincent Colaiuta
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+@@ -43,7 +43,7 @@ describe Wikitext::Parser, 'autolinking' do
+ 
+     it 'should convert mailto URIs into hyperlinks' do
+       uri = '<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>'
+-      @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;external&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;mailto&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n}
+     end
+ 
+     it 'should convert SVN URIs into hyperlinks' do
+@@ -81,18 +81,30 @@ describe Wikitext::Parser, 'autolinking' do
+       @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;mailto&quot;&gt;user@example.com&lt;/a&gt;&lt;/p&gt;\n}
+     end
+ 
+-    it 'should apply the mailto CSS class if set' do
++    it 'should apply the mailto CSS class if set (raw address)' do
+       uri = 'user@example.com'
+       @parser.mailto_class = 'foo'
+       @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;foo&quot;&gt;user@example.com&lt;/a&gt;&lt;/p&gt;\n}
+     end
+ 
+-    it 'should apply no CSS if the mailto class is set to nil' do
++    it 'should apply the mailto CSS class if set (mailto URI)' do
++      uri = '<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>'
++      @parser.mailto_class = 'foo'
++      @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;foo&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n}
++    end
++
++    it 'should apply no CSS if the mailto class is set to nil (raw address)' do
+       uri = 'user@example.com'
+       @parser.mailto_class = nil
+       @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot;&gt;user@example.com&lt;/a&gt;&lt;/p&gt;\n}
+     end
+ 
++    it 'should apply no CSS if the mailto class is set to nil (mailto URI)' do
++      uri = '<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>'
++      @parser.mailto_class = nil
++      @parser.parse(uri).should == %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n}
++    end
++
+     it 'should pass through emails unchanged inside &lt;nowiki&gt;&lt;/nowiki&gt; spans' do
+       @parser.parse(&quot;&lt;nowiki&gt;user@example.com&lt;/nowiki&gt;&quot;).should == &quot;&lt;p&gt;user@example.com&lt;/p&gt;\n&quot;  # was a crasher
+     end
+diff --git a/spec/external_link_spec.rb b/spec/external_link_spec.rb
+index caba9fa..275d679 100755
+--- a/spec/external_link_spec.rb
++++ b/spec/external_link_spec.rb
+@@ -43,12 +43,15 @@ describe Wikitext::Parser, 'external links' do
+   end
+ 
+   it 'should format valid external mailto links' do
+-    # although note in this case the CSS class is &quot;external&quot; rather than &quot;mailto&quot;
+-    # this is because we're matching this as a (generic) URI rather than an email address
+-    expected = %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;external&quot;&gt;john&lt;/a&gt;&lt;/p&gt;\n}
++    expected = %Q{&lt;p&gt;&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;mailto&quot;&gt;john&lt;/a&gt;&lt;/p&gt;\n}
+     @parser.parse('[<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a> john]').should == expected
+   end
+ 
++  it 'should not treat raw email addresses as valid link targets' do
++    expected = %Q{&lt;p&gt;[&lt;a href=&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&quot; class=&quot;mailto&quot;&gt;user@example.com&lt;/a&gt; john]&lt;/p&gt;\n}
++    @parser.parse('[user@example.com john]').should == expected
++  end
++
+   it 'should format absolute path links' do
+     expected = %Q{&lt;p&gt;&lt;a href=&quot;/foo/bar&quot;&gt;fb&lt;/a&gt;&lt;/p&gt;\n} # note no &quot;external&quot; class
+     @parser.parse('[/foo/bar fb]').should == expected</pre>
+<p>Now working on implementing the necessary changes.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4371'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4371"><time data-relative="true">2009-03-27T07:11:57Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is now implemented. It will be in the next release (1.5.2).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4372'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4372"><time data-relative="true">2009-03-27T07:12:02Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

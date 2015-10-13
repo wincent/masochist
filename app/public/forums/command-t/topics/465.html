@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+*** extconf.rb failed ***
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; *** extconf.rb failed ***</div>
+<h1 class='major'>*** extconf.rb failed ***</h1>
+<div class='topic' id='topic_465'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/rtm332">rtm332</a>
+<span class='when'>
+<a href="/forums/command-t/topics/465"><time data-relative="true">2011-04-02T03:22:15Z</time></a>
+</span>
+</cite>
+<blockquote><p>When I try to follow the instruction to install, I got this error when I got to this step:</p>
+<pre>D:\Programs\Vim\vimfiles\ruby\command-t&gt;ruby extconf.rb
+checking for ruby.h... no
+couldn't find ruby.h (required)
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.
+
+Provided configuration options:
+        --with-opt-dir
+        --without-opt-dir
+        --with-opt-include
+        --without-opt-include=${opt-dir}/include
+        --with-opt-lib
+        --without-opt-lib=${opt-dir}/lib
+        --with-make-prog
+        --without-make-prog
+        --srcdir=.
+        --curdir
+        --ruby=D:/Programs/Ruby187/bin/ruby</pre>
+<ul>
+<li>OS: win7</li>
+<li>Vim: 7.2, 7.3</li>
+<li>Ruby 1.87, 1.92</li>
+<li>Dev kit: 3.45, 4.51</li>
+</ul>
+<p>Any body can help?</p>
+<p>thanks!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6808'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6808"><time data-relative="true">2011-04-16T05:31:53Z</time></a></span>
+</cite>
+<blockquote><p>Same difficulty here.  Strange as ruby.h is in C:\Ruby187\lib\ruby\1.8\i386-mingw32 (for Ruby 1.87, of course).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6942'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6942"><time data-relative="true">2011-06-23T14:43:54Z</time></a></span>
+</cite>
+<blockquote><p>See thist post, it helped me. Make sure you have all the steps done correctly plus you run the devkitvars.bat script.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7202'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7202"><time data-relative="true">2011-10-28T17:56:37Z</time></a></span>
+</cite>
+<blockquote><p>It happened to me, the way I solved was: once you open the command prompt and navigate to your command-t installation folder, type in the path execute the devkitvars.bat from your ruby installation folder.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7366'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7366"><time data-relative="true">2012-01-11T09:31:32Z</time></a></span>
+</cite>
+<blockquote><p>Solved by copying content of C:\Ruby187\mingw into C:\Ruby187\</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

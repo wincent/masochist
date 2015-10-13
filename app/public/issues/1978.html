@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #1978: Installation of command-t by non-interactive shell
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1978</div>
+<div class='issue' id='issue_1978'>
+<form class="edit_issue" id="edit_issue_1978" action="/issues/1978" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="CDB2oSVToqP+8JpXgC9xpqknUAqC6NBObalOjymPNSA8wsgWgt549id8qaCxBiISHKU5NokEXlJNtptxDVdSBA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #1978:
+<span data-name='issue[summary]'>
+Installation of command-t by non-interactive shell
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-05-04T11:21:03Z</time>, updated <time data-relative="true">2014-03-22T20:39:03Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>I am trying to package command-t for Fedora, however I am not able to install it non-interactively. I am executing the following command from build script: <code>vim -c 'so % | q' /builddir/build/SOURCES/command-t-1.3.1.vba</code>, unfortunately hangs (see the log below). I suspect the script to wait for confirming &quot;next&quot;, the same way as when it is installed interactively. Thank you for you help.</p>
+<pre>Vim: Warning: Output is not to a terminal
+Vim: Warning: Input is not from a terminal
+&#x001b;[?1h&#x001b;=&#x001b;[1;24r&#x001b;[m&#x001b;[m&#x001b;[0m&#x001b;[H&#x001b;[J&#x001b;[24;1H&quot;~/build/SOURCES/command-t-1.3.1.vba&quot; 3213L, 121299C&#x001b;[m&#x001b;[m&#x001b;[0m&#x001b;[H&#x001b;[J&#x001b;[1;1H&quot; Vimball Archiver by Charles E. Campbell, Jr., Ph.D.
+UseVimball
+finish
+&#x001b;[7m+--332 lines: ruby/command-t/controller.rb -------------------------------------&#x001b;[5;1H+-- 34 lines: ruby/command-t/extconf.rb ----------------------------------------&#x001b;[6;1H+-- 37 lines: ruby/command-t/finder/buffer_finder.rb ---------------------------&#x001b;[7;1H+-- 37 lines: ruby/command-t/finder/file_finder.rb -----------------------------&#x001b;[8;1H+-- 37 lines: ruby/command-t/finder/jump_finder.rb -----------------------------&#x001b;[9;1H+-- 54 lines: ruby/command-t/finder.rb -----------------------------------------&#x001b;[10;1H+--392 lines: ruby/command-t/match_window.rb -----------------------------------&#x001b;[11;1H+--167 lines: ruby/command-t/prompt.rb -----------------------------------------&#x001b;[12;1H+-- 44 lines: ruby/command-t/scanner/buffer_scanner.rb -------------------------&#x001b;[13;1H+--103 lines: ruby/command-t/scanner/file_scanner.rb ---------------------------&#x001b;[14;1H+-- 55 lines: ruby/command-t/scanner/jump_scanner.rb ---------------------------&#x001b;[15;1H+-- 30 lines: ruby/command-t/scanner.rb ----------------------------------------&#x001b;[16;1H+-- 79 lines: ruby/command-t/settings.rb ---------------------------------------&#x001b;[17;1H+-- 44 lines: ruby/command-t/stub.rb -------------------------------------------&#x001b;[18;1H+-- 42 lines: ruby/command-t/vim/path_utilities.rb -----------------------------&#x001b;[19;1H+-- 34 lines: ruby/command-t/vim/screen.rb -------------------------------------&#x001b;[20;1H+-- 40 lines: ruby/command-t/vim/window.rb -------------------------------------&#x001b;[21;1H+-- 53 lines: ruby/command-t/vim.rb --------------------------------------------&#x001b;[22;1H+-- 67 lines: ruby/command-t/ext.c ---------------------------------------------&#x001b;[23;1H+--191 lines: ruby/command-t/match.c -------------------------------------------&#x001b;[24;1H***vimball*** Source this file to extract it! (:so %)&#x001b;[m
+&#x001b;[1mVimball Archive&#x001b;[0m
+extracted &lt;ruby/command-t/controller.rb&gt;: 330 lines
+wrote /builddir/.vim/ruby/command-t/controller.rb
+extracted &lt;ruby/command-t/extconf.rb&gt;: 32 lines
+wrote /builddir/.vim/ruby/command-t/extconf.rb
+extracted &lt;ruby/command-t/finder/buffer_finder.rb&gt;: 35 lines
+wrote /builddir/.vim/ruby/command-t/finder/buffer_finder.rb
+extracted &lt;ruby/command-t/finder/file_finder.rb&gt;: 35 lines
+wrote /builddir/.vim/ruby/command-t/finder/file_finder.rb
+extracted &lt;ruby/command-t/finder/jump_finder.rb&gt;: 35 lines
+wrote /builddir/.vim/ruby/command-t/finder/jump_finder.rb
+extracted &lt;ruby/command-t/finder.rb&gt;: 52 lines
+wrote /builddir/.vim/ruby/command-t/finder.rb
+extracted &lt;ruby/command-t/match_window.rb&gt;: 390 lines
+wrote /builddir/.vim/ruby/command-t/match_window.rb
+extracted &lt;ruby/command-t/prompt.rb&gt;: 165 lines
+wrote /builddir/.vim/ruby/command-t/prompt.rb
+extracted &lt;ruby/command-t/scanner/buffer_scanner.rb&gt;: 42 lines
+wrote /builddir/.vim/ruby/command-t/scanner/buffer_scanner.rb
+extracted &lt;ruby/command-t/scanner/file_scanner.rb&gt;: 101 lines
+wrote /builddir/.vim/ruby/command-t/scanner/file_scanner.rb
+extracted &lt;ruby/command-t/scanner/jump_scanner.rb&gt;: 53 lines</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7534'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7534"><time data-relative="true">2012-05-28T01:12:10Z</time></a></span>
+</cite>
+<blockquote><p>In general I'm not very happy with Vimballs as an installation mechanism. As you've noted it seems to be pausing midway through, and I've found that occasionally it will mysteriously install only a subset of the files in the archive (installing a second time usually fills in the gaps).</p>
+<p>There's nothing special about the Vimball format though. Using a simple tarball of the files would probably be much more reliable.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7778'>
+<cite>
+<a href="/users/vit-ondruch">Vit Ondruch</a>
+<span class='when'><a href="#comment_7778"><time data-relative="true">2012-06-25T08:44:42Z</time></a></span>
+</cite>
+<blockquote><p>Actually, I would be happy with simple tarball, but where to get one, since there are just links to the vimballs</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_8443'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_8443"><time data-relative="true">2012-07-05T07:19:12Z</time></a></span>
+</cite>
+<blockquote><p>All the releases in the Git repo are tagged, so you could generate a tar ball with <code>git archive</code>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9932'>
+<cite>
+<a href="/users/vit-ondruch">Vit Ondruch</a>
+<span class='when'><a href="#comment_9932"><time data-relative="true">2012-08-01T12:25:56Z</time></a></span>
+</cite>
+<blockquote><p>Thank you for the tip. It might work. I realized that you are providing also gemified version, which might work as well.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11000'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11000"><time data-relative="true">2014-03-22T20:39:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

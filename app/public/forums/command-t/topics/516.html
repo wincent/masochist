@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Open in Horizontal Split Crashes vim on Ubuntu Server
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Open in Horizontal Split Crashes vim on Ubuntu Server</div>
+<h1 class='major'>Open in Horizontal Split Crashes vim on Ubuntu Server</h1>
+<div class='topic' id='topic_516'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/516"><time data-relative="true">2012-06-12T19:48:33Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm using the latest version of Command-T from the repository with a recently compiled vim (not the stock vim). Command-T was compiled with the system Ruby (1.8.7). Everything's running on Ubuntu Server 12.04 running in a VM.</p>
+<p>Everything works, even &lt;C-V&gt; to open in a vertical split, but &lt;C-S&gt; repeatably makes vim completely unresponsive.</p>
+<pre>ruby 1.8.7 (2011-06-30 patchlevel 352) [x86_64-linux]
+
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled May  4 2012 04:24:26)
+Included patches: 1-429
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version without GUI.  Features included (+) or not (-):
++arabic +autocmd -balloon_eval -browse ++builtin_terms +byte_offset +cindent 
+-clientserver -clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con +diff +digraphs 
+-dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path 
++find_in_path +float +folding -footer +fork() +gettext -hangul_input +iconv 
++insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent 
++listcmds +localmap +lua +menu +mksession +modify_fname +mouse -mouseshape 
++mouse_dec +mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse 
++mouse_xterm +mouse_urxvt +multi_byte +multi_lang -mzscheme +netbeans_intg 
++path_extra +perl +persistent_undo +postscript +printer +profile +python 
+-python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent 
+-sniff +startuptime +statusline -sun_workshop +syntax +tag_binary 
++tag_old_static -tag_any_white +tcl +terminfo +termresponse +textobjects +title
+ -toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
++vreplace +wildignore +wildmenu +windows +writebackup -X11 -xfontset -xim -xsmp
+ -xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Wformat-security -Werror=format-security -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1     -I/usr/include/tcl8.5  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  Linking: gcc   -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,--as-needed -o vim       -lm -ltinfo -lnsl  -lselinux  -lacl -lattr -lgpm -ldl  -L/usr/lib -llua5.1  -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.14/CORE -lperl -ldl -lm -lpthread -lcrypt -L/usr/lib/python2.7/config -lpython2.7 -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions  -L/usr/lib -ltcl8.5 -ldl -lpthread -lieee -lm -lruby1.8 -lpthread -lrt -ldl -lcrypt -lm  -L/usr/lib</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7551'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7551"><time data-relative="true">2012-06-13T15:19:43Z</time></a></span>
+</cite>
+<blockquote><p><code>&lt;CTRL-s&gt;</code> has special meaning to the terminal, suspending all terminal input until you issue a corresponding <code>&lt;CTRL-q&gt;</code>. You can turn off the suspension behavior using <code>stty -ixon</code> (ie. directly at the command line or in your <code>.bash_profile</code>/<code>.zshrc</code> etc).</p>
+<p>See <code>man stty</code> for more details, or google for &quot;XON/XOFF flow control&quot;.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

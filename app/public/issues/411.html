@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #411: REQUEST: &quot;About&quot; or &quot;Check for updates&quot; functionality (hard to determine version number)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #411</div>
+<div class='issue' id='issue_411'>
+<form class="edit_issue" id="edit_issue_411" action="/issues/411" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="CQoJcAziaFmWeFH4GRfSXzahOoRGyVgc6GbaMW3cN8U9+LfHq2+yDE/0Yg8oPoHrgyNTuE0l1gDIeQ/PSQRQ4Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #411:
+<span data-name='issue[summary]'>
+REQUEST: &quot;About&quot; or &quot;Check for updates&quot; functionality (hard to determine version number)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-23T13:22:48Z</time>, updated <time data-relative="true">2010-08-12T10:11:33Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>A user has just pointed out to me that there's no easy way to figure out what version of WinSwitch is currently installed unless you happen to know that WinSwitch gets installed into &quot;/Library/Menu Extras&quot; (in which case you can do a &quot;Get Info&quot; on it in the Finder).</p>
+<p>Proposed remedies:</p>
+<p>(1) An &quot;About&quot; item in the WinSwitch menu. Given that I don't want to clutter up the menu too much I am inclined to set this as an alternate menu item to the &quot;WinSwitch Preferences...&quot; menu item; it would be visible whenever the Option key is held down. But this doesn't really address the issue of needing an &quot;easy&quot; way to spot the version number given that many users may not know that alternate menu items using the Option key are common, nor that WinSwitch happens to use them.</p>
+<p>(2) A label in the WinSwitch preferences window that says &quot;WinSwitch version 3.2.1&quot; or similar. This is an obvious solution. The label could either go near the bottom of the preferences or in the window title bar itself (to avoid clutter); although I hate clutter I don't think I like the idea of putting the version number in the title bar because it flies in the face of Mac UI conventions.</p>
+<p>(3) A logical addition would be to put a &quot;Check for new versions&quot; feature next to the label in the preferences. And if you're doing that you may as well put in an optional automatic check for updates as well. I'd be inclined to do this using the same UI design that I used in Synergy Advance, namely:</p>
+<p>- a check box labelled &quot;Check for new versions of WinSwitch&quot; (allowing users to turn automatic updates on or off) - followed by a pop-up menu containing the options &quot;Daily&quot;, &quot;Weekly&quot; and &quot;Monthly&quot; (ghosted when automatic updates off) - followed by a &quot;Check Now&quot; button for those who want to do a manual check - followed by an informative label in a small font that says, &quot;Last automatic version took place: 21/04/06 13:25:33&quot; (or whatever).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2652'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2652"><time data-relative="true">2006-04-23T13:23:43Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=63) Synergy Advance preferences window</p>
+<p>Attaching a screen shot of the Synergy Advance preferences window showing the user interface for automatic and manual version checking.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2653'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2653"><time data-relative="true">2006-07-05T02:07:46Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6045'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6045"><time data-relative="true">2010-08-12T10:10:44Z</time></a></span>
+</cite>
+<blockquote><p>I'm marking all WinSwitch issues closed seeing as I personally no longer use it, and in fact haven't for around 4 years now.</p>
+<p>WinSwitch addressed a real problem with the initial implementation of Fast User Switching in <a href="/wiki/Panther">Panther</a> (released October 2003), namely, the excessive screen real estate that it chewed up. Apple fixed that problem in Tiger, if I recall correctly, which came out in April 2005 (or if I'm wrong about it being <a href="/wiki/Tiger">Tiger</a>, then it was definitely fixed by the time <a href="/wiki/Leopard">Leopard</a> came out, in October 2007).</p>
+<p>With this change, most of the justification for WinSwitch's existence went away, at least for me. So that's why I'm going to close all these tickets: I can't really support something that I don't use myself.</p>
+<p>But it's open source (see <a href="http://git.wincent.com/WinSwitch.git" class="external">http://git.wincent.com/WinSwitch.git</a>), so if any one wants to tackle any of these issues and submit patches, I'll be happy to accept them.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6052'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6052"><time data-relative="true">2010-08-12T10:11:33Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

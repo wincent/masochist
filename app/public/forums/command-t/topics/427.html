@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+command-t.vim could not load the C extension  
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; command-t.vim could not load the C extension  </div>
+<h1 class='major'>command-t.vim could not load the C extension  </h1>
+<div class='topic' id='topic_427'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/427"><time data-relative="true">2010-07-29T13:34:49Z</time></a>
+</span>
+</cite>
+<blockquote><p>After a seemingly successful install, I get the error &quot;command-t.vim could not load the C extension&quot; when running :CommandT. Is this common?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5952'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5952"><time data-relative="true">2010-07-29T13:41:04Z</time></a></span>
+</cite>
+<blockquote><p>Can you please paste the output of the <code>ruby extconf.rb</code> and <code>make</code> steps of the installation, and also the output of <code>vim --version</code>?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5954'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5954"><time data-relative="true">2010-07-30T06:31:49Z</time></a></span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>i have the exact same problem as the original poster. Everything seems to install fine, but &lt;leader&gt;t fails with &quot;command-t.vim could not load the C extension&quot; Here&#x00b4;s my system info:</p>
+<p>vim version:</p>
+<pre>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Jul 29 2010 19:05:14)
+MacOS X (unix) version
+Included patches: 1-446
+Compiled by alexander@192.168.10.177
+Normal version without GUI.  Features included (+) or not (-):
+-arabic +autocmd -balloon_eval -browse +builtin_terms +byte_offset +cindent 
+-clientserver -clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++cryptv -cscope +cursorshape +dialog_con +diff +digraphs -dnd -ebcdic 
+-emacs_tags +eval +ex_extra +extra_search -farsi +file_in_path +find_in_path 
++float +folding -footer +fork() -gettext -hangul_input -iconv +insert_expand 
++jumplist -keymap -langmap +libcall +linebreak +lispindent +listcmds +localmap 
++menu +mksession +modify_fname +mouse -mouseshape -mouse_dec -mouse_gpm 
+-mouse_jsbterm -mouse_netterm -mouse_sysmouse +mouse_xterm -multi_byte 
++multi_lang -mzscheme -netbeans_intg -osfiletype +path_extra -perl +postscript 
++printer -profile -python +quickfix +reltime -rightleft +ruby +scrollbind 
+-signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax 
++tag_binary +tag_old_static -tag_any_white -tcl +terminfo +termresponse 
++textobjects +title -toolbar +user_commands +vertsplit +virtualedit +visual 
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup 
+-X11 -xfontset -xim -xsmp -xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/usr/local/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -DMACOS_X_UNIX -no-cpp-precomp -I/Developer/Headers/FlatCarbon  -g -O2 -D_FORTIFY_SOURCE=1       -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -DRUBY_VERSION=18 
+Linking: gcc   -L.   -L/usr/local/lib -o vim       -lm -lncurses  -lruby-static -lobjc </pre>
+<p>output of ruby extconf.rb:</p>
+<pre>checking for ruby.h... yes
+creating Makefile</pre>
+<p>output of make:</p>
+<pre>gcc -I. -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2 -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2 -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -I/usr/local/lib/ruby/1.8/i686-darwin10.4.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2 -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/usr/local/lib -L.     -ldl -lobjc </pre>
+<p>operating system: os x snow leopard</p>
+<p>ruby version:</p>
+<pre>ruby 1.8.7 (2010-06-23 patchlevel 299) [i686-darwin10.4.0]</pre>
+<p>vim is linked against the same ruby the system is using</p>
+<p>thanks for your help!</p>
+<p>alexander</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5955'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5955"><time data-relative="true">2010-07-30T10:43:22Z</time></a></span>
+</cite>
+<blockquote><p>It looks to me like the last step of you <code>make</code> isn't actually linking to Ruby at all. Compare your <code>-ldl -lobjc</code> with mine:</p>
+<pre>cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64     -lruby  -lpthread -ldl</pre>
+<p>(Note the explicit <code>-lruby</code>.)</p>
+<p>It would be interesting to see your <code>Makefile</code>. Maybe try editing it by hand and changing the <code>LIBS =</code> line to include <code>-lruby-static</code>, then re-run <code>make</code>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5956'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5956"><time data-relative="true">2010-07-30T11:14:36Z</time></a></span>
+</cite>
+<blockquote><p>Hi there,</p>
+<p>thank you very much for looking into this!</p>
+<p>I&#x00b4;ve tried manually editing the Makefile with -lruby-static this lead to vim segfaulting on me ;)</p>
+<pre>Vim: Caught deadly signal SEGV
+Vim: Finished.</pre>
+<p>And here&#x00b4;s my Makefile:</p>
+<pre>SHELL = /bin/sh
+
+#### Start of system configuration section. ####
+
+srcdir = .
+topdir = /usr/local/lib/ruby/1.8/i686-darwin10.4.0
+hdrdir = $(topdir)
+VPATH = $(srcdir):$(topdir):$(hdrdir)
+exec_prefix = $(prefix)
+prefix = $(DESTDIR)/usr/local
+sharedstatedir = $(prefix)/com
+mandir = $(datarootdir)/man
+psdir = $(docdir)
+oldincludedir = $(DESTDIR)/usr/include
+localedir = $(datarootdir)/locale
+bindir = $(exec_prefix)/bin
+libexecdir = $(exec_prefix)/libexec
+sitedir = $(libdir)/ruby/site_ruby
+htmldir = $(docdir)
+vendorarchdir = $(vendorlibdir)/$(sitearch)
+includedir = $(prefix)/include
+infodir = $(datarootdir)/info
+vendorlibdir = $(vendordir)/$(ruby_version)
+sysconfdir = $(prefix)/etc
+libdir = $(exec_prefix)/lib
+sbindir = $(exec_prefix)/sbin
+rubylibdir = $(libdir)/ruby/$(ruby_version)
+docdir = $(datarootdir)/doc/$(PACKAGE)
+dvidir = $(docdir)
+vendordir = $(libdir)/ruby/vendor_ruby
+datarootdir = $(prefix)/share
+pdfdir = $(docdir)
+archdir = $(rubylibdir)/$(arch)
+sitearchdir = $(sitelibdir)/$(sitearch)
+datadir = $(datarootdir)
+localstatedir = $(prefix)/var
+sitelibdir = $(sitedir)/$(ruby_version)
+
+CC = gcc
+LIBRUBY = $(LIBRUBY_A)
+LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
+LIBRUBYARG_SHARED = 
+LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
+
+RUBY_EXTCONF_H = 
+CFLAGS   =  -fno-common -g -O2 -pipe -fno-common $(cflags) 
+INCFLAGS = -I. -I$(topdir) -I$(hdrdir) -I$(srcdir)
+DEFS     = 
+CPPFLAGS = -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
+CXXFLAGS = $(CFLAGS) 
+ldflags  = -L. 
+dldflags = 
+archflag = 
+DLDFLAGS = $(ldflags) $(dldflags) $(archflag)
+LDSHARED = cc -dynamic -bundle -undefined suppress -flat_namespace
+AR = ar
+EXEEXT = 
+
+RUBY_INSTALL_NAME = ruby
+RUBY_SO_NAME = ruby
+arch = i686-darwin10.4.0
+sitearch = i686-darwin10.4.0
+ruby_version = 1.8
+ruby = /usr/local/bin/ruby
+RUBY = $(ruby)
+RM = rm -f
+MAKEDIRS = mkdir -p
+INSTALL = /usr/bin/install -c
+INSTALL_PROG = $(INSTALL) -m 0755
+INSTALL_DATA = $(INSTALL) -m 644
+COPY = cp
+
+#### End of system configuration section. ####
+
+preload = 
+
+libpath = . $(libdir)
+LIBPATH =  -L. -L$(libdir)
+DEFFILE = 
+
+CLEANFILES = mkmf.log
+DISTCLEANFILES = 
+
+extout = 
+extout_prefix = 
+target_prefix = 
+LOCAL_LIBS = 
+LIBS =   -ldl -lobjc  
+SRCS = ext.c match.c matcher.c
+OBJS = ext.o match.o matcher.o
+TARGET = ext
+DLLIB = $(TARGET).bundle
+EXTSTATIC = 
+STATIC_LIB = 
+
+BINDIR        = $(bindir)
+RUBYCOMMONDIR = $(sitedir)$(target_prefix)
+RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
+RUBYARCHDIR   = $(sitearchdir)$(target_prefix)
+
+TARGET_SO     = $(DLLIB)
+CLEANLIBS     = $(TARGET).bundle $(TARGET).il? $(TARGET).tds $(TARGET).map
+CLEANOBJS     = *.o *.a *.s[ol] *.pdb *.exp *.bak
+
+all:&#x0009;&#x0009;$(DLLIB)
+static:&#x0009;&#x0009;$(STATIC_LIB)
+
+clean:
+&#x0009;&#x0009;@-$(RM) $(CLEANLIBS) $(CLEANOBJS) $(CLEANFILES)
+
+distclean:&#x0009;clean
+&#x0009;&#x0009;@-$(RM) Makefile $(RUBY_EXTCONF_H) conftest.* mkmf.log
+&#x0009;&#x0009;@-$(RM) core ruby$(EXEEXT) *~ $(DISTCLEANFILES)
+
+realclean:&#x0009;distclean
+install: install-so install-rb
+
+install-so: $(RUBYARCHDIR)
+install-so: $(RUBYARCHDIR)/$(DLLIB)
+$(RUBYARCHDIR)/$(DLLIB): $(DLLIB)
+&#x0009;$(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
+install-rb: pre-install-rb install-rb-default
+install-rb-default: pre-install-rb-default
+pre-install-rb: Makefile
+pre-install-rb-default: Makefile
+$(RUBYARCHDIR):
+&#x0009;$(MAKEDIRS) $@
+
+site-install: site-install-so site-install-rb
+site-install-so: install-so
+site-install-rb: install-rb
+
+.SUFFIXES: .c .m .cc .cxx .cpp .C .o
+
+.cc.o:
+&#x0009;$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c $&lt;
+
+.cxx.o:
+&#x0009;$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c $&lt;
+
+.cpp.o:
+&#x0009;$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c $&lt;
+
+.C.o:
+&#x0009;$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) -c $&lt;
+
+.c.o:
+&#x0009;$(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) -c $&lt;
+
+$(DLLIB): $(OBJS) Makefile
+&#x0009;@-$(RM) $@
+&#x0009;$(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
+
+
+
+###
+# Copyright 2010 Wincent Colaiuta. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+#
+# 1. Redistributions of source code must retain the above copyright notice,
+#    this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+
+CFLAGS += -std=c99 -Wall -Wextra -Wno-unused-parameter
+</pre>
+<p>thanks again and kind regards,</p>
+<p>alexander</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5957'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5957"><time data-relative="true">2010-07-30T11:32:09Z</time></a></span>
+</cite>
+<blockquote><p>Not sure if this sheds much light on the subject, but here are the differences between my <code>Makefile</code> and yours (well, comparing all lines containing the string &quot;lib&quot;):</p>
+<pre>--- /Users/wincent/tmp/mine.txt&#x0009;2010-07-30 17:22:30.000000000 +0200
++++ /Users/wincent/tmp/yours.txt&#x0009;2010-07-30 17:22:17.000000000 +0200
+@@ -1,7 +1,6 @@
+-topdir = /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0
+-prefix = $(DESTDIR)/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr
++topdir = /usr/local/lib/ruby/1.8/i686-darwin10.4.0
+ libexecdir = $(exec_prefix)/libexec
+-sitedir = $(DESTDIR)/Library/Ruby/Site
++sitedir = $(libdir)/ruby/site_ruby
+ vendorarchdir = $(vendorlibdir)/$(sitearch)
+ vendorlibdir = $(vendordir)/$(ruby_version)
+ libdir = $(exec_prefix)/lib
+@@ -10,25 +9,24 @@
+ archdir = $(rubylibdir)/$(arch)
+ sitearchdir = $(sitelibdir)/$(sitearch)
+ sitelibdir = $(sitedir)/$(ruby_version)
+-LIBRUBY = $(LIBRUBY_SO)
++LIBRUBY = $(LIBRUBY_A)
+ LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
+-LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
+-LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)
+-ruby = /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby
++LIBRUBYARG_SHARED = 
++LIBRUBYARG_STATIC = -l$(RUBY_SO_NAME)-static
+ libpath = . $(libdir)
+ LIBPATH =  -L. -L$(libdir)
+ LOCAL_LIBS = 
+-LIBS = $(LIBRUBYARG_SHARED)  -lpthread -ldl  
++LIBS =   -ldl -lobjc  
+ DLLIB = $(TARGET).bundle
+ STATIC_LIB = 
+ RUBYLIBDIR    = $(sitelibdir)$(target_prefix)
+ TARGET_SO     = $(DLLIB)
+ CLEANLIBS     = $(TARGET).bundle $(TARGET).il? $(TARGET).tds $(TARGET).map
+-all:&#x0009;&#x0009;$(DLLIB)
+-static:&#x0009;&#x0009;$(STATIC_LIB)
+-&#x0009;&#x0009;@-$(RM) $(CLEANLIBS) $(CLEANOBJS) $(CLEANFILES)
++all:    $(DLLIB)
++static:   $(STATIC_LIB)
++    @-$(RM) $(CLEANLIBS) $(CLEANOBJS) $(CLEANFILES)
+ install-so: $(RUBYARCHDIR)/$(DLLIB)
+ $(RUBYARCHDIR)/$(DLLIB): $(DLLIB)
+-&#x0009;$(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
++  $(INSTALL_PROG) $(DLLIB) $(RUBYARCHDIR)
+ $(DLLIB): $(OBJS) Makefile
+-&#x0009;$(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
+\ No newline at end of file
++  $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
+\ No newline at end of file</pre>
+<p>I wonder if you have a non-static version of the Ruby library on your system, seeing as the extension is getting built with the <code>-dynamic</code> flag.</p>
+<p>If you don't care about seeing another segfault you could try <code>-lruby</code> instead of <code>-lruby-static</code> and see what happens.</p>
+<p>Failing that, it would be interesting to perform two other tests:</p>
+<p>One is to see if you can load the extension from some other Ruby process. For example, just try loading the extension, referencing a constant and seeing if it responds to any methods:</p>
+<pre class="shell-syntax">$ ruby -r ~/.vim/ruby/command-t/ext -e 'p CommandT::Match.methods'</pre>
+<p>The other is to try from inside Vim itself and see what it prints:</p>
+<pre>:ruby p(require 'command-t/ext')</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_5964'>
+<cite>
+<a href="/users/alan">Alan</a>
+<span class='when'><a href="#comment_5964"><time data-relative="true">2010-08-03T20:32:44Z</time></a></span>
+</cite>
+<blockquote><p>I had the same problem after pulling the git repo into .vim/bundle and running rake make with (rvm) 1.9.2. </p>
+<p>I tried adding -lruby-static and then rerunning make, but it didn't seem to help.</p>
+<p>What ended up working: regenerating the Makefile with (rvm) 1.8.7 and then adding -lruby-static. Unfortunately I'm a newb, so I'm not sure why what I did worked, but I hope it's helpful.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5966'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5966"><time data-relative="true">2010-08-04T01:53:27Z</time></a></span>
+</cite>
+<blockquote><p>Most likely it worked because your Vim was linked against 1.8.7 and not 1.9.2. Command-T has to link against the same Ruby otherwise Vim won't be able to load it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6113'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6113"><time data-relative="true">2010-08-22T13:33:46Z</time></a></span>
+</cite>
+<blockquote><p>I also had  the same problem. Doing what Alan mentioned the above post helped resolving it. I use snow leopard 10.6.4 + macvim 7.3(latest avaiable ) + ruby 1.8.7</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6117'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6117"><time data-relative="true">2010-08-23T01:56:27Z</time></a></span>
+</cite>
+<blockquote><p>I have the same error. The extconf.rb and make perform same as above without errors. Running the two commands, I get:</p>
+<pre>% ruby -r ~/.vim/ruby/command-t/ext -e 'p CommandT::Match.methods'
+[&quot;private_class_method&quot;, &quot;inspect&quot;, &quot;name&quot;, &quot;tap&quot;, &quot;clone&quot;, &quot;public_methods&quot;, &quot;object_id&quot;, &quot;__send__&quot;, &quot;method_defined?&quot;, &quot;instance_variable_defined?&quot;, &quot;equal?&quot;, &quot;freeze&quot;, &quot;extend&quot;, &quot;send&quot;, &quot;const_defined?&quot;, &quot;methods&quot;, &quot;ancestors&quot;, &quot;module_eval&quot;, &quot;instance_method&quot;, &quot;hash&quot;, &quot;autoload?&quot;, &quot;dup&quot;, &quot;to_enum&quot;, &quot;instance_methods&quot;, &quot;public_method_defined?&quot;, &quot;instance_variables&quot;, &quot;class_variable_defined?&quot;, &quot;eql?&quot;, &quot;constants&quot;, &quot;instance_eval&quot;, &quot;id&quot;, &quot;module_exec&quot;, &quot;singleton_methods&quot;, &quot;const_missing&quot;, &quot;taint&quot;, &quot;instance_variable_get&quot;, &quot;frozen?&quot;, &quot;enum_for&quot;, &quot;private_method_defined?&quot;, &quot;public_instance_methods&quot;, &quot;display&quot;, &quot;instance_of?&quot;, &quot;superclass&quot;, &quot;method&quot;, &quot;to_a&quot;, &quot;included_modules&quot;, &quot;const_get&quot;, &quot;instance_exec&quot;, &quot;type&quot;, &quot;&lt;&quot;, &quot;protected_methods&quot;, &quot;&lt;=&gt;&quot;, &quot;class_eval&quot;, &quot;==&quot;, &quot;class_variables&quot;, &quot;&gt;&quot;, &quot;===&quot;, &quot;instance_variable_set&quot;, &quot;protected_instance_methods&quot;, &quot;protected_method_defined?&quot;, &quot;respond_to?&quot;, &quot;kind_of?&quot;, &quot;&gt;=&quot;, &quot;public_class_method&quot;, &quot;to_s&quot;, &quot;&lt;=&quot;, &quot;const_set&quot;, &quot;allocate&quot;, &quot;class&quot;, &quot;new&quot;, &quot;private_methods&quot;, &quot;=~&quot;, &quot;tainted?&quot;, &quot;__id__&quot;, &quot;class_exec&quot;, &quot;autoload&quot;, &quot;untaint&quot;, &quot;nil?&quot;, &quot;private_instance_methods&quot;, &quot;include?&quot;, &quot;is_a?&quot;]</pre>
+<p>And, inside mvim, running :ruby p(require 'command-t/ext')  gives</p>
+<pre>LoadError: /Users/jdf/.vim/ruby/command-t/ext.bundle: dlopen(/Users/jdf/.vim/ruby/command-t/ext.bundle, 9): no suitable image found.  Did find:</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6121'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6121"><time data-relative="true">2010-08-23T05:45:04Z</time></a></span>
+</cite>
+<blockquote><p>The &quot;no suitable image found&quot; sounds like a 32-bit/64-bit mismatch to me (ie. Vim built as 32-bit executable, Command-T as 64-bit, or vice versa). You should be able to compare the Vim compilation and linker flags (visible in <code>vim --version</code>)  with the flags shown during the Command-T build (<code>make</code>) and you'll see if there is a discrepancy there.</p>
+<p>My guess is that you're on Mac OS X (from the <code>/Users/</code> home directory); you on Leopard or Snow Leopard? And does your machine have a 64-bit processor?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7369'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7369">Created <time data-relative="true">2012-01-12T17:09:45Z</time>, edited <time data-relative="true">2012-01-14T16:46:53Z</time></a></span>
+</cite>
+<blockquote><p>Hi!</p>
+<p>I had the same problem, with OSX Snow Leopard, MacVim 7.3. I found a solution:</p>
+<ol>
+<li>Manually edit your generated Makefile and replace 'x86_64' with &quot;i386&quot; in every occurrence.</li>
+</ol>
+<p>then, run:</p>
+<pre class="shell-syntax">$ make clean all
+$ sudo make install</pre>
+<p>then run your macvim... it should work.</p>
+<p>best! matias</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7503'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7503"><time data-relative="true">2012-04-07T11:17:45Z</time></a></span>
+</cite>
+<blockquote><p>changing to i386 gets command-t to work for me on mac os x lion</p>
+<p>however during make a warning is thrown: ld: warning: ignoring file /Users/asjf/.rvm/rubies/ruby-1.8.7-p352/lib/libruby.dylib, file was built for unsupported file format which is not the architecture being linked (i386)</p>
+<p>don't know if that may have any side effects</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7527'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7527">Created <time data-relative="true">2012-05-04T19:56:16Z</time>, edited <time data-relative="true">2012-05-28T00:54:13Z</time></a></span>
+</cite>
+<blockquote><p>Hello, I'm also having these issues, using MacVim on OS 10.7 with Pathogen.  So far, none of the posts here have helped.</p>
+<pre>$ mvim --version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Jan  2 2012 17:38:47)
+MacOS X (unix) version
+Included patches: 1-390
+Compiled by Bjorn Winckler &lt;bjorn.winckler@gmail.com&gt;
+Huge version with MacVim GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff 
++digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi 
++file_in_path +find_in_path +float +folding -footer +fork() +fullscreen 
+-gettext -hangul_input +iconv +insert_expand +jumplist +keymap +langmap 
++libcall +linebreak +lispindent +listcmds +localmap -lua +menu +mksession 
++modify_fname +mouse +mouseshape +mouse_dec -mouse_gpm -mouse_jsbterm 
++mouse_netterm -mouse_sysmouse +mouse_xterm +mouse_urxvt +multi_byte 
++multi_lang -mzscheme +netbeans_intg +odbeditor +path_extra +perl 
++persistent_undo +postscript +printer +profile +python -python3 +quickfix 
++reltime +rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime 
++statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white 
+-tcl +terminfo +termresponse +textobjects +title +toolbar +transparency 
++user_commands +vertsplit +virtualedit +visual +visualextra +viminfo +vreplace 
++wildignore +wildmenu +windows +writebackup -X11 -xfontset +xim -xsmp 
+-xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-precomp  -g -O2 -arch i386 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+Linking: gcc   -L.    -L.         -arch i386 -L/usr/local/lib -o Vim -framework Cocoa -framework Carbon      -lncurses  -liconv -framework Cocoa    -fstack-protector -L/usr/local/lib  -L/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE -lperl -lm -lutil -lc -framework Python   -framework Ruby</pre>
+<pre>$ rake make
+/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/bin/ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+/usr/bin/gcc-4.2  -I. -I/opt/local/include -I/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib/ruby/1.8/i686-darwin11.1.0 -I/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib/ruby/1.8/i686-darwin11.1.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+/usr/bin/gcc-4.2  -I. -I/opt/local/include -I/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib/ruby/1.8/i686-darwin11.1.0 -I/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib/ruby/1.8/i686-darwin11.1.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+/usr/bin/gcc-4.2  -I. -I/opt/local/include -I/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib/ruby/1.8/i686-darwin11.1.0 -I/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib/ruby/1.8/i686-darwin11.1.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/Users/raphael/.rvm/rubies/ree-1.8.7-2011.03/lib -L.     -L/opt/local/lib -ldl -lobjc  
+ld: warning: directory not found for option '-L/opt/local/lib'</pre>
+<pre>$ ruby --version
+ruby 1.8.7 (2011-02-18 patchlevel 334) [i686-darwin11.1.0], MBARI 0x6770, Ruby Enterprise Edition 2011.03</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7530'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7530"><time data-relative="true">2012-05-28T00:58:30Z</time></a></span>
+</cite>
+<blockquote><p>The output shows that your MacVim is linking against the system Ruby, yet you've built Command-T using REE.</p>
+<p>In a nutshell, you need to make sure that both Vim and Command-T are compiled using the same Ruby. Please see <a href="http://git.wincent.com/command-t.git/blob/HEAD:/doc/command-t.txt#l205" class="external">the docs</a> for more details.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9693'>
+<cite>
+<a href="/users/emu">emu</a>
+<span class='when'><a href="#comment_9693"><time data-relative="true">2012-07-25T21:58:28Z</time></a></span>
+</cite>
+<blockquote><p>Alright, I'm having these issues, too. I've attempted everything here to no avail. I'm a bit of a noob, so please bear with me. I'm on OS X 10.7 and using Pathogen. I'm trying to use Command-T as a submodule of my dotfiles directory, if that makes a difference.</p>
+<pre>$ mvim --version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Jan  2 2012 17:38:47)
+MacOS X (unix) version
+Included patches: 1-390
+Compiled by Bjorn Winckler &lt;bjorn.winckler@gmail.com&gt;
+Huge version with MacVim GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff 
++digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi 
++file_in_path +find_in_path +float +folding -footer +fork() +fullscreen 
+-gettext -hangul_input +iconv +insert_expand +jumplist +keymap +langmap 
++libcall +linebreak +lispindent +listcmds +localmap -lua +menu +mksession 
++modify_fname +mouse +mouseshape +mouse_dec -mouse_gpm -mouse_jsbterm 
++mouse_netterm -mouse_sysmouse +mouse_xterm +mouse_urxvt +multi_byte 
++multi_lang -mzscheme +netbeans_intg +odbeditor +path_extra +perl 
++persistent_undo +postscript +printer +profile +python -python3 +quickfix 
++reltime +rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime 
++statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white 
+-tcl +terminfo +termresponse +textobjects +title +toolbar +transparency 
++user_commands +vertsplit +virtualedit +visual +visualextra +viminfo +vreplace 
++wildignore +wildmenu +windows +writebackup -X11 -xfontset +xim -xsmp 
+-xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-precomp  -g -O2 -arch i386 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+Linking: gcc   -L.    -L.         -arch i386 -L/usr/local/lib -o Vim -framework Cocoa -framework Carbon      -lncurses  -liconv -framework Cocoa    -fstack-protector -L/usr/local/lib  -L/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE -lperl -lm -lutil -lc -framework Python   -framework Ruby</pre>
+<pre>ruby 1.8.7 (2012-02-08 patchlevel 358) [i686-darwin11.4.0]</pre>
+<p>So if I'm understanding this correctly, MacVim 7.3 should play nicely with 1.8.7, which is what I'm using, but suddenly...</p>
+<pre>$ ruby extconf.rb 
+checking for ruby.h... yes
+creating Makefile</pre>
+<pre>$ make
+/usr/bin/gcc-4.2 -I. -I/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/i686-darwin11.4.0 -I/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/i686-darwin11.4.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2  -fno-common -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+/usr/bin/gcc-4.2 -I. -I/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/i686-darwin11.4.0 -I/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/i686-darwin11.4.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2  -fno-common -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+/usr/bin/gcc-4.2 -I. -I/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/i686-darwin11.4.0 -I/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib/ruby/1.8/i686-darwin11.4.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -g -O2  -fno-common -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/Users/ethanmuller/.rvm/rubies/ruby-1.8.7-p358/lib -L.     -lruby  -ldl -lobjc</pre>
+<pre>:CommandT
+
+command-t.vim could not load the C extension
+Please see INSTALLATION and TROUBLE-SHOOTING in the help
+For more information type:    :help command-t</pre>
+<p>Dang it. I'm stumped.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9728'>
+<cite>
+<a href="/users/emu">emu</a>
+<span class='when'><a href="#comment_9728"><time data-relative="true">2012-07-26T15:22:15Z</time></a></span>
+</cite>
+<blockquote><p>I fixed my own problem. Here's what I think was happening. Let me know if I'm wrong.</p>
+<p>I was using RVM's 1.8.7 instead of OS X's 1.8.7. I entirely disabled RVM to compile Command-T, and it worked. I know next to nothing about Ruby, and even less about RVM. That was my problem, I think.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10070'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10070">Created <time data-relative="true">2012-12-27T11:01:56Z</time>, edited <time data-relative="true">2012-12-29T05:36:18Z</time></a></span>
+</cite>
+<blockquote><p>i had the same problem, it's clearly a version issue of OS X ruby, RVM Ruby and MACVIM Ruby version.</p>
+<p>What i did to solve the problem:</p>
+<p>1. Check what version of ruby you are using:</p>
+<pre>ruby -v</pre>
+<p>2. If it is not 1.8.7, install it. I did it with rvm: </p>
+<pre>rvm install 1.8.7</pre>
+<p>3. Use ruby 1.8.7</p>
+<pre>rvm use 1.8.7</pre>
+<p>4. Download command-t plugin and install it</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

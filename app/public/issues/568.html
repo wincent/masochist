@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #568: AEGetParamPtr error message written to Console every two seconds
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #568</div>
+<div class='issue' id='issue_568'>
+<form class="edit_issue" id="edit_issue_568" action="/issues/568" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Km3fGiRcRf8Q9FbayVPLbHNLejB6z4GUjQ+EfYzBQv4en2Gtg9Gfqsl4ZS34epjYxskTDHEjD4itEFGDqBkl2g==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #568:
+<span data-name='issue[summary]'>
+AEGetParamPtr error message written to Console every two seconds
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-05-13T17:35:59Z</time>, updated <time data-relative="true">2007-05-14T09:07:14Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bruce">Bruce</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>After launching Synergy Advance a new error message like the following is written to the Console log every two seconds:</p>
+<p>2007-05-13 15:32:14.530 Synergy Advance[25738] Error: AEGetParamPtr() error (-1700)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3008'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3008"><time data-relative="true">2007-05-14T03:07:39Z</time></a></span>
+</cite>
+<blockquote><p>Is iTunes not running when you see those messages?</p>
+<p>You can avoiding having messages like that printed by lowering your logging threshold (I can explain how to do this), but I might just suppress that message anyway, seeing as it is so harmless and might cause confusion.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3009'>
+<cite>
+<a href="/users/bruce">Bruce</a>
+<span class='when'><a href="#comment_3009"><time data-relative="true">2007-05-14T08:01:07Z</time></a></span>
+</cite>
+<blockquote><p>iTunes 7.1.1 was running on Mac OS X 10.4.9.</p>
+<p>Would be interested in those instructions to lower logging threshold. Guess large log files might explain a recent unexplained loss in disc space.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3010'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3010"><time data-relative="true">2007-05-14T08:51:46Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>iTunes 7.1.1 was running on Mac OS X 10.4.9.</p>
+<p>Would be interested in those instructions to lower logging threshold. Guess large log files might explain a recent unexplained loss in disc space.</p>
+</blockquote>
+<p>The system automatically rotates your log files (starts new files and deletes old ones) so the amount of space taken up by them should be roughly constant over time. In any case, the sizes in question are probably too small to have any noticeable impact (for example, on my system all of my logs added up total to about 75M or 0.04% of my total space).</p>
+<p>Info about controlling the logging level is here:</p>
+<p><a href="http://wincent.com/a/products/synergy-advance/help/preferences/advanced/#logging" class="external">http://wincent.com/a/products/synergy-advance/help/preferences/advanced/#logging</a></p>
+<p>That documentation applies to version 0.4 of Synergy Advance and you can control the setting in the &quot;Advanced&quot; tab of the preferences:</p>
+<blockquote>
+<p>Synergy Advance can print information to the console (see the &quot;Console&quot; application at &quot;/Applications/Utilities/Console&quot;) for the purposes of feedback, diagnostics, debugging and troubleshooting. The verbosity of this logging can be configured using the &quot;Logging level&quot; setting in the advanced preferences. The minimum possible setting is log level 0; at this level Synergy Advance tries to be completely &quot;silent&quot; and not print anything at all to the console (although some error conditions may still arise in which the system libraries, outside of the control of Synergy Advance, print information to the console). The maximum possible setting is log level 10 which is the most verbose setting. The default log level is 1, which means that Synergy Advance will print only a minimum of information to the console, such as error conditions and other events considered as &quot;noteworthy&quot;.</p>
+</blockquote>
+<p>In Synergy 0.5b there have been some changes. The preferences UI has been rearranged and there are still more changes to come, so there is no UI-level control for changing the logging level; you have to do it from the terminal. For example, to set the logging level to 0 you would do this in the Terminal (when Synergy Advance is not running):</p>
+<p>defaults write com.wincent.SynergyAdvance LogLevel -int 0</p>
+<p>Note that the control for this setting will be added back to the UI shortly. This is only a temporary thing during the rearrangement.</p>
+<p>The other change to note in 0.5b is documented in the history:</p>
+<p><a href="http://wincent.com/a/products/synergy-advance/history/#0.5b" class="external">http://wincent.com/a/products/synergy-advance/history/#0.5b</a></p>
+<p>Specifically:</p>
+<blockquote>
+<p>[Note] Changed the possible range of settings for the &quot;Logging level&quot; advanced preferences; possible values now lie in the range of 0 to 7 (the previous range was 0 to 10) and the default level has been changed from 0 to 5. This change was made to bring Synergy Advance in line with the logging levels specified for the BSD syslog facility in RFC 3164 and mirrored in Apple's ASL (&quot;Apple system log facility&quot;). See the documentation for the &quot;Logging level&quot; setting for more information.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3011'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3011"><time data-relative="true">2007-05-14T09:07:14Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #1)</p>
+<blockquote>
+<p>You can avoiding having messages like that printed by lowering your logging threshold (I can explain how to do this), but I might just suppress that message anyway, seeing as it is so harmless and might cause confusion.</p>
+</blockquote>
+<p>In the current development version (the successor to 0.5b) I've now raised the log-level on those messages to level 6, which means that they won't appear by default (the default log level is 5). In order to see those messages you would need to raise your log level up to 6 or 7. Going to mark this as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

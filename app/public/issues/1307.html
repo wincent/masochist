@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1307: Optimize using Google Page Speed
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1307</div>
+<div class='issue' id='issue_1307'>
+<form class="edit_issue" id="edit_issue_1307" action="/issues/1307" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="tJdupclFk7LS92ZBM3yUttF4zFVFdvyR/8rBAY0XrYyAZdASbshJ5wt7VbYCVccCZPqlaU6aco3f1RT/qc/KqA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1307:
+<span data-name='issue[summary]'>
+Optimize using Google Page Speed
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-06-05T05:34:23Z</time>, updated <time data-relative="true">2014-11-06T15:17:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>These are the results of running <a href="/wiki/Google_Page_Speed">Google Page Speed</a> on <a href="https://wincent.com/" class="external">https://wincent.com/</a>:</p>
+<pre>Overall performance summary:
+[This site follows the Page Speed performance guidelines. Nice job!]
+[Score: 39%]
+&#x0009;
+&#x0009;
+Defer loading of JavaScript
+80.7% of the JavaScript loaded by this page had not been invoked by the time the onload handler completed.
+
+    * /javascripts/jquery-1.3.2.min.js?1240933621 278 functions uncalled of 339 total functions. (Toggle Function View)
+    * /javascripts/application.js?1240933621 3 functions uncalled of 9 total functions. (Toggle Function View)
+      Uncalled functions:
+
+      function setCookie(name, value, expiry) {}
+      function insertFlash(css, msg) {}
+      function deleteCookie(name) {}
+
+[Score: 79.5%]
+&#x0009;
+&#x0009;
+Use efficient CSS selectors
+/stylesheets/display.css?1240933621 has 3 very inefficient and 11 inefficient rules of 102 total rules.
+
+    Very inefficient rules (good to fix on any page):
+
+        * h1.major a:hover    Tag key with descendant selector and hover pseudo selector and Class overly qualified with tag
+        * h2.major a:hover    Tag key with descendant selector and hover pseudo selector and Class overly qualified with tag
+        * [/tags/navbar #navbar] li.last a    Tag key with 2 descendant selectors and Class overly qualified with tag
+
+    Inefficient rules (good to fix on interactive pages):
+
+        * [/tags/header #header] h1 a    Tag key with 2 descendant selectors
+        * [/tags/navbar #navbar] a:hover    Tag key with descendant selector and hover pseudo selector
+        * table.main input[type=&quot;text&quot;]    Tag key with descendant selector and Class overly qualified with tag
+        * table.main textarea    Tag key with descendant selector and Class overly qualified with tag
+        * th.ascending a    Tag key with descendant selector and Class overly qualified with tag
+        * th.descending a    Tag key with descendant selector and Class overly qualified with tag
+        * .links a:hover    Tag key with descendant selector and hover pseudo selector
+        * .product .icon img    Tag key with 2 descendant selectors
+        * .comments tr.private&gt;th    Tag key with descendant selector and Class overly qualified with tag
+        * .comments .odd th+td    Tag key with 2 descendant selectors
+        * .comments .even th+td    Tag key with 2 descendant selectors
+
+[Score: 100%]
+&#x0009;
+&#x0009;
+Leverage proxy caching
+
+Non-scoring information
+Consider adding a &quot;Cache-Control: public&quot; header to the following resources:
+
+    * <a href="https://wincent.com/images/blockquote.png" class="external">https://wincent.com/images/blockquote.png</a>
+    * <a href="https://wincent.com/images/comment-bubble.png" class="external">https://wincent.com/images/comment-bubble.png</a>
+    * <a href="https://wincent.com/images/external.png" class="external">https://wincent.com/images/external.png</a>
+    * /images/feed-icon-14x14.png?1240933621
+    * <a href="https://wincent.com/images/first-disabled.png" class="external">https://wincent.com/images/first-disabled.png</a>
+    * <a href="https://wincent.com/images/last.png" class="external">https://wincent.com/images/last.png</a>
+    * <a href="https://wincent.com/images/logo.png?1240933621" class="external">https://wincent.com/images/logo.png?1240933621</a>
+    * <a href="https://wincent.com/images/mailto.png" class="external">https://wincent.com/images/mailto.png</a>
+    * <a href="https://wincent.com/images/navbar.png" class="external">https://wincent.com/images/navbar.png</a>
+    * <a href="https://wincent.com/images/next.png" class="external">https://wincent.com/images/next.png</a>
+    * <a href="https://wincent.com/images/previous-disabled.png" class="external">https://wincent.com/images/previous-disabled.png</a>
+
+[Score: 91.2%]
+&#x0009;
+&#x0009;
+Minify JavaScript
+There is 60.4kB worth of JavaScript. Minifying could save 2.7kB (4.4% reduction).
+
+    * Minifying /javascripts/application.js?1240933621 could save 2.2kB (49.7% reduction). See minified version.
+    * Minifying /javascripts/jquery-1.3.2.min.js?1240933621 could save 449 bytes (0.8% reduction). See minified version.
+
+[Score: 91%]
+&#x0009;
+&#x0009;
+Optimize images
+There are 6.9kB worth of images. Optimizing them could save ~436 bytes (6.2% reduction).
+
+    * Compressing <a href="https://wincent.com/images/logo.png?1240933621" class="external">https://wincent.com/images/logo.png?1240933621</a> could save 223 bytes (22.2% reduction). See compressed version.
+    * Compressing <a href="https://wincent.com/images/blockquote.png" class="external">https://wincent.com/images/blockquote.png</a> could save 166 bytes (27.4% reduction). See compressed version.
+    * Compressing <a href="https://wincent.com/images/mailto.png" class="external">https://wincent.com/images/mailto.png</a> could save 47 bytes (13.2% reduction). See compressed version.
+
+[Score: 85%]
+&#x0009;
+&#x0009;
+Specify image dimensions
+A width and height should be specified for all images in order to speed up page display. Specifying image dimensions prevents the browser from having to re-position the contents of the page.
+
+The following image(s) are missing a width and/or height:
+
+    * <a href="https://wincent.com/images/logo.png?1240933621" class="external">https://wincent.com/images/logo.png?1240933621</a>
+    * /images/feed-icon-14x14.png?1240933621 (2 uses)
+
+[Score: 93.4%]
+&#x0009;
+&#x0009;
+Remove unused CSS
+18.8% of CSS (estimated 1.5kB of 8.1kB) is not used by the current page.
+
+/stylesheets/display.css?1240933621: 1.5kB of 8.1kB is not used by the current page.
+
+    * h1.major line 5
+    * table pre line 15
+    * a.external:after line 27
+    * a.mailto:after line 29
+    * [/tags/breadcrumbs #breadcrumbs] line 49
+    * div.two-columns line 63
+    * [/tags/error #error], [/tags/notice #notice] line 65
+    * [/tags/error #error] line 67
+    * [/tags/notice #notice] line 69
+    * .error, .notice line 71
+    * .error line 73
+    * .notice line 75
+    * .spinner line 77
+    * .ajax_error line 79
+    * .pagination .next.disabled line 88
+    * .pagination .last.disabled line 90
+    * table.main line 92
+    * table.main input[type=&quot;text&quot;] line 93
+    * table.main textarea line 94
+    * td, th line 96
+    * th line 98
+    * th.ascending a line 100
+    * th.descending a line 102
+    * tr.odd line 104
+    * tr.even line 106
+    * .annotation line 108
+    * .fieldWithErrors input line 110
+    * .cloud line 112
+    * .cloud a line 113
+    * .filterbox line 115
+    * .filterbox h3 line 116
+    * .filterbox p line 117
+    * .deleted line 121
+    * .deleted a line 122
+    * .highlight line 124
+    * .edit_link line 132
+    * .new_link line 134
+    * .back_link line 136
+    * .show_link line 138
+    * .update_link line 140
+    * .links line 142
+    * .links a line 143
+    * input[type=&quot;submit&quot;] line 146
+    * input[type=&quot;button&quot;] line 149
+    * .product line 152
+    * .product .icon img line 153
+    * .prev_next line 155
+    * .comments th line 157
+    * .comments th + td line 158
+    * .comments tr.private &gt; th line 159
+    * .comments .odd th + td line 161
+    * .comments .even th + td line 163
+    * #preview_link img line 165
+    * #preview_link #preview_spinner line 166
+
+[Score: 89.9%]
+&#x0009;
+&#x0009;
+Serve static content from a cookieless domain
+Serve the following static resources from a domain that doesn't set cookies:
+
+    * /stylesheets/display.css?1240933621
+    * /stylesheets/posts.css?1240933621
+    * <a href="https://wincent.com/images/logo.png?1240933621" class="external">https://wincent.com/images/logo.png?1240933621</a>
+    * /images/feed-icon-14x14.png?1240933621
+    * <a href="https://wincent.com/images/navbar.png" class="external">https://wincent.com/images/navbar.png</a>
+    * <a href="https://wincent.com/images/first-disabled.png" class="external">https://wincent.com/images/first-disabled.png</a>
+    * <a href="https://wincent.com/images/previous-disabled.png" class="external">https://wincent.com/images/previous-disabled.png</a>
+    * <a href="https://wincent.com/images/next.png" class="external">https://wincent.com/images/next.png</a>
+    * <a href="https://wincent.com/images/last.png" class="external">https://wincent.com/images/last.png</a>
+    * <a href="https://wincent.com/images/external.png" class="external">https://wincent.com/images/external.png</a>
+    * <a href="https://wincent.com/images/comment-bubble.png" class="external">https://wincent.com/images/comment-bubble.png</a>
+    * <a href="https://wincent.com/images/mailto.png" class="external">https://wincent.com/images/mailto.png</a>
+    * <a href="https://wincent.com/images/blockquote.png" class="external">https://wincent.com/images/blockquote.png</a>
+
+754 bytes of cookies were sent with the requests for these resources.
+[Score: 100%]
+&#x0009;
+&#x0009;
+Minimize cookie size
+The average cookie size for all requests on this page is 58 bytes.
+
+[Score: 100%]
+&#x0009;
+&#x0009;
+Enable gzip compression
+[Score: 100%]
+&#x0009;
+&#x0009;
+Leverage browser caching
+[Score: 100%]
+&#x0009;
+&#x0009;
+Combine external JavaScript
+[Score: 100%]
+&#x0009;
+&#x0009;
+Minimize DNS lookups
+[Score: 100%]
+&#x0009;
+&#x0009;
+Optimize the order of styles and scripts
+[Score: 100%]
+&#x0009;
+&#x0009;
+Serve resources from a consistent URL
+[Score: 100%]
+&#x0009;
+&#x0009;
+Avoid CSS expressions
+[Score: 100%]
+&#x0009;
+&#x0009;
+Parallelize downloads across hostnames
+[Score: 100%]
+&#x0009;
+&#x0009;
+Combine external CSS
+[Score: 100%]
+&#x0009;
+&#x0009;
+Minimize redirects
+[Score: 100%]
+&#x0009;
+&#x0009;
+Put CSS in the document head</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_12868'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12868"><time data-relative="true">2014-11-06T15:17:12Z</time></a></span>
+</cite>
+<blockquote><p>I've done pretty much all of this a long while ago.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12869'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12869"><time data-relative="true">2014-11-06T15:17:16Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

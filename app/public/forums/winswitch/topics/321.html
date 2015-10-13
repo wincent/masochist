@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+more winserverui crashing with 3.0b
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/winswitch">WinSwitch</a> &raquo; more winserverui crashing with 3.0b</div>
+<h1 class='major'>more winserverui crashing with 3.0b</h1>
+<div class='topic' id='topic_321'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/winswitch/topics/321"><time data-relative="true">2005-01-06T00:08:11Z</time></a>
+</span>
+</cite>
+<blockquote><p>I read the thread with debugging info &amp; a link to a new build to address winserverui hanging. I installed that build and am still seing problems with winserverui being hung. </p>
+<p>Most of the time it doesn't seem to affect anything, I can use the menu items. But twice now it has gotten into a state where as soon as I move the mouse over the system menu, I'll get the spinning beach ball cursor.</p>
+<p>The following is appearing in the console... what else can I provide for troubleshooting?</p>
+<p>Mac OS X Version 10.3.7 (Build 7S215) 2005-01-06 00:02:55 -0500 2005-01-06 00:02:55.833 SystemUIServer[218] failed to load Menu Extra: NSBundle &lt;/Library/Menu Extras/WinSwitch.menu/Contents/Resources/MenuCracker.menu&gt; (loaded) 2005-01-06 00:02:55.834 SystemUIServer[218] MenuCracker: Loading 'WOWinSwitchMenuExtra'. 2005-01-06 00:02:56.650 SystemUIServer[218] WinSwitchHelper launched 2005-01-06 00:02:56.650 SystemUIServer[218] WinSwitch.menu loaded. DOCK: CFMessagePortSendRequest returned -2 2005-01-06 00:03:12.426 WinSwitchHelper[242] Could not get menu extra (-4956) DOCK: CFMessagePortSendRequest returned -2 2005-01-06 00:03:20.921 WinSwitchHelper[242] Could not get menu extra (-4956) 2005-01-06 00:03:22.755 SystemUIServer[218] when trying to launch imagecapture hot plug application, LSOpenFromURLSpec failed: -1</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_980'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_980"><time data-relative="true">2005-01-08T21:31:48Z</time></a></span>
+</cite>
+<blockquote><p>We need to be clear on our terminology here to avoid confusion. This bug report about SystemUIServer is about crashes:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=68" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=68</a></p>
+<p>But you're talking about &quot;hanging&quot;. In my book, a &quot;crash&quot; is when an application goes boom and stops running. ie. one minute it's there, and the next minute, boom, it's gone. A &quot;hang&quot;, in contrast, is when an app continues to run, but when you can't do any useful work with it because it's beachballing. Sometimes a hung application can get unstuck, but in many cases you could leave it running forever and it would never recover; it would just keep on beachballing.</p>
+<p>So the build referred to in <a href="/issues/68">bug #68</a> (which fixes a crashing issue), shouldn't really have any bearing at all on a hanging issue.</p>
+<p>As for the console output, most of it looks normal to me. The system will always complain about being unable to load &quot;MenuCracker.menu&quot;. This is a necessary part of the process of getting the system to accept third-party menu extras. Then you see WinSwitch getting loaded normally.</p>
+<p>The &quot;Could not get menu extra&quot; lines indicate a time out is occurring. Basically, whenever a new menu extra is added to the menu bar, WinSwitchHelper makes sure that it wasn't the Apple Fast User Switching menu that got added (and if it was, it displays a helpful notification dialog explaining why there are two Fast User Switching menus visible at the same time!). Those -4956 errors indicate timeouts when WinSwitchHelper is asking the system whether the Apple Fast User Switching menu is present. If these timeouts are occurring often, I suspect something fishy is bogging down your system, or there's some other incompatibility that's causing the time out.</p>
+<p>The last line has nothing to do with WinSwitch, but must be generated by some other menu extra installed on your system. You should probably post a list of menu extras that you are using.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_981'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_981"><time data-relative="true">2005-01-09T08:54:56Z</time></a></span>
+</cite>
+<blockquote><p>When I say hang, this is what I mean....  If I use the Activity Monitor to view the running processes, the line showing SystemUIServer will turn red, and instead of just saying &quot;SystemUIServer&quot;, it says &quot;SystemUIServer (Hung)&quot;</p>
+<p>Once when this happened, things were in a state such that when I moved my mouse to the system menu area, I would get the spinning wheel. Most of the time though, the menu still seems to work, even though the SystemUIServer is showing as Hung in the application monitor</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/winswitch">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

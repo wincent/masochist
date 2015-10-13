@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #224: REQUEST: Automatically refresh Playlist, Genre, Artist submenus when iTunes library file changes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #224</div>
+<div class='issue' id='issue_224'>
+<form class="edit_issue" id="edit_issue_224" action="/issues/224" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="4jqQELnK6t1yMg/vgrqu+Sh/U5umkDw2rm8sidJRgj3WyC6nHkcwiKu+PBizk/1Nnf06p618siqOcPl39onlGQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #224:
+<span data-name='issue[summary]'>
+REQUEST: Automatically refresh Playlist, Genre, Artist submenus when iTunes library file changes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-04T21:36:03Z</time>, updated <time data-relative="true">2006-07-05T02:05:29Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nigel">Nigel</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Apologies ahead of time if I'm asking for things that aren't possible, or if this functionality is already included when running under Tiger. Having the &quot;Refresh&quot; menu items at the bottom of the Playlist, Genre, and Artist submenus seem a bit clunky. I haven't actually looked at the kqueue API, but based on my very limited knowledge, I believe kqueue now part of OS X. Doesn't it allow you to attach a monitor to any file, so that you can receive notifications when it's modified in any way? Could you not monitor the iTunes XML database, so that whenever it was updated, the SA submenus automatically updated? Because of the notification system, you wouldn't have to perform any polling and it would be an elegant solution.</p>
+<p>Again, not sure if I know what I'm talking about, but if the technology works like I assume, it would be a nice change to make.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1959'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1959"><time data-relative="true">2005-05-04T22:32:18Z</time></a></span>
+</cite>
+<blockquote><p>Yes, kqueue does allow you to monitor files for modifications and Synergy Advance already does use it for  some things.</p>
+<p>In the case of the library XML file I don't think it would be so useful though because in my testing I see  that iTunes doesn't flush changes out to the file as soon as you make them. In some cases it may only  write the changes out to disk on exit.</p>
+<p>Basically the approach I was going to use is to refresh only when the user asks, with the additional feature  that if you try to play a track from the submenu and it doesn't work (a sure indication that the library has  changed) that Synergy Advance will automatically offer to refresh when that happens.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1960'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1960"><time data-relative="true">2005-05-04T22:45:09Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>in my testing I see that iTunes doesn't flush changes out to the file as soon</p>
+</blockquote>
+<p>as you make them. In some cases it may only write the changes out to disk on exit.</p>
+<p>If that's the case, doesn't that mean that manually refreshing would be no more successful than automatic refreshing? In the best case scenario with manual refreshing, the user will hit refresh just after iTunes has written a change out to disk, whereas in most other cases they will either be seeing outdated information, or hitting refresh when no changes have been made. If this is the case, auto-refresh is still optimal (though of course it would be nice if iTunes wrote out changes reliably).</p>
+<p>Or do you do something else tricky when the user performs a manual refresh, like read the copy of the database iTunes holds in memory? If so, I can see why auto-refresh could be worse than manual refresh.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1961'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1961"><time data-relative="true">2005-05-04T23:52:10Z</time></a></span>
+</cite>
+<blockquote><p>Nah, I don't do anything tricky. The truth is that reading the XML file is not exactly a supported way of  getting information from iTunes but it's the only way to get information about a huge number of tracks  all at once (if you did it with Apple Events you would take all day to do it and use lots of CPU).</p>
+<p>The other thing about auto-refreshing is this: do you really want the entire menu refreshing every time  the file gets modified? Imagine the worse case scenario: that the file gets flushed to disk because  someone removes a comma from the album title in iTunes. You then rebuild the all those submenus  (something which I know you've said takes a long time; <a href="/issues/209">bug #209</a>).</p>
+<p>Having said that, it's not hard to implement this feature. I will make it a checkbox in the advanced  preferences, but it will definitely default to being off because I think it will cause more trouble than it's  worth... </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1962'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1962"><time data-relative="true">2005-05-05T00:00:27Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>If that's the case, doesn't that mean that manually refreshing would be no more successful than automatic refreshing? In the best case scenario with manual refreshing, the user will hit refresh just after iTunes has written a change out to disk, whereas in most other cases they will either be seeing outdated information, or hitting refresh when no changes have been made. If this is the case, auto-refresh is still optimal (though of course it would be nice if iTunes wrote out changes reliably).</p>
+</blockquote>
+<p>I forgot to respond to this in my last comment. Like I said, reading the XML file is a bit of a necessary  evil. It's not documented and there's no way of knowing what iTunes' policy is for flushing to disk.  Having said that, I believe that iTunes only flushes when it exits. This means there is always a risk of  seeing outdated information regardless of whether you do a manual or automatic refresh. About the  only time you can be sure that things are up-to-date is at the very beginning when you first launch  iTunes and Synergy Advance.</p>
+<p>And often on the next launch the database IDs are different. This can be a problem for Synergy Advance  because it might be left running while iTunes is shut down, relaunched, shut down, relaunched. If the  database IDs change then the menu items won't work when you select them.</p>
+<p>Even so, there is no way of knowing *when* the database IDs will change because we don't know what  the official iTunes policy (nor if/how it will change in future versions).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1963'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1963"><time data-relative="true">2005-05-05T00:01:40Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>The other thing about auto-refreshing is this: do you really want the entire</p>
+</blockquote>
+<p>menu refreshing every time the file gets modified?</p>
+<p>Good point. It might not be a good thing if you make a lot of changes to your library and the file is updated fairly constantly. Hadn't really considered the drawbacks of that WRT <a href="/issues/209">bug #209</a>.</p>
+<p>I suppose it's not a big deal in the end, so if it involves a lot of extra dev. time probably not worth it. But if it's fairly easy, then it will be nice to have the option in the advanced prefs (and it would be nice if enabling auto-updating applied to any other modules that read the XML file, assuming some of the other ones you're developing do this).</p>
+<p>It's times like this I imagine you really wish iTunes provided more granularity programming-wise. Would be nice to have access to more programming notifications, and things like the browser view.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1964'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1964"><time data-relative="true">2005-05-05T00:06:19Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>It's not documented and there's no way of knowing what iTunes' policy is for</p>
+</blockquote>
+<p>flushing to disk. Having said that, I believe that iTunes only flushes when it exits.</p>
+<p>I'm sure you know more than me WRT this issue, but it seems to often write changes out to disk before it exits. iTunes has a habit of occasionally locking up after I use it for a while, requiring me to force quit. I always find the changes I've made have persisted after re-launching, even though it hasn't quit nicely. I'm talking about things like new, deleted, or modified playlists. Or does it always write changes to its proprietary database file immediately, and only write to the .xml file on quit?</p>
+<p>Re: Database IDs - that's interesting. I didn't know about that aspect of things. I suppose that makes things pretty messy and makes the usefulness of an auto-update feature questionable.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1965'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1965"><time data-relative="true">2006-07-05T02:05:29Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

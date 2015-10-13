@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1463: Seeing both growl and synergy notification window when changing ratings
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1463</div>
+<div class='issue' id='issue_1463'>
+<form class="edit_issue" id="edit_issue_1463" action="/issues/1463" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="fYvVuVKl9cSaJtOom7L/088mGL7J9MGEhzdHkQgwT+VJeWsO9SgvkUOq4F+qm6xneqRxgsIYT5inKJJvLOgowQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1463:
+<span data-name='issue[summary]'>
+Seeing both growl and synergy notification window when changing ratings
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-01-20T19:52:36Z</time>, updated <time data-relative="true">2010-02-22T03:04:18Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/zbeckman">zbeckman</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Whenever I press a hotkey (e.g. cmd-F4) to change the rating on a song, I see both a growl window and a transparent grey window, showing me the new rating. The growl window shows full details, but the grey one just has a synergy icon and the new star-rating.</p>
+<p>How can I turn off the synergy / iTunes style window and only use growl for notifications?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5273'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5273"><time data-relative="true">2010-01-21T02:20:43Z</time></a></span>
+</cite>
+<blockquote><p>Growl is controlled completely independently in its own preference pane (in the System Preferences application).</p>
+<p>Synergy's Floater is controlled in the Synergy Preferences, in the &quot;General&quot; tab (the first one you see when you open the preferences).</p>
+<p>There you'll find a checkbox to turn it on and off, as well as checkboxes to control what information gets displayed.</p>
+<p>If you think there's a glitch in the Floater (ie it's missing information) and you're sure the checkboxes are correctly set, I'd recommend that you try stopping Synergy, moving your preferences file out of the way (from <code>~/Library/Preferences/org.wincent.Synergy.plist</code>) and see if the problem goes away. (Corrupt prefs files are the most common cause of odd behaviour.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5274'>
+<cite>
+<a href="/users/zbeckman">zbeckman</a>
+<span class='when'><a href="#comment_5274"><time data-relative="true">2010-01-21T13:17:01Z</time></a></span>
+</cite>
+<blockquote><p>I tried deleting the preference pane, but no good.</p>
+<p>Synergy Preference has the &quot;Display floater when iTunes track changes&quot; item UNCHECKED, so it should not show any floater, ever.</p>
+<p>But, it ALWAYS shows the rating change floater -- but nothing else. Otherwise it behaves as expected.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5275'>
+<cite>
+<a href="/users/zbeckman">zbeckman</a>
+<span class='when'><a href="#comment_5275"><time data-relative="true">2010-01-21T13:18:06Z</time></a></span>
+</cite>
+<blockquote><p>Oops, I mean &quot;I tried deleting the preferences file...&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5276'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5276"><time data-relative="true">2010-01-21T14:34:48Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I think I misinterpreted you.</p>
+<p>I originally thought you were talking about the Floater, but I now think you are talking about the notification bezels that appear in the middle of the screen and which look like the bezels you see when you use Mac OS X's built-in brightness and volume function keys.</p>
+<p>If that's what you want to turn off, the checkbox you need to hit is the one which says &quot;Extra visual feedback for next, previous etc&quot;. That'll turn off all such bezels.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5277'>
+<cite>
+<a href="/users/zbeckman">zbeckman</a>
+<span class='when'><a href="#comment_5277"><time data-relative="true">2010-01-21T17:47:27Z</time></a></span>
+</cite>
+<blockquote><p>That checkbox is ALSO unchecked. I had the same thought...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5278'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5278"><time data-relative="true">2010-01-22T02:13:53Z</time></a></span>
+</cite>
+<blockquote><p>Just to be clear what's happening here, can you take a screenshot and mail it to me (at <a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>) so that I can see what you're seeing?</p>
+<p>In case you don't know how to take a screenshot, you can do so by pressing and holding Command + Shift + 3 momentarily. The screenshot file will be saved to your desktop.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5293'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5293"><time data-relative="true">2010-02-03T16:11:59Z</time></a></span>
+</cite>
+<blockquote><p>Just sent you a screenshot. Here's a link: <a href="http://skitch.com/zbeckman/nuuba/screen-shot-2010-02-03-at-4.06.23-pm" class="external">http://skitch.com/zbeckman/nuuba/screen-shot-2010-02-03-at-4.06.23-pm</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5297'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5297"><time data-relative="true">2010-02-04T02:23:59Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot for the screenshot. Certainly strikes me as very odd that you're seeing that even though you have the &quot;Extra visual feedback for next, previous etc&quot; checkbox unchecked.</p>
+<p>I'm going to see if I can reproduce here locally what you're seeing on your machine.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5298'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5298"><time data-relative="true">2010-02-04T03:36:07Z</time></a></span>
+</cite>
+<blockquote><p>Good, I can reproduce it. Will try to get a fix ready for next point release (4.3.1).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5302'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5302"><time data-relative="true">2010-02-06T18:47:34Z</time></a></span>
+</cite>
+<blockquote><p>Funnily enough, digging through the source code I can see from comments like this one...</p>
+<pre>// we always show the rating feedback floater, regardless of prefs</pre>
+<p>... that this behavior was actually intentional.</p>
+<p>I can't really remember what my reasons were for taking this stand at the time, but I think there's probably a case for making this bezel fall in line with the other ones.</p>
+<p>Other bezels which are unconditionally shown are ones like iTunes volume up/down bezel, but that one is not so much of a problem seeing as it doesn't seem like a duplicate notification for Growl users.</p>
+<p>I'm just going to leave this one sit for a day or two while I think about what the best course of action to take here is: either sweeping changes to all such bezels, no changes, separate options to control each type of notification, or some other &quot;in between&quot; approach.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5303'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5303"><time data-relative="true">2010-02-07T08:44:06Z</time></a></span>
+</cite>
+<blockquote><p>I'm thinking that the best thing to do will be to add another checkbox. So we would have the existing &quot;Extra visual feedback for play, pause, next and previous track actions&quot; checkbox, plus a new one &quot;Extra visual feedback for other hot keys&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5307'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5307"><time data-relative="true">2010-02-09T16:35:28Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've added this checkbox. It will be in the next release (4.4b).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5308'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5308"><time data-relative="true">2010-02-09T16:35:38Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5311'>
+<cite>
+<a href="/users/zbeckman">zbeckman</a>
+<span class='when'><a href="#comment_5311"><time data-relative="true">2010-02-16T19:45:11Z</time></a></span>
+</cite>
+<blockquote><p>Thank you! It's the niggling little inconsistencies that just bug the heck out of me, you know? ;-) Appreciate you taking the time to fix... And you have good commenting style. Document what you did. Beats the &quot;// fix this hack before a client sees it&quot; comment that seems to show up at the worst possible times...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5328'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5328"><time data-relative="true">2010-02-22T03:04:18Z</time></a></span>
+</cite>
+<blockquote><p>4.4b is now out.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

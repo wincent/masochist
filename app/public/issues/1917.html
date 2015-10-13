@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1917: Update to Rails 3.1.2
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1917</div>
+<div class='issue' id='issue_1917'>
+<form class="edit_issue" id="edit_issue_1917" action="/issues/1917" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/7z5aaSmsE6S3upFrglquJb2psHz8+wVBIcCnH2ZN1DLTkfeAytqG0tS2bKfIDkMI3TP/fgfYgkkmNdiWUFQdA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1917:
+<span data-name='issue[summary]'>
+Update to Rails 3.1.2
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-11-15T16:03:14Z</time>, updated <time data-relative="true">2011-11-21T03:58:59Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Release announcement here:</p>
+<ul>
+<li><a href="http://groups.google.com/group/rubyonrails-core/browse_thread/thread/c16ebb42fe1ed5a2" class="external">http://groups.google.com/group/rubyonrails-core/browse_thread/thread/c16ebb42fe1ed5a2</a></li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7263'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7263"><time data-relative="true">2011-11-18T02:54:34Z</time></a></span>
+</cite>
+<blockquote><p>All the more reason to do this due to this vulnerability:</p>
+<pre>There is a vulnerability in the translate helper method which may allow
+an attacker to insert arbitrary code into a page.  This vulnerability
+has been disclosed to the public so no a CVE identifier has yet to be
+assigned.
+
+Versions Affected:  3.0.0 and later, 2.3.X in combination with the
+rails_xss plugin
+Not Affected:       Pre-3.0.0 releases, without the rails_xss plugin,
+did no automatic XSS escaping, so are not considered vulnerable
+Fixed Versions:     3.0.11, 3.1.2
+
+Impact
+------
+
+Ruby on Rails has a helper method for i18n translations. This function
+has a convention whereby translations strings with a name ending in
+'html' are considered HTML safe. There is also a mechanism for
+interpolation. It has been discovered that these 'html' strings allow
+arbitrary values to be contained in the interpolated input, and these
+values are not escaped.
+
+All users using the translate helper method with 'html safe'
+translations which use variable interpolation should either upgrade or
+use one of the workarounds immediately.
+
+Workarounds
+-----------
+
+Escape all interpolated input manually. For example:
+
+ translate('some_html', :some =&gt; '&lt;input&gt;')
+
+should be changed to:
+
+ translate('some_html', :some =&gt; h('&lt;input&gt;'))
+
+Patches
+-------
+
+To aid users who aren't able to upgrade immediately we have provided
+patches for the two supported release series.  They are in git-am format
+and consist of a single changeset.
+
+* 3-0-translate.patch - Patch for 3.0 series
+* 3-1-translate.patch - Patch for 3.1 series
+
+Credits
+-------
+
+Thanks to Sergey Nartimov for finding the vulnerability and submitting
+the initial patch.</pre>
+<p>(Although I confess I don't think I'm using the helper anywhere, so I'm ok. I'll still audit the codebase, anyway, and I'll still upgrade.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7264'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7264"><time data-relative="true">2011-11-18T02:56:34Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Try Rails 3.1.2.rc2</li>
+<li><strong>To:</strong> Update to Rails 3.1.2</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7265'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7265"><time data-relative="true">2011-11-18T02:56:50Z</time></a></span>
+</cite>
+<blockquote><p>Weblog hasn't updated yet, but 3.1.2 is out on the gem servers.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7273'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7273"><time data-relative="true">2011-11-21T03:58:49Z</time></a></span>
+</cite>
+<blockquote><p>Rather painful as the update included a forced-switch to the asset pipeline, but done.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7274'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7274"><time data-relative="true">2011-11-21T03:58:59Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

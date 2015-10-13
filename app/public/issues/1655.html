@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1655: Rails 3 deployment checklist
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1655</div>
+<div class='issue' id='issue_1655'>
+<form class="edit_issue" id="edit_issue_1655" action="/issues/1655" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="9YMhGqaWn2b+9XOGDW/wNdSiDpPrq4AARLPb9ol0fAbBcZ+tARtFMyd5QHE8RqOBYSBnr+BHDhxkrA4IrawbIg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1655:
+<span data-name='issue[summary]'>
+Rails 3 deployment checklist
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-08-24T18:32:19Z</time>, updated <time data-relative="true">2011-02-01T12:31:12Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This is a checklist for the things that need to be done prior to deploying the Rails 3 version of the site.</p>
+<p>Must review all new/open tickets in the tracker, as there are many relevant ones like the following (and still have to do an exhaustive review):</p>
+<h2>Bugs, security, quality issues</h2>
+<ul>
+<li><a href="/issues/1576">ticket #1576</a>, &quot;Product model maintenance needed for next deployment&quot;</li>
+<li><a href="/issues/1579">ticket #1579</a>, &quot;Rails 3: audit mass-assignable attributes, including associations&quot;</li>
+<li><a href="/issues/1580">ticket #1580</a>, &quot;Rails 3: non-SSL requests broken on local development machine in production environment&quot; (review required)</li>
+<li><a href="/issues/1606">ticket #1606</a>, &quot;Specs for lib/sortable.rb&quot;</li>
+<li><a href="/issues/1656">ticket #1656</a>, &quot;Rails 3: grep codebase for TODO and BUG markers prior to deployment&quot;</li>
+</ul>
+<h2>Review required</h2>
+<ul>
+<li><a href="/issues/1570">ticket #1570</a>, 'Rails 3: add back &quot;decoration&quot; to forms to show validation errors' (I think this one might be done already and I just forgot to close the ticket)</li>
+</ul>
+<h2>&quot;Would be nice&quot; tickets</h2>
+<ul>
+<li><a href="/issues/1135">ticket #1135</a>, &quot;Add repository browsing features&quot;</li>
+<li><a href="/issues/1244">ticket #1244</a>, &quot;Search by tag in issue tracker&quot;</li>
+<li><a href="/issues/1303">ticket #1303</a>, '&quot;Redirect&quot; feature for tags'</li>
+</ul>
+<h2>Done</h2>
+<ul>
+<li><a href="/issues/1584">ticket #1584</a>, &quot;Product categories not consistent in navbar vs db&quot;</li>
+<li><a href="/issues/1621">ticket #1621</a>, &quot;Switch to unicorn executable, drop unicorn_rails&quot;</li>
+<li><a href="/issues/1654">ticket #1654</a>, &quot;Rails 3: update database adapter settings (for mysql2) on server for next deployment&quot;</li>
+</ul>
+<p>(Maybe I should be tagging these, but as I don't have tag-based issue searching yet, ie. <a href="/issues/1244">ticket #1244</a>, not much point.)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6168'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6168"><time data-relative="true">2010-08-30T22:42:33Z</time></a></span>
+</cite>
+<blockquote><p>Just did a successful deploy on a staging clone. A bit fiddly, but it works.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6660'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6660"><time data-relative="true">2011-02-01T12:31:05Z</time></a></span>
+</cite>
+<blockquote><p>Rails 3 version has been up and running successfully for a while now, so closing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6661'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6661"><time data-relative="true">2011-02-01T12:31:12Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #238: CRASH: Dies in -[NSWindow dissolveContentView:usingImages:] (opening preferences during an iTunes track change)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #238</div>
+<div class='issue' id='issue_238'>
+<form class="edit_issue" id="edit_issue_238" action="/issues/238" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ODfUTF4mQ10h+h1HO00bagIysKQg1R2+pYu9dphfeQQMxWr7+auZCPh2LrAKZEjet7DZmCs5k6KFlGiIvIceIA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #238:
+<span data-name='issue[summary]'>
+CRASH: Dies in -[NSWindow dissolveContentView:usingImages:] (opening preferences during an iTunes track change)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-16T03:44:41Z</time>, updated <time data-relative="true">2006-07-05T02:05:46Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/brett">Brett</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I was opening the Synergy Advance preferences pane while the playing track switched from current to  next. Advance crashed with the attached crash log.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_1999'>
+<cite>
+<a href="/users/brett">Brett</a>
+<span class='when'><a href="#comment_1999"><time data-relative="true">2005-05-16T03:45:39Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=25) Crash Log</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2000'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2000"><time data-relative="true">2005-05-16T04:54:04Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report and the crash log. I haven't seen this one myself and I can't reproduce it here,  although I suspect its a case of timing; you have to open the preferences at exactly the right moment to  trigger it.</p>
+<p>Where you opening the preferences for the very first time (ie. while it was building a list of preference  panes and the spinning progress indicator was in the window) or had you already had it open in that  same session? What did you see on the screen at the time, if anything?</p>
+<p>I will take a look at the code and see if I can isolate the cause. The log you've attached shows the crash  occurring where the window is being added to the application's &quot;Window&quot; menu. At first glance I am not  sure what I could do to prevent this from occurring as all I'm doing at that point is telling Cocoa to put  the window onscreen... Nothing tricky.</p>
+<p>If you see it again can you please let me know?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2001'>
+<cite>
+<a href="/users/brett">Brett</a>
+<span class='when'><a href="#comment_2001"><time data-relative="true">2005-05-16T13:44:04Z</time></a></span>
+</cite>
+<blockquote><p>It seems to have only happened the very first time I was opening the preferences pane. Ever since I can't  seem to get the issue to arise. I'll try again with each new version as you roll them out.</p>
+<p>I sw the items within the preferences pane... the Show All was selected and the other icons were showing,  but there was obviously a hiccup while opening, then the Prefs pane and entire Menubar tool exited.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2002'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2002"><time data-relative="true">2006-07-05T02:05:46Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

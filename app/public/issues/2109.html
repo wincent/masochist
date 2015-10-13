@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #2109: Add option to show relative paths in :CommandTBuffer
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #2109</div>
+<div class='issue' id='issue_2109'>
+<form class="edit_issue" id="edit_issue_2109" action="/issues/2109" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="egoWXKcDRZ5luChHoxP8xS8r3VSx7ad+tXx4yL3uhkFO+KjrAI6fy7w0G7CSOq9xmqm0aLoBKWKVY602mTbhZQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #2109:
+<span data-name='issue[summary]'>
+Add option to show relative paths in :CommandTBuffer
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-09-11T23:37:15Z</time>, updated <time data-relative="true">2013-09-12T15:30:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Add option to show relative paths when doing <code>:CommandTBuffer</code>, because often all buffers have the same path prefix anyway, and then the fuzzy search works worse, because irrelevant characters in the common prefix gets matched against the search.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10430'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10430"><time data-relative="true">2013-09-12T07:00:24Z</time></a></span>
+</cite>
+<blockquote><p>Relative to what, exactly? Vim already uses relative paths for buffers, and Command-T uses the paths that Vim provides.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10431'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10431"><time data-relative="true">2013-09-12T07:21:27Z</time></a></span>
+</cite>
+<blockquote><p>Well, when I do :pwd in Vim, I can see that I'm in C:\Users\oskarkv\Desktop\spelet. And when I do :CommandTBuffer, the buffers are listed like this:</p>
+<pre>C:\Users\oskarkv\Desktop\spelet\src\game\client\core.clj
+C:\Users\oskarkv\Desktop\spelet\src\game\server\core.clj
+C:\Users\oskarkv\Desktop\spelet\src\game\networking\core.clj
+C:\Users\oskarkv\Desktop\spelet\src\game\utils.clj</pre>
+<p>etc.</p>
+<p>But in :CommandT, the C:\Users\oskarkv\Desktop\spelet prefix is gone. I would like :CommandTBuffer to work the same way. But you said Command-T uses what Vim provides, so maybe the problem is not with Command-T. Hm...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10432'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10432"><time data-relative="true">2013-09-12T07:37:28Z</time></a></span>
+</cite>
+<blockquote><p>Not entirely sure if the behavior on Windows is the same as on UNIX, but you can look at the buffer listing as provided by Vim with <code>:ls</code>.</p>
+<p>At least on UNIX, that always uses relative paths. Command-T isn't literally using the output of <code>:ls</code> (it's actually using the Ruby API) but on UNIX the returned strings are the same.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10433'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10433">Created <time data-relative="true">2013-09-12T15:30:41Z</time>, edited <time data-relative="true">2013-09-13T02:59:43Z</time></a></span>
+</cite>
+<blockquote><p><code>:ls</code> returns</p>
+<pre> 1  h   &quot;dev\user.clj&quot;                 line 50
+ 2  a   &quot;[Scratch]&quot;                    line 0
+ 4  h + &quot;src\game\server\core.clj&quot;     line 60
+ 5 [/tags/a #a] + &quot;src\game\client\core.clj&quot;     line 73
+ 6  h   &quot;todo.txt&quot;                     line 69
+15 %a   &quot;\Program Files (x86)\Vim\_vimrc&quot; line 36</pre>
+<p>So I guess the Ruby API does not return the same then. Maybe the Ruby code can check that somehow and strip the prefix?</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

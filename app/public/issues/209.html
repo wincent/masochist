@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #209: Global menu takes a while to load upon first launch
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #209</div>
+<div class='issue' id='issue_209'>
+<form class="edit_issue" id="edit_issue_209" action="/issues/209" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="8tFGaaL0IsO1dnj7o7rO3ZyI8dn79TZTN9x+tHz5hWDGI/jeBXn4lmz6SwySk51pKQqY5fAZuE8Xw6tKWCHiRA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #209:
+<span data-name='issue[summary]'>
+Global menu takes a while to load upon first launch
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-03T08:25:21Z</time>, updated <time data-relative="true">2005-07-27T01:28:22Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nigel">Nigel</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The first time I ran Synergy Advance, I clicked on the global menu and the app gave me a spinning  beachball for 5-10 seconds. This only happened upon first launch, the first time I clicked on the menu.  Subsequent launches were fine the first time I clicked it (and of course subsequent clicks within the  same launch were also fine). I'm assuming the long delay was SA needing to parse my iTunes library to  populate e.g. the Genres and Artists submenus. There should be some visual feedback, maybe a  progress bar or something similar to indicate this is going on. At first I thought the app had hung.</p>
+<p>I'm on a PBG4, 550MHz, 768MB RAM, OS 10.3.5. My iTunes library has around 3200 songs in it (24  genres, 603 artists, according to the SA submenus).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1913'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1913"><time data-relative="true">2005-05-03T09:08:47Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report.</p>
+<p>When Synergy Advance first starts up it reads the iTunes library (XML) file in a separate thread and does  as much parsing as possible before returning to the main thread. It does this to keep the UI responsive  during the processing.</p>
+<p>My library is about a third the size of yours, and I have more CPU and memory so it's difficult to make a  comparison. If you have 3200 songs then you you probably have many, many more menu items than  you have songs (the exact number depends on how many albums, artists and genres you have). This is  because of the way a song can appear in multiple places (such as in the Genres submenu as well as the  Artists submenu). See <a href="/issues/205">bug #205</a> in relation to this, which is a request to make these submenus optional  or to limit the depth to which they go down. Most likely that request will get implemented for the next  release.</p>
+<p>Now, there is one point of the operation that cannot occur in the separate thread and has to happen in  the main thread, and that is the moment where the menu items that have been prepared are actually  inserted into the menu. Even so, I don't think that's the longest part of the operation.</p>
+<p>I think the first step to working out what's happening is to add some additional logging so that we can  keep track of how long the different phases are taking. I've just added another bug, bug#210, to  remind me to add a preference to control the logging level.</p>
+<p>So what I'll do is add some additional logging statements in the next release so we can time this and  figure out where the bottleneck is.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1914'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1914"><time data-relative="true">2005-05-03T18:27:12Z</time></a></span>
+</cite>
+<blockquote><p>Extra logging should be useful. I just launched SA again and noticed it telling me to please wait while it  loaded the iTunes database. When I clicked again it had populated the various submenus, but when I  clicked again a few seconds later, it gave me the spinning beachball. So it looks like I was wrong with  my first report. A) This does happen on all launches, not just the launch upon first program install. B) It  might not have to do with loading the database/populating the menus, since it seemed to do that  without giving a beachball.</p>
+<p>Anyway, I'll hold off on more reports until the next release with more logging, which should hopefully  throw some light on this.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1915'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1915"><time data-relative="true">2005-05-03T19:00:32Z</time></a></span>
+</cite>
+<blockquote><p>I'll add logging statements at the following points. At:</p>
+<p>1. starting to parse library 2. finished parsing library</p>
+<p>3. starting to insert menu items 4. finished inserting menu items</p>
+<p>How long does the beachball last? Does it go away if you wait long enough? What does an Activity  Monitor sample of the process say when the beachball is happening? (/Applications/Utilities/Activity  Monitor -- you can get info on the process and click &quot;Sample&quot; to get a snapshot of where it is spending  its time)</p>
+<p>Synergy Advance does use some locking to prevent updates to the menu taking place while the  insertion is going on. During the lock you should see a beachball but I would hope it would only be a  short one. This is necessary because if Synergy Advance is inserting menu items while the menu is  down you will see all sorts of ugly tearing and glitches.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1916'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1916"><time data-relative="true">2005-05-04T21:11:36Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=20) Sample of SA while getting spinning beachball</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1917'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1917"><time data-relative="true">2005-05-04T21:23:32Z</time></a></span>
+</cite>
+<blockquote><p>I attached a sample of the SA application from Activity Monitor. I took the sample while SA was giving me the spinning beachball.</p>
+<blockquote>
+<p>How long does the beachball last?</p>
+</blockquote>
+<p>It depends. After some more observation it seems my last diagnosis was also wrong. It seems it is indeed inserting the menu items which calls SA to beachball. I haven't yet noticed it when it populates the playlist menu. That's understandable as that menu isn't nearly as big as the Genre or Artist menus. The Genre submenu will beachball for probably 5 seconds, and the Artist menu for 10-15 seconds. I haven't timed them, so I could be wrong, but you can get an idea of the length of time SA is unresponsive for.</p>
+<p>So it seems like SA parses the iTunes database, then creates the Playlist, Genre, and Artist submenus and inserts them one by one. By clicking during different points of the startup process, I was able to see the global menu before the Genre submenu was created, get the spinning beachball while the Genre submenu was created, then view the Genre submenu before the Artist submenu was created, then get the beachball while the Artist submenu was created, then finally view all the submenus.</p>
+<blockquote>
+<p>Does it go away if you wait long enough?</p>
+</blockquote>
+<p>Yes, it goes away after it finishes creating the submenus.</p>
+<p>If this is an issue at the OS level, where creating such large menus simply takes a long time, there may not be much you can do about it (apart from possibly giving some type of indication that the app hasn't frozen).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1918'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1918"><time data-relative="true">2005-05-04T21:47:24Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot, Nigel. You've done some excellent research.</p>
+<p>You are exactly correct that it inserts the submenus one at a time. It does so to avoid putting a great  big lock around the entire operation (which would make the entire global menu unavailable for one  long time); instead it uses three smaller locks (making it unavailable for three shorter periods of time  instead).</p>
+<p>We now have a fairly good idea of where the app is spending its time. We'll have an even better idea  when you try the next preview (with the extra logging). Sounds sensible what you suggest about the  amount of time each menu takes to be added. In my case I only have a few playlists (about a dozen),  about 18 genres, and 195 artists. So the artists submenu is by far the most time-consuming one.</p>
+<p>You're right that there's little that can be done to speed up how fast the operating system adds items to  a menu (specifically we are talking about the speed of the NSMenu &quot;addItem&quot; method). I can make small  optimizations around it but they probably won't affect the overall speed very much.</p>
+<p>On thing I may be able to do is user even finer-grained locking to minimize the beachball. It should be  possible for me to use a lock that doesn't operate at the level of the global menu as a whole, but  instead at the level of the individual submenus. If this is the case then you'd be able to use the global  menu when the items were being inserted but you would not be able to access the submenus. Fingers  crossed, I think this will be the way to go. If you try to access one of those submenus while the  insertion is taking place you'll still get a beachball, but I might be able to avoid even that little beachball  by appropriately ghosting the menu item before beginning the insertion.</p>
+<p>(The other alternative is to avoid the beachball entirely by only showing the global menu when the  whole thing is done. I don't really like that idea though.)</p>
+<p>Thanks a lot for bringing this to my attention. It's a real help in getting a nice high polish-factor on the  Global Menu.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1919'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1919"><time data-relative="true">2005-05-04T22:39:23Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Fingers crossed, I think this will be the way to go. If you try to access one</p>
+</blockquote>
+<p>of those submenus while the insertion is taking place you'll still get a beachball, but I might be able to avoid even that little beachball by appropriately ghosting the menu item before beginning the insertion.</p>
+<p>If possible, that sounds like a great idea.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1920'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1920"><time data-relative="true">2005-05-05T06:58:27Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've implemented finer grained locking so I am hoping the problem is now fixed. I really can't do any  fewer statements inside the lock now. Hopefully when you try the next preview you'll be able to confirm  for me that there's no beachballing at all now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1921'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1921"><time data-relative="true">2005-05-06T04:40:04Z</time></a></span>
+</cite>
+<blockquote><p>Ok. I've tested this as heavily as I can and there's nothing I can do to make this beachball now that I have  implemented the finer grained locking. Those submenus are now ghosted during the update too so that  you should never run into a lock contention situation.</p>
+<p>I am going to add the fixed-in-prerelease keyword to this bug. Let me know if you want me to email you a  build for you to try out, Nigel.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1922'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1922"><time data-relative="true">2005-05-06T10:04:08Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Let me know if you want me to email you a build for you to try out, Nigel.</p>
+</blockquote>
+<p>Sure, why not. I'm a bit swamped at the moment so might not get to it for a little while, but if I have  time I'd be happy to try it out. Sounds like you've come up with a good solution.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1923'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1923"><time data-relative="true">2005-05-06T20:30:34Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=21) SA sample while hanging</p>
+<p>I'd like to say the new finer-grained locking and menu-greying out solved the problems of the spinning beachball, but something seems to have gone wrong. I started up SA and saw the greyed out menu items. The Playlist submenu appeared without a problem, and I kept clicking the global menu to watch for the Genre submenu appear. However, before it did SA hung and gave me the spinning beachball. I took a sample of the process with Activity Monitor and attached it here. It's been about 10 minutes and it's still hung, so there seems to be some kind of critical bug.</p>
+<p>I don't have time to investigate further right now (heh, I should be working, not testing SA), but hopefully the sample will help a bit. Sorry to be the bearer of bad news.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1924'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1924"><time data-relative="true">2005-05-07T00:26:53Z</time></a></span>
+</cite>
+<blockquote><p>Well, it's waiting for a lock and never getting it. I guess we'll know which one when I release the next  preview with the logging options in the advanced preferences.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1925'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1925"><time data-relative="true">2005-07-12T10:06:37Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've now implemented the logging preference (<a href="/issues/210">request #210</a>) and I've added log statements to track  down the locking issue. Whenever the log level is set to 5 or higher the locking debugging info will get  printed to the console.</p>
+<p>I am fairly optimistic about nailing this problem because I can now reproduce it here fairly reliably.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1926'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1926"><time data-relative="true">2005-07-12T11:16:06Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is going to be interesting.... with logging turned *on* I cannot reproduce the hanging, ever (have  tried many times).... With logging turned *off* I can reproduce it at least 33% of the time... So evidently  there is some kind of weird threading interaction going on here where the act of logging might be  enforcing some kind of synchronization between threads which suppresses the hangs... Sigh...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1927'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1927"><time data-relative="true">2005-07-12T19:04:49Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I think I've now found and fixed the problem. Basically I had something vaguely like this:</p>
+<p>1. Worker thread: a) get lock (will wait for ever if need be, but that's not a problem seeing as this is a background thread). b) update menu on main thread.</p>
+<p>2. Main thread: a) when user clicks menu, get lock (which means waiting until any in-progress updates are completed).</p>
+<p>If the worker thread gets the lock (1.a), and *then* the user tries to click the menu (2.a) but *before*  the menu update is done (1.b), we'll get a hang. The main thread will wait forever for the lock; the  problem is that the worker thread won't relinquish the lock until the main thread has finished updating  the menu, and that will never happen because it's waiting for the lock. Now I mistakenly assumed that  that could never happen; ie. I thought that due to the nature of the runloop that (2.a) could never occur  before (1.b) and that (1.a) and (1.b) would always execute atomically. Evidently this is not the case, and  in fact it seems to happen all too often, but seeing as Cocoa is not open source I have no way of  knowing exactly what it's trying to do internally. One of the joys of multithreaded programming.</p>
+<p>I think the logging statements must have some kind of weird interaction with the runloop and the  performSelectorOnMainThread:withObject:waitUntilDone: method, because when logging was turned  on, the hangs weren't happening.</p>
+<p>So I've moved the menu updates into the worker thread and removed the calls to  performSelectorOnMainThread:withObject:waitUntilDone: method. I didn't want to do this because the  Cocoa thread safety docs do not say anything about the thread safety (or otherwise) of NSMenu and  NSMenuItem, and the conservative approach would be to assume that if it doesn't explicitly say that  something is threadsafe then it is most likely not threadsafe and one should do all updates to the UI  from within the main thread.</p>
+<p>Even so, I don't think the move is too risky; the use of locks here means that only one thread at a time  should be updating the menu items, and never while the menu is tracking. If we discover any cases  where this is not the case (ie. the app crashes when clicking the menu) then I'll have to look at the code  again. But these changes should prevent the hangs, and unless there are bugs in my code the changes  shouldn't cause any crashes.</p>
+<p>Adding the fixed-in-prelease keyword again. Fingers crossed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1928'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1928"><time data-relative="true">2005-07-27T01:28:22Z</time></a></span>
+</cite>
+<blockquote><p>The 0.2 public preview release is now out on the servers.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

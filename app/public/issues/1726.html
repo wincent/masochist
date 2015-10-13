@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1726: Allow links with query strings in internal link syntax (ie. [/hello?there=true link])
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1726</div>
+<div class='issue' id='issue_1726'>
+<form class="edit_issue" id="edit_issue_1726" action="/issues/1726" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="8kyuwwTnX89IjiscMO1RfRHsgRyVOZQ5z1T4BtwGvrrGvhB0o2qFmpECGOsBxALJpG7oIJ7VGiXvSy34+N7Zng==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1726:
+<span data-name='issue[summary]'>
+Allow links with query strings in internal link syntax (ie. [/hello?there=true link])
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-11-05T20:15:43Z</time>, updated <time data-relative="true">2010-11-06T00:25:44Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>If the text contains a relative URL with query-string params, the question mark appears to be confusing the parser.  Here's an example:</p>
+<pre> text = '[/bar?baz=bat link]'
+ expected = '&lt;p&gt;&lt;a href=&quot;/bar?baz=bat&quot;&gt;link&lt;/a&gt;&lt;/p&gt;\n'
+
+ assert_equal expected, Wikitext::Parser.new.parse( text )</pre>
+<p>Results in the following error:</p>
+<pre> &quot;&lt;p&gt;&lt;a href=\&quot;/bar?baz=bat\&quot;&gt;link&lt;/a&gt;&lt;/p&gt;\\n&quot; expected but was &quot;&lt;p&gt;[/barbaz=bat link]&lt;/p&gt;\n&quot;</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6426'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6426"><time data-relative="true">2010-11-05T20:45:26Z</time></a></span>
+</cite>
+<blockquote><p>Two things here:</p>
+<h3>First issue</h3>
+<ul>
+<li>the relative-link syntax is by design very restrictive; if you look at the <a href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c" class="external">parser</a> (specifically around <a href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c#l2240" class="external">line 2240</a>) you'll see this:</li>
+</ul>
+<pre class="c-syntax">             // external links look like this:
+            //      [<a href="http://google.com/" class="external">http://google.com/</a> the link text]
+            //      [/other/page/on/site see this page]
+            // strings in square brackets which don't match this syntax get passed through literally; eg:
+            //      he was very angery [sic] about the turn of events</pre>
+<p>ie. it expects either a URI or a path (and you can see how these are scanned in <a href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl" class="external">the lexer</a>, specifically around <a href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/wikitext_ragel.rl#l81" class="external">line 81</a>), and everything else is let through as is. This is because there are many places in normal text (like the &quot;[sic]&quot; example) where square brackets are legitimate and natural, and we don't want such places getting turned into links.</p>
+<p>So that's one issue: internal links have always been considered an exception, a special case, in order to keep the lexer and parser simple, and avoid false positives. The idea was that if you wanted to do anything more complex than that then you'd just have to use a fully qualified URL.</p>
+<p>It is probably within the realm of possibility to teach the lexer a slightly more nuanced notion of what constitutes a &quot;path&quot;, but it would have to be done carefully. Here are the relevant lexer rules as they are now:</p>
+<pre>   uri_chars           = (alnum | [@$&amp;'(\*\+=%_~/#] | '-')+ ;
+   special_uri_chars   = ([:!\(\),;\.\?])+ ;
+   uri                 = ('mailto:'i mail) |
+                         (('http'i [sS]? '://' | '<a href="ftp://'i" class="external">ftp://'i</a> | '<a href="svn://'i" class="external">svn://'i</a>) uri_chars (special_uri_chars uri_chars)*) ;
+   path                = '/' ([a-zA-Z0-9_\-.]+ '/'?)* ;</pre>
+<p>Note that the &quot;path&quot; segment of a <code>uri</code> is actually very loosely defined in terms of &quot;uri chars&quot; (what constitutes a &quot;uri char&quot; is based on the relevant RFCs, although I can't quote the exact RFC numbers from memory right now).</p>
+<p>We can't just re-use that same definition to define the actual <code>path</code> rule, because that would allow absurd paths that would never exist in any sane application (and remember, as these are <em>internal</em> links, we pretty much expect them to be sane by definition); paths like &quot;@@@@@@$$$$$$$$&amp;&amp;&amp;&amp;&amp;&quot; would be allowed, which obviously is not a good thing.</p>
+<p>So, if you're interested in making this happening, you'd have to make the path rule quite a bit more sophisticated, and the question then becomes, where do you draw the line? Is being able to parse <code>/foo?bar=1</code> good enough? Or do you want to be able to parse <code>/foo?bar[1]=baz&amp;bar[2]=bing</code>? (And in that second example, note how the nested square brackets might throw a spanner in the works.)</p>
+<p>Basically, I didn't want things to become that complex when I added this feature (see <a href="http://git.wincent.com/wikitext.git/commitdiff/7491ebc6c20030bb09e5762c1f8eb0c475244324" class="external">the commit</a> and the <a href="/issues/1208">related ticket</a>), and I still don't really want to now. So if you want to have a crack at it, feel free and I'd be happy to look at your patch, but I can't promise you that I'll include it.</p>
+<h3>Second issue</h3>
+<ul>
+<li>The other issue, then, is that the question mark is getting eaten in test assertion that you cite there. That's a bug. Regardless of what you want to do about the first issue, I'll see if I can address this one.</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6427'>
+<cite>
+<a href="/users/mike-stangel">Mike Stangel</a>
+<span class='when'><a href="#comment_6427"><time data-relative="true">2010-11-05T21:49:17Z</time></a></span>
+</cite>
+<blockquote><p>I agree with the need to balance simplicity against a &quot;support every possible scenario&quot; approach.  Since relative URLs must begin with a /, however, I wonder how great is the need to write <code>[/{something}]</code> and NOT want that to become a link?  If wikitext defines <code>[]</code> as the link syntax, then it seems to me we ought to default to treating this syntax as a link, unless it's wrapped in <code>&lt;nowiki&gt;</code>.  Were that the case, you wouldn't need complex character matching to convince yourself it's a URL -- if it starts with <code>[/</code> then you can assume everything up to the next space is the URI, and everything from that point to the closing <code>]</code> is the link text.  I agree that supporting square braces in the query string is tricky and probably not worth supporting in this scenario.  (I consider it critical to posting forms in Rails applications but can't think of any real-world examples of where it's necessary on a GET request)</p>
+<p>All of that being said, it's not a show-stopper for me if you were to decide not to support this at all.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6428'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6428"><time data-relative="true">2010-11-05T23:21:55Z</time></a></span>
+</cite>
+<blockquote><p>And voila, you've discovered another bug.</p>
+<p>In your post where you typed:</p>
+<pre>if it starts with `[/` then you can assume</pre>
+<p>The parser effectively ignoring the second <code>`</code>. Funnily enough, I wouldn't be surprised if the root cause is the same (or very close to) the &quot;Second issue&quot; that I mentioned in my first comment (ie. the &quot;?&quot; getting swallowed on a failed link).</p>
+<p>Without looking at the code, I'd say what's happening here is:</p>
+<ol>
+<li>see <code>`</code>, start <code>&lt;code&gt;</code> span</li>
+<li>see <code>[</code>, and assume we're about to see an external link</li>
+<li>scan a URI or path; in this case <code>/</code> counts as a path</li>
+<li>expect to see a space, but fail, so rollback the failed link (ie. print the left bracket and the path)</li>
+<li>continue processing... at this point the next character we see should be another <code>`</code> and we should close the <code>&lt;code&gt;</code> span</li>
+</ol>
+<p>Looking at the code, looks like our rollback is backfiring on us because instead of just printing the left bracket and the path, we are also printing the backtick and not assigning it any special meaning. The bug looks to be around <a href="http://git.wincent.com/wikitext.git/blob/HEAD:/ext/parser.c#l2049" class="external">line 2056</a>. We're emitting the backtick, but we should just restart the processing loop and handle it in the <code>case TT</code> rule.</p>
+<p>As you can see, this kind of hand-crafted parser, already several thousand lines long, is an incredibly intricate and delicate piece of machinery, which is why I am hesitant about making sweeping changes. I will see if I can fix these little bugs though...</p>
+<p>In the meantime I am going to edit your comment and mark it up like this:</p>
+<pre>if it starts with `&lt;nowiki&gt;[/&lt;/nowiki&gt;` then you can assume</pre>
+<p>That should fix the display issue, at least.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6429'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6429"><time data-relative="true">2010-11-05T23:53:31Z</time></a></span>
+</cite>
+<blockquote><p>Fixed that little bug:</p>
+<ul>
+<li><a href="http://git.wincent.com/wikitext.git/commitdiff/4c93572da5c4f5e7db2f5189b2ea671f0edd708b" class="external">http://git.wincent.com/wikitext.git/commitdiff/4c93572da5c4f5e7db2f5189b2ea671f0edd708b</a></li>
+</ul>
+<p>And yes, it also explains/fixes the disappearing &quot;?&quot; in your initial example.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6430'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6430"><time data-relative="true">2010-11-06T00:24:16Z</time></a></span>
+</cite>
+<blockquote><p><strong>Kind</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> bug</li>
+<li><strong>To:</strong> feature request</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6431'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6431"><time data-relative="true">2010-11-06T00:25:34Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Question mark in relative URLs confuses parser</li>
+<li><strong>To:</strong> Allow links with query strings in internal link syntax (ie. [/hello?there=true link])</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6432'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6432"><time data-relative="true">2010-11-06T00:25:44Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

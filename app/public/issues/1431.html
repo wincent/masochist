@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1431: Synergy volume commands get &quot;stuck&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1431</div>
+<div class='issue' id='issue_1431'>
+<form class="edit_issue" id="edit_issue_1431" action="/issues/1431" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ULuKrIeDcP2bPmcZnHa53r02ZuJfSPktiRuWQ4qPjrZkSTQbIA6qqEKyVO6tX+pqCLQP3lSkdzGpBEO9rlfpkg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1431:
+<span data-name='issue[summary]'>
+Synergy volume commands get &quot;stuck&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-11-02T16:49:46Z</time>, updated <time data-relative="true">2010-01-04T07:08:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have Synergy set to use a hotkey for raising and lowering the iTunes volume. Quite often, if I use the hotkey to change the iTunes volume, there will be a lag of several seconds before the command is actually issued, and it becomes &quot;stuck&quot;, continually raising the volume to the maximum (if I tried to raise it) or lowering it to the minimum. It persists even if I change the volume manually in iTunes; the only way to stop it is to issue another hotkey command to Synergy. This happens even if the hotkey is only pressed once, and it seems to happen most often when iTunes is busy at the time of the hotkey press. </p>
+<p>I have tried changing the hotkey setting in Synergy and the problem persists; this has been a problem since version 3 (the first version I have used) and with both iTunes 8 and 9. I am on a MacBook Pro 3,1 running Snow Leopard 10.6.1. If any additional information would be helpful, please let me know!</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5137'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5137"><time data-relative="true">2009-11-02T17:58:17Z</time></a></span>
+</cite>
+<blockquote><p>This is a glitch which happens only in <a href="/wiki/Snow_Leopard">Snow Leopard</a>, and a partial workaround is already implemented. See <a href="/issues/1383">ticket #1383</a> for the original discussion.</p>
+<p>The short version: for some unknown reason, <a href="/wiki/Snow_Leopard">Snow Leopard</a> sends &quot;key press&quot; events reliably, but the corresponding &quot;key release&quot; events are sometimes dropped on the floor. Synergy never receives these events so there's not much it can do about them.</p>
+<p>The workaround that I implemented was to at least check for such missing events the next time the volume hot keys are pressed; there's no way for this to happen automatically because by definition you are not going to get notified of a missing event, but you can at least <em>deduce</em> at sometimes that you must have missed on an event.</p>
+<p>In practice this means that if you are using a recent version of Synergy then you can &quot;unstick&quot; stuck keys by using them again (ie. &quot;volume up&quot; gets stuck, you can &quot;unstick&quot; it by tapping either &quot;volume up&quot; or &quot;volume down&quot;).</p>
+<p>I wish there was a way to really fix this instead of just working around it, but the actual cause of the problem seems to be outside of Synergy (something new and unknown in Snow Leopard) so it is difficult to tackle.</p>
+<p>I guess one way in which the current workaround could be improved would be to add a timer-based check as well. That is, not just check for missing events the next time the user presses a key combination, but actively check for them after a set time interval as well. eg. User press &quot;volume up&quot;; if we still haven't received the &quot;key release&quot; event after, say, 1 second then assume that the system has likely dropped the event on the floor and act accordingly.</p>
+<p>That might be a better workaround while we wait and hope for an Apple fix.</p>
+<p>Another possibility is looking at switching to a different <a href="/wiki/API">API</a>; I'm not even sure if exactly what the alternatives are under Snow Leoapard, but I will look into them.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5209'>
+<cite>
+<a href="/users/scott">scott</a>
+<span class='when'><a href="#comment_5209"><time data-relative="true">2009-12-19T17:09:19Z</time></a></span>
+</cite>
+<blockquote><p>Thanks... just wanted to add my experience with this... I'm having the same problem. I've got my Synergy &quot;volume up&quot; keyboard shortcut set to &quot;command UpArrow&quot;, and my Synergy &quot;volume down&quot; keyboard shortcut set to &quot;command DownArrow&quot;. So, I've got Synergy set to use the EXACT SAME keyboard shortcuts that iTunes natively uses on its own. Not sure if that is what's causing the problem or not, but I just wanted to throw that out there in case it sheds any light on the problem. But yes, I am having the same problem in Snow Leopard and Synergy 4.2.</p>
+<p>Thanks.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5210'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5210"><time data-relative="true">2009-12-21T06:28:21Z</time></a></span>
+</cite>
+<blockquote><p>I was checking if other people have the same problems with Snow Leopard somehow not sending all keyboard events, and came across this message: <a href="http://lists.apple.com/archives/quartz-dev/2009/Oct/msg00085.html" class="external">http://lists.apple.com/archives/quartz-dev/2009/Oct/msg00085.html</a> , which to me sound somewhat relevant. What he wrote was:</p>
+<blockquote>
+<p>Okay, I think I managed to find the cause of my problem.  It turns out that it didn't have to do with the method I was using to post keyboard events, but rather a stupid programming error in my code that caused my function to intentionally post the kCGEventFlagsChanged events to a single application while posting the keystrokes to kCGSessionEventTap.  Obviously that would cause problems.  Apparently something about the events subsystem in OS X 10.5.X didn't cause this error to be an issue.  But I've fixed it and things seem to be working normally again in Snow Leopard.  Hopefully I've fixed it for good.</p>
+</blockquote>
+<p>I'm not sure if this has anything to do with the problem we are experiencing, but just thought I'd mention it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5211'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5211"><time data-relative="true">2009-12-21T14:06:49Z</time></a></span>
+</cite>
+<blockquote><p>Nice try, thanks for adding the info, but it is unlikely to have any connection with the Synergy issue. The post you reference is talking about Quartz <a href="/wiki/APIs">APIs</a> and Synergy doesn't use those for hot key support; it uses a Carbon <a href="/wiki/API">API</a> instead.</p>
+<p>As I mentioned in  my original comment, however, switching to another API is something which might work and I am going to investigate whether it is possible to do so.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5229'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5229"><time data-relative="true">2010-01-04T07:08:32Z</time></a></span>
+</cite>
+<blockquote><p>Just release version 4.2.1b which definitively works around this bug by removing the &quot;press and hold&quot; functionality from the volume hot keys.</p>
+<p>While this is strictly speaking a loss of functionality, it is at least a surefire way to eliminate the bug.</p>
+<p>I looked at switching APIs and it does not look to be viable at this point in time. I also did extensive testing to re-confirm beyond all doubt that the system is not sending &quot;release&quot; events for some key presses. The behaviour is totally erratic, unpredictable and outside of the control of Synergy.</p>
+<p>So for now this looks to be the only way to handle it. I'll be keeping an eye on whether Apple provides a fix for the release events which get dropped on the floor, and also for any API developments which might make switching feasible.</p>
+<p>In the meantime marking this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5230'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5230"><time data-relative="true">2010-01-04T07:08:41Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

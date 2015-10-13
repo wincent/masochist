@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #543: REQUEST: start/quit synergy when iTunes starts up/exits
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #543</div>
+<div class='issue' id='issue_543'>
+<form class="edit_issue" id="edit_issue_543" action="/issues/543" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="WBLzl9byk6Kcuj59EIaz++1nW3Y0ua8zydI1bR3rJqps4E0gcX9J90U2DYohr+BPWOUySj9VIS/pzeCTOTNBjg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #543:
+<span data-name='issue[summary]'>
+REQUEST: start/quit synergy when iTunes starts up/exits
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-02-09T01:38:54Z</time>, updated <time data-relative="true">2009-02-21T03:46:56Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/user3">user3</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Speaks for itself, having to start iTunes then synergy is a pain.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2945'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2945"><time data-relative="true">2007-02-09T08:58:24Z</time></a></span>
+</cite>
+<blockquote><p>This is actually a duplicate of feature <a href="/issues/414">request #414</a> but I am going to post some comments here anyway before closing this one.</p>
+<p>There are two things you can do to mitigate this:</p>
+<p>1. Instead of launching both, just launch one (Synergy).</p>
+<p>Most of the interactions with iTunes initiated by Synergy will cause iTunes to be launched automatically if it is not already running. For example, if you want to start playing you can just hit the &quot;Play&quot; hot key or the corresponding Synergy menu bar control and Synergy will launch iTunes for you, wait for it to finish launching, and then issue it the play command. So in practice you should never have to manually launch both applications; launching Synergy should be enough.</p>
+<p>2. Auto-launch Synergy at login.</p>
+<p>There's a setting for this in the Synergy preferences. In this way you can also forget about launching Synergy. If you are worried about Synergy being obtrusive when you're not using it, there are preferences to hide it when iTunes is not running.</p>
+<p>3. The requested third option...</p>
+<p>In the case of Synergy Advance there is actually a third option, and it matches up with the language you've used in your summary line: &quot;start/quit synergy when iTunes starts up/exits&quot;</p>
+<p>Synergy Advance implements this by optionally running a separate background daemon process that watches to see if iTunes is launched. This daemon can be set up to run automatically at login. There is really no way of getting around the need to run an &quot;iTunes watcher&quot;. If you want Synergy to auto-launch when iTunes launches then you must launch something that will watch iTunes for you. The logic is that you need a lightweight daemon process, and given that Synergy itself is a lightweight daemon process then you may as well just run that.</p>
+<p>Note that even with the background process you still have to manually launch something (iTunes) in order for anything to happen. And if that's the case you may as well just use solution &quot;1&quot; above and launch Synergy instead of iTunes. If you don't like the idea of running a background process then you're back in the camp of having to manually launch something, and once again it may as well be Synergy instead of iTunes.</p>
+<p>As I wrote in my response to feature <a href="/issues/414">request #414</a>, it's hard to justify writing a lightweight daemon to launch another lightweight daemon when you could just run one. That feature request was made almost a year ago and this is the first duplicate for it.</p>
+<p>If you don't want to auto-launch Synergy at login but the idea of manually launching it seems too inconvenient, there is one way in which you can make it more convenient:</p>
+<p>1. In the Finder, navigate to your installed copy of Synergy. You will find it at one of these locations:</p>
+<p>~/Library/PreferencePanes/Synergy.prefPane /Library/PreferencePanes/Synergy.prefPane</p>
+<p>2. Right-click or control-click on the Synergy preference pane and choose &quot;Show package contents&quot; from the contextual menu.</p>
+<p>3. Inside the package, navigate to &quot;Contents&quot; and then &quot;Resources&quot;.</p>
+<p>4. You'll see an item called &quot;Synergy.app&quot; (or just &quot;Synergy&quot;). This is the actually background application that does all the work. You can hold down the Command and Option keys while clicking and dragging this icon to a convenient location and an alias (shortcut) to the item will be created.</p>
+<p>5. Once the alias is in the location of your choice (the Desktop, your Applications folder, wherever you'd like) you can double click on it to launch Synergy. You can even drag the alias from wherever you put it to the Dock if you want to have instant access to it there.</p>
+<p>As far as manual launching goes this is probably easier than opening the Synergy preferences and hitting the &quot;Start&quot; button.</p>
+<ul>
+<li>** This bug has been marked as a duplicate of bug 414 ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4266'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4266"><time data-relative="true">2009-02-21T03:46:56Z</time></a></span>
+</cite>
+<blockquote><p>One thing I forgot to add there is that if you don't like seeing Synergy in the menu bar when iTunes isn't running, there are preferences to hide the menu bar controls when iTunes isn't running.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

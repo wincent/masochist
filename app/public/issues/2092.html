@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2092: Command-T causes segfault
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2092</div>
+<div class='issue' id='issue_2092'>
+<form class="edit_issue" id="edit_issue_2092" action="/issues/2092" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="nPH2Xktccsre37ILmfQbewkwtrwFjXT3jCBVm1snC66oA0jp7NGonwdTgfyo3UjPvLLfgA5h+uusP4Blf/9sig==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2092:
+<span data-name='issue[summary]'>
+Command-T causes segfault
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-05-18T05:00:05Z</time>, updated <time data-relative="true">2014-03-22T20:35:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/ancientpc">AncientPC</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<h2>System</h2>
+<ul>
+<li>vim 7.3</li>
+<li>Ruby 1.9.3</li>
+<li>Ubuntu 12.04</li>
+</ul>
+<h2>Description</h2>
+<p>Compiled the plugin fine, but when I try to initiate it within vim it causes a segfault:</p>
+<pre>
+Vim: Caught deadly signal SEGV
+Vim: Finished.
+[1]    26638 segmentation fault (core dumped)  vim 
+</pre>
+<p>I attached gdb and here's the backtrace:</p>
+<pre>
+#0  0x00007ffff5e3cae3 in st_lookup () from /usr/lib/libruby1.8.so.1.8                                                                                                                            
+#1  0x00007ffff30266c1 in rb_intern3 (name=0x7ffff33a81c8 &quot;has_key?&quot;, len=8, enc=0xdde320) at parse.y:9827                                                                                        
+#2  0x00007ffff33a71df in CommandT_option_from_hash (option=&lt;optimized out&gt;, hash=140737269511720) at ext.c:36                                                                                    
+#3  0x00007ffff33a7a6b in CommandTMatcher_initialize (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;, self=140737269511080) at matcher.c:88                                                           
+#4  0x00007ffff5dde87f in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#5  0x00007ffff5ddeaff in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#6  0x00007ffff5ddee75 in rb_funcall2 () from /usr/lib/libruby1.8.so.1.8                                                                                                                          
+#7  0x00007ffff5ddef16 in rb_obj_call_init () from /usr/lib/libruby1.8.so.1.8                                                                                                                     
+#8  0x00007ffff5e0d4a0 in rb_class_new_instance () from /usr/lib/libruby1.8.so.1.8                                                                                                                
+#9  0x00007ffff5dde87f in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#10 0x00007ffff5ddeaff in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#11 0x00007ffff5de3db9 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#12 0x00007ffff5de5479 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#13 0x00007ffff5dddeb3 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#14 0x00007ffff5ddeaff in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#15 0x00007ffff5ddee75 in rb_funcall2 () from /usr/lib/libruby1.8.so.1.8                                                                                                                          
+#16 0x00007ffff5ddef16 in rb_obj_call_init () from /usr/lib/libruby1.8.so.1.8                                                                                                                     
+#17 0x00007ffff5e0d4a0 in rb_class_new_instance () from /usr/lib/libruby1.8.so.1.8                                                                                                                
+#18 0x00007ffff5dde87f in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#19 0x00007ffff5ddeaff in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#20 0x00007ffff5de3db9 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#21 0x00007ffff5de5479 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#22 0x00007ffff5dddeb3 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#23 0x00007ffff5ddeaff in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#24 0x00007ffff5de3f17 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#25 0x00007ffff5de5479 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#26 0x00007ffff5de6e1c in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#27 0x00007ffff5dddeb3 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#28 0x00007ffff5ddeaff in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#29 0x00007ffff5de3db9 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#30 0x00007ffff5de9c13 in ?? () from /usr/lib/libruby1.8.so.1.8                                                                                                                                   
+#31 0x00007ffff5dea721 in rb_eval_string () from /usr/lib/libruby1.8.so.1.8                                                                                                                       
+#32 0x00007ffff5dd8b99 in rb_protect () from /usr/lib/libruby1.8.so.1.8                                                                                                                           
+#33 0x0000000000581058 in ex_ruby ()                                                                                                                                                              
+#34 0x000000000047ffbd in do_cmdline ()                                                                                                                                                           
+#35 0x0000000000458d92 in ?? ()                                                                                                                                                                   
+#36 0x00000000004596f2 in ?? ()                                                                                                                                                                   
+#37 0x000000000045d2e4 in ?? ()                                                                                                                                                                   
+#38 0x00000000004605dc in ex_call ()                                                                                                                                                              
+#39 0x000000000047ffbd in do_cmdline ()                                                                                                                                                           
+#40 0x0000000000427ba1 in ?? ()                                                                                                                                                                   
+#41 0x000000000048257e in do_cmdline ()                           
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---                                                                                                                                            
+#42 0x00000000004e30be in ?? ()
+#43 0x00000000004e909c in normal_cmd ()
+#44 0x000000000058804f in main_loop ()
+#45 0x0000000000429c2a in main ()
+(gdb) 
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_10216'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10216"><time data-relative="true">2013-05-21T08:40:21Z</time></a></span>
+</cite>
+<blockquote><p>I have the same issue.</p>
+<pre>VIM - Vi IMproved 7.3 (2010 Aug 15, compiled May 20 2013 02:44:00)
+MacOS X (unix) version
+Included patches: 1-646</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_10234'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10234"><time data-relative="true">2013-06-12T09:35:48Z</time></a></span>
+</cite>
+<blockquote><p>Ditto. My head is spinning from which combination of gcc with which ruby. Screw this. I'm going with CtrlP.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10236'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10236"><time data-relative="true">2013-06-12T14:35:54Z</time></a></span>
+</cite>
+<blockquote><p>There are always trade-offs. Command-T uses a C extension for speed, but the cost is the need to compile it against the same version of Ruby that Vim was linked against. Many people find this difficult.</p>
+<p>CtrlP will certainly be easier to install, albeit not as fast on large projects.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10992'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10992"><time data-relative="true">2014-03-22T20:35:54Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to lack of activity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10993'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10993"><time data-relative="true">2014-03-22T20:35:57Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

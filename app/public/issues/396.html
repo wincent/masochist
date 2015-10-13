@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #396: CRASH: Synergy Advance spawns a huge number of threads and eventually dies
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #396</div>
+<div class='issue' id='issue_396'>
+<form class="edit_issue" id="edit_issue_396" action="/issues/396" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="97Ta5QgqCwqf5NKn9WCBMjDBucqaeqSG6lWVxANg2VnDRmRSr6fRX0Zo4VDESdKGhUPQ9pGWKprKSkA6J7i+fQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #396:
+<span data-name='issue[summary]'>
+CRASH: Synergy Advance spawns a huge number of threads and eventually dies
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-05T07:31:28Z</time>, updated <time data-relative="true">2007-04-04T16:33:40Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;I have running my Computer with Energy saver ON. After a short Time I come back and iCal has a Message place on the screen. After I have closed all I'll see the Message from the System, that Synergy Advanced has crashed. I tryed to restart the Application but the same Error accured again. Now this is the report to you.&quot;</p>
+<p>Will attach an excerpt from the crash log. For some reason Synergy Advance has spawned a huge number of threads and eventually dies. I've omitted most of the threads from the crash log to keep the size down.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2535'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2535"><time data-relative="true">2006-04-05T07:34:33Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=56) Crash report</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2536'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2536"><time data-relative="true">2006-04-05T07:42:57Z</time></a></span>
+</cite>
+<blockquote><p>In order to analyze this further I need to know if you're running on PowerPC or Intel. The build number in your crash log for 10.4.6 doesn't match mine (PowerPC), so am I right in assuming you're on Intel?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2537'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2537"><time data-relative="true">2006-04-16T20:00:57Z</time></a></span>
+</cite>
+<blockquote><p>This one is potentially fixed by the changes that were made in order to fix <a href="/issues/388">bug #388</a> and <a href="/issues/397">bug #397</a>. I suspect that the same underlying cause may have been at the root of it all. Will monitor this bug closely and see if is reproducible when the next version comes out (the version containing the fix for the aforementioned bugs).</p>
+<p>To be informed when the next version comes out you can subscribe to the announcements mailing list:</p>
+<p><a href="http://lists.wincent.com/" class="external">http://lists.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2538'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2538"><time data-relative="true">2006-05-27T05:36:42Z</time></a></span>
+</cite>
+<blockquote><p>Not sure if this is a related crash or not. Just received a report that looks like this:</p>
+<p>Thread 2 Crashed: 0   libSystem.B.dylib                  0x90117ef8 localeconv_l + 24 1   libSystem.B.dylib                  0x90010734 __vfprintf + 64 2   libSystem.B.dylib                  0x900ed6a4 snprintf_l + 288 3   com.apple.CoreFoundation           0x907c95d4   _CFStringAppendFormatAndArgumentsAux + 2820 4   com.apple.CoreFoundation           0x907c8988   _CFStringCreateWithFormatAndArgumentsAux + 144 5   com.apple.Foundation               0x9295cabc -[NSPlaceholderString   initWithFormat:locale:arguments:] + 140 6   com.apple.Foundation               0x9295ca10 +[NSString   stringWithFormat:] + 72 7   SynergyAdvance                     0xe10030f4 0xe1000000 + 12532 8   SynergyAdvance                     0xe1002b44 0xe1000000 + 11076</p>
+<p>[lots of stack frames, omitted]</p>
+<p>507 SynergyAdvance                     0xe1002724 0xe1000000 + 10020 508 SynergyAdvance                     0xe1002724 0xe1000000 + 10020</p>
+<p>Thread 3: 0   libSystem.B.dylib                  0x9000b0a8 mach_msg_trap + 8 1   libSystem.B.dylib                  0x9000affc mach_msg + 60 2   com.apple.CoreFoundation           0x907e3b78 __CFRunLoopRun + 832 3   com.apple.CoreFoundation           0x907e347c CFRunLoopRunSpecific + 268 4   com.wincent.WOBase                 0xc801b3c4 0xc8000000 + 111556 5   com.apple.Foundation               0x92976194 forkThreadForFunction + 108 6   libSystem.B.dylib                  0x9002ba68 _pthread_body + 96</p>
+<p>And lots of threads like that...</p>
+<p>Thread 60: 0   libSystem.B.dylib                  0x9000b0a8 mach_msg_trap + 8 1   libSystem.B.dylib                  0x9000affc mach_msg + 60 2   com.apple.CoreFoundation           0x907e3b78 __CFRunLoopRun + 832 3   com.apple.CoreFoundation           0x907e347c CFRunLoopRunSpecific + 268 4   com.wincent.WOBase                 0xc80133d8 0xc8000000 + 78808 5   com.apple.Foundation               0x92976194 forkThreadForFunction + 108 6   libSystem.B.dylib                  0x9002ba68 _pthread_body + 96</p>
+<p>Will attach full report.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2539'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2539"><time data-relative="true">2006-05-27T05:37:09Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=68) new crash report, ppc</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2540'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2540"><time data-relative="true">2006-07-05T02:07:36Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2544'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2544"><time data-relative="true">2006-09-03T10:38:30Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/461">bug #461</a>, which is a different crash but also exhibits the general &quot;too many threads&quot; behaviour.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2552'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2552"><time data-relative="true">2006-12-29T08:27:57Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/525">bug #525</a>; user submitted an unrelated crash report, but the number of threads still seems too high (27).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2554'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2554"><time data-relative="true">2007-01-02T07:25:16Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=93) PPC crashlog</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2555'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2555"><time data-relative="true">2007-01-02T07:28:11Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=94) i386 crashlog</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

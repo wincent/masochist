@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1313: login-tool won't work on Snow Leopard unless optional Rosetta installed
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1313</div>
+<div class='issue' id='issue_1313'>
+<form class="edit_issue" id="edit_issue_1313" action="/issues/1313" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="cEHdLEwUcPSh5/VOuc6nkoE/NSCVMVsNZcTv0mnNl9pEs2Ob65mqoXhrxrmI5/QmNL1cHJ7d1RFF2zosTRXw/g==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1313:
+<span data-name='issue[summary]'>
+login-tool won't work on Snow Leopard unless optional Rosetta installed
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Wincent Login Tool
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-06-16T05:09:59Z</time>, updated <time data-relative="true">2009-06-25T05:40:45Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From an email:</p>
+<blockquote>
+<p>I'm testing under Snow Leopard and have discovered that the login-tool application is PPC-only.  Rosetta is now an optional install, so I need to build it as a fat binary.</p>
+</blockquote>
+<p>First up, I'm going to do a Universal Binary build.</p>
+<p>Second thing, I'm going to put the login-tool source up on git.wincent.com.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4705'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4705"><time data-relative="true">2009-06-22T14:42:12Z</time></a></span>
+</cite>
+<blockquote><p>I'm just inspecting the current HEAD and looks like building that as a Universal Binary in itself won't be sufficient, as the current HEAD uses <a href="/wiki/Garbage_Collection">Garbage Collection</a>&#x00a0;which is <a href="/wiki/Leopard">Leopard</a>-and-up only.</p>
+<p>So I might have to fork off a branch from a few commits back, prior to the Garbage Collection switch, and make a fat binary of that too, which should run as far back as <a href="/wiki/Jaguar">Jaguar</a> on PPC and <a href="/wiki/Tiger">Tiger</a> on Intel.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4719'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4719"><time data-relative="true">2009-06-24T12:07:56Z</time></a></span>
+</cite>
+<blockquote><p>Have added the login tool to the database as a separate product, so will change the product assignment accordingly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4720'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4720"><time data-relative="true">2009-06-24T12:10:32Z</time></a></span>
+</cite>
+<blockquote><p><strong>Product</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Install</li>
+<li><strong>To:</strong> Wincent Login Tool</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4721'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4721"><time data-relative="true">2009-06-24T13:28:24Z</time></a></span>
+</cite>
+<blockquote><p>The Leopard build is now completely up-to-date.</p>
+<p>About to reboot back into Tiger to see if I can do a Jaguar build (the oldest SDK I have on Leopard is the 10.3.9 one).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4722'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4722"><time data-relative="true">2009-06-25T05:40:39Z</time></a></span>
+</cite>
+<blockquote><p>Ok, 1.0 (the Jaguar Universal Binary) is now out.</p>
+<p>This will run on PowerPC processors right back to <a href="/wiki/Jaguar">Jaguar</a> and on Intel processors back to <a href="/wiki/Tiger">Tiger</a>.</p>
+<p>It runs on versions of <a href="/wiki/Mac_OS_X">Mac OS X</a> up to <a href="/wiki/Leopard">Leopard</a>. Will probably work on <a href="/wiki/Snow_Leopard">Snow Leopard</a> too although I can't test that as I don't have access to it.</p>
+<p>2.0 is also out. This is an enhanced version that runs only on <a href="/wiki/Leopard">Leopard</a> and up.</p>
+<p>The main difference between the two versions is that the 1.0 series directly manipulates the <code>~/Preferences/loginwindow.plist</code> file in order to manage login items. This was never officially supported by <a href="/wiki/Apple">Apple</a>. And it's not guaranteed to be reliable. For example, at least on Leopard, you can verify for yourself that the file <em>is</em> correctly modified, but your changes won't necessarily be reflected in the &quot;Accounts&quot; preference pane immediately, even if you close the System Preferences application and re-open it.</p>
+<p>The 2.0 series, on the other hand, uses new <a href="/wiki/APIs">APIs</a> recently added by Apple (new in Leopard, I think) to manage login items. This is the official, supported way to do things, but it only works on Leopard and up (and in any case I've built the 2.0 series using <a href="/wiki/Garbage_Collection">Garbage Collection</a> which is only available on Leopard).</p>
+<p>I've also made the <a href="/wiki/Git">Git</a> source code repository open, and the code is available under the <a href="/wiki/BSD_license">BSD license</a>. You can browse the repo here:</p>
+<ul>
+<li><a href="http://git.wincent.com/login-tool.git" class="external">http://git.wincent.com/login-tool.git</a></li>
+</ul>
+<p>Periodically-updated backup mirrors are already in place at <a href="/wiki/GitHub">GitHub</a> and <a href="/wiki/Gitorous" class="redlink">Gitorous</a>:</p>
+<ul>
+<li><a href="http://github.com/wincent/login-tool/" class="external">http://github.com/wincent/login-tool/</a></li>
+<li><a href="http://gitorious.org/login-tool" class="external">http://gitorious.org/login-tool</a></li>
+</ul>
+<p>There are no official product pages yet, and perhaps there never will be, but pre-built executables have been placed at the following locations:</p>
+<ul>
+<li><a href="http://wincent.com/a/products/login-tool/download/login-tool-1.0.zip" class="external">http://wincent.com/a/products/login-tool/download/login-tool-1.0.zip</a></li>
+<li><a href="http://wincent.com/a/products/login-tool/download/login-tool-2.0.zip" class="external">http://wincent.com/a/products/login-tool/download/login-tool-2.0.zip</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4723'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4723"><time data-relative="true">2009-06-25T05:40:45Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

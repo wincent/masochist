@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1276: File upload interface
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1276</div>
+<div class='issue' id='issue_1276'>
+<form class="edit_issue" id="edit_issue_1276" action="/issues/1276" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="xPkQWxJBjJdCAciP4a4WypW10DQWJgaHoVWmnl+4WhDwC67stcxWwpuN+3jQh0V+IDe5CB3KiJuBSnNge2A9NA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1276:
+<span data-name='issue[summary]'>
+File upload interface
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-15T12:06:51Z</time>, updated <time data-relative="true">2009-05-05T11:58:33Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>At the moment uploading new files (images, for example) to the &quot;shared&quot; resources directory on the server (the one that persists across <a href="/wiki/Capistrano">Capistrano</a> deployments) is a bit of a pain because it's a three-step process:</p>
+<ol>
+<li>Relax security with <code>cap deploy:unlock</code> (without this it's not even possible to log in to the server).</li>
+<li>Upload the files.</li>
+<li>Tighten security with <code>cap deploy:lockdown</code>.</li>
+</ol>
+<p>It would be much nicer if I provided an admin-only <a href="/wiki/web">web</a> interface for uploading stuff to the &quot;shared&quot; resources dir. Evidently various layers of protection would be incorporated, such as requiring a valid admin login, and only allowing a very limited set of file types (<a href="/wiki/PNG">PNG</a> and the like).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4448'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4448"><time data-relative="true">2009-04-15T12:06:58Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4509'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4509"><time data-relative="true">2009-04-26T19:09:19Z</time></a></span>
+</cite>
+<blockquote><p>Not to be confused with <a href="/issues/1193">ticket #1193</a>, which is about accepting file attachments for tickets in the issue tracker (and possibly elsewhere too).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4609'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4609"><time data-relative="true">2009-05-04T18:40:37Z</time></a></span>
+</cite>
+<blockquote><p>Hmm. Although I said, &quot;not to be confused with <a href="/issues/1193">ticket #1193</a>&quot;, the truth is that that ticket might actually make this one redundant.</p>
+<p>For example, instead of uploading to <code>/system/images/</code>, one could conceivably just use the <code>attachments#new</code> (which would be admin-only) to upload new images. Then, to link to them you could use links like <code>[/attachments/abcd0124 see this]</code>.</p>
+<p>To actually embed such images rather than just linking to them might be another story though. The way the <a href="/wiki/wikitext">wikitext</a> module works is upon seeing markup like <code>{{foo.png}}</code> it generates an <code>img</code> tag with <code>src</code> set to <code>/system/images/foo.png</code>. I suppose I'd have to modify it to behave specially on seeing &quot;absolute&quot; paths like <code>{{/attachments/abcd0124}}</code>. Will need to think about the security implications of doing that...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4610'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4610"><time data-relative="true">2009-05-04T18:42:22Z</time></a></span>
+</cite>
+<blockquote><p>The other issue is that such uploaded attachments would be &quot;parent-less&quot; and there's nothing to stop a malicious user form trying to assign them to an existing ticket. So still need to think about the security implications a little more.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4611'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4611"><time data-relative="true">2009-05-04T18:46:46Z</time></a></span>
+</cite>
+<blockquote><p>I see that <code>{{../../attachments/abcd0124}}</code> works, but it is ugly.</p>
+<p>Seeing as I effectively already allow (almost) arbitrary linking, I guess there would be no harm in implementing a special case for &quot;absolute&quot; paths, especially if it were an opt-in option on the parser.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4612'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4612"><time data-relative="true">2009-05-04T19:05:32Z</time></a></span>
+</cite>
+<blockquote><p>Actually, looking at the wikitext parser, I feel like it is a little too liberal in what it accepts inside image tags:</p>
+<ul>
+<li><code>PRINTABLE</code> tokens</li>
+<li><code>ALNUM</code> tokens</li>
+<li><code>PATH</code> tokens</li>
+<li><code>SPECIAL_URI_CHARS</code> tokens</li>
+</ul>
+<p>Most input with a slash will be tokenized as a <code>PATH</code> token:</p>
+<ul>
+<li><code>/foo.jpg</code></li>
+<li><code>a/b</code></li>
+</ul>
+<p>But input like this:</p>
+<ul>
+<li><code>a.png</code></li>
+</ul>
+<p>Will be tokenized as <code>ALNUM</code>, <code>SPECIAL_URI_CHARS</code>, <code>ALNUM</code>.</p>
+<p>Input like:</p>
+<ul>
+<li><code>foo</code></li>
+</ul>
+<p>Will just be tokenized as <code>ALNUM</code>.</p>
+<p>Not sure why I originally included <code>PRINTABLE</code> in the list. That will catch things like <code>$</code>, <code>%</code>, <code>+</code>, <code>-</code>, <code>/</code>, <code>@</code>, <code>\</code>, <code>^</code>, <code>_</code> and <code>~</code> whenever they're not caught by the other rules; but note that:</p>
+<ul>
+<li><code>/</code> on its own will be tokenized as <code>PATH</code></li>
+</ul>
+<p>So:</p>
+<ul>
+<li><code>a-b.jpg</code></li>
+</ul>
+<p>Will be tokenized as <code>ALNUM</code>, <code>PRINTABLE</code>, <code>ALNUM</code>, <code>SPECIAL_URI_CHARS</code>, <code>ALNUM</code>.</p>
+<p>The <code>SPECIAL_URI_CHARS</code> rule itself lets quite a bit of stuff through:</p>
+<ul>
+<li><code>:</code>, <code>!</code>, <code>(</code>, <code>)</code>, <code>,</code>, <code>;</code>, <code>.</code> and <code>?</code></li>
+</ul>
+<p>So it will accept such absurd input as <code>{{foo:bar(really!?);baz}}</code>.</p>
+<p>Not really sure how I could tighten it up without breaking existing tags (with names like <code>foo-bar.jpg</code>, a fairly common pattern).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4613'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4613"><time data-relative="true">2009-05-05T11:58:33Z</time></a></span>
+</cite>
+<blockquote><p>With respect to the security concerns of:</p>
+<ul>
+<li>hijacking of &quot;parent-less&quot; attachments</li>
+<li>uploading arbitrary &quot;parent-less&quot; attachments and abusing the server as a file distribution hub</li>
+</ul>
+<p>I'm thinking of having one or more simple rules:</p>
+<ul>
+<li>normal moderation rules will apply (that is, anonymous and unverified users will have uploads held for moderation)</li>
+<li>use hard-to-predict random hashes instead of predictable auto-incrementing ids (this was already mentioned on <a href="/issues/1193">ticket #1193</a>)</li>
+<li>the user creating the attachment must be the one who assigns it to a parent (admittedly, this doesn't help much in the case of anonymous users)</li>
+<li>time limit: must assign an attachment to an issue within a certain time frame otherwise not allowed; most likely will use 24 hours as the time limit, which matches the current default session lifespan (this, combined with the use of random hashes should largely deal with the problem of anonymous users trying to hijack attachments from other anonymous users)</li>
+<li>only admins can create &quot;parent-less&quot; attachments which are accessible: in this way, an anonymous (or any other) user won't be able to hijack attachments which an admin has set up for direct access (for example product release downloads and the like)</li>
+</ul>
+<p>And finally, a measure that I don't think is necessary:</p>
+<ul>
+<li>use an association table so that it doesn't matter how many times an attachment gets attached to something</li>
+</ul>
+<p>Basically, the system is probably secure enough even without the time-limit constraint as the obscurity defense is probably enough to stop one anonymous user from discovering an &quot;orphaned&quot; attachment anyway. In most cases, the upload will be shortly followed by issue submission (within seconds or minutes), so it's not like the window of opportunity for hijacking is very large anyway. Even if an &quot;orphaned&quot; attachment is &quot;hijacked&quot;, what's the big deal?</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

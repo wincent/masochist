@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1315: Server kernel update
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1315</div>
+<div class='issue' id='issue_1315'>
+<form class="edit_issue" id="edit_issue_1315" action="/issues/1315" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="MEzuRQHvWBlXLUC0guf1zEOje9p6fUekZGyNY67fhwMEvlDypmKCTI6hc0OzzqZ49iES5nGRybhEc1idigfgJw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1315:
+<span data-name='issue[summary]'>
+Server kernel update
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-06-17T14:47:08Z</time>, updated <time data-relative="true">2009-06-19T04:27:43Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>A kernel update is in order:</p>
+<pre>-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+=====================================================================
+                   Red Hat Security Advisory
+
+Synopsis:          Important: kernel security and bug fix update
+Advisory ID:       RHSA-2009:1106-01
+Product:           Red Hat Enterprise Linux
+Advisory URL:      <a href="https://rhn.redhat.com/errata/RHSA-2009-1106.html" class="external">https://rhn.redhat.com/errata/RHSA-2009-1106.html</a>
+Issue date:        2009-06-16
+CVE Names:         CVE-2009-1072 CVE-2009-1192 CVE-2009-1439 
+                   CVE-2009-1630 CVE-2009-1633 CVE-2009-1758 
+=====================================================================
+
+1. Summary:
+
+Updated kernel packages that fix several security issues and several bugs
+are now available for Red Hat Enterprise Linux 5.
+
+This update has been rated as having important security impact by the Red
+Hat Security Response Team.
+
+2. Relevant releases/architectures:
+
+Red Hat Enterprise Linux Desktop (v. 5 client) - i386, noarch, x86_64
+Red Hat Enterprise Linux (v. 5 server) - i386, ia64, noarch, ppc, s390x, x86_64
+
+3. Description:
+
+The kernel packages contain the Linux kernel, the core of any Linux
+operating system.
+
+Security fixes:
+
+* several flaws were found in the way the Linux kernel CIFS implementation
+handles Unicode strings. CIFS clients convert Unicode strings sent by a
+server to their local character sets, and then write those strings into
+memory. If a malicious server sent a long enough string, it could write
+past the end of the target memory region and corrupt other memory areas,
+possibly leading to a denial of service or privilege escalation on the
+client mounting the CIFS share. (CVE-2009-1439, CVE-2009-1633, Important)
+
+* the Linux kernel Network File System daemon (nfsd) implementation did not
+drop the CAP_MKNOD capability when handling requests from local,
+unprivileged users. This flaw could possibly lead to an information leak or
+privilege escalation. (CVE-2009-1072, Moderate)
+
+* Frank Filz reported the NFSv4 client was missing a file permission check
+for the execute bit in some situations. This could allow local,
+unprivileged users to run non-executable files on NFSv4 mounted file
+systems. (CVE-2009-1630, Moderate)
+
+* a missing check was found in the hypervisor_callback() function in the
+Linux kernel provided by the kernel-xen package. This could cause a denial
+of service of a 32-bit guest if an application running in that guest
+accesses a certain memory location in the kernel. (CVE-2009-1758, Moderate)
+
+* a flaw was found in the AGPGART driver. The agp_generic_alloc_page() and
+agp_generic_alloc_pages() functions did not zero out the memory pages they
+allocate, which may later be available to user-space processes. This flaw
+could possibly lead to an information leak. (CVE-2009-1192, Low)
+
+Bug fixes:
+
+* a race in the NFS client between destroying cached access rights and
+unmounting an NFS file system could have caused a system crash. &quot;Busy
+inodes&quot; messages may have been logged. (BZ#498653)
+
+* nanosleep() could sleep several milliseconds less than the specified time
+on Intel Itanium?-based systems. (BZ#500349)
+
+* LEDs for disk drives in AHCI mode may have displayed a fault state when
+there were no faults. (BZ#500120)
+
+* ptrace_do_wait() reported tasks were stopped each time the process doing
+the trace called wait(), instead of reporting it once. (BZ#486945)
+
+* epoll_wait() may have caused a system lockup and problems for
+applications. (BZ#497322)
+
+* missing capabilities could possibly allow users with an fsuid other than
+0 to perform actions on some file system types that would otherwise be
+prevented. (BZ#497271)
+
+* on NFS mounted file systems, heavy write loads may have blocked
+nfs_getattr() for long periods, causing commands that use stat(2), such as
+ls, to hang. (BZ#486926)
+
+* in rare circumstances, if an application performed multiple O_DIRECT
+reads per virtual memory page and also performed fork(2), the buffer
+storing the result of the I/O may have ended up with invalid data.
+(BZ#486921)
+
+* when using GFS2, gfs2_quotad may have entered an uninterpretable sleep
+state. (BZ#501742)
+
+* with this update, get_random_int() is more random and no longer uses a
+common seed value, reducing the possibility of predicting the values
+returned. (BZ#499783)
+
+* the &quot;-fwrapv&quot; flag was added to the gcc build options to prevent gcc from
+optimizing away wrapping. (BZ#501751)
+
+* a kernel panic when enabling and disabling iSCSI paths. (BZ#502916)
+
+* using the Broadcom NetXtreme BCM5704 network device with the tg3 driver
+caused high system load and very bad performance. (BZ#502837)
+
+* &quot;/proc/[pid]/maps&quot; and &quot;/proc/[pid]/smaps&quot; can only be read by processes
+able to use the ptrace() call on a given process; however, certain
+information from &quot;/proc/[pid]/stat&quot; and &quot;/proc/[pid]/wchan&quot; could be used
+to reconstruct memory maps. (BZ#499546)
+
+Users should upgrade to these updated packages, which contain backported
+patches to correct these issues. The system must be rebooted for this
+update to take effect.
+
+4. Solution:
+
+Before applying this update, make sure that all previously-released
+errata relevant to your system have been applied.
+
+This update is available via Red Hat Network.  Details on how to use
+the Red Hat Network to apply this update are available at
+<a href="http://kbase.redhat.com/faq/docs/DOC-11259" class="external">http://kbase.redhat.com/faq/docs/DOC-11259</a>
+
+5. Bugs fixed (<a href="http://bugzilla.redhat.com/" class="external">http://bugzilla.redhat.com/</a>):
+
+486921 - Corruption on ext3/xfs with O_DIRECT and unaligned user buffers
+486926 - [RHEL5.2] nfs_getattr() hangs during heavy write workloads
+486945 - waitpid() reports stopped process more than once
+491572 - CVE-2009-1072 kernel: nfsd should drop CAP_MKNOD for non-root
+494275 - CVE-2009-1439 kernel: cifs: memory overwrite when saving nativeFileSystem
+field during mount
+496572 - CVE-2009-1633 kernel: cifs: fix potential buffer overruns when converting
+unicode strings sent by server
+497020 - CVE-2009-1192 kernel: agp: zero pages before sending to userspace
+497322 - crm #1896100 port epoll_wait fix from RHSA-2008-0665 to RHEL 5
+498653 - fault in iget() - suspected race between nfs_access_cache_shrinker() and
+umount - Ref.: [/issues/433249 Bug #433249]
+499546 - kernel: proc: avoid information leaks to non-privileged processes [rhel-5.3.z]
+499783 - kernel: random: make get_random_int() more random [rhel-5.3.z]
+500120 - Problem with drive status leds after update to 2.6.18-128.el5
+500297 - CVE-2009-1630 kernel: nfs: fix NFS v4 client handling of MAY_EXEC in
+nfs_permission
+500349 - RHEL5.3.z LTP nanosleep02 Test Case Failure on Fujitsu Machine
+500945 - CVE-2009-1758 kernel: xen: local denial of service
+501742 - GFS2: gfs2_quotad in uninterruptible sleep while idle
+501751 - kernel should be built with -fwrapv [rhel-5.3.z]
+502837 - BCM5704 NIC results in CPU 100%SI , sluggish system performance
+502916 - kernel BUG at drivers/scsi/libiscsi.c:301!
+
+6. Package List:
+
+Red Hat Enterprise Linux Desktop (v. 5 client):
+
+Source:
+<a href="ftp://ftp.redhat.com/pub/redhat/linux/enterprise/5Client/en/os/SRPMS/kernel-2.6.18-128.1.14.el5.src.rpm" class="external">ftp://ftp.redhat.com/pub/redhat/linux/enterprise/5Client/en/os/SRPMS/kernel-2.6.18-128.1.14.el5.src.rpm</a>
+
+i386:
+kernel-2.6.18-128.1.14.el5.i686.rpm
+kernel-PAE-2.6.18-128.1.14.el5.i686.rpm
+kernel-PAE-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-PAE-devel-2.6.18-128.1.14.el5.i686.rpm
+kernel-debug-2.6.18-128.1.14.el5.i686.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.i686.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.i686.rpm
+kernel-devel-2.6.18-128.1.14.el5.i686.rpm
+kernel-headers-2.6.18-128.1.14.el5.i386.rpm
+kernel-xen-2.6.18-128.1.14.el5.i686.rpm
+kernel-xen-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-xen-devel-2.6.18-128.1.14.el5.i686.rpm
+
+noarch:
+kernel-doc-2.6.18-128.1.14.el5.noarch.rpm
+
+x86_64:
+kernel-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debug-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-devel-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-headers-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-xen-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-xen-debuginfo-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-xen-devel-2.6.18-128.1.14.el5.x86_64.rpm
+
+Red Hat Enterprise Linux (v. 5 server):
+
+Source:
+<a href="ftp://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/kernel-2.6.18-128.1.14.el5.src.rpm" class="external">ftp://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/kernel-2.6.18-128.1.14.el5.src.rpm</a>
+
+i386:
+kernel-2.6.18-128.1.14.el5.i686.rpm
+kernel-PAE-2.6.18-128.1.14.el5.i686.rpm
+kernel-PAE-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-PAE-devel-2.6.18-128.1.14.el5.i686.rpm
+kernel-debug-2.6.18-128.1.14.el5.i686.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.i686.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.i686.rpm
+kernel-devel-2.6.18-128.1.14.el5.i686.rpm
+kernel-headers-2.6.18-128.1.14.el5.i386.rpm
+kernel-xen-2.6.18-128.1.14.el5.i686.rpm
+kernel-xen-debuginfo-2.6.18-128.1.14.el5.i686.rpm
+kernel-xen-devel-2.6.18-128.1.14.el5.i686.rpm
+
+ia64:
+kernel-2.6.18-128.1.14.el5.ia64.rpm
+kernel-debug-2.6.18-128.1.14.el5.ia64.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.ia64.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.ia64.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.ia64.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.ia64.rpm
+kernel-devel-2.6.18-128.1.14.el5.ia64.rpm
+kernel-headers-2.6.18-128.1.14.el5.ia64.rpm
+kernel-xen-2.6.18-128.1.14.el5.ia64.rpm
+kernel-xen-debuginfo-2.6.18-128.1.14.el5.ia64.rpm
+kernel-xen-devel-2.6.18-128.1.14.el5.ia64.rpm
+
+noarch:
+kernel-doc-2.6.18-128.1.14.el5.noarch.rpm
+
+ppc:
+kernel-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-debug-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-devel-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-headers-2.6.18-128.1.14.el5.ppc.rpm
+kernel-headers-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-kdump-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-kdump-debuginfo-2.6.18-128.1.14.el5.ppc64.rpm
+kernel-kdump-devel-2.6.18-128.1.14.el5.ppc64.rpm
+
+s390x:
+kernel-2.6.18-128.1.14.el5.s390x.rpm
+kernel-debug-2.6.18-128.1.14.el5.s390x.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.s390x.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.s390x.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.s390x.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.s390x.rpm
+kernel-devel-2.6.18-128.1.14.el5.s390x.rpm
+kernel-headers-2.6.18-128.1.14.el5.s390x.rpm
+kernel-kdump-2.6.18-128.1.14.el5.s390x.rpm
+kernel-kdump-debuginfo-2.6.18-128.1.14.el5.s390x.rpm
+kernel-kdump-devel-2.6.18-128.1.14.el5.s390x.rpm
+
+x86_64:
+kernel-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debug-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debug-debuginfo-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debug-devel-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debuginfo-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-debuginfo-common-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-devel-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-headers-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-xen-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-xen-debuginfo-2.6.18-128.1.14.el5.x86_64.rpm
+kernel-xen-devel-2.6.18-128.1.14.el5.x86_64.rpm
+
+These packages are GPG signed by Red Hat for security.  Our key and 
+details on how to verify the signature are available from
+<a href="https://www.redhat.com/security/team/key/#package" class="external">https://www.redhat.com/security/team/key/#package</a>
+
+7. References:
+
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1072" class="external">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1072</a>
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1192" class="external">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1192</a>
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1439" class="external">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1439</a>
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1630" class="external">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1630</a>
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1633" class="external">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1633</a>
+<a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1758" class="external">http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2009-1758</a>
+<a href="http://www.redhat.com/security/updates/classification/#important" class="external">http://www.redhat.com/security/updates/classification/#important</a>
+
+8. Contact:
+
+The Red Hat security contact is &lt;secalert@redhat.com&gt;.  More contact
+details at <a href="https://www.redhat.com/security/team/contact/" class="external">https://www.redhat.com/security/team/contact/</a>
+
+Copyright 2009 Red Hat, Inc.
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.4 (GNU/Linux)
+
+iD8DBQFKOB73XlSAg2UNWIIRAisqAJ9/QkHHa689PVNLLxMHsAjC5DjWpgCfeIWG
+PpZHRZwT+OUTfXS0ch3MU9M=
+=i4vK
+-----END PGP SIGNATURE-----
+
+
+-- 
+Enterprise-watch-list mailing list
+Enterprise-watch-list@redhat.com
+<a href="https://www.redhat.com/mailman/listinfo/enterprise-watch-list" class="external">https://www.redhat.com/mailman/listinfo/enterprise-watch-list</a></pre>
+<p>Marking as private for now. Will make public once the update has been performed.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4674'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4674"><time data-relative="true">2009-06-17T14:47:27Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4682'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4682"><time data-relative="true">2009-06-19T04:27:32Z</time></a></span>
+</cite>
+<blockquote><p>Updated last night.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4683'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4683"><time data-relative="true">2009-06-19T04:27:38Z</time></a></span>
+</cite>
+<blockquote><p><strong>Public</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> false</li>
+<li><strong>To:</strong> true</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4684'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4684"><time data-relative="true">2009-06-19T04:27:43Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

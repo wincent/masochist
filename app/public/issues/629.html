@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #629: Launch at Login does not work.
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #629</div>
+<div class='issue' id='issue_629'>
+<form class="edit_issue" id="edit_issue_629" action="/issues/629" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="j5j7mTc7Ko0oMKDoNFgLmnVgFS3hUfDZLOd4s+dExim7akUukLbw2PG8kx8FcVguwOJ8Eeq9fsUM+K1Nw5yhDQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #629:
+<span data-name='issue[summary]'>
+Launch at Login does not work.
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2007-12-13T02:00:38Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/roksob">roksob</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Launch at Login is checked on the prefpane.  Re-start ... Synergy is not running.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3146'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3146"><time data-relative="true">2007-12-13T03:52:13Z</time></a></span>
+</cite>
+<blockquote><p>Please see:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=605" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=605</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3147'>
+<cite>
+<a href="/users/roksob">roksob</a>
+<span class='when'><a href="#comment_3147"><time data-relative="true">2007-12-13T13:27:54Z</time></a></span>
+</cite>
+<blockquote><p>Wincent: Your fix worked.  Thanks.  You might consider displaying a challenge when a user closes the preference window without clicking on &quot;Apply&quot;.  E.g. &quot;Do you want to apply the changes you have made?&quot;  I expected that closing the window would automatically apply my selections.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3148'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3148"><time data-relative="true">2007-12-13T13:51:42Z</time></a></span>
+</cite>
+<blockquote><p>But it already does do that... Do an experiment:</p>
+<p>- change any setting - note that the &quot;Apply&quot; button becomes enabled - do not click &quot;Apply&quot; - try to close the preferences window - observe that a sheet comes down advising you of unsaved changes</p>
+<p>Note that this is not the same as:</p>
+<p>- turning off &quot;Launch at login&quot; (and not clicking &quot;Apply&quot;) - turning on &quot;Launch at Login&quot; (and not clicking &quot;Apply&quot;)</p>
+<p>If you do that you'll see the &quot;Apply&quot; button becomes enabled when you first toggle the setting and then becomes disabled again when you toggle it back; that's because turning something off and then on again is a &quot;no-op&quot; and there's nothing to apply.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3149'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3149"><time data-relative="true">2007-12-13T13:59:14Z</time></a></span>
+</cite>
+<blockquote><p>Ah, one more thing...</p>
+<p>The whole &quot;Apply&quot; button thing is getting a bit old fashioned now. This used to be the way things were done in the majority of Mac apps, and Synergy adheres to the model very well.</p>
+<p>But for some time now the trend has been for &quot;instant apply&quot; or &quot;real time&quot; preferences; ie. there isn't even an &quot;Apply&quot; button at all and everything takes effect immediately.</p>
+<p>The current Synergy preferences UI is the way it is, but if I ever make a new version of it I'll dump the &quot;Apply&quot; paradigm for the &quot;real time&quot; one. Simply because its the dominant trend now and users expect things to work that way, not necessarily because it's the best way to do things (for example, one thing you lose when you go to the &quot;real time&quot; model is the ability to discard you changes and go back to the way things were before you started fiddling; in other words, the good old &quot;Cancel&quot; button).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3150'>
+<cite>
+<a href="/users/roksob">roksob</a>
+<span class='when'><a href="#comment_3150"><time data-relative="true">2007-12-13T14:19:42Z</time></a></span>
+</cite>
+<blockquote><p>So it does.  I'm just not ready for prime time:)  Thanks for your patience.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

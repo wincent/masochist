@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Problems under MacVim Snapshot 52
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Problems under MacVim Snapshot 52</div>
+<h1 class='major'>Problems under MacVim Snapshot 52</h1>
+<div class='topic' id='topic_422'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/422"><time data-relative="true">2010-06-17T15:30:02Z</time></a>
+</span>
+</cite>
+<blockquote><p>I have been using the command-t plugin for a while now with MacVim 7.2 stable 1.2, but recently decided to try Snapshot 52.  In Snapshot 52 i get the error:</p>
+<pre>command-t.vim could not load the C extension
+Please see INSTALLATION and TROUBLE-SHOOTING in the help
+For more information type:    :help command-t  </pre>
+<p>After reading the trouble shooting section as it suggests, I am still stuck.  I don't believe it is a problem of 32 bit vs 64 bit.  I'm not sure how to tell if Snapshot 52 was compiled against a different version of Ruby than stable 1.2.</p>
+<p>I am running OS X 10.5.8 and my main ruby installation is ruby 1.8.7 (2010-01-10 patchlevel 249) [i686-darwin9].</p>
+<p>Any direction on the matter would be greatly appreciated.  I have really enjoyed using the plugin and hope I can eventually get it to work with Snapshot 52.</p>
+<p>Thank you!</p>
+<p>- Nick</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5698'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5698"><time data-relative="true">2010-06-17T16:30:40Z</time></a></span>
+</cite>
+<blockquote><p>I'm using snapshot 52 here so I don't think it's necessarily a problem with that.</p>
+<p>You can see which version of Ruby MacVim was linked against by doing:</p>
+<pre>:ruby p RUBY_VERSION</pre>
+<p>It should print something like:</p>
+<pre>&quot;1.8.7&quot;</pre>
+<p>What do you see when you do:</p>
+<pre class="shell-syntax">$ cd ~/.vim/ruby/command-t
+$ ruby extconf.rb
+$ make</pre>
+<p>You should see something vaguely like this, and if not, hopefully the output will contain a clue as to why the extension isn't being built or can't be loaded by VIM:</p>
+<pre>gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64     -lruby  -lpthread -ldl  </pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_5710'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5710"><time data-relative="true">2010-06-18T14:47:48Z</time></a></span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>From running :ruby p RUBY_VERSION, I get:</p>
+<pre>&quot;1.8.6&quot;</pre>
+<p>From make I get:</p>
+<pre>/usr/bin/gcc-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I. -DHAVE_RUBY_H -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O2 -arch i386  -fno-common -pipe -fno-common  -arch i386 -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+/usr/bin/gcc-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I. -DHAVE_RUBY_H -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O2 -arch i386  -fno-common -pipe -fno-common  -arch i386 -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+/usr/bin/gcc-4.0 -I. -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I. -DHAVE_RUBY_H -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O2 -arch i386  -fno-common -pipe -fno-common  -arch i386 -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+/usr/bin/gcc-4.0 -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/opt/local/lib -L. -L/opt/local/lib  -arch i386  -lruby  -lpthread -ldl -lobjc  </pre>
+<p>It seems that make is using the ruby I installed from MacPorts while MacVim is using Ruby from somewhere else.  What's odd about that though, is both Snapshot 52 and Stable 1.2 say 1.8.6, so I don't know why it would work in one, but not the other.</p>
+<p>Thank you for your help</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5711'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5711"><time data-relative="true">2010-06-18T18:56:37Z</time></a></span>
+</cite>
+<blockquote><p>Seems that the most likely cause of the crash is the incompatibility between the version of Ruby linked against by VIM and the version used to compile the extension.</p>
+<p>I'll bet that if you remove the MacPorts stuff from your <code>PATH</code> temporarily in order to build the extension that it will work.</p>
+<p>Not a MacPorts user myself, so not sure how to do that exactly, but basically something like this:</p>
+<pre class="shell-syntax">$ echo $PATH
+$ OLD_PATH=$PATH
+$ export PATH=... # here supply a PATH with all/any &quot;/opt/local&quot; paths removed
+$ cd ~/.vim/ruby/command-t
+$ ruby extconf.rb
+$ make
+$ export PATH=$OLD_PATH</pre>
+<p>If you do it right, you should see <code>/System/Library/Frameworks/Ruby.framework</code> referenced in the build commands, and I expect the plug-in will work fine in VIM.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5713'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5713"><time data-relative="true">2010-06-18T20:56:29Z</time></a></span>
+</cite>
+<blockquote><p>When I removed everything having to do with MacPorts from my path, ruby extconf.rb was unable to find ruby.h</p>
+<p>I installed rvm yesterday (after this whole issue started), so I tried installing ruby 1.8.6 through that and compiling the plugin so that the versions would match. I go the same result however, with Stable working and the Snapshot broken.  It doesn't make any sense to me though because both version of MacVim say they're running 1.8.6, so I don't know why one would work and one wouldn't.</p>
+<p>Thanks, Nick</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5714'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5714"><time data-relative="true">2010-06-19T03:44:12Z</time></a></span>
+</cite>
+<blockquote><p>I think I read that in one of the recent snapshots Bj&#x00f6;rn changed to doing 64-bit builds or something, especially with respect to Snow Leopard or something (can't remember the exact details). It might be worth looking at the snapshot release notes but I have to go away for the weekend so I can't do that right now.</p>
+<p>So it might be a 32-bit vs 64-bit thing. What kind of machine you running on? Is it a 64-bit one (eg. recent iMac?) or an older 32-bit one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5716'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5716"><time data-relative="true">2010-06-20T12:50:25Z</time></a></span>
+</cite>
+<blockquote><p>Ok, back again.</p>
+<p>The three latest release announcements, as far as I can tell:</p>
+<ul>
+<li>7.3a: <a href="http://groups.google.com/group/vim_mac/browse_thread/thread/32ce9ce2e2a2d21b" class="external">http://groups.google.com/group/vim_mac/browse_thread/thread/32ce9ce2e2a2d21b</a></li>
+</ul>
+<blockquote>
+<p>This build requires an Intel Mac running 10.6 or later.  When 7.3 is  released I will build another version that runs on earlier versions of  OS X and which supports PPC.</p>
+</blockquote>
+<ul>
+<li>Snapshot 52: <a href="http://groups.google.com/group/vim_mac/browse_thread/thread/12f46704b5dfcd53" class="external">http://groups.google.com/group/vim_mac/browse_thread/thread/12f46704b5dfcd53</a></li>
+</ul>
+<blockquote>
+<p>A warning: it is possible that this release will break Ruby plugins due to a  patch to mainline Vim (which changed return types of certain functions from  String to Fixnum).  For example, the LustyExplorer plugin broke because of this  (but has subsequently been patched).  At any rate, if you have any problems  with Ruby plugins after updating to snapshot 52 you should contact the plugin  maintainer. </p>
+</blockquote>
+<ul>
+<li>Snapshot 51: <a href="http://groups.google.com/group/vim_mac/browse_thread/thread/b93c6dd5183bdc5e" class="external">http://groups.google.com/group/vim_mac/browse_thread/thread/b93c6dd5183bdc5e</a></li>
+</ul>
+<p>(Not really any notes for that snapshot that seem relevant...)</p>
+<p>Before you get your hopes up, the comments about changes in the Ruby stuff in 52 aren't an issue for Command-T, as it was fixed way back on 6 March, before Command-T 0.1 had even been released (and the day after the MacVim snapshot release):</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/bda1e5e6123d16a161f47350f9fc5db230d591e2" class="external">http://git.wincent.com/command-t.git/commitdiff/bda1e5e6123d16a161f47350f9fc5db230d591e2</a></li>
+</ul>
+<p>So, sadly, the release notes don't really shed any additional light here.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5729'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5729"><time data-relative="true">2010-06-21T16:22:51Z</time></a></span>
+</cite>
+<blockquote><p>Alright well I'm pretty stuck on what's going on here... I have been putting off upgrading to Snow Leopard, but it seems this might be fixed by doing so.  I'll just use stable until then.</p>
+<p>Thanks for your help!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5730'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5730"><time data-relative="true">2010-06-21T17:20:50Z</time></a></span>
+</cite>
+<blockquote><p>Yeah, sorry I couldn't give you a definitive answer.</p>
+<p>I still believe the most likely cause is a mismatch. One last thing you could try is actually building MacVim from source. Might be opening a can of worms, but it would be one way of ensuring that the version of Ruby MacVim links against is the same version that the Command-T extension links against when you compile it.</p>
+<p>Made some brief notes on compiling it in &quot;<a href="/wiki/Building_MacVim_from_source">Building MacVim from source</a>&quot;.</p>
+<p>About the only other thing I can suggest is that perhaps you might find a clue in some of the tickets elsewhere on the site (for example, <a href="/issues/1528">ticket #1528</a>). Different people on different platforms, and usually the cause is a mismatch which they eventually solve.</p>
+<p>But yeah, sticking with the stable release might just be the sanest thing to do.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #387: Crash upon launch
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #387</div>
+<div class='issue' id='issue_387'>
+<form class="edit_issue" id="edit_issue_387" action="/issues/387" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pQHby8l3b4t48k9lykdclw9UC33J6hrBhVnujCUIkACR82V8bvq13qF+fJL7bg8jutZiQcIGlN2lRjtyAdD3JA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #387:
+<span data-name='issue[summary]'>
+Crash upon launch
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-03-29T10:40:32Z</time>, updated <time data-relative="true">2006-04-03T05:54:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-328">bugzilla user 328</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When attempting to start the newest beta of synergy advance immediately upon launch the app crashes. It occurs in both my normal account and a 2nd account in which there are no log in items. I am running the most recent version of OS X and have all released updates installed. </p>
+<p>In addition when looking for the crashlog, one does not exist in ~/library/logs</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2464'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2464"><time data-relative="true">2006-03-29T11:44:51Z</time></a></span>
+</cite>
+<blockquote><p>Anything printed to the console at launch time? What kind of system are you running on? (Intel by any chance?)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2465'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2465"><time data-relative="true">2006-03-29T12:03:20Z</time></a></span>
+</cite>
+<blockquote><p>the only thing I see when I start it up is a very brief splash screen (maybe 2 seconds) and then the error triangle (I assume) and then it quits. I posted a screen shot to the other thread that you said to send replies to if a bug is found.</p>
+<p>Oh and I am running on a g4 12&quot; 1.5 GHz PB with 1.25 GB ram G4</p>
+<p>Hope this helps</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2466'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2466"><time data-relative="true">2006-03-29T12:06:41Z</time></a></span>
+</cite>
+<blockquote><p>But is anything printed to the console at launch time? You can find the console at:</p>
+<p>/Applications/Utilities/Console.app</p>
+<p>That will hopefully give us some clue as to *why* it's failing to launch.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2467'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2467"><time data-relative="true">2006-03-29T12:15:16Z</time></a></span>
+</cite>
+<blockquote><p>Here is what I found in the console</p>
+<p>2006-03-29 14:12:40.790 Wincent Crash Reporter[492] Error: no bundle argument [exiting]</p>
+<p>hope that helps</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2468'>
+<cite>
+<a href="/users/froodiantherapy">froodiantherapy</a>
+<span class='when'><a href="#comment_2468"><time data-relative="true">2006-03-29T16:26:53Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent.  I get this behavior as well.  Console.log says</p>
+<p>2006-03-29 17:15:53.290 Synergy Advance[17640] Error -100: please inform the developer</p>
+<p>Since this is a differenct error than JB got, I'm not sure that it's the same issue; I can file seperately if you wish.  Also, I'm not sure if this is relevant, but when I first copied Synergy Advance from the disk image, Finder crashed (I can post the crash log if you think it is).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2469'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2469"><time data-relative="true">2006-03-29T17:38:06Z</time></a></span>
+</cite>
+<blockquote><p>Ian, that error (-100) indicates file corruption. Either the file is corrupt (perhaps that Finder crash you mentioned?) or Synergy Advance *thinks* it's corrupt (in which case we have a bug). If you see the same error after re-doing the copy please open a separate bug report and we'll try to figure out exactly why Synergy Advance thinks it's been corrupted (provide as much info as possible about your system configuration).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2470'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2470"><time data-relative="true">2006-03-30T02:00:02Z</time></a></span>
+</cite>
+<blockquote><p>See <a href="/issues/389">bug #389</a> for the &quot;Error -100&quot; issue.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2471'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2471"><time data-relative="true">2006-03-30T11:04:10Z</time></a></span>
+</cite>
+<blockquote><p>Oh just a follow up. I found the .3 release and installed that instead and I have had no problems so far. Synergy adv works like it is supposed to, no crashes, etc. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2472'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2472"><time data-relative="true">2006-03-30T11:40:09Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #0)</p>
+<blockquote>
+<p>In addition when looking for the crashlog, one does not exist in ~/library/logs</p>
+</blockquote>
+<p>Just to clarify: you *were* looking in &quot;~/Library/Logs/CrashReporter/&quot;, right? Not &quot;~/library/logs&quot;?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2473'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2473"><time data-relative="true">2006-03-30T12:18:24Z</time></a></span>
+</cite>
+<blockquote><p>That is correct... I did look within ~/library/logs/crashreporter/ and there was no report from synergy</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2474'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2474"><time data-relative="true">2006-04-01T06:53:45Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've put a new build (0.4b2) up on the server. This version won't fix the crashes but it should help to diagnose them because the crash reporter application is once again functional. The idea is that each time Synergy Advance launches it checks to see if it shut down cleanly on the last run. If it did not then it offers to send a crash report. In order for this to work then you must do a least one successful launch (so that Synergy Advance can write a timestamp to its preferences file); in the case where it never ever launches successfully you still won't see the crash reporter, but at least now crash logs should be written to the CrashReporter logs directory and you'll be able to attach them here (the older version was catching crashes and that prevented the logs from being written).</p>
+<p>To gather more information it is also useful to capture all console output. One way of capturing all the console output is to run the program from the Terminal; for example, assuming you installed the app into &quot;/Applications/&quot; you would do:</p>
+<p>cd &quot;/Applications/Synergy Advance.app/Contents/MacOS&quot; &quot;./Synergy Advance&quot;</p>
+<p>Announcement:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/04/synergy_advance_5.php" class="external">http://wincent.com/a/news/archives/2006/04/synergy_advance_5.php</a></p>
+<p>Direct download link:</p>
+<p><a href="http://wincent.com/download.php?item=SynergyAdvance0.4b2.dmg" class="external">http://wincent.com/download.php?item=SynergyAdvance0.4b2.dmg</a></p>
+<p>SHA1 checksum:</p>
+<p>e2e537d178e62c13d2846aed9c49f61ea3cf1c93</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2475'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2475"><time data-relative="true">2006-04-01T07:18:06Z</time></a></span>
+</cite>
+<blockquote><p>Where should I email you a copy of the crash log?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2476'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2476"><time data-relative="true">2006-04-01T07:56:59Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #12)</p>
+<blockquote>
+<p>Where should I email you a copy of the crash log?</p>
+</blockquote>
+<p>You can attach it directly to this bug report (click on the &quot;Create New Attachment&quot; link) or email it to me directly (<a href="mailto:win@wincent.org" class="mailto">win@wincent.org</a>) and I'll attach it myself. Thanks.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2477'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2477"><time data-relative="true">2006-04-01T08:41:31Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=54) Crash Log</p>
+<p>Crash Log for synergy advance</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2478'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2478"><time data-relative="true">2006-04-01T09:03:51Z</time></a></span>
+</cite>
+<blockquote><p>(From update of attachment 54) Changing attachment MIME type to text/plain</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2479'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2479"><time data-relative="true">2006-04-01T09:38:06Z</time></a></span>
+</cite>
+<blockquote><p>Thanks very much for attaching the crash report. I now see exactly where the crash is occurring. It seems that NSTask is raising an exception (perhaps because of a file-not-found error? It's trying to launch the &quot;/usr/bin/redo_prebinding&quot; tool: does that exist on your system?). Anything printed to the console at that moment? I imagine there should be because the stack trace shows:</p>
+<p>+[NSException raise:format:]</p>
+<p>I've now added a @try/@catch around the offending part of the code which means that Synergy Advance won't crash anymore when this happens, but it will still throw an error (the same one as in <a href="/issues/389">bug #389</a>) so I may have to look at dropping the executable self-checking. I have an alternative for guarding against executable corruption already in place any way so I may just swap that in.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2480'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2480"><time data-relative="true">2006-04-01T13:18:34Z</time></a></span>
+</cite>
+<blockquote><p>OK, I've now officially deactivated the anti-corruption checks and removed the code. Adding the fixed-in-prerelease keyword. Will put together a 0.4b3 release shortly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2481'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2481"><time data-relative="true">2006-04-03T04:35:19Z</time></a></span>
+</cite>
+<blockquote><p>Version 0.4b3 is now on the servers and available for download. For more information see:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/04/synergy_advance_6.php" class="external">http://wincent.com/a/news/archives/2006/04/synergy_advance_6.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2482'>
+<cite>
+<a href="/users/bugzilla-user-328">bugzilla user 328</a>
+<span class='when'><a href="#comment_2482"><time data-relative="true">2006-04-03T05:21:16Z</time></a></span>
+</cite>
+<blockquote><p>just FYI crashed at startup again. I'm emailing you a copy of the crash log via the crash reporter. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2483'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2483"><time data-relative="true">2006-04-03T05:54:17Z</time></a></span>
+</cite>
+<blockquote><p>Please upgrade to the just-released version. The crash report you just sent me is for the old version.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

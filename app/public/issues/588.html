@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #588: synergy vs. last.fm -  scrobbling conflicts
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #588</div>
+<div class='issue' id='issue_588'>
+<form class="edit_issue" id="edit_issue_588" action="/issues/588" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="9uTi3a1ueY2IucQU4yyvWJndL51DLAAbuSUd0jv7VibCFlxqCuOj2FE19+PSBfzsLF9GoUjAjgeZOsgsHyMxAg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #588:
+<span data-name='issue[summary]'>
+synergy vs. last.fm -  scrobbling conflicts
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2007-06-29T01:06:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jason-daniels">Jason Daniels</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>synergy scrobbling doesn't always recover if the last.fm scrobbling is opened and then closed again.  I use synergy to scrobble most of the time, but sometimes bring up the last.fm app - to view an artist or my list of songs or to add the current song to my loved songs list.  synergy seems to stop scrobbling when I do this, which makes sense, but it doesn't seem to start again if I quit last.fm.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3045'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3045"><time data-relative="true">2007-06-29T07:20:12Z</time></a></span>
+</cite>
+<blockquote><p>Without better information, my guess is that on launching the other app, it initiates a new session and effectively renders the old one (the one started by Synergy) invalid.</p>
+<p>There might be a way for Synergy to detect this kind of temporary fault and correct it. The tricky part is distinguishing between temporary failures (which should be retried) and permanent ones (which should not be retried).</p>
+<p>Can you try turning on logging of Audioscrobbler events as described here:</p>
+<p><a href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html" class="external">http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html</a></p>
+<p>Then we can see what error messages are being returned by last.fm.</p>
+<p>So like I said, it may be possible to transparently work around this. In the absence of such a workaround the other possibility is to add something to the UI which allows the user to force a re-login (at the moment the only way to do this is clumsy; going into the prefs and making an arbitrary, termporary change to your login details to force Synergy to renegotiate).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+bugs.wincent.com upgraded to Bugzilla 2.18
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/announcements">Announcements</a> &raquo; bugs.wincent.com upgraded to Bugzilla 2.18</div>
+<h1 class='major'>bugs.wincent.com upgraded to Bugzilla 2.18</h1>
+<div class='topic' id='topic_343'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/announcements/topics/343"><time data-relative="true">2005-03-07T11:28:04Z</time></a>
+</span>
+</cite>
+<blockquote><p>After the release of Synergy 1.7.1 today I set about upgrading the bugs and feature request database at bugs.wincent.com, which runs Bugzilla, from the old stable series (2.16.x) to the new stable series (2.18). It's something that's been hanging over me for a while now, like a cloud.</p>
+<p>Several hours later...</p>
+<p>If you've tried to access the database in the past few hours you might have seen some errors because the upgrade was quite involved. All fixed now. Installing Bugzilla is not for the faint hearted, unfortunately, and upgrading it is not always so easy either, but I am pleased to report that it's all done. You can see the list of changes and benefits that the new version brings here:</p>
+<p><a href="http://www.bugzilla.org/releases/2.18/release-notes.html" class="external">http://www.bugzilla.org/releases/2.18/release-notes.html</a></p>
+<p>I had to upgrade my CPAN install, move to a new version of Perl (5.8.6; ouch), trouble-shoot test failures that occurred because they are running inside a FreeBSD jail, install and update a huge wad of perl modules, update Bugzilla itself via CVS, run all the tests, configure, and at last.... here we are...</p>
+<p>Perl 5.8 breaks module binary compatibility with 5.6, so I found that when I did the upgrade the perl scripts that automatically issue customers with license codes at purchase time or resend them to users who have lost them stopped working.</p>
+<p>So I had to upgrade a stack of modules: cryptography stuff as well as trusty old LWP::UserAgent and Mail::Sender. Luckily with a freshly updated CPAN install and the latest Perl this wasn't actually too difficult (for once). The tricky part was that after installing the needed modules I was getting 501 (&quot;Service unavailable&quot;) errors when I tried connecting back to PayPal. Turns out I had to rebuild Crypt::SSLeay as well, because the connection was evidently not being made over SSL like it should have been and PayPal was replying with the 501. For some reason, LWP::UserAgent was silently failing and falling back to a non-SSL connection (I would've preferred an error message!). In any case, it's all fixed now. No customers missed out on getting their license codes. Now I just need someone to buy a Synergy license so that I can confirm that this all actually works!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/announcements">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

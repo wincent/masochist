@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy not loading at startup
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy not loading at startup</div>
+<h1 class='major'>Synergy not loading at startup</h1>
+<div class='topic' id='topic_402'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/zoomaddict">ZoomAddict</a>
+<span class='when'>
+<a href="/forums/synergy/topics/402"><time data-relative="true">2009-01-31T03:32:37Z</time></a>
+</span>
+</cite>
+<blockquote><p>Just updated to 10.5 and Synergy no longer loads at startup.  This is a fresh install (not a migration) on a 2008 Mac Pro with a fresh install of Synergy 3.2.1.  The &quot;Load at Startup&quot; box is checked in the Synergy prefs, but there isn't anything in the startup items (in the Log In prefs).  </p>
+<p>I've tried unchecking the &quot;Load at Startup box&quot;, then hitting apply, then re-enabling the box and applying again.  Also tried manually adding a couple of things Synergy related to the startup items but they all open Synergy prefs at Startup (I just want Synergy to startup in the background like it did before).</p>
+<p>I've searched and cannot find reference to this bug.  Is it a known issue &amp; is there anything else I can try?  </p>
+<p>Thanks Wincent!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4144'>
+<cite>
+<a href="/users/zoomaddict">ZoomAddict</a>
+<span class='when'><a href="#comment_4144"><time data-relative="true">2009-01-31T13:17:20Z</time></a></span>
+</cite>
+<blockquote><p>Didn't find the cause but poked around the website and found this workaround which works:</p>
+<p>---------- &quot;Launch Synergy at login&quot; checkbox in the Preference Pane no longer works for Synergy Classic. The workaround is to navigate to ~/Library/PreferencePanes/Synergy.prefPane, ctrl+click, choose Show Package Contents from the contextual menu, navigate to Contents/Resources/Synergy and drag this icon to the Startup Items in the Accounts preference pane. ----------</p>
+<p>This issue (failure of the &quot;Launch at Startup&quot; feature) in Synergy Classic was repeatable (same issue on both the Mac Pros tested here).  If you are still doing fixes to the 3.2.x version this bug needs to be quashed.  Thanks!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4145'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4145"><time data-relative="true">2009-01-31T13:19:17Z</time></a></span>
+</cite>
+<blockquote><p>The unchecking &quot;Launch at login&quot;, &quot;Apply&quot;, rechecking, &quot;Apply&quot; should have worked.</p>
+<p>If you want to try adding it manually to the startup items the item you have to add is not <code>~/Library/PreferencePanes/Synergy.prefPane</code> but <code>~/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app</code>.</p>
+<p>There might be something else going on here. Any error messages printed to the console? Is it possible that it is loading but you just can't see it because your menu bar is too full of other items?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4146'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4146"><time data-relative="true">2009-01-31T13:24:29Z</time></a></span>
+</cite>
+<blockquote><p>The &quot;not launching at login&quot; issue has come up a few times over the years (Synergy first came out in 2002, remember). Occasionally in an OS upgrade things would change in some subtle way and it would stop working. I don't think there were any &quot;bugs&quot; as such in the way Synergy added itself to the login items, but over the years I <em>have</em> had to implement a <em>lot</em> of workarounds to make sure that it got added when required.</p>
+<p>It's actually been surprisingly complicated for what should be such a simple feature.</p>
+<p>At the time of writing, I'm not aware of any real problems with 3.2.1 and the latest version of Mac OS X, and your report is an isolated one. If it were a general issue I would expect literally dozens of reports from different people. But still, it's something to keep an eye on to see if there's been yet another change in the way login items works which is causing problems.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4452'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4452"><time data-relative="true">2009-04-16T13:34:20Z</time></a></span>
+</cite>
+<blockquote><p>MacBook Pro (Unibody) 10.5.6</p>
+<p>Synergy does not autostart for me. And has not, over multiple machines (I have a PPC desktop, and another standard MacBook Pro) all on 10.5.6</p>
+<p>Works fine once I click start in the prefPane.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4454'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4454"><time data-relative="true">2009-04-16T15:03:15Z</time></a></span>
+</cite>
+<blockquote><p>Most likely stale entries in your login items. Please see my previous comments above for how to force those settings to be refreshed (basically boils down to 'The unchecking &quot;Launch at login&quot;, &quot;Apply&quot;, rechecking, &quot;Apply&quot;').</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4841'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4841"><time data-relative="true">2009-08-05T11:57:28Z</time></a></span>
+</cite>
+<blockquote><p>Same thing here, with a new install of 10.5 on a MacBookPro unibody. I tried the unchecking/checking &quot;Launch at Startup&quot; thing to no avail. I've now added Synergy.app to the login items as described above, and will see what happens at the next startup. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4848'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4848"><time data-relative="true">2009-08-06T07:41:28Z</time></a></span>
+</cite>
+<blockquote><p>I think the important thing to note here is that it's not enough to just uncheck then recheck; you actually have to click &quot;Apply&quot; after each.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4855'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_4855"><time data-relative="true">2009-08-11T22:18:31Z</time></a></span>
+</cite>
+<blockquote><p>OS X 10.5.7 Synergy 3.4</p>
+<p>No Apply button option. it's there but not clickable/active. Not on any of the tabs.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4862'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4862"><time data-relative="true">2009-08-14T06:25:50Z</time></a></span>
+</cite>
+<blockquote><p>It should become active as soon as you actually make a change to one of the preferences. If you change nothing then there is nothing to apply, so the button remains inactive.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4863'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_4863"><time data-relative="true">2009-08-14T16:46:07Z</time></a></span>
+</cite>
+<blockquote><p>Oh, I just ticked the Start button. Nevertheless I just did the add to login items thing. Thanks again for Synergy. I keep trying them all but keep with Synergy.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

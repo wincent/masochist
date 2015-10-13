@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #123: Growl framework causes Synergy to crash when running on Mac OS X 10.2
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #123</div>
+<div class='issue' id='issue_123'>
+<form class="edit_issue" id="edit_issue_123" action="/issues/123" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="fvzn8SMJRSLuhz22ZnNEL28T/nzCaQZtFonhU+ac7VdKDllGhISfdzcLDkFXWheb2pGXQMmFiHE2ljStwkSKcw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #123:
+<span data-name='issue[summary]'>
+Growl framework causes Synergy to crash when running on Mac OS X 10.2
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-03-05T00:56:55Z</time>, updated <time data-relative="true">2005-03-07T20:16:23Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jeff-phillips">Jeff Phillips</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Synergy 1.7 does not successfully Launch on OS.X 10.2.  It also will not start from system  preferences.</p>
+<p>Here is the crash log:</p>
+<p>Date/Time:  2005-03-04 09:18:08 -0500 OS Version: 10.2.8 (Build 6R73)</p>
+<p>Command:    Synergy PID:        4212</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000000</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x90249c68 in _Z9CleanPathPKcPc
+#1   0x9024b2ac in _Z9canonpathPKcPcm
+#2   0x90232254 in _Z17PathGetObjectInfoPKcmPP10VolumeInfoPmS4_PcS4_Ph
+#3   0x9023483c in _Z24FSPathMakeRefWithOptionsPKhmP5FSRefPh
+#4   0xc000202c in +[GrowlApplicationBridge launchGrowlIfInstalled]
+#5   0xc0001bb8 in +[GrowlApplicationBridge setGrowlDelegate:]
+#6   0x0000de20 in 0xde20
+#7   0x97e2d248 in -[NSSet makeObjectsPerformSelector:]
+#8   0x930adda4 in -[NSIBObjectData nibInstantiateWithOwner:topLevelObjects:]
+#9   0x93124dc0 in old_loadNib
+#10  0x930eab1c in +[NSBundle(NSNibLoading) _loadNibFile:nameTable:withZone:ownerBundle:]
+#11  0x9314a228 in +[NSBundle(NSNibLoading) loadNibFile:externalNameTable:withZone:]
+#12  0x93149fe8 in +[NSBundle(NSNibLoading) loadNibNamed:owner:]
+#13  0x93160570 in NSApplicationMain
+#14  0x00009638 in 0x9638
+#15  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x90249c68 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x90249c58  ctr: 0x90000e20   mq: 0x00000000
+   r0: 0x9024b2ac   r1: 0xbfffcfa0   r2: 0x24000280   r3: 0x00000000
+   r4: 0xbfffd040   r5: 0x00000400   r6: 0x00000334   r7: 0x00000000
+   r8: 0x00000000   r9: 0x00000000  r10: 0x00000000  r11: 0xa00046fc
+  r12: 0x90000e20  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x000bb180  r17: 0xa309a7c4  r18: 0xbfffef28  r19: 0xbfffef24
+  r20: 0xbfffef20  r21: 0xbfffef2c  r22: 0xbfffec10  r23: 0xbfffec20
+  r24: 0x00135d60  r25: 0xc00054d8  r26: 0x00000000  r27: 0xbfffd040
+  r28: 0x00000000  r29: 0x00000000  r30: 0x00000000  r31: 0x90249c58</pre>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2005-03-04 09:18:43 -0500 OS Version: 10.2.8 (Build 6R73)</p>
+<p>Command:    Synergy PID:        4218</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000000</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x90249c68 in _Z9CleanPathPKcPc
+#1   0x9024b2ac in _Z9canonpathPKcPcm
+#2   0x90232254 in _Z17PathGetObjectInfoPKcmPP10VolumeInfoPmS4_PcS4_Ph
+#3   0x9023483c in _Z24FSPathMakeRefWithOptionsPKhmP5FSRefPh
+#4   0xc000202c in +[GrowlApplicationBridge launchGrowlIfInstalled]
+#5   0xc0001bb8 in +[GrowlApplicationBridge setGrowlDelegate:]
+#6   0x0000de20 in 0xde20
+#7   0x97e2d248 in -[NSSet makeObjectsPerformSelector:]
+#8   0x930adda4 in -[NSIBObjectData nibInstantiateWithOwner:topLevelObjects:]
+#9   0x93124dc0 in old_loadNib
+#10  0x930eab1c in +[NSBundle(NSNibLoading) _loadNibFile:nameTable:withZone:ownerBundle:]
+#11  0x9314a228 in +[NSBundle(NSNibLoading) loadNibFile:externalNameTable:withZone:]
+#12  0x93149fe8 in +[NSBundle(NSNibLoading) loadNibNamed:owner:]
+#13  0x93160570 in NSApplicationMain
+#14  0x00009638 in 0x9638
+#15  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x90249c68 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x90249c58  ctr: 0x90000e20   mq: 0x00000000
+   r0: 0x9024b2ac   r1: 0xbfffd020   r2: 0x24000280   r3: 0x00000000
+   r4: 0xbfffd0c0   r5: 0x00000400   r6: 0x00000334   r7: 0x00000000
+   r8: 0x00000000   r9: 0x00000000  r10: 0x00000000  r11: 0xa00046fc
+  r12: 0x90000e20  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x000bb180  r17: 0xa309a7c4  r18: 0xbfffefa8  r19: 0xbfffefa4
+  r20: 0xbfffefa0  r21: 0xbfffefac  r22: 0xbfffec90  r23: 0xbfffeca0
+  r24: 0x00135d60  r25: 0xc00054d8  r26: 0x00000000  r27: 0xbfffd0c0
+  r28: 0x00000000  r29: 0x00000000  r30: 0x00000000  r31: 0x90249c58</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1591'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1591"><time data-relative="true">2005-03-05T04:50:41Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. I've received a couple of other similar reports from Mac OS X 10.2 users since  releasing Synergy 1.7, and the crash logs look exactly the same. The Growl framework is crashing,  which in turn makes *me* want to growl.</p>
+<p>Perhaps I didn't read the Growl documentation carefully enough, or perhaps the conflict isn't  mentioned. I am going to investigate this further and put out a 1.7.1 release as soon as I can to fix the  problem. Monday at the latest.</p>
+<p>In the meantime, if you want to go back to version 1.6.1, it is still on the mirrors:</p>
+<p><a href="http://mirror.lavertue.com/synergy/Synergy1.6.1.dmg" class="external">http://mirror.lavertue.com/synergy/Synergy1.6.1.dmg</a> <a href="http://wincent.daviddauer.de/Synergy1.6.1.dmg" class="external">http://wincent.daviddauer.de/Synergy1.6.1.dmg</a> <a href="ftp://ftp.sunwizard.net/mirrors/wincent/Synergy1.6.1.dmg" class="external">ftp://ftp.sunwizard.net/mirrors/wincent/Synergy1.6.1.dmg</a> <a href="http://mirror.overengineers.com/Synergy1.6.1.dmg" class="external">http://mirror.overengineers.com/Synergy1.6.1.dmg</a> <a href="http://www.gritsch-soft.com/~winswitch/Synergy1.6.1.dmg" class="external">http://www.gritsch-soft.com/~winswitch/Synergy1.6.1.dmg</a> <a href="http://wincent.devilicious.net/Synergy1.6.1.dmg" class="external">http://wincent.devilicious.net/Synergy1.6.1.dmg</a> <a href="http://www.andriven.com/Synergy1.6.1.dmg" class="external">http://www.andriven.com/Synergy1.6.1.dmg</a> <a href="http://wincent.patrick.geek.nz/Synergy1.6.1.dmg" class="external">http://wincent.patrick.geek.nz/Synergy1.6.1.dmg</a> <a href="http://wincent.prairieocean.ca/Synergy1.6.1.dmg" class="external">http://wincent.prairieocean.ca/Synergy1.6.1.dmg</a> <a href="http://wincent.wellingtonnet.net/Synergy1.6.1.dmg" class="external">http://wincent.wellingtonnet.net/Synergy1.6.1.dmg</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1592'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1592"><time data-relative="true">2005-03-05T06:20:36Z</time></a></span>
+</cite>
+<blockquote><p>10.2 users, here's a build for you to try:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7-20040304.app.sitx" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7-20040304.app.sitx</a></p>
+<p>MD5 checksum: f5e9530e8e19d86d463adf73e89635db Filesize: 284 KB</p>
+<p>This is not the full Synergy disk image with installer, preference pane, etc. This is just the Synergy  application itself. Expand the archive, double-click it, and see if it runs. If it crashes, I'd be interested to  see if the crash log is any different. I'd also like to know if it works for people with Growl installed, and  for people without Growl installed. I don't have a machine with 10.2 so I can't test this one. If it works,  then I'll package together a 1.7.1 release and get it out shortly. If not, back to the old drawing board.</p>
+<p>So what's different about this build? The following might be a little confusing, so bear in mind that  there are two parts to Growl: the framework (which is embedded inside Synergy and which is causing  the crash), and the application (installed separately, or not installed at all). The Growl website says that  version 0.5 is the last version to support Jaguar, and that 0.6 and above are Panther only. I obviously  misinterpreted that, thinking that it only referred to the application (the thing which displays the  notifications), and not to the framework, but evidently that's not the case...</p>
+<p>I downloaded the Growl 0.6.1 source and I can't see anything in the source code for the  Growl.framework which can't run on 10.2. Admittedly, I haven't done an exhaustive audit of the code,  so I can't be sure. Only one way to find out, I guess. The documentation is poor, and I there are no  references in the code to &quot;Jaguar&quot;, &quot;Panther&quot;, or &quot;10.2&quot;. There are references to 10.3 in a few comments,  but I can't see any 10.3-only API in the framework.</p>
+<p>So I've rebuilt the framework using 10.2 as the deployment target. For some reason the Growl folk built  their framework with 10.3 as the deployment target for the entire project, even though I suspect that  only the Growl application itself  has 10.3-only features and that the framework should build and run  just fine. If this turns out to be true, then they should really be building the framework with 10.2 as the  deployment target so that app developers like me can distribute our apps (which run on 10.2). I wish  they hadn't dropped 10.2 support so soon, as there is still a sizeable number of people using it...</p>
+<p>The Growl downloads page says that 0.5 is the last version of the application to support Jaguar, but  there is no disclaimer for the framework (0.6) download, and on the Jaguar page there is no framework  download... So I am wondering whether I need to get a hold of the 0.5 source and build the framework,  or if just building the 0.6.1 framework source with 10.2 as the deployment target will be enough... and  if it is enough, whether it will play nicely for 10.2 users that have Growl 0.5 installed (the last version  that runs on Jaguar), and those that don't have Growl installed at all... Unfortunately I can't see anything  in the docs or the source code that indicates what API changes were made between 0.5 and 0.6/0.6.1,  and I know even less about what the under-the-hood changes are because the changelog doesn't say a  heck of a lot, but I will keep looking. I guess we'll soon find out the answers to these questions...</p>
+<p>I've tried to post on the Growl forums to get some feedback about this, but I am still waiting for my  &quot;registration&quot; to be approved... Darn confirmation emails...</p>
+<p>Thanks for helping out with testing this and any input any of you can provide.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1593'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1593"><time data-relative="true">2005-03-05T13:06:42Z</time></a></span>
+</cite>
+<blockquote><p>Ok, here's one last build to try. A couple of 10.2 users have informed me that the previous build  crashed with exactly the same message:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7-20040305.app.sitx" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7-20040305.app.sitx</a></p>
+<p>MD5 checksum: e350610b558f7fafb55dc22d9d11babd</p>
+<p>If this doesn't work, then I am going to remove Growl support on systems running 10.2. Please let me  know if this build works or not... Once again, it's not a full disk image with installer, preference pane  etc; this is just the Synergy application itself. Double-click it to run...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1594'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1594"><time data-relative="true">2005-03-05T13:12:59Z</time></a></span>
+</cite>
+<blockquote><p>Correction: the MD5 checksum for the build I just posted is actually  098db4b3c315627612305854904a2c12.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1595'>
+<cite>
+<a href="/users/jeff-phillips">Jeff Phillips</a>
+<span class='when'><a href="#comment_1595"><time data-relative="true">2005-03-05T17:00:08Z</time></a></span>
+</cite>
+<blockquote><p>The second app did not seem to start.  Here is what my crash log says:</p>
+<p>Date/Time:  2005-03-05 01:24:15 -0500 OS Version: 10.2.8 (Build 6R73)</p>
+<p>Command:    Synergy PID:        4562</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000000</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x90249c68 in _Z9CleanPathPKcPc
+#1   0x9024b2ac in _Z9canonpathPKcPcm
+#2   0x90232254 in _Z17PathGetObjectInfoPKcmPP10VolumeInfoPmS4_PcS4_Ph
+#3   0x9023483c in _Z24FSPathMakeRefWithOptionsPKhmP5FSRefPh
+#4   0xc0002020 in +[GrowlApplicationBridge launchGrowlIfInstalled]
+#5   0xc0001bac in +[GrowlApplicationBridge setGrowlDelegate:]
+#6   0x0000de20 in 0xde20
+#7   0x97e2d248 in -[NSSet makeObjectsPerformSelector:]
+#8   0x930adda4 in -[NSIBObjectData nibInstantiateWithOwner:topLevelObjects:]
+#9   0x93124dc0 in old_loadNib
+#10  0x930eab1c in +[NSBundle(NSNibLoading) _loadNibFile:nameTable:withZone:ownerBundle:]
+#11  0x9314a228 in +[NSBundle(NSNibLoading) loadNibFile:externalNameTable:withZone:]
+#12  0x93149fe8 in +[NSBundle(NSNibLoading) loadNibNamed:owner:]
+#13  0x93160570 in NSApplicationMain
+#14  0x00009638 in 0x9638
+#15  0x8fe19154 in _dyld_start</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x90249c68 srr1: 0x0200f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x90249c58  ctr: 0x90000e20   mq: 0x00000000
+   r0: 0x9024b2ac   r1: 0xbfffd060   r2: 0x24000280   r3: 0x00000000
+   r4: 0xbfffd100   r5: 0x00000400   r6: 0x00000334   r7: 0x00000000
+   r8: 0x00000000   r9: 0x00000000  r10: 0x00000000  r11: 0xa00046fc
+  r12: 0x90000e20  r13: 0x00000000  r14: 0x00000000  r15: 0x00000000
+  r16: 0x000bb090  r17: 0xa309a7c4  r18: 0xbfffefe8  r19: 0xbfffefe4
+  r20: 0xbfffefe0  r21: 0xbfffefec  r22: 0xbfffecd0  r23: 0xbfffece0
+  r24: 0x000bd710  r25: 0xc00054d8  r26: 0x00000000  r27: 0xbfffd100
+  r28: 0x00000000  r29: 0x00000000  r30: 0x00000000  r31: 0x90249c58</pre>
+<ul>
+<li>*********</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1596'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1596"><time data-relative="true">2005-03-06T00:56:20Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 125 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1597'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1597"><time data-relative="true">2005-03-06T02:26:47Z</time></a></span>
+</cite>
+<blockquote><p>Ok, another build. This is my attempt at performing a runtime check on 10.2 systems and preventing  the Growl framework from being called (and crashing). Basically it means dropping Growl support on  10.2, which is inline with the Growl developers' &quot;no Jaguar support&quot; policy. Synergy, on the other hand,  does support Jaguar, and so it's critical that these crashes be stopped.</p>
+<p>Changes:</p>
+<p>1. Synergy itself does a runtime check for Panther or above before invoking any Growl calls. 2. This build is slightly bigger because debug symbols have not been stripped, which might yield more  info in the event of a crash. 3. The URL contains &quot;2005&quot; instead of &quot;2004&quot;... I've got to wake up.</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7-20050305.app.sitx" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7-20050305.app.sitx</a></p>
+<p>MD5 checksum: 963108e59fdf4ef967b8e6af0be9f8ed</p>
+<p>As with the previous builds, this is not the full disk image etc, it's just the app. Double-click to run, and  let me know if it crashes. If it doesn't, I'll package an official 1.7.1 release for Monday.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1598'>
+<cite>
+<a href="/users/dave-schmitt">Dave Schmitt</a>
+<span class='when'><a href="#comment_1598"><time data-relative="true">2005-03-06T06:53:06Z</time></a></span>
+</cite>
+<blockquote><p>New build seems to work fine.  Hopefully the new release works as well (I miss my  preferencePane).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1599'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1599"><time data-relative="true">2005-03-06T07:12:45Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for testing the build. If you want to &quot;install&quot; it more permanently:</p>
+<p>1. Go to your Synergy.prefPane (installed in either /Library/PreferencePanes/ or ~/Library/ PreferencePanes/) and control-click to get a contextual menu on it; choose &quot;Show package contents&quot;.</p>
+<p>2. Navigate to Contents/Resources.</p>
+<p>3. Inside that folder, replace the Synergy.app that you see there with the new build.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1600'>
+<cite>
+<a href="/users/bugzilla-user-111">bugzilla user 111</a>
+<span class='when'><a href="#comment_1600"><time data-relative="true">2005-03-06T17:36:44Z</time></a></span>
+</cite>
+<blockquote><p>Hey folks,</p>
+<p>We've been working on this one since Wincent reported it to us, but here is a link to the ticket in our system:</p>
+<p><a href="http://trac.growl.info/trac/ticket/83" class="external">http://trac.growl.info/trac/ticket/83</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1601'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1601"><time data-relative="true">2005-03-07T20:15:54Z</time></a></span>
+</cite>
+<blockquote><p>Marking this one as FIXED. Synergy 1.7.1 is now available for download from:</p>
+<p><a href="http://wincent.com/download.php?item=Synergy.dmg" class="external">http://wincent.com/download.php?item=Synergy.dmg</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1602'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1602"><time data-relative="true">2005-03-07T20:16:23Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

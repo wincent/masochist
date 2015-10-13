@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #54: Synergy incorrectly prioritizes downloaded art over embedded art
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #54</div>
+<div class='issue' id='issue_54'>
+<form class="edit_issue" id="edit_issue_54" action="/issues/54" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="XSEBcEO3saahshOhALX+qdqgJlj/EBXipPECI6vatDpp07/H5Dpr83g+IFYxnK0dbyJPZPT8m/6E7tfdjwLTHg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #54:
+<span data-name='issue[summary]'>
+Synergy incorrectly prioritizes downloaded art over embedded art
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-05T10:33:26Z</time>, updated <time data-relative="true">2009-11-29T12:31:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jeff-cannon">Jeff Cannon</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>A feature that uses the artwork assigned by the iTunes user in the floater instead of the artwork found  on the internet would be very handy. I take the time to go through and find album cover artwork for  most of my music, and I find that a lot of the internet queries are wrong.</p>
+<p>Being able to use the artwork that I have installed myself would be fabulous, even better would be a  feature that uses user artwork as first priority, but if there is no artwork, then it searches the internet  database.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1298'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1298"><time data-relative="true">2004-12-05T11:02:47Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the report. I know you phrased it as a request (&quot;Show iTunes artwork instead of  artwork found using the internet&quot;), but I've reworded the summary because I actually qualify it as a bug  (or at least a bad design decision).</p>
+<p>Synergy already does work very close to the way you request, so let me explain the details:</p>
+<p>1. Synergy first checks to see if there's any art in its cache and uses that if available. 2. If no art is available it asks iTunes. 3. If iTunes has no art it searches the Internet.</p>
+<p>It works this way because Synergy introduced support for album art before Apple released iTunes 4, the  first version to support cover art. In other words, Synergy only ever used to use steps &quot;1&quot; and &quot;3&quot;, and  when iTunes 4 came out I added step &quot;2&quot;.</p>
+<p>It usually works quite well, but it's not ideal. For example, if Synergy downloads the wrong art and </p>
+<ul>
+<li>then* you add the correct art to iTunes, Synergy will continue using the wrong art, because that is </li>
+</ul>
+<p>what's in its cache. Solution is to delete the wrong art (click &quot;Show Album Covers Folder&quot; from the  Synergy Global Menu when the pertinent track is playing and a Finder window will open with the  incorrect cover selected; it's then fairly easy to just trash the file); Synergy will then grab the right art  from iTunes.</p>
+<p>Needless to say, in Synergy Advance I haven't repeated the mistake of that 1-2-3 sequence above.  Synergy Advance uses a plugin architecture and the user can rearrange the order of preferred album  cover sources by drag and drop. Obviously by default it's good to have embedded art near the top of  the source list, and things like Amazon search as a last resort.</p>
+<p>The challenge for Synergy Classic is how to redesign that 1-2-3 sequence without inducing too much  of a performance hit (querying iTunes for art is pretty costly). It's also hard because I didn't design it  with enough foresight. If you look at the version history you'll see how the program has grown in ways I  never anticipated and didn't really prepare for (this is the whole reason I started writing a brand new  app like Synergy Advance from scratch).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1299'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1299"><time data-relative="true">2004-12-14T20:30:53Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 76 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1300'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1300"><time data-relative="true">2005-03-04T06:59:13Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 120 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1301'>
+<cite>
+<a href="/users/matthew-hanson">Matthew Hanson</a>
+<span class='when'><a href="#comment_1301"><time data-relative="true">2006-03-02T12:45:18Z</time></a></span>
+</cite>
+<blockquote><p>Is there any chance you could add an option to disable the artwork cache under advanced preferences?  I don't mind the small performance hit.   This would also resolve issues with tv shows, where you might have a value set for the album field (Season 1, 2, etc) while each video has its own artwork (posterframe).  This leads to an issue where all of the episodes of a given season show the posterframe of the first episode from that season that you play.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1302'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1302"><time data-relative="true">2006-03-09T11:38:15Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 379 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1303'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1303"><time data-relative="true">2006-07-05T02:03:28Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1304'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1304"><time data-relative="true">2007-01-29T12:55:55Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 537 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1305'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1305"><time data-relative="true">2007-02-10T18:23:33Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 544 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1306'>
+<cite>
+<a href="/users/peter">Peter</a>
+<span class='when'><a href="#comment_1306"><time data-relative="true">2007-05-01T06:50:03Z</time></a></span>
+</cite>
+<blockquote><p>Synergy will fetch the wrong album art over the Internet, ignoring the correct artwork already in iTunes. Usng Synergy 3.1.2b and iTunes 7.1.1 (5). UK localisation. Running on a 20 inch Intel iMac.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3308'>
+<cite>
+<a href="/users/joshua-gitlin">Joshua Gitlin</a>
+<span class='when'><a href="#comment_3308"><time data-relative="true">2008-05-02T08:48:44Z</time></a></span>
+</cite>
+<blockquote><p>A temporary workaround for this issue that I have been using: Use an outgoing firewall like Little Snitch to prevent Synergy from connecting to any host except wincent.com. Then if artwork isn't displayed you can go to iTunes and fix the artwork there.</p>
+<p><a href="http://www.obdev.at/products/littlesnitch/index.html" class="external">http://www.obdev.at/products/littlesnitch/index.html</a></p>
+<p>I had to upgrade to Synergy 3.2.1b for this to work. Once I did, artwork works flawlessly :-)</p>
+<p><a href="http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available" class="external">http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3309'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3309"><time data-relative="true">2008-05-02T12:07:07Z</time></a></span>
+</cite>
+<blockquote><p>Neat idea, Joshua. Hadn't thought of that one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5114'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5114"><time data-relative="true">2009-10-25T17:33:41Z</time></a></span>
+</cite>
+<blockquote><p>Plan to have an option to address this issue in version 4.1.2. See related tickets like <a href="/issues/1148">ticket #1148</a> and <a href="/issues/1426">ticket #1426</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5134'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5134"><time data-relative="true">2009-11-01T09:03:44Z</time></a></span>
+</cite>
+<blockquote><p>4.1.1 final will be rolling out soon, so I will be able to get started on this shortly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5135'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5135"><time data-relative="true">2009-11-01T09:03:56Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5197'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5197"><time data-relative="true">2009-11-29T12:31:42Z</time></a></span>
+</cite>
+<blockquote><p>4.2 will be out soon with a checkbox to turn Amazon searches on and off independently of the Floater's cover art graphic setting.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

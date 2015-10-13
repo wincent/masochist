@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2094: Matching algorithm is inefficient
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2094</div>
+<div class='issue' id='issue_2094'>
+<form class="edit_issue" id="edit_issue_2094" action="/issues/2094" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OI089l+m/gupCPoFJX9uHW2ZurL2ktHyy2LOkyyQOyoMf4JB+CskXnCEyfIUVj2p2BvTjv1+X+7rfRttCEhcDg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2094:
+<span data-name='issue[summary]'>
+Matching algorithm is inefficient
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-06-19T09:03:03Z</time>, updated <time data-relative="true">2013-12-25T18:43:27Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/dzhioev">dzhioev</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi. I've recently tried Command-T plugin and it looks good. But I'm working on huge project (Chrome), and Command-T worked very slow on it. So I've changed 'wildignore' settings, and it started works good in many cases. But often it was extremely slow whatever. So I've looked little in C-sources, and found out that matching algorithm very inefficient for some cases. The reason is that matching considers all possible matches, and that number can be VERY large even for relatively short filenames. For example matching filename &quot;aaaa..aaaa&quot;(40 'a's) against pattern &quot;aaaa...aaaa&quot;(20 'a's) gives us 137846528820 variants and it's unacceptable.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_10240'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10240"><time data-relative="true">2013-06-19T09:52:33Z</time></a></span>
+</cite>
+<blockquote><p>Actually, it looks like I found algorithm with complexity O(s^2*p), where s and p are lengths of string and pattern respectively. Is it OK if I'll implement it?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10242'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10242"><time data-relative="true">2013-06-20T03:52:48Z</time></a></span>
+</cite>
+<blockquote><p>Early versions of Command-T had a linear matching/scoring algorithm which was much faster.</p>
+<p>The current matching algorithm provides much more intuitive ordering of the search results, but it approaches quadratic runtime in the worst case.</p>
+<p>As it is written in C, even this quadratic runtime is fast enough for small-ish projects (of the order of 10k or 20k files). I'd love to find a faster algorithm that still provides scoring as good as or close to the quadratic one, or failing that, have some kind of self-tuning behavior which switches to a cheaper strategy as the search space crosses some threshold.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10245'>
+<cite>
+<a href="/users/dzhioev">dzhioev</a>
+<span class='when'><a href="#comment_10245"><time data-relative="true">2013-06-20T12:11:23Z</time></a></span>
+</cite>
+<blockquote><p>The problem is that current algorithm is not quadratic at all. You can ensure on my example: 1) Create empty dir. 2) Create file &quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot; in it. 3) Run vim in this dir and start Command-T. 4) Type several &quot;a&quot;-s in search string. With every 'a' search will greatly slow down. In fact you can't wait till it ends after ~10 'a'-s. In this case complexity of algorithm will be O(s!/(p! * (s - p)!)) (it's combinations number <a href="http://en.wikipedia.org/wiki/Combination" class="external">http://en.wikipedia.org/wiki/Combination</a> ). It happens because algorithm memorize nothing during it's work. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10246'>
+<cite>
+<a href="/users/dzhioev">dzhioev</a>
+<span class='when'><a href="#comment_10246"><time data-relative="true">2013-06-20T12:13:23Z</time></a></span>
+</cite>
+<blockquote><p>BTW, Is there any way to subscribe for updates to this thread?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10455'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10455"><time data-relative="true">2013-09-15T07:33:03Z</time></a></span>
+</cite>
+<blockquote><p>I've got a patch which adds memoization; will push once I've done some more testing. It leads to a noticeable improvement using the &quot;pathological&quot; test case that you describe above.</p>
+<p>Thanks for bringing this issue up. It had totally escaped me that the way the recursion was implemented was leading to unnecessary re-work in these cases.</p>
+<p>(To answer you question about subscribing, there is an Atom feed; no email notifications yet, though.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10809'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10809"><time data-relative="true">2013-12-25T18:40:47Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to close this ticket now as the memoization that's been merged seems to be working fairly well (since then, have also added threading to map-reduce the problem). I did some testing to see how close the recursive algorithm is to a non-recursive algorithm, or one in which the recursion depth is limited, and there's not much of a delta any more (see <a href="/issues/2130">ticket #2130</a>).</p>
+<p>Thanks for bringing the issue to my attention. Things are much better now. Still interested in making them even better, though, but will have to get creative for that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10810'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10810"><time data-relative="true">2013-12-25T18:40:49Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10811'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10811"><time data-relative="true">2013-12-25T18:43:27Z</time></a></span>
+</cite>
+<blockquote><p>See also feature <a href="/issues/2113">request #2113</a>, which is a placeholder for the possibility of memoizing more things.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

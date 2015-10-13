@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1932: CommandT to search for tags
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1932</div>
+<div class='issue' id='issue_1932'>
+<form class="edit_issue" id="edit_issue_1932" action="/issues/1932" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="mSf1XpBcNPLxebQ6NyVabBSRepHGk0OlokmUTDzlShqt1UvpN9Hupyj1h80GDAnYoRMTrc1/zbmCVkGyGD0tPg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1932:
+<span data-name='issue[summary]'>
+CommandT to search for tags
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-12-02T23:59:02Z</time>, updated <time data-relative="true">2012-02-21T06:35:00Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/noon-silk">Noon Silk</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Command-T is undeniably brilliant and useful, as are tags files. Currently I use the inbuilt tag searcher to get to tags of interest (:ts /foo to search, and so on), I think it would be amazing to have a Command-T prompt to search for these, just as there is one to search for buffers.</p>
+<p>I imagine at least initially it could look in the current dir for a tags file, but could also just iterate over them, or use the same lookup strategy as :ts. The proposed implementation is fairly obvious, I think: Fuzzy search on tag name, load up tag location based on selection, etc.</p>
+<p>I've looked at the Ruby code, but unfortunately I don't know ruby well enough to add this myself (I will try, though, if this feature is rejected).</p>
+<p>Hope you accept this feature! Thanks for Command-T!</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7306'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7306"><time data-relative="true">2011-12-03T19:11:44Z</time></a></span>
+</cite>
+<blockquote><p>This is a duplicate of feature <a href="/issues/1746">request #1746</a> so I am going to mark this one as closed.</p>
+<p>As I said in that ticket, I am not much of a tags user myself (I would be, but I've never been able to get tags working properly in a <a href="/wiki/Ruby_on_Rails">Ruby on Rails</a> project). As such, I'm not really in a position to develop and test this feature myself.</p>
+<p>You're welcome to have a try at it. Check out the Git repo and look at how the buffer search was added, and more recently, the jumplist navigation. I suspect that you might be able to get the output of <code>:tags</code> and use that (or something similar, I'm really not familiar with Vim's tag-related commands); but basically you just want to get a list of all tags and then let Command-T do its thing.</p>
+<p>Getting it to not only jump to the right file, but also the right line within a file, is probably going to be trickier, as Command-T has only ever cared about opening files and buffers. I think just opening the file with the tag in it is a reasonable start though.</p>
+<p>Anyway, as I said, this ticket is a duplicate so please continue any further conversation about the issue over on <a href="/issues/1746">ticket #1746</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7440'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7440"><time data-relative="true">2012-02-21T06:35:00Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

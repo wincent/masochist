@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2215: Wikitext doesn't build on Ruby 2.2.x
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2215</div>
+<div class='issue' id='issue_2215'>
+<form class="edit_issue" id="edit_issue_2215" action="/issues/2215" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="vvfIVPRobTWShMvJ6ATcE1YjApspkOgEKH7s5739eZuKBXbjU+W3YEsI+D7ZLY+n46FrpyJ8ZhgIYTkZmSUevw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2215:
+<span data-name='issue[summary]'>
+Wikitext doesn't build on Ruby 2.2.x
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2015-07-16T19:37:59Z</time>, updated <time data-relative="true">2015-07-22T19:08:21Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi, </p>
+<p>Wikitext fail to build with Ruby 2.2.2 with the following assertion : &quot;unsupported Ruby version: 2.2.2 (RuntimeError)&quot; (from extconf.rb).</p>
+<p>Could you add ruby 2.2 as supported version ?</p>
+<p>Thx! :)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_13135'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13135"><time data-relative="true">2015-07-16T20:03:08Z</time></a></span>
+</cite>
+<blockquote><p>Yes! Thanks for bringing this to my attention.</p>
+<p>I think I will probably relax the requirement and replace it with a warning.</p>
+<p>In the meantime, I think you can just comment out the check; I fully expect it to work on Ruby 2.2.x.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13136'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13136"><time data-relative="true">2015-07-16T20:03:26Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Wikitext doesn't </li>
+<li><strong>To:</strong> Wikitext doesn't build on Ruby 2.2.x</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_13137'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_13137"><time data-relative="true">2015-07-16T20:23:56Z</time></a></span>
+</cite>
+<blockquote><p>Thank you ! (And sorry about the title... I stopped to write it and forgot after ...)</p>
+<p>Just, how can I build it ? (I'm a beginner in ruby &amp; with gems).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13138'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13138"><time data-relative="true">2015-07-16T20:34:22Z</time></a></span>
+</cite>
+<blockquote><p>You'd need to clone <a href="https://github.com/wincent/wikitext" class="external">the repo</a>.</p>
+<p>Comment out <a href="https://github.com/wincent/wikitext/blob/3495511386400f1f35b47c9abb7cdcb0ea1f55d9/ext/wikitext/extconf.rb#L31-L33" class="external">these lines</a>.</p>
+<p>Build and install using something like the following in the root directory of the repo:</p>
+<pre class="shell-syntax">$ gem build wikitext.gemspec
+$ gem install ./wikitext-4.1.0.99.gem</pre>
+<p>Or, you can just wait a few hours for me to cut a release (I'll do that after work today).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13144'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13144"><time data-relative="true">2015-07-22T19:08:16Z</time></a></span>
+</cite>
+<blockquote><p>Closing, as this is now fixed in the 4.1.2 release.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13145'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13145"><time data-relative="true">2015-07-22T19:08:21Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

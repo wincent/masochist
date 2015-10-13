@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1817: Test Rails 3.1.0.rc1
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1817</div>
+<div class='issue' id='issue_1817'>
+<form class="edit_issue" id="edit_issue_1817" action="/issues/1817" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="DeHETv2kUS3dUzq7kq94dI5QIE286gYppyN0nuO6uUw5E3r5WimLeATfCUyjhivAO9JJcbcGiDWHPKFgx2LeaA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1817:
+<span data-name='issue[summary]'>
+Test Rails 3.1.0.rc1
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-05-08T07:17:33Z</time>, updated <time data-relative="true">2011-05-29T04:03:31Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p><a href="http://weblog.rubyonrails.org/2011/5/5/rails-3-1-beta-1-released" class="external">http://weblog.rubyonrails.org/2011/5/5/rails-3-1-beta-1-released</a></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6858'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6858"><time data-relative="true">2011-05-08T08:29:35Z</time></a></span>
+</cite>
+<blockquote><p>After a <code>bundle update rails</code> the first run of the spec suite yields:</p>
+<pre>Finished in 94.85 seconds
+4389 examples, 1908 failures, 56 pending</pre>
+<p>Hopefully should be able to fix the bulk of those up fairly quickly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6859'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6859"><time data-relative="true">2011-05-08T09:01:39Z</time></a></span>
+</cite>
+<blockquote><p>Hmph. Latest version of the mysql2 gem doesn't build on Mac OS X anymore. 0.2.6 does, 0.3.2 doesn't. Back to the bad old days of the first mysql gem.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6862'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6862"><time data-relative="true">2011-05-08T18:58:34Z</time></a></span>
+</cite>
+<blockquote><p>Ticket for mysql2 breakage:</p>
+<ul>
+<li><a href="https://github.com/brianmario/mysql2/issues/167" class="external">https://github.com/brianmario/mysql2/issues/167</a></li>
+</ul>
+<p>Temporary workaround may be to just recompile MySQL with some different <code>./configure</code> options. Will check that out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6863'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6863"><time data-relative="true">2011-05-08T19:08:44Z</time></a></span>
+</cite>
+<blockquote><p>More info on that one: <a href="http://dev.mysql.com/doc/refman/5.0/en/threaded-clients.html" class="external">http://dev.mysql.com/doc/refman/5.0/en/threaded-clients.html</a></p>
+<p>Notably, the page says that the binary distribution ships with a thread-safe client library by default (in addition to the normal library). I wonder if that is why the breakage hasn't been reported upstream, as most people don't install MySQL by source.</p>
+<p>Trying a build now with <code>./configure --enable-thread-safe-client</code>.</p>
+<p>Looks like that will fix it, as I see the test in <code>extconf.rb</code> checks to see if <code>mysql_config --libs_r</code> returns an empty string or not. On my version, it returns the path to where the library <em>would</em> be, not an empty string. It probably needs an additional check to see if the lib file is actually there.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6864'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6864"><time data-relative="true">2011-05-08T21:06:22Z</time></a></span>
+</cite>
+<blockquote><p>After getting the mysql2 gem working:</p>
+<pre>Finished in 1399.72 seconds
+4389 examples, 329 failures, 60 pending</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6892'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6892"><time data-relative="true">2011-05-29T04:03:26Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Test Rails 3.1 beta</li>
+<li><strong>To:</strong> Test Rails 3.1.0.rc1</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6893'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6893"><time data-relative="true">2011-05-29T04:03:31Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

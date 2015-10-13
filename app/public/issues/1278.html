@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1278: Replace Prototype and Scriptaculous with jQuery and Unobtrusive JavaScript
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1278</div>
+<div class='issue' id='issue_1278'>
+<form class="edit_issue" id="edit_issue_1278" action="/issues/1278" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="tLHvRmG12V/FbG+kkjMYAeSXE5XX8ktdOhUFXJypw6qAQ1HxxjgDChzgXFOjGku1URV6qdwexUEaCtCiuHGkjg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1278:
+<span data-name='issue[summary]'>
+Replace Prototype and Scriptaculous with jQuery and Unobtrusive JavaScript
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-17T08:47:59Z</time>, updated <time data-relative="true">2009-04-21T16:42:55Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've written about this on my <a href="/blog">blog</a>:</p>
+<ul>
+<li><a href="https://wincent.com/blog/switching-to-jquery" class="external">https://wincent.com/blog/switching-to-jquery</a></li>
+</ul>
+<p>And there have been a couple of <a href="/twitter">tweets</a> as well:</p>
+<ul>
+<li><a href="https://wincent.com/twitter/31" class="external">https://wincent.com/twitter/31</a></li>
+<li><a href="https://wincent.com/twitter/35" class="external">https://wincent.com/twitter/35</a></li>
+</ul>
+<p>The purpose of this ticket is to track what still needs to be done before I can take the final step and <a href="http://fukamachi.org/wp/2009/04/13/js-changeover/" class="external">delete the legacy files</a>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4466'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4466"><time data-relative="true">2009-04-17T08:50:17Z</time></a></span>
+</cite>
+<blockquote><p>Calls that I am going to have to search for and replace (taken from <a href="http://ennerchi.com/projects/jrails" class="external">this page</a> on the <a href="/wiki/jRails">jRails</a> website):</p>
+<h3>Prototype</h3>
+<ul>
+<li><code>form_remote_for</code></li>
+<li><code>form_remote_tag</code></li>
+<li><code>link_to_remote</code></li>
+<li><code>observe_field</code></li>
+<li><code>observe_form</code></li>
+<li><code>periodically_call_remote</code></li>
+<li><code>remote_form_for</code></li>
+<li><code>submit_to_remote</code></li>
+</ul>
+<h3>Scriptaculous</h3>
+<ul>
+<li><code>draggable_element</code></li>
+<li><code>drop_receiving_element</code></li>
+<li><code>sortable_element</code></li>
+<li><code>visual_effect</code></li>
+</ul>
+<h3>RJS</h3>
+<ul>
+<li><code>hide</code></li>
+<li><code>insert_html</code></li>
+<li><code>remove</code></li>
+<li><code>replace</code></li>
+<li><code>replace_html</code></li>
+<li><code>show</code></li>
+<li><code>toggle</code></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4467'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4467"><time data-relative="true">2009-04-17T09:00:33Z</time></a></span>
+</cite>
+<blockquote><p>Luckily I didn't stick too much <a href="/wiki/AJAX">AJAX</a> stuff in the code base before deciding to make the switch. This is what a quick search with <a href="/wiki/ack">ack</a> has found:</p>
+<h3><a href="/wiki/Prototype">Prototype</a></h3>
+<h4><code>link_to_remote</code></h4>
+<pre>app/helpers/articles_helper.rb
+3:    link_to_remote 'update', common_options, :class =&gt; 'update_link'
+
+app/helpers/posts_helper.rb
+17:    link_to_remote 'update', common_options, :class =&gt; 'update_link'
+
+app/helpers/tweets_helper.rb
+14:    link_to_remote 'update', common_options, :class =&gt; 'update_link'</pre>
+<h4><code>observe_field</code></h4>
+<pre>app/helpers/articles_helper.rb
+7:    observe_field 'article_body', common_options.merge({:frequency =&gt; 30.0})
+
+app/helpers/posts_helper.rb
+21:    observe_field 'post_excerpt', common_options.merge({:frequency =&gt; 30.0})
+25:    observe_field 'post_body', common_options.merge({:frequency =&gt; 30.0})
+
+app/helpers/tweets_helper.rb
+18:    observe_field 'tweet_body', common_options.merge({ :frequency =&gt; 5.0 })</pre>
+<h4><code>submit_to_remote</code></h4>
+<pre>app/helpers/application_helper.rb
+192:      button = submit_to_remote 'button', 'destroy',
+203:      button = submit_to_remote 'button', 'ham',</pre>
+<h3><a href="/wiki/Scriptaculous">Scriptaculous</a></h3>
+<h4><code>visual_effect</code></h4>
+<pre>app/controllers/admin/issues_controller.rb
+17:        page.visual_effect :highlight, &quot;issue_#{@issue.id}&quot;, :duration =&gt; 1.5
+18:        page.visual_effect :fade, &quot;issue_#{@issue.id}_ham_form&quot;
+
+app/controllers/comments_controller.rb
+105:            page.visual_effect :highlight, &quot;comment_#{@comment.id}&quot;, :duration =&gt; 1.5
+106:            page.visual_effect :fade, &quot;comment_#{@comment.id}_ham_form&quot;
+125:          page.visual_effect :fade, &quot;comment_#{@comment.id}&quot;
+
+app/controllers/issues_controller.rb
+109:            page.visual_effect :highlight, &quot;issue_#{@issue.id}&quot;, :duration =&gt; 1.5
+110:            page.visual_effect :fade, &quot;issue_#{@issue.id}_ham_form&quot;
+141:          page.visual_effect :fade, &quot;issue_#{@issue.id}&quot;
+
+app/controllers/topics_controller.rb
+83:            page.visual_effect :highlight, &quot;topic_#{@topic.id}&quot;, :duration =&gt; 1.5
+84:            page.visual_effect :fade, &quot;topic_#{@topic.id}_ham_form&quot;
+102:          page.visual_effect :fade, &quot;topic_#{topic.id}&quot;</pre>
+<h3>Other</h3>
+<p>More stuff found with <a href="/wiki/ack">ack</a> which will have to be looked at. </p>
+<h4><code>link_to_function</code></h4>
+<p>Both of these use <a href="/wiki/Prototype">Prototype</a> and in any case aren't <a href="/wiki/Unobtrusive_JavaScript">Unobtrusive JavaScript</a>.</p>
+<pre>app/helpers/issues_helper.rb
+41:    link_to_function link_text, &quot;$('issue_search').toggle(); $('issue_summary').focus();&quot;,
+
+app/views/layouts/application.haml
+35:          =link_to_function 'Search', &quot;$('search').toggle(); $('search_box').focus();&quot;, :href =&gt; search_index_url</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4468'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4468"><time data-relative="true">2009-04-17T10:17:23Z</time></a></span>
+</cite>
+<blockquote><p>Oops, almost forgot to add the &quot;in place&quot; editor fields:</p>
+<pre>app/controllers/admin/forums_controller.rb
+3:  in_place_edit_for :forum, :position
+4:  in_place_edit_for :forum, :name
+5:  in_place_edit_for :forum, :description
+
+app/controllers/admin/posts_controller.rb
+3:  in_place_edit_for :post, :title
+4:  in_place_edit_for :post, :permalink
+
+app/controllers/admin/tags_controller.rb
+3:  in_place_edit_for :tag, :name
+
+app/controllers/issues_controller.rb
+10:  in_place_edit_for :issue, :summary
+
+app/controllers/links_controller.rb
+4:  in_place_edit_for :link, :uri
+5:  in_place_edit_for :link, :permalink
+
+app/views/admin/forums/index.html.haml
+12:        %td=in_place_editor_field :forum, :position
+13:        %td=in_place_editor_field :forum, :name
+14:        %td=in_place_editor_field :forum, :description
+
+app/views/admin/posts/index.html.haml
+10:      %td=in_place_editor_field :post, :title
+11:      %td=in_place_editor_field :post, :permalink
+
+app/views/admin/tags/index.html.haml
+9:      %td=in_place_editor_field :tag, :name
+
+app/views/js/issues/show.js.erb
+31:  function edit_in_place(selector, class_name, attribute_name, url) {
+175:    edit_in_place('div.issue', 'issue', 'summary', '/issues/');
+183:    edit_in_place('div.issue', 'issue', 'pending_tags', '/issues/');
+
+app/views/links/index.html.haml
+12:      %td=in_place_editor_field :link, :uri
+13:      %td=in_place_editor_field :link, :permalink</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4475'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4475"><time data-relative="true">2009-04-18T15:21:12Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4478'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4478"><time data-relative="true">2009-04-20T06:05:11Z</time></a></span>
+</cite>
+<blockquote><p>Ok, all the in-place-editor fields have been replaced and I've deleted the old plug-in.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4482'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4482"><time data-relative="true">2009-04-20T17:51:59Z</time></a></span>
+</cite>
+<blockquote><p>Ok, all the <code>visual_effect</code> stuff has now been replaced, as has all the stuff which ultimately depends on the <code>submit_to_remote</code> method (&quot;ham&quot; and &quot;destroy&quot; buttons).</p>
+<p>All that's left to reimplement now are the live previews, I believe.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4484'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4484"><time data-relative="true">2009-04-21T16:42:47Z</time></a></span>
+</cite>
+<blockquote><p>All done.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4485'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4485"><time data-relative="true">2009-04-21T16:42:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

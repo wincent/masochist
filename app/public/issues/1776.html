@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1776: cmd-t: error when hitting esc when cmd-t is opened from a help buffer
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1776</div>
+<div class='issue' id='issue_1776'>
+<form class="edit_issue" id="edit_issue_1776" action="/issues/1776" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="i1tg/jyscqrmi4aF9vH5BeLx81eojnAG5O/i4fXSiqa/qd5JmyGo/z8HtXLH2KqxV3Oaa6Ni/hrE8Dcf0Qrtgg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1776:
+<span data-name='issue[summary]'>
+cmd-t: error when hitting esc when cmd-t is opened from a help buffer
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-02-05T21:09:55Z</time>, updated <time data-relative="true">2011-02-15T08:32:04Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<h2>Repro</h2>
+<ol>
+<li><code>:h :h</code></li>
+<li><code>C-w o</code></li>
+<li><code>:CommandT</code></li>
+<li><code>a&lt;esc&gt;</code></li>
+</ol>
+<h2>Expected</h2>
+<p>No error</p>
+<h2>Actual</h2>
+<p>Vim prints error. Unfortunately, it disappears fast enough that I can't copy it. Something about &quot;can't unload buffer in CommandCancel&quot;.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6684'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6684"><time data-relative="true">2011-02-06T14:34:12Z</time></a></span>
+</cite>
+<blockquote><p>Following those steps I can't repro, so it must be dependent on some setting you have active. Care to post your <code>.vimrc</code>?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6692'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6692"><time data-relative="true">2011-02-12T14:25:58Z</time></a></span>
+</cite>
+<blockquote><p>It seems I'm encountering similar problem, I don't see any error, but &lt;esc&gt; simply doesn't work... Others basic mappings seems works fine. Default vim package at ubuntu 10.10</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6693'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6693"><time data-relative="true">2011-02-13T04:02:05Z</time></a></span>
+</cite>
+<blockquote><p>Concern &lt;esc&gt; not working issue I found: <a href="https://wincent.com/issues/1531" class="external">https://wincent.com/issues/1531</a> And yes, I'm running vim in terminal :)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6699'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6699"><time data-relative="true">2011-02-15T08:32:04Z</time></a></span>
+</cite>
+<blockquote><p>In the future, please keep your comments about <a href="/issues/1531">ticket #1531</a> actually on <a href="/issues/1531">ticket #1531</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

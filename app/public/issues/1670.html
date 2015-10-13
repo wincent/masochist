@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1670: Can't create new wiki articles
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1670</div>
+<div class='issue' id='issue_1670'>
+<form class="edit_issue" id="edit_issue_1670" action="/issues/1670" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="9YyIIOtWJpXByA1yvWo2e9C2WWhxxZVHTH99hGSWVxPBfjaXTNv8wBhEPoWMQ2XPZTQwVHopG1tsYKh6QE4wNw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1670:
+<span data-name='issue[summary]'>
+Can't create new wiki articles
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-08-31T13:27:20Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This looks to be a generalized problem with routes; while they all work fine on the local development machine, many routes on the production server are responding with &quot;no route matches&quot; exceptions.</p>
+<p>Seeing the same thing with <code>forums#show</code>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6172'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6172"><time data-relative="true">2010-08-31T14:34:44Z</time></a></span>
+</cite>
+<blockquote><p>Bah, looks like the root cause is that the <code>db/schema.rb</code> files have diverged.</p>
+<p>As en example, <code>forums#show</code> calls on the <code>link_to_user_for_topic</code> helper method, which creates a temporary user object so as to avoid hitting the database:</p>
+<pre class="ruby-syntax">User.new(:display_name =&gt; topic.last_active_user_display_name)</pre>
+<p>It then calls the <code>link_to_user</code> helper, which ends up doing:</p>
+<pre class="ruby-syntax">link_to user.display_name, user_path(user)</pre>
+<p><code>user_path</code> is choking on the production server, but coping fine on the local development machine. To see why, check out the <code>User#to_param</code> method:</p>
+<pre class="ruby-syntax">def to_param
+  param = (changes['display_name'] &amp;&amp; changes['display_name'].first)
+  User.parametrize(param || display_name)
+end</pre>
+<p>On the remote server:</p>
+<pre class="ruby-syntax">User.new(:display_name=&gt;'hey').changes # =&gt; {&quot;display_name&quot;=&gt;[&quot;&quot;, &quot;hey&quot;]}
+User.new.display_name # =&gt; &quot;&quot;</pre>
+<p>On the local machine:</p>
+<pre class="ruby-syntax">User.new(:display_name=&gt;'hey').changes # =&gt; {&quot;display_name&quot;=&gt;[nil, &quot;hey&quot;]}
+User.new.display_name # =&gt; nil</pre>
+<p>The reason for the discrepant behavior:</p>
+<p>The local <code>db/schema.rb</code>:</p>
+<pre class="ruby-syntax">create_table &quot;users&quot;, :force =&gt; true do |t|
+  t.string   &quot;display_name&quot;,                       :null =&gt; false
+  ...
+end</pre>
+<p>The remote <code>db/schema.rb</code>:</p>
+<pre class="ruby-syntax">create_table &quot;users&quot;, :force =&gt; true do |t|
+  t.string   &quot;display_name&quot;,    :default =&gt; &quot;&quot;,    :null =&gt; false
+  ...
+end</pre>
+<p>Currently investigating how these ever got out of sync, but I imagine it's because in the very early days when the application was first started (ie. 2007), I must have followed some web tutorial that told me to <a href="/wiki/SVN">SVN</a> ignore the <code>schema.rb</code>, log files etc...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6173'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6173"><time data-relative="true">2010-08-31T14:36:52Z</time></a></span>
+</cite>
+<blockquote><p>Alas, I can't blame a web tutorial. <code>git blame</code> reveals that the mistake was my own:</p>
+<pre>commit d4c78a5b182ed4a45428bcf642fe97839e4ac9bc
+Author: Wincent Colaiuta &lt;win@wincent.com&gt;
+Date:   Wed Jan 30 00:41:24 2008 +0100
+
+    Ignore db/schema.rb
+    
+    This file is easily regenerated and just creates noise in the &quot;git
+    status&quot; output seeing as it changes so often, so ignore it.
+    
+    Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6174'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6174"><time data-relative="true">2010-08-31T15:06:50Z</time></a></span>
+</cite>
+<blockquote><p>Overview of divergent tables; produced with:</p>
+<pre class="ruby-syntax">$ diff --ignore-space-change -u db/schema.rb.local db/schema.rb.remote | \
+  grep -e 'create_table\|^+\|^-' | \
+  ruby -p -e 'gsub /,\s+/, &quot; &quot;'</pre>
+<p>Not all of these tables are so problematic, really only those which use a string as a permalink, which look to be like:</p>
+<ul>
+<li><code>articles</code></li>
+<li><code>confirmations</code></li>
+<li><code>emails</code></li>
+<li><code>forums</code></li>
+<li><code>links</code></li>
+<li><code>pages</code></li>
+<li><code>posts</code></li>
+<li><code>products</code></li>
+<li><code>repos</code></li>
+<li><code>resets</code></li>
+<li><code>tags</code></li>
+<li><code>users</code></li>
+</ul>
+<pre>--- db/schema.rb.local&#x0009;2010-08-31 16:50:01.000000000 +0200
++++ db/schema.rb.remote&#x0009;2010-08-31 16:27:35.000000000 +0200
+   create_table &quot;articles&quot; :force =&gt; true do |t|
+-    t.string   &quot;title&quot; :null =&gt; false
++    t.string   &quot;title&quot; :default =&gt; &quot;&quot; :null =&gt; false
+-    t.text     &quot;body&quot; :limit =&gt; 2147483647 :null =&gt; false
++    t.text     &quot;body&quot; :limit =&gt; 16777215 :null =&gt; false
+   create_table &quot;attachments&quot; :force =&gt; true do |t|
+-    t.string   &quot;digest&quot; :null =&gt; false
+-    t.string   &quot;path&quot; :null =&gt; false
+-    t.string   &quot;mime_type&quot; :null =&gt; false
++    t.string   &quot;digest&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;path&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;mime_type&quot; :default =&gt; &quot;&quot; :null =&gt; false
+-    t.string   &quot;original_filename&quot; :null =&gt; false
++    t.string   &quot;original_filename&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;comments&quot; :force =&gt; true do |t|
+-    t.text     &quot;body&quot; :limit =&gt; 2147483647 :null =&gt; false
++    t.text     &quot;body&quot; :limit =&gt; 16777215 :null =&gt; false
+-    t.string   &quot;commentable_type&quot; :null =&gt; false
++    t.string   &quot;commentable_type&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;confirmations&quot; :force =&gt; true do |t|
+-    t.string   &quot;secret&quot; :null =&gt; false
++    t.string   &quot;secret&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;emails&quot; :force =&gt; true do |t|
+-    t.string   &quot;address&quot; :null =&gt; false
++    t.string   &quot;address&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;forums&quot; :force =&gt; true do |t|
+-    t.string   &quot;name&quot; :null =&gt; false
++    t.string   &quot;name&quot; :default =&gt; &quot;&quot; :null =&gt; false
+-    t.string   &quot;permalink&quot; :null =&gt; false
++    t.string   &quot;permalink&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;issues&quot; :force =&gt; true do |t|
+-    t.string   &quot;summary&quot; :null =&gt; false
++    t.string   &quot;summary&quot; :default =&gt; &quot;&quot; :null =&gt; false
+-    t.text     &quot;description&quot; :limit =&gt; 2147483647
++    t.text     &quot;description&quot; :limit =&gt; 16777215
+   create_table &quot;links&quot; :force =&gt; true do |t|
+-    t.string   &quot;uri&quot; :null =&gt; false
++    t.string   &quot;uri&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;monitorships&quot; :force =&gt; true do |t|
+-    t.string   &quot;monitorable_type&quot; :null =&gt; false
++    t.string   &quot;monitorable_type&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;needles&quot; :force =&gt; true do |t|
+-    t.string  &quot;model_class&quot; :null =&gt; false
++    t.string  &quot;model_class&quot; :default =&gt; &quot;&quot; :null =&gt; false
+-    t.string  &quot;attribute_name&quot; :null =&gt; false
+-    t.string  &quot;content&quot; :null =&gt; false
++    t.string  &quot;attribute_name&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string  &quot;content&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;pages&quot; :force =&gt; true do |t|
+-    t.string   &quot;title&quot; :null =&gt; false
+-    t.string   &quot;permalink&quot; :null =&gt; false
++    t.string   &quot;title&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;permalink&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;posts&quot; :force =&gt; true do |t|
+-    t.string   &quot;title&quot; :null =&gt; false
+-    t.string   &quot;permalink&quot; :null =&gt; false
++    t.string   &quot;title&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;permalink&quot; :default =&gt; &quot;&quot; :null =&gt; false
+-    t.text     &quot;body&quot; :limit =&gt; 2147483647
++    t.text     &quot;body&quot; :limit =&gt; 16777215
+   create_table &quot;products&quot; :force =&gt; true do |t|
+-    t.string   &quot;name&quot; :null =&gt; false
+-    t.string   &quot;permalink&quot; :null =&gt; false
++    t.string   &quot;name&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;permalink&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;repos&quot; :force =&gt; true do |t|
+-    t.string   &quot;name&quot; :null =&gt; false
+-    t.string   &quot;permalink&quot; :null =&gt; false
+-    t.string   &quot;path&quot; :null =&gt; false
++    t.string   &quot;name&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;permalink&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;path&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;resets&quot; :force =&gt; true do |t|
+-    t.string   &quot;secret&quot; :null =&gt; false
++    t.string   &quot;secret&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;sessions&quot; :force =&gt; true do |t|
+-    t.string   &quot;session_id&quot; :null =&gt; false
++    t.string   &quot;session_id&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;taggings&quot; :force =&gt; true do |t|
+-    t.string   &quot;taggable_type&quot; :null =&gt; false
++    t.string   &quot;taggable_type&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;tags&quot; :force =&gt; true do |t|
+-    t.string   &quot;name&quot; :null =&gt; false
++    t.string   &quot;name&quot; :default =&gt; &quot;&quot; :null =&gt; false
+   create_table &quot;topics&quot; :force =&gt; true do |t|
+-    t.string   &quot;title&quot; :null =&gt; false
+-    t.text     &quot;body&quot; :limit =&gt; 2147483647 :null =&gt; false
++    t.string   &quot;title&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.text     &quot;body&quot; :limit =&gt; 16777215 :null =&gt; false
+   create_table &quot;users&quot; :force =&gt; true do |t|
+-    t.string   &quot;display_name&quot; :null =&gt; false
+-    t.string   &quot;passphrase_hash&quot; :null =&gt; false
+-    t.string   &quot;passphrase_salt&quot; :null =&gt; false
++    t.string   &quot;display_name&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;passphrase_hash&quot; :default =&gt; &quot;&quot; :null =&gt; false
++    t.string   &quot;passphrase_salt&quot; :default =&gt; &quot;&quot; :null =&gt; false</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6175'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6175"><time data-relative="true">2010-08-31T15:30:13Z</time></a></span>
+</cite>
+<blockquote><p>Looks like the reason the schemas diverged may be due to having different versions of MySQL locally and on the server.</p>
+<p>The server is running 5.0.45, and locally I'm running 5.1.45.</p>
+<p>Funnily enough, the server won't let me add a default value of <code>NULL</code> on a <code>NOT NULL</code> column:</p>
+<pre>mysql&gt; ALTER TABLE articles ALTER COLUMN title SET DEFAULT NULL;
+ERROR 1067 (42000): Invalid default value for 'title'</pre>
+<p>And the local development machine won't let me drop the default value (well, it's not prohibited, it's just a no-op):</p>
+<pre>mysql&gt; ALTER TABLE articles ALTER COLUMN title DROP DEFAULT;
+Query OK, 0 rows affected (0.04 sec)</pre>
+<p>So my options here are:</p>
+<ul>
+<li>set an explicit default on both machines: this isn't really desirable as my intention here behind using <code>NOT NULL</code> is to declare that I expect the user to supply a value, not that I am prepared to insert an default value myself if the user doesn't fulfill that expectation</li>
+<li>drop the <code>NOT NULL</code> constraint and rely on application-level validations to catch user errors</li>
+<li>live with the existing behavior on the server and rewrite all my <code>to_param</code> methods to special-case the &quot;new record&quot; case</li>
+</ul>
+<p>Will need to think about it, although the second option currently seems the least ghastly one; unfortunately the forums are down in the meantime.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6176'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6176"><time data-relative="true">2010-08-31T17:05:07Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've fixed the two issues mentioned in this ticket (failure to create new wiki articles, and bombing out on <code>forums#show</code>).</p>
+<p>The idea is to make the two database schemas (development and deployment) converge again. Seeing as we are starting from different points I am not going to bother with migrations; this will all just be done in the <a href="/wiki/MySQL">MySQL</a> console.</p>
+<h3>Example of fixing the two problems mentioned here</h3>
+<h4>On the local machine</h4>
+<p>First up, and <strong><em>very importantly</em></strong>, audit the model code to ensure that the model attributes which we'll be changing from <code>NOT NULL</code> to <code>NULL</code> have application-level constraints (<code>validates_presence_of</code> validations) to guard against bad data from getting into the database in the course of normal operation.</p>
+<pre>ALTER TABLE articles MODIFY title VARCHAR(255);              -- was NOT NULL
+ALTER TABLE articles MODIFY body MEDIUMTEXT;                 -- was LONGTEXT, make it match what's on the server
+ALTER TABLE articles MODIFY public BOOL DEFAULT 1;           -- was NOT NULL
+ALTER TABLE articles MODIFY accepts_comments BOOL DEFAULT 1; -- was NOT NULL
+ALTER TABLE users MODIFY display_name VARCHAR(255);          -- was NOT NULL</pre>
+<h4>On the remote server</h4>
+<p>Backup in case things go wrong:</p>
+<pre class="shell-syntax">mysqldump -u user -p database &gt; database.sql</pre>
+<p>Then:</p>
+<pre>ALTER TABLE articles MODIFY title VARCHAR(255) DEFAULT NULL;
+ALTER TABLE articles MODIFY body MEDIUMTEXT DEFAULT NULL;
+ALTER TABLE articles MODIFY public BOOL DEFAULT 1;
+ALTER TABLE articles MODIFY accepts_comments BOOL DEFAULT 1;
+ALTER TABLE users MODIFY display_name VARCHAR(255);</pre>
+<p>It's necessary to restart the application server (<code>monit restart unicorn</code>) for the app to reflect these changes, and after that the bugs are gone.</p>
+<p>So now I am going to proceed with checking the remaining tables and making sure that the schema is identical both locally and remotely, and that I'm not using <code>NOT NULL</code> in places where it can cause problems, and that adequate application-level constraints exist where needed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6177'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6177"><time data-relative="true">2010-08-31T17:06:54Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

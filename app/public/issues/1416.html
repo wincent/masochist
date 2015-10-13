@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1416: use floater for pause/play information
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1416</div>
+<div class='issue' id='issue_1416'>
+<form class="edit_issue" id="edit_issue_1416" action="/issues/1416" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OlxKFVlJ30ZmaZ8qTa4CRcn5Voka0/YZ3dNY27tjaUwOrvSi/sQFE7/lrN18h1HxfHs/tRE/eAX9zI0ln7sOaA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1416:
+<span data-name='issue[summary]'>
+use floater for pause/play information
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-09-29T10:50:11Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/welchb">welchb</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hey man,</p>
+<p>I recently purchased synergy after trying it out for a while with the Machiest - Love it.</p>
+<p>But it doesn't quiiite do what I would really like it to do.  I'd like it to use the floater to pop up when you have the &quot;extra visual feedback on play/pause&quot;, not growl.  The floater is larger with more information and I'd like to use that.  Is there any way you could provide a way to select *which* notification method you use for this option?</p>
+<p>Reasoning: I don't mind growl I use it in other places.  But it's sort of sadly lacking in size/information for iTunes/synergy's needs.  And since you can't just use growl for this &quot;extra&quot; thing (it's all or nothin') that means you get two notifications for each new track, which is sort of goofy.</p>
+<p>Thanks much, man!</p>
+<p>-bw</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5072'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5072"><time data-relative="true">2009-09-29T13:46:43Z</time></a></span>
+</cite>
+<blockquote><p>Perhaps the &quot;extra visual feedback&quot; option should be worded a little more clearly, but it really was only ever intended to apply to the centered &quot;bezels&quot; that you see when you press hot key combinations. I didn't use the word &quot;bezels&quot; because that's geek/programmer terminology for them.</p>
+<p>The fact that Growl notifications get shown on play/pause is actually just a coincidence stemming from the way the Growl system works: basically, iTunes sends a &quot;notification&quot; for each state change (from playing to paused, or vice versa) and <a href="/wiki/Synergy">Synergy</a> just relays that to Growl.</p>
+<p>Synergy's own built-in floater has never behaved that way and was always intended to work like the informative overlay that you see when a music video starts playing. That's why it has never been shown when resuming paused playback, and has only been shown when a new track starts playing from the beginning.</p>
+<p>Sounds like what you really want isn't actually a modification of the &quot;Extra visual feedback&quot; checkbox, nor really a way to control which notification method gets used for a given thing. I think what you actually want is a new checkbox in the Advanced tab called something like &quot;Show Floater when resuming playback&quot;, with a tooltip that explains something like &quot;Normally, the Floater is only displayed when a new track starts playing for the first time; this setting can be used to also show it when resuming paused playback&quot;.</p>
+<p>Not sure if that would be clear enough. What do you think?</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

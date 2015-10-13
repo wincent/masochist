@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #524: REQUEST: Make hot keys work when a fullscreen app/game is running
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #524</div>
+<div class='issue' id='issue_524'>
+<form class="edit_issue" id="edit_issue_524" action="/issues/524" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="MKm10u/ZdmTUCpwNnd+B5/8mZ2ZX8K5hc37FeIZSBvEEWwtlSFSsMQ2Gr/qs9tJTSqQOWlwcIH1TYRCGooph1Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #524:
+<span data-name='issue[summary]'>
+REQUEST: Make hot keys work when a fullscreen app/game is running
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-12-19T15:21:44Z</time>, updated <time data-relative="true">2007-04-04T09:42:24Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/julian">julian</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>synergy and synergy advance don't work (hotkey) when a fullscreen app/game is running i suspect you are using some older mechanism for intercepting hot-keys like InstallEventHandler(), those don't work when a fullscreen app is in front. please use the newer method CGEventTapCreate() on macosx 10.4+ which also works in this case</p>
+<p>here is code to get you started: <a href="http://pastebin.ca/285459" class="external">http://pastebin.ca/285459</a></p>
+<p>note: &quot;Event taps receive key up and key down events if one of the following conditions is true:</p>
+<p>&#x2022; The current process is running as the root user. &#x2022; Access for assistive devices is enabled. In Mac OS X v10.4, you can enable this feature using System Preferences, Universal Access panel, Keyboard view.&quot;</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2896'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2896"><time data-relative="true">2006-12-20T04:12:31Z</time></a></span>
+</cite>
+<blockquote><p>That's correct, I'm not using CGEventTapCreate at this stage and in fact hadn't heard of it until now. Synergy Advance is currently using InstallEventHandler and Synergy is watching for hot key events in the main application event loop (because it was written first, when I didn't yet know about InstallEventHandler).</p>
+<p>Given that CGEventTapCreate is Tiger-and-up I would have to use CGEventTapCreate when running on Tiger and up and fall back to InstallEventHandler on older systems.</p>
+<p>The limitations are a bit of a bummer. Just as the documentation indicates, I tried the sample code (assistive access turned off, normal privileges) and it failed; with root privileges it works even when assistive access is turned off. Running as root is definitely not an option because Apple recommends against running Cocoa apps with root privileges, and even if it didn't I wouldn't really want to run with those privileges anyway. Interestingly, I tried with assitive access turned on and with normal privileges, it worked and continued to work even after turning assistive access off; that's handy because it makes implementation a little bit easier.</p>
+<p>So that basically means that any implementation of this would require a two-level fallback; the first level would be weak-linking so as to be able to run on  older versions of Mac OS X and the second level would be to try and on failing (in the event that assistive access is turned off) fall back to InstallEventHandler.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2897'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2897"><time data-relative="true">2006-12-20T04:12:54Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=89) example</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2898'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2898"><time data-relative="true">2006-12-20T08:13:51Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've got an initial implementation in place:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/12/wohotkey_r82_15_items_changed.php" class="external">http://wincent.com/a/about/wincent/weblog/svn-log/archives/2006/12/wohotkey_r82_15_items_changed.php</a></p>
+<p>Still have to polish and test it but unless any problems appear this will go into the next release of Synergy Advance (0.5).</p>
+<p>Will leave this request open, however, because the implementation is only in place for Synergy Advance. The latter uses the WOHotKey framework for hot key support, while Synergy uses a custom application event loop, so it won't be so easy to make the necessary changes.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2899'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2899"><time data-relative="true">2006-12-20T08:21:23Z</time></a></span>
+</cite>
+<blockquote><p>See also feature <a href="/issues/110">request #110</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2902'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2902"><time data-relative="true">2007-04-04T09:36:12Z</time></a></span>
+</cite>
+<blockquote><p>If you wish to confirm that this bug is fixed you can try out one of the Synergy Advance nightly builds. As noted in the nightlies page, these are automated builds which represent a snapshot of the current development status. They are not tested and may have issues of their own; the latest official release (0.4) is still the one that's recommended for daily use.</p>
+<p>More information on nightlies here: </p>
+<p><a href="http://wincent.com/s/nightlies/" class="external">http://wincent.com/s/nightlies/</a></p>
+<p>A list of all Synergy Advance nightlies:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy_advance/</a></p>
+<p>Concretely, I believe this issues is fixed in revision 429 (link follows), or any later revision:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/synergy_advance_revision_429.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2903'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2903"><time data-relative="true">2007-04-04T09:38:58Z</time></a></span>
+</cite>
+<blockquote><p>Whoops. I accidentally attached my previous comment to this issue, which is a Synergy issue and I meant it to be for Synergy Advance. I'm going to mark the mistaken comment as &quot;private&quot; (invisible) so that it won't cause any future confusion for others who might view this ticket.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2904'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2904"><time data-relative="true">2007-04-04T09:42:24Z</time></a></span>
+</cite>
+<blockquote><p>Going to leave this ticket open so that we can track the implementation of the feature in Synergy.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

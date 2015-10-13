@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+last.fm submission broken in 3.5a2
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; last.fm submission broken in 3.5a2</div>
+<h1 class='major'>last.fm submission broken in 3.5a2</h1>
+<div class='topic' id='topic_409'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/bugzilla-user-500">bugzilla user 500</a>
+<span class='when'>
+<a href="/forums/synergy/topics/409"><time data-relative="true">2009-07-09T11:54:45Z</time></a>
+</span>
+</cite>
+<blockquote><p>As the title says, can't seem to get this to work. From what I see in the console, the handshake is working but the submission never actually happens.</p>
+<pre>09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Read preferences
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Username is unchanged
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Password is unchanged
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Not the first time we've read the preferences; will refresh the existing session
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Refresh Audioscrobbler session
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Will request handshake
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Handshake URL is <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=neilio" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=neilio</a>
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Starting connection attempt
+09/juil./2009 11:50:59&#x0009;Synergy[692]&#x0009;Audioscrobbler: Waiting for handshake reply
+09/juil./2009 11:51:00&#x0009;Synergy[692]&#x0009;Audioscrobbler: Connection to Audioscrobbler did finish loading (response received)
+09/juil./2009 11:51:00&#x0009;Synergy[692]&#x0009;Audioscrobbler: Received an INTERVAL directive
+09/juil./2009 11:51:00&#x0009;Synergy[692]&#x0009;Audioscrobbler: Storing interval value: 1
+09/juil./2009 11:51:00&#x0009;Synergy[692]&#x0009;Audioscrobbler: Processing handshake reply
+09/juil./2009 11:51:00&#x0009;Synergy[692]&#x0009;Audioscrobbler: Received UPTODATE message
+09/juil./2009 11:52:21&#x0009;Synergy[692]&#x0009;Audioscrobbler: Received notification from iTunes
+09/juil./2009 11:52:21&#x0009;Synergy[692]&#x0009;Audioscrobbler: Current track cannot be submitted because it is not a regular file
+09/juil./2009 11:52:21&#x0009;Synergy[692]&#x0009;Audioscrobbler: Cancelling previously existing submission timer, if any</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4787'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4787"><time data-relative="true">2009-07-09T12:00:22Z</time></a></span>
+</cite>
+<blockquote><p>So what's the &quot;current track&quot; in this example? It says it's not a &quot;regular file&quot;; it works this way because the Audioscrobbler protocol requires us to only submit info for &quot;real files&quot;, not for stuff coming from other sources (like Internet radio, or shared playlists over the network etc).</p>
+<p>Have you tried quitting Synergy and restarting it? And trying with different tracks?</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

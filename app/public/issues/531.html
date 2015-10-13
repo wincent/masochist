@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #531: REQUEST: Submit tracks played from shared library to last.fm
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #531</div>
+<div class='issue' id='issue_531'>
+<form class="edit_issue" id="edit_issue_531" action="/issues/531" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="rXHQdjojgDqwnCeJBDyYhMzANgS+K/qcK9nEezI2kTaZg27Bna5ab2kQFH41FcsweUJfOLXHdIALxhGFFu72Eg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #531:
+<span data-name='issue[summary]'>
+REQUEST: Submit tracks played from shared library to last.fm
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-01-13T11:28:02Z</time>, updated <time data-relative="true">2007-01-15T03:11:01Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/paul-mison">Paul Mison</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Curious as to why I wasn't showing any activity on last.fm, I enabled logging and found the following:</p>
+<p>Playing  Artist: &quot;New Order&quot;  Name: &quot;Subculture&quot;  Album: &quot;Substance&quot;  2007-01-13 17:23:28.010 Synergy[28801] Audioscrobbler: Received notification from iTunes 2007-01-13 17:23:28.010 Synergy[28801] Audioscrobbler: Current track cannot be submitted because it is not a regular file 2007-01-13 17:23:28.010 Synergy[28801] Audioscrobbler: Cancelling previously existing submission timer, if any</p>
+<p>However, the last.fm player is perfectly happy to submit the track, even though it's &quot;not a regular file&quot;. If it's possible to distinguish DAAP and other streams, it would be good to match the official client's behaviour.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2929'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2929"><time data-relative="true">2007-01-14T05:23:13Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the feature request, Paul. Two things:</p>
+<p>(1) Please look at this post:</p>
+<p><a href="http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1160&amp;page=1#Post1161" class="external">http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1160&amp;page=1#Post1161</a></p>
+<p>It discusses the protocol and whether or not &quot;non-regular&quot; tracks may be submitted.</p>
+<p>(2) Please look at this post:</p>
+<p><a href="http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1098&amp;page=1#Post1102" class="external">http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1098&amp;page=1#Post1102</a></p>
+<p>It has a link to a tool that you can use to collect information on how these tracks are identified by iTunes. That information is necessary to work out how to identify &quot;DAAP&quot; tracks. (Incidentally, I don't know what DAAP is and haven't ever heard of it before; will look it up.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2930'>
+<cite>
+<a href="/users/paul-mison">Paul Mison</a>
+<span class='when'><a href="#comment_2930"><time data-relative="true">2007-01-14T06:55:51Z</time></a></span>
+</cite>
+<blockquote><p>Sorry, DAAP is protocol underlying iTunes shared libraries. I shouldn't use the jargon. Updated the description to make it easier to find. </p>
+<p>Having looked at the description, I agree that streams shouldn't be submitted, but here I'm taking as my example the behaviour of the client (which also submits iPod tracks, as noted). However, neither iPod nor &quot;shared&quot; tracks have a Location field, so I'll have a look at the scripting dictionary to see if there's a better way to identify the kind.</p>
+<p>I don't yet run 10.4, but I'll see if I can find the same notifications itnl logs as well.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2931'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2931"><time data-relative="true">2007-01-15T03:11:01Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for adding the additional details, Paul.</p>
+<p>If the information can be pried out of the notifications in some way, despite the missing &quot;location&quot; field, that would be great because it will be more efficient. Otherwise, will have to fall back to Apple Events or AppleScript.</p>
+<p>For reference, submitting tracks played on the iPod is feature <a href="/issues/517">request #517</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

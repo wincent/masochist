@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2054: segfault in recursive_match
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2054</div>
+<div class='issue' id='issue_2054'>
+<form class="edit_issue" id="edit_issue_2054" action="/issues/2054" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="8T/SCKAu8dtkXOA4GLt2fWFpqWsIwlfie4pdW1TpfWzFzWy/B6Mrjr3Q088pkiXJ1OvAVwMu2f5blYilcDEaSA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2054:
+<span data-name='issue[summary]'>
+segfault in recursive_match
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2013-01-31T11:33:11Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/marius-gedminas">Marius Gedminas</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I launch vim in my home directory, hit \t, and it segfaults.</p>
+<p>Running under gdb I get this:</p>
+<pre>
+Program received signal SIGSEGV, Segmentation fault.                  
+CommandTMatch_initialize (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;, 
+    self=12729560) at match.c:163
+163&#x0009;                if (c == '.' &amp;&amp; (i == 0 || m.str_p[i - 1] == '/'))
+
+(gdb) bt
+#0  CommandTMatch_initialize (argc=&lt;optimized out&gt;, argv=&lt;optimized out&gt;, 
+    self=12729560) at match.c:163
+#1  0x00007ffff4323fe2 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#2  0x00007ffff4274800 in rb_class_new_instance ()
+   from /usr/lib/libruby-1.9.1.so.1.9
+#3  0x00007ffff4323fe2 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#4  0x00007ffff4325aa0 in rb_funcall () from /usr/lib/libruby-1.9.1.so.1.9
+#5  0x00007fffea148a1e in CommandTMatcher_matches_for (self=&lt;optimized out&gt;, 
+    abbrev=12077440) at matcher.c:159
+#6  0x00007fffea148b2f in CommandTMatcher_sorted_matches_for (self=11968760, 
+    abbrev=11311760, options=&lt;optimized out&gt;) at matcher.c:105
+#7  0x00007ffff4327b1b in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#8  0x00007ffff431d989 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#9  0x00007ffff4323014 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#10 0x00007ffff4323453 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#11 0x00007ffff423476d in rb_protect () from /usr/lib/libruby-1.9.1.so.1.9
+#12 0x00000000005acae8 in ex_ruby ()
+#13 0x000000000048e644 in do_cmdline ()
+#14 0x0000000000465c6d in call_user_func ()
+#15 0x0000000000466696 in call_func ()
+#16 0x000000000046a798 in get_func_tv ()
+#17 0x000000000046e1fc in ex_call ()
+#18 0x000000000048e644 in do_cmdline ()
+#19 0x0000000000433818 in do_ucmd ()
+#20 0x0000000000490859 in do_cmdline ()
+#21 0x00000000004f79de in nv_colon ()
+#22 0x00000000004fde50 in normal_cmd ()
+#23 0x00000000005b507d in main_loop ()
+#24 0x0000000000435b47 in main ()
+</pre>
+<p>I've vim 7.3.782 (built from sources), ruby 1.9.1 (from Ubuntu 12.10) and latest command-t.vim (git describe calls it '1.4-8-g07087e1').</p>
+<p>This is not 100% reproducible -- initially I got an error message about invalid UTF-8 byte sequence, an empty command-t window, and :q gives me a segfault in </p>
+<pre>
+#0  recursive_match (m=0x7fffffffbcd0, str_idx=0, abbrev_idx=0, last_idx=0, 
+    score=0) at match.c:53
+#1  0x00007fffea148602 in CommandTMatch_initialize (argc=&lt;optimized out&gt;, 
+    argv=&lt;optimized out&gt;, self=11405280) at match.c:172
+#2  0x00007ffff4323fe2 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#3  0x00007ffff4274800 in rb_class_new_instance ()
+   from /usr/lib/libruby-1.9.1.so.1.9
+#4  0x00007ffff4323fe2 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#5  0x00007ffff4325aa0 in rb_funcall () from /usr/lib/libruby-1.9.1.so.1.9
+#6  0x00007fffea148a1e in CommandTMatcher_matches_for (self=&lt;optimized out&gt;, 
+    abbrev=11405320) at matcher.c:159
+#7  0x00007fffea148b2f in CommandTMatcher_sorted_matches_for (self=11953680, 
+    abbrev=11409720, options=&lt;optimized out&gt;) at matcher.c:105
+#8  0x00007ffff4327b1b in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#9  0x00007ffff431d989 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#10 0x00007ffff4323014 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#11 0x00007ffff4323453 in ?? () from /usr/lib/libruby-1.9.1.so.1.9
+#12 0x00007ffff423476d in rb_protect () from /usr/lib/libruby-1.9.1.so.1.9
+#13 0x00000000005acae8 in ex_ruby ()
+#14 0x000000000048e644 in do_cmdline ()
+#15 0x0000000000465c6d in call_user_func ()
+#16 0x0000000000466696 in call_func ()
+#17 0x000000000046a798 in get_func_tv ()
+#18 0x000000000046e1fc in ex_call ()
+#19 0x000000000048e644 in do_cmdline ()
+#20 0x00000000004f79de in nv_colon ()
+#21 0x00000000004fde50 in normal_cmd ()
+#22 0x00000000005b507d in main_loop ()
+#23 0x0000000000435b47 in main ()
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_10107'>
+<cite>
+<a href="/users/marius-gedminas">Marius Gedminas</a>
+<span class='when'><a href="#comment_10107"><time data-relative="true">2013-01-31T11:39:05Z</time></a></span>
+</cite>
+<blockquote><p>I've removed and rebuilt command-t's ext.so, to avoid misundestandings, and reproduced the segfault in an empty directory with a single file named 'a'.  Here's the traceback (this time with ruby's debug symbols too):</p>
+<pre>
+Program received signal SIGSEGV, Segmentation fault.
+CommandTMatcher_matches_for (self=&lt;optimized out&gt;, abbrev=13612280)
+    at matcher.c:158
+158&#x0009;        VALUE path = RARRAY_PTR(paths)[i];
+(gdb) bt
+#0  CommandTMatcher_matches_for (self=&lt;optimized out&gt;, abbrev=13612280)
+    at matcher.c:158
+#1  0x00007fffe1d81c1f in CommandTMatcher_sorted_matches_for (self=13504000, 
+    abbrev=12845960, options=&lt;optimized out&gt;) at matcher.c:105
+#2  0x00007ffff4327b1b in vm_call_cfunc (me=0xebd090, blockptr=0x0, 
+    recv=&lt;optimized out&gt;, num=2, reg_cfp=0x7fffe248ad50, th=0xaf7580)
+    at vm_insnhelper.c:404
+#3  vm_call_method (th=th@entry=0xaf7580, cfp=cfp@entry=0x7fffe248ad50, num=2, 
+    blockptr=0x0, flag=&lt;optimized out&gt;, id=&lt;optimized out&gt;, me=0xebd090, 
+    recv=13504000) at vm_insnhelper.c:534
+#4  0x00007ffff431d989 in vm_exec_core (th=th@entry=0xaf7580, 
+    initial=initial@entry=0) at insns.def:1015
+#5  0x00007ffff4323014 in vm_exec (th=th@entry=0xaf7580) at vm.c:1220
+#6  0x00007ffff4323453 in eval_string_with_cref (self=11912520, src=13507920, 
+    scope=4, cref=0x0, file=0x7ffff435ea39 &quot;(eval)&quot;, line=0) at vm_eval.c:1050
+#7  0x00007ffff423476d in rb_protect (proc=0x7ffff4323980 &lt;rb_eval_string&gt;, 
+    data=18461257, state=0x7fffffffbe6c) at eval.c:719
+#8  0x00000000005acae8 in ex_ruby ()
+#9  0x000000000048e644 in do_cmdline ()
+#10 0x0000000000465c6d in call_user_func ()
+#11 0x0000000000466696 in call_func ()
+#12 0x000000000046a798 in get_func_tv ()
+#13 0x000000000046e1fc in ex_call ()
+#14 0x000000000048e644 in do_cmdline ()
+#15 0x0000000000433818 in do_ucmd ()
+#16 0x0000000000490859 in do_cmdline ()
+#17 0x00000000004f79de in nv_colon ()
+#18 0x00000000004fde50 in normal_cmd ()
+#19 0x00000000005b507d in main_loop ()
+#20 0x0000000000435b47 in main ()
+</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_10108'>
+<cite>
+<a href="/users/marius-gedminas">Marius Gedminas</a>
+<span class='when'><a href="#comment_10108"><time data-relative="true">2013-01-31T11:40:58Z</time></a></span>
+</cite>
+<blockquote><p>Never mind, I'm an idiot.</p>
+<p>I rm'ed ext.so, but forgot to rm *.o.  Really rebuilding the extension module made the segfault go away.</p>
+<p>I'm sorry for wasting your time!  I'll go find a brown paper bag.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10109'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10109"><time data-relative="true">2013-01-31T16:50:01Z</time></a></span>
+</cite>
+<blockquote><p>'twas a good bug report. I expect the most likely explanation was a mismatch in Ruby versions; when you recompiled it, you likely eliminated the mismatch.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10110'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10110"><time data-relative="true">2013-01-31T16:50:27Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

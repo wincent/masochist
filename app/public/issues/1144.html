@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1144: Internet radio track names
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1144</div>
+<div class='issue' id='issue_1144'>
+<form class="edit_issue" id="edit_issue_1144" action="/issues/1144" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pAoUE2403+SW+gGdv9zBOE3v7/JEzAUKbmdU0Ia4LCGQ+KqkybkFsU92MmqO9ZKM+G2Gzk8gixZOeIEuomBLBQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1144:
+<span data-name='issue[summary]'>
+Internet radio track names
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-09-29T01:14:07Z</time>, updated <time data-relative="true">2014-02-18T15:01:56Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I recently bought Synergy, unaware of Synergy Advance. Did I get the wrong program, seeing as how Synergy is now being phased out and I am running Leopard? The program seems to work fine for my needs, anyway, though I wonder if I made a mistake, and if there can be any kind of exchange if I really should have bought Synergy Advance.</p>
+<p>At any rate, I wanted to suggest that internet radio track names and artists be supported. I listen to a lot of streaming stations (under iTunes' &quot;Radio&quot; category) and they behave oddly in Synergy. The Growl notifications appear when songs change, as they should, but they simply say the name of the station and &quot;Unknown Artist&quot;. A preferable behavior would be reporting the title of the song and the artist name. This information is contained in the stream somehow, as it appears at the top of the iTunes window and in the contextual menu when you right-click the iTunes icon in the dock.</p>
+<p>There might be some inconsistencies between how different stations format that string, but perhaps a quick web query could identify the real title and artist from a database like Last.fm's? For that matter, it might not be too hard to grab some album art too, thought that may be a bit ambitious. All I know is, I would like for my Growl notifications to provide some useful information when I listen to internet radio. :-)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3808'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3808"><time data-relative="true">2008-09-29T02:45:12Z</time></a></span>
+</cite>
+<blockquote><p>No, I don't think you got the wrong program. Synergy isn't being phased out (although seeing as you are running Leopard I recommend running the 3.2 series rather than the 3.5 one because of an Apple bug that can cause 3.5 to crash -- see <a href="/issues/640">ticket #640</a> -- which I am waiting for Apple to fix).</p>
+<p>Synergy was my first Cocoa program and my first commercial program as well, and looking back I can see that the decision to start work on a separate product with a very similar name was probably a mistake because it has caused a lot of confusion. So I'll try to clarify the difference here:</p>
+<p>Synergy, being my first program, has some inherent design limitations that make it awkward to introduce big new features. But on the other hand it is very solid and stable. So I decided to put Synergy into &quot;maintenance&quot; mode, adding bug fixes and minor new features only, and start a completely new product for the big features which everyone was asking for. In this way I could have one lightweight, simple, easy-to-use product for the majority of customers (Synergy), but also offer a &quot;Swiss Army Knife&quot; of iTunes functionality that included everything (Synergy Advance).</p>
+<p>Because of the confusion that this has caused people do occasionally buy the wrong product by mistake, but I really consider this confusion to be my fault and so I always give these people a license for the right product when they approach me in such a situation.</p>
+<p>On the subject of Internet Radio track names, I am not really sure how to get the track title information despite the fact that it's in the stream. Try opening the AppleScript editor (<code>/Applications/AppleScript/Script Editor</code>) and running a script like this when Internet Radio playback is in progress:</p>
+<pre>tell application &quot;iTunes&quot; to get name of current track</pre>
+<p>Or:</p>
+<pre>tell application &quot;iTunes&quot; to get artist of current track</pre>
+<p>Or:</p>
+<pre>tell application &quot;iTunes&quot; to get album of current track</pre>
+<p>You should see that iTunes doesn't hand over anything meaningful, compared to normal tracks when it does hand over something useful. It may vary from station to station, but in my testing requesting the &quot;name&quot; usually hands over the station name, and requesting &quot;artist&quot; or &quot;album&quot; usually returns &quot;missing value&quot;.</p>
+<p>So I'm not really sure how to get at the information in the case of Internet Radio. I think the best course of action might be to file a feature request with Apple asking them to make that info available via AppleScript.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3952'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3952">Created <time data-relative="true">2008-12-11T02:32:54Z</time>, edited <time data-relative="true">2008-12-13T12:31:19Z</time></a></span>
+</cite>
+<blockquote><p>This almost works, but I'm not quite sure why not:</p>
+<pre>tell application &quot;iTunes&quot;
+&#x0009;if player state is playing and current track's class is URL track then
+&#x0009;&#x0009;if current stream title is not &quot;&quot; then
+&#x0009;&#x0009;&#x0009;print current stream title
+&#x0009;&#x0009;end if
+&#x0009;end if
+end tell</pre>
+<p>Maybe that will help?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3958'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3958"><time data-relative="true">2008-12-13T12:31:46Z</time></a></span>
+</cite>
+<blockquote><p>Can you clarify what you mean by &quot;almost works&quot;? In what way does it not fully work?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6321'>
+<cite>
+<a href="/users/vrh">VRH</a>
+<span class='when'><a href="#comment_6321"><time data-relative="true">2010-09-29T03:41:53Z</time></a></span>
+</cite>
+<blockquote><p>Wow, this is an old posting, but I wanted to give it a bump and add some information. Wincent, GrowlTunes shows the artist and track info properly. It ships with Growl, so I thought maybe you could look at how GrowlTunes does it to help get Synergy doing it the same way.  Here is a screenshot of the two for comparison.</p>
+<p>&lt;<a href="http://img.skitch.com/20100929-8x9bba2miwg2ks5e6taii4x9y7.png" class="external">http://img.skitch.com/20100929-8x9bba2miwg2ks5e6taii4x9y7.png</a>&gt;</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10917'>
+<cite>
+<a href="/users/beporter">beporter</a>
+<span class='when'><a href="#comment_10917"><time data-relative="true">2014-02-18T02:50:48Z</time></a></span>
+</cite>
+<blockquote><p>This issue has been around forever and I can't offer a fix, but I did want to mention that the same class of issues affects Synergy when playing <a href="https://www.apple.com/itunes/itunes-radio/" class="external">the new iTunes Radio</a>.</p>
+<ul>
+<li>Track changes do not notify Synergy, so the floater does not appear automatically.</li>
+<li>Triggering the hotkey to display the floater manually shows you whatever track from your iTunes library was last playing instead of the currently playing radio track.</li>
+</ul>
+<p><em>Off-topic: Synergy is an absolute must-have on my Mac. I use a Griffin Powermate to trigger Synergy's hotkeys (which also work directly on the keyboard when I'm on the road. Probably one of the most-used apps on my Mac (after BBEdit).</em></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10919'>
+<cite>
+<a href="/users/beporter">beporter</a>
+<span class='when'><a href="#comment_10919"><time data-relative="true">2014-02-18T15:01:56Z</time></a></span>
+</cite>
+<blockquote><p>Oh, and I don't know if it will help in finding a solution, but Messages.app seems to be able to keep track of the playing song from iTunes Radio if you set your &quot;away&quot; message to be &quot;Current iTunes song&quot; so it is at least <em>possible</em> to do.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

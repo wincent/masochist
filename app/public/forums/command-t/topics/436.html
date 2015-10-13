@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+command-t launching from ex mode?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; command-t launching from ex mode?</div>
+<h1 class='major'>command-t launching from ex mode?</h1>
+<div class='topic' id='topic_436'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/dpranke">dpranke</a>
+<span class='when'>
+<a href="/forums/command-t/topics/436"><time data-relative="true">2010-10-28T02:40:54Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I've just started playing with command-t and it seems pretty cool. Great job!</p>
+<p>I've realized that it may take me a while to retrain my muscles away from :e, though, so I was wondering if any thought has been given to providing a command that can provide the initial string to seed the prompt?</p>
+<p>In other words, typing &quot;:e foo&lt;enter&gt;&quot; would have the same effect as &quot;&lt;Leader&gt;tfoo&lt;enter&gt;&quot;. Sort of an &quot;I'm feeling lucky&quot; mode?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6373'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6373"><time data-relative="true">2010-10-28T06:41:50Z</time></a></span>
+</cite>
+<blockquote><p>In a way seems like a good idea, but I am not so sure.</p>
+<p>At the moment <code>&lt;Leader&gt;t</code> maps to <code>:CommandT&lt;CR&gt;</code>, which just brings up the prompt.</p>
+<p>You can also manually type a command like <code>:CommandT path/to/starting/dir</code> to start the prompt in a specific directory (the default is to start it in Vim's <code>:pwd</code>).</p>
+<p>So you're talking here about adding a second parameter, which could be done, or if you want a simpler invocation perhaps even a new command that would operate alongside of <code>:CommandT</code>.</p>
+<p>But when I think about this and how it would be used, I am skeptical that it's worth doing. The objective is to overcome a muscle memory problem, but it seems to me that rather than eliminate a bad habit it will just reinforce it.</p>
+<p>Remember that the idea of Command-T is to show you the list of results and narrow it down as you type. If you end up seeding the prompt with &quot;foo&quot; before displaying the list, then the live feedback that you would usually see after hitting the &quot;f&quot; is lost, as is the refined feedback after typing the first &quot;o&quot; and the even more refined feedback after the second &quot;o&quot;.</p>
+<p>So, while I don't see any major technical obstacles to implementing something like this, I do question whether it's a worthwhile thing to do or not.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

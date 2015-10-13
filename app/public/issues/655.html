@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #655: Synergy keeps quitting
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #655</div>
+<div class='issue' id='issue_655'>
+<form class="edit_issue" id="edit_issue_655" action="/issues/655" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="WV5PbqdPvKZ66/OdTZ80Ji7puhOy0Hg+m0iZXVPcY09trPHZAMJm86NnwGp8tmeSm2vTL7k89iK7V0yjdwQEaw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #655:
+<span data-name='issue[summary]'>
+Synergy keeps quitting
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-02-28T06:59:33Z</time>, updated <time data-relative="true">2008-09-11T16:13:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/brandon-carson">Brandon Carson</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Finally had to roll back to Synergy 3.2. 3.5a5 would keep quitting in the background, without a crash report or anything. It would just quit.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_3202'>
+<cite>
+<a href="/users/spike1201">spike1201</a>
+<span class='when'><a href="#comment_3202"><time data-relative="true">2008-02-28T13:28:14Z</time></a></span>
+</cite>
+<blockquote><p>I too have noticed Synergy quitting. I haven't yet connected the quitting to any trigger, but it happens to me every 2-3 hours of iTunes play. Weird.  (from spike1201)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3203'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3203"><time data-relative="true">2008-02-29T01:41:05Z</time></a></span>
+</cite>
+<blockquote><p>Can you please have a look at these two reports and see if this one is a duplicate of either of those?</p>
+<p>The first issue is a crash caused by NSAppleScript; look at your crash logs and see if the crashed thread mentions NSAppleScript:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=640" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=640</a></p>
+<p>This is a different issue, which nobody else has reported yet so I can't rule out factors local to that user's machine:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=654" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=654</a></p>
+<p>Finally, if as you say, there aren't any crash reports, can you look in the Console (/Applications/Utilities/Console.app) and see if anything diagnostic information is printed?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3204'>
+<cite>
+<a href="/users/spike1201">spike1201</a>
+<span class='when'><a href="#comment_3204"><time data-relative="true">2008-02-29T02:00:23Z</time></a></span>
+</cite>
+<blockquote><p>I don't know where to check crash logs, sorry, but I did check out the Console. Searching for &quot;NSAppleScript&quot; came up empty. However, I did see the following list several times per minute (hundreds of these):</p>
+<p>2/29/08 12:24:26 AM iTunes[46284] Error loading /Library/QuickTime/DesktopVideoOut.component/Contents/MacOS/DesktopVideoOut:  dlopen(/Library/QuickTime/DesktopVideoOut.component/Contents/MacOS/DesktopVideoOut, 262): no suitable image found.  Did find:</p>
+<pre>/Library/QuickTime/DesktopVideoOut.component/Contents/MacOS/DesktopVideoOut: mach-o, but wrong architecture </pre>
+<p>Not sure what that means, but perhaps helpful to you.</p>
+<p>Oh wait, I see a crash reporter in my library/logs. These two lines have something interesting:</p>
+<p>10  com.apple.Foundation          &#x0009;0x90d680cb -[NSAppleScript(NSPrivate) _executeWithMode:andReturnError:] + 107 11  com.apple.Foundation          &#x0009;0x90d67fa1 -[NSAppleScript executeAndReturnError:] + 49</p>
+<p>And one more thing: Exception Type:  EXC_BAD_ACCESS (SIGBUS) Exception Codes: KERN_PROTECTION_FAILURE at 0x0000000000000000</p>
+<p>Hope this helps!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3205'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3205"><time data-relative="true">2008-02-29T02:35:33Z</time></a></span>
+</cite>
+<blockquote><p>Ok Spike, that confirms that you're seeing the NSAppleScript problem, which is being tracked in this ticket:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=640" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=640</a></p>
+<p>So you might want to add yourself to the CC list for that ticket.</p>
+<p>If the crashes are happening too often you have the option of doing what Brandon did and rolling back to version 3.2, which you can download from:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/tiger/" class="external">http://wincent.com/a/products/synergy-classic/download/tiger/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3759'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3759"><time data-relative="true">2008-09-11T16:13:20Z</time></a></span>
+</cite>
+<blockquote><p>Marking this one as closed seeing as it's a duplicate of <a href="/issues/640">issue #640</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

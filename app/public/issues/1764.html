@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1764: Static file indexes broken
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1764</div>
+<div class='issue' id='issue_1764'>
+<form class="edit_issue" id="edit_issue_1764" action="/issues/1764" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="W6MIIQ1weCVn+2j1TODI/LiR23OSD7hKSHAaDS53GhxvUbaWqv2icL53WwJ9yZtIDROyT5njNlZob8/zCq99OA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1764:
+<span data-name='issue[summary]'>
+Static file indexes broken
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2011-01-08T19:20:54Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Right now links like:</p>
+<ul>
+<li><a href="https://wincent.com/products/wikitext/doc" class="external">https://wincent.com/products/wikitext/doc</a></li>
+<li><a href="https://wincent.com/products/wikitext/doc/" class="external">https://wincent.com/products/wikitext/doc/</a></li>
+</ul>
+<p>Aren't working. The slashless version does correctly redirect to the slashed version, but ends up returning a 404.</p>
+<p>This works:</p>
+<ul>
+<li><a href="https://wincent.com/products/wikitext/doc/index.html" class="external">https://wincent.com/products/wikitext/doc/index.html</a></li>
+</ul>
+<p>Not sure if this was caused by the move to the <a href="/wiki/nginx">nginx</a> 0.8.x series, or some other tweak that was made to the config file.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6570'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6570"><time data-relative="true">2011-01-08T21:03:07Z</time></a></span>
+</cite>
+<blockquote><p>It was a mistake in the config file (specifically, we were rewriting to <code>$1$index_filename</code> instead of <code>$1$index_filename$cache_extension</code> in one place). The relevant section of the config file now looks like this:</p>
+<pre>    # rewrite all requests to *.wincent.com back to wincent.com
+    if ($host != wincent.com) {
+      rewrite ^(.*) <a href="https://wincent.com$1" class="external">https://wincent.com$1</a> permanent;
+    }
+
+    # serve static content without hitting Rails
+    # this also bypasses our maintenance page check
+    location ~ /(images|javascripts|stylesheets)/ {
+      expires 72h;
+    }
+
+    location /system/maintenance.html {
+      # always allow access to this file; explained here:
+      # <a href="http://www.ruby-forum.com/topic/141251" class="external">http://www.ruby-forum.com/topic/141251</a>
+    }
+
+    location / {
+      if (-f $document_root/system/maintenance.html) {
+        error_page 503 /system/maintenance.html;
+        return 503;
+      }
+
+      # cached pages: only for GET requests
+      set $cache_extension '';
+      if ($request_method = GET) {
+        set $cache_extension '.html';
+      }
+
+      if (-f $request_filename) {
+        break;
+      }
+
+      set $index_filename 'index';
+      if (-f $request_filename$index_filename$cache_extension) {
+        # URI has trailing slash
+        rewrite (.*) $1$index_filename$cache_extension break;
+      }
+
+      if (-f $request_filename/$index_filename$cache_extension) {
+        # URI has no trailing slash
+        rewrite (.*) $1/ permanent;
+      }
+
+      if (-f $request_filename$cache_extension) {
+        rewrite (.*) $1.html break;
+      }
+
+      if (-f $static_root$uri) {
+        root $static_root;
+        break;
+      }
+
+      if (-f $static_root${uri}index.html) {
+        # URI has trailing slash
+        root $static_root;
+        rewrite (.*) $1$index_filename$cache_extension break;
+      }
+
+      if (-f $static_root$uri/index.html) {
+        # URI has no trailing slash
+        rewrite (.*) $1/ permanent;
+      }
+
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X_FORWARDED_PROTO https;
+      proxy_max_temp_file_size 0;
+      if (!-f $request_filename) {
+        proxy_pass <a href="http://unicorn" class="external">http://unicorn</a>;
+        break;
+      }
+    }</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6572'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6572"><time data-relative="true">2011-01-08T21:07:08Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

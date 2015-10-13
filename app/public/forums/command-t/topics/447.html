@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+ESC and other mappings not working
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; ESC and other mappings not working</div>
+<h1 class='major'>ESC and other mappings not working</h1>
+<div class='topic' id='topic_447'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/bobpaul">bobpaul</a>
+<span class='when'>
+<a href="/forums/command-t/topics/447"><time data-relative="true">2010-12-16T20:38:15Z</time></a>
+</span>
+</cite>
+<blockquote><p>Unless I'm mistaken...</p>
+<p>&lt;C-s&gt; and &lt;C-CR&gt; are supposed to open in a new split, but on my system &lt;C-s&gt; does nothing and &lt;C-CR&gt; drops down to the next match.</p>
+<p>&lt;ESC&gt; is supposed to close the file list, but it does nothing. I have to type gibberish so it results in no match and hit &lt;CR&gt; to dismiss the dialog.</p>
+<p>&lt;C-t&gt; for new tab and &lt;C-v&gt; for vsplit work fine, though.</p>
+<p>My .vimrc is empty and I have no other plugins, so I don't think there's a mapping conflict. &quot;set term -&gt; term=xterm&quot;. I'm using gnome-terminal on Ubuntu 10.10.</p>
+<p>I assume somehow I can do to manually set these mappings?</p>
+<pre>:version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Oct 26 2010 07:52:44)
+Included patches: 1-35
+Modified by pkg-vim-maintainers@lists.alioth.debian.org
+Compiled by buildd@
+Huge version with GTK2-GNOME GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con_gui +diff +digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi
++file_in_path +find_in_path +float +folding -footer +fork() +gettext -hangul_input +iconv +insert_expand +jumplist +keymap +langmap +libcall +linebreak
++lispindent +listcmds +localmap +lua/dyn +menu +mksession +modify_fname +mouse +mouseshape +mouse_dec +mouse_gpm -mouse_jsbterm +mouse_netterm
+-mouse_sysmouse +mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg -osfiletype +path_extra +perl/dyn +persistent_undo +postscript +printer
++profile +python/dyn +python3/dyn +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax
++tag_binary +tag_old_static -tag_any_white +tcl +terminfo +termresponse +textobjects +title +toolbar +user_commands +vertsplit +virtualedit +visual
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup +X11 -xfontset +xim +xsmp_interact +xterm_clipboard -xterm_save
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/incl
+ude/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/gio-unix-2.0/ -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/incl
+ude/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12   -DORBIT2=1 -pthread -D_REENTRANT -I/usr/include/libgnomeui-2.0 -I/usr/include/libart-2.0 -I/u
+sr/include/gconf/2 -I/usr/include/gnome-keyring-1 -I/usr/include/libgnome-2.0 -I/usr/include/libbonoboui-2.0 -I/usr/include/libgnomecanvas-2.0 -I/usr/include
+/gtk-2.0 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/gnome-vfs-2.0 -I/usr/lib/gnome-vfs-2.0/include -I/usr/include/orbit-2.0 -I/usr/include/glib-2.0 -I/usr/
+lib/glib-2.0/include -I/usr/include/libbonobo-2.0 -I/usr/include/bonobo-activation-2.0 -I/usr/include/libxml2 -I/usr/include/pango-1.0 -I/usr/include/gail-1.
+0 -I/usr/include/freetype2 -I/usr/include/atk-1.0 -I/usr/lib/gtk-2.0/include -I/usr/include/cairo -I/usr/include/gio-unix-2.0/ -I/usr/include/pixman-1 -I/usr
+/include/libpng12     -Wall -g -O2 -D_FORTIFY_SOURCE=1    -I/usr/include/tcl8.4  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_LARGEFILE64_SOURCE=1  -I/usr/lib/ruby/1
+.8/x86_64-linux -DRUBY_VERSION=18
+Linking: gcc   -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic  -Wl,-E  -Wl,--as-needed -o vim   -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -l
+gio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpng12 -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -
+lglib-2.0     -lgnomeui-2 -lbonoboui-2 -lgnomevfs-2 -lgnomecanvas-2 -lgnome-2 -lpopt -lbonobo-2 -lbonobo-activation -lORBit-2 -lart_lgpl_2 -lgtk-x11-2.0 -lgd
+k-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lpng12 -lgconf-2 -lgmodule-2.0 -l
+gobject-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lselinux   -lacl -lgpm -Wl,-E  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl/5.10/CORE -L/u
+sr/lib -ltcl8.4 -lieee -lruby1.8 -lrt -lm</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6531'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6531"><time data-relative="true">2010-12-16T21:27:02Z</time></a></span>
+</cite>
+<blockquote><p>A very similar question came up in the <a href="/forums/command-t/topics/446">last topic</a>. Quoting here what I said there:</p>
+<blockquote>
+<p>There isn't a FAQ yet, but when I make one this will definitely be on it. For an explanation and solutions see these; there are probably more but these are the ones I turned up with a quick search:</p>
+<ul>
+<li><a href="/issues/1558">ticket #1558</a></li>
+<li><a href="/issues/1531">ticket #1531</a></li>
+<li><a href="/issues/1751">ticket #1751</a></li>
+<li><a href="https://wincent.com/forums/command-t/topics/430" class="external">https://wincent.com/forums/command-t/topics/430</a></li>
+</ul>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment' id='comment_6532'>
+<cite>
+<a href="/users/bobpaul">bobpaul</a>
+<span class='when'><a href="#comment_6532"><time data-relative="true">2010-12-16T22:36:31Z</time></a></span>
+</cite>
+<blockquote><p>I guess I didn't think that applied since the asker said &quot;Doesn't happen in xterm&quot; and arrow keys work fine. Your ruby code is grabbing the escape sequences before vim handles them? I guess I would have expected that if vim knew the escape key for &lt;C-s&gt; then your plugin would only have to know &lt;C-s&gt;.</p>
+<p>For others with this issue... I've solved the &lt;ESC&gt; portion by adding the following to my ~/.vimrc:</p>
+<pre>
+let g:CommandTCancelMap=['&lt;ESC&gt;','&lt;C-c&gt;']
+</pre>
+<p>I found out &lt;C-s&gt; was being captured by my term and vim wasn't getting it (Ctrl-v followed by a key should show the escape sequence. For Ctrl-v Ctr-s I got nothing...). <a href="http://vimdoc.sourceforge.net/cgi-bin/vimfaq2html3.pl#32.1" class="external">the Vim docs</a> answer that:</p>
+<p>So now in my ~/.bashrc I have:</p>
+<pre>
+stty -ixon
+</pre>
+<p>&lt;C-CR&gt; still doesn't work and I don't know why. Ctrl-V Ctrl-Enter yields ^@, so I tried let g:CommandTAcceptSelectionSplitMap=['^@'] (by pressint Ctrl-V Ctrl-Enter) and things just broke. Clear C-CR is special in some way on my term. :-/</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6533'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6533"><time data-relative="true">2010-12-17T08:47:35Z</time></a></span>
+</cite>
+<blockquote><p>No, the Ruby code isn't grabbing anything before Vim handles it; quite the opposite: the Ruby code only sees what Vim's mappings decide to let through to it.</p>
+<p>So, as you've seen, if mappings aren't getting through it's basically always a result of the way a particular terminal sends the corresponding escape sequences. (This is why GUI-based Vims like gVim and MacVim never have mapping problems, because there is no intermediate terminal there to screw things up.)</p>
+<p>It also means you have a few variables you can tweak in order to make things work properly in the terminal, such as changing the term setting, playing with <code>ttimeout</code>, <code>ttimeoutlen</code> and friends, or setting up your own custom mappings.</p>
+<p>As for <code>&lt;C-CR&gt;</code> there may be some terminal wizard out there who can explain how to find out exactly what escape sequence is being sent for that combo, and you could then use that in your custom mapping. But it's not something I'm sure how to find out.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

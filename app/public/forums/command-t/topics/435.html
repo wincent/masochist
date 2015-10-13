@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Opening up a file from the file explorer or nerdtree always splits.
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Opening up a file from the file explorer or nerdtree always splits.</div>
+<h1 class='major'>Opening up a file from the file explorer or nerdtree always splits.</h1>
+<div class='topic' id='topic_435'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/435"><time data-relative="true">2010-10-21T21:21:09Z</time></a>
+</span>
+</cite>
+<blockquote><p>Any way to get around this?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6363'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6363"><time data-relative="true">2010-10-22T16:15:34Z</time></a></span>
+</cite>
+<blockquote><p>Yes, bring up Command-T with the window in which you'd like to open the file already active; that way Command-T will open the file up in that window.</p>
+<p>Command-T will never use any &quot;special&quot; buffer (such as NERDTree, MiniBufExplorer etc) for opening a file, and will always split in that case, to avoid replacing the contents of the &quot;special&quot; buffer. (And not only that, but such buffers are usually an undesirable shape for editing anyway, like NERDTree which is tall and thin, or MiniBufExplorer which is short and wide.)</p>
+<p>The alternative would be for Command-T to use some other window in that case, but there is no non-arbitrary way for it to select which buffer to use (ie. if you have 2 or 3 &quot;non-special&quot; buffers available, which one should be used? No matter which one Command-T chooses it will seem unintuitive or wrong to at least some users at least some of the time).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6364'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6364"><time data-relative="true">2010-10-25T00:42:07Z</time></a></span>
+</cite>
+<blockquote><p>Interesting. The reason I bring this up is that I often:</p>
+<ul>
+<li><code>cd ~/src/project</code></li>
+<li><code>mvim .</code></li>
+<li>leader-t to the file I want to edit</li>
+</ul>
+<p>This leaves me in an undesired split state.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6367'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6367"><time data-relative="true">2010-10-25T08:59:38Z</time></a></span>
+</cite>
+<blockquote><p>Seems that the <code>mvim .</code> is kind of redundant seeing as it is going to show you a list of files/directories that you are then going to ignore and use a different means of selecting a file to open (Command-T).</p>
+<p>The way I generally work is, at the start of a session, just <code>:cd ~/src/project</code> inside Vim (ie. with an empty window) and go from there.</p>
+<p>If you don't like this workflow and want to continue doing <code>mvim .</code> and find yourself with an unwanted split, about all I can think of is that you do <code>:on</code> to get rid of the split.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6758'>
+<cite>
+<a href="/users/nathan-witmer">Nathan Witmer</a>
+<span class='when'><a href="#comment_6758"><time data-relative="true">2011-03-24T18:42:02Z</time></a></span>
+</cite>
+<blockquote><p>If you're using NERDTree, you can get this to work by automatically opening an empty buffer alongside the NERDTree pane so Command-T has a regular buffer to work with. To preserve expected default behavior, this only works if you open a directory as the single argument to vim.</p>
+<p>Put this in <code>after/plugins/nerd_tree_command-t.vim</code>:</p>
+<pre>
+&quot; NERDTree and Command-T compatibility hack
+&quot;
+&quot; open an empty buffer and then start a real nerdtree, but only if
+&quot; vim was opened with a single directory as the first argument.
+&quot; The empty buffer gives command-t a buffer in which to open a
+&quot; file, rather than having it fail to clobber the default directory browser.
+&quot;
+&quot; This preserves the NERDTree netrw browsing replacement, but hacks it
+&quot; when vim is first loading.
+&quot;
+&quot; This script is in after/plugins since it needs to add the autocmd
+&quot; hijacking overrides after the plugin itself has been initialized.
+
+function ReplaceNERDTreeIfDirectory()
+  if argc() == 1 &amp;&amp; isdirectory(argv(0))
+    &quot; replace the directory browser with an empty buffer
+    enew
+    &quot; and open a regular nerdtree instead
+    NERDTree
+  end
+endfunction
+
+augroup NERDTreeHijackNetrw
+  au VimEnter * call ReplaceNERDTreeIfDirectory()
+augroup END
+</pre>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

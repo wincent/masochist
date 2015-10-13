@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+CommandT slower with default shortcut
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; CommandT slower with default shortcut</div>
+<h1 class='major'>CommandT slower with default shortcut</h1>
+<div class='topic' id='topic_471'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/471"><time data-relative="true">2011-05-12T09:59:34Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I usually use the default shortcut &lt;Leader&gt;t for triggering commandT but I noticed if I set up my own in my .vimrc,the command is significantly quicker. Any reason for that?</p>
+<p>Cheers, Jeremy</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6869'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6869"><time data-relative="true">2011-05-12T16:42:45Z</time></a></span>
+</cite>
+<blockquote><p>You've probably chosen a mapping that has a common prefix with another mapping, and Vim has to wait to disambiguate to see which one you mean.</p>
+<p>For example, if you have two mappings, <code>&lt;Leader&gt;a</code> and <code>&lt;Leader&gt;ab</code>, the first one will always have a noticeable delay, as Vim waits to see if you are going to type a <code>b</code> for a short delay, before finally assuming that you really did want the first mapping.</p>
+<p>To work around this, choose non-ambiguous mappings (eg. <code>&lt;Leader&gt;a</code>, <code>&lt;Leader&gt;b</code>), or mappings of the same length (ie. <code>&lt;Leader&gt;ab</code> and <code>&lt;Leader&gt;ac</code> won't have a delay), or adjust the <code>'ttimeoutlen'</code> setting to reduce the amount of time that Vim will wait to disambiguate mappings (see the Vim help, <code>:h 'ttimeoutlen'</code>).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7364'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7364"><time data-relative="true">2012-01-08T15:51:52Z</time></a></span>
+</cite>
+<blockquote><p>Thanks so much for explanation!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

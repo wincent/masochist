@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Command-t stored on dropbox used on different machines
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Command-t stored on dropbox used on different machines</div>
+<h1 class='major'>Command-t stored on dropbox used on different machines</h1>
+<div class='topic' id='topic_463'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/463"><time data-relative="true">2011-03-30T15:53:58Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi there,</p>
+<p>first of all thank you for the amazing vim plugin. I've got a little problem with my setup that is maybe somehow fixable.</p>
+<p>I store all of my config files (dotfiles) on my dropbox so every machine that I use stays up to date with all the changes. The dotfiles include my .vimrc and whole .vim directory. The problem I have is that command-t requires some binary files that need to be compiled for a specific machine and hence do not work on (Mac and Debian). Whenever I need to use command-t I have to remember to go to the bundle folder and recompile the binaries. Is there a way to store the binaries in a different location? Or do you have any experience with this kind of problems and could give me a suggestion on how to fix them myself.</p>
+<p>Thanks, Janusz</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6771'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6771"><time data-relative="true">2011-03-30T16:08:34Z</time></a></span>
+</cite>
+<blockquote><p>I personally just recompile as I tend not to switch machines too often, but I guess you could build multiple executables in different subdirectories, store them in version control, and then hack the <code>plugin/command-t.vim</code> and perhaps some other files in the plugin to make it dynamically pick the right extension depending on what architecture you're running on at runtime.</p>
+<p>This wouldn't be something I could ever feasibly support though officially, so you'd be own your own in that sense.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6773'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6773"><time data-relative="true">2011-03-31T11:22:28Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>thanks for your help. If anyone needs this kind of thing to work you just have to copy the ruby directory to something called ruby_ARCH and create different libs in each of those directories - you don't have to hack any of the plugin code. Or at least I didn't have to :)</p>
+<p>Thanks again, Janusz</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

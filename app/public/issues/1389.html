@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1389: Spec suite failures on Ubuntu 9.04 (rake --trace)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1389</div>
+<div class='issue' id='issue_1389'>
+<form class="edit_issue" id="edit_issue_1389" action="/issues/1389" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="1giLnDEdS6B03K8ttwU7t9uYT1QK/6YjsvK/KTN9ZGzi+jUrlpCR9a1QnNqGLGgDbhomaAETKD+S7WrXF6UDSA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1389:
+<span data-name='issue[summary]'>
+Spec suite failures on Ubuntu 9.04 (rake --trace)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-09-07T14:51:10Z</time>, updated <time data-relative="true">2010-03-21T15:07:23Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>cloned git://git.wincent.com/wikitext.git and rake --trace on ubuntu 9.04.</p>
+<pre>
+tommi@desk:~/src/wikitext$ rake --trace
+(in /home/tommi/src/wikitext)
+/usr/lib/ruby/1.8/rake/gempackagetask.rb:13:Warning: Gem::manage_gems is deprecated and will be removed on or after March 2009.
+** Invoke default (first_time)
+** Invoke all (first_time)
+** Invoke make (first_time)
+** Invoke ext/wikitext_ragel.c (first_time, not_needed)
+** Invoke ext/wikitext_ragel.rl (first_time, not_needed)
+** Invoke ext/Makefile (first_time, not_needed)
+** Invoke ext/extconf.rb (first_time, not_needed)
+** Invoke ext/depend (first_time, not_needed)
+** Invoke ext/wikitext_ragel.c (not_needed)
+** Invoke ext/wikitext.so (first_time, not_needed)
+** Invoke ext/Makefile (not_needed)
+** Invoke ext/ary.c (first_time, not_needed)
+** Invoke ext/ary.h (first_time, not_needed)
+** Invoke ext/parser.c (first_time, not_needed)
+** Invoke ext/parser.h (first_time, not_needed)
+** Invoke ext/ruby_compat.h (first_time, not_needed)
+** Invoke ext/str.c (first_time, not_needed)
+** Invoke ext/str.h (first_time, not_needed)
+** Invoke ext/token.c (first_time, not_needed)
+** Invoke ext/token.h (first_time, not_needed)
+** Invoke ext/wikitext.c (first_time, not_needed)
+** Invoke ext/wikitext.h (first_time, not_needed)
+** Invoke ext/wikitext_ragel.c (not_needed)
+** Invoke ext/wikitext_ragel.h (first_time, not_needed)
+** Execute make
+** Invoke spec (first_time)
+** Execute spec
+..............................*** COMMAND rake gems:refresh_specs EXITED WITH NON-ZERO EXIT STATUS (1)
+*** STDOUT FOR COMMAND rake gems:refresh_specs:
+(in /home/tommi/src/wikitext/spec/trash/edge-app)
+*** STDERR FOR COMMAND rake gems:refresh_specs:
+rake aborted!
+Malformed version number string 3.0.pre
+/home/tommi/src/wikitext/spec/trash/edge-app/Rakefile:4:in `require'
+(See full trace by running task with --trace)
+F...........................................................................................F..........................................................................................................................................................................................................................................................................................................................................................................................................................................................................F.......F.F.............................................................FFFFFFPFF..........................................................................................
+
+Pending:
+Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should not terminate on question marks that occur within the URI (TODO)
+
+1)
+RuntimeError in 'Template handler in Edge Rails before(:all)'
+non-zero exit status (1) for 'rake'
+./spec/rails_spec.rb:58:in `run'
+./spec/rails_spec.rb:168:in `update_environment'
+./spec/rails_spec.rb:167:in `update_environment'
+./spec/rails_spec.rb:183:in `setup_edge_app'
+./spec/rails_spec.rb:214:
+
+2)
+'Wikitext::Parser external links should format valid external mailto links' FAILED
+expected: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;john&lt;/a&gt;&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;john&lt;/a&gt;&lt;/p&gt;\n&quot; (using ==)
+./spec/external_link_spec.rb:56:
+
+3)
+'Wikitext::Parser autolinking on should convert mailto URIs into hyperlinks' FAILED
+expected: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:55:
+
+4)
+'Wikitext::Parser autolinking on should apply the mailto CSS class if set (mailto URI)' FAILED
+expected: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;foo\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:102:
+
+5)
+'Wikitext::Parser autolinking on should apply no CSS if the mailto class is set to nil (mailto URI)' FAILED
+expected: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;&lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:114:
+
+6)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by a period' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;.&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;.&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:501:
+
+7)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should not terminate on periods that occur within the URI' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user.name@example.com" class="mailto">mailto:user.name@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user.name@example.com" class="mailto">mailto:user.name@example.com</a>&lt;/a&gt;.&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user.name@example.com" class="mailto">mailto:user.name@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user.name@example.com" class="mailto">mailto:user.name@example.com</a>&lt;/a&gt;.&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:507:
+
+8)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by a colon' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;:&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;:&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:513:
+
+9)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by a comma' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;,&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;,&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:519:
+
+10)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by an exclamation mark' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;!&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;!&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:525:
+
+11)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by a question mark' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;?&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;?&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:531:
+
+12)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by a semi-colon' FAILED
+expected: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;;&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;;&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:545:
+
+13)
+'Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should terminate if followed by a right parenthesis' FAILED
+expected: &quot;&lt;p&gt;(Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;mailto\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;)&lt;/p&gt;\n&quot;,
+     got: &quot;&lt;p&gt;(Try &lt;a href=\&quot;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>\&quot; class=\&quot;external\&quot;&gt;<a href="mailto:user@example.com" class="mailto">mailto:user@example.com</a>&lt;/a&gt;)&lt;/p&gt;\n&quot; (using ==)
+./spec/autolinking_spec.rb:551:
+
+Finished in 12.851736 seconds
+
+751 examples, 13 failures, 1 pending
+rake aborted!
+Command ruby -I&quot;/usr/lib/ruby/lib&quot; &quot;/usr/bin/spec&quot; &quot;spec/wikitext_spec.rb&quot; &quot;spec/h2_spec.rb&quot; &quot;spec/integration_spec.rb&quot; &quot;spec/rails_spec.rb&quot; &quot;spec/fulltext_spec.rb&quot; &quot;spec/pre_spec.rb&quot; &quot;spec/h5_spec.rb&quot; &quot;spec/external_link_spec.rb&quot; &quot;spec/string_spec.rb&quot; &quot;spec/internal_link_spec.rb&quot; &quot;spec/regressions_spec.rb&quot; &quot;spec/tt_spec.rb&quot; &quot;spec/blockquote_spec.rb&quot; &quot;spec/encoding_spec.rb&quot; &quot;spec/base_heading_level_spec.rb&quot; &quot;spec/p_spec.rb&quot; &quot;spec/entity_spec.rb&quot; &quot;spec/tokenizing_spec.rb&quot; &quot;spec/link_encoding_spec.rb&quot; &quot;spec/h4_spec.rb&quot; &quot;spec/strong_em_spec.rb&quot; &quot;spec/nowiki_spec.rb&quot; &quot;spec/img_spec.rb&quot; &quot;spec/em_spec.rb&quot; &quot;spec/link_sanitizing_spec.rb&quot; &quot;spec/parser_spec.rb&quot; &quot;spec/autolinking_spec.rb&quot; &quot;spec/ul_spec.rb&quot; &quot;spec/h3_spec.rb&quot; &quot;spec/version_spec.rb&quot; &quot;spec/h1_spec.rb&quot; &quot;spec/line_endings_spec.rb&quot; &quot;spec/h6_spec.rb&quot; &quot;spec/strong_spec.rb&quot; &quot;spec/indentation_spec.rb&quot; &quot;spec/nil_class_spec.rb&quot; --color failed
+/usr/lib/ruby/1.8/spec/rake/spectask.rb:184:in `define'
+/usr/lib/ruby/1.8/rake.rb:1003:in `verbose'
+/usr/lib/ruby/1.8/spec/rake/spectask.rb:153:in `define'
+/usr/lib/ruby/1.8/rake.rb:546:in `call'
+/usr/lib/ruby/1.8/rake.rb:546:in `execute'
+/usr/lib/ruby/1.8/rake.rb:541:in `each'
+/usr/lib/ruby/1.8/rake.rb:541:in `execute'
+/usr/lib/ruby/1.8/rake.rb:508:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/rake.rb:501:in `synchronize'
+/usr/lib/ruby/1.8/rake.rb:501:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/rake.rb:518:in `invoke_prerequisites'
+/usr/lib/ruby/1.8/rake.rb:1183:in `each'
+/usr/lib/ruby/1.8/rake.rb:1183:in `send'
+/usr/lib/ruby/1.8/rake.rb:1183:in `each'
+/usr/lib/ruby/1.8/rake.rb:515:in `invoke_prerequisites'
+/usr/lib/ruby/1.8/rake.rb:507:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/rake.rb:501:in `synchronize'
+/usr/lib/ruby/1.8/rake.rb:501:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/rake.rb:518:in `invoke_prerequisites'
+/usr/lib/ruby/1.8/rake.rb:1183:in `each'
+/usr/lib/ruby/1.8/rake.rb:1183:in `send'
+/usr/lib/ruby/1.8/rake.rb:1183:in `each'
+/usr/lib/ruby/1.8/rake.rb:515:in `invoke_prerequisites'
+/usr/lib/ruby/1.8/rake.rb:507:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/rake.rb:501:in `synchronize'
+/usr/lib/ruby/1.8/rake.rb:501:in `invoke_with_call_chain'
+/usr/lib/ruby/1.8/rake.rb:494:in `invoke'
+/usr/lib/ruby/1.8/rake.rb:1931:in `invoke_task'
+/usr/lib/ruby/1.8/rake.rb:1909:in `top_level'
+/usr/lib/ruby/1.8/rake.rb:1909:in `each'
+/usr/lib/ruby/1.8/rake.rb:1909:in `top_level'
+/usr/lib/ruby/1.8/rake.rb:1948:in `standard_exception_handling'
+/usr/lib/ruby/1.8/rake.rb:1903:in `top_level'
+/usr/lib/ruby/1.8/rake.rb:1881:in `run'
+/usr/lib/ruby/1.8/rake.rb:1948:in `standard_exception_handling'
+/usr/lib/ruby/1.8/rake.rb:1878:in `run'
+/usr/bin/rake:28
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5009'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5009"><time data-relative="true">2009-09-11T03:57:09Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot for the report. I only have access to two testing platforms (<a href="/wiki/Mac_OS_X">Mac OS X</a> and <a href="/wiki/RHEL">RHEL</a>) so it's good to get feedback on other platforms.</p>
+<p>The first failure is kind of expected; it's a failure testing against <a href="/wiki/Rails">Rails</a> &quot;Edge&quot;, which is basically always broken and I don't really worry about chasing Edge all over the place. Specifically it's choking on the &quot;3.0.pre&quot; version string.</p>
+<p>The other failures are more interesting though. I have no idea why they appear. Running on my machine I just get two failures for Edge, which like I said are kind of expected to be broken:</p>
+<pre>1)
+RuntimeError in 'Template handler in Rails 2.2.2 before(:all)'
+non-zero exit status (1) for 'ruby'
+./spec/rails_spec.rb:58:in `run'
+./spec/rails_spec.rb:81:in `create_base_app_and_symlinks'
+./spec/rails_spec.rb:94:in `create_release_app'
+./spec/rails_spec.rb:173:in `setup_release_app'
+./spec/rails_spec.rb:201:
+
+2)
+RuntimeError in 'Template handler in Edge Rails before(:all)'
+non-zero exit status (1) for 'git'
+./spec/rails_spec.rb:58:in `run'
+./spec/rails_spec.rb:157:in `create_edge_app'
+./spec/rails_spec.rb:156:in `create_edge_app'
+./spec/rails_spec.rb:80:in `create_base_app_and_symlinks'
+./spec/rails_spec.rb:155:in `create_edge_app'
+./spec/rails_spec.rb:182:in `setup_edge_app'
+./spec/rails_spec.rb:214:
+
+Finished in 19.668961 seconds
+
+750 examples, 2 failures, 1 pending</pre>
+<p>I really have no idea why you're seeing failures like that. Wonder if a previously installed version of the <a href="/wiki/gem">gem</a> is interfering?</p>
+<p>Can you try cloning from the Git repo and testing inside that? eg.</p>
+<pre class="shell-syntax">$ cd /tmp
+$ git clone git://git.wincent.com/wikitext.git
+Initialized empty Git repository in /private/tmp/wikitext/.git/
+remote: Counting objects: 2972, done.
+remote: Compressing objects: 100% (789/789), done.
+remote: Total 2972 (delta 2087), reused 2972 (delta 2087)
+Receiving objects: 100% (2972/2972), 4.07 MiB | 423 KiB/s, done.
+Resolving deltas: 100% (2087/2087), done.
+$ cd wikitext
+/tmp/wikitext
+$ rake
+(in /private/tmp/wikitext)
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rake-0.8.3/lib/rake/gempackagetask.rb:13:Warning: Gem::manage_gems is deprecated and will be removed on or after March 2009.
+checking for ruby.h... yes
+creating Makefile
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -DRUBY_1_8_x  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c ary.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -DRUBY_1_8_x  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c parser.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -DRUBY_1_8_x  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c str.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -DRUBY_1_8_x  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c token.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -DRUBY_1_8_x  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c wikitext.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common  -DRUBY_1_8_x  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c wikitext_ragel.c
+cc -arch i386 -pipe -bundle -undefined dynamic_lookup -o wikitext.bundle ary.o parser.o str.o token.o wikitext.o wikitext_ragel.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386     -lruby  -lpthread -ldl  
+..................................................................................*.....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................*** COMMAND rake gems:refresh_specs EXITED WITH NON-ZERO EXIT STATUS (1)
+*** STDOUT FOR COMMAND rake gems:refresh_specs:
+(in /private/tmp/wikitext/spec/trash/edge-app)
+*** STDERR FOR COMMAND rake gems:refresh_specs:
+rake aborted!
+Malformed version number string 3.0.pre
+/private/tmp/wikitext/spec/trash/edge-app/rakefile:4
+(See full trace by running task with --trace)
+F.......................................................................................................................
+
+Pending:
+
+Wikitext::Parser autolinking handling &quot;special&quot; URI characters after &quot;mailto:&quot; URIs should not terminate on question marks that occur within the URI (TODO)
+./spec/autolinking_spec.rb:534
+
+1)
+RuntimeError in 'Template handler in Edge Rails before(:all)'
+non-zero exit status (1) for 'rake'
+./spec/rails_spec.rb:58:in `run'
+./spec/rails_spec.rb:168:in `update_environment'
+./spec/rails_spec.rb:167:in `update_environment'
+./spec/rails_spec.rb:183:in `setup_edge_app'
+./spec/rails_spec.rb:214:
+
+Finished in 108.311198 seconds
+
+751 examples, 1 failure, 1 pending
+rake aborted!
+Command /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby -I&quot;/Library/Ruby/Gems/1.8/gems/rspec-1.2.8/lib&quot;  &quot;/Library/Ruby/Gems/1.8/gems/rspec-1.2.8/bin/spec&quot; &quot;spec/autolinking_spec.rb&quot; &quot;spec/base_heading_level_spec.rb&quot; &quot;spec/blockquote_spec.rb&quot; &quot;spec/em_spec.rb&quot; &quot;spec/encoding_spec.rb&quot; &quot;spec/entity_spec.rb&quot; &quot;spec/external_link_spec.rb&quot; &quot;spec/fulltext_spec.rb&quot; &quot;spec/h1_spec.rb&quot; &quot;spec/h2_spec.rb&quot; &quot;spec/h3_spec.rb&quot; &quot;spec/h4_spec.rb&quot; &quot;spec/h5_spec.rb&quot; &quot;spec/h6_spec.rb&quot; &quot;spec/img_spec.rb&quot; &quot;spec/indentation_spec.rb&quot; &quot;spec/integration_spec.rb&quot; &quot;spec/internal_link_spec.rb&quot; &quot;spec/line_endings_spec.rb&quot; &quot;spec/link_encoding_spec.rb&quot; &quot;spec/link_sanitizing_spec.rb&quot; &quot;spec/nil_class_spec.rb&quot; &quot;spec/nowiki_spec.rb&quot; &quot;spec/p_spec.rb&quot; &quot;spec/parser_spec.rb&quot; &quot;spec/pre_spec.rb&quot; &quot;spec/rails_spec.rb&quot; &quot;spec/regressions_spec.rb&quot; &quot;spec/string_spec.rb&quot; &quot;spec/strong_em_spec.rb&quot; &quot;spec/strong_spec.rb&quot; &quot;spec/tokenizing_spec.rb&quot; &quot;spec/tt_spec.rb&quot; &quot;spec/ul_spec.rb&quot; &quot;spec/version_spec.rb&quot; &quot;spec/wikitext_spec.rb&quot; --color failed
+
+(See full trace by running task with --trace)</pre>
+<p>So as you can see, works and only the Edge Rails error.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5132'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5132"><time data-relative="true">2009-11-01T08:54:31Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> wikitext won't compile</li>
+<li><strong>To:</strong> Spec suite failures on Ubuntu 9.04 (rake --trace)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5379'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5379"><time data-relative="true">2010-03-21T15:07:17Z</time></a></span>
+</cite>
+<blockquote><p>Bizarrely on moving to a new machine I can now reproduce the spec failures reported here. I guess I must have had an older copy of the extension which did not have the bug floating around in my load path somewhere. Not sure how this could happen, actually, seeing as in <code>spec/spec_helper.rb</code> we explicitly make sure that the local version of the extension is tested and not versions elsewhere on the load path...</p>
+<p>In any case, now it is fixed.</p>
+<p>Will mark as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5380'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5380"><time data-relative="true">2010-03-21T15:07:23Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

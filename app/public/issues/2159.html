@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2159: Error building in OSX Mavericks with either version of ruby
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2159</div>
+<div class='issue' id='issue_2159'>
+<form class="edit_issue" id="edit_issue_2159" action="/issues/2159" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/WIACeBw3RdbYRhEUYpZilVoE9qUpTRKeNTpuI/uTezJkL6+R/0HQoLtK7Ngowo+4Op65p9JulZYyzxGqzYqyA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2159:
+<span data-name='issue[summary]'>
+Error building in OSX Mavericks with either version of ruby
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-02-28T22:01:28Z</time>, updated <time data-relative="true">2014-03-27T20:59:25Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I just pulled your latest changes and tried to build command-t on my OSX mavericks (which I have been using for a while without issues) and it doesn't work. I have tried every combination of ruby version and now I don't know what to do anymore. Here are the relevant outputs: </p>
+<pre>
+$ mvim --version                                                                                                                                                                                                                                                                                                                                          VIM - Vi IMproved 7.4 (2013 Aug 10, compiled Feb 28 2014 16:30:38)
+MacOS X (unix) version
+Included patches: 1-52
+Compiled by Homebrew
+Huge version with MacVim GUI.  Features included (+) or not (-):
++acl             +file_in_path    +mouse_sgr       +tag_binary
++arabic          +find_in_path    -mouse_sysmouse  +tag_old_static
++autocmd         +float           +mouse_urxvt     -tag_any_white
++balloon_eval    +folding         +mouse_xterm     +tcl
++browse          -footer          +multi_byte      +terminfo
+++builtin_terms  +fork()          +multi_lang      +termresponse
++byte_offset     +fullscreen      -mzscheme        +textobjects
++cindent         -gettext         +netbeans_intg   +title
++clientserver    -hangul_input    +odbeditor       +toolbar
++clipboard       +iconv           +path_extra      +transparency
++cmdline_compl   +insert_expand   +perl            +user_commands
++cmdline_hist    +jumplist        +persistent_undo +vertsplit
++cmdline_info    +keymap          +postscript      +virtualedit
++comments        +langmap         +printer         +visual
++conceal         +libcall         +profile         +visualextra
++cryptv          +linebreak       +python/dyn      +viminfo
++cscope          +lispindent      +python3/dyn     +vreplace
++cursorbind      +listcmds        +quickfix        +wildignore
++cursorshape     +localmap        +reltime         +wildmenu
++dialog_con_gui  +lua             +rightleft       +windows
++diff            +menu            +ruby            +writebackup
++digraphs        +mksession       +scrollbind      -X11
++dnd             +modify_fname    +signs           -xfontset
+-ebcdic          +mouse           +smartindent     +xim
++emacs_tags      +mouseshape      -sniff           -xsmp
++eval            +mouse_dec       +startuptime     -xterm_clipboard
++ex_extra        -mouse_gpm       +statusline      -xterm_save
++extra_search    -mouse_jsbterm   -sun_workshop    -xpm
++farsi           +mouse_netterm   +syntax
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+ 2nd user vimrc file: &quot;~/.vim/vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+2nd user gvimrc file: &quot;~/.vim/gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: clang -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-precomp  -g -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1     -I/System/Library/Frameworks/Tcl.framework/Headers  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_DARWIN_C_SOURCE=1
+Linking: clang   -L. -L/usr/local/lib -L. -L/usr/local/lib  -L/usr/local/lib -o Vim -framework Cocoa -framework Carbon       -lm  -lncurses -liconv -framework Cocoa  -L/usr/local/lib -llua -fstack-protector -L/usr/local/lib  -L/System/Library/Perl/5.16/darwin-thread-multi-2level/CORE -lperl   -F/System/Library/Frameworks -framework Tcl -framework CoreFoundation -framework Ruby
+</pre>
+<pre>
+$ ruby --version
+ruby 2.0.0p247 (2013-06-27 revision 41674) [universal.x86_64-darwin13]
+</pre>
+<p>Running with ruby 2.0.0</p>
+<pre>
+$ ruby extconf.rb
+checking for float.h... yes
+checking for ruby.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for pthread.h... yes
+creating Makefile
+
+$ make
+compiling ext.c
+compiling match.c
+compiling matcher.c
+linking shared-object ext.bundle
+
+</pre>
+<p>When I run vim or mvim, I get the following when I \t :</p>
+<pre>
+command-t.vim could not load the C extension
+Please see INSTALLATION and TROUBLE-SHOOTING in the help
+For more information type:    :help command-t  
+</pre>
+<p>Now with 1.8: </p>
+<pre>
+$ /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb
+checking for float.h... yes
+checking for ruby.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for pthread.h... yes
+creating Makefile
+
+$ make
+xcrun cc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin13.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin13.0 -I. -DHAVE_PTHREAD_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+xcrun cc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin13.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin13.0 -I. -DHAVE_PTHREAD_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+xcrun cc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin13.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin13.0 -I. -DHAVE_PTHREAD_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -arch i386 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386     -lruby  -lpthread -ldl -lobjc
+</pre>
+<p>Same output in vim and mvim. </p>
+<p>Just in case this is useful information, I downloaded it using vundle and the ext.bundle lives in the ~/.vim/bundle/command-t/ruby/command-t directory.</p>
+<p>Any help would be much appreciated</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10946'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10946"><time data-relative="true">2014-03-06T14:45:17Z</time></a></span>
+</cite>
+<blockquote><p>What is the output of <code>:ruby puts RUBY_VERSION</code> in Vim?</p>
+<p>On the surface, it looks like you're doing everything right. (FWIW, I'm on 10.9 as well with Homebrew-installed Vim and it works without any acrobatics, so there should be some explanation for why it's not working for you.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10962'>
+<cite>
+<a href="/users/carneiro">Carneiro</a>
+<span class='when'><a href="#comment_10962"><time data-relative="true">2014-03-12T14:42:26Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent, my RUBY_VERSION in Vim is: 1.8.7 </p>
+<p>Just updated it to the latest github version and still can't get it to work. Any ideas would be much appreciated. I'd hate to have go back to ctrl-p.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10963'>
+<cite>
+<a href="/users/carneiro">Carneiro</a>
+<span class='when'><a href="#comment_10963"><time data-relative="true">2014-03-12T14:55:11Z</time></a></span>
+</cite>
+<blockquote><p>I just found out that my vim has a different ruby version to my macvim. Do you think that could be causing this issue? </p>
+<p>vim is running ruby 2 while macvim is running 1.8.2.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10964'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10964"><time data-relative="true">2014-03-12T15:21:15Z</time></a></span>
+</cite>
+<blockquote><p>That absolutely sounds like the cause of the issue. Command-T and Vim must link against the exact same version of Ruby if you want things to work.</p>
+<p>If you installed Vim with Homebrew, you should install MacVim via Homebrew as well; they'll both link against Ruby 2.0.0, so you should be able to build Command-T against 2.0.0 as well and it will work in both places.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10967'>
+<cite>
+<a href="/users/carneiro">Carneiro</a>
+<span class='when'><a href="#comment_10967"><time data-relative="true">2014-03-13T14:32:33Z</time></a></span>
+</cite>
+<blockquote><p>Thank you very much.</p>
+<p>I reinstalled macvim with brew with the following command line: </p>
+<p>brew reinstall macvim --with-lua --override-system-vim --with-luajit --with-python3</p>
+<p>then rebuilt command-t using ruby 2, and now everything is working again, on both vim and macvim. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11039'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11039"><time data-relative="true">2014-03-27T20:59:25Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1377: nginx returns 502 &quot;bad gateway&quot; rather than showing maintenance page
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1377</div>
+<div class='issue' id='issue_1377'>
+<form class="edit_issue" id="edit_issue_1377" action="/issues/1377" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Uyl/1/W+1iDbJGNKFUgfwQRGQAvR58GLHKKXOqmsOb1n28FgUjMMdQKoUL0kYUx1scQpN9oLT5c8vULEjXRemQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1377:
+<span data-name='issue[summary]'>
+nginx returns 502 &quot;bad gateway&quot; rather than showing maintenance page
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-09-01T08:12:31Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have a mongrel cluster running behind nginx, and have the latter configured to serve up a maintenance page whenever the site is closed:</p>
+<pre>   # show maintenance page (added by Capistrano) if present
+   if (-f $document_root/system/maintenance.html) {
+     rewrite ^(.*)$ /system/maintenance.html last;
+     break;
+   }</pre>
+<p>Not sure if this is a new behaviour with the nginx 0.7.x series, but if the mongrel cluster isn't running nginx will return a 502 (&quot;bad gateway&quot;) error for all requests rather than showing the maintenance page.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4922'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4922"><time data-relative="true">2009-09-01T09:36:03Z</time></a></span>
+</cite>
+<blockquote><p>Looks like I'm <a href="http://www.ruby-forum.com/topic/159703" class="external">not the first</a>.</p>
+<p>Suggestion to send <code>HUP</code> to <a href="/wiki/nginx">nginx</a> master process doesn't work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4923'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4923"><time data-relative="true">2009-09-01T09:41:28Z</time></a></span>
+</cite>
+<blockquote><p>Related, but not quite the same thing: <a href="http://www.ruby-forum.com/topic/176115" class="external">http://www.ruby-forum.com/topic/176115</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4928'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4928"><time data-relative="true">2009-09-01T10:02:59Z</time></a></span>
+</cite>
+<blockquote><p>Ok, fixed. Looks like I was overzealous with an earlier optimization:</p>
+<pre>commit bd5377c529d3017447c69191497c4a06a9013593
+Author: Wincent Colaiuta &lt;win@wincent.com&gt;
+Date:   Sun Feb 22 19:33:58 2009 -0500
+
+    nginx: drop unnecessary &quot;if&quot; and &quot;break&quot; directives
+    
+    We want to fall through here automatically anyway.
+    
+    Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+
+diff --git a/usr/local/nginx/conf/nginx-staging.conf b/usr/local/nginx/conf/nginx-staging.conf
+index 215043c..2ce0909 100644
+--- a/usr/local/nginx/conf/nginx-staging.conf
++++ b/usr/local/nginx/conf/nginx-staging.conf
+@@ -138,10 +138,7 @@ http {
+       }
+ 
+       # everything else goes to the mongrel cluster
+-      if (!-f $request_filename) {
+-        proxy_pass <a href="http://mongrels" class="external">http://mongrels</a>;
+-        break;
+-      }
++      proxy_pass <a href="http://mongrels" class="external">http://mongrels</a>;
+ 
+     } #&#x00a0;end: location
+   } # end: server
+diff --git a/usr/local/nginx/conf/nginx.conf b/usr/local/nginx/conf/nginx.conf
+index b007287..147a174 100644
+--- a/usr/local/nginx/conf/nginx.conf
++++ b/usr/local/nginx/conf/nginx.conf
+@@ -202,10 +202,7 @@ http {
+       }
+ 
+       # everything else goes to the mongrel cluster
+-      if (!-f $request_filename) {
+-        proxy_pass <a href="http://mongrels" class="external">http://mongrels</a>;
+-        break;
+-      }
++      proxy_pass <a href="http://mongrels" class="external">http://mongrels</a>;
+ 
+     } #&#x00a0;end: location
+   } # end: server</pre>
+<p>Turns out that we really do fall through here, despite the rules higher up in the config file. Final version looks like this:</p>
+<pre>      # serve static content without hitting Rails
+      location ~ ^/(images|javascripts|stylesheets)/ {
+        expires 10y;
+      }
+      if (-f $request_filename) {
+        break;
+      }
+
+      # show maintenance page if present
+      if (-f $document_root/system/maintenance.html) {
+        rewrite ^(.*)$ /system/maintenance.html last;
+        break;
+      }
+
+      # cached pages
+      set $cache_extension '';
+      if ($request_method = GET) {
+        set $cache_extension '.html';
+      }
+
+      # the above is a hack because nginx doesn't allow nested or ANDed ifs
+      if (-f $request_filename$cache_extension) {
+        rewrite (.*) $1.html break;
+      }
+
+      # everything else goes to the mongrel cluster
+      if (!-f $request_filename) {
+        proxy_pass <a href="http://mongrels" class="external">http://mongrels</a>;
+        break;
+      }</pre>
+<p>This is a little counterintuitive to me. Need to look up what those <code>break</code>, <code>rewrite</code> and <code>last</code> rules really do.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4929'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4929"><time data-relative="true">2009-09-01T10:51:27Z</time></a></span>
+</cite>
+<blockquote><p>My understanding of <a href="http://wiki.nginx.org/NginxHttpRewriteModule" class="external">the docs</a> is thus:</p>
+<ul>
+<li>the <code>if</code> directive is supplied by the rewrite module itself</li>
+<li>the places where I have a <code>last</code> following my <code>rewrite</code> rules, followed by a <code>break</code>, I could just have a <code>break</code> instead</li>
+<li><code>break</code> in both places (as a separate directive or as part of a <code>rewrite</code> rule) means &quot;<em>really</em> stop processing rewrite rules&quot;: this is unlike the normal situation where a rewritten URI while be passed along to subsequent rules, and <em>then</em> fed back into the enclosing <code>location</code> block all over again</li>
+<li><code>last</code> stops processing rewrite rules (the rewritten URI doesn't get passed along to subsequent rules) but the URI <em>does</em> get fed back into the <code>location</code> block all over again</li>
+<li>stuff not protected by an <code>if</code> condition will get executed and acted upon regardless of any preceding <code>last</code> or <code>break</code> directives</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4930'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4930"><time data-relative="true">2009-09-01T10:56:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

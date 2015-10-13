@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1283: Handle &quot;circular dependencies&quot; in FixtureReplacement?
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1283</div>
+<div class='issue' id='issue_1283'>
+<form class="edit_issue" id="edit_issue_1283" action="/issues/1283" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="zoA6JlQQ3pnUG3XarUR1nq2XE4+SL3dUYh5SufIueJH6coSR850EzA2XRi2cbSYqGBV6s5nD+UhCAYdH1vYftQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1283:
+<span data-name='issue[summary]'>
+Handle &quot;circular dependencies&quot; in FixtureReplacement?
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-21T05:35:52Z</time>, updated <time data-relative="true">2010-06-24T09:04:04Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Given two models:</p>
+<pre>class User &lt; ActiveRecord::Base
+  has_many                  :emails, :dependent =&gt; :destroy
+end
+
+class Email &lt; ActiveRecord::Base
+  belongs_to              :user
+end</pre>
+<p>And corresponding <a href="/wiki/FixtureReplacement">FixtureReplacement</a> <code>db/example_data.rb</code>:</p>
+<pre>module FixtureReplacement
+  def email_attributes
+    {
+      :address                  =&gt; &quot;#{String.random}@example.com&quot;,
+      :user                     =&gt; default_user,
+      :verified                 =&gt; true
+    }
+  end
+
+  PASSPHRASE = 'supersecret'
+  def user_attributes
+    {
+      :display_name             =&gt; String.random,
+      :passphrase               =&gt; PASSPHRASE,
+      :passphrase_confirmation  =&gt; PASSPHRASE,
+      :verified                 =&gt; true
+    }
+  end
+end</pre>
+<p>We have a classic &quot;circular&quot; dependency problem.</p>
+<p><code>create_user</code> will give us a &quot;valid&quot; User object (which passes all validations) but which isn't totally &quot;ready to go&quot; in practice, because it doesn't have any associated email with it.</p>
+<p>On the other hand, <code>create_email</code> will automatically set up an associated User instance for us. This is because in order to be valid it needs an associated User instance; I haven't set up a <a href="/wiki/Rails">Rails</a>-level validation for this, but at the database level there is indeed a non-NULL constraint:</p>
+<pre>  create_table &quot;emails&quot;, :force =&gt; true do |t|
+    t.integer  &quot;user_id&quot;,                       :null =&gt; false
+    t.string   &quot;address&quot;,    :default =&gt; &quot;&quot;,    :null =&gt; false
+    t.boolean  &quot;default&quot;,    :default =&gt; true,  :null =&gt; false
+    t.boolean  &quot;verified&quot;,   :default =&gt; false, :null =&gt; false
+    t.datetime &quot;created_at&quot;
+    t.datetime &quot;updated_at&quot;
+    t.datetime &quot;deleted_at&quot;
+  end</pre>
+<p>In other words, you can't save an email record to the database without an associated user record. (Is that the right thing to do?)</p>
+<p>So in our specs if you want to test the Email model you just do <code>create_email</code> and you're ready to go. If you want to test the User model you can often just do <code>create_user</code> but if you want to get a model which really is &quot;ready to go&quot; (with an associated, verified email) then you must do something like this:</p>
+<pre>email = create_email
+user = email.user</pre>
+<p>This lack of symmetry is a little bit annoying; why can't FixtureReplacement give you a reasonable, ready-to-go default object for both classes? If you try to set up associated email records in your <code>db/example_data.rb</code> file then you'll create a circular dependency (to create a user instance you need an email, but to create an email you need a user).</p>
+<p>So there are two or three possible solutions here:</p>
+<ul>
+<li>add another helper method to really give you a ready-to-go user instance: this is basically a wrapper for the <code>email = create_email; user = email.user</code> pattern.</li>
+<li>patch FixtureReplacement so that it will accept some kind of block or <code>Proc</code> parameter in the example data in which you can do arbitrary set-up or overriding; in this block or <code>Proc</code> you'd evidently call <code>create_email</code> whenever asked for a new user, and then hand back the user.</li>
+<li>rethink my object dependency graph: perhaps I am doing the wrong thing by requiring an existing user object before saving an email record.</li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4483'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4483"><time data-relative="true">2009-04-21T05:42:29Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5186'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5186"><time data-relative="true">2009-11-26T16:43:33Z</time></a></span>
+</cite>
+<blockquote><p>FixtureReplacement 3.0 handles this, <a href="/twitter/196">as noted here</a>, so looks like the problem might go away.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5746'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5746"><time data-relative="true">2010-06-24T09:02:34Z</time></a></span>
+</cite>
+<blockquote><p><a href="/wiki/Factory_Girl">Factory Girl</a>&#x00a0;also handles it without a problem:</p>
+<pre class="ruby-syntax">Factory.define :email do |e|
+  e.address { Sham.email_address }
+  e.association :user
+  e.verified true
+end
+
+Factory.define :user do |u|
+  u.display_name { Sham.user_display_name }
+  u.passphrase { Sham.passphrase }
+  u.passphrase_confirmation { Sham.passphrase }
+  u.verified true
+
+  # an associated email is not &quot;required&quot; (for validation) but it
+  # is still necessary in practice if the record is to be usable
+  u.after_create { |user| Email.make! :user =&gt; user  }
+end</pre>
+<p>Calling <code>Email.make</code>/<code>Email.make!</code> always creates the associated user object.</p>
+<p>And as noted in the comment <code>User.make</code> won't try to make an associated email, but <code>User.make!</code> will set one up via the <code>after_create</code> callback.</p>
+<p>Works very nicely, so marking as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5747'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5747"><time data-relative="true">2010-06-24T09:04:04Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #184: REQUEST: Add more states and animation to buttons, and use Photoshop button files
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #184</div>
+<div class='issue' id='issue_184'>
+<form class="edit_issue" id="edit_issue_184" action="/issues/184" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="jz+7Y0W4vjcaYw7BBd3IulmmUl1vtwGujzAzQ6ngM/y7zQXU4jVkYsPvPTY09JsO7CQ7YWRbj7KvL+a9jThU2A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #184:
+<span data-name='issue[summary]'>
+REQUEST: Add more states and animation to buttons, and use Photoshop button files
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-16T05:17:31Z</time>, updated <time data-relative="true">2006-07-05T02:05:08Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/eerk">Eerk</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Although this will definitely cause horrible button sets to appear, I think  that, when used subtle and with caution, additional states and animation  (play!) will enhance the look and feel of button sets. This is an addition to  the request in #165. For another application I worked on the interface for, the developers had a  interface button element that used layered PhotoShop files for input, including  transparency. By naming the layers with specific states, this one file is able  to serve all the states needed. A very convenient way to design buttons! This  could even include animation by appending &quot;#1&quot;, &quot;#2&quot;, etc. to one state's name.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1815'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1815"><time data-relative="true">2005-04-16T06:47:05Z</time></a></span>
+</cite>
+<blockquote><p>Interesting ideas. I agree the animations could potentially become quite horrible, but there's also  potential for good in there.</p>
+<p>As for the Photoshop idea I don't think it would be a very high priority for me to implement that feature  because there's no native support for opening PS files within Cocoa (at least, as far as I know). I think  one of the real strings of Mac OS X's bundle system is that you can browse a bundle in the file and see  all its components without having to rely on other applications (especially very expensive ones like  Photoshop which many people can't afford). Of course, I'm always ready for someone to come and  change my mind...</p>
+<p>So for now we have the core proposal: an animation-capable button set format.</p>
+<p>And some options for how these animations could be stored:</p>
+<p>1. Photoshop layers 2. Animated GIFs 3. Numbered files 4. QuickTime movies</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1816'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1816"><time data-relative="true">2006-07-05T02:05:08Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

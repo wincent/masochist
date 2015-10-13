@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #58: REQUEST: Automatically launch Synergy when iTunes is launched
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #58</div>
+<div class='issue' id='issue_58'>
+<form class="edit_issue" id="edit_issue_58" action="/issues/58" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="GNZyYA256GsNo/b2bLfOMHkkPeXsEms4Xw0WnPjG87QsJMzXqjQyPtQvxQFdnp2EzKZU2ef+5SR/EsNi3B6UkA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #58:
+<span data-name='issue[summary]'>
+REQUEST: Automatically launch Synergy when iTunes is launched
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2004-12-08T06:09:35Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/kerry-echols">Kerry Echols</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I would like to have the option of having Synergy launch only when I launch iTunes. My current options are to launch at login or to deselect that and manually start Synergy from the preference panel pane each time I need it. It seems there should be a middle ground. No one needs Synergy on if iTunes is not running, do they?</p>
+<p>Thanks.</p>
+<p>Kerry Echols Birmingham, Alabama</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1318'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1318"><time data-relative="true">2004-12-08T06:34:04Z</time></a></span>
+</cite>
+<blockquote><p>Thanks very much for submitting the request.</p>
+<p>This is a chicken and egg problem.</p>
+<p>I cannot modify iTunes, because I don't work for Apple, so that means to implement the feature you're  requesting I would need a separate process that runs all the time to watch for iTunes launch events.  When iTunes launches, that third process will launch Synergy. Once Synergy is running, it can watch  iTunes itself for termination events -- at that point the third process isn't needed -- and then Synergy  can quit itself when iTunes exits. But then we need the third process again.</p>
+<p>The is no way to obtain what you're asking for without running an extra process. And I presume what  you're trying to avoid is running extra processes.</p>
+<p>For Synergy Advance I have already written a background daemon that does exactly what you are asking  for. It sits in the background using effectively zero memory and zero CPU resources. It only wakes up  when the kernel tells it that an application was launched, then it goes back to sleep. It is very resource  efficient. It is still a third process though; there's no avoiding it.</p>
+<p>In Synergy Classic, did you know that you can at least make it invisible when iTunes is not running? If  you are using Synergy 1.5b or later and iTunes 4.7 or later, Synergy will use basically zero CPU when  iTunes is not running. To make it invisible, you go into the Menu Bar tab of the preferences. Check  &quot;Display controls only while iTunes is running&quot;, and make sure that the option for showing the Global  Menu &quot;Only when Menu Bar control buttons are hidden&quot; is turned off. In this way Synergy won't take up  any space in your menu bar when iTunes isn't running. (Note that this feature isn't working 100% in  version 1.5b with iTunes 4.7 -- see <a href="/issues/48">bug #48</a> -- but this is fixed in my internal builds here and you'll  get your hands on it when I release 1.5 final, very soon.)</p>
+<p>Unfortunately the background daemon I mention above will have to remain a Synergy Advance-only  feature, because it depends on APIs new in Panther, and Synergy Classic must run on Jaguar. So I have  to mark this one as WONTFIX.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

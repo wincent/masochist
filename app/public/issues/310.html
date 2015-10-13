@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #310: REQUEST: Add bitrate and other iTunes information as possible format markers (for Growl etc)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #310</div>
+<div class='issue' id='issue_310'>
+<form class="edit_issue" id="edit_issue_310" action="/issues/310" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="sauPSd8J+NAt6oycIeMRF0vtzOn2iAN3dOQEf3ZxOpGFWTH+eIQihfRmv2sQykKj/m+l1f1kjWtU+9GBUqldtQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #310:
+<span data-name='issue[summary]'>
+REQUEST: Add bitrate and other iTunes information as possible format markers (for Growl etc)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-10-14T16:41:43Z</time>, updated <time data-relative="true">2006-07-05T02:06:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/neil-sharp">Neil Sharp</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Could you add the track bitrate to the possible information displayed by Growl in its &quot;pop-up&quot; window.  It would be nice to see the track bitrate, without having to open iTunes.  As far as that's concerned, is it possible to be able to construct the Growl pop-up with any of the information about a track in iTunes?  I would assume all track info is possible, as you parse the iTunes database directly, right?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2262'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2262"><time data-relative="true">2005-10-16T09:42:15Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the feature request. We'll use this issue to maintain a list of requested fields. As you've seen from looking in the UI, the following fields are already supported:</p>
+<p>- track title - artist - composer - album - genre - player state (playing/paused/stopped) - year - rating - track number - track count - disc number - disc count - grouping - total time - date added - BPM - play count</p>
+<p>And you're proposing to add:</p>
+<p>- bit rate</p>
+<p>Could you (and anyone else interested in this feature) please also list any other fields that you'd like to see added?</p>
+<p>To answer your question: yes, I do parse the database, but only at launch time to populate the track listings in the global menu. When you're actually playing tracks in iTunes I'm querying iTunes in real-time via Apple Events to get the latest info. This is because users might edit the attributes of a song in iTunes and they'll expect Synergy Advance to reflect the changes in real time.</p>
+<p>I may or may not change this design as time goes on, depending on performance considerations. For now the performance seems good even with the live updates. I might be able to get some information that is unlikely to change (such as bit rate) from the database rather than doing a live query; but like I said that will all depend on performance considerations.</p>
+<p>Basically, though, I can get any information from iTunes that is available via.</p>
+<p>(a) parsing the library XML file; and: (b) querying via Apple Events (see iTunes' AppleScript dictionary for a list of possibilities)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2263'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2263"><time data-relative="true">2006-07-05T02:06:42Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

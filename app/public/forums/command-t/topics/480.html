@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Trouble Installing on OS X Lion
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Trouble Installing on OS X Lion</div>
+<h1 class='major'>Trouble Installing on OS X Lion</h1>
+<div class='topic' id='topic_480'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/480"><time data-relative="true">2011-07-22T16:17:00Z</time></a>
+</span>
+</cite>
+<blockquote><p>Trying to install using rvm.</p>
+<p>When I run </p>
+<pre class="shell-syntax">$ ruby extconf.rb 
+checking for ruby.h... yes
+creating Makefile</pre>
+<p>And then:</p>
+<pre class="shell-syntax">$ make
+cc -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/Users/gmassanek/.rvm/rubies/ruby-1.8.7-p352/lib -L.     -lruby  -ldl -lobjc  
+ld: warning: ignoring file ext.o, file was built for unsupported file format which is not the architecture being linked (x86_64)
+ld: warning: ignoring file match.o, file was built for unsupported file format which is not the architecture being linked (x86_64)
+ld: warning: ignoring file matcher.o, file was built for unsupported file format which is not the architecture being linked (x86_64)</pre>
+<p>I'm guessing it's some problem with the version of uby (as mentioned in many other threads) but I've tried it with every combination of 1.8.7 and 1.9.2.  Perhaps it's something with 32 or 64 bit?</p>
+<p>Thanks in advance for any help you can give!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6980'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6980"><time data-relative="true">2011-07-23T21:43:55Z</time></a></span>
+</cite>
+<blockquote><p>I've built successfully using the system Ruby. Haven't tried with <a href="/wiki/RVM">RVM</a> on <a href="/wiki/Lion">Lion</a>.</p>
+<p>It's important that you use the same version of Ruby that was used when building Vim itself. If you use <a href="/wiki/MacVim">MacVim</a>, that generally means the system Ruby (unless you built MacVim yourself from source, which isn't currently advisable right now if you're on Lion, based on what I've read on the MacVim Google group).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6993'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6993"><time data-relative="true">2011-07-28T08:21:12Z</time></a></span>
+</cite>
+<blockquote><p>I had pretty much the same problem. Use ruby 1.9.2p180 on Lion (rvm use system will give you that), than do &quot;make clean&quot; (i had some old compiled files that were cousing a problem) and make. I use macvim snapshot 61. Works like a charm :) Good luck!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6994'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6994"><time data-relative="true">2011-07-29T03:15:27Z</time></a></span>
+</cite>
+<blockquote><p>It sounds incorrect that <code>rvm use system</code> would give you Ruby 1.9.2, as the system Ruby on <a href="/wiki/Lion">Lion</a> is still 1.8.7:</p>
+<pre class="ruby-syntax">$ which ruby
+/usr/bin/ruby
+$ ruby --version
+ruby 1.8.7 (2010-01-10 patchlevel 249) [universal-darwin11.0]</pre>
+<p>That's on my Lion install, which doesn't have RVM on it.</p>
+<p>It's always been recommended that RVM users do an <code>rvm use system</code> before building <a href="/wiki/Command-T">Command-T</a>, seeing as most vims (such as MacVim) link against the system Ruby, and they must match if you expect them to work.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

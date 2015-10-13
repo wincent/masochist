@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #596: REQUEST: Filter for audioscrobbler submissions
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #596</div>
+<div class='issue' id='issue_596'>
+<form class="edit_issue" id="edit_issue_596" action="/issues/596" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Nrd4hA2SUMOtdeo2eWkAcbnCUdESotvkgr4GWMf0bTQCRcYzqh+KlnT52cFIQFPFDEA47RlOVfiiodOm4ywKEA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #596:
+<span data-name='issue[summary]'>
+REQUEST: Filter for audioscrobbler submissions
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-08-19T15:31:05Z</time>, updated <time data-relative="true">2008-05-19T18:59:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bernd">Bernd</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I'd like to request the ability to define include/exclude filters for last.fm/audioscrobbler submissions.</p>
+<p>Currently (in Synergy 3.1.4) everything which is played in iTunes gets submitted to audioscrobbler. The result is that non-music (podcasts, mp4-videos, streams) or stuff I'm previewing and don't want to get submitted gets processed.</p>
+<p>Ideally would be a configuration to add multiple filters, similar if you'd setup a smart playlist in iTunes.</p>
+<p>Personally I'd love support for a special synergy text file in my &quot;Application Support&quot; folder which contains a regular expression each submission (filename + path) is tested against. I'm aware that this request probably can't be used by a lot of users, however is pretty powerful for the advanced user.</p>
+<p>Thanks for reading. Hope you had a nice vacation! :)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3065'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3065"><time data-relative="true">2007-08-19T20:28:32Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the feature request. Funny that you should comment about non-music stuff getting submitted. At the level of the protocol, Audioscrobbler states what can and can't be submitted, so Synergy does it's best to respect that; for example, streams should not be submitted (at least with the version of the protocol that Synergy adheres to) and so Synergy asks iTunes if an item is a regular file before submitting it... if there are any discrepancies in that department then it's a bug in iTunes, and there are known issues where iTunes doesn't report that something is not a regular file.</p>
+<p>But as you point out, there will always be cases where you'll want stuff to be filtered out even though it looks submittable in all other ways. Not sure if filename and/or path is the best way to match things; I suspect that other info in the ID3 tags might be more useful. But if you're going to go to the trouble of maintaining such a complex filtering mechanism then it's really only 5% more work to support matching on different &quot;fields&quot;, not just the filename and path.</p>
+<p>So marking this as ASSIGNED and will see what I can come up with. Won't be something I can do in the immediate future but it's in the database now so that it won't get forgotten.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3066'>
+<cite>
+<a href="/users/bernd">Bernd</a>
+<span class='when'><a href="#comment_3066"><time data-relative="true">2007-08-20T03:13:10Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for your comment and considering to add support for filters.</p>
+<p>Regarding last.fm submissions:</p>
+<p>I re-tested some cases this morning to make sure I've got my report right: And I didn't :)</p>
+<p>As for podcasts which contain .mp3 or .m4a files will be submitted to last.fm, if they got valid tags.</p>
+<p>Examples: <a href="http://feeds.feedburner.com/CovervilleAAC" class="external">http://feeds.feedburner.com/CovervilleAAC</a> <a href="http://www.hbo.com/apps/podcasts/podcast.xml?a=2" class="external">http://www.hbo.com/apps/podcasts/podcast.xml?a=2</a></p>
+<p>Stream wise I was totally wrong: Last Month last.fm showed me warning that submissions I made did contain bad tags and I should review my taggings. The error message did show up after listening to streams a whole evening. I suspect now that this was a short flaw or whatever on last.fm's side.</p>
+<p>You're absolutely right: There are no submission at all when playing a stream OR video. I just let Charles Proxy run while listening to streams - no last.fm contact at all. I apologize for such a rushed report.</p>
+<h5></h5>
+<p>About the filtering, yes - adding more options would prolly be just as much work and work for more users and also cases.</p>
+<p>Thanks again.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3067'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3067"><time data-relative="true">2007-08-20T04:42:50Z</time></a></span>
+</cite>
+<blockquote><p>Yes, I've seen the &quot;bad tags&quot; warning too, many times, and it is usually because of poorly labelled tracks in my library with titles like &quot;Untitled&quot; and artists like &quot;Unknown artist&quot;. (That's just my rough recollection, I can't remember the actual strings which last.fm complained about, but I do remember that they were innocuous.)</p>
+<p>But that's exactly the kind of string that you could put in your proposed filter file. Of course, I never thought of implementing a filter for such files seeing as  last.fm is evidently already filtering out those things which you wouldn't want posted. Even so, there is probably a use for the filtering mechanism anyway.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3326'>
+<cite>
+<a href="/users/bernd">Bernd</a>
+<span class='when'><a href="#comment_3326"><time data-relative="true">2008-05-16T16:35:48Z</time></a></span>
+</cite>
+<blockquote><p>Using iTunes 7.6.2 and Synergy 3.5a5 now submits Videos to last.fm if they are played from a podcast. (For example the Hooverphonic Euro Tour Podcast: <a href="http://tinyurl.com/6xmwzq" class="external">http://tinyurl.com/6xmwzq</a>)</p>
+<p>This feature request is now almost half a year old, and I'm still forced to shut down Synergy while watching podcasts. Any chance to get this request integrated? Maybe either by a filter or stricy &quot;library only&quot; submissions?</p>
+<p>Please let me know if you don't plan to add it, then I need to move on and find an alternative.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3327'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3327"><time data-relative="true">2008-05-17T10:54:26Z</time></a></span>
+</cite>
+<blockquote><p>I do plan to add it (otherwise I would have marked this as CLOSED), but before doing so the exact use cases need to be fleshed out a little better. Exactly <em>what</em> criteria should be filtered on? Which tags? I don't know if the &quot;Library-only&quot; criterion would be useful because podcasts are in your library too. Can you look at the things for which you'd like to suppress submission and come up with a configuration file that specifies what you want? I'd rather start from the desired end point (what the configuration file should look like) and then work back towards the implementation, rather than starting from an implementation and then having that dictate the configuration file format.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3335'>
+<cite>
+<a href="/users/bernd">Bernd</a>
+<span class='when'><a href="#comment_3335"><time data-relative="true">2008-05-19T18:59:57Z</time></a></span>
+</cite>
+<blockquote><p>Hello Wincent,</p>
+<p>I'll work out a sample configuration in the next few days.</p>
+<p>The idea to work back towards the implementation is also how I like to work :)</p>
+<p>Thank you!</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

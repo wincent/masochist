@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Is this a bug?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Is this a bug?</div>
+<h1 class='major'>Is this a bug?</h1>
+<div class='topic' id='topic_171'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/johno">Johno</a>
+<span class='when'>
+<a href="/forums/synergy/topics/171"><time data-relative="true">2006-09-20T19:42:26Z</time></a>
+</span>
+</cite>
+<blockquote><p>It's simply too difficult to figure out how to check if this is already a reported bug, but I've recently noticed a problem when using the &quot;next track&quot; &quot;play/pause&quot; shortcuts. When you have the Music Store open in a separate window (which I've been experimenting with lately; and I'm using iT7), everything works correctly as long as iTunes is the frontmost app. As soon as you switch to another app, even when making sure iT is displaying the store in it's frontmost window when you switch, the shortcuts don't work correctly. If you hit the &quot;next track&quot; then the &quot;play/pause&quot; shortcuts, it works on the window that's in the *background* in iTunes!</p>
+<p>Can someone confirm this behavior, or is it a known issue (Wincent?)??</p>
+<p>Thanks, John</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_473'>
+<cite>
+<a href="/users/johno">Johno</a>
+<span class='when'><a href="#comment_473"><time data-relative="true">2006-09-20T21:13:32Z</time></a></span>
+</cite>
+<blockquote><p>I just discovered it works as it should *if* a track is playing in the store when you switch, *and* if you keep hitting the &quot;next track&quot; shortcut before the current track sample finishes playing... If you let the track sample finish, and therefore it stops playing, and you try and switch to, and play, the next track, it will lose focus and play what is selected in the background window. Weird, eh?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_474'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_474"><time data-relative="true">2006-09-20T21:27:54Z</time></a></span>
+</cite>
+<blockquote><p>Quote: It's simply too difficult to figure out how to check if this is already a reported bug</p>
+<p>To check if a bug has already been reported, go to <a href="http://bugs.wincent.com/" class="external">http://bugs.wincent.com/</a> and in the text field that's labelled, &quot;Enter a feature request/bug number or some search terms:&quot;, you enter some search terms. For example, if you enter the terms &quot;music store&quot; (no quotes) you'll get this relatively short list of bug reports/feature requests. It appears that no one else has brought up your issue.</p>
+<p>Now, to respond to your comments:</p>
+<p>The shortcuts merely send &quot;playpause&quot; and &quot;next track&quot; and &quot;previous track&quot; events. I think you'll be able to confirm that the behaviour is the same no matter which application sends those events. Try the following scripts in the AppleScript Script Editor application: </p>
+<p>Code:tell application &quot;iTunes&quot; to playpause</p>
+<p>And:</p>
+<p>Code:tell application &quot;iTunes&quot; to next track</p>
+<p>And:</p>
+<p>Code:tell application &quot;iTunes&quot; to previous track</p>
+<p>Basically you should see that the behaviour is the same sending those events from the Script Editor as it is when triggering those events via hot keys (or menu bar control buttons etc) in Synergy.</p>
+<p>If you find any discrepancies between Synergy's behaviour and that of the Script Editor then I'll be pretty surprised, and stumped as to what the cause might be! It's the same event after all!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_475'>
+<cite>
+<a href="/users/johno">Johno</a>
+<span class='when'><a href="#comment_475"><time data-relative="true">2006-09-20T22:43:40Z</time></a></span>
+</cite>
+<blockquote><p>Okay, so you're saying it's an AppleScript bug? It's definitely a bug. It doesn't make any sense that the background window would get focus if a track isn't be previewed, but not if one is being previewed! I'm guessing it's a bug in iTunes 7, eh?</p>
+<p>And yes, of course I understand how to search for an existing bug report, it's just that this particular issue doesn't have a short, simple description to enter in the search field. I didn't think to try &quot;music store&quot; though...</p>
+<p>Thanks for the reply, regardless.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_476'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_476"><time data-relative="true">2006-09-22T10:06:11Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Okay, so you're saying it's an AppleScript bug? It's definitely a bug.</p>
+<p>To be clear, if the behaviour is weird it's not a bug in AppleScript itself, but in iTunes and the way it responds to AppleScripts (Apple Events).</p>
+<p>When you see this kind of weird behaviour you can rule out that it might be a bug in Synergy by doing some experiments from the Script Editor. If you're able to reproduce the behaviour from within the Script Editor then you know the problem actually lies within iTunes and the way in which it responds to events.</p>
+<p>Sometimes the bug is very clear because you send a simple command like &quot;playpause&quot; and iTunes responds with bizarre and inconsistent behaviour. That's when it's time to file a bug report with Apple (<a href="http://bugreporter.apple.com/" class="external">http://bugreporter.apple.com/</a>, at a minimum requires free &quot;Online&quot; ADC membership), or send them feedback.</p>
+<p>Quote: It doesn't make any sense that the background window would get focus if a track isn't be previewed, but not if one is being previewed! I'm guessing it's a bug in iTunes 7, eh?</p>
+<p>I really don't know. You can file a bug report or feedback with Apple and they might tell you that that's intended behaviour, but there's only one way to find out...</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

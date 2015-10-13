@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Problem with Synergy and Applescript application
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Problem with Synergy and Applescript application</div>
+<h1 class='major'>Problem with Synergy and Applescript application</h1>
+<div class='topic' id='topic_123'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'>
+<a href="/forums/synergy/topics/123"><time data-relative="true">2005-09-24T01:03:54Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm not sure if this is off topic or not, but I've been having a problem with an applescript application that I use with Synergy. I use this applescript application in conjunction with a PHP script on my server to upload and update my site with the latest played iTunes tracks.</p>
+<p>You can see an example of the output here:</p>
+<p><a href="http://www.beatnikpad.com/playlist.php" class="external">http://www.beatnikpad.com/playlist.php</a></p>
+<p>My problem is this: As far as I can tell, you need to save Applescripts as applications before Synergy will run them on track change. My problem is that my Applescript application sometimes launches but doesn't quit - it just runs in the background not doing anything.</p>
+<p>If I force quit the process, it usually gets &quot;unstuck&quot; and works fine from then on. I'd really like to get this fixed so I could distribute this script publicly.</p>
+<p>Is it possible to have Synergy run compiled Applescripts instead of just applications?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_385'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_385"><time data-relative="true">2005-09-24T22:02:10Z</time></a></span>
+</cite>
+<blockquote><p>Yes, it would be possible to do this if I make some changes to the application. As it currently works, it sends an &quot;open&quot; event which should be equivalent to double-clicking stuff in the Finder. Basically, anything which opens and runs as a result of being double-clicked should work fine when triggered by Synergy.</p>
+<p>I don't know what happens with compiled AppleScripts when you double-click them though. I would have thought that they'd run...</p>
+<p>To make these work with Synergy (and even non-compiled ones) I'd have to make changes to the code which treated files with a .scpt extension differently. In those cases, instead of doing the equivalent of a double-click (which would most likely open them in Script Editor which isn't what you want), I could make Synergy read the textual contents of the file, try to compile the text into an AppleScript and then execute it.</p>
+<p>As this is a feature request, I've made an entry for it in the bug tracking and feature requests database. If anyone has any comments to add, please add them there so that all material for this request is kept in one place:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=303" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=303</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_386'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_386"><time data-relative="true">2005-09-24T22:31:41Z</time></a></span>
+</cite>
+<blockquote><p>I just added a &quot;quit&quot; command at the end of my applescript and recompiled. It seems to have fixed the issue. I normally don't add &quot;quit&quot; commands into Applescripts as I usually run them as, well, scripts. I'll keep an eye on it and see if it reoccurs. If not, I'll write some basic documentation and package this up and post it somewhere...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_387'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_387"><time data-relative="true">2005-09-25T21:36:27Z</time></a></span>
+</cite>
+<blockquote><p>Excellent. I am sure other people will be interested in it!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_388'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_388"><time data-relative="true">2005-10-01T13:13:48Z</time></a></span>
+</cite>
+<blockquote><p>I've found the issue. When iTunes is quit Synergy runs the Track Changes items. Because it's an applescript application that requires iTunes it re-launches iTunes. My guess is this is a bug - there's no reason why the Track Changes items should be run when iTunes is quit or started - only when there's a track change.</p>
+<p>Can this be changed for the next release?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_389'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_389"><time data-relative="true">2005-10-01T21:27:40Z</time></a></span>
+</cite>
+<blockquote><p>I'm not sure. You see, track change items are run whenever Synergy receives a notification from iTunes that things have changed. So in the case of quitting iTunes sends a notification. Some scripts may actually depend on this behaviour (for example, to update state to &quot;not playing&quot; or &quot;not running&quot;). Can you add a line to your script to check that iTunes is running before doing anything? That way it handles that specific case but still leaves the door open for people whose scripts need to respond to a quit event.</p>
+<p>I could change this behaviour in a future release (ignore notifications from iTunes when it quits) but I am not sure if it's the correct thing to do. Anyone else have an opinion on this one?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_390'>
+<cite>
+<a href="/users/peeweejd">peeweejd</a>
+<span class='when'><a href="#comment_390"><time data-relative="true">2005-10-20T08:02:18Z</time></a></span>
+</cite>
+<blockquote><p>I added a little blurb to my applescript that checks to see if iTunes is running before it gets any information.  It seems to work fine now.</p>
+<p>Code:if process &quot;iTunes&quot; exists then</p>
+<p>Check out this thread for my applescript: <a href="http://wincent.com/a/support/forums/showflat.php?Cat=0&amp;amp;Number=845&amp;amp;an=0&amp;amp;page=0" class="external">http://wincent.com/a/support/forums/showflat.php?Cat=0&amp;amp;Number=845&amp;amp;an=0&amp;amp;page=0</a></p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

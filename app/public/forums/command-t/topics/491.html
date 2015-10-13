@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Can't pull command-t repository anymore…
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Can&#39;t pull command-t repository anymore…</div>
+<h1 class='major'>Can't pull command-t repository anymore…</h1>
+<div class='topic' id='topic_491'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/491"><time data-relative="true">2011-11-08T09:33:06Z</time></a>
+</span>
+</cite>
+<blockquote><p>&#x2026;because I get</p>
+<pre>`fatal: The remote end hung up unexpectedly`</pre>
+<p>Is there anything I can do?</p>
+<p>My .git/config is</p>
+<pre class="shell-syntax">$ cat .git/config 
+[core]
+&#x0009;repositoryformatversion = 0
+&#x0009;filemode = true
+&#x0009;bare = false
+&#x0009;logallrefupdates = true
+&#x0009;ignorecase = true
+[remote &quot;origin&quot;]
+&#x0009;fetch = +refs/heads/*:refs/remotes/origin/*
+&#x0009;url = git://git.wincent.com/command-t.git
+[branch &quot;master&quot;]
+&#x0009;remote = origin
+&#x0009;merge = refs/heads/master</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7225'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7225"><time data-relative="true">2011-11-09T08:53:54Z</time></a></span>
+</cite>
+<blockquote><p>Not sure what was wrong, I restarted <code>xinetd</code> and all is well again. Thanks for bringing that to my attention.</p>
+<p>If it ever goes down again, there are also mirrors of the official repo here:</p>
+<ul>
+<li>git://github.com/wincent/Command-T.git</li>
+<li>git://gitorious.org/command-t/command-t.git</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7246'>
+<cite>
+<a href="/users/gio">gio</a>
+<span class='when'><a href="#comment_7246"><time data-relative="true">2011-11-09T10:10:23Z</time></a></span>
+</cite>
+<blockquote><p>Hi, </p>
+<p>thanks, that fixed it! I'll write the mirrors down in my .git/config</p>
+<p>Giovanni</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1868: Shortcut to close a buffer in :CommandTBuffer popup menu
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1868</div>
+<div class='issue' id='issue_1868'>
+<form class="edit_issue" id="edit_issue_1868" action="/issues/1868" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="B3VZoGZ2eh5ILNgXsREfZcbqw9P8R9zceA/wHrNbRJ8zh+cXwfugS5Gg6+CAOEzRc2iq7/erUsBYECXgl4Mjuw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1868:
+<span data-name='issue[summary]'>
+Shortcut to close a buffer in :CommandTBuffer popup menu
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-09-05T15:13:23Z</time>, updated <time data-relative="true">2012-08-11T18:52:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Use case: After working on a project for a while, tons of buffer gather up cluttering the editor. Currently the workflow to close these is to switch to buffer and use :bdelete.</p>
+<p>Suggested implementation: User can just call :CommandTBuffer, highlight the buffer he wants to close, press the shortcut key combination. It would save quite some time.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7097'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7097"><time data-relative="true">2011-09-05T20:37:44Z</time></a></span>
+</cite>
+<blockquote><p>I actually think the right place for this kind of functionality is just a simple mapping in your <code>~/.vimrc</code>. For example, this is what I have in mine for this purpose:</p>
+<pre class="vimscript-syntax">map &lt;leader&gt;da :bufdo silent! bdelete&lt;CR&gt;</pre>
+<p>I hit <code>&lt;leader&gt;da</code> (in my case, I have the comma key as my leader, so <code>,da</code>); mnemonic: &quot;delete all&quot;. This deletes all buffers, except those with unsaved changes. I just hit this if the buffer listing starts to become unmanageably large.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7098'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7098"><time data-relative="true">2011-09-05T20:39:00Z</time></a></span>
+</cite>
+<blockquote><p>Going to mark this as closed. You're welcome to submit a patch if you'd like and I'll consider it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7099'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7099"><time data-relative="true">2011-09-05T20:39:04Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7103'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7103"><time data-relative="true">2011-09-07T16:10:29Z</time></a></span>
+</cite>
+<blockquote><p>I tend to agree with the original poster and was looking for this functionality today...  I would like to just highlight the buffer and press something like &lt;C-d&gt; and have that buffer gets closed.  I don't want to just close all buffers like you suggest.  Right now, I have to do a &lt;C-t&gt; to open in a new tab, then :bd to kill the buffer.  Would be great if this were just one keystroke.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7121'>
+<cite>
+<a href="/users/davesanders">DaveSanders</a>
+<span class='when'><a href="#comment_7121"><time data-relative="true">2011-09-13T19:20:39Z</time></a></span>
+</cite>
+<blockquote><p>Howdy, I just about have this implemented, however, only having been using VIM for a week, I have an issue with it that I don't know how to fix:</p>
+<p>I have hooked it in so that you have a new option to &quot;DeleteBuffer&quot;, which I have mapped via &lt;C-d&gt;  After playing with it, it works great, but if you delete the last buffer, C-T wigs out because it can't close. (Which makes sense.)  Also the screen gets unpredictable if you close a buffer that was the screen that you opened C-T on.  (C-T jumps to the top of the screen.</p>
+<p>Playing with the code I can't figure out how to know if the buffer I'm deleting is in the current window that C-T popped up in.  If I could figure that out then I could probably pop a :new in the place of the buffer I'm deleting.</p>
+<p>I tried putting in a :new before every buffer delete just to see what it would do, and unfortunately it made the :new really short and C-T still bounced to the top.  So it needs to start a :new and then make it fill the space.</p>
+<p>I can try to pull together a patch of what I have so far (it's really minor) and maybe you could either handle the window issue with your expertise, or give me a hint on how to solve it myself?  I'm at a loss because I don't know how to debug and see what variables are available in the ruby while its executing, so if you could give me an idea on that, I could probably figure it out...</p>
+<p>thanks for a great tool!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7144'>
+<cite>
+<a href="/users/urandom">urandom</a>
+<span class='when'><a href="#comment_7144"><time data-relative="true">2011-09-21T08:15:45Z</time></a></span>
+</cite>
+<blockquote><p>Hi, the link is a patch that implements this feature. It seems to work, but I have absolutely no knowledge of ruby, so someone should look at it as well</p>
+<p><a href="http://pastebin.com/gx41UaB3" class="external">http://pastebin.com/gx41UaB3</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7148'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7148"><time data-relative="true">2011-09-30T02:22:01Z</time></a></span>
+</cite>
+<blockquote><p>Thank you Dave! Your patch is working great here.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9950'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_9950"><time data-relative="true">2012-08-10T05:06:14Z</time></a></span>
+</cite>
+<blockquote><p>Hey Wincent, Would you entertain a Git Pull Request for this feature? PS Thanks for command-t!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9954'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9954"><time data-relative="true">2012-08-11T18:52:42Z</time></a></span>
+</cite>
+<blockquote><p>Sure.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

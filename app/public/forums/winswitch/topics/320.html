@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+System Administrator appears in WinSwitch menu
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/winswitch">WinSwitch</a> &raquo; System Administrator appears in WinSwitch menu</div>
+<h1 class='major'>System Administrator appears in WinSwitch menu</h1>
+<div class='topic' id='topic_320'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/winswitch/topics/320"><time data-relative="true">2004-12-31T11:47:40Z</time></a>
+</span>
+</cite>
+<blockquote><p>Sometimes--I haven't discerned a pattern to when this happens--the root user appears in the WinSwitch menu as logged in. The root user is not enabled on my machine and I haven't found a password that will enable me to switch to that user. In the past, I've rebooted when this happens, afraid that something malicious was going on. But by now I've pretty much come to the conclusion that it's some system process getting run. I just managed to get the Apple FUS menu on the screen at the same time, and it does not appear in that menu.</p>
+<p>Should I be concerned about this? Or am I right that it's just a wacky thing that happens when a background system process needs to be run?</p>
+<p>Thanks, James Wyatt</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_974'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_974"><time data-relative="true">2005-01-01T18:37:37Z</time></a></span>
+</cite>
+<blockquote><p>WinSwitch will show the root user as logged in if and only if both of the following two conditions are met:</p>
+<p>1. You've told it to display the root user in the preferences (*see note below).</p>
+<p>2. There is a process called &quot;loginwindow&quot; owned by user &quot;root&quot;, which would indicate that the root user is logged in.</p>
+<p>You'll notice that it doesn't care with the root user is enabled, or if you've set a password for it. It only checks for the above two conditions. As for whether this is something to worry about, I don't know. The next time you see it, you should fire up Activity Monitor and see what's happening.</p>
+<p>The Apple FUS menu will never show the root user, whether its logged in or not.</p>
+<ul>
+<li>Note: There is a minor bug in WinSwitch 3.0b where the preferences for displaying the root user are wired up back-to-front. So when &quot;Show root user&quot; is turned off, WinSwitch acts as if it's turned on and vice versa. Already fixed here, you'll see the fix in the next release.</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_975'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_975"><time data-relative="true">2005-01-14T16:00:16Z</time></a></span>
+</cite>
+<blockquote><p>I am having the same issue as James. I've never enabled my root user and I don't keep the root user option checked, but it will appear every once in a while (and everytime it does, it's shown as logged on). I haven't seen a pattern to this either and I have to say, I found it a bit odd as well. Is there any reason this would happen? </p>
+<p>I'll use the Activity Monitor next time I notice it, I guess... </p>
+<p>Thanks,  Craig</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_976'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_976"><time data-relative="true">2005-01-27T14:59:43Z</time></a></span>
+</cite>
+<blockquote><p>I think I pretty much explained all the factors above. So I think firing up activity monitor is a good idea.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_977'>
+<cite>
+<a href="/users/gkjapan">gkjapan</a>
+<span class='when'><a href="#comment_977"><time data-relative="true">2005-03-06T20:21:49Z</time></a></span>
+</cite>
+<blockquote><p>I've noticed that System Administrator shows up when a new Software Update is available.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_978'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_978"><time data-relative="true">2005-03-10T04:53:16Z</time></a></span>
+</cite>
+<blockquote><p>Dear Wincent,</p>
+<p>Switching to the root user, which was shown as logged in, had me stranded in a empty screen with a working mouse and the generic background. And that was it. Not a single keyboard function worked (I tried force quit, log out, the WinSwitch 'go to login window', etc.). After a few minutes of inactivity I finally used the 5 second power button escape hatch. When I restarted my PowerBook, the only difference I noticed is that the option 'Other...' in the login screen had vanished. This option appeared some time ago (I really don't know when en related to what previous action). But now it's gone and the root user no longer seems to be logged in when I look at the WinSwitch menu.</p>
+<p>Any comments on this strange behaviour?</p>
+<p>Kind regards, Eerk.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_979'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_979"><time data-relative="true">2005-03-10T07:11:49Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Any comments on this strange behaviour?</p>
+<p>I don't know what happens if you try to switch to the root account and it isn't enabled (from within NetInfo Manager)... and furthermore, I don't have any documentation on exactly what NetInfo Manager *does* when you enable or disable the root user account. Anyone know? It's possible that what you saw happen is caused by not having the account enabled.</p>
+<p>I do have a FAQ on the root user here which talks about enabling it:</p>
+<p><a href="http://wincent.com/a/products/winswitch/faq/#root" class="external">http://wincent.com/a/products/winswitch/faq/#root</a></p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/winswitch">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

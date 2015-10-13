@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Track info uploader applescript (feedback welcome)
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Track info uploader applescript (feedback welcome)</div>
+<h1 class='major'>Track info uploader applescript (feedback welcome)</h1>
+<div class='topic' id='topic_124'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/peeweejd">peeweejd</a>
+<span class='when'>
+<a href="/forums/synergy/topics/124"><time data-relative="true">2005-10-19T20:19:34Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I just made an applescript that &quot;uploads&quot; track info from iTunes to my website (Artist / Title / Album / Genre).</p>
+<p>It's meant to be used in conjunction with a wordpress plugin called wp-itunes.php (<a href="http://www.lucky-33.com/scripts/plugins/wp-itunes" class="external">http://www.lucky-33.com/scripts/plugins/wp-itunes</a>)</p>
+<pre></pre>
+<p>Synergy seems to fire off the applescript every time play/pause is pushed, not when the track changes.  SO that presented a problem in that when I skipped a song before it was completed, it would upload the info anyway.</p>
+<p>I got around this by incorporating a clever playlist in iTUnes</p>
+<p>I made a smart playlist that shows the last track that was completely played.</p>
+<p>Here are the prameters: Last Played is after 10/1/05 Limit to 1 songs selected by most recently played Live updating is on</p>
+<p>I named this playlist &quot;last_played&quot;</p>
+<p>Here is the applescript (please tell me what you think) Code:   -- change this to the address of your blog set blog_uri to &quot;<a href="http://yourblog.com/" class="external">http://yourblog.com/</a>&quot; --include slash at the end</p>
+<p>-- change this to the text &quot;key&quot; you put in your wp-itunes plugin set wpitunes_key to &quot;test&quot;</p>
+<p>-- don't change anything else below here unless you know what you are doing (or feel like messing around</p>
+<p>--  try to get inormation about what is playing in itunes right now tell application &quot;Finder&quot; &#x0009;if process &quot;iTunes&quot; exists then &#x0009;&#x0009;tell application &quot;iTunes&quot; &#x0009;&#x0009;&#x0009;set current_track to name of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_artist to artist of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_album to album of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_genre to genre of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;end tell &#x0009;&#x0009; &#x0009;&#x0009;-- form the website address with the information form iTunes in the querystring &#x0009;&#x0009;set this_uri to [blog_uri &amp; &quot;?wpitunes=&quot; &amp; wpitunes_key &amp; &quot;&amp;track=&quot; &amp; current_track &amp; &quot;&amp;artist=&quot; &amp; current_artist &amp; &quot;&amp;album=&quot; &amp; current_album &amp; &quot;&amp;genre=&quot; &amp; current_genre] &#x0009;&#x0009; &#x0009;&#x0009;-- create a temp file to catch  the file being downloaded (which we don't care about anyway) &#x0009;&#x0009;set temp_file to ((path to temporary items) as string) &amp; &quot;itunes_upload_temp&quot; &#x0009;&#x0009; &#x0009;&#x0009;-- hit the plugin to upload the song info &#x0009;&#x0009;tell application &quot;URL Access Scripting&quot; &#x0009;&#x0009;&#x0009;download this_uri to file temp_file replacing yes &#x0009;&#x0009;&#x0009;quit &#x0009;&#x0009;end tell &#x0009;end if end tell </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_391'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_391"><time data-relative="true">2005-10-19T23:59:21Z</time></a></span>
+</cite>
+<blockquote><p>Excellent work!</p>
+<p>With respect to the question of when track change items are launched, I thought there was an entry in the feature requests database about this, but I can't find it right now. As noted in this thread here:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=830" class="external">http://wincent.com/a/support/forums/showflat.php?Number=830</a></p>
+<p>Synergy launches the items whenever it receives a notification from iTunes; that may be an actual track change but it could also be a mere state change (like going from &quot;Playing&quot; to &quot;Paused&quot; state).</p>
+<p>Ok, I've now found the feature request I was looking for:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=171" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=171</a></p>
+<p>This deals with the ability to control which kinds of notifications will trigger a track change item to be launched. I've also opened a new bug report for the possibility of handling this kind of thing a little more elegantly from within a single script by passing data to the script as parameters and calling specific methods in response to specific notifications:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=313" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=313</a></p>
+<p>For reference, on the subject of website updating see also:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=96" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=96</a> <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=230" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=230</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_392'>
+<cite>
+<a href="/users/peeweejd">peeweejd</a>
+<span class='when'><a href="#comment_392"><time data-relative="true">2005-10-20T08:08:42Z</time></a></span>
+</cite>
+<blockquote><p>thanks!</p>
+<p>I'm trying to handle the duplication due to play/pause toggling by modifying the php scripts that actually makes the database entry.  I want to make it check to see if the last song added to the database is the same as the song that is trying to be added now. </p>
+<p>Or I could possibly put a date comparison if/then wrapper in my applescript that checks to see if the date the song was last played is within 5 seconds of now before it uploads the song information.  That is may be the better way to handle it actually.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_393'>
+<cite>
+<a href="/users/peeweejd">peeweejd</a>
+<span class='when'><a href="#comment_393"><time data-relative="true">2005-10-23T09:16:11Z</time></a></span>
+</cite>
+<blockquote><p>here is a little update on my script..</p>
+<p>it works much better now.</p>
+<p>I added a few lines to get around the play/pause thing synergy does that makes it upload the song info every time the play button is pushed</p>
+<p>THis extra stuff compares the current system time to the time the last song was completed, and if they are within 3 seconds, it uploads the info.</p>
+<p>anyway, here is the script</p>
+<p>Code:-- change this to the address of your blog set blog_uri to &quot;<a href="http://yourblog.com/" class="external">http://yourblog.com/</a>&quot; --include slash at the end</p>
+<p>-- change this to the text &quot;key&quot; you put in your wp-itunes plugin set wpitunes_key to &quot;test&quot;</p>
+<p>-- this is how old the song in our magic playlist can be (in seconds) for us to accept it. -- don't mess with this unless the script is not fast enough to get your song info uploaded. set delay_time to 3</p>
+<p>-- don't change anything else below here unless you know what you are doing (or feel like messing around</p>
+<p>-- get the current date and time to compare against the date/time info we can get from iTunes set date_now to the current date</p>
+<p>--  try to get inormation about what is playing in itunes right now tell application &quot;Finder&quot; &#x0009;if process &quot;iTunes&quot; exists then &#x0009;&#x0009;tell application &quot;iTunes&quot; &#x0009;&#x0009;&#x0009;set last_played to played date of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_track to name of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_artist to artist of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_album to album of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;&#x0009;set current_genre to genre of track 1 of user playlist &quot;last_played&quot; &#x0009;&#x0009;end tell &#x0009;&#x0009; &#x0009;&#x0009;if (date_now - last_played) &lt; delay_time then &#x0009;&#x0009;&#x0009; &#x0009;&#x0009;&#x0009;-- form the website address with the information form iTunes in the querystring &#x0009;&#x0009;&#x0009;set this_uri to [blog_uri &amp; &quot;?wpitunes=&quot; &amp; wpitunes_key &amp; &quot;&amp;track=&quot; &amp; current_track &amp; &quot;&amp;artist=&quot; &amp; current_artist &amp; &quot;&amp;album=&quot; &amp; current_album &amp; &quot;&amp;genre=&quot; &amp; current_genre] &#x0009;&#x0009;&#x0009; &#x0009;&#x0009;&#x0009;-- create a temp file to catch  the file being downloaded (which we don't care about anyway) &#x0009;&#x0009;&#x0009;set temp_file to ((path to temporary items) as string) &amp; &quot;itunes_upload_temp&quot; &#x0009;&#x0009;&#x0009; &#x0009;&#x0009;&#x0009;-- hit the plugin to upload the song info &#x0009;&#x0009;&#x0009;tell application &quot;URL Access Scripting&quot; &#x0009;&#x0009;&#x0009;&#x0009;download this_uri to file temp_file replacing yes &#x0009;&#x0009;&#x0009;&#x0009;quit &#x0009;&#x0009;&#x0009;end tell &#x0009;&#x0009;end if &#x0009;end if end tell</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

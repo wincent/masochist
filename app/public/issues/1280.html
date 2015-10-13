@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1280: Rails forgery protection tokens leaking onto cached pages, breaking the search form
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1280</div>
+<div class='issue' id='issue_1280'>
+<form class="edit_issue" id="edit_issue_1280" action="/issues/1280" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="P50H3KHcunNAw4d9fay89qNLpnc239SOpammmQGx2KwLb7lrBlFgJplPtIpMhe9CFsnPSz0zWpKFtnNnJWm/iA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1280:
+<span data-name='issue[summary]'>
+Rails forgery protection tokens leaking onto cached pages, breaking the search form
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-18T15:10:30Z</time>, updated <time data-relative="true">2009-06-29T04:53:30Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This is really a <a href="/wiki/Rails">Rails</a> bug but I expect that if I file a bug for it with them I'll be told it's not a bug, so I am going to make a note of it here so as not to forget about it.</p>
+<p>The problem is that forgery protection tokens are getting leaked onto every statically-cached page which has a form. This is almost every cached page in the site, because almost every cached page has, at least, a search form on it.</p>
+<p>As an example, look at basically any of the <a href="/twitter">tweets pages</a>.</p>
+<p>I expect the Rails folks will tell me this is not a bug because the tokens are derived using a hash of the current user's session key. This means that an attacker snooping the pages doesn't really have any chance of brute forcing and finding out what the victim's session key is. So as far as information leakage goes, this doesn't have a very large security impact.</p>
+<p>But it's still a problem because it means that the search form is effectively broken for almost everybody who tries using it on one of those cached pages, expect the first user who tried accessing it (and thus caused the page to be cached in the first place); and even that user will find that the search form on that page stops working as soon as their session runs out.</p>
+<p>The breakage stems from the fact that all these people who try to use the form will get 422 errors because the token won't match up with their session key. Even worse is the fact that <a href="/422.html">my 422 page</a> tries to be helpful and tell them that &quot;The most likely cause is that your session expired due to inactivity. Try going back, then refreshing the page (this will create a new session), and then resubmitting.&quot;</p>
+<p>So, it tries to help with the most common case (expired sessions), but in <em>this</em> case the cause is not an expired session at all, so going back and refreshing will have absolutely no effect.</p>
+<p>As it turns out, the search controller doesn't take part in the request forgery protection machinery anyway seeing as that's the only way to make the search form on static pages like the <a href="/404.html">404 page</a> work, and all search requests are side-effect free anyway.</p>
+<p>Workarounds:</p>
+<ul>
+<li>Patch Rails so as to provide an <a href="/wiki/API">API</a> to opt out of the automatic embedding of hidden request forgery protection tokens for certain forms.</li>
+<li>Don't page cache: evidently this is not a serious option.</li>
+<li>Don't put a search form, or any other form in fact, on pages which might be cached: again, obviously not a serious option.</li>
+<li>Instead of embedding HTML forms in pages which might be cached, dynamically insert the forms via JavaScript instead: not a very attractive option because it means that browsers without JavaScript will completely miss out on the forms rather than degrading gracefully.</li>
+<li>Don't use the Rails form helpers to make forms which might end up getting page cached; use hand-written HTML instead.</li>
+</ul>
+<p>The quickest solution in the short term is just to hand-code the search form. But in the long term I need to be very careful not to inadvertently run into this problem on other pages which get page-cached. Basically any page with a comment form on it can't be page-cached, for instance.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4472'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4472"><time data-relative="true">2009-04-18T15:12:02Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4473'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4473"><time data-relative="true">2009-04-18T15:20:39Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've fixed this issue in the application layout. Will be up for the next deployment (and seeing as we get a new <code>public</code> folder for every deployment all the old cached pages with tokens embedded in them will become inaccessible).</p>
+<p>For now the only other thing I can do is be very careful about cached pages with forms on them. As far as I can tell right now, the search form is the only culprit for now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4474'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4474"><time data-relative="true">2009-04-18T15:20:43Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4476'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4476"><time data-relative="true">2009-04-18T15:44:31Z</time></a></span>
+</cite>
+<blockquote><p>I think the way to handle comment forms on page-cached pages will be to have a &quot;Comment&quot; button which retrieves the comment form via AJAX, or when gracefully degrading will instead take the user to a new (not-cached) page (comments#new or some such).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4751'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4751"><time data-relative="true">2009-06-29T00:14:20Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent</p>
+<p>I would agree there is some strong correlation between page caching and static pages with forms on them using Rails helpers. </p>
+<p>I inadvertently faced the InvalidAuthenticityToken problem when I introduced page caching into the welcome page of my app. And my app has 2 forms on the welcome page - 1 for login, 1 for signup. With just the few lines of caching code, my app suddenly broke. Commenting out the protect_from_forgery line got it working. With protect_from_forgery, I had to remove page caching and I also had to manually delete the cached 'index' page in the public folder. </p>
+<p>I was wondering - what if protect_from_forgery is not commented in application_controller.rb while simultaneously declaring a protect_from_forgery filter with :except =&gt; [:new_user, :login] - basically the two actions hit by forms pertaining to signing in and login. </p>
+<p>Would this work ? Is there a flaw I do not see deeper down in the code or controller/view interactions ?</p>
+<p>Looking forward to any input on this. </p>
+<p>Rajive</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4752'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4752"><time data-relative="true">2009-06-29T04:53:30Z</time></a></span>
+</cite>
+<blockquote><p>I don't know if it would work but it certainly might seeing as many other such controller-level declarations are overridable in subclasses.</p>
+<p>As I commented above, the solution I went with was to hand-code the form rather than use a <a href="/wiki/Rails">Rails</a> form helper such as <code>form_for</code> or similar. This was the easiest/cleanest approach because we were just talking about a search form which is &quot;idempotent&quot; so doesn't really require request from forgery protection anyway.</p>
+<p>I'm using <a href="/wiki/Haml">Haml</a>, so the form looks something like this (but you could do the same in <a href="/wiki/ERB">ERB</a>&#x00a0;or any other templating markup):</p>
+<pre>%form{:id =&gt; 'search', :action =&gt; search_index_path, :method =&gt; 'post'}
+  =text_field_tag :query, params[:query], :size =&gt; 20, :id =&gt; :search_box</pre>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

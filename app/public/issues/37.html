@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #37: Floater window not activating
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #37</div>
+<div class='issue' id='issue_37'>
+<form class="edit_issue" id="edit_issue_37" action="/issues/37" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ZGPRYq590GJ1yg6JE0/guCu8gbX6AmIamCwpYk4RjllQkW/VCfAKN6xGPX4iZrMMnj7oifHu7Aa4M/ycasnpfQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #37:
+<span data-name='issue[summary]'>
+Floater window not activating
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-11-24T07:54:31Z</time>, updated <time data-relative="true">2010-08-12T09:51:20Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nick-young">Nick Young</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I am running synergy (think this fault started on v1.4). The floater has stopped working. I have selected  and deselected then reselected in preferences. I ahve also tried unistalling and reinstalling synergy still  no joy. Cannot get the floater to appear when tracks change.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1209'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1209"><time data-relative="true">2004-11-24T09:13:04Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for reporting the bug. You did the right think reinstalling to see if that fixed it. Another thing  you should do is rule out preference file corruption. Do this by quitting Synergy, dragging the  preferences file to the desktop (~/Library/Preferences/), and then restarting Synergy.</p>
+<p>Let me know how you go.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1210'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1210"><time data-relative="true">2004-11-24T23:42:31Z</time></a></span>
+</cite>
+<blockquote><p>Just to put this advice on the record, there are a number of steps you should undertake when you  encounter a problem like this to find out whether the problem lies in Synergy or outside of it (in it's  environment). Once we know what's causing the problem we can then either fix Synergy to cope with  the environment, or fix the environment!</p>
+<p>1. Uninstall using the installer, then reinstall.</p>
+<p>2. Quit Synergy, drag your preferences file out onto the Desktop, then restart Synergy.</p>
+<p>3. Try to reproduce the problem from another user account on the same computer; if you don't have  another account, make one.</p>
+<p>If &quot;1&quot; fixes it then, er, it's fixed.</p>
+<p>If &quot;2&quot; fixes it then you know you had a corrupt preferences file.</p>
+<p>If &quot;3&quot; fixes it then you know there's something in your user account which is triggering the problem  (other software you're running? conflicts? etc); this we can investigate further until we know what's  triggering the problem.</p>
+<p>If none of these fix it then we are talking about a bug in Synergy, or a conflict triggered by your  hardware, peripherals, OS version etc.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1211'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1211"><time data-relative="true">2004-11-25T00:42:58Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for sending me the System Profiler report.</p>
+<p>I notice a lot of entries in the System log output like this, which tells us why the floater isn't showing.</p>
+<p>2004-11-24 12:17:15.347 Synergy[315] Received unexpected number of items from iTunes (0); unable  to parse</p>
+<p>It means that iTunes isn't responding to the Apple Events sent by Synergy. I don't know what might be  causing this, but I do notice you've got installed &quot;iPod2iTunes 0.9.9 Beta&quot;. Try temporarily removing  that and see if the problem goes away. I didn't see any other third-party software which could interfere  with iTunes, but if you have any installed then you should also look at disabling it to see if you can  identify the conflict.</p>
+<p>Keep me posted of how you go.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1212'>
+<cite>
+<a href="/users/nick-young">Nick Young</a>
+<span class='when'><a href="#comment_1212"><time data-relative="true">2004-11-25T19:02:08Z</time></a></span>
+</cite>
+<blockquote><p>OK I set up a new user on my machine and ran itunes (using a shared library from my other user  account) and then downloaded synergy 1.5b and installed. Still no floater window. I assume that if I  have now set up as a new user then there can be no conflict from any third party software ? So it should  now be a problem with synergy or the type of mac. If it is the just this mac then I will find out when I  get my old powerbook back on friday. I have a feeling though that synergy had stopped working on that  one before it went away for repair. The powerbook was a titanium 667 G4 so a very different model. I  shall report back when I have got that computer up and running again.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1213'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1213"><time data-relative="true">2004-11-25T21:10:47Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for investigating that further. There still could be some kind of third-party clash if you have  such software installed for &quot;all users&quot; on your machine, but at least you've now ruled out other potential  sources of clash.</p>
+<p>The other thing I notice is you mention you use a shared library. What about if you access music from  another source, like from a CD, or the Internet Radio, or some tracks imported directly into that user  account?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1214'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1214"><time data-relative="true">2004-11-27T00:39:06Z</time></a></span>
+</cite>
+<blockquote><p>Just received this log stuff from Nick:</p>
+<p>2004-11-26 13:37:47.688 Synergy[445] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:38:47.683 Synergy[445] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:39:47.682 Synergy[445] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:40:01.702 Synergy[445] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:40:08.554 Synergy[485] CFLog (21): Error loading /System/Library/ PrivateFrameworks/AppleScript.framework/Versions/A/AppleScript:  error code 1, error number 88  (dyld: /Users/nick/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/ Contents/MacOS/Synergy truncated or malformed library: /System/Library/PrivateFrameworks/ AppleScript.framework/Versions/A/AppleScript (file is empty) ) 2004-11-26 13:40:08.861 Synergy[485] CFLog (21): Error loading /System/Library/ PrivateFrameworks/AppleScript.framework/Versions/A/AppleScript:  error code 1, error number 88  (dyld: /Users/nick/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/ Contents/MacOS/Synergy truncated or malformed library: /System/Library/PrivateFrameworks/ AppleScript.framework/Versions/A/AppleScript (file is empty) ) 2004-11-26 13:40:08.877 Synergy[485] Error 1231696 while attempting to execute AppleScript ((null)) 2004-11-26 13:40:09.070 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:41:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:42:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:43:00.036 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:43:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:44:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:45:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:46:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:47:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:48:08.926 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:49:06.784 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:49:08.927 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse 2004-11-26 13:50:08.927 Synergy[485] Received unexpected number of items from iTunes (0); unable  to parse</p>
+<p>Well, the log entries show that Synergy isn't receiving the reply that it's expecting from iTunes, and  that's why the floater isn't coming up.</p>
+<p>The mystery is, why do you have those log entries about a malformed AppleScript framework? I fear it  could be corrupted.</p>
+<p>Here's the output I get if I run &quot;otool&quot; on my own copy of the framework (you need the Xcode Tools  installed if you want to use &quot;otool&quot;:</p>
+<p>$ otool -M /System/Library/PrivateFrameworks/AppleScript.framework/Vers ions/A/AppleScript /System/Library/PrivateFrameworks/AppleScript.framework/Versions/A/AppleScript: Module table (1 entries) module 0</p>
+<pre>   module_name = 8260
+    iextdefsym = 3188
+    nextdefsym = 4
+       irefsym = 0
+       nrefsym = 460
+     ilocalsym = 0
+     nlocalsym = 3188
+       iextrel = 0
+       nextrel = 32
+   iinit_iterm = 0 0
+   ninit_nterm = 0 0
+     objc_addr = 0x0
+     objc_size = 0</pre>
+<p>You can also get some interesting output by passing the &quot;-l&quot; switch to otool.</p>
+<p>If I were you, I would try reinstalling that framework. I don't know if there's any easy way to do it  without doing a full reinstall. Perhaps the comments you made about Carbon Copy Cloner not working  properly either (CCC also uses AppleScript, as far as I know) support the theory that you've got a  corrupt framework.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1215'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1215"><time data-relative="true">2006-07-05T02:03:08Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6016'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6016"><time data-relative="true">2010-08-12T09:51:14Z</time></a></span>
+</cite>
+<blockquote><p>Marking as closed due to inactivity; seems to be a non-issue as nobody else has reported it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6017'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6017"><time data-relative="true">2010-08-12T09:51:20Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #327: Full-screen H.264 videos stutter during Floater fades (optimization required)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #327</div>
+<div class='issue' id='issue_327'>
+<form class="edit_issue" id="edit_issue_327" action="/issues/327" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ehhHHDB7b1IpkwLFJKfOiJN/tkMASTdXE2g30StG9NJO6vmrl/a1B/AfMTIVjp08Jv3ffwuluUszd+IvD56T9g==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #327:
+<span data-name='issue[summary]'>
+Full-screen H.264 videos stutter during Floater fades (optimization required)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-11-06T06:29:37Z</time>, updated <time data-relative="true">2006-07-05T02:06:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/tony-padgett">Tony Padgett</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I watch some higher quality music videos via iTunes and the floater is on, the video stops (audio continues) and stutters while the floater is showing the name,etc.</p>
+<p>I have a G4 PowerMac 867 MHz with 1gig+ of SDRAM.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2302'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2302"><time data-relative="true">2005-11-06T17:24:20Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, Tony. Have you tried taking a sample (using the Activity Monitor utility) to see what iTunes is doing during the laggy periods?</p>
+<p>I haven't actually used iTunes to watch music videos yet so I'll try to get a hold of some and do some testing. In the meantime, can anyone else confirm that they've seen this problem?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2303'>
+<cite>
+<a href="/users/tony-padgett">Tony Padgett</a>
+<span class='when'><a href="#comment_2303"><time data-relative="true">2005-11-07T07:41:22Z</time></a></span>
+</cite>
+<blockquote><p>I can't see the activity monitor since I am viewing the video at full screen. When I play a new song, the floater appears, and while it is displayed, video is very stuttery. Once the floater disappears (or if I have it turned off), the video plays normally.</p>
+<p>Please keep in mind that I have decode my videos in H.264 with a resolution of 640 x 480. My processor is running at 867MHz, so I think the video is just too large to process for the power of my machine maybe, unless I have everything else turned off.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2304'>
+<cite>
+<a href="/users/tony-padgett">Tony Padgett</a>
+<span class='when'><a href="#comment_2304"><time data-relative="true">2005-11-07T07:52:44Z</time></a></span>
+</cite>
+<blockquote><p>Let me make a minor adjustment to my last comment. The video is stuttery when the floater fades in and fades out only--not when it is still and full. Again, most likely the processing power of my Mac when using 640x480 video?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2305'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2305"><time data-relative="true">2005-11-09T02:34:17Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so it sounds like this is definitely a case of asking too much of the machine (video too large, quality too high, not enough processing power). There are two parts to this problem:</p>
+<p>(1) Apple needs to do more optimization of its QuickTime and Quartz layers (I suspect the problem is unlikely to be in iTunes itself and more likely to be in the underlying APIs that it uses).</p>
+<p>(2) I can try to optimize Synergy's drawing routines so that they require less CPU cycles, with particular emphasis on when fading (seeing as you note that the stuttering only occurs during fading).</p>
+<p>So one thing you can do is file a bug report with Apple encouraging them to work on the efficiency of their H.264 decoding on older machines:</p>
+<p><a href="https://bugreport.apple.com/" class="external">https://bugreport.apple.com/</a> (requires at least online ADC membership, which is free)</p>
+<p><a href="http://www.apple.com/feedback/itunes.html" class="external">http://www.apple.com/feedback/itunes.html</a></p>
+<p>The other thing we can do is try to optimize Synergy. From what you say it looks like the optimization will need to be done at the drawing level, but it might be possible to reduce the amount of Apple Event communication between Synergy and iTunes as well which could have a positive impact. I've reworded the summary to reflect what needs to be done.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2306'>
+<cite>
+<a href="/users/tony-padgett">Tony Padgett</a>
+<span class='when'><a href="#comment_2306"><time data-relative="true">2005-11-09T07:11:09Z</time></a></span>
+</cite>
+<blockquote><p>Wincent,</p>
+<p>The more I play around with the videos I ripped/encoded in H.264, the more I am convinced that a major issue is with QT. If I play the videos in QT directly, I still notice a sluggish video and the controls don't respond very quickly. I am thinking about upgrading my G4 processor to something faster, but I checked the videos out on a Windows machine that runs at 3 GHz using QT, and while the controls seem to work normally, the video does have some minor trouble playing (stutter), so upgrading my processor might not be the solution. In addition, this seems to be only in the beginning 15 seconds or so for both, but after it plays for a while, there are no problems (except the controls are still slow to respond on my Mac). </p>
+<p>That being said, I do notice that when Synergy's floater is turned off the problem becomes less (but does not go away entirely), so it does seem to be a (minor) problem, especially with the fade-in and fade-out.</p>
+<p>Are there reports that QT and Quartz layers (not really sure what the second part is) is due to Apple not optimizing them? </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2307'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2307"><time data-relative="true">2006-07-05T02:06:51Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+wildignore in macvim
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; wildignore in macvim</div>
+<h1 class='major'>wildignore in macvim</h1>
+<div class='topic' id='topic_452'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/nick-carter">Nick Carter</a>
+<span class='when'>
+<a href="/forums/command-t/topics/452"><time data-relative="true">2011-01-24T19:46:49Z</time></a>
+</span>
+</cite>
+<blockquote><p>So I've tried setting this to both a quote-delimited string and without delimiters, but it doesn't seem to be excluding the directory I've specified.</p>
+<p>In this case I'm running :set wildignore+=out/**</p>
+<p>This should remove all files from the out directory (relative to the cwd at the moment) correct? I still see matches under out after running this.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6594'>
+<cite>
+<a href="/users/nick-carter">Nick Carter</a>
+<span class='when'><a href="#comment_6594"><time data-relative="true">2011-01-24T19:54:57Z</time></a></span>
+</cite>
+<blockquote><p>Seems I needed to add this to an autocommand, which I've done. I do see out/ results, but they're further down the list which is good enough for now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6598'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6598"><time data-relative="true">2011-01-25T14:54:18Z</time></a></span>
+</cite>
+<blockquote><p>Yep, <code>:set wildignore+=out/**</code> should definitely work.</p>
+<p>Can you post the contents of your <code>~/.vimrc</code> and also the output of <code>:set wildignore?</code></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6599'>
+<cite>
+<a href="/users/nick-carter">Nick Carter</a>
+<span class='when'><a href="#comment_6599"><time data-relative="true">2011-01-25T19:47:02Z</time></a></span>
+</cite>
+<blockquote><p>Contents follow. This is from my work machine, which is slightly different from the one at home and which I haven't gotten CommandT working on yet:</p>
+<pre>color vilight
+set ic  
+set hls is
+set si
+set foldmethod=indent
+set foldnestmax=10 
+set nofoldenable  
+set foldlevel=1  
+set nu
+set backspace=indent,eol,start
+set noro
+set nowrap
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set wildignore+=out/**
+
+filetype plugin on
+
+
+syntax on
+
+set guifont=Lucida_Console:h14:cANSI
+set guioptions=&quot;&quot;</pre>
+<p>&quot;this wildignore should also affect :vim searches is my understanding, and they are still coming back with results from out/</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6603'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6603"><time data-relative="true">2011-01-25T22:11:49Z</time></a></span>
+</cite>
+<blockquote><p>Not sure if <code>'wildignore'</code> affects <code>:vim</code> searches or not. Perhaps it does.</p>
+<p>In any case, You can test the effect of your <code>'wildignore'</code> setting by calling the <code>expand()</code> function.</p>
+<p>For example, just say your <code>'wildignore'</code> contains 'foo' and you're in a directory with files &quot;foo&quot; and &quot;bar&quot;:</p>
+<ul>
+<li><code>:echo expand(&quot;foo&quot;)</code> will echo nothing at all, because the &quot;foo&quot; file in the current directory is filtered out by the <code>'wildignore'</code> setting</li>
+<li><code>:echo expand(&quot;bar&quot;)</code> will echo &quot;bar&quot;, because &quot;bar&quot; is <em>not</em> filtered out</li>
+<li><code>:echo expand(&quot;baz&quot;)</code> will echo &quot;baz&quot;, because even though &quot;baz&quot; doesn't exist in the current directory, neither does it get filtered out</li>
+</ul>
+<p>So, if your settings are correct, then <code>:echo expand(&quot;out/foo/bar&quot;)</code> should echo nothing at all.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

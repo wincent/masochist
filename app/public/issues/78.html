@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #78: Synergy is not (slow) responding
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #78</div>
+<div class='issue' id='issue_78'>
+<form class="edit_issue" id="edit_issue_78" action="/issues/78" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="4pZN7l8euDqLrXnO5RsMRcv7RKJsGo/aFucgmNYKRwjWZPNZ+JNib1IhSjnUMl/xfnktnmf2AcY2+PVm8tIgLA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #78:
+<span data-name='issue[summary]'>
+Synergy is not (slow) responding
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-18T01:05:05Z</time>, updated <time data-relative="true">2005-03-08T03:08:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-54">bugzilla user 54</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>As with the release of the new version (1.5) synergy is completely unusable because of a spinning ball all the time.</p>
+<p>itunes is responding/behaving normal and does its job like everyday before. only synergy hangs and needs several seconds to recognize actions like hotkeys or opening the menu.</p>
+<p>my activity monitor tells me synergy is causing a &quot;system failure&quot; also the application load is nearly zero.</p>
+<p>i want to amend that itunes is NOT hanging as mentioned in other bugs and i am not using iChatSetStatus or any other tool polling itunes regularly.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1404'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1404"><time data-relative="true">2004-12-18T03:16:54Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. Can you provide some information on how to reproduce this issue? Seeing as  nobody else has reported this issue we'll need some specific information on how to reproduce it. Can  you also clarify some of your language? For example, what do you mean by &quot;all the time&quot;? Do you  actually mean 100% of the time? On boot? On launch? On click? etc. Can you also clarify what you mean  by this &quot;system failure&quot; message? (I have never heard of such a message.) What is the actual text of the  message? Where does it appear? If you'd like to see the issue fixed, I recommend that you check out  this article. It provides some tips on how to file a usable bug report. As it currently stands, your report  provides me with no information that I could actually use to even begin investigating the problem. A  sample would be useful, for example.</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1405'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1405"><time data-relative="true">2004-12-18T04:08:32Z</time></a></span>
+</cite>
+<blockquote><p>Sorry for my incomplete bug report!</p>
+<p>The spinning ball appeared every time i moved my mouse over the menubar. Also i recognized slow responding for the hotkey-feature as i mentioned before sometimes it took several seconds to fulfill the commands.</p>
+<p>I brought iTunes to the front paused it and the menu showed on clicking. But after a few seconds the spinning ball appeared again and the program continued to respond very slow. Even if the ball was spinning i could click the button but i had to wait for nearly 10 seconds to get the menu.</p>
+<p>The message &quot;system failure&quot; appeared after the process name &gt;&gt; &quot;Synergy (system failure)&quot; and the text color changed to red but the load was around zero (i never seen this state before too!).</p>
+<p>I did uninstall/install cycles but nothing helped. The only thing i really forgot is trying to delete the preference list. For now it seems to work. Synergy is responding like hell, really!</p>
+<p>I updated from version 1.5b maybe there could be the problem? With 1.5b i never experienced this slow responding behaviour.</p>
+<p>Sorry again, specially for my broken english.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1406'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1406"><time data-relative="true">2004-12-18T04:54:56Z</time></a></span>
+</cite>
+<blockquote><p>Try to get a sample of what Synergy is doing the next time you see the beachball.</p>
+<p>Open Activity Monitor, find Synergy in the list, and double-click it. This will open a window with more  information. In that window is a &quot;Sample&quot; button. Next time you see the beachball, click that button to  take a sample. That will tell us what Synergy is doing at the time of the beachball. Most like this will  turn out to be a duplicate of <a href="/issues/39">bug #39</a> or potentially <a href="/issues/7">bug #7</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1407'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1407"><time data-relative="true">2004-12-22T02:57:58Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=7) Here is the sample result for my problem with the spinning ball</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1408'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1408"><time data-relative="true">2004-12-22T02:59:35Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=8) A screenshot of my activity monitor</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1409'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1409"><time data-relative="true">2004-12-22T04:00:14Z</time></a></span>
+</cite>
+<blockquote><p>Thanks, Bj&#x00f6;rn. I am very puzzled by the sample report because of some of the methods look totally  unfamiliar to me. For example, these things which resemble C++ method calls (Synergy is written in  Objective-C with no C++):</p>
+<pre>   270 Thread_1403
+     270 _pthread_body
+       270 CAPThread::Entry(CAPThread*)
+         270 HALRunLoop::OwnThread(void*)
+           270 CFRunLoopRunSpecific
+             270 __CFRunLoopRun
+               270 mach_msg
+                 270 mach_msg_trap
+                   270 mach_msg_trap
+   270 Thread_1503
+     270 _pthread_body
+       270 AVS::DestroyAVCDeviceController(AVS::AVCDeviceController*)
+         270 CFRunLoopRun
+           270 CFRunLoopRunSpecific
+             270 __CFRunLoopRun
+               270 mach_msg
+                 270 mach_msg_trap
+                   270 mach_msg_trap</pre>
+<p>Are you running any third-party hacks, plugins, extras, patches etc? I see you are using APE, but where  these threads are coming from I don't know. There is no Synergy-specific methods anywhere in the  stacks for those threads.</p>
+<p>This part is also interesting:</p>
+<pre>                                           270 getaddrinfo
+                                             270 gai_lookupd
+                                               270 _lookup_all
+                                                 270 _lookup_all_secure</pre>
+<p>It looks like a lot of time is being tied up looking up network addresses. Synergy will only ever try to  look up two network addresses: xml.amazon.com, to download covers, and us.wincent.com, to ask  what the latest version is. Regardless, neither of these lookups should cause the program to lock up,  even if they take a long time, because they occur in a separate thread.</p>
+<p>I've tried to convert some of the numeric addresses in that particular thread to find out where these  calls are coming from.</p>
+<pre>   270 Thread_110b
+     270 _dyld_start
+       270 __start (in Synergy) (crt.c:267)
+         270 _NSApplicationMain (in AppKit)
+           270 -[NSApplication run] (in AppKit)
+             270 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] (in AppKit)
+               270 __DPSNextEvent (in AppKit)
+                 270 _BlockUntilNextEventMatchingListInMode (in HIToolbox)
+                   270 _ReceiveNextEventCommon (in HIToolbox)
+                     270 _RunCurrentEventLoopInMode (in HIToolbox)
+                       270 CFRunLoopRunSpecific
+                         270 __CFRunLoopRun
+                           270 __CFRunLoopDoTimer
+                             270 ___NSFireTimer (in Foundation)
+                               270 -[SynergyController tellITunesResume] (in Synergy) (SynergyController.m:</pre>
+<p>5175)</p>
+<pre>                                 270 -[SynergyController tellITunesResume] (in Synergy) (SynergyController.m:</pre>
+<p>5183)</p>
+<pre>                                   270 -[SynergyController nextHotKeyPressed] (in Synergy) (SynergyController.m:</pre>
+<p>5193)</p>
+<pre>                                     270 0x90d02d98
+                                       270 0x90d02fa4
+                                         270 0x90d013cc
+                                           270 getaddrinfo
+                                             270 gai_lookupd
+                                               270 _lookup_all
+                                                 270 _lookup_all_secure
+                                                   270 mach_msg
+                                                     270 mach_msg_trap
+                                                       270 mach_msg_trap</pre>
+<p>Not sure how accurate these conversions will be, seeing as I don't have a build of 1.5 with debug  symbols. I had to do the conversion using 1.6 (not released yet). Presuming the conversion is at least  reasonably accurate, it suggests that you were using the hot keys at the time, or just prior to the  sample. Is that right? Perhaps even multiple times, given the number of times hot-key-related methods  appear in the sample. Just why there would be a network lookup at that point is somewhat of a mystery  to me. Notably, the last three numeric address didn't have any symbols associated with them, so I have  no idea where they come from.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1410'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1410"><time data-relative="true">2004-12-22T08:11:01Z</time></a></span>
+</cite>
+<blockquote><p>That sounds not good :(</p>
+<p>After i deleted the Synergy.plist the app is working well again ... for some time. </p>
+<p>What do you mean exactly with third-party hacks, plugins? Synergy is naked without any modification. APE is the only real &quot;hack&quot; i am using beside Synergy for system-wide purposes.</p>
+<p>I always put my laptop to sleep for transport, maybe this could cause a freeze? I will continue to monitor this behaviour to get as much details as possible.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1411'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1411"><time data-relative="true">2004-12-22T08:21:19Z</time></a></span>
+</cite>
+<blockquote><p>As far as &quot;third-party hacks&quot;, &quot;plugins&quot;, &quot;patches&quot; etc go, I was hoping that you could tell me! I basically  meant non-Apple stuff. I just have no idea what some of those symbols are in your sample, and have  never seen them before. They don't look to me like Apple stuff, and they are certainly not my stuff  either.</p>
+<p>I did a quick search, for example, for &quot;DestroyAVCDeviceController&quot; on Google and came up with 12  hits. 351 hits for &quot;HALRunLoop&quot;. And 560 for &quot;CAPThread&quot;. All of these numbers a relatively small, by  Google standards. I am going to have a bit of a browse and see if I can find out what they are.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1412'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1412"><time data-relative="true">2004-12-22T20:31:21Z</time></a></span>
+</cite>
+<blockquote><p>Hey,</p>
+<p>this morning i woke up my laptop from sleep and everything was fine UNTIL i wanted to start itunes with a hotkey and the spinning ball appeared again.</p>
+<p>I tried many scenarios in quitting/starting cycles but the spinning ball is now appearing very often. Its getting difficult to reproduce this behaviour exactly and to exclude other applications.</p>
+<p>I bet if i delete the .plist again it will continue to work as the last time i deleted it. So i will comment this later...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1413'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1413"><time data-relative="true">2004-12-22T21:19:34Z</time></a></span>
+</cite>
+<blockquote><p>Rather than deleting the plist file, you should stop Synergy, drag the plist out to the Desktop, and then  restart Synergy. We can then compare the old plist file to the new one and see what's different. We'll be  able to see if the file is actually being corrupted, and if so, the question will be, why?</p>
+<p>Note that you shouldn't post your plist file here publicly, because if you do then you'll be sharing your  license code.</p>
+<p>I would also disable all the APE stuff while you're doing this testing, just to make sure you're conducting  the test in as controlled an environment as possible.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1414'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1414"><time data-relative="true">2004-12-22T23:22:43Z</time></a></span>
+</cite>
+<blockquote><p>Okay ....</p>
+<p>I've uninstalled APE completely from my system, installed version 1.6 and the problem is still present. For testing purposes i also deleted the .plist again and attached a backup version (i made backups rather than just deleting them ;) of the plist WITHOUT registration informations.</p>
+<p>I also attached the analysis result from Synergy without APE installed, hope you will find anything more detailed. </p>
+<p>( I cant live anymore without Synergy :((( )</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1415'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1415"><time data-relative="true">2004-12-22T23:24:31Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=9) The analysis sample without installed ape-framework</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1416'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1416"><time data-relative="true">2004-12-22T23:27:01Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=10) The .plist without registration entries</p>
+<p>I did not modificate this file. I just did not enter the registration so this file is an original Synergy property list.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1417'>
+<cite>
+<a href="/users/chris-silich">Chris Silich</a>
+<span class='when'><a href="#comment_1417"><time data-relative="true">2005-02-05T09:21:48Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 114 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1418'>
+<cite>
+<a href="/users/bugzilla-user-54">bugzilla user 54</a>
+<span class='when'><a href="#comment_1418"><time data-relative="true">2005-02-05T09:36:10Z</time></a></span>
+</cite>
+<blockquote><p>After a long period of testing/monitoring i have to amend that the spinning ball isnt appearing anymore. For me it seems like the last update to version 1.5 corrupted something related to Synergy. I did a major sweeping of all Synergy stuff, completely removing all the files followed by a clean install.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1419'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1419"><time data-relative="true">2005-03-08T03:08:26Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

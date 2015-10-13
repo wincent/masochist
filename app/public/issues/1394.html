@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #1394: Have to switch to 32-bit mode in Snow Leopard System Preferences
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1394</div>
+<div class='issue' id='issue_1394'>
+<form class="edit_issue" id="edit_issue_1394" action="/issues/1394" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="tLTrPMkr9hhgXP0nNg9IZfx4HJdXKAteAhSBF6drPxqARlWLbqYsTbnQztAHJhvRSfp1q1zEhUIiC1Tpg7NYPg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #1394:
+<span data-name='issue[summary]'>
+Have to switch to 32-bit mode in Snow Leopard System Preferences
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-09-08T15:29:05Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I was wondering if there is going to be an update to this program so that it will be accessible in system prefs without having to change to 32 bit mode?</p>
+<p>thank you </p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4983'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4983"><time data-relative="true">2009-09-08T15:43:11Z</time></a></span>
+</cite>
+<blockquote><p>Marked <a href="/issues/1395">ticket #1395</a> as a dupe.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4985'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4985"><time data-relative="true">2009-09-08T15:52:27Z</time></a></span>
+</cite>
+<blockquote><p>No, there are no plans to update the old 3.4 series to address this issue.</p>
+<p>A total rewrite was done in the 3.5 series precisely to work around a compatibility problem between Garbage Collected applications and the System Preferences on <a href="/wiki/Leopard">Leopard</a>. A that point Synergy stopped being a System Preferences panel and became a stand-alone app. So having done all that work to convert Synergy into a standalone application, I don't have any plans on going back to make changes to an older version.</p>
+<p>So your options here are moving to the 3.5 or 4.0 series, or putting up with the mode changes when you need to manipulate the preferences.</p>
+<p>As an aside, I'm not actually sure what would need to be done nor what's happening. Possibly because I am on one of the first Intel iMacs, which I guess always runs in 32-bit mode, so I've never seen this &quot;change to 32-bit mode&quot; that you mention although I have seen <a href="https://wincent.com/forums/synergy/topics/411#comment_4978" class="external">mentions of something that sound suspiciously like it</a> on the forums.</p>
+<p>3.4 is a Universal Binary with PowerPC an Intel native code in it (32-bit both of them), so I guess what would be needed would be architecure, 64-bit Intel, as well. Would swell the binary size a bit, and I don't think I can actually test it on this machine.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4986'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4986"><time data-relative="true">2009-09-08T15:53:58Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4988'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4988"><time data-relative="true">2009-09-08T15:54:53Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> snow leopard</li>
+<li><strong>To:</strong> Have to switch to 32-bit mode in Snow Leopard System Preferences</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

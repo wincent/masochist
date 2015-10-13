@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Menu bar buttons keep changing
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Menu bar buttons keep changing</div>
+<h1 class='major'>Menu bar buttons keep changing</h1>
+<div class='topic' id='topic_365'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/365"><time data-relative="true">2008-05-28T17:03:56Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I've been using Synergy for a couple years now. It used to be great, but now iTunes provides artwork and the new keyboards have transport controls, so I'm finding less need for it.</p>
+<p>One thing I wish it would do is use the iTunes artwork, when available (which in my case is 90% of the time). Even though I have the artwork in iTunes, Synergy displays wrong artwork it must have found on the web.</p>
+<p>And now, without further ado, my problem!</p>
+<p>My menu bar buttons change every time I restart the computer, and the only way I've found to change them (from offensive or ugly ones) is to change the button spacing and click Apply. So now, every time I restart, I have to open up Synergy and do this little dance until a set of buttons comes up that I can live with. The button style pop-up menu is disabled.</p>
+<p>Any ideas?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3351'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3351"><time data-relative="true">2008-05-28T18:07:03Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>One thing I wish it would do is use the iTunes artwork, when available (which in my case is 90% of the time). Even though I have the artwork in iTunes, Synergy displays wrong artwork it must have found on the web.</p>
+</blockquote>
+<p>You can get rid of the downloaded art from <code>~/Library/Application Support/Synergy/Album Covers</code> folder and Synergy will use the art from <a href="/wiki/iTunes">iTunes</a>. The issue that you've discovered is that Synergy prioritizes downloaded art, so if you don't have art and Synergy downloads the wrong art, then adding the correct art to the track won't help because Synergy will continue to use the downloaded art.</p>
+<p>This prioritization was originally chosen for performance reasons &mdash; <a href="/issues/54">ticket #54</a> is for tracking the issue &mdash; but given today's machines are more powerful there is little reason to worry about this kind of micro-optimization any more.</p>
+<blockquote>
+<p>My menu bar buttons change every time I restart the computer, and the only way I've found to change them (from offensive or ugly ones) is to change the button spacing and click Apply. So now, every time I restart, I have to open up Synergy and do this little dance until a set of buttons comes up that I can live with. The button style pop-up menu is disabled.</p>
+</blockquote>
+<p>Go into the &quot;Advanced&quot; tab of the preferences and turn off the &quot;random&quot; button style rotation.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3352'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3352"><time data-relative="true">2008-05-28T18:11:03Z</time></a></span>
+</cite>
+<blockquote><p>I've added a new ticket, <a href="/issues/821">ticket #821</a> to address the <a href="/wiki/UI">UI</a> issue about the &quot;random&quot; button set option being non-obvious.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3353'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3353"><time data-relative="true">2008-05-28T18:22:04Z</time></a></span>
+</cite>
+<blockquote><p>Perfect, thank you!</p>
+<p>I deleted 322 album covers and it seems to be grabbing the right ones now.</p>
+<p>And you're right, the randomized buttons were certainly &quot;non-obvious&quot;  ;-) Putting that option on the Menu Bar tab would make a lot more sense, and, IMHO, it should default to off.</p>
+<p>Thanks a lot for your help and for an excellent app!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3354'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3354"><time data-relative="true">2008-05-28T19:45:11Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Putting that option on the Menu Bar tab would make a lot more sense, and, IMHO, it should default to off.</p>
+</blockquote>
+<p>Yes, you're right; but it already does default to off.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

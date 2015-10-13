@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy Advance 0.5b seeded to beta testers
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy-advance">Synergy Advance</a> &raquo; Synergy Advance 0.5b seeded to beta testers</div>
+<h1 class='major'>Synergy Advance 0.5b seeded to beta testers</h1>
+<div class='topic' id='topic_285'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/synergy-advance/topics/285"><time data-relative="true">2007-04-26T11:14:08Z</time></a>
+</span>
+</cite>
+<blockquote><p>More details available here:</p>
+<p><a href="http://wincent.com/a/news/archives/2007/04/synergy_advance_10.php" class="external">http://wincent.com/a/news/archives/2007/04/synergy_advance_10.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_899'>
+<cite>
+<a href="/users/itsajeepthing111">itsajeepthing111</a>
+<span class='when'><a href="#comment_899"><time data-relative="true">2007-04-30T12:03:37Z</time></a></span>
+</cite>
+<blockquote><p>Where are the advanced features? For example, how do i get rid of the dock icon like in v0.4? or not show the splash screen at startup?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_900'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_900"><time data-relative="true">2007-05-01T16:36:35Z</time></a></span>
+</cite>
+<blockquote><p>&nbsp;Originally Posted By: itsajeepthing111how do i get rid of the dock icon like in v0.4?</p>
+<p>This is something that came up in an email from another user, so I am going to paste in my reply here so that you and others can see it:</p>
+<p>The way it works in 0.4 is by altering the file:</p>
+<p>&nbsp;Code:Synergy Advance.app/Contents/Info.plist</p>
+<p>And setting the value of &quot;LSUIElement&quot; to 1. That's to hide the Dock icon. To unhide it it sets it back to 0.</p>
+<p>There are a four problems with this approach:</p>
+<p>1. Non-administrators may not have the privileges to change the setting, depending on how/where the program is installed.</p>
+<p>2. It is impossible for different users on a machine to have different settings, because there is only one Info.plist file.</p>
+<p>3. If two users are using the software at the same time (as may happen in a networked environment) and try to change the settings then they may enter into conflict, overwriting each other's changes or corrupting the file.</p>
+<p>4. Apple is introducing a new feature called Code Signing in Leopard, and modifying the Info.plist file will cause that feature to break.</p>
+<p>So problem 1 can be mitigated but only to some extent by providing a good interface which allows users to authenticate and acquire more privileges if necessary. This was the way it as done in 0.4.</p>
+<p>There is really no solution for problems 2 and 3, other than having each user install a separate copy of the software.</p>
+<p>Problem 4 is the real deal-breaker because there is literally nothing that can be done to workaround or mitigate the issue.</p>
+<p>So for 0.5 I started looking for solutions that would provide equivalent functionality without having to touch the Info.plist file. Unfortunately, the rules for the Info.plist file are dictated by Apple and are external to the program, so you really do have to play by Apple's rules.</p>
+<p>A solution that I implemented involved using Carbon to temporarily change the visibility at runtime. This itself had two problems:</p>
+<p>1. The changes could only take place in one direction; I can't remember right now which way it was because this was a few months ago, but it was either that you could either promote an invisible Dock icon app to visible, or the other way round, but it was a one-way ticket. This is not such a big deal, but it was inconvenient because it meant that some changes would require a relaunch.</p>
+<p>2. Apps which were transformed in this way at runtime didn't behave like apps with LSUIElement set or unset in the Info.plist; for example, an app which had a visible icon could not come to the front in response to a click on the icon, nor could it bring its preference window to the front in response to the user requesting it, and its menu bar could never become visible. In other words, the app would act like a normal app, but only in part: in many ways it was even less useful than an app with an invisible Dock icon.</p>
+<p>That second issue was the real deal-breaker so I had to scrap that plan.</p>
+<p>So for 0.5 the default is for the Dock icon to always be visible. If you wish to hack the Info.plist yourself you can put things back the way they were, although this will never be officially supported (unless Apple provides a non-broken way to control visibility without touching the Info.plist). This requires some familiarity with the command line.</p>
+<p>For example, if Synergy Advance is installed in your Applications folder you could type this in the Terminal to add an LSUIElement setting to the Info.plist:</p>
+<p>&nbsp;Code:defaults write /Applications/Synergy\ Advance.app/Contents/Info LSUIElement -string 1</p>
+<p>Note that should be all on one line; if your email client wraps it onto more than one line then it's incorrect.</p>
+<p>For this to work you must specify the absolute (not relative) path to the Info.plist file, but note also that the file is referred to as &quot;Info&quot; with no extension.</p>
+<p>As another example, this command would switch the setting:</p>
+<p>&nbsp;Code:defaults write /Applications/Synergy\ Advance.app/Contents/Info LSUIElement -string 0</p>
+<p>And this command would remove the LSUIElement setting:</p>
+<p>&nbsp;Code:defaults delete /Applications/Synergy\ Advance.app/Contents/Info LSUIElement</p>
+<p>&nbsp;Quote:or not show the splash screen at startup? </p>
+<p>Many settings have been and are being moved around, so the checkbox for that one is temporarily not visible but the underlying functionality is still there. You can turn it off using the command line:</p>
+<p>&nbsp;Code:defaults write com.wincent.SynergyAdvance DoNotShowSplashScreen -boolean true</p>
+<p>Or conversely to turn the splash back on:</p>
+<p>&nbsp;Code:defaults write com.wincent.SynergyAdvance DoNotShowSplashScreen -boolean false</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy-advance">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

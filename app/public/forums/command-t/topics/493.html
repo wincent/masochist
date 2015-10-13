@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Conflict with ruby.vim on Windows
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Conflict with ruby.vim on Windows</div>
+<h1 class='major'>Conflict with ruby.vim on Windows</h1>
+<div class='topic' id='topic_493'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/joel-elkins">Joel Elkins</a>
+<span class='when'>
+<a href="/forums/command-t/topics/493"><time data-relative="true">2011-11-30T17:47:07Z</time></a>
+</span>
+</cite>
+<blockquote><p>I am using vim 7.3.289 (built with ruby 1.8.7) vim with Command-T 1.3 on windows. Command T is quite stable and works well in general. However, the following error appears when opening a <code>.rb</code> file from CommandT browser. Aside from the error message, the file opens and edits just fine. (I also pulled the latest git of ruby.vim (f265e6b) with same result.)</p>
+<p>If this is a duplicate report, I apologize.</p>
+<pre>
+Error detected while processing C:\Users\jelkins\vimfiles\bundle\vim-ruby-vim-ruby-f265e6b\ftplugin\ruby.vim:
+line   71:
+NoMethodError: undefined method `command' for CommandT::VIM:Module
+line   94:
+E121: Undefined variable: s:ruby_path
+E15: Invalid expression: s:ruby_path
+line   71:
+NoMethodError: undefined method `command' for CommandT::VIM:Module
+line   94:
+E121: Undefined variable: s:ruby_path
+E15: Invalid expression: s:ruby_path
+</pre>
+<p>It appears to be caused by this section in <code>ftplugin/ruby.vim</code></p>
+<pre>
+  elseif has(&quot;ruby&quot;) &amp;&amp; has(&quot;win32&quot;)
+    ruby VIM::command( 'let s:ruby_path = &quot;%s&quot;' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
+    let s:ruby_path = '.,' . substitute(s:ruby_path, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7289'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7289"><time data-relative="true">2011-11-30T18:54:28Z</time></a></span>
+</cite>
+<blockquote><p>See <a href="/issues/1752">ticket #1752</a>. I think I might end up defining a <code>command</code> method on <code>CommandT::VIM</code> just to silence this.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7290'>
+<cite>
+<a href="/users/joel-elkins">Joel Elkins</a>
+<span class='when'><a href="#comment_7290"><time data-relative="true">2011-11-30T21:58:39Z</time></a></span>
+</cite>
+<blockquote><p>I submitted a <a href="https://github.com/vim-ruby/vim-ruby/pull/60" class="external">pull request</a> to vim-ruby with the fix identified by others (and confirmed to work for me), which is to invoke <code>::VIM::command</code> rather than <code>VIM::command</code> in <code>ftplugin/ruby.vim</code>. We'll see if they agree.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7293'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7293"><time data-relative="true">2011-12-01T08:22:06Z</time></a></span>
+</cite>
+<blockquote><p>Nice, we can hope. In the meantime, makes sense for me to implement the workaround mentioned above.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7298'>
+<cite>
+<a href="/users/joel-elkins">Joel Elkins</a>
+<span class='when'><a href="#comment_7298"><time data-relative="true">2011-12-01T16:22:44Z</time></a></span>
+</cite>
+<blockquote><p>Sounds like a good plan, thanks!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7320'>
+<cite>
+<a href="/users/joel-elkins">Joel Elkins</a>
+<span class='when'><a href="#comment_7320"><time data-relative="true">2011-12-09T23:55:00Z</time></a></span>
+</cite>
+<blockquote><p><a href="https://github.com/vim-ruby/vim-ruby/pull/60" class="external">Patch</a> was merged upstream, FYI</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7321'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7321"><time data-relative="true">2011-12-10T04:25:38Z</time></a></span>
+</cite>
+<blockquote><p>Nice!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

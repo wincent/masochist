@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #389: Error -100 on launch (causes Synergy Advance to exit immediately)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #389</div>
+<div class='issue' id='issue_389'>
+<form class="edit_issue" id="edit_issue_389" action="/issues/389" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pP3b39oYcVy62DEUF18kwolGo2IfUMx/4a08MjqkJOOQD2VofZWrCWNUAuMmdnd2PMTKXhS8QmPBsunMHnxDxw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #389:
+<span data-name='issue[summary]'>
+Error -100 on launch (causes Synergy Advance to exit immediately)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-03-29T18:27:33Z</time>, updated <time data-relative="true">2006-04-03T13:27:52Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/froodiantherapy">froodiantherapy</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi Wincent.  As I mentioned in Bug 387, Synergy Advance crashes immediately upon launch (just bounces a few times in Dock, and then acts like I never launched it).  Console.app reports &quot;Error -100&quot;.  I've tried redownloading, and this continues to happen.</p>
+<p>As much information as could be relevant about my system: I'm on a PPC running 10.4.5 and iTunes 6.0.4.  I have Synergy installed too (though not running).  I also use Quicksilver (and its iTunes plugin).  </p>
+<p>If I move ~/Library/Preferences/com.wincent.SynergyAdvance.plist, the launch gets a bit further - a splash screen of some sort flashes across the screen, but then Synergy Advance immediately crashes (with the same log error).</p>
+<p>If I go back to preview release .3, Synergy Advance works as expected.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2513'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2513"><time data-relative="true">2006-03-30T01:59:02Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for the info Ian. Are you aware of anything on your system that might be altering the Synergy Advance binary? ie. have you run any stripping or rebinding tools on it?</p>
+<p>I may have to send you a new build with a bunch of logging statements in it so that we can find out at exactly what point the anti-corruption tests are failing.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2514'>
+<cite>
+<a href="/users/froodiantherapy">froodiantherapy</a>
+<span class='when'><a href="#comment_2514"><time data-relative="true">2006-03-30T02:12:20Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent.  No, I don't know of anything that would have altered my Synergy Advance binary.  I'd be happy to run a logging build.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2515'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2515"><time data-relative="true">2006-04-01T06:50:21Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've put a new build up on the server that includes logging statements at every point in the program where a -100 error might be produced. If you can run this and let me know what gets printed to the console then it will help me know exactly where the failure is occurring.</p>
+<p>One way of capturing all the console output is to run the program from the Terminal; for example, assuming you installed the app into &quot;/Applications/&quot; you would do:</p>
+<p>cd &quot;/Applications/Synergy Advance.app/Contents/MacOS&quot; &quot;./Synergy Advance&quot;</p>
+<p>Announcement:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/04/synergy_advance_5.php" class="external">http://wincent.com/a/news/archives/2006/04/synergy_advance_5.php</a></p>
+<p>Direct download link:</p>
+<p><a href="http://wincent.com/download.php?item=SynergyAdvance0.4b2.dmg" class="external">http://wincent.com/download.php?item=SynergyAdvance0.4b2.dmg</a></p>
+<p>SHA1 checksum:</p>
+<p>e2e537d178e62c13d2846aed9c49f61ea3cf1c93</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2516'>
+<cite>
+<a href="/users/froodiantherapy">froodiantherapy</a>
+<span class='when'><a href="#comment_2516"><time data-relative="true">2006-04-01T10:03:05Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent, console says</p>
+<p>2006-04-01 11:01:50.925 Synergy Advance[28337] **** 8: NO, YES</p>
+<p>and then gives the -100 error</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2517'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2517"><time data-relative="true">2006-04-01T10:49:47Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for reporting back, Ian. What this tells us is that it's getting right to the end of the anti-corruption test and at the final step it encounters a mismatch between the checksum it *calculates* for the binary and the checksum that it *expects* to find.</p>
+<p>So I am not sure exactly why the checksum is wrong (you say there's nothing altering the binary), but it may be related to <a href="/issues/387">bug #387</a> (once again in the anti-corruption code, although in that case it's actually crashing rather than aborting with an error).</p>
+<p>Something very odd is going on because this code has been in place and working since the very first public release (back in May 2005), I haven't made any changes to that code, and it has always worked for me on both PowerPC and Intel, right up to the current version of Mac OS X (I'm currently running 10.4.5 on a G5); evidently *something* has changed in Mac OS X that is causing this to break for *some* users, but only when running the 0.4 beta, not the previous one. So in summary we have three variables: (1) a bunch of different versions of Mac OS X; (2) a couple of different versions of Synergy Advance; (3) a bunch of different users. It appears that some specific combinations of (1), (2) and (3) are experiencing problems, but the pattern is far from clear at this stage.</p>
+<p>It's beginning to look like I may just have to switch off these anti-corruption checks entirely and hope that there are no problems down the road as a result later on. The reason I developed all this stuff is that Synergy (<a href="http://synergy.wincent.com/" class="external">http://synergy.wincent.com/</a>) has been hacked and cracked and tampered with so widely that I didn't want users being exposed to the risk of running versions that have been altered by untrusted third parties (trojans, spyware etc). This is why it's important to always download only from the wincent.com website and never trust a copy obtained from another source.</p>
+<p>As I mention in that other bug I already have an alternative mechanism in place so I may just have to abandon this one and switch over. I don't like doing that because I invested a lot of time in developing this stuff, but it looks like it may just be too fragile and brittle. In any case, I'll post notification here once I have a new build available.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2518'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2518"><time data-relative="true">2006-04-01T13:18:42Z</time></a></span>
+</cite>
+<blockquote><p>OK, I've now officially deactivated the anti-corruption checks and removed the code. Adding the fixed-in-prerelease keyword. Will put together a 0.4b3 release shortly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2519'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2519"><time data-relative="true">2006-04-03T04:35:21Z</time></a></span>
+</cite>
+<blockquote><p>Version 0.4b3 is now on the servers and available for download. For more information see:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/04/synergy_advance_6.php" class="external">http://wincent.com/a/news/archives/2006/04/synergy_advance_6.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2520'>
+<cite>
+<a href="/users/froodiantherapy">froodiantherapy</a>
+<span class='when'><a href="#comment_2520"><time data-relative="true">2006-04-03T13:27:52Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent.  Just wanted to confirm that this WFM now.  Thanks for the fast fix! :)</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

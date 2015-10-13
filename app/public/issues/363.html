@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #363: Synergy blasts Desktop Background Picture
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #363</div>
+<div class='issue' id='issue_363'>
+<form class="edit_issue" id="edit_issue_363" action="/issues/363" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="jHik4KHF6Kfb1BwMuesjp7XLApNIU5wK7Cbe0p2DrQG4ihpXBkgy8gJYL/uIwnATAElrr0O/EhbMOQssuVvKJQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #363:
+<span data-name='issue[summary]'>
+Synergy blasts Desktop Background Picture
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-02-08T17:05:24Z</time>, updated <time data-relative="true">2006-02-10T12:53:44Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/henry-halff">Henry Halff</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I change my desktop picture. I click on any of the three synergy buttons. The background picture reverts to the original</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2398'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2398"><time data-relative="true">2006-02-08T18:15:36Z</time></a></span>
+</cite>
+<blockquote><p>I can't seem to reproduce this, unfortunately. Any one else seen it? Any information printed to the console?</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2399'>
+<cite>
+<a href="/users/henry-halff">Henry Halff</a>
+<span class='when'><a href="#comment_2399"><time data-relative="true">2006-02-09T12:21:19Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=49) com.apple.desktop.plist from my prefs folder</p>
+<p>This file is rewritten whenever the problem manifests itself, that is, when I hit a synergy button.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2400'>
+<cite>
+<a href="/users/henry-halff">Henry Halff</a>
+<span class='when'><a href="#comment_2400"><time data-relative="true">2006-02-09T12:27:22Z</time></a></span>
+</cite>
+<blockquote><p>I see no activity in the console when this bug manifests itself. The file com.apple.desktop.plist is refreshed when it occurs, and I have uploaded that file. On some occasions, pushing Synergy's play (but not pause) button, after changing the desktop picture, the symptom does not occur.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2401'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2401"><time data-relative="true">2006-02-09T13:06:33Z</time></a></span>
+</cite>
+<blockquote><p>What other third party software do you have installed?</p>
+<p>Is it reproducible from other accounts?</p>
+<p>I don't believe this is caused by a bug in Synergy.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2402'>
+<cite>
+<a href="/users/henry-halff">Henry Halff</a>
+<span class='when'><a href="#comment_2402"><time data-relative="true">2006-02-10T12:15:53Z</time></a></span>
+</cite>
+<blockquote><p>I tend to think you're right. The problem is probably with some other program. I turned off one obvious candidate, fruitmenu, with no effect. Unfortunately (or fortunately, depending on your point of view), I restarted this morning and the problem has gone away, which means that we may never know. If the problem returns, I'll do some more investigating and let you know what I come up with. In the meantime, don't lose any sleep over it.</p>
+<p>One thing I forgot to mention, on a two-display, nonmirrored system, only the display with the menubar is affected.</p>
+<p>hh</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2403'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2403"><time data-relative="true">2006-02-10T12:53:44Z</time></a></span>
+</cite>
+<blockquote><p>If it happens again, check the crash log for the SystemUIServer (that is, if it is crashing...). You'll find it in ~/Library/Logs/CrashReporter/. The SystemUIServer is the system process responsible for providing controlling the right side of the menu bar. It may or may not also control the desktop background picture; I don't know.</p>
+<p>Marking this as WORKSFORME for now.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

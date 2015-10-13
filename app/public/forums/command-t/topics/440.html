@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Version 0.9 &quot;use relative paths&quot; fix does not work for Windows ?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Version 0.9 &quot;use relative paths&quot; fix does not work for Windows ?</div>
+<h1 class='major'>Version 0.9 &quot;use relative paths&quot; fix does not work for Windows ?</h1>
+<div class='topic' id='topic_440'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/440"><time data-relative="true">2010-11-23T11:03:32Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>I have been annoyed for some type by the statusline displaying full path when opening a file under the working directory with Command-T. I wasn't aware of the fix, so I updated to 1.0b today.</p>
+<p>However, my statusline keeps displaying full paths:</p>
+<ul>
+<li>I'm working under Windows</li>
+<li>I 'cd' to my working directory as soon as gvim is started</li>
+<li>The command 'pwd' under gvim correctly shows the working directory</li>
+<li>I invoke :CommandT without parameters</li>
+<li>I open a file in a subdirectory =&gt; statusline displays the full path</li>
+</ul>
+<p>I tried deleting all command-t related files and reinstall to be sure I was using the fixed version. I also tried removing the extra &quot;/&quot; from controller.rb/relative_path_under_working_directory believing that maybe, Windows and its '\' could interfere.</p>
+<p>I'm running out of ideas, please help :)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6464'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6464"><time data-relative="true">2010-11-23T11:11:51Z</time></a></span>
+</cite>
+<blockquote><p>Here's the commit which actually implemented the relative-path thing:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/517fd3764817bed5ff049af997bc42c4386aadd3" class="external">http://git.wincent.com/command-t.git/commitdiff/517fd3764817bed5ff049af997bc42c4386aadd3</a></li>
+</ul>
+<p>As you can see, it's looking for the Vim pwd followed by a slash. Can you check what your Windows box returns for the following command?</p>
+<pre>:ruby puts CommandT::VIM::pwd</pre>
+<p>If it's got backslashes in it then that would explain why the change has no effect on Windows.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6465'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6465"><time data-relative="true">2010-11-23T11:32:20Z</time></a></span>
+</cite>
+<blockquote><p>Thank you for this immediate answer :)</p>
+<p>Output from the command is a path with '\' as a separator. However, I looked at the commit and tried removing the trailing '/' in relative_path_under_working_directory from my controller.rb but it doesn't seem to the trick.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6466'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6466"><time data-relative="true">2010-11-23T11:53:51Z</time></a></span>
+</cite>
+<blockquote><p>Well, <em>removing</em> it wouldn't be enough, you'd have to <em>replace</em> it with a backslash. Have you tried that?</p>
+<p>(I imagine you'll have to specify it as &quot;\\&quot; otherwise it will be treated as an escape character.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6467'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6467"><time data-relative="true">2010-11-23T12:14:55Z</time></a></span>
+</cite>
+<blockquote><p>Yep, I tried :(</p>
+<p>I don't no anything about ruby. Am I supposed to run 'ruby extconf.rb' and 'make' after any changes to controller.rb ? Or a vim reload should do the trick ?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6468'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6468"><time data-relative="true">2010-11-23T14:17:43Z</time></a></span>
+</cite>
+<blockquote><p>Just quit and restart Vim. Only changes to the C code would require a <code>make</code>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6469'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6469"><time data-relative="true">2010-11-23T14:45:04Z</time></a></span>
+</cite>
+<blockquote><p>Is there anyway I could print the value of 'path' and the result of 'path.index([...])' from the function ? That could help us understanding.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6470'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6470"><time data-relative="true">2010-11-23T16:46:14Z</time></a></span>
+</cite>
+<blockquote><p>You can use the <code>:ruby</code> command to evaluate the result of any Ruby expression, although in this case simply logging the paths to a file might be the easiest.</p>
+<p>I don't know where temp files live on Windows but editing the method to read something like the following may work (not tested, just typed into browser):</p>
+<pre>def relative_path_under_working_directory path
+  File.open('/tmp/command-t.log', 'a') do |f|
+    f.puts &quot;before: #{path}&quot;
+    path = path.index(pwd = &quot;#{VIM::pwd}/&quot;) == 0 ? path[pwd.length..-1] : path
+    f.puts &quot; after: #{path}&quot;
+  end
+  path
+end</pre>
+<p>Maybe not worth logging the &quot;after&quot; line, seeing as you can see the results right there in the window.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6471'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6471"><time data-relative="true">2010-11-23T16:53:50Z</time></a></span>
+</cite>
+<blockquote><p>Yep that's it : 'path' variable is a '/' separated path while #{VIM::pwd} is a '\' separated path...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6472'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6472"><time data-relative="true">2010-11-23T17:03:58Z</time></a></span>
+</cite>
+<blockquote><p>The discrepancy is probably because <code>path</code> is coming from Ruby-land (the result of a call to <code>File.expand_path</code>) and <code>pwd</code> is coming from Vim-land (the result of evaluating Vim's <code>getcwd()</code> function).</p>
+<p>Not really sure what the best way to tackle this is. As an experiment, can you tell me if the following correctly converts the backslash &quot;pwd&quot; into the forwardslash equivalent?</p>
+<pre>:ruby puts File.expand_path(CommandT::VIM::pwd)</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_6473'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6473"><time data-relative="true">2010-11-24T07:19:30Z</time></a></span>
+</cite>
+<blockquote><p>This command outputs the path with '/' as a separator.</p>
+<p>I fixed the issue with :</p>
+<pre>     pwd = File.expand_path(&quot;#{VIM::pwd}&quot;) + &quot;/&quot;
+     path.index(pwd) == 0 ? path[pwd.length..-1] : path</pre>
+<p>Thank you very much for your help :)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6474'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6474"><time data-relative="true">2010-11-24T13:48:52Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. I believe this change won't break existing behavior on non-Windows platforms, so I'll test it out here and incorporate it in the next release if it proves to be ok.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6476'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6476"><time data-relative="true">2010-11-26T16:19:42Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've incorporated the fix and will be pushing out a release (1.0) shortly.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9968'>
+<cite>
+<a href="/users/jason0x43">jason0x43</a>
+<span class='when'><a href="#comment_9968"><time data-relative="true">2012-08-20T12:56:10Z</time></a></span>
+</cite>
+<blockquote><p>I'm using command-t with Ruby 1.9.2 and Vim 7.3 on Windows. I ended up having to add a file expansion to the input path to </p>
+<pre>relative_path_under_working_directory</pre>
+<p> to get it to work right:</p>
+<pre> pwd = File.expand_path(VIM::pwd) + '/'
+ path = File.expand_path(path)
+ path.index(pwd) == 0 ? path[pwd.length..-1] : path</pre>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

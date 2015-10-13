@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+3.1b seeded to beta testers
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; 3.1b seeded to beta testers</div>
+<h1 class='major'>3.1b seeded to beta testers</h1>
+<div class='topic' id='topic_184'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/synergy/topics/184"><time data-relative="true">2006-11-13T07:30:39Z</time></a>
+</span>
+</cite>
+<blockquote><p>More information here:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/11/synergy_31b_see.php" class="external">http://wincent.com/a/news/archives/2006/11/synergy_31b_see.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_516'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_516"><time data-relative="true">2006-11-13T12:45:12Z</time></a></span>
+</cite>
+<blockquote><p>I'm getting some weird issues with the Audioscrobbler support. When the track changes, I see this in the console:</p>
+<p>Current track cannot be submitted because it is not a regular file</p>
+<p>Which is weird as I'm playing a regular MP3 off of my iPod in iTunes. Any ideas?</p>
+<p>(Update - this occurs for all music tracks)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_517'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_517"><time data-relative="true">2006-11-13T13:30:20Z</time></a></span>
+</cite>
+<blockquote><p>As the message indicates, Synergy isn't submitting it because it thinks it is not a regular file. Now the question is, why does it think that?</p>
+<p>You'll need to check what kind of notifications iTunes is sending for those tracks. I've put together a tiny tool called &quot;itnl&quot; (iTunes Notification Logger) which you can run from the Terminal and it will print out the notifications that iTunes is sending.</p>
+<p>You can download it from:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/itnl.zip" class="external">http://wincent.com/a/products/synergy-classic/download/itnl.zip</a></p>
+<p>It requires 10.4 to run. Just unzip and run it from the Terminal. One way of doing this is to open a new Terminal window, then drag &quot;itnl&quot; into the window, then press return. Send me the output.</p>
+<p>Also, can you run the following command from the Script Editor (in /Applications/AppleScript/) and let me know what it says?</p>
+<p>Code:tell application &quot;iTunes&quot; to get location of current track</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_518'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_518"><time data-relative="true">2006-11-13T16:43:51Z</time></a></span>
+</cite>
+<blockquote><p>Here's what I get when I run itnl: Quote:*************************************************** Notification received 2006-11-13 16:41:55 -0500:</p>
+<pre>   Name: com.apple.iTunes.playerInfo
+   Info: {
+   Album = &quot;Supergrass Is 10 - Best Of 1994-2004&quot;; 
+   Artist = Supergrass; 
+   Genre = &quot;Brit Pop&quot;; 
+   Name = Alright; 
+   &quot;Player State&quot; = Playing; 
+   &quot;Store URL&quot; = &quot;itms://itunes.com/link?n=Alright&amp;an=Supergrass&amp;pn=Supergrass%20Is%2010%20-%20Best%20Of%201994-2004&quot;; 
+   &quot;Total Time&quot; = 182948; 
+   &quot;Track Count&quot; = 21; 
+   &quot;Track Number&quot; = 3; 
+   Year = 2004; </pre>
+<p>}</p>
+<p>Running the get location script returns &quot;missing value&quot;.</p>
+<p>As I mentioned, this is music playing on my iPod through iTunes, which the official Last.fm client picks up with no problems.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_519'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_519"><time data-relative="true">2006-11-13T17:51:12Z</time></a></span>
+</cite>
+<blockquote><p>Well, looks like the problem is that there is no &quot;location&quot; field, so Synergy has no way of knowing that it's a regular file. Compare that with a notification for a file playing from the local hard disk:</p>
+<p>Code:Notification received 2006-11-13 23:49:38 +0100:</p>
+<pre>   Name: com.apple.iTunes.playerInfo
+   Info: {
+   Album = &quot;Telling Stories&quot;; 
+   Artist = &quot;Tracy Chapman&quot;; 
+   Genre = Pop; 
+   Location = &quot;file://localhost/Users/Shared/Music/Tracy%20Chapman%20-%20Telling%20Stories/%20-%20Track01.mp3&quot;; 
+   Name = &quot;Telling Stories&quot;; 
+   &quot;Player State&quot; = Playing; 
+   &quot;Store URL&quot; = &quot;itms://itunes.com/link?n=Telling%20Stories&amp;an=Tracy%20Chapman&amp;pn=Telling%20Stories&quot;; 
+   &quot;Total Time&quot; = 237714; 
+   &quot;Track Count&quot; = 11; 
+   &quot;Track Number&quot; = 1; 
+   Year = 2000; </pre>
+<p>}</p>
+<p>If I can find a way to reliably differentiate between tracks playing off an iPod like the one that you describe, and Internet radio, then I'll be able to submit those tracks. The trouble is, unless I can be 100% sure they are a regular file, the Audioscrobbler protocol requires me to not submit them.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_520'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_520"><time data-relative="true">2006-11-28T12:43:05Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>Just found another audioscrobbler &quot;issue&quot; although it's not really a bug so much as a grievance caused by using two machines with one audioscrobbler account. I have a home machine and a work machine, which I use in alternating order. It appears that Synergy cannot successfully report music usage from either machine until I manually re-login from the System Prefs panel by editing the audioscrobbler settings and just clicking Save. Then all of a sudden all my tracks come flooding in.</p>
+<p>Most likely the cause is that last.fm is tracking IP addresses as part of their login info, so until Synergy is forced to login again, the reports are ignored as coming from the wrong ip. I'm not sure if last.fm supplies enough feedback for you to do something about this, but at the very least a &quot;force audioscrobbler login&quot; menu item would help speed up the process!</p>
+<p>Thanks in advance. This audioscrobbler update is neat!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_521'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_521"><time data-relative="true">2006-11-28T13:32:17Z</time></a></span>
+</cite>
+<blockquote><p>Can you please turn on logging as described in the beta announcement:</p>
+<p><a href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html" class="external">http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html</a></p>
+<p>And let me know what the output is written to the console when you see the problem? I'll need this information in order to analyse the problem and devise a workaround.</p>
+<p>As for having to manually re-edit the settings, I should think that stopping and starting Synergy would be an easy way to force a handshake in the meantime.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_522'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_522"><time data-relative="true">2006-11-28T13:54:49Z</time></a></span>
+</cite>
+<blockquote><p>I've opened a feature request for the &quot;Force login&quot; menu item:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=512" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=512</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_523'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_523"><time data-relative="true">2006-11-29T15:01:09Z</time></a></span>
+</cite>
+<blockquote><p>Originally Posted By: WincentColaiutaAs for having to manually re-edit the settings, I should think that stopping and starting Synergy would be an easy way to force a handshake in the meantime. </p>
+<p>Thanks for the quick response, Wincent. I didn't stop/start Synergy because I was afraid that would flush the queue? I figured better safe than sorry. </p>
+<p>I've enabled logging, but it wasn't noticed by Synergy until after I resaved Audioscrobbler settings. Here's the &quot;back&quot; of the transaction after resave. I'll have the front tomorrow morning. Basically, after the resave, it logs in happily, notices queued items and starts flushing them. I've omitted the actual item transactions, but there is lots of verbose success after the process began.</p>
+<p>Quote:2006-11-29 11:30:55.750 Synergy[24806] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2006-11-29 11:30:55.750 Synergy[24806] Audioscrobbler: Received an INTERVAL directive 2006-11-29 11:30:55.750 Synergy[24806] Audioscrobbler: Storing interval value: 1 2006-11-29 11:30:55.750 Synergy[24806] Audioscrobbler: Processing handshake reply 2006-11-29 11:30:55.750 Synergy[24806] Audioscrobbler: Received UPTODATE message 2006-11-29 11:33:16.946 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-29 11:33:16.946 Synergy[24806] Audioscrobbler: Received notification of playing status 2006-11-29 11:33:16.946 Synergy[24806] Audioscrobbler: Track information: { 2006-11-29 11:33:16.946 Synergy[24806] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing 2006-11-29 11:33:27.758 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-29 11:33:27.758 Synergy[24806] Audioscrobbler: Received notification of playing status 2006-11-29 11:33:27.759 Synergy[24806] Audioscrobbler: Track information: { 2006-11-29 11:33:27.759 Synergy[24806] Audioscrobbler: This track appears to be a new submission 2006-11-29 11:33:27.759 Synergy[24806] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-11-29 11:33:27.759 Synergy[24806] Audioscrobbler: Setting up new submission timer (125 seconds) 2006-11-29 11:35:32.759 Synergy[24806] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2006-11-29 11:35:32.759 Synergy[24806] Audioscrobbler: Position matches, will submit to Audioscrobbler 2006-11-29 11:35:32.759 Synergy[24806] Audioscrobbler: Adding song to submission queue; song infomation: { 2006-11-29 11:35:32.760 Synergy[24806] Audioscrobbler: Enqueuing object: { 2006-11-29 11:35:32.760 Synergy[24806] Audioscrobbler: Number of items currently on the queue: 3 2006-11-29 11:35:32.760 Synergy[24806] Audioscrobbler: Queue was non-empty, but ready to submit: processing item 2006-11-29 11:35:32.760 Synergy[24806] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 2006-11-29 11:35:33.760 Synergy[24806] Audioscrobbler: Will proceed with submission</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_524'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_524"><time data-relative="true">2006-11-29T20:25:27Z</time></a></span>
+</cite>
+<blockquote><p>That's true, if you stop Synergy you will lose whatever was in the submission queue. But I think that pretty much any change you make to the preferences while Synergy is running will cause everything to refresh as soon as you click &quot;Apply&quot;; and that explains why Synergy &quot;noticed&quot; you'd enabled logging and also renogiated the handshake.</p>
+<p>If you can capture the console output that occurs when your seeing the submission backlog problem let me know.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_525'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_525"><time data-relative="true">2006-11-30T23:23:40Z</time></a></span>
+</cite>
+<blockquote><p>Busy day! With regards to the queue, it is in fact retained and uploaded after I &quot;re-save&quot; if I use that method to get Synergy to log in again. Unfortunately that isn't captured in this session as I had to log out to fix a font issue almost immediately after I started using iTunes... It sounds like I could basically hit apply anywhere though? That's good to know.</p>
+<p>Here's the console output. First I unpause, then I switch tracks so it will try and submit to Last.fm faster. And finally after a couple of tracks I had to do a quick logout so the interesting console output ends for today.</p>
+<p>Quote:2006-11-30 13:44:05.557 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-30 13:44:05.557 Synergy[24806] Audioscrobbler: Received notification of playing status 2006-11-30 13:44:05.557 Synergy[24806] Audioscrobbler: Track information: { 2006-11-30 13:44:05.557 Synergy[24806] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing 2006-11-30 13:45:15.758 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-30 13:45:15.759 Synergy[24806] Audioscrobbler: Received notification of playing status 2006-11-30 13:45:15.759 Synergy[24806] Audioscrobbler: Track information: { 2006-11-30 13:45:15.759 Synergy[24806] Audioscrobbler: This track appears to be a new submission 2006-11-30 13:45:15.759 Synergy[24806] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-11-30 13:45:15.759 Synergy[24806] Audioscrobbler: Setting up new submission timer (134 seconds) 2006-11-30 13:47:29.759 Synergy[24806] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2006-11-30 13:47:29.759 Synergy[24806] Audioscrobbler: Position matches, will submit to Audioscrobbler 2006-11-30 13:47:29.760 Synergy[24806] Audioscrobbler: Adding song to submission queue; song infomation: { 2006-11-30 13:47:29.760 Synergy[24806] Audioscrobbler: Enqueuing object: { 2006-11-30 13:47:29.760 Synergy[24806] Audioscrobbler: Number of items currently on the queue: 1 2006-11-30 13:47:29.760 Synergy[24806] Audioscrobbler: Queue was empty: processing item 2006-11-30 13:47:29.760 Synergy[24806] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 2006-11-30 13:47:30.760 Synergy[24806] Audioscrobbler: Will proceed with submission 2006-11-30 13:47:30.760 Synergy[24806] Audioscrobbler: Will perform submission using URL: <a href="http://87.117.229.205:80/protocol_1.1" class="external">http://87.117.229.205:80/protocol_1.1</a> 2006-11-30 13:47:30.760 Synergy[24806] Audioscrobbler: Submission as URL-encoded string is: u=zedzded&amp;s=d87b41037e081ac670da59f6e6ce1d41&amp;a[0]=Lords%20Of%20Acid&amp;t[0]=Mixed%20Emotions&amp;b[0]=Lust&amp;m[0]=&amp;l[0]=268&amp;i[0]=2006-11-30%2020%3A47%3A29 2006-11-30 13:47:30.760 Synergy[24806] Audioscrobbler: Submission as data is: &lt;753d7a65 647a6465 6426733d 64383762 34313033 37653038 31616336 37306461 35396636 65366365 31643431 26615b30 5d3d4c6f 72647325 32304f66 25323041 63696426 745b305d 3d4d6978 65642532 30456d6f 74696f6e 7326625b 305d3d4c 75737426 6d5b305d 3d266c5b 305d3d32 36382669 5b305d3d 32303036 2d31312d 33302532 30323025 33413437 25334132 39&gt; 2006-11-30 13:47:30.760 Synergy[24806] Audioscrobbler: Starting connection attempt 2006-11-30 13:47:30.760 Synergy[24806] Audioscrobbler: Waiting for submission response 2006-11-30 13:47:31.357 Synergy[24806] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2006-11-30 13:47:31.357 Synergy[24806] Audioscrobbler: Received an INTERVAL directive 2006-11-30 13:47:31.357 Synergy[24806] Audioscrobbler: Storing interval value: 1 2006-11-30 13:47:31.357 Synergy[24806] Audioscrobbler: Processing submission response 2006-11-30 13:47:31.357 Synergy[24806] Audioscrobbler: Received BADAUTH response 2006-11-30 13:48:50.670 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-30 13:48:50.670 Synergy[24806] Audioscrobbler: Received notification of playing status 2006-11-30 13:48:50.670 Synergy[24806] Audioscrobbler: Track information: { 2006-11-30 13:48:50.685 Synergy[24806] Audioscrobbler: This track appears to be a new submission 2006-11-30 13:48:50.685 Synergy[24806] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-11-30 13:48:50.686 Synergy[24806] Audioscrobbler: Setting up new submission timer (130 seconds) 2006-11-30 13:51:00.686 Synergy[24806] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2006-11-30 13:51:00.686 Synergy[24806] Audioscrobbler: Position matches, will submit to Audioscrobbler 2006-11-30 13:51:00.686 Synergy[24806] Audioscrobbler: Adding song to submission queue; song infomation: { 2006-11-30 13:51:00.686 Synergy[24806] Audioscrobbler: Enqueuing object: { 2006-11-30 13:51:00.687 Synergy[24806] Audioscrobbler: Number of items currently on the queue: 2 2006-11-30 13:51:00.687 Synergy[24806] Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item 2006-11-30 13:53:12.740 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-30 13:53:12.740 Synergy[24806] Audioscrobbler: Received notification of playing status 2006-11-30 13:53:12.740 Synergy[24806] Audioscrobbler: Track information: { 2006-11-30 13:53:12.740 Synergy[24806] Audioscrobbler: This track appears to be a new submission 2006-11-30 13:53:12.740 Synergy[24806] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-11-30 13:53:12.740 Synergy[24806] Audioscrobbler: Setting up new submission timer (142 seconds) 2006-11-30 13:53:16.745 Synergy[24806] Audioscrobbler: Received notification from iTunes 2006-11-30 13:53:16.745 Synergy[24806] Audioscrobbler: Received notification of non-playing status 2006-11-30 13:53:16.745 Synergy[24806] Audioscrobbler: Track information: { 2006-11-30 13:53:16.745 Synergy[24806] Audioscrobbler: This track was previously submitted for consideration; pausing timer 2006-11-30 15:11:28.623 Synergy[24806] Audioscrobbler: Finalize Audioscrobbler session</p>
+<p>Let me know if you need any more and thanks again!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_526'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_526"><time data-relative="true">2006-12-01T06:37:23Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for that. We can see that Audioscrobbler is returning &quot;BADAUTH&quot; which means that it rejects the username and password. So that's confirmation of your suspicion that it is doing some kind of IP-based check or similar.</p>
+<p>So looks like the workaround for this issue will be the &quot;Force re-login&quot; thing that's already been added to the database here:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=512" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=512</a> </p>
+<p>The other possibility is to consider automatically re-trying to login in the event of a BADAUTH message, but it would have to be be pretty heavily limited. The problem is we'd need a way to distinguish between the BADAUTH message that you get when you supply incorrect credentials, and the BADAUTH message you get when you've logged in from two different IPs. Can you look at your console log again and tell me if any thing is printed immediately after the BADAUTH notification? (ie. if you are using the string &quot;Synergy&quot; or &quot;Audioscrobbler&quot; in the Console application to filter the log display then you may not be seeing all the information being printed by Synergy; I notice that in some of the lines you've pasted many of them are obviously truncated, like the ones that start with &quot;{&quot; but then nothing else is printed...)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_527'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_527"><time data-relative="true">2006-12-04T13:41:53Z</time></a></span>
+</cite>
+<blockquote><p>Hmmm, unfortunately the lines are pasted exactly as they show in the console for me. Here's another sample, but I don't think it's going to help. EDIT: I searched by time too and these are the only messages from that time that have anything to do with Synergy, so there's nothing hidden by the filter in the Console that I wasn't seeing either.</p>
+<p>Quote:006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Starting connection attempt 2006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Waiting for submission response 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Received an INTERVAL directive 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Storing interval value: 1 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Processing submission response 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Received BADAUTH response 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Received notification from iTunes 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Received notification of playing status 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Track information: { 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: This track appears to be a new submission 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Setting up new submission timer (126 seconds) 2006-12-01 18:41:55.730 Synergy[1827] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Position matches, will submit to Audioscrobbler 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Adding song to submission queue; song infomation: { 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Enqueuing object: { 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Number of items currently on the queue: 2 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item 2006-12-01 18:44:03.188 Synergy[1827] Audioscrobbler: Received notification from iTunes 2006-12-01 18:44:03.188 Synergy[1827] Audioscrobbler: Received notification of playing status 2006-12-01 18:44:03.188 Synergy[1827] Audioscrobbler: Track information: { 2006-12-01 18:44:03.188 Synergy[1827] Audioscrobbler: This track appears to be a new submission 2006-12-01 18:44:03.188 Synergy[1827] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-12-01 18:44:03.188 Synergy[1827] Audioscrobbler: Setting up new submission timer (135 seconds) 2006-12-01 18:46:18.188 Synergy[1827] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value</p>
+<p>It would be nice for Synergy to try a single login attempt if it receives a BADAUTH. Maybe if you tracked successful logins such that if successful login was true then you try an additional login attempt the first time you get a BADAUTH? If the 2nd auth attempt fails, you set login_success to false so it doesn't retry again until the user does something. But if it succeeds, next time there is a failure you can do one additional attempt and so forth.</p>
+<p>Also, I just tried to relaunch 3.1b2 and it says it has expired? Is a new beta forthcoming today or should I reinstall 3.0? Never mind! I see you were releasing 3.1 as I was posting!    </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_528'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_528"><time data-relative="true">2006-12-04T13:50:58Z</time></a></span>
+</cite>
+<blockquote><p>The 3.1 beta expired today. The final (non-beta) release is available for download:</p>
+<p><a href="http://wincent.com/download.php?item=Synergy.dmg" class="external">http://wincent.com/download.php?item=Synergy.dmg</a></p>
+<p>Change log:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/history/#3.1" class="external">http://wincent.com/a/products/synergy-classic/history/#3.1</a></p>
+<p>Release announcement:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/12/synergy_31_now.php" class="external">http://wincent.com/a/news/archives/2006/12/synergy_31_now.php</a></p>
+<p>As for the login failure issue, I still think something is being chopped from what you've posted. Those opening curly braces indicate that something should follow; but there's nothing, and no curly braces. It really looks like only the first line of each message is being shown...</p>
+<p>But in any case, for the next version I will see if I can set a reasonable-but-small number of retries in response to a BADAUTH message. Perhaps three? I'll also see if I can log more detail to the console, but it seems like last.fm isn't saying anything more than &quot;BADAUTH&quot;, which doesn't help much...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_529'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_529"><time data-relative="true">2006-12-04T14:07:32Z</time></a></span>
+</cite>
+<blockquote><p>Okay, thanks for all the support and the lightening quick responses. Synergy is still one of my all-time favorites OS X apps ever in case I hadn't mentioned that before! </p>
+<p>As for the Console, I looked one more time--this time specifically for lines with braces. Here's what it looks like with fully braced info. Sadly, there is not additional info in the BADAUTH area though.</p>
+<p>Quote:2006-12-01 17:57:17.128 Synergy[1827] Audioscrobbler: Received notification from iTunes 2006-12-01 17:57:17.128 Synergy[1827] Audioscrobbler: Received notification of playing status 2006-12-01 17:57:17.128 Synergy[1827] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;Shaking The Tree&quot;; 
+   WOAudioscrobblerArtist = Unknown; 
+   WOAudioscrobblerLength = 271; 
+   WOAudioscrobblerTrack = &quot;Here Comes The Flood&quot;; </pre>
+<p>} 2006-12-01 17:57:17.128 Synergy[1827] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing 2006-12-01 17:59:18.641 Synergy[1827] Audioscrobbler: Received notification from iTunes 2006-12-01 17:59:18.641 Synergy[1827] Audioscrobbler: Received notification of playing status 2006-12-01 17:59:18.641 Synergy[1827] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;Shaking The Tree&quot;; 
+   WOAudioscrobblerArtist = &quot;Peter Gabriel&quot;; 
+   WOAudioscrobblerLength = 335; 
+   WOAudioscrobblerTrack = &quot;Red Rain&quot;; </pre>
+<p>} 2006-12-01 17:59:18.641 Synergy[1827] Audioscrobbler: This track appears to be a new submission 2006-12-01 17:59:18.641 Synergy[1827] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-12-01 17:59:18.641 Synergy[1827] Audioscrobbler: Setting up new submission timer (167 seconds) 2006-12-01 18:02:05.641 Synergy[1827] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2006-12-01 18:02:05.642 Synergy[1827] Audioscrobbler: Position matches, will submit to Audioscrobbler 2006-12-01 18:02:05.642 Synergy[1827] Audioscrobbler: Adding song to submission queue; song infomation: {</p>
+<pre>   WOAlbum = &quot;Shaking The Tree&quot;; 
+   WOArtist = &quot;Peter Gabriel&quot;; 
+   WODate = &quot;2006-12-02 01:02:05&quot;; 
+   WOLength = 335; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Red Rain&quot;; </pre>
+<p>} 2006-12-01 18:02:05.642 Synergy[1827] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;Shaking The Tree&quot;; 
+   WOArtist = &quot;Peter Gabriel&quot;; 
+   WODate = &quot;2006-12-02 01:02:05&quot;; 
+   WOLength = 335; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Red Rain&quot;; </pre>
+<p>} 2006-12-01 18:02:05.642 Synergy[1827] Audioscrobbler: Number of items currently on the queue: 1 2006-12-01 18:02:05.642 Synergy[1827] Audioscrobbler: Queue was empty: processing item 2006-12-01 18:02:05.642 Synergy[1827] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 2006-12-01 18:02:06.642 Synergy[1827] Audioscrobbler: Will proceed with submission 2006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Will perform submission using URL: <a href="http://87.117.229.205:80/protocol_1.1" class="external">http://87.117.229.205:80/protocol_1.1</a> 2006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Submission as URL-encoded string is: u=zedzded&amp;s=8bc5d125318ce3eab199004f4e808369&amp;a[0]=Peter%20Gabriel&amp;t[0]=Red%20Rain&amp;b[0]=Shaking%20The%20Tree&amp;m[0]=&amp;l[0]=335&amp;i[0]=2006-12-02%2001%3A02%3A05 2006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Submission as data is: &lt;753d7a65 647a6465 6426733d 38626335 64313235 33313863 65336561 62313939 30303466 34653830 38333639 26615b30 5d3d5065 74657225 32304761 62726965 6c26745b 305d3d52 65642532 30526169 6e26625b 305d3d53 68616b69 6e672532 30546865 25323054 72656526 6d5b305d 3d266c5b 305d3d33 33352669 5b305d3d 32303036 2d31322d 30322532 30303125 33413032 25334130 35&gt; 2006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Starting connection attempt 2006-12-01 18:02:06.643 Synergy[1827] Audioscrobbler: Waiting for submission response 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Received an INTERVAL directive 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Storing interval value: 1 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Processing submission response 2006-12-01 18:02:07.386 Synergy[1827] Audioscrobbler: Received BADAUTH response 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Received notification from iTunes 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Received notification of playing status 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = Up; 
+   WOAudioscrobblerArtist = &quot;R.E.M.&quot;; 
+   WOAudioscrobblerLength = 253; 
+   WOAudioscrobblerTrack = Airportman; </pre>
+<p>} 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: This track appears to be a new submission 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Cancelling previously existing submission timer, if any 2006-12-01 18:39:49.730 Synergy[1827] Audioscrobbler: Setting up new submission timer (126 seconds) 2006-12-01 18:41:55.730 Synergy[1827] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Position matches, will submit to Audioscrobbler 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Adding song to submission queue; song infomation: {</p>
+<pre>   WOAlbum = Up; 
+   WOArtist = &quot;R.E.M.&quot;; 
+   WODate = &quot;2006-12-02 01:41:55&quot;; 
+   WOLength = 253; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = Airportman; </pre>
+<p>} 2006-12-01 18:41:55.731 Synergy[1827] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = Up; 
+   WOArtist = &quot;R.E.M.&quot;; 
+   WODate = &quot;2006-12-02 01:41:55&quot;; 
+   WOLength = 253; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = Airportman; </pre>
+<p>}</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_530'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_530"><time data-relative="true">2006-12-04T14:10:38Z</time></a></span>
+</cite>
+<blockquote><p>Well, looks like we'll just have to implement a &quot;try a few times but not too many&quot; kind of policy with respect to BADAUTH responses...</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

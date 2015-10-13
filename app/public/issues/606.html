@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #606: Hot keys interface misdisplays some key combinations
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #606</div>
+<div class='issue' id='issue_606'>
+<form class="edit_issue" id="edit_issue_606" action="/issues/606" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="rykbIlW8LL5bpatM66rjdi4Jo00ykt4l5tpBOACRuNub26WV8jH264IpmLvag7DCm4vKcTl+UDnGxZTGJEnf/w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #606:
+<span data-name='issue[summary]'>
+Hot keys interface misdisplays some key combinations
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-10-30T01:31:40Z</time>, updated <time data-relative="true">2007-10-31T09:48:00Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/chris-drackett">Chris Drackett</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>In tiger i used the F16-F19 keys on the new apple keyboard for synergy, in leopard, they are not assignable (come up blank)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3100'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3100"><time data-relative="true">2007-10-31T02:39:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, Chris. At the moment I don't have access to one of these new keyboards so I can't do any local testing to figure out what's going wrong, but there are a few possibilities.</p>
+<p>It could be a hardware thing: those keys could be treated as special keys now and send different key codes...</p>
+<p>Or a software thing: Leopard might be reserving different keys for things like brightness adjustments (intercepting those key events at the OS level and not letting them filter through to applications).</p>
+<p>Finally it might be a configuration thing: perhaps Leopard has some default assignments for those keys that mean they're already &quot;taken&quot;.</p>
+<p>See <a href="/issues/206">bug #206</a> for a similar issue that was reported a while ago; there may be some information that helps you in there:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=206" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=206</a></p>
+<p>Let me know how you go. If you can't get to the bottom of this based on this information or the info in <a href="/issues/206">bug #206</a> then this might have to sit on the backburner until I get my hands on a new keyboard and can investigate the issue.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3101'>
+<cite>
+<a href="/users/chris-drackett">Chris Drackett</a>
+<span class='when'><a href="#comment_3101"><time data-relative="true">2007-10-31T09:08:20Z</time></a></span>
+</cite>
+<blockquote><p>I actually just found out that this is a display bug only. (F16-F19 will not display in the window, but the keys WILL work) I accidentally had synergy off (just installed) when I submitted this bug. So its a little less severe, just confusing. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3102'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3102"><time data-relative="true">2007-10-31T09:48:00Z</time></a></span>
+</cite>
+<blockquote><p>Ah ok, thanks for the clarification.</p>
+<p>Yes, there is a long standing bug which causes some key combinations to be misdisplayed. I was never able to find out why and I ended up writing a completely new hot key engine from scratch for Synergy Advance which doesn't have any display issues.</p>
+<p>There really needs to be a bug for this in the database so I'm going to commandeer this one and change the summary to reflect the real nature of the problem.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #318: &quot;Update iChat status based on current track&quot; can be overriden
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #318</div>
+<div class='issue' id='issue_318'>
+<form class="edit_issue" id="edit_issue_318" action="/issues/318" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ekK5tbXjmaNy8vzZUKbwIsp4gc5ZPh1kNMlNmt2qaLxOsAcCEm5D9qt+zy5hj6OWf/ro8lLSk3gU1phk+XIPmA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #318:
+<span data-name='issue[summary]'>
+&quot;Update iChat status based on current track&quot; can be overriden
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-10-22T19:55:32Z</time>, updated <time data-relative="true">2005-11-28T13:35:13Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/john-davidorff-pell">John Davidorff Pell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have never turned on anything in the instant message pane because I do not like it at all. I just launched synergy after iTunes was already playing and it changed my status and icon, and the pref pane STILL said that nothing was on... It was rather frustrating...</p>
+<p>JP</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2278'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2278"><time data-relative="true">2005-10-22T23:09:51Z</time></a></span>
+</cite>
+<blockquote><p>Definitely can't reproduce this one myself. Have you tried deleting your preferences file? Or attaching it to this bug report so that I can take a look at it? It is:</p>
+<p>~/Library/Preferences/com.wincent.SynergyAdvance.plist</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2279'>
+<cite>
+<a href="/users/john-davidorff-pell">John Davidorff Pell</a>
+<span class='when'><a href="#comment_2279"><time data-relative="true">2005-10-23T23:41:05Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=43) Demonstration</p>
+<p>No good...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2280'>
+<cite>
+<a href="/users/john-davidorff-pell">John Davidorff Pell</a>
+<span class='when'><a href="#comment_2280"><time data-relative="true">2005-10-23T23:42:25Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=44) Prefs</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2281'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2281"><time data-relative="true">2005-11-10T05:18:08Z</time></a></span>
+</cite>
+<blockquote><p>Ok, now that I've seen your video and examined the code I've found the source of the code.</p>
+<p>The problem is that Synergy Advance is updating iChat because you have the checkboxes checked to update &quot;When iTunes track changes&quot; and &quot;When iTunes player state changes&quot;, regardless of whether or not you have the &quot;Update iChat status based on current track&quot; checkbox turned on. The correct behaviour would be to ignore the former checkboxes whenever the latter is unchecked. I will go ahead and correct this right now for the next release.</p>
+<p>In the meantime, the workaround is to uncheck the offending checkboxes. Adding the &quot;fixed-in-prerelease&quot; keyword.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2282'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2282"><time data-relative="true">2005-11-28T13:35:13Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 338 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

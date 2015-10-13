@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Multiple caches
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Multiple caches</div>
+<h1 class='major'>Multiple caches</h1>
+<div class='topic' id='topic_484'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/484"><time data-relative="true">2011-09-16T12:05:57Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>I'm using Command-T on a quite important project organized accross 3 main subdirectories that we'll call A, B and C : I have three separate shortcuts to invoke CommandT on either subdirectory.</p>
+<p>Opening files from either subdirectory and random order is painful because each call to Command-T on a different directory seems to flush the previous one from the cache : if I open files from A, B, A, I never actually take advantage of the cache.</p>
+<p>Could a 'by root directory' cache be implemented ?</p>
+<p>Thanks</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7133'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7133"><time data-relative="true">2011-09-18T03:40:23Z</time></a></span>
+</cite>
+<blockquote><p>At first I misunderstood your request, but on reading it again I understand that you are asking for multiple caches, keyed off the &quot;root&quot; directory for each cache. Sounds like a reasonable idea, although I wonder what the memory usage might be for people jumping around a lot between different directories; for that reason I'd want this to be optional and off by default.</p>
+<p>A workaround until then would be to just work from the directory where <code>A</code>, <code>B</code> and <code>C</code> all live rather than changing into them.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7134'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7134"><time data-relative="true">2011-09-18T03:42:08Z</time></a></span>
+</cite>
+<blockquote><p>Made a ticket in the tracker for this; see feature <a href="/issues/1878">request #1878</a>. Not sure when I'll get to this, so feel free to submit a patch.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

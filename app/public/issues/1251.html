@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1251: Impossible to link to a URL ending with a parenthesis
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1251</div>
+<div class='issue' id='issue_1251'>
+<form class="edit_issue" id="edit_issue_1251" action="/issues/1251" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/vP49cPaOPAOP6sbCEFlTkeN89mfiAH3p9TsBK5mz4DKAUZCZFfipdezmOw5aDb68g+a5ZRkj+uHyzn6ir6opA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1251:
+<span data-name='issue[summary]'>
+Impossible to link to a URL ending with a parenthesis
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-03-06T15:59:22Z</time>, updated <time data-relative="true">2009-04-24T12:20:48Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Example:</p>
+<p><a href="http://en.wikipedia.org/wiki/ACE_(file_format" class="external">http://en.wikipedia.org/wiki/ACE_(file_format</a>)</p>
+<p>I've tried a few different workarounds...</p>
+<ul>
+<li>[http://en.wikipedia.org/wiki/ACE_(file_format) link text]</li>
+<li>http://en.wikipedia.org/wiki/ACE_(file_format): label</li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4306'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4306"><time data-relative="true">2009-03-06T15:59:51Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4307'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4307"><time data-relative="true">2009-03-06T16:02:18Z</time></a></span>
+</cite>
+<blockquote><p>There are a couple of workarounds at the application level:</p>
+<ul>
+<li>set up a &quot;link&quot; record</li>
+<li>or a wiki article &quot;redirect&quot;</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4336'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4336"><time data-relative="true">2009-03-23T07:30:44Z</time></a></span>
+</cite>
+<blockquote><p>Although the problem can be worked around at the application level, this is really a lexer-level issue. By the time the app gets the URI it has already been tokenized in this undesirable way.</p>
+<p>At a lexer level, I'm really not sure what can be done about this. Here are the relevant state machines:</p>
+<pre>uri_chars           = (alnum | [@$&amp;'(\*\+=%_~/#] | '-')+ ;
+special_uri_chars   = ([:!\(\),;\.\?])+ ;
+uri                 = ('mailto:'i mail) |
+                      (('http'i [sS]? '://' | '<a href="ftp://'i" class="external">ftp://'i</a> | '<a href="svn://'i" class="external">svn://'i</a>) uri_chars (special_uri_chars uri_chars)*) ;</pre>
+<p><code>)</code> is a &quot;special URI char&quot; and it will only be considered to be part of a URI if it is followed by a &quot;non-special&quot; char. We could append a &quot;non-special&quot; char but that would change the URI and most likely lead to 404s. By definition, the &quot;special&quot; char cannot be the last char in a URI.</p>
+<p>Nevertheless, this &quot;special/non-special&quot; distinction is very useful in 99.9% of cases. It allows us to write stuff like &quot;my home page (<a href="http://wincent.com/" class="external">http://wincent.com/</a>)&quot; and have it work as the author intended with no escaping or other special tricks. If we make the 0.1% case work (URIs ending with a parenthesis) then we make things less convenient in the remaining 99.9%.</p>
+<p>Funnily enough, if I had used single quotes in my example above then things wouldn't have worked. ie. 'my home page (<a href="http://wincent.com/)'" class="external">http://wincent.com/)'</a></p>
+<p>There <code>'</code> is a &quot;non-special&quot; URI char so both the parenthesis and the single quote get inappropriately slurped into the URI token. But it's a fairly unlikely edge case and I don't think it constitutes a flaw in the state machines.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4337'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4337"><time data-relative="true">2009-03-23T07:42:28Z</time></a></span>
+</cite>
+<blockquote><p>The expected behaviour with respect to &quot;special&quot; chars is defined in the &quot;autolinking&quot; spec file:</p>
+<ul>
+<li><a href="http://git.wincent.com/wikitext.git?a=blob;f=spec/autolinking_spec.rb" class="external">http://git.wincent.com/wikitext.git?a=blob;f=spec/autolinking_spec.rb</a></li>
+</ul>
+<p>I am wondering if perhaps the machine could be modified to accept &quot;special&quot; chars as long as they are followed by at least one &quot;non-special&quot; <em>or</em> &quot;special&quot; char. ie:</p>
+<ul>
+<li><code>(hello).html</code>: the <code>)</code> and the <code>.</code> are accepted because they are followed by <code>h</code></li>
+<li><code>(hello)</code>: the <code>)</code> would not be accepted</li>
+<li><code>(hello): foo</code> would consider <code>(hello)</code> to be part of the URI, but not the <code>:</code> because it is followed only by a space</li>
+<li><code>(hello).</code> would also consider <code>(hello)</code> to be part of the URI</li>
+</ul>
+<p>In other words, stuff ending with a parenthesis still wouldn't be automatically tokenized as a URI, but there would be an &quot;escape hatch&quot; for making the lexer tokenize it: adding <em>exactly one</em> more &quot;special&quot; char, such as <code>:</code>, <code>.</code>, <code>,</code> etc.</p>
+<p>I am not sure if this is desirable as someone could conceivably write: &quot;See my website (<a href="http://wincent.com/" class="external">http://wincent.com/</a>).&quot; and the parenthesis would now be erroneously interpreted as being part of the URI.</p>
+<p>Perhaps the only way to resolve this definitively would be to introduce some sort of escaping into the lexer, and I think that's a line I don't necessarily want to cross (importing an idea from the domain of programming into what is supposed to be a lightweight, easy-to-use markup).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4496'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4496"><time data-relative="true">2009-04-24T12:20:03Z</time></a></span>
+</cite>
+<blockquote><p>Thinking about this a little more, I believe a percent escape can be used:</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/ACE_(file_format%29" class="external">http://en.wikipedia.org/wiki/ACE_(file_format%29</a></li>
+</ul>
+<p>Yes, it's relatively ugly. Slightly less ugly if we do it consistently for both left and right parens:</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/ACE_%28file_format%29" class="external">http://en.wikipedia.org/wiki/ACE_%28file_format%29</a></li>
+</ul>
+<p>So I think that's the end of the issue because:</p>
+<ul>
+<li>We don't want to change the existing behaviour because it is already the most convenient behaviour possible in 99.9% of cases.</li>
+<li>We don't want to introduce an explicit escaping mechanism (such as using a backslash or some other marker) as that would be introducing a programming-domain idea, and quite an invasive one, into what should be simple markup.</li>
+<li>An easy workaround (percent escapes) exists.</li>
+</ul>
+<p>This even allows us to enclose such URLs inside parens and everything will just work as expected (eg. this link will work: <a href="http://en.wikipedia.org/wiki/ACE_%28file_format%29" class="external">http://en.wikipedia.org/wiki/ACE_%28file_format%29</a>), I think.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4497'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4497"><time data-relative="true">2009-04-24T12:20:48Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+How can I create a mapping that opens the selected file in a vertical/horizontal split?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; How can I create a mapping that opens the selected file in a vertical/horizontal split?</div>
+<h1 class='major'>How can I create a mapping that opens the selected file in a vertical/horizontal split?</h1>
+<div class='topic' id='topic_490'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/490"><time data-relative="true">2011-10-30T21:31:24Z</time></a>
+</span>
+</cite>
+<blockquote><p>I am switching to Command-T for file searching. I am trying to setup shortcuts such that I can type leader vv to launch command-T starting in app/views, find the desired file, and open it in a vertical split.</p>
+<p>I found the following which works to narrow the command-t search to app/views:</p>
+<pre>map &lt;leader&gt;gv :CommandTFlush&lt;cr&gt;\|:CommandT app/views&lt;cr&gt;</pre>
+<p>How can I change that so that it opens in a vertical/horizontal split when I hit enter on the file?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7210'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7210"><time data-relative="true">2011-10-31T06:29:24Z</time></a></span>
+</cite>
+<blockquote><p>You can't really do both of those in a single mapping.</p>
+<p>All you can really do is open Command-T in <code>app/views</code>, and then open in a vertical split using <code>&lt;CTRL-v&gt;</code> or some other mapping of your choosing. (The idea is, first find the file, then decide where you want to open it.) You could of course patch Command-T to provide this feature, but I don't really want to increase the already large number of customizable mappings.</p>
+<p>By the way, I think you shouldn't need the <code>:CommandTFlush</code> in that mapping above, as changing directories like that starts with an empty cache.</p>
+<p>(The version currently on the master branch optionally caches multiple directories, so you wouldn't have an implicit flush in that case, but rather separate caches for <code>.</code>, <code>app/views</code>, and any other directory you invoke Command-T in.)</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

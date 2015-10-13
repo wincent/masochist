@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1573: Rails 3: check HTTPS links always used at application boundaries
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1573</div>
+<div class='issue' id='issue_1573'>
+<form class="edit_issue" id="edit_issue_1573" action="/issues/1573" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="VDT2dr5nSTxmd6R5HBYy2Yhu1Y7UKBhfS6Lh4G0aQ8NgxkjBGeqTab/7l44tP2FtPey8st/ElkNrvTQeScIk5w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1573:
+<span data-name='issue[summary]'>
+Rails 3: check HTTPS links always used at application boundaries
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-06-15T10:54:39Z</time>, updated <time data-relative="true">2010-07-16T16:48:03Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>As noted in commit af67d7a, we need to check very, very carefully that HTTPS links are used at the app's &quot;boundaries&quot;:</p>
+<ul>
+<li>links in outgoing mails</li>
+<li>links in feeds</li>
+<li>links in any page/action/fragment that might get cached (and therefore seen by other users)</li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5686'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5686"><time data-relative="true">2010-06-15T11:13:35Z</time></a></span>
+</cite>
+<blockquote><p>For things like feeds with an explicit call to a <code>_url</code> helper, we can do stuff like:</p>
+<pre> entry.content :src =&gt; post_url(post, :protocol =&gt; 'https')</pre>
+<p>But there are places where the URL is implicit such as:</p>
+<pre>for post in @posts
+  feed.entry post do |entry|
+    ...</pre>
+<p>There <code>feed.entry</code> builds up info based on the passed-in <code>post</code> instance, and if the user is accessing over HTTP, the generated link will begin with the &quot;http&quot; schema.</p>
+<p>In that case would need to pass in an explicit <code>:url</code> option:</p>
+<pre>for post in @posts
+  feed.entry(post, :url =&gt; post_url(post, :protocol =&gt; 'https')
+    ...</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5687'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5687"><time data-relative="true">2010-06-15T11:17:59Z</time></a></span>
+</cite>
+<blockquote><p>And in that same example, I can see the top-level of the feed contains:</p>
+<pre>&lt;link type=&quot;text/html&quot; rel=&quot;alternate&quot; href=&quot;<a href="http://localhost:3000/blog" class="external">http://localhost:3000/blog</a>&quot;/&gt;
+&lt;link type=&quot;application/atom+xml&quot; rel=&quot;self&quot; href=&quot;<a href="http://localhost:3000/blog.atom" class="external">http://localhost:3000/blog.atom</a>&quot;/&gt;</pre>
+<p>Which is generated like this:</p>
+<pre>xml.link :rel =&gt; 'alternate', :type =&gt; 'text/html', :href =&gt; request.url.gsub(/\.atom$/, '')
+xml.link :rel =&gt; 'self', :type =&gt; 'application/atom+xml', :href =&gt; request.url</pre>
+<p>So that will need to change as well.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5688'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5688"><time data-relative="true">2010-06-15T11:28:39Z</time></a></span>
+</cite>
+<blockquote><p>Actually, I think I am over-thinking this (again).</p>
+<p>When the server is properly configured (ie. with nginx on the front end accepting all requests, forwarding only HTTPS requests to the Rails app, and the firewall preventing any direct non-localhost connections to the the application server) no non-HTTPS requests will ever hit the app. All requests will have <code>HTTP_X_FORWARDED_PROTO</code> set to <code>https</code>, and Rails will pick that up when generating URLs.</p>
+<p>Test requests will come from localhost, so might produce non-HTTPS links, but test requests should never hit the live app server running in production mode, so no bad links should ever be cached.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5885'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5885"><time data-relative="true">2010-07-16T16:48:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

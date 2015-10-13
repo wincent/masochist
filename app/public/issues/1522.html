@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1522: Open match window in new directory with &quot;:CommandT dir&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1522</div>
+<div class='issue' id='issue_1522'>
+<form class="edit_issue" id="edit_issue_1522" action="/issues/1522" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="McZRBZtzRHu3DXAXwEtK+BnFQqgZgrFR2V+KctXIxtQFNO+yPP6eLm6BQ+DxYhlMrEcrlBJuP035QF+M8RCh8A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1522:
+<span data-name='issue[summary]'>
+Open match window in new directory with &quot;:CommandT dir&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-27T09:08:12Z</time>, updated <time data-relative="true">2010-04-29T22:12:19Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>Is there a way to specify a directory where Command-T searches? I'd like to be able to <code>:CommandT &lt;directory&gt;</code> but I think thats not implemented right :(?</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_5495'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5495"><time data-relative="true">2010-03-30T10:55:17Z</time></a></span>
+</cite>
+<blockquote><p>I also place my vote for a feature like this. Or if by using :CommandT then after when writing .. it searches from the $HOME directory or the top root volume.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5497'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5497"><time data-relative="true">2010-03-30T11:03:59Z</time></a></span>
+</cite>
+<blockquote><p>Yeah true, although I wouldn't actually encourage people to use it to search their entire $HOME directory or anything bigger than that. The philosophy is more &quot;project-centric&quot;, with the goal being fast navigation within a well-structured set of files which you know well. Once you start getting into the really high numbers of files the &quot;fuzzy&quot; matching strategy starts to become less and less usable because you simply get an unmanageably large number of matches.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5591'>
+<cite>
+<a href="/users/michael-henry">Michael Henry</a>
+<span class='when'><a href="#comment_5591"><time data-relative="true">2010-04-28T15:27:31Z</time></a></span>
+</cite>
+<blockquote><p>I'd be interested in this feature as well, since I tend to keep Vim's working directory fixed at the top of my project, but I often find it useful to browse another directory tree outside the current project.  With the ability to specify the root of the tree to search, I can more easily browse down another project tree without having to &quot;:cd ../elsewhere&quot; and then &quot;cd ../backhere&quot;.  Combined with Vim's command-line  history, I could imagine typing &quot;:Com&lt;Up&gt;&quot; to scroll through some recent launches of Command-t, which would help me keep my focus on the current project but be able to quickly pull up files from a related project.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5595'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5595"><time data-relative="true">2010-04-28T16:09:29Z</time></a></span>
+</cite>
+<blockquote><p>It's a reasonable enough request, but I haven't had the time to implement it just yet seeing as it's not something I imagine myself using very much.</p>
+<p>But I have an idea of how to implement it, so it shouldn't be too hard. The basic idea is the following:</p>
+<p>The way it currently works is to check the <code>:pwd</code> every time you bring it up, and if it's changed since the last time you showed the prompt then it scans/re-scans the current directory.</p>
+<p>The difference, then, would be do pass in 1 of 4 things:</p>
+<ul>
+<li>usually <code>:pwd</code>, which would be standard when no optional path is passed in</li>
+<li>when a path starting with <code>/</code> is passed in, use that</li>
+<li>when a path starting with <code>~/</code> is passed in, expand the <code>~</code> and pass that in</li>
+<li>when anything else is passed, just append it to whatever <code>:pwd</code> is (ie. this would work for paths like <code>foo/bar</code>, <code>./foo</code> and <code>../../bar</code>)</li>
+</ul>
+<p>The only minor detail is to gracefully handle the case where a user types in an invalid path.</p>
+<p>Ah, and when the user actually makes a selection, would have to translate the path accordingly too. The convenient thing about the current set-up is that all paths are expressed relative to the <code>:pwd</code>, so that means if <code>:pwd</code> is <code>~/foo</code> and the user chooses <code>bar/baz</code>, then you just tell VIM to open <code>bar/baz</code> and it works because that's relative to the <code>:pwd</code>.</p>
+<p>Under the new system, you'd have to convert things to an absolute or relative path and use that; eg:</p>
+<ul>
+<li>when no param, no translation</li>
+<li>when param, append chosen path to starting directory</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5596'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5596"><time data-relative="true">2010-04-28T16:58:15Z</time></a></span>
+</cite>
+<blockquote><p>Ok, here's the change I'm considering applying:</p>
+<pre>diff --git a/plugin/command-t.vim b/plugin/command-t.vim
+index 3e5a1f7..0ec9983 100644
+--- a/plugin/command-t.vim
++++ b/plugin/command-t.vim
+@@ -27,8 +27,8 @@ if exists(&quot;g:command_t_loaded&quot;)
+ endif
+ let g:command_t_loaded = 1
+ 
+-command CommandT :call &lt;SID&gt;CommandTShow()
+-command CommandTFlush :call &lt;SID&gt;CommandTFlush()
++command -nargs=? -complete=dir CommandT call &lt;SID&gt;CommandTShow(&lt;q-args&gt;)
++command CommandTFlush call &lt;SID&gt;CommandTFlush()
+ 
+ silent! nmap &lt;unique&gt; &lt;silent&gt; &lt;Leader&gt;t :CommandT&lt;CR&gt;
+ 
+@@ -39,7 +39,7 @@ function s:CommandTRubyWarning()
+   echohl none
+ endfunction
+ 
+-function s:CommandTShow()
++function s:CommandTShow(arg)
+   if has('ruby')
+     ruby $command_t.show
+   else
+diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
+index c004eae..6fe76cd 100644
+--- a/ruby/command-t/controller.rb
++++ b/ruby/command-t/controller.rb
+@@ -34,7 +34,9 @@ module CommandT
+     end
+ 
+     def show
+-      @finder.path    = VIM::pwd
++      # optional parameter will be desired starting directory, or &quot;&quot;
++      @path           = File.expand_path(VIM::evaluate('a:arg'), VIM::pwd)
++      @finder.path    = @path
+       @initial_window = $curwin
+       @initial_buffer = $curbuf
+       @match_window   = MatchWindow.new \
+@@ -179,6 +181,7 @@ module CommandT
+ 
+     def open_selection selection, options = {}
+       command = options[:command] || default_open_command
++      selection = File.expand_path selection, @path
+       selection = sanitize_path_string selection
+       VIM::command &quot;silent #{command} #{selection}&quot;
+     end</pre>
+<p>Turned out to be simpler than I thought it would.</p>
+<p>Seems to work in my brief testing run. The only case which it doesn't seem to handle correctly is:</p>
+<pre>:CommandT /</pre>
+<p>(First character gets chopped off.)</p>
+<p>But it does handle cases like:</p>
+<pre>:CommandT /private/etc
+:CommandT ~
+:CommandT ~/Library
+:CommandT ruby
+:CommandT ruby/
+:CommandT ./ruby
+:CommandT ..
+:CommandT ../src</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5597'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5597"><time data-relative="true">2010-04-28T17:50:06Z</time></a></span>
+</cite>
+<blockquote><p>And here's the fix for the <code>/</code> case:</p>
+<pre>diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
+index fa613a2..a48d070 100644
+--- a/ruby/command-t/scanner.rb
++++ b/ruby/command-t/scanner.rb
+@@ -40,7 +40,7 @@ module CommandT
+         @paths = []
+         @depth = 0
+         @files = 0
+-        @prefix_len = @path.length
++        @prefix_len = @path.chomp('/').length
+         add_paths_for_directory @path, @paths
+       rescue FileLimitExceeded
+       end</pre>
+<p>Will test these privately for a while and push them out for inclusion in the next release.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5599'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5599"><time data-relative="true">2010-04-29T02:44:50Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've now tested this on Windows too and I've added in graceful handling of bad (non-existent) path arguments, so I'm going to push out a 0.6 release shortly. Will mark this as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5600'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5600"><time data-relative="true">2010-04-29T02:44:56Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5601'>
+<cite>
+<a href="/users/michael-henry">Michael Henry</a>
+<span class='when'><a href="#comment_5601"><time data-relative="true">2010-04-29T22:12:19Z</time></a></span>
+</cite>
+<blockquote><p>Wincent,</p>
+<p>Thanks - it's working nicely :-)</p>
+<p>Michael Henry</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

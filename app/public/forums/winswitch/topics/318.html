@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Compatibility with HP All-In-Ones (AIO)
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/winswitch">WinSwitch</a> &raquo; Compatibility with HP All-In-Ones (AIO)</div>
+<h1 class='major'>Compatibility with HP All-In-Ones (AIO)</h1>
+<div class='topic' id='topic_318'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/winswitch/topics/318"><time data-relative="true">2004-12-07T13:06:39Z</time></a>
+</span>
+</cite>
+<blockquote><p>The HP Communication app's incompatibility with Fast User Switching (FUS) is well documented on Apple's support web pages.  Essentially, HP Communications remains open when using FUS and disables all further HP AIO print capability.  This is a major flaw in Panther which neither Apple or HP has addressed.  Is Winswitch compatible with HP Communications?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_968'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_968"><time data-relative="true">2004-12-09T17:48:54Z</time></a></span>
+</cite>
+<blockquote><p>I have no idea what this HP AIO thing is, but I don't think there'd be any harm in installing WinSwitch and seeing how it works.</p>
+<p>Perhaps related to this, you should see this FAQ entry for an example of how WinSwitch can be used to overcome incompatibilities between Logitech's Control Center software and Fast User Switching:</p>
+<p><a href="http://wincent.com/a/products/winswitch/faq/#switchInSwitchOut" class="external">http://wincent.com/a/products/winswitch/faq/#switchInSwitchOut</a></p>
+<p>It's possible that WinSwitch could be used to enable a similar fix for this HP AIO issue you talk about.</p>
+<p>For what it's worth, in the case of the Logitech problem, it's not a flaw in Panther, but a flaw in the Logitech software. The same is probably true of this HP thing.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_969'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_969"><time data-relative="true">2005-01-05T23:48:55Z</time></a></span>
+</cite>
+<blockquote><p>I found out about Winswitch while in the process of trying to solve problems with the HP Communications driver/app. </p>
+<p>Winswitch will work ok, what you need to do is install switch in/switch out shell scripts or apple scripts that quit and relaunch the &quot;HP Communications&quot; process. </p>
+<p>I just did this a couple of days ago, and it seems to work ok most of the time, but sometimes it doesn't work. Also I am now seeing problems with Winswitch hangin  the systemuiserver process (I tried the latest 3.0b download after reading a thread related to the systemuiserver hang, and this has not fixed the problem)</p>
+<p>I'm still trying to sort out exactly where the problems are...</p>
+<pre></pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_970'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_970"><time data-relative="true">2005-01-08T21:29:44Z</time></a></span>
+</cite>
+<blockquote><p>To avoid confusion we should probably try to keep all trouble-shooting efforts in one place. I'm going to reply to your post in another thread here, but probably the best place to squish bugs would be the bug tracking database.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_971'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_971"><time data-relative="true">2005-01-09T08:59:18Z</time></a></span>
+</cite>
+<blockquote><p>agreed, we'll talk about the winswitch issue on the other thread. </p>
+<p>For the original poster, here are the two applescripts...</p>
+<p>this one starts the hp app (goes in switch in folder) Code: set pid to &quot;&quot; set pid to do shell script &quot;ps -ax | grep -v grep | grep 'HP Comm' |awk '{ print $1 }'&quot; if (pid = &quot;&quot;) then &#x0009;do shell script &quot;open '/Library/Printers/hp/HP Communications.app'&quot; end if</p>
+<p>this one kills the hp app, goes in the switch out folder: Code: set pid to &quot;&quot; set kill to &quot;false&quot; set pid to do shell script &quot;ps -ax | grep -v grep | grep 'HP Comm' |awk '{ print $1 }'&quot; if not (pid = &quot;&quot;) then &#x0009;do shell script &quot;kill &quot; &amp; pid &#x0009;set kill to the result end if</p>
+<pre></pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_972'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_972"><time data-relative="true">2005-02-13T11:23:44Z</time></a></span>
+</cite>
+<blockquote><p>I posted this howto on macosxhints last fall.  It works well for me...</p>
+<p><a href="http://www.macosxhints.com/article.php?story=20041013213911785" class="external">http://www.macosxhints.com/article.php?story=20041013213911785</a></p>
+<p>- Brian</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/winswitch">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

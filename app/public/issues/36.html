@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #36: Synergy 1.5b quits when pressing buttons on menu bar in OS 10.2.8
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #36</div>
+<div class='issue' id='issue_36'>
+<form class="edit_issue" id="edit_issue_36" action="/issues/36" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="eVJp68QtArs3lG61ByTN4awCZ8hOsQRe9oMc3JJ/SWVNoNdcY6DY7u4YXUI2DZ5VGYAO9EVdikLWnMkitqcuQQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #36:
+<span data-name='issue[summary]'>
+Synergy 1.5b quits when pressing buttons on menu bar in OS 10.2.8
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-11-24T07:43:21Z</time>, updated <time data-relative="true">2005-03-08T03:08:46Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/chris-morello">Chris Morello</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>On my PowerBook G4 15&quot; 667 MHz, 512 MB RAM, I'm running Synergy 1.5b using OS 10.2.8 and  iTunes 4.7, and now that I've installed 1.5b, I have a bug where Synergy quits when I press the  &quot;previous song&quot; or &quot;next song&quot; buttons on the menu bar twice to scroll through songs.  I can  relaunch Synergy and repeat Synergy quitting.  I've logged out and logged back in and Synergy still  quits.</p>
+<p>Checking the console log yields:</p>
+<p>2004-11-23 12:59:03.430 loginwindow[3376] Could not find image named <code>bang'.</code> Nov 23 12:57:50 Chriss-G4-Titan crashdump: Crash report written to: /Users/cmorello/Library/ Logs/CrashReporter/Synergy.crash.log</p>
+<p>Synergy.crash.log says for this crash time:</p>
+<ul>
+<li>*********</li>
+</ul>
+<p>Date/Time:  2004-11-23 12:57:50 -0800 OS Version: 10.2.8 (Build 6R73) Host:       Chriss-G4-Titan.local.</p>
+<p>Command:    Synergy PID:        3446</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000008</p>
+<p>Thread 0 Crashed:</p>
+<pre>#0   0x9005e170 in _spin_lock_try
+#1   0x901625a0 in CFRunLoopRemoveTimer
+#2   0x9315a0d0 in -[NSMoveHelper _doAnimation]
+#3   0x93202604 in -[NSMoveHelper _resizeWindow:toFrame:display:]
+#4   0x0001f1d4 in 0x1f1d4
+#5   0x0001fa28 in 0x1fa28
+#6   0x0001438c in 0x1438c
+#7   0x97df4dc0 in __NSFireTimer
+#8   0x97e74e78 in -[NSCFTimer fire]
+#9   0x00014bb4 in 0x14bb4
+#10  0x0001a40c in 0x1a40c
+#11  0x00024e94 in 0x24e94
+#12  0x930c0dec in -[NSWindow sendEvent:]
+#13  0x930a8c40 in -[NSApplication sendEvent:]
+#14  0x00009ce8 in 0x9ce8
+#15  0x930b1b6c in -[NSApplication run]
+#16  0x9315fd04 in NSApplicationMain
+#17  0x00009470 in 0x9470
+#18  0x8fe19154 in _dyld_start</pre>
+<p>Thread 1:</p>
+<pre>#0   0x90073ba8 in mach_msg_trap
+#1   0x90005ed0 in mach_msg
+#2   0xc000a954 in __ape_internal
+#3   0xc0001328 in __ape_agent
+#4   0x90020c28 in _pthread_body</pre>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x9005e170 srr1: 0x0000f030                vrsave: 0x00000000
+  xer: 0x00000000   lr: 0x901625a0  ctr: 0x9005e170   mq: 0x00000000
+   r0: 0x901625a0   r1: 0xbfffe530   r2: 0x44000280   r3: 0x00000008
+   r4: 0x017ea7e0   r5: 0xa0131680   r6: 0x00000000   r7: 0x90147e3c
+   r8: 0x901e7e3c   r9: 0xa0001048  r10: 0x000be290  r11: 0xa0132e38
+  r12: 0x9005e170  r13: 0x00000000  r14: 0x00000000  r15: 0xa309fc50
+  r16: 0xa309fc50  r17: 0xa309fc50  r18: 0xa306fc50  r19: 0x00000000
+  r20: 0x00000000  r21: 0xa306fc50  r22: 0xa306fc50  r23: 0x00db96d0
+  r24: 0x0172f850  r25: 0x000372e8  r26: 0xa0132540  r27: 0x00000000
+  r28: 0x017ea7e0  r29: 0x00000008  r30: 0xa0131680  r31: 0x90162540</pre>
+<p>The other crashes look similar to this one as far as I can tell.</p>
+<p>Synergy is great!  Thanks! --Chris</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_1206'>
+<cite>
+<a href="/users/chris-morello">Chris Morello</a>
+<span class='when'><a href="#comment_1206"><time data-relative="true">2004-11-24T07:58:15Z</time></a></span>
+</cite>
+<blockquote><p>Reinstalling Synergy 1.4 resolved the problem on my PowerBook G4.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1207'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1207"><time data-relative="true">2004-11-24T09:07:54Z</time></a></span>
+</cite>
+<blockquote><p>Closing this as it appears to be a duplicate of <a href="/issues/34">bug #34</a>. The crash logs look almost identical. Please  post any additional comments to that bug.</p>
+<ul>
+<li>** This bug has been marked as a duplicate of 34 ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1208'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1208"><time data-relative="true">2005-03-08T03:08:46Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Cant compile C extension
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Cant compile C extension</div>
+<h1 class='major'>Cant compile C extension</h1>
+<div class='topic' id='topic_431'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/431"><time data-relative="true">2010-08-25T04:26:13Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi, I am running make from the ~/.vim/ruby/command-t directory but I get these errors:</p>
+<pre>matcher.c:26:21: error: matcher.h: No such file or directory
+matcher.c:27:17: error: ext.h: No such file or directory
+matcher.c:28:25: error: ruby_compat.h: No such file or directory</pre>
+<p>Thanks</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6136'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6136"><time data-relative="true">2010-08-25T10:06:06Z</time></a></span>
+</cite>
+<blockquote><p>The files are missing which means the vimball didn't extract properly. Just re-open it and do the extraction again (<code>:so %</code>).</p>
+<p>(I've seen this a couple of times, although I am not sure why it happens. Perhaps being a little too quick with <code>:q</code> or something before the vimball has fully extracted.)</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

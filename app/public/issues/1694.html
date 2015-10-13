@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1694: Migrate to Amazon Linux AMI
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1694</div>
+<div class='issue' id='issue_1694'>
+<form class="edit_issue" id="edit_issue_1694" action="/issues/1694" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Xu+2xuaO26pUfQzy+7Pl7CTG7GDrkSzHxADgPdAWpoZqHQhxQQMB/43xPwXKmrZYkUSFXOB9otvkHzXD9M7Bog==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1694:
+<span data-name='issue[summary]'>
+Migrate to Amazon Linux AMI
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-09-16T08:37:37Z</time>, updated <time data-relative="true">2011-05-09T00:42:40Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>See:</p>
+<ul>
+<li><a href="http://aws.amazon.com/amazon-linux-ami/" class="external">http://aws.amazon.com/amazon-linux-ami/</a></li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6625'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6625"><time data-relative="true">2011-01-31T00:52:57Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1720">ticket #1720</a>, which is about moving to Unicorn 2.0.x after the <a href="/wiki/Amazon_Linux_AMI">Amazon Linux AMI</a> switch is done.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6626'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6626"><time data-relative="true">2011-01-31T01:01:43Z</time></a></span>
+</cite>
+<blockquote><p>Just gonna start collecting notes on this one:</p>
+<ul>
+<li><a href="http://3engineers.clariondoor.com/installing-mysql-on-ec2s-amazon-linux-ami" class="external">http://3engineers.clariondoor.com/installing-mysql-on-ec2s-amazon-linux-ami</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6635'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6635"><time data-relative="true">2011-01-31T22:47:04Z</time></a></span>
+</cite>
+<blockquote><p>Notes on initial instance set-up via CloudInit:</p>
+<ul>
+<li><a href="https://help.ubuntu.com/community/CloudInit" class="external">https://help.ubuntu.com/community/CloudInit</a></li>
+<li><a href="http://alestic.com/" class="external">http://alestic.com/</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6636'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6636"><time data-relative="true">2011-02-01T02:55:37Z</time></a></span>
+</cite>
+<blockquote><p>This migration is by necessity going to be fairly manual in nature, despite the fact that I have tried to structure my instances in an eminently &quot;clonable&quot; fashion.</p>
+<p>At the moment I have the base image, easily clonable from an EBS snapshot, and a data snapshot.</p>
+<p>As things currently stand, even though most of the important data &quot;lives&quot; on the data snapshot and can be cloned at will and attached to any instance, there is still some custom configuration that must be done on the host image.</p>
+<p>I'm looking at some configuration tools to see if I can make at least some of that initial host image set-up repeatable in an automated fashion. Things like installing packages and building other stuff (eg. <a href="/wiki/nginx">nginx</a>) from source.</p>
+<p>It may turn out that full-blown configuration management tools like Chef and Puppet are overkill for this task, and a simple shell script maybe superior (think how a simple shell script can be infinitely superior to Capistrano for single-server deployments, and possibly multi-server ones too). But in any case I am going to look at them.</p>
+<p>There are at least a couple of things, however, that I haven't been able to shift over to the data partitions. For example, things like actual user accounts. These are defined in <code>/etc/passwd</code> and I need to think about a way in which I can set them up on the fly in a newly-created instance, while preserving the same UIDs and GIDs (I don't want the numbers to be mismatched when I mount my data volume).</p>
+<p>In the meantime, some reading on Chef and Puppet:</p>
+<ul>
+<li>&quot;Puppet vs Chef&quot;: <a href="http://bhuga.net/node/46" class="external">http://bhuga.net/node/46</a></li>
+<li>&quot;Puppet versus Chef: 10 reasons why Puppet wins&quot;: <a href="http://bitfieldconsulting.com/puppet-vs-chef" class="external">http://bitfieldconsulting.com/puppet-vs-chef</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6643'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6643"><time data-relative="true">2011-02-01T11:38:32Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1667">ticket #1667</a> (&quot;Update to memcached 1.4.5&quot;). Will probably end up doing that update at the same time.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6646'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6646"><time data-relative="true">2011-02-01T11:42:37Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1496">ticket #1496</a> (&quot;Update to OpenSSH 5.7/5.7p1 on server&quot;). Again will evaluate that ticket when the time for the migration arrives.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6865'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6865"><time data-relative="true">2011-05-09T00:32:59Z</time></a></span>
+</cite>
+<blockquote><p>Not specifically about the Amazon Linux AMI, but a useful overview of Puppet on EC2:</p>
+<ul>
+<li><a href="http://blog.controlgroup.com/2010/07/29/automated-linux-server-deployment-with-amazon-ec2-and-puppet/" class="external">http://blog.controlgroup.com/2010/07/29/automated-linux-server-deployment-with-amazon-ec2-and-puppet/</a></li>
+</ul>
+<p>Installation kick-start notes:</p>
+<ul>
+<li><a href="http://www.developly.com/installing-puppet-on-ec2s-amazon-linux-ami" class="external">http://www.developly.com/installing-puppet-on-ec2s-amazon-linux-ami</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6866'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6866"><time data-relative="true">2011-05-09T00:41:03Z</time></a></span>
+</cite>
+<blockquote><p>Using Puppet on a single machine,  &quot;standalone&quot;:</p>
+<ul>
+<li><a href="http://www.unixdaemon.net/tools/puppet/stand-alone-puppet.html" class="external">http://www.unixdaemon.net/tools/puppet/stand-alone-puppet.html</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6867'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6867"><time data-relative="true">2011-05-09T00:42:12Z</time></a></span>
+</cite>
+<blockquote><p>Possible pitfall of using &quot;standalone&quot; mode and how to get around it:</p>
+<ul>
+<li><a href="http://www.rustyrazorblade.com/2010/04/puppet-stand-alone-templates-configs/" class="external">http://www.rustyrazorblade.com/2010/04/puppet-stand-alone-templates-configs/</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6868'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6868"><time data-relative="true">2011-05-09T00:42:40Z</time></a></span>
+</cite>
+<blockquote><p>Official docs on standalone use:</p>
+<ul>
+<li><a href="http://www.puppetlabs.com/blog/deploying-puppet-in-client-server-standalone-and-massively-scaled-environments/" class="external">http://www.puppetlabs.com/blog/deploying-puppet-in-client-server-standalone-and-massively-scaled-environments/</a></li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

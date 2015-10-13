@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1618: Switch to bcrypt for passphrase hashing
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1618</div>
+<div class='issue' id='issue_1618'>
+<form class="edit_issue" id="edit_issue_1618" action="/issues/1618" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="HW0z2U14AZfxtmyvKsdYbMEFX4IbHo+1QTwysY1edyApn41u6vXbwig6X1gb7gvYdIc2vhDyAalhI+dPqYYQBA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1618:
+<span data-name='issue[summary]'>
+Switch to bcrypt for passphrase hashing
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-07-23T05:26:09Z</time>, updated <time data-relative="true">2015-03-29T00:31:20Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Low priority, but something to do in the future.</p>
+<p>Inspired by:</p>
+<ul>
+<li><a href="http://jasonseifer.com/2010/03/21/on-passwords" class="external">http://jasonseifer.com/2010/03/21/on-passwords</a></li>
+</ul>
+<p>bcrypt can be tuned to make hash calculation more expensive, therefore making bruteforcing less feasible.</p>
+<p>Migrating the hashes? It could either be done via explicitly resets (via the resets controller), or on a successful login.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6649'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6649"><time data-relative="true">2011-02-01T11:53:47Z</time></a></span>
+</cite>
+<blockquote><p>Thinking about it more, I definitely like the idea of doing it on a successful login.</p>
+<p>We are in no hurry to rush this particular migration, so it doesn't matter how long people take to actually log in and update their hash.</p>
+<p>The basic plan would be this:</p>
+<ol>
+<li>Add a hash-type column to the users table.</li>
+<li>When a user logs in successfully using the old hash, at that point we store a new hash and update the hash-type as well; we can do this because we have the plaintext password at that point.</li>
+</ol>
+<p>Pretty simple really.</p>
+<p>As for how to do the bcrypt digesting, there is a bcrypt-ruby gem:</p>
+<ul>
+<li><a href="http://bcrypt-ruby.rubyforge.org/" class="external">http://bcrypt-ruby.rubyforge.org/</a></li>
+</ul>
+<p>But I think you can make bcrypt digests using the OpenSSL module which is in the standard library. Just checking that out now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6650'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6650"><time data-relative="true">2011-02-01T11:57:44Z</time></a></span>
+</cite>
+<blockquote><p>Looks like this isn't exposed in the standard library module, at least as far as I can tell.</p>
+<p>The source code for the bcrypt-ruby gem calls into the OpenSSH library from inside a C extension:</p>
+<ul>
+<li><a href="https://github.com/codahale/bcrypt-ruby/blob/master/ext/mri/bcrypt_ext.c" class="external">https://github.com/codahale/bcrypt-ruby/blob/master/ext/mri/bcrypt_ext.c</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6651'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6651"><time data-relative="true">2011-02-01T12:01:48Z</time></a></span>
+</cite>
+<blockquote><p>The thing about the bcrypt-ruby gem that gives me the creeps is this:</p>
+<pre>$ irb -r bcrypt
+&gt;&gt; pass = BCrypt::Password.create('secret')
+=&gt; &quot;$2a$10$kfrJ4wG9T1N96lemyy8pX.OIoIIrYpxZWawfl/6FLuaDlKc8Mag8i&quot;
+&gt;&gt; pass == 'guess'
+=&gt; false
+&gt;&gt; pass == 'secret'
+=&gt; true
+&gt;&gt; 'secret' == pass
+=&gt; false</pre>
+<p>Something about overriding the <code>==</code> operator in such a way that <code>a == b</code> but <code>b != a</code> just makes me feel queasy (I understand why you can't make <code>b == a</code> work, seeing as this is by definition a one-way hash function and you can't therefore make a useful <code>to_s</code> method on it, but to me that's an indication that you shouldn't be overriding the <code>==</code> operator in the first place).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12998'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12998"><time data-relative="true">2015-03-28T04:04:23Z</time></a></span>
+</cite>
+<blockquote><p>For shits and giggles, check out the bickering on <a href="https://news.ycombinator.com/item?id=9277370" class="external">this HN thread</a> about the ups/downs of taking a &quot;salt &amp; pepper&quot; approach.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12999'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12999"><time data-relative="true">2015-03-28T04:21:49Z</time></a></span>
+</cite>
+<blockquote><p>There are some things I don't particularly like about the design of the bcrypt-ruby gem. An in-standard-library alternative is <a href="http://ruby-doc.org/stdlib-1.9.3/libdoc/openssl/rdoc/OpenSSL/PKCS5.html#method-c-pbkdf2_hmac_sha1" class="external">PBKDF2</a>. Arguably not as secure, but still much more secure than a normal crypto hash (ie. one not designed for password hashing).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13000'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13000"><time data-relative="true">2015-03-29T00:31:20Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

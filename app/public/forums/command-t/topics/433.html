@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Go to File on top, always visible and next to the first match
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Go to File on top, always visible and next to the first match</div>
+<h1 class='major'>Go to File on top, always visible and next to the first match</h1>
+<div class='topic' id='topic_433'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/433"><time data-relative="true">2010-09-16T00:36:33Z</time></a>
+</span>
+</cite>
+<blockquote><p>Command-T is awesome, thanks for the plugin.</p>
+<p>Is there a chance to configure Command-T to have the Go To File right next to the first match and the text that we type in always visible. I am using Macvim and notice that in some instance I cant see what I've type and I have to move my eye so see if the file I want has been matched or not.</p>
+<p>Cheers</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6289'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6289"><time data-relative="true">2010-09-16T06:31:26Z</time></a></span>
+</cite>
+<blockquote><p>Not sure I fully understand what you are asking here, but will try to answer anyway.</p>
+<p>There is one option that might help you here, <code>g:CommandTMatchWindowAtTop</code>. See <code>:h command-t-options</code> for more details:</p>
+<pre> |g:CommandTMatchWindowAtTop|                   boolean (default: 0)
+ 
+     When this settings is off (the default) the match window will appear at
+     the bottom so as to keep it near to the prompt. Turning it on causes the
+     match window to appear at the top instead. This may be preferable if you
+     want the best match (usually the first one) to appear in a fixed location
+     on the screen rather than moving as the number of matches changes during
+     typing.</pre>
+<p>As for the prompt text not always being visible, I've noticed this too. It is some kind of redraw issue, and I've noticed it more in MacVim 7.3 than I did under 7.2 (although it did happen under 7.2 as well). I am not sure of the exact cause but if it can be fixed I would certainly like to do so.</p>
+<p>It seems that MacVim is repainting that part of the screen, wiping it clean, <em>after</em> Command-T has displayed the prompt. Doesn't happen in Terminal Vim, and perhaps not in other <a href="/wiki/GUI">GUI</a>-based Vims either.</p>
+<p>Like I said, would like to find a workaround but haven't been able to yet. See <a href="/issues/1523">ticket #1523</a> for a possibly related issue (&quot;--No lines in buffer--&quot; appears in status line when match listing is first shown). Since updating to MacVim 7.3 I am seeing the &quot;--No lines in buffer--&quot; message much less, if at all, and instead seeing it just wipe the command line.</p>
+<p>I'm going to open a new ticket for this anyway (<a href="/issues/1692">ticket #1692</a>), just to get it in the tracker.</p>
+<p>Would be nice to find a workaround. Other possible options include patching MacVim, or rewriting the prompt code to not use the command area at all, but instead part of the match window (similar to FuzzyFinder).</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

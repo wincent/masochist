@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+synergy advance dead?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy-advance">Synergy Advance</a> &raquo; synergy advance dead?</div>
+<h1 class='major'>synergy advance dead?</h1>
+<div class='topic' id='topic_407'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy-advance/topics/407"><time data-relative="true">2009-04-25T05:02:00Z</time></a>
+</span>
+</cite>
+<blockquote><p>I just purchased a copy of this software and it doesn't seem to work with my new imac running 10.5.6. Is development for this product dead since there hasn't been any updates since 2008ish.  If so can i get a refund for the product?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4503'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4503"><time data-relative="true">2009-04-26T17:40:40Z</time></a></span>
+</cite>
+<blockquote><p>I just posted a progress update a few days ago in <a href="/issues/944">ticket #944</a> so please see that ticket for full details. The short version is that things are moving forward quickly right now as I have four to six hours per day available for getting things ready. Your ticket was anonymous so I don't know who you are but if you'd like a complimentary Synergy license in the meantime to tide you over please get in touch with by email (<a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4963'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4963"><time data-relative="true">2009-09-04T08:38:02Z</time></a></span>
+</cite>
+<blockquote><p>Any further news on Synergy Advance?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4964'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4964"><time data-relative="true">2009-09-04T11:32:42Z</time></a></span>
+</cite>
+<blockquote><p>Check out the <a href="/tags/progress">progress tag</a> to see posts. The <a href="/blog/weekly-progress-report-6">last weekly progress report</a> (posted about 6 days ago) contained some info on changes made to the Synergy Advance codebase. I'll paste in the relevant bits here, including the changes made to the other frameworks and tools which Synergy Advance depends on:</p>
+<h3>snow-leopard/SynergyAdvance</h3>
+<pre>b2081a0 Growl: silence hg-related build error
+94f67d1 Growl: ignore Xcode fluff files
+a044183 Growl: use same &quot;build&quot; and &quot;build-intermediates&quot; folders as Synergy Advance
+1a86abf Growl: rename configurations to match recent defaults
+0fa84e8 Add TODO note
+2ecba15 Copy Growl framework along with other frameworks
+08aa9f2 Growl: store real hg revision number
+9360fb0 Update path for WOProcessLifetime import
+856cba0 Remove obfuscation header and all references to it
+b318e04 Update version header for Snow Leopard
+ccd62b7 Drop ppc macros from version file
+141e07a Update WOPublic submodule cdd54cd..651555f
+395b5ba Squish a couple of compile errors
+371c6dc Drop Cocoa header import
+031ca95 Squish more compilation errors
+af56591 Drop unnecessary import
+0cf352a Update imports in NSMenuItem category
+f93f316 Erradicate one more reference to the obfuscation header
+533c6e0 Replace old singleton pattern in WOITunesMusicLibrary class
+57b76b1 Remove dealloc method from WOITunesMusicLibrary singleton
+8cc364a Fix syntax error
+2e4ad12 Companion fix to 8cc364a
+
+70 files changed, 864 insertions(+), 635 deletions(-)</pre>
+<h3>snow-leopard/WOCommon</h3>
+<pre>eb8d139 Header tweaks
+af2bf2a Switch WOPublic over to a submodule
+4c2d555 Add buildtools as a submodule
+b905b26 Update buildtools references in Xcode project
+82830e0 Git: ignore &quot;build&quot; folder created by Xcode
+0c984da Remove obfuscation header and all references to it
+6b7b296 Update some imports
+0fe5766 Remove redundant dealloc method
+b4750ac More import updates
+5fef29b Help WOProcessLifetime find its superclass
+8e55a15 Update header for WOProcessLifetime.m
+f71e38f WOProcessLifetime sanitization
+5c9f76a Remove WOProcessLifetime (migrated to WOPublic)
+8b4df7e Remove WOProcessManager class (migrate to WOPublic)
+d0f73c2 Remove Xcode project references to migrated files
+5d482f6 Update macro imports for NSArray creation category
+c536a40 Update Synergy Advance version number for Snow Leopard branch
+607470f Remove WOHost files
+
+123 files changed, 344 insertions(+), 2334 deletions(-)</pre>
+<h3>snow-leopard/WOPublic</h3>
+<pre>732fed9 Initial import of WOProcessLifetime class from WOCommon
+5073a04 Add WOEnumerate.h reference to Xcode project file
+a2d62d7 Add WOProcessLifetime references to Xcode project
+3ea6121 Update WOProcessLifetime headers
+0d49600 Initial import of WOProcessManager class (from WOCommon)
+5abb920 Reformat WOProcessManager files for WOPublic
+49f3b99 Add WOProcessManager references to Xcode project file
+b86050d WOMemoryBarrier.h: drop PowerPC macros on Snow Leopard branch
+651555f Update URL to more recent version of documentation
+4839d41 Import WOHost files from WOCommon
+f586333 Add BSD license header to WOHost files
+ee27b38 Reformat WOHost code documentation to match WOPublic style
+1d4c1bc Add references to WOHost files to Xcode project
+5cc640e Fix compilation errors in WOHost
+821cb27 Link to SystemConfiguration framework
+aa7fde4 Update buildtools submodule 8fb8129..93e282e
+c76cba5 Fix leak in -[WOLoginItem addToList:]
+
+12 files changed, 1446 insertions(+), 41 deletions(-)</pre>
+<h3>snow-leopard/buildtools</h3>
+<pre>366d169 Remove legacy $Id$ tag
+9b7d87b Rewrap README to 80 columns
+40f3da0 Fix GPL references in the README
+18ae5c3 Update README for buildtools as a Git submodule
+64c03c6 README: indent paths to make them stand out
+2ff2a43 README: remove &quot;included tools&quot; list
+6044395 README: add notes on repository URLs and layout
+aa40fda README: remove unnecessary references to enclosing directory
+d49b922 README: add note on tags
+1bf82fa Drop PowerPC support
+04230fd README: update for Snow Leopard
+93e282e Switch to Snow Leopard SDK
+6656431 Switch to Clang/LLVM
+1cd84ad ReleaseNotes.sh: handle submodules ahead of annotated tags
+7d4e122 ReleaseNotes.sh: handle first release
+
+5 files changed, 100 insertions(+), 70 deletions(-)</pre>
+<h3>snow-leopard/wincent-icon-util</h3>
+<pre>6870cc8 Add buildtools as a submodule
+0d2d9db Update project references to buildtools files
+779214e Name &quot;Run script&quot; build phase in Installer package target
+e34e226 Git: ignore &quot;build&quot; folder created by Xcode
+cec9fc1 Add reference to &quot;Package.sh&quot; file
+38e4e43 Add LICENSE references to Xcode project
+e38747e Add installer package references to Xcode project
+46c2025 Add call to objc_startCollectorThread()
+96e41a7 Add tag-release.sh script
+e28ac43 Add &quot;distro.sh&quot; script
+e9bb59c Add Xcode project references to scripts
+34279a3 Add &quot;Distro&quot; target to Xcode project
+dceb194 Update buildtools submodule 6656431..1cd84ad
+1f3c7c0 Drop unnecessary import statement
+199d036 Embed version/copyright information for what(1)
+5156e74 Include product info in usage output
+e5c1aff Enforce minimum system version requirement in installer package
+8e5aff3 Update dates in man page
+bb843c5 Xcode project file buzz
+0469ca4 Bump version number for 2.0 release
+965909f Update buildtools submodule 1cd84ad..7d4e122
+1d5de3d Bump version number for 2.0.1 release
+81e4736 Bump version number post-release
+17fb9e0 distro.sh: distribute package file without zip wrapper
+
+11 files changed, 292 insertions(+), 30 deletions(-)</pre>
+<h3>snow-leopard/wincent-strings-util</h3>
+<pre>78d01f8 Add buildtools as a submodule
+62b163f Update references to buildtools files
+2c675fd Rework references to buildtools
+301e305 Rename &quot;Run script&quot; phase
+12d5598 Remove unneeded PowerPC code
+b40a583 Bump copyright dates in man page
+6ef674f Bump version number for 2.0 release
+a178978 Git: ignore &quot;build&quot; folder created by Xcode
+55f53d7 Add call to objc_startCollectorThread()
+0e3c1f6 Update buildtools submodule d49b922..6656431
+ea7472a Add missing system header import
+614072f Bump version number post-release
+90217dd Enforce minimum system version in installer package
+9b03d4d Add tag-release.sh script
+dd77046 Add schema for &quot;distro.sh&quot; script
+08867ea Add script references to Xcode project
+7ffabdc distro.sh: implement tag checking
+bfb53d7 Add &quot;Distro&quot; target
+d41d08c Clarify comment
+59abb4f Second phase of &quot;distro.sh&quot; (zip up package file)
+65d9ca7 distro.sh: prepare source archive
+85fcf47 distro.sh: include submodules in source archive
+cf3e80b distro.sh: use temp directory to avoid cluttering up BUILT_PRODUCTS_DIR
+f96082e distro.sh: prepare release notes
+8ce03a9 Update buildtools submodule 6656431..1cd84ad
+961e477 distro.sh: prepare plaintext version of man page
+f982362 Bump version number prior to 2.0.1 release
+636af94 Make &quot;tag-release.sh&quot; script executable
+de3fc6c Bump version number post-release
+7336c47 Xcode project file buzz
+33b56c0 distro.sh: distribute package file without zip wrapper
+
+13 files changed, 246 insertions(+), 47 deletions(-)</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_10317'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10317"><time data-relative="true">2013-08-12T21:59:05Z</time></a></span>
+</cite>
+<blockquote><p>It's been almost 4 years since the last update -- is Synergy Advance dead now?</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy-advance">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

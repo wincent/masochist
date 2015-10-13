@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Track Change Items
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Track Change Items</div>
+<h1 class='major'>Track Change Items</h1>
+<div class='topic' id='topic_185'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/sjmills">sjmills</a>
+<span class='when'>
+<a href="/forums/synergy/topics/185"><time data-relative="true">2006-12-05T14:22:43Z</time></a>
+</span>
+</cite>
+<blockquote><p>I couldn't find a thread about these, so I'll start one.</p>
+<p>1) From my tests, I can't simply save the script as a .scpt, otherwise Synergy opens the script in whatever editor I saved it from. I have to save it as an applet, then it launches. This is a bit annoying. I'd rather not have it launch every time, and I'd rather not save it with Stay Open turned on and then always have this applet in the dock. I'd much rather that Synergy sees it's a script file and loads and executes it. This isn't too hard, and even easier in 10.4 with one of the new OSA* calls that does it all in one step no matter if it's a data fork or resource fork script.</p>
+<p>2) So the script just gets executed and there are no handlers we have to implement, correct? So the script has to investigate iTunes each time to see what has happened. This is not all that efficient. I'd much rather see Synergy calling different handlers in the script, such as &quot;track changed&quot;, &quot;playback paused&quot;, &quot;playback resumed&quot;, etc. And each handler would be sent some sort of object specifier for the current track, possibly the just the ID or a full object specifier. That way the script doesn't have to send more events back to iTunes and can act directly on what has happened.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_531'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_531"><time data-relative="true">2006-12-05T18:36:34Z</time></a></span>
+</cite>
+<blockquote><p>There is an item in the feature requests database for your first point:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=303" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=303</a></p>
+<p>But there wasn't one for your second point so I've added it:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=518" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=518</a></p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

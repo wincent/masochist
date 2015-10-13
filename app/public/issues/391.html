@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #391: Growl notifications not sent when using Synergy Advance to change ratings
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #391</div>
+<div class='issue' id='issue_391'>
+<form class="edit_issue" id="edit_issue_391" action="/issues/391" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="LyC2yqmM4uRnZsrsL403TqDl3k/Mcyu/za9BrDozY58b0gh9DgE4sb7q+RsepGT6FWe3c8efpaPtsJRSHusEuw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #391:
+<span data-name='issue[summary]'>
+Growl notifications not sent when using Synergy Advance to change ratings
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-03T20:07:47Z</time>, updated <time data-relative="true">2006-05-05T12:20:53Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From this forum thread:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=963" class="external">http://wincent.com/a/support/forums/showflat.php?Number=963</a></p>
+<p>&quot;Using SynergyAdvanced 0.4b3 on OS X 10.4.5. When I increase the rating using a hot key the rating information changes in iTunes immediately but no Growl notification is sent. I have &quot;Track information changes&quot; checked in the Growl preferences. I also have &quot;Player state changes&quot; checked and the Growl notification is sent when I pause and unpause iTunes using a hot key. If I change the rating in iTunes the Growl notification is displayed. I do receive the &quot;Extra visual feedback for Hot Keys&quot; from SynergyAdvanced on rating change I just don't get my Growl notification. I am missing something? &quot;</p>
+<p>If what you describe is true then you've found a bug. I'll see if I can reproduce the problem here and if it's reproducible, fix it.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2522'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2522"><time data-relative="true">2006-04-04T07:59:05Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so I've done some testing here. I was able to reproduce the problem sporadically. Basically, if I changing the rating via hot keys lots of times, then only some of those times would result in a Growl notification. I'd say I got the notifications only about 25% of the time, regardless of whether or not I had &quot;Attempt to coalesce notifications&quot; set in the preferences.</p>
+<p>My suspicion was that iTunes was not sending notifications in all cases (an iTunes bug), so I fired up Synergy Advance under the debugger and got it to log a message to the console every time it received a notification from iTunes.</p>
+<p>It turns out that notifications *are* being sent by iTunes every time, so having ruled out a bug in iTunes I started to look more closely at my own code. It seems that Growl notifications are sent 100% of the time when setting the rating from &quot;more than zero&quot; to &quot;zero&quot;. In all other cases, including &quot;zero&quot; to &quot;more than zero&quot;, notifications are sent only some of the time. The same is true for setting ratings using the Global Menu instead of Hot Keys.</p>
+<p>Turns out the problem is in the flow of execution:</p>
+<p>1. Press hot key 2. Tell iTunes to change rating 3. Record &quot;lastKnownRating&quot;, using the value you just told iTunes 4. Receive notification from iTunes of a track info change 5. Compare current track info with &quot;lastKnownRating&quot;</p>
+<p>The problem is that the comparison in step 5 will always return &quot;no change&quot;, because the &quot;last known rating&quot; was already updated in step &quot;3&quot;.</p>
+<p>The solution, then, is to eliminate step &quot;3&quot;, or rather, to move it somewhere else in the order:</p>
+<p>1. Press hot key 2. Tell iTunes to change rating 3. Receive notification from iTunes of a track info change 4. Compare current track info with &quot;lastKnownRating&quot; 5. Record &quot;lastKnownRating&quot;</p>
+<p>In any case, I have made this change and done some testing. The problem is now fixed. Adding the fixed-in-prerelease keyword. To receive notification when the new version comes out including the fix please subscribe to the synergy-advance-announce mailing list; see:</p>
+<p><a href="http://lists.wincent.com/" class="external">http://lists.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2524'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2524"><time data-relative="true">2006-05-05T12:20:53Z</time></a></span>
+</cite>
+<blockquote><p>0.4 is now out. Full announcement here:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/synergy_advance_8.php" class="external">http://wincent.com/a/news/archives/2006/05/synergy_advance_8.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

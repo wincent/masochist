@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Getting 'stack level too deep' errors and segmentation faults
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Getting &#39;stack level too deep&#39; errors and segmentation faults</div>
+<h1 class='major'>Getting 'stack level too deep' errors and segmentation faults</h1>
+<div class='topic' id='topic_476'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/ast">ast</a>
+<span class='when'>
+<a href="/forums/command-t/topics/476"><time data-relative="true">2011-06-25T19:14:37Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>I'm so eager to try Command-T out, but I can't make it work.</p>
+<p>Vim is compiled with Ruby support, C extension is compiled without errors (seemingly), compilation is performed with system Ruby.</p>
+<p>Still, :CommandT shows the list of files, but when I start typing I get this error:</p>
+<p><a href="http://img580.imageshack.us/img580/9128/screenshotselection0012.png" class="external">http://img580.imageshack.us/img580/9128/screenshotselection0012.png</a></p>
+<p>In different cases error happens in different methods of Prompt class (I think it depends on current directory or on directory that is given to :CommandT as an argument), but always in prompt.rb file.</p>
+<p>Information about environment:</p>
+<ul>
+<li>OS: openSUSE Linux 11.4 x64</li>
+<li>when I type :ruby p RUBY_VERSION in Vim, it prints &quot;1.8.7&quot;</li>
+</ul>
+<p>Output of some shell commands:</p>
+<pre>
+.-(~/.vim-plugins/Command-T/ruby/command-t)-----------------------------------------------(ast@ast)-
+`--&gt; vim --version
+VIM - Vi IMproved 7.3 (2010 Aug 15)
+Included patches: 1-62
+Compiled by '<a href="http://www.opensuse.org/'" class="external">http://www.opensuse.org/'</a>
+Huge version without GUI.  Features included (+) or not (-):
++arabic +autocmd -balloon_eval -browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con +diff +digraphs 
+-dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path 
++find_in_path +float +folding -footer +fork() +gettext -hangul_input +iconv 
++insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent 
++listcmds +localmap -lua +menu +mksession +modify_fname +mouse -mouseshape 
++mouse_dec +mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse 
++mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg -osfiletype 
++path_extra +perl +persistent_undo +postscript +printer +profile +python 
+-python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent 
++sniff +startuptime +statusline -sun_workshop +syntax +tag_binary 
++tag_old_static -tag_any_white +tcl +terminfo +termresponse +textobjects +title
+ -toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
++vreplace +wildignore +wildmenu +windows +writebackup +X11 +xfontset -xim 
++xsmp_interact +xterm_clipboard -xterm_save 
+   system vimrc file: &quot;/etc/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/etc&quot;
+ f-b for $VIMRUNTIME: &quot;/usr/share/vim/current&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H     -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -Wall -pipe -fno-strict-aliasing -fstack-protector-all    -I/usr/include  -D_LARGEFILE64_SOURCE=1  
+Linking: gcc   -L.  -rdynamic -Wl,-export-dynamic  -Wl,-E -Wl,-rpath,/usr/lib/perl5/5.12.3/x86_64-linux-thread-multi/CORE   -L/usr/local/lib -Wl,--as-needed -o vim    -lSM -lICE -lXpm -lXt -lX11 -lXdmcp -lSM -lICE -lm -lnsl   -lncurses -lacl -lattr -lgpm -ldl    -Wl,-E -Wl,-rpath,/usr/lib/perl5/5.12.3/x86_64-linux-thread-multi/CORE  -L/usr/local/lib64 -fstack-protector  -L/usr/lib/perl5/5.12.3/x86_64-linux-thread-multi/CORE -lperl -lm -ldl -lcrypt -lpthread -L/usr/lib64/python2.7/config -lpython2.7 -lpthread -ldl -lutil -lm -Xlinker -export-dynamic  -L/usr/lib64 -ltcl8.5 -ldl -lieee -lm -Wl,-R -Wl,/usr/lib64 -L/usr/lib64 -lruby -lrt -ldl -lcrypt -lm   
+.-(~/.vim-plugins/Command-T/ruby/command-t)-----------------------------------------------(ast@ast)-
+`--&gt; rvm current
+system
+.-(~/.vim-plugins/Command-T/ruby/command-t)-----------------------------------------------(ast@ast)-
+`--&gt; ruby --version
+ruby 1.8.7 (2011-02-18 patchlevel 334) [x86_64-linux]
+.-(~/.vim-plugins/Command-T/ruby/command-t)-----------------------------------------------(ast@ast)-
+`--&gt; which ruby
+/usr/bin/ruby
+.-(~/.vim-plugins/Command-T/ruby/command-t)-----------------------------------------------(ast@ast)-
+`--&gt; ruby extconf.rb 
+checking for ruby.h... yes
+creating Makefile
+.-(~/.vim-plugins/Command-T/ruby/command-t)-----------------------------------------------(ast@ast)-
+`--&gt; make
+gcc -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -g -fno-strict-aliasing  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -g -fno-strict-aliasing  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+gcc -I. -I/usr/lib64/ruby/1.8/x86_64-linux -I/usr/lib64/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fmessage-length=0 -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector -funwind-tables -fasynchronous-unwind-tables -g -g -fno-strict-aliasing  -fPIC   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -shared -o ext.so match.o matcher.o ext.o -L. -L/usr/lib64 -Wl,-R/usr/lib64 -L.  -rdynamic -Wl,-export-dynamic    -Wl,-R -Wl,/usr/lib64 -L/usr/lib64 -lruby  -lrt -ldl -lcrypt -lm   -lc
+</pre>
+<p>Thanks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6944'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6944"><time data-relative="true">2011-06-25T23:50:44Z</time></a></span>
+</cite>
+<blockquote><p>The scoring algorithm is recursive, so it is conceivable that it could potentially exceed the stack depth limit, but I've never seen it myself nor had any reports of it until now. (You'd need very deeply nested folder hierarchies with very long path lengths to get that far, I would think).</p>
+<p>Any idea how deeply nested the directory hierarchy is where you're trying this, and how long the paths are? (In practice, you're unlikely to hit the limit anyway, as there is a default max-depth of 10 that will stop Command-T from scanning once it drills down too deep anyway.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6945'>
+<cite>
+<a href="/users/ast">ast</a>
+<span class='when'><a href="#comment_6945"><time data-relative="true">2011-06-26T05:28:39Z</time></a></span>
+</cite>
+<blockquote><p>It doesn't seem to depend on the amount of nested levels of directories. I've just tried to test it in ruby/command-t directory, which only has one level of subdirectories and had the same result. And, btw, it also segfaults sometimes when typing, but I can't find the reliable way of reproducing it. Something must be really wrong with my environment...</p>
+<p>Although I've tried to compile Vim with switches like was described in one of topics and also had this problem when ran ./src/vim from source directory after compilation.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6946'>
+<cite>
+<a href="/users/ast">ast</a>
+<span class='when'><a href="#comment_6946"><time data-relative="true">2011-06-26T05:37:41Z</time></a></span>
+</cite>
+<blockquote><p>I've also tried to increase maximum stack size limit as described <a href="http://dalibornasevic.com/posts/5-ruby-stack-level-too-deep-systemstackerror" class="external">here</a>, bit it had no effect.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6947'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6947"><time data-relative="true">2011-06-26T07:36:55Z</time></a></span>
+</cite>
+<blockquote><p>I know a buggy version of Vim shipped with Ubuntu 11.04, although you say you're on OpenSUSE. Where'd you get your version of Vim from?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6948'>
+<cite>
+<a href="/users/ast">ast</a>
+<span class='when'><a href="#comment_6948"><time data-relative="true">2011-06-26T10:40:09Z</time></a></span>
+</cite>
+<blockquote><p>It's Vim that comes with OS (<a href="http://download.opensuse.org/distribution/11.4/repo/oss/suse/x86_64/vim-7.3-5.3.x86_64.rpm" class="external">rpm</a>). And the one that I've tried to compile is from official Mercurial <a href="https://vim.googlecode.com/hg/" class="external">repo</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6964'>
+<cite>
+<a href="/users/ast">ast</a>
+<span class='when'><a href="#comment_6964"><time data-relative="true">2011-07-02T06:21:04Z</time></a></span>
+</cite>
+<blockquote><p>The trick was in installing Command-T into standard directory. Previously I installed it using <a href="http://www.vim.org/scripts/script.php?script_id=2905" class="external">VAM</a> into ~/.vim-plugins/Command-T directory. Once I installed it into ~/.vim using Vimball it started working. The drawback of this is that I'll have to update Command-T manually. But it works, and I like it more then FuzzyFinder so far. Thanks you :)</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1697: Add tree-browsing to repo browser
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1697</div>
+<div class='issue' id='issue_1697'>
+<form class="edit_issue" id="edit_issue_1697" action="/issues/1697" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="q+zlOCZkxNVoDw5frjvIZaylexWqTmuE4lkVBXiv8uufHluPgekegLGDPaifEpvRGScSKaGi5ZjCRsD7XHeVzw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1697:
+<span data-name='issue[summary]'>
+Add tree-browsing to repo browser
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-09-19T15:30:33Z</time>, updated <time data-relative="true">2010-09-20T18:42:32Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>See <a href="/issues/1135">ticket #1135</a> for the original ticket on the repo-browsing functionality.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6299'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6299"><time data-relative="true">2010-09-19T15:51:51Z</time></a></span>
+</cite>
+<blockquote><p>For both trees (this ticket) and blobs (<a href="/issues/1698">ticket #1698</a>) need to think about URL design.</p>
+<p>While the objects in question are identified by their SHA-1 hashes, for human users it would be nice to display the actual path names in the URL somehow.</p>
+<p>Likewise, it is useful to be able to link directly to specific blobs/trees as they appear in a particular branch or tag; eg:</p>
+<ul>
+<li><code>/repos/command-t/blobs/023cc318952347fa689f082d44020ae4ba3949bc</code> (not very human-friendly)</li>
+</ul>
+<p>versus:</p>
+<ul>
+<li><code>/repos/command-t/branches/master/blobs/README.txt</code></li>
+</ul>
+<p>or:</p>
+<ul>
+<li><code>/repos/command-t/blobs/branches/master/README.txt</code></li>
+</ul>
+<p>etc. This would be straightforward if it weren't for the fact that Git is extremely liberal about what characters it allows in branch names. That is, branch names like <code>foo/bar</code> are not only allowed but are actually quite common in some projects (like <a href="/wiki/git.git">git.git</a> itself), so we can't just separate the URL on forward slashes.</p>
+<p>GitHub does it like this (no idea if it blows up with branch names that contain slashes):</p>
+<ul>
+<li><a href="http://github.com/wincent/Command-T/blob/master/README.txt" class="external">http://github.com/wincent/Command-T/blob/master/README.txt</a></li>
+</ul>
+<p><a href="/wiki/GitWeb">GitWeb</a> does it like this (note that it uses a colon as an explicit separator, much like Git does itself on the <a href="/wiki/command_line">command line</a>):</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/blob/195dedcca4726a5d61289e617447ccb415587f6a:/README.txt" class="external">http://git.wincent.com/command-t.git/blob/195dedcca4726a5d61289e617447ccb415587f6a:/README.txt</a></li>
+</ul>
+<p>These also work:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/blob/master:/README.txt" class="external">http://git.wincent.com/command-t.git/blob/master:/README.txt</a></li>
+<li><a href="http://git.wincent.com/command-t.git/blob/HEAD:/README.txt" class="external">http://git.wincent.com/command-t.git/blob/HEAD:/README.txt</a></li>
+</ul>
+<p>Raw downloads actually live in a different namespace:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/blob_plain/HEAD:/README.txt" class="external">http://git.wincent.com/command-t.git/blob_plain/HEAD:/README.txt</a></li>
+</ul>
+<p>Trees work like this:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/tree/195dedcca4726a5d61289e617447ccb415587f6a" class="external">http://git.wincent.com/command-t.git/tree/195dedcca4726a5d61289e617447ccb415587f6a</a> (top level tree)</li>
+<li><a href="http://git.wincent.com/command-t.git/tree/195dedcca4726a5d61289e617447ccb415587f6a:/spec/command-t" class="external">http://git.wincent.com/command-t.git/tree/195dedcca4726a5d61289e617447ccb415587f6a:/spec/command-t</a> (subdirectory)</li>
+<li><a href="http://git.wincent.com/command-t.git/tree/master:/spec/command-t" class="external">http://git.wincent.com/command-t.git/tree/master:/spec/command-t</a> (same, but using human-friendly shorthand)</li>
+</ul>
+<p>I'm kind of leaning towards using a colon as a separator here too, provided I can get confirmation somewhere that a colon is not a legal character in either a branch or tag name.</p>
+<p>Note that it is probably not necessary to directly support displaying blob contents via their hash IDs, as humans interacting with the repo only ever access blobs by a combination of commit and path name.</p>
+<p>This would give us URLs like the following for blobs:</p>
+<ul>
+<li><code>/repos/command-t/blobs/master:README.txt</code></li>
+</ul>
+<p>And the same idea for trees:</p>
+<ul>
+<li><code>/repos/command-t/trees/master</code> (no path would just show the top-level tree)</li>
+<li><code>/repos/command-t/trees/master:ruby</code> (<code>ruby</code> subdirectory)</li>
+</ul>
+<p>Presumably we can get the contents of the blobs via a simple <code>git cat-file blob ref:path</code>, obviously after checking that <code>ref</code> refers to a reachable commit.</p>
+<p>Should also have no problems handling SHA-1 hashes or ref names with slashes in them:</p>
+<ul>
+<li><code>/repos/command-t/trees/195dedcca4726a5d61289e617447ccb415587f6a:ruby</code></li>
+<li><code>/repos/command-t/trees/HEAD:ruby</code></li>
+<li><code>/repos/command-t/trees/foo/bar/branch:ruby</code></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6300'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6300"><time data-relative="true">2010-09-19T15:58:26Z</time></a></span>
+</cite>
+<blockquote><p>Found <a href="http://www.spinics.net/lists/git/msg133704.html" class="external">this</a> on legal branch names. Not sure how it was derived yet, but going to make a <a href="/wiki/Legal_Git_branch_names">Legal Git branch names</a> page on the wiki in any case.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6301'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6301"><time data-relative="true">2010-09-20T18:42:32Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Note that it is probably not necessary to directly support displaying blob contents via their hash IDs, as humans interacting with the repo only ever access blobs by a combination of commit and path name.</p>
+</blockquote>
+<p>Not only that, but we don't want to provide arbitrary access to blobs that might only be referenced by unreachable commits. So, must only allow access via a commit-ish.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

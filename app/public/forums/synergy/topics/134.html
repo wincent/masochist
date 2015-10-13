@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Album Cover Question.
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Album Cover Question.</div>
+<h1 class='major'>Album Cover Question.</h1>
+<div class='topic' id='topic_134'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'>
+<a href="/forums/synergy/topics/134"><time data-relative="true">2005-12-03T15:35:20Z</time></a>
+</span>
+</cite>
+<blockquote><p>I have a question regarding album covers. Currently there's an option in Synergy to pre-process ID3 tags before searching amazon. Does this also work when playing from a shared iTunes library? 80% of my mp3's have album covers in the ID3 tag and I'd rather have a blank cover than the wrong one from amazon (which happens on occassion). Is there a way to turn amazon cover searching off and only have ID3 tag covers? Also perhaps only show the track/artist info and no &quot;?&quot; mark when there are no covers found? Thanks so much, looking forward to a 1.0 release of SynAdvance.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_406'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_406"><time data-relative="true">2005-12-06T07:50:31Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Currently there's an option in Synergy to pre-process ID3 tags before searching amazon. Does this also work when playing from a shared iTunes library?</p>
+<p>Yes, ID3 tags will be pre-processed before searching Amazon regardless of the music source (shared playlist, CD, local files etc).</p>
+<p>Quote: Is there a way to turn amazon cover searching off and only have ID3 tag covers?</p>
+<p>There are some relevant feature requests in the database:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=87" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=87</a></p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=233" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=233</a></p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=266" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=266</a></p>
+<p>Quote: Also perhaps only show the track/artist info and no &quot;?&quot; mark when there are no covers found?</p>
+<p>There's no concrete option in the UI for this. But you could hack this in yourself by substituting the corresponding graphic in the Synergy bundle:</p>
+<p>Code:Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Resources/NoCoverArt.png</p>
+<p>You could replace that file with a blank (transparent) image of the same dimensions and name.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_407'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'><a href="#comment_407"><time data-relative="true">2005-12-06T18:58:43Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for your response. </p>
+<p>Now I'm assuming if there _is_ a cover in the ID3 tag then synergy will _not_ download a cover into the &quot;Album Covers&quot; folder. If there _is_ a cover for a particular album inside the &quot;Album Covers&quot; folder then is it safe to assume that Synergy did not find a cover in the ID3 tag? I ask this because I have made sure that there are covers in my shared computer's mp3 tag then played that mp3 on another computer and find that it downloads a cover into the &quot;Alubum Covers&quot; folder.</p>
+<p>I should mention that the shared iTunes computer I am streaming from is a PC. Would this be an issue? </p>
+<p>Also I find that in all mp3's streamed from the PC computer it takes 2 - 3 tracks from an album to be played in order for a cover to show up. I am pretty sure that it downloads a cover into the covers folder everytime I stream something from the PC. From what I can see it never takes the cover from the ID3.</p>
+<p>Lastly, the communication rate slider on my synergy prefs is 'greyed' out. Is this normal? Thanks again for your help.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_408'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_408"><time data-relative="true">2005-12-07T02:38:24Z</time></a></span>
+</cite>
+<blockquote><p>That's correct. If there's a cover in the ID3 tag then Synergy won't try to download BUT in the case of shared playlists iTunes doesn't pass album covers out to applications that request it via Apple Events and therefore it doesn't supply Synergy with the cover in the tag. This is a limitation of iTunes and it's what this bug report linked above is about; some kind of workaround will need to be found, or Apple will need to modify the behaviour of iTunes:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=266" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=266</a></p>
+<p>This is why you are seeing a delay between playing and the cover showing up in those cases; Synergy is actually having to search for it and download it.</p>
+<p>As for the communication rate slider, yes, it's normal for it to be ghosted. If you are running a recent version of iTunes then Synergy doesn't need to poll iTunes and so the slider is irrelevant (ie. iTunes notifies Synergy automatically). On older versions of iTunes the slider is necessary because Synergy has to repeatedly poll iTunes.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

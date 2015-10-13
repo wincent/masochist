@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #229: Synergy Classic no longer launches at login
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #229</div>
+<div class='issue' id='issue_229'>
+<form class="edit_issue" id="edit_issue_229" action="/issues/229" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="kFENUzUS/n2pD2IvK5JEAHFX7mGfzhUIi12LBgjPhf6ko7Pkkp8kKHCDUdgauxe0xNWHXZQimxSrQl74LBfi2g==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #229:
+<span data-name='issue[summary]'>
+Synergy Classic no longer launches at login
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-10T15:47:41Z</time>, updated <time data-relative="true">2007-08-25T12:53:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/ryk-a-groetchen">Ryk A Groetchen</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Synergy Classic no longer responds to the &quot;Launch Synergy at login&quot; checkbox in the Preference Pane. The  workaround is to navigate to ~/Library/PreferencePanes/Synergy.prefPane, ctrl+click, choose Show  Package Contents from the contextual menu, navigate to Contents/Resources/Synergy and drag this icon  to the Startup Items in the Accounts preference pane.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1977'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1977"><time data-relative="true">2005-05-10T21:17:18Z</time></a></span>
+</cite>
+<blockquote><p>One other user reported this issue on the forums:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=744" class="external">http://wincent.com/a/support/forums/showflat.php?Number=744</a></p>
+<p>Works for me and for other users, so I suggested:</p>
+<p>1. Unchecking the &quot;Start at login&quot; checkbox, then clicking &quot;Apply&quot;, then rechecking it and clicking  &quot;Apply&quot;? </p>
+<p>2. Uninstalling and then reinstalling Synergy.</p>
+<p>The user said this didn't work for him, so I wrote back saying:</p>
+<p>Ok, can you set Synergy to launch at login and then send me the following file?</p>
+<p>~/Library/Preferences/loginwindow.plist</p>
+<p>I'll take a look at that file to make sure that Synergy is appears in the login items as it should.</p>
+<p>Also, is anything printed to the console when you login? (see /Applications/Utilities/Console.app)</p>
+<p>Finally, can you let me know where Synergy is installed and what permissions it has? These two  commands show the contents of the two possible install directories:</p>
+<p>ls -laF /Library/PreferencePanes/ ls -laF ~/Library/PreferencePanes/</p>
+<p>On my system the latter produces output like this:</p>
+<p>total 16 drwxrwxrwx    5 wincent  wincent   170 May  5 10:49 ./ drwx------   49 wincent  wincent  1666 May  4 15:55 ../ -rw-rw-rw-    1 wincent  wincent  6148 Apr 27 14:02 .DS_Store drwxr-xr-x    3 wincent  wincent   102 May  5 10:49 Opera Preferences/ drwxr-xr-x    4 wincent  wincent   136 Apr 27 14:07 Synergy.prefPane/</p>
+<p>He then wrote back to me and said:</p>
+<p>&quot;I erased my system cache and tossed a few system prefs and performed cron maintenance scripts,  restarted and synergy started automatically. I should have tried one thing at a time and given you a  report but I was becoming frustrated and since I was apparently the only one having the problem, I  zapped anything that I could think of (including PRAM) until something worked. I apologize for not  being able to tell you what worked but hopefully mine was the only system that behaved this way.&quot;</p>
+<p>So can you do some investigating and report back here to let us know the results?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1978'>
+<cite>
+<a href="/users/paul-o-davis-ph-d">Paul O Davis Ph D</a>
+<span class='when'><a href="#comment_1978"><time data-relative="true">2005-10-20T04:26:22Z</time></a></span>
+</cite>
+<blockquote><p>same issue and operating conditions</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1979'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1979"><time data-relative="true">2005-10-20T05:25:02Z</time></a></span>
+</cite>
+<blockquote><p>Paul, perhaps you could read comment #2 and report more information. The problem, if there is one, can only be fixed if we actually know the details of what's happening.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1980'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1980"><time data-relative="true">2006-07-05T02:05:36Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1981'>
+<cite>
+<a href="/users/don-newmeyer">Don Newmeyer</a>
+<span class='when'><a href="#comment_1981"><time data-relative="true">2007-08-24T10:18:05Z</time></a></span>
+</cite>
+<blockquote><p>Synergy does not launch automatically on system startup/login. I manually added it to the startup items, but still doesn't launch.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1982'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1982"><time data-relative="true">2007-08-25T03:41:54Z</time></a></span>
+</cite>
+<blockquote><p>The most common reasons why Synergy will not launch at login include the following:</p>
+<p>a. You might not be using the latest version</p>
+<p>b. Your &quot;login items&quot; might be out-of-date, and pointing at an older version of Synergy</p>
+<p>c. You might have installed a new version of Synergy, but you left the old version on the system as well.</p>
+<p>So, the way to get Synergy to launch at login is therefore:</p>
+<p>1. Ensure you have installed the latest version of Synergy. Make sure you have not left any old copies of the software in another location on your system (for example, in /Library/PreferencePanes/ or ~/Library/PreferencePanes/).</p>
+<p>2. In the Synergy preferences, un-check the &quot;Launch at login&quot; preference and click &quot;Apply&quot;, then re-check it and click &quot;Apply&quot;. This forces any old or stale entries in your login items to be updated.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1983'>
+<cite>
+<a href="/users/don-newmeyer">Don Newmeyer</a>
+<span class='when'><a href="#comment_1983"><time data-relative="true">2007-08-25T12:53:42Z</time></a></span>
+</cite>
+<blockquote><p>Thanks, I did this and all is good now.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

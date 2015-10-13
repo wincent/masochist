@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #2021: CommandT only seems to look in one folder
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #2021</div>
+<div class='issue' id='issue_2021'>
+<form class="edit_issue" id="edit_issue_2021" action="/issues/2021" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="3HedF1qxkr52HFWXQdH8ZFa5onU6QKbiP7fliqJFLOLohSOg/TxI66+QZmBw+K/Q4zvLSTGsKP4fqDB0hp1Lxg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #2021:
+<span data-name='issue[summary]'>
+CommandT only seems to look in one folder
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-10-31T14:49:34Z</time>, updated <time data-relative="true">2015-04-10T05:58:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>I just installed CommandT on my iMac I use for Rails development. Everything seems to be working fine except for the fact that the program seems to be only indexing files in the first folder of the 'pwd'.</p>
+<p>In my example, I have several folders in the 'pwd', each of them being a Rails app, and when I look for 'controller.rb' it only seems to look for files in the first of the folders.</p>
+<p>Interestingly, it seems to work ok on other folders with different subfolders.</p>
+<p>Here you can see the output of :pwd command: <a href="https://dl.dropbox.com/u/4180943/ct/Screen%20Shot%202012-10-31%20at%2014.32.25.png" class="external">https://dl.dropbox.com/u/4180943/ct/Screen%20Shot%202012-10-31%20at%2014.32.25.png</a> Here you can see the nerdtree for the pwd: <a href="https://dl.dropbox.com/u/4180943/ct/Screen%20Shot%202012-10-31%20at%2014.32.38.png" class="external">https://dl.dropbox.com/u/4180943/ct/Screen%20Shot%202012-10-31%20at%2014.32.38.png</a> And finally here you can see that when I search for controller.rb only finds files in the blurred folder (its blurred for company policy): <a href="https://dl.dropbox.com/u/4180943/ct/Screen%20Shot%202012-10-31%20at%2014.32.11.png" class="external">https://dl.dropbox.com/u/4180943/ct/Screen%20Shot%202012-10-31%20at%2014.32.11.png</a></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10026'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10026"><time data-relative="true">2012-10-31T16:47:30Z</time></a></span>
+</cite>
+<blockquote><p>Seems that the most likely cause is that <a href="/wiki/Command-T">Command-T</a> is hitting the 10,000 <code>g:CommandTMaxFiles</code> limit, at which point it stops indexing.</p>
+<p>You could try increasing the limit to cover more files, and possibly also adjusting your <code>'wildignore'</code> setting to have Command-T ignoring directories which aren't interesting (for example, you might have thousands of third-party files squirreled away under <code>vendor/</code> that aren't generally what you're looking for).</p>
+<p>Both of those are covered in <a href="http://git.wincent.com/command-t.git/blob_plain/HEAD:/doc/command-t.txt" class="external">the docs</a>; let me know if you need any further help.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10027'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10027"><time data-relative="true">2012-11-01T11:29:45Z</time></a></span>
+</cite>
+<blockquote><p>Thanks mate, will try that. And thanks a lot for a wonderful plugin!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13044'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13044"><time data-relative="true">2015-04-10T05:58:16Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

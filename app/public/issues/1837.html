@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1837: Lazy-Initialization Refactoring Causing
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1837</div>
+<div class='issue' id='issue_1837'>
+<form class="edit_issue" id="edit_issue_1837" action="/issues/1837" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="+zOhnMBv+qBii3tUmPTyGda2OPA5byKTtJyk0MR2lx3PwR8rZ+Ig9bsHSKOp3aGtYzRRzDKDrI+Ug3Eu4K7wOQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1837:
+<span data-name='issue[summary]'>
+Lazy-Initialization Refactoring Causing
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-06-30T14:36:55Z</time>, updated <time data-relative="true">2014-07-30T14:59:46Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The new refactoring of loading Command T is causing the error &quot;Vim: Caught deadly signal SEGV&quot; for MacVim 7.3 (system details below) and MacVim crashes. I recompiled the C, in case there was some kind of incompatible change, but I continue to get this error. The Command T panel appears correctly, and works with the first character I type. Typing a second character causes MacVim to crash and output the following to the Terminal from which I launched MacVim with <code>mvim .</code>.</p>
+<blockquote>
+<p>$ Vim: Caught deadly signal SEGV Vim: Finished. 142H22;3M 153H22;4M$2;3M 215H      </p>
+</blockquote>
+<p>I reverted to the commit before that [1] and run <code>rake make</code> and Command T returns to functioning correctly.</p>
+<p>System details:</p>
+<ul>
+<li>Mac OS X 10.6.8</li>
+<li>RVM installed, but <code>rake make</code> run after <code>rvm use system</code> to build with system Ruby</li>
+<li>Stock MacVim 7.3 binary downloaded from Google Code page</li>
+<li>Loading Command T through Pathogen</li>
+</ul>
+<p>[1]: <a href="https://github.com/wincent/Command-T/commit/cee619ac6e906d1c6bfc3052f01ccaa6ac1d4b3c" class="external">https://github.com/wincent/Command-T/commit/cee619ac6e906d1c6bfc3052f01ccaa6ac1d4b3c</a></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6953'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6953"><time data-relative="true">2011-06-30T16:10:42Z</time></a></span>
+</cite>
+<blockquote><p>I think I might revert those commits, pending further investigation.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6954'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6954"><time data-relative="true">2011-06-30T16:16:55Z</time></a></span>
+</cite>
+<blockquote><p>Ok, reverted for now, and the lazy-initialization stuff is now on a topic branch. Can't really see anything in the topic branch that could cause a seg fault, but as lots of people track HEAD of master via Pathogen or similar, I prefer to be conservative and rollback until I'm sure the code doesn't have any negative side-effects.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6955'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6955"><time data-relative="true">2011-06-30T17:16:17Z</time></a></span>
+</cite>
+<blockquote><p>If there's any information I can provide to track down the cause of the crash, let me know. It was happening consistently with the latest changes before you reverted them and went away when I rolled back to a prior commit.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6957'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6957"><time data-relative="true">2011-07-01T13:20:14Z</time></a></span>
+</cite>
+<blockquote><p>I just updated to MacVim 7.3 (58) and I am getting this seg fault when starting mvim. The window never even appears, a message is just output &quot;Vim: Caught deadly signal SEGV&quot;. If I remove the command-t plugin, the crash goes away. This continues to occur even after reverting the lazy initialization commits.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6962'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6962"><time data-relative="true">2011-07-01T17:41:19Z</time></a></span>
+</cite>
+<blockquote><p>Perhaps you are building it with the wrong version of Ruby. Are you are rvm user, by any chance? If so, you need to build with the system Ruby, which is what MacVim links against.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6963'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6963"><time data-relative="true">2011-07-02T01:04:26Z</time></a></span>
+</cite>
+<blockquote><p>Sorry, my mistake. I knew that you had to use the system Ruby, but evidently I wasn't. I just tried it again and its working great. Thanks!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12759'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12759"><time data-relative="true">2014-07-30T14:59:43Z</time></a></span>
+</cite>
+<blockquote><p>Closing as the lazy-initialization was reverted and later replaced by use of Vim's autoload mechanism.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12760'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12760"><time data-relative="true">2014-07-30T14:59:46Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

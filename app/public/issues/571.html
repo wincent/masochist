@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #571: REQUEST: Menu bar ordenation
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #571</div>
+<div class='issue' id='issue_571'>
+<form class="edit_issue" id="edit_issue_571" action="/issues/571" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="1M1o7xFVQ6YPSF5mVOSQVvuCvZeDtjjL+5G7ENjA2r/gP9ZYttiZ89bEbZFlzcPiTgDUq4hattfbjm7u/Bi9mw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #571:
+<span data-name='issue[summary]'>
+REQUEST: Menu bar ordenation
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-05-15T20:15:12Z</time>, updated <time data-relative="true">2007-05-16T04:13:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bastian">bastian</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Like in Quicksilver, you can select where in the menubar the icon is placed in (at the extreme left or at the right, next to the Spotlight icon) Implementing that in Synergy will be great, because of when synergy is running, and, for example, you open some apps with menubar icons, the Synergy icons looks out-of-place (because of the colors, and generally all the menubar items are black).</p>
+<p>Thank you.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3012'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3012"><time data-relative="true">2007-05-16T04:13:51Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the request!</p>
+<p>There are two types of menus that you see on the right hand side of your menu bar:</p>
+<p>1. NSStatusItem-based menus: this is an official, supported, documented API, and the one used by Synergy. Using NSStatusItem has some limitations, however, such as the inability to rearrange the order of the menus or to drag them around by holding down the Command key.</p>
+<p>2. NSMenuExtra-based menus: this is a private, undocumented, unsupported API, officially approved for use only by Apple (which you can see in the Fast User Switching menu, AirPort status, battery level indicator and so on). Any third-party app which uses this risks being broken by a future OS update. In fact, several releases back (in Jaguar, I think) Apple explicitly broke all third-party menu extras because the didn't want outside developers using the API; so from that point on it became necessary to use a hack like &quot;Menu Cracker&quot; to work around Apple's changes. Needless to I presume that if Quicksilver can change its ordering then it must be using the private NSMenuExtra API.</p>
+<p>I don't really want to use an unsupported API in Synergy, although I did use it in WinSwitch (<a href="http://winswitch.wincent.com/" class="external">http://winswitch.wincent.com/</a>) because I really had no other choice; I basically had to copy the functionality of Apple's own Fast User Switching menu and so that forced me to use NSMenuExtra. But in the case of Synergy there are no precedents that I was forced to match and so it was safer to take the more conservative route of using only documented, supported, non-private APIs. So for the time being I am going to mark this as WONTFIX.</p>
+<p>The ideal solution would be for Apple to do one of two things:</p>
+<p>1. Make the NSMenuExtra API open to other developers.</p>
+<p>2. Remove some of the limitations of the NSStatusItem API so that developers can benefit from reorderable menu items and get features like Command-dragging while using a supported API.</p>
+<p>So one thing you can do if you'd like to see this happen is submit a bug report or feature request to Apple. The more people who do this the more likely Apple will give us what people are asking for. I'd be very happy to implement this if Apple can make one of those changes, in which case we can re-open this request.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #2190: Rename CommandTTraverseSCM's &quot;pwd&quot; to &quot;cwd&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #2190</div>
+<div class='issue' id='issue_2190'>
+<form class="edit_issue" id="edit_issue_2190" action="/issues/2190" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="HmKvGi6pzytKFUzBLy5bTb5wxRhvAK6xNeSwlvxrpgsqkBGtiSQVfpOZfzYeBwj5C/KsJGTsIK0V+2Vo2LPBLw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #2190:
+<span data-name='issue[summary]'>
+Rename CommandTTraverseSCM's &quot;pwd&quot; to &quot;cwd&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-12-30T23:25:53Z</time>, updated <time data-relative="true">2015-01-12T18:54:15Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/andri-moell">Andri Moell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hey,</p>
+<p>The <code>CommandTTraverseSCM</code> option takes a value of <code>pwd</code>. PWD AFAIK stands for &quot;print working directory&quot; which in this context is weird. It'd be better named <code>cwd</code> (current working directory).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_12941'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12941"><time data-relative="true">2014-12-31T10:37:53Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for posting, Andri.</p>
+<p>It's true that in the Vim help for <code>:pwd</code>, it says:</p>
+<blockquote>
+<p>Print the current directory name</p>
+</blockquote>
+<p>The value in Command-T is named &quot;pwd&quot; not because there's any printing involved, but because the value that gets used is obtained by running the Vim <code>:pwd</code> command. I don't think the name should be changed now, as it could break people's existing configs that use the name (and accepting both names in the interests of backwards compatibility is just cluttering up the codebase for little pay-off).</p>
+<p>For what it's worth, the Command-T docs for the &quot;pwd&quot; say this:</p>
+<blockquote>
+<p>use Vim's present working directory as a root</p>
+</blockquote>
+<p>So there's another reason why &quot;pwd&quot; is totally reasonable; it's an acronym for &quot;present working directory&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12942'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12942"><time data-relative="true">2014-12-31T10:37:56Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_12946'>
+<cite>
+<a href="/users/andri-moell">Andri Moell</a>
+<span class='when'><a href="#comment_12946"><time data-relative="true">2015-01-05T20:03:12Z</time></a></span>
+</cite>
+<blockquote><p>Sorry for the off-topic, but is there a way to get email notifications from here? Just came to report another bug and only now saw this bug addressed.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_12947'>
+<cite>
+<a href="/users/andri-moell">Andri Moell</a>
+<span class='when'><a href="#comment_12947">Created <time data-relative="true">2015-01-05T20:14:59Z</time>, edited <time data-relative="true">2015-01-07T11:09:10Z</time></a></span>
+</cite>
+<blockquote><p>Okay, your call. I still think <code>pwd</code> is a name that should die as even in Vim context it stands for &quot;print&quot;. :)</p>
+<pre>
+    getcwd()&#x0009;The result is a String, which is the name of the current
+&#x0009;&#x0009;working directory.
+
+    :pw[d]&#x0009;Print the current directory name.  {Vi: no pwd}
+&#x0009;&#x0009;Also see |getcwd()|.</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12948'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12948"><time data-relative="true">2015-01-07T11:11:21Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>I still think pwd is a name that should die as even in Vim context it stands for &quot;print&quot;.</p>
+</blockquote>
+<p>Yeah, I know, but I don't want to go breaking compatibility with people's existing configurations.</p>
+<p>As for email notifications, it's a half-implemented feature; I need to get off my butt and finish implementing it. I used to have Atom feeds that people could subscribe to, but I eventually removed those when one of many Rails upgrades broke the feature and I didn't have time to fix it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_12954'>
+<cite>
+<a href="/users/andri-moell">Andri Moell</a>
+<span class='when'><a href="#comment_12954"><time data-relative="true">2015-01-12T14:00:32Z</time></a></span>
+</cite>
+<blockquote><p>You _could_ just deprecate <code>pwd</code>, add <code>cwd</code> and keep <code>pwd</code> forever. That's the price to pay for poor previous decisions. :)</p>
+<blockquote>
+<p>As for email notifications, it's a half-implemented feature; </p>
+</blockquote>
+<p>Any particular reason to use a custom issue tracker over something OSS or one of those code hosting sites? All I see is more trouble and pain for the &quot;customers&quot;, if you like to call them that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12957'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12957"><time data-relative="true">2015-01-12T18:54:15Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>You _could_ just deprecate pwd, add cwd and keep pwd forever. That's the price to pay for poor previous decisions.</p>
+</blockquote>
+<p>On the scale of &quot;poor&quot; decisions, this particular one is utterly innocuous, so it's simply not worth paying the price; as I said above:</p>
+<blockquote>
+<p>accepting both names in the interests of backwards compatibility is just cluttering up the codebase for little pay-off</p>
+</blockquote>
+<p>(And yes, arguing here about whether to make the change constitutes a price as well, but I'd rather bicker here than incur a cost in the code itself.)</p>
+<p>As for the tracker: I used to use OSS for everything and for the bugtracker, specifically, Bugzilla. But it was a pain for most users, especially users of my less-technical software (ie. not Command-T). I replaced a bunch of separate, disconnected open source software for the tracker, forums, wiki, blog etc with a single Rails app, which ended up being a net win. I'm a big fan of open source myself; the only reason this website's source isn't open is that I haven't gotten around to it yet.</p>
+<p>You're also free to report issues on the GitHub project if you prefer that interface (<a href="https://github.com/wincent/command-t/issues" class="external">https://github.com/wincent/command-t/issues</a>); it's evidently much more sophisticated than the tracker here, but years ago when all this was made GitHub barely existed, and I don't think it had an issue tracker at all back then.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

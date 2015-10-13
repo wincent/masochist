@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1860: arrow keys don't work under tmux/screen
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1860</div>
+<div class='issue' id='issue_1860'>
+<form class="edit_issue" id="edit_issue_1860" action="/issues/1860" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="4qx3P+jdZb406xPSGzzSJIORAJUHNzZ7B/FnGsVIjC7WXsmIT1C/6+1nICUqFYGQNhNpqQzbuGcn7rLk4ZDrCg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1860:
+<span data-name='issue[summary]'>
+arrow keys don't work under tmux/screen
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-08-27T02:21:13Z</time>, updated <time data-relative="true">2012-03-25T02:21:15Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/buck">buck</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Patch is below. </p>
+<p>It seems like it'd be preferable to do some kind of feature detection, rather than hard-coding special cases, but I'm not even sure why this code is necessary.</p>
+<pre class="diff-syntax">diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
+index 29e61b6..01e7a3c 100644
+--- a/ruby/command-t/controller.rb
++++ b/ruby/command-t/controller.rb
+@@ -262,6 +262,10 @@ module CommandT
+       !!(::VIM::evaluate('&amp;term') =~ /\Avt100/)
+     end
+ 
++    def screen?
++      !!(::VIM::evaluate('&amp;term') =~ /\Ascreen/)
++    end
++
+     def register_for_key_presses
+       # &quot;normal&quot; keys (interpreted literally)
+       numbers     = ('0'..'9').to_a.join
+@@ -294,7 +298,7 @@ module CommandT
+           end
+         else
+           [value].flatten.each do |mapping|
+-            map mapping, key unless mapping == '&lt;Esc&gt;' &amp;&amp; (xterm? || vt100?)
++            map mapping, key unless mapping == '&lt;Esc&gt;' &amp;&amp; (xterm? || vt100? || screen?)
+           end
+         end
+       end</pre>
+<p>Also, it would make a lot of sense to bind 'h' and 'j' in the file-selection pane to up and down. This would have allowed me to hobble forward without proper terminal detection.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7046'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7046"><time data-relative="true">2011-08-27T07:53:35Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the patch. I'm not a heavy screen user myself but I'll try it out, and there are some people I work with that are inside screen all day long, so I'll ask them to check it out too.</p>
+<p>As for binding to <code>h</code> and <code>j</code> in the file-selection pane (I presume you meant <code>j</code> and <code>k</code>), I gather you are referring to when the file-listing area has focus and not the prompt, right?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7117'>
+<cite>
+<a href="/users/jack-oconnor">Jack OConnor</a>
+<span class='when'><a href="#comment_7117"><time data-relative="true">2011-09-12T20:28:42Z</time></a></span>
+</cite>
+<blockquote><p>I've hit the same bug inside tmux. For me, it doesn't matter whether I'm actually inside tmux or not, only whether $TERM is set to 'screen'. So when I set $TERM to 'xterm-256color' in my bashrc file (which I do to make the solarized colorscheme work properly), it actually fixes this issue.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7118'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7118"><time data-relative="true">2011-09-13T02:47:19Z</time></a></span>
+</cite>
+<blockquote><p>I have had this problem too when using tmux. Starting vim with &quot;-T xterm&quot; fixed the problem described by this issue, but caused other problems related to terminal emulation.</p>
+<p>I've just applied this patch and it indeed fixes the problem.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7147'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_7147"><time data-relative="true">2011-09-25T01:55:11Z</time></a></span>
+</cite>
+<blockquote><p>/subscribe. I applied this patch in <a href="https://github.com/thesamet/Command-T" class="external">https://github.com/thesamet/Command-T</a> and sent a pull request.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7350'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_7350"><time data-relative="true">2011-12-28T04:18:45Z</time></a></span>
+</cite>
+<blockquote><p>Ping. What's blocking applying this patch? It seems as a reasonable fix for this issue and I've been personally using it in both Mac OS X and Linux under tmux with no problem.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7351'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7351"><time data-relative="true">2011-12-28T10:07:57Z</time></a></span>
+</cite>
+<blockquote><p>I have no objection to applying it, but I'm not sure if it's needed. I'm using <a href="/wiki/Command-T">Command-T</a> inside <a href="/wiki/tmux">tmux</a> without problems.</p>
+<p>I've got this in my <code>~/.vimrc</code> and even the <code>&lt;ESC&gt;</code> key works, as well as the cursor keys:</p>
+<pre>if &amp;term =~ &quot;xterm&quot;
+  let g:CommandTCancelMap     = ['&lt;ESC&gt;', '&lt;C-c&gt;']
+  let g:CommandTSelectNextMap = ['&lt;C-n&gt;', '&lt;C-j&gt;', '&lt;ESC&gt;OB']
+  let g:CommandTSelectPrevMap = ['&lt;C-p&gt;', '&lt;C-k&gt;', '&lt;ESC&gt;OA']
+endif</pre>
+<p>(Note: my <code>TERM</code> environment variable is set to <code>xterm-256color</code>.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7354'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_7354"><time data-relative="true">2011-12-31T20:38:52Z</time></a></span>
+</cite>
+<blockquote><p>My TERM variable is set to screen-256color. Setting it to xterm-256color causes termination emulation issues under tmux. From the tmux man page: &quot;The TERM environment variable must be set to <code></code>screen<em> for all programs running inside tmux.  New windows will automatically have <code></code>TERM=screen</em> added to their environment, but care must be taken not to reset this in shell start-up files.&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7356'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7356"><time data-relative="true">2012-01-02T06:53:12Z</time></a></span>
+</cite>
+<blockquote><p>In my experience, on the platforms I use <a href="/wiki/tmux">tmux</a> (<a href="/wiki/Mac_OS_X">Mac OS X</a>, <a href="/wiki/CentOS">CentOS</a>, <a href="/wiki/Ubuntu">Ubuntu</a>), <code>xterm-256color</code> works better than <code>screen-256color</code>, despite what the tmux man page says.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7357'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_7357"><time data-relative="true">2012-01-02T18:40:26Z</time></a></span>
+</cite>
+<blockquote><p>As the anonymous guy said on September 12, I'm also running into terminal emulation problems with xterm-256color under tmux. In particular, vim's background color (dark gray) does not cover the entire window (only appears under the text). Screenshot: <a href="http://imgur.com/mYF2k" class="external">http://imgur.com/mYF2k</a></p>
+<p><a href="/issues/1860">Bug #1860</a> is a Command-T bug: it is caused by the fact that Command-T makes a special case for xterm and vt100 in controller.rb, yet it leaves 'screen' out. There's nothing broken about the screen termcap. It is just that Command-T doesn't consider it as a terminal that uses escape sequences.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7358'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7358"><time data-relative="true">2012-01-03T07:12:13Z</time></a></span>
+</cite>
+<blockquote><p>No, it's not a <a href="/wiki/Command-T">Command-T</a> bug. Command-T never set out to provide out-of-the-box support for the millions of possible combinations of distros, terminal emulators, color schemes, <a href="/wiki/Vim">Vim</a> versions, configuration files etc. Instead, it provides a manner in which people can customize the mappings so that any aberrant ones they might have can be made to work no matter what combination of possible variables might exist in their local environment.</p>
+<p>The fact that it makes a special case for a couple of the more common examples (xterm and vt100) does not make the failure to special case screen also a bug. The reason why I wasn't in a hurry to add more special overrides was because it is a slippery slope to start down; it starts to appear like you are &quot;supporting&quot; whatever combination of user-specific aspects in the local environment, and before you know it you have a ridiculously long list of exceptions and overrides, when all along the ability of the user to override the specific mappings that don't work for them is actually enough.</p>
+<p>Note: as I said above, I have no objections to applying the patch, but this is not a bug in Command-T.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7359'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_7359"><time data-relative="true">2012-01-03T16:51:53Z</time></a></span>
+</cite>
+<blockquote><p>If you'd prefer, there could be a user configurable vim variable the lists the terminals we make a special case for. As long as the user have a way to make his terminal of choice work in Command-T, we'll all be happy.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7423'>
+<cite>
+<a href="/users/nadav-samet">Nadav Samet</a>
+<span class='when'><a href="#comment_7423"><time data-relative="true">2012-02-12T00:24:50Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent, I just wanted to check if you're ready to apply the patch. Thanks, Nadav</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7490'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7490"><time data-relative="true">2012-03-25T02:21:11Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to apply the patch and close the pull request. Marking this ticket as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7491'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7491"><time data-relative="true">2012-03-25T02:21:15Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

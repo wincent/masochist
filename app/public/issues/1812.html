@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1812: Sort buffers by last used
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1812</div>
+<div class='issue' id='issue_1812'>
+<form class="edit_issue" id="edit_issue_1812" action="/issues/1812" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="0uGaGlLy3hS/i6YNuSUoj1FaunX3IbYqEd9iMLfV4aXmEySt9X8EQWYHlfqIDHs75NjTSfzNODYxwLfOkw2GgQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1812:
+<span data-name='issue[summary]'>
+Sort buffers by last used
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-05-02T07:13:36Z</time>, updated <time data-relative="true">2014-07-30T15:01:53Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I would like the buffers listed by CommandTBuffer to be listed by the last used, as is done by fuzzy-finder. Additionally, like fuzzy-finder I would like the buffer list to not include the current buffer.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6843'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6843"><time data-relative="true">2011-05-02T07:45:56Z</time></a></span>
+</cite>
+<blockquote><p>I wonder how useful either of these would be.</p>
+<p>The ordering of results obviously needs to be according to the scoring algorithm, so the buffers which best match the search string will appear first in the list. The only time when the scoring algorithm isn't at play is when no characters have been typed at the search prompt yet, and we're currently just showing those in buffer number order. So if I understand correctly, you're proposing that this initial ordering instead be last-used order. I am not sure how useful that will be, seeing as the very first character you type at the prompt will cause that initial ordering to be thrown away.</p>
+<p>The other one would probably not be too hard to add, but again, I am not sure of the value of it. What is wrong with the current buffer appearing in the buffer list? How would removing it improve your workflow?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6851'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6851"><time data-relative="true">2011-05-06T16:57:40Z</time></a></span>
+</cite>
+<blockquote><p>Just received another request for last-used order in the buffer search:</p>
+<blockquote>
+<p>When running :CommandTBuffer, it'd be awesome if it was sorted in order of last use.  That way you could just hit &lt;leader&gt;b followed by a quick enter to toggle back to your last used file.  I know I already have b# bound for quick access, but why not run everything through Command-T?</p>
+</blockquote>
+<p>Sounds like a good idea; I hadn't thought of that use case.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6857'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6857"><time data-relative="true">2011-05-08T07:09:41Z</time></a></span>
+</cite>
+<blockquote><p>Looking at how this might be done:</p>
+<ul>
+<li>probably need an autocmd hook to record <code>BufEnter</code> events and record a stack of seen buffers</li>
+<li>and probably will want to subclass the <code>Matcher</code> class and extract an overridable <code>sort</code> method so that the subclass can override the default alphabetical order</li>
+<li>not sure where to suppress the display of the current buffer; quite possibly in the <code>BufferScanner</code> class</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12763'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12763"><time data-relative="true">2014-07-30T15:01:49Z</time></a></span>
+</cite>
+<blockquote><p>This was recently implemented, so closing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12764'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12764"><time data-relative="true">2014-07-30T15:01:53Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

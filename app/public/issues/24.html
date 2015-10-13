@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #24: Synergy downloads album art even though art already embedded in iTunes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #24</div>
+<div class='issue' id='issue_24'>
+<form class="edit_issue" id="edit_issue_24" action="/issues/24" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="cQIIhpHus+Td6RgCFZJevkyDtMyLPEUso3lfOt0CIY1F8LYxNmNpsQRlK/Ukuw0K+QHd8IDQyzCDZorE+dpGqQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #24:
+<span data-name='issue[summary]'>
+Synergy downloads album art even though art already embedded in iTunes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-11-16T19:12:48Z</time>, updated <time data-relative="true">2004-11-17T19:51:34Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email: &quot;Anyway, since iTunes 4.7, I am experiencing problems viewing album art. I have  album art for all my music, but since iTunes 4.7, while playing about 80% of my songs (mainly MP3s),  the Synergy floating window will show the default Synergy logo, even if that mp3 has album art  associated with it. Correct me if I'm wrong, but doesn't Synergy look to see if iTunes has album art first,  then it searches Amazon?  I notice that if I repeat the song, it will eventually display the art...maybe it  grabbed it from Amazon?&quot;</p>
+<p>Interesting. Like you say, it looks like the art is being downloaded instead of pulled from iTunes. I can't  reproduce this here, so maybe someone else can.</p>
+<p>Suggestions/questions:</p>
+<p>1. Are you using the latest version of Synergy? 2. Do you see the same problem when logged in to a different user account? 3. Where does the art appear on disk? (see below)</p>
+<p>As of version 1.4, Synergy stores downloaded art at:</p>
+<p>~/Library/Application Support/Album Covers/</p>
+<p>And art from iTunes is temporarily cached (and deleted when you quit Synergy) at:</p>
+<p>~/Library/Application Support/Temporary Album Covers/</p>
+<p>So by looking in these two folders you can figure out where the art came from, the Internet or iTunes.  You can also tell which art was obtained by version 1.4 and latter (it will have a .jpg extension) and  which was obtained with version 1.3 and earlier (it will have a .tiff extension).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1138'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1138"><time data-relative="true">2004-11-16T19:14:16Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=1) screenshot showing fault</p>
+<p>supplied by user</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1139'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1139"><time data-relative="true">2004-11-16T19:14:46Z</time></a></span>
+</cite>
+<blockquote><p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1140'>
+<cite>
+<a href="/users/brian">Brian</a>
+<span class='when'><a href="#comment_1140"><time data-relative="true">2004-11-17T12:04:57Z</time></a></span>
+</cite>
+<blockquote><p>To answer your questions:</p>
+<p>1) Yes, I am using Synergy 1.4 2) Seems to work OK with a differnt user 3) Synergy downloaded art saved at ~/Library/Application Support/Synergy/Album Covers/</p>
+<p>All images contained in that folder have a .jpg extension.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1141'>
+<cite>
+<a href="/users/brian">Brian</a>
+<span class='when'><a href="#comment_1141"><time data-relative="true">2004-11-17T12:57:02Z</time></a></span>
+</cite>
+<blockquote><p>Reinstalling Synergy seemed to have fixed the problem.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1142'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1142"><time data-relative="true">2004-11-17T19:51:34Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

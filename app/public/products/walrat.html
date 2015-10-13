@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Walrat: About
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-0d9a02c4fb8e7640a9f9ac96c9b73a4e.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li class='selected'>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/products">Products</a> &raquo; Walrat</div>
+<div id='product'>
+<h1>Walrat</h1>
+<p><a href="/wiki/Walrat">Walrat</a> is a sophisticated parser generator written in <a href="/wiki/Ruby">Ruby</a>. It can be used to dynamically generate (at runtime):</p>
+<ul>
+<li>integrated lexers</li>
+<li>&quot;<a href="/wiki/packrat">packrat</a>&quot; (memoizing) parsers cable of recognizing <a href="/wiki/Parsing_Expression_Grammars">Parsing Expression Grammars</a> (PEG), including grammars that use left-recursion</li>
+<li><a href="/wiki/Abstract_Syntax_Tree">Abstract Syntax Tree</a> builders that can build trees of arbitrary complexity</li>
+</ul>
+<p>Walrat was originally written in 2007 as part of the <a href="/wiki/Walrus">Walrus</a> <a href="/wiki/object-oriented_templating">object-oriented templating</a> system. In 2010 it was extracted into a separate <a href="/wiki/gem">gem</a> for easier reuse in other projects. The <a href="http://git.wincent.com/walrus.git/blob/HEAD:/lib/walrus/grammar.rb" class="external">Walrus grammar</a> is an excellent example of some of the more advanced parsing techniques that can be achieved using Walrat, including:</p>
+<ul>
+<li>dynamically define grammars and parsers at runtime using a simple DSL</li>
+<li>standard PEG constructs such as ordered choice, concatenation, repetition, predicates</li>
+<li>string and regular-expression based &quot;parslets&quot;</li>
+<li>convenient and customizable skipping behavior (in this case, whitespace skipping)</li>
+<li>left-recursion</li>
+<li>left-associative and right-associative productions</li>
+<li>dynamic AST node synthesis</li>
+<li>addition of custom behavior to AST nodes (in this case, compilation behavior) through custom Ruby code</li>
+<li>multiline comments, including nested multiline comments</li>
+<li>&quot;island&quot; parsers for processing &quot;<a href="/wiki/Here_documents">Here documents</a>&quot; and include files</li>
+</ul>
+<h2>System requirements</h2>
+<p>Walrat currently officially supports Ruby 1.8, although Ruby 1.9 compatibility work is basically complete. JRuby is not yet officially supported, although many complex grammars (such as the Walrus grammar) have already been successfully tested. See <a href="/blog/walrus-compatibility-and-performance-on-different-ruby-implementations">this blog post</a> comparing the performance characteristics of the different <a href="/wiki/Ruby">Ruby</a> implementations and versions.</p>
+<h1>Installation</h1>
+<pre class="shell-syntax">$ sudo gem install walrat</pre>
+<h2>Source code</h2>
+<p>The <a href="/wiki/Git">Git</a> source code repository can be explored in a browser using <a href="http://git.wincent.com/walrat.git" class="external">the web interface</a>.</p>
+<h2>Further reading</h2>
+<p>Walrus (and therefore Walrat) was originally written an 2007 and as it was my first non-trivial project in <a href="/wiki/Ruby">Ruby</a> I made a number of <a href="/wiki/blog">blog</a> posts during development:</p>
+<ul>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/testdriven_deve.php" class="external">Test-Driven Development</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php" class="external">Writing a parser generator in Ruby</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/progress_notes.php" class="external">Progress notes</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php" class="external">Abstract Syntax Trees</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/putting_the_pac.php" class="external">Putting the 'packrat' into PEG: adding memoizing to my Ruby parser generator</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/updated_packrat.php" class="external">Updated packrat performance numbers</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/parser_generato.php" class="external">Parser generator update</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/another_perform.php" class="external">Another performance update: parity</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/here_documents.php" class="external">Here documents</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/goodbye_parity.php" class="external">Goodbye parity, hello superiority</a></li>
+<li><a href="http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/payoff_time.php" class="external">Payoff time</a></li>
+</ul>
+
+
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://d19zmavcjzsuj4.cloudfront.net/assets/application-b34e0204a9a743735737bc884cf5d4c2.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

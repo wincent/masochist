@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #511: Synergy quit unexpectedly (stop)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #511</div>
+<div class='issue' id='issue_511'>
+<form class="edit_issue" id="edit_issue_511" action="/issues/511" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Rhv6GnyFpWgAaLY4d1O/3K+Ned6Fagxd+OULXuDclrJy6USt2wh/Pdnkhc9GeuxoGg8Q4o6GgkHY+t6gxATxlg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #511:
+<span data-name='issue[summary]'>
+Synergy quit unexpectedly (stop)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-11-27T13:52:43Z</time>, updated <time data-relative="true">2007-12-09T07:00:21Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/pam">PAm</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>While listening iTunes, and Synergy turn ON, It can happen that synergy go to STOP by himself. The only way to turn it ON is to go on the Synergy pref pane (it happens on a Mac friend too)</p>
+<p>I can only find that in the console:</p>
+<p>2006-11-27 20:15:13.636 Synergy[2054] *** -[NSBundle load]: Error loading code /Users/tucpasquic/Library/InputManagers/Smart Crash Reports/Smart Crash Reports.bundle/Contents/MacOS/Smart Crash Reports for bundle /Users/tucpasquic/Library/InputManagers/Smart Crash Reports/Smart Crash Reports.bundle, error code 2 (link edit error code 0, error number 0 ())</p>
+<p>but not crash log, or anything else. (why?) I have searched for Synergy or Wincent&#x2026; but nothing appear as a crash log. I have only hot keys active and the display floater.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2879'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2879"><time data-relative="true">2006-11-28T02:57:52Z</time></a></span>
+</cite>
+<blockquote><p>Seeing as the message is being printed by the third-party &quot;Smart Crash Reports&quot; bundle, have you tried disabling that bundle to see if the problem persists? If you can confirm that the problem stems from a conflict with that software then we can contact its developer and try to figure out a workaround.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2880'>
+<cite>
+<a href="/users/mrwho">MrWho</a>
+<span class='when'><a href="#comment_2880"><time data-relative="true">2007-12-09T02:46:25Z</time></a></span>
+</cite>
+<blockquote><p>Synery stopps/exits</p>
+<p>Time between restart and next stopp 1-15 min. No coherence with other programms visible.</p>
+<p>09.12.07 08:51:48 com.apple.launchd[108] ([0x0-0x8f28f2].org.wincent.Synergy[55551]) Exited abnormally: Bus error</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2881'>
+<cite>
+<a href="/users/mrwho">MrWho</a>
+<span class='when'><a href="#comment_2881"><time data-relative="true">2007-12-09T04:54:24Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=146) Synergy Crash Reports from the OsX 10.5 Console</p>
+<p>Added my Crash Reports as a zip file.</p>
+<p>At the moment it looks like the iTunes Control of World of Warcraft 2.3.0 is one of the culprits.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2882'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2882"><time data-relative="true">2007-12-09T07:00:21Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #3)</p>
+<blockquote>
+<p>Created an attachment (id=146) [details] Synergy Crash Reports from the OsX 10.5 Console</p>
+<p>Added my Crash Reports as a zip file.</p>
+<p>At the moment it looks like the iTunes Control of World of Warcraft 2.3.0 is one of the culprits.</p>
+</blockquote>
+<p>Now that I've had time to look into this further I actually don't think that these issues are being caused by a conflict with anything external. Looking at the code I think my Garbage Collection changes don't go far enough, so over the last few days I've been making sweeping changes over the entire code base and I think we'll see some pretty radical differences when I release the next version.</p>
+<p>At this stage my only doubt is about the preference pane as I don't have concrete information on the Garbage Collection status of the System Preferences application; I suspect that it's probably not Garbage Collected, so that's one part of Synergy in which I may have to roll back some of the changes in order to maintain compatibility.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+&lt;C-s&gt; or &lt;C-CR&gt; seem to freeze vim...
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; &lt;C-s&gt; or &lt;C-CR&gt; seem to freeze vim...</div>
+<h1 class='major'>&lt;C-s&gt; or &lt;C-CR&gt; seem to freeze vim...</h1>
+<div class='topic' id='topic_430'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/430"><time data-relative="true">2010-08-24T21:24:25Z</time></a>
+</span>
+</cite>
+<blockquote><p>Odd behavior:</p>
+<p>On one of my linux boxes C-s and C-CR seem to pause vim.  Assuming that (since it works on another linux box and a windows box) it was my vim config's fault, I moved ~/.vim to ~/.vim.bak and ~./vimrc to ~/.vimrc.bak and made a new config with only Command-T.  No vimrc file, no other extensions.  Vim still seems to freeze when I hit &lt;C-s&gt; or &lt;C-CR&gt; in the list.  Interestingly, if the current buffer is unsaved and i just hit &lt;CR&gt;, Command-T opens the chosen buffer in a new horizontal split just fine.  And &lt;C-v&gt; works.</p>
+<p>Any ideas?  Never had to troubleshoot vim really so I'm kinda lost as to how to even approach the problem.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6138'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6138"><time data-relative="true">2010-08-25T11:12:00Z</time></a></span>
+</cite>
+<blockquote><p>The difference is most likely explained by a discrepancy in the terminal settings on the different machines (different terminals can send key presses in different ways). If you compare <code>:set term?</code> on the different machines you might see different terminals.</p>
+<p>The other things which might be different are the <code>'timeout'</code>, <code>ttimeout'</code>, <code>'timeoutlen'</code> and <code>'ttimeoutlen'</code> settings. (See the Vim help for those.)</p>
+<p>Whatever the cause, however, the simplest thing to do will most likely be to override the mappings for those actions and pick ones which don't break on that machine where you're having the trouble (see <code>:h command-t-options</code> and scroll down to the list of mappings settings).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6139'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6139"><time data-relative="true">2010-08-25T11:31:10Z</time></a></span>
+</cite>
+<blockquote><p>Thanks much for the help!</p>
+<p>I run urxvt with the same config files on both linux boxes, in theory all the config files are source controlled so they should match but... reality and theory are often worlds apart :)  I will look into urxvt config on both machines and read up on those vim help settings when I get home and can access linux box #2, the broken one (at work atm)!</p>
+<p>... Did not submit this from work. home now: Remapping the key works.  All the other settings, both terminal and vim seem identical between the two machines, mysterious but acceptable until I can find the time to track down the problem :)</p>
+<p>P.S. I really would  had not even considered the terminal being at fault, interesting!</p>
+<p>P.P.S. This plugin is insanely awesome.  Forgot to mention that in the first post. its like for(;;) {productivity++;} for large-scale apps with more than a few thousand files (yup, INFINITE LOOP OF PRODUCTIVITY).  </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6140'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6140"><time data-relative="true">2010-08-25T11:35:17Z</time></a></span>
+</cite>
+<blockquote><p>Well it's not really a &quot;fault&quot; of the terminal. That's just the way terminals work. For example, on mine when I press the &quot;up&quot; key it actually sends that as an escape sequence (<code>ESC-O a</code>); you can imagine how Vim interprets that... See <code>:h term.txt</code>, and particularly <code>:h xterm-cursor-keys</code> for more info on the subject.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6211'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6211"><time data-relative="true">2010-09-03T21:03:43Z</time></a></span>
+</cite>
+<blockquote><p>I'm having the same problems as the OP but am trying to avoid remapping all of the builtin commands.</p>
+<p>I have the same issue Wincent describes in that my terminal (well technically tmux, the teminal multiplexer) sends &lt;Up&gt; as &lt;Esc&gt;-OA. I've tried setting</p>
+<pre>set notimeout
+set ttimeout
+set timeoutlen=100</pre>
+<p>in my vimrc but it doesn't make any difference. If I set notimeout and nottimeout then press &lt;Esc&gt; in insert mode then, as expected, nothing happens; with all timeouts disabled I need to press &lt;Esc&gt; x 2. This confirms that the timeout settings <em>do</em> have some effect in vim. It just seems that command-t doesn't pickup that particular setting. Could you possibly post the relevant parts of your vimrc Wincent so that I can see how you got it working? Thanks</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6212'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6212"><time data-relative="true">2010-09-03T23:24:52Z</time></a></span>
+</cite>
+<blockquote><p>Well, 99% of the time I'm in MacVim which has no weird terminal issues.</p>
+<p>The other 1% of the time I'm in the <a href="/wiki/Mac_OS_X">Mac OS X</a> <a href="/wiki/Terminal">Terminal</a>, which advertises itself as <code>xterm-color</code>, which means that instead of <code>&lt;Esc&gt;</code> I dismiss with <code>&lt;C-c&gt;</code>.</p>
+<p>As for Command-T not picking up your <code>ttimeout</code> and related settings, it certainly should: those are global settings (active in all buffers), and Command-T is just using normal map commands (you can check them out in the <code>controller.rb</code> source file; see the <code><a href="http://git.wincent.com/command-t.git/blob/master:/ruby/command-t/controller.rb#l248" class="external">register_for_keypresses</a></code> method).</p>
+<p>On a side note, if you need to set a couple of special mappings or timeout overrides for a particular term type you could do it conditionally in your <code>.vimrc</code> with something like:</p>
+<pre>if &amp;term == 'xterm-color' &quot; or whatever your terminal is
+  &quot; custom mappings for that terminal here
+endif</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_6213'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6213">Created <time data-relative="true">2010-09-03T23:55:47Z</time>, edited <time data-relative="true">2010-09-04T08:52:57Z</time></a></span>
+</cite>
+<blockquote><p>Well it turns out that I had misunderstood the purpose of the command-t mappings settings. I thought that the idea was to allow you to create an alternative mapping i.e. so that if &lt;Up&gt; does not work then you can use, say, &lt;C-u&gt; instead. I realise now that the purpose is to allow you to enter the sequence that the term actually sends.</p>
+<p>I've added <code>let g:CommandTSelectPrevMap=['&lt;C-p&gt;', '&lt;C-k&gt;', '&lt;Esc&gt;OA', '&lt;Up&gt;']</code> to my vimrc which allows me to use the &lt;Up&gt; to scroll through the options which is what I wanted to achieve.</p>
+<p>During my investigations I realised that tmux seems to enable XON/XOFF process control which is possibly what's causing problems for the OP. It's not something that I ever use and so I explicitly disabled it in my zshrc with <code>stty -ixon</code> and now &lt;C-s&gt; works ok. &lt;C-CR&gt; does not work; it seems that under tmux &lt;C-CR&gt; sends NUL but mapping &lt;NUL&gt; doesn't have any effect. I'm happy with &lt;C-s&gt; so it's not an issue to me.</p>
+<p>Thanks for your help Wincent</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

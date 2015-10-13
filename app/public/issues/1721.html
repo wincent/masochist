@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1721: AWS PEM keys cause OpenSSH to complain &quot;Not a RSA1 key file&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1721</div>
+<div class='issue' id='issue_1721'>
+<form class="edit_issue" id="edit_issue_1721" action="/issues/1721" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7jM+jjhtNp6Ra13K0Y+cG739NwBJa0ux8a0AKcGdHzLawYA5n+Dsy0jnbj3gps+vCH9ePEKHxa3RstXX5UV4Fg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1721:
+<span data-name='issue[summary]'>
+AWS PEM keys cause OpenSSH to complain &quot;Not a RSA1 key file&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-11-01T09:52:28Z</time>, updated <time data-relative="true">2015-05-05T15:11:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Just noticed this nasty little issue here, which interplays with the way Mac OS X caches authentication credentials.</p>
+<p>The PEM format keys provided by Amazon don't work as you would expect when passed in to SSH (via <code>ssh -i path/to/key</code>). Running SSH with multiple <code>-v</code> switches to see what's happening you'll try to connect:</p>
+<pre>debug1: Connection established.
+debug3: Not a RSA1 key file path/to/key
+debug2: key_type_from_name: unknown key type '-----BEGIN'
+debug3: key_read: missing keytype
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace
+debug3: key_read: missing whitespace</pre>
+<p>Later on in the output you'll see that it goes trying all the keys it knows about (ie. everything in <code>~/.ssh</code> plus any other key you told it about on the <a href="/wiki/command_line">command line</a> with the <code>-i</code> switch) and eventually gets in with the AWS-supplied key:</p>
+<pre>debug1: Authentications that can continue: publickey
+debug1: Offering public key: path/to/some/other/key/which/will/not/work
+debug3: send_pubkey_test
+debug2: we sent a publickey packet, wait for reply
+debug1: Authentications that can continue: publickey
+debug1: Trying private key: path/to/key
+debug1: read PEM private key done: type RSA
+debug3: sign_and_send_pubkey
+debug2: we sent a publickey packet, wait for reply
+debug1: Authentication succeeded (publickey).</pre>
+<p>The ugly little problem which I just ran into is that I recently added another key file to my <code>~/.ssh</code> directory, raising the number of keys just high enough that I ran into the <code>MaxAuthTries</code> limit (defaults to 6) before <code>ssh</code> got around to re-trying my AWS PEM key.</p>
+<p>This effectively locked me out of the system. Worst of all, moving keys out of <code>~/.ssh</code> to reduce the number of keys tried before hitting the AWS key doesn't work on Mac OS X, as it continues offering keys even after they don't exist anymore. It is evidently caching credentials in some way, possibly via <code>ssh-agent</code>; it appears that <code>ssh-agent</code> is spawned by <code>launchd</code> when initiating a login session.</p>
+<p>I didn't try killing the agent (<code>launchd</code> would probably just restart it) and instead elected to reboot. Having removed one of the keys from the <code>~/.ssh</code> directory, authentication now succeeded, but I'd still like to get to the bottom of why the PEM format key is being rejected by OpenSSH, and the <code>-i</code> switch is effectively useless. I also tried DER format, and PEM-with-encryption, but there are still a couple of options that I haven't tried yet.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6383'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6383"><time data-relative="true">2010-11-01T09:59:40Z</time></a></span>
+</cite>
+<blockquote><p>Just did a little test with <code>ssh-keygen</code> and no args (which, according to the <a href="/wiki/man" class="redlink">man</a> page &quot;will generate an RSA key for use in SSH protocol 2 connections&quot;), and it produces exactly the same debug output (&quot;Not a RSA1 key file&quot;) when passed in via <code>ssh -vvvvvvv -i path/to/key</code> (regardless of whether the <code>-2</code> switch is present or not).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6687'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6687"><time data-relative="true">2011-02-10T11:59:33Z</time></a></span>
+</cite>
+<blockquote><p>Funnily enough, the <code>-i</code> switch works fine trying on another machine (my old PowerBook running <a href="/wiki/Leopard">Leopard</a>).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13082'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13082"><time data-relative="true">2015-05-05T15:11:54Z</time></a></span>
+</cite>
+<blockquote><p>I am not sure, but I suspect this is no longer an issue due to my use of <code>~/.ssh/config</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13083'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13083"><time data-relative="true">2015-05-05T15:11:57Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

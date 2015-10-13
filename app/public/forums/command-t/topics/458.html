@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Command-T makes macvim not work (cannot open a window)
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Command-T makes macvim not work (cannot open a window)</div>
+<h1 class='major'>Command-T makes macvim not work (cannot open a window)</h1>
+<div class='topic' id='topic_458'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/458"><time data-relative="true">2011-02-13T03:25:48Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi all, I tried installing Command-T but as long as it's in the .vim/ruby/ folder, MacVim refuses to work--ie it cannot load an editor window, although it seems to be running since it is in the dock.  I use rvm so I thought it might be the problem, but I tried rvm use system before the ruby and make commands with the same results.  Any help would be much appreciated, this plugin looks absolutely amaazing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6705'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6705"><time data-relative="true">2011-02-15T08:46:04Z</time></a></span>
+</cite>
+<blockquote><p>Are you using the latest MacVim snapshot? I would imagine that if you use that and build Command-T using the system Ruby then everything should work just fine.</p>
+<p>In any case, it is rather odd that with Command-T present the MacVim window won't even appear. Anything logged to the console?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6743'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6743">Created <time data-relative="true">2011-03-02T13:51:58Z</time>, edited <time data-relative="true">2011-03-06T08:50:34Z</time></a></span>
+</cite>
+<blockquote><p>Do you have Ruby Version Manager installed? That can cause problems.</p>
+<p>@Wincent: I found that when installing CommandT with RVM active, it is important for FIRST set you default ruby version to 1.8.7 (which MacVim was built against?) Otherwise CommandT will built against the currently active version (for me that was 1.9.2) and it won't work.</p>
+<p>So the solution is simple:</p>
+<ul>
+<li>check if you have 1.8.7</li>
+</ul>
+<pre class="shell-syntax">$ rvm list</pre>
+<ul>
+<li>if not, install it</li>
+</ul>
+<pre class="shell-syntax">$ rvm install 1.8.7</pre>
+<ul>
+<li>set it as default (I found that 'use' was not enough...)</li>
+</ul>
+<pre class="shell-syntax">$ rvm --default 1.8.7</pre>
+<ul>
+<li>install command-t with the extconf.rb and make</li>
+</ul>
+<pre class="shell-syntax">$ ruby extconf.rb
+$ make</pre>
+<ul>
+<li>fire up macvim and it should work just fine!</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6744'>
+<cite>
+<a href="/users/jeroen-bourgois">Jeroen Bourgois</a>
+<span class='when'><a href="#comment_6744"><time data-relative="true">2011-03-02T20:10:22Z</time></a></span>
+</cite>
+<blockquote><p>This made me wiser:</p>
+<p><a href="http://jeroenbourgois.posterous.com/command-t-macvim-and-rvm" class="external">http://jeroenbourgois.posterous.com/command-t-macvim-and-rvm</a></p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

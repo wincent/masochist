@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #1951: couldn't find ruby.h
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1951</div>
+<div class='issue' id='issue_1951'>
+<form class="edit_issue" id="edit_issue_1951" action="/issues/1951" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Rxdt0yGX+Yaw2EjEZ2snijybWuCyWCxW1T0myKeE58dz5dNkhhoj02lUezNWQnQ+iRkz3Lm0okr1IvM2g1yA4w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #1951:
+<span data-name='issue[summary]'>
+couldn't find ruby.h
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-02-15T15:08:22Z</time>, updated <time data-relative="true">2014-03-22T20:36:45Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/dsdeiz">dsdeiz</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>I'm somehow having trouble compiling the C extension from the installation instructions. I am getting this error:</p>
+<pre>checking for ruby.h... no
+couldn't find ruby.h (required)
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of
+necessary libraries and/or headers.  Check the mkmf.log file for more
+details.  You may need configuration options.</pre>
+<p>mkmf.log shows:</p>
+<pre>
+have_header: checking for ruby.h... -------------------- no
+
+&quot;gcc -E -I. -I/usr/lib/ruby/1.8/x86_64-linux -I.    -fno-strict-aliasing -g -g -O2  -fPIC    conftest.c -o conftest.i&quot;
+In file included from /usr/lib/ruby/1.8/x86_64-linux/ruby.h:40,
+                 from conftest.c:1:
+/usr/include/stdlib.h:33:20: error: stddef.h: No such file or directory
+In file included from /usr/include/stdio.h:75,
+                 from /usr/lib/ruby/1.8/x86_64-linux/ruby.h:58,
+                 from conftest.c:1:
+/usr/include/libio.h:53:21: error: stdarg.h: No such file or directory
+In file included from /usr/lib/ruby/1.8/x86_64-linux/ruby.h:95,
+                 from conftest.c:1:
+/usr/include/limits.h:125:26: error: no include path in which to search for limits.h
+checked program was:
+/* begin */
+1: [/tags/include #include] &lt;ruby.h&gt;
+/* end */
+
+--------------------
+</pre>
+<p>Here are a few details of my installed packages:</p>
+<p>Ruby: ruby 1.8.7 (2010-08-16 patchlevel 302) [x86_64-linux]</p>
+<p>Distro: Debian Squeeze</p>
+<p>Vim is Vim 7.2</p>
+<p>I  have ruby-dev installed too which I think is required for this (got from googling). I also have libruby1.8 and ruby1.8-dev.</p>
+<p>Thanks for support!</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_10068'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10068"><time data-relative="true">2012-12-19T02:05:24Z</time></a></span>
+</cite>
+<blockquote><p>try running</p>
+<p>$ PATH=$PATH:/System/Library/Frameworks/Ruby.framework/Versions/1.8/Headers/</p>
+<p>and then ruby extconf.rb</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10994'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10994"><time data-relative="true">2014-03-22T20:36:43Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to lack of activity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10995'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10995"><time data-relative="true">2014-03-22T20:36:45Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

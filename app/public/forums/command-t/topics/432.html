@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Mappings clash with vim-surround
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Mappings clash with vim-surround</div>
+<h1 class='major'>Mappings clash with vim-surround</h1>
+<div class='topic' id='topic_432'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/guns">guns</a>
+<span class='when'>
+<a href="/forums/command-t/topics/432"><time data-relative="true">2010-09-13T11:06:44Z</time></a>
+</span>
+</cite>
+<blockquote><p>Recently, I tried searching for a css file by typing <code>css</code>, and I discovered that the <code>cs</code> mapping provided by vim-surround was putting me in normal mode in the search buffer, instead of typing <code>cs</code>! (the <code>ds</code> and <code>ys</code> mappings are also affected)</p>
+<p>I took a look at CommandT::Controller#register_for_key_presses, but I didn't see any obvious reason why the vim-surround mappings weren't being overridden. But, I haven't spent a lot of time digging into the nuances of Vimscript or the vim mappings system, so the reason may actually be obvious.</p>
+<p>The issue occurs in both urxvt and Terminal.app, where <code>set term?</code> is screen-256color-bce, rxvt-unicode, and xterm-color.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6274'>
+<cite>
+<a href="/users/guns">guns</a>
+<span class='when'><a href="#comment_6274"><time data-relative="true">2010-09-13T11:09:00Z</time></a></span>
+</cite>
+<blockquote><p>I guess I should have read the link called <code>wikitext markup</code> before I posted... the inconsistent coloring above is from quoting with backtick-singlequote.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6275'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6275"><time data-relative="true">2010-09-13T11:36:23Z</time></a></span>
+</cite>
+<blockquote><p>(Edited your post to fix your markup.)</p>
+<p>I'm a vim-surround user too and haven't seen what you describe, so it must be something local to your set-up. I just tried to reproduce it and typing &quot;css&quot; at the Command-T prompt just searches for &quot;css&quot;.</p>
+<p>Command-T doesn't try to override any existing mappings &mdash; that would be impossible seeing as it can't know what different mappings people have set up and it wouldn't make sense to try &mdash; but it does add its own mappings.</p>
+<p>Can you paste your <code>.vimrc</code> up somewhere so that we can look at? It seems likely to me that the cause is somewhere in there. Also, how did you install vim-surround and what version is it?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6276'>
+<cite>
+<a href="/users/guns">guns</a>
+<span class='when'><a href="#comment_6276"><time data-relative="true">2010-09-13T17:15:57Z</time></a></span>
+</cite>
+<blockquote><p>So the problem is my own :(. Sorry to bring it to your door. If you don't mind taking a moment to help though, here is my <code>.vimrc</code>:</p>
+<p><a href="http://github.com/guns/nerv-guns/blob/guns/etc/user.vimrc" class="external">http://github.com/guns/nerv-guns/blob/guns/etc/user.vimrc</a></p>
+<p>and my <code>~/.vim</code></p>
+<p><a href="http://github.com/guns/nerv-guns/tree/guns/etc/user.vim" class="external">http://github.com/guns/nerv-guns/tree/guns/etc/user.vim</a></p>
+<p>vim-surround is installed straight from the github repo.</p>
+<p>--</p>
+<p>It's a lot to wade through, so if you would like to instead just give me a direction to pursue, that would also be much appreciated.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6277'>
+<cite>
+<a href="/users/guns">guns</a>
+<span class='when'><a href="#comment_6277"><time data-relative="true">2010-09-13T17:27:42Z</time></a></span>
+</cite>
+<blockquote><p>Oh! I found it.</p>
+<p>I have <code>set notimeout</code>, because I like emacs-style mappings and am annoyed when vim times out my incantations.</p>
+<p>Setting <code>set timeout</code> seems to fix the issue, but I would prefer to keep that setting the way it is.</p>
+<p>Hmm...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6278'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6278"><time data-relative="true">2010-09-13T20:12:29Z</time></a></span>
+</cite>
+<blockquote><p>Instead of setting <code>notimeout</code>, have you considered setting a high <code>timeoutlen</code>?</p>
+<p>I have a hunch that that might fix the problem you're seeing without breaking your Emacs-style mappings (I could be wrong though, it's just a hunch).</p>
+<p>If you look in the Command-T source, specifically the <code><a href="http://git.wincent.com/command-t.git/blob/HEAD:/ruby/command-t/match_window.rb" class="external">MatchWindow</a></code>class, you'll see that inside the match window it sets the <code>timeoutlen</code> to <code>0</code> in order to make the keys respond immediately; my suspicion is that by setting <code>notimeout</code> you prevent the <code>timeoutlen</code> for having effect.</p>
+<p>If the suggested work around doesn't work for you we can look at other alternatives (Command-T, for example, could be patched to <code>set timeout</code> whenever the match window is displayed, and restore it to its previous value afterwards).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6279'>
+<cite>
+<a href="/users/guns">guns</a>
+<span class='when'><a href="#comment_6279"><time data-relative="true">2010-09-13T20:35:41Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for your help! I decided to just patch in the timeout setting for the match window just like you did for timeoutlen. Works perfectly, and seems like an appropriate addition.</p>
+<p>Thanks for your awesome plugin!</p>
+<pre>
+From 5de1fb620f5a219217f960c13d5ae47aeec35721 Mon Sep 17 00:00:00 2001
+From: guns &lt;sung@metablu.com&gt;
+Date: Mon, 13 Sep 2010 15:16:50 -0500
+Subject: [PATCH] `set timeout' on match window creation and restore on close
+
+---
+ ruby/command-t/match_window.rb |    1 +
+ ruby/command-t/settings.rb     |    2 ++
+ 2 files changed, 3 insertions(+), 0 deletions(-)
+
+diff --git a/ruby/command-t/match_window.rb b/ruby/command-t/match_window.rb
+index b5c10c9..eae0f87 100644
+--- a/ruby/command-t/match_window.rb
++++ b/ruby/command-t/match_window.rb
+@@ -42,6 +42,7 @@ module CommandT
+ 
+       # global settings (must manually save and restore)
+       @settings = Settings.new
++      ::VIM::set_option 'timeout'         # ensure mappings timeout
+       ::VIM::set_option 'timeoutlen=0'    # respond immediately to mappings
+       ::VIM::set_option 'nohlsearch'      # don't highlight search strings
+       ::VIM::set_option 'noinsertmode'    # don't make Insert mode the default
+diff --git a/ruby/command-t/settings.rb b/ruby/command-t/settings.rb
+index 93af32f..c15016a 100644
+--- a/ruby/command-t/settings.rb
++++ b/ruby/command-t/settings.rb
+@@ -33,6 +33,7 @@ module CommandT
+       @report         = get_number 'report'
+       @sidescroll     = get_number 'sidescroll'
+       @sidescrolloff  = get_number 'sidescrolloff'
++      @timeout        = get_bool 'timeout'
+       @equalalways    = get_bool 'equalalways'
+       @hlsearch       = get_bool 'hlsearch'
+       @insertmode     = get_bool 'insertmode'
+@@ -44,6 +45,7 @@ module CommandT
+       set_number 'report', @report
+       set_number 'sidescroll', @sidescroll
+       set_number 'sidescrolloff', @sidescrolloff
++      set_bool 'timeout', @timeout
+       set_bool 'equalalways', @equalalways
+       set_bool 'hlsearch', @hlsearch
+       set_bool 'insertmode', @insertmode
+-- 
+1.7.3.rc1.5.gd9b1
+
+
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6280'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6280"><time data-relative="true">2010-09-13T20:55:56Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the patch. Looks sane enough. I can't really see any drawbacks to applying it, so will do so tomorrow.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6502'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6502"><time data-relative="true">2010-12-02T00:32:47Z</time></a></span>
+</cite>
+<blockquote><p>I run into this problem as well and discovered another bug. If you open the command-T and midstream decide to cancel (CTRL-C, i.e., not to open a file), the settings are never restored. Since the settings are saved and timeoutlen is changed to 0, after I cancel,  my mappings don't work anymore (cuz the timeout len is still 0 and never restored to my original set value). Can you issue a patch for that? Thanks. Rick </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6504'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6504"><time data-relative="true">2010-12-02T08:20:40Z</time></a></span>
+</cite>
+<blockquote><p><code>timeoutlen</code> already is saved and restored (see <a href="http://git.wincent.com/command-t.git/blob/40ba35c2debaa66c1a6d6aec1208693c67f6d1ab:/ruby/command-t/settings.rb" class="external">the settings.rb file</a>).</p>
+<p>Can you explain why or how it is not being restored?</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #265: Synergy 2.0 doesn't launch on Mac OS X 10.2
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #265</div>
+<div class='issue' id='issue_265'>
+<form class="edit_issue" id="edit_issue_265" action="/issues/265" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ephfOecfin39u2QJTOWpljiZpQIF9VB4vQmIYsk3X+tOauGOQJJQKCQ3V/59zPoijRvMPg4Z3mSdFl2c7e84zw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #265:
+<span data-name='issue[summary]'>
+Synergy 2.0 doesn't launch on Mac OS X 10.2
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-06-29T03:02:01Z</time>, updated <time data-relative="true">2005-06-30T18:39:23Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've started getting reports from users trying to run 2.0 on 10.2. My first suspicion is that this is caused by  the Growl framework (which has unfortunately caused a series of problems ever since I integrated it). But I  am awaiting on detailed information from users to confirm this. So far I have only received reports of  &quot;won't launch&quot; which unfortunately doesn't tell me anything about what might be causing the problem. I  will paste in some emails below.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2101'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2101"><time data-relative="true">2005-06-29T03:03:05Z</time></a></span>
+</cite>
+<blockquote><p>&quot;don't know if this is an isolated incident, but after upgrading numerous times before to your latest synergy version, on installing, 2.0 the .app is not launching after installation either initally or through the pref pane.  I tried multiple mirrors, and always the same thing, so could you just point me to an earlier version while either you figure out a problem, or realize my system(10.2) or itunes(4.81) just doesn't like synergy anymore&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2102'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2102"><time data-relative="true">2005-06-29T03:03:22Z</time></a></span>
+</cite>
+<blockquote><p>&quot;Just upgraded to 2.0 and it no longer functions. :( </p>
+<p>iMac G3 400Mhz Max OS X 10.2.8&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2103'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2103"><time data-relative="true">2005-06-29T03:03:38Z</time></a></span>
+</cite>
+<blockquote><p>&quot;I just installed synergy 2.0 and it will not come up - I've tried restarting my computer several times, uninstalling it, reinstalling it, etc.</p>
+<p>I have a mac with 10.2.8 installed, and iTunes version 4.8&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2104'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2104"><time data-relative="true">2005-06-29T03:04:09Z</time></a></span>
+</cite>
+<blockquote><p>&quot;Sorry Wincent, no error messages, no nothing. I downloaded 2.0, installed it, and told it to 'Launch  application' after a successful install. Nothing happened. I went to the preferences and clicked the  'Start' button. It says it started, but again, nothing happens. If I quit and restart System Preferences and  go to the Synergy Preference, I'm again confronted by the 'Start' button (leading me to believe that it  doesn't start in the first place).</p>
+<p>I tried installing 2.0 again, but no success.</p>
+<p>I know this isn't much to go on, but unfortunately it's not giving me any error messages. It's just not  working. :(</p>
+<p>Thanks for the link for 1.9. I'll use it for now, and if there's anything I can do to help diagnose the issue  with 2.0 (more information about my setup, give log files, etc.) please don't hesitate to ask.&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2105'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2105"><time data-relative="true">2005-06-29T03:04:27Z</time></a></span>
+</cite>
+<blockquote><p>&quot;P.S. Synergy 1.9 just installed and is running successfully, so sadly, there's something with my setup and  version 2.0.&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2106'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2106"><time data-relative="true">2005-06-29T03:04:44Z</time></a></span>
+</cite>
+<blockquote><p>&quot;Nothing-it acts like it installed, but then nothing happens, no error message...nothing.&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2107'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2107"><time data-relative="true">2005-06-29T03:04:59Z</time></a></span>
+</cite>
+<blockquote><p>&quot;1.9 works like a charm </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2108'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2108"><time data-relative="true">2005-06-29T03:05:20Z</time></a></span>
+</cite>
+<blockquote><p>&quot;Issue description Just downloaded and installed Synergy 2.0, and it will not run.  There is no crash, it just does not run.</p>
+<p>I'm running 10.2.8 on a G4 433MHz.&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2109'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2109"><time data-relative="true">2005-06-29T03:05:46Z</time></a></span>
+</cite>
+<blockquote><p>&quot;I'm a registered user operating OSX 10.2.8. Have downloaded and installed 2.0. During installation an alert appears which indicates difficulty removing previous preference pane and asking to delete as administrator (which I do since I am installing for all users). Installation finishes but Synergy won't start. Preference pane opens manually and clicking on start accomplishes nothing. I've reloaded version 1.9. Is there a bug? Or should I not delete the previous preference pane? Thanks&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2110'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2110"><time data-relative="true">2005-06-29T03:08:19Z</time></a></span>
+</cite>
+<blockquote><p>Until this problem gets solved, here is the link to version 1.9 (still on the servers):</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy1.9.dmg" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy1.9.dmg</a></p>
+<p>I'm hoping that someone will be able to look at their Console output and provide some information on  what's going wrong.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2111'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2111"><time data-relative="true">2005-06-29T16:48:17Z</time></a></span>
+</cite>
+<blockquote><p>At last, someone has sent in information showing the cause of the problem:</p>
+<p>2005-06-28 07:11:29.431 Install[675] Error attempting to open item &quot;Synergy.app&quot; using application  &quot;(null)&quot; dyld: /Users/dstt/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/ MacOS/Synergy can't open library: /usr/lib/libmx.A.dylib  (No such file or directory, errno = 2)</p>
+<p>I'll be looking into this today and seeing if I can find out the cause of the problem. I suspect this is a side- effect of the change to Xcode 2.1; I'll need to change something else in the build set-up.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2112'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2112"><time data-relative="true">2005-06-29T17:19:59Z</time></a></span>
+</cite>
+<blockquote><p>I believe the problem is solved. I have put together a 2.0.1 release candidate:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy2.0.1.dmg" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy2.0.1.dmg</a></p>
+<p>SHA1 checksum: d18aec20a003486c2bc751dc735ca48857a4e6e1</p>
+<p>Please let me know if this works for you on 10.2 (should work on 10.3 and 10.4 also). If it works then I'll  make an official release announcement.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2113'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2113"><time data-relative="true">2005-06-30T06:31:51Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so that build didn't work. So that once again brings me back to one of my initial suspects: the  Growl framework. I have now made a new build this time tweaking the Growl framework (setting the  deployment target, forcing the use of the 10.2 SDK, removing some bizarre linker flags which I have no  idea why they would use them, and commenting out or removing a bunch of code that won't run on  10.2.8).</p>
+<p>If it turns out that these failures to run are caused by Growl I will probably stop maintaining the Growl  support (ie. I won't upgrade the framework when the Growl folks release new versions). The truth is that  the framework has caused nothing but trouble since I integrated it. They don't officially support 10.2  but the idea is that it should at least not crash the apps that use it (the framework should just be  disabled when running on 10.2). But this really has caused nothing but hassle and I honestly don't think  it's worth continuing with it; it makes the products that use Growl look bad... this will be the second  time that Growl has broken Synergy for 10.2 users. How embarrassing. If I'm proven wrong I'll eat my  words, but for now it looks like Growl is the culprit...</p>
+<p>Anyway, here is the new build, same URL as above but note that the checksum is now different:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy2.0.1.dmg" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy2.0.1.dmg</a></p>
+<p>SHA1 checksum: 9a0e8854a5759a2ccc35d0fc9771f1efe63caa06</p>
+<p>Despite all the cruft I cleared out of the Growl framework Growl support still working here on 10.4...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2114'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2114"><time data-relative="true">2005-06-30T18:39:23Z</time></a></span>
+</cite>
+<blockquote><p>After the changes getting a different linker error:</p>
+<p>dyld: /Users/admin/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/ Contents/MacOS/Synergy can't open library: /usr/lib/libgcc_s.1.dylib  (No such file or directory, errno </p>
+<h3>2)</h3>
+<p>I see that Xcode is continuing to use GCC 4.0 instead of 3.3 which explains the linker error and also  why this is not working on 10.2. Must be another weird build setting set by the Growl folks. Ok.  Corrected that. Let's hope this build fixes the problem. I've now wasted a couple days on this so it's  pretty much certain that this is the last version of Growl that I'll be supporting in Synergy.</p>
+<p>Here is the new build. Same download URL. Note the new checksum:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy2.0.1.dmg" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy2.0.1.dmg</a></p>
+<p>SHA1 checksum: 5f9b9f1e644015e5f298a29507d45e1e8e550cd2</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

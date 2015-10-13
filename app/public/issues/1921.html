@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1921: NoMethodError: undefined method `try_activate' for Gem:Module when starting vim after install of command-t
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1921</div>
+<div class='issue' id='issue_1921'>
+<form class="edit_issue" id="edit_issue_1921" action="/issues/1921" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="b26g2p17GqTvzAs/Y0F1HE2eXvy4W9cSKVCOvC6osNRbnB5tOvbA8TZAOMhSaCao+Bw3wLO3WQ4JT1tCCnDX8A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1921:
+<span data-name='issue[summary]'>
+NoMethodError: undefined method `try_activate' for Gem:Module when starting vim after install of command-t
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-11-20T09:44:45Z</time>, updated <time data-relative="true">2015-06-10T17:31:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/matt-rohrer">Matt Rohrer</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I get a </p>
+<pre>NoMethodError: undefined method `try_activate' for Gem:Module</pre>
+<p> when starting vim after installing command-t on Mac OS X 10.7.2.</p>
+<p>MacVim is installed via homebrew and linked against a ruby <code>1.9.2-p290</code> that I have installed with <code>rbenv</code> and <code>ruby-build</code>. As far as I can see the same version of ruby is used by MacVim and command-t -- there is no reference to the system ruby. Command-T is installed as a submodule directly from github so it should be the latest code. I'm using mvim -v (console version) but I can't imagine that makes any difference...</p>
+<p>Errors/versions below:</p>
+<pre>
+== Vim error:
+Error detected while processing ~/.vim/bundle/command-t/plugin/command-t.vim:
+line  164:
+NoMethodError: undefined method `try_activate' for Gem:Module
+Press ENTER or type command to continue
+
+== Output from building command-t:
+rake make
+/Users/rohrer/.rbenv/versions/1.9.2-p290/bin/ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+gcc -I. -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1/x86_64-darwin11.2.0 -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1 -I. -DHAVE_RUBY_H -I'/Users/rohrer/.rbenv/versions/1.9.2-p290/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wshorten-64-to-32 -Wno-long-long  -pipe  -std=c99 -Wall -Wextra -Wno-unused-parameter -o ext.o -c ext.c
+gcc -I. -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1/x86_64-darwin11.2.0 -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1 -I. -DHAVE_RUBY_H -I'/Users/rohrer/.rbenv/versions/1.9.2-p290/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wshorten-64-to-32 -Wno-long-long  -pipe  -std=c99 -Wall -Wextra -Wno-unused-parameter -o match.o -c match.c
+gcc -I. -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1/x86_64-darwin11.2.0 -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/Users/rohrer/.rbenv/versions/1.9.2-p290/include/ruby-1.9.1 -I. -DHAVE_RUBY_H -I'/Users/rohrer/.rbenv/versions/1.9.2-p290/include'  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O3 -ggdb -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wshorten-64-to-32 -Wno-long-long  -pipe  -std=c99 -Wall -Wextra -Wno-unused-parameter -o matcher.o -c matcher.c
+gcc -dynamic -bundle -o ext.bundle ext.o match.o matcher.o -L. -L/Users/rohrer/.rbenv/versions/1.9.2-p290/lib -L. -L'/Users/rohrer/.rbenv/versions/1.9.2-p290/lib'  -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -Wl,-flat_namespace  -lpthread -ldl -lobjc
+
+$ ruby --version
+ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-darwin11.2.0]
+
+$ gem --version
+1.8.11
+
+$ vim --version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Sep 28 2011 15:32:08)
+MacOS X (unix) version
+Included patches: 1-315
+Compiled by rohrer@mycroft.local
+Huge version with MacVim GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments +conceal +cryptv -cscope +cursorbind +cursorshape +dialog_con_gui +diff +digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path +find_in_path +float +folding -footer +fork() +fullscreen 
+-gettext -hangul_input +iconv +insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap -lua +menu +mksession +modify_fname +mouse +mouseshape +mouse_dec -mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg +odbeditor +path_extra +perl +persistent_undo +postscript 
++printer +profile +python -python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white +tcl +terminfo +termresponse +textobjects +title +toolbar +transparency +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo +vreplace +wildignore +wildmenu 
++windows +writebackup -X11 -xfontset +xim -xsmp -xterm_clipboard -xterm_save    system vimrc file: &quot;$VIM/vimrc&quot;     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX -no-cpp-precomp  -g -O2 -isysroot /Developer/SDKs/MacOSX10.7.sdk -mmacosx-version-min=10.7 -arch x86_64 -D_FORTIFY_SOURCE=1     -I/System/Library/Frameworks/Tcl.framework/Headers  -D_REENTRANT=1  -D_THREAD_SAFE=1  -D_DARWIN_C_SOURCE=1  
+Linking: gcc   -L. -L/Users/rohrer/.rbenv/versions/1.9.2-p290/lib  -L. -L/Users/rohrer/.rbenv/versions/1.9.2-p290/lib       -Wl,-syslibroot,/Developer/SDKs/MacOSX10.7.sdk -mmacosx-version-min=10.7 -arch x86_64 -L/usr/local/lib -o Vim -framework Cocoa -framework Carbon      -lncurses -liconv -framework Cocoa    -fstack-protector -L/usr/local/lib  -L/System/Library/Perl/5.12/darwin-thread-multi-2level/CORE -lperl -lm -lutil -lc -framework Python  -F/System/Library/Frameworks -framework Tcl -framework CoreFoundation -lruby-static -lobjc -L/Users/rohrer/.rbenv/versions/1.9.2-p290/lib
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7269'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7269"><time data-relative="true">2011-11-20T12:27:05Z</time></a></span>
+</cite>
+<blockquote><p>The standard binary distribution of MacVim, which links against the system Ruby, works well. I've also built MacVim from source (directly, not using homebrew) and that works well too; note that it also links against the system Ruby.</p>
+<p>I'd recommend you try one of those configurations, as the further off you get into the weeds, the more likely you are to run into problems. If you figure out how to get things working with your set-up, please do share what you had to do to get it working.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13114'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13114"><time data-relative="true">2015-06-10T17:31:49Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to lack of updates.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13115'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13115"><time data-relative="true">2015-06-10T17:31:51Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

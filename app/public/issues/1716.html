@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1716: C-T 0.9 SEGV with current MacPorts Vim
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1716</div>
+<div class='issue' id='issue_1716'>
+<form class="edit_issue" id="edit_issue_1716" action="/issues/1716" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7h9I/HpU8RURCft3cAxo9Jw2Im9w4Xv+SsvNrojZsyPa7fZL3dkrQMiFyIBBJTtAKbRLU3sN9eJq1BhQrAHUBw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1716:
+<span data-name='issue[summary]'>
+C-T 0.9 SEGV with current MacPorts Vim
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-10-17T11:12:20Z</time>, updated <time data-relative="true">2010-11-02T20:33:08Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/lrem">lRem</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This happens with a clear install of current MacPorts Vim after installing Command-t:</p>
+<pre>
+$ vim
+Vim: Caught deadly signal SEGV
+Vim: Finished.
+Segmentation fault
+</pre>
+<p>GDB shows:</p>
+<pre>
+(gdb) r
+Starting program: /opt/local/bin/vim 
+Reading symbols for shared libraries .++++++++++................................................................................. done
+Reading symbols for shared libraries . done
+Reading symbols for shared libraries .. done
+
+Program received signal EXC_BAD_ACCESS, Could not access memory.
+Reason: KERN_INVALID_ADDRESS at address: 0x0000000000000000
+0x0000000103a79e1c in st_lookup ()
+(gdb) bt
+#0  0x0000000103a79e1c in st_lookup ()
+#1  0x0000000103a4fca4 in rb_intern ()
+#2  0x0000000103a0a1b4 in rb_define_module ()
+#3  0x00000001004f3cff in Init_ext () at ext.c:45
+#4  0x0000000100320804 in dln_load ()
+#5  0x0000000100340c68 in rb_require_safe ()
+#6  0x0000000100335c56 in rb_call0 ()
+#7  0x0000000100335f9c in rb_call ()
+#8  0x000000010032f524 in rb_eval ()
+#9  0x00000001003407e1 in rb_load ()
+#10 0x0000000100340c9f in rb_require_safe ()
+#11 0x0000000100335c56 in rb_call0 ()
+#12 0x0000000100335f9c in rb_call ()
+#13 0x000000010032f524 in rb_eval ()
+#14 0x00000001003407e1 in rb_load ()
+#15 0x0000000100340c9f in rb_require_safe ()
+#16 0x0000000100335c56 in rb_call0 ()
+#17 0x0000000100335f9c in rb_call ()
+#18 0x000000010032f524 in rb_eval ()
+#19 0x00000001003323e9 in rb_eval ()
+#20 0x000000010034144c in eval ()
+#21 0x0000000100341f26 in rb_eval_string ()
+#22 0x000000010032a8cd in rb_protect ()
+#23 0x000000010014dcaa in ?? ()
+#24 0x0000000100058986 in ?? ()
+#25 0x0000000100059d19 in ?? ()
+#26 0x000000010004a6b0 in ?? ()
+#27 0x0000000100047ab4 in ?? ()
+#28 0x0000000100087eea in ?? ()
+#29 0x0000000100000f94 in ?? ()
+</pre>
+<p>Vim version is:</p>
+<pre>
+$ vim --version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Oct 17 2010 12:40:07)
+MacOS X (unix) version
+Included patches: 1-21
+Compiled by lrem@remigiusz-modrzejewskis-macbook-pro.local
+Normal version without GUI.  Features included (+) or not (-):
+-arabic +autocmd -balloon_eval -browse +builtin_terms +byte_offset +cindent 
+-clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
+-conceal +cryptv -cscope +cursorbind +cursorshape +dialog_con +diff +digraphs 
+-dnd -ebcdic -emacs_tags +eval +ex_extra +extra_search -farsi +file_in_path 
++find_in_path +float +folding -footer +fork() -gettext -hangul_input +iconv 
++insert_expand +jumplist -keymap -langmap +libcall +linebreak +lispindent 
++listcmds +localmap -lua +menu +mksession +modify_fname +mouse -mouseshape 
+-mouse_dec -mouse_gpm -mouse_jsbterm -mouse_netterm -mouse_sysmouse 
++mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg -osfiletype 
++path_extra -perl +persistent_undo +postscript +printer -profile -python 
+-python3 +quickfix +reltime -rightleft +ruby +scrollbind +signs +smartindent 
+-sniff +startuptime +statusline -sun_workshop +syntax +tag_binary 
++tag_old_static -tag_any_white -tcl +terminfo +termresponse +textobjects +title
+ -toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
++vreplace +wildignore +wildmenu +windows +writebackup -X11 -xfontset -xim -xsmp
+ -xterm_clipboard -xterm_save 
+   system vimrc file: &quot;/opt/local/etc/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/opt/local/share/vim&quot;
+Compilation: /usr/bin/gcc-4.2 -c -I. -Iproto -DHAVE_CONFIG_H   -I/opt/local/include -DMACOS_X_UNIX -no-cpp-precomp  -O2 -arch x86_64 -D_FORTIFY_SOURCE=1     -I/opt/local/lib/ruby/1.8/i686-darwin10 -DRUBY_VERSION=18 
+Linking: /usr/bin/gcc-4.2   -L. -L/opt/local/lib  -L/opt/local/lib -arch x86_64 -L/usr/local/lib -o vim       -lm  -lncurses -liconv -framework Cocoa        -lruby -lobjc
+</pre>
+<p>Ruby version is:</p>
+<pre>
+$ ruby --version
+ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_6359'>
+<cite>
+<a href="/users/lrem">lRem</a>
+<span class='when'><a href="#comment_6359"><time data-relative="true">2010-10-17T11:13:25Z</time></a></span>
+</cite>
+<blockquote><p>At the same time it works flawless in MacVim.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6360'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6360"><time data-relative="true">2010-10-17T12:25:41Z</time></a></span>
+</cite>
+<blockquote><p>This will happen whenever you build Command-T and link it against one version of Ruby, and then run a Vim which links against a different version of Ruby.</p>
+<p>You haven't provided the Command-T build transcript, but I imagine what is happening is that it is linking against the system Ruby, which is what MacVim links against and which is why it works fine with MacVim. On the other hand, when you try to run it against a MacPorts version of Vim you're crashing because that Vim links against its own, different version of Ruby.</p>
+<p>So if you want it to work in both MacPorts Vim and MacVim you'll need to build everything (Command-T, Vim, <em>and</em> MacVim) linking against the MacPorts version of Ruby.</p>
+<p>A simpler solution, however, would be just to use MacVim (note that it comes with a command-line version for use in the terminal &mdash; <code>/Applications/MacVim.app/Contents/MacOS/vim</code> &mdash; which you can use by setting your <code>PATH</code> appropriately, or making an alias, or setting your <code>EDITOR</code> environment variable accordingly etc) and build Command-T using the system Ruby. If you want a custom build of Vim that's easily doable too, as MacVim is quite straightforward to build from source.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6392'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6392"><time data-relative="true">2010-11-02T20:33:01Z</time></a></span>
+</cite>
+<blockquote><p>In the absence of a reply I assume you've got this one sorted out, so I'm going to mark the ticket as closed. Feel free to comment again if you want me to re-open it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6393'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6393"><time data-relative="true">2010-11-02T20:33:08Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

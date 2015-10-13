@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #249: REQUEST: Ability to completely disable Instant Message component
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #249</div>
+<div class='issue' id='issue_249'>
+<form class="edit_issue" id="edit_issue_249" action="/issues/249" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="z5EwgmkKG4ahyHvGWebiGOxaVlTOm5/5faWe9Ido+gf7Y441zofB03hESDFoz7GsWdg/aMV3EeVduksKo7CdIw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #249:
+<span data-name='issue[summary]'>
+REQUEST: Ability to completely disable Instant Message component
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-26T16:21:07Z</time>, updated <time data-relative="true">2006-07-05T02:05:48Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/john-davidorff-pell">John Davidorff Pell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>First, I *LOVE* that you have decided to make Synergy Advance totally plugin-based. This alone will make  the upgrade worth it. :-D</p>
+<p>Second, I'm appalled (mild exaggeration) that the instant message special status message changing thing  is not a plugin. I very much do not like this feature and I believe that it should be in a plugin that I can  disable.</p>
+<p>Thanx, JP</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2048'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2048"><time data-relative="true">2005-05-26T18:59:31Z</time></a></span>
+</cite>
+<blockquote><p>I haven't yet provided a UI for manipulating plug-ins. And seeing as iChat is the only instant messaging  client supported so far most of the code for the instant message component is actually stored here:</p>
+<p>Synergy Advance.app/Contents/Resources/PreferencePanes/InstantMessaging.prefPane</p>
+<p>You could remove that preference pane if you really wanted to, but I don't think there'd be any  performance benefit at all because the component uses 196KB of memory and can be completely  turned off in the preferences in which case it doesn't use any CPU at all.</p>
+<p>Later on when there actually are multiple plug-ins for you to turn on and off I will add the plug-ins  preference pane so that you can manipulate which ones get loaded or not, and which order they get  consulted (if appropriate). You'll be able to turn this support on and off using checkboxes in the prefs.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2049'>
+<cite>
+<a href="/users/john-davidorff-pell">John Davidorff Pell</a>
+<span class='when'><a href="#comment_2049"><time data-relative="true">2005-05-27T02:19:13Z</time></a></span>
+</cite>
+<blockquote><p>Thanx for taking a look at my request so quickly. :-)</p>
+<p>I believe that Finder has some UI for manipulating plugins in app bundles, it would be cool to take  advantage of that (or maybe not, I don't really know :-D). </p>
+<p>Also, can I ask about the architecture of your plugins? What I mean is, how do you plan on managing  them. the iChat prefpane is a prefpane, I assume that other components will not all be prefpanes (will  they?), so do you plan on doing &quot;plug-ins&quot; by just disabling assorted bundles in your app, or having a  real &quot;plug-ins&quot; directory that holds specific bundles, each providing the various components (including  a prefpane) inside it that can be loaded all togeter?</p>
+<p>JP</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2050'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2050"><time data-relative="true">2005-05-27T03:12:52Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>I believe that Finder has some UI for manipulating plugins in app bundles, it would be cool to take  advantage of that (or maybe not, I don't really know :-D). </p>
+</blockquote>
+<p>No, it has to be written from scratch. The Finder doesn't export any API, it's just an application. Besides,  I want a bit more flexibility. Some plug-ins will be inside the Synergy Advance application bundle:</p>
+<p>Synergy Advance.app/Contents/Resources/Plug-ins/</p>
+<p>But others will be in </p>
+<p>~/Library/Application Support/Synergy Advance/Plug-ins/</p>
+<p>Or:</p>
+<pre></pre>
+<p>/Library/Application Support/Synergy Advance/Plug-ins/</p>
+<p>Some of the code that is currently in Synergy Advance I will actually split off into a framework,  SynergyAdvance.framework, so that plug-ins can leverage it without having to reinvent the wheel. All  the code is modularized and ready to go; I haven't yet shipped the framework in the current version of  Synergy Advance because (so far) nothing requires it.</p>
+<p>As for the question about prefPanes vs plug-ins, if a plug-in author (bah, let's be honest, I am probably  going to be the only plug-in author!) wants a preferences UI then a separate prefPane will need to be  created and installed somewhere where Synergy Advance can see it. Once again this means one of the  following:</p>
+<p>Synergy Advance.app/Contents/Resources/PreferencePanes/ ~/Library/Application Support/Synergy Advance/PreferencePanes/ /Library/Application Support/Synergy Advance/PreferencePanes/</p>
+<p>It's not to hard to program in a modular way even with completely separate bundles. The Synergy  Advance executable, for instance, doesn't need to know anything about what a preference pane does  and the preference pane doesn't need to know anything about what the executable does, yet you can  still get a very high degree of integration (as I think you can already witness even in the first few  preference panes that I've shipped with the current version of Synergy Advance).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2051'>
+<cite>
+<a href="/users/john-davidorff-pell">John Davidorff Pell</a>
+<span class='when'><a href="#comment_2051"><time data-relative="true">2005-05-27T12:10:56Z</time></a></span>
+</cite>
+<blockquote><p>As you obviously know, the whole point of a bundle is that it contains all the code and resources are in  one ... bundle. Would it be quite difficult to do something like letting prefpanes be in:</p>
+<p>Synergy Advance.app/Contents/Resources/Plug-ins/PreferencePanes/ Synergy Advance.app/Contents/Resources/PreferencePanes/ ~/Library/Application Support/Synergy Advance/PreferencePanes/ /Library/Application Support/Synergy Advance/PreferencePanes/</p>
+<p>This way, a plug-in can be self-contained and not need extra pref-panes to be useful. Actually, if this is  easy to do then maybe you don't need the PreferencePanes directory at all, just put all the prefPanes  inside the bundle that it controls. :-)</p>
+<p>JP</p>
+<p>P.S. Thanx for being so responsive!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2052'>
+<cite>
+<a href="/users/john-davidorff-pell">John Davidorff Pell</a>
+<span class='when'><a href="#comment_2052"><time data-relative="true">2005-05-27T12:37:31Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Advance.app/Contents/Resources/Plug-ins/PreferencePanes/</p>
+<p>was suppsed to be</p>
+<p>Synergy Advance.app/Contents/Resources/Plug-ins/SomeRandomCoolFeature.bundle/PreferencePanes/</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2053'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2053"><time data-relative="true">2005-05-28T19:13:37Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #4)</p>
+<blockquote>
+<p>As you obviously know, the whole point of a bundle is that it contains all the code and resources are </p>
+</blockquote>
+<p>in </p>
+<blockquote>
+<p>one ... bundle.</p>
+</blockquote>
+<p>Evidently, but the only bundle that really matters is the &quot;Synergy Advance.app&quot; bundle, because that's  the one that shields the user from all the details inside.</p>
+<p>It seems to me that this:</p>
+<p>Plug-ins/A.bundle Plug-ins/B.bundle Plug-ins/C.bundle PreferencePanes/X.prefPane PreferencePanes/Y.prefPane PreferencePanes/Z.prefPane</p>
+<p>Is more elegant than variations like this:</p>
+<p>Plug-ins/A.bundle/Contents/Resources/X.prefPane Plug-ins/B.bundle/Contents/Resources/PreferencePanes/Y.prefPane PreferencePanes/Z.prefPane/Contents/Resources/Plug-ins/C.bundle</p>
+<p>The thing to remember is that many plug-ins won't have a preference pane of their own and in many  cases there is no one-to-one correspondence between preference panes and plug-ins. For example,  you don't want a separate preference pane for the Amazon (US) plug-in and one for the Amazon (UK)  plug-in; you want a single preference pane for all of the different cover art sources. That preference  pane will be here:</p>
+<p>Synergy Advance.app/Contents/Resources/PreferencePanes/</p>
+<p>And the cover art plug-ins will be here:</p>
+<p>Synergy Advance.app/Contents/Resources/Plug-ins/</p>
+<p>This is an example of where there is no one-to-one relationship between plug-ins and preference  panes. If a plug-in needs to display custom UI for adjusting its preferences it can embed it in its own  nib file (the-plug-in.bundle/Contents/Resources/the-nib-file.nib) and the preference pane responsible  for that plug-in (and its siblings if there are any) takes care of showing the UI when appropriate.</p>
+<p>All of these details are neatly hidden from the user. Most plug-ins will be bundled inside the Synergy  Advance app bundle (even though it is possible for a user to install additional plug-ins into the  appropriate place in their Library folder). This is true of preference panes too; I could get Synergy  Advance to look for them in the Library folder as well but so far I haven't seen a case where it would be  necessary.</p>
+<p>If you were a plug-in author and really, really, really wanted to put a PreferencePanes subfolder in your  bundle then there's nothing stopping you from doing so, but your app would become responsible for  loading and displaying the pane. I really can't imagine why anyone would want to do this. Most plug- ins, by their nature, will do one small job and nothing more and so there's no need for complicated  preference UIs, we're talking about at most one view for adjusting the settings.</p>
+<p>When I wrote the plug-in handling code I did think about having a system reminiscent of the Mac OS 9  system of having one folder called &quot;Plug-ins&quot; and another called &quot;Plug-ins (disabled)&quot; wherein the user  could disable or enable plug-ins by dragging them from one folder into another. Mac OS X still uses  this style of management in at least one case that I know of (when you uncheck localizations in the  Finder's &quot;Get Info&quot; window for an app).</p>
+<p>In the end I decided to forget that idea because it's impractical for plug-ins inside the Synergy Advance  app bundle itself (which will be most of them), and it just doesn't work at all if you run Synergy Advance  from a read-only volume like a mounted disk image. So instead Synergy Advance maintains a list of  which plug-ins are to be loaded and which are to be disabled, you control this using checkboxes in the  UI, and no moving of plug-ins between folders takes place. This really is the only way to do it on a  multi-user system because it allows each user on the machine to have their personal preferences about  which plug-ins are active and which are not.</p>
+<p>As far as enabling/disabling preference panes goes there's really no need for it. If you don't want a  preference pane to be loaded into memory simply don't ever open it. It won't be loaded into memory  and it won't use any resources. You can look at any of the other preference panes if you wish (ie. the  preferences window doesn't load them all at once, it only loads each pane when and if you decide to  actually open it).</p>
+<p>If you disable a particular plug-in then you'll never see its preference settings in the UI. Note that here  when I say &quot;disable&quot; I mean &quot;prevent it from being loaded into memory&quot;. Some plug-ins may at their  discretion provide a checkbox that enables/disables them in another sense; they will still be loaded into  memory but they won't actually do anything unless turned on.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2054'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2054"><time data-relative="true">2006-07-05T02:05:48Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #188: Synergy hangs after quitting iTunes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #188</div>
+<div class='issue' id='issue_188'>
+<form class="edit_issue" id="edit_issue_188" action="/issues/188" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="YpcEWZMtQSeRXmC4VjDDNLu+nacYxPoitTtV1d1rS+1WZbruNKCbckjSU09nGZCADjz0mxModD6VJIAr+bMsyQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #188:
+<span data-name='issue[summary]'>
+Synergy hangs after quitting iTunes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-17T11:19:34Z</time>, updated <time data-relative="true">2005-04-18T16:17:39Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/alexander-basson">Alexander Basson</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I start iTunes, the floater appears as normal.  Before I updated to Synergy Classic 1.8, the floater  would disappear after I quit iTunes, also as normal.  I updated to Synergy Classic 1.8, and now when I  quit iTunes, not only does the floater remain visible, but when I mouse over the buttons in the menu  bar, I get the spinning beach ball.  While iTunes is running, Synergy appears to function normally -- no  spinning beach ball.  These problems only seem to occur after I've quit iTunes, but then they persist for  hours, even after I put the computer to sleep and then wake it later.  The only solution I've found is to  manually stop Synergy in System Prefernces.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1824'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1824"><time data-relative="true">2005-04-17T11:48:09Z</time></a></span>
+</cite>
+<blockquote><p>Can you try quitting Synergy, dragging your preferences file onto the desktop and trying to reproduce  this bug? This kind of thing is often caused by a corrupt preferences file. The file is at:</p>
+<p>~/Library/Preferences/org.wincent.Synergy.plist</p>
+<p>Let me know how you go.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1825'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1825"><time data-relative="true">2005-04-17T21:25:17Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've tried to reproduce this bug by quitting iTunes many, many, many times while Synergy is  running. On two occasions I saw a beachball which lasted for quite a long time (at least 30 seconds or a  minute). Unfortunately I can't reproduce it reliably.</p>
+<p>I suspect the delay is occurring while Synergy is waiting for a response for iTunes, and it just waits and  waits and waits before finally giving up. I think the default Apple Event timeout is what determines the  length of the hang. I didn't measure it but I would expect it to be an exact number of seconds (like 60,  for example).</p>
+<p>So I've made some changes to hopefully avoid the problem. Now, when running with iTunes 4.7 or later  I avoid communicating with iTunes in the moment immediately following when it stops (which obviously  is what it has to do before quitting). We'll see if this fixes the problem.</p>
+<p>Since making the change I have done more testing (dozens of iTunes launches and quits) and I can't get  it to hang so I am going to specify the fixed-in-prerelease keyword. This will appear in the 1.8.1  release. We'll re-open the issue if the fix doesn't work for everyone.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1826'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1826"><time data-relative="true">2005-04-18T00:33:56Z</time></a></span>
+</cite>
+<blockquote><p>The new version is now on the servers.</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/" class="external">http://wincent.com/a/products/synergy-classic/download/</a></p>
+<p>Official release will take place tomorrow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1827'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1827"><time data-relative="true">2005-04-18T16:17:02Z</time></a></span>
+</cite>
+<blockquote><p>Marking as FIXED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1828'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1828"><time data-relative="true">2005-04-18T16:17:39Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

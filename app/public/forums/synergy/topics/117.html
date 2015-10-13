@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Unable to use *just* function keys
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Unable to use *just* function keys</div>
+<h1 class='major'>Unable to use *just* function keys</h1>
+<div class='topic' id='topic_117'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'>
+<a href="/forums/synergy/topics/117"><time data-relative="true">2005-08-23T17:52:15Z</time></a>
+</span>
+</cite>
+<blockquote><p>Somewhere in the current string of releases, the ability to use solely a function key for a Synergy action (such as play/pause) has been removed </p>
+<p>Any chance of having it back?  A warning to advise against this yes, but for those who do want it this way, surely it could be possible?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_367'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_367"><time data-relative="true">2005-08-24T23:58:33Z</time></a></span>
+</cite>
+<blockquote><p>The ability hasn't been removed. What function keys are you trying to set?</p>
+<p>There are some keys which Mac OS X will never pass through to applications unless they have a modifier key as well (for example, keys like those used to control screen brightness, change the system sound volume, eject the optical drive tray etc, and possibly others already in use by Expos</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_368'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'><a href="#comment_368"><time data-relative="true">2005-08-25T05:01:56Z</time></a></span>
+</cite>
+<blockquote><p>It's telling me (for example) that I cannot use F10 without a modifier key - yet I am already doing that, and it works fine.</p>
+<p>I recently got a Pro keyboard and wanted to move my hot keys around a bit, but have left it as is due to this issue.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_369'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_369"><time data-relative="true">2005-08-25T22:22:56Z</time></a></span>
+</cite>
+<blockquote><p>What do you mean &quot;telling&quot; you that you can't use it? It shouldn't actually tell you anything; it will either work (if the OS passes the keystrokes to it) or not work (if the OS doesn't pass them to it). And are you using the latest version of Synergy?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_370'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'><a href="#comment_370"><time data-relative="true">2005-08-26T12:40:43Z</time></a></span>
+</cite>
+<blockquote><p>Sorry, I meant it wouldn't accept it; i.e. the box displaying the selected keystroke would stay blank after pressing clear.</p>
+<p>It seems on further investigation that the actual issue is that it won't accept F14 through F16 without using modifiers, F1 to F13 work fine without.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_371'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_371"><time data-relative="true">2005-08-26T21:15:00Z</time></a></span>
+</cite>
+<blockquote><p>The OS is intercepting those keys (F14 through to F16). If you try using them without modifiers in any other application that allows you to define hot keys you'll see the same thing happens (the application in question will never receive those key events).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_372'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'><a href="#comment_372"><time data-relative="true">2005-08-27T09:17:51Z</time></a></span>
+</cite>
+<blockquote><p>Quote: The OS is intercepting those keys (F14 through to F16). If you try using them without modifiers in any other application that allows you to define hot keys you'll see the same thing happens (the application in question will never receive those key events). </p>
+<p>How odd, is the system actually using them for something that I am unaware of?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_373'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_373"><time data-relative="true">2005-08-27T22:17:30Z</time></a></span>
+</cite>
+<blockquote><p>I don't know. Perhaps LCD screen brightness? If you don't have an LCD display connected then the keys will have no apparent affect.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

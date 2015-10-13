@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Audioscrobbler with mp3 streams and title support?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Audioscrobbler with mp3 streams and title support?</div>
+<h1 class='major'>Audioscrobbler with mp3 streams and title support?</h1>
+<div class='topic' id='topic_191'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/eto">Eto</a>
+<span class='when'>
+<a href="/forums/synergy/topics/191"><time data-relative="true">2007-01-03T05:44:50Z</time></a>
+</span>
+</cite>
+<blockquote><p>Shouldn't Audioscrobbler be able to support live mp3 streams that are played in iTunes?</p>
+<p>Streams that provide title updates for each track played could (should?) we inserted into the last.fm database (methinks)</p>
+<p>Any chance we can get this supported?</p>
+<ul>
+<li>**************************************************</li>
+</ul>
+<p>Notification received 2007-01-03 11:18:01 +0100:</p>
+<pre>   Name: com.apple.iTunes.playerInfo
+   Info: {
+   Genre = Various; 
+   Location = &quot;<a href="http://broadcast.infomaniak.ch/rsr-couleur3-high.mp3" class="external">http://broadcast.infomaniak.ch/rsr-couleur3-high.mp3</a>&quot;; 
+   Name = &quot;Couleur 3&quot;; 
+   &quot;Player State&quot; = Playing; 
+   &quot;Store URL&quot; = &quot;itms://itunes.com/link?n=Couleur%203&quot;; 
+   &quot;Stream Title&quot; = &quot;The Raconteurs - Together&quot;; 
+   &quot;Stream URL&quot; = &quot;<a href="http://www.couleur3.ch" class="external">http://www.couleur3.ch</a>&quot;; </pre>
+<p>}</p>
+<ul>
+<li>**************************************************</li>
+</ul>
+<p>Notification received 2007-01-03 11:21:42 +0100:</p>
+<pre>   Name: com.apple.iTunes.playerInfo
+   Info: {
+   Genre = Various; 
+   Location = &quot;<a href="http://broadcast.infomaniak.ch/rsr-couleur3-high.mp3" class="external">http://broadcast.infomaniak.ch/rsr-couleur3-high.mp3</a>&quot;; 
+   Name = &quot;Couleur 3&quot;; 
+   &quot;Player State&quot; = Playing; 
+   &quot;Store URL&quot; = &quot;itms://itunes.com/link?n=Couleur%203&quot;; 
+   &quot;Stream Title&quot; = &quot;2 bit pie - Here I come&quot;; 
+   &quot;Stream URL&quot; = &quot;<a href="http://www.couleur3.ch" class="external">http://www.couleur3.ch</a>&quot;; </pre>
+<p>}</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_568'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_568"><time data-relative="true">2007-01-03T07:10:58Z</time></a></span>
+</cite>
+<blockquote><p>Originally Posted By: EtoShouldn't Audioscrobbler be able to support live mp3 streams that are played in iTunes?</p>
+<p>As of right now, the answer is technically no (but that may change in the future; see below).</p>
+<p>The Audioscrobbler support in Synergy was written in compliance with version 1.1 of the Audioscrobbler protocol:</p>
+<p>Quote:If a user is playing a stream instead of a regular file, do not submit that stream/song.</p>
+<p><a href="http://www.audioscrobbler.net/wiki/Protocol1.0_1.1" class="external">http://www.audioscrobbler.net/wiki/Protocol1.0_1.1</a></p>
+<p>However, version 1.2 of the protocol is up on the Audioscrobbler site. Here is a draft:</p>
+<p><a href="http://www.audioscrobbler.net/development/protocol/protocol1.2.php" class="external">http://www.audioscrobbler.net/development/protocol/protocol1.2.php</a></p>
+<p>And here is what looks like the final version:</p>
+<p><a href="http://www.audioscrobbler.net/development/protocol/" class="external">http://www.audioscrobbler.net/development/protocol/</a></p>
+<p>I've seen no official announcement that plug-ins may start using the new protocol yet, but I haven't looked yet and I only stumbled across these 1.2-related pages when preparing this response to your post.</p>
+<p>The new version of the protocol does not say anything about not submitting streams. The 1.2 draft explicitly mentions a new &quot;source&quot; parameter for which one possible value is &quot;broadcast&quot;, but the (apparently) final version of the draft has a lot of this new stuff removed; there is no mention of the &quot;source&quot; parameter and in fact the list of changes from version 1.1 of the protocol is very small.</p>
+<p>So basically, until this is clarified, I think Synergy will have to continue using the same submission policies as before. If the Audioscrobbler folks can clarify the 1.2 protocol then I'll consider switching to it, but as it currently stands there are no advantages to switching protocols for me as a developer or for my users because the changes are just implementation details:</p>
+<p>The handshake now requires some authentication details.Handshake response BADUSER replaced with BADAUTHThe UPDATE response does not provide a URL.Song submission dates are now sent in unixtimestamp format, not YYYY-MM-DD HH:MM:SS.The INTERVAL response does not exist any more.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_569'>
+<cite>
+<a href="/users/eto">Eto</a>
+<span class='when'><a href="#comment_569"><time data-relative="true">2007-01-03T09:29:01Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the quick reply and the clarification.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

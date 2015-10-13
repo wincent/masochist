@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1627: error: 'for' loop initial declarations are only allowed in C99 mode
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1627</div>
+<div class='issue' id='issue_1627'>
+<form class="edit_issue" id="edit_issue_1627" action="/issues/1627" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Abi4eOIhwn+Pmv18u8JdwIyOfxKzPLGkcCj30jVzBSI1SgbPRawYKlYWzouK6w50OQwWLrjQP7hQNyIsEatiBg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1627:
+<span data-name='issue[summary]'>
+error: 'for' loop initial declarations are only allowed in C99 mode
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-07-29T21:24:17Z</time>, updated <time data-relative="true">2010-07-31T04:36:44Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>running make after ruby extconf.rb produces this.</p>
+<pre>gcc -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fno-strict-aliasing -g -g -O2  -fPIC   -c matcher.c
+matcher.c: In function &#x2018;CommandTMatcher_sorted_matchers_for&#x2019;:
+matcher.c:122: error: &#x2018;for&#x2019; loop initial declarations are only allowed in C99 mode
+matcher.c:122: note: use option -std=c99 or -std=gnu99 to compile your code
+matcher.c: In function &#x2018;CommandTMatcher_matches_for&#x2019;:
+matcher.c:155: error: &#x2018;for&#x2019; loop initial declarations are only allowed in C99 mode
+make: *** [matcher.o] Error 1</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5953'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5953"><time data-relative="true">2010-07-30T01:36:01Z</time></a></span>
+</cite>
+<blockquote><p>So it's supposed to be passing in <code>-std=c99</code> but some reason isn't.</p>
+<p>Can you have a look in your <code>~/.vim/ruby/command-t</code> directory and confirm that the <code>depend</code> file is actually there, and that it contains this line:</p>
+<pre>CFLAGS += -std=c99 -Wall -Wextra -Wno-unused-parameter</pre>
+<p>Can you also paste in the generated <code>Makefile</code>? The <code>-std=c99</code> flag should appear in it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5958'>
+<cite>
+<a href="/users/dlazar">dlazar</a>
+<span class='when'><a href="#comment_5958"><time data-relative="true">2010-07-30T12:29:59Z</time></a></span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>There is no depend file in the command-t directory. The file list is:</p>
+<pre>controller.rb
+ext.c
+extconf.rb
+ext.h
+ext.o
+ext.so
+files.txt
+finder.rb
+Makefile
+match.c
+matcher.c
+matcher.h
+matcher.o
+match.h
+match.o
+match_window.rb
+prompt.rb
+ruby_compat.h
+scanner.rb
+settings.rb
+stub.rb</pre>
+<p>And the Makefile is: <a href="http://gist.github.com/500829" class="external">http://gist.github.com/500829</a></p>
+<p>I tried adding the flag in myself and tried make. It returns a piddly subset of what I think should be the results of the Makefile. </p>
+<pre>gcc   -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fno-strict-aliasing -g -g -O2  -fPIC  -std=c99 -c matcher.c
+gcc   -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fno-strict-aliasing -g -g -O2  -fPIC  -std=c99 -c match.c
+gcc   -I. -I/usr/lib/ruby/1.8/x86_64-linux -I/usr/lib/ruby/1.8/x86_64-linux -I. -DHAVE_RUBY_H    -fPIC -fno-strict-aliasing -g -g -O2  -fPIC  -std=c99 -c ext.c
+gcc   -shared -o ext.so matcher.o match.o ext.o -L. -L/usr/lib -L. -Wl,-Bsymbolic-functions -rdynamic -Wl,-export-dynamic    -lruby1.8  -lpthread -lrt -ldl -lcrypt -lm   -lc</pre>
+<p>That was all that was reported. I think when I did this step on OSX, it made a lot more code. Maybe I am mistaken.. but anyway, the result is, still no working command-t.</p>
+<p>Thanks for listening!!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5959'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5959"><time data-relative="true">2010-07-30T12:40:31Z</time></a></span>
+</cite>
+<blockquote><p>Sounds to me like the vimball didn't extract properly, as the <code>depend</code> file is definitely supposed to be there. Can you try and extract it again? ie. open the vimball again:</p>
+<pre class="shell-syntax">$ vim command-t-0.8b.vba</pre>
+<p>And from inside Vim do:</p>
+<pre>:so %</pre>
+<p>Once it is extracted you should have at least all of these files in your <code>~/.vim/ruby/command-t/</code> directory, and possible some other files too (things like <code>*.o</code> and <code>Makefile</code> and <code>mkmf.log</code> files from your first attempt):</p>
+<pre>controller.rb
+depend
+ext.c
+ext.h
+extconf.rb
+finder.rb
+match.c
+match.h
+match_window.rb
+matcher.c
+matcher.h
+prompt.rb
+ruby_compat.h
+scanner.rb
+settings.rb
+stub.rb
+vim/screen.rb
+vim/window.rb
+vim.rb</pre>
+<p>And you can proceed to do <code>ruby extconf.rb &amp;&amp; make</code>.</p>
+<p>If the build seems to be correct but it doesn't work in Vim, let me know what error message is shown and we can try to sort it out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5960'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5960"><time data-relative="true">2010-07-30T12:40:57Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> compiler error</li>
+<li><strong>To:</strong> error: 'for' loop initial declarations are only allowed in C99 mode</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5961'>
+<cite>
+<a href="/users/dlazar">dlazar</a>
+<span class='when'><a href="#comment_5961"><time data-relative="true">2010-07-30T21:08:47Z</time></a></span>
+</cite>
+<blockquote><p>That was it. vimball extraction #2 had all the goods. Everything worked fine second time around. Closed issue. Thanks</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5962'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5962"><time data-relative="true">2010-07-31T04:36:44Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

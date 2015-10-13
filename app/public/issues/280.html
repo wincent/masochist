@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #280: Crash while switching preference panes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #280</div>
+<div class='issue' id='issue_280'>
+<form class="edit_issue" id="edit_issue_280" action="/issues/280" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="XyFogKCkrKDxtdFSVKgJvDF9JrfQ8akOnS1QouhqMv1r09Y3Byl29Sg54qVlgVoIhP9Pi9sdJxK9MoVczLJV2Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #280:
+<span data-name='issue[summary]'>
+Crash while switching preference panes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-07-28T20:19:59Z</time>, updated <time data-relative="true">2006-03-29T07:53:49Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>To reproduce, click as fast as you can to switch between different preference panes. Eventually you will  see a crash (see crash log pasted below). I have received about four crash reports from users and I think  they are seeing the same crash.</p>
+<p>I can't be entirely sure of this but it seems to me that the crash only occurs when switch away from the  &quot;Hot Keys&quot; preference pane. If I switch to and from all the other panes I don't see a crash, but if I switch  to and from the &quot;Hot Keys&quot; preference pane I eventually see the crash. It all happens very fast, but it  appears to me that the crash occurs when you try switching away from the &quot;Hot Keys pane before it  finishes displaying. It may therefore be related to <a href="/issues/225">bug #225</a>. All of this is very subjective but I'll explore  this further and see if I can isolate the cause.</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000000</p>
+<p>Thread 0 Crashed: 0   &lt;&gt; &#x0009;0xfffeff20 objc_msgSend_rtp + 32 1   com.apple.AppKit           &#x0009;0x93649468 -[NSActionCell setObjectValue:] + 68 2   com.apple.AppKit           &#x0009;0x936de284 -[NSTableView _drawContentsAtRow:column:clipRect:] +  368 3   com.apple.AppKit           &#x0009;0x9378385c -[NSOutlineView _drawContentsAtRow:column:clipRect:] +  136 4   com.apple.AppKit           &#x0009;0x936ddc94 -[NSTableView drawRow:clipRect:] + 220 5   com.apple.AppKit           &#x0009;0x937837c0 -[NSOutlineView drawRow:clipRect:] + 184 6   com.apple.AppKit           &#x0009;0x936dda50 -[NSTableView drawRowIndexes:clipRect:] + 108 7   com.apple.AppKit           &#x0009;0x936dd0d8 -[NSTableView drawRect:] + 1144 8   com.apple.AppKit           &#x0009;0x93671d10 -[NSView _drawRect:clip:] + 2128 9   com.apple.AppKit           &#x0009;0x936712e0 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]  + 404 10  com.apple.AppKit           &#x0009;0x93673ff8 _recursiveDisplayInRect2 + 84 11  com.apple.CoreFoundation   &#x0009;0x9075ac24 CFArrayApplyFunction + 416 12  com.apple.AppKit           &#x0009;0x936713f4 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]  + 680 13  com.apple.AppKit           &#x0009;0x93673ff8 _recursiveDisplayInRect2 + 84 14  com.apple.CoreFoundation   &#x0009;0x9075ac24 CFArrayApplyFunction + 416 15  com.apple.AppKit           &#x0009;0x936713f4 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]  + 680 16  com.apple.AppKit           &#x0009;0x93673ff8 _recursiveDisplayInRect2 + 84 17  com.apple.CoreFoundation   &#x0009;0x9075ac24 CFArrayApplyFunction + 416 18  com.apple.AppKit           &#x0009;0x936713f4 -[NSView _recursiveDisplayAllDirtyWithLockFocus:visRect:]  + 680 19  com.apple.AppKit           &#x0009;0x936708b8 -[NSView  _recursiveDisplayRectIfNeededIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:topView:] + 196 20  com.apple.AppKit           &#x0009;0x93670e80 -[NSView  _recursiveDisplayRectIfNeededIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:topView:] + 1676 21  com.apple.AppKit           &#x0009;0x936914dc -[NSThemeFrame  _recursiveDisplayRectIfNeededIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:topView:] + 192 22  com.apple.AppKit           &#x0009;0x9366a52c -[NSView  _displayRectIgnoringOpacity:isVisibleRect:rectIsVisibleRectForView:] + 384 23  com.apple.AppKit           &#x0009;0x9365f830 -[NSView displayIfNeeded] + 248 24  com.apple.AppKit           &#x0009;0x9365f6a0 -[NSWindow displayIfNeeded] + 180 25  com.apple.AppKit           &#x0009;0x9365f54c _handleWindowNeedsDisplay + 200 26  com.apple.CoreFoundation   &#x0009;0x9074af9c __CFRunLoopDoObservers + 352 27  com.apple.CoreFoundation   &#x0009;0x9074b23c __CFRunLoopRun + 420 28  com.apple.CoreFoundation   &#x0009;0x9074acdc CFRunLoopRunSpecific + 268 29  com.apple.HIToolbox        &#x0009;0x93123be0 RunCurrentEventLoopInMode + 264 30  com.apple.HIToolbox        &#x0009;0x931231ec ReceiveNextEventCommon + 244 31  com.apple.HIToolbox        &#x0009;0x931230e0 BlockUntilNextEventMatchingListInMode + 96 32  com.apple.AppKit           &#x0009;0x9362c1a4 _DPSNextEvent + 384 33  com.apple.AppKit           &#x0009;0x9362be68 -[NSApplication  nextEventMatchingMask:untilDate:inMode:dequeue:] + 116 34  com.apple.AppKit           &#x0009;0x936283cc -[NSApplication run] + 472 35  com.apple.AppKit           &#x0009;0x93718c1c NSApplicationMain + 452 36  com.wincent.SynergyAdvance &#x0009;0x00007b08 0x1000 + 27400 37  com.wincent.SynergyAdvance &#x0009;0x0000797c 0x1000 + 27004</p>
+<p>Thread 1: 0   libSystem.B.dylib          &#x0009;0x9002f68c kevent + 12 1   com.wincent.WOBase         &#x0009;0xc8016ec4 0xc8000000 + 93892 2   com.apple.Foundation       &#x0009;0x9287cf34 forkThreadForFunction + 108 3   libSystem.B.dylib          &#x0009;0x9002c3d4 _pthread_body + 96</p>
+<p>Thread 2: 0   libSystem.B.dylib          &#x0009;0x9002ca98 semaphore_wait_signal_trap + 8 1   libSystem.B.dylib          &#x0009;0x9003127c pthread_cond_wait + 508 2   com.apple.Foundation       &#x0009;0x928840a0 -[NSConditionLock lockWhenCondition:] + 68 3   com.apple.AppKit           &#x0009;0x936c8b58 -[NSUIHeartBeat _heartBeatThread:] + 324 4   com.apple.Foundation       &#x0009;0x9287cf34 forkThreadForFunction + 108 5   libSystem.B.dylib          &#x0009;0x9002c3d4 _pthread_body + 96</p>
+<p>Thread 0 crashed with PPC Thread State 64:</p>
+<pre> srr0: 0x00000000fffeff20 srr1: 0x100000000200f930                        vrsave: 0x0000000000000000
+   cr: 0x44022228          xer: 0x0000000000000000   lr: 0x0000000093649468  ctr: </pre>
+<p>0x0000000093637628</p>
+<pre>   r0: 0x0000000016fc2a48   r1: 0x00000000bfffd510   r2: 0x0000000000000000   r3: </pre>
+<p>0x0000000016ff53b0</p>
+<pre>   r4: 0x0000000090a1a784   r5: 0x00000000d0012cc8   r6: 0x00000000ffffffff   r7: </pre>
+<p>0x000000000000006e</p>
+<pre>   r8: 0x000000000000006e   r9: 0x0000000000000028  r10: 0x00000000d000dff4  r11: </pre>
+<p>0x000000006f5fa784</p>
+<pre>  r12: 0x0000000016ffa88b  r13: 0x0000000000000000  r14: 0x00000000bfffe550  r15: </pre>
+<p>0x0000000000000000</p>
+<pre>  r16: 0x0000000016f859d0  r17: 0x0000000000000000  r18: 0x0000000000000000  r19: </pre>
+<p>0x0000000000000000</p>
+<pre>  r20: 0x00000000a36607f4  r21: 0x00000000ffffffff  r22: 0x00000000bfffd880  r23: </pre>
+<p>0x0000000000000000</p>
+<pre>  r24: 0x0000000000000000  r25: 0x00000000d0012cc8  r26: 0x00000000d0012cc8  r27: </pre>
+<p>0x0000000000000000</p>
+<pre>  r28: 0x0000000014c11db0  r29: 0x0000000016ff53b0  r30: 0x0000000014c11db0  r31: </pre>
+<p>0x0000000093649424</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2154'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2154"><time data-relative="true">2005-07-28T20:23:40Z</time></a></span>
+</cite>
+<blockquote><p>You can slow down the transition between panes by holding the shift key while clicking. I can reproduce  this crash almost 100% of the time if start from the &quot;Advanced&quot; pane, hold the shift key, and then click on  the &quot;Hot Keys&quot; pane. In fact, I can reproduce it even without the Shift key.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2155'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2155"><time data-relative="true">2005-07-29T18:58:39Z</time></a></span>
+</cite>
+<blockquote><p>Ok this is now fixed. Adding fixed-in-prerelease keyword.  As an added bonus while I was working on  solving this problem I was able to find various places in the code where I could speed up the switching.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2156'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2156"><time data-relative="true">2005-07-30T04:28:18Z</time></a></span>
+</cite>
+<blockquote><p>People who don't want to wait until 0.3 comes out and wish to try a build which includes the fix can  download it from here:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-advance/download/SynergyAdvance2005-07-29-2.dmg" class="external">http://us.wincent.com/a/products/synergy-advance/download/SynergyAdvance2005-07-29-2.dmg</a></p>
+<p>SHA1 checksum: 888e30fb6b38dd57d2dfbe1fbef0854a7cd53901</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2157'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2157"><time data-relative="true">2006-03-29T07:53:49Z</time></a></span>
+</cite>
+<blockquote><p>This fix is now available in the just-released version 0.4b. For more information:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php" class="external">http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

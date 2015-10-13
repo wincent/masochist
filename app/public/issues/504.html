@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #504: REQUEST: Better alternative to &quot;Don't save&quot;/&quot;Save&quot; buttons in Audioscrobbler preferences
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #504</div>
+<div class='issue' id='issue_504'>
+<form class="edit_issue" id="edit_issue_504" action="/issues/504" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="mWs4XVriQNbXVfcV9z3XmADSLFICnzZtIUnsCfp9aDmtmYbq/W+agw7ZxOLGFIQstVBFbglzuHEBVjn33qUPHQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #504:
+<span data-name='issue[summary]'>
+REQUEST: Better alternative to &quot;Don't save&quot;/&quot;Save&quot; buttons in Audioscrobbler preferences
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-11-15T01:47:07Z</time>, updated <time data-relative="true">2006-11-18T12:29:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>you should have a &quot;cancel&quot; button on the username panel</p>
+</blockquote>
+<p>My reply:</p>
+<blockquote>
+<p>Well, the &quot;Don't save&quot; button acts exactly like a &quot;Cancel&quot; button does; ie. it leaves things exactly the way they were before you opened the sheet. It's not like a document-based application where there is a difference between &quot;Cancel&quot; (which means, &quot;I don't want to quit/close after all; keep the document open&quot;) and &quot;Don't save&quot; (which means &quot;quit/close without saving&quot;).</p>
+</blockquote>
+<blockquote>
+<p>I don't know how to make this clearer in the UI. I think &quot;Don't save&quot; more closely matches what is actually happening (the sheet is dismissed without committing the changes) but there may be other users who see it and think the same you did (ie. &quot;why doesn't this sheet have a cancel button?&quot;). I'll think about what to do, anyway. We'll see if others write in with the same feedback.</p>
+</blockquote>
+<p>User's reply:</p>
+<blockquote>
+<p>Here's a screenshot from Last.fm's app... it definitely makes more</p>
+</blockquote>
+<p>sense, at least to me: <a href="http://flickr.com/photos/factoryjoe/297618917/" class="external">http://flickr.com/photos/factoryjoe/297618917/</a></p>
+<p>So the screenshot shows a preferences panel with four buttons:</p>
+<p>- &quot;Reset to defaults&quot; - &quot;OK&quot; - &quot;Cancel&quot; - &quot;Apply&quot;</p>
+<p>So I'm opening this enhancement request so that people can post feedback on what they'd think is the clearest/best option. Basically we have the following alternatives:</p>
+<p>1. Stick with existing &quot;Don't save&quot;, &quot;Save&quot; buttons</p>
+<p>2. Relabel existing &quot;Don't save&quot; button as &quot;Cancel&quot; instead</p>
+<p>3. Relabel both existing buttons as &quot;Cancel&quot;, &quot;Apply&quot;</p>
+<p>4. Throw existing buttons out the window and go with &quot;OK&quot;, &quot;Cancel&quot;, &quot;Apply&quot;</p>
+<p>My personal take on this is that we should rule out Option 4 straight away; Apple's Human Interface Guidelines recommend against buttons labelled &quot;OK&quot; and instead recommend verb-based actions, like &quot;Apply&quot; or &quot;Save&quot;. Also, in the case of the sheet in question, it doesn't make much sense to differentiate between &quot;Apply&quot; and &quot;OK&quot; seeing as you really just want a button that saves the changes and dismisses the sheet (what would be the sense in having an &quot;Apply&quot; button which would save the changes but not dimiss the sheet?).</p>
+<p>To me the existing option, Option 1, is perfectly clear, but it may be worth switching to Option 3 because the &quot;Don't save&quot;/&quot;Save&quot; pattern may be confusing if users associate it more with the document-based application paradigm. So if there is to be a change I would probably vote for Option 3. I think that Option 2 is too weak; it changes just enough to meet the initial request for a &quot;Cancel&quot; button, but at the cost of having an asymmetric/unfamiliar/inconsistent pairing of &quot;Cancel&quot;/&quot;Save&quot;.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2869'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2869"><time data-relative="true">2006-11-18T12:29:26Z</time></a></span>
+</cite>
+<blockquote><p>Adding &quot;audioscrobbler&quot; keyword so that I can easily find all Audioscrobbler-related feature requests and bug reports.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1752: Namespace clash on Windows (&quot;ruby VIM::command&quot; actually hits &quot;CommandT::VIM::command&quot;)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1752</div>
+<div class='issue' id='issue_1752'>
+<form class="edit_issue" id="edit_issue_1752" action="/issues/1752" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="b3Gclx+o9qhvVjwJwjo6SZKUxMAsz1JBHRqP64xPkcNbgyIguCUs/bbaD/7zE2n9Jxat/Ccj3F09BVoVqJf25w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1752:
+<span data-name='issue[summary]'>
+Namespace clash on Windows (&quot;ruby VIM::command&quot; actually hits &quot;CommandT::VIM::command&quot;)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-12-03T10:39:35Z</time>, updated <time data-relative="true">2012-02-05T21:37:34Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>On this Windows XP machine running VIM 7.2 and same version of Ruby 1.8.7 as in the Command-T documentation, I see an error like the following on trying to open certain files (but strangely, not all files):</p>
+<pre>line 74
+NoMethodError: undefined method `command' for CommandT::VIM:Module</pre>
+<p>And:</p>
+<pre>Undefined variable s:rubypath
+Invalid expression s:rubypath</pre>
+<p>The error doesn't actually stop Command-T from opening the file, it is just shown in the status line.</p>
+<p>After updating to the 1.0 Command-T release the error continues, but now with a little more information shown at the top:</p>
+<pre>Error detected while processing C:\Program files\Vim\vim72\ftplugin\ruby.vim</pre>
+<p>Here is an excerpt from that file around line 74:</p>
+<pre>if !exists(&quot;s:rubypath&quot;)
+  if has(&quot;ruby&quot;) &amp;&amp; has(&quot;win32&quot;)
+    ruby VIM::command( 'let s:rubypath = &quot;%s&quot;' % ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,}) )
+    let s:rubypath = '.,' . substitute(s:rubypath, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+  elseif executable(&quot;ruby&quot;)
+    let s:code = &quot;print ($: + begin; require %q{rubygems}; Gem.all_load_paths.sort.uniq; rescue LoadError; []; end).join(%q{,})&quot;
+    if &amp;shellxquote == &quot;'&quot;
+      let s:rubypath = system('ruby -e &quot;' . s:code . '&quot;')
+    else
+      let s:rubypath = system(&quot;ruby -e '&quot; . s:code . &quot;'&quot;)
+    endif
+    let s:rubypath = '.,' . substitute(s:rubypath, '\%(^\|,\)\.\%(,\|$\)', ',,', '')
+  else
+    &quot; If we can't call ruby to get its path, just default to using the
+    &quot; current directory and the directory of the current file.
+    let s:rubypath = &quot;.,,&quot;
+  endif
+endif</pre>
+<p>As you can see, the <code>ruby VIM::command</code> call is somehow referencing <code>CommandT::VIM</code>, which seems pretty strange.</p>
+<p>The workaround for now is to edit the <code>ftplugin\ruby.vim</code> file to instead explicitly reference the top-level VIM module:</p>
+<pre>ruby ::VIM::command(...)</pre>
+<p>Not sure if this is a common problem when running Command-T on Windows. If it is, it might be worth renaming the <code>CommandT::VIM</code> module to something else to avoid confusion. (It is a shame that this is necessary, as the whole point of putting the VIM extensions inside the <code>CommandT</code> namespace is to avoid this kind of issue.)</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_6615'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6615"><time data-relative="true">2011-01-30T09:30:39Z</time></a></span>
+</cite>
+<blockquote><p>I'm getting the same undefined method error as of <a href="/repos/command-t/commits/85fd8b0ce657f772ad9c1c50fe502e08ca2bf04c">85fd8b0ce657f772ad9c1c50fe502e08ca2bf04c</a>, and I see that the references to the command method have all been prefixed with ::VIM:: as of that revision. This makes even less sense than the original bug report. I'm also on OS X Snow Leopard (stock Ruby 1.8.7), so it's certainly not a Windows thing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6616'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6616"><time data-relative="true">2011-01-30T13:15:52Z</time></a></span>
+</cite>
+<blockquote><p>Funnily enough I can't repro on <a href="/wiki/Mac_OS_X">Mac OS X</a>. If you discover any pattern or underlying cause, do let me know. I'm hesitant to make any changes until I actually understand <em>why</em> this anomalous behavior is occurring.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6833'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6833"><time data-relative="true">2011-04-27T22:51:09Z</time></a></span>
+</cite>
+<blockquote><p>Had the same issue. I think the problem is that CommandT defines VIM module. As result some plugins, that did not take care to preceed VIM with ::VIM start to fail. I tried to replace CommandT declaration for VIM with XVIM (just to avoid conflicts), and now it works.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6835'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6835"><time data-relative="true">2011-04-28T03:47:28Z</time></a></span>
+</cite>
+<blockquote><p>CommandT is defining <code>CommandT::VIM</code>, so as to leave the <code>VIM</code> in the global namespace untouched (<code>::VIM</code>). As this is standard Ruby practice, not really sure why it shouldn't work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7288'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7288"><time data-relative="true">2011-11-30T18:53:45Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/forums/command-t/topics/493">this forum topic</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7299'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7299"><time data-relative="true">2011-12-01T17:23:34Z</time></a></span>
+</cite>
+<blockquote><p>As I said, I don't really understand <em>why</em> this is happening, but I think am going to define <code>method_missing</code> on <code>CommandT::VIM</code> and just have it call the missing methods on <code>::VIM</code> as a workaround.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7300'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7300"><time data-relative="true">2011-12-01T17:23:49Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7408'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7408"><time data-relative="true">2012-02-05T21:28:59Z</time></a></span>
+</cite>
+<blockquote><p>this is solved on 30.11 in <a href="https://github.com/vim-ruby/vim-ruby/commit/a20098a4844069106c71643ad4f5682707966d85" class="external">https://github.com/vim-ruby/vim-ruby/commit/a20098a4844069106c71643ad4f5682707966d85</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7409'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7409"><time data-relative="true">2012-02-05T21:37:05Z</time></a></span>
+</cite>
+<blockquote><p>As this is essentially a cosmetic issue now, and the fix is upstream, going to mark this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7410'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7410"><time data-relative="true">2012-02-05T21:37:34Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

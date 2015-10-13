@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Does Command-T support wildcards?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Does Command-T support wildcards?</div>
+<h1 class='major'>Does Command-T support wildcards?</h1>
+<div class='topic' id='topic_466'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/466"><time data-relative="true">2011-04-06T22:04:47Z</time></a>
+</span>
+</cite>
+<blockquote><p>It's a great plugin, but I have not found anything on wildcards support in the docs. For example, ability to partially supply file name:</p>
+<pre>*File*Should*Contain*This*</pre>
+<p>will find all files that contain words File Should Contain This in that order and anything in between them. </p>
+<p>Is this supported in Command-T currently?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6791'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6791"><time data-relative="true">2011-04-07T04:04:15Z</time></a></span>
+</cite>
+<blockquote><p>There is no need to use explicit wildcards as when you type:</p>
+<pre>FileShouldContainThis</pre>
+<p>it will match those chars anywhere in the path. (Note that you should include some letters from the path, not just the filename, so that you narrow down the possible result set more quickly.) In other words it is if there were implicit wildcards between each pair of letters:</p>
+<pre>*F*i*l*e*S*h*o*u*l*d*C*o*n*t*a*i*n*T*h*i*s*</pre>
+<p>And Command-T will exhaustively search for the highest-scoring way of matching that search string against all the paths in the project. This means that runs of consecutive characters will tend to score more highly, intuitively giving what you are most likely looking for.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6793'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6793"><time data-relative="true">2011-04-09T17:20:09Z</time></a></span>
+</cite>
+<blockquote><p>Sure, I noticed that after some use. However, because of this way of matching I usually get things that I don't want as top hit even when I type full file name.</p>
+<p>I work on a large (over 3 million lines of code) project with over 57,000 relevant files (and up to 3 times as many build artifacts that I don't need to search), and having matches be greedy is not desirable. Also, command-T starts getting slow if CommanTMaxFiles is set over 20,000 files (I set it to 100,000 and rather extensive wildignore filter which helps but the initial scan is then much slower). </p>
+<p>Overall very useful plugin functionality, but I'm wondering if it would benefit from even more parts written in C?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6795'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6795"><time data-relative="true">2011-04-09T22:28:30Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>However, because of this way of matching I usually get things that I don't want as top hit even when I type full file name.</p>
+</blockquote>
+<p>You're using it wrong. On a large project you should be typing some characters from the earlier components of the path, not just in the filename. This will narrow down the search sooner more quickly and allow you to zero in on the file you want in fewer key strokes.</p>
+<p>eg. given file <code>foo/bar/baz/bing/bong</code>, an ideal search would be &quot;fbbbb&quot; rather than &quot;bong&quot;, because it will help you zero in on the <code>bong</code> that you really want to open, and not some other <code>bong</code> in a different subdirectory elsewhere in the project.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6796'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6796"><time data-relative="true">2011-04-10T13:31:29Z</time></a></span>
+</cite>
+<blockquote><p>Yes, but that does not work because the files are in the same path and have same file part names:</p>
+<pre>./a/b/c/d/e/f/TestResult.js
+./a/b/c/d/e/f/TestResultEditor.js
+./a/b/c/d/e/f/TestResultEditorView.js</pre>
+<p>etc. and I want say TestResultEditor one. But it's not on top no matter what I type. </p>
+<p>Also, one of the compelling reasons to use Command-T is exactly that I don't have to remember which path the file is in. Trust me when you work on a project of this complexity and size, it becomes rather hard to know which path the file is, but I often know the file name. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6797'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6797"><time data-relative="true">2011-04-10T23:40:14Z</time></a></span>
+</cite>
+<blockquote><p>The entire design of the plug-in is predicated on the fact that you know where the stuff you're looking for is.</p>
+<p>When I wrote it, there were already various plug-ins out there that do exactly what you describe (ie. &quot;file-centric&quot; opening of files). The whole reason I wrote Command-T was that I wasn't satisified with this approach and I wanted a way to quickly open files using a &quot;path-centric&quot; mentality.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

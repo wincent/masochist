@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+iTunes 7 Skipped Track does not increment
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; iTunes 7 Skipped Track does not increment</div>
+<h1 class='major'>iTunes 7 Skipped Track does not increment</h1>
+<div class='topic' id='topic_170'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/paul-turnbull">Paul Turnbull</a>
+<span class='when'>
+<a href="/forums/synergy/topics/170"><time data-relative="true">2006-09-12T22:13:51Z</time></a>
+</span>
+</cite>
+<blockquote><p>When I use Synergy to skip a track the new skipped track fields do not update in iTunes 7.  </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_467'>
+<cite>
+<a href="/users/tikilab">tikilab</a>
+<span class='when'><a href="#comment_467"><time data-relative="true">2006-09-13T20:49:30Z</time></a></span>
+</cite>
+<blockquote><p>Well, seeing as &quot;Skip Count&quot; has only been public for a day or so, I can understand why it's not supported yet...  </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_468'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_468"><time data-relative="true">2006-09-13T21:30:50Z</time></a></span>
+</cite>
+<blockquote><p>Strange, I would have expected iTunes to handle that automatically. Synergy is sending a &quot;next track&quot; Apple Event, so you'd expect iTunes to automatically increment the counter.</p>
+<p>Actually, I'm not sure what the counter is supposed to mean at all... in my tests when I skip tracks from within iTunes (when Synergy is not even running) the counter does not update. This when playing in the main library, shuffle turned off.</p>
+<p>Anyone know what I have to do to get it to update? When is it supposed to update?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_469'>
+<cite>
+<a href="/users/paul-turnbull">Paul Turnbull</a>
+<span class='when'><a href="#comment_469"><time data-relative="true">2006-09-13T22:50:20Z</time></a></span>
+</cite>
+<blockquote><p>I just did some testing and for me using the forward button will cause the skip count to increment if I have not manually moved forward in the song.</p>
+<p>It does seem odd that a next track apple event does not cause the counter to increment.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_470'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_470"><time data-relative="true">2006-09-14T06:16:36Z</time></a></span>
+</cite>
+<blockquote><p>An issue has been opened in the bug and feature requests database:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=469" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=469</a></p>
+<p>If possible, please try and add any further comments to the bug database, so that all the information relating to this issue is in one place.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_471'>
+<cite>
+<a href="/users/paul-turnbull">Paul Turnbull</a>
+<span class='when'><a href="#comment_471"><time data-relative="true">2006-09-14T09:16:00Z</time></a></span>
+</cite>
+<blockquote><p>Thanks Wincent!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_472'>
+<cite>
+<a href="/users/elio-grieco">Elio Grieco</a>
+<span class='when'><a href="#comment_472"><time data-relative="true">2006-09-17T19:50:49Z</time></a></span>
+</cite>
+<blockquote><p>I think there is confusion as to what skipped means.</p>
+<p>When I am in the Party Shuffle playlist and I skip forward (even through Synergy) the skipped count updates if the song has only been playing for about 10 seconds but, not if I'm half way through. Also, if I skip backwards and then forward again the count does not increment.</p>
+<p>Unfortunately I do not know what the rules are but I suspect they are a lot more complicated than &quot;every time you skip forward&quot;.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

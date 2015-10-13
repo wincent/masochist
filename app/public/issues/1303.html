@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1303: &quot;Redirect&quot; feature for tags
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1303</div>
+<div class='issue' id='issue_1303'>
+<form class="edit_issue" id="edit_issue_1303" action="/issues/1303" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="6IqxiwPAkpjQn/uEuJvXywJnWSrDUEnc1DSnKPeNRFXceA88pE1IzQkTyHOJsoR/t+UwFsi8x8D0K3LW01UjcQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1303:
+<span data-name='issue[summary]'>
+&quot;Redirect&quot; feature for tags
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-05-29T06:49:35Z</time>, updated <time data-relative="true">2015-05-04T16:07:09Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The problem:</p>
+<ul>
+<li>I am in the bad habit of tagging things with &quot;upgrades&quot; when I really mean &quot;updates&quot;</li>
+</ul>
+<p>The solution:</p>
+<ul>
+<li>&quot;Redirect&quot; the &quot;upgrades&quot; tag to &quot;updates&quot;</li>
+</ul>
+<p>Not really sure how this would play out in practice, or even if it is a good idea or not, but it's something to think about.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5712'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5712">Created <time data-relative="true">2010-06-18T19:15:12Z</time>, edited <time data-relative="true">2010-09-05T16:40:31Z</time></a></span>
+</cite>
+<blockquote><p>Been thinking about this and I think the right way to implement this is the following:</p>
+<p>We have a model, final name to be decided, called <code>TagCorrection</code>, <code>TagTransform</code>, <code>TagTransformation</code>, <code>TagAlias</code> or similar.</p>
+<p>It basically has two attributes: original tag names and what it should be corrected/transformed to.</p>
+<pre>original    | corrected
+--------------------------
+upgrade     | updates
+upgrades    | updates
+update      | updates
+unittesting | unit.testing</pre>
+<p>This table is consulted at two times:</p>
+<ol>
+<li>When tags are added to a record ie. each tag is checked to see if it should be transformed before being added</li>
+<li>When new additions are added to the table&#x00a0;(or an existing entry is modified), we run through all tags in the database and check for names which should be transformed</li>
+</ol>
+<p>To illustrate those two scenarios:</p>
+<p>First, we create a new wiki article &quot;Updating to Foo 2.0&quot;, and mistakenly tag it with &quot;foo update&quot;. &quot;foo&quot; is checked in the correction table and not found, so it gets added without modification. &quot;updates&quot; is found in the table, so gets transformed to &quot;updates&quot; before being added. The place where this check would be performed would be in the <code>parse_tag_list</code> method, most likely. It would add a single database query to the process, because we could query for all tags in one go.</p>
+<p>Second, with a lot of articles in the database tagged with &quot;foo&quot;, the &quot;Foo&quot; project changes its name to &quot;Bar&quot;. So we add <code>foo -&gt; bar</code> to our corrections table. At that point we check the &quot;tags&quot; table for a tag called &quot;foo&quot;, and rename it to &quot;bar&quot;. If it is a duplicate, validation will fail and the database-level constraint will kick in anyway, so we have to be ready to handle that case (most likely by iterating through all &quot;foo&quot; tags and retagging the associated objects with the existing &quot;bar&quot; tag.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5715'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5715"><time data-relative="true">2010-06-19T03:49:39Z</time></a></span>
+</cite>
+<blockquote><p>I've made some more notes about the finer details, but no time to enter them here now so will have to do that after the weekend.</p>
+<p>One thing I will note now though is that I did think about a &quot;non-destructive&quot; version of this operation (the operation is destructive because it's irreversible; if you change 1,000 records with tag &quot;foo&quot; to &quot;bar&quot; then there's no way to go back to tagging them as &quot;foo&quot; without doing it for each one, unless you can change all &quot;bar&quot;-tagged items to &quot;foo&quot; again, which might not be an option).</p>
+<p>The solution would be to add a new column to the <code>tags</code> table which would be like an &quot;alias&quot; column. Given tag &quot;foo&quot; with alias &quot;3&quot;, you'd look up the tag with id 3 to find out what the authoritative name for the tag was.</p>
+<p>While this is nice and non-destructive, it could potential add a bunch of queries, especially on pages with a lot of tags.</p>
+<p>In the end, I don't think the trade-off is worth it, and the optimal solution is to just go with the &quot;destructive&quot; updates and trust the admin to know what he's doing when managing tags.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5723'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5723"><time data-relative="true">2010-06-21T08:59:22Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so some of those &quot;finer details&quot; I mentioned earlier.</p>
+<p>First up, all this logic can be neatly packed into a <code>TagTransform</code> observer which fires on <code>after_save</code> and/or <code>after_create</code>.</p>
+<p>Now, let's look at the &quot;renaming&quot; a tag case again.</p>
+<h3>Case 1: tag &quot;foo&quot; renamed to tag &quot;bar&quot; (new tag)</h3>
+<p>As noted above, if &quot;bar&quot; doesn't already exist, the operation succeeds and all is easy.</p>
+<h3>Case 2: tag &quot;foo&quot; renamed to tag &quot;baz&quot; (existing tag)</h3>
+<p>When we try to save the renamed tag we'll get a <code>ActiveRecord::RecordInvalid</code> exception (ie. if we do <code>save!</code> rather than <code>save</code>).</p>
+<p>Even if it weren't for the uniqueness validation, we'd fail at the level of database constraint (<code>ActiveRecord::RecordNotUnique</code>).</p>
+<p>So in this case, what do we do?</p>
+<p>If the save fails due to a validation error <em>and</em> the error is on the &quot;name&quot; attribute <em>and</em> it is about uniqueness, then we can proceed to look at the <code>taggings</code> table.</p>
+<p>We can't just do an <code>UPDATE ALL</code> to change all taggings that point at &quot;old_tag&quot; to point at &quot;new_tag&quot; instead, because this table too has a uniqueness constraint, and if it gets triggered by <em>any</em> of the changed taggings then <em>all</em> of the changes will be rolled back.</p>
+<p>This can happen, say, when an item is already tagged with &quot;baz&quot;, and we try to change the &quot;foo&quot; tag on it to &quot;baz&quot; as well.</p>
+<p>So I guess the approach here is to first try <code>UPDATE ALL</code> (for speed), and if it fails with an <code>ActiveRecord::RecordNotUnique</code> exception then iterate painstakingly through each tagging that needs to be changed. For each which fails (with the same exception), we just destroy the tagging, because we know a duplicate already exists.</p>
+<p>The alternative is to find out the affected taggables and loop through them, use the high level <code>tag</code> method to just retag them all over again, and triggered the standard logic which gets applied whenever creating new tags.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6215'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6215"><time data-relative="true">2010-09-04T22:32:15Z</time></a></span>
+</cite>
+<blockquote><p>Another idea to play with:</p>
+<ul>
+<li>Instead of having a separate table, add a new column to the <code>tags</code> table containing the desired transformation.</li>
+</ul>
+<p>Or:</p>
+<ul>
+<li>Instead of having a table with two columns (for tag name and correction), use some kind of Active Record association (ie. the correction &quot;belongs to&quot; the tag)</li>
+</ul>
+<p>Or:</p>
+<ul>
+<li>A combination of these two ideas, in which the extra column contains a tag ID rather than a string</li>
+</ul>
+<p>Will need to think through the implications of each of these ideas.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6219'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6219"><time data-relative="true">2010-09-06T23:12:35Z</time></a></span>
+</cite>
+<blockquote><p>Would have liked to knock this one off today but unfortunately was busy with other stuff. Did at least get some refactoring and clean up of the tagging code done though, which will lay some groundwork for this feature:</p>
+<pre>b4a94e4 Refactor 'save_pending_tags' callback for efficiency
+63d5e18 Make counter cache decrement properly after untagging
+2545e27 Reformat ActsAsTaggable specs
+efacb1f Be more specific about ignored exception in add_tag method
+d93802f Tidy up parse_tag_list implementation</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9789'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9789"><time data-relative="true">2012-07-27T15:41:33Z</time></a></span>
+</cite>
+<blockquote><p>A new use case: <a href="/wiki/Apple">Apple</a> has officially rebranded <a href="/wiki/Mac_OS_X">Mac OS X</a> as <a href="/wiki/OS_X">OS X</a>.</p>
+<p>Want all those items tagged with &quot;mac.os.x&quot; to be redirected to &quot;os.x&quot;.</p>
+<p>In this case, simply renaming the tag might be easiest. That might break some existing links.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13071'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13071"><time data-relative="true">2015-05-04T16:07:09Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

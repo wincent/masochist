@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2111: Broken test suite
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2111</div>
+<div class='issue' id='issue_2111'>
+<form class="edit_issue" id="edit_issue_2111" action="/issues/2111" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="lRSiS+0Re2uT/cya6EBustfw0rXGAeK9k4HFrTFhFACh5hz8SpyhPkpx/23ZaT0GYnK7ic3tbKGznhBTFblzJA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2111:
+<span data-name='issue[summary]'>
+Broken test suite
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-09-23T14:37:01Z</time>, updated <time data-relative="true">2013-12-19T13:18:45Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/vit-ondruch">Vit Ondruch</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>It seems that test suite is broken by <a href="http://git.wincent.com/command-t.git/commit/5af67820ce5a698e12c5b4df09f424cc3f9b3d73" class="external">http://git.wincent.com/command-t.git/commit/5af67820ce5a698e12c5b4df09f424cc3f9b3d73</a></p>
+<p>It fails with messages like:</p>
+<p>$ rspec spec</p>
+<p>... snip</p>
+<pre> 1) CommandT::Controller accept selection opens relative paths inside the working directory
+    Failure/Error: finder = CommandT::FileFinder.new
+    NoMethodError:
+      undefined method `evaluate' for VIM:Module
+    # ./ruby/command-t/vim.rb:34:in `exists?'
+    # ./ruby/command-t/vim.rb:46:in `wild_ignore'
+    # ./ruby/command-t/scanner/file_scanner.rb:42:in `initialize'
+    # ./ruby/command-t/finder/file_finder.rb:31:in `new'
+    # ./ruby/command-t/finder/file_finder.rb:31:in `initialize'
+    # ./spec/command-t/controller_spec.rb:70:in `new'
+    # ./spec/command-t/controller_spec.rb:70:in `stub_finder'
+    # ./spec/command-t/controller_spec.rb:35:in `block (3 levels) in &lt;top (required)&gt;'</pre>
+<p>I am going to comment out <a href="http://git.wincent.com/command-t.git/blob/HEAD:/ruby/command-t/scanner/file_scanner.rb#l42" class="external">http://git.wincent.com/command-t.git/blob/HEAD:/ruby/command-t/scanner/file_scanner.rb#l42</a> in Fedora's package to execute the test suite, but this is hardly optimal fix.</p>
+<p>May be I should run the test suite inside VIM somehow? That would definitely help. I tried something like:</p>
+<p>$ vim dummy '+:ruby require &quot;rspec&quot;' '+:ruby $LOAD_PATH.unshift &quot;/builddir/build/BUILD/vim-command-t-1.5/spec/&quot;' '+:ruby RSpec::Core::Runner.run([&quot;/builddir/build/BUILD/vim-command-t-1.5/spec/&quot;])' '+:q!'</p>
+<p>but it fails with 'NoMethodError: private method <code>puts' called for #&lt;Object:0x00000001fac278&gt;&quot; error :/</code></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10511'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10511"><time data-relative="true">2013-09-23T20:35:15Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for catching this. I'll fix this evening.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10513'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10513"><time data-relative="true">2013-09-24T02:17:44Z</time></a></span>
+</cite>
+<blockquote><p>Should be fixed here:</p>
+<p><a href="http://git.wincent.com/command-t.git/commit/3cf0eaf24b19546259f02a15c3ed9a10849f4825" class="external">http://git.wincent.com/command-t.git/commit/3cf0eaf24b19546259f02a15c3ed9a10849f4825</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10514'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10514"><time data-relative="true">2013-09-24T02:17:52Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_10787'>
+<cite>
+<a href="/users/vit-ondruch">Vit Ondruch</a>
+<span class='when'><a href="#comment_10787"><time data-relative="true">2013-12-19T13:18:45Z</time></a></span>
+</cite>
+<blockquote><p>Thanks. I am testing 1.6 now and the test suite passes.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

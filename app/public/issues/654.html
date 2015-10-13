@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #654: Numerous crash
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #654</div>
+<div class='issue' id='issue_654'>
+<form class="edit_issue" id="edit_issue_654" action="/issues/654" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OGDbyW8YehujgMQqljmegm9xXxI/MIKdmxiRIU43x7sMkmV+yJWgTnoM992nEM022vM2LjTcDIG7B0Tfau+gnw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #654:
+<span data-name='issue[summary]'>
+Numerous crash
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-02-27T12:02:43Z</time>, updated <time data-relative="true">2008-03-12T11:17:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/michel-ricart">Michel Ricart</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Created an attachment (id=152) Crash info</p>
+<p>I get numerous and random crashes for no apparent reason - see in ~/Library/Logs/CrashReporter: Synergy_2008-02-21-191851_MRMB.crash Synergy_2008-02-21-192653_MRMB.crash Synergy_2008-02-22-093836_MRMB.crash Synergy_2008-02-22-104240_MRMB.crash Synergy_2008-02-22-104931_MRMB.crash Synergy_2008-02-22-105410_MRMB.crash Synergy_2008-02-22-110726_MRMB.crash Synergy_2008-02-22-121122_MRMB.crash Synergy_2008-02-22-132732_MRMB.crash Synergy_2008-02-22-135715_MRMB.crash Synergy_2008-02-22-161925_MRMB.crash Synergy_2008-02-22-162420_MRMB.crash Synergy_2008-02-22-162813_MRMB.crash Synergy_2008-02-22-171957_MRMB.crash Synergy_2008-02-26-193528_MRMB.crash Synergy_2008-02-26-200000_MRMB.crash Synergy_2008-02-27-093325_MRMB.crash Synergy_2008-02-27-182448_MRMB.crash Synergy_2008-02-27-183221_MRMB.crash Synergy_2008-02-27-183550_MRMB.crash</p>
+<p>Attaching 2 of them FYI.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_3198'>
+<cite>
+<a href="/users/michel-ricart">Michel Ricart</a>
+<span class='when'><a href="#comment_3198"><time data-relative="true">2008-02-27T12:04:57Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=153) all crash files</p>
+<p>Hope this will help.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3199'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3199"><time data-relative="true">2008-02-27T13:52:10Z</time></a></span>
+</cite>
+<blockquote><p>Strange, these don't resemble the other crashes I've seen (99%) of which are to do with NSAppleScript; see <a href="/issues/640">bug #640</a> for those:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=654" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=654</a></p>
+<p>I wonder if this is a conflict with one of the third part input managers or other bundles you have loaded on your system.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3200'>
+<cite>
+<a href="/users/michel-ricart">Michel Ricart</a>
+<span class='when'><a href="#comment_3200"><time data-relative="true">2008-02-27T14:30:08Z</time></a></span>
+</cite>
+<blockquote><p>More info: I can't relate the crash to *any* of my action; it just happens in the background, even not related to e.g. iTunes track change, as far as i can tell.</p>
+<p>My input managers are: /Library:</p>
+<pre>   SIMBL
+   SafariBlock
+   Ecamm
+   Chax</pre>
+<p>~/Library:</p>
+<pre>   Menu Extra Enabler</pre>
+<p>Let me know if you need more info.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3201'>
+<cite>
+<a href="/users/michel-ricart">Michel Ricart</a>
+<span class='when'><a href="#comment_3201"><time data-relative="true">2008-03-12T11:17:41Z</time></a></span>
+</cite>
+<blockquote><p>FYI, I've reinstalled Synergy, and apparently the crash problem is gone (although it doesn't store anything in &quot;Temporary Album Covers&quot;). I'll try a new reinstall, and come back here in case of problem.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

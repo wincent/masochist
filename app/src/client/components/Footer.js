@@ -32,8 +32,9 @@ export default class Footer extends React.Component {
             <div className="four columns">
               <h6>Legacy</h6>
               <ul>
-                {/* TODO: copy the mirrors into /public in this repo, so I have everything in one place */}
-                <StaticFooterLink target="https://wincent.com/products" text="Products" />
+                <StaticFooterLink target="/products.html" text="Products" />
+                <StaticFooterLink target="/issues.html" text="Issues" />
+                <StaticFooterLink target="/forums.html" text="Forums" />
               </ul>
             </div>
             <div className="four columns">

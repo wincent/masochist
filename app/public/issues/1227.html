@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1227: Atom feeds all broken after Rails 2.3.0 RC1 update
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1227</div>
+<div class='issue' id='issue_1227'>
+<form class="edit_issue" id="edit_issue_1227" action="/issues/1227" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="MaX4nZwVZqPpUaj29YAQjJFY4V1KBAQW2nngex7Kj+cFV0YqO5i89jDdmwHEqUM4JNqIYUHoigr6ZjWFOhLoww==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1227:
+<span data-name='issue[summary]'>
+Atom feeds all broken after Rails 2.3.0 RC1 update
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-02-15T03:05:26Z</time>, updated <time data-relative="true">2009-02-17T05:18:52Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I just noticed that in local testing my Atom feeds on issues are all broken: instead of just the Atom feed I'm seeing the the HTML application layout, with the atom feed embedded inside it within the &quot;content&quot; div.</p>
+<p>I double-checked to make sure that feeds are correct on the live site and they are.</p>
+<p>At this stage not sure if this is just some weird glitch in my local setup only, or if there is actually a regression that's crept in to the code since the last deployment.</p>
+<p>So opening this ticket to serve as a reminder to keep an eye on this. If I can't identify the cause before the next deployment, will want to keep a very close eye on things to make sure that feeds still work after deploying.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4229'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4229"><time data-relative="true">2009-02-15T03:05:35Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4230'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4230"><time data-relative="true">2009-02-15T03:11:11Z</time></a></span>
+</cite>
+<blockquote><p>Lo and behold, this is breakage caused by changes in Rails 2.3.0.</p>
+<p>Previously the following did the right thing:</p>
+<pre>format.atom { @comments = @issue.visible_comments }</pre>
+<p>Looks like now we need:</p>
+<pre>format.atom {
+  @comments = @issue.visible_comments
+  render :layout =&gt; false
+}</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4231'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4231"><time data-relative="true">2009-02-15T03:22:00Z</time></a></span>
+</cite>
+<blockquote><p>I've posted a question to the talk list to ask whether this is a bug/regression in Rails, or whether the new behaviour is intended as an &quot;enhancement&quot;. See:</p>
+<ul>
+<li><a href="http://groups.google.com/group/rubyonrails-talk/t/d2d150c8219e5814" class="external">http://groups.google.com/group/rubyonrails-talk/t/d2d150c8219e5814</a></li>
+</ul>
+<p>In the meantime, this is an additional incentive to add feed validation to my spec suite to catch this kind of regression in the future.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4232'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4232"><time data-relative="true">2009-02-15T03:26:06Z</time></a></span>
+</cite>
+<blockquote><p>If it turns out that this is <em>not</em> a bug, <a href="http://guides.rubyonrails.org/layouts_and_rendering.html" class="external">this page from the guides</a> might help with a way of specifying the correct layout (none) in only one place, instead of repeating <code>render :layout =&gt; false</code> in every single action of every single controller where I produce an Atom feed.</p>
+<p>Possibly could make an (empty) <code>application.atom</code> layout and see if that gets picked up automatically. Or use the <code>layout</code> method in the application controller with a <code>Proc</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4233'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4233"><time data-relative="true">2009-02-15T03:31:14Z</time></a></span>
+</cite>
+<blockquote><p>Just tested, unfortunately a layout at <code>app/views/layouts/application.builder</code> containing only <code>yield</code> doesn't work. The rendered feed is completely blank.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4236'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4236"><time data-relative="true">2009-02-16T05:56:18Z</time></a></span>
+</cite>
+<blockquote><p>Back to testing this again and in the server log you see:</p>
+<pre>Rendering template within layouts/application
+Rendering issues/show</pre>
+<p>The thing is, <code>layout/application</code> is actually <code>layout/application.haml</code> so I have no idea why the <a href="/wiki/Haml">Haml</a> template is being chosen...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4237'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4237"><time data-relative="true">2009-02-16T06:06:07Z</time></a></span>
+</cite>
+<blockquote><p>Looks like the following in my <code>application_controller.rb</code> is one way to do an application-wide override for Atom feeds:</p>
+<pre>layout Proc.new { |controller| controller.send(:is_atom?) ? false : 'application' }</pre>
+<p>Still a mystery why this used to work pre-2.3.0 and now requires a special override.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4238'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4238"><time data-relative="true">2009-02-16T06:11:34Z</time></a></span>
+</cite>
+<blockquote><p>Going to go with that workaround for now, so will mark as &quot;closed&quot; unless some older and wiser on the Rails Google group points out the error in my ways.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4239'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4239"><time data-relative="true">2009-02-16T06:11:38Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4240'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4240"><time data-relative="true">2009-02-16T06:12:05Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Broken issue feeds in development version?</li>
+<li><strong>To:</strong> Atom feeds all broken after Rails 2.3.0 RC1 update</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4248'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4248"><time data-relative="true">2009-02-17T05:18:52Z</time></a></span>
+</cite>
+<blockquote><p>Have now added specs to catch this kind of breakage in the future.</p>
+<p>See &quot;<a href="/wiki/Testing_validity_of_Rails_feeds_with_RSpec">Testing validity of Rails feeds with RSpec</a>&quot;.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

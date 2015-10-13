@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1268: Support for &quot;redlinks&quot; in wikitext
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1268</div>
+<div class='issue' id='issue_1268'>
+<form class="edit_issue" id="edit_issue_1268" action="/issues/1268" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="zZznfkhk4WMy3N2yAfIzGj/Q8HttpE6xXfR1BOyzUOH5blnJ7+k7NutQ7kUw22CuilKZR2ZIwK1966D6yGs3xQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1268:
+<span data-name='issue[summary]'>
+Support for &quot;redlinks&quot; in wikitext
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-03T12:37:26Z</time>, updated <time data-relative="true">2009-08-15T15:17:34Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/ennen">ennen</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I'd like to request support for redlinks. I'm not sure how this might be best implemented, but I envision a hook of sorts which is tested for each [[link]] that's found - perhaps a block. If it evaluates as false, something to the effect of <code>class=&quot;redlink&quot;</code> would be added to the resulting HTML.</p>
+<p>I'm really not sure how feasible this would be, but I've had no luck coming up with a solution myself.</p>
+<p>Thanks for the excellent gem.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4413'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4413"><time data-relative="true">2009-04-06T11:54:53Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for filing the request, ennen.</p>
+<p>Off the top of my head I can't envisage any major technical obstacles to implementing that feature (although I'll be honest with you and admit that I'm unlikely to be able to implement it in the near future because I have a fair bit of other stuff on my plate right now).</p>
+<p>Might I suggest that an excellent first step would be for you to look at <a href="http://git.wincent.com/wikitext.git?a=tree;f=spec;h=ff5f669d76a8dd0b637fd94f634aa1edae6f7619;hb=112a5772ff64ec95a0d606726972be7d7a93831b" class="external">the spec suite</a> and write some specs describing the kind of behaviour you expect to see?</p>
+<p>Remember that the links can also take optional link text (eg. [[article|the foo article]]) so you'd want to specify how it should behave for that kind of link (perhaps the block should take two parameters?) as well as the standard [[foo]] kind of link.</p>
+<p>I think it's important for this to be fairly well thought-out before proceeding because once you start allowing this kind of callback then it's quite possible that people might want to use it for things you didn't envisage in the first place. (Should the block be returning <code>false</code> or should it be returning a string containing the <a href="/wiki/CSS">CSS</a> class name?)</p>
+<p>I'd be happy to bounce some ideas around with you if you want to tell me a little bit more about your usage scenario and exactly how and why you'd want to use this kind of feature. (Although I'm guessing that you're wanting to colorize links to articles that don't exist yet...)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4427'>
+<cite>
+<a href="/users/ennen">ennen</a>
+<span class='when'><a href="#comment_4427"><time data-relative="true">2009-04-10T21:02:45Z</time></a></span>
+</cite>
+<blockquote><p>There's no rush, and I'll be glad to help however I can.</p>
+<p>I'm not familiar with those spec files, however. Is it a DSL? If you could point me at some documentation - I'm always ready to learn something new. Then I'll take a swing at writing some myself.</p>
+<p>I was thinking that the block would contain some test like <code>Page.find_by_title link_text</code> and if that were false (or nil, I suppose) the resulting link would be generated with <code>class=&quot;redlink&quot;</code> - the specific class might be set in a similar fashion to <code>internal_link_prefix</code>, et. al.</p>
+<p>However, I agree that whatever aproach we would take should be as robust as possible - but I also imagine that would entail more signifigant alterations to the parser. I'm also not familiar enough with the internals to really suggest very signifigant changes.</p>
+<p>One idea that does come to mind is passing in an options hash to the parser upon initialization to achieve similar effect - which could be passed in again when calling the <code>parse</code> method, to allow for simple runtime modifcation of the same options. Again, however, I'm not sure if this is the best approach - or even how feasible it would be.</p>
+<p>I'm using the gem in a Rails-based wiki I'm developing, geared towards blogging and personal information management. Really very similar to MediaWiki, but on a smaller scale, plus a few small conceptual tweaks.</p>
+<p>At a minimum I'm just looking to colorize links to non-existant pages - but I'd also like to be able to do things like suppress link generation under certain conditions. That way, for example, an unpriveledged user could be prevented from encountering to links to non-existant pages at all. The same would be achieved by simply preventing access to the new page action, but I feel that the former would be more elegant.</p>
+<p>Anyway, that's probably plenty of ideas from me for now - let me know what you think, and sorry for the late reply; I've been pretty engrossed in this little project for the past couple weeks. Thanks for your time.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4428'>
+<cite>
+<a href="/users/ennen">ennen</a>
+<span class='when'><a href="#comment_4428"><time data-relative="true">2009-04-12T06:59:33Z</time></a></span>
+</cite>
+<blockquote><p>Nevermind - the spec files are RSpec, correct? I'll go ahead and look into it, and see if I can produce some for the behaviour I'm looking for.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4429'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4429"><time data-relative="true">2009-04-13T12:29:36Z</time></a></span>
+</cite>
+<blockquote><p>Yep, they're RSpec.</p>
+<blockquote>
+<p>However, I agree that whatever aproach we would take should be as robust as possible - but I also imagine that would entail more signifigant alterations to the parser.</p>
+</blockquote>
+<p>If it really is just executing a chunk of code passed in as a Proc or a block, then it probably won't be <em>too</em> invasive. I think it all depends on just how much flexibility and control you want to delegate out like that.</p>
+<p>The very simplest case (&quot;execute this block and if it returns <code>true</code> or a class string then use that as the link class&quot;) would be fairly straightforward, I think. Other more complex behaviour starts to look nasty though; probably to the point that I would suggest moving it out into either a pre or a post-processing phase (which you could write in <a href="/wiki/Ruby">Ruby</a>). Post-processing is fairly easy because by the time the wikitext markup has gone through the translator you know that you're guaranteed to get a valid HTML snippet out of it, and you don't have to worry about dodgy markup. The appeal of the separate phase is that it keeps the wikitext codebase simple, clean and fast; it really just concerns itself with the task of transforming wikitext markup into HTML.</p>
+<blockquote>
+<p>I'm also not familiar enough with the internals to really suggest very signifigant changes.</p>
+</blockquote>
+<p>I wouldn't worry about the internals at all. The important thing is to have a good specification of the desired behaviour.</p>
+<blockquote>
+<p>One idea that does come to mind is passing in an options hash to the parser upon initialization to achieve similar effect - which could be passed in again when calling the parse method, to allow for simple runtime modifcation of the same options. Again, however, I'm not sure if this is the best approach - or even how feasible it would be.</p>
+</blockquote>
+<p>Sounds reasonable. I know that in my own use of the module (this site), where I use it for the <a href="/wiki">wiki</a>, my <a href="/blog">blog</a>, the <a href="/forums">forums</a>, this <a href="/issues">issue tracker</a> and basically everything on the site, I tend to call the <code>.w</code> method all over the place in my views and helpers. It would be pretty clumsy to pass a block or Proc in at every one of those sites; I'd be much more likely to want to configure it once and only once when the parser was instantiated.</p>
+<p>And obviously, seeing as wiki articles can be very long (thousands of words) and contain many, many links, you wouldn't want to do a database query for every single link that you saw. You'd probably want to do one query which pulled all the titles into a (<a href="/wiki/memcached">memcached</a>) cache and then check against the cache.</p>
+<blockquote>
+<p>I'm using the gem in a Rails-based wiki I'm developing, geared towards blogging and personal information management. Really very similar to MediaWiki, but on a smaller scale, plus a few small conceptual tweaks.</p>
+</blockquote>
+<p>If you ever put it up anywhere public please do let me know as I like to see how people are using the module.</p>
+<blockquote>
+<p>At a minimum I'm just looking to colorize links to non-existant pages - but I'd also like to be able to do things like suppress link generation under certain conditions.</p>
+</blockquote>
+<p>That's a little bit more complicated then, I think. Seeing as you're no longer just talking about adding or modifying a CSS class, but actually suppressing an entire element. What do you want to do? Turn &quot;see the [[foo bar]] page&quot; into &quot;see the foo bar page&quot;? And what would the block or Proc (or method) have to return to make this happen?</p>
+<blockquote>
+<p>That way, for example, an unpriveledged user could be prevented from encountering to links to non-existant pages at all. The same would be achieved by simply preventing access to the new page action, but I feel that the former would be more elegant.</p>
+</blockquote>
+<p>My personal take on that one, and the one I use on this site, is that a link to a <a href="/wiki/non-existent_page_like_this_one" class="redlink">non-existent page like this one</a> will take you to the &quot;new page action&quot;, and if you're not logged in as an admin user you should be invited to authenticate as one. As an admin user that's pretty convenient. For non-admin users I think it could possibly be confusing, but your proposed &quot;red links&quot; feature would largely address that I think.</p>
+<p>Another big incentive to <em>not</em> introduce that kind of conditional behaviour is that if you start displaying different content for admin and non-admin users then you can no longer cache your wiki pages, because you no longer have unchanging content for all users.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4430'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4430"><time data-relative="true">2009-04-13T12:35:28Z</time></a></span>
+</cite>
+<blockquote><p>Bah, I'm silly. I don't even know the behaviour of my own website! Non-admin users clicking on <a href="/wiki/non-existent_page_links_like_this_one" class="redlink">non-existent page links like this one</a> don't get asked to authenticate, they just see a &quot;Requested article not found&quot; flash. The &quot;red links&quot; feature would be a welcome addition to make the site more navegable in any case.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4549'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4549"><time data-relative="true">2009-04-28T01:10:26Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> requesting support for redlinks in wikitext</li>
+<li><strong>To:</strong> Support for &quot;redlinks&quot; in wikitext</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4550'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4550"><time data-relative="true">2009-04-28T01:12:36Z</time></a></span>
+</cite>
+<blockquote><p>Just thought of another use case. In this issue tracker, for example, text like &quot;ticket&nbsp;#1268&quot; turns into hyperlinks (eg. <a href="/issues/1268">ticket #1268</a>). If the block had the means of returning not only a class but also a &quot;title&quot; attribute, then I could make a tool-tip showing the issue summary appear when hovering the mouse over such a link.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4794'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4794"><time data-relative="true">2009-07-13T17:40:48Z</time></a></span>
+</cite>
+<blockquote><p>Just wanted to add one comment here because I git a private message from someone via GitHub who also wants to see this.</p>
+<p>He said he'd tried pre-processing the links before feeding the markup into the wikitext extension, but that obviously didn't work because everything got escaped.</p>
+<p>The <em>post</em>-processing approach would work and it's probably worth noting that it wouldn't be too nasty to implement seeing as any HTML that comes out of the extension is <em>guaranteed</em> to be well-formed so you don't have to worry about unclosed <code>&lt;a href=&quot;foo&quot;&gt;</code> tags or anything else. In fact, if you look at the output all such links will always be exactly the same, with the attributes in the same order, and so quite easy to process with simple regular expressions.</p>
+<p>I myself still haven't decided whether a post-processing pass or an during-translation callback is the way to go here.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4795'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4795"><time data-relative="true">2009-07-14T02:50:36Z</time></a></span>
+</cite>
+<blockquote><p>Hi, I'm &quot;someone via GitHub&quot; :) I'm thinking this would be a sensible implementation: <a href="http://pastie.org/545134" class="external">http://pastie.org/545134</a></p>
+<p>When it encounters <code><a href="/wiki/foo" class="redlink">foo</a></code>, &quot;foo&quot; is passed to the proc. When it encounters <code><a href="/wiki/Custom_title" class="redlink">foo</a></code>, &quot;foo&quot; is also passed to the proc. The custom title is irrelevant when you want to determine if a page link is a redlink, since the title can be anything. You'll always be looking it up via the permalink/slug/pagename/whatever you name it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4796'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4796"><time data-relative="true">2009-07-14T02:56:58Z</time></a></span>
+</cite>
+<blockquote><p>Oh, and regarding prost processing: On this particular wiki, the url prefix is nil, so I wouldn't know for sure if a &lt;a&gt;-tag is a page-wiki-ting-link or just a regular &lt;a&gt;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4797'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4797"><time data-relative="true">2009-07-14T05:27:47Z</time></a></span>
+</cite>
+<blockquote><p>Good points, &quot;someone from GitHub&quot; ;-) I think you're right on both counts.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4798'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4798"><time data-relative="true">2009-07-14T06:23:03Z</time></a></span>
+</cite>
+<blockquote><p>Just in case that pastie ever goes away:</p>
+<pre class="ruby-syntax">Wikitext::Parser.new.parse(&quot;foo&quot;, {
+  :base_heading_level =&gt; 1,
+  :redlink_proc =&gt; proc {|link| Page.count_by_permalink(link) == 0 }
+})</pre>
+<p>I think it's basically the right idea, although I wonder if rather than hard-coding the word &quot;red&quot; in the option name it should instead be called something like <code>link_class</code>, and the proc could optionally return a string with the class for the link (which might be <code>&quot;redlink&quot;</code> or anything else).</p>
+<p>I just don't know whether I want to commit to a yes/no dichotomy here when it might actually be more flexible to allow an arbitrary class based on a string. In other words it would look like:</p>
+<pre class="ruby-syntax">Wikitext::Parser.new.parse(&quot;foo&quot;, {
+  :base_heading_level =&gt; 1,
+  :link_class =&gt; proc { |target| Page.count_by_permalink(target) == 0 ? 'redlink' : nil }
+})</pre>
+<p>Evidently you'd probably not actually use a <code>count_by_permalink</code> method as you'd be generating a database query for every link in the text, which could be <em>lots</em> of queries if the text is long. I think you'd want some kind of custom method with caching built-in.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4799'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4799">Created <time data-relative="true">2009-07-14T06:37:48Z</time>, edited <time data-relative="true">2009-07-15T01:31:43Z</time></a></span>
+</cite>
+<blockquote><p>In this particular case, having a few hundred queries probably isn't that much of a problem, since the output will be cached anyway. It'll only run these queries once after any given page has changed.</p>
+<p>However, here's a few alternative implementations I could think of.</p>
+<pre class="ruby-syntax">## Parse time
+parser = Wikitext::Parser.new(&quot;foo&quot;)
+linked_pages = Page.find(:all, :conditions =&gt; {:permalink =&gt; parser.pages})
+parser.parse({
+  :page_proc =&gt; proc {|link| linked_pages.any? {|lp| lp.permalink == link } &amp;&amp; {:class =&gt; &quot;red&quot;} }
+})
+
+## Post-processing
+parser = Wikitext::Parser.new(&quot;foo&quot;)
+parser.parsed?
+# =&gt; false
+html = parser.parse
+parser.parsed?
+# =&gt; true
+parser.page_links
+# =&gt; [&quot;a page&quot;, &quot;another page&quot;, &quot;more pages&quot;]
+
+page_records = Page.find(:all, :conditions =&gt; {:permalink =&gt; parser.page_links})
+# The block returns a hash that will be mapped to the &lt;a&gt; tags attributes
+parser.post_process(:page_links) {|link| {:style =&gt; &quot;whatever&quot;} }
+parser.post_process(:page_links) {|link| page_records.any? {|r| r.permalink == link } &amp;&amp; {:class =&gt; &quot;red&quot;} }</pre>
+<p>PS: It would be useful if there was a &quot;name&quot; text field for these comments, so that I could tag them without registering an account. Also, I &lt;3 preview buttons :)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4800'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4800"><time data-relative="true">2009-07-14T06:38:59Z</time></a></span>
+</cite>
+<blockquote><p>Forgot to mention, the first example would have to pre-parse somehow, so that <code>parser.pages</code> is available before it parses the rest of the stuff. So indeed, it seems like post processing is the way to go, so that you can get a list of all the pages in the document before redlinking.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4802'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4802"><time data-relative="true">2009-07-15T02:11:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the ongoing input, anon.</p>
+<blockquote>
+<p>It would be useful if there was a &quot;name&quot; text field for these comments, so that I could tag them without registering an account.</p>
+</blockquote>
+<p>I've often wondered about that and in principle I think it's a good idea. See <a href="/issues/1348">ticket #1348</a>.</p>
+<blockquote>
+<p>Also, I &lt;3 preview buttons :)</p>
+</blockquote>
+<p>Yep, aware of that one. See <a href="/issues/1267">ticket #1267</a>. I actually have <a href="/wiki/AJAX">AJAX</a>&#x00a0;previews in place for a several other things on the site (<a href="/wiki">wiki articles</a>, <a href="/blog">blog posts</a> etc) but I just need to decide what the best <a href="/wiki/UI">UI</a> for comment previews is.</p>
+<blockquote>
+<p>So indeed, it seems like post processing is the way to go, so that you can get a list of all the pages in the document before redlinking.</p>
+</blockquote>
+<p>On my own site, where there are just over 1,500 wiki pages, I was thinking of doing one big query for all page titles and just keeping that array around in memory forever. Something like this (not tested, typed in browser, usual disclaimers apply):</p>
+<pre class="ruby-syntax">class Article &lt; ActiveRecord::Base
+  def self.page_titles
+    @@page_titles ||= Article.find_by_sql('SELECT title FROM articles').map(&amp;:title)
+  end
+end</pre>
+<p>Which you'd then use like this:</p>
+<pre class="ruby-syntax">Wikitext::Parser.new.parse &quot;foo&quot;,
+  :link_class =&gt; proc { |target| Article.page_titles.include?(target) ? nil : 'redlink' }</pre>
+<p>Obviously you'd need to invalidate that cache appropriately after saving or destroying articles. With that number of articles, no need to do it on a per-article basis, nor use memcached or anything else. Just keep it as simple as possible. As the number of articles goes up though you'd need more complex solutions, I think.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4812'>
+<cite>
+<a href="/users/august-lilleaas">August Lilleaas</a>
+<span class='when'><a href="#comment_4812"><time data-relative="true">2009-07-17T14:44:12Z</time></a></span>
+</cite>
+<blockquote><p>It's anon here, finally registered and logged in ; )</p>
+<p>The :link_class proc definitely makes sense, +1! It will then be up to you if you n+1 and cache it (which is OK some times), or do as you say and maintain an array of all the titles in the wiki and use that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4827'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4827"><time data-relative="true">2009-07-23T11:01:55Z</time></a></span>
+</cite>
+<blockquote><p>Ok, specs are now done. Implementation to follow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4828'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4828"><time data-relative="true">2009-07-23T16:35:07Z</time></a></span>
+</cite>
+<blockquote><p>Ok, initial implementation is done. Will let it bake for a while to see if any issues crop up, but it looks like this:</p>
+<pre>diff --git a/doc/RELEASE-NOTES b/doc/RELEASE-NOTES
+index 2c29c10..cfa2598 100644
+--- a/doc/RELEASE-NOTES
++++ b/doc/RELEASE-NOTES
+@@ -9,6 +9,10 @@ the source code repository at: <a href="http://git.wincent.com" class="external">http://git.wincent.com</a>.
+ = Changes in 1.9
+ 
+ * NilClass#w method now accepts and optional parameters hash
++* new +link_proc+ option to Wikitext::Parser#parse allows you to
++  dynamically apply a custom CSS class based on the link target;
++  this can be used, for example, to provide &quot;red links&quot; for
++  articles which do not exist yet
+ 
+ = Changes in 1.8
+ 
+diff --git a/ext/parser.c b/ext/parser.c
+index fd28270..4728ad8 100644
+--- a/ext/parser.c
++++ b/ext/parser.c
+@@ -1042,6 +1042,7 @@ VALUE Wikitext_parser_parse(int argc, VALUE *argv, VALUE self)
+     // process options hash
+     int base_indent = 0;
+     int base_heading_level = NUM2INT(rb_iv_get(self, &quot;@base_heading_level&quot;));
++    VALUE link_proc = Qnil;
+     if (!NIL_P(options) &amp;&amp; TYPE(options) == T_HASH)
+     {
+         // :indent =&gt; 0 (or more)
+@@ -1061,6 +1062,11 @@ VALUE Wikitext_parser_parse(int argc, VALUE *argv, VALUE self)
+         // :base_heading_level =&gt; 0/1/2/3/4/5/6
+         if (rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1, ID2SYM(rb_intern(&quot;base_heading_level&quot;))) == Qtrue)
+             base_heading_level = NUM2INT(rb_hash_aref(options, ID2SYM(rb_intern(&quot;base_heading_level&quot;))));
++
++        // :link_proc =&gt; lambda { |link_target| ... }
++        // TODO: refactor to avoid some repeated calls to ID2SYM and rb_intern
++        if (rb_funcall(options, rb_intern(&quot;has_key?&quot;), 1, ID2SYM(rb_intern(&quot;link_proc&quot;))) == Qtrue)
++            link_proc = rb_hash_aref(options, ID2SYM(rb_intern(&quot;link_proc&quot;)));
+     }
+ 
+     // normalize, regardless of whether this came from instance variable or override
+@@ -2144,10 +2150,20 @@ VALUE Wikitext_parser_parse(int argc, VALUE *argv, VALUE self)
+                     }
+                     else
+                         wiki_trim_link_text(parser);
++
++                    // perform &quot;redlink&quot; check before manipulating link_target
++                    if (NIL_P(link_proc))
++                        j = Qnil;
++                    else
++                    {
++                        j = rb_funcall(link_proc, rb_intern(&quot;call&quot;), 1, string_from_str(parser-&gt;link_target));
++                        if (!NIL_P(j))
++                            j = StringValue(j);
++                    }
+                     wiki_encode_link_target(parser);
+                     wiki_pop_from_stack_up_to(parser, output, LINK_START, true);
+                     parser-&gt;capture = NULL;
+-                    wiki_append_hyperlink(parser, prefix, parser-&gt;link_target, parser-&gt;link_text, Qnil, false);
++                    wiki_append_hyperlink(parser, prefix, parser-&gt;link_target, parser-&gt;link_text, j, false);
+                     str_clear(parser-&gt;link_target);
+                     str_clear(parser-&gt;link_text);
+                 }
+diff --git a/spec/internal_link_spec.rb b/spec/internal_link_spec.rb
+index 5e4d588..feff8bf 100755
+--- a/spec/internal_link_spec.rb
++++ b/spec/internal_link_spec.rb
+@@ -114,6 +114,107 @@ describe Wikitext::Parser, 'internal links (space to underscore off)' do
+     @parser.parse('foo [[bar]] baz').should == expected # was a bug
+   end
+ 
++  describe '&quot;red link&quot; support' do
++    it 'should accept a Proc object via the optional &quot;link_proc&quot; parameter' do
++      @parser.parse('foo', :link_proc =&gt; Proc.new { }).should == %Q{&lt;p&gt;foo&lt;/p&gt;\n}
++    end
++
++    it 'should accept a lambda via the optional &quot;link_proc&quot; parameter' do
++      @parser.parse('foo', :link_proc =&gt; lambda { }).should == %Q{&lt;p&gt;foo&lt;/p&gt;\n}
++    end
++
++    it 'should apply custom link CSS when supplied (Proc object version)' do
++      link_proc = Proc.new { |target| target == 'bar' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt; &lt;a href=&quot;/wiki/bar&quot; class=&quot;redlink&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]] [[bar]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should apply custom link CSS when supplied (lambda version)' do
++      link_proc = lambda { |target| target == 'bar' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt; &lt;a href=&quot;/wiki/bar&quot; class=&quot;redlink&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]] [[bar]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should apply no custom link CSS when supplied nil (Proc object version)' do
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]]', :link_proc =&gt; Proc.new { |target| nil }).should == expected
++    end
++
++    it 'should apply no custom link CSS when supplied nil (lambda version)' do
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]]', :link_proc =&gt; lambda { |target| nil }).should == expected
++    end
++
++    it 'should let exceptions bubble up from the link proc (Proc object version)' do
++      lambda { @parser.parse('[[foo]]', :link_proc =&gt; Proc.new { |target| raise 'bar' }) }.should raise_error(RuntimeError, /bar/)
++    end
++
++    it 'should let exceptions bubble up from the link proc (lambda version)' do
++      lambda { @parser.parse('[[foo]]', :link_proc =&gt; lambda { |target| raise 'bar' }) }.should raise_error(RuntimeError, /bar/)
++    end
++
++    it 'should complain if the link proc returns a non-stringy object (Proc object version)' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; Proc.new { 1 }
++      }.should raise_error(TypeError, /can't convert/)
++    end
++
++    it 'should complain if the link proc returns a non-stringy object (lambda version)' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; lambda { 1 }
++      }.should raise_error(TypeError, /can't convert/)
++    end
++
++    # a couple of Ruby's idiosynchrasies: different behaviour of lambdas and Procs
++    it 'should not complain if the Proc object accepts too many arguments' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; Proc.new { |a,b| }
++      }.should_not raise_error(ArgumentError, /wrong number/)
++    end
++
++    it 'should complain if the lambda accepts too many arguments' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; lambda { |a,b| }
++      }.should raise_error(ArgumentError, /wrong number/)
++    end
++
++    it 'should complain when &quot;return&quot; is used inside a &quot;Proc.new&quot; block' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; Proc.new { return 'bar' }
++      }.should raise_error(LocalJumpError)
++    end
++
++    it 'should not complain when &quot;return&quot; is used inside a lambda' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; lambda { return 'bar' }
++      }.should_not raise_error(LocalJumpError)
++    end
++
++    it 'should interact correctly with spaces in link targets (Proc object version)' do
++      link_proc = Proc.new { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo%20a&quot;&gt;foo a&lt;/a&gt; &lt;a href=&quot;/wiki/bar%20b&quot; class=&quot;redlink&quot;&gt;bar b&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a]] [[bar b]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should interact correctly with spaces in link targets (lambda version)' do
++      link_proc = lambda { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo%20a&quot;&gt;foo a&lt;/a&gt; &lt;a href=&quot;/wiki/bar%20b&quot; class=&quot;redlink&quot;&gt;bar b&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a]] [[bar b]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should interact correctly with explicit link text (Proc object version)' do
++      link_proc = Proc.new { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo%20a&quot;&gt;hello&lt;/a&gt; &lt;a href=&quot;/wiki/bar%20b&quot; class=&quot;redlink&quot;&gt;world&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a|hello]] [[bar b|world]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should interact correctly with explicit link text (lambda version)' do
++      link_proc = lambda { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo%20a&quot;&gt;hello&lt;/a&gt; &lt;a href=&quot;/wiki/bar%20b&quot; class=&quot;redlink&quot;&gt;world&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a|hello]] [[bar b|world]]', :link_proc =&gt; link_proc).should == expected
++    end
++  end
++
+   describe 'custom link text' do
+     it 'should recognize link text placed after the separator' do
+       @parser.parse('[[foo|bar]]').should == %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;\n}
+@@ -541,6 +642,107 @@ describe Wikitext::Parser, 'internal links (space to underscore on)' do
+     @parser.parse('foo [[bar]] baz').should == expected # was a bug
+   end
+ 
++  describe '&quot;red link&quot; support' do
++    it 'should accept a Proc object via the optional &quot;link_proc&quot; parameter' do
++      @parser.parse('foo', :link_proc =&gt; Proc.new { }).should == %Q{&lt;p&gt;foo&lt;/p&gt;\n}
++    end
++
++    it 'should accept a lambda via the optional &quot;link_proc&quot; parameter' do
++      @parser.parse('foo', :link_proc =&gt; lambda { }).should == %Q{&lt;p&gt;foo&lt;/p&gt;\n}
++    end
++
++    it 'should apply custom link CSS when supplied (Proc object version)' do
++      link_proc = Proc.new { |target| target == 'bar' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt; &lt;a href=&quot;/wiki/bar&quot; class=&quot;redlink&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]] [[bar]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should apply custom link CSS when supplied (lambda version)' do
++      link_proc = lambda { |target| target == 'bar' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt; &lt;a href=&quot;/wiki/bar&quot; class=&quot;redlink&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]] [[bar]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should apply no custom link CSS when supplied nil (Proc object version)' do
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]]', :link_proc =&gt; Proc.new { |target| nil }).should == expected
++    end
++
++    it 'should apply no custom link CSS when supplied nil (lambda version)' do
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;foo&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo]]', :link_proc =&gt; lambda { |target| nil }).should == expected
++    end
++
++    it 'should let exceptions bubble up from the link proc (Proc object version)' do
++      lambda { @parser.parse('[[foo]]', :link_proc =&gt; Proc.new { |target| raise 'bar' }) }.should raise_error(RuntimeError, /bar/)
++    end
++
++    it 'should let exceptions bubble up from the link proc (lambda version)' do
++      lambda { @parser.parse('[[foo]]', :link_proc =&gt; lambda { |target| raise 'bar' }) }.should raise_error(RuntimeError, /bar/)
++    end
++
++    it 'should complain if the link proc returns a non-stringy object (Proc object version)' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; Proc.new { 1 }
++      }.should raise_error(TypeError, /can't convert/)
++    end
++
++    it 'should complain if the link proc returns a non-stringy object (lambda version)' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; lambda { 1 }
++      }.should raise_error(TypeError, /can't convert/)
++    end
++
++    # a couple of Ruby's idiosynchrasies: different behaviour of lambdas and Procs
++    it 'should not complain if the Proc object accepts too many arguments' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; Proc.new { |a,b| }
++      }.should_not raise_error(ArgumentError, /wrong number/)
++    end
++
++    it 'should complain if the lambda accepts too many arguments' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; lambda { |a,b| }
++      }.should raise_error(ArgumentError, /wrong number/)
++    end
++
++    it 'should complain when &quot;return&quot; is used inside a &quot;Proc.new&quot; block' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; Proc.new { return 'bar' }
++      }.should raise_error(LocalJumpError)
++    end
++
++    it 'should not complain when &quot;return&quot; is used inside a lambda' do
++      lambda {
++        @parser.parse '[[foo]]', :link_proc =&gt; lambda { return 'bar' }
++      }.should_not raise_error(LocalJumpError)
++    end
++
++    it 'should interact correctly with spaces in link targets (Proc object version)' do
++      link_proc = Proc.new { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo_a&quot;&gt;foo a&lt;/a&gt; &lt;a href=&quot;/wiki/bar_b&quot; class=&quot;redlink&quot;&gt;bar b&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a]] [[bar b]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should interact correctly with spaces in link targets (lambda version)' do
++      link_proc = lambda { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo_a&quot;&gt;foo a&lt;/a&gt; &lt;a href=&quot;/wiki/bar_b&quot; class=&quot;redlink&quot;&gt;bar b&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a]] [[bar b]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should interact correctly with explicit link text (Proc object version)' do
++      link_proc = Proc.new { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo_a&quot;&gt;hello&lt;/a&gt; &lt;a href=&quot;/wiki/bar_b&quot; class=&quot;redlink&quot;&gt;world&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a|hello]] [[bar b|world]]', :link_proc =&gt; link_proc).should == expected
++    end
++
++    it 'should interact correctly with explicit link text (lambda version)' do
++      link_proc = lambda { |target| target == 'bar b' ? 'redlink' : nil }
++      expected = %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo_a&quot;&gt;hello&lt;/a&gt; &lt;a href=&quot;/wiki/bar_b&quot; class=&quot;redlink&quot;&gt;world&lt;/a&gt;&lt;/p&gt;\n}
++      @parser.parse('[[foo a|hello]] [[bar b|world]]', :link_proc =&gt; link_proc).should == expected
++    end
++  end
++
+   describe 'custom link text' do
+     it 'should recognize link text placed after the separator' do
+       @parser.parse('[[foo|bar]]').should == %Q{&lt;p&gt;&lt;a href=&quot;/wiki/foo&quot;&gt;bar&lt;/a&gt;&lt;/p&gt;\n}</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4866'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4866"><time data-relative="true">2009-08-15T15:17:26Z</time></a></span>
+</cite>
+<blockquote><p>Wikitext 1.9 (with this new feature) was released on 6 August, so going to mark this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4867'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4867"><time data-relative="true">2009-08-15T15:17:34Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

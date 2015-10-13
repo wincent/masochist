@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #647: Some menu button graphics have edge artefacts in Leopard
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #647</div>
+<div class='issue' id='issue_647'>
+<form class="edit_issue" id="edit_issue_647" action="/issues/647" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="f+wLZf7U/ZA+7zhtG08qC/URJ22nt/zI/yjmHRIh1iJLHrXSWVknxedjC5oqZnm/QJNOUaxbctTfNzPjNvmxBg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #647:
+<span data-name='issue[summary]'>
+Some menu button graphics have edge artefacts in Leopard
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-01-27T08:34:54Z</time>, updated <time data-relative="true">2008-01-28T15:09:36Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/peter-payne">Peter Payne</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Created an attachment (id=150) pictures of the display issue</p>
+<p>Hi, I've started using your Alpha today. I noticed that there is a bit of a display problem in the right edges of the buttons. It may be related to me running LeoColorBar.app to make the header look good (normal, instead of transparent). You might check this out, although if the new OS update offers optional title bar settings to make it look as it did before, you might not need to do anything.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3188'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3188"><time data-relative="true">2008-01-27T14:50:37Z</time></a></span>
+</cite>
+<blockquote><p>I don't know whether the issue is exacerbated by LeoColorBar or not. Can you tell me the names of the buttons sets in those screenshots? It would be interested to compare how they looked on a non-modified menu bar.</p>
+<p>In any case, there's not really anything that Synergy can do about these edge glitches. It's really something that the individual button set authors would have to look at, tweaking their graphics so that they look best on Leopard.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3189'>
+<cite>
+<a href="/users/peter-payne">Peter Payne</a>
+<span class='when'><a href="#comment_3189"><time data-relative="true">2008-01-28T11:36:22Z</time></a></span>
+</cite>
+<blockquote><p>Hi, looksl ike the buttons were Divide and  hmm, I can't find it now but it's there. Brushed also looks kind of bad, with white artifacts, but others, like Rings, look fine. I'd guess it's trying to anti-alias with the color in the background?  I agree it is a small thing. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3190'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3190"><time data-relative="true">2008-01-28T15:09:36Z</time></a></span>
+</cite>
+<blockquote><p>I don't think anti-aliasing is actually involved at all, or at least I doubt it.</p>
+<p>Basically all of the button sets use button graphics with transparent backgrounds. How well a button set blends into a particular background depends on many things: the colors the designer chose, the application they used, what kind of aliasing/blending they use inside the image itself (ie. not aliasing done by the system at draw-time).</p>
+<p>So I really think it's just that most of the button sets were made before Leopard came out and were tested with Jaguar, Panther and then Tiger. Now that Leopard is out we'll start seeing more button sets that look good on Leopard (actually, I've got a few that have been submitted and will be published with the final 3.5 release).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

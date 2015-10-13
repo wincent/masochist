@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #645: Synergy won't appear
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #645</div>
+<div class='issue' id='issue_645'>
+<form class="edit_issue" id="edit_issue_645" action="/issues/645" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="0mvw2HmJQeSTt7CBVfTAbpAk5VIBBBVoJ9+QJCMpQG7mmU5v3gSbsUo7g3Zk3ZPaJaaMbgrom3QHwEXaB/EnSg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #645:
+<span data-name='issue[summary]'>
+Synergy won't appear
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-01-18T15:06:02Z</time>, updated <time data-relative="true">2008-09-14T17:02:14Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/reppep">reppep</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I took all the current Software Updates (including iTunes) today and rebooted. Synergy didn't show up in my menu bar, and my keyboard shortcuts don't work.</p>
+<p>I reinstalled 3.2, and observed that I could Start Synergy from System Preferences, but not Stop it. I removed and added the startup item from Synergy's prefpane too. Further, I could kill it with &quot;killall Synergy&quot;, but this had no visible effect (except that the next time there were no matches to kill). Since the upgrade, ATSServer is dying a lot, but other apps are coping.</p>
+<p>This is 10.5.1 on a Mac Pro.</p>
+<p>In addition, iTunes 7.6 (20) reset my Library to factory defaults (empty; stock playlists only)</p>
+<p>pepper@salt:/var/log$ grep -i Synergy *log system.log:Jan 18 15:43:21 salt com.apple.launchd[149] ([0x0-0x29029].org.wincent.Synergy[679]): Exited: Terminated system.log:Jan 18 15:43:22 salt [0x0-0x2d02d].org.wincent.Install[715]: Removing login item with name: Synergy.app system.log:Jan 18 15:43:22 salt [0x0-0x2d02d].org.wincent.Install[715]: Adding login item with path: ~/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app (show on launch) system.log:Jan 18 15:45:32 salt Synergy[751]: Warning: AppleScript error while refreshing playlists submenu system.log:Jan 18 15:48:51 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:49:04 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:51 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:50:58 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) pepper@salt:/var/log$ grep -i ATSServer *log secure.log:Jan 18 15:50:58 salt SecurityAgent[800]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:48:51 salt /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer[169]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt ARDAgent [156]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder[170]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/Twitterrific 3.0.1/Twitterrific.app/Contents/MacOS/Twitterrific[519]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/iChat.app/Contents/MacOS/iChat[514]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/Eudora.app/Contents/MacOS/Eudora[518]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/Safari.app/Contents/MacOS/Safari[330]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock[165]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal[193]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /System/Library/PrivateFrameworks/DiskImages.framework/Versions/A/Resources/DiskImages UI Agent.app/Contents/MacOS/DiskImages UI Agent[688]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/BBEdit.app/Contents/MacOS/BBEdit[512]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/SSHKeychain.app/Contents/MacOS/SSHKeychain[520]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/SMARTReporter/SMARTReporter.app/Contents/MacOS/SMARTReporter[515]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/iTunes.app/Contents/MacOS/iTunes[329]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/Microsoft Office 2004/Microsoft Excel[656]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Library/PreferencePanes/Growl.prefPane/Contents/Resources/GrowlHelperApp.app/Contents/MacOS/GrowlHelperApp[517]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/Oracle Calendar/Contents/MacOS/Oracle Calendar[513]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Applications/iTunes.app/Contents/Resources/iTunesHelper.app/Contents/MacOS/iTunesHelper[355]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:48:51 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 771, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/Twitterrific 3.0.1/Twitterrific.app/Contents/MacOS/Twitterrific[519]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder[170]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/iChat.app/Contents/MacOS/iChat[514]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/Safari.app/Contents/MacOS/Safari[330]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt ARDAgent [156]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/Microsoft Office 2004/Microsoft Excel[656]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/SSHKeychain.app/Contents/MacOS/SSHKeychain[520]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal[193]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock[165]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/Eudora.app/Contents/MacOS/Eudora[518]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/Oracle Calendar/Contents/MacOS/Oracle Calendar[513]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/SMARTReporter/SMARTReporter.app/Contents/MacOS/SMARTReporter[515]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Library/PreferencePanes/Growl.prefPane/Contents/Resources/GrowlHelperApp.app/Contents/MacOS/GrowlHelperApp[517]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /System/Library/PrivateFrameworks/DiskImages.framework/Versions/A/Resources/DiskImages UI Agent.app/Contents/MacOS/DiskImages UI Agent[688]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/iTunes.app/Contents/Resources/iTunesHelper.app/Contents/MacOS/iTunesHelper[355]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/iTunes.app/Contents/MacOS/iTunes[329]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer[169]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:04 salt /Applications/BBEdit.app/Contents/MacOS/BBEdit[512]: received ATSServer died message.  (old server pid = 164, new pid = 777, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Twitterrific 3.0.1/Twitterrific.app/Contents/MacOS/Twitterrific[519]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal[193]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/SSHKeychain.app/Contents/MacOS/SSHKeychain[520]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder[170]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/iChat.app/Contents/MacOS/iChat[514]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Microsoft Office 2004/Microsoft Excel[656]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/BBEdit.app/Contents/MacOS/BBEdit[512]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Safari.app/Contents/MacOS/Safari[330]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/SMARTReporter/SMARTReporter.app/Contents/MacOS/SMARTReporter[515]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt ARDAgent [156]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Library/PreferencePanes/Growl.prefPane/Contents/Resources/GrowlHelperApp.app/Contents/MacOS/GrowlHelperApp[517]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Eudora.app/Contents/MacOS/Eudora[518]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /System/Library/PrivateFrameworks/DiskImages.framework/Versions/A/Resources/DiskImages UI Agent.app/Contents/MacOS/DiskImages UI Agent[688]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/iTunes.app/Contents/Resources/iTunesHelper.app/Contents/MacOS/iTunesHelper[355]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock[165]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/iTunes.app/Contents/MacOS/iTunes[329]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer[169]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Oracle Calendar/Contents/MacOS/Oracle Calendar[513]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:49:51 salt /Applications/Microsoft Office 2004/Office/Microsoft Database Daemon[778]: received ATSServer died message.  (old server pid = 164, new pid = 791, session ID = 256) system.log:Jan 18 15:50:58 salt /Applications/Twitterrific 3.0.1/Twitterrific.app/Contents/MacOS/Twitterrific[519]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /System/Library/CoreServices/Finder.app/Contents/MacOS/Finder[170]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt ARDAgent [156]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Applications/Safari.app/Contents/MacOS/Safari[330]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /System/Library/CoreServices/Dock.app/Contents/MacOS/Dock[165]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Applications/SMARTReporter/SMARTReporter.app/Contents/MacOS/SMARTReporter[515]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer[169]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Applications/SSHKeychain.app/Contents/MacOS/SSHKeychain[520]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Applications/Utilities/Terminal.app/Contents/MacOS/Terminal[193]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /System/Library/PrivateFrameworks/DiskImages.framework/Versions/A/Resources/DiskImages UI Agent.app/Contents/MacOS/DiskImages UI Agent[688]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Applications/iTunes.app/Contents/Resources/iTunesHelper.app/Contents/MacOS/iTunesHelper[355]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Library/PreferencePanes/Growl.prefPane/Contents/Resources/GrowlHelperApp.app/Contents/MacOS/GrowlHelperApp[517]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) system.log:Jan 18 15:50:58 salt /Users/pepper/Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy[751]: received ATSServer died message.  (old server pid = 164, new pid = 801, session ID = 256) pepper@salt:/var/log$</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3184'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3184"><time data-relative="true">2008-01-18T15:21:51Z</time></a></span>
+</cite>
+<blockquote><p>Do you have any crash logs?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3185'>
+<cite>
+<a href="/users/reppep">reppep</a>
+<span class='when'><a href="#comment_3185"><time data-relative="true">2008-01-23T09:56:41Z</time></a></span>
+</cite>
+<blockquote><p>Today I went into System Preferences and clicked Start, and it appeared. Very odd.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3186'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3186"><time data-relative="true">2008-01-23T09:59:40Z</time></a></span>
+</cite>
+<blockquote><p>If you're seeing erratic behavior (sometimes things work, sometimes they don't) then you should try some of the basic troubleshooting techniques described here:</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a></p>
+<p>This will help you to rule out possible extraneous causes, like corrupt preference files and the like.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3762'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3762"><time data-relative="true">2008-09-14T17:02:14Z</time></a></span>
+</cite>
+<blockquote><p>Marking as closed due to inactivity. Feel free to re-open with another comment if you have anything further to add.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

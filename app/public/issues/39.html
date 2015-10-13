@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #39: Synergy, iTunes and any other third-party iTunes app simultaneously hang
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #39</div>
+<div class='issue' id='issue_39'>
+<form class="edit_issue" id="edit_issue_39" action="/issues/39" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="qPDyDg4JZSWNzlmh5qudWbRJNw0D24Cjchu7DYTxC46cAky5qYS/cFRCalbXgs7tActeMQg3Dr9SBG7zoClsqg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #39:
+<span data-name='issue[summary]'>
+Synergy, iTunes and any other third-party iTunes app simultaneously hang
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-11-24T17:51:31Z</time>, updated <time data-relative="true">2010-08-12T09:50:14Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-18">bugzilla user 18</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>iTunes, Synergy and SetiChatStatus all seem to hang occasionally now that I've installed 1.5b. Only gets  cleared if I kill iTunes, then Synergy and SetiChatStatus will &quot;unhang&quot;. Never happened with previous  version.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1218'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1218"><time data-relative="true">2004-11-24T22:09:29Z</time></a></span>
+</cite>
+<blockquote><p>Can you please check out <a href="/issues/34">bug #34</a> and download the new build listed in the comments of that bug?  Although the new build is designed to fix a crashing bug on 10.2.8, I have made further optimizations  and cut the number of communications with iTunes by half or more, so if there is some kind of  deadlock situation then that build is less likely to run into trouble.</p>
+<p>Let me know how you go.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1219'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1219"><time data-relative="true">2004-12-01T14:42:05Z</time></a></span>
+</cite>
+<blockquote><p>Seems to happen when the system is sitting unused. No tunes playing, no user activity for at least an  hour. Mail, iChat,address book, iCal,  safari, sherlock, word, nisus writer,system  preferences, activity monitor, folding@home,firefox, iChatStatus were running at the time,</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1220'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1220"><time data-relative="true">2004-12-01T20:47:02Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for contributing! Check out this article:</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p>And look at the section titled &quot;Use the Activity Monitor&quot;. This describes how to collect information when  a process is hung to find out *what* it is doing at the time. Seeing as this hang involves iTunes, Synergy  and iChatStatus, you should probably try to sample all three of them.</p>
+<p>Another trouble-shooting technique you should employ that's listed in that article is eliminating  potential conflicts. Given that iChatStatus also talks to iTunes, it's an obvious candidate which you  should investigate. You may discover that if you uninstall iChatStatus for a while the hangs go away. It  may be a conflict between the two apps. For what it's worth, I've never seen this hang and I don't use  iChatStatus.</p>
+<p>Could you also just clarify what version of Mac OS X and iTunes you are running? Thanks.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1221'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1221"><time data-relative="true">2004-12-02T15:56:50Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=3) sample of hang</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1222'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1222"><time data-relative="true">2004-12-02T15:57:32Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=4) iTunes hang</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1223'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1223"><time data-relative="true">2004-12-02T16:12:48Z</time></a></span>
+</cite>
+<blockquote><p>Mac OS X 10.3.6 Build 7R28, iTunes 4.7. What was slightly different about this hang was that the  setiChatStatus was not hung this time. I shall try running without SetIChatStatus to see if that helps. But, this problem did not occur with the  previous version of Synergy.</p>
+<p>I checked the Console.log and there was this message: 2004-12-01 21:19:04.363 Synergy[1434] Error sending Apple Event which seems to correlate with the Sample text. Apple Events are hanging both apps.Possibly iChatStatus  as well.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1224'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1224"><time data-relative="true">2004-12-02T22:00:23Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot for posting the samples. Very useful.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1225'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1225"><time data-relative="true">2004-12-03T07:16:01Z</time></a></span>
+</cite>
+<blockquote><p><a href="/issues/52">Bug #52</a> may be related to this, although in that bug, the &quot;hang&quot; is not a total block (ie. the global menu  keeps working).  I'm interested to know if the hang referred to in *this* bug (<a href="/issues/39">bug #39</a>) and <a href="/issues/50">bug #50</a> is a  total (spinning beachball) hang, or if the global menu keeps working etc. I doubt that it does, but it's  good to be explicit.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1226'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1226"><time data-relative="true">2004-12-03T15:37:04Z</time></a></span>
+</cite>
+<blockquote><p>After turning off iChatStatus, the hang is still there. What actually happens is that afer a period of  inactivity (more than an hour), iTunes hangs . If I then try to use Synergy, it hangs as well. The global  menu is inoperable. If I kill iTunes before using Synergy, then there's no hang in Synergy. It will work as  soon as I relaunch iTunes. Synergy will usually &quot;unhang&quot; if I kill iTunes. Oddly, if I continue to use the  mac even if iTunes is not playing, then as far as I can tell, there's no hang.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1227'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1227"><time data-relative="true">2004-12-03T23:58:41Z</time></a></span>
+</cite>
+<blockquote><p>What you describe makes a lot of sense. When running with iTunes 4.7, Synergy 1.5b no longer polls  iTunes. By &quot;polls&quot; I mean &quot;periodically asks iTunes 'What are you playing now?'&quot;. Instead, it waits for  iTunes to tell it when it's changed tracks.</p>
+<p>So, if iTunes hangs, then Synergy won't even notice. It will just sit there waiting for iTunes to tell it that  it's started playing a new track. Of course, if iTunes is hung, this notification will never arrive.</p>
+<p>If you then try to do something with Synergy (ie. click Play) when iTunes is hung, this will cause Synergy  to hang too! Because it will say, &quot;Can you starting playing?&quot;, and will then wait forever for iTunes to say,  &quot;Ok!&quot;...</p>
+<p>This also explains why iChatStatus hangs as well.</p>
+<p>From the sounds of it, I believe this is an Apple bug. It is evidently choking when trying to perform  some kind of Apple Event-related operation. Synergy only ever sends legal Apple Event commands to  iTunes. iTunes, nevertheless, is choking.</p>
+<p>Nevertheless, it may be possible to workaround this bug by changing what kind of information Synergy  asks for. It is very much &quot;trial and error&quot; though, so I can't really be sure when (or if) I will be able to  find a fix. It will be interesting to see when Synergy Advance comes out if any similar problems occur,  because Synergy Advance has an entirely new Apple Event engine.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1228'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1228"><time data-relative="true">2004-12-04T00:01:04Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 50 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1229'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1229"><time data-relative="true">2004-12-04T00:03:14Z</time></a></span>
+</cite>
+<blockquote><p>Changing the summary to better reflect the issue. It would seem that the issue is not limited to a  particular version of iTunes or Synergy, or any other third-party iTunes app. (Although there may be  some correlation with the hangs occurring more often when waking from sleep.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1230'>
+<cite>
+<a href="/users/nathaniel-madura">Nathaniel Madura</a>
+<span class='when'><a href="#comment_1230"><time data-relative="true">2004-12-04T00:38:52Z</time></a></span>
+</cite>
+<blockquote><p>FWIW, my machine never sleeps, The hard drives never go to sleep, only the display sleeps after 10 minutes.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1231'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1231"><time data-relative="true">2004-12-04T00:45:10Z</time></a></span>
+</cite>
+<blockquote><p>Yes, just like mine.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1232'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1232"><time data-relative="true">2004-12-05T04:25:01Z</time></a></span>
+</cite>
+<blockquote><p>My Mac as well does not sleep at all, including the display. I just let the screensaver run. As an  experiment, I used a hot corner to keep he screen saver from running and kept the Activity Monitor up  while the machine was idle. iTunes would show acivity periodically of about 6 or 7 percent then go back  to zero. Synergy would appear to show none. At some point later than an hour and a half, iTunes hung.</p>
+<p>If iTunes is launched but isn't used, then iTunes doesn't hang (at least in my experience). My guess is  that Synergy and iTunes have not set up their communcations yet.</p>
+<p>Under MacOS 9, there was an app that &quot;listened&quot; in on Apple Events. Can't find something similar for  Panther. Seems that Apple Events use a Mach Port now to communicate??? And I vaguelly recall a  problem where if a mach port isn't used in a while, the stupid thing would close. But from what I  remember, you'd see something in the console/system log saying that. And I don't see that. Maybe I'm  imagining it, but if I find something out about that I'll post it.</p>
+<p>Hey, this Bugzilla thing is very cool!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1233'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1233"><time data-relative="true">2004-12-05T06:09:32Z</time></a></span>
+</cite>
+<blockquote><p>Yes, I think pretty much all the interprocess communication is handled on the Mach level at the bottom.  Everything else is just an abstraction layer built on top of it.</p>
+<p>One point to note: the release notes for Synergy 1.5b state that it doesn't poll any more. That's not  strictly true. If iTunes 4.7 is running, Synergy will rely on iTunes to send it notifications of state/track  changes BUT I still have Synergy fire off an active status check once per minute. I did that just in case  iTunes stopped sending notifications. But the notification process seems quite reliable, so in the builds  I've done since then, I've turned off even this once-per-minute check. If you want to try one of those  builds, check out the links in <a href="/issues/34">bug #34</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1234'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1234"><time data-relative="true">2004-12-07T22:00:26Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 57 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1235'>
+<cite>
+<a href="/users/damien-sorresso">Damien Sorresso</a>
+<span class='when'><a href="#comment_1235"><time data-relative="true">2004-12-08T02:45:01Z</time></a></span>
+</cite>
+<blockquote><p>Same bug occurs on my machine. I didn't realize the report had been filed already. (My search for a similar bug revealed nothing.) This bug occurs on both my home and work boxes, which are almost identical configs. Anyway, my system configuration is the following.</p>
+<p>2x1.8 GHz G5 (June 2004) 1.25 GB RAM 80 GB HDD ATi Radeon 9800 Pro (at home) ATi Radeon 9600 Pro (at work)</p>
+<p>I also ran a little experiment. Instead of locking my screen at work with the screensaver (which I normally do), I just switched to the FUS login window. I came back this morning, and iTunes and Synergy were both still working. Not a single hang there. My home machine will be locking itself with the screensaver, and normally when I get back, iTunes and Synergy are hung. So maybe the ScreenSaverEngine has something to do with it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1236'>
+<cite>
+<a href="/users/nathaniel-madura">Nathaniel Madura</a>
+<span class='when'><a href="#comment_1236"><time data-relative="true">2004-12-11T00:34:58Z</time></a></span>
+</cite>
+<blockquote><p>Hey, the latest version of synergy 1.5 (final?) seems to be much more stable Thanks, Nathaniel</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1237'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1237"><time data-relative="true">2004-12-11T02:26:39Z</time></a></span>
+</cite>
+<blockquote><p>I hadn't made any changes for 1.5 specifically targetted at this bug, but there were quite a few  performance optimizations which reduced the number of communications events with iTunes. Which  may, as a secondary effect, minimize the likelihood of this bug manifesting.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1238'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1238"><time data-relative="true">2004-12-11T05:26:53Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 71 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1239'>
+<cite>
+<a href="/users/sjmills">sjmills</a>
+<span class='when'><a href="#comment_1239"><time data-relative="true">2004-12-11T06:02:13Z</time></a></span>
+</cite>
+<blockquote><p>You can get Apple Event logging in OSX by setting some environment variables. First, make sure that  iTunes and Synergy are NOT running. Run Console and look at console.log. Then type these commands  in Terminal:</p>
+<p>% setenv AEDebug 1 % setenv AEDebugSends 1 % setenv AEDebugReceives 1 % open /Library/PreferencePanes/Synergy.prefPane/Contents/Resources/Synergy.app % open /Applications/iTunes.app</p>
+<p>You should see AEs being sent and received by both iTunes and Synergy. This logging will last until  both iTunes and Synergy are quit. If you leave them running and then later experience the hang some  of us are getting, we can at least report the AE last sent to/from iTunes/Synergy, in case that has  something to do with it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1240'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1240"><time data-relative="true">2004-12-11T06:10:35Z</time></a></span>
+</cite>
+<blockquote><p>Excellent suggestion.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1241'>
+<cite>
+<a href="/users/bugzilla-user-18">bugzilla user 18</a>
+<span class='when'><a href="#comment_1241"><time data-relative="true">2004-12-11T06:17:25Z</time></a></span>
+</cite>
+<blockquote><p>This bug has completely disappeared from my machine. This is before the last security update or  updating to Synergy 1.5. Or upgrading and installing any new SW for that matter. I've played with it for  a week now trying to provoke it into reoccurring because I wanted to try a few experiments. But as far  as I can tell, iTunes will not hang anymore no matter how long I leave it idle and what else I have  running.  I finally went ahead with the security update, upgrading to 1.5, fixing permissions (as I  usually do after installing anything) so my environment is different now. I'm not completely unhappy it's  gone away. I'll try the apple event logging that you suggested, but it could be a while before you get  any useful data out of me.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1242'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1242"><time data-relative="true">2004-12-18T04:56:32Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 7 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1243'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1243"><time data-relative="true">2006-07-05T02:03:18Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6014'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6014"><time data-relative="true">2010-08-12T09:50:08Z</time></a></span>
+</cite>
+<blockquote><p>Marking as closed; initial reporter confirms that the issue is no longer present.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6015'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6015"><time data-relative="true">2010-08-12T09:50:14Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

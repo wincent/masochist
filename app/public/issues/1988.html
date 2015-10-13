@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1988: Update to Git v1.7.12.3
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1988</div>
+<div class='issue' id='issue_1988'>
+<form class="edit_issue" id="edit_issue_1988" action="/issues/1988" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="9tKHormV+r9R6z4K2RQw4BmKc/uYWSrY/D0WCFluQefCIDkVHhgg6ohnDf3oPWNUrAgax5O1pMTcIsP2fbYmww==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1988:
+<span data-name='issue[summary]'>
+Update to Git v1.7.12.3
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-07-12T04:40:23Z</time>, updated <time data-relative="true">2012-10-18T04:31:56Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>On the site and everywhere I use <a href="/wiki/Git">Git</a>:</p>
+<pre>The latest maintenance release Git v1.7.11.2 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+f67b4f6c0277250411c6872ae7b8a872ae11d313  git-1.7.11.2.tar.gz
+088996c301cca24360fd5e30ce66bfa26139fe95  git-htmldocs-1.7.11.2.tar.gz
+78b46ca7b5037c61a58086879869dadeac9eea3e  git-manpages-1.7.11.2.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.11.2
+tag and the maint branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.7.11.2 Release Notes
+===========================
+
+Fixes since v1.7.11.1
+---------------------
+
+* On Cygwin, the platform pread(2) is not thread safe, just like our
+  own compat/ emulation, and cannot be used in the index-pack
+  program.  Makefile variable NO_THREAD_SAFE_PREAD can be defined to
+  avoid use of this function in a threaded program.
+
+* &quot;git add&quot; allows adding a regular file to the path where a
+  submodule used to exist, but &quot;git update-index&quot; does not allow an
+  equivalent operation to Porcelain writers.
+
+* &quot;git archive&quot; incorrectly computed the header checksum; the symptom
+  was observed only when using pathnames with hi-bit set.
+
+* &quot;git blame&quot; did not try to make sure that the abbreviated commit
+  object names in its output are unique.
+
+* Running &quot;git bundle verify&quot; on a bundle that records a complete
+  history said &quot;it requires these 0 commits&quot;.
+
+* &quot;git clone --single-branch&quot; to clone a single branch did not limit
+  the cloning to the specified branch.
+
+* &quot;git diff --no-index&quot; did not correctly handle relative paths and
+  did not correctly give exit codes when run under &quot;--quiet&quot; option.
+
+* &quot;git diff --no-index&quot; did not work with pagers correctly.
+
+* &quot;git diff COPYING HEAD:COPYING&quot; gave a nonsense error message that
+  claimed that the treeish HEAD did not have COPYING in it.
+
+* When &quot;git log&quot; gets &quot;--simplify-merges/by-decoration&quot; together with
+  &quot;--first-parent&quot;, the combination of these options makes the
+  simplification logic to use in-core commit objects that haven't
+  been examined for relevance, either producing incorrect result or
+  taking too long to produce any output.  Teach the simplification
+  logic to ignore commits that the first-parent traversal logic
+  ignored when both are in effect to work around the issue.
+
+* &quot;git ls-files --exclude=t -i&quot; did not consider anything under t/ as
+  excluded, as it did not pay attention to exclusion of leading paths
+  while walking the index.  Other two users of excluded() are also
+  updated.
+
+* &quot;git request-pull $url dev&quot; when the tip of &quot;dev&quot; branch was tagged
+  with &quot;ext4-for-linus&quot; used the contents from the tag in the output
+  but still asked the &quot;dev&quot; branch to be pulled, not the tag.
+
+Also contains minor typofixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.11.1 are as follows:
+
+Carlos Mart&#x00ed;n Nieto (2):
+     Documentation: --no-walk is no-op if range is specified
+     git-cherry-pick.txt: clarify the use of revision range notation
+
+Heiko Voigt (1):
+     update-index: allow overwriting existing submodule index entries
+
+Jeff King (3):
+     fix pager.diff with diff --no-index
+     do not run pager with diff --no-index --quiet
+     diff: handle relative paths in no-index
+
+Junio C Hamano (15):
+     request-pull: really favor a matching tag
+     ls-files -i: pay attention to exclusion of leading paths
+     ls-files -i: micro-optimize path_excluded()
+     tweak &quot;bundle verify&quot; of a complete history
+     path_excluded(): update API to less cache-entry centric
+     builtin/add.c: use path_excluded()
+     unpack-trees.c: use path_excluded() in check_ok_to_remove()
+     dir.c: make excluded() file scope static
+     revision: &quot;simplify&quot; options imply topo-order sort
+     revision: note the lack of free() in simplify_merges()
+     archive: ustar header checksum is computed unsigned
+     revision: ignore side parents while running simplify-merges
+     index-pack: Disable threading on cygwin
+     blame: compute abbreviation width that ensures uniqueness
+     Git 1.7.11.2
+
+Leila Muhtasib (1):
+     Documentation: Fix misspellings
+
+Matthieu Moy (2):
+     sha1_name: do not trigger detailed diagnosis for file arguments
+     verify_filename(): ask the caller to chose the kind of diagnosis
+
+Micha&#x0142; G&#x00f3;rny (1):
+     git-submodule.sh: fix filename in comment.
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (1):
+     clone: fix ref selection in --single-branch --branch=xxx
+
+Peter Krefting (1):
+     Update Swedish translation (1066t0f0u)
+
+Thomas Badie (1):
+     git-add--interactive.perl: Remove two unused variables
+
+Tim Henigan (1):
+     diff-no-index: exit(1) if 'diff --quiet &lt;repo file&gt; &lt;external file&gt;' finds changes
+
+--
+To unsubscribe from this list: send the line &quot;unsubscribe git&quot; in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  <a href="http://vger.kernel.org/majordomo-info.html" class="external">http://vger.kernel.org/majordomo-info.html</a></pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_9548'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9548"><time data-relative="true">2012-07-22T21:52:05Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git v1.7.11.2</li>
+<li><strong>To:</strong> Update to Git v1.7.11.3</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9549'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9549"><time data-relative="true">2012-07-22T21:52:31Z</time></a></span>
+</cite>
+<blockquote><p>Notes from 1.7.11.3 release announcement:</p>
+<pre>The latest maintenance release Git v1.7.11.3 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+a10c420e4d9152d6059f41825904cfac3062b135  git-1.7.11.3.tar.gz
+41500708e87787d6139de413c4da91629aa79fa8  git-htmldocs-1.7.11.3.tar.gz
+10151406ace1da92a70d203a7eb1c86024fdd919  git-manpages-1.7.11.3.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.11.3
+tag and the maint branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.7.11.3 Release Notes
+===========================
+
+Fixes since v1.7.11.3
+---------------------
+
+* The error message from &quot;git push $there :bogo&quot; (and its equivalent
+  &quot;git push $there --delete bogo&quot;) mentioned that we tried and failed
+  to guess what ref is being deleted based on the LHS of the refspec,
+  which we don't.
+
+* A handful of files and directories we create had tighter than
+  necessary permission bits when the user wanted to have group
+  writability (e.g. by setting &quot;umask 002&quot;).
+
+* &quot;commit --amend&quot; used to refuse amending a commit with an empty log
+  message, with or without &quot;--allow-empty-message&quot;.
+
+* &quot;git commit --amend --only --&quot; was meant to allow &quot;Clever&quot; people to
+  rewrite the commit message without making any change even when they
+  have already changes for the next commit added to their index, but
+  it never worked as advertised since it was introduced in 1.3.0 era.
+
+* Even though the index can record pathnames longer than 1&lt;&lt;12 bytes,
+  in some places we were not comparing them in full, potentially
+  replacing index entries instead of adding.
+
+* &quot;git show&quot;'s auto-walking behaviour was an unreliable and
+  unpredictable hack; it now behaves just like &quot;git log&quot; does when it
+  walks.
+
+* &quot;git diff&quot;, &quot;git status&quot; and anything that internally uses the
+  comparison machinery was utterly broken when the difference
+  involved a file with &quot;-&quot; as its name.  This was due to the way &quot;git
+  diff --no-index&quot; was incorrectly bolted on to the system, making
+  any comparison that involves a file &quot;-&quot; at the root level
+  incorrectly read from the standard input.
+
+* We did not have test to make sure &quot;git rebase&quot; without extra options
+  filters out an empty commit in the original history.
+
+* &quot;git fast-export&quot; produced an input stream for fast-import without
+  properly quoting pathnames when they contain SPs in them.
+
+* &quot;git checkout --detach&quot;, when you are still on an unborn branch,
+  should be forbidden, but it wasn't.
+
+* Some implementations of Perl terminates &quot;lines&quot; with CRLF even when
+  the script is operating on just a sequence of bytes.  Make sure to
+  use &quot;$PERL_PATH&quot;, the version of Perl the user told Git to use, in
+  our tests to avoid unnecessary breakages in tests.
+
+Also contains minor typofixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.11.2 are as follows:
+
+Alex Riesen (1):
+     Restore umasks influence on the permissions of work tree created by clone
+
+Chris Webb (2):
+     git-checkout: disallow --detach on unborn branch
+     Allow edit of empty message with commit --amend
+
+Jay Soffian (1):
+     fast-export: quote paths with spaces
+
+Jeff King (3):
+     push: don't guess at qualifying remote refs on deletion
+     add: create ADD_EDIT.patch with mode 0666
+     commit: fix &quot;--amend --only&quot; with no pathspec
+
+Junio C Hamano (10):
+     show: fix &quot;range implies walking&quot;
+     t/test-lib.sh: export PERL_PATH for use in scripts
+     tests: enclose $PERL_PATH in double quotes
+     t/README: add a bit more Don'ts
+     diff-index.c: do not pretend paths are pathspecs
+     diff-index.c: unify handling of command line paths
+     diff-index.c: &quot;git diff&quot; has no need to read blob from the standard input
+     rerere: make rr-cache fanout directory honor umask
+     cache_name_compare(): do not truncate while comparing paths
+     Git 1.7.11.3
+
+Martin von Zweigbergk (1):
+     add test case for rebase of empty commit
+
+Thomas Rast (1):
+     Demonstrate git-show is broken with ranges
+
+Vincent van Ravesteijn (1):
+     t: Replace 'perl' by $PERL_PATH
+
+--
+To unsubscribe from this list: send the line &quot;unsubscribe git&quot; in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  <a href="http://vger.kernel.org/majordomo-info.html" class="external">http://vger.kernel.org/majordomo-info.html</a></pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9956'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9956"><time data-relative="true">2012-08-16T05:09:26Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git v1.7.11.3</li>
+<li><strong>To:</strong> Update to Git v1.7.11.5</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9957'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9957"><time data-relative="true">2012-08-16T05:10:01Z</time></a></span>
+</cite>
+<blockquote><p>Notes from the 1.7.11.5 release announcement:</p>
+<pre>The latest maintenance release Git v1.7.11.5 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+44013d9418ef23dd8bb67e80b27c9327356bfae8  git-1.7.11.5.tar.gz
+8e19f56b2f484dc3327f1e8316c114dbe0ee2743  git-htmldocs-1.7.11.5.tar.gz
+d328241c130bbe38b12adf5702568c1edfff8623  git-manpages-1.7.11.5.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.11.5
+tag and the maint branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.7.11.5 Release Notes
+===========================
+
+Fixes since v1.7.11.4
+---------------------
+
+* The Makefile rule to create assembly output (primarily for
+  debugging purposes) did not create it next to the source.
+
+* The code to avoid mistaken attempt to add the object directory
+  itself as its own alternate could read beyond end of a string while
+  comparison.
+
+* On some architectures, &quot;block-sha1&quot; did not compile correctly
+  when compilers inferred alignment guarantees from our source we
+  did not intend to make.
+
+* When talking to a remote running ssh on IPv6 enabled host, whose
+  address is spelled as &quot;[HOST]:PORT&quot;, we did not parse the address
+  correctly and failed to connect.
+
+* git-blame.el (in compat/) have been updated to use Elisp more
+  correctly.
+
+* &quot;git checkout &lt;branchname&gt;&quot; to come back from a detached HEAD state
+  incorrectly computed reachability of the detached HEAD, resulting
+  in unnecessary warnings.
+
+* &quot;git mergetool&quot; did not support --tool-help option to give the list
+  of supported backends, like &quot;git difftool&quot; does.
+
+* &quot;git grep&quot; stopped spawning an external &quot;grep&quot; long time ago, but a
+  duplicated test to check internal and external &quot;grep&quot; was left
+  behind.
+
+Also contains minor typofixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.11.4 are as follows:
+
+Heiko Voigt (1):
+     link_alt_odb_entry: fix read over array bounds reported by valgrind
+
+Jeff King (1):
+     checkout: don't confuse ref and object flags
+
+Jonathan Nieder (4):
+     block-sha1: avoid pointer conversion that violates alignment constraints
+     block-sha1: put expanded macro parameters in parentheses
+     Makefile: fix location of listing produced by &quot;make subdir/foo.s&quot;
+     Makefile: BLK_SHA1 does not require fast htonl() and unaligned loads
+
+Junio C Hamano (4):
+     mergetool: support --tool-help option like difftool does
+     Enumerate revision range specifiers in the documentation
+     Prepare for 1.7.11.5
+     Git 1.7.11.5
+
+Lawrence Mitchell (2):
+     git-blame.el: Use with-current-buffer where appropriate
+     git-blame.el: Do not use bare 0 to mean (point-min)
+
+Max Horn (1):
+     Make &lt;refname&gt; documentation more consistent.
+
+Michael Schubert (1):
+     Documentation/git-daemon: add missing word
+
+Ramkumar Ramachandra (1):
+     commit: document a couple of options
+
+Ramsay Allan Jones (1):
+     t7810-*.sh: Remove redundant test
+
+Ren&#x00e9; Scharfe (1):
+     git: Wrong parsing of ssh urls with IPv6 literals ignores port
+
+R&#x00fc;diger Sonderfeld (2):
+     git-blame.el: use mapc instead of mapcar
+     git-blame.el: Do not use goto-line in lisp code
+
+&#x0160;t&#x011b;p&#x00e1;n N&#x011b;mec (1):
+     doc: A few minor copy edits.</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9963'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9963"><time data-relative="true">2012-08-20T04:14:52Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git v1.7.11.5</li>
+<li><strong>To:</strong> Update to Git v1.7.12</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9964'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9964"><time data-relative="true">2012-08-20T04:15:18Z</time></a></span>
+</cite>
+<blockquote><p>Notes from the 1.7.12 release announcement:</p>
+<pre>The latest feature release Git v1.7.12 is now available at the
+usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+42ec1037f1ee5bfeb405710c83b73c0515ad26e6  git-1.7.12.tar.gz
+50bbfeba77af9a411cc1a1e41220782cf3fd9b5e  git-htmldocs-1.7.12.tar.gz
+fb572729ca5c60161dc651564a50d4378507e20f  git-manpages-1.7.12.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.12
+tag and the master branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.7.12 Release Notes
+=========================
+
+Updates since v1.7.11
+---------------------
+
+UI, Workflows &amp; Features
+
+* Git can be told to normalize pathnames it read from readdir(3) and
+  all arguments it got from the command line into precomposed UTF-8
+  (assuming that they come as decomposed UTF-8), in order to work
+  around issues on Mac OS.
+
+  I think there still are other places that need conversion
+  (e.g. paths that are read from stdin for some commands), but this
+  should be a good first step in the right direction.
+
+* Per-user $HOME/.gitconfig file can optionally be stored in
+  $HOME/.config/git/config instead, which is in line with XDG.
+
+* The value of core.attributesfile and core.excludesfile default to
+  $HOME/.config/git/attributes and $HOME/.config/git/ignore respectively
+  when these files exist.
+
+* Logic to disambiguate abbreviated object names have been taught to
+  take advantage of object types that are expected in the context,
+  e.g. XXXXXX in the &quot;git describe&quot; output v1.2.3-gXXXXXX must be a
+  commit object, not a blob nor a tree.  This will help us prolong
+  the lifetime of abbreviated object names.
+
+* &quot;git apply&quot; learned to wiggle the base version and perform three-way
+  merge when a patch does not exactly apply to the version you have.
+
+* Scripted Porcelain writers now have access to the credential API via
+  the &quot;git credential&quot; plumbing command.
+
+* &quot;git help&quot; used to always default to &quot;man&quot; format even on platforms
+  where &quot;man&quot; viewer is not widely available.
+
+* &quot;git clone --local $path&quot; started its life as an experiment to
+  optionally use link/copy when cloning a repository on the disk, but
+  we didn't deprecate it after we made the option a no-op to always
+  use the optimization.  The command learned &quot;--no-local&quot; option to
+  turn this off, as a more explicit alternative over use of file://
+  URL.
+
+* &quot;git fetch&quot; and friends used to say &quot;remote side hung up
+  unexpectedly&quot; when they failed to get response they expect from the
+  other side, but one common reason why they don't get expected
+  response is that the remote repository does not exist or cannot be
+  read. The error message in this case was updated to give better
+  hints to the user.
+
+* &quot;git help -w $cmd&quot; can show HTML version of documentation for
+  &quot;git-$cmd&quot; by setting help.htmlpath to somewhere other than the
+  default location where the build procedure installs them locally;
+  the variable can even point at a http:// URL.
+
+* &quot;git rebase [-i] --root $tip&quot; can now be used to rewrite all the
+  history leading to &quot;$tip&quot; down to the root commit.
+
+* &quot;git rebase -i&quot; learned &quot;-x &lt;cmd&gt;&quot; to insert &quot;exec &lt;cmd&gt;&quot; after
+  each commit in the resulting history.
+
+* &quot;git status&quot; gives finer classification to various states of paths
+  in conflicted state and offer advice messages in its output.
+
+* &quot;git submodule&quot; learned to deal with nested submodule structure
+  where a module is contained within a module whose origin is
+  specified as a relative URL to its superproject's origin.
+
+* A rather heavy-ish &quot;git completion&quot; script has been split to create
+  a separate &quot;git prompting&quot; script, to help lazy-autoloading of the
+  completion part while making prompting part always available.
+
+* &quot;gitweb&quot; pays attention to various forms of credits that are
+  similar to &quot;Signed-off-by:&quot; lines in the commit objects and
+  highlights them accordingly.
+
+
+Foreign Interface
+
+* &quot;mediawiki&quot; remote helper (in contrib/) learned to handle file
+  attachments.
+
+* &quot;git p4&quot; now uses &quot;Jobs:&quot; and &quot;p4 move&quot; when appropriate.
+
+* vcs-svn has been updated to clean-up compilation, lift 32-bit
+  limitations, etc.
+
+
+Performance, Internal Implementation, etc. (please report possible regressions)
+
+* Some tests showed false failures caused by a bug in ecryptofs.
+
+* We no longer use AsciiDoc7 syntax in our documentation and favor a
+  more modern style.
+
+* &quot;git am --rebasing&quot; codepath was taught to grab authorship, log
+  message and the patch text directly out of existing commits.  This
+  will help rebasing commits that have confusing &quot;diff&quot; output in
+  their log messages.
+
+* &quot;git index-pack&quot; and &quot;git pack-objects&quot; use streaming API to read
+  from the object store to avoid having to hold a large blob object
+  in-core while they are doing their thing.
+
+* Code to match paths with exclude patterns learned to avoid calling
+  fnmatch() by comparing fixed leading substring literally when
+  possible.
+
+* &quot;git log -n 1 -- rarely-touched-path&quot; was spending unnecessary
+  cycles after showing the first change to find the next one, only to
+  discard it.
+
+* &quot;git svn&quot; got a large-looking code reorganization at the last
+  minute before the code freeze.
+
+
+Also contains minor documentation updates and code clean-ups.
+
+
+Fixes since v1.7.11
+-------------------
+
+Unless otherwise noted, all the fixes since v1.7.11 in the maintenance
+releases are contained in this release (see release notes to them for
+details).
+
+* &quot;git submodule add&quot; was confused when the superproject did not have
+  its repository in its usual place in the working tree and GIT_DIR
+  and GIT_WORK_TREE was used to access it.
+
+* &quot;git commit --amend&quot; let the user edit the log message and then died
+  when the human-readable committer name was given insufficiently by
+  getpwent(3).</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9965'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9965"><time data-relative="true">2012-08-20T05:10:55Z</time></a></span>
+</cite>
+<blockquote><p>This is done on my development machines (see &quot;<a href="/wiki/Updating_to_Git_1.7.12">Updating to Git 1.7.12</a>&quot;).</p>
+<p>Haven't done anything yet remotely.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9966'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9966"><time data-relative="true">2012-08-20T05:10:59Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9991'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9991"><time data-relative="true">2012-09-19T06:07:14Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git v1.7.12</li>
+<li><strong>To:</strong> Update to Git v1.7.12.1</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9992'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9992"><time data-relative="true">2012-09-19T06:07:37Z</time></a></span>
+</cite>
+<blockquote><p>v1.7.12.1 is out:</p>
+<pre>The latest maintenance release Git v1.7.12.1 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+c5227b5202947bba3d63dca72662fad02d208800  git-1.7.12.1.tar.gz
+b42d5db34612825676d0a231cf9c566f8ad45e9f  git-htmldocs-1.7.12.1.tar.gz
+2d9c267c5370cdceb2e67f67abf5b152b0c18db9  git-manpages-1.7.12.1.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.12.1
+tag and the maint branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.7.12.1 Release Notes
+==========================
+
+Fixes since v1.7.12
+-------------------
+
+* &quot;git apply -p0&quot; did not parse pathnames on &quot;diff --git&quot; line
+  correctly.  This caused patches that had pathnames in no other
+  places to be mistakenly rejected (most notably, binary patch that
+  does not rename nor change mode).  Textual patches, renames or mode
+  changes have preimage and postimage pathnames in different places
+  in a form that can be parsed unambiguously and did not suffer from
+  this problem.
+
+* &quot;git cherry-pick A C B&quot; used to replay changes in A and then B and
+  then C if these three commits had committer timestamps in that
+  order, which is not what the user who said &quot;A C B&quot; naturally
+  expects.
+
+* &quot;git commit --amend&quot; let the user edit the log message and then
+  died when the human-readable committer name was given
+  insufficiently by getpwent(3).
+
+* Some capabilities were asked by fetch-pack even when upload-pack
+  did not advertise that they are available.  fetch-pack has been
+  fixed not to do so.
+
+* &quot;git diff&quot; had a confusion between taking data from a path in the
+  working tree and taking data from an object that happens to have
+  name 0{40} recorded in a tree.
+
+* &quot;git for-each-ref&quot; did not correctly support more than one --sort
+  option.
+
+* &quot;git log ..&quot; errored out saying it is both rev range and a path
+  when there is no disambiguating &quot;--&quot; is on the command line.
+  Update the command line parser to interpret &quot;..&quot; as a path in such
+  a case.
+
+* The &quot;--topo-order&quot;, &quot;--date-order&quot; (and the lack of either means
+  the default order) options to &quot;rev-list&quot; and &quot;log&quot; family of
+  commands were poorly described in the documentation.
+
+* &quot;git prune&quot; without &quot;-v&quot; used to warn about leftover temporary
+  files (which is an indication of an earlier aborted operation).
+
+* Pushing to smart HTTP server with recent Git fails without having
+  the username in the URL to force authentication, if the server is
+  configured to allow GET anonymously, while requiring authentication
+  for POST.
+
+* The reflog entries left by &quot;git rebase&quot; and &quot;git rebase -i&quot; were
+  inconsistent (the interactive one gave an abbreviated object name).
+
+* When &quot;git push&quot; triggered the automatic gc on the receiving end, a
+  message from &quot;git prune&quot; that said it was removing cruft leaked to
+  the standard output, breaking the communication protocol.
+
+* &quot;git show --quiet&quot; ought to be a synonym for &quot;git show -s&quot;, but
+  wasn't.
+
+* &quot;git show --format='%ci'&quot; did not give timestamp correctly for
+  commits created without human readable name on &quot;committer&quot; line.
+
+* &quot;git send-email&quot; did not unquote encoded words that appear on the
+  header correctly, and lost &quot;_&quot; from strings.
+
+* The interactive prompt &quot;git send-email&quot; gives was error prone. It
+  asked &quot;What e-mail address do you want to use?&quot; with the address it
+  guessed (correctly) the user would want to use in its prompt,
+  tempting the user to say &quot;y&quot;. But the response was taken as &quot;No,
+  please use 'y' as the e-mail address instead&quot;, which is most
+  certainly not what the user meant.
+
+* &quot;gitweb&quot; when used with PATH_INFO failed to notice directories with
+  SP (and other characters that need URL-style quoting) in them.
+
+* When the user gives an argument that can be taken as both a
+  revision name and a pathname without disambiguating with &quot;--&quot;, we
+  used to give a help message &quot;Use '--' to separate&quot;.  The message
+  has been clarified to show where that '--' goes on the command
+  line.
+
+* When the user exports a non-default IFS without HT, scripts that
+  rely on being able to parse &quot;ls-files -s | while read a b c...&quot;
+  started to fail.  Protect them from such a misconfiguration.
+
+* The attribute system may be asked for a path that itself or its
+  leading directories no longer exists in the working tree, and it is
+  fine if we cannot open .gitattribute file in such a case.  Failure
+  to open per-directory .gitattributes with error status other than
+  ENOENT and ENOTDIR should be diagnosed, but it wasn't.
+
+* After &quot;gitk&quot; showed the contents of a tag, neither &quot;Reread
+  references&quot; nor &quot;Reload&quot; did not update what is shown as the
+  contents of it, when the user overwrote the tag with &quot;git tag -f&quot;.
+
+* &quot;ciabot&quot; script (in contrib/) has been updated with extensive
+  documentation.
+
+* &quot;git-jump&quot; script (in contrib/) did not work well when
+  diff.noprefix or diff.mnemonicprefix is in effect.
+
+* Older parts of the documentation described as if having a regular
+  file in .git/refs/ hierarchy were the only way to have branches and
+  tags, which is not true for quite some time.
+
+* A utility shell function test_seq has been added as a replacement
+  for the 'seq' utility found on some platforms.
+
+* Compatibility wrapper to learn the maximum number of file
+  descriptors we can open around sysconf(_SC_OPEN_MAX) and
+  getrlimit(RLIMIT_NO_FILE) has been introduced for portability.
+
+* We used curl_easy_strerror() without checking version of cURL,
+  breaking the build for versions before curl 7.12.0.
+
+* Code to work around MacOS X UTF-8 gotcha has been cleaned up.
+
+* Fallback 'getpass' implementation made unportable use of stdio API.
+
+* The &quot;--rebase&quot; option to &quot;git pull&quot; can be abbreviated to &quot;-r&quot;,
+  but we didn't document it.
+
+* It was generally understood that &quot;--long-option&quot;s to many of our
+  subcommands can be abbreviated to the unique prefix, but it was not
+  easy to find it described for new readers of the documentation set.
+
+* The synopsis said &quot;checkout [-B branch]&quot; to make it clear the
+  branch name is a parameter to the option, but the heading for the
+  option description was &quot;-B::&quot;, not &quot;-B branch::&quot;, making the
+  documentation misleading.
+
+Also contains numerous documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.12 are as follows:
+
+Adam Butcher (1):
+     Fix '\ No newline...' annotation in rewrite diffs
+
+Adam Spiers (1):
+     Add missing -z to git check-attr usage text for consistency with man page
+
+Andreas Schwab (1):
+     Documentation/git-filter-branch: Move note about effect of removing commits
+
+Brandon Casey (2):
+     t/t5400: demonstrate breakage caused by informational message from prune
+     prune.c: only print informational message in show_only or verbose mode
+
+David Aguilar (2):
+     gitk: Teach &quot;Reread references&quot; to reload tags
+     gitk: Rename 'tagcontents' to 'cached_tagcontent'
+
+Eric S. Raymond (4):
+     fast-import: document the --done option
+     contrib/ciabot: Get ciabot configuration from git variables
+     Improved documentation for the ciabot scripts.
+     Make the ciabot scripts completely self-configuring in the normal case.
+
+Felipe Contreras (1):
+     gitk: Avoid Meta1-F5
+
+Heiko Voigt (2):
+     Let submodule command exit with error status if path does not exist
+     Documentation/CodingGuidelines: spell out more shell guidelines
+
+Jay Soffian (1):
+     gitweb: URL-decode $my_url/$my_uri when stripping PATH_INFO
+
+Jeff King (29):
+     diff: do not use null sha1 as a sentinel value
+     do not write null sha1s to on-disk index
+     fsck: detect null sha1 in tree entries
+     include agent identifier in capability string
+     docs: monospace listings in docbook output
+     check-docs: mention gitweb specially
+     check-docs: update non-command documentation list
+     command-list: add git-sh-i18n
+     command-list: mention git-credential-* helpers
+     check-docs: factor out command-list
+     check-docs: list git-gui as a command
+     check-docs: drop git-help special-case
+     check-docs: get documented command list from Makefile
+     send-pack: fix capability-sending logic
+     do not send client agent unless server does first
+     parse_feature_request: make it easier to see feature values
+     fetch-pack: mention server version with verbose output
+     config: warn on inaccessible files
+     gitignore: report access errors of exclude files
+     attr: warn on inaccessible attribute files
+     t5550: put auth-required repo in auth/dumb
+     t5550: factor out http auth setup
+     t/lib-httpd: only route auth/dumb to dumb repos
+     t/lib-httpd: recognize */smart/* repos as smart-http
+     t: test basic smart-http authentication
+     t: test http access to &quot;half-auth&quot; repositories
+     http: factor out http error code handling
+     http: prompt for credentials on failed POST
+     log: fix --quiet synonym for -s
+
+Joachim Schmitz (2):
+     http.c: don't use curl_easy_strerror prior to curl-7.12.0
+     sha1_file.c: introduce get_max_fd_limit() helper
+
+Junio C Hamano (34):
+     test: rename $satisfied to $satisfied_prereq
+     test: allow prerequisite to be evaluated lazily
+     config: &quot;git config baa&quot; should exit with status 1
+     t7406: fix misleading &quot;rev-parse --max-count=1 HEAD&quot;
+     sane_execvp(): ignore non-directory on $PATH
+     Documentation: do not mention .git/refs/* directories
+     receive-pack: do not leak output from auto-gc to standard output
+     sh-setup: protect from exported IFS
+     fetch-pack: do not ask for unadvertised capabilities
+     send-email: validate &amp; reconfirm interactive responses
+     rev-list docs: clarify --topo-order description
+     gitcli: describe abbreviation of long options
+     Documentation: update the introductory section
+     git-config doc: unconfuse an example
+     precompose-utf8: do not call checks for non-ascii &quot;utf8&quot;
+     warn_on_inaccessible(): a helper to warn on inaccessible paths
+     specifying ranges: we did not mean to make &quot;..&quot; an empty set
+     mergetool: style fixes
+     Prepare for 1.7.11.6
+     apply: compute patch-&gt;def_name correctly under -p0
+     doc: &quot;git checkout -b/-B/--orphan&quot; always takes a branch name
+     split_ident_line(): make best effort when parsing author/committer line
+     Document file-glob for &quot;git checkout -- '*.c'&quot;
+     gitcli: formatting fix
+     gitcli: contrast wildcard given to shell and to git
+     Almost 1.7.11.6
+     Start preparing for 1.7.12.1
+     Git 1.7.11.6
+     Further merging down for 1.7.12.1
+     Further merging in preparation for 1.7.12.1
+     attr: failure to open a .gitattributes file is OK with ENOTDIR
+     Git 1.7.11.7
+     Draft release notes to 1.7.12.1
+     Git 1.7.12.1
+
+Kacper Kornet (2):
+     t6300: test sort with multiple keys
+     for-each-ref: Fix sort with multiple keys
+
+Martin von Zweigbergk (4):
+     add tests for 'git rebase --keep-empty'
+     teach log --no-walk=unsorted, which avoids sorting
+     demonstrate broken 'git cherry-pick three one two'
+     cherry-pick/revert: respect order of revisions to pick
+
+Matthieu Moy (1):
+     setup: clarify error messages for file/revisions ambiguity
+
+Michael Haggerty (1):
+     git-config.txt: fix example
+
+Michael J Gruber (6):
+     test-lib: provide case insensitivity as a prerequisite
+     t0050: use the CASE_INSENSITIVE_FS test prereq
+     t0050: use the SYMLINKS test prereq
+     test-lib: provide UTF8 behaviour as a prerequisite
+     rebase -i: use full onto sha1 in reflog
+     t3910: use the UTF8_NFD_TO_NFC test prereq
+
+Micha&#x0142; Kiedrowicz (1):
+     tests: Introduce test_seq
+
+Miklos Vajna (1):
+     man: git pull -r is a short for --rebase
+
+Mischa POSLAWSKY (1):
+     git-jump: ignore (custom) prefix in diff mode
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (1):
+     read_index_from: remove bogus errno assignments
+
+Paul Gortmaker (1):
+     apply: delete unused deflate_origlen from patch struct
+
+Phil Hord (2):
+     test: git-stash conflict sets up rerere
+     stash: invoke rerere in case of conflict
+
+Philip Oakley (1):
+     Doc: Improve shallow depth wording
+
+Ramkumar Ramachandra (1):
+     t/perf: add &quot;trash directory&quot; to .gitignore
+
+Ramsay Allan Jones (1):
+     test-regex: Add a test to check for a bug in the regex routines
+
+Robin Rosenberg (1):
+     cleanup precompose_utf8
+
+Stefan Zager (1):
+     Make 'git submodule update --force' always check out submodules.
+
+Stephen Boyd (1):
+     send-email: initial_to and initial_reply_to are both optional
+
+Thomas Rast (3):
+     send-email: improve RFC2047 quote parsing
+     diff_setup_done(): return void
+     merge-recursive: eliminate flush_buffer() in favor of write_in_full()
+
+Wesley J. Landaker (1):
+     Documentation: indent-with-non-tab uses &quot;equivalent tabs&quot; not 8
+
+Yacine Belkadi (1):
+     completion: add --no-edit to git-commit</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9996'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9996"><time data-relative="true">2012-09-30T18:17:29Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git v1.7.12.1</li>
+<li><strong>To:</strong> Update to Git v1.7.12.2</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9997'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9997"><time data-relative="true">2012-09-30T18:17:53Z</time></a></span>
+</cite>
+<blockquote><p>1.7.12.2 release announcement:</p>
+<pre>The latest maintenance release Git v1.7.12.2 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+277b759139ddb62c6935da37de8a483e2c234a97  git-1.7.12.2.tar.gz
+5722156394c7478b2339a1d87aa894bc4d2f5d6b  git-htmldocs-1.7.12.2.tar.gz
+8cf6fd255e83226b4abcdcd68dcf315c1995fd92  git-manpages-1.7.12.2.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.12.2
+tag and the maint branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.7.12.2 Release Notes
+==========================
+
+Fixes since v1.7.12.1
+---------------------
+
+* When &quot;git am&quot; is fed an input that has multiple &quot;Content-type: ...&quot;
+  header, it did not grok charset= attribute correctly.
+
+* Even during a conflicted merge, &quot;git blame $path&quot; always meant to
+  blame uncommitted changes to the &quot;working tree&quot; version; make it
+  more useful by showing cleanly merged parts as coming from the other
+  branch that is being merged.
+
+* &quot;git blame MAKEFILE&quot; run in a history that has &quot;Makefile&quot; but not
+  &quot;MAKEFILE&quot; should say &quot;No such file MAKEFILE in HEAD&quot;, but got
+  confused on a case insensitive filesystem and failed to do so.
+
+* &quot;git fetch --all&quot;, when passed &quot;--no-tags&quot;, did not honor the
+  &quot;--no-tags&quot; option while fetching from individual remotes (the same
+  issue existed with &quot;--tags&quot;, but combination &quot;--all --tags&quot; makes
+  much less sense than &quot;--all --no-tags&quot;).
+
+* &quot;git log/diff/format-patch --stat&quot; showed the &quot;N line(s) added&quot;
+  comment in user's locale and caused careless submitters to send
+  patches with such a line in them to projects whose project language
+  is not their language, mildly irritating others. Localization to
+  the line has been disabled for now.
+
+* &quot;git log --all-match --grep=A --grep=B&quot; ought to show commits that
+  mention both A and B, but when these three options are used with
+  --author or --committer, it showed commits that mention either A or
+  B (or both) instead.
+
+* The subcommand to remove the definition of a remote in &quot;git remote&quot;
+  was named &quot;rm&quot; even though all other subcommands were spelled out.
+  Introduce &quot;git remote remove&quot; to remove confusion, and keep &quot;rm&quot; as
+  a backward compatible synonym.
+
+Also contains a handful of documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.12.1 are as follows:
+
+Dan Johnson (1):
+     fetch --all: pass --tags/--no-tags through to each remote
+
+David Gould (1):
+     run-command.c: fix broken list iteration in clear_child_for_cleanup
+
+Felipe Contreras (1):
+     completion: fix shell expansion of items
+
+Jeff King (4):
+     argv-array: add pop function
+     argv-array: fix bogus cast when freeing array
+     fetch: use argv_array instead of hand-building arrays
+     Revert &quot;completion: fix shell expansion of items&quot;
+
+Jens Lehmann (1):
+     submodule: use argv_array instead of hand-building arrays
+
+Jeremy White (1):
+     Documentation: describe subject more precisely
+
+Jonathan &quot;Duke&quot; Leto (1):
+     Improve the description of GIT_PS1_SHOWUPSTREAM
+
+Junio C Hamano (11):
+     mailinfo: strip &quot;RE: &quot; prefix
+     blame $path: avoid getting fooled by case insensitive filesystems
+     blame: allow &quot;blame file&quot; in the middle of a conflicted merge
+     grep: teach --debug option to dump the parse tree
+     log --grep/--author: honor --all-match honored for multiple --grep patterns
+     log: document use of multiple commit limiting options
+     grep.c: mark private file-scope symbols as static
+     mailinfo: do not concatenate charset= attribute values from mime headers
+     grep.c: make two symbols really file-scope static this time
+     Start preparation for 1.7.12.2
+     Git 1.7.12.2
+
+Michael J Gruber (6):
+     grep: show --debug output only once
+     t7810-grep: bring log --grep tests in common form
+     t7810-grep: test multiple --grep with and without --all-match
+     t7810-grep: test multiple --author with --all-match
+     t7810-grep: test interaction of multiple --grep and --author options
+     t7810-grep: test --all-match with multiple --grep and --author options
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (3):
+     remote: prefer subcommand name 'remove' to 'rm'
+     doc: move rev-list option -&lt;n&gt; from git-log.txt to rev-list-options.txt
+     Revert diffstat back to English
+
+Ralf Thielow (1):
+     l10n: de.po: correct translation of a 'rebase' message
+
+Stefan Naewe (1):
+     ls-remote: document the '--get-url' option
+
+Stephen Boyd (1):
+     Documentation: Document signature showing options
+
+Thynson (2):
+     l10n: Unify the translation for '(un)expected'
+     l10n: Improve many translation for zh_CN</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10002'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10002"><time data-relative="true">2012-10-09T04:22:34Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git v1.7.12.2</li>
+<li><strong>To:</strong> Update to Git v1.7.12.3</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10003'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10003"><time data-relative="true">2012-10-09T04:22:57Z</time></a></span>
+</cite>
+<blockquote><pre>The latest maintenance release Git v1.7.12.3 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+a071f03f6aab76b283828db1fdedbedb90085eb5  git-1.7.12.3.tar.gz
+6f976c27aab7250f1a35b2b002ac7a07c3266cf4  git-htmldocs-1.7.12.3.tar.gz
+49584f0b72e4a13f9a4df771bbde9cf70f25d317  git-manpages-1.7.12.3.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.12.3
+tag and the maint branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.7.12.3 Release Notes
+==========================
+
+Fixes since v1.7.12.2
+---------------------
+
+* &quot;git am&quot; mishandled a patch attached as application/octet-stream
+  (e.g. not text/*); Content-Transfer-Encoding (e.g. base64) was not
+  honored correctly.
+
+* It was unclear in the documentation for &quot;git blame&quot; that it is
+  unnecessary for users to use the &quot;--follow&quot; option.
+
+* A repository created with &quot;git clone --single&quot; had its fetch
+  refspecs set up just like a clone without &quot;--single&quot;, leading the
+  subsequent &quot;git fetch&quot; to slurp all the other branches, defeating
+  the whole point of specifying &quot;only this branch&quot;.
+
+* &quot;git fetch&quot; over http had an old workaround for an unlikely server
+  misconfiguration; it turns out that this hurts debuggability of the
+  configuration in general, and has been reverted.
+
+* &quot;git fetch&quot; over http advertised that it supports &quot;deflate&quot;, which
+  is much less common, and did not advertise the more common &quot;gzip&quot; on
+  its Accept-Encoding header.
+
+* &quot;git receive-pack&quot; (the counterpart to &quot;git push&quot;) did not give
+  progress output while processing objects it received to the puser
+  when run over the smart-http protocol.
+
+* &quot;git status&quot; honored the ignore=dirty settings in .gitmodules but
+  &quot;git commit&quot; didn't.
+
+Also contains a handful of documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.12.2 are as follows:
+
+Jeff King (3):
+     receive-pack: redirect unpack-objects stdout to /dev/null
+     receive-pack: send pack-processing stderr over sideband
+     receive-pack: drop &quot;n/a&quot; on unpacker errors
+
+Junio C Hamano (3):
+     git blame: document that it always follows origin across whole-file renames
+     Start preparing for 1.7.12.3
+     Git 1.7.12.3
+
+Linus Torvalds (1):
+     mailinfo: don't require &quot;text&quot; mime type for attachments
+
+Orgad Shaneh (1):
+     commit: pay attention to submodule.$name.ignore in .gitmodules
+
+Peter Krefting (1):
+     l10n: Fix to Swedish translation
+
+Ralf Thielow (1):
+     clone --single: limit the fetch refspec to fetched branch
+
+Ramkumar Ramachandra (1):
+     submodule: if $command was not matched, don't parse other args
+
+Shawn O. Pearce (2):
+     Revert &quot;retry request without query when info/refs?query fails&quot;
+     Enable info/refs gzip decompression in HTTP client</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10015'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10015"><time data-relative="true">2012-10-18T04:31:52Z</time></a></span>
+</cite>
+<blockquote><p>This ticket is getting out of control. Closing in favor of <a href="/issues/2016">issue #2016</a> (which is about upgrading to Git 1.7.12.4.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10016'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10016"><time data-relative="true">2012-10-18T04:31:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

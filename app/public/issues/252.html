@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #252: Synergy hangs (shown as &quot;Not Responding&quot;)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #252</div>
+<div class='issue' id='issue_252'>
+<form class="edit_issue" id="edit_issue_252" action="/issues/252" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="G5ymJfbCJw1RFs3q1pXK+OnatU2sFJ6YxiABj1hch+QvbhiSUU/9WIia/h3nvJlMXFjccaf4EITmP9RxfITgwA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #252:
+<span data-name='issue[summary]'>
+Synergy hangs (shown as &quot;Not Responding&quot;)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-06-03T19:41:47Z</time>, updated <time data-relative="true">2007-05-30T22:14:58Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/martin-sunnerdahl">Martin Sunnerdahl</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Since installing Tiger (clean install on clean drive, btw), I've had a few occasions where the computer starts lagging heavily. On all of those occasions, 2 programs are shown in RED: Synergy and iChatAgent (although iChatAgent is red most of the time;). The lag is so severe that starting ActivityMonitor takes several minutes. Upon forcequitting Synergy, the system goes back to normal.</p>
+<p>Now, there was an earlier bug (78) that was about similar behaviour, but under 10.3, although *I* never experienced it. I'm using 10.3.9 at home, and there no problems occur, so I guess this bug is 10.4 specific.</p>
+<p>There are no CrashReporter logs for Synergy, so I'm really unsure where to find more info about what is actually happening. Please tell me what info you might need.</p>
+<p>OS X 10.4.1 Dual 1.8 G5</p>
+<p>&amp; thank you for a sweet (and cheap) application!</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2058'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2058"><time data-relative="true">2005-06-03T20:03:36Z</time></a></span>
+</cite>
+<blockquote><p>Yes, this probably is a duplicate of either <a href="/issues/39">bug #39</a> or <a href="/issues/78">bug #78</a>, and we never got to the bottom of  those. I suggest you look at those reports and see if you can perform some trouble shooting and  information gathering. The usual advice applies:</p>
+<p>1. Try uninstalling, reinstalling 2. Try getting rid of your preferences file 3. Try under other user accounts 4. Try on another machine 5. Use the Activity monitor to take a sample during the hang 6. Describe what Synergy and/or iTunes were doing immediately before the hang.</p>
+<p>It's probably best if you add your comments to one of those other bug reports rather than here so that  all the information is kept in the one place. I'll leave it up to you to chose which one you think best  matches your problem. We can then close this report as a duplicate.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2059'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2059"><time data-relative="true">2006-07-05T02:05:59Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2060'>
+<cite>
+<a href="/users/bastian">bastian</a>
+<span class='when'><a href="#comment_2060"><time data-relative="true">2007-05-30T22:14:58Z</time></a></span>
+</cite>
+<blockquote><p>I have the same problem sometimes. I will take a sample the next time.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

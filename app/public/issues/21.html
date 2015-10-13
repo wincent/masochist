@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #21: Synergy uses a lot of memory
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #21</div>
+<div class='issue' id='issue_21'>
+<form class="edit_issue" id="edit_issue_21" action="/issues/21" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7c3z95ML9JxRxohenu5Y/WbvA0y5Bq4t7PCZ89l3DoTZP01ANIYuyYhKu6mvxwtJ021qcLLqIDHM70wN/a9poA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #21:
+<span data-name='issue[summary]'>
+Synergy uses a lot of memory
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-11-12T20:34:00Z</time>, updated <time data-relative="true">2005-01-09T12:40:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email: &quot;The CPU usage is low, but I recently noticed that this thing eats more RAM than any  other app I have running when I'm running iApps, Safari, MS Office, nothing really intense, but this app  uses more physical RAM than anything other program, it comes in at a whopping 94 MBs of RAM (mind  you that does not shift, it stays constant the entire time Synergy is running). Is this normal? I have a 1.5  GB of RAM, but it's strange to me to have an app in the background that eats more than 5% of my total  physical RAM. This might be even an issue isolated to me, I don't know, but I couldn't find any other  mention of this bug, so either it's not widespread or it's very well known and accepted.&quot;</p>
+<p>94 MB sounds like an awful lot. What are you using to measure the usage? If I look at Synergy in  &quot;Activity Monitor&quot; I see that it's currently using 10MB of real memory on my machine. Which compares  favorably to other apps like iTunes (25MB), Activity Monitor itself (22MB), Mail (27MB), Finder (30MB),  Safari (48MB) etc.</p>
+<p>Having said that, Synergy *does* use a lot of memory, almost exclusively due to the fact that it caches  the album art so heavily in memory. In Synergy Advance I am not making it cache so aggressively. </p>
+<p>On the subject of memory leaks, I am not aware of any at the moment, but of course it is possible that  somewhere in the 32,000 lines of code that there is a leak that has escaped my attention. I always fix  leaks as I find them. I last conducted an extensive audit of the code prior to version 1.2 (released in  August 2004).</p>
+<p><a href="http://synergy.wincent.com/history.html" class="external">http://synergy.wincent.com/history.html</a></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1129'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1129"><time data-relative="true">2004-11-12T20:34:26Z</time></a></span>
+</cite>
+<blockquote><p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1130'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1130"><time data-relative="true">2004-11-24T22:23:38Z</time></a></span>
+</cite>
+<blockquote><p>1.5b should use marginally less memory, but only marginally. The bulk of the memory use is still  attributable to album art caching.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1131'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1131"><time data-relative="true">2005-01-09T12:40:20Z</time></a></span>
+</cite>
+<blockquote><p>Version 1.6 fixes a few minor additional memory leaks. I've done extensive testing and analysis with  tools such as the &quot;leaks&quot; command line tool and confirmed that the only remaining leaks in the app are  Apple leaks in NSAppleScript, which are known to Apple and there's nothing that can be done about  them. See:</p>
+<p><a href="http://www.cocoadev.com/index.pl?NSAppleScriptMemoryLeak" class="external">http://www.cocoadev.com/index.pl?NSAppleScriptMemoryLeak</a></p>
+<p>Luckily, the leaks in question are very small. Even after running Synergy continuously 24 hours a day for  many days, the leaked memory is only a handful of kilobytes. The highest I've seen it go was just over a  total of 70 kilobytes.</p>
+<p>I am going to mark this one as FIXED, as there really is nothing else that can be done to reduce the  memory usage of the app. The copy of Synergy that's running right now on my machine is currently  using just over 12 meg of physical RAM, which seems reasonable enough to me.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1132'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1132"><time data-relative="true">2005-01-09T12:40:41Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

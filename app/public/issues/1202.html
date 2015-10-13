@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1202: Keep history of wiki edits, possibly other edits as well
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1202</div>
+<div class='issue' id='issue_1202'>
+<form class="edit_issue" id="edit_issue_1202" action="/issues/1202" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="xJ3a+OZFx4qg8kPVFRo/9CozCIqaUvlndycVCjWRD4nwb2RPQcgd33l+cCIkM2xAn7FhtpG+d3tXOMD0EUlorQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1202:
+<span data-name='issue[summary]'>
+Keep history of wiki edits, possibly other edits as well
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-01-19T23:50:49Z</time>, updated <time data-relative="true">2015-04-07T16:55:47Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I just accidentally destroyed an article.</p>
+<ol>
+<li>Visit old article with similar structure to one I'd like to create.</li>
+<li>Edit old article in place in order to create new one.</li>
+<li>Realize that your &quot;new&quot; article effectively destroyed the old one because it took it's place.</li>
+</ol>
+<p>So it was a silly mistake on my part, but it would be nice if the system protected me from such mistkes. (In this case I was able to recover the old content by using the Google cache.)</p>
+<p>When developing the wiki software I originally did have revisions in place, but decided to rip them out because it was probably a case of over-engineering for a wiki like this (not a community-driven wiki, rather just a place to keep notes).</p>
+<p>So now I am going to look at retro-fitting revisions on after all. And if I am going to do that I might look at doing it for things like weblog posts and possibly issues and comments as well.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4455'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4455"><time data-relative="true">2009-04-17T08:35:23Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1248">ticket #1248</a>, &quot;Auto-save posts/articles etc being edited&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5170'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5170"><time data-relative="true">2009-11-17T16:33:34Z</time></a></span>
+</cite>
+<blockquote><p>Possibly useful examples:</p>
+<ul>
+<li><a href="http://github.com/laserlemon/vestal_versions" class="external">http://github.com/laserlemon/vestal_versions</a></li>
+<li><a href="http://github.com/mmower/simply_versioned" class="external">http://github.com/mmower/simply_versioned</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5750'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5750"><time data-relative="true">2010-06-24T09:08:04Z</time></a></span>
+</cite>
+<blockquote><p>Another option to consider is storing stuff in a Git repo, which would give us some bonus behavior (logging, diffs) &quot;for free&quot;, but would most likely be a little more IO intensive (forking out to <code>git</code> rather than accessing the database).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5922'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5922"><time data-relative="true">2010-07-23T12:51:11Z</time></a></span>
+</cite>
+<blockquote><p>Another case which just bit me: session expired when window was left open for a long time. When I hit the submit button I got auto-redirected to the log-in page, and when I logged in I could no long use the back button to get back to the form (probably would have been fine if I had just clicked back rather than logging in).</p>
+<p>So really need some kind of auto-save functionality for that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7323'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7323"><time data-relative="true">2011-12-12T00:06:22Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1935">ticket #1935</a>, which is about adding versioning to the snippets model.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7324'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7324"><time data-relative="true">2011-12-12T00:12:31Z</time></a></span>
+</cite>
+<blockquote><p>Easiest way to do this will be to have a <code>versions</code> table with a Yaml or JSON serialization of the versioned model (along with some meta info, such as related type, related id etc.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10307'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10307"><time data-relative="true">2013-08-02T06:33:26Z</time></a></span>
+</cite>
+<blockquote><p>Envisioning an API something like this:</p>
+<pre class="ruby-syntax">class Article &lt; ActiveRecord::Base
+  version :title, :redirect, :body
+end
+
+a = Article.first
+a.id #=&gt; 1
+a.version #=&gt; 1
+a.update_attribute(:body, 'more info!')
+a.version #=&gt; 2
+a.rollback
+a.body #=&gt; 'original body'
+a.version #=&gt; 1
+a.reload
+a.version #=&gt; 2
+a.body #=&gt; 'more info!'
+a.rollback!
+a.body #=&gt; 'original body'
+a.version #=&gt; 3
+a.reload
+a.body #=&gt; 'original body'
+a.rollback(3.minutes.ago)
+a.version #=&gt; 1
+a.reload
+a.version #=&gt; 3
+a.rollback!(3.minutes.ago)
+a.reload
+a.version #=&gt; 4
+Version #=&gt; Version(id: integer, versioned_id: integer, versioned_type: string, version: integer, content: text)
+Version.last.content #=&gt; { title: 'dat article', redirect: '', body: 'original body' }</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13015'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13015"><time data-relative="true">2015-04-07T16:55:47Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/2198">issue #2198</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

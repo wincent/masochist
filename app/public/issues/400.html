@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #400: CRASH: Dies in iTunes plug-in (setLastKnownCoverArtwork method)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #400</div>
+<div class='issue' id='issue_400'>
+<form class="edit_issue" id="edit_issue_400" action="/issues/400" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Bz2LQeAp35ojpz0xdcrqtytZSGOItIO2rXeZLN8wN1AzzzX2R6QFz/orDsZE47kDntshX4NYDaqNaEzS++hQdA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #400:
+<span data-name='issue[summary]'>
+CRASH: Dies in iTunes plug-in (setLastKnownCoverArtwork method)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-11T10:05:42Z</time>, updated <time data-relative="true">2007-06-11T06:59:12Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user crash report:</p>
+<p>&quot;Put PowerBook to sleep, plugged into mains, plugged in external monitor (which became default) and woke laptop from sleep.&quot;</p>
+<p>Will attach crash log.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2585'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2585"><time data-relative="true">2006-04-11T10:06:03Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=59) crash log</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2586'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2586"><time data-relative="true">2006-04-14T05:59:36Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=62) similar crash log</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2587'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2587"><time data-relative="true">2006-04-14T06:21:19Z</time></a></span>
+</cite>
+<blockquote><p>Given the number of third party input managers and stuff you've got installed I suspect a conflict. It would be useful to temporarily uninstall them and try to reproduce the crash by waking from sleep, connecting/disconnecting the external monitor.</p>
+<p>If the crash goes away without the third-party stuff then we'll need to identify the source of the conflict and come up with a work-around. For more tips on narrowing down the causes see:</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2588'>
+<cite>
+<a href="/users/christopher-cormack">Christopher Cormack</a>
+<span class='when'><a href="#comment_2588"><time data-relative="true">2006-04-14T10:15:42Z</time></a></span>
+</cite>
+<blockquote><p>I was getting the crashes when I was at home, but now that I am back at uni they have stopped occuring. I have tried reproducing the crash, and eventhough I have tried many different combinations on putting laptop to sleep and attaching external monitor, I have had no luck. It might have been due to the reconnection of the (different) USB mouse or keyboard I was using at home.</p>
+<p>If I manage to reproduce the crash again, I'll narrow down the cause and let you know.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2589'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2589"><time data-relative="true">2006-05-07T07:17:39Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 422 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2591'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2591"><time data-relative="true">2006-05-07T07:21:51Z</time></a></span>
+</cite>
+<blockquote><p>Ok, after further investigation and receiving a crash report from a different user I've determined a few things:</p>
+<p>- the crash has (so far) been reported when quitting iTunes or on waking from sleep.</p>
+<p>- the crash is occurring in the &quot;setLastKnownCoverArtwork&quot; method.</p>
+<p>- we can rule out third-party conflicts because the other submitted crash (<a href="/issues/422">bug #422</a>) took place without any third-party stuff installed.</p>
+<p>Now that I've narrowed down the exact site of the crash I've reworded the summary and will investigate further.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2592'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2592"><time data-relative="true">2006-05-07T07:29:16Z</time></a></span>
+</cite>
+<blockquote><p>Rewording the summary for additional clarity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2593'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2593"><time data-relative="true">2006-05-14T11:53:12Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=67) i386 crash log</p>
+<p>I've now received a crash log from a user running on i386. Turns out to be the same crash as shown in the-already attached ppc crash logs. Attaching the i386 log.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2594'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2594"><time data-relative="true">2006-07-05T02:07:37Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2621'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2621"><time data-relative="true">2007-05-19T04:09:52Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=131) new PPC crash log, version 0.5b</p>
+<p>Just received a new crash report today from a PowerPC user running 0.5b. This looks to be the same issue, although I can't be sure. I can't really decipher the stack trace; when I try to do address to symbol conversion on the dSYM files I get bizarre results so I think something might have gone wrong when producing the dSYM files. I am CC'ing the user that submitted the report on this: can you please upgrade to 0.5.1b and report the problem if you see it again?</p>
+<p>The bad news is that the issue is still present despite all the rewritten code in version 0.5b. The good news is that if the issue is still present then it was never an issue in all of the code that was replaced, but somewhere else in the code base; there really aren't too many other places in the code base where this kind of thing could originate, so I will review those places and hopefully get to the bottom of the problem.</p>
+<p>The other thing to note about the submitted crash report is that there are too many threads in it for my liking. So it could be related to <a href="/issues/396">bug #396</a>. All of this will go away in Leopard due to the new threading model, but before that I would still like to find out why the thread count is creeping up.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

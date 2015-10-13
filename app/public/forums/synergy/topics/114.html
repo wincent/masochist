@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Auto-update iChat status, auto-upload to website
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Auto-update iChat status, auto-upload to website</div>
+<h1 class='major'>Auto-update iChat status, auto-upload to website</h1>
+<div class='topic' id='topic_114'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/synergy/topics/114"><time data-relative="true">2005-03-03T20:45:50Z</time></a>
+</span>
+</cite>
+<blockquote><p>Tomorrow (4 March 2005) Synergy 1.7 will be released to the public. One of the features of the new version is the capability to run scripts and launch items whenever the iTunes track or status changes (requires iTunes 4.7 or later).</p>
+<p>The way it works is simple: on each change any items found in &quot;~/Library/Application Support/Synergy/Track Change Items/&quot; are launched. The main intention behind this new feature is that people will use AppleScripts (or similar) to do all sorts of useful things, and further automate and tie together their iTunes/Synergy experience. This introduces a large degree of flexibility and extensibility.</p>
+<p>Here are some of the possible applications for which this new feature could be used:</p>
+<p>1. iChat status update script</p>
+<p>An AppleScript that changes your iChat status line to reflect the track you're currently listening to. Because Synergy doesn't poll iTunes, you can add this integration in right now without wasting CPU resources and without waiting for Tiger (it's a rumoured feature of Tiger).</p>
+<p>2. Auto-update of web page or blog</p>
+<p>An AppleScript that can update your webpage or blog to show what track you're currently playing.</p>
+<p>3. Song logging</p>
+<p>A script to maintain a log of the songs you've heard.</p>
+<p>4. Let your imagination run wild...</p>
+<p>Basically, the sky is the limit...</p>
+<p>In version 1.7 the implementation is very simple. The items in the Track Change Items folder are launched when something notable happens, and its their responsibility to decide what information they need and then act upon it. For example, an AppleScript might do something like 'tell application &quot;iTunes&quot; to get current track' if the track name is the desired piece of information. It can then do whatever necessary with the info (upload to a website, send it to iChat etc).</p>
+<p>In the future I intend to pass some launch arguments to the Track Change Items (basic information like title, artist, album, and so forth) so that they don't have to query iTunes. For the time being, however, I just wanted to see what ideas people could come up with. If enough people make submissions, I'll set up an area on the site where you can download people's contributed scripts (much as I've done with the  button set gallery).</p>
+<p>So please let me know what ideas you have. I'm definitely not an AppleScript expert, so I'll be interested to see what some of the more wizened veterans will be able to come up with. Put those thinking caps on, and check back here tomorrow for the 1.7 release.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_336'>
+<cite>
+<a href="/users/ijosh">iJosh</a>
+<span class='when'><a href="#comment_336"><time data-relative="true">2005-03-04T13:48:33Z</time></a></span>
+</cite>
+<blockquote><p>I think this feature is excellent, but giving it a quick test writting a script and finding out it has to be compiled as an application. On every track change the script app, or how many ever scripts/applications/aliases/documents I had in the Track Change Items folder would appear in the dock and take focus away from the current application. It seems it would be more useful if Synergy could process scripts like the script menu in any application handles scripts; or possibly handle applescripts in the background. I am alomst positive that Cocoa has a function for this exact thing? I am no applescript whiz myself, just getting started with the language, so I am not sure if there is something I am not doing right? Anyone watching this board know of a way to keep the launched Script app off the dock and to run in the background?  But thanks for giving the users such a powerful event to script. 8')</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_337'>
+<cite>
+<a href="/users/cazlar">cazlar</a>
+<span class='when'><a href="#comment_337"><time data-relative="true">2005-03-04T18:19:08Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Anyone watching this board know of a way to keep the launched Script app off the dock and to run in the background?</p>
+<p>I'm not sure if this will do what you want, but you can add the following lines to an apps Info.plist so it doesn't appear in the Dock etc:</p>
+<p>&lt;key&gt;NSUIElement&lt;/key&gt; &lt;string&gt;1&lt;/string&gt;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_338'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_338"><time data-relative="true">2005-03-04T21:56:40Z</time></a></span>
+</cite>
+<blockquote><p>Quote: It seems it would be more useful if Synergy could process scripts like the script menu in any application handles scripts; or possibly handle applescripts in the background. I am alomst positive that Cocoa has a function for this exact thing?</p>
+<p>This is something worth considering. It's true that Cocoa can &quot;run&quot; AppleScripts. The way Synergy currently implements the feature is that it performs the equivalent of a double-click on the Track Change Items. But this could be changed. Keep the suggestions coming.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_339'>
+<cite>
+<a href="/users/ijosh">iJosh</a>
+<span class='when'><a href="#comment_339"><time data-relative="true">2005-03-05T07:55:05Z</time></a></span>
+</cite>
+<blockquote><p>Quote:</p>
+<p>I'm not sure if this will do what you want, but you can add the following lines to an apps Info.plist so it doesn't appear in the Dock etc:</p>
+<p>&lt;key&gt;NSUIElement&lt;/key&gt; &lt;string&gt;1&lt;/string&gt; </p>
+<p>Unfortunately a compiled applescript .app isn't a package and doesn't have it's own info.plist. Now if I took this into applescript studio and made it a litte more than what it should be. Perhaps this could be done. But thank you for that tid bit. I was wondering if the same trick used with iPulse was vaid with other applicaions.  </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_340'>
+<cite>
+<a href="/users/ckd">ckd</a>
+<span class='when'><a href="#comment_340"><time data-relative="true">2005-03-08T23:53:39Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Unfortunately a compiled applescript .app isn't a package and doesn't have it's own info.plist.</p>
+<p>Script Editor will let you save as an Application Bundle (or a Script Bundle).  If you save as an Application Bundle, it gets an Info.plist.</p>
+<p>Click on the app bundle, do a &quot;Show Package Contents&quot; from the gear menu or control-click or right-click.</p>
+<p>Open Info.plist -- it'll bring up the Property List Editor.  Add a key &quot;LSBackgroundOnly&quot;, type Boolean, value Yes.  (This makes it a totally faceless background app.)</p>
+<p>Then drop the app into the Track Change Items folder, restart Synergy so it notices, and you're set!</p>
+<p>I used a hacked-up copy of the &quot;Now Playing in iChat&quot; script by Doug Adams, with the idle and quit handlers removed, and the run handler taking all the work the idle handler had been doing.  I don't want to distribute it just yet (since I'd want to get Doug's permission first), but it's easy enough to write your own anyway.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_341'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_341"><time data-relative="true">2005-03-09T17:42:08Z</time></a></span>
+</cite>
+<blockquote><p>Quote: I used a hacked-up copy of the &quot;Now Playing in iChat&quot; script by Doug Adams, with the idle and quit handlers removed, and the run handler taking all the work the idle handler had been doing.  I don't want to distribute it just yet (since I'd want to get Doug's permission first), but it's easy enough to write your own anyway. </p>
+<p>Once you're happy with your work and are sure that you've got rights to redistribute it I'd love to see it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_342'>
+<cite>
+<a href="/users/ijosh">iJosh</a>
+<span class='when'><a href="#comment_342"><time data-relative="true">2005-03-09T20:28:29Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Script Editor will let you save as an Application Bundle (or a Script Bundle).  If you save as an Application Bundle, it gets an Info.plist.</p>
+<p>Click on the app bundle, do a &quot;Show Package Contents&quot; from the gear menu or control-click or right-click.</p>
+<p>Open Info.plist -- it'll bring up the Property List Editor.  Add a key &quot;LSBackgroundOnly&quot;, type Boolean, value Yes.  (This makes it a totally faceless background app.)</p>
+<p>Thanks for this, it works beautifully, as soon as I figured out to save the app bundle script as run only. Now I will work on making this something anyone can use instead of just me.  </p>
+<p>I still think it would be nice for Synergy to pass off OSA scripts to the proper handlers using Cocoa, it just seems to make more sense. I am not sure who is going to want to launch a document/non-script application on every track change event.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_343'>
+<cite>
+<a href="/users/ckd">ckd</a>
+<span class='when'><a href="#comment_343"><time data-relative="true">2005-03-09T23:49:43Z</time></a></span>
+</cite>
+<blockquote><p>Quote: I am not sure who is going to want to launch a document/non-script application on every track change event. </p>
+<p>A Unix script or program, perhaps?  I can see that.  Though you could wrap it in an OSA &quot;do shell script&quot; I suppose.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_344'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_344"><time data-relative="true">2005-03-10T07:15:00Z</time></a></span>
+</cite>
+<blockquote><p>Quote: I am not sure who is going to want to launch a document/non-script application on every track change event. </p>
+<p>I think you're right that it would be nice to handles scripts &quot;internally&quot; instead of doing a &quot;plain&quot; launch. As for why people would want to launch a document/non-script thing, I just wanted it to be as flexible as possible, so people could write stuff as shell scripts, Apple scripts, or even applications.</p>
+<p>The main things I had in mind when adding the feature were:</p>
+<p>1. iChat status updates 2. Website (&quot;now playing&quot;) updates 3. Song logging (to file)</p>
+<p>But I'm sure people have other ideas...</p>
+<p>If we can get a library of examples together, I'll include them in a &quot;Sample Track Change Items&quot; folder on the Synergy disk image, and put them up on the website too.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_345'>
+<cite>
+<a href="/users/glenn-mcdonald">glenn mcdonald</a>
+<span class='when'><a href="#comment_345"><time data-relative="true">2005-03-11T11:34:57Z</time></a></span>
+</cite>
+<blockquote><p>I had some fun playing with this, too. As you predicted, I started with iChat and a now-playing upload, as I'd been wanting to get rid of iChatStatus and OnDeck for simplicity. By hacking together borrowed pieces from elsewhere, I got the basic thing running really quickly. Sanding off the corners took a little longer: getting proper Unicode escaping for Japanese text in the upload (which OnDeck never handled), remembering to check for iTunes running at the beginning so my script didn't immediately reload iTunes every time I quit the program. That, plus I kept getting distracted by other little ideas that occurred to me as I was doing this, so by the end I'd also added some Folder Actions to my system, written several other iTunes scripts and fiddled with a bunch of perl stuff. And learned more than I wanted to about Unicode.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_346'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_346"><time data-relative="true">2005-03-11T14:17:26Z</time></a></span>
+</cite>
+<blockquote><p>Here's one example of an auto-upload script for a website. Not specifically designed for use with Synergy, but it would work.</p>
+<p><a href="http://jokke.dk/news/index.php?id=166" class="external">http://jokke.dk/news/index.php?id=166</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_347'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_347"><time data-relative="true">2005-03-14T16:53:49Z</time></a></span>
+</cite>
+<blockquote><p>Found some more interesting links for scripts that could be used as a starting point:</p>
+<p><a href="http://www.macosxhints.com/article.php?story=20030825110446769" class="external">http://www.macosxhints.com/article.php?story=20030825110446769</a></p>
+<p><a href="http://george.hotelling.net/90percent/os_x/itunes_cover_art_ichat_icon.php" class="external">http://george.hotelling.net/90percent/os_x/itunes_cover_art_ichat_icon.php</a></p>
+<p><a href="http://www.cocoaobjects.com/applescript/index.php" class="external">http://www.cocoaobjects.com/applescript/index.php</a></p>
+<p><a href="http://www.malcolmadams.com/itunes/scripts/scripts03.shtml#nowplayinginichat" class="external">http://www.malcolmadams.com/itunes/scripts/scripts03.shtml#nowplayinginichat</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_348'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_348"><time data-relative="true">2005-03-17T16:15:24Z</time></a></span>
+</cite>
+<blockquote><p>And another link that you might be able to use to come up with scripts:</p>
+<p><a href="http://www.macosxhints.com/article.php?story=2005030907364616" class="external">http://www.macosxhints.com/article.php?story=2005030907364616</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_349'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_349"><time data-relative="true">2005-03-30T12:16:22Z</time></a></span>
+</cite>
+<blockquote><pre>I've managed to put together a PHP script and Applescript combo which updates my personal site with the currently playing track. It also stores the last 50 tracks which were played and outputs them in a separate page.</pre>
+<p>You can see both in action here:</p>
+<p><a href="http://www.beatnikpad.com/playlist.php" class="external">http://www.beatnikpad.com/playlist.php</a></p>
+<p>First of all, I would like to add my request for Synergy to automatically run Applescripts without having to compile them as applications.</p>
+<p>The other problem I'm having is that I can't seem to get my applescript to run when the track changes. My script is inside of the Synergy Application Support folder, inside of a folder called &quot;Track Change Items&quot;. I've saved it as an application bundle in Script Editor, but it still doesn't run.</p>
+<p>If I double-click on the application bundle, my script executes as expected.</p>
+<p>Any ideas on what I could be doing wrong? I'm running Synergy 1.7.1.</p>
+<p>Thanks!</p>
+<p>Neil P.S. There's a problem with the forum style sheet - all of the post text for all of the entries is center-aligned in Firefox.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_350'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_350"><time data-relative="true">2005-03-30T12:40:46Z</time></a></span>
+</cite>
+<blockquote><p>Sorry, I figured it out - I didn't realize you needed to stop and start Synergy for it to see any new scripts in the Track Change Items folder.</p>
+<p>One last question, then - does this script only run when the actual track has changed? Or if I start and stop iTunes and the same track is played twice will Synergy run the script twice, also?</p>
+<p>I just want to know if I need to build in some code to check if the new track is a duplicate of the previously uploaded one.</p>
+<p>Thanks!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_351'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_351"><time data-relative="true">2005-03-31T06:14:29Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Sorry, I figured it out - I didn't realize you needed to stop and start Synergy for it to see any new scripts in the Track Change Items folder.</p>
+<p>Good point; I should probably try to document this better, although I do already make mention of it here:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/features/" class="external">http://wincent.com/a/products/synergy-classic/features/</a></p>
+<p>And in the change log for the version where the feature was introduced:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/history/#1.7" class="external">http://wincent.com/a/products/synergy-classic/history/#1.7</a></p>
+<p>Once I get some user-contributed scripts I'll make a dedicated page for them on the website, and that's probably where the instructions should go for making your own scripts as well as a reminder about the need to stop and restart Synergy for the scripts folder to get re-scanned.</p>
+<p>Synergy Advance will have a similar feature, and I plan to add a Scripts menu as well as a menu item to &quot;Refresh&quot; the menu.</p>
+<p>Quote: One last question, then - does this script only run when the actual track has changed? Or if I start and stop iTunes and the same track is played twice will Synergy run the script twice, also?</p>
+<p>You get notification of status changes too, not just track changes. This is so you can update information like &quot;Playing&quot; or &quot;Paused&quot; if you want.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_352'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_352"><time data-relative="true">2005-03-31T06:14:34Z</time></a></span>
+</cite>
+<blockquote><p>Quote: You can see both in action here:</p>
+<p><a href="http://www.beatnikpad.com/playlist.php" class="external">http://www.beatnikpad.com/playlist.php</a></p>
+<p>I can't reach the site right now, but let me know once you've got a final version up. I'd love to see how you've done it.</p>
+<p>Quote: P.S. There's a problem with the forum style sheet - all of the post text for all of the entries is center-aligned in Firefox. </p>
+<p>Thanks for pointing this out. I use Safari and so hadn't noticed. I am going to look into it right now and see if I can find out what's wrong.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_353'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_353"><time data-relative="true">2005-03-31T06:45:39Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I believe I've fixed the style sheet. Tested in Safari and Firefox and seems to display fine in both.</p>
+<p>Don't know why, but the site-wide style sheet had &quot;text-align: center;&quot; specified on the &quot;body&quot; tag.</p>
+<p>Let me know if you see any breakage, either here or on the rest of the website.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_354'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_354"><time data-relative="true">2005-04-06T10:27:09Z</time></a></span>
+</cite>
+<blockquote><p>Okay, after some finangling I seem to have my Applescript / PHP combo working fairly well. The biggest hurdle was dealing with character encoding issues with tracks that have accents in them. I was originally using a couple of the character conversion subroutines from Adriaan Tijsseling's open source Kung-Tunes code, but it was very, very slow, and pinned the CPU at 100% usage.</p>
+<p>I finally figured out that I could pipe the stuff I was sending by HTTP post through one of the OS's installed languages, and found some Python code that seems to work quite well.</p>
+<p>The link to the results has been working now for about three or four days:</p>
+<p><a href="http://www.beatnikpad.com/playlist.php" class="external">http://www.beatnikpad.com/playlist.php</a></p>
+<p>I am having some issues, though. Because the script is triggered on quit, on pause, etc., I needed to implement a basic check to remove the possibility of duplicate items - I write the previously posted data to a text file, and then compare the new data to that before sending it to the site.</p>
+<p>The biggest issue I'm having right now is I can't figure out how to only run the bulk of the script if iTunes is actually playing. It would be great if Synergy passed along this information to the script, along with the current playing track's info!</p>
+<p>I tried using:</p>
+<p>if not (player state is playing) then return</p>
+<p>But then the script doesn't fire at all, even if iTunes is playing.</p>
+<p>Does anyone have an idea how to accomplish this? Once I get this working, and once I clean up and abstract some of the file paths, I can post this somewhere for folks to use.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_355'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_355"><time data-relative="true">2005-04-07T04:14:56Z</time></a></span>
+</cite>
+<blockquote><p>Quote: The link to the results has been working now for about three or four days:</p>
+<p><a href="http://www.beatnikpad.com/playlist.php" class="external">http://www.beatnikpad.com/playlist.php</a></p>
+<p>Wow. Looks great!</p>
+<p>Quote: I tried using:</p>
+<p>if not (player state is playing) then return</p>
+<p>But then the script doesn't fire at all, even if iTunes is playing.</p>
+<p>I think something like this should work, shouldn't it?... Code:  if player state is playing then</p>
+<pre>   -- do stuff
+ end if</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_356'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_356"><time data-relative="true">2005-04-09T10:42:52Z</time></a></span>
+</cite>
+<blockquote><p>Okay! I think I got it working. Once I've fixed some variables so it'll run anywhere, do you want me to send this to you, Wincent?</p>
+<p>I do have one more request - it would be nice if there was a way to toggle whether or not Synergy actually runs the scripts or not. I can see times when I wouldn't want the music I'm listening to appear as my iChat status, for example, and right now the only way to deactivate this feature is to physically move the script out of the Track Change Items folder.</p>
+<p>Having this tied to a quick key and also in the Synergy menubar menu would be perfect - could this be added?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_357'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_357"><time data-relative="true">2005-04-11T05:12:46Z</time></a></span>
+</cite>
+<blockquote><p>Sure send it in (my address is <a href="mailto:win@wincent.org" class="mailto">win@wincent.org</a>!)</p>
+<p>Both of the things you request are already slated for Synergy Advance. It's doubtful that they'll make it into Synergy Classic because it's already suffering from a bit of UI cramp. I've made a few entries in the bug tracking database so the requests doesn't get overlooked...</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=169" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=169</a> <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=170" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=170</a> <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=171" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=171</a> <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=172" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=172</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_358'>
+<cite>
+<a href="/users/glenn-mcdonald">glenn mcdonald</a>
+<span class='when'><a href="#comment_358"><time data-relative="true">2005-04-13T12:32:46Z</time></a></span>
+</cite>
+<blockquote><p>I'm often skipping around in my Library looking at things while music is playing, with the result that my music sometimes just stops at the end of the current track because I've unintentionally moved the selection. So I've got a &quot;Resume&quot; script that looks at the last track in Recently Played, and if it wasn't the last track of an album, plays the following track in that album.</p>
+<p>But I still have to trigger this script manually, so I'm trying to hook it into a Track Change script. This is easy enough, but I haven't been able to figure out a way to tell the difference, in script, between 1) the case where the player state is &quot;stopped&quot; because the last track finished, and 2) the case where the player state is &quot;stopped&quot; because I hit the Stop button myself in the middle of a song. Obviously in the latter case I don't want iTunes to immediately start playing again.</p>
+<p>Any ideas?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_359'>
+<cite>
+<a href="/users/glenn-mcdonald">glenn mcdonald</a>
+<span class='when'><a href="#comment_359"><time data-relative="true">2005-04-13T14:15:48Z</time></a></span>
+</cite>
+<blockquote><p>It's not exactly what I was asking, but I thought of a solution to the underlying problem that seems to be working OK. Whenever a new track starts, my Track Change script puts it into a &quot;last started&quot; playlist (and deletes anything else there). iTunes adds tracks to &quot;Recently Played&quot; when they finish, not when they start. Thus if the last track in &quot;Recently Played&quot; is the same as the track in &quot;last started&quot;, it means that track played from start to finish. If so, my script starts the next track from the same album, if available. If not, it means I stopped playback myself, so the script does nothing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_360'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_360"><time data-relative="true">2005-04-14T13:04:59Z</time></a></span>
+</cite>
+<blockquote><p>Clever stuff. Good to hear you worked it out.</p>
+<p>Still haven't received any scripts from anyone though... Whenever you're ready you can send them in and I'll make a special area on the site for them.</p>
+<p>On another note, I've made some progress over the last 24 hours towards implementing those requested features. I hope I can have it ready by the time Synergy Advance comes out on 2 May.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_361'>
+<cite>
+<a href="/users/glenn-mcdonald">glenn mcdonald</a>
+<span class='when'><a href="#comment_361"><time data-relative="true">2005-04-18T11:28:09Z</time></a></span>
+</cite>
+<blockquote><p>I just mailed you a possible sample script with the Resume thing I was working on above.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_362'>
+<cite>
+<a href="/users/monkeymojo">monkeymojo</a>
+<span class='when'><a href="#comment_362"><time data-relative="true">2005-05-16T11:12:57Z</time></a></span>
+</cite>
+<blockquote><p>All Synergy needs to do is perform like Freshly Squeezed Software's Recent Tunes. That is a GREAT app for getting your info online, but it works very inconsistently in Tiger. Besides, I'd rather run one app than two, and I always have Synergy running. I would love to see a solution/addition similar to Recent Tunes.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_363'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_363"><time data-relative="true">2005-05-17T12:55:03Z</time></a></span>
+</cite>
+<blockquote><p>Quote: All Synergy needs to do is perform like Freshly Squeezed Software's Recent Tunes. That is a GREAT app for getting your info online, but it works very inconsistently in Tiger. Besides, I'd rather run one app than two, and I always have Synergy running. I would love to see a solution/addition similar to Recent Tunes. </p>
+<p>There is a feature request open for this in the database here:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=230" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=230</a></p>
+<p>I'm currently looking for people to add comments to that request so that I can figure out exactly what people are looking for, so please add your input there if you can.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_364'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_364"><time data-relative="true">2005-07-26T15:48:27Z</time></a></span>
+</cite>
+<blockquote><p>Sorry I haven't sent this yet - I haven't forgotten! I've been really busy and needed to find some spare time to abstract the applescript and PHP so it would work anywhere.</p>
+<p>I need to put together some basic instructions and I'll package this up and send it to you, Wincent. Hopefully in a few days...</p>
+<p>Neil</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

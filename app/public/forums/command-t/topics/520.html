@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Characters entered do not match file list
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Characters entered do not match file list</div>
+<h1 class='major'>Characters entered do not match file list</h1>
+<div class='topic' id='topic_520'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/andrew-vit">Andrew Vit</a>
+<span class='when'>
+<a href="/forums/command-t/topics/520"><time data-relative="true">2012-07-16T03:29:41Z</time></a>
+</span>
+</cite>
+<blockquote><p>I've got what at first glance looks like a working installation of Command-T. I can start it, get the prompt, and see a list of files. I can scroll through the file list and open one.</p>
+<p>However, the match list isn't working right. Say I enter random letters like &quot;qzjx&quot;, the list of files changes with each keypress but the files don't correspond to what I've entered. (I would expect to see no files for this random sequence.) Also, the list updates only for the first 4 keypresses. Any more characters stop &quot;refining&quot; the list.</p>
+<p>This is so random, I don't know where to start troubleshooting it...</p>
+<ul>
+<li>Mac OS 10.7.4</li>
+<li>MacVim 7.3 (64)</li>
+<li>Command-T 1.4 installed with Pathogen</li>
+<li>Compiled with system ruby</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9114'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9114"><time data-relative="true">2012-07-16T04:16:35Z</time></a></span>
+</cite>
+<blockquote><p>Have you got a screenshot showing the match listing when something unexpected happens?</p>
+<p>My guess is that the files do match, but in the fuzzy sense (ie. the characters are not consecutive in the matched files), and that is what is producing the confusion.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9159'>
+<cite>
+<a href="/users/andrew-vit">Andrew Vit</a>
+<span class='when'><a href="#comment_9159"><time data-relative="true">2012-07-16T19:09:11Z</time></a></span>
+</cite>
+<blockquote><p>I'm used to TextMate and similar fuzzy matchers, so yes I'm certain of this. Here's a couple screenshots: </p>
+<ul>
+<li><a href="http://f.cl.ly/items/2w2w153s0K32421Q3V0y/Screen%20Shot%202012-07-16%20at%2011.57.55%20AM.png" class="external">expect no matching items</a></li>
+<li><a href="http://f.cl.ly/items/1C3o110W2M3l1i3H3j3o/Screen%20Shot%202012-07-16%20at%2012.01.42%20PM.png" class="external">expect some matching items</a>.</li>
+</ul>
+<p>For the first 4 characters entered, the list updates slightly (but still has non-matching files). After that it stops updating, even if I backspace the text out and try re-typing. However, everything else is responsive. I can tab into the list, scroll around and open a file without problems.</p>
+<p>I've tried :CommandTFlush but that didn't help.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9336'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9336"><time data-relative="true">2012-07-19T04:34:40Z</time></a></span>
+</cite>
+<blockquote><p>It's hard to imagine what might cause this. What are you using to provide the custom status  line? I'm wondering if it might be hooking into Command-T in such a way that it's introducing the odd behavior.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9338'>
+<cite>
+<a href="/users/andrew-vit">Andrew Vit</a>
+<span class='when'><a href="#comment_9338"><time data-relative="true">2012-07-19T05:49:35Z</time></a></span>
+</cite>
+<blockquote><p>The statusline is from <a href="https://github.com/Lokaltog/vim-powerline/" class="external">vim-powerline</a>. I tried clearing out my .vimrc completely and pointing pathogen to a stripped bundle directory containing only command-t, leaving just:</p>
+<pre>   set nocompatible
+   call pathogen#infect('~/.vim/bundle2')</pre>
+<p>And .vim/autoload has just pathogen.vim, so I'm pretty sure it's not a conflict with another vim plugin.</p>
+<p>Now, my ~/.vim is actually symlinked to my dotfiles/vim, do you think this might cause a broken path in the compiled files or somewhere in the plugin? I'm scratching my head here too.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_9344'>
+<cite>
+<a href="/users/andrew-vit">Andrew Vit</a>
+<span class='when'><a href="#comment_9344">Created <time data-relative="true">2012-07-19T07:47:35Z</time>, edited <time data-relative="true">2012-07-20T07:29:42Z</time></a></span>
+</cite>
+<blockquote><p>So I tried clearing out my MacVim and Command-T installation and starting from scratch. Recompiling both under 1.9.3-p1.9.4 (rvm) led to a SEGV when starting :CommandT. There are a few warnings in the Command-T compiler, I'm not sure if any of this is relevant:</p>
+<pre>
+$ rake make
+
+/Users/andrew/.rvm/gems/ruby-1.9.3-p194/gems/rake-0.8.7/lib/rake/alt_system.rb:32: Use RbConfig instead of obsolete and deprecated Config.
+(in /Users/andrew/Dropbox/dotfiles/vim/bundle/command-t)
+/Users/andrew/.rvm/rubies/ruby-1.9.3-p194/bin/ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+compiling ext.c
+ext.c: In function &#x2018;CommandT_option_from_hash&#x2019;:
+ext.c:35: warning: ISO C90 forbids mixed declarations and code
+compiling match.c
+match.c: In function &#x2018;recursive_match&#x2019;:
+match.c:56: warning: ISO C90 forbids mixed declarations and code
+match.c:77: warning: ISO C90 forbids mixed declarations and code
+match.c: In function &#x2018;CommandTMatch_initialize&#x2019;:
+match.c:140: warning: ISO C90 forbids mixed declarations and code
+match.c:154: warning: ISO C90 forbids mixed declarations and code
+compiling matcher.c
+matcher.c: In function &#x2018;CommandTMatcher_initialize&#x2019;:
+matcher.c:88: warning: ISO C90 forbids mixed declarations and code
+matcher.c:91: warning: ISO C90 forbids mixed declarations and code
+matcher.c: In function &#x2018;CommandTMatcher_sorted_matches_for&#x2019;:
+matcher.c:117: warning: ISO C90 forbids mixed declarations and code
+matcher.c: In function &#x2018;CommandTMatcher_matches_for&#x2019;:
+matcher.c:139: warning: ISO C90 forbids mixed declarations and code
+matcher.c:155: warning: ISO C90 forbids mixed declarations and code
+linking shared-object ext.bundle
+</pre>
+<p>At some point I got it to display this error in the status bar but I couldn't reproduce it:</p>
+<pre>
+Error detected while processing function &lt;SNR&gt;21_CommandTShowFileFinder:
+line    2:
+NoMethodError: undefined method `print_no_such_file_or_directory' for nil:NilClass
+Press ENTER or type command to continue
+</pre>
+<p>Since it was originally installed with system ruby and was &quot;almost&quot; working, I tried <strong>rvm ruby 1.8.7-p358</strong>. That didn't show any compilation warnings, and it <strong>fixed the problem</strong>. Hope this info helps future readers.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9404'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9404"><time data-relative="true">2012-07-20T07:30:34Z</time></a></span>
+</cite>
+<blockquote><p>FWIW, the symlink should definitely not be a problem (I also have a symlink for my <code>~/.vim</code>). To my eye the compilation warnings under 1.9.x look harmless enough. Glad you got it sorted out in the end.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

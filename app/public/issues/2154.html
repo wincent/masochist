@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2154: ArgumentError: invalid byte sequence in UTF-8
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2154</div>
+<div class='issue' id='issue_2154'>
+<form class="edit_issue" id="edit_issue_2154" action="/issues/2154" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7hZ5JBnqfeBDzZFenWSGHxTep4gMwGBk4oMkI1ydVGva5MeTvmentZpBoqmsTdWroVzOtAcs7njCnPHdeEUzTw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2154:
+<span data-name='issue[summary]'>
+ArgumentError: invalid byte sequence in UTF-8
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-02-11T09:33:43Z</time>, updated <time data-relative="true">2014-09-20T01:08:59Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/marius-gedminas">Marius Gedminas</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I press \t in my home directory, I see this:</p>
+<pre>GoToFile [-]                                                                                                                          [0:0]    [buf 2]
+&gt;&gt;  
+Error detected while processing function &lt;SNR&gt;34_CommandTShowFileFinder:                                                                    
+line    2:
+ArgumentError: invalid byte sequence in UTF-8
+Press ENTER or type command to continue</pre>
+<p>I think this may mean that there's a file somewhere under ~ with a non-UTF-8 filename.  I've no idea what it might be.</p>
+<p>Could command-t display it by showing &lt;XX&gt;, or U+FFFD REPLACEMENT CHARACTER, or a question mark?  Instead of emitting that error, I mean.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_10912'>
+<cite>
+<a href="/users/marius-gedminas">Marius Gedminas</a>
+<span class='when'><a href="#comment_10912"><time data-relative="true">2014-02-11T09:34:16Z</time></a></span>
+</cite>
+<blockquote><p>Note that this breaks command-t completely: the choice list is empty, and if I press a key like &lt;Down&gt;, I get a new error:</p>
+<p>Error detected while processing function CommandTSelectNext: line    1: NoMethodError: undefined method <code>length' for nil:NilClass</code></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10913'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10913"><time data-relative="true">2014-02-11T11:27:00Z</time></a></span>
+</cite>
+<blockquote><p>Out of interest, which version of Ruby us Vim linked against?</p>
+<p>You can check with:</p>
+<pre>:ruby puts RUBY_VERSION</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_12024'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_12024"><time data-relative="true">2014-06-15T04:41:12Z</time></a></span>
+</cite>
+<blockquote><p>I met this error too. I guess it's a encoding problem cause I have a Japanese character in my path name.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_12736'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_12736"><time data-relative="true">2014-07-15T13:19:31Z</time></a></span>
+</cite>
+<blockquote><p>I can confirm this problem. My Vim is linked against ruby 2.1.2</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12737'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12737"><time data-relative="true">2014-07-15T13:58:00Z</time></a></span>
+</cite>
+<blockquote><p>I can fix this if someone can give me a minimal repro case for it (could be a specific filename, or a zip with a bad filename in it etc).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12795'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12795"><time data-relative="true">2014-09-20T01:08:54Z</time></a></span>
+</cite>
+<blockquote><p>I'm about to merge the proposed workaround from <a href="https://github.com/wincent/command-t/pull/113" class="external">https://github.com/wincent/command-t/pull/113</a> so I'm going to mark this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12796'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12796"><time data-relative="true">2014-09-20T01:08:59Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

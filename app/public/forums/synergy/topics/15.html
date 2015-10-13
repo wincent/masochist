@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy and Live365
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy and Live365</div>
+<h1 class='major'>Synergy and Live365</h1>
+<div class='topic' id='topic_15'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/zazie">Zazie</a>
+<span class='when'>
+<a href="/forums/synergy/topics/15"><time data-relative="true">2004-02-20T11:36:41Z</time></a>
+</span>
+</cite>
+<blockquote><p>Since installing Synergy, when I go to Live365 and try to play one of the internet radio stations (which always worked before), the Live 365 player opens up, but nothing plays/can be heard.  I tried again after quiting Synergy, still nothing.  Has anyone else experienced this?  Am I correct in correlating the problem with Synergy (I've changed nothing else)?  Any ideas about how to fix it?  Thanks for your ideas.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_53'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_53"><time data-relative="true">2004-02-20T12:09:08Z</time></a></span>
+</cite>
+<blockquote><p>I haven't heard of Live365 before. What is it?</p>
+<p>Is it separate from iTunes, or integrated with it in some way? I ask because Synergy only communicates with iTunes.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_54'>
+<cite>
+<a href="/users/zazie">Zazie</a>
+<span class='when'><a href="#comment_54"><time data-relative="true">2004-02-20T12:52:52Z</time></a></span>
+</cite>
+<blockquote><p>www.live365.com  is a site offering connection to gazillions of internet radio stations.  You select the type of music to listen to, and Live365 displays a list of stations playing that type of music.  To listen you click on the speaker icon to the left of a listing, this opens a Live365 Player window which loads the music play list, you click play, and enjoy.  If you have a Macintosh, as I do, after a minute or so, iTunes automatically opens up with the URL of the station you're listening to in Live365 already in your Library.  That's it.</p>
+<pre>    This always worked without a problem in the past; but since I installed Synergy, which I love (it's a great program), when I've selected a station in Live365, the Live365 Player opens up as usual and displays the music playlist, but no music is forthcoming.  I've also tried quiting Synergy and then going to Live365, but it still doesn't work.  
+    Any suggestions?  Thanks for your ideas.
+Live365</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_55'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_55"><time data-relative="true">2004-02-20T18:52:55Z</time></a></span>
+</cite>
+<blockquote><p>I don't know what the solution might be, but I can give you more information about what Synergy is doing behind the scenes.</p>
+<p>Synergy doesn't patch the operating system or hack iTunes in any way. It's an independent program that runs as a normal application. The bit that does all the work is an application called Synergy.app that is stored inside the Synergy.prefPane bundle. You could drag the app anywhere and double-click it and it would launch and run fine, because it doesn't have any hooks into the system.</p>
+<p>So? What's happening here?</p>
+<p>Synergy communicates with iTunes via AppleScript. You can do the same by opening the Script Editor and writing a script like 'tell application &quot;iTunes.app&quot; to get the current track'; or 'tell application &quot;iTunes.app&quot; to pause' etc. So as you can see, Synergy isn't doing anything weird here.</p>
+<p>In order to keep up with iTunes, Synergy asks it every three seconds what song it's playing. You can adjust this interval in the preferences.</p>
+<p>My only guess is that this Live365 player is doing the same thing (communicating via AppleScript). Perhaps iTunes can't keep up with the simultaneous requests? Perhaps Live365 is asking for more data than iTunes can deliver? Perhaps there's some other dynamic going on.</p>
+<p>In short, I don't know what's causing your problem, but I can assure you that once you stop Synergy, it's well and truly gone. There are no background processes or daemons or hacks hanging around. So if you continue to see problems when it's not running there really is something else fishy going on...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_56'>
+<cite>
+<a href="/users/zazie">Zazie</a>
+<span class='when'><a href="#comment_56"><time data-relative="true">2004-02-21T00:47:40Z</time></a></span>
+</cite>
+<blockquote><p>Eureka!  Problem solved.  The difficulty was with the Live365's player.  They've just come out with a new beta version for Mac OS X.  I had decided to wait for the final version, so I had not installed it.  However, the Live365 site had already been updated to use only the new Radio365 player -- thus, the old player didn't work.  Ouff! I cannot thank you enough for your careful explanation and analysis of the situation.  That was what pointed me in the right direction.  Now I have the best of all possible worlds:  Synergy and Live365 and iTunes.  Thank you for your kind help with sorting it all out.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

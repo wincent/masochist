@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #245: Periodic kernel panics with 10.4.1
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #245</div>
+<div class='issue' id='issue_245'>
+<form class="edit_issue" id="edit_issue_245" action="/issues/245" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="7lOMN4NSqTocbs0Mb8nZhKXy3B9FDq+1qRcdgqPByYvaoTKAJN9zb8Xi/vte4IowEHC1I07iIamJCMh8hxmurw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #245:
+<span data-name='issue[summary]'>
+Periodic kernel panics with 10.4.1
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-20T19:09:27Z</time>, updated <time data-relative="true">2006-06-10T08:51:06Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/alexander">Alexander</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I updated both synergy to 1.9 and tiger to 10.4.1 and rebooted. I was getting kernel panics every 30-40  minutes, regardless of what I was doing on my comp. Even when no music was playing and my computer  was idle. 30-40 minutes and boom. After hours of enabling/disabling various system components, I  narrowed it down, to my huge disappointment, to synergy. If it's not running, no kernel panics occur. I  don't have a 1.8 installer anymore, so I can't test it. Thanks.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_2024'>
+<cite>
+<a href="/users/bugzilla-user-198">bugzilla user 198</a>
+<span class='when'><a href="#comment_2024"><time data-relative="true">2005-05-20T19:56:58Z</time></a></span>
+</cite>
+<blockquote><p>This happens for me as well! I had my iMac G5 running all day just fine, but sure enough, about 30-40  minutes after enabling synergy I received a kernel panic. Has happened multiple times over the past  two days and I narrowed it down to Synergy as well just before coming here to see if anyone else was  experiencing such a thing.</p>
+<p>1.6 GHz iMac G5; 1.25GB RAM; 10.4.1</p>
+<p>(In reply to comment #0)</p>
+<blockquote>
+<p>I updated both synergy to 1.9 and tiger to 10.4.1 and rebooted. I was getting kernel panics every </p>
+</blockquote>
+<p>30-40 </p>
+<blockquote>
+<p>minutes, regardless of what I was doing on my comp. Even when no music was playing and my </p>
+</blockquote>
+<p>computer </p>
+<blockquote>
+<p>was idle. 30-40 minutes and boom. After hours of enabling/disabling various system components, I  narrowed it down, to my huge disappointment, to synergy. If it's not running, no kernel panics occur. </p>
+</blockquote>
+<p>I </p>
+<blockquote>
+<p>don't have a 1.8 installer anymore, so I can't test it. Thanks.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2025'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2025"><time data-relative="true">2005-05-20T20:14:31Z</time></a></span>
+</cite>
+<blockquote><p>A normal user process running without elevated privileges shouldn't provoke a kernel panic (in fact,  even one running with root privileges shouldn't). Kernel panics should only happen if there's a bug in  the kernel, or if something loaded into the kernel's memory space (like a device driver or kernel  module). It simply shouldn't happen on Mac OS X because it has protected memory. I can't think of any  way Synergy could cause this.</p>
+<p>In this article there are some general trouble-shooting tips (see the &quot;troubleshooting&quot; heading) things  like ruling out preferences corruption etc:</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p>But I don't think any of these would have much to do with a kernel panic.</p>
+<p>Is there anything printed in the logs that would indicate that somethings going wrong in Synergy?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2026'>
+<cite>
+<a href="/users/alexander">Alexander</a>
+<span class='when'><a href="#comment_2026"><time data-relative="true">2005-05-20T20:23:18Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Is there anything printed in the logs that would indicate that somethings going wrong in Synergy?</p>
+</blockquote>
+<p>No. Not a thing. Here is a panic.log, if you're interested:</p>
+<p>Fri May 20 00:41:49 2005</p>
+<p>Unresolved kernel trap(cpu 0): 0x300 - Data access DAR=0x000000000000001C  PC=0x000000000026E5DC Latest crash info for cpu 0:</p>
+<pre>  Exception state (sv=0x6C086280)
+     PC=0x0026E5DC; MSR=0x00009030; DAR=0x0000001C; DSISR=0x40000000; LR=0x0026E5C4; </pre>
+<p>R1=0x36D33A40; XCP=0x0000000C (0x300 - Data access)</p>
+<pre>     Backtrace:</pre>
+<p>0x00000001 0x002A5E48 0x00043340 0x0004326C 0x002A5CBC 0x000A9694  Proceeding back via exception chain:</p>
+<pre>  Exception state (sv=0x6C086280)
+     previously dumped as &quot;Latest&quot; state. skipping...
+  Exception state (sv=0x4ED40500)
+     PC=0x00000000; MSR=0x0000D030; DAR=0x00000000; DSISR=0x00000000; LR=0x00000000; </pre>
+<p>R1=0x00000000; XCP=0x00000000 (Unknown)</p>
+<p>Kernel version: Darwin Kernel Version 8.1.0: Tue May 10 18:16:08 PDT 2005; root:xnu-792.1.5.obj~4/RELEASE_PPC panic(cpu 0 caller 0xFFFF0003): 0x300 - Data access Latest stack backtrace for cpu 0:</p>
+<pre>     Backtrace:
+        0x00095564 0x00095A7C 0x0002683C 0x000A819C 0x000ABB00 </pre>
+<p>Proceeding back via exception chain:</p>
+<pre>  Exception state (sv=0x6C086280)
+     PC=0x0026E5DC; MSR=0x00009030; DAR=0x0000001C; DSISR=0x40000000; LR=0x0026E5C4; </pre>
+<p>R1=0x36D33A40; XCP=0x0000000C (0x300 - Data access)</p>
+<pre>     Backtrace:</pre>
+<p>0x00000001 0x002A5E48 0x00043340 0x0004326C 0x002A5CBC 0x000A9694 </p>
+<pre>  Exception state (sv=0x4ED40500)
+     PC=0x00000000; MSR=0x0000D030; DAR=0x00000000; DSISR=0x00000000; LR=0x00000000; </pre>
+<p>R1=0x00000000; XCP=0x00000000 (Unknown)</p>
+<p>Kernel version: Darwin Kernel Version 8.1.0: Tue May 10 18:16:08 PDT 2005; root:xnu-792.1.5.obj~4/RELEASE_PPC&#x0008;</p>
+<ul>
+<li>********</li>
+</ul>
+<p>HOWEVER, one thing that pointed me to synergy right away, is when I noticed that the Synergy menubar  extra was gone after a kernel panic happened (it was on the whole time). No other logs, nothing  suspicious in the process viewer, either. All other menu extras were intact, and the Synergy crash log is  empty. I disabled synergy (just quit from menu) and here I am, without a crash for almost 14 hours.</p>
+<p>PowerMac G5 dual 2.0 first revision. 2560mb RAM Retail ATI 9800 Pro</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2027'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2027"><time data-relative="true">2005-05-22T11:51:21Z</time></a></span>
+</cite>
+<blockquote><p>For what it's worth I just had my first Tiger kernel panic. Wasn't running Synergy (or Synergy Advance)  at the time. Machine had been up for a few days, I think. Right-clicked on some files in the Finder and  was looking at the contextual menu when boom...</p>
+<p>panic(cpu 0 caller 0x000E7854): vnode_put(3a1d000): iocount &lt; 1 Latest stack backtrace for cpu 0:</p>
+<pre>     Backtrace:
+        0x00095564 0x00095A7C 0x0002683C 0x000E7854 0x000E7800 0x000D3798 0x002A8604 </pre>
+<p>0x000ABCB0 </p>
+<pre>        0xFFFFFFFF </pre>
+<p>Proceeding back via exception chain:</p>
+<pre>  Exception state (sv=0x53134780)
+     PC=0x9001BF20; MSR=0x0000F030; DAR=0x01293000; DSISR=0x42000000; LR=0x90B0ABC4; </pre>
+<p>R1=0xF00FFA90; XCP=0x00000030 (0xC00 - System call)</p>
+<p>Kernel version: Darwin Kernel Version 8.1.0: Tue May 10 18:16:08 PDT 2005; root:xnu-792.1.5.obj~4/RELEASE_PPC</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2028'>
+<cite>
+<a href="/users/alexander">Alexander</a>
+<span class='when'><a href="#comment_2028"><time data-relative="true">2005-05-22T12:41:38Z</time></a></span>
+</cite>
+<blockquote><p>Yea, tiger is a bit crash-happy. But why every 30-40 minutes with synergy running? I wonder what we have  in common with Kylan. I wanted to try synergy advance, but I don't like growl and its way of displaying notifications very much.  Very annoying when you skip through tracks :\ If synergy advance will have that cool customizeable  notification window someday like synergy classic does, I'd give it a shot. I should probably leave synergy  advance on for like an hour to see what happens..Yea, I'm gonna do that now, and get back to you.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2029'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2029"><time data-relative="true">2005-05-22T12:46:56Z</time></a></span>
+</cite>
+<blockquote><p>Yes, Synergy Advance will have its own Floater. The Growl support is already in place for those that like it  (personally, I don't have Growl installed); in one of the forthcoming public preview releases I'll be adding  the Floater module.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2030'>
+<cite>
+<a href="/users/alexander">Alexander</a>
+<span class='when'><a href="#comment_2030"><time data-relative="true">2005-05-22T14:16:28Z</time></a></span>
+</cite>
+<blockquote><p>No crash with Synergy Advance, for all it's worth.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2031'>
+<cite>
+<a href="/users/bugzilla-user-198">bugzilla user 198</a>
+<span class='when'><a href="#comment_2031"><time data-relative="true">2005-05-23T04:22:23Z</time></a></span>
+</cite>
+<blockquote><p>Hey, guys. I've been able to let my machine run for 2 days now without Synergy running and haven't  experienced any panics. I've been using my computer fairly strenuously as well -- safari, adium, colloquy,  growl, sticky windows, itunes, transmit, bbedit, and photoshop all at the same time with no problems. It  just seems as though it's got to be a Synergy issue, but what the exact cause is I don't know :(</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2032'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2032"><time data-relative="true">2005-05-23T06:14:16Z</time></a></span>
+</cite>
+<blockquote><p>Seeing as this seems to be something that didn't happen prior to 1.9 + 10.4/10.4.1 it might be a good  idea to deactivate it until we know what the cause is. The fact that both of you say that it runs ok for a  short while and then you see problems makes me wonder if there's something underlying that happens  periodically at regular intervals that triggers it (for example, the new version check).</p>
+<p>I was reading a pirate forum the other day and I did see people complaining of instability problems  (although not kernel panics) when running cracked or patched versions of Synergy. I presume that both  of you downloaded the app from the official site and aren't using a version that someone passed on to  you (I wouldn't install it from any other source even if that source is a friend; you don't know where the  friend got it from). It's always important to download from wincent.com (or if downloading from a  mirror check the checksum) to make sure you haven't gotten something infected with malware. I'd do a  scan with a virus scanner. Of course, the information on those forums is not very reliable because one  person says it works for them and then another comes along and says it doesn't.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2033'>
+<cite>
+<a href="/users/bugzilla-user-198">bugzilla user 198</a>
+<span class='when'><a href="#comment_2033"><time data-relative="true">2005-05-23T08:06:53Z</time></a></span>
+</cite>
+<blockquote><p>I'm almost positive that you can remove the pirated version factor from the problem. I am using 1.9  downloaded for your download page and am using a valid key (my email here is the same one I  purchased my license with). Hope this helps :)</p>
+<p>(In reply to comment #9)</p>
+<blockquote>
+<p>Seeing as this seems to be something that didn't happen prior to 1.9 + 10.4/10.4.1 it might be a </p>
+</blockquote>
+<p>good </p>
+<blockquote>
+<p>idea to deactivate it until we know what the cause is. The fact that both of you say that it runs ok for </p>
+</blockquote>
+<p>a </p>
+<blockquote>
+<p>short while and then you see problems makes me wonder if there's something underlying that </p>
+</blockquote>
+<p>happens </p>
+<blockquote>
+<p>periodically at regular intervals that triggers it (for example, the new version check).</p>
+<p>I was reading a pirate forum the other day and I did see people complaining of instability problems  (although not kernel panics) when running cracked or patched versions of Synergy. I presume that </p>
+</blockquote>
+<p>both </p>
+<blockquote>
+<p>of you downloaded the app from the official site and aren't using a version that someone passed on </p>
+</blockquote>
+<p>to </p>
+<blockquote>
+<p>you (I wouldn't install it from any other source even if that source is a friend; you don't know where </p>
+</blockquote>
+<p>the </p>
+<blockquote>
+<p>friend got it from). It's always important to download from wincent.com (or if downloading from a  mirror check the checksum) to make sure you haven't gotten something infected with malware. I'd do </p>
+</blockquote>
+<p>a </p>
+<blockquote>
+<p>scan with a virus scanner. Of course, the information on those forums is not very reliable because </p>
+</blockquote>
+<p>one </p>
+<blockquote>
+<p>person says it works for them and then another comes along and says it doesn't.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment' id='comment_2034'>
+<cite>
+<a href="/users/alexander">Alexander</a>
+<span class='when'><a href="#comment_2034"><time data-relative="true">2005-05-23T15:13:55Z</time></a></span>
+</cite>
+<blockquote><p>I am not using a patched version of any kind, either. Downloaded straight from wincent.com, and no  patches. Version check is out of the question as well, as it started happening to me when I had no inet  connection at all. And continued to happen when my ISP finally fixed the VPN connection. Although, the  version check daemon was probably launching at regular intervals nevertheless.. Hmm.. you say it's new?  Could you make a build with it being completely disabled or point to an earlier version? (1.8, for instance)?  For testing purposes?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2035'>
+<cite>
+<a href="/users/bugzilla-user-198">bugzilla user 198</a>
+<span class='when'><a href="#comment_2035"><time data-relative="true">2005-05-23T16:23:59Z</time></a></span>
+</cite>
+<blockquote><p>Just one more thing I should note: I have completely uninstalled Synergy, deleted the plist file, and  reinstalled and re-entered my key. Before running it again I went to the plist file and set &quot;Automatic  Internet version checking interval&quot; to 0 -- which I guess switched to 86400.000000 (infinity/never?) after I  started Synergy. I've had it running with iTunes playing muted in the background for a little over two  hours now and no panics as of yet. I'll keep you guys posted when/if it does happen.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2036'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2036"><time data-relative="true">2005-05-23T17:06:43Z</time></a></span>
+</cite>
+<blockquote><p>Yep that's correct. Setting the checking interval to 0 turns checking off. This is mentioned here:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/faq/#versioncheck" class="external">http://wincent.com/a/products/synergy-classic/faq/#versioncheck</a></p>
+<p>You can also set the value fairly easily by using the &quot;defaults&quot; command in the Terminal.</p>
+<p>On the subject of legit downloads, its important to note that when you hit the download link:</p>
+<p><a href="http://wincent.com/download.php?item=Synergy1.9.dmg" class="external">http://wincent.com/download.php?item=Synergy1.9.dmg</a></p>
+<p>You get randomly redirected to one of about 15 possible mirror sites. I personally upload the file to  those sites and I then download the file and check the checksum to make sure that there are no  problems or corruption (ie. that the uploaded/download file is a perfect bit-for-bit copy of the one that  I prepared here). Despite the fact that I do this checking, it's always a good idea to check it yourself too.  On the downloads page there is a checksum which you can compare against the version you  downloaded; they should be a perfect match.</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/" class="external">http://wincent.com/a/products/synergy-classic/download/</a></p>
+<p>For example, the checksum of the current version is:</p>
+<p>85bd3260dc47918fc3578327d7bb263fb4097497</p>
+<p>Instructions for comparing checksums appear here:</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php</a></p>
+<p>If you do find a discrepancy it doesn't necessarily mean foul play. For example, Apple introduced a  feature called &quot;Internet enabled disk images&quot; a while back. When you mount those images for the first  time they actually get modified by the OS, which changes the checksum! So if you perform a checksum  before and after mounting you will get two different results. As a result if you want to check the  integrity of your download you should always do it immediately after downloading and before mounting  the disk image.</p>
+<p>Now, I am probably erring on the side of paranoia when I advise people to check the checksum on the  downloaded file, but as the developer I probably have to be that way. Since Synergy first came out a few  years ago I've never had a problem with a mirror delivering corrupt or modified files. I've only brought it  up here because the kernel panics issue is a bit baffling for me and I don't know what could cause it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2037'>
+<cite>
+<a href="/users/alexander">Alexander</a>
+<span class='when'><a href="#comment_2037"><time data-relative="true">2005-05-25T09:56:26Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot, Wincent and Kylan. Did exactly as you said - uninstalled, deleted plist, set interval to 0 -  works now! At first I just set the interval to 0 (was 86400.000000), but it kept resetting back to  86400.000000, and was panicing. Now it stays at 0 and doesn't crash! Not sure if that's part of the  problem, but it works now. Heh, most amusing. Thanks!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2038'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2038"><time data-relative="true">2005-05-25T19:19:26Z</time></a></span>
+</cite>
+<blockquote><p>Damn, just had another kernel panic on 10.4.1 and again I had neither Synergy nor Synergy Advance  running.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2039'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2039"><time data-relative="true">2005-05-27T01:31:07Z</time></a></span>
+</cite>
+<blockquote><p>Another day, another kernel panic. This time double-clicking a file in the Finder and again neither Synergy  nor Synergy Advance were running at the time. This lends support to my suspicion that there are some  problems with Tiger that haven't been resolved yet. Interestingly this one was such a bad panic that the  system didn't even present me with the &quot;report&quot; window on rebooting like it had done on previous  occasions.</p>
+<p>This is taking me back to the &quot;good old days&quot; of Mac OS 7, 8 and 9. I thought my daily backup scheme was  bordering on the obsessive, but perhaps I'll have to up it to twice a day...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2040'>
+<cite>
+<a href="/users/alexander">Alexander</a>
+<span class='when'><a href="#comment_2040"><time data-relative="true">2005-05-27T01:45:35Z</time></a></span>
+</cite>
+<blockquote><p>Heh. My machine has been up for 33 hours and not a single panic so far. Synergy is running for about 24  or so. Maybe you should consider clean-install. That helps sometimes. If you have the time to spare, that  is. I'm planning on doing that as well soon, as a lot of the unix stuff is behaving really bad.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2041'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2041"><time data-relative="true">2005-05-27T08:00:09Z</time></a></span>
+</cite>
+<blockquote><p>Second kernel panic for the day, again Synergy and Synergy Advance not running, and again no report  upon rebooting.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2042'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2042"><time data-relative="true">2006-06-10T08:51:06Z</time></a></span>
+</cite>
+<blockquote><p>As there have been no further reports during the last year I am going to close this issue.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

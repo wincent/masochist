@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1558: Arrows don't work on console vim
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1558</div>
+<div class='issue' id='issue_1558'>
+<form class="edit_issue" id="edit_issue_1558" action="/issues/1558" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="aRY6/XdIZ1SOS4akFU7rLkz5f4S+AZ6XysceTYJnpPdd5IRK0MW9AVfHtVMkZ7ia+XsWuLXtEIvq2Muzpr/D0w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1558:
+<span data-name='issue[summary]'>
+Arrows don't work on console vim
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-05-13T15:15:12Z</time>, updated <time data-relative="true">2010-11-30T09:18:49Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This may very well be a bug in my setup, but I'm only seeing this with command-T so I thought I'd mention it here.</p>
+<p>I have console  vim compiled with Ruby support, and when I use the arrow keys to navigate the command-T dialog, vim enters a single letter and exits command-T. I'm on 64-bit Snow Leopard and this occurs in Terminal.app.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5637'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5637"><time data-relative="true">2010-05-19T09:51:00Z</time></a></span>
+</cite>
+<blockquote><p>This depends on your Terminal settings.</p>
+<p>When you press the arrow keys, depending on your Terminal settings, the Terminal will actually send an escape sequence consisting of several characters.</p>
+<p>See <a href="/issues/1531">ticket #1531</a> for more information.</p>
+<p>Seeing as I can't anticipate what different terminal settings different people might use, for version 0.5 I added the ability to set up custom mappings to override the defaults. ie. to set up a mapping which works for you and replaces the existing &quot;down&quot; mapping, you would set a mapping up for <code>g:CommandTSelectNextMap</code>. Look in the help <code>:h command-t-options</code> for a full list of options.</p>
+<p>You might also be able to fix it by making a tweak as described in <code>:help vt100-cursor-keys</code> (as noted in <a href="/issues/1531">ticket #1531</a>), and not need to set up any custom mappings. Worth a try at least.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5639'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5639"><time data-relative="true">2010-05-20T11:50:08Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the reply - I'll look into your suggestions. I neglected to mention in my original post that this happens inside GNU Screen - without screen it works as expected in Terminal.app, just that ESC isn't mapped and I have to use ctrl-C to dismiss the file list, which is OK.</p>
+<p>If I do set my TERM env variable to xterm-color in screen, everything works fine again. Since that doesn't seem to have any adverse affect on other console apps that I use, that's what I've been doing, and happily using Command-T on the console since.</p>
+<p>-Norman Clarke</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6421'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6421"><time data-relative="true">2010-11-04T17:37:22Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to inactivity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6423'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6423"><time data-relative="true">2010-11-04T17:37:32Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6500'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6500"><time data-relative="true">2010-11-30T09:18:49Z</time></a></span>
+</cite>
+<blockquote><p>Marked <a href="/issues/1751">ticket #1751</a> as a duplicate of this one.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

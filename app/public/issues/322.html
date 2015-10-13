@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #322: Playing a track from a playlist doesn't switch to that playlist
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #322</div>
+<div class='issue' id='issue_322'>
+<form class="edit_issue" id="edit_issue_322" action="/issues/322" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="b/8A9tIdk73IWREoWow56QEUmRy0wlrLdpEQAdVEJjNbDb5BdZBJ6BHVIt9rpWpdtJbwIL8u1NdWjsX/8ZxBFw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #322:
+<span data-name='issue[summary]'>
+Playing a track from a playlist doesn't switch to that playlist
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-10-25T22:15:50Z</time>, updated <time data-relative="true">2006-05-07T07:33:23Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;[W]hen I use the playlist feature with the menubar, I am successfully taken to the song I want.  But if I click the next or previous button, it takes me back to whatever playlist I was on earlier. For instance, let's say I'm currently in a Beatles playlist playing &quot;Let it be.&quot;  If I decide I'm more in a Pink Floyd mood, I'll go to the playlist from the menubar and choose a Floyd song.  But since I'm in that playlist, I might want to jump ahead to a different Floyd song.  If I click the forward button, it goes back to the Beatles playlist and plays the next song that was in that list.  I'd prefer to just have the buttons work with the current playlist.&quot;</p>
+<p>Good point. Synergy Advance merely tells iTunes &quot;play song X from playlist Y&quot;, but from what you're saying perhaps it should tell iTunes &quot;switch to playlist Y and play song X&quot;.</p>
+<p>&quot;I can see advantages to the current Synergy approach as well as the one I just described.  (What I described can be done. Perhaps Synergy could offer both options and let the user choose?&quot;</p>
+<p>Agreed. I'll try to add this as an option in the &quot;Advanced&quot; preferences pane, defaulting to the behaviour that you describe. The other thing I could do is allow the user to press the Option key as a modifier to temporarily toggle the behaviour; in other words, you could have it set up to normally do a proper playlist switch whenever you select a song from a playlist, but you could temporarily override the behaviour by pressing the Option key, thus making it play the song but not actually switch from your old playlist.</p>
+<p>Thanks for submitting the report.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2287'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2287"><time data-relative="true">2005-10-29T23:59:01Z</time></a></span>
+</cite>
+<blockquote><p>Clarification and other side-effects supplied by user:</p>
+<p>&quot;Sorry, I probably was confusing.  I'm using Synergy and Synergy Advance at the same time.  I use Synergy for the play/fwd/rwd buttons in the menu bar, and I use Synergy Advance to choose specific songs within specific playlists, via the sub-menu option offered by that program.</p>
+<p>Now, let's say I start by choosing the Eagles via iTunes.  I get bored of the Eagles and want to play the Doors.  I go to Synergy Advance, choose &quot;Doors track 3,&quot; and it will go to that track.  If I press the fwd or rwd button via Synergy, it will advance tracks within that Doors playlist.  Great.</p>
+<p>However, if I press the play button on Synergy, it jumps back to the Eagles playlist I had originally chosen with iTunes.  But all I wanted to do was pause my current Doors song!  I don't want to jump back to the Eagles!  Grr.&quot;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2288'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2288"><time data-relative="true">2006-05-07T07:33:23Z</time></a></span>
+</cite>
+<blockquote><p>On further analysis, it appears that this bug is a duplicate of #394, which is now fixed in version 0.4 of Synergy Advance thanks to the addition of the &quot;prefer play and pause over playpause&quot; option (see feature request  #298). So I'll be marking this one as DUPLICATE/CLOSED.</p>
+<ul>
+<li>** This bug has been marked as a duplicate of bug 394 ***</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

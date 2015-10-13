@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #124: Menu Extras become active after clicking on Synergy menu bar buttons
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #124</div>
+<div class='issue' id='issue_124'>
+<form class="edit_issue" id="edit_issue_124" action="/issues/124" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="EVRgSCAyLsye4Hc9FP/0izQJIbBawMUmnL9RDoNJm2slpt7/h7/0mUdsRMol1qc/gYtIjFEsSzq8oITwp5H8Tw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #124:
+<span data-name='issue[summary]'>
+Menu Extras become active after clicking on Synergy menu bar buttons
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-03-05T23:12:31Z</time>, updated <time data-relative="true">2010-08-12T09:54:22Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/julius-mapalad">Julius Mapalad</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I play or pause the track using the Synergy menu bar items, and then move across the menu bar,  the menus from other items appear as if I was holding the mouse button down.  This did not occur with  previous versions of Synergy.  In my menu bar, I have the Airport status, Bluetooth status, battery bar,  and the dot Mac menu extension.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1603'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1603"><time data-relative="true">2005-03-06T00:24:49Z</time></a></span>
+</cite>
+<blockquote><p>This is a known bug in Apple's NSStatusItem API, which Synergy uses. Basically what happens is Synergy  receives the click, but for some reason the system *also* passes the  &quot;below&quot; to the SystemUIServer as  well. Then when you move the mouse over the NSMenuExtras they pop down because as far as they are  concerned you've clicked in the menu bar.</p>
+<p>The next time you click on Synergy, Mac OS X passes *another* click to the SystemUIServer and this  means that when you move the mouse over the NSMenuExtras the menus will no longer pop down  because they think you've clicked in the menu bar again. Clicking elsewhere on the screen (even outside  of Synergy) will have the same effect (it breaks out of the &quot;menu down&quot; state); this is just like when you  click once on a menu extra (the menu pops down) and then you click elsewhere on the screen (and the  menu pops up).</p>
+<p>I am convinced that this is an Apple bug, but I am marking this as ASSIGNED. I have considered a  number of tricky workarounds to suppress the behaviour of the bug, but I don't particularly like any of  them. One that I am thinking of is the following: for each click on a Synergy button, generate *another*  mouse click event at the same location, ignore that event (ie. Synergy only responds to the first event,  the real one, not the generated one) and let it fall through to the system; in this way the SystemUIServer  will &quot;see&quot; two clicks, thus causing it to toggle state twice ie. go back to its original state.</p>
+<p>I am not sure if this hack will work, and it strikes me as very elegant, so I am hoping Apple will fix the  bug in their NSStatusItem/SystemUIServer implementation.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1604'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1604"><time data-relative="true">2005-03-06T00:26:14Z</time></a></span>
+</cite>
+<blockquote><p>Correction: in my comment above I meant to say, &quot;it strikes me as very inelegant&quot;!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1605'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1605"><time data-relative="true">2006-07-05T02:04:18Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6022'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6022"><time data-relative="true">2010-08-12T09:54:16Z</time></a></span>
+</cite>
+<blockquote><p>As this is an issue that only Apple can fix, I am going to close this issue. I encourage anyone interested in getting the behavior in Mac OS X changed to submit feedback to Apple <a href="http://www.apple.com/feedback/macosx.html" class="external">here</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6023'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6023"><time data-relative="true">2010-08-12T09:54:22Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

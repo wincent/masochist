@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2191: CommandTMaxHeight not taken into account
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2191</div>
+<div class='issue' id='issue_2191'>
+<form class="edit_issue" id="edit_issue_2191" action="/issues/2191" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Gg6u5xgEBP51f3qPcCSZDuZ6gqGa32SVBWWxdBlkpLwu/BBQv4neq6zzSXhBDcq6U/jrnZEz6oklemSKPbzDmA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2191:
+<span data-name='issue[summary]'>
+CommandTMaxHeight not taken into account
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2015-01-05T20:12:02Z</time>, updated <time data-relative="true">2015-01-12T18:56:06Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/andri-moell">Andri Moell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hey,</p>
+<p>Is it me or is <code>CommandTMaxHeight</code> no longer working on the MacVim snapshot 73? It used to work okay on 70. Even with a basic <code>vimrc</code> it doesn't seem to limit the height. At least on my system.</p>
+<pre>
+set nocompatible
+set rtp+=~/.vim/bundle/command-t
+let CommandTMaxHeight=20
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_12949'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12949"><time data-relative="true">2015-01-07T11:19:15Z</time></a></span>
+</cite>
+<blockquote><p>I just tried it out with the version of MacVim I have (installed via Homebrew, it's 7.4 with patches 1-258, and the folder it's installed into is &quot;7.4-73_1&quot;, which I suppose corresponds to snapshot 73), and it works.</p>
+<p>In my vimrc I have <code>let g:CommandTMaxHeight=30</code>. I open Command-T and see 30 entries in the list, then I do:</p>
+<pre>:let g:CommandTMaxHeight=5
+:CommandTFlush</pre>
+<p>and open it again and see only 5 entries.</p>
+<p>I see you don't have an explicit <code>g:</code> prefix in your example, but I'd expect it to work either way.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_12955'>
+<cite>
+<a href="/users/andri-moell">Andri Moell</a>
+<span class='when'><a href="#comment_12955"><time data-relative="true">2015-01-12T15:23:54Z</time></a></span>
+</cite>
+<blockquote><p>Turned out to be a compile mismatch. The <code>matcher.c</code> was compiled against Ruby v1.9.3 from Homebrew, yet the Mac ships with Ruby 2.0 and/or MacVim depends on Ruby 2.0 nowadays. Everything worked except all values out of the passed-in option hash were read as <code>nil</code> in C. Limit was therefore ignored.</p>
+<p>Not your fault, of course. Just the fucking software ecosystem in general is way too intertwined and fragile these days. ;-)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_12956'>
+<cite>
+<a href="/users/andri-moell">Andri Moell</a>
+<span class='when'><a href="#comment_12956"><time data-relative="true">2015-01-12T15:24:52Z</time></a></span>
+</cite>
+<blockquote><p>I don't think I can close this bug myself. Please do it for me. Thanks! One more reason to use a ready made issue tracker or migrate over to one of those code hosting sites. ;-)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12958'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12958"><time data-relative="true">2015-01-12T18:56:03Z</time></a></span>
+</cite>
+<blockquote><p>Yep, I'll close it. Glad to hear you got it working.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12959'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12959"><time data-relative="true">2015-01-12T18:56:06Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

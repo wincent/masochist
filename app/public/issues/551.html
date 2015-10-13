@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #551: CRASH: Dies in WODebug recordCleanExit
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #551</div>
+<div class='issue' id='issue_551'>
+<form class="edit_issue" id="edit_issue_551" action="/issues/551" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="chzKcoRyMUDiqCTY3UZZeyw5uR9z5dBLJ9K3jN0fShRG7nTFI//rFTskFy/sbwrPmbvQI3gJXlcHzWJy+cctMA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #551:
+<span data-name='issue[summary]'>
+CRASH: Dies in WODebug recordCleanExit
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2007-03-14T07:58:01Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user submitted crash report (will attach):</p>
+<p>Thread 0 Crashed: 0   &lt;&gt; &#x0009;0xfffeff18 objc_msgSend_rtp + 24 1   com.apple.CoreFoundation   &#x0009;0x907d3300 __CFDictionaryDeallocate + 616 2   com.apple.CoreFoundation   &#x0009;0x907bcf34 _CFRelease + 240 3   com.apple.CoreFoundation   &#x0009;0x907d32c0 __CFDictionaryDeallocate + 552 4   com.apple.CoreFoundation   &#x0009;0x907bcf34 _CFRelease + 240 5   com.apple.CoreFoundation   &#x0009;0x907d32c0 __CFDictionaryDeallocate + 552 6   com.apple.CoreFoundation   &#x0009;0x907bcf34 _CFRelease + 240 7   com.apple.CoreFoundation   &#x0009;0x907d32c0 __CFDictionaryDeallocate + 552 8   com.apple.CoreFoundation   &#x0009;0x907bcf34 _CFRelease + 240 9   com.apple.CoreFoundation   &#x0009;0x907d32c0 __CFDictionaryDeallocate + 552 10  com.apple.CoreFoundation   &#x0009;0x907bcf34 _CFRelease + 240 11  com.apple.CoreFoundation   &#x0009;0x9080be0c synchronizeXMLDomain + 76 12  com.apple.CoreFoundation   &#x0009;0x9080bdb0 _CFPreferencesDomainSynchronize + 36 13  com.apple.CoreFoundation   &#x0009;0x9080e2f0 __CFPreferencesPerformSynchronize + 28 14  com.apple.CoreFoundation   &#x0009;0x907d5290 CFDictionaryApplyFunction + 280 15  com.apple.CoreFoundation   &#x0009;0x9080e2b4 _CFSynchronizeDomainCache + 80 16  com.apple.CoreFoundation   &#x0009;0x9080e230 _CFApplicationPreferencesSynchronizeNoLock + 24 17  com.apple.CoreFoundation   &#x0009;0x9081a0f8 CFPreferencesAppSynchronize + 88 18  com.wincent.WODebug        &#x0009;0xd20037ec 0xd2000000 + 14316 19  com.apple.Foundation       &#x0009;0x92960ad8 _nsnote_callback + 180 20  com.apple.CoreFoundation   &#x0009;0x90804010 __CFXNotificationPost + 368 21  com.apple.CoreFoundation   &#x0009;0x907fc0ec _CFXNotificationPostNotification + 684 22  com.apple.Foundation       &#x0009;0x9294aee0 -[NSNotificationCenter postNotificationName:object:userInfo:] + 92 23  com.apple.AppKit           &#x0009;0x9378eea0 -[NSApplication terminate:] + 244 24  com.apple.Foundation       &#x0009;0x92960ad8 _nsnote_callback + 180 25  com.apple.CoreFoundation   &#x0009;0x90804010 __CFXNotificationPost + 368 26  com.apple.CoreFoundation   &#x0009;0x907fc0ec _CFXNotificationPostNotification + 684 27  com.apple.Foundation       &#x0009;0x9294aee0 -[NSNotificationCenter postNotificationName:object:userInfo:] + 92 28  com.apple.AppKit           &#x0009;0x937213a0 -[NSWorkspace _applicationStatusChange:] + 372 29  com.apple.AppKit           &#x0009;0x936f08d4 -[NSApplication sendEvent:] + 4172 30  com.apple.AppKit           &#x0009;0x936e7d10 -[NSApplication run] + 508 31  com.apple.AppKit           &#x0009;0x937d887c NSApplicationMain + 452 32  com.wincent.SynergyAdvance &#x0009;0x000080a0 __darwin_gcc3_preregister_frame_info + 408 33  com.wincent.SynergyAdvance &#x0009;0x00007ad0 start + 456 34  dyld                       &#x0009;0x8fe01048 _dyld_start + 60</p>
+<p>The line in WODebug where the crash starts is:</p>
+<p>-[WODebugClass00050 recordCleanExit] (in WODebug_ppc_unstripped)</p>
+<p>So something problem reading the prefs by the looks of it. Could this be a preferences corruption issue?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2956'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2956"><time data-relative="true">2007-03-14T07:58:42Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=106) PPC crashlog</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

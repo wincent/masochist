@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #469: Synergy hot keys do not increment the skip count in iTunes 7
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #469</div>
+<div class='issue' id='issue_469'>
+<form class="edit_issue" id="edit_issue_469" action="/issues/469" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="TvQQD4n9Mrd4VtDqcHK4MHz0VtLoyO/QtSb+5J+8Pkd6Bq64LnDo4qHa4x1BW+uEyXY/7uMkYcyVOSsau2RZYw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #469:
+<span data-name='issue[summary]'>
+Synergy hot keys do not increment the skip count in iTunes 7
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-09-13T22:43:26Z</time>, updated <time data-relative="true">2007-02-07T09:42:43Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/milo-bird">Milo Bird</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've just noticed that if I use the Synergy hot key to skip from one track to the next, the skip count in iTunes doesn't get increased.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2791'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2791"><time data-relative="true">2006-09-14T05:30:35Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for opening the report. People are already discussing this on the forums here:</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=1061" class="external">http://wincent.com/a/support/forums/showflat.php?Number=1061</a></p>
+<h5>Start: Comments from forum thread</h5>
+<p>User: &quot;When I use Synergy to skip a track the new skipped track fields do not update in iTunes 7.&quot;</p>
+<p>Wincent: &quot;Strange, I would have expected iTunes to handle that automatically. Synergy is sending a &quot;next track&quot; Apple Event, so you'd expect iTunes to automatically increment the counter.</p>
+<p>Actually, I'm not sure what the counter is supposed to mean at all... in my tests when I skip tracks from within iTunes (when Synergy is not even running) the counter does not update. This when playing in the main library, shuffle turned off.</p>
+<p>Anyone know what I have to do to get it to update? When is it supposed to update?&quot;</p>
+<p>User: &quot;I just did some testing and for me using the forward button will cause the skip count to increment if I have not manually moved forward in the song.</p>
+<p>It does seem odd that a next track apple event does not cause the counter to increment.&quot;</p>
+<h5>End: Comments from forum thread</h5>
+<p>Ok, on further testing I think I've figured out the behaviour of the skipped track count and it seems that Synergy and iTunes are both behaving exactly as they should.</p>
+<p>I performed these tests in the main library without shuffle turned on, with the played count and skipped count columns visible.</p>
+<p>In normal playback the &quot;played count&quot; will only increment if playback reaches the end of a track; this is the same behaviour as in iTunes 6 and previous versions of iTunes.</p>
+<p>When using the &quot;next track&quot; button within iTunes itself the &quot;skipped count&quot; will not increment unless the song has been playing for some time already. I am not sure of the exact interval you have to wait before hitting the button but it seems to be about 1 or 2 seconds. If you hit the &quot;next track&quot; button repeatedly and immediately before any of the tracks get beyond that 1 or 2 seconds limit then the &quot;skipped count&quot; does not increment. I guess this is to stop songs getting counted as skipped when you just rapidly jumping through a list in order to get to a particular song; it seems that the skipped count is intended to indicate a &quot;rejection&quot; in which you actually start listening to a song and then decide to skip over it.</p>
+<p>In my testing the exact same behaviour is exhibited when using Synergy's hot keys to skip tracks. Immediately skipping (before hitting the 1 or 2 second limit) results in the &quot;skipped count&quot; not being implemented. Wait a few seconds before skipping and the count does get incremented.</p>
+<p>So it seems that this particular iTunes behaviour is that way by design, and when Synergy is used to control iTunes the behaviour is maintained. So marking this on as &quot;WORKSFORME&quot;. If you're actually requesting that Synergy *override* the iTunes behaviour because you don't like it, then that's another thing and we'll have to re-brand this report as a feature request rather than a bug report.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2792'>
+<cite>
+<a href="/users/milo-bird">Milo Bird</a>
+<span class='when'><a href="#comment_2792"><time data-relative="true">2006-09-14T05:56:30Z</time></a></span>
+</cite>
+<blockquote><p>I haven't had the same results, although I'm not testing in exactly the same way as you:</p>
+<p>I'm playing from a smart playlist which is set to shuffle. If I wait ten seconds and skip the track from iTunes, the skip count gets incremented. If after ten seconds I use Synergy to skip the track, the skip count stays the same. I can't see why - this may be a bug in iTunes.</p>
+<p>It's worth noting that if I use Party Shuffle to play the same smart playlist, then NEITHER method will increment the skip count. How annoying.</p>
+<p>Are you able to reproduce this?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2793'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2793"><time data-relative="true">2006-09-14T06:31:04Z</time></a></span>
+</cite>
+<blockquote><p>No I can't reproduce it.</p>
+<p>For me, doing this on a smart playlist from within iTunes increments the skipped count if the song has already been playing for a couple seconds or more. It does not increment it if it has not been playing for that minimum time frame.</p>
+<p>I then repeated the test using Synergy hot keys and the results were identical.</p>
+<p>I then turned shuffle on and repeated the test again, and the results were identical for both iTunes-initiated track changes and Synergy-initiated track changes.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2794'>
+<cite>
+<a href="/users/milo-bird">Milo Bird</a>
+<span class='when'><a href="#comment_2794"><time data-relative="true">2006-09-14T07:17:54Z</time></a></span>
+</cite>
+<blockquote><p>Hey, you're right! It's working for me now. I don't know what was up before, it definitely wasn't working -- or at least, iTunes wasn't updating my smart playlists properly when I skipped, I didn't keep a close eye on the actual skip count. There's still some strangeness (it work every time, even after the 2-3 second grace period, it seems to me), but I'm pretty confident this is iTunes' problem.</p>
+<p>Thanks for your help.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2795'>
+<cite>
+<a href="/users/paul-turnbull">Paul Turnbull</a>
+<span class='when'><a href="#comment_2795"><time data-relative="true">2006-09-14T09:00:55Z</time></a></span>
+</cite>
+<blockquote><p>I did some more playing around and it looks like there is a limited time frame in which 'next track' will cause 'skipped' to increment. For most of my songs it seemed to be less than 20 seconds. Over that and the counter would not increment. I wouldn't be surprised if the range the counter incremented in varied with the length of the track.</p>
+<p>You're right, though, this does not seem to be a bug but a designed behaviour. It would be nice to have some documentation of how it works though so I can build it into my scripting.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2796'>
+<cite>
+<a href="/users/nathan">nathan</a>
+<span class='when'><a href="#comment_2796"><time data-relative="true">2006-09-14T09:01:43Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent... long time... it's Nathan.</p>
+<p>I'm also having the same problem, and wasn't even realizing it was linked to Synergy because I'm just so used it to being part of my systems. I started noticing the problem when I would use the hot keys to advance, and iTunes wasn't even updating (the Now Playing album art and speaker icon next to the audible track). It stays on that track, until I go back into iTunes, and click forward, and it plays the whole queue of songs over again. At first, I was really creeped out and tired... then, I disabled Synergy, and it appeared to go away. Anyhow, that's how it happened for me.  Not sure if this helps, but, it's something.</p>
+<p>Mac OS 10.4.7, iTunes 7, Synergy 3.0</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2797'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2797"><time data-relative="true">2006-09-14T09:09:41Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #5)</p>
+<blockquote>
+<p>It would be nice to have some documentation of how it works though so I can build it into my scripting.</p>
+</blockquote>
+<p>Yes, unfortunately the iTunes scripting dictionary only says, &quot;skipped count (integer) : number of times this track has been skipped&quot;.</p>
+<p>(In reply to comment #6)</p>
+<blockquote>
+<p>I started noticing the problem when I would use the hot keys to advance, and iTunes wasn't even updating (the Now Playing album art and speaker icon next to the audible track). It stays on that track, until I go back into iTunes, and click forward, and it plays the whole queue of songs over again. At first, I was really creeped out and tired...</p>
+</blockquote>
+<p>Strange; that definitely doesn't happen for me. If I use hot keys to skip tracks up everything happens at the iTunes end exactly as you would expect (moves to next track, currently playing album art updates, speaker icon moves to new track etc).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2798'>
+<cite>
+<a href="/users/milo-bird">Milo Bird</a>
+<span class='when'><a href="#comment_2798"><time data-relative="true">2006-09-14T10:15:43Z</time></a></span>
+</cite>
+<blockquote><p>I can't find any logic in whether it increments or not -- sometimes it does when I'm more than half way through the song, sometimes not when I skip within the first thirty seconds. I'm pretty sure this is a bug in iTunes. (It might be a feature, but I don't understand the logic!)</p>
+<p>I've submitted a bug report to Apple, and in the unlikely event that I hear back I'll let you know.</p>
+<p>Cheers,</p>
+<p>Milo</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2799'>
+<cite>
+<a href="/users/chris-isaac">Chris Isaac</a>
+<span class='when'><a href="#comment_2799"><time data-relative="true">2007-02-07T09:27:18Z</time></a></span>
+</cite>
+<blockquote><p>It works only if you use the menu skip item, if you skip a track using a set hot key - it does not increment the skip count!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2800'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2800"><time data-relative="true">2007-02-07T09:42:43Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #9)</p>
+<blockquote>
+<p>It works only if you use the menu skip item, if you skip a track using a set hot key - it does not increment the skip count!</p>
+</blockquote>
+<p>I don't know why that would be the case. Under the covers the exact same method is being called to move to the next track, regardless of whether you're working from the menu bar control buttons, hot keys, menu items etc.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

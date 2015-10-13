@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #306: CPU Usage stuck at 10-15%, even when not playing iTunes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #306</div>
+<div class='issue' id='issue_306'>
+<form class="edit_issue" id="edit_issue_306" action="/issues/306" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="16LGWSMNWLx1PwXtUvwyo3GNYm01C8IfZBuXDSALo4LjUHjuhICC6ayzNhpj1WEXxA8LUT7nTANEBELzBNPEpg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #306:
+<span data-name='issue[summary]'>
+CPU Usage stuck at 10-15%, even when not playing iTunes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-09-27T11:14:34Z</time>, updated <time data-relative="true">2005-10-19T22:05:34Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/neil-sharp">Neil Sharp</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>CPU usage for Synergy Advance is staying at 10-15% on my system, even when iTunes is not playing.   Both iTunes and Synergy Advance (demo version) have been up for about 2 days, playing music  intermittantly during that time.</p>
+<p>System specs:</p>
+<pre> PowerBook G4 1.25GHz
+ OS X 10.4.2
+ iTunes 5.0.1</pre>
+<p>This causes the reaction time of my computer to be much slower, as 10-15% of the CPU is already  taken by an idle process.  If I quit iTunes and Synergy Advance, my CPU is basically idle, with Safari  being the only process consuming more than 1% of the CPU.</p>
+<p>Upon restarting the process, Synergy Advance uses up to 90% CPU, and then calms down to 0%.  When I  start playing music again, Synergy Advance moves up to 6-10% again and then stays there, regardless  of the state of iTunes (playing or stopped).  If Synergy Advance is not polling iTunes for the album art  and song title info (like Synergy Classic does), why is it consuming so much CPU for being mostly idle?   Between Synergy Advance and iTunes, a consistent 18-20% CPU is always consumed, which seems quite  high.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2234'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2234"><time data-relative="true">2005-09-27T21:18:10Z</time></a></span>
+</cite>
+<blockquote><p>What preferences have you got set for Dock icon animation etc? These can suck quite a bit of CPU. I've  done some optimization already to make them more efficient, but there is still more to be done in the  future. The other thing which might use a bit of CPU is if you have iChat status line scrolling turned on,  but in that case there's nothing really that I can optimise away.</p>
+<p>The high CPU usage at launch is normal, because at that point Synergy Advance is parsing your iTunes  music library file as fast as it can. Once it's finished parsing the usage should drop right off, as you  observe.</p>
+<p>If you have Dock icon animation turned on that would explain why the CPU usage goes up as soon as  you start playing music. Even so, it shouldn't be too high. If you have animation turned on *and* cover  art as a badge then the usage will go up because it not only has to animate the Dock icon but also  composite the album cover as a badge over the top of it. Like I said, I've already done some  optimization to minimize the amount of work Synergy Advance does, but there is still more that could  be done. Basically, the code is already about as lean and efficient as it can get; most of the time is spent  in Cocoa routines that I can't get inside of, so to get further optimizations I'll have to bypass Cocoa and  do it some other way. This kind of thing might end up being a Tiger-only optimization, depending on  what APIs I end up using.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2235'>
+<cite>
+<a href="/users/neil-sharp">Neil Sharp</a>
+<span class='when'><a href="#comment_2235"><time data-relative="true">2005-09-28T09:10:34Z</time></a></span>
+</cite>
+<blockquote><p>I have only the following checked under the General preferences:</p>
+<pre> - Auto-launch Synergy Advance when iTunes is launched
+ - Auto-quit Synergy Advance when iTunes quits
+ - Check for new versions of Synergy Advance [Daily]</pre>
+<p>I do not have any of the other boxes checked, so animation or compositing should not be an issue.</p>
+<p>I do use the iChat status feature, but not the scrolling feature.  Here's what I have checked on the  Instant Messaging preferences:</p>
+<pre> - Update iChat status based on current track
+ - When iTunes track changes
+ - When iTunes player state changes
+ - Do not update when status is &quot;Away&quot;
+ - Use Cover Art as user image
+ - Custom format string: [%p: %a - %t]
+ - Separator [--]
+ - Limit status line length to [no limit]</pre>
+<p>I also turned on Hot Keys and assigned Command-F11, Command-F12, and Command-F13 to the old  Synergy Classic settings (Previous song, Next song, and Play/Pause).  The option for visual feedback for  Hot Keys is also turned on.</p>
+<p>I installed Growl 0.7.2 yesterday, and the CPU usage for Synergy Advance has not changed with respect  to this new addition.  It's still at ~12% after a night of iTunes being silent.</p>
+<p>Hope that helps.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2236'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2236"><time data-relative="true">2005-09-28T21:04:33Z</time></a></span>
+</cite>
+<blockquote><p>Can you take a sample using the Activity Monitor application (in /Applications/Utilities/)? Select Synergy  Advance from the list, double click it, and hit the &quot;Sample&quot; button. This will tell us, more or less, where  Synergy Advance is spending its time.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2237'>
+<cite>
+<a href="/users/neil-sharp">Neil Sharp</a>
+<span class='when'><a href="#comment_2237"><time data-relative="true">2005-09-29T09:52:49Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=36) Screenshots of Inpect windows and samples in a ZIP file</p>
+<p>The first sample (no screenshot, sorry) was taken during the first song played after Synergy Advance/iTunes startup.  The second sample (and screenshot) was taken after about 10 songs had played and/or been skipped using the Command-F12 hotkey.  The third sample (and screenshot) was taken after about 35 minutes of playing and/or skipping songs.&#x0009;The fourth sample (and screenshot) was taken immediately after playback was stopped in iTunes (after the approximate 35 minutes of playing before).  The fifth sample (and screenshot) was taken about 45 minutes after playback was stopped -- iTunes remained idle during this time.</p>
+<p>An aside -- one possible reason for the CPU time consumption when iChat status scrolling is turned on is the multitude of console logs it produces.  This was the reason I turned that feature off and do not use it currently.  I keep my console log up at all times (background in UNIX).</p>
+<p>Hope that helps.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2238'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2238"><time data-relative="true">2005-09-29T22:01:23Z</time></a></span>
+</cite>
+<blockquote><p>What messages are being logged to the console?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2239'>
+<cite>
+<a href="/users/neil-sharp">Neil Sharp</a>
+<span class='when'><a href="#comment_2239"><time data-relative="true">2005-09-30T08:51:39Z</time></a></span>
+</cite>
+<blockquote><p>These messages are created immediately after turning on the iChat status scrolling.  It spits one out  approximately every 1 second for as long as the status scrolling is activated.</p>
+<p>2005-09-30 08:49:31.669 Synergy Advance[5599] -[WOIChatController updateScrollingText:] (/Users/ wincent/trabajo/Synergy/svn-files/SynergyAdvance/WOIChatController.m:117) 2005-09-30 08:49:32.579 Synergy Advance[5599] -[WOIChatController updateScrollingText:] (/Users/ wincent/trabajo/Synergy/svn-files/SynergyAdvance/WOIChatController.m:117) 2005-09-30 08:49:33.569 Synergy Advance[5599] -[WOIChatController updateScrollingText:] (/Users/ wincent/trabajo/Synergy/svn-files/SynergyAdvance/WOIChatController.m:117) 2005-09-30 08:49:34.569 Synergy Advance[5599] -[WOIChatController updateScrollingText:] (/Users/ wincent/trabajo/Synergy/svn-files/SynergyAdvance/WOIChatController.m:117) 2005-09-30 08:49:35.569 Synergy Advance[5599] -[WOIChatController updateScrollingText:] (/Users/ wincent/trabajo/Synergy/svn-files/SynergyAdvance/WOIChatController.m:117)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2240'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2240"><time data-relative="true">2005-09-30T11:28:19Z</time></a></span>
+</cite>
+<blockquote><p>Ah, ok. Those log statements shouldn't be in there. I'll get rid of them (or more precisely, I have already  gotten ridden of them!). Even so, there is no way logging something to the console once per second would  be responsible for heavy CPU usage.</p>
+<p>I've taken a look at those samples you attached, and it appears that most of the time is being spent  compositing something. Will take a look into it and try to figure out *what* is getting composited.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2241'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2241"><time data-relative="true">2005-10-10T17:20:07Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=37) Sample log</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2242'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2242"><time data-relative="true">2005-10-10T17:22:24Z</time></a></span>
+</cite>
+<blockquote><p>I've got a similar problem with Synergy Advance, except mine is getting up to nearly 50% CPU irregardless of weather or not iTunes is running. I am not using any of the iChat features and am running without a dock icon or menubar icon.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2243'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2243"><time data-relative="true">2005-10-10T20:36:13Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for adding your comments, John. Your sample looks quite different from the one posted by Neil. Yours looks just like I would expect it to look when parsing the iTunes library file. Once the file is parsed the CPU should settle down again. Parsing should occur at launch only. If you have a slow computer (what are the specs on it, by the way?) and/or a very large iTunes library (how many tracks have you got in it?) then parsing will take longer.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2244'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2244"><time data-relative="true">2005-10-10T22:46:44Z</time></a></span>
+</cite>
+<blockquote><p>12&quot; pb, 1.5ghz G4, 512mb ram, and about 15,000 tracks in itunes, about 14,000 of which were on a afp mounted drive, removing all the remote files and leaving just the 500-1000 local files the cpu usage looks quite normal, actually 0% cpu right now, but before when all the remote files were in the library the cpu would not ever really settle down, just would occasionally drop to 20% or even as low as 15%, but would jump to 30-40% during any itunes/synergy interaction</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2245'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2245"><time data-relative="true">2005-10-10T23:21:10Z</time></a></span>
+</cite>
+<blockquote><p>Interesting. Seems that the excess CPU usage you're seeing is a different issue than the one initially reported by Neil.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2246'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2246"><time data-relative="true">2005-10-11T12:20:51Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #12)</p>
+<blockquote>
+<p>Interesting. Seems that the excess CPU usage you're seeing is a different issue than the one initially reported by Neil.</p>
+</blockquote>
+<p>oops, didn't mean to hijack someone else's ticket, should i file a new bug report for my issue?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2247'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2247"><time data-relative="true">2005-10-11T21:11:39Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #13)</p>
+<blockquote>
+<p>oops, didn't mean to hijack someone else's ticket, should i file a new bug report for my issue?</p>
+</blockquote>
+<p>Probably wouldn't be a bad idea, seeing as your issue seems to be very specifically related to network access to the tracks via AFP. It's more likely that the other issue initially reported by Neil will be easier to find and fix, so will get closed sooner; the AFP thing might be trickier. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2248'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2248"><time data-relative="true">2005-10-15T16:03:16Z</time></a></span>
+</cite>
+<blockquote><p>Well, I had totally trashed my iTunes library and was in the midst of rebuilding it, first w/ only local files and taking samples, then adding in remote tunes and taking more samples when Apple released iTunes 6, so I figured I'd go ahead and upgrade and have not been able to reproduce the very high cpu usage; in fact I haven't seen thing over 10% for a prolonged period, with averages in the 5-8% range. I have no idea if this is just a coincedence of if iTunes 6 actually has something to do with it; so I am holding off on starting a new ticket just yet, but if it does reappear I will take more samples and start a new ticket then. (Or maybe you'll have enough info from the previous sample I submitted to fix this for a future release)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2249'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2249"><time data-relative="true">2005-10-16T09:35:35Z</time></a></span>
+</cite>
+<blockquote><p>Ok, we'll just keep an eye on it then and see how it goes. I am about to upgrade to iTunes 6 myself and check it out. If we need to we can always open another ticket later. Cheers, W.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2250'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2250"><time data-relative="true">2005-10-19T22:05:34Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to roll this bug report into #288 seeing as in both cases the CPU usage seems to be related to compositing, although the samples don't look exactly the same. Should make it easier to keep track of all the related information in the one place.</p>
+<ul>
+<li>** This bug has been marked as a duplicate of 288 ***</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

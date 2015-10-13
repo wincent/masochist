@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #115: REQUEST: Please return polling to Synergy, so I can skip through songs silently
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #115</div>
+<div class='issue' id='issue_115'>
+<form class="edit_issue" id="edit_issue_115" action="/issues/115" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="muyGT7DXRISjg8amwyx68xnyD2Bx0pZFSQNlL5lSGoauHjj4F1qe0XoP9VHyBSlHrHBmXHo+GFlpHLDRvYp9og==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #115:
+<span data-name='issue[summary]'>
+REQUEST: Please return polling to Synergy, so I can skip through songs silently
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-02-04T06:25:36Z</time>, updated <time data-relative="true">2006-07-05T02:04:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-91">bugzilla user 91</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Before iTunes 4.7, Synergy polled iTunes to get info about what was playing. That no longer happens.  Under the old model, I could jump from track to track using synergy, and the Floater would tell me what  track was lined up to play, even if iTunes was stopped. Now, the Floater doesn't recognise that I have  jumped to a new spot in the playlist, until the song starts playing. Synergy's main benefit for me was that it allowed iTunes to remain completely hidden (for me, behind  Powerpoint 2004's Presenter Tools), and I could still control it. Now, I can't, because the Floater no  longer tells me what track I've jumped to; I have to listen to the first couple seconds of the track to  figure out if I'm where I thought I was. I request that Synergy automatically poll iTunes if a track jump has been performed, so the new status  is reflected in the Floater.  With iTunes 4.7 and Synergy 1.6.1,  if I wish to jump to another song in a playlist, without having the  sound appear, I would have to turn the sound off, make the jump with itunes playing so I can see where  I land, hit the back button to return to the beginning of the song, hit pause, turn the sound on, then hit  play again. This is quite different than jumping to a new song that I see immediately in the floater, and  hitting play. Geoff</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1561'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1561"><time data-relative="true">2005-02-05T08:06:59Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting this as a request. There a few ways in which your problem might end up getting  resolved:</p>
+<p>1. Synergy goes back to polling. I doubt this will happen, because most uses value the performance  benefits of the new model too much.</p>
+<p>2. Synergy will do a single &quot;poll&quot; each time you skip tracks from within Synergy when iTunes is not  playing. This won't completely deliver uniform behaviour, because if the user skips tracks in other ways  (ie. the iTunes dock menu, clicking in iTunes itself etc), then no polling and therefore no updates will  occur.</p>
+<p>3. Apple changes iTunes so that it posts notifications of track changes even when it's not playing. This  is the ideal scenario, because it is both efficient and completely uniform. Here's the URL for iTunes  feedback if you want to encourage Apple to make this change:</p>
+<p><a href="http://www.apple.com/feedback/itunes.html" class="external">http://www.apple.com/feedback/itunes.html</a></p>
+<p>My votes are for 3, 2, 1 in that order. Other users are welcome to leave comments here to help inform  the decision about what gets done!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1562'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1562"><time data-relative="true">2006-07-05T02:04:17Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

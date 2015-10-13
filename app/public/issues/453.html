@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #453: Transparent parts of images appear as white (ShapeShifter)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #453</div>
+<div class='issue' id='issue_453'>
+<form class="edit_issue" id="edit_issue_453" action="/issues/453" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ALsRgN9G+tqWT5IksZrPK8Ia9vdcmvT1YFTgEIijsgc0Sa83eMsgj0/DodOAs5yfd5ify1d2eulASzXurHvVIw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #453:
+<span data-name='issue[summary]'>
+Transparent parts of images appear as white (ShapeShifter)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-08-28T14:08:04Z</time>, updated <time data-relative="true">2010-08-12T10:09:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;Is it possible to have the display of the user picture in the menubar use an available alpha channel in the image?  I use ShapeShifter and my menu is not the normal off-white, and the transparent areas are drawn white, looking terrible on the themed menubar.  I realize OS X does the same (no transparency) for user pictures, but...&quot;</p>
+<p>&quot;Come to thing of it, even a standard unthemed OSX menu has enough of an off-white/grey color that the white background in the user pic might be noticable.&quot;</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2756'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2756"><time data-relative="true">2006-08-28T14:08:56Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=73) screenshot</p>
+<p>User-submitted screenshot.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2757'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2757"><time data-relative="true">2006-08-28T14:10:56Z</time></a></span>
+</cite>
+<blockquote><p>Not sure what the workaround for this one might be as it seems to be the OS itself which is responsible for that. I don't have the code in front of me right now, but from memory all we're doing is passing an NSImage to the system and the system is handling the drawing of it.</p>
+<p>The source code is available for download if anyone wants to take a look at this issue; I won't be able to investigate it myself for a while because of some other higher-priority stuff that I've got to attend to.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2758'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2758"><time data-relative="true">2006-08-29T11:13:44Z</time></a></span>
+</cite>
+<blockquote><p>More user comments:</p>
+<p>&quot;I just tried it on another Mac without ShapeShifter.  Same non-transparent white background, though it's not as noticable.  Except when I popup the WinSwitch menu - the hilite also has a squared-off box around the image instead of blending with the transparency.  So it's not a ShapeShifter problem, it's just more noticable.</p>
+<p>And, the transparency is also missing in the menu items, not just the menubar icon.</p>
+<p>Note also that I've tried TIFF and PNG user pics, both with transparency</p>
+<p>NSImage should be able to handle transparency.  And other menu extras can draw transparent icons, including WinSwitch's own userIcon.tiff.  I wonder if it has to do with scaling the image, since user pictures are larger than the standard menu icon size, yet the userIcon.tiff isn't scaled to fit the menubar and does show the transparency.&quot;</p>
+<p>&quot;Oh, another thought I had why it might not be drawing transparency - basically all use of user pics in the system I've seen doesn't display transparency, so maybe it's the *reading* of the user pic that is dropping the transparency.  ie if you are using user info functions to retrieve the user pic image data and those functions don't support transparency, instead of getting the image file location and reading from the file with generic image functions.&quot;</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2759'>
+<cite>
+<a href="/users/jim">jim</a>
+<span class='when'><a href="#comment_2759"><time data-relative="true">2006-08-30T09:25:33Z</time></a></span>
+</cite>
+<blockquote><p>This issue is pretty benign, so it's hard to justify the time/energy to fix it, but this is just one of three things I can think of that would enhance my use of WinSwitch. Consider me in favor of this fix, if you can figure it out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6028'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6028"><time data-relative="true">2010-08-12T10:09:06Z</time></a></span>
+</cite>
+<blockquote><p>I'm marking all WinSwitch issues closed seeing as I personally no longer use it, and in fact haven't for around 4 years now.</p>
+<p>WinSwitch addressed a real problem with the initial implementation of Fast User Switching in <a href="/wiki/Panther">Panther</a> (released October 2003), namely, the excessive screen real estate that it chewed up. Apple fixed that problem in Tiger, if I recall correctly, which came out in April 2005 (or if I'm wrong about it being <a href="/wiki/Tiger">Tiger</a>, then it was definitely fixed by the time <a href="/wiki/Leopard">Leopard</a> came out, in October 2007).</p>
+<p>With this change, most of the justification for WinSwitch's existence went away, at least for me. So that's why I'm going to close all these tickets: I can't really support something that I don't use myself.</p>
+<p>But it's open source (see <a href="http://git.wincent.com/WinSwitch.git" class="external">http://git.wincent.com/WinSwitch.git</a>), so if any one wants to tackle any of these issues and submit patches, I'll be happy to accept them.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6036'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6036"><time data-relative="true">2010-08-12T10:09:41Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

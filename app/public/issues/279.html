@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #279: &quot;Don't show Synergy Advance icon in Dock&quot; preference checked but not working after reboot
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #279</div>
+<div class='issue' id='issue_279'>
+<form class="edit_issue" id="edit_issue_279" action="/issues/279" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SdDCKC7lF8zKuKTURpUOF8r2/9JqNiWzy3e2BybO2+d9InyfiWjNmRM0lyN3vF2jf3SW7mHaq6/raGP5Aha8ww==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #279:
+<span data-name='issue[summary]'>
+&quot;Don't show Synergy Advance icon in Dock&quot; preference checked but not working after reboot
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-07-28T03:50:16Z</time>, updated <time data-relative="true">2006-03-29T07:53:43Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/scott-melendez">Scott Melendez</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have Synergy Advance to start when iTunes starts, and I checked the &quot;Don't show in Dock&quot; option.  However, when I rebooted my system, that preference was checked, but Synergy Advance was still in the  Dock.</p>
+<p>OS X 10.4.2, 1.67 GHz G4, 2 Gb RAM.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2143'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2143"><time data-relative="true">2005-07-28T09:07:22Z</time></a></span>
+</cite>
+<blockquote><p>I suspect this is the same underlying issue as <a href="/issues/192">bug #192</a>; basically a bug in Tiger. A bug report has been  filed with Apple and marked as a duplicate, so this is evidently a known issue for them.</p>
+<p>You may find that it goes away on the next reboot, or if you reinstall the app. You should take a look at  <a href="/issues/192">bug #192</a> to see the kind of information that would need to be collected on the command line in order to  develop a work around meanwhile we wait for Apple to fix the bug. That bug report actually applies to  Synergy, not Synergy Advance, but the principles are the same. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2144'>
+<cite>
+<a href="/users/scott-melendez">Scott Melendez</a>
+<span class='when'><a href="#comment_2144"><time data-relative="true">2005-07-28T10:06:45Z</time></a></span>
+</cite>
+<blockquote><p>I rebooted several times this AM on an unrelated issue, and I was able to duplicate it each time.</p>
+<p>(In reply to comment #1)</p>
+<blockquote>
+<p>I suspect this is the same underlying issue as <a href="/issues/192">bug #192</a>; basically a bug in Tiger. A bug report has </p>
+</blockquote>
+<p>been </p>
+<blockquote>
+<p>filed with Apple and marked as a duplicate, so this is evidently a known issue for them.</p>
+<p>You may find that it goes away on the next reboot, or if you reinstall the app. You should take a look </p>
+</blockquote>
+<p>at </p>
+<blockquote>
+<p><a href="/issues/192">bug #192</a> to see the kind of information that would need to be collected on the command line in </p>
+</blockquote>
+<p>order to </p>
+<blockquote>
+<p>develop a work around meanwhile we wait for Apple to fix the bug. That bug report actually applies </p>
+</blockquote>
+<p>to </p>
+<blockquote>
+<p>Synergy, not Synergy Advance, but the principles are the same. </p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2145'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2145"><time data-relative="true">2005-07-28T19:10:38Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>I rebooted several times this AM on an unrelated issue, and I was able to duplicate it each time.</p>
+</blockquote>
+<p>Like I said, you *might* find that it goes away next reboot (evidently you didn't). If you reinstall the app  as well, or move it, it *might* go away. The bug in Tiger is that the Launch Services database is not  updating and these things which I am recommending *might* force it to update.</p>
+<p>So basically, I am still waiting for someone to do some investigation on the command line as described  in <a href="/issues/192">bug #192</a> so that I can figure out how to work around the bug (I'm actually a bit baffled as to why  nobody wants to do this work seeing as the original bug was filed over three months ago and I posted  detailed instructions on how to gather information on the command line over 10 weeks ago). Seeing as  I am unable to reproduce this bug locally I am dependent on others to gather the required information.  It's particularly frustrating because this is not a bug in Synergy Advance (or Synergy) but in Tiger; but  more information is required.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2146'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2146"><time data-relative="true">2005-07-28T20:13:06Z</time></a></span>
+</cite>
+<blockquote><p>Making the summary a little more descriptive.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2147'>
+<cite>
+<a href="/users/luke-leidal">Luke Leidal</a>
+<span class='when'><a href="#comment_2147"><time data-relative="true">2005-07-29T00:55:07Z</time></a></span>
+</cite>
+<blockquote><p>Having the same problem of &quot;Don't show Synergy Advance icon in Dock&quot; not working after system  reboot.  Running a dual 1gHz G4 with 1gHz RAM, OS 10.3.9.  Problem still arises after several reboots.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2148'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2148"><time data-relative="true">2005-07-29T01:11:25Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #5)</p>
+<blockquote>
+<p>Having the same problem of &quot;Don't show Synergy Advance icon in Dock&quot; not working after system  reboot.  Running a dual 1gHz G4 with 1gHz RAM, OS 10.3.9.  Problem still arises after several reboots.</p>
+</blockquote>
+<p>Still waiting for someone to provide information gathered on the command line, as described in <a href="/issues/192">bug #192</a>.  Even a million &quot;me too&quot; reports won't help to workaround this bug; the only thing which will solve it is  information provided by users who can reproduce the problem.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2149'>
+<cite>
+<a href="/users/scott-melendez">Scott Melendez</a>
+<span class='when'><a href="#comment_2149"><time data-relative="true">2005-07-29T05:40:46Z</time></a></span>
+</cite>
+<blockquote><p>Wincent,</p>
+<p>I looked in my Synergy plist you suggested in 192, and LSUIElement is set to 1.</p>
+<p>(In reply to comment #0)</p>
+<blockquote>
+<p>I have Synergy Advance to start when iTunes starts, and I checked the &quot;Don't show in Dock&quot; option.  However, when I rebooted my system, that preference was checked, but Synergy Advance was still in </p>
+</blockquote>
+<p>the </p>
+<blockquote>
+<p>Dock.</p>
+<p>OS X 10.4.2, 1.67 GHz G4, 2 Gb RAM.</p>
+</blockquote>
+<p>(In reply to comment #3)</p>
+<blockquote>
+<p>(In reply to comment #2)</p>
+<blockquote>
+<p>I rebooted several times this AM on an unrelated issue, and I was able to duplicate it each time.</p>
+</blockquote>
+<p>Like I said, you *might* find that it goes away next reboot (evidently you didn't). If you reinstall the </p>
+</blockquote>
+<p>app </p>
+<blockquote>
+<p>as well, or move it, it *might* go away. The bug in Tiger is that the Launch Services database is not  updating and these things which I am recommending *might* force it to update.</p>
+<p>So basically, I am still waiting for someone to do some investigation on the command line as </p>
+</blockquote>
+<p>described </p>
+<blockquote>
+<p>in <a href="/issues/192">bug #192</a> so that I can figure out how to work around the bug (I'm actually a bit baffled as to why  nobody wants to do this work seeing as the original bug was filed over three months ago and I </p>
+</blockquote>
+<p>posted </p>
+<blockquote>
+<p>detailed instructions on how to gather information on the command line over 10 weeks ago). Seeing </p>
+</blockquote>
+<p>as </p>
+<blockquote>
+<p>I am unable to reproduce this bug locally I am dependent on others to gather the required </p>
+</blockquote>
+<p>information. </p>
+<blockquote>
+<p>It's particularly frustrating because this is not a bug in Synergy Advance (or Synergy) but in Tiger; but  more information is required.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment' id='comment_2150'>
+<cite>
+<a href="/users/michael">Michael</a>
+<span class='when'><a href="#comment_2150"><time data-relative="true">2005-08-04T13:24:59Z</time></a></span>
+</cite>
+<blockquote><p>Looking at the dump I noticed that the ui-element was missing for Synergy Advance. Running lsregister /Applications resolved this issue for me. I'm guessing it didn't get updated when I installed .2 over .1.2</p>
+<p>before lsregister -kill -------------------------------------------------------------------------------- bundle  id:            65808</p>
+<pre>       path:          /Volumes/Synergy Advance 0.1.2/Synergy Advance.app
+       name:
+       identifier:    com.wincent.SynergyAdvance
+       version:       0.1.2
+       mod date:      5/11/2005 10:35:12
+       type code:     'APPL'
+       creator code:  'SAdv'
+       sys version:   10.3
+       flags:         relative-icon-path  ppc
+       item flags:    container  package  application  extension-hidden </pre>
+<p>native-app  scriptable</p>
+<pre>       icon:          Contents/Resources/Synergy Advance.icns
+       executable:    Contents/MacOS/Synergy Advance
+       inode:         20
+       exec inode:    280
+       container id:  1072
+       library:
+       library items:</pre>
+<p>--------------------------------------------------------------------------------</p>
+<p>after lsregister -kill -------------------------------------------------------------------------------- bundle  id:            34248</p>
+<pre>       path:          /Applications/Local/Synergy Advance.app
+       name:
+       identifier:    com.wincent.SynergyAdvance
+       version:       0.2
+       mod date:      7/26/2005 7:46:45
+       type code:     'APPL'
+       creator code:  'SAdv'
+       sys version:   10.3
+       flags:         relative-icon-path  ui-element  launch-disabled  ppc  i386
+       item flags:    container  package  application  extension-hidden </pre>
+<p>native-app  scriptable</p>
+<pre>       icon:          Contents/Resources/Synergy Advance.icns
+       executable:    Contents/MacOS/Synergy Advance
+       inode:         1803126
+       exec inode:    1803386
+       container id:  32
+       library:
+       library items:</pre>
+<p>--------------------------------------------------------------------------------</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2151'>
+<cite>
+<a href="/users/matthew-potter">Matthew Potter</a>
+<span class='when'><a href="#comment_2151"><time data-relative="true">2005-09-27T11:24:58Z</time></a></span>
+</cite>
+<blockquote><p>After trying both what was in the <a href="/issues/192">bug #192</a> and what I understood of what was written here I haven't  been able to solve the problem. There is something else too... When I check the plist for 'SA' I find:</p>
+<p>&#x0009;NoIconInDock &#x0009;</p>
+<p>something that to me would indicate that it shouldn't show in the dock (duh I know but wait!). I then  quit the application and relaunch it, revert the plist file and this line remains the same. Even with the  icon showing in the dock.</p>
+<p>the &quot;LSUIElement&quot; element does not appear in the file and if I add it, it just removes it on next boot.</p>
+<p>Running: 10.3.9, Dual 867MHz, 1GB 10.3.9, 600Mhz, 384MB</p>
+<p>Whole plist: &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;!DOCTYPE plist PUBLIC &quot;-//Apple Computer//DTD PLIST 1.0//EN&quot; &quot;<a href="http://www.apple.com/DTDs/" class="external">http://www.apple.com/DTDs/</a> PropertyList-1.0.dtd&quot;&gt;</p>
+<p>&#x0009;AnimateDockIcon &#x0009; &#x0009;AutoLaunchSynergyAdvanceWhenITunesIsLaunched &#x0009; &#x0009;HotKeyBackITunes &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;123 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;10223616 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesDecreaseRating &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;27 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;1835008 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesDecreaseVolume &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;125 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;10223616 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesIncreaseRating &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;24 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;1835008 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesIncreaseVolume &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;126 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;10223616 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesRateFiveStars &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;87 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;3932160 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesRateFourStars &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;86 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;3932160 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesRateOneStar &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;83 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;3932160 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesRateThreeStars &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;85 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;3932160 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesRateTwoStars &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;84 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;3932160 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyITunesRateZeroStars &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;82 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;3932160 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyNextITunes &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;124 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;10223616 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyPauseITunes &#x0009; &#x0009;HotKeyPlayITunes &#x0009; &#x0009;HotKeyPlayPauseITunes &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;49 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;1835008 &#x0009;&#x0009; &#x0009; &#x0009;HotKeyShowGrowlNotification &#x0009; &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;HotKeyCode &#x0009;&#x0009;&#x0009;44 &#x0009;&#x0009;&#x0009;HotKeyModifiers &#x0009;&#x0009;&#x0009;1835008 &#x0009;&#x0009; &#x0009; &#x0009;LSUIElement &#x0009;1 &#x0009;NSToolbar Configuration WOPreferencesWindow &#x0009; &#x0009;&#x0009;TB Display Mode &#x0009;&#x0009;1 &#x0009;&#x0009;TB Icon Size Mode &#x0009;&#x0009;1 &#x0009;&#x0009;TB Is Shown &#x0009;&#x0009;1 &#x0009;&#x0009;TB Item Identifiers &#x0009;&#x0009; &#x0009;&#x0009;&#x0009;ShowAll &#x0009;&#x0009;&#x0009;NSToolbarSeparatorItem &#x0009;&#x0009;&#x0009;General &#x0009;&#x0009;&#x0009;Growl &#x0009;&#x0009;&#x0009;Hot Keys &#x0009;&#x0009;&#x0009;Instant Messaging &#x0009;&#x0009;&#x0009;Registration &#x0009;&#x0009; &#x0009;&#x0009;TB Size Mode &#x0009;&#x0009;1 &#x0009; &#x0009;NSWindow Frame Preferences &#x0009;32 1025 591 122 0 0 1600 1178  &#x0009;NewVersionCheckFrequency &#x0009;1 &#x0009;NoIconInDock &#x0009; &#x0009;SendGrowlNotificationsWhenPlayerStateChanges &#x0009; &#x0009;ShowCoverArtInDockIcon &#x0009; &#x0009;ShowTrackProgressInDockIcon &#x0009;</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2152'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2152"><time data-relative="true">2005-09-27T21:31:58Z</time></a></span>
+</cite>
+<blockquote><p>Woah, a bit of clarification here; there are TWO files we're talking about. The one you've pasted in your  comment, Matthew, is the preferences file:</p>
+<p>~/Library/Preferences/com.wincent.SynergyAdvance.plist</p>
+<p>The entry in that file for &quot;NoIconInDock&quot; is just a record for the benefit of Synergy Advance so that it  knows whether or not the corresponding checkbox in the preference pane should be checked. The  default value for this setting is &quot;false&quot;, so if you delete your preferences file the setting will revert to  false. In fact, it won't even appear in the file because there's no point in recording settings that are just  left at their default value; it only records deviations from the default. If you toggle the setting to &quot;true&quot;  then and only then will Synergy Advance add it to the preferences file.</p>
+<p>Now, the other file we're talking about here is:</p>
+<p>SynergyAdvance.app/Contents/Info.plist</p>
+<p>This file is the one which Mac OS X is supposed to read at launch time and figure out whether or not to  show the dock icon. This file is the one where the setting of &quot;LSUIElement&quot; has effect. When you toggle  the setting in the preference pane Synergy Advance actually modifies this file. The &quot;LSUIElement&quot; which  is in your *preferences* file will have no effect at all.</p>
+<p>Now, those who are having problems here are actually getting bitten by a bug in Tiger. As shown by  Michael's contribution in comment #8 the Launch Services database is not getting updated as it should  (basically, Tiger is completely ignoring the LSUIElement setting). The work around is to force the Launch  Services database to update itself and re-read the Info.plist file. You can do this manually using the  &quot;lsregister&quot; command line tool, or you can just wait until I release the next version of Synergy Advance  (it now runs the lsregister tool at the appropriate times to correct any problems in the Launch Services  database; basically this means that even if the database has stale entries in it, Synergy Advance will fix  the appropriate entry and on the next launch the Dock icon will appear or not appear exactly as you  would expect).</p>
+<p>Adding &quot;fixed-in-prerelease&quot; keyword which I forgot to add last time.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2153'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2153"><time data-relative="true">2006-03-29T07:53:43Z</time></a></span>
+</cite>
+<blockquote><p>This fix is now available in the just-released version 0.4b. For more information:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php" class="external">http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

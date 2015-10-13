@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2073: Command-t misses folders
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2073</div>
+<div class='issue' id='issue_2073'>
+<form class="edit_issue" id="edit_issue_2073" action="/issues/2073" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="c2pSnrn+2VR4V9NzbIffielb8o8AVCkEVq6BBaF11lFHmOwpHnMDAaHb4IRdrow9XNmbswu4pxh2sVT7ha2xdQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2073:
+<span data-name='issue[summary]'>
+Command-t misses folders
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-03-24T14:00:26Z</time>, updated <time data-relative="true">2013-03-27T01:36:09Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have the following src directory layout:</p>
+<pre>tsd.common
+tsd.common.ini
+tsd.common.stm</pre>
+<p>etc.</p>
+<p>Under tsd.common in a subdirectory is a file located e.g. called Utf8String.hpp</p>
+<p>The problem is that command-t doesn't show tsd.common in the file list and, if i enter Utf8String.hpp, this file won't be found. Only the folders tsd.common.ini and tsd.common.stm are appearing in the list.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10184'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10184"><time data-relative="true">2013-03-24T18:06:28Z</time></a></span>
+</cite>
+<blockquote><p>Possible explanations:</p>
+<ul>
+<li>your <code>g:CommandTMaxFiles</code> setting (which defaults to 10,000) may be too low relative to the size of your project, which causes <a href="/wiki/Command-T">Command-T</a> to stop scanning files after it hits the limit</li>
+<li>if you have self-referential symlinks (ie. a circular dependency), this could cause Command-T to hit the <code>g:CommandTMaxFiles</code> limit before it's seen all the files in the project, because the same files end up appearing at different paths again and again and again...; this is like a bug in the project structure akin to an infinite loop in code</li>
+<li>your <a href="/wiki/Vim">Vim</a> <code>'wildignore'</code> setting might be excluding the files you're looking for</li>
+<li>the number of files in your project may be so large, and the paths so similar, that even though the match you're looking for is present, there are too many hits to fit in the visible area of the match listing; in this case the only fixes are to provide more characters in your query (to try to reduce the number of matches) or to increase the visible area of the match listing (with the <code>g:CommandTMaxHeight</code> setting)</li>
+</ul>
+<p>Some of the points above are addressed in <a href="http://git.wincent.com/command-t.git/blob_plain/HEAD:/doc/command-t.txt" class="external">the docs</a>, if you'd like to know more (see <code>:h CommandT</code>).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10186'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10186">Created <time data-relative="true">2013-03-25T09:28:12Z</time>, edited <time data-relative="true">2013-03-26T07:09:59Z</time></a></span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>thank you for the response. I already figured out to solve this problem. Increasing <code>g:CommandTMaxFiles</code> worked. I've &gt; 30000 files in the source project.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10187'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10187"><time data-relative="true">2013-03-27T01:36:06Z</time></a></span>
+</cite>
+<blockquote><p>Glad to hear you got it worked out.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10188'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10188"><time data-relative="true">2013-03-27T01:36:09Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

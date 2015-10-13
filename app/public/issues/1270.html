@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1270: Always redirect from rails.wincent.com to wincent.com
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1270</div>
+<div class='issue' id='issue_1270'>
+<form class="edit_issue" id="edit_issue_1270" action="/issues/1270" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="lkZUgmBHPqUWtcC0/wGJ5+gfXXhFbIItKKpO4M+zPimitOo1x8rk8M8580POKNpTXZ00RE6ADDEItZse62tZDQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1270:
+<span data-name='issue[summary]'>
+Always redirect from rails.wincent.com to wincent.com
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-06T11:41:44Z</time>, updated <time data-relative="true">2009-06-26T05:15:39Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>At the moment you can access this site via wincent.com or rails.wincent.com.</p>
+<p>wincent.com is the &quot;official&quot; address, and rails.wincent.com is the address I used during development before upgrading the Rails application to &quot;official&quot; status.</p>
+<p>After moving going live with the app on wincent.com I allowed rails.wincent.com to keep working seeing as there are already a lot of links in Google etc which point to the rails.wincent.com address.</p>
+<p>The problem, however, is if someone happens to be hitting the site via rails.wincent.com and they hit an uncached page, the page will be cached using rails.wincent.com as the address for all absolute links (and most of the links are absolute, not host-relative).</p>
+<p>From then on, people visiting the site via wincent.com will see cached content links which take them to rails.wincent.com. (The reverse is also true but doesn't matter as much seeing as anyone accessing via rails.wincent.com is already on an &quot;unofficial&quot; channel.)</p>
+<p>The problem here is that cookies are per domain, and if you're logged in via wincent.com then you won't be logged in via rails.wincent.com. I don't want to share cookies across all domains on the site; there are other specific domains such as the staging environment where I explicitly do <em>not</em> want cookies from the main site to be shared.</p>
+<p>So I am going to set up an automatic redirect at the nginx level from rails.wincent.com to wincent.com. In this way old links from external sites will still work, but I won't have these unwanted rails.wincent.com URLs appearing in the caches.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4411'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4411"><time data-relative="true">2009-04-06T11:41:50Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4735'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4735"><time data-relative="true">2009-06-26T04:59:41Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/1333">ticket #1333</a>, &quot;Duplicate entries in Atom feeds&quot;, one of the nastier consequences of the dual domain names.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4736'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4736"><time data-relative="true">2009-06-26T05:15:14Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is now done.</p>
+<p>As an example, these <a href="/wiki/URLs">URLs</a>:</p>
+<ul>
+<li><a href="https://rails.wincent.com/issues/1270" class="external">https://rails.wincent.com/issues/1270</a> (<a href="/wiki/HTTPS">HTTPS</a>)</li>
+<li><a href="http://rails.wincent.com/issues/1270" class="external">http://rails.wincent.com/issues/1270</a> (<a href="/wiki/HTTP">HTTP</a>)</li>
+</ul>
+<p>Now redirect to:</p>
+<ul>
+<li><a href="https://wincent.com/issues/1270" class="external">https://wincent.com/issues/1270</a></li>
+</ul>
+<p>Will mark as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4739'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4739"><time data-relative="true">2009-06-26T05:15:39Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #352: Update dialog gives no indication of what program needs updating
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #352</div>
+<div class='issue' id='issue_352'>
+<form class="edit_issue" id="edit_issue_352" action="/issues/352" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="RbaMRFl0kCZz8fr4OSl2ye52svTHFR4mKKi5d5hkT8VxRDLz/vlKc6p9yQ8IACV9W/TbyMz5kDoIt2yJvLwo4Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #352:
+<span data-name='issue[summary]'>
+Update dialog gives no indication of what program needs updating
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2006-01-23T10:56:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/barry-klawans">Barry Klawans</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I logged in this morning I was greeted with a titleless dialog that started out &quot;Version 2.4 (released Monday, January 23, 2006) is now available for download.&quot;  Nowhere in the dialog is the name &quot;Synergy&quot; used - I had no idea what was claiming to need update, which made me very reluctant to press the &quot;Update Now&quot; button.</p>
+<p>Change the wording of the update dialog to start out &quot;Version x.x of Synergy (released ...&quot;</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_2367'>
+<cite>
+<a href="/users/barry-klawans">Barry Klawans</a>
+<span class='when'><a href="#comment_2367"><time data-relative="true">2006-01-23T10:57:39Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=47) Screen shot of the Update dialog</p>
+<p>Here is a screen shot of the dialog</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2368'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2368"><time data-relative="true">2006-01-23T11:01:13Z</time></a></span>
+</cite>
+<blockquote><p>That's a bug... it's not supposed to look like that. You're supposed to see the Synergy icon in the dialog (in that blank space on the left) and the title bar is supposed to read, &quot;Synergy&quot;, from memory... I'm going to look into this and see if I can reproduce the fault. Has anybody else seen it?</p>
+<p>Just a question. What version were you running? 2.3?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2369'>
+<cite>
+<a href="/users/barry-klawans">Barry Klawans</a>
+<span class='when'><a href="#comment_2369"><time data-relative="true">2006-01-23T11:06:47Z</time></a></span>
+</cite>
+<blockquote><p>According to the pref pane, I'm running 2.1 - I must have missed 2.2 and 2.3.</p>
+<p>OS X 10.4.4 running on a 1.67 GHz 15&quot; PowerBook, in case that info helps.  1 Gig ram, using Growl.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2370'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2370"><time data-relative="true">2006-01-23T11:08:56Z</time></a></span>
+</cite>
+<blockquote><p>I also forgot to add: there's supposed to be a &quot;Later&quot; button in there too!</p>
+<p>And I've inspected the source code and refreshed my memory: the window title is supposed to be &quot;A new version of Synergy is available&quot;.</p>
+<p>Something very fishy going on there on your system. No changes have been made to that bit of the code for a long, long time (in fact, since it was first written). It's just a completely standard invocation of NSRunInformationalAlertPanel().</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2371'>
+<cite>
+<a href="/users/barry-klawans">Barry Klawans</a>
+<span class='when'><a href="#comment_2371"><time data-relative="true">2006-01-23T11:35:06Z</time></a></span>
+</cite>
+<blockquote><p>Odd.  Its a 6 months old system in good health, and I've never had any problems with it before.  One thing I forgot to add - I saw the dialog right after logging in immediately after a reboot.  Various background processes were still starting, so perhaps something at the UI Services layer wasn't fully initialized yet?</p>
+<p>On the other hand, I don't remember every seeing the 2.2 or 2.3 update notification, so maybe something more is wrong.  Any tests you want me to run?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2372'>
+<cite>
+<a href="/users/barry-klawans">Barry Klawans</a>
+<span class='when'><a href="#comment_2372"><time data-relative="true">2006-01-23T14:49:12Z</time></a></span>
+</cite>
+<blockquote><p>Wincent, any way I can fake an update being available to test again?  I had a lot of junk starting up (large PostgreSQL database, etc) last time, so I'm curious what will happen if I try it under normal circumstances.  There was a noticable delay between when the dialog came up and when the text appeared, etc.</p>
+<p>I have a DNS server I control, so I can set up a fake update server on my net, I can use a fake DNS server to point Synergy at it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2373'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2373"><time data-relative="true">2006-01-23T16:37:15Z</time></a></span>
+</cite>
+<blockquote><p>Well I don't think there are any tests you can run that would help. If you still have the old version of Synergy lying around you could re-install it and you'll see the dialog the next time the update check is performed.</p>
+<p>It is performed at launch time, and also at regular intervals depending on your settings. The FAQ tells how to turn the version check off or change its interval:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/faq/#versioncheck" class="external">http://wincent.com/a/products/synergy-classic/faq/#versioncheck</a></p>
+<p>The other thing you could do is just upgrade to 2.4 and see if the problem occurs in that version as well, but you'll have to wait for the next release (evidently there's no point in me exploring bugs in older versions, I can only really fix bugs in the current release). Simulating an update on the local network is possible but it would be pretty painful.</p>
+<p>I am inclined to think that this is unlikely to be a bug in Synergy itself (mostly because of the simplicity of the API in question) and was probably just caused by something transitorily buggy or flakey on your system. It doesn't necessarily mean you're system is corrupt; it is normal to occasionally see random or weird behaviour caused by any number of things (solar flares, sun spots, corrupt preferences files etc). </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2374'>
+<cite>
+<a href="/users/barry-klawans">Barry Klawans</a>
+<span class='when'><a href="#comment_2374"><time data-relative="true">2006-01-23T16:42:20Z</time></a></span>
+</cite>
+<blockquote><p>Sounds good.  I suspect you are right about it being something transitory.  I'll set this to &quot;Works for me&quot; for now, and see what happens when 2.5 comes out.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

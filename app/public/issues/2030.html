@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #2030: Update to Git 1.8.0.2
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #2030</div>
+<div class='issue' id='issue_2030'>
+<form class="edit_issue" id="edit_issue_2030" action="/issues/2030" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="6DE9B/MwioBGPJhyqE3Ocrp2o6CBlxrh0KC9g6SqRLXcw4OwVL1Q1Z+wq4WZZJ3GD/TKnIp7lP3wv2h9gHIjkQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #2030:
+<span data-name='issue[summary]'>
+Update to Git 1.8.0.2
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-11-26T22:51:31Z</time>, updated <time data-relative="true">2013-01-01T04:11:34Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From the official release announcement:</p>
+<pre>The latest maintenance release Git v1.8.0.1 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+4e7492f7558f3ba2a450c43efa7de3b0b1adc6c1  git-1.8.0.1.tar.gz
+6c0e64d53a8543447f595e3bac4966ba9257e783  git-htmldocs-1.8.0.1.tar.gz
+cb26eea4ebe53b41cbc5c5f430499f7d76605414  git-manpages-1.8.0.1.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.0.1
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.8.0.1 Release Notes
+==========================
+
+Fixes since v1.8.0
+------------------
+
+ * The configuration parser had an unnecessary hardcoded limit on
+   variable names that was not checked consistently.
+
+ * The &quot;say&quot; function in the test scaffolding incorrectly allowed
+   &quot;echo&quot; to interpret &quot;\a&quot; as if it were a C-string asking for a
+   BEL output.
+
+ * &quot;git mergetool&quot; feeds /dev/null as a common ancestor when dealing
+   with an add/add conflict, but p4merge backend cannot handle
+   it. Work it around by passing a temporary empty file.
+
+ * &quot;git log -F -E --grep='&lt;ere&gt;'&quot; failed to use the given &lt;ere&gt;
+   pattern as extended regular expression, and instead looked for the
+   string literally.
+
+ * &quot;git grep -e pattern &lt;tree&gt;&quot; asked the attribute system to read
+   &quot;&lt;tree&gt;:.gitattributes&quot; file in the working tree, which was
+   nonsense.
+
+ * A symbolic ref refs/heads/SYM was not correctly removed with &quot;git
+   branch -d SYM&quot;; the command removed the ref pointed by SYM
+   instead.
+
+ * Earlier we fixed documentation to hyphenate &quot;remote-tracking branch&quot;
+   to clarify that these are not a remote entity, but unhyphenated
+   spelling snuck in to a few places since then.
+
+ * &quot;git pull --rebase&quot; run while the HEAD is detached tried to find
+   the upstream branch of the detached HEAD (which by definition
+   does not exist) and emitted unnecessary error messages.
+
+ * The refs/replace hierarchy was not mentioned in the
+   repository-layout docs.
+
+ * Sometimes curl_multi_timeout() function suggested a wrong timeout
+   value when there is no file descriptors to wait on and the http
+   transport ended up sleeping for minutes in select(2) system call.
+   A workaround has been added for this.
+
+ * Various rfc2047 quoting issues around a non-ASCII name on the
+   From: line in the output from format-patch have been corrected.
+
+ * &quot;git diff -G&lt;pattern&gt;&quot; did not honor textconv filter when looking
+   for changes.
+
+ * Bash completion script (in contrib/) did not correctly complete a
+   lazy &quot;git checkout $name_of_remote_tracking_branch_that_is_unique&quot;
+   command line.
+
+ * RSS feed from &quot;gitweb&quot; had a xss hole in its title output.
+
+ * &quot;git config --path $key&quot; segfaulted on &quot;[section] key&quot; (a boolean
+   &quot;true&quot; spelled without &quot;=&quot;, not &quot;[section] key = true&quot;).
+
+ * &quot;git checkout -b foo&quot; while on an unborn branch did not say
+   &quot;Switched to a new branch 'foo'&quot; like other cases.
+
+Also contains other minor fixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.8.0 are as follows:
+
+Andreas Schwab (1):
+      commit: fixup misplacement of --no-post-rewrite description
+
+Ben Walton (1):
+      Remove the hard coded length limit on variable names in config files
+
+Carlos Mart&#x00ed;n Nieto (1):
+      config: don't segfault when given --path with a missing value
+
+David Aguilar (1):
+      mergetools/p4merge: Handle &quot;/dev/null&quot;
+
+Jan H. Sch&#x00f6;nherr (7):
+      utf8: fix off-by-one wrapping of text
+      format-patch: do not wrap non-rfc2047 headers too early
+      format-patch: do not wrap rfc2047 encoded headers too late
+      format-patch: introduce helper function last_line_length()
+      format-patch: make rfc2047 encoding more strict
+      format-patch: fix rfc2047 address encoding with respect to rfc822 specials
+      format-patch tests: check quoting/encoding in To: and Cc: headers
+
+Jeff King (3):
+      diff_grep: use textconv buffers for add/deleted files
+      gitweb: escape html in rss title
+      checkout: print a message when switching unborn branches
+
+Junio C Hamano (9):
+      builtin/grep.c: make configuration callback more reusable
+      grep: move the configuration parsing logic to grep.[ch]
+      grep: move pattern-type bits support to top-level grep.[ch]
+      revisions: initialize revs-&gt;grep_filter using grep_init()
+      log --grep: use the same helper to set -E/-F options as &quot;git grep&quot;
+      test-lib: Fix say_color () not to interpret \a\b\c in the message
+      Start preparing for 1.8.0.1
+      Further preparation for 1.8.0.1
+      Git 1.8.0.1
+
+Marc Khouzam (1):
+      Completion must sort before using uniq
+
+Matthieu Moy (2):
+      Documentation: remote tracking branch -&gt; remote-tracking branch
+      Document 'git commit --no-edit' explicitly
+
+Michael J Gruber (1):
+      push/pull: adjust missing upstream help text to changed interface
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (1):
+      grep: stop looking at random places for .gitattributes
+
+Phil Hord (1):
+      git-pull: Avoid merge-base on detached head
+
+Philip Oakley (1):
+      Doc repository-layout: Show refs/replace
+
+Ren&#x00e9; Scharfe (6):
+      refs: lock symref that is to be deleted, not its target
+      branch: factor out check_branch_commit()
+      branch: factor out delete_branch_config()
+      branch: delete symref branch, not its target
+      branch: skip commit checks when deleting symref branches
+      branch: show targets of deleted symrefs, not sha1s
+
+Romain Francoise (1):
+      mailmap: avoid out-of-bounds memory access
+
+Stefan Zager (1):
+      Fix potential hang in https handshake</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10064'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10064"><time data-relative="true">2012-12-11T10:06:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.8.0.1</li>
+<li><strong>To:</strong> Update to Git 1.8.0.2</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10065'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10065"><time data-relative="true">2012-12-11T10:06:18Z</time></a></span>
+</cite>
+<blockquote><pre>The latest maintenance release Git v1.8.0.2 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+1e1640794596da40f35194c29a8cc4e41c6b4f6d  git-1.8.0.2.tar.gz
+6b9e14c5b19b2e27605014252febd61a700012a3  git-htmldocs-1.8.0.2.tar.gz
+ce0673256ce90451269a82a2464eab060adbfec6  git-manpages-1.8.0.2.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.0.2
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.8.0.2 Release Notes
+==========================
+
+Fixes since v1.8.0.1
+--------------------
+
+ * Various codepaths have workaround for a common misconfiguration to
+   spell &quot;UTF-8&quot; as &quot;utf8&quot;, but it was not used uniformly.  Most
+   notably, mailinfo (which is used by &quot;git am&quot;) lacked this support.
+
+ * We failed to mention a file without any content change but whose
+   permission bit was modified, or (worse yet) a new file without any
+   content in the &quot;git diff --stat&quot; output.
+
+ * When &quot;--stat-count&quot; hides a diffstat for binary contents, the total
+   number of added and removed lines at the bottom was computed
+   incorrectly.
+
+ * When &quot;--stat-count&quot; hides a diffstat for unmerged paths, the total
+   number of affected files at the bottom of the &quot;diff --stat&quot; output
+   was computed incorrectly.
+
+ * &quot;diff --shortstat&quot; miscounted the total number of affected files
+   when there were unmerged paths.
+
+ * &quot;git p4&quot; used to try expanding malformed &quot;$keyword$&quot; that spans
+   across multiple lines.
+
+ * &quot;git update-ref -d --deref SYM&quot; to delete a ref through a symbolic
+   ref that points to it did not remove it correctly.
+
+ * Syntax highlighting in &quot;gitweb&quot; was not quite working.
+
+Also contains other minor fixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.8.0.1 are as follows:
+
+Antoine Pelisse (1):
+      Fix typo in remote set-head usage
+
+Eric S. Raymond (1):
+      doc/fast-import: clarify how content states are built
+
+Johan Herland (2):
+      t1400-update-ref: Add test verifying bug with symrefs in delete_ref()
+      Fix failure to delete a packed ref through a symref
+
+Junio C Hamano (13):
+      reencode_string(): introduce and use same_encoding()
+      test: add failing tests for &quot;diff --stat&quot; to t4049
+      diff --stat: status of unmodified pair in diff-q is not zero
+      diff --stat: use &quot;file&quot; temporary variable to refer to data-&gt;files[i]
+      diff --stat: move the &quot;total count&quot; logic to the last loop
+      diff --stat: do not count &quot;unmerged&quot; entries
+      diff --shortstat: do not count &quot;unmerged&quot; entries
+      Documentation/git-push.txt: clarify the &quot;push from satellite&quot; workflow
+      Start preparing for 1.8.0.2
+      t4049: refocus tests
+      Update draft release notes to 1.8.0.2
+      git(1): remove a defunct link to &quot;list of authors&quot;
+      Git 1.8.0.2
+
+Linus Torvalds (1):
+      Fix &quot;git diff --stat&quot; for interesting - but empty - file changes
+
+Mark Szepieniec (1):
+      Documentation: improve phrasing in git-push.txt
+
+Matthieu Moy (2):
+      git-remote-mediawiki: escape &quot;, \, and LF in file names
+      git-fast-import.txt: improve documentation for quoted paths
+
+Nguy&#x00e1;&#x00bb;&#x2026;n Th&#x00c3;&#x00a1;i Ng&#x00e1;&#x00bb;&#x008d;c Duy (1):
+      compat/fnmatch: fix off-by-one character class's length check
+
+Paul Gortmaker (1):
+      Makefile: hide stderr of curl-config test
+
+Pete Wyckoff (1):
+      git p4: RCS expansion should not span newlines
+
+Ralf Thielow (1):
+      completion: add options --single-branch and --branch to &quot;git clone&quot;
+
+Richard Hubbell (1):
+      gitweb.perl: fix %highlight_ext mappings
+
+S&#x00c3;&#x00a9;bastien Loriot (1):
+      Documentation/git-stash.txt: add a missing verb
+
+W. Trevor King (1):
+      git-submodule: wrap branch option with &quot;&lt;&gt;&quot; in usage strings.</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10074'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10074"><time data-relative="true">2013-01-01T04:11:24Z</time></a></span>
+</cite>
+<blockquote><p>Closing in favor of <a href="/issues/2044">ticket #2044</a> (&quot;Update to Git 1.8.1&quot;).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10075'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10075"><time data-relative="true">2013-01-01T04:11:34Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

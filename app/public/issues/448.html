@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #448: Integrate WODebug crash reports into Rails backend
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #448</div>
+<div class='issue' id='issue_448'>
+<form class="edit_issue" id="edit_issue_448" action="/issues/448" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="U0+/S/nNYk0iYbcQeXjyfQklr6EI0l/9OAERSLsyNkJnvQH8XkC4GPvthOdIUaHJvKfGnQM+0eEYHsS2n+pRZg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #448:
+<span data-name='issue[summary]'>
+Integrate WODebug crash reports into Rails backend
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WODebug
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-07-22T04:36:33Z</time>, updated <time data-relative="true">2009-04-07T04:11:23Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Taking <a href="/issues/446">request #446</a> one step further, it would be nice to integrate crash reports submitted by XML-RPC into the Rails backend. They could be automatically added to the bug reports database.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4417'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4417"><time data-relative="true">2009-04-07T03:42:23Z</time></a></span>
+</cite>
+<blockquote><p><strong>Public</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> false</li>
+<li><strong>To:</strong> true</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4418'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4418"><time data-relative="true">2009-04-07T03:42:49Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> REQUEST: Integrate crash reports into Rails backend</li>
+<li><strong>To:</strong> Integrate WODebug crash reports into Rails backend</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4421'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4421"><time data-relative="true">2009-04-07T04:03:44Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so the website is already able to accept new issues via an XML POST request, but I wonder if it might be better to accept crash reports as attachments rather than as inline content in the description field.</p>
+<p>I think seeing it in the description field is nicer in some ways, but given that this site expects <a href="/wiki/wikitext">wikitext</a> input it means we'd have to enclose the submitted report in &quot;pre&quot; tags and that in itself might look a bit strange. So will have to weigh this up and think about which approach will be the best.</p>
+<p>See also:</p>
+<ul>
+<li><a href="/issues/1193">Ticket #1193</a> on file attachments.</li>
+<li><a href="/issues/208">Ticket #208</a> on in-app bug reporting (not crash reporting).</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4423'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4423"><time data-relative="true">2009-04-07T04:06:34Z</time></a></span>
+</cite>
+<blockquote><p>Going to change the product assignment seeing as most of the work has to be done in WODebug. The portin which (might) have to be done on the server side is probably already covered by <a href="/issues/1193">ticket #1193</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4424'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4424"><time data-relative="true">2009-04-07T04:06:40Z</time></a></span>
+</cite>
+<blockquote><p><strong>Product</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> wincent.com</li>
+<li><strong>To:</strong> WODebug</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4425'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4425"><time data-relative="true">2009-04-07T04:11:23Z</time></a></span>
+</cite>
+<blockquote><pre>$ cat crash_report.xml 
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+&lt;issue&gt;
+  &lt;summary&gt;Crash report&lt;/summary&gt;
+  &lt;product_id&gt;1&lt;/product_id&gt;
+  &lt;description&gt;Well, it don't work&lt;/description&gt;
+&lt;/issue&gt;
+$ curl -d @crash_report.xml -k <a href="https://localhost:3002/issues.xml" class="external">https://localhost:3002/issues.xml</a>
+&lt;html&gt;&lt;body&gt;You are being &lt;a href=&quot;<a href="https://localhost:3002/issues/29" class="external">https://localhost:3002/issues/29</a>&quot;&gt;redirected&lt;/a&gt;.&lt;/body&gt;&lt;/html&gt;</pre>
+<p>So it works already but there are a couple of possible changes I might want to make:</p>
+<ul>
+<li>require some kind of basic (weak) authentication to protect against trivial (non-serious) spam attacks</li>
+<li>specifically handle the redirect: ie. show it to the user in the <a href="/wiki/UI">UI</a> so that they can track the issue if they want</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

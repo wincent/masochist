@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Some album artwork not showing in 1.8
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Some album artwork not showing in 1.8</div>
+<h1 class='major'>Some album artwork not showing in 1.8</h1>
+<div class='topic' id='topic_88'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/magnetikal">Magnetikal</a>
+<span class='when'>
+<a href="/forums/synergy/topics/88"><time data-relative="true">2005-04-15T05:11:24Z</time></a>
+</span>
+</cite>
+<blockquote><p>Since upgrading to Synergy 1.8, some tracks that used to show album artwork are no longer showing it. None of my artwork is embedded in my music files, it's all in the Album Covers folder. It seems that for tracks with a composer, Synergy looks for artwork using the composer field, or possibly the artist + composer field. For hip hop music, I use the composer field to indicate the producer of the track (composer is the closest match - the producer composes the music behind the vocals). So I have lots of tracks with artists + composers that are now no longer showing artwork, where they used to previously.</p>
+<p>Also, I noticed a bug in the floater display - when both artist and composer are present, there is no space between the artist's name and the composer's name.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_293'>
+<cite>
+<a href="/users/magnetikal">Magnetikal</a>
+<span class='when'><a href="#comment_293"><time data-relative="true">2005-04-15T05:13:21Z</time></a></span>
+</cite>
+<blockquote><p>Nix that last part - I just saw you've already fixed the &quot;no space&quot; bug for the next release.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_294'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_294"><time data-relative="true">2005-04-15T15:18:11Z</time></a></span>
+</cite>
+<blockquote><p>There is a bug report for this open in the bug database:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=173" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=173</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_295'>
+<cite>
+<a href="/users/david">David</a>
+<span class='when'><a href="#comment_295"><time data-relative="true">2005-04-15T17:20:07Z</time></a></span>
+</cite>
+<blockquote><p>About this bug; Synergy will not find the artwork under this new scheme in the case where the songs on the album have different composers it seems. Each time a song plays, the group essentially has a different name: Band(composer 1) Band(composer 2) I've been waiting all day for art to be found again, and it's only failing where this composer info is being shown. (It also doesn't make sense to look for new artwork for every song on a track.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_296'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_296"><time data-relative="true">2005-04-16T07:08:17Z</time></a></span>
+</cite>
+<blockquote><p>You're right that it doesn't make sense to look for new artwork for every song on an album. This is a problem that Synergy has always had. How does it know &quot;what is an album&quot;? It can only assume that if a track has the same album title and the same artist then it is the same album. This has caused problems for compilation albums because the artists are often different. In this case, Synergy should ignore the artist name and perform the comparison on the basis of album name only.</p>
+<p>But there are other problems with that idea because some people have different art embedded in tracks even though they are in the same album... For this reason I am going to implement some preferences in Synergy Advance so people can choose how their art gets managed (ie. the strategy used for identify what is an album).</p>
+<p>The 1.8 release of Synergy does exacerbate this problem because composer is now part of the cover art identifier. As you've pointed out you'll see this when a band has different composers for tracks on the same album.</p>
+<p>I do appreciate the comments but given the comments should really go in the bug database so that all the information relating to the problem is in one place. I'm going to lock this thread. Please add any additional comments there.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

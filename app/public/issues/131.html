@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #131: Lengthy hangs without an internet connection
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #131</div>
+<div class='issue' id='issue_131'>
+<form class="edit_issue" id="edit_issue_131" action="/issues/131" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Nkegg2iqNS4OnBEDx7cd4uN+fJC9kEpzargwF4Vha88CtR40zyfve9cQIvT2nk5WVvwVrLZ8xG9Kp+XpobkM6w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #131:
+<span data-name='issue[summary]'>
+Lengthy hangs without an internet connection
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-03-08T19:35:35Z</time>, updated <time data-relative="true">2005-03-13T02:24:35Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/eerk">Eerk</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This is a bug I have hoped to be resolved for several versions now, but it seems not to happen.  Therefore a try at a report. Being forced to a slow and expensive dial-up internet connection in this part of the Netherlands, I try to  keep internet connections as short as possible. Just to get some album covers I switched on the option  to show them in the floater and jumped through songs for half an hour to get their album art in (seems  my musical taste is not main stream, for just a few albums made it in ;-) All was fine: Synergy was responsive and keyboard requests for next and previous songs worked as  advertised (Sidestep: as reported by someone else, the art is not displayed in the floater without  switching back and forth the currently playing song). But then I disconnected my internet connection and switched off any setting that in my opinion could  have anything to do with that connection, including _not_ displaying album covers in the floater  anymore. And that's when the 'hanging' starts. Any change in songs takes up to a minute to be reflected. Just two  examples: changes to the button set are reflected in this menu only after minutes and finally clicking  'Stop Synergy' took the same amount of time. All this time, hovering the mouse above the Synergy  menu shows a spinning beach ball 9 out of 10 times. This bug has been around for as long as I remember (I started using Synergy around version 1.0).  Because most of my computer time is spent off-line, this bug has forced me (unfortunately) to switch  off Synergy once again. That's not what I want, the functionality is great, so if you can guide me to  some tests that could clarify this bug, I am happy to work with you in this.</p>
+<p>With kind regards,</p>
+<p>Eerk Hofmeester.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_1629'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_1629"><time data-relative="true">2005-03-08T19:39:01Z</time></a></span>
+</cite>
+<blockquote><p>An additional note that is possibly related: starting my computer definitely takes much (a minute or so)  longer when Synergy is switched on at log-in. I tried restarting after switching off Synergy at log-in and  the startup process was as expected.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1630'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1630"><time data-relative="true">2005-03-08T21:10:40Z</time></a></span>
+</cite>
+<blockquote><p>What's the effect of the setting (in the Advanced tab of the Synergy preferences), &quot;Initiate connections to  the Internet automatically when required (may cause Synergy to initiate a dial-up connection)&quot;?</p>
+<p>Is it on, or off? What happens when you switch it?</p>
+<p>I am not looking at the source code right now, but from memory Synergy uses the  SCNetworkCheckReachabilityByName API (or a similar one in the SCNetwork group) to check whether or  not a host is reachable. The docs don't say anything about possible delays, but if the call to that API is  causing the delay, I might have to move it into a separate thread.</p>
+<p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1631'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_1631"><time data-relative="true">2005-03-08T23:59:47Z</time></a></span>
+</cite>
+<blockquote><p>Hello Wincent,</p>
+<p>Thanks for the quick reply. The option &quot;Initiate connections etc.&quot; is off. It  is one of the options I mentioned I have switched off after quiting the album  download (and therefore the internet connection).</p>
+<p>Give me a minute...</p>
+<p>I just did an interesting test: switching the internet connection off (with  album artwork visible in the floater) is no problem untill I switch to a song  that has _iTunes_ artwork connected to it. Switching back and forth between  songs that have no or Synergy artwork connected, is no problem. Lag time is  about 30 to 40 seconds before any response of Synergy comes back. When I switch  the internet connection back on (because I wanted to send in this form) the  response times are back to normal. Seems looking up (and finding) iTunes  artwork causes this.</p>
+<p>Hope this helps,</p>
+<p>Eerk Hofmeester.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1632'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_1632"><time data-relative="true">2005-03-09T00:10:46Z</time></a></span>
+</cite>
+<blockquote><p>Hello Wincent,</p>
+<p>Yet another comment after testing further: this won't help I'm afraid, but the  lag time also occurs with the album art switched off. Also my previous  suggestion seems to be only half true. When switching to songs that have no  iTunes artwork the lag can also occur. Only advantage is, is that my collection  of Synergy artwork is growing steadily with all this on-line testing ;-)</p>
+<p>Kind regards, Eerk Hofmeester.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1633'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_1633"><time data-relative="true">2005-03-09T01:06:43Z</time></a></span>
+</cite>
+<blockquote><p>Just timed the lag time: it's exactly 60 seconds. Regards, Eerk.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1634'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1634"><time data-relative="true">2005-03-12T06:18:55Z</time></a></span>
+</cite>
+<blockquote><p>Ok. I believe I've fixed this. I am sending you a test build to your email address. Please let me know if it  cures the problems.</p>
+<p>There are two reasons why Synergy would connect to the net: (1) automatic version checking, and (2)  Amazon searching. In the former case, Synergy first needs to know if the host us.wincent.com is  reachable, and in the latter, whether xml.amazon.com is reachable.</p>
+<p>I think the problem lay in the calls to the SCNetworkCheckReachabilityByName API. My interpretation of  the docs was that if there was no net connection then the function would just return immediately and  say &quot;not reachable&quot;. But the fact that you see an exactly 60 second delay implies that it's getting up to  some other mischief. Perhaps it's doing DNS lookups that are timing out or something.</p>
+<p>In any case, I've done a bit of refactoring and moved the reachability checks for both situations (1) and  (2) into separate threads. This means there should be no more delays.</p>
+<p>Can you please test out the build? I will email it to you in a minute or two, after I've finished posting this  comment. I'd like to know if it fixes the delays, if the &quot;Initiate connections to the Internet automatically  when required&quot; checkbox works properly, and if your album cover downloads etc continue to work. I've  done as much testing as I can here, and it seems to all work. But seeing as I never had the delays (I've  got an always-on ADSL connection) I will only know for sure that it's fixed if you can confirm it for me.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1635'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_1635"><time data-relative="true">2005-03-12T09:18:06Z</time></a></span>
+</cite>
+<blockquote><p>Hello Wincent,</p>
+<p>Just received the build per e-mail. It's a little late now, but I will test it  first thing when I startup my Mac again somewhere this weekend. Thanks for the  quick work on this!</p>
+<p>Regards, Eerk.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1636'>
+<cite>
+<a href="/users/eerk">Eerk</a>
+<span class='when'><a href="#comment_1636"><time data-relative="true">2005-03-13T00:07:42Z</time></a></span>
+</cite>
+<blockquote><p>Hello Wincent,</p>
+<p>SUCCES! I installed 'my' 1.7.1 version and couldn't get it to lag, with or  without a connection. Some additional artwork came in, so the connection (when  available) is still used correctly. Just to be sure, I re-installed the  original 1.7.1 version and sure enough, within seconds after going to a new  song, the spinning beach ball was back. Installed the fixed 1.7.1 and all is  well again. It seems your trick did it!</p>
+<p>I think you can safely post 1.7.2 on the web.</p>
+<p>Working with this version so intensely I came up with another wish for the  list. I will post it in a separate thread.</p>
+<p>Cheers and thanks a lot for your quick fix!</p>
+<p>Eerk Hofmeester</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1637'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1637"><time data-relative="true">2005-03-13T02:19:33Z</time></a></span>
+</cite>
+<blockquote><p>Excellent news. Glad to hear the fix works. Marked as FIXED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1638'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1638"><time data-relative="true">2005-03-13T02:24:35Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+<p>Note to everyone else: If you're suffering from this bug and want to use the build that fixes it, you can  pull it down from here:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7.1-20050411.dmg" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy1.7.1-20050411.dmg</a> </p>
+<p>MD5 checksum: e632d092a5dbaec849d98c5f877a525a</p>
+<p>This is not an official release. It's identical in every way to the 1.7.1 release, apart from the fix. The fix  will be officially released when 1.8 comes out (later this month, if my current schedule works out).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

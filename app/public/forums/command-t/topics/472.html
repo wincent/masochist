@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Could not load the C extension Symbol not found: _rb_cObject
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Could not load the C extension Symbol not found: _rb_cObject</div>
+<h1 class='major'>Could not load the C extension Symbol not found: _rb_cObject</h1>
+<div class='topic' id='topic_472'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/472"><time data-relative="true">2011-05-16T11:29:30Z</time></a>
+</span>
+</cite>
+<blockquote><p>I got the &quot;command-t.vim could not load the C extension&quot; error and I followed <a href="https://wincent.com/forums/command-t/topics/427" class="external">https://wincent.com/forums/command-t/topics/427</a> tried to </p>
+<pre>:ruby p(require 'command-t/ext')</pre>
+<p>then I got this error msg:</p>
+<pre>
+LoadError: /Users/cat/.vim/bundle/command-t/ruby/command-t/ext.bundle: dlopen(/User
+s/cat/.vim/bundle/command-t/ruby/command-t/ext.bundle, 9): Symbol not found: _rb_cObject</pre>
+<p>Here's my vim version</p>
+<pre>
+:version
+VIM - Vi IMproved 7.3 (2010 Aug 15, compiled May 16 2011 18:29:58)
+MacOS X (unix) version
+Included patches: 1-189
+Compiled by cat@hsatac.net
+Normal version without GUI.  Features included (+) or not (-):
+-arabic +autocmd -balloon_eval -browse +builtin_terms +byte_offset +cindent
+-clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments
+-conceal +cryptv -cscope +cursorbind +cursorshape +dialog_con +diff +digraphs -dnd
+ -ebcdic -emacs_tags +eval +ex_extra +extra_search -farsi +file_in_path
++find_in_path +float +folding -footer +fork() -gettext -hangul_input -iconv
++insert_expand +jumplist -keymap -langmap +libcall +linebreak +lispindent
++listcmds +localmap -lua +menu +mksession +modify_fname +mouse -mouseshape
+-mouse_dec -mouse_gpm -mouse_jsbterm -mouse_netterm -mouse_sysmouse +mouse_xterm
+-multi_byte +multi_lang -mzscheme +netbeans_intg -osfiletype +path_extra -perl
++persistent_undo +postscript +printer -profile +python -python3 +quickfix +reltime
+ -rightleft +ruby +scrollbind +signs +smartindent -sniff +startuptime +statusline
+-sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white -tcl +terminfo
++termresponse +textobjects +title -toolbar +user_commands +vertsplit +virtualedit
++visual +visualextra +viminfo +vreplace +wildignore +wildmenu +windows
++writebackup -X11 -xfontset -xim -xsmp -xterm_clipboard -xterm_save
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/usr/local/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H   -DMACOS_X_UNIX -no-cpp-precomp  -
+g -O2 -D_FORTIFY_SOURCE=1
+Linking: gcc   -L. -L/usr/local/Cellar/readline/6.1/lib  -L/usr/local/lib -o vim
+    -lm -lncurses  -framework Cocoa     -framework Python   -lruby-static -lobjc  -
+L/usr/local/Cellar/ruby-enterprise-edition/2011.03/lib
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6873'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6873"><time data-relative="true">2011-05-16T16:47:17Z</time></a></span>
+</cite>
+<blockquote><p>Probably a mismatch between the version of Ruby used to build Command-T, and the version used when building Vim.</p>
+<p>Looks like it can't find the library at runtime, perhaps because your Vim links statically against the static version of the library, and the extension is trying to load it dynamically. Don't know whether there is some other build flag you could have supplied to avoid this, or if it's a consequence of using REE.</p>
+<p>So you can either play with your build settings trying to get it to work, or go with a known-working combination such as the system Ruby for both Vim and Command-T.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

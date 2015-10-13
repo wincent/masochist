@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1681: Update to Ruby 1.9.2
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1681</div>
+<div class='issue' id='issue_1681'>
+<form class="edit_issue" id="edit_issue_1681" action="/issues/1681" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ykUm4c1rZjJd/pCbLfMhr22Z5/YtfH6E5FnsLG+nmvf+t5hWaua8Z4Ryo2wc2nIb2BuOyiaQ8JjERjnSS3/90w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1681:
+<span data-name='issue[summary]'>
+Update to Ruby 1.9.2
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-09-03T16:38:30Z</time>, updated <time data-relative="true">2011-09-05T10:03:12Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>No plans on moving to 1.9.2 on my production server any time soon, but I would at least like to get the spec suite running and passing under 1.9.2 and keep it that way.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6667'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6667"><time data-relative="true">2011-02-01T23:49:53Z</time></a></span>
+</cite>
+<blockquote><p>Just playing with Ruby 1.9.2-p136 now via <a href="/wiki/RVM">RVM</a> to see if I can get the Rails app to boot and the spec suite to run and pass.</p>
+<p>Some light reading:</p>
+<ul>
+<li>&quot;Ruby 1.9 &amp; Rails 3.0&quot;: <a href="http://www.metabates.com/2010/02/08/ruby-1-9-rails-3-0/" class="external">http://www.metabates.com/2010/02/08/ruby-1-9-rails-3-0/</a></li>
+<li>&quot;How to Make Your Rails 2.3 App Work with Ruby 1.9&quot;: <a href="http://scottiestech.info/2010/12/16/how-to-make-your-rails-2-3-app-work-with-ruby-1-9/" class="external">http://scottiestech.info/2010/12/16/how-to-make-your-rails-2-3-app-work-with-ruby-1-9/</a></li>
+<li>&quot;Transitioning a Rails app to Ruby 1.9.1&quot;: <a href="http://myblog.rsynnott.com/2010/03/transitioning-rails-app-to-ruby-191.html" class="external">http://myblog.rsynnott.com/2010/03/transitioning-rails-app-to-ruby-191.html</a></li>
+</ul>
+<p>Looks like our first show-stopper is going to be the linecache gem (last updated 12 June 2008); during running:</p>
+<pre class="shell-syntax">$ rvm use 1.9.2
+$ gem install --pre rails # get 3.0.4.rc1
+$ bundle install</pre>
+<p>We die at:</p>
+<pre>Installing linecache (0.43) with native extensions /Users/wincent/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:529:in `rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
+
+        /Users/wincent/.rvm/rubies/ruby-1.9.2-p136/bin/ruby extconf.rb 
+Can't handle 1.9.x yet
+*** extconf.rb failed ***</pre>
+<p>linecache is getting pulled in by ruby-debug; excerpt from the <code>Gemfile.lock</code>:</p>
+<pre>    ruby-debug (0.10.4)
+      columnize (&gt;= 0.1)
+      ruby-debug-base (~&gt; 0.10.4.0)
+    ruby-debug-base (0.10.4)
+      linecache (&gt;= 0.3)</pre>
+<p>According to <a href="http://stackoverflow.com/questions/1083451/debugging-in-ruby-1-9" class="external">this post</a> there is a specific version of the ruby-debug gem for 1.9, called ruby-debug19, so updating my <code>Gemfile</code> to include:</p>
+<pre class="ruby-syntax">group :development do
+  gem 'ruby-debug19'
+end</pre>
+<p>And that fixes the linecache thing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6668'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6668"><time data-relative="true">2011-02-01T23:55:06Z</time></a></span>
+</cite>
+<blockquote><p>Next thing to explode is mongrel:</p>
+<pre>Installing mongrel (1.1.5) with native extensions /Users/wincent/.rvm/rubies/ruby-1.9.2-p136/lib/ruby/site_ruby/1.9.1/rubygems/installer.rb:529:in `rescue in block in build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)</pre>
+<p><a href="http://isitruby19.com/mongrel" class="external">Looks like</a> 1.2.0.pre2 is needed. So, <code>Gemfile</code> update:</p>
+<pre class="ruby-syntax">  gem 'mongrel', '&gt;= 1.2.0.pre2', :require =&gt; nil</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6669'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6669"><time data-relative="true">2011-02-01T23:58:54Z</time></a></span>
+</cite>
+<blockquote><p>With that, <code>bundle install</code> succeeds and the server (<code>rails s</code>) boots.</p>
+<p>One warning to address:</p>
+<pre>app/helpers/tags_helper.rb:60: warning: else without rescue is useless</pre>
+<p>And requests die with:</p>
+<pre>TypeError (can't convert Pathname to String):
+  app/mailers/exception_mailer.rb:25:in `escape'
+  app/mailers/exception_mailer.rb:25:in `pretty_backtrace'
+  app/mailers/exception_mailer.rb:12:in `exception_report'
+  lib/exception_reporter.rb:67:in `report_exception'
+  lib/exception_reporter.rb:12:in `rescue in call'
+  lib/exception_reporter.rb:9:in `call'
+  lib/cache_friendly_flash.rb:30:in `call'</pre>
+<p>I've seen this kind of Pathname-related failure before on other projects under 1.9.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6670'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6670"><time data-relative="true">2011-02-02T00:11:40Z</time></a></span>
+</cite>
+<blockquote><p>Ouch, after adding <code>.to_s</code> on some <code>Pathname</code> instances to avoid the <code>TypeError</code> the <a href="/wiki/Ruby">Ruby</a> interpreter itself crashes (first part of absolutely enormous debug dump):</p>
+<pre>/Users/wincent/.rvm/gems/ruby-1.9.2-p136/gems/activesupport-3.0.4.rc1/lib/active_support/dependencies.rb:239: [BUG] rb_gc_mark(): unknown data type 0x10(0x103b97750) non object
+ruby 1.9.2p136 (2010-12-25 revision 30365) [x86_64-darwin10.6.0]
+...</pre>
+<p>Probably gonna defer this little experiment for now then.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6671'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6671"><time data-relative="true">2011-02-02T00:13:54Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6672'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6672"><time data-relative="true">2011-02-02T00:31:04Z</time></a></span>
+</cite>
+<blockquote><p>Note to self, to get back to 1.8.7 after this kind of experiment it is not enough to do <code>rvm use system</code>, because RVM wipes out the <code>BUNDLE_PATH</code> environment variable.</p>
+<p>You need to restore the environment, probably easiest to do so by just starting another login session. Then <code>bundle install</code> to repopulate the <code>BUNDLE_PATH</code> again.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6885'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6885"><time data-relative="true">2011-05-23T03:27:17Z</time></a></span>
+</cite>
+<blockquote><p>It's official: <a href="/wiki/Rails">Rails</a> 4.0 will <a href="http://weblog.rubyonrails.org/2011/5/22/rails-3-1-release-candidate" class="external">drop support for Ruby 1.8.x</a>, so there's your deadline for moving.</p>
+<p>When will 4.0 be here? Guessing probably about a year from now, either close to RailsConf 2012 or soon after it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7081'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7081"><time data-relative="true">2011-09-05T00:55:57Z</time></a></span>
+</cite>
+<blockquote><p>Revisiting now. Things are looking promising.</p>
+<p>Clicking around site under 1.9.2 I can't see any problems. Test suite runs and completes; still a number of failures to fix, but I don't see anything that looks like being a deal-breaker.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7082'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7082"><time data-relative="true">2011-09-05T02:43:59Z</time></a></span>
+</cite>
+<blockquote><p>Only 3 failures in the test suite (out of 4,408 examples). That's pretty exciting.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7085'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7085"><time data-relative="true">2011-09-05T02:45:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Ruby 1.9.2 compatibility</li>
+<li><strong>To:</strong> Update to Ruby 1.9.2</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7088'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7088"><time data-relative="true">2011-09-05T10:03:12Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

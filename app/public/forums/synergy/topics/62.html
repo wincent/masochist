@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Positioning Synergy on Menu Bar?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Positioning Synergy on Menu Bar?</div>
+<h1 class='major'>Positioning Synergy on Menu Bar?</h1>
+<div class='topic' id='topic_62'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/diomedes">Diomedes</a>
+<span class='when'>
+<a href="/forums/synergy/topics/62"><time data-relative="true">2005-01-05T23:55:35Z</time></a>
+</span>
+</cite>
+<blockquote><p>Is there a way to control where the Synergy buttons appear on the menu bar? I've moved it all the way to the top in the Startup items under the Account preference pane, but it always winds as the leftmost set of icons in my menu bar. I have some other third party menu bar items, such as iSeek, WeatherMenu, and Salling Clicker that launch at startup.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_187'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_187"><time data-relative="true">2005-01-08T21:55:38Z</time></a></span>
+</cite>
+<blockquote><p>Synergy is an NSStatusItem which means you can't drag it around by holding the command key like you can with NSMenuExtras.</p>
+<p>All NSStatusItems always appear to the left of all NSMenuExtras.</p>
+<p>The order of NSStatusItems is determined by their launch order, with each subsequently launched item being placed to the left of the previously launched items. Note that when I say &quot;launch&quot; here I don't just mean &quot;open&quot; or &quot;double-click&quot;; I actually mean &quot;open and wait for the NSStatusItem to appear in the menu bar&quot;.</p>
+<p>I don't use any of the other apps you mention, but if they are NSMenuExtras then there is no way that you can get Synergy to be anything but to the left of them. If they are NSStatusItems then they are beating Synergy to the menu bar and you'll need to find a way of delaying them.</p>
+<p>Life would be much easier if Apple allowed third-party developers to use the NSMenuExtra API, or if they gave similar functionality (the ability to command-drag) the NSStatusItem API. Unfortunately, the only way to circumvent this limitation is to engage in hackery, which I am not going to do for Synergy. Any third party app which does it risks being broken when Apple brings out Tiger (or sooner, if they please).</p>
+<p>(When I wrote WinSwitch, I decided that I would go down the path of &quot;hackery&quot; because it just wasn't feasible to write a Fast User Switching menu replacement without it being the right-most... But Synergy is a different story.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_188'>
+<cite>
+<a href="/users/magnetikal">Magnetikal</a>
+<span class='when'><a href="#comment_188"><time data-relative="true">2005-01-09T22:20:28Z</time></a></span>
+</cite>
+<blockquote><p>Do you know if Apple is doing anything to remedy the NSStatusItem situation in 10.4? Or will be still be the same? I always assume they'd eventually merge the two APIs or provide the same functionality to 3rd party developers.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_189'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_189"><time data-relative="true">2005-01-12T03:30:41Z</time></a></span>
+</cite>
+<blockquote><p>menumeters manages to do it.  i don't know why you can't.  this and the poorly designed floater always keep me from paying and instead using free alternatives.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_190'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_190"><time data-relative="true">2005-01-12T17:49:04Z</time></a></span>
+</cite>
+<blockquote><p>Quote: menumeters manages to do it.  i don't know why you can't.</p>
+<p>Because Synergy is an NSStatusItem, and MenuMeters is an NSMenuExtra.</p>
+<p>For the record, I've never seen any NSMenuExtra that includes clickable buttons in the menu bar. Programs like MenuMeters display information in the menu bar, but they don't provide buttons; click on them and a menu drops down.</p>
+<p>As for whether or not I &quot;can&quot; do NSMenuExtras, see WinSwitch. Of course I can do it. But I've explained my reasons above for why Synergy uses NSStatusItem.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

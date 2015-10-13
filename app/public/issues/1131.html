@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1131: Add in-browser (Selenium) tests
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1131</div>
+<div class='issue' id='issue_1131'>
+<form class="edit_issue" id="edit_issue_1131" action="/issues/1131" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="nmDRBuxIVwWraJiYZwIzaDG+N7DyBuht74UBKhbaLImqkm+xS8WNUHLkq29WK2DchDxejPnqZnHPmtTUMgJLrQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1131:
+<span data-name='issue[summary]'>
+Add in-browser (Selenium) tests
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-09-09T16:13:50Z</time>, updated <time data-relative="true">2009-11-26T16:52:06Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p><a href="/issues/1130">Bug #1130</a> crept in because of the lack of in-browser tests (eg. Selenium-driven tests). This was a JavaScript bug and so that's the only way that it could be caught.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3757'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3757"><time data-relative="true">2008-09-11T15:13:12Z</time></a></span>
+</cite>
+<blockquote><p>It's worth clarifying that the existing <a href="/wiki/Webrat">Webrat</a> integration tests won't cut it here, because Webrat doesn't handle JavaScript either.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4493'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4493"><time data-relative="true">2009-04-24T10:16:47Z</time></a></span>
+</cite>
+<blockquote><p>The ball is now rolling; see &quot;<a href="/wiki/Installing_Selenium_1.1.14_on_Mac_OS_X_10.5.6_Leopard">Installing Selenium 1.1.14 on Mac OS X 10.5.6 Leopard</a>&quot;. I am trying to follow the recipe detailed <a href="http://wiki.github.com/aslakhellesoy/cucumber/setting-up-selenium" class="external">here</a> under &quot;Cucumber / Selenium / Webrat&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4494'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4494"><time data-relative="true">2009-04-24T11:16:42Z</time></a></span>
+</cite>
+<blockquote><p><a href="http://blog.thirstybear.co.uk/2008/05/selenium-and-https.html" class="external">This</a> (on getting Selenium to work with self-signed SSL certificates) is likely to prove useful.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4495'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4495"><time data-relative="true">2009-04-24T11:37:15Z</time></a></span>
+</cite>
+<blockquote><p>Starting to look like this could be a real pain for the following reasons:</p>
+<ul>
+<li>For security the app is designed to run on <a href="/wiki/SSL">SSL</a></li>
+<li><a href="/wiki/Mongrel">Mongrel</a> itself doesn't speak SSL, so I have to set up an <a href="/wiki/nginx">nginx</a> proxy in front of Mongrel to make it work</li>
+<li>Again for security, the app is set up to forward non-SSL requests to the equivalent SSL address</li>
+<li>All the routes in the app are set up to expect and generate SSL URIs</li>
+<li>In local testing (host &quot;localhost&quot;), I'm using self-signed certificates for obvious reasons</li>
+<li>Selenium runs Firefox in a clean environment (no persistent preferences) and so it's not possible to add an exception for the self-signed certificate and have it stick</li>
+<li>The <a href="http://wiki.github.com/aslakhellesoy/cucumber/setting-up-selenium" class="external">recipe</a> I've followed notes that you don't have to (can't) launch the Selenium server manually (which would be one way to specify a custom Firefox profile as mentioned <a href="http://blog.thirstybear.co.uk/2008/05/selenium-and-https.html" class="external">here</a>), because <a href="/wiki/Webrat">Webrat</a> will apparently spawn a new Selenium server and Mongrel process for you.</li>
+<li>It's undesirable to add test-environment-only (or Selenium-environment-only) modifications to work around this SSL behaviour, because the whole point if integration tests in the browser is to test the code that you're planning on deploying and not some mutated version of it.</li>
+<li>Even if it were desirable it would be hideously complex, because the entire application is engineered with the SSL requirement in mind (not just at the &quot;before filter&quot; level, but every single route in the application).</li>
+</ul>
+<p>So it's starting to look pretty grim. Will have to think some more about it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4551'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4551"><time data-relative="true">2009-04-28T05:08:46Z</time></a></span>
+</cite>
+<blockquote><p>Random thoughts on the problem:</p>
+<ul>
+<li>might be able to use the <code>local_request?</code> controller method to allow local requests to use non-SSL behaviour; this feels somehow less kludgey than doing <code>if ENV['RAILS_ENV'] == 'test'</code></li>
+<li>this should be enough to make Cucumber/Selenium work without any of the certificate hassles</li>
+<li>it <em>might</em> also allow me to remove my ugly <code>ssl?</code> overrides in <code>spec/spec_helper.rb</code> and <code>features/support/env.rb</code> (not sure if <code>local_request?</code> returns <code>true</code> in the test environment)</li>
+<li>on the other hand, I have a <em>bunch</em> of places in the app where I set or expect <code>:protocol =&gt; 'https'</code></li>
+<li>so with this change will route recognition and generation be broken?</li>
+<li>will I need to back out all that stuff and use <code>_path</code> helpers instead of <code>_url</code> helpers everywhere?</li>
+<li>and is backing it out going to be easy or possible?; the real problem are things like Atom feeds which are cached and so <em>must</em> embed the correct URL (otherwise one rogue client connecting via HTTP instead of HTTPS will pollute the cache with non-SSL URLs)</li>
+<li>outgoing mails as well need proper HTTPS URLs, although that might not be such a problem seeing as I can generally pull the host from the application config rather than the request environment</li>
+</ul>
+<p>One of the problems is that Mongrel doesn't support SSL, so we're forced to use a nginx/mongrel proxy arrangement. It <em>might</em> be worth trialling Passenger seeing as that would allow me to take Mongrel out of the loop entirely. See <a href="http://erbmicha.com/2009/04/21/phusion-passenger-nginx-ssl/" class="external">this page</a> for instructions on setting up Passenger and nginx with SSL support. That in turn might make the whole Selenium issue go away (although not yet... evidently the problem remains that the Selenium setup described above auto-spawns a mongrel to handle requests).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4564'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4564"><time data-relative="true">2009-04-28T12:19:11Z</time></a></span>
+</cite>
+<blockquote><p>More random thoughts:</p>
+<p>I am beginning to think that my initial approach (trying to enforce SSL access at the application level) was completely misguided. (I was probably seduced by the example of the &quot;SSL Requirement&quot; plugin.) I don't think this is an application-level problem; it is a firewall-level problem. At least, that is true in the case of this application because SSL should apply across the <em>entire</em> application and not just specific controllers/actions.</p>
+<p>So:</p>
+<ul>
+<li>the <a href="/wiki/Mongrel">Mongrel</a> instances should listen on high port numbers (eg. 12345)</li>
+<li>the <a href="/wiki/OS">OS</a> firewall should prevent non-local connections to those ports; this means that nobody can connect directly to the mongrels</li>
+<li>external visitors should connect only to the <a href="/wiki/nginx">nginx</a> front-end</li>
+<li>nginx can proxy the connections to the mongrel instances because it is on the same host (in the case of multiple machines the firewall rules could be modified accordingly)</li>
+<li>if nginx does the right thing, only <a href="/wiki/SSL">SSL</a> connections will be forwarded to the back-end; all others will be redirected from the <a href="/wiki/HTTP">HTTP</a> <a href="/wiki/URL">URL</a> to the <a href="/wiki/HTTPS">HTTPS</a> equivalent</li>
+<li><a href="/wiki/RSpec">RSpec</a> specs and <a href="/wiki/Cucumber">Cucumber</a> features should run fine and be able to connect to the local Mongrel instances because they are running on the same host</li>
+<li>because of all this, the application shouldn't do any <code>ssl?</code> checks and the <code>ensure_correct_protocol</code> &quot;before filter&quot; shouldn't even exist</li>
+<li>the routes file should be free of all <code>:protocol =&gt; 'https'</code> declarations; in fact, pretty much the entire codebase should be free of them</li>
+<li>to ensure correct URL generation we should always use <code>_path</code> helpers rather than <code>_url</code> helpers</li>
+<li>may or may not need to combine this idea with the use of <code>local_request?</code>, but my initial gut reaction is that it won't be necessary</li>
+<li>outgoing mails should use correct HTTPS URLs because they should pull host information from the application config rather than from the request environment</li>
+<li>things like Atom feeds still need absolute URLs, and they need to be HTTPs URLs, but I am not sure how that is going to pan out until I try it</li>
+<li>theoretically, <a href="/wiki/Selenium">Selenium</a> should work as well, even when it autospawns a Mongrel instance</li>
+<li>if I still can't get Selenium to play ball due to the autospawned Mongrel problem, I should look into Selenium-RC and see if I can get things working via that route</li>
+<li>the codebase should be a little simpler because we've just delegated the role of protocol enforcement to an external layer</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4565'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4565"><time data-relative="true">2009-04-28T13:46:59Z</time></a></span>
+</cite>
+<blockquote><p>For some notes on firewall configuration, see &quot;<a href="/wiki/iptables">iptables</a>&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4566'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4566"><time data-relative="true">2009-04-28T14:52:50Z</time></a></span>
+</cite>
+<blockquote><p>One thing to note: without even setting up firewall rules, I can probably just train the Mongrels to bind to the loopback interface instead of a public IP address.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4567'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4567"><time data-relative="true">2009-04-28T15:37:06Z</time></a></span>
+</cite>
+<blockquote><p>Ok, as an initial first step, that's exactly what I've done (make the Mongrels bind to 127.0.0.1, and train both <a href="/wiki/nginx">nginx</a> and <a href="/wiki/monit">monit</a> to look for them there).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4568'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4568"><time data-relative="true">2009-04-28T18:22:57Z</time></a></span>
+</cite>
+<blockquote><p>I've done a little experimentation and it looks like I won't be able to do non-SSL tests with Selenium after all.</p>
+<p>I basically went through and:</p>
+<ul>
+<li>changed all appropriate <code>_url</code> helpers to <code>_path</code> helpers</li>
+<li>dropped the <code>ensure_correct_protocol</code> &quot;before filter&quot;</li>
+<li>dropped the <code>ssl?</code> hacks in <code>spec/spec_helper.rb</code> and <code>features/support/env.rb</code></li>
+</ul>
+<p>I guess in itself these changes are worthwhile, but alas, they don't really help me with Selenium because for many things I still can't access the Mongrel instance directly using HTTP. This is because the login cookie is set to &quot;Secure&quot; and that means you can login but you still end up surfing the site as an anonymous guest because the cookie doesn't get sent in with your requests.</p>
+<p>Workarounds?</p>
+<ul>
+<li>drop the &quot;Secure&quot; setting on the cookie, thus losing a layer of &quot;<a href="/wiki/defense_in_depth">defense in depth</a>&quot;?</li>
+<li>drop the &quot;Secure&quot; setting only if <code>local_request?</code> returns true?</li>
+</ul>
+<p>The second option might be worthwhile, as this is really all about local testability. Will sleep on it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4569'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4569"><time data-relative="true">2009-04-29T06:26:40Z</time></a></span>
+</cite>
+<blockquote><p>Found some interesting docs on Selenium and HTTPS <a href="http://seleniumhq.org/documentation/tutorials/index.html#https" class="external">here</a>:</p>
+<blockquote>
+<h3>Support for HTTPS</h3>
+<p>Because of the unique proxy-based nature of Selenium RC, tests that require HTTPS can be a challenge. Our proxy attempts to examine and modify the HTTP requests being sent over the wire; HTTPS is explicitly designed to prevent anyone from doing that (even though, in our case, our intentions are benign).</p>
+<p>Therefore, our proxy is configured to automatically generate dummy SSL certificates whenever you browse to an HTTPS site. Our dummy certificates are automatically signed by Selenium RC using a made-up certificate authority (CA) called &quot;CyberVillains&quot;; if your browser is configured to trust the CyberVillains CA, it will automatically trust our dummy certificates, allowing us to read/modify the content of your SSL requests.</p>
+<p><strong>Using the CyberVillains CA is inherently dangerous.</strong> When you use a browser that trusts CyberVillains, any website can claim to be any other website for the purposes of SSL authentication. Don't use Selenium RC while browsing to websites that you don't trust.</p>
+<p>On Firefox and Opera, we can automatically configure the browser to temporarily trust CyberVillains, but we don't yet provide support for this on Internet Explorer, Safari, or Konqueror. If you attempt to browse to an HTTPS website using one of those browsers without manually trusting the CyberVillains CA, you'll get a security warning dialog, which, unfortunately, you won't be able to use Selenium to click through. For those browsers, see the instructions below that explain how to use the CyberVillains CA manually.</p>
+<p>Another thing that makes HTTPS challenging is that many sites that require HTTPS use it only for certain pages (e.g. only for the login page), which means that testing such sites requires switching between different domains, in violation of the same-origin policy.</p>
+<p>If your test needs to use multiple domains (HTTP and HTTPS in the same test), your best choices are the *chrome or *iehta browser launchers, alternatively you can use proxy injection mode. If you use <strong>*chrome</strong> or <strong>*iehta</strong>, you don't need to use the Selenium proxy at all, in which case you don't have to trust the CyberVillains CA. If you use proxy injection mode, you'll still have to trust CyberVillains, following the directions below.</p>
+<h3>Using the CyberVillains CA manually</h3>
+<p><strong>Did I mention that using the CyberVillains CA is inherently dangerous?</strong> Using it manually is more dangerous, because it introduces the risk that you'll forget to uninstall the CyberVillains CA when you're done using Selenium RC. You MUST manually uninstall the CyberVillains CA after you're finished using Selenium RC.</p>
+<p><strong>Windows/IE:</strong> Look for &quot;cyberVillainsCA.cer&quot; in the &quot;server&quot; folder in the selenium-remote-control zip, double-click on it, and press the &quot;Install Certificate&quot; button. Then click &quot;Next&quot; a few times, and finally &quot;Finish&quot; to install the CA certificate. To uninstall the CA certificate, use the &quot;Internet Options&quot; Control Panel, click on the &quot;Content&quot; tab, and click on the &quot;Certificates&quot; button. Finally, under the &quot;Trusted Root Certification Authorities&quot; tab, scroll down to CyberVillains and click on the &quot;Remove&quot; button to remove the cert.</p>
+<p><strong>OS X/Safari:</strong> Look for &quot;cyberVillainsCA.cer&quot; in the &quot;server&quot; folder in the selenium-remote-control zip and double-click on it. You'll be prompted to select a keychain; select the &quot;X509Anchors&quot; keychain. You'll be required to enter your administrative password to install the certificate. To uninstall the CA certificate, start the &quot;Keychain Access&quot; program, in &quot;/Applications/Utilities&quot;. Click on &quot;Show Keychains&quot; and select the X509Anchors keychain. If that keychain isn't available, select &quot;Add Keychain&quot; from the File menu, then navigate to /System/Library/Keychains and open the &quot;X509Anchors&quot; file in that directory. Once you've opened the X509Anchors keychain, you should be able to scroll down to the CyberVillains CA and delete it using the Delete button.</p>
+<p><strong>Linux/Konqueror:</strong> In the Settings menu, choose &quot;Configure Konqueror.&quot; Select the &quot;Crypto&quot; icon on the left-hand navigation bar, then select the &quot;SSL Signers&quot; tab by clicking on the scroll-right arrow in the upper-right corner of the window. Click on the Import button to import a certificate. Look for &quot;cyberVillainsCA.cer&quot; in the &quot;server&quot; folder in the selenium-remote-control zip and double-click on it to import the certificate. To uninstall the certificate, just click on &quot;CyberVillains&quot; in the &quot;SSL Signers&quot; tab and click on the &quot;Remove&quot; button.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4570'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4570"><time data-relative="true">2009-04-29T06:29:38Z</time></a></span>
+</cite>
+<blockquote><p>Related notes on using the &quot;CyberVilains CA&quot;:</p>
+<ul>
+<li><a href="http://clearspace.openqa.org/thread/11973" class="external">http://clearspace.openqa.org/thread/11973</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4571'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4571"><time data-relative="true">2009-04-29T06:36:26Z</time></a></span>
+</cite>
+<blockquote><p>From the page I just linked to:</p>
+<blockquote>
+<p>As I was told from some forums, I had to start Selenium server from a command line:</p>
+<pre>D:\selenium-remote-control-0.9.2\selenium-server-0.9.2&gt;java -jar selenium-server.jar -interactive -port 60000</pre>
+<p>So using this file: <code>&quot;selenium-remote-control-0.9.2\selenium-server-0.9.2\sslSupport\ cybervillainsCA.cer&quot;</code> the browser would accept by default any certificate. automatically signed by Selenium RC using a made-up certificate authority (CA) called CyberVillains&quot;.</p>
+</blockquote>
+<p>I don't see anything in there instructing Selenium to automatically install the &quot;CyberVillians&quot; certificate and indeed when I run the feature suite and look in the Firefox preferences I can confirm that there is no such certificate present. So there must be something else required which isn't documented on the tutorial page.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4572'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4572"><time data-relative="true">2009-04-29T12:16:59Z</time></a></span>
+</cite>
+<blockquote><p>Looks like <a href="http://rubyforge.org/pipermail/rspec-users/2009-April/014145.html" class="external">this could be the answer</a>:</p>
+<blockquote>
+<p>You can tell webrat to not launch Selenium RC and to instead connect to an already running instance by setting the selenium_server_address configuration variable. It's not well documented (it was originally added to support Selenium Grid) and is perhaps not an ideal solution to the problem you face, but it might be preferable to monkey-patching webrat.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4573'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4573"><time data-relative="true">2009-04-29T13:07:08Z</time></a></span>
+</cite>
+<blockquote><p>It works, at least partially...</p>
+<p>Manually start up the Selenium server:</p>
+<pre>java -jar /Library/Ruby/Gems/1.8/gems/Selenium-1.1.14/lib/selenium/openqa/selenium-server.jar.txt</pre>
+<p>Start up the Mongrel instance on the default port 3000:</p>
+<pre>script/server</pre>
+<p>Tell <a href="/wiki/Webrat">Webrat</a> to use the existing Selenium server rather than auto-launching a new one:</p>
+<pre>Webrat.configure do |config|
+  config.mode = :selenium
+  config.application_port = 3000 # 3001 is the default
+
+  # connect to already-running Selenium RC instance
+  config.selenium_server_address = '127.0.0.1'
+  config.selenium_server_port = 4444 # the default
+end</pre>
+<p>And run the features:</p>
+<pre>cucumber -p selenium</pre>
+<p>At the moment they fail, in need of tweaks, but at least they run.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5189'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5189"><time data-relative="true">2009-11-26T16:52:01Z</time></a></span>
+</cite>
+<blockquote><p>I now have a decent test rig set up for this using Cucumber, Capybara and Culerity.</p>
+<p>The feature &quot;suite&quot; includes a test to make sure that issues like <a href="/issues/1130">bug #1130</a> don't crop up again.</p>
+<p>Marking this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5190'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5190"><time data-relative="true">2009-11-26T16:52:06Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

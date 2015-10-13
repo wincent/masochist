@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Vim 7.3 on Windows -- Installed Successfully But Crashes When Opening A File
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Vim 7.3 on Windows -- Installed Successfully But Crashes When Opening A File</div>
+<h1 class='major'>Vim 7.3 on Windows -- Installed Successfully But Crashes When Opening A File</h1>
+<div class='topic' id='topic_522'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/jonah">Jonah</a>
+<span class='when'>
+<a href="/forums/command-t/topics/522"><time data-relative="true">2012-08-05T21:58:46Z</time></a>
+</span>
+</cite>
+<blockquote><p>I am on win7 with vim 7.3.  I installed rubyinstaller-1.9.1-p430 and DevKit-4.5.0-20100819-1536-sfx, so that (I think) the version of ruby vim came compiled with matches the one I used to execute <code>ruby extconf.rb</code>.  </p>
+<p>Here is the output of the make command:</p>
+<pre>
+gcc -I. -IC:/Ruby191/include/ruby-1.9.1/i386-mingw32 -I/C/Ruby191/include/ruby-1
+.9.1/ruby/backward -I/C/Ruby191/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -
+Wall -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter -o ext.o -c
+ ext.c
+gcc -I. -IC:/Ruby191/include/ruby-1.9.1/i386-mingw32 -I/C/Ruby191/include/ruby-1
+.9.1/ruby/backward -I/C/Ruby191/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -
+Wall -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter -o match.o
+-c match.c
+gcc -I. -IC:/Ruby191/include/ruby-1.9.1/i386-mingw32 -I/C/Ruby191/include/ruby-1
+.9.1/ruby/backward -I/C/Ruby191/include/ruby-1.9.1 -I. -DHAVE_RUBY_H    -O2 -g -
+Wall -Wno-parentheses   -std=c99 -Wall -Wextra -Wno-unused-parameter -o matcher.
+o -c matcher.c
+gcc -shared -s -o ext.so ext.o match.o matcher.o -L. -LC:/Ruby191/lib -L.  -Wl,-
+-enable-auto-image-base,--enable-auto-import   -lmsvcrt-ruby191  -lshell32 -lws2
+_32
+</pre>
+<p>At first I was happy because it seemed to be working: <a href="http://i.imgur.com/hxQ4S.png" class="external">http://i.imgur.com/hxQ4S.png</a></p>
+<p>But then I was sad because as soon as I selected a file by pressing enter, vim crashed: <a href="http://i.imgur.com/sft8b.png" class="external">http://i.imgur.com/sft8b.png</a></p>
+<p>Any ideas for troubleshooting?</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

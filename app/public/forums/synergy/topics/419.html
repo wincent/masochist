@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Missing scrobbles
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Missing scrobbles</div>
+<h1 class='major'>Missing scrobbles</h1>
+<div class='topic' id='topic_419'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/419"><time data-relative="true">2010-03-19T10:45:53Z</time></a>
+</span>
+</cite>
+<blockquote><p>As I'm not entirely sure if this is Synergy or last.fm acting up I'm posting here instead of filing a bug report, but I'm noticing that since I've upgraded to version 4.4 I'm missing scrobbles.. Nothing shows up in console though, so I'm not sure what's causing this..</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5373'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5373"><time data-relative="true">2010-03-20T10:02:43Z</time></a></span>
+</cite>
+<blockquote><p>Take a look at <a href="http://wincent.com/a/products/synergy-classic/features/audioscrobbler/" class="external">this page</a>.</p>
+<p>It tells you how to turn on logging for the AudioScrobbler feature; specifically you execute the following in the <a href="/wiki/Terminal">Terminal</a> when Synergy is not running:</p>
+<pre>defaults write org.wincent.Synergy LogAudioscrobblerEvents -bool yes</pre>
+<p>And you can then view the log using the Console application (in <code>/Applications/Utilities/</code>) and see if any error information appears.</p>
+<p>I myself haven't had any problems scrobbling lately but I'm going to see if I can reproduce any problem here.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5608'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5608">Created <time data-relative="true">2010-05-09T18:07:21Z</time>, edited <time data-relative="true">2010-05-10T14:19:29Z</time></a></span>
+</cite>
+<blockquote><p>Hmm.. I think I figured out what the problem in this case is, although I'm finding it hard to reproduce it.. The missing scrobbles seem to occur when I'm viewing song lyrics (through command + I).. When canceling that dialog (by pressing escape) I get the following error:</p>
+<pre>9/5/10 23:55:22 &#x0009;Synergy[217]&#x0009;Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value
+9/5/10 23:56:11 &#x0009;Synergy[217]&#x0009;Audioscrobbler: Position does not match (user must have skipped); will not submit to Audioscrobbler</pre>
+<p>I've seen this behaviour at least twice (looking up lyrics causing failed scrobbles) but as I said, I'm finding it hard to reproduce...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5611'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5611"><time data-relative="true">2010-05-10T14:50:36Z</time></a></span>
+</cite>
+<blockquote><p>Interesting. Thanks for the details.</p>
+<p>An issue which has come up a number of times over the years is that iTunes &quot;blocks&quot; when it has one of its &quot;modal&quot; windows up front. This was always one of the ways in which it differentiated itself from &quot;pure Cocoa&quot; applications like Mail.app. I have no idea how much of iTunes is still that old-fashioned style Carbon core, and how much of it is &quot;modernised&quot;, but it seems that things like the preferences window and other &quot;panes&quot; like the song lyrics info are still definitely running as they always have (ie. in a blocking fashion).</p>
+<p>What this means is that when one of these windows is upfront iTunes effectively shuts its eyes and ears to all external communication, and will only reply to requests from other programs (or any process requesting information via Apple Events or AppleScript) after those windows have been dismissed. And this is why submission fails: because before submitting, Synergy must check how far iTunes is into the track in order to filter out tracks in which the use has skipped rather than listened to the required portion of the track (the Audioscrobbler protocol requires this, at least at the time of writing, although they are talking about releasing a new version of the protocol which drops this requirement).</p>
+<p>So, Synergy asks iTunes for the track position, iTunes doesn't respond, and later, when the window has been dismissed, iTunes decides to respond, but by then it's too late and the track position has moved forward and so Synergy deduces that the user has skipped forward.</p>
+<p>There are 3 possible fixes for this, then, I guess:</p>
+<ul>
+<li>Apple removes this annoying blocking behavior (seems unlikely; I've been wishing they would for nearly a decade now...)</li>
+<li>Synergy stops checking (ie. disregards the Audioscrobbler protocol; not too keen on this option myself)</li>
+<li>Synergy compares the track position not against the time the request was made, but against the time the request was answered</li>
+</ul>
+<p>The latter option sounds doable, at least in principle, so I'll add a ticket to the issue tracker for this so as not to lose track of it. See <a href="/issues/1552">ticket #1552</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

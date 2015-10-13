@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy &amp; Automator
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy &amp; Automator</div>
+<h1 class='major'>Synergy &amp; Automator</h1>
+<div class='topic' id='topic_361'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/361"><time data-relative="true">2008-04-18T04:09:39Z</time></a>
+</span>
+</cite>
+<blockquote><p>I use an Automator script when I leave work that closes all open apps.  The problem is that I can't add Synergy to the exception list.  This also causes problems when I run my &quot;I'm at work now&quot; Automator script that launches programs ... I can't add Synergy to the list.  Any ideas?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3231'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3231"><time data-relative="true">2008-04-18T06:20:06Z</time></a></span>
+</cite>
+<blockquote><p>This might be for one of two reasons:</p>
+<ul>
+<li><a href="/wiki/Synergy">Synergy</a> is a faceless background application (so it won't appear in the Dock, in the application switcher HUD etc), and this might be why you can't add it</li>
+<li>The faceless background app, Synergy.app, is actually bundled <em>inside</em> something else (in 3.2 it's inside <code>Synergy.prefPane/Contents/Resources/</code> and in 3.5 it's inside <code>Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/</code></li>
+</ul>
+<p>Depending on how you actually select items to be added to your exception list, it could be either of those two reasons. Does the script provide you with a list of candidates based on what's currently running? Or does it provide you with a standard file chooser and you're supposed to navigate and choose the application to exclude?</p>
+<p>If it's the latter case you might be able to make things work like this:</p>
+<ol>
+<li>Navigate to where you have Synergy installed in the Finder; right-click or control-click on the package and choose &quot;Show package contents&quot; from the contextual menu: in this way you'll be able to &quot;drill down&quot; and actually expose the Synergy.app itself</li>
+<li>Now in your Automator script setup, when the file dialog appears, switch back to the Finder and then drag Synergy.app back onto the dialog; it might let you select it that way</li>
+</ol>
+<p>But this is all speculation on my part: I've barely used Automator myself. If this doesn't help, send me a copy of your Automator script if you can and I'll take a look at it; my email is <a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3234'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3234"><time data-relative="true">2008-04-18T19:50:48Z</time></a></span>
+</cite>
+<blockquote><p>Your solution worked great.  I used drag and drop to put the Synergy app into the list of &quot;don't quit&quot; in Automator and all is good.  Many thanks!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #192: Icon shows in Dock when running on Tiger
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #192</div>
+<div class='issue' id='issue_192'>
+<form class="edit_issue" id="edit_issue_192" action="/issues/192" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="dyLfE2QU7kutUnkwJu3l9FokBpnk1aZOPIH+MyySt0VD0GGkw5k0HnTeSscXxLZA76Zvpe85KFIcnivNCErQYQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #192:
+<span data-name='issue[summary]'>
+Icon shows in Dock when running on Tiger
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-18T17:26:45Z</time>, updated <time data-relative="true">2006-03-29T07:53:25Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;Since you didn't mention this, maybe you don't know.  Under Tiger, Synergy 1.8 shows up as a running app in the dock.  I went back to 1.6 and the behavior is what I expect.  Synergy runs without an additional running app in the dock.&quot;</p>
+<p>Thanks for reporting this. I only have one machine so I am not willing to install a pre-release version on  my one-and-only product machine. Once I get my hands on the retail version I'll investigate.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1837'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1837"><time data-relative="true">2005-04-18T17:26:57Z</time></a></span>
+</cite>
+<blockquote><p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1838'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1838"><time data-relative="true">2005-05-13T20:14:50Z</time></a></span>
+</cite>
+<blockquote><p>Well, I can't reproduce this and no one else has reported the issue so I am going to mark this as  WORKSFORME.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1839'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1839"><time data-relative="true">2005-05-14T19:00:24Z</time></a></span>
+</cite>
+<blockquote><p>I have now had a couple people report this issue on Tiger although I still cannot reproduce it myself.  This is how I replied to the last person who wrote in:</p>
+<p>Can you look inside at its Info.plist file and check that &quot;LSUIElement&quot; is set to &quot;1&quot;; this is what tells the  OS to not show the icon in the Dock.</p>
+<p>The preference pane will either be in:</p>
+<p>/Library/PreferencePanes/</p>
+<p>or:</p>
+<p>~//Library/PreferencePanes/</p>
+<p>Depending on where you installed it.</p>
+<p>And the Info.plist file will be inside the bundle here:</p>
+<p>Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Info.plist</p>
+<p>You should see an entry in the plist file like this:</p>
+<p>LSUIElement 1</p>
+<p>If everything appears to be ok there (it should be) I would try uninstalling and reinstalling. And I'd also  check to see if it made any difference whether launching manually (by clicking the &quot;Start&quot; button) or  setting Synergy to launch at login (there shouldn't be any difference).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1840'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1840"><time data-relative="true">2005-05-14T20:38:51Z</time></a></span>
+</cite>
+<blockquote><p>I am going to reopen this bug as a number of people are reporting it. Still can't reproduce it though.</p>
+<p><a href="http://wincent.com/a/support/forums/showflat.php?Number=756" class="external">http://wincent.com/a/support/forums/showflat.php?Number=756</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1841'>
+<cite>
+<a href="/users/bryan-schwegler">Bryan Schwegler</a>
+<span class='when'><a href="#comment_1841"><time data-relative="true">2005-05-15T04:17:50Z</time></a></span>
+</cite>
+<blockquote><p>I'm having this same issue running Tiger and Synergy Classic 1.9.  I did not have this issue when running  1.8.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1842'>
+<cite>
+<a href="/users/bryan-schwegler">Bryan Schwegler</a>
+<span class='when'><a href="#comment_1842"><time data-relative="true">2005-05-15T04:20:50Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #5)</p>
+<blockquote>
+<p>I'm having this same issue running Tiger and Synergy Classic 1.9.  I did not have this issue when </p>
+</blockquote>
+<p>running </p>
+<blockquote>
+<p>1.8.</p>
+</blockquote>
+<p>I also wanted to add that when I went to go check the plist file in the Prefpane the LSUIElement string  wasn't even there.  When I added it, Synergy once again behaved as expected.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1843'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1843"><time data-relative="true">2005-05-15T05:16:09Z</time></a></span>
+</cite>
+<blockquote><p>Damn. I had just typed a massive reply and I lost it because I hit Command-R (refresh) by mistake  instead of hitting Command-T (new tab)... Sigh... here we go again:</p>
+<p>I downloaded Synergy Classic 1.9 from the server to be sure that I am looking at the *exact* same file  as you and I can confirm that the LSUIElement key *is* in the plist. Which file were you looking at? This  one?</p>
+<p>Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Info.plist</p>
+<p>I think the behaviour of the Launch Services database must have changed on Tiger. In fact, I think it's  an Apple bug. I found this article about rebuilding or updating the database:</p>
+<p><a href="http://67.15.54.122/article.php?story=20031215144430486&amp;query=launch+services" class="external">http://67.15.54.122/article.php?story=20031215144430486&amp;query=launch+services</a></p>
+<p>Those who are seeing the problem, can you try the following and then report back here?</p>
+<p>1. Stop Synergy</p>
+<p>2. Open the Terminal</p>
+<p>3. cd to the directory where you installed the Synergy.prefPane. This will be either:</p>
+<p>~/Library/PreferencePanes</p>
+<p>Or:</p>
+<p>/Library/PreferencePanes</p>
+<p>4. Type the following command (all on one line, even though it might wrap across multiple lines here):</p>
+<p>/System/Library/Frameworks/ApplicationServices.framework/Frameworks/LaunchServices.framework/ Support/lsregister -R Synergy.prefPane</p>
+<p>5. Restart Synergy</p>
+<p>If the above doesn't work, try it all over again but with a different step 5:</p>
+<p>5. Log out, log in, and restart Synergy</p>
+<p>And if that doesn't work, try it all over again but with this step 5:</p>
+<p>6. Restart your Mac, then start Synergy</p>
+<p>You can use that same command line tool to look at a dump of the database like this:</p>
+<p>/System/Library/Frameworks/ApplicationServices.framework/Frameworks/LaunchServices.framework/ Support/lsregister -dump | less</p>
+<p>Notice that I pipe the output through less because the database can be huge. You can bring up a search  prompt by typing &quot;/&quot; and then entering a search string (like &quot;Synergy.app&quot;). I am going to attach a  sample of what Synergy.app's entry should look like in the database. Notice that the following line  contains the &quot;ui-element&quot; flag:</p>
+<pre>       flags:         relative-icon-path  ui-element  ppc </pre>
+<p>I would be very interested to hear reports from people about the contents of their database before and  after trying to tweak their database. If the tweak above works then I will add it as an automatic step in  the Synergy installer.</p>
+<p>If the tweak above doesn't work then there are some more extreme interventions you could try with the  lsregister tool. For example, rebuilding your entire Launch Services database:</p>
+<p>/System/Library/Frameworks/ApplicationServices.framework/Frameworks/LaunchServices.framework/ Support/lsregister -kill -v -r /</p>
+<p>That will rescan your entire root volume and find all the apps on it. Another one is this:</p>
+<p>/System/Library/Frameworks/ApplicationServices.framework/Frameworks/LaunchServices.framework/ Support/lsregister -kill -v -R /</p>
+<p>Exactly the same but will look inside packages and invisible directories as well.</p>
+<p>You may wish to try a more conservative approach, such as using only &quot;/Applications&quot; instead of your  entire root volume &quot;/&quot; as the path argument to lsregister.</p>
+<p>Anyway, I hope people find this useful. Please report back with how you go. Seeing as I cannot  reproduce the problem here, I am 100% dependent on other to isolate the causes/solutions which work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1844'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1844"><time data-relative="true">2005-05-15T05:17:29Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=24) Sample Launch Services database entry for Synergy.app</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1845'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1845"><time data-relative="true">2005-05-15T22:13:07Z</time></a></span>
+</cite>
+<blockquote><p>Bafflingly, another user just emailed me and told me that their file:</p>
+<p>Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Info.plist</p>
+<p>Does not contain a &quot;LSUIElement&quot; key! Could the OS be deleting the key? (A bizarre proposition)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1846'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1846"><time data-relative="true">2005-05-20T18:52:31Z</time></a></span>
+</cite>
+<blockquote><p>Another user email:</p>
+<p>&quot;I think I found the culprit .. it's either Clear dock from unsanity which I replaced by Transparent Dock or the 10.4.1 update that did the trick...&quot;</p>
+<p>I've also received reports that uninstalling and then reinstalling worked.</p>
+<p>Personally I suspect some weirdness in Tiger's Launch Services. Still haven't got any concrete proof though  of exactly what the cause is or the best workaround. Please add your comments here if you have have  gathered information about this issue.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1847'>
+<cite>
+<a href="/users/awatt">awatt</a>
+<span class='when'><a href="#comment_1847"><time data-relative="true">2005-05-21T16:05:42Z</time></a></span>
+</cite>
+<blockquote><p>I had this problem with my LSUIElement present and set correctly.  I uninstalled and reinstalled Synergy,  and from the installer chose to launch Synergy as my final step.  It launched and appeared in the dock with  Synergy's icon this time (previously it had a generic app icon).  I then went into the preference pane and  stopped and started Synergy from there.  Then the problem disappeared.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1848'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1848"><time data-relative="true">2005-06-28T16:54:25Z</time></a></span>
+</cite>
+<blockquote><p>From a user email:</p>
+<p>I don't know if this helps, but I noticed that when I went to check the file at</p>
+<p>Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Info.plist</p>
+<p>I noticed a different Info.plist file at</p>
+<p>Synergy.prefPane/Contents/Info.plist</p>
+<p>Interesting thing is that I saw an entry in that article where someone said they couldn't even find the  LSUIElement string there. I noticed the same problem when I opened the wrong file. I'm assuming they  saw the same wrong file I did. When I opened the right file, it is indeed there. So, to make a long story  short, I deleted the wrong Info.plist file, reinstalled, and everything works great...all I need now is some  more button sets to look really cool with it. Any suggestions or requests? </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1849'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1849"><time data-relative="true">2005-06-28T16:57:10Z</time></a></span>
+</cite>
+<blockquote><p>All bundles on Mac OS X should have an Info.plist file so this is why the .prefPane bundle has one and why  the .app bundle has a different one. The one in the .app bundle is the one that counts here because that's  the one that the system should be reading to determine the attributes of the app (like whether or not to  show its Dock icon).</p>
+<p>I suspect that it wasn't deleting the plist file that fixed your problem but the reinstall... Deleting the plist  file (or any other) could make the bundle in question behave unpredictably or even prevent it from  working.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1850'>
+<cite>
+<a href="/users/habesct">habesct</a>
+<span class='when'><a href="#comment_1850"><time data-relative="true">2005-06-28T23:48:41Z</time></a></span>
+</cite>
+<blockquote><p>Sorry, but I posted another topic in the discussions before I noticed all the comments below.  I too had the  plain application icon in the dock after upgrading to 2.0.  I just now uninstalled it, then re-installed 2.0,  and when the install was done I clicked &quot;Launch&quot;.  This again gave me an icon in the dock except this time  it was a Synergy icon.  I saw in someones comments below how this same thing happened, and they went  to the Prefs and closed then re-launched Synergy and that solved there problem.  And I am happy to  report that it worked for me as well.  I have no idea why, but this worked...</p>
+<p>Thanks, Brian</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1851'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1851"><time data-relative="true">2005-06-29T00:07:55Z</time></a></span>
+</cite>
+<blockquote><p>As I stated above I suspect this is caused by stale entries (or a bug) in Apple's Launch Services database on  Tiger. If I am to implement a work around in the installer (such as flushing the cache) I need people who  are seeing the problem to undertake some investigation using the command line as described in comment </p>
+<ol>
+<li>7. Without that information there won't be any work around, so thanks for your collaboration.</li>
+</ol>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1852'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1852"><time data-relative="true">2005-07-04T19:01:34Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 270 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1853'>
+<cite>
+<a href="/users/glh">GLH</a>
+<span class='when'><a href="#comment_1853"><time data-relative="true">2005-07-14T07:02:35Z</time></a></span>
+</cite>
+<blockquote><p>Bug filed with Apple about this: rdar://4179796</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1854'>
+<cite>
+<a href="/users/glh">GLH</a>
+<span class='when'><a href="#comment_1854"><time data-relative="true">2005-07-19T07:28:55Z</time></a></span>
+</cite>
+<blockquote><p>The bug report I filed with Apple has been marked as a duplicate, so this is a known issue with Tiger and  they are aware of it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1855'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1855"><time data-relative="true">2005-09-27T21:34:09Z</time></a></span>
+</cite>
+<blockquote><p>Michael Moen did the necessary work in <a href="/issues/279">bug #279</a> to collect information about this issue. I've already  implemented a work around for Synergy Advance and will do the same for Synergy. It will be somewhat  easier with Synergy because Synergy has an installer and I can do it from the installer rather than having to  embed the logic in the app itself.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1856'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1856"><time data-relative="true">2005-09-27T21:36:14Z</time></a></span>
+</cite>
+<blockquote><p>Adding &quot;fixed-in-prerelease&quot; keyword.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1857'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1857"><time data-relative="true">2006-03-29T07:53:25Z</time></a></span>
+</cite>
+<blockquote><p>This fix is now available in the just-released version 0.4b. For more information:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php" class="external">http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #410: CRASH: Dies on launch (&quot;Backtrace not available&quot;)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #410</div>
+<div class='issue' id='issue_410'>
+<form class="edit_issue" id="edit_issue_410" action="/issues/410" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="82JHW/jA0XHgJZ6UQ765qoD1a/cvXcpwZXTreUSNITzHkPnsX00LJDmprWNyl+oeNXcCyySxRGxFaz6HYFVGGA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #410:
+<span data-name='issue[summary]'>
+CRASH: Dies on launch (&quot;Backtrace not available&quot;)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-04-22T14:09:10Z</time>, updated <time data-relative="true">2006-09-03T10:32:49Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user crash report:</p>
+<p>Host Name:      Jamies-Mac-mini Date/Time:      2006-04-21 11:24:26.219 -0400 OS Version:     10.4.6 (Build 8I127) Report Version: 4</p>
+<p>Command: Synergy Advance Path:    /Applications/Synergy Advance.app/Contents/MacOS/Synergy Advance Parent:  WindowServer [105]</p>
+<p>Version: Synergy Advance version 0.4b4 (1176.0) (0.4b4 (1176.0))</p>
+<p>PID:    17564 Thread: Unknown</p>
+<p>Exception:  EXC_BREAKPOINT (0x0006) Code[0]:    0x00000001 Code[1]:    0x907e181c</p>
+<p>Backtrace not available</p>
+<p>Unknown thread crashed with PPC Thread State 64:</p>
+<pre> srr0: 0x00000000907e181c srr1: 0x000000000002f030                        vrsave: 0x0000000000000000
+   cr: 0x24002082          xer: 0x0000000000000000   lr: 0x00000000907e1800  ctr: 0x000000009000b0a0
+   r0: 0x00000000907e1800   r1: 0x000000002dd3e350   r2: 0x0000000000000000   r3: 0x0000000000000006
+   r4: 0x0000000000000003   r5: 0x0000000000000000   r6: 0x0000000000000030   r7: 0x0000000000345703
+   r8: 0x0000000000000000   r9: 0x0000000000000006  r10: 0x000000002b600ad6  r11: 0x00000000a0006a28
+  r12: 0x000000009000b0a0  r13: 0x0000000000000000  r14: 0x0000000000000000  r15: 0x0000000000000000
+  r16: 0x000000002b556820  r17: 0x00000000c8031774  r18: 0x00000000e1005cd4  r19: 0x0000000091539dcc
+  r20: 0x0000000000000000  r21: 0x00000000a07d0c88  r22: 0x0000000000000000  r23: 0x00000000a07d0c88
+  r24: 0x0000000000000000  r25: 0x0000000000000000  r26: 0x00000000a07c7a74  r27: 0x000000002b5569f0
+  r28: 0x00000000a07c1724  r29: 0x0000000000000000  r30: 0x000000002b556b00  r31: 0x00000000907e1724</pre>
+<p>Binary Images Description:</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2649'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2649"><time data-relative="true">2006-04-22T14:14:33Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the submission. I've never seen a crash report like this (no backtrace, no binary images description). As such it doesn't really contain any information that I could use to determine the cause of the problem. </p>
+<p>Also I don't know exactly what &quot;EXC_BREAKPOINT&quot; means in this context. Perhaps you have some environment variable set that's a breakpoint to be set. My first step in trouble-shooting this one would therefore be trying to reproduce the problem under a different user account.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2650'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2650"><time data-relative="true">2006-07-05T02:07:46Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2651'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2651"><time data-relative="true">2006-09-03T10:32:49Z</time></a></span>
+</cite>
+<blockquote><p>Received another similar crash report from the same user:</p>
+<p>&quot;The update for 10.4.7 has been crashing my OS on the Mac mini G4 1.42 Ghz with 1 GB ram and 3 external drives.  I really don't think there's a problem with your code&quot;</p>
+<p>But will keep this issue open for investigation anyway.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy doesn't start at login
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy doesn&#39;t start at login</div>
+<h1 class='major'>Synergy doesn't start at login</h1>
+<div class='topic' id='topic_193'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/193"><time data-relative="true">2004-02-22T23:42:54Z</time></a>
+</span>
+</cite>
+<blockquote><p>I have &quot;Launch Synergy at login&quot; checked.  but every time I boot my machine, Synergy is nowhere to be found.  if I go into the control panel, the &quot;launch synergy at login&quot; is still checked, but I have to click the &quot;Start&quot; to get Synergy to run.</p>
+<p>It has worked fine, but stopped.</p>
+<p>Ideas?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_571'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_571"><time data-relative="true">2004-02-25T20:12:25Z</time></a></span>
+</cite>
+<blockquote><p>The most common cause of this type of problem is either:</p>
+<p>(1) You have more than one copy of Synergy installed</p>
+<p>or</p>
+<p>(2) Your loginwindow.plist has a &quot;stale&quot; entry in it pointing at an old copy of Synergy</p>
+<p>The solution for both cases:</p>
+<p>(1) Make sure you have the latest version (1.0a5 at the time of writing)</p>
+<p>(2) Run the installer and press the &quot;Uninstall&quot; button to get a list of all Synergy files on your computer. Perhaps there are two copies of the Synergy.prefPane in there?</p>
+<p>(3) In either case, remove the old copy/copies just to be sure, and reinstall.</p>
+<p>(4) In the preferences, uncheck the &quot;Launch Synergy at login&quot; checkbox and click &quot;Apply&quot; (this clears out any stale entry in the loginwindow.plist.</p>
+<p>(5) Re-check the checkbox and click &quot;Apply&quot;.</p>
+<p>Voila. Everything should work. It's unfortunate that some users hit this kind of problem when upgrading.</p>
+<p>I have an update to Install (1.1) waiting in the wings that wil remedy this issue entirely by making sure there are no stale entries in the loginwindow.plist file every time you install a new version of Synergy.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_572'>
+<cite>
+<a href="/users/peter">Peter</a>
+<span class='when'><a href="#comment_572"><time data-relative="true">2007-01-27T13:22:31Z</time></a></span>
+</cite>
+<blockquote><p>The uninstall/reinstall worked (probably should have thought of that myself:-) ). Thanks for the help, I really appreciate it.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

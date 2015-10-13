@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+get own skin running
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; get own skin running</div>
+<h1 class='major'>get own skin running</h1>
+<div class='topic' id='topic_33'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/mars">MarS</a>
+<span class='when'>
+<a href="/forums/synergy/topics/33"><time data-relative="true">2004-08-05T04:22:11Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>i made my own skin for Snyergy and want to try it out now... i followed the guidelines found at <a href="http://synergy.wincent.com/faq.html#buttonGraphics" class="external">http://synergy.wincent.com/faq.html#buttonGraphics</a> - but still, it doesn't appear in the available skins.</p>
+<p>I copied the files into two locations: -) ...:Users:...:Library:PreferencePanes:Synergy.PrefPane:Contents:Resources:Synergy:Contents:Resources:buttons:skinName (all six images) -) ...:Users:...:Library:PreferencePanes:Synergy.PrefPane:Contents:Resources:buttons:skinName (play, prev, next)</p>
+<p>What is missing? tia,</p>
+<p>--MarS</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_84'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_84"><time data-relative="true">2004-08-10T22:38:54Z</time></a></span>
+</cite>
+<blockquote><p>Very funny (well, not funny ha ha, but funny odd) - I just encountered the same problem! Any 'elp from anyone in the know would be greatly appreciated.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_85'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_85"><time data-relative="true">2004-08-12T18:59:29Z</time></a></span>
+</cite>
+<blockquote><p>There are two places where you have to install the button sets, and one catch to be aware of. First, the places:</p>
+<p>1. Synergy.prefPane/Contents/Resouces/Synergy.app/Contents/Resources/buttons/ (for use by the Synergy.app which you see in the menu bar)</p>
+<p>2. Synergy.prefPane/Contents/Resouces/buttons/ (for use in the preference pane)</p>
+<p>Now, the catch:</p>
+<p>Synergy doesn't rescan the contents of those internal directories to see when new sets are added. This means that you can't actually add a new set; rather you must replace an old one. In other words, you need to pick a set you don't like, and overwrite the images from that set with your new images.</p>
+<p>In Synergy Advance you'll be able to add/delete/download sets in a number of easy ways. So far I have plans to be able to do all this within the preferences, or with drag and drop, or by double-clicking sets in the Finder.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_86'>
+<cite>
+<a href="/users/mars">MarS</a>
+<span class='when'><a href="#comment_86"><time data-relative="true">2004-08-13T02:10:53Z</time></a></span>
+</cite>
+<blockquote><p>OK, thank you for your help, it finally works.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

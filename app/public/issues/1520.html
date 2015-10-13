@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1520: &quot;options not a hash&quot; error in Base class
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1520</div>
+<div class='issue' id='issue_1520'>
+<form class="edit_issue" id="edit_issue_1520" action="/issues/1520" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="5//pkLRzc3EIu/TemYYmelJ/0mIoXc5GvesvOV6fHWnTDVcnE/6pJNE3xymor3XO5/27XiOxQFqd9PrHekd6TQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1520:
+<span data-name='issue[summary]'>
+&quot;options not a hash&quot; error in Base class
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-26T18:46:45Z</time>, updated <time data-relative="true">2010-03-28T05:18:38Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>I've tried to try your vim plugin, but I get this error after installing and compiling the C part:</p>
+<pre>Error detected while processing /home/ktamas/.vim/plugin/command-t.vim:
+line  148:
+ArgumentError: /home/ktamas/.vim/ruby/command-t/base.rb:31:in
+`initialize': options not a hash</pre>
+<p>I'm probably missing something obvious...</p>
+<p>I'm using Ruby 1.9.1-p376.</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5452'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5452"><time data-relative="true">2010-03-27T04:19:37Z</time></a></span>
+</cite>
+<blockquote><p>As I commented in my reply to you via email, you're probably not missing something obvious. It's likely some subtle difference between your version of Ruby and the one I'm using here (1.8.7), or perhaps something fishy with your <code>LOAD_PATH</code>.</p>
+<p>I'm going to see if I can figure out what the cause might be.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5457'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5457"><time data-relative="true">2010-03-27T04:38:29Z</time></a></span>
+</cite>
+<blockquote><p>Having trouble seeing how this error could be appearing. The code flow is basically:</p>
+<ul>
+<li>in <code>command-t.vim</code>, we create a new controller object:</li>
+</ul>
+<pre class="ruby-syntax">$command_t = CommandT::Controller.new</pre>
+<ul>
+<li>in <code>controller.rb</code>, we set up a new <code>CommandT::Base</code> instance:</li>
+</ul>
+<pre class="ruby-syntax">@scanner = CommandT::Base.new nil,
+  :max_files =&gt; ...,
+  :max_depth =&gt; ... # etc</pre>
+<ul>
+<li>the initializer for <code>CommandT::Base</code> looks like this:</li>
+</ul>
+<pre class="ruby-syntax">def initialize path = Dir.pwd, options = {}
+  @scanner = Scanner.scanner path, options
+  @matcher = Matcher.new @scanner, options
+end</pre>
+<p>So it is a very short and simple call chain and I don't see how <code>options</code> could be anything but a hash here. At least in my manual testing in <code>irb</code> running under Ruby 1.9.1-p378 I definitely get a hash when using that pattern.</p>
+<p>There is one other <code>Base</code> class in the hierarchy (<code>CommandT::Scanner::Base</code>) and at first I wondered that might somehow be getting involved when it shouldn't be, but I can't really see how that could be happening.</p>
+<p>I am about to do a refactoring which gets rid of that other <code>Base</code> class in any case, so I might get you to try the next release of the plug-in and see if there is any change.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5459'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5459"><time data-relative="true">2010-03-27T07:09:08Z</time></a></span>
+</cite>
+<blockquote><p>Thing is, I don't get it either... it works for me in IRB too...</p>
+<pre>[ktamas@ainsley:~/.vim/ruby]$ irb
+irb(main):001:0&gt; require 'command-t/ext'
+=&gt; true
+irb(main):002:0&gt; require 'command-t/scanner'
+=&gt; true
+irb(main):003:0&gt; include CommandT
+=&gt; Object
+irb(main):004:0&gt; @scanner = Scanner.scanner(Dir.pwd, {})
+=&gt; #&lt;CommandT::Scanner::Ruby:0x8b94b40 @path=&quot;/home/ktamas/.vim/ruby&quot;, @max_depth=15, @max_files=10000, @scan_dot_directories=false, @excludes=[&quot;*.o&quot;, &quot;*.obj&quot;, &quot;.git&quot;]&gt;
+irb(main):005:0&gt; @matcher = Matcher.new(@scanner, {})
+=&gt; #&lt;CommandT::Matcher:0x8b453c4 @scanner=#&lt;CommandT::Scanner::Ruby:0x8b94b40 @path=&quot;/home/ktamas/.vim/ruby&quot;, @max_depth=15, @max_files=10000, @scan_dot_directories=false, @excludes=[&quot;*.o&quot;, &quot;*.obj&quot;, &quot;.git&quot;]&gt;, @always_show_dot_files=false, @never_show_dot_files=false&gt;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5460'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5460"><time data-relative="true">2010-03-27T08:40:16Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to release a new version shortly (0.4) in which I've refactored away some stuff to make the internals more simple.</p>
+<p>I'll get you to try that and if you're still seeing a problem we can investigate further.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5461'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5461"><time data-relative="true">2010-03-27T11:00:45Z</time></a></span>
+</cite>
+<blockquote><p>Ok, 0.4 is out now so if you can let me know if you're still having problems with that we'll get it sorted out.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5462'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5462"><time data-relative="true">2010-03-27T11:19:18Z</time></a></span>
+</cite>
+<blockquote><p>Same error with 0.4, same place (well, finder.rb:34, which is the same command). Very weird...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5463'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5463"><time data-relative="true">2010-03-27T11:26:41Z</time></a></span>
+</cite>
+<blockquote><p>Ok, well at least we've ruled out one possible cause (multiple <code>Base</code> classes at different points in the hierarchy). Right now I don't have any other suggestions but I'll think about it and add another comment when I come up with something.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5464'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5464"><time data-relative="true">2010-03-27T11:38:58Z</time></a></span>
+</cite>
+<blockquote><p>Okay, I've tried with the stock ruby of Fedora 12 (1.8.6) and it's working... so it's definitely ruby 1.9.1... somehow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5465'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5465"><time data-relative="true">2010-03-27T11:39:09Z</time></a></span>
+</cite>
+<blockquote><p>Just realized that the &quot;options not a hash&quot; message actually comes from <code>CommandT_option_from_hash</code> function in <code>ext.c</code>.</p>
+<p>You could try commenting out the check there:</p>
+<pre class="c-syntax">    if (TYPE(hash) != T_HASH)
+        rb_raise(rb_eArgError, &quot;options not a hash&quot;);</pre>
+<p>And then run <code>make</code> again and see if you get a different message.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5466'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5466"><time data-relative="true">2010-03-27T11:45:27Z</time></a></span>
+</cite>
+<blockquote><p>Okay, so if I compile it with Ruby 1.8, it works with 1.9 too, so I think we can narrow it down to the C part somewhere...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5467'>
+<cite>
+<a href="/users/ktamas">KTamas</a>
+<span class='when'><a href="#comment_5467"><time data-relative="true">2010-03-27T11:47:24Z</time></a></span>
+</cite>
+<blockquote><p>haha, just saw your message, I guess I guessed right :)</p>
+<p>I guess something changed in Ruby's C extension, indeed, then.</p>
+<p>By the way, the plugin is awesome, I love it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5468'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5468"><time data-relative="true">2010-03-27T14:42:44Z</time></a></span>
+</cite>
+<blockquote><p>Had a look at the <code>ruby.h</code> header for 1.8.7 and T_HASH is defined as:</p>
+<pre>[/tags/define #define] T_HASH   0x0b</pre>
+<p>Compare that with Ruby 1.9.1 where it's defined like this:</p>
+<pre>RUBY_T_HASH   = 0x08,
+...
+[/tags/define #define] T_HASH   RUBY_T_HASH</pre>
+<p>I wonder if when you're compiling the extension it is somehow picking up the wrong header file?</p>
+<p>In any case, I might be able to remove the check as the only &quot;user&quot; of the classes which perform the check is the Command-T controller itself (ie. it's not public <a href="/wiki/API">API</a>), so I can probably &quot;trust&quot; the input and let an exception be raised naturally if any third ever tries to pass in a non-hash options parameter.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5471'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5471"><time data-relative="true">2010-03-28T05:18:33Z</time></a></span>
+</cite>
+<blockquote><p>Ok, closing this one now. Will continue the discussion on the new <a href="/issues/1524">ticket #1524</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5472'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5472"><time data-relative="true">2010-03-28T05:18:38Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

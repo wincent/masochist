@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1909: Monitor git daemon with monit
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1909</div>
+<div class='issue' id='issue_1909'>
+<form class="edit_issue" id="edit_issue_1909" action="/issues/1909" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="RqrKPQ3K2YY2ge900yjzPu36W+wHlQl2QWO7ElvGBHhyWHSKqkcD0+8N3IPiAaCKWHgy0Ax5h2phfG7sfx5jXA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1909:
+<span data-name='issue[summary]'>
+Monitor git daemon with monit
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-11-09T08:58:13Z</time>, updated <time data-relative="true">2015-09-18T07:05:18Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Occasionally (a couple of times a year) I have to manually prod my <code>git daemon</code> (eg. see <a href="/issues/1908">issue #1908</a>).</p>
+<p>Would be nice to have monit take care of that (even though it doesn't natively speak the Git protocol, I am sure something can be whipped up).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_7230'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7230"><time data-relative="true">2011-11-09T09:18:19Z</time></a></span>
+</cite>
+<blockquote><p>Relevant docs here:</p>
+<ul>
+<li><a href="http://mmonit.com/monit/documentation/monit.html#program_status_testing" class="external">http://mmonit.com/monit/documentation/monit.html#program_status_testing</a></li>
+</ul>
+<blockquote>
+<p>You can check the exit status of a program or a script. This test may only be used within a program service entry in the Monit control file.</p>
+<p>An example:</p>
+<pre> check program myscript with path &quot;/usr/local/bin/myscript.sh&quot;
+       if status != 0 then alert</pre>
+<p>Monit will execute the program periodically and if the exit status of the program does not match the expected result, Monit can perform an action. In the example above, Monit will raise an alert if the exit value of myscript is different from 0. By convention, 0 means the program exited normally.</p>
+<p>Program checks are asynchronous. Meaning that Monit will not wait for the program to exit, but instead, Monit will start the program in the background and immediately continue checking the next service entry in monitrc. At the next cycle, Monit will check if the program has finished and if so, collect the programs exit status - if the status indicate a failure, Monit will raise an alert message containing the program's error (stderr) output, if any. If the program has not exited after the first cycle, Monit will wait another cycle and so on. If the program is still running after 5 minutes, Monit will kill it and generate a program timeout event. It is possible to override the default timeout (see the syntax below).</p>
+<p>The asynchronous nature of the program check allows for non-blocking behavior in the current Monit design, but it comes with a side-effect: when the program has finished executing and is waiting for Monit to collect the result, it becomes a so-called &quot;zombie&quot; process. A zombie process does not consume any system resources (only the PID remains in use) and it is under Monit's control; The zombie process is removed from the system as soon as Monit collects the exit status. This means that every &quot;check program&quot; will be associated with either a running process or a temporary zombie. This unwanted zombie side-effect will be removed in a later release of Monit.</p>
+<p>The syntax of the program status statement is:</p>
+<pre>IF STATUS operator value [TIMEOUT &lt;N&gt; SECONDS] [[&lt;X&gt;] &lt;Y&gt; CYCLES] THEN action [ELSE IF SUCCEEDED [[&lt;X&gt;] &lt;Y&gt; CYCLES] THEN action]</pre>
+<p>operator is a choice of &quot;&lt;&quot;,&quot;&gt;&quot;,&quot;!=&quot;,&quot;==&quot; in c notation, &quot;gt&quot;, &quot;lt&quot;, &quot;eq&quot;, &quot;ne&quot; in shell sh notation and &quot;greater&quot;, &quot;less&quot;, &quot;equal&quot;, &quot;notequal&quot; in human readable form (if not specified, default is EQUAL).</p>
+<p>action is a choice of &quot;ALERT&quot;, &quot;RESTART&quot;, &quot;START&quot;, &quot;STOP&quot;, &quot;EXEC&quot; or &quot;UNMONITOR&quot;.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7472'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7472"><time data-relative="true">2012-03-05T00:06:35Z</time></a></span>
+</cite>
+<blockquote><p>Just happened again (had to kill off some stale processes manually; xinetd was refusing to launch any more as the limit had been reached).</p>
+<p>Could also look at using nagios, although it may be overkill for this use case.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7492'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7492"><time data-relative="true">2012-03-27T13:18:25Z</time></a></span>
+</cite>
+<blockquote><p>not working i tried many times</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7547'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7547"><time data-relative="true">2012-06-09T20:25:53Z</time></a></span>
+</cite>
+<blockquote><p>Just happened again (<a href="/issues/1981">issue #1981</a>).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7548'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7548"><time data-relative="true">2012-06-10T00:48:06Z</time></a></span>
+</cite>
+<blockquote><p>I've turned off the old xinetd-based management and replaced it with <a href="/wiki/monit">monit</a> running directly from <code>/etc/inittab</code> and set to manage <a href="/wiki/Git">Git</a> using <a href="/snippets/75">this init.d script</a>. If a connection to port 9418 is refused the daemon will be restarted. Checks happen every 30 seconds.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7549'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7549"><time data-relative="true">2012-06-10T00:48:10Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12829'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12829"><time data-relative="true">2014-10-17T15:19:48Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> closed</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_12830'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_12830"><time data-relative="true">2014-10-17T15:20:50Z</time></a></span>
+</cite>
+<blockquote><p>I'm reopening this one. It still happens from time to time. Monitoring on port 9418 is not enough; I think I'll need to use a script that attempts to perform a successful clone of a repo, and if that fails, be prepared to <code>kill -9</code> the dead <code>git-daemon</code> process which is holding onto the port but not serving traffic.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13167'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13167"><time data-relative="true">2015-09-18T06:03:13Z</time></a></span>
+</cite>
+<blockquote><p>And <a href="https://github.com/wincent/command-t/issues/172" class="external">it just happened again</a>...</p>
+<p>This time I noticed not only a bunch of stale <code>git-daemon</code> processes lingering around, but also <code>git-upload-pack</code> ones too.</p>
+<p>For both of these, a <code>sudo pkill git-daemon</code>/<code>sudo pkill git-upload-pack</code> only killed off some of them; the others needed the <code>-9</code> treatment as well. Overall, the sequence looks like:</p>
+<pre class="shell-syntax">$ sudo monit stop git
+$ sudo pkill git-daemon
+$ sudo pkill -9 git-daemon
+$ sudo pkill git-upload-pack
+$ sudo pkill -9 git-upload-pack
+$ sudo monit stop git</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13168'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13168"><time data-relative="true">2015-09-18T07:01:54Z</time></a></span>
+</cite>
+<blockquote><p>Looking at using something hacky like:</p>
+<pre>check program git-clone
+  with path &quot;/bin/sh -c 'cd $(/bin/mktemp -d) &amp;&amp; /usr/bin/git clone --bare --depth 1 --quiet --single-branch git://git.wincent.com/wincent.git'&quot;
+  if status != 0
+  then exec &quot;/usr/bin/pkill git-daemon &amp;&amp; /usr/bin/pkill git-upload-pack &amp;&amp; sleep 5 &amp;&amp; /usr/bin/pkill -9 git-daemon &amp;&amp; /usr/bin/pkill -9 git-upload-pack&quot;</pre>
+<p>Doesn't work though:</p>
+<pre>/etc/monit.d/git:7: Error: syntax error 'git-clone'</pre>
+<p>So either I am doing it wrong or my version of monit is too ancient to support this.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13169'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13169"><time data-relative="true">2015-09-18T07:05:18Z</time></a></span>
+</cite>
+<blockquote><p>And <a href="http://lists.nongnu.org/archive/html/monit-general/2011-12/msg00031.html" class="external">there it is</a>:</p>
+<blockquote>
+<p>the &quot;check program&quot; requires monit 5.3 or newer</p>
+</blockquote>
+<p>But I am on an older version:</p>
+<pre class="shell-syntax">$ yum list installed|grep monit
+monit.x86_64                          5.2.5-3.11.amzn1             @amzn-main</pre>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

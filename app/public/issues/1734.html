@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1734: commits#show chokes on mode-changing diffs
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1734</div>
+<div class='issue' id='issue_1734'>
+<form class="edit_issue" id="edit_issue_1734" action="/issues/1734" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/YJdrTwth3kllZCiUNlibAwA8xDLTOc6L26FuiEQPT/JcOMam6BdLPwZo1Vh8DHYuYKaLMCgaSYPcVBEBchaGw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1734:
+<span data-name='issue[summary]'>
+commits#show chokes on mode-changing diffs
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-11-11T07:28:55Z</time>, updated <time data-relative="true">2010-11-12T20:49:39Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p><a href="/repos/wikitext/commits/3870f90b262cf825e6dfdd83090626cf1e5826d5">This commit</a>, for example:</p>
+<pre class="diff-syntax">commit 3870f90b262cf825e6dfdd83090626cf1e5826d5
+Author: Wincent Colaiuta &lt;win@wincent.com&gt;
+Date:   Mon Feb 18 22:47:22 2008 +0100
+
+    Correct file mode on spec files
+    
+    Two spec files were missing the executable bit.
+    
+    Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+
+diff --git a/spec/indentation_spec.rb b/spec/indentation_spec.rb
+old mode 100644
+new mode 100755
+diff --git a/spec/regressions_spec.rb b/spec/regressions_spec.rb
+old mode 100644
+new mode 100755</pre>
+<p>Raises a <code>Git::Commit::MalformedDiffError</code>, with message, &quot;malformed diff output for line: diff --git a/spec/regressions_spec.rb b/spec/regressions_spec.rb&quot;.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6444'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6444"><time data-relative="true">2010-11-11T07:29:12Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> commits#show chokes on diffs mode-changing diffs</li>
+<li><strong>To:</strong> commits#show chokes on mode-changing diffs</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6447'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6447"><time data-relative="true">2010-11-12T19:58:56Z</time></a></span>
+</cite>
+<blockquote><p>Raw output:</p>
+<pre class="shell-syntax">$ git diff-tree --numstat -p --patience --root 3870f90b262cf825e6dfdd83090626cf1e5826d5
+3870f90b262cf825e6dfdd83090626cf1e5826d5
+0&#x0009;0&#x0009;spec/indentation_spec.rb
+0&#x0009;0&#x0009;spec/regressions_spec.rb
+
+diff --git a/spec/indentation_spec.rb b/spec/indentation_spec.rb
+old mode 100644
+new mode 100755
+diff --git a/spec/regressions_spec.rb b/spec/regressions_spec.rb
+old mode 100644
+new mode 100755</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6448'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6448"><time data-relative="true">2010-11-12T20:49:30Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the crash is fixed. The actual diff output for these mode-only-changes isn't very interesting though. Will open a separate ticket for that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6449'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6449"><time data-relative="true">2010-11-12T20:49:39Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

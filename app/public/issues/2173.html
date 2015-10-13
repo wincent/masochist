@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2173: 6.0a Synergy Preferences crashes immediately upon launch :(
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2173</div>
+<div class='issue' id='issue_2173'>
+<form class="edit_issue" id="edit_issue_2173" action="/issues/2173" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="zAR4zbIabXb94pIp9YVAvmZQlGAeqeRsjkyUAX4DB6T49sZ6FZe3IyRuod7ErBMK09L9XBVFanCuU0H/WttggA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2173:
+<span data-name='issue[summary]'>
+6.0a Synergy Preferences crashes immediately upon launch :(
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-05-21T13:40:37Z</time>, updated <time data-relative="true">2014-06-04T01:28:22Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>6.0a Synergy Preferences crashes immediately upon launch :(</p>
+<p>Problem Details and System Config</p>
+<pre>Crashed Thread:  0  Dispatch queue: com.apple.main-thread
+
+Exception Type:  EXC_BAD_ACCESS (SIGSEGV)
+Exception Codes: EXC_I386_GPFLT
+
+Application Specific Information:
+objc_msgSend() selector name: _cfTypeID
+
+
+Thread 0 Crashed:: Dispatch queue: com.apple.main-thread
+0   libobjc.A.dylib               &#x0009;0x00007fff95a7a097 objc_msgSend + 23
+1   com.apple.LaunchServices      &#x0009;0x00007fff92c5803d LSSharedFileListItemRemove + 105
+2   com.wincent.SynergyPreferences&#x0009;0x000000010868c847 -[WOLoginItemList removeItem:andRefresh:] + 327
+3   com.wincent.SynergyPreferences&#x0009;0x000000010868c391 -[WOLoginItemList removeItemsWithName:] + 625
+4   com.wincent.SynergyPreferences&#x0009;0x00000001086959eb -[WOSynergyPreferencesController updateLoginItems] + 123
+5   com.wincent.SynergyPreferences&#x0009;0x0000000108695fc3 -[WOSynergyPreferencesController awakeFromNib] + 595
+6   com.apple.CoreFoundation      &#x0009;0x00007fff9531a3b9 -[NSSet makeObjectsPerformSelector:] + 201
+7   com.apple.AppKit              &#x0009;0x00007fff939deb1d -[NSIBObjectData nibInstantiateWithOwner:topLevelObjects:] + 1157
+8   com.apple.AppKit              &#x0009;0x00007fff939d35ee loadNib + 327
+9   com.apple.AppKit              &#x0009;0x00007fff939d2b8c +[NSBundle(NSNibLoading) _loadNibFile:nameTable:withZone:ownerBundle:] + 288
+10  com.apple.AppKit              &#x0009;0x00007fff939d297c -[NSBundle(NSNibLoading) loadNibNamed:owner:topLevelObjects:] + 197
+11  com.apple.AppKit              &#x0009;0x00007fff939d276b +[NSBundle(NSNibLoading) loadNibNamed:owner:] + 357
+12  com.apple.AppKit              &#x0009;0x00007fff939ce5b7 NSApplicationMain + 448
+13  com.wincent.SynergyPreferences&#x0009;0x0000000108688ef2 main + 34
+14  libdyld.dylib                 &#x0009;0x00007fff8c7da5fd start + 1</pre>
+<p>Full dump <a href="/snippets/1075">here</a>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_11588'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11588"><time data-relative="true">2014-05-21T13:58:23Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. I can't reproduce this locally, but the likely candidate seems to be a bad ARC conversion in the class at the top of the stack trace. I'll double-check it and see if I can find the defect.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11589'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11589"><time data-relative="true">2014-05-21T14:57:35Z</time></a></span>
+</cite>
+<blockquote><p>Hmm. I've just been poring over the code for nearly an hour and can't spot the flaw:</p>
+<ul>
+<li><a href="http://git.wincent.com/WOPublic.git/blob/HEAD:/WOLoginItemList.m" class="external">http://git.wincent.com/WOPublic.git/blob/HEAD:/WOLoginItemList.m</a></li>
+<li><a href="http://git.wincent.com/WOPublic.git/blob/HEAD:/WOLoginItem.m" class="external">http://git.wincent.com/WOPublic.git/blob/HEAD:/WOLoginItem.m</a></li>
+</ul>
+<p>I'll revisit this later. Let me know if you have any suggestions.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11590'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11590"><time data-relative="true">2014-05-21T15:52:14Z</time></a></span>
+</cite>
+<blockquote><p>Other reports of this in <a href="http://www.macupdate.com/app/mac/10042/synergy" class="external">the comments here</a>, and also a workaround:</p>
+<blockquote>
+<p>You can fix it by following these steps if that's the case for you too.</p>
+<p>Open &quot;System Preferences&quot;</p>
+<ol>
+<li>Select &quot;Users &amp; Groups&quot;</li>
+<li>Pick your account</li>
+<li>Choose &quot;Login Items&quot; tab on the right side.</li>
+<li>Select &quot;Synergy&quot; and then click the &quot;-&quot; button.</li>
+</ol>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11591'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11591"><time data-relative="true">2014-05-21T16:08:49Z</time></a></span>
+</cite>
+<blockquote><p>I just pushed a <a href="http://git.wincent.com/WOPublic.git/commitdiff/7108eeb6aee71df7d7b43ee0277fa910e95f66a5" class="external">possible fix</a>, but as I can't repro the issue, I don't know for sure.</p>
+<p>You can get the build containing that change from:</p>
+<ul>
+<li><a href="http://s3.wincent.com/synergy/releases/synergy-6.0a2.zip" class="external">http://s3.wincent.com/synergy/releases/synergy-6.0a2.zip</a></li>
+</ul>
+<p>If you try it out, let me know how it goes.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11592'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11592"><time data-relative="true">2014-05-21T16:15:41Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_11596'>
+<cite>
+<a href="/users/larry-larraga">Larry Larraga</a>
+<span class='when'><a href="#comment_11596">Created <time data-relative="true">2014-05-22T20:15:22Z</time>, edited <time data-relative="true">2014-05-23T03:15:48Z</time></a></span>
+</cite>
+<blockquote><p>Unfortunately 6.0a2 didn&#x2019;t change the crashing:</p>
+<pre>Crashed Thread:  0  Dispatch queue: com.apple.main-thread
+
+Exception Type:  EXC_BAD_ACCESS (SIGSEGV)
+Exception Codes: EXC_I386_GPFLT
+
+Application Specific Information:
+objc_msgSend() selector name: baseURL
+
+
+Thread 0 Crashed:: Dispatch queue: com.apple.main-thread
+0   libobjc.A.dylib               &#x0009;0x00007fff95a7a097 objc_msgSend + 23
+1   com.apple.CoreFoundation      &#x0009;0x00007fff952ccc58 CFURLGetFileSystemRepresentation + 184
+2   com.wincent.SynergyPreferences&#x0009;0x0000000102e4188e -[WOLoginItem initWithRef:global:] + 974
+3   com.wincent.SynergyPreferences&#x0009;0x0000000102e41452 +[WOLoginItem sessionLoginItemWithRef:] + 66
+4   com.wincent.SynergyPreferences&#x0009;0x0000000102e4272f -[WOLoginItemList refreshList] + 591
+5   com.wincent.SynergyPreferences&#x0009;0x0000000102e42356 -[WOLoginItemList initWithOptions:] + 326
+6   com.wincent.SynergyPreferences&#x0009;0x0000000102e42450 +[WOLoginItemList loginItems:] + 64
+7   com.wincent.SynergyPreferences&#x0009;0x0000000102e424cd +[WOLoginItemList sessionLoginItems] + 45
+8   com.wincent.SynergyPreferences&#x0009;0x0000000102e4c9a1 -[WOSynergyPreferencesController updateLoginItems] + 49
+9   com.wincent.SynergyPreferences&#x0009;0x0000000102e4cfc3 -[WOSynergyPreferencesController awakeFromNib] + 595
+10  com.apple.CoreFoundation      &#x0009;0x00007fff9531a3b9 -[NSSet makeObjectsPerformSelector:] + 201
+11  com.apple.AppKit              &#x0009;0x00007fff939deb1d -[NSIBObjectData nibInstantiateWithOwner:topLevelObjects:] + 1157
+12  com.apple.AppKit              &#x0009;0x00007fff939d35ee loadNib + 327
+13  com.apple.AppKit              &#x0009;0x00007fff939d2b8c +[NSBundle(NSNibLoading) _loadNibFile:nameTable:withZone:ownerBundle:] + 288
+14  com.apple.AppKit              &#x0009;0x00007fff939d297c -[NSBundle(NSNibLoading) loadNibNamed:owner:topLevelObjects:] + 197
+15  com.apple.AppKit              &#x0009;0x00007fff939d276b +[NSBundle(NSNibLoading) loadNibNamed:owner:] + 357
+16  com.apple.AppKit              &#x0009;0x00007fff939ce5b7 NSApplicationMain + 448
+17  com.wincent.SynergyPreferences&#x0009;0x0000000102e3ff02 main + 34
+18  libdyld.dylib                 &#x0009;0x00007fff8c7da5fd start + 1</pre>
+<p>Full dump <a href="/snippets/1076">here</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11597'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11597"><time data-relative="true">2014-05-23T02:46:55Z</time></a></span>
+</cite>
+<blockquote><p>Excellent. Thanks for the new stacktrace.</p>
+<p>This is good, as the crashing trace is different, so I think the original issue is fixed. I'll see if I can find a likely cause of this crash too.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11598'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11598"><time data-relative="true">2014-05-23T03:13:02Z</time></a></span>
+</cite>
+<blockquote><p>Found the bug and just pushed <a href="http://git.wincent.com/WOPublic.git/commitdiff/e0a44de93a49d6d09dd22a7258b72d380609136e" class="external">a fix</a>.</p>
+<p>You can get the build containing that change from:</p>
+<p><a href="http://s3.wincent.com/synergy/releases/synergy-6.0a3.zip" class="external">http://s3.wincent.com/synergy/releases/synergy-6.0a3.zip</a></p>
+<p>Let me know how it goes.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_11643'>
+<cite>
+<a href="/users/larry-larraga">Larry Larraga</a>
+<span class='when'><a href="#comment_11643"><time data-relative="true">2014-05-27T17:02:09Z</time></a></span>
+</cite>
+<blockquote><p>So, a little closer. If I start Synergy Prefs 6.0a3 with Synergy closed, it&#x2019;s opens fine and I can do whatever in the app. Synergy controls iTunes fine. If I try to open it with Synergy running however, the Pref app crashes. The menu applet still works fine; the floater comes up and everything.</p>
+<pre>Crashed Thread:  0  Dispatch queue: com.apple.main-thread
+
+Exception Type:  EXC_BAD_ACCESS (SIGSEGV)
+Exception Codes: EXC_I386_GPFLT
+
+Application Specific Information:
+objc_msgSend() selector name: _cfTypeID
+
+
+Thread 0 Crashed:: Dispatch queue: com.apple.main-thread
+0   libobjc.A.dylib               &#x0009;0x00007fff95a7a097 objc_msgSend + 23
+1   com.apple.LaunchServices      &#x0009;0x00007fff92c5803d LSSharedFileListItemRemove + 105
+2   com.wincent.SynergyPreferences&#x0009;0x0000000105133847 -[WOLoginItemList removeItem:andRefresh:] + 327
+3   com.wincent.SynergyPreferences&#x0009;0x0000000105133391 -[WOLoginItemList removeItemsWithName:] + 625
+4   com.wincent.SynergyPreferences&#x0009;0x000000010513c9eb -[WOSynergyPreferencesController updateLoginItems] + 123
+5   com.wincent.SynergyPreferences&#x0009;0x000000010513cfc3 -[WOSynergyPreferencesController awakeFromNib] + 595
+6   com.apple.CoreFoundation      &#x0009;0x00007fff9531a3b9 -[NSSet makeObjectsPerformSelector:] + 201
+7   com.apple.AppKit              &#x0009;0x00007fff939deb1d -[NSIBObjectData nibInstantiateWithOwner:topLevelObjects:] + 1157
+8   com.apple.AppKit              &#x0009;0x00007fff939d35ee loadNib + 327
+9   com.apple.AppKit              &#x0009;0x00007fff939d2b8c +[NSBundle(NSNibLoading) _loadNibFile:nameTable:withZone:ownerBundle:] + 288
+10  com.apple.AppKit              &#x0009;0x00007fff939d297c -[NSBundle(NSNibLoading) loadNibNamed:owner:topLevelObjects:] + 197
+11  com.apple.AppKit              &#x0009;0x00007fff939d276b +[NSBundle(NSNibLoading) loadNibNamed:owner:] + 357
+12  com.apple.AppKit              &#x0009;0x00007fff939ce5b7 NSApplicationMain + 448
+13  com.wincent.SynergyPreferences&#x0009;0x000000010512ff02 main + 34
+14  libdyld.dylib                 &#x0009;0x00007fff8c7da5fd start + 1</pre>
+<p>Full stack trace <a href="/snippets/1078">here</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11644'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11644"><time data-relative="true">2014-05-27T17:06:09Z</time></a></span>
+</cite>
+<blockquote><p>This one is very similar to the original stack trace posted with this bug report. I'll take another look at that code and see if there's anything else we can try. Thanks for the report.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11761'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11761"><time data-relative="true">2014-06-03T03:30:45Z</time></a></span>
+</cite>
+<blockquote><p>This time I was able to reproduce the crash, so hopefully I have a definitive fix for it in version 6.0a4, which is available for download now:</p>
+<p><a href="http://s3.wincent.com/synergy/releases/synergy-6.0a4.zip" class="external">http://s3.wincent.com/synergy/releases/synergy-6.0a4.zip</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_11776'>
+<cite>
+<a href="/users/larry-larraga">Larry Larraga</a>
+<span class='when'><a href="#comment_11776">Created <time data-relative="true">2014-06-03T13:14:56Z</time>, edited <time data-relative="true">2014-06-04T01:28:10Z</time></a></span>
+</cite>
+<blockquote><p>That did it! Thanks Wincent.</p>
+<p>--Larry</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11785'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11785"><time data-relative="true">2014-06-04T01:28:22Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

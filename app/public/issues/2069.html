@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #2069: Update to Git 1.8.1.5
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #2069</div>
+<div class='issue' id='issue_2069'>
+<form class="edit_issue" id="edit_issue_2069" action="/issues/2069" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="dpSozKoeG+zai3SXkmaI5GqAqPR7UQFTjKgEDumMnCVCZhZ7DZPBuQMHR2CjT9tQ3wLByHC9j0+st9HwzVT7AQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #2069:
+<span data-name='issue[summary]'>
+Update to Git 1.8.1.5
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-03-02T10:21:46Z</time>, updated <time data-relative="true">2013-03-04T00:11:55Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From the announcement to the <a href="/wiki/Git_mailing_list">Git mailing list</a>:</p>
+<pre>The latest maintenance release Git v1.8.1.5 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+3349a15de7c5501715bda9b68301d0406272f8e0  git-1.8.1.5.tar.gz
+84d832fc70a053e97ce336c4a0af0371461e469f  git-htmldocs-1.8.1.5.tar.gz
+7f211a2f8fe36180373a20b32eb930018883bfd1  git-manpages-1.8.1.5.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.1.5
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.8.1.5 Release Notes
+=========================
+
+Fixes since v1.8.1.4
+--------------------
+
+ * Given a string with a multi-byte character that begins with '-' on
+   the command line where an option is expected, the option parser
+   used just one byte of the unknown letter when reporting an error.
+
+ * In v1.8.1, the attribute parser was tightened too restrictive to
+   error out upon seeing an entry that begins with an ! (exclamation),
+   which may confuse users to expect a &quot;negative match&quot;, which does
+   not exist.  This has been demoted to a warning; such an entry is
+   still ignored.
+
+ * &quot;git apply --summary&quot; has been taught to make sure the similarity
+   value shown in its output is sensible, even when the input had a
+   bogus value.
+
+ * &quot;git clean&quot; showed what it was going to do, but sometimes ended
+   up finding that it was not allowed to do so, which resulted in a
+   confusing output (e.g. after saying that it will remove an
+   untracked directory, it found an embedded git repository there
+   which it is not allowed to remove).  It now performs the actions
+   and then reports the outcome more faithfully.
+
+ * &quot;git clone&quot; used to allow --bare and --separate-git-dir=$there
+   options at the same time, which was nonsensical.
+
+ * &quot;git cvsimport&quot; mishandled timestamps at DST boundary.
+
+ * We used to have an arbitrary 32 limit for combined diff input,
+   resulting in incorrect number of leading colons shown when showing
+   the &quot;--raw --cc&quot; output.
+
+ * The smart HTTP clients forgot to verify the content-type that comes
+   back from the server side to make sure that the request is being
+   handled properly.
+
+ * &quot;git help remote-helpers&quot; failed to find the documentation.
+
+ * &quot;gitweb&quot; pages served over HTTPS, when configured to show picon or
+   gravatar, referred to these external resources to be fetched via
+   HTTP, resulting in mixed contents warning in browsers.
+
+Also contains various documentation fixes.
+
+----------------------------------------------------------------
+
+Changes since v1.8.1.4 are as follows:
+
+Andrej E Baranov (1):
+      gitweb: refer to picon/gravatar images over the same scheme
+
+Andrew Wong (1):
+      Documentation/githooks: Fix linkgit
+
+Asheesh Laroia (1):
+      git-mergetool: print filename when it contains %
+
+Ben Walton (3):
+      Move Git::SVN::get_tz to Git::get_tz_offset
+      perl/Git.pm: fix get_tz_offset to properly handle DST boundary cases
+      cvsimport: format commit timestamp ourselves without using strftime
+
+Brad King (1):
+      Documentation/submodule: Add --force to update synopsis
+
+David Aguilar (3):
+      mergetools/p4merge: Honor $TMPDIR for the /dev/null placeholder
+      difftool--helper: fix printf usage
+      p4merge: fix printf usage
+
+Erik Faye-Lund (1):
+      parse-options: report uncorrupted multi-byte options
+
+Greg Price (1):
+      Documentation: &quot;advice&quot; is uncountable
+
+Jeff King (2):
+      http_request: reset &quot;type&quot; strbuf before adding
+      Makefile: avoid infinite loop on configure.ac change
+
+Jiang Xin (1):
+      Add utf8_fprintf helper that returns correct number of columns
+
+John Keeping (3):
+      Rename {git- =&gt; git}remote-helpers.txt
+      builtin/apply: tighten (dis)similarity index parsing
+      t4038: add tests for &quot;diff --cc --raw &lt;trees&gt;&quot;
+
+Junio C Hamano (7):
+      doc: mention tracking for pull.default
+      combine-diff: lift 32-way limit of combined diff
+      t5551: fix expected error output
+      user-manual: typofix (ofthe-&gt;of the)
+      Prepare for 1.8.1.5
+      Update draft release notes to 1.8.1.5
+      Git 1.8.1.5
+
+Matthieu Moy (1):
+      git.txt: update description of the configuration mechanism
+
+Michael J Gruber (1):
+      git-bisect.txt: clarify that reset quits bisect
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (1):
+      clone: forbid --bare --separate-git-dir &lt;dir&gt;
+
+Shawn O. Pearce (1):
+      Verify Content-Type from smart HTTP servers
+
+Thomas Rast (1):
+      Make !pattern in .gitattributes non-fatal
+
+W. Trevor King (4):
+      user-manual: Update for receive.denyCurrentBranch=refuse
+      user-manual: Reorganize the reroll sections, adding 'git rebase -i'
+      user-manual: Use request-pull to generate &quot;please pull&quot; text
+      user-manual: Flesh out uncommitted changes and submodule updates
+
+Zoltan Klinger (1):
+      git-clean: Display more accurate delete messages</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10175'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10175"><time data-relative="true">2013-03-04T00:11:52Z</time></a></span>
+</cite>
+<blockquote><p>Done.</p>
+<p>Not going to do this on all the machines I control (laptop, workstation: yes; EC2 machines: no).</p>
+<p>Marking as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10176'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10176"><time data-relative="true">2013-03-04T00:11:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

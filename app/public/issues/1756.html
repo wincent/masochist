@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1756: Add in-Vim automated tests
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1756</div>
+<div class='issue' id='issue_1756'>
+<form class="edit_issue" id="edit_issue_1756" action="/issues/1756" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="hKu9wZoFKpt7lSkLhR0obWDPfBbwxi3xAEFc6VMu/auwWQN2PYjwzqIZGvy0NHvZ1U0VKvsqo+0gXokXd/aajw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1756:
+<span data-name='issue[summary]'>
+Add in-Vim automated tests
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-12-06T20:43:12Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This came up on the vim_use mailing list in <a href="http://groups.google.com/group/vim_use/browse_thread/thread/f29873ee94677928" class="external">this thread</a>. Plenty of interesting links in there:</p>
+<ul>
+<li><a href="http://groups.google.com/group/vim_dev/browse_frm/thread/2d9463e7b167ce23/ca5ae493f061a8af" class="external">http://groups.google.com/group/vim_dev/browse_frm/thread/2d9463e7b167ce23/ca5ae493f061a8af</a></li>
+<li><a href="http://code.google.com/p/lh-vim/wiki/UT" class="external">http://code.google.com/p/lh-vim/wiki/UT</a></li>
+<li><a href="https://github.com/dsummersl/vimunit" class="external">https://github.com/dsummersl/vimunit</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=2565" class="external">http://www.vim.org/scripts/script.php?script_id=2565</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=2213" class="external">http://www.vim.org/scripts/script.php?script_id=2213</a></li>
+<li><a href="https://github.com/tomtom/spec_vim" class="external">https://github.com/tomtom/spec_vim</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=1489" class="external">http://www.vim.org/scripts/script.php?script_id=1489</a></li>
+<li><a href="http://bitbucket.org/sjl/gundo.vim/src/tip/tests/" class="external">http://bitbucket.org/sjl/gundo.vim/src/tip/tests/</a></li>
+</ul>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6515'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6515"><time data-relative="true">2010-12-06T20:44:59Z</time></a></span>
+</cite>
+<blockquote><p>More links:</p>
+<ul>
+<li>vimUnit: <a href="http://www.vim.org/scripts/script.php?script_id=1125" class="external">http://www.vim.org/scripts/script.php?script_id=1125</a></li>
+<li>tAssert: <a href="http://www.vim.org/scripts/script.php?script_id=1730" class="external">http://www.vim.org/scripts/script.php?script_id=1730</a></li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

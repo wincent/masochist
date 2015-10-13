@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+playpause - play and pause
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; playpause - play and pause</div>
+<h1 class='major'>playpause - play and pause</h1>
+<div class='topic' id='topic_151'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/krook">Krook</a>
+<span class='when'>
+<a href="/forums/synergy/topics/151"><time data-relative="true">2006-05-05T16:27:11Z</time></a>
+</span>
+</cite>
+<blockquote><p>Only one single &quot;bug&quot; has annoyed me in Synergy - otherwise very happy with it. To my surprise i discover today that it is an iTunes bug and that you have fixed it in the latest Synergy Advance beta. I am of course talking about the playpause vs. play and pause you talk about  -  here </p>
+<p>Any chance you could do the same for Synergy - I am not comfortable with Advance in its current beta yet  </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_429'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_429"><time data-relative="true">2006-05-06T05:20:38Z</time></a></span>
+</cite>
+<blockquote><p>I've made an entry in the feature requests database for this one:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=420" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=420</a></p>
+<p>It is certainly possible to implement this feature in Synergy but because of the different comms engine it's not as straight forward to do it cleanly. The main difference is that Synergy Advance uses threaded communications so the user interface should remain responsive no matter what iTunes is doing, even if it blocks communication indefinitely; Synergy, on the other hand, does its comms with iTunes from the main thread and so is vulnerable to beach-balling if iTunes ever fails to respond.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_430'>
+<cite>
+<a href="/users/krook">Krook</a>
+<span class='when'><a href="#comment_430"><time data-relative="true">2006-05-06T11:38:29Z</time></a></span>
+</cite>
+<blockquote><p>Thank you</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

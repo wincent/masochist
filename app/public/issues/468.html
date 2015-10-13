@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #468: REQUEST: Display Floater on new primary display after connecting second monitor
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #468</div>
+<div class='issue' id='issue_468'>
+<form class="edit_issue" id="edit_issue_468" action="/issues/468" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="+VPLHv6lWRGDdtlKelPvCGSdEhbzVuVLoQQ68O8GVLDNoXWpWSiDRFr66r1Lery80R97Kvi6a1eBG+8Oy94zlA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #468:
+<span data-name='issue[summary]'>
+REQUEST: Display Floater on new primary display after connecting second monitor
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-09-12T00:49:02Z</time>, updated <time data-relative="true">2007-05-15T08:14:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-343">bugzilla user 343</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When invoking the floater after attaching a second display (which becomes the primary) the floater still displays on the former primary display, whereas it should respect the Primary Display setting from Displays.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2786'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2786"><time data-relative="true">2006-09-12T03:19:53Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the report, Chris. Unfortunately I don't have a multi-monitor set-up (working on an iMac) so can you please supply some more information to help me figure this out?</p>
+<p>How do other apps behave when you connect a second monitor and make it the primary display? I know from memory that if you switch primary displays that some things will move from one display to another (the Dock, the menu bar, the icons on the Desktop) but I cannot remember how other applications behave. I ask this because basically I want Synergy to behave like other apps, excluding exceptional cases like the Dock.</p>
+<p>For the record, Synergy stores the Floater location in the preferences as three values: X position, Y position, and the index of the screen on which it lies (as provided by Cocoa; note that this is not a simple index like &quot;0&quot; or &quot;1&quot;, but rather is an ID number like &quot;69670400&quot;). Evidently when you change primary displays these index numbers appear to remain constant. I am not sure how one would approach this problem. Synergy already watches for NSApplicationDidChangeScreenParametersNotifications, but those notifications don't tell you what changed; they only tell you that something changed. It is not a straightforward problem, as far as I can tell; imagine the three-monitor case; there are three possible permutations:</p>
+<p>1. Floater is on primary display, that display loses primary status 2. Floater is on non-primary display, the other two displays switch primary status 3. Floater is on non-primary display, that display gains primary status</p>
+<p>It's not really clear to me what Synergy should do in these different cases. I understand from your report, Chris, that in case &quot;1&quot; you would expect the Floater to move from the old primary display to the new primary display. But in case &quot;2&quot; what should it do? Nothing? In case &quot;3&quot; what would you expect it to do?  For symmetry with case &quot;1&quot; you'd expect it to change displays so to continue on a non-primary display, but the question is, to which of the other displays should it move?</p>
+<p>This complexity is precisely why Synergy just tracks the index number of the screen and tries to stay on the same screen. If you can shed any light on how it could handle the more complex cases that would be great.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2787'>
+<cite>
+<a href="/users/john-ciccarelli">John Ciccarelli</a>
+<span class='when'><a href="#comment_2787"><time data-relative="true">2007-05-14T15:29:20Z</time></a></span>
+</cite>
+<blockquote><p>I think this is a question of user expectation, i.e. of two &quot;right&quot; ways to behave.  I suspect that the REQUESTer thought that the Floater always lived on the primary monitor -- so did I.  From Wincent's response, that is not the design.  After reading the explanation, it seems &quot;right&quot; too.</p>
+<p>I too had no external monitor until recently.  A month or two ago I added an external monitor as non-primary, and the Floater appeared where it always did -- in the top right corner of the primary, where I had placed it when I first installed Synergy.   Only today did I make my (much bigger) external monitor the primary (previously my PowerBook was primary).  I naively expected the Floater to move to the new primary, I suppose because the menubar (where Synergy's buttons live) moved.  In other words, my mental model may have been that the Floater was positioned &quot;with&quot; the &quot;rest&quot; of Synergy's user interface, i.e. the menubar.   I was surprised when the Floater &quot;stayed behind&quot; on the old primary, which is why I registered with Bugzilla and found this REQUEST.</p>
+<p>Now that I understand the Floater behavior as implemented (i.e. &quot;stay on the screen where the user last placed me using the PrefsPane&quot;), all I needed to do was open Synergy prefs and re-pin the Floater onto the new monitor.  I'm OK with that -- it no longer seems like a bug.</p>
+<p>One other &quot;user expectation&quot; aspect: To me the Floater looks more like a Tiger widget than a standard windowed app, so if I were a Tiger user I might expect it to behave like a widget in this situation.  Because I'm still on MacOS 10.3.9, I don't know what that behavior would be.  Do widgets stay with the primary, or with their &quot;original&quot; monitor?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2788'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2788"><time data-relative="true">2007-05-15T04:28:46Z</time></a></span>
+</cite>
+<blockquote><p>I'm still curious to know, what do other applications' windows behave like when you switch primaries? Do they move?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2789'>
+<cite>
+<a href="/users/john-ciccarelli">John Ciccarelli</a>
+<span class='when'><a href="#comment_2789"><time data-relative="true">2007-05-15T07:50:35Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #3)</p>
+<blockquote>
+<p>I'm still curious to know, what do other applications' windows behave like when you switch primaries? Do they move?</p>
+</blockquote>
+<p>On 10.3.9 with my monitor configuration, ALL app windows except Safari's DID move to the primary, as did the desktop icons, but the Dock and the open Display Prefs did not.  Here is the sequence:</p>
+<p>My external (starting primary) monitor is to the left of my laptop (starting non-primary).  The left (external) was displaying Word 11.3.5(070413), Eudora 6.2.4, iTunes 7.1.1(5), and two Finder (10.3.9) windows.  Two Safari' 1.3.2(v312.6) windows were open on the right (laptop).  The Dock was on the left edge of the left (external).  </p>
+<p>I opened Display Prefs.  When multiple monitors are displaying an extended desktop, opening Dispaly Prefs opens a monitor-specific window on each monitor, and that is what I saw.  The Display Prefs window on the primary (left, external) monitor has an &quot;Arrangement&quot; panel that lets you drag the two monitors into different relative positions, and lets you drag the menubar between monitors.  </p>
+<p>I activated the Arrangement panel, and changed primaries by dragging the menubar from the left (external) to right (laptop) monitor.  As soon as I released the mouse button, the menubar and ALL app windows, AND all desktop icons on the left (external, old primary) moved to the right (laptop, new primary) monitor!  The two open Display Prefs windows stayed on their respective monitors.  The Safari windows on the right monitor did not move. </p>
+<pre></pre>
+<p>The Dock stayed at the left edge of the left (external, now non-primary) monitor.  (I guess the Dock positions itself relative to the entire extended desktop.  At least for the &quot;Dock-on-left&quot; setting this makes sense, as I would not like the Dock to be on the left side of the right monitor, i.e. on a &quot;middle edge&quot;.)</p>
+<p>I immediately dragged the menubar back to the left (external) monitor -- and the app windows that had moved to the right monitor moved back to the left (primary again) monitor.  The Safari windows (into one of which I am typing this) stayed on the right monitor.  The desktop icons moved back to the left monitor.  I.e., everything had returned to where it was before I (temporarily) moved the menubar to the right monitor.</p>
+<p>I was surprised to see the app windows on the old primary move to the new primary!  I would have though they would stay put, on the same &quot;extended desktop&quot; basis as the Dock.  In fact, Safari's open window on the right monitor did not move to the left monitor when I restored primary to the left.</p>
+<p>I did two more tests, one with a Eudora window and one with a Safari window.  </p>
+<p>1) With everything back where it was, all Eudora windows were back on the left monitor.  I dragged one of them to the right monitor.  I then dragged the menubar to the right, and the same &quot;all app windows move&quot; happened as before, so now all Eudora windows were on the right monitor.  I then dragged the menubar back to the left monitor, and all app windows -- including the one Eudora window that I had dragged -- moved back to the left, except (as before) the two Safari windows that were originally opened on the right.  That is, the one Eudora window that I had dragged to the right moved back to the left.</p>
+<p>2) I now did basically the same test but using a Safari window instead of a Eudora window.  I dragged one of the Safari windows to the left (now restored primary), then dragged the menubar to right.  All app windows EXCEPT the Safari window moved to the right.  I dragged the menubar back to the left, and all app windows were back to previous position.  I.e., the menubar moves did not affect Safari window positions.</p>
+<pre> </pre>
+<p>I consider Safari 1.3.2's behavior to be the most sensible.  Apparently its windows &quot;live&quot; on an extended desktop, not on a particular monitor, similar to the Dock's behavior. This is also how Synergy 3.1.2's Floater position works.</p>
+<p>I wonder whether apps do the same thing on 10.4?  I'll bet the behavior is app-specific, as evidenced by the difference in how Eudora and Safari responded.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2790'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2790"><time data-relative="true">2007-05-15T08:14:51Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the detailed research, John. I'll have to read it over again to make sure that I've fully got it but from my first reading of it I understand that there are two classes of apps:</p>
+<p>1. Apps like Safari, Synergy, and the Dock itself, which do not change monitors when the primary changes. (That's a simplification of the Dock's behaviour because as you note it appears to consider the union of all displays as a single gigantic extended desktop.)</p>
+<p>2. All other apps, where any windows on the primary display will move to the new primary display whenever the primary is changed; the reverse is not true: that is, any windows on a non-primary display will not move off it if that window is made primary.</p>
+<p>Like I said, I'll have to read over it again to make sure that I've understood everything that you wrote. So it seems that there are two relatively &quot;correct&quot; approaches, and Synergy uses one of them. Like you said, I also think that this is the most &quot;sensible&quot; approach, but it might be worth adding an (advanced) preference, perhaps only a command-line-only setting, that users could use to chose the other behaviour if they want.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

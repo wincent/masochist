@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2157: Typo - &quot;seaches&quot; instead of &quot;searches&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2157</div>
+<div class='issue' id='issue_2157'>
+<form class="edit_issue" id="edit_issue_2157" action="/issues/2157" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="e5D/2QmmwF860s97BRsG04IueS4A56K6BcdRMBc4HFBPYkFurisaCuNe/Iw0MlVnN6wQEgsLLKYl2ITOM+B7dA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2157:
+<span data-name='issue[summary]'>
+Typo - &quot;seaches&quot; instead of &quot;searches&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-02-19T18:14:53Z</time>, updated <time data-relative="true">2014-02-28T05:22:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/shlomi-fish">Shlomi Fish</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi!</p>
+<p>Here is a patch for a typo in the Command-T master documentation:</p>
+<pre>From 9117c682186bc97891398ed242fe4b6757d3b436 Mon Sep 17 00:00:00 2001
+From: Shlomi Fish &lt;shlomif@shlomifish.org&gt;
+Date: Wed, 19 Feb 2014 19:53:49 +0200
+Subject: [PATCH] Correct a typo.
+
+---
+ doc/command-t.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/command-t.txt b/doc/command-t.txt
+index 12636b0..16bbd06 100644
+--- a/doc/command-t.txt
++++ b/doc/command-t.txt
+@@ -564,7 +564,7 @@ Following is a list of all available options:
+   |g:CommandTWildIgnore|                          string (default: none)
+ 
+       Optionally override Vim's global |'wildignore'| setting during Command-T
+-      seaches. If you wish to supplement rather than replace the global
++      searches. If you wish to supplement rather than replace the global
+       setting, you can use a syntax like:
+ 
+         let g:CommandTWildIgnore=&amp;wildignore . &quot;,**/bower_components/*&quot;
+-- 
+1.8.5.4</pre>
+<p>Please apply it (possibly manually).</p>
+<p>Regards,</p>
+<p>-- Shlomi Fish</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10923'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10923"><time data-relative="true">2014-02-28T05:22:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks, Shlomi. This has now been merged.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10924'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10924"><time data-relative="true">2014-02-28T05:22:42Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

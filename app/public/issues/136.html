@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #136: Icons inside menu are too widely spaced
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #136</div>
+<div class='issue' id='issue_136'>
+<form class="edit_issue" id="edit_issue_136" action="/issues/136" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="16DDsjy3boFByPy2/G2LeL8D7wQJJFxrkJem2LyUflLjUn0Fmzq01JhEz0HNRNjMCoGGOALI0newiHMmmEwZdg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #136:
+<span data-name='issue[summary]'>
+Icons inside menu are too widely spaced
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-03-11T00:17:22Z</time>, updated <time data-relative="true">2005-04-25T22:42:28Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>&quot;The icons in the user menu are spaced considerably further apart (vertically) than the standard Fast  User Switching display.  See enclosed - comparing the WinSwitch menu display ...to the standard Fast  User Switching menu display. Note that the pictures are considerably closer together (vertically) in the  standard menu - the WinSwitch menu takes a considerable amount more space.  The horizontal spacing  (also less in the standard menu) doesn't faze me as much - but might still be worth looking into.</p>
+<p>AND: Note that WinSwitch 2.0 did NOT suffer this problem.  The vertical spacing there appears to be  the same as the standard menu. So, is this a minor problem stemming from the (new) ability to resize  the user pictures in this display? Are you now adding a margin around the pictures in this list?&quot;</p>
+<p>Mr reply:</p>
+<p>Yes, you're right that this didn't occur in 2.0. You can see the evidence on the screenshots page:</p>
+<p><a href="http://wincent.com/a/products/winswitch/screenshots/" class="external">http://wincent.com/a/products/winswitch/screenshots/</a></p>
+<p>I haven't explicitly added a margin, but the geometry calculations did change a little bit. I basically tried  to choose an algorithm that produced the most reasonable looking results for all possible size settings.  But Cocoa is awfully fiddly when it comes to placing text and images together in an NSAttributedString,  as you'll see if you look at the source code. I'll take another look at it.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1652'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1652"><time data-relative="true">2005-03-11T00:17:48Z</time></a></span>
+</cite>
+<blockquote><p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1653'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1653"><time data-relative="true">2005-04-25T22:42:28Z</time></a></span>
+</cite>
+<blockquote><p>I believe this is now fixed when running on Tiger. I forgot to make note of it in the release notes for  version 3.1.</p>
+<p>So for now I am going to add the fixed-in-prerelease tag and will make note of it in the release notes for  the next version. It would be good if the original poster could confirm the fix when running on Tiger.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

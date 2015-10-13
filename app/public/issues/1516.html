@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1516: Match against filename only
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1516</div>
+<div class='issue' id='issue_1516'>
+<form class="edit_issue" id="edit_issue_1516" action="/issues/1516" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="PpmnwQOJD2QSnL8EiDwn1aNgYxrRApRDEvYydjtGGzUKaxl2pATVMcsQjPO5FXRhFuIKJtruGl8y6eeIH558EQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1516:
+<span data-name='issue[summary]'>
+Match against filename only
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-24T12:39:45Z</time>, updated <time data-relative="true">2010-06-02T12:18:47Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>My problem is , when my project directory and subdirectory is deep,sometimes even I typed all the filename ,I also can't get to the right one. I guess it is the reason of match method. now command-T match not only filename,but also path,so when directory is deep and deep,the word I typed is matched to the path but not filename, I think someone else maybe also have this question.And I know the match method of command-T is like LustyExplorer,but I think it is not same. Because LustyExplorer only match the filename or subdirectory in current path, and our command-T match all the filename.</p>
+<p>So , I suggest command-T to match only filename, but not match path ,just like lookupfile.vim and what do u think about this ?</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5419'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5419"><time data-relative="true">2010-03-24T13:07:24Z</time></a></span>
+</cite>
+<blockquote><p>Searching using the entire path name was actually a very conscious, intentional design decision. Rather than typing characters from the filename, I actually want my users to be thinking in terms of the path to the file and including letters from the path. It's a different mindset.</p>
+<p>For example, just say you want to open this file:</p>
+<ul>
+<li><code>app/controllers/admin/issues_controller.rb</code></li>
+</ul>
+<p>I want you to type something like:</p>
+<ul>
+<li><code>acai</code> (ie. &quot;a&quot; for app, &quot;c&quot; for controller, &quot;a&quot; for admin, &quot;i&quot; for issues)</li>
+</ul>
+<p>Rather than something like:</p>
+<ul>
+<li><code>issues</code> or <code>isscon</code></li>
+</ul>
+<p>Obviously on small projects you can take either approach and you'll very quickly zone in on the file you're looking for. But on larger projects where there might be a <em>lot</em> of files which have the string &quot;issues&quot; in the filenames, you'll find that including letters from the preceding paths will actually help you narrow things down a lot quicker. The classic example here is a Rails application which will have a bunch of paths like:</p>
+<ul>
+<li><code>app/controllers/issues_controller.rb</code></li>
+<li><code>app/controllers/admin/issues_controller.rb</code></li>
+<li><code>app/helpers/issues_helper.rb</code></li>
+<li><code>app/models/issue.rb</code></li>
+<li><code>app/views/issues/index.html.haml</code> (and many other templates)</li>
+<li><code>spec/controllers/issues_controller_spec.rb</code>(and many other specs)</li>
+</ul>
+<p>On a project like that typing &quot;issues&quot; is only going to produce a long list of files which all have similar bases and you'll end up having to scan them visually, which is slow. If you get in the habit of including some characters from the upper path components then you'll find that the list narrows down much more quickly, and to something much shorter.</p>
+<p>This is what I mean by taking on a different &quot;mindset&quot;; the bigger the project is, the more you need to think in terms of <em>where</em> the file is rather than <em>what</em> it is called. If you can do this you'll be able to find stuff so much more quickly.</p>
+<p>And in the few weeks I've been using the plug-in I have gotten a &quot;feeling&quot; for how much information I'm going to have to type in order to get to the file I want, depending on the number of files in the project and the amount of similarity between their paths. On a small project if I am looking for that <code>issues_controller.rb</code> file I might be able to get away with <code>isscon</code> or <code>coniss</code> or even <code>acai</code> like I suggested above; and on bigger projects I might end up typing something like <code>appconiss</code> or <code>appadminisscon</code> etc. After working in a project for a very short while you get a feel for how verbose you need to be.</p>
+<p>So that's why it works the way it does, because if you merely want to match against characters in the filename only, you can use other plug-ins which already work that way. And I wouldn't have bothered writing a new plug-in if all I wanted was to copy the behavior of an existing one.</p>
+<p>For example, to set up FuzzyFinder to behave like that you can get it to automatically prefix <code>**/</code> to all search strings and it works quite nicely. See <a href="http://bitbucket.org/ns9tks/vim-fuzzyfinder/issue/5/option-to-use-by-default-in-file-mode" class="external">this page</a> for info on how to do that (basically boils down to doing something like <code>noremap &lt;silent&gt;&lt;Leader&gt;e :FuzzyFinderFile **/&lt;CR&gt;</code>).</p>
+<p>So, sorry. I don't think I would want to change that particular aspect of the behavior, even as an option. About the only thing I might consider changing is tweaking the scoring algorithm to give slightly more weight to letters that match the filename segment, but it might be a bit fiddly as in that case I'd actually have to run my searches from right-to-left rather than left-to-right to do it in any sort of efficient manner.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5455'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5455"><time data-relative="true">2010-03-27T04:27:01Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5648'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5648"><time data-relative="true">2010-06-02T12:18:47Z</time></a></span>
+</cite>
+<blockquote><p>In the interests of keeping all related discussion in one place, just got tipped off to <a href="http://github.com/sickill/Command-T/commit/2e00ed2f68a5a2ae6a6d9725ffb7dfde6c858d84" class="external">this commit</a> in an email:</p>
+<blockquote>
+<p>I find your Command-T plugin really useful, great job! But after using it for few days I found the default behavior not perfect. Command-T is searching for entered characters in whole file path (relative to pwd) but in most cases you know the filename and it's easier to enter just few characters of filename. In my opinion better would be to search in file names without path by default, and use filename with path if entered search term contains &quot;/&quot;. This way we cover both use cases, with default one being similar to Textmate's Go-To-File or Netbeans' OpenFileFast.</p>
+</blockquote>
+<p>Here's my reply:</p>
+<blockquote>
+<p>This has been requested once before:</p>
+<p><a href="https://wincent.com/issues/1516" class="external">https://wincent.com/issues/1516</a></p>
+<p>Take a look at that ticket for a fairly detailed explanation of the reason why it works the way it does. The short version is:</p>
+<ul>
+<li>philosophically, the whole design of the plug-in revolves around being in a &quot;mind set&quot; which is path-centric, not filename-centric</li>
+<li>if you prefer to think in terms of filenames, there are already a number of alternative options for VIM which provide very good filename-centric navigation; there really would have been no justification for writing the plug-in in the first place if it was just to add another filename-centric way of opening files</li>
+</ul>
+<p>While adding the optional behavior you're talking about might be good for users like you, it would actually undermine the design goals of the plug-in despite being &quot;optional&quot;, because it would oblige people to type additional slash characters in order to use the plug-in in the path-centric way which was intended.</p>
+</blockquote>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

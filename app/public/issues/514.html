@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #514: High ram usage
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #514</div>
+<div class='issue' id='issue_514'>
+<form class="edit_issue" id="edit_issue_514" action="/issues/514" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ZWp7vvCaSAztw8vcCAfQBx94Vvqfc3VWzLCoQXVx/45RmMUJVxeSWTRP+Cs5LoOzqvo/xpSf+0rsr32/UamYqg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #514:
+<span data-name='issue[summary]'>
+High ram usage
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-12-02T14:15:12Z</time>, updated <time data-relative="true">2007-09-19T14:39:15Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/neilio">neilio</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I'm seeing some rather high memory usage numbers with the latest Synergy beta. For example, I did a fresh reboot and started playing iTunes with Synergy active, and after about an hour or so Activity monitor shows Synergy's *real* memory usage at nearly 200mbs.</p>
+<p>Quitting and restarting Synergy drops it back down to around 45mbs.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2883'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2883"><time data-relative="true">2006-12-03T07:12:22Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. Can you run the &quot;leaks&quot; command line tool on Synergy when it is running to see if any leaks are reported?</p>
+<p>Just say the pid number of Synergy is 10942 (for example), you would type:</p>
+<p>leaks 10942</p>
+<p>You can look up the pid number of Synergy in the Activity Monitor. After executing the command you should see a list of leaks. In my case, I see:</p>
+<blockquote>
+<p>Process 10942: 60585 nodes malloced for 8298 KB Process 10942: 153 leaks for 9376 total leaked bytes.</p>
+</blockquote>
+<p>So it's leaking about 9 kilobytes, that's when it's been running for about 3 days straight. For comparison, I'm seeing 28.43 MB of real memory usage, 269.64 MB virtual.</p>
+<p>I am not sure if you have to have the Xcode Tools installed, or if the &quot;leaks&quot; tool comes installed by default. For more info on &quot;leaks&quot; type this in the terminal:</p>
+<p>man leaks</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2884'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_2884"><time data-relative="true">2006-12-10T13:08:11Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=87) Leaks output</p>
+<p>Attaching the output from running leaks against Synergy -- when this info was captured Activity Monitor showed Synergy as using up 115mbs of real memory.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2885'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2885"><time data-relative="true">2006-12-10T14:00:54Z</time></a></span>
+</cite>
+<blockquote><p>Thanks very much for attaching the output, Neil. This confirms that the problem is not any leaks in Synergy.</p>
+<p>How much memory do you have installed in your machine? The way Mac OS X works, the more memory you have, the more memory it will give to each running app. In my case I have 2 GB and Synergy is currently using 23.47MB real, 272.79MB virtual, which is pretty much in line with what I reported in my last comment; at this point the machine has been up for 2 days 10 hours and Synergy (and iTunes) have been running uninterrupted for that whole time).</p>
+<p>It's a little bit hard to collect more information remotely. If you have the Xcode Tools installed you could run the &quot;ObjectAlloc&quot; application (in /Developer/Applications/Performance Tools/) and have a look at what kinds of objects are being allocated.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2886'>
+<cite>
+<a href="/users/bugzilla-user-472">bugzilla user 472</a>
+<span class='when'><a href="#comment_2886"><time data-relative="true">2007-09-19T12:49:50Z</time></a></span>
+</cite>
+<blockquote><p>I'm also having a rather serious memory leak problem. When I start Synergy it uses about 30 megs of RAM, but after a couple of days it is around 200-240 megs. I have the developer tools installed and can run whatever tool on Syngery. My leaks output currently shows the following:</p>
+<p>Process 5872: 701442 nodes malloced for 44682 KB Process 5872: 53 leaks for 3088 total leaked bytes.</p>
+<p>HTH</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2887'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2887"><time data-relative="true">2007-09-19T14:30:52Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #4)</p>
+<blockquote>
+<p>I'm also having a rather serious memory leak problem. When I start Synergy it uses about 30 megs of RAM, but after a couple of days it is around 200-240 megs. I have the developer tools installed and can run whatever tool on Syngery. My leaks output currently shows the following:</p>
+<p>Process 5872: 701442 nodes malloced for 44682 KB Process 5872: 53 leaks for 3088 total leaked bytes.</p>
+</blockquote>
+<p>Note that it says 3,088 *bytes* are leaked. Which is 3 kilobytes or 0.002 megabytes. There are some known, tiny leaks in the system frameworks that account for this leakage, but it's so small anyway as to be insignificant.</p>
+<p>So what you're seeing isn't actually a &quot;leak problem&quot; at all but is quite normal. Try running leaks against some Apple applications, for example. These are some leaks figures for apps running on my machine right now:</p>
+<p>Safari: Process 22767: 1263 leaks for 43696 total leaked bytes.</p>
+<p>Finder: Process 234: 668 leaks for 40800 total leaked bytes.</p>
+<p>Mail: Process 23388: 92 leaks for 3232 total leaked bytes.</p>
+<p>Activity Monitor: Process 18184: 24 leaks for 10576 total leaked bytes.</p>
+<p>Terminal: Process 18267: 10 leaks for 336 total leaked bytes.</p>
+<p>And compare that with some non-Apple apps:</p>
+<p>TextMate: Process 18199: 480 leaks for 14656 total leaked bytes.</p>
+<p>SpamSieve: Process 23389: 8 leaks for 352 total leaked bytes.</p>
+<p>Net Monitor: Process 18186: 7 leaks for 176 total leaked bytes.</p>
+<p>I've got to run right now so can't write any more at this moment, but if you'd like more info on this topic let me know and I'll address it when I get back.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2888'>
+<cite>
+<a href="/users/bugzilla-user-472">bugzilla user 472</a>
+<span class='when'><a href="#comment_2888"><time data-relative="true">2007-09-19T14:38:33Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the additional information. I do realize that the leaks are expressed in bytes, and that the leaks utility does not uncover any significant leak. But the fact remains that Synergy uses a lot of memory (see attached screenshot). Or am I missing something?</p>
+<p>TIA</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2889'>
+<cite>
+<a href="/users/bugzilla-user-472">bugzilla user 472</a>
+<span class='when'><a href="#comment_2889"><time data-relative="true">2007-09-19T14:39:15Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=138) Memory used by Sygerny after 3 days</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

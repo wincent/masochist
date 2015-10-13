@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #601: Can't retrieve art from iTunes on Leopard final
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #601</div>
+<div class='issue' id='issue_601'>
+<form class="edit_issue" id="edit_issue_601" action="/issues/601" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="tG8FzbAGi9Q+G1eCpK1NkiBIxngC5OtaEIdrlTcgTDKAnbt6F4tRgeeXZHWVhB4mlcqvRAkIZUYwmL5rE/grFg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #601:
+<span data-name='issue[summary]'>
+Can't retrieve art from iTunes on Leopard final
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-10-27T14:18:30Z</time>, updated <time data-relative="true">2009-04-30T04:21:38Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/daniel-heron">Daniel Heron</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Intel mac running leopard I have artwork for all of my iTunes collection and Synergy in Leopard does not display them. It also does not go out and search for art. I only get a big question mark. Also, I have the my synergy set so I have to hold the play/pause button to access the preferences. Sometimes when I press and hold to reach the submenu it instead crashes and quits synergy.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3071'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3071"><time data-relative="true">2007-10-28T04:24:22Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for opening the bug report, Daniel. The cover art issue was originally brought up in this forum thread:</p>
+<p><a href="http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1270&amp;page=1&amp;gonew=1" class="external">http://wincent.com/a/support/forums/ubbthreads.php?ubb=showflat&amp;Number=1270&amp;page=1&amp;gonew=1</a></p>
+<p>As for the crash, can you please file that in a separate bug and attach the crash report? (you should be able to find it in ~/Library/Logs/CrashReporter)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3072'>
+<cite>
+<a href="/users/jon-boyd">Jon Boyd</a>
+<span class='when'><a href="#comment_3072"><time data-relative="true">2007-10-31T13:19:24Z</time></a></span>
+</cite>
+<blockquote><p>I can confirm part of this bug running 10.5 on an aluminum 24&quot; iMac, using Synergy 3.2: namely, that art stored in iTunes doesn't get displayed in the Synergy floater. But for me, Synergy DOES try (mostly successfully) to get art from Amazon, adding it to the Album Covers folder (not the Temporary Album Covers folder, where iTunes-held art gets put).</p>
+<p>(Synergy doesn't seem to redraw the floater, though, until music is paused or rating is changed or similar -- so maybe that's why Daniel is thinking Amazon art isn't being loaded? But upon a pause, the fresh Amazon art does appear in the floater.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3073'>
+<cite>
+<a href="/users/daniel-heron">Daniel Heron</a>
+<span class='when'><a href="#comment_3073"><time data-relative="true">2007-10-31T14:10:53Z</time></a></span>
+</cite>
+<blockquote><p>All my artwork is grabbed from the iTunes auto fetch art built in, minus a few albums which I had to go out and copy paste into the &quot;get info&quot; ID3 info.  I have left on the show artwork to see if anything happens, and surprisingly I have two Albums that show art in Synergy. Usher - Confessions and As I lay dying - An ocean between us I don't know why, but they work. I spent a little while trying to figure out what was special about those albums and can find anything.  I tried to see what Jon Boyd said and realized that the &quot;Extra visual feedback...&quot; option does nothing for me now.  Also Synergy crashed again trying to hold play pause. I will attach report on the other thread.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3074'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3074"><time data-relative="true">2007-11-08T03:01:07Z</time></a></span>
+</cite>
+<blockquote><p>I've received a report that after upgrading to iTunes 7.5 the problem has gone away. The user who reported this said that he also deleted the album covers found at:</p>
+<p>~/Library/Application Support/Synergy/Album Covers/</p>
+<p>Can anyone confirm this?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3075'>
+<cite>
+<a href="/users/daniel-heron">Daniel Heron</a>
+<span class='when'><a href="#comment_3075"><time data-relative="true">2007-11-08T06:09:45Z</time></a></span>
+</cite>
+<blockquote><p>The artwork now works with iTunes 7.5 in leopard. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3076'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3076"><time data-relative="true">2007-11-08T18:33:37Z</time></a></span>
+</cite>
+<blockquote><p>I can confirm this too. I didn't have to change anything re: deleting folders, it just started working properly after upgrading to 7.5.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3077'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3077"><time data-relative="true">2007-11-08T22:06:15Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the confirmation.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3078'>
+<cite>
+<a href="/users/john-owen">John Owen</a>
+<span class='when'><a href="#comment_3078"><time data-relative="true">2007-11-10T18:53:26Z</time></a></span>
+</cite>
+<blockquote><p>Using iTunes 7.5, Synergy 3.2, on Leopard 10.5. Synergy displays all EXISTING artwork and successfully retrieves and displays new artwork for selections that have artwork available on Amazon. Successfully displays artwork that was retrieved from ID3 tags BEFORE upgrading to Leopard. But, new tracks which do not have artwork on Amazon but have graphics which have been added to the track in iTunes are not having the graphic added to the Temporary Album Covers folder and don't display in the floater window.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3079'>
+<cite>
+<a href="/users/jon-boyd">Jon Boyd</a>
+<span class='when'><a href="#comment_3079"><time data-relative="true">2007-11-10T21:38:31Z</time></a></span>
+</cite>
+<blockquote><p>I cannot corroborate what John Owen says (in Comment #8). It's working fine for me.</p>
+<p>To be specific, now with iTunes 7.5 and Synergy 3.2 and Leopard, I can add artwork to tracks that have never had it before using either [1] iTunes's own &quot;Get Album Artwork&quot; command or [2] the manual import of artwork in the Artwork tab of a track's &quot;Get Info&quot; dialog. Either way, the art displays for me in the Synergy floater and also is added to the Temporary Album Covers folder.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3080'>
+<cite>
+<a href="/users/john-owen">John Owen</a>
+<span class='when'><a href="#comment_3080"><time data-relative="true">2007-11-10T22:18:28Z</time></a></span>
+</cite>
+<blockquote><p>Never mind. I deleted my old preferences file and now everything works fine.Now files  with custom artwork not on Amazon added after upgrade display appropriately.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3081'>
+<cite>
+<a href="/users/kallekanin">KalleKanin</a>
+<span class='when'><a href="#comment_3081"><time data-relative="true">2007-11-23T18:17:19Z</time></a></span>
+</cite>
+<blockquote><p>Maybe this isn't a bug, I don't know since I'm a new Synergy user, but I find it somewhat disappointing that the artwork Synergy finds isn't embedded in the MP3s. Now when I'm using my iPod I still don't have the artwork following the files.</p>
+<p>I have assumed all along that this was a bug, and now that I'm writing this here I'm suddenly insecure and wondering if I have misunderstood how it is supposed to work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3082'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3082"><time data-relative="true">2007-11-24T07:01:23Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #12)</p>
+<blockquote>
+<p>Maybe this isn't a bug, I don't know since I'm a new Synergy user, but I find it somewhat disappointing that the artwork Synergy finds isn't embedded in the MP3s. Now when I'm using my iPod I still don't have the artwork following the files.</p>
+<p>I have assumed all along that this was a bug, and now that I'm writing this here I'm suddenly insecure and wondering if I have misunderstood how it is supposed to work.</p>
+</blockquote>
+<p>At the moment there is no automatic transfer of art into iTunes but you can do it manually using the &quot;Transfer cover to iTunes&quot; item in the Synergy global menu.</p>
+<p>I was hesitant to add automated transfer because of the risk of sending a wrong cover, but there is a feature request open in here to add this as an optional feature. </p>
+<p>See:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=430" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=430</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3083'>
+<cite>
+<a href="/users/john-owen">John Owen</a>
+<span class='when'><a href="#comment_3083"><time data-relative="true">2008-02-24T17:41:55Z</time></a></span>
+</cite>
+<blockquote><p>This problem has returned when I upgraded iTunes to 7.6.1. Specifically, Synergy will not access artwork directly from iTunes.It will try to get from Amazon, but if artwork is in iTunes but not Amazon, the large question mark is displayed. I tried deleting the synergy preference file which worked when I had the problem before, but the problem persists.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3084'>
+<cite>
+<a href="/users/jon-boyd">Jon Boyd</a>
+<span class='when'><a href="#comment_3084"><time data-relative="true">2008-02-25T07:33:12Z</time></a></span>
+</cite>
+<blockquote><p>I hear that similar problems are recurring for many apps that use AppleScript to access iTunes 7.6.1. I myself don't seem to be seeing this Synergy bug again (but I do have problems with &quot;Remote Buddy&quot; from iospirit, for what it's worth). See the Apple Support Forums for a number of reports of similar problems with 7.6.1, if that's any comfort. :)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3085'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3085"><time data-relative="true">2008-02-25T08:54:53Z</time></a></span>
+</cite>
+<blockquote><p>In the past when Apple has made a change like this that breaks things, they've been pretty good about fixing it for the next release. I'm hoping that 7.6.2 (or 7.7 if that is the next version) will address this.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3086'>
+<cite>
+<a href="/users/bugzilla-user-528">bugzilla user 528</a>
+<span class='when'><a href="#comment_3086"><time data-relative="true">2008-02-26T14:53:46Z</time></a></span>
+</cite>
+<blockquote><p>I'm having this problem as well..  It's really annoying me, so it's probably recent (since 7.6.1).  :)  The big &quot;?&quot; appears for all types of songs, from iTMS purchased, to albums set by Clutter (pre-Leopard, and embedded in the songs), to albums whose artwork was retrieved by iTunes (and not embedded, AFAIK).</p>
+<p>I ran &quot;tell application &quot;iTunes&quot; to get data of front artwork of current track&quot; in Script Utility, and that responds with a &lt;&gt; after 5 seconds or so. </p>
+<p>I've begun to manually paste album covers into the Synergy folder.. so far, it's working fine.  Could you please post the naming rules you use and any other tips?  (letters dropped, length limit, etc.)  Thanks!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3087'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3087"><time data-relative="true">2008-03-12T06:27:07Z</time></a></span>
+</cite>
+<blockquote><p>See the comments on <a href="/issues/660">bug #660</a>:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=660" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=660</a></p>
+<p>For a possible lead on how I might be able to work around this problem while waiting for Apple to fix the breakage. Basically, it looks like if you ask iTunes for art immediately on track change you won't get it, but if you wait long enough then you will... Will have to investigate to see what sort of interval will be required.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4267'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4267"><time data-relative="true">2009-02-21T03:49:20Z</time></a></span>
+</cite>
+<blockquote><p>This issue was fixed long ago and forgot to close it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4268'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4268"><time data-relative="true">2009-02-21T03:49:25Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_4583'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4583"><time data-relative="true">2009-04-29T23:02:07Z</time></a></span>
+</cite>
+<blockquote><p>I am running Mac OS X 10.5.6 and iTunes 8.1.1 (10) and Synergy 3.2 does not seem to display album art, retrieved from either iTunes or Amazon.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4584'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4584"><time data-relative="true">2009-04-30T04:21:38Z</time></a></span>
+</cite>
+<blockquote><p>Perhaps you have a corrupt preferences file? You could try the troubleshooting techniques listed on <a href="http://wincent.com/s/bugs/" class="external">this page</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

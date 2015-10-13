@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Root user won't go away
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/winswitch">WinSwitch</a> &raquo; Root user won&#39;t go away</div>
+<h1 class='major'>Root user won't go away</h1>
+<div class='topic' id='topic_305'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/winswitch/topics/305"><time data-relative="true">2004-08-16T02:38:59Z</time></a>
+</span>
+</cite>
+<blockquote><p>Every time I switch user, the root user reappears in the menu list. Isn't it supposed to stay hidden? </p>
+<p>One other question: is there any way to switch users without requiring a password? </p>
+<p>Thanks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_950'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_950"><time data-relative="true">2004-08-16T04:26:01Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Every time I switch user, the root user reappears in the menu list. Isn't it supposed to stay hidden?</p>
+<pre></pre>
+<p>The preference whether to display the root user is set per-user. So it is perfectly possible for you to have the root user hidden in one account, and when you switch to another account, the display of the root user be enabled.</p>
+<p>By default the root user is not shown so in order to see it you'd have to manually switch it on. Quote: One other question: is there any way to switch users without requiring a password?</p>
+<p>You'd have to ask Apple for that one. WinSwitch only tells the system to switch users, and the system then throws up the password dialog. As a result, WinSwitch has no control over what appears in the dialog, and whether it asks for a password.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_951'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_951"><time data-relative="true">2004-08-25T09:16:07Z</time></a></span>
+</cite>
+<blockquote><p>I hate to see the root user when he's logged in. At first I was suprised of seeing the root user logged in, but the activity monitor tells me he's doing cron jobs. Nomatter if I have the root user on view or not on view, when he's logged in he's visible! If you have some time and you find this comment usefull, I would like to see this gone.</p>
+<p>and if the user has no password, then you don't need to type a password, right? I have an account for &quot;generic people&quot; and the computer startsup with this account and it doesn't require a password, so everyone can use it. Even out of the FUS you can just select the user and no pasword window shows...  (maybe it matters that it's a managed user but with almost all permisions)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_952'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_952"><time data-relative="true">2004-08-25T18:10:49Z</time></a></span>
+</cite>
+<blockquote><p>Quote: I hate to see the root user when he's logged in. At first I was suprised of seeing the root user logged in, but the activity monitor tells me he's doing cron jobs. Nomatter if I have the root user on view or not on view, when he's logged in he's visible! If you have some time and you find this comment usefull, I would like to see this gone. </p>
+<p>Someone else already reported this, and I've fixed it. You'll see it in the next release.</p>
+<p>The bug only appears under specific circumstances. For example, you can trigger it by having the root account logged in, then switching to another user. Even if the other user doesn't want to see the root user, it will appear in the menu after doing a switching operation.</p>
+<p>In any case, like I said, I believe I've fixed it now...</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/winswitch">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

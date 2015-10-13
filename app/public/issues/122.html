@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #122: REQUEST: Hot key to display Growl notification
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #122</div>
+<div class='issue' id='issue_122'>
+<form class="edit_issue" id="edit_issue_122" action="/issues/122" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="gJezyJCavu9r5I3i5bx2YAZYxsnW8A5vzEttAtdhj8i0ZQ1/NxdkurJovhXUlSXUs9qv9d0cgHPsVLj887no7A==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #122:
+<span data-name='issue[summary]'>
+REQUEST: Hot key to display Growl notification
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-03-04T21:21:52Z</time>, updated <time data-relative="true">2005-05-03T09:41:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/tom-insam">Tom Insam</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I use the show/hide floater keyboard shortcut to see the currently playing track. I much prefer using  growl for all of this, so I'd prefer a keyboard shortcut that merely re-displays the ttrack info as a growl  notification.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1585'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1585"><time data-relative="true">2005-03-05T04:25:18Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the submission. I've reworded the summary slightly because I would never *replace* the  existing hot key (for the Floater) with one which notifies Growl, because the majority of Synergy users     don't use Growl (yet). So what we are really talking about here is *adding* another hot key.</p>
+<p>I'm marking this one against Synergy Advance, because the Synergy Classic preferences UI is already  pretty much full so it's quite difficult to add more hot key actions.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1586'>
+<cite>
+<a href="/users/rich-ellis">Rich Ellis</a>
+<span class='when'><a href="#comment_1586"><time data-relative="true">2005-03-07T17:12:37Z</time></a></span>
+</cite>
+<blockquote><p>Why the need for a separate hot-key?  It seems to me that if the user has Growl enabled, all of Synergy's output should go through Growl.  Why have two separate notification systems?  When I saw that Synergy was adding Growl support, that's what I figured would be happening... I was a bit disappointed to see that I now get doubly notified when a new song starts.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1587'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1587"><time data-relative="true">2005-03-07T20:45:42Z</time></a></span>
+</cite>
+<blockquote><p>I know that being &quot;doubly notified&quot; doesn't make sense. This is why I wrote the following in the change  history:</p>
+<p>&quot;Synergy sends the same update information to Growl that it displays in its own Floater (although it  doesn't make a lot of sense to have both Growl and the Floater turned on at the same time).&quot;</p>
+<p>In other words, if you prefer to see Growl notifications instead of the Synergy floater, you should turn  the Synergy floater off.</p>
+<p>The reason why I view the Growl functionality as separate from Synergy's own floater (and why I  therefore want to keep them as &quot;compartmentalized&quot;) is that they are fundamentally different from an  architectural perspective. The Synergy floater is completely internal to Synergy and controlled by it;  Synergy knows the state of it at all times, and all of the preferences and the UI items (like hot key  names, menu item names etc) make reference to it. Growl notifications, in comparison, are completely  external to Synergy. Although Synergy *can* test to see whether Growl is installed or not, it has no way  (that I know of) of finding out what preferences the user has set in the Growl preference pane.</p>
+<p>For example, does the user what &quot;Bubbles&quot; or &quot;Music video&quot;? Have they got notifications from Synergy  set to &quot;sticky&quot; or non-sticky? In fact, even something basic like whether or not they have notifications  from Synergy turned on?</p>
+<p>I can imagine all sorts of user confusion if I were to blur the lines between the Synergy floater interface  and Growl notifications. What if the user hits the &quot;Show/Hide Floater&quot; hot key and nothing happens  because they've got Synergy notifications ignored in the Growl preferences and have forgotten that they  made that setting? What if the same thing happens when they select &quot;Activate Floater&quot; from the Synergy  Global Menu? I want to avoid this kind of potential confusion, however unlikely it may seem, because  I'm the one who has to handle the support tickets when things don't work like people expect them to.</p>
+<p>In the future when a higher percentage of Synergy users use Growl (I don't have any stats on it, but I  might set up a poll in the forums to get a rough idea) and when it's possible to integrate things more  completely with Growl (for example, to know more details about its internal state) then what you  suggest (sharing the same Synergy interface controls between the Floater and Growl) will be possible.  Before that date though, I think it would be more trouble and confusion than it's worth, hence the  proposal that this be a separate hot key... Anyway, I hope you understand what I mean.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1588'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1588"><time data-relative="true">2005-05-02T01:39:23Z</time></a></span>
+</cite>
+<blockquote><p>This is now implemented in Synergy Advance 0.1. Adding fixed-in-prerelease keyword.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1589'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1589"><time data-relative="true">2005-05-03T09:40:25Z</time></a></span>
+</cite>
+<blockquote><p>Marking as FIXED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1590'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1590"><time data-relative="true">2005-05-03T09:41:57Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

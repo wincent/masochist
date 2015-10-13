@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+no suitable image found (works now)
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; no suitable image found (works now)</div>
+<h1 class='major'>no suitable image found (works now)</h1>
+<div class='topic' id='topic_469'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/469"><time data-relative="true">2011-04-24T22:49:02Z</time></a>
+</span>
+</cite>
+<blockquote><p>MacVim 7.3, ruby 1.8.7, SnowLeopard.</p>
+<p>The make commands which were produced by extconf.rb run without error but ':CommandT' said that no suitabe image could be found. After I run gcc commands found here in the forum it did work.</p>
+<p>Maybe the problem is that I have MacPorts installed? Below are the two variants (arguments which appeared in both variants removed for brevity). Hope it is of any help. Thanks for a great plugin!</p>
+<p>Hans-Peter</p>
+<ul>
+<li>didn't work:</li>
+</ul>
+<pre>/usr/bin/gcc-4.0 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/include -D_XOPEN_SOURCE -O2   -c ext.c
+/usr/bin/gcc-4.0 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/include -D_XOPEN_SOURCE -O2   -c match.c
+/usr/bin/gcc-4.0 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/lib/ruby/1.8/i686-darwin9 -I/opt/local/include -D_XOPEN_SOURCE -O2   -c matcher.c
+/usr/bin/gcc-4.0 -dynamic -undefined suppress -flat_namespace  -L/opt/local/lib -L. -L/opt/local/lib  -lobjc</pre>
+<ul>
+<li>this did work:</li>
+</ul>
+<pre>gcc -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -D_XOPEN_SOURCE -arch i386 -arch x86_64 -g -Os  -DENABLE_DTRACE   -c ext.c
+gcc -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -D_XOPEN_SOURCE -arch i386 -arch x86_64 -g -Os  -DENABLE_DTRACE   -c match.c
+gcc -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -D_XOPEN_SOURCE -arch i386 -arch x86_64 -g -Os  -DENABLE_DTRACE   -c matcher.c
+cc -arch i386 -arch x86_64 -pipe -undefined dynamic_lookup  -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6832'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6832"><time data-relative="true">2011-04-25T03:14:28Z</time></a></span>
+</cite>
+<blockquote><p>You need to build Command-T using the same version of Ruby that your Vim links to. In the case of MacVim, that's the system version of Ruby.</p>
+<p>If you want to build it using the non-system version of Ruby, then you'll need to build MacVim as well, linking against that same non-system Ruby.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

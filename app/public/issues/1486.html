@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1486: Duplicate LogWatch reports from zenyatta.unixhosts.net
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1486</div>
+<div class='issue' id='issue_1486'>
+<form class="edit_issue" id="edit_issue_1486" action="/issues/1486" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="LX4W5POahiF8yJGXKApRlavqBaPg7nOX8xeP1sIS+nwZjKhTVBdcdKVEomAZIwIhHmhsn+sC/YvTCFoo5sqdWA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1486:
+<span data-name='issue[summary]'>
+Duplicate LogWatch reports from zenyatta.unixhosts.net
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-02-24T14:10:39Z</time>, updated <time data-relative="true">2010-02-25T05:49:01Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Seem to be getting two identical reports each day, one at about 12:09 and another at about 15:20.</p>
+<p>Compare that with the mondatta.unixhosts.net report, which I receive once only at about 10:05.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5330'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5330"><time data-relative="true">2010-02-25T05:33:34Z</time></a></span>
+</cite>
+<blockquote><p>Seeing entries like this in <code>/var/log/cron</code>:</p>
+<pre>Feb 24 06:01:01 domU-12-31-39-00-E9-02 CROND[22907]: (root) CMD (run-parts /etc/cron.hourly)
+Feb 24 06:08:39 domU-12-31-39-00-E9-02 anacron[22974]: Anacron 2.3 started on 2010-02-24
+Feb 24 06:08:39 domU-12-31-39-00-E9-02 anacron[22974]: Will run job `cron.daily' in 65 min.
+Feb 24 06:08:39 domU-12-31-39-00-E9-02 anacron[22974]: Jobs will be executed sequentially</pre>
+<p>And a bit later:</p>
+<pre>Feb 24 07:13:39 domU-12-31-39-00-E9-02 anacron[22974]: Job `cron.daily' started</pre>
+<p>And then later still:</p>
+<pre>Feb 24 09:20:22 domU-12-31-39-00-E9-02 anacron[26016]: Anacron 2.3 started on 2010-02-24
+Feb 24 09:20:22 domU-12-31-39-00-E9-02 anacron[26016]: Job `cron.daily' locked by another anacron - skipping
+Feb 24 09:20:22 domU-12-31-39-00-E9-02 anacron[26016]: Normal exit (0 jobs run)
+Feb 24 09:20:45 domU-12-31-39-00-E9-02 anacron[22974]: Job `cron.daily' terminated
+Feb 24 09:20:45 domU-12-31-39-00-E9-02 anacron[22974]: Normal exit (1 job run)</pre>
+<p>I didn't even know that anacron was installed on these instances, but the process listing shows that both <code>crond</code> and <code>anacron</code> are running on the instance which is seeing the duplicate reports.</p>
+<p>Working instance:</p>
+<pre>root       941  0.0  0.0   3072  1120 ?        Ss   Feb17   0:00 cron&lt;/pre&gt;</pre>
+<p>Broken instance:</p>
+<pre>root       941  0.0  0.0   3072  1120 ?        Ss   Feb16   0:00 crond
+root      8324  0.0  0.0   2588  1088 ?        Ss   04:02   0:00 /bin/bash /usr/bin/run-parts /etc/cron.daily
+root      9127  0.0  0.0   2588  1080 ?        S    05:05   0:00 /bin/bash /etc/cron.daily/0anacron
+root      9132  0.0  0.0   2256   628 ?        S    05:05   0:00 awk -v progname=/etc/cron.daily/0anacron progname {?????   print progname &quot;:\n&quot;?????   progname=&quot;&quot;;????       }????       { print; }</pre>
+<p>Output of <code>chkconfig --list anacron</code> on both instances:</p>
+<pre>anacron        &#x0009;0:off&#x0009;1:off&#x0009;2:on&#x0009;3:on&#x0009;4:on&#x0009;5:on&#x0009;6:off</pre>
+<p><code>/etc/anacrontab</code> is identical on both instances.</p>
+<p><code>/etc/cron.daily/0anacron</code> is likewise identical on both instances.</p>
+<p>My normal troubleshooting technique here would be to restart the funky service (<code>service anacron restart</code>) but seeing as there isn't actually any need for anacron on these instances (as they will be running 24 hours per day) I'm just going to disable it:</p>
+<pre class="shell-syntax"># chkconfig anacron off
+# service anacron stop</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5331'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5331"><time data-relative="true">2010-02-25T05:47:04Z</time></a></span>
+</cite>
+<blockquote><p>For some reason <code>service anacron stop</code> doesn't work (even on the good instance); reports &quot;FAILED&quot; and the <code>0anacron</code> file continues to exist at <code>/etc/cron.daily/</code> anyway.</p>
+<p>So, got rid of that file (stuck it in <code>/etc/cron.daily.disabled/</code>) on both machines and killed the lingering <code>0anacron</code> and <code>awk</code> processes (the latter from <code>run-parts</code>).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5332'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5332"><time data-relative="true">2010-02-25T05:49:01Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

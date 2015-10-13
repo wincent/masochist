@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #388: CRASH: NSPortDelegateTickler
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #388</div>
+<div class='issue' id='issue_388'>
+<form class="edit_issue" id="edit_issue_388" action="/issues/388" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="IqTE77z/bdGIZvp/xDXkocXzIOYvqkLQ74CB5IzzUnEWVnpYG3K3hFHqyYj1HLcVcHFJ2iRGzMzPn1QaqCs1VQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #388:
+<span data-name='issue[summary]'>
+CRASH: NSPortDelegateTickler
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-03-29T11:25:46Z</time>, updated <time data-relative="true">2007-12-15T09:37:09Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Mysterious crash while Synergy Advance was running in the background (no user interaction, iTunes was in the middle of playing a track). Will attach crash log.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2484'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2484"><time data-relative="true">2006-03-29T11:26:50Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=52) Crash log</p>
+<p>Attaching the log. The crash occurred after Synergy Advance had been running normally for about 3 or 4 hours.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2485'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2485"><time data-relative="true">2006-03-30T01:55:25Z</time></a></span>
+</cite>
+<blockquote><p>Same crash again after several hours of running:</p>
+<p>Thread 0 Crashed: 0   &lt;&gt; &#x0009;0xfffeff20 objc_msgSend_rtp + 32 1   com.apple.Foundation       &#x0009;0x928df7dc __NSPortDelegateTickler + 88 2   com.apple.CoreFoundation   &#x0009;0x9075ccd8 __CFRunLoopDoObservers + 352 3   com.apple.CoreFoundation   &#x0009;0x9075cf78 __CFRunLoopRun + 420 4   com.apple.CoreFoundation   &#x0009;0x9075ca18 CFRunLoopRunSpecific + 268 5   com.apple.HIToolbox        &#x0009;0x9318f1e0 RunCurrentEventLoopInMode + 264 6   com.apple.HIToolbox        &#x0009;0x9318e874 ReceiveNextEventCommon + 380 7   com.apple.HIToolbox        &#x0009;0x9318e6e0 BlockUntilNextEventMatchingListInMode + 96 8   com.apple.AppKit           &#x0009;0x9368d104 _DPSNextEvent + 384 9   com.apple.AppKit           &#x0009;0x9368cdc8 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 116 10  com.apple.AppKit           &#x0009;0x9368930c -[NSApplication run] + 472 11  com.apple.AppKit           &#x0009;0x93779e68 NSApplicationMain + 452 12  com.wincent.SynergyAdvance &#x0009;0x00007ad0 start + 456 13  dyld                       &#x0009;0x8fe01048 _dyld_start + 60</p>
+<p>Thread 0 crashed with PPC Thread State 64:</p>
+<pre> srr0: 0x00000000fffeff20 srr1: 0x100000000000f930                        vrsave: 0x0000000000000000
+   cr: 0x44028484          xer: 0x0000000000000000   lr: 0x00000000928df7dc  ctr: 0x0000000090008b80
+   r0: 0x00000000928df7b4   r1: 0x00000000bfffe4d0   r2: 0x00000000ffffffff   r3: 0x0000000016f28e30
+   r4: 0x0000000090a2a8d0   r5: 0x0000000090a1f3f8   r6: 0x0000000016f28e30   r7: 0x0000000016dfa300
+   r8: 0x000000000002785f   r9: 0x0000000000000000  r10: 0x00000000170004a2  r11: 0x000000006f5ca8d0
+  r12: 0x000000000006e06b  r13: 0x0000000000000000  r14: 0x0000000000000001  r15: 0x0000000000000001
+  r16: 0x0000000000000000  r17: 0x0000000000000000  r18: 0x0000000000009877  r19: 0x0000000000000000
+  r20: 0x000000001d1df9af  r21: 0x00000000005119c0  r22: 0x0000000000000002  r23: 0x0000000000511ad8
+  r24: 0x0000000000511ad0  r25: 0x0000000000000000  r26: 0x0000000016f25100  r27: 0x0000000000000002
+  r28: 0x0000000016f45968  r29: 0x0000000000000001  r30: 0x00000000a28e1de8  r31: 0x00000000928df794</pre>
+<p>Again Synergy Advance was not the active application. The only common thing I can think of is that in both cases I had run the &quot;leaks&quot; command line tool on the process at some point before the crash.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2486'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2486"><time data-relative="true">2006-03-30T10:40:47Z</time></a></span>
+</cite>
+<blockquote><p>Another, slightly different crash; again after hours of running:</p>
+<p>Thread 0 Crashed: 0   libobjc.A.dylib            &#x0009;0x909bffac _cache_getImp + 12 1   libobjc.A.dylib            &#x0009;0x909c2fc4 class_respondsToMethod + 44 2   com.apple.Foundation       &#x0009;0x928cedec -[NSObject respondsToSelector:] + 72 3   com.apple.Foundation       &#x0009;0x928df7dc __NSPortDelegateTickler + 88 4   com.apple.CoreFoundation   &#x0009;0x9075ccd8 __CFRunLoopDoObservers + 352 5   com.apple.CoreFoundation   &#x0009;0x9075cf78 __CFRunLoopRun + 420 6   com.apple.CoreFoundation   &#x0009;0x9075ca18 CFRunLoopRunSpecific + 268 7   com.apple.HIToolbox        &#x0009;0x9318f1e0 RunCurrentEventLoopInMode + 264 8   com.apple.HIToolbox        &#x0009;0x9318e874 ReceiveNextEventCommon + 380 9   com.apple.HIToolbox        &#x0009;0x9318e6e0 BlockUntilNextEventMatchingListInMode + 96 10  com.apple.AppKit           &#x0009;0x9368d104 _DPSNextEvent + 384 11  com.apple.AppKit           &#x0009;0x9368cdc8 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 116 12  com.apple.AppKit           &#x0009;0x9368930c -[NSApplication run] + 472 13  com.apple.AppKit           &#x0009;0x93779e68 NSApplicationMain + 452 14  com.wincent.SynergyAdvance &#x0009;0x00007ad0 start + 456 15  dyld                       &#x0009;0x8fe01048 _dyld_start + 60</p>
+<p>Thread 0 crashed with PPC Thread State 64:</p>
+<pre> srr0: 0x00000000909bffac srr1: 0x100000000000d930                        vrsave: 0x0000000000000000
+   cr: 0x84028484          xer: 0x0000000000000000   lr: 0x00000000909c2fc4  ctr: 0x00000000909c2f98
+   r0: 0x00000000928cedec   r1: 0x00000000bfffe420   r2: 0x0000000000000000   r3: 0x000000000063740b
+   r4: 0x0000000090a1f3f8   r5: 0x0000000090a1f3f8   r6: 0x0000000016f0b5d0   r7: 0x0000000016f19e30
+   r8: 0x00000000ffadeb8f   r9: 0x0000000000000000  r10: 0x00000000909bd648  r11: 0x00000000a28c28c4
+  r12: 0x000000000063740b  r13: 0x0000000000000000  r14: 0x0000000000000001  r15: 0x0000000000000001
+  r16: 0x0000000000000000  r17: 0x0000000000000000  r18: 0x0000000000007577  r19: 0x0000000000000000
+  r20: 0x000000001d1df9af  r21: 0x00000000005119c0  r22: 0x0000000000000002  r23: 0x0000000000511ad8
+  r24: 0x0000000000511ad0  r25: 0x0000000000000000  r26: 0x0000000016df5390  r27: 0x000000000063740b
+  r28: 0x0000000090a1f3f8  r29: 0x0000000090a2a8d0  r30: 0x0000000090a1f3f8  r31: 0x00000000909c2fa8</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2487'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2487"><time data-relative="true">2006-04-01T08:12:36Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=53) Crash log (minor variation)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2488'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2488"><time data-relative="true">2006-04-10T09:43:05Z</time></a></span>
+</cite>
+<blockquote><p>Have just received a crash report from a user for this same crash (PowerPC). Won't bother to attach it as it looks substantially identical to my own logs.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2498'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2498"><time data-relative="true">2006-04-13T12:16:30Z</time></a></span>
+</cite>
+<blockquote><p>Another variation:</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000000</p>
+<p>Thread 0 Crashed: 0   libobjc.A.dylib            &#x0009;0x909bf120 objc_msgSend + 32 1   libobjc.A.dylib            &#x0009;0x909bf670 class_initialize + 300 2   libobjc.A.dylib            &#x0009;0x909bf31c _class_lookupMethodAndLoadCache + 132 3   libobjc.A.dylib            &#x0009;0x909bf1f4 objc_msgSend + 244 4   com.apple.Foundation       &#x0009;0x928df7dc __NSPortDelegateTickler + 88 5   com.apple.CoreFoundation   &#x0009;0x9075ccd8 __CFRunLoopDoObservers + 352 6   com.apple.CoreFoundation   &#x0009;0x9075cf78 __CFRunLoopRun + 420 7   com.apple.CoreFoundation   &#x0009;0x9075ca18 CFRunLoopRunSpecific + 268 8   com.apple.HIToolbox        &#x0009;0x9318f1e0 RunCurrentEventLoopInMode + 264 9   com.apple.HIToolbox        &#x0009;0x9318e874 ReceiveNextEventCommon + 380 10  com.apple.HIToolbox        &#x0009;0x9318e6e0 BlockUntilNextEventMatchingListInMode + 96 11  com.apple.AppKit           &#x0009;0x9368d104 _DPSNextEvent + 384 12  com.apple.AppKit           &#x0009;0x9368cdc8 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 116 13  com.apple.AppKit           &#x0009;0x9368930c -[NSApplication run] + 472 14  com.apple.AppKit           &#x0009;0x93779e68 NSApplicationMain + 452 15  com.wincent.SynergyAdvance &#x0009;0x000080a0 __darwin_gcc3_preregister_frame_info + 408 16  com.wincent.SynergyAdvance &#x0009;0x00007ad0 start + 456 17  dyld                       &#x0009;0x8fe01048 _dyld_start + 60</p>
+<p>Thread 0 crashed with PPC Thread State 64:</p>
+<pre> srr0: 0x00000000909bf120 srr1: 0x100000000000f030                        vrsave: 0x0000000000000000
+   cr: 0x44028482          xer: 0x0000000000000000   lr: 0x00000000909bf670  ctr: 0x0000000090008b80
+   r0: 0x00000000909bf660   r1: 0x00000000bfffe680   r2: 0x0000000000000000   r3: 0x000000000003c20b
+   r4: 0x00000000909cf040   r5: 0x0000000000000050   r6: 0xffffffffffffffff   r7: 0x0000000015e36f70
+   r8: 0x00000000000245bf   r9: 0x0000000000000004  r10: 0x000000000000050c  r11: 0x000000006f62f040
+  r12: 0x0000000002003016  r13: 0x0000000000000000  r14: 0x0000000000000001  r15: 0x0000000000000001
+  r16: 0x0000000000000000  r17: 0x0000000000000000  r18: 0x00000000000077af  r19: 0x0000000000000000
+  r20: 0x000000001d1dee65  r21: 0x0000000000311aa0  r22: 0x0000000000000002  r23: 0x0000000000311bb8
+  r24: 0x0000000000311bb0  r25: 0x0000000000000000  r26: 0x0000000090a2a8d0  r27: 0x000000000003c20b
+  r28: 0x0000000000000001  r29: 0x0000000002003016  r30: 0x000000000003c20b  r31: 0x00000000909bf554</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2499'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2499"><time data-relative="true">2006-04-13T12:17:37Z</time></a></span>
+</cite>
+<blockquote><p>And another:</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000000</p>
+<p>Thread 0 Crashed: 0   &lt;&gt; &#x0009;0xfffeff20 objc_msgSend_rtp + 32 1   com.apple.Foundation       &#x0009;0x928df7dc __NSPortDelegateTickler + 88 2   com.apple.CoreFoundation   &#x0009;0x9075ccd8 __CFRunLoopDoObservers + 352 3   com.apple.CoreFoundation   &#x0009;0x9075cf78 __CFRunLoopRun + 420 4   com.apple.CoreFoundation   &#x0009;0x9075ca18 CFRunLoopRunSpecific + 268 5   com.apple.HIToolbox        &#x0009;0x9318f1e0 RunCurrentEventLoopInMode + 264 6   com.apple.HIToolbox        &#x0009;0x9318e874 ReceiveNextEventCommon + 380 7   com.apple.HIToolbox        &#x0009;0x9318e6e0 BlockUntilNextEventMatchingListInMode + 96 8   com.apple.AppKit           &#x0009;0x9368d104 _DPSNextEvent + 384 9   com.apple.AppKit           &#x0009;0x9368cdc8 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 116 10  com.apple.AppKit           &#x0009;0x9368930c -[NSApplication run] + 472 11  com.apple.AppKit           &#x0009;0x93779e68 NSApplicationMain + 452 12  com.wincent.SynergyAdvance &#x0009;0x000080a0 __darwin_gcc3_preregister_frame_info + 408 13  com.wincent.SynergyAdvance &#x0009;0x00007ad0 start + 456 14  dyld                       &#x0009;0x8fe01048 _dyld_start + 60</p>
+<p>Thread 0 crashed with PPC Thread State 64:</p>
+<pre> srr0: 0x00000000fffeff20 srr1: 0x100000000000d030                        vrsave: 0x0000000000000000
+   cr: 0x44028484          xer: 0x0000000000000000   lr: 0x00000000928df7dc  ctr: 0x0000000090008b80
+   r0: 0x00000000928df7b4   r1: 0x00000000bfffe7e0   r2: 0x0000000000000000   r3: 0x0000000015eabea0
+   r4: 0x0000000090a2a8d0   r5: 0x0000000090a1f3f8   r6: 0x0000000015eabea0   r7: 0x0000000015e984a0
+   r8: 0x00000000e8edf3df   r9: 0x0000000000000000  r10: 0x00000000909bd648  r11: 0x000000006f5ca8d0
+  r12: 0x00000000000a55db  r13: 0x0000000000000000  r14: 0x0000000000000001  r15: 0x0000000000000001
+  r16: 0x0000000000000000  r17: 0x0000000000000000  r18: 0x0000000000008a47  r19: 0x0000000000000000
+  r20: 0x000000001d1dee65  r21: 0x0000000000311ac0  r22: 0x0000000000000002  r23: 0x0000000000311bd8
+  r24: 0x0000000000311bd0  r25: 0x0000000000000000  r26: 0x0000000017121040  r27: 0x0000000000000002
+  r28: 0x0000000015e984a8  r29: 0x0000000000000001  r30: 0x00000000a28e1de8  r31: 0x00000000928df794</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2504'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2504"><time data-relative="true">2006-04-14T21:13:03Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 404 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2505'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2505"><time data-relative="true">2006-04-16T19:52:59Z</time></a></span>
+</cite>
+<blockquote><p>I believe I've now fixed this. Took me several days to track it down. (For the curious, I'll write a short article about it and post it to my weblog -- <a href="http://colaiuta.net/" class="external">http://colaiuta.net/</a> -- soon.) Adding the &quot;fixed-in-prerelease&quot; keyword. Once the new version out and people have tested it and confirm that this crash is indeed gone will mark this as FIXED/CLOSED. Will do the same for <a href="/issues/397">bug #397</a> as I suspect that the underlying cause of the two issues is the same and has now been fixed; it's just that the problem manifested itself with slightly different crash logs on Intel and PowerPC platforms.</p>
+<p>To be notified of the next release you can subscribe to the announcements mailing list:</p>
+<p><a href="http://lists.wincent.com/" class="external">http://lists.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2506'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2506"><time data-relative="true">2006-04-16T20:01:23Z</time></a></span>
+</cite>
+<blockquote><p>Potentially also related to <a href="/issues/396">bug #396</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2507'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2507"><time data-relative="true">2006-05-05T12:20:47Z</time></a></span>
+</cite>
+<blockquote><p>0.4 is now out. Full announcement here:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/synergy_advance_8.php" class="external">http://wincent.com/a/news/archives/2006/05/synergy_advance_8.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2508'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2508"><time data-relative="true">2006-05-30T18:34:37Z</time></a></span>
+</cite>
+<blockquote><p>Just received a new report from a user running 0.4 on PowerPC which involves a crash with NSPortDelegateTickler in the stack trace. </p>
+<p>Thread 0 Crashed: 0   libobjc.A.dylib                &#x0009;0x909bffac _cache_getImp + 12 1   libobjc.A.dylib                &#x0009;0x909c2fc4 class_respondsToMethod + 44 2   com.apple.Foundation           &#x0009;0x928cedec -[NSObject respondsToSelector:] + 72 3   com.apple.Foundation           &#x0009;0x928df7dc __NSPortDelegateTickler + 88 4   com.apple.CoreFoundation       &#x0009;0x9075ccd8 __CFRunLoopDoObservers + 352 5   com.apple.CoreFoundation       &#x0009;0x9075cf78 __CFRunLoopRun + 420 6   com.apple.CoreFoundation       &#x0009;0x9075ca18 CFRunLoopRunSpecific + 268 7   com.apple.HIToolbox            &#x0009;0x9318f1e0 RunCurrentEventLoopInMode + 264 8   com.apple.HIToolbox            &#x0009;0x9318e874 ReceiveNextEventCommon + 380 9   com.apple.HIToolbox            &#x0009;0x9318e6e0 BlockUntilNextEventMatchingListInMode + 96 10  com.apple.AppKit               &#x0009;0x9368d104 _DPSNextEvent + 384 11  com.apple.AppKit               &#x0009;0x9368cdc8 -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 116 12  com.apple.AppKit               &#x0009;0x9368930c -[NSApplication run] + 472 13  com.apple.AppKit               &#x0009;0x93779e68 NSApplicationMain + 452 14  com.wincent.SynergyAdvance     &#x0009;0x000080a0 __darwin_gcc3_preregister_frame_info + 408 15  com.wincent.SynergyAdvance     &#x0009;0x00007ad0 start + 456 16  dyld                           &#x0009;0x8fe01048 _dyld_start + 60</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2509'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2509"><time data-relative="true">2006-05-30T18:35:03Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=70) crash log for 0.4</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2510'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2510"><time data-relative="true">2006-07-05T02:07:35Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2511'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2511"><time data-relative="true">2006-09-03T10:58:00Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=77) ppc crash log</p>
+<p>Very similar to attachment #70.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2512'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2512"><time data-relative="true">2007-12-15T09:37:09Z</time></a></span>
+</cite>
+<blockquote><p>This is now fixed definitively for the next release of Synergy Advance. Thanks to new API in Leopard I was able to replace the problematic section with something much more simple and robust.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

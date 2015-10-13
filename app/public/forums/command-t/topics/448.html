@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Command T not working on fairly fresh MacVim installation
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Command T not working on fairly fresh MacVim installation</div>
+<h1 class='major'>Command T not working on fairly fresh MacVim installation</h1>
+<div class='topic' id='topic_448'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/448"><time data-relative="true">2011-01-06T10:49:12Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi all</p>
+<p>I recently installed the command t plugin but I must have done something wrong because the plugin doesn't seem to activate at all.</p>
+<p>When I try to activate it with :t I get the error message &quot;E14: Invalid address&quot;</p>
+<p>I use pathogen and I believe installed the plugin and built the C extension exactly as detailed in the doc.</p>
+<p>I'd be so grateful if someone could help me out with this.</p>
+<p>Some details...</p>
+<p><strong>My vimrc:</strong></p>
+<pre>
+  pathogen#helptags()
+  pathogen#runtime_append_all_bundles()
+
+  syntax on
+  filetype plugin indent on
+  set tabstop=2
+  set smarttab
+  set shiftwidth=2
+  set autoindent
+  set expandtab
+</pre>
+<p><strong>Output of 'vim --version' :</strong></p>
+<pre>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Aug 10 2010 22:09:22)
+Included patches: 1-108
+Compiled by stripes@il0204d-dhcp43.apple.com
+Normal version without GUI.  Features included (+) or not (-):
+-arabic +autocmd -balloon_eval -browse +builtin_terms +byte_offset +cindent 
+-clientserver -clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++cryptv +cscope +cursorshape +dialog_con +diff +digraphs -dnd -ebcdic 
+-emacs_tags +eval +ex_extra +extra_search -farsi +file_in_path +find_in_path 
++float +folding -footer +fork() -gettext -hangul_input +iconv +insert_expand 
++jumplist -keymap -langmap +libcall +linebreak +lispindent +listcmds +localmap 
++menu +mksession +modify_fname +mouse -mouseshape -mouse_dec -mouse_gpm 
+-mouse_jsbterm -mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte 
++multi_lang -mzscheme -netbeans_intg -osfiletype +path_extra -perl +postscript 
++printer -profile -python +quickfix +reltime -rightleft -ruby +scrollbind 
+-signs +smartindent -sniff +statusline -sun_workshop +syntax +tag_binary 
++tag_old_static -tag_any_white -tcl +terminfo +termresponse +textobjects +title
+ -toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
++vreplace +wildignore +wildmenu +windows +writebackup -X11 -xfontset -xim -xsmp
+ -xterm_clipboard -xterm_save 
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -D_FORTIFY_SOURCE=0 -Iproto -DHAVE_CONFIG_H     -arch armv7 -arch i386 -arch x86_64 -g -Os -pipe -mdynamic-no-pic        
+Linking: gcc   -arch armv7 -arch i386 -arch x86_64             -o vim       -lm  -lncurses      </pre>
+<p><strong>Output from 'rake make' :</strong></p>
+<pre>rake make
+(in /Users/mon/.vim/bundle/command-t)
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c match.c
+gcc -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -arch i386 -arch x86_64 -g -Os -pipe -fno-common -DENABLE_DTRACE  -fno-common  -pipe -fno-common   -std=c99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+cc -arch i386 -arch x86_64 -pipe -bundle -undefined dynamic_lookup -o ext.bundle ext.o match.o matcher.o -L. -L/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib -L. -arch i386 -arch x86_64     -lruby  -lpthread -ldl</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6548'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6548"><time data-relative="true">2011-01-06T11:30:29Z</time></a></span>
+</cite>
+<blockquote><p>Rather odd, as your <code>vim --version</code> output clearly indicates that your Vim wasn't compiled with Ruby support (ie. the <code>-ruby</code>).</p>
+<p>Every build of MacVim I've ever tried has had Ruby support, which you can see as <code>+ruby</code> in the <code>:version</code> output and also see <code>-framework Ruby</code> in the linking flags, something which your output omits.</p>
+<p>I'm afraid Command-T can't work unless your Vim was compiled with Ruby support.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6551'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6551"><time data-relative="true">2011-01-06T12:28:32Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the reply- I guess I must have just scanned and seen the word ruby and thought it was ok. </p>
+<p>I am fairly sure that I tried to compile with Ruby support, but something didn't go according to plan.  I'll try it again.</p>
+<p>Thanks again :)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6552'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6552"><time data-relative="true">2011-01-06T12:44:15Z</time></a></span>
+</cite>
+<blockquote><p>OK I grabbed the version of MacVim from here <a href="http://code.google.com/p/macvim/" class="external">http://code.google.com/p/macvim/</a></p>
+<p>I just dropped it into my /Applications directory.</p>
+<p>I get the same thing...</p>
+<p>Incidentally I discovered with the old MacVim and this most recent one that :CommandT works but :t doesn't</p>
+<p>So the plugin seems usable but :t doesn't work.  I worry that I've messed up some configuration, though I have installed very little and my vimrc remains as above.</p>
+<p>The the other plugins I have installed are nerdtree, vim.rails and snipmate.</p>
+<p>Can you think of anything that would allow :CommandT to work but prevent :t from working?</p>
+<p>Thank you again for the help and the excellent plugin :o)</p>
+<p><strong>New output from :version</strong></p>
+<pre>
+MacOS X (unix) version
+Compiled by Bjorn Winckler &lt;bjorn.winckler@gmail.com&gt;
+Huge version with MacVim GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard
++cmdline_compl +cmdline_hist +cmdline_info +comments +conceal +cryptv +cscope +cursorbind +cursorshape
++dialog_con_gui +diff +digraphs +dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path
++find_in_path +float +folding -footer +fork() +fullscreen -gettext -hangul_input +iconv +insert_expand +jumplist
++keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap -lua +menu +mksession +modify_fname +mouse
++mouseshape +mouse_dec -mouse_gpm -mouse_jsbterm +mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte
++multi_lang -mzscheme +netbeans_intg +odbeditor -osfiletype +path_extra +perl +persistent_undo +postscript
++printer +profile +python -python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent -sniff
++startuptime +statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white -tcl +terminfo
++termresponse +textobjects +title +toolbar +transparency +user_commands +vertsplit +virtualedit +visual
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup -X11 -xfontset +xim -xsmp
+-xterm_clipboard -xterm_save
+   system vimrc file: &quot;$VIM/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;$VIM/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/Applications/MacVim.app/Contents/Resources/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown-pragmas -pipe  -DMACOS_X_UNIX
+-no-cpp-precomp  -g -O2 -arch i386 -arch x86_64 -D_FORTIFY_SOURCE=1
+Linking: gcc   -L.    -L.         -arch i386 -arch x86_64 -L/usr/local/lib -o Vim -framework Cocoa -framework Carbo
+n      -lncurses  -liconv -framework Cocoa    -L/usr/local/lib  -L/System/Library/Perl/5.10.0/darwin-thread-multi-2
+level/CORE -lperl -lm -lutil -lc -framework Python   -framework Ruby      
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6553'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6553"><time data-relative="true">2011-01-06T12:57:22Z</time></a></span>
+</cite>
+<blockquote><p>It's not <code>:t</code> but <code>&lt;Leader&gt;t</code>.</p>
+<p>So it depends on what you've set your leader key as. I use <code>,</code> so for me I bring up Command-T with <code>,t</code>. I think the default leader is <code>\</code> unless you override it, so in that case you'd bring it up with <code>\t</code>.</p>
+<p>You can also set up any arbitrary mapping for <code>:CommandT</code>; see the docs for an example.</p>
+<p>So it seems that it should work for you now, seeing as you say <code>:CommandT</code> works and your Vim now reports <code>+ruby</code>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6554'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6554"><time data-relative="true">2011-01-06T13:02:50Z</time></a></span>
+</cite>
+<blockquote><p>Ah ok- I was being dumb and hammering :t instead of \t</p>
+<p>So much to learn!  Sorry to have wasted your time, and thank you so much for your help!</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

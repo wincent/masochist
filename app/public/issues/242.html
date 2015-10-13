@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #242: Song within Album list (within artist submenu) not sorted
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #242</div>
+<div class='issue' id='issue_242'>
+<form class="edit_issue" id="edit_issue_242" action="/issues/242" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SmTjwPbwGmb3HiInP7CLpg7iQrFQyJdIrXWdSVVZ1U9+ll13UX3AMy6SEdAOmdgSu2ArjVskGVSNaki3cYGyaw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #242:
+<span data-name='issue[summary]'>
+Song within Album list (within artist submenu) not sorted
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-17T13:31:39Z</time>, updated <time data-relative="true">2006-07-05T02:05:47Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/david-ameeti">David Ameeti</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When viewing the list of songs shown within (Artists -&gt; artist_name -&gt; All (#) Albums) or (Artists -&gt; artist_name -&gt; any_album_name), the list of song titles is not sorted.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2017'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2017"><time data-relative="true">2005-05-17T18:59:53Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report David. I purposely left it that way because I wasn't sure what to do. You'll notice  that within the Genres and Artist menus the submenus are all alphabetically sorted. But when it comes  to sorting actual track names it's a little harder to know what to do. (For now Synergy Advance just  sticks them in the menus in the order in which iTunes returns them.)</p>
+<p>For example. I have an album like which has names like this &quot;01 A track&quot;, &quot;02 Another track&quot; (in other  words, the song title has the track number in it). If I sort them alphabetically then they come out in the  right order.</p>
+<p>In other albums, however, the tracks might not have track numbers in the titles and if they appear on  the album in order &quot;A, D, C, B&quot; and I sort them alphabetically then I'll get &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot; which is  alphabetically correct (good) but doesn't match the order of things on the album (bad).</p>
+<p>I think that the best solution would be to do a fairly complex sorting operation, but it will slow things  down a fair bit. Basically, for each song added to the submenu, I would have to look at not only its  name, but also its album name, track number, disc number and artist. The exact sorting criteria would  depend on which submenu is being sorted.</p>
+<p>For example, in the submenu &quot;Artists&quot; -&gt; &quot;Sting&quot; -&gt; &quot;All albums&quot;, I could sort by:</p>
+<p>1. Album 2. Disc number 3. Track Number 4. Track Title</p>
+<p>Some other submenus are not so easy to decide. For example, in the &quot;Genres&quot; -&gt; &quot;All&quot; submenu, what  do I sort by?</p>
+<p>1. Genre 2. Artist 3. Album 4. Disc number 5. Track number</p>
+<p>This produces non-alphabetical listing, could be confusing. But sorting by alphabetical order could lead  to some pretty ugly side effects (like all tracks beginning with &quot;01&quot; being bunched together, for  example). I could clean it up by putting in separators between the genres and I think this is a good  idea. (The other question is, how far do I carry that idea? It clearly makes sense to put this kind of  separator in a long menu like the &quot;All Genres&quot; submenu, but what about a shorter menu like an &quot;All  albums&quot; menu for an artist where there are only two albums for that artist?)</p>
+<p>I am going to leave this bug report open so that people can leave their comments and suggestions,  seeing as I am not sure exactly how to proceed. This is not like an NSTableView (like you see in apps  with Finder-like windows) where you can sort stuff by clicking on a column header. There are a very  small number of apps out there which provide advanced sorting functionality in table views where you  can specify not only the primary search criterion but a bunch of secondary criteria as well. Doing it for  table views is one thing but for menus is another matter entirely. I *could* provide a user interface in  the preferences for determining the sort order but I can't think of a way to make such an interface that  is not cluttered, complicated and ugly, so I won't do it. Basically I'd like to figure the best/most  intuitive/correct way to sort and apply it automatically.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2018'>
+<cite>
+<a href="/users/david-ameeti">David Ameeti</a>
+<span class='when'><a href="#comment_2018"><time data-relative="true">2005-05-17T23:49:02Z</time></a></span>
+</cite>
+<blockquote><p>My gut reaction: you're way overthinking this problem.  Let's go back to the basics.  If I'm looking at the Artists submenu and I select &quot;All&quot; sub-submenu, I'm not trying to do anything complicated -- I'm just trying to list some songs performed by that artist so I can play one (since, by definition, if I select by All songs by that artist, aren't I'm trying to ignore the enclosing album relationship?).  The simple answer: I'm not looking for albums, I'm not looking for song/title relationships -- I'm looking for a title so I can hear the pretty song.  Period.</p>
+<p>Given that, give me a list of titles by that artist and I'm happy.  Once you get to that simplistic realization, then sorting alphabetically seems like the only one that sounds reasonable (and no subsorting by album/date/etc. would seem to be necessary).</p>
+<p>As far as within an album (i.e., the submenus below the All submenu), I would carry the same logic forward -- if I need to see it by track number (or any other complex title/artist/album relationship), I go to the program (iTunes) and do my fancy lookups there.  That's where you do the complex stuff -- and *you* do what you do best: &quot;control the player&quot; and play the funky music.  :-)</p>
+<p>When I'm viewing them through your program, I *just* want to see the titles so I can pick a pretty song to hear it.  I would still use the same logic as above: namely sort them in title order so I can pick a pretty song to play.  Sometimes simple is the very best logic you can use.</p>
+<p>Think of it this way: when I'm at a jukebox and I'm looking for a song to play, I'm not looking through all the song titles with some complex thought about &quot;I want the 4th title on the 2rd album&quot; -- no, I just want &quot;White Christmas&quot; by Bing Crosby... so I look for &quot;White Christmas&quot; and press the buttons on the jukebox.</p>
+<p>As far as track numbers being prefixed to the song title, I don't understand that concept.  iTunes can already sort by track number (w/o changing the song titles) so if someone wants them in order (within iTunes), wouldn't they just click on the track number column?  I'm completely at a loss as to why would anyone modify the song title (but I accept that they do) so that they could never display the songs in true alphabetical order ever again -- they've lost that ability forever.  (Just like why would someone put the employee ID's in front of the name in an employee roster?  It just sounds odd to me.)  I say let the program do what it does well (sort by various criteria) and don't modify the data to do the same job.</p>
+<p>However... given that some people do actually that, if you want to be nice to those people, then look at the first two characters and if you see 3+ entries in a row that are &quot;dd aaaaaaaaa&quot; format, then drop the first two characters from any entry in that format (for sorting purposes only) and *then* sort it (in name order).  Later (as an option in the future) you can allow the user to always ignore or always respect the extra prefix characters as a preference. That would be my vote.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2019'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2019"><time data-relative="true">2005-05-18T00:13:12Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>My gut reaction: you're way overthinking this problem.</p>
+</blockquote>
+<p>Hehe. Now that you've written that essay I think you're overthinking too! But that's good; &quot;overthinking&quot;  is necessary if you want software that's professional and polished (and I do). Thanks for the  suggestions.</p>
+<blockquote>
+<p>As far as track numbers being prefixed to the song title, I don't understand that concept.  iTunes can already sort by track number (w/o changing the song titles) so if someone wants them in order (within iTunes), wouldn't they just click on the track number column?  I'm completely at a loss as to why would anyone modify the song title (but I accept that they do) so that they could never display the songs in true alphabetical order ever again -- they've lost that ability forever.</p>
+</blockquote>
+<p>I agree. They shouldn't do it, but some people do. And if people download a lot of mp3s then the  chances of getting poorly tagged files with silly naming convention are increased. I just wanted to point  out that it's something that can and does happen, even if it is a bad idea.</p>
+<p>Anyway, like I said. Thanks for the comments.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2020'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2020"><time data-relative="true">2006-07-05T02:05:47Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

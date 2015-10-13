@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1209: Scope refinement while navigating the tag cloud
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1209</div>
+<div class='issue' id='issue_1209'>
+<form class="edit_issue" id="edit_issue_1209" action="/issues/1209" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ztuGiu0cCbGdPk4HtrxVUMTdnoX6j0g5TQN+LxqZ4MH6KTg9SpHT5ESyffCHlQbkcV/3ufFjxiVtHKvRPkGH5Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1209:
+<span data-name='issue[summary]'>
+Scope refinement while navigating the tag cloud
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-01-26T15:56:40Z</time>, updated <time data-relative="true">2009-02-03T05:42:47Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Sorry about the abstruse summary line, but the way things currently work is this:</p>
+<p>You click on a tag name, say &quot;nginx&quot; and are taken to a list of all items with that tag.</p>
+<p>If you want to narrow your search to, say, items tagged with &quot;nginx&quot; <em>and</em> &quot;updates&quot;, then you have to actually do a tag search and type &quot;nginx updates&quot;.</p>
+<p>It would be really neat if you could instead do the following:</p>
+<p>Click on the tag name, &quot;nginx&quot;, and see a list of all items with that tag (just as before).</p>
+<p>However, <em>in addition</em>, you'd also see a list of other tags that you can click on to refine your search. In the case of the &quot;nginx&quot; example the other tags would be &quot;updates&quot; and &quot;log.rotation&quot;, because those are the other tags that you can find on articles tagged with &quot;nginx&quot;.</p>
+<p>I am not sure if all this would result in an absolutely hideous database query, but it would certainly be a really nice <a href="/wiki/ui">ui</a> thing.</p>
+<p>If the query turns out to be too horrid, the least we can do is provide a way for a user to click on the cloud (without worrying about filtering things down to only the tags &quot;updates&quot; and &quot;log.rotation&quot;).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4135'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4135"><time data-relative="true">2009-01-26T15:56:51Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4138'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4138"><time data-relative="true">2009-01-28T05:53:51Z</time></a></span>
+</cite>
+<blockquote><p>Let's start with a self <code>CROSS JOIN</code> (produces exponential growth of records; ie. if there are 1,000 taggings you'll get 1,000,000 rows back):</p>
+<pre>SELECT * FROM taggings AS t1 JOIN taggings AS t2;</pre>
+<p>Adding a <code>WHERE</code> clause to reduce the number of returned results:</p>
+<pre>SELECT * FROM taggings AS t1 JOIN taggings AS t2 WHERE t1.tag_id = 38;</pre>
+<p>To see the groupings a little more clearly:</p>
+<pre>SELECT * FROM taggings AS t1 JOIN taggings AS t2 WHERE t1.tag_id = 38 ORDER BY t1.id;</pre>
+<p>So just say there were 54 items with tag 38, you'd now get 54 x 1,000 rows in the result (54,000).</p>
+<pre>SELECT * FROM taggings AS t1
+JOIN taggings AS t2
+WHERE t1.tag_id = 38 AND t1.taggable_id = t2.taggable_id AND t1.taggable_type = t2.taggable_type;</pre>
+<p>This yields a big reduction in the returned result size.</p>
+<pre>SELECT * FROM taggings AS t1
+JOIN taggings AS t2
+WHERE t1.tag_id = 38 AND t1.taggable_id = t2.taggable_id AND t1.taggable_type = t2.taggable_type
+GROUP BY t2.tag_id;</pre>
+<p>And another reduction in result size.</p>
+<p>Now let's just get the column we're interested in:</p>
+<pre>SELECT t2.tag_id
+FROM taggings AS t1
+JOIN taggings AS t2
+WHERE t1.tag_id = 38 AND t1.taggable_id = t2.taggable_id AND t1.taggable_type = t2.taggable_type
+GROUP BY t2.tag_id;</pre>
+<p>Now let's <code>JOIN</code> the <code>tags</code> table at the same time so that we can get the tag names at the same time:</p>
+<pre>SELECT t2.tag_id, tags.name
+FROM tags
+JOIN taggings AS t1
+JOIN taggings AS t2
+WHERE t1.tag_id = 38
+AND t1.taggable_id = t2.taggable_id
+AND t1.taggable_type = t2.taggable_type
+AND tags.id = t2.tag_id
+GROUP BY t2.tag_id;</pre>
+<p>Not sure if this is right, but it produces the expected results on my small test case with only one tag. Will need to think about how this could be extending to handle multiple tags.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4139'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4139"><time data-relative="true">2009-01-28T06:28:23Z</time></a></span>
+</cite>
+<blockquote><p>&quot;Drilling down&quot; gets a bit ugly.</p>
+<p>It's not enough to just do a <code>t1.tag_id = 38 OR t1.tag_id = 40</code>, nor a <code>t1.tag_id IN (38, 40)</code> because those won't actually narrow down the scope and the exact same results will be returned.</p>
+<p>Likewise <code>t1.tag_id = 38 AND t1.tag_id = 40</code> won't work for obvious reasons.</p>
+<p>Basically, we need to do one more self-<code>JOIN</code> for each level that we wish to drill down. Evidently it will make sense to impose a limit on the number of joins we'll do although in practical terms most items have only 1 or 2 tags on them and it's hard to imagine drilling down more than 5 levels (I think the most heavily tagged item I have right now probably only has 3 or 4 tags on it).</p>
+<p>Here's an example with one additional level of drilling:</p>
+<pre>SELECT t3.tag_id
+FROM taggings AS t1
+JOIN taggings AS t2
+JOIN taggings AS t3
+WHERE t1.tag_id = 38
+AND t2.tag_id = 40
+AND t1.taggable_id = t2.taggable_id
+AND t1.taggable_type = t2.taggable_type
+AND t3.taggable_id = t1.taggable_id
+AND t3.taggable_type = t1.taggable_type
+GROUP BY t3.tag_id;</pre>
+<p>The same with the <code>tags</code> tabled <code>JOIN</code>-ed in so as to fetch the tag name at the same time:</p>
+<pre>SELECT t3.tag_id, tags.name
+FROM tags, taggings AS t1
+JOIN taggings AS t2
+JOIN taggings AS t3
+WHERE t1.tag_id = 38
+AND t2.tag_id = 40
+AND t1.taggable_id = t2.taggable_id
+AND t1.taggable_type = t2.taggable_type
+AND t3.taggable_id = t1.taggable_id
+AND t3.taggable_type = t1.taggable_type
+AND tags.id = t3.tag_id
+GROUP BY t3.tag_id;</pre>
+<p>And while we're at it we should probably exclude the passed in tags from the results list:</p>
+<pre> SELECT t3.tag_id, tags.name
+FROM tags, taggings AS t1
+JOIN taggings AS t2
+JOIN taggings AS t3
+WHERE t1.tag_id = 38
+AND t2.tag_id = 40
+AND t1.taggable_id = t2.taggable_id
+AND t1.taggable_type = t2.taggable_type
+AND t3.taggable_id = t1.taggable_id
+AND t3.taggable_type = t1.taggable_type
+AND tags.id = t3.tag_id
+AND t3.tag_id NOT IN (38, 40)
+GROUP BY t3.tag_id;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4140'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4140"><time data-relative="true">2009-01-28T06:39:58Z</time></a></span>
+</cite>
+<blockquote><p>For the purposes of illustration, here's the &quot;first level&quot; example again, this time with the passed-i tag excluded <em>and</em> including the &quot;tagging count&quot;:</p>
+<pre>SELECT t2.tag_id, tags.name, tags.taggings_count
+FROM tags
+JOIN taggings AS t1
+JOIN taggings AS t2
+WHERE t1.tag_id = 38
+AND t1.taggable_id = t2.taggable_id
+AND t1.taggable_type = t2.taggable_type
+AND tags.id = t2.tag_id
+AND t2.tag_id NOT IN (38)
+GROUP BY t2.tag_id;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4143'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4143"><time data-relative="true">2009-01-30T15:40:53Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is now implemented and I'm reasonably happy with the result. Will be included in the next deployment.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4157'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4157"><time data-relative="true">2009-02-03T05:42:47Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #142: Suppress Growl notification when iTunes quits
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #142</div>
+<div class='issue' id='issue_142'>
+<form class="edit_issue" id="edit_issue_142" action="/issues/142" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="1HxHDqYKx3oX9VUOChhd91IpY7j2hQ5DC/29idSDzh/gjvm5AYcdL855Zvk7MQ5D56sKhP1pgF8r4mh38FupOw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #142:
+<span data-name='issue[summary]'>
+Suppress Growl notification when iTunes quits
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2005-03-15T01:41:52Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jason-deraleau">Jason Deraleau</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When using Synergy with Growl (love the Growl support, by the way), I notice an extra notification when  I quit iTunes. A Growl notification is sent that lists &quot;Stopped: (null) Unknown Artist&quot; Mind taking a look  at getting rid of the extra noise?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_1671'>
+<cite>
+<a href="/users/jason-deraleau">Jason Deraleau</a>
+<span class='when'><a href="#comment_1671"><time data-relative="true">2005-03-15T01:42:35Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=14) Screenshot of the extraneous notification.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1672'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1672"><time data-relative="true">2005-03-15T03:19:02Z</time></a></span>
+</cite>
+<blockquote><p>I can reproduce this here, although I'd never seen it before because I neither quit iTunes nor use Growl!  iTunes is sending a state changed notification just before it quits, notifying that it's state is &quot;Stopped&quot;  and passing null or no values for the track information.</p>
+<p>I am not sure if I can fix this in a reliable manner. On receiving the notification there's no point in  testing if iTunes is still running (because it is) and so there's no way of knowing that it's about to quit.  About the only thing I can think of is to suppress *all* &quot;Stopped&quot; notifications.</p>
+<p>What do you think?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1673'>
+<cite>
+<a href="/users/jason-deraleau">Jason Deraleau</a>
+<span class='when'><a href="#comment_1673"><time data-relative="true">2005-03-15T03:25:28Z</time></a></span>
+</cite>
+<blockquote><p>While suppressing all Stop notifications is probably drastic (though not a frequent occurrence), it would  probably be good to at least clean up the Stop notification a bit. I'm assuming it doesn't need to send  the null/Unknown Artist information to Growl. I'd guess that you have a function pulling the  information about the currently playing track from iTunes, but since no track is playing, it'll never get  that information :)</p>
+<p>Out of curiosity, how did you fix it for Synergy's floater? I don't seem to get that extra Stopped message  with the default floater...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1674'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1674"><time data-relative="true">2005-03-15T03:27:14Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've fixed it. I'm suppressing &quot;Stopped&quot; notifications where no track name is passed. Seeing as  iTunes won't allow users to change a track name to an empty string there should hopefully be no  missed notifications due to false positives.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1675'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1675"><time data-relative="true">2005-03-15T03:28:11Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED. This fix will be available to the public when version 1.8 is released (currently  scheduled for later this month is all goes well).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

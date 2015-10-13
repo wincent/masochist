@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #97: Adjusting rating via hotkeys causes iTunes to crash
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #97</div>
+<div class='issue' id='issue_97'>
+<form class="edit_issue" id="edit_issue_97" action="/issues/97" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="2uqmzLw25W0epe+wAsMiyacm5fF7mdpPcpIeF/raro/uGBh7G7s/OMcp3Ecz6nF9EqSMzXB1VFNSjcvp3gLJqw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #97:
+<span data-name='issue[summary]'>
+Adjusting rating via hotkeys causes iTunes to crash
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2005-01-11T12:22:49Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/brad-cavanagh">Brad Cavanagh</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I have hotkeys Apple-F4 and Apple-F5 set up to decrease and increase the currently-playing track's  rating. Up until I tried doing so on an Apple Lossless-encoded file, it worked just fine. Then I tried it on  that ALE file, and it caused iTunes to crash. What happens is that iTunes skips very briefly, then stops  and beachballs, then crashes. I've tried changing the hotkeys to something else (various function,  option, shift, control, and apple key combinations, along with getting off the function keys and trying  ctrl-opt-apple-i and ctrl-opt-apple-k), and they all have the same iTunes-crashing result.</p>
+<p>Other Synergy hotkeys work fine -- I have apple-f8 set to display the floater, apple-f9 to play/pause,  apple-f10 to go to the previous track, and apple-f11 to go to the next track. Those all work.</p>
+<p>This worked fine last week and I don't think I've changed anything that would cause it to break. Perhaps  the ALE file is a red herring, but that's all I could think of. I had been using Synergy 1.5b when I initally  had the problem, but I've since upgraded to 1.6.1 and am still having the problem.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1491'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1491"><time data-relative="true">2005-01-11T13:24:03Z</time></a></span>
+</cite>
+<blockquote><p>I just tried to reproduce this crash by ripping a track from a CD to Apple Lossless, then playing it, and  changing the rating using Synergy hot keys. No crash (nor any skipping or beachballing either).</p>
+<p>This leads me to suspect that there is a problem with that particular file on your system. I'll bet you can  make iTunes crash trying to edit the rating on that file using other means. For example, an AppleScript  like this will probably also make it crash:</p>
+<p>tell application &quot;iTunes.app&quot; to set rating of current track to 80</p>
+<p>If you can confirm that that is the case, then we can close this bug. You'll need to re-encode that file  and report the bug to Apple:</p>
+<p><a href="http://www.apple.com/feedback/itunes.html" class="external">http://www.apple.com/feedback/itunes.html</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1492'>
+<cite>
+<a href="/users/brad-cavanagh">Brad Cavanagh</a>
+<span class='when'><a href="#comment_1492"><time data-relative="true">2005-01-11T16:31:51Z</time></a></span>
+</cite>
+<blockquote><p>Sorry for filing this one here, it wasn't Synergy's fault. :-) Thanks for the hint about sending an  AppleScript command. I tried that and it generated a crash in the same way I was getting with Synergy. I  looked at the crash log and saw some question marks in one of the thread listing next to a plugin I'd  installed a while back called projectM (I think). I removed the plugin, fired up iTunes, and now  everything works just fine.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1493'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1493"><time data-relative="true">2005-01-11T20:31:23Z</time></a></span>
+</cite>
+<blockquote><p>Marking CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

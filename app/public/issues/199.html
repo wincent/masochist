@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #199: Installation &amp; Activation fail...
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #199</div>
+<div class='issue' id='issue_199'>
+<form class="edit_issue" id="edit_issue_199" action="/issues/199" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="2xzlI+kHqbKY3aPBWjbsDgUUVa2IKHdOJvgTWCFDmDLv7luUTopz50FRkDZrH7+6sJY8kYPE+VIG58amBZv/Fg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #199:
+<span data-name='issue[summary]'>
+Installation &amp; Activation fail...
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-24T23:45:35Z</time>, updated <time data-relative="true">2005-04-25T00:17:36Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/garth-schafer">Garth Schafer</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>On Panther 10.3.5-10.3.9 on my Cube G4 the installer seems to run fine, but I do not end up w/a  WinSwitch menu in my menu bar for main account.  Upon running the Activate WinSwitch.command the  following occurs in the terminal:</p>
+<p>Last login: Sun Apr 24 08:04:22 on ttyp1 Welcome to Darwin! /Users/Shared/Activate\ WinSwitch.command; exit Garths-Cube:~ schaferg$ /Users/Shared/Activate\ WinSwitch.command; exit Deactivating menu extra with identifier &quot;com.apple.menuextra.appleuser&quot; ... Success. Deactivating menu extra with identifier &quot;net.sourceforge.menucracker&quot; ... Success. Deactivating menu extra with identifier &quot;com.wincent.WinSwitch&quot; ... Success. Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1  ... Failure. Error: fatal error while adding bundle &quot;/Library/Menu Extras/WinSwitch.menu&quot; aborting processing Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1  ... Failure. Error: fatal error while adding bundle &quot;/Library/Menu Extras/WinSwitch.menu&quot; aborting processing logout [Process completed]</p>
+<p>Any Ideas?  This happened with both 3.0 a few months ago, and with 3.0.1 today.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1889'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1889"><time data-relative="true">2005-04-25T00:16:51Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, Garth. First up, you should try with the version 3.1 release candidate. It's not up  on the main website yet, but it has been seeded to beta testers. You can find a link to it in <a href="/issues/139">bug #139</a>  (that bug is about fixing Tiger compatibility, but you should grab that version anyway to be sure you  are using the latest code).</p>
+<p>I do suspect that the problem isn't confined to any specific version of WinSwitch though. I am fairly sure  that what you are reporting is actually a duplicate of <a href="/issues/161">bug #161</a>. I think there is a conflict with other  third-party menu extra enablers.</p>
+<p>Once you've installed the new version, if you see that it doesn't activate properly can you try a manual  activation? You would manually activate like this:</p>
+<p>1. Navigate to /Library/Menu Extras/</p>
+<p>2. Using the contextual menu do a &quot;Show package contents&quot; on the WinSwitch.menu bundle.</p>
+<p>3. Inside the bundle at &quot;Contents/Resources&quot; double-click on the &quot;MenuCracker.menu&quot; bundle.</p>
+<p>4. Now double-click on the WinSwitch.menu bundle itself.</p>
+<p>These actions approximate (but not exactly) the actions taken by the installer and activation scripts.  The end result should be that WinSwitch appears in the menu bar. You can then Command-drag it over  to the right (or wherever you want).</p>
+<p>I am going to close this bug and ask that you file any further comments against <a href="/issues/161">bug #161</a>. Can you  please let me know how you go with the manual activation, and also if there are any interesting  messages printed in the console (as was the case with the person who filed <a href="/issues/161">bug #161</a>)?</p>
+<ul>
+<li>** This bug has been marked as a duplicate of 161 ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1890'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1890"><time data-relative="true">2005-04-25T00:17:36Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

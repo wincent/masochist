@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1541: &quot;Learn&quot; from previous selections
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1541</div>
+<div class='issue' id='issue_1541'>
+<form class="edit_issue" id="edit_issue_1541" action="/issues/1541" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/Z1zqo1T5fMX0UovU/VNOrvHP3WrGge4Jh1LdFphs0nJb80dKt4/ps5dedhi3B6ODkVWSaD2iaQGAp6KfrnUbQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1541:
+<span data-name='issue[summary]'>
+&quot;Learn&quot; from previous selections
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-04-19T18:30:07Z</time>, updated <time data-relative="true">2011-01-02T10:26:28Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From cleaning out my <code>TODO.txt</code> file:</p>
+<pre>- learn from previous selections (remember choosen file for each search)</pre>
+<p>In terms of what this might actually look like, off the top of my head, perhaps each time you open a file it could be recorded with a small &quot;bonus&quot; that will be automatically added to its score on future runs.</p>
+<p>I imagine that we'd want this to gradually taper off so as to not grow without limit.</p>
+<p>The &quot;bonus&quot; wouldn't necessarily be directly additive. It would most likely be more like a secondary sort criteria.</p>
+<p>eg. given a bunch of files with the same score &quot;X&quot;, sort them by &quot;bonus&quot;, and if the &quot;bonus&quot; is equal then sort alphabetically</p>
+<p>Although I guess most files do have subtly different scores, so this secondary sorting wouldn't kick in all that often. The bonus would probably have to be small enough to be applied additively, without making the ordering totally erratic.</p>
+<p>Guess the only way we can see if this thing is intuitive will be to play around with it and set different values for the bonus.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6342'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6342"><time data-relative="true">2010-10-13T06:38:48Z</time></a></span>
+</cite>
+<blockquote><p>Cross-referencing from <a href="/comments/6341">this comment</a> on <a href="/issues/1710">issue #1710</a>:</p>
+<blockquote>
+<p>Take a look at <a href="/issues/1541">ticket #1541</a> ('&quot;Learn&quot; from previous selections'). The idea proposed there is that the plug-in remembers which files you choose for any given search string and then in future searches adds a &quot;bonus&quot; to the score of such items when you enter that same search string again.</p>
+<p>So in your example, you type &quot;br&quot;, wanting to open <code>billing_report.php</code>, and it's not the top search result so you actually end up using the cursor keys to move down and select it. The next time you type &quot;br&quot;, Command-T applies a small bonus to <code>billing_report.php</code>, pushing it slightly higher up the results listing. You again use the cursor keys to move down and select it and so the bonus is bumped up a little higher. Next time you type &quot;br&quot;, the bonus is big enough to make <code>billing_report.php</code> the top result.</p>
+<p>What do you think of that one? I'm inclined to think that this would be a nice, intuitive way to transparently give you the behavior you're looking for without obliging users to spend time maintaing a special mappings file.</p>
+<p>The only tricky part of this would be fine-tuning the implementation details (how much should the &quot;bonus&quot; fluctuate up or down when you select a file or later select a different one?) but nothing insurmountable.</p>
+</blockquote>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6545'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6545"><time data-relative="true">2011-01-02T10:26:28Z</time></a></span>
+</cite>
+<blockquote><p>Related request via user email:</p>
+<blockquote>
+<p>it would be great if command-t would sort a little bit different. If there is a match in files that was already used in the last few days, it should put those files on the top. Those files should be orderd by usage. the more recent the file was used, the more on top it sould be.</p>
+</blockquote>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

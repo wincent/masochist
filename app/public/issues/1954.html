@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1954: :CommandT with a filter is not opening right path
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1954</div>
+<div class='issue' id='issue_1954'>
+<form class="edit_issue" id="edit_issue_1954" action="/issues/1954" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="608mFCQ9kUu8ZQFAujq17IE9kjfxdaEp8QwtciPQjqrfvZijg7BLHmXpMreLE+ZYNL/7C/qZLzXRE/iMBwjpjg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1954:
+<span data-name='issue[summary]'>
+:CommandT with a filter is not opening right path
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-02-28T10:34:38Z</time>, updated <time data-relative="true">2012-03-04T00:20:07Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/saimon-moore">Saimon Moore</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>e.g I type:</p>
+<pre>   :CommandT app/controllers</pre>
+<p>and it brings up the correct list of files:</p>
+<p>then I type:</p>
+<pre>   sess</pre>
+<p>and it shows me sessions_controller.rb (as I expect)</p>
+<p>when I hit enter though it opens </p>
+<pre>   {Root}/sessions_controller.rb</pre>
+<p>rather than </p>
+<pre>   {Root}/app/controllers/sessions_controller.rb</pre>
+<p>I'm not quite sure what may be causing this...</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_7452'>
+<cite>
+<a href="/users/saimon-moore">Saimon Moore</a>
+<span class='when'><a href="#comment_7452"><time data-relative="true">2012-02-28T10:41:07Z</time></a></span>
+</cite>
+<blockquote><p>As a  test I disabled all other plugins except Command-T and only left the following in my vimrc: <a href="https://gist.github.com/1931823" class="external">https://gist.github.com/1931823</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7453'>
+<cite>
+<a href="/users/saimon-moore">Saimon Moore</a>
+<span class='when'><a href="#comment_7453"><time data-relative="true">2012-02-28T10:43:40Z</time></a></span>
+</cite>
+<blockquote><p>Note this only happens with the filters...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7454'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7454"><time data-relative="true">2012-02-28T21:50:46Z</time></a></span>
+</cite>
+<blockquote><p>I have the same issue since about two weeks ago. (BTW, I'm using github master branch)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7457'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7457"><time data-relative="true">2012-02-29T07:09:33Z</time></a></span>
+</cite>
+<blockquote><p>This is a bug present in the current HEAD of the master branch.</p>
+<p>There is <a href="https://github.com/wincent/Command-T/pull/37" class="external">a pull request</a> that reverts the bad commit. I'm going to test the revert and make sure everything works as expected and then merge it.</p>
+<p>If you can't wait, you an also revert it yourself in your local copy.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7460'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7460"><time data-relative="true">2012-02-29T08:28:59Z</time></a></span>
+</cite>
+<blockquote><p>Merged <a href="/repos/command-t/commits/fc5b5c39b4a929703b472a706c4c1bc3c04791ba">here</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7461'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7461"><time data-relative="true">2012-02-29T08:29:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7467'>
+<cite>
+<a href="/users/saimon-moore">Saimon Moore</a>
+<span class='when'><a href="#comment_7467"><time data-relative="true">2012-03-04T00:20:07Z</time></a></span>
+</cite>
+<blockquote><p>Great thanks Wincent and Gary ;)</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

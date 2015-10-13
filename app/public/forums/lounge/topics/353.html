@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Progress report
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/lounge">Lounge</a> &raquo; Progress report</div>
+<h1 class='major'>Progress report</h1>
+<div class='topic' id='topic_353'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/lounge/topics/353"><time data-relative="true">2005-01-01T19:31:25Z</time></a>
+</span>
+</cite>
+<blockquote><p>I've been working on some website stuff and decided to have another look at DocBook. The idea is that you write your content once and only once using the DocBook DTD (an XML dialect), and then can use an automated tool chain to transform the content into various formats (obviously useful ones are HTML/XHTML, PDF, TXT, but there are many others). Lots of large projects make use of DocBook, such as the FreeBSD documentation project. These aren't flashy webpages like you would see at apple.com or microsoft.com, but they are examples of extremely large and highly-informative repositories of documentation.</p>
+<p>So anyway, I was writing up some stuff using the cleanest XHTML that I could come up with. I was also judiciously using PHP includes to make the most of reusable components.</p>
+<p>The last time I had a play with DocBook on Mac OS X I wasn't too happy with the state of the tools available, but some time has passed so I decided to have another look. A lot of the stuff you need is already included with Mac OS X, and the rest is fairly easily installed. I'll write this up in a Knowledge Base article at some point.</p>
+<p>I must admit that when I first looked at the XHTML produced from the DocBook XML I wasn't too impressed with the &quot;cleanness&quot; of it. Lots and lots of extra divs, classes, spans. But given that DocBook is much richer markup (structurally speaking) than XHTML, I guess that's the only way that you can preserve the structural information when you perform the conversion. The good thing is that despite this clutter, there's still a clear separation between content and presentation. If you don't have a style-sheet, the output as rendered by a browser will look as clean and vanilla as you can get. You need to do a bit of CSS wizardry to get it looking polished, but it's not too much harder than working with clean, hand-coded XHTML.</p>
+<p>So it's been quite an interesting process. I've learnt more about XML than I knew before, and along the way I've learnt some other valuable things.</p>
+<p>For example, I've learnt how to write Makefiles to make it easier to process the DocBook source files into the desired output formats. Seeing as I'd done all my other development work in Xcode, and my command-line compilation had basically been limited to using makefiles that had been written by other people, this was a great new thing for me. It's obviously much harder to write a makefile than it is to use one, but it's amazing how powerful and expressive they are.</p>
+<p>Another completely new thing I've learnt is how to write XSL style sheets (which govern the transformation from XML to other formats). Along the way I've had to educate myself on XPath and a number of other Things That Start With X. I'm by no means an expert on any of this, but I've really enjoyed getting stuck into these new topics.</p>
+<p>To make things as efficient as possible, I've been building up a customary DocBook glossary for use in BBEdit along the way. (I am aware that one such glossary is already out there on the Internet, but I wanted one tailored more precisely to my own needs.)</p>
+<p>I've now got things to the point where I am fairly happy with the tool chain I've set up. For now, wincent.com is pretty much all hand-coded PHP (apart from the obviously dynamic parts like these forums). But I can definitely see that most of the documentation that I write in the future will be done in DocBook, even if there are important parts of the site that are better coded by hand (like the product download pages and the store, for example). This will hopefully make things more efficient, and will make the documentation available to people in a wider number of formats with very little additional work on my part. I think this will be an improvement on the way things currently are (where, for example, the Synergy documentation is hand-coded PHP written in BBEdit and then uploaded onto the website, and the documentation for Install is written in LaTeX using LyX and then manually exported to PDF).</p>
+<p>It takes a little longer to write a document using DocBook than it does using HTML, but the increased expressiveness is probably worth it.</p>
+<p>My only really complaint about DocBook so far is that the linking mechanism sucks, or at least it looks that way to my novice eyes. It's fine if you want to write one massive XML file that contains an entire book and all the links are internal to that one file. But as soon as you want to make something that looks like a website (say, for example, something like the Knowledge Base or News sections, both of which are comprised of loosely related articles), you run into all sorts of hassles.</p>
+<p>It's easy to link to a remote URL (like &quot;<a href="http://www.apple.com/" class="external">http://www.apple.com/</a>&quot;), but it's really hard to link to another document in the same folder. This is not at all like HTML where it's very easy to link, say, from &quot;page1.html&quot; to &quot;page2.html&quot;. With DocBook, you have to perform a number of additional steps so that the cross references can be resolved, and worst of all you have to maintain a separate layout file which describes the site layout (why can't this file be automatically inferred from the hierarchy of XML source files on the disk?).</p>
+<p>I'll be trying to learn more about this and will be exploring ways of automating the process as much as possible.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1008'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1008"><time data-relative="true">2005-03-13T08:47:39Z</time></a></span>
+</cite>
+<blockquote><p>A summary of progress since Synergy 1.7.1 and WinSwitch 3.0 came out...</p>
+<p>Synergy Classic: - fix <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=131" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=131</a></p>
+<p>WinSwitch: - fix layout issues and update translations in Japanese and French localizations.</p>
+<p>More work on the WOTest framework: - write random value generators for use in tests - continue writing self-tests (still many more to go, there are hundreds of them) - add scalar type tests - WOTestRunner up and running - make &quot;what&quot; display useful info on the command line - import UpdateBuildVersionNumbers.sh script from WOBase.framework, make changes for general use (no hard-coded paths), silence Xcode AppleScript warnings that got introduced in one of the Xcode updates, export improvements back to WOBase.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1009'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1009"><time data-relative="true">2005-03-14T16:46:17Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Classic: - Fixed <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=22" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=22</a> - Fixed <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=142" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=142</a> - Working on <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=8" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=8</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1010'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1010"><time data-relative="true">2005-03-15T20:12:53Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Classic: - More work on <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=8" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=8</a> </p>
+<p>Synergy Advance: - Started work on the Ticker - Began AppleScript support (Synergy Advance will itself be AppleScriptable)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1011'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1011"><time data-relative="true">2005-03-16T22:49:29Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Classic: - Fixed this bug.</p>
+<p>Synergy Advance: - Added a massive chunk of Apple Event code (1600 lines and counting). Synergy Advance is 100% AppleScript-free; everything is done with raw Apple Events, which should make it very fast and responsive.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1012'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1012"><time data-relative="true">2005-03-17T13:19:12Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Advance: - Continuing with Apple Event code (lots of it). - Adding more and more stuff to the Ticker. Funnily enough, the Ticker is starting to look like a fully-fledged program of its own; it's already over 2,100 lines of code.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1013'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1013"><time data-relative="true">2005-03-18T20:30:24Z</time></a></span>
+</cite>
+<blockquote><p>Website: - <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=158" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=158</a></p>
+<p>Synergy Advance: - More Ticker work: now nearly 4,000 lines of code; I have some nice, generalized wrappers for Apple Events in place, which I will probably modularize and split off into a separate class.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1014'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1014"><time data-relative="true">2005-03-19T12:52:25Z</time></a></span>
+</cite>
+<blockquote><p>Website: - added modification date stamps to the footer of all pages (except the dynamically generated pages in these forums and on the bug tracking database).</p>
+<p>Synergy Advance: - Over the last few days I've added literally dozens of menu items and am in the process of hooking them up one by one, providing the back-end code, and doing testing. Source count on the module I am currently working on is 4,570 lines. At some point soon I'll merge this into the main code base.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1015'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1015"><time data-relative="true">2005-03-22T13:10:50Z</time></a></span>
+</cite>
+<blockquote><p>WOBase:</p>
+<p>- more threading:</p>
+<p>I've now added quite a few preferencePane bundles to Synergy Advance, and so I noticed that the first time you choose to display the preferences there is a short but noticeable delay while the WOPreferencesWindowController class scans for bundles on disk and builds an in memory cache. On a slow enough machine this delay could be long enough to cause the spinning beachball cursor to appear, even if only for a second, so I'd like to avoid this.</p>
+<p>You never see these delays in the System Preferences application because it creates a cache and writes it out to disk; the on-disk nature of the cache means that even on the next run or after a restart the cache will persits. I'm not going to go down that path with WOBase because the on-disk cache would be just one more thing that's vulnerable to corruption on disk. I'm instead making changes to the class so that the building of the cache occurs in a separate thread and a spinning progress indicator is shown to the user.</p>
+<p>We're only talking about a second or two of activity, but it's a question of polish, and I like polish. The refactoring required is pretty extensive, but so be it...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1016'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1016"><time data-relative="true">2005-03-23T17:11:52Z</time></a></span>
+</cite>
+<blockquote><p>WOBase:</p>
+<p>- Finished the threading of WOPreferencesWindowController that I mentioned in my last post. - Wrote NSThread subclass and category and used poseAsClass: to provide me with some convenience methods for elegantly handling the fact that NSNotifications don't necessarily get posted to the main thread. My previous code has always made the incorrect assumption that the opposite was true, but luckily I've never been bitten by any unintended side effects. Nevertheless, wanting to tighten up the ship.</p>
+<p>Synergy Advance: - <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=14" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=14</a> - gradually working through all the preferences setting up bindings (there are lots of them).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1017'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1017"><time data-relative="true">2005-03-24T10:39:43Z</time></a></span>
+</cite>
+<blockquote><p>WODebug:</p>
+<p>- Finally got around to implementing my WOLogManager class (previously only had stubs in place). I'm very happy with the implementation and it's a lot more elegant than the macro-based log stuff I had in place before.</p>
+<p>- I document my code as I go along because I find it helps me to think about my APIs more (and produce better designs!). Sick to death of how ugly and broken the HeaderDoc output is, I've decided to make the jump to Doxygen. The output looks very nice, linking and cross-referencing is incredibly powerful and works brilliantly, and it integrates really nicely in Xcode. My existing HeaderDoc comments get processed with only minimal modifications. Objective-C support is fairly new in Doxygen, but even so it appears to work very well.</p>
+<p>HeaderDoc page: <a href="http://developer.apple.com/darwin/projects/headerdoc/" class="external">http://developer.apple.com/darwin/projects/headerdoc/</a></p>
+<p>Doxygen page: <a href="http://www.stack.nl/~dimitri/doxygen/index.html" class="external">http://www.stack.nl/~dimitri/doxygen/index.html</a></p>
+<p>Xcode integration article: <a href="http://www.macdevcenter.com/pub/a/mac/2004/08/27/cocoa.html" class="external">http://www.macdevcenter.com/pub/a/mac/2004/08/27/cocoa.html</a></p>
+<p>Example of Doxygen Objective-C output: <a href="http://developer.iconara.net/products/DOM/docs/API/index.html" class="external">http://developer.iconara.net/products/DOM/docs/API/index.html</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1018'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1018"><time data-relative="true">2005-03-25T13:43:54Z</time></a></span>
+</cite>
+<blockquote><p>WOBase:</p>
+<p>- cryptography.</p>
+<p>Website:</p>
+<p>- continued with server-side software for generation of license codes etc.</p>
+<p>Getting these two pieces done is really important because without them I can't release Synergy Advance. For a long time they've been hanging over my head. Looking at the creation dates on some of these anti-piracy related files I see that I first started on this stuff back in 2003. I did a lot of work on it in December of that year, and then more again in August of last year. Finally now, in March 2005, I've handled what I consider to be the key &quot;blocking&quot; issues that prevented me from releasing any new products. In other words, the tricky bits are done, and all that's left is trivial details. Those details *will* take me quite a bit of work to get done, but there are no real brainteasers left any more; it's just a matter of getting the work done. And now that everything seems to indicate that Tiger is just around the corner, there couldn't be a better time for it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1019'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1019"><time data-relative="true">2005-03-31T06:37:52Z</time></a></span>
+</cite>
+<blockquote><p>Website:</p>
+<p>For several days now I've been working on the website code for the new license code and product activation system. (Yes, that's right, the new system has product activation capability, but more on that another day.)</p>
+<p>In the current system, when a user makes a purchase via PayPal, PayPal sends an IPN (Instant Payment Notification) to a Perl script on the server, which generates a license code and sends it off. It also stores info in a Berkley DB which can be used to do things like watch out for duplicate notifications, or serve as a back end for the automated license code retrieval system that people use when they lose their license codes.</p>
+<p>I want the new system to be more scalable, so I've started from scratch writing the thing up in Perl and wedding it to a MySQL database backend. Given that I've got product activation capability (and much more) I wanted the whole thing to be much more robust.</p>
+<p>One of the things I love about running Wincent is that there's a lot of variety in what I do. One day I'm writing Objective-C code in Xcode, and the next I'm writing Perl in BBEdit. It makes it interesting, but it also brings its challenges.</p>
+<p>So over the last few days I've had to come to grips with lots of Perl modules, but most importantly the DBI and DBD::mysql.</p>
+<p>I am most definitely not a Perl Monk, although I do know how to write a program that works. But I always feel uncomfortable when I first start working Perl after working for a long time in Objective-C. To a lesser extent the same thing happens to me with PHP (because at least it looks a little more &quot;C-like&quot;). It even happens to me moving between Objective-C and C at times (I hate pointer arithmetic!).</p>
+<p>So anyway, the last few days have been 100% Perl. At moments I've found myself saying, &quot;I hate Perl!&quot; and at others I find myself saying, &quot;I love Perl!&quot;. I am not a big fan of obfuscated Perl. I am not a big fan of all the cryptic special variables that confuse you if you're not a &quot;Perl insider&quot;. I am not a big fan of a lot of the non-obvious conventions that are invisibly embedded in the language. Of course, to a Perl insider, all of those things are exactly what they love about the language.</p>
+<p>Another thing which tries me a little is maintaining consistent style conventions in each language. Objective-C has a very specific, human-readable style (at least to my eyes). C has another set of conventions for capitalization, variable naming, function naming and so forth. PHP has its own conventions (once again, fairly &quot;C-like&quot;), and Perl has its own set too.</p>
+<p>I keep finding myself giving Perl variables names like &quot;generationMode&quot; (Objective-C style) instead of generation_mode (which at least to my eye is more readable than &quot;generationmode&quot;). Add into the mix a lot of SQL and you've got yet another language syntax and set of conventions to manage...</p>
+<p>In any case, I am happy with the code I've produced so far. I've heavily tested it and am confident that it works well, even if it wouldn't impress a seasoned Perl guru too much in terms of style and brevity. I like brevity (the more of a function that you can see on a screen at one time, the easier it is to understand it); in fact, the best functions are those which do fit on one screen, usually. I aspire to human readability.</p>
+<p>One of the things I like about Perl is that you can use constructs like this:</p>
+<p>Code:if (not defined $foo) {</p>
+<pre>do_something();</pre>
+<p>}</p>
+<p>Or like this:</p>
+<p>Code:do_something() unless defined $foo;</p>
+<p>Or like this:</p>
+<p>Code:do_something() if not defined $foo;</p>
+<p>My only gripe is that if you do this you'll get a syntax error:</p>
+<p>Code:if (not defined $foo)</p>
+<pre> do_something();</pre>
+<p>Same with this:</p>
+<p>Code:if (not defined $foo) do_something();</p>
+<p>This is a common C idiom that I like to use to save space. In Perl if you wanted to do this on one line you'd have to write it as:</p>
+<p>Code:if (not defined $foo) {</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1020'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1020"><time data-relative="true">2005-04-05T07:49:21Z</time></a></span>
+</cite>
+<blockquote><p>I was in Vienna for the weekend and bought some books while I was over there. Luckily these particular books were in English:</p>
+<p>&quot;Programming Perl&quot; by Larry Wall et al (O'Reilly).</p>
+<p>&quot;SQL in a nutshell&quot; (also from O'Reilly).</p>
+<p>&quot;Beginning MySQL database design and optimization&quot; by Stephens and Russell.</p>
+<p>I had been up until 4 AM the night before trying to get some complex JOINs done and I just couldn't get it right. I knew a bit about database normalization but with the database normalized I had lots of tables and couldn't work out how to get all the information I wanted using a single SELECT query.</p>
+<p>Originally I only wanted a good book on SQL, but after leafing through &quot;Programming Perl&quot; I just had to get it as well. Although I dip into Perl only a few times a year I just knew that this book would help me to elegant Perl and not just Perl that happens to work. It's not just about aesthetics: elegant code should be easier to debug and maintain.</p>
+<p>The book is fabulously written, entertaining, light and comprehensive.</p>
+<p>&quot;SQL in a nutshell&quot; is also the same high quality that you'd expect from O'Reilly, although being a reference work it's not the sort of thing you'd sit down and leaf through for fun.</p>
+<p>Finally, the book by Stephens and Russell: dear oh dear; very, very disappointing. On one level they could take some style tips from the Wall et al book. On another they could eliminate some of the technical mistakes and omissions. In combination each of these problems only makes you more annoyed about the other one.</p>
+<p>Some of the problems:</p>
+<p>- In the section on database normalization they list several forms and explain that they will look only at the first three forms. They say that if you're interested in finding out about the other forms then you should see &quot;Appendix A&quot;. The only problem is that there is no Appendix A anywhere in the entire text.</p>
+<p>- In their section on FOREIGN KEYs they neglect to mention that such keys need to have indexes defined on them prior to adding the foreign key constraint. If you follow the examples in the book you'll get cryptic errors from MySQL unless you're running on version 4.1 or later.</p>
+<p>- The book provides normalization examples that split unnormalized tables into multiple tables (ie. more than two), but their example queries never join more than two tables at a time. Figuring out how to join more than two tables is left as an exercise for the reader.</p>
+<p>- In all of the example screenshots they log into their test server as the root user. Why?</p>
+<p>- They don't sanitize their input before passing it to the database. For example in the chapter &quot;MySQL basics&quot; on page 31 there is an example in which they interpolate a variable that comes from outside the &quot;boundary of trust&quot; (ie. it is passed in via the URL's query string) directly into a MySQL statement. This is an unacceptable oversight in a chapter directed towards beginners. Search for &quot;MySQL injection attacks&quot; using Google if you want to learn more.</p>
+<p>- The examples are too PHP-centric.</p>
+<p>- Their style is horrendously repetitive, as if they were struggling to fill up the pages of the book. A typical chapter or section will run something like this: &quot;Briefly, this is what we're going to say. In more detail, this is what we are going to say. [They say it]. This is what we said. This is what we are going to say in the next section or chapter.&quot; Once again, they should take a look at the Wall et al book for some style pointers.</p>
+<p>Anyway, that's all I can think of right now. I don't think I'll be spending too much more time looking at that book in the future. In any case, I have worked out how to do the complex JOINs that I couldn't do before (although it's no thanks to the Stephens and Russell book), and I am continuing to work through the Perl book.</p>
+<p>The server-side stuff is now done for generating and issuing license codes, and this time I've integrated support not only for PayPal IPNs but for Kagi's KRPS as well. What this means is that the lost license code retrieval system will be updated whenever people purchase via either payment service (with the current Synergy Classic system only PayPal purchases had that benefit).</p>
+<p>Today I'm working on the product activation stuff. I don't think it will take long as most of the work is already done. It's just going to be a little bit of code on the application side and a little bit of code on the server side. Wish me luck.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1021'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1021"><time data-relative="true">2005-04-06T09:31:01Z</time></a></span>
+</cite>
+<blockquote><p>I didn't get as much done on the product activation as I had hoped yesterday because I got hit by a case of food poisoning (at least, that's what I think it was); gastric pains and fever for most of the day. I did get some work done, but not as much as I would have liked. Back at full speed again today though... Here's what I've done so far:</p>
+<p>WODebug: - convenience methods added to NSString category for opening strings as URLs. - added WO_LOG_METHOD_DETAILS macro for debugging purposes.</p>
+<p>WOBase: - WOPointingHandCursorButton class for making clickable hyperlinks in Interface Builder. - convenience macros for setting/unsetting/testing bits.</p>
+<p>Synergy Advance: - hooking up user interface elements in the registration preference pane.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1022'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1022"><time data-relative="true">2005-04-07T19:51:30Z</time></a></span>
+</cite>
+<blockquote><p>More progress made today, as well as a couple of things that I forgot to mention in previous entries...</p>
+<p>Website: - Today wrote a command-line tool for generating (and optionally mailing) license codes manually. - Continued work with the activation stuff: it's proving to take longer than I thought but that's only because I am being very thorough, and being thorough is a good thing. My use of SQL is getting better as I refamiliarize myself with it all: for example, i was just able to replace two separate queries (and a about 8 lines of supporting application logic) with a single query that occupies a single line of code.</p>
+<p>WOBase: - Polish for WORegistrationView class to make sure that things like resigning first responder and setting up the next key loop works as you would expect (in other words, you can set up the next key loop in Interface Builder and it actually works, automatically).</p>
+<p>WODebug: - Bulletproofing the WOLogManager class and minor adjustments to ensure that behaviour exactly matches the behaviour of NSLog.</p>
+<p>Synergy Advance: - Added a couple more menu items.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1023'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1023"><time data-relative="true">2005-04-08T08:16:34Z</time></a></span>
+</cite>
+<blockquote><p>Website:</p>
+<p>- Writing up documentation.</p>
+<p>- I'm now ready to deploy the new licensing and activation code to the server (have up until now been testing it locally). So I decided to take the opportunity to upgrade the MySQL database from the 4.0 series to 4.1. This is not going to be the same database host that I use for the rest of wincent.com (things like these forums and the bug-tracking database) which is still running a 3.23-series build.</p>
+<p>Rather than building from source I've put on my FreeBSD sysadmin hat and am trying to update my ports collection... cvsup, portsdb, portversion, pkgdb and all that other joyful stuff... The thing about the ports collection is that it works brilliantly some of the time, but at other times it gets itself into a nasty state and you get all sorts of dependency problems, corrupted databases and what not. So what I've got now is a freshly updated ports tree, but this is a machine that was originally put into service back in 2002 and although I've kept it up to date with security updates on the RELENG_4_8 branch, the ports look to be in a fairly hideous state. Such a hideous state that when I had to upgrade Perl and a bunch of modules to work with the latest release of Bugzilla I did it by hand (and using the CPAN) instead of using the ports system. It seemed the only way to monitor, control and fix the breakage.</p>
+<p>Anyway, I am going to continue ploughing on with this...</p>
+<p>Update: found this great article on sorting out a ports/packages mess:</p>
+<p><a href="http://www.onlamp.com/lpt/a/1385" class="external">http://www.onlamp.com/lpt/a/1385</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1024'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'><a href="#comment_1024"><time data-relative="true">2005-04-08T15:07:41Z</time></a></span>
+</cite>
+<blockquote><p>If Tiger were announced next week, would you be ready to ship to coincide with a release before the end of April?</p>
+<p>It sounds like you're wrapping things up nicely, but it's difficult to tell for non-proggers </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1025'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1025"><time data-relative="true">2005-04-09T10:24:37Z</time></a></span>
+</cite>
+<blockquote><p>Quote: If Tiger were announced next week, would you be ready to ship to coincide with a release before the end of April?</p>
+<p>It sounds like you're wrapping things up nicely, but it's difficult to tell for non-proggers  </p>
+<p>Basically, yes, provided that Apple's announcement isn't something like, &quot;Tiger is in stores as of two o'clock today&quot;... If they follow their normal pattern and ship two to three weeks after the actual announcement then there will be no problems.</p>
+<p>I have been following the news and rumors with great interest because as you know, I made the public promise some time ago that I would ship Synergy Advance &quot;around the same time as Tiger&quot;. I don't mean on exactly the same day, but I do mean within a few days on either side.</p>
+<p>Several of the sites predicted an early April announcement and a mid-April ship date, so I've been doing everything possible to make sure I have something that I too could ship by mid-April if need be. As of right now it looks like I am on target. The longer Apple waits, the longer I will wait also, because it gives me more time to polish.</p>
+<p>The way I've developed Synergy Advance is very modular, so the idea is that the first release will be version 0.1 and will be a labelled a &quot;public preview release&quot;.</p>
+<p>The 0.1 release will be just the Global Menu module. What this means is that you can continue to run Synergy Classic (which will provide you with your Floater, Hot Key control, Menu Bar buttons, Cover Downloads etc) but also run Synergy Advance at the same time.</p>
+<p>The Advance Global Menu is like the Classic Global Menu on steroids, so you'll most likely want to run both programs at the same time, but always use the Advance Global Menu instead of the Classic one.</p>
+<p>The modular architecture means that I can roll out new preview releases (0.2, 0.3) adding new modules (the hot key module, the floater module etc) as soon as I am satisfied with the feedback and testing results from the previous releases.</p>
+<p>By the time Synergy Advance hits 1.0 all of the major modules will bundled and most people will want to run Advance full time and forget about Classic altogether (but Classic will continue to be marketed as a separate product for those who want something that can run on Jaguar). Advance will eventually do everything that Classic does as well as a whole lot more, but it will not take as long to hit 1.0 as Synergy Classic did; most of the work is already done.</p>
+<p>I think the transition from Classic to Advance will work out fairly elegantly because I will prioritize the modules that provide new functionality not available in Classic before those which duplicate functionality. This means users can run both during the transition and will find the feature set grows pleasantly because each new preview will add something completely new that wasn't available before. (The obvious exception to this is that version 0.1 ships with something that is very much duplicated functionality -- the Global Menu -- because it's a pretty convenient hub from which I can hang off all the new stuff.)</p>
+<p>Anyway...</p>
+<p>As for today's progress report: so far I've just been writing up more documentation; shortly I'll be getting stuck back into the code again...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1026'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1026"><time data-relative="true">2005-04-09T22:39:23Z</time></a></span>
+</cite>
+<blockquote><p>Website: - New license code database installed and tested (generator, lost code remailer). - Kagi and PayPal realtime generation methods installed; hoping to test them soon but waiting on some set-up at the Kagi end.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1027'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1027"><time data-relative="true">2005-04-11T19:40:07Z</time></a></span>
+</cite>
+<blockquote><p>Website:</p>
+<p>- Kagi setup now done and the purchasing page is online. As I complete pages I've been uploading them to the site. For example, the following pages are all new:</p>
+<p><a href="http://wincent.com/a/products/synergy-advance/news/" class="external">http://wincent.com/a/products/synergy-advance/news/</a> <a href="https://secure.wincent.com/a/products/synergy-advance/purchase/" class="external">https://secure.wincent.com/a/products/synergy-advance/purchase/</a> <a href="http://wincent.com/a/products/synergy-advance/license/" class="external">http://wincent.com/a/products/synergy-advance/license/</a> <a href="http://wincent.com/a/support/activation/" class="external">http://wincent.com/a/support/activation/</a> <a href="http://wincent.com/a/support/activation/privacy/" class="external">http://wincent.com/a/support/activation/privacy/</a></p>
+<p>I've also updated the license retrieval system to incorporate the new backend:</p>
+<p><a href="https://secure.wincent.com/a/support/registration/form.php" class="external">https://secure.wincent.com/a/support/registration/form.php</a></p>
+<p>And made some updates and improvements to the contact form and support ticket page:</p>
+<p><a href="http://wincent.com/a/contact/mail/" class="external">http://wincent.com/a/contact/mail/</a> <a href="https://secure.wincent.com/a/support/tickets/" class="external">https://secure.wincent.com/a/support/tickets/</a></p>
+<p>And updated the site FAQ:</p>
+<p><a href="http://wincent.com/a/support/faq/" class="external">http://wincent.com/a/support/faq/</a></p>
+<p>Keep an eye on the Synergy Advance site over the next few days and weeks because I will continue to add new pages as I finish them.</p>
+<p><a href="http://wincent.com/a/products/synergy-advance/" class="external">http://wincent.com/a/products/synergy-advance/</a></p>
+<p>WOBase:</p>
+<p>- improvements to WOHost class; it's functionally equivalent but the code is much cleaner now. - additions to the main NSString category. - added localizations class.</p>
+<p>WODebug:</p>
+<p>- additions to the NSString category.</p>
+<p>Synergy Advance:</p>
+<p>- more hookup, UI polish and worked around a quirk in Cocoa's handling of the responder chain for the registration module. - added a new preference pane.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1028'>
+<cite>
+<a href="/users/krypton">Krypton</a>
+<span class='when'><a href="#comment_1028"><time data-relative="true">2005-04-12T09:28:51Z</time></a></span>
+</cite>
+<blockquote><p>7</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1029'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1029"><time data-relative="true">2005-04-12T11:00:38Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Tiger is now officially out on the 29th, so I look forward to a release around then  </p>
+<p>Awesome! Ironic that I should learn the release date by reading my own forums! [heads over to www.apple.com...]</p>
+<p>Anyway, I've had a good day of coding so far today. I normally write the smallest possible amount of testable code at a time, then build, test (and fix if necessary), and repeat... For me this is best way to be sure that complex things work and that they handle all the edge ases.</p>
+<p>Today I broke out of my normal pattern and just wrote a fairly complex wad of stuff; spent about one or two hours straight writing code and not doing any builds. I was quite astounded to see that on building it all it worked perfectly on the very first try... If only all the days could be list this!</p>
+<p>WOBase: - Product activation tested and working in a &quot;live&quot; environment. - WOPreferencesWindowController now correctly sends an NSApplicationTerminateReply when no panes are selected.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1030'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1030"><time data-relative="true">2005-04-14T13:00:36Z</time></a></span>
+</cite>
+<blockquote><p>WOBase: - NSScanner category - NSDate category</p>
+<p>Synergy Advance: - wrote a bunch of utility methods for generating strings - added another preference pane</p>
+<p>Synergy Classic: - <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=176" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=176</a> - <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=178" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=178</a> - localization fixes</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1031'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1031"><time data-relative="true">2005-04-15T15:24:45Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Advance:</p>
+<p>- Am doing some refactoring, moving a lot of Apple Event code out of its current category into a class of its own, then making subclasses for any app with which I wish to communicate. This allows me to write much more readable, maintainable code like the following:</p>
+<p>[iTunes play]; [iTunes getPlayedCount];</p>
+<p>Instead of the fairly ugly invocations of my Apple Event wrapper methods, or even worse, multiple lines of Carbon calls. I like to encapsulate non-Cocoa stuff so that it's kept out of site; I find that the different calling conventions interrupt the flow of things, make stuff harder to read and format, and are uglier to boot. I am very happy with the result; it looks almost like normal English, which is the ideal case for Objective-C code.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1032'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1032"><time data-relative="true">2005-04-16T07:02:35Z</time></a></span>
+</cite>
+<blockquote><p>WOBase:</p>
+<p>- WOKernelEventQueue class - additions to NSString category</p>
+<p>Synergy Advance:</p>
+<p>- refactoring referred to in previous post now finished</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1033'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1033"><time data-relative="true">2005-04-18T09:47:24Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Classic:</p>
+<p>- released version 1.8.1 with a number of bugfixes etc</p>
+<p>WOBase:</p>
+<p>- additions to NSMutableString and NSMutableArray categories</p>
+<p>Synergy Advance:</p>
+<p>- correctly extract multiple album art</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1034'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1034"><time data-relative="true">2005-04-19T15:33:12Z</time></a></span>
+</cite>
+<blockquote><p>General:</p>
+<p>- Eliminate new warnings and errors produced after the switch to GCC 4.0.</p>
+<p>- Fine-tune symbol stripping and dead-code stripping to produce smaller binaries, which will in turn use less memory.</p>
+<p>- Correct a bug in Omni's stringsUtil commandline tool and add the ability to process InfoPlist.strings files, and integrate tool into build process to automate the generation, merging and updating of strings files for all localizations.</p>
+<p>Synergy Advance:</p>
+<p>- Revisited the library parsing code I wrote in June last year and refactored it; the @synchronized sections are now much more nicely encapsulated. The code is cleaner, neater, and more threadsafe. The extra locking will slow it down, but as the parsing occurs in a background thread this is not a bad thing.</p>
+<p>- Moved menu generation into a separate thread because it could take a while with huge libraries; only the actual insertion of the completed menus occurs in the main thread.</p>
+<p>- Populated some more menus based on library contents.</p>
+<p>- Added more separator options and an optional truncation setting for line length in the IM pane.</p>
+<p>- New class WOSliderTransformer.</p>
+<p>- If menu is open and tracking when the app wants to make an update it queues the updates and performs them once tracking is finished.</p>
+<p>- Custom table view for advanced preferences panel with Finder-like &quot;type ahead&quot; find, a search field, and variable per-row cell types determined by the type of preference being edited. It was quite horrible getting this to work with Cocoa Bindings; I still find them the hardest thing I've ever had to work with in Cocoa.</p>
+<p>- Began specification for open-source API for writing plugins.</p>
+<p>- Outline view for displaying and editing large numbers of hot keys.</p>
+<p>WOBase:</p>
+<p>- Additions to NSMutableArray category.</p>
+<p>- New NSAppleEventDescriptor category.</p>
+<p>- New NSInvocation category. This is my first direct use of NSInvocation; I had no idea it was such a useful class!</p>
+<p>- WODefaultsController (thread-safe access to user defaults).</p>
+<p>WOHotKey:</p>
+<p>- A number of new classes, improvements and localizations.</p>
+<p>WinSwitch:</p>
+<p>- <a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=139" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=139</a></p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/lounge">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #281: Won't launch if run from case-sensitive HFS volume
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #281</div>
+<div class='issue' id='issue_281'>
+<form class="edit_issue" id="edit_issue_281" action="/issues/281" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="CNwKTSCuXFThwUrpnsyHW0zapf6IMKI6BrNcDK6TtLI8LrT6hyOGAThNeR6v5dTv+VjMwoPcLCYmrInyikvTlg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #281:
+<span data-name='issue[summary]'>
+Won't launch if run from case-sensitive HFS volume
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-07-29T17:44:28Z</time>, updated <time data-relative="true">2006-03-29T07:53:55Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<p>----------------------------------------</p>
+<p>2005-07-28 21:01:46.564 Synergy Advance[8835] failed to load iTunes bundle 2005-07-28 21:01:46.574 Synergy Advance[8835] *** Assertion failure in +[WOHotKeyClass00080  leafNodeWithParent:actionString:plistKey:target:action:type:], /Users/wincent/trabajo/WOHotKey/svn- files/WOHotKeyNode.m:60 sh: line 1: /Applications/Synergy: No such file or directory sh: line 1: /Applications/Synergy: No such file or directory</p>
+<p>It happens every time I launch the application off of my Powerbook's hard disc.  I'm current on OS and  security updates.  I have reformatted the drive recently to a Journaled and Case Sensitive file system,  while my previous installation was on just a Journaled filed system.  Oddly enough, Synergy will run just  fine off its virtual disc.</p>
+<p>This is the first time it's happened since I've been using both versions of Synergy; the previous betas of  Synergy Advance worked just fine off of the drive, so it might be the Case Sensitive system.</p>
+<p>----------------------------------------</p>
+<p>Yes, it definitely sounds like a Case Sensitive file system issue. I've double checked the source code to  make sure that there are no hard-coded paths with incorrect case sensitivity and everything is correct.  I've also run a test to make sure that Cocoa isn't returning an incorrectly capitalized path when I call  [[NSBundle mainBundle] builtInPlugInsPath]; on my system it returns:</p>
+<p>/Users/wincent/trabajo/build/Debug/Synergy Advance.app/Contents/PlugIns/Player/iTunes.bundle</p>
+<p>Which is correct. In Xcode when I built Synergy Advance I have it set to copy the bundle to the &quot;PlugIns&quot;  folder, which is something you choose from a pop-up menu and don't type so you wouldn't expect any  capitalization errors there. And in any case, if you look inside the application bundle you can see that  the plug-in is indeed being copied to the correct path and that there are no capitalization  discrepancies.</p>
+<p>If it's all right with you I'll prepare a special build that logs more detailed information about the error it  gets when trying to load the bundle. I suspect that whatever the issue is that is caused by case  sensitivity, it can probably only be detected on your system and not figured out from here.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2158'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2158"><time data-relative="true">2005-07-30T04:28:21Z</time></a></span>
+</cite>
+<blockquote><p>Adding fixed-in-prerelease keyword. The culprit was a typo in Xcode which caused the iTunes.bundle to  be written to disk with the name &quot;ITunes.bundle&quot;; very hard to notice the difference when looking at a sans  serif font like those used in Xcode and the Finder. Anyone wishing to try a build which includes the fix can  download it from here:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-advance/download/SynergyAdvance2005-07-29-2.dmg" class="external">http://us.wincent.com/a/products/synergy-advance/download/SynergyAdvance2005-07-29-2.dmg</a></p>
+<p>SHA1 checksum: 888e30fb6b38dd57d2dfbe1fbef0854a7cd53901</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2159'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2159"><time data-relative="true">2006-03-29T07:53:55Z</time></a></span>
+</cite>
+<blockquote><p>This fix is now available in the just-released version 0.4b. For more information:</p>
+<p><a href="http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php" class="external">http://wincent.com/a/news/archives/2006/03/synergy_advance_4.php</a></p>
+<p>Marking as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

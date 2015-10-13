@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Floater and My Rating
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Floater and My Rating</div>
+<h1 class='major'>Floater and My Rating</h1>
+<div class='topic' id='topic_34'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/34"><time data-relative="true">2004-08-07T02:49:11Z</time></a>
+</span>
+</cite>
+<blockquote><p>I recently disabled all of my symbol/dingbat/webding fonts and when I went to listen to iTunes and the song changed, I noticed that the rating stars in the floater turned into odd characters (little boxes). I finally figured out that the problem was related to the font being disabled.</p>
+<p>I have two questions: (a) what is the font that is intended to be used to make the stars (there are many fonts with stars) and (b) why not use images instead of stars? I'd think that this would be better as you wouldn't have to worry about font issues and I don't think it would add too much to the overall size of the application bundle.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_87'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_87"><time data-relative="true">2004-08-12T19:05:49Z</time></a></span>
+</cite>
+<blockquote><p>The advantage of fonts over (bitmap) images is that they are scalable, so as the text in the floater grows, the stars grow with them.</p>
+<p>Synergy isn't actually requesting any special fonts here. It's just using the normal &quot;system font&quot; (usually Lucida Grande, although Synergy does not ask for it by name) and the appropriate Unicode character for that particular star shape. If you have a standard Mac OS X install with standard Mac OS X system fonts, then the stars will display correctly.</p>
+<p>If you're curious to know about the Unicode character set and the different glyphs available in it, you can check out the character palette from within most Cocoa apps which edit text (such as TextEdit). Hit Command-T and then choose &quot;Characters...&quot; from the action menu.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_88'>
+<cite>
+<a href="/users/daemon">daemon</a>
+<span class='when'><a href="#comment_88"><time data-relative="true">2004-08-13T06:04:42Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the reply </p>
+<p>I didn't know that the stars &quot;grew&quot; with the floater and that explains the reason for not using bitmaps.</p>
+<p>Interesting that Synergy doesn't request any special fonts because if I disable &quot;Apple Symbol&quot; it makes the stars turn into miscellaneous glyphs.</p>
+<p>I'll see if I can find time to write a dummy cocoa application to play around with this and see if I can't find out why this happens and possibly some debug info to see what the system is doing to cause this to happen.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_89'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_89"><time data-relative="true">2004-08-13T15:35:42Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Thanks for the reply </p>
+<p>I didn't know that the stars &quot;grew&quot; with the floater and that explains the reason for not using bitmaps.</p>
+<p>Interesting that Synergy doesn't request any special fonts because if I disable &quot;Apple Symbol&quot; it makes the stars turn into miscellaneous glyphs.</p>
+<p>I'll see if I can find time to write a dummy cocoa application to play around with this and see if I can't find out why this happens and possibly some debug info to see what the system is doing to cause this to happen. </p>
+<p>Whatever it's doing, I think it's doing it pretty cleverly... As I said, Synergy just asks for the system font without naming it. The OS is obviously using whatever font is most appropriate for that Unicode value. You can make a really easy test application using lines like this. Code:NSLog(@&quot;unicode: %C&quot;, 0x2605); (0x2605 is the Unicode value for a black star)</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

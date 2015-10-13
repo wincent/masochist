@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1542: wildignore settings not working
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1542</div>
+<div class='issue' id='issue_1542'>
+<form class="edit_issue" id="edit_issue_1542" action="/issues/1542" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="9eL5djXWMfr2sBOYQxYch2/CVMqXOhkymfrOOWB6WAbBEEfBklvrry88IG9yP08z2kA99pzWly655RvHRKI/Ig==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1542:
+<span data-name='issue[summary]'>
+wildignore settings not working
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-04-20T14:45:36Z</time>, updated <time data-relative="true">2010-05-11T10:45:11Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've added the following to my .vimrc:</p>
+<pre>set wildignore+=vendor/rails/**</pre>
+<p>trying to get command-t to ignore the contents of that directory.  However, files in that directory are still showing up in command-t results.</p>
+<p>Thanks</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5568'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5568"><time data-relative="true">2010-04-20T15:36:44Z</time></a></span>
+</cite>
+<blockquote><p>Right, thanks for the report.</p>
+<p>I hadn't seen <code>'wildignore'</code> used in this way before (ie. with upper pathname components and the recursive <code>**</code> notation) so I'll have to look into it.</p>
+<p>Right now Command-T is just looking at each item in <code>'wildignore'</code> and seeing if it matches against the current item (file or directory) being scanned, and if it does, it skips it. So as it currently stands there is no setting of <code>'wildignore'</code> which will give you exactly what you want, except for perhaps <code>:set wildignore+=rails</code>, which could potentially hide more than you're actually wanting to.</p>
+<p>My only concern here is that both uses of <code>**</code> that I can find in the manual (for <code>expand()</code> and <code>globpath()</code>) use it in the form &quot;<code>**/somefile</code>&quot;, so I will have to experiment with it to see if it can be made to work the way you're wanting it to.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5569'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5569"><time data-relative="true">2010-04-20T15:40:19Z</time></a></span>
+</cite>
+<blockquote><p>Just did a test and it doesn't seem to expand the way you think it does...</p>
+<pre>:echo glob('**/README')</pre>
+<p>In a <a href="/wiki/Rails">Rails</a> project echoes:</p>
+<pre>README
+vendor/plugins/rails_upgrade/README</pre>
+<p>But:</p>
+<pre>:echo glob('vendor/rails/**')</pre>
+<p>Echoes nothing at all.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5570'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5570"><time data-relative="true">2010-04-20T15:42:48Z</time></a></span>
+</cite>
+<blockquote><p>Actually, scratch that... It seems to have some kind of internal depth limit, because it is not returning all the <code>README</code> files which I know to be in the <code>vendor/rails</code> hierarchy. So I'll have to try it on a smaller directory hierarchy to see if the <code>something/**</code> notation works or not.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5571'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5571"><time data-relative="true">2010-04-20T15:44:32Z</time></a></span>
+</cite>
+<blockquote><p>Ok, tested on a smaller hierarchy and it does seem to work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5574'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5574"><time data-relative="true">2010-04-21T13:18:19Z</time></a></span>
+</cite>
+<blockquote><p>Ok, just thinking out loud here on what the semantics of this should be if globs like <code>**/foo</code>, <code>foo/**</code>, or even <code>foo/bar</code> are to be supported.</p>
+<p>The typical use case (99% of the time) for <code>'wildignore'</code> is to ignore stuff like object files (<code>*.o</code>), backup and temporary files (<code>*.bak</code>, <code>*.tmp</code>, <code>*~</code>), and things like SCM metadata directories (eg. <code>.git</code> etc). So here we're always talking about matching against a filename, no matter where the file actually is in the directory hierarchy.</p>
+<p>If we start talking about something like <code>foo/bar</code>, should those same semantics &mdash; that is, match against the pattern regardless of <em>where</em> it is in the hierarchy &mdash; still apply? ie. should all the following be filtered?</p>
+<ul>
+<li><code>foo/bar</code></li>
+<li><code>foo/bar/baz</code></li>
+<li><code>abc/foo/bar</code></li>
+<li><code>abc/foo/bar/baz</code></li>
+</ul>
+<p>Or should it obey different semantics and consider itself relative to the project root only? ie. only the first two in the list above would be filtered, and the other two would not.</p>
+<p>Likewise for a pattern like <code>foo/**</code>, should it match <code>foo</code> anywhere in the hierarchy, or only at the root?</p>
+<p>If the former, then the pattern may as well just be <code>foo</code> because it will have the same effect.</p>
+<p>For a pattern like <code>**/foo</code>, it's the same deal really. By definition the <code>**</code> will make this apply universally, regardless of where <code>foo</code> might be in the hierarchy. But once again, if that's really all you're wanting to filter then <code>foo</code> would be all you need anyway.</p>
+<p>Going back to the example posted by the ticket owner, <code>vendor/rails/**</code>, the presence of <code>**</code> here kind of implies that the user wants the pattern to be anchored to the project root, at least according to my interpretation. <code>**/vendor/rails</code> would be an explicit way of specifying that the pattern should <em>not</em> be anchored.</p>
+<p>I'm guessing that the most intuitive/coherent way to proceed then is probably going to be the following:</p>
+<ul>
+<li><code>foo/**</code> or <code>foo/bar/**</code> etc express a desire for anchored pattern matching (anchored at project root)</li>
+<li><code>**/foo</code> or <code>**/foo/bar</code> etc explicitly express a desire for <em>unanchored</em> pattern matching</li>
+<li><code>foo</code> and even <code>foo/bar</code> should adopt the default (ie. unanchored) behavior</li>
+</ul>
+<p>This means that patterns like <code>**/foo</code> and <code>**/foo/bar</code> could always be written more concisely as <code>foo</code> and <code>foo/bar</code> respectively.</p>
+<p>Algorithmically, I guess it'll just be a case of splitting patterns on the path separator (<code>/</code>), and starting matching from right to left. That is, if rightmost component matches, we check the parent component against the component to the left, and the grandparent against the left of the left and so on.</p>
+<p><code>**</code> as a leftmost component is effectively ignored. <code>**</code> as a rightmost component triggers the anchored-match special case, which we can actually check for as a first step so as to potentially short-circuit the normal procedure. (For that case would probably do a left-to-right check instead.)</p>
+<p>Finally would just need to make sure we correctly handle (bizarre?) stuff like:</p>
+<ul>
+<li><code>**/foo/bar/**</code> (as leading <code>**</code> is the default behavior, this is effectively equivalent to <code>foo/bar/**</code>)</li>
+<li><code>**/a/**/b/**/c</code> (pathological, but to be properly robust we have no choice but to handle it I guess)</li>
+</ul>
+<p>As well as ensure that other glob patterns like the following continue to work: </p>
+<ul>
+<li><code>*.o</code></li>
+</ul>
+<p>As well as when combined with other components:</p>
+<ul>
+<li><code>**/foo/*.o</code></li>
+<li><code>foo/*.o</code> etc</li>
+</ul>
+<p>This will be a little fiddly to implement, so I am going to leave this ticket open for a while to see if anybody has any feedback to add.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5590'>
+<cite>
+<a href="/users/michael-henry">Michael Henry</a>
+<span class='when'><a href="#comment_5590"><time data-relative="true">2010-04-28T15:19:42Z</time></a></span>
+</cite>
+<blockquote><p>I'd been looking for simpler behavior than requested in this posting, and I thought I'd need to submit a feature request; But it turns out my test procedure was wrong, and CommandT already handles my scenario.</p>
+<p>I want to ignore content in any directory named &quot;build&quot;. I'd tried &quot;:set wildignore += build&quot;, but it didn't seem to have any effect.  The problem was that I hadn't thought to do &quot;:CommandTFlush&quot; before re-trying &quot;:CommandT&quot;, so I was seeing the cached contents of my build directory.</p>
+<p>So it turns out that CommandT already supports my more limited use case :-)  I thought I'd mention it here in case a documentation update might be helpful to other users that might make my mistake.</p>
+<p>Perhaps a sentence like this near &quot;command-t-wildignore&quot; would be useful:</p>
+<p>Changes to the 'wildignore' setting will not apply to cached directory contents; therefore, after modifying 'wildignore'  it is recommended to flush the cache using :CommandTFlush.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5598'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5598"><time data-relative="true">2010-04-28T18:03:03Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>Changes to the 'wildignore' setting will not apply to cached directory contents; therefore, after modifying 'wildignore' it is recommended to flush the cache using :CommandTFlush.</p>
+</blockquote>
+<p>Seeing as pretty much the same comment applies to <em>all</em> settings**, I think I'll add such a comment at the very beginning of the &quot;OPTIONS&quot; section of the docs.</p>
+<p>(** about the only ones which get picked up automatically are changes to the key mappings, seeing as they are set-up fresh for the buffer each time it is shown)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5617'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5617"><time data-relative="true">2010-05-11T10:45:05Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to close this ticket as there has been a proposed patch submitted (see <a href="/issues/1555">ticket #1555</a>) which adds support for pretty much anything you might want to add to <code>'wildignore'</code> by using VIM's <code>expand()</code> function to check each path (seeing as <code>expand()</code> will automatically omit any path which matches the <code>'wildignore'</code> patterns).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5618'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5618"><time data-relative="true">2010-05-11T10:45:11Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #599: WinSwitch Leopard compatibility (use Menu Extra Enabler instead of MenuCracker)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #599</div>
+<div class='issue' id='issue_599'>
+<form class="edit_issue" id="edit_issue_599" action="/issues/599" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="L7qh5sR3AbGUWnZ60GzpNJgAVjKNmoG63z5qdU1ANkYbSB9RY/rb5E3WRY3hRbqALYI/DoZ2D6b/Ib+LaZhRYg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #599:
+<span data-name='issue[summary]'>
+WinSwitch Leopard compatibility (use Menu Extra Enabler instead of MenuCracker)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-10-27T08:02:04Z</time>, updated <time data-relative="true">2009-09-02T02:43:53Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/albert">albert</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>V 3.2 worked on Leopard after an Archive &amp; Install. However the icon was not correct even though my user icon was as expected, the one displayed o the menu bar was the default one.</p>
+<p>I then realised that I wasn't running the most current version, so DL'ed 3.2.1 and installed that.</p>
+<p>However when I tried to activate WinSwitch from the users/shared folder this is the result as displayed in terminal</p>
+<pre>Last login: Sat Oct 27 22:36:10 on ttys000
+Macintosh:~ albert$ /Users/Shared/Activate\ WinSwitch.command ; exit;
+Deactivating menu extra with identifier &quot;com.apple.menuextra.appleuser&quot; ... Success.
+Deactivating menu extra with identifier &quot;net.sourceforge.menucracker&quot; ... Success.
+Deactivating menu extra with identifier &quot;com.wincent.WinSwitch&quot; ... Success.
+Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1 ... Failure.
+Error: fatal error while adding bundle &quot;/Library/Menu Extras/WinSwitch.menu&quot; aborting processing
+Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1 ... Failure.
+Error: fatal error while adding bundle &quot;/Library/Menu Extras/WinSwitch.menu&quot; aborting processing
+logout</pre>
+<p>Hardware is PowerBook G4 1.67Ghz 2Gb RAM</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3069'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3069"><time data-relative="true">2007-10-27T11:03:01Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. I'll see if I can reproduce it here once I get my hands on a copy of Leopard. Apple hasn't yet announced when they'll be mailing out the final version to developers, but if it's anything like Tiger was I expect it to be within the next few weeks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3070'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3070">Created <time data-relative="true">2008-02-27T09:03:35Z</time>, edited <time data-relative="true">2008-04-22T17:35:39Z</time></a></span>
+</cite>
+<blockquote><p>For reference, see the forum discussion on this topic:</p>
+<p><a href="http://rails.wincent.com/forums/winswitch/topics/339" class="external">http://rails.wincent.com/forums/winswitch/topics/339</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4385'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4385"><time data-relative="true">2009-04-01T12:48:06Z</time></a></span>
+</cite>
+<blockquote><p>Looks like <a href="http://unsanity.com/mee" class="external">Menu Extra Enabler</a> by Unsanity might work with Leopard, or at least that's what I've heard from users.</p>
+<p>The Menu Extra Enabler page itself says that it is not compatible with Leopard, but I think that's some old text that they forgot to clean up seeing as the <a href="http://www.unsanity.com/products/compatibility" class="external">compatibility page</a> claims that it is compatible.</p>
+<p>So seeing as MenuCracker is unlikely to be updated, ever, it would seem, I am going to reword the summary of this ticket to reflect what needs to be done to get WinSwitch installing on Leopard.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4386'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4386"><time data-relative="true">2009-04-01T12:48:40Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New installation of WinSwitch 3.2.1 on Leopard cannot be completed</li>
+<li><strong>To:</strong> WinSwitch Leopard compatibility (use Menu Extra Enabler instead of MenuCracker)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4396'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4396"><time data-relative="true">2009-04-02T05:11:54Z</time></a></span>
+</cite>
+<blockquote><p>I've migrated the old <a href="/wiki/Subversion">Subversion</a> repository over to <a href="/wiki/Git">Git</a></p>
+<p>You can now create a clone of the repo using:</p>
+<pre>$ git clone git://git.wincent.com/WinSwitch.git</pre>
+<p>And you can browse the repo at: <a href="http://git.wincent.com/WinSwitch.git" class="external">http://git.wincent.com/WinSwitch.git</a></p>
+<p>More notes in &quot;<a href="/wiki/Migrating_the_WinSwitch_repository_from_Subversion_to_Git">Migrating the WinSwitch repository from Subversion to Git</a>&quot;.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4399'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4399"><time data-relative="true">2009-04-02T07:14:10Z</time></a></span>
+</cite>
+<blockquote><p>[cross posted from the Leopard discussion thread]: I may be missing something, but why does WinSwitch have to load into SystemUIServer's context at all (which is the only reason to use MenuCracker)? yes, granted, having WinSwitch be draggable to the spot the user would expect the fast user switching menu is great, but Apple has reserved NSMenuExtra for a reason (SystemUIServer is a core OS component whose stability is not be jeopardised by third parties). Why not simply create a NSSatusItem and live with the fact it will appear further left on the menu bar? Such a status bar item would not need to rely on potentially disruptive hacks, and would survive OS updates far more easily. I for one would actually prefer that, never mind menu placement?</p>
+<p>Martin (who didn't feel like signing up to another forum to post).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4400'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4400"><time data-relative="true">2009-04-02T11:22:18Z</time></a></span>
+</cite>
+<blockquote><p>Rather than reply in both places, I'll reply to your forum topic.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4843'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4843"><time data-relative="true">2009-08-06T07:35:55Z</time></a></span>
+</cite>
+<blockquote><p>There has been some activity on the <a href="/wiki/MenuCracker">MenuCracker</a> front lately.</p>
+<ul>
+<li>Project page: <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a></li>
+<li>Version 2 source code (under development): <a href="http://menucracker.cvs.sourceforge.net/viewvc/menucracker/menucrackertwo/" class="external">http://menucracker.cvs.sourceforge.net/viewvc/menucracker/menucrackertwo/</a></li>
+<li>Code comments on new version: <a href="http://menucracker.cvs.sourceforge.net/viewvc/menucracker/menucrackertwo/MenuCracker.m?revision=1.1&amp;view=markup" class="external">http://menucracker.cvs.sourceforge.net/viewvc/menucracker/menucrackertwo/MenuCracker.m?revision=1.1&amp;view=markup</a> (replicated below)</li>
+</ul>
+<pre class="objc-syntax">//&#x0009;Design Notes:
+//&#x0009;=============
+//
+//&#x0009;This is a reimplementation of the original MenuCracker. Though it serves
+//&#x0009;same purpose, this implementation's design differs in several important
+//&#x0009;ways.
+//
+//&#x0009;New Loader
+//&#x0009;----------
+//&#x0009;In this design the loading mechanism is changed. When SystemUIServer 
+//&#x0009;(SUIS) decides to load a NSMenuExtra it looks at the NSPrincipalClass key of
+//&#x0009;the bundle's Info.plist to decide if it will allow the class (string
+//&#x0009;comparison). If the principal class is on the whitelist the bundle is
+//&#x0009;loaded and an instance of the principal class is sent through the plumbing.
+//
+//&#x0009;Prior versions of MenuCracker worked by defining an empty implementation
+//&#x0009;of the CHUD tools processor extra (CPUExtra) and then loading the crack
+//&#x0009;class out of the same bundle. The problem with this approach was that it
+//&#x0009;permanently blocked the load of the actual CHUD menu. Redefinition of an
+//&#x0009;existing runtime class is undefined in Obj-C, and so the empty class from
+//&#x0009;the cracker kept winning. Similarly, if an old version of MenuCracker was
+//&#x0009;loaded it would prevent newer versions from loading (because the cracker
+//&#x0009;class was already defined). This was a common bug, especially with very
+//&#x0009;old copies of MenuCracker bundled with some software.
+//&#x0009;
+//&#x0009;This version of the cracker tricks SUIS in a different way. It declares
+//&#x0009;an NSPrincipalClass on the whitelist, but doesn't implement it. When
+//&#x0009;SUIS loads the bundle a constructor function handles the menu cracking.
+//&#x0009;Since this implementation declares nothing in the Obj-C runtime and uses
+//&#x0009;all private symbols it can be loaded safely multiple times in the same SUIS.
+//
+//&#x0009;Multi-Version Cooperative Loading
+//&#x0009;---------------------------------
+//&#x0009;A second major difference in design is the handling of multiple versions
+//&#x0009;of MenuCracker itself. Not every developer bundling MenuCracker has kept
+//&#x0009;up to date and even if they did not every end user will update their
+//&#x0009;software regularly.
+//
+//&#x0009;Prior versions of MenuCracker assumed that eventually the new version of
+//&#x0009;MenuCracker would be loaded because old copies sorted the crackers in
+//&#x0009;SUIS's list of menu extras by comparing version numbers. Unfortunately in
+//&#x0009;practice this mechanism sometimes failed, usually because of bugs in the
+//&#x0009;older implementation. The most common failure was the problem with CPUExtra
+//&#x0009;class redefinition discussed above, but other bugs with path validation,
+//&#x0009;etc. have also been problems.
+//&#x0009;
+//&#x0009;This implementation takes a new approach. First and foremost, the new
+//&#x0009;load design (see above) allows multiple MenuCrackers to load at once.
+//&#x0009;Rather than try to resolve this down to a single winner which gets
+//&#x0009;loaded first, we now use a cooperative approach that allows newer versions
+//&#x0009;loaded later to overtake previously loaded versions.
+//
+//&#x0009;The first MenuCracker to load establishes a global in SUIS that contains
+//&#x0009;an indirection table. SUIS methods are swizzled to redirection routines
+//&#x0009;that then call through the table to the desired implementation. 
+//
+//&#x0009;When a second MenuCracker loads it has access to the indirection table and
+//&#x0009;can coordinate with the original MenuCracker to decide which version is
+//&#x0009;&quot;best&quot;. If the second copy wins it replaces the indirection table content
+//&#x0009;with its own, completely taking all but the redirection calls from the
+//&#x0009;first MenuCracker out of the code path.
+//
+//&#x0009;Since each method of SUIS is swizzled only once for all MenuCrackers
+//&#x0009;other tools that swizzle the same routines are safe. Secondary swizzlers
+//&#x0009;always have valid pointers to the first loaded redirection routines. If
+//&#x0009;new swizzles are needed for later versions they can be added to the
+//&#x0009;indirection table using newer redirection routines but still leaving
+//&#x0009;the older redirection routines in place.
+//
+//&#x0009;Less Aggressive Housekeeping
+//&#x0009;----------------------------
+//&#x0009;Once upon a time we checked for other loaded crackers, specifically
+//&#x0009;old versions of MenuCracker or Enable.menu from older Keychain Access. 
+//&#x0009;If they were loaded we went through a restart dance to try to become
+//&#x0009;the only loaded cracker (assuming we won the version comparison) by
+//&#x0009;rewriting the SUIS preferences and killing SUIS. The problem with that
+//&#x0009;approach was twofold:
+//
+//&#x0009;- In the real world SystemUIServer never loaded duplicate MenuCrackers
+//&#x0009;  (see above).
+//&#x0009;- The most common alternate cracker, Unsanity MEE, couldn't be unloaded
+//&#x0009;  my modifying the preferences and restarting SUIS.
+//
+//&#x0009;It's not clear there's any advantage to trying to be the only cracker.
+//&#x0009;This design doesn't require it, so we don't even try. We only remove
+//&#x0009;old MenuCrackers from the next load and try to peacefully coexist with
+//&#x0009;whatever else is loaded.</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4940'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4940"><time data-relative="true">2009-09-02T02:43:42Z</time></a></span>
+</cite>
+<blockquote><p>There has been a bit of interesting activity on this front lately, including reports that it works on <a href="/wiki/Snow_Leopard">Snow Leopard</a> (see <a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=2674886&amp;group_id=59300&amp;atid=490562" class="external">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=2674886&amp;group_id=59300&amp;atid=490562</a>).</p>
+<p>I am going to close this ticket and move onto the new ticket, <a href="/issues/1378">ticket #1378</a>, which is about <a href="/wiki/WinSwitch">WinSwitch</a>/<a href="/wiki/Snow_Leopard">Snow Leopard</a> compatibility.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4941'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4941"><time data-relative="true">2009-09-02T02:43:53Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

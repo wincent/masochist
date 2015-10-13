@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #443: REQUEST: Keep &quot;Buy from Amazon&quot; link active after adding art to iTunes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #443</div>
+<div class='issue' id='issue_443'>
+<form class="edit_issue" id="edit_issue_443" action="/issues/443" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="qefq4+60XQk6x88L2jUDhEhu8gR1aFlJS1VW4pYhMJ+dFVRUSTmHXONL/PzrHFAw/eybOH6E11VrSoMcsvlXuw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #443:
+<span data-name='issue[summary]'>
+REQUEST: Keep &quot;Buy from Amazon&quot; link active after adding art to iTunes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-07-12T15:21:00Z</time>, updated <time data-relative="true">2006-09-03T09:03:40Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jeff-shepherd">Jeff Shepherd</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When you have added artwork to the iTunes track, the &quot;Buy from Amazon&quot; link goes inactive.  Well, I don't know what keeps it from going active, but there are times  when it was active, but then I add more track information and/or artwork and then it goes dim.  I'd like it to stay active.  I get lots of MP3s from SxSW or off the web or MySpace or whatever.  But if I have a track I like there are times I want to purchase the rest of the album.  It would be handy to have the menu item stay active.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2744'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2744"><time data-relative="true">2006-09-03T09:03:40Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, Jeff.</p>
+<p>There are really two parts to this problem:</p>
+<p>1. Firstly, the next time you play the track after adding the art to iTunes, Synergy will ask iTunes for the art and if it finds it it obviously won't even bother to ask Amazon about it and so the menu item will remain dim. This will be fairly hard to fix because it will require a new option to be added (which users can use to force Synergy to query Amazon for &quot;buy now&quot; info even when art is already present in iTunes) and some reworking of the underlying logic.</p>
+<p>2. Secondly, in cases where it has previously asked Amazon about the art and has stored a &quot;buy now&quot; link in the property list on the disk, the menu item should be active. I am not looking at the code right now so I am not sure if this is the way it works or not. If it doesn't work like that then it should be fairly trivial to change it.</p>
+<p>So problem &quot;2&quot;, if present, should be fairly easy to fix. Problem &quot;1&quot; is not so tractable and an alternative might be to unghost the menu item in those cases and instead of actively searching Amazon in the background, only do a search on demand (when the user actually selects the menu item). This is probably the approach I prefer seeing as it will reduce unnecessary hits on the Amazon webserver.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

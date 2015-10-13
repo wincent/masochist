@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1230: Move static assets onto Amazon S3
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1230</div>
+<div class='issue' id='issue_1230'>
+<form class="edit_issue" id="edit_issue_1230" action="/issues/1230" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="tF08f16gkKg30Mt+oGb6/hBBq+LBBmz7yGiGxqEqAOiAr4LI+S1K/e5c+ImRT6lKpcPC3srq4ufod1M4hfJnzA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1230:
+<span data-name='issue[summary]'>
+Move static assets onto Amazon S3
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-02-16T12:50:32Z</time>, updated <time data-relative="true">2010-06-24T09:12:11Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The idea is to move static assets onto another domain, say rails.wincent.com, and leave the main site on wincent.com.</p>
+<p>In this way the wincent.com cookie won't be sent when requesting the assets, so they should load faster.</p>
+<p>Both domains have an SSL cert, so there should be no problems there.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4244'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4244"><time data-relative="true">2009-02-16T12:50:37Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4465'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4465"><time data-relative="true">2009-04-17T08:42:21Z</time></a></span>
+</cite>
+<blockquote><p>I currently have three domains with SSL certs: wincent.com, secure.wincent.com and rails.wincent.com.</p>
+<p>For the time being I don't want to touch secure.wincent.com at all because it's handled by Apache and that set-up must remain intact until <em>all</em> of the old (Apache-served) parts of the site are brought over here (and even then will probably want to wait quite a while to give Google and friends time to index the new content instead).</p>
+<p>Not sure if I want to keep renewing the SSL certificate for rails.wincent.com forever, so that may not be the best long term choice either. At least in the short term, it should be ok.</p>
+<p>Long term I probably want a new subdomain, like assets.wincent.com.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5753'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5753"><time data-relative="true">2010-06-24T09:11:59Z</time></a></span>
+</cite>
+<blockquote><p>Another option to consider here is moving some assets to Amazon <a href="/wiki/S3">S3</a>. Seeing as I have to use HTTPS, and seeing as <a href="/wiki/EC2">EC2</a> instances can only have 1 external IP address, I can't run multiple HTTPS sites off the same instance (each would need a different IP), the only choice is moving the assets onto another instance, and if I'm going to do that I may as well move them to S3.</p>
+<p>Still not sure if it's actually worth it. Probably shelve the idea until performance becomes a problem, and it probably never will.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5754'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5754"><time data-relative="true">2010-06-24T09:12:11Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Move static assets onto different domain</li>
+<li><strong>To:</strong> Move static assets onto Amazon S3</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

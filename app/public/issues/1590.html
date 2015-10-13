@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1590: Rails 3 et al: acceptance spec fishiness
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1590</div>
+<div class='issue' id='issue_1590'>
+<form class="edit_issue" id="edit_issue_1590" action="/issues/1590" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="4rAuwh+4EJeGVaAkZuIDIsXMLv0oyCBS6b4c8F3eB0XWQpB1uDXKwl/Zk9NXy1CWcE5HwSMkrk7JockOeQZgYQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1590:
+<span data-name='issue[summary]'>
+Rails 3 et al: acceptance spec fishiness
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-06-24T06:30:35Z</time>, updated <time data-relative="true">2010-07-05T10:44:14Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<h2>Overview</h2>
+<p>All pass:</p>
+<p><code>rspec spec/acceptance</code></p>
+<p>6 failures:</p>
+<p><code>rake spec:acceptance</code></p>
+<p>6 different failures:</p>
+<p><code>bundle exec rspec spec/acceptance</code></p>
+<h2><code>rake spec:acceptance</code> failures</h2>
+<pre>1) Products index visiting the index with a hidden product
+    Failure/Error: p1 = Product.make! :hide_from_front_page =&gt; true
+    undefined method `validate_associated_records_for_pages' for #&lt;Product:0x105a35808&gt;
+    # /Library/Ruby/Gems/1.8/gems/activemodel-3.0.0.beta4/lib/active_model/attribute_methods.rb:358:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/attribute_methods.rb:45:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/attribute_methods.rb:43:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/attribute_methods.rb:43:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/callbacks.rb:413:in `_run_validate_callbacks'
+    # /Library/Ruby/Gems/1.8/gems/activemodel-3.0.0.beta4/lib/active_model/validations.rb:158:in `valid?'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/validations.rb:52:in `valid?'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/callbacks.rb:274:in `valid?'
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/callbacks.rb:412:in `_run_validation_callbacks'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/callbacks.rb:274:in `valid?'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/validations.rb:72:in `perform_validations'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/validations.rb:46:in `save!'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/attribute_methods/dirty.rb:30:in `save!'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/transactions.rb:240:in `save!'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/transactions.rb:287:in `with_transaction_returning_status'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/connection_adapters/abstract/database_statements.rb:139:in `transaction'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/transactions.rb:202:in `transaction'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/transactions.rb:285:in `with_transaction_returning_status'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/transactions.rb:240:in `save!'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/create.rb:6:in `result'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:326:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/products/index_spec.rb:13
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19
+
+2) Logging in to the site: logging out and seeing a flash
+    Failure/Error: @email = Email.make!
+    can't dup NilClass
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `dup'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1202:in `current_scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/sessions_spec.rb:5
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19
+
+3) Logging in to the site: trying to log out when not logged in and seeing a flash
+    Failure/Error: @email = Email.make!
+    can't dup NilClass
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `dup'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1202:in `current_scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/sessions_spec.rb:5
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19
+
+4) Logging in to the site: failing to log in
+    Failure/Error: @email = Email.make!
+    can't dup NilClass
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `dup'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1202:in `current_scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/sessions_spec.rb:5
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19
+
+5) Logging in to the site: dynamic &quot;log in&quot;/&quot;log out&quot; links (when logged in)
+    Failure/Error: @email = Email.make!
+    can't dup NilClass
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `dup'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1202:in `current_scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/sessions_spec.rb:5
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19
+
+6) Logging in to the site: dynamic &quot;log in&quot;/&quot;log out&quot; links (when logged out)
+    Failure/Error: @email = Email.make!
+    can't dup NilClass
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `dup'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1202:in `current_scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/sessions_spec.rb:5
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19
+
+7) Logging in to the site: dynamic &quot;log in&quot;/&quot;log out&quot; links (with no JavaScript)
+    Failure/Error: @email = Email.make!
+    can't dup NilClass
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `dup'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1198:in `scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1202:in `current_scoped_methods'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `send'
+    # /Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib/active_record/base.rb:1438:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/proxy/build.rb:5:in `initialize'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `new'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:317:in `run'
+    # /Users/wincent/.bundle/gems/factory_girl-1.3.1/lib/factory_girl/factory.rb:270:in `create'
+    # ./spec/support/factory_girl.rb:33:in `send'
+    # ./spec/support/factory_girl.rb:33:in `delegate'
+    # ./spec/support/factory_girl.rb:47:in `make!'
+    # ./spec/acceptance/sessions_spec.rb:5
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1112:in `verbose'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+    # /Library/Ruby/Gems/1.8/gems/rake-0.8.7/bin/rake:31
+    # /usr/bin/rake:19:in `load'
+    # /usr/bin/rake:19</pre>
+<h2><code>bundle exec rspec spec/acceptance</code> failures</h2>
+<pre>1) Logging in to the site: logging in and seeing a flash
+    Failure/Error: visit '/login'
+    (eval):1:in `process_result': compile error
+    (eval):1: Invalid char `\033' in expression
+    (eval):1: syntax error, unexpected tIDENTIFIER, expecting ']'
+    Could not find gem 'weakling (&gt;= 0....
+              ^
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:50:in `process_result'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:40:in `eval'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:50:in `process_result'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:40:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:9:in `log_in'
+    # ./spec/acceptance/sessions_spec.rb:16
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+
+2) Logging in to the site: logging out and seeing a flash
+    Failure/Error: visit '/login'
+    Broken pipe
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `write'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `&lt;&lt;'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:9:in `log_in'
+    # ./spec/acceptance/sessions_spec.rb:21
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+
+3) Logging in to the site: trying to log out when not logged in and seeing a flash
+    Failure/Error: visit '/logout'
+    Broken pipe
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `write'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `&lt;&lt;'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:27
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+
+4) Logging in to the site: failing to log in
+    Failure/Error: visit '/login'
+    Broken pipe
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `write'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `&lt;&lt;'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:32
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+
+5) Logging in to the site: dynamic &quot;log in&quot;/&quot;log out&quot; links (when logged in)
+    Failure/Error: visit '/login'
+    Broken pipe
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `write'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `&lt;&lt;'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:9:in `log_in'
+    # ./spec/acceptance/sessions_spec.rb:40
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'
+
+6) Logging in to the site: dynamic &quot;log in&quot;/&quot;log out&quot; links (when logged out)
+    Failure/Error: visit '/'
+    Broken pipe
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `write'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `&lt;&lt;'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:39:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:46
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5743'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5743"><time data-relative="true">2010-06-24T06:41:00Z</time></a></span>
+</cite>
+<blockquote><p>FWIW, other examples (not involving Steak, Culerity, Celerity etc) pass the same regardless of whether I do:</p>
+<pre>rspec spec/mailers</pre>
+<p>or:</p>
+<pre>bundle exec rspec spec/mailers</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5744'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5744"><time data-relative="true">2010-06-24T06:47:05Z</time></a></span>
+</cite>
+<blockquote><p>Even stranger:</p>
+<pre>bundle exec rspec spec/acceptance/sessions_spec.rb</pre>
+<p>passes, but</p>
+<pre>bundle exec rspec spec/acceptance</pre>
+<p>is now hanging on the specs in <code>sessions_spec</code> until I CTRL-C it, then I get the broken pipe errors seen above, and also this one:</p>
+<pre>1) Logging in to the site: logging in and seeing a flash
+    Failure/Error: visit '/login'
+    You have a nil object when you didn't expect it!
+    You might have expected an instance of Array.
+    The error occurred while evaluating nil.first
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:51:in `process_result'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:40:in `send_remote'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_object_proxy.rb:25:in `method_missing'
+    # /Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib/culerity/remote_browser_proxy.rb:8:in `initialize'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `new'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/culerity_driver.rb:17:in `browser'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/driver/celerity_driver.rb:99:in `visit'
+    # /Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib/capybara/dsl.rb:55:in `visit'
+    # ./spec/acceptance/sessions_spec.rb:9:in `log_in'
+    # ./spec/acceptance/sessions_spec.rb:16
+    # /Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib/active_support/dependencies.rb:212:in `inject'</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5745'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5745"><time data-relative="true">2010-06-24T08:11:09Z</time></a></span>
+</cite>
+<blockquote><p>Hmph.</p>
+<pre>bundle exec rspec spec/acceptance</pre>
+<p>Is not longer hanging consistently. I just ran it a few times without hanging. Then, in new terminal window, started hanging again.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5788'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5788"><time data-relative="true">2010-06-28T04:15:30Z</time></a></span>
+</cite>
+<blockquote><p>Ok, updated a few gems and what not. Current status:</p>
+<ul>
+<li><code>rspec spec/acceptance</code>: always works</li>
+</ul>
+<p>And seems we've now got consistent behavior across both methods of using Bundler:</p>
+<ul>
+<li><code>rake spec:acceptance</code>: sometimes works, sometimes hangs indefinitely, always at same point (CTRL-C shows &quot;broken pipe&quot;)
+<ul>
+<li>running specific spec files (eg. <code>bundle exec rspec spec/acceptance/sessions_spec.rb</code>) exhibits the same behavior (sometimes works, sometimes hangs)</li>
+</ul>
+</li>
+<li><code>bundle exec rspec spec/acceptance</code>: sometimes works, sometimes hangs indefinitely as above (when hanging, CTRL-C shows &quot;broken pipe&quot;)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5789'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5789"><time data-relative="true">2010-06-28T04:37:58Z</time></a></span>
+</cite>
+<blockquote><p>One difference I note in the output between the non-hanging <code>rspec ...</code> invocation:</p>
+<pre>*..*.[2010-06-28 10:34:47] INFO  WEBrick 1.3.1
+[2010-06-28 10:34:47] INFO  ruby 1.8.7 (2009-06-12) [universal-darwin10.0]
+[2010-06-28 10:34:47] INFO  WEBrick::HTTPServer#start: pid=14031 port=9887
+.......</pre>
+<p>And the sometimes-hanging <code>bundle exec rspec ...</code> and <code>rake spec:acceptance</code> invocations:</p>
+<pre>*..*.[2010-06-28 10:35:11] INFO  WEBrick 1.3.1
+[2010-06-28 10:35:11] INFO  ruby 1.8.7 (2009-06-12) [universal-darwin10.0]
+[2010-06-28 10:35:11] INFO  WEBrick::HTTPServer#start: pid=14052 port=9887
+JRuby limited openssl loaded. <a href="http://jruby.org/openssl" class="external">http://jruby.org/openssl</a>
+gem install jruby-openssl for full support.</pre>
+<p>Obviously, at the system level I have done the <code>sudo jruby -S gem install jruby-openssl</code> thing, and perhaps that is why the specs always finish when running outside the context of Bundler.</p>
+<p>I wonder if adding <code>jruby-openssl</code> to the Gemfile with <code>:require =&gt; nil</code> will at least get it into the <code>LOAD_PATH</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5790'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5790"><time data-relative="true">2010-06-28T04:48:34Z</time></a></span>
+</cite>
+<blockquote><p>Adding it to the Gemfile does silence the warning, so evidently it is somehow getting made available via the LOAD_PATH, but we still see the unpredictable hanging.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5791'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5791"><time data-relative="true">2010-06-28T05:28:25Z</time></a></span>
+</cite>
+<blockquote><p>Seeing as I'd fixes some failing specs in Celerity itself by installing Mongrel, I tried the same by adding it to the Gemfile.</p>
+<p>This immediately silenced WEBrick's chatty output in the spec output, but alas, the specs don't succeed:</p>
+<pre>*..*.FFFFFF.</pre>
+<p>The error we're seeing is:</p>
+<pre>1) Logging in to the site: logging in and seeing a flash
+    Failure/Error: visit '/login'
+    (eval):1:in `process_result': compile error
+    (eval):1: Invalid char `\033' in expression
+    (eval):1: syntax error, unexpected tIDENTIFIER, expecting ']'
+    Could not find mongrel-1.1.5-java in any of the sources</pre>
+<p>So I try installing it within the JRuby environment:</p>
+<pre>sudo jruby -S gem install mongrel</pre>
+<p>But we still fail the same way.</p>
+<p>I thought I'd try running <code>jruby -S bundle install</code> but that eventually bails on hitting a native (C) gem:</p>
+<pre>Installing nokogiri (1.4.2) with native extensions /usr/local/jruby/lib/ruby/site_ruby/1.8/rubygems/installer.rb:482:in `build_extensions': ERROR: Failed to build gem native extension. (Gem::Installer::ExtensionBuildError)
+
+/usr/local/jruby/bin/jruby extconf.rb
+WARNING: JRuby does not support native extensions or the `mkmf' library.
+         Check <a href="http://kenai.com/projects/jruby/pages/Home" class="external">http://kenai.com/projects/jruby/pages/Home</a> for alternatives.
+extconf.rb:10: uninitialized constant Config (NameError)
+
+
+Gem files will remain installed in /Users/wincent/.bundle/gems/nokogiri-1.4.2 for inspection.
+Results logged to /Users/wincent/.bundle/gems/nokogiri-1.4.2/ext/nokogiri/gem_make.out</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5792'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5792"><time data-relative="true">2010-06-28T06:14:30Z</time></a></span>
+</cite>
+<blockquote><p>Comparing the LOAD_PATHs at the time of <code>spec_helper</code> evaluation:</p>
+<h3>Initial LOAD_PATH without Bundler</h3>
+<pre>
+/Users/wincent/trabajo/unversioned/wincent.com/src/spec
+/Users/wincent/trabajo/unversioned/wincent.com/src/lib
+/Library/Ruby/Gems/1.8/gems/json_pure-1.4.3/bin
+/Library/Ruby/Gems/1.8/gems/json_pure-1.4.3/lib
+/Library/Ruby/Gems/1.8/gems/gemcutter-0.5.0/bin
+/Library/Ruby/Gems/1.8/gems/gemcutter-0.5.0/lib
+/Library/Ruby/Gems/1.8/gems/rspec-core-2.0.0.beta.13/bin
+/Library/Ruby/Gems/1.8/gems/rspec-core-2.0.0.beta.13/lib
+/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/bin
+/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/lib
+/Library/Ruby/Gems/1.8/gems/rspec-expectations-2.0.0.beta.13/bin
+/Library/Ruby/Gems/1.8/gems/rspec-expectations-2.0.0.beta.13/lib
+/Library/Ruby/Site/1.8
+/Library/Ruby/Site/1.8/powerpc-darwin10.0
+/Library/Ruby/Site/1.8/universal-darwin10.0
+/Library/Ruby/Site
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8/universal-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0
+.</pre>
+<p><strong>Note:</strong> this is the LOAD_PATH at the start of the <code>spec_helper</code>, just after the Rails environment has been required. See further down for the much longer list which corresponds to the <em>end</em> of the <code>spec_helper</code> (ie. after &quot;rspec/rails&quot; and so on have been required.</p>
+<h3>Initial LOAD_PATH with Bundler</h3>
+<pre>
+/Users/wincent/.bundle/gems/wikitext-2.0/lib
+/Users/wincent/.bundle/gems/wikitext-2.0/ext
+/Users/wincent/.bundle/bundler/gems/steak-77d6391/lib
+/Users/wincent/.bundle/gems/rspec-rails-2.0.0.beta.14.1/lib
+/Library/Ruby/Gems/1.8/gems/webrat-0.7.1/lib
+/Users/wincent/.bundle/gems/rspec-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-mocks-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-expectations-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-core-2.0.0.beta.14/lib
+/Library/Ruby/Gems/1.8/gems/rr-0.10.11/lib
+/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/ext
+/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/lib
+/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/lib
+/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/ext
+/Users/wincent/.bundle/gems/launchy-0.3.5/lib
+/Users/wincent/.bundle/gems/jruby-openssl-0.7/lib
+/Users/wincent/.bundle/gems/hpricot-0.8.2/lib
+/Users/wincent/.bundle/gems/haml-3.0.12/lib
+/Users/wincent/.bundle/gems/factory_girl_rails-1.0/lib
+/Library/Ruby/Gems/1.8/gems/rails-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/railties-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/thor-0.13.7/lib
+/Users/wincent/.bundle/gems/factory_girl-1.3.1/lib
+/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/lib
+/Users/wincent/.bundle/gems/database_cleaner-0.5.2/lib
+/Users/wincent/.bundle/gems/configuration-1.1.0/lib
+/Users/wincent/.bundle/gems/celerity-0.7.9/lib
+/Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/remote/client/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/jobbie/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/chrome/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/firefox/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/common/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/json_pure-1.4.3/lib
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/lib
+/Library/Ruby/Gems/1.8/gems/nokogiri-1.4.2/lib
+/Users/wincent/.bundle/gems/culerity-0.2.10/lib
+/Users/wincent/.bundle/gems/activeresource-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/activerecord-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/arel-0.4.0/lib
+/Users/wincent/.bundle/gems/actionmailer-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/mail-2.2.5/lib
+/Users/wincent/.bundle/gems/treetop-1.4.8/lib
+/Users/wincent/.bundle/gems/polyglot-0.3.1/lib
+/Users/wincent/.bundle/gems/mime-types-1.16/lib
+/Users/wincent/.bundle/gems/actionpack-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/tzinfo-0.3.22/lib
+/Users/wincent/.bundle/gems/rack-test-0.5.4/lib
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib
+/Users/wincent/.bundle/gems/rack-1.1.0/lib
+/Users/wincent/.bundle/gems/erubis-2.6.6/lib
+/Users/wincent/.bundle/gems/activemodel-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/i18n-0.4.1/lib
+/Users/wincent/.bundle/gems/builder-2.1.2/lib
+/Users/wincent/.bundle/gems/activesupport-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/abstract-1.0.0/lib
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib
+lib
+spec
+/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib
+/Library/Ruby/Site/1.8
+/Library/Ruby/Site/1.8/powerpc-darwin10.0
+/Library/Ruby/Site/1.8/universal-darwin10.0
+/Library/Ruby/Site
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8/universal-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0
+.</pre>
+<h3>Final LOAD_PATH without Bundler</h3>
+<pre>
+/Users/wincent/.bundle/gems/haml-3.0.12/vendor/fssm/lib
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/controllers
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/helpers
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/mailers
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/models
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/sweepers
+/Users/wincent/trabajo/unversioned/wincent.com/src/lib
+/Users/wincent/trabajo/unversioned/wincent.com/src/vendor
+/Users/wincent/trabajo/unversioned/wincent.com/src/vendor/plugins/rails_upgrade/lib
+/Users/wincent/.bundle/gems/wikitext-2.0/lib
+/Users/wincent/.bundle/gems/wikitext-2.0/ext
+/Users/wincent/.bundle/bundler/gems/steak-77d6391/lib
+/Users/wincent/.bundle/gems/rspec-rails-2.0.0.beta.14.1/lib
+/Library/Ruby/Gems/1.8/gems/webrat-0.7.1/lib
+/Users/wincent/.bundle/gems/rspec-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-mocks-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-expectations-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-core-2.0.0.beta.14/lib
+/Library/Ruby/Gems/1.8/gems/rr-0.10.11/lib
+/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/ext
+/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/lib
+/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/lib
+/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/ext
+/Users/wincent/.bundle/gems/launchy-0.3.5/lib
+/Users/wincent/.bundle/gems/jruby-openssl-0.7/lib
+/Users/wincent/.bundle/gems/hpricot-0.8.2/lib
+/Users/wincent/.bundle/gems/haml-3.0.12/lib
+/Users/wincent/.bundle/gems/factory_girl_rails-1.0/lib
+/Library/Ruby/Gems/1.8/gems/rails-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/railties-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/thor-0.13.7/lib
+/Users/wincent/.bundle/gems/factory_girl-1.3.1/lib
+/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/lib
+/Users/wincent/.bundle/gems/database_cleaner-0.5.2/lib
+/Users/wincent/.bundle/gems/configuration-1.1.0/lib
+/Users/wincent/.bundle/gems/celerity-0.7.9/lib
+/Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/remote/client/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/jobbie/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/chrome/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/firefox/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/common/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/json_pure-1.4.3/lib
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/lib
+/Library/Ruby/Gems/1.8/gems/nokogiri-1.4.2/lib
+/Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib
+/Library/Ruby/Gems/1.8/gems/activeresource-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/arel-0.4.0/lib
+/Library/Ruby/Gems/1.8/gems/actionmailer-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/mail-2.2.5/lib
+/Users/wincent/.bundle/gems/treetop-1.4.8/lib
+/Library/Ruby/Gems/1.8/gems/polyglot-0.3.1/lib
+/Library/Ruby/Gems/1.8/gems/mime-types-1.16/lib
+/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/tzinfo-0.3.22/lib
+/Library/Ruby/Gems/1.8/gems/rack-test-0.5.4/lib
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib
+/Library/Ruby/Gems/1.8/gems/rack-1.1.0/lib
+/Users/wincent/.bundle/gems/erubis-2.6.6/lib
+/Library/Ruby/Gems/1.8/gems/activemodel-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/i18n-0.4.1/lib
+/Library/Ruby/Gems/1.8/gems/builder-2.1.2/lib
+/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/abstract-1.0.0/lib
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib
+/Users/wincent/trabajo/unversioned/wincent.com/src/spec
+/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib
+/Library/Ruby/Site/1.8
+/Library/Ruby/Site/1.8/powerpc-darwin10.0
+/Library/Ruby/Site/1.8/universal-darwin10.0
+/Library/Ruby/Site
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8/universal-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0
+.
+/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta4/lib/action_controller/vendor/html-scanner
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib/rack/mount/vendor/multimap
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib/rack/mount/vendor/regin</pre>
+<h3>Final LOAD_PATH with Bundler</h3>
+<pre>
+/Users/wincent/.bundle/gems/haml-3.0.12/vendor/fssm/lib
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/controllers
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/helpers
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/mailers
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/models
+/Users/wincent/trabajo/unversioned/wincent.com/src/app/sweepers
+/Users/wincent/trabajo/unversioned/wincent.com/src/lib
+/Users/wincent/trabajo/unversioned/wincent.com/src/vendor
+/Users/wincent/trabajo/unversioned/wincent.com/src/vendor/plugins/rails_upgrade/lib
+/Users/wincent/trabajo/unversioned/wincent.com/src/spec
+/Users/wincent/.bundle/gems/wikitext-2.0/lib
+/Users/wincent/.bundle/gems/wikitext-2.0/ext
+/Users/wincent/.bundle/bundler/gems/steak-77d6391/lib
+/Users/wincent/.bundle/gems/rspec-rails-2.0.0.beta.14.1/lib
+/Library/Ruby/Gems/1.8/gems/webrat-0.7.1/lib
+/Users/wincent/.bundle/gems/rspec-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-mocks-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-expectations-2.0.0.beta.14/lib
+/Users/wincent/.bundle/gems/rspec-core-2.0.0.beta.14/lib
+/Library/Ruby/Gems/1.8/gems/rr-0.10.11/lib
+/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/ext
+/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/lib
+/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/lib
+/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/ext
+/Users/wincent/.bundle/gems/launchy-0.3.5/lib
+/Users/wincent/.bundle/gems/jruby-openssl-0.7/lib
+/Users/wincent/.bundle/gems/hpricot-0.8.2/lib
+/Users/wincent/.bundle/gems/haml-3.0.12/lib
+/Users/wincent/.bundle/gems/factory_girl_rails-1.0/lib
+/Library/Ruby/Gems/1.8/gems/rails-3.0.0.beta4/lib
+/Library/Ruby/Gems/1.8/gems/railties-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/thor-0.13.7/lib
+/Users/wincent/.bundle/gems/factory_girl-1.3.1/lib
+/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/lib
+/Users/wincent/.bundle/gems/database_cleaner-0.5.2/lib
+/Users/wincent/.bundle/gems/configuration-1.1.0/lib
+/Users/wincent/.bundle/gems/celerity-0.7.9/lib
+/Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/remote/client/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/jobbie/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/chrome/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/firefox/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/common/src/rb/lib
+/Library/Ruby/Gems/1.8/gems/json_pure-1.4.3/lib
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext
+/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/lib
+/Library/Ruby/Gems/1.8/gems/nokogiri-1.4.2/lib
+/Users/wincent/.bundle/gems/culerity-0.2.10/lib
+/Users/wincent/.bundle/gems/activeresource-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/activerecord-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/arel-0.4.0/lib
+/Users/wincent/.bundle/gems/actionmailer-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/mail-2.2.5/lib
+/Users/wincent/.bundle/gems/treetop-1.4.8/lib
+/Users/wincent/.bundle/gems/polyglot-0.3.1/lib
+/Users/wincent/.bundle/gems/mime-types-1.16/lib
+/Users/wincent/.bundle/gems/actionpack-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/tzinfo-0.3.22/lib
+/Users/wincent/.bundle/gems/rack-test-0.5.4/lib
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib
+/Users/wincent/.bundle/gems/rack-1.1.0/lib
+/Users/wincent/.bundle/gems/erubis-2.6.6/lib
+/Users/wincent/.bundle/gems/activemodel-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/i18n-0.4.1/lib
+/Users/wincent/.bundle/gems/builder-2.1.2/lib
+/Users/wincent/.bundle/gems/activesupport-3.0.0.beta4/lib
+/Users/wincent/.bundle/gems/abstract-1.0.0/lib
+/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib
+lib
+spec
+/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib
+/Library/Ruby/Site/1.8
+/Library/Ruby/Site/1.8/powerpc-darwin10.0
+/Library/Ruby/Site/1.8/universal-darwin10.0
+/Library/Ruby/Site
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8/universal-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin10.0
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0
+.
+/Users/wincent/.bundle/gems/actionpack-3.0.0.beta4/lib/action_controller/vendor/html-scanner
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib/rack/mount/vendor/multimap
+/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib/rack/mount/vendor/regin</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5793'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5793"><time data-relative="true">2010-06-28T06:21:06Z</time></a></span>
+</cite>
+<blockquote><p>As far as I can see, the only differences between the two are:</p>
+<ul>
+<li>the Bundler one adds <code>spec</code> (relative path) to the LOAD_PATH (both also add the absolute path to the directory, although at different points)</li>
+<li>the Bundler one adds paths inside <code>~/.bundle</code>, but the version numbers are all identical</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5794'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5794"><time data-relative="true">2010-06-28T08:12:31Z</time></a></span>
+</cite>
+<blockquote><p>Given the scant difference between what's actually in the load path, I wonder if the difference lies in what is in the load path <em>at the time that some of the earlier parts of the <code>spec_helper</code> file are evaluated</em>.</p>
+<p>I also wonder about the Mongrel thing. It works without Bundler, but with Bundler it's not found. I've tried various tricks trying to get it to be visible from the Bundle environment, but really at a loss to know how/why things are different. One thing I do see in the Culerity source is that JRuby becomes involved only here, in the file <code>bin/run_celerity_server.rb</code>:</p>
+<pre class="ruby-syntax">#!/usr/bin/env jruby
+require File.dirname(__FILE__) &lt;&lt; '/../lib/culerity/celerity_server'
+Culerity::CelerityServer.new(STDIN, STDOUT)</pre>
+<p>So I guess at that point, we're running under JRuby, and in the &quot;no Bundler&quot; version Mongrel is available because the first thing that <code>lib/culerity/celerity_server</code> does is <code>require 'rubygems'</code>, and the environment at that point somehow has an appropriate load path.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5795'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5795"><time data-relative="true">2010-06-28T10:02:11Z</time></a></span>
+</cite>
+<blockquote><p>Just checked out what the load path is inside <code>celerity_server</code> and see the same differences as listed above. In both cases we have something this:</p>
+<pre>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/ext
+/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib</pre>
+<p>Even if I change the Gemfile to:</p>
+<pre> gem 'mongrel',   :require =&gt; nil,
+                  :path =&gt; '/usr/local/jruby-1.5.1/lib/ruby/gems/1.8/gems/mongrel-1.1.5-java'</pre>
+<p>I still see the paths to the native C Mongrel in the load path.</p>
+<p><code>gem 'mongrel-java'</code> obviously won't work, as no such gem exists.</p>
+<p>More tweaking, and now <code>rake spec:acceptance</code> is mysteriously working again...</p>
+<p>Looks like the <code>gem 'jruby-openssl'</code> line might have had something to do with it... add it in and things start hanging again... remove it and still broken... Maybe it was just a coincidence.</p>
+<p>Here is the output of <code>bundle show</code> when it was working:</p>
+<pre>Gems included by the bundle:
+  * abstract (1.0.0)
+  * actionmailer (3.0.0.beta4)
+  * actionpack (3.0.0.beta4)
+  * activemodel (3.0.0.beta4)
+  * activerecord (3.0.0.beta4)
+  * activeresource (3.0.0.beta4)
+  * activesupport (3.0.0.beta4)
+  * arel (0.4.0)
+  * builder (2.1.2)
+  * bundler (1.0.0.beta.1)
+  * capybara (0.3.8)
+  * celerity (0.7.9)
+  * cgi_multipart_eof_fix (2.5.0)
+  * configuration (1.1.0)
+  * culerity (0.2.10)
+  * daemons (1.1.0)
+  * database_cleaner (0.5.2)
+  * diff-lcs (1.1.2)
+  * erubis (2.6.6)
+  * factory_girl (1.3.1)
+  * factory_girl_rails (1.0)
+  * fastthread (1.0.7)
+  * ffi (0.6.3)
+  * gem_plugin (0.2.3)
+  * haml (3.0.12)
+  * hpricot (0.8.2)
+  * i18n (0.4.1)
+  * json_pure (1.4.3)
+  * launchy (0.3.5)
+  * mail (2.2.5)
+  * mime-types (1.16)
+  * mkdtemp (1.1.1)
+  * mongrel (1.1.5)
+  * mysql (2.8.1)
+  * nokogiri (1.4.2)
+  * polyglot (0.3.1)
+  * rack (1.1.0)
+  * rack-mount (0.6.6)
+  * rack-test (0.5.4)
+  * rails (3.0.0.beta4)
+  * railties (3.0.0.beta4)
+  * rake (0.8.7)
+  * rr (0.10.11)
+  * rspec (2.0.0.beta.14)
+  * rspec-core (2.0.0.beta.14)
+  * rspec-expectations (2.0.0.beta.14)
+  * rspec-mocks (2.0.0.beta.14)
+  * rspec-rails (2.0.0.beta.14.1)
+  * selenium-webdriver (0.0.24)
+  * steak (0.4.0.beta.1 77d6391)
+  * thor (0.13.7)
+  * treetop (1.4.8)
+  * tzinfo (0.3.22)
+  * webrat (0.7.1)
+  * wikitext (2.0)</pre>
+<p>Output of <code>bundle show mongrel</code> when working:</p>
+<pre>/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5</pre>
+<p>And here is output of <code>bundle install</code>, which broke things:</p>
+<pre>Updating git://github.com/cavalle/steak.git
+Using rake (0.8.7) 
+Using abstract (1.0.0) 
+Using activesupport (3.0.0.beta4) 
+Using builder (2.1.2) 
+Using i18n (0.4.1) 
+Using activemodel (3.0.0.beta4) 
+Using erubis (2.6.6) 
+Using rack (1.1.0) 
+Using rack-mount (0.6.6) 
+Using rack-test (0.5.4) 
+Using tzinfo (0.3.22) 
+Using actionpack (3.0.0.beta4) 
+Using mime-types (1.16) 
+Using polyglot (0.3.1) 
+Using treetop (1.4.8) 
+Using mail (2.2.5) 
+Using actionmailer (3.0.0.beta4) 
+Using arel (0.4.0) 
+Using activerecord (3.0.0.beta4) 
+Using activeresource (3.0.0.beta4) 
+Using bundler (1.0.0.beta.1) 
+Using culerity (0.2.10) 
+Using nokogiri (1.4.2) 
+Using ffi (0.6.3) 
+Using json_pure (1.4.3) 
+Using selenium-webdriver (0.0.24) 
+Using capybara (0.3.8) 
+Using celerity (0.7.9) 
+Using cgi_multipart_eof_fix (2.5.0) 
+Using configuration (1.1.0) 
+Using daemons (1.1.0) 
+Using database_cleaner (0.5.2) 
+Using diff-lcs (1.1.2) 
+Using factory_girl (1.3.1) 
+Using thor (0.13.7) 
+Using railties (3.0.0.beta4) 
+Using rails (3.0.0.beta4) 
+Using factory_girl_rails (1.0) 
+Using fastthread (1.0.7) 
+Using gem_plugin (0.2.3) 
+Using haml (3.0.12) 
+Using hpricot (0.8.2) 
+Using launchy (0.3.5) 
+Using mkdtemp (1.1.1) 
+Using mongrel (1.1.5) 
+Using mysql (2.8.1) 
+Using rr (0.10.11) 
+Using rspec-core (2.0.0.beta.14) 
+Using rspec-expectations (2.0.0.beta.14) 
+Using rspec-mocks (2.0.0.beta.14) 
+Using rspec (2.0.0.beta.14) 
+Using webrat (0.7.1) 
+Using rspec-rails (2.0.0.beta.14.1) 
+Using steak (0.4.0.beta.1) from git://github.com/cavalle/steak.git (at master) 
+Using wikitext (2.0) 
+Updating .gem files in vendor/cache
+Removing outdated .gem files from vendor/cache
+  * jruby-openssl-0.7.gem
+Your bundle is complete! Use `bundle show [gemname]` to see where a bundled gem is installed.</pre>
+<p>And now output of <code>bundle show</code>:</p>
+<pre>Gems included by the bundle:
+  * abstract (1.0.0)
+  * actionmailer (3.0.0.beta4)
+  * actionpack (3.0.0.beta4)
+  * activemodel (3.0.0.beta4)
+  * activerecord (3.0.0.beta4)
+  * activeresource (3.0.0.beta4)
+  * activesupport (3.0.0.beta4)
+  * arel (0.4.0)
+  * builder (2.1.2)
+  * bundler (1.0.0.beta.1)
+  * capybara (0.3.8)
+  * celerity (0.7.9)
+  * cgi_multipart_eof_fix (2.5.0)
+  * configuration (1.1.0)
+  * culerity (0.2.10)
+  * daemons (1.1.0)
+  * database_cleaner (0.5.2)
+  * diff-lcs (1.1.2)
+  * erubis (2.6.6)
+  * factory_girl (1.3.1)
+  * factory_girl_rails (1.0)
+  * fastthread (1.0.7)
+  * ffi (0.6.3)
+  * gem_plugin (0.2.3)
+  * haml (3.0.12)
+  * hpricot (0.8.2)
+  * i18n (0.4.1)
+  * json_pure (1.4.3)
+  * launchy (0.3.5)
+  * mail (2.2.5)
+  * mime-types (1.16)
+  * mkdtemp (1.1.1)
+  * mongrel (1.1.5)
+  * mysql (2.8.1)
+  * nokogiri (1.4.2)
+  * polyglot (0.3.1)
+  * rack (1.1.0)
+  * rack-mount (0.6.6)
+  * rack-test (0.5.4)
+  * rails (3.0.0.beta4)
+  * railties (3.0.0.beta4)
+  * rake (0.8.7)
+  * rr (0.10.11)
+  * rspec (2.0.0.beta.14)
+  * rspec-core (2.0.0.beta.14)
+  * rspec-expectations (2.0.0.beta.14)
+  * rspec-mocks (2.0.0.beta.14)
+  * rspec-rails (2.0.0.beta.14.1)
+  * selenium-webdriver (0.0.24)
+  * steak (0.4.0.beta.1 77d6391)
+  * thor (0.13.7)
+  * treetop (1.4.8)
+  * tzinfo (0.3.22)
+  * webrat (0.7.1)
+  * wikitext (2.0)</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5796'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5796"><time data-relative="true">2010-06-28T12:23:48Z</time></a></span>
+</cite>
+<blockquote><p>Something I hadn't noticed before among all the hanging specs, broken pipes, and failures, is this:</p>
+<pre>1) Logging in to the site: logging in and seeing a flash
+    Failure/Error: visit '/login'
+    (eval):1:in `process_result': compile error
+    (eval):1: Invalid char `\033' in expression
+    (eval):1: syntax error, unexpected tIDENTIFIER, expecting ']'
+    Could not find gem 'weakling (&gt;= 0....</pre>
+<p>Note that last line, <strong>Could not find gem 'weakling ...</strong>.</p>
+<p>So, under <code>rspec ...</code>, it must be finding it from somewhere, or an alternative. It is not installed anywhere on my system.</p>
+<p>No mention of <a href="http://github.com/headius/weakling" class="external">weakling</a> in either the Culerity or Celerity repos.</p>
+<p>Adding seems to fix the hanging. More digging, looks to be a dependency of Nokogiri (Java flavor).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5797'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5797"><time data-relative="true">2010-06-28T12:27:55Z</time></a></span>
+</cite>
+<blockquote><p>Sigh, but it's still all over the place. Hangs once, succeeds once.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5799'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5799"><time data-relative="true">2010-06-28T14:36:51Z</time></a></span>
+</cite>
+<blockquote><p>Ok, think I'm getting to the bottom of it at last.</p>
+<p>Both <code>bundle exec ...</code> and <code>rake ...</code> end up exporting <code>RUBYOPT</code>; specifically:</p>
+<pre>-I/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib -rbundler/setup</pre>
+<p>What does <code>bundler/setup</code> do? Basically, consult the <code>Gemfile</code> and do <code>Bundler.setup</code>.</p>
+<p>We can throw the baby out with the bathwater by ensuring that <code>RUBYOPT</code> is unset before we actually run our Culerity-using specs, and they work every time. But this is evidently a horrible kludge. We should be able to make it so that the specs work even with <code>RUBYOPT</code> set that way.</p>
+<p>As a test, I tried to run this simple command line:</p>
+<pre class="shell-syntax">$ jruby -I/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib -rbundler/setup -e &quot;puts 1 + 1&quot;
+Could not find rake-0.8.7 in any of the sources</pre>
+<p>It is evidently looking for one of the dependencies of Rails. Perhaps, then, this is what is happening when our specs fail (or perhaps not; it is still unclear why they only fail intermittently).</p>
+<p>If we skip the evaluation of <code>bundler/setup</code> we succeed:</p>
+<pre class="shell-syntax">$ jruby -I/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib -e &quot;puts 1 + 1&quot;
+2</pre>
+<p>But this test isn't really fair because in reality there are other things in the load path when we actually try to run the specs.</p>
+<p>So let's do a somewhat lengthier test. Let's take the actual contents of the load path and pass them in as arguments:</p>
+<pre class="shell-syntax">$ jruby -I/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib \
+-I/Users/wincent/.bundle/gems/haml-3.0.12/vendor/fssm/lib \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/app/controllers \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/app/helpers \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/app/mailers \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/app/models \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/app/sweepers \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/lib \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/vendor \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/vendor/plugins/rails_upgrade/lib \
+-I/Users/wincent/trabajo/unversioned/wincent.com/src/spec \
+-I/Users/wincent/.bundle/gems/wikitext-2.0/lib \
+-I/Users/wincent/.bundle/gems/wikitext-2.0/ext \
+-I/Users/wincent/.bundle/bundler/gems/steak-77d6391/lib \
+-I/Users/wincent/.bundle/gems/rspec-rails-2.0.0.beta.14.1/lib \
+-I/Library/Ruby/Gems/1.8/gems/webrat-0.7.1/lib \
+-I/Users/wincent/.bundle/gems/rspec-2.0.0.beta.14/lib \
+-I/Users/wincent/.bundle/gems/rspec-mocks-2.0.0.beta.14/lib \
+-I/Users/wincent/.bundle/gems/rspec-expectations-2.0.0.beta.14/lib \
+-I/Users/wincent/.bundle/gems/rspec-core-2.0.0.beta.14/lib \
+-I/Library/Ruby/Gems/1.8/gems/rr-0.10.11/lib \
+-I/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/ext \
+-I/Library/Ruby/Gems/1.8/gems/mysql-2.8.1/lib \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/ext \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.5/lib \
+-I/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/lib \
+-I/Library/Ruby/Gems/1.8/gems/mkdtemp-1.1.1/ext \
+-I/Users/wincent/.bundle/gems/launchy-0.3.5/lib \
+-I/Users/wincent/.bundle/gems/jruby-openssl-0.7/lib \
+-I/Users/wincent/.bundle/gems/hpricot-0.8.2/lib \
+-I/Users/wincent/.bundle/gems/haml-3.0.12/lib \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/gem_plugin-0.2.3/lib \
+-I/Users/wincent/.bundle/gems/fastthread-1.0.7/ext \
+-I/Users/wincent/.bundle/gems/fastthread-1.0.7/lib \
+-I/Users/wincent/.bundle/gems/factory_girl_rails-1.0/lib \
+-I/Library/Ruby/Gems/1.8/gems/rails-3.0.0.beta4/lib \
+-I/Library/Ruby/Gems/1.8/gems/railties-3.0.0.beta4/lib \
+-I/Users/wincent/.bundle/gems/thor-0.13.7/lib \
+-I/Users/wincent/.bundle/gems/factory_girl-1.3.1/lib \
+-I/Library/Ruby/Gems/1.8/gems/diff-lcs-1.1.2/lib \
+-I/Users/wincent/.bundle/gems/database_cleaner-0.5.2/lib \
+-I/Users/wincent/.bundle/gems/daemons-1.1.0/lib \
+-I/Users/wincent/.bundle/gems/configuration-1.1.0/lib \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/cgi_multipart_eof_fix-2.5.0/lib \
+-I/Users/wincent/.bundle/gems/celerity-0.7.9/lib \
+-I/Library/Ruby/Gems/1.8/gems/capybara-0.3.8/lib \
+-I/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/remote/client/src/rb/lib \
+-I/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/jobbie/src/rb/lib \
+-I/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/chrome/src/rb/lib \
+-I/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/firefox/src/rb/lib \
+-I/Library/Ruby/Gems/1.8/gems/selenium-webdriver-0.0.24/common/src/rb/lib \
+-I/Library/Ruby/Gems/1.8/gems/json_pure-1.4.3/lib \
+-I/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/ext \
+-I/Library/Ruby/Gems/1.8/gems/ffi-0.6.3/lib \
+-I/Library/Ruby/Gems/1.8/gems/nokogiri-1.4.2/lib \
+-I/Library/Ruby/Gems/1.8/gems/culerity-0.2.10/lib \
+-I/Library/Ruby/Gems/1.8/gems/activeresource-3.0.0.beta4/lib \
+-I/Library/Ruby/Gems/1.8/gems/activerecord-3.0.0.beta4/lib \
+-I/Library/Ruby/Gems/1.8/gems/arel-0.4.0/lib \
+-I/Library/Ruby/Gems/1.8/gems/actionmailer-3.0.0.beta4/lib \
+-I/Users/wincent/.bundle/gems/mail-2.2.5/lib \
+-I/Users/wincent/.bundle/gems/treetop-1.4.8/lib \
+-I/Library/Ruby/Gems/1.8/gems/polyglot-0.3.1/lib \
+-I/Library/Ruby/Gems/1.8/gems/mime-types-1.16/lib \
+-I/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta4/lib \
+-I/Users/wincent/.bundle/gems/tzinfo-0.3.22/lib \
+-I/Library/Ruby/Gems/1.8/gems/rack-test-0.5.4/lib \
+-I/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib \
+-I/Library/Ruby/Gems/1.8/gems/rack-1.1.0/lib \
+-I/Users/wincent/.bundle/gems/erubis-2.6.6/lib \
+-I/Library/Ruby/Gems/1.8/gems/activemodel-3.0.0.beta4/lib \
+-I/Library/Ruby/Gems/1.8/gems/i18n-0.4.1/lib \
+-I/Library/Ruby/Gems/1.8/gems/builder-2.1.2/lib \
+-I/Library/Ruby/Gems/1.8/gems/activesupport-3.0.0.beta4/lib \
+-I/Library/Ruby/Gems/1.8/gems/abstract-1.0.0/lib \
+-I/Library/Ruby/Gems/1.8/gems/rake-0.8.7/lib \
+-Ilib \
+-Ispec \
+-I/Library/Ruby/Gems/1.8/gems/bundler-1.0.0.beta.1/lib \
+-I/Library/Ruby/Site/1.8 \
+-I/Library/Ruby/Site/1.8/powerpc-darwin10.0 \
+-I/Library/Ruby/Site/1.8/universal-darwin10.0 \
+-I/Library/Ruby/Site \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8 \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby/1.8/universal-darwin10.0 \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/vendor_ruby \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8 \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/powerpc-darwin10.0 \
+-I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin10.0 \
+-I. \
+-I/Library/Ruby/Gems/1.8/gems/actionpack-3.0.0.beta4/lib/action_controller/vendor/html-scanner \
+-I/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib/rack/mount/vendor/multimap \
+-I/Users/wincent/.bundle/gems/rack-mount-0.6.6/lib/rack/mount/vendor/regin \
+-rbundler/setup -e &quot;puts 1 + 1&quot;
+Could not find rake-0.8.7 in any of the sources</pre>
+<p>Evidently merely being in the load path is not enough (because rake is in the load path).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5800'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5800"><time data-relative="true">2010-06-28T15:42:03Z</time></a></span>
+</cite>
+<blockquote><p>The one thing I am still not sure of is <em>where</em> <code>RUBYOPT</code> is getting set in the case of running <code>rake spec:acceptance</code> (it's obvious in the case of <code>bundle exec</code>).</p>
+<p>It's not set in any of the <code>lib/tasks/*.rake</code> files. It's not set by the bottom of the <code>Rakefile</code>. It's not set in <code>config/application.rb</code>. It <em>is</em> set by the time we hit the top of <code>spec_helper.rb</code>.</p>
+<p>Ok, looks like I found it: <code>rspec-core/lib/rspec/core/rake_task.rb</code></p>
+<p>Need to analyse that file a bit to find out what it's doing, but if I turn on verbose output I can see it's doing:</p>
+<pre>bundle exec /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin/ruby \
+  -Ilib \
+  -Ispec \
+  &quot;spec/acceptance/issues/search_spec.rb&quot; \
+  &quot;spec/acceptance/products/index_spec.rb&quot; \
+  &quot;spec/acceptance/regressions/76968b7_spec.rb&quot; \
+  &quot;spec/acceptance/sessions_spec.rb&quot;</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5801'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5801"><time data-relative="true">2010-06-29T03:14:38Z</time></a></span>
+</cite>
+<blockquote><p>Have a workaround now. Filed a ticket upstream explaining my findings and trying to see if this is going to be the right/best solution going forward:</p>
+<ul>
+<li><a href="http://github.com/carlhuda/bundler/issues/issue/407" class="external">http://github.com/carlhuda/bundler/issues/issue/407</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5822'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5822"><time data-relative="true">2010-07-05T10:44:09Z</time></a></span>
+</cite>
+<blockquote><p>Fully resolved now. Marking as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5823'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5823"><time data-relative="true">2010-07-05T10:44:14Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

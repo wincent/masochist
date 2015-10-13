@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #672: CRASH: Synergy 3.5a6 sometimes quits silently
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #672</div>
+<div class='issue' id='issue_672'>
+<form class="edit_issue" id="edit_issue_672" action="/issues/672" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="3VmRLyUB8zmwRQaj5TV1L/whW0aOf1SOz3mPBnTTBFfpqy+YgowpbGnJNVTUHCabSaMyeoWT2pLvZlr4UAtjcw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #672:
+<span data-name='issue[summary]'>
+CRASH: Synergy 3.5a6 sometimes quits silently
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-04-23T03:55:23Z</time>, updated <time data-relative="true">2008-04-28T06:39:24Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/tinsun">tinsun</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I sometimes notice that Synergy has quit. I'm on 10.5.2, MacPro. I couldn't find anyone else reporting on this particular crash. Here are 2 crashreports:</p>
+<pre>Process:         Synergy [167]
+Path:            /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
+Identifier:      org.wincent.Synergy
+12  org.wincent.Synergy           &#x0009;0x00010b73 -[SynergyController timer:] + 9203
+13  org.wincent.Synergy           &#x0009;0x0000ce21 -[SynergyController handleNotification:] + 425
+27  org.wincent.Synergy           &#x0009;0x00002dd2 start + 54
+    0x1000 -    0x37fff +org.wincent.Synergy version 3.5a6 (69d0d56) &lt;08d6017ec16a018e8902a64627f8b093&gt; /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
+0xc0000000 - 0xc0008fff +com.growl.growlframework 1.1.2 (1.1.2) &lt;e4a1c0affd65f843be253224e017b90e&gt; /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Frameworks/Growl.framework/Versions/A/Growl
+
+-----------------------------------------------------------------------------------
+
+Process:         Synergy [5523]
+Path:            /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
+Identifier:      org.wincent.Synergy
+12  org.wincent.Synergy           &#x0009;0x00010b73 -[SynergyController timer:] + 9203
+13  org.wincent.Synergy           &#x0009;0x0000ce21 -[SynergyController handleNotification:] + 425
+27  org.wincent.Synergy           &#x0009;0x00002dd2 start + 54
+    0x1000 -    0x37fff +org.wincent.Synergy version 3.5a6 (69d0d56) &lt;08d6017ec16a018e8902a64627f8b093&gt; /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/MacOS/Synergy
+0xc0000000 - 0xc0008fff +com.growl.growlframework 1.1.2 (1.1.2) &lt;e4a1c0affd65f843be253224e017b90e&gt; /Applications/Synergy Preferences.app/Contents/Resources/Synergy.prefPane/Contents/Resources/Synergy.app/Contents/Frameworks/Growl.framework/Versions/A/Growl</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3254'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3254"><time data-relative="true">2008-04-23T05:57:34Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, tinsun.</p>
+<p>Those stack traces look incomplete. Did you hand edit them to remove all the stack frames which didn't have the word Synergy in them?</p>
+<p>For example, your first one:</p>
+<pre>12  org.wincent.Synergy           &#x0009;0x00010b73 -[SynergyController timer:] + 9203
+13  org.wincent.Synergy           &#x0009;0x0000ce21 -[SynergyController handleNotification:] + 425
+27  org.wincent.Synergy           &#x0009;0x00002dd2 start + 54</pre>
+<p>The way we interpret stack traces is from the bottom up:</p>
+<ul>
+<li>so there is stack frame 27 where Synergy is starting</li>
+<li>the call chain leads from one function/method to another until we get to stack frame 13, so there are 14 frames missing from your report there</li>
+<li>frame 13 is evidently triggered by iTunes sending a notification about a track-change or player-state-change event, at which point it calls the <code>timer</code> method (frame 12)</li>
+<li>then we have 12 missing frames leading up to frame 0 where the crash actually occurred</li>
+</ul>
+<p>Without seeing the rest of the frames I would guess that this is <a href="/issues/640">bug #640</a> again; ie. the full trace will probably look something like this (this one comes from my own machine):</p>
+<pre>Thread 0 Crashed:
+0   com.apple.applescript         &#x0009;0x00679d85 TUASFrame::UnlinkTo(TUASFrameType, TUASUnlinkExtent) + 53
+1   com.apple.applescript         &#x0009;0x00677ad3 BCReturn() + 111
+2   com.apple.applescript         &#x0009;0x0066233f UASExecute1() + 2439
+3   com.apple.applescript         &#x0009;0x00662884 UASExecute(unsigned char) + 178
+4   com.apple.applescript         &#x0009;0x006340e4 ASExecute(unsigned long, unsigned long, long, unsigned long*) + 302
+5   ...ple.CoreServices.CarbonCore&#x0009;0x928c3905 CallComponentFunctionCommon + 537
+6   ...ple.CoreServices.CarbonCore&#x0009;0x92908cb8 CallComponentFunction + 122
+7   com.apple.applescript         &#x0009;0x0062fae2 AppleScriptComponent + 1744
+8   com.apple.applescript         &#x0009;0x0064b927 AGenericManager::HandleOSACall(ComponentParameters*) + 63
+9   ...ple.CoreServices.CarbonCore&#x0009;0x928c35cd CallComponentDispatch + 29
+10  com.apple.openscripting       &#x0009;0x93d25390 OSAExecute + 61
+11  com.apple.Foundation          &#x0009;0x961f0f7b -[NSAppleScript(NSPrivate) _executeWithMode:andReturnError:] + 107
+12  com.apple.Foundation          &#x0009;0x961f0e51 -[NSAppleScript executeAndReturnError:] + 49
+13  org.wincent.Synergy           &#x0009;0x0000ea07 -[SynergyController timer:] + 647 (SynergyController.m:2256)
+14  org.wincent.Synergy           &#x0009;0x0000ce21 -[SynergyController handleNotification:] + 425 (SynergyController.m:5509)
+15  com.apple.Foundation          &#x0009;0x96107bda _nsnote_callback + 106
+16  com.apple.CoreFoundation      &#x0009;0x9203f71b __CFXNotificationHandleMessage + 587
+17  com.apple.CoreFoundation      &#x0009;0x9203f80e __CFXNotificationReceiveFromServer + 238
+18  com.apple.CoreFoundation      &#x0009;0x9203a555 __CFMachPortPerform + 117
+19  com.apple.CoreFoundation      &#x0009;0x9205e921 CFRunLoopRunSpecific + 3921
+20  com.apple.CoreFoundation      &#x0009;0x9205ed18 CFRunLoopRunInMode + 88
+21  com.apple.HIToolbox           &#x0009;0x949b76a0 RunCurrentEventLoopInMode + 283
+22  com.apple.HIToolbox           &#x0009;0x949b74b9 ReceiveNextEventCommon + 374
+23  com.apple.HIToolbox           &#x0009;0x949b732d BlockUntilNextEventMatchingListInMode + 106
+24  com.apple.AppKit              &#x0009;0x90f327d9 _DPSNextEvent + 657
+25  com.apple.AppKit              &#x0009;0x90f3208e -[NSApplication nextEventMatchingMask:untilDate:inMode:dequeue:] + 128
+26  com.apple.AppKit              &#x0009;0x90f2b0c5 -[NSApplication run] + 795
+27  com.apple.AppKit              &#x0009;0x90ef830a NSApplicationMain + 574
+28  org.wincent.Synergy           &#x0009;0x00002dd2 start + 54</pre>
+<p>Now, as a programmer, normally when you see a stack trace like this you might like to think, &quot;Ah, look! It is crashing in system code!&quot;. But in reality, in about 99.5% of cases you <em>haven't</em> found a bug in <a href="/wiki/Mac_OS_X">Mac OS X</a> but rather the bug is in <em>your</em> code and something you are doing is creating circumstances which will cause a crash in the system <a href="/wiki/APIs">APIs</a>.</p>
+<p>There are some rare cases &mdash; the 0.5% &mdash; where you actually <em>have</em> discovered a bug in the <a href="/wiki/OS">OS</a>, and these NSAppleScript cases are such. See <a href="/issues/640">bug #640</a> for more details on that. Sometimes system bugs can be worked around and you can use an alternative <a href="/wiki/API">API</a> or some kind of trick to prevent them from being triggered, but in the case of NSAppleScript I can't really avoid the issue without ripping out the entire nervous system of the application and rewriting it. I have been working on this, but it's likely that Apple will fix the bug before I finish the rewrite.</p>
+<p>So go back and have a look at your crash logs and see if &quot;NSAppleScript&quot; appears anywhere in the stack trace. If it does, looks like you're hitting <a href="/issues/640">bug #640</a>. Unfortunately those crashes are fairly random; in my case I seem to be getting a crash every few days but I know others have seen them more often. <a href="http://wincent.com/a/products/synergy-classic/download/tiger/" class="external">Going back to 3.2</a> is a viable option if you're seeing these crashes often.</p>
+<p>If you're <em>not</em> seeing an NSAppleScript crash, then please do post the full stack traces. You can use <code>&lt;pre&gt;&lt;/pre&gt;</code> tags to prevent them from getting misformatted (I'm about to go back and fix the formatting on your description there).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3261'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3261">Created <time data-relative="true">2008-04-26T21:24:38Z</time>, edited <time data-relative="true">2008-04-27T06:52:30Z</time></a></span>
+</cite>
+<blockquote><p>im having the same problem and im running it on a mac pro 10.5.2 as well. any fixes? do you need to see crashreports?</p>
+<p>reecesuggs at gmail dot com</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3262'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3262"><time data-relative="true">2008-04-27T06:54:17Z</time></a></span>
+</cite>
+<blockquote><p>Well take a look at your crash reports; if you see NSAppleScript then you're actually seeing <a href="/issues/640">bug #640</a>. That's a bug in <a href="/wiki/Leopard">Leopard</a>, so I'm encouraging people to file bug reports with <a href="/wiki/Apple">Apple</a> about it (see <a href="/issues/640">bug #640</a> for more details). You can also go back to 3.2 if you prefer not to put up with the crashes while waiting for the fix from Apple.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3269'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3269"><time data-relative="true">2008-04-28T06:39:24Z</time></a></span>
+</cite>
+<blockquote><p>As this one does look to be a duplicate of <a href="/issues/640">bug #640</a>, going to mark this one as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

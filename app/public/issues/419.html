@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #419: Copy synergyd to user Application Support folder on launch
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #419</div>
+<div class='issue' id='issue_419'>
+<form class="edit_issue" id="edit_issue_419" action="/issues/419" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="4K3t2Lk37pBdLcSH6CqsTCZrMOXsfW6EoFTtWxhgr8/UX1NvHro0xYSh93DZA//4k+lZ2eeR4JiASzilPLjI6w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #419:
+<span data-name='issue[summary]'>
+Copy synergyd to user Application Support folder on launch
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-05-05T12:58:18Z</time>, updated <time data-relative="true">2006-07-05T02:07:54Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nick-carrasco">nick carrasco</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Every time I go to &quot;upgrade&quot; SynergyAdvance, I first quit the current running process from the menu option, and then drag the new app to my Apps to replace it.  Everytime I do this it complains that &quot;synergyd&quot; is still running and then I have to manually quit syngery from the &quot;Activity Monitor&quot; before I replace the app.  Please fix it so that when SynergyAdvance is quit that it also kills the &quot;synergyd&quot; process as well</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2673'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2673"><time data-relative="true">2006-05-05T13:49:25Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report, Nick. I presume you're seeing a warning when you try to empty the Trash, given that it contains a still-running process when you try to empty it.</p>
+<p>First up, some information about the &quot;synergyd&quot; process:</p>
+<p><a href="http://wincent.com/a/products/synergy-advance/faq/synergyd-daemon/" class="external">http://wincent.com/a/products/synergy-advance/faq/synergyd-daemon/</a></p>
+<p>The reason it's running on your system is because you evidently have the &quot;Auto-launch Synergy Advance when iTunes is launched&quot; setting set to ON. It is necessary to have a separate background process in order for that preference to work (ie. something has to watch for iTunes launches). Furthermore, the background process must continue to run when Synergy Advance quits, so that the monitoring of iTunes can continue to take place. If this weren't the case then the &quot;Auto-launch Synergy Advance when iTunes is launched&quot; setting would be broken.</p>
+<p>So what you're asking (that Synergy Advance kills synergyd whenever it exits) is not possible without breaking that feature. The following workarounds currently exist:</p>
+<p>(1) Turn off the &quot;Auto-launch Synergy Advanced when iTunes is launched&quot; setting permanently.</p>
+<p>(2) Turn off the &quot;Auto-launch Synergy Advanced when iTunes is launched&quot; setting temporarily just before performing an upgrade.</p>
+<p>(3) Wait until after rebooting or logging out before trying to empty the Trash.</p>
+<p>(4) As you've discovered, manually kill synergyd from the Activity Monitor or the command line.</p>
+<p>As far as solving this problem at the implementation level there is very little I can do because Synergy Advance is a drag-and-drop installation; if it were not a drag-and-drop installation and used an installer then I could do stuff like kill the synergyd process (if necessary) from within the installer and then restart it (if necessary). However, this issue seems to be too small to warrant changing from the convenience of a drag-and-drop install.</p>
+<p>About the closest thing to an implementation-level workaround that I can think of is that I could make some changes to Synergy Advance that check for already-running copies of synergyd at launch time. If an already-running copy is found that does not belong to the copy of Synergy Advance that is currently running, then it could send a &quot;quit&quot; message to the already-running daemon. Or to put it more clearly, given two copies of Synergy Advance:</p>
+<p>(1) New version, just installed, up and running:</p>
+<p>/Applications/Synergy Advance.app</p>
+<p>(2) Old version, dragged to trash, not running:</p>
+<p>~/.Trash/Synergy Advance.app</p>
+<p>The installed, running copy could check to see if any copies of synergyd are already running and make sure that they are in the expected location; in the case of this example, that means that the daemon should be running from here:</p>
+<p>/Applications/Synergy Advance.app/Contents/Resources/synergyd.app</p>
+<p>And not from here:</p>
+<p>~/.Trash/Synergy Advance.app/Contents/Resources/synergyd.app</p>
+<p>This would partially address the problem that you describe. Basically, if you tried to empty the trash *before* running the new copy of Synergy Advance you would still see the warning, but if you tried to empty it *after* then you'd see no warning.</p>
+<p>There is one other alternative way of handling this, and that is getting Synergy Advance to install a copy of synergyd into the user's &quot;Application Support&quot; folder when it is first launched. This would avoid the Trash warnings that you describe entirely, at the cost of some additional complexity. It is probably better to install into the user's folder (and not into the system-wide &quot;Library&quot; folder because this would not require users to enter an administrative password.</p>
+<p>An additional benefit of this approach is that it would eliminate potential problems if people try to run Synergy Advance from the disk image, they end up launching synergyd and then cannot eject the disk image.</p>
+<p>Such design decisions always involve trade-offs. By moving stuff into the &quot;Application Support&quot; folder we avoid a warning that a small number of users might see some of the time, but we require more disk space (well, a very small amount) and some users like to be able to remove all traces of an application just by dragging it to the Trash.</p>
+<p>Weighing things up I think the copy-to-user-app-support solution is the best compromise, so I am going to reword the summary to reflect what needs to be done. Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2674'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2674"><time data-relative="true">2006-07-05T02:07:54Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

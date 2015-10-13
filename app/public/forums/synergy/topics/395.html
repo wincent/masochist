@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy Development Dead?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy Development Dead?</div>
+<h1 class='major'>Synergy Development Dead?</h1>
+<div class='topic' id='topic_395'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/dave-sawyer">Dave Sawyer</a>
+<span class='when'>
+<a href="/forums/synergy/topics/395"><time data-relative="true">2008-11-21T17:27:52Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi, Wincent,</p>
+<p>Have you stopped developing Synergy classic and Synergy Advance? There hasn't been a new build of Synergy classic since January and of Advance for a year and a half, so by all appearances these are dead products. Is that the case, or will development of either recommence at some point?</p>
+<p>Synergy 3.2.1 works OK for me (albeit with some minor quirks) but time marches on and I'm concerned about future updates to Mac OS X breaking things if no further development is planning.</p>
+<p>Any information you are willing to share will be appreciated.</p>
+<p>Regards,</p>
+<p>Dave Sawyer</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3954'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3954"><time data-relative="true">2008-12-12T12:52:16Z</time></a></span>
+</cite>
+<blockquote><p>I'd also be interested to know if development will continue on Synergy. I was hoping there would be a Spaces fix for Synergy classic in the future. </p>
+<p>I've also yet to find another iTunes controller that has the simplicity of Synergy. Most seem to be going the way of CoverSutra with a window that opens with track information. I'd rather just control my songs from the menubar, like Synergy allows me to do.</p>
+<p>So, it'd be good to hear if there's any future plans for Synergy (I know there was a major bug that was holding up progress last time I checked)?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3984'>
+<cite>
+<a href="/users/madcran">madcran</a>
+<span class='when'><a href="#comment_3984"><time data-relative="true">2008-12-20T18:43:06Z</time></a></span>
+</cite>
+<blockquote><p>I don't know what this means, but MacHeist is giving away Synergy 3.3 in their annual GivingTree promotion.  If you go to <a href="http://givingtree.macheist.com/" class="external">http://givingtree.macheist.com/</a> and sign up, one of the free tools is Synergy 3.3 (only for MacHeist customers.)  My question is that there is no mention of 3.3 anywhere and I can not tell if it is 10.5 compatible or not.  I am still using 3.5a7 and that version is technically &quot;newer&quot; in version than 3.3 even though 3.3 has come out after 3.5a7.  Just a thought.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3985'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3985"><time data-relative="true">2008-12-20T19:21:08Z</time></a></span>
+</cite>
+<blockquote><p>There are currently two main lines of Synergy development:</p>
+<ul>
+<li>The 3.2 (stable) series: runs on any version of Mac OS X from 10.2 through to 10.5.</li>
+<li>The 3.5 (alpha) series: feature-equivalent, but rewritten to make use of <a href="/wiki/Leopard">Leopard</a>-only subsystems; runs only on version 10.5 and up.</li>
+</ul>
+<p>If you look at the <a href="http://wincent.com/a/products/synergy-classic/history/" class="external">version history</a> you'll see that these two lines of development take place in parallel, and that there have been interleaved releases from both branches.</p>
+<p>Even though the 3.5 series sounds &quot;newer&quot;, I've continued working on the 3.2 series because it's a tried-and-tested codebase. So if you put the releases in chronological order you get something like 3.1.5, 3.2, 3.5a, 3.5a2, 3.5a3, 3.5a4, 3.5a5, 3.5a6, 3.2.1b, 3.5a7, and the latest release is 3.2.1.</p>
+<p>There are Apple bugs in Leopard, specifically the new Garbage Collection technology, that cause the 3.5 alpha series to be unstable. See <a href="/issues/640">ticket #640</a> for the full details. The basic gist is that this is an Apple bug and there is no workaround; I'm basically waiting for them to fix it.</p>
+<p>So that's why the 3.2 line continues to be worked on. Eventually Apple will fix the bugs and future development will move forward only on the 3.5 line, but for now they're going in parallel.</p>
+<p>That's where the MacHeist build comes in. 3.3 is not released to the public yet, but it's been prepared. It's based on the stable 3.2 codebase, not the 3.5 codebase which is affected by the Apple bugs. Like the 3.2 series before it, it is compatible with Leopard, and all versions of Mac OS X in fact back to 10.2.8.</p>
+<p>There will most likely be a 3.2.2 release soon. Then when the MacHeist thing goes live those customers will get 3.3. When Apple fixes their Leopard bugs there'll be more releases in the 3.5 line, but until they do that I don't anticipate doing any more releases on that line; only the 3.2 (and soon 3.3) lines will see releases.</p>
+<p>Hope that answers your question.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3992'>
+<cite>
+<a href="/users/madcran">madcran</a>
+<span class='when'><a href="#comment_3992"><time data-relative="true">2008-12-22T18:53:40Z</time></a></span>
+</cite>
+<blockquote><p>I see what is going on now.  After I posted I researched the different version better and found 3.2.x is 10.5 compatible.  I think when I got the update months and months ago I must have misread the requirements for the different versions.  Thanks for the great response and thanks for the great product!  Keep up the good work.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3995'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3995"><time data-relative="true">2008-12-22T21:46:39Z</time></a></span>
+</cite>
+<blockquote><p>Just for completeness, here's a diagram showing what I was trying to explain above:</p>
+<pre>  |
+  |
+3.1.5
+  |\
+3.2 \
+  |  \
+  |   \
+  |    \
+  |     \
+  |      \ &lt;-- Leopard Garbage Collection
+  |       \            rewrite
+  |        \
+  |         \
+  |          \
+  |         3.5a
+  |           |
+  |         3.5a2
+  |           |
+  |         3.5a3
+  |           |
+  |         3.5a4
+  |           |
+  |         3.5a5
+  |           |
+  |         3.5a6
+3.2.1b        |
+  |         3.5a7
+3.2.1         |
+  |           v
+  |
+  |
+3.2.2 (out soon)
+  |
+ 3.3 (MacHeist promo)
+  |
+  v</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_4012'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4012"><time data-relative="true">2008-12-26T16:53:51Z</time></a></span>
+</cite>
+<blockquote><p>Hi! I just got 3.3 from MacHeist (thanks!) and am really liking the program. Will us folks who were brought in from MacHeist continue to be eligible for updates to the software?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4016'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4016"><time data-relative="true">2008-12-26T20:33:20Z</time></a></span>
+</cite>
+<blockquote><p>The MacHeist promo edition is a freebie, so there aren't any free upgrades for it. Basically, you get that particular version of the application for free; you <em>don't</em> get an unlimited license with free upgrades to subsequent versions.</p>
+<p>Having said that, it's always been my intention that if any serious flaws are discovered in the code I would make a 3.3.1 release with fixes, and that release would be made available for free to MacHeist promo users.</p>
+<p>But the codebase is pretty stable, so I doubt that any such release is going to be required...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4017'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4017"><time data-relative="true">2008-12-27T01:54:17Z</time></a></span>
+</cite>
+<blockquote><p>Actually there is one bug I have noticed for 3.3--when listening to Internet radio streams, the floater comes up at track change and then will not go away. Occasionally it fades out and re-appears with the same information. I reverted to 3.2.1, which doesn't have the bug.</p>
+<p>The stream I noticed the behavior on is here: <a href="http://somafm.com/play/dronezone" class="external">http://somafm.com/play/dronezone</a></p>
+<p>(using Intel OS X 10.5.6, iTunes 8.0.2)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4034'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_4034"><time data-relative="true">2009-01-02T23:45:36Z</time></a></span>
+</cite>
+<blockquote><p>Hi, just wondering whether Synergy 3.3 is nearly ready for release to all the non-Macheist Synergy owners? And, if so, is it more of a bug-fix release or there some new features with this? I'm really looking forward to it btw.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4036'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4036"><time data-relative="true">2009-01-03T06:13:14Z</time></a></span>
+</cite>
+<blockquote><p>Yes, I do have an equivalent release ready. No new features, just bug fixes and tweaks. It's actually version 3.2.2 in the diagram above; 3.3 is identical, but is a fully unlocked version for the MacHeist promo. </p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4131'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4131"><time data-relative="true">2009-01-26T03:33:09Z</time></a></span>
+</cite>
+<blockquote><p>I've been using the MacHeist 3.3. version for a while, but it seems subject to the AppleScript problem, as mine will crash whenever I right-click on it (to access the submenu). Or is this another bug unrelated to the AppleScript one?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4132'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4132"><time data-relative="true">2009-01-26T04:58:01Z</time></a></span>
+</cite>
+<blockquote><p>First I've heard of a crash. Can you please send me a crash log? (<a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4133'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4133"><time data-relative="true">2009-01-26T13:33:11Z</time></a></span>
+</cite>
+<blockquote><p>I feel a little silly asking this, but how would one get the correct crash log for Synergy?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4134'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4134"><time data-relative="true">2009-01-26T15:16:36Z</time></a></span>
+</cite>
+<blockquote><p>Have a look in <code>~/Library/Logs/CrashReporter</code>. The logs in there are named by application and date.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4245'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4245"><time data-relative="true">2009-02-16T17:03:12Z</time></a></span>
+</cite>
+<blockquote><p>any word on this? it has been almost a year since an update to 3.2.1</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4249'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4249"><time data-relative="true">2009-02-18T15:01:05Z</time></a></span>
+</cite>
+<blockquote><p>I should put 3.2.2 up on the servers. The main reason I haven't done so is I haven't wanted to cause confusion seeing as it's coming out <em>after</em> 3.3 (the MacHeist promo version).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4254'>
+<cite>
+<a href="/users/civrock">Civrock</a>
+<span class='when'><a href="#comment_4254"><time data-relative="true">2009-02-19T20:40:36Z</time></a></span>
+</cite>
+<blockquote><p>Please do. :)</p>
+<p>I've been running 3.5a7 for months now and haven't noticed any issues... but I'd prefer to use the most up-to-date version available. ;)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4302'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_4302"><time data-relative="true">2009-03-05T09:14:19Z</time></a></span>
+</cite>
+<blockquote><p>I suppose you could put 3.2.2 as 3.3 as I can't see a reason why it has to released as 3.2.2? At least that way it would stop the confusion with different version numbers for the Macheist promo version.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4312'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4312"><time data-relative="true">2009-03-10T22:32:43Z</time></a></span>
+</cite>
+<blockquote><p>I bought a license about a year ago and have not seen any updates since. Recently 3.5a7 stopped scrobbling, so I decided to look around for any new version. I came across a bootleg copy of 3.3, and am using it right now (works better than 3.5a7). Looking forward to being able to get the new legit version properly working. It's been a long time coming.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4313'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4313"><time data-relative="true">2009-03-11T06:40:33Z</time></a></span>
+</cite>
+<blockquote><p>If you want to swap in a legit version in place of the pirate one you're using I'd recommend 3.2.1. For a long time now I've been recommending the 3.2 stable series over the 3.5 alpha series because Apple is really dragging its heels on fixing <a href="/issues/640">bug #640</a>. It looks like it won't be fixed in Leopard at all. Will it be fixed in Snow Leopard? I can only hope so.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4397'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4397"><time data-relative="true">2009-04-02T06:21:20Z</time></a></span>
+</cite>
+<blockquote><p><a href="/blog/synergy-3.2.2-released">Synergy 3.2.2</a> is now out.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4450'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4450"><time data-relative="true">2009-04-15T17:40:24Z</time></a></span>
+</cite>
+<blockquote><p>Many thanks for the new version Wincent.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1767: Frequent Crashes on Mandriva Linux Cooker on x86-32 When Browsing Trunk of Test-Run 
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1767</div>
+<div class='issue' id='issue_1767'>
+<form class="edit_issue" id="edit_issue_1767" action="/issues/1767" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="xoq64MfLI32tHtLWeSETxgYxEnjULswf6WGKfmsDGI/yeARXYEb5KHSS4SFICEBys7N7RN/CQgPJfl+AT9t/qw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1767:
+<span data-name='issue[summary]'>
+Frequent Crashes on Mandriva Linux Cooker on x86-32 When Browsing Trunk of Test-Run 
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2011-01-16T22:58:34Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/shlomi-fish">Shlomi Fish</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi Wincent,</p>
+<p>thanks for command-t.vim and other programs - command-t seems very cool from command-t-demo.mov . However, when I try to use it on the Test-Run project on Mandriva Linux Cooker (after compiling vim from hg / etc. afresh), I'm running into frequent crashes. I'm checking out:</p>
+<ul>
+<li><a href="http://svn.berlios.de/svnroot/repos/web-cpan/Test-Harness-NG/trunk/" class="external">http://svn.berlios.de/svnroot/repos/web-cpan/Test-Harness-NG/trunk/</a></li>
+</ul>
+<p>Into /home/shlomif/progs/perl/cpan/Test/Test-Harness/trunk and then cd-ing into the trunk and invoking gvim there and trying to use command-t.vim (after successfully building it and running it):</p>
+<p>Typing this crashes it:</p>
+<pre>\t
+mtrbpl[Enter]
+\t
+trstr[Enter]
+\tvbv
+mbtro[Enter]
+mbababa   # Quickly.</pre>
+<p>I'm on a P4-2.4GHz machine (x86-32) running Mandriva Linux Cooker and am getting this:</p>
+<pre>shlomif:$trunk$ gvim
+shlomif:$trunk$ /home/shlomif/.vim/ruby/command-t/finder.rb:40: [BUG] gc_sweep(): unknown data type 0x10(0xb57f2514)
+ruby 1.8.7 (2010-12-23 patchlevel 330) [i586-linux]
+
+Vim: Caught deadly signal ABRT
+Vim: Finished.</pre>
+<p>Please look into it.</p>
+<p>Regards,</p>
+<p>-- Shlomi Fish</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6584'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6584"><time data-relative="true">2011-01-16T23:12:19Z</time></a></span>
+</cite>
+<blockquote><p>I am pretty sure there are no crashing bugs in the code right now &mdash; believe me, it would make my day if you could surprise me by finding one and supplying a patch, but I honestly don't think there are any to find &mdash; so there are two possible causes for the crashes you're seeing:</p>
+<ul>
+<li>one is that you might have compiled the plug-in with a different version of Ruby than the one you linked against when building Vim; the solution here is to carefully ensure that you use exactly the same version for both</li>
+<li>the other is a general instability in Vim 7.3 with regard to Ruby; unfortunately this one is a little difficult to troubleshoot as it seems to only manifest itself on certain platforms and with certain combinations of Vim/Ruby &mdash; in the case the simplest workaround is to drop back to 7.2, although if you're a masochist you could decide to start digging down and trying to find out the cause of these GC crashes</li>
+</ul>
+<p>If you look through the issues on the issue tracker here, or the threads in the <a href="/forums/command-t">Command-T forums</a>, you'll see posts on both of these types of issue with examples of how people were able to solve their problems. <a href="/issues/1741">Ticket #1741</a> seems to be the most recent example of this, so I'm going to mark this one as closed seeing as it's a duplicate. If you have any further comments to add please add them there.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6586'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6586"><time data-relative="true">2011-01-16T23:12:36Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

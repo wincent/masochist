@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Floater - Does not smoothly expand to show track
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Floater - Does not smoothly expand to show track</div>
+<h1 class='major'>Floater - Does not smoothly expand to show track</h1>
+<div class='topic' id='topic_187'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/mikej">mikej</a>
+<span class='when'>
+<a href="/forums/synergy/topics/187"><time data-relative="true">2006-11-26T05:49:40Z</time></a>
+</span>
+</cite>
+<blockquote><p>I've been using Synergy for years and have noticed this problem before, but have no idea how it was fixed previously. </p>
+<p>I have just upgraded to a Mac Pro and have reinstalled from scratch rather than using the Migration Assistant, and for some reason when the Synergy floater pops up it fades in and expands to be wide enough to fit the track info in without any animation. I'm pretty sure it usually smoothly expands to show this.</p>
+<p>Any ideas why it's doing this, or how to fix it? I've tried trashing all folders/prefs, and upgrading to the latest version, with no luck.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_542'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_542"><time data-relative="true">2006-11-27T07:08:00Z</time></a></span>
+</cite>
+<blockquote><p>Strange. No animation? What happens? Does it just jump there in one go? Or does it appear at already the right width? Or is there an animation, but it's not smooth?</p>
+<p>Does the same thing happen when you try from inside another user account (just to rule out account-local causes)?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_543'>
+<cite>
+<a href="/users/mikej">mikej</a>
+<span class='when'><a href="#comment_543"><time data-relative="true">2006-11-28T13:29:58Z</time></a></span>
+</cite>
+<blockquote><p>It appears with the album art, then instead of smoothly expanding to the right to show the track name, it just jumps to the end. I created a test user account and it behaves normally with the smooth scrolling, so it must be something to do with my profile, though I have no idea what.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_544'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_544"><time data-relative="true">2006-11-29T02:47:17Z</time></a></span>
+</cite>
+<blockquote><p>Well you've already tried the obvious steps (trashing the prefs, re-installing) so that rules out a couple of typical problem sources (corrupt files).</p>
+<p>My next suspect would be something that you have installed and running under your normal account that produces the problem. Perhaps something that competes too heavily for resources.</p>
+<p>The other possibility is that it's not Synergy's files which are corrupt in your user account but iTunes'. You could try temporarily moving your iTunes preferences out the way, probably your music library file as well (the XML file and the database, not the actual music files themselves). If there is a problem with those files it might be causing iTunes to respond sluggishly, and that could be causing Synergy to skip as well (while it waits for iTunes). There might be messages being logged to the console (by iTunes) which could shed some light on the problem.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_545'>
+<cite>
+<a href="/users/mikej">mikej</a>
+<span class='when'><a href="#comment_545"><time data-relative="true">2006-12-10T07:14:24Z</time></a></span>
+</cite>
+<blockquote><p>I figured out what it was - I had used Onyx to set the display of sheets to faster than normal, and it seems that the floater uses that setting in some way also. I set it back to Normal and all is well again.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_546'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_546"><time data-relative="true">2006-12-10T07:43:31Z</time></a></span>
+</cite>
+<blockquote><p>Ah very interesting!</p>
+<p>At a hunch, Onyx is probably doing some black magic with the NSWindow &quot;setFrame:display:animate:&quot; method and possibly the &quot;animationResizeTime&quot; method as well. It *might* be possible to work around this providing a user-settable resize time, but I don't know how Onyx works nor how deeply it injects itself into the system.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

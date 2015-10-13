@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+WinSwitch 1.3 out tomorrow, and starting 1.4b beta
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/winswitch">WinSwitch</a> &raquo; WinSwitch 1.3 out tomorrow, and starting 1.4b beta</div>
+<h1 class='major'>WinSwitch 1.3 out tomorrow, and starting 1.4b beta</h1>
+<div class='topic' id='topic_301'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/winswitch/topics/301"><time data-relative="true">2004-07-13T17:52:26Z</time></a>
+</span>
+</cite>
+<blockquote><p>Keep your eyes on wincent.com tomorrow (14 July 2004), because WinSwitch version 1.3 will be released, incorporating the following changes: added a user defaults setting for users who prefer to have their picture 16x16 (in the Terminal &quot;defaults write com.wincent.WinSwitch 'User picture size' -float 16.0&quot;; to use 19x19 pictures &quot;defaults write com.wincent.WinSwitch 'User picture size' -float 19.0&quot;; changes take effect on next login or next time WinSwitch is added to menu bar); values less than 5.0 or greater than 19.0 will be ignored, although in practice anything smaller than 16.0 is too small to clearly see Japanese localization by Yuzuru Shiraiwa now uses Install version 1.2.2 optimizations for speed more cosmetic code changes to improve readability</p>
+<pre>recompiled with latest build of Apple's Xcode Tools</pre>
+<p>Here are those Terminal commands again just so that they're clear for everyone: Code:defaults write com.wincent.WinSwitch 'User picture size' -float 16.0 defaults write com.wincent.WinSwitch 'User picture size' -float 19.0  I am also looking for BETA TESTERS to help with version 1.4b. This is a fairly major overhaul to the underlying code, required because I wanted to cross off the list the one item that Apple's Fast User Switching menu can do but WinSwitch couldn't: display non-local users if and only if they are logged in (the currently released version of WinSwitch only shows local users).</p>
+<p>I've made the changes, and I think it will work, but I am working alone with only a PowerBook, so I have no way of fully testing this new build (ie. I have no &quot;non-local&quot; users). That's why I especially need beta testers. If you work in a lab environment or on a network where there are multiple macs hooked up, I need you to test out the new beta and see if it correctly displays non-local users just like Apple's Fast User Switching menu does.</p>
+<p>If you want to help out, please contact me at <a href="mailto:win@wincent.org" class="mailto">win@wincent.org</a>  and I will send you the 1.4 beta. Here's a list of the changes so far in the beta: bugfix: match Apple behaviours of showing non-local users if and only if they are logged in on the current machine bugfix: correctly handle unlikely case where no long username is defined activation script tweak: wait a few seconds and retry activation on a slow or heavily loaded machine If you volunteer for the beta program then I assume you're somewhat of an expert user, so there's no installer, just a ZIP archive. To install: (1) Unzip the archive; (2) Command-drag the old version of WinSwitch out of the menu bar; (3) Kill the SystemUIServer (in the Terminal, &quot;killall SystemUIServer&quot;); (4) Activate the new build by double-clicking the &quot;WinSwitch.menu&quot; bundle.</p>
+<p>As I said, these are fairly major changes, and given that I can't test them locally, I will probably leave 1.4 in beta for about a month, to give you all time to test it heavily. Test it on as many machines as possible, throw everything you've got at it (adding users, removing users, changing pictures, changing names, trying to make it crash etc). We'll see how it stands up.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_944'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_944">Created <time data-relative="true">2004-07-19T20:13:34Z</time>, edited <time data-relative="true">2004-07-21T21:42:52Z</time></a></span>
+</cite>
+<blockquote><p>Come on guys! I've only had one person email me so far about the beta, and sent the beta to one other person that I knew was interested... I can't release this thing until it's been thoroughly tested, so please, read the instructions above and give the download (only 90K) a try if you'd like to help out:</p>
+<pre></pre>
+<p>Code:MD5 (WinSwitch1.4b.zip) = 774bdaaea038443f917671f8b49d1e17</p>
+<p>Links removed: see below for updated beta.</p>
+<p>If you do download the beta and give it a try, please post your comments here, or email them to me at <a href="mailto:win@wincent.org" class="mailto">win@wincent.org</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_945'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_945"><time data-relative="true">2004-07-21T21:26:36Z</time></a></span>
+</cite>
+<blockquote><p>A new beta (1.4b2) is now on the servers for download (only 90K).</p>
+<p>This one fixes a bug in which if a non-local user was logged in (and appeared in the WinSwitch menu) and was then logged out, that user would erroneously continue to appear in the menu. This had a couple of flow-on glitches (like the ghost user missing an icon etc), but I believe that in fixing the bug (one line of code!) the secondary symptoms will go away too.</p>
+<p>Many thanks to Brian Latimer for catching and reporting this one. I couldn't hope to catch it myself seeing as I have only one machine and can't do the NetInfo/non-local users thing...</p>
+<pre></pre>
+<p>Code:MD5 (WinSwitch1.4b2.zip) = 4028c4da92518c63eb55ae3c305bb7f7</p>
+<p>Please try one of the mirrors first -- Mirror 1, Mirror 2, Mirror 3 -- to spare bandwidth on the main server.</p>
+<p>If you do download the beta and give it a try, please post your comments here, or email them to me at <a href="mailto:win@wincent.org" class="mailto">win@wincent.org</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/winswitch">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

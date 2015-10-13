@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+iTunes 5.0 &amp;amp; Synergy... Synergic?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; iTunes 5.0 &amp;amp; Synergy... Synergic?</div>
+<h1 class='major'>iTunes 5.0 &amp;amp; Synergy... Synergic?</h1>
+<div class='topic' id='topic_120'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/macmahatma">macmahatma</a>
+<span class='when'>
+<a href="/forums/synergy/topics/120"><time data-relative="true">2005-09-07T16:09:07Z</time></a>
+</span>
+</cite>
+<blockquote><p>hi,everyone! new to this board, as well as brand new Synergy user (how could i live without it?!) just one day after purchasing this wonderful (and cheap) piece of software, which i love, here it pops up itunes v5! now, the question i'm about to ask is pretty obvious... will synergy work fine along with the newly-designed itunes or will it need to be upgraded first? thank you in advance for the answer, and most of all my sincere thanks to wincent for making this awesome lil app!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_376'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_376"><time data-relative="true">2005-09-07T21:12:59Z</time></a></span>
+</cite>
+<blockquote><p>I've downloaded 5.0 and I am trying it out now. I don't expect they'll be any problems. Synergy has been out for several years now and iTunes updates have never broken anything, not even the major updates.</p>
+<p>Having said that, if something does break I'll do my best to get an update out to fix the problem as soon as possible.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_377'>
+<cite>
+<a href="/users/randychev">RandyChev</a>
+<span class='when'><a href="#comment_377"><time data-relative="true">2005-09-16T18:13:17Z</time></a></span>
+</cite>
+<blockquote><p>Could this be a problem with iTunes 5 or Synergy?...</p>
+<p>I'm trying to hijack an iTunes stream with AudioHijack Pro and was informed the following applescript would set the volume to max.</p>
+<p>tell application &quot;iTunes&quot; set sound volume to 100 end tell</p>
+<p>I tried it and it didn't work. I replied back to them and they said it did at their end so I'm at a roadblock. Wondering if Synergy could be &quot;grabbing&quot; the volume command.</p>
+<p>Here is the url of the forum discussion: &lt;<a href="http://www.rogueamoeba.com/forum/ubb/Forum2/HTML/000794.html&amp;gt" class="external">http://www.rogueamoeba.com/forum/ubb/Forum2/HTML/000794.html&amp;gt</a>;</p>
+<p>RandyChev</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_378'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_378"><time data-relative="true">2005-09-16T22:54:57Z</time></a></span>
+</cite>
+<blockquote><p>No, Synergy definitely does not do any &quot;hijacking&quot; of any kind. In fact, when Synergy sets the volume (for example when you press the volume up and down hot keys) it is doing something pretty close to the AppleScript that you've posted to tell it to change the volume. It will never try to manipulate the volume unless in response to you specifically telling it to do so (for example, via the hot keys).</p>
+<p>One way in which you can test if the AppleScript technique is working or not is to try using the Synergy hot keys to change the iTunes volume. If it doesn't work, then you'll know that Apple made changes in iTunes 5 which breaks the behaviour of those AppleScript commands (and you should probably let me know so I can try to figure out a workaround!). If it does work then you'll know that the AppleScript you tried is incorrect.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_379'>
+<cite>
+<a href="/users/randychev">RandyChev</a>
+<span class='when'><a href="#comment_379"><time data-relative="true">2005-09-20T14:09:59Z</time></a></span>
+</cite>
+<blockquote><p>Well after looking as some sample scripts from around the internet I found the fix. It must have a &quot;the&quot; in the volume line:</p>
+<p>tell application &quot;iTunes&quot; set the sound volume to 100 end tell</p>
+<p>And the volume hot key in Synergy still works fine.</p>
+<p>Thanks for keeping me on track.</p>
+<p>RandyChev</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_380'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_380"><time data-relative="true">2005-09-20T22:09:39Z</time></a></span>
+</cite>
+<blockquote><p>Unbelievable, eh? A little word like that makes all the difference.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_381'>
+<cite>
+<a href="/users/zerock">zerock</a>
+<span class='when'><a href="#comment_381"><time data-relative="true">2005-09-25T21:42:08Z</time></a></span>
+</cite>
+<blockquote><p>is it possible for the new playlist folders support to be available to synergy?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_382'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_382"><time data-relative="true">2005-09-26T21:54:13Z</time></a></span>
+</cite>
+<blockquote><p>I'm investigating that to see if Apple has included support for accessing that info via AppleScript... If it has, it is probably possible to support it. The other thing I need to find out is what changes Apple has made to the iTunes music library (XML) file...</p>
+<p>I've opened a feature request in the database for this:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=304" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=304</a></p>
+<p>Please add any further comments about the issue to that page so that all information about the issue is kept in the one place.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

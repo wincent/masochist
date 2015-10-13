@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1205: Move Rails app to wincent.com
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1205</div>
+<div class='issue' id='issue_1205'>
+<form class="edit_issue" id="edit_issue_1205" action="/issues/1205" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="sr85l3bU5+f9FpwdVuIalco+/CcMur2vhJv2Pdo9H4aGTYcg0Vk9siSar+pny0khf7yVGwdWM7OkhCPD/uV4og==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1205:
+<span data-name='issue[summary]'>
+Move Rails app to wincent.com
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-01-22T15:04:54Z</time>, updated <time data-relative="true">2009-02-09T12:57:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>As mentioned in <a href="/issues/1200">ticket #1200</a> (currently private at the time of writing), I'd like to change the URL for this <a href="/wiki/Rails">Rails</a> app to wincent.com rather than rails.wincent.com</p>
+<p>In order to do this will need to &quot;pass through&quot; some specific URLs of the old app. The working list I came up with in <a href="/issues/1200">ticket #1200</a> is:</p>
+<ul>
+<li>PayPal IPNs and Kagi RPS postbacks</li>
+<li>the lost license codes form (currently at <a href="https://secure.wincent.com/a/support/registration/" class="external">https://secure.wincent.com/a/support/registration/</a>)</li>
+<li>the old contact form (currently at <a href="http://wincent.com/a/contact/mail/" class="external">http://wincent.com/a/contact/mail/</a>); in reality this already exists in the form of the new issue tracker</li>
+<li>the download.php script</li>
+<li>the &quot;update address&quot; form at <a href="http://wincent.com/a/support/update-address/" class="external">http://wincent.com/a/support/update-address/</a></li>
+<li>the Install licensees area at <a href="https://secure.wincent.com/a/products/install/licensees/" class="external">https://secure.wincent.com/a/products/install/licensees/</a></li>
+</ul>
+<p>See &quot;<a href="/wiki/Migration_status">Migration status</a>&quot; for a list of other possible candidates to be kept in mind.</p>
+<p>I am thinking that the easiest way to do this will be to leave Apache in place server those old URLs exactly as it does now, but move nginx in front of it as a proxy. It would pass most things through to the <a href="/wiki/Rails">Rails</a> app, but the special URLs mentioned above would be forwarded through to Apache instead.</p>
+<p>As the Rails app is expanded to incorporate the functionality of the old site, those special forwards would be gradually phased out until everything dynamic was handle by Rails. The only stuff to be still handled by Apache would be static pages; perhaps one day nginx could serve those too (although many of them are PHP, so it might not be totally straightforward).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4141'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4141"><time data-relative="true">2009-01-29T14:35:09Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I have a plan of action now.</p>
+<p>First step already initiated: updating the <code>CNAME</code> aliases in the wincent.com zone that currently point to &quot;wincent.com&quot; itself to be <code>A</code> records that reference the actual IP address instead. I'll be changing &quot;wincent.com&quot; to point to another IP at a later time, but I want all the existing subdomains to continue with the current IP.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4142'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4142"><time data-relative="true">2009-01-29T15:09:11Z</time></a></span>
+</cite>
+<blockquote><p>DNS changes completed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4174'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4174"><time data-relative="true">2009-02-07T06:01:48Z</time></a></span>
+</cite>
+<blockquote><p>Some nice things:</p>
+<ul>
+<li>Anything currently hosted via HTTPS at secure.wincent.com won't need to be brought over (different IP address, everything will keep working just fine</li>
+<li>Any access via &quot;rails.wincent.com&quot; won't need special handling; only access via &quot;wincent.com&quot;</li>
+<li>Any access via HTTPS to &quot;wincent.com&quot; won't need special handling; all old URLs there were served over HTTP anyway</li>
+</ul>
+<p>So basically we need to implement special forwarding if and only if access is over HTTP/port 80, and the host name is &quot;wincent.com&quot;.</p>
+<p>And really, everything we care about there is rooted under <code>/a/</code>, making for an easy check. Here's the full list of stuff in the <code>public_html</code> directory of wincent.com right now:</p>
+<pre>drwxr-xr-x 13 wincent.com wincent.com  4096 Mar 29  2008 a
+drwxr-xr-x  2 wincent.com wincent.com  4096 Jul 12  2006 contact
+-rwxr-xr-x  1 wincent.com wincent.com 12533 Jun  9  2008 download.php
+-rw-r--r--  1 wincent.com wincent.com   318 Nov 20  2004 favicon.ico
+drwxr-xr-x  2 wincent.com wincent.com  4096 Aug  7  2005 files
+drwxr-xr-x  2 wincent.com wincent.com  4096 Jan 19  2006 gfx
+-rw-r--r--  1 wincent.com wincent.com   178 Nov 20  2004 global.inc.php
+drwxr-xr-x  2 wincent.com wincent.com  4096 Mar 29  2008 gpl
+drwxr-xr-x  3 wincent.com wincent.com  4096 Sep 19  2007 images
+-rw-r--r--  1 wincent.com wincent.com   325 Nov 23  2004 index.php
+drwxr-xr-x  2 wincent.com wincent.com  4096 Apr  7  2007 lgpl
+drwxr-xr-x  3 wincent.com wincent.com  4096 Jan 10  2008 mirror
+-rw-r--r--  1 wincent.com wincent.com    23 Nov 20  2004 robots.txt
+drwxr-xr-x  9 wincent.com wincent.com  4096 Mar 15  2007 s
+drwxr-xr-x  4 wincent.com wincent.com  4096 Mar 23  2007 synergy
+drwxr-xr-x  2 wincent.com wincent.com  4096 Mar 30  2008 webmail
+-rw-r--r--  1 wincent.com wincent.com  2390 Jul 10  2007 wincent_colaiuta.pgp.txt
+drwxr-xr-x  2 wincent.com wincent.com  4096 Dec  8  2006 xml-schema</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4177'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4177"><time data-relative="true">2009-02-08T04:02:16Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've made some changes to the staging environment to see if this is going to work.</p>
+<p>Basically:</p>
+<pre>+    root /path/to/wincent.com/public_html;
++
++    location / {
++      proxy_set_header X-Real-IP $remote_addr;
++      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
++      proxy_set_header Host wincent.com;
++      proxy_max_temp_file_size 0;
++
++      if (-f $request_filename) {
++        proxy_pass <a href="http://apache" class="external">http://apache</a>;
++        break;
++      }
++      if (-d $request_filename) {
++        proxy_pass <a href="http://apache" class="external">http://apache</a>;
++        break;
++      }
++      rewrite ^/(.*) <a href="https://staging.wincent.com/$1" class="external">https://staging.wincent.com/$1</a> permanent;
++    }</pre>
+<p>So:</p>
+<ul>
+<li>we only test on port 80.</li>
+<li>if a matching file or directory exists under the Apache root for wincent.com, proxy the request to Apache.</li>
+<li>everything else is redirected to port 443.</li>
+<li>port 443 handling remains unchanged (nginx proxies to mongrel).</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4178'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4178"><time data-relative="true">2009-02-08T04:34:06Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've made the same changes for the production environment and I've requested that an update be made to the DNS records.</p>
+<p>Note that <code>root_url</code> in Rails app will continue to be served by mongrel/Rails, because from inside the Rails app we're always talking over HTTPS and the proxying of <code>/</code> to Apache will only happen when we're accessing over HTTP.</p>
+<p>Once the DNS changes go live will need to update my <code>app_config.yml</code> so that outgoing emails use the shorter wincent.com hostname instead of rails.wincent.com.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4179'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4179"><time data-relative="true">2009-02-08T04:36:09Z</time></a></span>
+</cite>
+<blockquote><p>Will also need to update my SSL certs once the changes go live (the rails.wincent.com IP is currently using the rails.wincent.com cert, but once wincent.com starts as the front end of the app I'll need to swap in the wincent.com cert).</p>
+<p>Will probably also want to set up rails.wincent.com to listen on another IP so that I can have a valid cert for that as well (can only have one valid cert per IP).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4187'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4187"><time data-relative="true">2009-02-09T12:56:14Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the DNS changes have gone live. Notice published to front page in <a href="https://wincent.com/blog/site-dns-changes" class="external">this article</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4188'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4188"><time data-relative="true">2009-02-09T12:57:53Z</time></a></span>
+</cite>
+<blockquote><p><code>app_config.yml</code> now updated too.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4189'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4189"><time data-relative="true">2009-02-09T12:57:57Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

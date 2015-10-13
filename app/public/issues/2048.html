@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2048: Building Command-T c extension with rake fails
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2048</div>
+<div class='issue' id='issue_2048'>
+<form class="edit_issue" id="edit_issue_2048" action="/issues/2048" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="B00pdUYURJyjznF5LiBU738ItuBICDUFDtxPBlDUxTUzv5fC4ZmeyXpCQo4fCQdbyorf3EPkuxkuw5r4dAyiEQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2048:
+<span data-name='issue[summary]'>
+Building Command-T c extension with rake fails
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-01-13T18:52:18Z</time>, updated <time data-relative="true">2013-01-16T04:20:59Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/mityaz">mityaz</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hello. I'm trying to build Command-T plugin for VIM on Ubuntu 12.10, but it's fails. My environment:</p>
+<ul>
+<li>Ubuntu 12.10</li>
+<li>vim 7.3.547</li>
+<li><code>rvm -v</code>: <code>rvm 1.17.6 (stable)</code></li>
+<li><code>ruby -v</code>: <code>ruby 1.8.7 (2012-10-12 patchlevel 371) [i686-linux]</code></li>
+</ul>
+<p>I'm using VIM+vundle, downloaded from <a href="https://github.com/wincent/Command-T" class="external">https://github.com/wincent/Command-T</a> Than I go to my <code>~/.vim/bundle/Command-T</code>, <code>bundle install</code>, <code>rake</code>. And I get:</p>
+<pre class="shell-syntax">$ rake
+(in /home/mitya/.vim/bundle/Command-T)
+/home/mitya/.vim/bundle/Command-T/spec/command-t/match_spec.rb:25:in `require': no such file to load -- command-t/ext (LoadError)
+&#x0009;from /home/mitya/.vim/bundle/Command-T/spec/command-t/match_spec.rb:25
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/configuration.rb:386:in `load'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/configuration.rb:386:in `load_spec_files'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/configuration.rb:386:in `map'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/configuration.rb:386:in `load_spec_files'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/command_line.rb:18:in `run'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/runner.rb:55:in `run_in_process'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/runner.rb:46:in `run'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/gems/rspec-core-2.5.1/lib/rspec/core/runner.rb:10:in `autorun'
+&#x0009;from /home/mitya/.rvm/gems/ruby-1.8.7-p371/bin/ruby_noexec_wrapper:14
+error: last command failed with exit status 1</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10090'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10090"><time data-relative="true">2013-01-14T02:46:32Z</time></a></span>
+</cite>
+<blockquote><p>You shouldn't need to involve Bundler or Rake just to build the extension; those are really for development-time dependencies.</p>
+<p>To remove them from the equation you should be able to build using:</p>
+<pre class="shell-syntax">$ cd [path to command-t/ruby/ext directory]
+$ ruby extconf.rb
+$ make</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_10092'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10092"><time data-relative="true">2013-01-14T18:59:47Z</time></a></span>
+</cite>
+<blockquote><p>Thank you. It did really worked out for me (have to mention, that Vim in Ubuntu 12.10 is built with ruby 1.9, so I've built extension using the same version). But still hope, that my bug report (with rake) will help you somehow.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10093'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10093"><time data-relative="true">2013-01-16T04:20:59Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

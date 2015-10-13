@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #594: Broken Download Link
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #594</div>
+<div class='issue' id='issue_594'>
+<form class="edit_issue" id="edit_issue_594" action="/issues/594" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SzBuUfwH1f/VX7SJ3TTk4kgXydRu5qwGiiDY7CNbwK1/wtDmW4oPqgzTh37sHbdW/ZWg6GUKIhqqPw0SB4OniQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #594:
+<span data-name='issue[summary]'>
+Broken Download Link
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2007-07-23T10:39:58Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-466">bugzilla user 466</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I'm having trouble installing the recent 3.1.4 release of Synergy. I can download a disk image and load the disk briefly, but the disk disappears almost instantly after expanding. I checked to see if it auto-updated or something, but it didn't. Is the linked download file broken?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3063'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3063"><time data-relative="true">2007-07-23T10:57:14Z</time></a></span>
+</cite>
+<blockquote><p>I don't think it's broken (have tested it a couple of times).</p>
+<p>If you go to the downloads page:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/" class="external">http://wincent.com/a/products/synergy-classic/download/</a></p>
+<p>You'll see that there is an SHA-1 checksum. For the 3.1.4 release it is:</p>
+<p>cb7c6dd6185018989d78712d71a8cbeac257be5c</p>
+<p>There is a link to instructions on how to use the checksum to verify the download,  in case you don't know how.</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/using_md5_to_ve.php</a></p>
+<p>The short version is that you type:</p>
+<pre> openssl sha1</pre>
+<p>In the Terminal, followed by a space, then drag-and-drop the disk image onto the Terminal window, then hit the Return key. The checksum will be computed and you should see a match (something like the following):</p>
+<p>SHA1(Synergy3.1.4.dmg)= cb7c6dd6185018989d78712d71a8cbeac257be5c</p>
+<p>So your first step should be to verify the checksum, so that you know that you didn't get a corrupt download.</p>
+<p>The next thing I would do, if you are running Tiger, is use &quot;show all windows&quot; Expos&#x00e9; key, (F9 by default) to see if the Finder window which displays the contents of the disk image is open but somehow buried underneath other windows.</p>
+<p>You could also go into the Terminal and do:</p>
+<p>ls /Volumes</p>
+<p>And see if the disk image appears in the list of mounted volumes; it should appear as &quot;Synergy 3.1.4&quot;. If it does show up in the list then you should be able to bring it to the front with:</p>
+<p>open &quot;/Volumes/Synergy 3.1.4&quot;</p>
+<p>Or by simply navigating to it in the Finder (starting at the topmost level, &quot;Computer&quot;, which I think you can get to by pressing Shift-Command-C).</p>
+<p>If the volume isn't mounted then I would try again. You need to double-click to mount it; a single-click is not enough.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

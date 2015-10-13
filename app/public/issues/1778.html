@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1778: &quot;Error detected while processing BufLeave Auto commands&quot;
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1778</div>
+<div class='issue' id='issue_1778'>
+<form class="edit_issue" id="edit_issue_1778" action="/issues/1778" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="BCcMrPn+iLtYSttxW2B5Yi7H/QiPbPTKHO7GWn7X1/Ew1bIbXnNS7oHG6IZqSSrWm0WUNISAetY88ROkWg+w1Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1778:
+<span data-name='issue[summary]'>
+&quot;Error detected while processing BufLeave Auto commands&quot;
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-02-11T07:22:19Z</time>, updated <time data-relative="true">2014-03-22T20:41:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>Hi Wincent, I've recently compiled and added your Command-T plugin to my recent compilation of Vim 7.3 on Mac OS X (using these options &lt;<a href="http://pastie.org/1548726" class="external">http://pastie.org/1548726</a>&gt;) and I can confirm that I built with system ruby and that the plugin will open.</p>
+<p>Only problem is when I try to close it (using CTRL-C). Do you know of anything related to this? Here's the exact error I'm getting:</p>
+<pre>Error detected while processing function CommandTCancel:
+line    1:
+E90: Cannot unload last buffer
+Error detected while processing BufLeave Auto commands for &quot;&lt;buffer=3&gt;&quot;:
+E90: Cannot unload last buffer
+E90: Cannot unload last buffer</pre>
+<p>Don't know what else I can provide to help you out but any information on this would be super helpful. Thanks!</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6688'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6688"><time data-relative="true">2011-02-11T07:24:53Z</time></a></span>
+</cite>
+<blockquote><p>Haven't seen this one personally. So for some reason it can't unload the buffer.</p>
+<p>I wonder if you have any settings in your <code>.vimrc</code> which might be responsible for this; can you post the contents of your <code>.vimrc</code>?</p>
+<p>Also, does this happen all the time? Or is there only a limited set of circumstances under which it occurs? (ie. when there are no buffers open, when there are multiple buffers etc)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6690'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6690"><time data-relative="true">2011-02-11T10:42:17Z</time></a></span>
+</cite>
+<blockquote><p>Hey I'm the one who's currently dealing with that error. Wincent I believe you have a Mac, so if you would be inclined to download and compile a local version of Vim 7.3 (the one that I'm using) so that it might help you better understand some of the problems (ie - it might have to do with the configure options). </p>
+<p>My <a href="https://github.com/mattsacks/dotfiles/blob/master/vimrc" class="external">vimrc</a> hasn't been a problem before and Command-T worked fine on my Ubuntu installation. </p>
+<p>Anyways, you can download the code (as I'm sure you'd rather read it before running it) for a script to install Vim 7.3 on your Mac <a href="http://pastie.org/1552194" class="external">here</a>, let me know if you have any issues. </p>
+<p>PS - Using a regular terminal with iTerm 2.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6726'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6726"><time data-relative="true">2011-02-19T22:59:51Z</time></a></span>
+</cite>
+<blockquote><p>having the same issue under macvim.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6750'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6750"><time data-relative="true">2011-03-09T09:53:47Z</time></a></span>
+</cite>
+<blockquote><p>I am now seeing this same issue as well, but under vim on Ubuntu, compiled with Ruby 1.9.2.</p>
+<p>I notice it, though, under one condition: If now buffer is actually open (IE I just started vim), it will throw the same error.</p>
+<p>Here is my vimrc (Very short vimrc): <a href="https://gist.github.com/861968" class="external">https://gist.github.com/861968</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6776'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6776"><time data-relative="true">2011-04-01T11:20:27Z</time></a></span>
+</cite>
+<blockquote><p>Having a similar issue when I try to open a file:</p>
+<p>Error Dected while processing function CommandTAcceptSelection cannot unload last buffer</p>
+<p>This only happens however if I try using this command-t when I'm not already in a file.  For instance if I do a vim . in my current directory and I'm in my NERDTree by default, this is when I get that error.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6780'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6780"><time data-relative="true">2011-04-03T10:36:37Z</time></a></span>
+</cite>
+<blockquote><p>Also having this problem, would love to use Command-T but it's probably not that useful while this persists.</p>
+<p>Again, it only happens for me when there are no buffers open (e.g. in a directory listing after first opening MacVim)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6781'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6781"><time data-relative="true">2011-04-03T19:44:29Z</time></a></span>
+</cite>
+<blockquote><p>Just tried again to repro this and can't see it myself.</p>
+<p>So if anyone who can repro it would like to submit a patch to work around the issue I'd be happy to look it, but can't do anything about it myself.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6799'>
+<cite>
+<a href="/users/utkarsh">utkarsh</a>
+<span class='when'><a href="#comment_6799">Created <time data-relative="true">2011-04-11T23:09:36Z</time>, edited <time data-relative="true">2011-04-12T00:46:14Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>I'm having the same problem on Ubuntu 10 and 11. I can consistently reproduce the error using the following steps:</p>
+<ol>
+<li>cd into an existing project with a few files (I used <code>rails new foo &amp;&amp; cd foo</code>).</li>
+<li>Start command line vim in foo <code>vim .</code>.</li>
+<li>Search for a file (I typed <code>gf</code> that brought up Gemfile as the first result) and press return.</li>
+</ol>
+<p>Screenshot of the error - <a href="http://dl.dropbox.com/u/2164813/tmp/command-t-bug-1778.png" class="external">http://dl.dropbox.com/u/2164813/tmp/command-t-bug-1778.png</a></p>
+<p>I'm using the following hack as a temporary solution for now - <a href="http://dl.dropbox.com/u/2164813/tmp/command-t-bug-1778.diff.txt" class="external">http://dl.dropbox.com/u/2164813/tmp/command-t-bug-1778.diff.txt</a></p>
+<p>I'm using NERDTree, BufExplorer, and a few autocomplete plugins with vim right now. Snapshot of the current settings is available at <a href="https://github.com/utkarshkukreti/dotfiles/tree/13a74b6ee55ec58aa5e9ffa122583849d3eaa79b" class="external">https://github.com/utkarshkukreti/dotfiles/tree/13a74b6ee55ec58aa5e9ffa122583849d3eaa79b</a></p>
+<p>If you need any more help trying to debug this, feel free to contact me by mail. I'd be happy to help.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6801'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6801"><time data-relative="true">2011-04-12T05:56:12Z</time></a></span>
+</cite>
+<blockquote><p>Hmmm, your so-called &quot;hack&quot; doesn't look that hackish to me. I'll give it a try here and see if there are any adverse effects.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6803'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6803"><time data-relative="true">2011-04-12T06:30:02Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've been able to reproduce using command line Vim and your instructions, but your patch doesn't resolve the issue for me.</p>
+<p>At least now I can repro, though, so I think I'll be able to fix it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6804'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6804"><time data-relative="true">2011-04-12T06:39:16Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6805'>
+<cite>
+<a href="/users/utkarsh">utkarsh</a>
+<span class='when'><a href="#comment_6805"><time data-relative="true">2011-04-12T08:43:44Z</time></a></span>
+</cite>
+<blockquote><p>That's strange. I sent the patch to two of my friends, and it worked for them (Both on Ubuntu 10.10).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6887'>
+<cite>
+<a href="/users/steve-losh">Steve Losh</a>
+<span class='when'><a href="#comment_6887"><time data-relative="true">2011-05-25T17:15:51Z</time></a></span>
+</cite>
+<blockquote><p>I'm seeing the same problem with MacVim 7.3 on OS X.</p>
+<p>I tried utkarsh's patch and it did make the errors go away, but the GoToFile window is still open at the bottom of the screen until I either close it manually or go to another file.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6913'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6913"><time data-relative="true">2011-06-06T02:15:59Z</time></a></span>
+</cite>
+<blockquote><p>This was fixed for me by updating my copy of macvim.  I wasn't good about checking version of my old one, but updating to macvim snapshot 57 seems to have done the trick.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6949'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6949"><time data-relative="true">2011-06-28T02:38:11Z</time></a></span>
+</cite>
+<blockquote><p>Utkarsh's patch &quot;fixes&quot; the issue for me.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6975'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6975"><time data-relative="true">2011-07-08T19:05:13Z</time></a></span>
+</cite>
+<blockquote><p>The problem only appears on first use for me. The BufLeave autocmd occurs before the selected file is opened, so at the time, the match window is the only open buffer.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7021'>
+<cite>
+<a href="/users/dmkash">dmkash</a>
+<span class='when'><a href="#comment_7021"><time data-relative="true">2011-08-19T18:26:33Z</time></a></span>
+</cite>
+<blockquote><p>I can confirm that the error is still present in MacVim snapshot 61 running on Mac OS X 10.7.  It is only when I open a project directory in MacVim and I don't have an actual file open.  Once I have some buffers going, Command-T works as expected.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7024'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7024"><time data-relative="true">2011-08-22T09:03:46Z</time></a></span>
+</cite>
+<blockquote><p>I have the exact same issue as dmkash.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7053'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7053"><time data-relative="true">2011-08-30T17:21:48Z</time></a></span>
+</cite>
+<blockquote><p>I'm also having this issue, just like dmkash described. Any ETA on this one? It's the only bad part of CommandT, the rest is golden!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7057'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7057"><time data-relative="true">2011-08-31T07:29:24Z</time></a></span>
+</cite>
+<blockquote><p>I haven't had much time to work on Command-T of late so I don't really have a reliable ETA.</p>
+<p>There was Utkarsh's patch (see above), but that doesn't fix the issue, at least on my machine, so I can't really merge that in.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7075'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7075"><time data-relative="true">2011-09-04T01:45:05Z</time></a></span>
+</cite>
+<blockquote><p>FYI, it appears as though 7.3-61 fixes this on Lion (via homebrew).  Was having the problem with *-60 and upgrade to be pleasantly and unexpectedly surprised.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7076'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7076"><time data-relative="true">2011-09-04T01:50:58Z</time></a></span>
+</cite>
+<blockquote><p>Amended about fix in 7.3-61 - still have problem when I start with &quot;$ mvim .&quot; but not if I start without the directory, so &quot;$ mvim&quot; works fine.  I don't know if this was the case in the previous version of mvim.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7116'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7116"><time data-relative="true">2011-09-12T20:01:36Z</time></a></span>
+</cite>
+<blockquote><p>Just to clarify: mvim . with macvim 61 is still broken</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7119'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7119"><time data-relative="true">2011-09-13T09:56:36Z</time></a></span>
+</cite>
+<blockquote><p>I too can go around this by using <code>mvim</code> instead of <code>mvim .</code> Finally.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7267'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7267"><time data-relative="true">2011-11-19T19:06:01Z</time></a></span>
+</cite>
+<blockquote><p>I discovered that netrw was causing this on my setup. You can turn it off by adding <code>let g:loaded_netrwPlugin = 1</code> to your vimrc. While I was trying to debug I also found out that for some reason netrw doesn't count as a buffer. When you open macvim with only netrw, then <code>VIM::Buffer.count</code> registers as 0.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7373'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7373"><time data-relative="true">2012-01-15T19:03:36Z</time></a></span>
+</cite>
+<blockquote><p>Still broken.</p>
+<p>I think the reason this faults is when you use NERDTree. For example: mvim . and when NERDTree is the active buffer do &lt;leader&gt;t and select a file -- boom! the error.</p>
+<p>Can you guys reproduce it this way?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7374'>
+<cite>
+<a href="/users/marius-gedminas">Marius Gedminas</a>
+<span class='when'><a href="#comment_7374"><time data-relative="true">2012-01-15T19:37:19Z</time></a></span>
+</cite>
+<blockquote><p>A boring /me too: on Ubuntu with latest command-t from git (without NERDTree; with just netrw) I get the unload buffer problem when I do 'vim .' followed by \t followed by ctrl-c.  The &quot;fix&quot; makes the error message on ctrl-c disappear, but it also leaves the command-t window open.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7375'>
+<cite>
+<a href="/users/marius-gedminas">Marius Gedminas</a>
+<span class='when'><a href="#comment_7375"><time data-relative="true">2012-01-15T19:38:53Z</time></a></span>
+</cite>
+<blockquote><p>Incidentally, 'vim .' followed by \t followed by &lt;Ctrl-W&gt; q closes command-t without any errors.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7501'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7501"><time data-relative="true">2012-04-06T21:13:56Z</time></a></span>
+</cite>
+<blockquote><p>Closed <a href="/issues/1949">bug #1949</a> as a duplicate of this one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7502'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7502"><time data-relative="true">2012-04-06T21:14:39Z</time></a></span>
+</cite>
+<blockquote><p>Cross-referencing <a href="/forums/command-t/topics/514">this forum topic</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7504'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7504"><time data-relative="true">2012-04-08T02:30:38Z</time></a></span>
+</cite>
+<blockquote><p>Attempted fix for this <a href="/repos/command-t/commits/e6e682d707b">here</a>.</p>
+<p>Should arrive on the <a href="https://github.com/wincent/Command-T/commits/master" class="external">the GitHub mirror</a> and <a href="http://gitorious.org/command-t/command-t/commits/master" class="external">the Gitorious mirror</a> within about half an hour.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7506'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7506"><time data-relative="true">2012-04-18T21:52:53Z</time></a></span>
+</cite>
+<blockquote><p>This still happens for me. When I start vim with a directory (e.g. to drop into NERDTree) I see this error every time I try to use Command-T in that session.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11010'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11010"><time data-relative="true">2014-03-22T20:41:13Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to lack of activity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11011'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11011"><time data-relative="true">2014-03-22T20:41:16Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

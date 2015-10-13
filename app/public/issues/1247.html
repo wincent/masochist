@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1247: Rails 2.3.0 RC1 breaks logout
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1247</div>
+<div class='issue' id='issue_1247'>
+<form class="edit_issue" id="edit_issue_1247" action="/issues/1247" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="OdTkVOds4MX5hAcB/JOSkwQUpDztZolLT2juuoTe0EsNJlrjQOE6kCAINPbNusEnsZbNAOaKB1dvdztEoAa3bw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1247:
+<span data-name='issue[summary]'>
+Rails 2.3.0 RC1 breaks logout
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2009-03-01T14:39:37Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Just discovered this in local testing:</p>
+<pre>/!\ FAILSAFE /!\  Sun Mar 01 20:35:31 +0100 2009
+  Status: 500 Internal Server Error
+  You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.data=
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/activerecord/lib/active_record/session_store.rb:300:in `set_session'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/activerecord/lib/active_record/base.rb:1454:in `silence'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/activerecord/lib/active_record/session_store.rb:298:in `set_session'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/actionpack/lib/action_controller/session/abstract_store.rb:116:in `call'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/actionpack/lib/action_controller/failsafe.rb:11:in `call'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/actionpack/lib/action_controller/rack_ext/lock.rb:15:in `call'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/actionpack/lib/action_controller/rack_ext/lock.rb:15:in `synchronize'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/actionpack/lib/action_controller/rack_ext/lock.rb:15:in `call'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:83:in `call'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/railties/lib/rails/rack/static.rb:27:in `call'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /Library/Ruby/Gems/1.8/gems/rack-0.9.1/lib/rack/handler/mongrel.rb:59:in `process'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:159:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `each'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:158:in `process_client'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:285:in `run'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `initialize'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `new'
+    /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/mongrel-1.1.4/lib/mongrel.rb:268:in `run'
+    /Library/Ruby/Gems/1.8/gems/rack-0.9.1/lib/rack/handler/mongrel.rb:32:in `run'
+    /Users/wincent/trabajo/unversioned/wincent.com/src/vendor/rails/railties/lib/commands/server.rb:100
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /Library/Ruby/Site/1.8/rubygems/custom_require.rb:31:in `require'
+    script/server:3</pre>
+<p>The line which does it is:</p>
+<pre>reset_session</pre>
+<p>In a controller action. Comment out the line and the crash goes away.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4295'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4295"><time data-relative="true">2009-03-01T15:00:35Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I have a workaround in place, and a ticket in the <a href="/wiki/Rails">Rails</a> tracker; see: <a href="http://rails.lighthouseapp.com/projects/8994/tickets/2108" class="external">http://rails.lighthouseapp.com/projects/8994/tickets/2108</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4296'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4296"><time data-relative="true">2009-03-01T15:00:55Z</time></a></span>
+</cite>
+<blockquote><p><strong>Product</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> none</li>
+<li><strong>To:</strong> wincent.com</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4297'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4297"><time data-relative="true">2009-03-01T15:01:02Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

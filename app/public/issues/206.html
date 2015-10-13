@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #206: Hot Keys preference pane disallows some combinations
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #206</div>
+<div class='issue' id='issue_206'>
+<form class="edit_issue" id="edit_issue_206" action="/issues/206" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="vSA4cuHxQe6kTjMYupfUchd+hOCO1homrizr5sOC212J0obFRnybu33CAO+LvofGovzt3IU6lDqOMz4Y51q8eQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #206:
+<span data-name='issue[summary]'>
+Hot Keys preference pane disallows some combinations
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-03T08:09:50Z</time>, updated <time data-relative="true">2007-06-29T07:19:44Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/jan">Jan</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When I enter e.g. the following hot keys: 'ctrl/alt/command/space' for 'pause/play', 'ctrl/alt/command/arrow right' for 'next' I am not able to enter 'ctrl/alt/command/arrow left' for 'previous'. It even gives me a 'spinning beach ball of death' Synergy Advance hangs. I have to force quit.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1899'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1899"><time data-relative="true">2005-05-03T08:39:10Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=17) hot keys UI screenshot</p>
+<p>Thanks for the report.</p>
+<p>I can enter those keys (see attachment). There are two things you could do to to try and isolate the problem:</p>
+<p>1. Use the Activity Monitor to take a sample of Synergy Advance to find out where it's spending its time during the beach ball and post the results here.</p>
+<p>2. Try setting the same hot key combination with WinSwitch (<a href="http://winswitch.wincent.com/" class="external">http://winswitch.wincent.com/</a>). WinSwitch uses the same hot key engine as Synergy Advance (actually, an earlier version of it, but the core is the same). It would be interesting to know if the same problem occurs in WinSwitch, or if this is a Synergy Advance only problem.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1900'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1900"><time data-relative="true">2005-05-03T08:41:01Z</time></a></span>
+</cite>
+<blockquote><p>Rewording the summary.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1901'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1901"><time data-relative="true">2005-05-03T19:51:59Z</time></a></span>
+</cite>
+<blockquote><p>Rewording the summary. Jan sent me an email saying that he hasn't been able to reproduce the  beachball but that he still can't set that key combo. My reply:</p>
+<p>Ok, well if the beachball happens again try to get a sample and let me know.</p>
+<p>/Applications/Utilities/Activity Monitor.app</p>
+<p>Get info for the hung process and click &quot;Sample&quot;.</p>
+<p>So you mean that you it won't recognise &quot;Control+Option+Command+Left&quot;?</p>
+<p>What kind of keyboard do you have?</p>
+<p>Can you set that key combination in other apps? (Like WinSwitch? Xcode? etc)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1902'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1902"><time data-relative="true">2006-07-05T02:05:16Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1903'>
+<cite>
+<a href="/users/bugzilla-user-461">bugzilla user 461</a>
+<span class='when'><a href="#comment_1903"><time data-relative="true">2007-06-29T06:36:02Z</time></a></span>
+</cite>
+<blockquote><p>Hey there,</p>
+<p>Similar problem in Synergy 2.5, I can't set command-space to play/pause. This used to be possible, and the combo was working fine with the old preferences (which I lost..), now that I changed it I can't reset it to Cmd-space anymore. It is not hanging for me. I am using a MacAlly ICE keyboard. I can use the combo fine in TextMate, and in System Preferences-&gt;Keyboard Shortcuts (not that those DO anything, or ever DID, but I can set them..)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1904'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1904"><time data-relative="true">2007-06-29T07:11:05Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #5)</p>
+<blockquote>
+<p>Hey there,</p>
+<p>Similar problem in Synergy 2.5, I can't set command-space to play/pause. This used to be possible, and the combo was working fine with the old preferences (which I lost..), now that I changed it I can't reset it to Cmd-space anymore. It is not hanging for me. I am using a MacAlly ICE keyboard. I can use the combo fine in TextMate, and in System Preferences-&gt;Keyboard Shortcuts (not that those DO anything, or ever DID, but I can set them..)</p>
+</blockquote>
+<p>Is that key combination already taken by Spotlight? The apps you list may be able to &quot;see&quot; the combo because they actively monitor the keyboard (something they can do when they are frontmost) whereas Synergy is a background application to it must rely on the system to provide it with notification of hot keys being pressed.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1905'>
+<cite>
+<a href="/users/bugzilla-user-461">bugzilla user 461</a>
+<span class='when'><a href="#comment_1905"><time data-relative="true">2007-06-29T07:19:44Z</time></a></span>
+</cite>
+<blockquote><p>Solved!</p>
+<blockquote>
+<p>Is that key combination already taken by Spotlight?</p>
+</blockquote>
+<p>No, as far as I could tell from trying it wasn't taken by anything, but your comment had me checking the System Preferences 1 by 1 to make sure - I found it (naturally) under Keyboard Shortcuts.. something for input menu, of which I have no idea what it does, nor do I care because apparently I never needed it :-)</p>
+<p>Anyhoo, disabled, Cmd-Space now works again. Thanks!</p>
+<p>(I'll leave this as NEW because I doubt this was the cause of the original bug request..)</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

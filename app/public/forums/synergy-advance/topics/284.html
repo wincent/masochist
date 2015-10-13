@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Playlists are wierd in Synergy
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy-advance">Synergy Advance</a> &raquo; Playlists are wierd in Synergy</div>
+<h1 class='major'>Playlists are wierd in Synergy</h1>
+<div class='topic' id='topic_284'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/mark">Mark</a>
+<span class='when'>
+<a href="/forums/synergy-advance/topics/284"><time data-relative="true">2006-11-13T07:56:45Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi, I purchased Synergy Advance and like many of the features it will offer however playlists are working/not working and are totally wierd.</p>
+<p>The whole point of playlists is to allow you to play a set of songs you like.  Synergy Advance allows me to see and select a song from a playlist and it will start playing (most of the time... sometimes this doesn't even work!).  This is great.  Exactly what I wanted (when it works of course).</p>
+<p>My keyboard has function keys that iTunes works with to play/pause/skip track etc.  When I use the play/pause button play will pause.  But then I hit it again, instead of being in the playlist I was in, Synergy Advance will jump out of the playlist and into some some probably in library order.  This is bad!</p>
+<p>Also when I select a song in a playlist I expect iTunes to keep playing from that playlist.  When it is selected from Synergy Advance it plays that one song then stops.</p>
+<p>Mark</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_898'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_898"><time data-relative="true">2006-11-13T08:34:31Z</time></a></span>
+</cite>
+<blockquote><p>Originally Posted By: MarkHi, I purchased Synergy Advance and like many of the features it will offer however playlists are working/not working and are totally wierd.</p>
+<p>The whole point of playlists is to allow you to play a set of songs you like.  Synergy Advance allows me to see and select a song from a playlist and it will start playing (most of the time... sometimes this doesn't even work!).  This is great.  Exactly what I wanted (when it works of course).</p>
+<p>My keyboard has function keys that iTunes works with to play/pause/skip track etc.  When I use the play/pause button play will pause.  But then I hit it again, instead of being in the playlist I was in, Synergy Advance will jump out of the playlist and into some some probably in library order.  This is bad!</p>
+<p>This is a bug in iTunes, but Synergy Advance provides a work around that can be used to avoid the bug:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=298" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=298</a></p>
+<p>Quote:Also when I select a song in a playlist I expect iTunes to keep playing from that playlist.  When it is selected from Synergy Advance it plays that one song then stops.</p>
+<p>I'll have to look into this one. When you select a song from a playlist in Synergy Advance, Synergy Advance sends iTunes a request of the form, &quot;Play track X of playlist Y&quot;. I wrote it that way because I basically expected iTunes to &quot;do the right thing&quot; with such a request.</p>
+<p>It sounds like what you want Synergy Advance to do is send a slightly different command (two commands, actually), of the form, &quot;Switch to playlist Y and then play track X&quot;.</p>
+<p>I think that for many people the latter behaviour may be more intuitive, but it should be a user-settable preference because there will certainly be others that will prefer the existing behaviour.</p>
+<p>I will open a feature request for this in the database:</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy-advance">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

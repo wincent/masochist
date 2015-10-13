@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #349: WinSwitch freezes on system restart
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #349</div>
+<div class='issue' id='issue_349'>
+<form class="edit_issue" id="edit_issue_349" action="/issues/349" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pNgbMsg++F9lxqFvJavYv1nAPL7fDGhilk+T3M6ZdiGQKqWFb7MiCrxKkpgUgosL7EJVgtTg5n62UEYi6kERBQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #349:
+<span data-name='issue[summary]'>
+WinSwitch freezes on system restart
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-01-11T16:00:48Z</time>, updated <time data-relative="true">2010-08-12T10:11:09Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-291">bugzilla user 291</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Everytime I restart my Mac (once a month or so) WinSwitch freezes SystemUIServer. Killing SystemUIServer doesn't help, however FUS:ing back and forward works (and the user I FUS to does not have a problem with an initial freezing).</p>
+<p>This is what I get in the system.log and console.log:</p>
+<p>----------------------</p>
+<p>2006-01-11 21:32:15.810 SystemUIServer[461] SetAlphaValue &gt;&gt; load failled for identifier: com.apple.systemuiserver &gt;&gt; numberOfItems: 0 2006-01-11 21:32:16.253 SystemUIServer[461] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2006-01-11 21:32:16.447 SystemUIServer[461] failed to load Menu Extra: NSBundle  (loaded) 2006-01-11 21:32:16.448 SystemUIServer[461] MenuCracker: Loading 'WOWinSwitchMenuExtra'. Jan 11 21:32:16 pb /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer: NetInfo timeout connecting to local domain, sleeping</p>
+<p>----------------------------------------------</p>
+<p>Jan 11 21:32:16 pb /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer: NetInfo timeout connecting to local domain, sleeping Jan 11 21:33:30 pb /System/Library/CoreServices/loginwindow.app/Contents/MacOS/loginwindow: Login Window Application Started Jan 11 21:33:32 pb loginwindow[464]: Login Window Started Security Agent</p>
+<p>-------------</p>
+<p>I am not sure if this is a dupe of bug 161, the logs look very similar but the circumstances are quite different.</p>
+<p>It is very weird being forced to switch user, without using WinSwitch, everytime I restart my computer...</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2357'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2357"><time data-relative="true">2006-01-11T16:28:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. This is definitely not related to <a href="/issues/161">bug #161</a>.  The &quot;MenuCracker&quot; entries you see in the logs are completely normal, not related to either of these reports; you'll see them every time you boot even when things are working perfectly.</p>
+<p>I think this is the pertinent line:</p>
+<p>/System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer: NetInfo timeout connecting to local domain, sleeping</p>
+<p>So the thing is going to sleep (which you'll see as a &quot;freeze&quot; or a &quot;spinning beachball&quot;). The question is, why? Can you provide some more information about your system? OS version? Special hardware? Special network setup? Anything weird or special with your user setup, particularly anything to to do with NetInfo.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2358'>
+<cite>
+<a href="/users/bugzilla-user-291">bugzilla user 291</a>
+<span class='when'><a href="#comment_2358"><time data-relative="true">2006-01-11T16:52:20Z</time></a></span>
+</cite>
+<blockquote><p>Nothing special as far as I can tell, a standalone PBG4 with Tiger. You can run a VNC or Apple Remote Desktop session against my machine if you want to have a look.</p>
+<p>The only other 3rd party Menu Extras I use are MenuMeters and PTHPasteboard.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2359'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2359"><time data-relative="true">2006-01-11T20:15:49Z</time></a></span>
+</cite>
+<blockquote><p>Does it affect all user accounts? In other words, have you tried logging into a different account at startup and seeing if that other account is affected (turn off the &quot;automatic login at startup&quot; if you need to first). Can you try it with a brand new, clean account, created for the purposes of testing?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2360'>
+<cite>
+<a href="/users/bugzilla-user-291">bugzilla user 291</a>
+<span class='when'><a href="#comment_2360"><time data-relative="true">2006-01-12T00:38:10Z</time></a></span>
+</cite>
+<blockquote><p>The other accounts have the same menu extras but it only happens on my 'main account'.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2361'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2361"><time data-relative="true">2006-01-12T06:20:06Z</time></a></span>
+</cite>
+<blockquote><p>Well that narrows it down a bit. We now know that there's something particular to your main account that is causing the problem.</p>
+<p>If WinSwitch is having trouble accessing the NetInfo database I don't really know how I can prevent it from &quot;going to sleep&quot;. The API is just a simple procedural API and there is no scope for setting &quot;timeout&quot; values. I also don't think splitting the work off into a separate thread is going to be appropriate given that the information obtained from the database is used to update the UI (and you shouldn't really update the UI from any thread other than the main thread). It would be possible to split this work off into a different thread and then notify the main thread when it's done, and specify some sort of &quot;in progress&quot; menu in the meantime. But that would be a fairly complicated solution for something that is caused by an anomaly in one account on your system (and nobody elses!); it seems to me that the &quot;in progress&quot; message would be displayed forever, and the only way to make it go away would be to switch away or log out... Not very good!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2362'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2362"><time data-relative="true">2006-07-05T02:07:07Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6047'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6047"><time data-relative="true">2010-08-12T10:11:09Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

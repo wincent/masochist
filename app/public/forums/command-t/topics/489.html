@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+What version of Ruby does Command-T need to compile?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; What version of Ruby does Command-T need to compile?</div>
+<h1 class='major'>What version of Ruby does Command-T need to compile?</h1>
+<div class='topic' id='topic_489'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/489"><time data-relative="true">2011-10-24T19:32:08Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm getting some errors with 1.8, perhaps I don't have ruby development header or something similar?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7209'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7209"><time data-relative="true">2011-10-30T17:20:27Z</time></a></span>
+</cite>
+<blockquote><p>The code itself is compatible with either Ruby 1.8 or 1.9, but you don't actually have a choice: you must use the exact version of Ruby that was used when building Vim itself.</p>
+<p>This is pretty easy on UNIX-y systems, because even if you don't know what version was used to build Vim, <a href="/wiki/building_Vim_from_source">building Vim from source</a> is trivial.</p>
+<p>On Windows things are a bit trickier as the entire open source ecosystem is hampered by Microsoft's efforts to make development with free tools unpleasant. One known working combination is listed in the docs. Other people have reported their success in various posts on these forums and in the <a href="/wiki/issue_tracker">issue tracker</a>. Unfortunately (or rather, fortunately) I don't use Windows myself, so I can't offer any support for troubleshooting Windows problems beyond advising people to look at the posts by other Windows users.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

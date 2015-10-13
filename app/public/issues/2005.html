@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2005: Update to Git 1.7.11.7
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2005</div>
+<div class='issue' id='issue_2005'>
+<form class="edit_issue" id="edit_issue_2005" action="/issues/2005" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/pnstrbZbep5IW0vYCHTr0uteW5QOkH7t7UzQHQPqBHKa1IBEVS3v6CtXthRCIAb/i8QUlvWz+eXqua+UNfPNQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2005:
+<span data-name='issue[summary]'>
+Update to Git 1.7.11.7
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-09-14T05:06:55Z</time>, updated <time data-relative="true">2012-09-17T00:43:45Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Update on all the machines I control.</p>
+<pre>A maintenance release Git v1.7.11.6 is now available at the
+usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+f678531535643806733e8c7e87db77386c48738b  git-1.7.11.6.tar.gz
+e6ccf6cffa3b69dc5d658f43bb8a10ed70b176f2  git-htmldocs-1.7.11.6.tar.gz
+7bbb12429e65184d9462dfc01b104a4780bc67a8  git-manpages-1.7.11.6.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.11.6
+tag and the maint-1.7.11 branch that the tag points at:
+
+ ;; url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+[repo seems to be having a problem right now]
+
+Git v1.7.11.6 Release Notes
+===========================
+
+Fixes since v1.7.11.5
+---------------------
+
+* &quot;ciabot&quot; script (in contrib/) has been updated with extensive
+  documentation.
+
+* &quot;git foo&quot; errored out with &quot;Not a directory&quot; when the user had a
+  non-directory on $PATH, and worse yet it masked an alias &quot;foo&quot; from
+  running.
+
+* When the user exports a non-default IFS without HT, scripts that
+  rely on being able to parse &quot;ls-files -s | while read a b c...&quot;
+  started to fail.  Protect them from such a misconfiguration.
+
+* When the user gives an argument that can be taken as both a
+  revision name and a pathname without disambiguating with &quot;--&quot;, we
+  used to give a help message &quot;Use '--' to separate&quot;.  The message
+  has been clarified to show where that '--' goes on the command
+  line.
+
+* Documentation for the configuration file format had a confusing
+  example.
+
+* Older parts of the documentation described as if having a regular
+  file in .git/refs/ hierarchy were the only way to have branches and
+  tags, which is not true for quite some time.
+
+* It was generally understood that &quot;--long-option&quot;s to many of our
+  subcommands can be abbreviated to the unique prefix, but it was not
+  easy to find it described for new readers of the documentation set.
+
+* The &quot;--topo-order&quot;, &quot;--date-order&quot; (and the lack of either means
+  the default order) options to &quot;rev-list&quot; and &quot;log&quot; family of
+  commands were poorly described in the documentation.
+
+* &quot;git commit --amend&quot; let the user edit the log message and then
+  died when the human-readable committer name was given
+  insufficiently by getpwent(3).
+
+* The exit status code from &quot;git config&quot; was way overspecified while
+  being incorrect.  The implementation has been updated to give the
+  documented status for a case that was documented, and introduce a
+  new code for &quot;all other errors&quot;.
+
+* The output from &quot;git diff -B&quot; for a file that ends with an
+  incomplete line did not put &quot;\ No newline...&quot; on a line of its own.
+
+* &quot;git diff&quot; had a confusion between taking data from a path in the
+  working tree and taking data from an object that happens to have
+  name 0{40} recorded in a tree.
+
+* The &quot;--rebase&quot; option to &quot;git pull&quot; can be abbreviated to &quot;-r&quot;,
+  but we didn't document it.
+
+* When &quot;git push&quot; triggered the automatic gc on the receiving end, a
+  message from &quot;git prune&quot; that said it was removing cruft leaked to
+  the standard output, breaking the communication protocol.
+
+* The reflog entries left by &quot;git rebase&quot; and &quot;git rebase -i&quot; were
+  inconsistent (the interactive one gave an abbreviated object name).
+
+* &quot;git send-email&quot; did not unquote encoded words that appear on the
+  header correctly, and lost &quot;_&quot; from strings.
+
+* &quot;git stash apply/pop&quot; did not trigger &quot;rerere&quot; upon conflicts
+  unlike other mergy operations.
+
+* &quot;git submodule &lt;cmd&gt; path&quot; did not error out when the path to the
+  submodule was misspelt.
+
+* &quot;git submodule update -f&quot; did not update paths in the working tree
+  that has local changes.
+  (merge 01d4721 sz/submodule-force-update later to maint).
+
+* &quot;gitweb&quot; when used with PATH_INFO failed to notice directories with
+  SP (and other characters that need URL-style quoting) in them.
+
+* Fallback 'getpass' implementation made unportable use of stdio API.
+
+* A utility shell function test_seq has been added as a replacement
+  for the 'seq' utility found on some platforms.
+
+----------------------------------------------------------------
+
+Changes since v1.7.11.5 are as follows:
+
+Adam Butcher (1):
+     Fix '\ No newline...' annotation in rewrite diffs
+
+Ben Walton (1):
+     Enable HAVE_DEV_TTY for Solaris
+
+Brandon Casey (1):
+     t/t5400: demonstrate breakage caused by informational message from prune
+
+Eric S. Raymond (3):
+     contrib/ciabot: Get ciabot configuration from git variables
+     Improved documentation for the ciabot scripts.
+     Make the ciabot scripts completely self-configuring in the normal case.
+
+Heiko Voigt (2):
+     Let submodule command exit with error status if path does not exist
+     Documentation/CodingGuidelines: spell out more shell guidelines
+
+Jay Soffian (1):
+     gitweb: URL-decode $my_url/$my_uri when stripping PATH_INFO
+
+Jeff King (6):
+     commit: check committer identity more strictly
+     diff: do not use null sha1 as a sentinel value
+     do not write null sha1s to on-disk index
+     fsck: detect null sha1 in tree entries
+     terminal: seek when switching between reading and writing
+     docs: monospace listings in docbook output
+
+Junio C Hamano (13):
+     config: &quot;git config baa&quot; should exit with status 1
+     t7406: fix misleading &quot;rev-parse --max-count=1 HEAD&quot;
+     sane_execvp(): ignore non-directory on $PATH
+     Documentation: do not mention .git/refs/* directories
+     receive-pack: do not leak output from auto-gc to standard output
+     sh-setup: protect from exported IFS
+     rev-list docs: clarify --topo-order description
+     gitcli: describe abbreviation of long options
+     git-config doc: unconfuse an example
+     mergetool: style fixes
+     Prepare for 1.7.11.6
+     Almost 1.7.11.6
+     Git 1.7.11.6
+
+Luka Perkov (1):
+     builtin.h: remove unused cmd_&lt;foo&gt; declarations
+
+Martin von Zweigbergk (1):
+     add tests for 'git rebase --keep-empty'
+
+Matthieu Moy (1):
+     setup: clarify error messages for file/revisions ambiguity
+
+Michael Haggerty (1):
+     git-config.txt: fix example
+
+Michael J Gruber (1):
+     rebase -i: use full onto sha1 in reflog
+
+Micha&#x0142; Kiedrowicz (1):
+     tests: Introduce test_seq
+
+Miklos Vajna (1):
+     man: git pull -r is a short for --rebase
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (1):
+     read_index_from: remove bogus errno assignments
+
+Paul Gortmaker (1):
+     apply: delete unused deflate_origlen from patch struct
+
+Phil Hord (2):
+     test: git-stash conflict sets up rerere
+     stash: invoke rerere in case of conflict
+
+Stefan Zager (1):
+     Make 'git submodule update --force' always check out submodules.
+
+Thomas Rast (3):
+     send-email: improve RFC2047 quote parsing
+     diff_setup_done(): return void
+     merge-recursive: eliminate flush_buffer() in favor of write_in_full()
+
+--
+To unsubscribe from this list: send the line &quot;unsubscribe git&quot; in
+the body of a message to majordomo@vger.kernel.org
+More majordomo info at  <a href="http://vger.kernel.org/majordomo-info.html" class="external">http://vger.kernel.org/majordomo-info.html</a></pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_9982'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9982"><time data-relative="true">2012-09-17T00:41:18Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.7.11.6</li>
+<li><strong>To:</strong> Update to Git 1.7.11.7</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9983'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9983"><time data-relative="true">2012-09-17T00:41:42Z</time></a></span>
+</cite>
+<blockquote><pre>A maintenance release Git v1.7.11.7 is now available at the
+usual places.
+
+The release tarballs are found at:
+
+   <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+30c7aafaa31002ca52bc45dbd0908e63b00015dd  git-1.7.11.7.tar.gz
+bdcd5009498bc961757915dae30f5fefd6435c59  git-htmldocs-1.7.11.7.tar.gz
+9fb4bb051822168e41424524a4a325207f308507  git-manpages-1.7.11.7.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.11.7
+tag and the maint-1.7.11 branch that the tag points at:
+
+ url = git://repo.or.cz/alt-git.git
+ url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+ url = git://git.sourceforge.jp/gitroot/git-core/git.git
+ url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+ url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git v1.7.11.7 Release Notes
+===========================
+
+Fixes since v1.7.11.6
+---------------------
+
+* The synopsis said &quot;checkout [-B branch]&quot; to make it clear the
+  branch name is a parameter to the option, but the heading for the
+  option description was &quot;-B::&quot;, not &quot;-B branch::&quot;, making the
+  documentation misleading.
+
+* Git ships with a fall-back regexp implementation for platforms with
+  buggy regexp library, but it was easy for people to keep using their
+  platform regexp.  A new test has been added to check this.
+
+* &quot;git apply -p0&quot; did not parse pathnames on &quot;diff --git&quot; line
+  correctly.  This caused patches that had pathnames in no other
+  places to be mistakenly rejected (most notably, binary patch that
+  does not rename nor change mode).  Textual patches, renames or mode
+  changes have preimage and postimage pathnames in different places
+  in a form that can be parsed unambiguously and did not suffer from
+  this problem.
+
+* After &quot;gitk&quot; showed the contents of a tag, neither &quot;Reread
+  references&quot; nor &quot;Reload&quot; did not update what is shown as the
+  contents of it, when the user overwrote the tag with &quot;git tag -f&quot;.
+
+* &quot;git for-each-ref&quot; did not currectly support more than one --sort
+  option.
+
+* &quot;git log ..&quot; errored out saying it is both rev range and a path
+  when there is no disambiguating &quot;--&quot; is on the command line.
+  Update the command line parser to interpret &quot;..&quot; as a path in such
+  a case.
+
+* Pushing to smart HTTP server with recent Git fails without having
+  the username in the URL to force authentication, if the server is
+  configured to allow GET anonymously, while requiring authentication
+  for POST.
+
+* &quot;git show --format='%ci'&quot; did not give timestamp correctly for
+  commits created without human readable name on &quot;committer&quot; line.
+  (merge e27ddb6 jc/maint-ident-missing-human-name later to maint).
+
+* &quot;git show --quiet&quot; ought to be a synonym for &quot;git show -s&quot;, but
+  wasn't.</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9984'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9984"><time data-relative="true">2012-09-17T00:43:41Z</time></a></span>
+</cite>
+<blockquote><p>Silly me, <a href="/issues/1988">ticket #1988</a> predates this one, and is for the later version of <a href="/wiki/Git">Git</a> (1.7.12). Will close this one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_9985'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_9985"><time data-relative="true">2012-09-17T00:43:45Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

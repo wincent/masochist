@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1135: Add repository browsing features
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1135</div>
+<div class='issue' id='issue_1135'>
+<form class="edit_issue" id="edit_issue_1135" action="/issues/1135" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="SFLLH2dLxGvjx/WYU/CocZ6ZWhKuscwahjdmFxMPzRB8oHWowMYePjpLxm9i2fvFKxszLqVdQgamKLPpN9eqNA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1135:
+<span data-name='issue[summary]'>
+Add repository browsing features
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-09-11T15:17:28Z</time>, updated <time data-relative="true">2010-09-19T09:14:02Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>This can then be hooked up with Git hooks to publish a &quot;git log&quot; like I had on the old site.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4605'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4605"><time data-relative="true">2009-05-04T16:07:32Z</time></a></span>
+</cite>
+<blockquote><p>I think I probably want to go a fair bit further than just listing commits. As I make more and more of the code open source I'll want to move towards having a full repository browser integrated into the site. Don't want to reinvent the wheel, but it would probably be nice to have at least a skeletal browser in place; in order of interest are probably:</p>
+<ul>
+<li>commit messages</li>
+<li>commit diffs</li>
+<li>full blobs</li>
+<li>trees</li>
+<li>branches</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5178'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5178"><time data-relative="true">2009-11-23T13:33:43Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Add &quot;commit&quot; model</li>
+<li><strong>To:</strong> Add repository browsing features</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5179'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5179"><time data-relative="true">2009-11-23T13:52:22Z</time></a></span>
+</cite>
+<blockquote><p>I've been thinking about this and adding the &quot;git log&quot; of old doesn't make much sense at all. It really has to be a full-blown repo browser.</p>
+<p>At the moment, the Git repos happen to be on the same machine as the webserver, but that is going to change with the move to <a href="/wiki/AWS">AWS</a> (see <a href="/issues/1440">ticket #1440</a>).</p>
+<p>Just about every repository browser out there needs to run on the same machine as the repo (think <a href="/wiki/GitWeb">GitWeb</a> itself, for example), so when we're on AWS I think I'll be adding a post-receive hook that will mirror the repos to the same machine as the webserver (basically like the existing hooks which push backups of public repos to <a href="/wiki/GitHub">GitHub</a> and <a href="/wiki/Gitorious">Gitorious</a>).</p>
+<p>The question then is: how much to do in &quot;real time&quot; by shelling out the <code>git</code> <a href="/wiki/command_line">command line</a> tool and how much to store in the database?</p>
+<p>At one extreme you shell out for everything, and I don't think I'd do that, even with caching (because it would end up being a parallel caching system separate from the caching for the rest of the site).</p>
+<p>At the other extreme you store absolutely everything in the database, but I don't think I'd do that either because <a href="/wiki/Git">Git</a> itself is a very efficient &quot;database&quot; of commits and blobs and such and replicating it in a relational database like <a href="/wiki/MySQL">MySQL</a> would be a horrible, inefficient duplication.</p>
+<p>So what I thinking is that we could cache some stuff in the database at boot time (when the app boots), or when the admin forces a refresh, stuff like scanning the disk to see which repositories are present and what their &quot;metadata&quot; is (things like name, description, clone URL etc).</p>
+<p>For actually generating things like logs you would probably shell out to <code>git</code>.</p>
+<p>Once it's actually up and running we can look at performance and consider caching specific things in the database, like commit messages for specific commits and diffs and such. But really don't know what is going to be useful there until I've tried it.</p>
+<p>Will also have to look at what GitWeb does &mdash; that has good performance and as far as I know doesn't do much, if any, caching in the vanilla setup &mdash; as it is a good yardstick for what sort of performance you can expect, at least out of <a href="/wiki/Perl">Perl</a>, when shelling out to <code>git</code>.</p>
+<p>In terms of the models and <a href="/wiki/URL">URL</a> design, the most interesting models/URLs will be:</p>
+<ul>
+<li>repos:
+<ul>
+<li><code>/repos/</code>: index of public repos, and for admin users private repos as well</li>
+<li><code>/repos/example.git</code>: overview page for specific repo, showing:
+<ul>
+<li>&quot;metadata&quot; for that repo: name, description etc</li>
+<li>a (short) log of recent changes</li>
+<li>branches (perhaps, or a link to a page showing them)</li>
+<li>tags (perhaps, or a link to a page showing them)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>branches: always nested within the context of parent repo
+<ul>
+<li><code>/repos/example.git/master</code> or <code>/repos/example.git/maint</code></li>
+<li>possible alternative to avoid namespace clashes: <code>/repos/example.git/branches/master</code></li>
+<li>show list of commits on that branch (most likely short log view)</li>
+</ul>
+</li>
+<li>commits: again, nested within context of parent view
+<ul>
+<li><code>/repos/example.git/commits/{hash}</code></li>
+<li>would show full log message and (configurable) diff as well</li>
+<li>for example, it might be interesting to allow users to see log messages of closed-source repos, but not show the actual diffs</li>
+</ul>
+</li>
+<li>tags: again, nested:
+<ul>
+<li><code>/repos/example.git/tags/{tag}</code></li>
+<li>would show tag annotation, along with the same stuff shown by the &quot;commit&quot; view</li>
+</ul>
+</li>
+</ul>
+<p>For me that's the fundamentally interesting stuff. Viewing trees and blobs would be some icing on the cake:</p>
+<ul>
+<li>trees:
+<ul>
+<li><code>/repos/example.git/trees/{hash}</code></li>
+</ul>
+</li>
+<li>blobs:
+<ul>
+<li><code>/repos/example.git/blobs/{hash}</code></li>
+</ul>
+</li>
+</ul>
+<p>With all of these things (commits, trees, blobs) there would need to be as a basic security measure the restriction that the object in question should be reachable from one of the existing branch tips.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5180'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5180"><time data-relative="true">2009-11-23T13:58:09Z</time></a></span>
+</cite>
+<blockquote><p>For comparison, here are some <a href="/wiki/GitWeb">GitWeb</a>-generated <a href="/wiki/URLs">URLs</a>:</p>
+<ul>
+<li><a href="http://git.wincent.com/wikitext.git/commit/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585" class="external">http://git.wincent.com/wikitext.git/commit/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585</a></li>
+<li><a href="http://git.wincent.com/wikitext.git/commitdiff/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585" class="external">http://git.wincent.com/wikitext.git/commitdiff/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585</a></li>
+<li><a href="http://git.wincent.com/wikitext.git/tree/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585" class="external">http://git.wincent.com/wikitext.git/tree/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585</a></li>
+<li><a href="http://git.wincent.com/wikitext.git/log" class="external">http://git.wincent.com/wikitext.git/log</a> (&quot;long&quot; log view of master HEAD)</li>
+<li><a href="http://git.wincent.com/wikitext.git/shortlog" class="external">http://git.wincent.com/wikitext.git/shortlog</a> (&quot;short&quot; log view of master HEAD, oneline only)</li>
+<li><a href="http://git.wincent.com/wikitext.git/tag/7e404c65ddd5f272049503f609a312234200428a" class="external">http://git.wincent.com/wikitext.git/tag/7e404c65ddd5f272049503f609a312234200428a</a></li>
+<li><a href="http://git.wincent.com/wikitext.git/shortlog/refs/tags/1.10" class="external">http://git.wincent.com/wikitext.git/shortlog/refs/tags/1.10</a> (short log corresponding to a tag)</li>
+<li><a href="http://git.wincent.com/wikitext.git/log/refs/tags/1.10" class="external">http://git.wincent.com/wikitext.git/log/refs/tags/1.10</a> (long log corresponding to a tag)</li>
+<li><a href="http://git.wincent.com/wikitext.git/shortlog/refs/heads/maint" class="external">http://git.wincent.com/wikitext.git/shortlog/refs/heads/maint</a> (short log corresponding to a branch)</li>
+<li><a href="http://git.wincent.com/wikitext.git/log/refs/heads/maint" class="external">http://git.wincent.com/wikitext.git/log/refs/heads/maint</a> (long log corresponding to a branch)</li>
+<li><a href="http://git.wincent.com/wikitext.git/tree/maint" class="external">http://git.wincent.com/wikitext.git/tree/maint</a> (tree corresponding to a branch)</li>
+<li><a href="http://git.wincent.com/wikitext.git/blob/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585:/Rakefile" class="external">http://git.wincent.com/wikitext.git/blob/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585:/Rakefile</a> (link to a blob in a specific revision)</li>
+<li><a href="http://git.wincent.com/wikitext.git/tree/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585:/spec/trash" class="external">http://git.wincent.com/wikitext.git/tree/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585:/spec/trash</a> (link to a tree in a specific revision)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5181'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5181"><time data-relative="true">2009-11-23T14:00:40Z</time></a></span>
+</cite>
+<blockquote><p>Obviously, if I want to make commits commentable, they will need to be cached in the database. (Probably lazily; if a particular comment is never viewed there is no need for it to be in the database.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5182'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5182"><time data-relative="true">2009-11-23T17:15:42Z</time></a></span>
+</cite>
+<blockquote><p>Comparison; GitHub URLs:</p>
+<ul>
+<li><a href="http://github.com/wincent/wikitext/commit/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585" class="external">http://github.com/wincent/wikitext/commit/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585</a> (show full log message, diff and comments form)</li>
+<li><a href="http://github.com/wincent/wikitext/tree/master/bin/" class="external">http://github.com/wincent/wikitext/tree/master/bin/</a> (tree referenced by HEAD of master)</li>
+<li><a href="http://github.com/wincent/wikitext/tree/b61035fd6fd10691fa8ce2b52f2c9ee4b4225ed0/bin" class="external">http://github.com/wincent/wikitext/tree/b61035fd6fd10691fa8ce2b52f2c9ee4b4225ed0/bin</a> (tree pointed to by other commit)</li>
+<li><a href="http://github.com/wincent/wikitext/commits/" class="external">http://github.com/wincent/wikitext/commits/</a> (short log)</li>
+<li><a href="http://github.com/wincent/wikitext/commits/1.10" class="external">http://github.com/wincent/wikitext/commits/1.10</a> (viewing a tag, shows a short log corresponding to that tag)</li>
+<li><a href="http://github.com/wincent/wikitext/commits/maint" class="external">http://github.com/wincent/wikitext/commits/maint</a> (viewing a branch, shows a short log corresponding to that branch)</li>
+<li><a href="http://github.com/wincent/wikitext/blob/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585/LICENSE.txt" class="external">http://github.com/wincent/wikitext/blob/9f3c2e891a7321e6bf08d6c83c626aae3f3b2585/LICENSE.txt</a> (showing a blob)</li>
+<li><a href="http://github.com/wincent/wikitext/blob/master/LICENSE.txt" class="external">http://github.com/wincent/wikitext/blob/master/LICENSE.txt</a> (showing a blob at HEAD of master branch)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5194'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5194"><time data-relative="true">2009-11-29T07:01:36Z</time></a></span>
+</cite>
+<blockquote><p>Posted a <a href="/blog/upcoming-site-changes-repo-browsing-functionality">blog post</a> about this just now.</p>
+<p>As mentioned in the post, we want this to replace not only the old &quot;Git Log&quot; functionality but also the &quot;Weekly progress reports&quot; that I used to put up on the blog. So that means <a href="/wiki/Atom">Atom</a> feeds of commits. Probably:</p>
+<ul>
+<li><code>/repos.atom</code>: all commits in all repos</li>
+<li><code>/repos/example.atom</code>: all commits in a specific repo (could just be the commits reachable from HEAD, but would probably be more interesting if it were all commits reachable from all branches)</li>
+<li><code>/repos/example/master.atom</code>: all commits in a specific branch of a repo</li>
+</ul>
+<p>Two things to note:</p>
+<p>Firstly, <a href="/wiki/URLs">URLs</a> will look nicer if I exclude the <code>.git</code> from the repo component (ie. like <a href="/wiki/GitHub">GitHub</a> and unlike <a href="/wiki/GitWeb">GitWeb</a>).</p>
+<p>Secondly, this kind of complicated feed, especially the &quot;all repos&quot; feed may require some sophisticated caching. Will probably have to fire off our cache sweepers whenever from the repo post-receive hooks. Actually merging the commits from all repos into a single feed may prove to be quite complicated; luckily the atom feed doesn't need to extend very far back into the history of each repository.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5201'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5201"><time data-relative="true">2009-12-04T15:24:11Z</time></a></span>
+</cite>
+<blockquote><p>In <a href="/wiki/GitWeb">GitWeb</a> access control is all file-system based. That is, GitWeb is can be configured with <code>GITWEB_LIST</code> and <code>GITWEB_STRICT_EXPORT</code> to look at a certain path on the filesystem for repositories, and will only allow access to those. (The presence of a <code>git-daemon-export-ok</code> file in this case is irrelevant.)</p>
+<p>I think I want more control than that, at the application level. So I am thinking that security-wise, repos will only be shown when they are explicitly added, rather than pulling in all repos that happen to exist within a certain directory. One benefit of this is that I can reference repos in disparate places like <code>/a/b/repo1.git</code> and <code>/b/c/repo2.git</code>.</p>
+<p>In addition to the above access controls we will want application-level constraints about what people can see. Admins will be able to see all configured repositories. Other users will only be able to see open source ones (ones that have been designated as such at the application level <em>and</em> which have a <code>git-daemon-export-ok</code> file, perhaps).</p>
+<p>By setting access control at the application level we can have finer grained levels of control, such as:</p>
+<ul>
+<li>Allowed to see all logs and content (commits, branches, trees, blobs etc)</li>
+<li>Allowed to see logs but not content</li>
+<li>Allowed to see oneline version of logs but not full version</li>
+<li>Allowed to see existence of repository but nothing else about it (or perhaps just branch names and tag lists, for example)</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5203'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5203"><time data-relative="true">2009-12-12T08:25:38Z</time></a></span>
+</cite>
+<blockquote><p>Will have to show merge commits using <code>git diff --cc</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5925'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5925"><time data-relative="true">2010-07-23T13:11:47Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this has been sitting around for long enough now. I think it's time to get started on implementing this:</p>
+<ol>
+<li>&#x00a0;get transport/mirroring working between Git server and web server; still need to decide on whether to use push or pull model, but leaning towards periodic pull (from cron job), although it would involve some lag</li>
+<li>start with &quot;Repo&quot; model resource because all the others are nested inside it, and it can actually be initially implemented at the application level with no actual Git access to the filesystem (because it's metadata only, at least at first)</li>
+<li>move on to &quot;Commit&quot; model, &quot;Branch&quot; model and &quot;Tag&quot; model (although we already have a model with that name, so will need to pick another); finally tackle the &quot;Tree&quot; and the &quot;Blob&quot; models</li>
+</ol>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5941'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5941"><time data-relative="true">2010-07-26T13:37:22Z</time></a></span>
+</cite>
+<blockquote><p>Ok, item &quot;1&quot; now done.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5942'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5942"><time data-relative="true">2010-07-28T01:48:59Z</time></a></span>
+</cite>
+<blockquote><p>Sweet, just discovered <code>git log -p --word-diff=porcelain</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5943'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5943"><time data-relative="true">2010-07-28T01:56:24Z</time></a></span>
+</cite>
+<blockquote><p>Useful: <code>git log --format=raw</code> (plus the <code>-p --word-diff=porcelain</code> switches mentioned above, and <code>-n 10</code> or <code>-n 20</code> to limit the number of commits shown at a time).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5948'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5948"><time data-relative="true">2010-07-29T04:37:32Z</time></a></span>
+</cite>
+<blockquote><p>Looks like I can set up a <code>post-receive</code> hook in the mirrored repositories to do cache invalidation. This will be particularly useful for things like Atom feeds which could get hit fairly often, and may be expensive to generate.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6297'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6297"><time data-relative="true">2010-09-19T09:13:54Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the basic functionality is now implemented. I'm going to mark this ticket as closed and open smaller, more focused tickets for the remaining details.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6298'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6298"><time data-relative="true">2010-09-19T09:14:02Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

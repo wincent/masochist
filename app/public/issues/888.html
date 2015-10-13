@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #888: Moved iTunes app, now Synergy won't start
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #888</div>
+<div class='issue' id='issue_888'>
+<form class="edit_issue" id="edit_issue_888" action="/issues/888" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="zzjlnnI5luo1YnLAwA6zyaxNiRdBFCGAgxX+z5UqCMn7ylsp1bRMv+zuQTfxJ+B9Gc/gK0r4r5yjCisxsfJv7Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #888:
+<span data-name='issue[summary]'>
+Moved iTunes app, now Synergy won't start
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-06-14T16:06:34Z</time>, updated <time data-relative="true">2008-06-17T04:25:11Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I recently moved the location of the iTunes application back to the Applications directory, from a subdirectory.  Since then, Synergy will not start.  I downloaded Synergy Advance, both 0.4 and 0.5, and neither of those work, either.</p>
+<p>I can send crash logs if desired.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3380'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3380"><time data-relative="true">2008-06-14T17:04:43Z</time></a></span>
+</cite>
+<blockquote><p>What version of <a href="/wiki/Mac_OS_X">Mac OS X</a> are you running? If <a href="/wiki/Leopard">Leopard</a> you'll have to stick with <a href="/wiki/Synergy">Synergy</a> for now; I am currently ironing out the last compatibility issues with <a href="/wiki/Synergy_Advance">Synergy Advance</a> on Leopard.</p>
+<p>I wouldn't expect moving <a href="/wiki/iTunes">iTunes</a> to actually prevent Synergy from starting but I wouldn't be surprised to see some anomalous behaviour, at least until things &quot;settle in&quot;. Specifically, when you move an application the information in the &quot;Launch Services&quot; database may become out of date; once you get it up to date I would expect everything to work normally.</p>
+<p>So some things you could try:</p>
+<ul>
+<li>reboot</li>
+<li>manually quit and then relaunch iTunes</li>
+<li>uninstall and then re-install Synergy</li>
+<li>manual reset the Launch Services database</li>
+</ul>
+<p>To do the latter you would need to use the <code>lsregister</code> tool. At least on Leopard, it's location is <code>/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Support/lsregister</code>. Something like:</p>
+<pre># reset the database
+/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Support/lsregister -kill
+
+# rescan absolutely everything
+/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Support/lsregister -R /</pre>
+<p>That might be a little invasive though, so I'd recommend trying it only as a last resort.</p>
+<p>Finally, what version of Synergy were you running? It might be worth using the stable 3.2.1 release rather than the experimental 3.5 alpha. There is a known bug in Mac OS X 10.5, 10.5.1 and 10.5.2 which can cause the 3.5 alpha to crash. I am hoping the bug is fixed in 10.5.3 because I haven't seen any crashes yet, but I'll have to wait for some time before I'm convinced that the issue really is gone for good.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3381'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3381"><time data-relative="true">2008-06-16T20:29:43Z</time></a></span>
+</cite>
+<blockquote><p>I am using 10.5.3, Synergy 3.2.1.</p>
+<p>I decided to try step 1) Reboot, and now things seem to be working all right.  I had tried quitting and restarting iTunes and uninstalling and reinstalling Synergy without success.  I'm just glad it's working again.  I didn't realize quite how useful it was until it was gone.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3382'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3382"><time data-relative="true">2008-06-17T04:25:11Z</time></a></span>
+</cite>
+<blockquote><p>Ok, glad to hear that fixed it. Going to mark this as CLOSED. Feel free to add comments if anything else comes up.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

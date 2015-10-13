@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1193: Accept file attachments in issue tracker (possible wiki or even blog as well)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1193</div>
+<div class='issue' id='issue_1193'>
+<form class="edit_issue" id="edit_issue_1193" action="/issues/1193" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="anKI26a5nyrjCY1ogCfur53jYe+PUz4fiWnvbZdCswpegDZsATRFfzqFvp+xDr0bKGEI04S/sAOpdjqTs5rULg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1193:
+<span data-name='issue[summary]'>
+Accept file attachments in issue tracker (possible wiki or even blog as well)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-01-14T15:46:30Z</time>, updated <time data-relative="true">2010-01-04T08:13:05Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>With some of the big comments that I've been pasting lately (see <a href="/issues/1190">ticket #1190</a>) I've felt the need to add better comment navigation (<a href="/issues/1192">ticket #1192</a>).</p>
+<p>But it's also been making me want to be able to attach files to some of these tickets. I'm not think of images or anything (although that could be useful) but of text files.</p>
+<p>None of this is rocket science but there <em>are</em> access control issues to think about.</p>
+<p>Storing the files on disk would make them very quick to serve (<a href="/wiki/nginx">nginx</a> wouldn't even have to touch <a href="/wiki/Rails">Rails</a>) but then we'd have no access control at all. That just won't work (imagine files attached to private tickets).</p>
+<p>So it seems like literally the only way to do file attachments is to serialize them to the database and have an <code>AttachmentsController</code> <code>show</code> action serve them up on demand.</p>
+<p>That would be the basic idea. Later on there could be scope for generating thumbnails where appropriate; perhaps an <code>AttachmentThumbnail</code> model.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4068'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4068"><time data-relative="true">2009-01-14T15:47:21Z</time></a></span>
+</cite>
+<blockquote><p>Note that file attachments might also be useful in the blog and the wiki, and should be easier enough to add; if they can be done for issues they can be done for the others too.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4069'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4069"><time data-relative="true">2009-01-14T15:52:53Z</time></a></span>
+</cite>
+<blockquote><p>As for the association type, there are two options:</p>
+<p>Firstly, &quot;issue/article/post has many attachments&quot; (&quot;has many&quot;/&quot;belongs to&quot;). An attachment can only belong to one parent resource at any given time. Pros: access control straightforward, implementation is quick and easy, code is simple. Cons: data duplication if you want the same attachment to be attached to different tickets/articles/posts.</p>
+<p>Secondly, &quot;has many through/has and belongs to many&quot;. An attachment could be associated with lots of different parent resources, each represented using an &quot;attaching&quot; or &quot;attachment relation&quot; record. Pros: no data duplication. Cons: code much more complex.</p>
+<p>For me this is a no-brainer and the first option is the way to go. Data duplication is an imaginary problem that should be dealt with if and only I come to a time where I start finding it excessive.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4508'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4508"><time data-relative="true">2009-04-26T19:08:51Z</time></a></span>
+</cite>
+<blockquote><p>Not to be confused with <a href="/issues/1276">ticket #1276</a>, which is about a generic file-upload interface for admin use, not related to the issue tracker.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4513'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4513"><time data-relative="true">2009-04-26T19:16:03Z</time></a></span>
+</cite>
+<blockquote><p>See also:</p>
+<ul>
+<li><a href="/issues/446">ticket #446</a>: &quot;Use RESTful web service instead of email for receiving crash reports&quot;</li>
+<li><a href="/issues/448">ticket #448</a>: &quot;Integrate WODebug crash reports into Rails backend&quot;.</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4533'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4533"><time data-relative="true">2009-04-27T06:13:40Z</time></a></span>
+</cite>
+<blockquote><p>Useful docs for serving files via <a href="/wiki/nginx">nginx</a> rather than tying up a <a href="/wiki/Mongrel">Mongrel</a> process:</p>
+<ul>
+<li><a href="http://blog.kovyrin.net/2006/11/01/nginx-x-accel-redirect-php-rails/" class="external">http://blog.kovyrin.net/2006/11/01/nginx-x-accel-redirect-php-rails/</a></li>
+<li><a href="http://wiki.nginx.org/NginxXSendfile" class="external">http://wiki.nginx.org/NginxXSendfile</a></li>
+<li><a href="http://spongetech.wordpress.com/2007/11/13/the-complete-nginx-solution-to-sending-flowers-and-files-with-rails/" class="external">http://spongetech.wordpress.com/2007/11/13/the-complete-nginx-solution-to-sending-flowers-and-files-with-rails/</a></li>
+</ul>
+<p>Evidently we don't want to stick files in the <code>public</code> directory directly, seeing as they could contain sensitive information and be attached to private tickets (a customer attaching proof of payment, for example).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4534'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4534"><time data-relative="true">2009-04-27T06:18:29Z</time></a></span>
+</cite>
+<blockquote><p>So X-Accel-Redirect is the way to go for file <em>downloads</em>, but for file <em>uploads</em> may need another solution, at least in the long term. Even though nginx can buffer the upload and hand it over to Rails all at once, actually processing the data can still tie up a Mongrel process for a long while.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4535'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4535"><time data-relative="true">2009-04-27T06:19:21Z</time></a></span>
+</cite>
+<blockquote><p>For the file upload module, see:</p>
+<ul>
+<li><a href="http://brainspl.at/articles/2008/07/20/nginx-upload-module" class="external">http://brainspl.at/articles/2008/07/20/nginx-upload-module</a></li>
+<li><a href="http://www.grid.net.ru/nginx/upload.en.html" class="external">http://www.grid.net.ru/nginx/upload.en.html</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4536'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4536"><time data-relative="true">2009-04-27T16:27:52Z</time></a></span>
+</cite>
+<blockquote><p>A semi-related post on handling multiple file uploads:</p>
+<ul>
+<li><a href="http://www.practicalecommerce.com/blogs/post/432-Multiple-Attachments-in-Rails" class="external">http://www.practicalecommerce.com/blogs/post/432-Multiple-Attachments-in-Rails</a></li>
+</ul>
+<p>(Doesn't mention <a href="/wiki/nginx">nginx</a> at all but does touch on some UI design issues.)</p>
+<p>After thinking about this for a while, here is my current thinking:</p>
+<h3>Downloads</h3>
+<p>Using <code>X-Accel-Redirect</code> is an absolute no-brainer. We delegate responsibility for streaming files off the disk to nginx, thereby ensuring that even for large files our <a href="/wiki/Mongrel">Mongrel</a> processes don't get tied up for long periods of time, and nor is there any risk of them trying to read large files into memory.</p>
+<p>And we get all the benefits of involving <a href="/wiki/Rails">Rails</a> in the process without any of the potential memory and CPU costs. That is, we can do things like access control, and have attachments marked as &quot;private/public&quot;, &quot;awaiting/not awaiting moderation&quot;, and having user ownership of attachments.</p>
+<p>So, like I said, a total no-brainer.</p>
+<h3>Uploads</h3>
+<p>The situation is not quite as clear cut with file uploads. Even if nginx reads the entire uploaded file from the client <em>before</em> handing it off to a Mongrel process, said Mongrel process can still be tied up for a while when it has to do MIME parsing of the a potentially very large request. I'd have to do experimentation to see if memory usage was a problem as well, even though in theory it should not be (you never know).</p>
+<p>Regrettably, nginx has not built-in equivalent of <code>X-Accel-Redirect</code> for handling uploads. There <em>is</em> a third-party module, commonly known as &quot;the nginx upload module&quot;, which does look pretty solid and well-regarded in the community. It certainly looks robust enough to at least warrant a trial.</p>
+<p>(One possible doubt: I'm using the nginx 0.6.x stable series and <a href="http://www.grid.net.ru/nginx/upload.en.html" class="external">the docs</a> for the upload module only seem to mention the 0.7.x development version. I am not too keen on being pushed from the stable onto the development series; will have to do some testing to find out whether the module is compatible.)</p>
+<p>According to the docs, you need <code>upload_pass</code> configuration for the <a href="/wiki/URL">URL</a> at which you're planning on receiving file uploads. My understanding, then, is that if you want the ability to add attachments to different models (tickets, blog posts, articles etc) then you would need an <code>upload_pass</code> set-up for each of those controllers, seeing as under a RESTful design you're going to be accepting those attachments in several different actions (eg. <code>issues#new</code>, <code>posts#new</code> etc), each of which with different URLs.</p>
+<p>That is quite duplicative.</p>
+<p>Worse, each of those configuration locations would require a <code>upload_pass_form_field</code> directive with <em>hard-coded</em> form fields in your nginx configuration instructing the module what other form parameters must be passed through to the backend Mongrel process. In other words, adding a new field to a form would actually require an adjustment to the nginx config!</p>
+<p>So that really is starting to sound messy.</p>
+<p>The alternative is to have a separate &quot;attachments&quot; controller and set up your <code>upload_pass</code> directives for a single URL on that controller. You thus avoid the duplication and reduce the amount of ugly hard-coding needed in your configuration file.</p>
+<p>But the downside there is that you can no longer open a new issue and attach a file at the same time, because submitting your issue and your attachment is now a two-step process involving two submissions to two different controllers. This is inconvenient for users, and worse still, it is a completely broken workflow for anonymous submitters (because those will have their issue submissions held for moderation, and they won't be able to attach anything at all until their ticket makes it out into public view, something that they may not stick around to see).</p>
+<p>The compromise that I am thinking on settling on then is the following:</p>
+<p>Basically, submitting attachments would be done via <a href="/wiki/AJAX">AJAX</a>. The downside is that you can't attach anything unless you have <a href="/wiki/JavaScript">JavaScript</a> enabled (although it could be made to degrade semi-gracefully). The upside is that even issues held for moderation can now have stuff attached to them, and the actual <a href="/wiki/UI">UI</a> for doing so would be fairly slick.</p>
+<p>The workflow would look something like this:</p>
+<ul>
+<li>user visits <code>issues#new</code> and fills out form</li>
+<li>clicks &quot;add attachment&quot; and uploads a new attachment, effectively performing an AJAX request to <code>attachments#create</code></li>
+<li><code>attachments#create</code> duly creates the attachment, which, depending on the current user, may be held for moderation or not, and returns a JSON response containing the id of the new attachment</li>
+<li>the browser takes the id and adds a hidden field to the issue form noting that it has an attachment with said id</li>
+<li>when the user finally posts to <code>issues#create</code>, the controller knows that the issue (apparently) includes an attachment with the given id</li>
+</ul>
+<p>Observations:</p>
+<ul>
+<li>this works for multiple attachments at a time</li>
+<li>when the attachment is first created it will have <code>NULL</code> values for the association (<code>attachable_type</code> and <code>attachable_id</code>)</li>
+<li>when the issue is then created, it should expect to find that <code>NULL</code> association and take &quot;ownership&quot; of the attachment</li>
+<li>to prevent race conditions and attacks (another user trying to guess attachment ids and take &quot;ownership&quot; of them by creating malicious new issue posts), we would have to rely on some kind of security through obscurity &mdash; that is, unpredictable ids &mdash; because we evidently can't set up any association at the time the attachment is uploaded because we still don't know (and can't know) what the id of the final &quot;attachable&quot; model will be</li>
+<li>some random hash-y thing should be good enough for that (eg. instead of predictable ids like &quot;/attachments/1&quot; we should have ones like &quot;/attachments/af9a3cc83256e6388ad6677c7fb665db877a00b3&quot;)</li>
+<li>in the case of <em>editing</em> attachments of an existing &quot;attachable&quot; model this is evidently not a problem because in that case we <em>do</em> already know the type and id of the model</li>
+</ul>
+<p>As far as how these things would actually be stored on disk, we don't want to risk too many files accumulating in the same directory so we could use a &quot;partitioned&quot; scheme; the &quot;af9a3cc83256e6388ad6677c7fb665db877a00b3&quot; example mentioned above could actually be stored at <code>attachments/af/9a3cc83256e6388ad6677c7fb665db877a00b3</code>, thus dividing the key-space into 256 buckets. (Although in reality we might just divide it into 16 buckets because the according to the docs for the <code>upload_store</code> directive of the nginx upload module, &quot;all subdirectories should exist before starting nginx&quot;, and that might be somewhat painful.)</p>
+<p>On the subject of &quot;hashed&quot; subdirectories:</p>
+<ul>
+<li><a href="http://www.serverphorums.com/read.php?5,5603,5604,quote=1" class="external">http://www.serverphorums.com/read.php?5,5603,5604,quote=1</a>: doesn't really answer my question; the poster says that given configuration of <code>upload_store &quot;/hdd1/_uploads&quot; 1;</code> &quot;i had to create 10 directories 0-9 in the above&quot;</li>
+<li><a href="http://www.motionstandingstill.com/nginx-upload-awesomeness/2008-08-13/" class="external">http://www.motionstandingstill.com/nginx-upload-awesomeness/2008-08-13/</a>: also uses the same example, &quot;The directory is hashed, subdirectories 0 1 2 3 4 5 6 7 8 9 should exist&quot;</li>
+</ul>
+<p>See also:</p>
+<ul>
+<li><a href="http://www.motionstandingstill.com/ngnix-upload-awesomeness-pt2/2008-08-20/" class="external">http://www.motionstandingstill.com/ngnix-upload-awesomeness-pt2/2008-08-20/</a>: a follow-up to the post linked-to above.</li>
+<li><a href="http://www.motionstandingstill.com/using-nginx-to-send-files-with-x-accel-redirect/2008-09-03/" class="external">http://www.motionstandingstill.com/using-nginx-to-send-files-with-x-accel-redirect/2008-09-03/</a>: related post on <code>X-Accel-Redirect</code>.</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4537'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4537"><time data-relative="true">2009-04-27T16:32:36Z</time></a></span>
+</cite>
+<blockquote><p>A note on what I meant about &quot;semi-graceful&quot; degradation for browsers without <a href="/wiki/JavaScript">JavaScript</a> enabled:</p>
+<p>Basically, you'd submit the form to <code>attachments#create</code> and show the user a page which said something like &quot;your attachment has been created, this is the URL you can use to refer to it&quot;; the message would be very similar for both moderated and unmoderated submissions (in the former case you'd see something similar to what people see when their issue is held for moderation; in the latter you'd see an <code>attachments#show</code> action, which I suppose would give metadata about the attachment rather than showing the attachment itself).</p>
+<p>Could possibly add support to the wikitext module for turning strings like &quot;attachment <a href="/tags/x">#x</a>&quot; where &quot;x&quot; is some integer into hyperlinks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4538'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4538"><time data-relative="true">2009-04-27T16:49:32Z</time></a></span>
+</cite>
+<blockquote><p>Given that the <code>upload_store</code> directive refers to what is essentially a temporary directory, I don't think there's much need to worry about hashing it.</p>
+<p>For backend errors the <code>upload_cleanup</code> directive handles automatic removal, and for non-error code path we should really be moving the file to its final resting place (where we can implement whatever hashing scheme we see fit).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4544'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4544"><time data-relative="true">2009-04-27T17:22:49Z</time></a></span>
+</cite>
+<blockquote><p>Having troubles with <code>proxy_temp_path</code> and the upload module (see &quot;<a href="/wiki/Updating_to_nginx_0.6.36_with_the_nginx_upload_module_2.0.9">Updating to nginx 0.6.36 with the nginx upload module 2.0.9</a>&quot;).</p>
+<p>A bit busy right now, but must find out whether this is a new bug in <a href="/wiki/nginx_0.6.36">nginx 0.6.36</a> or is caused by the upload module.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5235'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5235"><time data-relative="true">2010-01-04T07:51:05Z</time></a></span>
+</cite>
+<blockquote><p>See <a href="/issues/1388">ticket #1388</a> for another possible use for attachments: they could be used to deliver downloadable assets for appcasted releases. Still need to decide whether these attachments would be independent resources (no parent), or would actually be associated with the given release.</p>
+<p>The nesting on the associations would be starting to get pretty deep:</p>
+<ul>
+<li><code>/attachments/7d4e12254d339cce521486f482a02dc447a43b12</code> (parentless attachment)</li>
+<li><code>/issues/12345678/attachments/7d4e12254d339cce521486f482a02dc447a43b12</code> (attachment on an issue)</li>
+<li><code>/blog/foo-bar-baz-wow/attachments/7d4e12254d339cce521486f482a02dc447a43b12</code>(attachment on weblog post)</li>
+<li><code>/wiki/Patching_XYZ_1.0.2_for_Mac_OS_X_Snow_Leopard/attachments/7d4e12254d339cce521486f482a02dc447a43b12</code> (attachment on wiki article)</li>
+<li><code>/products/synergy/releases/12.10/attachments/7d4e12254d339cce521486f482a02dc447a43b12</code> (attachment on product release)</li>
+</ul>
+<p>As I noted in <a href="/issues/1388">ticket #1388</a>, I was wanting release assets to have URLs like:</p>
+<ul>
+<li><code>/products/synergy/releases/12.10/notes</code></li>
+</ul>
+<p>So I might actually need two resources here:</p>
+<ul>
+<li>the attachments resource, which stores the actual asset as a parentless resource</li>
+<li>an &quot;Asset&quot; resource which would allow us to set up the &quot;has_many&quot; association on the product release, and would map attachments (assets) to releases</li>
+</ul>
+<p>Not sure if that's the best way to go though.</p>
+<p>Alternatives that would allow us to add attachments to releases and not create any other models:</p>
+<ul>
+<li>just tolerate the long, &quot;ugly&quot; URLs (one side benefit: people couldn't guess product download URLs prior to official release)</li>
+<li>add a &quot;permalink&quot; field to the attachment model which would allow an admin to define an access shortcut like &quot;notes&quot; or &quot;dmg&quot; which would be valid within the context of the parent resource</li>
+</ul>
+<p>The latter has a fairly &quot;icky&quot; level of complexity just for the purpose of making pretty URLs. In reality the only user/consumer of such URLs would be the appcast client (the product itself) and the developer who has to make blog posts and link to the new version. In the former case appcast feeds should always be machine generated so it shouldn't be a problem. In the latter case the developer should probably just link to the download page, but the problem of providing the right download link there still remains...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5236'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5236"><time data-relative="true">2010-01-04T08:13:05Z</time></a></span>
+</cite>
+<blockquote><p>If we end up using attachments to distribute release assets (<a href="/issues/1388">ticket #1388</a>) will want to add a counter field to the model to count &quot;hits&quot;. See the &quot;Link&quot; resource for an example of this.</p>
+<p>Basically we'd increment the counter, check access permissions, then do the <code>X-Accel-Redirect</code> thing so that <a href="/wiki/nginx">nginx</a> could actually handle the download.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

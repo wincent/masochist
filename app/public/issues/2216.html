@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #2216: Setting attributes &amp; floating images
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #2216</div>
+<div class='issue' id='issue_2216'>
+<form class="edit_issue" id="edit_issue_2216" action="/issues/2216" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Nww3MXh7x22P88uetY7N1T6OqWtbxjX/svzno2gcrb8D/omG3/YdOFZ/+GmEp55hiwzAV1Aqu+OS4zJdTMTKmw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #2216:
+<span data-name='issue[summary]'>
+Setting attributes &amp; floating images
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2015-07-18T23:51:35Z</time>, updated <time data-relative="true">2015-07-24T18:07:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>How can I set attributes of Wikitext in a rails 4 application ?</p>
+<p>I'm using wikitext to render the content of a page (not all the page) so I call Wikitext like that :</p>
+<p>&lt;%= @codex.content.to_wikitext %&gt;</p>
+<p>So, how can I set attributes (like internal links prefix) in the entire application ? I'm sorry, but I didn't well understood how to do it.</p>
+<p>And, is there an easy way to create floating image ? I mean, in a Wiki, there is often image next to the text. Is there easy way to add a &quot;floating left&quot; or &quot;floating right&quot; attribute ? Or to add a css class who do it ?</p>
+<p>Sincerely,</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_13141'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13141"><time data-relative="true">2015-07-21T18:34:07Z</time></a></span>
+</cite>
+<blockquote><h3>Initialization</h3>
+<p>If you're using this in the context of a Rails app, you could put initialization in a <code>config/initializers/wikitext.rb</code> file; here's an example from a project of mine:</p>
+<pre class="ruby-syntax"># Override example &quot;wikitext/preprocess&quot; that comes with wikitext gem.
+class String
+  def wikitext_preprocess
+    self.
+      # autolink hashtags, but only ones containing at least one letter
+      gsub(
+        %r{
+          (^|\s)                           # only at start of line/after space
+          \#(                              # will match a hashtag
+            (?:[a-z0-9]*[a-z][a-z0-9]*)+   # &quot;word&quot; containing at least 1 letter
+            (?:\.[a-z0-9]*[a-z][a-z0-9]*)* # 0 or more &quot;.word&quot;
+          )\b
+        }ix,
+        '\1[/tags/\2 #\2]'
+      ).
+      # same as in wikitext/preprocess:
+      gsub(/\b(bug|issue|request|ticket) #(\d+)/i, '[/issues/\2 \1 #\2]')
+  end
+end
+</pre>
+<p>Note that the <code>#to_wikitext</code> method <a href="https://github.com/wincent/wikitext/blob/32b7c915c2f66cd2dbfcd7c41516a764e407045e/lib/wikitext/string.rb#L30" class="external">will use</a> a <a href="https://github.com/wincent/wikitext/blob/32b7c915c2f66cd2dbfcd7c41516a764e407045e/lib/wikitext/parser.rb#L28" class="external">shared parser instance</a> by default, so you can just configure that eg. you could do:</p>
+<pre class="ruby-syntax">parser = Wikitext::Parser.shared_parser
+parser.internal_link_prefix = '/foo/'</pre>
+<h3>Floating</h3>
+<p>At the moment there is no built-in way to do this. You could target <code>img</code> tags via CSS, but in order to be flexible we'd need to provide a way to allow a class to be included in the image syntax. I haven't really thought about what that should be, but I'm guessing something like <code>{left:image.jpg}</code> or similar. The question I'd wonder would be, should we allow arbitrary classnames, or restrict it to a whitelist? Whatever it was, it should be gated behind an option, for security.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_13148'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_13148"><time data-relative="true">2015-07-24T15:22:03Z</time></a></span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I think that providing a limited number of class (left, right, hidden) by default could be a good idea, and in a second time, adding an option to accept non standard class (arbitrary classnames) could cover most of the cases. But as you said, it could be problematic and bad used by the user so an option for the developer is essential to avoid problems.</p>
+<p>Just a question : does wikitext come with a CSS file ? If it's not the case, maybe leave to the user the choice of the class to apply (I'm thinking to bootstrap users like me for example).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_13149'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_13149"><time data-relative="true">2015-07-24T18:07:17Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>does wikitext come with a CSS file</p>
+</blockquote>
+<p>Nope, it's not opinionated about how things should be styled.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Horizontal split does not work
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Horizontal split does not work</div>
+<h1 class='major'>Horizontal split does not work</h1>
+<div class='topic' id='topic_547'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/547"><time data-relative="true">2013-02-13T20:36:52Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>I have the problem that I am not able to open some file in a new split window. Vertical split (&lt;C-v&gt;) does work, but horizontal does not (&lt;C-CR&gt;, &lt;C-s&gt;). Any thoughts what might cause this? The only time splits work is when I open new files while in the current buffer are unsaved changes. I already tried to set a new mapping, but that did nothing either: let g:CommandTAcceptSelectionSplitMap='&lt;S-CR&gt;'</p>
+<p>Cheers, Arvid</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10140'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10140"><time data-relative="true">2013-02-14T05:18:32Z</time></a></span>
+</cite>
+<blockquote><p>Are you using <a href="/wiki/Vim">Vim</a> in the terminal? It's possible the terminal itself is intercepting the <code>&lt;C-s&gt;</code> key sequence and not passing it through to Vim. <code>&lt;C-s&gt;</code> by default suspends the terminal and <code>&lt;C-q&gt;</code> resumes it (see <a href="http://en.wikipedia.org/wiki/Software_flow_control" class="external">the Wikipedia article on flow control</a> for more details).</p>
+<p>Likewise, <code>&lt;C-CR&gt;</code> is never passed down to programs running inside the terminal; they simply don't see it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_10141'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_10141"><time data-relative="true">2013-02-14T15:44:03Z</time></a></span>
+</cite>
+<blockquote><p>Thank you. That was the missing hint.</p>
+<pre class="shell-syntax">$ stty stop undef &amp;&amp; stty start undef</pre>
+<p>This did the trick in my terminal to disable <code>&lt;C-s&gt;</code> and <code>&lt;C-q&gt;</code>.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

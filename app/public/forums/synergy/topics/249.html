@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy 3.5a2
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy 3.5a2</div>
+<h1 class='major'>Synergy 3.5a2</h1>
+<div class='topic' id='topic_249'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/synergy/topics/249"><time data-relative="true">2007-11-27T06:38:48Z</time></a>
+</span>
+</cite>
+<blockquote><p>Release announcement:</p>
+<p><a href="http://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php" class="external">http://wincent.com/a/news/archives/2007/11/synergy_35a2_re.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_694'>
+<cite>
+<a href="/users/dmc">DMC</a>
+<span class='when'><a href="#comment_694"><time data-relative="true">2007-12-04T03:55:30Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>LOVE Synergy. Couldn't live without it.</p>
+<p>Unfortunately I strongly suspect that build 35a2 is causing Kernel panics on my Macbook Pro running Leopard 10.5.1 (9B18) (Hope it's Synergy anyway and not somethin I can't trace!)</p>
+<p>At the very least it keeps crashing and dumping itself out of the menu bar on a regular basis. </p>
+<p>I'm going to remove Synergy. I'll update this thread as to whether the KPs stop or not.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_695'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_695"><time data-relative="true">2007-12-04T05:12:54Z</time></a></span>
+</cite>
+<blockquote><p>I don't think an unprivileged user process making only calls to standard APIs would provoke kernel panics like that. All the crashes in this release seem to be memory-related, and that's because of the move to Objective-C and the new memory management model (Garbage Collection) but no API-level changes have been made.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_696'>
+<cite>
+<a href="/users/jan">Jan</a>
+<span class='when'><a href="#comment_696"><time data-relative="true">2007-12-06T17:23:25Z</time></a></span>
+</cite>
+<blockquote><p>Overhere also no kernel panics, do you really mean kernal panics or random crashes of Synergy?</p>
+<p>I have that problem, Synergy drops out every now and then. Have to restart it via the pref pane. Hopefully this can be fixed... I now realise how often I use Synergy shortcuts to control iTunes ;-) Thankx in advance!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_697'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_697"><time data-relative="true">2007-12-07T03:15:36Z</time></a></span>
+</cite>
+<blockquote><p>Note that if you're one of the Leopard users seeing crashes you have the option of dropping back to 3.2, the last stable release, still available for download here:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/tiger/" class="external">http://wincent.com/a/products/synergy-classic/download/tiger/</a></p>
+<p>I appreciate the input from those of you who have helped in testing the 3.5 alphas, but if it starts to become too painful then you should really drop back to 3.2. I hopefully already have enough info to enable me to fix the problems.</p>
+<p>And in moving back to 3.2 you're not missing out on any new features; it's just that 3.5 is the rewrite in Objective-C 2.0 and it's where future work will be done.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_698'>
+<cite>
+<a href="/users/galley">Galley</a>
+<span class='when'><a href="#comment_698"><time data-relative="true">2007-12-26T22:13:36Z</time></a></span>
+</cite>
+<blockquote><p>I never had any kernel panics, but Synergy stopped running on a regular basis, so I went back to 3.2.  One other thing I noticed was that the &quot;extra visual feedback&quot; displays weren't showing when a track was paused and played.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_699'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_699"><time data-relative="true">2007-12-27T05:30:55Z</time></a></span>
+</cite>
+<blockquote><p>I plan to release an updated 3.5 alpha within the next few days. I'll be uploading a new &quot;nightly&quot; build for the curious very soon; most likely within a few hours.</p>
+<p>When it's uploaded a notice will be posted here:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy/" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/synergy/</a></p>
+<p>The corresponding RSS (well, atom actually) feed is here:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/atom.xml" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/atom.xml</a></p>
+<p>The nightlies have been out-of-action for many months now due to the whole Tiger-to-Leopard transition. But now that I am getting on top of all the Leopard issues the nightlies will be starting up again, and not just for Synergy but for the other products too.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_700'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_700"><time data-relative="true">2007-12-27T11:28:32Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so the nightly is up here:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblo...eb0af3cce75.php" class="external">http://wincent.com/a/about/wincent/weblo...eb0af3cce75.php</a></p>
+<p>I'm still not ready to cut a proper release -- I have been able to make this build crash a couple of times -- but I think the vast majority of problems with the previous alpha release are now fixed. Hopefully with a few more days' testing will be able to beat this into shape.</p>
+<p>If you decide to try out the nightly and discover any problems please file bug reports at:</p>
+<p><a href="http://bugs.wincent.com/" class="external">http://bugs.wincent.com/</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_701'>
+<cite>
+<a href="/users/vrh">VRH</a>
+<span class='when'><a href="#comment_701"><time data-relative="true">2008-02-23T15:19:23Z</time></a></span>
+</cite>
+<blockquote><p>I'm running the latest alpha and I have the same problem as Galley:  the 'extra visual feedback' no longer displays when a track is paused and played.  Even switching back to the prefpane has not restored that visual feedback.  Any help would be appreciated.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_702'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_702"><time data-relative="true">2008-02-24T07:04:56Z</time></a></span>
+</cite>
+<blockquote><p>I've just tried to reproduce that problem and it works for me here. I think you might have to do some investigation to rule out possible local causes like corrupt preference files. See some troubleshooting tips here:</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a></p>
+<p>You might also want to set some different hot key combinations and see if it works with those; I know on my own keyboard (one of the new aluminium models) Apple has taken over a couple of the keys that I used to use for skipping tracks (now they control the volume) and this seems to be hardwired into the OS and there is no way to override it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_703'>
+<cite>
+<a href="/users/tom">Tom</a>
+<span class='when'><a href="#comment_703"><time data-relative="true">2008-03-08T10:40:07Z</time></a></span>
+</cite>
+<blockquote><p>Wincent, if you go to the Keyboard &amp; Mouse PrefPane, you should see a check box to enable the standard F-keys instead of the new Apple layout.  Additionally, there is a &quot;Fn&quot; key on the new aluminum keyboard (it's above the Delete key) that switches between the &quot;new&quot; and &quot;old&quot; function keys when held down.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

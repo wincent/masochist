@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #208: In-application bug reporting
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #208</div>
+<div class='issue' id='issue_208'>
+<form class="edit_issue" id="edit_issue_208" action="/issues/208" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="va9cess1+3JLpeVg2hUDTL0yUkwomvjUlm1r4gxq4CeJXeLNbLghJ5Ip1pfrPFD4CLA7cCN2dsi2cr4cKLKHAw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #208:
+<span data-name='issue[summary]'>
+In-application bug reporting
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WODebug
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-03T08:18:55Z</time>, updated <time data-relative="true">2009-04-07T04:04:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nigel">Nigel</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Not to be too irritating, but reporting a bug is _much_ more difficult than it should be. Wincent, I've  heard you say before that bugzilla is very useful and powerful. Seems like it's developer-friendly and  user-hostile. Not only will many people not understand how to file a bug (I'm not even sure that I'm  doing it correctly), but I can see myself not bothering a lot of the time simply because it's such a hassle.  Would be much nicer if you had something like Safari's bug-reporting method. A simple dialog box in  the application where you can specify the type of bug (feature request, bug, etc.) and a text area for a  description. The application can fill out the other necessary fields - version, OS, platform. This can then  be added to your bugzilla database, but we users don't have to deal with it.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1908'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1908"><time data-relative="true">2005-05-03T09:30:08Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. I think you make some good points. It's true that Bugzilla is developer-friendly  and that many users find it intimidating (you though seem to be doing just fine!).</p>
+<p>The Hardware and OS fields aren't much use, I know. Bugzilla picks reasonable defaults for these based  on your browser, but the truth is you can ignore them (it's not possible to turn them off without  hacking Bugzilla, and I prefer to keep it as standard as possible).</p>
+<p>The main strengths of Bugzilla as I see them are:</p>
+<p>1. Public, so users can search for prior reports as well as check back and see the progress on issues  they have reported. It also facilitates collaboration.</p>
+<p>2. Extremely powerful, especially in terms of searching, which means that I can find exactly what I am  looking for very quickly (which means I get bugs fixed quicker!). It is so powerful that I now use Bugzilla  to maintain my &quot;TODO&quot; lists rather than keeping private documents &quot;in house&quot;. It takes 20% longer to  file the report in bugzilla, but once it's in there I know it won't be overlooked.</p>
+<p>3. Widely used in the industry by lots of high-profile projects. In theory this means that once you know  how to use Bugzilla at any one site, you know how to use it at any of the others.</p>
+<p>The main problem with the Safari-style bug reporting is that it isn't hooked up to a public database, so  it encourages duplicate bug reports. Because I work alone it's a fairly high priority for me to minimize  duplicate bug reports (and even with a searchable public database I still get a fair few duplicates). (On a  tangential side note, I do wonder if anyone at Apple actually reads those reports...)</p>
+<p>I do recognize that having to have an account and login in order to file a bug report makes it a little  harder to file a bug report. I do my best to make it easy by putting a link to the bug database in the  navigation bar. I also hope that users are using the auto-form-fill features of their browsers to make it  easy to log in. The truth is that the &quot;barrier to entry&quot; when it comes to filing bugs probably means that  the people who do file bug reports end up filing ones that are of better quality; the signal to noise ratio  is pretty good (which once again means things get fixed faster, and that's my number one goal).</p>
+<p>If you look back at some of the bugs that have been closed in this database you'll see that often there  was a degree of collaboration between users (&quot;me too&quot;, &quot;worked for me&quot;, &quot;didn't work for me&quot;, &quot;can you  try this?&quot;) that wouldn't otherwise be possible without a public database like this.</p>
+<p>Synergy Advance includes a crash reporter framework (WODebug) that allows users to send crash  reports if something goes wrong, so I've already got part support for what you're asking. There's also  the contact page and the support tickets page that many people use to file bug reports. Of course, I  would prefer people to use the bugs database for bugs as I honestly do believe that it leads to stuff  getting fixed quicker (so much so that if someone sends me a feature request by email I usually come  here and paste their email into a new bug report).</p>
+<p>I must admit that I'm not all that keen on going as far as you suggest and adding an in-app bug report  window, but I'll leave this bug report open so that others can leave there comments on it and vote for it  (see how great bugzilla is?!)...</p>
+<p>Thanks for the input!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1909'>
+<cite>
+<a href="/users/nigel">Nigel</a>
+<span class='when'><a href="#comment_1909"><time data-relative="true">2005-05-03T18:22:29Z</time></a></span>
+</cite>
+<blockquote><p>I see your points, and I understand why you want to keep using it. I suppose that personally, learning  how to use Bugzilla is a useful skill for me. I can learn to live with it.</p>
+<p>I wish there was a way to list all the bugs in the database, showing the newest first, so I could keep  track of what's going on when I log in to report a bug. Correction: I'm sure there's a way, but I wish  there was an obvious way. I find the page you get when you first log in is baffling because it's not at all  obvious what you need to do. I think it would be useful if the default view showed the newest 10 or so  bugs, similar to the view you find when checking out the forums.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1910'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1910"><time data-relative="true">2005-05-03T18:56:18Z</time></a></span>
+</cite>
+<blockquote><p>To get the list of all bugs, newest first, click on the &quot;Search page&quot; link that appears at the top (and  bottom) of this page:</p>
+<p><a href="http://wincent.com/a/support/bugs/query.cgi" class="external">http://wincent.com/a/support/bugs/query.cgi</a></p>
+<p>Just click &quot;Search&quot; on the page that shows and it will show all open bugs for all products. If you want to  confine your search to a single product then choose the product from the popup menu.</p>
+<p>Bugs are sorted by ID number, so the oldest bugs will appear first in the resulting list so you have to  look at the list from the bottom if you want to see the latest.</p>
+<p>You can save this search (or any other) by using the &quot;Remember search as&quot; button at the bottom of the  list. Pick a name for it, like &quot;All bugs&quot;, and the saved search will appear on the footer of every page  when you are logged in.</p>
+<p>I can edit the front page and change/add links. It is possible to put some useful saved searches on  there.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1911'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1911"><time data-relative="true">2006-07-05T02:05:27Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3264'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3264"><time data-relative="true">2008-04-27T12:13:02Z</time></a></span>
+</cite>
+<blockquote><p>Ok, so this issue is now in part addressed by the <a href="/wiki/Rails">Rails</a> rewrite of the site and the end of <a href="/wiki/Bugzilla">Bugzilla</a>.</p>
+<p>I'm changing the summary from:</p>
+<ul>
+<li>REQUEST: User-friendly bug reporting (was: Bug reporting is difficult)</li>
+</ul>
+<p>To:</p>
+<ul>
+<li>In-application bug reporting</li>
+</ul>
+<p>To better match the remaining portion of this ticket. My position on this has changed a bit since nearly 3 years ago when this ticket was opened; despite the risk of duplicate tickets I now actually think that in-application bug reporting is actually a good thing. There is some overhead involved but I think it will lead to problems getting found and fixed sooner.</p>
+<p>The new issue tracker is simple enough to use that I could even just embed it in a <a href="/wiki/WebKit">WebKit</a> view in the application (either the actually <a href="/wiki/support_ticket">support ticket</a> page itself, or just a lightweight HTML form that worked with the remote webserver using a RESTful resource model).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4419'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4419"><time data-relative="true">2009-04-07T03:44:33Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I'm going to change the product assignment for this issue. The website is already ready to accept new issue reports via an XML POST request, so the work needs to be done in the WODebug framework to provide a client-side UI for this.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4420'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4420"><time data-relative="true">2009-04-07T03:45:03Z</time></a></span>
+</cite>
+<blockquote><p><strong>Product</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> wincent.com</li>
+<li><strong>To:</strong> WODebug</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4422'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4422"><time data-relative="true">2009-04-07T04:04:16Z</time></a></span>
+</cite>
+<blockquote><p>See also <a href="/issues/448">ticket #448</a>, which is about getting WODebug to submit crash reports directly to the issue tracker rather than send them via email.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

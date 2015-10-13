@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #2016: Update to Git 1.7.12.4
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #2016</div>
+<div class='issue' id='issue_2016'>
+<form class="edit_issue" id="edit_issue_2016" action="/issues/2016" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="jPMw8yb/BEMTCpmSp63BMZMFR5/m6TnurCe7+XqlOTe4AY5EgXLeFsqGqmWWhJKFJocuo+0Ft/KMOG4HXn1eEw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #2016:
+<span data-name='issue[summary]'>
+Update to Git 1.7.12.4
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2012-10-18T04:29:24Z</time>, updated <time data-relative="true">2013-02-09T17:38:48Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>On the site and everywhere I use <a href="/wiki/Git">Git</a>:</p>
+<pre>The latest maintenance release Git v1.7.12.4 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+e7eb697fc12887138e44ae100165c620a1210e81  git-1.7.12.4.tar.gz
+1d4ce5c8fabbf576d611effcce2f87089da1bb89  git-htmldocs-1.7.12.4.tar.gz
+1f853aa40c4518a4fad829f255c96d6e21659e93  git-manpages-1.7.12.4.tar.gz
+
+Also the following public repositories all have a copy of the v1.7.12.4
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.7.12.4 Release Notes
+==========================
+
+Fixes since v1.7.12.3
+---------------------
+
+ * &quot;git fetch&quot; over the dumb-http revision walker could segfault when
+   curl's multi interface was used.
+
+ * It was possible to give specific paths for &quot;asciidoc&quot; and other
+   tools in the documentation toolchain, but not for &quot;xmlto&quot;.
+
+ * &quot;gitweb&quot; did not give the correct committer timezone in its feed
+   output due to a typo.
+
+ * The &quot;-Xours&quot; (and similarly -Xtheirs) backend option to &quot;git
+   merge -s recursive&quot; was ignored for binary files.  Now it is
+   honored.
+
+ * The &quot;binary&quot; synthetic attribute made &quot;diff&quot; to treat the path as
+   binary, but not &quot;merge&quot;.
+
+Also contains many documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.7.12.3 are as follows:
+
+Ben Walton (1):
+      tests: &quot;cp -a&quot; is a GNUism
+
+Dave Borowitz (1):
+      Documentation/Makefile: Allow custom XMLTO binary
+
+Dylan Alex Simon (1):
+      gitweb.cgi: fix &quot;comitter_tz&quot; typo in feed
+
+Jeff King (1):
+      http: fix segfault in handle_curl_result
+
+Junio C Hamano (6):
+      merge: teach -Xours/-Xtheirs to binary ll-merge driver
+      attr: &quot;binary&quot; attribute should choose built-in &quot;binary&quot; merge driver
+      ll-merge: warn about inability to merge binary files only when we can't
+      t1450: the order the objects are checked is undefined
+      gitcli: parse-options lets you omit tail of long options
+      Git 1.7.12.4
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (2):
+      gitignore.txt: suggestions how to get literal # or ! at the beginning
+      attr: a note about the order of .gitattributes lookup
+
+Philip Oakley (5):
+      Doc: shallow clone deepens _to_ new depth
+      Doc: separate gitignore pattern sources
+      Doc add: link gitignore
+      Doc clean: add See Also link
+      Doc branch: show -vv option and alternative
+
+Ramkumar Ramachandra (3):
+      t/test-lib: make sure Git has already been built
+      test-lib: use $SHELL_PATH, not $SHELL
+      Git url doc: mark ftp/ftps as read-only and deprecate them
+
+Richard Fearn (1):
+      Fix spelling error in post-receive-email hook
+
+Simon Ruderich (1):
+      l10n: de.po: fix a few minor typos</pre>
+<p>Supersedes <a href="/issues/1988">ticket #1988</a>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10017'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10017"><time data-relative="true">2012-10-18T05:43:28Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10018'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10018"><time data-relative="true">2012-10-18T05:43:55Z</time></a></span>
+</cite>
+<blockquote><p>This is down on my laptop and workstation (see &quot;<a href="/wiki/Updating_to_Git_1.7.12.4">Updating to Git 1.7.12.4</a>&quot; for notes).</p>
+<p>Still not yet done on my EC2 instances.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10121'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10121"><time data-relative="true">2013-02-09T17:38:44Z</time></a></span>
+</cite>
+<blockquote><p>Superseded by <a href="/issues/2050">ticket #2050</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10122'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10122"><time data-relative="true">2013-02-09T17:38:48Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

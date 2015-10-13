@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #87: REQUEST: Ability to turn off Amazon support without turning off covers in the floater
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #87</div>
+<div class='issue' id='issue_87'>
+<form class="edit_issue" id="edit_issue_87" action="/issues/87" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="PW1RPTzgc06qOAjWNESkvYuRYAHZnnj2gGehf5u23BwJn++Km22pG3O0OyEFbfcJPhMJPdJy9uqgeHSBv267OA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #87:
+<span data-name='issue[summary]'>
+REQUEST: Ability to turn off Amazon support without turning off covers in the floater
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-25T11:49:45Z</time>, updated <time data-relative="true">2008-01-08T04:57:22Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>There are currently three options for display or non-display of album art in the floater:</p>
+<p>1. No graphic 2. Synergy icon 3. Album cover</p>
+<p>It is proposed that these be replaced with the following:</p>
+<p>1. No graphic 2. Album cover (from iTunes) 3. Album cover (from Amazon)</p>
+<p>In the case of &quot;2&quot; and &quot;3&quot; above, the Synergy icon will be displayed only if no art is available for a given  track.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1448'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1448"><time data-relative="true">2004-12-25T12:15:01Z</time></a></span>
+</cite>
+<blockquote><p>Marking as ASSIGNED.</p>
+<p>And for reference, here is the customer email that prompted me to open this entry in the database:</p>
+<blockquote>
+<p>The reason of my writing today is an annoyance that's somewhat growing bigger by the day, namely, </p>
+</blockquote>
+<p>the two folders Synergy keeps to store album covers: the album covers folder and the temporary album  covers folder. First, I don't quite understand why two folders are needed.</p>
+<p>The system works the way it does for historical reasons. Synergy had  album cover support before iTunes did, so it has always had an &quot;Album  Covers&quot; folder in which it stored covers downloaded from Amazon. When  iTunes 4 came out (with album cover support), Synergy continued to use  the covers it had already downloaded, but if there was no downloaded  cover, it would try to get art from iTunes. It stored a copy of this  art in the album covers folder for better performance (it's quite an  expensive operation to retrieve art from iTunes via AppleScript), but  at the cost of disk space. This is how it works to this day, basically  searching in this order:</p>
+<p>1. Look for art in ~/Library/Application Support/Synergy/ 2. Ask iTunes for art 3. Search Amazon for art</p>
+<p>The fact that there are two folders is actually an improvement to the  original system (in which all art went in the &quot;Album Covers&quot;). Under  the new system, downloaded art gets stored in the &quot;Album Covers&quot;  folder. Art borrowed from iTunes goes in the &quot;Temporary Album Covers&quot;  folder. This folder is automatically disposed of each time you quit  Synergy, so the duplication of art from iTunes is no longer a problem.  Another improvement that was introduced at the same time was the use of  JPEG as the preferred file format, which results in smaller files than  the Cocoa default (TIFF) format.</p>
+<blockquote>
+<p>Now, I know, these complaints have to do with Amazon and the way Synergy retrieves information </p>
+</blockquote>
+<p>and that there is the option to switch off album covers in the floater and stop retrieving files from the  Internet. Which is, you will agree, less nice to look at. The suggestion I'd like to make is the following:  why not have a choice to switch off the retrieval of album covers from the Internet and show, if  available, the artwork associated with the file inside iTunes?</p>
+<p>There are currently three options:</p>
+<p>1. No graphic 2. Synergy icon 3. Album cover</p>
+<p>I think the best solution would be to replace those three options with </p>
+<p>the following:</p>
+<p>1. No graphic 2. Album cover (from iTunes) 3. Album cover (from Amazon)</p>
+<blockquote>
+<p>Or, better, the artwork that is, if any, embedded in the mp3-file itself?</p>
+</blockquote>
+<p>In theory, if the artwork is correctly embedded in the file, then  iTunes will provide it to Synergy. (It should already be doing so,  because Synergy does ask iTunes for art when it doesn't already have  art on the disk).</p>
+<blockquote>
+<p>But, as it stands now, I'm left with a) two growing folders of rubbish artwork or b) no artwork in my </p>
+</blockquote>
+<p>floater.</p>
+<p>Technically speaking, you're left with one growing folder, because the  temporary folder is automatically deleted at the end of each session. There's absolutely no reason why you should have to go without art in  the floater. If you've got all the art embedded in your mp3s, delete  the incorrectly downloaded art and Synergy will ask iTunes for art,  which means it will use the art that you've embedded.</p>
+<p>Also of interest to you may be <a href="/issues/8">bug #8</a>:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=8" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=8</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1449'>
+<cite>
+<a href="/users/paul-kazmercyk">Paul Kazmercyk</a>
+<span class='when'><a href="#comment_1449"><time data-relative="true">2006-01-21T11:30:18Z</time></a></span>
+</cite>
+<blockquote><p>I strongly second the motion for this request for exactly the same reasons as the original requester.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1450'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1450"><time data-relative="true">2006-01-28T11:25:59Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 356 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1451'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1451"><time data-relative="true">2006-07-05T02:03:51Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1452'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'><a href="#comment_1452"><time data-relative="true">2007-06-11T09:25:20Z</time></a></span>
+</cite>
+<blockquote><p>I would also love to see this feature added. Specifically for the inclusion of podcast where you know it won't have a cover, though Synergy may make some word matches and give the podcast a cover anyway.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1453'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1453"><time data-relative="true">2007-06-11T10:30:32Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #5)</p>
+<blockquote>
+<p>I would also love to see this feature added. Specifically for the inclusion of podcast where you know it won't have a cover, though Synergy may make some word matches and give the podcast a cover anyway.</p>
+</blockquote>
+<p>Good point. It might be good to have options for selectively turning off searches for some sources (podcasts being an obvious choice). I'm not sure if that should be under a separate ticket though.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1454'>
+<cite>
+<a href="/users/delysid">Delysid</a>
+<span class='when'><a href="#comment_1454"><time data-relative="true">2008-01-08T04:57:22Z</time></a></span>
+</cite>
+<blockquote><p>I also strongly support this feature request, since it's the request I just came to the Bugzilla site to make myself.  My main reason is that I like to add the best quality album cover image I can find for a track, with a reasonable amount of searching (i.e. a minute or ten, depending on track obscurity).</p>
+<p>By best I mean an optimal combination of image quality (clarity, colour, tone) and resolution (highest available to a max of 550 x 550, which is what I scale larger images down to before embedding in a track)</p>
+<p>Even when Synergy finds the right album cover for a track, it's often not the best even among those easily found.  If I'm right in thinking Synergy only searches Amazon for covers, there are many albums for which Amazon only has a 300 x 300 image, and usually it's not hard to find a better higher resolution alternative.</p>
+<p>As Synergy works now, if I turn Album Cover Display on for the Floater, then Synergy will often find and embed album covers for new tracks before I get around to doing it myself.  Trouble then is that it's hard to tell just from the little album cover in the lower left corner of iTunes whether the image is a measly 300 x 300 one automatically downloaded by Synergy, or a 550 x 550 (for example) I found myself.  </p>
+<p>So I've been leaving the Album Cover Display feature off in Synergy, to avoid this problem.  But then I can't see all the lovely album covers I've already embedded in other files.  This is frustrating for those who are album cover enthusiasts, who incidently are in no way anal or obsessive.  I know you were thinking it!</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

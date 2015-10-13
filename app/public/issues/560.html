@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #560: Apparent Alias issue
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #560</div>
+<div class='issue' id='issue_560'>
+<form class="edit_issue" id="edit_issue_560" action="/issues/560" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="CWhtroT3JblvxAtOMTLyxo5P61pXJmEOXHtxf8V6B1I9mtMZI3r/7LZIOLkAG6FyO82CZlzK7xJ8ZKSB4aJgdg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #560:
+<span data-name='issue[summary]'>
+Apparent Alias issue
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-04-09T14:38:57Z</time>, updated <time data-relative="true">2007-04-10T04:09:15Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/michael-g">Michael G</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I am having problems with an error report of broken aliases which appears in the Console Log for every program but would appear to be associated with Synergy.</p>
+<p>The current version of the Log entries (regardless of the program called) is:</p>
+<p>Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon</p>
+<p>&quot;Maroon&quot; is the file name of a JPG image associated with an album in iTunes.</p>
+<p>Before I uninstalled and reinstalled Synergy a further two JPG file names for albums were also reported.  One of these was in Synergy's Temporary Album Covers folder.</p>
+<p>Before I reinstalled Synery I was using the previous Beta version and this was being reported in place of Synergy 3.1.1, which is now the alleged missing alias per the above listing since I reinstalled.</p>
+<p>This installer file and &quot;alias_manager.pdf&quot; (Apple's listing of Carbon error codes) have both been deleted by me and now appear as broken aliases.  </p>
+<p>Any light you can shed on this would be appreciated.</p>
+<p>By the way, I do not have any programming skills although I am computer-literate.</p>
+<p>Thanks</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2969'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2969"><time data-relative="true">2007-04-09T16:29:09Z</time></a></span>
+</cite>
+<blockquote><p>The beginning of each entry begins with &quot;Mail[163]&quot; which indicates that Mail.app is the one issuing those messages. Did someone mail the installer to you as an attached or anything like that? It would be interesting to see what is on your file system that matches the name &quot;Install Synergy 3.1.1&quot;. One way of finding out is to run a find from the command line:</p>
+<p>find / -name &quot;*Install Synergy 3.1.1*&quot;</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2970'>
+<cite>
+<a href="/users/michael-g">Michael G</a>
+<span class='when'><a href="#comment_2970"><time data-relative="true">2007-04-09T17:05:52Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the reply.</p>
+<p>Actually, every prog or process launched reports the same lost alias.  For example, this consecutive extract from the log:</p>
+<p>Safari[162]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Safari[162]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Safari[162]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Safari[162]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Safari[162]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Safari[162]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Mail[163]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Finder[98]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Finder[98]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Finder[98]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Finder[98]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Finder[98]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Finder[98]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Console[305]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Console[305]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 Console[305]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Console[305]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon Console[305]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf Console[305]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon System Preferenc[308]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 System Preferenc[308]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Install Synergy 3.1.1 System Preferenc[308]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf System Preferenc[308]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon System Preferenc[308]: [FM] FSResolveAliasWithMountFlags() returns #-43 for alias_manager.pdf System Preferenc[308]: [FM] FSResolveAliasWithMountFlags() returns #-43 for Maroon</p>
+<p>Running the search at the command line that you suggested returns the following but I don't know how to interpret:</p>
+<p>find / -name &quot;*Install Synergy 3.1.1*&quot; find: /.Spotlight-V100: Permission denied find: /.Trashes: Permission denied</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2971'>
+<cite>
+<a href="/users/michael-g">Michael G</a>
+<span class='when'><a href="#comment_2971"><time data-relative="true">2007-04-09T17:06:48Z</time></a></span>
+</cite>
+<blockquote><p>Sorry, should have mentioned that the installer was downloaded through the link at Versiontracker.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2972'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2972"><time data-relative="true">2007-04-09T19:12:32Z</time></a></span>
+</cite>
+<blockquote><p>Well, the &quot;-43&quot; error code means &quot;File or directory not found; incomplete pathname&quot;, according to the developer docs. I've never seen this kind of thing before but if I had to make an educated guess I would say that it's not actually related to Synergy; rather, I think you might have some mild filesystem corruption and it just so happens that those two files, one of them being the Synergy installer, were affected.</p>
+<p>So I would try some of the usual troubleshooting steps to see if this goes away:</p>
+<p>- seeing if it happens in another user account</p>
+<p>- seeing if it persists across a log out/log in</p>
+<p>- seeing if it persists across a reboot</p>
+<p>- seeing if you can fix any errors on your disk by booting from your installation CD/DVD and running Disk First Aid</p>
+<p>- resetting your Launch Services database (see <a href="http://www.thexlab.com/faqs/resetlaunchservices.html" class="external">http://www.thexlab.com/faqs/resetlaunchservices.html</a> and <a href="http://www.macosxhints.com/article.php?story=20031215144430486" class="external">http://www.macosxhints.com/article.php?story=20031215144430486</a>)</p>
+<p>So those are the things I would start with. That last one I mention because you said it happens when you launch any app at all, so perhaps it has something to do with a corrupt Launch Services database...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2973'>
+<cite>
+<a href="/users/michael-g">Michael G</a>
+<span class='when'><a href="#comment_2973"><time data-relative="true">2007-04-10T03:32:20Z</time></a></span>
+</cite>
+<blockquote><p>Thanks.  I've tried the steps you have suggested but the problem persists.  I will speak to Apple tech and see what they advise.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2974'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2974"><time data-relative="true">2007-04-10T04:09:15Z</time></a></span>
+</cite>
+<blockquote><p>Ok, let me know how you go!</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

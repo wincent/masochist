@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #342: CPU Usage stuck at 95-100% when populating Global Menu with very large libraries
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #342</div>
+<div class='issue' id='issue_342'>
+<form class="edit_issue" id="edit_issue_342" action="/issues/342" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ATGp5ttYrQzQ5DAgiimCD2m5tflk3nBi6QGYtcQSNL81wxdRfNV3WQloA9e7ANG73DvcxW8y/n7JHk1L4MpTmw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #342:
+<span data-name='issue[summary]'>
+CPU Usage stuck at 95-100% when populating Global Menu with very large libraries
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-12-13T14:23:31Z</time>, updated <time data-relative="true">2006-07-05T02:07:06Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/john">john</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I just put a fresh copy of OS X 10.4.3 on my desktop and since then Synergy Advance will not use less than 95% of the processor, regardless of weather iTunes is on or not it still uses the same amount of processor, any attempt to access the Menubar icon results in a &quot;Synergy Advance (Not Responding)&quot; notice in Activity Monitor. As was mentioned in a previous report I have approximately 60-70,000 tracks in my iTunes Library which reside on AFP mounted drives, other than that there are no strange system extensions or hacks that would interfere with iTunes or Synergy Advance.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment' id='comment_2334'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2334"><time data-relative="true">2005-12-13T14:24:47Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=45) Sample #1 of Synergy Advance (while &quot;Not Responding&quot;)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2335'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2335"><time data-relative="true">2005-12-13T14:25:55Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=46) Sample #2 of Synergy Advance (prior to &quot;Not Responding&quot;)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2336'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2336"><time data-relative="true">2005-12-14T06:31:57Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report and the samples, John.</p>
+<p>I am not sure how much can be done about this, given the size of the library. The parsing of the library occurs in a separate thread, but there is a part of the process which cannot be done in a background thread (the actual insertion of menu items into the menu) and must be done on the main thread. Your sample shows that the program is spending most of the time doing the insertions.</p>
+<p>The next release has new code for inserting items into the menu; see this article:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/archives/2005/08/big_menus_reall.php" class="external">http://wincent.com/a/about/wincent/weblog/archives/2005/08/big_menus_reall.php</a></p>
+<p>I'm using a different API for inserting items into the menu. I don't know whether this will help, but once you've tested the new release let me know whether it makes a difference. I've done some testing and identified that there is lots of room for optimization in this API, and I've filed a bug report with Apple about it; basically: they call the API for the entire menu, even if it is thousands of items in size and only a small fraction of the menu will be visible on screen at any time. If they make a change to the API so that it only invokes the API for visible menu items then we'll see an absolutely massive speedup (and reduction in memory usage as well).</p>
+<p>If it turns out that there's nothing that can be done to speed it up (probably because of the combination of it being a huge library AND it being AFP mounted) then you may have to simply turn off the offending menu items. I am working an a customization module that will allow you to remove/add/reorder items from the menu. You'll be able to get rid of whichever menu item is soaking up the CPU (probably the &quot;Playlists&quot; menu item).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2337'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2337"><time data-relative="true">2006-04-01T13:32:05Z</time></a></span>
+</cite>
+<blockquote><p>Created an attachment (id=55) Sample of SA 0.4b2 while not responding to menu bar item</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2338'>
+<cite>
+<a href="/users/john">john</a>
+<span class='when'><a href="#comment_2338"><time data-relative="true">2006-04-01T13:57:55Z</time></a></span>
+</cite>
+<blockquote><p>Added a sample of 0.4b2 while not responding to the initial use of the menu bar item. The good news is that after 60-90 seconds S.A. pulls out of not responding and goes back to a stable state with cpu usage within an acceptable range (3-10%), and subsequent uses of the menu bar item do not re-produce the extremely high cpu usage. Additionally I can now open the Artists submenu and flawlessly (no hiccups or nasty rendering glitches) scroll through 10,000+ artists.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2339'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2339"><time data-relative="true">2006-04-01T14:23:48Z</time></a></span>
+</cite>
+<blockquote><p>(From update of attachment 55) Correcting MIME type</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2340'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2340"><time data-relative="true">2006-04-01T14:27:40Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for attaching the new sample, John.</p>
+<p>You can expect this to improve in the near future. CPU will always be high when churning through an extremely large library, but I should be able to remove the initial unresponsiveness while preparing the menu. </p>
+<p><a href="/issues/387">Bug #387</a> and <a href="/issues/389">bug #389</a> were the highest priorities, but now they are fixed and I'll get a new beta out within the next couple of days. Then I'll turn my attention to this bug. I was actually working on this before, then went on a nearly three month side trip re-writing the communications engine... hopefully it all means I'll have a rock-solid foundation upon which to layer new features.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2341'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2341"><time data-relative="true">2006-07-05T02:07:06Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

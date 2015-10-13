@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Make returning &quot;make: Nothing to be done for `all'.&quot;
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Make returning &quot;make: Nothing to be done for `all&#39;.&quot;</div>
+<h1 class='major'>Make returning &quot;make: Nothing to be done for `all'.&quot;</h1>
+<div class='topic' id='topic_438'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/bradley">Bradley</a>
+<span class='when'>
+<a href="/forums/command-t/topics/438"><time data-relative="true">2010-11-15T16:26:24Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm following the screencast tutorial steps and make doesn't produce the desired results:</p>
+<pre class="shell-syntax">$ ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+$ make
+make: Nothing to be done for `all'.</pre>
+<p>Setup:</p>
+<ul>
+<li>OS X 10.6.4</li>
+<li>VIM 7.2.108</li>
+<li>ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6451'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6451"><time data-relative="true">2010-11-15T22:28:49Z</time></a></span>
+</cite>
+<blockquote><p>Did you install using the Vimball? Maybe not all of the files were correctly extracted. You could try re-extracting if that is the case.</p>
+<p>If it did extract correctly then you should have the following in your <code>~/.vim/ruby/command-t</code> directory:</p>
+<pre>Makefile
+controller.rb
+depend
+ext.c
+ext.h
+extconf.rb
+finder.rb
+match.c
+match.h
+match_window.rb
+matcher.c
+matcher.h
+prompt.rb
+ruby_compat.h
+scanner.rb
+settings.rb
+stub.rb
+vim/screen.rb 
+vim/window.rb
+vim.rb</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_6809'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6809"><time data-relative="true">2011-04-16T23:29:58Z</time></a></span>
+</cite>
+<blockquote><p>I'm having the same problem:</p>
+<ul>
+<li>OSX 10.6.7</li>
+<li>ruby 1.8.7 (2009-06-12 patchlevel 174) [universal-darwin10.0]</li>
+<li>MacVim 7.3 (2010 Aug 15, compiled Aug 15 2010 22:03:01)</li>
+<li>gcc:</li>
+</ul>
+<pre>
+Using built-in specs.
+Target: i686-apple-darwin10
+Configured with: /var/tmp/gcc/gcc-5664~89/src/configure --disable-checking --enable-werror --prefix=/usr --mandir=/share/man --enable-languages=c,objc,c++,obj-c++ --program-transform-name=/^[cg][^.-]*$/s/$/-4.2/ --with-slibdir=/usr/lib --build=i686-apple-darwin10 --program-prefix=i686-apple-darwin10- --host=x86_64-apple-darwin10 --target=i686-apple-darwin10 --with-gxx-include-dir=/include/c++/4.2.1
+Thread model: posix
+gcc version 4.2.1 (Apple Inc. build 5664)
+</pre>
+<p>Here's the list of files extracted from the vimball:</p>
+<pre>
+.
+&#x251c;&#x2500;&#x2500; Makefile
+&#x251c;&#x2500;&#x2500; controller.rb
+&#x251c;&#x2500;&#x2500; extconf.rb
+&#x251c;&#x2500;&#x2500; finder
+&#x2502;&#x00a0;&#x00a0; &#x251c;&#x2500;&#x2500; buffer_finder.rb
+&#x2502;&#x00a0;&#x00a0; &#x2514;&#x2500;&#x2500; file_finder.rb
+&#x251c;&#x2500;&#x2500; finder.rb
+&#x251c;&#x2500;&#x2500; match_window.rb
+&#x251c;&#x2500;&#x2500; prompt.rb
+&#x251c;&#x2500;&#x2500; scanner
+&#x2502;&#x00a0;&#x00a0; &#x251c;&#x2500;&#x2500; buffer_scanner.rb
+&#x2502;&#x00a0;&#x00a0; &#x2514;&#x2500;&#x2500; file_scanner.rb
+&#x251c;&#x2500;&#x2500; scanner.rb
+&#x251c;&#x2500;&#x2500; settings.rb
+&#x2514;&#x2500;&#x2500; stub.rb
+</pre>
+<p>Looks like I'm missing a bunch of stuff from your example. I tried downloading from both your site and Vimscripts. This is version command-t-1.1b2.vba. I also tried the previous two versions with the same result. Weird.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6810'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6810"><time data-relative="true">2011-04-16T23:37:06Z</time></a></span>
+</cite>
+<blockquote><p>Yes, I've seen this a few times. I think this may be a bug in the Vimball implementation itself (that it can silently fail to extract some files, despite appearing to have succeeded). Just re-extract it and the missing files should appear.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6811'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6811"><time data-relative="true">2011-04-16T23:42:12Z</time></a></span>
+</cite>
+<blockquote><p>I found that using an older version of Vim (7.2) and making sure to extract from same directory as the vimball did the trick. So...</p>
+<pre>
+$&gt; cd ~/Downloads
+$&gt; /usr/bin/vim72 command-t-1.1b2.vba
+</pre>
+<p>Then extract as normal using <code>:so %</code>.</p>
+<p>Happily finding files now. Thanks for the great plugin.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_8984'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_8984"><time data-relative="true">2012-07-14T00:39:24Z</time></a></span>
+</cite>
+<blockquote><p>Hi.  the first few times I tried to extract the vimball.  I quit out of the list of files extracted with out looking at all of them. It seems kind of silly , but when I pushed the space bar and scrolled through all the files it worked fine.  Then I could make an Command-T was happy.  And me too.</p>
+<p>Thank you much for this cool program.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

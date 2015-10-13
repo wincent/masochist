@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2116: Missing ruby.h header when installing Command-T
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2116</div>
+<div class='issue' id='issue_2116'>
+<form class="edit_issue" id="edit_issue_2116" action="/issues/2116" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="v125xPEy67v+Qe+BMpthwqXDWTyMjgmnb2adojkN94GLrwdzVr8x7ifN3HYDsjJ2EEEwAIdih7tPeUhcHdWQpQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2116:
+<span data-name='issue[summary]'>
+Missing ruby.h header when installing Command-T
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-10-07T18:14:08Z</time>, updated <time data-relative="true">2013-12-25T18:37:17Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I am attempting to install Command-T on OS X 10.8 and have followed the instructions on <a href="http://www.vim.org/scripts/script.php?script_id=3025" class="external">http://www.vim.org/scripts/script.php?script_id=3025</a>, however when I try to build the Makefile I get the following error:</p>
+<pre>   Command-T[master+]/ruby/command-t
+    &#x276f; ruby extconf.rb
+   checking for ruby.h... no
+   couldn't find ruby.h (required)</pre>
+<p>I am using system ruby, which is the one Vim was compiled (by myself) against. As you can see, Vim is compiled with ruby support:</p>
+<pre>   
+   Command-T[master+]/ruby/command-t
+    &#x276f; ruby --version
+   ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+   
+   Command-T[master+]/ruby/command-t
+    &#x276f; vim --version
+   VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Jan 29 2013 10:09:48)
+   MacOS X (unix) version
+   Included patches: 1-785
+   Compiled by caleb@sirius.local
+   Huge version without GUI.  Features included (+) or not (-):
+   +arabic +autocmd -balloon_eval -browse ++builtin_terms +byte_offset +cindent 
+   -clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
+   +conceal +cryptv +cscope +cursorbind +cursorshape +dialog_con +diff +digraphs 
+   -dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path 
+   +find_in_path +float +folding -footer +fork() -gettext -hangul_input +iconv 
+   +insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent 
+   +listcmds +localmap -lua +menu +mksession +modify_fname +mouse -mouseshape 
+   +mouse_dec -mouse_gpm -mouse_jsbterm +mouse_netterm +mouse_sgr -mouse_sysmouse 
+   +mouse_urxvt +mouse_xterm +multi_byte +multi_lang -mzscheme +netbeans_intg 
+   +path_extra -perl +persistent_undo +postscript +printer +profile +python 
+   -python3 +quickfix +reltime +rightleft +ruby +scrollbind +signs +smartindent 
+   -sniff +startuptime +statusline -sun_workshop +syntax +tag_binary 
+   +tag_old_static -tag_any_white -tcl +terminfo +termresponse +textobjects +title
+    -toolbar +user_commands +vertsplit +virtualedit +visual +visualextra +viminfo 
+   +vreplace +wildignore +wildmenu +windows +writebackup -X11 -xfontset -xim -xsmp
+    -xterm_clipboard -xterm_save 
+      system vimrc file: &quot;$VIM/vimrc&quot;
+        user vimrc file: &quot;$HOME/.vimrc&quot;
+         user exrc file: &quot;$HOME/.exrc&quot;
+     fall-back for $VIM: &quot;/usr/local/share/vim&quot;
+   Compilation: /usr/bin/clang -c -I. -Iproto -DHAVE_CONFIG_H   -DMACOS_X_UNIX -no-cpp-precomp  -Os -w -pipe -march=native -Qunused-arguments -mmacosx-version-min=10.8 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1      
+   Linking: /usr/bin/clang   -L.    -L/usr/local/lib -o vim       -lm  -lncurses -liconv -framework Cocoa     -framework Python   -lruby -lobjc </pre>
+<p>From Vim:</p>
+<pre>   :ruby puts RUBY_VERSION
+   1.8.7</pre>
+<p>I've located the <code>ruby.h</code> file needed in /System/Library/Frameworks/Ruby.framework/Versions/1.8/Headers/ruby.h and have tried both</p>
+<pre>   export CPP_INCLUDE_PATH=/System/Library/Frameworks/Ruby.framework/Versions/1.8/Headers/
+   export C_INCLUDE_PATH=/System/Library/Frameworks/Ruby.framework/Versions/1.8/Headers/</pre>
+<p>but neither of those make <code>have_header('ruby.h')</code> return true, and <code>ruby extconf.rb</code> continues to fail.</p>
+<p>Any ideas?</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10564'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10564"><time data-relative="true">2013-10-07T18:52:28Z</time></a></span>
+</cite>
+<blockquote><p>I sounds like you have a fairly vanilla system (using the the system Ruby usually makes things easier). I am not sure why <code>ruby extconf.rb</code> would fail; I would expect it to succeed.</p>
+<p>This may or may not work for you, but I put a copy of the kind of <code>Makefile</code> I would expect <code>ruby extconf.rb</code> to generate <a href="/snippets/145.txt">here</a>; I made this on my pretty stock 10.8.5 install (system Ruby). It doesn't explicitly mention that headers path. You could try stealing the Makefile and see if it brings any joy.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10807'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10807"><time data-relative="true">2013-12-25T18:37:14Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to lack of activity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10808'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10808"><time data-relative="true">2013-12-25T18:37:17Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

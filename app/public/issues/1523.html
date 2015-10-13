@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1523: &quot;--No lines in buffer--&quot; appears in status line when match listing is first shown
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1523</div>
+<div class='issue' id='issue_1523'>
+<form class="edit_issue" id="edit_issue_1523" action="/issues/1523" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="m2jOvdvMhz8rZqOwUd6KEEdPxeGQkjMw3Smx8lb3H6KvmnAKfEFdavLqkEdg99mk8s2s3Zt+vSz9NmQMci94hg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1523:
+<span data-name='issue[summary]'>
+&quot;--No lines in buffer--&quot; appears in status line when match listing is first shown
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-03-27T16:34:10Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Haven't yet identified the pattern for this, but I am noticing that the very first time I bring up Command-T in a window the prompt tends to display correctly, but often after opening other files and re-displaying the prompt it shows &quot;--No lines in buffer--&quot; rather than the desired &quot;&gt;&gt; &quot;. Causing the prompt to refresh in any way (by typing letters or tabbing in and out, for example) is enough to cause the prompt to display correctly.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5469'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5469"><time data-relative="true">2010-03-27T17:26:52Z</time></a></span>
+</cite>
+<blockquote><p>Most reliable recipe I've come up with so far to reproduce:</p>
+<ul>
+<li><code>&lt;Leader&gt;t</code>: bring up match listing</li>
+<li><code>&lt;CR&gt;</code>: open something</li>
+<li><code>&lt;Leader&gt;t</code>: bring up match listing</li>
+<li><code>&lt;CR&gt;</code>: open something else (merely reopening the same file won't work)</li>
+<li><code>&lt;Leader&gt;t</code>: bring up match listing; now visible &quot;--No lines in buffer--&quot;</li>
+</ul>
+<p>Note that it doesn't matter whether you open with <code>&lt;CR&gt;</code> or <code>&lt;C-CR&gt;</code> etc.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5470'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5470"><time data-relative="true">2010-03-27T18:25:45Z</time></a></span>
+</cite>
+<blockquote><p>After a lot of experimentation with <code>silent</code>, and forced redraws, and changing the order of things, I am unable to get rid of the &quot;--No lines in buffer--&quot; message.</p>
+<p>The only way I've been able to suppress the display of the message is to not destroy the match window (with <code>:bwipeout!</code>). This obviously breaks the plug-in, so I can't simply eliminate that line, but it does at least suppress the message. I'm going to try some other experiments around that point of the code in order to see what I can do.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

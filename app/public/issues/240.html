@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #240: REQUEST: Menu items for half-star ratings
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #240</div>
+<div class='issue' id='issue_240'>
+<form class="edit_issue" id="edit_issue_240" action="/issues/240" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="N3ANZIWdWiwlQbBm63qaktpdjS102nKUOZCwkj9qfiQDgrPTIhCAefzNg5HaU8kmb9/kEX82/IgZj2VsG7IZAA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #240:
+<span data-name='issue[summary]'>
+REQUEST: Menu items for half-star ratings
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-17T01:09:12Z</time>, updated <time data-relative="true">2007-05-17T01:50:51Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/david-ameeti">David Ameeti</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I would like to be able to increase/decrease the rating for a song, but you only have options for setting explicit (full-star) ratings -- which means I can't set 3.5 stars, only 3 or 4.  Even if the menu item didn't have a Cmd-key equivalent, that would be okay but that would be the easiest way to bump a rating up/down by half a star.  I strongly prefer to not have to set a global keystroke that might interfere with other programs, just to bump a rating up/down by one.  Another option instead: two menu items, one to add 1/2 star, one to decrease the same.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2004'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2004"><time data-relative="true">2005-05-17T01:24:34Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for submitting the request. Marking as ASSIGNED.</p>
+<p>I think a better idea would be to show half-star ratings only when holding down the option key. You'll  notice that some of the menu items change depending on whether the option key is pressed and the  same could be done for the items in the rating submenu. That way the feature you're asking for could  be added without cluttering the menu item. What do you think of this idea?</p>
+<p>If I added items like you suggest it wouldn't be very convenient to increase a track's rating by 3 stars,  would it? You'd have to open the menu, select increase rating, release the mouse button, open the  menu, select, release, open, select, release...</p>
+<p>And to comment about not wanting to set global hot keys... There are a couple of things you can do to  minimise interfering with other programs:</p>
+<p>1. In the Advanced preferences pane, select &quot;Disable Synergy Advance hot keys when iTunes is not  running&quot;.</p>
+<p>2. In one of the upcoming public preview releases I am going to add special exclusion/inclusion lists so  that you can tell Synergy Advance to ignore hot keys when particular apps are frontmost, or conversely  to only use hot keys when particular apps are frontmost. See feature <a href="/issues/11">request #11</a> for more details.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2005'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2005"><time data-relative="true">2005-05-17T01:29:04Z</time></a></span>
+</cite>
+<blockquote><p>Just to clarify my previous comment... The Ratings submenu currently shows the following items:</p>
+<p>None 1 star 2 stars 3 stars 4 stars 5 stars</p>
+<p>The idea is that whenever the option key is held down these items would change to:</p>
+<p>None 0.5 stars 1.5 stars 2.5 stars 3.5 stars 4.5 stars</p>
+<p>I've used &quot;number + star(s)&quot; here but in the actual user interface these would not be words but  graphical stars.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2006'>
+<cite>
+<a href="/users/david-ameeti">David Ameeti</a>
+<span class='when'><a href="#comment_2006"><time data-relative="true">2005-05-17T01:46:27Z</time></a></span>
+</cite>
+<blockquote><p>Changing the menu so that instead of increasing/decreasing the rating with two new menu items (and creating a lot more work to &quot;change by 2.5 stars&quot; -- in place of that if the OPTION key is held down, five (of the existing six) menu items would merely change to (1/2, 1 1/2, 2 1/2, etc.) stars.  This would reduce the clutter yet still give the user more resolution on his ratings.</p>
+<p>A method for the user to get to the true rating (in terms of 0-100) still might be worthwhile considering.  Maybe a dialogue for those who have set an increment other than 20 or 10 might be appropriate?  Or maybe a single menu item to &quot;set explicit numeric rating&quot; as one more submenu item to the star ratings submenu.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2007'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2007"><time data-relative="true">2005-05-17T01:51:35Z</time></a></span>
+</cite>
+<blockquote><p>I think I'd be inclined to add another menu item at the bottom, &quot;Other...&quot;, which when selected would pop  up a small dialog in which the user could change the underlying numeric rating (0-100) to any numeric  value. Something fairly small with a stepper on the left or the ability to type directly into the text field to  change the number; pressing return would commit the change.</p>
+<p>I think I'll go with &quot;Other...&quot; because it is in keeping with the UI conventions already used by a lot of other  apps.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2008'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2008"><time data-relative="true">2006-07-05T02:05:47Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2009'>
+<cite>
+<a href="/users/bugzilla-user-444">bugzilla user 444</a>
+<span class='when'><a href="#comment_2009"><time data-relative="true">2007-05-12T18:09:52Z</time></a></span>
+</cite>
+<blockquote><p>Ditto! I currently use a hacked version of the Quicksilver &quot;increase rating&quot; script. This is the only feature that prevents me from fully switching from the Quicksilver/Growl combination I'm using now.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2010'>
+<cite>
+<a href="/users/bugzilla-user-444">bugzilla user 444</a>
+<span class='when'><a href="#comment_2010"><time data-relative="true">2007-05-12T18:12:56Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #6)</p>
+<blockquote>
+<p>Ditto! I currently use a hacked version of the Quicksilver &quot;increase rating&quot; script. This is the only feature that prevents me from fully switching from the Quicksilver/Growl combination I'm using now.</p>
+</blockquote>
+<p>Woops, ignore this..., not really relevant to this discussion :-)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2011'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2011"><time data-relative="true">2007-05-14T14:01:26Z</time></a></span>
+</cite>
+<blockquote><p>Ok, for the record, this is now half-done. Should definitely be finished for the next release. I've started by adding it to the Dock menu; next step is to add it to the Global menu as well.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2012'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2012"><time data-relative="true">2007-05-15T12:12:34Z</time></a></span>
+</cite>
+<blockquote><p>This is now done. See the following for a screenshot:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/archives/2007/05/halfstar_rating.php" class="external">http://wincent.com/a/about/wincent/weblog/archives/2007/05/halfstar_rating.php</a></p>
+<p>Adding the &quot;fixed-in-prerelease&quot; keyword.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2013'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2013"><time data-relative="true">2007-05-16T13:12:48Z</time></a></span>
+</cite>
+<blockquote><p>0.5.1b will be going out to the download server soon, so this issue will soon be closed. I've opened a separate ticket to track the feature request for an interface to directly manipulate numeric ratings in the range of 0 to 100, because that's really a separate issue. Please see feature <a href="/issues/573">request #573</a> for that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2014'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2014"><time data-relative="true">2007-05-17T01:50:51Z</time></a></span>
+</cite>
+<blockquote><p>0.5.1b is now on the servers, so marking this as FIXED/CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

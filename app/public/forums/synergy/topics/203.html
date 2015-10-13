@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy 3.1.1b release
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy 3.1.1b release</div>
+<h1 class='major'>Synergy 3.1.1b release</h1>
+<div class='topic' id='topic_203'>
+<ol class='boxed' id='comments'>
+<li class='comment admin'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'>
+<a href="/forums/synergy/topics/203"><time data-relative="true">2007-03-08T06:35:12Z</time></a>
+</span>
+</cite>
+<blockquote><p><a href="http://wincent.com/a/news/archives/2007/03/synergy_311b_se.php" class="external">http://wincent.com/a/news/archives/2007/03/synergy_311b_se.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_590'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_590"><time data-relative="true">2007-03-19T01:52:17Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent,</p>
+<p>I suppose I'll know in a week, but just out of curiosity, did you implement some sort of login retry for Audio Scrobbler in 3.1.1b?</p>
+<p>They seem to have changed their policy about being logged in from multiple locations at once, but now I notice that once a week they require a new login (and my machines all run 24/7 so they rarely get the required login). At any rate, once a week I now have to manually go in and check a new checkbox/hit apply/uncheck the checkbox/hit apply to force a new login from Synergy.</p>
+<p>Thanks in advance!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_591'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_591"><time data-relative="true">2007-03-19T07:32:27Z</time></a></span>
+</cite>
+<blockquote><p>Not yet, but I think I'll implement it before the next beta comes out.</p>
+<p>If you have a log showing what happens when they require a new login (messages printed to the console), please send/post it because it will help me know exactly what'll be required.</p>
+<p>In the meantime though, wouldn't it be easier to stop/restart Synergy at least once a week?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_592'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_592"><time data-relative="true">2007-03-19T19:26:27Z</time></a></span>
+</cite>
+<blockquote><p>Well, yes. But I always forget for a couple extra days!  Typically I remember to re-login every 9 days, so by that time I have a huge cached backlog for Synergy to report. And if I quit Synergy, don't I lose the cache?</p>
+<p>At any rate, I'll post the log once I get back home tonight.</p>
+<p>(I suppose I could make an osascript Synergy-relaunching cronjob? Will have to think about this...)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_593'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_593"><time data-relative="true">2007-03-19T21:06:54Z</time></a></span>
+</cite>
+<blockquote><p>Yes, you do unfortunately lose the cache.</p>
+<p>I think when Leopard comes out I will finally drop support for Jaguar and possibly even require Tiger. Then I could easily use Core Data (Tiger-only) to keep a persistent store of that stuff.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_594'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_594"><time data-relative="true">2007-03-19T23:46:55Z</time></a></span>
+</cite>
+<blockquote><p>Okay, here's the log for the time it happens. Basically, it just comes back BADAUTH out of the blue. (There's lots of entries right above this that are submitting fine.) From this point, Synergy just starts queueing but not submitting any more.</p>
+<p>&nbsp;Quote:2007-03-17 20:41:40.542 Synergy[215] Audioscrobbler: Starting connection attempt 2007-03-17 20:41:40.543 Synergy[215] Audioscrobbler: Waiting for submission response 2007-03-17 20:41:40.994 Synergy[215] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2007-03-17 20:41:40.994 Synergy[215] Audioscrobbler: Received an INTERVAL directive 2007-03-17 20:41:40.994 Synergy[215] Audioscrobbler: Storing interval value: 1 2007-03-17 20:41:40.994 Synergy[215] Audioscrobbler: Processing submission response 2007-03-17 20:41:40.994 Synergy[215] Audioscrobbler: Received BADAUTH response 2007-03-17 20:44:32.839 Synergy[215] Audioscrobbler: Received notification from iTunes 2007-03-17 20:44:32.839 Synergy[215] Audioscrobbler: Received notification of playing status 2007-03-17 20:44:32.839 Synergy[215] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;High Land,  Hard Rain&quot;; 
+   WOAudioscrobblerArtist = &quot;Aztec Camera&quot;; 
+   WOAudioscrobblerLength = 242; 
+   WOAudioscrobblerTrack = &quot;Pillar To Post&quot;; </pre>
+<p>} 2007-03-17 20:44:32.839 Synergy[215] Audioscrobbler: This track appears to be a new submission 2007-03-17 20:44:32.839 Synergy[215] Audioscrobbler: Cancelling previously existing submission timer, if any 2007-03-17 20:44:32.839 Synergy[215] Audioscrobbler: Setting up new submission timer (121 seconds) 2007-03-17 20:46:33.831 Synergy[215] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2007-03-17 20:46:33.831 Synergy[215] Audioscrobbler: Position matches, will submit to Audioscrobbler 2007-03-17 20:46:33.832 Synergy[215] Audioscrobbler: Adding song to submission queue; song information: {</p>
+<pre>   WOAlbum = &quot;High Land,  Hard Rain&quot;; 
+   WOArtist = &quot;Aztec Camera&quot;; 
+   WODate = &quot;2007-03-18 03:46:33&quot;; 
+   WOLength = 242; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Pillar To Post&quot;; </pre>
+<p>} 2007-03-17 20:46:33.832 Synergy[215] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;High Land,  Hard Rain&quot;; 
+   WOArtist = &quot;Aztec Camera&quot;; 
+   WODate = &quot;2007-03-18 03:46:33&quot;; 
+   WOLength = 242; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Pillar To Post&quot;; </pre>
+<p>} 2007-03-17 20:46:33.832 Synergy[215] Audioscrobbler: Number of items currently on the queue: 2 2007-03-17 20:46:33.832 Synergy[215] Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_595'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_595"><time data-relative="true">2007-03-20T06:50:51Z</time></a></span>
+</cite>
+<blockquote><p>Excellent. That's just the information I needed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_596'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_596"><time data-relative="true">2007-03-21T07:44:34Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've now implemented an auto-retry in response to receiving a &quot;BADAUTH&quot; from last.fm. It will retry up to three times before giving up. After a successful handshake the failure counter will be reset back to zero. Hopefully this means that you can run Synergy for weeks on end without ever having to manually re-login.</p>
+<p>If you'd like to try it out, please check out this nightly build:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_328.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_328.php</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_597'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_597"><time data-relative="true">2007-03-26T04:38:53Z</time></a></span>
+</cite>
+<blockquote><p>3.1.1 is now officially out:</p>
+<p><a href="http://wincent.com/a/news/archives/2007/03/synergy_311_now.php" class="external">http://wincent.com/a/news/archives/2007/03/synergy_311_now.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_598'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_598"><time data-relative="true">2007-03-27T00:49:21Z</time></a></span>
+</cite>
+<blockquote><p>Well dang, I didn't get to test the fix in time! I appreciate the time you put in, but I have bad news. </p>
+<p>Firstly, it appears I lied when I said that last.fm was allowing multiple logins. It's still a factor and I apologize for having concluded otherwise prematurely.</p>
+<p>So, I sat down just now at home and realized I have Remote Access so I can do multi-machine testing quite quickly. I RA'd into work and started Synergy 3.1.1 running there. Since home started first, it gets the login and work gets BADAUTH. And it doesn't seem to try 3x--it just says BADAUTH and then starts queuing with the same messages.</p>
+<p>Here is a sample: &nbsp;Quote:2007-03-26 21:25:32.411 Synergy[11167] Audioscrobbler: Starting connection attempt 2007-03-26 21:25:32.411 Synergy[11167] Audioscrobbler: Waiting for submission response 2007-03-26 21:25:32.912 Synergy[11167] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 2007-03-26 21:25:32.912 Synergy[11167] Audioscrobbler: Received an INTERVAL directive 2007-03-26 21:25:32.912 Synergy[11167] Audioscrobbler: Storing interval value: 1 2007-03-26 21:25:32.912 Synergy[11167] Audioscrobbler: Processing submission response 2007-03-26 21:25:32.912 Synergy[11167] Audioscrobbler: Received BADAUTH response Loading plain environment 2007-03-26 21:27:26.801 Synergy[11167] Audioscrobbler: Received notification from iTunes 2007-03-26 21:27:26.801 Synergy[11167] Audioscrobbler: Received notification of playing status 2007-03-26 21:27:26.801 Synergy[11167] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;The Trinity Session&quot;; 
+   WOAudioscrobblerArtist = &quot;Cowboy Junkies&quot;; 
+   WOAudioscrobblerLength = 215; 
+   WOAudioscrobblerTrack = &quot;Sweet Jane&quot;; </pre>
+<p>} 2007-03-26 21:27:26.801 Synergy[11167] Audioscrobbler: This track appears to be a new submission 2007-03-26 21:27:26.801 Synergy[11167] Audioscrobbler: Cancelling previously existing submission timer, if any 2007-03-26 21:27:26.801 Synergy[11167] Audioscrobbler: Setting up new submission timer (107 seconds) 2007-03-26 21:29:13.801 Synergy[11167] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2007-03-26 21:29:13.802 Synergy[11167] Audioscrobbler: Position matches, will submit to Audioscrobbler 2007-03-26 21:29:13.802 Synergy[11167] Audioscrobbler: Adding song to submission queue; song information: {</p>
+<pre>   WOAlbum = &quot;The Trinity Session&quot;; 
+   WOArtist = &quot;Cowboy Junkies&quot;; 
+   WODate = &quot;2007-03-27 04:29:13&quot;; 
+   WOLength = 215; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Sweet Jane&quot;; </pre>
+<p>} 2007-03-26 21:29:13.802 Synergy[11167] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;The Trinity Session&quot;; 
+   WOArtist = &quot;Cowboy Junkies&quot;; 
+   WODate = &quot;2007-03-27 04:29:13&quot;; 
+   WOLength = 215; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Sweet Jane&quot;; </pre>
+<p>} 2007-03-26 21:29:13.802 Synergy[11167] Audioscrobbler: Number of items currently on the queue: 2 2007-03-26 21:29:13.802 Synergy[11167] Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item 2007-03-26 21:31:01.807 Synergy[11167] Audioscrobbler: Received notification from iTunes 2007-03-26 21:31:01.807 Synergy[11167] Audioscrobbler: Received notification of playing status 2007-03-26 21:31:01.807 Synergy[11167] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;The Trinity Session&quot;; 
+   WOAudioscrobblerArtist = &quot;Cowboy Junkies&quot;; 
+   WOAudioscrobblerLength = 202; 
+   WOAudioscrobblerTrack = &quot;Postcard Blues&quot;; </pre>
+<p>} 2007-03-26 21:31:01.807 Synergy[11167] Audioscrobbler: This track appears to be a new submission 2007-03-26 21:31:01.807 Synergy[11167] Audioscrobbler: Cancelling previously existing submission timer, if any 2007-03-26 21:31:01.807 Synergy[11167] Audioscrobbler: Setting up new submission timer (101 seconds) 2007-03-26 21:32:42.807 Synergy[11167] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2007-03-26 21:32:42.807 Synergy[11167] Audioscrobbler: Position matches, will submit to Audioscrobbler 2007-03-26 21:32:42.808 Synergy[11167] Audioscrobbler: Adding song to submission queue; song information: {</p>
+<pre>   WOAlbum = &quot;The Trinity Session&quot;; 
+   WOArtist = &quot;Cowboy Junkies&quot;; 
+   WODate = &quot;2007-03-27 04:32:42&quot;; 
+   WOLength = 202; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Postcard Blues&quot;; </pre>
+<p>} 2007-03-26 21:32:42.808 Synergy[11167] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;The Trinity Session&quot;; 
+   WOArtist = &quot;Cowboy Junkies&quot;; 
+   WODate = &quot;2007-03-27 04:32:42&quot;; 
+   WOLength = 202; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Postcard Blues&quot;; </pre>
+<p>} 2007-03-26 21:32:42.808 Synergy[11167] Audioscrobbler: Number of items currently on the queue: 3 2007-03-26 21:32:42.808 Synergy[11167] Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item 2007-03-26 21:34:24.506 Synergy[11167] Audioscrobbler: Received notification from iTunes 2007-03-26 21:34:24.506 Synergy[11167] Audioscrobbler: Received notification of playing status 2007-03-26 21:34:24.506 Synergy[11167] Audioscrobbler: Track information: {</p>
+<pre>   WOAudioscrobblerAlbum = &quot;The Trinity Session&quot;; 
+   WOAudioscrobblerArtist = &quot;Cowboy Junkies&quot;; 
+   WOAudioscrobblerLength = 360; 
+   WOAudioscrobblerTrack = &quot;Walkin' After Midnight&quot;; </pre>
+<p>} 2007-03-26 21:34:24.506 Synergy[11167] Audioscrobbler: This track appears to be a new submission 2007-03-26 21:34:24.506 Synergy[11167] Audioscrobbler: Cancelling previously existing submission timer, if any 2007-03-26 21:34:24.506 Synergy[11167] Audioscrobbler: Setting up new submission timer (180 seconds) 2007-03-26 21:37:24.506 Synergy[11167] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 2007-03-26 21:37:24.507 Synergy[11167] Audioscrobbler: Position matches, will submit to Audioscrobbler 2007-03-26 21:37:24.507 Synergy[11167] Audioscrobbler: Adding song to submission queue; song information: {</p>
+<pre>   WOAlbum = &quot;The Trinity Session&quot;; 
+   WOArtist = &quot;Cowboy Junkies&quot;; 
+   WODate = &quot;2007-03-27 04:37:24&quot;; 
+   WOLength = 360; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Walkin' After Midnight&quot;; </pre>
+<p>} 2007-03-26 21:37:24.507 Synergy[11167] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;The Trinity Session&quot;; 
+   WOArtist = &quot;Cowboy Junkies&quot;; 
+   WODate = &quot;2007-03-27 04:37:24&quot;; 
+   WOLength = 360; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Walkin' After Midnight&quot;; </pre>
+<p>} 2007-03-26 21:37:24.507 Synergy[11167] Audioscrobbler: Number of items currently on the queue: 4 2007-03-26 21:37:24.507 Synergy[11167] Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item</p>
+<p>So, I'm not sure what is going on from the point. Again, sorry to have lead you astray about the multiple login issue--I could swear I saw both home and work reporting successfully but I must have quit one or the other and forgotten about it...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_599'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_599"><time data-relative="true">2007-03-27T09:18:58Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for bringing this to my attention. I've made one other change that should force a re-try in this circumstance.</p>
+<p>Give this nightly build a try if you'd like:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_339.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2007/03/synergy_revision_339.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_600'>
+<cite>
+<a href="/users/heavyboots">heavyboots</a>
+<span class='when'><a href="#comment_600"><time data-relative="true">2007-03-28T00:43:56Z</time></a></span>
+</cite>
+<blockquote><p>That did the trick! I triggered some sort of spam protection during testing (by playing from two places simultaneously), but it works so I am officially a happy camper.</p>
+<p>Thanks so much!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_601'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_601"><time data-relative="true">2007-03-28T05:25:39Z</time></a></span>
+</cite>
+<blockquote><p>Glad to hear it works! Thanks for confirming.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

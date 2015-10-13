@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1483: Get outgoing mail from Rails instance going through AuthSMTP
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1483</div>
+<div class='issue' id='issue_1483'>
+<form class="edit_issue" id="edit_issue_1483" action="/issues/1483" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="ycSneKqlSdp+CNWnuO5QIGPounYRSTxs4Rzwzrfz37n9NhnPDSiTj6eE5lCJxwOU1mrTShqlsnDBAyUwkyu4nQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1483:
+<span data-name='issue[summary]'>
+Get outgoing mail from Rails instance going through AuthSMTP
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-02-18T23:41:48Z</time>, updated <time data-relative="true">2010-02-20T11:01:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Haven't tried sending email from the general purpose instance yet, so that might need it too, but at least in the case of the Rails instance messages aren't being accepted by AuthSMTP with an error like this in <code>/var/log/maillog</code>:</p>
+<pre>Feb 18 23:35:54 domU-12-31-39-09-42-07 sendmail[29969]: STARTTLS=client, relay=mail.authsmtp.com., version=TLSv1/SSLv3, verify=FAIL, cipher=DHE-RSA-AES256-SHA, bits=256/256
+Feb 18 23:35:54 domU-12-31-39-09-42-07 sendmail[29969]: o1J4ZrKY029967: AUTH=client, available mechanisms do not fulfill requirements
+Feb 18 23:35:54 domU-12-31-39-09-42-07 sendmail[29969]: AUTH=client, relay=mail.authsmtp.com., temporary failure, connection abort
+Feb 18 23:35:54 domU-12-31-39-09-42-07 sendmail[29969]: o1J4ZrKY029967: to=&lt;test@gmail.com&gt;,&lt;win@wincent.com&gt;, delay=00:00:01, xdelay=00:00:01, mailer=relay, pri=150979, relay=mail.authsmtp.com. [62.13.128.193], dsn=4.0.0, stat=Deferred: Temporary AUTH failure</pre>
+<p>In the AuthSMTP control panel I'm seeing error message like this:</p>
+<pre>Envelope From Address of &lt;apache@domU-12-31-39-00-E9-02.compute-1.internal&gt; is not authorised - go to: <a href="http://control.authsmtp.com" class="external">http://control.authsmtp.com</a></pre>
+<p>Seems to be related to the other instance though, not the Rails one, judging from the host name.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5318'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5318"><time data-relative="true">2010-02-19T14:26:06Z</time></a></span>
+</cite>
+<blockquote><p><strong>Product</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> none</li>
+<li><strong>To:</strong> wincent.com</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5323'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5323"><time data-relative="true">2010-02-20T11:01:30Z</time></a></span>
+</cite>
+<blockquote><p>Tricky little devil, needed to install the cyrus-sasl-md5 package to get it to work.</p>
+<p>I'd skipped that one on the Rails instance as I thought it was only used by the Cyrus IMAP daemon, which isn't installed or needed on the Rails machine.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5324'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5324"><time data-relative="true">2010-02-20T11:01:42Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

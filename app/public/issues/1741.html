@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1741: Works sometimes and then crashes
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1741</div>
+<div class='issue' id='issue_1741'>
+<form class="edit_issue" id="edit_issue_1741" action="/issues/1741" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="oCDeV1Znl0qe5nUQBENpU07Al9qyW++K4XyqqF/vbEOU0mDg8epNH0dqRuc1ajrn+0L+5rm3YZbBY39WezcLZw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1741:
+<span data-name='issue[summary]'>
+Works sometimes and then crashes
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-11-21T21:32:54Z</time>, updated <time data-relative="true">2011-08-29T17:32:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I can get it to work, it opens files etc. as expected, but then suddenly it can crash. It can be after opening 5-10 files, or at the first one.</p>
+<p>Here's the tract:</p>
+<pre>/home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:246: [BUG] gc_sweep(): unknown data type 0x0(0x8bf6564)
+ruby 1.9.2p0 (2010-08-18 revision 29036) [i686-linux]
+
+-- control frame ----------
+c:0011 p:0062 s:0043 b:0043 l:000042 d:000042 METHOD /home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:246
+c:0010 p:0079 s:0036 b:0034 l:000024 d:000033 BLOCK  /home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:279
+c:0009 p:---- s:0030 b:0030 l:000029 d:000029 FINISH
+c:0008 p:---- s:0028 b:0028 l:000027 d:000027 CFUNC  :each
+c:0007 p:0189 s:0025 b:0025 l:000024 d:000024 METHOD /home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:274
+c:0006 p:0039 s:0019 b:0019 l:000018 d:000018 METHOD /home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:161
+c:0005 p:0051 s:0015 b:0014 l:000013 d:000013 METHOD /home/sirup/.vim/bundle/command-t/ruby/command-t/controller.rb:295
+c:0004 p:0071 s:0010 b:0010 l:000009 d:000009 METHOD /home/sirup/.vim/bundle/command-t/ruby/command-t/controller.rb:76
+c:0003 p:0010 s:0006 b:0006 l:0009b4 d:000005 EVAL   (eval):1
+c:0002 p:---- s:0004 b:0004 l:000003 d:000003 FINISH
+c:0001 p:0000 s:0002 b:0002 l:0009b4 d:0009b4 TOP   
+---------------------------
+-- Ruby level backtrace information ----------------------------------------
+(eval):1:in `&lt;main&gt;'
+/home/sirup/.vim/bundle/command-t/ruby/command-t/controller.rb:76:in `handle_key'
+/home/sirup/.vim/bundle/command-t/ruby/command-t/controller.rb:295:in `list_matches'
+/home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:161:in `matches='
+/home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:274:in `print_matches'
+/home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:274:in `each'
+/home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:279:in `block in print_matches'
+/home/sirup/.vim/bundle/command-t/ruby/command-t/match_window.rb:246:in `match_text_for_idx'
+
+-- C level backtrace information -------------------------------------------
+/usr/lib/libruby.so.1.9(rb_vm_bugreport+0x72) [0xb6cddfb2]
+/usr/lib/libruby.so.1.9(+0x51b31) [0xb6bd3b31]
+/usr/lib/libruby.so.1.9(rb_bug+0x3a) [0xb6bd413a]
+/usr/lib/libruby.so.1.9(+0x68988) [0xb6bea988]
+/usr/lib/libruby.so.1.9(rb_newobj+0x4f) [0xb6beae8f]
+/usr/lib/libruby.so.1.9(rb_str_resurrect+0x2d) [0xb6c8a0dd]
+/usr/lib/libruby.so.1.9(+0x14a1d2) [0xb6ccc1d2]
+/usr/lib/libruby.so.1.9(+0x151033) [0xb6cd3033]
+/usr/lib/libruby.so.1.9(+0x151cd4) [0xb6cd3cd4]
+/usr/lib/libruby.so.1.9(rb_yield+0x56) [0xb6cd9ae6]
+/usr/lib/libruby.so.1.9(+0xc6f79) [0xb6c48f79]
+/usr/lib/libruby.so.1.9(+0x146f2d) [0xb6cc8f2d]
+/usr/lib/libruby.so.1.9(+0x155c6a) [0xb6cd7c6a]
+/usr/lib/libruby.so.1.9(+0x14ad34) [0xb6cccd34]
+/usr/lib/libruby.so.1.9(+0x151033) [0xb6cd3033]
+/usr/lib/libruby.so.1.9(+0x15142c) [0xb6cd342c]
+/usr/lib/libruby.so.1.9(rb_eval_string+0x51) [0xb6cda9e1]
+/usr/lib/libruby.so.1.9(rb_protect+0x140) [0xb6bd8740]
+/usr/lib/libruby.so.1.9(rb_eval_string_protect+0x2e) [0xb6ccacfe]
+gvim(ex_ruby+0x79) [0x81e9c29]
+gvim(do_cmdline+0x1164) [0x80c48b4]
+gvim() [0x809e407]
+gvim() [0x809eb22]
+gvim() [0x80a26ac]
+gvim(ex_call+0x1dd) [0x80a549d]
+gvim(do_cmdline+0x1164) [0x80c48b4]
+gvim() [0x8135fb0]
+gvim(normal_cmd+0x6fd) [0x813d77d]
+gvim(main_loop+0x3a8) [0x80fbdd8]
+gvim(main+0x1575) [0x80fdcb5]
+/lib/libc.so.6(__libc_start_main+0xe6) [0xb6ecdc76]
+gvim() [0x806fdb1]
+
+[NOTE]
+You may have encountered a bug in the Ruby interpreter or extension libraries.
+Bug reports are welcome.
+For details: <a href="http://www.ruby-lang.org/bugreport.html" class="external">http://www.ruby-lang.org/bugreport.html</a>
+
+Vim: Caught deadly signal ABRT
+Vim: Finished.
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6460'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6460"><time data-relative="true">2010-11-21T21:49:29Z</time></a></span>
+</cite>
+<blockquote><p>Haven't seen this one before, but then, I have never tested against Ruby 1.9.2.</p>
+<p>So this is occurring at a fairly low level by the looks of it, in the garbage collector of the Ruby runtime itself.</p>
+<p>There are three possibilities that spring to mind here:</p>
+<ul>
+<li>you may have discovered a bug in the Ruby interpreter, like the &quot;NOTE&quot; you pasted says; this seems unlikely, but Ruby 1.9.2 is very new so it is not outside the realm of possibility</li>
+<li>you may have discovered a bug in Command-T; to be honest, this seems even less likely, as it has proven stable for some time on a range of different versions of Ruby</li>
+<li>you might be running into trouble if the version of Ruby that is present on your system and which you used when you built Command-T is not identical the version of Ruby that was used when Vim was built</li>
+</ul>
+<p>So my advice to you would be to make sure that you aren't using mismatched versions of Ruby. Failing that, try a different version of Ruby to see if the problem is exclusive to 1.9.2.</p>
+<p>Here I'm using the stock standard Ruby that comes with my system, which happens to be 1.8.7, as I see no call for running a bleeding-edge Ruby interpreter in my editing environment, which is principally for getting work done and not playing with the latest shiny baubles.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6549'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6549"><time data-relative="true">2011-01-06T11:35:50Z</time></a></span>
+</cite>
+<blockquote><p>I've been experiencing this (or a similar crash) for a while now, using Vim 7.3.50 and Ruby 1.87. After a few moments of using CommandT, Vim crashes with:</p>
+<pre>~/.vim/ruby/command-t/controller.rb:262: [BUG] gc_sweep(): unknown data type 0x18(0xb61bfa9c)
+ruby 1.8.7 (2010-08-16 patchlevel 302) [i686-linux]
+
+Vim: Caught deadly signal ABRT
+Vim: Finished.</pre>
+<p>The mentioned line/file/date type isn't actually authoritative, as it changes from crash to crash.</p>
+<p>That being said, I believe this to be related to internal changes in Vim: Downgrading to 7.2.442 fixes all problems. On a related note, another plugin also written in Ruby, &quot;lusty juggler&quot;, does not work on 7.3 at all. It normally is used for switching buffers, but does not detect any buffers using Vim 7.3.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6550'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6550"><time data-relative="true">2011-01-06T11:45:16Z</time></a></span>
+</cite>
+<blockquote><p>At a guess, the lusty juggler failure is most likely due to a known bug in the Ruby support in 7.3 where it always reports the current buffer number as zero. A workaround is possible; falling back to buffer name instead when the bug is present. The corresponding ticket for this issue in Command-T is <a href="/issues/1617">ticket #1617</a>. The bug's been reported upstream but as far as I know hasn't been dealt with yet.</p>
+<p>Not sure if the crashes might be due to related bugs in 7.3's Ruby support. I've been watching the vim_dev mailing list and there have been a few Ruby-related patches fixing various bugs, but I don't know if any of those might be relevant here.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6555'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6555"><time data-relative="true">2011-01-06T17:47:09Z</time></a></span>
+</cite>
+<blockquote><p>I've been getting this since the 1.01 release.  The second time I run Command T, Vim crashes with this error.</p>
+<pre>Vim: Caught deadly signal SEGV                                  [11:45:07]
+Vim: Finished.</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6557'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6557"><time data-relative="true">2011-01-06T18:30:47Z</time></a></span>
+</cite>
+<blockquote><p>If you look at what was changed from 1.0 to 1.0.1, nothing was altered that would explain a crash. (See the commits <a href="http://git.wincent.com/command-t.git/shortlog" class="external">here</a>.)</p>
+<p>If you changed nothing else (ie. neither Vim nor the Ruby used when building either Vim or Command-T) then it is almost certainly a miscompilation. Have you tried blowing it away and re-building it? Have you tried going over the troubleshooting tips in the documentation which talk about checking/ensuring that you're using the exact same version of Ruby when building Command-T as was used when Vim was built?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6585'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6585"><time data-relative="true">2011-01-16T23:12:30Z</time></a></span>
+</cite>
+<blockquote><p>Closed <a href="/issues/1767">ticket #1767</a> as a duplicate of this one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6587'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6587"><time data-relative="true">2011-01-16T23:21:36Z</time></a></span>
+</cite>
+<blockquote><p>Just to keep things together, <a href="/forums/command-t/topics/449">this forum thread</a> may be referring to the same underlying issue.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6710'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6710"><time data-relative="true">2011-02-16T01:49:32Z</time></a></span>
+</cite>
+<blockquote><p>Closed <a href="/issues/1781">ticket #1781</a> as a duplicate of this one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6711'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6711"><time data-relative="true">2011-02-16T01:51:52Z</time></a></span>
+</cite>
+<blockquote><p>Seeing as all reported crashes have been due to incorrect compilation or bugs in Vim's Ruby support, going to mark this one as closed too.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6713'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6713"><time data-relative="true">2011-02-16T01:52:56Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_7042'>
+<cite>
+<a href="/users/buck">buck</a>
+<span class='when'><a href="#comment_7042"><time data-relative="true">2011-08-27T00:32:21Z</time></a></span>
+</cite>
+<blockquote><p>Wincent: Is there any upstream vim/ubuntu bug for this?</p>
+<p>If my issue is really caused by incorrect ruby integration, then I'd imagine other ruby plugins would be having issues as well.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7043'>
+<cite>
+<a href="/users/buck">buck</a>
+<span class='when'><a href="#comment_7043"><time data-relative="true">2011-08-27T00:52:31Z</time></a></span>
+</cite>
+<blockquote><p>FYI, here are the upstream bugs:</p>
+<p>Debian (fixed/closed) <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=614336" class="external">http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=614336</a> Ubuntu (unassigned)   <a href="https://bugs.launchpad.net/ubuntu/+source/vim/+bug/738423?comments=all" class="external">https://bugs.launchpad.net/ubuntu/+source/vim/+bug/738423?comments=all</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7047'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7047"><time data-relative="true">2011-08-27T07:56:31Z</time></a></span>
+</cite>
+<blockquote><p>I'm not sure if other Ruby plugins have issues, or only ones like Command-T that involve native C extensions (not many of those around).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7051'>
+<cite>
+<a href="/users/buck">buck</a>
+<span class='when'><a href="#comment_7051"><time data-relative="true">2011-08-29T17:32:26Z</time></a></span>
+</cite>
+<blockquote><p>Wincent: I may be mistaken, but I don't believe that the C extension is involved. I wish I could read the stack trace better. Are you able to glean any clues from it?</p>
+<p>Here's the change that fixed it, according to <a href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=614336" class="external">vim changelog</a>. <a href="http://code.google.com/p/vim/source/detail?r=ee50cd1a3032" class="external">http://code.google.com/p/vim/source/detail?r=ee50cd1a3032</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

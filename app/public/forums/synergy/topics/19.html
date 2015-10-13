@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+[bug] Separate global menu
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; [bug] Separate global menu</div>
+<h1 class='major'>[bug] Separate global menu</h1>
+<div class='topic' id='topic_19'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/19"><time data-relative="true">2004-03-25T11:11:47Z</time></a>
+</span>
+</cite>
+<blockquote><p>I have Synergy's preferences set so that the 'show global menu as a separate menu item' option is not enabled. However, upon startup I always get a separate global menu item. I have to open synergy's prefs, enable the option &amp; apply, then disable it and apply for the global menu to disappear.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_61'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_61"><time data-relative="true">2004-03-25T20:47:24Z</time></a></span>
+</cite>
+<blockquote><p>I can't reproduce that here. Are you sure that you don't have an older version of Synergy installed on your system somewhere? It's possible you installed the new one into ~/Library/PreferencePanes/ and left an older copy behind in /Library/PreferencePanes/...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_62'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_62"><time data-relative="true">2004-03-27T08:03:40Z</time></a></span>
+</cite>
+<blockquote><p>Nope, all I can find is v1.0a7 in ~/Library/PreferencePanes. Nothing installed in /Library (as I would expect since I used your automatic installer). Not a big deal so I'll wait and see if it persists across the next version.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_63'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_63"><time data-relative="true">2004-03-28T06:39:00Z</time></a></span>
+</cite>
+<blockquote><p>Quote: Nope, all I can find is v1.0a7 in ~/Library/PreferencePanes. Nothing installed in /Library (as I would expect since I used your automatic installer). Not a big deal so I'll wait and see if it persists across the next version. </p>
+<p>You could also email me your preferences file (to <a href="mailto:win@wincent.org" class="mailto">win@wincent.org</a>) and I will take a look at it. The file is ~/Library/Preferences/org.wincent.Synergy.plist.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_64'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_64"><time data-relative="true">2004-03-28T19:10:57Z</time></a></span>
+</cite>
+<blockquote><p>Sent you my prefs file. Hope there's a clue in there somewhere.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_65'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_65"><time data-relative="true">2004-03-28T20:03:22Z</time></a></span>
+</cite>
+<blockquote><p>I tried your preferences file here and the problem occurred, so I immediately knew that we were dealing with a corrupt preferences file.</p>
+<p>I've found the garbled entry, corrected it, and now it works.</p>
+<p>Have sent it back to you via email.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #226: Not all tracks show up in Artist view
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #226</div>
+<div class='issue' id='issue_226'>
+<form class="edit_issue" id="edit_issue_226" action="/issues/226" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="PjISZsXoVbls7McAZ4Sd23AWPX28H9k9DmFr5lYdSjQKwKzRYmWP7LVg9PdWrc5vxZRUQbfzVyEufr4YcsUtEA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #226:
+<span data-name='issue[summary]'>
+Not all tracks show up in Artist view
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-05-06T13:56:53Z</time>, updated <time data-relative="true">2005-07-27T01:31:21Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/william-styler">William Styler</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>In the Synergy Global Menu, not all tracks by some artists are shown, even when selecting &quot;All Albums&quot;.   I haven't noticed any pattern in which don't show up, all I know is that some just don't.  </p>
+<p>Here's an example screenshot (showing &quot;All Albums&quot; for Dino Merlin, which isn't all the tracks listed  (and present) in iTunes):</p>
+<p><a href="http://homepage.mac.com/wstyler/.Pictures/synergy.png" class="external">http://homepage.mac.com/wstyler/.Pictures/synergy.png</a></p>
+<p>Thanks for all the work you're doing on this great project!</p>
+<p>Will</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1967'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1967"><time data-relative="true">2005-05-06T16:41:19Z</time></a></span>
+</cite>
+<blockquote><p>Those tracks are missing because they have no album set.</p>
+<p>Thanks for reporting this. I did know about it but hadn't made a note of it here yet.</p>
+<p>It happens because Synergy Advance is basically asking, &quot;What are all the albums for this artist? Show me  the tracks from those albums...&quot; and of course the tracks which don't have an album set for them don't get  shown.</p>
+<p>I think I need to artificially make an &quot;album&quot; (a virtual album, not a real album) called &quot;Unknown album&quot; for  this orphan tracks, then they should appear in those &quot;All&quot; submenus. I'll do my best to get this one fixed  prior to the next preview release.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1968'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1968"><time data-relative="true">2005-05-16T03:12:48Z</time></a></span>
+</cite>
+<blockquote><p>Ok, this is now fixed. Adding the fixed-in-prerelease keyword. You'll be able to see the fix when the 0.2  public preview release comes out at the end of this month.</p>
+<p>Basically, if an item has no Genre set it correctly winds up in the &quot;All Genres&quot; and &quot;Unknown Genre&quot;  submenus. If an item has no Album set it correctly shows up in the &quot;All Artists&quot;, &quot;Untitled Album&quot; and &quot;All  albums&quot; submenus. And if neither Genre nor Album is set then it winds up in all of the above, as  appropriate.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1969'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1969"><time data-relative="true">2005-05-17T18:37:11Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 243 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1970'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1970"><time data-relative="true">2005-07-27T01:31:21Z</time></a></span>
+</cite>
+<blockquote><p>0.2 is out.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

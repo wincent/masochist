@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2166: Wikitext fail to build under debian with rubinius
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2166</div>
+<div class='issue' id='issue_2166'>
+<form class="edit_issue" id="edit_issue_2166" action="/issues/2166" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="1+QkJNHSugAlPvTk8Hw1LIqWx+zewu7qU3H35v8CKPPjFpqTdl9gVfyyxxPBVWaYPxSu0NUuYPZzbiIY29pP1w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2166:
+<span data-name='issue[summary]'>
+Wikitext fail to build under debian with rubinius
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-04-08T16:23:40Z</time>, updated <time data-relative="true">2014-04-09T02:14:54Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/pascalturbo">PascalTurbo</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi There,</p>
+<p>I'm trying to install wikitext under debian with rubinius as default ruby version. </p>
+<p>But it fails with this error:</p>
+<pre>root@myruby:~/wiki_record_builder# gem install wikitext -v '4.1'
+Building native extensions.  This could take a while...
+ERROR:  Error installing wikitext:
+        ERROR: Failed to build gem native extension.
+
+    /usr/local/rvm/rubies/rbx-head/bin/rbx extconf.rb
+checking for ruby.h... yes
+creating Makefile
+
+make &quot;DESTDIR=&quot; clean
+
+make &quot;DESTDIR=&quot;
+compiling ary.c
+compiling wikitext_ragel.c
+compiling parser.c
+parser.c: In function &#x2018;Wikitext_parser_parse&#x2019;:
+parser.c:2581:32: error: &#x2018;RSTRING_EMBED_LEN_MAX&#x2019; undeclared (first use in this function)
+parser.c:2581:32: note: each undeclared identifier is reported only once for each function it appears in
+parser.c:2583:17: error: &#x2018;struct RString&#x2019; has no member named &#x2018;as&#x2019;
+parser.c:2584:17: error: &#x2018;struct RString&#x2019; has no member named &#x2018;as&#x2019;
+parser.c:2585:17: error: &#x2018;struct RString&#x2019; has no member named &#x2018;as&#x2019;
+make: *** [parser.o] Fehler 1
+
+make failed, exit code 2
+
+Gem files will remain installed in /usr/local/rvm/gems/rbx-head/gems/wikitext-4.1 for inspection.
+Results logged to /usr/local/rvm/gems/rbx-head/extensions/x86_64-linux/2.1/wikitext-4.1/gem_make.out</pre>
+<p>Any idea where's the problem? </p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_11176'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11176"><time data-relative="true">2014-04-09T02:14:54Z</time></a></span>
+</cite>
+<blockquote><p>Since version 4.0, it only supports Ruby 2.0 and up.</p>
+<p>I suggest you try building 3.1 or older, which has conditional code which should work on multiple versions:</p>
+<p><a href="https://github.com/wincent/wikitext/blob/3.1/ext/parser.c#L2588-L2602" class="external">https://github.com/wincent/wikitext/blob/3.1/ext/parser.c#L2588-L2602</a></p>
+<p>For comparison, here's the same code in the current release:</p>
+<p><a href="https://github.com/wincent/wikitext/blob/4.1/ext/wikitext/parser.c#L2583-L2586" class="external">https://github.com/wincent/wikitext/blob/4.1/ext/wikitext/parser.c#L2583-L2586</a></p>
+<p>(I decided to drop support for old versions from the latest branch in order to drop some legacy baggage; I don't have a lot of time for this project so want to keep the load light.)</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

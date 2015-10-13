@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #2050: Update to Git 1.8.1.4
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #2050</div>
+<div class='issue' id='issue_2050'>
+<form class="edit_issue" id="edit_issue_2050" action="/issues/2050" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="3YKpxs3Sk1blIbs/JsmDDAZBAubR2KPrZ5OGq9yeJsvpcBdxal9JAzytiMgX4NC4s8Nr2to0LfdHjFNV+EZB7w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #2050:
+<span data-name='issue[summary]'>
+Update to Git 1.8.1.4
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2013-01-16T10:19:55Z</time>, updated <time data-relative="true">2013-03-02T10:20:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<pre>The latest maintenance release Git v1.8.1.1 is now available at
+the usual places.  This contains many bugfixes that have been
+cooking on the 'master' branch since v1.8.1 was released.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+44b90aab937b0e0dbb0661eb5ec4ca6182e60854  git-1.8.1.1.tar.gz
+952e0950d40bb141357be88a63f4cbb58258a4f5  git-htmldocs-1.8.1.1.tar.gz
+5089613a434ba09c94f6694d546c246838377760  git-manpages-1.8.1.1.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.1.1
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.8.1.1 Release Notes
+=========================
+
+Fixes since v1.8.1
+------------------
+
+ * The attribute mechanism didn't allow limiting attributes to be
+   applied to only a single directory itself with &quot;path/&quot; like the
+   exclude mechanism does.
+
+ * When attempting to read the XDG-style $HOME/.config/git/config and
+   finding that $HOME/.config/git is a file, we gave a wrong error
+   message, instead of treating the case as &quot;a custom config file does
+   not exist there&quot; and moving on.
+
+ * After failing to create a temporary file using mkstemp(), failing
+   pathname was not reported correctly on some platforms.
+
+ * http transport was wrong to ask for the username when the
+   authentication is done by certificate identity.
+
+ * The behaviour visible to the end users was confusing, when they
+   attempt to kill a process spawned in the editor that was in turn
+   launched by Git with SIGINT (or SIGQUIT), as Git would catch that
+   signal and die.  We ignore these signals now.
+
+ * A child process that was killed by a signal (e.g. SIGINT) was
+   reported in an inconsistent way depending on how the process was
+   spawned by us, with or without a shell in between.
+
+ * After &quot;git add -N&quot; and then writing a tree object out of the
+   index, the cache-tree data structure got corrupted.
+
+ * &quot;git apply&quot; misbehaved when fixing whitespace breakages by removing
+   excess trailing blank lines in some corner cases.
+
+ * A tar archive created by &quot;git archive&quot; recorded a directory in a
+   way that made NetBSD's implementation of &quot;tar&quot; sometimes unhappy.
+
+ * When &quot;git clone --separate-git-dir=$over_there&quot; is interrupted, it
+   failed to remove the real location of the $GIT_DIR it created.
+   This was most visible when interrupting a submodule update.
+
+ * &quot;git fetch --mirror&quot; and fetch that uses other forms of refspec
+   with wildcard used to attempt to update a symbolic ref that match
+   the wildcard on the receiving end, which made little sense (the
+   real ref that is pointed at by the symbolic ref would be updated
+   anyway).  Symbolic refs no longer are affected by such a fetch.
+
+ * The &quot;log --graph&quot; codepath fell into infinite loop in some
+   corner cases.
+
+ * &quot;git merge&quot; started calling prepare-commit-msg hook like &quot;git
+   commit&quot; does some time ago, but forgot to pay attention to the exit
+   status of the hook.
+
+ * &quot;git pack-refs&quot; that ran in parallel to another process that
+   created new refs had a race that can lose new ones.
+
+ * When a line to be wrapped has a solid run of non space characters
+   whose length exactly is the wrap width, &quot;git shortlog -w&quot; failed
+   to add a newline after such a line.
+
+ * The way &quot;git svn&quot; asked for password using SSH_ASKPASS and
+   GIT_ASKPASS was not in line with the rest of the system.
+
+ * &quot;gitweb&quot;, when sorting by age to show repositories with new
+   activities first, used to sort repositories with absolutely
+   nothing in it early, which was not very useful.
+
+ * &quot;gitweb&quot;, when sorting by age to show repositories with new
+   activities first, used to sort repositories with absolutely
+   nothing in it early, which was not very useful.
+
+ * When autoconf is used, any build on a different commit always ran
+   &quot;config.status --recheck&quot; even when unnecessary.
+
+ * Some scripted programs written in Python did not get updated when
+   PYTHON_PATH changed.
+
+ * We have been carrying a translated and long-unmaintained copy of an
+   old version of the tutorial; removed.
+
+ * Portability issues in many self-test scripts have been addressed.
+
+
+Also contains other minor fixes and documentation updates.
+
+----------------------------------------------------------------
+
+Changes since v1.8.1 are as follows:
+
+Aaron Schrab (1):
+      Use longer alias names in subdirectory tests
+
+Adam Spiers (1):
+      api-allocation-growing.txt: encourage better variable naming
+
+Antoine Pelisse (1):
+      merge: Honor prepare-commit-msg return code
+
+Christian Couder (1):
+      Makefile: detect when PYTHON_PATH changes
+
+Jean-No&#x00eb;l AVILA (1):
+      Add directory pattern matching to attributes
+
+Jeff King (9):
+      run-command: drop silent_exec_failure arg from wait_or_whine
+      launch_editor: refactor to use start/finish_command
+      run-command: do not warn about child death from terminal
+      launch_editor: propagate signals from editor to git
+      completion: complete refs for &quot;git commit -c&quot;
+      refs: do not use cached refs in repack_without_ref
+      tests: turn on test-lint by default
+      fix compilation with NO_PTHREADS
+      run-command: encode signal death as a positive integer
+
+Jens Lehmann (1):
+      clone: support atomic operation with --separate-git-dir
+
+John Keeping (4):
+      git-fast-import(1): remove duplicate '--done' option
+      git-shortlog(1): document behaviour of zero-width wrap
+      git-fast-import(1): combine documentation of --[no-]relative-marks
+      git-fast-import(1): reorganise options
+
+Jonathan Nieder (6):
+      config, gitignore: failure to access with ENOTDIR is ok
+      config: treat user and xdg config permission problems as errors
+      doc: advertise GIT_CONFIG_NOSYSTEM
+      config: exit on error accessing any config file
+      build: do not automatically reconfigure unless configure.ac changed
+      docs: manpage XML depends on asciidoc.conf
+
+Junio C Hamano (20):
+      apply.c:update_pre_post_images(): the preimage can be truncated
+      format_commit_message(): simplify calls to logmsg_reencode()
+      sh-setup: work around &quot;unset IFS&quot; bug in some shells
+      fetch: ignore wildcarded refspecs that update local symbolic refs
+      xmkstemp(): avoid showing truncated template more carefully
+      t0200: &quot;locale&quot; may not exist
+      t9502: do not assume GNU tar
+      t4014: fix arguments to grep
+      t3600: Avoid &quot;cp -a&quot;, which is a GNUism
+      t9020: use configured Python to run the test helper
+      compat/fnmatch: update old-style definition to ANSI
+      t9200: let &quot;cvs init&quot; create the test repository
+      merge --no-edit: do not credit people involved in the side branch
+      SubmittingPatches: who am I and who cares?
+      SubmittingPatches: mention subsystems with dedicated repositories
+      Documentation: full-ness of a bundle is significant for cloning
+      SubmittingPatches: remove overlong checklist
+      SubmittingPatches: give list and maintainer addresses
+      Prepare for 1.8.1.1
+      Git 1.8.1.1
+
+Kirill Brilliantov (1):
+      Documentation: correct example restore from bundle
+
+Mark Levedahl (1):
+      Makefile: add comment on CYGWIN_V15_WIN32API
+
+Matthew Daley (1):
+      gitweb: Sort projects with undefined ages last
+
+Max Horn (1):
+      configure.ac: fix pthreads detection on Mac OS X
+
+Michael Schubert (2):
+      git-subtree: ignore git-subtree executable
+      git-subtree: fix typo in manpage
+
+Micha&#x0142; Kiedrowicz (1):
+      graph.c: infinite loop in git whatchanged --graph -m
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (4):
+      cache-tree: remove dead i-t-a code in verify_cache()
+      cache-tree: replace &quot;for&quot; loops in update_one with &quot;while&quot; loops
+      cache-tree: fix writing cache-tree when CE_REMOVE is present
+      cache-tree: invalidate i-t-a paths after generating trees
+
+Orgad Shaneh (1):
+      gitweb: fix error in sanitize when highlight is enabled
+
+Paul Fox (1):
+      launch_editor: ignore terminal signals while editor has control
+
+Rene Bredlau (1):
+      http.c: Avoid username prompt for certifcate credentials
+
+Ren&#x00e9; Scharfe (2):
+      archive-tar: split long paths more carefully
+      t1402: work around shell quoting issue on NetBSD
+
+Sebastian Schuberth (1):
+      nedmalloc: Fix a compile warning (exposed as error) with GCC 4.7.2
+
+Steffen Prohaska (2):
+      shortlog: fix wrapping lines of wraplen
+      strbuf_add_wrapped*(): Remove unused return value
+
+Sven Strickroth (3):
+      git-svn, perl/Git.pm: add central method for prompting passwords
+      perl/Git.pm: Honor SSH_ASKPASS as fallback if GIT_ASKPASS is not set
+      git-svn, perl/Git.pm: extend and use Git-&gt;prompt method for querying users
+
+Thomas Ackermann (1):
+      Remove Documentation/pt_BR/gittutorial.txt
+
+Torsten B&#x00f6;gershausen (2):
+      t9810: Do not use sed -i
+      t9020: which is not portable
+
+W. Trevor King (1):
+      remote-hg: Fix biridectionality -&gt; bidirectionality typos</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_10116'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10116"><time data-relative="true">2013-02-08T06:45:37Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.8.1.1</li>
+<li><strong>To:</strong> Update to Git 1.8.1.3</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10117'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10117"><time data-relative="true">2013-02-08T06:45:56Z</time></a></span>
+</cite>
+<blockquote><p>From the release notes:</p>
+<pre>The latest maintenance release Git v1.8.1.3 is now available at
+the usual places.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+29ed9047263f9835726200226451339276641779  git-1.8.1.3.tar.gz
+6b1e57bde2f2b0a86532390c15bfa7b181c50db2  git-htmldocs-1.8.1.3.tar.gz
+12aaa8a0428e64d194665379ab0335d786728930  git-manpages-1.8.1.3.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.1.3
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.8.1.3 Release Notes
+=========================
+
+Fixes since v1.8.1.2
+--------------------
+
+ * The attribute mechanism didn't allow limiting attributes to be
+   applied to only a single directory itself with &quot;path/&quot; like the
+   exclude mechanism does.  The fix for this in 1.8.1.2 had
+   performance degradations.
+
+ * Command line completion code was inadvertently made incompatible with
+   older versions of bash by using a newer array notation.
+
+ * Scripts to test bash completion was inherently flaky as it was
+   affected by whatever random things the user may have on $PATH.
+
+ * A fix was added to the build procedure to work around buggy
+   versions of ccache broke the auto-generation of dependencies, which
+   unfortunately is still relevant because some people use ancient
+   distros.
+
+ * We used to stuff &quot;user@&quot; and then append what we read from
+   /etc/mailname to come up with a default e-mail ident, but a bug
+   lost the &quot;user@&quot; part.
+
+ * &quot;git am&quot; did not parse datestamp correctly from Hg generated patch,
+   when it is run in a locale outside C (or en).
+
+ * Attempt to &quot;branch --edit-description&quot; an existing branch, while
+   being on a detached HEAD, errored out.
+
+ * &quot;git cherry-pick&quot; did not replay a root commit to an unborn branch.
+
+ * We forgot to close the file descriptor reading from &quot;gpg&quot; output,
+   killing &quot;git log --show-signature&quot; on a long history.
+
+ * &quot;git rebase --preserve-merges&quot; lost empty merges in recent versions
+   of Git.
+
+ * Rebasing the history of superproject with change in the submodule
+   has been broken since v1.7.12.
+
+ * A failure to push due to non-ff while on an unborn branch
+   dereferenced a NULL pointer when showing an error message.
+
+Also contains various documentation fixes.
+
+----------------------------------------------------------------
+
+Changes since v1.8.1.2 are as follows:
+
+Brandon Casey (3):
+      git-completion.bash: replace zsh notation that breaks bash 3.X
+      git-p4.py: support Python 2.5
+      git-p4.py: support Python 2.4
+
+Dmitry V. Levin (1):
+      am: invoke perl's strftime in C locale
+
+Fraser Tweedale (1):
+      push: fix segfault when HEAD points nowhere
+
+John Keeping (1):
+      git-cvsimport.txt: cvsps-2 is deprecated
+
+Jonathan Nieder (2):
+      ident: do not drop username when reading from /etc/mailname
+      Makefile: explicitly set target name for autogenerated dependencies
+
+Junio C Hamano (17):
+      Which merge_file() function do you mean?
+      merge-tree: lose unused &quot;flags&quot; from merge_list
+      merge-tree: lose unused &quot;resolve_directories&quot;
+      merge-tree: add comments to clarify what these functions are doing
+      merge-tree: fix d/f conflicts
+      Documentation: update &quot;howto maintain git&quot;
+      howto/maintain: mark titles for asciidoc
+      help: include &lt;common-cmds.h&gt; only in one file
+      t9902: protect test from stray build artifacts
+      howto/maintain: document &quot;### match next&quot; convention in jch/pu branch
+      README: update stale and/or incorrect information
+      INSTALL: git-p4 does not support Python 3
+      git-am: record full index line in the patch used while rebasing
+      apply: simplify build_fake_ancestor()
+      apply: diagnose incomplete submodule object name better
+      Start preparing for 1.8.1.3
+      Git 1.8.1.3
+
+Martin von Zweigbergk (2):
+      tests: move test_cmp_rev to test-lib-functions
+      learn to pick/revert into unborn branch
+
+Nguy&#x1ec5;n Th&#x00e1;i Ng&#x1ecd;c Duy (4):
+      attr: fix off-by-one directory component length calculation
+      test-lib.sh: unfilter GIT_PERF_*
+      attr: avoid calling find_basename() twice per path
+      branch: no detached HEAD check when editing another branch's description
+
+Phil Hord (1):
+      rebase --preserve-merges: keep all merge commits including empty ones
+
+Ramsay Allan Jones (1):
+      Makefile: Replace merge-file.h with merge-blobs.h in LIB_H
+
+Stephen Boyd (1):
+      gpg: close stderr once finished with it in verify_signed_buffer()
+
+Torsten B&#x00f6;gershausen (3):
+      t0050: known breakage vanished in merge (case change)
+      t0050: honor CASE_INSENSITIVE_FS in add (with different case)
+      t0050: Use TAB for indentation</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10158'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10158"><time data-relative="true">2013-02-21T05:07:22Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Update to Git 1.8.1.3</li>
+<li><strong>To:</strong> Update to Git 1.8.1.4</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10159'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10159"><time data-relative="true">2013-02-21T05:07:38Z</time></a></span>
+</cite>
+<blockquote><pre>The latest maintenance release Git v1.8.1.4 is now available at the
+usual places.
+
+This is primarily to tighten the host verification when imap-send is
+talking to your mail server via TLS/SSL.  The topic that was merged to
+the tip of 'maint' track consists of 3 patches and is based on the
+1.7.6 maintenance track.  This is to make it easier for the distro
+folks to merge the topic to their older maintenance branches to issue
+hotfix binary releases if they wanted to.
+
+This release itself also contains many small updates to the
+user-manual.
+
+The release tarballs are found at:
+
+    <a href="http://code.google.com/p/git-core/downloads/list" class="external">http://code.google.com/p/git-core/downloads/list</a>
+
+and their SHA-1 checksums are:
+
+553191fe02cfac77386d5bb01df0a79eb7f163c8  git-1.8.1.4.tar.gz
+bb71df6bc1fdb55b45c59af83102e901d484ef53  git-htmldocs-1.8.1.4.tar.gz
+98c41b38d02f09e1fcde335834694616d0a615f7  git-manpages-1.8.1.4.tar.gz
+
+Also the following public repositories all have a copy of the v1.8.1.4
+tag and the maint branch that the tag points at:
+
+  url = git://repo.or.cz/alt-git.git
+  url = <a href="https://code.google.com/p/git-core/" class="external">https://code.google.com/p/git-core/</a>
+  url = git://git.sourceforge.jp/gitroot/git-core/git.git
+  url = git://git-core.git.sourceforge.net/gitroot/git-core/git-core
+  url = <a href="https://github.com/gitster/git" class="external">https://github.com/gitster/git</a>
+
+Git 1.8.1.4 Release Notes
+=========================
+
+Fixes since v1.8.1.3
+--------------------
+
+ * &quot;git imap-send&quot; talking over imaps:// did make sure it received a
+   valid certificate from the other end, but did not check if the
+   certificate matched the host it thought it was talking to.
+
+Also contains various documentation fixes.
+
+----------------------------------------------------------------
+
+Changes since v1.8.1.3 are as follows:
+
+Junio C Hamano (2):
+      imap-send: move [/tags/ifdef #ifdef] around
+      Git 1.8.1.4
+
+Matthieu Moy (1):
+      Replace filepattern with pathspec for consistency
+
+Oswald Buddenhagen (2):
+      imap-send: the subject of SSL certificate must match the host
+      imap-send: support subjectAltName as well
+
+W. Trevor King (9):
+      user-manual: Fix 'both: so' -&gt; 'both; so' typo
+      user-manual: Fix 'http' -&gt; 'HTTP' typos
+      user-manual: Fix 'you - Git' -&gt; 'you--Git' typo
+      user-manual: Rewrite git-gc section for automatic packing
+      user-manual: use 'remote add' to setup push URLs
+      user-manual: give 'git push -f' as an alternative to +master
+      user-manual: mention 'git remote add' for remote branch config
+      user-manual: use 'git config --global user.*' for setup
+      user-manual: use -o latest.tar.gz to create a gzipped tarball</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10167'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10167"><time data-relative="true">2013-03-02T10:20:53Z</time></a></span>
+</cite>
+<blockquote><p>1.8.1.5 is the new hotness. Closing this ticket before it gets too long.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_10168'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_10168"><time data-relative="true">2013-03-02T10:20:57Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

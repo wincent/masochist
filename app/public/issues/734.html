@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #734: Replace confirm-then-delete pattern with delete-then-undo
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #734</div>
+<div class='issue' id='issue_734'>
+<form class="edit_issue" id="edit_issue_734" action="/issues/734" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="R2zUR8hqRapMkCCqY03ucEOEQsheZfxx70n85dzO7Vdznmrwb+ef/5UcE11SZL3E9gYr9FWJcm3PVikb+BaKcw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #734:
+<span data-name='issue[summary]'>
+Replace confirm-then-delete pattern with delete-then-undo
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-05-19T10:34:12Z</time>, updated <time data-relative="true">2010-06-28T02:26:19Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When doing a destructive operation like deleting a record there are two possible workflows:</p>
+<ul>
+<li>Provide a delete link and then throw up a confirmation dialog with JavaScript to <em>prevent</em> accidental deletions</li>
+<li>Provide a delete link with no confirmation dialog, but do offer an &quot;undo&quot; link to <em>correct</em> accidental deletions</li>
+</ul>
+<p>When deleting spam tickets I am finding that the former workflow isn't as user-friendly and efficient as it could be. If there are 10 spam tickets then you have to do 20 operations (click 10 delete links and dismiss 10 confirmation dialogs).</p>
+<p>A much nicer way to work would just be to offer delete-with-the-option-of-undo; then you're looking at just 10 clicks under the same situation. If the volume of spam increases too much then I'll look at implementing mass deletion, but I think that this interface improvement is worth doing anyway.</p>
+<p>See also: <a href="http://www.alistapart.com/articles/neveruseawarning" class="external">http://www.alistapart.com/articles/neveruseawarning</a></p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3734'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3734"><time data-relative="true">2008-09-03T05:10:24Z</time></a></span>
+</cite>
+<blockquote><p>A further note, to minimize the risk of the change I'll be making it to the admin issues interface first. If it works there then I'll generalize it elsewhere.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4253'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4253"><time data-relative="true">2009-02-19T17:29:40Z</time></a></span>
+</cite>
+<blockquote><p>Interesting viewpoint about implementation:</p>
+<ul>
+<li><a href="http://weblogs.asp.net/fbouma/archive/2009/02/19/soft-deletes-are-bad-m-kay.aspx" class="external">http://weblogs.asp.net/fbouma/archive/2009/02/19/soft-deletes-are-bad-m-kay.aspx</a></li>
+</ul>
+<p>The argument there is &quot;archive deleted records (somewhere else) rather than marking them as deleted (in-place in the table)&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4366'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4366"><time data-relative="true">2009-03-26T20:26:07Z</time></a></span>
+</cite>
+<blockquote><p>I was thinking about this earlier today in relation to the &quot;spam&quot; field that I currently have on a lot of models.</p>
+<p>It turns out that this has been an unnecessary complication ever since it was implemented. Basically, I <em>never</em> mark stuff as spam; I always just delete it. So all of those queries where I have to add a <code>spam == false</code> condition could have been made simpler.</p>
+<p>If you want to do some sort of bayesian training on spain records then you don't really need to keep those records around in their original form anyway. In short: keep the &quot;Spam&quot; button, but get rid of the &quot;spam&quot; attribute in the database tables. Training as spam would analyse the message and update the corpus, and then the spam record would be deleted.</p>
+<p>So the point is, if all those queries were made unnecessarily complicated by the <code>spam == false</code> check, then perhaps I should forget about using this &quot;deleted_at&quot; column in the database because it will complicate all those queries in exactly the same way.</p>
+<p>It would be better to have a separate table (even tables, one for each kind of record) to hold &quot;deleted&quot; records. Sure, it would be more complicated in some ways (more tables, more classes), but it would make the &quot;99% code path&quot;, the one which gets used almost exclusively, a lot more simple. For basic, non-deleted records (ie. 99% of all use), you can just forget entirely about the notion of &quot;deleted_at&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4368'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4368"><time data-relative="true">2009-03-26T20:28:33Z</time></a></span>
+</cite>
+<blockquote><p>I've made a new ticket, <a href="/issues/1264">ticket #1264</a>, to track the removal of the &quot;spam&quot; field.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4369'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4369"><time data-relative="true">2009-03-26T20:29:34Z</time></a></span>
+</cite>
+<blockquote><p>I currently have two models with a &quot;deleted_at&quot; field: &quot;emails&quot; and &quot;users&quot;. So whatever I decide to do, will have to take those existing arrangements into account.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5780'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5780"><time data-relative="true">2010-06-27T09:41:17Z</time></a></span>
+</cite>
+<blockquote><p>(Posting anonymously from another computer seeing as I don't have my login details with me.)</p>
+<p>I'm thinking that I do want to go ahead with this after all, for the reasons stated in <a href="/issues/1587">ticket #1587</a>. In short, it allows us to elegantly handle the no-JavaScript case, and is a nicer workflow anyway.</p>
+<p>The basic idea is to show in the flash, &quot;Record successfully deleted ([link to undo])&quot;.</p>
+<p>The undo link would just be a post back to the <code>update</code> action with the <code>deleted_at</code> field set to <code>nil</code>. The update action updates and then redirects to the <code>show</code> action, with a flash saying &quot;Record successfully updated&quot;.</p>
+<p>Will need some kind of helper method to produce the &quot;undo&quot; links in a comfortable fashion.</p>
+<p>Will still be tricky in terms of adapting the other queries to use <code>WHERE deleted_at IS NULL</code>, but I think it's most likely worth it in the overall scheme of things.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5781'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5781"><time data-relative="true">2010-06-27T11:26:43Z</time></a></span>
+</cite>
+<blockquote><p>(Me again.)</p>
+<p>One of the arguments against using this &quot;mark as deleted&quot; model is that the database can fill up with crud.</p>
+<p>In reality, it's just a simple mechanism for providing a short-term &quot;undo-ability&quot;.</p>
+<p>There is nothing stopping us from allow the admin to <em>really</em> delete (as in destroy, remove from the database) records that are &quot;in the Trash&quot; (marked as deleted). Best place for this is probably in the admin-only interface.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5784'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5784"><time data-relative="true">2010-06-28T02:26:19Z</time></a></span>
+</cite>
+<blockquote><p>In terms of query complexity, the comment model will actually be the most complex because it already has two boolean fields that must be checked on pretty much every query (the <code>public</code> and <code>awaiting_moderation</code> flags).</p>
+<p>For the initial implementation, then, will probably start with a more simple model, like the <code>Post</code>, <code>Article</code> or <code>Tweet</code> models, seeing as they at least don't have the <code>awaiting_moderation</code> flag (nor author/user fields either). It will therefore be simpler to modify those queries.</p>
+<p>As for the whole object graph question, most (all?) of the &quot;commentable&quot; models use <code>:dependent =&gt; :destroy</code>. So I guess if we mark a parent object like a port or an article as deleted, the simplest thing will be to leave the comments untouched. Any attempt to access an individual one will end up yielding a 404. When we actually proceed to <em>really</em> destroy the parent model (ie. &quot;empty the recycle bin&quot;) <em>then</em> we'll destroy the dependent comments.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

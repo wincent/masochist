@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1289: Exception raised for empty links
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1289</div>
+<div class='issue' id='issue_1289'>
+<form class="edit_issue" id="edit_issue_1289" action="/issues/1289" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="5cmQwXm8ru+1mEbKBNOR8Gb8KX9RqUlb10apfbj4QvvROy523jF0umwUdT01+sJE035AQ1pFx0f3WXyDnCAl3w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1289:
+<span data-name='issue[summary]'>
+Exception raised for empty links
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wikitext
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-04-27T17:04:53Z</time>, updated <time data-relative="true">2009-04-28T11:53:52Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Just noticed this in the live preview while editing a <a href="/wiki">wiki</a> article (&quot;<a href="/wiki/Updating_to_nginx_0.6.36_with_the_nginx_upload_module_2.0.9">Updating to nginx 0.6.36 with the nginx upload module 2.0.9</a>&quot;):</p>
+<pre>ActionView::TemplateError (can't convert nil into String) on line #2 of app/views/articles/_preview.js.haml:
+1: =&quot;=== #{@article.title} ===&quot;.w
+2: =@article.body.w :base_heading_level =&gt; 2
+
+    wikitext (1.5.2) [v] lib/wikitext/string.rb:19:in `parse'
+    wikitext (1.5.2) [v] lib/wikitext/string.rb:19:in `w'
+    app/views/articles/_preview.js.haml:2:in `_run_haml_app47views47articles47_preview46js46haml_locals_object_preview'
+    haml (2.0.9) [v] lib/haml/helpers/action_view_mods.rb:14:in `render'
+    app/controllers/articles_controller.rb:45:in `create'
+    app/controllers/articles_controller.rb:29:in `create'
+    haml (2.0.9) [v] rails/./lib/sass/plugin/rails.rb:19:in `process'
+
+Rendering /public/500.html (500 Internal Server Error)</pre>
+<p>Not sure why <code>nil</code> turned up &mdash; nor where; was it that the wikitext module itself returned <code>nil</code>? &mdash; but I should check out this code path anyway to make the template more robust in the face of such input.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4539'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4539"><time data-relative="true">2009-04-27T17:06:12Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4540'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4540"><time data-relative="true">2009-04-27T17:07:46Z</time></a></span>
+</cite>
+<blockquote><p>Looks like I've definitely found something that makes the wikitext parser choke. Posting the full log excerpt caused <code>issues#show</code> to freak out as well (I had to edit the description to remove the snippet). Here's the exception:</p>
+<pre>ActionView::TemplateError (can't convert nil into String) on line #50 of app/views/issues/show.html.haml:
+47:         -if @issue.description.blank?
+48:           none
+49:         -else
+50:           =@issue.description.w :base_heading_level =&gt; 1
+51:     -if admin?
+52:       %tr
+53:         %th Public?</pre>
+<p>Looks like I might have to reassign this to the wikitext module...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4541'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4541"><time data-relative="true">2009-04-27T17:10:32Z</time></a></span>
+</cite>
+<blockquote><p><strong>Product</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> wincent.com</li>
+<li><strong>To:</strong> wikitext</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4542'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4542"><time data-relative="true">2009-04-27T17:14:33Z</time></a></span>
+</cite>
+<blockquote><p>I can reproduce this in <a href="/wiki/irb">irb</a> with this dastardly string:</p>
+<p>&quot;I wasn't going to update to [[nginx 0.6.36]] but seeing as I am about to start testing the [[nginx upload module]] (see [/issues/1193 ticket #1193]) and I would have to rebuild [[nginx]] anyway for that, I thought I'd use the latest stable release.\n\n= Building on [[Mac OS X]] [[Leopard]] 10.5.6 =\n\n== Build process ==\n\n&lt;pre&gt;wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.9.tar.gz\ntar xzvf nginx_upload_module-2.0.9.tar.gz \nwget http://sysoev.ru/nginx/nginx-0.6.36.tar.gz\ntar xzvf nginx-0.6.36.tar.gz\ncd nginx-0.6.36\n./configure --prefix=/usr/local/nginx \\\n  --with-http_ssl_module \\\n  --add-module=../nginx_upload_module-2.0.9\nmake\nsudo make install&lt;/pre&gt;\n\nThe build is pretty much identical to the normal process (see \&quot;[[]]\&quot; for example), but you'll see something like this at the configuration stage:\n\n&lt;pre&gt;configuring additional modules\nadding module in ../nginx_upload_module-2.0.9\n + ngx_http_upload_module was configured&lt;/pre&gt;\n\n== Changes ==\n\n\n&quot;</p>
+<p>Stick that in a variable, <code>bad</code>, and try running it through the parser:</p>
+<pre>&gt;&gt; bad.w
+TypeError: can't convert nil into String
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `parse'
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `w'
+&#x0009;from (irb):6</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4543'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4543"><time data-relative="true">2009-04-27T17:15:33Z</time></a></span>
+</cite>
+<blockquote><p>Here we go, here's the minimal test case:</p>
+<pre>&gt;&gt; &quot;[[]]&quot;.w
+TypeError: can't convert nil into String
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `parse'
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `w'
+&#x0009;from (irb):16</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4547'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4547"><time data-relative="true">2009-04-27T18:26:50Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Exception raised while rendering app/views/articles/_preview.js.haml</li>
+<li><strong>To:</strong> Exception raised for empty links</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4548'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4548"><time data-relative="true">2009-04-27T18:28:34Z</time></a></span>
+</cite>
+<blockquote><p>So looks like the &quot;link target&quot; can't be empty/nil, although the &quot;link text&quot; can:</p>
+<pre>$ irb -r wikitext -r wikitext/string
+&gt;&gt; &quot;[[]]&quot;.w
+TypeError: can't convert nil into String
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `parse'
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `w'
+&#x0009;from (irb):1
+&gt;&gt; &quot;[[|]]&quot;.w
+TypeError: can't convert nil into String
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `parse'
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `w'
+&#x0009;from (irb):2
+&gt;&gt; &quot;[[a|]]&quot;.w
+=&gt; &quot;&lt;p&gt;&lt;a href=\&quot;/wiki/a\&quot;&gt;a&lt;/a&gt;&lt;/p&gt;\n&quot;
+&gt;&gt; &quot;[[|b]]&quot;.w
+TypeError: can't convert nil into String
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `parse'
+&#x0009;from /Library/Ruby/Gems/1.8/gems/wikitext-1.5.2/lib/wikitext/string.rb:19:in `w'
+&#x0009;from (irb):4</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4552'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4552"><time data-relative="true">2009-04-28T06:43:25Z</time></a></span>
+</cite>
+<blockquote><p>Ok, now fixed and released in 1.5.3.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4553'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4553"><time data-relative="true">2009-04-28T06:43:30Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Open</li>
+<li><strong>To:</strong> Closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4563'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4563"><time data-relative="true">2009-04-28T11:53:52Z</time></a></span>
+</cite>
+<blockquote><p>The new version has been deployed to the site. Note how you can now use invalid links (eg. [[]], [[|]], [[|foo]]) with no ill effects.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

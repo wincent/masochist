@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #643: Synergy &quot;Starts&quot; then &quot;Stops&quot; immediately
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #643</div>
+<div class='issue' id='issue_643'>
+<form class="edit_issue" id="edit_issue_643" action="/issues/643" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="U7FHaAGBqOwwf+DvfNXrq24w8IA2f9l7d9pgS+5HEZFnQ/nfpgxyuenz0xhN/Lgf27KZvD2TV2dXxbW1yp92tQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #643:
+<span data-name='issue[summary]'>
+Synergy &quot;Starts&quot; then &quot;Stops&quot; immediately
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-01-13T17:03:11Z</time>, updated <time data-relative="true">2008-01-14T03:02:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/nathan-rowlett">Nathan Rowlett</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I was using 3.5a2 fine and upgraded to a4. When I click the button to start synergy, it starts for a second and then stops with no explanation. The application does not report an error.</p>
+<p>The console reports the following:</p>
+<p>1/13/08 4:52:29 PM Synergy[1994] Error loading /Library/QuickTime/LiveType.component/Contents/MacOS/LiveType:  dlopen(/Library/QuickTime/LiveType.component/Contents/MacOS/LiveType, 262): Library not loaded: /System/Library/PrivateFrameworks/LiveType.framework/Versions/A/LiveType</p>
+<pre> Referenced from: /Library/QuickTime/LiveType.component/Contents/MacOS/LiveType
+ Reason: no suitable image found.  Did find:
+/System/Library/PrivateFrameworks/LiveType.framework/Versions/A/LiveType: GC capability mismatch </pre>
+<p>1/13/08 4:52:32 PM com.apple.launchd[110] ([0x0-0xe40e4].org.wincent.Synergy[1994]) Exited abnormally: Bus error </p>
+<p>I have Final Cut Pro Studio 5.1.4 (which is compatible with Leopard) installed. This includes LiveType. I may not have had this installed when I was using Synergy a2. Unfortunately I can go back to a2 to see if the bug is present there.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3182'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3182"><time data-relative="true">2008-01-14T03:02:42Z</time></a></span>
+</cite>
+<blockquote><p>The LiveType messages are unrelated to the crashes. You see those because LiveType doesn't support Garbage Collection, it tries to inject itself into every running process, and when it tries with Synergy (which is 100% Garbage Collected) it fails to inject itself.</p>
+<p>So those warnings are basically harmless and you'll see many such warnings, for many different applications, during these &quot;early days&quot; in the Leopard cycle. Eventually everything will be Garbage Collected but that it still some distance away.</p>
+<p>The crashes you're seeing are caused by NSAppleScript. See this bug report for more details:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=640" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=640</a></p>
+<p>Basically, a4 is much more stable than a2, but that one issue remains. If you try starting it a few times you'll see that it more or less runs indefinitely (at least it does in my experience). The NSAppleScript issue is the last one that I need to solve, I think, before getting back to full stability.</p>
+<p>Keep your eye on the nightly builds too:</p>
+<p><a href="http://wincent.com/s/nightlies/" class="external">http://wincent.com/s/nightlies/</a></p>
+<p>Basically, every time I fix a bug which has some kind of user-visible impact I generally upload a new nightly. If you browse the bug database you'll see some of the latest issues that have been fixed (yes, I know the bug database UI sucks; I have concrete plans to replace it as soon as I can).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

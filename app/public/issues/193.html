@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #193: Album cover in Growl notification one song behind
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #193</div>
+<div class='issue' id='issue_193'>
+<form class="edit_issue" id="edit_issue_193" action="/issues/193" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="2NIh2WBYyMcPrevAQRtnViEc9g7Jl/k+F+fB7BLKUB3sIJ9ux9USktYh2DdwMjTilJ6fMsJ7dyI3+BQSNhI3OQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #193:
+<span data-name='issue[summary]'>
+Album cover in Growl notification one song behind
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-04-19T05:54:34Z</time>, updated <time data-relative="true">2005-04-21T08:01:15Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/brett-c">Brett C</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>If you launch iTunes, go to a playlist, start a song, and then double-click on another song, the album cover displayed by the floater is the cover from the initial song and not the new song.  Fast-forward or rewind to other songs using Synergy and this one song lag continues indefinitely it seems.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1858'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1858"><time data-relative="true">2005-04-19T06:25:14Z</time></a></span>
+</cite>
+<blockquote><p>I can't reproduce this problem.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1859'>
+<cite>
+<a href="/users/brett-c">Brett C</a>
+<span class='when'><a href="#comment_1859"><time data-relative="true">2005-04-19T06:37:44Z</time></a></span>
+</cite>
+<blockquote><p>I am running 10.3.8 if that helps any.  I also have not rebooted since installing Synergy 1.8.1 in case that makes a difference.</p>
+<p>I did try relaunching iTunes already.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1860'>
+<cite>
+<a href="/users/joshua-puetz">Joshua Puetz</a>
+<span class='when'><a href="#comment_1860"><time data-relative="true">2005-04-19T06:49:38Z</time></a></span>
+</cite>
+<blockquote><p>I'm seeing this bug as well on OS X 10.3.9 and Synergy 1.8.1 using Growl.  Hitting play shows correct  album art.  Hitting forward to skip to the next song shows artwork from song #1.  Fast forward to song </p>
+<ol>
+<li>3 shows art from song #2, etc.  If you hit pause, the artwork catches up to song #3.  Hit play and </li>
+</ol>
+<p>artwork remains correct.  Fastfoward to song #4, and the bug reappears with the artwork from song #3  displaying.</p>
+<p>This works in reverse as well.  Play song #1, artwork correct.  Fastforward to song #2, art for song #1  displays.  Reward to song #1, art for song #2 displays.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1861'>
+<cite>
+<a href="/users/brett-c">Brett C</a>
+<span class='when'><a href="#comment_1861"><time data-relative="true">2005-04-19T06:52:13Z</time></a></span>
+</cite>
+<blockquote><p>Crap, forgot to mention I was running Growl.  Sorry about that, Wincent.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1862'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1862"><time data-relative="true">2005-04-19T07:26:59Z</time></a></span>
+</cite>
+<blockquote><p>Can you try to do some isolation to see if the problem is present when you do things like: try from  another user account; drag the preferences file out onto the desktop and restart Synergy; try without  Growl etc. I definitely can't reproduce the problem, so we need to figure out under exactly which  circumstances it occurs.</p>
+<p>More tips here:</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1863'>
+<cite>
+<a href="/users/brett-c">Brett C</a>
+<span class='when'><a href="#comment_1863"><time data-relative="true">2005-04-19T07:36:22Z</time></a></span>
+</cite>
+<blockquote><p>I only have a single account on my machine (and installed on to run only on my account anyway) so I can't test that.</p>
+<p>With Synergy turned off for Growl usage and going to back to Synergy's floater the problem goes away.</p>
+<p>Dragging out my plist file, stopping Synergy, relaunching (and it was confirmed it was a new plist being used  since it popped up that Synergy was shareware and I have a registered copy), and turning Growl back on reproduces the problem.</p>
+<p>Growl is 0.6.1 on my machine (installed from DarwinPorts if that makes a difference, which it shouldn't).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1864'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1864"><time data-relative="true">2005-04-19T07:58:34Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #6)</p>
+<blockquote>
+<p>I only have a single account on my machine (and installed on to run only on my account anyway) so I can't test that.</p>
+</blockquote>
+<p>You could also create one if you have administrator privileges and the delete it afterwards if you don't  want the extra account on the machine. From the sounds of it though it looks like Growl is the key  factor and not anything specific to your account. In other words it would happen in any account with  Growl installed.</p>
+<blockquote>
+<p>With Synergy turned off for Growl usage and going to back to Synergy's floater the problem goes away.</p>
+</blockquote>
+<p>Your original summary said &quot;album cover in floater&quot;. Can you clarify whether the wrong cover is in the  Synergy floater, the Growl notification, or both? I've reworded the summary to reflect what my  understanding of the issue is.</p>
+<p>If this is a Growl-only problem it should be fairly easy to fix.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1865'>
+<cite>
+<a href="/users/brett-c">Brett C</a>
+<span class='when'><a href="#comment_1865"><time data-relative="true">2005-04-19T08:02:30Z</time></a></span>
+</cite>
+<blockquote><p>Yep, your clarification is correct.  Sorry again; too loose with terminology.  I have the floater provided by Synergy turned off.  This is all about the Growl notification.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1866'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1866"><time data-relative="true">2005-04-19T08:10:16Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I think I've fixed this now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1867'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1867"><time data-relative="true">2005-04-19T08:16:32Z</time></a></span>
+</cite>
+<blockquote><p>If you want to test out the new build try downloading this one:</p>
+<p><a href="http://us.wincent.com/a/products/synergy-classic/download/Synergy1.8.1.dmg" class="external">http://us.wincent.com/a/products/synergy-classic/download/Synergy1.8.1.dmg</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1868'>
+<cite>
+<a href="/users/brett-c">Brett C</a>
+<span class='when'><a href="#comment_1868"><time data-relative="true">2005-04-19T08:30:02Z</time></a></span>
+</cite>
+<blockquote><p>Cool!  Other than having to enter my serial again it works fine!  I consider the bug fixed (fought the developer in me to close it myself since I don't know if you leave them open to remind you what has been fixed between versions and such).</p>
+<p>Thanks for the prompt work, Wincent.  Looking forward to seeing Synergy Advance and expexting to shell out 7&#x20ac; for it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1869'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1869"><time data-relative="true">2005-04-19T09:24:56Z</time></a></span>
+</cite>
+<blockquote><p>I used to close stuff as soon as it was fixed, but my current policy is to leave bugs open with the &quot;fixed- in-prerelease&quot; keyword set until the new version is released. This is because Bugzilla by default  searches only open bugs; if the fixed bugs wind up as closed before the new version comes out I  therefore end up getting lots of duplicate bug reports...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1870'>
+<cite>
+<a href="/users/jason-w">Jason W</a>
+<span class='when'><a href="#comment_1870"><time data-relative="true">2005-04-21T04:09:17Z</time></a></span>
+</cite>
+<blockquote><p>I experience this same problem in OS X 10.3.8 and Synergy 1.8.1.  When I use Synergy's hot key to advance to the next track, or when iTunes changes tracks automatically, the album art in my Growl notification shows the album that was previously playing.  The floater, should I choose to display it, shows the correct art.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1871'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1871"><time data-relative="true">2005-04-21T08:01:15Z</time></a></span>
+</cite>
+<blockquote><p>Jason, if you read the comments you'll see that this is already fixed.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

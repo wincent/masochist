@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Use it for Tags, Buffers, etc. too?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Use it for Tags, Buffers, etc. too?</div>
+<h1 class='major'>Use it for Tags, Buffers, etc. too?</h1>
+<div class='topic' id='topic_442'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/mseiwald">mseiwald</a>
+<span class='when'>
+<a href="/forums/command-t/topics/442"><time data-relative="true">2010-11-27T10:05:53Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello,</p>
+<p>I've just installed Command-T and I love it. What about extending it by the possibilty to navigate to function definitions (via ctags), open buffers and so on?</p>
+<p>Best regards</p>
+<p>Michael</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6484'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6484"><time data-relative="true">2010-11-27T10:34:31Z</time></a></span>
+</cite>
+<blockquote><p>Well, initially one of the guiding design philosophies was to do <em>one</em> thing (file navigation) and do it really well, but I think at least in the case of buffer navigation there is a strong case to be made that buffer navigation is actually just a special case of file navigation ie. you're (mostly) navigating open files.</p>
+<p>So I am open to adding this and there is already a request for buffer navigation in the issue tracker: see <a href="/issues/1608">ticket #1608</a>.</p>
+<p>As for tags, that one hasn't been requested yet. I'm not a heavy tags user myself so I probably won't be the one to implement it, but if somebody wants to submit a patch or two for it I'd be happy to take a look at it/them. I've added a placeholder ticket in the issue tracker for this: <a href="/issues/1746">ticket #1746</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6612'>
+<cite>
+<a href="/users/yfi">yfi</a>
+<span class='when'><a href="#comment_6612"><time data-relative="true">2011-01-28T12:58:52Z</time></a></span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>If files were sorted in this priority:</p>
+<ol>
+<li>last accessed ( acessed before the buffer you're currently in ) </li>
+<li>files that are open buffers </li>
+<li>all other files</li>
+</ol>
+<p>Command-t would be the one plugin to rule them all.</p>
+<p>So if you invoked cmd-t list and if you didnt type anything you'd see a list of open buffers. </p>
+<p>Typing &lt;leader&gt;t &lt;cr&gt; would take you to the last file you were working on.</p>
+<p>This is how command-t in textmate works, which is a huge timesaver for switching between files. </p>
+<p>Also I believe this would also fit within your criteria of doing file navigation exceptionally well as well as it would take care of buffer navigation in a very elegant manner.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

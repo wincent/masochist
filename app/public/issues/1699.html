@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1699: make the first directory where command-t is launched the product root
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1699</div>
+<div class='issue' id='issue_1699'>
+<form class="edit_issue" id="edit_issue_1699" action="/issues/1699" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pwJmYNS6KbOdt0vda59fe94Le181vJUg1KcddO0kVk+T8NjXczfz5kQ7eCpatgzPa4kSYz5QGzz0uMiKyfwxaw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1699:
+<span data-name='issue[summary]'>
+make the first directory where command-t is launched the product root
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-09-23T02:27:43Z</time>, updated <time data-relative="true">2010-09-25T16:54:59Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Right now if I'm in a project directory and I use command-t to find a model it works great.  If I'm viewing that model file and launch command-t to find the controller that goes with it, I'm out of luck. I first have to issue a cd .. command to vim to get back into my app directory.</p>
+<p>Ideally, there's a way to set the project root similarly to textmate.  I can't think of an elegant way to do this except perhaps having the root default to the directory where command-t is first issued and then flush that setting only by quitting vim or running :CommandTFlush</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6302'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6302"><time data-relative="true">2010-09-23T06:00:54Z</time></a></span>
+</cite>
+<blockquote><p>The right way to do this is to use <code>:cd path/to/project/root</code> when you start working in your project.</p>
+<p>If for some reason you ever want to &quot;scope&quot; Command-T to a particular subdirectory, you can do so by explicitly bringing up Command-T with <code>:CommandT path/to/subdirectory</code>, but a better habit to get into is just to include some characters from the upper levels of the path in your search query:</p>
+<p>eg. from the top of a project root to open the model at <code>app/models/book.rb</code> you might just type <code>mb</code> (or just <code>book</code>), and to open the controller at <code>app/controllers/books_controller.rb</code> you could type either <code>bookcon</code> or <code>conbook</code>. For the specs you could type <code>smb</code> (for <code>spec/models/book_spec.rb</code>) and <code>scbc</code> (for <code>spec/controllers/books_controller_spec.rb</code>).</p>
+<p>Those are just examples and the actual quantity of characters you'll have to enter to narrow down your search depends on the number of files in your project, but hopefully you get the idea.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6305'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6305"><time data-relative="true">2010-09-24T21:39:25Z</time></a></span>
+</cite>
+<blockquote><p>The first thing I do is :cd path/to/project/root</p>
+<p>then I type &lt;leader&gt;-t to bring up command-t and select a file from path/to/project/root/app/models/</p>
+<p>the next time I type &lt;leader&gt;-t I am stuck in path/to/project/root/app/models rather than in path/to/project/root</p>
+<p>here are the keystrokes exactly after launching vim:</p>
+<p>:cd Sites/foo (enter project directory)</p>
+<p>&lt;leader&gt;-t  (bring up command-t)</p>
+<p>book.rb (bring up the book.rb file)</p>
+<p>&lt;leader&gt;-t (bring up command-t)</p>
+<p>bookcon (trying to find the controller, but command-t only shows me the model file since that's the file I am editing in the forefront)</p>
+<p>explicitly bringing up Command-T with :CommandT ~/Sites/foo does work but that's a lot of keystrokes compared to just &lt;leader&gt;-t</p>
+<p>Here's a screenshot: <a href="http://imgur.com/2wKxs" class="external">http://imgur.com/2wKxs</a>  In it you'll see that selecting &lt;leader&gt;-t has scoped only to other controllers.  So we have a disconnect here because I definitely can't follow your example without adding a cd.. in between</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6306'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6306"><time data-relative="true">2010-09-24T21:46:49Z</time></a></span>
+</cite>
+<blockquote><p>Sounds like you've got <code>'autochdir'</code> turned on. It defaults to 'off', so you must have turned it on yourself.</p>
+<p>See <code>:h 'autochdir'</code> for more info.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6307'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6307"><time data-relative="true">2010-09-24T21:47:14Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6311'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6311"><time data-relative="true">2010-09-25T16:42:41Z</time></a></span>
+</cite>
+<blockquote><p>It wasn't autochdir but I did have a line in my vimrc that was the culprit.  Thanks so much for helping me solve it; donation on the way!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6312'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6312"><time data-relative="true">2010-09-25T16:54:59Z</time></a></span>
+</cite>
+<blockquote><p>Yeah, only earlier today I <a href="http://lococast.net/archives/140" class="external">saw someone recommending</a> <a href="http://github.com/mitechie/pyvim/blob/master/.vimrc#L297" class="external">this kind of thing</a>:</p>
+<pre>&quot; Auto change the directory to the current file I'm working on
+autocmd BufEnter * lcd %:p:h</pre>
+<p>Which I don't think is a very good idea at all. Things like this are a much better alternative for the kind of problem he's trying to tackle:</p>
+<pre>&quot; edit file, starting in same directory as current file
+map &lt;leader&gt;e :e &lt;C-R&gt;=expand(&quot;%:p:h&quot;) . &quot;/&quot; &lt;CR&gt;</pre>
+<p>Thanks for the donation.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Album art no longer being fetched
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Album art no longer being fetched</div>
+<h1 class='major'>Album art no longer being fetched</h1>
+<div class='topic' id='topic_66'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/66"><time data-relative="true">2004-12-31T20:46:46Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm running Synergy 1.6.1, and I've noticed that Synergy doesn't seem to be fetching album art from Amazon any more. For example, I was just listening to the band &quot;Dogs Die in Hot Cars&quot;, and Clutter pulled the album art from Amazon.com almost immediately. Synergy still shows the synergy icon.</p>
+<p>Is there any way to troubleshoot this?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_195'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_195"><time data-relative="true">2005-01-01T18:44:12Z</time></a></span>
+</cite>
+<blockquote><p>Just tested access to Amazon and it's still working.</p>
+<p>You may not be aware, but in the past Synergy was banned from accessing Amazon's servers because they didn't like the server load they were getting when nobody ever used the &quot;Buy from Amazon&quot; menu item.</p>
+<p>I was forced to make changes to Synergy that limited the number of queries it would make. Queries are held in a queue and dispatched at regular intervals, but you may see some delay.</p>
+<p>Unfortunately, this is a necessary evil, to dissuade Amazon from pulling the plug again. Of course, they allow access at their discretion, so they could pull it at any time. (But like I said, I just tested; they haven't pulled the plug.)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_196'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_196"><time data-relative="true">2005-01-04T00:02:46Z</time></a></span>
+</cite>
+<blockquote><p>Yes, I remember when album cover fetching was turned back on - much happiness ensued. </p>
+<p>I'm noticing that Synergy doesn't seem to be even creating the plist files it used to when it fetches but fails to find an item. I've tried deleting my synergy plist file with the guess that it was corrupted somehow, but I still am not seeing anything being pulled down.</p>
+<p>Synergy makes the connection to Amazon, but nothing happens.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_197'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_197"><time data-relative="true">2005-01-05T06:07:38Z</time></a></span>
+</cite>
+<blockquote><p>I</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_198'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_198"><time data-relative="true">2005-01-07T16:29:50Z</time></a></span>
+</cite>
+<blockquote><p>It's not working for me either.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_199'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_199"><time data-relative="true">2005-01-08T21:41:48Z</time></a></span>
+</cite>
+<blockquote><p>I just re-tested it and it is definitely still working.</p>
+<p>As I said above, Synergy puts album art searches in a queue, and it enforces a delay between each query. What this means is that you might not see the art arrive instantly when you start playing a song, but you may see it arrive later on (perhaps when you're listening to another song, so you don't actually *see* it until the next time you play the original song). Also, to reduce load on the servers, it will never retry the same song in the same run session.</p>
+<p>If you want to confirm that Synergy's developer token has not been blocked by Amazon, witness the following:</p>
+<p>This is the URL that Synergy will use to search for &quot;The Ugly Organ&quot; album by &quot;Cursive&quot;. Note that the URL has the Synergy developer token embedded in it:</p>
+<p><a href="http://xml.amazon.com/onca/xml2?t=synerf...%20Ugly%20Organ" class="external">http://xml.amazon.com/onca/xml2?t=synerf...%20Ugly%20Organ</a></p>
+<p>The following XML is returned by Amazon, indicating that they haven't blocked Synergy.</p>
+<p>Code:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;ProductInfo xmlns:xsi=&quot;<a href="http://www.w3.org/2001/XMLSchema-instance" class="external">http://www.w3.org/2001/XMLSchema-instance</a>&quot; xsi:noNamespaceSchemaLocation=&quot;<a href="http://xml.amazon.com/schemas2/dev-lite.xsd" class="external">http://xml.amazon.com/schemas2/dev-lite.xsd</a>&quot;&gt;</p>
+<pre>  &lt;TotalResults&gt;1&lt;/TotalResults&gt;
+  &lt;TotalPages&gt;1&lt;/TotalPages&gt;
+  &lt;Details url=&quot;<a href="http://www.amazon.com/exec/obidos/ASIN/B00008AY6D/synerformacos-20?dev-t=D31GYSP62C9C55%26camp=2025%26link_code=xm2" class="external">http://www.amazon.com/exec/obidos/ASIN/B00008AY6D/synerformacos-20?dev-t=D31GYSP62C9C55%26camp=2025%26link_code=xm2</a>&quot;&gt;
+     &lt;Asin&gt;B00008AY6D&lt;/Asin&gt;
+     &lt;ProductName&gt;The Ugly Organ&lt;/ProductName&gt;
+     &lt;Catalog&gt;Music&lt;/Catalog&gt;
+     &lt;Artists&gt;
+        &lt;Artist&gt;Cursive&lt;/Artist&gt;
+     &lt;/Artists&gt;
+     &lt;ReleaseDate&gt;04 March, 2003&lt;/ReleaseDate&gt;
+     &lt;Manufacturer&gt;Saddle Creek&lt;/Manufacturer&gt;
+     &lt;ImageUrlSmall&gt;<a href="http://images.amazon.com/images/P/B00008AY6D.01.THUMBZZZ.jpg&amp;lt;/ImageUrlSmall&amp;gt" class="external">http://images.amazon.com/images/P/B00008AY6D.01.THUMBZZZ.jpg&amp;lt;/ImageUrlSmall&amp;gt</a>;
+     &lt;ImageUrlMedium&gt;<a href="http://images.amazon.com/images/P/B00008AY6D.01.MZZZZZZZ.jpg&amp;lt;/ImageUrlMedium&amp;gt" class="external">http://images.amazon.com/images/P/B00008AY6D.01.MZZZZZZZ.jpg&amp;lt;/ImageUrlMedium&amp;gt</a>;
+     &lt;ImageUrlLarge&gt;<a href="http://images.amazon.com/images/P/B00008AY6D.01.LZZZZZZZ.jpg&amp;lt;/ImageUrlLarge&amp;gt" class="external">http://images.amazon.com/images/P/B00008AY6D.01.LZZZZZZZ.jpg&amp;lt;/ImageUrlLarge&amp;gt</a>;
+     &lt;Availability&gt;This item is currently not available.&lt;/Availability&gt;
+     &lt;ListPrice&gt;$12.98&lt;/ListPrice&gt;
+     &lt;UsedPrice&gt;$10.50&lt;/UsedPrice&gt;
+  &lt;/Details&gt;</pre>
+<p>&lt;/ProductInfo&gt; </p>
+<p>If they had blocked Synergy, then instead of XML we'd be getting a redirection to the Amazon front page (which would give us a bunch of HTML).</p>
+<p>In the meantime I am wishing that I had a dollar for every time someone said that album cover downloads weren't working any more.... by now I'd have, well, four dollars or something, wouldn't I?!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_200'>
+<cite>
+<a href="/users/neilio">neilio</a>
+<span class='when'><a href="#comment_200"><time data-relative="true">2005-01-20T11:15:49Z</time></a></span>
+</cite>
+<blockquote><p>That link returns a 404 error? Does that mean that Synergy is being blocked?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_201'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_201"><time data-relative="true">2005-01-27T15:04:28Z</time></a></span>
+</cite>
+<blockquote><p>Quote: That link returns a 404 error? Does that mean that Synergy is being blocked? </p>
+<p>Just tested it again and it doesn't return a 404 error, but instead returns an XML file containing the search results, which is the desired behaviour. So Synergy is not being blocked.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

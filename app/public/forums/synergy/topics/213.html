@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+New version failing to scrobble to Last.fm?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; New version failing to scrobble to Last.fm?</div>
+<h1 class='major'>New version failing to scrobble to Last.fm?</h1>
+<div class='topic' id='topic_213'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/steveo">Steveo</a>
+<span class='when'>
+<a href="/forums/synergy/topics/213"><time data-relative="true">2007-06-24T14:35:23Z</time></a>
+</span>
+</cite>
+<blockquote><p>hello. since upgrading to the newest version (3.1.3), it seems like it isn't effectively audioscrobbling my songs played to Last.fm. I can't tell if this is an issue with Synergy or with the Last.fm service, which you never seem to know if it's working properly or not... Has anyone else had this issue? thanks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_606'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_606"><time data-relative="true">2007-06-24T19:10:20Z</time></a></span>
+</cite>
+<blockquote><p>Nobody has reported any issues. To investigate the problem further you should try turning on Audioscrobbler logging as described here:</p>
+<p><a href="http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html" class="external">http://lists.wincent.com/pipermail/synergy-beta/2006-November/000003.html</a></p>
+<p>You can also rule out possible local causes by performing some of the basic troubleshooting hints mentioned here:</p>
+<p><a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_607'>
+<cite>
+<a href="/users/yaniv">Yaniv</a>
+<span class='when'><a href="#comment_607"><time data-relative="true">2007-06-25T19:01:37Z</time></a></span>
+</cite>
+<blockquote><p>mine stopped scrobbling as well. ok, i turned on scrobbler logging... what now, wincent? thanks</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_608'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_608"><time data-relative="true">2007-06-26T03:05:10Z</time></a></span>
+</cite>
+<blockquote><p>Well, look at the Console and see if any errors are reported. The Console can be found at /Applications/Utilities/Console</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_609'>
+<cite>
+<a href="/users/yaniv">Yaniv</a>
+<span class='when'><a href="#comment_609"><time data-relative="true">2007-06-26T04:38:40Z</time></a></span>
+</cite>
+<blockquote><p>ha! it's working again! i guess it was only an extra-long hiccup of the last.fm servers... thanks anyway.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_610'>
+<cite>
+<a href="/users/tinsun">tinsun</a>
+<span class='when'><a href="#comment_610"><time data-relative="true">2007-06-26T07:31:03Z</time></a></span>
+</cite>
+<blockquote><p>I often have trouble when the computer has been sleeping overnight, since 3.1.3 it seems to happen more often, but it may have to do with the unresponsive last.fm servers. What do you think?</p>
+<p>2007-06-26 13:26:41.721 Synergy[2352] Audioscrobbler: Enqueuing object: {</p>
+<pre>   WOAlbum = &quot;Pebbles &amp; Ripples&quot;; 
+   WOArtist = &quot;Bonnie \&quot;Prince\&quot; Billy&quot;; 
+   WODate = &quot;2007-06-26 11:26:41&quot;; 
+   WOLength = 299; 
+   WOMBID = &quot;&quot;; 
+   WOTrack = &quot;Babylon System&quot;; </pre>
+<p>} 2007-06-26 13:26:41.721 Synergy[2352] Audioscrobbler: Number of items currently on the queue: 45 2007-06-26 13:26:41.721 Synergy[2352] Audioscrobbler: Queue was non-empty, last attempt failed: processing item 2007-06-26 13:26:41.721 Synergy[2352] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 2007-06-26 13:26:42.721 Synergy[2352] Audioscrobbler: Submission previously failed, will retry 2007-06-26 13:26:42.722 Synergy[2352] Audioscrobbler: Will perform submission using URL: <a href="http://87.117.229.205:80/protocol_1.1" class="external">http://87.117.229.205:80/protocol_1.1</a> 2007-06-26 13:26:42.722 Synergy[2352] Audioscrobbler: Submission as URL-encoded string is: u=username_removed&amp;s=ea9b601fd2e88b2bb64327bb552386bc&amp;a[0]=Schoolly%20D&amp;t[0]=Here%20We%20Go%20Again&amp;b[0]=Smoke%20Some%20Kill&amp;m[0]=&amp;l[0]=167&amp;i[0]=2007-06-25%2019%3A25%3A36 2007-06-26 13:26:42.722 Synergy[2352] Audioscrobbler: Submission as data is: &lt;753d7375 6767615f 61766472 61672673 3d656139 62363031 66643265 38386232 62623634 33323762 62353532 33383662 6326615b 305d3d53 63686f6f 6c6c7925 32304426 745b305d 3d486572 65253230 57652532 30476f25 32304167 61696e26 625b305d 3d536d6f 6b652532 30536f6d 65253230 4b696c6c 266d5b30 5d3d266c 5b305d3d 31363726 695b305d 3d323030 372d3036 2d323525 32303139 25334132 35253341 3336&gt; 2007-06-26 13:26:42.722 Synergy[2352] Audioscrobbler: Starting connection attempt 2007-06-26 13:26:42.722 Synergy[2352] Audioscrobbler: Waiting for submission response 2007-06-26 13:27:57.725 Synergy[2352] NSURLConnection for URL <a href="http://87.117.229.205:80/protocol_1.1" class="external">http://87.117.229.205:80/protocol_1.1</a> returned error: timed out</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_611'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_611"><time data-relative="true">2007-06-26T07:58:55Z</time></a></span>
+</cite>
+<blockquote><p>Looks like the connection is timing out, which is an indication of a network connectivity problem somewhere between your machine and the last.fm servers. There's nothing much you can do about this, other than wait; Synergy will keep retrying and eventually the queued-up tracks will be submitted.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

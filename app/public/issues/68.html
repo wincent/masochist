@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #68: Crashes if NetInfo database contains a user without the &quot;uid&quot; field
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #68</div>
+<div class='issue' id='issue_68'>
+<form class="edit_issue" id="edit_issue_68" action="/issues/68" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="2iz0LWG4QO5GM0+mC37uTFOq/jvUWzKhMdSxC7HrPT/u3kqaxjWau5+/fFE6V7345iiXB9+3vL0Ry2T1lTNaGw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #68:
+<span data-name='issue[summary]'>
+Crashes if NetInfo database contains a user without the &quot;uid&quot; field
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+WinSwitch
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-09T23:00:59Z</time>, updated <time data-relative="true">2005-03-10T14:34:57Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>The following is from a user email (an excellent, detailed report!):</p>
+<p>Ever since I upgraded to OS X 10.3.5, the last three versions of Winswitch I have tried repeatedly crash the SystemUIServer upon trying to click on the WinSwitch icon. The entire Menubar Extras array will disappear (save PTH Clock), and the reappear as the SUIS restarts.</p>
+<p>Suspecting a user-specific problem, I tried creating a new admin account; loggin and activated Winswitch; same problem. </p>
+<p>Inspecting the crash log, as well as the slight hang after clicking the WS icon, I suspected it was having trouble reading either prefs or images to display, so I killed:</p>
+<p>/Library/Caches/ /System/Library/Caches/ /Library/Preferences</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1358'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1358"><time data-relative="true">2004-12-09T23:23:01Z</time></a></span>
+</cite>
+<blockquote><p>The crash report shows that the crash is happening in the _allUsersCacheForcingRebuild method.  (Seeing as WinSwitch is open source, you can look at that method if you're curious.)</p>
+<p>I think we're talking about a very rare and bizarre conflict here. If you compare the source code from  WinSwitch 2.0 to that of WinSwitch 3.0 you'll see that not nothing substantive has changed in the code  that rebuilds the cache...</p>
+<p>What language are you using? I am wondering if this is a problem with one of the localizations.</p>
+<p>Marking as ASSIGNED.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1359'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1359"><time data-relative="true">2004-12-09T23:25:43Z</time></a></span>
+</cite>
+<blockquote><p>I forgot to add. Once we've explored the localization-related possibilties, the other things we can look  at are:</p>
+<p>1. Weirdness in your NetInfo database that WinSwitch might not be handling. 2. What happens when you upgrade to 10.3.6.</p>
+<p>For what it's worth, I am fairly confident that there is something specific on your machine which will  explain this, otherwise I would've been drowned in crash reports by now. Hopefully we can identify the  cause and I can make changes to WinSwitch which will prevent it from getting tripped up by whatever is  serving as the trigger here.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1360'>
+<cite>
+<a href="/users/frederico">Frederico</a>
+<span class='when'><a href="#comment_1360"><time data-relative="true">2004-12-10T03:41:39Z</time></a></span>
+</cite>
+<blockquote><p>I have no doubt that it is machine-specific, as WS is in use elsewhere and functioning perfectly; sorry I  did not make that clear. I am using English, but have other languages loaded and routinely switch  between Italian and others.</p>
+<p>The NIDB is actually the most likely source, now that I know it uses it. I have been having other oddities  that I also suspect to be NIDB-related after the 10.3.3 update and continuing through 10.3.5; e.g., I can  no longer create new user accounts from the Accounts Pane on either my original Admin or Root  accounts (clicking the add icon results in nothing), but I had a couple of rarely used Admin accounts  where I can still generate new Users via GUI (no problems generating users via sudo/terminal, of  course). However, WS does not function on either of these, nor any other user account on this machine.</p>
+<p>I am not *NIXed enough to know how to rebuild the NIDB, unfortunately; I've tried just going in there  and changing as many fields back and forth hoping the file would overwrite any corruption, but no luck  to date. Now that I see it's affecting more than one aspect of my system for which I do not have a  simple workaround, I'm inclined to resolve it, but cringe and shudder at the thought of even an Archive  and Install, as I have so many users and customizations. That is why I went back to an archived clone to  find out when WS stopped working; I don't mind reapplying a few updates from such a point, but a  complete reinstallation is pretty much out of the question right now.</p>
+<p>A 10.3.6 update has not been scheduled, either; had been strongly considering skipping it and waiting  for 10.3.7 based on bug reports and personal experience on other machines with file name issues;  we're in server and NetBoot environment, and I can't deal with that issue right now.</p>
+<p>If you have any clues as to how to, or where info might be regarding effective rebuilding/recreating the  NIDB, I'd appreciate it. In any case, I hope that we can find a source so you can at least allow WS to fail  gracefully, and not crash the SUIS.</p>
+<p>Cheers</p>
+<p>Frederico</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1361'>
+<cite>
+<a href="/users/frederico">Frederico</a>
+<span class='when'><a href="#comment_1361"><time data-relative="true">2004-12-10T04:20:23Z</time></a></span>
+</cite>
+<blockquote><p>OK, I found a couple of articles on how to rebuild the NIDB, but they assume you have a reliable  backup. Any current backups almost surely carry the same corruption as the live file, but perhaps just  the rebuild process will be enough to clean the file. As it requires rebooting in SU and several precise  steps which if botched could render my current system unbootable, I will attempt it when I have some  time to test on a cloned partition and less pressing work to get done, perhaps this weekend. Should  that not work, I can pull a known-good (or at least suspected-better) NIDB from a past archived clone,  but I don't know yet how to resolve such issues as having changed/added users and user passwords in  the interim. I need to study up a bit more on Workgroup Manager, I suppose, to be able to import any  users created after the last useable NIDB backup.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1362'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1362"><time data-relative="true">2004-12-10T06:30:33Z</time></a></span>
+</cite>
+<blockquote><p>Check out the &quot;nidump&quot; command line tool. It can be used to export the contents of the netinfo  database. You might be able to inspect the dump for corruption or weirdness.</p>
+<p>For example, to list local users:</p>
+<p>nidump passwd .</p>
+<p>To list all users, including non-local ones:</p>
+<p>nidump passwd /</p>
+<p>Let me know how you go. Although it seems like there are some serious problems on your machine, it  would still be good if WinSwitch could refrain from crashing! I certainly try to handle NetInfo errors in  the method which is crashing, as shown in the source code snippet here:</p>
+<pre>   ni_status status = ni_open(NULL, &quot;.&quot;, &amp;handle);
+   if (status != NI_OK) return _sortedCache; // can't even connect to NetInfo!
+   ni_id dir;
+   const char *search = &quot;/users&quot;;
+   status = ni_pathsearch(handle, &amp;dir, search);   // find &quot;users&quot; dir
+   if (status == NI_OK)
+   {
+       ni_entrylist users;
+       status = ni_list(handle, &amp;dir, &quot;uid&quot;, &amp;users);  // check for UIDs &gt; 500
+       if (status == NI_OK)
+       {
+           unsigned i;</pre>
+<p>You'll notice that I check the return value on each function call before proceeding, but perhaps there's  something I'm missing here, so we'll keep investigating...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1363'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1363"><time data-relative="true">2004-12-10T07:32:35Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've made some changes to hopefully prevent the crash in the event of a problem with the NetInfo  database. The problem is that the NetInfo documentation (man netinfo) isn't specific about what kinds  of return values these routines can produce. For example, is it possible that a routine could report  &quot;NI_OK&quot; but then pass a NULL result anyway?</p>
+<p>So I've made the changes you see below. I test not only for NI_OK, but for non-NULL values as well. The  code is a little bit ugly because I have to test the members of structures rather than just simple pointers  or values. Let's see if this build crashes on your machine. (If there is a problem with your NetInfo  database I don't expect that WinSwitch will work properly, but I at least expect it to refrain from  crashing!)</p>
+<pre>   if (status != NI_OK || handle == NULL) return _sortedCache; // can't connect
+   ni_id dir;
+   const char *search = &quot;/users&quot;;
+   status = ni_pathsearch(handle, &amp;dir, search);   // find &quot;users&quot; dir
+   if ((status == NI_OK) &amp;&amp; dir.nii_object &amp;&amp; dir.nii_instance)
+   {
+       ni_entrylist users;
+       status = ni_list(handle, &amp;dir, &quot;uid&quot;, &amp;users);  // check for UIDs &gt; 500
+       if ((status == NI_OK) &amp;&amp; (users.ni_entrylist_len))
+       {
+           unsigned i;</pre>
+<p>Here is a link to the test build, if you want to try it. Tested it here and it works.</p>
+<p><a href="http://us.wincent.com/a/products/winswitch/download/WinSwitch3.0b-20041209.dmg" class="external">http://us.wincent.com/a/products/winswitch/download/WinSwitch3.0b-20041209.dmg</a></p>
+<p>MD5 checksum: f04484f679b2613c24f6679f0383e2db</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1364'>
+<cite>
+<a href="/users/frederico">Frederico</a>
+<span class='when'><a href="#comment_1364"><time data-relative="true">2004-12-15T16:22:21Z</time></a></span>
+</cite>
+<blockquote><p>No luck. New version crashes as before, though it does appear to hang a bit longer (~2sec) before  taking down SUIS.</p>
+<p>Crash Log:</p>
+<ul>
+<li>*********</li>
+</ul>
+<p>Host Name:      RicoG4.local Date/Time:      2004-12-14 22:48:13 -0700 OS Version:     10.3.5 (Build 7M34) Report Version: 2</p>
+<p>Command: SystemUIServer Path:    /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer Version: 1.2.1 (1.2.1) PID:     10063 Thread:  0</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000004</p>
+<p>Thread 0 Crashed: 0   com.wincent.WinSwitch    &#x0009;0x007d53d0 -[WOWinSwitchMenuExtra _allUsersCacheForcingRebuild:]  + 0x154 1   com.wincent.WinSwitch    &#x0009;0x007d4808 -[WOWinSwitchMenuExtra menu] + 0xa0 2   com.apple.systemuiserver &#x0009;0x000131dc 0x1000 + 0x121dc 3   com.apple.systemuiserver &#x0009;0x000162f4 0x1000 + 0x152f4 4   &lt;&gt; &#x0009;0x92df9078 0 + 0x92df9078 5   &lt;&gt; &#x0009;0x92df9078 0 + 0x92df9078 6   &lt;&gt; &#x0009;0x94532f78 0 + 0x94532f78 7   &lt;&gt; &#x0009;0x92e024d4 0 + 0x92e024d4 8   &lt;&gt; &#x0009;0x92df4b98 0 + 0x92df4b98 9   com.apple.systemuiserver &#x0009;0x00020008 0x1000 + 0x1f008 10  &lt;&gt; &#x0009;0x92dfcfb0 0 + 0x92dfcfb0 11  com.apple.systemuiserver &#x0009;0x0000afcc 0x1000 + 0x9fcc 12  com.apple.systemuiserver &#x0009;0x0000ae34 0x1000 + 0x9e34 13  com.apple.systemuiserver &#x0009;0x0000aca8 0x1000 + 0x9ca8</p>
+<p>Thread 1: 0   libSystem.B.dylib        &#x0009;0x900074c8 mach_msg_trap + 0x8 1   libSystem.B.dylib        &#x0009;0x90007018 mach_msg + 0x38 2   com.unsanity.ape         &#x0009;0xc0002544 __ape_internal + 0xca4 3   com.unsanity.ape         &#x0009;0xc0001330 __ape_agent + 0x40 4   libSystem.B.dylib        &#x0009;0x900246e8 _pthread_body + 0x28</p>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x007d53d0 srr1: 0x0200f030                vrsave: 0x00000000
+   cr: 0x24800488  xer: 0x20000004   lr: 0x007d53dc  ctr: 0x9000c120
+   r0: 0x003ac190   r1: 0xbfffea60   r2: 0x00000000   r3: 0x0000001b
+   r4: 0x00000000   r5: 0x0000000a   r6: 0xa0190dcc   r7: 0xa0190dcc
+   r8: 0xa0190dcc   r9: 0x0ccccccc  r10: 0x00000000  r11: 0x00000007
+  r12: 0x9000c120  r13: 0x00000000  r14: 0x00000100  r15: 0x00000000
+  r16: 0xa2df13f0  r17: 0x00000000  r18: 0xa2de13f0  r19: 0x007d527c
+  r20: 0x007d527c  r21: 0xbfffeab0  r22: 0x007d527c  r23: 0x00000013
+  r24: 0x007da1d8  r25: 0x00355e10  r26: 0x1626a240  r27: 0x0000001b
+  r28: 0x1626e100  r29: 0x007da1f8  r30: 0x1626e310  r31: 0x007d527c</pre>
+<p>Binary Images Description:</p>
+<pre>   0x1000 -    0x42fff com.apple.systemuiserver 1.2.1&#x0009;/System/Library/CoreServices/</pre>
+<p>SystemUIServer.app/Contents/MacOS/SystemUIServer</p>
+<pre> 0x213000 -   0x21bfff com.unsanity.xounds Xounds version 2.1 (2.1)</pre>
+<p>&#x0009;/Users/rico/Library/Application Enhancers/Xounds.ape/Contents/MacOS/Xounds</p>
+<pre> 0x252000 -   0x277fff com.unsanity.labels Labels X version 1.6 (1.6.1)</pre>
+<p>&#x0009;/Users/rico/Library/Application Enhancers/Labels X.ape/Contents/MacOS/Labels X</p>
+<pre> 0x2b1000 -   0x2d4fff com.unsanity.menumaster.ape Version 1.1.1 (1.1.1)</pre>
+<p>&#x0009;/Users/rico/Library/Application Enhancers/Menu Master.ape/Contents/MacOS/Menu Master</p>
+<pre> 0x2e7000 -   0x2edfff com.rogueamoeba.Detour ??? (1.2.3)&#x0009;/Users/rico/Library/Application </pre>
+<p>Enhancers/Detour.ape/Contents/MacOS/Detour</p>
+<pre> 0x2f8000 -   0x2fafff com.unsanity.menuextraenabler Menu Extra Enabler version 1.0.1 (1.0.1)</pre>
+<p>&#x0009;/Volumes/docs/Users/rico/Library/InputManagers/Menu Extra Enabler/Menu Extra  Enabler.bundle/Contents/MacOS/Menu Extra Enabler</p>
+<pre> 0x662000 -   0x686fff com.unsanity.windowshadex ??? (3.5)&#x0009;/Users/rico/Library/Application </pre>
+<p>Enhancers/WindowShade X.ape/Contents/MacOS/WindowShade X</p>
+<pre> 0x704000 -   0x734fff com.unsanity.fruitmenu FruitMenu version 3.2 (3.2)</pre>
+<p>&#x0009;/Users/rico/Library/Application Enhancers/FruitMenu.ape/Contents/MacOS/FruitMenu</p>
+<pre> 0x7bf000 -   0x7c0fff net.sourceforge.menucracker 1.3 (5)&#x0009;/Library/Menu Extras/WinSwitch.menu/</pre>
+<p>Contents/Resources/MenuCracker.menu/Contents/MacOS/MenuCracker</p>
+<pre> 0x7d1000 -   0x7d8fff com.wincent.WinSwitch 3.0&#x0009;/Library/Menu Extras/WinSwitch.menu/Contents/</pre>
+<p>MacOS/WinSwitch</p>
+<pre> 0x7f3000 -   0x7f3fff com.apple.aoa.halplugin 2.2.6&#x0009;/System/Library/Extensions/</pre>
+<p>IOAudioFamily.kext/Contents/PlugIns/AOAHALPlugin.bundle/Contents/MacOS/AOAHALPlugin</p>
+<pre>0x17bf000 -  0x17c2fff com.apple.menuextra.displays 2.1&#x0009;/System/Library/CoreServices/Menu </pre>
+<p>Extras/Displays.menu/Contents/MacOS/Displays 0x1307a000 - 0x130b5fff com.apple.iSightAudio 6.5&#x0009;/Library/Audio/Plug-Ins/HAL/ iSightAudio.plugin/Contents/MacOS/iSightAudio 0x13115000 - 0x1311cfff com.unsanity.cpu Cee Pee You version 1.1 (1.1.1) &#x0009;/Volumes/docs/Users/rico/Library/Bundles/Cee Pee You.menu/Contents/MacOS/Cee Pee You 0x1317c000 - 0x13187fff ??? ??? (0.0.1d1)&#x0009;/Volumes/docs/Users/rico/Library/Bundles/Cee Pee  You.menu/Contents/Frameworks/Protocol7Additions.framework/Protocol7Additions 0x16104000 - 0x1610afff com.ragingmenace.MenuMeterMem  &#x0009;/Volumes/docs/Users/rico/Library/PreferencePanes/MenuMeters.prefPane/Contents/Resources/ MenuMeterMem.menu/Contents/MacOS/MenuMeterMem 0x16118000 - 0x1611bfff com.ragingmenace.MenuMeterDefaults  &#x0009;/Volumes/docs/Users/rico/Library/PreferencePanes/MenuMeters.prefPane/Contents/Resources/ MenuMeterDefaults.bundle/Contents/MacOS/MenuMeterDefaults 0x1612a000 - 0x1612efff com.ragingmenace.MenuMeterDisk  &#x0009;/Volumes/docs/Users/rico/Library/PreferencePanes/MenuMeters.prefPane/Contents/Resources/ MenuMeterDisk.menu/Contents/MacOS/MenuMeterDisk 0x1614f000 - 0x1615dfff com.ragingmenace.MenuMeterNet &#x0009;/Volumes/docs/Users/rico/Library/ PreferencePanes/MenuMeters.prefPane/Contents/Resources/MenuMeterNet.menu/Contents/MacOS/ MenuMeterNet 0x1617c000 - 0x1617ffff com.apple.menuextra.iChat 2.0 (79)&#x0009;/System/Library/CoreServices/Menu  Extras/iChat.menu/Contents/MacOS/iChat 0x16184000 - 0x16186fff org.tynsoe.geektool ??? (215)&#x0009;/Volumes/docs/Users/rico/Library/ PreferencePanes/GeekTool.prefPane/Contents/Resources/GeekToolMenu.menu/Contents/MacOS/ GeekToolMenu 0x161a7000 - 0x161acfff com.apple.menuextra.bluetooth 1.5.1 (1.5.1f8) &#x0009;/System/Library/CoreServices/Menu Extras/Bluetooth.menu/Contents/MacOS/Bluetooth 0x161c9000 - 0x161d4fff com.apple.scriptmenu 1.2&#x0009;/System/Library/CoreServices/Menu Extras/ Script Menu.menu/Contents/MacOS/Script Menu 0x16305000 - 0x16312fff com.apple.menuextra.textinput 1.0.0 &#x0009;/System/Library/CoreServices/Menu Extras/TextInput.menu/Contents/MacOS/TextInput 0x164d5000 - 0x16589fff DivX&#x00ae; 5 &#x0009;/Library/QuickTime/DivX&#x00ae; 5.component/Contents/MacOS/DivX&#x00ae;  5 0x165fd000 - 0x16617fff com.apple.IOFireWireLib 1.8.3&#x0009;/System/Library/Extensions/ IOFireWireFamily.kext/Contents/PlugIns/IOFireWireLib.plugin/Contents/MacOS/IOFireWireLib 0x809c0000 - 0x80a3efff com.apple.viceroy.framework 183.0 (183.0.13) &#x0009;/System/Library/PrivateFrameworks/VideoConference.framework/Versions/A/VideoConference 0x82c10000 - 0x82ce8fff com.apple.IMFramework 2.1 (187)&#x0009;/System/Library/PrivateFrameworks/ InstantMessage.framework/Versions/A/InstantMessage 0x86800000 - 0x868fefff com.apple.MessageFramework 1.3.9 (619) &#x0009;/System/Library/Frameworks/Message.framework/Versions/B/Message 0x86c60000 - 0x86c71fff com.apple.BluetoothUI 1.5.1 (1.5.1f8) &#x0009;/System/Library/Frameworks/IOBluetoothUI.framework/Versions/A/IOBluetoothUI 0x88960000 - 0x88965fff com.apple.iPod 1.1&#x0009;/System/Library/PrivateFrameworks/iPod.framework/ Versions/A/iPod 0x88e60000 - 0x88e6cfff com.apple.agl 2.5 (AGL-2.5)&#x0009;/System/Library/Frameworks/ AGL.framework/Versions/A/AGL 0x8b0c0000 - 0x8b70efff com.apple.QuickTimeComponents.component 6.5 &#x0009;/System/Library/QuickTime/QuickTimeComponents.component/Contents/MacOS/ QuickTimeComponents 0x8f260000 - 0x8f26cfff com.apple.ImageCaptureNotifications 2.1.3 &#x0009;/System/Library/PrivateFrameworks/ICANotifications.framework/Versions/A/ICANotifications 0x8fe00000 - 0x8fe4ffff dyld &#x0009;/usr/lib/dyld 0x90000000 - 0x90122fff libSystem.B.dylib &#x0009;/usr/lib/libSystem.B.dylib 0x90190000 - 0x9023dfff com.apple.CoreFoundation 6.3.4 (299.31) &#x0009;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation 0x90280000 - 0x904f9fff com.apple.CoreServices.CarbonCore 10.3.5 &#x0009;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/ CarbonCore.framework/Versions/A/CarbonCore 0x90570000 - 0x905dffff com.apple.framework.IOKit 1.3.5 (???) &#x0009;/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit 0x90610000 - 0x9069afff com.apple.CoreServices.OSServices 3.0.1 &#x0009;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/ OSServices.framework/Versions/A/OSServices 0x90700000 - 0x90700fff com.apple.CoreServices 10.3 (???)&#x0009;/System/Library/Frameworks/ CoreServices.framework/Versions/A/CoreServices 0x90720000 - 0x90787fff com.apple.audio.CoreAudio 2.1.2&#x0009;/System/Library/Frameworks/ CoreAudio.framework/Versions/A/CoreAudio 0x907f0000 - 0x907f9fff com.apple.DiskArbitration 2.0.3&#x0009;/System/Library/PrivateFrameworks/ DiskArbitration.framework/Versions/A/DiskArbitration 0x90810000 - 0x90810fff com.apple.ApplicationServices 1.0 (???) &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices 0x90830000 - 0x9089ffff libobjc.A.dylib &#x0009;/usr/lib/libobjc.A.dylib 0x90910000 - 0x90983fff com.apple.DesktopServices 1.2.2&#x0009;/System/Library/PrivateFrameworks/ DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv 0x909f0000 - 0x90b4bfff com.apple.Foundation 6.3.5 (500.56) &#x0009;/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation 0x90c10000 - 0x90c1afff com.apple.framework.AppleTalk 1.2.0 (???) &#x0009;/System/Library/Frameworks/AppleTalk.framework/Versions/A/AppleTalk 0x90c30000 - 0x90c4afff libGL.dylib &#x0009;/System/Library/Frameworks/OpenGL.framework/Versions/ A/Libraries/libGL.dylib 0x90c60000 - 0x90cc2fff libGLU.dylib &#x0009;/System/Library/Frameworks/OpenGL.framework/Versions/ A/Libraries/libGLU.dylib 0x90d00000 - 0x90d1bfff com.apple.SystemConfiguration 1.7.1 (???) &#x0009;/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration 0x90d40000 - 0x90d40fff com.apple.Carbon 10.3 (???)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Carbon 0x90d60000 - 0x90d6bfff com.apple.opengl 1.3.3&#x0009;/System/Library/Frameworks/OpenGL.framework/ Versions/A/OpenGL 0x90da0000 - 0x90dc0fff com.apple.DirectoryService.Framework 1.7.1 &#x0009;/System/Library/Frameworks/DirectoryService.framework/Versions/A/DirectoryService 0x90ec0000 - 0x90ec0fff com.apple.Cocoa 6.3 (???)&#x0009;/System/Library/Frameworks/Cocoa.framework/ Versions/A/Cocoa 0x910b0000 - 0x91101fff com.apple.bom 1.2.5 (63.2)&#x0009;/System/Library/PrivateFrameworks/ Bom.framework/Versions/A/Bom 0x9110d000 - 0x91176fff com.apple.htmlrendering 1.1.2&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/HTMLRendering.framework/Versions/A/HTMLRendering 0x911c0000 - 0x911cafff com.apple.framework.machinesettings 1.3.1 &#x0009;/System/Library/PrivateFrameworks/MachineSettings.framework/Versions/A/MachineSettings 0x917e0000 - 0x917f0fff com.apple.speech.recognition.framework 3.3 &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ SpeechRecognition.framework/Versions/A/SpeechRecognition 0x91810000 - 0x9182afff com.apple.openscripting 1.2.1 (???)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting 0x91850000 - 0x91860fff com.apple.ImageCapture 2.1.5&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture 0x91890000 - 0x9189cfff com.apple.help 1.0.1&#x0009;/System/Library/Frameworks/Carbon.framework/ Versions/A/Frameworks/Help.framework/Versions/A/Help 0x918c0000 - 0x918cdfff com.apple.CommonPanels 1.2.1 (1.0) &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ CommonPanels.framework/Versions/A/CommonPanels 0x918f0000 - 0x9193efff com.apple.print.framework.Print 3.3 &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/ Versions/A/Print 0x91967000 - 0x9197efff com.apple.LangAnalysis 1.5.4&#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/ LangAnalysis 0x91990000 - 0x9199bfff com.apple.securityhi 1.2 (90)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI 0x919c0000 - 0x91a33fff com.apple.NavigationServices 3.3.2&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/NavigationServices.framework/Versions/A/ NavigationServices 0x91a90000 - 0x91a90fff com.apple.audio.units.AudioUnit 1.3.2 &#x0009;/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit 0x91ab0000 - 0x91ac4fff libCGATS.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libCGATS.A.dylib 0x91ae0000 - 0x91aebfff libCSync.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libCSync.A.dylib 0x91b10000 - 0x91b2afff libPDFRIP.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libPDFRIP.A.dylib 0x91b50000 - 0x91b5ffff libPSRIP.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libPSRIP.A.dylib 0x91b80000 - 0x91b93fff libRIP.A.dylib &#x0009;/System/Library/Frameworks/ApplicationServices.framework/ Versions/A/Frameworks/CoreGraphics.framework/Versions/A/Resources/libRIP.A.dylib 0x91bb0000 - 0x91d44fff com.apple.QuickTime 6.5.0&#x0009;/System/Library/Frameworks/ QuickTime.framework/Versions/A/QuickTime 0x91e10000 - 0x91e7bfff com.apple.HTMLDisplay 1.3 (132)&#x0009;/System/Library/PrivateFrameworks/ HTMLDisplay.framework/Versions/A/HTMLDisplay 0x91f20000 - 0x91f2bfff com.apple.framework.Apple80211 3.1.2 &#x0009;/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211 0x92070000 - 0x92096fff com.apple.FindByContent 1.4 (1.2)&#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/FindByContent.framework/Versions/A/ FindByContent 0x920c0000 - 0x922a7fff com.apple.security 2.4 (177)&#x0009;/System/Library/Frameworks/ Security.framework/Versions/A/Security 0x92430000 - 0x92468fff com.apple.LaunchServices 10.3.5 (98.4) &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ LaunchServices.framework/Versions/A/LaunchServices 0x92650000 - 0x926f3fff libcrypto.0.9.dylib &#x0009;/usr/lib/libcrypto.0.9.dylib 0x92740000 - 0x92777fff com.apple.CFNetwork 1.2.1 (7)&#x0009;/System/Library/Frameworks/ CoreServices.framework/Versions/A/Frameworks/CFNetwork.framework/Versions/A/CFNetwork 0x927d0000 - 0x92b54fff com.apple.HIToolbox 1.3.4 (???)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox 0xc0000000 - 0xc000efff com.unsanity.ape 1.4.4&#x0009;/Library/Frameworks/ ApplicationEnhancer.framework/Versions/A/ApplicationEnhancer</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1365'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1365"><time data-relative="true">2004-12-15T21:48:54Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for trying it out. Although the crash logs look different, if you look at the numeric addresses  you can see that they're identically, so whatever was causing the crash is still in there. I've had another  look at the code and I can't see anything obvious that would cause this. Will have to leave my thinking  cap on, I guess. The other possibility is that I can make a build which prints a bunch of debugging  information to the console and send it to you. If you're willing to try it out, and then send me whatever  gets logged to the console at the time of the crash, then that'll give me some more clues.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1366'>
+<cite>
+<a href="/users/mbordas">mbordas</a>
+<span class='when'><a href="#comment_1366"><time data-relative="true">2004-12-21T06:32:45Z</time></a></span>
+</cite>
+<blockquote><p>I have been experiencing this problem too, I never bothered to say anything because it only affected my  G4 tower and not my powerbook which is my primary machine. the tower is really just a server.</p>
+<p>If there is anything I can do to help out here (in terms of testing, unfortunately I'm not much of a  programmer), just let me know</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1367'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1367"><time data-relative="true">2004-12-21T09:34:43Z</time></a></span>
+</cite>
+<blockquote><p>Yes, Michael, there are two things you can do to help.</p>
+<p>1. Submit a crash report (like Frederico has done). Information on how to do this can be found here:</p>
+<p><a href="http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php" class="external">http://wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php</a></p>
+<p>2. If your crash report reveals that the crash is occurring in the same place, then we'll know that we're  tracking the same issue. I'll then prepare a special build which logs debugging information to the  console, so we can find out more about the crash and hopefully fix it.</p>
+<p>Please let me know how you go with the crash report.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1368'>
+<cite>
+<a href="/users/mbordas">mbordas</a>
+<span class='when'><a href="#comment_1368"><time data-relative="true">2004-12-22T01:02:46Z</time></a></span>
+</cite>
+<blockquote><p>Here's my crash log, fresh out of the oven!</p>
+<ul>
+<li>*********</li>
+</ul>
+<p>Host Name:      Advena.local Date/Time:      2004-12-21 09:25:53 -0500 OS Version:     10.3.7 (Build 7S215) Report Version: 2</p>
+<p>Command: SystemUIServer Path:    /System/Library/CoreServices/SystemUIServer.app/Contents/MacOS/SystemUIServer Version: 1.2.1 (1.2.1) PID:     1386 Thread:  0</p>
+<p>Exception:  EXC_BAD_ACCESS (0x0001) Codes:      KERN_PROTECTION_FAILURE (0x0002) at 0x00000004</p>
+<p>Thread 0 Crashed: 0   com.wincent.WinSwitch          &#x0009;0x0499850c -[WOWinSwitchMenuExtra  _allUsersCacheForcingRebuild:] + 0x130 1   com.wincent.WinSwitch          &#x0009;0x04997968 -[WOWinSwitchMenuExtra menu] + 0xa0 2   com.apple.systemuiserver       &#x0009;0x000131dc 0x1000 + 0x121dc 3   com.apple.systemuiserver       &#x0009;0x000162f4 0x1000 + 0x152f4 4   com.apple.AppKit               &#x0009;0x92df9d1c forwardMethod + 0x50 5   com.apple.AppKit               &#x0009;0x92df9d1c forwardMethod + 0x50 6   ...le.framework.SystemUIPlugin &#x0009;0x94532f78 -[NSMenuExtraView mouseDown:] + 0x60 7   com.apple.AppKit               &#x0009;0x92e03178 -[NSWindow sendEvent:] + 0x10e4 8   com.apple.AppKit               &#x0009;0x92df583c -[NSApplication sendEvent:] + 0xebc 9   com.apple.systemuiserver       &#x0009;0x00020008 0x1000 + 0x1f008 10  com.apple.AppKit               &#x0009;0x92dfdc54 -[NSApplication run] + 0x240 11  com.apple.systemuiserver       &#x0009;0x0000afcc 0x1000 + 0x9fcc 12  com.apple.systemuiserver       &#x0009;0x0000ae34 0x1000 + 0x9e34 13  com.apple.systemuiserver       &#x0009;0x0000aca8 0x1000 + 0x9ca8</p>
+<p>Thread 1: 0   libSystem.B.dylib              &#x0009;0x900074c8 mach_msg_trap + 0x8 1   libSystem.B.dylib              &#x0009;0x90007018 mach_msg + 0x38 2   ...ple.CoreServices.CarbonCore &#x0009;0x9031a808 TS_exception_listener_thread + 0x70 3   libSystem.B.dylib              &#x0009;0x900246e8 _pthread_body + 0x28</p>
+<p>PPC Thread State:</p>
+<pre> srr0: 0x0499850c srr1: 0x0200f030                vrsave: 0x00000000
+   cr: 0x24000488  xer: 0x20000004   lr: 0x049987bc  ctr: 0x900f5f70
+   r0: 0x0032cde0   r1: 0xbfffea80   r2: 0x00000000   r3: 0xa0197440
+   r4: 0x00000000   r5: 0x0000000a   r6: 0xa0190dcc   r7: 0xa0190dcc
+   r8: 0xa0190dcc   r9: 0x00000011  r10: 0x00000000  r11: 0xa0191f6c
+  r12: 0x900f5f70  r13: 0x00000000  r14: 0x00000100  r15: 0x00000000
+  r16: 0xa2df2094  r17: 0x00000000  r18: 0xa2de2094  r19: 0x049983dc
+  r20: 0x049983dc  r21: 0xbfffead0  r22: 0x00000012  r23: 0x049983dc
+  r24: 0x0499e1cc  r25: 0x00382290  r26: 0x0038d620  r27: 0x000001f6
+  r28: 0x0038d880  r29: 0x0499e1ec  r30: 0x0038da60  r31: 0x049983dc</pre>
+<p>Binary Images Description:</p>
+<pre>   0x1000 -    0x42fff com.apple.systemuiserver 1.2.1&#x0009;/System/Library/CoreServices/</pre>
+<p>SystemUIServer.app/Contents/MacOS/SystemUIServer</p>
+<pre>  0xec000 -    0xecfff com.aladdinsys.mmenabler 7.1.0 (8.0.2)</pre>
+<p>&#x0009;/Library/InputManagers/MagicMenuEnabler/MagicMenuEnabler.bundle/Contents/MacOS/ MagicMenuEnabler</p>
+<pre> 0x768000 -   0x775fff com.apple.menuextra.textinput 1.0.0&#x0009;/System/Library/CoreServices/Menu </pre>
+<p>Extras/TextInput.menu/Contents/MacOS/TextInput</p>
+<pre>0x1746000 -  0x174afff com.apple.isync.menuextra 1.5 (139)</pre>
+<p>&#x0009;/Applications/iSync.app/Contents/Resources/iSync.menu/Contents/MacOS/iSync</p>
+<pre>0x179b000 -  0x17a4fff com.apple.LiveType.component 1.2.1</pre>
+<p>&#x0009;/Library/QuickTime/LiveType.component/Contents/MacOS/LiveType</p>
+<pre>0x4983000 -  0x4984fff net.sourceforge.menucracker 1.3 (5)&#x0009;/Library/Menu Extras/WinSwitch.menu/</pre>
+<p>Contents/Resources/MenuCracker.menu/Contents/MacOS/MenuCracker</p>
+<pre>0x4995000 -  0x499cfff com.wincent.WinSwitch 3.0b&#x0009;/Library/Menu Extras/WinSwitch.menu/</pre>
+<p>Contents/MacOS/WinSwitch 0x63650000 - 0x63681fff com.apple.DAVKit 1.0.5 (198)&#x0009;/System/Library/PrivateFrameworks/ DAVKit.framework/Versions/A/DAVKit 0x70090000 - 0x700e6fff com.apple.LiveType.framework 1.2&#x0009;/System/Library/PrivateFrameworks/ LiveType.framework/Versions/A/LiveType 0x88960000 - 0x88965fff com.apple.iPod 1.1&#x0009;/System/Library/PrivateFrameworks/iPod.framework/ Versions/A/iPod 0x8f260000 - 0x8f26cfff com.apple.ImageCaptureNotifications 2.1.3 &#x0009;/System/Library/PrivateFrameworks/ICANotifications.framework/Versions/A/ICANotifications 0x8fe00000 - 0x8fe4ffff dyld &#x0009;/usr/lib/dyld 0x90000000 - 0x90122fff libSystem.B.dylib &#x0009;/usr/lib/libSystem.B.dylib 0x90190000 - 0x9023dfff com.apple.CoreFoundation 6.3.6 (299.33) &#x0009;/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation 0x90280000 - 0x904f9fff com.apple.CoreServices.CarbonCore 10.3.6 (10.3.5) &#x0009;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/ CarbonCore.framework/Versions/A/CarbonCore 0x90570000 - 0x905dffff com.apple.framework.IOKit 1.3.6 (???) &#x0009;/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit 0x90610000 - 0x9069afff com.apple.CoreServices.OSServices 3.0.1 &#x0009;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/ OSServices.framework/Versions/A/OSServices 0x90700000 - 0x90700fff com.apple.CoreServices 10.3 (???)&#x0009;/System/Library/Frameworks/ CoreServices.framework/Versions/A/CoreServices 0x90720000 - 0x90787fff com.apple.audio.CoreAudio 2.1.2&#x0009;/System/Library/Frameworks/ CoreAudio.framework/Versions/A/CoreAudio 0x907f0000 - 0x907f9fff com.apple.DiskArbitration 2.0.4&#x0009;/System/Library/PrivateFrameworks/ DiskArbitration.framework/Versions/A/DiskArbitration 0x90810000 - 0x90810fff com.apple.ApplicationServices 1.0 (???) &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices 0x90830000 - 0x9089ffff libobjc.A.dylib &#x0009;/usr/lib/libobjc.A.dylib 0x90910000 - 0x90983fff com.apple.DesktopServices 1.2.2&#x0009;/System/Library/PrivateFrameworks/ DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv 0x909f0000 - 0x90b4bfff com.apple.Foundation 6.3.5 (500.56) &#x0009;/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation 0x90c10000 - 0x90c1afff com.apple.framework.AppleTalk 1.2.0 (???) &#x0009;/System/Library/Frameworks/AppleTalk.framework/Versions/A/AppleTalk 0x90d00000 - 0x90d1bfff com.apple.SystemConfiguration 1.7.1 (???) &#x0009;/System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration 0x90d40000 - 0x90d40fff com.apple.Carbon 10.3 (???)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Carbon 0x90da0000 - 0x90dc0fff com.apple.DirectoryService.Framework 1.7 &#x0009;/System/Library/Frameworks/DirectoryService.framework/Versions/A/DirectoryService 0x90ec0000 - 0x90ec0fff com.apple.Cocoa 6.3 (???)&#x0009;/System/Library/Frameworks/Cocoa.framework/ Versions/A/Cocoa 0x910b0000 - 0x91101fff com.apple.bom 1.2.5 (63.2)&#x0009;/System/Library/PrivateFrameworks/ Bom.framework/Versions/A/Bom 0x911c0000 - 0x911cafff com.apple.framework.machinesettings 1.3.1 &#x0009;/System/Library/PrivateFrameworks/MachineSettings.framework/Versions/A/MachineSettings 0x912a0000 - 0x912bdfff com.apple.audio.SoundManager 3.8 &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ CarbonSound.framework/Versions/A/CarbonSound 0x912e0000 - 0x912f7fff com.apple.LangAnalysis 1.5.4&#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/ LangAnalysis 0x91320000 - 0x913defff ColorSync &#x0009;/System/Library/Frameworks/ApplicationServices.framework/ Versions/A/Frameworks/ColorSync.framework/Versions/A/ColorSync 0x91460000 - 0x91473fff com.apple.speech.synthesis.framework 3.2 &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ SpeechSynthesis.framework/Versions/A/SpeechSynthesis 0x914a0000 - 0x91509fff com.apple.htmlrendering 1.1.2&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/HTMLRendering.framework/Versions/A/HTMLRendering 0x91560000 - 0x91619fff com.apple.QD 3.4.65 (???)&#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD 0x91670000 - 0x916a8fff com.apple.AE 1.4&#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE 0x916e0000 - 0x91773fff com.apple.print.framework.PrintCore 3.3 &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ PrintCore.framework/Versions/A/PrintCore 0x917e0000 - 0x917f0fff com.apple.speech.recognition.framework 3.3 &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ SpeechRecognition.framework/Versions/A/SpeechRecognition 0x91810000 - 0x9182afff com.apple.openscripting 1.2.1 (???)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting 0x91850000 - 0x91860fff com.apple.ImageCapture 2.1.5&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture 0x91890000 - 0x9189cfff com.apple.help 1.0.1&#x0009;/System/Library/Frameworks/Carbon.framework/ Versions/A/Frameworks/Help.framework/Versions/A/Help 0x918c0000 - 0x918cdfff com.apple.CommonPanels 1.2.1 (1.0) &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ CommonPanels.framework/Versions/A/CommonPanels 0x918f0000 - 0x9193efff com.apple.print.framework.Print 3.3 &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/ Versions/A/Print 0x91990000 - 0x9199bfff com.apple.securityhi 1.2 (90)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI 0x919c0000 - 0x91a33fff com.apple.NavigationServices 3.3.2&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/NavigationServices.framework/Versions/A/ NavigationServices 0x91a90000 - 0x91a90fff com.apple.audio.units.AudioUnit 1.3.2 &#x0009;/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit 0x91ab0000 - 0x91ac4fff libCGATS.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libCGATS.A.dylib 0x91ae0000 - 0x91aebfff libCSync.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libCSync.A.dylib 0x91b10000 - 0x91b2afff libPDFRIP.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libPDFRIP.A.dylib 0x91b50000 - 0x91b5ffff libPSRIP.A.dylib &#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/ Resources/libPSRIP.A.dylib 0x91b80000 - 0x91b93fff libRIP.A.dylib &#x0009;/System/Library/Frameworks/ApplicationServices.framework/ Versions/A/Frameworks/CoreGraphics.framework/Versions/A/Resources/libRIP.A.dylib 0x91bb0000 - 0x91d45fff com.apple.QuickTime 6.5.2&#x0009;/System/Library/Frameworks/ QuickTime.framework/Versions/A/QuickTime 0x91ebd000 - 0x91ec0fff com.apple.bladerunner.syncservices 1.2 (47.4) &#x0009;/System/Library/PrivateFrameworks/SyncServices.framework/Versions/A/SyncServices 0x91f20000 - 0x91f2bfff com.apple.framework.Apple80211 3.1.2 &#x0009;/System/Library/PrivateFrameworks/Apple80211.framework/Versions/A/Apple80211 0x92070000 - 0x92096fff com.apple.FindByContent 1.4 (1.2)&#x0009;/System/Library/Frameworks/ ApplicationServices.framework/Versions/A/Frameworks/FindByContent.framework/Versions/A/ FindByContent 0x920c0000 - 0x922a7fff com.apple.security 2.3 (176)&#x0009;/System/Library/Frameworks/ Security.framework/Versions/A/Security 0x92430000 - 0x92468fff com.apple.LaunchServices 10.3.5 (98.4) &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ LaunchServices.framework/Versions/A/LaunchServices 0x92740000 - 0x92777fff com.apple.CFNetwork 1.2.1 (7)&#x0009;/System/Library/Frameworks/ CoreServices.framework/Versions/A/Frameworks/CFNetwork.framework/Versions/A/CFNetwork 0x927d0000 - 0x92b54fff com.apple.HIToolbox 1.3.5 (???)&#x0009;/System/Library/Frameworks/ Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox 0x92d30000 - 0x92d80fff com.apple.HIServices 1.4.1 (0.0.1d1) &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ HIServices.framework/Versions/A/HIServices 0x92dc0000 - 0x932bffff com.apple.AppKit 6.3.6 (743.33)&#x0009;/System/Library/Frameworks/ AppKit.framework/Versions/C/AppKit 0x935d0000 - 0x938a8fff com.apple.CoreGraphics 1.203.27 (???) &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ CoreGraphics.framework/Versions/A/CoreGraphics 0x93950000 - 0x93975fff com.apple.framework.NetworkConfig 1.0 (1.1.1) &#x0009;/System/Library/PrivateFrameworks/NetworkConfig.framework/Versions/A/NetworkConfig 0x939a0000 - 0x939b4fff libcups.2.dylib &#x0009;/usr/lib/libcups.2.dylib 0x939d0000 - 0x939d4fff libmathCommon.A.dylib &#x0009;/usr/lib/system/libmathCommon.A.dylib 0x939f0000 - 0x93ad7fff com.apple.AddressBook.framework 1.1.2 (321) &#x0009;/System/Library/Frameworks/AddressBook.framework/Versions/A/AddressBook 0x93b50000 - 0x93bf3fff com.apple.audio.toolbox.AudioToolbox 1.3.2 &#x0009;/System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox 0x94000000 - 0x9403cfff com.apple.LDAPFramework 1.3.3 (37.3.1) &#x0009;/System/Library/Frameworks/LDAP.framework/Versions/A/LDAP 0x94060000 - 0x94078fff com.apple.WebServices 1.1.1 (1.1.0) &#x0009;/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/ WebServicesCore.framework/Versions/A/WebServicesCore 0x94180000 - 0x9418ffff com.apple.frameworks.preferencepanes 10.0 &#x0009;/System/Library/Frameworks/PreferencePanes.framework/Versions/A/PreferencePanes 0x944c0000 - 0x944eafff com.apple.isync.syncconduit 1.5 (90) &#x0009;/System/Library/PrivateFrameworks/SyncConduit.framework/Versions/A/SyncConduit 0x94500000 - 0x9450ffff libsasl2.2.0.1.dylib &#x0009;/usr/lib/libsasl2.2.0.1.dylib 0x94530000 - 0x94533fff com.apple.framework.SystemUIPlugin 1.1 &#x0009;/System/Library/PrivateFrameworks/SystemUIPlugin.framework/Versions/A/SystemUIPlugin 0x945b0000 - 0x945b9fff libz.1.dylib &#x0009;/usr/lib/libz.1.dylib 0x94610000 - 0x9462afff libresolv.9.dylib &#x0009;/usr/lib/libresolv.9.dylib 0x94650000 - 0x946affff com.apple.SearchKit 1.0.2&#x0009;/System/Library/Frameworks/ CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit 0x94720000 - 0x94721fff com.apple.securityfoundation 1.0 (6) &#x0009;/System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation 0x94a30000 - 0x94af5fff libxml2.2.dylib &#x0009;/usr/lib/libxml2.2.dylib 0x94b20000 - 0x94badfff com.apple.ink.framework 101.1.3 (55.10) &#x0009;/System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Ink.framework/ Versions/A/Ink 0x94bd0000 - 0x94c01fff com.apple.securityinterface 1.0 (36) &#x0009;/System/Library/Frameworks/SecurityInterface.framework/Versions/A/SecurityInterface 0x94c40000 - 0x94c4ffff com.apple.DSObjCWrappers.Framework 1.0 &#x0009;/System/Library/PrivateFrameworks/DSObjCWrappers.framework/Versions/A/DSObjCWrappers 0x968d0000 - 0x969b2fff libicucore.A.dylib &#x0009;/usr/lib/libicucore.A.dylib 0x96a20000 - 0x96ae2fff libcrypto.0.9.7.dylib &#x0009;/usr/lib/libcrypto.0.9.7.dylib 0x96b40000 - 0x96b6efff libssl.0.9.7.dylib &#x0009;/usr/lib/libssl.0.9.7.dylib 0x96bf0000 - 0x96c7ffff ATS &#x0009;/System/Library/Frameworks/ApplicationServices.framework/Versions/ A/Frameworks/ATS.framework/Versions/A/ATS 0x96cb0000 - 0x96d9efff libiconv.2.dylib &#x0009;/usr/lib/libiconv.2.dylib 0x97510000 - 0x97518fff libbsm.dylib &#x0009;/usr/lib/libbsm.dylib 0x9751c000 - 0x975fafff com.apple.calcore 1.5.5 (323)&#x0009;/System/Library/PrivateFrameworks/ CALCore.framework/Versions/A/CALCore</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1369'>
+<cite>
+<a href="/users/mbordas">mbordas</a>
+<span class='when'><a href="#comment_1369"><time data-relative="true">2004-12-22T01:07:36Z</time></a></span>
+</cite>
+<blockquote><p>i just gave a look at my console, and thought maybe this stuff will be usefull as well:</p>
+<p>----</p>
+<p>2004-12-21 09:25:03.577 SystemUIServer[1386] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2004-12-21 09:25:03.604 SystemUIServer[1386] failed to load Menu Extra: NSBundle  (loaded) 2004-12-21 09:25:08.541 SystemUIServer[1386] Permitting load for class WOWinSwitchMenuExtra 2004-12-21 09:25:08.617 SystemUIServer[1386] WinSwitchHelper launched 2004-12-21 09:25:08.617 SystemUIServer[1386] WinSwitch.menu loaded. Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1  ... Success. Dec 21 09:25:02 Advena last message repeated 3 times Dec 21 09:25:56 Advena crashdump: Started writing crash report to: /Users/mbordas/Library/Logs/ CrashReporter/SystemUIServer.crash.log 2004-12-21 09:25:56.855 SystemUIServer[1491] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2004-12-21 09:25:56.868 SystemUIServer[1491] failed to load Menu Extra: NSBundle  (loaded) 2004-12-21 09:25:56.869 SystemUIServer[1491] Permitting load for class WOWinSwitchMenuExtra 2004-12-21 09:25:56.918 SystemUIServer[1491] WinSwitchHelper launched 2004-12-21 09:25:56.918 SystemUIServer[1491] WinSwitch.menu loaded. Dec 21 09:25:57 Advena crashdump: Finished writing crash report to: /Users/mbordas/Library/Logs/ CrashReporter/SystemUIServer.crash.log</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1370'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1370"><time data-relative="true">2004-12-22T03:20:41Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot Michael. Your crash log confirms that you are crashing in the same method that Frederico  is. I've made a special debugging build of WinSwitch which you can download here:</p>
+<p><a href="http://us.wincent.com/a/products/winswitch/download/WinSwitch3.0b-20041221.dmg" class="external">http://us.wincent.com/a/products/winswitch/download/WinSwitch3.0b-20041221.dmg</a></p>
+<p>MD5 checksum: 69b85fa3a15ef01e1c3159db977a2c92</p>
+<p>This build will still crash, seeing as I don't know what the problem is yet, BUT it will log a heap of  debugging information to the console. Here is a sample (below) of the kind of information that gets  logged when I run this build on my machine. No doubt your version will crash early on in the process  and so you won't see as much log output, but it will at least give us a clue as to exactly *where* in the  method the crash is occurring, and from there we can investigated further.</p>
+<p>Here's the sample output:</p>
+<p>2004-12-21 17:43:36.477 SystemUIServer[13654] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2004-12-21 17:43:36.483 SystemUIServer[13654] failed to load Menu Extra: NSBundle  (loaded) 2004-12-21 17:43:38.404 SystemUIServer[13654] MenuCracker: Loading 'WOWinSwitchMenuExtra'. 2004-12-21 17:43:38.474 SystemUIServer[13654] WinSwitchHelper launched 2004-12-21 17:43:38.474 SystemUIServer[13654] WinSwitch.menu loaded. Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1  ... Success. 2004-12-21 17:43:50.282 SystemUIServer[13654] Entered _allUsersCacheForcingRebuild: 2004-12-21 17:43:50.282 SystemUIServer[13654] Will allocate/init _allUsersCache 2004-12-21 17:43:50.282 SystemUIServer[13654] Did allocate/init _allUsersCache 2004-12-21 17:43:50.282 SystemUIServer[13654] Will allocate/init _sortedCache 2004-12-21 17:43:50.282 SystemUIServer[13654] Did allocate/init _sortedCache 2004-12-21 17:43:50.283 SystemUIServer[13654] Will call ni_open 2004-12-21 17:43:50.285 SystemUIServer[13654] Did call ni_open 2004-12-21 17:43:50.285 SystemUIServer[13654] Will call ni_pathsearch 2004-12-21 17:43:50.287 SystemUIServer[13654] Did call ni_pathsearch 2004-12-21 17:43:50.287 SystemUIServer[13654] Will call ni_list 2004-12-21 17:43:50.287 SystemUIServer[13654] Did call ni_list 2004-12-21 17:43:50.287 SystemUIServer[13654] Will enter for loop: i = 0; i &lt; 19; i++ 2004-12-21 17:43:50.287 SystemUIServer[13654] In for loop: i = 0 2004-12-21 17:43:50.287 SystemUIServer[13654] Will call strtol with ni_name &quot;-2&quot; 2004-12-21 17:43:50.287 SystemUIServer[13654] Did call strtol (got -2) 2004-12-21 17:43:50.287 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.287 SystemUIServer[13654] In for loop: i = 1 2004-12-21 17:43:50.287 SystemUIServer[13654] Will call strtol with ni_name &quot;0&quot; 2004-12-21 17:43:50.287 SystemUIServer[13654] Did call strtol (got 0) 2004-12-21 17:43:50.287 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.287 SystemUIServer[13654] In for loop: i = 2 2004-12-21 17:43:50.288 SystemUIServer[13654] Will call strtol with ni_name &quot;1&quot; 2004-12-21 17:43:50.288 SystemUIServer[13654] Did call strtol (got 1) 2004-12-21 17:43:50.288 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.288 SystemUIServer[13654] In for loop: i = 3 2004-12-21 17:43:50.288 SystemUIServer[13654] Will call strtol with ni_name &quot;99&quot; 2004-12-21 17:43:50.288 SystemUIServer[13654] Did call strtol (got 99) 2004-12-21 17:43:50.288 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.288 SystemUIServer[13654] In for loop: i = 4 2004-12-21 17:43:50.288 SystemUIServer[13654] Will call strtol with ni_name &quot;25&quot; 2004-12-21 17:43:50.288 SystemUIServer[13654] Did call strtol (got 25) 2004-12-21 17:43:50.288 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.288 SystemUIServer[13654] In for loop: i = 5 2004-12-21 17:43:50.288 SystemUIServer[13654] Will call strtol with ni_name &quot;26&quot; 2004-12-21 17:43:50.288 SystemUIServer[13654] Did call strtol (got 26) 2004-12-21 17:43:50.288 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.288 SystemUIServer[13654] In for loop: i = 6 2004-12-21 17:43:50.288 SystemUIServer[13654] Will call strtol with ni_name &quot;27&quot; 2004-12-21 17:43:50.288 SystemUIServer[13654] Did call strtol (got 27) 2004-12-21 17:43:50.288 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.288 SystemUIServer[13654] In for loop: i = 7 2004-12-21 17:43:50.288 SystemUIServer[13654] Will call strtol with ni_name &quot;70&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 70) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 8 2004-12-21 17:43:50.289 SystemUIServer[13654] Will call strtol with ni_name &quot;71&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 71) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 9 2004-12-21 17:43:50.289 SystemUIServer[13654] Will call strtol with ni_name &quot;74&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 74) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 10 2004-12-21 17:43:50.289 SystemUIServer[13654] Will call strtol with ni_name &quot;75&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 75) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 11 2004-12-21 17:43:50.289 SystemUIServer[13654] Will call strtol with ni_name &quot;76&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 76) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 12 2004-12-21 17:43:50.289 SystemUIServer[13654] Will call strtol with ni_name &quot;77&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 77) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 13 2004-12-21 17:43:50.289 SystemUIServer[13654] Will call strtol with ni_name &quot;78&quot; 2004-12-21 17:43:50.289 SystemUIServer[13654] Did call strtol (got 78) 2004-12-21 17:43:50.289 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.289 SystemUIServer[13654] In for loop: i = 14 2004-12-21 17:43:50.290 SystemUIServer[13654] Will call strtol with ni_name &quot;79&quot; 2004-12-21 17:43:50.290 SystemUIServer[13654] Did call strtol (got 79) 2004-12-21 17:43:50.290 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.290 SystemUIServer[13654] In for loop: i = 15 2004-12-21 17:43:50.290 SystemUIServer[13654] Will call strtol with ni_name &quot;501&quot; 2004-12-21 17:43:50.290 SystemUIServer[13654] Did call strtol (got 501) 2004-12-21 17:43:50.290 SystemUIServer[13654] showRootUser is NO and uid &gt; 500; will proceed  inside loop 2004-12-21 17:43:50.290 SystemUIServer[13654] Will create new NSMutableDictionary, theUser 2004-12-21 17:43:50.290 SystemUIServer[13654] Did create new NSMutableDictionary 2004-12-21 17:43:50.290 SystemUIServer[13654] Will create new NSNumber with uid 501 2004-12-21 17:43:50.290 SystemUIServer[13654] Did create new NSNumber; description is 501 2004-12-21 17:43:50.290 SystemUIServer[13654] Will setObject:forKey: in _allUsersCache 2004-12-21 17:43:50.290 SystemUIServer[13654] Did setObject:forKey: in _allUsersCache 2004-12-21 17:43:50.290 SystemUIServer[13654] Will addObject: to _sortedCache 2004-12-21 17:43:50.290 SystemUIServer[13654] Did addObject: to _sortedCache 2004-12-21 17:43:50.290 SystemUIServer[13654] Will setObject:forKey: in theUser 2004-12-21 17:43:50.290 SystemUIServer[13654] Did setObject:forKey: in theUser 2004-12-21 17:43:50.290 SystemUIServer[13654] Will get _realShells array 2004-12-21 17:43:50.301 SystemUIServer[13654] Did get _realShells array; description is {type = mutable-small, count = 5, values = ( &#x0009;0 : {contents = &quot;/bin/bash&quot;} &#x0009;1 : {contents = &quot;/bin/csh&quot;} &#x0009;2 : {contents = &quot;/bin/sh&quot;} &#x0009;3 : {contents = &quot;/bin/tcsh&quot;} &#x0009;4 : {contents = &quot;/bin/zsh&quot;} )} 2004-12-21 17:43:50.301 SystemUIServer[13654] Will call _propertyForKey:@&quot;shell&quot; user:501 2004-12-21 17:43:50.302 SystemUIServer[13654] Did call _propertyForKey:user: (return string: /bin/ bash) 2004-12-21 17:43:50.302 SystemUIServer[13654] Will call containsObject: on realShells 2004-12-21 17:43:50.302 SystemUIServer[13654] Did call containsObject: 2004-12-21 17:43:50.302 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.303 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.303 SystemUIServer[13654] Will call _propertyForKey:@&quot;realname&quot; user:501 2004-12-21 17:43:50.304 SystemUIServer[13654] Did call _propertyForKey:user: (return string:  Wincent Colaiuta) 2004-12-21 17:43:50.304 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.304 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.304 SystemUIServer[13654] Will call _iconPathForUID:501 2004-12-21 17:43:50.305 SystemUIServer[13654] Did  call _iconPathForUID: (return string: /Library/ Caches/com.apple.user501pictureCache.tiff) 2004-12-21 17:43:50.306 SystemUIServer[13654] Will call getuid() 2004-12-21 17:43:50.306 SystemUIServer[13654] Did call getuid() (return value: 501) 2004-12-21 17:43:50.306 SystemUIServer[13654] uid == current_user 2004-12-21 17:43:50.306 SystemUIServer[13654] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 17:43:50.363 SystemUIServer[13654] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;tick.tiff&quot;; NSBaselineOffset = 0; }{</p>
+<pre>   NSAttachment = Name &quot;com.apple.user501pictureCache.tiff&quot;; 
+   NSBaselineOffset = -15; </pre>
+<p>} {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>} Wincent Colaiuta{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 17:43:50.363 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.363 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.363 SystemUIServer[13654] In for loop: i = 16 2004-12-21 17:43:50.363 SystemUIServer[13654] Will call strtol with ni_name &quot;502&quot; 2004-12-21 17:43:50.364 SystemUIServer[13654] Did call strtol (got 502) 2004-12-21 17:43:50.364 SystemUIServer[13654] showRootUser is NO and uid &gt; 500; will proceed  inside loop 2004-12-21 17:43:50.364 SystemUIServer[13654] Will create new NSMutableDictionary, theUser 2004-12-21 17:43:50.364 SystemUIServer[13654] Did create new NSMutableDictionary 2004-12-21 17:43:50.364 SystemUIServer[13654] Will create new NSNumber with uid 502 2004-12-21 17:43:50.364 SystemUIServer[13654] Did create new NSNumber; description is 502 2004-12-21 17:43:50.364 SystemUIServer[13654] Will setObject:forKey: in _allUsersCache 2004-12-21 17:43:50.364 SystemUIServer[13654] Did setObject:forKey: in _allUsersCache 2004-12-21 17:43:50.364 SystemUIServer[13654] Will addObject: to _sortedCache 2004-12-21 17:43:50.364 SystemUIServer[13654] Did addObject: to _sortedCache 2004-12-21 17:43:50.364 SystemUIServer[13654] Will setObject:forKey: in theUser 2004-12-21 17:43:50.364 SystemUIServer[13654] Did setObject:forKey: in theUser 2004-12-21 17:43:50.364 SystemUIServer[13654] Will get _realShells array 2004-12-21 17:43:50.364 SystemUIServer[13654] Did get _realShells array; description is {type = mutable-small, count = 5, values = ( &#x0009;0 : {contents = &quot;/bin/bash&quot;} &#x0009;1 : {contents = &quot;/bin/csh&quot;} &#x0009;2 : {contents = &quot;/bin/sh&quot;} &#x0009;3 : {contents = &quot;/bin/tcsh&quot;} &#x0009;4 : {contents = &quot;/bin/zsh&quot;} )} 2004-12-21 17:43:50.364 SystemUIServer[13654] Will call _propertyForKey:@&quot;shell&quot; user:502 2004-12-21 17:43:50.366 SystemUIServer[13654] Did call _propertyForKey:user: (return string: /bin/ bash) 2004-12-21 17:43:50.367 SystemUIServer[13654] Will call containsObject: on realShells 2004-12-21 17:43:50.367 SystemUIServer[13654] Did call containsObject: 2004-12-21 17:43:50.367 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.367 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.367 SystemUIServer[13654] Will call _propertyForKey:@&quot;realname&quot; user:502 2004-12-21 17:43:50.368 SystemUIServer[13654] Did call _propertyForKey:user: (return string: Sho  Fukamachi) 2004-12-21 17:43:50.368 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.368 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.369 SystemUIServer[13654] Will call _iconPathForUID:502 2004-12-21 17:43:50.375 SystemUIServer[13654] Did  call _iconPathForUID: (return string: /Library/ User Pictures/Animals/Parrot.tif) 2004-12-21 17:43:50.376 SystemUIServer[13654] Will call getuid() 2004-12-21 17:43:50.376 SystemUIServer[13654] Did call getuid() (return value: 501) 2004-12-21 17:43:50.376 SystemUIServer[13654] uid != current_user 2004-12-21 17:43:50.376 SystemUIServer[13654] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 17:43:50.390 SystemUIServer[13654] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;tick.tiff&quot;; NSBaselineOffset = 0; }{NSAttachment = Name  &quot;Parrot.tif&quot;; NSBaselineOffset = -15; } {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>} Greg Hurrell{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 17:43:50.390 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.390 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.390 SystemUIServer[13654] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 17:43:50.401 SystemUIServer[13654] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;noTick.tiff&quot;; NSBaselineOffset = 0; }{NSAttachment = Name  &quot;Parrot.tif&quot;; NSBaselineOffset = -15; } {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>} Greg Hurrell{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 17:43:50.402 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.402 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.402 SystemUIServer[13654] In for loop: i = 17 2004-12-21 17:43:50.402 SystemUIServer[13654] Will call strtol with ni_name &quot;503&quot; 2004-12-21 17:43:50.402 SystemUIServer[13654] Did call strtol (got 503) 2004-12-21 17:43:50.402 SystemUIServer[13654] showRootUser is NO and uid &gt; 500; will proceed  inside loop 2004-12-21 17:43:50.402 SystemUIServer[13654] Will create new NSMutableDictionary, theUser 2004-12-21 17:43:50.402 SystemUIServer[13654] Did create new NSMutableDictionary 2004-12-21 17:43:50.402 SystemUIServer[13654] Will create new NSNumber with uid 503 2004-12-21 17:43:50.402 SystemUIServer[13654] Did create new NSNumber; description is 503 2004-12-21 17:43:50.402 SystemUIServer[13654] Will setObject:forKey: in _allUsersCache 2004-12-21 17:43:50.402 SystemUIServer[13654] Did setObject:forKey: in _allUsersCache 2004-12-21 17:43:50.402 SystemUIServer[13654] Will addObject: to _sortedCache 2004-12-21 17:43:50.402 SystemUIServer[13654] Did addObject: to _sortedCache 2004-12-21 17:43:50.402 SystemUIServer[13654] Will setObject:forKey: in theUser 2004-12-21 17:43:50.402 SystemUIServer[13654] Did setObject:forKey: in theUser 2004-12-21 17:43:50.402 SystemUIServer[13654] Will get _realShells array 2004-12-21 17:43:50.402 SystemUIServer[13654] Did get _realShells array; description is {type = mutable-small, count = 5, values = ( &#x0009;0 : {contents = &quot;/bin/bash&quot;} &#x0009;1 : {contents = &quot;/bin/csh&quot;} &#x0009;2 : {contents = &quot;/bin/sh&quot;} &#x0009;3 : {contents = &quot;/bin/tcsh&quot;} &#x0009;4 : {contents = &quot;/bin/zsh&quot;} )} 2004-12-21 17:43:50.402 SystemUIServer[13654] Will call _propertyForKey:@&quot;shell&quot; user:503 2004-12-21 17:43:50.404 SystemUIServer[13654] Did call _propertyForKey:user: (return string: /bin/ bash) 2004-12-21 17:43:50.404 SystemUIServer[13654] Will call containsObject: on realShells 2004-12-21 17:43:50.404 SystemUIServer[13654] Did call containsObject: 2004-12-21 17:43:50.404 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.404 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.404 SystemUIServer[13654] Will call _propertyForKey:@&quot;realname&quot; user:503 2004-12-21 17:43:50.406 SystemUIServer[13654] Did call _propertyForKey:user: (return string:  FileVault) 2004-12-21 17:43:50.407 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.407 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.407 SystemUIServer[13654] Will call _iconPathForUID:503 2004-12-21 17:43:50.409 SystemUIServer[13654] Did  call _iconPathForUID: (return string: /Library/ User Pictures/Animals/Jaguar.tif) 2004-12-21 17:43:50.409 SystemUIServer[13654] Will call getuid() 2004-12-21 17:43:50.409 SystemUIServer[13654] Did call getuid() (return value: 501) 2004-12-21 17:43:50.409 SystemUIServer[13654] uid != current_user 2004-12-21 17:43:50.409 SystemUIServer[13654] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 17:43:50.419 SystemUIServer[13654] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;tick.tiff&quot;; NSBaselineOffset = 0; }{NSAttachment = Name  &quot;Jaguar.tif&quot;; NSBaselineOffset = -15; } {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>} FileVault{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 17:43:50.419 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.419 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.419 SystemUIServer[13654] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 17:43:50.431 SystemUIServer[13654] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;noTick.tiff&quot;; NSBaselineOffset = 0; }{NSAttachment = Name  &quot;Jaguar.tif&quot;; NSBaselineOffset = -15; } {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>} FileVault{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x003409c0) fobj=0x00340bf0, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 17:43:50.432 SystemUIServer[13654] Will call setObject:forKey: on theUser 2004-12-21 17:43:50.432 SystemUIServer[13654] Did call setObject:forKey: on theUser 2004-12-21 17:43:50.432 SystemUIServer[13654] In for loop: i = 18 2004-12-21 17:43:50.432 SystemUIServer[13654] Will call strtol with ni_name &quot;200&quot; 2004-12-21 17:43:50.432 SystemUIServer[13654] Did call strtol (got 200) 2004-12-21 17:43:50.432 SystemUIServer[13654] showRootUser is NO and uid &lt;= 500; will continue  to next iteration of loop 2004-12-21 17:43:50.432 SystemUIServer[13654] Exited for loop 2004-12-21 17:43:50.432 SystemUIServer[13654] Will call ni_entryList_free 2004-12-21 17:43:50.432 SystemUIServer[13654] Did call ni_entryList_free 2004-12-21 17:43:50.432 SystemUIServer[13654] Will call ni_free 2004-12-21 17:43:50.432 SystemUIServer[13654] Did call ni_free 2004-12-21 17:43:50.432 SystemUIServer[13654] Will allocate NSSortDescriptor 2004-12-21 17:43:50.432 SystemUIServer[13654] Did allocate NSSortDescriptor 2004-12-21 17:43:50.432 SystemUIServer[13654] Will initWithKey:ascending:selector: 2004-12-21 17:43:50.432 SystemUIServer[13654] Did initWithKey:ascending:selector: 2004-12-21 17:43:50.432 SystemUIServer[13654] Will sortUsingDescriptors: 2004-12-21 17:43:50.432 SystemUIServer[13654] Did sortUsingDescriptors: 2004-12-21 17:43:50.433 SystemUIServer[13654] Will release descriptor 2004-12-21 17:43:50.433 SystemUIServer[13654] Did release descriptor 2004-12-21 17:43:50.433 SystemUIServer[13654] Will return _sortedCache</p>
+<p>If you could try out this build and let me know how you go, that would be great.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1371'>
+<cite>
+<a href="/users/mbordas">mbordas</a>
+<span class='when'><a href="#comment_1371"><time data-relative="true">2004-12-22T03:51:11Z</time></a></span>
+</cite>
+<blockquote><p>Here is my console output, if you want I can post the crash log too, but it looks the same as before</p>
+<h6>Tue Dec 21 2004 ===== 12:14:50 America/New_York</h6>
+<p>Deactivating menu extra with identifier &quot;com.apple.menuextra.appleuser&quot; ... Success. Deactivating menu extra with identifier &quot;net.sourceforge.menucracker&quot; ... Success. Deactivating menu extra with identifier &quot;com.wincent.WinSwitch&quot; ... Success. Dec 21 12:15:05 Advena authexec: executing /usr/bin/ditto 2004-12-21 12:15:06.395 SystemUIServer[1774] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2004-12-21 12:15:06.405 SystemUIServer[1774] failed to load Menu Extra: NSBundle  (loaded) 2004-12-21 12:15:11.337 SystemUIServer[1774] Permitting load for class WOWinSwitchMenuExtra 2004-12-21 12:15:11.385 SystemUIServer[1774] WinSwitchHelper launched 2004-12-21 12:15:11.385 SystemUIServer[1774] WinSwitch.menu loaded. Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1  ... Success. 2004-12-21 12:15:23.233 SystemUIServer[1774] Entered _allUsersCacheForcingRebuild: 2004-12-21 12:15:23.233 SystemUIServer[1774] Will allocate/init _allUsersCache 2004-12-21 12:15:23.233 SystemUIServer[1774] Did allocate/init _allUsersCache 2004-12-21 12:15:23.233 SystemUIServer[1774] Will allocate/init _sortedCache 2004-12-21 12:15:23.233 SystemUIServer[1774] Did allocate/init _sortedCache 2004-12-21 12:15:23.233 SystemUIServer[1774] Will call ni_open 2004-12-21 12:15:23.234 SystemUIServer[1774] Did call ni_open 2004-12-21 12:15:23.234 SystemUIServer[1774] Will call ni_pathsearch 2004-12-21 12:15:23.236 SystemUIServer[1774] Did call ni_pathsearch 2004-12-21 12:15:23.236 SystemUIServer[1774] Will call ni_list 2004-12-21 12:15:23.236 SystemUIServer[1774] Did call ni_list 2004-12-21 12:15:23.236 SystemUIServer[1774] Will enter for loop: i = 0; i &lt; 19; i++ 2004-12-21 12:15:23.236 SystemUIServer[1774] In for loop: i = 0 2004-12-21 12:15:23.236 SystemUIServer[1774] Will call strtol with ni_name &quot;-2&quot; 2004-12-21 12:15:23.237 SystemUIServer[1774] Did call strtol (got -2) 2004-12-21 12:15:23.237 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.237 SystemUIServer[1774] In for loop: i = 1 2004-12-21 12:15:23.237 SystemUIServer[1774] Will call strtol with ni_name &quot;0&quot; 2004-12-21 12:15:23.237 SystemUIServer[1774] Did call strtol (got 0) 2004-12-21 12:15:23.237 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.237 SystemUIServer[1774] In for loop: i = 2 2004-12-21 12:15:23.237 SystemUIServer[1774] Will call strtol with ni_name &quot;1&quot; 2004-12-21 12:15:23.237 SystemUIServer[1774] Did call strtol (got 1) 2004-12-21 12:15:23.237 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.237 SystemUIServer[1774] In for loop: i = 3 2004-12-21 12:15:23.238 SystemUIServer[1774] Will call strtol with ni_name &quot;99&quot; 2004-12-21 12:15:23.238 SystemUIServer[1774] Did call strtol (got 99) 2004-12-21 12:15:23.238 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.238 SystemUIServer[1774] In for loop: i = 4 2004-12-21 12:15:23.238 SystemUIServer[1774] Will call strtol with ni_name &quot;25&quot; 2004-12-21 12:15:23.238 SystemUIServer[1774] Did call strtol (got 25) 2004-12-21 12:15:23.238 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.238 SystemUIServer[1774] In for loop: i = 5 2004-12-21 12:15:23.238 SystemUIServer[1774] Will call strtol with ni_name &quot;26&quot; 2004-12-21 12:15:23.238 SystemUIServer[1774] Did call strtol (got 26) 2004-12-21 12:15:23.238 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.238 SystemUIServer[1774] In for loop: i = 6 2004-12-21 12:15:23.238 SystemUIServer[1774] Will call strtol with ni_name &quot;27&quot; 2004-12-21 12:15:23.238 SystemUIServer[1774] Did call strtol (got 27) 2004-12-21 12:15:23.238 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.239 SystemUIServer[1774] In for loop: i = 7 2004-12-21 12:15:23.239 SystemUIServer[1774] Will call strtol with ni_name &quot;70&quot; 2004-12-21 12:15:23.239 SystemUIServer[1774] Did call strtol (got 70) 2004-12-21 12:15:23.239 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.239 SystemUIServer[1774] In for loop: i = 8 2004-12-21 12:15:23.239 SystemUIServer[1774] Will call strtol with ni_name &quot;71&quot; 2004-12-21 12:15:23.239 SystemUIServer[1774] Did call strtol (got 71) 2004-12-21 12:15:23.239 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.239 SystemUIServer[1774] In for loop: i = 9 2004-12-21 12:15:23.239 SystemUIServer[1774] Will call strtol with ni_name &quot;74&quot; 2004-12-21 12:15:23.239 SystemUIServer[1774] Did call strtol (got 74) 2004-12-21 12:15:23.239 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.239 SystemUIServer[1774] In for loop: i = 10 2004-12-21 12:15:23.239 SystemUIServer[1774] Will call strtol with ni_name &quot;75&quot; 2004-12-21 12:15:23.239 SystemUIServer[1774] Did call strtol (got 75) 2004-12-21 12:15:23.239 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.240 SystemUIServer[1774] In for loop: i = 11 2004-12-21 12:15:23.240 SystemUIServer[1774] Will call strtol with ni_name &quot;76&quot; 2004-12-21 12:15:23.240 SystemUIServer[1774] Did call strtol (got 76) 2004-12-21 12:15:23.240 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.240 SystemUIServer[1774] In for loop: i = 12 2004-12-21 12:15:23.240 SystemUIServer[1774] Will call strtol with ni_name &quot;77&quot; 2004-12-21 12:15:23.240 SystemUIServer[1774] Did call strtol (got 77) 2004-12-21 12:15:23.240 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.240 SystemUIServer[1774] In for loop: i = 13 2004-12-21 12:15:23.240 SystemUIServer[1774] Will call strtol with ni_name &quot;78&quot; 2004-12-21 12:15:23.240 SystemUIServer[1774] Did call strtol (got 78) 2004-12-21 12:15:23.240 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.240 SystemUIServer[1774] In for loop: i = 14 2004-12-21 12:15:23.241 SystemUIServer[1774] Will call strtol with ni_name &quot;79&quot; 2004-12-21 12:15:23.241 SystemUIServer[1774] Did call strtol (got 79) 2004-12-21 12:15:23.241 SystemUIServer[1774] showRootUser is NO and uid &lt;= 500; will continue to  next iteration of loop 2004-12-21 12:15:23.241 SystemUIServer[1774] In for loop: i = 15 2004-12-21 12:15:23.241 SystemUIServer[1774] Will call strtol with ni_name &quot;501&quot; 2004-12-21 12:15:23.241 SystemUIServer[1774] Did call strtol (got 501) 2004-12-21 12:15:23.241 SystemUIServer[1774] showRootUser is NO and uid &gt; 500; will proceed  inside loop 2004-12-21 12:15:23.241 SystemUIServer[1774] Will create new NSMutableDictionary, theUser 2004-12-21 12:15:23.241 SystemUIServer[1774] Did create new NSMutableDictionary 2004-12-21 12:15:23.241 SystemUIServer[1774] Will create new NSNumber with uid 501 2004-12-21 12:15:23.241 SystemUIServer[1774] Did create new NSNumber; description is 501 2004-12-21 12:15:23.241 SystemUIServer[1774] Will setObject:forKey: in _allUsersCache 2004-12-21 12:15:23.241 SystemUIServer[1774] Did setObject:forKey: in _allUsersCache 2004-12-21 12:15:23.242 SystemUIServer[1774] Will addObject: to _sortedCache 2004-12-21 12:15:23.242 SystemUIServer[1774] Did addObject: to _sortedCache 2004-12-21 12:15:23.242 SystemUIServer[1774] Will setObject:forKey: in theUser 2004-12-21 12:15:23.242 SystemUIServer[1774] Did setObject:forKey: in theUser 2004-12-21 12:15:23.242 SystemUIServer[1774] Will get _realShells array 2004-12-21 12:15:23.242 SystemUIServer[1774] Did get _realShells array; description is {type = mutable-small, count = 5, values = ( &#x0009;0 : {contents = &quot;/bin/bash&quot;} &#x0009;1 : {contents = &quot;/bin/csh&quot;} &#x0009;2 : {contents = &quot;/bin/sh&quot;} &#x0009;3 : {contents = &quot;/bin/tcsh&quot;} &#x0009;4 : {contents = &quot;/bin/zsh&quot;} )} 2004-12-21 12:15:23.242 SystemUIServer[1774] Will call _propertyForKey:@&quot;shell&quot; user:501 2004-12-21 12:15:23.245 SystemUIServer[1774] Did call _propertyForKey:user: (return string: /bin/ tcsh) 2004-12-21 12:15:23.245 SystemUIServer[1774] Will call containsObject: on realShells 2004-12-21 12:15:23.246 SystemUIServer[1774] Did call containsObject: 2004-12-21 12:15:23.246 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.246 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.246 SystemUIServer[1774] Will call _propertyForKey:@&quot;realname&quot; user:501 2004-12-21 12:15:23.248 SystemUIServer[1774] Did call _propertyForKey:user: (return string: Michael  A. Bordas) 2004-12-21 12:15:23.249 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.249 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.249 SystemUIServer[1774] Will call _iconPathForUID:501 2004-12-21 12:15:23.251 SystemUIServer[1774] Did  call _iconPathForUID: (return string: /Library/ Caches/com.apple.user501pictureCache.userImage) 2004-12-21 12:15:23.252 SystemUIServer[1774] Will call getuid() 2004-12-21 12:15:23.252 SystemUIServer[1774] Did call getuid() (return value: 501) 2004-12-21 12:15:23.252 SystemUIServer[1774] uid == current_user 2004-12-21 12:15:23.252 SystemUIServer[1774] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 12:15:23.318 SystemUIServer[1774] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;tick.tiff&quot;; NSBaselineOffset = 0; }{</p>
+<pre>   NSAttachment = Name &quot;com.apple.user501pictureCache.userImage&quot;; 
+   NSBaselineOffset = -15; </pre>
+<p>} {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x00341be0) fobj=0x00341e20, spc=4.43&quot;; </pre>
+<p>} Michael A. Bordas{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x00341be0) fobj=0x00341e20, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 12:15:23.318 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.318 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.318 SystemUIServer[1774] In for loop: i = 16 2004-12-21 12:15:23.318 SystemUIServer[1774] Will call strtol with ni_name &quot;502&quot; 2004-12-21 12:15:23.318 SystemUIServer[1774] Did call strtol (got 502) 2004-12-21 12:15:23.318 SystemUIServer[1774] showRootUser is NO and uid &gt; 500; will proceed  inside loop 2004-12-21 12:15:23.318 SystemUIServer[1774] Will create new NSMutableDictionary, theUser 2004-12-21 12:15:23.318 SystemUIServer[1774] Did create new NSMutableDictionary 2004-12-21 12:15:23.319 SystemUIServer[1774] Will create new NSNumber with uid 502 2004-12-21 12:15:23.319 SystemUIServer[1774] Did create new NSNumber; description is 502 2004-12-21 12:15:23.319 SystemUIServer[1774] Will setObject:forKey: in _allUsersCache 2004-12-21 12:15:23.319 SystemUIServer[1774] Did setObject:forKey: in _allUsersCache 2004-12-21 12:15:23.319 SystemUIServer[1774] Will addObject: to _sortedCache 2004-12-21 12:15:23.319 SystemUIServer[1774] Did addObject: to _sortedCache 2004-12-21 12:15:23.319 SystemUIServer[1774] Will setObject:forKey: in theUser 2004-12-21 12:15:23.319 SystemUIServer[1774] Did setObject:forKey: in theUser 2004-12-21 12:15:23.319 SystemUIServer[1774] Will get _realShells array 2004-12-21 12:15:23.319 SystemUIServer[1774] Did get _realShells array; description is {type = mutable-small, count = 5, values = ( &#x0009;0 : {contents = &quot;/bin/bash&quot;} &#x0009;1 : {contents = &quot;/bin/csh&quot;} &#x0009;2 : {contents = &quot;/bin/sh&quot;} &#x0009;3 : {contents = &quot;/bin/tcsh&quot;} &#x0009;4 : {contents = &quot;/bin/zsh&quot;} )} 2004-12-21 12:15:23.319 SystemUIServer[1774] Will call _propertyForKey:@&quot;shell&quot; user:502 2004-12-21 12:15:23.323 SystemUIServer[1774] Did call _propertyForKey:user: (return string: /bin/ bash) 2004-12-21 12:15:23.323 SystemUIServer[1774] Will call containsObject: on realShells 2004-12-21 12:15:23.323 SystemUIServer[1774] Did call containsObject: 2004-12-21 12:15:23.323 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.323 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.323 SystemUIServer[1774] Will call _propertyForKey:@&quot;realname&quot; user:502 2004-12-21 12:15:23.326 SystemUIServer[1774] Did call _propertyForKey:user: (return string: Irma  Tumas) 2004-12-21 12:15:23.326 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.326 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.326 SystemUIServer[1774] Will call _iconPathForUID:502 2004-12-21 12:15:23.329 SystemUIServer[1774] Did  call _iconPathForUID: (return string: /Library/ User Pictures/Landscapes/Island.tif) 2004-12-21 12:15:23.329 SystemUIServer[1774] Will call getuid() 2004-12-21 12:15:23.329 SystemUIServer[1774] Did call getuid() (return value: 501) 2004-12-21 12:15:23.329 SystemUIServer[1774] uid != current_user 2004-12-21 12:15:23.329 SystemUIServer[1774] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 12:15:23.341 SystemUIServer[1774] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;tick.tiff&quot;; NSBaselineOffset = 0; }{NSAttachment = Name  &quot;Island.tif&quot;; NSBaselineOffset = -15; } {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x00341be0) fobj=0x00341e20, spc=4.43&quot;; </pre>
+<p>} Irma Tumas{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x00341be0) fobj=0x00341e20, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 12:15:23.341 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.341 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.341 SystemUIServer[1774] Will call _menuString:withIconPath:state:dimImages: 2004-12-21 12:15:23.351 SystemUIServer[1774] Did call _menuString:withIconPath:state:dimImages:  (return result: {NSAttachment = Name &quot;noTick.tiff&quot;; NSBaselineOffset = 0; }{NSAttachment = Name  &quot;Island.tif&quot;; NSBaselineOffset = -15; } {</p>
+<pre>   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x00341be0) fobj=0x00341e20, spc=4.43&quot;; </pre>
+<p>} Irma Tumas{</p>
+<pre>   NSBaselineOffset = 3; 
+   NSFont = &quot;CGS LucidaGrande 14.00 pt. P [] (0x00341be0) fobj=0x00341e20, spc=4.43&quot;; </pre>
+<p>}) 2004-12-21 12:15:23.351 SystemUIServer[1774] Will call setObject:forKey: on theUser 2004-12-21 12:15:23.351 SystemUIServer[1774] Did call setObject:forKey: on theUser 2004-12-21 12:15:23.351 SystemUIServer[1774] In for loop: i = 17 Dec 21 12:15:05 Advena last message repeated 3 times Dec 21 12:15:24 Advena crashdump: Started writing crash report to: /Users/mbordas/Library/Logs/ CrashReporter/SystemUIServer.crash.log Dec 21 12:15:24 Advena crashdump: Finished writing crash report to: /Users/mbordas/Library/Logs/ CrashReporter/SystemUIServer.crash.log 2004-12-21 12:15:25.092 SystemUIServer[1785] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2004-12-21 12:15:25.104 SystemUIServer[1785] failed to load Menu Extra: NSBundle  (loaded) 2004-12-21 12:15:25.104 SystemUIServer[1785] Permitting load for class WOWinSwitchMenuExtra 2004-12-21 12:15:25.156 SystemUIServer[1785] WinSwitchHelper launched 2004-12-21 12:15:25.156 SystemUIServer[1785] WinSwitch.menu loaded.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1372'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1372"><time data-relative="true">2004-12-22T04:37:08Z</time></a></span>
+</cite>
+<blockquote><p>Thanks Michael. Now we know where it's crashing:</p>
+<pre>           for (i = 0; i &lt; users.ni_entrylist_len; i++)
+           {
+               NSLog(@&quot;In for loop: i = %d&quot;, i);
+               ni_name user = 
+               users.ni_entrylist_val[i].names-&gt;ni_namelist_val[0];
+               NSLog(@&quot;Will call strtol with ni_name \&quot;%s\&quot;&quot;, user);</pre>
+<p>The last statement to successfully execute is the first NSLog that you see above. The second NSLog  never completes. Presumably the statement in the middle is the problem; we're not getting a valid,  null-terminated string to which we have read access. I should be able to rewrite the code to abort if it  comes across something unexpected. This happens on the 18th time through the loop. Your NetInfo  database claims to have 19 entries in it under &quot;users&quot;, so we're crashing on the second-to-last entry.</p>
+<p>Can you let me know what the output of the following commands are?</p>
+<p>nidump passwd . nidump passwd /</p>
+<p>This will allow us to see what's in your NetInfo database and get a bit more info on the crash.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1373'>
+<cite>
+<a href="/users/mbordas">mbordas</a>
+<span class='when'><a href="#comment_1373"><time data-relative="true">2004-12-22T04:47:41Z</time></a></span>
+</cite>
+<blockquote><p>[advena:~] mbordas% nidump passwd . nobody:*:-2:-2::0:0:Unprivileged User:/var/empty:/usr/bin/false root:*:0:0::0:0:System Administrator:/var/root:/bin/sh daemon:*:1:1::0:0:System Services:/var/root:/usr/bin/false unknown:*:99:99::0:0:Unknown User:/var/empty:/usr/bin/false smmsp:*:25:25::0:0:Sendmail User:/private/etc/mail:/usr/bin/false lp:*:26:26::0:0:Printing Services:/var/spool/cups:/usr/bin/false postfix:*:27:27::0:0:Postfix User:/var/spool/postfix:/usr/bin/false www:*:70:70::0:0:World Wide Web Server:/Library/WebServer:/usr/bin/false eppc:*:71:71::0:0:Apple Events User:/var/empty:/usr/bin/false mysql:*:74:74::0:0:MySQL Server:/var/empty:/usr/bin/false sshd:*:75:75::0:0:sshd Privilege separation:/var/empty:/usr/bin/false qtss:*:76:76::0:0:QuickTime Streaming Server:/var/empty:/usr/bin/false cyrus:*:77:6::0:0:Cyrus User:/var/imap:/usr/bin/false mailman:*:78:78::0:0:Mailman user:/var/empty:/usr/bin/false appserver:*:79:79::0:0:Application Server:/var/empty:/usr/bin/false mbordas:********:501:501::0:0:Michael A. Bordas:/Users/mbordas:/bin/tcsh itumas:********:502:502::0:0:Irma Tumas:/Users/itumas:/bin/bash ftp:::::0:0::/Users/mbordas/Public: mark:********:503:503::0:0::/private/var/mark:/bin/tcsh</p>
+<p>[advena:~] mbordas% nidump passwd / nobody:*:-2:-2::0:0:Unprivileged User:/var/empty:/usr/bin/false root:*:0:0::0:0:System Administrator:/var/root:/bin/sh daemon:*:1:1::0:0:System Services:/var/root:/usr/bin/false unknown:*:99:99::0:0:Unknown User:/var/empty:/usr/bin/false smmsp:*:25:25::0:0:Sendmail User:/private/etc/mail:/usr/bin/false lp:*:26:26::0:0:Printing Services:/var/spool/cups:/usr/bin/false postfix:*:27:27::0:0:Postfix User:/var/spool/postfix:/usr/bin/false www:*:70:70::0:0:World Wide Web Server:/Library/WebServer:/usr/bin/false eppc:*:71:71::0:0:Apple Events User:/var/empty:/usr/bin/false mysql:*:74:74::0:0:MySQL Server:/var/empty:/usr/bin/false sshd:*:75:75::0:0:sshd Privilege separation:/var/empty:/usr/bin/false qtss:*:76:76::0:0:QuickTime Streaming Server:/var/empty:/usr/bin/false cyrus:*:77:6::0:0:Cyrus User:/var/imap:/usr/bin/false mailman:*:78:78::0:0:Mailman user:/var/empty:/usr/bin/false appserver:*:79:79::0:0:Application Server:/var/empty:/usr/bin/false mbordas:********:501:501::0:0:Michael A. Bordas:/Users/mbordas:/bin/tcsh itumas:********:502:502::0:0:Irma Tumas:/Users/itumas:/bin/bash ftp:::::0:0::/Users/mbordas/Public: mark:********:503:503::0:0::/private/var/mark:/bin/tcsh</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1374'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1374"><time data-relative="true">2004-12-22T06:46:34Z</time></a></span>
+</cite>
+<blockquote><p>Thanks Michael. I see you've created an &quot;ftp&quot; user on your machine, and that's what's causing the crash.  The user has no uid number, but it should. Notice that all the other users have id numbers. </p>
+<p>But this is good, because I can now reproduce the crash here by creating a similar faulty account. In  order to replicate the crash it wasn't sufficient for me to create an account that had no uid set for it; I  actually had to make an account that didn't even have the uid field in the NetInfo database. I've made  changes to the WinSwitch code to guard against against accounts with that fault, and now it doesn't  crash any more.</p>
+<p>Here's a download link:</p>
+<p><a href="http://us.wincent.com/a/products/winswitch/download/WinSwitch3.0b-20041221-2.dmg" class="external">http://us.wincent.com/a/products/winswitch/download/WinSwitch3.0b-20041221-2.dmg</a></p>
+<p>MD5 checksum: a64fd273379654db591e2d75019d777b</p>
+<p>Thanks for helping to get to the bottom of this one. If you can confirm that you don't crash any more,  I'll mark this one as resolved. And once you've finished testing, you should probably assign a uid to that  ftp account.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1375'>
+<cite>
+<a href="/users/mbordas">mbordas</a>
+<span class='when'><a href="#comment_1375"><time data-relative="true">2004-12-22T12:42:59Z</time></a></span>
+</cite>
+<blockquote><p>Yup that fixes it!</p>
+<p>Thats really odd though, I don't remember making that account, must be left over from something I did  a long while ago. Anyway I deleted that account now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1376'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1376"><time data-relative="true">2004-12-22T13:29:24Z</time></a></span>
+</cite>
+<blockquote><p>Good to hear, Michael. Thanks for your collaboration. In cases like this one (where I can't reproduce the  bug on my machine), the only way I can solve the issue is with the help of patient users like yourself  who can reproduce the issue and who are prepared to invest time tracking things down and trying out  builds for me. Thanks a lot.</p>
+<p>In any case, I am going to mark this as FIXED now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1377'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1377"><time data-relative="true">2004-12-22T13:31:15Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED. Feel free to re-open if you find another case which can crash WinSwitch. If you can,  we'll need crash reports, the output of nidump, and the console output. Hopefully though there won't  be any more crashes, even with really bizarre/corrupted NetInfo databases.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1378'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1378"><time data-relative="true">2004-12-24T18:42:02Z</time></a></span>
+</cite>
+<blockquote><p>I've changed the summary on this bug to distinguish it from <a href="/issues/85">bug #85</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1379'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1379"><time data-relative="true">2004-12-25T13:51:22Z</time></a></span>
+</cite>
+<blockquote><ul>
+<li>** Bug 85 has been marked as a duplicate of this bug. ***</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_1380'>
+<cite>
+<a href="/users/frederico">Frederico</a>
+<span class='when'><a href="#comment_1380"><time data-relative="true">2005-03-10T14:34:57Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #20)</p>
+<blockquote>
+<p>Marking as CLOSED. Feel free to re-open if you find another case which can crash WinSwitch. If you </p>
+</blockquote>
+<p>can, </p>
+<blockquote>
+<p>we'll need crash reports, the output of nidump, and the console output. Hopefully though there won't  be any more crashes, even with really bizarre/corrupted NetInfo databases.</p>
+</blockquote>
+<p>Wincent,</p>
+<p>Just wanted to drop a note to tell you that I saw v3 released today; tried it out, and bang-biffy, all is  well again. I'm still running on the same presumably-corrupted NIDB install of 10.3.5, so other than  milage, the setup environment has not changed a bit. I think I'm still corrupted, because I still cannot  create a new user account from my original 501 admin account or root; only a later-created admin  account can create new ones via GUI. I inspected all the UID entries, and all seems in order, unlike  Michael's problem, so, whatever protections you install appear to be doing double-duty.</p>
+<p>FWIW, the only relavent entry referring to NIDB is found beow immediately after installing WS3:</p>
+<p>Mar  9 20:36:29 RicoG4 authexec: executing /bin/rm Deactivating menu extra with identifier &quot;com.apple.menuextra.appleuser&quot; ... Success. Deactivating menu extra with identifier &quot;net.sourceforge.menucracker&quot; ... Success. Deactivating menu extra with identifier &quot;com.wincent.WinSwitch&quot; ... Success. Mar  9 20:36:32 RicoG4 authexec: executing /usr/bin/ditto 2005-03-09 20:36:34.836 SystemUIServer[27955] </p>
+<pre>   MenuCracker
+   see <a href="http://sourceforge.net/projects/menucracker" class="external">http://sourceforge.net/projects/menucracker</a>
+   MenuCracker is now loaded. Ready to accept new menus. Ignore the failure message that follow.</pre>
+<p>2005-03-09 20:36:34.902 SystemUIServer[27955] failed to load Menu Extra: NSBundle  (loaded) 2005-03-09 20:36:35.463 SystemUIServer[27955] Normally ChangeDesktopMenu would not have been  loaded as a Menu Extra. 2005-03-09 20:36:35.514 SystemUIServer[27955] Normally CPUMenuExtra would not have been  loaded as a Menu Extra. 2005-03-09 20:36:35.872 SystemUIServer[27955] Normally MenuMeterMemExtra would not have been  loaded as a Menu Extra. 2005-03-09 20:36:36.000 SystemUIServer[27955] MenuMeterMem loaded. 2005-03-09 20:36:36.438 SystemUIServer[27955] Normally MenuMeterDiskExtra would not have been  loaded as a Menu Extra. 2005-03-09 20:36:36.483 SystemUIServer[27955] MenuMeterDisk loaded. 2005-03-09 20:36:37.033 SystemUIServer[27955] Normally MenuMeterNetExtra would not have been  loaded as a Menu Extra. 2005-03-09 20:36:37.103 SystemUIServer[27955] MenuMeterNet loaded. 2005-03-09 20:36:37.841 SystemUIServer[27955] Normally GeekToolMenu would not have been  loaded as a Menu Extra. 2005-03-09 20:36:39.701 SystemUIServer[27955] failed to load Menu Extra: NSBundle  (not yet loaded) 2005-03-09 20:36:40.129 SystemUIServer[27955] Normally WOWinSwitchMenuExtra would not have  been loaded as a Menu Extra. 2005-03-09 20:36:40.222 SystemUIServer[27955] WinSwitchHelper launched 2005-03-09 20:36:40.223 SystemUIServer[27955] WinSwitch.menu loaded. Activating menu extra with bundle path &quot;/Library/Menu Extras/WinSwitch.menu&quot; after item number -1  ... Success. Mar  9 20:36:33 RicoG4 last message repeated 3 times 257 on console Mar  9 20:37:14 RicoG4 lookupd[232]: NetInfo connection failed for server 127.0.0.1/local Mac OS X Version 10.3.5 (Build 7M34) 2005-03-09 20:39:25 -0700 CFMessagePortCreateLocal failed (name = Processes-0.1935540225 error = 0)</p>
+<p>---</p>
+<p>[RicoG4:~] rico% nidump passwd . nobody:*:-2:-2::0:0:Unprivileged User:/dev/null:/dev/null root:********:0:0::0:0:System Administrator:/var/root:/bin/tcsh daemon:*:1:1::0:0:System Services:/var/root:/dev/null unknown:*:99:99::0:0:Unknown User:/dev/null:/dev/null smmsp:*:25:25::0:0:Sendmail User:/private/etc/mail:/dev/null www:*:70:70::0:0:World Wide Web Server:/Library/WebServer:/dev/null mysql:*:74:74::0:0:MySQL Server:/dev/null:/dev/null sshd:*:75:75::0:0:sshd Privilege separation:/var/empty:/dev/null grant:********:502:20::0:0:Grant:/Volumes/docs/Users/grant:/bin/tcsh rico:********:501:20::0:0:Frederico:/Users/rico:/bin/tcsh dave:********:504:20::0:0:dave:/Users/dave:/bin/tcsh fred:********:505:20::0:0:fred:/Users/fred:/bin/tcsh bill:********:506:20::0:0:bill:/Users/bill:/bin/tcsh cyrus:*:77:6::0:0:Cyrus IMAP User:/var/imap:/usr/bin/false qtss:*:76:76::0:0:QuickTime streaming Server:/var/empty:/usr/bin/false eppc:*:71:71::0:0:Apple Events User:/var/empty:/usr/bin/false lp:*:26:26::0:0:Printing Services:/var/spool/cups:/usr/bin/false mailman:*:78:78::0:0:Mailman user:/var/empty:/usr/bin/false postfix:*:27:27::0:0:Postfix User:/var/spool/postfix:/usr/bin/false games:********:508:508::0:0:Games:/Users/games:/bin/bash tester:********:509:509::0:0:tester:/Users/tester:/bin/bash testwinswitch:********:510:510::0:0:testwinswitch:/Users/testwinswitch:/bin/bash</p>
+<p>[RicoG4:~] rico% nidump passwd / nobody:*:-2:-2::0:0:Unprivileged User:/dev/null:/dev/null root:********:0:0::0:0:System Administrator:/var/root:/bin/tcsh daemon:*:1:1::0:0:System Services:/var/root:/dev/null unknown:*:99:99::0:0:Unknown User:/dev/null:/dev/null smmsp:*:25:25::0:0:Sendmail User:/private/etc/mail:/dev/null www:*:70:70::0:0:World Wide Web Server:/Library/WebServer:/dev/null mysql:*:74:74::0:0:MySQL Server:/dev/null:/dev/null sshd:*:75:75::0:0:sshd Privilege separation:/var/empty:/dev/null grant:********:502:20::0:0:Grant:/Volumes/docs/Users/grant:/bin/tcsh rico:********:501:20::0:0:Frederico:/Users/rico:/bin/tcsh dave:********:504:20::0:0:dave:/Users/dave:/bin/tcsh fred:********:505:20::0:0:fred:/Users/fred:/bin/tcsh bill:********:506:20::0:0:bill:/Users/bill:/bin/tcsh cyrus:*:77:6::0:0:Cyrus IMAP User:/var/imap:/usr/bin/false qtss:*:76:76::0:0:QuickTime streaming Server:/var/empty:/usr/bin/false eppc:*:71:71::0:0:Apple Events User:/var/empty:/usr/bin/false lp:*:26:26::0:0:Printing Services:/var/spool/cups:/usr/bin/false mailman:*:78:78::0:0:Mailman user:/var/empty:/usr/bin/false postfix:*:27:27::0:0:Postfix User:/var/spool/postfix:/usr/bin/false games:********:508:508::0:0:Games:/Users/games:/bin/bash tester:********:509:509::0:0:tester:/Users/tester:/bin/bash testwinswitch:********:510:510::0:0:testwinswitch:/Users/testwinswitch:/bin/bash</p>
+<p>---</p>
+<p>If you see anything in the nidump above, let me know.</p>
+<p>I sincerely apologize for not following up on this; family life exploded and is still kicking my behind,  leaving almost no computer-twittering time. If I can get my normal work done with what I have, it must  remain that way for the time being. I expect that I will finally do a fresh install come Tiger, but, for now,  this install, which has been upgraded-only (never even an Archive &amp; Install) since the beta still keeps  cranking.</p>
+<p>Thanks again.</p>
+<p>Frederico</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

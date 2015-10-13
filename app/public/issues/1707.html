@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1707: Installation failure on Windows XP
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1707</div>
+<div class='issue' id='issue_1707'>
+<form class="edit_issue" id="edit_issue_1707" action="/issues/1707" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Xok4e88yuHHi0WnqpoKCcP24XJbpFbFeWhzkvB4nYDZqe4bMaL9iJDtdWh2Xq9HESDo1quL5P0J6AzFCOv8HEg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1707:
+<span data-name='issue[summary]'>
+Installation failure on Windows XP
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-10-04T09:11:34Z</time>, updated <time data-relative="true">2010-10-26T07:18:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>I'm trying to get Command-t to work on Windows. Here's the output from my vim --version :</p>
+<pre>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Aug  9 2008 18:46:22)
+MS-Windows 32-bit GUI version with OLE support
+Compiled by Bram@KIBAALE
+Big version with GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent +clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments +cryptv +cscope
++cursorshape +dialog_con_gui +diff +digraphs -dnd -ebcdic +emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path +find_in_path +float +folding -footer +gettext/dyn
+-hangul_input +iconv/dyn +insert_expand +jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap +menu +mksession +modify_fname +mouse +mouseshape
++multi_byte_ime/dyn +multi_lang -mzscheme +netbeans_intg +ole -osfiletype +path_extra +perl/dyn -postscript +printer -profile +python/dyn +quickfix +reltime +rightleft +ruby/dyn
++scrollbind +signs +smartindent -sniff +statusline -sun_workshop +syntax +tag_binary +tag_old_static -tag_any_white +tcl/dyn -tgetent -termresponse +textobjects +title +toolbar
++user_commands +vertsplit +virtualedit +visual +visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup -xfontset -xim -xterm_save +xpm_w32
+   system vimrc file: &quot;$VIM\vimrc&quot;
+     user vimrc file: &quot;$HOME\_vimrc&quot;
+ 2nd user vimrc file: &quot;$VIM\_vimrc&quot;
+      user exrc file: &quot;$HOME\_exrc&quot;
+  2nd user exrc file: &quot;$VIM\_exrc&quot;
+  system gvimrc file: &quot;$VIM\gvimrc&quot;
+    user gvimrc file: &quot;$HOME\_gvimrc&quot;
+2nd user gvimrc file: &quot;$VIM\_gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME\menu.vim&quot;
+Compilation: cl -c /W3 /nologo  -I. -Iproto -DHAVE_PATHDEF -DWIN32   -DFEAT_CSCOPE -DFEAT_NETBEANS_INTG   -DFEAT_XPM_W32   /Wp64 -DWINVER=0x0400 -D_WIN32_WINNT=0x0400  /Fo.\ObjGOLY
+TR/ /Ox -DNDEBUG  /Zl /MT -DFEAT_OLE -DFEAT_MBYTE_IME -DDYNAMIC_IME -DFEAT_GUI_W32 -DDYNAMIC_ICONV -DDYNAMIC_GETTEXT -DFEAT_TCL -DDYNAMIC_TCL -DDYNAMIC_TCL_DLL=\&quot;tcl83.dll\&quot; -DDYNA
+MIC_TCL_VER=\&quot;8.3\&quot; -DFEAT_PYTHON -DDYNAMIC_PYTHON -DDYNAMIC_PYTHON_DLL=\&quot;python24.dll\&quot; -DFEAT_PERL -DDYNAMIC_PERL -DDYNAMIC_PERL_DLL=\&quot;perl58.dll\&quot; -DFEAT_RUBY -DDYNAMIC_RUBY -DD
+YNAMIC_RUBY_VER=18 -DDYNAMIC_RUBY_DLL=\&quot;msvcrt-ruby18.dll\&quot; -DFEAT_BIG /Fd.\ObjGOLYTR/ /Zi
+Linking: link /RELEASE /nologo /subsystem:windows oldnames.lib kernel32.lib advapi32.lib shell32.lib gdi32.lib  comdlg32.lib ole32.lib uuid.lib /machine:i386 /nodefaultlib gdi32.li
+b version.lib   winspool.lib comctl32.lib advapi32.lib shell32.lib  /machine:i386 /nodefaultlib libcmt.lib oleaut32.lib  user32.lib     /nodefaultlib:python24.lib   e:\tcl\lib\tcls
+tub83.lib WSock32.lib e:\xpm\lib\libXpm.lib /PDB:gvim.pdb -debug
+</pre>
+<p>I installed rubyinstaller-1.8.7-p299.exe and devkit-3.4.5r3-20091110.</p>
+<p>Here's the output from ruby extconf.rb :</p>
+<pre>
+C:\...&gt;ruby extconf.rb
+checking for ruby.h... yes
+creating Makefile
+</pre>
+<p>Make :</p>
+<pre>
+C:\...&gt;make
+gcc -I. -I/C/Ruby187/lib/ruby/1.8/i386-mingw32 -I/C/Ruby187/lib/ruby/1.8/i386-mi
+ngw32 -I. -DHAVE_RUBY_H    -g -O2 -DFD_SETSIZE=256    -std=c99 -Wall -Wextra -Wn
+o-unused-parameter -c ext.c
+gcc -I. -I/C/Ruby187/lib/ruby/1.8/i386-mingw32 -I/C/Ruby187/lib/ruby/1.8/i386-mi
+ngw32 -I. -DHAVE_RUBY_H    -g -O2 -DFD_SETSIZE=256    -std=c99 -Wall -Wextra -Wn
+o-unused-parameter -c match.c
+gcc -I. -I/C/Ruby187/lib/ruby/1.8/i386-mingw32 -I/C/Ruby187/lib/ruby/1.8/i386-mi
+ngw32 -I. -DHAVE_RUBY_H    -g -O2 -DFD_SETSIZE=256    -std=c99 -Wall -Wextra -Wn
+o-unused-parameter -c matcher.c
+gcc -shared -s -o ext.so ext.o match.o matcher.o -L. -LC:/Ruby187/lib -L.  -Wl,-
+-enable-auto-image-base,--enable-auto-import,--export-all   -lmsvcrt-ruby18  -ls
+hell32 -lws2_32
+</pre>
+<p>And finally when invoking Command-T in vim :</p>
+<pre>
+command-t.vim could not load the C extension
+Please see INSTALLATION and TROUBLE-SHOOTING in the help
+For more information type:    :help command-t
+</pre>
+<p>I really cannot see the problem. Thank you for your support.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6333'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6333"><time data-relative="true">2010-10-04T09:43:10Z</time></a></span>
+</cite>
+<blockquote><p>Yeah, I can't really see the problem either. I'm a Mac OS X user myself, but I personally have tested the procedure on Windows XP (SP 3) with rubyinstaller-1.8.7-p299.exe and devkit-3.4.5r3-20091110, and it worked for me.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6369'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6369"><time data-relative="true">2010-10-26T06:25:22Z</time></a></span>
+</cite>
+<blockquote><p>My bad : for some reason the ruby runtimes were missing from the PATH environment variable. CommandT works as expected (and it's amazing).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6370'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6370"><time data-relative="true">2010-10-26T07:18:33Z</time></a></span>
+</cite>
+<blockquote><p>Ok, glad to hear you got it working.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6371'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6371"><time data-relative="true">2010-10-26T07:18:41Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

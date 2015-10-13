@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1833: Cache file listing to disk
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1833</div>
+<div class='issue' id='issue_1833'>
+<form class="edit_issue" id="edit_issue_1833" action="/issues/1833" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="qndlEQvhEFk0IOnCTDVgJQNniEIudXDQhMGbiNo+1cuehdumrGzKDO2s2jV9HDORtuXhfiWZ/syk3k52/uay7w==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1833:
+<span data-name='issue[summary]'>
+Cache file listing to disk
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-06-10T03:45:16Z</time>, updated <time data-relative="true">2012-02-24T06:09:42Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email:</p>
+<blockquote>
+<p>I have a project with about 50,000 files in it.  Is there a way to:</p>
+<ol>
+<li>cache the cache to the files system.  So I can open vim and bypass the 30 seconds to read all of the files for my project.</li>
+</ol>
+<p><a href="/tags/Is">#Is</a> there away to have CommandT parse files from a predefined directory instead of at :PWD?</p>
+</blockquote>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6925'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6925"><time data-relative="true">2011-06-10T03:45:55Z</time></a></span>
+</cite>
+<blockquote><p>I've pasted this in here to track the feature request for caching.</p>
+<p>As to your second question, you can pass in a directory: eg. <code>:CommandT some/directory</code></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6950'>
+<cite>
+<a href="/users/lukasz">lukasz</a>
+<span class='when'><a href="#comment_6950">Created <time data-relative="true">2011-06-28T18:23:44Z</time>, edited <time data-relative="true">2011-06-29T04:46:38Z</time></a></span>
+</cite>
+<blockquote><p>My project is over 15 000 files.</p>
+<p>Problems:</p>
+<ol>
+<li>First run is about 10 sec.</li>
+<li>After typing first 3 characters - waiting for search about 5 sec. Every time. Next characters go faster of course. But imagine you make mistake and have to backspace this first chars.</li>
+<li>Not all diretories (on the first level) are scaned (or at least searchable).</li>
+</ol>
+<p>my setting: let g:CommandTMaxFiles=100000</p>
+<p>For example if i run vim in root directory of my project, and run </p>
+<pre>:CommandT</pre>
+<p>it doesn't see any file in IDX directory.</p>
+<p>If i run </p>
+<pre>:CommandT IDX</pre>
+<p>every thing is OK.</p>
+<p>-- lukasz</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6951'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6951"><time data-relative="true">2011-06-29T04:55:49Z</time></a></span>
+</cite>
+<blockquote><p>There is no quick and easy fix for the performance degradation, I'm afraid. The first run is slow because it has to traverse the entire directory hierarchy, in Ruby. The initial slowness as it narrows down the list may just be because the number of files you're dealing with is too much for your machine (ie. perhaps enough to push some of the working set out of the processor cache).</p>
+<p>As for the third issue, perhaps your Vim <code>'wildignore'</code> setting is responsible for excluding that directory. Or perhaps you have more files than you think? I'm pretty confident there are no bugs which would cause Command-T to overlook an entire directory hierarchy.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6952'>
+<cite>
+<a href="/users/lukasz">lukasz</a>
+<span class='when'><a href="#comment_6952"><time data-relative="true">2011-06-29T07:05:50Z</time></a></span>
+</cite>
+<blockquote><pre>
+$ ls -R . | wc -l
+13611
+</pre>
+<pre>
+: set wildignore
+wildignore=
+</pre>
+<p>We must do it something with performance - cannot work without this plugin ;).</p>
+<p>For now I use:</p>
+<pre>:CommandT dir</pre>
+<p>Maybe it will be a temporary solution to create new leader shortcut eg.: \y direcotry search_string</p>
+<p>In that case it will first switch to &quot;direcotry&quot; like :CommandT dir (just after pressing space after the first word), and then perform normal search with &quot;search_string&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7206'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7206"><time data-relative="true">2011-10-30T17:12:52Z</time></a></span>
+</cite>
+<blockquote><p>See also feature <a href="/issues/1878">request #1878</a>. That one adds the ability to use multiple caches, keyed off of directory names, so you could use <code>:CommandT dir</code> to limit the scope to a particular directory, but still get the benefit of the cache.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7208'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7208"><time data-relative="true">2011-10-30T17:14:54Z</time></a></span>
+</cite>
+<blockquote><p>Closed <a href="/forums/command-t/topics/488/">this topic</a> (&quot;Slow startup in large project&quot;) as a duplicate of this ticket.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7362'>
+<cite>
+<a href="/users/jkkim">JKkim</a>
+<span class='when'><a href="#comment_7362"><time data-relative="true">2012-01-06T11:50:07Z</time></a></span>
+</cite>
+<blockquote><p>Hello I just moved command-t from fuzzy-finder and I really satisfied with this plugin. however nowadays I am working in Android. Android project has over 100,000 files. therefore I need the feature that original poster asked. It would be nice, great if command-t can reopen the cache when I re-run the vim. For this functionality, cache could be file by options and could be select from cache-list window, when I want to re-open the cache. I grant that Command-T is still great and would be more great if it gives above functions. please........... In fact, I re-compiled the VIM only for using command-t in Cygwin. plz from JK. seoul korea</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7424'>
+<cite>
+<a href="/users/dtb">dtb</a>
+<span class='when'><a href="#comment_7424"><time data-relative="true">2012-02-14T06:46:45Z</time></a></span>
+</cite>
+<blockquote><p>Hey folks, I'm working on a patch to cache the directory listing to disk on first run, so that you can avoid the startup delay. Subsequent runs would use the cache.</p>
+<p>I've got a first pass of this over on <a href="https://github.com/dtb/Command-T/tree/cache-paths-to-disk" class="external">a branch of my fork of Command-T</a>. I'm going to try it out a bit, and once everything is looking good, I'll send a pull request.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7444'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7444"><time data-relative="true">2012-02-22T15:17:25Z</time></a></span>
+</cite>
+<blockquote><p>I am working on a mounted ssh file system and it's very slow every time to generate the cache. I will try your implementation JKkim</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7448'>
+<cite>
+<a href="/users/dtb">dtb</a>
+<span class='when'><a href="#comment_7448"><time data-relative="true">2012-02-24T06:09:42Z</time></a></span>
+</cite>
+<blockquote><p>I added a <a href="https://github.com/wincent/Command-T/pull/36" class="external">pull request</a> for this feature.</p>
+<p>If anyone wants to try it out, just go to <a href="https://github.com/dtb/Command-T/tree/cache-paths-to-disk" class="external">my fork</a>, then follow the instructions to install the plugin. After you do that, go into the install directory, and do a</p>
+<pre>  git checkout cache-paths-to-disk</pre>
+<p>Then, be sure to edit your vimrc to enable the cache:</p>
+<pre> let g:CommandTCacheIndexToDisk=1</pre>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

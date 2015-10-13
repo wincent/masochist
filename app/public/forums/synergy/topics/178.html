@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Synergy memory usage
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Synergy memory usage</div>
+<h1 class='major'>Synergy memory usage</h1>
+<div class='topic' id='topic_178'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+<a href="/users/geoff2">geoff2</a>
+<span class='when'>
+<a href="/forums/synergy/topics/178"><time data-relative="true">2006-10-23T21:58:31Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello:</p>
+<p>I'm trying to figure out why Synergy's memory usage jumps up so high. See the attached Activity Monitor image below.</p>
+<pre> </pre>
+<p>Note that this memory usage came after I had not used Synergy at all since it launched. I've noted that Synergy's real memory usage doesn't move around much unless and until I stop using the computer for a while; when I come back, after not having used it (I don't believe iTunes was even running here) its memory usage has skyrocketed for no evident reason (as do a couple of other apps I run, clearly evident here). It causes a lot of unnecessary paging in and out in my active applications, at least as far as I can tell. (I'm no memory expert). It happens frequently. Any thoughts?</p>
+<pre>- geoff</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_505'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_505"><time data-relative="true">2006-10-24T05:22:24Z</time></a></span>
+</cite>
+<blockquote><p>There is an old, now closed bug report for Synergy's memory usage here:</p>
+<p><a href="http://wincent.com/a/support/bugs/show_bug.cgi?id=21" class="external">http://wincent.com/a/support/bugs/show_bug.cgi?id=21</a></p>
+<p>The bug was closed because Synergy has no known memory leaks. You can see if it's leaking any memory by running the &quot;leaks&quot; command line tool (probably need to have the Xcode Tools installed in order to have &quot;leaks&quot; on your system).</p>
+<p>Here is the output of &quot;leaks&quot; run on Synergy immediately after launch:</p>
+<p>Code:Process 668: 45804 nodes malloced for 3191 KB Process 668: 12 leaks for 1472 total leaked bytes. Leak: 0x01863800  size=1024     string 'DRHT' Leak: 0x00369420  size=80</p>
+<pre>       0x767f469f 0x00000020 0x00366f30 0x00000001     .F.v ...0o6.....
+       0x00000000 0x00000000 0x00000000 0x00000000     ................
+       0x00000000 0x00369470 0x00000000 0x00000000     ....p.6.........
+       0x00364880 0x00000002 0x00000002 0x00000000     .H6.............
+       0x00000000 0x00000000 0x00000000 0x00000000     ................</pre>
+<p>Leak: 0x00369470  size=80</p>
+<pre>       0x767f46cf 0x00000000 0xa2ddc61c 0x00000001     .F.v............
+       0x00000000 0x00000000 0x00000000 0x00000000     ................
+       0x00000000 0x00000000 0x00369420 0x00000000     ........ .6.....
+       0x00364880 0x00000000 0x00000002 0x00000000     .H6.............
+       0x00000000 0x00000000 0x00000000 0x00000000     ................</pre>
+<p>Leak: 0x00366f30  size=64       instance of 'NSCFString'</p>
+<pre>       0xa0806260 0x0001078c 0x6d6f6329 0x7070612e     `b......)com.app
+       0x482e656c 0x6f6f5449 0x786f626c 0x6e69772e     le.HIToolbox.win
+       0x67776f64 0x70756f72 0x6f642e73 0x656d7563     dowgroups.docume
+       0x7f00746e 0x00000000 0x00000000 0x00000034     nt..........4...</pre>
+<p>Leak: 0x003a2c70  size=32       string '~' Leak: 0x003a2c50  size=32       string '1' Leak: 0x003a2bd0  size=32       string 'j' Leak: 0x003a2ae0  size=32       string '}' Leak: 0x003a29d0  size=32       string 'G' Leak: 0x003a29b0  size=32       string 'Q' Leak: 0x00370230  size=16       string <em></em> Leak: 0x00393b40  size=16       string <em></em></p>
+<p>This shows a couple of leaks not in Synergy due to bugs in the system. You can check this out for yourself by creating a new empty application project in Xcode. Build the empty project and run it and you'll see some leaks. These are unavoidable but they're no big deal either because as you can see it is only a handful of bytes and it doesn't actually grow: it's a fixed amount. There is also a known leak associated with the use of AppleScript, again an unavoidable Apple bug, but again not a big deal as we're talking about only a few bytes and Synergy's use of AppleScript is minimal (most of the work is done using raw Apple Events instead).</p>
+<p>If I keep running &quot;leaks&quot; on Synergy then the leaked bytes count stays at 1472 bytes:</p>
+<p>Code:Process 668: 45798 nodes malloced for 3191 KB Process 668: 12 leaks for 1472 total leaked bytes.</p>
+<p>This after launching iTunes:</p>
+<p>Code:Process 668: 50339 nodes malloced for 3709 KB Process 668: 13 leaks for 2496 total leaked bytes.</p>
+<p>It appears we've leaked another 1000 bytes but in reality we haven't because running &quot;leaks&quot; again a few seconds later yields the following:</p>
+<p>Code:Process 668: 51010 nodes malloced for 4351 KB Process 668: 12 leaks for 1472 total leaked bytes.</p>
+<p>So you can see memory usage going up due to things like retrieving album covers from iTunes, but no memory is being leaked.</p>
+<p>Finally, here's the report after several minutes of heavy thrashing: skipping tracks in iTunes, using Synergy's menu bar control buttons, using the hot keys, navigating the global menu.</p>
+<p>Code:Process 668: 53041 nodes malloced for 6416 KB Process 668: 23 leaks for 2064 total leaked bytes.</p>
+<p>A few hundred bytes leaked due to use of NSAppleScript, but as I said above that's unavoidable. A few minutes later and we get this:</p>
+<p>Code:Process 668: 52905 nodes malloced for 6378 KB Process 668: 23 leaks for 1056 total leaked bytes.</p>
+<p>The leak count has actually dropped lower than ever, to just 1056 bytes (and overall memory use has dropped too). These minor variations are caused by the fact that &quot;leaks&quot; is not a perfect tool and it can't reliably determine if memory really is leaked or not 100% of the time (see the leaks man page for full details). But I have run these tests many times over the years and even when Synergy is left running for weeks on end the leaked memory is only ever a few bytes.</p>
+<p>The memory usage is going up due principally to album covers being cached in memory, but the system is very intelligent when it comes to managing virtual memory so the best thing that you can do is just let the system handle it. Memory that's not accessed frequently will just get written out to disk when another app needs memory. If that memory is needed again later by Synergy then the system will read it back from the disk, but the actual swapping traffic caused by Synergy is actually very low due to the intelligence of the system.</p>
+<p>Leaks are programming errors and I always fix them when I find them, but as you can verify yourself there are no more leaks and there haven't been for many versions. I could try to make Synergy cache less but it wouldn't actually lead to better performance as I doubt that I could manage my memory better than the geniuses who wrote the Mach VM could...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_506'>
+<cite>
+<a href="/users/geoff2">geoff2</a>
+<span class='when'><a href="#comment_506"><time data-relative="true">2006-10-24T10:28:42Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the reply, Wincent. I had run leaks and had noticed that it wasn't leaking memory. But I still am wondering about the memory usage, and while I know the system can allocate memory just fine on its own, there is still a 10-35 second pause while all the programs that at times use up a lot of memory while the system is idle (yours, GrowlHelperApp, MenuCalendarClock iCal) page out.</p>
+<p>When you say album covers are being cached in memory, when are they being cached? As I mentioned, when the memory usage spiked, I wasn't using Synergy, and iTunes wasn't even running. Is Synergy retrieving album images even then?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_507'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_507"><time data-relative="true">2006-10-24T11:09:39Z</time></a></span>
+</cite>
+<blockquote><p>There are two times when Synergy can obtain a new cover:</p>
+<p>1. When iTunes starts playing a new track and has a cover for the track</p>
+<p>2. A cover gets downloaded from Amazon.</p>
+<p>The latter case usually happens during playback but could conceivably happen when iTunes is not running if you have a lot of tracks without artwork, have played them all recently, and Synergy added them to the &quot;search queue&quot;.</p>
+<p>If your system is pausing for 10-35 seconds then that is very worrying indeed and I wonder what's up. Synergy using 150 meg of that memory (10% of your memory) is not enough to explain such a delay. From your screenshot I see you have 1.5GB of RAM which is a decent amount. The system is generally very generous with the amount of memory it gives to each process, which is why the top ten apps in your list all have well over 300 meg each, even the small apps which don't do much. But like I said, usage of that kind of scale should most definitely not result in any user-noticeable slow-down. I think there must be some other cause.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_508'>
+<cite>
+<a href="/users/geoff2">geoff2</a>
+<span class='when'><a href="#comment_508"><time data-relative="true">2006-11-13T16:31:46Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the responses.</p>
+<p>To clarify, I'm not concerned about the virtual memory usage, but the real memory usage. And I just launched Synergy 3.1b with album cover display turned off, iTunes running but no music playing, and after several hours it's up to using &gt; 200 MB of real memory. (I know it's a beta, but thought it might still be relevant.) As I work I'm getting memory paged to and from disk all the time, and I can't help but think that some of it is due to Synergy's large memory use.</p>
+<p>I know I may be unable to understand the technical explanations, but all I can say is that when I quit Synergy, the amount of free+inactive memory goes up significantly, and the &quot;lags&quot; that appear to occur when memory is being paged in and out stop happening.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

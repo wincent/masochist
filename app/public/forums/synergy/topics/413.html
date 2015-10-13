@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+synergy 3.5.5a incompatible with itunes 9.0?
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; synergy 3.5.5a incompatible with itunes 9.0?</div>
+<h1 class='major'>synergy 3.5.5a incompatible with itunes 9.0?</h1>
+<div class='topic' id='topic_413'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/413"><time data-relative="true">2009-09-10T06:57:34Z</time></a>
+</span>
+</cite>
+<blockquote><p>i upgraded to itunes 9 (with mac os 10.5.8). synergy seems not to want to run anymore....</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5002'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5002"><time data-relative="true">2009-09-10T08:41:12Z</time></a></span>
+</cite>
+<blockquote><p>I've only had time to test version 4 so far, but it works fine here. Have you done any <a href="/l/bugs">basic troubleshooting</a>? Have you tried using that version?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5014'>
+<cite>
+<a href="/users/rotorglow">rotorglow</a>
+<span class='when'><a href="#comment_5014"><time data-relative="true">2009-09-11T21:05:26Z</time></a></span>
+</cite>
+<blockquote><p>I've posted (in #1299) about trouble I'm having with various versions of Synergy not pulling cover art, from Amazon (ever) and iTunes (intermittently).</p>
+<p>I've just installed a clean version of 10.5.8 (which unfortunately also pulled down iTunes 9), and I thought I'd report that 3.5.5a runs, but continues not to pull cover art from Amazon.  This is a fresh install, and aside from running Software Update, ripping some test music and installing Synergy is the the only thing I've done with the machine.</p>
+<p>The only message in the console is the following (which I also encountered and posted in the other thread: 9/11/09 8:37:46 PM [0x0-0x1c01c].org.wincent.Synergy[355] Synergy: unknown type name &quot;tdta&quot;. </p>
+<p>Let me know what other troubleshooting you'd like me to do or other versions you'd like me to install (3.4.1?).</p>
+<p>Thanks.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5015'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5015"><time data-relative="true">2009-09-12T07:35:35Z</time></a></span>
+</cite>
+<blockquote><p>Thanks, let me look into that console message.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5016'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5016"><time data-relative="true">2009-09-12T07:37:28Z</time></a></span>
+</cite>
+<blockquote><p>Unfortunately that ones coming from the inside the system <a href="/wiki/APIs">APIs</a>, not the <a href="/wiki/Synergy">Synergy</a> codebase itself, so I don't know <em>where</em> or <em>when</em> it's actually being produced. Searching through my own logs it doesn't appear.</p>
+<p>Did the message appear once, or regularly? For all tracks? For only ones with iTunes cover art embedded in them? In other words, can you see any pattern that would help me to know <em>when</em> this is happening and <em>what</em> might be triggering it?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5017'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5017"><time data-relative="true">2009-09-12T10:47:39Z</time></a></span>
+</cite>
+<blockquote><p>Just once; I only changed tracks 10 or 15 times before giving up on that session.  For testing purposes, none of the tracks have cover art; I simply installed OS X, updated it (without any 3rd party software), installed Synergy and ripped a couple of very popular CDs and watched to see if Synergy could get the art.  I'll leave that test environment alone for the time being to try to find a pattern.</p>
+<p>Is there any way to see exactly what Amazon is returning to Synergy?  What port would that be coming back on? It seems like nothing at all is coming back, but I can't tell for sure.  Little Snitch shows that Synergy tries to connect to xml.amazon.com.  I'm only using the built-in OS X firewall, with an Airport router and cable modem; nothing exotic and nothing restrictive.</p>
+<p>Other ideas: OS X localization?  Amazon US vs other Amazon servers?  </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5051'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5051"><time data-relative="true">2009-09-20T13:32:32Z</time></a></span>
+</cite>
+<blockquote><p>Version 4.1 is going to be out soon (within the next day or so) and it includes a complete rewrite of all the cover art stuff. I did find a couple of bugs and fix them, and have done a lot of testing and everything seems to be working perfectly. If there turn out to be any problems in 4.1 we can open a new ticket for that in the <a href="/wiki/issue_tracker">issue tracker</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5054'>
+<cite>
+<a href="/users/rotorglow">rotorglow</a>
+<span class='when'><a href="#comment_5054"><time data-relative="true">2009-09-21T12:26:19Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks.  So, does this mean that 3.x won't be getting those fixes (for those of us who haven't completely upgraded to Snow Leopard)?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5056'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5056"><time data-relative="true">2009-09-21T17:15:35Z</time></a></span>
+</cite>
+<blockquote><p>I want to keep the 3.4 series operational, so if any serious problems are discovered I would like to fix them. The fixes I mentioned above aren't really for what I would call serious bugs &mdash; they are more &quot;polish&quot; and handling edge cases, like when songs don't have good <a href="/wiki/ID3">ID3</a> tag information &mdash; so at least in the case of those specific changes I don't think there's much call for backporting them.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5058'>
+<cite>
+<a href="/users/rotorglow">rotorglow</a>
+<span class='when'><a href="#comment_5058"><time data-relative="true">2009-09-22T01:49:13Z</time></a></span>
+</cite>
+<blockquote><p>Well, whatever you fixed in 4.1a has reenabled the download of cover art for me on my Snow Leopard machine (with iTunes 8.2.1).  Which is great.  But I obviously can't run it on my Leopard machine, where 3.x has stopped grabbing art (as described above), so I was just hoping the 4.1 fixes would make it into 3.x</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

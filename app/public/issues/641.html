@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #641: audioscrobbler/last.fm submission broken
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #641</div>
+<div class='issue' id='issue_641'>
+<form class="edit_issue" id="edit_issue_641" action="/issues/641" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="0grEaBqjwwHdZbB6CWPjxTuDAIWQt/bz6PklksYxaM3m+HrfvS4ZVATpg404SrBxjgFpuZtbeO/I5vBs4ukP6Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #641:
+<span data-name='issue[summary]'>
+audioscrobbler/last.fm submission broken
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-01-10T17:24:58Z</time>, updated <time data-relative="true">2008-01-11T10:17:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-516">bugzilla user 516</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>It appears that in Synergy 3.5a4 the support for Audioscrobbler / Last.fm is broken. I have re-entered my Audioscrobbler login and password, but it still doesn't submit my track info. Is there a log file I can check for possible error messages?</p>
+<p>I see errors like these in system.log, but they are probably unrelated:</p>
+<p>Jan 10 16:48:32 xxxx Synergy[281]: *** -[NSConcreteData setLength:]: unrecognized selector sent to instance 0x13a10b0 Jan 10 17:17:06 xxxx Synergy[281]: *** -[NSConcreteData setLength:]: unrecognized selector sent to instance 0x13d9e80 Jan 10 17:17:06 xxxx Synergy[281]: *** -[NSConcreteData setLength:]: unrecognized selector sent to instance 0x13d9e80 Jan 10 17:17:24 xxxx Synergy[281]: *** -[NSConcreteData setLength:]: unrecognized selector sent to instance 0x10d93f0</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3176'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3176"><time data-relative="true">2008-01-11T02:02:57Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. Those log messages may or may not be relevant... we'll see. In any case I'll investigate and try to eliminate them.</p>
+<p>There is a way to turn on detailed logging of Audioscrobbler information. See:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/features/audioscrobbler/" class="external">http://wincent.com/a/products/synergy-classic/features/audioscrobbler/</a></p>
+<p>In short, to turn it on, quit Synergy and do this in the Terminal:</p>
+<p>defaults write org.wincent.Synergy LogAudioscrobblerEvents -bool yes</p>
+<p>To turn it off, quit Synergy and do this:</p>
+<p>defaults write org.wincent.Synergy LogAudioscrobblerEvents -bool no</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3177'>
+<cite>
+<a href="/users/bugzilla-user-516">bugzilla user 516</a>
+<span class='when'><a href="#comment_3177"><time data-relative="true">2008-01-11T09:00:25Z</time></a></span>
+</cite>
+<blockquote><p>Here's some Audioscrobbler info in system.log after I turned on logging:</p>
+<p>Jan 11 07:17:33 Gort Synergy[31836]: Audioscrobbler: Read preferences Jan 11 07:17:33 Gort Synergy[31836]: Audioscrobbler: Perform first-time initialization Jan 11 07:17:33 Gort Synergy[31836]: Audioscrobbler: Initializing WOAudioscrobbler object Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Read new username Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Read new password Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: First time we've read the preferences; will start a new session Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Start Audioscrobbler session Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Will request handshake Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Handshake URL is <a href="http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=mmoll" class="external">http://post.audioscrobbler.com/?hs=true&amp;p=1.1&amp;c=syn&amp;v=0.1&amp;u=mmoll</a> Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Starting connection attempt Jan 11 07:17:40 Gort Synergy[31836]: Audioscrobbler: Waiting for handshake reply Jan 11 07:17:40 Gort Synergy[31836]: *** -[NSConcreteData setLength:]: unrecognized selector sent to instance 0x1065590 Jan 11 07:17:52 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:17:52 Gort Synergy[31836]: Audioscrobbler: Received notification of playing status Jan 11 07:17:52 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;Ya Mustafa&quot;;\n    WOAudioscrobblerArtist = &quot;Sabri Brothers&quot;;\n    WOAudioscrobblerLength = 1269;\n    WOAudioscrobblerTrack = &quot;Haq La Ilaha Il Lallah&quot;;\n} Jan 11 07:17:52 Gort Synergy[31836]: Audioscrobbler: This track appears to be a new submission Jan 11 07:17:52 Gort Synergy[31836]: Audioscrobbler: Cancelling previously existing submission timer, if any Jan 11 07:17:52 Gort Synergy[31836]: Audioscrobbler: Setting up new submission timer (240 seconds) Jan 11 07:21:53 Gort Synergy[31836]: Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value Jan 11 07:21:53 Gort Synergy[31836]: Audioscrobbler: Position does not match (user must have skipped); will not submit to Audioscrobbler Jan 11 07:28:10 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:28:10 Gort Synergy[31836]: Audioscrobbler: Received notification of playing status Jan 11 07:28:10 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;Stop Making Sense&quot;;\n    WOAudioscrobblerArtist = &quot;Talking Heads&quot;;\n    WOAudioscrobblerLength = 334;\n    WOAudioscrobblerTrack = &quot;Once In A Lifetime&quot;;\n} Jan 11 07:28:10 Gort Synergy[31836]: Audioscrobbler: This track appears to be a new submission Jan 11 07:28:10 Gort Synergy[31836]: Audioscrobbler: Cancelling previously existing submission timer, if any Jan 11 07:28:10 Gort Synergy[31836]: Audioscrobbler: Setting up new submission timer (167 seconds) Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Position matches, will submit to Audioscrobbler Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Adding song to submission queue; song information: {\n    WOAlbum = &quot;Stop Making Sense&quot;;\n    WOArtist = &quot;Talking Heads&quot;;\n    WODate = &quot;2008-01-11 13:30:57&quot;;\n    WOLength = 334;\n    WOMBID = &quot;&quot;;\n    WOTrack = &quot;Once In A Lifetime&quot;;\n} Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Enqueuing object: {\n    WOAlbum = &quot;Stop Making Sense&quot;;\n    WOArtist = &quot;Talking Heads&quot;;\n    WODate = &quot;2008-01-11 13:30:57&quot;;\n    WOLength = 334;\n    WOMBID = &quot;&quot;;\n    WOTrack = &quot;Once In A Lifetime&quot;;\n} Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Number of items currently on the queue: 1 Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Queue was empty: processing item Jan 11 07:30:57 Gort Synergy[31836]: Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) Jan 11 07:30:58 Gort Synergy[31836]: Audioscrobbler: Error: did not expect WOAudioscrobblerWaitingForHandshake status; please report Jan 11 07:33:44 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:33:44 Gort Synergy[31836]: Audioscrobbler: Received notification of playing status Jan 11 07:33:44 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;DJ Kicks&quot;;\n    WOAudioscrobblerArtist = Cymande;\n    WOAudioscrobblerLength = 196;\n    WOAudioscrobblerTrack = Anthracite;\n} Jan 11 07:33:44 Gort Synergy[31836]: Audioscrobbler: This track appears to be a new submission Jan 11 07:33:44 Gort Synergy[31836]: Audioscrobbler: Cancelling previously existing submission timer, if any Jan 11 07:33:44 Gort Synergy[31836]: Audioscrobbler: Setting up new submission timer (98 seconds) Jan 11 07:35:22 Gort Synergy[31836]: Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value Jan 11 07:35:22 Gort Synergy[31836]: Audioscrobbler: Position matches, will submit to Audioscrobbler Jan 11 07:35:22 Gort Synergy[31836]: Audioscrobbler: Adding song to submission queue; song information: {\n    WOAlbum = &quot;DJ Kicks&quot;;\n    WOArtist = Cymande;\n    WODate = &quot;2008-01-11 13:35:22&quot;;\n    WOLength = 196;\n    WOMBID = &quot;&quot;;\n    WOTrack = Anthracite;\n} Jan 11 07:35:22 Gort Synergy[31836]: Audioscrobbler: Enqueuing object: {\n    WOAlbum = &quot;DJ Kicks&quot;;\n    WOArtist = Cymande;\n    WODate = &quot;2008-01-11 13:35:22&quot;;\n    WOLength = 196;\n    WOMBID = &quot;&quot;;\n    WOTrack = Anthracite;\n} Jan 11 07:35:22 Gort Synergy[31836]: Audioscrobbler: Number of items currently on the queue: 2 Jan 11 07:35:22 Gort Synergy[31836]: Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item Jan 11 07:37:01 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:37:01 Gort Synergy[31836]: Audioscrobbler: Received notification of playing status Jan 11 07:37:01 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;Negotiations And Love Songs 1971-1986&quot;;\n    WOAudioscrobblerArtist = &quot;Paul Simon&quot;;\n    WOAudioscrobblerLength = 202;\n    WOAudioscrobblerTrack = &quot;Have A Good Time&quot;;\n} Jan 11 07:37:01 Gort Synergy[31836]: Audioscrobbler: This track appears to be a new submission Jan 11 07:37:01 Gort Synergy[31836]: Audioscrobbler: Cancelling previously existing submission timer, if any Jan 11 07:37:01 Gort Synergy[31836]: Audioscrobbler: Setting up new submission timer (101 seconds) Jan 11 07:38:42 Gort Synergy[31836]: Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value Jan 11 07:38:42 Gort Synergy[31836]: Audioscrobbler: Position matches, will submit to Audioscrobbler Jan 11 07:38:42 Gort Synergy[31836]: Audioscrobbler: Adding song to submission queue; song information: {\n    WOAlbum = &quot;Negotiations And Love Songs 1971-1986&quot;;\n    WOArtist = &quot;Paul Simon&quot;;\n    WODate = &quot;2008-01-11 13:38:42&quot;;\n    WOLength = 202;\n    WOMBID = &quot;&quot;;\n    WOTrack = &quot;Have A Good Time&quot;;\n} Jan 11 07:38:42 Gort Synergy[31836]: Audioscrobbler: Enqueuing object: {\n    WOAlbum = &quot;Negotiations And Love Songs 1971-1986&quot;;\n    WOArtist = &quot;Paul Simon&quot;;\n    WODate = &quot;2008-01-11 13:38:42&quot;;\n    WOLength = 202;\n    WOMBID = &quot;&quot;;\n    WOTrack = &quot;Have A Good Time&quot;;\n} Jan 11 07:38:42 Gort Synergy[31836]: Audioscrobbler: Number of items currently on the queue: 3 Jan 11 07:38:42 Gort Synergy[31836]: Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item Jan 11 07:40:23 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:40:23 Gort Synergy[31836]: Audioscrobbler: Received notification of playing status Jan 11 07:40:23 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;George Is On&quot;;\n    WOAudioscrobblerArtist = &quot;Deep Dish&quot;;\n    WOAudioscrobblerLength = 310;\n    WOAudioscrobblerTrack = &quot;Swallow Me&quot;;\n} Jan 11 07:40:23 Gort Synergy[31836]: Audioscrobbler: This track appears to be a new submission Jan 11 07:40:23 Gort Synergy[31836]: Audioscrobbler: Cancelling previously existing submission timer, if any Jan 11 07:40:23 Gort Synergy[31836]: Audioscrobbler: Setting up new submission timer (155 seconds) Jan 11 07:42:58 Gort Synergy[31836]: Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value Jan 11 07:42:58 Gort Synergy[31836]: Audioscrobbler: Position matches, will submit to Audioscrobbler Jan 11 07:42:58 Gort Synergy[31836]: Audioscrobbler: Adding song to submission queue; song information: {\n    WOAlbum = &quot;George Is On&quot;;\n    WOArtist = &quot;Deep Dish&quot;;\n    WODate = &quot;2008-01-11 13:42:58&quot;;\n    WOLength = 310;\n    WOMBID = &quot;&quot;;\n    WOTrack = &quot;Swallow Me&quot;;\n} Jan 11 07:42:58 Gort Synergy[31836]: Audioscrobbler: Enqueuing object: {\n    WOAlbum = &quot;George Is On&quot;;\n    WOArtist = &quot;Deep Dish&quot;;\n    WODate = &quot;2008-01-11 13:42:58&quot;;\n    WOLength = 310;\n    WOMBID = &quot;&quot;;\n    WOTrack = &quot;Swallow Me&quot;;\n} Jan 11 07:42:58 Gort Synergy[31836]: Audioscrobbler: Number of items currently on the queue: 4 Jan 11 07:42:58 Gort Synergy[31836]: Audioscrobbler: Queue was non-empty, but not ready to submit: not processing item Jan 11 07:45:34 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:45:34 Gort Synergy[31836]: Audioscrobbler: Received notification of playing status Jan 11 07:45:34 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;KCRW's Today's Top Tune&quot;;\n    WOAudioscrobblerArtist = &quot;KCRW.com&quot;;\n    WOAudioscrobblerLength = 373;\n    WOAudioscrobblerTrack = &quot;Spanish Harlem Orchestra - Sacala Bailar&quot;;\n} Jan 11 07:45:34 Gort Synergy[31836]: Audioscrobbler: This track appears to be a new submission Jan 11 07:45:34 Gort Synergy[31836]: Audioscrobbler: Cancelling previously existing submission timer, if any Jan 11 07:45:34 Gort Synergy[31836]: Audioscrobbler: Setting up new submission timer (186 seconds) Jan 11 07:48:16 Gort Synergy[31836]: Audioscrobbler: Received notification from iTunes Jan 11 07:48:16 Gort Synergy[31836]: Audioscrobbler: Received notification of non-playing status Jan 11 07:48:16 Gort Synergy[31836]: Audioscrobbler: Track information: {\n    WOAudioscrobblerAlbum = &quot;KCRW's Today's Top Tune&quot;;\n    WOAudioscrobblerArtist = &quot;KCRW.com&quot;;\n    WOAudioscrobblerLength = 373;\n    WOAudioscrobblerTrack = &quot;Spanish Harlem Orchestra - Sacala Bailar&quot;;\n} Jan 11 07:48:16 Gort Synergy[31836]: Audioscrobbler: This track was previously submitted for consideration; pausing timer</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3178'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3178"><time data-relative="true">2008-01-11T09:27:12Z</time></a></span>
+</cite>
+<blockquote><p>Excellent, thanks for that. I've found the source of the problem.</p>
+<p>This is the fix:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/01/dont_rely_on_synthesized_sette.php" class="external">http://wincent.com/a/about/wincent/weblog/svn-log/archives/2008/01/dont_rely_on_synthesized_sette.php</a></p>
+<p>And this is a nightly build that I've just uploaded which includes the fix:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_7ce4a27.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_7ce4a27.php</a></p>
+<p>Can you please confirmed that this issue is solved?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3179'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3179"><time data-relative="true">2008-01-11T09:40:22Z</time></a></span>
+</cite>
+<blockquote><p>Bah, just noticed a stupid typo in that nightly. Uploading another one:</p>
+<p><a href="http://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_4e616e0.php" class="external">http://wincent.com/a/about/wincent/weblog/nightlog/archives/2008/01/synergy_revision_4e616e0.php</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3180'>
+<cite>
+<a href="/users/bugzilla-user-516">bugzilla user 516</a>
+<span class='when'><a href="#comment_3180"><time data-relative="true">2008-01-11T10:17:16Z</time></a></span>
+</cite>
+<blockquote><p>I tried the latest revision. It seems to have fixed the problem. Thanks!</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

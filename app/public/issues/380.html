@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #380: a growl notification question
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #380</div>
+<div class='issue' id='issue_380'>
+<form class="edit_issue" id="edit_issue_380" action="/issues/380" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="VBZ1e45a51tWjwgoP3dta4oIeiwVBNs+xuYCQPGO9J1g5MvMKdc9Do8DO98OXj7fP4oTEB7oVSLm+de+1VaTuQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #380:
+<span data-name='issue[summary]'>
+a growl notification question
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2006-03-10T11:51:50Z</time>, updated <time data-relative="true">2006-07-05T02:07:25Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-323">bugzilla user 323</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>in prior versions of synergy, when i changed tracks, the FLOATER (which I have set to appear in the bottom left-hand corner of my screen) would appear showing the track information, and the growl NOTIFICATION would pop dead center of my screen with the next track/previous track/play/pause icon (depending on the action chosen.)  In the last update of synergy, along with the FLOATER and NOTIFICATION popping up, I get a second growl notification (NOTE 2) popping up, also dead center of the screen on top of the next track/previous track/play/pause icon.  This also pops up at the beginning of every song if left playing, meaning every three minutes with a track name. If there isn't a direct fix for this, would it be possible to have the option to turn off NOTE 2.  Thanks!  Synergy rocks!</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_2439'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2439"><time data-relative="true">2006-03-10T14:15:55Z</time></a></span>
+</cite>
+<blockquote><p>No changes to the Floater or Growl code have been made in Synergy recently.</p>
+<p>If you're seeing multiple Growl notifications I suggest you check your Growl preferences in the Growl preference pane in the System Preferences. There you will see which applications are sending which notifications (possibly not even Synergy), and you'll also be able to turn off the ones that you don't want.</p>
+<p>From the Synergy side of things, there are two &quot;bezels&quot; provided by Synergy. The Floater itself and the &quot;Extra feedback&quot; notification bezels that you see when you hit play/pause hot keys and the like. You can turn the latter on and off in the &quot;General&quot; tab of the Synergy preferences (the &quot;Extra visual feedback for play, pause, next and previous track actions&quot; checkbox).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_2440'>
+<cite>
+<a href="/users/bugzilla-user-323">bugzilla user 323</a>
+<span class='when'><a href="#comment_2440"><time data-relative="true">2006-03-10T14:42:42Z</time></a></span>
+</cite>
+<blockquote><p>When Synergy runs as it is configured now, if I use the hot keys to toggle to the next track, I get three concurrent bezels appear.  The first is the track info bezel I have set to the bottom-left of my screen.  The second is the bezel in the center of my screen with the &quot;next track&quot; icon.  The third (the problem bezel) contains the same information as the first (with the track information, and a large synergy logo).  If I turn off &quot;extra visual feedback for play, pause, next track and last track actions&quot;, the floater containing the those signs no longer pops up, but the problem bezel with the unwanted information still appears.  If I re-enable the &quot;extra visual feedback&quot; button and disable the floater, the floater no longer appears in the bottom left corner of the screen (which is shouldn't, being disabled), and the &quot;visual feedback&quot; bezel reappears at the center of the screen.  BUT so does the problem third bezel which contains the track information, so disabled either one of the options has no effect.  If I disable both and then toggle to the next song, I still get this track information floater in the middle of the screen, but no visual feedback or   the track info bezel in the bottom-left of the monitor (the track info bezel I want!).  If I completely quit synergy, this annoying third bezel goes away, but then I lose the awesome functionality of the synergy.  </p>
+<p>I hope that something in this helps diagnose this problem.  Thanks!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2441'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2441"><time data-relative="true">2006-03-10T22:35:48Z</time></a></span>
+</cite>
+<blockquote><p>That third problem bezel you're seeing is being provided via Growl so you'll have to turn it off in the Growl preferences.</p>
+<p>Apple Menu -&gt; System Preferences -&gt; Growl</p>
+<p>Under the &quot;Applications&quot; tab you'll see a list of applications and the notifications they provide. There you can turn them on and off; in this case you'll be wanting to turn off the Synergy one that you don't want to see.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_2442'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_2442"><time data-relative="true">2006-07-05T02:07:25Z</time></a></span>
+</cite>
+<blockquote><p>Changing assignment to reflect my new email address.</p>
+<p><a href="http://wincent.com/a/news/archives/2006/05/change_of_email.php" class="external">http://wincent.com/a/news/archives/2006/05/change_of_email.php</a></p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

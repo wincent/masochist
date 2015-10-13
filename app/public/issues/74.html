@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #74: Floater doesn't update if tracks are skipped while iTunes is paused or stopped
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #74</div>
+<div class='issue' id='issue_74'>
+<form class="edit_issue" id="edit_issue_74" action="/issues/74" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="V66dzEANg+R9JVs0HSIP2AOMMRQ6eF1OHe/vJ3XgylBjXCN754BZsaSpaMMsC1xstg5YKDGU01I98DrZUTitdA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #74:
+<span data-name='issue[summary]'>
+Floater doesn't update if tracks are skipped while iTunes is paused or stopped
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2004-12-12T04:58:53Z</time>, updated <time data-relative="true">2005-01-18T05:06:49Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>From a user email: &quot;If I switch tracks in iTunes using the keyboard shortcuts when iTunes is not playing,  Synergy does not notice that the track has changed. The floater continues to show the old track.&quot;</p>
+<p>--</p>
+<p>My reply: &quot;If I've read what you've written correctly, then I'm not sure this is a bug.</p>
+<p>The floater shows the *currently playing* track, not the currently selected one. So if iTunes is not  playing and you change the selection, then of course the Synergy floater will not update.</p>
+<p>Please let me know if I've misinterpreted what you wrote.&quot;</p>
+<p>--</p>
+<p>And the user's reply: &quot;Sorry, should have clarified that this is in the Party Shuffle playlist -- the currently  active song, the one with the gradient bar, just not playing because iTunes is paused.</p>
+<p>Hitting Forward and Reverse (from iTunes or Synergy's keyboard shortcuts) changes the track, but  Synergy does not notice until I hit Play.&quot;</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1393'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1393"><time data-relative="true">2004-12-12T05:02:23Z</time></a></span>
+</cite>
+<blockquote><p>The behaviour you've described isn't unique to Party Shuffle. The same thing happens in any other  playlist if you stop playback and then move forward or back through the playlist.</p>
+<p>I've opened this bug report for this, although the truth is I consider this to be a bug in iTunes, not in  Synergy. Synergy current uses zero CPU when used with iTunes 4.7, because it doesn't constantly poll  iTunes saying, &quot;What track is selected? What track is selected? How about now? And now? How about  right now?&quot;. Instead, it waits for iTunes to notify, &quot;I am now playing this track&quot;.</p>
+<p>So I am going to mark this as WONTFIX, because working around it would require me to go back to  polling and I don't consider that to be a good move at all. If you'd like to see the behaviour changed  then I suggested you file some feedback with Apple:</p>
+<p><a href="http://www.apple.com/feedback/itunes.html" class="external">http://www.apple.com/feedback/itunes.html</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1394'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1394"><time data-relative="true">2004-12-12T05:02:53Z</time></a></span>
+</cite>
+<blockquote><p>Making as CLOSED, but feel free to add comments if you don't agree with my decision.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1395'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1395"><time data-relative="true">2005-01-18T05:05:54Z</time></a></span>
+</cite>
+<blockquote><p>It appears that Apple has corrected this behaviour in iTunes 4.7.1.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1396'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1396"><time data-relative="true">2005-01-18T05:06:32Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED, WORKSFORME.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1397'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1397"><time data-relative="true">2005-01-18T05:06:49Z</time></a></span>
+</cite>
+<blockquote><p>Marking as CLOSED.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

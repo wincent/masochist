@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #668: Work around iTunes 7.6.1/7.6.2 cover art bug
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #668</div>
+<div class='issue' id='issue_668'>
+<form class="edit_issue" id="edit_issue_668" action="/issues/668" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="IOzwtCWgeO3LahaTr3xbJjeyauPjrWvUW9up5sosSj0UHk4Dgi2iuBLmJWSeVQiSgjAD3+hB5ch7xHwY7vQtGQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #668:
+<span data-name='issue[summary]'>
+Work around iTunes 7.6.1/7.6.2 cover art bug
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2008-04-15T12:06:22Z</time>, updated <time data-relative="true">2009-03-13T12:33:47Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>See <a href="http://rails.wincent.com/blog/apple-fixes-cover-art-bug-in-itunes-7.6.2" class="external">this weblog post</a> for the full story.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3270'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3270"><time data-relative="true">2008-04-28T07:57:22Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've just uploaded a preview build which will hopefully allow us to diagnose and fix this problem.</p>
+<p>As I've commented elsewhere (on the forums, for example) I can't reproduce this issue here locally. Cover art works fine for me using iTunes 7.6.2. But other users report that it works perfectly under 7.6 but is broken under 7.6.1 and 7.6.2. Some other third-party software that talks to iTunes is broken with 7.6.1/7.6.2, and some third-party software works with 7.6.1/7.6.2. As far as Synergy goes, both the 3.2 stable series and the experimental 3.5 alpha series behave identically.</p>
+<p>Given that I can't reproduce the problem here I can only deduce from the available information that this is a timing issue. It appears that iTunes is emitting a &quot;track changed&quot; notification, Synergy asks iTunes for the art, and iTunes gives an error. According to users who are seeing the problem, if they force the Floater to reappear later (for example, by pausing and then resuming playback) then iTunes <em>does</em> supply the artwork.</p>
+<p>So I can only guess that this is a timing bug in iTunes. If you ask for art &quot;too soon&quot; then it will give you an error. This might explain why some users see the issue and others don't, and also why some third-party software sees the issue and other third-party software doesn't: it looks like it depends on how fast you ask for he art.</p>
+<p>So, the new build is up at:</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(562f484+).zip" class="external">http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(562f484+).zip</a></p>
+<p>As you can see, this is based ont he 3.5 series, which means you can only help me test this out if you're running <a href="/wiki/Leopard">Leopard</a>. If we can get a fix worked out I will also backport it to the 3.2 series.</p>
+<p>The new build is <em>not</em> a full package. It is just the Synergy faceless background application responsible for displaying the menu bar controls, the floater etc. To test it, do the following:</p>
+<ol>
+<li>Unzip the archive</li>
+<li>Stop any running versions of Synergy</li>
+<li>Double-click the Synergy.app that you extracted from the zip</li>
+<li>Try skipping tracks and see if art shows up: it would be useful if you can try various things like skipping from within iTunes, skipping within Synergy (using hot keys or the menu bar controls, for instance), and doing things like pausing, waiting, and resuming playback</li>
+</ol>
+<p>The key difference in the new build is that it has a new advanced preference setting that you can use to explore the effect of delaying the querying for album art. By default there is a 0 second delay (no delay), but you can try different values between 0 and 3 seconds using the following commandline:</p>
+<pre>defaults write org.wincent.Synergy CoverArtDelay -float 2.5</pre>
+<p>That would set the delay to 2.5 seconds. So the idea would be to try different values:</p>
+<ol>
+<li>Quit Synergy</li>
+<li>Set a new delay</li>
+<li>Start Synergy again</li>
+<li>Test behaviour with the new setting</li>
+</ol>
+<p>Hopefully in this way we can determine if my theory is correct, and if it is correct, we can identify what the minimum delay is necessary to workaround the bug in iTunes. Obviously, I am hoping that the value won't be too large as we don't want the delay to be perceptible to the user. In any case I'll make sure that the delay is only imposed when running with a buggy version of iTunes. People running 7.6 or any other version which isn't affected won't suffer the delay.</p>
+<p>So thanks for your help in working through this. Once it's all sorted out I'll be putting together an official release that includes the fix.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3273'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3273"><time data-relative="true">2008-04-28T10:58:20Z</time></a></span>
+</cite>
+<blockquote><p>No good here. Besides no art I have crashes within a few minutes (also had before, with other versions of the standalone app). I went to the trouble of uninstalling all my unsanity haxies. Booted in Safe Mode and then logged in with no startup items loading. Also dis all this with a fresh user. No art. Crashes. Will try another Leopard Intel machine tomorrow.</p>
+<p>2.16 GHz Core 2 Duo MacBook 2 GB RAM OS X 10.5.2</p>
+<p>Want the crash logs?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3275'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3275"><time data-relative="true">2008-04-28T11:02:34Z</time></a></span>
+</cite>
+<blockquote><p>doesn't work that way. i've bought this software for the cover art display, where can i send my demand for refund ? thanks.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3276'>
+<cite>
+<a href="/users/liz">Liz</a>
+<span class='when'><a href="#comment_3276"><time data-relative="true">2008-04-28T11:29:22Z</time></a></span>
+</cite>
+<blockquote><p>Just tried the new build just posted, and does not seem to grab the artwork at all including at the 3.0 second mark.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3277'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3277"><time data-relative="true">2008-04-28T12:00:12Z</time></a></span>
+</cite>
+<blockquote><p>Hi, I have tried with settings of 1.0, 2.0, 5.0 and 10.0 (closing and restarting Synergy each time I changed the value) all with no luck. This is with the new build.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3278'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3278"><time data-relative="true">2008-04-28T15:20:53Z</time></a></span>
+</cite>
+<blockquote><p>Darn, so it's not a timing issue like I was hoping after all.</p>
+<p>Fuga, Liz, and pbryanw, can I get you to send me copies of your Synergy preferences files and also System Profiler reports to <a href="mailto:win@wincent.com" class="mailto">win@wincent.com</a>? We have to find out why this works for me but not for you.</p>
+<p>The preference file is found at:</p>
+<pre>~/Library/Preferences/org.wincent.Synergy.plist</pre>
+<p>And to get a System Profiler report you can go to the Apple menu, click &quot;About this Mac&quot;, and then click the &quot;More information&quot; button in the About window that appears. The saved report will be probably be quite large, so you might want to zip it before mailing it over.</p>
+<p>To the anonymous commenter about requesting a refund, you can contact me at the same email address. I hope you'll take into consideration that this is an Apple bug in iTunes, that it is in your power to get full cover art functionality by installing the last non-buggy version of iTunes (7.6), and that I am actively working on solving the problem.</p>
+<p>Fuga, about the crash logs. I believe they're not related to this issue at all and you're probably seeing the NSAppleScript crashes that are being tracked in <a href="/issues/640">bug #640</a>. Also an Apple bug, incidentally, as detailed in that ticket. Believe me, I am pretty annoyed about these two high-profile issues both being Apple's fault, and having a high impact on my users.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3280'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3280"><time data-relative="true">2008-04-28T16:20:18Z</time></a></span>
+</cite>
+<blockquote><p>Yes, after writing I remembered the other issue re: crashing.</p>
+<p>I will send two pref files, one for the older preference pane version and one for the latest standalone build. I do so because I can't get art from either version.</p>
+<p>And as for my saying elsewhere that GimmeSomeTune was fine, well, that is only partly so. There is something about iTunes 7.6.x that causes a split second delay/audio gap. It's gotten better with the latest iTunes but still rears up. The fix noted in the link makes it a bit better but there is something amiss. Could be similar? Could it be all the way down to the ACLs which has caused so much trouble in the cloning community?</p>
+<p>GimmeSomeTune &quot;timing&quot; issue    <a href="http://tinyurl.com/6qpgzl" class="external">http://tinyurl.com/6qpgzl</a></p>
+<p>Somewhat of a fix on Remote Buddy's site     <a href="http://tinyurl.com/4j5drc" class="external">http://tinyurl.com/4j5drc</a></p>
+<p>SuperDuper!     ACLs fixed    <a href="http://shirtpocket.com/blog/" class="external">http://shirtpocket.com/blog/</a></p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3281'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3281"><time data-relative="true">2008-04-28T16:21:16Z</time></a></span>
+</cite>
+<blockquote><p>Ok, here's a new test build. This one drops the &quot;delay&quot; trick and instead prints a bunch of diagnostic information to the console, which you can observe using <code>Applications/Utilities/Console.app</code>.</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(009baa7+).zip" class="external">http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(009baa7+).zip</a></p>
+<p>This is some sample output on my machine for a track which <em>does</em> have cover art in <a href="/wiki/iTunes">iTunes</a>:</p>
+<pre>2008-04-28 22:12:18.788 Synergy[71327:10b] preparing to request cover art
+2008-04-28 22:12:18.790 Synergy[71327:10b] did prepare (script id is 20727360)
+2008-04-28 22:12:18.867 Synergy[71327:10b] did request art (descriptor is 21551360)
+2008-04-28 22:12:18.868 Synergy[71327:10b] error info: (null)
+2008-04-28 22:12:18.869 Synergy[71327:10b] got cover art data 21548240
+2008-04-28 22:12:18.973 Synergy[71327:10b] got TIFF representation (21525280)
+2008-04-28 22:12:19.004 Synergy[71327:10b] got rep (21513936)
+2008-04-28 22:12:19.028 Synergy[71327:10b] got JPEG data (23523600)
+2008-04-28 22:12:19.030 Synergy[71327:10b] notifying floater</pre>
+<p>And for comparison, this is a track which <em>doesn't</em> have art:</p>
+<pre>2008-04-28 22:12:41.220 Synergy[71327:10b] preparing to request cover art
+2008-04-28 22:12:41.224 Synergy[71327:10b] did prepare (script id is 23447520)
+2008-04-28 22:12:41.256 Synergy[71327:10b] did request art (descriptor is 21976576)
+2008-04-28 22:12:41.257 Synergy[71327:10b] error info: (null)
+2008-04-28 22:12:41.257 Synergy[71327:10b] didn't get desired cover descriptor (21976576)</pre>
+<p>As you can see in both cases the &quot;error info&quot; is listed as being &quot;null&quot;. In the case where iTunes actually does have art, you can see Synergy getting the TIFF representation, the JPEG representation, and notifying the Floater. In the case where iTunes doesn't have art that process gets short-circuited.</p>
+<p>I'm very interested to see the output on a machine which is seeing the problem, and any other interesting console output that might be being emitted (by Synergy or iTunes itself). I am hoping there'll be some kind of clue as to what's going wrong, perhaps in the error info output.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3282'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3282"><time data-relative="true">2008-04-28T16:28:49Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the links, Fuga.</p>
+<p>I don't know whether the other products you link to are suffering from the <em>exact same</em> problem or whether those are different bugs which just add more evidence that iTunes 7.6.1 and 7.6.2 have quite a few bugs in them. I personally doubt that the underlying cause is anything to do with ACLs, but you never know. I'm hoping the new build I just posted will help to shed some light.</p>
+<p>As for the thing about the pref files for the two versions: yes, it is fully expected that this issue will show up in 3.2 and 3.5 because the cause is iTunes, not Synergy. I think you could go back all the way to Synergy 0.9.9 (from 6 May 2003, the first version to query iTunes for artwork) and you'd still see the problem.</p>
+<p>I'm just hoping that: (a) we can find a workaround, and (b) Apple fixes the bugs in the next iTunes release.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3283'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3283"><time data-relative="true">2008-04-28T16:37:22Z</time></a></span>
+</cite>
+<blockquote><p>no pref files other than ~/Library/Preferences/org.wincent.install.plist</p>
+<p>not in my user directory nor the test user's</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3284'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3284"><time data-relative="true">2008-04-28T16:52:29Z</time></a></span>
+</cite>
+<blockquote><p>Below is what I get for every tune. BTW, all my files have art embedded. Other than the NSAppleScript stuff, it's similare to what you get. In yours there is more info for descriptor.</p>
+<pre>4/28/08 3:42:10 PM Synergy[1991] preparing to request cover art 
+4/28/08 3:42:10 PM Synergy[1991] did prepare (script id is 17591536) 
+4/28/08 3:42:10 PM Synergy[1991] did request art (descriptor is 0) 
+4/28/08 3:42:10 PM Synergy[1991] error info: {
+    NSAppleScriptErrorBriefMessage = &quot;Can\U2019t make \&quot;7.6.2\&quot; into type integer.&quot;;
+    NSAppleScriptErrorMessage = &quot;Can\U2019t make \&quot;7.6.2\&quot; into type integer.&quot;;
+    NSAppleScriptErrorNumber = -1700;
+    NSAppleScriptErrorRange = NSRange: {0, 0};
+} 
+4/28/08 3:42:10 PM Synergy[1991] didn't get desired cover descriptor (0) </pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_3285'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3285"><time data-relative="true">2008-04-28T16:54:23Z</time></a></span>
+</cite>
+<blockquote><p>Whoa, that pasted weirdly. Everything from 4/28/08 to the end was actually one paste from the Console.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3286'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3286"><time data-relative="true">2008-04-28T17:26:15Z</time></a></span>
+</cite>
+<blockquote><p>Fixed up the formatting for you (any line starting with a space is treated as a &quot;pre&quot; block).</p>
+<p>Ok, well that's good to see that there actually is some kind of error information in there. Not sure what to make of it but at least it's something.</p>
+<p>Can you try something else for me? In <code>/Applications/AppleScript/Script Editor.app</code>, try pasting in this sample script and running it:</p>
+<pre>tell application &quot;iTunes&quot;
+  if version as integer is greater than or equal to 4 then
+    if data of the artworks of the current track exists then
+      return data of artwork 1 of current track as picture
+    else
+      return &quot;no artwork&quot;
+    end if
+  end if
+end tell</pre>
+<p>Looks like it is choking on the &quot;version&quot; thing. If that's the case then even this little script should be enough to make it choke:</p>
+<pre>tell application &quot;iTunes&quot; to get version as integer</pre>
+<p>Now try this different version:</p>
+<pre>tell application &quot;iTunes&quot;
+  if data of the artworks of the current track exists then
+    return data of artwork 1 of current track as picture
+  else
+    return &quot;no artwork&quot;
+  end if
+end tell</pre>
+<p>My wild guess is that this is working for me because I'm running Mac OS X in Spanish, and there must be something different about its <code>Info.plist</code> file.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3287'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3287"><time data-relative="true">2008-04-28T17:31:45Z</time></a></span>
+</cite>
+<blockquote><p>For the first two I get AppleScript Error  Can&#x2019;t make &quot;7.6.2&quot; into type integer.</p>
+<p>For third it runs but doesn't really do anything except formatting gets pretty and &quot;no artwork&quot; does indeed appear in the bottom pane.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3288'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3288"><time data-relative="true">2008-04-28T17:32:10Z</time></a></span>
+</cite>
+<blockquote><pre>28/04/2008 22:29:08 Synergy[312] preparing to request cover art 
+28/04/2008 22:29:08 Synergy[312] did prepare (script id is 17276176) 
+28/04/2008 22:29:08 Synergy[312] did request art (descriptor is 0) 
+28/04/2008 22:29:08 Synergy[312] error info: {
+    NSAppleScriptErrorBriefMessage = &quot;Can\U2019t make \&quot;7.6.2\&quot; into type integer.&quot;;
+    NSAppleScriptErrorMessage = &quot;Can\U2019t make \&quot;7.6.2\&quot; into type integer.&quot;;
+    NSAppleScriptErrorNumber = -1700;
+    NSAppleScriptErrorRange = NSRange: {0, 0};
+} 
+28/04/2008 22:29:08 Synergy[312] didn't get desired cover descriptor (0) 
+</pre>
+<p>With the new test build I get the same as Fuga.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3289'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3289"><time data-relative="true">2008-04-28T17:36:58Z</time></a></span>
+</cite>
+<blockquote><p>After trying the Applescript in script editor, I get the same results as Fuga, for the first two tests but for the third one, I got a load of data. Here are the first few lines:</p>
+<pre>&#x00ab;data PICTBC9E0000000002580253001102FF0C00FFFE000000480000004800
+00000000000258025300000000001F800080008000001E0001000A000000000258025
+382000004BBD600000001000000000000000000000000000000010000000000000000
+000000000000400000000000000000000000</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_3290'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3290"><time data-relative="true">2008-04-28T17:42:52Z</time></a></span>
+</cite>
+<blockquote><p>So what's the differences in our setups. I am now sending my SystemProfile to Wincent.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3291'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3291"><time data-relative="true">2008-04-28T17:44:14Z</time></a></span>
+</cite>
+<blockquote><p>Ok, just uploaded a new build. No delay or logging this time, just removing the iTunes version check. We'll see if this fixes it.</p>
+<p><a href="http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(68172bf+).zip" class="external">http://wincent.com/a/products/synergy-classic/download/Synergy3.5a6+(68172bf+).zip</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3292'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3292"><time data-relative="true">2008-04-28T17:46:31Z</time></a></span>
+</cite>
+<blockquote><p>Yes, it's working - artwork from iTunes is showing!!! Big thanks. No preferences though but I can still use 3.2 for that.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3293'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3293"><time data-relative="true">2008-04-28T17:47:59Z</time></a></span>
+</cite>
+<blockquote><p>HOT DAMN!</p>
+<p>Yep, so far so good. More, No crashing.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3294'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3294"><time data-relative="true">2008-04-28T17:51:36Z</time></a></span>
+</cite>
+<blockquote><p>Are you saying settings from the older preference pane version will be sucked up by this standalone one?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3295'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3295"><time data-relative="true">2008-04-28T17:53:27Z</time></a></span>
+</cite>
+<blockquote><p>It does for me. When I use preferences from the (just posted) beta, I get a finder window. But, if I set prefs in 3.2 from the preference pane, the settings work in synergy.app</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3296'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3296"><time data-relative="true">2008-04-28T17:55:51Z</time></a></span>
+</cite>
+<blockquote><p>Ok, good to hear.</p>
+<p>About the crashing (or not crashing), I can assure you that it's really a completely separate issue. It's a known bug in Leopard's NSAppleScript running under Garbage Collection. It's effectively random, and sooner or later it <em>will</em> crash... until Apple fixes the bug. I've been pretty lucky with this and I only see a crash every few days, but I know others see them all the time: luck of the draw, it would seem.</p>
+<p>I'm going to put together a couple of new releases which incorporate this fix for the artwork issue:</p>
+<ul>
+<li>3.5a7: a new build of the alpha series, which will still unfortunately suffer from Apple's NSAppleScript bug.</li>
+<li>3.2.1: a new build of the stable 3.2 series, which won't be affected by the NSAppleScript issue (never has been, never will be) because it doesn't use Leopard's Garbage Collection.</li>
+</ul>
+<p>I'll try to get those out tomorrow.</p>
+<p>Thanks to you both for your patient collaboration. Without your help I wouldn't have been able to identify the cause of the problem nor the workaround.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3297'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3297"><time data-relative="true">2008-04-28T17:57:35Z</time></a></span>
+</cite>
+<blockquote><p>That's correct. You can set the preferences using another version of the app, and they'll be picked up by the new one. That's because we're talking about the same preferences file (<code>~/Library/Preferences/org.wincent.Synergy.plist</code>), so if you write to the prefs with 3.2 (or one of the other 3.5 releases), the preview build that I just posted will read the file and pick them up.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3298'>
+<cite>
+<a href="/users/pbryanw">pbryanw</a>
+<span class='when'><a href="#comment_3298"><time data-relative="true">2008-04-28T17:59:34Z</time></a></span>
+</cite>
+<blockquote><p>Also, a big thanks to you Wincent - you've offered great support. I look forward to the new versions. Time for bed :)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3299'>
+<cite>
+<a href="/users/fuga">Fuga</a>
+<span class='when'><a href="#comment_3299"><time data-relative="true">2008-04-28T18:08:32Z</time></a></span>
+</cite>
+<blockquote><p>Yes, thank you, Wincent. Synergy has always been the class of the these types apps I have already pitched GimmeSomeTune.</p>
+<p>As for the crashes, so weird. Before, I could make it crash within 30-45 seconds. Still, not a worry as I'll have the Preference Pane.</p>
+<p>Take care.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3301'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3301"><time data-relative="true">2008-04-29T04:38:45Z</time></a></span>
+</cite>
+<blockquote><p>Marking this as CLOSED. The new releases are now out:</p>
+<p><a href="http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available" class="external">http://rails.wincent.com/blog/synergy-3.2.1b-and-3.5a7-now-available</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3457'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_3457"><time data-relative="true">2008-07-02T21:44:15Z</time></a></span>
+</cite>
+<blockquote><p>im trying to download 7.6.2 and it keeps saying theres an error</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3458'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3458"><time data-relative="true">2008-07-03T01:28:19Z</time></a></span>
+</cite>
+<blockquote><p>What is the error? And what is it that's saying it? Safari? Mac OS X? Have you tried using a different browser?</p>
+<p>In any case, iTunes 7.6.2 should come through the normal software update mechanism, so that's another way of getting it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4318'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4318"><time data-relative="true">2009-03-13T12:33:47Z</time></a></span>
+</cite>
+<blockquote><p>It does not work. Too much problems to start with it.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

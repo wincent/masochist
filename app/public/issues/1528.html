@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #1528: &quot;Could not load necessary modules&quot; in MacVim
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1528</div>
+<div class='issue' id='issue_1528'>
+<form class="edit_issue" id="edit_issue_1528" action="/issues/1528" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="huiJjFAdnFtT5l2mlYUEWEtUdpWI9OiPO1IjvUcWumayGjc795BGDopqblGkrFfs/tYfqYMYZpMbTfZDY87dQg==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #1528:
+<span data-name='issue[summary]'>
+&quot;Could not load necessary modules&quot; in MacVim
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-30T12:55:27Z</time>, updated <time data-relative="true">2010-04-03T18:11:16Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Thanks for a great plugin, it works well in vim, but I cannot get it to run under MacVim. I have MacVim 7.2, built with +ruby support. I installed Command-T and compiled the C extension and everything works fine under vim. If I start MacVim and try to run Command-T, I get the following message:</p>
+<blockquote>
+<p>command-t.vim could not load the necessary modules Please double-check the installation instructions For more information type:  :help command-t</p>
+</blockquote>
+<p>I have Ruby 1.8.7 on my system.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5501'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5501"><time data-relative="true">2010-03-30T13:06:53Z</time></a></span>
+</cite>
+<blockquote><p>That's the message that gets printed when it can't load the C extension.</p>
+<p>To find out more, try requiring it manually from inside VIM. For example, if I go and delete the <code>~/.vim/ruby/command-t/ext.bundle</code> file, I will see the error message that you quote. To manually <code>require</code> it from inside VIM I do:</p>
+<pre>:ruby require 'command-t/ext'</pre>
+<p>And VIM prints:</p>
+<pre>LoadError: (eval):18:in `require': no such file to load -- command-t/ext</pre>
+<p>So when you do that, what do you see?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5502'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5502"><time data-relative="true">2010-03-30T13:10:57Z</time></a></span>
+</cite>
+<blockquote><p>I get this message:</p>
+<pre> LoadError: /Users/andrei/.vim/ruby/command-t/ext.bundle: dlopen(/Users/andrei/.vim/ruby/command-t/ext.bundle, 9): no suitable image found.  Did find: </pre>
+<p>The ext.bundle exists though:</p>
+<pre> $ ls /Users/andrei/.vim/ruby/command-t/ext.bundle 
+ -rwxr-xr-x  1 andrei  staff    15K Mar 30 10:09 /Users/andrei/.vim/ruby/command-t/ext.bundle</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5503'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5503"><time data-relative="true">2010-03-30T13:17:10Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the message you're seeing is truncated. The full message is bound to be something like:</p>
+<pre>LoadError: /Users/andrei/.vim/ruby/command-t/ext.bundle: dlopen(/Users/andrei/.vim/ruby/command-t/ext.bundle, 9): no suitable image found.  Did find: 
+ext.bundle: mach-o, but wrong architecture - ext.bundle</pre>
+<p>This can happen when you try to load a 64-bit extension into 32-bit Ruby or vice versa.</p>
+<p>So the question is, how did you build MacVim? Or is it just the latest snapshot?</p>
+<p>And when you built Command-T, what was the output of the <code>make</code>?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5504'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5504"><time data-relative="true">2010-03-30T13:32:56Z</time></a></span>
+</cite>
+<blockquote><p>I downloaded MacVim from <a href="http://code.google.com/p/macvim/" class="external">http://code.google.com/p/macvim/</a>.</p>
+<p><code>:version</code> gives me:</p>
+<pre> VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Aug 21 2008 12:51:59)
+ ...
+ Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_MACVIM -Wall -Wno-unknown
+ -pragmas -pipe -I. -Iproto -DMACOS_X_UNIX -no-cpp-precomp -I/Developer/SDKs/MacOSX10.4u.sdk/Developer/Headers/FlatCarbon
+ -g -O -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc -I/Developer/SDKs/MacOSX10.4u.sdk/System/Library/Frameworks/Python.framework/Versions/2.3/include/python2.3
+ -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0
+  Linking: gcc   -L. -arch ppc -arch i386  -L/usr/local/lib -isysroot
+  /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc -oVim -framework Cocoa
+  -framework Carbon -lncurses  -liconv    -framework Python  -lruby -lm</pre>
+<p>The output of <code>make</code> for Command-T was:</p>
+<pre>
+ usr/bin/gcc-4.2 -I. -I/opt/local/lib/ruby/1.8/i686-darwin10 -I/opt/local/lib/ruby/1.8/i686-darwin10 -I. -DHAVE_RUBY_H -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O2 -arch x86_64  -fno-common -pipe -fno-common  -arch x86_64 -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c ext.c
+/usr/bin/gcc-4.2 -I. -I/opt/local/lib/ruby/1.8/i686-darwin10 -I/opt/local/lib/ruby/1.8/i686-darwin10 -I. -DHAVE_RUBY_H -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O2 -arch x86_64  -fno-common -pipe -fno-common  -arch x86_64 -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c match.c
+/usr/bin/gcc-4.2 -I. -I/opt/local/lib/ruby/1.8/i686-darwin10 -I/opt/local/lib/ruby/1.8/i686-darwin10 -I. -DHAVE_RUBY_H -I/opt/local/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common -O2 -arch x86_64  -fno-common -pipe -fno-common  -arch x86_64 -std=gnu99 -Wall -Wextra -Wno-unused-parameter -c matcher.c
+/usr/bin/gcc-4.2 -dynamic -bundle -undefined suppress -flat_namespace -o ext.bundle ext.o match.o matcher.o -L. -L/opt/local/lib -L. -L/opt/local/lib  -arch x86_64  -lruby  -lpthread -ldl -lobjc  
+</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5505'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5505"><time data-relative="true">2010-03-30T13:46:43Z</time></a></span>
+</cite>
+<blockquote><p>So your problem here is that the extension built as 64-bit and your MacVim was built as 32-bit.</p>
+<p>I guess you're on <a href="/wiki/Snow_Leopard">Snow Leopard</a> and that you're on a newish (ie. 64 bit) machine, as I can see that when you run <code>make</code> Ruby defaults to building for 64-bit (visible in the <code>-arch x86_64</code> flags that appear in the build output).</p>
+<p>I am also guessing that the build of MacVim you downloaded was built on a machine running Leopard, or at least it was set up to use the older 10.4 SDK, and set to produce a 32-bit Universal Binary (as you can see in the output where it lists the arches as <code>-arch i386</code> and <code>-arch ppc</code>).</p>
+<p>This has changed with more recent snapshots of MacVim, which are now labelled as &quot;universal 32/64 bit binary which requires an Intel processor and Mac OS X 10.5 or later&quot;, but in any case the one you are using looks quite old (21 August 2008 compile) date. I'm using snapshot 52 here (which reports <code>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled Mar  5 2010 15:46:30)</code>).</p>
+<p>So you have three options here:</p>
+<ul>
+<li>One is to grab the latest MacVim snapshot (which reports <code>-arch i386 -arch x86_64</code> in the <code>:version</code> output) from <a href="http://code.google.com/p/macvim/wiki/Snapshot" class="external">http://code.google.com/p/macvim/wiki/Snapshot</a>; this is probably the easiest option by far</li>
+<li>Another is to force the extension to build as 32-bit: this is going to be tricky at best because you're officially fighting an uphill battle against the defaults in Snow Leopard on 64-bit machiens</li>
+<li>The other is to build Vim yourself with 64-bit support: not too hard at all (documented here: <a href="http://code.google.com/p/macvim/wiki/Building" class="external">http://code.google.com/p/macvim/wiki/Building</a>) but I don't really see the benefit over just grabbing the latest snapshot</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5518'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5518"><time data-relative="true">2010-04-03T18:11:09Z</time></a></span>
+</cite>
+<blockquote><p>I gather from the lack of response that you've satisfactorily solved your problem by updating to the latest MacVim snapshot, so I'm going to mark this one as closed. Feel free to post another comment if you want me to re-open it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5520'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5520"><time data-relative="true">2010-04-03T18:11:16Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Support ticket #1234: missing album art
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Support ticket #1234</div>
+<div class='issue' id='issue_1234'>
+<form class="edit_issue" id="edit_issue_1234" action="/issues/1234" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="5G86FAnq0oJ3FBSHWImAv3nQ9wCVD9tGs4qGNmCM96DQnYSjrmcI166YJ3BpoNMLzFKePJ7jVVqTlVPIRFSQhA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='major support-ticket'>
+Support ticket #1234:
+<span data-name='issue[summary]'>
+missing album art
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+support ticket
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-02-21T01:49:50Z</time>, updated <time data-relative="true">2009-02-25T13:49:21Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/virgaldavis">virgaldavis</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>1st: While listening to music in itune, album art displays in Now playing box at bottom of screen.  Synergy will display question mark indicating no album art for that particular song.  How do I point synergy to my itune album art so that both files can be merged/updated?</p>
+<p>2nd: Is album art being stored in two separate locations (itune folder &amp; synergy folder) or one location with a pointer to that location.</p>
+<p>3rd Is there anyway to have synergy to automatically start when i open itunes.  I currently have it set to launch at login but I still have to manual start program when I first start playing music.</p>
+<p>Macbook Pro mac OS 10.5.6 Intel Core Duo</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4269'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4269"><time data-relative="true">2009-02-21T03:54:26Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> New</li>
+<li><strong>To:</strong> Open</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4270'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4270"><time data-relative="true">2009-02-21T03:54:29Z</time></a></span>
+</cite>
+<blockquote><p>1. Synergy asks iTunes for the art, so if nothing appears in the Floater it is because for some reason iTunes isn't handing it over. What versions of Synergy, iTunes and Mac OS X are you running? And does this happen for all tracks or just some of them? If the latter, what kind of tracks are failing to deliver art? Finally, have you tried any of the troubleshooting hints (such as ruling out preference file corruption and trying to reproduce from a different account) that are listed at <a href="http://wincent.com/s/bugs/" class="external">http://wincent.com/s/bugs/</a>?</p>
+<p>2. Not sure what your question is, so I'll just clarify that there are actually three places that art might be stored:</p>
+<ul>
+<li>Inside the music files themselves.</li>
+<li>Inside Synergy's &quot;Album Covers&quot; folder; this is for art that gets downloaded from the Internet when iTunes doesn't have or provide art.</li>
+<li>Inside a cache folder, &quot;Temporary Album Covers&quot;; this folder contains copies of the art that iTunes hands over, because it is faster to read the art from a file on the disk than to request it from iTunes via Apple Events. This folder is automatically cleared out whenever Synergy quits so you don't have to worry about it filling up with cached artwork.</li>
+</ul>
+<p>3. See feature <a href="/issues/414">request #414</a>, and also some additional notes on duplicate feature <a href="/issues/543">request #543</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4279'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4279"><time data-relative="true">2009-02-25T13:46:55Z</time></a></span>
+</cite>
+<blockquote><p>I also have had this issue for sometime now. Almost all my albums have cover art so I don't need Synergy to check Amazon. But it still does not display the art properly and shows a question mark. I am using iTunes 8.0.3 and Synergy 3.5a6.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_4280'>
+<cite>
+<a href="/users/patrickjoseph">patrickjoseph</a>
+<span class='when'><a href="#comment_4280"><time data-relative="true">2009-02-25T13:49:21Z</time></a></span>
+</cite>
+<blockquote><p>Apologies, I forgot to log-in to post. I submitted the comment regarding using iTunes 8.0.2 and Synergy 3.5a6. I do not get album art and only receive a question mark. On occasion I will get the art but it seems very random. </p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+command-t won't search a directory
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; command-t won&#39;t search a directory</div>
+<h1 class='major'>command-t won't search a directory</h1>
+<div class='topic' id='topic_495'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/495"><time data-relative="true">2011-12-12T18:09:01Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm using MacVim (VIM - Vi IMproved 7.3 (2010 Aug 15, compiled Aug 15 2010 22:03:01)) on Mac OS X (10.7.2).</p>
+<p>I'm trying to search some folders and it won't search directory named &quot;webservices-analytics&quot;. Even if I set path to parent directory of this one, and there's only one sibling, command-t still treats this directory as if it isn't there. The directory in question contains small Rails project.</p>
+<p>I didn't have any problem with installation, although I did use small script called &quot;unball.py&quot; to extract vba file (command-t-1.3.vba). I put extracted result in bundle directory, as I'm using Pathogen.</p>
+<p>I've used this unball script few times before, and it didn't result in any problems. As it has less then 50 lines, I can paste it if that would help. (I got this script from somebody's git .vim directory, unfortunately I don't recall more details.)</p>
+<p>Weird thing is that Command-t seems to be working for all other directories. (but then again, I've installed Command-t yesterday, so I haven't tested it that much)</p>
+<p>If it's important, I'm using a few plugins: Pathogen, TagBar, Gundo, NERDTree, Snipmate, Conque Shell, SuperTab, NERDCommenter, Rainbow (modified), MRU, EasyMotion, LustyJuggler, Pydoc, PyFlakes, pep8</p>
+<p>Any idea what could be the problem? Command-t seems like a promising plugin and I would love to use it. I hope this hiccup is on my side or something easily fixable.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7330'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7330"><time data-relative="true">2011-12-15T06:20:11Z</time></a></span>
+</cite>
+<blockquote><blockquote>
+<p>I didn't have any problem with installation, although I did use small script called &quot;unball.py&quot; to extract vba file (command-t-1.3.vba). I put extracted result in bundle directory, as I'm using Pathogen.</p>
+</blockquote>
+<p>If you're using <a href="/wiki/Pathogen">Pathogen</a>, you may as well install <a href="/wiki/Command-T">Command-T</a> by cloning the <a href="/wiki/Git">Git</a> repo to <code>~/.vim/bundle/command-t</code>. The benefit of this is that you avoid the known flakiness of the Vimball system (random omission when extracting files), and updating becomes a simple matter of doing a <code>git pull</code>.</p>
+<p>As to your problem with finding files, my best guess is that the directory hierarchy you're in has more than <code>g:CommandTMaxFiles</code> files in it (defaults to 10,000, overrideable in your <code>~/.vimrc</code>) or your <a href="/wiki/Vim">Vim</a> <code>'wildignore'</code> setting is excluding the directory. Both of these topics are covered in the docs.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_7340'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_7340"><time data-relative="true">2011-12-17T21:01:16Z</time></a></span>
+</cite>
+<blockquote><p>Thank you Wincent, this MaxFiles variable solved problem. :)</p>
+<p>I've only used command-t couple a dozen of times, but it's really useful. So thank you for making this great plugin.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+have_header('ruby.h') failing even though ruby.h exists
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; have_header(&#39;ruby.h&#39;) failing even though ruby.h exists</div>
+<h1 class='major'>have_header('ruby.h') failing even though ruby.h exists</h1>
+<div class='topic' id='topic_468'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/468"><time data-relative="true">2011-04-15T15:07:28Z</time></a>
+</span>
+</cite>
+<blockquote><p>I'm no rubyist, but my theory is that it's not looking in the right place. ruby.h is inside /usr/lib/ruby/1.8/i386-linux/ ...how can I tell Ruby/Command-T to look there for it?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6807'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6807"><time data-relative="true">2011-04-15T15:54:02Z</time></a></span>
+</cite>
+<blockquote><p>Check out the <a href="http://www.ruby-doc.org/stdlib/libdoc/mkmf/rdoc/index.html" class="external">mkmf documentation</a>. mkmf is what's used to generate the Makefile.</p>
+<p>Usually, it finds whatever is needed in the standard places, but you may be able to hack the <code>extconf.rb</code> file and use the <code>find_header</code> method to tell it to look in a particular place.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6845'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6845"><time data-relative="true">2011-05-02T18:16:02Z</time></a></span>
+</cite>
+<blockquote><p>I fixed the issue. Turns out, Fedora 15 doesn't have gcc installed by default, so that was the problem, but the error messages weren't helpful at all in figuring that out.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

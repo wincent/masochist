@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1617: $curbuf.number always returns 0 (zero) instead of actual buffer number on some platforms/Vim versions
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1617</div>
+<div class='issue' id='issue_1617'>
+<form class="edit_issue" id="edit_issue_1617" action="/issues/1617" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="/UrbCcVE8NIpMLw07+7LPd15azBpnyLZcPSoNYDI/RHJuGW+Yskqh/C8j8Pex5iJaPsCDGJzrMVQ633LpBCaNQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1617:
+<span data-name='issue[summary]'>
+$curbuf.number always returns 0 (zero) instead of actual buffer number on some platforms/Vim versions
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-07-23T00:16:47Z</time>, updated <time data-relative="true">2011-02-25T22:18:26Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I've test on 2 machine with a clean vim installion. with no plugin and the bundled vimrc file.</p>
+<p>My system environment: fedora 13+ruby 1.8.6</p>
+<p>It was broken after the lastest vim73b,but I forgot which commit let this happen.</p>
+<p>how to reproducted it:</p>
+<pre> $ vim
+ &lt;Leader&gt;t
+ &lt;CR&gt; &quot; or choose the specified file you want to open.</pre>
+<p>Error messages:</p>
+<pre>Error detected while processing function CommandTAcceptSelection:
+line    1:
+Zero count: bwipeout! 0
+Zero count: silent b 0</pre>
+<p>How to test vim7.3b</p>
+<pre>
+ $ hg pull <a href="https://vim.googlecode.com/hg/" class="external">https://vim.googlecode.com/hg/</a> vim73
+ $ hg update vim73</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5907'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5907"><time data-relative="true">2010-07-23T01:20:57Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. I haven't had a change to try the Vim 7.3 series yet, and only now I see that 7.3b was released a few days ago. Will check it out and see if I can reproduce the fault.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5908'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5908"><time data-relative="true">2010-07-23T02:28:14Z</time></a></span>
+</cite>
+<blockquote><p>Strange, I just cloned the Vim repo and did a clean build of 7.3b. Command-T still works for me fine; didn't even need to recompile it.</p>
+<p>Did you have a working Command-T installation before installing 7.3b?</p>
+<p>Did you try re-installing the Command-T vimball again and recompiling it? (To be honest, I doubt this will help seeing as I don't think you would even have gotten as far as <code>CommandTAcceptSelection</code> if it wasn't installed and compiled. But it might be worth a try.)</p>
+<p>Are there any specific steps that you can post to reproduce the problem? (ie. opening in a split or whatever)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5910'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5910"><time data-relative="true">2010-07-23T04:29:51Z</time></a></span>
+</cite>
+<blockquote><p>a typo,</p>
+<pre>hg clone <a href="https://vim.googlecode.com/hg/" class="external">https://vim.googlecode.com/hg/</a> vim73</pre>
+<p>thanks for your test</p>
+<p>Yes I have a working Command-T even after installing 7.3b. But there are some updates on the 7.3b branch later.</p>
+<p>Command-t doesn't work well after Jul 21 vim update, the same problem on my home and office pc.</p>
+<p>I create a new user, recompiling vim and command-t 0.8b&#xff0c;the same result.</p>
+<p>There are no specific steps.</p>
+<p>my build configuration:</p>
+<pre>./configure --prefix=/usr  --with-features=huge --disable-xsmp --disable-xsmp-interact --disable-selinux --enable-luainterp  --enable-perlinterp  --enable-pythoninterp --enable-rubyinterp  --enable-cscope --enable-netbeans --enable-multibyte  --enable-xim  --disable-hangulinput --enable-gui=gtk2</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5911'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5911"><time data-relative="true">2010-07-23T04:37:56Z</time></a></span>
+</cite>
+<blockquote><p>So you're seeing that error message as soon as you hit <code>&lt;leader&gt;t</code>? Or only when you select a file and try to open it?</p>
+<p>Also, have you got anything special in your <code>~/.vimrc</code> or system <code>vimrc</code>?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5912'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5912"><time data-relative="true">2010-07-23T05:53:50Z</time></a></span>
+</cite>
+<blockquote><p>select a file and try to open it</p>
+<blockquote>
+<p>Also, have you got anything special in your ~/.vimrc or system vimrc?</p>
+</blockquote>
+<p>no, I use the default vimrc_example ( rename it to .vimrc) and without any plugin.</p>
+<p>select a file and try to open it, then it show me those error messages, and the command-t file chooser buffer doesn't disappear.  After I close the file, choose another file from the command-t file chooser ( because it doesn't disappear, I have to do that) Then the command-t buffer was disappear. </p>
+<p>I'll try it on my another linux system ( the third one) later</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5919'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5919"><time data-relative="true">2010-07-23T12:24:41Z</time></a></span>
+</cite>
+<blockquote><p>Ok, let me know how you go. The version I tested with was just built using <code>CONF_OPT_RUBY=--enable-rubyinterp make</code>, so I might try it later with more stuff turned on like in your build.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5929'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5929"><time data-relative="true">2010-07-24T03:53:57Z</time></a></span>
+</cite>
+<blockquote><p>It seems that </p>
+<p>@buffer.number and @initial_buffer always return &quot;0&quot;</p>
+<p>controller.rb line 57</p>
+<p>match_window.rb line 99</p>
+<p>lusty-explorer, lusty-juggler also has the same problem. </p>
+<p>I build the latest ruby, the same result.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5933'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5933"><time data-relative="true">2010-07-25T23:10:30Z</time></a></span>
+</cite>
+<blockquote><p>The same result on my another linux system (fedora 12, fresh install)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5934'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5934"><time data-relative="true">2010-07-26T01:33:03Z</time></a></span>
+</cite>
+<blockquote><p>Interesting. I've tested against 7.3 (latest Hg source from a few days ago) and also with the MacVim 7.3 beta from a couple of days ago and can't reproduce.</p>
+<p>I am going to look into those places in the code that you reference and see if I can spot anything strange.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5935'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5935"><time data-relative="true">2010-07-26T01:38:14Z</time></a></span>
+</cite>
+<blockquote><p>So both of those places where you're getting <code>0</code>, what happens when you do this?</p>
+<pre>:ruby puts $curbuf.number</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_6079'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6079"><time data-relative="true">2010-08-15T10:40:34Z</time></a></span>
+</cite>
+<blockquote><p><code>:ruby puts $curbuf.number</code> always return <code>0</code>, but <code>$curbuf.name</code> has different value</p>
+<p>Now I have a workaround, use <code>$curbuf.name</code> instead of <code>$curbuf.number</code>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6080'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6080"><time data-relative="true">2010-08-15T12:37:00Z</time></a></span>
+</cite>
+<blockquote><p>Must admit that I find it very puzzling that <code>$curbuf.number</code> is always zero for you. It's definitely not supposed to be that way according to Vim's own Ruby docs, and I haven't ever seen it with any version of Ruby or Vim. The surprising thing is that you've seen it on 2 machines, with different versions of Ruby and Vim... bizarre...</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6089'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6089"><time data-relative="true">2010-08-16T06:29:31Z</time></a></span>
+</cite>
+<blockquote><p>I was also having this issue on Ubuntu 10.04 with Vim 7.3 using the default system Ruby (viz. apt-get install ruby ruby-dev) installed by following the instructions from <a href="http://www.vim.org/mercurial.php" class="external">http://www.vim.org/mercurial.php</a> where $curbuf.number always returned 0 and can confirm that changing controller.rb and match_window.rb to use .name instead of .number when referring to the buffer seems to fix this issue.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6091'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6091"><time data-relative="true">2010-08-18T08:47:20Z</time></a></span>
+</cite>
+<blockquote><p>Have same problem after vim update to 7.3 on debian. Just tried to install clean vim and command-T script - get same error more and more again</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6095'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6095"><time data-relative="true">2010-08-18T16:39:57Z</time></a></span>
+</cite>
+<blockquote><p>Sounds like a bug in Vim to me; it just doesn't make sense for <code>$curbuf.number</code> to always return zero. The bug may be specific to particular distros or platforms, as I don't see it here (on Mac OS X). The bug appears independently of whether Command-T is present or not.</p>
+<p>I'd rather see this fixed in upstream Vim rather than implementing this kind of workaround in Command-T itself (what happens if you end up having two buffers with the same <code>name</code>? You'll end up with non-deterministic behavior). Has anyone reported this bug upstream on the Vim list?</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6106'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6106"><time data-relative="true">2010-08-21T03:47:33Z</time></a></span>
+</cite>
+<blockquote><p>I also have the issue. <code>$curbuf.number</code> always return <code>0</code> to make the lusty-explorer.vim plugin error and sometimes even get a SIGSEGV signal.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6107'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6107"><time data-relative="true">2010-08-21T03:52:21Z</time></a></span>
+</cite>
+<blockquote><p>anonymous, what platform are you on and what version of Vim you running? Have you reported the bug on the Vim list?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6108'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6108"><time data-relative="true">2010-08-21T04:10:35Z</time></a></span>
+</cite>
+<blockquote><p>Posted to the vim_use mailing list here to see if anyone has anything to add:</p>
+<p><a href="http://groups.google.com/group/vim_use/browse_thread/thread/a122376e8dbc6d29" class="external">http://groups.google.com/group/vim_use/browse_thread/thread/a122376e8dbc6d29</a></p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6109'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6109"><time data-relative="true">2010-08-21T05:42:03Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent Colaiuta, I'm the anonymous an hour ago. My OS is Ubuntu 10.04 and affected Vim version is 7.3 (include 7.3b and 7.3f, that's all 7.3 version I've tried). It seems that in source file <code>if_ruby.c</code>, the global variable <code>curbuf</code> has the member <code>b_fnum</code> with value <code>0</code>, while in <code>if_python.c</code> it has the correct value.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6131'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6131"><time data-relative="true">2010-08-23T13:29:25Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> vim 7.3b breaks up with command-t</li>
+<li><strong>To:</strong> $curbuf.number always returns 0 (zero) instead of actual buffer number on some platforms/Vim versions</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6224'>
+<cite>
+<a href="/users/maciej-lotkowski">Maciej Lotkowski</a>
+<span class='when'><a href="#comment_6224"><time data-relative="true">2010-09-08T09:03:59Z</time></a></span>
+</cite>
+<blockquote><p>I faced this bug too. I eployed this workaround with name instead of number and it works fine, since I usually do not issue commands which can change buffer name. </p>
+<p>Linux 2.6.35-ARCH, Vim 7.3.3</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6225'>
+<cite>
+<a href="/users/maciej-lotkowski">Maciej Lotkowski</a>
+<span class='when'><a href="#comment_6225"><time data-relative="true">2010-09-08T10:05:50Z</time></a></span>
+</cite>
+<blockquote><p>Apparently this workaround doesn't work so well. Vim crashes from time to time while using CommandT (vim: Caught deadly signal ABRT). It seems that I have to downgrade. </p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6226'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6226"><time data-relative="true">2010-09-08T14:01:41Z</time></a></span>
+</cite>
+<blockquote><p>I suspect the crashes aren't related to the buffer number issue, nor your workaround, but are a completely separate issue (I've heard reports of Vim being unstable with Ruby 1.9; you using 1.9 by any chance?).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6241'>
+<cite>
+<a href="/users/maciej-lotkowski">Maciej Lotkowski</a>
+<span class='when'><a href="#comment_6241"><time data-relative="true">2010-09-09T10:45:48Z</time></a></span>
+</cite>
+<blockquote><p>I do. I'll try to upgrade and use 1.8.7.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6242'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6242"><time data-relative="true">2010-09-09T10:47:12Z</time></a></span>
+</cite>
+<blockquote><p>Definitely worth a try. I'm using 7.3 (MacVim) with Ruby 1.8.7 and it hasn't skipped a beat.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6244'>
+<cite>
+<a href="/users/adam">adam</a>
+<span class='when'><a href="#comment_6244"><time data-relative="true">2010-09-10T14:46:41Z</time></a></span>
+</cite>
+<blockquote><p>Hi there,</p>
+<p>I can confirm this bug on vim 7.3 with ruby 1.9 on Linux. I downgraded vim and all is fine for now. Since it seems like a bug in vim, have anyone reported it? I'd do it myself, but you guys can probably describe the problem better.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6303'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6303"><time data-relative="true">2010-09-24T15:33:34Z</time></a></span>
+</cite>
+<blockquote><p>Hi Wincent et al... I have the same issue with ruby 1.8.5 and vim 7.3. I built with ./configure --prefix=/home/me/apps/vim --enable-rubyinterp and :ruby puts $curbuf.number always returns 0.</p>
+<p>Reading reports of 1.8.7 working fine, I built that to my ~/apps/ruby and rebuilt vim against it. I got the exact same result.</p>
+<p>I'll keep an eye over here, so let me know if there's any more info I can share or things I could try. Hope this helps...</p>
+<p>-Adam</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6304'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6304"><time data-relative="true">2010-09-24T15:45:39Z</time></a></span>
+</cite>
+<blockquote><p>To sum things up...</p>
+<p>Seems to be platform-dependent rather than specific to any particular version of Ruby, at least from what I can tell here:</p>
+<ul>
+<li>everyone who has seen the issue is using vim 7.3 (but not everyone using 7.3 has seen the issue)</li>
+<li>people using different versions of Ruby have seen the issue (1.8.5, 1.8.7, 1.9 reported so far)</li>
+<li>it looks to be a bug in Vim itself, although it is a mystery why it doesn't occur on all platforms (the closest we have to an in-depth analysis of the bug is <a href="/comments/6109">this comment</a>)</li>
+</ul>
+<p>We have two workarounds that people affected by the problem can use:</p>
+<ul>
+<li>either use 7.2 until the bug is fixed in upstream; or</li>
+<li>hack Command-T to use <code>$curbuf.name</code> rather than <code>$curbuf.number</code>; this an approach that I am quite reluctant to include in any official release of Command-T because the buffer number is documented as being immutable and unique but the name is not (the reason why I am concerned about uniqueness is that Command-T has to get rid of the buffer in question using <code>:bwipeout!</code>, and obviously the consequences of disposing of the wrong buffer are nasty)</li>
+</ul>
+<p>The issue was reported <a href="http://groups.google.com/group/vim_use/browse_thread/thread/a122376e8dbc6d29" class="external">in this thread</a> but nobody seemed to take notice of it. I don't know if there is some other more official channel that we're supposed to use to report Vim bugs, so I've reposted it to <a href="http://groups.google.com/group/vim_dev" class="external">vim_dev</a> (where it is currently held for moderation).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6315'>
+<cite>
+<a href="/users/ton-van-den-heuvel">Ton van den Heuvel</a>
+<span class='when'><a href="#comment_6315"><time data-relative="true">2010-09-27T22:51:53Z</time></a></span>
+</cite>
+<blockquote><p>Using <code>hg bisect</code> I found out that Vim changeset 2131 is causing this problem. It adds support for the <code>--enable-largefile</code> and <code>--disable-largefile</code> configure flags. Compiling the latest version of Vim using <code>--disable-largefile</code> (the non-default option) fixes the problem. I did not have enough time to figure out why the default <code>--enable-largefile</code> causes the problem unfortunately.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6316'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6316"><time data-relative="true">2010-09-28T02:35:01Z</time></a></span>
+</cite>
+<blockquote><p>I've rebuild vim with the --disable-largefile option, now lusty-explorer[juggler] and command-t are all ok.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6317'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6317"><time data-relative="true">2010-09-28T06:16:37Z</time></a></span>
+</cite>
+<blockquote><p>Ah, wonderful. Thanks for doing that. I was going to update <a href="http://groups.google.com/group/vim_dev/browse_thread/thread/7bf380f7ccd4af31/2c9c353877aa0b95" class="external">vim_dev thread</a> with this info, but I see you've already done that.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6366'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6366"><time data-relative="true">2010-10-25T07:10:59Z</time></a></span>
+</cite>
+<blockquote><p>I can approve that this fixed the issue for me also (Ububutn and vim 7.3 compiled from source)</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6372'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6372"><time data-relative="true">2010-10-26T13:40:18Z</time></a></span>
+</cite>
+<blockquote><p>Wincent, et al: Thanks!</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6382'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6382"><time data-relative="true">2010-11-01T03:30:20Z</time></a></span>
+</cite>
+<blockquote><p>Confirmed as well that Ubuntu 10.10 w/ Vim 7.3 compiled with --disable-largefile worked.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6384'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6384"><time data-relative="true">2010-11-02T07:36:35Z</time></a></span>
+</cite>
+<blockquote><p>Here's the bisected commit (output of <code>hg log --patch --rev 2131:8ef9da918a98 | less</code>):</p>
+<pre class="diff-syntax">changeset:   2131:8ef9da918a98
+user:        Bram Moolenaar &lt;bram@zimbu.org&gt;
+date:        Fri May 07 16:05:55 2010 +0200
+summary:     updated for version 7.2.413
+
+diff -r 279380a812ad -r 8ef9da918a98 src/auto/configure
+--- a/src/auto/configure        Fri May 07 15:52:08 2010 +0200
++++ b/src/auto/configure        Fri May 07 16:05:55 2010 +0200
+@@ -821,6 +821,7 @@
+ with_gnome
+ with_motif_lib
+ with_tlib
++enable_largefile
+ enable_acl
+ enable_gpm
+ enable_sysmouse
+@@ -1485,6 +1486,7 @@
+   --enable-nextaw-check   If auto-select GUI, check for neXtaw default=yes
+   --enable-carbon-check   If auto-select GUI, check for Carbon default=yes
+   --disable-gtktest       Do not try to compile and run a test GTK program
++  --disable-largefile     omit support for large files
+   --disable-acl           Don't check for ACL support.
+   --disable-gpm           Don't use gpm (Linux mouse daemon).
+   --disable-sysmouse    Don't use sysmouse (mouse in *BSD console).
+@@ -14345,6 +14347,363 @@
+ fi
+ 
+ 
++# Check whether --enable-largefile was given.
++if test &quot;${enable_largefile+set}&quot; = set; then
++  enableval=$enable_largefile;
++fi
++
++if test &quot;$enable_largefile&quot; != no; then
++
++  { $as_echo &quot;$as_me:$LINENO: checking for special C compiler options needed for large files&quot; &gt;&amp;5
++$as_echo_n &quot;checking for special C compiler options needed for large files... &quot; &gt;&amp;6; }
++if test &quot;${ac_cv_sys_largefile_CC+set}&quot; = set; then
++  $as_echo_n &quot;(cached) &quot; &gt;&amp;6
++else
++  ac_cv_sys_largefile_CC=no
++     if test &quot;$GCC&quot; != yes; then
++       ac_save_CC=$CC
++       while :; do
++        # IRIX 6.2 and later do not support large files by default,
++        # so use the C compiler's -n32 option if that helps.
++        cat &gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h &gt;&gt;conftest.$ac_ext
++cat &gt;&gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* end confdefs.h.  */
++#include &lt;sys/types.h&gt;
++ /* Check that off_t can represent 2**63 - 1 correctly.
++    We can't simply define LARGE_OFF_T to be 9223372036854775807,
++    since some C++ compilers masquerading as C compilers
++    incorrectly reject 9223372036854775807.  */
++#define LARGE_OFF_T (((off_t) 1 &lt;&lt; 62) - 1 + ((off_t) 1 &lt;&lt; 62))
++  int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
++                      &amp;&amp; LARGE_OFF_T % 2147483647 == 1)
++                     ? 1 : -1];
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++        rm -f conftest.$ac_objext
++if { (ac_try=&quot;$ac_compile&quot;
++case &quot;(($ac_try&quot; in
++  *\&quot;* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo=&quot;\&quot;\$as_me:$LINENO: $ac_try_echo\&quot;&quot;
++$as_echo &quot;$ac_try_echo&quot;) &gt;&amp;5
++  (eval &quot;$ac_compile&quot;) 2&gt;conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 &gt;conftest.err
++  rm -f conftest.er1
++  cat conftest.err &gt;&amp;5
++  $as_echo &quot;$as_me:$LINENO: \$? = $ac_status&quot; &gt;&amp;5
++  (exit $ac_status); } &amp;&amp; {
++        test -z &quot;$ac_c_werror_flag&quot; ||
++        test ! -s conftest.err
++       } &amp;&amp; test -s conftest.$ac_objext; then
++  break
++else
++  $as_echo &quot;$as_me: failed program was:&quot; &gt;&amp;5
++sed 's/^/| /' conftest.$ac_ext &gt;&amp;5
++
++
++fi
++
++rm -f core conftest.err conftest.$ac_objext
++        CC=&quot;$CC -n32&quot;
++        rm -f conftest.$ac_objext
++if { (ac_try=&quot;$ac_compile&quot;
++case &quot;(($ac_try&quot; in
++  *\&quot;* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo=&quot;\&quot;\$as_me:$LINENO: $ac_try_echo\&quot;&quot;
++$as_echo &quot;$ac_try_echo&quot;) &gt;&amp;5
++  (eval &quot;$ac_compile&quot;) 2&gt;conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 &gt;conftest.err
++  rm -f conftest.er1
++  cat conftest.err &gt;&amp;5
++  $as_echo &quot;$as_me:$LINENO: \$? = $ac_status&quot; &gt;&amp;5
++  (exit $ac_status); } &amp;&amp; {
++        test -z &quot;$ac_c_werror_flag&quot; ||
++        test ! -s conftest.err
++       } &amp;&amp; test -s conftest.$ac_objext; then
++  ac_cv_sys_largefile_CC=' -n32'; break
++else
++  $as_echo &quot;$as_me: failed program was:&quot; &gt;&amp;5
++sed 's/^/| /' conftest.$ac_ext &gt;&amp;5
++
++
++fi
++
++rm -f core conftest.err conftest.$ac_objext
++        break
++       done
++       CC=$ac_save_CC
++       rm -f conftest.$ac_ext
++    fi
++fi
++{ $as_echo &quot;$as_me:$LINENO: result: $ac_cv_sys_largefile_CC&quot; &gt;&amp;5
++$as_echo &quot;$ac_cv_sys_largefile_CC&quot; &gt;&amp;6; }
++  if test &quot;$ac_cv_sys_largefile_CC&quot; != no; then
++    CC=$CC$ac_cv_sys_largefile_CC
++  fi
++
++  { $as_echo &quot;$as_me:$LINENO: checking for _FILE_OFFSET_BITS value needed for large files&quot; &gt;&amp;5
++$as_echo_n &quot;checking for _FILE_OFFSET_BITS value needed for large files... &quot; &gt;&amp;6; }
++if test &quot;${ac_cv_sys_file_offset_bits+set}&quot; = set; then
++  $as_echo_n &quot;(cached) &quot; &gt;&amp;6
++else
++  while :; do
++  cat &gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h &gt;&gt;conftest.$ac_ext
++cat &gt;&gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* end confdefs.h.  */
++#include &lt;sys/types.h&gt;
++ /* Check that off_t can represent 2**63 - 1 correctly.
++    We can't simply define LARGE_OFF_T to be 9223372036854775807,
++    since some C++ compilers masquerading as C compilers
++    incorrectly reject 9223372036854775807.  */
++#define LARGE_OFF_T (((off_t) 1 &lt;&lt; 62) - 1 + ((off_t) 1 &lt;&lt; 62))
++  int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
++                      &amp;&amp; LARGE_OFF_T % 2147483647 == 1)
++                     ? 1 : -1];
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext
++if { (ac_try=&quot;$ac_compile&quot;
++case &quot;(($ac_try&quot; in
++  *\&quot;* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo=&quot;\&quot;\$as_me:$LINENO: $ac_try_echo\&quot;&quot;
++$as_echo &quot;$ac_try_echo&quot;) &gt;&amp;5
++  (eval &quot;$ac_compile&quot;) 2&gt;conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 &gt;conftest.err
++  rm -f conftest.er1
++  cat conftest.err &gt;&amp;5
++  $as_echo &quot;$as_me:$LINENO: \$? = $ac_status&quot; &gt;&amp;5
++  (exit $ac_status); } &amp;&amp; {
++        test -z &quot;$ac_c_werror_flag&quot; ||
++        test ! -s conftest.err
++       } &amp;&amp; test -s conftest.$ac_objext; then
++  ac_cv_sys_file_offset_bits=no; break
++else
++  $as_echo &quot;$as_me: failed program was:&quot; &gt;&amp;5
++sed 's/^/| /' conftest.$ac_ext &gt;&amp;5
++
++
++fi
++
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++  cat &gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h &gt;&gt;conftest.$ac_ext
++cat &gt;&gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* end confdefs.h.  */
++#define _FILE_OFFSET_BITS 64
++#include &lt;sys/types.h&gt;
++ /* Check that off_t can represent 2**63 - 1 correctly.
++    We can't simply define LARGE_OFF_T to be 9223372036854775807,
++    since some C++ compilers masquerading as C compilers
++    incorrectly reject 9223372036854775807.  */
++#define LARGE_OFF_T (((off_t) 1 &lt;&lt; 62) - 1 + ((off_t) 1 &lt;&lt; 62))
++  int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
++                      &amp;&amp; LARGE_OFF_T % 2147483647 == 1)
++                     ? 1 : -1];
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext
++if { (ac_try=&quot;$ac_compile&quot;
++case &quot;(($ac_try&quot; in
++  *\&quot;* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo=&quot;\&quot;\$as_me:$LINENO: $ac_try_echo\&quot;&quot;
++$as_echo &quot;$ac_try_echo&quot;) &gt;&amp;5
++  (eval &quot;$ac_compile&quot;) 2&gt;conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 &gt;conftest.err
++  rm -f conftest.er1
++  cat conftest.err &gt;&amp;5
++  $as_echo &quot;$as_me:$LINENO: \$? = $ac_status&quot; &gt;&amp;5
++  (exit $ac_status); } &amp;&amp; {
++        test -z &quot;$ac_c_werror_flag&quot; ||
++        test ! -s conftest.err
++       } &amp;&amp; test -s conftest.$ac_objext; then
++  ac_cv_sys_file_offset_bits=64; break
++else
++  $as_echo &quot;$as_me: failed program was:&quot; &gt;&amp;5
++sed 's/^/| /' conftest.$ac_ext &gt;&amp;5
++
++
++fi
++
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++  ac_cv_sys_file_offset_bits=unknown
++  break
++done
++fi
++{ $as_echo &quot;$as_me:$LINENO: result: $ac_cv_sys_file_offset_bits&quot; &gt;&amp;5
++$as_echo &quot;$ac_cv_sys_file_offset_bits&quot; &gt;&amp;6; }
++case $ac_cv_sys_file_offset_bits in #(
++  no | unknown) ;;
++  *)
++cat &gt;&gt;confdefs.h &lt;&lt;_ACEOF
++#define _FILE_OFFSET_BITS $ac_cv_sys_file_offset_bits
++_ACEOF
++;;
++esac
++rm -rf conftest*
++  if test $ac_cv_sys_file_offset_bits = unknown; then
++    { $as_echo &quot;$as_me:$LINENO: checking for _LARGE_FILES value needed for large files&quot; &gt;&amp;5
++$as_echo_n &quot;checking for _LARGE_FILES value needed for large files... &quot; &gt;&amp;6; }
++if test &quot;${ac_cv_sys_large_files+set}&quot; = set; then
++  $as_echo_n &quot;(cached) &quot; &gt;&amp;6
++else
++  while :; do
++  cat &gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h &gt;&gt;conftest.$ac_ext
++cat &gt;&gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* end confdefs.h.  */
++#include &lt;sys/types.h&gt;
++ /* Check that off_t can represent 2**63 - 1 correctly.
++    We can't simply define LARGE_OFF_T to be 9223372036854775807,
++    since some C++ compilers masquerading as C compilers
++    incorrectly reject 9223372036854775807.  */
++#define LARGE_OFF_T (((off_t) 1 &lt;&lt; 62) - 1 + ((off_t) 1 &lt;&lt; 62))
++  int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
++                      &amp;&amp; LARGE_OFF_T % 2147483647 == 1)
++                     ? 1 : -1];
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext
++if { (ac_try=&quot;$ac_compile&quot;
++case &quot;(($ac_try&quot; in
++  *\&quot;* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo=&quot;\&quot;\$as_me:$LINENO: $ac_try_echo\&quot;&quot;
++$as_echo &quot;$ac_try_echo&quot;) &gt;&amp;5
++  (eval &quot;$ac_compile&quot;) 2&gt;conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 &gt;conftest.err
++  rm -f conftest.er1
++  cat conftest.err &gt;&amp;5
++  $as_echo &quot;$as_me:$LINENO: \$? = $ac_status&quot; &gt;&amp;5
++  (exit $ac_status); } &amp;&amp; {
++        test -z &quot;$ac_c_werror_flag&quot; ||
++        test ! -s conftest.err
++       } &amp;&amp; test -s conftest.$ac_objext; then
++  ac_cv_sys_large_files=no; break
++else
++  $as_echo &quot;$as_me: failed program was:&quot; &gt;&amp;5
++sed 's/^/| /' conftest.$ac_ext &gt;&amp;5
++
++
++fi
++
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++  cat &gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h &gt;&gt;conftest.$ac_ext
++cat &gt;&gt;conftest.$ac_ext &lt;&lt;_ACEOF
++/* end confdefs.h.  */
++#define _LARGE_FILES 1
++#include &lt;sys/types.h&gt;
++ /* Check that off_t can represent 2**63 - 1 correctly.
++    We can't simply define LARGE_OFF_T to be 9223372036854775807,
++    since some C++ compilers masquerading as C compilers
++    incorrectly reject 9223372036854775807.  */
++#define LARGE_OFF_T (((off_t) 1 &lt;&lt; 62) - 1 + ((off_t) 1 &lt;&lt; 62))
++  int off_t_is_large[(LARGE_OFF_T % 2147483629 == 721
++                      &amp;&amp; LARGE_OFF_T % 2147483647 == 1)
++                     ? 1 : -1];
++int
++main ()
++{
++
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext
++if { (ac_try=&quot;$ac_compile&quot;
++case &quot;(($ac_try&quot; in
++  *\&quot;* | *\`* | *\\*) ac_try_echo=\$ac_try;;
++  *) ac_try_echo=$ac_try;;
++esac
++eval ac_try_echo=&quot;\&quot;\$as_me:$LINENO: $ac_try_echo\&quot;&quot;
++$as_echo &quot;$ac_try_echo&quot;) &gt;&amp;5
++  (eval &quot;$ac_compile&quot;) 2&gt;conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 &gt;conftest.err
++  rm -f conftest.er1
++  cat conftest.err &gt;&amp;5
++  $as_echo &quot;$as_me:$LINENO: \$? = $ac_status&quot; &gt;&amp;5
++  (exit $ac_status); } &amp;&amp; {
++        test -z &quot;$ac_c_werror_flag&quot; ||
++        test ! -s conftest.err
++       } &amp;&amp; test -s conftest.$ac_objext; then
++  ac_cv_sys_large_files=1; break
++else
++  $as_echo &quot;$as_me: failed program was:&quot; &gt;&amp;5
++sed 's/^/| /' conftest.$ac_ext &gt;&amp;5
++
++
++fi
++
++rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
++  ac_cv_sys_large_files=unknown
++  break
++done
++fi
++{ $as_echo &quot;$as_me:$LINENO: result: $ac_cv_sys_large_files&quot; &gt;&amp;5
++$as_echo &quot;$ac_cv_sys_large_files&quot; &gt;&amp;6; }
++case $ac_cv_sys_large_files in #(
++  no | unknown) ;;
++  *)
++cat &gt;&gt;confdefs.h &lt;&lt;_ACEOF
++#define _LARGE_FILES $ac_cv_sys_large_files
++_ACEOF
++;;
++esac
++rm -rf conftest*
++  fi
++fi
++
++
+ { $as_echo &quot;$as_me:$LINENO: checking for st_blksize&quot; &gt;&amp;5
+ $as_echo_n &quot;checking for st_blksize... &quot; &gt;&amp;6; }
+ cat &gt;conftest.$ac_ext &lt;&lt;_ACEOF
+diff -r 279380a812ad -r 8ef9da918a98 src/config.h.in
+--- a/src/config.h.in   Fri May 07 15:52:08 2010 +0200
++++ b/src/config.h.in   Fri May 07 16:05:55 2010 +0200
+@@ -196,6 +196,11 @@
+ [/tags/undef #undef] HAVE_UTIME
+ [/tags/undef #undef] HAVE_BIND_TEXTDOMAIN_CODESET
+ 
++/* Define, if needed, for accessing large files. */
++#undef _LARGE_FILES
++#undef _FILE_OFFSET_BITS
++#undef _LARGEFILE_SOURCE
++
+ /* Define if you do not have utime(), but do have the utimes() function. */
+ [/tags/undef #undef] HAVE_UTIMES
+ 
+diff -r 279380a812ad -r 8ef9da918a98 src/configure.in
+--- a/src/configure.in  Fri May 07 15:52:08 2010 +0200
++++ b/src/configure.in  Fri May 07 16:05:55 2010 +0200
+@@ -2669,6 +2669,10 @@
+        usleep utime utimes)
+ AC_FUNC_FSEEKO
+ 
++dnl define _LARGE_FILES, _FILE_OFFSET_BITS and _LARGEFILE_SOURCE when
++dnl appropriate, so that off_t is 64 bits when needed.
++AC_SYS_LARGEFILE
++
+ dnl fstatfs() can take 2 to 4 arguments, try to use st_blksize if possible
+ AC_MSG_CHECKING(for st_blksize)
+ AC_TRY_COMPILE(
+diff -r 279380a812ad -r 8ef9da918a98 src/version.c
+--- a/src/version.c     Fri May 07 15:52:08 2010 +0200
++++ b/src/version.c     Fri May 07 16:05:55 2010 +0200
+@@ -682,6 +682,8 @@
+ static int included_patches[] =
+ {   /* Add new patch number below this line */
+ /**/
++    413,
++/**/
+     412,
+ /**/
+     411,</pre>
+<p>Obviously, still some analysis required as to exactly why the large file support triggers this bug.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6403'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6403"><time data-relative="true">2010-11-04T09:36:41Z</time></a></span>
+</cite>
+<blockquote><p>While we are waiting for upstream to get fixed, here is the workaround patch I am working with:</p>
+<pre class="diff-syntax">commit fa3847004abdf5f87333043a3ea5296458e454b7 (HEAD, master)
+Author: Wincent Colaiuta &lt;win@wincent.com&gt;
+Date:   Thu Nov 4 10:26:47 2010 +0100
+
+    Fall back to buffer name on platforms affected by buffer number bug
+    
+    I was reluctant to use the buffer name instead of the buffer number, but
+    on platforms affected by the bug we have two choices:
+    
+      - allow the bug to break Command-T, causing support requests and
+        requiring people to either patch the source or rebuild Vim
+    
+      - fall back to the buffer name, which may not be entirely robust but
+        at least is better than being totally broken
+    
+    Seeing as we can maintain the correct, robust behavior on platforms not
+    affected by the bug, and only use the fallback behavior when required,
+    adding this workaround is probably acceptable until upstream Vim gets
+    fixed.
+    
+    See:
+    
+      <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
+    
+    Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+
+diff --git a/ruby/command-t/match_window.rb b/ruby/command-t/match_window.rb
+index da08fa4..b75b0d2 100644
+--- a/ruby/command-t/match_window.rb
++++ b/ruby/command-t/match_window.rb
+@@ -56,8 +56,8 @@ module CommandT
+       # show match window
+       split_location = options[:match_window_at_top] ? 'topleft' : 'botright'
+       if @@buffer # still have buffer from last time
+-        ::VIM::command &quot;silent! #{split_location} #{@@buffer.number}sbuffer&quot;
+-        raise &quot;Can't re-open GoToFile buffer&quot; unless $curbuf.number == @@buffer.number
++        ::VIM::command &quot;silent! #{split_location} sbuffer #{buffer_id @@buffer}&quot;
++        raise &quot;Can't re-open GoToFile buffer&quot; unless buffer_id($curbuf) == buffer_id(@@buffer)
+         $curwin.height = 1
+       else        # creating match window for first time and set it up
+         split_command = &quot;silent! #{split_location} 1split GoToFile&quot;
+@@ -105,7 +105,7 @@ module CommandT
+     end
+ 
+     def close
+-      ::VIM::command &quot;bunload! #{@@buffer.number}&quot;
++      ::VIM::command &quot;bunload! #{buffer_id @@buffer}&quot;
+       restore_window_dimensions
+       @settings.restore
+       @prompt.dispose
+@@ -199,6 +199,22 @@ module CommandT
+ 
+   private
+ 
++    # Workaround for upstream bug in Vim 7.3 on some platforms
++    #
++    # On some platforms, $curbuf.number always returns 0. One workaround is
++    # to build Vim with --disable-largfile, but as this is producing lots of
++    # support requests, implement the following fallback to the buffer name
++    # instead, at least until upstream gets fixed.
++    #
++    # For more details, see: <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
++    def buffer_id buffer
++      if $curbuf.number == 0
++        buffer.number
++      else
++        buffer.name
++      end
++    end
++
+     def print_error msg
+       return unless VIM::Window.select(@window)
+       unlock</pre>
+<p>If somebody who is seeing the issue can try this out and confirm that it fixes the problem for them that would be great. (Note you might actually have to use the <code>HEAD</code> version from git://git.wincent.com/command-t.git seeing as this patch builds on top of other recent commits.)</p>
+<p>Unfortunately on my system I can't reproduce the original problem even when I compile with <code>--enable-largefile</code>. I don't know if this is because I'm on a 64-bit machine (in which case &quot;large file&quot; is probably the same as &quot;normal file&quot;), or because I'm on Mac OS X. Either way, I can't test it, and it also makes it pretty much impossible for me to investigate the problem in upstream Vim (that, and my ignorance of the Vim codebase).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6404'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6404"><time data-relative="true">2010-11-04T09:42:18Z</time></a></span>
+</cite>
+<blockquote><p>And here is the commit which actually has the conditional in the right order:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/069bc3f320e9349bff17330f1ccf7c17ee185df3" class="external">http://git.wincent.com/command-t.git/commitdiff/069bc3f320e9349bff17330f1ccf7c17ee185df3</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6405'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6405"><time data-relative="true">2010-11-04T09:57:47Z</time></a></span>
+</cite>
+<blockquote><p>And here's a better fix:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522" class="external">http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522</a></li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6406'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6406"><time data-relative="true">2010-11-04T13:48:46Z</time></a></span>
+</cite>
+<blockquote><p>I just checked out the latest master of command-t and tried things out. When I open command-t, select a file and hit enter, the following error shows up:</p>
+<pre>Error detected while processing function CommandTAcceptSelection:
+line    1:
+Zero count: silent b 0</pre>
+<p>Then, the command-t file selection window closes (which is a lot better than in the old version I was using, where it just wouldn't close and I ended up killing vim). When using command-t a second time in a vim instance, only one error is shown:</p>
+<pre>Zero count: silent b 0</pre>
+<p>For now, I just recompiled vim with --disable-largefile. Nevertheless, thank you for your efforts, Wincent!</p>
+<p>--Flo</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6407'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6407"><time data-relative="true">2010-11-04T16:34:26Z</time></a></span>
+</cite>
+<blockquote><p>Ah, thanks for the report. There looks to be one place where buffer number is still used: line 57 in the <code>controller.rb</code> file. I'll have to add another check for the always-zero buffer number there too.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6408'>
+<cite>
+<a href="/users/marius-gedminas">Marius Gedminas</a>
+<span class='when'><a href="#comment_6408"><time data-relative="true">2010-11-04T16:44:47Z</time></a></span>
+</cite>
+<blockquote><p>I, too, can confirm that command-t 0.8.1 produces two &quot;Zero count&quot; errors -- one for <code>bwipeout! 0</code>, and one for <code>silent b 0</code>, while git head produces only one.  The <code>hide</code> method in controller.rb also needs a workaround.  This worked for me:</p>
+<pre>
+--- ruby/command-t/controller.rb
++++ ruby/command-t/controller.rb
+@@ -54,7 +54,19 @@ module CommandT
+     def hide
+       @match_window.close
+       if VIM::Window.select @initial_window
+-        ::VIM::command &quot;silent b #{@initial_buffer.number}&quot;
++        # Workaround for upstream bug in Vim 7.3 on some platforms
++        #
++        # On some platforms, $curbuf.number always returns 0. One workaround is
++        # to build Vim with --disable-largefile, but as this is producing lots of
++        # support requests, implement the following fallback to the buffer name
++        # instead, at least until upstream gets fixed.
++        #
++        # For more details, see: <a href="https://wincent.com/issues/1617" class="external">https://wincent.com/issues/1617</a>
++        if @initial_buffer.number == 0
++          ::VIM::command &quot;silent b #{@initial_buffer.name}&quot;
++        else
++          ::VIM::command &quot;silent b #{@initial_buffer.number}&quot;
++        end
+       end
+     end
+</pre>
+<blockquote>
+<p>I don't know if there is some other more official channel that we're supposed to use to report Vim bugs</p>
+</blockquote>
+<p><code>:help bugs</code> will tell you to send an email to <a href="mailto:bugs@vim.org" class="mailto">bugs@vim.org</a>, or ask in vim-dev.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6409'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6409"><time data-relative="true">2010-11-04T17:30:20Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the tip. I sent a message to <a href="mailto:bugs@vim.org" class="mailto">bugs@vim.org</a> with a summary of what we've found. Hopefully that will help.</p>
+<p>Seeing as we have a workaround in Command-T itself now, and the issue has been reported upstream, I'm going to mark this ticket as closed, but feel free to add more comments if you have other remarks or observations to make.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6410'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6410"><time data-relative="true">2010-11-04T17:30:28Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6424'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6424"><time data-relative="true">2010-11-04T23:27:43Z</time></a></span>
+</cite>
+<blockquote><p>Let me try to help with some further information.</p>
+<p>My wife and me both use an updated Debian unstable system. The problem happens in her computer, but doesn't happen on mine. The only difference I can see is that her distribution is based on x86 and mine is based on x86_64. I don't know if that happens, but maybe this bug only affects x86 systems...</p>
+<p>Rodrigo Rosenfeld Rosas</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6453'>
+<cite>
+<a href="/users/tempire">tempire</a>
+<span class='when'><a href="#comment_6453"><time data-relative="true">2010-11-19T19:16:59Z</time></a></span>
+</cite>
+<blockquote><p>As I understand from the last comment, a command-t pull from github should be working fine with vim73.  </p>
+<p>I'm having the same issue, however, with vim73 (just now pulled from the vim googlecode repo)</p>
+<p>Am I missing something here?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6456'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6456"><time data-relative="true">2010-11-20T10:44:36Z</time></a></span>
+</cite>
+<blockquote><p>Yeah, the latest Command-T should work around the problem if you are on an affected platform. At the time of writing, the current HEAD in the Git repo is the same as the 1.0b release, so pulling via Git isn't strictly necessary; you could install the 1.0b Vimball if you prefer that.</p>
+<p>May I ask how you installed it? However you installed it, can you check that the version you installed actually does contain the fix?</p>
+<p>Specifically, the <code>match_window.rb</code> file should have these changes in it:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/fa3847004abdf5f87333043a3ea5296458e454b7" class="external">http://git.wincent.com/command-t.git/commitdiff/fa3847004abdf5f87333043a3ea5296458e454b7</a></li>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522" class="external">http://git.wincent.com/command-t.git/commitdiff/aced8ced811d040b26f72f237abe9bd375c4e522</a></li>
+</ul>
+<p>And <code>controller.rb</code> should have these:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/8f38e57f24e3ef86717c6068c5d6212ec1f30480" class="external">http://git.wincent.com/command-t.git/commitdiff/8f38e57f24e3ef86717c6068c5d6212ec1f30480</a></li>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/89dab21b1048c507f9e84ccfaff46bfe4d2c1d9f" class="external">http://git.wincent.com/command-t.git/commitdiff/89dab21b1048c507f9e84ccfaff46bfe4d2c1d9f</a></li>
+</ul>
+<p>If either of those files doesn't look like they do in the repo, something didn't get installed properly. Here are the links to the entire files as they currently are in 1.0b/HEAD:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/controller.rb" class="external">http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/controller.rb</a></li>
+<li><a href="http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/match_window.rb" class="external">http://git.wincent.com/command-t.git/blob/66bd7e81adb05fa836993f85970069e6201c71e1:/ruby/command-t/match_window.rb</a></li>
+</ul>
+<p>If those definitely are installed correctly, then I'll need to know more about exactly what the failure is that you're seeing.</p>
+<p>And while I'm here, no news yet on an upstream fix in Vim. I did send a report in to <a href="mailto:bugs@vim.org" class="mailto">bugs@vim.org</a>, like I said, but I haven't had any response or seen anything on the vim_dev Google group about it.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6734'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6734"><time data-relative="true">2011-02-25T20:18:58Z</time></a></span>
+</cite>
+<blockquote><p>I was affected by this problem for a long time under vim, but now I can report that ruby (1.9.2-p180) and vim 7.3 with patches 1-125 I now get $curbuf.number reporting something other than zero.  I'm on Arch linux, 32bit.</p>
+<p>I thought I'd leave this comment in case you wanted to undo the workaround for newer versions of vim, perhaps you were already aware of this.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6735'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6735"><time data-relative="true">2011-02-25T22:18:26Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the feedback. Yes, I will eventually remove the workaround, but I probably won't be able to do that for a long, long, long time (ie. after Vim 7.4 comes out) because otherwise it will just generate support tickets.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

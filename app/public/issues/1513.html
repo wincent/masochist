@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1513: Error in CommandTShow function when opening CommandT for first time.
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1513</div>
+<div class='issue' id='issue_1513'>
+<form class="edit_issue" id="edit_issue_1513" action="/issues/1513" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="BofIsx5DKj7mE9FM03nEhsc1cpT8JFA4tAfddy4JeQEydXYEuc7waz+f4rviUJcycrcbqPfI3iSUGAiJCtEeJQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1513:
+<span data-name='issue[summary]'>
+Error in CommandTShow function when opening CommandT for first time.
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-03-24T07:18:53Z</time>, updated <time data-relative="true">2010-03-25T10:37:58Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>When i run from command line</p>
+<pre>
+$ vim
+</pre>
+<p>and then run <em>CommandT</em> i get this error:</p>
+<pre>
+Error detected while processing function &lt;SNR&gt;7_CommandTShow:
+line 2:
+E411: highlight group not found: Cursor
+</pre>
+<p>This error is shown only the first time i run <em>CommandT</em>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5414'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5414"><time data-relative="true">2010-03-24T09:48:23Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for that.</p>
+<p>I was working on the incorrect assumption that the &quot;Cursor&quot; highlight group was defined for all color schemes but evidently it's not.</p>
+<p>I'll add a check for that.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5427'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5427"><time data-relative="true">2010-03-24T16:11:09Z</time></a></span>
+</cite>
+<blockquote><p><a href="http://git.wincent.com/command-t.git/commitdiff/7ae28c4b5b2f5a9f8a0ee229dfbd58708b1da915" class="external">This commit</a> should fix the issue. Will mark this ticket as closed.</p>
+<p>Just out of interest though, if you happen to come back to this ticket, can you add a comment clarifying whether you have syntax highlighting turned on? Or if you are using some kind of color scheme without the <code>Cursor</code> highlight group defined? I am still curious as to what the exact characteristics are which can provoke the error.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5428'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5428"><time data-relative="true">2010-03-24T16:11:15Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_5438'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5438"><time data-relative="true">2010-03-25T05:11:37Z</time></a></span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>this error happened when i tested it on a fresh (i removed my <code>.vimrc</code> and <code>.vim</code> directory and installed only CommnadT) vim. This error didn't show when i tested it with my normal <code>.vimrc</code> and <code>.vim</code> directory. After that everything is working fine, only the moving in the list with cursor keys is not working (when i press up or down it will close the CommandT window. This happens in vim, but in gvim even the cursor keys are working.), only Ctrl-j and Ctrl-k can be used for moving in the list. This is my <code>.vimrc</code> file:</p>
+<pre>
+syntax on
+colorscheme ir_black
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set hlsearch
+set incsearch
+
+filetype plugin on
+set ofu=syntaxcomplete#Complete
+</pre>
+<p>If you need more info i can respond through this ticket.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5439'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5439"><time data-relative="true">2010-03-25T07:34:04Z</time></a></span>
+</cite>
+<blockquote><p>Ok, thanks for the extra info. Did you test it with the latest release (0.3)?</p>
+<p>In that one I'm using <code>silent!</code> so that even if there is an error (ie. no <code>Cursor</code> highlight group found) it shouldn't print any error message.</p>
+<p>As for the cursor key thing, not sure what the cause might be. The mappings are set up using a standard VIM names for mappings like:</p>
+<ul>
+<li><code>&lt;C-n&gt;</code></li>
+<li><code>&lt;C-p&gt;</code></li>
+<li><code>&lt;C-j&gt;</code></li>
+<li><code>&lt;C-k&gt;</code></li>
+<li><code>&lt;Down&gt;</code></li>
+<li><code>&lt;Up&gt;</code></li>
+</ul>
+<p>So if one of them works I would expect all of them to. Probably something specific to your terminal I suspect.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5440'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5440"><time data-relative="true">2010-03-25T10:37:58Z</time></a></span>
+</cite>
+<blockquote><p>Hi,</p>
+<p>i tested the newest version (0.3) and everything works fine. Thanks.</p>
+<p>I will look more into the arrow keys problem and report back if i find something.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

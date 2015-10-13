@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1383: iTunes volume control hot keys can jam if pressed and held
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1383</div>
+<div class='issue' id='issue_1383'>
+<form class="edit_issue" id="edit_issue_1383" action="/issues/1383" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="S3/YD2F5B7UKMey7v69gpJsd+Ut9QTs7ST+QQ3yASM1/jWa4xvTd4NO930yOhjMQLp+Qd3attSdpIEW9WFgv6Q==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1383:
+<span data-name='issue[summary]'>
+iTunes volume control hot keys can jam if pressed and held
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-09-03T12:38:47Z</time>, updated <time data-relative="true">2009-10-21T05:02:09Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/anil-solanki">Anil Solanki</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Hi,</p>
+<p>I have just got the paid-for upgrade to Synergy for Snow Leopard. The reason I upgraded is because when using my hot-key to increase or decrease the volume, if the key is held down for too long Synergy will continue to increase or decrease the volume.</p>
+<p>The only way then to get volume control back, even if the volume is adjusted directly in iTunes is to quit stop Synergy. I thought this was a compatibility issue with SL, so I upgraded. But it is the same as the previous version I was using. This is frustrating for me because the only feature I have ever used is the hot-key function.</p>
+<p>Also after the upgrade Synergy no longer appears in the System Preferences, and now appears to be a stand-alone application,is this the new way of doing things and if so, why did you change this?</p>
+<p>Regards,</p>
+<p>Anil.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4953'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4953"><time data-relative="true">2009-09-03T13:16:23Z</time></a></span>
+</cite>
+<blockquote><p>First up, you question; the answer your question lies in the README that comes with Synergy:</p>
+<blockquote>
+<h3>What happened to the installer?</h3>
+<p>Old versions of Synergy were distributed as a System Preferences pane, which meant that they had to be installed into a specific location in order for to work. Now that it is a standalone application it will work from any location and doesn't require an installer.</p>
+<p>The underlying cause of this change is that Synergy 4.0 takes advantage of a new Leopard technology called Garbage Collection, and this is incompatible with the System Preferences application, thus requiring that Synergy adopt a new format and cease to be a System Preferences pane.</p>
+</blockquote>
+<p>As for the volume key issue, I am not sure if I can reproduce the same issue, but if I press and hold for a long time I do observe some &quot;jitter&quot; in the volume. I'll investigate and see if I can get out a fix within the next few days. Thanks for reporting the issue.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4954'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4954"><time data-relative="true">2009-09-03T13:16:44Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Volume control.</li>
+<li><strong>To:</strong> Problems when holding down iTunes volume control hot keys</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4957'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4957"><time data-relative="true">2009-09-03T15:13:44Z</time></a></span>
+</cite>
+<blockquote><p>I've done some testing with a special build that logs events and it looks like on <a href="/wiki/Snow_Leopard">Snow Leopard</a> the system is reliably sending &quot;key down&quot; events, but only sending &quot;key up&quot; events unreliably.</p>
+<p>I can't really fix that, but I can at least put in some checks for &quot;jammed&quot; keys and &quot;unjam&quot; them when you press either the &quot;up&quot; or &quot;down&quot; volume combos.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4958'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4958"><time data-relative="true">2009-09-03T15:20:30Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've just committed a workaround/fix as described in my previous comment.</p>
+<p>Basically, whenever you press either of the volume keys it resets the internal state (ie. if it was waiting for a &quot;release&quot; event because it saw a &quot;press&quot; event but the system never sent the &quot;release&quot; event, then it stops waiting for it).</p>
+<p>So even though the keys may jam in effect you're unlikely to notice because the volume will hit either the superior or inferior limit and stop moving anyway, and the next time you press a volume adjustment combo things will get reset.</p>
+<p>So I don't know why the events are getting lost, but at least the program handles the lost events a little bit more nicely now.</p>
+<p>Expect to see the fix in a new release within the next few days.</p>
+<p>Will mark this one as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4959'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4959"><time data-relative="true">2009-09-03T15:20:40Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4960'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4960"><time data-relative="true">2009-09-03T15:22:59Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> Problems when holding down iTunes volume control hot keys</li>
+<li><strong>To:</strong> iTunes volume control hot keys can jam if pressed and held</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4990'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4990"><time data-relative="true">2009-09-08T17:37:55Z</time></a></span>
+</cite>
+<blockquote><p>I've just backported this fix to the 3.4 branch, and will be doing a 3.4.1 release very soon, so that people who don't want to upgrade to the 4.0 series yet can use 3.4 on <a href="/wiki/Snow_Leopard">Snow Leopard</a>&#x00a0;without any problems.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4992'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4992"><time data-relative="true">2009-09-09T04:56:08Z</time></a></span>
+</cite>
+<blockquote><p>3.4.1 is out. Blog post <a href="/blog/synergy-3.4.1-released">here</a>.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

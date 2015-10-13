@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1484: External monitoring and automatic respawning of EC2 instances
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1484</div>
+<div class='issue' id='issue_1484'>
+<form class="edit_issue" id="edit_issue_1484" action="/issues/1484" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="2QEfCQNmWMJa0V27iUTRYtYJPfB/rSWSyua2RpXtejzt86G+pOuCl4Ndbky4bYLWY4tUzHRBq47q+WO4sTUdGA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1484:
+<span data-name='issue[summary]'>
+External monitoring and automatic respawning of EC2 instances
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td><time data-relative="true">2010-02-20T09:31:02Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+open
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>At the moment I have internal monitoring of EC2 instances via <a href="/wiki/Monit">Monit</a>; ie. if my Rails app stops responding, for example, it will be automatically restarted.</p>
+<p>But if the EC2 instance itself fails, then I have no remote monitoring in place.</p>
+<p>First step then, is to remotely monitor it. As an initial step I can just do this from my local machine. I could even use <a href="/wiki/Monit">Monit</a> for this purpose, I think. Or just a custom script.</p>
+<p>When I am alerted to a failure I will have to manually intervene. This is in part necessary because I am new to AWS and I need to figure out <em>how</em> to intervene in this kind of case.</p>
+<p>Second step is to make such intervention automatic, once I actually know what kind of steps will be required I can automate them. It will probably look something like this:</p>
+<ul>
+<li>After X failures within a period of Y minutes:
+<ul>
+<li>Alert admin</li>
+<li>Clone EBS root volume (still need to decide whether from latest snapshot, or by detaching from dead instance and cloning that)</li>
+<li>Clone EBS data volume (again still need to decide how)</li>
+<li>Launch new instance using those clone volumes</li>
+<li>Point elastic IP at new instance</li>
+<li>Notify admin that new instance is up</li>
+</ul>
+</li>
+</ul>
+<p>I can then examine the dead instance or the associated volumes to see what went wrong.</p>
+<p>The EBS root volume shouldn't change in any interesting way very often, so cloning from last snapshot is probably fine.</p>
+<p>The EBS data volume is another story, however, so will have to think carefully about whether to use a snapshot or to detach and clone (remembering that cloning the volume from the dead server <em>may</em> also end up cloning something problematic that caused a fault; however, I expect most if not all instance failures to be caused by external factors so it may not be worth worrying about that).</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

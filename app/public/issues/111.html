@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #111: REQUEST: Optional support for half-star ratings (giving a total of 10 possible ratings)
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #111</div>
+<div class='issue' id='issue_111'>
+<form class="edit_issue" id="edit_issue_111" action="/issues/111" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="1tc4IzMkCTWnTO8/6C8XE+tAN9RpXznxGejNk3VI/JXiJYaUlKnTYH7A3MjZBkSnXsJe6GKzt+059xhtUZCbsQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #111:
+<span data-name='issue[summary]'>
+REQUEST: Optional support for half-star ratings (giving a total of 10 possible ratings)
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy Advance
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2005-02-02T23:10:14Z</time>, updated <time data-relative="true">2005-05-12T03:37:33Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-85">bugzilla user 85</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>iTunes stores song ratings as a value out of 100. It's lack of interface for these fine grain values provides an opportunity for a neat Synergy function/option.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_1545'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1545"><time data-relative="true">2005-02-03T00:12:44Z</time></a></span>
+</cite>
+<blockquote><p>Thanks a lot for submitting the request, Oliver.</p>
+<p>I've reworded the summary slightly to reflect how this will most likely end up looking to the user.  Basically, users can continue rating stuff as 0, 1, 2, 3, 4 or 5 stars if they want, but they'll also be able  to optionally rate stuff in half-star increments if they want (ie. 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5 or 5  stars, which would correspond to rating scores of 0, 10, 20, 30 etc). Needless to say, these half-stars  would only appear in the Synergy Advance interface; in the iTunes interface they will get rounded down.</p>
+<p>I am also moving this over against Synergy Advance, because that's where it's most likely to get  implemented. The reason I've changed the summary line from &quot;Provide interface for manipulating  ratings out of 10 or 100 rather than 5&quot; is that there is already some other stuff submitted to the feature  request database that talks about ultra-fine grained control of the rating using increments of 1 unit (for  example see <a href="/issues/44">bug #44</a>). We can keep this bug for the simpler case of using increments of 10 units. If  need be we can later create a separate entry for any other, separate interface idea related to this topic.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_1546'>
+<cite>
+<a href="/users/bugzilla-user-85">bugzilla user 85</a>
+<span class='when'><a href="#comment_1546"><time data-relative="true">2005-02-03T08:37:49Z</time></a></span>
+</cite>
+<blockquote><p>I agree, allowing half stars (out of 10) would be the ideal medium between fineness and at-a-glace legibility.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1547'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1547"><time data-relative="true">2005-05-02T00:47:07Z</time></a></span>
+</cite>
+<blockquote><p>I've now put in an advanced preference that allows the user to decide how much they want to bump  ratings up and down. You can see this when the public preview release comes out tomorrow.</p>
+<p>20 is the default (whole-star). 10 would be a good setting (half-star), but users can choose any at all  between 1 and 100 (don't ask me why they'd want to).</p>
+<p>In the Synergy Advance UI I still am currently only showing full stars, but I will be adding half-star support  shortly.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1548'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1548"><time data-relative="true">2005-05-12T01:25:05Z</time></a></span>
+</cite>
+<blockquote><p>Synergy Advance now shows half star ratings in the UI. Specifically, I've added it to the hot key feedback  bezels, but not in the global menu. I won't be adding half-star rating display to the Global Menu any time  soon because I want the Global Menu to mirror iTunes' Dock menu. So, if you want half star control, use  the hot keys.</p>
+<p>Adding the fixed-in-prerelease keyword. You'll be able to get your hands on this in the 0.1.2 preview  (which I will release soon; perhaps even later today if I can get everything organized).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_1549'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_1549"><time data-relative="true">2005-05-12T03:37:33Z</time></a></span>
+</cite>
+<blockquote><p>0.1.2 is now on the servers.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

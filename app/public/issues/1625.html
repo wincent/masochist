@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1625: backspace does not delete but instead moves back one char in console vim in xterm in linux. gvim works.
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1625</div>
+<div class='issue' id='issue_1625'>
+<form class="edit_issue" id="edit_issue_1625" action="/issues/1625" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="czijonwYF7lXVMMEr1V/5iyGl2f8xkx0+9DlSnKkFeFHyh0V25XN7I7Y8POefCxSmQT+W/cqwmjbzzC0VnxyxQ==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1625:
+<span data-name='issue[summary]'>
+backspace does not delete but instead moves back one char in console vim in xterm in linux. gvim works.
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-07-29T11:20:10Z</time>, updated <time data-relative="true">2010-11-04T17:37:28Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Linux localhost 2.6.34-ARCH #1 SMP PREEMPT Mon Jul 5 21:03:38 UTC 2010 i686 Intel(R) Pentium(R) M processor 1.70GHz GenuineIntel GNU/Linux</p>
+<p>XTerm(259)</p>
+<pre>VIM - Vi IMproved 7.2 (2008 Aug 9, compiled May 16 2010 23:11:27)
+Included patches: 1-436
+Compiled by ArchLinux
+Big version with GTK2 GUI.  Features included (+) or not (-):
++arabic +autocmd +balloon_eval +browse ++builtin_terms +byte_offset +cindent 
++clientserver +clipboard +cmdline_compl +cmdline_hist +cmdline_info +comments 
++cryptv +cscope +cursorshape +dialog_con_gui +diff +digraphs +dnd -ebcdic 
++emacs_tags +eval +ex_extra +extra_search +farsi +file_in_path +find_in_path 
++float +folding -footer +fork() +gettext -hangul_input +iconv +insert_expand 
++jumplist +keymap +langmap +libcall +linebreak +lispindent +listcmds +localmap 
++menu +mksession +modify_fname +mouse +mouseshape +mouse_dec +mouse_gpm 
+-mouse_jsbterm +mouse_netterm -mouse_sysmouse +mouse_xterm +multi_byte 
++multi_lang -mzscheme +netbeans_intg -osfiletype +path_extra +perl +postscript 
++printer -profile +python +quickfix +reltime +rightleft +ruby +scrollbind 
++signs +smartindent -sniff +startuptime +statusline -sun_workshop +syntax 
++tag_binary +tag_old_static -tag_any_white -tcl +terminfo +termresponse 
++textobjects +title +toolbar +user_commands +vertsplit +virtualedit +visual 
++visualextra +viminfo +vreplace +wildignore +wildmenu +windows +writebackup 
++X11 -xfontset +xim +xsmp_interact +xterm_clipboard -xterm_save 
+   system vimrc file: &quot;/etc/vimrc&quot;
+     user vimrc file: &quot;$HOME/.vimrc&quot;
+      user exrc file: &quot;$HOME/.exrc&quot;
+  system gvimrc file: &quot;/etc/gvimrc&quot;
+    user gvimrc file: &quot;$HOME/.gvimrc&quot;
+    system menu file: &quot;$VIMRUNTIME/menu.vim&quot;
+  fall-back for $VIM: &quot;/usr/share/vim&quot;
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -DFEAT_GUI_GTK  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng14     -march=i686 -mtune=generic -O2 -pipe -D_FORTIFY_SOURCE=1    -D_REENTRANT -D_GNU_SOURCE  -fstack-protector -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -I/usr/lib/perl5/core_perl/CORE  -I/usr/include/python2.6 -pthread  -I/usr/include/ruby-1.9.1 -I/usr/include/ruby-1.9.1/i686-linux -DRUBY_VERSION=19 
+Linking: gcc   -L. -Wl,--hash-style=gnu -Wl,--as-needed -rdynamic -Wl,-export-dynamic  -Wl,-E -Wl,-rpath,/usr/lib/perl5/core_perl/CORE  -Wl,--hash-style=gnu -Wl,--as-needed -L/usr/local/lib -o vim   -pthread -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lgdk_pixbuf-2.0 -lpangocairo-1.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lgmodule-2.0 -lgthread-2.0 -lrt -lglib-2.0   -lXt -lncurses -lacl -lgpm -Wl,-E -Wl,-rpath,/usr/lib/perl5/core_perl/CORE  -fstack-protector -L/usr/local/lib  -L/usr/lib/perl5/core_perl/CORE -lperl -lutil -lc -L/usr/lib/python2.6/config -lpython2.6 -lutil -Xlinker -export-dynamic  -Wl,-R -Wl,/usr/lib -L/usr/lib -lruby -lrt -lm</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5949'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5949"><time data-relative="true">2010-07-29T12:29:54Z</time></a></span>
+</cite>
+<blockquote><p>It's not possible for the default key bindings to work in all terminals because different terminals send and interpret key sequences in different ways, and there are too many different variations to be able to anticipate and handle them all.</p>
+<p>So, this is why Command-T provides a means to override those bindings if you find that they don't work in your terminal. Check out <a href="http://git.wincent.com/command-t.git/blob/HEAD:/README.txt" class="external">the docs</a>, specifically the &quot;OPTIONS&quot; section (<code>:h command-t-options</code> in Vim).</p>
+<p>The one you'll probably want to set is <code>g:CommandTBackspaceMap</code>, which is usually set to <code>&lt;Bs&gt;</code>. You'll need to substitute this for something that works in your terminal (<code>&lt;C-h&gt;</code>, perhaps? Note that if you do this you'll need to change the value for <code>g:CommandTCursorLeftMap</code> as well, seeing as that defaults to <code>&lt;C-h&gt;</code>).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6420'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6420"><time data-relative="true">2010-11-04T17:37:10Z</time></a></span>
+</cite>
+<blockquote><p>Closing due to inactivity.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6422'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6422"><time data-relative="true">2010-11-04T17:37:28Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

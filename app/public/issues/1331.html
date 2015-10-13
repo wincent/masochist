@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #1331: Product pages
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #1331</div>
+<div class='issue' id='issue_1331'>
+<form class="edit_issue" id="edit_issue_1331" action="/issues/1331" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="PsbiuFfksci8UIlXkhV6gz91u51HaEdRY4xgZKg92WcKNFwP8GlrnWXcuqCjPCk3ivfSoUyEyU1Dk7WajOW+Qw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #1331:
+<span data-name='issue[summary]'>
+Product pages
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-06-25T12:36:48Z</time>, updated <time data-relative="true">2010-04-14T17:27:05Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>At the moment we have an uncomfortable divide between two parts of the site:</p>
+<ul>
+<li>on the one hand, this site, the <a href="/wiki/Rails">Rails</a> rewrite at <a href="https://wincent.com/" class="external">https://wincent.com/</a></li>
+<li>on the other, the old site, include the product pages at <a href="http://wincent.com/" class="external">http://wincent.com/</a></li>
+</ul>
+<p>I need to bring the product pages over to the new site; that, and the store/purchase pages, are the biggest remaining pieces for the migration to be considered basically complete.</p>
+<p>One of the roadblocks so far has been that I haven't been sure how to conceptualize or model the product pages.</p>
+<p>Basically, I can't treat them like <a href="/wiki">wiki</a> pages because they need to be visually distinct. Mere wikitext is not going to be enough; as I'll want to use complex CSS, HTML and possible JavaScript to make an attractive presentation of each product.</p>
+<p>But I <em>do</em> require these pages to be relatively integrated with the new site, so I can't just hand-code HTML and upload it.</p>
+<p>This is a double-edged sword because neither do I want to be cutting and pasting large slabs of HTML in a browser-based admin interface. Clearly the number of product pages has to be very low, conciseness will be of the utmost virtue.</p>
+<p>The other question is how will the help documentation be integrated into the site? That <em>will</em> and <em>must</em> be static HTML because it gets distributed with the applications (or should I challenge even that assumption and just default to online help?).</p>
+<p>Will the product namespace become kind of like a secondary wiki? Should I be looking at displacing as many pages as possible into the wiki namespace? Do I need proper namespacing in the wiki itself? (ie. <code>Synergy::Preferences</code>, <code>Synergy::Preferences::General</code><code>and the like?)</code></p>
+<p>So I'm opening this ticket as a kind of scratch pad for &quot;thinking out loud&quot; and brainstorming these issues through.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4742'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4742"><time data-relative="true">2009-06-26T14:16:25Z</time></a></span>
+</cite>
+<blockquote><p>Ok, on thinking about this for a while the design I currently have in mind is as follows:</p>
+<p>First up, we'll be adding a <code>Page</code> model. Products will &quot;have many&quot; pages. (In reality we're talking about an &quot;index&quot; page, &quot;buy&quot; page, &quot;download&quot; page, &quot;FAQ/Support&quot; page and little else.)</p>
+<p>The <code>Page</code> model is really just a simple container for arbitrary <a href="/wiki/HTML">HTML</a> data. It will &quot;belong to&quot; the parent <code>Product</code> model. One page for each product will have it's <code>default</code> attribute set, indicating that it should be shown when no other page is specifically requested (ie. this is the &quot;index&quot; page).</p>
+<p>The content will be arbitrary HTML, and possibly inline <a href="/wiki/JavaScript">JavaScript</a> if required to implement effects (the classic &quot;lightbox&quot; effect, but without the black background). Content will be basically static, infrequently updated, so the pain of pasting into a browser won't have to be suffered too often. In the event that dynamic content be needed I could consider using <a href="/wiki/ERB">ERB</a> instead of pure HTML, but we'll cross that bridge when and if we come to it.</p>
+<p>I'll need to think about how to preview this stuff because ideally I'll want to do at least the initial mockups as static HTML pages.</p>
+<p>I'll have special <a href="/wiki/CSS">CSS</a> in a <code>products.css</code> file that is included for all actions in the <code>ProductsController</code>. The HTML should be very clean (headings, paragraphs, lists, <code>img</code> tags), with maximum use of CSS so that the visuals can be easily controlled for all products at once.</p>
+<p>A common JavaScript page, <code>products.js</code> may also be included if the need arises (lightbox functions etc).</p>
+<p>Images, at least for now, will be manually uploaded to a static assets directory. Later could consider adding an interface for it.</p>
+<p>The <code>Product</code> model will have two more fields added, <code>header</code> and <code>footer</code>, containing arbitrary HTML to be shown above and below each page.</p>
+<p>Design principles:</p>
+<ul>
+<li>pages should be attractive</li>
+<li>pages should be short</li>
+</ul>
+<p>Some notes on what this <em>isn't</em>:</p>
+<ul>
+<li>we store stuff in the database rather than as templates in the application source code because we don't want to have to do deployments just to update the product pages</li>
+<li>we store stuff in the database rather than as files on disk because we want this to be editable from anywhere without the use of an <a href="/wiki/SFTP">SFTP</a> client</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4746'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4746"><time data-relative="true">2009-06-27T05:58:50Z</time></a></span>
+</cite>
+<blockquote><p>Thinking more about the idea of running the HTML through ERB first (seeing as the pages will be cached and speed is not an issue), was trying to think of use cases.</p>
+<p>About the nicest used for this would be to be able to use <code>[[wiki link markup]]</code> like this:</p>
+<pre>... with &lt;%= &quot;[[Mac OS X]]&quot;.w %&gt; or above ...</pre>
+<p>But that would actually work because all wikitext output is wrapped, at least, in <code>&lt;p&gt;&lt;/p&gt;</code> (or similar block-level) tags:</p>
+<pre>... with &lt;p&gt;&lt;a href=&quot;/wiki/Mac_OS_X&quot;&gt;Mac OS X&lt;/a&gt;&lt;/p&gt;
+or above ...</pre>
+<p>So for inline styling it simply wouldn't work and it's debatable that typing ERB tags and the wikitext markup would be much easier than just typing the HTML in the first place.</p>
+<p>A more tempting use case is for using path helpers:</p>
+<pre>... more information in &lt;%= link_to 'the forums', forums_path %&gt;.</pre>
+<p>Instead of typing:</p>
+<pre>... more information in &lt;a href=&quot;/forums&quot;&gt;the forums&lt;/a&gt;.</pre>
+<p>Although that too, isn't all that convincing.</p>
+<p>One place where wikitext markup would work would be when using it for entire paragraphs:</p>
+<pre>... and all that.
+
+&lt;%= %q{This is a slab of [[wikitext]]
+which can have [/forums links] and
+all kinds of other stuff in it.}.w%&gt;
+
+And by the way ...</pre>
+<p>But even that is not all that convincing.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4747'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4747"><time data-relative="true">2009-06-27T09:19:13Z</time></a></span>
+</cite>
+<blockquote><p>Thinking about how I am going to do the routing here.</p>
+<p>With the standard products resource which &quot;has many&quot; pages, you wind up with URLs like:</p>
+<ul>
+<li><code>/products/foo</code> (to show product &quot;foo&quot;)</li>
+<li><code>/products/foo/pages/welcome</code> (to show the &quot;welcome&quot; page of product &quot;foo&quot;)</li>
+</ul>
+<p>But I think I'd prefer to have URLs like:</p>
+<ul>
+<li><code>/products/foo/welcome</code> (to show the &quot;welcome&quot; page for &quot;foo&quot;)</li>
+</ul>
+<p>As far as I know I can't do this using the standard RESTful <code>:has_many</code> helper in <code>config/routes.rb</code>.</p>
+<p>Might have to add a separate route like:</p>
+<pre>map.product_pages '/products/:product_id/:page_id', :controller =&gt; 'products', :action =&gt; 'show', :protocol =&gt; 'https'</pre>
+<p>(Note that I could let this be handled by the <code>PagesController</code>, but to the user the page content looks embedded in the product pages and doesn't actually look like a separate resource at all, so that's why we let this be handled by the <code>ProductsController</code>.)</p>
+<p>Not sure if it will work, but that's the general idea.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4748'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4748"><time data-relative="true">2009-06-27T13:30:41Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the backend for this is basically down now.</p>
+<p>I can view products, create, edit, delete pages etc. Now I just need to start porting over the content from the old site.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4774'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4774"><time data-relative="true">2009-07-02T16:22:24Z</time></a></span>
+</cite>
+<blockquote><p>This is a blocker for <a href="/issues/1314">ticket #1314</a>.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5554'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5554"><time data-relative="true">2010-04-14T17:26:53Z</time></a></span>
+</cite>
+<blockquote><p>This is pretty much done and deployed now. It's been in use with the new <a href="/wiki/Synergy">Synergy</a> product pages for some time, and it has worked out quite well. Will mark as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5555'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5555"><time data-relative="true">2010-04-14T17:27:05Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

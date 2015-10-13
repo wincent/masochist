@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Audioscrobbler compatibility
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/synergy">Synergy</a> &raquo; Audioscrobbler compatibility</div>
+<h1 class='major'>Audioscrobbler compatibility</h1>
+<div class='topic' id='topic_410'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/synergy/topics/410"><time data-relative="true">2009-08-17T02:06:31Z</time></a>
+</span>
+</cite>
+<blockquote><p>Hello!  I found Synergy after iScrobbler started going a little strange, and I do very much love the easy control functions.  My only question is: does Synergy support multiple track scrobbling?  By which I mean, if I listen to a track on repeat, should it scrobble all the plays?  I do this quite often and I would like my last.fm page to reflect it.  iScrobbler used to do it, but now seems to have stopped, which is why I went looking for another application.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4868'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4868"><time data-relative="true">2009-08-17T07:49:48Z</time></a></span>
+</cite>
+<blockquote><p>(Going from memory of the Audioscrobbler protocol...) I think that according to the protocol it certainly <em>should</em> submit a track multiple times if it is played multiple times, and from my memory of how this is implemented in the Synergy code that's what I would expect to happen.</p>
+<p>I'm going to do some tests and see if I can get it to submit multiple times.</p>
+<p>So there are really three possibilities here:</p>
+<ol>
+<li>The protocol doesn't allow repeated submissions and so last.fm is discarding the repeats</li>
+<li>The protocol allows it but a bug in Synergy is stopping it from happening</li>
+<li>The protocol allows it but a bug in the last.fm code is stopping it from happening</li>
+</ol>
+<p>I doubt the last.fm code is at fault, so it's probably between options 1 and 2...</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4869'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4869"><time data-relative="true">2009-08-17T08:01:28Z</time></a></span>
+</cite>
+<blockquote><p>Ok, looks like it was option two... Here's a sample of log output:</p>
+<pre>17/8/2009 13:56:33 Synergy[209] Audioscrobbler: Received notification from iTunes 
+17/8/2009 13:56:33 Synergy[209] Audioscrobbler: Received notification of playing status 
+17/8/2009 13:56:33 Synergy[209] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = &quot;Por la boca vive el pez&quot;;
+    WOAudioscrobblerArtist = &quot;Fito y Fitipaldis&quot;;
+    WOAudioscrobblerLength = 134;
+    WOAudioscrobblerTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 13:56:33 Synergy[209] Audioscrobbler: This track appears to be a new submission 
+17/8/2009 13:56:33 Synergy[209] Audioscrobbler: Cancelling previously existing submission timer, if any 
+17/8/2009 13:56:33 Synergy[209] Audioscrobbler: Setting up new submission timer (67 seconds) 
+17/8/2009 13:56:33 Synergy[209] Audioscrobbler: Setting up new submission timer (67 seconds) 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Position matches, will submit to Audioscrobbler 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Adding song to submission queue; song information: {
+    WOAlbum = &quot;Por la boca vive el pez&quot;;
+    WOArtist = &quot;Fito y Fitipaldis&quot;;
+    WODate = &quot;2009-08-17 11:57:40&quot;;
+    WOLength = 134;
+    WOMBID = &quot;&quot;;
+    WOTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Enqueuing object: {
+    WOAlbum = &quot;Por la boca vive el pez&quot;;
+    WOArtist = &quot;Fito y Fitipaldis&quot;;
+    WODate = &quot;2009-08-17 11:57:40&quot;;
+    WOLength = 134;
+    WOMBID = &quot;&quot;;
+    WOTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Number of items currently on the queue: 1 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Queue was empty: processing item 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 
+17/8/2009 13:57:40 Synergy[209] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Will proceed with submission 
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Will perform submission using URL: <a href="http://post2.audioscrobbler.com:80/protocol_1.1" class="external">http://post2.audioscrobbler.com:80/protocol_1.1</a> 
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Submission as URL-encoded string is: u=wcolaiuta...
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Submission as data is: &lt;753d7763 ... 413430&gt; 
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Starting connection attempt 
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Waiting for submission response 
+17/8/2009 13:57:41 Synergy[209] Audioscrobbler: Waiting for submission response 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Connection to Audioscrobbler did finish loading (response received) 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Received an INTERVAL directive 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Storing interval value: 1 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Processing submission response 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Received OK response 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Dequeueing first object 
+17/8/2009 13:57:47 Synergy[209] Audioscrobbler: Will handle next item on the queue after delay (Audioscrobbler specified delay in seconds: 1) 
+17/8/2009 13:57:48 Synergy[209] Audioscrobbler: Queue is empty, not proceeding 
+17/8/2009 13:57:48 Synergy[209] Audioscrobbler: Queue is empty, not proceeding 
+17/8/2009 13:57:48 Synergy[209] Audioscrobbler: Queue is empty, not proceeding 
+17/8/2009 13:58:48 Synergy[209] Audioscrobbler: Received notification from iTunes 
+17/8/2009 13:58:48 Synergy[209] Audioscrobbler: Received notification of playing status 
+17/8/2009 13:58:48 Synergy[209] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = &quot;Por la boca vive el pez&quot;;
+    WOAudioscrobblerArtist = &quot;Fito y Fitipaldis&quot;;
+    WOAudioscrobblerLength = 134;
+    WOAudioscrobblerTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 13:58:48 Synergy[209] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing </pre>
+<p>So as that last line clearly shows, it submits the first time but will disregard subsequent plays. Will open a ticket in the issue tracker for this one.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4870'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4870"><time data-relative="true">2009-08-17T08:03:11Z</time></a></span>
+</cite>
+<blockquote><p>Ok, the ticket is <a href="/issues/1365">ticket #1365</a>. Please continue any further discussion on the topic there.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/synergy">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>

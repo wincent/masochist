@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1838: Self-referential symlink causes Command-T to hit file limit before scanning all files in a directory
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1838</div>
+<div class='issue' id='issue_1838'>
+<form class="edit_issue" id="edit_issue_1838" action="/issues/1838" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="WKag388haeTivXLU7A4VBBGcFut2a221z+nW3i0qS7dsVB5oaKyzsTsxQSPdJ0awpB5/132H46nv9gMgCfIskw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1838:
+<span data-name='issue[summary]'>
+Self-referential symlink causes Command-T to hit file limit before scanning all files in a directory
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2011-07-06T10:13:36Z</time>, updated <time data-relative="true">2012-06-30T19:26:07Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>I find that the symlink private, below, seems to prevent Command-T working.  It seems that Command-T scans the directories up to the symlink, and then something goes wrong, and the directories project and public don't get scanned.  If I remove the symlink it works fine. This is on Mac OS/X Snow Leopard.</p>
+<pre>drwxrwxr-x   5 charles.woodcock  staff   170 Jun 29 14:15 bank/
+drwxrwxr-x   3 charles.woodcock  staff   102 Jun 29 15:23 bin/
+drwxr-xr-x   8 charles.woodcock  staff   272 Jul  5 12:06 lib/
+lrwxr-xr-x   1 charles.woodcock  staff     1 Jul  6 12:06 private@ -&gt; .
+drwxrwxr-x   8 charles.woodcock  staff   272 Jun 29 14:04 project/
+drwxrwxr-x   7 charles.woodcock  staff   238 Jul  5 16:35 public/</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_6967'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6967"><time data-relative="true">2011-07-07T07:32:36Z</time></a></span>
+</cite>
+<blockquote><p>Thanks for the report. As you've probably guessed, the symlink back to <code>.</code> creates a circular reference, which is effectively an &quot;infinite loop&quot;, causing Command-T to hit the file limit (10,000 by default) and then stop scanning, meaning that it never gets to your <code>project</code> and <code>public</code> directories.</p>
+<p>In other words, it will wind up scanning:</p>
+<ul>
+<li><code>bank/*</code>, <code>bin/*</code> and <code>lib/*</code>; then:</li>
+<li><code>bank/private/*</code>; then:</li>
+<li><code>bank/private/private/*</code>; then:</li>
+<li><code>bank/private/private/private/*</code>; and so on, until it hits the limit.</li>
+</ul>
+<p>I can see two or three workarounds here:</p>
+<p>One is to teach Command-T about symlinks (currently, it only knows about paths) and have it not traverse into them at all. This is pretty much a no-starter idea as there are legitimate uses for symlinks in project organization.</p>
+<p>Another: again teach it about symlinks, and have it explicitly check for them and see if it can detect circular references. Not sure if this will slow down the directory scanning much, but I do fear it will only work properly on UNIX-y platforms, seeing as Windows is symlink-challenged, as far as I know.</p>
+<p>The other is to to replace what is effectively a depth-first traversal of the directory tree with a breadth-first one. It's written as a depth-first traversal because that was the most natural way to do so (see the implementation in <code>ruby/command-t/scanner/file_scanner.rb</code>, where we use Ruby's <code>Dir.foreach</code> method, which naturally lends itself to depth-first traversal).</p>
+<p>In order to switch to breadth-first traversal we'd need a FIFO queue. Note that this would not make the circular reference go away, so the traversal would still eventually hit the file limit, but at least it would increase the likelihood of exploring some of the other directories before hitting the limit. (Still, depending on the number of files in each directory, it is possible that the circular reference could prevent full scans of the non-cyclic parts of the graph from completing.) As this is not necessarily a full mitigation of the problem, I don't think it is worth exploring. Additionally, you'd still wind up with effectively useless &quot;garbage&quot; paths in your search space (like <code>bank/private/private/private/private/private/foo</code>), which are only going to slow down the matching algorithm as it will have to try matching against 10,000 paths all the time, even if your project has well under 10,000 files in it.</p>
+<p>So, I don't think this is actually a &quot;bug&quot; as such in Command-T, and I actually think having a circular-reference in your directory hierarchy is more of a &quot;bug&quot; in your project layout, but I am not averse to the idea of implementing the second workaround to be more robust in the face of this kind of &quot;pathological&quot; input. (This is now the second time I've seen somebody puzzled by the way Command-T behaves because they had such a &quot;bug&quot; in their project layout. The fix in that case was for them to remove the circular reference which they hadn't even intentionally added in the first place, but I'd rather not have people puzzled by the behavior of the tool, even if it is their own &quot;fault&quot;).</p>
+<p>My only concern is making sure it works across all platforms (quite a few people use Command-T on Windows), and making sure that it doesn't have too much of an adverse performance impact. It may well do so, as for each path we traverse, we'll have to expand it to get its true location on the file system, record that path, and then check against that set of traversed paths for every single other path we look at during traversal. This immediately doubles our space requirements (because we have store not only the apparent path, but the actual path as well), and while checking for set membership should be relatively quick, I am not sure whether getting the real path will be an expensive operation that will turn into a noticeable delay when you have to do it for large projects.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6968'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6968"><time data-relative="true">2011-07-07T07:37:08Z</time></a></span>
+</cite>
+<blockquote><p><strong>Summary</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> symlink prevents Command-T from scanning for files</li>
+<li><strong>To:</strong> Self-referential symlink causes Command-T to hit file limit before scanning all files in a directory</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_6969'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6969"><time data-relative="true">2011-07-07T08:22:27Z</time></a></span>
+</cite>
+<blockquote><p>I admire your attention to detail!  I agree that the directory structure is pathological input, but I think Command-T should be able to not fail in the face of it (even if it doesn't have to work well).</p>
+<p>To detect circular references, wouldn't it be sufficient to only expand suspicious directories, i.e. with the same name as another directory? e.g. for foo/bar/foo/, you would check that it is not a symlink to foo/ (or vice versa).  Maybe you could also raise the bar of suspiciousness to 2 repeated directory names, e.g. foo/bar/x/y/z/foo/bar/.</p>
+<p>Another suggestion: is it possible to notify the user that the 10,000 file limit has been reached?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6970'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6970"><time data-relative="true">2011-07-07T17:10:37Z</time></a></span>
+</cite>
+<blockquote><p>I don't think that will work, as symlinks need not be named like their targets. ie. in your example, <code>private</code> links to <code>.</code>, so the scanning algorithm would happily enter <code>./private/bank</code> without any clues that it was entering <code>bank</code> for the second time, and neither <code>.</code> nor <code>bank</code> are symlinks.</p>
+<p>As for notifying the user, I split that off into a separate ticket, <a href="/issues/1839">issue #1839</a>.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6972'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6972"><time data-relative="true">2011-07-08T08:00:01Z</time></a></span>
+</cite>
+<blockquote><p>You are right, a symlink could be named differently to its target, but you could be suspicious about any subdirectories, e.g. you could be suspicious that private/bank/ contains a circular reference somewhere, and is actually identical to bank/.</p>
+<p>Or you could raise suspicion on only sub-subdirectories, e.g. you could be suspicious that private/bank/foo/ is identical to bank/foo/.</p>
+<p>I don't mean to argue that I really think this is the right thing to do, I am just throwing an idea into your hat.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6974'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6974"><time data-relative="true">2011-07-08T08:16:47Z</time></a></span>
+</cite>
+<blockquote><p>Or why not just be supicious about any repeating name in the path, eg.</p>
+<p>foo/foo/ (foo looks like symlink to .)</p>
+<p>foo/bar/foo/ (bar looks like symlink to .)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_7865'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_7865"><time data-relative="true">2012-06-27T07:37:08Z</time></a></span>
+</cite>
+<blockquote><p><a href="https://github.com/wincent/Command-T/pull/27" class="external">This pull request</a> may handle some (or most?) of the simple cases, without incurring much cost or complexity. Not sure yet if there are any edge cases which would trip it up. I'm going to try it out on the &quot;next&quot; branch for a while.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_8129'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_8129"><time data-relative="true">2012-06-30T19:26:07Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

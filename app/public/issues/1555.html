@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1555: wildignore support has unhandled edge cases
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1555</div>
+<div class='issue' id='issue_1555'>
+<form class="edit_issue" id="edit_issue_1555" action="/issues/1555" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="gudmfS1OpeEjyfTbc84UbAJ18UwFFoiglMRv7/5Bl9a2FdjKisN/tPpFxyxC50fYt/eYcA76Bry027oR2pnw8g==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1555:
+<span data-name='issue[summary]'>
+wildignore support has unhandled edge cases
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Command-T
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2010-05-11T05:47:23Z</time>, updated <time data-relative="true">2010-05-18T06:24:35Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td>anonymous</td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>wildignore tries to match a filename in a few different ways (see :help autocmd-patterns). Command-t currently matches it using fnmatch and basename(path). This makes it impossible to match against patterns with a dirname. (/foo/*/bar, etc). Here's another solution that I like; rather than emulate vim's behavior, it just uses vim do to the work.</p>
+<pre>
+From 141bf2e1b6b61eab49aabff16d8683c10a7e25c0 Mon Sep 17 00:00:00 2001
+From: Mike Lundy &lt;mike@fluffypenguin.org&gt;
+Date: Tue, 11 May 2010 02:24:53 -0700
+Subject: [PATCH] make Scanner.path_excluded use wildignore
+
+fnmatch is a lossy replacement for vim's internal wildcard match. I
+reimplemented it by using wildignore directly (via expand) to perform the
+exclusion.
+---
+ ruby/command-t/controller.rb |    3 +--
+ ruby/command-t/scanner.rb    |    7 ++-----
+ ruby/vim.rb                  |    5 +++++
+ 3 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
+index 51277ce..3b93c19 100644
+--- a/ruby/command-t/controller.rb
++++ b/ruby/command-t/controller.rb
+@@ -148,8 +148,7 @@ module CommandT
+         :max_depth              =&gt; get_number('g:CommandTMaxDepth'),
+         :always_show_dot_files  =&gt; get_bool('g:CommandTAlwaysShowDotFiles'),
+         :never_show_dot_files   =&gt; get_bool('g:CommandTNeverShowDotFiles'),
+-        :scan_dot_directories   =&gt; get_bool('g:CommandTScanDotDirectories'),
+-        :excludes               =&gt; get_string('&amp;wildignore')
++        :scan_dot_directories   =&gt; get_bool('g:CommandTScanDotDirectories')
+     end
+ 
+     def get_number name
+diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
+index a48d070..92dd3c8 100644
+--- a/ruby/command-t/scanner.rb
++++ b/ruby/command-t/scanner.rb
+@@ -31,7 +31,6 @@ module CommandT
+       @max_depth            = options[:max_depth] || 15
+       @max_files            = options[:max_files] || 10_000
+       @scan_dot_directories = options[:scan_dot_directories] || false
+-      @excludes             = (options[:excludes] || '*.o,*.obj,.git').split(',')
+     end
+ 
+     def paths
+@@ -61,16 +60,14 @@ module CommandT
+   private
+ 
+     def path_excluded? path
+-      @excludes.any? do |pattern|
+-        File.fnmatch pattern, path, File::FNM_DOTMATCH
+-      end
++      VIM::expand(path).empty?
+     end
+ 
+     def add_paths_for_directory dir, accumulator
+       Dir.foreach(dir) do |entry|
+         next if ['.', '..'].include?(entry)
+         path = File.join(dir, entry)
+-        unless path_excluded?(entry)
++        unless path_excluded?(path)
+           if File.file?(path)
+             @files += 1
+             raise FileLimitExceeded if @files &gt; @max_files
+diff --git a/ruby/vim.rb b/ruby/vim.rb
+index 48214eb..9d26464 100644
+--- a/ruby/vim.rb
++++ b/ruby/vim.rb
+@@ -38,4 +38,9 @@ module VIM
+   def self.escape_for_single_quotes str
+     str.gsub &quot;'&quot;, &quot;''&quot;
+   end
++
++  def self.expand fn
++    cmd = 'expand(\'' + VIM::escape_for_single_quotes(fn) + '\')'
++    VIM.evaluate(cmd)
++  end
+ end # module VIM
+-- 
+1.7.1
+
+</pre>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_5616'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5616"><time data-relative="true">2010-05-11T06:01:06Z</time></a></span>
+</cite>
+<blockquote><p>Any idea of what the performance impact of this is on really large directory hierarchies? (ie. crank up the scan depth and max file limit and then see how it performs on an enormous hierarchy.)</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5619'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5619"><time data-relative="true">2010-05-11T12:37:36Z</time></a></span>
+</cite>
+<blockquote><p>I've had a bit of a play around with this and I like the basic idea of it. It seems to handle most of the usage scenarios mentioned in <a href="/issues/1542">ticket #1542</a>:</p>
+<ul>
+<li>existing simple file globs like <code>*.o</code> and <code>.git</code></li>
+<li>patterns with leading <code>**</code></li>
+</ul>
+<p>Notably it doesn't handle patterns of the form <code>vendor/rails/**</code> like the person who posted that ticket was originally requesting. This is because internally, we're working with absolute paths at that point and <code>/absolute/path/to/vendor/rails/foo</code> is not considered by VIM as a match. Instead, you would need to specify a pattern like <code>**/vendor/rails/**</code>.</p>
+<p>One change required, however. It appears that on at least some versions of VIM the Ruby support doesn't know how to turn &quot;NULL&quot; results into an empty string, which means that you'll get a &quot;NULL pointer given&quot; exception raised every time you test an excluded path. From Googling I see that this isn't something that happens to affect just the platform I'm using (MacVim).</p>
+<p>So this is the tweaked version I'm testing, which uses <code>empty(exclude('...'))</code> rather than just a naked <code>exclude('...')</code>:</p>
+<pre>diff --git a/ruby/command-t/controller.rb b/ruby/command-t/controller.rb
+index 51277ce..3b93c19 100644
+--- a/ruby/command-t/controller.rb
++++ b/ruby/command-t/controller.rb
+@@ -148,8 +148,7 @@ module CommandT
+         :max_depth              =&gt; get_number('g:CommandTMaxDepth'),
+         :always_show_dot_files  =&gt; get_bool('g:CommandTAlwaysShowDotFiles'),
+         :never_show_dot_files   =&gt; get_bool('g:CommandTNeverShowDotFiles'),
+-        :scan_dot_directories   =&gt; get_bool('g:CommandTScanDotDirectories'),
+-        :excludes               =&gt; get_string('&amp;wildignore')
++        :scan_dot_directories   =&gt; get_bool('g:CommandTScanDotDirectories')
+     end
+ 
+     def get_number name
+diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
+index a48d070..c773d72 100644
+--- a/ruby/command-t/scanner.rb
++++ b/ruby/command-t/scanner.rb
+@@ -31,7 +31,6 @@ module CommandT
+       @max_depth            = options[:max_depth] || 15
+       @max_files            = options[:max_files] || 10_000
+       @scan_dot_directories = options[:scan_dot_directories] || false
+-      @excludes             = (options[:excludes] || '*.o,*.obj,.git').split(',')
+     end
+ 
+     def paths
+@@ -61,16 +60,15 @@ module CommandT
+   private
+ 
+     def path_excluded? path
+-      @excludes.any? do |pattern|
+-        File.fnmatch pattern, path, File::FNM_DOTMATCH
+-      end
++      path = Vim.escape_for_single_quotes path
++      VIM.evaluate(&quot;empty(expand('#{path}'))&quot;).to_i == 1
+     end
+ 
+     def add_paths_for_directory dir, accumulator
+       Dir.foreach(dir) do |entry|
+         next if ['.', '..'].include?(entry)
+         path = File.join(dir, entry)
+-        unless path_excluded?(entry)
++        unless path_excluded?(path)
+           if File.file?(path)
+             @files += 1
+             raise FileLimitExceeded if @files &gt; @max_files</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5622'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5622"><time data-relative="true">2010-05-11T16:12:08Z</time></a></span>
+</cite>
+<blockquote><p>And here's my entry into the commit log essay contest:</p>
+<pre>commit bbf296b775d5d9220fae28a34111117312bfcaa7
+Author: Wincent Colaiuta &lt;win@wincent.com&gt;
+Date:   Tue May 11 21:56:57 2010 +0200
+
+    Bring wildignore behavior closer to VIM's own behaviour
+    
+    In commit f314c1e6 we tried to make Command-T react to the 'wildignore'
+    setting in way that more closely matches VIM's own behaviour by
+    using the builtin expand() function which takes into account
+    'wildignore'.
+    
+    While this works quite well, there are still some discrepancies from
+    VIM's actual behaviour.
+    
+    For example, while patterns like this work as expected with no
+    surprises:
+    
+      *.o
+      .git
+      **/build
+    
+    A pattern like this:
+    
+      vendor/rails/**
+    
+    Will work differently in Command-T than it does in the rest of VIM.
+    Specifically, if I type this in VIM:
+    
+      :e vendor/rails/&lt;tab&gt;
+    
+    Then VIM's autocomplete won't allow me to drill down into the directory
+    because it is excluded by the 'wildignore' setting.
+    
+    Command-T, on the other hand, will allow me to see the contents of that
+    directory. This is because internally, at the time the file names are
+    checked, they are almost always absolute paths, because the default
+    starting directory is &quot;:pwd&quot; which is itself provided by VIM as an
+    absolute path. As such, VIM's expand() function checks to see if:
+    
+      /absolute/path/to/vendor/rails/
+    
+    Matches against the 'wildignore' pattern of:
+    
+      vendor/rails/**
+    
+    And decides that it does not match.
+    
+    As a work around, a user could specify a pattern like this:
+    
+      **/vendor/rails/**
+    
+    But it is a bit ugly because it doesn't fit well with the behaviour of
+    VIM itself.
+    
+    The fix, then, is to not pass absolute paths into the expand() function,
+    but to pass paths relative to the starting directory.
+    
+    In 99% of cases, the starting directory is the &quot;:pwd&quot;, so the behaviour
+    should then be identical to VIM's own behaviour.
+    
+    In the cases where the user has passed in an override for the starting
+    directory (either relative or absolute), then the behaviour will diverge
+    slightly from VIM's while still hopefully being consistent and intuitive
+    from the user's perspective.
+    
+    For example, if :pwd is the HOME directory and the user invokes
+    Command-T with:
+    
+      :CommandT path/to/some/rails/project
+    
+    Then a 'wildignore' which includes this pattern:
+    
+      vendor/rails/**
+    
+    Will exclude all files under:
+    
+      path/to/some/rails/prokect/vendor/rails/
+    
+    Which is probably what the user expects. For comparison, typing:
+    
+      :e path/to/some/rails/project/vendor/rails/&lt;tab&gt;
+    
+    Will autocomplete despite the 'wildignore' settings, which is consistent
+    with the standard VIM behaviour as described previously.
+    
+    Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;
+
+diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
+index c773d72..1868e95 100644
+--- a/ruby/command-t/scanner.rb
++++ b/ruby/command-t/scanner.rb
+@@ -21,13 +21,15 @@
+ # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ # POSSIBILITY OF SUCH DAMAGE.
+ 
++require 'pathname'
++
+ module CommandT
+   # Reads the current directory recursively for the paths to all regular files.
+   class Scanner
+     class FileLimitExceeded &lt; ::RuntimeError; end
+ 
+     def initialize path = Dir.pwd, options = {}
+-      @path                 = path
++      @path                 = path ? Pathname.new(path) : nil
+       @max_depth            = options[:max_depth] || 15
+       @max_files            = options[:max_files] || 10_000
+       @scan_dot_directories = options[:scan_dot_directories] || false
+@@ -39,7 +41,7 @@ module CommandT
+         @paths = []
+         @depth = 0
+         @files = 0
+-        @prefix_len = @path.chomp('/').length
++        @prefix_len = @path.to_s.chomp('/').length
+         add_paths_for_directory @path, @paths
+       rescue FileLimitExceeded
+       end
+@@ -51,8 +53,9 @@ module CommandT
+     end
+ 
+     def path= str
+-      if @path != str
+-        @path = str
++      pathname = str ? Pathname.new(str) : nil
++      if @path != pathname
++        @path = pathname
+         flush
+       end
+     end
+@@ -60,6 +63,7 @@ module CommandT
+   private
+ 
+     def path_excluded? path
++      path = path.relative_path_from(@path).to_s
+       path = Vim.escape_for_single_quotes path
+       VIM.evaluate(&quot;empty(expand('#{path}'))&quot;).to_i == 1
+     end
+@@ -67,13 +71,13 @@ module CommandT
+     def add_paths_for_directory dir, accumulator
+       Dir.foreach(dir) do |entry|
+         next if ['.', '..'].include?(entry)
+-        path = File.join(dir, entry)
++        path = dir + entry
+         unless path_excluded?(path)
+-          if File.file?(path)
++          if path.file?
+             @files += 1
+             raise FileLimitExceeded if @files &gt; @max_files
+-            accumulator &lt;&lt; path[@prefix_len + 1..-1]
+-          elsif File.directory?(path)
++            accumulator &lt;&lt; path.to_s[@prefix_len + 1..-1]
++          elsif path.directory?
+             next if @depth &gt;= @max_depth
+             next if (entry.match(/\A\./) &amp;&amp; !@scan_dot_directories)
+             @depth += 1</pre>
+</blockquote>
+</li>
+<li class='comment' id='comment_5623'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5623"><time data-relative="true">2010-05-11T20:18:48Z</time></a></span>
+</cite>
+<blockquote><p>I'm going to rethink this a bit (going through VIM:: makes it rather hard to test).</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_5624'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_5624"><time data-relative="true">2010-05-11T20:20:35Z</time></a></span>
+</cite>
+<blockquote><p>oops, ignore my last post (and this one). I forgot to reload the page before I posted it.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5625'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5625"><time data-relative="true">2010-05-12T10:18:55Z</time></a></span>
+</cite>
+<blockquote><p>Performance of the Pathname-based code is a bit sucky, based on my subjective testing. Gonna try replacing it with something simpler.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5628'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5628"><time data-relative="true">2010-05-12T12:13:42Z</time></a></span>
+</cite>
+<blockquote><p>This replaces the Pathname-based code with a much faster &quot;inline&quot; alternative:</p>
+<pre>diff --git a/ruby/command-t/scanner.rb b/ruby/command-t/scanner.rb
+index 1868e95..c14668d 100644
+--- a/ruby/command-t/scanner.rb
++++ b/ruby/command-t/scanner.rb
+@@ -21,15 +21,13 @@
+ # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ # POSSIBILITY OF SUCH DAMAGE.
+ 
+-require 'pathname'
+-
+ module CommandT
+   # Reads the current directory recursively for the paths to all regular files.
+   class Scanner
+     class FileLimitExceeded &lt; ::RuntimeError; end
+ 
+     def initialize path = Dir.pwd, options = {}
+-      @path                 = path ? Pathname.new(path) : nil
++      @path                 = path
+       @max_depth            = options[:max_depth] || 15
+       @max_files            = options[:max_files] || 10_000
+       @scan_dot_directories = options[:scan_dot_directories] || false
+@@ -41,7 +39,7 @@ module CommandT
+         @paths = []
+         @depth = 0
+         @files = 0
+-        @prefix_len = @path.to_s.chomp('/').length
++        @prefix_len = @path.chomp('/').length
+         add_paths_for_directory @path, @paths
+       rescue FileLimitExceeded
+       end
+@@ -53,9 +51,8 @@ module CommandT
+     end
+ 
+     def path= str
+-      pathname = str ? Pathname.new(str) : nil
+-      if @path != pathname
+-        @path = pathname
++      if @path != str
++        @path = str
+         flush
+       end
+     end
+@@ -63,7 +60,8 @@ module CommandT
+   private
+ 
+     def path_excluded? path
+-      path = path.relative_path_from(@path).to_s
++      # first strip common prefix (@path) from path
++      path = path[(@prefix_len + 1)..-1]
+       path = Vim.escape_for_single_quotes path
+       VIM.evaluate(&quot;empty(expand('#{path}'))&quot;).to_i == 1
+     end
+@@ -71,13 +69,13 @@ module CommandT
+     def add_paths_for_directory dir, accumulator
+       Dir.foreach(dir) do |entry|
+         next if ['.', '..'].include?(entry)
+-        path = dir + entry
++        path = File.join(dir, entry)
+         unless path_excluded?(path)
+-          if path.file?
++          if File.file?(path)
+             @files += 1
+             raise FileLimitExceeded if @files &gt; @max_files
+-            accumulator &lt;&lt; path.to_s[@prefix_len + 1..-1]
+-          elsif path.directory?
++            accumulator &lt;&lt; path[@prefix_len + 1..-1]
++          elsif File.directory?(path)
+             next if @depth &gt;= @max_depth
+             next if (entry.match(/\A\./) &amp;&amp; !@scan_dot_directories)
+             @depth += 1</pre>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5629'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5629"><time data-relative="true">2010-05-12T14:36:43Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I've now done enough testing of this that it's at the point where I feel ok with pushing it out. Relevant commits are:</p>
+<ul>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/f314c1e671b9ea655b635aef038d409bee0976b7" class="external">http://git.wincent.com/command-t.git/commitdiff/f314c1e671b9ea655b635aef038d409bee0976b7</a></li>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/bbf296b775d5d9220fae28a34111117312bfcaa7" class="external">http://git.wincent.com/command-t.git/commitdiff/bbf296b775d5d9220fae28a34111117312bfcaa7</a></li>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/1df3167609c48ec5935051d7e4491677a58ca678" class="external">http://git.wincent.com/command-t.git/commitdiff/1df3167609c48ec5935051d7e4491677a58ca678</a></li>
+<li><a href="http://git.wincent.com/command-t.git/commitdiff/a2b713d49bfb22e4a2afd17115835a5e7f00dd97" class="external">http://git.wincent.com/command-t.git/commitdiff/a2b713d49bfb22e4a2afd17115835a5e7f00dd97</a></li>
+</ul>
+<p>Still not at the point where I feel comfortable cutting a release, but at least it's out there in the public eye now.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_5635'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_5635"><time data-relative="true">2010-05-18T06:24:35Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

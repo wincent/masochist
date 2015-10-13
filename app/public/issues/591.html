@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Feature request #591: REQUEST: Increment skip count when skipping using Synergy
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Feature request #591</div>
+<div class='issue' id='issue_591'>
+<form class="edit_issue" id="edit_issue_591" action="/issues/591" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="Ez4mL3oFKwXN+hZQtXx9WwWDL3Z5go5sv9BaWs78L7AnzJiY3YjxUBR2JaeEVS7vsAFGSnJuAHCfz4+k6iRIlA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='feature-request major'>
+Feature request #591:
+<span data-name='issue[summary]'>
+REQUEST: Increment skip count when skipping using Synergy
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+feature request
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2007-07-03T17:10:34Z</time>, updated <time data-relative="true">2007-08-06T10:04:39Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/bugzilla-user-462">bugzilla user 462</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Using either the menubar button or the hotkey to skip a song, iTunes won't increment the skipped count. If I use the skip button in iTunes, the count is incremented.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_3048'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3048"><time data-relative="true">2007-07-04T01:57:32Z</time></a></span>
+</cite>
+<blockquote><p>What version of iTunes are you using? iTunes doesn't increment the played count when you skip tracks for any of the versions of iTunes that I've tested over the years.</p>
+<p>There are some more notes on this (for Synergy Advance) here:</p>
+<p><a href="http://wincent.com/a/products/synergy-advance/help/preferences/advanced/" class="external">http://wincent.com/a/products/synergy-advance/help/preferences/advanced/</a></p>
+<p>I'll paste in the relevant bits here:</p>
+<p>iTunes keeps count of the number of times that you have listened to the tracks in your music library. To be precise, it increments the &quot;played count&quot; whenever it comes ot the end of a track. This means that if you listen to a track in part but do not allow playback to continue all the way to the end then the played count will not be incremented.</p>
+<p>Some users would prefer to have the played count increment whenever they listen to a song, even if only part of it. You can use the &quot;Increment track played count when skipping to next track&quot; setting to achieve this goal. When this setting is set, Synergy Advance will increment the played count by one whenever you skip forward to the next track (by using a Synergy Advance hot key or the Global Menu). If you skip tracks using iTunes itself then Synergy Advance will not intervene or increment the play count. In this way you have can choose whether the count should be incremented: to increment the count when skipping tracks use Synergy Advance to perform the skip; to avoid incrementing the count use iTunes itself to perform the skip.</p>
+<p>Note that this setting only applies when skipping forwards through the playlist (using the &quot;Next track&quot; menu item or hot key). It will not have any effect when skipping backwards through the playlist.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3049'>
+<cite>
+<a href="/users/bugzilla-user-462">bugzilla user 462</a>
+<span class='when'><a href="#comment_3049"><time data-relative="true">2007-07-05T23:08:20Z</time></a></span>
+</cite>
+<blockquote><p>iTunes 7.3 (54)</p>
+<p>Understand about the play count; I'm talking about the skip count.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3050'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3050"><time data-relative="true">2007-07-06T03:13:47Z</time></a></span>
+</cite>
+<blockquote><p>(In reply to comment #2)</p>
+<blockquote>
+<p>Understand about the play count; I'm talking about the skip count.</p>
+</blockquote>
+<p>Ah, sorry about that.</p>
+<p>I seem to recall having a conversation about this with someone previously but I can't find any trace of it, so I'll resume it here:</p>
+<p>This kind of thing is a bug in iTunes and so there are two things that must be done:</p>
+<p>1. Report the bug to Apple (they probably already know about it, but it seems that they prioritize things which get more reports)</p>
+<p>2. Try to implement a workaround in the meantime.</p>
+<p>So first of all, why is it a bug in iTunes? Basically the expectation is that iTunes should behave identically regardless of whether you control it using the keyboard (when iTunes is frontmost), or the mouse (the iTunes Dock menu or control buttons), or via AppleScript or Apple Events (as is the case in Synergy). Any discrepancy among the various different methods is an inconsistency within iTunes itself and needs to be corrected within iTunes itself.</p>
+<p>If you want to confirm this for yourself open up the Script Editor (in /Applications/AppleScript/) and try running a script like this:</p>
+<p>tell application &quot;iTunes&quot; to next track</p>
+<p>And observe the behaviour, comparing it with other methods. It should be identical (and Synergy should behave exactly like when you send the command from within the Script Editor) but your comments suggest that this is not the case due to the bug in iTunes.</p>
+<p>So the most important thing to do is file a bug report with Apple. You can use the general iTunes feedback link:</p>
+<p><a href="http://www.apple.com/feedback/itunesapp.html" class="external">http://www.apple.com/feedback/itunesapp.html</a></p>
+<p>More effective would be to file using their bug reporter:</p>
+<p><a href="http://bugreporter.apple.com/" class="external">http://bugreporter.apple.com/</a></p>
+<p>Seems that reports filed via the bug reporter are more likely to be seen by an actual iTunes engineer. In order to use their bug reporter you need an ADC account; if you don't have one already you can sign up for free at:</p>
+<p><a href="http://connect.apple.com/" class="external">http://connect.apple.com/</a></p>
+<p>Now, onto the subject of the workaround. It should be possible for Synergy to automatically increment the skipped count to compensate for the flaw in iTunes. If Apple ever fixes the bug then I can remove the compensation. It appears that the skipped count is accessible via AppleScript/Apple Events, and it is *not* a read-only property so in theory could be adjusted by an external process.</p>
+<p>So I am going to mark this request as ASSIGNED and reword the summary a bit to describe what needs to be done.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3051'>
+<cite>
+<a href="/users/bugzilla-user-462">bugzilla user 462</a>
+<span class='when'><a href="#comment_3051"><time data-relative="true">2007-07-07T16:57:53Z</time></a></span>
+</cite>
+<blockquote><p>Opened bug 5319669</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_3052'>
+<cite>
+<a href="/users/bugzilla-user-462">bugzilla user 462</a>
+<span class='when'><a href="#comment_3052"><time data-relative="true">2007-08-06T01:38:45Z</time></a></span>
+</cite>
+<blockquote><p>Hrm, this suddenly started working with 7.3.1 (3), still version 3.1.3 of synergy, so I'm guessing they &quot;fixed the glitch&quot;.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_3053'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_3053"><time data-relative="true">2007-08-06T10:04:39Z</time></a></span>
+</cite>
+<blockquote><p>Well, I'll mark this as CLOSED for now, and if it ever creeps back in to a future version of iTunes we'll reopen this one.</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

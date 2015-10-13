@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #1365: Consecutively repeated tracks don't get submitted to last.fm
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #1365</div>
+<div class='issue' id='issue_1365'>
+<form class="edit_issue" id="edit_issue_1365" action="/issues/1365" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="pJrglSjnvVe/U3bVh32rHAY90IAcAjO9oJNXxs3vph+QaF4ij2pnAmbfRSK2VPios7+5vBfuvaGAjII46TfBOw==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #1365:
+<span data-name='issue[summary]'>
+Consecutively repeated tracks don't get submitted to last.fm
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+Synergy
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2009-08-17T08:02:51Z</time>, updated <time data-relative="true">2009-08-24T12:02:41Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+<p>Reported <a href="/forums/synergy/topics/410">here in the forums</a>.</p>
+
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_4872'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4872"><time data-relative="true">2009-08-17T08:34:30Z</time></a></span>
+</cite>
+<blockquote><p>Ok, I think I've fixed this. Running some tests now to confirm.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4873'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4873"><time data-relative="true">2009-08-17T08:41:59Z</time></a></span>
+</cite>
+<blockquote><p>Seems to work. If you check out <a href="http://www.lastfm.es/user/wcolaiuta" class="external">my last.fm profile</a> right now you'll see a few repetitions of &quot;214 Sullivan Street&quot; by Fito &amp; Fitipaldis.</p>
+<p>Going to continue testing a few edge cases.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4874'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4874"><time data-relative="true">2009-08-17T08:47:22Z</time></a></span>
+</cite>
+<blockquote><p>Looks like some further work is going to be needed on the edge cases. Check out what happens if we submit a track, then pause, then repeat:</p>
+<pre>17/8/2009 14:42:22 Synergy[11856] Audioscrobbler: Received notification from iTunes 
+17/8/2009 14:42:22 Synergy[11856] Audioscrobbler: Received notification of non-playing status 
+17/8/2009 14:42:22 Synergy[11856] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = &quot;Por la boca vive el pez&quot;;
+    WOAudioscrobblerArtist = &quot;Fito y Fitipaldis&quot;;
+    WOAudioscrobblerLength = 134;
+    WOAudioscrobblerTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 14:42:22 Synergy[11856] Audioscrobbler: This track was not previously submitted for consideration; cancelling timer 
+17/8/2009 14:42:22 Synergy[11856] Audioscrobbler: Cancelling previously existing submission timer, if any 
+17/8/2009 14:42:22 Synergy[11856] Audioscrobbler: Cancelling previously existing submission timer, if any 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: Received notification from iTunes 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: Received notification of playing status 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = &quot;Por la boca vive el pez&quot;;
+    WOAudioscrobblerArtist = &quot;Fito y Fitipaldis&quot;;
+    WOAudioscrobblerLength = 134;
+    WOAudioscrobblerTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: This track appears to be a new submission 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: Cancelling previously existing submission timer, if any 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: Setting up new submission timer (67 seconds) 
+17/8/2009 14:42:35 Synergy[11856] Audioscrobbler: Setting up new submission timer (67 seconds) 
+17/8/2009 14:43:00 Synergy[11856] Audioscrobbler: Received notification from iTunes 
+17/8/2009 14:43:00 Synergy[11856] Audioscrobbler: Received notification of playing status 
+17/8/2009 14:43:00 Synergy[11856] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = &quot;Por la boca vive el pez&quot;;
+    WOAudioscrobblerArtist = &quot;Fito y Fitipaldis&quot;;
+    WOAudioscrobblerLength = 134;
+    WOAudioscrobblerTrack = &quot;214 sullivan street&quot;;
+} 
+17/8/2009 14:43:00 Synergy[11856] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing 
+17/8/2009 14:43:00 Synergy[11856] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing 
+17/8/2009 14:43:42 Synergy[11856] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value 
+17/8/2009 14:43:42 Synergy[11856] Audioscrobbler: Position does not match (user must have skipped); will not submit to Audioscrobbler</pre>
+<p>The problem is when we resume playback (see message at 14:42:35, &quot;This track appears to be a new submission&quot;). On submission we've already cleaned up the &quot;current song info&quot;, so when we pause/resume it looks like a new track. But then when the repeat kicks in we get an update notification from iTunes and Synergy sees we already have a timer running and matching song info, so does nothing: and when the timer fires and it has to submit it checks the track position to detect if the user has skipped (which would rule out submission), and of course the position doesn't match.</p>
+<p>So I wonder if instead of clearing the track info at submission time if we should be handling all of this when receiving the first notification from iTunes. Basically, overwrite the &quot;current song info&quot; regardless whenever &quot;position&quot; is 0 (zero).</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4876'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4876"><time data-relative="true">2009-08-17T09:47:46Z</time></a></span>
+</cite>
+<blockquote><p>Ok, have made some more changes; let's test them out.</p>
+<p>First time track is played:</p>
+<pre>2009-08-17 15:41:07.454 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:41:07.454 Synergy[13923:10b] Audioscrobbler: Received notification of playing status
+2009-08-17 15:41:07.457 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:41:07.460 Synergy[13923:10b] Audioscrobbler: This track appears to be a new submission
+2009-08-17 15:41:07.461 Synergy[13923:10b] Audioscrobbler: Cancelling previously existing submission timer, if any
+2009-08-17 15:41:07.465 Synergy[13923:10b] Audioscrobbler: Setting up new submission timer (44 seconds)
+2009-08-17 15:41:51.473 Synergy[13923:10b] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value
+2009-08-17 15:41:51.484 Synergy[13923:10b] Audioscrobbler: Position matches, will submit to Audioscrobbler</pre>
+<p>Next time it is played (on repeat mode):</p>
+<pre>2009-08-17 15:42:36.751 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:42:36.751 Synergy[13923:10b] Audioscrobbler: Received notification of playing status
+2009-08-17 15:42:36.753 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:42:36.755 Synergy[13923:10b] Audioscrobbler: This track was previously submitted for consideration but player position is 0, so treating like a new submission
+2009-08-17 15:42:36.756 Synergy[13923:10b] Audioscrobbler: Cancelling previously existing submission timer, if any
+2009-08-17 15:42:36.757 Synergy[13923:10b] Audioscrobbler: Setting up new submission timer (44 seconds)
+2009-08-17 15:43:20.761 Synergy[13923:10b] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value
+2009-08-17 15:43:20.784 Synergy[13923:10b] Audioscrobbler: Position matches, will submit to Audioscrobbler</pre>
+<p>Now pausing after submission, but before track starts repeating again:</p>
+<pre>2009-08-17 15:43:41.814 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:43:41.816 Synergy[13923:10b] Audioscrobbler: Received notification of non-playing status
+2009-08-17 15:43:41.819 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:43:41.828 Synergy[13923:10b] Audioscrobbler: This track was previously submitted for consideration; pausing timer</pre>
+<p>Resuming:</p>
+<pre>2009-08-17 15:44:20.284 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:44:20.288 Synergy[13923:10b] Audioscrobbler: Received notification of playing status
+2009-08-17 15:44:20.292 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:44:20.328 Synergy[13923:10b] Audioscrobbler: This track was previously submitted for consideration but no paused timer found; doing nothing</pre>
+<p>Track repeats (starts from beginning again):</p>
+<pre>2009-08-17 15:44:44.741 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:44:44.747 Synergy[13923:10b] Audioscrobbler: Received notification of playing status
+2009-08-17 15:44:44.767 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:44:44.769 Synergy[13923:10b] Audioscrobbler: This track was previously submitted for consideration but player position is 0, so treating like a new submission
+2009-08-17 15:44:44.769 Synergy[13923:10b] Audioscrobbler: Cancelling previously existing submission timer, if any
+2009-08-17 15:44:44.770 Synergy[13923:10b] Audioscrobbler: Setting up new submission timer (44 seconds)</pre>
+<p>And submission takes place:</p>
+<pre>2009-08-17 15:45:28.772 Synergy[13923:10b] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value
+2009-08-17 15:45:28.787 Synergy[13923:10b] Audioscrobbler: Position matches, will submit to Audioscrobbler</pre>
+<p>Last thing to test; pausing <em>before</em> submission timer kicks in:</p>
+<pre>2009-08-17 15:46:22.087 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:46:22.088 Synergy[13923:10b] Audioscrobbler: Received notification of non-playing status
+2009-08-17 15:46:22.093 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:46:22.095 Synergy[13923:10b] Audioscrobbler: This track was previously submitted for consideration; pausing timer</pre>
+<p>And resuming:</p>
+<pre>2009-08-17 15:46:46.875 Synergy[13923:10b] Audioscrobbler: Received notification from iTunes
+2009-08-17 15:46:46.884 Synergy[13923:10b] Audioscrobbler: Received notification of playing status
+2009-08-17 15:46:46.887 Synergy[13923:10b] Audioscrobbler: Track information: {
+    WOAudioscrobblerAlbum = Roots;
+    WOAudioscrobblerArtist = &quot;Gipsy Kings&quot;;
+    WOAudioscrobblerLength = 89;
+    WOAudioscrobblerTrack = &quot;Fandango (Patchai)&quot;;
+}
+2009-08-17 15:46:46.897 Synergy[13923:10b] Audioscrobbler: This track was previously submitted for consideration and we have a paused timer; resuming it</pre>
+<p>And submission takes place:</p>
+<pre>2009-08-17 15:47:22.502 Synergy[13923:10b] Audioscrobbler: Submission timer fired; will double-check that current track position matches expected value
+2009-08-17 15:47:22.519 Synergy[13923:10b] Audioscrobbler: Position matches, will submit to Audioscrobbler</pre>
+<p>So looks like everything is working perfectly. Will commit this and include it in the next (post-3.5.4a) release.</p>
+<p>Will mark this ticket as closed.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4877'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4877"><time data-relative="true">2009-08-17T09:48:50Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> open</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+<li class='comment' id='comment_4880'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_4880"><time data-relative="true">2009-08-18T08:36:22Z</time></a></span>
+</cite>
+<blockquote><p>Wow, you're wonderfully prompt.  I'm the one who originally submitted the question. :)  Thank you so much.  I'll look forward to the next release!</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4881'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4881"><time data-relative="true">2009-08-18T08:39:55Z</time></a></span>
+</cite>
+<blockquote><p>Currently testing, will probably cut a 3.5.5a release before the end of the week or early next week.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_4896'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_4896"><time data-relative="true">2009-08-24T12:02:41Z</time></a></span>
+</cite>
+<blockquote><p>3.5.5a is now out (released a couple of hours ago).</p>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

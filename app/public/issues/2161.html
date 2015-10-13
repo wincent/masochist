@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
+<title>
+Bug #2161: Icon fonts are borked on Firefox
+&middot; wincent.com
+</title>
+<link rel="stylesheet" media="screen" href="https://djfaa0bz60cz6.cloudfront.net/assets/application-73fd7b8197d0b27a25f03f916460e23c.css" />
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+<body>
+<div class='viewport menu-closed'>
+<div class='app'>
+<a id="top" name="top"></a>
+<nav class='global'>
+<a class='menu-icon' href='#'>&equiv;</a>
+<h1><a href="/">Wincent</a></h1>
+<ul class='navbar-links'>
+<li>
+<a href="/products">Products</a>
+</li>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li class='selected'><a href="/issues">Issues</a></li>
+</ul>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div class='notice'>
+<i class='fa fa-info-circle'></i>
+You are viewing an historical archive of past issues. Please report new issues to the appropriate project issue tracker on <a href="https://github.com/wincent?tab=repositories">GitHub</a>.
+</div>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/issues">Issues</a> &raquo; Bug #2161</div>
+<div class='issue' id='issue_2161'>
+<form class="edit_issue" id="edit_issue_2161" action="/issues/2161" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="+peci4+g2pXigD286SId4Ra6ep7Ec7l7UvhjbkTMoVDOZSI8KC0AwDsMDkvYC05VozgTos+fN2dy57aQYBTGdA==" /><input type="text" name="website_address" id="website_address" value="" class="website-address" /><h1 class='bug major'>
+Bug #2161:
+<span data-name='issue[summary]'>
+Icon fonts are borked on Firefox
+</span>
+</h1>
+<table class='issue-metadata'>
+<tr>
+<th>Kind</th>
+<td>
+bug
+</td>
+</tr>
+<tr>
+<th>Product</th>
+<td>
+wincent.com
+</td>
+</tr>
+<tr>
+<th>When</th>
+<td>Created <time data-relative="true">2014-03-01T23:39:58Z</time>, updated <time data-relative="true">2014-04-11T07:48:27Z</time></td>
+</tr>
+<tr>
+<th>Status</th>
+<td>
+closed
+</td>
+</tr>
+<tr>
+<th>Reporter</th>
+<td><a href="/users/greg-hurrell">Greg Hurrell</a></td>
+</tr>
+<tr>
+<th>Tags</th>
+<td data-name='issue[pending_tags]'>
+no tags
+</td>
+</tr>
+</table>
+<h4 class='major'>
+Description
+</h4>
+<div class='issue-description-body'>
+none
+</div>
+</form></div>
+<h4 class='major'>Comments</h4>
+<ol class='boxed' id='comments'>
+<li class='comment admin' id='comment_11199'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11199"><time data-relative="true">2014-04-11T07:25:30Z</time></a></span>
+</cite>
+<blockquote><p>It's not due to CORS, as I've set up the appropriate headers; eg. the Firefox console shows:</p>
+<pre>GET <a href="https://d3ogqji57fkqg9.cloudfront.net/assets/fontawesome-webfont-4de7b126797e5a5646cc026394183a99.woff" class="external">https://d3ogqji57fkqg9.cloudfront.net/assets/fontawesome-webfont-4de7b126797e5a5646cc026394183a99.woff</a></pre>
+<p>And the response headers (pasted directly from Firefox) are:</p>
+<pre>X-Cache:&#x0009;Miss from cloudfront
+X-Amz-Cf-Id:&#x0009;GoJJmblNor9JPEuUO3BvWdFNJwwNAOO5hghjKoAkQoyPlFChgRRA4A==
+Via:&#x0009;1.1 3cc911e7eb2df956e3f7c8f27c198a0b.cloudfront.net (CloudFront)
+Server:&#x0009;nginx
+Expires:&#x0009;Sat, 11 Apr 2015 07:20:58 GMT
+Date:&#x0009;Fri, 11 Apr 2014 07:20:58 GMT
+Content-Type:&#x0009;application/octet-stream
+Content-Length:&#x0009;44432
+Connection:&#x0009;keep-alive
+Cache-Control:&#x0009;max-age=31536000, public
+Access-Control-Allow-Origin:&#x0009;wincent.com
+Accept-Ranges:&#x0009;bytes</pre>
+<p>Nevertheless, the console claims:</p>
+<pre>downloadable font: no supported format found (font-family: &quot;FontAwesome&quot; style:normal weight:normal stretch:normal src index:4)
+source: (end of source list)</pre>
+<p>Other fonts (ie. from Google) work fine; eg:</p>
+<pre>GET <a href="https://themes.googleusercontent.com/static/fonts/inconsolata/v7/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff" class="external">https://themes.googleusercontent.com/static/fonts/inconsolata/v7/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff</a></pre>
+<p>FontAwesome font loads fine in Safari and Chrome.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_11201'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_11201"><time data-relative="true">2014-04-11T07:48:27Z</time></a></span>
+</cite>
+<blockquote><p><strong>Status</strong> changed:</p>
+<ul>
+<li><strong>From:</strong> new</li>
+<li><strong>To:</strong> closed</li>
+</ul>
+</blockquote>
+</li>
+
+</ol>
+<h5 class='major'>Add a comment</h5>
+<p>Comments are now closed for this issue.</p>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
+<li><a href="/misc/legal">legal</a></li>
+</ul>
+</footer>
+</div>
+<div class='menu hide'>
+<div class='menu-inner'>
+<section>
+<h2>Menu</h2>
+<ul>
+<li><a href="/blog">Blog</a></li>
+<li><a href="/wiki">Wiki</a></li>
+<li><a href="/issues">Issues</a></li>
+<li><a href="/snippets">Snippets</a></li>
+</ul>
+</section>
+</div>
+</div>
+</div>
+<script src="https://djfaa0bz60cz6.cloudfront.net/assets/application-70afe6376892ea318388e4bbb986d5a1.js"></script>
+
+<script>
+  new Wincent.Menu();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang='en-US'>
+<head>
+<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
+<title>
+Highlight color and whitespace
+
+&middot; wincent.com
+</title>
+<link href='/assets/application-dfd4c4823a8b2979d87ab2ce01a9114c.css' media='screen' rel='stylesheet' type='text/css'>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-35574060-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</head>
+<body>
+<nav class='global'>
+<h1>
+<a href='/'>Wincent</a>
+</h1>
+</nav>
+<div id='content-wrapper'>
+<div id='content'>
+<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/forums">Forums</a> &raquo; <a href="/forums/command-t">Command-T</a> &raquo; Highlight color and whitespace</div>
+<h1 class='major'>Highlight color and whitespace</h1>
+<div class='topic' id='topic_474'>
+<ol class='boxed' id='comments'>
+<li class='comment'>
+<cite>
+anonymous
+<span class='when'>
+<a href="/forums/command-t/topics/474"><time data-relative="true">2011-06-14T22:06:37Z</time></a>
+</span>
+</cite>
+<blockquote><p>How do I change the highlight color in command-t?  See screenshot:</p>
+<p><a href="https://skitch.com/cjbottaro/fraxb/command-t-highlighting" class="external">https://skitch.com/cjbottaro/fraxb/command-t-highlighting</a></p>
+<p>It's difficult for me to read what is selected.</p>
+<p>Also, is it possible to have command-t ignore whitespace?  I want searching for &quot;blahtest&quot; and &quot;blah test&quot; to yield the same results.</p>
+<p>Thank you.</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6934'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6934"><time data-relative="true">2011-06-16T05:04:33Z</time></a></span>
+</cite>
+<blockquote><p>It's not configurable at this stage. You could patch the source if you want to hand-edit the colors. Right now, the <code>Visual</code>, <code>Search</code> and <code>Error</code> highlight groups are used. See the <code>ruby/command-t/match_window.rb</code> file.</p>
+</blockquote>
+</li>
+<li class='comment' id='comment_6940'>
+<cite>
+anonymous
+<span class='when'><a href="#comment_6940"><time data-relative="true">2011-06-22T18:54:57Z</time></a></span>
+</cite>
+<blockquote><p>Awesome, that worked well, thanks for the tip.</p>
+<p>Any similar hand patch so whitespace is ignored while searching?</p>
+</blockquote>
+</li>
+<li class='comment admin' id='comment_6941'>
+<cite>
+<a href="/users/greg-hurrell">Greg Hurrell</a>
+<span class='when'><a href="#comment_6941"><time data-relative="true">2011-06-23T03:37:15Z</time></a></span>
+</cite>
+<blockquote><p>I thought I might have seen a pull request implementing that feature but looking at <a href="https://github.com/wincent/Command-T/pulls" class="external">the list of pending requests</a> looks like I was mistaken.</p>
+</blockquote>
+</li>
+
+</ol>
+</div>
+<h2 class='major'>Reply</h2>
+<p>This topic is now closed.</p>
+<div class='links'>
+<a href="/forums/command-t">topic index</a>
+</div>
+
+</div>
+</div>
+<footer class='global'>
+<ul>
+<li>
+<a class='mailto' href='mailto:greg@hurrell.net' title='Email me at greg@hurrell.net'>contact</a>
+</li>
+<li>
+<a href='/misc/legal'>legal</a>
+</li>
+</ul>
+</footer>
+</body>
+</html>
