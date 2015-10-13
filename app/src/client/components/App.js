@@ -9,7 +9,7 @@ import './App.css';
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="container">
         <Nav />
         <Breadcrumbs routes={this.props.routes} />
         <h1>Hi, {this.props.viewer.name}</h1>
