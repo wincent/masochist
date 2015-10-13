@@ -27,17 +27,26 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express();
 
-const appHandler = (request, response) => (
-  response.sendFile(path.join(__dirname, '..', '..', 'public', 'index.html'))
-);
+function staticHandler(...resource) {
+  return (request, response) => (
+    response.sendFile(path.join(__dirname, '..', '..', 'public', ...resource))
+  );
+}
 
-app.get('/', appHandler);
-app.get('/blog', appHandler);
-app.get('/blog/*', appHandler);
-app.get('/wiki', appHandler);
-app.get('/wiki/*', appHandler);
-app.get('/snippets', appHandler);
-app.get('/snippets/*', appHandler);
+const appRoutes = [
+  '/',
+  '/blog',
+  '/blog/*',
+  '/wiki',
+  '/wiki/*',
+  '/snippets',
+  '/snippets/*',
+];
+
+appRoutes.forEach(route => app.get(route, staticHandler('index.html')));
+
+app.get('/static/normalize.css', staticHandler('static', 'normalize.css'));
+app.get('/static/skeleton.css', staticHandler('static', 'skeleton.css'));
 
 app.use('/graphql', (request, response, next) => {
   const options = {
