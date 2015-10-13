@@ -9,11 +9,13 @@ import './App.css';
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
+      <div className="app">
         <Nav />
         <Breadcrumbs routes={this.props.routes} />
         <h1>Hi, {this.props.viewer.name}</h1>
-        {this.props.children}
+        <section className="app-content container">
+          {this.props.children}
+        </section>
         <Footer />
       </div>
     );
