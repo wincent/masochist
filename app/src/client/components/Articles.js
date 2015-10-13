@@ -21,7 +21,12 @@ class Articles extends React.Component {
         }
         {
           this.props.viewer.articles.pageInfo.hasNextPage ?
-            <a href="#more" onClick={this._handleSeeMore}>Load more&hellip;</a> :
+            <a
+              className="button"
+              href="#more"
+              onClick={this._handleSeeMore}>
+              Load more&hellip;
+            </a> :
             null
         }
       </div>
