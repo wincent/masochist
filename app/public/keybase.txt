@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/wincent
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://wincent.com
+  * I am wincent (https://keybase.io/wincent) on keybase.
+  * I have a public key with fingerprint 4282 ED4A 05CC 894D 53A5  41C3 F962 DC1A 1941 CCC4
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "4282ed4a05cc894d53a541c3f962dc1a1941ccc4",
+            "host": "keybase.io",
+            "key_id": "f962dc1a1941ccc4",
+            "uid": "ee74cb0b4af3dec132b3b325caaf4700",
+            "username": "wincent"
+        },
+        "service": {
+            "hostname": "wincent.com",
+            "protocol": "https:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1411691687,
+    "expire_in": 157680000,
+    "prev": "23237e2ba22b366b8036cafe2d32b4a1c07d7aa7bde6606df9a3081ef7372f8e",
+    "seqno": 6,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGbwMvMwMX4M+mOlKTjmSOMpw98TGIIUdmytVopKT+lUsmqWik7FUylZealpxYV
+FGXmlShZKZkYWRilppgkGpgmJ1tYmqSYGieamhgmG6dZmhmlJBsmGloCecnJJko6
+Shn5xSAdQGOSEotT9TLzgWJATnxmClAUi/pSsERqqrlJcpJBkklimnFKarKhsVGS
+cZKxkWlyYmKaibmBAUhhcWpRXmJuKlB1eWZecirQYbU6SkDBsszkVJCTQTajKtBL
+zs8F6iwoyi/JT87PAUpklJQUFFuBNJZUFoBVpibFQ82IT8rMSwF6G6ijLLWoODM/
+T8nKEKgyuSQTZKihiaGhmaWhmYW5jlJqRUFmUWp8JkiFqbmZhQEQgOxJLQMaaWRs
+ZGyeapSUaAT0hJlZkoWBsVlyYlqqUQrQVyaJhskG5inmiYnmSSmpZmYGZilplonG
+BhaGqWnmxuZGaRapSiBfFeblK1mZAZ2ZmA40sjgzPS+xpLQoVamWq5NJhoWBkYuB
+jZUJFHMMXJwCsPjctIf/f97yo61bzt65LSni9Uqz99196Z51ay+8TGrVjP7EmVS6
+6N//g68UZ6+NPCrqU1HCwiFwrmD+tEuLV3tFaOp/arvw5lYh5/7n8fPrpi84pjpV
+PahA0N5pk12Uf0W80aMVqv1expxObUvnTD3Rs08jZqaA0sfXSmx36zp3Rkvpa+UU
+bl3El3win+mgihjP/O8laUwPRX5GcITOVG/ZUbvgafDE05ITDu6UtFTZyLP11oJP
+iXPLOQ5NKV85p8vr+iWO+L1y+cvnz4iYFNnae1BPd/fxWN7VTkLHXl8403BS/0D6
+9wcrTzWrsD1RFisRXCTk27ypxeFY+cfvrLLvtz/i3B/kMPvytUWHNxZcPGf9/UsT
+i/atLf+FQjY1Gz7V+qBftaomOMvHIrRQc5HW1Dk88pWPaq5cyovmWs8t6PLjy2ae
+uy3fLqrmLpfj55iUKT7nxFW7MpXZtlqv3inWPr8ZKt3yrodttafwgwt1/xImfv8y
+dZoP98RHLS3LDGfcP5y6QUPq/5Xr99W5G+/bnnhn/85N17bG8JS6b/WOxS867xsv
+zdsqpXq96jHbIztGzu0B2UsqbuQwsHK+vTXd7erimqevL5rM/rjZcJ3VJnbPiXqv
+l4YcOz97Ycvxr4Kcwpam61KuGeWy9PEtyDj3Wr8x+sxkmxbFp7wtrxPy6lSCUqLP
+r877uHDa5j3vmnm/lrs0txRXCPE2v9tV17Hw0lcA
+=H597
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/wincent
+
+==================================================================
