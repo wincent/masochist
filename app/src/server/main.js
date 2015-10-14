@@ -102,8 +102,14 @@ if (__DEV__) {
 }
 
 // In production, nginx should handle this, but in case it doesn't:
-// TODO: need to handle cases like: /issues/2220 -> /issues/2220.html
-app.use(express.static(path.join(__dirname, '..', '..', 'public')));
+app.use(express.static(
+  path.join(__dirname, '..', '..', 'public'),
+  {
+    extensions: ['html'], // Given foobar, try for foobar.html
+    redirect: false, // Prevent redirect from issues to issues/
+  },
+));
+
 
 const server = app.listen(APP_PORT, () => {
   console.log('Listening at http://localhost:%s', APP_PORT);
