@@ -1,3 +1,8 @@
 footer {
   background: #eee;
+  padding-top: 1.5rem;
+}
+
+footer ul {
+  list-style: none;
 }

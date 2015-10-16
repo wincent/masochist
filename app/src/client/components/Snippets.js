@@ -1,10 +1,10 @@
 import React from 'react';
 import Relay from 'react-relay';
 import Snippet from './Snippet';
+import LoadMoreButton from './LoadMoreButton';
 
 class Snippets extends React.Component {
-  _handleSeeMore = event => {
-    event.preventDefault();
+  _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
     });
@@ -21,12 +21,7 @@ class Snippets extends React.Component {
         }
         {
           this.props.viewer.snippets.pageInfo.hasNextPage ?
-            <a
-              className="button"
-              href="#more"
-              onClick={this._handleSeeMore}>
-              Load more&hellip;
-            </a> :
+            <LoadMoreButton onLoadMore={this._handleLoadMore} /> :
             null
         }
       </div>
