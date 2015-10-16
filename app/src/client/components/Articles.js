@@ -3,6 +3,8 @@ import Relay from 'react-relay';
 import ArticlePreview from './ArticlePreview';
 import LoadMoreButton from './LoadMoreButton';
 
+import './Articles.css';
+
 class Articles extends React.Component {
   _handleLoadMore = () => {
     this.props.relay.setVariables({
@@ -14,7 +16,7 @@ class Articles extends React.Component {
     return (
       <div>
         <h1>Wiki articles</h1>
-        <table className="u-full-width">
+        <table className="article-listing">
           <thead>
             <tr>
               <th>Title</th>

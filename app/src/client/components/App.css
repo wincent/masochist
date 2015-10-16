@@ -40,6 +40,7 @@ article {
   width: 12px;
 }
 
+/* > Phablet */
 @media (min-width: 550px) {
   .app {
     /* For fixed top-nav; see Nav.css */

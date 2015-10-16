@@ -33,6 +33,7 @@ nav li {
   margin: 0;
 }
 
+/* > Phablet */
 @media (min-width: 550px) {
   nav {
     /* See corresponding .app padding-top in App.css */
