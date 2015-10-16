@@ -3,6 +3,14 @@
   text-align: right;
 }
 
+.tags.left {
+  text-align: left;
+}
+
+.tags.compact {
+  margin: 0;
+}
+
 .tags li {
   display: inline-block;
   margin-left: .5rem;

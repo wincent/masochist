@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import Article from './Article';
+import ArticlePreview from './ArticlePreview';
 import LoadMoreButton from './LoadMoreButton';
 
 class Articles extends React.Component {
@@ -13,11 +13,22 @@ class Articles extends React.Component {
   render() {
     return (
       <div>
-        {
-          this.props.viewer.articles.edges.map(({node}) => (
-            <Article key={node.id} article={node} />
-          ))
-        }
+        <h1>Wiki articles</h1>
+        <table className="u-full-width">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>About</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.props.viewer.articles.edges.map(({node}) => (
+                <ArticlePreview key={node.id} article={node} />
+              ))
+            }
+          </tbody>
+        </table>
         {
           this.props.viewer.articles.pageInfo.hasNextPage ?
             <LoadMoreButton onLoadMore={this._handleLoadMore} /> :
@@ -30,7 +41,7 @@ class Articles extends React.Component {
 
 export default Relay.createContainer(Articles, {
   initialVariables: {
-    count: 3,
+    count: 10,
   },
   fragments: {
     viewer: () => Relay.QL`
@@ -39,7 +50,7 @@ export default Relay.createContainer(Articles, {
           edges {
             node {
               id
-              ${Article.getFragment('article')}
+              ${ArticlePreview.getFragment('article')}
             }
           }
           pageInfo {
