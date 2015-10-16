@@ -37,6 +37,7 @@
     "graphql": "^0.4.4",
     "graphql-relay": "^0.3.3",
     "history": "1.12.3",
+    "jade": "1.11.0",
     "memcached": "2.2.0",
     "mysql": "2.9.0",
     "nodegit": "0.5.0",

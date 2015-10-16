@@ -27,22 +27,30 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express();
 
+app.set('views', path.join(__dirname, 'views'));
+
 function staticHandler(...resource) {
   return (request, response) => (
     response.sendFile(path.join(__dirname, '..', '..', 'public', ...resource))
   );
 }
 
+function jadeHandler(...resource) {
+  return (request, response) => response.render('index.jade');
+}
+
 const appRoutes = [
+  '/',
   '/blog',
   '/blog/*',
-  '/wiki',
-  '/wiki/*',
+  '/pages/*',
   '/snippets',
   '/snippets/*',
+  '/wiki',
+  '/wiki/*',
 ];
 
-appRoutes.forEach(route => app.get(route, staticHandler('index.html')));
+appRoutes.forEach(route => app.get(route, jadeHandler('index.html')));
 
 app.get('/static/normalize.css', staticHandler('static', 'normalize.css'));
 app.get('/static/skeleton.css', staticHandler('static', 'skeleton.css'));
