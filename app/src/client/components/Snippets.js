@@ -4,9 +4,16 @@ import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
 class Snippets extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isLoading: false};
+  }
+
   _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
+    }, ({ready, done, error, aborted}) => {
+      this.setState({isLoading: !ready && !(done || error || aborted)});
     });
   }
 
@@ -20,7 +27,10 @@ class Snippets extends React.Component {
         }
         {
           this.props.viewer.snippets.pageInfo.hasNextPage ?
-            <LoadMoreButton onLoadMore={this._handleLoadMore} /> :
+            <LoadMoreButton
+              isLoading={this.state.isLoading}
+              onLoadMore={this._handleLoadMore}
+            /> :
             null
         }
       </div>

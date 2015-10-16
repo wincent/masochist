@@ -4,7 +4,8 @@ import './LoadMoreButton.css';
 
 export default class LoadMoreButton extends React.Component {
   static propTypes = {
-    onLoadMore: React.PropTypes.func,
+    onLoadMore: React.PropTypes.func.isRequired,
+    isLoading: React.PropTypes.bool,
   };
 
   _handleLoadMore = event => {
@@ -13,14 +14,15 @@ export default class LoadMoreButton extends React.Component {
   }
 
   render() {
+    const {isLoading} = this.props;
     return (
       <div className="load-more">
-        <a
-          className="button"
+        <button
+          disabled={isLoading}
           href="#more"
           onClick={this._handleLoadMore}>
-          Load more&hellip;
-        </a>
+          {isLoading ? 'Loading' : 'Load more'}&hellip;
+        </button>
       </div>
     );
   }

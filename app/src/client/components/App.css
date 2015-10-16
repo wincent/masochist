@@ -40,6 +40,11 @@ article {
   width: 12px;
 }
 
+button:disabled {
+  /* TODO: something nicer here; may want animation */
+  opacity: .5;
+}
+
 /* > Phablet */
 @media (min-width: 550px) {
   .app {
