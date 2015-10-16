@@ -11,9 +11,8 @@ class App extends React.Component {
     return (
       <div className="app">
         <Nav routes={this.props.routes} />
-        <Breadcrumbs routes={this.props.routes} />
-        <h1>Hi, {this.props.viewer.name}</h1>
         <section className="app-content container">
+          <Breadcrumbs routes={this.props.routes} />
           {this.props.children}
         </section>
         <Footer />
