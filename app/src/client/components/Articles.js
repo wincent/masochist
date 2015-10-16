@@ -23,7 +23,7 @@ class Articles extends React.Component {
     return (
       <div>
         <h1>Wiki articles</h1>
-        <table className="article-listing">
+        <table className="article-listing u-full-width">
           <thead>
             <tr>
               <th>Title</th>
