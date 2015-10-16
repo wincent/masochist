@@ -13,7 +13,6 @@ class Articles extends React.Component {
   render() {
     return (
       <div>
-        <h1>Wiki</h1>
         {
           this.props.viewer.articles.edges.map(({node}) => (
             <Article key={node.id} article={node} />

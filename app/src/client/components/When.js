@@ -2,6 +2,14 @@ import React from 'react';
 import Time from './Time';
 import relativizeDate from '../relativizeDate';
 
+import './When.css';
+
+const WhenWrapper = props => (
+  <div className="when">
+    {props.children}
+  </div>
+);
+
 export default class When extends React.Component {
   static propTypes = {
     createdAt: React.PropTypes.string,
@@ -17,24 +25,24 @@ export default class When extends React.Component {
     ) {
       if (primary === 'updatedAt') {
         return (
-          <div>
+          <WhenWrapper>
             <Time datetime={updatedAt} />
-          </div>
+          </WhenWrapper>
         );
       } else {
         return (
-          <div>
+          <WhenWrapper>
             <Time datetime={updatedAt} />
-          </div>
+          </WhenWrapper>
         );
       }
     }
 
     return (
-      <div>
+      <WhenWrapper>
         Created <Time datetime={this.props.createdAt} />,
         updated <Time datetime={this.props.updatedAt} />
-      </div>
+      </WhenWrapper>
     );
   }
 }

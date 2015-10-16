@@ -13,7 +13,6 @@ class Snippets extends React.Component {
   render() {
     return (
       <div>
-        <h1>Snippets</h1>
         {
           this.props.viewer.snippets.edges.map(({node}) => (
             <Snippet key={node.id} snippet={node} />

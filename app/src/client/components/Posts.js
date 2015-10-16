@@ -13,7 +13,6 @@ class Posts extends React.Component {
   render() {
     return (
       <div>
-        <h1>Blog</h1>
         {
           this.props.viewer.posts.edges.map(({node}) => (
             <Post key={node.id} post={node} />
