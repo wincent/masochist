@@ -1,13 +1,22 @@
 import React from 'react';
 import Relay from 'react-relay';
+import {Link} from 'react-router';
+
+import './Tags.css';
+
+const TagLink = ({tag}) => (
+  <li>
+    <Link to={`/tags/${tag}`}>{tag}</Link>
+  </li>
+);
 
 class Tags extends React.Component {
   render() {
+    const {tags} = this.props.taggable;
     return (
-      // TODO: use an icon here
-      <div>
-        Tags: {this.props.taggable.tags.join(' ')}
-      </div>
+      <ul className="tags">
+        {tags.map(tag => <TagLink key={tag} tag={tag} />)}
+      </ul>
     );
   }
 }
