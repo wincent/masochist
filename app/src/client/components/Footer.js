@@ -27,27 +27,18 @@ export default class Footer extends React.Component {
                 <FooterLink target="/blog" text="Blog" />
                 <FooterLink target="/wiki" text="Wiki" />
                 <FooterLink target="/snippets" text="Snippets" />
+                <FooterLink target="/tags" text="Tags" />
+                <FooterLink target="/search" text="Search" />
               </ul>
             </div>
             <div className="four columns">
-              <h6>Legacy</h6>
+              <h6>External</h6>
               <ul>
-                {/* TODO: probably don't directly link do these from here but from somewhere less prominent */}
-                <StaticFooterLink target="/issues.html" text="Issues" />
-                <StaticFooterLink
-                  target="http://www.wincent.com/a/news/"
-                  text="Blog (2009)"
-                />
-                <StaticFooterLink
-                  target="/products.html"
-                  text="Products (2011)"
-                />
-                {/* TODO: see if we can mirror even this stuff, which would allow me to turn off Apache */}
-                <StaticFooterLink
-                  target="http://www.wincent.com/a/products/"
-                  text="Products (2009)"
-                />
-                <StaticFooterLink target="/forums.html" text="Forums" />
+                <StaticFooterLink target="https://github.com/wincent" text="GitHub" />
+                <StaticFooterLink target="https://twitter.com/wincent" text="Twitter" />
+                <StaticFooterLink target="https://facebook.com/glh" text="Facebook" />
+                <StaticFooterLink target="https://www.linkedin.com/in/greghurrell" text="LinkedIn" />
+                <StaticFooterLink target="https://keybase.io/wincent" text="Keybase" />
               </ul>
             </div>
             <div className="four columns">
@@ -63,6 +54,7 @@ export default class Footer extends React.Component {
                 {' '}<a href="http://redis.io/">Redis</a> and
                 {' '}<a href="https://github.com/vim/vim">Vim</a>).
               </p>
+              {/* TODO link to /pages/legal here */}
             </div>
           </div>
         </div>

@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <Nav />
+        <Nav routes={this.props.routes} />
         <Breadcrumbs routes={this.props.routes} />
         <h1>Hi, {this.props.viewer.name}</h1>
         <section className="app-content container">

@@ -20,3 +20,14 @@ html {
 .app-content {
   flex: 1;
 }
+
+article {
+  margin-top: 3rem;
+}
+
+@media (min-width: 550px) {
+  .app {
+    /* For fixed top-nav; see Nav.css */
+    padding-top: 3.5rem;
+  }
+}
