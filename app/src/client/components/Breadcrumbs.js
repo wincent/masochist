@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+import Relay from 'react-relay';
 import {Link} from 'react-router';
 
 import './Breadcrumbs.css';
@@ -11,9 +12,23 @@ function flatten(array: Array<mixed>): Array<mixed> {
   return array.reduce((result, item) => result.concat(item), []);
 }
 
-export default class Breadcrumbs extends React.Component {
+class Breadcrumbs extends React.Component {
   render() {
-    const {routes} = this.props;
+    const {node, routes} = this.props;
+
+    let leaf;
+    switch (node.__typename) {
+      case 'Article':
+        leaf = <ArticleCrumb article={node.article} />;
+        break;
+      case 'Post':
+        leaf = <PostCrumb post={node.post} />;
+        break;
+      case 'Snippet':
+        leaf = <SnippetCrumb snippet={node.snippet} />;
+        break;
+    }
+
     const paths = routes.map(route => route.path).filter(path => path);
     const crumbs = paths.map(path => {
       let crumb;
@@ -31,26 +46,26 @@ export default class Breadcrumbs extends React.Component {
       } else if (path === 'blog/:id') {
         return [
           <Link to="/blog">Blog</Link>,
-          <span>Current</span>, // TODO: get title
+          leaf,
         ];
       } else if (path === 'pages/:id') {
         return [
           <Link to="/pages">Pages</Link>,
-          <span>Current</span>, // TODO: get title
+          leaf,
         ];
       } else if (path === 'snippets') {
         return <span>Snippets</span>;
       } else if (path === 'snippets/:id') {
         return [
           <Link to="/snippets">Snippets</Link>,
-          <span>Current</span>, // TODO: get title
+          leaf,
         ];
       } else if (path === 'wiki') {
         return <span>Wiki</span>;
       } else if (path === 'wiki/:id') {
         return [
           <Link to="/wiki">Wiki</Link>,
-          <span>Current</span>, // TODO: get title
+          leaf,
         ];
       }
     });
@@ -65,3 +80,51 @@ export default class Breadcrumbs extends React.Component {
     );
   }
 }
+
+const ArticleCrumb = Relay.createContainer(
+  ({article}) => <span>{article.title}</span>,
+  {
+    fragments: {
+      article: () => Relay.QL`fragment on Article { title }`,
+    },
+  }
+);
+
+const PostCrumb = Relay.createContainer(
+  ({post}) => <span>{post.title}</span>,
+  {
+    fragments: {
+      post: () => Relay.QL`fragment on Post { title }`,
+    },
+  }
+);
+
+const SnippetCrumb = Relay.createContainer(
+  ({snippet}) => (
+    <span>{snippet.title || `Snippet #${snippet.id}`}</span>
+  ),
+  {
+    fragments: {
+      snippet: () => Relay.QL`
+        fragment on Snippet {
+          id
+          title
+        }
+      `,
+    },
+  }
+);
+
+// TODO: Page support
+export default Relay.createContainer(Breadcrumbs, {
+  fragments: {
+    node: () => Relay.QL`
+      fragment on Node {
+        __typename
+        ${ArticleCrumb.getFragment('article')}
+        ${PostCrumb.getFragment('post')}
+        ${SnippetCrumb.getFragment('snippet')}
+      }
+    `,
+  },
+});

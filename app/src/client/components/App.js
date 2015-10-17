@@ -8,12 +8,13 @@ import './App.css';
 
 class App extends React.Component {
   render() {
+    const {children, node, routes} = this.props;
     return (
       <div className="app">
-        <Nav routes={this.props.routes} />
+        <Nav routes={routes} />
         <section className="app-content container">
-          <Breadcrumbs routes={this.props.routes} />
-          {this.props.children}
+          <Breadcrumbs node={node} routes={routes} />
+          {children}
         </section>
         <Footer />
       </div>
@@ -23,9 +24,9 @@ class App extends React.Component {
 
 export default Relay.createContainer(App, {
   fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        name
+    node: () => Relay.QL`
+      fragment on Node {
+        ${Breadcrumbs.getFragment('node')}
       }
     `,
   },
