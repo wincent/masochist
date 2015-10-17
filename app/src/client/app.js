@@ -8,7 +8,6 @@ import Post from './components/Post';
 import Posts from './components/Posts';
 import Snippet from './components/Snippet';
 import Snippets from './components/Snippets';
-import AppQueries from './routes/AppQueries';
 import ArticleQueries from './routes/ArticleQueries';
 import ArticlesQueries from './routes/ArticlesQueries';
 import PostQueries from './routes/PostQueries';
@@ -45,7 +44,7 @@ function prepareArticleParams(params, route) {
 
 ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
-    <Route component={App} path="/" queries={AppQueries}>
+    <Route component={App} path="/">
       <IndexRoute component={Posts} queries={PostsQueries} />
       <Route component={Articles} path="wiki" queries={ArticlesQueries} />
       <Route
