@@ -1,14 +1,15 @@
 'use strict'; // eslint-disable-line
 
+import Promise from 'bluebird';
+import express from 'express';
+import graphqlHTTP from 'express-graphql';
+import path from 'path';
 import getArticleLoader from './getArticleLoader';
 import getPostLoader from './getPostLoader';
 import getSnippetLoader from './getSnippetLoader';
 import getWikitextLoader from './getWikitextLoader';
 import schema from './schema';
-import Promise from 'bluebird';
-import express from 'express';
-import graphqlHTTP from 'express-graphql';
-import path from 'path';
+import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 
 const APP_PORT = 3000;
 
@@ -36,7 +37,10 @@ function staticHandler(...resource) {
 }
 
 function jadeHandler(...resource) {
-  return (request, response) => response.render('index.jade');
+  return (request, response) => response.render(
+    'index.jade',
+    {canonical: getCanonicalURLForRequest(request)},
+  );
 }
 
 const appRoutes = [
