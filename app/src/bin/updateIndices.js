@@ -82,20 +82,7 @@ async function getIsAncestor(
   }
   return Promise.resolve(false);
 }
-
-(async () => {
-  const client = getClient();
-  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
-  const head = (await repo.getReferenceCommit('content')).sha();
-  const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
-  if (head === lastIndexedHash) {
-    console.log('Index already up-to-date at revision %s', head);
-    process.exit(0);
-  }
-
-  const isAncestor = await getIsAncestor(lastIndexedHash, head);
-  const range = isAncestor ? [lastIndexedHash, head].join('..') : head;
-
+async function getFileUpdates(range) {
   const updates = [];
   await* [
     {
@@ -196,6 +183,23 @@ async function getIsAncestor(
       throw new Error('Failed to consume input');
     }
   });
+  return updates;
+}
+
+(async () => {
+  const client = getClient();
+  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
+  const head = (await repo.getReferenceCommit('content')).sha();
+  const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
+  if (head === lastIndexedHash) {
+    console.log('Index already up-to-date at revision %s', head);
+    process.exit(0);
+  }
+
+  // Get added, removed, modified files.
+  const isAncestor = await getIsAncestor(lastIndexedHash, head);
+  const range = isAncestor ? [lastIndexedHash, head].join('..') : head;
+  const updates = await getFileUpdates(range);
 
   updates.push(['set', LAST_INDEXED_HASH, head]);
   log('Sending index updates to Redis.');
