@@ -17,6 +17,7 @@ import 'babel-core/polyfill';
 import Promise from 'bluebird';
 import nodegit from 'nodegit';
 import path from 'path';
+import memoize from '../common/memoize';
 import {
   getKey,
   getClient,
@@ -41,26 +42,28 @@ function extractFile(pathString: string, contentType: string): string {
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-function getWhatChanged(range: string, subdirectory: string): Promise {
-  // Custom log format (^@ here represents the NUL \0 byte):
-  //
-  // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
-  // :100644 100644 6535626... ec6d229... M^@app/src/bin/updateIndices.js^@^@
-  // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
-  // :100644 100644 12d2393... 600f5ef... M^@app/package.json^@
-  return git(
-    'log',
-    '--pretty=format:%n%H %at %ct',
-    '--raw',
-    '-z',
-    range,
-    '--',
-    path.relative(
-      path.resolve(process.cwd()),
-      path.resolve(__dirname, '..', '..', '..', 'content', subdirectory),
-    ),
-  );
-}
+const getWhatChanged = memoize(
+  (range: string, subdirectory: string) => {
+    // Custom log format (^@ here represents the NUL \0 byte):
+    //
+    // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
+    // :100644 100644 6535626... ec6d229... M^@app/src/bin/updateIndices.js^@^@
+    // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
+    // :100644 100644 12d2393... 600f5ef... M^@app/package.json^@
+    return git(
+      'log',
+      '--pretty=format:%n%H %at %ct',
+      '--raw',
+      '-z',
+      range,
+      '--',
+      path.relative(
+        path.resolve(process.cwd()),
+        path.resolve(__dirname, '..', '..', '..', 'content', subdirectory),
+      ),
+    );
+  }
+);
 
 async function getIsAncestor(
   potentialAncestor: ?string, commit: string
