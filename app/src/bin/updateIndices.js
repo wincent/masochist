@@ -82,8 +82,7 @@ async function getIsAncestor(
   }
   return Promise.resolve(false);
 }
-async function getFileUpdates(range) {
-  const updates = [];
+async function getFileUpdates(range, callback) {
   await* [
     {
       contentType: 'wiki',
@@ -121,28 +120,6 @@ async function getFileUpdates(range) {
       'g'
     );
 
-    // For articles, we want our index ordered by "updated at", so we only
-    // touch the index the first time we see each path in our (reverse-
-    // chronological order traversal).
-    //
-    // For posts and snippets, we want "created at" ordering. We still use the
-    // `seenFiles` map, though to handle sequences like [Add, Delete, Add]. In
-    // that case, we:
-    //
-    // 1. See the most recent "Add":
-    //   - Update the index.
-    //   - Record that we've seen the file in `seenFiles`.
-    // 2. See the preceding "Delete":
-    //   - Ignore the change (don't update the index, as we know the file exists
-    //     later on).
-    // 3. See the original "Add":
-    //   - Ignore the change (ie. we use the most recent creation date, not the
-    //     original one).
-    //
-    // Note that this does the right thing for incremental updates too, such as
-    // when we see only [Delete, Add] and therefore omit step 3 above.
-    const seenFiles = {};
-
     const indexName = getKey(contentType + '-index');
     let match;
     let updatedAt;
@@ -154,27 +131,7 @@ async function getFileUpdates(range) {
       } else {
         const status = match[3];
         const file = extractFile(match[4], contentType);
-        if (!seenFiles[file]) {
-          switch (status) {
-            case 'A':
-              updates.push(['zadd', indexName, createdAt, file]);
-              seenFiles[file] = true;
-              break;
-            case 'D':
-              updates.push(['zrem', indexName, file]);
-              seenFiles[file] = orderBy === 'updatedAt';
-              break;
-            case 'M':
-              if (orderBy === 'updatedAt') {
-                updates.push(['zadd', indexName, updatedAt, file]);
-                seenFiles[file] = true;
-              }
-              break;
-            default:
-              throw new Error(`Unrecognized status: '${status}'`);
-              break;
-          }
-        }
+        callback(file, status, createdAt, updatedAt, indexName, orderBy);
       }
     }
     if (regExp.lastIndex) {
@@ -196,11 +153,59 @@ async function getFileUpdates(range) {
     process.exit(0);
   }
 
-  // Get added, removed, modified files.
+  // Produce createdAt/updatedAt ordered indices.
   const isAncestor = await getIsAncestor(lastIndexedHash, head);
   const range = isAncestor ? [lastIndexedHash, head].join('..') : head;
-  const updates = await getFileUpdates(range);
+  const seenFiles = {};
+  const updates = [];
+  await getFileUpdates(
+    range,
+    (file, status, createdAt, updatedAt, indexName, orderBy) => {
+      // For articles, we want our index ordered by "updated at", so we only
+      // touch the index the first time we see each path in our (reverse-
+      // chronological order traversal).
+      //
+      // For posts and snippets, we want "created at" ordering. We still use the
+      // `seenFiles` map, though to handle sequences like [Add, Delete, Add]. In
+      // that case, we:
+      //
+      // 1. See the most recent "Add":
+      //   - Update the index.
+      //   - Record that we've seen the file in `seenFiles`.
+      // 2. See the preceding "Delete":
+      //   - Ignore the change (don't update the index, as we know the file exists
+      //     later on).
+      // 3. See the original "Add":
+      //   - Ignore the change (ie. we use the most recent creation date, not the
+      //     original one).
+      //
+      // Note that this does the right thing for incremental updates too, such as
+      // when we see only [Delete, Add] and therefore omit step 3 above.
+      if (!seenFiles[file]) {
+        switch (status) {
+          case 'A':
+            updates.push(['zadd', indexName, createdAt, file]);
+            seenFiles[file] = true;
+            break;
+          case 'D':
+            updates.push(['zrem', indexName, file]);
+            seenFiles[file] = orderBy === 'updatedAt';
+            break;
+          case 'M':
+            if (orderBy === 'updatedAt') {
+              updates.push(['zadd', indexName, updatedAt, file]);
+              seenFiles[file] = true;
+            }
+            break;
+          default:
+            throw new Error(`Unrecognized status: '${status}'`);
+            break;
+        }
+      }
+    }
+  );
 
+  // All done.
   updates.push(['set', LAST_INDEXED_HASH, head]);
   log('Sending index updates to Redis.');
   await client.multi(updates).execAsync();
