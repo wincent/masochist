@@ -13,6 +13,7 @@ import {
   connectionArgs,
   connectionDefinitions,
   connectionFromPromisedArraySlice,
+  connectionFromArraySlice,
   cursorToOffset,
   fromGlobalId,
   getOffsetWithDefault,
@@ -20,12 +21,13 @@ import {
   nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
-import Snippet from './Snippet';
 import Post from './Post';
+import Snippet from './Snippet';
+import Tag from './Tag';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import MarkupType from './schema/types/MarkupType';
-import TagType from './schema/types/TagType';
+import TagNameType from './schema/types/TagNameType';
 
 class User {
   constructor() {
@@ -38,7 +40,7 @@ const taggableInterface = new GraphQLInterfaceType({
   description: 'An object with a tags field',
   fields: {
     tags: {
-      type: new GraphQLList(TagType),
+      type: new GraphQLList(TagNameType),
       description: 'A list of tag names'
     },
   },
@@ -58,27 +60,31 @@ const taggableInterface = new GraphQLInterfaceType({
 const {nodeField, nodeInterface} = nodeDefinitions(
   function resolveObjectFromID(globalId, {rootValue}) {
     const {type, id} = fromGlobalId(globalId);
-    if (type === 'User') {
-      return new User();
-    } else if (type === 'Article') {
+    if (type === 'Article') {
       return rootValue.loaders.articleLoader.load(id);
     } else if (type === 'Post') {
       return rootValue.loaders.postLoader.load(id);
     } else if (type === 'Snippet') {
       return rootValue.loaders.snippetLoader.load(id);
+    } else if (type === 'Tag') {
+      return rootValue.loaders.tagLoader.load(id);
+    } else if (type === 'User') {
+      return new User();
     } else {
       return null;
     }
   },
   function resolveGraphQLTypeFromObject(object) {
-    if (object instanceof User) {
-      return userType;
-    } else if (object instanceof Article) {
+    if (object instanceof Article) {
       return articleType;
     } else if (object instanceof Post) {
       return postType;
     } else if (object instanceof Snippet) {
       return snippetType;
+    } else if (object instanceof Tag) {
+      return tagType;
+    } else if (object instanceof User) {
+      return userType;
     } else {
       return null;
     }
@@ -144,6 +150,25 @@ const userType = new GraphQLObjectType({
         const [snippets, totalCount] = await Snippet.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
           rootValue.loaders.snippetLoader.loadMany(snippets),
+          args,
+          {
+            sliceStart: offset,
+            arrayLength: totalCount,
+          },
+        );
+      },
+    },
+    tags: {
+      type: tagConnection,
+      description: 'Tags visible to this user',
+      args: connectionArgs,
+      resolve: async (user, args, {rootValue}) => {
+        // Cap count to avoid abuse.
+        const count = Math.max(args.first, 10);
+        const offset = getOffsetWithDefault(args.after, -1) + 1;
+        const [tags, totalCount] = await Tag.readIndex(count, offset);
+        return connectionFromArraySlice(
+          tags,
           args,
           {
             sliceStart: offset,
@@ -255,6 +280,28 @@ const snippetType = new GraphQLObjectType({
 
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: snippetType});
+
+const tagType = new GraphQLObjectType({
+  name: 'Tag',
+  description: 'A tag',
+  fields: {
+    id: globalIdField('Tag'),
+    name: {
+      type: new GraphQLNonNull(TagNameType),
+      description: "The tag's name",
+      resolve: tag => tag.name,
+    },
+    count: {
+      type: GraphQLInt,
+      description: "Count of items tagged with the tag",
+      resolve: tag => tag.count,
+    },
+  },
+  interfaces: [nodeInterface],
+});
+
+const {connectionType: tagConnection} =
+  connectionDefinitions({name: 'Tag', nodeType: tagType});
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({

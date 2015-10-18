@@ -223,6 +223,10 @@ async function getFileUpdates(range, callback) {
   );
 
   // Update tags.
+  //
+  // This update is relatively slow and expensive because it has to laod every
+  // blob into memory, but on the bright side, it primes our memcached metadata
+  // cache as a result.
   await getFileUpdates(
     range,
     async ({file, status, commit, contentType}) => {

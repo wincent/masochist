@@ -3,12 +3,12 @@
  */
 
 import {GraphQLList} from 'graphql';
-import TagType from '../types/TagType';
+import TagNameType from '../types/TagNameType';
 
 const tagsField = {
   tags: {
     // TODO: make this tags{name}?
-    type: new GraphQLList(TagType),
+    type: new GraphQLList(TagNameType),
     resolve: record => record.tags,
   },
 };

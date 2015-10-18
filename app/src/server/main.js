@@ -9,6 +9,7 @@ import path from 'path';
 import getArticleLoader from './getArticleLoader';
 import getPostLoader from './getPostLoader';
 import getSnippetLoader from './getSnippetLoader';
+import getTagLoader from './getTagLoader';
 import getWikitextLoader from './getWikitextLoader';
 import schema from './schema';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
@@ -39,6 +40,8 @@ const appRoutes = [
   '/pages/*',
   '/snippets',
   '/snippets/*',
+  '/tags',
+  '/tags/*',
   '/wiki',
   '/wiki/*',
 ];

@@ -5,9 +5,9 @@
 import {GraphQLScalarType} from 'graphql';
 import {Kind} from 'graphql/language';
 
-const TagType = new GraphQLScalarType({
-  name: 'Tag',
-  description: 'A tag',
+const TagNameType = new GraphQLScalarType({
+  name: 'TagName',
+  description: 'A tag name',
   serialize: String,
   parseValue: String,
   parseLiteral(ast) {
@@ -15,4 +15,4 @@ const TagType = new GraphQLScalarType({
   }
 });
 
-export default TagType;
+export default TagNameType;

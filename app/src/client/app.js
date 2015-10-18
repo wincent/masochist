@@ -8,12 +8,14 @@ import Post from './components/Post';
 import Posts from './components/Posts';
 import Snippet from './components/Snippet';
 import Snippets from './components/Snippets';
+import TagCloud from './components/TagCloud';
 import ArticleQueries from './routes/ArticleQueries';
 import ArticlesQueries from './routes/ArticlesQueries';
 import PostQueries from './routes/PostQueries';
 import PostsQueries from './routes/PostsQueries';
 import SnippetQueries from './routes/SnippetQueries';
 import SnippetsQueries from './routes/SnippetsQueries';
+import TagCloudQueries from './routes/TagCloudQueries';
 import {createHistory} from 'history';
 import {IndexRoute, Route, Router} from 'react-router';
 import ReactRouterRelay from 'react-router-relay';
@@ -67,6 +69,7 @@ ReactDOM.render(
         prepareParams={getPrepareParams('Snippet')}
         queries={SnippetQueries}
       />
+      <Route component={TagCloud} path="tags" queries={TagCloudQueries} />
     </Route>
   </Router>,
   document.getElementById('relay-root')
