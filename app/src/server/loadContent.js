@@ -14,14 +14,22 @@ import unpackContent from './unpackContent';
 type LoaderOptions = {
   subdirectory: 'wiki' | 'blog' | 'snippets';
   file: string; // Filename without extension.
-  typeName: 'Article' | 'Post' | 'Snippet';
+  commit?: string;
 }
 
+const SubdirectoryToTypeName = {
+  blog: 'Post',
+  snippets: 'Snippet',
+  wiki: 'Article',
+};
+
 export default async function loadContent(options: LoaderOptions): Promise {
-  const {subdirectory, file, typeName} = options;
+  const {subdirectory, file} = options;
   const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
-  const head = await repo.getReferenceCommit('content');
-  const tree = await head.getTree();
+  const commit = options.commit ?
+    await repo.getCommit(options.commit) :
+    await repo.getReferenceCommit('content');
+  const tree = await commit.getTree();
 
   // Could also do a binary/interpolation search of `tree.entries -> path` under
   // the "content/wiki" tree but for now, use trial and error to check for
@@ -47,7 +55,8 @@ export default async function loadContent(options: LoaderOptions): Promise {
 
   const blob = (await treeEntry.getBlob()).toString();
   const {body, tags, ...metadata} = unpackContent(blob);
-  const cacheKey = toGlobalId(typeName, file) + ':' + head.sha() + ':metadata';
+  const typeName = SubdirectoryToTypeName[subdirectory];
+  const cacheKey = toGlobalId(typeName, file) + ':' + commit.sha() + ':metadata';
   const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {

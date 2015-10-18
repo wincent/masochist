@@ -11,7 +11,6 @@ async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>>
     .map(key => ({
       file: key,
       subdirectory: 'wiki',
-      typeName: 'Article',
     }))
     .map(loadContent)
     .map(dataPromise => dataPromise.then(data => new Article({

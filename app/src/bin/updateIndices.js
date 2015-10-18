@@ -13,6 +13,7 @@
 'use strict';
 
 import 'babel-core/polyfill';
+import '../common/devFallback';
 
 import Promise from 'bluebird';
 import nodegit from 'nodegit';
@@ -22,6 +23,8 @@ import {
   getKey,
   getClient,
 } from '../common/redis';
+// TODO: may have to move this to ../common
+import loadContent from '../server/loadContent';
 import git from '../server/git';
 
 process.on('unhandledRejection', reason => {
@@ -44,6 +47,8 @@ function extractFile(pathString: string, contentType: string): string {
 
 const getWhatChanged = memoize(
   (range: string, subdirectory: string) => {
+    log(`Getting ${subdirectory} changes in range: ${range}.`);
+
     // Custom log format (^@ here represents the NUL \0 byte):
     //
     // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
@@ -85,6 +90,7 @@ async function getIsAncestor(
   }
   return Promise.resolve(false);
 }
+
 async function getFileUpdates(range, callback) {
   await* [
     {
@@ -100,13 +106,12 @@ async function getFileUpdates(range, callback) {
       orderBy: 'createdAt',
     },
   ].map(async ({contentType, orderBy}) => {
-    log(`Getting ${contentType} changes in range: ${range}.`);
     const commits = await getWhatChanged(range, contentType);
 
     log(`Preparing ${contentType} index updates.`);
     const regExp = new RegExp(
       // Commit SHA, author date, committer date.
-      '\\n[a-f0-9]{40} (\\d{1,10}) (\\d{1,10})\\n|' +
+      '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
 
       // Modes.
       ':\\d{6} \\d{6} ' +
@@ -124,16 +129,29 @@ async function getFileUpdates(range, callback) {
     );
 
     let match;
+    let commit;
     let updatedAt;
     let createdAt;
     while ((match = regExp.exec(commits))) {
-      if (match[1] && match[2]) {
-        updatedAt = match[1];
-        createdAt = match[2];
+      if (match[1] && match[2] && match[3]) {
+        commit = match[1];
+        updatedAt = match[2];
+        createdAt = match[3];
       } else {
-        const status = match[3];
-        const file = extractFile(match[4], contentType);
-        callback(file, status, createdAt, updatedAt, contentType, orderBy);
+        const status = match[4];
+        const file = extractFile(match[5], contentType);
+        if (!status.match(/^[ADM]$/)) {
+          throw new Error(`Unrecognized status: '${status}'`);
+        }
+        await callback({
+          file,
+          status,
+          createdAt,
+          updatedAt,
+          commit,
+          contentType,
+          orderBy,
+        });
       }
     }
     if (regExp.lastIndex) {
@@ -161,7 +179,7 @@ async function getFileUpdates(range, callback) {
   const updates = [];
   await getFileUpdates(
     range,
-    (file, status, createdAt, updatedAt, contentType, orderBy) => {
+    async ({file, status, createdAt, updatedAt, contentType, orderBy}) => {
       // For articles, we want our index ordered by "updated at", so we only
       // touch the index the first time we see each path in our (reverse-
       // chronological order traversal).
@@ -199,10 +217,71 @@ async function getFileUpdates(range, callback) {
               seenFiles[file] = true;
             }
             break;
-          default:
-            throw new Error(`Unrecognized status: '${status}'`);
-            break;
         }
+      }
+    }
+  );
+
+  // Update tags.
+  await getFileUpdates(
+    range,
+    async ({file, status, commit, contentType}) => {
+      const indexName = getKey('tags-index');
+      // Callback will be called in reverse-chronological order, so we use
+      // `unshift` instead of `push` to handle cases like this:
+      //
+      //   1. Add article with tags "foo", "bar".
+      //   2. Switch tag "bar" for "baz".
+      //   3. Delete article.
+      //
+      // First thing we see is the deletion, then the edit then the addition, so
+      // when we unshift our operations, our queue becomes:
+      //
+      //   1. Increment counts for "foo", "bar".
+      //   2. Decrement count for "bar", increment count for "baz".
+      //   3. Decrement counts for "foo", "baz".
+      //
+      const {tags} = await loadContent({
+        subdirectory: contentType,
+        file,
+        commit,
+      });
+      switch (status) {
+        case 'A':
+          // New file: add tags to index.
+          tags.forEach(tag => updates.unshift(['zincrby', indexName, 1, tag]));
+          break;
+        case 'D':
+          // Deleted file: remove tags from index.
+          tags.forEach(tag => updates.unshift(['zincrby', indexName, -1, tag]));
+          break;
+        case 'M':
+          // Modified file: check before and after tags and apply updates, if
+          // any.
+          {
+            const {tags: previousTags} = await loadContent({
+              subdirectory: contentType,
+              file,
+              commit: commit + '~',
+            });
+
+            // Manual set intersection...
+            const tagsSet = new Set(tags);
+            const previousTagsSet = new Set(previousTags);
+            for (let existing of tagsSet) {
+              if (!previousTagsSet.has(existing)) {
+                // Tag was added.
+                updates.unshift(['zincrby', indexName, 1, existing]);
+              }
+            }
+            for (let previous of previousTagsSet) {
+              if (!tagsSet.has(previous)) {
+                // Tag was deleted.
+                updates.unshift(['zincrby', indexName, -1, previous]);
+              }
+            }
+          }
+          break;
       }
     }
   );

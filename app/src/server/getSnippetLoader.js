@@ -11,7 +11,6 @@ async function loadSnippets(keys: Array<string>): Promise<Array<Object | Error>>
     .map(key => ({
       file: key,
       subdirectory: 'snippets',
-      typeName: 'Snippet',
     }))
     .map(loadContent)
     .map(dataPromise => dataPromise.then(data => new Snippet(data)));

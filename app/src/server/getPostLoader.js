@@ -11,7 +11,6 @@ async function loadPosts(keys: Array<string>): Promise<Array<Object | Error>> {
     .map(key => ({
       file: key,
       subdirectory: 'blog',
-      typeName: 'Post',
     }))
     .map(loadContent)
     .map(dataPromise => dataPromise.then(data => new Post(data)));
