@@ -123,7 +123,6 @@ async function getFileUpdates(range, callback) {
       'g'
     );
 
-    const indexName = getKey(contentType + '-index');
     let match;
     let updatedAt;
     let createdAt;
@@ -134,7 +133,7 @@ async function getFileUpdates(range, callback) {
       } else {
         const status = match[3];
         const file = extractFile(match[4], contentType);
-        callback(file, status, createdAt, updatedAt, indexName, orderBy);
+        callback(file, status, createdAt, updatedAt, contentType, orderBy);
       }
     }
     if (regExp.lastIndex) {
@@ -143,7 +142,6 @@ async function getFileUpdates(range, callback) {
       throw new Error('Failed to consume input');
     }
   });
-  return updates;
 }
 
 (async () => {
@@ -163,7 +161,7 @@ async function getFileUpdates(range, callback) {
   const updates = [];
   await getFileUpdates(
     range,
-    (file, status, createdAt, updatedAt, indexName, orderBy) => {
+    (file, status, createdAt, updatedAt, contentType, orderBy) => {
       // For articles, we want our index ordered by "updated at", so we only
       // touch the index the first time we see each path in our (reverse-
       // chronological order traversal).
@@ -185,6 +183,7 @@ async function getFileUpdates(range, callback) {
       // Note that this does the right thing for incremental updates too, such as
       // when we see only [Delete, Add] and therefore omit step 3 above.
       if (!seenFiles[file]) {
+        const indexName = getKey(contentType + '-index');
         switch (status) {
           case 'A':
             updates.push(['zadd', indexName, createdAt, file]);
