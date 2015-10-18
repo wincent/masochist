@@ -55,7 +55,7 @@ function measureHeaders(blob: string): Offsets {
 
 function unpackHeaders(string: string): Object {
   const headers = {};
-  const regExp = /(\w+)\s*:\s*([^\n]*)(?:\n|$)/g
+  const regExp = /(\w+)[ \t]*:[ \t]*([^\n]*)(?:\n|$)/g
   let match;
   while ((match = regExp.exec(string))) {
     headers[match[1]] = match[2].trim();
