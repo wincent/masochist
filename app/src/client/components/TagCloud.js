@@ -1,25 +1,32 @@
 import React from 'react';
 import Relay from 'react-relay';
 import TagPreview from './TagPreview';
-import LoadMoreButton from './LoadMoreButton';
 
 class TagCloud extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isLoading: false};
-  }
-
-  _handleLoadMore = () => {
-    this.props.relay.setVariables({
-      count: this.props.relay.variables.count + 100,
-    }, ({ready, done, error, aborted}) => {
-      this.setState({isLoading: !ready && !(done || error || aborted)});
-    });
+    this.state = {
+      filterString: '',
+      visibleCount: this.props.viewer.tags.count,
+    };
   }
 
   render() {
+    const {tags} = this.props.viewer;
     return (
       <div>
+        <h1>{tags.count} tags</h1>
+        <label for="tag-filter-input">Filter tags</label>
+        <input
+          className="u-full-width"
+          id="tag-filter-input"
+          onChange={(event) => this.setState({
+            filterString: event.currentTarget.value,
+          })}
+          placeholder="Tags..."
+          type="text"
+          value={this.state.filterString}
+        />
         <table className="u-full-width">
           <thead>
             <tr>
@@ -29,20 +36,17 @@ class TagCloud extends React.Component {
           </thead>
           <tbody>
             {
-              this.props.viewer.tags.edges.map(({node}) => (
+              tags.edges.filter(({node}) => {
+                const filters = this.state.filterString.trim().split(/\s+/);
+                return filters === [] || filters.every(filter => (
+                  node.name.indexOf(filter) !== -1
+                ));
+              }).map(({node}) => (
                 <TagPreview key={node.id} tag={node} />
               ))
             }
           </tbody>
         </table>
-        {
-          this.props.viewer.tags.pageInfo.hasNextPage ?
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            /> :
-            null
-        }
       </div>
     );
   }
@@ -50,20 +54,19 @@ class TagCloud extends React.Component {
 
 export default Relay.createContainer(TagCloud, {
   initialVariables: {
-    count: 100,
+    count: Number.MAX_SAFE_INTEGER
   },
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
         tags(first: $count) {
+          count
           edges {
             node {
               id
+              name
               ${TagPreview.getFragment('tag')}
             }
-          }
-          pageInfo {
-            hasNextPage
           }
         }
       }

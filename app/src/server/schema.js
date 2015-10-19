@@ -167,14 +167,19 @@ const userType = new GraphQLObjectType({
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [tags, totalCount] = await Tag.readIndex(count, offset);
-        return connectionFromArraySlice(
-          tags,
-          args,
-          {
-            sliceStart: offset,
-            arrayLength: totalCount,
-          },
-        );
+        // return connectionFromPromisedArraySlice(
+        return {
+          count: totalCount,
+          ...connectionFromArraySlice(
+            // rootValue.loaders.tagLoader.loadMany(tags),
+            tags,
+            args,
+            {
+              sliceStart: offset,
+              arrayLength: totalCount,
+            },
+          ),
+        };
       },
     },
   }),
@@ -300,8 +305,17 @@ const tagType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
-const {connectionType: tagConnection} =
-  connectionDefinitions({name: 'Tag', nodeType: tagType});
+const {connectionType: tagConnection} = connectionDefinitions({
+  connectionFields: {
+    count: {
+      type: GraphQLInt,
+      description: "Total number of tags",
+      resolve: connection => connection.count,
+    },
+  },
+  name: 'Tag',
+  nodeType: tagType,
+});
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
