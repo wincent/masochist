@@ -1,3 +1,4 @@
+var autoprefixer = require('autoprefixer');
 var path = require('path');
 var webpack = require('webpack');
 
@@ -23,10 +24,15 @@ module.exports = {
         },
       }, {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
+        loader: 'style-loader!css-loader!postcss-loader',
         include: path.resolve(__dirname, 'src')
       },
     ],
+    postcss: function() {
+      // No arrow function, because we want `this` to be:
+      // http://webpack.github.io/docs/loaders.html#loader-context
+      return [autoprefixer];
+    },
   },
   output: {
     // For the dev server, we don't actually write out files to disk, but we
