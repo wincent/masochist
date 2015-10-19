@@ -36,7 +36,10 @@ module.exports = {
       }, {
         test: /\.css$/,
         loader: 'style-loader!css-loader!postcss-loader',
-        include: path.resolve(__dirname, 'src')
+        include: path.resolve(__dirname, 'src'),
+      }, {
+        test: /\.svg$/,
+        loader: 'url-loader?limit=10000',
       },
     ],
   },
