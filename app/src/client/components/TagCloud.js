@@ -5,18 +5,22 @@ import TagPreview from './TagPreview';
 class TagCloud extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filterString: '',
-      visibleCount: this.props.viewer.tags.count,
-    };
+    this.state = {filterString: ''};
   }
 
   render() {
     const {tags} = this.props.viewer;
+    const filteredTags =
+      tags.edges.map(({node}) => node).filter(node => {
+        const filters = this.state.filterString.trim().split(/\s+/);
+        return filters === [] || filters.every(filter => (
+          node.name.indexOf(filter) !== -1
+        ));
+      });
     return (
       <div>
-        <h1>{tags.count} tags</h1>
-        <label for="tag-filter-input">Filter tags</label>
+        <h1>Tags</h1>
+        <label htmlFor="tag-filter-input">Filter tags</label>
         <input
           className="u-full-width"
           id="tag-filter-input"
@@ -27,6 +31,13 @@ class TagCloud extends React.Component {
           type="text"
           value={this.state.filterString}
         />
+        <p>
+          {
+            filteredTags.length === tags.edges.length ?
+              `Showing ${filteredTags.length} tags.` :
+              `Showing ${filteredTags.length} of ${tags.edges.length} tags.`
+          }
+        </p>
         <table className="u-full-width">
           <thead>
             <tr>
@@ -36,12 +47,7 @@ class TagCloud extends React.Component {
           </thead>
           <tbody>
             {
-              tags.edges.filter(({node}) => {
-                const filters = this.state.filterString.trim().split(/\s+/);
-                return filters === [] || filters.every(filter => (
-                  node.name.indexOf(filter) !== -1
-                ));
-              }).map(({node}) => (
+              filteredTags.map(node => (
                 <TagPreview key={node.id} tag={node} />
               ))
             }
