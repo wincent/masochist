@@ -9,14 +9,14 @@ export default class Tag {
     const client = getClient();
     const results = await client.multi([
       [
-        'ZREVRANGE',
+        'zrevrange',
         'masochist:tags-index',
         offset,
         offset + count - 1,
         'WITHSCORES',
       ],
       [
-        'ZCARD',
+        'zcard',
         'masochist:tags-index',
       ]
     ]).execAsync();
