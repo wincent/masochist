@@ -21,8 +21,14 @@ html {
   flex: 1;
 }
 
-article {
+article,
+section,
+.app-content {
   margin-top: 3rem;
+}
+
+article:first-child {
+  margin-top: inherit;
 }
 
 h1 a {
