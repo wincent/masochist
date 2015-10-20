@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
+import PluralText from './PluralText';
 
 class Tag extends React.Component {
   render() {
@@ -12,7 +13,10 @@ class Tag extends React.Component {
             {tag.name}
           </Link>
         </h1>
-        <p>{tag.count} items tagged with {tag.name}</p>
+        <p>
+          <PluralText count={tag.count} text="item" /> tagged
+          with <em>{tag.name}</em>
+        </p>
       </article>
     );
   }
