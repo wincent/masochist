@@ -13,7 +13,7 @@ const TagLink = ({tag}) => (
 
 class Tags extends React.Component {
   render() {
-    const {tags} = this.props.taggable;
+    const {tags} = this.props.tagged;
     const classes = cx({
       ...this.props.classes,
       tags: true,
@@ -28,8 +28,8 @@ class Tags extends React.Component {
 
 export default Relay.createContainer(Tags, {
   fragments: {
-    taggable: () => Relay.QL`
-      fragment on Taggable {
+    tagged: () => Relay.QL`
+      fragment on Tagged {
         tags
       }
     `,

@@ -675,7 +675,7 @@
             },
             {
               "kind": "INTERFACE",
-              "name": "Taggable",
+              "name": "Tagged",
               "ofType": null
             }
           ],
@@ -684,7 +684,7 @@
         },
         {
           "kind": "INTERFACE",
-          "name": "Taggable",
+          "name": "Tagged",
           "description": "An object with a tags field",
           "fields": [
             {
@@ -845,7 +845,7 @@
             },
             {
               "kind": "INTERFACE",
-              "name": "Taggable",
+              "name": "Tagged",
               "ofType": null
             }
           ],
@@ -1112,7 +1112,7 @@
             },
             {
               "kind": "INTERFACE",
-              "name": "Taggable",
+              "name": "Tagged",
               "ofType": null
             }
           ],
@@ -1230,7 +1230,7 @@
             },
             {
               "kind": "INTERFACE",
-              "name": "Taggable",
+              "name": "Tagged",
               "ofType": null
             }
           ],
@@ -1678,7 +1678,7 @@
               "description": "The item at the end of the edge",
               "args": [],
               "type": {
-                "kind": "INTERFACE",
+                "kind": "UNION",
                 "name": "Taggable",
                 "ofType": null
               },
@@ -1706,6 +1706,37 @@
           "interfaces": [],
           "enumValues": null,
           "possibleTypes": null
+        },
+        {
+          "kind": "UNION",
+          "name": "Taggable",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Article",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Post",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Snippet",
+              "ofType": null
+            }
+          ]
         },
         {
           "kind": "OBJECT",

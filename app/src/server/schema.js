@@ -5,6 +5,7 @@ import {
   GraphQLNonNull,
   GraphQLList,
   GraphQLObjectType,
+  GraphQLUnionType,
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
@@ -37,8 +38,8 @@ class User {
   }
 }
 
-const taggableInterface = new GraphQLInterfaceType({
-  name: 'Taggable',
+const taggedInterface = new GraphQLInterfaceType({
+  name: 'Tagged',
   description: 'An object with a tags field',
   fields: {
     tags: {
@@ -222,7 +223,8 @@ const articleType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface, taggableInterface],
+  interfaces: [nodeInterface, taggedInterface],
+  isTypeOf: object => object instanceof Article,
 });
 
 const {connectionType: articleConnection} =
@@ -255,7 +257,8 @@ const pageType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface, taggableInterface],
+  interfaces: [nodeInterface, taggedInterface],
+  isTypeOf: object => object instanceof Page,
 });
 
 const postType = new GraphQLObjectType({
@@ -285,7 +288,8 @@ const postType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface, taggableInterface],
+  interfaces: [nodeInterface, taggedInterface],
+  isTypeOf: object => object instanceof Post,
 });
 
 const {connectionType: postConnection} =
@@ -318,14 +322,26 @@ const snippetType = new GraphQLObjectType({
     ...tagsField,
     ...timestampFields,
   },
-  interfaces: [nodeInterface, taggableInterface],
+  interfaces: [nodeInterface, taggedInterface],
+  isTypeOf: object => object instanceof Snippet,
 });
 
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: snippetType});
 
+
+const taggableType = new GraphQLUnionType({
+  name: 'Taggable',
+  types: [
+    articleType,
+    pageType,
+    postType,
+    snippetType,
+  ],
+});
+
 const {connectionType: taggableConnection} =
-  connectionDefinitions({name: 'Taggable', nodeType: taggableInterface});
+  connectionDefinitions({name: 'Taggable', nodeType: taggableType});
 
 const tagType = new GraphQLObjectType({
   name: 'Tag',

@@ -19,7 +19,7 @@ class Page extends React.Component {
         <div>
           <PrerenderedMarkup html={page.body.html} />
         </div>
-        <Tags taggable={page} />
+        <Tags tagged={page} />
       </article>
     );
   }
@@ -40,7 +40,7 @@ export default Relay.createContainer(Page, {
         body {
           html(baseHeadingLevel: $baseHeadingLevel)
         }
-        ${Tags.getFragment('taggable')}
+        ${Tags.getFragment('tagged')}
       }
     `,
   },

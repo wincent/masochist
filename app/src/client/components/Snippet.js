@@ -20,7 +20,7 @@ class Snippet extends React.Component {
         <div>
           <PrerenderedMarkup html={this.props.snippet.body.html} />
         </div>
-        <Tags taggable={snippet} />
+        <Tags tagged={snippet} />
       </article>
     );
   }
@@ -41,7 +41,7 @@ export default Relay.createContainer(Snippet, {
         body {
           html(baseHeadingLevel: $baseHeadingLevel)
         }
-        ${Tags.getFragment('taggable')}
+        ${Tags.getFragment('tagged')}
       }
     `,
   },

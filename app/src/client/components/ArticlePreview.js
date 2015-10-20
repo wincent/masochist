@@ -16,7 +16,7 @@ class ArticlePreview extends React.Component {
         </td>
         <td>
           <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
-          <Tags classes={{left: true, compact: true}} taggable={article} />
+          <Tags classes={{left: true, compact: true}} tagged={article} />
         </td>
       </tr>
     );
@@ -32,7 +32,7 @@ export default Relay.createContainer(ArticlePreview, {
         createdAt
         updatedAt
         url
-        ${Tags.getFragment('taggable')}
+        ${Tags.getFragment('tagged')}
       }
     `,
   },
