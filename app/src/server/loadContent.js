@@ -14,7 +14,7 @@ import unpackContent from './unpackContent';
 type LoaderOptions = {
   subdirectory: 'wiki' | 'blog' | 'snippets';
   file: string; // Filename without extension.
-  commit?: string;
+  commit?: string; // Commit at which to load the content.
 }
 
 const SubdirectoryToTypeName = {
@@ -24,12 +24,31 @@ const SubdirectoryToTypeName = {
   wiki: 'Article',
 };
 
-export default async function loadContent(options: LoaderOptions): Promise {
+export async function getTimestamps(repo, oldest, mostRecent) {
+  return {
+    createdAt: oldest ?
+      // Author date of earliest.
+      new Date((await repo.getCommit(oldest)).author().when().time() * 1000) :
+      null,
+    updatedAt: mostRecent ?
+      // Commit date of latest.
+      (await repo.getCommit(mostRecent)).date() :
+      null,
+  };
+}
+
+export function getTimestampsCacheKey(subdirectory, file, head) {
+  const typeName = SubdirectoryToTypeName[subdirectory];
+  return toGlobalId(typeName, file) + ':' + head + ':timestamps';
+}
+
+export async function loadContent(options: LoaderOptions): Promise {
   const {subdirectory, file} = options;
   const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
+  const head = await repo.getReferenceCommit('content');
   const commit = options.commit ?
     await repo.getCommit(options.commit) :
-    await repo.getReferenceCommit('content');
+    head;
   const tree = await commit.getTree();
 
   // Could also do a binary/interpolation search of `tree.entries -> path` under
@@ -56,8 +75,7 @@ export default async function loadContent(options: LoaderOptions): Promise {
 
   const blob = (await treeEntry.getBlob()).toString();
   const {body, tags, ...metadata} = unpackContent(blob);
-  const typeName = SubdirectoryToTypeName[subdirectory];
-  const cacheKey = toGlobalId(typeName, file) + ':' + commit.sha() + ':metadata';
+  const cacheKey = getTimestampsCacheKey(subdirectory, file, head.sha());
   const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {
@@ -73,16 +91,7 @@ export default async function loadContent(options: LoaderOptions): Promise {
       const mostRecent = revs.slice(0, 40);
       const oldest = revs.trim().slice(-40);
 
-      return {
-        createdAt: oldest ?
-          // Author date of earliest.
-          new Date((await repo.getCommit(oldest)).author().when().time() * 1000) :
-          null,
-        updatedAt: mostRecent ?
-          // Commit date of latest.
-          (await repo.getCommit(mostRecent)).date() :
-          null,
-      };
+      return getTimestamps(repo, oldest, mostRecent);
     }
   );
 

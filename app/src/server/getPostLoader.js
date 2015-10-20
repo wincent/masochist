@@ -4,7 +4,7 @@
 
 import DataLoader from 'dataloader';
 import Post from './Post';
-import loadContent from './loadContent';
+import {loadContent} from './loadContent';
 
 async function loadPosts(keys: Array<string>): Promise<Array<Object | Error>> {
   return await* keys

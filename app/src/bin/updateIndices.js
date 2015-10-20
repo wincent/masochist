@@ -23,8 +23,13 @@ import {
   getKey,
   getClient,
 } from '../common/redis';
-// TODO: may have to move this to ../common
-import loadContent from '../server/loadContent';
+// TODO: may have to move these to ../common
+import Cache from '../server/Cache';
+import {
+  getTimestamps,
+  getTimestampsCacheKey,
+  loadContent,
+} from '../server/loadContent';
 import git from '../server/git';
 
 process.on('unhandledRejection', reason => {
@@ -46,7 +51,7 @@ function extractFile(pathString: string, contentType: string): string {
 }
 
 const getWhatChanged = memoize(
-  (range: string, subdirectory: string) => {
+  async (range: string, subdirectory: string) => {
     log(`Getting ${subdirectory} changes in range: ${range}.`);
 
     // Custom log format (^@ here represents the NUL \0 byte):
@@ -55,7 +60,7 @@ const getWhatChanged = memoize(
     // :100644 100644 6535626... ec6d229... M^@app/src/bin/updateIndices.js^@^@
     // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
     // :100644 100644 12d2393... 600f5ef... M^@app/package.json^@
-    return git(
+    return await git(
       'log',
       '--pretty=format:%n%H %at %ct',
       '--raw',
@@ -168,15 +173,51 @@ async function getFileUpdates(range, callback) {
   const head = (await repo.getReferenceCommit('content')).sha();
   const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
   if (head === lastIndexedHash) {
-    console.log('Index already up-to-date at revision %s', head);
+    log('Index already up-to-date at revision %s', head);
     process.exit(0);
   }
 
+  // Pre-seed timestamp metadata cache (without this, our `loadContent` calls
+  // below will end up doing increasingly expensive `git-rev-list` operations
+  // over and over again).
+  log('Preparing timestamp cache for revision %s', head);
+  const timestamps = {};
+  await getFileUpdates(
+    head,
+    async ({file, status, contentType, commit}) => {
+      const id = contentType + ':' + file;
+      if (!timestamps[id]) {
+        timestamps[id] = {};
+      }
+      switch (status) {
+        case 'A':
+          timestamps[id].oldest = commit;
+          break;
+        case 'M':
+          timestamps[id].mostRecent = timestamps[id].mostRecent || commit;
+          break;
+      }
+    }
+  );
+
+  // TODO make Cache.set (unconditional set)
+  log('Writing timestamp cache for revision %s', head);
+  await* Object.keys(timestamps).map(async id => {
+    const [contentType, file] = id.split(/:/);
+    const {oldest, mostRecent} = timestamps[id];
+    const cacheKey = getTimestampsCacheKey(contentType, file, head);
+    await Cache.get(
+      cacheKey,
+      async cacheKey => getTimestamps(repo, oldest, mostRecent),
+    );
+  });
+
   // Produce createdAt/updatedAt ordered indices.
+  log('Creating ordered index');
   const isAncestor = await getIsAncestor(lastIndexedHash, head);
   const range = isAncestor ? [lastIndexedHash, head].join('..') : head;
-  const seenFiles = {};
   const updates = [];
+  const seenFiles = {};
   await getFileUpdates(
     range,
     async ({file, status, createdAt, updatedAt, contentType, orderBy}) => {
@@ -227,10 +268,36 @@ async function getFileUpdates(range, callback) {
   // This update is relatively slow and expensive because it has to laod every
   // blob into memory, but on the bright side, it primes our memcached metadata
   // cache as a result.
+  function addTag(tag, file, contentType, updatedAt) {
+    const indexName = getKey('tags-index');
+    updates.unshift(['zincrby', indexName, 1, tag]);
+
+    const setName = getKey('tag:' + tag);
+    updates.unshift([
+      'zadd',
+      setName,
+      updatedAt ? updatedAt.getTime() : -1,
+      contentType + ':' + file,
+    ]);
+  }
+
+  function removeTag(tag, file, contentType, updatedAt) {
+    const indexName = getKey('tags-index');
+    updates.unshift(['zincrby', indexName, -1, tag]);
+
+    const setName = getKey('tag:' + tag);
+    updates.unshift([
+      'srem',
+      setName,
+      updatedAt ? updatedAt.getTime() : -1,
+      contentType + ':' + file,
+    ]);
+  }
+
+  log('Creating tag sets');
   await getFileUpdates(
     range,
     async ({file, status, commit, contentType}) => {
-      const indexName = getKey('tags-index');
       // Callback will be called in reverse-chronological order, so we use
       // `unshift` instead of `push` to handle cases like this:
       //
@@ -245,7 +312,7 @@ async function getFileUpdates(range, callback) {
       //   2. Decrement count for "bar", increment count for "baz".
       //   3. Decrement counts for "foo", "baz".
       //
-      const {tags} = await loadContent({
+      const {tags, updatedAt} = await loadContent({
         subdirectory: contentType,
         file,
         commit,
@@ -253,11 +320,11 @@ async function getFileUpdates(range, callback) {
       switch (status) {
         case 'A':
           // New file: add tags to index.
-          tags.forEach(tag => updates.unshift(['zincrby', indexName, 1, tag]));
+          tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
           break;
         case 'D':
           // Deleted file: remove tags from index.
-          tags.forEach(tag => updates.unshift(['zincrby', indexName, -1, tag]));
+          tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
           break;
         case 'M':
           // Modified file: check before and after tags and apply updates, if
@@ -275,13 +342,13 @@ async function getFileUpdates(range, callback) {
             for (let existing of tagsSet) {
               if (!previousTagsSet.has(existing)) {
                 // Tag was added.
-                updates.unshift(['zincrby', indexName, 1, existing]);
+                addTag(existing, file, contentType, updatedAt);
               }
             }
             for (let previous of previousTagsSet) {
               if (!tagsSet.has(previous)) {
                 // Tag was deleted.
-                updates.unshift(['zincrby', indexName, -1, previous]);
+                removeTag(previous, file, contentType, updatedAt);
               }
             }
           }

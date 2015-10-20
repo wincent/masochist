@@ -4,7 +4,7 @@
 
 import DataLoader from 'dataloader';
 import Page from './Page';
-import loadContent from './loadContent';
+import {loadContent} from './loadContent';
 
 async function loadPages(keys: Array<string>): Promise<Array<Object | Error>> {
   return await* keys
