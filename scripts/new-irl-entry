@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+# TODO: reduce duplication between this and `new-snippet`
+# TODO: Change default extension to md
+DEFAULT_EXTENSION=wikitext
+EXTENSION=${1-$DEFAULT_EXTENSION}
+LAST_ID=$(ls content/snippets | grep -E '^\d+\.\w+$' | sort -n | tail -1 | sed 's/\.[^.]*//')
+NEXT_ID=$(expr $LAST_ID + 1)
+
+LAST_LOG_ENTRY=$(git grep -l involuntary.reboot.log -- content/snippets | sed 's/^content\/snippets\///' | sort -n | tail -1)
+cp content/snippets/$LAST_LOG_ENTRY content/snippets/$NEXT_ID.$EXTENSION
+
+vim content/snippets/$NEXT_ID.$EXTENSION
