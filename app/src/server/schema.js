@@ -12,8 +12,9 @@ import {Kind} from 'graphql/language';
 import {
   connectionArgs,
   connectionDefinitions,
-  connectionFromPromisedArraySlice,
+  connectionFromArray,
   connectionFromArraySlice,
+  connectionFromPromisedArraySlice,
   cursorToOffset,
   fromGlobalId,
   getOffsetWithDefault,
@@ -323,6 +324,9 @@ const snippetType = new GraphQLObjectType({
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: snippetType});
 
+const {connectionType: taggableConnection} =
+  connectionDefinitions({name: 'Taggable', nodeType: taggableInterface});
+
 const tagType = new GraphQLObjectType({
   name: 'Tag',
   description: 'A tag',
@@ -342,6 +346,22 @@ const tagType = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString),
       description: 'URL for the tag',
       resolve: snippet => `/tags/${snippet.id}`,
+    },
+    taggables: {
+      type: taggableConnection,
+      description: 'Items tagged with a particular tag',
+      args: connectionArgs,
+      resolve: async (tag, args, {rootValue}) => {
+        // Cap count to avoid abuse.
+        const safeArgs = {...args};
+        if (args.first != null) {
+          safeArgs.first = Math.max(args.first, 10);
+        }
+        if (args.last != null) {
+          safeArgs.last = Math.max(args.last, 10);
+        }
+        return connectionFromArray(tag.taggables, safeArgs);
+      },
     },
   },
   interfaces: [nodeInterface],
