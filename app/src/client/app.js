@@ -4,6 +4,7 @@ import {toGlobalId} from 'graphql-relay';
 import App from './components/App';
 import Article from './components/Article';
 import Articles from './components/Articles';
+import Page from './components/Page';
 import Post from './components/Post';
 import Posts from './components/Posts';
 import Snippet from './components/Snippet';
@@ -11,6 +12,7 @@ import Snippets from './components/Snippets';
 import TagCloud from './components/TagCloud';
 import ArticleQueries from './routes/ArticleQueries';
 import ArticlesQueries from './routes/ArticlesQueries';
+import PageQueries from './routes/PageQueries';
 import PostQueries from './routes/PostQueries';
 import PostsQueries from './routes/PostsQueries';
 import SnippetQueries from './routes/SnippetQueries';
@@ -48,19 +50,18 @@ ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
     <Route component={App} path="/">
       <IndexRoute component={Posts} queries={PostsQueries} />
-      <Route component={Articles} path="wiki" queries={ArticlesQueries} />
-      <Route
-        component={Article}
-        path="wiki/:id"
-        prepareParams={prepareArticleParams}
-        queries={ArticleQueries}
-      />
       <Route component={Posts} path="blog" queries={PostsQueries} />
       <Route
         component={Post}
         path="blog/:id"
         prepareParams={getPrepareParams('Post')}
         queries={PostQueries}
+      />
+      <Route
+        component={Page}
+        path="pages/:id"
+        prepareParams={getPrepareParams('Page')}
+        queries={PageQueries}
       />
       <Route component={Snippets} path="snippets" queries={SnippetsQueries} />
       <Route
@@ -70,6 +71,13 @@ ReactDOM.render(
         queries={SnippetQueries}
       />
       <Route component={TagCloud} path="tags" queries={TagCloudQueries} />
+      <Route component={Articles} path="wiki" queries={ArticlesQueries} />
+      <Route
+        component={Article}
+        path="wiki/:id"
+        prepareParams={prepareArticleParams}
+        queries={ArticleQueries}
+      />
     </Route>
   </Router>,
   document.getElementById('relay-root')

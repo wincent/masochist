@@ -7,6 +7,7 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
 import getArticleLoader from './getArticleLoader';
+import getPageLoader from './getPageLoader';
 import getPostLoader from './getPostLoader';
 import getSnippetLoader from './getSnippetLoader';
 import getTagLoader from './getTagLoader';
@@ -56,6 +57,7 @@ app.use('/graphql', (request, response, next) => {
     rootValue: {
       loaders: {
         articleLoader: getArticleLoader(),
+        pageLoader: getPageLoader(),
         postLoader: getPostLoader(),
         snippetLoader: getSnippetLoader(),
         wikitextLoader: getWikitextLoader(),

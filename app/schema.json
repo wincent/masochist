@@ -104,6 +104,11 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "Post",
               "ofType": null
             },
@@ -710,6 +715,11 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "Post",
               "ofType": null
             },
@@ -722,8 +732,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Post",
-          "description": "A blog post",
+          "name": "Page",
+          "description": "A page",
           "fields": [
             {
               "name": "id",
@@ -743,7 +753,7 @@
             },
             {
               "name": "title",
-              "description": "The blog post's title",
+              "description": "The page's title",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -771,7 +781,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the post",
+              "description": "URL for the page",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -984,6 +994,128 @@
           "fields": null,
           "inputFields": null,
           "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Post",
+          "description": "A blog post",
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "title",
+              "description": "The blog post's title",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "body",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "URL for the post",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tags",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createdAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Taggable",
+              "ofType": null
+            }
+          ],
           "enumValues": null,
           "possibleTypes": null
         },

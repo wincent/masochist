@@ -19,6 +19,7 @@ type LoaderOptions = {
 
 const SubdirectoryToTypeName = {
   blog: 'Post',
+  pages: 'Page',
   snippets: 'Snippet',
   wiki: 'Article',
 };

@@ -21,6 +21,7 @@ import {
   nodeDefinitions,
 } from 'graphql-relay';
 import Article from './Article';
+import Page from './Page';
 import Post from './Post';
 import Snippet from './Snippet';
 import Tag from './Tag';
@@ -47,6 +48,8 @@ const taggableInterface = new GraphQLInterfaceType({
   resolveType: object => {
     if (object instanceof Article) {
       return articleType;
+    } else if (object instanceof Page) {
+      return pageType;
     } else if (object instanceof Post) {
       return postType;
     } else if (object instanceof Snippet) {
@@ -62,6 +65,8 @@ const {nodeField, nodeInterface} = nodeDefinitions(
     const {type, id} = fromGlobalId(globalId);
     if (type === 'Article') {
       return rootValue.loaders.articleLoader.load(id);
+    } else if (type === 'Page') {
+      return rootValue.loaders.pageLoader.load(id);
     } else if (type === 'Post') {
       return rootValue.loaders.postLoader.load(id);
     } else if (type === 'Snippet') {
@@ -77,6 +82,8 @@ const {nodeField, nodeInterface} = nodeDefinitions(
   function resolveGraphQLTypeFromObject(object) {
     if (object instanceof Article) {
       return articleType;
+    } else if (object instanceof Page) {
+      return pageType;
     } else if (object instanceof Post) {
       return postType;
     } else if (object instanceof Snippet) {
@@ -219,6 +226,36 @@ const articleType = new GraphQLObjectType({
 
 const {connectionType: articleConnection} =
   connectionDefinitions({name: 'Article', nodeType: articleType});
+
+const pageType = new GraphQLObjectType({
+  name: 'Page',
+  description: 'A page',
+  fields: {
+    id: globalIdField('Page'),
+    title: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: "The page's title",
+      resolve: page => page.title,
+    },
+    body: {
+      type: MarkupType,
+      resolve(page) {
+        return {
+          raw: page.body,
+          format: page.format,
+        };
+      },
+    },
+    url: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'URL for the page',
+      resolve: page => `/pages/${page.id}`,
+    },
+    ...tagsField,
+    ...timestampFields,
+  },
+  interfaces: [nodeInterface, taggableInterface],
+});
 
 const postType = new GraphQLObjectType({
   name: 'Post',

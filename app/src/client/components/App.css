@@ -28,7 +28,7 @@ section,
 }
 
 article:first-child {
-  margin-top: inherit;
+  margin-top: initial;
 }
 
 h1 a {

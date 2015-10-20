@@ -35,4 +35,3 @@ export default class Post {
     this.tags = values.tags;
   }
 }
-
