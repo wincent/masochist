@@ -44,6 +44,14 @@ function log(format, ...args: Array<string>): void {
   console.log(format, ...args);
 }
 
+function print(string: string): void {
+  process.stdout.write(string);
+}
+
+function dot(): void {
+  print('.');
+}
+
 function extractFile(pathString: string, contentType: string): string {
   return pathString
     .slice(`content/${contentType}/`.length) // Strip prefix.
@@ -97,6 +105,7 @@ async function getIsAncestor(
 }
 
 async function getFileUpdates(range, callback) {
+  log(`Preparing list of file updates.`);
   await* [
     {
       contentType: 'wiki',
@@ -113,7 +122,6 @@ async function getFileUpdates(range, callback) {
   ].map(async ({contentType, orderBy}) => {
     const commits = await getWhatChanged(range, contentType);
 
-    log(`Preparing ${contentType} index updates.`);
     const regExp = new RegExp(
       // Commit SHA, author date, committer date.
       '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
@@ -185,6 +193,7 @@ async function getFileUpdates(range, callback) {
   await getFileUpdates(
     head,
     async ({file, status, contentType, commit}) => {
+      dot();
       const id = contentType + ':' + file;
       if (!timestamps[id]) {
         timestamps[id] = {};
@@ -199,6 +208,7 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
+  print('\n');
 
   // TODO make Cache.set (unconditional set)
   log('Writing timestamp cache for revision %s', head);
@@ -241,6 +251,7 @@ async function getFileUpdates(range, callback) {
       //
       // Note that this does the right thing for incremental updates too, such as
       // when we see only [Delete, Add] and therefore omit step 3 above.
+      dot();
       if (!seenFiles[file]) {
         const indexName = getKey(contentType + '-index');
         switch (status) {
@@ -262,6 +273,7 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
+  print('\n');
 
   // Update tags.
   //
@@ -312,6 +324,7 @@ async function getFileUpdates(range, callback) {
       //   2. Decrement count for "bar", increment count for "baz".
       //   3. Decrement counts for "foo", "baz".
       //
+      dot();
       const {tags, updatedAt} = await loadContent({
         subdirectory: contentType,
         file,
@@ -356,6 +369,7 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
+  print('\n');
 
   // All done.
   updates.push(['set', LAST_INDEXED_HASH, head]);
