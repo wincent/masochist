@@ -338,6 +338,11 @@ const tagType = new GraphQLObjectType({
       description: "Count of items tagged with the tag",
       resolve: tag => tag.count,
     },
+    url: {
+      type: new GraphQLNonNull(GraphQLString),
+      description: 'URL for the tag',
+      resolve: snippet => `/tags/${snippet.id}`,
+    },
   },
   interfaces: [nodeInterface],
 });

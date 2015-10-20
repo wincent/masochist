@@ -9,6 +9,7 @@ import Post from './components/Post';
 import Posts from './components/Posts';
 import Snippet from './components/Snippet';
 import Snippets from './components/Snippets';
+import Tag from './components/Tag';
 import TagCloud from './components/TagCloud';
 import ArticleQueries from './routes/ArticleQueries';
 import ArticlesQueries from './routes/ArticlesQueries';
@@ -18,6 +19,7 @@ import PostsQueries from './routes/PostsQueries';
 import SnippetQueries from './routes/SnippetQueries';
 import SnippetsQueries from './routes/SnippetsQueries';
 import TagCloudQueries from './routes/TagCloudQueries';
+import TagQueries from './routes/TagQueries';
 import {createHistory} from 'history';
 import {IndexRoute, Route, Router} from 'react-router';
 import ReactRouterRelay from 'react-router-relay';
@@ -37,12 +39,22 @@ function getPrepareParams(contentType) {
 
 /**
  * Wiki articles are an extension to the above rule, because our internal IDs
- * use spaces while our URLs use underscores instead, to avoind ugly %20 URL
+ * use spaces while our URLs use underscores instead, to avoid ugly %20 URL
  * encoding in a user-visible place.
  */
 function prepareArticleParams(params, route) {
   return {
     id: toGlobalId('Article', params.id.replace(/_/g, ' ')),
+  };
+}
+/**
+ * Tag pages are a special case as well, as we must support both "/tags/foo"
+ * and "/tags/foo+bar".
+ */
+function prepareTagParams(params, route) {
+  // TODO handle "foo+bar" case
+  return {
+    id: toGlobalId('Tag', params.id),
   };
 }
 
@@ -71,6 +83,12 @@ ReactDOM.render(
         queries={SnippetQueries}
       />
       <Route component={TagCloud} path="tags" queries={TagCloudQueries} />
+      <Route
+        component={Tag}
+        path="tags/:id"
+        prepareParams={prepareTagParams}
+        queries={TagQueries}
+      />
       <Route component={Articles} path="wiki" queries={ArticlesQueries} />
       <Route
         component={Article}

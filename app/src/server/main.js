@@ -60,6 +60,7 @@ app.use('/graphql', (request, response, next) => {
         pageLoader: getPageLoader(),
         postLoader: getPostLoader(),
         snippetLoader: getSnippetLoader(),
+        tagLoader: getTagLoader(),
         wikitextLoader: getWikitextLoader(),
       },
     },

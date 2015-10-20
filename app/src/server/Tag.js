@@ -43,6 +43,7 @@ export default class Tag {
     this.id = values.id;
     this.name = values.name;
     this.count = values.count;
+    this.taggables = values.taggables;
   }
 }
 
