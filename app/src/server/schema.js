@@ -200,7 +200,7 @@ const articleType = new GraphQLObjectType({
   fields: {
     id: globalIdField('Article'),
     title: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: "The article's title",
       resolve: article => article.title,
     },
@@ -235,7 +235,7 @@ const pageType = new GraphQLObjectType({
   fields: {
     id: globalIdField('Page'),
     title: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: "The page's title",
       resolve: page => page.title,
     },
@@ -266,7 +266,7 @@ const postType = new GraphQLObjectType({
   fields: {
     id: globalIdField('Post'),
     title: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: "The blog post's title",
       resolve: post => post.title,
     },

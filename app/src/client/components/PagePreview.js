@@ -4,29 +4,30 @@ import {Link} from 'react-router';
 import Tags from './Tags';
 import When from './When';
 
-class ArticlePreview extends React.Component {
+class PagePreview extends React.Component {
   render() {
-    const {article} = this.props;
+    const {page} = this.props;
+    const {createdAt, title, updatedAt, url} = page;
     return (
       <tr>
         <td>
-          <Link to={article.url}>
-            {article.title}
+          <Link to={url}>ost
+            {title}
           </Link>
         </td>
         <td>
-          <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
-          <Tags classes={{left: true, compact: true}} tagged={article} />
+          <When createdAt={createdAt} updatedAt={updatedAt} />
+          <Tags classes={{left: true, compact: true}} tagged={page} />
         </td>
       </tr>
     );
   }
 }
 
-export default Relay.createContainer(ArticlePreview, {
+export default Relay.createContainer(PagePreview, {
   fragments: {
-    article: () => Relay.QL`
-      fragment on Article {
+    page: () => Relay.QL`
+      fragment on Page {
         createdAt
         title
         updatedAt
