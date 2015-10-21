@@ -1,7 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
-import PrerenderedMarkup from './PrerenderedMarkup';
+import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
@@ -17,7 +17,7 @@ class Page extends React.Component {
         </h1>
         <When createdAt={page.createdAt} updatedAt={page.updatedAt} />
         <div>
-          <PrerenderedMarkup html={page.body.html} />
+          <TrustedPrerenderedMarkup html={page.body.html} />
         </div>
         <Tags tagged={page} />
       </article>

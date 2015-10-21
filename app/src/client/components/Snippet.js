@@ -1,7 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
-import PrerenderedMarkup from './PrerenderedMarkup';
+import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
@@ -18,7 +18,7 @@ class Snippet extends React.Component {
         </h1>
         <When createdAt={snippet.createdAt} updatedAt={snippet.updatedAt} />
         <div>
-          <PrerenderedMarkup html={this.props.snippet.body.html} />
+          <TrustedPrerenderedMarkup html={this.props.snippet.body.html} />
         </div>
         <Tags tagged={snippet} />
       </article>

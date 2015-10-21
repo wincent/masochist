@@ -1,7 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
-import PrerenderedMarkup from './PrerenderedMarkup';
+import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
@@ -17,7 +17,7 @@ class Post extends React.Component {
         </h1>
         <When createdAt={post.createdAt} updatedAt={post.updatedAt} />
         <div>
-          <PrerenderedMarkup html={post.body.html} />
+          <TrustedPrerenderedMarkup html={post.body.html} />
         </div>
         <Tags tagged={post} />
       </article>

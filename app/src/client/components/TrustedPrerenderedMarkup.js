@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class PrerenderedMarkup extends React.Component {
+export default class TrustedPrerenderedMarkup extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     return this.props.html !== nextProps.html;
   }
