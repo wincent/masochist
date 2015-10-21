@@ -11,12 +11,17 @@ class SnippetPreview extends React.Component {
     return (
       <tr>
         <td>
+          <code>snippet</code>
+        </td>
+        <td>
           <Link to={url}>
             {title}
           </Link>
         </td>
         <td>
           <When createdAt={createdAt} updatedAt={updatedAt} />
+        </td>
+        <td>
           <Tags classes={{left: true, compact: true}} tagged={snippet} />
         </td>
       </tr>

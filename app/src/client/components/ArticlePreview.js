@@ -10,12 +10,17 @@ class ArticlePreview extends React.Component {
     return (
       <tr>
         <td>
+          <code>wiki</code>
+        </td>
+        <td>
           <Link to={article.url}>
             {article.title}
           </Link>
         </td>
         <td>
           <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
+        </td>
+        <td>
           <Tags classes={{left: true, compact: true}} tagged={article} />
         </td>
       </tr>

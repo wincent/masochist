@@ -26,8 +26,10 @@ class Articles extends React.Component {
         <table className="article-listing u-full-width">
           <thead>
             <tr>
+              <th>What</th>
               <th>Title</th>
-              <th>About</th>
+              <th>When</th>
+              <th>Tags</th>
             </tr>
           </thead>
           <tbody>

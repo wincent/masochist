@@ -1,20 +1,20 @@
 /* Show columns 1 and 2; hide columns 3 and 4. */
-.article-listing td:nth-child(n+3),
-.article-listing th:nth-child(n+3) {
+.tag-listing td:nth-child(n+3),
+.tag-listing th:nth-child(n+3) {
   display: none;
 }
 
 /* > Phablet: reveal column 2. */
 @media (min-width: 550px) {
-  .article-listing td:nth-child(3),
-  .article-listing th:nth-child(3) {
+  .tag-listing td:nth-child(3),
+  .tag-listing th:nth-child(3) {
     display: table-cell;
   }
 }
 /* > Tablet: reveal all columns. */
 @media (min-width: 750px) {
-  .article-listing td:nth-child(4),
-  .article-listing th:nth-child(4) {
+  .tag-listing td:nth-child(4),
+  .tag-listing th:nth-child(4) {
     display: table-cell;
   }
 }

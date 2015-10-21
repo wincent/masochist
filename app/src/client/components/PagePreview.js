@@ -11,12 +11,17 @@ class PagePreview extends React.Component {
     return (
       <tr>
         <td>
+          <code>page</code>
+        </td>
+        <td>
           <Link to={url}>ost
             {title}
           </Link>
         </td>
         <td>
           <When createdAt={createdAt} updatedAt={updatedAt} />
+        </td>
+        <td>
           <Tags classes={{left: true, compact: true}} tagged={page} />
         </td>
       </tr>
