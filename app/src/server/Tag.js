@@ -5,11 +5,6 @@
 import {getClient} from '../common/redis';
 
 export default class Tag {
-  static async readCount(): Promise<number> {
-    const client = getClient();
-    return await client.zcardAsync('masochist:tags-index');
-  }
-
   static async readIndex(count: number, offset: number): Array {
     const client = getClient();
     const results = await client.multi([

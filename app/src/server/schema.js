@@ -370,7 +370,6 @@ const tagType = new GraphQLObjectType({
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
-        const totalCount = await Tag.readCount();
         const {
           articleLoader,
           pageLoader,
@@ -401,7 +400,7 @@ const tagType = new GraphQLObjectType({
           args,
           {
             sliceStart: offset,
-            arrayLength: totalCount,
+            arrayLength: tag.taggables.length,
           },
         );
       },
