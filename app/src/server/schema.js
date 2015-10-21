@@ -13,7 +13,6 @@ import {Kind} from 'graphql/language';
 import {
   connectionArgs,
   connectionDefinitions,
-  connectionFromArray,
   connectionFromArraySlice,
   connectionFromPromisedArraySlice,
   cursorToOffset,
@@ -369,14 +368,42 @@ const tagType = new GraphQLObjectType({
       args: connectionArgs,
       resolve: async (tag, args, {rootValue}) => {
         // Cap count to avoid abuse.
-        const safeArgs = {...args};
-        if (args.first != null) {
-          safeArgs.first = Math.max(args.first, 10);
-        }
-        if (args.last != null) {
-          safeArgs.last = Math.max(args.last, 10);
-        }
-        return connectionFromArray(tag.taggables, safeArgs);
+        const count = Math.max(args.first, 10);
+        const offset = getOffsetWithDefault(args.after, -1) + 1;
+        const totalCount = await Tag.readCount();
+        const {
+          articleLoader,
+          pageLoader,
+          postLoader,
+          snippetLoader
+        } = rootValue.loaders;
+        const promisedContent = tag.taggables
+          .slice(offset, offset + count)
+          .map(typeAndId => {
+            // TODO: These should probably be globalIds, manual splitting is
+            // probably a smell.
+            const [type, id] = typeAndId.split(':');
+            switch (type) {
+              case 'wiki':
+                return articleLoader.load(id);
+              case 'blog':
+                return postLoader.load(id);
+              case 'pages':
+                return pageLoader.load(id);
+              case 'snippets':
+                return snippetLoader.load(id);
+              default:
+                // TODO throw here?
+            }
+          });
+        return connectionFromPromisedArraySlice(
+          Promise.all(promisedContent),
+          args,
+          {
+            sliceStart: offset,
+            arrayLength: totalCount,
+          },
+        );
       },
     },
   },
