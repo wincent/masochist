@@ -4,6 +4,11 @@ nav {
   width: 100%;
 }
 
+nav li:first-child {
+  display: flex;
+  align-items: center;
+}
+
 nav li:first-child a {
   border-bottom: 1px solid #333;
   color: #eee;
@@ -30,7 +35,41 @@ nav ul {
 }
 
 nav li {
+  display: none;
   margin: 0;
+}
+
+.nav-toggle-wrapper {
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+
+.nav-toggle-wrapper:focus,
+.nav-toggle-wrapper:hover {
+  background-color: #111;
+}
+
+.nav-toggle {
+  background-color: #eee;
+  cursor: pointer;
+  mask-image: url(../../../vendor/icons/angle-double-down.svg);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: 60%;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0);
+  padding: 1rem 0;
+  transition: .5s ease-in-out;
+  width: 32px;
+}
+
+.nav-open .nav-toggle {
+  transform: rotate(180deg);
+  transition: .5s ease-in-out;
+}
+
+.nav-open li {
+  display: inherit;
 }
 
 /* > Phablet */
@@ -40,6 +79,10 @@ nav li {
     margin-top: -3.5rem;
     position: fixed;
     z-index: 1;
+  }
+
+  nav li:first-child {
+    display: inline-block;
   }
 
   nav li:first-child a {
@@ -65,5 +108,13 @@ nav li {
     background-color: #333;
     border-bottom: 4px solid rgba(191, 63, 191, .25);
     margin-bottom: -4px;
+  }
+
+  .nav-open li {
+    display: inline-block;
+  }
+
+  .nav-toggle-wrapper {
+    display: none;
   }
 }

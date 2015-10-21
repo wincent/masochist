@@ -31,12 +31,29 @@ function getActiveRoutePrefix(routes) {
 }
 
 export default class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isOpen: false};
+  }
+
+  _handleToggle = (event) => {
+    event.preventDefault();
+    this.setState(({isOpen}) => ({isOpen: !isOpen}));
+  }
+
   render() {
     const active = getActiveRoutePrefix(this.props.routes);
     return (
-      <nav>
+      <nav className={cx({'nav-open': this.state.isOpen})}>
         <ul>
-          <NavLink target="/" text="Wincent" active={active} />
+          <li>
+            <Link className="nav-link" to="/">Wincent</Link>
+            <div className="nav-toggle-wrapper">
+              <div className="nav-toggle" onClick={this._handleToggle}>
+                {this.state.isOpen ? 'Close' : 'Open'}
+              </div>
+            </div>
+          </li>
           <NavLink target="/blog" text="Blog" active={active} />
           <NavLink target="/wiki" text="Wiki" active={active} />
           <NavLink target="/snippets" text="Snippets" active={active} />
