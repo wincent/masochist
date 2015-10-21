@@ -7,7 +7,10 @@ export default class TrustedPrerenderedMarkup extends React.Component {
 
   render() {
     return (
-      <div dangerouslySetInnerHTML={{__html: this.props.html}} />
+      <div
+        className="prerendered"
+        dangerouslySetInnerHTML={{__html: this.props.html}}
+      />
     );
   }
 }
