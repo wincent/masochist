@@ -3,22 +3,22 @@ import 'babel/polyfill';
 import {toGlobalId} from 'graphql-relay';
 import App from './components/App';
 import Article from './components/Article';
-import Articles from './components/Articles';
+import ArticlesIndex from './components/ArticlesIndex';
 import Page from './components/Page';
 import Post from './components/Post';
-import Posts from './components/Posts';
+import PostsIndex from './components/PostsIndex';
 import Snippet from './components/Snippet';
 import Snippets from './components/Snippets';
 import Tag from './components/Tag';
-import TagCloud from './components/TagCloud';
+import TagsIndex from './components/TagsIndex';
 import ArticleQueries from './routes/ArticleQueries';
-import ArticlesQueries from './routes/ArticlesQueries';
+import ArticlesIndexQueries from './routes/ArticlesIndexQueries';
 import PageQueries from './routes/PageQueries';
 import PostQueries from './routes/PostQueries';
-import PostsQueries from './routes/PostsQueries';
+import PostsIndexQueries from './routes/PostsIndexQueries';
 import SnippetQueries from './routes/SnippetQueries';
 import SnippetsQueries from './routes/SnippetsQueries';
-import TagCloudQueries from './routes/TagCloudQueries';
+import TagsIndexQueries from './routes/TagsIndexQueries';
 import TagQueries from './routes/TagQueries';
 import {createHistory} from 'history';
 import {IndexRoute, Route, Router} from 'react-router';
@@ -61,8 +61,8 @@ function prepareTagParams(params, route) {
 ReactDOM.render(
   <Router history={history} createElement={ReactRouterRelay.createElement}>
     <Route component={App} path="/">
-      <IndexRoute component={Posts} queries={PostsQueries} />
-      <Route component={Posts} path="blog" queries={PostsQueries} />
+      <IndexRoute component={PostsIndex} queries={PostsIndexQueries} />
+      <Route component={PostsIndex} path="blog" queries={PostsIndexQueries} />
       <Route
         component={Post}
         path="blog/:id"
@@ -82,14 +82,14 @@ ReactDOM.render(
         prepareParams={getPrepareParams('Snippet')}
         queries={SnippetQueries}
       />
-      <Route component={TagCloud} path="tags" queries={TagCloudQueries} />
+      <Route component={TagsIndex} path="tags" queries={TagsIndexQueries} />
       <Route
         component={Tag}
         path="tags/:id"
         prepareParams={prepareTagParams}
         queries={TagQueries}
       />
-      <Route component={Articles} path="wiki" queries={ArticlesQueries} />
+      <Route component={ArticlesIndex} path="wiki" queries={ArticlesIndexQueries} />
       <Route
         component={Article}
         path="wiki/:id"

@@ -2,7 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import TagPreview from './TagPreview';
 
-class TagCloud extends React.Component {
+class TagsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {filterString: ''};
@@ -58,7 +58,7 @@ class TagCloud extends React.Component {
   }
 }
 
-export default Relay.createContainer(TagCloud, {
+export default Relay.createContainer(TagsIndex, {
   initialVariables: {
     count: Number.MAX_SAFE_INTEGER
   },

@@ -1,7 +1,7 @@
 import Relay from 'react-relay';
 
-const TagCloudQueries = {
+const ArticlesIndexQueries = {
   viewer: () => Relay.QL`query { viewer }`,
 };
 
-export default TagCloudQueries;
+export default ArticlesIndexQueries;

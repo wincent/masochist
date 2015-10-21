@@ -1,7 +1,7 @@
 import Relay from 'react-relay';
 
-const ArticlesQueries = {
+const PostsIndexQueries = {
   viewer: () => Relay.QL`query { viewer }`,
 };
 
-export default ArticlesQueries;
+export default PostsIndexQueries;

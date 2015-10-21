@@ -1,11 +1,10 @@
 import React from 'react';
 import Relay from 'react-relay';
-import ArticlePreview from './ArticlePreview';
 import LoadMoreButton from './LoadMoreButton';
+import Post from './Post';
 
-import './Articles.css';
-
-class Articles extends React.Component {
+class PostsIndex extends React.Component {
+  // TODO: DRY up this pagination pattern
   constructor(props) {
     super(props);
     this.state = {isLoading: false};
@@ -22,26 +21,13 @@ class Articles extends React.Component {
   render() {
     return (
       <div>
-        <h1>Wiki articles</h1>
-        <table className="article-listing u-full-width">
-          <thead>
-            <tr>
-              <th>What</th>
-              <th>Title</th>
-              <th>When</th>
-              <th>Tags</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.props.viewer.articles.edges.map(({node}) => (
-                <ArticlePreview key={node.id} article={node} />
-              ))
-            }
-          </tbody>
-        </table>
         {
-          this.props.viewer.articles.pageInfo.hasNextPage ?
+          this.props.viewer.posts.edges.map(({node}) => (
+            <Post key={node.id} post={node} />
+          ))
+        }
+        {
+          this.props.viewer.posts.pageInfo.hasNextPage ?
             <LoadMoreButton
               isLoading={this.state.isLoading}
               onLoadMore={this._handleLoadMore}
@@ -53,18 +39,18 @@ class Articles extends React.Component {
   }
 }
 
-export default Relay.createContainer(Articles, {
+export default Relay.createContainer(PostsIndex, {
   initialVariables: {
-    count: 10,
+    count: 3,
   },
   fragments: {
     viewer: () => Relay.QL`
       fragment on User {
-        articles(first: $count) {
+        posts(first: $count) {
           edges {
             node {
               id
-              ${ArticlePreview.getFragment('article')}
+              ${Post.getFragment('post')}
             }
           }
           pageInfo {
