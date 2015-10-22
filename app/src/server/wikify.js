@@ -4,6 +4,8 @@
 
 import Promise from 'bluebird';
 import http from 'http';
+import nodegit from 'nodegit';
+import path from 'path';
 
 type WikiRequest = {
   wikitext: string;
@@ -20,21 +22,29 @@ type WikiRequest = {
   spaceToUnderscore?: boolean;
 };
 
+let contentDigest = null;
+(async () => {
+  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
+  contentDigest = (await repo.getReferenceCommit('content')).sha();
+})();
+
 export default function wikify(objects: Array<WikiRequest>) {
   return new Promise(
     (resolve, reject) => {
       // TODO: make this configurable, maybe
+      const headers = {
+        'Content-Type': 'application/json',
+      };
+      if (contentDigest) {
+        headers['X-Wikitext-Corpus-Digest'] = contentDigest;
+      }
       const request = http.request(
         {
           hostname: 'localhost',
           port: 8080,
           path: '/wikitext',
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            // TODO: use actual digest here
-            'X-Wikitext-Corpus-Digest': 'foo',
-          },
+          headers,
         },
         response => {
           const chunks = [];

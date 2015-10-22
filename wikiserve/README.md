@@ -12,8 +12,7 @@ curl \
 
 The optional `X-Wikitext-Corpus-Digest` header can be used do pass a SHA-1
 digest identifing the version of the wikitext corpus for which the markup is
-being generated. When passed, the 40-character digest is appended to an
-`X-Wikitext-Corpus-Targets:` prefix to produce a memcache key that can be used
-to look up the corresponding "known links" set. (Note that Redis would probably
-be better suited for this, but I already have `memcached` up and running in my
-infrastructure, so I am going with that.)
+being generated. When passed, the 40-character digest is used to check Redis for
+ a match with the "masochist:last-indexed-hash" value, and if there is a match,
+ the "masochist:wiki-index" sorted set is pulled. This is used as the basis for
+ a "known links" set.

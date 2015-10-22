@@ -3,7 +3,7 @@ require 'rubygems'
 require 'bundler/setup'
 
 # Gems.
-require 'dalli'
+require 'redis'
 require 'sinatra'
 require 'sinatra/json'
 require 'wikitext'
@@ -15,7 +15,7 @@ require 'set'
 # TODO Make defaults configurable via an external config file
 PARSER = Wikitext::Parser.new(img_prefix: '/system/images/')
 
-CACHE = Dalli::Client.new
+CACHE = Redis.new
 
 KNOWN_LINKS = {}
 
@@ -29,12 +29,18 @@ end).new
 
 def known_links(digest)
   if !KNOWN_LINKS.has_key?(digest)
-    targets = CACHE.get('X-Wikitext-Corpus-Targets:' + digest)
-    if targets
-      KNOWN_LINKS[digest] = Set.new(targets)
-      KNOWN_LINKS_DIGESTS.push(digest)
-      if KNOWN_LINKS_DIGESTS.size > 10
-        KNOWN_LINKS.delete(KNOWN_LINKS_DIGESTS.shift)
+    last_indexed, cardinality = CACHE.multi do
+      CACHE.get('masochist:last-indexed-hash')
+      CACHE.zcard('masochist:wiki-index')
+    end
+    if last_indexed === digest
+      targets = CACHE.zrevrange('masochist:wiki-index', 0, cardinality)
+      if targets.any?
+        KNOWN_LINKS[digest] = Set.new(targets.map(&:downcase))
+        KNOWN_LINKS_DIGESTS.push(digest)
+        if KNOWN_LINKS_DIGESTS.size > 10
+          KNOWN_LINKS.delete(KNOWN_LINKS_DIGESTS.shift)
+        end
       end
     end
   end

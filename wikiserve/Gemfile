@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'dalli'
-gem 'kgio' # Makes Dalli faster.
+gem 'redis'
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'unicorn'
