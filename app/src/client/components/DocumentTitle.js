@@ -45,7 +45,7 @@ class DocumentTitle extends React.Component {
      * where a naive approach would end up appending the titles from every
      * single leaf.
      */
-    isLeaf: React.PropTypes.boolean,
+    isLeaf: React.PropTypes.bool,
   };
 
   render() {
