@@ -12,7 +12,7 @@ $ vim /tmp/com.apple.HIToolbox.plist
 $ sudo cp /tmp/com.apple.HIToolbox.plist /Library/Preferences/
 ```
 
-After editing `AppleCurrentKeyboardLayoutInputSourceID`, `KeyboardLayout ID` and `KeyboardLayout Name`, the result looks something like:
+After editing `AppleCurrentKeyboardLayoutInputSourceID`, `KeyboardLayout ID` and `KeyboardLayout Name` (which you can get from the `~/Library/Preferences/` file which we coverted above), the result looks something like:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
