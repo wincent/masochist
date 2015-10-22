@@ -2,21 +2,25 @@
  * @flow
  */
 
-import {getClient} from '../common/redis';
+import {getClient} from '../../common/redis';
 
-export default class Post {
+export default class Snippet {
+  // TODO: haul this up to a superclass?
+  // or just an entirely separate module (better)
+  // could stick this in an snippetIndexer class or function
   static async readIndex(count: number, offset: number): Array {
     const client = getClient();
     const results = await client.multi([
       [
         'zrevrange',
-        'masochist:blog-index',
+        // TODO: centralize this (we have something similar in bin/updateIndices)
+        'masochist:snippets-index',
         offset,
         offset + count - 1,
       ],
       [
         'zcard',
-        'masochist:blog-index',
+        'masochist:snippets-index',
       ]
     ]).execAsync();
 
@@ -35,3 +39,4 @@ export default class Post {
     this.tags = values.tags;
   }
 }
+

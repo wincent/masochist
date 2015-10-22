@@ -2,7 +2,7 @@
  * @flow
  */
 
-import {getClient} from '../common/redis';
+import {getClient} from '../../common/redis';
 
 export default class Tag {
   static async readIndex(count: number, offset: number): Array {

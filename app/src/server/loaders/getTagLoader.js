@@ -3,12 +3,12 @@
  */
 
 import DataLoader from 'dataloader';
-import Tag from './Tag';
 import {
   getKey,
   getClient,
-} from '../common/redis';
-import {loadContent} from './loadContent';
+} from '../../common/redis';
+import {loadContent} from '../loadContent';
+import Tag from '../models/Tag';
 
 async function loadTags(keys: Array<string>): Promise<Array<Object | Error>> {
   const client = getClient();

@@ -3,8 +3,8 @@
  */
 
 import DataLoader from 'dataloader';
-import Snippet from './Snippet';
-import {loadContent} from './loadContent';
+import {loadContent} from '../loadContent';
+import Snippet from '../models/Snippet';
 
 async function loadSnippets(keys: Array<string>): Promise<Array<Object | Error>> {
   return await* keys

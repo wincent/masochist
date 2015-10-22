@@ -3,7 +3,7 @@
  */
 
 import DataLoader from 'dataloader';
-import wikify from './wikify';
+import wikify from '../wikify';
 
 type WikitextSpec = {
   wikitext: string;

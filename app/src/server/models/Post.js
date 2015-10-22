@@ -2,21 +2,21 @@
  * @flow
  */
 
-import {getClient} from '../common/redis';
+import {getClient} from '../../common/redis';
 
-export default class Article {
+export default class Post {
   static async readIndex(count: number, offset: number): Array {
     const client = getClient();
     const results = await client.multi([
       [
         'zrevrange',
-        'masochist:wiki-index',
+        'masochist:blog-index',
         offset,
         offset + count - 1,
       ],
       [
         'zcard',
-        'masochist:wiki-index',
+        'masochist:blog-index',
       ]
     ]).execAsync();
 

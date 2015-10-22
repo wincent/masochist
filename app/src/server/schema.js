@@ -21,11 +21,11 @@ import {
   globalIdField,
   nodeDefinitions,
 } from 'graphql-relay';
-import Article from './Article';
-import Page from './Page';
-import Post from './Post';
-import Snippet from './Snippet';
-import Tag from './Tag';
+import Article from './models/Article';
+import Page from './models/Page';
+import Post from './models/Post';
+import Snippet from './models/Snippet';
+import Tag from './models/Tag';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import MarkupType from './schema/types/MarkupType';

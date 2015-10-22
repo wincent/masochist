@@ -6,12 +6,12 @@ import Promise from 'bluebird';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
-import getArticleLoader from './getArticleLoader';
-import getPageLoader from './getPageLoader';
-import getPostLoader from './getPostLoader';
-import getSnippetLoader from './getSnippetLoader';
-import getTagLoader from './getTagLoader';
-import getWikitextLoader from './getWikitextLoader';
+import getArticleLoader from './loaders/getArticleLoader';
+import getPageLoader from './loaders/getPageLoader';
+import getPostLoader from './loaders/getPostLoader';
+import getSnippetLoader from './loaders/getSnippetLoader';
+import getTagLoader from './loaders/getTagLoader';
+import getWikitextLoader from './loaders/getWikitextLoader';
 import schema from './schema';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 

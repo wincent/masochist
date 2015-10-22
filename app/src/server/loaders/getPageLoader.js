@@ -3,8 +3,8 @@
  */
 
 import DataLoader from 'dataloader';
-import Page from './Page';
-import {loadContent} from './loadContent';
+import {loadContent} from '../loadContent';
+import Page from '../models/Page';
 
 async function loadPages(keys: Array<string>): Promise<Array<Object | Error>> {
   return await* keys
