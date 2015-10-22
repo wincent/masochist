@@ -210,15 +210,14 @@ async function getFileUpdates(range, callback) {
   );
   print('\n');
 
-  // TODO make Cache.set (unconditional set)
   log('Writing timestamp cache for revision %s', head);
   await* Object.keys(timestamps).map(async id => {
     const [contentType, file] = id.split(/:/);
     const {oldest, mostRecent} = timestamps[id];
     const cacheKey = getTimestampsCacheKey(contentType, file, head);
-    await Cache.get(
+    await Cache.set(
       cacheKey,
-      async cacheKey => getTimestamps(repo, oldest, mostRecent),
+      await getTimestamps(repo, oldest, mostRecent)
     );
   });
 
