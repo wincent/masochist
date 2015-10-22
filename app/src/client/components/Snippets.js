@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
@@ -19,21 +20,23 @@ class Snippets extends React.Component {
 
   render() {
     return (
-      <div>
-        {
-          this.props.viewer.snippets.edges.map(({node}) => (
-            <Snippet key={node.id} snippet={node} />
-          ))
-        }
-        {
-          this.props.viewer.snippets.pageInfo.hasNextPage ?
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            /> :
-            null
-        }
-      </div>
+      <DocumentTitle title="snippets">
+        <div>
+          {
+            this.props.viewer.snippets.edges.map(({node}) => (
+              <Snippet key={node.id} snippet={node} />
+            ))
+          }
+          {
+            this.props.viewer.snippets.pageInfo.hasNextPage ?
+              <LoadMoreButton
+                isLoading={this.state.isLoading}
+                onLoadMore={this._handleLoadMore}
+              /> :
+              null
+          }
+        </div>
+      </DocumentTitle>
     );
   }
 }

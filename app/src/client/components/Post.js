@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
+import DocumentTitle from './DocumentTitle';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
@@ -9,18 +10,20 @@ class Post extends React.Component {
   render() {
     const {post} = this.props;
     return (
-      <article>
-        <h1>
-          <Link to={post.url}>
-            {post.title}
-          </Link>
-        </h1>
-        <When createdAt={post.createdAt} updatedAt={post.updatedAt} />
-        <div>
-          <TrustedPrerenderedMarkup html={post.body.html} />
-        </div>
-        <Tags tagged={post} />
-      </article>
+      <DocumentTitle isLeaf={true} title={post.title}>
+        <article>
+          <h1>
+            <Link to={post.url}>
+              {post.title}
+            </Link>
+          </h1>
+          <When createdAt={post.createdAt} updatedAt={post.updatedAt} />
+          <div>
+            <TrustedPrerenderedMarkup html={post.body.html} />
+          </div>
+          <Tags tagged={post} />
+        </article>
+      </DocumentTitle>
     );
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import Post from './Post';
 
@@ -20,21 +21,23 @@ class PostsIndex extends React.Component {
 
   render() {
     return (
-      <div>
-        {
-          this.props.viewer.posts.edges.map(({node}) => (
-            <Post key={node.id} post={node} />
-          ))
-        }
-        {
-          this.props.viewer.posts.pageInfo.hasNextPage ?
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            /> :
-            null
-        }
-      </div>
+      <DocumentTitle title="blog">
+        <div>
+          {
+            this.props.viewer.posts.edges.map(({node}) => (
+              <Post key={node.id} post={node} />
+            ))
+          }
+          {
+            this.props.viewer.posts.pageInfo.hasNextPage ?
+              <LoadMoreButton
+                isLoading={this.state.isLoading}
+                onLoadMore={this._handleLoadMore}
+              /> :
+              null
+          }
+        </div>
+      </DocumentTitle>
     );
   }
 }

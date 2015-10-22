@@ -46,6 +46,7 @@
     "react-relay": "0.4.0",
     "react-router": "1.0.0-rc3",
     "react-router-relay": "^0.7.0",
+    "react-side-effect": "1.0.2",
     "redis": "2.1.0"
   },
   "devDependencies": {

@@ -2,6 +2,7 @@ import React from 'react';
 import Relay from 'react-relay';
 import {Link} from 'react-router';
 import ArticlePreview from './ArticlePreview';
+import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import PluralText from './PluralText';
 import PagePreview from './PagePreview';
@@ -29,51 +30,53 @@ class Tag extends React.Component {
     const {tag} = this.props;
     const {taggables} = tag;
     return (
-      <div>
-        <h1>
-          <Link to={tag.url}>
-            {tag.name}
-          </Link>
-        </h1>
-        <p>
-          <PluralText count={tag.count} text="item" /> tagged
-          with <em>{tag.name}</em>
-        </p>
-        <table className="tag-listing u-full-width">
-          <thead>
-            <tr>
-              <th>What</th>
-              <th>Title</th>
-              <th>When</th>
-              <th>Tags</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              taggables.edges.map(({cursor, node}) => {
-                switch (node.__typename) {
-                  case 'Article':
-                    return <ArticlePreview article={node} key={cursor} />;
-                  case 'Page':
-                    return <PagePreview key={cursor} page={node} />;
-                  case 'Post':
-                    return <PostPreview key={cursor} post={node} />;
-                  case 'Snippet':
-                    return <SnippetPreview key={cursor} snippet={node} />;
-                }
-              })
-            }
-          </tbody>
-        </table>
-        {
-          taggables.pageInfo.hasNextPage ?
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            /> :
-            null
-        }
-      </div>
+      <DocumentTitle title={tag.name}>
+        <div>
+          <h1>
+            <Link to={tag.url}>
+              {tag.name}
+            </Link>
+          </h1>
+          <p>
+            <PluralText count={tag.count} text="item" /> tagged
+            with <em>{tag.name}</em>
+          </p>
+          <table className="tag-listing u-full-width">
+            <thead>
+              <tr>
+                <th>What</th>
+                <th>Title</th>
+                <th>When</th>
+                <th>Tags</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                taggables.edges.map(({cursor, node}) => {
+                  switch (node.__typename) {
+                    case 'Article':
+                      return <ArticlePreview article={node} key={cursor} />;
+                    case 'Page':
+                      return <PagePreview key={cursor} page={node} />;
+                    case 'Post':
+                      return <PostPreview key={cursor} post={node} />;
+                    case 'Snippet':
+                      return <SnippetPreview key={cursor} snippet={node} />;
+                  }
+                })
+              }
+            </tbody>
+          </table>
+          {
+            taggables.pageInfo.hasNextPage ?
+              <LoadMoreButton
+                isLoading={this.state.isLoading}
+                onLoadMore={this._handleLoadMore}
+              /> :
+              null
+          }
+        </div>
+      </DocumentTitle>
     );
   }
 }

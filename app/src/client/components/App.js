@@ -1,4 +1,5 @@
 import React from 'react';
+import DocumentTitle from './DocumentTitle';
 import Nav from './Nav';
 import Footer from './Footer';
 
@@ -53,13 +54,15 @@ export default class App extends React.Component {
   render() {
     const {children, routes} = this.props;
     return (
-      <div className="app">
-        <Nav routes={routes} />
-        <section className="app-content container">
-          {children}
-        </section>
-        <Footer />
-      </div>
+      <DocumentTitle title="wincent.com">
+        <div className="app">
+          <Nav routes={routes} />
+          <section className="app-content container">
+            {children}
+          </section>
+          <Footer />
+        </div>
+      </DocumentTitle>
     );
   }
 }

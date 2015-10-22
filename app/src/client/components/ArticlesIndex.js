@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import ArticlePreview from './ArticlePreview';
+import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 
 import './ArticlesIndex.css';
@@ -21,34 +22,36 @@ class ArticlesIndex extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Wiki articles</h1>
-        <table className="article-listing u-full-width">
-          <thead>
-            <tr>
-              <th>What</th>
-              <th>Title</th>
-              <th>When</th>
-              <th>Tags</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              this.props.viewer.articles.edges.map(({node}) => (
-                <ArticlePreview key={node.id} article={node} />
-              ))
-            }
-          </tbody>
-        </table>
-        {
-          this.props.viewer.articles.pageInfo.hasNextPage ?
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            /> :
-            null
-        }
-      </div>
+      <DocumentTitle title="wiki">
+        <div>
+          <h1>Wiki articles</h1>
+          <table className="article-listing u-full-width">
+            <thead>
+              <tr>
+                <th>What</th>
+                <th>Title</th>
+                <th>When</th>
+                <th>Tags</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                this.props.viewer.articles.edges.map(({node}) => (
+                  <ArticlePreview key={node.id} article={node} />
+                ))
+              }
+            </tbody>
+          </table>
+          {
+            this.props.viewer.articles.pageInfo.hasNextPage ?
+              <LoadMoreButton
+                isLoading={this.state.isLoading}
+                onLoadMore={this._handleLoadMore}
+              /> :
+              null
+          }
+        </div>
+      </DocumentTitle>
     );
   }
 }
