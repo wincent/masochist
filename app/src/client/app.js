@@ -1,4 +1,5 @@
 import 'babel/polyfill';
+import '../common/unhandledRejection';
 
 import {toGlobalId} from 'graphql-relay';
 import App from './components/App';

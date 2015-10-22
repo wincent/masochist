@@ -1,6 +1,7 @@
 'use strict'; // eslint-disable-line
 
 import '../common/devFallback';
+import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
 import express from 'express';

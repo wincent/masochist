@@ -3,6 +3,7 @@
 'use strict';
 
 import 'babel-core/polyfill';
+import '../common/unhandledRejection';
 
 import schema from '../server/schema';
 import Promise from 'bluebird';
@@ -12,10 +13,6 @@ import {introspectionQuery, printSchema} from 'graphql/utilities';
 import path from 'path';
 
 const writeFile = Promise.promisify(fs.writeFile);
-
-process.on('unhandledRejection', reason => {
-  throw reason;
-});
 
 function prettify(stringifiable) {
   return JSON.stringify(stringifiable, null, 2);

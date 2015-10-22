@@ -14,6 +14,7 @@
 
 import 'babel-core/polyfill';
 import '../common/devFallback';
+import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
 import nodegit from 'nodegit';
@@ -31,10 +32,6 @@ import {
   loadContent,
 } from '../server/loadContent';
 import git from '../server/git';
-
-process.on('unhandledRejection', reason => {
-  throw reason;
-});
 
 const LAST_INDEXED_HASH = getKey('last-indexed-hash');
 
