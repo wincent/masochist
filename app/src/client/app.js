@@ -9,7 +9,7 @@ import Page from './components/Page';
 import Post from './components/Post';
 import PostsIndex from './components/PostsIndex';
 import Snippet from './components/Snippet';
-import Snippets from './components/Snippets';
+import SnippetsIndex from './components/SnippetsIndex';
 import Tag from './components/Tag';
 import TagsIndex from './components/TagsIndex';
 import ArticleQueries from './routes/ArticleQueries';
@@ -76,7 +76,7 @@ ReactDOM.render(
         prepareParams={getPrepareParams('Page')}
         queries={PageQueries}
       />
-      <Route component={Snippets} path="snippets" queries={SnippetsQueries} />
+      <Route component={SnippetsIndex} path="snippets" queries={SnippetsQueries} />
       <Route
         component={Snippet}
         path="snippets/:id"

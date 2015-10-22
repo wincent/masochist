@@ -4,7 +4,7 @@ import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
-class Snippets extends React.Component {
+class SnippetsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {isLoading: false};
@@ -41,7 +41,7 @@ class Snippets extends React.Component {
   }
 }
 
-export default Relay.createContainer(Snippets, {
+export default Relay.createContainer(SnippetsIndex, {
   initialVariables: {
     count: 3,
   },
