@@ -594,6 +594,30 @@
               "deprecationReason": null
             },
             {
+              "name": "resolvedTitle",
+              "description": "The title of the article after resolving redirects",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "redirect",
+              "description": "The destination ([[wiki article]] or URL) the article should redirect to",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "body",
               "description": null,
               "args": [],

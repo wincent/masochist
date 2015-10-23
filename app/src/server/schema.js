@@ -194,6 +194,14 @@ const userType = new GraphQLObjectType({
   interfaces: [nodeInterface],
 });
 
+async function getRedirectedArticle(redirect, articleLoader) {
+  const match = redirect.match(/^\s*\[\[(.+)\]\]\s*$/);
+  if (match) {
+    // TODO detect and disallow multi-hop redirects?
+    return await articleLoader.load(match[1]);
+  }
+}
+
 const articleType = new GraphQLObjectType({
   name: 'Article',
   description: 'A wiki article',
@@ -204,13 +212,48 @@ const articleType = new GraphQLObjectType({
       description: "The article's title",
       resolve: article => article.title,
     },
+    resolvedTitle: {
+      type: GraphQLString,
+      description: 'The title of the article after resolving redirects',
+      resolve: async ({redirect, title}, args, {rootValue}) => {
+        while (redirect) {
+          const article = await getRedirectedArticle(
+            redirect,
+            rootValue.loaders.articleLoader
+          );
+          if (article) {
+            ({title, redirect} = article);
+          } else {
+            break;
+          }
+        }
+        return title;
+      },
+    },
+    redirect: {
+      type: GraphQLString,
+      description:
+        'The destination ([[wiki article]] or URL) the article should ' +
+        'redirect to',
+      resolve: article => article.redirect,
+    },
     body: {
       type: MarkupType,
-      resolve(article) {
-        // TODO: handle redirects
+      resolve: async ({body, format, redirect}, args, {rootValue}) => {
+        while (redirect) {
+          const article = await getRedirectedArticle(
+            redirect,
+            rootValue.loaders.articleLoader
+          );
+          if (article) {
+            ({body, format, redirect} = article);
+          } else {
+            break;
+          }
+        }
         return {
-          raw: article.body,
-          format: article.format,
+          format,
+          raw: body,
         };
       },
     },

@@ -32,6 +32,7 @@ export default class Article {
     this.format = values.format;
     this.createdAt = values.createdAt;
     this.updatedAt = values.updatedAt;
+    this.redirect = values.redirect;
     this.tags = values.tags;
   }
 }

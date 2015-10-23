@@ -6,6 +6,8 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
+import './Article.css';
+
 class Article extends React.Component {
   render() {
     const {article} = this.props;
@@ -15,9 +17,14 @@ class Article extends React.Component {
         <article>
           <h1>
             <Link to={article.url}>
-              {article.title}
+              {article.resolvedTitle}
             </Link>
           </h1>
+          {
+            article.redirect ?
+              <p className="redirect-info">Redirected from {article.title}</p> :
+              null
+          }
           <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
           <div>
             <TrustedPrerenderedMarkup html={article.body.html} />
@@ -38,6 +45,8 @@ export default Relay.createContainer(Article, {
       fragment on Article {
         id
         title
+        redirect
+        resolvedTitle
         createdAt
         updatedAt
         url
