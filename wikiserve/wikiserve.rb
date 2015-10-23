@@ -27,26 +27,24 @@ FALLBACK_LINKS_SET = (Class.new do
   end
 end).new
 
-def known_links(digest)
-  if !KNOWN_LINKS.has_key?(digest)
-    last_indexed, cardinality = CACHE.multi do
-      CACHE.get('masochist:last-indexed-hash')
-      CACHE.zcard('masochist:wiki-index')
-    end
-    if last_indexed === digest
-      targets = CACHE.zrevrange('masochist:wiki-index', 0, cardinality)
-      if targets.any?
-        KNOWN_LINKS[digest] = Set.new(targets.map(&:downcase))
-        KNOWN_LINKS_DIGESTS.push(digest)
-        if KNOWN_LINKS_DIGESTS.size > 10
-          KNOWN_LINKS.delete(KNOWN_LINKS_DIGESTS.shift)
-        end
+def known_links
+  last_indexed, cardinality = CACHE.multi do
+    CACHE.get('masochist:last-indexed-hash')
+    CACHE.zcard('masochist:wiki-index')
+  end
+  if !KNOWN_LINKS.has_key?(last_indexed)
+    targets = CACHE.zrevrange('masochist:wiki-index', 0, cardinality)
+    if targets.any?
+      KNOWN_LINKS[last_indexed] = Set.new(targets.map(&:downcase))
+      KNOWN_LINKS_DIGESTS.push(last_indexed)
+      if KNOWN_LINKS_DIGESTS.size > 10
+        KNOWN_LINKS.delete(KNOWN_LINKS_DIGESTS.shift)
       end
     end
   end
 
-  if KNOWN_LINKS.has_key?(digest)
-    KNOWN_LINKS[digest]
+  if KNOWN_LINKS.has_key?(last_indexed)
+    KNOWN_LINKS[last_indexed]
   else
     FALLBACK_LINKS_SET
   end
@@ -98,20 +96,17 @@ end
 post '/wikitext' do
   begin
     body = JSON[request.body.read.to_s]
-    digest = request.env['HTTP_X_WIKITEXT_CORPUS_DIGEST'] # Defy RFC 6648.
-    link_proc = nil
-    if digest
-      link_proc = -> (target) {
-        # TODO: probably make the class configurable
-        known_links(digest).member?(target.downcase) ? nil : 'redlink'
-      }
-    end
+    known = known_links
+    link_proc = -> (target) {
+      # TODO: probably make the class configurable
+      known.member?(target.downcase) ? nil : 'redlink'
+    }
     errors = []
     results = body.map do |options|
       begin
         wikitext = preprocess(options.fetch('wikitext'))
         options = extract_options(options)
-        options[:link_proc] = link_proc if link_proc
+        options[:link_proc] = link_proc
         PARSER.parse(wikitext, options)
       rescue => e
         errors.push(e.to_s)
