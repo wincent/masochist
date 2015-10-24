@@ -3,18 +3,17 @@ import Relay from 'react-relay';
 import {Link} from 'react-router';
 
 class TagPreview extends React.Component {
-  // TODO: link to actual URL from schema
   render() {
-    const {tag} = this.props;
+    const {count, name, url} = this.props.tag;
     return (
       <tr>
         <td>
-          <Link to={'/tags/' + tag.name}>
-            {tag.name}
+          <Link to={url}>
+            {name}
           </Link>
         </td>
         <td>
-          {tag.count}
+          {count}
         </td>
       </tr>
     );
@@ -25,8 +24,9 @@ export default Relay.createContainer(TagPreview, {
   fragments: {
     tag: () => Relay.QL`
       fragment on Tag {
-        name
         count
+        name
+        url
       }
     `,
   },

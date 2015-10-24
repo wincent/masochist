@@ -403,7 +403,7 @@ const tagType = new GraphQLObjectType({
     url: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'URL for the tag',
-      resolve: snippet => `/tags/${snippet.id}`,
+      resolve: tag => `/tags/${tag.id}`,
     },
     taggables: {
       type: taggableConnection,
