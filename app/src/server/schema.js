@@ -397,7 +397,7 @@ const tagType = new GraphQLObjectType({
     },
     count: {
       type: GraphQLInt,
-      description: "Count of items tagged with the tag",
+      description: 'Count of items tagged with the tag',
       resolve: tag => tag.count,
     },
     url: {
@@ -456,7 +456,7 @@ const {connectionType: tagConnection} = connectionDefinitions({
   connectionFields: {
     count: {
       type: GraphQLInt,
-      description: "Total number of tags",
+      description: 'Total number of tags',
       resolve: connection => connection.count,
     },
   },
