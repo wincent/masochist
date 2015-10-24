@@ -8,6 +8,7 @@
     "url": "https://github.com/wincent/masochist.git"
   },
   "scripts": {
+    "lint": "gulp lint",
     "start": "babel-node src/server/main.js",
     "start-prod": "NODE_ENV=production node dist/server/main.js",
     "test": "mocha --opts mocha/mocha.opts 'src/**/__mocks__/*.js' 'src/**/__tests__/*-test.js'",
