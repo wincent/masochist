@@ -1,5 +1,3 @@
-'use strict';
-
 import sinon from 'sinon';
 
 let sandbox;
