@@ -6,7 +6,7 @@ import nodegit from 'nodegit';
 import path from 'path';
 import process from 'process';
 import {toGlobalId} from 'graphql-relay';
-import Cache from './Cache';
+import Cache from '../common/Cache';
 import {Extensions} from './Markup';
 import git from './git';
 import unpackContent from './unpackContent';

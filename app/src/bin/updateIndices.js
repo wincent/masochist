@@ -24,8 +24,7 @@ import {
   getKey,
   getClient,
 } from '../common/redis';
-// TODO: may have to move these to ../common
-import Cache from '../server/Cache';
+import Cache from '../common/Cache';
 import {
   getTimestamps,
   getTimestampsCacheKey,
