@@ -26,16 +26,11 @@ import Page from './models/Page';
 import Post from './models/Post';
 import Snippet from './models/Snippet';
 import Tag from './models/Tag';
+import User from './models/User';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import MarkupType from './schema/types/MarkupType';
 import TagNameType from './schema/types/TagNameType';
-
-class User {
-  constructor() {
-    this.name = 'Anonymous visitor';
-  }
-}
 
 const taggedInterface = new GraphQLInterfaceType({
   name: 'Tagged',
