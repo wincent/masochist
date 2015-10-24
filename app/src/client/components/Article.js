@@ -67,7 +67,6 @@ export default Relay.createContainer(Article, {
   fragments: {
     article: () => Relay.QL`
       fragment on Article {
-        id
         title
         redirect
         resolvedTitle
