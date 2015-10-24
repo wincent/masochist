@@ -32,7 +32,7 @@ export default class Tag {
     for (let i = 0; i < tagsAndCounts.length; i = i + 2) {
       const name = tagsAndCounts[i];
       const count = tagsAndCounts[i + 1];
-      const id = name; // TODO
+      const id = name;
       tags.push(new Tag({id, name, count}));
     }
 
@@ -46,4 +46,3 @@ export default class Tag {
     this.taggables = values.taggables;
   }
 }
-
