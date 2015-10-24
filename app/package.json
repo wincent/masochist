@@ -10,7 +10,7 @@
   "scripts": {
     "start": "babel-node src/server/main.js",
     "start-prod": "NODE_ENV=production node dist/server/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --opts mocha/mocha.opts 'src/**/__mocks__/*.js' 'src/**/__tests__/*-test.js'",
     "update-indices": "babel-node src/bin/updateIndices.js",
     "update-schema": "babel-node src/bin/updateSchema.js"
   },
