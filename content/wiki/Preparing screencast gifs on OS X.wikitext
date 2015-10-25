@@ -1,7 +1,23 @@
 ---
 tags: screengif screencast
 ---
+= Installation =
+
 <pre lang="shell">$ brew cask install xquartz
 $ open /opt/homebrew-cask/Caskroom/xquartz/2.7.7/XQuartz.pkg
 $ brew install ffmpeg imagemagick gifsicle
 $ sudo gem install screengif</pre>
+
+= Use =
+
+After recording a movie with, say, QuickTime Player:
+
+<pre lang="shell">$ screengif -i Untitled.mov -o bug-repord.gif</pre>
+
+= OS upgrades =
+
+I found when upgrading to [[OS X]] [[El Capitan]] that I had to reinstall, because screengif was somewho trying to use an old version of ImageMagick. So I just uninstalled and reinstalled everything:
+
+<pre lang="shell">$ brew cask uninstall xquartz
+$ brew uninstall --force ffmpeg imagemagick gifsicle
+$ sudo gem uninstall screengif rmagick</pre>
