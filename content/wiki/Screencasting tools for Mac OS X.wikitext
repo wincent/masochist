@@ -13,3 +13,7 @@ tags: os.x
 = Keyboard enhancements =
 
 * [[KeyCastr]]
+
+= See also =
+
+* [[Preparing screencast gifs on OS X]]
