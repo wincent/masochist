@@ -15,3 +15,7 @@ tags: os.x
 
 -   [KeyCastr](/wiki/KeyCastr)
 
+# See also
+
+-   [Preparing screencast gifs on OS X](/wiki/Preparing_screencast_gifs_on_OS_X)
+
