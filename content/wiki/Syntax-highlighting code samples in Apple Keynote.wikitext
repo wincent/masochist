@@ -1,0 +1,13 @@
+---
+tags: keynote vim
+---
+The "easiest" way seems to be:
+
+# Turn off line-numbering in  Vim.
+# Run `:TOhtml`.
+# Write output to file: `:saveas! /tmp/code.html`.
+# Open file in browser: `:!open %<tab>`.
+# Copy text from browser into TextEdit.app (sigh).
+# Copy text from TextEdit.app into Keynote.app.
+
+Note that you'll need to edit your master slides to match the background color of your Vim color scheme.
