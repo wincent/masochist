@@ -42,3 +42,5 @@ After editing `AppleCurrentKeyboardLayoutInputSourceID`, `KeyboardLayout ID` and
     	</array>
     </dict>
     </plist>
+
+**Note:** This didn't actually work for me (tried on [OS X](/wiki/OS_X) 10.11 [El Capitan](/wiki/El_Capitan)).
