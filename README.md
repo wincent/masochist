@@ -21,7 +21,7 @@ I got sick of keeping all these disparate projects up to date, sick of the way e
 
 I wrote one [Rails]() app to rule them all. From then on I'd only need to update one thing (I was wrong about how easy this would be: keeping a single large Rails app up-to-date was just as painful as keeping the disparate open source projects up-to-date).
 
-It had a blog, a wiki, a bug tracker, a "gists" feature, a repo browser, forums, a CMS for managing product pages, Atom feeds, a short-linker. Everything but the kitchen sink. It even had a built-in [Twitter]() clone (holdover from my inherent mistrust of third-parties, I wanted even that data to live on my own server, even if it meant forgoing the network effect of doing it all on Twitter where everybody else is doing it, which is its primary value prop).
+It had a blog, a wiki, a bug tracker, a "gists" feature, a repo browser, forums, a CMS for managing product pages, Atom feeds, a short-linker. Everything but the kitchen sink. It even had a built-in [Twitter]() clone (holdover from my inherent mistrust of third-parties, I wanted even that data to live on my own server, even if it meant forgoing the network effect -- the primary value prop -- of doing it all on Twitter where everybody else is doing it).
 
 It used wikitext everywhere as the markup language of choice (side note: I bet on the wrong format, and now I have thousands of documents in wikitext instead of [Markdown]()).
 
@@ -39,7 +39,7 @@ You could even dispense with hosting your own website at all, and trust all your
 
 When I mentioned the "Golden Age" above, I did so with some irony. Things *have* changed, and for the better, but they will surely change again. I don't want to punish myself on an endless upgrade treadmill, but I do want to embrace change to some extent. That means I do want to build something new from time to time, for fun, even if I know it won't last forever.
 
-So, I won't be at all suprised if 10 years from now I feel the same way about GraphQL as I do today about Rails. [REST]() delivered value, but it had its drawbacks too, and GraphQL will be the same. Nothing is perfect, and nothing is permanent.
+So, I won't be at all surprised if 10 years from now I feel the same way about GraphQL as I do today about Rails. [REST]() delivered value, but it had its drawbacks too, and GraphQL will be the same. Nothing is perfect, and nothing is permanent.
 
 Nevertheless, I think there's an opportunity here to get *most* of my content into Markdown (which can reasonably be expected to be a good default choice for another 5 or even 10 years, and which is structured enough to make converting it into other formats feasible). And keeping it in Git, versioned ("as God intended"), is a highly desirable property. Git's long term prognosis as an abstraction, piece of software, and data storage and exchange protocol, is about as solid as these things come in the malleable and ever-changing world of software.
 
@@ -78,7 +78,7 @@ So, the plan is:
 * [ ] Make wincent.com gradually more and more static and read-only.
 * [ ] Eventually, make even the original wincent.com repo open source, for historical interest.
 * [x] Make a wikitext translating microservice.
-* [ ] Cache "redlinks" map, using Git commit hash as the key.
+* [x] Cache "redlinks" map, using Git commit hash as the key.
 * [ ] Profit.
 
 (Obviously, more details to come here, which I will flesh out in the project issue tracker.)
