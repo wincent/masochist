@@ -39,3 +39,5 @@ After editing `AppleCurrentKeyboardLayoutInputSourceID`, `KeyboardLayout ID` and
 	</array>
 </dict>
 </plist></pre>
+
+'''Note:''' This didn't actually work for me (tried on [[OS X]] 10.11 [[El Capitan]]).
