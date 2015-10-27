@@ -2,31 +2,17 @@
  * @flow
  */
 
-import {getClient} from '../../common/redis';
+import readIndex from '../readIndex';
 
 export default class Snippet {
-  // TODO: haul this up to a superclass?
-  // or just an entirely separate module (better)
-  // could stick this in an snippetIndexer class or function
   static async readIndex(count: number, offset: number): Array {
-    const client = getClient();
-    const results = await client.multi([
-      [
-        'zrevrange',
-        // TODO: centralize this (we have something similar in bin/updateIndices)
-        'masochist:snippets-index',
-        offset,
-        offset + count - 1,
-      ],
-      [
-        'zcard',
-        'masochist:snippets-index',
-      ]
-    ]).execAsync();
-
-    // Results is not an array, so we can't destructure it (although we can make
-    // it into an array for the benefit of our callers).
-    return [results[0], results[1]];
+    const results = await readIndex(
+      // TODO: centralize this (we have something similar in bin/updateIndices)
+      'masochist:snippets-index',
+      count,
+      offset
+    );
+    return results;
   }
 
   constructor(values) {
