@@ -36,7 +36,10 @@ function staticHandler(...resource) {
 
 function jadeHandler(resource) {
   return (request, response) => {
-    const locals = {canonical: getCanonicalURLForRequest(request)};
+    const locals = {
+      canonical: getCanonicalURLForRequest(request),
+      production: !__DEV__,
+    };
     response.render(resource, locals);
   };
 }

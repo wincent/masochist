@@ -1,6 +1,9 @@
 import 'babel/polyfill';
 import '../common/unhandledRejection';
 
+import './normalize.css';
+import './skeleton.css';
+
 import {toGlobalId} from 'graphql-relay';
 import App from './components/App';
 import Article from './components/Article';

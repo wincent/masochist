@@ -1,5 +1,6 @@
 'use strict';
 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 var path = require('path');
 var webpack = require('webpack');
@@ -12,6 +13,7 @@ module.exports = {
     filename: 'bundle.js',
   },
   plugins: [
+    new ExtractTextPlugin('styles.css', {allChunks: true}),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
@@ -35,8 +37,7 @@ module.exports = {
         },
       }, {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader',
-        include: path.resolve(__dirname, 'src'),
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'),
       }, {
         test: /\.svg$/,
         loader: 'url-loader?limit=10000',
