@@ -21,6 +21,12 @@ const APP_PORT = 3000;
 const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
+if (__DEV__) {
+  app.set('view engine', 'jade');
+} else {
+  app.set('view engine', 'js');
+  app.engine('js', require('compiled-jade-render'));
+}
 
 function staticHandler(...resource) {
   return (request, response) => (
@@ -28,11 +34,11 @@ function staticHandler(...resource) {
   );
 }
 
-function jadeHandler(...resource) {
-  return (request, response) => response.render(
-    'index.jade',
-    {canonical: getCanonicalURLForRequest(request)},
-  );
+function jadeHandler(resource) {
+  return (request, response) => {
+    const locals = {canonical: getCanonicalURLForRequest(request)};
+    response.render(resource, locals);
+  };
 }
 
 const appRoutes = [
@@ -48,7 +54,7 @@ const appRoutes = [
   '/wiki/*',
 ];
 
-appRoutes.forEach(route => app.get(route, jadeHandler('index.html')));
+appRoutes.forEach(route => app.get(route, jadeHandler('index')));
 
 app.get('/static/normalize.css', staticHandler('static', 'normalize.css'));
 app.get('/static/skeleton.css', staticHandler('static', 'skeleton.css'));

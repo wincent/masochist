@@ -1,9 +1,10 @@
+import gulp from 'gulp';
 import babel from 'gulp-babel';
 import eslint from 'gulp-eslint';
-import gulp from 'gulp';
+import jade from 'gulp-jade';
 import shell from 'gulp-shell';
-import gutil from 'gulp-util';
 import mocha from 'gulp-spawn-mocha';
+import gutil from 'gulp-util';
 import webpack from 'webpack';
 import devBabelPlugin from './babel/devBabelPlugin';
 import productionConfig from './webpack.production.config.js';
@@ -43,7 +44,7 @@ function wrap(stream) {
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['js', 'webpack:build']);
+gulp.task('build', ['jade', 'js', 'webpack:build']);
 
 gulp.task('flow', ['typecheck']);
 
@@ -73,6 +74,12 @@ gulp.task('babel', () => (
   ])
     .pipe(wrap(babel(babelOptions)))
     .pipe(gulp.dest('dist'))
+));
+
+gulp.task('jade', () => (
+  gulp.src('src/server/views/*.jade')
+    .pipe(wrap(jade({client: true})))
+    .pipe(gulp.dest('dist/server/views'))
 ));
 
 gulp.task('lint', () => (
