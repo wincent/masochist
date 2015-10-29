@@ -21,7 +21,7 @@ I got sick of keeping all these disparate projects up to date, sick of the way e
 
 I wrote one [Rails]() app to rule them all. From then on I'd only need to update one thing (I was wrong about how easy this would be: keeping a single large Rails app up-to-date was just as painful as keeping the disparate open source projects up-to-date).
 
-It had a blog, a wiki, a bug tracker, a "gists" feature, a repo browser, forums, a CMS for managing product pages, Atom feeds, a short-linker. Everything but the kitchen sink. It even had a built-in [Twitter]() clone (holdover from my inherent mistrust of third-parties, I wanted even that data to live on my own server, even if it meant forgoing the network effect -- the primary value prop -- of doing it all on Twitter where everybody else is doing it).
+It had a blog, a wiki, a bug tracker, a "gists" feature, a repo browser, forums, a CMS for managing product pages, Atom feeds, a short-linker. Everything but the kitchen sink. It even had a built-in [Twitter]() clone (holdover from my inherent mistrust of third-parties, I wanted even that data to live on my own server, even if it meant forgoing the network effect -- the primary value proposition! -- of doing it all on Twitter where everybody else was doing it).
 
 It used wikitext everywhere as the markup language of choice (side note: I bet on the wrong format, and now I have thousands of documents in wikitext instead of [Markdown]()).
 
@@ -31,7 +31,7 @@ It was fun to build all that stuff, but by 2010 it was becoming clear that the w
 
 We have shiny new toys like [React]() and [GraphQL]() that make building slick, dynamic, complex interfaces a breeze (relatively speaking). It's perfectly sensible to trust that big companies like [Google](), [Facebook](), [GitHub](), Twitter and friends with a copy of your precious data, and rely on them to provide robust access to it.
 
-It is now reasonable (and in fact, has been for a while) to keep your textual content (the blog and wiki use cases) in a Git repo like this one, and fully delegate the more dynamic aspects of online functionality to third-parties. Let GitHub track issues for you, just go ahead and do your "live" interactions on Twitter where everybody else is doing them, and share your photos on Facebook with people who actually want to see them.
+It is now reasonable (and in fact, has been for a while) to keep your textual content (the blog and wiki use cases) in a Git repo like this one, and fully delegate the more dynamic aspects of online functionality  (like comments) to third-parties. Let GitHub track issues for you, just go ahead and do your "live" interactions on Twitter where everybody else is doing them, and share your photos on Facebook with people who actually want to see them.
 
 You could even dispense with hosting your own website at all, and trust all your content to third parties. [Medium]() may or may not exist 10 years from now, but at a cosmic scale, does that really matter anyway?
 
@@ -68,20 +68,6 @@ This is a low-level list of desiderata. As the design gets further fleshed out I
 - Old URLs should not break, so that means having a router smart enough to redirect to static mirrors of pages from the old Rails app, or to migrated content on GitHub if necessary. Note that a lot of this can possibly be baked into the nginx config, allowing for more simplicity in the router.
 - Don't rebuild an auth system. Delegate to a trusted company like Facebook for [login](https://developers.facebook.com/docs/facebook-login/web), and use their [comment board](https://developers.facebook.com/docs/plugins/comments) and [social plugin](https://developers.facebook.com/docs/plugins/like-button) to get interactivity and distribution "for free".
 - End goal includes complete elimination of dependency on the business logic in the Rails app, and eventually turning it off entirely.
-
-## Migration plan
-
-This is a separate repo because my "wincent.com" repo is huge (over 4,000 commits at the time of writing, and 2.1 GB on disk for a clone plus working copy). One of the reasons it's so large is my historical mistrust of third-party services led me to bundle binary and build assets (`node_modules`, `bower_components`, RubyGems) in the repo itself, so I would never be dependent on GitHub or RubyGems to complete a deploy.
-
-So, the plan is:
-
-* [ ] Make wincent.com gradually more and more static and read-only.
-* [ ] Eventually, make even the original wincent.com repo open source, for historical interest.
-* [x] Make a wikitext translating microservice.
-* [x] Cache "redlinks" map, using Git commit hash as the key.
-* [ ] Profit.
-
-(Obviously, more details to come here, which I will flesh out in the project issue tracker.)
 
 [Bugzilla]: https://www.bugzilla.org
 [Facebook]: https://www.facebook.com/
