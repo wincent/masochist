@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "lint": "echo Please cd into the 'app' directory before running npm commands",
+    "start": "echo Please cd into the 'app' directory before running npm commands",
+    "start-prod": "echo Please cd into the 'app' directory before running npm commands",
+    "test": "echo Please cd into the 'app' directory before running npm commands",
+    "update-indices": "echo Please cd into the 'app' directory before running npm commands",
+    "update-schema": "echo Please cd into the 'app' directory before running npm commands"
+  }
+}
