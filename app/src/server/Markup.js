@@ -5,7 +5,7 @@
 export const Extensions = {
   C: 'c',
   HTML: 'html',
-  MARKDOWN: 'markdown',
+  MARKDOWN: 'md',
   OBJC: 'm',
   PATCH: 'patch',
   PLAINTEXT: 'txt',

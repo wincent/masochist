@@ -61,6 +61,9 @@ const MarkupType = new GraphQLObjectType({
             wikitext: markup.raw,
             baseHeadingLevel: level,
           });
+        } else if (markup.format === 'md') {
+          // TODO plug-in real markdown parser
+          return '<pre>' + escapeHTML('<!-- #markdown -->\n\n' + markup.raw) + '</pre>';
         } else if (markup.format === 'txt') {
           return '<pre>' + escapeHTML(markup.raw) + '</pre>';
         } else {
