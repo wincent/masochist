@@ -4,5 +4,5 @@ cache_breaker: 1
 ---
 = Links = 
 
-* http://wincent.com/: the old version of the site, a collection of [[PHP]] and [[Perl]] scripts and static [[HTML]] pages
-* https://wincent.com/: the new version, built on top of [[Rails]].
+* http://www.wincent.com/: the old version of the site, a collection of [[PHP]]/[[Perl]] scripts and static [[HTML]] pages.
+* https://wincent.com/: a newer version, originally built on top of [[Rails]], and later re-envisioned as [[Masochist]] using [[React]], [[Relay]] and [[GraphQL]].
