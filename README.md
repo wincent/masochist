@@ -2,6 +2,10 @@
 
 This repo contains the source code and content for my website at [wincent.com]().
 
+Content is authored in plain-text-friendly markup formats like [Markdown]() and
+served using a dynamic stack (described below). New code can be deployed and
+content added or updated via `git push`.
+
 ## Stack
 
 - [React](): Declarative, component-oriented view layer.
