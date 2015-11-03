@@ -33,6 +33,28 @@ function getMarkedRenderer(baseLevel: ?number) {
       return `<h${level}>${text}</h${level}>`;
     };
   }
+  renderer.link = (href, title, text) => {
+    let className;
+    if (
+      href.charAt(0) !== '/' &&
+      !href.match(/^https?:\/\/wincent\.com(\/|$)/i)
+    ) {
+      className = 'external';
+    }
+    if (title) {
+      if (className) {
+        return `<a href="${href}" class="${className}" title="${title}">${text}</a>`;
+      } else {
+        return `<a href="${href}" title="${title}">${text}</a>`;
+      }
+    } else {
+      if (className) {
+        return `<a href="${href}" class="${className}">${text}</a>`;
+      } else {
+        return `<a href="${href}">${text}</a>`;
+      }
+    }
+  };
   return renderer;
 }
 
