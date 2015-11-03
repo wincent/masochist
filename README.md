@@ -32,6 +32,7 @@ A static site generator would very much be the right tool for this job, however,
 
 Please see the introductory blog post, "[Introducing Masochist](https://github.com/wincent/masochist/blob/content/content/blog/masochist.md)".
 
+[Git]: https://git-scm.com/
 [GraphQL]: http://graphql.org/
 [Markdown]: https://en.wikipedia.org/wiki/Markdown
 [Marked 2]: http://marked2app.com/
