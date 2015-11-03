@@ -25,6 +25,17 @@ function validateBaseHeadingLevel(level: ?number): ?number {
   return level;
 }
 
+function getMarkedRenderer(baseLevel: ?number) {
+  const renderer = new marked.Renderer();
+  if (baseLevel) {
+    renderer.heading = (text, desiredLevel) => {
+      const level = Math.min(baseLevel + desiredLevel, 6);
+      return `<h${level}>${text}</h${level}>`;
+    };
+  }
+  return renderer;
+}
+
 const MarkupFormatType = new GraphQLEnumType({
   name: 'MARKUP_FORMAT_TYPE',
   values: {
@@ -63,14 +74,15 @@ const MarkupType = new GraphQLObjectType({
         },
       },
       resolve(markup, {baseHeadingLevel}, {rootValue}) {
+        const level = validateBaseHeadingLevel(baseHeadingLevel);
         if (markup.format === 'wikitext') {
-          const level = validateBaseHeadingLevel(baseHeadingLevel);
           return rootValue.loaders.wikitextLoader.load({
             wikitext: markup.raw,
             baseHeadingLevel: level,
           });
         } else if (markup.format === 'md') {
-          return marked(markup.raw);
+          const renderer = getMarkedRenderer(level);
+          return marked(markup.raw, {renderer});
         } else if (markup.format === 'txt') {
           return '<pre>' + escapeHTML(markup.raw) + '</pre>';
         } else {
