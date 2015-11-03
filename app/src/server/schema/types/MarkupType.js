@@ -5,7 +5,15 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
+import marked from 'marked';
 import escapeHTML from '../../escapeHTML';
+
+marked.setOptions({
+  // There are all defaults, but re-set them here explicitly as documentation.
+  gfm: true,
+  sanitize: false, // Let HTML through.
+  smartypants: false,
+});
 
 function validateBaseHeadingLevel(level: ?number): ?number {
   if (level == null) {
@@ -62,8 +70,7 @@ const MarkupType = new GraphQLObjectType({
             baseHeadingLevel: level,
           });
         } else if (markup.format === 'md') {
-          // TODO plug-in real markdown parser
-          return '<pre>' + escapeHTML('<!-- #markdown -->\n\n' + markup.raw) + '</pre>';
+          return marked(markup.raw);
         } else if (markup.format === 'txt') {
           return '<pre>' + escapeHTML(markup.raw) + '</pre>';
         } else {
