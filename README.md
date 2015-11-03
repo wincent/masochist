@@ -30,7 +30,7 @@ A static site generator would very much be the right tool for this job, however,
 
 ### Why the name "Masochist"?
 
-Please see the introductory blog post, "[Introducing Masochist](https://github.com/wincent/masochist/blob/content/content/blog/masochist.wikitext)".
+Please see the introductory blog post, "[Introducing Masochist](https://github.com/wincent/masochist/blob/content/content/blog/masochist.md)".
 
 [GraphQL]: http://graphql.org/
 [Markdown]: https://en.wikipedia.org/wiki/Markdown
