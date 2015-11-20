@@ -7,7 +7,8 @@ Via [http://apple.stackexchange.com/a/108836 Ask Different]:
 $ plutil -convert xml1 /tmp/com.apple.HIToolbox.plist
 $ plutil -convert xml1 ~/Library/Preferences/com.apple.HIToolbox.plist
 $ vim /tmp/com.apple.HIToolbox.plist
-$ sudo cp /tmp/com.apple.HIToolbox.plist /Library/Preferences/</pre>
+$ plutil -lint !$ # sanity check
+$ sudo cp !$ /Library/Preferences/</pre>
 
 After editing `AppleCurrentKeyboardLayoutInputSourceID`, `KeyboardLayout ID` and `KeyboardLayout Name` (which you can get from the `~/Library/Preferences/` file which we coverted above), the result looks something like:
 
@@ -39,5 +40,3 @@ After editing `AppleCurrentKeyboardLayoutInputSourceID`, `KeyboardLayout ID` and
 	</array>
 </dict>
 </plist></pre>
-
-'''Note:''' This didn't actually work for me (tried on [[OS X]] 10.11 [[El Capitan]]).
