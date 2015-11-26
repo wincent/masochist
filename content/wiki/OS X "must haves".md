@@ -25,6 +25,12 @@ I actually use both [Chrome](/wiki/Chrome) and [Chrome Canary](/wiki/Chrome_Cana
 
 Softens your display after sunset, so that you don't have to bathe yourself in the eery, unnatural glow of the computer screen.
 
+## [Hammerspoon](/wiki/Hammerspoon)
+
+-   <http://www.hammerspoon.org/>
+
+Programmable OS X automation and scripting tool. I use it for positioning windows using hot keys and in response to events (eg. plugging in or unplugging an external display, or launching an app).
+
 ## [Homebrew](/wiki/Homebrew)
 
 -   <http://mxcl.github.io/homebrew/>
@@ -60,12 +66,6 @@ For more details about this and other super useful settings, see the "[Karabiner
 The quickest and easiest way to not only take screenshots, but annotate them and share them. It also has some nice frills, like history, and not spewing temporary files all over your desktop (like Mac OS X's built-in screenshot capability does).
 
 This is free but not [open source](/wiki/open_source). It hooks in to Evernote.
-
-## [Slate](/wiki/Slate)
-
--   <https://github.com/jigish/slate>
-
-Awesome [open source](/wiki/open_source) window management (keyboard control, auto-layout, multi-monitor configuration).
 
 ## [VLC](/wiki/VLC)
 
@@ -150,6 +150,14 @@ Superseded by [Slate](/wiki/Slate).
 Helps you find the mouse pointer immediately when you haven't touched the mouse for a while; pretty much a must-have if you work with multiple displays, where the mouse can get lost.
 
 Superseded by equivalent built-in feature in [OS X](/wiki/OS_X) 10.11 "[El Capitan](/wiki/El_Capitan)".
+
+## [Slate](/wiki/Slate)
+
+-   <https://github.com/jigish/slate>
+
+Awesome [open source](/wiki/open_source) window management (keyboard control, auto-layout, multi-monitor configuration).
+
+Superseded by [Hammerspoon](/wiki/Hammerspoon).
 
 ## [Stay](/wiki/Stay)
 
