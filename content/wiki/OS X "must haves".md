@@ -89,6 +89,12 @@ When all you've got is a tiny SSD drive, this tool is very handy for hunting dow
 
 # Commercial
 
+## [1Password](/wiki/1Password)
+
+-   <https://agilebits.com/onepassword>
+
+Secret-management. More details [here](/wiki/1Password).
+
 ## [Arq](/wiki/Arq)
 
 -   <http://www.haystacksoftware.com/arq/>
