@@ -15,7 +15,7 @@ Masochist is a rewrite of the software powering the website at [wincent.com]. It
 
 ### 1995-2005: The Wild West
 
-My website was a collection of hand-coded HTML files, Perl scripts, and custom PHP. FTP (and later SFTP) was king. The web was young and sites came and went frequently, and went up and down too. If you entrusted any of your data to a third-party, and you couldn't count on it being available to you when you needed it.
+My website was a collection of hand-coded HTML files, Perl scripts, and custom PHP. FTP (and later SFTP) was king. The web was young and sites came and went frequently, and went up and down too. If you entrusted any of your data to a third-party, you couldn't count on it being available to you when you needed it.
 
 I gradually pulled in more and more functionality by installing open source projects: [Bugzilla] for bug-tracking, [Movable Type] and [WordPress] for blogging, [UBB.threads] for forums, [mailman] for mailing lists, [MediaWiki] for wikis, and so on. I was in control of my data and responsible for my own uptime.
 
