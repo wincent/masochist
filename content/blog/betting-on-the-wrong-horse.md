@@ -1,4 +1,5 @@
 ---
+title: Betting on the wrong horse
 tags: 1password lastpass
 ---
 I'm a software engineer. After decades of hanging around &mdash; and being one of these &mdash; computer geeks, I've come to realize a common trait among us: we're relentless optimizers. Not just optimizers of code (to make it run faster of more efficiently), but of all manner of decisions in our lives.
