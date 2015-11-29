@@ -25,7 +25,7 @@ I got sick of keeping all these disparate projects up to date, sick of the way e
 
 I wrote one [Rails] app to rule them all. From then on I'd only need to update one thing (I was wrong about how easy this would be: keeping a single large Rails app up-to-date was just as painful as keeping the disparate open source projects up-to-date).
 
-It had a blog, a wiki, a bug tracker, a "gists" feature, a repo browser, forums, a CMS for managing product pages, Atom feeds, a short-linker. Everything but the kitchen sink. It even had a built-in [Twitter] clone (holdover from my inherent mistrust of third-parties, I wanted even that data to live on my own server, even if it meant forgoing the network effect -- the primary value proposition! -- of doing it all on Twitter where everybody else was doing it).
+It had a blog, a wiki, a bug tracker, a "gists" feature, a repo browser, forums, a CMS for managing product pages, Atom feeds, a short-linker. Everything but the kitchen sink. It even had a built-in [Twitter] clone (holdover from my inherent mistrust of third-parties, I wanted even that data to live on my own server, even if it meant forgoing the network effect &mdash; the primary value proposition! &mdash; of doing it all on Twitter where everybody else was doing it).
 
 It used wikitext everywhere as the markup language of choice (side note: I bet on the wrong format, and now I have thousands of documents in wikitext instead of [Markdown]).
 
