@@ -8,6 +8,7 @@ import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import Cache from '../common/Cache';
 import {Extensions} from './Markup';
+import config from './config';
 import git from './git';
 import unpackContent from './unpackContent';
 
@@ -44,7 +45,8 @@ export function getTimestampsCacheKey(subdirectory, file, head) {
 
 export async function loadContent(options: LoaderOptions): Promise {
   const {subdirectory, file} = options;
-  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
+  const repoPath = path.resolve(__dirname, '../../..', config.repo)
+  const repo = await nodegit.Repository.open(repoPath);
   const head = await repo.getReferenceCommit('content');
   const commit = options.commit ?
     await repo.getCommit(options.commit) :

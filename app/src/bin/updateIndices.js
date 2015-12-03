@@ -25,6 +25,7 @@ import {
   getClient,
 } from '../common/redis';
 import Cache from '../common/Cache';
+import config from '../server/config';
 import {
   getTimestamps,
   getTimestampsCacheKey,
@@ -173,7 +174,8 @@ async function getFileUpdates(range, callback) {
 
 (async () => {
   const client = getClient();
-  const repo = await nodegit.Repository.open(path.resolve(__dirname, '../../../.git'));
+  const repoPath = path.resolve(__dirname, '../../..', config.repo);
+  const repo = await nodegit.Repository.open(repoPath);
   const head = (await repo.getReferenceCommit('content')).sha();
   const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
   if (head === lastIndexedHash) {
