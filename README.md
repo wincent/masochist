@@ -14,7 +14,6 @@ content added or updated via `git push`.
 - [Git]: Main content storage.
 - [Redis]: Indexing and caching.
 - [memcached]: Caching.
-- [MySQL]: Ancillary storage.
 
 Supporting tools and technologies:
 
@@ -37,7 +36,6 @@ Please see the introductory blog post, "[Introducing Masochist](https://github.c
 [Markdown]: https://en.wikipedia.org/wiki/Markdown
 [Marked 2]: http://marked2app.com/
 [memcached]: http://memcached.org/
-[MySQL]: http://mysql.com/
 [React]: http://facebook.github.io/react/
 [Redis]: http://redis.io/
 [Relay]: http://facebook.github.io/relay/
