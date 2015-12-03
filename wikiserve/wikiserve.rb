@@ -93,6 +93,10 @@ def extract_options(options)
   extracted_options
 end
 
+get '/heartbeat' do
+  json PARSER.parse('OK')
+end
+
 post '/wikitext' do
   begin
     body = JSON[request.body.read.to_s]
