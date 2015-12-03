@@ -2,13 +2,11 @@
  * @flow
  */
 
-import nodegit from 'nodegit';
 import path from 'path';
 import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import Cache from '../common/Cache';
 import {Extensions} from './Markup';
-import config from './config';
 import git from './git';
 import unpackContent from './unpackContent';
 
@@ -25,15 +23,18 @@ const SubdirectoryToTypeName = {
   wiki: 'Article',
 };
 
-export async function getTimestamps(repo, oldest, mostRecent) {
+export async function getTimestamps(
+  oldest: string,
+  mostRecent: string
+) {
   return {
     createdAt: oldest ?
       // Author date of earliest.
-      new Date((await repo.getCommit(oldest)).author().when().time() * 1000) :
+      new Date((await git('show', '-s', '--format=%at', oldest)).trim() * 1000) :
       null,
     updatedAt: mostRecent ?
       // Commit date of latest.
-      (await repo.getCommit(mostRecent)).date() :
+      new Date((await git('show', '-s', '--format=%ct', mostRecent)).trim() * 1000) :
       null,
   };
 }
@@ -45,13 +46,9 @@ export function getTimestampsCacheKey(subdirectory, file, head) {
 
 export async function loadContent(options: LoaderOptions): Promise {
   const {subdirectory, file} = options;
-  const repoPath = path.resolve(__dirname, '../../..', config.repo)
-  const repo = await nodegit.Repository.open(repoPath);
-  const head = await repo.getReferenceCommit('content');
-  const commit = options.commit ?
-    await repo.getCommit(options.commit) :
-    head;
-  const tree = await commit.getTree();
+  const head = (await git('rev-parse', 'content')).trim();
+  const commit = options.commit || head;
+  const tree = (await git('show', '-s', '--format=%T', commit)).trim();
 
   // Could also do a binary/interpolation search of `tree.entries -> path` under
   // the "content/wiki" tree but for now, use trial and error to check for
@@ -77,7 +74,7 @@ export async function loadContent(options: LoaderOptions): Promise {
 
   const blob = (await treeEntry.getBlob()).toString();
   const {body, tags, ...metadata} = unpackContent(blob);
-  const cacheKey = getTimestampsCacheKey(subdirectory, file, head.sha());
+  const cacheKey = getTimestampsCacheKey(subdirectory, file, head);
   const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {
@@ -85,15 +82,12 @@ export async function loadContent(options: LoaderOptions): Promise {
         'rev-list',
         'content',
         '--',
-        path.relative(
-          path.resolve(process.cwd()),
-          path.resolve(__dirname, '..', '..', '..', 'content', subdirectory, `${file}.${extension}`),
-        ),
+        path.join('content', subdirectory, `${file}.${extension}`),
       );
       const mostRecent = revs.slice(0, 40);
       const oldest = revs.trim().slice(-40);
 
-      return getTimestamps(repo, oldest, mostRecent);
+      return getTimestamps(oldest, mostRecent);
     }
   );
 

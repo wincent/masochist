@@ -4,6 +4,8 @@
 
 import Promise from 'bluebird';
 import {spawn} from 'child_process';
+import path from 'path';
+import config from './config';
 
 // TODO: expose streamy version of this
 function run(command, ...args: Array<string>): Promise<string> {
@@ -35,5 +37,6 @@ function run(command, ...args: Array<string>): Promise<string> {
 }
 
 export default function git(...args: Array<string>): Promise {
-  return run('git', ...args);
+  const repoPath = path.resolve(__dirname, '../../..', config.repo)
+  return run('git', '-C', repoPath, ...args);
 }

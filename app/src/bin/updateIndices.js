@@ -17,7 +17,6 @@ import '../common/devFallback';
 import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
-import nodegit from 'nodegit';
 import path from 'path';
 import memoize from '../common/memoize';
 import {
@@ -25,7 +24,6 @@ import {
   getClient,
 } from '../common/redis';
 import Cache from '../common/Cache';
-import config from '../server/config';
 import {
   getTimestamps,
   getTimestampsCacheKey,
@@ -72,10 +70,7 @@ const getWhatChanged = memoize(
       '-z',
       range,
       '--',
-      path.relative(
-        path.resolve(process.cwd()),
-        path.resolve(__dirname, '..', '..', '..', 'content', subdirectory),
-      ),
+      path.join('content', subdirectory),
     );
   }
 );
@@ -174,9 +169,7 @@ async function getFileUpdates(range, callback) {
 
 (async () => {
   const client = getClient();
-  const repoPath = path.resolve(__dirname, '../../..', config.repo);
-  const repo = await nodegit.Repository.open(repoPath);
-  const head = (await repo.getReferenceCommit('content')).sha();
+  const head = (await git('rev-parse', 'content')).trim();
   const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
   if (head === lastIndexedHash) {
     log('Index already up-to-date at revision %s', head);
@@ -215,7 +208,7 @@ async function getFileUpdates(range, callback) {
     const cacheKey = getTimestampsCacheKey(contentType, file, head);
     await Cache.set(
       cacheKey,
-      await getTimestamps(repo, oldest, mostRecent)
+      await getTimestamps(oldest, mostRecent)
     );
   });
 
