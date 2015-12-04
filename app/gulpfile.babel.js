@@ -44,7 +44,7 @@ function wrap(stream) {
 
 gulp.task('default', ['watch']);
 
-gulp.task('build', ['jade', 'js', 'webpack:build']);
+gulp.task('build', ['jade', 'babel', 'webpack:build']);
 
 gulp.task('flow', ['typecheck']);
 
