@@ -202,15 +202,23 @@ async function getFileUpdates(range, callback) {
   print('\n');
 
   log('Writing timestamp cache for revision %s', head);
-  await* Object.keys(timestamps).map(async id => {
-    const [contentType, file] = id.split(/:/);
-    const {oldest, mostRecent} = timestamps[id];
-    const cacheKey = getTimestampsCacheKey(contentType, file, head);
-    await Cache.set(
-      cacheKey,
-      await getTimestamps(oldest, mostRecent)
+  await async () => {
+    // Use Promise.map to limit concurrency and avoid exhausting file
+    // descriptors.
+    return Promise.map(
+      Object.keys(timestamps),
+      async id => {
+        const [contentType, file] = id.split(/:/);
+        const {oldest, mostRecent} = timestamps[id];
+        const cacheKey = getTimestampsCacheKey(contentType, file, head);
+        await Cache.set(
+          cacheKey,
+          await getTimestamps(oldest, mostRecent)
+        );
+      },
+      {concurrency: 32}
     );
-  });
+  };
 
   // Produce createdAt/updatedAt ordered indices.
   log('Creating ordered index');

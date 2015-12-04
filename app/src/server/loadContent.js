@@ -2,7 +2,6 @@
  * @flow
  */
 
-import path from 'path';
 import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import Cache from '../common/Cache';
@@ -50,29 +49,29 @@ export async function loadContent(options: LoaderOptions): Promise {
   const commit = options.commit || head;
   const tree = (await git('show', '-s', '--format=%T', commit)).trim();
 
-  // Could also do a binary/interpolation search of `tree.entries -> path` under
-  // the "content/wiki" tree but for now, use trial and error to check for
-  // extensions.
-  let extension;
-  let treeEntry;
-  const extensions = Object.keys(Extensions);
-  for (let i = 0; i < extensions.length; i++) {
-    extension = Extensions[extensions[i]];
-    try {
-      treeEntry = await tree.getEntry(
-        'content/' + subdirectory + '/' + file + '.' + extension
-      );
-      break;
-    } catch(e) {
-      // Keep looking.
-    }
-  }
+  // Content may exist under one (or none) or several possible extensions.
+  const possibleNames = Object.keys(Extensions).map(name => (
+    'content/' + subdirectory + '/' + file + '.' + Extensions[name]
+  ));
+  let treeEntry = (await git(
+    'ls-tree',
+    '--full-tree',
+    '-r',
+    tree,
+    '--',
+    ...possibleNames
+  )).match(/^\d+ (\w+) ([0-9a-f]+)\t(.+)\.(.+?)(\n|$)/);
 
-  if (!treeEntry || !treeEntry.isBlob()) {
+  if (!treeEntry) {
     return null;
   }
 
-  const blob = (await treeEntry.getBlob()).toString();
+  const [match, type, hash, filename, extension] = treeEntry;
+  if (type !== 'blob') {
+    return null;
+  }
+
+  const blob = await git('cat-file', 'blob', hash);
   const {body, tags, ...metadata} = unpackContent(blob);
   const cacheKey = getTimestampsCacheKey(subdirectory, file, head);
   const timestamps = await Cache.get(
@@ -82,7 +81,7 @@ export async function loadContent(options: LoaderOptions): Promise {
         'rev-list',
         'content',
         '--',
-        path.join('content', subdirectory, `${file}.${extension}`),
+        filename + '.' + extension,
       );
       const mostRecent = revs.slice(0, 40);
       const oldest = revs.trim().slice(-40);
