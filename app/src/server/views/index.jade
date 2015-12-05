@@ -6,10 +6,10 @@ html(lang='en')
     title wincent.com
     link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600', rel='stylesheet', type='text/css')
     if (production)
-      link(rel='stylesheet', href='/static/styles.css')
+      link(rel='stylesheet', href=styles)
     link(rel='icon', type='image/x-icon', href='images/favicon.ico')
     if (canonical)
       link(rel='canonical', href=canonical)
   body
     #relay-root
-    script(src='/static/bundle.js')
+    script(src=bundle)

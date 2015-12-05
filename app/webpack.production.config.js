@@ -1,7 +1,9 @@
 'use strict';
 
+var AssetsPlugin = require('assets-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var autoprefixer = require('autoprefixer');
+var fse = require('fs-extra');
 var path = require('path');
 var webpack = require('webpack');
 
@@ -10,17 +12,33 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle-[hash].js',
   },
   plugins: [
-    new ExtractTextPlugin('styles.css', {allChunks: true}),
+    new AssetsPlugin({
+      fullPath: false,
+      path: path.resolve(__dirname, 'dist'),
+      prettyPrint: true,
+    }),
+    new ExtractTextPlugin('styles-[hash].css', {allChunks: true}),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin(),
+    function() {
+      this.plugin('done', function(stats) {
+        stats.toJson().assetsByChunkName.main.forEach(function(asset) {
+          // Copy each digest-ized asset from dist to public/static.
+          fse.copySync(
+            path.resolve(__dirname, 'dist', asset),
+            path.resolve(__dirname, 'public', 'static', asset)
+          );
+        });
+      });
+    },
   ],
   module: {
     loaders: [

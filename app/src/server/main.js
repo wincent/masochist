@@ -37,6 +37,10 @@ function staticHandler(...resource) {
 function jadeHandler(resource) {
   return (request, response) => {
     const locals = {
+      bundle: '/static/' + (
+        __DEV__ ? 'bundle.js' : require('../webpack-assets').main.js
+      ),
+      styles: __DEV__ ? null : '/static/' + require('../webpack-assets').main.css,
       canonical: getCanonicalURLForRequest(request),
       production: !__DEV__,
     };
