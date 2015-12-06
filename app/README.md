@@ -6,6 +6,7 @@
 ```
 npm install
 npm run update-schema # same as `babel-node src/bin/updateSchema.js`
+npm run update-indices # whenever content changes
 npm run start # same as `babel-node src/server/main.js`
 ```
 
@@ -14,6 +15,15 @@ npm run start # same as `babel-node src/server/main.js`
 ```
 npm install
 gulp build # builds files under `dist/`
-node dist/bin/updateSchema.js
 npm run start-prod # same as `NODE_ENV=production node dist/server/main.js`
+```
+
+## Running in production
+
+```
+export NODE_ENV=production
+npm install
+gulp build
+node dist/bin/updateIndices.js # whenever content changes
+node dist/server/main.js
 ```
