@@ -51,6 +51,7 @@ function prepareArticleParams(params, route) {
     id: toGlobalId('Article', params.id.replace(/_/g, ' ')),
   };
 }
+
 /**
  * Tag pages are a special case as well, as we must support both "/tags/foo"
  * and "/tags/foo+bar".
