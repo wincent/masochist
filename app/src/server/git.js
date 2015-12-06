@@ -30,7 +30,6 @@ function run(command, ...args: Array<string>): Promise<string> {
         resolve(stdout);
       }
     });
-
   });
 
   return promise;
