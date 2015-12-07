@@ -192,9 +192,24 @@ const userType = new GraphQLObjectType({
 async function getRedirectedArticle(redirect, articleLoader) {
   const match = redirect.match(/^\s*\[\[(.+)\]\]\s*$/);
   if (match) {
-    // TODO detect and disallow multi-hop redirects?
     return await articleLoader.load(match[1]);
   }
+}
+
+async function resolveRedirects(article, {loaders}) {
+  // TODO detect and disallow (or warn about) multi-hop redirects?
+  while (article.redirect) {
+    let targetArticle = await getRedirectedArticle(
+      article.redirect,
+      loaders.articleLoader
+    );
+    if (targetArticle) {
+      article = targetArticle;
+    } else {
+      break;
+    }
+  }
+  return article;
 }
 
 const articleType = new GraphQLObjectType({
@@ -210,19 +225,9 @@ const articleType = new GraphQLObjectType({
     resolvedTitle: {
       type: GraphQLString,
       description: 'The title of the article after resolving redirects',
-      resolve: async ({redirect, title}, args, {rootValue}) => {
-        while (redirect) {
-          const article = await getRedirectedArticle(
-            redirect,
-            rootValue.loaders.articleLoader
-          );
-          if (article) {
-            ({title, redirect} = article);
-          } else {
-            break;
-          }
-        }
-        return title;
+      resolve: async (article, args, {rootValue}) => {
+        article = await resolveRedirects(article, rootValue);
+        return article.title;
       },
     },
     redirect: {
@@ -234,21 +239,11 @@ const articleType = new GraphQLObjectType({
     },
     body: {
       type: MarkupType,
-      resolve: async ({body, format, redirect}, args, {rootValue}) => {
-        while (redirect) {
-          const article = await getRedirectedArticle(
-            redirect,
-            rootValue.loaders.articleLoader
-          );
-          if (article) {
-            ({body, format, redirect} = article);
-          } else {
-            break;
-          }
-        }
+      resolve: async (article, args, {rootValue}) => {
+        article = await resolveRedirects(article, rootValue);
         return {
-          format,
-          raw: body,
+          format: article.format,
+          raw: article.body,
         };
       },
     },
@@ -259,19 +254,9 @@ const articleType = new GraphQLObjectType({
     },
     tags: {
       type: new GraphQLList(TagNameType),
-      resolve: async ({tags, redirect}, args, {rootValue}) => {
-        while (redirect) {
-          const article = await getRedirectedArticle(
-            redirect,
-            rootValue.loaders.articleLoader
-          );
-          if (article) {
-            ({tags, redirect} = article);
-          } else {
-            break;
-          }
-        }
-        return tags;
+      resolve: async (article, args, {rootValue}) => {
+        article = await resolveRedirects(article, rootValue);
+        return article.tags;
       },
     },
     ...timestampFields,
