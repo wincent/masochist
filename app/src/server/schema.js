@@ -257,7 +257,23 @@ const articleType = new GraphQLObjectType({
       description: 'URL for the article',
       resolve: article => `/wiki/${article.id.replace(/ /g, '_')}`,
     },
-    ...tagsField,
+    tags: {
+      type: new GraphQLList(TagNameType),
+      resolve: async ({tags, redirect}, args, {rootValue}) => {
+        while (redirect) {
+          const article = await getRedirectedArticle(
+            redirect,
+            rootValue.loaders.articleLoader
+          );
+          if (article) {
+            ({tags, redirect} = article);
+          } else {
+            break;
+          }
+        }
+        return tags;
+      },
+    },
     ...timestampFields,
   },
   interfaces: [nodeInterface, taggedInterface],
