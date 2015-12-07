@@ -59,3 +59,9 @@ $ aws describe-snapshots
 ```shell
 $ aws describe-snapshots | grep -v 2011-09- | grep snap- | awk '{print $2}' | xargs -n 1 -t aws delete-snapshot
 ```
+
+**Beware:** You probably want to filter to target a specific subset of images, rather than blindly deleting *all* older snapshots. For example, if your backup snapshots contain the text "backup" in the description, you could add a `grep backup` step:
+
+```shell
+$ aws describe-snapshots | grep backup | grep -v 2011-09- | grep snap- | awk '{print $2}' | xargs -n 1 -t aws delete-snapshot
+```
