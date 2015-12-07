@@ -43,16 +43,38 @@ export function getTimestampsCacheKey(subdirectory, file, head) {
   return toGlobalId(typeName, file) + ':' + head + ':timestamps';
 }
 
+function getFilenamesWithExtensions(subdirectory, file) {
+  return Object.keys(Extensions).map(name => (
+    'content/' + subdirectory + '/' + file + '.' + Extensions[name]
+  ));
+}
+
 export async function loadContent(options: LoaderOptions): Promise {
   const {subdirectory, file} = options;
   const head = (await git('rev-parse', 'content')).trim();
   const commit = options.commit || head;
   const tree = (await git('show', '-s', '--format=%T', commit)).trim();
 
-  // Content may exist under one (or none) or several possible extensions.
-  const possibleNames = Object.keys(Extensions).map(name => (
-    'content/' + subdirectory + '/' + file + '.' + Extensions[name]
-  ));
+  // Content may exist under one (or none) of several possible extensions.
+  let possibleNames;
+  if (
+    subdirectory === 'wiki' &&
+    file[0] &&
+    file[0].match(/\w/)
+  ) {
+    // Given file "foo", we look for "foo" and "Foo".
+    possibleNames = getFilenamesWithExtensions(
+      subdirectory,
+      file[0].toUpperCase() + file.slice(1)
+    );
+    possibleNames.push(...getFilenamesWithExtensions(
+      subdirectory,
+      file[0].toLowerCase() + file.slice(1)
+    ));
+  } else {
+    possibleNames = getFilenamesWithExtensions(subdirectory, file);
+  }
+
   let treeEntry = (await git(
     'ls-tree',
     '--full-tree',
@@ -74,7 +96,7 @@ export async function loadContent(options: LoaderOptions): Promise {
 
   const blob = await git('cat-file', 'blob', hash);
   const {body, tags, ...metadata} = unpackContent(blob);
-  const cacheKey = getTimestampsCacheKey(subdirectory, file, head);
+  const cacheKey = getTimestampsCacheKey(subdirectory, filename, head);
   const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {
