@@ -1,7 +1,6 @@
 import Promise from 'bluebird';
 import {
   GraphQLInt,
-  GraphQLInterfaceType,
   GraphQLNonNull,
   GraphQLList,
   GraphQLObjectType,
@@ -29,32 +28,9 @@ import Tag from './models/Tag';
 import User from './models/User';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
+import taggedInterface from './schema/interfaces/taggedInterface';
 import MarkupType from './schema/types/MarkupType';
 import TagNameType from './schema/types/TagNameType';
-
-const taggedInterface = new GraphQLInterfaceType({
-  name: 'Tagged',
-  description: 'An object with a tags field',
-  fields: {
-    tags: {
-      type: new GraphQLList(TagNameType),
-      description: 'A list of tag names'
-    },
-  },
-  resolveType: object => {
-    if (object instanceof Article) {
-      return articleType;
-    } else if (object instanceof Page) {
-      return pageType;
-    } else if (object instanceof Post) {
-      return postType;
-    } else if (object instanceof Snippet) {
-      return snippetType;
-    } else {
-      return null;
-    }
-  },
-});
 
 const {nodeField, nodeInterface} = nodeDefinitions(
   function resolveObjectFromID(globalId, {rootValue}) {
