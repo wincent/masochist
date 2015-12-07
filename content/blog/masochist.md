@@ -9,7 +9,7 @@ tags: masochist relay graphql redis javascript site
 
 Masochist is a rewrite of the software powering the website at [wincent.com]. It's called "masochist" because I never learn, and I find myself yet again moving my online presence into a new home. The software lives on [the master branch](https://github.com/wincent/masochist/tree/master) and the source content lives on [the content branch](https://github.com/wincent/masochist/tree/content).
 
-## No, really, what it is
+## No, really, what is it?
 
 In short, a terrible but fun-to-build idea.
 
