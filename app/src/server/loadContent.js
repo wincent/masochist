@@ -2,6 +2,7 @@
  * @flow
  */
 
+import path from 'path';
 import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import Cache from '../common/Cache';
@@ -94,9 +95,10 @@ export async function loadContent(options: LoaderOptions): Promise {
     return null;
   }
 
+  const normalizedFile = path.basename(filename, '.' + extension);
   const blob = await git('cat-file', 'blob', hash);
   const {body, tags, ...metadata} = unpackContent(blob);
-  const cacheKey = getTimestampsCacheKey(subdirectory, filename, head);
+  const cacheKey = getTimestampsCacheKey(subdirectory, normalizedFile, head);
   const timestamps = await Cache.get(
     cacheKey,
     async cacheKey => {
@@ -114,7 +116,7 @@ export async function loadContent(options: LoaderOptions): Promise {
   );
 
   return {
-    id: file,
+    id: normalizedFile,
     body,
     format: extension,
 
