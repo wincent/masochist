@@ -1,5 +1,5 @@
 ---
-tags: memcache libmemcache
+tags: memcached libmemcache
 ---
 
 # Official site
