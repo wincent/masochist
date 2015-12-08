@@ -2,7 +2,9 @@ import React from 'react';
 import {Link} from 'react-router';
 import cx from 'classnames';
 
-if (typeof process === 'undefined' || '' + process !== '[object process]') {
+const inBrowser =
+  typeof process === 'undefined' || '' + process !== '[object process]';
+if (inBrowser) {
   require('./Nav.css');
 }
 
@@ -50,11 +52,15 @@ export default class Nav extends React.Component {
         <ul>
           <li>
             <Link className="nav-link" to="/">Wincent</Link>
-            <div className="nav-toggle-wrapper">
-              <div className="nav-toggle" onClick={this._handleToggle}>
-                {this.state.isOpen ? 'Close' : 'Open'}
-              </div>
-            </div>
+            {
+              inBrowser ?
+                <div className="nav-toggle-wrapper">
+                  <div className="nav-toggle" onClick={this._handleToggle}>
+                    {this.state.isOpen ? 'Close' : 'Open'}
+                  </div>
+                </div> :
+                null
+            }
           </li>
           <NavLink target="/blog" text="Blog" active={active} />
           <NavLink target="/wiki" text="Wiki" active={active} />
