@@ -7,6 +7,9 @@ import Promise from 'bluebird';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
+import HTTPError from '../client/components/HTTPError';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
 import getArticleLoader from './loaders/getArticleLoader';
 import getPageLoader from './loaders/getPageLoader';
 import getPostLoader from './loaders/getPostLoader';
@@ -29,7 +32,7 @@ if (__DEV__) {
   app.engine('js', require('compiled-jade-render'));
 }
 
-function jadeHandler(resource) {
+function jadeHandler(resource, extraLocals = {}) {
   return (request, response) => {
     const locals = {
       bundle: '/static/' + (
@@ -38,6 +41,7 @@ function jadeHandler(resource) {
       styles: __DEV__ ? null : '/static/' + require('../webpack-assets').main.css,
       canonical: getCanonicalURLForRequest(request),
       production: !__DEV__,
+      ...extraLocals,
     };
     response.render(resource, locals);
   };
@@ -127,6 +131,17 @@ app.use(express.static(
 app.use((request, response, next) => {
   response.status(404);
   jadeHandler('index')(request, response);
+});
+
+app.use((error, request, response, next) => {
+  // Until we can render `<App>` and friends server-side (needs
+  // webpack loader config etc), just render `<HTTPError>`.
+  const pageContent = ReactDOMServer.renderToStaticMarkup(
+    <HTTPError code={500} />
+  );
+
+  response.status(500);
+  jadeHandler('500', {pageContent})(request, response);
 });
 
 const server = app.listen(APP_PORT, () => {

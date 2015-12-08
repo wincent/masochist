@@ -8,7 +8,7 @@ import {toGlobalId} from 'graphql-relay';
 import App from './components/App';
 import Article from './components/Article';
 import ArticlesIndex from './components/ArticlesIndex';
-import NotFound from './components/NotFound';
+import HTTPError from './components/HTTPError';
 import Page from './components/Page';
 import Post from './components/Post';
 import PostsIndex from './components/PostsIndex';
@@ -102,7 +102,7 @@ ReactDOM.render(
         prepareParams={prepareArticleParams}
         queries={ArticleQueries}
       />
-      <Route component={NotFound} path="*" />
+      <Route component={HTTPError} path="*" />
     </Route>
   </Router>,
   document.getElementById('relay-root')
