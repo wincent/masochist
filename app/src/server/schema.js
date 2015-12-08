@@ -33,6 +33,7 @@ import taggedInterface from './schema/interfaces/taggedInterface';
 import ArticleType from './schema/types/ArticleType';
 import MarkupType from './schema/types/MarkupType';
 import PageType from './schema/types/PageType';
+import PostType from './schema/types/PostType';
 import SnippetType from './schema/types/SnippetType';
 import TagNameType from './schema/types/TagNameType';
 
@@ -129,39 +130,8 @@ const userType = registerType(new GraphQLObjectType({
   interfaces: [nodeInterface],
 }));
 
-const postType = registerType(new GraphQLObjectType({
-  name: 'Post',
-  description: 'A blog post',
-  fields: {
-    id: globalIdField('Post'),
-    title: {
-      type: GraphQLString,
-      description: "The blog post's title",
-      resolve: post => post.title,
-    },
-    body: {
-      type: MarkupType,
-      resolve(post) {
-        return {
-          raw: post.body,
-          format: post.format,
-        };
-      },
-    },
-    url: {
-      type: new GraphQLNonNull(GraphQLString),
-      description: 'URL for the post',
-      resolve: post => `/blog/${post.id}`,
-    },
-    ...tagsField,
-    ...timestampFields,
-  },
-  interfaces: [nodeInterface, taggedInterface],
-  isTypeOf: object => object instanceof Post,
-}));
-
 const {connectionType: postConnection} =
-  connectionDefinitions({name: 'Post', nodeType: postType});
+  connectionDefinitions({name: 'Post', nodeType: PostType});
 
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: SnippetType});
@@ -171,7 +141,7 @@ const taggableType = new GraphQLUnionType({
   types: [
     ArticleType,
     PageType,
-    postType,
+    PostType,
     SnippetType,
   ],
 });
