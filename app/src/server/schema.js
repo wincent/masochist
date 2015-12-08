@@ -15,10 +15,8 @@ import {
   connectionFromArraySlice,
   connectionFromPromisedArraySlice,
   cursorToOffset,
-  fromGlobalId,
   getOffsetWithDefault,
   globalIdField,
-  nodeDefinitions,
 } from 'graphql-relay';
 import Article from './models/Article';
 import Page from './models/Page';
@@ -26,51 +24,18 @@ import Post from './models/Post';
 import Snippet from './models/Snippet';
 import Tag from './models/Tag';
 import User from './models/User';
+import {
+  nodeField,
+  nodeInterface,
+  registerType,
+} from './schema/definitions/node';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
 import MarkupType from './schema/types/MarkupType';
 import TagNameType from './schema/types/TagNameType';
 
-const {nodeField, nodeInterface} = nodeDefinitions(
-  function resolveObjectFromID(globalId, {rootValue}) {
-    const {type, id} = fromGlobalId(globalId);
-    if (type === 'Article') {
-      return rootValue.loaders.articleLoader.load(id);
-    } else if (type === 'Page') {
-      return rootValue.loaders.pageLoader.load(id);
-    } else if (type === 'Post') {
-      return rootValue.loaders.postLoader.load(id);
-    } else if (type === 'Snippet') {
-      return rootValue.loaders.snippetLoader.load(id);
-    } else if (type === 'Tag') {
-      return rootValue.loaders.tagLoader.load(id);
-    } else if (type === 'User') {
-      return new User();
-    } else {
-      return null;
-    }
-  },
-  function resolveGraphQLTypeFromObject(object) {
-    if (object instanceof Article) {
-      return articleType;
-    } else if (object instanceof Page) {
-      return pageType;
-    } else if (object instanceof Post) {
-      return postType;
-    } else if (object instanceof Snippet) {
-      return snippetType;
-    } else if (object instanceof Tag) {
-      return tagType;
-    } else if (object instanceof User) {
-      return userType;
-    } else {
-      return null;
-    }
-  },
-);
-
-const userType = new GraphQLObjectType({
+const userType = registerType(new GraphQLObjectType({
   name: 'User',
   description: 'A person who uses the application',
   fields: () => ({
@@ -163,7 +128,7 @@ const userType = new GraphQLObjectType({
     },
   }),
   interfaces: [nodeInterface],
-});
+}));
 
 async function getRedirectedArticle(redirect, articleLoader) {
   const match = redirect.match(/^\s*\[\[(.+)\]\]\s*$/);
@@ -188,7 +153,7 @@ async function resolveRedirects(article, {loaders}) {
   return article;
 }
 
-const articleType = new GraphQLObjectType({
+const articleType = registerType(new GraphQLObjectType({
   name: 'Article',
   description: 'A wiki article',
   fields: {
@@ -239,12 +204,12 @@ const articleType = new GraphQLObjectType({
   },
   interfaces: [nodeInterface, taggedInterface],
   isTypeOf: object => object instanceof Article,
-});
+}));
 
 const {connectionType: articleConnection} =
   connectionDefinitions({name: 'Article', nodeType: articleType});
 
-const pageType = new GraphQLObjectType({
+const pageType = registerType(new GraphQLObjectType({
   name: 'Page',
   description: 'A page',
   fields: {
@@ -273,9 +238,9 @@ const pageType = new GraphQLObjectType({
   },
   interfaces: [nodeInterface, taggedInterface],
   isTypeOf: object => object instanceof Page,
-});
+}));
 
-const postType = new GraphQLObjectType({
+const postType = registerType(new GraphQLObjectType({
   name: 'Post',
   description: 'A blog post',
   fields: {
@@ -304,12 +269,12 @@ const postType = new GraphQLObjectType({
   },
   interfaces: [nodeInterface, taggedInterface],
   isTypeOf: object => object instanceof Post,
-});
+}));
 
 const {connectionType: postConnection} =
   connectionDefinitions({name: 'Post', nodeType: postType});
 
-const snippetType = new GraphQLObjectType({
+const snippetType = registerType(new GraphQLObjectType({
   name: 'Snippet',
   description: 'A snippet',
   fields: {
@@ -338,7 +303,7 @@ const snippetType = new GraphQLObjectType({
   },
   interfaces: [nodeInterface, taggedInterface],
   isTypeOf: object => object instanceof Snippet,
-});
+}));
 
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: snippetType});
@@ -357,7 +322,7 @@ const taggableType = new GraphQLUnionType({
 const {connectionType: taggableConnection} =
   connectionDefinitions({name: 'Taggable', nodeType: taggableType});
 
-const tagType = new GraphQLObjectType({
+const tagType = registerType(new GraphQLObjectType({
   name: 'Tag',
   description: 'A tag',
   fields: {
@@ -422,7 +387,7 @@ const tagType = new GraphQLObjectType({
     },
   },
   interfaces: [nodeInterface],
-});
+}));
 
 const {connectionType: tagConnection} = connectionDefinitions({
   connectionFields: {
