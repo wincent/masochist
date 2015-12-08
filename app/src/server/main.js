@@ -29,12 +29,6 @@ if (__DEV__) {
   app.engine('js', require('compiled-jade-render'));
 }
 
-function staticHandler(...resource) {
-  return (request, response) => (
-    response.sendFile(path.join(__dirname, '..', '..', 'public', ...resource))
-  );
-}
-
 function jadeHandler(resource) {
   return (request, response) => {
     const locals = {
@@ -63,9 +57,6 @@ const appRoutes = [
 ];
 
 appRoutes.forEach(route => app.get(route, jadeHandler('index')));
-
-app.get('/static/normalize.css', staticHandler('static', 'normalize.css'));
-app.get('/static/skeleton.css', staticHandler('static', 'skeleton.css'));
 
 app.use('/graphql', (request, response, next) => {
   const options = {
