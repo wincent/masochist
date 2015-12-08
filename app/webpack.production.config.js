@@ -46,12 +46,6 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel',
-        query: {
-          plugins: [
-            './babel/devBabelPlugin.js',
-            './babel/getRelayBabelPlugin.js',
-          ],
-        },
       }, {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'),
