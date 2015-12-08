@@ -2,19 +2,16 @@ import Promise from 'bluebird';
 import {
   GraphQLInt,
   GraphQLNonNull,
-  GraphQLList,
   GraphQLObjectType,
   GraphQLUnionType,
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
-import {Kind} from 'graphql/language';
 import {
   connectionArgs,
   connectionDefinitions,
   connectionFromArraySlice,
   connectionFromPromisedArraySlice,
-  cursorToOffset,
   getOffsetWithDefault,
   globalIdField,
 } from 'graphql-relay';
@@ -32,6 +29,7 @@ import {
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
+import ArticleType from './schema/types/ArticleType';
 import MarkupType from './schema/types/MarkupType';
 import TagNameType from './schema/types/TagNameType';
 
@@ -128,84 +126,8 @@ const userType = registerType(new GraphQLObjectType({
   interfaces: [nodeInterface],
 }));
 
-async function getRedirectedArticle(redirect, articleLoader) {
-  const match = redirect.match(/^\s*\[\[(.+)\]\]\s*$/);
-  if (match) {
-    return await articleLoader.load(match[1]);
-  }
-}
-
-async function resolveRedirects(article, {loaders}) {
-  // TODO detect and disallow (or warn about) multi-hop redirects?
-  while (article.redirect) {
-    let targetArticle = await getRedirectedArticle(
-      article.redirect,
-      loaders.Article
-    );
-    if (targetArticle) {
-      article = targetArticle;
-    } else {
-      break;
-    }
-  }
-  return article;
-}
-
-const articleType = registerType(new GraphQLObjectType({
-  name: 'Article',
-  description: 'A wiki article',
-  fields: {
-    id: globalIdField('Article'),
-    title: {
-      type: GraphQLString,
-      description: "The article's title",
-      resolve: article => article.title,
-    },
-    resolvedTitle: {
-      type: GraphQLString,
-      description: 'The title of the article after resolving redirects',
-      resolve: async (article, args, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        return article.title;
-      },
-    },
-    redirect: {
-      type: GraphQLString,
-      description:
-        'The destination ([[wiki article]] or URL) the article should ' +
-        'redirect to',
-      resolve: article => article.redirect,
-    },
-    body: {
-      type: MarkupType,
-      resolve: async (article, args, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        return {
-          format: article.format,
-          raw: article.body,
-        };
-      },
-    },
-    url: {
-      type: new GraphQLNonNull(GraphQLString),
-      description: 'URL for the article',
-      resolve: article => `/wiki/${article.id.replace(/ /g, '_')}`,
-    },
-    tags: {
-      type: new GraphQLList(TagNameType),
-      resolve: async (article, args, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        return article.tags;
-      },
-    },
-    ...timestampFields,
-  },
-  interfaces: [nodeInterface, taggedInterface],
-  isTypeOf: object => object instanceof Article,
-}));
-
 const {connectionType: articleConnection} =
-  connectionDefinitions({name: 'Article', nodeType: articleType});
+  connectionDefinitions({name: 'Article', nodeType: ArticleType});
 
 const pageType = registerType(new GraphQLObjectType({
   name: 'Page',
@@ -310,7 +232,7 @@ const {connectionType: snippetConnection} =
 const taggableType = new GraphQLUnionType({
   name: 'Taggable',
   types: [
-    articleType,
+    ArticleType,
     pageType,
     postType,
     snippetType,
