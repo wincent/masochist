@@ -124,6 +124,10 @@ app.use(express.static(
   },
 ));
 
+app.use((request, response, next) => {
+  response.status(404);
+  jadeHandler('index')(request, response);
+});
 
 const server = app.listen(APP_PORT, () => {
   console.log('Listening at http://localhost:%s', APP_PORT);
