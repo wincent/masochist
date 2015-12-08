@@ -130,18 +130,28 @@ app.use(express.static(
 
 app.use((request, response, next) => {
   response.status(404);
-  jadeHandler('index')(request, response);
+  response.format({
+    html: () => jadeHandler('index')(request, response),
+    json: () => response.send({ error: 404, message: 'Not Found'}),
+    text: () => response.send('404 Not Found'),
+  });
 });
 
 app.use((error, request, response, next) => {
-  // Until we can render `<App>` and friends server-side (needs
-  // webpack loader config etc), just render `<HTTPError>`.
-  const pageContent = ReactDOMServer.renderToStaticMarkup(
-    <HTTPError code={500} />
-  );
-
   response.status(500);
-  jadeHandler('500', {pageContent})(request, response);
+  response.format({
+    html: () => {
+      // Until we can render `<App>` and friends server-side (needs
+      // webpack loader config etc), just render `<HTTPError>`.
+      const pageContent = ReactDOMServer.renderToStaticMarkup(
+        <HTTPError code={500} />
+      );
+
+      jadeHandler('500', {pageContent})(request, response);
+    },
+    json: () => response.send({ error: 500, message: 'Internal Server Error'}),
+    text: () => response.send('500 Internal Server Error'),
+  });
 });
 
 const server = app.listen(APP_PORT, () => {
