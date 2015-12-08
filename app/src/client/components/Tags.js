@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import {Link} from 'react-router';
+import Link from './Link';
 import cx from 'classnames';
 
 import './Tags.css';

@@ -1,6 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
-import {Link} from 'react-router';
+import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
