@@ -29,13 +29,6 @@ import articleConnection from './schema/fields/connections/articleConnection';
 import postConnection from './schema/fields/connections/postConnection';
 import snippetConnection from './schema/fields/connections/snippetConnection';
 import taggableConnection from './schema/fields/connections/taggableConnection';
-import tagsField from './schema/fields/tagsField';
-import timestampFields from './schema/fields/timestampFields';
-import taggedInterface from './schema/interfaces/taggedInterface';
-import MarkupType from './schema/types/MarkupType';
-import PostType from './schema/types/PostType';
-import SnippetType from './schema/types/SnippetType';
-import TaggableType from './schema/types/TaggableType';
 import TagNameType from './schema/types/TagNameType';
 
 const userType = registerType(new GraphQLObjectType({
