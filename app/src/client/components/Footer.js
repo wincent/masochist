@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-import './Footer.css';
+if (typeof process === 'undefined' || '' + process !== '[object process]') {
+  require('./Footer.css');
+}
 
 const FooterLink = ({target, text}) => (
   <li>

@@ -2,7 +2,9 @@ import React from 'react';
 import {Link} from 'react-router';
 import cx from 'classnames';
 
-import './Nav.css';
+if (typeof process === 'undefined' || '' + process !== '[object process]') {
+  require('./Nav.css');
+}
 
 const NavLink = ({target, text, active}) => {
   const classNames = cx({

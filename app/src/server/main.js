@@ -7,6 +7,7 @@ import Promise from 'bluebird';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
+import App from '../client/components/App';
 import HTTPError from '../client/components/HTTPError';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -128,30 +129,30 @@ app.use(express.static(
   },
 ));
 
+function errorPage(error, message, request, response) {
+  return {
+    html: () => {
+      const pageContent = ReactDOMServer.renderToStaticMarkup(
+        <App>
+          <HTTPError code={error} />
+        </App>
+      );
+
+      jadeHandler('error', {error, message, pageContent})(request, response);
+    },
+    json: () => response.send({error, message}),
+    text: () => response.send(`${error} ${message}`),
+  };
+}
+
 app.use((request, response, next) => {
   response.status(404);
-  response.format({
-    html: () => jadeHandler('index')(request, response),
-    json: () => response.send({ error: 404, message: 'Not Found'}),
-    text: () => response.send('404 Not Found'),
-  });
+  response.format(errorPage(404, 'Not Found', request, response));
 });
 
 app.use((error, request, response, next) => {
   response.status(500);
-  response.format({
-    html: () => {
-      // Until we can render `<App>` and friends server-side (needs
-      // webpack loader config etc), just render `<HTTPError>`.
-      const pageContent = ReactDOMServer.renderToStaticMarkup(
-        <HTTPError code={500} />
-      );
-
-      jadeHandler('500', {pageContent})(request, response);
-    },
-    json: () => response.send({ error: 500, message: 'Internal Server Error'}),
-    text: () => response.send('500 Internal Server Error'),
-  });
+  response.format(errorPage(500, 'Internal Server Error', request, response));
 });
 
 const server = app.listen(APP_PORT, () => {

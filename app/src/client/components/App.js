@@ -3,7 +3,9 @@ import DocumentTitle from './DocumentTitle';
 import Nav from './Nav';
 import Footer from './Footer';
 
-import './App.css';
+if (typeof process === 'undefined' || '' + process !== '[object process]') {
+  require('./App.css');
+}
 
 export default class App extends React.Component {
   static contextTypes = {
