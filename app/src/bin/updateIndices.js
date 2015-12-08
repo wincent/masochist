@@ -12,7 +12,7 @@
 
 'use strict';
 
-import 'babel-core/polyfill';
+import 'babel-polyfill';
 import '../common/devFallback';
 import '../common/unhandledRejection';
 
@@ -202,7 +202,7 @@ async function getFileUpdates(range, callback) {
   print('\n');
 
   log('Writing timestamp cache for revision %s', head);
-  await async () => {
+  await (async () => {
     // Use Promise.map to limit concurrency and avoid exhausting file
     // descriptors.
     return Promise.map(
@@ -218,7 +218,7 @@ async function getFileUpdates(range, callback) {
       },
       {concurrency: 32}
     );
-  };
+  });
 
   // Produce createdAt/updatedAt ordered indices.
   log('Creating ordered index');

@@ -16,13 +16,17 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          stage: 0,
           plugins: [
             // TODO: try moving to .babelrc, pending resolution of
             // https://phabricator.babeljs.io/T2474
             // (ditto for webpack.production.config.js)
             './babel/devBabelPlugin.js',
             './babel/getRelayBabelPlugin.js',
+          ],
+          presets: [
+            'es2015',
+            'react',
+            'stage-0',
           ],
         },
       }, {

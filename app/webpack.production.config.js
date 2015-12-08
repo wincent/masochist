@@ -47,10 +47,14 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          stage: 0,
           plugins: [
             './babel/devBabelPlugin.js',
             './babel/getRelayBabelPlugin.js',
+          ],
+          presets: [
+            'es2015',
+            'react',
+            'stage-0',
           ],
         },
       }, {

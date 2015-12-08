@@ -1,4 +1,4 @@
-import 'babel/polyfill';
+import 'babel-polyfill';
 import '../common/unhandledRejection';
 
 import './normalize.css';
@@ -26,8 +26,8 @@ import SnippetsQueries from './routes/SnippetsQueries';
 import TagsIndexQueries from './routes/TagsIndexQueries';
 import TagQueries from './routes/TagQueries';
 import {createHistory} from 'history';
-import {IndexRoute, Route, Router} from 'react-router';
-import ReactRouterRelay from 'react-router-relay';
+import {IndexRoute, Route} from 'react-router';
+import {RelayRouter} from 'react-router-relay';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -65,7 +65,7 @@ function prepareTagParams(params, route) {
 }
 
 ReactDOM.render(
-  <Router history={history} createElement={ReactRouterRelay.createElement}>
+  <RelayRouter history={history}>
     <Route component={App} path="/">
       <IndexRoute component={PostsIndex} queries={PostsIndexQueries} />
       <Route component={PostsIndex} path="blog" queries={PostsIndexQueries} />
@@ -104,6 +104,6 @@ ReactDOM.render(
       />
       <Route component={HTTPError} path="*" />
     </Route>
-  </Router>,
+  </RelayRouter>,
   document.getElementById('relay-root')
 );

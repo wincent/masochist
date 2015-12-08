@@ -2,7 +2,7 @@
 
 'use strict';
 
-import 'babel-core/polyfill';
+import 'babel-polyfill';
 import '../common/unhandledRejection';
 
 import schema from '../server/schema';

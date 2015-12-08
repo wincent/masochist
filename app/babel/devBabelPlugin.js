@@ -8,9 +8,9 @@
  * directory.
  */
 
-module.exports = function(babel) {
-  var t = babel.types;
+var t = require('babel-types');
 
+module.exports = function() {
   var DEV_EXPRESSION = t.binaryExpression(
     '!==',
     t.memberExpression(
@@ -22,21 +22,24 @@ module.exports = function(babel) {
       t.identifier('NODE_ENV'),
       false
     ),
-    t.literal('production')
+    t.stringLiteral('production')
   );
 
-  return new babel.Transformer('masochist.dev', {
-    Identifier: {
-      enter: function(node, parent) {
-        // Do nothing when testing,
+  return {
+    visitor: {
+      Identifier: function(path) {
+        var node = path.node;
+
+        // Do nothing when testing.
         if (process.env.NODE_ENV === 'test') {
-          return undefined;
+          return;
         }
+
         // Replace __DEV__ with process.env.NODE_ENV !== 'production'.
-        if (this.isIdentifier({name: '__DEV__'})) {
-          return DEV_EXPRESSION;
+        if (t.isIdentifier({name: '__DEV__'})) {
+          path.replaceWith(DEV_EXPRESSION);
         }
       },
     },
-  });
+  };
 };
