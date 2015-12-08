@@ -26,6 +26,9 @@ import {
   registerType,
 } from './schema/definitions/node';
 import articleConnection from './schema/fields/connections/articleConnection';
+import postConnection from './schema/fields/connections/postConnection';
+import snippetConnection from './schema/fields/connections/snippetConnection';
+import taggableConnection from './schema/fields/connections/taggableConnection';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
@@ -127,15 +130,6 @@ const userType = registerType(new GraphQLObjectType({
   }),
   interfaces: [nodeInterface],
 }));
-
-const {connectionType: postConnection} =
-  connectionDefinitions({name: 'Post', nodeType: PostType});
-
-const {connectionType: snippetConnection} =
-  connectionDefinitions({name: 'Snippet', nodeType: SnippetType});
-
-const {connectionType: taggableConnection} =
-  connectionDefinitions({name: 'Taggable', nodeType: TaggableType});
 
 const tagType = registerType(new GraphQLObjectType({
   name: 'Tag',
