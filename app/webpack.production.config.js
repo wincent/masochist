@@ -51,11 +51,6 @@ module.exports = {
             './babel/devBabelPlugin.js',
             './babel/getRelayBabelPlugin.js',
           ],
-          presets: [
-            'es2015',
-            'react',
-            'stage-0',
-          ],
         },
       }, {
         test: /\.css$/,
