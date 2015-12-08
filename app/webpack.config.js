@@ -12,8 +12,8 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
         exclude: /node_modules/,
+        test: /\.js$/,
         loader: 'babel',
         query: {
           plugins: [
@@ -25,12 +25,12 @@ module.exports = {
           ],
         },
       }, {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader',
         include: path.resolve(__dirname, 'src'),
+        loader: 'style-loader!css-loader!postcss-loader',
+        test: /\.css$/,
       }, {
-        test: /\.svg$/,
         loader: 'url-loader?limit=10000',
+        test: /\.svg$/,
       },
     ],
   },
@@ -38,8 +38,8 @@ module.exports = {
     // For the dev server, we don't actually write out files to disk, but we
     // must declare a path otherwise Webpack will complain. Match the
     // "production" config for consistency.
-    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/static/',
   },
   plugins: [
