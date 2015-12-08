@@ -26,6 +26,7 @@ import {
   nodeInterface,
   registerType,
 } from './schema/definitions/node';
+import articleConnection from './schema/fields/connections/articleConnection';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
@@ -125,9 +126,6 @@ const userType = registerType(new GraphQLObjectType({
   }),
   interfaces: [nodeInterface],
 }));
-
-const {connectionType: articleConnection} =
-  connectionDefinitions({name: 'Article', nodeType: ArticleType});
 
 const pageType = registerType(new GraphQLObjectType({
   name: 'Page',
