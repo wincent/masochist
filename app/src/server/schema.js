@@ -111,11 +111,9 @@ const userType = registerType(new GraphQLObjectType({
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [tags, totalCount] = await Tag.readIndex(count, offset);
-        // return connectionFromPromisedArraySlice(
         return {
           count: totalCount,
           ...connectionFromArraySlice(
-            // rootValue.loaders.tagLoader.loadMany(tags),
             tags,
             args,
             {
