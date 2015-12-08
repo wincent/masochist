@@ -55,7 +55,7 @@ const userType = registerType(new GraphQLObjectType({
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [articles, totalCount] = await Article.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
-          rootValue.loaders.articleLoader.loadMany(articles),
+          rootValue.loaders.Article.loadMany(articles),
           args,
           {
             sliceStart: offset,
@@ -74,7 +74,7 @@ const userType = registerType(new GraphQLObjectType({
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [posts, totalCount] = await Post.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
-          rootValue.loaders.postLoader.loadMany(posts),
+          rootValue.loaders.Post.loadMany(posts),
           args,
           {
             sliceStart: offset,
@@ -93,7 +93,7 @@ const userType = registerType(new GraphQLObjectType({
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [snippets, totalCount] = await Snippet.readIndex(count, offset);
         return connectionFromPromisedArraySlice(
-          rootValue.loaders.snippetLoader.loadMany(snippets),
+          rootValue.loaders.Snippet.loadMany(snippets),
           args,
           {
             sliceStart: offset,
@@ -142,7 +142,7 @@ async function resolveRedirects(article, {loaders}) {
   while (article.redirect) {
     let targetArticle = await getRedirectedArticle(
       article.redirect,
-      loaders.articleLoader
+      loaders.Article
     );
     if (targetArticle) {
       article = targetArticle;
@@ -350,12 +350,7 @@ const tagType = registerType(new GraphQLObjectType({
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
-        const {
-          articleLoader,
-          pageLoader,
-          postLoader,
-          snippetLoader
-        } = rootValue.loaders;
+        const {loaders} = rootValue;
         const promisedContent = tag.taggables
           .slice(offset, offset + count)
           .map(typeAndId => {
@@ -364,13 +359,13 @@ const tagType = registerType(new GraphQLObjectType({
             const [type, id] = typeAndId.split(':');
             switch (type) {
               case 'wiki':
-                return articleLoader.load(id);
+                return loaders.Article.load(id);
               case 'blog':
-                return postLoader.load(id);
+                return loaders.Post.load(id);
               case 'pages':
-                return pageLoader.load(id);
+                return loaders.Page.load(id);
               case 'snippets':
-                return snippetLoader.load(id);
+                return loaders.Snippet.load(id);
               default:
                 // TODO throw here?
             }

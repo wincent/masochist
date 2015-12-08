@@ -71,13 +71,13 @@ app.use('/graphql', (request, response, next) => {
   const options = {
     rootValue: {
       loaders: {
-        articleLoader: getArticleLoader(),
-        pageLoader: getPageLoader(),
-        postLoader: getPostLoader(),
-        snippetLoader: getSnippetLoader(),
-        tagLoader: getTagLoader(),
-        userLoader: getUserLoader(),
-        wikitextLoader: getWikitextLoader(),
+        Article: getArticleLoader(),
+        Page: getPageLoader(),
+        Post: getPostLoader(),
+        Snippet: getSnippetLoader(),
+        Tag: getTagLoader(),
+        User: getUserLoader(),
+        Wikitext: getWikitextLoader(),
       },
     },
     graphiql: __DEV__,
