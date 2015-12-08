@@ -2,7 +2,6 @@ import {
   fromGlobalId,
   nodeDefinitions,
 } from 'graphql-relay';
-import User from '../../models/User';
 
 const registeredTypes = {};
 
@@ -25,7 +24,7 @@ export const {nodeField, nodeInterface} = nodeDefinitions(
     } else if (type === 'Tag') {
       return rootValue.loaders.tagLoader.load(id);
     } else if (type === 'User') {
-      return new User();
+      return rootValue.loaders.userLoader.load(id);
     } else {
       return null;
     }

@@ -12,6 +12,7 @@ import getPageLoader from './loaders/getPageLoader';
 import getPostLoader from './loaders/getPostLoader';
 import getSnippetLoader from './loaders/getSnippetLoader';
 import getTagLoader from './loaders/getTagLoader';
+import getUserLoader from './loaders/getUserLoader';
 import getWikitextLoader from './loaders/getWikitextLoader';
 import schema from './schema';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
@@ -75,6 +76,7 @@ app.use('/graphql', (request, response, next) => {
         postLoader: getPostLoader(),
         snippetLoader: getSnippetLoader(),
         tagLoader: getTagLoader(),
+        userLoader: getUserLoader(),
         wikitextLoader: getWikitextLoader(),
       },
     },
