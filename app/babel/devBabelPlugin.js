@@ -36,7 +36,7 @@ module.exports = function() {
         }
 
         // Replace __DEV__ with process.env.NODE_ENV !== 'production'.
-        if (t.isIdentifier({name: '__DEV__'})) {
+        if (t.isIdentifier(node, {name: '__DEV__'})) {
           path.replaceWith(DEV_EXPRESSION);
         }
       },
