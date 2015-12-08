@@ -3,7 +3,6 @@ import {
   GraphQLInt,
   GraphQLNonNull,
   GraphQLObjectType,
-  GraphQLUnionType,
   GraphQLSchema,
   GraphQLString,
 } from 'graphql';
@@ -30,11 +29,10 @@ import articleConnection from './schema/fields/connections/articleConnection';
 import tagsField from './schema/fields/tagsField';
 import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
-import ArticleType from './schema/types/ArticleType';
 import MarkupType from './schema/types/MarkupType';
-import PageType from './schema/types/PageType';
 import PostType from './schema/types/PostType';
 import SnippetType from './schema/types/SnippetType';
+import TaggableType from './schema/types/TaggableType';
 import TagNameType from './schema/types/TagNameType';
 
 const userType = registerType(new GraphQLObjectType({
@@ -136,18 +134,8 @@ const {connectionType: postConnection} =
 const {connectionType: snippetConnection} =
   connectionDefinitions({name: 'Snippet', nodeType: SnippetType});
 
-const taggableType = new GraphQLUnionType({
-  name: 'Taggable',
-  types: [
-    ArticleType,
-    PageType,
-    PostType,
-    SnippetType,
-  ],
-});
-
 const {connectionType: taggableConnection} =
-  connectionDefinitions({name: 'Taggable', nodeType: taggableType});
+  connectionDefinitions({name: 'Taggable', nodeType: TaggableType});
 
 const tagType = registerType(new GraphQLObjectType({
   name: 'Tag',
