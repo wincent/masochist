@@ -1,9 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
 import cx from 'classnames';
+import Link from './Link';
+import inBrowser from '../inBrowser';
 
-const inBrowser =
-  typeof process === 'undefined' || '' + process !== '[object process]';
 if (inBrowser) {
   require('./Nav.css');
 }

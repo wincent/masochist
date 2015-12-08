@@ -1,7 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router';
+import Link from './Link';
+import inBrowser from '../inBrowser';
 
-if (typeof process === 'undefined' || '' + process !== '[object process]') {
+if (inBrowser) {
   require('./Footer.css');
 }
 

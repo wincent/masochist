@@ -2,8 +2,9 @@ import React from 'react';
 import DocumentTitle from './DocumentTitle';
 import Nav from './Nav';
 import Footer from './Footer';
+import inBrowser from '../inBrowser';
 
-if (typeof process === 'undefined' || '' + process !== '[object process]') {
+if (inBrowser) {
   require('./App.css');
 }
 
