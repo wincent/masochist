@@ -99,6 +99,11 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Snippet",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "User",
               "ofType": null
             },
@@ -110,11 +115,6 @@
             {
               "kind": "OBJECT",
               "name": "Post",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Snippet",
               "ofType": null
             },
             {
@@ -299,6 +299,11 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Snippet",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "Page",
               "ofType": null
             },
@@ -306,18 +311,13 @@
               "kind": "OBJECT",
               "name": "Post",
               "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Snippet",
-              "ofType": null
             }
           ]
         },
         {
           "kind": "OBJECT",
-          "name": "Page",
-          "description": "A page",
+          "name": "Snippet",
+          "description": "A snippet",
           "fields": [
             {
               "name": "id",
@@ -337,7 +337,7 @@
             },
             {
               "name": "title",
-              "description": "The page's title",
+              "description": "The snippet's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -361,7 +361,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the page",
+              "description": "URL for the snippet",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -599,8 +599,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Post",
-          "description": "A blog post",
+          "name": "Page",
+          "description": "A page",
           "fields": [
             {
               "name": "id",
@@ -620,7 +620,7 @@
             },
             {
               "name": "title",
-              "description": "The blog post's title",
+              "description": "The page's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -644,7 +644,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the post",
+              "description": "URL for the page",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -717,8 +717,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Snippet",
-          "description": "A snippet",
+          "name": "Post",
+          "description": "A blog post",
           "fields": [
             {
               "name": "id",
@@ -738,7 +738,7 @@
             },
             {
               "name": "title",
-              "description": "The snippet's title",
+              "description": "The blog post's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -762,7 +762,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the snippet",
+              "description": "URL for the post",
               "args": [],
               "type": {
                 "kind": "NON_NULL",

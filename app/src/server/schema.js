@@ -32,6 +32,7 @@ import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
 import ArticleType from './schema/types/ArticleType';
 import MarkupType from './schema/types/MarkupType';
+import SnippetType from './schema/types/SnippetType';
 import TagNameType from './schema/types/TagNameType';
 
 const userType = registerType(new GraphQLObjectType({
@@ -192,40 +193,8 @@ const postType = registerType(new GraphQLObjectType({
 const {connectionType: postConnection} =
   connectionDefinitions({name: 'Post', nodeType: postType});
 
-const snippetType = registerType(new GraphQLObjectType({
-  name: 'Snippet',
-  description: 'A snippet',
-  fields: {
-    id: globalIdField('Snippet'),
-    title: {
-      type: GraphQLString,
-      description: "The snippet's title",
-      resolve: snippet => snippet.title || `Snippet #${snippet.id}`,
-    },
-    body: {
-      type: MarkupType,
-      resolve(snippet) {
-        return {
-          raw: snippet.body,
-          format: snippet.format,
-        };
-      },
-    },
-    url: {
-      type: new GraphQLNonNull(GraphQLString),
-      description: 'URL for the snippet',
-      resolve: snippet => `/snippets/${snippet.id}`,
-    },
-    ...tagsField,
-    ...timestampFields,
-  },
-  interfaces: [nodeInterface, taggedInterface],
-  isTypeOf: object => object instanceof Snippet,
-}));
-
 const {connectionType: snippetConnection} =
-  connectionDefinitions({name: 'Snippet', nodeType: snippetType});
-
+  connectionDefinitions({name: 'Snippet', nodeType: SnippetType});
 
 const taggableType = new GraphQLUnionType({
   name: 'Taggable',
@@ -233,7 +202,7 @@ const taggableType = new GraphQLUnionType({
     ArticleType,
     pageType,
     postType,
-    snippetType,
+    SnippetType,
   ],
 });
 
