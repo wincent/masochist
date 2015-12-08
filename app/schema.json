@@ -99,17 +99,17 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "Snippet",
               "ofType": null
             },
             {
               "kind": "OBJECT",
               "name": "User",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Page",
               "ofType": null
             },
             {
@@ -299,12 +299,12 @@
             },
             {
               "kind": "OBJECT",
-              "name": "Snippet",
+              "name": "Page",
               "ofType": null
             },
             {
               "kind": "OBJECT",
-              "name": "Page",
+              "name": "Snippet",
               "ofType": null
             },
             {
@@ -316,8 +316,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Snippet",
-          "description": "A snippet",
+          "name": "Page",
+          "description": "A page",
           "fields": [
             {
               "name": "id",
@@ -337,7 +337,7 @@
             },
             {
               "name": "title",
-              "description": "The snippet's title",
+              "description": "The page's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -361,7 +361,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the snippet",
+              "description": "URL for the page",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -599,8 +599,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Page",
-          "description": "A page",
+          "name": "Snippet",
+          "description": "A snippet",
           "fields": [
             {
               "name": "id",
@@ -620,7 +620,7 @@
             },
             {
               "name": "title",
-              "description": "The page's title",
+              "description": "The snippet's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -644,7 +644,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the page",
+              "description": "URL for the snippet",
               "args": [],
               "type": {
                 "kind": "NON_NULL",

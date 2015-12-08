@@ -32,6 +32,7 @@ import timestampFields from './schema/fields/timestampFields';
 import taggedInterface from './schema/interfaces/taggedInterface';
 import ArticleType from './schema/types/ArticleType';
 import MarkupType from './schema/types/MarkupType';
+import PageType from './schema/types/PageType';
 import SnippetType from './schema/types/SnippetType';
 import TagNameType from './schema/types/TagNameType';
 
@@ -128,37 +129,6 @@ const userType = registerType(new GraphQLObjectType({
   interfaces: [nodeInterface],
 }));
 
-const pageType = registerType(new GraphQLObjectType({
-  name: 'Page',
-  description: 'A page',
-  fields: {
-    id: globalIdField('Page'),
-    title: {
-      type: GraphQLString,
-      description: "The page's title",
-      resolve: page => page.title,
-    },
-    body: {
-      type: MarkupType,
-      resolve(page) {
-        return {
-          raw: page.body,
-          format: page.format,
-        };
-      },
-    },
-    url: {
-      type: new GraphQLNonNull(GraphQLString),
-      description: 'URL for the page',
-      resolve: page => `/pages/${page.id}`,
-    },
-    ...tagsField,
-    ...timestampFields,
-  },
-  interfaces: [nodeInterface, taggedInterface],
-  isTypeOf: object => object instanceof Page,
-}));
-
 const postType = registerType(new GraphQLObjectType({
   name: 'Post',
   description: 'A blog post',
@@ -200,7 +170,7 @@ const taggableType = new GraphQLUnionType({
   name: 'Taggable',
   types: [
     ArticleType,
-    pageType,
+    PageType,
     postType,
     SnippetType,
   ],
