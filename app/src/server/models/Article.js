@@ -7,7 +7,7 @@ import readIndex from '../readIndex';
 export default class Article {
   static async readIndex(count: number, offset: number): Array {
     const results = await readIndex(
-      'masochist:wiki-index',
+      'wiki-index',
       count,
       offset
     );

@@ -2,7 +2,10 @@
  * @flow
  */
 
-import {getClient} from '../common/redis';
+import {
+  getClient,
+  getKey,
+} from '../common/redis';
 
 export default async function readIndex(
   name: string,
@@ -10,16 +13,17 @@ export default async function readIndex(
   offset: number
 ): Array {
   const client = getClient();
+  const key = getKey(name);
   const results = await client.multi([
     [
       'zrevrange',
-      name,
+      key,
       offset,
       offset + count - 1,
     ],
     [
       'zcard',
-      name,
+      key,
     ]
   ]).execAsync();
 

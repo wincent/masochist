@@ -7,7 +7,7 @@ import readIndex from '../readIndex';
 export default class Post {
   static async readIndex(count: number, offset: number): Array {
     const results = await readIndex(
-      'masochist:blog-index',
+      'blog-index',
       count,
       offset
     );

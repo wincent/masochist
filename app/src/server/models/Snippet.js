@@ -8,7 +8,7 @@ export default class Snippet {
   static async readIndex(count: number, offset: number): Array {
     const results = await readIndex(
       // TODO: centralize this (we have something similar in bin/updateIndices)
-      'masochist:snippets-index',
+      'snippets-index',
       count,
       offset
     );
