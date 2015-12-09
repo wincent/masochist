@@ -17,12 +17,11 @@
 }
 
 .tags:before {
-  background-color: #1eaedb; /* same as link color */
+  background-image: url(../../../vendor/icons/tags.svg);
+  background-size: cover;
   content: ' ';
   display: inline-block;
   height: 12px;
-  mask-size: cover;
-  mask-image: url(../../../vendor/icons/tags.svg);
   position: relative;
   top: .2rem;
   width: 12px;

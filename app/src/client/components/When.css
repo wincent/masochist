@@ -5,13 +5,12 @@
 }
 
 .when:before {
-  background-color: #bbb; /* same as above */
+  background-image: url(../../../vendor/icons/calendar.svg);
+  background-size: cover;
   content: ' ';
   display: inline-block;
   height: 12px;
   margin-right: .5rem;
-  mask-size: cover;
-  mask-image: url(../../../vendor/icons/calendar.svg);
   position: relative;
   top: .2rem;
   width: 12px;

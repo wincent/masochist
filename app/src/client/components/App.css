@@ -36,13 +36,12 @@ h1 a {
 }
 
 .external:after {
-  background-color: #1eaedb; /* same as link color */
+  background-image: url(../../../vendor/icons/external-link.svg);
+  background-size: cover;
   content: ' ';
   display: inline-block;
   height: 12px;
   margin-left: .25rem;
-  mask-size: cover;
-  mask-image: url(../../../vendor/icons/external-link.svg);
   position: relative;
   top: .2rem;
   width: 12px;

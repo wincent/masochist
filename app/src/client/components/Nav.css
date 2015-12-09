@@ -50,16 +50,15 @@ nav li {
 }
 
 .nav-toggle {
-  background-color: #eee;
-  cursor: pointer;
-  mask-image: url(../../../vendor/icons/angle-double-down.svg);
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: 60%;
-  overflow: hidden;
-  text-transform: uppercase;
+  background-image: url(../../../vendor/icons/angle-double-down.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
   color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  overflow: hidden;
   padding: 1rem 0;
+  text-transform: uppercase;
   transition: .5s ease-in-out;
   width: 32px;
 }
