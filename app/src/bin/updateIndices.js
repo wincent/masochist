@@ -275,7 +275,7 @@ async function getFileUpdates(range, callback) {
 
   // Update tags.
   //
-  // This update is relatively slow and expensive because it has to laod every
+  // This update is relatively slow and expensive because it has to load every
   // blob into memory, but on the bright side, it primes our memcached metadata
   // cache as a result.
   function addTag(tag, file, contentType, updatedAt) {
