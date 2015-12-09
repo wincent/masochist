@@ -2,18 +2,20 @@
  * @flow
  */
 
+import Promise from 'bluebird';
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Post from '../models/Post';
 
-async function loadPosts(keys: Array<string>): Promise<Array<Object | Error>> {
-  return await* keys
+function loadPosts(keys: Array<string>): Promise<Array<Object | Error>> {
+  const promises = keys
     .map(key => ({
       file: key,
       subdirectory: 'blog',
     }))
     .map(loadContent)
     .map(dataPromise => dataPromise.then(data => new Post(data)));
+  return Promise.all(promises);
 }
 
 export default function getPostLoader() {

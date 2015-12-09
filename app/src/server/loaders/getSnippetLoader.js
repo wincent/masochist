@@ -2,18 +2,20 @@
  * @flow
  */
 
+import Promise from 'bluebird';
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Snippet from '../models/Snippet';
 
-async function loadSnippets(keys: Array<string>): Promise<Array<Object | Error>> {
-  return await* keys
+function loadSnippets(keys: Array<string>): Promise<Array<Object | Error>> {
+  const promises = keys
     .map(key => ({
       file: key,
       subdirectory: 'snippets',
     }))
     .map(loadContent)
     .map(dataPromise => dataPromise.then(data => new Snippet(data)));
+  return Promise.all(promises);
 }
 
 export default function getSnippetLoader() {

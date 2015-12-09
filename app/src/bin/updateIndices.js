@@ -55,8 +55,6 @@ function extractFile(pathString: string, contentType: string): string {
 
 const getWhatChanged = memoize(
   async (range: string, subdirectory: string) => {
-    log(`Getting ${subdirectory} changes in range: ${range}.`);
-
     // Custom log format (^@ here represents the NUL \0 byte):
     //
     // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
@@ -96,8 +94,22 @@ async function getIsAncestor(
   return Promise.resolve(false);
 }
 
-async function getFileUpdates(range, callback) {
-  async function getFileUpdatesForType(contentType, orderBy) {
+function getFileUpdates(range, callback) {
+  log(`Preparing list of file updates in ${range}.`);
+  const promises = [
+    {
+      contentType: 'wiki',
+      orderBy: 'updatedAt',
+    },
+    {
+      contentType: 'snippets',
+      orderBy: 'createdAt',
+    },
+    {
+      contentType: 'blog',
+      orderBy: 'createdAt',
+    },
+  ].map(async ({contentType, orderBy}) => {
     const commits = await getWhatChanged(range, contentType);
 
     const regExp = new RegExp(
@@ -150,15 +162,9 @@ async function getFileUpdates(range, callback) {
       // `lastIndex` should reset to 0.
       throw new Error('Failed to consume input');
     }
-  }
+  });
 
-  log(`Preparing list of file updates.`);
-  await getFileUpdatesForType('wiki', 'updatedAt');
-  print('\n');
-  await getFileUpdatesForType('snippets', 'createdAt');
-  print('\n');
-  await getFileUpdatesForType('blog', 'createdAt');
-  print('\n');
+  return Promise.all(promises);
 }
 
 (async () => {
@@ -193,6 +199,7 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
+  print('\n');
 
   log('Writing timestamp cache for revision %s', head);
   await (async () => {
@@ -264,6 +271,7 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
+  print('\n');
 
   // Update tags.
   //

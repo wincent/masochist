@@ -2,12 +2,13 @@
  * @flow
  */
 
+import Promise from 'bluebird';
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Article from '../models/Article';
 
-async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
-  return await* keys
+function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
+  const promises = keys
     .map(key => ({
       file: key,
       subdirectory: 'wiki',
@@ -17,6 +18,7 @@ async function loadArticles(keys: Array<string>): Promise<Array<Object | Error>>
       ...data,
       title: data.id,
     })));
+  return Promise.all(promises);
 }
 
 export default function getArticleLoader() {
