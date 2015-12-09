@@ -1923,6 +1923,11 @@
         }
       }
     },
+    "dom-helpers": {
+      "version": "2.4.0",
+      "from": "dom-helpers@>=2.4.0 <3.0.0",
+      "resolved": "https://registry.npmjs.org/dom-helpers/-/dom-helpers-2.4.0.tgz"
+    },
     "domain-browser": {
       "version": "1.1.4",
       "from": "domain-browser@>=1.1.1 <2.0.0",
@@ -4817,6 +4822,11 @@
       "version": "1.1.4",
       "from": "sax@>=1.1.1 <1.2.0",
       "resolved": "https://registry.npmjs.org/sax/-/sax-1.1.4.tgz"
+    },
+    "scroll-behavior": {
+      "version": "0.3.0",
+      "from": "scroll-behavior@*",
+      "resolved": "https://registry.npmjs.org/scroll-behavior/-/scroll-behavior-0.3.0.tgz"
     },
     "seek-bzip": {
       "version": "1.0.5",

@@ -30,8 +30,9 @@ import {IndexRoute, Route} from 'react-router';
 import {RelayRouter} from 'react-router-relay';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import useStandardScroll from 'scroll-behavior/lib/useStandardScroll';
 
-const history = createHistory();
+const history = useStandardScroll(createHistory)();
 
 /**
  * We use classical opaque GraphQL IDs internally ("Type:id", Base64-encoded)
