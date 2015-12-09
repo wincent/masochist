@@ -199,11 +199,6 @@
       "from": "aws-sign2@>=0.6.0 <0.7.0",
       "resolved": "https://registry.npmjs.org/aws-sign2/-/aws-sign2-0.6.0.tgz"
     },
-    "babel": {
-      "version": "6.3.13",
-      "from": "babel@6.3.13",
-      "resolved": "https://registry.npmjs.org/babel/-/babel-6.3.13.tgz"
-    },
     "babel-cli": {
       "version": "6.3.15",
       "from": "babel-cli@*",
@@ -1103,7 +1098,7 @@
     },
     "babel-register": {
       "version": "6.3.13",
-      "from": "babel-register@>=6.3.13 <7.0.0",
+      "from": "babel-register@*",
       "resolved": "https://registry.npmjs.org/babel-register/-/babel-register-6.3.13.tgz",
       "dependencies": {
         "babel-runtime": {
