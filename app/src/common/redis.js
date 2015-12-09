@@ -4,7 +4,7 @@ import redis from 'redis';
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
 
-export const KEY_PREFIX = 'masochist';
+const KEY_PREFIX = 'masochist';
 
 const client = redis.createClient();
 
