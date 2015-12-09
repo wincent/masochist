@@ -63,7 +63,7 @@ class TagsIndex extends React.Component {
 
 export default Relay.createContainer(TagsIndex, {
   initialVariables: {
-    count: Number.MAX_SAFE_INTEGER
+    count: 2 ** 31 - 1,
   },
   fragments: {
     viewer: () => Relay.QL`
