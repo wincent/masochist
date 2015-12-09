@@ -2,22 +2,26 @@
  * @flow
  */
 
-import {getClient} from '../../common/redis';
+import {
+  getClient,
+  getKey,
+} from '../../common/redis';
 
 export default class Tag {
   static async readIndex(count: number, offset: number): Array {
     const client = getClient();
+    const key = getKey('tags-index');
     const results = await client.multi([
       [
         'zrevrange',
-        'masochist:tags-index',
+        key,
         offset,
         offset + count - 1,
         'WITHSCORES',
       ],
       [
         'zcard',
-        'masochist:tags-index',
+        key,
       ]
     ]).execAsync();
 
