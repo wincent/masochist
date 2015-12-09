@@ -9,7 +9,7 @@ const KEY_PREFIX = 'masochist';
 /**
  * Can manually force cache invalidation by bumping this.
  */
-const CACHE_VERSION = '1';
+const CACHE_VERSION = '2';
 
 const client = redis.createClient();
 
