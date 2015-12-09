@@ -97,21 +97,7 @@ async function getIsAncestor(
 }
 
 async function getFileUpdates(range, callback) {
-  log(`Preparing list of file updates.`);
-  await* [
-    {
-      contentType: 'wiki',
-      orderBy: 'updatedAt',
-    },
-    {
-      contentType: 'snippets',
-      orderBy: 'createdAt',
-    },
-    {
-      contentType: 'blog',
-      orderBy: 'createdAt',
-    },
-  ].map(async ({contentType, orderBy}) => {
+  async function getFileUpdatesForType(contentType, orderBy) {
     const commits = await getWhatChanged(range, contentType);
 
     const regExp = new RegExp(
@@ -164,7 +150,15 @@ async function getFileUpdates(range, callback) {
       // `lastIndex` should reset to 0.
       throw new Error('Failed to consume input');
     }
-  });
+  }
+
+  log(`Preparing list of file updates.`);
+  await getFileUpdatesForType('wiki', 'updatedAt');
+  print('\n');
+  await getFileUpdatesForType('snippets', 'createdAt');
+  print('\n');
+  await getFileUpdatesForType('blog', 'createdAt');
+  print('\n');
 }
 
 (async () => {
@@ -199,7 +193,6 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
-  print('\n');
 
   log('Writing timestamp cache for revision %s', head);
   await (async () => {
@@ -271,7 +264,6 @@ async function getFileUpdates(range, callback) {
       }
     }
   );
-  print('\n');
 
   // Update tags.
   //
