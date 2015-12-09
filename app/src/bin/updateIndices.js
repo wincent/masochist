@@ -297,9 +297,8 @@ async function getFileUpdates(range, callback) {
 
     const setName = getKey('tag:' + tag);
     updates.unshift([
-      'srem',
+      'zrem',
       setName,
-      updatedAt ? updatedAt.getTime() : -1,
       contentType + ':' + file,
     ]);
   }
