@@ -16,13 +16,13 @@ export default async function readIndex(
   const key = getKey(name);
   const results = await client.multi([
     [
-      'zrevrange',
+      'ZREVRANGE',
       key,
       offset,
       offset + count - 1,
     ],
     [
-      'zcard',
+      'ZCARD',
       key,
     ]
   ]).execAsync();

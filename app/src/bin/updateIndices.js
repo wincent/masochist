@@ -254,16 +254,16 @@ async function getFileUpdates(range, callback) {
         const indexName = getKey(contentType + '-index');
         switch (status) {
           case 'A':
-            updates.push(['zadd', indexName, createdAt, file]);
+            updates.push(['ZADD', indexName, createdAt, file]);
             seenFiles[file] = true;
             break;
           case 'D':
-            updates.push(['zrem', indexName, file]);
+            updates.push(['ZREM', indexName, file]);
             seenFiles[file] = orderBy === 'updatedAt';
             break;
           case 'M':
             if (orderBy === 'updatedAt') {
-              updates.push(['zadd', indexName, updatedAt, file]);
+              updates.push(['ZADD', indexName, updatedAt, file]);
               seenFiles[file] = true;
             }
             break;
@@ -280,11 +280,11 @@ async function getFileUpdates(range, callback) {
   // cache as a result.
   function addTag(tag, file, contentType, updatedAt) {
     const indexName = getKey('tags-index');
-    updates.unshift(['zincrby', indexName, 1, tag]);
+    updates.unshift(['ZINCRBY', indexName, 1, tag]);
 
     const setName = getKey('tag:' + tag);
     updates.unshift([
-      'zadd',
+      'ZADD',
       setName,
       updatedAt ? updatedAt.getTime() : -1,
       contentType + ':' + file,
@@ -293,11 +293,11 @@ async function getFileUpdates(range, callback) {
 
   function removeTag(tag, file, contentType, updatedAt) {
     const indexName = getKey('tags-index');
-    updates.unshift(['zincrby', indexName, -1, tag]);
+    updates.unshift(['ZINCRBY', indexName, -1, tag]);
 
     const setName = getKey('tag:' + tag);
     updates.unshift([
-      'zrem',
+      'ZREM',
       setName,
       contentType + ':' + file,
     ]);
@@ -369,7 +369,7 @@ async function getFileUpdates(range, callback) {
   print('\n');
 
   // All done.
-  updates.push(['set', LAST_INDEXED_HASH, head]);
+  updates.push(['SET', LAST_INDEXED_HASH, head]);
   log('Sending index updates to Redis.');
   await client.multi(updates).execAsync();
   log('Finished updating index for revision %s.', head);

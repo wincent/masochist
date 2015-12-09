@@ -14,7 +14,7 @@ async function loadTags(keys: Array<string>): Promise<Array<Object | Error>> {
   const client = getClient();
   const queries = keys.map(key => (
     [
-      'zrevrange',
+      'ZREVRANGE',
       getKey('tag:' + key),
       0,
       -1,

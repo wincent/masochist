@@ -13,14 +13,14 @@ export default class Tag {
     const key = getKey('tags-index');
     const results = await client.multi([
       [
-        'zrevrange',
+        'ZREVRANGE',
         key,
         offset,
         offset + count - 1,
         'WITHSCORES',
       ],
       [
-        'zcard',
+        'ZCARD',
         key,
       ]
     ]).execAsync();
