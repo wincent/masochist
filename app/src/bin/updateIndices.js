@@ -314,8 +314,8 @@ async function getFileUpdates(range, callback) {
       //   2. Switch tag "bar" for "baz".
       //   3. Delete article.
       //
-      // First thing we see is the deletion, then the edit then the addition, so
-      // when we unshift our operations, our queue becomes:
+      // First thing we see is the deletion, then the edit, then the addition,
+      // so when we unshift our operations, our queue becomes:
       //
       //   1. Increment counts for "foo", "bar".
       //   2. Decrement count for "bar", increment count for "baz".
