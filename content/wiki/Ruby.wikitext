@@ -8,7 +8,7 @@ It features a very clean syntax which is light on punctuation and often offers v
 
 It has been very popular for some time in Japan, and recently has enjoyed increasing popularity elsewhere, partly driven by the interest in [[Ruby on Rails]]. A [[Ruby]] to [[Cocoa]] bridge was shipped by [[Apple]] with the [[Mac OS X]], [[Leopard]].
 
-It's my scripting language of choice for anything that goes beyond trivial shell scripts (where I still prefer [[Bash]]); as soon as the task at hand grows to the point where it would best be split up into multiple files, the [[object-oriented]] design and packaging features (modules, [[gems]]) make [[Ruby]] a very appealing choice. My largest projects to date in and for Ruby are [[Walrus]], this website (built on [[Rails]]), and my [[wikitext]] module.
+It's my scripting language of choice for anything that goes beyond trivial shell scripts (where I still prefer [[Bash]]); as soon as the task at hand grows to the point where it would best be split up into multiple files, the [[object-oriented]] design and packaging features (modules, [[gems]]) make [[Ruby]] a very appealing choice. My largest projects to date in and for Ruby are [[Walrus]], an older version of this website (built on [[Rails]]), and my [[wikitext]] module.
 
 = Official site =
 
