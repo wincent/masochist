@@ -1,6 +1,10 @@
 ---
 tags: unix
 title: Old stuff that rocks
+hn: https://news.ycombinator.com/item?id=10712482
+fb: https://www.facebook.com/glh/posts/10153075891566307
+reddit: https://www.reddit.com/r/programming/comments/3wajm6/old_stuff_that_rocks/
+twitter: https://twitter.com/wincent/status/675019312495640576
 ---
 
 The other day I [tweeted](https://twitter.com/wincent/status/672894777541525504):
