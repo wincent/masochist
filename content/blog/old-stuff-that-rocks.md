@@ -45,7 +45,7 @@ Nevertheless, if, for the sake of the argument, we take a glance at some of the 
 * Erlang (1986)
 * Objective-C (1986)
 
-Most of these languages are still thriving today, to [greater](/wiki/JavaScript) or [lesser](/wiki/Perl) degrees. If we look at the more recent generation of new languages, how confident can we be that they'll be "mainstream" 10 years from now?
+Most of these languages are still thriving today, to [greater](/wiki/JavaScript) or [lesser](/wiki/Perl) degrees. If we look at the more recent generation of new languages, how confident can we be that they'll be "mainstream" 10 years from now? I'm not a gambler, but if I were I'd probably put my money on about half of these:
 
 * Dart (2013)
 * Elm (2012)
@@ -64,7 +64,7 @@ A web server is an incredibly complex, multi-faceted tool. Most couldn't be said
 
 ## Compression algorithms
 
-Gzip (1992) is ubiquitous, predictable, and incredibly useful. The content you're reading now is compressed using gzip. Yet it doesn't make the list. The reason is that, despite its clear merits, compression is an area in which we always want to do better. As such, there is a proliferation of alternative formats and tools, and I expect that more will be produced in the future, possibly indefinitely.
+Gzip (1992) is ubiquitous, predictable, and incredibly useful. The content you're reading now is compressed using gzip. Yet it doesn't make the list. The reason is that, despite gzip's clear merits, compression is an area in which we always want to do better. As such, there is a proliferation of [alternative formats and tools](https://en.wikipedia.org/wiki/List_of_archive_formats), and I expect that more will be produced in the future, possibly indefinitely.
 
 In short there is no single "preeminent" compression solution, and there probably never will be, so rather than picking a particularly successful one and adding it to the list, I am leaving it off. Consider gzip an "honorable mention".
 
@@ -72,11 +72,11 @@ In short there is no single "preeminent" compression solution, and there probabl
 
 [Make](/wiki/Make) (1977) is a build tool. Much of what I wrote about gzip could apply here too. It's powerful, available everywhere, and used pervasively. Yet enough people have been frustrated by its limitations that it has been emulated, extended or replaced [literally dozens of times](https://en.wikipedia.org/wiki/List_of_build_automation_software).
 
-I still use Make today, and will use it again in the future, but it doesn't make the list.
+I still use Make today, and will use it again in the future, but I will also use other build tools where appropriate, and Make doesn't make the list.
 
 ## Configuration management
 
-Another bustling, churning ecosystem, populated by the likes of [Puppet](/wiki/Puppet)a (2005), [Chef](/wiki/Chef) (2009) and [many others](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software). I've used both of the former, but of late have switched to [Ansible](/wiki/Ansible) (2012) and been very happy with it.
+Another bustling, churning ecosystem, populated by the likes of [Puppet](/wiki/Puppet) (2005), [Chef](/wiki/Chef) (2009) and [many others](https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software). I've used both of the former, but of late have switched to [Ansible](/wiki/Ansible) (2012) and been very happy with it.
 
 Nevertheless, Ansible is too young to make the list, and the rate of change and proliferation in this space definitely clouds its future. Who knows what we'll be using for this 10 years from now? Not even Yoda. It does seem, however, reasonable to predict that we won't have arrived at consensus and settled on any One True Configuration Management Tool.
 
