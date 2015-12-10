@@ -9,7 +9,7 @@ It features a very clean syntax which is light on punctuation and often offers v
 
 It has been very popular for some time in Japan, and recently has enjoyed increasing popularity elsewhere, partly driven by the interest in [Ruby on Rails](/wiki/Ruby_on_Rails). A [Ruby](/wiki/Ruby) to [Cocoa](/wiki/Cocoa) bridge was shipped by [Apple](/wiki/Apple) with the [Mac OS X](/wiki/Mac_OS_X), [Leopard](/wiki/Leopard).
 
-It's my scripting language of choice for anything that goes beyond trivial shell scripts (where I still prefer [Bash](/wiki/Bash)); as soon as the task at hand grows to the point where it would best be split up into multiple files, the [object-oriented](/wiki/object-oriented) design and packaging features (modules, [gems](/wiki/gems)) make [Ruby](/wiki/Ruby) a very appealing choice. My largest projects to date in and for Ruby are [Walrus](/wiki/Walrus), this website (built on [Rails](/wiki/Rails)), and my [wikitext](/wiki/wikitext) module.
+It's my scripting language of choice for anything that goes beyond trivial shell scripts (where I still prefer [Bash](/wiki/Bash)); as soon as the task at hand grows to the point where it would best be split up into multiple files, the [object-oriented](/wiki/object-oriented) design and packaging features (modules, [gems](/wiki/gems)) make [Ruby](/wiki/Ruby) a very appealing choice. My largest projects to date in and for Ruby are [Walrus](/wiki/Walrus), an older version of this website (built on [Rails](/wiki/Rails)), and my [wikitext](/wiki/wikitext) module.
 
 # Official site
 
