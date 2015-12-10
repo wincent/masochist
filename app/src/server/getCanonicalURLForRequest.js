@@ -4,6 +4,11 @@
 
 import {graphql} from 'graphql';
 import {toGlobalId} from 'graphql-relay';
+import {
+  canonicalHost,
+  canonicalScheme,
+} from '../common/config';
+import stripTrailingSlash from '../common/stripTrailingSlash';
 import getArticleLoader from './loaders/getArticleLoader';
 import schema from './schema';
 
@@ -62,8 +67,7 @@ export default async function getCanonicalURLForRequest(request): ?string {
   }
 
   if (canonical) {
-    // Nothing dynamic; hardcode everything, trust nobody.
-    return 'https://wincent.com' + canonical;
+    return canonicalScheme + canonicalHost + stripTrailingSlash(canonical);
   }
 
   return null;
