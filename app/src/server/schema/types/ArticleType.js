@@ -76,7 +76,10 @@ const ArticleType = registerType(new GraphQLObjectType({
     url: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'URL for the article',
-      resolve: article => `/wiki/${article.id.replace(/ /g, '_')}`,
+      resolve: async (article, args, {rootValue}) => {
+        article = await resolveRedirects(article, rootValue);
+        return `/wiki/${article.id.replace(/ /g, '_')}`;
+      },
     },
     tags: {
       type: new GraphQLList(TagNameType),
