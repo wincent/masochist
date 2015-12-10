@@ -35,13 +35,14 @@ if (__DEV__) {
 }
 
 function jadeHandler(resource, extraLocals = {}) {
-  return (request, response) => {
+  return async (request, response) => {
+    const canonical = await getCanonicalURLForRequest(request);
     const locals = {
       bundle: '/static/' + (
         __DEV__ ? 'bundle.js' : require('../webpack-assets').main.js
       ),
       styles: __DEV__ ? null : '/static/' + require('../webpack-assets').main.css,
-      canonical: getCanonicalURLForRequest(request),
+      canonical,
       production: !__DEV__,
       ...extraLocals,
     };

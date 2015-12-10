@@ -2,13 +2,19 @@
  * @flow
  */
 
+import {graphql} from 'graphql';
+import {toGlobalId} from 'graphql-relay';
+import getArticleLoader from './loaders/getArticleLoader';
+import schema from './schema';
+
 /**
  * Returns a canonical URL for the response, or null if there is not one.
  */
-export default function getCanonicalURLForRequest(request): ?string {
+export default async function getCanonicalURLForRequest(request): ?string {
   // We only look at path, ignoring query string params.
   const path = request.path;
   let canonical;
+  let match;
 
   // Warning: beautiful code ahead!</irony>
   if (path === '/') {
@@ -25,8 +31,34 @@ export default function getCanonicalURLForRequest(request): ?string {
     canonical = path;
   } else if (path === '/wiki' || path === '/wiki/') {
     canonical = '/wiki';
-  } else if (path.match(/^\/wiki\/.+/)) {
-    canonical = path;
+  } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
+    const id = toGlobalId('Article', match[1].replace(/_/g, ' '));
+    try {
+      const result = await graphql(
+        schema,
+        `
+          query ArticleQuery($id: ID!) {
+            node(id: $id) {
+              ...on Article {
+                url
+              }
+            }
+          }
+        `,
+        {
+          loaders: {
+            Article: getArticleLoader(),
+          },
+        },
+        {id}
+      );
+
+      if (result.data) {
+        canonical = result.data && result.data.node.url;
+      }
+    } catch(e) {
+      // Don't let 404s blow us up here.
+    }
   }
 
   if (canonical) {
