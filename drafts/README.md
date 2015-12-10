@@ -1,0 +1,1 @@
+This folder is for files that are works in progress. They can be committed incrementally over time without having their "created at" date appear to be too early. Instead, once finished, they can be moved over to the `content/` folder, at which time their "created at" date will reflect their publication date.
