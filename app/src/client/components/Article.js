@@ -1,6 +1,5 @@
 import React from 'react';
 import Relay from 'react-relay';
-import Comments from './Comments';
 import DocumentTitle from './DocumentTitle';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
@@ -55,7 +54,6 @@ class Article extends React.Component {
             <TrustedPrerenderedMarkup html={article.body.html} />
           </div>
           <Tags tagged={article} />
-          <Comments url={article.url} />
         </article>
       </DocumentTitle>
     );
