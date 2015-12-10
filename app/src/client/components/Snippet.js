@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import Comments from './Comments';
 import DocumentTitle from './DocumentTitle';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
@@ -23,6 +24,7 @@ class Snippet extends React.Component {
             <TrustedPrerenderedMarkup html={snippet.body.html} />
           </div>
           <Tags tagged={snippet} />
+          <Comments url={snippet.url} />
         </article>
       </DocumentTitle>
     );

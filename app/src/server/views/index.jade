@@ -3,6 +3,7 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(property='fb:app_id' content='758387154293378')
     title wincent.com
     link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600', rel='stylesheet', type='text/css')
     if (production)
@@ -11,5 +12,14 @@ html(lang='en')
     if (canonical)
       link(rel='canonical', href=canonical)
   body
+    #fb-root
+    script.
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=758387154293378";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     #relay-root
     script(src=bundle)
