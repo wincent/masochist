@@ -16,6 +16,7 @@ require 'set'
 PARSER = Wikitext::Parser.new(img_prefix: '/system/images/')
 
 CACHE = Redis.new
+CACHE_VERSION = 2
 
 KNOWN_LINKS = {}
 
@@ -27,13 +28,18 @@ FALLBACK_LINKS_SET = (Class.new do
   end
 end).new
 
+def get_key(suffix)
+  "masochist:#{CACHE_VERSION}:#{suffix}"
+end
+
 def known_links
+  index_key = get_key('wiki-index')
   last_indexed, cardinality = CACHE.multi do
-    CACHE.get('masochist:last-indexed-hash')
-    CACHE.zcard('masochist:wiki-index')
+    CACHE.get(get_key('last-indexed-hash'))
+    CACHE.zcard(index_key)
   end
   if !KNOWN_LINKS.has_key?(last_indexed)
-    targets = CACHE.zrevrange('masochist:wiki-index', 0, cardinality)
+    targets = CACHE.zrevrange(index_key, 0, cardinality)
     if targets.any?
       KNOWN_LINKS[last_indexed] = Set.new(targets.map(&:downcase))
       KNOWN_LINKS_DIGESTS.push(last_indexed)

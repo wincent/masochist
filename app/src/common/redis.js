@@ -8,6 +8,9 @@ const KEY_PREFIX = 'masochist';
 
 /**
  * Can manually force cache invalidation by bumping this.
+ *
+ * NOTE: if you update this, you need to update the version in the wikiserve
+ * project as well.
  */
 const CACHE_VERSION = '2';
 
