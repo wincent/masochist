@@ -87,3 +87,5 @@ Nevertheless, Ansible is too young to make the list, and the rate of change and 
 # Parting words
 
 Thanks for joining me on this rambling, nostalgic journey among some "old stuff that rocks". I hope that I can find more of this stuff, and that we collectively can continue to make _new_ old stuff that rocks for us and future generations of technology users.
+
+<small>_Discuss: [Facebook](https://www.facebook.com/glh/posts/10153075891566307) - [Hacker News](https://news.ycombinator.com/item?id=10712482) - [Reddit](https://www.reddit.com/r/programming/comments/3wajm6/old_stuff_that_rocks/) - [Twitter](https://twitter.com/wincent/status/675019312495640576)_</small>
