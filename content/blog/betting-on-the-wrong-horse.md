@@ -5,7 +5,7 @@ fb: https://www.facebook.com/glh/posts/10153077211406307
 reddit: https://www.reddit.com/r/programming/comments/3we95k/betting_on_the_wrong_horse/
 twitter: https://twitter.com/wincent/status/675356737134694400
 ---
-I'm a software engineer. After decades of hanging around &mdash; and being one of these &mdash; computer geeks, I've come to realize a common trait among us: we're relentless optimizers. Not just optimizers of code (to make it run faster of more efficiently), but of all manner of decisions in our lives.
+I'm a software engineer. After decades of hanging around &mdash; and being one of these &mdash; computer geeks, I've come to realize a common trait among us: we're relentless optimizers. Not just optimizers of code (to make it run faster or more efficiently), but of all manner of decisions in our lives.
 
 We optimize the route we take to walk to (and through) the supermarket; in fact, I bet most of us can articulate an explicit algorithm for generating the route. We optimize our purchasing and lifestyle decisions. For example, which wallet we buy and how we organize its contents. We'll do odd-seeming things like investing copious amounts of time identifying an optimal brand and model of footwear or clothing, and then buy multiple instances of it so that we can entirely remove the subject from our future consideration.
 
