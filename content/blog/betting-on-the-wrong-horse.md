@@ -1,6 +1,9 @@
 ---
 title: Betting on the wrong horse
 tags: 1password lastpass
+fb: https://www.facebook.com/glh/posts/10153077211406307
+reddit: https://www.reddit.com/r/programming/comments/3we95k/betting_on_the_wrong_horse/
+twitter: https://twitter.com/wincent/status/675356737134694400
 ---
 I'm a software engineer. After decades of hanging around &mdash; and being one of these &mdash; computer geeks, I've come to realize a common trait among us: we're relentless optimizers. Not just optimizers of code (to make it run faster of more efficiently), but of all manner of decisions in our lives.
 
@@ -100,3 +103,6 @@ I don't _always_ bet on the wrong horse. Some bets that turned out nicely:
 * __Mac:__ I bought my first Mac in 1996 (probably before it was actually a good idea) and have been buying Macs exclusively ever since.
 * __Git:__ Started using Git in 2007. A rare thing in the world of technology: a decision that looks as appropriate today as it did 8 years ago. (Still, on the way there I had stops at RCS, CVS, Subversion and SVK, most of which I wish I could have just skipped right over.)
 * __Vim:__ In 2009 I switched to Vim. It's possible that within a year or two NeoVim will have progressed enough (and Vim will have stood almost-still long enough) that a switch will be in order, but I am not too worried about that because it should be a relatively low-cost move; the real win here was adopting the modal editing.
+
+
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153077211406307) - [Reddit](https://www.reddit.com/r/programming/comments/3we95k/betting_on_the_wrong_horse/) - [Twitter](https://twitter.com/wincent/status/675356737134694400)</em></small>
