@@ -19,8 +19,3 @@ http://www.ruby-lang.org/en/
 * http://www.ruby-doc.org/
 * http://www.ruby-doc.org/core
 * http://www.ruby-doc.org/stdlib/
-* http://www.rubygarden.org/faq/
-
-= See also =
-
-* "The Little Book Of Ruby": http://www.sapphiresteel.com/The-Little-Book-Of-Ruby
