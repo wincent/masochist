@@ -11,7 +11,7 @@ export function registerType(type) {
 }
 
 export const {nodeField, nodeInterface} = nodeDefinitions(
-  async function resolveObjectFromID(globalId, {rootValue}) {
+  function resolveObjectFromID(globalId, {rootValue}) {
     const {type, id} = fromGlobalId(globalId);
     const loader = rootValue.loaders[type];
     return (loader && loader.load(id)) || null;
