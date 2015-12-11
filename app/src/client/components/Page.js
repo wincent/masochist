@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import DocumentTitle from './DocumentTitle';
+import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
@@ -9,6 +10,18 @@ import When from './When';
 class Page extends React.Component {
   render() {
     const {page} = this.props;
+
+    if (!page) {
+      return (
+        <HTTPError code={404}>
+          <p>
+            Try inspecting {' '}
+            <Link to="/tags">the tags listing</Link>.
+          </p>
+        </HTTPError>
+      );
+    }
+
     return (
       <DocumentTitle title={page.title}>
         <article>

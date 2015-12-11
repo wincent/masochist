@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import DocumentTitle from './DocumentTitle';
+import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
@@ -9,6 +10,19 @@ import When from './When';
 class Post extends React.Component {
   render() {
     const {post} = this.props;
+
+    if (!post) {
+      return (
+        <HTTPError code={404}>
+          <p>
+            Try inspecting {' '}
+            <Link to="/blog">the blog index</Link> or {' '}
+            <Link to="/tags">the tags listing</Link>.
+          </p>
+        </HTTPError>
+      );
+    }
+
     return (
       <DocumentTitle isLeaf={true} title={post.title}>
         <article>

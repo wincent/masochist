@@ -14,7 +14,7 @@ function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
       subdirectory: 'wiki',
     }))
     .map(loadContent)
-    .map(dataPromise => dataPromise.then(data => new Article({
+    .map(dataPromise => dataPromise.then(data => data && new Article({
       ...data,
       title: data.id,
     })));

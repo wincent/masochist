@@ -21,10 +21,13 @@ export default class HTTPError extends React.Component {
       <DocumentTitle title={`${this.props.code} ${message}`}>
         <div>
           <h1>{message}</h1>
+          {this.props.children}
           <p>
-            Found a problem?
-            Please <a href="https://github.com/wincent/masochist/issues/new">report
-            it</a> on the Masochist issue tracker.
+            Think you've found a problem? Please {' '}
+            <a href="https://github.com/wincent/masochist/issues/new">
+              report it
+            </a>
+            {' '} on the Masochist issue tracker.
           </p>
         </div>
       </DocumentTitle>

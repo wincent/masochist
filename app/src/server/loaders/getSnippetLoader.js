@@ -14,7 +14,7 @@ function loadSnippets(keys: Array<string>): Promise<Array<Object | Error>> {
       subdirectory: 'snippets',
     }))
     .map(loadContent)
-    .map(dataPromise => dataPromise.then(data => new Snippet(data)));
+    .map(dataPromise => dataPromise.then(data => data && new Snippet(data)));
   return Promise.all(promises);
 }
 

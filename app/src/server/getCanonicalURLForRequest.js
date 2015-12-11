@@ -38,31 +38,27 @@ export default async function getCanonicalURLForRequest(request): ?string {
     canonical = '/wiki';
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
     const id = toGlobalId('Article', match[1].replace(/_/g, ' '));
-    try {
-      const result = await graphql(
-        schema,
-        `
-          query ArticleQuery($id: ID!) {
-            node(id: $id) {
-              ...on Article {
-                url
-              }
+    const result = await graphql(
+      schema,
+      `
+        query ArticleQuery($id: ID!) {
+          node(id: $id) {
+            ...on Article {
+              url
             }
           }
-        `,
-        {
-          loaders: {
-            Article: getArticleLoader(),
-          },
+        }
+      `,
+      {
+        loaders: {
+          Article: getArticleLoader(),
         },
-        {id}
-      );
+      },
+      {id}
+    );
 
-      if (result.data) {
-        canonical = result.data && result.data.node.url;
-      }
-    } catch(e) {
-      // Don't let 404s blow us up here.
+    if (result.data && result.data.node) {
+      canonical = result.data.node.url;
     }
   }
 

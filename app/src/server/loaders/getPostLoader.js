@@ -14,7 +14,7 @@ function loadPosts(keys: Array<string>): Promise<Array<Object | Error>> {
       subdirectory: 'blog',
     }))
     .map(loadContent)
-    .map(dataPromise => dataPromise.then(data => new Post(data)));
+    .map(dataPromise => dataPromise.then(data => data && new Post(data)));
   return Promise.all(promises);
 }
 

@@ -14,7 +14,7 @@ function loadPages(keys: Array<string>): Promise<Array<Object | Error>> {
       subdirectory: 'pages',
     }))
     .map(loadContent)
-    .map(dataPromise => dataPromise.then(data => new Page(data)));
+    .map(dataPromise => dataPromise.then(data => data && new Page(data)));
   return Promise.all(promises);
 }
 

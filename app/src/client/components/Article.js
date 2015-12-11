@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import DocumentTitle from './DocumentTitle';
+import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
@@ -15,6 +16,18 @@ class Article extends React.Component {
 
   render() {
     const {article} = this.props;
+
+    if (!article) {
+      return (
+        <HTTPError code={404}>
+          <p>
+            Try inspecting {' '}
+            <Link to="/wiki">the wiki index</Link> or {' '}
+            <Link to="/tags">the tags listing</Link>.
+          </p>
+        </HTTPError>
+      );
+    }
 
     if (article.redirect) {
       if (article.redirect.match(/^https?:/)) {
