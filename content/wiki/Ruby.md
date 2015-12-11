@@ -20,9 +20,4 @@ It's my scripting language of choice for anything that goes beyond trivial shell
 -   <http://www.ruby-doc.org/>
 -   <http://www.ruby-doc.org/core>
 -   <http://www.ruby-doc.org/stdlib/>
--   <http://www.rubygarden.org/faq/>
-
-# See also
-
--   "The Little Book Of Ruby": <http://www.sapphiresteel.com/The-Little-Book-Of-Ruby>
 
