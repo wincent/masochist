@@ -38,12 +38,12 @@ Bald, black, bespectacled; in short, nothing like me. I thought it was quite fun
 
 The following year (2002), for the release of [[Synergy]], a lightweight iTunes controller for Mac OS X, I published under the name of Wincent, as the "brand" already had some traction within the community.
 
-iTunes controllers are a dime-a-dozen nowadays, iTunes itself can download album covers for you, and all of Apple's keyboards now have keys for controlling your music. But at the time Synergy came out, it was definitely the most innovative, feature-rich, and well-executed application of its type, and as a result it was downloaded literally millions of times.
+iTunes controllers are a dime-a-dozen nowadays, iTunes itself can download album covers for you, and all of Apple's keyboards now have keys for controlling your music. But at the time Synergy came out, it was definitely the most innovative, feature-rich, and well-executed application of its type, and as a result it was downloaded literally hundreds of thousands of times.
 
 On the strength of that success, pretty much everything else I went on to release, whether open or closed source, I did so using my old pen name, Wincent Colaiuta, even though the need for relative anonymity had long since passed.
 
 = The future =
 
-It seems likely that I'll continue publishing code under what has effectively become my tech nickname. My [https://github.com/wincent wincent profile] on [[GitHub]] is far more interesting than my [https://github.com/ghurrell glhurrell one].
+It seems likely that I'll continue publishing code under what has effectively become my tech nickname. My [https://github.com/wincent wincent profile] on [[GitHub]] is far more interesting than my "glhurrell" one, so I consolidated their contents under the former and deleted the later some time ago.
 
 Trying to maintain two separate identities, even if one of them is fairly neatly defined as your "tech/online" identity, is a cumbersome endeavour. Long ago I gave up on trying to keep them really separate, but it looks like Wincent Colaiuta is here to stay, at least for the foreseeable future.
