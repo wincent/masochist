@@ -5,7 +5,7 @@ import PostType from './PostType';
 import SnippetType from './SnippetType';
 
 export default new GraphQLUnionType({
-  name: 'Taggable',
+  name: 'Content',
   types: [
     ArticleType,
     PageType,

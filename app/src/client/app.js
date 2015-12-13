@@ -12,6 +12,7 @@ import HTTPError from './components/HTTPError';
 import Page from './components/Page';
 import Post from './components/Post';
 import PostsIndex from './components/PostsIndex';
+import Search from './components/Search';
 import Snippet from './components/Snippet';
 import SnippetsIndex from './components/SnippetsIndex';
 import Tag from './components/Tag';
@@ -21,6 +22,7 @@ import ArticlesIndexQueries from './routes/ArticlesIndexQueries';
 import PageQueries from './routes/PageQueries';
 import PostQueries from './routes/PostQueries';
 import PostsIndexQueries from './routes/PostsIndexQueries';
+import SearchQueries from './routes/SearchQueries';
 import SnippetQueries from './routes/SnippetQueries';
 import SnippetsQueries from './routes/SnippetsQueries';
 import TagsIndexQueries from './routes/TagsIndexQueries';
@@ -82,6 +84,7 @@ ReactDOM.render(
         prepareParams={getPrepareParams('Page')}
         queries={PageQueries}
       />
+      <Route component={Search} path="search" queries={SearchQueries} />
       <Route component={SnippetsIndex} path="snippets" queries={SnippetsQueries} />
       <Route
         component={Snippet}

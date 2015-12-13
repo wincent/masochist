@@ -13,12 +13,14 @@ import Article from '../../models/Article';
 import Post from '../../models/Post';
 import Snippet from '../../models/Snippet';
 import Tag from '../../models/Tag';
+import search from '../../search';
 import {
   nodeInterface,
   registerType,
 } from '../definitions/node';
 import articleConnection from '../fields/connections/articleConnection';
 import postConnection from '../fields/connections/postConnection';
+import searchConnection from '../fields/connections/searchConnection';
 import snippetConnection from '../fields/connections/snippetConnection';
 import tagConnection from '../fields/connections/tagConnection';
 
@@ -108,6 +110,51 @@ export default registerType(new GraphQLObjectType({
             },
           ),
         };
+      },
+    },
+    search: {
+      type: searchConnection,
+      description: 'Search results visible to this user',
+      args: {
+        ...connectionArgs,
+        q: {
+          type: GraphQLString,
+          description: 'One or more search terms, separated by spaces',
+        },
+      },
+      resolve: async (user, args, {rootValue}) => {
+        // Cap count to avoid abuse.
+        const count = Math.max(args.first, 10);
+        const offset = getOffsetWithDefault(args.after, -1) + 1;
+        const results = await search(args.q);
+        const {loaders} = rootValue;
+        const promisedContent = results
+          .slice(offset, offset + count)
+          .map(({type, id}) => {
+            switch (type) {
+              case 'wiki':
+                return loaders.Article.load(id);
+              case 'blog':
+                return loaders.Post.load(id);
+              case 'pages':
+                return loaders.Page.load(id);
+              case 'snippets':
+                return loaders.Snippet.load(id);
+              default:
+                // TODO throw here?
+            }
+          });
+        return connectionFromPromisedArraySlice(
+          Promise.all(promisedContent),
+          args,
+          {
+            sliceStart: offset,
+            arrayLength: results.length,
+          },
+        ).then(connection => ({
+          count: results.length,
+          ...connection,
+        }));
       },
     },
   }),

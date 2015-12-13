@@ -105,12 +105,12 @@
             },
             {
               "kind": "OBJECT",
-              "name": "Snippet",
+              "name": "Page",
               "ofType": null
             },
             {
               "kind": "OBJECT",
-              "name": "Page",
+              "name": "Snippet",
               "ofType": null
             },
             {
@@ -305,12 +305,12 @@
             },
             {
               "kind": "OBJECT",
-              "name": "Snippet",
+              "name": "Page",
               "ofType": null
             },
             {
               "kind": "OBJECT",
-              "name": "Page",
+              "name": "Snippet",
               "ofType": null
             }
           ]
@@ -600,8 +600,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Snippet",
-          "description": "A snippet",
+          "name": "Page",
+          "description": "A page",
           "fields": [
             {
               "name": "id",
@@ -621,7 +621,7 @@
             },
             {
               "name": "title",
-              "description": "The snippet's title",
+              "description": "The page's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -645,7 +645,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the snippet",
+              "description": "URL for the page",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -718,8 +718,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "Page",
-          "description": "A page",
+          "name": "Snippet",
+          "description": "A snippet",
           "fields": [
             {
               "name": "id",
@@ -739,7 +739,7 @@
             },
             {
               "name": "title",
-              "description": "The page's title",
+              "description": "The snippet's title",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -763,7 +763,7 @@
             },
             {
               "name": "url",
-              "description": "URL for the page",
+              "description": "URL for the snippet",
               "args": [],
               "type": {
                 "kind": "NON_NULL",
@@ -1095,7 +1095,7 @@
               "args": [],
               "type": {
                 "kind": "UNION",
-                "name": "Taggable",
+                "name": "Content",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1125,7 +1125,7 @@
         },
         {
           "kind": "UNION",
-          "name": "Taggable",
+          "name": "Content",
           "description": null,
           "fields": null,
           "inputFields": null,
@@ -1394,6 +1394,69 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "TagConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "search",
+              "description": "Search results visible to this user",
+              "args": [
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "q",
+                  "description": "One or more search terms, separated by spaces",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "SearchResultConnection",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1724,6 +1787,100 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Tag",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cursor",
+              "description": "A cursor for use in pagination",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SearchResultConnection",
+          "description": "A connection to a list of items.",
+          "fields": [
+            {
+              "name": "pageInfo",
+              "description": "Information to aid in pagination.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "edges",
+              "description": "Information to aid in pagination.",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "SearchResultEdge",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "count",
+              "description": "Total number of search results",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "SearchResultEdge",
+          "description": "An edge in a connection.",
+          "fields": [
+            {
+              "name": "node",
+              "description": "The item at the end of the edge",
+              "args": [],
+              "type": {
+                "kind": "UNION",
+                "name": "Content",
                 "ofType": null
               },
               "isDeprecated": false,

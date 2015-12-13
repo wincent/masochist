@@ -1,7 +1,7 @@
 import {connectionDefinitions} from 'graphql-relay';
-import TaggableType from '../../types/TaggableType';
+import ContentType from '../../types/ContentType';
 
 const {connectionType: taggableConnection} =
-  connectionDefinitions({name: 'Taggable', nodeType: TaggableType});
+  connectionDefinitions({name: 'Taggable', nodeType: ContentType});
 
 export default taggableConnection;
