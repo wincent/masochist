@@ -66,13 +66,33 @@ I try to keep my machines in good shape, refrain from overloading them with dubi
 
 = Fourth MacBook Air (Facebook) =
 
-* Last log entry: [/snippets/1077 Involuntary Reboot Log 6.6]
+I split the data for this machine into two segments, because it had a shell swap partway through its life in order to replace a dummy dislay port (ie. the motherboard including all storage got tranplanted into another case; note that it was still in some sense the same machine, with the same software and OS install).
+
+== First generation ==
+
+* Last log entry: [/snippets/1117 Involuntary Reboot Log 6.17]
 * Failure type: hard reset
 * Kernel panics: 1
-* Hard resets: 5
-* Total failures: 6
+* Hard resets: 16
+* Total failures: 17
 * Start of recording keeping: 21 January 2014
-* Total days: 122 days
-* Average time between failures: 20.33 days
+* Total days: 462 days
+* Average time between failures: 27.18 days
 
-'''Note:''' This is the machine I'm currently using, so I'll update this later (and certainly no later than moving on to a new machine).
+== Second generation ==
+
+* Last log entry: [/snippets/1138 Involuntary Reboot Log 7.4]
+* Failure type: hard reset
+* OS version: 10.11
+* Kernel panics: 1
+* Hard resets: 3
+* Total failures: 4
+* Start of recording keeping: 2 June 2015
+* Total days: 140 days
+* Average time between failures: 35.0 days
+
+= MacBook Pro =
+
+* No failures so far.
+
+'''Note:''' This is the machine I'm currently using, so I'll update this later (and no later than moving on to a new machine).
