@@ -56,6 +56,7 @@ const appRoutes = [
   '/blog/*',
   '/pages/*',
   '/search',
+  '/search/*',
   '/snippets',
   '/snippets/*',
   '/tags',

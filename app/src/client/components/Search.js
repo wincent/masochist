@@ -19,7 +19,7 @@ class Search extends React.Component {
     this.state = {
       isLoading: false, // Pagination.
       isSearching: false, // Initial search.
-      q: '',
+      q: props.q || '',
     };
   }
 
@@ -31,15 +31,17 @@ class Search extends React.Component {
     });
   }
 
-
   render() {
     const {search} = this.props.viewer;
-    // TODO make it possible to link to a search page with a query prepopulated
+    let searchURL = '/search';
+    if (this.state.q.trim()) {
+      searchURL += '/' + encodeURIComponent(this.state.q.trim());
+    }
     return (
       <DocumentTitle title="search">
         <div>
           <h1>
-            <Link to="/search">
+            <Link to={searchURL}>
               {this.state.q || 'Search'}
             </Link>
           </h1>
@@ -51,6 +53,7 @@ class Search extends React.Component {
                   count: INITIAL_COUNT,
                   q: this.state.q,
                 }, ({ready, done, error, aborted}) => {
+                  this.props.history.replace(searchURL);
                   this.setState({isSearching: !ready && !(done || error || aborted)});
                 });
               }}

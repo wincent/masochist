@@ -85,6 +85,7 @@ ReactDOM.render(
         queries={PageQueries}
       />
       <Route component={Search} path="search" queries={SearchQueries} />
+      <Route component={Search} path="search/:q" queries={SearchQueries} />
       <Route component={SnippetsIndex} path="snippets" queries={SnippetsQueries} />
       <Route
         component={Snippet}
