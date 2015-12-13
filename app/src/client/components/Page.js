@@ -12,11 +12,14 @@ class Page extends React.Component {
     const {page} = this.props;
 
     if (!page) {
+      // TODO: once search is implemented, link to that here (and in the other
+      // places we're rendering a 404) as well.
       return (
         <HTTPError code={404}>
           <p>
             Try inspecting {' '}
-            <Link to="/tags">the tags listing</Link>.
+            <Link to="/tags">the tags listing</Link> or using {' '}
+            <Link to="/search">the site search</Link>.
           </p>
         </HTTPError>
       );

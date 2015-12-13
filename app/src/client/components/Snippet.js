@@ -18,8 +18,9 @@ class Snippet extends React.Component {
         <HTTPError code={404}>
           <p>
             Try inspecting {' '}
-            <Link to="/snippets">the snippets index</Link> or {' '}
-            <Link to="/tags">the tags listing</Link>.
+            <Link to="/snippets">the snippets index</Link> and {' '}
+            <Link to="/tags">the tags listing</Link>, or using {' '}
+            <Link to="/search">the site search</Link>.
           </p>
         </HTTPError>
       );

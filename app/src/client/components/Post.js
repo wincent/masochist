@@ -16,8 +16,9 @@ class Post extends React.Component {
         <HTTPError code={404}>
           <p>
             Try inspecting {' '}
-            <Link to="/blog">the blog index</Link> or {' '}
-            <Link to="/tags">the tags listing</Link>.
+            <Link to="/blog">the blog index</Link> and {' '}
+            <Link to="/tags">the tags listing</Link>, or using {' '}
+            <Link to="/search">the site search</Link>.
           </p>
         </HTTPError>
       );
