@@ -56,7 +56,7 @@ class Search extends React.Component {
               }}
             >
               <input
-                className={/*"u-full-width"*/'eight columns'}
+                className="eight columns"
                 id="search-input"
                 onChange={event => this.setState({q: event.currentTarget.value})}
                 placeholder="Search..."
