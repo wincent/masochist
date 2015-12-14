@@ -16,6 +16,7 @@ import {
   registerType,
 } from '../definitions/node';
 import taggableConnection from '../fields/connections/taggableConnection';
+import extractTypeAndId from '../../../common/extractTypeAndId';
 import TagNameType from './TagNameType';
 
 const TagType = registerType(new GraphQLObjectType({
@@ -52,7 +53,7 @@ const TagType = registerType(new GraphQLObjectType({
           .map(typeAndId => {
             // TODO: These should probably be globalIds, manual splitting is
             // probably a smell.
-            const [type, id] = typeAndId.split(':');
+            const [type, id] = extractTypeAndId(typeAndId);
             switch (type) {
               case 'wiki':
                 return loaders.Article.load(id);

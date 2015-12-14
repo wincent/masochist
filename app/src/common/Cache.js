@@ -11,7 +11,7 @@ const memcached = new Memcached('localhost:11211');
  *
  * May one day consider using deployed hash instead.
  */
-const CACHE_VERSION = '1';
+const CACHE_VERSION = '2';
 
 /**
  * In __DEV__ we invalidate the cache automatically on boot (ie. when this

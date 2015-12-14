@@ -18,6 +18,7 @@ import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
 import path from 'path';
+import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
 import {
   getKey,
@@ -208,7 +209,7 @@ function getFileUpdates(range, callback) {
     return Promise.map(
       Object.keys(timestamps),
       async id => {
-        const [contentType, file] = id.split(/:/);
+        const [contentType, file] = extractTypeAndId(id);
         const {oldest, mostRecent} = timestamps[id];
         const cacheKey = getTimestampsCacheKey(contentType, file, head);
         await Cache.set(
