@@ -13,7 +13,10 @@ require 'json'
 require 'set'
 
 # TODO Make defaults configurable via an external config file
-PARSER = Wikitext::Parser.new(img_prefix: '/system/images/')
+PARSER = Wikitext::Parser.new(
+  img_prefix: '/system/images/',
+  pre_code: true
+)
 
 CACHE = Redis.new
 CACHE_VERSION = 2
