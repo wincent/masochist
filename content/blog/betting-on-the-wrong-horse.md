@@ -2,6 +2,7 @@
 title: Betting on the wrong horse
 tags: 1password lastpass
 fb: https://www.facebook.com/glh/posts/10153077211406307
+hn: https://news.ycombinator.com/item?id=10718146
 reddit: https://www.reddit.com/r/programming/comments/3we95k/betting_on_the_wrong_horse/
 twitter: https://twitter.com/wincent/status/675356737134694400
 ---
@@ -105,4 +106,4 @@ I don't _always_ bet on the wrong horse. Some bets that turned out nicely:
 * __Vim:__ In 2009 I switched to Vim. It's possible that within a year or two NeoVim will have progressed enough (and Vim will have stood almost-still long enough) that a switch will be in order, but I am not too worried about that because it should be a relatively low-cost move; the real win here was adopting the modal editing.
 
 
-<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153077211406307) - [Reddit](https://www.reddit.com/r/programming/comments/3we95k/betting_on_the_wrong_horse/) - [Twitter](https://twitter.com/wincent/status/675356737134694400)</em></small>
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153077211406307) - [Hacker News](https://news.ycombinator.com/item?id=10718146) - [Reddit](https://www.reddit.com/r/programming/comments/3we95k/betting_on_the_wrong_horse/) - [Twitter](https://twitter.com/wincent/status/675356737134694400)</em></small>
