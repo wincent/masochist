@@ -24,17 +24,17 @@ export default async function getCanonicalURLForRequest(request): ?string {
   // Warning: beautiful code ahead!</irony>
   if (path === '/') {
     canonical = '/blog';
-  } else if (path === '/blog' || path === '/blog/') {
+  } else if (stripTrailingSlash(path) === '/blog') {
     canonical = '/blog';
   } else if (path.match(/^\/blog\/.+/)) {
     canonical = path;
   } else if (path.match(/^\/pages\/.+/)) {
     canonical = path;
-  } else if (path === '/snippets' || path === '/snippets/') {
+  } else if (stripTrailingSlash(path) === '/snippets') {
     canonical = '/snippets';
   } else if (path.match(/^\/snippets\/.+/)) {
     canonical = path;
-  } else if (path === '/wiki' || path === '/wiki/') {
+  } else if (stripTrailingSlash(path) === '/wiki') {
     canonical = '/wiki';
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
     const id = toGlobalId('Article', match[1].replace(/_/g, ' '));
