@@ -124,6 +124,10 @@ if (__DEV__) {
   proxy.on('error', error => console.log('Proxy error: %s', error));
 }
 
+app.get('/heartbeat', (request, response) => {
+  response.send('༼ つ ◕_◕ ༽つ');
+});
+
 // In production, nginx should handle this, but in case it doesn't:
 app.use(express.static(
   path.join(__dirname, '..', '..', 'public'),
