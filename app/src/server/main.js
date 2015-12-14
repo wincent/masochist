@@ -26,6 +26,8 @@ const APP_PORT = 3000;
 
 const app = express();
 
+app.disable('x-powered-by');
+
 app.set('views', path.join(__dirname, 'views'));
 if (__DEV__) {
   app.set('view engine', 'jade');
