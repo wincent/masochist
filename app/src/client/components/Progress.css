@@ -1,0 +1,25 @@
+@keyframes progress {
+  0% {
+    width: 10%;
+  }
+  40% {
+    width: 40%;
+  }
+  80% {
+    width: 80%;
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+.progress {
+  animation: progress 2s ease-in-out;
+  background: #1eaedb;
+  height: 2px;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 90%;
+  z-index: 1;
+}

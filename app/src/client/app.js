@@ -12,6 +12,7 @@ import HTTPError from './components/HTTPError';
 import Page from './components/Page';
 import Post from './components/Post';
 import PostsIndex from './components/PostsIndex';
+import Progress from './components/Progress';
 import Search from './components/Search';
 import Snippet from './components/Snippet';
 import SnippetsIndex from './components/SnippetsIndex';
@@ -70,42 +71,81 @@ function prepareTagParams(params, route) {
 ReactDOM.render(
   <RelayRouter history={history}>
     <Route component={App} path="/">
-      <IndexRoute component={PostsIndex} queries={PostsIndexQueries} />
-      <Route component={PostsIndex} path="blog" queries={PostsIndexQueries} />
+      <IndexRoute
+        component={PostsIndex}
+        queries={PostsIndexQueries}
+        renderLoading={() => <Progress />}
+      />
+      <Route
+        component={PostsIndex}
+        path="blog"
+        queries={PostsIndexQueries}
+        renderLoading={() => <Progress />}
+      />
       <Route
         component={Post}
         path="blog/:id"
         prepareParams={getPrepareParams('Post')}
         queries={PostQueries}
+        renderLoading={() => <Progress />}
       />
       <Route
         component={Page}
         path="pages/:id"
         prepareParams={getPrepareParams('Page')}
         queries={PageQueries}
+        renderLoading={() => <Progress />}
       />
-      <Route component={Search} path="search" queries={SearchQueries} />
-      <Route component={Search} path="search/:q" queries={SearchQueries} />
-      <Route component={SnippetsIndex} path="snippets" queries={SnippetsQueries} />
+      <Route
+        component={Search}
+        path="search"
+        queries={SearchQueries}
+        renderLoading={() => <Progress />}
+      />
+      <Route
+        component={Search}
+        path="search/:q"
+        queries={SearchQueries}
+        renderLoading={() => <Progress />}
+      />
+      <Route
+        component={SnippetsIndex}
+        path="snippets"
+        queries={SnippetsQueries}
+        renderLoading={() => <Progress />}
+      />
       <Route
         component={Snippet}
         path="snippets/:id"
         prepareParams={getPrepareParams('Snippet')}
         queries={SnippetQueries}
+        renderLoading={() => <Progress />}
       />
-      <Route component={TagsIndex} path="tags" queries={TagsIndexQueries} />
+      <Route
+        component={TagsIndex}
+        path="tags"
+        queries={TagsIndexQueries}
+        renderLoading={() => <Progress />}
+      />
       <Route
         component={Tag}
         path="tags/:id"
         prepareParams={prepareTagParams}
         queries={TagQueries}
+        renderLoading={() => <Progress />}
       />
-      <Route component={ArticlesIndex} path="wiki" queries={ArticlesIndexQueries} />
+      <Route
+        component={ArticlesIndex}
+        path="wiki"
+        queries={ArticlesIndexQueries}
+        renderLoading={() => <Progress />}
+      />
       <Route
         component={Article}
         path="wiki/:id"
         prepareParams={prepareArticleParams}
         queries={ArticleQueries}
+        renderLoading={() => <Progress />}
       />
       <Route component={HTTPError} path="*" />
     </Route>
