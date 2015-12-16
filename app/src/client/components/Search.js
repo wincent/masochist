@@ -26,7 +26,7 @@ class Search extends React.Component {
   _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
-    }, ifMounted(({ready, done, error, aborted}) => {
+    }, this.ifMounted(({ready, done, error, aborted}) => {
       this.setState({isLoading: !ready && !(done || error || aborted)});
     }));
   }
