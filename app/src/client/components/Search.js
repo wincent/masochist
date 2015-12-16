@@ -26,9 +26,25 @@ class Search extends React.Component {
   _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
-    }, ({ready, done, error, aborted}) => {
+    }, ifMounted(({ready, done, error, aborted}) => {
       this.setState({isLoading: !ready && !(done || error || aborted)});
-    });
+    }));
+  }
+
+  componentDidMount() {
+    this._mounted = true;
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+  }
+
+  ifMounted(callback) {
+    return function() {
+      if (this._mounted) {
+        callback.apply(this, arguments);
+      }
+    }.bind(this);
   }
 
   render() {
@@ -52,10 +68,10 @@ class Search extends React.Component {
                 this.props.relay.setVariables({
                   count: INITIAL_COUNT,
                   q: this.state.q,
-                }, ({ready, done, error, aborted}) => {
+                }, this.ifMounted(({ready, done, error, aborted}) => {
                   this.props.history.replace(searchURL);
                   this.setState({isSearching: !ready && !(done || error || aborted)});
-                });
+                }));
               }}
             >
               <input

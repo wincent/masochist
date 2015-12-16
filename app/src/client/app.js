@@ -106,7 +106,6 @@ ReactDOM.render(
         component={Search}
         path="search/:q"
         queries={SearchQueries}
-        renderLoading={() => <Progress />}
       />
       <Route
         component={SnippetsIndex}
