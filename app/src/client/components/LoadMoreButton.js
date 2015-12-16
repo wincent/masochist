@@ -1,6 +1,9 @@
 import React from 'react';
+import inBrowser from '../inBrowser';
 
-import './LoadMoreButton.css';
+if (inBrowser) {
+  require('./LoadMoreButton.css');
+}
 
 export default class LoadMoreButton extends React.Component {
   static propTypes = {

@@ -1,6 +1,9 @@
 import React from 'react';
+import inBrowser from '../inBrowser';
 
-import './Progress.css';
+if (inBrowser) {
+  require('./Progress.css');
+}
 
 /**
  * Fake loading indicator.

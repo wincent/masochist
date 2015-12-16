@@ -3,16 +3,20 @@
 import 'babel-polyfill';
 import '../common/devFallback';
 import '../common/unhandledRejection';
+import './isomorphicHack';
 
 import Promise from 'bluebird';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import path from 'path';
-import App from '../client/components/App';
-import HTTPError from '../client/components/HTTPError';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import App from '../client/components/App';
+import HTTPError from '../client/components/HTTPError';
+import routeConfig from '../common/routeConfig';
+import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
+import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import getArticleLoader from './loaders/getArticleLoader';
 import getPageLoader from './loaders/getPageLoader';
 import getPostLoader from './loaders/getPostLoader';
@@ -21,7 +25,6 @@ import getTagLoader from './loaders/getTagLoader';
 import getUserLoader from './loaders/getUserLoader';
 import getWikitextLoader from './loaders/getWikitextLoader';
 import schema from './schema';
-import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 
 const APP_PORT = 3000;
 
@@ -55,20 +58,8 @@ function jadeHandler(resource, extraLocals = {}) {
   };
 }
 
-const appRoutes = [
-  '/',
-  '/blog',
-  '/blog/*',
-  '/pages/*',
-  '/search',
-  '/search/*',
-  '/snippets',
-  '/snippets/*',
-  '/tags',
-  '/tags/*',
-  '/wiki',
-  '/wiki/*',
-];
+// "/", "/blog", "/blog/*" etc.
+const appRoutes = gatherPaths(routeConfig);
 
 appRoutes.forEach(route => app.get(route, jadeHandler('index')));
 

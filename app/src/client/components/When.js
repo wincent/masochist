@@ -1,8 +1,11 @@
 import React from 'react';
 import Time from './Time';
+import inBrowser from '../inBrowser';
 import relativizeDate from '../relativizeDate';
 
-import './When.css';
+if (inBrowser) {
+  require('./When.css');
+}
 
 const WhenWrapper = props => (
   <div className="when">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import inBrowser from '../inBrowser';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
@@ -7,7 +8,9 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
-import './Article.css';
+if (inBrowser) {
+  require('./Article.css');
+}
 
 class Article extends React.Component {
   static contextTypes = {

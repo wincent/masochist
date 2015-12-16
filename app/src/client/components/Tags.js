@@ -1,9 +1,12 @@
 import React from 'react';
 import Relay from 'react-relay';
+import inBrowser from '../inBrowser';
 import Link from './Link';
 import cx from 'classnames';
 
-import './Tags.css';
+if (inBrowser) {
+  require('./Tags.css');
+}
 
 const TagLink = ({tag}) => (
   <li>

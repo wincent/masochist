@@ -1,6 +1,9 @@
 import React from 'react';
+import inBrowser from '../inBrowser';
 
-import './ContentListing.css';
+if (inBrowser) {
+  require('./ContentListing.css');
+}
 
 class ContentListing extends React.Component {
   render() {

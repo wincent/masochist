@@ -1,10 +1,13 @@
 import React from 'react';
 import Relay from 'react-relay';
+import inBrowser from '../inBrowser';
 import ArticlePreview from './ArticlePreview';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 
-import './ArticlesIndex.css';
+if (inBrowser) {
+  require('./ArticlesIndex.css');
+}
 
 class ArticlesIndex extends React.Component {
   constructor(props) {
