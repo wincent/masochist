@@ -1,6 +1,7 @@
 import React from 'react';
 import Relay from 'react-relay';
 import inBrowser from '../inBrowser';
+import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
@@ -18,9 +19,17 @@ class ArticlesIndex extends React.Component {
   _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
-    }, ({ready, done, error, aborted}) => {
+    }, ifMounted(this, ({ready, done, error, aborted}) => {
       this.setState({isLoading: !ready && !(done || error || aborted)});
-    });
+    }));
+  }
+
+  componentDidMount() {
+    ifMounted.register(this);
+  }
+
+  componentWillUnmount() {
+    ifMounted.unregister(this);
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
@@ -26,25 +27,17 @@ class Search extends React.Component {
   _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
-    }, this.ifMounted(({ready, done, error, aborted}) => {
+    }, ifMounted(this, ({ready, done, error, aborted}) => {
       this.setState({isLoading: !ready && !(done || error || aborted)});
     }));
   }
 
   componentDidMount() {
-    this._mounted = true;
+    ifMounted.register(this);
   }
 
   componentWillUnmount() {
-    this._mounted = false;
-  }
-
-  ifMounted(callback) {
-    return function() {
-      if (this._mounted) {
-        callback.apply(this, arguments);
-      }
-    }.bind(this);
+    ifMounted.unregister(this);
   }
 
   render() {
@@ -68,7 +61,7 @@ class Search extends React.Component {
                 this.props.relay.setVariables({
                   count: INITIAL_COUNT,
                   q: this.state.q,
-                }, this.ifMounted(({ready, done, error, aborted}) => {
+                }, ifMounted(this, ({ready, done, error, aborted}) => {
                   this.props.history.replace(searchURL);
                   this.setState({isSearching: !ready && !(done || error || aborted)});
                 }));

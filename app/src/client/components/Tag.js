@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import ifMounted from '../ifMounted';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
 import DocumentTitle from './DocumentTitle';
@@ -16,9 +17,17 @@ class Tag extends React.Component {
   _handleLoadMore = () => {
     this.props.relay.setVariables({
       count: this.props.relay.variables.count + 10,
-    }, ({ready, done, error, aborted}) => {
+    }, ifMounted(this, ({ready, done, error, aborted}) => {
       this.setState({isLoading: !ready && !(done || error || aborted)});
-    });
+    }));
+  }
+
+  componentDidMount() {
+    ifMounted.register(this);
+  }
+
+  componentWillUnmount() {
+    ifMounted.unregister(this);
   }
 
   render() {
