@@ -6,6 +6,7 @@ import {
   GraphQLString,
 } from 'graphql';
 import marked from 'marked';
+import getAssetURL from '../../getAssetURL';
 import escapeHTML from '../../escapeHTML';
 
 marked.setOptions({
@@ -27,12 +28,22 @@ function validateBaseHeadingLevel(level: ?number): ?number {
 
 function getMarkedRenderer(baseLevel: ?number) {
   const renderer = new marked.Renderer();
+
+  // Start headings at `baseLevel`.
   if (baseLevel) {
-    renderer.heading = (text, desiredLevel) => {
+    renderer.heading = (text, desiredLevel, raw) => {
       const level = Math.min(baseLevel + desiredLevel, 6);
-      return `<h${level}>${text}</h${level}>`;
+      return marked.Renderer.prototype.heading.call(renderer, text, level, raw);
     };
   }
+
+  // CDN-ize "src" attribute of `<img>` tags.
+  renderer.image = (href, title, text) => {
+    const src = getAssetURL(href);
+    return marked.Renderer.prototype.image.call(renderer, src, title, text);
+  };
+
+  // Add "external" class to `<a>` tags for off-site hrefs.
   renderer.link = (href, title, text) => {
     let className;
     if (
@@ -47,14 +58,13 @@ function getMarkedRenderer(baseLevel: ?number) {
       } else {
         return `<a href="${href}" title="${title}">${text}</a>`;
       }
+    } else if (className) {
+      return `<a href="${href}" class="${className}">${text}</a>`;
     } else {
-      if (className) {
-        return `<a href="${href}" class="${className}">${text}</a>`;
-      } else {
-        return `<a href="${href}">${text}</a>`;
-      }
+      return `<a href="${href}">${text}</a>`;
     }
   };
+
   return renderer;
 }
 

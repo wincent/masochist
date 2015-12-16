@@ -12,6 +12,7 @@ import App from '../client/components/App';
 import HTTPError from '../client/components/HTTPError';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import getAssetURL from './getAssetURL';
 import getArticleLoader from './loaders/getArticleLoader';
 import getPageLoader from './loaders/getPageLoader';
 import getPostLoader from './loaders/getPostLoader';
@@ -40,10 +41,12 @@ function jadeHandler(resource, extraLocals = {}) {
   return async (request, response) => {
     const canonical = await getCanonicalURLForRequest(request);
     const locals = {
-      bundle: '/static/' + (
-        __DEV__ ? 'bundle.js' : require('../webpack-assets').main.js
+      bundle: getAssetURL(
+        '/static/' + (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js)
       ),
-      styles: __DEV__ ? null : '/static/' + require('../webpack-assets').main.css,
+      styles: __DEV__ ?
+        null :
+        getAssetURL('/static/' + require('../webpack-assets').main.css),
       canonical,
       production: !__DEV__,
       ...extraLocals,
