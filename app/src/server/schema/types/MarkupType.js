@@ -116,7 +116,7 @@ const MarkupType = new GraphQLObjectType({
           const renderer = getMarkedRenderer(level);
           return marked(markup.raw, {renderer});
         } else if (markup.format === 'txt') {
-          return '<pre>' + escapeHTML(markup.raw) + '</pre>';
+          return '<pre><code>' + escapeHTML(markup.raw) + '</code></pre>';
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
         }
