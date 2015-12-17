@@ -14,33 +14,35 @@ export default class App extends React.Component {
   };
 
   _handleClick = event => {
-    if (event.target.tagName === 'A') {
-      let parent = event.target;
-      while ((parent = parent.parentNode)) {
-        if (parent.className === 'prerendered') {
-          const {history} = this.context;
-          const href = event.target.getAttribute('href');
-          if (!href.match(/^\//)) {
-            // Non-relative URL; let the browser handle it.
-            return;
-          }
-
-          const location = history.createLocation(href);
-
-          // NOTE: we're relying on `match` calling our callback synchronously,
-          // so that we can `event.preventDefault()` if necessary.
-          history.match(location, (error, redirectLocation, nextState) => {
-            if (nextState) {
-              event.preventDefault();
-              history.pushState({}, href);
-            }
-          });
-
-          // We either matched + transitioned, or we should fall through to
-          // browser.
+    let href = null;
+    let element = event.target;
+    while (element) {
+      if (element.tagName === 'A') {
+        href = element.getAttribute('href');
+      }
+      if (element.className === 'prerendered') {
+        if (!href || !href.match(/^\//)) {
+          // Not a relative URL; let the browser handle it.
           return;
         }
+
+        const {history} = this.context;
+        const location = history.createLocation(href);
+
+        // NOTE: we're relying on `match` calling our callback synchronously,
+        // so that we can `event.preventDefault()` if necessary.
+        history.match(location, (error, redirectLocation, nextState) => {
+          if (nextState) {
+            event.preventDefault();
+            history.pushState({}, href);
+          }
+        });
+
+        // We either matched + transitioned, or we should fall through to
+        // browser.
+        return;
       }
+      element = element.parentNode;
     }
   }
 
