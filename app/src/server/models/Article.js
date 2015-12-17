@@ -2,12 +2,15 @@
  * @flow
  */
 
+import common from '../../../../shared/common';
 import readIndex from '../readIndex';
+
+const WIKI_INDEX = common.redisKeys.wikiIndex;
 
 export default class Article {
   static async readIndex(count: number, offset: number): Array {
     const results = await readIndex(
-      'wiki-index',
+      WIKI_INDEX,
       count,
       offset
     );

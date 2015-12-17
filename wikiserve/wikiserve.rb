@@ -18,8 +18,20 @@ PARSER = Wikitext::Parser.new(
   pre_code: true
 )
 
+COMMON = JSON[
+  File.read(
+    File.expand_path(
+      'common.json',
+      File.join(File.dirname(__FILE__), '../shared')
+    )
+  )
+]
+
 CACHE = Redis.new
-CACHE_VERSION = 2
+CACHE_VERSION = COMMON['redisCacheVersion']
+CACHE_KEY_PREFIX = COMMON['redisKeyPrefix']
+LAST_INDEXED_HASH = COMMON['redisKeys']['lastIndexedHash']
+WIKI_INDEX = COMMON['redisKeys']['wikiIndex']
 
 KNOWN_LINKS = {}
 
@@ -32,13 +44,13 @@ FALLBACK_LINKS_SET = (Class.new do
 end).new
 
 def get_key(suffix)
-  "masochist:#{CACHE_VERSION}:#{suffix}"
+  "#{CACHE_KEY_PREFIX}:#{CACHE_VERSION}:#{suffix}"
 end
 
 def known_links
-  index_key = get_key('wiki-index')
+  index_key = get_key(WIKI_INDEX)
   last_indexed, cardinality = CACHE.multi do
-    CACHE.get(get_key('last-indexed-hash'))
+    CACHE.get(get_key(LAST_INDEXED_HASH))
     CACHE.zcard(index_key)
   end
   if !KNOWN_LINKS.has_key?(last_indexed)

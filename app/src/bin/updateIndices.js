@@ -19,6 +19,7 @@ import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
 import path from 'path';
+import common from '../../../shared/common';
 import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
 import redis from '../common/redis';
@@ -30,7 +31,7 @@ import {
 } from '../server/loadContent';
 import git from '../server/git';
 
-const LAST_INDEXED_HASH = 'last-indexed-hash';
+const LAST_INDEXED_HASH = common.redisKeys.lastIndexedHash;;
 
 function log(format, ...args: Array<string>): void {
   const time = new Date().toLocaleTimeString();
@@ -249,6 +250,8 @@ function getFileUpdates(range, callback) {
       // when we see only [Delete, Add] and therefore omit step 3 above.
       dot();
       if (!seenFiles[file]) {
+        // Index names (for grep): blog-index, pages-index, snippets-index,
+        // wiki-index.
         const indexName = contentType + '-index';
         switch (status) {
           case 'A':

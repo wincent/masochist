@@ -1,18 +1,19 @@
 import Promise from 'bluebird';
 import redis from 'redis';
+import common from '../../../shared/common';
 
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
 
-const KEY_PREFIX = 'masochist';
+const KEY_PREFIX = common.redisKeyPrefix;;
 
 /**
  * Can manually force cache invalidation by bumping this.
  *
  * NOTE: if you update this, you need to update the version in the wikiserve
- * project as well.
+ * project as well (by deploying).
  */
-const CACHE_VERSION = '2';
+const CACHE_VERSION = common.redisCacheVersion;
 
 const redisClient = redis.createClient();
 

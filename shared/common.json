@@ -1,0 +1,8 @@
+{
+  "redisCacheVersion": "2",
+  "redisKeyPrefix": "masochist",
+  "redisKeys": {
+    "lastIndexedHash": "last-indexed-hash",
+    "wikiIndex": "wiki-index"
+  }
+}
