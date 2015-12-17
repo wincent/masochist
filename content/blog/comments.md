@@ -1,6 +1,7 @@
 ---
 tags: site
 title: Comments on commenting
+twitter: https://twitter.com/wincent/status/677591039687790592
 ---
 
 When I [rolled out](/blog/masochist) the recent website revamp, I had to decide what I would do about comments.
@@ -57,3 +58,5 @@ Downsides:
 - This will only apply to blog posts, so a bunch of wiki content that could benefit from commenting functionality won't have it (my email address is in the footer of every page on the site though, so I'm open to receiving corrections or supplements to any page; heck, seeing as all the content is in Git I'd be happy to take pull requests too).
 
 Overall I feel pretty happy with this. It may not be optimal and I could certainly end up changing my mind in the future, but the cost of this decision is low, there are no barriers to revising it later, and it's hard to argue with the simplicity.
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/677591039687790592)</em></small>
