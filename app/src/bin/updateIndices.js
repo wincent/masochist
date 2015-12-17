@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 
 /**
- * Intended for use as a post-checkout or perhaps a post-receive hook.
+ * Intended for use as a post-receive hook.
  *
- * Builds up indices that can be queried like this:
+ * Builds up indices that can be queried like this (eg. to get a list of the 10
+ * most recently updated wiki articles):
  *
  * ```
- * redis-cli> zrevrange masochist:articles-index 0 10
+ * redis-cli> ZREVRANGE masochist:2:wiki-index 0 10
  * ```
  */
 
