@@ -1,6 +1,7 @@
 ---
 title: Deploying Masochist
 tags: masochist site
+fb: https://www.facebook.com/glh/posts/10153087065236307
 twitter: https://twitter.com/wincent/status/677636911800938496
 ---
 
@@ -153,7 +154,7 @@ Overall I am very happy so far with this set up, and am tweaking my Vim-based ed
 
 Sounds like a terrible idea? Sign me up right away!
 
-<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/677636911800938496)</em></small>
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153087065236307) - [Twitter](https://twitter.com/wincent/status/677636911800938496)</em></small>
 
 [Ansible]: /wiki/Ansible
 [Capistrano]: /wiki/Capistrano
