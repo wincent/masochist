@@ -2,16 +2,12 @@
  * @flow
  */
 
-import {
-  getClient,
-  getKey,
-} from '../../common/redis';
+import redis from '../../common/redis';
 
 export default class Tag {
   static async readIndex(count: number, offset: number): Array {
-    const client = getClient();
-    const key = getKey('tags-index');
-    const results = await client.multi([
+    const key = 'tags-index';
+    const results = await redis.multi([
       [
         'ZREVRANGE',
         key,
@@ -23,7 +19,7 @@ export default class Tag {
         'ZCARD',
         key,
       ]
-    ]).execAsync();
+    ]);
 
     // Results is not an array, so we can't destructure it (although we can make
     // it into an array for the benefit of our callers).

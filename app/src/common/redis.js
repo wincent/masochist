@@ -14,12 +14,23 @@ const KEY_PREFIX = 'masochist';
  */
 const CACHE_VERSION = '2';
 
-const client = redis.createClient();
+const redisClient = redis.createClient();
 
-export function getKey(key: string): string {
+function prefixKey(key: string): string {
   return KEY_PREFIX + ':' + CACHE_VERSION + ':' + key;
 }
 
-export function getClient() {
-  return client;
-}
+const client = {
+  get(key) {
+    return redisClient.getAsync(prefixKey(key));
+  },
+
+  multi(commands) {
+    const commandsWithPrefixedKeys = commands.map(
+      ([command, key, ...args]) => [command, prefixKey(key), ...args]
+    );
+    return redisClient.multi(commandsWithPrefixedKeys).execAsync();
+  },
+};
+
+export default client;

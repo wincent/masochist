@@ -20,10 +20,7 @@ import Promise from 'bluebird';
 import path from 'path';
 import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
-import {
-  getKey,
-  getClient,
-} from '../common/redis';
+import redis from '../common/redis';
 import Cache from '../common/Cache';
 import {
   getTimestamps,
@@ -32,7 +29,7 @@ import {
 } from '../server/loadContent';
 import git from '../server/git';
 
-const LAST_INDEXED_HASH = getKey('last-indexed-hash');
+const LAST_INDEXED_HASH = 'last-indexed-hash';
 
 function log(format, ...args: Array<string>): void {
   const time = new Date().toLocaleTimeString();
@@ -169,9 +166,8 @@ function getFileUpdates(range, callback) {
 }
 
 (async () => {
-  const client = getClient();
   const head = (await git('rev-parse', 'content')).trim();
-  const lastIndexedHash = await client.getAsync(LAST_INDEXED_HASH);
+  const lastIndexedHash = await redis.get(LAST_INDEXED_HASH);
   if (head === lastIndexedHash) {
     log('Index already up-to-date at revision %s', head);
     process.exit(0);
@@ -252,7 +248,7 @@ function getFileUpdates(range, callback) {
       // when we see only [Delete, Add] and therefore omit step 3 above.
       dot();
       if (!seenFiles[file]) {
-        const indexName = getKey(contentType + '-index');
+        const indexName = contentType + '-index';
         switch (status) {
           case 'A':
             updates.push(['ZADD', indexName, createdAt, file]);
@@ -280,10 +276,10 @@ function getFileUpdates(range, callback) {
   // blob into memory, but on the bright side, it primes our memcached metadata
   // cache as a result.
   function addTag(tag, file, contentType, updatedAt) {
-    const indexName = getKey('tags-index');
+    const indexName = 'tags-index';
     updates.unshift(['ZINCRBY', indexName, 1, tag]);
 
-    const setName = getKey('tag:' + tag);
+    const setName = 'tag:' + tag;
     updates.unshift([
       'ZADD',
       setName,
@@ -293,10 +289,10 @@ function getFileUpdates(range, callback) {
   }
 
   function removeTag(tag, file, contentType, updatedAt) {
-    const indexName = getKey('tags-index');
+    const indexName = 'tags-index';
     updates.unshift(['ZINCRBY', indexName, -1, tag]);
 
-    const setName = getKey('tag:' + tag);
+    const setName = 'tag:' + tag;
     updates.unshift([
       'ZREM',
       setName,
@@ -372,7 +368,7 @@ function getFileUpdates(range, callback) {
   // All done.
   updates.push(['SET', LAST_INDEXED_HASH, head]);
   log('Sending index updates to Redis.');
-  await client.multi(updates).execAsync();
+  await redis.multi(updates);
   log('Finished updating index for revision %s.', head);
   process.exit(0);
 })();
