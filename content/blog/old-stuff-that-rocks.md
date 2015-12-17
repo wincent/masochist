@@ -17,17 +17,17 @@ The other day I [tweeted](https://twitter.com/wincent/status/672894777541525504)
 
 That got me to thinking about other cool stuff that has endured over the years. Here's a short timeline. Criteria to get on the list: must be at least 10 years old, with a reasonable prognosis of sticking around for much longer:
 
-* [__Git__](/wiki/Git) (2005)
-* [__OS X__](/wiki/OS_X) (2001)
-* [__SSH__](/wiki/SSH) (1999)
-* [__curl__](/wiki/curl) (1997)
-* [__rsync__](/wiki/rsync) (1996)
-* [__Vim__](/wiki/Vim) (1991)
-* [__Cron__](/wiki/Cron) (1979)
-* [__tar__](/wiki/tar) (1979)
-* [__vi__](/wiki/vi) (1976)
-* [__grep__](/wiki/grep) (1973)
-* [__Unix__](/wiki/UNIX) (1970)
+* [Git](/wiki/Git) (2005)
+* [OS X](/wiki/OS_X) (2001)
+* [SSH](/wiki/SSH) (1999)
+* [curl](/wiki/curl) (1997)
+* [rsync](/wiki/rsync) (1996)
+* [Vim](/wiki/Vim) (1991)
+* [Cron](/wiki/Cron) (1979)
+* [tar](/wiki/tar) (1979)
+* [vi](/wiki/vi) (1976)
+* [grep](/wiki/grep) (1973)
+* [Unix](/wiki/UNIX) (1970)
 
 So both the 70s and the 90s were great decades for computing. Not sure what happened in the 80s as I struggled to find anything there; perhaps we were all just off playing video games. Feels odd to think that some of these are four decades old now, nearly as long as computing itself (or at least, what we'd recognize as "computing"). Vi will turn 40 next year. Grep 43. And despite the existence of some spiritual successors like [Ack](/wiki/Ack) and friends, it's still just as useful &mdash; indispensable even &mdash; as ever.
 
