@@ -1,6 +1,7 @@
 ---
 title: Deploying Masochist
 tags: masochist site
+twitter: https://twitter.com/wincent/status/677636911800938496
 ---
 
 A couple posts back, I [introduced Masochist](/blog/masochist), the software that powers this website. Now I want to talk about some novelties in how it's deployed.
@@ -151,6 +152,8 @@ For convenience, I have a separate copy of the repo on my local machine, with th
 Overall I am very happy so far with this set up, and am tweaking my Vim-based editing set-up to give me the kinds of niceties and shortcuts that come in handy for content editing. This will serve me well until I embark on my next crazy adventure, which will be [making a desktop application](https://github.com/wincent/masochist/issues/35) to provide myself with a slick local editing experience.
 
 Sounds like a terrible idea? Sign me up right away!
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/677636911800938496)</em></small>
 
 [Ansible]: /wiki/Ansible
 [Capistrano]: /wiki/Capistrano
