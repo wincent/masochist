@@ -1,6 +1,7 @@
 ---
 tags: site
 title: Comments on commenting
+fb: https://www.facebook.com/glh/posts/10153086863026307
 twitter: https://twitter.com/wincent/status/677591039687790592
 ---
 
@@ -59,4 +60,4 @@ Downsides:
 
 Overall I feel pretty happy with this. It may not be optimal and I could certainly end up changing my mind in the future, but the cost of this decision is low, there are no barriers to revising it later, and it's hard to argue with the simplicity.
 
-<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/677591039687790592)</em></small>
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153086863026307) - [Twitter](https://twitter.com/wincent/status/677591039687790592)</em></small>
