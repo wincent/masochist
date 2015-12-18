@@ -10,7 +10,7 @@ See:
 -   [Installing Spec::UI 0.2.0 on Mac OS X Tiger](/wiki/Installing_Spec%3a%3aUI_0.2.0_on_Mac_OS_X_Tiger); or
 -   [Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger)
 
-For the latest installation or upgrade notes, see the "[RSpec upgrades](/wiki/%3aCategory%3aRSpec_upgrades)" category.
+For the latest installation or upgrade notes, see the [\#rspec](/tags/rspec) tag.
 
 # Other setup
 
