@@ -3,4 +3,4 @@ tags: perl
 ---
 A [[Perl one-liner]] is a complete script written in [[Perl]].
 
-See the category, [[:Category:Perl one-liners|Perl one-liners]], for articles containing [[Perl one-liners]].
+See the tag, #perl.one.liners, for articles containing [[Perl one-liners]].
