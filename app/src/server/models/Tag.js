@@ -4,8 +4,18 @@
 
 import redis from '../../common/redis';
 
+import type {IndexResult} from '../readIndex';
+
 export default class Tag {
-  static async readIndex(count: number, offset: number): Array {
+  id: string;
+  name: string;
+  count: number;
+  taggables: Array<any>;
+
+  static async readIndex(
+    count: number,
+    offset: number
+  ): Promise<[Array<Tag>, number]> {
     const key = 'tags-index';
     const results = await redis.multi([
       [
@@ -39,7 +49,7 @@ export default class Tag {
     return [tags, cardinality];
   }
 
-  constructor(values) {
+  constructor(values: Object) {
     this.id = values.id;
     this.name = values.name;
     this.count = values.count;

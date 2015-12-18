@@ -3,7 +3,15 @@
  */
 
 export default class Page {
-  constructor(values) {
+  id: string;
+  title: string;
+  body: string;
+  format: string;
+  createdAt: ?Date;
+  updatedAt: ?Date;
+  tags: Array<string>;
+
+  constructor(values: Object) {
     this.id = values.id;
     this.title = values.title;
     this.body = values.body;

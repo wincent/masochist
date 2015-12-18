@@ -7,11 +7,11 @@ import DateTimeType from '../types/DateTimeType';
 const timestampFields = {
   createdAt: {
     type: DateTimeType,
-    resolve: record => record.createdAt,
+    resolve: (record: Object): ?Date => record.createdAt,
   },
   updatedAt: {
     type: DateTimeType,
-    resolve: record => record.updatedAt,
+    resolve: (record: Object): ?Date => record.updatedAt,
   },
 };
 

@@ -4,7 +4,10 @@
 
 const map = new Map();
 
-function ifMounted(instance, callback) {
+function ifMounted(
+  instance: ReactComponent,
+  callback: () => void
+): () => void {
   return function() {
     if (map.has(instance)) {
       callback.apply(instance, arguments);

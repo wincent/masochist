@@ -4,11 +4,13 @@
 
 import redis from '../common/redis';
 
+export type IndexResult = [number, string];
+
 export default async function readIndex(
   name: string,
   count: number,
   offset: number
-): Array {
+): Promise<IndexResult> {
   const results = await redis.multi([
     [
       'ZREVRANGE',

@@ -11,7 +11,7 @@ type SearchResult = {
 /**
  * Uses `git grep` to search the content repo.
  */
-export default async function search(q: string): Array<SearchResult> {
+export default async function search(q: string): Promise<Array<SearchResult>> {
   const args = [
     'grep',
     '-I', // Ignore binary files.

@@ -5,10 +5,23 @@
 import common from '../../../../shared/common';
 import readIndex from '../readIndex';
 
+import type {IndexResult} from '../readIndex';
+
 const WIKI_INDEX = common.redisKeys.wikiIndex;
 
 export default class Article {
-  static async readIndex(count: number, offset: number): Array {
+  id: string;
+  title: string;
+  body: ?string;
+  format: string;
+  createdAt: ?Date;
+  updatedAt: ?Date;
+  redirect: ?string;
+  tags: Array<string>;
+
+  static async readIndex(
+    count: number, offset: number
+  ): Promise<IndexResult> {
     const results = await readIndex(
       WIKI_INDEX,
       count,
@@ -17,7 +30,7 @@ export default class Article {
     return results;
   }
 
-  constructor(values) {
+  constructor(values: Object) {
     this.id = values.id;
     this.title = values.title;
     this.body = values.body;

@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import Promise from 'bluebird';
 import redis from 'redis';
 import common from '../../../shared/common';
