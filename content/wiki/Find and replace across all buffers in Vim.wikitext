@@ -15,3 +15,4 @@ Alternatively, use a plug-in like [[Ferret]].
 = See also =
 
 * "Search and replace in all buffers": http://vim.wikia.com/wiki/VimTip1512
+* [[Search and replace in multiple files with a Perl one-liner]]
