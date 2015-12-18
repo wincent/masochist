@@ -83,7 +83,7 @@ I then made the following changes to the MonoBook template (in <tt>skins/MonoBoo
 
 As you can see, this adds a button ad just below the search box on the left and a skyscraper ad below the "toolbox". Like the author of [http://www.dankohn.com/archives/000338.html the earlier referenced article] I decided to make these changes only to the default skin as this wiki receives only modest traffic and my deployment of [[AdSense]] ads here is really just an experiment (first time I've ever used [[AdSense]]). I don't plan to put [[AdSense]] on the commercial parts of my website (see "[[Wincent products]]") but I do think it's fine to put it on this wiki as it is a free resource.
 
-Given that I perform my [[MediaWiki]] updates using [[Subversion]] these changes should be automatically merged whenever I perform an upgrade (see "[[:Category:MediaWiki updates | MediaWiki updates]]" for more info).
+Given that I perform my [[MediaWiki]] updates using [[Subversion]] these changes should be automatically merged whenever I perform an upgrade.
 
 == Other modifications to the MonoBook template ==
 

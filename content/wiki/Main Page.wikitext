@@ -8,10 +8,3 @@ Note that the information published here is provided as a free public service wi
 This is the new [[wincent.com]] [[Knowledge base]] intended to replace the old Knowledge base at http://wincent.com/a/knowledge-base/. The old Knowledge base was powered by [[Movable Type]] which despite my efforts at organizing things using hierarchical categories was not very well suited to the task (it is, after all, [[weblog]] software). The new Knowledge base is in [[wiki]] format, a much better fit for the task at hand, and uses the same [[MediaWiki]] software that powers [[Wikipedia]].
 
 The plan is that eventually all content will be migrated from the old Knowledge base to the new one. For the time being the content will remain in place at the old [[URL]] and the links on the rest of the site have not yet been updated to point to this [[wiki]].
-
-Useful links:
-
-* [[Special:Search | Search]] (also available from the seach box on the left)
-* [[Special:Allpages | Index]] (all pages in alphabetical order)
-* [[Site map]] (articles organized by category)
-* [[Special:Categories | Categories]] (all categories in alphabetical order)
