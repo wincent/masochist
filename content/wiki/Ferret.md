@@ -1,3 +1,3 @@
 ---
-redirect: [https://github.com/wincent/ferret]
+redirect: https://github.com/wincent/ferret
 ---
