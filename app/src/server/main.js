@@ -58,6 +58,9 @@ const appRoutes = gatherPaths(routeConfig);
 
 // Additional config for specific routes.
 const extraLocals = {
+  '/': {
+    home: '/blog.rss',
+  },
   '/blog': {
     alternate: '/blog.rss',
   },
