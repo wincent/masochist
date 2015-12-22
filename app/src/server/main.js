@@ -24,6 +24,7 @@ import getSnippetLoader from './loaders/getSnippetLoader';
 import getTagLoader from './loaders/getTagLoader';
 import getUserLoader from './loaders/getUserLoader';
 import getWikitextLoader from './loaders/getWikitextLoader';
+import feed from './actions/feed';
 import schema from './schema';
 
 const APP_PORT = 3000;
@@ -61,7 +62,19 @@ function jadeHandler(resource, extraLocals = {}) {
 // "/", "/blog", "/blog/*" etc.
 const appRoutes = gatherPaths(routeConfig);
 
-appRoutes.forEach(route => app.get(route, jadeHandler('index')));
+// Additional config for specific routes.
+const extraLocals = {
+  '/blog': {
+    alternate: '/blog.rss',
+  },
+  '/blog/*': {
+    home: '/blog.rss',
+  },
+};
+
+appRoutes.forEach(route => {
+  app.get(route, jadeHandler('index', extraLocals[route]))
+});
 
 app.use('/graphql', (request, response, next) => {
   const options = {
@@ -81,6 +94,12 @@ app.use('/graphql', (request, response, next) => {
   };
 
   return graphqlHTTP(request => options)(request, response, next);
+});
+
+app.get('/blog.rss', async (request, response) => {
+  const feedContent = await feed();
+  response.set('Content-Type', 'application/rss+xml');
+  response.send(feedContent);
 });
 
 if (__DEV__) {

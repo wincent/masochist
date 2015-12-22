@@ -5,11 +5,15 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     title wincent.com
     link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600', rel='stylesheet', type='text/css')
+    link(rel='icon', type='image/x-icon', href='/favicon.ico')
     if (production)
       link(rel='stylesheet', href=styles)
-    link(rel='icon', type='image/x-icon', href='/favicon.ico')
     if (canonical)
       link(rel='canonical', href=canonical)
+    if (alternate)
+      link(rel='alternate' type='application/rss+xml' href=alternate)
+    if (home)
+      link(rel='home' type='application/rss+xml' href=home)
   body
     #relay-root
     script(src=bundle)
