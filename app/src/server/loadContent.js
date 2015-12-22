@@ -101,7 +101,7 @@ export async function loadContent(options: LoaderOptions): Promise {
   const cacheKey = getTimestampsCacheKey(subdirectory, normalizedFile, head);
   const timestamps = await Cache.get(
     cacheKey,
-    async cacheKey => {
+    async () => {
       const revs = await git(
         'rev-list',
         'content',
