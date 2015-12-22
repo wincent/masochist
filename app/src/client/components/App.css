@@ -47,6 +47,10 @@ h1 a {
   width: 12px;
 }
 
+.prerendered img {
+  max-width: 100%;
+}
+
 .redlink {
   color: #f00;
 }
