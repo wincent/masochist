@@ -9,7 +9,7 @@ import {
   canonicalScheme,
 } from '../common/config';
 import stripTrailingSlash from '../common/stripTrailingSlash';
-import getArticleLoader from './loaders/getArticleLoader';
+import getLoaders from './getLoaders';
 import schema from './schema';
 
 /**
@@ -50,9 +50,7 @@ export default async function getCanonicalURLForRequest(request): ?string {
         }
       `,
       {
-        loaders: {
-          Article: getArticleLoader(),
-        },
+        loaders: getLoaders(),
       },
       {id}
     );

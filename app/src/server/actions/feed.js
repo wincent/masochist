@@ -9,8 +9,7 @@ import {
   canonicalHost,
   canonicalScheme,
 } from '../../common/config';
-import getPostLoader from '../loaders/getPostLoader';
-import getWikitextLoader from '../loaders/getWikitextLoader';
+import getLoaders from '../getLoaders';
 import schema from '../schema';
 import stripTags from '../stripTags';
 
@@ -61,10 +60,7 @@ export default async function feed() {
       }
     `,
     {
-      loaders: {
-        Post: getPostLoader(),
-        Wikitext: getWikitextLoader(),
-      },
+      loaders: getLoaders(),
     }
   );
 
