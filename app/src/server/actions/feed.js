@@ -52,6 +52,7 @@ export default async function feed() {
 
   const feed = new RSS({
     feed_url: canonicalScheme + canonicalHost + '/blog.rss',
+    generator: 'Masochist',
     site_url: canonicalScheme + canonicalHost + '/blog',
     title: 'wincent.com blog',
   });
