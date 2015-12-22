@@ -3,14 +3,12 @@
  */
 
 import entities from 'entities';
-import {graphql} from 'graphql';
 import RSS from 'rss';
 import {
   canonicalHost,
   canonicalScheme,
 } from '../../common/config';
-import getLoaders from '../getLoaders';
-import schema from '../schema';
+import runQuery from '../runQuery';
 import stripTags from '../stripTags';
 
 const HELLIP = '\u2026';
@@ -33,36 +31,30 @@ function extractExcerpt(body: string): string {
 }
 
 export default async function feed() {
-  const feed = new RSS({
-    title: 'wincent.com blog',
-    feed_url: canonicalScheme + canonicalHost + '/blog.rss',
-    site_url: canonicalScheme + canonicalHost + '/blog',
-  });
-
-  const result = await graphql(
-    schema,
-    `
-      query FeedQuery {
-        viewer {
-          posts(first: 10) {
-            edges {
-              node {
-                body {
-                  html
-                }
-                createdAt
-                title
-                url
+  const result = await runQuery(`
+    query FeedQuery {
+      viewer {
+        posts(first: 10) {
+          edges {
+            node {
+              body {
+                html
               }
+              createdAt
+              title
+              url
             }
           }
         }
       }
-    `,
-    {
-      loaders: getLoaders(),
     }
-  );
+  `);
+
+  const feed = new RSS({
+    feed_url: canonicalScheme + canonicalHost + '/blog.rss',
+    site_url: canonicalScheme + canonicalHost + '/blog',
+    title: 'wincent.com blog',
+  });
 
   result.data.viewer.posts.edges.forEach(({node}) => {
     feed.item({
