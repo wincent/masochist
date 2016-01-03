@@ -7,7 +7,7 @@ Sometimes a process will claim that a host is unknown when trying to connect wit
 = The finessed approach =
 
 <pre lang="shell">$ sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
-$ sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist</pre>
+$ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist</pre>
 
 Verified to work on [[OS X]] 10.11.2 [[El Capitan]].
 
