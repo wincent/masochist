@@ -8,7 +8,7 @@ Sometimes a process will claim that a host is unknown when trying to connect wit
 
 ```shell
 $ sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
-$ sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+$ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
 ```
 
 Verified to work on [OS X](/wiki/OS_X) 10.11.2 [El Capitan](/wiki/El_Capitan).
