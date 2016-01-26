@@ -35,7 +35,8 @@ export default async function getCanonicalURLForRequest(request): ?string {
   } else if (stripTrailingSlash(path) === '/wiki') {
     canonical = '/wiki';
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
-    const id = toGlobalId('Article', match[1].replace(/_/g, ' '));
+    const decoded = decodeURIComponent(match[1]);
+    const id = toGlobalId('Article', decoded.replace(/_/g, ' '));
     const result = await runQuery(
       `
         query ArticleQuery($id: ID!) {
