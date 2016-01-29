@@ -2,6 +2,12 @@
 tags: vim
 cache_breaker: 1
 ---
+
+= Basics =
+
+* `\1`, `\2` etc: backreference to previous capturing group (works in both search pattern and replacement)
+* `&`: backreference the entire match (same as `\0`)
+
 = Gotchas =
 
 * `*` is special when not escaped but...
@@ -16,11 +22,17 @@ cache_breaker: 1
 * `\V`: turn off very-magic
 * You can use (somewhat) arbitrary delimiters, like `@`, instead of `/`
 * `\_`: match anything, including newlines (cf: `.`)
-* `\zs`: match but don't capture; useful for partial substitutions:
+* `\zs`: consider match to start at this point (ie. match but don't capture); useful for partial substitutions:
+* `\ze`: consider match to end at this point
 ** `:%s/foo\zsbar/baz/g` will change "foobar" to "foobaz"
 ** `:%s/\v^(foobar)(baz)/\1/` (same with explicit capturing and restoration)
 ** `:%s/\v(^foobar)@<=baz//` (same with zero-width look-behind assertion)
 * `\=`: evaluate an expression on right side of regex; eg: `:%s/\v(\S+)/\=expand(submatch(1))/g` (turns `~/foo` into full path)
+* `\C`: make match case sensitive
+* `\u`: uppercase next letter in replacement
+* `\l`: lowercase next letter in replacement
+* `\U`: uppercase replacement from here on (until `\e` or `\E`)
+* `\L`: lowercase replacement from here on (until `\e` or `\E`)
 
 = Making Vim regexen more sane =
 
