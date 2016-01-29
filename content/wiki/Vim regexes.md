@@ -41,13 +41,15 @@ Always be "very magic" with this in your `~/.vimrc`:
     nnoremap / /\v
     vnoremap / /\v
 
+Or just use \[Loupe <https://github.com/wincent/loupe>\].
+
 # Using Ruby to do heavy lifting instead
 
 `:rubydo` can be used to transform lines; eg:
 
     :rubydo $_ = $_.split(' ').reverse.join(' <- ')
 
-# Source
+# Sources
 
 -   <http://briancarper.net/blog/176/vim-regexes> (nice list of regex inconsistencies)
 -   <http://briancarper.net/blog/448/vim-regexes-are-awesome> (list of regex Pro-Tips)
