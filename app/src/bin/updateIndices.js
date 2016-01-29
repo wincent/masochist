@@ -326,7 +326,7 @@ function getFileUpdates(range, callback) {
       const {tags, updatedAt} = await loadContent({
         subdirectory: contentType,
         file,
-        commit,
+        commit: status === 'D' ? commit + '~' : commit,
       });
       switch (status) {
         case 'A':
