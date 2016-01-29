@@ -21,6 +21,7 @@ Notes made while (re-)learning Haskell in 2016.
 
 - [Write Yourself a Scheme in 48 Hours](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
 - [Hitchhikers guide to Haskell](https://wiki.haskell.org/Hitchhikers_guide_to_Haskell)
+- [The Monad Challenges](http://mightybyte.github.io/monad-challenges/)
 
 ## Reference
 
@@ -45,6 +46,7 @@ $ brew install ghc cabal-install
 ```
 $ ghci              # Start a REPL.
 $ runhaskell src.hs # Run code without separate compilation step.
+$ runghc src.hs     # Equivalent to runhaskell.
 $ ghc --make src.hs # Compile.
 $ ghc-pkg list      # See installed packages.
 ```
