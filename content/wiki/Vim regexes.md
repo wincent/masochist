@@ -41,7 +41,7 @@ Always be "very magic" with this in your `~/.vimrc`:
     nnoremap / /\v
     vnoremap / /\v
 
-Or just use \[Loupe <https://github.com/wincent/loupe>\].
+Or just use [Loupe](https://github.com/wincent/loupe).
 
 # Using Ruby to do heavy lifting instead
 
