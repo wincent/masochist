@@ -3,6 +3,10 @@ tags: git
 cache_breaker: 1
 ---
 
+# Pushing matching refs
+
+    git push origin :
+
 # Retrieving a file from a specific revision
 
     git show <treeish>:filename
