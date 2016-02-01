@@ -33,6 +33,10 @@ Notes made while (re-)learning Haskell in 2016.
 - [A Stack Overflow guide with 1,876 upvotes](http://stackoverflow.com/a/1016986/2103996)
 - "[How to Learn Haskell](https://acm.wustl.edu/functional/haskell.php)"
 
+## Other links
+
+- "[Vim and Haskell in 2016](http://www.stephendiehl.com/posts/vim_2016.html)"
+
 # Notes
 
 ## Installation
