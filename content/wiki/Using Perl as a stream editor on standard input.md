@@ -9,3 +9,8 @@ tags: perl.one.liners
 ## Output
 
     foobarbazbingbongboom
+
+## Related
+
+-   [Using Perl to filter standard input](/wiki/Using_Perl_to_filter_standard_input)
+
