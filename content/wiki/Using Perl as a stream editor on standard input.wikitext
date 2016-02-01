@@ -8,3 +8,7 @@ tags: perl.one.liners
 == Output ==
 
 <pre>foobarbazbingbongboom</pre>
+
+== Related ==
+
+* [[Using Perl to filter standard input]]
