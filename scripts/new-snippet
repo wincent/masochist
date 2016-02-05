@@ -2,8 +2,7 @@
 
 set -e
 
-# TODO: Change default extension to md
-DEFAULT_EXTENSION=wikitext
+DEFAULT_EXTENSION=md
 EXTENSION=${1-$DEFAULT_EXTENSION}
 LAST_ID=$(ls content/snippets | grep -E '^\d+\.\w+$' | sort -n | tail -1 | sed 's/\.[^.]*//')
 NEXT_ID=$(expr $LAST_ID + 1)
