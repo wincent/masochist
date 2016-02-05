@@ -20,11 +20,11 @@ Note the use of `-L`, which causes `curl` to follow redirects.
 
 I made a `git hub` command (source [here](https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.shells/bin/git-hub)) that provides the following subcommands:
 
-          git hub get <pr>        [fetch a PR to a local branch]
-          git hub link [pr]       [show web URL for PR]
-          git hub merge [pr]      [merge a PR]
-          git hub ls              [list open PRs]
-          git hub show <pr>       [show a PR on standard out]
+    git hub get <pr>        [fetch a PR to a local branch]
+    git hub link [pr]       [show web URL for PR]
+    git hub merge [pr]      [merge a PR]
+    git hub ls              [list open PRs]
+    git hub show <pr>       [show a PR on standard out]
 
 # See also
 
