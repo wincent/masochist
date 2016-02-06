@@ -2,3 +2,7 @@
 tags: bash os.x
 ---
 [[Bash]] is a free [[command line shell]] that ships with [[Mac OS X]] and many other operating systems.
+
+= See also =
+
+* [https://github.com/denysdovhan/bash-handbook bash-handbook]
