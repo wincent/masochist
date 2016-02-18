@@ -22,6 +22,8 @@ Notes made while (re-)learning Haskell in 2016.
 - [Write Yourself a Scheme in 48 Hours](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
 - [Hitchhikers guide to Haskell](https://wiki.haskell.org/Hitchhikers_guide_to_Haskell)
 - [The Monad Challenges](http://mightybyte.github.io/monad-challenges/)
+- [Bryan O'Sullivan's CS240H lecture notes (Winter)](http://www.scs.stanford.edu/16wi-cs240h/slides/)
+- [Bryan O'Sullivan's CS240H lecture notes (Spring)](http://www.scs.stanford.edu/14sp-cs240h/slides/)
 
 ## Reference
 
@@ -230,7 +232,7 @@ data Thing = Thing {
 myThing = Thing { customerID = 1234, customerName = "Jane", customerAddress = ["PO Box 1"] }
 
 -- Or anonymous, ordered fields:
-myThing = Thing 1234 "John" ["1 Infinite Loop"] 
+myThing = Thing 1234 "John" ["1 Infinite Loop"]
 
 -- Algebraic types with multiple value constructors
 data PaymentRecord = CreditCard | CashAccount
@@ -246,6 +248,45 @@ type ContactDetails = (Name, PhoneNumber, Address)
 -- Can only have one value constructor, and constructor can only have one field.
 newtype ZipList a = ZipList { getZipList :: [a] }
 newtype CharList = CharList { getCharList :: [Char] } deriving (Eq, Show)
+```
+
+## Type classes
+
+```
+-- Definition
+class Eq a where
+  (==) :: a -> a -> Bool
+  (/=) :: a -> a -> Bool
+  x == y = not (x /= y) -- note the circularity here
+  x /= y = not (x == y) -- meaning that you only have to implement one
+
+-- Making a type an instance of a type class
+data MyStatus = Started | Stopped
+instance Eq MyStatus where
+  Started == Started = True
+  Stopped == Stopped = True
+  _ == _ = False
+
+-- Types can be instances of many type classes at once
+instance Show MyStatus where
+  show Started = "Started"
+  show Stopped = "Stopped"
+
+-- Defining a subclass of another typeclass
+-- (in order to be an instance of `Num`, you must be an instance of `Eq`)
+class (Eq a) => Num where
+  ...
+
+-- Parameterized types as instances of type classes
+-- (works for `Mabye Int`, `Maybe Char`, `Maybe Something` etc,
+-- as long as `Something` is an instance of the `Eq` typeclass)
+instance (Eq m) => Eq (Maybe m) where
+  Just x == Just y = x == y
+  Nothing == Nothing = true
+  _ == _ = False
+
+-- Show instances of a type class
+:info Maybe
 ```
 
 ## Pattern matching
