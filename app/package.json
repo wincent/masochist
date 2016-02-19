@@ -75,6 +75,7 @@
     "rss": "1.2.1",
     "scroll-behavior": "0.3.0",
     "style-loader": "0.13.0",
+    "unpack-content": "0.0.2",
     "url-loader": "0.5.7",
     "webpack": "1.12.9"
   },
