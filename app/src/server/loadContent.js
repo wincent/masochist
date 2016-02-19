@@ -5,10 +5,10 @@
 import path from 'path';
 import process from 'process';
 import {toGlobalId} from 'graphql-relay';
+import unpackContent from 'unpack-content';
 import Cache from '../common/Cache';
 import {Extensions} from './Markup';
 import git from './git';
-import unpackContent from './unpackContent';
 
 type LoaderOptions = {
   subdirectory: 'wiki' | 'blog' | 'snippets';
