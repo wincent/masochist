@@ -8,6 +8,8 @@ Not a comprehensive cheatsheet, but stuff that I keep forgetting and want to rem
 # Mappings
 
 -   `[prefix] C-o`: rotate windows within the current pane
+-   `[prefix] {`: swap pane (to the left)
+-   `[prefix] }`: swap pane (to the right)
 -   `[prefix] "`: vertical split (I have this remapped to `[prefix] |` and `[prefix] \` for convenience)
 -   `[prefix] %`: horizontal split (I have this mapped to `[prefix] -` for convenience)
 
@@ -31,9 +33,9 @@ Not a comprehensive cheatsheet, but stuff that I keep forgetting and want to rem
 
 ## Jump to previous/next window =
 
--   `:previous-window` or `[prefix]-p`
--   `:next-window` or `[prefix]-n`
+-   `:previous-window` or `[prefix] p`
+-   `:next-window` or `[prefix] n`
 
-I wanted to be super clever here and make use of, say `[prefix]-[` and `[prefix]-]` to echo the familiar shortcuts for jumping between tabs, but that would class with the standard bindings for entering copy mode and pasting.
+I wanted to be super clever here and make use of, say `[prefix] [` and `[prefix] ]` to echo the familiar shortcuts for jumping between tabs, but that would class with the standard bindings for entering copy mode and pasting.
 
-I considered instead binding to `[prefix]-CTRL-[` and `[prefix]-CTRL-]`, but is too subtle and close to the copy mode bindings, making it easy to do the wrong thing. Oh well.
+I considered instead binding to `[prefix] C-[` and `[prefix] C-]`, but is too subtle and close to the copy mode bindings, making it easy to do the wrong thing. Oh well.
