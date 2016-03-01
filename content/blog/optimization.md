@@ -385,7 +385,7 @@ With all those collisions you can expect a faster run because of all the (spurio
 
 But let's not end on a down note.
 
-After finding and fixing the memoization bug, I discovered a 10x speed boost. Probably the singe largest win I've ever seen in the history of the project, and especially surprising given how much low-hanging fruit had already been scooped up.
+After finding and fixing the memoization bug, I discovered a 10x speed boost. Probably the single largest win I've ever seen in the history of the project, and especially surprising given how much low-hanging fruit had already been scooped up.
 
 ## Heaps
 
