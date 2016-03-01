@@ -57,7 +57,7 @@ Watchman speaks a compact, fast binary protocol, that is easy to encode and deco
 
 Let users search using "smart case" to narrow down the search results more quickly. This means searches are case-insensitive by default, until the user includes at least one uppercase letter in the search term, at which point they become case-sensitive. This kind of rapid filtering is useful because it reduces the number of files we (and the user) have to process.
 
-# Part II: In math we trust
+# More recent sharpenings of the axe
 
 By this point we have the fastest fuzzy file finding on the block, and the number of options for further optimization are shrinking. This takes us up to version 3.0.2, the current release version as I write this. Here are the benchmark numbers for a number of representative data sets:
 
@@ -101,7 +101,7 @@ Finally, we can compute a bitmask representing all the characters used in the "n
 
 By using floats instead of doubles, we can eek out a bit more performance at the cost of some (harmless) loss in precision. By the time I applied this optimization, I'd already found the big 10x win that I previously alluded to (more on this below), so the bottlenecks had once again shifted, and the switch from double to float led to another 22% speed boost.
 
-# The dastardly bug
+# Part II: The dastardly bug
 
 So, with all this optimization work, I was spending a fair bit of time looking over the code very closely, and one part of it caught my eye. The memoization data structure used to enable our dynamic programming approach consists of a matrix of dimensions `needle_len` by `haystack_len`. In this, we essentially record information to answer the question, "What is the best score I have (and can obtain) if I match needle character `i` at haystack position `j`?".
 
@@ -389,7 +389,7 @@ After finding and fixing the memoization bug, I discovered a 10x speed boost. Pr
 
 ## Heaps
 
-Heaps are one of my favorite data structures. They're easy to understand, remember and implement, and a great example of how you can implement a higher-order utility (like a priority queue or a sorting algorithm) on top of something lower-level like a simple binary tree. They feel like a great fit for C, where they can be [easily and efficiently implemented on top of an underlying array](https://github.com/wincent/command-t/blob/next/ruby/command-t/heap.c).
+Heaps are one of my favorite data structures. They're easy to understand, remember and implement, and a great example of how you can implement a higher-order utility (like a priority queue or a sorting algorithm) on top of something lower-level like a simple binary tree. They feel like a great fit for C, where they can be [easily and efficiently implemented on top of an underlying array](https://github.com/wincent/command-t/blob/master/ruby/command-t/heap.c).
 
 I immediately thought of heaps when I ran the benchmark suite under a profiler and saw that `qsort` was taking up about half the time in the run. Tim Roughgarden of Stanford University [says](https://www.coursera.org/course/algo) that the `O(n log n)` nature of comparison sorts is cheap enough that you can often consider it to be "free" within the context of a long-running algorithm. But clearly, make `n` large enough and the rest of the code fast enough, and that `O(n log n)` will eventually dominate your costs.
 
