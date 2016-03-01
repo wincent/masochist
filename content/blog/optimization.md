@@ -1,6 +1,8 @@
 ---
 title: Beware of cute optimizations bearing gifts
 tags: command.t c
+fb: https://www.facebook.com/glh/posts/10153216194746307
+twitter: https://twitter.com/wincent/status/704567011288838145
 ---
 
 I have [a side project](https://github.com/wincent/command-t) whose main feature is performance. Everything else is secondary. It's a fuzzy file finder for [Vim], designed to be the fastest way of opening files even in enormous repos with as many as a million files in them. I use it dozens &mdash; sometimes hundreds &mdash; of times a day, and each time I use it it saves me seconds. Given that I work in large repos, living without it would be hard to do.
@@ -420,5 +422,7 @@ That's an order of magnitude faster than what we had before, and what we had bef
 I'd still like to find some low-hanging fruit, but I suspect that from here on all wins will be hard fought and won. But this is a game that I enjoy playing, so that's fine.
 
 Time to move on to instruction-level profiling and start porting bits of this sucker to hand-tweaked assembly. Wish me luck.
+
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153216194746307) - [Twitter](https://twitter.com/wincent/status/704567011288838145)</em></small>
 
 [Vim]: /wiki/vim
