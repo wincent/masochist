@@ -13,7 +13,7 @@ I've been sharpening this particular axe for six years now. The low-hanging frui
 
 Let's start by looking at how Command-T got fast initially. We start with a fuzzy matching algorithm hand-tuned to work well with file paths: it knows that certain characters (after slashes, dots, and underscores for example) are more important, and it knows that humans expect contiguous runs of characters to score highly.
 
-## Write it in a C
+## Write it in C
 
 This is the "cheat" option. Instead of laboring to make your Vimscript plug-in fast, you write the performance-critical core in C and wrap that in Ruby ([Python would work too](https://github.com/JazzCore/ctrlp-cmatcher)) because using a scripting language with a portable C extension layer is how you can get C code into Vim. Finally, you interface with Vim via a thin Vimscript layer.
 
