@@ -9,4 +9,4 @@ cache_breaker: 1
 * There are no implicit line-continuations (ie. you cannot split a long list over multiple lines after the commas; you have to use explicit line-continuation markers).
 * Lists and dictionaries do not permit optional trailing commas after the last item, unlike many other languages.
 * Output captured with `redir` will include wrapping (ie. newlines) based on how wide the screen was at runtime.
-* `echoerr` [aborts the current function](http://stackoverflow.com/a/30405896/2103996), leading Vim to "not see" any pending `:endif` constructs and complain of `E171: Missing :endif`.
+* `echoerr` [aborts the current function](http://stackoverflow.com/a/30405896/2103996), leading Vim to "not see" any pending `:endif` constructs and complain of `E171: Missing :endif`; if you just want to append to the `message-history` then use `:echomsg` instead.
