@@ -2,6 +2,7 @@
 tags: vim
 cache_breaker: 1
 ---
+
 * `map()` mutates the collection in place; if you want to avoid this you have to make a copy first.
 * `'some string' == 0` evaluates to true (`1`).
 * Line-continuation markers (`\`) occur at the beginning of the continuation instead of the end of the continued line, unlike every other language.
