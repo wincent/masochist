@@ -6,3 +6,7 @@ tags: perl
 <pre>/(?<!foo)bar/</pre>
 
 Matches "bar" only if not preceded by "foo".
+
+= Match only ''horizontal'' whitespace =
+
+ \h
