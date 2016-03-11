@@ -63,6 +63,7 @@ A "non-interactive" shell may be:
 
 = See also =
 
+* [[Zsh startup]]
 * http://en.wikipedia.org/wiki/Bash_(Unix_shell)#Startup_scripts
 * http://en.wikipedia.org/wiki/Unix_shell
 * http://www.solipsys.co.uk/new/BashInitialisationFiles.html (flowchart)
