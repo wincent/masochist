@@ -10,7 +10,7 @@ tags: zsh
 2. `.zprofile`
 3. `.zshrc`
 
-## Subshell launched with `zsh
+## Subshell launched with `zsh`
 
 1. `.zshenv`
 2. `.zshrc`
