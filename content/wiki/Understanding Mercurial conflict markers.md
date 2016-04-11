@@ -40,4 +40,4 @@ In this case:
 
 # See also
 
-* [[Understanding Git conflict markers]]
+* [Understanding Git conflict markers](/wiki/Understanding_Git_conflict_markers)
