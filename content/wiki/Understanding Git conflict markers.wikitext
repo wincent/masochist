@@ -1,6 +1,5 @@
 ---
 tags: git
-cache_breaker: 1
 ---
 When looking at [[Git]] conflict markers it can sometimes be confusing which half of the conflicting section belongs to which branch:
 
@@ -26,3 +25,4 @@ On the other hand, if you are doing something like `git rebase origin/master`, y
 = See also =
 
 * [[Git merge conflict cheatsheet]]
+* [[Understanding Mercurial conflict markers]]
