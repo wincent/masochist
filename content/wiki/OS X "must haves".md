@@ -73,14 +73,6 @@ This is free but not [open source](/wiki/open_source). It hooks in to Evernote.
 
 Play back audio and video formats that [Apple](/wiki/Apple) won't.
 
-## [Skype](/wiki/Skype)
-
--   <http://www.skype.com/>
-
-Not [open source](/wiki/open_source), but free, and pretty darn useful.
-
-I actually prefer FaceTime for call quality, but not everyone has it as it is Apple-only.
-
 ## [OmniDiskSweeper](/wiki/OmniDiskSweeper)
 
 -   <http://www.omnigroup.com/products/omnidisksweeper/>
@@ -94,6 +86,10 @@ When all you've got is a tiny SSD drive, this tool is very handy for hunting dow
 -   <https://agilebits.com/onepassword>
 
 Secret-management. More details [here](/wiki/1Password).
+
+## Alfred
+
+-   <https://www.alfredapp.com/>
 
 ## [Arq](/wiki/Arq)
 
@@ -156,6 +152,14 @@ Superseded by [Slate](/wiki/Slate).
 Helps you find the mouse pointer immediately when you haven't touched the mouse for a while; pretty much a must-have if you work with multiple displays, where the mouse can get lost.
 
 Superseded by equivalent built-in feature in [OS X](/wiki/OS_X) 10.11 "[El Capitan](/wiki/El_Capitan)".
+
+## [Skype](/wiki/Skype)
+
+-   <http://www.skype.com/>
+
+Not [open source](/wiki/open_source), but free, and pretty darn useful.
+
+I actually prefer FaceTime for call quality, but not everyone has it as it is Apple-only.
 
 ## [Slate](/wiki/Slate)
 
