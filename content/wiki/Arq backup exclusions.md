@@ -65,3 +65,5 @@ Manually added exclusions can be viewed with `plutil -p Library/Preferences/com.
   ...
 ]
 ```
+
+[Apparently](http://pondini.org/TM/11.html), there are other files that get excluded via metadata attribute on the file itself (ie. not tied to the path). You can see these with `sudo mdfind "com_apple_backup_excludeItem = 'com.apple.backupd'"`.
