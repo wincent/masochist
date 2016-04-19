@@ -145,8 +145,16 @@ Example commands:
 
 # Visual mode commands
 
+Enter using `V`:
+
 -   `gq`: reformat (rewrap) selection
 -   `o`: jump to opposite end of selection
+
+# Visual (block) mode commands
+
+Enter using `<C-v>`:
+
+-   `$A{string}<Esc>`: append to each line, varying lengths ([details](http://vimdoc.sourceforge.net/htmldoc/visual.html#v_b_A)).
 
 # Command mode commands
 
