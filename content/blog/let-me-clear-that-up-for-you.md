@@ -1,5 +1,6 @@
 ---
 title: Let me clear that up for you
+twitter: https://twitter.com/wincent/status/724142651189026816
 ---
 
 Based on various things I've read on the internet, there seems to be a bit of confusion about what kinds of tools people should be using to get their shit done. Posts about "Top 10 X for Y" and such. Let me clear that up for you.
@@ -97,3 +98,5 @@ Failing to install [iStat Menus](http://bjango.com/mac/istatmenus/), [Bartender]
 # Conclusion
 
 I hope this has been helpful. Depending on your pre-existing degree of enlightenment, I expect this list to save you a *lot* of time, and affect you life anywhere from transcendingly to profoundly. Feel free to [tweet](https://twitter.com/wincent) or [email](mailto:greg@hurrell.net) me your appreciation.
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/724142651189026816)</em></small>
