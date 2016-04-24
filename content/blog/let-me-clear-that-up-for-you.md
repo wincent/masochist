@@ -21,7 +21,7 @@ So, without further ado, I present my list.
 
 [Vim](/wiki/Vim) is the best editor. Using [Emacs](http://www.gnu.org/software/emacs/) is permitted only for ironic purposes (note that this includes using Emacs with [the "Evil" layer](https://www.emacswiki.org/emacs/Evil) or with [Spacemacs](http://spacemacs.org/)).
 
-Using a full-fledged IDE is unjustified, unless you employer forces you to do so, in which case it is weakly justified. For each hour you spend at work in the IDE, you should spend 15 minutes hacking on side-projects in Vim outside of work hours, to prevent your mental clarity from being diminished. Note that due to Vim's efficiency, you can expect an order of magnitude more productivity in it despite spending only 25% as much time.
+Using a full-fledged IDE is unjustified, unless your employer forces you to do so, in which case it is weakly justified. For each hour you spend at work in the IDE, you should spend 15 minutes hacking on side-projects in Vim outside of work hours, to prevent your mental clarity from being diminished. Note that due to Vim's efficiency, you can expect an order of magnitude more productivity in it despite spending only 25% as much time.
 
 ## Code font
 
