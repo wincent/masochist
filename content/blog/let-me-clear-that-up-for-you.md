@@ -1,5 +1,6 @@
 ---
 title: Let me clear that up for you
+fb: https://www.facebook.com/glh/posts/10153341605011307
 twitter: https://twitter.com/wincent/status/724142651189026816
 ---
 
@@ -99,4 +100,4 @@ Failing to install [iStat Menus](http://bjango.com/mac/istatmenus/), [Bartender]
 
 I hope this has been helpful. Depending on your pre-existing degree of enlightenment, I expect this list to save you a *lot* of time, and affect you life anywhere from transcendingly to profoundly. Feel free to [tweet](https://twitter.com/wincent) or [email](mailto:greg@hurrell.net) me your appreciation.
 
-<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/724142651189026816)</em></small>
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153341605011307) - [Twitter](https://twitter.com/wincent/status/724142651189026816)</em></small>
