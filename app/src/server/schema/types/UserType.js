@@ -38,7 +38,7 @@ export default registerType(new GraphQLObjectType({
       type: articleConnection,
       description: 'Wiki articles visible to this user',
       args: connectionArgs,
-      resolve: async (user, args, {rootValue}) => {
+      resolve: async (user, args, context, {rootValue}) => {
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [articles, totalCount] = await Article.readIndex(count, offset);
@@ -56,7 +56,7 @@ export default registerType(new GraphQLObjectType({
       type: postConnection,
       description: 'Blog posts visible to this user',
       args: connectionArgs,
-      resolve: async (user, args, {rootValue}) => {
+      resolve: async (user, args, context, {rootValue}) => {
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
@@ -75,7 +75,7 @@ export default registerType(new GraphQLObjectType({
       type: snippetConnection,
       description: 'Snippets visible to this user',
       args: connectionArgs,
-      resolve: async (user, args, {rootValue}) => {
+      resolve: async (user, args, context, {rootValue}) => {
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
@@ -94,7 +94,7 @@ export default registerType(new GraphQLObjectType({
       type: tagConnection,
       description: 'Tags visible to this user',
       args: connectionArgs,
-      resolve: async (user, args, {rootValue}) => {
+      resolve: async (user, args, context, {rootValue}) => {
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
@@ -122,7 +122,7 @@ export default registerType(new GraphQLObjectType({
           description: 'One or more search terms, separated by spaces',
         },
       },
-      resolve: async (user, args, {rootValue}) => {
+      resolve: async (user, args, context, {rootValue}) => {
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;

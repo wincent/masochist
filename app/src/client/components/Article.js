@@ -14,7 +14,7 @@ if (inBrowser) {
 
 class Article extends React.Component {
   static contextTypes = {
-    history: React.PropTypes.object,
+    router: React.PropTypes.object,
   };
 
   render() {
@@ -40,11 +40,11 @@ class Article extends React.Component {
         return null;
       } else if (article.redirect.substr(0, 1) === '/') {
         // Internal redirect.
-        const {history} = this.context;
+        const {history} = this.context.router;
         const location = history.createLocation(article.redirect);
         history.match(location, (error, redirectLocation, nextState) => {
           if (nextState) {
-            history.pushState({}, article.redirect);
+            history.push({}, article.redirect);
           } else {
             window.location = article.redirect;
           }

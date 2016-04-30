@@ -43,7 +43,7 @@ const TagType = registerType(new GraphQLObjectType({
       type: taggableConnection,
       description: 'Items tagged with a particular tag',
       args: connectionArgs,
-      resolve: async (tag, args, {rootValue}) => {
+      resolve: async (tag, args, context, {rootValue}) => {
         // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;

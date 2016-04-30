@@ -65,7 +65,7 @@ const ArticleType = registerType(new GraphQLObjectType({
     },
     body: {
       type: MarkupType,
-      resolve: async (article, args, {rootValue}) => {
+      resolve: async (article, args, context, {rootValue}) => {
         article = await resolveRedirects(article, rootValue);
         return {
           format: article.format,
@@ -76,7 +76,7 @@ const ArticleType = registerType(new GraphQLObjectType({
     url: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'URL for the article',
-      resolve: async (article, args, {rootValue}) => {
+      resolve: async (article, args, context, {rootValue}) => {
         article = await resolveRedirects(article, rootValue);
         const path = encodeURIComponent(article.id.replace(/ /g, '_'));
         return `/wiki/${path}`;
@@ -84,7 +84,7 @@ const ArticleType = registerType(new GraphQLObjectType({
     },
     tags: {
       type: new GraphQLList(TagNameType),
-      resolve: async (article, args, {rootValue}) => {
+      resolve: async (article, args, context, {rootValue}) => {
         article = await resolveRedirects(article, rootValue);
         return article.tags;
       },

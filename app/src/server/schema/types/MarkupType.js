@@ -105,7 +105,7 @@ const MarkupType = new GraphQLObjectType({
           type: GraphQLInt,
         },
       },
-      resolve(markup, {baseHeadingLevel}, {rootValue}) {
+      resolve(markup, {baseHeadingLevel}, context, {rootValue}) {
         const level = validateBaseHeadingLevel(baseHeadingLevel);
         if (markup.format === 'wikitext') {
           return rootValue.loaders.Wikitext.load({

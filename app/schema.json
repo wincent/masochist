@@ -95,17 +95,17 @@
           "possibleTypes": [
             {
               "kind": "OBJECT",
+              "name": "User",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "Article",
               "ofType": null
             },
             {
               "kind": "OBJECT",
               "name": "Post",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Page",
               "ofType": null
             },
             {
@@ -120,1036 +120,7 @@
             },
             {
               "kind": "OBJECT",
-              "name": "User",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Article",
-          "description": "A wiki article",
-          "fields": [
-            {
-              "name": "id",
-              "description": "The ID of an object",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "title",
-              "description": "The article's title",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "resolvedTitle",
-              "description": "The title of the article after resolving redirects",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "redirect",
-              "description": "The destination ([[wiki article]] or URL) the article should redirect to",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "body",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Markup",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "url",
-              "description": "URL for the article",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tags",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "TagName",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "createdAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "updatedAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "Tagged",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "INTERFACE",
-          "name": "Tagged",
-          "description": "An object with a tags field",
-          "fields": [
-            {
-              "name": "tags",
-              "description": "A list of tag names",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "TagName",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "Article",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Post",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
               "name": "Page",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Snippet",
-              "ofType": null
-            }
-          ]
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Post",
-          "description": "A blog post",
-          "fields": [
-            {
-              "name": "id",
-              "description": "The ID of an object",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "title",
-              "description": "The blog post's title",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "body",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Markup",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "url",
-              "description": "URL for the post",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tags",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "TagName",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "createdAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "updatedAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "Tagged",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "String",
-          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Markup",
-          "description": "The textual markup for a piece of content",
-          "fields": [
-            {
-              "name": "raw",
-              "description": "Unprocessed plain-text source of the markup",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "format",
-              "description": "The format of the markup source",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "ENUM",
-                  "name": "MARKUP_FORMAT_TYPE",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "html",
-              "description": "HTML output of transformed markup",
-              "args": [
-                {
-                  "name": "baseHeadingLevel",
-                  "description": "Base heading level [0-6]",
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "ENUM",
-          "name": "MARKUP_FORMAT_TYPE",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": [
-            {
-              "name": "WIKITEXT",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "TXT",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "HTML",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "C",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "PATCH",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "M",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "RB",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "SH",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Int",
-          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^53 - 1) and 2^53 - 1 since represented in JSON as double-precision floating point numbers specifiedby [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point).",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "TagName",
-          "description": "A tag name",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "DateTime",
-          "description": "A JSON-style (ISO 8601) date",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Page",
-          "description": "A page",
-          "fields": [
-            {
-              "name": "id",
-              "description": "The ID of an object",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "title",
-              "description": "The page's title",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "body",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Markup",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "url",
-              "description": "URL for the page",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tags",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "TagName",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "createdAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "updatedAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "Tagged",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Snippet",
-          "description": "A snippet",
-          "fields": [
-            {
-              "name": "id",
-              "description": "The ID of an object",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "title",
-              "description": "The snippet's title",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "body",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "Markup",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "url",
-              "description": "URL for the snippet",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tags",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "TagName",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "createdAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "updatedAt",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "DateTime",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            },
-            {
-              "kind": "INTERFACE",
-              "name": "Tagged",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "Tag",
-          "description": "A tag",
-          "fields": [
-            {
-              "name": "id",
-              "description": "The ID of an object",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "ID",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "name",
-              "description": "The tag's name",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "TagName",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "count",
-              "description": "Count of items tagged with the tag",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "url",
-              "description": "URL for the tag",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "taggables",
-              "description": "Items tagged with a particular tag",
-              "args": [
-                {
-                  "name": "after",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "first",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "before",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "last",
-                  "description": null,
-                  "type": {
-                    "kind": "SCALAR",
-                    "name": "Int",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                }
-              ],
-              "type": {
-                "kind": "OBJECT",
-                "name": "TaggableConnection",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [
-            {
-              "kind": "INTERFACE",
-              "name": "Node",
-              "ofType": null
-            }
-          ],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "TaggableConnection",
-          "description": "A connection to a list of items.",
-          "fields": [
-            {
-              "name": "pageInfo",
-              "description": "Information to aid in pagination.",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "PageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "edges",
-              "description": "Information to aid in pagination.",
-              "args": [],
-              "type": {
-                "kind": "LIST",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "TaggableEdge",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "PageInfo",
-          "description": "Information about pagination in a connection.",
-          "fields": [
-            {
-              "name": "hasNextPage",
-              "description": "When paginating forwards, are there more items?",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "hasPreviousPage",
-              "description": "When paginating backwards, are there more items?",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "startCursor",
-              "description": "When paginating backwards, the cursor to continue.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "endCursor",
-              "description": "When paginating forwards, the cursor to continue.",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "Boolean",
-          "description": "The `Boolean` scalar type represents `true` or `false`.",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "TaggableEdge",
-          "description": "An edge in a connection.",
-          "fields": [
-            {
-              "name": "node",
-              "description": "The item at the end of the edge",
-              "args": [],
-              "type": {
-                "kind": "UNION",
-                "name": "Content",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "cursor",
-              "description": "A cursor for use in pagination",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "UNION",
-          "name": "Content",
-          "description": null,
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
-          "possibleTypes": [
-            {
-              "kind": "OBJECT",
-              "name": "Article",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Page",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Post",
-              "ofType": null
-            },
-            {
-              "kind": "OBJECT",
-              "name": "Snippet",
               "ofType": null
             }
           ]
@@ -1475,6 +446,26 @@
           "possibleTypes": null
         },
         {
+          "kind": "SCALAR",
+          "name": "String",
+          "description": "The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "Int",
+          "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. ",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
           "kind": "OBJECT",
           "name": "ArticleConnection",
           "description": "A connection to a list of items.",
@@ -1519,6 +510,83 @@
         },
         {
           "kind": "OBJECT",
+          "name": "PageInfo",
+          "description": "Information about pagination in a connection.",
+          "fields": [
+            {
+              "name": "hasNextPage",
+              "description": "When paginating forwards, are there more items?",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hasPreviousPage",
+              "description": "When paginating backwards, are there more items?",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "startCursor",
+              "description": "When paginating backwards, the cursor to continue.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "endCursor",
+              "description": "When paginating forwards, the cursor to continue.",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "Boolean",
+          "description": "The `Boolean` scalar type represents `true` or `false`.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "ArticleEdge",
           "description": "An edge in a connection.",
           "fields": [
@@ -1553,6 +621,341 @@
           ],
           "inputFields": null,
           "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Article",
+          "description": "A wiki article",
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "title",
+              "description": "The article's title",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "resolvedTitle",
+              "description": "The title of the article after resolving redirects",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "redirect",
+              "description": "The destination ([[wiki article]] or URL) the article should redirect to",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "body",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "URL for the article",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tags",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createdAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Tagged",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INTERFACE",
+          "name": "Tagged",
+          "description": "An object with a tags field",
+          "fields": [
+            {
+              "name": "tags",
+              "description": "A list of tag names",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Article",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Post",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Snippet",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            }
+          ]
+        },
+        {
+          "kind": "SCALAR",
+          "name": "TagName",
+          "description": "A tag name",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Markup",
+          "description": "The textual markup for a piece of content",
+          "fields": [
+            {
+              "name": "raw",
+              "description": "Unprocessed plain-text source of the markup",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "format",
+              "description": "The format of the markup source",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "MARKUP_FORMAT_TYPE",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "html",
+              "description": "HTML output of transformed markup",
+              "args": [
+                {
+                  "name": "baseHeadingLevel",
+                  "description": "Base heading level [0-6]",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "MARKUP_FORMAT_TYPE",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "WIKITEXT",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "TXT",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "HTML",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "C",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "PATCH",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "M",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "RB",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "SH",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "possibleTypes": null
+        },
+        {
+          "kind": "SCALAR",
+          "name": "DateTime",
+          "description": "A JSON-style (ISO 8601) date",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
           "enumValues": null,
           "possibleTypes": null
         },
@@ -1640,6 +1043,124 @@
         },
         {
           "kind": "OBJECT",
+          "name": "Post",
+          "description": "A blog post",
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "title",
+              "description": "The blog post's title",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "body",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "URL for the post",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tags",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createdAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Tagged",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "SnippetConnection",
           "description": "A connection to a list of items.",
           "fields": [
@@ -1717,6 +1238,124 @@
           ],
           "inputFields": null,
           "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Snippet",
+          "description": "A snippet",
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "title",
+              "description": "The snippet's title",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "body",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "URL for the snippet",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tags",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createdAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Tagged",
+              "ofType": null
+            }
+          ],
           "enumValues": null,
           "possibleTypes": null
         },
@@ -1811,6 +1450,367 @@
           ],
           "inputFields": null,
           "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Tag",
+          "description": "A tag",
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": "The tag's name",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "count",
+              "description": "Count of items tagged with the tag",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "URL for the tag",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "taggables",
+              "description": "Items tagged with a particular tag",
+              "args": [
+                {
+                  "name": "after",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "first",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "before",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                },
+                {
+                  "name": "last",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": null
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TaggableConnection",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "TaggableConnection",
+          "description": "A connection to a list of items.",
+          "fields": [
+            {
+              "name": "pageInfo",
+              "description": "Information to aid in pagination.",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "edges",
+              "description": "Information to aid in pagination.",
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TaggableEdge",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "TaggableEdge",
+          "description": "An edge in a connection.",
+          "fields": [
+            {
+              "name": "node",
+              "description": "The item at the end of the edge",
+              "args": [],
+              "type": {
+                "kind": "UNION",
+                "name": "Content",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cursor",
+              "description": "A cursor for use in pagination",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "UNION",
+          "name": "Content",
+          "description": null,
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Article",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Post",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Snippet",
+              "ofType": null
+            }
+          ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "Page",
+          "description": "A page",
+          "fields": [
+            {
+              "name": "id",
+              "description": "The ID of an object",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "title",
+              "description": "The page's title",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "body",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": "URL for the page",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "tags",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "TagName",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "createdAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Node",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Tagged",
+              "ofType": null
+            }
+          ],
           "enumValues": null,
           "possibleTypes": null
         },
@@ -2523,6 +2523,29 @@
               "deprecationReason": null
             },
             {
+              "name": "locations",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "ENUM",
+                      "name": "__DirectiveLocation"
+                    }
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "args",
               "description": null,
               "args": [],
@@ -2558,8 +2581,8 @@
                   "ofType": null
                 }
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Use `locations`."
             },
             {
               "name": "onFragment",
@@ -2574,8 +2597,8 @@
                   "ofType": null
                 }
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Use `locations`."
             },
             {
               "name": "onField",
@@ -2590,13 +2613,66 @@
                   "ofType": null
                 }
               },
-              "isDeprecated": false,
-              "deprecationReason": null
+              "isDeprecated": true,
+              "deprecationReason": "Use `locations`."
             }
           ],
           "inputFields": null,
           "interfaces": [],
           "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "ENUM",
+          "name": "__DirectiveLocation",
+          "description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies.",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": [
+            {
+              "name": "QUERY",
+              "description": "Location adjacent to a query operation.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "MUTATION",
+              "description": "Location adjacent to a mutation operation.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "SUBSCRIPTION",
+              "description": "Location adjacent to a subscription operation.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "FIELD",
+              "description": "Location adjacent to a field.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "FRAGMENT_DEFINITION",
+              "description": "Location adjacent to a fragment definition.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "FRAGMENT_SPREAD",
+              "description": "Location adjacent to a fragment spread.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "INLINE_FRAGMENT",
+              "description": "Location adjacent to an inline fragment.",
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
           "possibleTypes": null
         }
       ],
@@ -2604,6 +2680,11 @@
         {
           "name": "include",
           "description": "Directs the executor to include this field or fragment only when the `if` argument is true.",
+          "locations": [
+            "FIELD",
+            "FRAGMENT_SPREAD",
+            "INLINE_FRAGMENT"
+          ],
           "args": [
             {
               "name": "if",
@@ -2619,14 +2700,16 @@
               },
               "defaultValue": null
             }
-          ],
-          "onOperation": false,
-          "onFragment": true,
-          "onField": true
+          ]
         },
         {
           "name": "skip",
           "description": "Directs the executor to skip this field or fragment when the `if` argument is true.",
+          "locations": [
+            "FIELD",
+            "FRAGMENT_SPREAD",
+            "INLINE_FRAGMENT"
+          ],
           "args": [
             {
               "name": "if",
@@ -2642,10 +2725,7 @@
               },
               "defaultValue": null
             }
-          ],
-          "onOperation": false,
-          "onFragment": true,
-          "onField": true
+          ]
         }
       ]
     }

@@ -10,7 +10,7 @@ if (inBrowser) {
 
 export default class App extends React.Component {
   static contextTypes = {
-    history: React.PropTypes.object,
+    router: React.PropTypes.object,
   };
 
   _handleClick = event => {
@@ -26,7 +26,7 @@ export default class App extends React.Component {
           return;
         }
 
-        const {history} = this.context;
+        const {history} = this.context.router;
         const location = history.createLocation(href);
 
         // NOTE: we're relying on `match` calling our callback synchronously,
@@ -34,7 +34,7 @@ export default class App extends React.Component {
         history.match(location, (error, redirectLocation, nextState) => {
           if (nextState) {
             event.preventDefault();
-            history.pushState({}, href);
+            history.push({}, href);
           }
         });
 
