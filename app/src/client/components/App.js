@@ -1,4 +1,5 @@
 import React from 'react';
+import {match} from 'react-router';
 import DocumentTitle from './DocumentTitle';
 import Nav from './Nav';
 import Footer from './Footer';
@@ -26,15 +27,15 @@ export default class App extends React.Component {
           return;
         }
 
-        const {history} = this.context.router;
-        const location = history.createLocation(href);
+        const {router} = this.context;
+        const location = router.createLocation(href);
 
         // NOTE: we're relying on `match` calling our callback synchronously,
         // so that we can `event.preventDefault()` if necessary.
-        history.match(location, (error, redirectLocation, nextState) => {
-          if (nextState) {
+        match({location}, (error, redirectLocation, renderProps) => {
+          if (renderProps) {
             event.preventDefault();
-            history.push({}, href);
+            router.push({}, href);
           }
         });
 

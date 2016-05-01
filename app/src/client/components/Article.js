@@ -1,5 +1,6 @@
 import React from 'react';
 import Relay from 'react-relay';
+import {match} from 'react-router';
 import inBrowser from '../inBrowser';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
@@ -40,11 +41,11 @@ class Article extends React.Component {
         return null;
       } else if (article.redirect.substr(0, 1) === '/') {
         // Internal redirect.
-        const {history} = this.context.router;
-        const location = history.createLocation(article.redirect);
-        history.match(location, (error, redirectLocation, nextState) => {
-          if (nextState) {
-            history.push({}, article.redirect);
+        const {router} = this.context;
+        const location = router.createLocation(article.redirect);
+        match({location}, (error, redirectLocation, renderProps) => {
+          if (renderProps) {
+            router.push({}, article.redirect);
           } else {
             window.location = article.redirect;
           }

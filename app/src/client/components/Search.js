@@ -15,6 +15,10 @@ import SnippetPreview from './SnippetPreview';
 const INITIAL_COUNT = 10;
 
 class Search extends React.Component {
+  static contextTypes = {
+    router: React.PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -62,7 +66,7 @@ class Search extends React.Component {
                   count: INITIAL_COUNT,
                   q: this.state.q,
                 }, ifMounted(this, ({ready, done, error, aborted}) => {
-                  this.props.history.replace(searchURL);
+                  this.context.router.replace(searchURL);
                   this.setState({isSearching: !ready && !(done || error || aborted)});
                 }));
               }}
