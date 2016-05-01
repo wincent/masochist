@@ -51,7 +51,7 @@ const ArticleType = registerType(new GraphQLObjectType({
     resolvedTitle: {
       type: GraphQLString,
       description: 'The title of the article after resolving redirects',
-      resolve: async (article, args, {rootValue}) => {
+      resolve: async (article, args, context, {rootValue}) => {
         article = await resolveRedirects(article, rootValue);
         return article.title;
       },
