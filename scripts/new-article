@@ -1,0 +1,23 @@
+#!/bin/sh
+
+set -e
+
+if [ $# -ne 1 ]; then
+  echo 'error: exactly 1 argument (article title) required.'
+  exit 1
+fi
+
+if [ -e "content/wiki/$1.md" ]; then
+  vim "content/wiki/$1.md"
+elif [ -e "content/wiki/$1.wikitext" ]; then
+  vim "content/wiki/$1.wikitext"
+else
+  cat > "content/wiki/$1.md" <<HERE
+---
+tags: 
+---
+
+
+HERE
+  vim "content/wiki/$1.md"
+fi
