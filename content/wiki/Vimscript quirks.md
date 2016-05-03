@@ -10,3 +10,4 @@ cache_breaker: 1
 * Lists and dictionaries do not permit optional trailing commas after the last item, unlike many other languages.
 * Output captured with `redir` will include wrapping (ie. newlines) based on how wide the screen was at runtime.
 * `echoerr` [aborts the current function](http://stackoverflow.com/a/30405896/2103996), leading Vim to "not see" any pending `:endif` constructs and complain of `E171: Missing :endif`; if you just want to append to the `message-history` then use `:echomsg` instead.
+* The `&` modifier (described in `:h :s_flags`) is supposedly for applying the flags from the "previous substitute command", but "previous" doesn't mean "most recently executed" but rather "last seen in file, even if seen inside an `if` block body that wasn't executed because its conditional was false".
