@@ -6,7 +6,7 @@ tags:
 
 My own [screencasts](/wiki/screencasts) archive can be found at:
 
--   <http://wincent.com/a/about/wincent/weblog/archives/screencasts/>
+-   <http://www.wincent.com/a/about/wincent/weblog/archives/screencasts/>
 
 # See also
 
