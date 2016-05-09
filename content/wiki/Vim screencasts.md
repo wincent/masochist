@@ -8,19 +8,24 @@ To prevent this from becoming too onerous, or letting my perfectionism get the b
 
 # Published "episodes"
 
-* None, yet.
+* [Vim screencast #1: Intro](https://youtu.be/MAHC9eZbx4o).
+* [Vim screencast #2: Folding](https://youtu.be/oqYQ7IeDs0E).
+* [Vim screencast #3: Oil vs vinegar](https://youtu.be/OgQW07saWb0).
+* [Vim screencast #4: Color](https://youtu.be/QcOxU1sOOuw).
+* [Vim screencast #5: Splits (basic operations)](https://youtu.be/WrRbLEAgI5M).
+* [Vim screencast #6: Splits (resizing)](https://youtu.be/xSNmu4CQDas).
+* [Vim screencast #7: Splits (moving)](https://youtu.be/mXHVHVYdbuQ).
+* [Vim screencast #8: Splits → Tabs](https://youtu.be/uYSN6vVPr6w).
 
 # Future "episodes"
 
 Topics I'd like to cover, in no particular order.
 
-* Folding
 * Focusing
 * Statusline
-* Relative line numbers.
-* Dealing with temporary files.
-* File navigation (vim-vinegar etc)
-* Plug-ins I've written
+* Relative line numbers
+* Dealing with temporary files
+* Plug-ins I've written:
   * Command-T
   * Ferret
   * Loupe
@@ -29,3 +34,19 @@ Topics I'd like to cover, in no particular order.
 * Spelling
 * tmux integration
 * Mappings
+* Settings
+* Organization
+
+# Recording checklist
+
+* Quit all other apps.
+* Switch to high-contrast colorscheme (`dark tomorrow`, probably).
+* Turn on "Do Not Disturb" mode in notifications center (two-finger swipe from right edge of trackpad).
+* Mute sound.
+* Close all but one iTerm tab.
+* Make sure you hide Screenflow.
+* Use [my hacked-up Keycastr fork](https://github.com/wincent/keycastr/tree/wincent), because it works on [Colemak](/wiki/Colemak).
+* Place Keycastr at the bottom/center of the screen.
+* Leave a gap between the terminal window and the bottom edge (room for Keycastr window).
+* For showing web pages, enable guest browsing; note that going "incognito" is not enough.
+* Audit recorded video for privacy.
