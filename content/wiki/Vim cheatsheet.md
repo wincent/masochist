@@ -25,6 +25,8 @@ I'll eventually publish a more comprehensive listing, but for now I just want to
 -   `CTRL-a`: decrement the number at (the end of) the word under the cursor
 -   `gv`: reselect last selection
 -   `g CTRL-G`: show current cursor position and total counts (columns, lines, words, bytes)
+-   `ga`: show ASCII info for character under cursor
+-   `g8`: show UTF-8 info for character under cursor
 -   `CTRL-w f`: open the file under the cursor in a split (`gf` will do this without the split)
 
 ## Window and tab-related commands
