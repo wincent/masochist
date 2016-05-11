@@ -11,6 +11,7 @@ Notes made while (re-)learning Haskell in 2016.
 - [Learn You a Haskell for Great Good!](http://learnyouahaskell.com/) (readable online for free)
 - [Haskell Programming from first principles](http://haskellbook.com/) (still in early access)
 - [Real World Haskell](http://book.realworldhaskell.org/) (O'Reilly, readable online for free)
+- [Maybe Haskell](https://gumroad.com/l/maybe-haskell/) (non-free)
 
 ## Practice problems
 
@@ -29,6 +30,7 @@ Notes made while (re-)learning Haskell in 2016.
 
 - [What I Wish I Knew While Learning Haskell](http://dev.stephendiehl.com/hask/)
 - [Typeclassopedia](https://wiki.haskell.org/Typeclassopedia)
+- [codeslower.com cheatsheet](http://cheatsheet.codeslower.com/CheatSheet.pdf)
 
 ## Meta: How to learn Haskell
 
@@ -156,6 +158,7 @@ $ ghc-pkg list      # See installed packages.
 ## `Debug.Trace`
 
 - `trace` :: `String -> a -> a`
+- `traceM` :: `String -> m ()` (for use in `do` notation)
 
 ## `Numeric`
 
@@ -167,7 +170,7 @@ $ ghc-pkg list      # See installed packages.
 - `{- ... -}`: in-line comment
 - `if`/`then`/`else`: conditional expression
 - `$`: function application (low precedence)
-- `.`: function composition
+- `.`: function composition (`(f . g) x` is same as `f (g x)`).
 - `let` + `in`: create bound variables with the scope of an expression
 - `where`: like `let`, but at top level of equation; not an expression
 - `case (something) of (pattern) -> expression`: pattern matching within expressions
@@ -314,21 +317,29 @@ Implement `fmap :: (a -> b) -> f a -> f b` and comply with the two functor laws:
 1. `fmap id` must equal `id`.
 2. `fmap (p . q)` must equal `(fmap p) . (fmap q)`.
 
+In plain English, a functor is a value in a "context", supporting an `fmap` operation for applying a function to the value while preserving that "context". The second functor law means that we can freely compose functions and apply them using `fmap`, or compose the results of applying `fmap` to functions, and get the same result.
+
 Example functors:
 
 - Lists.
 - Functions.
+- `Maybe`.
 
 ## Applicative functors (`Applicative` typeclass)
 
+These are functors where the value itself can be applied (ie. they are functions in a "context").
+
 - Implement `pure` (wraps value in applicative).
-- Implement `<*>` (`(Applicative f) => f (a -> b) -> f a -> f b`).
-- Additionally, `<$>`, which is an infix `fmap`.
+- Implement `<*>`, pronounced "apply" (`(Applicative f) => f (a -> b) -> f a -> f b`).
+- Additionally, `<$>`, pronounced "fmap": this is an infix `fmap`.
 - Note that all applicatives are functors.
 
 Example applicative functors:
 
 - Lists.
+- `Maybe`.
+- `Options.Applicative` (from the [optparse-applicative](https://github.com/pcapriotti/optparse-applicative) package).
+- The [aeson](http://hackage.haskell.org/package/aeson) JSON parser.
 
 ## Monoids (`Monoid` typeclass)
 
@@ -352,8 +363,24 @@ Applicative functors (enforced by type constraint as of GHC 7.10) that additiona
 
 Example monads:
 - `Either`.
-
 - `Maybe`.
 - `Either`.
 - `[]`.
 - `IO`.
+
+# Other topics
+
+## Command-line options parsing
+
+- [Applicative Options Parsing in Haskell](https://robots.thoughtbot.com/applicative-options-parsing-in-haskell)
+
+## Parsing
+
+- [Intro to Parsing with Parsec in Haskell](http://jakewheat.github.io/intro_to_parsing/).
+- [Parsing Stuff in Haskell](https://www.youtube.com/watch?v=r_Enynu_TV0) (video).
+- [Parsec: "try a <|> b" considered harmful](http://blog.ezyang.com/2014/05/parsec-try-a-or-b-considered-harmful/).
+- [Parsing Floats With Parsec](https://www.schoolofhaskell.com/school/to-infinity-and-beyond/pick-of-the-week/parsing-floats-with-parsec).
+- [Parsec Generally](https://www.vex.net/~trebla/haskell/parsec-generally.xhtml)
+- [Using text.parsec.indent to Parse an Indentation-Sensitive Language with Haskell's Parsec Library](https://spin.atomicobject.com/2012/03/16/using-text-parsec-indent-to-parse-an-indentation-sensitive-language-with-haskells-parsec-library/)
+- [Power parsing with Haskell and Parsec](http://blog.moertel.com/posts/2005-08-27-power-parsing-with-haskell-and-parsec.html)
+- [Left-recursion in Parsec](http://stuckinaninfiniteloop.blogspot.com/2011/10/left-recursion-in-parsec.html)
