@@ -10,6 +10,16 @@ error() {
   echo "error [pre-commit]: $@"
 }
 
+HOOK="$(git rev-parse --git-dir)/hooks/pre-commit"
+HOOK_FINGERPRINT=$(shasum -a 512 "$HOOK" | awk '{ print $1 }')
+REPO_FINGERPINT=$(shasum -a 512 hooks/pre-commit | awk '{ print $1 }')
+
+if [ "$HOOK_FINGERPRINT" != "$REPO_FINGERPINT" ]; then
+  error "installed hook does not match repo copy"
+  error "freshen with scripts/set-up-hooks or use --no-verify to force"
+  exit 1
+fi
+
 if [ -z "$PPID" ]; then
   warning "unable to get \$PPID"
   exit 0
