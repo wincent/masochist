@@ -45,25 +45,22 @@ if [ -z "$CACHE_BREAKER" ]; then
   exit 0
 fi
 
+ALLOW_AMEND=1
+HEAD=$(git rev-parse HEAD)
 LAST_INDEXED_HASH=$(redis-cli get "$PREFIX:$CACHE_BREAKER:$LAST_INDEX")
 
 if [ -z "$LAST_INDEXED_HASH" ]; then
   warning "unable to get last indexed hash"
-  exit 0
-fi
-
-HEAD=$(git rev-parse HEAD)
-
-ALLOW_AMEND=1
-
-if [ "$LAST_INDEXED_HASH" = "$HEAD" ]; then
-  error "attempting amend of commit that has already been indexed locally"
-  ALLOW_AMEND=0
-elif git merge-base --is-ancestor $LAST_INDEXED_HASH $HEAD; then
-  true # All good!
 else
-  error "attempting amend of commit that has already been indexed locally"
-  ALLOW_AMEND=0
+  if [ "$LAST_INDEXED_HASH" = "$HEAD" ]; then
+    error "attempting amend of commit that has already been indexed locally"
+    ALLOW_AMEND=0
+  elif git merge-base --is-ancestor $LAST_INDEXED_HASH $HEAD; then
+    true # All good!
+  else
+    error "attempting amend of commit that has already been indexed locally"
+    ALLOW_AMEND=0
+  fi
 fi
 
 LATEST_TAG=$(git tag -l --sort=-version:refname | head -n 1)
