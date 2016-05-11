@@ -1,0 +1,79 @@
+#!/bin/sh
+#
+# Prevent careless amends of already-indexed content.
+
+warning() {
+  echo "warning [pre-commit]: $@"
+}
+
+error() {
+  echo "error [pre-commit]: $@"
+}
+
+if [ -z "$PPID" ]; then
+  warning "unable to get \$PPID"
+  exit 0
+fi
+
+GIT_COMMAND=$(ps -ocommand= -p $PPID)
+if [ -z "$GIT_COMMAND" ]; then
+  warning "unable to get \$PPID"
+  exit 0
+fi
+
+if [ "${GIT_COMMAND#*--amend}" == "$GIT_COMMAND" ]; then
+  # Not an amend commit; nothing to do.
+  exit 0
+fi
+
+LAST_INDEX=last-indexed-hash
+PREFIX=masochist
+CACHE_BREAKER=$(cat $PWD/../masochist/shared/common.json | ruby -r json -e 'print JSON[$stdin.read]["redisCacheVersion"]')
+
+if [ -z "$CACHE_BREAKER" ]; then
+  warning "unable to get cache breaker"
+  exit 0
+fi
+
+LAST_INDEXED_HASH=$(redis-cli get "$PREFIX:$CACHE_BREAKER:$LAST_INDEX")
+
+if [ -z "$LAST_INDEXED_HASH" ]; then
+  warning "unable to get last indexed hash"
+  exit 0
+fi
+
+HEAD=$(git rev-parse HEAD)
+
+ALLOW_AMEND=1
+
+if [ "$LAST_INDEXED_HASH" = "$HEAD" ]; then
+  error "attempting amend of commit that has already been indexed locally"
+  ALLOW_AMEND=0
+elif git merge-base --is-ancestor $LAST_INDEXED_HASH $HEAD; then
+  true # All good!
+else
+  error "attempting amend of commit that has already been indexed locally"
+  ALLOW_AMEND=0
+fi
+
+LATEST_TAG=$(git tag -l --sort=-version:refname | head -n 1)
+
+if [ -z "$LATEST_TAG" ]; then
+  warning "unable to get latest tag"
+else
+  LATEST_TAG_HASH=$(git rev-parse "$LATEST_TAG")
+  if [ "$LAST_INDEXED_HASH" = "$LATEST_TAG_HASH" ]; then
+    error "attempting amend of commit that has already been indexed remotely"
+    ALLOW_AMEND=0
+  elif git merge-base --is-ancestor $LAST_INDEXED_HASH $LATEST_TAG_HASH; then
+    true # All good!
+  else
+    error "attempting amend of commit that has already been indexed remotely"
+    ALLOW_AMEND=0
+  fi
+fi
+
+if [ $ALLOW_AMEND -ne 1 ]; then
+  error "use --no-verify to force"
+  exit 1
+fi
