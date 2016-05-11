@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+GIT_DIR=$(git rev-parse --git-dir)
+
+cd $(git rev-parse --show-toplevel)
+cp hooks/pre-commit "$GIT_DIR/hooks/"
+chmod +x "$GIT_DIR/hooks/pre-commit"
+cp hooks/pre-push "$GIT_DIR/hooks/"
+chmod +x "$GIT_DIR/hooks/pre-push"
