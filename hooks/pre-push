@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Tag content deployments with a timestamp.
+
+if [ "$1" != "content" ]; then
+  exit 0
+fi
+
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+CONTENT_REF=refs/heads/content
+
+while read LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA
+do
+  if [ "$LOCAL_REF" = "$CONTENT_REF" -a "$REMOTE_REF" = "$CONTENT_REF" ]; then
+    git tag "$TIMESTAMP"
+  fi
+done
