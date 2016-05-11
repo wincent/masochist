@@ -62,10 +62,10 @@ if [ -z "$LATEST_TAG" ]; then
   warning "unable to get latest tag"
 else
   LATEST_TAG_HASH=$(git rev-parse "$LATEST_TAG")
-  if [ "$LAST_INDEXED_HASH" = "$LATEST_TAG_HASH" ]; then
+  if [ "$LATEST_TAG_HASH" = "$HEAD" ]; then
     error "attempting amend of commit that has already been indexed remotely"
     ALLOW_AMEND=0
-  elif git merge-base --is-ancestor $LAST_INDEXED_HASH $LATEST_TAG_HASH; then
+  elif git merge-base --is-ancestor $LATEST_TAG_HASH $HEAD; then
     true # All good!
   else
     error "attempting amend of commit that has already been indexed remotely"
