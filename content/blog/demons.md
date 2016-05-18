@@ -1,5 +1,7 @@
 ---
 title: Conquering my demons
+fb: https://www.facebook.com/glh/posts/10153386063386307
+twitter: https://twitter.com/wincent/status/732998780480454659
 ---
 
 Three decades into my computer programming life I am still learning new things about how to use technology to solve problems. That's exciting. It never stops being rewarding. But this post isn't about that kind of learning. It's about learning about myself. That still happens too, even after all this time.
@@ -107,3 +109,5 @@ In a sense, my standards dropped &mdash; not to the point where I would write "f
 I've been keeping the demons at bay, but that doesn't mean they won't try to come back. This is something I have to keep working on. Talking about the subject publicly like this, and privately with my peers, helps galvanize me and keep me on track. If you're in a similar situation to me, I encourage you to talk about this with people you can trust and try to implement some very concrete strategies for making things better, like the ones I've explored in this post.
 
 For me, though, I've got to go now. There's some no-saying, time-boxing, work-in-progress-shipping, and not-a-single-fuck-was-given-ing to be done.
+
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153386063386307) - [Twitter](https://twitter.com/wincent/status/732998780480454659)</em></small>
