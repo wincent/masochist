@@ -63,7 +63,7 @@ We operate on a continuum or risk and reward. There is obviously a difference in
 
 ## Exposure therapy
 
-One of the more drastic experiments I undertook was literally refraining from proofreading anything that I wrote, regardless of context. This is kind of like the person with severe vertigo who seeks to cure it by standing first on one page of an open telephone book, then another, and another, until finally she is standing on a stack of the things and has completely conquered her phobia. It's a from of "exposure therapy", whereby you banish the debilitating effect of a fear by gradually acclimatizing yourself to it to the point of immunity.
+One of the more drastic experiments I undertook was literally refraining from proofreading anything that I wrote, regardless of context. This is kind of like the person with severe vertigo who seeks to cure it by standing first on one page of an open telephone book, then another, and another, until finally she is standing on a stack of the things and has completely conquered her phobia. It's a form of "exposure therapy", whereby you banish the debilitating effect of a fear by gradually acclimatizing yourself to it to the point of immunity.
 
 This proofreading thing wasn't just useful to me because it saved me some very valuable time. It also constituted exposure therapy for me because it cut right to one of my deepest fears: saying something stupid in public. I'd built up an identity in which I prided myself on my ability to express myself in polished writing. The goal here was to forcibly detach myself from that aspect of my identity as a means of defusing the related fear. It worked remarkably well. After a while I didn't really care about saying silly things any more. (As an easter egg, I've included exactly 4.5 silly things in this post. Can you find them?)
 
@@ -71,7 +71,7 @@ This proofreading thing wasn't just useful to me because it saved me some very v
 
 One of my favorite posters at Facebook says "Don't mistake motion for progress". This one speaks to me because I have historically found it all too natural to fall into a pattern of "busy work", where I allow a bunch of low-impact activity to give me a sense of achievement and relief simply because I am moving quickly, even if that means moving in a direction that is orthogonal to my primary goal.
 
-Other posters chant, "Focus on impact" and "What would you do if you weren't afraid?". When I was dominated by fear, these posters didn't help me much. If anything, they made things worse by reminding me of how out-of-place I felt and how ill-made for the environment. Classic chronic Imposter Syndrome even after multiple years at the company. (In fact, I think I just come up with a name for this related phenomenon, "Im-Poster Syndrome": the condition of suffering from motivational-poster-induced anxiety).
+Other posters chant, "Focus on impact" and "What would you do if you weren't afraid?". When I was dominated by fear, these posters didn't help me much. If anything, they made things worse by reminding me of how out-of-place I felt and how ill-made for the environment. Classic chronic Imposter Syndrome even after multiple years at the company. (In fact, I think I just came up with a name for this related phenomenon, "Im-Poster Syndrome": the condition of suffering from motivational-poster-induced anxiety).
 
 Sometimes you can feel such a disconnection that you wind up swimming in all these things without any of them really impinging on you. Even the great ones that should resonate with you, like "Done is better than perfect" (or the satirical inverse, "Perfect is way better than done"), and which should be a useful antidote to procrastination and paralyzing perfectionism. There are good messages in here, but you can become deaf to them.
 
@@ -79,7 +79,7 @@ With time, however, and with the other techniques I've described in this post br
 
 ## Pressure valves
 
-Sometimes things are going to get hard, even with your new machine-like resolution and focus. You're still human. There is still an tangible psychological benefit to feeling that you are able to get *something* done, anything, when you find yourself in a situation of roadblock.
+Sometimes things are going to get hard, even with your new machine-like resolution and focus. You're still human. There is still a tangible psychological benefit to feeling that you are able to get *something* done, anything, when you find yourself in a situation of roadblock.
 
 This is a technique to be applied judiciously, lest you fall back into the trap of "productive procrastination" in which you "achieve" a bunch of "useful" things that are not the thing you originally set out to do. The idea is to sparingly apply the technique of switching to another task for just long enough to give you psychological relief and a sense of accomplishment and momentum, and then go back to the original, gnarly task, on which you were stuck.
 
