@@ -6,7 +6,7 @@ twitter: https://twitter.com/wincent/status/732998780480454659
 
 Three decades into my computer programming life I am still learning new things about how to use technology to solve problems. That's exciting. It never stops being rewarding. But this post isn't about that kind of learning. It's about learning about myself. That still happens too, even after all this time.
 
-The "demons" of the title could go by a few of different names, depending on how charitably you want to frame them.
+The "demons" of the title could go by a few different names, depending on how charitably you want to frame them.
 
 You might call one "perfectionism", where you dwell on a particular theme, project or design, reluctant to declare it finished, or sometimes even to commit to implementing it. You endlessly circle around the mountain half-way up (searching for the perfect solution), instead of driving towards the summit (iterating on your current best idea).
 
