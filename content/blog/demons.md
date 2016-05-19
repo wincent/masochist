@@ -53,7 +53,7 @@ It's amazing how many barriers fall away when you tell people outright, "I am be
 
 ## Being adaptive
 
-We operate on a continuum or risk and reward. There is obviously a difference in risk profile between making a change on a news feed seen by a billion people and committing to an experimental prototype that is not running in any released product. The point is, you shouldn't just be aware of this continuum: you should actively seek to exploit it. There are many mechanisms which can enable you to reduce costs, and you should milk them for all that they're worth:
+We operate on a continuum of risk and reward. There is obviously a difference in risk profile between making a change on a news feed seen by a billion people and committing to an experimental prototype that is not running in any released product. The point is, you shouldn't just be aware of this continuum: you should actively seek to exploit it. There are many mechanisms which can enable you to reduce costs, and you should milk them for all that they're worth:
 
 - Can you commit your totally not-production-ready work-in-progress on a branch?
 - Can you ship something behind a feature flag (ie. mitigate risk by having a way of turning it off)?
@@ -75,7 +75,7 @@ Other posters chant, "Focus on impact" and "What would you do if you weren't afr
 
 Sometimes you can feel such a disconnection that you wind up swimming in all these things without any of them really impinging on you. Even the great ones that should resonate with you, like "Done is better than perfect" (or the satirical inverse, "Perfect is way better than done"), and which should be a useful antidote to procrastination and paralyzing perfectionism. There are good messages in here, but you can become deaf to them.
 
-With time, however, and with the other techniques I've described in this post bringing my fear into line, I found that I was able to leverage the messages on these posts as mantras that I could repeat to myself, helping maintain in focus the things that really matter to be successful in this job, and without the harmful and distracting effects that you get when you look at everything through a lens of fear. I no longer break into a sweat when I think "Focus on impact"; I just do it.
+With time, however, and with the other techniques I've described in this post bringing my fear into line, I found that I was able to leverage the messages on these posters as mantras that I could repeat to myself, helping maintain in focus the things that really matter to be successful in this job, and without the harmful and distracting effects that you get when you look at everything through a lens of fear. I no longer break into a sweat when I think "Focus on impact"; I just do it.
 
 ## Pressure valves
 
