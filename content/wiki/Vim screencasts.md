@@ -16,14 +16,16 @@ To prevent this from becoming too onerous, or letting my perfectionism get the b
 * [Vim screencast #6: Splits (resizing)](https://youtu.be/xSNmu4CQDas).
 * [Vim screencast #7: Splits (moving)](https://youtu.be/mXHVHVYdbuQ).
 * [Vim screencast #8: Splits → Tabs](https://youtu.be/uYSN6vVPr6w).
+* [Vim screencast #9: Karabiner](https://youtu.be/YnLL9kUrWk0)
+* [Vim screencast #10: Snippets and autocomplete](https://youtu.be/WeppptWfV-0)
+* [Vim screencast #11: Relative numbers](https://www.youtube.com/watch?v=0aEv1Nj0IPg)
+* [Vim screencast #12: Focus](https://youtu.be/1JY7oIlH9g0)
 
 # Future "episodes"
 
 Topics I'd like to cover, in no particular order.
 
-* Focusing
 * Statusline
-* Relative line numbers
 * Dealing with temporary files
 * Plug-ins I've written:
   * Command-T
