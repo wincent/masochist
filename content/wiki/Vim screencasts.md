@@ -20,11 +20,16 @@ To prevent this from becoming too onerous, or letting my perfectionism get the b
 * [Vim screencast #10: Snippets and autocomplete](https://youtu.be/WeppptWfV-0)
 * [Vim screencast #11: Relative numbers](https://www.youtube.com/watch?v=0aEv1Nj0IPg)
 * [Vim screencast #12: Focus](https://youtu.be/1JY7oIlH9g0)
+* [Vim screencast #13: Multiple cursors](https://youtu.be/YwMgnmZNWXA)
+* [Vim screencast #14: \*Ncgn](https://youtu.be/c797_UkdL1o)
+* [Vim screencast #15: Organization]()
+* [Vim screencast #16: Static site case study]()
 
 # Future "episodes"
 
 Topics I'd like to cover, in no particular order.
 
+* Getting links and files to open in iTerm, tmux, and Vim
 * Statusline
 * Dealing with temporary files
 * Plug-ins I've written:
