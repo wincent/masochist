@@ -6,13 +6,12 @@ import shell from 'gulp-shell';
 import mocha from 'gulp-spawn-mocha';
 import gutil from 'gulp-util';
 import webpack from 'webpack';
-import devBabelPlugin from './babel/devBabelPlugin';
 import productionConfig from './webpack.production.config.js';
 
 let watching = false;
 
 const babelOptions = {
-  plugins: [devBabelPlugin],
+  plugins: ['dev-expression'],
 };
 
 /**
