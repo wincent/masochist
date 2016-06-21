@@ -1,5 +1,10 @@
 # Quickstart
 
+## Configuration
+
+```
+cp config.example.json config.json
+```
 
 ## Webpack-based hot-loading workflow
 
