@@ -1,6 +1,7 @@
 ---
 title: Mutt
 tags: email
+twitter: https://twitter.com/wincent/status/807509662593495040
 ---
 
 About a week ago, I [tweeted](https://twitter.com/wincent/status/804353378021056512) that I was:
@@ -104,3 +105,5 @@ I do have some gripes though, and these constitute the downside in the bargain. 
 `mutt` is not programmable like Vim. It has a macro system, but it is of fairly limited flexibility. There are a few small ways to implement a semblance of conditional logic (like `<tag-prefix-cond>`, or crafty tricks like macros that redefine themselves), but there are no real programming constructs, and the "command-line" (accessible with `:` inside `mutt`) is very primitive indeed. You can't, for example, get it to print the current value of a setting (at least, I cannot find a way to do it).
 
 But I think on the balance these are small things. At least, they are not big enough to make me pull out of this little experiment. If you'd like to see where it takes me in the end, follow along [over here](https://github.com/wincent/wincent).
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/807509662593495040)</em></small>
