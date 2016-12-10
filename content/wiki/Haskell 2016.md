@@ -384,3 +384,7 @@ Example monads:
 - [Using text.parsec.indent to Parse an Indentation-Sensitive Language with Haskell's Parsec Library](https://spin.atomicobject.com/2012/03/16/using-text-parsec-indent-to-parse-an-indentation-sensitive-language-with-haskells-parsec-library/)
 - [Power parsing with Haskell and Parsec](http://blog.moertel.com/posts/2005-08-27-power-parsing-with-haskell-and-parsec.html)
 - [Left-recursion in Parsec](http://stuckinaninfiniteloop.blogspot.com/2011/10/left-recursion-in-parsec.html)
+
+## Publishing
+
+- [Creating a package on Hackage](https://begriffs.com/posts/2014-10-25-creating-package-hackage.html)
