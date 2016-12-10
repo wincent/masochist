@@ -23,7 +23,7 @@ After switching to [Colemak](/wiki/Colemak), I wanted to try life with a variant
 
 -   "Change Key" tab:
     -   "Change Control\_L key (Left Control)"
-        -   "Control\_L to Control\_L (+ When you type Control\_L only without other modifiers, send Delete)"
+        -   "Control\_L to Control\_L (+ When you type Control\_L only, send Delete) + \[KeyRepeat\]" (this is a slightly custom setting defined [in my dotfiles](https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml))
 
 So, we're giving up that faster access to the `<Escape>` key (super useful for [Vim](/wiki/Vim)) for the famed "Caps Lock as Delete" behavior which so many Colemak users rave about. You still have a Delete key on the right side of the keyboard, so you can use whichever one makes most sense (ie. dependent on the next character you have to type after the correction). For `<Escape>` in Vim, just use `<C-[>` or the actual `<Escape>` key.
 
@@ -33,7 +33,7 @@ Finally, we have:
 
 -   "Change Key" tab:
     -   "Change Return key"
-        -   "Return to Control\_L (+When you type Return only, send Return)"
+        -   "Return to Control\_L (+When you type Return only, send Return) + \[KeyRepeat\]" (this is a slightly custom setting defined [in my dotfiles](https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml))
 
 This gives us nice symmetry on the right side, mirroring the easy access to the Control key that we have on the left. Note that this is particularly useful on the laptop keyboard, which normally doesn't even have a Control key anywhere on the right side at all.
 
@@ -46,8 +46,7 @@ Also useful:
             -   "Key Repeat" -&gt; 30ms (down from 83ms)
     -   "Advanced Configurations"
         -   "Key Overlaid Modifier"
-            -   "Initial Modifier Wait": 150ms (up from 0, necessary for "SpaceFN" layout, mentioned below)
-            -   "Timeout": 300ms (down from 1000ms).
+            -   "Delay Until Repeat": 300ms (down from 500ms, to match other "Delay Until Repeat" setting above).
 
 Custom "Yubikey: Colemak": [config](https://github.com/wincent/wincent/blob/master/roles/keyboard/files/yubikey.xml)
 
