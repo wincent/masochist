@@ -29,21 +29,18 @@ To prevent this from becoming too onerous, or letting my perfectionism get the b
 
 Topics I'd like to cover, in no particular order.
 
-* Vim regexen
 * Getting links and files to open in iTerm, tmux, and Vim
 * Statusline
-* Dealing with temporary files
+* Dealing with temporary files [DONE]
+* Italics in the terminal, true color in the terminal etc
 * Plug-ins I've written:
   * Command-T
   * Ferret
-  * Loupe
   * Terminus
-  * Scalpel
 * Spelling
-* tmux integration
-* Mappings
-* Settings
-* Organization
+* Settings [DONE]
+* CTRL-Z fg + bg trick
+* Sorting multi-line blocks
 
 # Recording checklist
 
