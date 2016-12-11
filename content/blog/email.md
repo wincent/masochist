@@ -38,7 +38,7 @@ Nevertheless, maybe it was time for another look, so I started to look around, a
 
 # The rig
 
-Now, Steve recommends a complicated constellation of multiple programs, of which `mutt` is but one. He's not alone in doing this either ([here](https://wiki.archlinux.org/index.php/mutt) is one high-quality example), and I can only assume that not *everybody* recommending a combination of like this is doing so just because they read Steve's blog. Nevertheless, I wanted to start out my experiment by making the smallest possible investment.
+Now, Steve recommends a complicated constellation of multiple programs, of which `mutt` is but one. He's not alone in doing this either ([here](https://wiki.archlinux.org/index.php/mutt) is one high-quality example), and I can only assume that not *everybody* recommending a combination like this is doing so just because they read Steve's blog. Nevertheless, I wanted to start out my experiment by making the smallest possible investment.
 
 That meant doing a `brew install mutt` (thank goodness for [Homebrew](http://brew.sh/), which has formulae for just about every piece of software I needed to put this all together) and setting Mutt up to talk to my Gmail account over IMAP. But first, a brief stop at the Gmail account settings to set up an app-specific password because Mutt &mdash; obviously, perhaps &mdash; doesn't have built-in support for 2-factor authentication.
 
@@ -84,7 +84,7 @@ In other cases I had to get creative to make a workflow comfortable, like [setti
 
 A couple of examples of things I've had to patch to get them to behave how I like include [this PR](https://github.com/honza/mutt-notmuch-py/pull/9) to [`mutt-notmuch-py`](https://github.com/honza/mutt-notmuch-py) to make it employ readline history to remember and recall past searches, or [this iTerm2 issue](https://gitlab.com/gnachman/iterm2/issues/5389) where I suggest a patch to make `mailto` URLs openable with a Command-Click (it already has the ability to *open* `mailto` URLs, although it is [not well-documented](https://groups.google.com/forum/#!msg/iterm2-discuss/TFPl1D_miIU/uDVV2ZZpYWQJ)).
 
-Finally, I had to make a caching proxy daemon for the macOS keychain in order to achieve the balance between security and convenience that I desired. (Ok, not really "had to"; more like "felt like".) It's called [Passage](https://github.com/wincent/passage), it is a tiny Go Launch Agent (like [Clipper](https://github.com/wincent/clipper)), and it proved the usefulness of my long commute from Menlo Park up to San Francisco every night.
+Finally, I had to make a caching proxy daemon for the macOS keychain in order to achieve the balance between security and convenience that I desired. (Ok, not really "had to"; more like "felt like".) It's called [Passage](https://github.com/wincent/passage), it is a tiny Go Launch Agent (like [Clipper](https://github.com/wincent/clipper)), and it proved the usefulness of my long commute from Menlo Park up to San Francisco every night (90 minutes of uninterrupted hacking time).
 
 Overall, though, I am pretty happy with how it has all come together. Despite the fact that this is a command-line client, I can comfortably read HTML email, view and save attachments, open links, click on `mailto` links (or Control-Click on email addresses and choose "Send Email to Selected Address") in iTerm, tab-complete contact addresses and so on.
 
