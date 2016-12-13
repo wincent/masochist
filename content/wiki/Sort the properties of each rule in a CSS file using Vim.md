@@ -13,15 +13,6 @@ Explanation:
 -   `-1`: but, specifically, the line before that
 -   `sort`: sort everything in that range
 
-Alternatively, make a binding to do this wherever the cursor is:
+Alternatively, make a macro to do this wherever the cursor is:
 
-    noremap <silent> <leader>s ?{?+1;/}/-1sort i<CR>
-
--   `?{?`: search back to line with `{`
--   `+1`: next line
--   `,`: then go until (`;` would also work)
--   `/}/`: next line with `}`
--   `-1`: get previous line
--   `sort`: sort within the range
--   `i`: case-insensitively
-
+    ?{<CR>kV/}<CR>k:sort<CR>
