@@ -571,20 +571,18 @@ $(generateTOC);
       <h1>Wikitext</h1>
       <div id="readme">
   
-<h1 id="label-Wikitext">Wikitext<span><a href="#label-Wikitext">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Wikitext">Wikitext<span><a href="#label-Wikitext">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>The Wikitext extension is a fast wikitext-to-HTML translator written in C
 and packaged as a Ruby extension.</p>
 
 <p>Usage is straightforward:</p>
 
-<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">plain</span>
-$ <span class="ruby-identifier">irb</span> <span class="ruby-operator">-</span><span class="ruby-identifier">r</span> <span class="ruby-identifier">wikitext</span>
-<span class="ruby-operator">&gt;&gt;</span> <span class="ruby-constant">Wikitext</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-string">&quot;hello world!&quot;</span>)
-=<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;&lt;p&gt;hello world!&lt;/p&gt;\n&quot;</span>
-</pre>
+<pre class="code plain"><code class="plain">$ irb -r wikitext
+&gt;&gt; Wikitext::Parser.new.parse(&quot;hello world!&quot;)
+=&gt; &quot;&lt;p&gt;hello world!&lt;/p&gt;\n&quot;</code></pre>
 
-<h1 id="label-Design+goals">Design goals<span><a href="#label-Design+goals">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Design+goals">Design goals<span><a href="#label-Design+goals">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>I needed a wikitext-to-HTML translator for a Rails application; a number of
 design goals flowed on from this:</p>
@@ -636,12 +634,12 @@ to ensure that its behaviour is not only correct but also stable over time</p>
 <p>implement <em>all</em> of the MediaWiki syntax (tables etc)</p>
 </li></ul>
 
-<h1 id="label-Markup">Markup<span><a href="#label-Markup">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Markup">Markup<span><a href="#label-Markup">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>The markup is very close to that used by MediaWiki, the most popular wiki
 software and the one that powers Wikipedia.</p>
 
-<h2 id="label-Headings">Headings<span><a href="#label-Headings">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Headings">Headings<span><a href="#label-Headings">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <pre class="code wikitext"><code class="wikitext">= Heading 1 =
 == Heading 2 ==
@@ -659,7 +657,7 @@ software and the one that powers Wikipedia.</p>
 &lt;h5&gt;Heading 5&lt;/h5&gt;
 &lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
 
-<h2 id="label-Paragraphs">Paragraphs<span><a href="#label-Paragraphs">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Paragraphs">Paragraphs<span><a href="#label-Paragraphs">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Consecutive linebreaks are converted into paragraph breaks.</p>
 
@@ -673,7 +671,7 @@ And this is another.</code></pre>
 <pre class="code html"><code class="html">&lt;p&gt;This is one paragraph. Another line.&lt;/p&gt;
 &lt;p&gt;And this is another.&lt;/p&gt;</code></pre>
 
-<h2 id="label-Emphasis%2C+Strong">Emphasis, Strong<span><a href="#label-Emphasis%2C+Strong">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Emphasis-2C+Strong">Emphasis, Strong<span><a href="#label-Emphasis-2C+Strong">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Emphasis is marked up as follows:</p>
 
@@ -685,7 +683,9 @@ And this is another.</code></pre>
 
 <p>Strong is marked up like this:</p>
 
-<pre class="code wikitext"><code class="wikitext">&#39;&#39;&#39;strong text&#39;&#39;&#39;</code></pre>
+<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">wikitext</span>
+<span class="ruby-string">&#39;&#39;</span><span class="ruby-string">&#39;strong text&#39;</span><span class="ruby-string">&#39;&#39;</span>
+</pre>
 
 <p>And transformed into:</p>
 
@@ -717,7 +717,7 @@ shorthand style with the literal HTML tag style.</p>
 
 <pre class="code wikitext"><code class="wikitext">&lt;em&gt;foo&#39;&#39; (ie. intermixed, invalid)</code></pre>
 
-<h2 id="label-Teletype">Teletype<span><a href="#label-Teletype">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Teletype">Teletype<span><a href="#label-Teletype">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The translator recognizes both standard HTML <code>tt</code> tags and the
 backtick (`) as a shorthand. These two are equivalent:</p>
@@ -737,7 +737,7 @@ HTML5 standard.</p>
 <p>To avoid ambiguity, the translator will not let you intermix the two
 styles.</p>
 
-<h2 id="label-nowiki+spans"><code>nowiki</code> spans<span><a href="#label-nowiki+spans">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-nowiki+spans"><code>nowiki</code> spans<span><a href="#label-nowiki+spans">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Already mentioned above, you can use <code>nowiki</code> tags to
 temporarily disable wikitext markup. As soon as the translator sees the
@@ -750,7 +750,7 @@ everything it sees up until the closing <code>nowiki</code> tag:</p>
 
 <pre class="code html"><code class="html">Hello &#39;&#39;world&#39;&#39;</code></pre>
 
-<h2 id="label-Blockquotes">Blockquotes<span><a href="#label-Blockquotes">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Blockquotes">Blockquotes<span><a href="#label-Blockquotes">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <pre class="code wikitext"><code class="wikitext">&gt; Hello world!
 &gt; Bye for now.</code></pre>
@@ -765,7 +765,7 @@ blockquotes. For example:</p>
 <pre class="code wikitext"><code class="wikitext">&gt; first quote
 &gt;&gt; quote inside a quote</code></pre>
 
-<h2 id="label-Preformatted+text">Preformatted text<span><a href="#label-Preformatted+text">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Preformatted+text">Preformatted text<span><a href="#label-Preformatted+text">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Any line indented with whitespace will be interpreted as part of a
 <code>pre</code> block. Wikitext markup inside <code>pre</code> blocks has
@@ -789,7 +789,7 @@ void foo(void)
 <p><code>pre</code> blocks may be nested inside <code>blockquote</code>
 blocks.</p>
 
-<h2 id="label-Internal+links">Internal links<span><a href="#label-Internal+links">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Internal+links">Internal links<span><a href="#label-Internal+links">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <pre class="code wikitext"><code class="wikitext">[[article title]]</code></pre>
 
@@ -811,7 +811,7 @@ the default link prefix (<em>/wiki/</em> as shown in the example), and how
 target (this can be used to make links to non-existent pages appear in a
 different color).</p>
 
-<h2 id="label-Alternative+blockquote+and+preformatted+block+syntax">Alternative blockquote and preformatted block syntax<span><a href="#label-Alternative+blockquote+and+preformatted+block+syntax">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Alternative+blockquote+and+preformatted+block+syntax">Alternative blockquote and preformatted block syntax<span><a href="#label-Alternative+blockquote+and+preformatted+block+syntax">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>For <code>blockquote</code> and <code>pre</code> blocks that go on for many
 lines it may be more convenient to use the alternative syntax which uses
@@ -844,7 +844,7 @@ browser and is not actually part of the Wikitext extension). For example:</p>
 <p>The <code>lang</code> attribute may only contain letters, so “Objective-C”,
 for example would need to be written as “objc” or similar.</p>
 
-<h2 id="label-External+links">External links<span><a href="#label-External+links">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-External+links">External links<span><a href="#label-External+links">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <pre class="code wikitext"><code class="wikitext">[http://example.com/ this site]</code></pre>
 
@@ -876,7 +876,7 @@ a string that begins with a slash, optionally followed by zero or more
 underscores, hyphens or periods. Path components are separated by a slash,
 and the trailing slash after the last path component is optional.</p>
 
-<h2 id="label-Images">Images<span><a href="#label-Images">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Images">Images<span><a href="#label-Images">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <pre class="code wikitext"><code class="wikitext">{{foo.png}}</code></pre>
 
@@ -904,7 +904,7 @@ that is:</p>
 
 <pre class="code html"><code class="html">&lt;img src=&quot;/foo.png&quot; alt=&quot;/foo.png&quot;&gt;</code></pre>
 
-<h2 id="label-Lists">Lists<span><a href="#label-Lists">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Lists">Lists<span><a href="#label-Lists">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Lists come in both unordered (“ul”):</p>
 
@@ -914,9 +914,11 @@ that is:</p>
 
 <p>And ordered (“ol”) forms:</p>
 
-<pre class="code wikitext"><code class="wikitext"># first
-# second
-# third</code></pre>
+<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">wikitext</span>
+<span class="ruby-comment"># first</span>
+<span class="ruby-comment"># second</span>
+<span class="ruby-comment"># third</span>
+</pre>
 
 <p>These would produce, respectively:</p>
 
@@ -936,16 +938,18 @@ that is:</p>
 
 <p>Lists may be nested inside one another as needed. For example:</p>
 
-<pre class="code wikitext"><code class="wikitext"># outer a
-# outer b
-#* nested 1
-#* nested 2
-# outer c
-## nested foo
-## nested bar
-##* x
-##* y
-##** z</code></pre>
+<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">wikitext</span>
+<span class="ruby-comment"># outer a</span>
+<span class="ruby-comment"># outer b</span>
+<span class="ruby-comment">#* nested 1</span>
+<span class="ruby-comment">#* nested 2</span>
+<span class="ruby-comment"># outer c</span>
+<span class="ruby-comment">## nested foo</span>
+<span class="ruby-comment">## nested bar</span>
+<span class="ruby-comment">##* x</span>
+<span class="ruby-comment">##* y</span>
+<span class="ruby-comment">##** z</span>
+</pre>
 
 <p>Would produce:</p>
 
@@ -974,13 +978,13 @@ that is:</p>
   &lt;/li&gt;
 &lt;/ol&gt;</code></pre>
 
-<h1 id="label-Ruby+support">Ruby support<span><a href="#label-Ruby+support">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Ruby+support">Ruby support<span><a href="#label-Ruby+support">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Version 4.0.0 and above target Ruby 2.0.0 or higher.</p>
 
 <p>For older versions of Ruby, you may use the 3.1 release or older.</p>
 
-<h1 id="label-Rails+support">Rails support<span><a href="#label-Rails+support">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Rails+support">Rails support<span><a href="#label-Rails+support">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>The Wikitext extension provides a template handler so that templates named
 following the <code>template_name.html.wikitext</code> format will
@@ -998,14 +1002,17 @@ added to the <code>String</code> class (and also <code>NilClass</code>, for
 convenience) so that content can be easily translated from inside view
 templates following patterns like:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='ivar'>@post</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_w'>w</span></code></pre>
+<pre class="ruby"><span class="ruby-ivar">@post</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">w</span>
+</pre>
 
 <p>The <code>to_wikitext</code> method will preprocess its string using the
 String#wikitext_preprocess method, if it is defined, before feeding the
 string through the parser. This can be used to add application-specific
 behavior such as converting special strings like:</p>
 
-<pre class="code wikitext"><code class="wikitext">ticket #1234</code></pre>
+<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">wikitext</span>
+<span class="ruby-identifier">ticket</span> <span class="ruby-comment">#1234</span>
+</pre>
 
 <p>into links. An example preprocessor is included with the extension but it
 is not active by default; it can be activated with:</p>
@@ -1018,34 +1025,37 @@ convenient access to a shared singleton instance of the parser so as to
 avoid repeatedly instantiating and setting up new parser instances as part
 of every request.</p>
 
-<h2 id="label-Rails+2.3">Rails 2.3<span><a href="#label-Rails+2.3">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Rails+2.3">Rails 2.3<span><a href="#label-Rails+2.3">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>For Rails 2.3.x support, use version 2.1.x of the Wikitext gem.</p>
 
 <p>The plug-in can be activated with an appropriate <code>config.gem</code>
 statement in your <code>config/environment.rb</code>:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.1.1</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">config</span>.<span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;wikitext&#39;</span>, <span class="ruby-string">&#39;2.1.1&#39;</span>
+</pre>
 
-<h2 id="label-Rails+3.0">Rails 3.0<span><a href="#label-Rails+3.0">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Rails+3.0">Rails 3.0<span><a href="#label-Rails+3.0">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>For Rails 3.0.x support, use version 2.1.x of the Wikitext gem.</p>
 
 <p>Add a line like the following to your Gemfile:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 2.1.1</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;wikitext&#39;</span>, <span class="ruby-string">&#39;~&gt; 2.1.1&#39;</span>
+</pre>
 
 <p>Note that while older versions of Wikitext do work with Rails 3 to some
 degree, for full compatibility Wikitext version 2.0 or higher should be
 used.</p>
 
-<h2 id="label-Rails+3.1">Rails 3.1<span><a href="#label-Rails+3.1">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-Rails+3.1">Rails 3.1<span><a href="#label-Rails+3.1">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Add a line like the following to your Gemfile:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">gem</span> <span class="ruby-string">&#39;wikitext&#39;</span>
+</pre>
 
-<h1 id="label-Links">Links<span><a href="#label-Links">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Links">Links<span><a href="#label-Links">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>Website: <a
 href="https://wincent.com/products/wikitext">wincent.com/products/wikitext</a></p>
@@ -1057,7 +1067,7 @@ href="https://wincent.com/products/wikitext/doc">wincent.com/products/wikitext/d
 href="https://github.com/wincent/wikitext">github.com/wincent/wikitext</a></p>
 </li></ul>
 
-<h1 id="label-Author">Author<span><a href="#label-Author">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Author">Author<span><a href="#label-Author">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Wikitext is written and maintained by Greg Hurrell (greg@hurrell.net).
 Other contributors that have submitted patches include:</p>
@@ -1065,7 +1075,7 @@ Other contributors that have submitted patches include:</p>
 <p>Mike Stangel</p>
 </li></ul>
 
-<h1 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Copyright 2007-present Greg Hurrell. All rights reserved.</p>
 
@@ -1092,7 +1102,7 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.</p>
 
-<h1 id="label-Feedback">Feedback<span><a href="#label-Feedback">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Feedback">Feedback<span><a href="#label-Feedback">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Please let me know if you&#39;re using the Wikitext extension in your
 project. If you have any bug reports or feature requests please open a
@@ -1111,42 +1121,47 @@ are generally not included in these release notes. For a full listing of
 all changes see the source code repository at: <a
 href="http://git.wincent.com">git.wincent.com</a>.</p>
 
-<h1 id="label-Changes+in+4.3">Changes in 4.3<span><a href="#label-Changes+in+4.3">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.4">Changes in 4.4<span><a href="#label-Changes+in+4.4">&para;</a> <a href="#top">&uarr;</a></span></h1>
+<ul><li>
+<p>add official support for Ruby 2.4.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.3">Changes in 4.3<span><a href="#label-Changes+in+4.3">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>add official support for Ruby 2.3.x</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.2">Changes in 4.2<span><a href="#label-Changes+in+4.2">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.2">Changes in 4.2<span><a href="#label-Changes+in+4.2">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>add <code>pre_code</code> parse option</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.1.2">Changes in 4.1.2<span><a href="#label-Changes+in+4.1.2">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.1.2">Changes in 4.1.2<span><a href="#label-Changes+in+4.1.2">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>rebuild (no code changes) to replace broken executable in 4.1.1 release</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.1.1+%28yanked%29">Changes in 4.1.1 (yanked)<span><a href="#label-Changes+in+4.1.1+%28yanked%29">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.1.1+-28yanked-29">Changes in 4.1.1 (yanked)<span><a href="#label-Changes+in+4.1.1+-28yanked-29">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>add official support for Ruby 2.2.x</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.1">Changes in 4.1<span><a href="#label-Changes+in+4.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.1">Changes in 4.1<span><a href="#label-Changes+in+4.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>add a Haml filter; to use, require “wikitext/haml_filter”</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.0.3">Changes in 4.0.3<span><a href="#label-Changes+in+4.0.3">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.0.3">Changes in 4.0.3<span><a href="#label-Changes+in+4.0.3">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>permit building on Ruby 2.1.0</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.0.2">Changes in 4.0.2<span><a href="#label-Changes+in+4.0.2">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.0.2">Changes in 4.0.2<span><a href="#label-Changes+in+4.0.2">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fix broken gemspec responsible for faulty builds in version 4.0.2</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.0.1">Changes in 4.0.1<span><a href="#label-Changes+in+4.0.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.0.1">Changes in 4.0.1<span><a href="#label-Changes+in+4.0.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fix build issues on Linux machines (with GNU install)</p>
 </li><li>
@@ -1154,13 +1169,13 @@ href="http://git.wincent.com">git.wincent.com</a>.</p>
 HighLine gem</p>
 </li></ul>
 
-<h1 id="label-Changes+in+4.0">Changes in 4.0<span><a href="#label-Changes+in+4.0">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+4.0">Changes in 4.0<span><a href="#label-Changes+in+4.0">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>requires Ruby 2.0.0; for older versions of Ruby please use a previous
 Wikitext release</p>
 </li></ul>
 
-<h1 id="label-Changes+in+3.1">Changes in 3.1<span><a href="#label-Changes+in+3.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+3.1">Changes in 3.1<span><a href="#label-Changes+in+3.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>the <code>link_proc</code> parse option can now be set as an attribute on
 the parser at initialization or via an accessor</p>
@@ -1168,18 +1183,18 @@ the parser at initialization or via an accessor</p>
 <p>fix underescaping of ampersands in URIs</p>
 </li></ul>
 
-<h1 id="label-Changes+in+3.0.1">Changes in 3.0.1<span><a href="#label-Changes+in+3.0.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+3.0.1">Changes in 3.0.1<span><a href="#label-Changes+in+3.0.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fix bad output when emitting external links containing email addresses</p>
 </li></ul>
 
-<h1 id="label-Changes+in+3.0">Changes in 3.0<span><a href="#label-Changes+in+3.0">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+3.0">Changes in 3.0<span><a href="#label-Changes+in+3.0">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fix newline-swallowing bug which affected “PRE” blocks with lines beginning
 with a “PATH” token</p>
 </li></ul>
 
-<h1 id="label-Changes+in+3.0b">Changes in 3.0b<span><a href="#label-Changes+in+3.0b">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+3.0b">Changes in 3.0b<span><a href="#label-Changes+in+3.0b">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>silence deprecation warnings triggered under Rails 3.1</p>
 </li><li>
@@ -1188,20 +1203,20 @@ you should continue to use the Wikitext 2.1.x series, which continues to be
 supported</p>
 </li></ul>
 
-<h1 id="label-Changes+in+2.1.1">Changes in 2.1.1<span><a href="#label-Changes+in+2.1.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+2.1.1">Changes in 2.1.1<span><a href="#label-Changes+in+2.1.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fix a couple of token-swallowing bugs that manifested when certain invalid
 markup was fed into the translator</p>
 </li></ul>
 
-<h1 id="label-Changes+in+2.1">Changes in 2.1<span><a href="#label-Changes+in+2.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+2.1">Changes in 2.1<span><a href="#label-Changes+in+2.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>the <code>external_link_rel</code> attribute can be used to include a
 “nofollow” <code>rel</code> attribute in external links (patch from Mike
 Stangel)</p>
 </li></ul>
 
-<h1 id="label-Changes+in+2.0">Changes in 2.0<span><a href="#label-Changes+in+2.0">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+2.0">Changes in 2.0<span><a href="#label-Changes+in+2.0">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>compatibility with the Rails 3 template handler API</p>
 </li><li>
@@ -1214,13 +1229,13 @@ compliance with the HTML5 specification</p>
 new default) and XML syntax</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.12">Changes in 1.12<span><a href="#label-Changes+in+1.12">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.12">Changes in 1.12<span><a href="#label-Changes+in+1.12">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>the String#w and String#to_wikitext methods mark their returned strings as
 html_safe under Rails 3</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.11">Changes in 1.11<span><a href="#label-Changes+in+1.11">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.11">Changes in 1.11<span><a href="#label-Changes+in+1.11">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>extract Gem specification into separate file for compatibility with
 Bundler&#39;s “install from Git repository” functionality</p>
@@ -1228,12 +1243,12 @@ Bundler&#39;s “install from Git repository” functionality</p>
 <p>updates for compatibility with Rails 3</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.10.1">Changes in 1.10.1<span><a href="#label-Changes+in+1.10.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.10.1">Changes in 1.10.1<span><a href="#label-Changes+in+1.10.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fix builds on 64-bit Darwin platforms</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.10">Changes in 1.10<span><a href="#label-Changes+in+1.10">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.10">Changes in 1.10<span><a href="#label-Changes+in+1.10">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>a <code>wikitext</code> executable is now included for processing wikitext
 markup from the commandline: input may come from filename arguments
@@ -1241,7 +1256,7 @@ specified on the commandline, piped in via standard input, or typed in
 interactively via a tty</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.9">Changes in 1.9<span><a href="#label-Changes+in+1.9">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.9">Changes in 1.9<span><a href="#label-Changes+in+1.9">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>NilClass#w method now accepts an optional parameters hash</p>
 </li><li>
@@ -1251,7 +1266,7 @@ used, for example, to provide “red links” for articles which do not exist
 yet</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.8">Changes in 1.8<span><a href="#label-Changes+in+1.8">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.8">Changes in 1.8<span><a href="#label-Changes+in+1.8">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p><code>pre</code> tags may now take an optional <code>lang</code> attribute
 to mark up the translated text for syntax-highlighting</p>
@@ -1260,7 +1275,7 @@ to mark up the translated text for syntax-highlighting</p>
 several percent</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.7">Changes in 1.7<span><a href="#label-Changes+in+1.7">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.7">Changes in 1.7<span><a href="#label-Changes+in+1.7">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>many optimizations for speed: performance has improved for all input types
 and in some cases has more than doubled (the biggest gains are for inputs
@@ -1279,7 +1294,7 @@ consistent with existing handling of zero-width link text
 internal links</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.6">Changes in 1.6<span><a href="#label-Changes+in+1.6">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.6">Changes in 1.6<span><a href="#label-Changes+in+1.6">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>zero-length image targets (<code>{{}}</code>) are now passed through
 unchanged rather than turned into <code>img</code> tags</p>
@@ -1296,7 +1311,7 @@ indentation</p>
 that files from other versions don&#39;t get pulled in inappropriately</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.5.3">Changes in 1.5.3<span><a href="#label-Changes+in+1.5.3">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.5.3">Changes in 1.5.3<span><a href="#label-Changes+in+1.5.3">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>fixed broken handling of empty (zero-width) links such as
 <code>[[]]</code>, <code>[[|]]</code> and <code>[[|foo]]</code></p>
@@ -1309,7 +1324,7 @@ that files from other versions don&#39;t get pulled in inappropriately</p>
 used by FreeBSD)</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.5.2">Changes in 1.5.2<span><a href="#label-Changes+in+1.5.2">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.5.2">Changes in 1.5.2<span><a href="#label-Changes+in+1.5.2">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>the <code>mailto</code> class is now consistently applied to all mailto
 URIs</p>
@@ -1321,25 +1336,25 @@ tags when they appear immediately after the shorthand notation of
 <code>pre</code> and <code>blockquote</code> blocks</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.5.1">Changes in 1.5.1<span><a href="#label-Changes+in+1.5.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.5.1">Changes in 1.5.1<span><a href="#label-Changes+in+1.5.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>the <code>w</code> and <code>to_wikitext</code> methods now accept an
 options hash</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.5.0">Changes in 1.5.0<span><a href="#label-Changes+in+1.5.0">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.5.0">Changes in 1.5.0<span><a href="#label-Changes+in+1.5.0">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>added <code>base_heading_level</code> parser option</p>
 </li><li>
 <p>changes for compatibility with Ruby 1.9 (compiles and all specs pass)</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.4.1">Changes in 1.4.1<span><a href="#label-Changes+in+1.4.1">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.4.1">Changes in 1.4.1<span><a href="#label-Changes+in+1.4.1">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>include necessary file that was missing from 1.4.0 gem</p>
 </li></ul>
 
-<h1 id="label-Changes+in+1.4.0">Changes in 1.4.0<span><a href="#label-Changes+in+1.4.0">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+in+1.4.0">Changes in 1.4.0<span><a href="#label-Changes+in+1.4.0">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <ul><li>
 <p>“special links” inside internal link spans (double square brackets) are no
 longer supported; instead use external link spans: where previously you
@@ -1350,7 +1365,7 @@ used <code>[[issues/210 | ticket 210]]</code> you should now use
 removed</p>
 </li></ul>
 
-<h1 id="label-Changes+prior+to+1.4.0">Changes prior to 1.4.0<span><a href="#label-Changes+prior+to+1.4.0">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Changes+prior+to+1.4.0">Changes prior to 1.4.0<span><a href="#label-Changes+prior+to+1.4.0">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
 <p>Please see the source code repository browser at <a
 href="http://git.wincent.com">git.wincent.com</a>.</p>
@@ -1485,25 +1500,27 @@ practice, all your interaction will be with the Wikitext::Parser class.</p>
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<h1 id="label-Attributes">Attributes<span><a href="#label-Attributes">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Attributes">Attributes<span><a href="#label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h1>
 
-<h2 id="label-line_ending+%28String%29"><code>line_ending</code> (String)<span><a href="#label-line_ending+%28String%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-line_ending+-28String-29"><code>line_ending</code> (String)<span><a href="#label-line_ending+-28String-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The line ending to be used in the generated HTML (defaults to “n”).</p>
 
-<h2 id="label-internal_link_prefix+%28String%29"><code>internal_link_prefix</code> (String)<span><a href="#label-internal_link_prefix+%28String%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-internal_link_prefix+-28String-29"><code>internal_link_prefix</code> (String)<span><a href="#label-internal_link_prefix+-28String-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The prefix to be prepended to internal links (defaults to “/wiki/”). For
 example, given an <code>internal_link_prefix</code> of “/wiki/”, the
 internal link:</p>
 
-<pre class="code wikitext"><code class="wikitext">[[Apple]]</code></pre>
+<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">wikitext</span>
+[[<span class="ruby-constant">Apple</span>]]
+</pre>
 
 <p>would be transformed into:</p>
 
 <pre class="code html"><code class="html">&lt;a href=&quot;/wiki/Apple&quot;&gt;Apple&lt;/a&gt;</code></pre>
 
-<h2 id="label-external_link_class+%28String%29"><code>external_link_class</code> (String)<span><a href="#label-external_link_class+%28String%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-external_link_class+-28String-29"><code>external_link_class</code> (String)<span><a href="#label-external_link_class+-28String-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The CSS class to be applied to external links (defaults to “external”). For
 example, given an <code>external_link_class</code> of “external”, the
@@ -1515,7 +1532,7 @@ external link:</p>
 
 <pre class="code html"><code class="html">&lt;a class=&quot;external&quot; href=&quot;http://www.google.com/&quot;&gt;the best search engine&lt;/a&gt;</code></pre>
 
-<h2 id="label-external_link_rel+%28String%29"><code>external_link_rel</code> (String)<span><a href="#label-external_link_rel+%28String%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-external_link_rel+-28String-29"><code>external_link_rel</code> (String)<span><a href="#label-external_link_rel+-28String-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The <code>rel</code> attribute to be applied to external links (defaults to
 <code>nil</code>, meaning that no <code>rel</code> attribute is applied).
@@ -1531,8 +1548,9 @@ for more details).</p>
 
 <p>Or via setting an attribute on the parser:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Wikitext</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_external_link_rel'>external_link_rel</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nofollow</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">parser</span> = <span class="ruby-constant">Wikitext</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">external_link_rel</span> = <span class="ruby-string">&#39;nofollow&#39;</span>
+</pre>
 
 <p>Or at parse time:</p>
 
@@ -1546,7 +1564,7 @@ emission of any previously configured <code>rel</code> attribute:</p>
 <pre class="ruby"><span class="ruby-identifier">parser</span>.<span class="ruby-identifier">parse</span> <span class="ruby-identifier">input</span>, :<span class="ruby-identifier">external_link_rel</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>
 </pre>
 
-<h2 id="label-mailto_class+%28String%29"><code>mailto_class</code> (String)<span><a href="#label-mailto_class+%28String%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-mailto_class+-28String-29"><code>mailto_class</code> (String)<span><a href="#label-mailto_class+-28String-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The CSS class to be applied to external “mailto” links (defaults to
 “mailto”). For example:</p>
@@ -1555,13 +1573,15 @@ emission of any previously configured <code>rel</code> attribute:</p>
 
 <p>or if autolinking of email addresses is turned on, just:</p>
 
-<pre class="code wikitext"><code class="wikitext">user@example.com</code></pre>
+<pre class="ruby"><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-operator">!</span><span class="ruby-identifier">wikitext</span>
+<span class="ruby-identifier">user</span><span class="ruby-ivar">@example</span>.<span class="ruby-identifier">com</span>
+</pre>
 
 <p>would be transformed into:</p>
 
 <pre class="code html"><code class="html">&lt;a class=&quot;mailto&quot; href=&quot;mailto:user@example.com&quot;&gt;user@example.com&lt;/a&gt;</code></pre>
 
-<h2 id="label-img_prefix+%28String%29"><code>img_prefix</code> (String)<span><a href="#label-img_prefix+%28String%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-img_prefix+-28String-29"><code>img_prefix</code> (String)<span><a href="#label-img_prefix+-28String-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>The prefix to be prepended to image tags (defaults to “/images/”). For
 example, given this image markup:</p>
@@ -1572,7 +1592,7 @@ example, given this image markup:</p>
 
 <pre class="code html"><code class="html">&lt;img src=&quot;/images/foo.png&quot; alt=&quot;foo.png&quot; /&gt;</code></pre>
 
-<h2 id="label-autolink+%28boolean%29"><code>autolink</code> (boolean)<span><a href="#label-autolink+%28boolean%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-autolink+-28boolean-29"><code>autolink</code> (boolean)<span><a href="#label-autolink+-28boolean-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Whether to autolink URIs found in the plain scope. When true:</p>
 
@@ -1592,7 +1612,7 @@ literally:</p>
 
 <pre class="code html"><code class="html">http://apple.com/</code></pre>
 
-<h2 id="label-pre_code+%28boolean%29"><code>pre_code</code> (boolean)<span><a href="#label-pre_code+%28boolean%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-pre_code+-28boolean-29"><code>pre_code</code> (boolean)<span><a href="#label-pre_code+-28boolean-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>When true, “pre” blocks are formatted using “code” elements. For example:</p>
 
@@ -1606,7 +1626,7 @@ literally:</p>
 
 <pre class="code html"><code class="html">&lt;pre&gt;foo&lt;/pre&gt;</code></pre>
 
-<h2 id="label-space_to_underscore+%28boolean%29"><code>space_to_underscore</code> (boolean)<span><a href="#label-space_to_underscore+%28boolean%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-space_to_underscore+-28boolean-29"><code>space_to_underscore</code> (boolean)<span><a href="#label-space_to_underscore+-28boolean-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Whether spaces in link targets should be encoded normally or transformed
 into underscores.</p>
@@ -1630,7 +1650,7 @@ longer be disambiguated, and a link to “foo_bar” will actually resolve to
 underscores in titles at the application level so as to avoid this kind of
 confusion.</p>
 
-<h2 id="label-base_heading_level+%28integer%29"><code>base_heading_level</code> (integer)<span><a href="#label-base_heading_level+%28integer%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-base_heading_level+-28integer-29"><code>base_heading_level</code> (integer)<span><a href="#label-base_heading_level+-28integer-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>An integer between 0 and 6 denoting the current “heading level”. This can
 be used to inform the parser of the “context” in which it is translating
@@ -1657,7 +1677,7 @@ necessarily trusted, this setting can be used to prevent users from
 inappropriately employing “h1” tags in deeply-nested contexts where they
 would otherwise disturb the visual harmony of the page.</p>
 
-<h2 id="label-output_style+%28Symbol%29"><code>output_style</code> (Symbol)<span><a href="#label-output_style+%28Symbol%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-output_style+-28Symbol-29"><code>output_style</code> (Symbol)<span><a href="#label-output_style+-28Symbol-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>Wikitext emits valid HTML5 fragments. By default, the output syntax is
 HTML. Optionally, the output syntax can be changed to XML by setting the
@@ -1670,8 +1690,9 @@ HTML. Optionally, the output syntax can be changed to XML by setting the
 
 <p>Or via setting an attribute on the parser:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Wikitext</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_output_style'>output_style</span> <span class='op'>=</span> <span class='symbol'>:xml</span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">parser</span> = <span class="ruby-constant">Wikitext</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">output_style</span> = :<span class="ruby-identifier">xml</span>
+</pre>
 
 <p>Or at parse time:</p>
 
@@ -1688,7 +1709,7 @@ XML syntax uses self closing <code>img</code> tags:</p>
 
 <pre class="code html"><code class="html">&lt;img src=&quot;foo.png&quot; alt=&quot;Foo&quot;&gt;</code></pre>
 
-<h2 id="label-link_proc+%28lambda+or+Proc+object%29"><code>link_proc</code> (lambda or Proc object)<span><a href="#label-link_proc+%28lambda+or+Proc+object%29">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+<h2 id="label-link_proc+-28lambda+or+Proc+object-29"><code>link_proc</code> (lambda or Proc object)<span><a href="#label-link_proc+-28lambda+or+Proc+object-29">&para;</a> <a href="#top">&uarr;</a></span></h2>
 
 <p>“Red links” can be implemented by providing a custom <code>link_proc</code>
 block at parse time. This can be used to check for existing or non-existent
@@ -1711,8 +1732,9 @@ that markup with many links does not overwhelm your database.</p>
 
 <p>Or via setting an attribute on the parser:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Wikitext</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_link_proc'>link_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_link_proc'>link_proc</span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">parser</span> = <span class="ruby-constant">Wikitext</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">link_proc</span> = <span class="ruby-identifier">link_proc</span>
+</pre>
 
 <p>Many more examples of link procs can be found in the spec suite:</p>
 <ul><li>
@@ -1939,9 +1961,10 @@ with the overridden value.</p>
 
 <p>In other words, both:</p>
 
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'>Wikitext</span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
-<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_autolink'>autolink</span> <span class='op'>=</span> <span class='kw'>false</span>
-<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_mailto_class'>mailto_class</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mail</span><span class='tstring_end'>&#39;</span></span></code></pre>
+<pre class="ruby"><span class="ruby-identifier">parser</span> = <span class="ruby-constant">Wikitext</span><span class="ruby-operator">::</span><span class="ruby-constant">Parser</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">autolink</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-identifier">parser</span>.<span class="ruby-identifier">mailto_class</span> = <span class="ruby-string">&#39;mail&#39;</span>
+</pre>
 
 <p>And:</p>
 
@@ -2395,7 +2418,7 @@ internally.  (In actual use the Wikitext extension doesn&#39;t even use
 this class; it instead uses lightweight C structs under the hood for
 maximum speed and memory efficiency.)</p>
 
-<h1 id="label-Attributes">Attributes<span><a href="#label-Attributes">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
+<h1 id="label-Attributes">Attributes<span><a href="#label-Attributes">&para;</a> <a href="#top">&uarr;</a></span></h1>
 <dl class="rdoc-list note-list"><dt><code>start</code>
 <dd>
 <p>the location in memory (a character pointer into the input stream) where
@@ -2535,9 +2558,9 @@ name.</p>
     </div>
 
     <div id="footer">
-  Generated on Fri Jan  1 15:43:35 2016 by
+  Generated on Thu Jan 12 13:07:41 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.5.2 (ruby-2.0.0).
+  0.8.5.2 (ruby-2.4.0).
 </div>
 
   </body>
