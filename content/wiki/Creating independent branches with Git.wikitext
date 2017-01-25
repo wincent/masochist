@@ -8,6 +8,12 @@ cache_breaker: 1
  rm .git/index
  # and now git add, git commit etc
 
+== Alternative
+
+  git checkout --orphan new-branch-name
+  git rm -rf . # or rm .git/index, as above
+  git commit --allow-empty -m 'Create new-branch-name branch'
+
 = The long version =
 
 Normally you create a [[branch]] by "forking" off from some other point in the development history (often the HEAD of an existing branch). Ultimately you can trace the ancestry of all your branches back to a "great-grand-daddy" commit, shown as an `X` in the diagram below:
