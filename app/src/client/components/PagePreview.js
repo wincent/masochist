@@ -14,7 +14,7 @@ class PagePreview extends React.Component {
           <code>page</code>
         </td>
         <td>
-          <Link to={url}>ost
+          <Link to={url}>
             {title}
           </Link>
         </td>
