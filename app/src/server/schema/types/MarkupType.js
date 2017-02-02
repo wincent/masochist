@@ -115,7 +115,15 @@ const MarkupType = new GraphQLObjectType({
         } else if (markup.format === 'md') {
           const renderer = getMarkedRenderer(level);
           return marked(markup.raw, {renderer});
-        } else if (markup.format === 'txt') {
+        } else if (
+          markup.format === 'c' ||
+          markup.format === 'html' ||
+          markup.format === 'm' ||
+          markup.format === 'patch' ||
+          markup.format === 'rb' ||
+          markup.format === 'sh' ||
+          markup.format === 'txt'
+        ) {
           return '<pre><code>' + escapeHTML(markup.raw) + '</code></pre>';
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
