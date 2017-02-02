@@ -38,11 +38,12 @@ class Search extends React.Component {
 
   componentDidMount() {
     ifMounted.register(this);
-    this.searchInput.focus();
+    this._searchInput.focus();
   }
 
   componentWillUnmount() {
     ifMounted.unregister(this);
+    this._searchInput = null;
   }
 
   render() {
@@ -78,7 +79,7 @@ class Search extends React.Component {
                 onChange={event => this.setState({q: event.currentTarget.value})}
                 placeholder="Search..."
                 type="search"
-                ref={input => { this.searchInput = input }}
+                ref={input => { this._searchInput = input }}
                 value={this.state.q}
               />
               <input
