@@ -29,7 +29,7 @@ $ brew uninstall --force ffmpeg imagemagick gifsicle
 $ sudo gem uninstall screengif rmagick
 ```
 
-On upgrading to Sierra I found that things had changed again, and the answer lied in \[ <http://stackoverflow.com/questions/39494672/rmagick-installation-cant-find-magickwand-h> | this Stack Overflow post \]:
+On upgrading to Sierra I found that things had changed again, and the answer lied in [this Stack Overflow post](http://stackoverflow.com/questions/39494672/rmagick-installation-cant-find-magickwand-h):
 
 ```shell
 $ sudo gem uninstall rmagick screengif
