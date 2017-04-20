@@ -1,6 +1,7 @@
 ---
 tags: wunderlist todoist
 title: Goodbye Wunderlist, hello Todoist
+twitter: https://twitter.com/wincent/status/854994203843059712
 ---
 
 I've been pretty happy with [Wunderlist](https://www.wunderlist.com/) over the past year or so, but visible signs of development have been few and far between since they were acquired by Microsoft in 2015. Today, they [dropped a bombshell](https://www.wunderlist.com/blog/your-preview-of-microsoft-to-do/):
@@ -32,3 +33,5 @@ My only doubt now is how to actually organize my work. For a start, I've mostly 
 I've also created a couple of labels, "someday" (for low-priority "wish list" items) and "easy" (simple/short filler tasks that I can grab when I need a break), and will wait to see if any more useful ones emerge organically in the coming days. I have some filters too, but I'm not sure how often I'll use them. Probably the most interesting ones are "Newish" an "Oldish", which show me tasks created less and more than 30 days ago, respectively. Finally, I've set a custom default view that shows "Next" tasks, high-priority (p1, p2, p3) tasks, and "Inbox" tasks, in that order. We'll see how that goes too.
 
 Let's hope that this solution works out and can provide me with some utility for at least a few months/years. I think if I have to migrate away from another task list, I might just bite the bullet and start keeping my own todo lists in text files on a computer. I'm not an [Emacs](https://www.gnu.org/software/emacs/) user, so I don't have a good [org mode](http://orgmode.org/), but at some point I'm just going to have to give up and forgo the fancy web UIs, the slick iOS and macOS apps, and the seamless (proprietary) cloud sync, and just stick it all in a plain-text file that I edit using Vim.
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/854994203843059712)</em></small>
