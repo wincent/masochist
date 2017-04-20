@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+if [ $# -ne 1 ]; then
+  echo 'error: exactly 1 argument (post permalink stub) required.'
+  exit 1
+fi
+
+if [ -e "content/blog/$1.md" ]; then
+  vim "content/blog/$1.md"
+elif [ -e "content/blog/$1.wikitext" ]; then
+  vim "content/blog/$1.wikitext"
+else
+  cat > "content/blog/$1.md" <<HERE
+---
+tags: 
+title: 
+---
+
+
+HERE
+  vim "content/blog/$1.md"
+fi
