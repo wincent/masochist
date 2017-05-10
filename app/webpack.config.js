@@ -6,7 +6,7 @@ module.exports = {
   devtool: 'eval',
   entry: [
     'webpack/hot/dev-server',
-    'webpack-dev-server/client?http://localhost:3001',
+    'webpack-dev-server/client?http://localhost:3001/',
     path.resolve(__dirname, 'src', 'client', 'app.js'),
   ],
   module: {
