@@ -22,7 +22,7 @@ class Article extends React.Component {
   };
 
   render() {
-    const {article} = this.props;
+    const article = this.props.data;
 
     if (!article) {
       return (
@@ -69,16 +69,17 @@ class Article extends React.Component {
           <div>
             <TrustedPrerenderedMarkup html={article.body.html} />
           </div>
-          <Tags tagged={article} />
+          <Tags data={article} />
         </article>
       </DocumentTitle>
     );
   }
 }
 
-export default createFragmentContainer(Article, {
-  article: graphql`
-    fragment Article_article on Article {
+export default createFragmentContainer(
+  Article,
+  graphql`
+    fragment Article on Article {
       title
       redirect
       resolvedTitle
@@ -88,7 +89,7 @@ export default createFragmentContainer(Article, {
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

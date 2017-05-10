@@ -53,7 +53,7 @@ class TagsIndex extends React.Component {
             <tbody>
               {
                 filteredTags.map(node => (
-                  <TagPreview key={node.id} tag={node} />
+                  <TagPreview key={node.id} data={node} />
                 ))
               }
             </tbody>
@@ -74,7 +74,7 @@ export default createFragmentContainer(
           node {
             id
             name
-            ...TagPreview_tag
+            ...TagPreview
           }
         }
       }

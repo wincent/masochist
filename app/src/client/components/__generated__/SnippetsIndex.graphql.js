@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule SnippetsIndex.graphql
- * @generated SignedSource<<d50a964a11e9b15260fb7e51d8b36fe1>>
+ * @generated SignedSource<<b92232bf33c6ff63435823d8fa448fb9>>
  * @flow
  * @nogrep
  */
@@ -98,7 +98,7 @@ const fragment /*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "Snippet_snippet",
+                  "name": "Snippet",
                   "args": null
                 }
               ],

@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule TagRouteQuery.graphql
- * @generated SignedSource<<c089d09477e044f70e59e74cdcdb02b9>>
- * @relayHash 6c97edd03a26d54c820569db98dcf02e
+ * @generated SignedSource<<adedb0f35a27d0864881a08f1a09f7ab>>
+ * @relayHash 46acc5ba7e513290d5df7879c07a54f1
  * @flow
  * @nogrep
  */
@@ -27,13 +27,13 @@ query TagRouteQuery(
   node(id: $id) {
     __typename
     ... on Tag {
-      ...Tag_tag
+      ...Tag
     }
     id
   }
 }
 
-fragment Tag_tag on Tag {
+fragment Tag on Tag {
   count
   id
   name
@@ -43,7 +43,7 @@ fragment Tag_tag on Tag {
       cursor
       node {
         __typename
-        ...ContentPreview_node
+        ...ContentPreview
         ... on Node {
           id
         }
@@ -58,47 +58,47 @@ fragment Tag_tag on Tag {
   }
 }
 
-fragment ContentPreview_node on Content {
+fragment ContentPreview on Content {
   __typename
-  ...ArticlePreview_article
-  ...PagePreview_page
-  ...PostPreview_post
-  ...SnippetPreview_snippet
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
 }
 
-fragment ArticlePreview_article on Article {
+fragment ArticlePreview on Article {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment PagePreview_page on Page {
+fragment PagePreview on Page {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment PostPreview_post on Post {
+fragment PostPreview on Post {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment SnippetPreview_snippet on Snippet {
+fragment SnippetPreview on Snippet {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -150,7 +150,7 @@ const batch /*: ConcreteBatch*/ = {
             "selections": [
               {
                 "kind": "FragmentSpread",
-                "name": "Tag_tag",
+                "name": "Tag",
                 "args": null
               }
             ]
@@ -543,7 +543,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query TagRouteQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Tag {\n      ...Tag_tag\n    }\n    id\n  }\n}\n\nfragment Tag_tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview_node\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview_node on Content {\n  __typename\n  ...ArticlePreview_article\n  ...PagePreview_page\n  ...PostPreview_post\n  ...SnippetPreview_snippet\n}\n\nfragment ArticlePreview_article on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment PagePreview_page on Page {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment PostPreview_post on Post {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment SnippetPreview_snippet on Snippet {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query TagRouteQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Tag {\n      ...Tag\n    }\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

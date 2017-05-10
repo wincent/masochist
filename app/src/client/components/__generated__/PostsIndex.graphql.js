@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule PostsIndex.graphql
- * @generated SignedSource<<19a5be0f67af4947e246d8b5085076c7>>
+ * @generated SignedSource<<e487eba207fe425041cd8774b6691f52>>
  * @flow
  * @nogrep
  */
@@ -98,7 +98,7 @@ const fragment /*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "Post_post",
+                  "name": "Post",
                   "args": null
                 }
               ],

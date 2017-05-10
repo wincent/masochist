@@ -61,7 +61,7 @@ class ArticlesIndex extends React.Component {
             <tbody>
               {
                 this.props.data.articles.edges.map(({node}) => (
-                  <ArticlePreview key={node.id} article={node} />
+                  <ArticlePreview key={node.id} data={node} />
                 ))
               }
             </tbody>
@@ -91,7 +91,7 @@ export default createPaginationContainer(
         edges {
           node {
             id
-            ...ArticlePreview_article
+            ...ArticlePreview
           }
         }
         pageInfo {

@@ -43,7 +43,7 @@ class PostsIndex extends React.Component {
         <div>
           {
             this.props.data.posts.edges.map(({node}) => (
-              <Post key={node.id} post={node} />
+              <Post key={node.id} data={node} />
             ))
           }
           {
@@ -71,7 +71,7 @@ export default createPaginationContainer(
         edges {
           node {
             id
-            ...Post_post
+            ...Post
           }
         }
         pageInfo {

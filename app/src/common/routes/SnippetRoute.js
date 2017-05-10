@@ -12,7 +12,7 @@ export default buildRoute(
     ) {
       node(id: $id) {
         ... on Snippet {
-          ...Snippet_snippet
+          ...Snippet
         }
       }
     }
@@ -21,5 +21,5 @@ export default buildRoute(
     baseHeadingLevel: 2,
     id,
   }),
-  data => <Snippet snippet={data.node} />,
+  data => <Snippet data={data.node} />,
 );

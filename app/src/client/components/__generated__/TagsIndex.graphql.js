@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule TagsIndex.graphql
- * @generated SignedSource<<8d1f49b61bc22f3107c694c0dcccd94e>>
+ * @generated SignedSource<<542679a2d110da2456d142d8dd527039>>
  * @flow
  * @nogrep
  */
@@ -99,7 +99,7 @@ const fragment /*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "TagPreview_tag",
+                  "name": "TagPreview",
                   "args": null
                 }
               ],

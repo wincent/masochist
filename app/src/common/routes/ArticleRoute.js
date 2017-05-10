@@ -12,7 +12,7 @@ export default buildRoute(
     ) {
       node(id: $id) {
         ... on Article {
-          ...Article_article
+          ...Article
         }
       }
     }
@@ -21,5 +21,5 @@ export default buildRoute(
     baseHeadingLevel: 2,
     id,
   }),
-  data => <Article article={data.node} />,
+  data => <Article data={data.node} />,
 );

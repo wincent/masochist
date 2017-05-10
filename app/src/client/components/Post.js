@@ -12,7 +12,7 @@ import When from './When';
 
 class Post extends React.Component {
   render() {
-    const {post} = this.props;
+    const post = this.props.data;
 
     if (!post) {
       return (
@@ -40,16 +40,17 @@ class Post extends React.Component {
           <div>
             <TrustedPrerenderedMarkup html={post.body.html} />
           </div>
-          <Tags tagged={post} />
+          <Tags data={post} />
         </article>
       </DocumentTitle>
     );
   }
 }
 
-export default createFragmentContainer(Post, {
-  post: graphql`
-    fragment Post_post on Post {
+export default createFragmentContainer(
+  Post,
+  graphql`
+    fragment Post on Post {
       id
       title
       createdAt
@@ -58,7 +59,7 @@ export default createFragmentContainer(Post, {
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

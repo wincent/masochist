@@ -19,7 +19,7 @@ const TagLink = ({tag}) => (
 
 class Tags extends React.Component {
   render() {
-    const {tags} = this.props.tagged;
+    const {tags} = this.props.data;
     const classes = cx({
       ...this.props.classes,
       tags: true,
@@ -32,10 +32,11 @@ class Tags extends React.Component {
   }
 }
 
-export default createFragmentContainer(Tags, {
-  tagged: graphql`
-    fragment Tags_tagged on Tagged {
+export default createFragmentContainer(
+  Tags,
+  graphql`
+    fragment Tags on Tagged {
       tags
     }
   `,
-});
+);

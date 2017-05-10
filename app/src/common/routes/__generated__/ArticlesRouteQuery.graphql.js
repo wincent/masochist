@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ArticlesRouteQuery.graphql
- * @generated SignedSource<<96a77f0128c1c84656cd2c7f75e2338f>>
- * @relayHash 9e7753761c70e65c2ee1a8ee5318917d
+ * @generated SignedSource<<fbd3e72280ef6bf0d1abf6dbb842133d>>
+ * @relayHash 34f32ed2318ede54803df80c0e210781
  * @flow
  * @nogrep
  */
@@ -31,7 +31,7 @@ fragment ArticlesIndex on Root {
     edges {
       node {
         id
-        ...ArticlePreview_article
+        ...ArticlePreview
         __typename
       }
       cursor
@@ -45,15 +45,15 @@ fragment ArticlesIndex on Root {
   }
 }
 
-fragment ArticlePreview_article on Article {
+fragment ArticlePreview on Article {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -274,7 +274,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticlesRouteQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview_article\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview_article on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query ArticlesRouteQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

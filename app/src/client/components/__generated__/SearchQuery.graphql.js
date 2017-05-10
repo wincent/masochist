@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SearchQuery.graphql
- * @generated SignedSource<<9165772869df56c89079dd9fdd904e61>>
- * @relayHash c2686ef9f9e53480103490917805e621
+ * @generated SignedSource<<457b35163e3ab728b8d9c06ed5c9452b>>
+ * @relayHash dd7e0b7732f5e44ecae9eca84eb710fc
  * @flow
  * @nogrep
  */
@@ -34,7 +34,7 @@ fragment Search on Root {
       cursor
       node {
         __typename
-        ...ContentPreview_node
+        ...ContentPreview
         ... on Node {
           id
         }
@@ -49,47 +49,47 @@ fragment Search on Root {
   }
 }
 
-fragment ContentPreview_node on Content {
+fragment ContentPreview on Content {
   __typename
-  ...ArticlePreview_article
-  ...PagePreview_page
-  ...PostPreview_post
-  ...SnippetPreview_snippet
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
 }
 
-fragment ArticlePreview_article on Article {
+fragment ArticlePreview on Article {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment PagePreview_page on Page {
+fragment PagePreview on Page {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment PostPreview_post on Post {
+fragment PostPreview on Post {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment SnippetPreview_snippet on Snippet {
+fragment SnippetPreview on Snippet {
   createdAt
   title
   updatedAt
   url
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -472,7 +472,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SearchQuery(\n  $count: Int!\n  $cursor: String\n  $q: String!\n) {\n  ...Search\n}\n\nfragment Search on Root {\n  search(first: $count, after: $cursor, q: $q) {\n    count\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview_node\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview_node on Content {\n  __typename\n  ...ArticlePreview_article\n  ...PagePreview_page\n  ...PostPreview_post\n  ...SnippetPreview_snippet\n}\n\nfragment ArticlePreview_article on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment PagePreview_page on Page {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment PostPreview_post on Post {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment SnippetPreview_snippet on Snippet {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query SearchQuery(\n  $count: Int!\n  $cursor: String\n  $q: String!\n) {\n  ...Search\n}\n\nfragment Search on Root {\n  search(first: $count, after: $cursor, q: $q) {\n    count\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

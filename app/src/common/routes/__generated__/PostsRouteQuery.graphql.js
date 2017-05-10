@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PostsRouteQuery.graphql
- * @generated SignedSource<<18e73717fe5328a3be7eb80125790fbf>>
- * @relayHash 456d2bd114415c7f5e8ec3bff575b47d
+ * @generated SignedSource<<7a5f4d987f9f84787da2b819f3331dfe>>
+ * @relayHash 9b51aac6ab1bdb821fadfdb8f09d8c67
  * @flow
  * @nogrep
  */
@@ -32,7 +32,7 @@ fragment PostsIndex on Root {
     edges {
       node {
         id
-        ...Post_post
+        ...Post
         __typename
       }
       cursor
@@ -46,7 +46,7 @@ fragment PostsIndex on Root {
   }
 }
 
-fragment Post_post on Post {
+fragment Post on Post {
   id
   title
   createdAt
@@ -55,10 +55,10 @@ fragment Post_post on Post {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -316,7 +316,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PostsRouteQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post_post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post_post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query PostsRouteQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

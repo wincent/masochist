@@ -84,32 +84,11 @@ const extraLocals = {
 };
 
 appRoutes.forEach(route => {
-  // TODO: try server rendering here, and if that doesn't work, preloading
-  // TODO: figure out why this sometimes doesn't work (requests just 404)
   app.get(route, async (request, response) => {
     const history = createHistory({
       initialEntries: [request.originalUrl],
       initialIndex: 0,
     });
-    // TODO: figure out if I can make this be the tool I need to grab the data
-    // at the same time as the action...
-    // const resolver = (context, params) => {
-    //   const {action, prepare} = context.route;
-    //   if (typeof action !== 'function') {
-    //     return null;
-    //   }
-    //   if (typeof prepare === 'function') {
-    //     const preparedParams = prepare(params);
-    //     return action(
-    //       {
-    //         ...context,
-    //         params: preparedParams,
-    //       },
-    //       preparedParams,
-    //     );
-    //   }
-    //   return action(context, params);
-    // };
     const router = createRouter(history);
     const cache = {};
     const environment = new Environment({
@@ -120,6 +99,10 @@ appRoutes.forEach(route => {
             .then(result => {
               const key = getRequestBody(operation, variables);
               cache[key] = result;
+              console.log('got', result);
+              console.log('node', result.data.node);
+              console.log('hOP', result.data.node.hasOwnProperty); // undefined
+              // because it is coming from graphql-js...
               return result;
             })
             .catch(err => console.log('got an error', err));

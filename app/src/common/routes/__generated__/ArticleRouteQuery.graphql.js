@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ArticleRouteQuery.graphql
- * @generated SignedSource<<7e047224235cff0ad289e6631446de87>>
- * @relayHash 78aeac4b7d497069f4cfc5bfff3a5ae5
+ * @generated SignedSource<<6ff8c71e72457ebf420cf6dd60553bca>>
+ * @relayHash be55f533a7171aca798fcaa04268477b
  * @flow
  * @nogrep
  */
@@ -26,13 +26,13 @@ query ArticleRouteQuery(
   node(id: $id) {
     __typename
     ... on Article {
-      ...Article_article
+      ...Article
     }
     id
   }
 }
 
-fragment Article_article on Article {
+fragment Article on Article {
   title
   redirect
   resolvedTitle
@@ -42,10 +42,10 @@ fragment Article_article on Article {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -91,7 +91,7 @@ const batch /*: ConcreteBatch*/ = {
             "selections": [
               {
                 "kind": "FragmentSpread",
-                "name": "Article_article",
+                "name": "Article",
                 "args": null
               }
             ]
@@ -239,7 +239,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article_article\n    }\n    id\n  }\n}\n\nfragment Article_article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Search.graphql
- * @generated SignedSource<<8ceba38086c12f8e27b4d4861180e35a>>
+ * @generated SignedSource<<fc5040488b4a5a32d7e510c0079e016e>>
  * @flow
  * @nogrep
  */
@@ -115,7 +115,7 @@ const fragment /*: ConcreteFragment*/ = {
               "selections": [
                 {
                   "kind": "FragmentSpread",
-                  "name": "ContentPreview_node",
+                  "name": "ContentPreview",
                   "args": null
                 }
               ],

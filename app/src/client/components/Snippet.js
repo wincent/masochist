@@ -14,7 +14,7 @@ import When from './When';
 
 class Snippet extends React.Component {
   render() {
-    const {snippet} = this.props;
+    const snippet = this.props.data;
 
     if (!snippet) {
       return (
@@ -42,21 +42,17 @@ class Snippet extends React.Component {
           <div>
             <TrustedPrerenderedMarkup html={snippet.body.html} />
           </div>
-          <Tags tagged={snippet} />
+          <Tags data={snippet} />
         </article>
       </DocumentTitle>
     );
   }
 }
 
-export default createFragmentContainer(Snippet, {
-  /* TODO manually deal with:
-  initialVariables: {
-    baseHeadingLevel: 2,
-  }
-  */
-  snippet: graphql`
-    fragment Snippet_snippet on Snippet {
+export default createFragmentContainer(
+  Snippet,
+  graphql`
+    fragment Snippet on Snippet {
       id
       url
       title
@@ -65,7 +61,7 @@ export default createFragmentContainer(Snippet, {
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

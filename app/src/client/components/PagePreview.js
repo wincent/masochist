@@ -9,7 +9,7 @@ import When from './When';
 
 class PagePreview extends React.Component {
   render() {
-    const {page} = this.props;
+    const page = this.props.data;
     const {createdAt, title, updatedAt, url} = page;
     return (
       <tr>
@@ -25,21 +25,22 @@ class PagePreview extends React.Component {
           <When createdAt={createdAt} updatedAt={updatedAt} />
         </td>
         <td>
-          <Tags classes={{left: true, compact: true}} tagged={page} />
+          <Tags classes={{left: true, compact: true}} data={page} />
         </td>
       </tr>
     );
   }
 }
 
-export default createFragmentContainer(PagePreview, {
-  page: graphql`
-    fragment PagePreview_page on Page {
+export default createFragmentContainer(
+  PagePreview,
+  graphql`
+    fragment PagePreview on Page {
       createdAt
       title
       updatedAt
       url
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

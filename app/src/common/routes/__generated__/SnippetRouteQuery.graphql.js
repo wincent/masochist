@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SnippetRouteQuery.graphql
- * @generated SignedSource<<79529415f20c7ecb5da8e522023f6661>>
- * @relayHash 1601ca68e2424739f51bab10bcf66195
+ * @generated SignedSource<<24603af8407d5dbb87afde21c1fcb6c8>>
+ * @relayHash a26684c0395d97c2a4e8ea08ea618bcc
  * @flow
  * @nogrep
  */
@@ -26,13 +26,13 @@ query SnippetRouteQuery(
   node(id: $id) {
     __typename
     ... on Snippet {
-      ...Snippet_snippet
+      ...Snippet
     }
     id
   }
 }
 
-fragment Snippet_snippet on Snippet {
+fragment Snippet on Snippet {
   id
   url
   title
@@ -41,10 +41,10 @@ fragment Snippet_snippet on Snippet {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -90,7 +90,7 @@ const batch /*: ConcreteBatch*/ = {
             "selections": [
               {
                 "kind": "FragmentSpread",
-                "name": "Snippet_snippet",
+                "name": "Snippet",
                 "args": null
               }
             ]
@@ -224,7 +224,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SnippetRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      ...Snippet_snippet\n    }\n    id\n  }\n}\n\nfragment Snippet_snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query SnippetRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      ...Snippet\n    }\n    id\n  }\n}\n\nfragment Snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

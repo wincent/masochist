@@ -13,7 +13,7 @@ export default buildRoute(
     ) {
       node(id: $id) {
         ... on Tag {
-          ...Tag_tag
+          ...Tag
         }
       }
     }
@@ -23,5 +23,5 @@ export default buildRoute(
     cursor: null,
     id,
   }),
-  data => <Tag tag={data.node} />,
+  data => <Tag data={data.node} />,
 );

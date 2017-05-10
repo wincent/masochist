@@ -9,7 +9,7 @@ import When from './When';
 
 class ArticlePreview extends React.Component {
   render() {
-    const {article} = this.props;
+    const article = this.props.data;
     return (
       <tr>
         <td>
@@ -24,21 +24,22 @@ class ArticlePreview extends React.Component {
           <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
         </td>
         <td>
-          <Tags classes={{left: true, compact: true}} tagged={article} />
+          <Tags classes={{left: true, compact: true}} data={article} />
         </td>
       </tr>
     );
   }
 }
 
-export default createFragmentContainer(ArticlePreview, {
-  article: graphql`
-    fragment ArticlePreview_article on Article {
+export default createFragmentContainer(
+  ArticlePreview,
+  graphql`
+    fragment ArticlePreview on Article {
       createdAt
       title
       updatedAt
       url
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

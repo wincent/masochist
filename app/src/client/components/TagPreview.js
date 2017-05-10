@@ -7,7 +7,7 @@ import Link from './Link';
 
 class TagPreview extends React.Component {
   render() {
-    const {count, name, url} = this.props.tag;
+    const {count, name, url} = this.props.data;
     return (
       <tr>
         <td>
@@ -23,12 +23,13 @@ class TagPreview extends React.Component {
   }
 }
 
-export default createFragmentContainer(TagPreview, {
-  tag: graphql`
-    fragment TagPreview_tag on Tag {
+export default createFragmentContainer(
+  TagPreview,
+  graphql`
+    fragment TagPreview on Tag {
       count
       name
       url
     }
   `,
-});
+);

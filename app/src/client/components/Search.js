@@ -100,7 +100,7 @@ class Search extends React.Component {
           <ContentListing>
             {
               search.edges.map(({cursor, node}, i) => (
-                <ContentPreview cursor={cursor} key={i} node={node} />
+                <ContentPreview cursor={cursor} key={i} data={node} />
               ))
             }
           </ContentListing>
@@ -131,7 +131,7 @@ export default createPaginationContainer(
         edges {
           cursor
           node {
-            ...ContentPreview_node
+            ...ContentPreview
           }
         }
         pageInfo {

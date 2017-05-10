@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule ArticlesIndex.graphql
- * @generated SignedSource<<8e7d27360b6395b99ee1ed261b5db5dc>>
+ * @generated SignedSource<<020997c2c577b9562a4cc5d35fefbf21>>
  * @flow
  * @nogrep
  */
@@ -98,7 +98,7 @@ const fragment /*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "ArticlePreview_article",
+                  "name": "ArticlePreview",
                   "args": null
                 }
               ],

@@ -11,9 +11,8 @@ export default buildRoute(
       $id: ID!
     ) {
       node(id: $id) {
-        __typename
         ... on Post {
-          ...Post_post
+          ...Post
         }
       }
     }
@@ -22,5 +21,5 @@ export default buildRoute(
     baseHeadingLevel: 2,
     id,
   }),
-  data => <Post post={data.node} />,
+  data => <Post data={data.node} />,
 );

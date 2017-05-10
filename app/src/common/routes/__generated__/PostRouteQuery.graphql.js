@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PostRouteQuery.graphql
- * @generated SignedSource<<1e6e33c63505d53e2ef11faef8b37cf1>>
- * @relayHash 0055267a0223152eab7fffff14e85ea4
+ * @generated SignedSource<<6f240d354fda76aae8da5b007783b619>>
+ * @relayHash 4f47d48910340e698443bc69ffe55f50
  * @flow
  * @nogrep
  */
@@ -26,13 +26,13 @@ query PostRouteQuery(
   node(id: $id) {
     __typename
     ... on Post {
-      ...Post_post
+      ...Post
     }
     id
   }
 }
 
-fragment Post_post on Post {
+fragment Post on Post {
   id
   title
   createdAt
@@ -41,10 +41,10 @@ fragment Post_post on Post {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -85,19 +85,12 @@ const batch /*: ConcreteBatch*/ = {
         "plural": false,
         "selections": [
           {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "__typename",
-            "storageKey": null
-          },
-          {
             "kind": "InlineFragment",
             "type": "Post",
             "selections": [
               {
                 "kind": "FragmentSpread",
-                "name": "Post_post",
+                "name": "Post",
                 "args": null
               }
             ]
@@ -231,7 +224,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PostRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Post {\n      ...Post_post\n    }\n    id\n  }\n}\n\nfragment Post_post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query PostRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Post {\n      ...Post\n    }\n    id\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SnippetsRouteQuery.graphql
- * @generated SignedSource<<600b61564c7512b2eff3dcda971b6ec6>>
- * @relayHash 6c042eddb97f4f69727de175734c24bb
+ * @generated SignedSource<<b7fbf728ab5c8379ab778deef44bac4a>>
+ * @relayHash 3077460acdad5bca5ef143e4732c99e1
  * @flow
  * @nogrep
  */
@@ -32,7 +32,7 @@ fragment SnippetsIndex on Root {
     edges {
       node {
         id
-        ...Snippet_snippet
+        ...Snippet
         __typename
       }
       cursor
@@ -46,7 +46,7 @@ fragment SnippetsIndex on Root {
   }
 }
 
-fragment Snippet_snippet on Snippet {
+fragment Snippet on Snippet {
   id
   url
   title
@@ -55,10 +55,10 @@ fragment Snippet_snippet on Snippet {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -316,7 +316,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SnippetsRouteQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet_snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet_snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query SnippetsRouteQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

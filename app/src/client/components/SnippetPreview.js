@@ -9,7 +9,7 @@ import When from './When';
 
 class SnippetPreview extends React.Component {
   render() {
-    const {snippet} = this.props;
+    const snippet = this.props.data;
     const {createdAt, title, updatedAt, url} = snippet;
     return (
       <tr>
@@ -25,21 +25,22 @@ class SnippetPreview extends React.Component {
           <When createdAt={createdAt} updatedAt={updatedAt} />
         </td>
         <td>
-          <Tags classes={{left: true, compact: true}} tagged={snippet} />
+          <Tags classes={{left: true, compact: true}} data={snippet} />
         </td>
       </tr>
     );
   }
 }
 
-export default createFragmentContainer(SnippetPreview, {
-  snippet: graphql`
-    fragment SnippetPreview_snippet on Snippet {
+export default createFragmentContainer(
+  SnippetPreview,
+  graphql`
+    fragment SnippetPreview on Snippet {
       createdAt
       title
       updatedAt
       url
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

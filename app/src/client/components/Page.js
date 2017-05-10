@@ -12,7 +12,7 @@ import When from './When';
 
 class Page extends React.Component {
   render() {
-    const {page} = this.props;
+    const page = this.props.data;
 
     if (!page) {
       // TODO: once search is implemented, link to that here (and in the other
@@ -41,16 +41,17 @@ class Page extends React.Component {
           <div>
             <TrustedPrerenderedMarkup html={page.body.html} />
           </div>
-          <Tags tagged={page} />
+          <Tags data={page} />
         </article>
       </DocumentTitle>
     );
   }
 }
 
-export default createFragmentContainer(Page, {
-  page: graphql`
-    fragment Page_page on Page {
+export default createFragmentContainer(
+  Page,
+  graphql`
+    fragment Page on Page {
       id
       title
       createdAt
@@ -59,7 +60,7 @@ export default createFragmentContainer(Page, {
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
-      ...Tags_tagged
+      ...Tags
     }
   `,
-});
+);

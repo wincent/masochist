@@ -42,7 +42,7 @@ class SnippetsIndex extends React.Component {
         <div>
           {
             this.props.data.snippets.edges.map(({node}) => (
-              <Snippet key={node.id} snippet={node} />
+              <Snippet key={node.id} data={node} />
             ))
           }
           {
@@ -70,8 +70,7 @@ export default createPaginationContainer(
         edges {
           node {
             id
-            # TODO: un-nest all of these as well
-            ...Snippet_snippet
+            ...Snippet
           }
         }
         pageInfo {

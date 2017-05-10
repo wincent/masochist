@@ -37,17 +37,15 @@ export default async function getCanonicalURLForRequest(request): ?string {
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
     const decoded = decodeURIComponent(match[1]);
     const id = toGlobalId('Article', decoded.replace(/_/g, ' '));
-    const result = await runQuery(
-      `
-        query ArticleQuery($id: ID!) {
-          node(id: $id) {
-            ...on Article {
-              url
-            }
+    const result = await runQuery(`
+      query ArticleQuery($id: ID!) {
+        node(id: $id) {
+          ... on Article {
+            url
           }
         }
-      `,
-      {id}
+      }`,
+      {id},
     );
 
     if (result.data && result.data.node) {

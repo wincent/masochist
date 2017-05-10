@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule TagsRouteQuery.graphql
- * @generated SignedSource<<0274123c8aef0c0ea6a4e649627d8696>>
- * @relayHash ebe6673f9d8f4fa97b33b78ea1a7f5cd
+ * @generated SignedSource<<69a998f09b6460c07b1c6886449fafea>>
+ * @relayHash 1d86d223d01db1a8cdfd1b0a6a3d71ce
  * @flow
  * @nogrep
  */
@@ -32,13 +32,13 @@ fragment TagsIndex on Root {
       node {
         id
         name
-        ...TagPreview_tag
+        ...TagPreview
       }
     }
   }
 }
 
-fragment TagPreview_tag on Tag {
+fragment TagPreview on Tag {
   count
   name
   url
@@ -161,7 +161,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query TagsRouteQuery(\n  $count: Int!\n) {\n  ...TagsIndex\n}\n\nfragment TagsIndex on Root {\n  tags(first: $count) {\n    count\n    edges {\n      node {\n        id\n        name\n        ...TagPreview_tag\n      }\n    }\n  }\n}\n\nfragment TagPreview_tag on Tag {\n  count\n  name\n  url\n}\n"
+  "text": "query TagsRouteQuery(\n  $count: Int!\n) {\n  ...TagsIndex\n}\n\nfragment TagsIndex on Root {\n  tags(first: $count) {\n    count\n    edges {\n      node {\n        id\n        name\n        ...TagPreview\n      }\n    }\n  }\n}\n\nfragment TagPreview on Tag {\n  count\n  name\n  url\n}\n"
 };
 
 module.exports = batch;

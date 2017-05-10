@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PageRouteQuery.graphql
- * @generated SignedSource<<b8b091c861f08858ec5a5e781d124dbd>>
- * @relayHash edca4099696ff6f284f4be5099e9a19d
+ * @generated SignedSource<<de8b1c4e185b60a007e39c186d3ee986>>
+ * @relayHash 9531d7edd259e43140694ed8729a8c5b
  * @flow
  * @nogrep
  */
@@ -26,13 +26,13 @@ query PageRouteQuery(
   node(id: $id) {
     __typename
     ... on Page {
-      ...Page_page
+      ...Page
     }
     id
   }
 }
 
-fragment Page_page on Page {
+fragment Page on Page {
   id
   title
   createdAt
@@ -41,10 +41,10 @@ fragment Page_page on Page {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  ...Tags_tagged
+  ...Tags
 }
 
-fragment Tags_tagged on Tagged {
+fragment Tags on Tagged {
   tags
 }
 */
@@ -90,7 +90,7 @@ const batch /*: ConcreteBatch*/ = {
             "selections": [
               {
                 "kind": "FragmentSpread",
-                "name": "Page_page",
+                "name": "Page",
                 "args": null
               }
             ]
@@ -224,7 +224,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page_page\n    }\n    id\n  }\n}\n\nfragment Page_page on Page {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page\n    }\n    id\n  }\n}\n\nfragment Page on Page {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

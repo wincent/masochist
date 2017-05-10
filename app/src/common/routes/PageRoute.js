@@ -12,7 +12,7 @@ export default buildRoute(
     ) {
       node(id: $id) {
         ... on Page {
-          ...Page_page
+          ...Page
         }
       }
     }
@@ -21,5 +21,5 @@ export default buildRoute(
     baseHeadingLevel: 2,
     id,
   }),
-  data => <Page page={data.node} />,
+  data => <Page data={data.node} />,
 );

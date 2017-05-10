@@ -40,25 +40,25 @@ class Tag extends React.Component {
   }
 
   render() {
-    const {tag} = this.props;
-    const {taggables} = tag;
+    const tag = this.props.data;
+    const {count, name, taggables, url} = tag;
     // this is the url that needs encoding
     return (
-      <DocumentTitle title={tag.name}>
+      <DocumentTitle title={name}>
         <div>
           <h1>
-            <Link to={tag.url}>
-              {tag.name}
+            <Link to={url}>
+              {name}
             </Link>
           </h1>
           <p>
-            <PluralText count={tag.count} text="item" /> tagged
-            with <em>{tag.name}</em>
+            <PluralText count={count} text="item" /> tagged
+            with <em>{name}</em>
           </p>
           <ContentListing>
             {
               taggables.edges.map(({cursor, node}, i) => (
-                <ContentPreview cursor={cursor} key={i} node={node} />
+                <ContentPreview cursor={cursor} key={i} data={node} />
               ))
             }
           </ContentListing>
@@ -78,31 +78,29 @@ class Tag extends React.Component {
 
 export default createPaginationContainer(
   Tag,
-  {
-    tag: graphql`
-      fragment Tag_tag on Tag {
-        count
-        id
-        name
-        url
-        taggables(
-          first: $count
-          after: $cursor
-        ) @connection(key: "Tag_taggables") {
-          edges {
-            cursor
-            node {
-              ...ContentPreview_node
-            }
-          }
-          pageInfo {
-            endCursor
-            hasNextPage
+  graphql`
+    fragment Tag on Tag {
+      count
+      id
+      name
+      url
+      taggables(
+        first: $count
+        after: $cursor
+      ) @connection(key: "Tag_taggables") {
+        edges {
+          cursor
+          node {
+            ...ContentPreview
           }
         }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
-    `,
-  },
+    }
+  `,
   {
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -110,7 +108,7 @@ export default createPaginationContainer(
         count: totalCount,
       };
     },
-    getVariables({tag: {id}}, {count, cursor}, fragmentVariables) {
+    getVariables({data: {id}}, {count, cursor}, fragmentVariables) {
       return {
         id,
         count,
@@ -124,7 +122,7 @@ export default createPaginationContainer(
         $id: ID!
       ) {
         node(id: $id) {
-          ...Tag_tag
+          ...Tag
         }
       }
     `

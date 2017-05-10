@@ -10,28 +10,29 @@ import SnippetPreview from './SnippetPreview';
 
 class ContentPreview extends React.Component {
   render() {
-    const {cursor, node} = this.props;
-    switch (node.__typename) {
+    const {cursor, data} = this.props;
+    switch (data.__typename) {
       case 'Article':
-        return <ArticlePreview article={node} key={cursor} />;
+        return <ArticlePreview data={data} key={cursor} />;
       case 'Page':
-        return <PagePreview key={cursor} page={node} />;
+        return <PagePreview key={cursor} data={data} />;
       case 'Post':
-        return <PostPreview key={cursor} post={node} />;
+        return <PostPreview key={cursor} data={data} />;
       case 'Snippet':
-        return <SnippetPreview key={cursor} snippet={node} />;
+        return <SnippetPreview key={cursor} data={data} />;
     }
   }
 }
 
-export default createFragmentContainer(ContentPreview, {
-  node: graphql`
-    fragment ContentPreview_node on Content {
+export default createFragmentContainer(
+  ContentPreview,
+  graphql`
+    fragment ContentPreview on Content {
       __typename
-      ...ArticlePreview_article
-      ...PagePreview_page
-      ...PostPreview_post
-      ...SnippetPreview_snippet
+      ...ArticlePreview
+      ...PagePreview
+      ...PostPreview
+      ...SnippetPreview
     }
   `,
-});
+);
