@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
-
 import 'babel-polyfill';
 import '../common/unhandledRejection';
 
