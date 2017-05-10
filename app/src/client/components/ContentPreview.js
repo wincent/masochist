@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import ArticlePreview from './ArticlePreview';
 import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';
@@ -21,16 +24,14 @@ class ContentPreview extends React.Component {
   }
 }
 
-export default Relay.createContainer(ContentPreview, {
-  fragments: {
-    node: () => Relay.QL`
-      fragment on Content {
-        __typename
-        ${ArticlePreview.getFragment('article')}
-        ${PagePreview.getFragment('page')}
-        ${PostPreview.getFragment('post')}
-        ${SnippetPreview.getFragment('snippet')}
-      }
-    `,
-  },
+export default createFragmentContainer(ContentPreview, {
+  node: graphql`
+    fragment ContentPreview_node on Content {
+      __typename
+      ...ArticlePreview_article
+      ...PagePreview_page
+      ...PostPreview_post
+      ...SnippetPreview_snippet
+    }
+  `,
 });

@@ -1,7 +1,7 @@
 {
   "plugins": [
     "dev-expression",
-    "./babel/getRelayBabelPlugin.js"
+    "relay"
   ],
   "presets": [
     "es2015",

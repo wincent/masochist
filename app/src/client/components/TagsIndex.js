@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import TagPreview from './TagPreview';
 
@@ -61,24 +64,19 @@ class TagsIndex extends React.Component {
   }
 }
 
-export default Relay.createContainer(TagsIndex, {
-  initialVariables: {
-    count: 2 ** 31 - 1,
-  },
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        tags(first: $count) {
-          count
-          edges {
-            node {
-              id
-              name
-              ${TagPreview.getFragment('tag')}
-            }
+export default createFragmentContainer(TagsIndex, {
+  viewer: graphql`
+    fragment TagsIndex_viewer on User {
+      tags(first: $count) {
+        count
+        edges {
+          node {
+            id
+            name
+            ...TagPreview_tag
           }
         }
       }
-    `,
-  },
+    }
+  `,
 });

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Time from './Time';
 import inBrowser from '../inBrowser';
@@ -15,9 +16,9 @@ const WhenWrapper = props => (
 
 export default class When extends React.Component {
   static propTypes = {
-    createdAt: React.PropTypes.string,
-    primary: React.PropTypes.oneOf(['createdAt', 'updatedAt']),
-    updatedAt: React.PropTypes.string,
+    createdAt: PropTypes.string,
+    primary: PropTypes.oneOf(['createdAt', 'updatedAt']),
+    updatedAt: PropTypes.string,
   };
 
   render() {

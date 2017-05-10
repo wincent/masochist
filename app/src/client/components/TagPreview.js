@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import Link from './Link';
 
 class TagPreview extends React.Component {
@@ -20,14 +23,12 @@ class TagPreview extends React.Component {
   }
 }
 
-export default Relay.createContainer(TagPreview, {
-  fragments: {
-    tag: () => Relay.QL`
-      fragment on Tag {
-        count
-        name
-        url
-      }
-    `,
-  },
+export default createFragmentContainer(TagPreview, {
+  tag: graphql`
+    fragment TagPreview_tag on Tag {
+      count
+      name
+      url
+    }
+  `,
 });

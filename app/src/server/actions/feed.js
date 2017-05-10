@@ -16,7 +16,7 @@ import stripTags from '../stripTags';
 const HELLIP = '\u2026';
 const FOUR_TWEETS = 140 * 4;
 
-function ellipsize(input: string, limit = FOUR_TWEETS: number): string {
+function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
   if (input.length >= limit - 3) {
     return input.substr(0, limit - 3) + HELLIP;
   } else {

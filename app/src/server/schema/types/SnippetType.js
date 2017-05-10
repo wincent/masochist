@@ -26,6 +26,8 @@ const SnippetType = registerType(new GraphQLObjectType({
     title: {
       type: GraphQLString,
       description: "The snippet's title",
+      // NOTE: i might want to include human-readable id here as well...
+      // to make it easy to generate URLs etc
       resolve: snippet => snippet.title || `Snippet #${snippet.id}`,
     },
     body: {

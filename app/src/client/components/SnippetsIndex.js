@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createPaginationContainer,
+  graphql,
+} from 'react-relay';
 import ifMounted from '../ifMounted';
 import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
@@ -12,11 +15,17 @@ class SnippetsIndex extends React.Component {
   }
 
   _handleLoadMore = () => {
-    this.props.relay.setVariables({
-      count: this.props.relay.variables.count + 10,
-    }, ifMounted(this, ({ready, done, error, aborted}) => {
-      this.setState({isLoading: !ready && !(done || error || aborted)});
-    }));
+    this.setState({isLoading: true}, () => {
+      this.props.relay.loadMore(
+        10,
+        error => {
+          this.setState({isLoading: this.props.relay.isLoading()});
+          // ifMounted(this, error => {
+          //   this.setState({isLoading: this.props.relay.isLoading()});
+          // });
+        },
+      );
+    });
   }
 
   componentDidMount() {
@@ -50,25 +59,53 @@ class SnippetsIndex extends React.Component {
   }
 }
 
-export default Relay.createContainer(SnippetsIndex, {
-  initialVariables: {
-    count: 3,
-  },
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        snippets(first: $count) {
+export default createPaginationContainer(
+  SnippetsIndex,
+  {
+    viewer: graphql`
+      fragment SnippetsIndex_viewer on User {
+        snippets(
+          first: $count
+          after: $cursor
+        ) @connection(key: "SnippetsIndex_snippets") {
           edges {
             node {
               id
-              ${Snippet.getFragment('snippet')}
+              ...Snippet_snippet
             }
           }
           pageInfo {
+            endCursor
             hasNextPage
           }
         }
       }
     `,
   },
-});
+  {
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      };
+    },
+    getVariables(props, {count, cursor}, fragmentVariables) {
+      return {
+        baseHeadingLevel: 2,
+        count,
+        cursor,
+      };
+    },
+    query: graphql`
+      query SnippetsIndexQuery(
+        $baseHeadingLevel: Int!
+        $count: Int!
+        $cursor: String
+      ) {
+        viewer {
+          ...SnippetsIndex_viewer
+        }
+      }
+    `
+  }
+);

@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createPaginationContainer,
+  graphql,
+} from 'react-relay';
 import inBrowser from '../inBrowser';
 import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
@@ -17,11 +20,20 @@ class ArticlesIndex extends React.Component {
   }
 
   _handleLoadMore = () => {
-    this.props.relay.setVariables({
-      count: this.props.relay.variables.count + 10,
-    }, ifMounted(this, ({ready, done, error, aborted}) => {
-      this.setState({isLoading: !ready && !(done || error || aborted)});
-    }));
+    this.setState({isLoading: true}, () => {
+      this.props.relay.loadMore(
+        10,
+        error => {
+          // TODO: confirm this crazy ifMounted stuff is still needed
+          this.setState({isLoading: this.props.relay.isLoading()});
+          // ifMounted(this, (error) => {
+          //   // not called
+          //   console.log('setting state', this.props.relay.isLoading());
+          //   // this.setState({isLoading: this.props.relay.isLoading()})
+          // });
+        },
+      );
+    });
   }
 
   componentDidMount() {
@@ -55,7 +67,7 @@ class ArticlesIndex extends React.Component {
             </tbody>
           </table>
           {
-            this.props.viewer.articles.pageInfo.hasNextPage ?
+            this.props.relay.hasMore() ?
               <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
@@ -68,25 +80,51 @@ class ArticlesIndex extends React.Component {
   }
 }
 
-export default Relay.createContainer(ArticlesIndex, {
-  initialVariables: {
-    count: 10,
-  },
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        articles(first: $count) {
+export default createPaginationContainer(
+  ArticlesIndex,
+  {
+    viewer: graphql`
+      fragment ArticlesIndex_viewer on User {
+        articles(
+          first: $count
+          after: $cursor
+        ) @connection(key: "ArticlesIndex_articles") {
           edges {
             node {
               id
-              ${ArticlePreview.getFragment('article')}
+              ...ArticlePreview_article
             }
           }
           pageInfo {
+            endCursor
             hasNextPage
           }
         }
       }
     `,
   },
-});
+  {
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      };
+    },
+    getVariables(props, {count, cursor}, fragmentVariables) {
+      return {
+        count,
+        cursor,
+      };
+    },
+    query: graphql`
+      query ArticlesIndexQuery(
+        $count: Int!
+        $cursor: String
+      ) {
+        viewer {
+          ...ArticlesIndex_viewer
+        }
+      }
+    `
+  }
+);

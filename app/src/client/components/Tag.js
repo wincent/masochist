@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createPaginationContainer,
+  graphql,
+} from 'react-relay';
 import ifMounted from '../ifMounted';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
@@ -15,11 +18,17 @@ class Tag extends React.Component {
   }
 
   _handleLoadMore = () => {
-    this.props.relay.setVariables({
-      count: this.props.relay.variables.count + 10,
-    }, ifMounted(this, ({ready, done, error, aborted}) => {
-      this.setState({isLoading: !ready && !(done || error || aborted)});
-    }));
+    this.setState({isLoading: true}, () => {
+      this.props.relay.loadMore(
+        10,
+        error => {
+          this.setState({isLoading: this.props.relay.isLoading()});
+          // ifMounted(this, error => {
+          //   this.setState({isLoading: this.props.relay.isLoading()});
+          // });
+        },
+      );
+    });
   }
 
   componentDidMount() {
@@ -33,6 +42,7 @@ class Tag extends React.Component {
   render() {
     const {tag} = this.props;
     const {taggables} = tag;
+    // this is the url that needs encoding
     return (
       <DocumentTitle title={tag.name}>
         <div>
@@ -66,28 +76,57 @@ class Tag extends React.Component {
   }
 }
 
-export default Relay.createContainer(Tag, {
-  initialVariables: {
-    count: 10,
-  },
-  fragments: {
-    tag: () => Relay.QL`
-      fragment on Tag {
+export default createPaginationContainer(
+  Tag,
+  {
+    tag: graphql`
+      fragment Tag_tag on Tag {
         count
+        id
         name
         url
-        taggables(first: $count) {
+        taggables(
+          first: $count
+          after: $cursor
+        ) @connection(key: "Tag_taggables") {
           edges {
             cursor
             node {
-              ${ContentPreview.getFragment('node')}
+              ...ContentPreview_node
             }
           }
           pageInfo {
+            endCursor
             hasNextPage
           }
         }
       }
     `,
   },
-});
+  {
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      };
+    },
+    getVariables({tag: {id}}, {count, cursor}, fragmentVariables) {
+      return {
+        id,
+        count,
+        cursor,
+      };
+    },
+    query: graphql`
+      query TagQuery(
+        $count: Int!
+        $cursor: String
+        $id: ID!
+      ) {
+        node(id: $id) {
+          ...Tag_tag
+        }
+      }
+    `
+  }
+);

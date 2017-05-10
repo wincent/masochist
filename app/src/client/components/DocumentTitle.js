@@ -4,6 +4,7 @@
  * @see https://github.com/gaearon/react-document-title/blob/master/index.js
  */
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import withSideEffect from 'react-side-effect';
 
@@ -36,7 +37,7 @@ function handleStateChangeOnClient(newState) {
 
 class DocumentTitle extends React.Component {
   static propTypes = {
-    title: React.PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
 
     /**
      * A component should specify `isLeaf` if it is a "leaf node" like an
@@ -45,7 +46,7 @@ class DocumentTitle extends React.Component {
      * where a naive approach would end up appending the titles from every
      * single leaf.
      */
-    isLeaf: React.PropTypes.bool,
+    isLeaf: PropTypes.bool,
   };
 
   render() {

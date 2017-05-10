@@ -1,5 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createPaginationContainer,
+  graphql,
+} from 'react-relay';
 import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
 import ContentListing from './ContentListing';
@@ -16,7 +20,7 @@ const INITIAL_COUNT = 10;
 
 class Search extends React.Component {
   static contextTypes = {
-    router: React.PropTypes.object,
+    router: PropTypes.object,
   };
 
   constructor(props) {
@@ -29,11 +33,17 @@ class Search extends React.Component {
   }
 
   _handleLoadMore = () => {
-    this.props.relay.setVariables({
-      count: this.props.relay.variables.count + 10,
-    }, ifMounted(this, ({ready, done, error, aborted}) => {
-      this.setState({isLoading: !ready && !(done || error || aborted)});
-    }));
+    this.setState({isLoading: true}, () => {
+      this.props.relay.loadMore(
+        10,
+        error => {
+          this.setState({isLoading: this.props.relay.isLoading()});
+          // ifMounted(this, error => {
+          //   this.setState({isLoading: this.props.relay.isLoading()});
+          // });
+        },
+      );
+    });
   }
 
   componentDidMount() {
@@ -64,13 +74,7 @@ class Search extends React.Component {
             <form
               onSubmit={event => {
                 event.preventDefault();
-                this.props.relay.setVariables({
-                  count: INITIAL_COUNT,
-                  q: this.state.q,
-                }, ifMounted(this, ({ready, done, error, aborted}) => {
-                  this.context.router.replace(searchURL);
-                  this.setState({isSearching: !ready && !(done || error || aborted)});
-                }));
+                this.context.router.history.push(searchURL);
               }}
             >
               <input
@@ -114,27 +118,55 @@ class Search extends React.Component {
   }
 }
 
-export default Relay.createContainer(Search, {
-  initialVariables: {
-    count: INITIAL_COUNT,
-    q: '',
-  },
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        search(first: $count, q: $q) {
+export default createPaginationContainer(
+  Search,
+  {
+    viewer: graphql`
+      fragment Search_viewer on User {
+        search(
+          first: $count
+          after: $cursor
+          q: $q
+        ) @connection(key: "Search_search") {
           count
           edges {
             cursor
             node {
-              ${ContentPreview.getFragment('node')}
+              ...ContentPreview_node
             }
           }
           pageInfo {
+            endCursor
             hasNextPage
           }
         }
       }
     `,
   },
-});
+  {
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      };
+    },
+    getVariables(props, {count, cursor}, {q}) {
+      return {
+        count,
+        cursor,
+        q: q || '',
+      };
+    },
+    query: graphql`
+      query SearchQuery(
+        $count: Int!
+        $cursor: String
+        $q: String!
+      ) {
+        viewer {
+          ...Search_viewer
+        }
+      }
+    `
+  }
+);

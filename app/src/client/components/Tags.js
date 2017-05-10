@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import inBrowser from '../inBrowser';
 import Link from './Link';
 import cx from 'classnames';
@@ -29,12 +32,10 @@ class Tags extends React.Component {
   }
 }
 
-export default Relay.createContainer(Tags, {
-  fragments: {
-    tagged: () => Relay.QL`
-      fragment on Tagged {
-        tags
-      }
-    `,
-  },
+export default createFragmentContainer(Tags, {
+  tagged: graphql`
+    fragment Tags_tagged on Tagged {
+      tags
+    }
+  `,
 });

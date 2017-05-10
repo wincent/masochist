@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
@@ -27,6 +30,7 @@ class Snippet extends React.Component {
     }
 
     return (
+      // encode url?
       <DocumentTitle isLeaf={true} title={snippet.title}>
         <article>
           <h1>
@@ -45,23 +49,23 @@ class Snippet extends React.Component {
   }
 }
 
-export default Relay.createContainer(Snippet, {
+export default createFragmentContainer(Snippet, {
+  /* TODO manually deal with:
   initialVariables: {
     baseHeadingLevel: 2,
-  },
-  fragments: {
-    snippet: () => Relay.QL`
-      fragment on Snippet {
-        id
-        url
-        title
-        createdAt
-        updatedAt
-        body {
-          html(baseHeadingLevel: $baseHeadingLevel)
-        }
-        ${Tags.getFragment('tagged')}
+  }
+  */
+  snippet: graphql`
+    fragment Snippet_snippet on Snippet {
+      id
+      url
+      title
+      createdAt
+      updatedAt
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
       }
-    `,
-  },
+      ...Tags_tagged
+    }
+  `,
 });

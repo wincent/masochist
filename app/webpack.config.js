@@ -14,7 +14,7 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.js$/,
-        loader: 'babel',
+        loader: 'babel-loader',
       }, {
         include: path.resolve(__dirname, 'src'),
         loader: 'style-loader!css-loader!postcss-loader',
@@ -35,10 +35,14 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function() {
+          // No arrow function, because we want `this` to be:
+          // http://webpack.github.io/docs/loaders.html#loader-context
+          return [autoprefixer];
+        },
+      },
+    }),
   ],
-  postcss: function() {
-    // No arrow function, because we want `this` to be:
-    // http://webpack.github.io/docs/loaders.html#loader-context
-    return [autoprefixer];
-  },
 };

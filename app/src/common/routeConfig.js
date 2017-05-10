@@ -1,28 +1,17 @@
 import {toGlobalId} from 'graphql-relay';
 import React from 'react';
-import App from '../client/components/App';
-import Article from '../client/components/Article';
-import ArticlesIndex from '../client/components/ArticlesIndex';
+
 import HTTPError from '../client/components/HTTPError';
-import Page from '../client/components/Page';
-import Post from '../client/components/Post';
-import PostsIndex from '../client/components/PostsIndex';
-import Progress from '../client/components/Progress';
-import Search from '../client/components/Search';
-import Snippet from '../client/components/Snippet';
-import SnippetsIndex from '../client/components/SnippetsIndex';
-import Tag from '../client/components/Tag';
-import TagsIndex from '../client/components/TagsIndex';
-import ArticleQueries from './routes/ArticleQueries';
-import ArticlesIndexQueries from './routes/ArticlesIndexQueries';
-import PageQueries from './routes/PageQueries';
-import PostQueries from './routes/PostQueries';
-import PostsIndexQueries from './routes/PostsIndexQueries';
-import SearchQueries from './routes/SearchQueries';
-import SnippetQueries from './routes/SnippetQueries';
-import SnippetsQueries from './routes/SnippetsQueries';
-import TagsIndexQueries from './routes/TagsIndexQueries';
-import TagQueries from './routes/TagQueries';
+import ArticleRoute from './routes/ArticleRoute';
+import ArticlesRoute from './routes/ArticlesRoute';
+import PageRoute from './routes/PageRoute';
+import PostRoute from './routes/PostRoute';
+import PostsRoute from './routes/PostsRoute';
+import SearchRoute from './routes/SearchRoute';
+import SnippetRoute from './routes/SnippetRoute';
+import SnippetsRoute from './routes/SnippetsRoute';
+import TagsRoute from './routes/TagsRoute';
+import TagRoute from './routes/TagRoute';
 
 /**
  * We use classical opaque GraphQL IDs internally ("Type:id", Base64-encoded)
@@ -30,7 +19,10 @@ import TagQueries from './routes/TagQueries';
  * convert for us.
  */
 function getPrepareParams(contentType) {
-  return (params, route) => ({id: toGlobalId(contentType, params.id)});
+  return params => ({
+    ...params,
+    id: toGlobalId(contentType, params.id),
+  });
 }
 
 /**
@@ -38,9 +30,11 @@ function getPrepareParams(contentType) {
  * use spaces while our URLs use underscores instead, to avoid ugly %20 URL
  * encoding in a user-visible place.
  */
-function prepareArticleParams(params, route) {
+function prepareArticleParams(params) {
   return {
+    ...params,
     id: toGlobalId('Article', params.id.replace(/_/g, ' ')),
+    // TODO: figure out if I need to do i need to do anything special here?
   };
 }
 
@@ -48,100 +42,63 @@ function prepareArticleParams(params, route) {
  * Tag pages are a special case as well, as we must support both "/tags/foo"
  * and "/tags/foo+bar".
  */
-function prepareTagParams(params, route) {
-  // TODO handle "foo+bar" case
+function prepareTagParams(params) {
+  // TODO: handle "foo+bar" case (this is the only reason this is a separate
+  // function).
   return {
+    ...params,
     id: toGlobalId('Tag', params.id),
   };
 }
 
-// TODO: handle .txt on snippet
-const routeConfig = [
-  {
-    path: '/',
-    component: App,
-    indexRoute: {
-      component: PostsIndex,
-      queries: PostsIndexQueries,
-      renderLoading: () => <Progress />,
-    },
-    childRoutes: [
-      {
-        path: 'blog',
-        component: PostsIndex,
-        queries: PostsIndexQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Post,
-        path: 'blog/:id',
-        prepareParams: getPrepareParams('Post'),
-        queries: PostQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Page,
-        path: 'pages/:id',
-        prepareParams: getPrepareParams('Page'),
-        queries: PageQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Search,
-        path: 'search',
-        queries: SearchQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Search,
-        path: 'search/:q',
-        queries: SearchQueries,
-      },
-      {
-        component: SnippetsIndex,
-        path: 'snippets',
-        queries: SnippetsQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Snippet,
-        path: 'snippets/:id',
-        prepareParams: getPrepareParams('Snippet'),
-        queries: SnippetQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: TagsIndex,
-        path: 'tags',
-        queries: TagsIndexQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Tag,
-        path: 'tags/:id',
-        prepareParams: prepareTagParams,
-        queries: TagQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: ArticlesIndex,
-        path: 'wiki',
-        queries: ArticlesIndexQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: Article,
-        path: 'wiki/:id',
-        prepareParams: prepareArticleParams,
-        queries: ArticleQueries,
-        renderLoading: () => <Progress />,
-      },
-      {
-        component: HTTPError,
-        path: '*',
-      },
-    ],
+export default [{
+  path: '/',
+  action: PostsRoute,
+}, {
+  path: '/blog',
+  action: PostsRoute,
+}, {
+  path: '/blog/:id',
+  action: PostRoute,
+  prepare: getPrepareParams('Post'),
+}, {
+  path: '/pages/:id',
+  action: PageRoute,
+  prepare: getPrepareParams('Page'),
+}, {
+  path: '/search',
+  action: SearchRoute,
+}, {
+  path: '/search/:q',
+  action: SearchRoute,
+}, {
+  path: '/snippets',
+  action: SnippetsRoute,
+}, {
+  // TODO: handle .txt on snippet
+  path: '/snippets/:id',
+  action: SnippetRoute,
+  prepare: getPrepareParams('Snippet'),
+}, {
+  path: '/tags',
+  action: TagsRoute,
+}, {
+  path: '/tags/:id',
+  action: TagRoute,
+  prepare: prepareTagParams,
+}, {
+  path: '/wiki',
+  action: ArticlesRoute,
+}, {
+  path: '/wiki/:id',
+  action: ArticleRoute,
+  prepare: prepareArticleParams,
+}, {
+  // Catch-all.
+  path: '*',
+  action() {
+    // TODO: test this is actually getting hit
+    // (once we have client-side link handling)
+    return <HTTPError code={404} />;
   },
-];
-
-export default routeConfig;
+}];

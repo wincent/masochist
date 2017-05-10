@@ -14,6 +14,7 @@ export default function runQuery(query: string, variables: ?Object) {
     schema,
     query,
     {loaders: getLoaders()},
+    null,
     variables
   );
 }

@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
@@ -26,6 +29,7 @@ class Page extends React.Component {
     }
 
     return (
+      // may want to URL encode here too? page.url
       <DocumentTitle title={page.title}>
         <article>
           <h1>
@@ -44,23 +48,18 @@ class Page extends React.Component {
   }
 }
 
-export default Relay.createContainer(Page, {
-  initialVariables: {
-    baseHeadingLevel: 2,
-  },
-  fragments: {
-    page: () => Relay.QL`
-      fragment on Page {
-        id
-        title
-        createdAt
-        updatedAt
-        url
-        body {
-          html(baseHeadingLevel: $baseHeadingLevel)
-        }
-        ${Tags.getFragment('tagged')}
+export default createFragmentContainer(Page, {
+  page: graphql`
+    fragment Page_page on Page {
+      id
+      title
+      createdAt
+      updatedAt
+      url
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
       }
-    `,
-  },
+      ...Tags_tagged
+    }
+  `,
 });

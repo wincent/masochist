@@ -77,6 +77,7 @@ const MarkupFormatType = new GraphQLEnumType({
     C: { value: 'c' },
     PATCH: { value: 'patch' },
     M: { value: 'm' },
+    MD: { value: 'md' },
     RB: { value: 'rb' },
     SH: { value: 'sh' },
   },
@@ -124,6 +125,7 @@ const MarkupType = new GraphQLObjectType({
           markup.format === 'sh' ||
           markup.format === 'txt'
         ) {
+          // TODO: syntax highlighting for languages
           return '<pre><code>' + escapeHTML(markup.raw) + '</code></pre>';
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');

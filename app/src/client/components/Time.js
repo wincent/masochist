@@ -1,5 +1,6 @@
 import React from 'react';
 import relativizeDate from '../relativizeDate';
+import inBrowser from '../inBrowser';
 
 let stateCounter = 0;
 
@@ -22,14 +23,16 @@ export default class Time extends React.Component {
   render() {
     const {humanReadable, date, ttl} = relativizeDate(this.props.datetime);
 
-    this._updateTimer = setTimeout(
-      () => (
-        this.setState((previousState) => ({
-          stateCounter: previousState.stateCounter + 1,
-        }))
-      ),
-      ttl * 1000,
-    );
+    if (inBrowser) {
+      this._updateTimer = setTimeout(
+        () => (
+          this.setState((previousState) => ({
+            stateCounter: previousState.stateCounter + 1,
+          }))
+        ),
+        ttl * 1000,
+      );
+    }
 
     return (
       <time title={date.toLocaleString()} dateTime={date}>

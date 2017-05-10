@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
 import When from './When';
@@ -29,16 +32,14 @@ class PagePreview extends React.Component {
   }
 }
 
-export default Relay.createContainer(PagePreview, {
-  fragments: {
-    page: () => Relay.QL`
-      fragment on Page {
-        createdAt
-        title
-        updatedAt
-        url
-        ${Tags.getFragment('tagged')}
-      }
-    `,
-  },
+export default createFragmentContainer(PagePreview, {
+  page: graphql`
+    fragment PagePreview_page on Page {
+      createdAt
+      title
+      updatedAt
+      url
+      ...Tags_tagged
+    }
+  `,
 });

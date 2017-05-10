@@ -3,7 +3,7 @@ html(lang='en')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title wincent.com
+    title #{title}
     link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600', rel='stylesheet', type='text/css')
     link(rel='icon', type='image/x-icon', href='/favicon.ico')
     if (production)
@@ -15,5 +15,7 @@ html(lang='en')
     if (home)
       link(rel='home' type='application/rss+xml' href=home)
   body
-    #relay-root
+    #relay-root !{pageContent}
+    script.
+      var MasochistCache = !{cache};
     script(src=bundle)

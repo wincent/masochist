@@ -20,45 +20,54 @@ module.exports = {
       path: path.resolve(__dirname, 'dist'),
       prettyPrint: true,
     }),
-    new ExtractTextPlugin('styles-[hash].css', {allChunks: true}),
+    new ExtractTextPlugin({
+      filename: 'styles-[contenthash].css',
+      allChunks: true,
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin(),
     function() {
       this.plugin('done', function(stats) {
-        stats.toJson().assetsByChunkName.main.forEach(function(asset) {
-          // Copy each digest-ized asset from dist to public/static.
-          fse.copySync(
-            path.resolve(__dirname, 'dist', asset),
-            path.resolve(__dirname, 'public', 'static', asset)
-          );
-        });
+        console.log(JSON.stringify(stats.toJson()));
+        // stats.toJson().assetsByChunkName.main.forEach(function(asset) {
+        //   // Copy each digest-ized asset from dist to public/static.
+        //   fse.copySync(
+        //     path.resolve(__dirname, 'dist', asset),
+        //     path.resolve(__dirname, 'public', 'static', asset)
+        //   );
+        // });
       });
     },
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: function() {
+          // No arrow function, because we want `this` to be:
+          // http://webpack.github.io/docs/loaders.html#loader-context
+          return [autoprefixer];
+        },
+      },
+    }),
   ],
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel-loader',
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader'),
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader!postcss-loader',
+        }),
       }, {
         test: /\.svg$/,
         loader: 'url-loader?limit=10000',
       },
     ],
-  },
-  postcss: function() {
-    // No arrow function, because we want `this` to be:
-    // http://webpack.github.io/docs/loaders.html#loader-context
-    return [autoprefixer];
   },
 };

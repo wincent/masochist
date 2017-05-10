@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createPaginationContainer,
+  graphql,
+} from 'react-relay';
 import ifMounted from '../ifMounted';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
@@ -13,11 +16,17 @@ class PostsIndex extends React.Component {
   }
 
   _handleLoadMore = () => {
-    this.props.relay.setVariables({
-      count: this.props.relay.variables.count + 10,
-    }, ifMounted(this, ({ready, done, error, aborted}) => {
-      this.setState({isLoading: !ready && !(done || error || aborted)});
-    }));
+    this.setState({isLoading: true}, () => {
+      this.props.relay.loadMore(
+        3,
+        error => {
+          this.setState({isLoading: this.props.relay.isLoading()});
+          // ifMounted(this, error => {
+          //   this.setState({isLoading: this.props.relay.isLoading()});
+          // });
+        },
+      );
+    });
   }
 
   componentDidMount() {
@@ -51,25 +60,53 @@ class PostsIndex extends React.Component {
   }
 }
 
-export default Relay.createContainer(PostsIndex, {
-  initialVariables: {
-    count: 3,
-  },
-  fragments: {
-    viewer: () => Relay.QL`
-      fragment on User {
-        posts(first: $count) {
+export default createPaginationContainer(
+  PostsIndex,
+  {
+    viewer: graphql`
+      fragment PostsIndex_viewer on User {
+        posts(
+          first: $count
+          after: $cursor
+        ) @connection(key: "PostsIndex_posts") {
           edges {
             node {
               id
-              ${Post.getFragment('post')}
+              ...Post_post
             }
           }
           pageInfo {
+            endCursor
             hasNextPage
           }
         }
       }
     `,
   },
-});
+  {
+    getFragmentVariables(prevVars, totalCount) {
+      return {
+        ...prevVars,
+        count: totalCount,
+      };
+    },
+    getVariables(props, {count, cursor}, fragmentVariables) {
+      return {
+        baseHeadingLevel: 2,
+        count,
+        cursor,
+      };
+    },
+    query: graphql`
+      query PostsIndexQuery(
+        $baseHeadingLevel: Int!
+        $count: Int!
+        $cursor: String
+      ) {
+        viewer {
+          ...PostsIndex_viewer
+        }
+      }
+    `
+  }
+);

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import DocumentTitle from './DocumentTitle';
 
@@ -8,7 +9,7 @@ const StatusCodesToMessages = {
 
 export default class HTTPError extends React.Component {
   static propTypes = {
-    code: React.PropTypes.oneOf([404, 500]),
+    code: PropTypes.oneOf([404, 500]),
   };
 
   static defaultProps = {

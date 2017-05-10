@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
 import When from './When';
@@ -29,16 +32,14 @@ class SnippetPreview extends React.Component {
   }
 }
 
-export default Relay.createContainer(SnippetPreview, {
-  fragments: {
-    snippet: () => Relay.QL`
-      fragment on Snippet {
-        createdAt
-        title
-        updatedAt
-        url
-        ${Tags.getFragment('tagged')}
-      }
-    `,
-  },
+export default createFragmentContainer(SnippetPreview, {
+  snippet: graphql`
+    fragment SnippetPreview_snippet on Snippet {
+      createdAt
+      title
+      updatedAt
+      url
+      ...Tags_tagged
+    }
+  `,
 });

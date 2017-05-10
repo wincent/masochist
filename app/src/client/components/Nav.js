@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Link from './Link';
@@ -22,11 +23,10 @@ const NavLink = ({target, text, active}) => {
   );
 };
 
-function getActiveRoutePrefix(routes) {
-  const path = routes && (routes.length >= 2) && routes[1].path;
-  const match = path && path.match(/^(\w+)\b/);
+function getActiveRoutePrefix(path) {
+  const match = path && path.match(/^(\/\w+)\b/);
   if (match) {
-    return '/' + match[1];
+    return match[1];
   }
 
   // Must be at /, which is the same as /blog.
@@ -34,6 +34,10 @@ function getActiveRoutePrefix(routes) {
 }
 
 export default class Nav extends React.Component {
+  static contextTypes = {
+    router: PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {isOpen: false};
@@ -45,7 +49,9 @@ export default class Nav extends React.Component {
   }
 
   render() {
-    const active = getActiveRoutePrefix(this.props.routes);
+    const active = getActiveRoutePrefix(
+      this.context.router.history.location.pathname
+    );
     return (
       <nav className={cx({'nav-open': this.state.isOpen})}>
         <ul>

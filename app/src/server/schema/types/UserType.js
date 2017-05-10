@@ -39,6 +39,8 @@ export default registerType(new GraphQLObjectType({
       description: 'Wiki articles visible to this user',
       args: connectionArgs,
       resolve: async (user, args, context, {rootValue}) => {
+        // TODO: At the moment we're ignoring use of last/before; should we do something about it?
+        // Cap count to avoid abuse.
         const count = Math.max(args.first, 10);
         const offset = getOffsetWithDefault(args.after, -1) + 1;
         const [articles, totalCount] = await Article.readIndex(count, offset);

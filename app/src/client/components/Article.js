@@ -1,6 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
-import Relay from 'react-relay';
-import {match} from 'react-router';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import inBrowser from '../inBrowser';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
@@ -15,7 +18,7 @@ if (inBrowser) {
 
 class Article extends React.Component {
   static contextTypes = {
-    router: React.PropTypes.object,
+    router: PropTypes.object,
   };
 
   render() {
@@ -37,19 +40,14 @@ class Article extends React.Component {
     if (article.redirect) {
       if (article.redirect.match(/^https?:/)) {
         // External redirect.
-        window.location = article.redirect;
+        router.history.push(article.redirect);
+        // TODO: if not in browser, will want to do a real redirect (or maybe
+        // we're already handling that in the server module?)
         return null;
       } else if (article.redirect.substr(0, 1) === '/') {
         // Internal redirect.
         const {router} = this.context;
-        const location = router.createLocation(article.redirect);
-        match({location}, (error, redirectLocation, renderProps) => {
-          if (renderProps) {
-            router.push({}, article.redirect);
-          } else {
-            window.location = article.redirect;
-          }
-        });
+        router.history.replace(article.redirect);
         return null;
       }
     }
@@ -78,24 +76,19 @@ class Article extends React.Component {
   }
 }
 
-export default Relay.createContainer(Article, {
-  initialVariables: {
-    baseHeadingLevel: 2,
-  },
-  fragments: {
-    article: () => Relay.QL`
-      fragment on Article {
-        title
-        redirect
-        resolvedTitle
-        createdAt
-        updatedAt
-        url
-        body {
-          html(baseHeadingLevel: $baseHeadingLevel)
-        }
-        ${Tags.getFragment('tagged')}
+export default createFragmentContainer(Article, {
+  article: graphql`
+    fragment Article_article on Article {
+      title
+      redirect
+      resolvedTitle
+      createdAt
+      updatedAt
+      url
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
       }
-    `,
-  },
+      ...Tags_tagged
+    }
+  `,
 });

@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
 import When from './When';
@@ -29,16 +32,14 @@ class PostPreview extends React.Component {
   }
 }
 
-export default Relay.createContainer(PostPreview, {
-  fragments: {
-    post: () => Relay.QL`
-      fragment on Post {
-        createdAt
-        title
-        updatedAt
-        url
-        ${Tags.getFragment('tagged')}
-      }
-    `,
-  },
+export default createFragmentContainer(PostPreview, {
+  post: graphql`
+    fragment PostPreview_post on Post {
+      createdAt
+      title
+      updatedAt
+      url
+      ...Tags_tagged
+    }
+  `,
 });

@@ -1,5 +1,8 @@
 import React from 'react';
-import Relay from 'react-relay';
+import {
+  createFragmentContainer,
+  graphql,
+} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
@@ -25,6 +28,7 @@ class Post extends React.Component {
     }
 
     return (
+      // post.url encode?
       <DocumentTitle isLeaf={true} title={post.title}>
         <article>
           <h1>
@@ -43,23 +47,18 @@ class Post extends React.Component {
   }
 }
 
-export default Relay.createContainer(Post, {
-  initialVariables: {
-    baseHeadingLevel: 2,
-  },
-  fragments: {
-    post: () => Relay.QL`
-      fragment on Post {
-        id
-        title
-        createdAt
-        updatedAt
-        url
-        body {
-          html(baseHeadingLevel: $baseHeadingLevel)
-        }
-        ${Tags.getFragment('tagged')}
+export default createFragmentContainer(Post, {
+  post: graphql`
+    fragment Post_post on Post {
+      id
+      title
+      createdAt
+      updatedAt
+      url
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
       }
-    `,
-  },
+      ...Tags_tagged
+    }
+  `,
 });

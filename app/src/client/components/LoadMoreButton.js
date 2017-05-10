@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import inBrowser from '../inBrowser';
 
@@ -7,8 +8,8 @@ if (inBrowser) {
 
 export default class LoadMoreButton extends React.Component {
   static propTypes = {
-    onLoadMore: React.PropTypes.func.isRequired,
-    isLoading: React.PropTypes.bool,
+    onLoadMore: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool,
   };
 
   _handleLoadMore = event => {

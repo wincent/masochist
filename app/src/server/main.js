@@ -3,23 +3,36 @@
 import 'babel-polyfill';
 import '../common/devFallback';
 import '../common/unhandledRejection';
-import './isomorphicHack';
 
 import Promise from 'bluebird';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
+import createHistory from 'history/createMemoryHistory'
 import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+
+import {
+  Environment,
+  Network,
+  RecordSource,
+  Store,
+  fetchQuery,
+} from 'relay-runtime';
+
 import App from '../client/components/App';
+import DocumentTitle from '../client/components/DocumentTitle';
 import HTTPError from '../client/components/HTTPError';
+import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
+import createRouter from '../common/createRouter';
 import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
 import getLoaders from './getLoaders';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import feed from './actions/feed';
 import schema from './schema';
+import runQuery from './runQuery';
 
 const APP_PORT = 3000;
 
@@ -38,6 +51,7 @@ if (__DEV__) {
 function jadeHandler(resource, extraLocals = {}) {
   return async (request, response) => {
     const canonical = await getCanonicalURLForRequest(request);
+    // TODO: if canonical is non-null and doesn't match actual, 301 redirect
     const locals = {
       bundle: getAssetURL(
         '/static/' + (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js)
@@ -70,7 +84,87 @@ const extraLocals = {
 };
 
 appRoutes.forEach(route => {
-  app.get(route, jadeHandler('index', extraLocals[route]))
+  // TODO: try server rendering here, and if that doesn't work, preloading
+  // TODO: figure out why this sometimes doesn't work (requests just 404)
+  app.get(route, async (request, response) => {
+    const history = createHistory({
+      initialEntries: [request.originalUrl],
+      initialIndex: 0,
+    });
+    // TODO: figure out if I can make this be the tool I need to grab the data
+    // at the same time as the action...
+    // const resolver = (context, params) => {
+    //   const {action, prepare} = context.route;
+    //   if (typeof action !== 'function') {
+    //     return null;
+    //   }
+    //   if (typeof prepare === 'function') {
+    //     const preparedParams = prepare(params);
+    //     return action(
+    //       {
+    //         ...context,
+    //         params: preparedParams,
+    //       },
+    //       preparedParams,
+    //     );
+    //   }
+    //   return action(context, params);
+    // };
+    const router = createRouter(history);
+    const cache = {};
+    const environment = new Environment({
+      network: Network.create(
+        (operation, variables) => {
+          // TODO: implement persisted queries
+          return runQuery(operation.text, variables)
+            .then(result => {
+              const key = getRequestBody(operation, variables);
+              cache[key] = result;
+              return result;
+            })
+            .catch(err => console.log('got an error', err));
+            // TODO: really handle errors
+        }
+      ),
+      store: new Store(new RecordSource()),
+    });
+    const api = {
+      environment,
+      fetchQuery: fetchQuery.bind(null, environment),
+    };
+
+    function resolve(location) {
+      return router
+        .resolve({
+          api,
+          path: location.pathname,
+        })
+        .then(({component}) => {
+          return ReactDOMServer.renderToStaticMarkup(
+            <App router={router}>
+              {component}
+            </App>,
+          );
+        })
+        .catch(error => {
+          console.error(error);
+          return ReactDOMServer.renderToStaticMarkup(
+            <App router={router}>
+              <HTTPError code={500} />
+            </App>,
+          );
+        });
+    }
+    const pageContent = await resolve(history.location);
+    const locals = {
+      ...extraLocals[route],
+      pageContent,
+      cache: JSON.stringify(cache),
+      title: DocumentTitle.peek(),
+    };
+    DocumentTitle.rewind();
+    return jadeHandler('index', locals)(request, response);
+  });
 });
 
 app.use('/graphql', (request, response, next) => {
@@ -78,10 +172,15 @@ app.use('/graphql', (request, response, next) => {
     rootValue: {
       loaders: getLoaders(),
     },
+    // TODO: something like this in __DEV__
+    // errorFormat: error => ({
+    //   message: error.message,
+    //   locations: error.locations,
+    //   stack: error.stack,
+    // }),
     graphiql: __DEV__,
     schema,
   };
-
   return graphqlHTTP(request => options)(request, response, next);
 });
 
@@ -111,9 +210,6 @@ if (__DEV__) {
     publicPath: '/static/',
     hot: true,
     noInfo: true,
-    stat: {
-      colors: true,
-    },
   });
   bundler.listen(APP_PORT + 1, 'localhost', () => {
     console.log('Webpack dev server listening at http://localhost:%s', APP_PORT + 1);
@@ -144,8 +240,13 @@ app.use(express.static(
 function errorPage(error, message, request, response) {
   return {
     html: () => {
+      const history = createHistory({
+        initialEntries: [request.originalUrl],
+        initialIndex: 0,
+      });
+      const router = createRouter(history);
       const pageContent = ReactDOMServer.renderToStaticMarkup(
-        <App>
+        <App router={router}>
           <HTTPError code={error} />
         </App>
       );
