@@ -11,11 +11,7 @@ export default buildRoute(
       $cursor: String
       $q: String!
     ) {
-      viewer {
-        ... on User {
-          ...Search_viewer
-        }
-      }
+      ...Search
     }
   `,
   ({q}) => ({
@@ -23,5 +19,5 @@ export default buildRoute(
     cursor: null,
     q: q || '',
   }),
-  (data, {q}) => <Search q={q} viewer={data.viewer} />,
+  (data, {q}) => <Search q={q} data={data} />,
 );

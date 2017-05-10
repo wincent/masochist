@@ -11,11 +11,7 @@ export default buildRoute(
       $count: Int!
       $cursor: String
     ) {
-      viewer {
-        ... on User {
-          ...PostsIndex_viewer
-        }
-      }
+      ...PostsIndex
     }
   `,
   () => ({
@@ -23,5 +19,5 @@ export default buildRoute(
     count: 3,
     cursor: null,
   }),
-  data => <PostsIndex viewer={data.viewer} />,
+  data => <PostsIndex data={data} />,
 );

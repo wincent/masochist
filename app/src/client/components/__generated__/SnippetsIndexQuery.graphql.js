@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SnippetsIndexQuery.graphql
- * @generated SignedSource<<9a5af4d55de070825ba5a51586774ac2>>
- * @relayHash a68b006331d8983c57edfd33e6be2bcf
+ * @generated SignedSource<<af2b4573e68c06b139dee0cf0649b948>>
+ * @relayHash 3185447217eb85aa9ac66e7a42116484
  * @flow
  * @nogrep
  */
@@ -24,13 +24,10 @@ query SnippetsIndexQuery(
   $count: Int!
   $cursor: String
 ) {
-  viewer {
-    ...SnippetsIndex_viewer
-    id
-  }
+  ...SnippetsIndex
 }
 
-fragment SnippetsIndex_viewer on User {
+fragment SnippetsIndex on Root {
   snippets(first: $count, after: $cursor) {
     edges {
       node {
@@ -93,23 +90,12 @@ const batch /*: ConcreteBatch*/ = {
     "name": "SnippetsIndexQuery",
     "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "User",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "SnippetsIndex_viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
+        "kind": "FragmentSpread",
+        "name": "SnippetsIndex",
+        "args": null
       }
     ],
-    "type": "RootQueryType"
+    "type": "Root"
   },
   "id": null,
   "kind": "Batch",
@@ -143,120 +129,95 @@ const batch /*: ConcreteBatch*/ = {
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": null,
-        "concreteType": "User",
-        "name": "viewer",
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "after",
+            "variableName": "cursor",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": "Int"
+          }
+        ],
+        "concreteType": "SnippetConnection",
+        "name": "snippets",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "cursor",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              }
-            ],
-            "concreteType": "SnippetConnection",
-            "name": "snippets",
-            "plural": false,
+            "args": null,
+            "concreteType": "SnippetEdge",
+            "name": "edges",
+            "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
-                "concreteType": "SnippetEdge",
-                "name": "edges",
-                "plural": true,
+                "concreteType": "Snippet",
+                "name": "node",
+                "plural": false,
                 "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "url",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "title",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "createdAt",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "updatedAt",
+                    "storageKey": null
+                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
                     "args": null,
-                    "concreteType": "Snippet",
-                    "name": "node",
+                    "concreteType": "Markup",
+                    "name": "body",
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "args": null,
-                        "name": "id",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "url",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "title",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "createdAt",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "updatedAt",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "Markup",
-                        "name": "body",
-                        "plural": false,
-                        "selections": [
+                        "args": [
                           {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": [
-                              {
-                                "kind": "Variable",
-                                "name": "baseHeadingLevel",
-                                "variableName": "baseHeadingLevel",
-                                "type": "Int"
-                              }
-                            ],
-                            "name": "html",
-                            "storageKey": null
+                            "kind": "Variable",
+                            "name": "baseHeadingLevel",
+                            "variableName": "baseHeadingLevel",
+                            "type": "Int"
                           }
                         ],
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "tags",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
+                        "name": "html",
                         "storageKey": null
                       }
                     ],
@@ -266,89 +227,96 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "name": "cursor",
+                    "name": "tags",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "__typename",
                     "storageKey": null
                   }
                 ],
                 "storageKey": null
               },
               {
-                "kind": "LinkedField",
+                "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "concreteType": "PageInfo",
-                "name": "pageInfo",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "endCursor",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasNextPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasPreviousPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "startCursor",
-                    "storageKey": null
-                  }
-                ],
+                "name": "cursor",
                 "storageKey": null
               }
             ],
             "storageKey": null
           },
           {
-            "kind": "LinkedHandle",
-            "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "cursor",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              }
-            ],
-            "handle": "connection",
-            "name": "snippets",
-            "key": "SnippetsIndex_snippets",
-            "filters": null
-          },
-          {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "name": "id",
+            "concreteType": "PageInfo",
+            "name": "pageInfo",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "endCursor",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "hasNextPage",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "hasPreviousPage",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "startCursor",
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
         ],
         "storageKey": null
+      },
+      {
+        "kind": "LinkedHandle",
+        "alias": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "after",
+            "variableName": "cursor",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": "Int"
+          }
+        ],
+        "handle": "connection",
+        "name": "snippets",
+        "key": "SnippetsIndex_snippets",
+        "filters": null
       }
     ]
   },
-  "text": "query SnippetsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...SnippetsIndex_viewer\n    id\n  }\n}\n\nfragment SnippetsIndex_viewer on User {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet_snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet_snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query SnippetsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet_snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet_snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

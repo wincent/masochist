@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PostsIndexQuery.graphql
- * @generated SignedSource<<e215bdd985e6cf93f98b68323d78d558>>
- * @relayHash 0d0d59cd98127a541d1254c3822bf2cf
+ * @generated SignedSource<<629a2ae207ba2f8e6a03a73efda716de>>
+ * @relayHash 5bb480c903f55a7f41e2079aac8c7df9
  * @flow
  * @nogrep
  */
@@ -24,13 +24,10 @@ query PostsIndexQuery(
   $count: Int!
   $cursor: String
 ) {
-  viewer {
-    ...PostsIndex_viewer
-    id
-  }
+  ...PostsIndex
 }
 
-fragment PostsIndex_viewer on User {
+fragment PostsIndex on Root {
   posts(first: $count, after: $cursor) {
     edges {
       node {
@@ -93,23 +90,12 @@ const batch /*: ConcreteBatch*/ = {
     "name": "PostsIndexQuery",
     "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "User",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "PostsIndex_viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
+        "kind": "FragmentSpread",
+        "name": "PostsIndex",
+        "args": null
       }
     ],
-    "type": "RootQueryType"
+    "type": "Root"
   },
   "id": null,
   "kind": "Batch",
@@ -143,120 +129,95 @@ const batch /*: ConcreteBatch*/ = {
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": null,
-        "concreteType": "User",
-        "name": "viewer",
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "after",
+            "variableName": "cursor",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": "Int"
+          }
+        ],
+        "concreteType": "PostConnection",
+        "name": "posts",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "cursor",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              }
-            ],
-            "concreteType": "PostConnection",
-            "name": "posts",
-            "plural": false,
+            "args": null,
+            "concreteType": "PostEdge",
+            "name": "edges",
+            "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
-                "concreteType": "PostEdge",
-                "name": "edges",
-                "plural": true,
+                "concreteType": "Post",
+                "name": "node",
+                "plural": false,
                 "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "title",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "createdAt",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "updatedAt",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "url",
+                    "storageKey": null
+                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
                     "args": null,
-                    "concreteType": "Post",
-                    "name": "node",
+                    "concreteType": "Markup",
+                    "name": "body",
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
-                        "args": null,
-                        "name": "id",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "title",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "createdAt",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "updatedAt",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "url",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "Markup",
-                        "name": "body",
-                        "plural": false,
-                        "selections": [
+                        "args": [
                           {
-                            "kind": "ScalarField",
-                            "alias": null,
-                            "args": [
-                              {
-                                "kind": "Variable",
-                                "name": "baseHeadingLevel",
-                                "variableName": "baseHeadingLevel",
-                                "type": "Int"
-                              }
-                            ],
-                            "name": "html",
-                            "storageKey": null
+                            "kind": "Variable",
+                            "name": "baseHeadingLevel",
+                            "variableName": "baseHeadingLevel",
+                            "type": "Int"
                           }
                         ],
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "tags",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
+                        "name": "html",
                         "storageKey": null
                       }
                     ],
@@ -266,89 +227,96 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "name": "cursor",
+                    "name": "tags",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "__typename",
                     "storageKey": null
                   }
                 ],
                 "storageKey": null
               },
               {
-                "kind": "LinkedField",
+                "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "concreteType": "PageInfo",
-                "name": "pageInfo",
-                "plural": false,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "endCursor",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasNextPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "hasPreviousPage",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "startCursor",
-                    "storageKey": null
-                  }
-                ],
+                "name": "cursor",
                 "storageKey": null
               }
             ],
             "storageKey": null
           },
           {
-            "kind": "LinkedHandle",
-            "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "after",
-                "variableName": "cursor",
-                "type": "String"
-              },
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              }
-            ],
-            "handle": "connection",
-            "name": "posts",
-            "key": "PostsIndex_posts",
-            "filters": null
-          },
-          {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
             "args": null,
-            "name": "id",
+            "concreteType": "PageInfo",
+            "name": "pageInfo",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "endCursor",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "hasNextPage",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "hasPreviousPage",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "startCursor",
+                "storageKey": null
+              }
+            ],
             "storageKey": null
           }
         ],
         "storageKey": null
+      },
+      {
+        "kind": "LinkedHandle",
+        "alias": null,
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "after",
+            "variableName": "cursor",
+            "type": "String"
+          },
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": "Int"
+          }
+        ],
+        "handle": "connection",
+        "name": "posts",
+        "key": "PostsIndex_posts",
+        "filters": null
       }
     ]
   },
-  "text": "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  viewer {\n    ...PostsIndex_viewer\n    id\n  }\n}\n\nfragment PostsIndex_viewer on User {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post_post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post_post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
+  "text": "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post_post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post_post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags_tagged\n}\n\nfragment Tags_tagged on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

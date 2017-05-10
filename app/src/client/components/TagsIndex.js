@@ -13,7 +13,7 @@ class TagsIndex extends React.Component {
   }
 
   render() {
-    const {tags} = this.props.viewer;
+    const {tags} = this.props.data;
     const filteredTags =
       tags.edges.map(({node}) => node).filter(node => {
         const filters = this.state.filterString.trim().split(/\s+/);
@@ -64,9 +64,10 @@ class TagsIndex extends React.Component {
   }
 }
 
-export default createFragmentContainer(TagsIndex, {
-  viewer: graphql`
-    fragment TagsIndex_viewer on User {
+export default createFragmentContainer(
+  TagsIndex,
+  graphql`
+    fragment TagsIndex on Root {
       tags(first: $count) {
         count
         edges {
@@ -79,4 +80,4 @@ export default createFragmentContainer(TagsIndex, {
       }
     }
   `,
-});
+);

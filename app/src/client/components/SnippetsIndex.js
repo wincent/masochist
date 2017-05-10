@@ -41,12 +41,12 @@ class SnippetsIndex extends React.Component {
       <DocumentTitle title="snippets">
         <div>
           {
-            this.props.viewer.snippets.edges.map(({node}) => (
+            this.props.data.snippets.edges.map(({node}) => (
               <Snippet key={node.id} snippet={node} />
             ))
           }
           {
-            this.props.viewer.snippets.pageInfo.hasNextPage ?
+            this.props.data.snippets.pageInfo.hasNextPage ?
               <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
@@ -61,27 +61,26 @@ class SnippetsIndex extends React.Component {
 
 export default createPaginationContainer(
   SnippetsIndex,
-  {
-    viewer: graphql`
-      fragment SnippetsIndex_viewer on User {
-        snippets(
-          first: $count
-          after: $cursor
-        ) @connection(key: "SnippetsIndex_snippets") {
-          edges {
-            node {
-              id
-              ...Snippet_snippet
-            }
-          }
-          pageInfo {
-            endCursor
-            hasNextPage
+  graphql`
+    fragment SnippetsIndex on Root {
+      snippets(
+        first: $count
+        after: $cursor
+      ) @connection(key: "SnippetsIndex_snippets") {
+        edges {
+          node {
+            id
+            # TODO: un-nest all of these as well
+            ...Snippet_snippet
           }
         }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
-    `,
-  },
+    }
+  `,
   {
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -102,9 +101,7 @@ export default createPaginationContainer(
         $count: Int!
         $cursor: String
       ) {
-        viewer {
-          ...SnippetsIndex_viewer
-        }
+        ...SnippetsIndex
       }
     `
   }

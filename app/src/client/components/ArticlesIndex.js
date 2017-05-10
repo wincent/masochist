@@ -60,7 +60,7 @@ class ArticlesIndex extends React.Component {
             </thead>
             <tbody>
               {
-                this.props.viewer.articles.edges.map(({node}) => (
+                this.props.data.articles.edges.map(({node}) => (
                   <ArticlePreview key={node.id} article={node} />
                 ))
               }
@@ -82,27 +82,25 @@ class ArticlesIndex extends React.Component {
 
 export default createPaginationContainer(
   ArticlesIndex,
-  {
-    viewer: graphql`
-      fragment ArticlesIndex_viewer on User {
-        articles(
-          first: $count
-          after: $cursor
-        ) @connection(key: "ArticlesIndex_articles") {
-          edges {
-            node {
-              id
-              ...ArticlePreview_article
-            }
-          }
-          pageInfo {
-            endCursor
-            hasNextPage
+  graphql`
+    fragment ArticlesIndex on Root {
+      articles(
+        first: $count
+        after: $cursor
+      ) @connection(key: "ArticlesIndex_articles") {
+        edges {
+          node {
+            id
+            ...ArticlePreview_article
           }
         }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
-    `,
-  },
+    }
+  `,
   {
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -121,9 +119,7 @@ export default createPaginationContainer(
         $count: Int!
         $cursor: String
       ) {
-        viewer {
-          ...ArticlesIndex_viewer
-        }
+        ...ArticlesIndex
       }
     `
   }

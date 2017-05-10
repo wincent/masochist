@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule TagRouteQuery.graphql
- * @generated SignedSource<<e13e8ddc54a5a9126dccf27ff0a3cca9>>
- * @relayHash 024aa1fb0c07cdb97fc29b735fe97c5e
+ * @generated SignedSource<<c089d09477e044f70e59e74cdcdb02b9>>
+ * @relayHash 6c97edd03a26d54c820569db98dcf02e
  * @flow
  * @nogrep
  */
@@ -159,7 +159,7 @@ const batch /*: ConcreteBatch*/ = {
         "storageKey": null
       }
     ],
-    "type": "RootQueryType"
+    "type": "Root"
   },
   "id": null,
   "kind": "Batch",

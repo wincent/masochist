@@ -11,11 +11,7 @@ export default buildRoute(
       $count: Int!
       $cursor: String
     ) {
-      viewer {
-        ... on User {
-          ...SnippetsIndex_viewer
-        }
-      }
+      ...SnippetsIndex
     }
   `,
   () => ({
@@ -23,8 +19,5 @@ export default buildRoute(
     count: 3,
     cursor: null,
   }),
-  data => <SnippetsIndex viewer={data.viewer} />,
+  data => <SnippetsIndex data={data} />,
 );
-
-// TODO: consider changing schema to not nest these root fields under viewer; in
-// Relay Modern there is no problem with having connections at the top level.

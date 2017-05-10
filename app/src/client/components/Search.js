@@ -57,7 +57,7 @@ class Search extends React.Component {
   }
 
   render() {
-    const {search} = this.props.viewer;
+    const {search} = this.props.data;
     let searchURL = '/search';
     if (this.state.q.trim()) {
       searchURL += '/' + encodeURIComponent(this.state.q.trim());
@@ -120,29 +120,27 @@ class Search extends React.Component {
 
 export default createPaginationContainer(
   Search,
-  {
-    viewer: graphql`
-      fragment Search_viewer on User {
-        search(
-          first: $count
-          after: $cursor
-          q: $q
-        ) @connection(key: "Search_search") {
-          count
-          edges {
-            cursor
-            node {
-              ...ContentPreview_node
-            }
-          }
-          pageInfo {
-            endCursor
-            hasNextPage
+  graphql`
+    fragment Search on Root {
+      search(
+        first: $count
+        after: $cursor
+        q: $q
+      ) @connection(key: "Search_search") {
+        count
+        edges {
+          cursor
+          node {
+            ...ContentPreview_node
           }
         }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
-    `,
-  },
+    }
+  `,
   {
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -163,9 +161,7 @@ export default createPaginationContainer(
         $cursor: String
         $q: String!
       ) {
-        viewer {
-          ...Search_viewer
-        }
+        ...Search
       }
     `
   }

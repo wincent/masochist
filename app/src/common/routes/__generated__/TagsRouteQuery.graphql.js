@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule TagsRouteQuery.graphql
- * @generated SignedSource<<c5723ac059e25dd2f44765c7036652e7>>
- * @relayHash 0515f75d30c07b23141b6824918eb0e8
+ * @generated SignedSource<<0274123c8aef0c0ea6a4e649627d8696>>
+ * @relayHash ebe6673f9d8f4fa97b33b78ea1a7f5cd
  * @flow
  * @nogrep
  */
@@ -22,13 +22,10 @@ import type {ConcreteBatch} from 'relay-runtime';
 query TagsRouteQuery(
   $count: Int!
 ) {
-  viewer {
-    ...TagsIndex_viewer
-    id
-  }
+  ...TagsIndex
 }
 
-fragment TagsIndex_viewer on User {
+fragment TagsIndex on Root {
   tags(first: $count) {
     count
     edges {
@@ -63,23 +60,12 @@ const batch /*: ConcreteBatch*/ = {
     "name": "TagsRouteQuery",
     "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "User",
-        "name": "viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "TagsIndex_viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
+        "kind": "FragmentSpread",
+        "name": "TagsIndex",
+        "args": null
       }
     ],
-    "type": "RootQueryType"
+    "type": "Root"
   },
   "id": null,
   "kind": "Batch",
@@ -101,78 +87,67 @@ const batch /*: ConcreteBatch*/ = {
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": null,
-        "concreteType": "User",
-        "name": "viewer",
+        "args": [
+          {
+            "kind": "Variable",
+            "name": "first",
+            "variableName": "count",
+            "type": "Int"
+          }
+        ],
+        "concreteType": "TagConnection",
+        "name": "tags",
         "plural": false,
         "selections": [
           {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "count",
+            "storageKey": null
+          },
+          {
             "kind": "LinkedField",
             "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "first",
-                "variableName": "count",
-                "type": "Int"
-              }
-            ],
-            "concreteType": "TagConnection",
-            "name": "tags",
-            "plural": false,
+            "args": null,
+            "concreteType": "TagEdge",
+            "name": "edges",
+            "plural": true,
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "count",
-                "storageKey": null
-              },
               {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
-                "concreteType": "TagEdge",
-                "name": "edges",
-                "plural": true,
+                "concreteType": "Tag",
+                "name": "node",
+                "plural": false,
                 "selections": [
                   {
-                    "kind": "LinkedField",
+                    "kind": "ScalarField",
                     "alias": null,
                     "args": null,
-                    "concreteType": "Tag",
-                    "name": "node",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "id",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "name",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "count",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "url",
-                        "storageKey": null
-                      }
-                    ],
+                    "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "name",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "count",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "url",
                     "storageKey": null
                   }
                 ],
@@ -180,20 +155,13 @@ const batch /*: ConcreteBatch*/ = {
               }
             ],
             "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query TagsRouteQuery(\n  $count: Int!\n) {\n  viewer {\n    ...TagsIndex_viewer\n    id\n  }\n}\n\nfragment TagsIndex_viewer on User {\n  tags(first: $count) {\n    count\n    edges {\n      node {\n        id\n        name\n        ...TagPreview_tag\n      }\n    }\n  }\n}\n\nfragment TagPreview_tag on Tag {\n  count\n  name\n  url\n}\n"
+  "text": "query TagsRouteQuery(\n  $count: Int!\n) {\n  ...TagsIndex\n}\n\nfragment TagsIndex on Root {\n  tags(first: $count) {\n    count\n    edges {\n      node {\n        id\n        name\n        ...TagPreview_tag\n      }\n    }\n  }\n}\n\nfragment TagPreview_tag on Tag {\n  count\n  name\n  url\n}\n"
 };
 
 module.exports = batch;

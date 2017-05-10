@@ -42,12 +42,12 @@ class PostsIndex extends React.Component {
       <DocumentTitle title="blog">
         <div>
           {
-            this.props.viewer.posts.edges.map(({node}) => (
+            this.props.data.posts.edges.map(({node}) => (
               <Post key={node.id} post={node} />
             ))
           }
           {
-            this.props.viewer.posts.pageInfo.hasNextPage ?
+            this.props.data.posts.pageInfo.hasNextPage ?
               <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
@@ -62,27 +62,25 @@ class PostsIndex extends React.Component {
 
 export default createPaginationContainer(
   PostsIndex,
-  {
-    viewer: graphql`
-      fragment PostsIndex_viewer on User {
-        posts(
-          first: $count
-          after: $cursor
-        ) @connection(key: "PostsIndex_posts") {
-          edges {
-            node {
-              id
-              ...Post_post
-            }
-          }
-          pageInfo {
-            endCursor
-            hasNextPage
+  graphql`
+    fragment PostsIndex on Root {
+      posts(
+        first: $count
+        after: $cursor
+      ) @connection(key: "PostsIndex_posts") {
+        edges {
+          node {
+            id
+            ...Post_post
           }
         }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
       }
-    `,
-  },
+    }
+  `,
   {
     getFragmentVariables(prevVars, totalCount) {
       return {
@@ -103,9 +101,7 @@ export default createPaginationContainer(
         $count: Int!
         $cursor: String
       ) {
-        viewer {
-          ...PostsIndex_viewer
-        }
+        ...PostsIndex
       }
     `
   }

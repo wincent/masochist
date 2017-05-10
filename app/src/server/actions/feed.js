@@ -46,17 +46,15 @@ export default async function feed() {
     async () => {
       const result = await runQuery(`
         query FeedQuery {
-          viewer {
-            posts(first: 10) {
-              edges {
-                node {
-                  body {
-                    html
-                  }
-                  createdAt
-                  title
-                  url
+          posts(first: 10) {
+            edges {
+              node {
+                body {
+                  html
                 }
+                createdAt
+                title
+                url
               }
             }
           }
@@ -70,7 +68,7 @@ export default async function feed() {
         title: 'wincent.com blog',
       });
 
-      result.data.viewer.posts.edges.forEach(({node}) => {
+      result.data.posts.edges.forEach(({node}) => {
         feed.item({
           date: node.createdAt,
           description: extractExcerpt(node.body.html),

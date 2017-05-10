@@ -11,16 +11,12 @@ export default buildRoute(
       # TODO: make cursors ID type
       $cursor: String
     ) {
-      viewer {
-        ... on User {
-          ...ArticlesIndex_viewer
-        }
-      }
+      ...ArticlesIndex
     }
   `,
   () => ({
     count: 10,
     cursor: null,
   }),
-  data => <ArticlesIndex viewer={data.viewer} />,
+  data => <ArticlesIndex data={data} />,
 );

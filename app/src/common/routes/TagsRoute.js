@@ -9,15 +9,11 @@ export default buildRoute(
     query TagsRouteQuery(
       $count: Int!
     ) {
-      viewer {
-        ... on User {
-          ...TagsIndex_viewer
-        }
-      }
+      ...TagsIndex
     }
   `,
   () => ({
     count: 2 ** 31 - 1,
   }),
-  data => <TagsIndex viewer={data.viewer} />,
+  data => <TagsIndex data={data} />,
 );
