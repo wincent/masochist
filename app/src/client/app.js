@@ -115,7 +115,7 @@ resolve(history.location);
 
 function resolve(location, data) {
   if (window.MasochistCache) {
-    // First time here, and we are server rendering.
+    // First time here, and we've come from server rendering.
     Object.entries(window.MasochistCache).forEach(([key, value]) => {
       cache.set(key, value);
     });

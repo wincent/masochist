@@ -42,6 +42,7 @@
     "babel-register": "*",
     "babel-relay-plugin": "*",
     "bluebird": "*",
+    "body-parser": "*",
     "classnames": "*",
     "compiled-jade-render": "*",
     "css-loader": "*",

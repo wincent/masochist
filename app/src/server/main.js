@@ -5,6 +5,7 @@ import '../common/devFallback';
 import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
+import bodyParser from 'body-parser';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import createHistory from 'history/createMemoryHistory'
@@ -26,6 +27,7 @@ import HTTPError from '../client/components/HTTPError';
 import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
 import createRouter from '../common/createRouter';
+import QueryCache from './QueryCache';
 import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
 import getLoaders from './getLoaders';
@@ -37,6 +39,11 @@ import runQuery from './runQuery';
 const APP_PORT = 3000;
 
 const app = express();
+
+const queryCache = new QueryCache([
+  path.join(__dirname, '../common/routes/__generated__'),
+  path.join(__dirname, '../client/components/__generated__'),
+]);
 
 app.disable('x-powered-by');
 
@@ -94,15 +101,11 @@ appRoutes.forEach(route => {
     const environment = new Environment({
       network: Network.create(
         (operation, variables) => {
-          // TODO: implement persisted queries
-          return runQuery(operation.text, variables)
+          const query = queryCache.getQuery(operation.name);
+          return runQuery(query, variables)
             .then(result => {
               const key = getRequestBody(operation, variables);
               cache[key] = result;
-              console.log('got', result);
-              console.log('node', result.data.node);
-              console.log('hOP', result.data.node.hasOwnProperty); // undefined
-              // because it is coming from graphql-js...
               return result;
             })
             .catch(err => console.log('got an error', err));
@@ -150,7 +153,12 @@ appRoutes.forEach(route => {
   });
 });
 
+app.use(bodyParser.json());
 app.use('/graphql', (request, response, next) => {
+  // Totally hacked in persisted-query support:
+  if (request.body && request.body.name) {
+    request.body.query = queryCache.getQuery(request.body.name);
+  }
   const options = {
     rootValue: {
       loaders: getLoaders(),
