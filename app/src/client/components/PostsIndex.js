@@ -15,8 +15,7 @@ class PostsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this._disposable = this.props.relay.loadMore(
-      PAGE_SIZE, error => {
+      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
         this._disposable = null;
       });
