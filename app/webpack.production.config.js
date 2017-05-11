@@ -32,14 +32,13 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin(),
     function() {
       this.plugin('done', function(stats) {
-        console.log(JSON.stringify(stats.toJson()));
-        // stats.toJson().assetsByChunkName.main.forEach(function(asset) {
-        //   // Copy each digest-ized asset from dist to public/static.
-        //   fse.copySync(
-        //     path.resolve(__dirname, 'dist', asset),
-        //     path.resolve(__dirname, 'public', 'static', asset)
-        //   );
-        // });
+        stats.toJson().assetsByChunkName.main.forEach(function(asset) {
+          // Copy each digest-ized asset from dist to public/static.
+          fse.copySync(
+            path.resolve(__dirname, 'dist', asset),
+            path.resolve(__dirname, 'public', 'static', asset)
+          );
+        });
       });
     },
     new webpack.LoaderOptionsPlugin({
