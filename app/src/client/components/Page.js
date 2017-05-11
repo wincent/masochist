@@ -22,6 +22,7 @@ class Page extends React.Component {
   };
 
   render() {
+    // TODO: figure out why Flow doesn't complain when I abuse this prop.
     const page = this.props.data;
 
     if (!page) {
