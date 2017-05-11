@@ -2,6 +2,7 @@
  * @flow
  */
 
+import {number, string} from '../common/checks';
 import redis from '../common/redis';
 
 export type IndexResult = [number, string];
@@ -26,5 +27,5 @@ export default async function readIndex(
 
   // Results is not an array, so we can't destructure it (although we can make
   // it into an array for the benefit of our callers).
-  return [(results[0]: any), (results[1]: any)];
+  return [number(results[0]), string(results[1])];
 }
