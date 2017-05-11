@@ -4,6 +4,7 @@
 
 import DataLoader from 'dataloader';
 import redis from '../../common/redis';
+import {array} from '../../common/checks';
 import {loadContent} from '../loadContent';
 import Tag from '../models/Tag';
 
@@ -19,7 +20,7 @@ async function loadTags(keys: Array<string>): Promise<Array<Object | Error>> {
   const results = await redis.multi(queries);
   return results.map((result, i) => new Tag({
     id: keys[i],
-    count: result.length,
+    count: array(result).length,
     name: keys[i],
     taggables: result,
   }));

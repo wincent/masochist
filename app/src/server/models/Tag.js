@@ -2,6 +2,7 @@
  * @flow
  */
 
+import {array, number} from '../../common/checks';
 import redis from '../../common/redis';
 
 import type {IndexResult} from '../readIndex';
@@ -34,8 +35,8 @@ export default class Tag {
 
     // Results is not an array, so we can't destructure it (although we can make
     // it into an array for the benefit of our callers).
-    const tagsAndCounts: Array<mixed> = (results: any)[0];
-    const cardinality: number = (results: any)[1];
+    const tagsAndCounts: Array<mixed> = array(array(results)[0]);
+    const cardinality: number = number(array(results)[1]);
 
     // Because we asked for the items WITHSCORES, we doubled the number of rows
     // we got back.

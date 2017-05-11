@@ -12,7 +12,7 @@ import config from './config';
 //
 // How to fake it:
 //   https://coderwall.com/p/m3-cqw/subclassing-error-in-javascript-is-harder-than-it-seems
-export function GitError(message, code) {
+export function GitError(message: string, code: number) {
   this.message = message;
   this.code = code;
   this.stack = (new Error(message)).stack;

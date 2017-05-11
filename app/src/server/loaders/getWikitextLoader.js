@@ -5,7 +5,7 @@
 import DataLoader from 'dataloader';
 import wikify from '../wikify';
 
-import type WikitextSpec from '../wikify';
+import type {WikitextSpec} from '../wikify';
 
 async function loadWikitext(
   keys: Array<WikitextSpec>

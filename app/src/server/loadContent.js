@@ -7,11 +7,12 @@ import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import unpackContent from 'unpack-content';
 import Cache from '../common/Cache';
+import {object} from '../common/checks';
 import {Extensions} from './Markup';
 import git from './git';
 
 type LoaderOptions = {
-  subdirectory: 'wiki' | 'blog' | 'snippets';
+  subdirectory: 'blog' | 'pages' | 'snippets' | 'wiki';
   file: string; // Filename without extension.
   commit?: string; // Commit at which to load the content.
 }
@@ -39,7 +40,11 @@ export async function getTimestamps(
   };
 }
 
-export function getTimestampsCacheKey(subdirectory, file, head) {
+export function getTimestampsCacheKey(
+  subdirectory: string,
+  file: string,
+  head: string,
+): string {
   const typeName = SubdirectoryToTypeName[subdirectory];
   return toGlobalId(typeName, file) + ':' + head + ':timestamps';
 }
@@ -50,7 +55,7 @@ function getFilenamesWithExtensions(subdirectory, file) {
   ));
 }
 
-export async function loadContent(options: LoaderOptions): Promise {
+export async function loadContent(options: LoaderOptions): Promise<*> {
   const {subdirectory, file} = options;
   const head = (await git('rev-parse', 'content')).trim();
   const commit = options.commit || head;
@@ -99,7 +104,7 @@ export async function loadContent(options: LoaderOptions): Promise {
   const blob = await git('cat-file', 'blob', hash);
   const {body, tags, ...metadata} = unpackContent(blob);
   const cacheKey = getTimestampsCacheKey(subdirectory, normalizedFile, head);
-  const timestamps = await Cache.get(
+  const timestamps: Object = object(await Cache.get(
     cacheKey,
     async () => {
       const revs = await git(
@@ -113,7 +118,7 @@ export async function loadContent(options: LoaderOptions): Promise {
 
       return getTimestamps(oldest, mostRecent);
     }
-  );
+  ));
 
   return {
     id: normalizedFile,

@@ -8,12 +8,17 @@ import {
   canonicalScheme,
 } from '../common/config';
 import stripTrailingSlash from '../common/stripTrailingSlash';
+import {object} from '../common/checks';
 import runQuery from './runQuery';
+
+import type { $Request } from 'express';
 
 /**
  * Returns a canonical URL for the response, or null if there is not one.
  */
-export default async function getCanonicalURLForRequest(request): ?string {
+export default async function getCanonicalURLForRequest(
+  request: $Request
+): Promise<?string> {
   // We only look at path, ignoring query string params.
   const path = request.path;
   let canonical;
@@ -49,7 +54,7 @@ export default async function getCanonicalURLForRequest(request): ?string {
     );
 
     if (result.data && result.data.node) {
-      canonical = result.data.node.url;
+      canonical = object(result.data.node).url;
     }
   }
 

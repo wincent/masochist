@@ -1,6 +1,7 @@
 {
   "plugins": [
     "dev-expression",
+    "idx",
     "relay"
   ],
   "presets": [

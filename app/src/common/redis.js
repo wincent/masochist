@@ -5,6 +5,7 @@
 import Promise from 'bluebird';
 import redis from 'redis';
 import common from '../../../shared/common';
+import {string} from '../common/checks';
 
 Promise.promisifyAll(redis.RedisClient.prototype);
 Promise.promisifyAll(redis.Multi.prototype);
@@ -33,7 +34,7 @@ const client = {
   multi(commands: Array<Array<mixed>>): Array<mixed> {
     const commandsWithPrefixedKeys = commands.map(
       // No Flow support yet for tuples with varags..
-      ([command, key, ...args]) => [command, prefixKey((key: any)), ...args]
+      ([command, key, ...args]) => [command, prefixKey(string(key)), ...args]
     );
     return redisClient.multi(commandsWithPrefixedKeys).execAsync();
   },
