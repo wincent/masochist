@@ -4,28 +4,25 @@
 
 import type {Component} from 'react';
 
-const map = new Map();
+const set = new WeakSet();
 
 function ifMounted(
   instance: Component<*, *, *>,
   callback: () => void,
 ): () => void {
-  return function() {
-    if (map.has(instance)) {
+  return function applyIfMounted() {
+    if (set.has(instance)) {
       callback.apply(instance, arguments);
     }
   };
 }
 
 ifMounted.register = function register(instance) {
-  map.set(instance, true);
+  set.add(instance);
 };
 
 ifMounted.unregister = function unregister(instance) {
-  if (!map.has(instance)) {
-    throw new Error('ifMounted.unregister(): instance not present in map');
-  }
-  map.delete(instance);
+  set.delete(instance);
 };
 
 export default ifMounted;
