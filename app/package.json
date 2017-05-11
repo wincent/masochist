@@ -43,7 +43,6 @@
     "babel-preset-react": "*",
     "babel-preset-stage-0": "*",
     "babel-register": "*",
-    "babel-relay-plugin": "*",
     "bluebird": "*",
     "body-parser": "*",
     "classnames": "*",
