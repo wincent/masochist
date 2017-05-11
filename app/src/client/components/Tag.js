@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createPaginationContainer,
-  graphql,
-} from 'react-relay';
+import {createPaginationContainer, graphql} from 'react-relay';
 import ifMounted from '../ifMounted';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
@@ -19,17 +16,14 @@ class Tag extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(
-        10,
-        error => {
-          this.setState({isLoading: this.props.relay.isLoading()});
-          // ifMounted(this, error => {
-          //   this.setState({isLoading: this.props.relay.isLoading()});
-          // });
-        },
-      );
+      this.props.relay.loadMore(10, error => {
+        this.setState({isLoading: this.props.relay.isLoading()});
+        // ifMounted(this, error => {
+        //   this.setState({isLoading: this.props.relay.isLoading()});
+        // });
+      });
     });
-  }
+  };
 
   componentDidMount() {
     ifMounted.register(this);
@@ -56,20 +50,16 @@ class Tag extends React.Component {
             with <em>{name}</em>
           </p>
           <ContentListing>
-            {
-              taggables.edges.map(({cursor, node}, i) => (
-                <ContentPreview cursor={cursor} key={i} data={node} />
-              ))
-            }
+            {taggables.edges.map(({cursor, node}, i) => (
+              <ContentPreview cursor={cursor} key={i} data={node} />
+            ))}
           </ContentListing>
-          {
-            taggables.pageInfo.hasNextPage ?
-              <LoadMoreButton
+          {taggables.pageInfo.hasNextPage
+            ? <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
-              /> :
-              null
-          }
+              />
+            : null}
         </div>
       </DocumentTitle>
     );
@@ -125,6 +115,6 @@ export default createPaginationContainer(
           ...Tag
         }
       }
-    `
-  }
+    `,
+  },
 );

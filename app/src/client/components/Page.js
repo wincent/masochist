@@ -3,10 +3,7 @@
  */
 
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import {createFragmentContainer, graphql} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
@@ -18,7 +15,7 @@ import type {Page as PageData} from './__generated__/Page.graphql';
 
 class Page extends React.Component {
   props: {
-    data: PageData;
+    data: PageData,
   };
 
   render() {
@@ -41,20 +38,22 @@ class Page extends React.Component {
 
     return (
       // may want to URL encode here too? page.url
-      <DocumentTitle title={page.title}>
-        <article>
-          <h1>
-            <Link to={page.url}>
-              {page.title}
-            </Link>
-          </h1>
-          <When createdAt={page.createdAt} updatedAt={page.updatedAt} />
-          <div>
-            <TrustedPrerenderedMarkup html={page.body.html} />
-          </div>
-          <Tags data={page} />
-        </article>
-      </DocumentTitle>
+      (
+        <DocumentTitle title={page.title}>
+          <article>
+            <h1>
+              <Link to={page.url}>
+                {page.title}
+              </Link>
+            </h1>
+            <When createdAt={page.createdAt} updatedAt={page.updatedAt} />
+            <div>
+              <TrustedPrerenderedMarkup html={page.body.html} />
+            </div>
+            <Tags data={page} />
+          </article>
+        </DocumentTitle>
+      )
     );
   }
 }

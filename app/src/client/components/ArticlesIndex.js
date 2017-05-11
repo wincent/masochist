@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createPaginationContainer,
-  graphql,
-} from 'react-relay';
+import {createPaginationContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
 import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
@@ -21,20 +18,17 @@ class ArticlesIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(
-        10,
-        error => {
-          // TODO: confirm this crazy ifMounted stuff is still needed
-          this.setState({isLoading: this.props.relay.isLoading()});
-          // ifMounted(this, (error) => {
-          //   // not called
-          //   console.log('setting state', this.props.relay.isLoading());
-          //   // this.setState({isLoading: this.props.relay.isLoading()})
-          // });
-        },
-      );
+      this.props.relay.loadMore(10, error => {
+        // TODO: confirm this crazy ifMounted stuff is still needed
+        this.setState({isLoading: this.props.relay.isLoading()});
+        // ifMounted(this, (error) => {
+        //   // not called
+        //   console.log('setting state', this.props.relay.isLoading());
+        //   // this.setState({isLoading: this.props.relay.isLoading()})
+        // });
+      });
     });
-  }
+  };
 
   componentDidMount() {
     ifMounted.register(this);
@@ -59,21 +53,17 @@ class ArticlesIndex extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {
-                this.props.data.articles.edges.map(({node}) => (
-                  <ArticlePreview key={node.id} data={node} />
-                ))
-              }
+              {this.props.data.articles.edges.map(({node}) => (
+                <ArticlePreview key={node.id} data={node} />
+              ))}
             </tbody>
           </table>
-          {
-            this.props.relay.hasMore() ?
-              <LoadMoreButton
+          {this.props.relay.hasMore()
+            ? <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
-              /> :
-              null
-          }
+              />
+            : null}
         </div>
       </DocumentTitle>
     );
@@ -121,6 +111,6 @@ export default createPaginationContainer(
       ) {
         ...ArticlesIndex
       }
-    `
-  }
+    `,
+  },
 );

@@ -14,10 +14,16 @@ function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
       subdirectory: 'wiki',
     }))
     .map(loadContent)
-    .map(dataPromise => dataPromise.then(data => data && new Article({
-      ...data,
-      title: data.id,
-    })));
+    .map(dataPromise =>
+      dataPromise.then(
+        data =>
+          data &&
+          new Article({
+            ...data,
+            title: data.id,
+          }),
+      ),
+    );
   return Promise.all(promises);
 }
 

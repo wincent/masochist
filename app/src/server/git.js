@@ -15,7 +15,7 @@ import config from './config';
 export function GitError(message: string, code: number) {
   this.message = message;
   this.code = code;
-  this.stack = (new Error(message)).stack;
+  this.stack = new Error(message).stack;
 }
 GitError.prototype = Object.create(Error.prototype);
 GitError.prototype.constructor = GitError;
@@ -26,7 +26,7 @@ function run(command, ...args: Array<string>): Promise<string> {
     const child = spawn(command, args);
     let stdout = '';
 
-    child.stdout.on('data', data => stdout += data);
+    child.stdout.on('data', data => (stdout += data));
 
     child.on('error', error => {
       if (promise.isPending()) {
@@ -49,6 +49,6 @@ function run(command, ...args: Array<string>): Promise<string> {
 }
 
 export default function git(...args: Array<string>): Promise {
-  const repoPath = path.resolve(__dirname, '../../..', config.repo)
+  const repoPath = path.resolve(__dirname, '../../..', config.repo);
   return run('git', '-C', repoPath, ...args);
 }

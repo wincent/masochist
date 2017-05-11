@@ -19,14 +19,8 @@ export default class Article {
   redirect: ?string;
   tags: Array<string>;
 
-  static async readIndex(
-    count: number, offset: number
-  ): Promise<IndexResult> {
-    const results = await readIndex(
-      WIKI_INDEX,
-      count,
-      offset
-    );
+  static async readIndex(count: number, offset: number): Promise<IndexResult> {
+    const results = await readIndex(WIKI_INDEX, count, offset);
     return results;
   }
 

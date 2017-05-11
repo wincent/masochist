@@ -3,7 +3,7 @@
  */
 
 type RouteConfig = Array<{
-  path: string;
+  path: string,
 }>;
 
 /**
@@ -18,7 +18,7 @@ export default function gatherPaths(config: RouteConfig): Array<string> {
       return;
     }
 
-    const path = route.path.replace(/:\w+/, '*')
+    const path = route.path.replace(/:\w+/, '*');
     paths.push(path);
   });
   return paths;

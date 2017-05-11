@@ -58,13 +58,15 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-      }, {
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader!postcss-loader',
         }),
-      }, {
+      },
+      {
         test: /\.svg$/,
         loader: 'url-loader?limit=10000',
       },

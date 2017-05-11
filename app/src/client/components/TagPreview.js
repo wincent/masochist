@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 
 class TagPreview extends React.Component {

@@ -25,12 +25,9 @@ function resolve(context, params) {
 }
 
 export default function createRouter(history, resolver = resolve) {
-  const router = new Router(
-    routeConfig,
-    {
-      resolveRoute: resolver,
-    },
-  );
+  const router = new Router(routeConfig, {
+    resolveRoute: resolver,
+  });
   router.history = history;
   return router;
 }

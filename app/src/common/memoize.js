@@ -4,9 +4,7 @@
 
 const functions = new Map();
 
-export default function memoize(
-  fn: () => any
-): () => any {
+export default function memoize(fn: () => any): () => any {
   return async function() {
     if (!functions.has(fn)) {
       functions.set(fn, {});

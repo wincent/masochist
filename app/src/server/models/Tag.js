@@ -16,21 +16,12 @@ export default class Tag {
 
   static async readIndex(
     count: number,
-    offset: number
+    offset: number,
   ): Promise<[Array<Tag>, number]> {
     const key = 'tags-index';
     const results = await redis.multi([
-      [
-        'ZREVRANGE',
-        key,
-        offset,
-        offset + count - 1,
-        'WITHSCORES',
-      ],
-      [
-        'ZCARD',
-        key,
-      ]
+      ['ZREVRANGE', key, offset, offset + count - 1, 'WITHSCORES'],
+      ['ZCARD', key],
     ]);
 
     // Results is not an array, so we can't destructure it (although we can make

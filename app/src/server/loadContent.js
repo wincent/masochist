@@ -12,10 +12,10 @@ import {Extensions} from './Markup';
 import git from './git';
 
 type LoaderOptions = {
-  subdirectory: 'blog' | 'pages' | 'snippets' | 'wiki';
-  file: string; // Filename without extension.
-  commit?: string; // Commit at which to load the content.
-}
+  subdirectory: 'blog' | 'pages' | 'snippets' | 'wiki',
+  file: string, // Filename without extension.
+  commit?: string, // Commit at which to load the content.
+};
 
 const SubdirectoryToTypeName = {
   blog: 'Post',
@@ -24,19 +24,20 @@ const SubdirectoryToTypeName = {
   wiki: 'Article',
 };
 
-export async function getTimestamps(
-  oldest: string,
-  mostRecent: string
-) {
+export async function getTimestamps(oldest: string, mostRecent: string) {
   return {
-    createdAt: oldest ?
-      // Author date of earliest.
-      new Date((await git('show', '-s', '--format=%at', oldest)).trim() * 1000) :
-      null,
-    updatedAt: mostRecent ?
-      // Commit date of latest.
-      new Date((await git('show', '-s', '--format=%ct', mostRecent)).trim() * 1000) :
-      null,
+    createdAt: oldest
+      ? // Author date of earliest.
+        new Date(
+          (await git('show', '-s', '--format=%at', oldest)).trim() * 1000,
+        )
+      : null,
+    updatedAt: mostRecent
+      ? // Commit date of latest.
+        new Date(
+          (await git('show', '-s', '--format=%ct', mostRecent)).trim() * 1000,
+        )
+      : null,
   };
 }
 
@@ -50,9 +51,9 @@ export function getTimestampsCacheKey(
 }
 
 function getFilenamesWithExtensions(subdirectory, file) {
-  return Object.keys(Extensions).map(name => (
-    'content/' + subdirectory + '/' + file + '.' + Extensions[name]
-  ));
+  return Object.keys(Extensions).map(
+    name => 'content/' + subdirectory + '/' + file + '.' + Extensions[name],
+  );
 }
 
 export async function loadContent(options: LoaderOptions): Promise<*> {
@@ -63,20 +64,18 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
 
   // Content may exist under one (or none) of several possible extensions.
   let possibleNames;
-  if (
-    subdirectory === 'wiki' &&
-    file[0] &&
-    file[0].match(/\w/)
-  ) {
+  if (subdirectory === 'wiki' && file[0] && file[0].match(/\w/)) {
     // Given file "foo", we look for "foo" and "Foo".
     possibleNames = getFilenamesWithExtensions(
       subdirectory,
-      file[0].toUpperCase() + file.slice(1)
+      file[0].toUpperCase() + file.slice(1),
     );
-    possibleNames.push(...getFilenamesWithExtensions(
-      subdirectory,
-      file[0].toLowerCase() + file.slice(1)
-    ));
+    possibleNames.push(
+      ...getFilenamesWithExtensions(
+        subdirectory,
+        file[0].toLowerCase() + file.slice(1),
+      ),
+    );
   } else {
     possibleNames = getFilenamesWithExtensions(subdirectory, file);
   }
@@ -88,7 +87,7 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
     '-z',
     tree,
     '--',
-    ...possibleNames
+    ...possibleNames,
   )).match(/^\d+ (\w+) ([0-9a-f]+)\t(.+)\.(.+?)(\0|$)/);
 
   if (!treeEntry) {
@@ -104,9 +103,8 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
   const blob = await git('cat-file', 'blob', hash);
   const {body, tags, ...metadata} = unpackContent(blob);
   const cacheKey = getTimestampsCacheKey(subdirectory, normalizedFile, head);
-  const timestamps: Object = object(await Cache.get(
-    cacheKey,
-    async () => {
+  const timestamps: Object = object(
+    await Cache.get(cacheKey, async () => {
       const revs = await git(
         'rev-list',
         'content',
@@ -117,8 +115,8 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
       const oldest = revs.trim().slice(-40);
 
       return getTimestamps(oldest, mostRecent);
-    }
-  ));
+    }),
+  );
 
   return {
     id: normalizedFile,

@@ -29,7 +29,7 @@ import {
 } from '../server/loadContent';
 import git from '../server/git';
 
-const LAST_INDEXED_HASH = common.redisKeys.lastIndexedHash;;
+const LAST_INDEXED_HASH = common.redisKeys.lastIndexedHash;
 
 function log(format, ...args: Array<string>): void {
   const time = new Date().toLocaleTimeString();
@@ -51,40 +51,34 @@ function extractFile(pathString: string, contentType: string): string {
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-const getWhatChanged = memoize(
-  async (range: string, subdirectory: string) => {
-    // Custom log format (^@ here represents the NUL \0 byte):
-    //
-    // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
-    // :100644 100644 6535626... ec6d229... M^@app/src/bin/updateIndices.js^@^@
-    // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
-    // :100644 100644 12d2393... 600f5ef... M^@app/package.json^@
-    return await git(
-      'log',
-      '--pretty=format:%n%H %at %ct',
-      '--raw',
-      '-z',
-      range,
-      '--',
-      path.join('content', subdirectory),
-    );
-  }
-);
+const getWhatChanged = memoize(async (range: string, subdirectory: string) => {
+  // Custom log format (^@ here represents the NUL \0 byte):
+  //
+  // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
+  // :100644 100644 6535626... ec6d229... M^@app/src/bin/updateIndices.js^@^@
+  // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
+  // :100644 100644 12d2393... 600f5ef... M^@app/package.json^@
+  return await git(
+    'log',
+    '--pretty=format:%n%H %at %ct',
+    '--raw',
+    '-z',
+    range,
+    '--',
+    path.join('content', subdirectory),
+  );
+});
 
 async function getIsAncestor(
-  potentialAncestor: ?string, commit: string
+  potentialAncestor: ?string,
+  commit: string,
 ): Promise<boolean> {
   if (potentialAncestor) {
     try {
-      await git(
-        'merge-base',
-        '--is-ancestor',
-        potentialAncestor,
-        commit,
-      );
+      await git('merge-base', '--is-ancestor', potentialAncestor, commit);
       // Exit code 0 means it's an ancestor.
       return Promise.resolve(true);
-    } catch(error) {
+    } catch (error) {
       // Exit code 1 means it's not an ancestor; other codes (not disinguished
       // here) mean other errors.
     }
@@ -113,20 +107,15 @@ function getFileUpdates(range, callback) {
     const regExp = new RegExp(
       // Commit SHA, author date, committer date.
       '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
-
-      // Modes.
-      ':\\d{6} \\d{6} ' +
-
-      // Before/after tree or blob.
-      '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
-
-      // Added, Deleted or Modified.
-      '([ADM])\0' +
-
-      // Path, optional commit terminator.
-      '([^\0]+)\0\0?',
-
-      'g'
+        // Modes.
+        ':\\d{6} \\d{6} ' +
+        // Before/after tree or blob.
+        '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
+        // Added, Deleted or Modified.
+        '([ADM])\0' +
+        // Path, optional commit terminator.
+        '([^\0]+)\0\0?',
+      'g',
     );
 
     let match;
@@ -178,28 +167,25 @@ function getFileUpdates(range, callback) {
   // over and over again).
   log('Preparing timestamp cache for revision %s', head);
   const timestamps = {};
-  await getFileUpdates(
-    head,
-    async ({file, status, contentType, commit}) => {
-      dot();
-      const id = contentType + ':' + file;
-      if (!timestamps[id]) {
-        timestamps[id] = {};
-      }
-      switch (status) {
-        case 'A':
-          timestamps[id].oldest = commit;
-          break;
-        case 'M':
-          timestamps[id].mostRecent = timestamps[id].mostRecent || commit;
-          break;
-      }
+  await getFileUpdates(head, async ({file, status, contentType, commit}) => {
+    dot();
+    const id = contentType + ':' + file;
+    if (!timestamps[id]) {
+      timestamps[id] = {};
     }
-  );
+    switch (status) {
+      case 'A':
+        timestamps[id].oldest = commit;
+        break;
+      case 'M':
+        timestamps[id].mostRecent = timestamps[id].mostRecent || commit;
+        break;
+    }
+  });
   print('\n');
 
   log('Writing timestamp cache for revision %s', head);
-  await (async () => {
+  await async function() {
     // Use Promise.map to limit concurrency and avoid exhausting file
     // descriptors.
     return Promise.map(
@@ -208,14 +194,11 @@ function getFileUpdates(range, callback) {
         const [contentType, file] = extractTypeAndId(id);
         const {oldest, mostRecent} = timestamps[id];
         const cacheKey = getTimestampsCacheKey(contentType, file, head);
-        await Cache.set(
-          cacheKey,
-          await getTimestamps(oldest, mostRecent)
-        );
+        await Cache.set(cacheKey, await getTimestamps(oldest, mostRecent));
       },
-      {concurrency: 32}
+      {concurrency: 32},
     );
-  });
+  };
 
   // Produce createdAt/updatedAt ordered indices.
   log('Creating ordered index');
@@ -268,7 +251,7 @@ function getFileUpdates(range, callback) {
             break;
         }
       }
-    }
+    },
   );
   print('\n');
 
@@ -295,76 +278,69 @@ function getFileUpdates(range, callback) {
     updates.unshift(['ZINCRBY', indexName, -1, tag]);
 
     const setName = 'tag:' + tag;
-    updates.unshift([
-      'ZREM',
-      setName,
-      contentType + ':' + file,
-    ]);
+    updates.unshift(['ZREM', setName, contentType + ':' + file]);
   }
 
   log('Creating tag sets');
-  await getFileUpdates(
-    range,
-    async ({file, status, commit, contentType}) => {
-      // Callback will be called in reverse-chronological order, so we use
-      // `unshift` instead of `push` to handle cases like this:
-      //
-      //   1. Add article with tags "foo", "bar".
-      //   2. Switch tag "bar" for "baz".
-      //   3. Delete article.
-      //
-      // First thing we see is the deletion, then the edit, then the addition,
-      // so when we unshift our operations, our queue becomes:
-      //
-      //   1. Increment counts for "foo", "bar".
-      //   2. Decrement count for "bar", increment count for "baz".
-      //   3. Decrement counts for "foo", "baz".
-      //
-      dot();
-      const {tags, updatedAt} = await loadContent({
-        subdirectory: contentType,
-        file,
-        commit: status === 'D' ? commit + '~' : commit,
-      });
-      switch (status) {
-        case 'A':
-          // New file: add tags to index.
-          tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
-          break;
-        case 'D':
-          // Deleted file: remove tags from index.
-          tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
-          break;
-        case 'M':
-          // Modified file: check before and after tags and apply updates, if
-          // any.
-          {
-            const {tags: previousTags} = await loadContent({
-              subdirectory: contentType,
-              file,
-              commit: commit + '~',
-            });
+  await getFileUpdates(range, async ({file, status, commit, contentType}) => {
+    // Callback will be called in reverse-chronological order, so we use
+    // `unshift` instead of `push` to handle cases like this:
+    //
+    //   1. Add article with tags "foo", "bar".
+    //   2. Switch tag "bar" for "baz".
+    //   3. Delete article.
+    //
+    // First thing we see is the deletion, then the edit, then the addition,
+    // so when we unshift our operations, our queue becomes:
+    //
+    //   1. Increment counts for "foo", "bar".
+    //   2. Decrement count for "bar", increment count for "baz".
+    //   3. Decrement counts for "foo", "baz".
+    //
+    dot();
+    const {tags, updatedAt} = await loadContent({
+      subdirectory: contentType,
+      file,
+      commit: status === 'D' ? commit + '~' : commit,
+    });
+    switch (status) {
+      case 'A':
+        // New file: add tags to index.
+        tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
+        break;
+      case 'D':
+        // Deleted file: remove tags from index.
+        tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
+        break;
+      case 'M':
+        // Modified file: check before and after tags and apply updates, if
+        // any.
+        {
+          const {tags: previousTags} = await loadContent({
+            subdirectory: contentType,
+            file,
+            commit: commit + '~',
+          });
 
-            // Manual set intersection...
-            const tagsSet = new Set(tags);
-            const previousTagsSet = new Set(previousTags);
-            for (let existing of tagsSet) {
-              if (!previousTagsSet.has(existing)) {
-                // Tag was added.
-                addTag(existing, file, contentType, updatedAt);
-              }
-            }
-            for (let previous of previousTagsSet) {
-              if (!tagsSet.has(previous)) {
-                // Tag was deleted.
-                removeTag(previous, file, contentType, updatedAt);
-              }
+          // Manual set intersection...
+          const tagsSet = new Set(tags);
+          const previousTagsSet = new Set(previousTags);
+          for (let existing of tagsSet) {
+            if (!previousTagsSet.has(existing)) {
+              // Tag was added.
+              addTag(existing, file, contentType, updatedAt);
             }
           }
-          break;
-      }
+          for (let previous of previousTagsSet) {
+            if (!tagsSet.has(previous)) {
+              // Tag was deleted.
+              removeTag(previous, file, contentType, updatedAt);
+            }
+          }
+        }
+        break;
     }
-  );
+  });
   print('\n');
 
   // All done.

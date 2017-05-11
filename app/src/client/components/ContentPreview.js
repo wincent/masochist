@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import {createFragmentContainer, graphql} from 'react-relay';
 import ArticlePreview from './ArticlePreview';
 import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';

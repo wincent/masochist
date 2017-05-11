@@ -15,15 +15,12 @@ export default class Snippet {
   updatedAt: ?Date;
   tags: Array<string>;
 
-  static async readIndex(
-    count: number,
-    offset: number
-  ): Promise<IndexResult> {
+  static async readIndex(count: number, offset: number): Promise<IndexResult> {
     const results = await readIndex(
       // TODO: centralize this (we have something similar in bin/updateIndices)
       'snippets-index',
       count,
-      offset
+      offset,
     );
     return results;
   }
@@ -38,4 +35,3 @@ export default class Snippet {
     this.tags = values.tags;
   }
 }
-

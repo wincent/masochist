@@ -15,11 +15,13 @@ module.exports = {
         exclude: /node_modules/,
         test: /\.js$/,
         loader: 'babel-loader',
-      }, {
+      },
+      {
         include: path.resolve(__dirname, 'src'),
         loader: 'style-loader!css-loader!postcss-loader',
         test: /\.css$/,
-      }, {
+      },
+      {
         loader: 'url-loader?limit=10000',
         test: /\.svg$/,
       },

@@ -8,7 +8,7 @@ import Promise from 'bluebird';
 import bodyParser from 'body-parser';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import createHistory from 'history/createMemoryHistory'
+import createHistory from 'history/createMemoryHistory';
 import path from 'path';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
@@ -61,11 +61,12 @@ function jadeHandler(resource, extraLocals = {}) {
     // TODO: if canonical is non-null and doesn't match actual, 301 redirect
     const locals = {
       bundle: getAssetURL(
-        '/static/' + (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js)
+        '/static/' +
+          (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js),
       ),
-      styles: __DEV__ ?
-        null :
-        getAssetURL('/static/' + require('../webpack-assets').main.css),
+      styles: __DEV__
+        ? null
+        : getAssetURL('/static/' + require('../webpack-assets').main.css),
       canonical,
       production: !__DEV__,
       ...extraLocals,
@@ -99,19 +100,17 @@ appRoutes.forEach(route => {
     const router = createRouter(history);
     const cache = {};
     const environment = new Environment({
-      network: Network.create(
-        (operation, variables) => {
-          const query = queryCache.getQuery(operation.name);
-          return runQuery(query, variables)
-            .then(result => {
-              const key = getRequestBody(operation, variables);
-              cache[key] = result;
-              return result;
-            })
-            .catch(err => console.log('got an error', err));
-            // TODO: really handle errors
-        }
-      ),
+      network: Network.create((operation, variables) => {
+        const query = queryCache.getQuery(operation.name);
+        return runQuery(query, variables)
+          .then(result => {
+            const key = getRequestBody(operation, variables);
+            cache[key] = result;
+            return result;
+          })
+          .catch(err => console.log('got an error', err));
+        // TODO: really handle errors
+      }),
       store: new Store(new RecordSource()),
     });
     const api = {
@@ -203,13 +202,16 @@ if (__DEV__) {
     noInfo: true,
   });
   bundler.listen(APP_PORT + 1, 'localhost', () => {
-    console.log('Webpack dev server listening at http://localhost:%s', APP_PORT + 1);
+    console.log(
+      'Webpack dev server listening at http://localhost:%s',
+      APP_PORT + 1,
+    );
   });
   app.all('/static/*', (request, response) => {
     return proxy.web(request, response, {
       target: 'http://localhost:' + (APP_PORT + 1) + '/static',
       prependPath: false,
-    })
+    });
   });
 
   proxy.on('error', error => console.log('Proxy error: %s', error));
@@ -220,13 +222,12 @@ app.get('/heartbeat', (request, response) => {
 });
 
 // In production, nginx should handle this, but in case it doesn't:
-app.use(express.static(
-  path.join(__dirname, '..', '..', 'public'),
-  {
+app.use(
+  express.static(path.join(__dirname, '..', '..', 'public'), {
     extensions: ['html'], // Given foobar, try for foobar.html
     redirect: false, // Prevent redirect from issues to issues/
-  },
-));
+  }),
+);
 
 function errorPage(error, message, request, response) {
   return {
@@ -239,7 +240,7 @@ function errorPage(error, message, request, response) {
       const pageContent = ReactDOMServer.renderToStaticMarkup(
         <App router={router}>
           <HTTPError code={error} />
-        </App>
+        </App>,
       );
 
       jadeHandler('error', {error, message, pageContent})(request, response);

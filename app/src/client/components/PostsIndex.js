@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createPaginationContainer,
-  graphql,
-} from 'react-relay';
+import {createPaginationContainer, graphql} from 'react-relay';
 import ifMounted from '../ifMounted';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
@@ -17,17 +14,14 @@ class PostsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(
-        3,
-        error => {
-          this.setState({isLoading: this.props.relay.isLoading()});
-          // ifMounted(this, error => {
-          //   this.setState({isLoading: this.props.relay.isLoading()});
-          // });
-        },
-      );
+      this.props.relay.loadMore(3, error => {
+        this.setState({isLoading: this.props.relay.isLoading()});
+        // ifMounted(this, error => {
+        //   this.setState({isLoading: this.props.relay.isLoading()});
+        // });
+      });
     });
-  }
+  };
 
   componentDidMount() {
     ifMounted.register(this);
@@ -41,19 +35,15 @@ class PostsIndex extends React.Component {
     return (
       <DocumentTitle title="blog">
         <div>
-          {
-            this.props.data.posts.edges.map(({node}) => (
-              <Post key={node.id} data={node} />
-            ))
-          }
-          {
-            this.props.data.posts.pageInfo.hasNextPage ?
-              <LoadMoreButton
+          {this.props.data.posts.edges.map(({node}) => (
+            <Post key={node.id} data={node} />
+          ))}
+          {this.props.data.posts.pageInfo.hasNextPage
+            ? <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
-              /> :
-              null
-          }
+              />
+            : null}
         </div>
       </DocumentTitle>
     );
@@ -103,6 +93,6 @@ export default createPaginationContainer(
       ) {
         ...PostsIndex
       }
-    `
-  }
+    `,
+  },
 );

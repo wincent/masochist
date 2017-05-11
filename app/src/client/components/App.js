@@ -59,15 +59,17 @@ export default class App extends React.Component {
       }
       element = element.parentNode;
     }
-  }
+  };
 
   componentDidMount() {
-    document.getElementById('relay-root')
+    document
+      .getElementById('relay-root')
       .addEventListener('click', this._handleClick);
   }
 
   componentWillUnmount() {
-    document.getElementById('relay-root')
+    document
+      .getElementById('relay-root')
       .removeEventListener('click', this._handleClick);
   }
 

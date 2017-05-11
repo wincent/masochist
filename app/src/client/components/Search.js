@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  createPaginationContainer,
-  graphql,
-} from 'react-relay';
+import {createPaginationContainer, graphql} from 'react-relay';
 import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
 import ContentListing from './ContentListing';
@@ -34,17 +31,14 @@ class Search extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(
-        10,
-        error => {
-          this.setState({isLoading: this.props.relay.isLoading()});
-          // ifMounted(this, error => {
-          //   this.setState({isLoading: this.props.relay.isLoading()});
-          // });
-        },
-      );
+      this.props.relay.loadMore(10, error => {
+        this.setState({isLoading: this.props.relay.isLoading()});
+        // ifMounted(this, error => {
+        //   this.setState({isLoading: this.props.relay.isLoading()});
+        // });
+      });
     });
-  }
+  };
 
   componentDidMount() {
     ifMounted.register(this);
@@ -75,15 +69,17 @@ class Search extends React.Component {
               onSubmit={event => {
                 event.preventDefault();
                 this.context.router.history.push(searchURL);
-              }}
-            >
+              }}>
               <input
                 className="eight columns"
                 id="search-input"
-                onChange={event => this.setState({q: event.currentTarget.value})}
+                onChange={event =>
+                  this.setState({q: event.currentTarget.value})}
                 placeholder="Search..."
                 type="search"
-                ref={input => { this._searchInput = input }}
+                ref={input => {
+                  this._searchInput = input;
+                }}
                 value={this.state.q}
               />
               <input
@@ -98,20 +94,16 @@ class Search extends React.Component {
             <PluralText count={search.count} text="item" /> found
           </p>
           <ContentListing>
-            {
-              search.edges.map(({cursor, node}, i) => (
-                <ContentPreview cursor={cursor} key={i} data={node} />
-              ))
-            }
+            {search.edges.map(({cursor, node}, i) => (
+              <ContentPreview cursor={cursor} key={i} data={node} />
+            ))}
           </ContentListing>
-          {
-            search.pageInfo.hasNextPage ?
-              <LoadMoreButton
+          {search.pageInfo.hasNextPage
+            ? <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
-              /> :
-              null
-          }
+              />
+            : null}
         </div>
       </DocumentTitle>
     );
@@ -163,6 +155,6 @@ export default createPaginationContainer(
       ) {
         ...Search
       }
-    `
-  }
+    `,
+  },
 );

@@ -51,54 +51,68 @@ function prepareTagParams(params) {
   };
 }
 
-export default [{
-  path: '/',
-  action: PostsRoute,
-}, {
-  path: '/blog',
-  action: PostsRoute,
-}, {
-  path: '/blog/:id',
-  action: PostRoute,
-  prepare: getPrepareParams('Post'),
-}, {
-  path: '/pages/:id',
-  action: PageRoute,
-  prepare: getPrepareParams('Page'),
-}, {
-  path: '/search',
-  action: SearchRoute,
-}, {
-  path: '/search/:q',
-  action: SearchRoute,
-}, {
-  path: '/snippets',
-  action: SnippetsRoute,
-}, {
-  // TODO: handle .txt on snippet
-  path: '/snippets/:id',
-  action: SnippetRoute,
-  prepare: getPrepareParams('Snippet'),
-}, {
-  path: '/tags',
-  action: TagsRoute,
-}, {
-  path: '/tags/:id',
-  action: TagRoute,
-  prepare: prepareTagParams,
-}, {
-  path: '/wiki',
-  action: ArticlesRoute,
-}, {
-  path: '/wiki/:id',
-  action: ArticleRoute,
-  prepare: prepareArticleParams,
-}, {
-  // Catch-all.
-  path: '*',
-  action() {
-    // TODO: test this is actually getting hit
-    // (once we have client-side link handling)
-    return <HTTPError code={404} />;
+export default [
+  {
+    path: '/',
+    action: PostsRoute,
   },
-}];
+  {
+    path: '/blog',
+    action: PostsRoute,
+  },
+  {
+    path: '/blog/:id',
+    action: PostRoute,
+    prepare: getPrepareParams('Post'),
+  },
+  {
+    path: '/pages/:id',
+    action: PageRoute,
+    prepare: getPrepareParams('Page'),
+  },
+  {
+    path: '/search',
+    action: SearchRoute,
+  },
+  {
+    path: '/search/:q',
+    action: SearchRoute,
+  },
+  {
+    path: '/snippets',
+    action: SnippetsRoute,
+  },
+  {
+    // TODO: handle .txt on snippet
+    path: '/snippets/:id',
+    action: SnippetRoute,
+    prepare: getPrepareParams('Snippet'),
+  },
+  {
+    path: '/tags',
+    action: TagsRoute,
+  },
+  {
+    path: '/tags/:id',
+    action: TagRoute,
+    prepare: prepareTagParams,
+  },
+  {
+    path: '/wiki',
+    action: ArticlesRoute,
+  },
+  {
+    path: '/wiki/:id',
+    action: ArticleRoute,
+    prepare: prepareArticleParams,
+  },
+  {
+    // Catch-all.
+    path: '*',
+    action() {
+      // TODO: test this is actually getting hit
+      // (once we have client-side link handling)
+      return <HTTPError code={404} />;
+    },
+  },
+];

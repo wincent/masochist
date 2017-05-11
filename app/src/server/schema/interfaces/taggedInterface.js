@@ -1,7 +1,4 @@
-import {
-  GraphQLInterfaceType,
-  GraphQLList,
-} from 'graphql';
+import {GraphQLInterfaceType, GraphQLList} from 'graphql';
 import Article from '../../models/Article';
 import Page from '../../models/Page';
 import Post from '../../models/Post';
@@ -14,7 +11,7 @@ const taggedInterface = new GraphQLInterfaceType({
   fields: {
     tags: {
       type: new GraphQLList(TagNameType),
-      description: 'A list of tag names'
+      description: 'A list of tag names',
     },
   },
   resolveType: object => {

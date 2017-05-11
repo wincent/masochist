@@ -15,7 +15,7 @@ export default class LoadMoreButton extends React.Component {
   _handleLoadMore = event => {
     event.preventDefault();
     this.props.onLoadMore();
-  }
+  };
 
   render() {
     const {isLoading} = this.props;
@@ -25,7 +25,7 @@ export default class LoadMoreButton extends React.Component {
           disabled={isLoading}
           href="#more"
           onClick={this._handleLoadMore}>
-          {isLoading ? 'Loading' : 'Load more'}&hellip;
+          {isLoading ? 'Loading' : 'Load more'}…
         </button>
       </div>
     );

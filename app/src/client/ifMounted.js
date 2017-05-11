@@ -8,7 +8,7 @@ const map = new Map();
 
 function ifMounted(
   instance: Component<*, *, *>,
-  callback: () => void
+  callback: () => void,
 ): () => void {
   return function() {
     if (map.has(instance)) {

@@ -54,7 +54,6 @@ class DocumentTitle extends React.Component {
   }
 }
 
-export default withSideEffect(
-  reducePropsToState,
-  handleStateChangeOnClient
-)(DocumentTitle);
+export default withSideEffect(reducePropsToState, handleStateChangeOnClient)(
+  DocumentTitle,
+);

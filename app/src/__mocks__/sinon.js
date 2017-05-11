@@ -21,5 +21,5 @@ global.sinon = {
 
   useFakeTimers() {
     return sinon.useFakeTimers(...arguments);
-  }
+  },
 };

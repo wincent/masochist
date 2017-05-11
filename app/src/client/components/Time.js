@@ -25,11 +25,10 @@ export default class Time extends React.Component {
 
     if (inBrowser) {
       this._updateTimer = setTimeout(
-        () => (
-          this.setState((previousState) => ({
+        () =>
+          this.setState(previousState => ({
             stateCounter: previousState.stateCounter + 1,
-          }))
-        ),
+          })),
         ttl * 1000,
       );
     }

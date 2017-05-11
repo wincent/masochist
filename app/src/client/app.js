@@ -35,33 +35,31 @@ const CACHE_SIZE = 20;
 // TODO: extract a lot of this into a common place where it can be used on both
 // server and client?
 const environment = new Environment({
-  network: Network.create(
-    (operation, variables) => {
-      // TODO: implement persisted queries
-      const body = getRequestBody(operation, variables);
-      if (cache.has(body)) {
-        return Promise.resolve(cache.get(body));
-      }
-      return fetch('/graphql', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body,
-      }).then(response => {
-        const json = response.json();
-        if (response.ok) {
-          if (cache.size > CACHE_SIZE) {
-            Array.from(cache.keys())
-              .slice(CACHE_SIZE)
-              .forEach(key => cache.delete(key));
-          }
-          cache.set(body, json);
-        }
-        return json;
-      });
+  network: Network.create((operation, variables) => {
+    // TODO: implement persisted queries
+    const body = getRequestBody(operation, variables);
+    if (cache.has(body)) {
+      return Promise.resolve(cache.get(body));
     }
-  ),
+    return fetch('/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body,
+    }).then(response => {
+      const json = response.json();
+      if (response.ok) {
+        if (cache.size > CACHE_SIZE) {
+          Array.from(cache.keys())
+            .slice(CACHE_SIZE)
+            .forEach(key => cache.delete(key));
+        }
+        cache.set(body, json);
+      }
+      return json;
+    });
+  }),
   store: new Store(new RecordSource()),
 });
 
@@ -152,11 +150,9 @@ function resolve(location, data) {
       console.error(error);
       ReactDOM.render(
         <App router={router}>
-          {
-            /* 500 is almost certainly not the right error code, but if we
+          {/* 500 is almost certainly not the right error code, but if we
             * get here things are already badly wrong.
-            */
-          }
+            */}
           <HTTPError code={500} />
         </App>,
         root,

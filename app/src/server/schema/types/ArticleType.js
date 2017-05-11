@@ -6,10 +6,7 @@ import {
 } from 'graphql';
 import {globalIdField} from 'graphql-relay';
 import Article from '../../models/Article';
-import {
-  nodeInterface,
-  registerType,
-} from '../definitions/node';
+import {nodeInterface, registerType} from '../definitions/node';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import MarkupType from './MarkupType';
@@ -27,7 +24,7 @@ async function resolveRedirects(article, {loaders}) {
   while (article.redirect) {
     let targetArticle = await getRedirectedArticle(
       article.redirect,
-      loaders.Article
+      loaders.Article,
     );
     if (targetArticle) {
       article = targetArticle;
@@ -38,61 +35,62 @@ async function resolveRedirects(article, {loaders}) {
   return article;
 }
 
-const ArticleType = registerType(new GraphQLObjectType({
-  name: 'Article',
-  description: 'A wiki article',
-  fields: {
-    id: globalIdField('Article'),
-    title: {
-      type: GraphQLString,
-      description: "The article's title",
-      resolve: article => article.title,
-    },
-    resolvedTitle: {
-      type: GraphQLString,
-      description: 'The title of the article after resolving redirects',
-      resolve: async (article, args, context, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        return article.title;
+const ArticleType = registerType(
+  new GraphQLObjectType({
+    name: 'Article',
+    description: 'A wiki article',
+    fields: {
+      id: globalIdField('Article'),
+      title: {
+        type: GraphQLString,
+        description: "The article's title",
+        resolve: article => article.title,
       },
-    },
-    redirect: {
-      type: GraphQLString,
-      description:
-        'The destination ([[wiki article]] or URL) the article should ' +
-        'redirect to',
-      resolve: article => article.redirect,
-    },
-    body: {
-      type: MarkupType,
-      resolve: async (article, args, context, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        return {
-          format: article.format,
-          raw: article.body,
-        };
+      resolvedTitle: {
+        type: GraphQLString,
+        description: 'The title of the article after resolving redirects',
+        resolve: async (article, args, context, {rootValue}) => {
+          article = await resolveRedirects(article, rootValue);
+          return article.title;
+        },
       },
-    },
-    url: {
-      type: new GraphQLNonNull(GraphQLString),
-      description: 'URL for the article',
-      resolve: async (article, args, context, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        const path = encodeURIComponent(article.id.replace(/ /g, '_'));
-        return `/wiki/${path}`;
+      redirect: {
+        type: GraphQLString,
+        description: 'The destination ([[wiki article]] or URL) the article should ' +
+          'redirect to',
+        resolve: article => article.redirect,
       },
-    },
-    tags: {
-      type: new GraphQLList(TagNameType),
-      resolve: async (article, args, context, {rootValue}) => {
-        article = await resolveRedirects(article, rootValue);
-        return article.tags;
+      body: {
+        type: MarkupType,
+        resolve: async (article, args, context, {rootValue}) => {
+          article = await resolveRedirects(article, rootValue);
+          return {
+            format: article.format,
+            raw: article.body,
+          };
+        },
       },
+      url: {
+        type: new GraphQLNonNull(GraphQLString),
+        description: 'URL for the article',
+        resolve: async (article, args, context, {rootValue}) => {
+          article = await resolveRedirects(article, rootValue);
+          const path = encodeURIComponent(article.id.replace(/ /g, '_'));
+          return `/wiki/${path}`;
+        },
+      },
+      tags: {
+        type: new GraphQLList(TagNameType),
+        resolve: async (article, args, context, {rootValue}) => {
+          article = await resolveRedirects(article, rootValue);
+          return article.tags;
+        },
+      },
+      ...timestampFields,
     },
-    ...timestampFields,
-  },
-  interfaces: [nodeInterface, taggedInterface],
-  isTypeOf: object => object instanceof Article,
-}));
+    interfaces: [nodeInterface, taggedInterface],
+    isTypeOf: object => object instanceof Article,
+  }),
+);
 
 export default ArticleType;

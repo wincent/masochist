@@ -6,10 +6,5 @@ import SnippetType from './SnippetType';
 
 export default new GraphQLUnionType({
   name: 'Content',
-  types: [
-    ArticleType,
-    PageType,
-    PostType,
-    SnippetType,
-  ],
+  types: [ArticleType, PageType, PostType, SnippetType],
 });

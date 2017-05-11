@@ -54,18 +54,15 @@ const Cache = {
         } else if (data) {
           resolve(data);
         } else {
-          missCallback().then(
-            result => {
-              memcached.set(key, result, 0, error => {
-                if (error) {
-                  reject(error);
-                } else {
-                  resolve(result);
-                }
-              });
-            },
-            reject,
-          );
+          missCallback().then(result => {
+            memcached.set(key, result, 0, error => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(result);
+              }
+            });
+          }, reject);
         }
       });
     });

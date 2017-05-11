@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createPaginationContainer,
-  graphql,
-} from 'react-relay';
+import {createPaginationContainer, graphql} from 'react-relay';
 import ifMounted from '../ifMounted';
 import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
@@ -16,17 +13,14 @@ class SnippetsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(
-        10,
-        error => {
-          this.setState({isLoading: this.props.relay.isLoading()});
-          // ifMounted(this, error => {
-          //   this.setState({isLoading: this.props.relay.isLoading()});
-          // });
-        },
-      );
+      this.props.relay.loadMore(10, error => {
+        this.setState({isLoading: this.props.relay.isLoading()});
+        // ifMounted(this, error => {
+        //   this.setState({isLoading: this.props.relay.isLoading()});
+        // });
+      });
     });
-  }
+  };
 
   componentDidMount() {
     ifMounted.register(this);
@@ -40,19 +34,15 @@ class SnippetsIndex extends React.Component {
     return (
       <DocumentTitle title="snippets">
         <div>
-          {
-            this.props.data.snippets.edges.map(({node}) => (
-              <Snippet key={node.id} data={node} />
-            ))
-          }
-          {
-            this.props.data.snippets.pageInfo.hasNextPage ?
-              <LoadMoreButton
+          {this.props.data.snippets.edges.map(({node}) => (
+            <Snippet key={node.id} data={node} />
+          ))}
+          {this.props.data.snippets.pageInfo.hasNextPage
+            ? <LoadMoreButton
                 isLoading={this.state.isLoading}
                 onLoadMore={this._handleLoadMore}
-              /> :
-              null
-          }
+              />
+            : null}
         </div>
       </DocumentTitle>
     );
@@ -102,6 +92,6 @@ export default createPaginationContainer(
       ) {
         ...SnippetsIndex
       }
-    `
-  }
+    `,
+  },
 );

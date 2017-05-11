@@ -1,7 +1,4 @@
-import {
-  fromGlobalId,
-  nodeDefinitions,
-} from 'graphql-relay';
+import {fromGlobalId, nodeDefinitions} from 'graphql-relay';
 
 const registeredTypes = {};
 

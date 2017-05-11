@@ -9,10 +9,7 @@ import RSS from 'rss';
 
 import Cache from '../../common/Cache';
 import {array} from '../../common/checks';
-import {
-  canonicalHost,
-  canonicalScheme,
-} from '../../common/config';
+import {canonicalHost, canonicalScheme} from '../../common/config';
 import git from '../git';
 import runQuery from '../runQuery';
 import stripTags from '../stripTags';
@@ -32,9 +29,7 @@ function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
 
 function extractExcerpt(body: string): string {
   return ellipsize(
-    entities.decodeHTML(
-      stripTags(body).trim().replace(/\s+/g, ' ')
-    )
+    entities.decodeHTML(stripTags(body).trim().replace(/\s+/g, ' ')),
   );
 }
 
@@ -70,30 +65,27 @@ graphql`
   }
 `;
 
-export default async function feed() {
+export default (async function feed() {
   const head = (await git('rev-parse', 'content')).trim();
   const key = `blog:rss:${FEED_VERSION}:${head}`;
-  return await Cache.get(
-    key,
-    async () => {
-      const feed = new RSS({
-        feed_url: canonicalScheme + canonicalHost + '/blog.rss',
-        generator: 'Masochist',
-        site_url: canonicalScheme + canonicalHost + '/blog',
-        title: 'wincent.com blog',
+  return await Cache.get(key, async () => {
+    const feed = new RSS({
+      feed_url: canonicalScheme + canonicalHost + '/blog.rss',
+      generator: 'Masochist',
+      site_url: canonicalScheme + canonicalHost + '/blog',
+      title: 'wincent.com blog',
+    });
+    const result = await runQuery(feedQuery().text);
+    const posts: feedPosts = idx(result, _ => _.data.posts);
+    posts.edges.forEach(({node}) => {
+      feed.item({
+        date: node.createdAt,
+        description: extractExcerpt(node.body.html),
+        title: node.title,
+        url: canonicalScheme + canonicalHost + node.url,
       });
-      const result = await runQuery(feedQuery().text);
-      const posts: feedPosts = idx(result, _ => _.data.posts);
-      posts.edges.forEach(({node}) => {
-        feed.item({
-          date: node.createdAt,
-          description: extractExcerpt(node.body.html),
-          title: node.title,
-          url: canonicalScheme + canonicalHost + node.url,
-        });
-      });
+    });
 
-      return feed.xml({indent: true});
-    }
-  );
-}
+    return feed.xml({indent: true});
+  });
+});

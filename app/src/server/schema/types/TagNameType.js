@@ -12,7 +12,7 @@ const TagNameType = new GraphQLScalarType({
   parseValue: String,
   parseLiteral(ast) {
     return ast.kind === Kind.STRING ? ast.value : null;
-  }
+  },
 });
 
 export default TagNameType;

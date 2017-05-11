@@ -71,15 +71,15 @@ function getMarkedRenderer(baseLevel: ?number) {
 const MarkupFormatType = new GraphQLEnumType({
   name: 'MARKUP_FORMAT_TYPE',
   values: {
-    WIKITEXT: { value: 'wikitext' },
-    TXT: { value: 'txt' },
-    HTML: { value: 'html' },
-    C: { value: 'c' },
-    PATCH: { value: 'patch' },
-    M: { value: 'm' },
-    MD: { value: 'md' },
-    RB: { value: 'rb' },
-    SH: { value: 'sh' },
+    WIKITEXT: {value: 'wikitext'},
+    TXT: {value: 'txt'},
+    HTML: {value: 'html'},
+    C: {value: 'c'},
+    PATCH: {value: 'patch'},
+    M: {value: 'm'},
+    MD: {value: 'md'},
+    RB: {value: 'rb'},
+    SH: {value: 'sh'},
   },
 });
 

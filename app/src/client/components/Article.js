@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import {createFragmentContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
@@ -60,11 +57,9 @@ class Article extends React.Component {
               {article.resolvedTitle}
             </Link>
           </h1>
-          {
-            article.redirect ?
-              <p className="redirect-info">Redirected from {article.title}</p> :
-              null
-          }
+          {article.redirect
+            ? <p className="redirect-info">Redirected from {article.title}</p>
+            : null}
           <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
           <div>
             <TrustedPrerenderedMarkup html={article.body.html} />

@@ -10,10 +10,7 @@ export default function buildRoute(query, getVariables, render) {
       variables,
     };
     return {
-      component: withContext(
-        {relay},
-        render(data, params),
-      ),
+      component: withContext({relay}, render(data, params)),
     };
-  }
+  };
 }

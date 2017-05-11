@@ -5,13 +5,13 @@
 import git, {GitError} from './git';
 
 type SearchResult = {
-  id: string;
-  type: string;
+  id: string,
+  type: string,
 };
 /**
  * Uses `git grep` to search the content repo.
  */
-export default async function search(q: string): Promise<Array<SearchResult>> {
+export default (async function search(q: string): Promise<Array<SearchResult>> {
   const args = [
     'grep',
     '-I', // Ignore binary files.
@@ -34,7 +34,7 @@ export default async function search(q: string): Promise<Array<SearchResult>> {
     }
     args.push(
       '-e', // Flag that next param is a search pattern.
-      atom
+      atom,
     );
   });
 
@@ -43,7 +43,7 @@ export default async function search(q: string): Promise<Array<SearchResult>> {
   let hits = '';
   try {
     hits = await git(...args, tree, '--', 'content');
-  } catch(e) {
+  } catch (e) {
     // `git grep` returns an exit status of 1 to indicate "nothing found".
     if (e instanceof GitError && e.code === 1) {
       return [];
@@ -56,18 +56,14 @@ export default async function search(q: string): Promise<Array<SearchResult>> {
   const regExp = new RegExp(
     // Tree SHA + separator.
     '[a-f0-9]{40}:' +
-
-    // Prefix.
-    'content/' +
-
-    // Content type.
-    '([^/]+)/' +
-
-    // Filename match + extension + terminator.
-    '([^\0]+)\\.\\w+\0',
-
+      // Prefix.
+      'content/' +
+      // Content type.
+      '([^/]+)/' +
+      // Filename match + extension + terminator.
+      '([^\0]+)\\.\\w+\0',
     // Match repeatedly.
-    'g'
+    'g',
   );
   let match;
   while ((match = regExp.exec(hits))) {
@@ -80,4 +76,4 @@ export default async function search(q: string): Promise<Array<SearchResult>> {
     throw new Error('Failed to consume input');
   }
   return results;
-}
+});

@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import {createFragmentContainer, graphql} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import TagPreview from './TagPreview';
 
@@ -14,13 +11,13 @@ class TagsIndex extends React.Component {
 
   render() {
     const {tags} = this.props.data;
-    const filteredTags =
-      tags.edges.map(({node}) => node).filter(node => {
-        const filters = this.state.filterString.trim().split(/\s+/);
-        return filters === [] || filters.every(filter => (
-          node.name.indexOf(filter) !== -1
-        ));
-      });
+    const filteredTags = tags.edges.map(({node}) => node).filter(node => {
+      const filters = this.state.filterString.trim().split(/\s+/);
+      return (
+        filters === [] ||
+        filters.every(filter => node.name.indexOf(filter) !== -1)
+      );
+    });
     return (
       <DocumentTitle title="tags">
         <div>
@@ -29,19 +26,18 @@ class TagsIndex extends React.Component {
           <input
             className="u-full-width"
             id="tag-filter-input"
-            onChange={(event) => this.setState({
-              filterString: event.currentTarget.value,
-            })}
+            onChange={event =>
+              this.setState({
+                filterString: event.currentTarget.value,
+              })}
             placeholder="Tags..."
             type="text"
             value={this.state.filterString}
           />
           <p>
-            {
-              filteredTags.length === tags.edges.length ?
-                `Showing ${filteredTags.length} tags.` :
-                `Showing ${filteredTags.length} of ${tags.edges.length} tags.`
-            }
+            {filteredTags.length === tags.edges.length
+              ? `Showing ${filteredTags.length} tags.`
+              : `Showing ${filteredTags.length} of ${tags.edges.length} tags.`}
           </p>
           <table className="u-full-width">
             <thead>
@@ -51,11 +47,9 @@ class TagsIndex extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {
-                filteredTags.map(node => (
-                  <TagPreview key={node.id} data={node} />
-                ))
-              }
+              {filteredTags.map(node => (
+                <TagPreview key={node.id} data={node} />
+              ))}
             </tbody>
           </table>
         </div>

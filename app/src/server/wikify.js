@@ -21,27 +21,26 @@ export type WikitextSpec = {
 };
 
 export default function wikify(objects: Array<WikitextSpec>): Promise<string> {
-  return new Promise(
-    (resolve, reject) => {
-      const request = http.request(
-        {
-          hostname: 'localhost',
-          port: 8080,
-          path: '/wikitext',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+  return new Promise((resolve, reject) => {
+    const request = http.request(
+      {
+        hostname: 'localhost',
+        port: 8080,
+        path: '/wikitext',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        response => {
-          const chunks = [];
-          response.setEncoding('utf8');
-          response.on('data', chunk => chunks.push(chunk));
-          response.on('end', () => resolve(chunks.join()));
-        }
-      );
-      request.on('error', error => reject(error));
-      request.write(JSON.stringify(objects));
-      request.end();
-    });
+      },
+      response => {
+        const chunks = [];
+        response.setEncoding('utf8');
+        response.on('data', chunk => chunks.push(chunk));
+        response.on('end', () => resolve(chunks.join()));
+      },
+    );
+    request.on('error', error => reject(error));
+    request.write(JSON.stringify(objects));
+    request.end();
+  });
 }

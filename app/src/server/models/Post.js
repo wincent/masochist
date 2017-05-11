@@ -16,11 +16,7 @@ export default class Post {
   tags: Array<string>;
 
   static async readIndex(count: number, offset: number): Promise<IndexResult> {
-    const results = await readIndex(
-      'blog-index',
-      count,
-      offset
-    );
+    const results = await readIndex('blog-index', count, offset);
     return results;
   }
 

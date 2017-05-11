@@ -17,19 +17,16 @@ export default class QueryCache {
   }
 
   _cacheQueriesFromPaths(paths: Array<string>): QueryMap {
-    return paths.reduce(
-      (queries, path) => {
-        readdirSync(path).forEach(file => {
-          const match = file.match(/^.+Query\.graphql\.js$/);
-          if (match) {
-            const {name, text} = require(join(path, file));
-            queries[name] = text;
-          }
-        });
-        return queries;
-      },
-      {}
-    );
+    return paths.reduce((queries, path) => {
+      readdirSync(path).forEach(file => {
+        const match = file.match(/^.+Query\.graphql\.js$/);
+        if (match) {
+          const {name, text} = require(join(path, file));
+          queries[name] = text;
+        }
+      });
+      return queries;
+    }, {});
   }
 
   getQuery(name: string): any {

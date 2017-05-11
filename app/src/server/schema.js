@@ -1,8 +1,4 @@
-import {
-  GraphQLObjectType,
-  GraphQLSchema,
-  GraphQLString,
-} from 'graphql';
+import {GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql';
 import {
   connectionArgs,
   connectionFromArraySlice,
@@ -96,14 +92,10 @@ export default new GraphQLSchema({
           const [tags, totalCount] = await Tag.readIndex(count, offset);
           return {
             count: totalCount,
-            ...connectionFromArraySlice(
-              tags,
-              args,
-              {
-                sliceStart: offset,
-                arrayLength: totalCount,
-              },
-            ),
+            ...connectionFromArraySlice(tags, args, {
+              sliceStart: offset,
+              arrayLength: totalCount,
+            }),
           };
         },
       },
@@ -136,7 +128,7 @@ export default new GraphQLSchema({
                 case 'snippets':
                   return loaders.Snippet.load(id);
                 default:
-                  // TODO throw here?
+                // TODO throw here?
               }
             });
           return connectionFromPromisedArraySlice(
@@ -152,6 +144,6 @@ export default new GraphQLSchema({
           }));
         },
       },
-    }
-  })
+    },
+  }),
 });

@@ -65,43 +65,42 @@ gulp.task('webpack:build', callback => {
   });
 });
 
-gulp.task('babel', () => (
-  gulp.src([
-    'src/**/*.js',
-    '!src/**/__tests__/**/*.js',
-    '!src/**/__mocks__/**/*.js',
-  ])
+gulp.task('babel', () =>
+  gulp
+    .src([
+      'src/**/*.js',
+      '!src/**/__tests__/**/*.js',
+      '!src/**/__mocks__/**/*.js',
+    ])
     .pipe(wrap(babel(babelOptions)))
-    .pipe(gulp.dest('dist'))
-));
+    .pipe(gulp.dest('dist')),
+);
 
-gulp.task('jade', () => (
-  gulp.src('src/server/views/*.jade')
+gulp.task('jade', () =>
+  gulp
+    .src('src/server/views/*.jade')
     .pipe(wrap(jade({client: true})))
-    .pipe(gulp.dest('dist/server/views'))
-));
+    .pipe(gulp.dest('dist/server/views')),
+);
 
-gulp.task('lint', () => (
-  gulp.src('src/**/*.js')
-    .pipe(eslint())
-    .pipe(eslint.format())
-));
+gulp.task('lint', () =>
+  gulp.src('src/**/*.js').pipe(eslint()).pipe(eslint.format()),
+);
 
 gulp.task('typecheck', shell.task(['flow check --color=always src']));
 
-gulp.task('test', () => (
-  gulp.src(
-    [
-      'src/**/__mocks__/*.js',
-      'src/**/__tests__/*-test.js',
-    ],
-    {read: false}
-  )
-    .pipe(wrap(mocha({
-      opts: 'mocha/mocha.opts',
-      reporter: watching ? 'mocha/watch-reporter' : 'list',
-    })))
-));
+gulp.task('test', () =>
+  gulp
+    .src(['src/**/__mocks__/*.js', 'src/**/__tests__/*-test.js'], {read: false})
+    .pipe(
+      wrap(
+        mocha({
+          opts: 'mocha/mocha.opts',
+          reporter: watching ? 'mocha/watch-reporter' : 'list',
+        }),
+      ),
+    ),
+);
 
 gulp.task('watch', () => {
   watching = true;

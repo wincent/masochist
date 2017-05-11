@@ -3,21 +3,18 @@
  */
 
 import {toGlobalId} from 'graphql-relay';
-import {
-  canonicalHost,
-  canonicalScheme,
-} from '../common/config';
+import {canonicalHost, canonicalScheme} from '../common/config';
 import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';
 import runQuery from './runQuery';
 
-import type { $Request } from 'express';
+import type {$Request} from 'express';
 
 /**
  * Returns a canonical URL for the response, or null if there is not one.
  */
-export default async function getCanonicalURLForRequest(
-  request: $Request
+export default (async function getCanonicalURLForRequest(
+  request: $Request,
 ): Promise<?string> {
   // We only look at path, ignoring query string params.
   const path = request.path;
@@ -42,7 +39,8 @@ export default async function getCanonicalURLForRequest(
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
     const decoded = decodeURIComponent(match[1]);
     const id = toGlobalId('Article', decoded.replace(/_/g, ' '));
-    const result = await runQuery(`
+    const result = await runQuery(
+      `
       query ArticleQuery($id: ID!) {
         node(id: $id) {
           ... on Article {
@@ -63,4 +61,4 @@ export default async function getCanonicalURLForRequest(
   }
 
   return null;
-}
+});

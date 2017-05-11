@@ -8,5 +8,5 @@ if (process.env.NODE_ENV !== 'production') {
   //
   // (which would produce "ReferenceError: Invalid left-hand side in
   // assignment").
-  global['__DEV__'] = true
+  global['__DEV__'] = true;
 }

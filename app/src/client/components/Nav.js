@@ -43,29 +43,27 @@ export default class Nav extends React.Component {
     this.state = {isOpen: false};
   }
 
-  _handleToggle = (event) => {
+  _handleToggle = event => {
     event.preventDefault();
     this.setState(({isOpen}) => ({isOpen: !isOpen}));
-  }
+  };
 
   render() {
     const active = getActiveRoutePrefix(
-      this.context.router.history.location.pathname
+      this.context.router.history.location.pathname,
     );
     return (
       <nav className={cx({'nav-open': this.state.isOpen})}>
         <ul>
           <li>
             <Link className="nav-link" to="/">Wincent</Link>
-            {
-              inBrowser ?
-                <div className="nav-toggle-wrapper">
+            {inBrowser
+              ? <div className="nav-toggle-wrapper">
                   <div className="nav-toggle" onClick={this._handleToggle}>
                     {this.state.isOpen ? 'Close' : 'Open'}
                   </div>
-                </div> :
-                null
-            }
+                </div>
+              : null}
           </li>
           <NavLink target="/blog" text="Blog" active={active} />
           <NavLink target="/wiki" text="Wiki" active={active} />
