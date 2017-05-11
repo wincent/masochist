@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {
   createFragmentContainer,
@@ -10,7 +14,13 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
+import type {Page as PageData} from './__generated__/Page.graphql';
+
 class Page extends React.Component {
+  props: {
+    data: PageData;
+  };
+
   render() {
     const page = this.props.data;
 

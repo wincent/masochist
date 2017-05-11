@@ -2,10 +2,12 @@
  * @flow
  */
 
+import type {Component} from 'react';
+
 const map = new Map();
 
 function ifMounted(
-  instance: ReactComponent,
+  instance: Component<*, *, *>,
   callback: () => void
 ): () => void {
   return function() {

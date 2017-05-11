@@ -5,22 +5,22 @@
 import Promise from 'bluebird';
 import http from 'http';
 
-type WikiRequest = {
-  wikitext: string;
-  autolink?: boolean;
-  baseHeadingLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  externalLinkClass?: string;
-  externalLinkRel?: string;
-  imgPrefix?: string;
-  internalLinkPrefix?: string;
-  lineEnding?: string;
-  mailtoClass?: string;
-  minimumFulltextTokenLength?: number;
-  outputStyle?: 'html' | 'xml';
-  spaceToUnderscore?: boolean;
+export type WikitextSpec = {
+  wikitext: string,
+  autolink?: boolean,
+  baseHeadingLevel?: 0 | 1 | 2 | 3 | 4 | 5 | 6,
+  externalLinkClass?: string,
+  externalLinkRel?: string,
+  imgPrefix?: string,
+  internalLinkPrefix?: string,
+  lineEnding?: string,
+  mailtoClass?: string,
+  minimumFulltextTokenLength?: number,
+  outputStyle?: 'html' | 'xml',
+  spaceToUnderscore?: boolean,
 };
 
-export default function wikify(objects: Array<WikiRequest>) {
+export default function wikify(objects: Array<WikitextSpec>): Promise<string> {
   return new Promise(
     (resolve, reject) => {
       const request = http.request(

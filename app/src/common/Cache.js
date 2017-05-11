@@ -30,7 +30,7 @@ function getCacheBreaker(): string {
 // TODO: degrade more gracefully if memcached goes down (currently we just wait
 // forever(?))
 const Cache = {
-  set(key: string, value: mixed): Promise<mixed, Error> {
+  set(key: string, value: mixed): Promise<mixed> {
     key = key + getCacheBreaker();
 
     return new Promise((resolve, reject) => {
@@ -44,7 +44,7 @@ const Cache = {
     });
   },
 
-  get(key: string, missCallback: Promise<value, Error>): Promise<value, Error> {
+  get(key: string, missCallback: () => Promise<mixed>): Promise<mixed> {
     key = key + getCacheBreaker();
 
     return new Promise((resolve, reject) => {

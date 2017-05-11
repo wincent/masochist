@@ -10,7 +10,7 @@ type RouteConfig = Array<{
  * Parses a RouteConfig object and returns a list of Express-style path
  * patterns ("/", "/blog", "/blog/*" etc).
  */
-export default function gatherPaths(config: RouterConfig): Array<string> {
+export default function gatherPaths(config: RouteConfig): Array<string> {
   const paths = [];
   config.forEach(route => {
     if (route.path === '*') {

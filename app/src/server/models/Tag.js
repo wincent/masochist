@@ -5,12 +5,13 @@
 import redis from '../../common/redis';
 
 import type {IndexResult} from '../readIndex';
+import type {Taggable} from '../schema/fields/connections/taggableConnection';
 
 export default class Tag {
   id: string;
   name: string;
   count: number;
-  taggables: Array<any>;
+  taggables: Array<Taggable>;
 
   static async readIndex(
     count: number,
@@ -33,8 +34,8 @@ export default class Tag {
 
     // Results is not an array, so we can't destructure it (although we can make
     // it into an array for the benefit of our callers).
-    const tagsAndCounts = results[0];
-    const cardinality = results[1];
+    const tagsAndCounts: Array<mixed> = (results: any)[0];
+    const cardinality: number = (results: any)[1];
 
     // Because we asked for the items WITHSCORES, we doubled the number of rows
     // we got back.

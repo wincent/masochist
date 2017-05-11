@@ -5,12 +5,11 @@
 import DataLoader from 'dataloader';
 import wikify from '../wikify';
 
-type WikitextSpec = {
-  wikitext: string;
-  baseHeadingLevel?: ?number;
-};
+import type WikitextSpec from '../wikify';
 
-async function loadWikitext(keys: Array<WikitextSpec>): Promise<Array<?string>> {
+async function loadWikitext(
+  keys: Array<WikitextSpec>
+): Promise<Array<?string | Error>> {
   const response = await wikify(keys);
   return JSON.parse(response).results;
 }

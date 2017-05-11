@@ -26,13 +26,14 @@ function prefixKey(key: string): string {
 }
 
 const client = {
-  get(key) {
+  get(key: string): mixed {
     return redisClient.getAsync(prefixKey(key));
   },
 
-  multi(commands) {
+  multi(commands: Array<Array<mixed>>): Array<mixed> {
     const commandsWithPrefixedKeys = commands.map(
-      ([command, key, ...args]) => [command, prefixKey(key), ...args]
+      // No Flow support yet for tuples with varags..
+      ([command, key, ...args]) => [command, prefixKey((key: any)), ...args]
     );
     return redisClient.multi(commandsWithPrefixedKeys).execAsync();
   },

@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "check": "gulp typecheck",
     "lint": "gulp lint",
     "relay": "relay-compiler --src ./src --schema schema.graphql",
     "start": "babel-node src/server/main.js",

@@ -1,0 +1,8 @@
+[include]
+../shared/common.json
+
+[libs]
+./src/support/flow-libdefs.js
+
+[options]
+module.ignore_non_literal_requires=true
