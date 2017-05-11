@@ -36,7 +36,6 @@ const CACHE_SIZE = 20;
 // server and client?
 const environment = new Environment({
   network: Network.create((operation, variables) => {
-    // TODO: implement persisted queries
     const body = getRequestBody(operation, variables);
     if (cache.has(body)) {
       return Promise.resolve(cache.get(body));
