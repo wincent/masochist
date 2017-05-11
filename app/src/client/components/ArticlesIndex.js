@@ -18,15 +18,9 @@ class ArticlesIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(10, error => {
-        // TODO: confirm this crazy ifMounted stuff is still needed
+      this.props.relay.loadMore(10, ifMounted(this, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-        // ifMounted(this, (error) => {
-        //   // not called
-        //   console.log('setting state', this.props.relay.isLoading());
-        //   // this.setState({isLoading: this.props.relay.isLoading()})
-        // });
-      });
+      }));
     });
   };
 

@@ -13,12 +13,9 @@ class SnippetsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(10, error => {
+      this.props.relay.loadMore(10, ifMounted(this, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-        // ifMounted(this, error => {
-        //   this.setState({isLoading: this.props.relay.isLoading()});
-        // });
-      });
+      }));
     });
   };
 

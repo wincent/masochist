@@ -14,12 +14,9 @@ class PostsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(3, error => {
+      this.props.relay.loadMore(3, ifMounted(this, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-        // ifMounted(this, error => {
-        //   this.setState({isLoading: this.props.relay.isLoading()});
-        // });
-      });
+      }));
     });
   };
 
