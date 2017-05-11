@@ -15,7 +15,7 @@ export default buildRoute(
     }
   `,
   () => ({
-    count: 10,
+    count: ArticlesIndex.PAGE_SIZE,
     cursor: null,
   }),
   data => <ArticlesIndex data={data} />,

@@ -1,7 +1,6 @@
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
-import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
@@ -9,6 +8,8 @@ import LoadMoreButton from './LoadMoreButton';
 if (inBrowser) {
   require('./ArticlesIndex.css');
 }
+
+const PAGE_SIZE = 10;
 
 class ArticlesIndex extends React.Component {
   constructor(props) {
@@ -18,18 +19,18 @@ class ArticlesIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(10, ifMounted(this, error => {
+      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-      }));
+        this._disposable = null;
+      });
     });
   };
 
-  componentDidMount() {
-    ifMounted.register(this);
-  }
-
   componentWillUnmount() {
-    ifMounted.unregister(this);
+    if (this._disposable) {
+      this._disposable.dispose();
+      this._disposable = null;
+    }
   }
 
   render() {
@@ -64,7 +65,7 @@ class ArticlesIndex extends React.Component {
   }
 }
 
-export default createPaginationContainer(
+const ArticlesIndexContainer = createPaginationContainer(
   ArticlesIndex,
   graphql`
     fragment ArticlesIndex on Root {
@@ -108,3 +109,7 @@ export default createPaginationContainer(
     `,
   },
 );
+
+ArticlesIndexContainer.PAGE_SIZE = PAGE_SIZE;
+
+export default ArticlesIndexContainer;

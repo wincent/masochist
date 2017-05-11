@@ -15,7 +15,7 @@ export default buildRoute(
     }
   `,
   ({q}) => ({
-    count: 10,
+    count: Search.PAGE_SIZE,
     cursor: null,
     q: q || '',
   }),

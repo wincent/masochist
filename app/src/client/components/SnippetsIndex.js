@@ -1,9 +1,10 @@
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import ifMounted from '../ifMounted';
 import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
+
+const PAGE_SIZE = 3;
 
 class SnippetsIndex extends React.Component {
   constructor(props) {
@@ -13,18 +14,18 @@ class SnippetsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(10, ifMounted(this, error => {
+      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-      }));
+        this._disposable = null;
+      });
     });
   };
 
-  componentDidMount() {
-    ifMounted.register(this);
-  }
-
   componentWillUnmount() {
-    ifMounted.unregister(this);
+    if (this._disposable) {
+      this._disposable.dispose();
+      this._disposable = null;
+    }
   }
 
   render() {
@@ -46,7 +47,7 @@ class SnippetsIndex extends React.Component {
   }
 }
 
-export default createPaginationContainer(
+const SnippetsIndexContainer = createPaginationContainer(
   SnippetsIndex,
   graphql`
     fragment SnippetsIndex on Root {
@@ -92,3 +93,7 @@ export default createPaginationContainer(
     `,
   },
 );
+
+SnippetsIndexContainer.PAGE_SIZE = PAGE_SIZE;
+
+export default SnippetsIndexContainer;

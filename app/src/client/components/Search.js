@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import ifMounted from '../ifMounted';
 import ArticlePreview from './ArticlePreview';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
@@ -13,7 +12,7 @@ import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';
 import SnippetPreview from './SnippetPreview';
 
-const INITIAL_COUNT = 10;
+const PAGE_SIZE = 10;
 
 class Search extends React.Component {
   static contextTypes = {
@@ -31,19 +30,22 @@ class Search extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(10, ifMounted(this, error => {
+      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-      }));
+        this._disposable = null;
+      });
     });
   };
 
   componentDidMount() {
-    ifMounted.register(this);
     this._searchInput.focus();
   }
 
   componentWillUnmount() {
-    ifMounted.unregister(this);
+    if (this._disposable) {
+      this._disposable.dispose();
+      this._disposable = null;
+    }
     this._searchInput = null;
   }
 
@@ -107,7 +109,7 @@ class Search extends React.Component {
   }
 }
 
-export default createPaginationContainer(
+const SearchContainer = createPaginationContainer(
   Search,
   graphql`
     fragment Search on Root {
@@ -155,3 +157,7 @@ export default createPaginationContainer(
     `,
   },
 );
+
+SearchContainer.PAGE_SIZE = PAGE_SIZE;
+
+export default SearchContainer;

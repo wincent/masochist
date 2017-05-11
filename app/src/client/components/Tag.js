@@ -1,12 +1,13 @@
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import ifMounted from '../ifMounted';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import Link from './Link';
 import PluralText from './PluralText';
+
+const PAGE_SIZE = 10;
 
 class Tag extends React.Component {
   constructor(props) {
@@ -16,18 +17,18 @@ class Tag extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(10, ifMounted(this, error => {
+      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-      }));
+        this._disposable = null;
+      });
     });
   };
 
-  componentDidMount() {
-    ifMounted.register(this);
-  }
-
   componentWillUnmount() {
-    ifMounted.unregister(this);
+    if (this._disposable) {
+      this._disposable.dispose();
+      this._disposable = null;
+    }
   }
 
   render() {
@@ -63,7 +64,7 @@ class Tag extends React.Component {
   }
 }
 
-export default createPaginationContainer(
+const TagContainer = createPaginationContainer(
   Tag,
   graphql`
     fragment Tag on Tag {
@@ -115,3 +116,7 @@ export default createPaginationContainer(
     `,
   },
 );
+
+TagContainer.PAGE_SIZE = PAGE_SIZE;
+
+export default TagContainer;

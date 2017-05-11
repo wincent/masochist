@@ -19,7 +19,7 @@ export default buildRoute(
     }
   `,
   ({id}) => ({
-    count: 10,
+    count: Tag.PAGE_SIZE,
     cursor: null,
     id,
   }),

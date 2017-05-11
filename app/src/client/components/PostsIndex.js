@@ -1,9 +1,10 @@
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import ifMounted from '../ifMounted';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import Post from './Post';
+
+const PAGE_SIZE = 3;
 
 class PostsIndex extends React.Component {
   // TODO: DRY up this pagination pattern
@@ -14,18 +15,19 @@ class PostsIndex extends React.Component {
 
   _handleLoadMore = () => {
     this.setState({isLoading: true}, () => {
-      this.props.relay.loadMore(3, ifMounted(this, error => {
+      this._disposable = this.props.relay.loadMore(
+      PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
-      }));
+        this._disposable = null;
+      });
     });
   };
 
-  componentDidMount() {
-    ifMounted.register(this);
-  }
-
   componentWillUnmount() {
-    ifMounted.unregister(this);
+    if (this._disposable) {
+      this._disposable.dispose();
+      this._disposable = null;
+    }
   }
 
   render() {
@@ -47,7 +49,7 @@ class PostsIndex extends React.Component {
   }
 }
 
-export default createPaginationContainer(
+const PostsIndexContainer = createPaginationContainer(
   PostsIndex,
   graphql`
     fragment PostsIndex on Root {
@@ -93,3 +95,7 @@ export default createPaginationContainer(
     `,
   },
 );
+
+PostsIndexContainer.PAGE_SIZE = PAGE_SIZE;
+
+export default PostsIndexContainer;

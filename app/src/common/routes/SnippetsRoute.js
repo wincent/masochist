@@ -16,7 +16,7 @@ export default buildRoute(
   `,
   () => ({
     baseHeadingLevel: 2,
-    count: 3,
+    count: SnippetsIndex.PAGE_SIZE,
     cursor: null,
   }),
   data => <SnippetsIndex data={data} />,
