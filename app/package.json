@@ -61,7 +61,6 @@
     "flow-typed": "^2.1.2",
     "fs-extra": "*",
     "glob": "^7.1.1",
-    "graphiql": "*",
     "graphql": "*",
     "graphql-relay": "*",
     "gulp": "*",
