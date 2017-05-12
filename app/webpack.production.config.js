@@ -36,7 +36,7 @@ module.exports = {
           // Copy each digest-ized asset from dist to public/static.
           fse.copySync(
             path.resolve(__dirname, 'dist', asset),
-            path.resolve(__dirname, 'public', 'static', asset)
+            path.resolve(__dirname, 'public', 'static', asset),
           );
         });
       });
