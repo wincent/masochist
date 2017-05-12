@@ -72,7 +72,6 @@
     "gulp-spawn-mocha": "*",
     "gulp-util": "*",
     "history": "*",
-    "http-proxy": "*",
     "idx": "^1.5.0",
     "isomorphic-fetch": "*",
     "jade": "*",
@@ -97,7 +96,10 @@
     "universal-router": "*",
     "unpack-content": "*",
     "url-loader": "*",
-    "webpack": "*",
+    "webpack": "*"
+  },
+  "devDependencies": {
+    "http-proxy": "*",
     "webpack-dev-server": "*"
   }
 }
