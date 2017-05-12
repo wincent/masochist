@@ -13,7 +13,7 @@ content added or updated via `git push`.
 - [GraphQL]: Hierarchical data querying language, type system and server.
 - [Git]: Main content storage.
 - [Redis]: Indexing and caching.
-- [memcached]: Caching.
+- [memcached]: Ephemeral caching.
 
 Supporting tools and technologies:
 
