@@ -5,6 +5,7 @@ import inBrowser from '../inBrowser';
 import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
+import RedirectError from '../../common/RedirectError';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
@@ -37,9 +38,11 @@ class Article extends React.Component {
     if (article.redirect) {
       if (article.redirect.match(/^https?:/)) {
         // External redirect.
-        router.history.push(article.redirect);
-        // TODO: if not in browser, will want to do a real redirect (or maybe
-        // we're already handling that in the server module?)
+        if (inBrowser) {
+          window.location = article.redirect;
+        } else {
+          throw new RedirectError(article.redirect, 301);
+        }
         return null;
       } else if (article.redirect.substr(0, 1) === '/') {
         // Internal redirect.

@@ -24,6 +24,7 @@ import {
 import App from '../client/components/App';
 import DocumentTitle from '../client/components/DocumentTitle';
 import HTTPError from '../client/components/HTTPError';
+import RedirectError from '../common/RedirectError';
 import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
 import createRouter from '../common/createRouter';
@@ -132,7 +133,10 @@ appRoutes.forEach(route => {
           );
         })
         .catch(error => {
-          console.error(error);
+          if (error instanceof RedirectError) {
+            response.redirect(error.code, error.target);
+            return null;
+          }
           return ReactDOMServer.renderToStaticMarkup(
             <App router={router}>
               <HTTPError code={500} />
@@ -141,14 +145,17 @@ appRoutes.forEach(route => {
         });
     }
     const pageContent = await resolve(history.location);
-    const locals = {
-      ...extraLocals[route],
-      pageContent,
-      cache: JSON.stringify(cache),
-      title: DocumentTitle.peek(),
-    };
+    const title = DocumentTitle.peek();
     DocumentTitle.rewind();
-    return jadeHandler('index', locals)(request, response);
+    if (pageContent) {
+      const locals = {
+        cache: JSON.stringify(cache),
+        pageContent,
+        title,
+        ...extraLocals[route],
+      };
+      return jadeHandler('index', locals)(request, response);
+    }
   });
 });
 
