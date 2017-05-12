@@ -46,6 +46,10 @@ export default class App extends React.Component {
           // Not a relative URL; let the browser handle it.
           return;
         }
+        if (event.ctrlKey || event.metaKey) {
+          // User holding a modifier; let the browser handle it.
+          return;
+        }
 
         if (matchRoute(href)) {
           // Looks like something the router can handle.
