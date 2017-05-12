@@ -1,9 +1,6 @@
 import gulp from 'gulp';
 import babel from 'gulp-babel';
-import eslint from 'gulp-eslint';
 import jade from 'gulp-jade';
-import shell from 'gulp-shell';
-import mocha from 'gulp-spawn-mocha';
 import gutil from 'gulp-util';
 import webpack from 'webpack';
 import productionConfig from './webpack.production.config.js';
@@ -41,13 +38,7 @@ function wrap(stream) {
   return stream;
 }
 
-gulp.task('default', ['watch']);
-
 gulp.task('build', ['jade', 'babel', 'webpack:build']);
-
-gulp.task('flow', ['typecheck']);
-
-gulp.task('js', ['babel', 'lint', 'test', 'typecheck']);
 
 gulp.task('webpack:build', callback => {
   webpack(productionConfig, (error, stats) => {
@@ -83,26 +74,42 @@ gulp.task('jade', () =>
     .pipe(gulp.dest('dist/server/views')),
 );
 
-gulp.task('lint', () =>
-  gulp.src('src/**/*.js').pipe(eslint()).pipe(eslint.format()),
-);
+if (__DEV__) {
+  const eslint = require('gulp-eslint');
+  const shell = require('gulp-shell');
+  const mocha = require('gulp-spawn-mocha');
 
-gulp.task('typecheck', shell.task(['flow check --color=always src']));
+  gulp.task('default', ['watch']);
 
-gulp.task('test', () =>
-  gulp
-    .src(['src/**/__mocks__/*.js', 'src/**/__tests__/*-test.js'], {read: false})
-    .pipe(
-      wrap(
-        mocha({
-          opts: 'mocha/mocha.opts',
-          reporter: watching ? 'mocha/watch-reporter' : 'list',
-        }),
+  gulp.task('flow', ['typecheck']);
+
+  gulp.task('js', ['babel', 'lint', 'test', 'typecheck']);
+
+  gulp.task('lint', () =>
+    gulp.src('src/**/*.js').pipe(eslint()).pipe(eslint.format()),
+  );
+
+
+  gulp.task('test', () =>
+    gulp
+      .src(['src/**/__mocks__/*.js', 'src/**/__tests__/*-test.js'], {read: false})
+      .pipe(
+        wrap(
+          mocha({
+            opts: 'mocha/mocha.opts',
+            reporter: watching ? 'mocha/watch-reporter' : 'list',
+          }),
+        ),
       ),
-    ),
-);
+  );
 
-gulp.task('watch', () => {
-  watching = true;
-  gulp.watch('src/**/*.js', ['build']);
-});
+  gulp.task('typecheck', shell.task(['flow check --color=always src']));
+
+  gulp.task('watch', () => {
+    watching = true;
+    gulp.watch('src/**/*.js', ['build']);
+  });
+} else {
+  gulp.task('default', ['build']);
+}
+
