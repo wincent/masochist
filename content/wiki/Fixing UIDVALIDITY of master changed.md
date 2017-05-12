@@ -2,7 +2,7 @@
 tags: mbsync mutt exchange
 ---
 
-I was getting error like this when trying to sync to an Exchange server (ugh):
+I was getting errors like this when trying to sync to an Exchange server (ugh):
 
 ```
 C: 2/5  B: 2/4  M: +0/0 *0/0 #0/0  S: +64/64 *1/1 #0/0
