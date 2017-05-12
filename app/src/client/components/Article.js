@@ -6,12 +6,44 @@ import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
 import RedirectError from '../../common/RedirectError';
+import matchRoute from '../../common/matchRoute';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
 if (inBrowser) {
   require('./Article.css');
+}
+
+/**
+ * Perform a redirect bypassing the client-side router.
+ *
+ * In the browser, manipulate `window.location`.
+ *
+ * On the server, issue a "301 Moved Permanently".
+ */
+function hardRedirect(target: string): null {
+  if (inBrowser) {
+    window.location = target;
+    return null;
+  }
+  throw new RedirectError(target, 301);
+}
+
+/**
+ * Perform a redirect via the client-side router.
+ *
+ * If the route in question cannot match, fall back to `hardRedirect()`.
+ */
+function softRedirect(target: string, router: mixed): null {
+  if (matchRoute(target)) {
+    // Let React finish rendering before running this; otherwise it will
+    // complain "triggering nested component updates from render is not
+    // allowed".
+    Promise.resolve().then(() => router.history.replace(article.redirect));
+    return null;
+  }
+  return hardRedirect(target);
 }
 
 class Article extends React.Component {
@@ -35,20 +67,18 @@ class Article extends React.Component {
       );
     }
 
-    if (article.redirect) {
-      if (article.redirect.match(/^https?:/)) {
+    const {redirect} = article;
+    if (redirect) {
+      if (redirect.match(/^https?:/)) {
         // External redirect.
-        if (inBrowser) {
-          window.location = article.redirect;
-        } else {
-          throw new RedirectError(article.redirect, 301);
-        }
-        return null;
-      } else if (article.redirect.substr(0, 1) === '/') {
+        return hardRedirect(redirect);
+      } else if (redirect.startsWith('/')) {
         // Internal redirect.
-        const {router} = this.context;
-        router.history.replace(article.redirect);
-        return null;
+        return softRedirect(redirect, this.context.router);
+      } else {
+        // Nothing to do. `redirect` here is of the form "[[title]]" and the
+        // other fields will have been appropriately "dereferenced" by
+        // the GraphQL schema.
       }
     }
 
@@ -60,7 +90,7 @@ class Article extends React.Component {
               {article.resolvedTitle}
             </Link>
           </h1>
-          {article.redirect
+          {redirect
             ? <p className="redirect-info">Redirected from {article.title}</p>
             : null}
           <When createdAt={article.createdAt} updatedAt={article.updatedAt} />

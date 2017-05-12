@@ -112,7 +112,9 @@ export default [
     action() {
       // TODO: test this is actually getting hit
       // (once we have client-side link handling)
-      return <HTTPError code={404} />;
+      return {
+        component: <HTTPError code={404} />,
+      };
     },
   },
 ];
