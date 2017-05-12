@@ -101,6 +101,10 @@ function getFileUpdates(range, callback) {
       contentType: 'blog',
       orderBy: 'createdAt',
     },
+    {
+      contentType: 'pages',
+      orderBy: 'updatedAt', // Arbitrary (there is no indexed view of pages).
+    },
   ].map(async ({contentType, orderBy}) => {
     const commits = await getWhatChanged(range, contentType);
 
