@@ -1,6 +1,6 @@
 ---
 title: About
-tags: site
+tags: site pages
 ---
 
 Welcome to [wincent.com](/). This is my "technical" presence on the web ([greg.hurrell.net](http://greg.hurrell.net) is my non-technical one, which is for now just a collection of links to my various other presences on the web). Here I put [stuff that I feel like saying](/blog) and which might be of interest to other technical people, and [stuff which I may want to remember](/wiki).
