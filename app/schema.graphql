@@ -152,19 +152,19 @@ type Root {
     id: ID!
   ): Node
 
-  # Wiki articles visible to this user
+  # All wiki articles
   articles(after: String, first: Int, before: String, last: Int): ArticleConnection
 
-  # Blog posts visible to this user
+  # All blog posts
   posts(after: String, first: Int, before: String, last: Int): PostConnection
 
-  # Snippets visible to this user
+  # All snippets
   snippets(after: String, first: Int, before: String, last: Int): SnippetConnection
 
-  # Tags visible to this user
+  # All tags
   tags(after: String, first: Int, before: String, last: Int): TagConnection
 
-  # Search results visible to this user
+  # Search results
   search(
     after: String
     first: Int

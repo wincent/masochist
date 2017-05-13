@@ -41,7 +41,7 @@
             },
             {
               "name": "articles",
-              "description": "Wiki articles visible to this user",
+              "description": "All wiki articles",
               "args": [
                 {
                   "name": "after",
@@ -94,7 +94,7 @@
             },
             {
               "name": "posts",
-              "description": "Blog posts visible to this user",
+              "description": "All blog posts",
               "args": [
                 {
                   "name": "after",
@@ -147,7 +147,7 @@
             },
             {
               "name": "snippets",
-              "description": "Snippets visible to this user",
+              "description": "All snippets",
               "args": [
                 {
                   "name": "after",
@@ -200,7 +200,7 @@
             },
             {
               "name": "tags",
-              "description": "Tags visible to this user",
+              "description": "All tags",
               "args": [
                 {
                   "name": "after",
@@ -253,7 +253,7 @@
             },
             {
               "name": "search",
-              "description": "Search results visible to this user",
+              "description": "Search results",
               "args": [
                 {
                   "name": "after",

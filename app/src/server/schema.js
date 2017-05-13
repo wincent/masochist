@@ -25,7 +25,7 @@ export default new GraphQLSchema({
       node: nodeField,
       articles: {
         type: articleConnection,
-        description: 'Wiki articles visible to this user',
+        description: 'All wiki articles',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
           // TODO: At the moment we're ignoring use of last/before; should we do something about it?
@@ -45,7 +45,7 @@ export default new GraphQLSchema({
       },
       posts: {
         type: postConnection,
-        description: 'Blog posts visible to this user',
+        description: 'All blog posts',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
@@ -64,7 +64,7 @@ export default new GraphQLSchema({
       },
       snippets: {
         type: snippetConnection,
-        description: 'Snippets visible to this user',
+        description: 'All snippets',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
@@ -83,7 +83,7 @@ export default new GraphQLSchema({
       },
       tags: {
         type: tagConnection,
-        description: 'Tags visible to this user',
+        description: 'All tags',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
@@ -101,7 +101,7 @@ export default new GraphQLSchema({
       },
       search: {
         type: searchConnection,
-        description: 'Search results visible to this user',
+        description: 'Search results',
         args: {
           ...connectionArgs,
           q: {
