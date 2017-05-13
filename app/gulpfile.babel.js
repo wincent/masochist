@@ -77,7 +77,7 @@ gulp.task('jade', () =>
 if (__DEV__) {
   const eslint = require('gulp-eslint');
   const shell = require('gulp-shell');
-  const mocha = require('gulp-spawn-mocha');
+  const mocha = require('gulp-mocha');
 
   gulp.task('default', ['watch']);
 
