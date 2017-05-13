@@ -1,0 +1,119 @@
+#!/usr/bin/env ruby
+
+# Quickest, dirtiest hack for converting a wikitext file to Markdown. Intended
+# to be called from `git-filter-branch`:
+#
+# - Read file using this Ruby script.
+# - Extract header metadata by forking `node` process and re-using my
+#   "unpack-content" package.
+# - Parse JSON from forked process.
+# - Preprocess special markup (eg. #100 -> link to "/issues/100")
+# - Translate wikitext to HTML using wikitext gem.
+# - Translate HTML to Markdown by forking out to `pandoc`.
+# - Postprocess to fix some warts.
+# - Glue headers back on.
+# - Print to standard out.
+#
+# Ruby gem installs are broken on current macOS due to S.I.P., so either do
+# this:
+#
+#     export GEM_HOME=$PWD/gems
+#     export GEM_PATH=$GEM_HOME
+#     gem install wikitext
+#
+# or possibly this:
+#
+#     sudo gem install wikitext -n /usr/local/bin
+#
+# A suitable `git-filter-branch` invocation might look like this:
+#
+#     TREE_FILTER=1 git filter-branch --tree-filter ~/bin/wiki-to-markdown-filter HEAD
+#
+# Note that both this and the `wiki-to-markdown-filter` helper script should
+# probably be kept outside the repo, lest they interfere with the filter results.
+#
+#     git filter-branch --index-filter 'PREV=$(map $(git rev-parse -q --verify $GIT_COMMIT^)); ~/bin/wiki-to-markdown-filter $PREV'  HEAD
+
+require 'json'
+require 'shellwords'
+require 'rubygems'
+require 'wikitext'
+
+# Prerequisite:
+#
+#     npm install -g unpack-content
+#
+def read(file)
+  if file == '-'
+    JSON[%x{NODE_PATH=/usr/local/lib/node_modules node -e "process.stdout.write(JSON.stringify(require('unpack-content').default(require('fs').readFileSync('/dev/stdin').toString())))"}]
+  else
+    safe_file = Shellwords.shellescape(file)
+    JSON[%x{NODE_PATH=/usr/local/lib/node_modules node -e "process.stdout.write(JSON.stringify(require('unpack-content').default(require('fs').readFileSync('#{safe_file}').toString())))"}]
+  end
+end
+
+# Copy-pasta from wikiserve.
+def preprocess(wikitext)
+  # Autolink hashtags, but only ones containing at least one letter.
+  wikitext.
+    gsub(
+      %r{
+        (^|\s)                           # only at start of line/after space
+        \#(                              # will match a hashtag
+          (?:[a-z0-9]*[a-z][a-z0-9]*)+   # "word" containing at least 1 letter
+          (?:\.[a-z0-9]*[a-z][a-z0-9]*)* # 0 or more ".word"
+        )\b
+      }ix,
+      '\1[/tags/\2 #\2]'
+    ).
+    # This part is the same as in wikitext/preprocess:
+    gsub(/\b(bug|issue|request|ticket) #(\d+)/i, '[/issues/\2 \1 #\2]')
+end
+
+parser = Wikitext::Parser.new(
+  img_prefix: '/system/images/',
+  pre_code: true # Not relevant, but doing it for consistency with wikiserve.
+)
+
+(ARGV.count > 0 ? ARGV : ['-']).each do |f|
+  data = read(f)
+  wikitext = data.delete('body')
+  preprocessed = preprocess(wikitext)
+  html = parser.parse(preprocessed)
+  markdown = nil
+
+  # Using pandoc installed via Homebrew.
+  IO.popen(%w[pandoc --atx-headers --wrap=none -f html -t markdown-tex_math_dollars], 'r+') do |pipe|
+    pipe.write html
+    pipe.close_write
+    markdown = pipe.read
+  end
+
+  postprocessed = markdown
+    .gsub(/^``` \{\.(.+)-syntax\}/, '```\\1')
+    .gsub('{.external}', '')
+    .gsub('http://rails.wincent.com/', 'https://wincent.com/')
+    .gsub(
+      %r{(\[[^\]]+\])\(https://wincent.com/([^/]+)/},
+      '\\1(/\\2/'
+    )
+
+  if ENV['DEBUG']
+    if postprocessed != markdown
+      File.open('/tmp/before', 'w') { |before| before.write(markdown) }
+      File.open('/tmp/after', 'w') { |after| after.write(postprocessed) }
+      %x{git diff --color=always /tmp/before /tmp/after | diff-highlight >> /tmp/debug}
+    end
+  end
+
+  metadata = data.entries.map do |k, v|
+    if k == 'tags'
+      "#{k}: #{v.join(' ')}\n"
+    else
+      "#{k}: #{v}\n"
+    end
+  end
+  header = "---\n" + metadata.join + "---\n\n"
+
+  puts header + postprocessed
+end
