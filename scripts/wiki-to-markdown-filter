@@ -1,0 +1,203 @@
+#!/usr/bin/env ruby
+
+# Helper script. See `wiki-to-markdown` in the same directory for more info.
+
+require 'fileutils'
+require 'shellwords'
+
+COLUMN_0 = "\u001b[0G"
+CLEAR_LINE = "\u001b[0K"
+
+GitObject = Struct.new(:mode, :type, :hash, :name)
+
+# A note on the rewrite process.
+#
+# I have 3702 wikitext files added in the course of 4980 commits.
+# `--tree-filter` works by checking out the tree of each commit and letting you
+# arbitrarily mutate it. Changes made to one commit are not carried forward to
+# the next but need to be reapplied. This gives us a worst-case runtime of
+# O(nm), where n = 4980 and m = 3702 (18,435,960). At about 5 transforms per
+# second, we'd need 42 days to complete the filter run. (Of course, in reality
+# it would be much less than that because the early commits have few files in
+# them, but we're still talking about something that is too slow to complete.)
+#
+# To make this feasibly fast, we need to transform only files that have changed
+# (or been added) since the last commit. For everything else, we want to
+# the re-add the generated Markdown of the previously converted file and
+# delete its wikitext source. So, that's the complicated `--index-filter` version
+# below. This one runs at about 50 transforms per second because it
+# actually skips most of them (still needs to invoke `git-update-index`
+# etc), so we'd be looking at about 4.2 days in the worst case (if
+# all wikitext files were present in all commits); closer to n(n+1)/2
+# operations in reality, so 12.4m operations, 2.87 days.
+#
+# The other way I could implement could just be to grab the entire tree from the
+# last rewritten commit and check only the added/changed files. That would be
+# much faster. That's the final one down the very bottom, and completes in about
+# an hour.
+
+def escape(arg)
+  Shellwords.shellescape(arg)
+end
+
+def ls(rev)
+  tree = `git ls-tree -r -z #{rev}`.split("\u0000")
+  tree.each_with_object({}) do |line, memo|
+    mode, type, hash, name = line.match(/^(\d+) (\w+) ([a-f0-9]+)\t(.+)/).captures
+    memo[name] = GitObject.new(mode, type, hash, name)
+  end
+end
+
+# Given a file: "content/blog/example.wikitext"
+# returns:      "content/blog/example.md"
+def markdown_file(file)
+  File.dirname(file) + '/' + File.basename(file, File.extname(file)) + '.md'
+end
+
+def valid_hash(hash)
+  if hash !~ /^[a-f0-9]{40}$/
+    puts "Hash #{hash} is invalid"
+    exit 1
+  end
+  hash
+end
+
+if ENV['TREE_FILTER']
+  paths = Dir['content/**/*.wikitext']
+  paths.each_with_index do |path, idx|
+    print "#{COLUMN_0}#{CLEAR_LINE}[#{idx}/#{paths.count}] #{path}"
+
+    basename = File.basename(path)
+    basename_without_extension = File.basename(basename, File.extname(basename))
+    dirname = File.dirname(path)
+    type = File.basename(dirname)
+    safe_src = escape(path)
+    safe_dest = escape("#{dirname}/#{basename_without_extension}.md")
+
+    puts %{wiki-to-markdown #{safe_src} > #{safe_dest}}
+    %x{wiki-to-markdown #{safe_src} > #{safe_dest}}
+    FileUtils.rm path
+  end
+  puts
+elsif ENV['INDEX_FILTER_SLOW']
+  head = valid_hash(ENV['GIT_COMMIT'])
+  puts "git rev-parse -q --verify #{head}^"
+  parent = `git rev-parse -q --verify #{head}^`
+  if parent.empty?
+    puts "Initial commit: skipping"
+  else
+    rewritten = ls(valid_hash(ARGV.first))
+    previous = ls("#{head}^")
+    current = ls(head)
+    total = current.size
+    unchanged = 0
+    updated = 0
+    added = 0
+    current.each_value.with_index do |object, idx|
+      hash = object.hash
+      name = object.name
+      mode = object.mode
+      type = object.type
+
+      next if type != 'blob'
+      next if name !~ /\.wikitext$/
+
+      if previous[name] && previous[name].hash == hash
+        # Did not change, can re-use previously rewritten result.
+        unchanged += 1
+        hash = rewritten[markdown_file(name)].hash
+      else
+        hash = %x{
+          git cat-file blob #{hash} |
+          wiki-to-markdown - |
+          git hash-object -w --stdin
+        }.chomp
+        if previous[name]
+          updated += 1
+        else
+          added += 1
+        end
+      end
+      info = escape("#{mode},#{hash},#{markdown_file(name)}")
+      %x{git rm --cached -- #{escape(name)}}
+      %x{git update-index --add --cacheinfo #{info}}
+      print(
+        "#{COLUMN_0}#{CLEAR_LINE}" +
+        "[#{idx}/#{unchanged}/#{updated}/#{added}/#{total}] " +
+        '(progress/unchanged/updated/added/total)'
+      )
+    end
+    puts
+  end
+else
+  head = valid_hash(ENV['GIT_COMMIT'])
+  puts "git rev-parse -q --verify #{head}^"
+  parent = `git rev-parse -q --verify #{head}^`.chomp
+  if parent.empty?
+    puts "Initial commit: skipping"
+  else
+    rewritten = valid_hash(ARGV.first)
+    %x{git reset -q #{rewritten} -- content}
+
+    # Note: there are two NULs per line, before and after the file name:
+    changed = `git diff-tree -r -z #{parent} #{head} -- content`
+      .scan(/.+?\u0000.+?\u0000/)
+
+    added = 0
+    removed = 0
+    changed.each do |change|
+      old_mode, new_mode, old_hash, new_hash, status, name =
+        change.match(/^:(\d+) (\d+) ([a-f0-9]+) ([a-f0-9]+) (\w+)\u0000(.+)\u0000/).captures
+
+      # In `git whatchanged --diff-filter=R`, we have three commits that have
+      # "R\d+" status:
+      #
+      #   content/pages/about.wikitext
+      #   content/wiki/Syntax-highlighting code samples in Apple Keynote.wikitext
+      #   content/wiki/Vimscript quirks.wikitext
+      #
+      # But these show up as A + D entries in `git diff-tree`.
+      #
+      # Likewise we have two commits in `git whatchanged --diff-filter=D`,
+      # both with accompanying A entry:
+      #
+      #   content/wiki/Screencasts.wikitext # -> Screencasts.md
+      #   content/wiki/Haskell resources.wikitext # -> Haskell 2016.md
+      #
+      # So, we can treat all these basically uniformally:
+      #
+      #   - Add markdown entries of any status (there are only "A" and "M").
+      #   - Remove wikitext entries of status "D".
+      #   - Any wikitext entry of status other than "D" gets transformed.
+      #
+      if File.extname(name) == '.markdown'
+        # Add it.
+        info = escape("#{new_mode},#{new_hash},#{name}")
+        %x{git update-index --add --cacheinfo #{info}}
+      elsif File.extname(name) == '.wikitext'
+        if status == 'D'
+          # Remove it.
+          %x{git rm --cached -- #{escape(name)}}
+        else
+          # Transform it.
+          hash = %x{
+            git cat-file blob #{new_hash} |
+            wiki-to-markdown - |
+            git hash-object -w --stdin
+          }.chomp
+          info = escape("#{new_mode},#{hash},#{markdown_file(name)}")
+          %x{git rm --cached --ignore-unmatch -- #{escape(name)}}
+          %x{git update-index --add --cacheinfo #{info}}
+        end
+      else
+        # All other extensions, just replicate the changes.
+        if status == 'D'
+          %x{git rm --cached -- #{escape(name)}}
+        else
+          info = escape("#{new_mode},#{new_hash},#{name}")
+          %x{git update-index --add --cacheinfo #{info}}
+        end
+      end
+    end
+  end
+end
