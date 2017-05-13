@@ -1,0 +1,298 @@
+schema {
+  query: Root
+}
+
+# A wiki article
+type Article implements Node, Tagged {
+  # The ID of an object
+  id: ID!
+
+  # The article's title
+  title: String
+
+  # The title of the article after resolving redirects
+  resolvedTitle: String
+
+  # The destination ([[wiki article]] or URL) the article should redirect to
+  redirect: String
+  body: Markup
+
+  # URL for the article
+  url: String!
+  tags: [TagName]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# A connection to a list of items.
+type ArticleConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [ArticleEdge]
+}
+
+# An edge in a connection.
+type ArticleEdge {
+  # The item at the end of the edge
+  node: Article
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+union Content = Article | Page | Post | Snippet
+
+# A JSON-style (ISO 8601) date
+scalar DateTime
+
+# The textual markup for a piece of content
+type Markup {
+  # Unprocessed plain-text source of the markup
+  raw: String!
+
+  # The format of the markup source
+  format: MARKUP_FORMAT_TYPE!
+
+  # HTML output of transformed markup
+  html(
+    # Base heading level [0-6]
+    baseHeadingLevel: Int
+  ): String
+}
+
+enum MARKUP_FORMAT_TYPE {
+  WIKITEXT
+  TXT
+  HTML
+  C
+  PATCH
+  M
+  MD
+  RB
+  SH
+}
+
+# An object with an ID
+interface Node {
+  # The id of the object.
+  id: ID!
+}
+
+# A page
+type Page implements Node, Tagged {
+  # The ID of an object
+  id: ID!
+
+  # The page's title
+  title: String
+  body: Markup
+
+  # URL for the page
+  url: String!
+  tags: [TagName]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# Information about pagination in a connection.
+type PageInfo {
+  # When paginating forwards, are there more items?
+  hasNextPage: Boolean!
+
+  # When paginating backwards, are there more items?
+  hasPreviousPage: Boolean!
+
+  # When paginating backwards, the cursor to continue.
+  startCursor: String
+
+  # When paginating forwards, the cursor to continue.
+  endCursor: String
+}
+
+# A blog post
+type Post implements Node, Tagged {
+  # The ID of an object
+  id: ID!
+
+  # The blog post's title
+  title: String
+  body: Markup
+
+  # URL for the post
+  url: String!
+  tags: [TagName]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# A connection to a list of items.
+type PostConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [PostEdge]
+}
+
+# An edge in a connection.
+type PostEdge {
+  # The item at the end of the edge
+  node: Post
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+type Root {
+  # Fetches an object given its ID
+  node(
+    # The ID of an object
+    id: ID!
+  ): Node
+
+  # Wiki articles visible to this user
+  articles(after: String, first: Int, before: String, last: Int): ArticleConnection
+
+  # Blog posts visible to this user
+  posts(after: String, first: Int, before: String, last: Int): PostConnection
+
+  # Snippets visible to this user
+  snippets(after: String, first: Int, before: String, last: Int): SnippetConnection
+
+  # Tags visible to this user
+  tags(after: String, first: Int, before: String, last: Int): TagConnection
+
+  # Search results visible to this user
+  search(
+    after: String
+    first: Int
+    before: String
+    last: Int
+
+    # One or more search terms, separated by spaces
+    q: String
+  ): SearchResultConnection
+}
+
+# A connection to a list of items.
+type SearchResultConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [SearchResultEdge]
+
+  # Total number of search results
+  count: Int
+}
+
+# An edge in a connection.
+type SearchResultEdge {
+  # The item at the end of the edge
+  node: Content
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# A snippet
+type Snippet implements Node, Tagged {
+  # The ID of an object
+  id: ID!
+
+  # The snippet's title
+  title: String
+  body: Markup
+
+  # URL for the snippet
+  url: String!
+  tags: [TagName]
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# A connection to a list of items.
+type SnippetConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [SnippetEdge]
+}
+
+# An edge in a connection.
+type SnippetEdge {
+  # The item at the end of the edge
+  node: Snippet
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# A tag
+type Tag implements Node {
+  # The ID of an object
+  id: ID!
+
+  # The tag's name
+  name: TagName!
+
+  # Count of items tagged with the tag
+  count: Int
+
+  # URL for the tag
+  url: String!
+
+  # Items tagged with a particular tag
+  taggables(after: String, first: Int, before: String, last: Int): TaggableConnection
+}
+
+# A connection to a list of items.
+type TagConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [TagEdge]
+
+  # Total number of tags
+  count: Int
+}
+
+# An edge in a connection.
+type TagEdge {
+  # The item at the end of the edge
+  node: Tag
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# A connection to a list of items.
+type TaggableConnection {
+  # Information to aid in pagination.
+  pageInfo: PageInfo!
+
+  # A list of edges.
+  edges: [TaggableEdge]
+}
+
+# An edge in a connection.
+type TaggableEdge {
+  # The item at the end of the edge
+  node: Content
+
+  # A cursor for use in pagination
+  cursor: String!
+}
+
+# An object with a tags field
+interface Tagged {
+  # A list of tag names
+  tags: [TagName]
+}
+
+# A tag name
+scalar TagName
