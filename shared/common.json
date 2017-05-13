@@ -1,5 +1,5 @@
 {
-  "redisCacheVersion": "2",
+  "redisCacheVersion": "3",
   "redisKeyPrefix": "masochist",
   "redisKeys": {
     "lastIndexedHash": "last-indexed-hash",
