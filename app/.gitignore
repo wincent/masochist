@@ -1,7 +1,6 @@
-config.json
-npm-debug.log
-public/static/bundle-*.js
-public/static/bundle-*.js.map
-public/static/styles-*.css
-public/static/styles-*.css.map
-schema.graphql
+/config.json
+/node_modules/*
+/public/static/bundle-*.js
+/public/static/bundle-*.js.map
+/public/static/styles-*.css
+/public/static/styles-*.css.map
