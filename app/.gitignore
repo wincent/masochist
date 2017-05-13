@@ -1,4 +1,6 @@
+/.nyc_output/*
 /config.json
+/coverage/*
 /node_modules/*
 /public/static/bundle-*.js
 /public/static/bundle-*.js.map

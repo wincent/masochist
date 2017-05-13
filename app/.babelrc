@@ -1,4 +1,16 @@
 {
+  "env": {
+    "test": {
+      "plugins": [
+        ["istanbul", {
+          "exclude": [
+            "**/__mocks__/*.js",
+            "**/__tests__/*-test.js"
+          ]
+        }]
+      ]
+    }
+  },
   "plugins": [
     "dev-expression",
     "idx",
