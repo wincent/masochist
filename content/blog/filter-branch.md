@@ -1,4 +1,5 @@
 ---
+fb: https://www.facebook.com/glh/posts/10154279236886307
 tags: git site masochist
 title: A tale of three filter-branches
 twitter: https://twitter.com/wincent/status/863640786381922305
@@ -225,4 +226,4 @@ So, we got a projected 42-day runtime down to an hour using nothing but simple t
 
 And now, the icing on the cake: I get to rip out the "wikiserve" microservice. Deleting code is *almost* as much fun as making code run faster.
 
-<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/863640786381922305)</em></small>
+<small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10154279236886307) - [Twitter](https://twitter.com/wincent/status/863640786381922305)</em></small>
