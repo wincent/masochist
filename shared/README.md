@@ -1,1 +1,1 @@
-This directory contains items shared by both the the Masochist Node.js app and the wikiserve microservice.
+This directory contains items formerly shared by both the Masochist Node.js app and the (now unnecessary) wikiserve microservice.
