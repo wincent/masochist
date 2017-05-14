@@ -19,12 +19,7 @@ tmux send-keys -t masochist:vim.bottom-right "git st" Enter
 # 2. General shell use.
 tmux new-window -t masochist
 
-# 3. Wikiserve.
-tmux new-window -t masochist -c "$PWD/wikiserve" -n wikiserve
-tmux send-keys -t masochist:wikiserve "bundle exec unicorn" Enter
-tmux split-window -t masochist:wikiserve -h -c "$PWD/wikiserve"
-
-# 4. Content.
+# 3. Content.
 tmux new-window -t masochist -c "$PWD/../masochist-pages" -n content
 tmux send-keys -t masochist:content "vim -c CommandT" Enter
 tmux split-window -t masochist:content -h -c "$PWD/../masochist-pages"

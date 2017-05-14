@@ -14,9 +14,6 @@ const KEY_PREFIX = common.redisKeyPrefix;
 
 /**
  * Can manually force cache invalidation by bumping this.
- *
- * NOTE: if you update this, you need to update the version in the wikiserve
- * project as well (by deploying).
  */
 const CACHE_VERSION = common.redisCacheVersion;
 

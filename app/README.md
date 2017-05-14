@@ -46,15 +46,12 @@ local repositories as follows:
 * `origin` remote pointing at git.wincent.com.
 * `github` remote pointing at [GitHub](https://github.com/wincent/masochist).
 * `masochist` remote set up to do Heroku-style deploy-on-push, pointing at an Amazon EC2 instance configured using Ansible.
-* `wikiserve` remote also set up to do Heroku-style deploy-on-push.
 
 #### Commands
 
 ```
 $ git push masochist master # Deploy app (after initial provisioning).
 $ git push masochist # Subsequent deployments.
-$ git push wikiserve master # Deploy microservice (after initial provisioning).
-$ git push wikiserve # Subsequent deployments.
 $ git push origin # Propagate code, but no deploy.
 $ git push # Shorthand for `git push origin`.
 $ git push github # If you can't be bothered waiting for it to auto-replicate.
