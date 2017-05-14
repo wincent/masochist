@@ -221,7 +221,7 @@ Version 3 gets us down to about 1 hour to rewrite the whole history. You can see
 
 # Concluding remarks: in which our author revels in the joy of programming
 
-So, we got a projected 42-day runtime down to an hour using nothing but simple techniques and reasoning. Not bad for a Friday night's work. There's no genius in this, but damn is it rewarding. This is a very strong reminder of why I enjoy programming in the first place: the ability to transport the intractable into the realm of the practical, and seemingly effortlessly. It doesn't always work out so easily — and I'm definitely spoilt here by the power and flexibility of the Git tools, which allowed me to solve the same problem in three significantly different ways — but when it does, it is magic.
+So, we got a projected 42-day runtime down to an hour using nothing but simple techniques and reasoning. There's no genius in this, but damn is it rewarding. Not bad for a Friday night's work. This is a very strong reminder of why I enjoy programming in the first place: the ability to transport the intractable into the realm of the practical, and seemingly effortlessly. It doesn't always work out so easily — and I'm definitely spoilt here by the power and flexibility of the Git tools, which allowed me to solve the same problem in three significantly different ways — but when it does, it is magic.
 
 And now, the icing on the cake: I get to rip out the "wikiserve" microservice. Deleting code is *almost* as much fun as making code run faster.
 
