@@ -70,11 +70,11 @@ My favorite function from the script is this 180-column monstrosity, which will 
 #
 def read(file)
   if file == '-'
-    JSON[%x{NODE_PATH=/usr/local/lib/node_modules node -e "process.stdout.write(JSON.stringify(require('unpack-content').default(require('fs').readFileSync('/dev/stdin').toString())))"}]
+    safe_file = '/dev/stdin'
   else
     safe_file = Shellwords.shellescape(file)
-    JSON[%x{NODE_PATH=/usr/local/lib/node_modules node -e "process.stdout.write(JSON.stringify(require('unpack-content').default(require('fs').readFileSync('#{safe_file}').toString())))"}]
   end
+  JSON[%x{NODE_PATH=/usr/local/lib/node_modules node -e "process.stdout.write(JSON.stringify(require('unpack-content').default(require('fs').readFileSync('#{safe_file}').toString())))"}]
 end
 ```
 
