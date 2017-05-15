@@ -1,7 +1,7 @@
 import gulp from 'gulp';
 import babel from 'gulp-babel';
-import jade from 'gulp-jade';
 import gutil from 'gulp-util';
+import pug from 'gulp-pug';
 import webpack from 'webpack';
 import productionConfig from './webpack.production.config.js';
 
@@ -38,7 +38,7 @@ function wrap(stream) {
   return stream;
 }
 
-gulp.task('build', ['jade', 'babel', 'webpack:build']);
+gulp.task('build', ['pug', 'babel', 'webpack:build']);
 
 gulp.task('webpack:build', callback => {
   webpack(productionConfig, (error, stats) => {
@@ -67,10 +67,10 @@ gulp.task('babel', () =>
     .pipe(gulp.dest('dist')),
 );
 
-gulp.task('jade', () =>
+gulp.task('pug', () =>
   gulp
-    .src('src/server/views/*.jade')
-    .pipe(wrap(jade({client: true})))
+    .src('src/server/views/*.pug')
+    .pipe(wrap(pug({client: true, compileDebug: false})))
     .pipe(gulp.dest('dist/server/views')),
 );
 

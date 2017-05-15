@@ -8,8 +8,8 @@ import Promise from 'bluebird';
 import bodyParser from 'body-parser';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import createHistory from 'history/createMemoryHistory';
 import path from 'path';
+import createHistory from 'history/createMemoryHistory';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
@@ -35,6 +35,7 @@ import getLoaders from './getLoaders';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import feed from './actions/feed';
 import schema from './schema';
+import renderCompiledPug from './renderCompiledPug';
 import runQuery from './runQuery';
 
 const APP_PORT = 3000;
@@ -50,10 +51,10 @@ app.disable('x-powered-by');
 
 app.set('views', path.join(__dirname, 'views'));
 if (__DEV__) {
-  app.set('view engine', 'jade');
+  app.set('view engine', 'pug');
 } else {
   app.set('view engine', 'js');
-  app.engine('js', require('compiled-jade-render'));
+  app.engine('js', renderCompiledPug);
 }
 
 function jadeHandler(resource, extraLocals = {}) {
@@ -109,7 +110,7 @@ appRoutes.forEach(route => {
             cache[key] = result;
             return result;
           })
-          .catch(err => console.log('got an error', err));
+          .catch(error => console.log('got an error', error));
         // TODO: really handle errors
       }),
       store: new Store(new RecordSource()),
