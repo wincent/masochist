@@ -7,14 +7,14 @@ import When from './When';
 class PostPreview extends React.Component {
   render() {
     const post = this.props.data;
-    const {createdAt, title, updatedAt, url} = post;
+    const {createdAt, description, title, updatedAt, url} = post;
     return (
       <tr>
         <td>
           <code>blog</code>
         </td>
         <td>
-          <Link to={url}>
+          <Link title={description} to={url}>
             {title}
           </Link>
         </td>
@@ -34,6 +34,7 @@ export default createFragmentContainer(
   graphql`
     fragment PostPreview on Post {
       createdAt
+      description
       title
       updatedAt
       url

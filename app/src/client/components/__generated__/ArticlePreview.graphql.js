@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule ArticlePreview.graphql
- * @generated SignedSource<<71e30c08e8e9dac5b3254de1a427386a>>
+ * @generated SignedSource<<89ea1c375f45e15222d713b8f81c8187>>
  * @flow
  * @nogrep
  */
@@ -16,6 +16,7 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type ArticlePreview = {|
   +createdAt: ?any;
+  +description: ?string;
   +title: ?string;
   +updatedAt: ?any;
   +url: string;
@@ -34,6 +35,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "createdAt",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "description",
       "storageKey": null
     },
     {

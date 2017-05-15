@@ -7,18 +7,19 @@ import When from './When';
 class ArticlePreview extends React.Component {
   render() {
     const article = this.props.data;
+    const {createdAt, description, title, updatedAt, url} = article;
     return (
       <tr>
         <td>
           <code>wiki</code>
         </td>
         <td>
-          <Link to={article.url}>
-            {article.title}
+          <Link title={description} to={url}>
+            {title}
           </Link>
         </td>
         <td>
-          <When createdAt={article.createdAt} updatedAt={article.updatedAt} />
+          <When createdAt={createdAt} updatedAt={updatedAt} />
         </td>
         <td>
           <Tags classes={{left: true, compact: true}} data={article} />
@@ -33,6 +34,7 @@ export default createFragmentContainer(
   graphql`
     fragment ArticlePreview on Article {
       createdAt
+      description
       title
       updatedAt
       url

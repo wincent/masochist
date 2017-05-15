@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule SearchQuery.graphql
- * @generated SignedSource<<457b35163e3ab728b8d9c06ed5c9452b>>
- * @relayHash dd7e0b7732f5e44ecae9eca84eb710fc
+ * @generated SignedSource<<90b47b13a696a9b87d95b9aaddb4543f>>
+ * @relayHash 8c90221d86aed7049759f8948c4bb953
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query SearchQuery(
@@ -59,6 +60,7 @@ fragment ContentPreview on Content {
 
 fragment ArticlePreview on Article {
   createdAt
+  description
   title
   updatedAt
   url
@@ -67,6 +69,7 @@ fragment ArticlePreview on Article {
 
 fragment PagePreview on Page {
   createdAt
+  description
   title
   updatedAt
   url
@@ -75,6 +78,7 @@ fragment PagePreview on Page {
 
 fragment PostPreview on Post {
   createdAt
+  description
   title
   updatedAt
   url
@@ -83,6 +87,7 @@ fragment PostPreview on Post {
 
 fragment SnippetPreview on Snippet {
   createdAt
+  description
   title
   updatedAt
   url
@@ -243,6 +248,13 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
+                        "name": "description",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
                         "name": "title",
                         "storageKey": null
                       },
@@ -278,6 +290,13 @@ const batch /*: ConcreteBatch*/ = {
                         "alias": null,
                         "args": null,
                         "name": "createdAt",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "description",
                         "storageKey": null
                       },
                       {
@@ -325,6 +344,13 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
+                        "name": "description",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
                         "name": "title",
                         "storageKey": null
                       },
@@ -360,6 +386,13 @@ const batch /*: ConcreteBatch*/ = {
                         "alias": null,
                         "args": null,
                         "name": "createdAt",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "description",
                         "storageKey": null
                       },
                       {
@@ -472,7 +505,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SearchQuery(\n  $count: Int!\n  $cursor: String\n  $q: String!\n) {\n  ...Search\n}\n\nfragment Search on Root {\n  search(first: $count, after: $cursor, q: $q) {\n    count\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query SearchQuery(\n  $count: Int!\n  $cursor: String\n  $q: String!\n) {\n  ...Search\n}\n\nfragment Search on Root {\n  search(first: $count, after: $cursor, q: $q) {\n    count\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

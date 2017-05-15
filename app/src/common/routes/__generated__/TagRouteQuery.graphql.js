@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule TagRouteQuery.graphql
- * @generated SignedSource<<adedb0f35a27d0864881a08f1a09f7ab>>
- * @relayHash 46acc5ba7e513290d5df7879c07a54f1
+ * @generated SignedSource<<279b4c043f8f3a81b716098493d741a5>>
+ * @relayHash f92b0ad9067bf4bd8d81b58c14348d04
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query TagRouteQuery(
@@ -68,6 +69,7 @@ fragment ContentPreview on Content {
 
 fragment ArticlePreview on Article {
   createdAt
+  description
   title
   updatedAt
   url
@@ -76,6 +78,7 @@ fragment ArticlePreview on Article {
 
 fragment PagePreview on Page {
   createdAt
+  description
   title
   updatedAt
   url
@@ -84,6 +87,7 @@ fragment PagePreview on Page {
 
 fragment PostPreview on Post {
   createdAt
+  description
   title
   updatedAt
   url
@@ -92,6 +96,7 @@ fragment PostPreview on Post {
 
 fragment SnippetPreview on Snippet {
   createdAt
+  description
   title
   updatedAt
   url
@@ -317,6 +322,13 @@ const batch /*: ConcreteBatch*/ = {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
+                                "name": "description",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
                                 "name": "title",
                                 "storageKey": null
                               },
@@ -352,6 +364,13 @@ const batch /*: ConcreteBatch*/ = {
                                 "alias": null,
                                 "args": null,
                                 "name": "createdAt",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "description",
                                 "storageKey": null
                               },
                               {
@@ -399,6 +418,13 @@ const batch /*: ConcreteBatch*/ = {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
+                                "name": "description",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
                                 "name": "title",
                                 "storageKey": null
                               },
@@ -434,6 +460,13 @@ const batch /*: ConcreteBatch*/ = {
                                 "alias": null,
                                 "args": null,
                                 "name": "createdAt",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "args": null,
+                                "name": "description",
                                 "storageKey": null
                               },
                               {
@@ -543,7 +576,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query TagRouteQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Tag {\n      ...Tag\n    }\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query TagRouteQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Tag {\n      ...Tag\n    }\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

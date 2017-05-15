@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule ArticlesRouteQuery.graphql
- * @generated SignedSource<<fbd3e72280ef6bf0d1abf6dbb842133d>>
- * @relayHash 34f32ed2318ede54803df80c0e210781
+ * @generated SignedSource<<9525d49b0fa7b37fd7734d664910e4a9>>
+ * @relayHash 5b5f39d093ef11706313d172c9fef743
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query ArticlesRouteQuery(
@@ -47,6 +48,7 @@ fragment ArticlesIndex on Root {
 
 fragment ArticlePreview on Article {
   createdAt
+  description
   title
   updatedAt
   url
@@ -164,6 +166,13 @@ const batch /*: ConcreteBatch*/ = {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
+                    "name": "description",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
                     "name": "title",
                     "storageKey": null
                   },
@@ -274,7 +283,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticlesRouteQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query ArticlesRouteQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;
