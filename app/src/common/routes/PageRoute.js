@@ -23,5 +23,5 @@ export default buildRoute(
     id,
   }),
   ({node}) => <Page data={node} />,
-  ({node}) => node ? node.description : null,
+  ({node}) => (node ? node.description : null),
 );
