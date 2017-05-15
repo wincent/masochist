@@ -22,6 +22,6 @@ export default buildRoute(
     baseHeadingLevel: 2,
     id,
   }),
-  data => <Article data={data.node} />,
-  data => data.node.description,
+  ({node}) => <Article data={node} />,
+  ({node}) => node ? node.description : null,
 );
