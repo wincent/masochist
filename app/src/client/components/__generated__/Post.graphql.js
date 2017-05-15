@@ -3,30 +3,29 @@
  *   relay-compiler
  *
  * @providesModule Post.graphql
- * @generated SignedSource<<986ace2fd5e76102790d2d97d22423df>>
+ * @generated SignedSource<<39c2c1c5aac129f1a01a5c782eb582e9>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type Post = {
-  id: string;
-  title?: ?string;
-  createdAt?: ?any;
-  updatedAt?: ?any;
-  url: string;
-  body?: ?Post_body;
-};
-
-export type Post_body = {
-  html?: ?string;
-};
+export type Post = {|
+  +id: string;
+  +title: ?string;
+  +createdAt: ?any;
+  +updatedAt: ?any;
+  +url: string;
+  +body: ?{|
+    +html: ?string;
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

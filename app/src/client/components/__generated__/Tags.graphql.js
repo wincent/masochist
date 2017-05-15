@@ -3,21 +3,22 @@
  *   relay-compiler
  *
  * @providesModule Tags.graphql
- * @generated SignedSource<<986c80a4fa2d4d831b4ff34ffd8723d3>>
+ * @generated SignedSource<<b0677368ef67fe6ae14c1a9f5231baa0>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type Tags = {
-  tags?: ?Array<?any>;
-};
+export type Tags = {|
+  +tags: ?$ReadOnlyArray<?any>;
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],

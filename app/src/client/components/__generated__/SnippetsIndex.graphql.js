@@ -3,39 +3,32 @@
  *   relay-compiler
  *
  * @providesModule SnippetsIndex.graphql
- * @generated SignedSource<<b92232bf33c6ff63435823d8fa448fb9>>
+ * @generated SignedSource<<6e48832fabb0715b545901c88f38115a>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type SnippetsIndex = {
-  snippets?: ?SnippetsIndex_snippets;
-};
-
-export type SnippetsIndex_snippets_edges_node = {
-  id: string;
-};
-
-export type SnippetsIndex_snippets_edges = {
-  node?: ?SnippetsIndex_snippets_edges_node;
-};
-
-export type SnippetsIndex_snippets_pageInfo = {
-  endCursor?: ?string;
-  hasNextPage: boolean;
-};
-
-export type SnippetsIndex_snippets = {
-  edges?: ?Array<?SnippetsIndex_snippets_edges>;
-  pageInfo: SnippetsIndex_snippets_pageInfo;
-};
+export type SnippetsIndex = {|
+  +snippets: ?{|
+    +edges: ?$ReadOnlyArray<?{|
+      +node: ?{|
+        +id: string;
+      |};
+    |}>;
+    +pageInfo: {|
+      +endCursor: ?string;
+      +hasNextPage: boolean;
+    |};
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

@@ -3,31 +3,30 @@
  *   relay-compiler
  *
  * @providesModule Article.graphql
- * @generated SignedSource<<ecb32888ca0abc1a08c7cc83da8ae7bb>>
+ * @generated SignedSource<<071499dd563cd2edf71e23ab504adb8d>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type Article = {
-  title?: ?string;
-  redirect?: ?string;
-  resolvedTitle?: ?string;
-  createdAt?: ?any;
-  updatedAt?: ?any;
-  url: string;
-  body?: ?Article_body;
-};
-
-export type Article_body = {
-  html?: ?string;
-};
+export type Article = {|
+  +title: ?string;
+  +redirect: ?string;
+  +resolvedTitle: ?string;
+  +createdAt: ?any;
+  +updatedAt: ?any;
+  +url: string;
+  +body: ?{|
+    +html: ?string;
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

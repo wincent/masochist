@@ -3,35 +3,30 @@
  *   relay-compiler
  *
  * @providesModule TagsIndex.graphql
- * @generated SignedSource<<542679a2d110da2456d142d8dd527039>>
+ * @generated SignedSource<<3719d298bf55a94611667f590fcf8fed>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type TagsIndex = {
-  tags?: ?TagsIndex_tags;
-};
-
-export type TagsIndex_tags_edges_node = {
-  id: string;
-  name: any;
-};
-
-export type TagsIndex_tags_edges = {
-  node?: ?TagsIndex_tags_edges_node;
-};
-
-export type TagsIndex_tags = {
-  count?: ?number;
-  edges?: ?Array<?TagsIndex_tags_edges>;
-};
+export type TagsIndex = {|
+  +tags: ?{|
+    +count: ?number;
+    +edges: ?$ReadOnlyArray<?{|
+      +node: ?{|
+        +id: string;
+        +name: any;
+      |};
+    |}>;
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

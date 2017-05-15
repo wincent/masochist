@@ -3,39 +3,32 @@
  *   relay-compiler
  *
  * @providesModule ArticlesIndex.graphql
- * @generated SignedSource<<020997c2c577b9562a4cc5d35fefbf21>>
+ * @generated SignedSource<<121c221f125dcfdbd9c3d640fbe89c4f>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type ArticlesIndex = {
-  articles?: ?ArticlesIndex_articles;
-};
-
-export type ArticlesIndex_articles_edges_node = {
-  id: string;
-};
-
-export type ArticlesIndex_articles_edges = {
-  node?: ?ArticlesIndex_articles_edges_node;
-};
-
-export type ArticlesIndex_articles_pageInfo = {
-  endCursor?: ?string;
-  hasNextPage: boolean;
-};
-
-export type ArticlesIndex_articles = {
-  edges?: ?Array<?ArticlesIndex_articles_edges>;
-  pageInfo: ArticlesIndex_articles_pageInfo;
-};
+export type ArticlesIndex = {|
+  +articles: ?{|
+    +edges: ?$ReadOnlyArray<?{|
+      +node: ?{|
+        +id: string;
+      |};
+    |}>;
+    +pageInfo: {|
+      +endCursor: ?string;
+      +hasNextPage: boolean;
+    |};
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

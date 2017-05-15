@@ -3,23 +3,24 @@
  *   relay-compiler
  *
  * @providesModule TagPreview.graphql
- * @generated SignedSource<<b4ef593c67785653ad822c4d38de60a3>>
+ * @generated SignedSource<<48e627c4aa9bffa78a0ce55e2c08ffb8>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type TagPreview = {
-  count?: ?number;
-  name: any;
-  url: string;
-};
+export type TagPreview = {|
+  +count: ?number;
+  +name: any;
+  +url: string;
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],

@@ -3,37 +3,32 @@
  *   relay-compiler
  *
  * @providesModule Search.graphql
- * @generated SignedSource<<fc5040488b4a5a32d7e510c0079e016e>>
+ * @generated SignedSource<<2d00a4f3fed4693c424ae4b0f0f2ce40>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type Search = {
-  search?: ?Search_search;
-};
-
-export type Search_search_edges = {
-  cursor: string;
-  node?: ?any;
-};
-
-export type Search_search_pageInfo = {
-  endCursor?: ?string;
-  hasNextPage: boolean;
-};
-
-export type Search_search = {
-  count?: ?number;
-  edges?: ?Array<?Search_search_edges>;
-  pageInfo: Search_search_pageInfo;
-};
+export type Search = {|
+  +search: ?{|
+    +count: ?number;
+    +edges: ?$ReadOnlyArray<?{|
+      +cursor: string;
+      +node: ?{| |};
+    |}>;
+    +pageInfo: {|
+      +endCursor: ?string;
+      +hasNextPage: boolean;
+    |};
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

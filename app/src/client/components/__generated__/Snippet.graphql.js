@@ -3,30 +3,29 @@
  *   relay-compiler
  *
  * @providesModule Snippet.graphql
- * @generated SignedSource<<6aed1574b35ea9d9faf9db1cac2d4be9>>
+ * @generated SignedSource<<d4f6b0ba815632b5ee08c809466b3e1e>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type Snippet = {
-  id: string;
-  url: string;
-  title?: ?string;
-  createdAt?: ?any;
-  updatedAt?: ?any;
-  body?: ?Snippet_body;
-};
-
-export type Snippet_body = {
-  html?: ?string;
-};
+export type Snippet = {|
+  +id: string;
+  +url: string;
+  +title: ?string;
+  +createdAt: ?any;
+  +updatedAt: ?any;
+  +body: ?{|
+    +html: ?string;
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [

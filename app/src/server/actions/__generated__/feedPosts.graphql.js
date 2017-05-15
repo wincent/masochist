@@ -3,40 +3,33 @@
  *   relay-compiler
  *
  * @providesModule feedPosts.graphql
- * @generated SignedSource<<37862aca49f4b3c03c268be09e1a302b>>
+ * @generated SignedSource<<3233be7047382f6924a49dffdbc6a9e4>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type feedPosts = {
-  posts?: ?feedPosts_posts;
-};
-
-export type feedPosts_posts_edges_node_body = {
-  html?: ?string;
-};
-
-export type feedPosts_posts_edges_node = {
-  body?: ?feedPosts_posts_edges_node_body;
-  createdAt?: ?any;
-  title?: ?string;
-  url: string;
-};
-
-export type feedPosts_posts_edges = {
-  node?: ?feedPosts_posts_edges_node;
-};
-
-export type feedPosts_posts = {
-  edges?: ?Array<?feedPosts_posts_edges>;
-};
+export type feedPosts = {|
+  +posts: ?{|
+    +edges: ?$ReadOnlyArray<?{|
+      +node: ?{|
+        +body: ?{|
+          +html: ?string;
+        |};
+        +createdAt: ?any;
+        +title: ?string;
+        +url: string;
+      |};
+    |}>;
+  |};
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],

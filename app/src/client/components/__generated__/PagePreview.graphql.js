@@ -3,24 +3,25 @@
  *   relay-compiler
  *
  * @providesModule PagePreview.graphql
- * @generated SignedSource<<c1cac8729da6c1b26baed1e38f594852>>
+ * @generated SignedSource<<276b31ed5d0c46902d6d631dd230efe2>>
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type PagePreview = {
-  createdAt?: ?any;
-  title?: ?string;
-  updatedAt?: ?any;
-  url: string;
-};
+export type PagePreview = {|
+  +createdAt: ?any;
+  +title: ?string;
+  +updatedAt: ?any;
+  +url: string;
+|};
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
