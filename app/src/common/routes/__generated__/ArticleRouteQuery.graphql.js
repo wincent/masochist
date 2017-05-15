@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule ArticleRouteQuery.graphql
- * @generated SignedSource<<6ff8c71e72457ebf420cf6dd60553bca>>
- * @relayHash be55f533a7171aca798fcaa04268477b
+ * @generated SignedSource<<de895e15d16a39d012df9c58457cccff>>
+ * @relayHash 177d3bbec58f1e2e594858a3fe0aff79
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query ArticleRouteQuery(
@@ -27,6 +28,7 @@ query ArticleRouteQuery(
     __typename
     ... on Article {
       ...Article
+      description
     }
     id
   }
@@ -93,6 +95,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "FragmentSpread",
                 "name": "Article",
                 "args": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
               }
             ]
           }
@@ -231,6 +240,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "tags",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
               }
             ]
           }
@@ -239,7 +255,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

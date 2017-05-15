@@ -13,6 +13,7 @@ export default buildRoute(
       node(id: $id) {
         ... on Post {
           ...Post
+          description
         }
       }
     }
@@ -22,4 +23,5 @@ export default buildRoute(
     id,
   }),
   data => <Post data={data.node} />,
+  data => data.node.description,
 );

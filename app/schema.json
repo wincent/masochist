@@ -632,6 +632,18 @@
               "deprecationReason": null
             },
             {
+              "name": "description",
+              "description": "Succinct summary of the article content",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "url",
               "description": "URL for the article",
               "args": [],
@@ -1031,6 +1043,18 @@
               "deprecationReason": null
             },
             {
+              "name": "description",
+              "description": "Succinct summary of the post content",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "url",
               "description": "URL for the post",
               "args": [],
@@ -1225,6 +1249,18 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": "Succinct summary of the snippet content",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1680,6 +1716,18 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "Markup",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": "Succinct summary of the page content",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,

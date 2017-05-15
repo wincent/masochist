@@ -27,6 +27,11 @@ const PageType = registerType(
           };
         },
       },
+      description: {
+        type: GraphQLString,
+        description: 'Succinct summary of the page content',
+        resolve: page => page.description,
+      },
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the page',

@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule SnippetRouteQuery.graphql
- * @generated SignedSource<<24603af8407d5dbb87afde21c1fcb6c8>>
- * @relayHash a26684c0395d97c2a4e8ea08ea618bcc
+ * @generated SignedSource<<0c085864791b0078fba9900db86094e3>>
+ * @relayHash cf073e0077e5ebba704792487f2eb570
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query SnippetRouteQuery(
@@ -27,6 +28,7 @@ query SnippetRouteQuery(
     __typename
     ... on Snippet {
       ...Snippet
+      description
     }
     id
   }
@@ -92,6 +94,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "FragmentSpread",
                 "name": "Snippet",
                 "args": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
               }
             ]
           }
@@ -216,6 +225,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "tags",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
               }
             ]
           }
@@ -224,7 +240,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SnippetRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      ...Snippet\n    }\n    id\n  }\n}\n\nfragment Snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query SnippetRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      ...Snippet\n      description\n    }\n    id\n  }\n}\n\nfragment Snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

@@ -27,6 +27,11 @@ const PostType = registerType(
           };
         },
       },
+      description: {
+        type: GraphQLString,
+        description: 'Succinct summary of the post content',
+        resolve: post => post.description,
+      },
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the post',

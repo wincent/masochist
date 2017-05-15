@@ -70,6 +70,11 @@ const ArticleType = registerType(
           };
         },
       },
+      description: {
+        type: GraphQLString,
+        description: 'Succinct summary of the article content',
+        resolve: article => article.description,
+      },
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the article',

@@ -33,6 +33,11 @@ const SnippetType = registerType(
           };
         },
       },
+      description: {
+        type: GraphQLString,
+        description: 'Succinct summary of the snippet content',
+        resolve: snippet => snippet.description,
+      },
       url: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL for the snippet',

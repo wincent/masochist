@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule PageRouteQuery.graphql
- * @generated SignedSource<<de8b1c4e185b60a007e39c186d3ee986>>
- * @relayHash 9531d7edd259e43140694ed8729a8c5b
+ * @generated SignedSource<<e7e9bc099487caba4a911cbf25dfe101>>
+ * @relayHash 6145112ac5a278870e73d4713fe4d1ae
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query PageRouteQuery(
@@ -27,6 +28,7 @@ query PageRouteQuery(
     __typename
     ... on Page {
       ...Page
+      description
     }
     id
   }
@@ -92,6 +94,13 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "FragmentSpread",
                 "name": "Page",
                 "args": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
               }
             ]
           }
@@ -216,6 +225,13 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "tags",
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "description",
+                "storageKey": null
               }
             ]
           }
@@ -224,7 +240,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page\n    }\n    id\n  }\n}\n\nfragment Page on Page {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page\n      description\n    }\n    id\n  }\n}\n\nfragment Page on Page {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

@@ -17,6 +17,9 @@ type Article implements Node, Tagged {
   redirect: String
   body: Markup
 
+  # Succinct summary of the article content
+  description: String
+
   # URL for the article
   url: String!
   tags: [TagName]
@@ -89,6 +92,9 @@ type Page implements Node, Tagged {
   title: String
   body: Markup
 
+  # Succinct summary of the page content
+  description: String
+
   # URL for the page
   url: String!
   tags: [TagName]
@@ -119,6 +125,9 @@ type Post implements Node, Tagged {
   # The blog post's title
   title: String
   body: Markup
+
+  # Succinct summary of the post content
+  description: String
 
   # URL for the post
   url: String!
@@ -205,6 +214,9 @@ type Snippet implements Node, Tagged {
   # The snippet's title
   title: String
   body: Markup
+
+  # Succinct summary of the snippet content
+  description: String
 
   # URL for the snippet
   url: String!

@@ -125,31 +125,37 @@ appRoutes.forEach(route => {
           api,
           path: location.pathname,
         })
-        .then(({component}) => {
-          return ReactDOMServer.renderToStaticMarkup(
-            <App router={router}>
-              {component}
-            </App>,
-          );
+        .then(({component, description}) => {
+          return {
+            description,
+            pageContent: ReactDOMServer.renderToStaticMarkup(
+              <App router={router}>
+                {component}
+              </App>,
+            ),
+          };
         })
         .catch(error => {
           if (error instanceof RedirectError) {
             response.redirect(error.code, error.target);
             return null;
           }
-          return ReactDOMServer.renderToStaticMarkup(
-            <App router={router}>
-              <HTTPError code={500} />
-            </App>,
-          );
+          return {
+            pageContent: ReactDOMServer.renderToStaticMarkup(
+              <App router={router}>
+                <HTTPError code={500} />
+              </App>,
+            ),
+          };
         });
     }
-    const pageContent = await resolve(history.location);
+    const {description, pageContent} = await resolve(history.location);
     const title = DocumentTitle.peek();
     DocumentTitle.rewind();
     if (pageContent) {
       const locals = {
         cache: JSON.stringify(cache),
+        description,
         pageContent,
         title,
         ...extraLocals[route],

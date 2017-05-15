@@ -13,6 +13,7 @@ export default class Article {
   id: string;
   title: string;
   body: ?string;
+  description: ?string;
   format: string;
   createdAt: ?Date;
   updatedAt: ?Date;
@@ -28,6 +29,7 @@ export default class Article {
     this.id = values.id;
     this.title = values.title;
     this.body = values.body;
+    this.description = values.description;
     this.format = values.format;
     this.createdAt = values.createdAt;
     this.updatedAt = values.updatedAt;
