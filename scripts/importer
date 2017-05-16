@@ -3,7 +3,7 @@
 /**
  * Scrape legacy content.
  *
- * Usagee:
+ * Usage: scripts/importer > legacy.json
  *
  * Required: `npm install -g cheerio isomorphic-fetch`.
  */
@@ -20,27 +20,22 @@ const path = require('path');
 const SITE = [
   {
     url: 'https://www.wincent.com/a/about/wincent/weblog/archives/',
-    description: 'Personal blog',
     basename: 'blog',
   },
   {
     url: 'https://www.wincent.com/a/news/archives/',
-    description: 'Business blog',
     basename: 'blog',
   },
   {
     url: 'https://www.wincent.com/a/about/wincent/weblog/nightlog/archives/',
-    description: '"nightlog" (snippets)',
     basename: 'snippets',
   },
   {
     url: 'https://www.wincent.com/a/about/wincent/weblog/mini-log/archives/',
-    description: '"mini-log" (snippets)',
     basename: 'snippets',
   },
   {
     url: 'https://www.wincent.com/a/about/wincent/weblog/svn-log/archives/',
-    description: '"svn-log" (snippets)',
     skipDupes: true,
     basename: 'snippets',
   },
@@ -108,50 +103,46 @@ function getExistingPermalinks() {
   return permalinks;
 }
 
-const dump = {};
+const dump = [];
 const startTime = Date.now();
 
 function postProcess(dump) {
-  Object.keys(dump).forEach(section => {
-    // Trim content.
-    dump[section].forEach(scraped => {
-      scraped.html = scraped.html.trim();
-    });
+  // Trim content.
+  dump.forEach(scraped => {
+    scraped.html = scraped.html.trim();
+  });
 
-    // Sort by timestamp.
-    dump[section].sort((a, b) => {
-      if (a.posted > b.posted) {
-        return 1;
-      } else if (a.posted < b.posted) {
-        return -1;
-      }
-      return 0;
-    });
+  // Sort by timestamp.
+  dump.sort((a, b) => {
+    if (a.posted > b.posted) {
+      return 1;
+    } else if (a.posted < b.posted) {
+      return -1;
+    }
+    return 0;
+  });
 
-    // Add file info.
-    const permalinks = getExistingPermalinks();
-    dump[section].forEach(scraped => {
-      // log('before: ' + scraped.title);
-      let permalink = toPermalink(scraped.title);
-      // log('after: ' + permalink);
-      if (permalinks.has(permalink)) {
-        // Only two cases where we'll get a real blog post clash
-        // ("subversion-maintenance", because there are two legacy posts
-        // with the same title, and "what-is-a-release-candidate" which
-        // exists in both legacy and modern forms).
-        //
-        // Lots of clashes in svn-log but we'll just delete those (they are
-        // literal duplicates). Others in the mini-log too but they are legit
-        // content so I will name them accordingly.
-        const alternate = `${permalink}-${permalinks.get(permalink).length}`;
-        warn(`permalink ${permalink} already exists; using ${alternate}`);
-        permalinks.get(permalink).push(alternate);
-        permalink = alternate;
-      } else {
-        permalinks.set(permalink, [permalink]);
-      }
-      scraped.file = path.join(scraped.file, permalink);
-    });
+  // Add file info.
+  const permalinks = getExistingPermalinks();
+  dump.forEach(scraped => {
+    let permalink = toPermalink(scraped.title);
+    if (permalinks.has(permalink)) {
+      // Only two cases where we'll get a real blog post clash
+      // ("subversion-maintenance", because there are two legacy posts
+      // with the same title, and "what-is-a-release-candidate" which
+      // exists in both legacy and modern forms).
+      //
+      // Lots of clashes in svn-log but we'll just delete those (they are
+      // literal duplicates). Others in the mini-log too but they are legit
+      // content so I will name them accordingly.
+      const alternate = `${permalink}-${permalinks.get(permalink).length}`;
+      warn(`permalink ${permalink} already exists; using ${alternate}`);
+      permalinks.get(permalink).push(alternate);
+      permalink = alternate;
+    } else {
+      permalinks.set(permalink, [permalink]);
+    }
+    scraped.file = path.join(scraped.file, permalink);
   });
 
   return dump;
@@ -230,8 +221,7 @@ SITE.forEach(site => {
               $('.content').children().remove($prefix);
               const html = $('.content').html();
 
-              dump[site.description] = dump[site.description] || [];
-              dump[site.description].push({
+              dump.push({
                 file,
                 html,
                 posted,
@@ -270,8 +260,7 @@ SITE.forEach(site => {
 
               if (!seen.has(title) || !site.skipDupes) {
                 seen.add(title);
-                dump[site.description] = dump[site.description] || [];
-                dump[site.description].push({
+                dump.push({
                   file,
                   html,
                   posted,
@@ -281,7 +270,6 @@ SITE.forEach(site => {
               }
             }
           });
-
         }
       });
     });
