@@ -1,0 +1,78 @@
+#!/usr/bin/env ruby
+
+# Helper script. Relies on a number of artifacts.
+#
+# Usage:
+#
+#   git filter-branch -f --parent-filter ~/bin/import-filter HEAD
+#
+
+require 'json'
+require 'shellwords'
+
+$stderr.puts ENV['PWD']
+plan = JSON[File.read(ENV['HOME'] + '/bin/legacy-plan.json')]
+
+def escape(string)
+  Shellwords.shellescape(string)
+end
+
+def markdownify(commit)
+  [
+    '---',
+    "title: #{commit['title']}",
+    '---',
+    '',
+    commit['markdown'],
+  ].join("\n") + "\n"
+end
+
+def log(message)
+  $stderr.puts(message)
+end
+
+rewriting = ENV['GIT_COMMIT']
+match = $stdin.read.chomp.match(/^\s*-p\s+([0-9a-f]{40})$/)
+if match
+  parent = escape(match[1])
+  info = plan[rewriting]
+  if info && !info.empty?
+    info.each do |commit|
+      # Get parent commit tree and load it into the index.
+      %x{git read-tree #{parent}}
+
+      # Get the new file into the object database.
+      markdown = markdownify(commit)
+      hash = nil
+      IO.popen(%w[git hash-object -w --stdin], 'w+') do |pipe|
+        pipe.write markdown
+        pipe.close_write
+        hash = pipe.read.chomp
+      end
+      log("hash: #{hash}")
+
+      # Update the index with the new file.
+      cacheinfo = escape("100644,#{hash},#{commit['file']}.md")
+      log("cacheinfo: #{cacheinfo}")
+      %x{git update-index --add --cacheinfo #{cacheinfo}}
+
+      # Create a tree object fromthe current index.
+      tree = %x{git write-tree}.chomp
+      log("tree: #{tree}")
+
+      # Create a commit object.
+      message = escape("Import #{commit['file']}.md")
+      date = escape(commit['posted'])
+      parent = %x{GIT_AUTHOR_DATE=#{date} GIT_COMMITTER_DATE=#{date} git commit-tree -p #{parent} -m #{message} #{tree}}.chomp
+      log("created: #{parent}")
+
+      log(%x{git diff-tree --stat #{parent}~ #{parent}})
+
+      # Put the index back the way it was so that filter-branch can take over.
+      %x{git read-tree #{escape(rewriting)}}
+    end
+  end
+  puts " -p #{parent}"
+else
+  # This is the root commit.
+end
