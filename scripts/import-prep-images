@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+# Download and prep images.
+
+require 'fileutils'
+require 'json'
+require 'shellwords'
+
+IMAGES = JSON[File.read('./legacy-images.json')]
+
+FileUtils.mkdir_p('./public/system/images/legacy')
+
+IMAGES.each do |img, dest|
+  print '.'
+  path = Shellwords.shellescape('./public' + dest)
+  %x{wget --quiet #{img} -O #{path}}
+end
+puts
