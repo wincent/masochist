@@ -149,7 +149,7 @@ function postProcess(dump) {
 }
 
 function done() {
-  process.stdout.write(JSON.stringify(postProcess(dump)) + '\n');
+  process.stdout.write(JSON.stringify(postProcess(dump), null, 2) + '\n');
   const endTime = Date.now();
   const delta = ((endTime - startTime) / 1000).toFixed(2);
   log(`Completed in ${delta} seconds.`);
