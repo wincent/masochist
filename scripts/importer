@@ -210,7 +210,11 @@ SITE.forEach(site => {
               const {url, $} = await get(post);
               const $content = $('.content');
               const posted = extractDate($content.find('p.posted').text());
-              const title = $content.find('> h3:first-of-type').text();
+
+              // Special case: there is one of these without a title in the
+              // entire corpus.
+              const title = $content.find('> h3:first-of-type').text().trim() ||
+                'Bugzilla 3.0 improvements';
 
               // Nasty song and dance to get it to actually remove the
               // unwanted nodes before we call `html()`. Mostly discovered by
