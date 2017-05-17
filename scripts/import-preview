@@ -8,10 +8,6 @@ require 'shellwords'
 
 INFO = JSON[File.read('./legacy-plan.json')]
 
-def escape(string)
-  Shellwords.shellescape(string)
-end
-
 INFO.each do |(k, commits)|
   commits.each do |info|
     print '.'
