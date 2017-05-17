@@ -95,7 +95,7 @@ async function get(url) {
 
 function getExistingPermalinks() {
   const permalinks = new Map();
-  const entries = fs.readdirSync(path.join(__dirname, '../content/blog'));
+  const entries = fs.readdirSync(path.join(__dirname, '../../../content/blog'));
   entries.forEach(entry => {
     const permalink = entry.replace(/(\.\w+?)$/, '');
     permalinks.set(permalink, [permalink]);
