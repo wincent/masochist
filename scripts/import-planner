@@ -72,9 +72,9 @@ commits.each do |(sha, date)|
     legacy_timestamp = Date.parse(legacy.first['posted'])
     if legacy_timestamp < date
       print '.'
-      prepend = legacy.shift
-      prepend['markdown'] = postprocess(pandoc(preprocess(prepend['html'])))
-      plan[sha].unshift(prepend)
+      append = legacy.shift
+      append['markdown'] = postprocess(pandoc(preprocess(append['html'])))
+      plan[sha].push(append)
     else
       break
     end
