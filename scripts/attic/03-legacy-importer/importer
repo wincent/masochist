@@ -13,6 +13,7 @@ if (process.env.NODE_PATH === undefined) {
 }
 
 const cheerio = require('cheerio'); // Tested with v0.22.0.
+const crypto = require('crypto');
 const fs = require('fs');
 const fetch = require('isomorphic-fetch'); // Tested with v2.2.1.
 const path = require('path');
@@ -40,6 +41,15 @@ const SITE = [
     basename: 'snippets',
   },
 ];
+
+/**
+ * Create a digest of some string content.
+ */
+function getHash(string) {
+  const shasum = crypto.createHash('sha1');
+  shasum.update(string);
+  return shasum.digest('hex');
+}
 
 /**
  * Extract date string from input formatted like:
@@ -93,12 +103,16 @@ async function get(url) {
   };
 }
 
+// For pre-existing content, we don't bother computing a hash; we always assume
+// it to be unique.
+const EMPTY_HASH = '0000000000000000000000000000000000000000';
+
 function getExistingPermalinks() {
   const permalinks = new Map();
   const entries = fs.readdirSync(path.join(__dirname, '../../../content/blog'));
   entries.forEach(entry => {
     const permalink = entry.replace(/(\.\w+?)$/, '');
-    permalinks.set(permalink, [permalink]);
+    permalinks.set(permalink, [EMPTY_HASH]);
   });
   return permalinks;
 }
@@ -123,11 +137,15 @@ function postProcess(dump) {
   });
 
   // Add file info.
-  const permalinks = getExistingPermalinks();
+  const permalinks = {
+    blog: getExistingPermalinks(),
+    snippets: new Map(),
+  };
   dump.forEach(scraped => {
     let permalink = toPermalink(scraped.title);
-    if (permalinks.has(permalink)) {
-      // Only two cases where we'll get a real blog post clash
+    const {hash, type} = scraped;
+    if (permalinks[type].has(permalink)) {
+      // Only few cases where we'll get a real blog post clash
       // ("subversion-maintenance", because there are two legacy posts
       // with the same title, and "what-is-a-release-candidate" which
       // exists in both legacy and modern forms).
@@ -135,12 +153,23 @@ function postProcess(dump) {
       // Lots of clashes in svn-log but we'll just delete those (they are
       // literal duplicates). Others in the mini-log too but they are legit
       // content so I will name them accordingly.
-      const alternate = `${permalink}-${permalinks.get(permalink).length}`;
-      warn(`permalink ${permalink} already exists; using ${alternate}`);
-      permalinks.get(permalink).push(alternate);
-      permalink = alternate;
+      //
+      // I also thought we had some cross-posts too, which we detect
+      // (and omit) via a content hash. Turns out, I was wrong. They're not
+      // cross-posts (eg. "/blog/keeping-up-to-date" and
+      // "/blog/keeping-up-to-date-1").
+      const duplicates = permalinks[type].get(permalink);
+      if (duplicates.indexOf(hash) !== -1) {
+        warn(`skipping cross-posted ${permalink}`);
+        return;
+      } else {
+        const alternate = `${permalink}-${duplicates.length}`;
+        warn(`permalink ${permalink} already exists; using ${alternate}`);
+        duplicates.push(hash);
+        permalink = alternate;
+      }
     } else {
-      permalinks.set(permalink, [permalink]);
+      permalinks[type].set(permalink, [hash]);
     }
     scraped.file = path.join(scraped.file, permalink);
   });
@@ -198,6 +227,7 @@ SITE.forEach(site => {
     archives.forEach(archive => {
       enqueue(async () => {
         const {url, $} = await get(archive);
+        const type = site.basename;
 
         if (site.basename === 'blog') {
           const posts = $('.content p > a')
@@ -224,12 +254,15 @@ SITE.forEach(site => {
               const $prefix = $('.content').children().not($post);
               $('.content').children().remove($prefix);
               const html = $('.content').html();
+              const hash = getHash(html);
 
               dump.push({
                 file,
+                hash,
                 html,
                 posted,
                 title,
+                type,
                 url,
               });
             });
@@ -261,14 +294,17 @@ SITE.forEach(site => {
               $clone.children().remove(`:nth-child(-n+${startIndex})`);
               $clone.children().remove('p[class]');
               const html = $clone.html();
+              const hash = getHash(html);
 
               if (!seen.has(title) || !site.skipDupes) {
                 seen.add(title);
                 dump.push({
                   file,
+                  hash,
                   html,
                   posted,
                   title,
+                  type,
                   url,
                 });
               }
