@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+# Creates a preview of what the generated Markdown files will look like.
+
+require 'fileutils'
+require 'json'
+require 'shellwords'
+
+INFO = JSON[File.read('./legacy-plan.json')]
+
+def escape(string)
+  Shellwords.shellescape(string)
+end
+
+INFO.each do |(k, commits)|
+  commits.each do |info|
+    print '.'
+    dirname = File.dirname(info['file'])
+    basename = File.basename(info['file'])
+    %x{mkdir -p ./preview/#{dirname}}
+    File.open("./preview/#{dirname}/#{basename}.md", 'w') do |f|
+      f.puts(
+        '---',
+        "title: #{info['title']}",
+        '---'
+      )
+      f.puts
+      f.puts info['markdown']
+    end
+  end
+end
+puts

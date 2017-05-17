@@ -1,0 +1,59 @@
+#!/usr/bin/env ruby
+
+# Prepare redirects.
+
+require 'fileutils'
+require 'json'
+require 'shellwords'
+
+INFO = JSON[File.read('./legacy-plan.json')]
+
+TEMPLATE = %{
+<?php
+  $redirect_url = "%s";
+  header("HTTP/1.1 301 Moved Permanently");
+  header("Location: $redirect_url");
+  print <<<END
+<html>
+  <head>
+    <title>301 Moved Permanently</title>
+  </head>
+  <body>
+    <h1>Moved Permanently</h1>
+    <p>The resource has moved to <a href="$redirect_url">$redirect_url</a></p>
+  </body>
+  <script type="text/javascript">
+    window.location.replace('$redirect_url');
+  </script>
+</html>
+END;
+?>
+}.strip
+
+def escape(string)
+  Shellwords.shellescape(string)
+end
+
+INFO.each do |(k, commits)|
+  commits.each do |info|
+    print '.'
+    original = info['url'].match(%r{/(a/.+)})[1]
+    if info['file'] =~ %r{^content/snippets}
+      # These files don't have permalinks to redirect from, the best we can do
+      # is redirect from the parent index to /snippets/.
+      raise "Unexpected suffix on #{original}" unless original =~ %r{/\d{4}/\d{2}/$}
+      dirname = escape(original.chop)
+      basename = 'index.php'
+      redirect = 'https://wincent.com/snippets'
+    else
+      dirname = escape(File.dirname(original))
+      basename = escape(File.basename(original))
+      redirect = info['file'].sub(%r{^content/}, 'https://wincent.com/')
+    end
+    %x{mkdir -p ./#{dirname}}
+    File.open("./#{dirname}/#{basename}", 'w') do |f|
+      f.puts(TEMPLATE % redirect)
+    end
+  end
+end
+puts

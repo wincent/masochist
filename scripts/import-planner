@@ -1,0 +1,95 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'json'
+
+# Using pandoc installed via Homebrew.
+def pandoc(html)
+  markdown = nil
+  IO.popen(%w[pandoc --atx-headers --wrap=none -f html -t markdown-tex_math_dollars], 'r+') do |pipe|
+    pipe.write html
+    pipe.close_write
+    markdown = pipe.read
+  end
+  markdown
+end
+
+IMAGES = {}
+
+def preprocess(html)
+  # 28 input files contain the string "<img ".
+  html.gsub(/<img .+?\/?>/) do |match|
+    src = match.match(/src="([^"]+)"/)[1]
+    if src =~ %r{^/}
+      src = 'http://www.wincent.com' + src
+    end
+    target = '/system/images/legacy/' + File.basename(src)
+    count = IMAGES.values.count { |img| img == target }
+    if count > 0
+      ext = File.extname(target)
+      base = File.basename(target, ext)
+      target = "/system/images/legacy/#{base}-#{count}#{ext}"
+    end
+    IMAGES[src] = target
+    %{<img src="#{target}" />}
+  end
+end
+
+# Easier to do this with regex than with the scraper...
+def postprocess(markdown)
+  # Remove empty divs.
+  while true
+    original_length = markdown.length
+    markdown.gsub!(%r{<div\b.*?>\s*</div>}, '')
+    break if markdown.length == original_length
+  end
+
+  # Hoist div contents.
+  while true
+    original_length = markdown.length
+    # Note: this one only works with the "m" qualifier.
+    markdown.gsub!(%r{<div\b.*?>(.+?)</div>}m, '\1')
+    break if markdown.length == original_length
+  end
+  markdown.strip
+end
+
+legacy = JSON[File.read('./legacy.json')]
+
+# Things are already in the right order, confirmed with:
+#
+#   gsha1sum <(git log --pretty='format:%H %aI' --topo-order -- content) \
+#            <(git log --pretty='format:%H %aI' --author-date-order -- content)
+commits = %x{git log --reverse --pretty='format:%H %aI' -- content}.split("\n").map do |line|
+  match = line.match(/^(?<sha>[a-f0-9]{40}) (?<date>.+)$/)
+  [match[:sha], Date.parse(match[:date])]
+end
+
+plan = {}
+commits.each do |(sha, date)|
+  plan[sha] ||= []
+  while legacy.size > 0
+    legacy_timestamp = Date.parse(legacy.first['posted'])
+    if legacy_timestamp < date
+      print '.'
+      prepend = legacy.shift
+      prepend['markdown'] = postprocess(pandoc(preprocess(prepend['html'])))
+      plan[sha].unshift(prepend)
+    else
+      break
+    end
+  end
+end
+puts
+
+# Write out image map.
+total_count = IMAGES.values.count
+uniq_count = IMAGES.values.uniq.count
+if total_count != uniq_count
+  # Should never happen due to de-duping above.
+  raise "Duplicate images found (total #{total_count}, unique #{uniq_count})"
+end
+File.open('./legacy-images.json', 'w') { |f| f.puts JSON.pretty_generate(IMAGES) }
+
+# Write out plan.
+File.open('./legacy-plan.json', 'w') { |f| f.puts JSON.pretty_generate(plan) }
