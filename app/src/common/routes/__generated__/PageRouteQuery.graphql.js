@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PageRouteQuery.graphql
- * @generated SignedSource<<e7e9bc099487caba4a911cbf25dfe101>>
- * @relayHash 6145112ac5a278870e73d4713fe4d1ae
+ * @generated SignedSource<<b1b79749972f22028277bd2ccce85089>>
+ * @relayHash 2fb4336315e3d07c1fe53abcdf9af30a
  * @flow
  * @nogrep
  */
@@ -38,6 +38,9 @@ fragment Page on Page {
   id
   title
   createdAt
+  history {
+    url
+  }
   updatedAt
   url
   body {
@@ -181,6 +184,24 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "History",
+                "name": "history",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "url",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
@@ -240,7 +261,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page\n      description\n    }\n    id\n  }\n}\n\nfragment Page on Page {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page\n      description\n    }\n    id\n  }\n}\n\nfragment Page on Page {\n  id\n  title\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

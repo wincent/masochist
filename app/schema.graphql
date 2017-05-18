@@ -3,7 +3,7 @@ schema {
 }
 
 # A wiki article
-type Article implements Node, Tagged {
+type Article implements Node, Tagged, Versioned {
   # The ID of an object
   id: ID!
 
@@ -23,6 +23,7 @@ type Article implements Node, Tagged {
   # URL for the article
   url: String!
   tags: [TagName]
+  history: History
   createdAt: DateTime
   updatedAt: DateTime
 }
@@ -49,6 +50,12 @@ union Content = Article | Page | Post | Snippet
 
 # A JSON-style (ISO 8601) date
 scalar DateTime
+
+# Revision history for the object
+type History {
+  # URL showing revision history for the object
+  url: String
+}
 
 # The textual markup for a piece of content
 type Markup {
@@ -84,7 +91,7 @@ interface Node {
 }
 
 # A page
-type Page implements Node, Tagged {
+type Page implements Node, Tagged, Versioned {
   # The ID of an object
   id: ID!
 
@@ -97,6 +104,7 @@ type Page implements Node, Tagged {
 
   # URL for the page
   url: String!
+  history: History
   tags: [TagName]
   createdAt: DateTime
   updatedAt: DateTime
@@ -118,7 +126,7 @@ type PageInfo {
 }
 
 # A blog post
-type Post implements Node, Tagged {
+type Post implements Node, Tagged, Versioned {
   # The ID of an object
   id: ID!
 
@@ -131,6 +139,7 @@ type Post implements Node, Tagged {
 
   # URL for the post
   url: String!
+  history: History
   tags: [TagName]
   createdAt: DateTime
   updatedAt: DateTime
@@ -207,7 +216,7 @@ type SearchResultEdge {
 }
 
 # A snippet
-type Snippet implements Node, Tagged {
+type Snippet implements Node, Tagged, Versioned {
   # The ID of an object
   id: ID!
 
@@ -220,6 +229,7 @@ type Snippet implements Node, Tagged {
 
   # URL for the snippet
   url: String!
+  history: History
   tags: [TagName]
   createdAt: DateTime
   updatedAt: DateTime
@@ -308,3 +318,9 @@ interface Tagged {
 
 # A tag name
 scalar TagName
+
+# An object with a history field
+interface Versioned {
+  # Revision history for the object
+  history: History
+}

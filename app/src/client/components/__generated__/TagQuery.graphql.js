@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule TagQuery.graphql
- * @generated SignedSource<<a10d256e0ff8ad269f8661117b8706c0>>
- * @relayHash 546e8866d6c828d9c6dfb7e5a8343d38
+ * @generated SignedSource<<fb81fa19e6bfc871c271721583ab1e2d>>
+ * @relayHash fc625cd33e69e1d339e5a36efdb08619
  * @flow
  * @nogrep
  */
@@ -68,6 +68,9 @@ fragment ContentPreview on Content {
 fragment ArticlePreview on Article {
   createdAt
   description
+  history {
+    url
+  }
   title
   updatedAt
   url
@@ -77,6 +80,9 @@ fragment ArticlePreview on Article {
 fragment PagePreview on Page {
   createdAt
   description
+  history {
+    url
+  }
   title
   updatedAt
   url
@@ -86,6 +92,9 @@ fragment PagePreview on Page {
 fragment PostPreview on Post {
   createdAt
   description
+  history {
+    url
+  }
   title
   updatedAt
   url
@@ -95,6 +104,9 @@ fragment PostPreview on Post {
 fragment SnippetPreview on Snippet {
   createdAt
   description
+  history {
+    url
+  }
   title
   updatedAt
   url
@@ -318,6 +330,24 @@ const batch /*: ConcreteBatch*/ = {
                                 "storageKey": null
                               },
                               {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "History",
+                                "name": "history",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "url",
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
+                              },
+                              {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
@@ -363,6 +393,24 @@ const batch /*: ConcreteBatch*/ = {
                                 "alias": null,
                                 "args": null,
                                 "name": "description",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "History",
+                                "name": "history",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "url",
+                                    "storageKey": null
+                                  }
+                                ],
                                 "storageKey": null
                               },
                               {
@@ -414,6 +462,24 @@ const batch /*: ConcreteBatch*/ = {
                                 "storageKey": null
                               },
                               {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "History",
+                                "name": "history",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "url",
+                                    "storageKey": null
+                                  }
+                                ],
+                                "storageKey": null
+                              },
+                              {
                                 "kind": "ScalarField",
                                 "alias": null,
                                 "args": null,
@@ -459,6 +525,24 @@ const batch /*: ConcreteBatch*/ = {
                                 "alias": null,
                                 "args": null,
                                 "name": "description",
+                                "storageKey": null
+                              },
+                              {
+                                "kind": "LinkedField",
+                                "alias": null,
+                                "args": null,
+                                "concreteType": "History",
+                                "name": "history",
+                                "plural": false,
+                                "selections": [
+                                  {
+                                    "kind": "ScalarField",
+                                    "alias": null,
+                                    "args": null,
+                                    "name": "url",
+                                    "storageKey": null
+                                  }
+                                ],
                                 "storageKey": null
                               },
                               {
@@ -568,7 +652,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query TagQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...Tag\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query TagQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...Tag\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  history {\n    url\n  }\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PagePreview on Page {\n  createdAt\n  description\n  history {\n    url\n  }\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment PostPreview on Post {\n  createdAt\n  description\n  history {\n    url\n  }\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment SnippetPreview on Snippet {\n  createdAt\n  description\n  history {\n    url\n  }\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

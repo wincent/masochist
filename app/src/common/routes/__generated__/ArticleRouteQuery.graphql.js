@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ArticleRouteQuery.graphql
- * @generated SignedSource<<de895e15d16a39d012df9c58457cccff>>
- * @relayHash 177d3bbec58f1e2e594858a3fe0aff79
+ * @generated SignedSource<<5c92956c0879b5e6b65ce590b804d1bf>>
+ * @relayHash 1c6f1acf88b53f0dd15c01d91fc756c7
  * @flow
  * @nogrep
  */
@@ -43,6 +43,9 @@ fragment Article on Article {
   url
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  history {
+    url
   }
   ...Tags
 }
@@ -235,6 +238,24 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "History",
+                "name": "history",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "url",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
@@ -255,7 +276,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  history {\n    url\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

@@ -5,10 +5,13 @@ import {
   GraphQLString,
 } from 'graphql';
 import {globalIdField} from 'graphql-relay';
+import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import Article from '../../models/Article';
 import {nodeInterface, registerType} from '../definitions/node';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
+import versionedInterface from '../interfaces/versionedInterface';
+import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 import TagNameType from './TagNameType';
 
@@ -91,9 +94,17 @@ const ArticleType = registerType(
           return article.tags;
         },
       },
+      history: {
+        type: HistoryType,
+        resolve: ({format, id}) => ({
+          url: getHistoryURLForContentPath(
+            `/wiki/${encodeURIComponent(id)}.${format}`,
+          ),
+        }),
+      },
       ...timestampFields,
     },
-    interfaces: [nodeInterface, taggedInterface],
+    interfaces: [nodeInterface, taggedInterface, versionedInterface],
     isTypeOf: object => object instanceof Article,
   }),
 );

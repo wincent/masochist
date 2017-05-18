@@ -46,7 +46,11 @@ class Page extends React.Component {
                 {page.title}
               </Link>
             </h1>
-            <When createdAt={page.createdAt} updatedAt={page.updatedAt} />
+            <When
+              createdAt={page.createdAt}
+              link={page.history.url}
+              updatedAt={page.updatedAt}
+            />
             <div>
               <TrustedPrerenderedMarkup html={page.body.html} />
             </div>
@@ -65,6 +69,9 @@ export default createFragmentContainer(
       id
       title
       createdAt
+      history {
+        url
+      }
       updatedAt
       url
       body {

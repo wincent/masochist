@@ -7,7 +7,7 @@ import When from './When';
 class PostPreview extends React.Component {
   render() {
     const post = this.props.data;
-    const {createdAt, description, title, updatedAt, url} = post;
+    const {createdAt, description, history, title, updatedAt, url} = post;
     return (
       <tr>
         <td>
@@ -19,7 +19,11 @@ class PostPreview extends React.Component {
           </Link>
         </td>
         <td>
-          <When createdAt={createdAt} updatedAt={updatedAt} />
+          <When
+            createdAt={createdAt}
+            link={history.url}
+            updatedAt={updatedAt}
+          />
         </td>
         <td>
           <Tags classes={{left: true, compact: true}} data={post} />
@@ -35,6 +39,9 @@ export default createFragmentContainer(
     fragment PostPreview on Post {
       createdAt
       description
+      history {
+        url
+      }
       title
       updatedAt
       url

@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule PostPreview.graphql
- * @generated SignedSource<<93f912a0ca7c932af50e77a88d5748ac>>
+ * @generated SignedSource<<9ee9b5e0794e586f6faacde2eedc5ed6>>
  * @flow
  * @nogrep
  */
@@ -17,6 +17,9 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type PostPreview = {|
   +createdAt: ?any;
   +description: ?string;
+  +history: ?{|
+    +url: ?string;
+  |};
   +title: ?string;
   +updatedAt: ?any;
   +url: string;
@@ -42,6 +45,24 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "description",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "History",
+      "name": "history",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "url",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     },
     {

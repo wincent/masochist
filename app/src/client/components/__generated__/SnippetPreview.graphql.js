@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule SnippetPreview.graphql
- * @generated SignedSource<<dee1b6fb03d1f2a8287712fcb21b4a60>>
+ * @generated SignedSource<<1ced8b0db57fb2e6f5fed4b03cdb6a5b>>
  * @flow
  * @nogrep
  */
@@ -17,6 +17,9 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type SnippetPreview = {|
   +createdAt: ?any;
   +description: ?string;
+  +history: ?{|
+    +url: ?string;
+  |};
   +title: ?string;
   +updatedAt: ?any;
   +url: string;
@@ -42,6 +45,24 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "description",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "History",
+      "name": "history",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "url",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     },
     {

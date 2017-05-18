@@ -36,7 +36,11 @@ class Snippet extends React.Component {
                 {snippet.title}
               </Link>
             </h1>
-            <When createdAt={snippet.createdAt} updatedAt={snippet.updatedAt} />
+            <When
+              createdAt={snippet.createdAt}
+              link={snippet.history.url}
+              updatedAt={snippet.updatedAt}
+            />
             <div>
               <TrustedPrerenderedMarkup html={snippet.body.html} />
             </div>
@@ -53,6 +57,9 @@ export default createFragmentContainer(
   graphql`
     fragment Snippet on Snippet {
       id
+      history {
+        url
+      }
       url
       title
       createdAt

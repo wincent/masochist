@@ -2,9 +2,12 @@ import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
 import {globalIdField} from 'graphql-relay';
 import Page from '../../models/Page';
 import {nodeInterface, registerType} from '../definitions/node';
+import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import tagsField from '../fields/tagsField';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
+import versionedInterface from '../interfaces/versionedInterface';
+import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 
 const PageType = registerType(
@@ -37,10 +40,16 @@ const PageType = registerType(
         description: 'URL for the page',
         resolve: page => `/pages/${page.id}`,
       },
+      history: {
+        type: HistoryType,
+        resolve: ({format, id}) => ({
+          url: getHistoryURLForContentPath(`/pages/${id}.${format}`),
+        }),
+      },
       ...tagsField,
       ...timestampFields,
     },
-    interfaces: [nodeInterface, taggedInterface],
+    interfaces: [nodeInterface, taggedInterface, versionedInterface],
     isTypeOf: object => object instanceof Page,
   }),
 );

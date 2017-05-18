@@ -7,7 +7,7 @@ import When from './When';
 class PagePreview extends React.Component {
   render() {
     const page = this.props.data;
-    const {createdAt, description, title, updatedAt, url} = page;
+    const {createdAt, description, history, title, updatedAt, url} = page;
     return (
       <tr>
         <td>
@@ -19,7 +19,11 @@ class PagePreview extends React.Component {
           </Link>
         </td>
         <td>
-          <When createdAt={createdAt} updatedAt={updatedAt} />
+          <When
+            createdAt={createdAt}
+            link={history.url}
+            updatedAt={updatedAt}
+          />
         </td>
         <td>
           <Tags classes={{left: true, compact: true}} data={page} />
@@ -35,6 +39,9 @@ export default createFragmentContainer(
     fragment PagePreview on Page {
       createdAt
       description
+      history {
+        url
+      }
       title
       updatedAt
       url

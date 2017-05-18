@@ -676,6 +676,18 @@
               "deprecationReason": null
             },
             {
+              "name": "history",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "createdAt",
               "description": null,
               "args": [],
@@ -710,6 +722,11 @@
             {
               "kind": "INTERFACE",
               "name": "Tagged",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Versioned",
               "ofType": null
             }
           ],
@@ -771,6 +788,73 @@
           "fields": null,
           "inputFields": null,
           "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "INTERFACE",
+          "name": "Versioned",
+          "description": "An object with a history field",
+          "fields": [
+            {
+              "name": "history",
+              "description": "Revision history for the object",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": [
+            {
+              "kind": "OBJECT",
+              "name": "Article",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Post",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Snippet",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "Page",
+              "ofType": null
+            }
+          ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "History",
+          "description": "Revision history for the object",
+          "fields": [
+            {
+              "name": "url",
+              "description": "URL showing revision history for the object",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
           "enumValues": null,
           "possibleTypes": null
         },
@@ -1071,6 +1155,18 @@
               "deprecationReason": null
             },
             {
+              "name": "history",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "tags",
               "description": null,
               "args": [],
@@ -1121,6 +1217,11 @@
             {
               "kind": "INTERFACE",
               "name": "Tagged",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Versioned",
               "ofType": null
             }
           ],
@@ -1283,6 +1384,18 @@
               "deprecationReason": null
             },
             {
+              "name": "history",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "tags",
               "description": null,
               "args": [],
@@ -1333,6 +1446,11 @@
             {
               "kind": "INTERFACE",
               "name": "Tagged",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Versioned",
               "ofType": null
             }
           ],
@@ -1750,6 +1868,18 @@
               "deprecationReason": null
             },
             {
+              "name": "history",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "tags",
               "description": null,
               "args": [],
@@ -1800,6 +1930,11 @@
             {
               "kind": "INTERFACE",
               "name": "Tagged",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Versioned",
               "ofType": null
             }
           ],

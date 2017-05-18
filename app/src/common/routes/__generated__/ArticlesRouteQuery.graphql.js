@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ArticlesRouteQuery.graphql
- * @generated SignedSource<<9525d49b0fa7b37fd7734d664910e4a9>>
- * @relayHash 5b5f39d093ef11706313d172c9fef743
+ * @generated SignedSource<<906746a76e18069ce875b557d4925923>>
+ * @relayHash 9c874e4f5f031f857ef61ce392a0b7fe
  * @flow
  * @nogrep
  */
@@ -49,6 +49,9 @@ fragment ArticlesIndex on Root {
 fragment ArticlePreview on Article {
   createdAt
   description
+  history {
+    url
+  }
   title
   updatedAt
   url
@@ -170,6 +173,24 @@ const batch /*: ConcreteBatch*/ = {
                     "storageKey": null
                   },
                   {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "History",
+                    "name": "history",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "url",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
@@ -283,7 +304,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticlesRouteQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query ArticlesRouteQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  createdAt\n  description\n  history {\n    url\n  }\n  title\n  updatedAt\n  url\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

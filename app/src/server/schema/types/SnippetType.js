@@ -4,11 +4,14 @@ import {
   getOffsetWithDefault,
   globalIdField,
 } from 'graphql-relay';
+import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import Snippet from '../../models/Snippet';
 import {nodeInterface, registerType} from '../definitions/node';
 import tagsField from '../fields/tagsField';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
+import versionedInterface from '../interfaces/versionedInterface';
+import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 
 const SnippetType = registerType(
@@ -43,10 +46,16 @@ const SnippetType = registerType(
         description: 'URL for the snippet',
         resolve: snippet => `/snippets/${snippet.id}`,
       },
+      history: {
+        type: HistoryType,
+        resolve: ({format, id}) => ({
+          url: getHistoryURLForContentPath(`/snippets/${id}.${format}`),
+        }),
+      },
       ...tagsField,
       ...timestampFields,
     },
-    interfaces: [nodeInterface, taggedInterface],
+    interfaces: [nodeInterface, taggedInterface, versionedInterface],
     isTypeOf: object => object instanceof Snippet,
   }),
 );

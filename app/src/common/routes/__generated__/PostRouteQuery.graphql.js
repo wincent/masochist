@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PostRouteQuery.graphql
- * @generated SignedSource<<0344e1d38c7a557764a43c84ea713bc5>>
- * @relayHash f9e6d0d6de9e38ae3ad3d85035d1a39e
+ * @generated SignedSource<<0748f903ac3dc27a14fb7b1b3c4576af>>
+ * @relayHash 228a156c3d2ca534ad8d070c0aea7197
  * @flow
  * @nogrep
  */
@@ -42,6 +42,9 @@ fragment Post on Post {
   url
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  history {
+    url
   }
   ...Tags
 }
@@ -220,6 +223,24 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "History",
+                "name": "history",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "url",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
@@ -240,7 +261,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PostRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Post {\n      ...Post\n      description\n    }\n    id\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query PostRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Post {\n      ...Post\n      description\n    }\n    id\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  history {\n    url\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

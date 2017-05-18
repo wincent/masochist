@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule SnippetsRouteQuery.graphql
- * @generated SignedSource<<b7fbf728ab5c8379ab778deef44bac4a>>
- * @relayHash 3077460acdad5bca5ef143e4732c99e1
+ * @generated SignedSource<<9b11841f8ca30f7d129ebf78e75c8591>>
+ * @relayHash 972651930e1fa12b55b3077af853f1e8
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query SnippetsRouteQuery(
@@ -48,6 +49,9 @@ fragment SnippetsIndex on Root {
 
 fragment Snippet on Snippet {
   id
+  history {
+    url
+  }
   url
   title
   createdAt
@@ -168,6 +172,24 @@ const batch /*: ConcreteBatch*/ = {
                     "alias": null,
                     "args": null,
                     "name": "id",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "History",
+                    "name": "history",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "url",
+                        "storageKey": null
+                      }
+                    ],
                     "storageKey": null
                   },
                   {
@@ -316,7 +338,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SnippetsRouteQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet on Snippet {\n  id\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query SnippetsRouteQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet on Snippet {\n  id\n  history {\n    url\n  }\n  url\n  title\n  createdAt\n  updatedAt\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

@@ -8,35 +8,38 @@ if (inBrowser) {
   require('./When.css');
 }
 
-const WhenWrapper = props => (
+const WhenWrapper = ({children, link}) => (
   <div className="when">
-    {props.children}
+    <a className="when-link" href={link}>
+      {children}
+    </a>
   </div>
 );
 
 export default class When extends React.Component {
   static propTypes = {
     createdAt: PropTypes.string,
+    link: PropTypes.string,
     updatedAt: PropTypes.string,
   };
 
   render() {
-    const {createdAt, updatedAt} = this.props;
+    const {createdAt, link, updatedAt} = this.props;
     if (
       relativizeDate(createdAt).humanReadable ===
       relativizeDate(updatedAt).humanReadable
     ) {
       return (
-        <WhenWrapper>
+        <WhenWrapper link={link}>
           <Time datetime={updatedAt} />
         </WhenWrapper>
       );
     }
 
     return (
-      <WhenWrapper>
-        Created <Time datetime={this.props.createdAt} />,
-        updated <Time datetime={this.props.updatedAt} />
+      <WhenWrapper link={link}>
+        Created <Time datetime={createdAt} />,
+        updated <Time datetime={updatedAt} />
       </WhenWrapper>
     );
   }

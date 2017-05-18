@@ -1,10 +1,13 @@
 import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
 import {globalIdField} from 'graphql-relay';
+import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import Post from '../../models/Post';
 import {nodeInterface, registerType} from '../definitions/node';
 import tagsField from '../fields/tagsField';
 import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
+import versionedInterface from '../interfaces/versionedInterface';
+import HistoryType from './HistoryType';
 import MarkupType from './MarkupType';
 
 const PostType = registerType(
@@ -37,10 +40,16 @@ const PostType = registerType(
         description: 'URL for the post',
         resolve: post => `/blog/${post.id}`,
       },
+      history: {
+        type: HistoryType,
+        resolve: ({format, id}) => ({
+          url: getHistoryURLForContentPath(`/blog/${id}.${format}`),
+        }),
+      },
       ...tagsField,
       ...timestampFields,
     },
-    interfaces: [nodeInterface, taggedInterface],
+    interfaces: [nodeInterface, taggedInterface, versionedInterface],
     isTypeOf: object => object instanceof Post,
   }),
 );

@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Page.graphql
- * @generated SignedSource<<1ca98185056e8d35fb231800222dc6cf>>
+ * @generated SignedSource<<70ce15296a6f8bebb95398a9992a203b>>
  * @flow
  * @nogrep
  */
@@ -18,6 +18,9 @@ export type Page = {|
   +id: string;
   +title: ?string;
   +createdAt: ?any;
+  +history: ?{|
+    +url: ?string;
+  |};
   +updatedAt: ?any;
   +url: string;
   +body: ?{|
@@ -58,6 +61,24 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "createdAt",
+      "storageKey": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "args": null,
+      "concreteType": "History",
+      "name": "history",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "args": null,
+          "name": "url",
+          "storageKey": null
+        }
+      ],
       "storageKey": null
     },
     {

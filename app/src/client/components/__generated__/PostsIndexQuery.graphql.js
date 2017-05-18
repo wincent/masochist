@@ -3,11 +3,13 @@
  *   relay-compiler
  *
  * @providesModule PostsIndexQuery.graphql
- * @generated SignedSource<<b98501b7017454ddf5f03bfaa555a332>>
- * @relayHash 218cf618c26cf29c72b583dc56a9fbcc
+ * @generated SignedSource<<28927230c8e370c91f23ccc6d1bdc2f4>>
+ * @relayHash c6885f9f79fc37a953abfb98504fe24b
  * @flow
  * @nogrep
  */
+
+/* eslint-disable */
 
 'use strict';
 
@@ -16,7 +18,6 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 */
 
-/* eslint-disable comma-dangle, quotes */
 
 /*
 query PostsIndexQuery(
@@ -54,6 +55,9 @@ fragment Post on Post {
   url
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  history {
+    url
   }
   ...Tags
 }
@@ -224,6 +228,24 @@ const batch /*: ConcreteBatch*/ = {
                     "storageKey": null
                   },
                   {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "History",
+                    "name": "history",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "url",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  },
+                  {
                     "kind": "ScalarField",
                     "alias": null,
                     "args": null,
@@ -316,7 +338,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  history {\n    url\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
 };
 
 module.exports = batch;

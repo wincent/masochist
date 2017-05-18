@@ -34,7 +34,11 @@ class Post extends React.Component {
                 {post.title}
               </Link>
             </h1>
-            <When createdAt={post.createdAt} updatedAt={post.updatedAt} />
+            <When
+              createdAt={post.createdAt}
+              link={post.history.url}
+              updatedAt={post.updatedAt}
+            />
             <div>
               <TrustedPrerenderedMarkup html={post.body.html} />
             </div>
@@ -57,6 +61,9 @@ export default createFragmentContainer(
       url
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
+      }
+      history {
+        url
       }
       ...Tags
     }
