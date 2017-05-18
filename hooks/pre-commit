@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Prevent careless amends of already-indexed content.
 
@@ -17,6 +17,22 @@ REPO_FINGERPINT=$(shasum -a 512 hooks/pre-commit | awk '{ print $1 }')
 if [ "$HOOK_FINGERPRINT" != "$REPO_FINGERPINT" ]; then
   error "installed hook does not match repo copy"
   error "freshen with scripts/set-up-hooks or use --no-verify to force"
+  exit 1
+fi
+
+# Read null-delimited output using this trick:
+# http://stackoverflow.com/a/8677566/2103996
+MISSING_TAGS=0
+while IFS= read -r -d '' CHANGE; do
+  TYPE=$(basename $(dirname "$CHANGE"))
+  if ! egrep --quiet "^tags: .*\b$TYPE\b.*$" "$CHANGE"; then
+    MISSING_TAGS=1
+    error "file $CHANGE is missing \"tags: $TYPE\" metadata"
+  fi
+done < <(git diff --cached --diff-filter=AM --name-only -z HEAD -- content)
+
+if [ $MISSING_TAGS -eq 1 ]; then
+  error "use --no-verify to force, or re-run 'scripts/tag-by-type'"
   exit 1
 fi
 
