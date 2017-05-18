@@ -1,0 +1,66 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+
+/**
+ * Prerequisite: `npm install -g unpack-content`
+ */
+if (process.env.NODE_PATH === undefined) {
+  // http://stackoverflow.com/a/24963546/2103996
+  module.paths.unshift('/usr/local/lib/node_modules');
+}
+
+const unpackContent = require('unpack-content').default;
+
+const BASE_DIR = path.join(__dirname, '../content');
+
+function skipHidden(file) {
+  return !file.startsWith('.');
+}
+
+fs.readdirSync(BASE_DIR).filter(skipHidden).forEach(contentDir => {
+  if (
+    contentDir.startsWith('.') ||
+    contentDir === 'images'
+  ) {
+    return;
+  }
+  const dirname = path.join(BASE_DIR, contentDir);
+  fs.readdirSync(dirname).filter(skipHidden).forEach(file => {
+    const filePath = path.join(dirname, file);
+    const fileContents = fs.readFileSync(filePath).toString();
+    const type = path.basename(dirname);
+
+    // Don't have destructuring with Object spread here, so not doing:
+    //
+    //     const {body, tags, ...metadata} = unpackContent(fileContents);
+    const content = unpackContent(fileContents);
+    const body = content.body;
+    const tags = content.tags || [];
+
+    if (tags.indexOf(type) !== -1) {
+      // No changes, boom.
+      return;
+    }
+    content.tags = tags.concat(type).join(' ');
+
+    const newContent = Object
+      .entries(content)
+      .reduce((lines, [key, value]) => {
+        if (key !== 'body') {
+          const line = `${key}: ${value}`;
+          lines.splice(lines.length - 1, 0, line);
+        }
+        return lines;
+      }, ['---', '---'])
+      .join('\n') +
+      '\n\n' +
+      body.trim() +
+      '\n';
+
+    fs.writeFileSync(filePath, newContent);
+    process.stdout.write('.');
+  });
+});
+process.stdout.write('\n');
