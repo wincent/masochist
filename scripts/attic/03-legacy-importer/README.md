@@ -13,10 +13,14 @@ git stash -u
 git br archive/content-$(date +%Y-%m-%d)
 
 # Actual rewrite the history.
-git filter-branch -f --parent-filter ~/bin/import-filter HEAD
+git filter-branch -f --index-filter true --parent-filter ~/bin/import-filter HEAD
+
+# Move images from `public/system/images/legacy` to `content/images/`
+# (then commit).
+mv public/system/images/legacy content/images/
 
 # Finally, bump `redisCacheVersion` etc.
 # (follow instructions in main "content" branch README.md).
-# And use scp/rsync to move redirects and images into place on server
+# And use scp/rsync to move redirects into place on server
 # and on "master" branch.
 ```
