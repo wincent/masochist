@@ -6,7 +6,6 @@ I've always been a little confused by [Apple](http://www.wincent.com/knowledge-b
 
 The documentation seems to have undergone a number of [revisions](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/RevisionHistory.html) lately ("Undocumented the CFBundleGetInfoString key", "Added details on the new purpose of the CFBundleGetInfoString key", "Reintroduced the CFBundleGetInfoString key") and this is the current state of affairs under [Leopard](http://www.wincent.com/knowledge-base/Leopard):
 
-[]{#Behaviour}
 
 ## Behaviour
 
@@ -22,27 +21,22 @@ The `NSHumanReadableCopyright` key is used to provide a localized copyright noti
 
 
 
-[]{#The%20docs}
 ## The docs
 
 So what do the docs say? It seems that of late the behaviour, at least in Leopard, and the documentation match up a lot better than they used to.
 
-[]{#%3Ctt%3ECFBundleGetInfoString%3C%2Ftt%3E%3A%20a%20%26quot%3BBrief%20description%20of%20the%20bundle%26quot%3B}
 ### `CFBundleGetInfoString`: a "Brief description of the bundle"
 
 > This key identifies a brief description of the bundle. For an application bundle, this key provides a short description of the application or the current release that the build or release version number cannot convey; for example, the date of the release. This key can be localized.
 
-[]{#%3Ctt%3ECFBundleVersion%3C%2Ftt%3E%3A%20%26quot%3BThe%20build-version-number%20string%20for%20the%20bundle%26quot%3B}
 ### `CFBundleVersion`: "The build-version-number string for the bundle"
 
 > This key specifies the build version number of the bundle, which identifies an iteration (released or unreleased) of the bundle. This is a monotonically increased string, comprised of one or more period-separated integers. This key is not localizable.
 
-[]{#%3Ctt%3ECFBundleShortVersionString%3C%2Ftt%3E%3A%20%26quot%3BThe%20release-version-number%20string%20for%20the%20bundle%26quot%3B}
 ### `CFBundleShortVersionString`: "The release-version-number string for the bundle"
 
 > This key specifies the release version number of the bundle, which identifies a released iteration of the application. The release version number is a string comprised of three period-separated integers. The first integer represents major revisions to the application, such as revisions that implement new features or major changes. The second integer denotes revisions that implement less prominent features. The third integer represents maintenance releases. The value for this key differs from the value for "CFBundleVersion", which identifies an iteration (released or unreleased) of the application.
 
-[]{#%3Ctt%3ENSHumanReadableCopyright%3C%2Ftt%3E%3A%20%26quot%3BSpecifies%20the%20copyright%20notice%20for%20the%20bundle%26quot%3B}
 ### `NSHumanReadableCopyright`: "Specifies the copyright notice for the bundle"
 
 Finally it's worth mentioning this one:
@@ -53,7 +47,6 @@ More information can be found in the documentation for the ` orderFrontStandardA
 
 > ...this method then looks for the value of NSHumanReadableCopyright in the localized version infoDictionary.
 
-[]{#Conclusion}
 ## Conclusion
 
 So there you have it. The docs make it very clear that your build numbers should be "monotonically increasing strings" comprising "one or more period-separated integers". Great if you use [Subversion](http://www.wincent.com/knowledge-base/Subversion)-based build numbers; you'll need to ignore those rules if your build numbers are actually SHA-1 hashes (based on [Git](http://www.wincent.com/knowledge-base/Git) commits, for example). Likewise your release versions are supposed to be of the form "x.y.z"; bad luck if you want to do "1.0-rc1" or "2.1b3" and the like, but it seems unlikely that any harm will come from not following these rules (or are they guidelines?) to their fullest.

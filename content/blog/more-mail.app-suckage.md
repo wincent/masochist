@@ -35,7 +35,6 @@ Notice how the mbox file is still *30 megabytes*, the index is 5 meg, and the ta
 
 How do I trim the mbox down to size? Do I have to open a 700,000-line file in BBEdit and trim it by hand?
 
-[]{#Update}
 
 ### Update
 

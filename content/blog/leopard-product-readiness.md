@@ -4,7 +4,6 @@ title: Leopard product readiness
 
 With [Leopard](http://www.wincent.com/knowledge-base/Leopard) only 15 hours from release it's time for a product status report:
 
-[]{#Leopard-ready}
 
 ### Leopard-ready
 
@@ -15,7 +14,6 @@ The following products have received extensive testing on pre-release versions o
 -   [WOTest](http://test.wincent.com): open source Objective-C unit testing framework.
 -   [Wincent Strings Utility](http://strings.wincent.com): open source localization helper tool for developers.
 
-[]{#Beta-status}
 
 ### Beta-status
 
@@ -23,7 +21,6 @@ This product hasn't been heavily tested with Leopard but conflicting reports hav
 
 -   [WinSwitch](http://winswitch.wincent.com/): Fast User Switching menu replacement.
 
-[]{#Coming%20soon}
 
 ### Coming soon
 
@@ -32,7 +29,6 @@ These products aren't yet Leopard-ready but work is well on the way to completio
 -   [Synergy Advance](http://advance.wincent.com): Plug-in based audio companion.
 -   [Hextrapolate](http://hextrapolate.wincent.com): Programmers number conversion tool.
 
-[]{#Unknown}
 
 ### Unknown
 
@@ -40,7 +36,6 @@ The status of the following product on Leopard is unknown:
 
 -   [atosym](http://atosym.wincent.com/): Address-to-symbol conversion aid for programmers.
 
-[]{#All%20other%20products}
 
 ### All other products
 

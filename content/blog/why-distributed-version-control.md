@@ -13,14 +13,12 @@ I'll answer this with specific reference to [Git](http://www.wincent.com/knowled
 
 
 
-[]{#History}
 ### History
 
 Every "checkout" is actually a full copy of the entire remote repository (all its branches, all its history). After a while you just get used to the idea that you can rapidly look back at any previous tag (previous releases for example) and look at any of the branches that are currently under development (unlike Subversion where the typical workflow is to check out only the tip of the "trunk"). This also means that every checkout is a full backup of *everything* in the history of a project. And once you've done this initial "checkout" (called a "clone" in Git terminology for obvious reasons) you can do all this stuff (look at previous releases, switch branches, explore the history) without any network access.
 
 Worried about size and speed? Don't. Git has an extremely efficient network transfer protocol and repository format which makes checkouts comparable in terms of time and space to their Subversion counterparts; you'll often be surprised to see that an entire Git repository with *all* the history is as small or smaller than the equivalent Subversion checkout (which is just the tip of the development history).
 
-[]{#Offline%20operations}
 ### Offline operations
 
 I already touched on this above, but the fact that your local "checkout" is a full-fledged repository means that you can do basically everything without a network connection: commit changes, create branches, perform diffs against any other point in the project history, merge, and so forth. You later make your changes available to the outside world when you are ready.
@@ -30,7 +28,6 @@ The oft-cited example is that you can take your work with you on the road (in a 
 -   Working offline is *fast*.
 -   Working offline provides you with an additional "staging area" (your local, private repository): if you commit something by mistake you can fix it up before anyone else sees it; this in turn means that you can make your history cleaner, keep the "noise" down, and can make your development easier to understand for others (and for yourself when you come back to look at it six months down the track). I use this functionality many times a day; you can fix a spelling error or add a file that you forget about and update the previous commit with `git commit --amend` (the commit message editor is conveniently populated with the original commit message so if you want you can just accept that and exit the editor).
 
-[]{#Simplicity}
 ### Simplicity
 
 Setting up a Git repository is orders of magnitude simpler than setting up a Subversion one. It has to be that way, otherwise all this cloning would be tiresome.
@@ -44,7 +41,6 @@ You can also publish repositories over the native Git protocol using the `git-da
 
 Finally, you need not "publish" your local repository at all if you don't want. Git provides a `git push` command that you can use to transmit your changes to remote repositories.
 
-[]{#Collaboration}
 ### Collaboration
 
 This is the point I took special exception with with Collins-Sussman the other day.
@@ -63,14 +59,12 @@ Putting in extra effort to share code? Collins-Sussman has evidently never serio
 
 Finally, if you want to use Git as though it were centralized it's perfectly easy and natural to do so. Can Collins-Sussman actually cite any projects that are using Git without a central "authoritative" repository that all other developers use as a reference point?
 
-[]{#Flexibility}
 ### Flexibility
 
 You're not limited to just cloning "the upstream" repository. Just say you start working on a feature and later learn that someone else is doing related work. You can `git fetch` from that person's repository into your own (that is, you can pull from multiple different repositories into a single local one) and merge in his or her changes. This is great on large projects where someone works as an integrator or filterer before sending changes upstream.
 
 Or take what's happening in the Git community right now: the maintainer, Junio Humano, is away due to unexpected personal circumstances, and so the intermin maintainer, Shawn Pearce, is taking over seamlessly using his own clone of the central repository which Junio controls. When Junio gets back he can simply merge in the patches which Shawn has been collecting, filtering, and ordering. This kind of smooth hand-over of control is much more difficult with a centralized model. If you're curious, you can see how all of this is happening, because it's happening out in the open on the Git mailing list.
 
-[]{#Feature%20branches}
 ### Feature branches
 
 As you alluded to, branching is a big feature of Git, and more importantly, merging (without proper merging the ability to branch is next to useless; even Subversion can branch like a champ, it's just its merging which sucks).
@@ -81,12 +75,10 @@ This keeps your development efforts organized, makes it easier for you to group 
 
 Branching and merging in Git is about as easy as copying a file.
 
-[]{#Refactoring}
 ### Refactoring
 
 You asked about refactoring, but I'm not sure that there's anything specific to the distributed nature of systems like Git that makes a difference here. All you can really say is that the ease with which you can set up topic branches encourages you to engage in experimental refactoring (of the "let's just try this and see if it looks better" variety).
 
-[]{#Sliced%20bread}
 ### Sliced bread
 
 I've tried to restrict my points above to the aspects in which distributed version control can be superior to centralized systems.

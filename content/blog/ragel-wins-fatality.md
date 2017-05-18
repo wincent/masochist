@@ -16,7 +16,6 @@ You see, Ragel generates simple state machines: the building blocks of regular e
 
 
 
-[]{#Why%20Ragel%20should%20be%20better}
 ### Why Ragel should be better
 
 So I suspected that Ragel might be a bit quicker. No amount of prediction in a predictive lexer can beat a pure state machine, which by definition is going to run in constant time because it simultaneously explores all possible paths. When you add backtracking into the mix (as a result of trying to always favor the longest match) then you lose your constant time but it should still be fast because the state machines themselves are so efficient.
@@ -57,7 +56,6 @@ Now let's look at the equivalent rule in Ragel:
 
 I think that speaks for itself, but I'll make an additional comment anyway. You can look at such a rule and know *exactly* what kind of state machine it maps to. Entirely predictable, and no black magic or fancy prediction logic under the hood.
 
-[]{#The%20numbers}
 ### The numbers
 
 The initial numbers are in and I couldn't be happier. Ragel has exceeded my wildest expectations.
@@ -114,7 +112,6 @@ The following table shows the performance of the custom converter (prefixed with
     internal (longer ASCII to UTF-8)       2.550000   0.010000   2.560000 (  2.586608)
     internal (longer non-ASCII to UTF-8)   5.280000   0.010000   5.290000 (  5.327419)
 
-[]{#Future}
 ### Future
 
 The exciting part is that this is only the beginning. It's commonly held that in any kind of parsing or transformation it's the lexing that takes most of the time, so in one fell swoop I've optimized the biggest performance bottleneck in the transformer.

@@ -20,7 +20,6 @@ Alas, trying to copy a file from it resulted in a Finder hang (beachballing) aft
 
 
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.5

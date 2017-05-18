@@ -20,7 +20,6 @@ I seem to have very bad luck with hard disks, despite my myriad precautions. Thi
 
 So I'll be watching this disk very carefully over the next few days and possibly increasing the frequency of my backups (I already do a once-per-day mirror of my startup volume to an external disk, as well as a daily burn of my entire home folder to DVD). I'll also be committing my work even more frequently to my remote repositories.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

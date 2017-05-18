@@ -36,7 +36,6 @@ I like the look of the new entries because Git encourages (but doesn't impose) t
 
 Next step will be to continue migrating public and private repositories over to Git. Eventually I'll rename the Subversion log to "Git log" too. (*Update*: that's [now done](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/) too, although the old `svn-log` [URLs](http://www.wincent.com/knowledge-base/URLs) will continue to work.)
 
-[]{#See%20also}
 ### See also
 
 [Other](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/git_notes.php) [posts](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/a_look_back_bra.php) [on](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/git_changes.php) [Git](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/musings_on_subv.php).

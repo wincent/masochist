@@ -2,7 +2,6 @@
 title: Memory management tips under Garbage Collection
 ---
 
-[]{#The%20%3Ctt%3ECFRelease%3C%2Ftt%3E%20function}
 
 ### The `CFRelease` function
 
@@ -16,7 +15,6 @@ This makes CF objects great candidates for passing to sheet methods and the like
 
 One caveat: you're not supposed to pass `NULL` references to `CFRelease`.
 
-[]{#The%20%3Ctt%3ECFMakeCollectable%3C%2Ftt%3E%20function}
 
 ### The `CFMakeCollectable` function
 
@@ -40,7 +38,6 @@ The caveat: because `CFMakeCollectable` is a wrapper for `CFRelease` you must no
 
 There is nothing to stop you from writing your own wrapper functions which check for `NULL` references prior to calling `CFRelease` or `CFMakeCollectable`.
 
-[]{#The%20%3Ctt%3ENSMakeCollectable%3C%2Ftt%3E%20function}
 
 ### The `NSMakeCollectable` function
 

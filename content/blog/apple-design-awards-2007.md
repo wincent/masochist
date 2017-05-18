@@ -4,7 +4,6 @@ title: Apple Design Awards 2007
 
 So the winners of the Apple Design Awards for 2007 have been [announced](http://developer.apple.com/wwdc/ada/).
 
-[]{#Leopard}
 
 ### Leopard
 

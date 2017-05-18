@@ -27,7 +27,6 @@ Right now performing my customary boot-from-DVD and repair with Disk First Aid t
 
 
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.4.9

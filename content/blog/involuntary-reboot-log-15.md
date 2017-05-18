@@ -14,7 +14,6 @@ As any regular reader of my [Involuntary Reboot Log](http://www.wincent.com/a/ab
 
 So today I resigned myself to just go ahead and do the hard reset, kiss my open documents goodbye, and hope that HFS+ wouldn't screw me over. Imagine my surprise when upon booting the Super Drive was once again recognized by the system! Finally able to eject that Leopard seed disc that had been sitting in there for the last 10 days. Don't really expect it to keep working though; and certainly don't expect to be able to depend on it in the event of an all-too-likely catastrophic failure.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

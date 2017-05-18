@@ -16,7 +16,6 @@ Source: [Bram Cohen](http://bramcohen.livejournal.com/17319.html).
 
 
 
-[]{#On%20merge%20algorithms}
 ### On merge algorithms
 
 The [Codeville website](http://www.codeville.org/) has this to say:
@@ -47,7 +46,6 @@ He describes a scenario in which the merge algorithm doesn't produce desirable r
 
 I'm not sure how many merge algorithms [Git](http://www.wincent.com/knowledge-base/Git) has at the time that thread took place, but today it has four (see the `git-merge` man page for details). But clever or non-clever merge algorithms are besides the point: what were the real insights that Torvalds somehow grasped from the very beginning? What is it that made me describe him above as "a frickin' genius"?
 
-[]{#What%20Git%20does%20right}
 ### What Git does right
 
 There is no need for fancy metadata, rename tracking and so forth. The only thing you need to store is the state of the tree before and after each change. What files were renamed? Which ones were copied? Which ones were deleted? What lines were added? Which ones were removed? Which lines had changes made inside them? Which slabs of text were copied from one file to another? You shouldn't have to care about any of these questions and you certainly shouldn't have to keep special tracking data in order to help you answer them: all the changes to the tree (additions, deletes, renames, edits etc) are implicitly encoded in the delta between the two states of the tree; you just track what is the content.
@@ -60,7 +58,6 @@ As a result of this fundamental design decision, the structure of a Git reposito
 
 The other fundamentally smart design decision is how Git does merges. The merging algorithms *are* smart but they don't try to be *too* smart. Unambiguous decisions are made automatically, but when there's doubt it's up to the user to decide. This is the way it should be. You don't want a machine making those decisions for you. You never will want it. That's the fundamental insight in the Git approach to merging: while every other version control system is trying to get smarter, Git is happily self-described as the "stupid content manager", and it's better for it.
 
-[]{#Footnote}
 ### Footnote
 
 If you try the tricky merge issue described by the Monotone dev [above](http://article.gmane.org/gmane.comp.version-control.monotone.devel/3264) you'll find that [Git](http://www.wincent.com/knowledge-base/Git) does exactly the right thing:

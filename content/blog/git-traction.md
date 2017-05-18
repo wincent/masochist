@@ -10,7 +10,6 @@ My gut feeling is that [Linus Torvalds' git talk](http://www.youtube.com/watch?v
 
 But whatever the reason, it's good to see it.
 
-[]{#Fraser}
 
 ## Fraser's take
 
@@ -21,7 +20,6 @@ Fraser seems to have spent the time digging into [Git](http://www.wincent.com/kn
 -   Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with [SVK](http://www.wincent.com/knowledge-base/SVK); and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your "externals" don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.
 -   Repository layout: spot on, the `.svn` directories littered throughout a Subversion checkout are a hideous mess; "litter" is the operative word.
 
-[]{#Bill}
 
 ## Bill's take
 
@@ -56,7 +54,6 @@ Bill finishes with:
 
 I agree: Subversion is awesome, in its own way, but it ain't going anywhere. Git, on the other hand, definitely *is* going somewhere, and in fact has already gotten so far ahead of Subversion that I can't imagine Subversion ever catching up. If you doubt this then just look at the treacle-like process they're making towards merge tracking (and note, at this stage we're still only talking about *tracking* merges, not actually doing anything interesting with them). I honestly think that if you jump ship now you won't regret it.
 
-[]{#Parting%20words}
 
 ### Parting words
 

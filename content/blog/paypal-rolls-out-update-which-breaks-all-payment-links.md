@@ -6,7 +6,6 @@ As of about 9 hours ago, PayPal has rolled out a new website and now anyone tryi
 
 I've already contacted PayPal but until this problem is solved please consider using [Kagi](https://secure.wincent.com/s/kagi/) instead, or just go to PayPal and send me a payment with a description of the product that you'd like to buy. You can do this using the "Send Money" tab at PayPal and sending your payment to <win@wincent.com>. Apologies for the inconvenience!
 
-[]{#Update}
 
 ### Update
 

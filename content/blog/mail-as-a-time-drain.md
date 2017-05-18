@@ -16,7 +16,6 @@ Last night and today I took a step further, unsubscribing from some non-essentia
 
 
 
-[]{#Is%20spam%20getting%20better%20or%20worse%3F}
 ### Is spam getting better or worse?
 
 Comparing with [the numbers](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/is_spam_solved.php) from the last time (about 8 months ago) things look decidedly worse; these are the numbers at the client level, excluding spam that was blocked by the server:

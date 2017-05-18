@@ -6,7 +6,6 @@ Only a few days since the last kernel panic and I've just had another hard reset
 
 As always I did a Disk First Aid run after the crash. This time there was a bunch of damage that needed to be repaired. HFS+: is the F for Farce?
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

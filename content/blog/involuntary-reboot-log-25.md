@@ -10,7 +10,6 @@ Apart from the risk of damage to my data, I am starting to get sick of these Dis
 
 On a tangential note: I received an email in response to my [last post](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php) in which I complained about the lack of RAM in the low-end iMacs. It was pointed out to me that real-world RAM really is cheap nowadays (even if RAM from [Apple](http://www.wincent.com/knowledge-base/Apple) is not). You can max out an iMac to 4 GB for a mere $100 at [my retailer of choice](http://macsales.com) (OWC), and for someone like me living in Europe and buying the RAM from the US you're still looking at only 85€ *including* international shipping.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

@@ -8,7 +8,6 @@ Yesterday and today I've been working on improving the automated testing process
 
 
 
-[]{#Goodbye%20failing%20tests}
 ### Goodbye failing tests
 
 I had some failing tests in place (`WO_TEST_FAIL`) to serve as reminders to go ahead and implement real tests at a later date. This is mostly in cases where the tests are fiendishly difficult to write (testing [GUI](http://www.wincent.com/knowledge-base/GUI) elements, for example) and I wasn't sure how to proceed.
@@ -17,12 +16,10 @@ So I've gotten rid of these placeholder tests and put good old-fashioned `TODO` 
 
 This in turn makes my automated [nightly builds process](http://www.wincent.com/s/nightlies/) more robust. Instead of manually reviewing the builds before allowing the nightly to proceed I am one step closer to letting them run truly automatically (for the time being I am still firing them off manually until I am 100% convinced that the process is bullet-proof).
 
-[]{#Notifications}
 ### Notifications
 
 The next thing I want to do is show Growl notifications when test runs finish, using the `growlnotify` [CLI](http://www.wincent.com/knowledge-base/CLI) tool. In the case of nightlies I'll make these "sticky" notifications so that they'll hang around on the screen even if I'm not in front of the computer at the time the nightlies run. In the case of normal builds I'll make them non-sticky.
 
-[]{#Truly%20continuous%20integration}
 ### Truly continuous integration
 
 My next step will then be to set up truly continuous automated testing for better [continuous integration](http://www.wincent.com/knowledge-base/continuous%20integration). The idea is to perform the following in the background in an endless loop:
@@ -39,7 +36,6 @@ It shouldn't be too much work to set this up; I can probably just modify the cur
 
 This is just one of the ways in which my recent work using [Ruby](http://www.wincent.com/knowledge-base/Ruby) to write [Walrus](http://walrus.wincent.com/) has made me a better programmer; working with the excellent [Autotest](http://www.wincent.com/knowledge-base/Autotest) suite prompted me to take this step.
 
-[]{#Packaging%20tests}
 ### Packaging tests
 
 Finally, I want to add some more tests that focus on the built product (testing the build process) rather than on the code (testing the code). I've found issues in the past where a piece of the program didn't work properly because of an issue external to the code; for example, an `Info.plist` file that was incorrectly encoded as [UTF-16](http://www.wincent.com/knowledge-base/UTF-16) rather than [UTF-8](http://www.wincent.com/knowledge-base/UTF-8) and which prevented a preference pane from being included in the list of available panes (but only in one of the localizations).
@@ -48,7 +44,6 @@ It might have been possible to catch this with normal unit tests, but only if I 
 
 So I want to add some "packaging" tests to inspect the built product before it's considered satisfactory. Things like automatically checking the encoding on `plist` and `strings` files, making sure no expected items are missing from the final bundle, making sure no items which shouldn't be in the bundle are present (private headers, for instance), and so forth.
 
-[]{#RubyCocoa%20and%20RSpec}
 ### RubyCocoa and RSpec
 
 Those are exactly the kinds of tests that would be easiest to write in Ruby. In fact, I think that many, many unit tests would be easier to write in Ruby. [Apple](http://www.wincent.com/knowledge-base/Apple) is going to up their support of scripting bridges in [Leopard](http://www.wincent.com/knowledge-base/Leopard) and that means at some point in the future it is going to get a whole lot simpler to bridge between [Objective-C](http://www.wincent.com/knowledge-base/Objective-C) and [Ruby](http://www.wincent.com/knowledge-base/Ruby).

@@ -2,13 +2,11 @@
 title: Windows
 ---
 
-[]{#USB%20stick%20contents%20}
 
 ### USB stick contents *before* visit to local print shop
 
 -   5 PDF documents
 
-[]{#USB%20stick%20contents%20}
 
 ### USB stick contents *after* visit to local print shop
 

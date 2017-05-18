@@ -30,7 +30,6 @@ Do you just jump on a pirate torrent as soon as one becomes available (probably 
 
 So yes, it sucks. Yes, complaining to Apple about it is almost certainly useless. Yes, Apple did exactly the same with Tiger. I seem to recall the same was true with Panther although my memory's a bit hazy on that one now; one thing I do remember is that you couldn't even buy a retail copy of Mac OS X on release day in Spain. I think I ended up buying my retail copy a few weeks later.
 
-[]{#Update%20(28%20October%202007)}
 
 ### Update (28 October 2007)
 

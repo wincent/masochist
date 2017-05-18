@@ -8,7 +8,6 @@ By this time other apps had started to beachball or become intolerably slow. No 
 
 I did the usual Disk First Aid drill on my other (production volume). Won't bother doing it on this (development) one as I suspect this won't be a very long-lived install. Will see if the burner comes back to life when running the production OS.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

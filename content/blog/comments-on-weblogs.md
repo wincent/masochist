@@ -36,7 +36,6 @@ A particularly good example of this is the [storm-in-a-teacup](http://photomatt.
 
 If I wanted an example of why I'm don't have comments on my weblog then I couldn't hope for a better example than [this case in point](http://photomatt.net/2007/06/22/on-wp-security/), being as it is a very pro-[WordPress](http://www.wincent.com/knowledge-base/WordPress) site, and I had just criticized [WordPress](http://www.wincent.com/knowledge-base/WordPress).
 
-[]{#Insults}
 ### Insults
 
 -   "he crazy"
@@ -47,7 +46,6 @@ If I wanted an example of why I'm don't have comments on my weblog then I couldn
 -   "What a loser. Sounds like he’s got an axe to grind"
 -   "immature bashing"
 
-[]{#Religious%2Femotional%20reactions}
 ### Religious/emotional reactions
 
 Although many comments stopped short of insulting me, there where lots which responded in emotional terms rather than with fact-based arguments:
@@ -63,7 +61,6 @@ Although many comments stopped short of insulting me, there where lots which res
 
 I think that concepts such as "loyalty" are misplaced when it comes to choosing software upon which you depend. You should be deciding on technical merits, not warm and fuzzy feelings. Generally, arguments which contain the word "love" will be more convincing if you replace the emotional reference with a factual description of a characteristic of the software.
 
-[]{#Misunderstandings}
 ### Misunderstandings
 
 I have to take the blame for many of the misunderstandings evinced in many of the comments. I think that if people misread my argument in a subtle way then it's an indication that I could have expressed myself more clearly:
@@ -86,7 +83,6 @@ This misses the entire point of my post, which is *all about* the handling of se
 
 Yes, no arguments there. The WP upgrade process is much easier, especially when using [Subversion](http://www.wincent.com/knowledge-base/Subversion) ([info](http://www.wincent.com/knowledge-base/Upgrading_WordPress_using_Subversion)). The MT upgrade process is considerably more painful ([example](http://www.wincent.com/knowledge-base/Upgrading_from_Movable_Type_version_3.34_to_3.35)). But MT's technical advantages (the ability to produce a totally static weblog) in my specific usage context make it the choice for me, despite its other problems.
 
-[]{#Totally%20mistaken}
 ### Totally mistaken
 
 Related to the category of "misunderstandings" is the category of "totally mistaken". These are comments by people who didn't misread my argument but instead inferred something completely unrelated, mistaken and in no way connected with the content of my post.
@@ -105,7 +101,6 @@ Many of these comments speculate about me trying to get attention through my pos
 
 I don't know if an opinion can be "ill researched". All of the information about WordPress security track record is out in the open and I provide links to it where appropriate. I draw my own conclusions from that track record. I don't think this qualifies as "ill research". And "poorly written"? I think the only reason my post got the attention it did, given that I am a total "nobody" in the WP-o-sphere, is that it was evidently well-written. You may not agree with my opinions, but the argument is reasonably well expressed.
 
-[]{#About%20comments%20being%20disabled}
 ### About comments being disabled
 
 -   "The fact that they hide behind an excuse like disabling comments 'for security' underscores the fact that they are not only cowards"
@@ -116,7 +111,6 @@ I don't know if an opinion can be "ill researched". All of the information about
 
 It's worth clarifying here that comments were not specifically disabled for my post; comments have never been enabled on my weblog. Likewise, comments were not disabled "in order to make MT more secure"; rather, I chose to not enable comments for the reasons already mentioned at the start of this post and the added security is just a secondary benefit.
 
-[]{#On%20the%20logo}
 ### On the logo
 
 > One more thing and then I'll shut up. Is it me or does Wincent's logo look an awful lot like WordPress's?
@@ -127,14 +121,12 @@ The earliest appearance of the WordPress logo that I could find in [the archives
 
 Looking back in [the archives](http://web.archive.org/web/*/http://wincent.com) for the Wincent logo the earliest appearance I could find was back on [27 September 2003](http://web.archive.org/web/20030927071700/http://www.wincent.com/).
 
-[]{#Rational%20responses}
 ### Rational responses
 
 Unfortunately there were far too few of these. Matt's own response was one of them. Here's another example from the visitor comments:
 
 -   "Frankly I see both sides of this story. I thought that Wincent’s points were actually quite valid, though his conclusion seemed harsh. And as a new user of Wordpress, I found them of concern. Your response also had merit."
 
-[]{#On%20table%20based%20layout}
 ### On table based layout
 
 -   "His table-layout blog isn't too notable" (Matt)
@@ -148,7 +140,6 @@ If people knew me better then they wouldn't hold it against me for using a table
 
 Things change, newer browsers gain market share, CSS support improves, and of course the sites that I have worked on since then haven't used tables for layout. But "if it ain't broke, don't fix it"; the table based layout is not going to go away until some point in the future in which the site is totally redesigned. In the meantime, it has no relevance whatsoever to the validity of the content I post there.
 
-[]{#Parting%20words}
 ### Parting words
 
 -   "With MT4 poised for release, you can prolly expect more of this kind of mudslinging."

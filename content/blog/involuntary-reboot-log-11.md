@@ -14,7 +14,6 @@ Adios, 10 Terminal windows with open SSH sessions and work in progress.
 
 Sigh.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

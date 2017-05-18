@@ -12,7 +12,6 @@ I had hoped I could tolerate the bugs and with a bit of perseverance get some wo
 
 
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** undisclosed

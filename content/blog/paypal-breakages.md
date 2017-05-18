@@ -14,7 +14,6 @@ Now start:
 
 But it turns out that that wasn't the problem. The problem was the `lc=en` parameter that I had in the query string. Remove it and the "Page not found" errors go away. I'm posting this in the hope that it will help others caught off guard by this change.
 
-[]{#Update}
 
 ### Update
 

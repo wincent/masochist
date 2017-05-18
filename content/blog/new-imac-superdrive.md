@@ -22,7 +22,6 @@ So will be treating the machine with kid gloves from here on, trying not to touc
 
 
 
-[]{#Update}
 ### Update
 
 I received the following question via email:

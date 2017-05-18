@@ -4,7 +4,6 @@ title: Piracy
 
 Simplifying dramatically, there are basically two main views on piracy among software developers.
 
-[]{#Take%201}
 
 ### Take 1
 
@@ -46,12 +45,10 @@ Another example; [Erik J. Barzeski](http://nslog.com/2005/06/26/qotd_piracy):
 
 All of these positions are basically the same and amount to doing "nothing" or "almost nothing" with respect to piracy. In reality those that say "nothing" really mean "almost nothing" seeing as they all implement at least basic license code systems, so there really is a high degree of consensus here. These quotes come from developers who are successful and well-known to varying degrees within the Mac software development community, and it's hard to argue with the reasonableness of their positions.
 
-[]{#Take%202}
 ### Take 2
 
 The other perspective on piracy is that you *should* "worry" about piracy. There is plenty of evidence that lots of developers think this way, as evidenced by the number of mailing list posts from people asking about how to implement license code schemes, how to implement activation, whether they should let their apps "phone home" or not, how to obfuscate their executables and so forth. I won't provide concrete quotes to illustrate this but if you spend time observing the developer community sooner or later you'll see the evidence for yourself.
 
-[]{#My%20take}
 ### My take
 
 I basically agree with the first camp. You should encourage honest users to pay and that means implementing a license code scheme. Beyond that you shouldn't worry too much about it. How much is "too much"? Well, unlike Erik I don't think that even blacklists are too much, given that you can maintain such a blacklist in less than ten minutes per month. In fact I'd say that even an hour per month wouldn't be too much work to put into anti-piracy measures as that's still only 12 hours per year. But any more than that and you're starting to get into the diminishing returns zone.

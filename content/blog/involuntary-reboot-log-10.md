@@ -4,7 +4,6 @@ title: Involuntary reboot log #10
 
 [Twice in one day...](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/involuntary_reb_9.php)
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

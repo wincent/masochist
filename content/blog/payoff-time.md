@@ -12,7 +12,6 @@ Walrus is essentially a compiler that reads files written in a special templatin
 
 
 
-[]{#The%20output}
 ## The output
 
 It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. [Click here for a screenshot](http://www.wincent.com/a/about/wincent/weblog/hextrapolate_help_screenshot.png) of the help pages for [Hextrapolate](http://hextrapolate.wincent.com).
@@ -57,7 +56,6 @@ I want the documentation to look beautiful to the user, so the style sheets are 
     </body>
     </html>
 
-[]{#The%20source}
 ## The source
 
 Below you can see the Walrus source used to produce the document. Things to note about it:
@@ -107,7 +105,6 @@ Below you can see the Walrus source used to produce the document. Things to note
 
     #end
 
-[]{#Compiled}
 ## Compiled
 
 For the curious, this is what the Ruby source for the compiled template looks like. In practice you never need to even look at this as all you really care about are the input template and the filled HTML output:
@@ -211,7 +208,6 @@ For the curious, this is what the Ruby source for the compiled template looks li
 
     end # Walrus
 
-[]{#Why%20object-oriented%3F}
 ## Why object-oriented?
 
 The key thing to note here is that the content above the row of hash markers is mostly static; you set it up once when you first create the page and then leave it alone. Most of your ongoing editing takes place below the row of hash markers. This is your sandbox:
@@ -235,7 +231,6 @@ The key thing to note here is that the content above the row of hash markers is 
 
 In other words, most of the time you only have to focus on the true *content* of each document. You don't have to think about the headers, the footers, the styles or anything else. What happens if Apple changes the way its help documentation looks in Leopard? It's easy enough to change the CSS but what if they make deep structural changes as well? With object-oriented templating this is dead easy: just change the parent classes higher up in the inheritance hierarchy and all the children will automatically be updated.
 
-[]{#The%20%26quot%3BPHP%26quot%3B%20model}
 ### The "PHP" model
 
 So how is this different from the traditional [PHP](http://www.wincent.com/knowledge-base/PHP)-style model of template re-use? In that model you define a master container and then you split off common elements into separate documents (header, footer etc). Each page basically looks like this:
@@ -263,7 +258,6 @@ Note that in order for this to work you have to maintain a `pre_content` file wh
 
 Sounds nice, but one day you decide that you want to show a sidebar on the other side too, but only on half the pages in the site. You can't just edit your `post_content` file because that would affect all pages, not just the half that you want to target. So your only option is to create a `post_content2` and manually edit half of your pages to include that... It's easy to see that this is a never ending race to maximize reuse and eliminate repetitive editing, but it's a race that you cannot win: you'll always be one step behind.
 
-[]{#Object-orientation%20to%20the%20rescue}
 ### Object-orientation to the rescue
 
 If you are a [Ruby](http://www.wincent.com/knowledge-base/Ruby) or [Objective-C](http://www.wincent.com/knowledge-base/Objective-C) programmer then you already know the solution to this problem: you need an inheritance hierarchy. Common elements move "up" in the hierarchy (towards the root) where they can be easily inherited. Specialized elements move "down" in the hierarchy as overrides. In this way you keep things [DRY](http://www.wincent.com/knowledge-base/DRY); you don't repeat yourself but instead ensure that information/behaviour is embodied at one and only one place in the hierarchy.
@@ -279,7 +273,6 @@ Walrus implements this inheritance model and as an added bonus provides an `#inc
 
 And because all of this is written in Ruby and compiled down to Ruby code you can easily insert "helper" methods that help you eliminate error-prone or repetitive tasks like inserting links to other pages using Apple's non-standard Help linking system.
 
-[]{#Conclusion}
 ## Conclusion
 
 The sky really is the limit on this one. One of the things that has always frustrated me about Apple's Help system is that it is very difficult to take the same documentation and use it both in the application itself as well as mirroring a copy to your website. If you use Apple's proprietary link style then your pages won't work on the web; if you use normal HTML links then you lose the frills that you get in Apple's Help Viewer. Furthermore, the system is poorly documented: most of the information is out-of-date or just plain missing (some of the [best information](http://andymatuschak.org/articles/2005/12/18/help-with-apple-help) is not actually provided by Apple). What happens if Apple changes the way it works in the future? For theses reasons I've always been reluctant to include in-application Help.

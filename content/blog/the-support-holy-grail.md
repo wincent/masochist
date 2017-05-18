@@ -6,13 +6,11 @@ I'm getting closer to my support system "holy grail": the ability to have a web-
 
 Now, Bugzilla itself actually already provides a degree of email-control, and other systems like Lighthouse [do too](http://www.lighthouseapp.com/help/how-do-i-send-emails-to-lighthouse). But I'm looking for something easier to use than Bugzilla and want an in-house, integrated solution rather than an off-site paid service like Lighthouse.
 
-[]{#The%20old}
 
 ### The old
 
 I currently have [a Bugzilla install](http://bugs.wincent.com/) set up for taking feature requests and bug reports, a [custom support ticket interface](https://secure.wincent.com/a/support/tickets/) for support issues, and [a contact form](http://www.wincent.com/a/contact/mail/) for other enquiries (along with my email address, <win@wincent.com>, which is plastered all over the site). Three of my applications also have a custom crash reporter that can email in crash reports if things blow up.
 
-[]{#The%20new}
 
 ### The new
 
@@ -34,7 +32,6 @@ When a change is made to your ticket you'll get an email. To add a comment just 
 
 Obviously in order for this to be workable it needs to have good support for coping with spam. I'm working on that, and am fairly confident that it should be kept under control. Or to put it another way, I am expecting a *lot* of spam but I am also expecting to be able to sweep it under the carpet with relative ease. So that means a great admin interface for managing spam, probably some kind of Akismet-like filtering, built-in blacklisting, basic authentication based on the `From:` header (easily forged, I know, but this is just one layer in a "[defense in depth](http://www.wincent.com/knowledge-base/defense%20in%20depth)" strategy), and probably the use of a secret token (messages will still get through without the token, but they'll be moderated).
 
-[]{#Update}
 
 ### Update
 

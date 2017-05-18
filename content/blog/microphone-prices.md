@@ -8,7 +8,6 @@ Unfortunately, most of the retailers in the US don't want to ship outside of the
 
 My past experiences ordering computer components from the US have always been excellent, but it seems that things are different in the audio realm.
 
-[]{#Update}
 
 ### Update
 

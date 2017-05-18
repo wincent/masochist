@@ -4,7 +4,6 @@ title: Version Control vs Rails
 
 Version Control wins.
 
-[]{#What%20actually%20happened}
 
 ### What actually happened
 

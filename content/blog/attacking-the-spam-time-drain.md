@@ -16,7 +16,6 @@ Even more valuable for me, however, was that Scott's email prompted me to think 
 
 So on thinking about it a bit more I realize that although the SpamSieve docs lead me to set up things this way there is really no reason why I can't have it process each account's incoming mail separately and then store the spam in per-account folders. I think this simple change is going to save me a *lot* of time. I expect my time wasted on spam to drop down from about 1 hour to 5 minutes or less per month.
 
-[]{#Update}
 
 ### Update
 

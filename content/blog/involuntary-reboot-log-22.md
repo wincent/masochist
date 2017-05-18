@@ -10,7 +10,6 @@ You know, basically since switching to [Mac OS X](http://www.wincent.com/knowled
 
 So it seems that this is the price of all the eye candy and the polished user experience. I am starting to get a little weary of paying it. But no, I'm not actually thinking of switching away from Mac OS X: I'm just wishing that Apple would devote a few more resources to core stability and robustness rather than so much superficial candy.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

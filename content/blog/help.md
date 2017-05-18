@@ -13,7 +13,6 @@ I've just pushed out updates ([1](http://www.wincent.com/a/news/archives/2007/04
 
 
 
-[]{#The%20old}
 ### The old
 
 [Synergy](http://synergy.wincent.com/) uses [online help documentation](http://www.wincent.com/a/products/synergy-classic/). It's fairly extensive, but obviously can't be read offline unless you previously mirror it.
@@ -26,7 +25,6 @@ When Synergy first came out I actually used embedded help documentation that cou
 -   Frustration at Apple's use of proprietary extensions for in-application help, and at the lack of documentation for the same.
 -   Frustration at the rendering capabilities of Apple's pre-WebKit Help Viewer; back in those days you couldn't even use CSS in your help books.
 
-[]{#The%20new}
 ### The new
 
 Things have changed a lot since 2004.
@@ -43,7 +41,6 @@ They can view the documentation at any time, even when they're offline, because 
 
 I win as a developer too for the reasons already stated; above all because I can write the source documentation once and compile it for multiple targets. And it's not just rapid in the do-it-all-in-a-single-step sense; it's agile in the development sense too. Because Walrus is written in [Ruby](http://www.wincent.com/knowledge-base/Ruby) I was able to add the dual-targetting capability in less than five-minutes, literally.
 
-[]{#The%20future}
 ### The future
 
 If you've been following the [Subversion log](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/) this past week you'll see that I've been laying low on the check-in front. I've been looking at speeding up Walrus by converting the parser (generated Ruby code) to a ultra-fast C extension. I first looked at using [Ragel](http://www.wincent.com/knowledge-base/Ragel) but am now leaning towards [ANTLR](http://www.wincent.com/knowledge-base/ANTLR) due to the complexity of the parser.

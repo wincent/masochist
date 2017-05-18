@@ -10,7 +10,6 @@ Time will tell how well the keyboard stands up to abuse, but if the reliability 
 
 Spent one microsecond looking at the wireless model and rejected it outright; I'm just not interested in a keyboard that doesn't have a proper numeric keypad.
 
-[]{#Update%3A%20One%20day%20later}
 
 ### Update: One day later
 

@@ -12,7 +12,6 @@ I'm afraid I slipped up on this merge by forgetting to pass the `--verbatim` swi
 
 
 
-[]{#Bugs}
 ### Bugs
 
 Of course, [SVK](http://www.wincent.com/knowledge-base/SVK) is still not perfect and has its share of bugs. After a couple of hundred changes I got this:
@@ -30,7 +29,6 @@ I had to perform the suggested `sync` before proceeding:
 
     svk sync -a //mirrors/WOCommon
 
-[]{#Conclusion}
 ### Conclusion
 
 But little glitches aside, [SVK](http://www.wincent.com/knowledge-base/SVK) is a great tool. For the most part it's just a case of firing off the merge and resolving the occasional conflict; and conflict resolution is a pleasure thanks to the tight integration with [Apple](http://www.wincent.com/knowledge-base/Apple)'s [FileMerge](http://www.wincent.com/knowledge-base/FileMerge). [Subversion](http://www.wincent.com/knowledge-base/Subversion) 1.5 is around the corner and will finally bring some rudimentary [merge tracking](http://www.wincent.com/knowledge-base/merge%20tracking) facilities, but it still has a long way to go to catch up with [SVK](http://www.wincent.com/knowledge-base/SVK).

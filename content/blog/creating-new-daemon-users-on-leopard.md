@@ -22,7 +22,6 @@ The NetInfo Manager utility has finally be laid to rest, but so have [command li
 
 So what am I supposed to do? Use the Directory Utility application to turn on the BSD local node and then manually edit `/etc/passwd` and set a password using the `passwd` tool (for which there is no longer a manpage, but at least `password --foo` causes usage information to be printed)? Is there a more elegant way than this? What does Mac OS X Server do under the hood?
 
-[]{#Update}
 
 ### Update
 

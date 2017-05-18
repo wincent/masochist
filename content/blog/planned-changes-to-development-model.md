@@ -42,7 +42,6 @@ This will require some tweaks and special logic in the build process: I'll need 
 
 So my plan is to get this up and running as soon as possible. Watch this space for more info.
 
-[]{#Update%3A%2015%20March%202007}
 ### Update: 15 March 2007
 
 The initial version of the system is now deployed and the first nightlies are available. See [this article for more information](http://www.wincent.com/s/nightlies/).

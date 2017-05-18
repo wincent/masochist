@@ -10,10 +10,8 @@ But I think that sometimes the zoomed-in view on all the details -- the commit l
 
 
 
-[]{#What%20I}
 ### What I've been up to lately
 
-[]{#This%20year}
 #### This year
 
 Since the start of the year there have been a number of maintenance releases of various products, containing bug fixes, optimizations, and minor feature enhancements. These include [Synergy](http://synergy.wincent.com) 3.1.1b, 3.1.1, 3.1.2b, 3.1.2, 3.1.3b, 3.1.3, 3.1.4b and 3.1.4; [Synergy Advance](http://advance.wincent.com/) 0.5b and 0.5.1b; [Hextrapolate](http://hextrapolate.wincent.com) 2.0b and 2.0; and [Install](http://install.wincent.com/) 1.3.1.
@@ -27,7 +25,6 @@ Apart from these visible releases there have been a few key areas of "behind the
 -   Learning [Rails](http://www.wincent.com/knowledge-base/Rails): Wanting to invest my time efficiently I wanted to leverage my growing Ruby knowledge by doing the new version of the website as a Rails application.
 -   Learning [ANTLR](http://www.wincent.com/knowledge-base/ANTLR): ANTLR is a sophisticated recognizer generator (capable of generating lexers, parsers, tree parsers). My first completed ANTLR project is a [wikitext](http://www.wincent.com/knowledge-base/wikitext) parser in the form of a Ruby extension written in [C](http://www.wincent.com/knowledge-base/C). This will be used at the core of the new website so it has to be fast. My next project will be replacing the Walrus parser (written in Ruby) with an ultra-fast C version. ANTLR is a highly useful tool to master with myriad applications; Apple still uses it in [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X), or so I understand.
 
-[]{#This%20month}
 #### This month
 
 The most significant project of interest this month has been learning about [Git](http://www.wincent.com/knowledge-base/Git) and starting my migration to it. I had previously started using [SVK](http://www.wincent.com/knowledge-base/SVK) in order to take advantage of its much superior [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging) capabilities but the truth is that it is *slow* despite the fact that its distributed nature gives it a head start on many operations.
@@ -38,7 +35,6 @@ Changing [version control systems](http://www.wincent.com/knowledge-base/version
 
 It *is* a disruptive change but I *am* at a natural juncture in my development: Apple is about to release Leopard, and with it comes a whole new language: Objective-C 2.0. My new (Objective-C 2.0) codebase is going to diverge farther and farther from the old code base, so this seems like the perfect moment to wipe the slate clean and make a fresh start.
 
-[]{#Where%20I}
 ### Where I'm headed
 
 From what I've written it is already pretty clear where I'm headed: the most significant event on the developer calendar this year will be the release of Leopard in October. Between now and then I am going to be investing an increasingly large portion of my time in working on Leopard-only versions of my applications.

@@ -26,7 +26,6 @@ Since then it's been nothing but trouble: a G3 PowerBook that needed the power s
 
 On an up note, the tracking info for my order suggests that my Pioneer DVR-K06 has arrived in Spain. With any luck I'll get it on Monday. Not being able to backup to DVD is a worrisome shortcoming with a machine as unreliable as this one, so I'm keen to get the new burner installed.
 
-[]{#Involuntary%20reboot%20stats%20to%20date}
 
 ### Involuntary reboot stats to date
 

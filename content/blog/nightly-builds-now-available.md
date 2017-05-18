@@ -10,7 +10,6 @@ First up, what is a nightly build? The folks at [Mozilla](http://mozilla.org/) (
 
 Nightly builds are produced by many great open source projects such as [WebKit](http://nightly.webkit.org/) and [VLC](http://nightlies.videolan.org/) (as well as other [not-so-great ones](http://wordpress.org/download/nightly/)). But I think they can be beneficial to closed-source projects as well.
 
-[]{#Benefits}
 
 ### Benefits
 
@@ -22,7 +21,6 @@ Nightly builds are produced by many great open source projects such as [WebKit](
 
 
 
-[]{#How%20it%20works}
 ### How it works
 
 I've written a [Ruby](http://www.wincent.com/knowledge-base/Ruby) script that performs the following steps for each product:
@@ -43,7 +41,6 @@ Although the builds are called "nightlies" there are a number of reasons why a n
 -   If any automated unit tests fail then the nightly isn't uploaded; again this should rarely happen as I continuously test my changes but it could occur when making larger changes to the codebase (although I try to break such large changes into smaller, incremental steps wherever possible).
 -   If there are local network connectivity problems here where I do my development work (in Spain); the builds take place here on my local system, but they depend on connectivity to the Subversion server (USA) and the webserver (USA).
 
-[]{#Links}
 ### Links
 
 -   List of [Synergy nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/synergy/).
@@ -53,7 +50,6 @@ Although the builds are called "nightlies" there are a number of reasons why a n
 -   The [Nightlog RSS feed](http://www.wincent.com/a/about/wincent/weblog/nightlog/atom.xml).
 -   Summary of recent entries to the Nightlog (see the right-hand column of my [personal weblog](http://colaiuta.net/)).
 
-[]{#Disclaimer}
 ### Disclaimer
 
 As noted on the Nightlog pages:
@@ -62,7 +58,6 @@ As noted on the Nightlog pages:
 
 If you discover a problem please report it via the [bug tracking and feature requests database](http://bugs.wincent.com/), or contact me by sending an email to <win@wincent.com>.
 
-[]{#See%20also}
 ### See also
 
 -   [Wikipedia article on nightly builds](http://en.wikipedia.org/wiki/Nightly_build)

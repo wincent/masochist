@@ -18,7 +18,6 @@ So far the most interesting [coverage](http://www.oreillynet.com/conferences/blo
 
 Of these, the performance improvements are always welcome, the debugging stuff could prove useful, the improved migrations sound appealing, but the thing which I most care about is the [API](http://www.wincent.com/knowledge-base/API): will there be a lot of breakage in the move to 2.0? (And for that matter, what's the timeline on 2.0 coming out?)
 
-[]{#Update}
 
 ### Update
 
