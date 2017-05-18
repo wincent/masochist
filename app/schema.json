@@ -689,7 +689,7 @@
             },
             {
               "name": "createdAt",
-              "description": null,
+              "description": "When the content was first created",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -701,7 +701,7 @@
             },
             {
               "name": "updatedAt",
-              "description": null,
+              "description": "When the content was last updated",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -794,8 +794,20 @@
         {
           "kind": "INTERFACE",
           "name": "Versioned",
-          "description": "An object with a history field",
+          "description": "An object with history and timestamp fields",
           "fields": [
+            {
+              "name": "createdAt",
+              "description": "When the content was first created",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
             {
               "name": "history",
               "description": "Revision history for the object",
@@ -803,6 +815,18 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "History",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "updatedAt",
+              "description": "When the content was last updated",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "DateTime",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -834,6 +858,16 @@
               "ofType": null
             }
           ]
+        },
+        {
+          "kind": "SCALAR",
+          "name": "DateTime",
+          "description": "A JSON-style (ISO 8601) date",
+          "fields": null,
+          "inputFields": null,
+          "interfaces": null,
+          "enumValues": null,
+          "possibleTypes": null
         },
         {
           "kind": "OBJECT",
@@ -987,16 +1021,6 @@
               "deprecationReason": null
             }
           ],
-          "possibleTypes": null
-        },
-        {
-          "kind": "SCALAR",
-          "name": "DateTime",
-          "description": "A JSON-style (ISO 8601) date",
-          "fields": null,
-          "inputFields": null,
-          "interfaces": null,
-          "enumValues": null,
           "possibleTypes": null
         },
         {
@@ -1184,7 +1208,7 @@
             },
             {
               "name": "createdAt",
-              "description": null,
+              "description": "When the content was first created",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1196,7 +1220,7 @@
             },
             {
               "name": "updatedAt",
-              "description": null,
+              "description": "When the content was last updated",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1413,7 +1437,7 @@
             },
             {
               "name": "createdAt",
-              "description": null,
+              "description": "When the content was first created",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1425,7 +1449,7 @@
             },
             {
               "name": "updatedAt",
-              "description": null,
+              "description": "When the content was last updated",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1897,7 +1921,7 @@
             },
             {
               "name": "createdAt",
-              "description": null,
+              "description": "When the content was first created",
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -1909,7 +1933,7 @@
             },
             {
               "name": "updatedAt",
-              "description": null,
+              "description": "When the content was last updated",
               "args": [],
               "type": {
                 "kind": "SCALAR",

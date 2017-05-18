@@ -24,7 +24,11 @@ type Article implements Node, Tagged, Versioned {
   url: String!
   tags: [TagName]
   history: History
+
+  # When the content was first created
   createdAt: DateTime
+
+  # When the content was last updated
   updatedAt: DateTime
 }
 
@@ -106,7 +110,11 @@ type Page implements Node, Tagged, Versioned {
   url: String!
   history: History
   tags: [TagName]
+
+  # When the content was first created
   createdAt: DateTime
+
+  # When the content was last updated
   updatedAt: DateTime
 }
 
@@ -141,7 +149,11 @@ type Post implements Node, Tagged, Versioned {
   url: String!
   history: History
   tags: [TagName]
+
+  # When the content was first created
   createdAt: DateTime
+
+  # When the content was last updated
   updatedAt: DateTime
 }
 
@@ -231,7 +243,11 @@ type Snippet implements Node, Tagged, Versioned {
   url: String!
   history: History
   tags: [TagName]
+
+  # When the content was first created
   createdAt: DateTime
+
+  # When the content was last updated
   updatedAt: DateTime
 }
 
@@ -319,8 +335,14 @@ interface Tagged {
 # A tag name
 scalar TagName
 
-# An object with a history field
+# An object with history and timestamp fields
 interface Versioned {
+  # When the content was first created
+  createdAt: DateTime
+
   # Revision history for the object
   history: History
+
+  # When the content was last updated
+  updatedAt: DateTime
 }
