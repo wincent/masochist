@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Snippet.graphql
- * @generated SignedSource<<752d351ee6202b362285cd5a77b9fdd3>>
+ * @generated SignedSource<<aeeeab31df1d07f41a17b8a335050317>>
  * @flow
  * @nogrep
  */
@@ -15,17 +15,12 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Snippet = {|
-  +id: string;
-  +history: ?{|
-    +url: ?string;
-  |};
-  +url: string;
-  +title: ?string;
-  +createdAt: ?any;
-  +updatedAt: ?any;
   +body: ?{|
     +html: ?string;
   |};
+  +id: string;
+  +url: string;
+  +title: ?string;
 |};
 */
 
@@ -42,59 +37,6 @@ const fragment /*: ConcreteFragment*/ = {
   "metadata": null,
   "name": "Snippet",
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "id",
-      "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "args": null,
-      "concreteType": "History",
-      "name": "history",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "url",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "url",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "title",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "createdAt",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "updatedAt",
-      "storageKey": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -121,8 +63,34 @@ const fragment /*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "id",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "url",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "title",
+      "storageKey": null
+    },
+    {
       "kind": "FragmentSpread",
       "name": "Tags",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "When",
       "args": null
     }
   ],

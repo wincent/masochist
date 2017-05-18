@@ -46,11 +46,7 @@ class Page extends React.Component {
                 {page.title}
               </Link>
             </h1>
-            <When
-              createdAt={page.createdAt}
-              link={page.history.url}
-              updatedAt={page.updatedAt}
-            />
+            <When data={page} />
             <div>
               <TrustedPrerenderedMarkup html={page.body.html} />
             </div>
@@ -68,16 +64,12 @@ export default createFragmentContainer(
     fragment Page on Page {
       id
       title
-      createdAt
-      history {
-        url
-      }
-      updatedAt
       url
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
       ...Tags
+      ...When
     }
   `,
 );

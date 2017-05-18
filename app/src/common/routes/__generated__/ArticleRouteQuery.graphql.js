@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ArticleRouteQuery.graphql
- * @generated SignedSource<<5c92956c0879b5e6b65ce590b804d1bf>>
- * @relayHash 1c6f1acf88b53f0dd15c01d91fc756c7
+ * @generated SignedSource<<39940cb7d7a37f88fe20c55990c09234>>
+ * @relayHash b9aff73bb1b315f990b79f0d843e4a32
  * @flow
  * @nogrep
  */
@@ -38,20 +38,24 @@ fragment Article on Article {
   title
   redirect
   resolvedTitle
-  createdAt
-  updatedAt
   url
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
-  history {
-    url
-  }
   ...Tags
+  ...When
 }
 
 fragment Tags on Tagged {
   tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
 }
 */
 
@@ -195,20 +199,6 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "createdAt",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "updatedAt",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
                 "name": "url",
                 "storageKey": null
               },
@@ -238,6 +228,20 @@ const batch /*: ConcreteBatch*/ = {
                 "storageKey": null
               },
               {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "tags",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "createdAt",
+                "storageKey": null
+              },
+              {
                 "kind": "LinkedField",
                 "alias": null,
                 "args": null,
@@ -259,7 +263,7 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "tags",
+                "name": "updatedAt",
                 "storageKey": null
               },
               {
@@ -276,7 +280,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  createdAt\n  updatedAt\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  history {\n    url\n  }\n  ...Tags\n}\n\nfragment Tags on Tagged {\n  tags\n}\n"
+  "text": "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
 };
 
 module.exports = batch;

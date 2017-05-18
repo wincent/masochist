@@ -7,7 +7,7 @@ import When from './When';
 class ArticlePreview extends React.Component {
   render() {
     const article = this.props.data;
-    const {createdAt, description, history, title, updatedAt, url} = article;
+    const {description, title, url} = article;
     return (
       <tr>
         <td>
@@ -19,11 +19,7 @@ class ArticlePreview extends React.Component {
           </Link>
         </td>
         <td>
-          <When
-            createdAt={createdAt}
-            link={history.url}
-            updatedAt={updatedAt}
-          />
+          <When data={article} />
         </td>
         <td>
           <Tags classes={{left: true, compact: true}} data={article} />
@@ -37,15 +33,11 @@ export default createFragmentContainer(
   ArticlePreview,
   graphql`
     fragment ArticlePreview on Article {
-      createdAt
       description
-      history {
-        url
-      }
       title
-      updatedAt
       url
       ...Tags
+      ...When
     }
   `,
 );

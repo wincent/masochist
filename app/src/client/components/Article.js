@@ -93,11 +93,7 @@ class Article extends React.Component {
           {redirect
             ? <p className="redirect-info">Redirected from {article.title}</p>
             : null}
-          <When
-            createdAt={article.createdAt}
-            link={article.history.url}
-            updatedAt={article.updatedAt}
-          />
+          <When data={article} />
           <div>
             <TrustedPrerenderedMarkup html={article.body.html} />
           </div>
@@ -115,16 +111,12 @@ export default createFragmentContainer(
       title
       redirect
       resolvedTitle
-      createdAt
-      updatedAt
       url
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
-      history {
-        url
-      }
       ...Tags
+      ...When
     }
   `,
 );

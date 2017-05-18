@@ -1,46 +1,59 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import {createFragmentContainer, graphql} from 'react-relay';
 import Time from './Time';
 import inBrowser from '../inBrowser';
 import relativizeDate from '../relativizeDate';
+
+import type {When as WhenData} from './__generated__/When.graphql';
 
 if (inBrowser) {
   require('./When.css');
 }
 
-const WhenWrapper = ({children, link}) => (
+const WhenWrapper = ({children, url}) => (
   <div className="when">
-    <a className="when-link" href={link}>
+    <a className="when-link" href={url}>
       {children}
     </a>
   </div>
 );
 
-export default class When extends React.Component {
-  static propTypes = {
-    createdAt: PropTypes.string,
-    link: PropTypes.string,
-    updatedAt: PropTypes.string,
+class When extends React.Component {
+  props: {
+    data: WhenData,
   };
 
   render() {
-    const {createdAt, link, updatedAt} = this.props;
+    const {createdAt, history: {url}, updatedAt} = this.props.data;
     if (
       relativizeDate(createdAt).humanReadable ===
       relativizeDate(updatedAt).humanReadable
     ) {
       return (
-        <WhenWrapper link={link}>
+        <WhenWrapper url={url}>
           <Time datetime={updatedAt} />
         </WhenWrapper>
       );
     }
 
     return (
-      <WhenWrapper link={link}>
+      <WhenWrapper url={url}>
         Created <Time datetime={createdAt} />,
         updated <Time datetime={updatedAt} />
       </WhenWrapper>
     );
   }
 }
+
+export default createFragmentContainer(
+  When,
+  graphql`
+    fragment When on Versioned {
+      createdAt
+      history {
+        url
+      }
+      updatedAt
+    }
+  `,
+);

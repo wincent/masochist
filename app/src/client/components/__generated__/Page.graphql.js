@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Page.graphql
- * @generated SignedSource<<70ce15296a6f8bebb95398a9992a203b>>
+ * @generated SignedSource<<aaef350c99459c38e404e174397c72e6>>
  * @flow
  * @nogrep
  */
@@ -17,11 +17,6 @@ import type {ConcreteFragment} from 'relay-runtime';
 export type Page = {|
   +id: string;
   +title: ?string;
-  +createdAt: ?any;
-  +history: ?{|
-    +url: ?string;
-  |};
-  +updatedAt: ?any;
   +url: string;
   +body: ?{|
     +html: ?string;
@@ -60,38 +55,6 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "createdAt",
-      "storageKey": null
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "args": null,
-      "concreteType": "History",
-      "name": "history",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "url",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "updatedAt",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
       "name": "url",
       "storageKey": null
     },
@@ -123,6 +86,11 @@ const fragment /*: ConcreteFragment*/ = {
     {
       "kind": "FragmentSpread",
       "name": "Tags",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "When",
       "args": null
     }
   ],

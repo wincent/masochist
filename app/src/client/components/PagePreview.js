@@ -7,7 +7,7 @@ import When from './When';
 class PagePreview extends React.Component {
   render() {
     const page = this.props.data;
-    const {createdAt, description, history, title, updatedAt, url} = page;
+    const {description, title, url} = page;
     return (
       <tr>
         <td>
@@ -19,11 +19,7 @@ class PagePreview extends React.Component {
           </Link>
         </td>
         <td>
-          <When
-            createdAt={createdAt}
-            link={history.url}
-            updatedAt={updatedAt}
-          />
+          <When data={page} />
         </td>
         <td>
           <Tags classes={{left: true, compact: true}} data={page} />
@@ -37,15 +33,11 @@ export default createFragmentContainer(
   PagePreview,
   graphql`
     fragment PagePreview on Page {
-      createdAt
       description
-      history {
-        url
-      }
       title
-      updatedAt
       url
       ...Tags
+      ...When
     }
   `,
 );

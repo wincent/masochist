@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Article.graphql
- * @generated SignedSource<<0e52465988d1853765cfbb74faa56c3a>>
+ * @generated SignedSource<<b117726fd328ec58c86e2a7f661e0a88>>
  * @flow
  * @nogrep
  */
@@ -18,14 +18,9 @@ export type Article = {|
   +title: ?string;
   +redirect: ?string;
   +resolvedTitle: ?string;
-  +createdAt: ?any;
-  +updatedAt: ?any;
   +url: string;
   +body: ?{|
     +html: ?string;
-  |};
-  +history: ?{|
-    +url: ?string;
   |};
 |};
 */
@@ -68,20 +63,6 @@ const fragment /*: ConcreteFragment*/ = {
       "kind": "ScalarField",
       "alias": null,
       "args": null,
-      "name": "createdAt",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "updatedAt",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
       "name": "url",
       "storageKey": null
     },
@@ -111,26 +92,13 @@ const fragment /*: ConcreteFragment*/ = {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "args": null,
-      "concreteType": "History",
-      "name": "history",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "args": null,
-          "name": "url",
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
+      "kind": "FragmentSpread",
+      "name": "Tags",
+      "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "Tags",
+      "name": "When",
       "args": null
     }
   ],

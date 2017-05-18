@@ -7,7 +7,7 @@ import When from './When';
 class SnippetPreview extends React.Component {
   render() {
     const snippet = this.props.data;
-    const {createdAt, description, history, title, updatedAt, url} = snippet;
+    const {description, title, url} = snippet;
     return (
       <tr>
         <td>
@@ -19,11 +19,7 @@ class SnippetPreview extends React.Component {
           </Link>
         </td>
         <td>
-          <When
-            createdAt={createdAt}
-            link={history.url}
-            updatedAt={updatedAt}
-          />
+          <When data={snippet} />
         </td>
         <td>
           <Tags classes={{left: true, compact: true}} data={snippet} />
@@ -37,15 +33,11 @@ export default createFragmentContainer(
   SnippetPreview,
   graphql`
     fragment SnippetPreview on Snippet {
-      createdAt
       description
-      history {
-        url
-      }
       title
-      updatedAt
       url
       ...Tags
+      ...When
     }
   `,
 );
