@@ -17,29 +17,20 @@ const WhenWrapper = props => (
 export default class When extends React.Component {
   static propTypes = {
     createdAt: PropTypes.string,
-    primary: PropTypes.oneOf(['createdAt', 'updatedAt']),
     updatedAt: PropTypes.string,
   };
 
   render() {
-    const {createdAt, primary, updatedAt} = this.props;
+    const {createdAt, updatedAt} = this.props;
     if (
       relativizeDate(createdAt).humanReadable ===
       relativizeDate(updatedAt).humanReadable
     ) {
-      if (primary === 'updatedAt') {
-        return (
-          <WhenWrapper>
-            <Time datetime={updatedAt} />
-          </WhenWrapper>
-        );
-      } else {
-        return (
-          <WhenWrapper>
-            <Time datetime={updatedAt} />
-          </WhenWrapper>
-        );
-      }
+      return (
+        <WhenWrapper>
+          <Time datetime={updatedAt} />
+        </WhenWrapper>
+      );
     }
 
     return (
