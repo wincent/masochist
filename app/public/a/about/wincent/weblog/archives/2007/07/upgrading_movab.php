@@ -1,19 +1,12 @@
-<?php
-  $redirect_url = "https://wincent.com/blog/upgrading-movabletype-with-the-help-of-git";
-  header("HTTP/1.1 301 Moved Permanently");
-  header("Location: $redirect_url");
-  print <<<END
 <html>
   <head>
     <title>301 Moved Permanently</title>
   </head>
   <body>
     <h1>Moved Permanently</h1>
-    <p>The resource has moved to <a href="$redirect_url">$redirect_url</a></p>
+    <p>The resource has moved to <a href="https://wincent.com/blog/upgrading-movabletype-with-the-help-of-git">https://wincent.com/blog/upgrading-movabletype-with-the-help-of-git</a></p>
   </body>
   <script type="text/javascript">
-    window.location.replace('$redirect_url');
+    window.location.replace('https://wincent.com/blog/upgrading-movabletype-with-the-help-of-git');
   </script>
 </html>
-END;
-?>
