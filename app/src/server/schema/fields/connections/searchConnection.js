@@ -7,7 +7,6 @@ const {connectionType: searchConnection} = connectionDefinitions({
     count: {
       type: GraphQLInt,
       description: 'Total number of search results',
-      resolve: connection => connection.count,
     },
   },
   name: 'SearchResult',

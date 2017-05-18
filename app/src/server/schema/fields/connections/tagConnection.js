@@ -7,7 +7,6 @@ const {connectionType: tagConnection} = connectionDefinitions({
     count: {
       type: GraphQLInt,
       description: 'Total number of tags',
-      resolve: connection => connection.count,
     },
   },
   name: 'Tag',

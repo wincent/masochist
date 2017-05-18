@@ -13,7 +13,6 @@ const HistoryType = new GraphQLObjectType({
     url: {
       type: GraphQLString,
       description: 'URL showing revision history for the object',
-      resolve: history => history.url,
     },
   },
 });

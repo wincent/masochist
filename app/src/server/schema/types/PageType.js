@@ -19,7 +19,6 @@ const PageType = registerType(
       title: {
         type: GraphQLString,
         description: "The page's title",
-        resolve: page => page.title,
       },
       body: {
         type: MarkupType,
@@ -33,7 +32,6 @@ const PageType = registerType(
       description: {
         type: GraphQLString,
         description: 'Succinct summary of the page content',
-        resolve: page => page.description,
       },
       url: {
         type: new GraphQLNonNull(GraphQLString),

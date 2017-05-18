@@ -12,7 +12,6 @@ const tagsField = {
   tags: {
     // TODO: make this tags{name}?
     type: new GraphQLList(TagNameType),
-    resolve: (record: Taggable): Array<Tag> => record.tags,
   },
 };
 

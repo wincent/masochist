@@ -90,12 +90,10 @@ const MarkupType = new GraphQLObjectType({
     raw: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'Unprocessed plain-text source of the markup',
-      resolve: markup => markup.raw,
     },
     format: {
       type: new GraphQLNonNull(MarkupFormatType),
       description: 'The format of the markup source',
-      resolve: markup => markup.format,
     },
     html: {
       type: GraphQLString,

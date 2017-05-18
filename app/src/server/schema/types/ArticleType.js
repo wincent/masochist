@@ -47,7 +47,6 @@ const ArticleType = registerType(
       title: {
         type: GraphQLString,
         description: "The article's title",
-        resolve: article => article.title,
       },
       resolvedTitle: {
         type: GraphQLString,
@@ -61,7 +60,6 @@ const ArticleType = registerType(
         type: GraphQLString,
         description: 'The destination ([[wiki article]] or URL) the article should ' +
           'redirect to',
-        resolve: article => article.redirect,
       },
       body: {
         type: MarkupType,
@@ -76,7 +74,6 @@ const ArticleType = registerType(
       description: {
         type: GraphQLString,
         description: 'Succinct summary of the article content',
-        resolve: article => article.description,
       },
       url: {
         type: new GraphQLNonNull(GraphQLString),

@@ -25,12 +25,10 @@ const TagType = registerType(
       name: {
         type: new GraphQLNonNull(TagNameType),
         description: "The tag's name",
-        resolve: tag => tag.name,
       },
       count: {
         type: GraphQLInt,
         description: 'Count of items tagged with the tag',
-        resolve: tag => tag.count,
       },
       url: {
         type: new GraphQLNonNull(GraphQLString),
