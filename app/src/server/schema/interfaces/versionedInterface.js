@@ -2,7 +2,7 @@
  * @flow
  */
 
-import {GraphQLInterfaceType, GraphQLObjectType, GraphQLString} from 'graphql';
+import {GraphQLInterfaceType} from 'graphql';
 import DateTimeType from '../types/DateTimeType';
 import HistoryType from '../types/HistoryType';
 
