@@ -41,8 +41,20 @@ function print(string: string): void {
   process.stdout.write(string);
 }
 
+/**
+ * Rather than printing out one long line (which will get buffered inside our
+ * post-receive hook, preventing the user from seeing any progress until the
+ * end) break it up over lines with explicit hard line breaks.
+ */
+const maxColumnCount = parseInt(process.env.COLUMNS || 80, 10)
+let columnCount = 0;
 function dot(): void {
+  columnCount++;
   print('.');
+  if (columnCount > maxColumnCount) {
+    columnCount = 0;
+    print('\n');
+  }
 }
 
 function extractFile(pathString: string, contentType: string): string {
