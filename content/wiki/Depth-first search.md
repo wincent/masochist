@@ -1,5 +1,5 @@
 ---
-tags: algorithms graphs
+tags: algorithms graphs wiki
 cache_breaker: 1
 ---
 
@@ -13,4 +13,3 @@ Exploring a [directed acyclic graph](/wiki/directed_acyclic_graph) using [depth-
 
 -   [Wikipedia](/wiki/Wikipedia) article on [depth-first search](/wiki/depth-first_search): <http://en.wikipedia.org/wiki/Depth-first_search>
 -   [Breadth-first search](/wiki/Breadth-first_search)
-

@@ -1,6 +1,6 @@
 ---
 title: Automatic deployment numbering in Git
-tags: git
+tags: git blog
 cache_breaker: 1
 ---
 
@@ -75,4 +75,3 @@ It's by no means perfect but it does get the job done:
 -   you might think that this would cause problems if you deploy a version from December on the `master` branch and later decide to deploy an older version from November's `maint` branch, but in practice this is unlikely to come up because...
 -   it only applies a new tag if the deployed commit doesn't already have one; so this means that you can deploy version "0.x", then "0.x+1", and end up rolling back to "0.x" without any problems
 -   it suits the linear nature of this kind of web development fairly nicely (most development on single branch, no real need to maintain parallel branches for long periods of time etc)
-

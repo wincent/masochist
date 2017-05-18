@@ -1,5 +1,6 @@
 ---
 title: Use Wincent Icon Utility for setting custom folder icons (buildtools, 9abc011)
+tags: snippets
 ---
 
 The most recent update to the Xcode Tools breaks the previously existing mechanism for applying custom icons to folders.

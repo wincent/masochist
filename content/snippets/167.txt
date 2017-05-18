@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.110
-tags: site updates
+tags: site updates snippets
 ---
+
 7b2b8c9 Fix mobile scrolling

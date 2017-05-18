@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -170,4 +170,3 @@ A superior alternative to `gitk` is [QGit](/wiki/QGit), although it requires com
 -   [Git cookbook](/wiki/Git_cookbook)
 -   [Git recipes](/wiki/Git_recipes)
 -   [Creating and submitting a patch via email with Git](/wiki/Creating_and_submitting_a_patch_via_email_with_Git)
-

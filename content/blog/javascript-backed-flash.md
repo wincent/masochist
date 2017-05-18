@@ -1,6 +1,6 @@
 ---
 title: JavaScript-backed flash
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

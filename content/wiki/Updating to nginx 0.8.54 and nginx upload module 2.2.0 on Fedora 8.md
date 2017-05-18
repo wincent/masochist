@@ -1,5 +1,5 @@
 ---
-tags: nginx updates fedora
+tags: nginx updates fedora wiki
 ---
 
 ```shell

@@ -1,5 +1,5 @@
 ---
-tags: subversion mediawiki updates
+tags: subversion mediawiki updates wiki
 cache_breaker: 1
 ---
 
@@ -234,4 +234,3 @@ Output:
 
 -   1.6.9 release notes: <http://svn.wikimedia.org/svnroot/mediawiki/tags/REL1_6_9/phase3/RELEASE-NOTES>
 -   Official [MediaWiki](/wiki/MediaWiki) notes on [Subversion](/wiki/Subversion)-based upgrades: <http://www.mediawiki.org/wiki/Download_from_SVN>
-

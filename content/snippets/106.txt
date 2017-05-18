@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.72
-tags: site updates
+tags: site updates snippets
 ---
+
 56f7d2b Use a list instead of a table for tags#show
 1e928d5 Styling tweaks for <pre> and <textarea> elements

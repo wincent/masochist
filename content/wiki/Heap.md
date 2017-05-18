@@ -1,5 +1,5 @@
 ---
-tags: data.structures
+tags: data.structures wiki
 cache_breaker: 1
 ---
 
@@ -27,4 +27,3 @@ In general, any algorithm that requires a priority queue.
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [heaps](/wiki/heaps): <http://en.wikipedia.org/wiki/Heap_%28data_structure%29>
-

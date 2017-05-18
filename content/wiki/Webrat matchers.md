@@ -1,5 +1,5 @@
 ---
-tags: rspec css webrat xpath
+tags: rspec css webrat xpath wiki
 cache_breaker: 1
 ---
 
@@ -140,4 +140,3 @@ Source: <http://cheat.errtheblog.com/s/webrat/> (Webrat cheatsheet)
 
 -   [This article](http://ejohn.org/blog/xpath-css-selectors/) ("XPath and CSS Selectors") by John Resig provides a very short overview of the differences between [CSS](/wiki/CSS) and [XPath](/wiki/XPath) selectors
 -   [CSS cheatsheet](/wiki/CSS_cheatsheet)
-

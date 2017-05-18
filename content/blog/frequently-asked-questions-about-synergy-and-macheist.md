@@ -1,6 +1,6 @@
 ---
 title: Frequently Asked Questions about Synergy and Macheist
-tags: synergy macheist
+tags: synergy macheist blog
 cache_breaker: 1
 ---
 

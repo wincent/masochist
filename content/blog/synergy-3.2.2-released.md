@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.2.2 released
-tags: synergy releases
+tags: synergy releases blog
 ---
 
 I'm pleased to announce the availability of the latest release in the [Synergy](/wiki/Synergy) stable 3.2 series (version 3.2.2). A full changelog appears [here](http://wincent.com/a/products/synergy-classic/history/#3.2.2).

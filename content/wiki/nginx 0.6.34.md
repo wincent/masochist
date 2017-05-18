@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 cache_breaker: 1
 ---
 
@@ -40,4 +40,3 @@ cache_breaker: 1
 ## See also
 
 -   [Updating to nginx 0.6.34 on Red Hat Enterprise Linux 5.1](/wiki/Updating_to_nginx_0.6.34_on_Red_Hat_Enterprise_Linux_5.1)
-

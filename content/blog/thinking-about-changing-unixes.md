@@ -1,5 +1,6 @@
 ---
 title: Thinking about Changing UNIXes
+tags: blog
 ---
 
 [Sho Fukamachi writes](http://fukamachi.org/wp/2007/10/06/thinking-about-changing-unixes/) that he's thinking about switching away from [RHEL](http://www.wincent.com/knowledge-base/RHEL) 4. I've been thinking about a lot of the same issues lately and rather than cram my response into a comment on his post I'm instead writing it out in full here.

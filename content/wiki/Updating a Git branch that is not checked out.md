@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -18,4 +18,3 @@ $ git branch -f bar
 # Source
 
 -   <http://stackoverflow.com/questions/5471174/git-move-branch-pointer-to-different-commit>
-

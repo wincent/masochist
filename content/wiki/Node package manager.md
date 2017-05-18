@@ -1,6 +1,6 @@
 ---
 redirect: [[npm]]
-tags: 
+tags: wiki
 ---
 
 

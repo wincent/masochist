@@ -1,5 +1,5 @@
 ---
-tags: wincent.products
+tags: wincent.products wiki
 cache_breaker: 1
 ---
 

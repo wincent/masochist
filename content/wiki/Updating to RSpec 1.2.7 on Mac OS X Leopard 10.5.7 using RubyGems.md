@@ -1,5 +1,5 @@
 ---
-tags: leopard rspec updates
+tags: leopard rspec updates wiki
 ---
 
 # Installing

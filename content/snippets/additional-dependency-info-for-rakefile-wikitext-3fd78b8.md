@@ -1,5 +1,6 @@
 ---
 title: Additional dependency info for Rakefile (wikitext, 3fd78b8)
+tags: snippets
 ---
 
 Rather than just firing off the Makefile from within the Rakefile, some basic dependency info is added so that Rake knows when to bother running "make" again.

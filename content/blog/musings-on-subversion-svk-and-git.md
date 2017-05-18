@@ -1,5 +1,6 @@
 ---
 title: Musings on Subversion, SVK and Git
+tags: blog
 ---
 
 So lately the [Subversion log](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/) has been quiet, because I've been doing a lot of development work in a private (local-only) [SVK](http://www.wincent.com/knowledge-base/SVK) sandbox. This is great for trying things out but it also means that regular progress updates aren't instantly available to customers.

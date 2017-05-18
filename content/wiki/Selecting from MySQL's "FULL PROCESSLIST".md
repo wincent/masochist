@@ -1,5 +1,5 @@
 ---
-tags: mysql
+tags: mysql wiki
 cache_breaker: 1
 ---
 

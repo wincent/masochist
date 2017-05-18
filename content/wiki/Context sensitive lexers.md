@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 As noted in the page on the [C language target](/wiki/C_language_target), you may need or want a context sensitive [lexer](/wiki/lexer). This requires you to store lexer state information somewhere. In the simplest case you could store this in the `@lexer::members` section:

@@ -1,5 +1,5 @@
 ---
-tags: sqlite
+tags: sqlite wiki
 cache_breaker: 1
 ---
 
@@ -7,4 +7,3 @@ cache_breaker: 1
 -   `.tables`: like `SHOW TABLES` in [MySQL](/wiki/MySQL)
 -   `.schema <table>`: like `SHOW CREATE TABLE <table>` in [MySQL](/wiki/MySQL)
 -   `.quit`: exits
-

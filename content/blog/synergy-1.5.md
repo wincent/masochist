@@ -1,5 +1,6 @@
 ---
 title: Synergy 1.5
+tags: blog
 ---
 
 [Synergy 1.5](http://www.wincent.com/a/products/synergy-classic/) is out and delivers a [large number of performance enhancements and bugfixes](http://www.wincent.com/a/products/synergy-classic/history/).

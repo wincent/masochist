@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #22
+tags: blog
 ---
 
 When I got home my machine, which had been up for about a day and had a bunch of in-progress work in open applications, started acting funny. New Terminal windows were totally blank (neither the command prompt nor any other text would ever appear), suggesting some kind of problem with the Directory Services infrastructure which is used on [Leopard](http://www.wincent.com/knowledge-base/Leopard) for user authentication. Strangely, everything else seemed to be working fine; I could open and close windows, launch applications, and write to files with no problems. (Sometimes you see situations in which you can't do those things; in those cases it seems that the cause must be some kind of resource exhaustion, like running out of Mach ports due to a leak.)

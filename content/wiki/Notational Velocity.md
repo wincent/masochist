@@ -1,5 +1,5 @@
 ---
-tags: notational.velocity
+tags: notational.velocity wiki
 ---
 
 # Official site
@@ -9,4 +9,3 @@ tags: notational.velocity
 # Source
 
 -   <https://github.com/scrod/nv>
-

@@ -1,5 +1,5 @@
 ---
-tags: el.capitan os.x
+tags: el.capitan os.x wiki
 ---
 
 For some reason, [Apple](/wiki/Apple) makes it ridiculously hard to discover the download for these tools, but it turns out that you can install them easily with:

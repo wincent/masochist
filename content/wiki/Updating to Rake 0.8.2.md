@@ -1,8 +1,8 @@
 ---
-tags: rake updates
+tags: rake updates wiki
 ---
 
-    sudo gem install rake
+sudo gem install rake
     Password:
     Bulk updating Gem source index for: http://gems.rubyforge.org/
     Successfully installed rake-0.8.2

@@ -1,5 +1,5 @@
 ---
-tags: perl
+tags: perl wiki
 ---
 
 A [Perl one-liner](/wiki/Perl_one-liner) is a complete script written in [Perl](/wiki/Perl).

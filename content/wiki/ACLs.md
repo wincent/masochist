@@ -1,6 +1,6 @@
 ---
 redirect: [[Access Control List]]
-tags: 
+tags: wiki
 ---
 
 

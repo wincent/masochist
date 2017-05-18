@@ -1,6 +1,6 @@
 ---
 redirect: [[Hextrapolate]]
-tags: 
+tags: wiki
 ---
 
 

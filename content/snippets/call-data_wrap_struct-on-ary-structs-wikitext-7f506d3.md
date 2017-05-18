@@ -1,5 +1,6 @@
 ---
 title: Call Data_Wrap_Struct on ary structs (wikitext, 7f506d3)
+tags: snippets
 ---
 
 There is a minuscule overhead introduced by this commit (the allocation of three Ruby objects per parse, which in turn means three more objects involved in Ruby's mark-and-sweep Garbage Collection scheme) which brings with it a robustness enhancement: if we exit the parse method irregularly (by an exception) the three ary structs will be properly freed rather than leaking.

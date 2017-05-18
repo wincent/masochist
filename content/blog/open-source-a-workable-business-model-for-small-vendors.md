@@ -1,5 +1,6 @@
 ---
 title: Open source: a workable business model for small vendors?
+tags: blog
 ---
 
 Free open source software is very popular. You may be wondering if giving away open source software for free (but accepting donations) is a workable business model for small vendors like [Wincent](http://www.wincent.com/). Here are some numbers for [WinSwitch](http://www.wincent.com/a/products/winswitch/) for the period running from 10 March 2006 to 7 April 2006:

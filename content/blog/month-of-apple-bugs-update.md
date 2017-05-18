@@ -1,5 +1,6 @@
 ---
 title: Month of Apple Bugs update
+tags: blog
 ---
 
 I continue to disapprove of the disclosure practices of the people running the [Month of Apple Bugs](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/month_of_apple.php) (to be clear, I disapprove of *how* the vulnerabilities are being disclosed, not the fact that disclosure is taking place).

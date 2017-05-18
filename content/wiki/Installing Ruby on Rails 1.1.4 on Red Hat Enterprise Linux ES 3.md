@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # Prerequisites
@@ -61,4 +61,3 @@ Engines:
 -   [Installing Ruby on Rails](/wiki/Installing_Ruby_on_Rails)
 -   <http://wiki.rubyonrails.org/rails/pages/RailsOnRHEL>
 -   <http://railswiki.involution.com/index.php/Main_Page>
-

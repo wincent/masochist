@@ -1,5 +1,5 @@
 ---
-tags: xcode
+tags: xcode wiki
 cache_breaker: 1
 ---
 
@@ -22,4 +22,3 @@ Example:
 Becomes:
 
 -   `~/Library/Application Support/Developer/Shared/Xcode/Project Templates/Framework & Library/Bundle/Cocoa Bundle`
-

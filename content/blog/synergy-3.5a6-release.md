@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.5a6 release
-tags: synergy releases
+tags: synergy releases blog
 cache_breaker: 1
 ---
 

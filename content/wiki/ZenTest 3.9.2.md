@@ -1,5 +1,5 @@
 ---
-tags: zentest
+tags: zentest wiki
 cache_breaker: 1
 ---
 
@@ -25,4 +25,3 @@ cache_breaker: 1
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=20366>
 -   [Upgrading to ZenTest 3.9.2 on Mac OS X 10.5.2 Leopard](/wiki/Upgrading_to_ZenTest_3.9.2_on_Mac_OS_X_10.5.2_Leopard)
-

@@ -1,5 +1,6 @@
 ---
 title: Synergy Classic 1.8 released
+tags: blog
 ---
 
 [Synergy Classic](http://www.wincent.com/a/products/synergy-classic/) version [1.8](http://www.wincent.com/a/products/synergy-classic/history/#1.8) is now available for [download](http://www.wincent.com/download.php?item=Synergy.dmg) (1MB). This release brings numerous fixes, features and updates, and there are 12 new free button sets [in the gallery](http://www.wincent.com/a/products/synergy-classic/buttons/). [Download](http://www.wincent.com/download.php?item=Synergy.dmg), [purchase](https://secure.wincent.com/a/products/synergy-classic/purchase/) or [donate](https://secure.wincent.com/a/products/synergy-classic/donate/) here, and [retrieve your lost license codes here](https://secure.wincent.com/a/support/registration/).

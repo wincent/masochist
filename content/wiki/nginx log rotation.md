@@ -1,5 +1,5 @@
 ---
-tags: nginx log.rotation
+tags: nginx log.rotation wiki
 cache_breaker: 1
 ---
 
@@ -95,4 +95,3 @@ See:
 
 -   [Rotating mongrel\_cluster log files](/wiki/Rotating_mongrel_cluster_log_files)
 -   [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)
-

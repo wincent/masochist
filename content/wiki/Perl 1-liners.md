@@ -1,6 +1,6 @@
 ---
 redirect: [[Perl one-liners]]
-tags: 
+tags: wiki
 ---
 
 

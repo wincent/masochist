@@ -1,5 +1,5 @@
 ---
-tags: vim recipe tabs
+tags: vim recipe tabs wiki
 cache_breaker: 1
 ---
 

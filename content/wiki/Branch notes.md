@@ -1,5 +1,5 @@
 ---
-tags: wincent version.control
+tags: wincent version.control wiki
 ---
 
 # Overview
@@ -53,4 +53,3 @@ See "[WOCommon branch notes](/wiki/WOCommon_branch_notes)".
 
 -   `trunk`: [Leopard](/wiki/Leopard) development
 -   `tiger`: [Tiger](/wiki/Tiger) development
-

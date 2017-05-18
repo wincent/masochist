@@ -1,6 +1,6 @@
 ---
 redirect: [[WordPress]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: The iTunes music store
+tags: blog
 ---
 
 Although I spend a lot of time running and using [iTunes](http://www.apple.com/itunes/) I had never purchased anything on the [iTunes Music Store](http://www.apple.com/itunes/store/), until yesterday.

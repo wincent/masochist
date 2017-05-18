@@ -1,5 +1,6 @@
 ---
 title: Soft-wrapping of commit message bodies (snippets, 7be8da9)
+tags: snippets
 ---
 
 Perform some preprocessing on commit message bodies prior to handing them off to Movable Type: consecutive newline pairs are allowed through and Movable Type interprets these as paragraph breaks; all other newlines are converted to spaces (without this Movable Type would insert line break tags for each one, thus causing the output to be hard-wrapped in the browser.

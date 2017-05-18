@@ -1,5 +1,6 @@
 ---
 title: New models, lib additions and refactoring (wincent.com, a9173ba)
+tags: snippets
 ---
 
 This is the "disappear into a cave" and come out days later with a bunch of changes commit. I really would have liked to break this up into chunks but the changes are far too intermixed to make that very straighfoward.

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.96
-tags: site updates
+tags: site updates snippets
 ---
+
 3797524 Fix broken styling on static pages
 f5f5d88 Push to real upstream, not local upstream
 2444815 Deal with .gitignore shenanigans

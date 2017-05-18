@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 I was looking for a "secure" paste-bin with a one-time paste feature (ie. something you could paste to, read from once only, and would then be deleted).

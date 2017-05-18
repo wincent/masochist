@@ -1,5 +1,5 @@
 ---
-tags: site
+tags: site wiki
 cache_breaker: 1
 ---
 

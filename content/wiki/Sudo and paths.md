@@ -1,5 +1,5 @@
 ---
-tags: sudo
+tags: sudo wiki
 ---
 
 If you are logged in as user `john` and run this command:

@@ -1,5 +1,5 @@
 ---
-tags: dynamic.linker os.x
+tags: dynamic.linker os.x wiki
 cache_breaker: 1
 ---
 
@@ -48,4 +48,3 @@ New in [Mac OS X](/wiki/Mac_OS_X) 10.5 [Leopard](/wiki/Leopard) is `@rpath`. Key
 
 -   Nice overview: <http://www.mikeash.com/pyblog/friday-qa-2009-11-06-linking-and-install-names.html>
 -   Docs for using PFiddlesoft Frameworks (I've never used these, but the manual itself makes some nice general points about using frameworks): <http://pfiddlesoft.com/frameworks/downloads/Assistive_Application_Programming_Guide.pdf>
-

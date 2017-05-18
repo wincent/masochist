@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 As of [changeset 3834](http://fisheye2.cenqua.com/changelog/antlr-examples/?cs=3834) in the [ANTLR examples](/wiki/ANTLR_examples) repository, the [C](/wiki/C) example shows how to use the new built-in stream stacking functionality in the [C target](/wiki/C_target) to implement "include" functionality.

@@ -1,6 +1,6 @@
 ---
 redirect: [[specs]]
-tags: 
+tags: wiki
 ---
 
 

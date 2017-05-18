@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -143,4 +143,3 @@ As another example, consider how I fixed a botched `git remote add origin` invoc
 
 -   [Going public with previously proprietary code](/wiki/Going_public_with_previously_proprietary_code)
 -   [Setting up gitweb](/wiki/Setting_up_gitweb)
-

@@ -1,5 +1,6 @@
 ---
 title: NSPortDelegateTickler
+tags: blog
 ---
 
 Well I was very happy with the [new support for a particular threading idiom](http://www.wincent.com/a/about/wincent/weblog/archives/2006/03/threading_nicet.php) that I'd developed for [Synergy Advance](http://synergyadvance.com/) and it seemed to work very nicely.

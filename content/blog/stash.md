@@ -1,5 +1,6 @@
 ---
 title: Stash
+tags: blog
 ---
 
 [Git 1.5.3](http://www.wincent.com/knowledge-base/Git%201.5.3) just came out a few days ago and one of the greatest things about it is the addition of the [git stash](http://www.kernel.org/pub/software/scm/git/docs/git-stash.html) command. This addresses one of the most annoying workflow obstacles that I run into many times each day: working on a particular task that may take minutes, hours or even days, and stumbling across something else that could be fixed along the way in a matter of minutes.

@@ -1,6 +1,6 @@
 ---
 redirect: [[Command line interface]]
-tags: 
+tags: wiki
 ---
 
 

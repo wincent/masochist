@@ -1,5 +1,6 @@
 ---
 title: Wrap str structs with Data_Wrap_Struct (wikitext, 4389475)
+tags: snippets
 ---
 
 This is the companion commit to 7f506d3 which wrapped ary structs. The purpose of this commit is to ensure that str structs get freed in the event of an abnormal exit from the parse function (ie. via an exception).

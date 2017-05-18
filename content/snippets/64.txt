@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.51
-tags: site updates
+tags: site updates snippets
 ---
+
 f19e9b9 Fix broken topic links from forums#index

@@ -1,6 +1,6 @@
 ---
 redirect: [[CD]]
-tags: 
+tags: wiki
 ---
 
 

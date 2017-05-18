@@ -1,6 +1,6 @@
 ---
 title: What's the best UI for implementing comment previews?
-tags: 
+tags: blog
 ---
 
 So I'm going to implement comment previews. I just wrote a [fairly lengthy reply](/forums/winswitch/topics/339#comment_4402) in the [forums](/forums) and noticed how much I would have appreciated the ability to preview before submitting.

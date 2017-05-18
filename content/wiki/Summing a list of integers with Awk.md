@@ -1,5 +1,5 @@
 ---
-tags: git awk
+tags: git awk wiki
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: 3 years, 1 month with Vim
-tags: emacs vim
+tags: emacs vim blog
 cache_breaker: 1
 ---
 

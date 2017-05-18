@@ -1,5 +1,6 @@
 ---
 title: Synergy 3.5a released
+tags: blog
 ---
 
 The last [Synergy](http://synergy.wincent.com) release, version 3.2, was [Leopard](http://www.wincent.com/knowledge-base/Leopard)-compatible but would also run on all versions of [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) from [Jaguar](http://www.wincent.com/knowledge-base/Jaguar) onwards.

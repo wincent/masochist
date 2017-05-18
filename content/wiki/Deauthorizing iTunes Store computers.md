@@ -1,5 +1,5 @@
 ---
-tags: apple itunes
+tags: apple itunes wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ I hit the 5-computer limit on one of these accounts, even though I only have (an
 It turns out there is a nuclear option, which allows you to deauthorize all computers associated with a given Apple ID, although you can only do it once per year:
 
 -   <http://support.apple.com/kb/HT1420?viewlocale=en_US>
-

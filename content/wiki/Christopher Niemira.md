@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [Christopher Niemira](/wiki/Christopher_Niemira) is the author of [phpMyID](/wiki/phpMyID).
@@ -7,4 +7,3 @@ tags:
 # See also
 
 -   <http://siege.org/resume/>
-

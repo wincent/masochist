@@ -1,5 +1,6 @@
 ---
 title: Add Git-based build numbers (WOBezel, a25ca59)
+tags: snippets
 ---
 
 Use the new UpdateGitRevisionsNumbers.rb script in the Wincent Build Tools to automatically update the build number as part of each build when required.

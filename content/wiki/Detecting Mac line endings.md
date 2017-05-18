@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 ---
 
 I recently noticed that some of the files in a [Git](/wiki/Git) repository had [Mac](/wiki/Mac) line endings instead of [UNIX](/wiki/UNIX) ones.

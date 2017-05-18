@@ -1,5 +1,5 @@
 ---
-tags: development wincent
+tags: development wincent wiki
 ---
 
 This example uses version 1.1; change the version numbers as appropriate.

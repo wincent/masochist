@@ -1,5 +1,5 @@
 ---
-tags: apple
+tags: apple wiki
 cache_breaker: 1
 ---
 

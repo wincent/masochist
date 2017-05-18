@@ -1,5 +1,5 @@
 ---
-tags: wordpress subversion
+tags: wordpress subversion wiki
 ---
 
 The are the upgrade notes for the [WordPress](/wiki/WordPress) 2.0.5 to 2.0.6 upgrade using [Subversion](/wiki/Subversion) (based on previous notes, "[Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion](/wiki/Upgrading_from_WordPress_2.0.4_to_2.0.5_using_Subversion)").

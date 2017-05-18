@@ -1,5 +1,6 @@
 ---
 title: Mac OS X Internet connection sharing hacked
+tags: blog
 ---
 
 Don't mean to be alarmist, perhaps that title should have read, "*my* Mac OS X Internet connection sharing hacked". For a few minutes there I was wondering whether I'd discovered the first really nasty piece of Mac OS X spyware; but after a few minutes of investigation it looks like it's one of my neighbours that has the spyware, and he or she had somehow hacked into my local wireless network (provided via Mac OS X's Internet connection sharing).

@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ The code itself can either be in an external file, or embedded within the page i
 # Links
 
 -   [Wikipedia](/wiki/Wikipedia) article on [Unobtrusive JavaScript](/wiki/Unobtrusive_JavaScript): <http://en.wikipedia.org/wiki/Unobtrusive_JavaScript>
-

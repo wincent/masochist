@@ -1,5 +1,6 @@
 ---
 title: Remove WOSingleton class and other cruft (Synergy, d48f69d)
+tags: snippets
 ---
 
 Much the same as I did in WOCommon, remove the WOSingleton abstract class in favor of concrete per-class implementations. This is especially overdue in the case of Synergy as its WOSingleton was considerably less sophisticated than the version in WOCommon.

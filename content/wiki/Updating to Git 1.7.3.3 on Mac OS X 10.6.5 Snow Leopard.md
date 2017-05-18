@@ -1,5 +1,5 @@
 ---
-tags: git updates snow.leopard
+tags: git updates snow.leopard wiki
 ---
 
 Notes made while updating to [Git 1.7.3.3](/wiki/Git_1.7.3.3) from within a local clone of the official upstream [Git](/wiki/Git) repository on [Mac OS X](/wiki/Mac_OS_X) 10.6.5 [Snow Leopard](/wiki/Snow_Leopard):

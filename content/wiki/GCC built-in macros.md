@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 # For [Objective-C](/wiki/Objective-C) code

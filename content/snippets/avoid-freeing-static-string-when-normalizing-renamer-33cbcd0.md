@@ -1,5 +1,6 @@
 ---
 title: Avoid freeing static string when normalizing (REnamer, 33cbcd0)
+tags: snippets
 ---
 
 When normalizing patterns we return a static string "" for the empty string. Given that the caller is expected to free normalized strings it will eventually try freeing the static string which will result in an warning being printed to the console.

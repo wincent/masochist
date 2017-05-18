@@ -1,5 +1,6 @@
 ---
 title: Why distributed version control
+tags: blog
 ---
 
 I just got an email from [Uli Kusterer](http://www.zathras.de/angelweb/home.htm) asking me to expand on my [comments the other day](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php) that Ben Collins-Sussman doesn't "get" distributed version control:

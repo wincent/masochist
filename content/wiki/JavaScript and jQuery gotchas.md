@@ -1,5 +1,5 @@
 ---
-tags: javascript jquery
+tags: javascript jquery wiki
 cache_breaker: 1
 ---
 
@@ -43,4 +43,3 @@ $('body').on('click', function(event) {
 ```
 
 -   returning `false` from a jQuery event handler is equivalent to calling both `preventDefault()` (prevents default event from occurring) and `stopPropagation()` (prevents bubbling) on the event; this contrasts with non-jQuery event handlers, in which returning `false` does not prevent bubbling ([source](http://stackoverflow.com/a/1357151/1626737))
-

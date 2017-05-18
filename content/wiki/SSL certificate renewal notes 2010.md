@@ -1,5 +1,5 @@
 ---
-tags: nginx ssl
+tags: nginx ssl wiki
 ---
 
 My previous [SSL](/wiki/SSL) certificate was a [RapidSSL](/wiki/RapidSSL)-issued certificate, and I'm going with the same (cheapest) reseller that I did last time (see "[SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008)"): [ServerTastic](http://www.servertastic.com/) (a 5-year renewal for $50, or $10 per year).

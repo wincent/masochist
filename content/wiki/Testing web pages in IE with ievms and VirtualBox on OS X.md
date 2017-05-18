@@ -1,5 +1,5 @@
 ---
-tags: virtualbox ievms
+tags: virtualbox ievms wiki
 ---
 
 1.  [Grab](https://www.virtualbox.org/wiki/Downloads) [VirtualBox](/wiki/VirtualBox) (free, [open source](/wiki/open_source))
@@ -18,4 +18,3 @@ The VMs you create will be able to access the network, or apps running on the ho
 # See also
 
 -   Old (but good) summary of different ways to test in IE: <http://coding.smashingmagazine.com/2011/09/02/reliable-cross-browser-testing-part-1-internet-explorer/>
-

@@ -1,5 +1,6 @@
 ---
 title: Make "commonInit" pattern subclass-friendly (WOHotKey, d6e6a9b)
+tags: snippets
 ---
 
 The "commonInit" pattern previously used by the WOHotKeyCaptureTextField and WOHotKeyCaptureTextFieldCell classes could produce unexpected results if anyone ever tried to create a subclass that itself called a "commonInit" method.

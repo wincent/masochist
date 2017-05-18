@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -57,4 +57,3 @@ This is a local copy of the [official release notes](http://repo.or.cz/w/git.git
 ## See also
 
 -   [Upgrading to Git 1.5.5.1](/wiki/Upgrading_to_Git_1.5.5.1)
-

@@ -1,6 +1,6 @@
 ---
 redirect: [[AMI]]
-tags: 
+tags: wiki
 ---
 
 

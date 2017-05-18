@@ -1,5 +1,5 @@
 ---
-tags: leopard red.hat rsync
+tags: leopard red.hat rsync wiki
 cache_breaker: 1
 ---
 

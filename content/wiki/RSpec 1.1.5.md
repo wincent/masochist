@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: os.x karabiner
+tags: os.x karabiner wiki
 cache_breaker: 1
 ---
 
@@ -71,4 +71,3 @@ I ended up getting rid of the sticky shift because I found that I'd end up activ
 # See also
 
 -   [Mac OS X "must haves"](/wiki/Mac_OS_X_%22must_haves%22)
-

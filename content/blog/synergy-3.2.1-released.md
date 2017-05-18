@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.2.1 released
-tags: synergy releases
+tags: synergy releases blog
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance source code
+tags: blog
 ---
 
 I have decided to release lines 4452 to 4455 (inclusive) of the file, "WOSynergyAdvanceController.m", part of the source code for [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/), into the public domain. The line numbers are subject to change, of course, but here is the excerpt as it currently stands:

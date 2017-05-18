@@ -1,5 +1,5 @@
 ---
-tags: sendmail
+tags: sendmail wiki
 ---
 
 "INSTALLATION AND OPERATION GUIDE": <http://www.sendmail.org/~ca/email/doc8.12/op.html>

@@ -1,6 +1,6 @@
 ---
 title: Apple Watch frenzy
-tags: apple apple.watch
+tags: apple apple.watch blog
 ---
 
 Pre-orders are opening tomorrow, so I'm seeing a lot of press for the Apple Watch.

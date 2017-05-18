@@ -1,6 +1,6 @@
 ---
 redirect: [[GNU]]
-tags: 
+tags: wiki
 ---
 
 

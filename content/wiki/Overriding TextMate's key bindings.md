@@ -1,5 +1,5 @@
 ---
-tags: textmate
+tags: textmate wiki
 ---
 
 <http://www.hcs.harvard.edu/~jrus/site/cocoa-text.html>

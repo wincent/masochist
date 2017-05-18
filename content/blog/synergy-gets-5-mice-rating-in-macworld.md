@@ -1,5 +1,6 @@
 ---
 title: Synergy gets 5-Mice rating in Macworld
+tags: blog
 ---
 
 [Synergy](http://synergy.wincent.com/) has been awarded a coveted, 5-mice rating in the August 2005 issue of [Macworld](http://www.macworld.com/). Synergy leads the article, titled "[50 Mac Gems](http://www.macworld.com/2005/08/features/softwarebargains/index.php)":

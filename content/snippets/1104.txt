@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.136
-tags: site updates
+tags: site updates snippets
 ---
+
 49a86fc Tweak post appearance

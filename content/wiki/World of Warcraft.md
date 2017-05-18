@@ -1,5 +1,5 @@
 ---
-tags: warcraft
+tags: warcraft wiki
 ---
 
 # Official site
@@ -10,4 +10,3 @@ tags: warcraft
 
 -   <http://thottbot.com/>
 -   <http://wow.allakhazam.com/>
-

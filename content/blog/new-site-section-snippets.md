@@ -1,6 +1,6 @@
 ---
 title: New site section: snippets
-tags: site
+tags: site blog
 ---
 
 For a while now I've wanted to add a section to the site for publishing short snippets of text (see [ticket \#1436](/issues/1436)). This is for things that are:

@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 # Motivation
@@ -130,4 +130,3 @@ The above functionality is already implemented and working. If people express an
 ## See also
 
 -   [Setting up additional machines to access Subversion via SSH](/wiki/Setting_up_additional_machines_to_access_Subversion_via_SSH)
-

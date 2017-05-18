@@ -1,6 +1,6 @@
 ---
 redirect: [[RAID]]
-tags: 
+tags: wiki
 ---
 
 

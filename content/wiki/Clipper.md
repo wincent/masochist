@@ -1,6 +1,6 @@
 ---
 redirect: /products/clipper
-tags: 
+tags: wiki
 ---
 
 

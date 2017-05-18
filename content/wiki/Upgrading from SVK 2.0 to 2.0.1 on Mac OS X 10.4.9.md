@@ -1,5 +1,5 @@
 ---
-tags: tiger svk updates
+tags: tiger svk updates wiki
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ The first time I tried to update I got an "already up-to-date" message. It seems
 # See also
 
 -   Release announcement posted to [svk-devel](/wiki/svk-devel) mailing list: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000774.html>
-

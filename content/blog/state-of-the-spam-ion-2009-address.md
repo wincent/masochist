@@ -1,6 +1,6 @@
 ---
 title: State of the Spam-ion 2009 Address
-tags: spam
+tags: spam blog
 ---
 
 Over the last few years I have posted periodic updates on the amount of spam that I receive, to satisfy my curiosity about whether the trend is upwards, and how much so.

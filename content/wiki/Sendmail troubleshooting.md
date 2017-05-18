@@ -1,5 +1,5 @@
 ---
-tags: sendmail
+tags: sendmail wiki
 cache_breaker: 1
 ---
 

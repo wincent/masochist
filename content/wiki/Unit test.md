@@ -1,6 +1,6 @@
 ---
 redirect: [[Unit testing]]
-tags: 
+tags: wiki
 ---
 
 

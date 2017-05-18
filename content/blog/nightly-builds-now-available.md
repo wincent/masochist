@@ -1,5 +1,6 @@
 ---
 title: Nightly builds now available
+tags: blog
 ---
 
 In March 2007 I [announced](http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/planned_changes.php) my intention to make nightly builds available, starting with [Synergy](http://synergy.wincent.com) and after a couple of weeks of testing, [Synergy Advance](http://advance.wincent.com) and then [Hextrapolate](http://hextrapolate.wincent.com/), with other products to follow.

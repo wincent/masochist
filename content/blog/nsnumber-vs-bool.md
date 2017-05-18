@@ -1,5 +1,6 @@
 ---
 title: NSNumber vs BOOL
+tags: blog
 ---
 
 #### When is an `NSNumber` better than a `BOOL`?

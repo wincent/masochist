@@ -1,5 +1,5 @@
 ---
-tags: sendmail
+tags: sendmail wiki
 ---
 
 To combine [sendmail](/wiki/sendmail) rulesets you would name them as subroutines and then call them. For example, to add the two subroutines, "[Store\_postmaster\_address](/wiki/Store_postmaster_address)" and "[Protect\_internal\_only](/wiki/Protect_internal_only)", to the `Local_check_rcpt` ruleset you would do the following:

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.86
-tags: site updates
+tags: site updates snippets
 ---
+
 9bbaf13 Update bundle
 dd38257 Update Factory Girl
 f6432e0 Add HTML support to snippets model

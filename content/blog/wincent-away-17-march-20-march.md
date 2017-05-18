@@ -1,5 +1,6 @@
 ---
 title: Wincent away 17 March-20 March
+tags: blog
 ---
 
 I will be travelling to a conference starting later today (Friday 17 March 2006) and ending Monday 20 March 2006 and will not have access to email. There will therefore be some delay before replying if you email me during that period.

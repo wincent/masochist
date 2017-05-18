@@ -1,6 +1,6 @@
 ---
 redirect: [[UBB]]
-tags: 
+tags: wiki
 ---
 
 

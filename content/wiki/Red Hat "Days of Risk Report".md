@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 The "Days of Risk Report (automatically generated)" can be found at: <http://people.redhat.com/mjc/summary-all-all.html>

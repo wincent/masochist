@@ -1,6 +1,6 @@
 ---
 redirect: [[Wincent products]]
-tags: 
+tags: wiki
 ---
 
 

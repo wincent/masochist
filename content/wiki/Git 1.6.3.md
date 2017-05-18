@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -220,4 +220,3 @@ Of which, the most interesting changes, at least for me, are:
 # See also
 
 -   [Updating to Git 1.6.3](/wiki/Updating_to_Git_1.6.3)
-

@@ -1,6 +1,6 @@
 ---
 redirect: [[Amazon Glacier]]
-tags: 
+tags: wiki
 ---
 
 

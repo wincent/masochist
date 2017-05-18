@@ -1,5 +1,5 @@
 ---
-tags: leopard rubyinline updates
+tags: leopard rubyinline updates wiki
 cache_breaker: 1
 ---
 

@@ -2,6 +2,7 @@
 title: Let me clear that up for you
 fb: https://www.facebook.com/glh/posts/10153341605011307
 twitter: https://twitter.com/wincent/status/724142651189026816
+tags: blog
 ---
 
 Based on various things I've read on the internet, there seems to be a bit of confusion about what kinds of tools people should be using to get their shit done. Posts about "Top 10 X for Y" and such. Let me clear that up for you.

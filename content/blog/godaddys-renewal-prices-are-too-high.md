@@ -1,5 +1,6 @@
 ---
 title: GoDaddy's renewal prices are too high
+tags: blog
 ---
 
 This is some feedback I just sent to [GoDaddy](http://www.godaddy.com/), on the day on which the registration for piratewatch.org expires. I was going to renew it, but I decided that caving into GoDaddy's pricing model would only serve to reinforce what I view as their inacceptable practice. In this case I'm voting with my wallet.

@@ -1,5 +1,6 @@
 ---
 title: Extract ugly code into new Articles helper (wincent.com, 3773864)
+tags: snippets
 ---
 
 The "link\_to\_remote" and "observe\_field" calls are ugly and involve a lot of repeated options that appear in both the "new" and "edit" templates, so extract them into the Articles helper.

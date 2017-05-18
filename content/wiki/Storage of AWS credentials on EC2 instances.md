@@ -1,5 +1,5 @@
 ---
-tags: aws
+tags: aws wiki
 cache_breaker: 1
 ---
 

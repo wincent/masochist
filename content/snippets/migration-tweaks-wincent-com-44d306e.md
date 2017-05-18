@@ -1,5 +1,6 @@
 ---
 title: Migration tweaks (wincent.com, 44d306e)
+tags: snippets
 ---
 
 Set some null constraints on some of the model migrations to tighten things up.

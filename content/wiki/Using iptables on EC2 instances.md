@@ -1,5 +1,5 @@
 ---
-tags: firewall ec2
+tags: firewall ec2 wiki
 cache_breaker: 1
 ---
 

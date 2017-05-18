@@ -1,6 +1,6 @@
 ---
 redirect: [[Behaviour-Driven Development]]
-tags: 
+tags: wiki
 ---
 
 

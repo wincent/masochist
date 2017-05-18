@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.128
-tags: site updates
+tags: site updates snippets
 ---
+
 d29100a Special case relative short links

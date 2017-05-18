@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 These notes were made while installing [QGit](/wiki/QGit) for the first time on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger). As this was the first time I had built a [Qt](/wiki/Qt)-based [app](/wiki/app) on [Mac OS X](/wiki/Mac_OS_X) I had to first download and build the Qt frameworks.

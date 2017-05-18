@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 cache_breaker: 1
 ---
 
@@ -90,4 +90,3 @@ This will match `\r\n`, `\r` or `\n`, even in the same file (even if a file has 
 # See also
 
 -   [PEG-style predicates in ANTLR](/wiki/PEG-style_predicates_in_ANTLR)
-

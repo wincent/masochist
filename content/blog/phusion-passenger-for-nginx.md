@@ -1,6 +1,6 @@
 ---
 title: Phusion Passenger for nginx
-tags: rails nginx passenger
+tags: rails nginx passenger blog
 cache_breaker: 1
 ---
 

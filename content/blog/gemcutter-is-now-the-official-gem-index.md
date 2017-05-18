@@ -1,6 +1,6 @@
 ---
 title: GemCutter is now the official gem index
-tags: rubygems
+tags: rubygems blog
 ---
 
 Just got this in the mail:

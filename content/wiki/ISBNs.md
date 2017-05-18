@@ -1,6 +1,6 @@
 ---
 redirect: [[ISBN]]
-tags: 
+tags: wiki
 ---
 
 

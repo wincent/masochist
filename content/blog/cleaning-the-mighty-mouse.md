@@ -1,5 +1,6 @@
 ---
 title: Cleaning the Mighty Mouse
+tags: blog
 ---
 
 I've tried almost every trick in the book when it comes to cleaning the [Mighty Mouse's](http://www.apple.com/mightymouse/) non-functioning scroll ball.

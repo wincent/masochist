@@ -1,5 +1,6 @@
 ---
 title: On the MacBook Air
+tags: blog
 ---
 
 I admit to not being really excited about this year's keynote. I've been so engrossed with work of late that I didn't even know what day the keynote would take place. And I knew that most of the things that would be talked about wouldn't excite me: Apple TV (don't have a TV), iPhone stuff (you can't buy iPhones in the country where I live yet), iTunes movie rentals (I don't like the rental model, I'd rather own stuff). Furthermore, the machines which most interest me, [the Mac Pros](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/the_new_mac_pro.php), were already revamped before the show started.

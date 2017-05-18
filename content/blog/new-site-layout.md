@@ -1,5 +1,6 @@
 ---
 title: New site layout
+tags: blog
 ---
 
 I'm very pleased to present the brand new site layout for [wincent.com](http://www.wincent.com/), [wincent.org](http://wincent.org/) and all their subdomains. There have been minor tweaks to the appearance of the site, but the shining star of the new layout is the new navigation bar that appears at the top of each and every page. You can now skip to any section of the site -- [Products](http://www.wincent.com/a/products/), [Services](http://www.wincent.com/a/services/), [Support](http://www.wincent.com/a/support/), [About](http://www.wincent.com/a/about/), [News](http://www.wincent.com/a/news/), [Knowledge Base](http://www.wincent.com/a/knowledge-base/), [Contact](http://www.wincent.com/a/contact/), and [Site Map](http://www.wincent.com/a/site-map/) -- with a single click, and the "bread crumb" display shows you at a glance exactly where you are in the site hierarchy.

@@ -1,5 +1,5 @@
 ---
-tags: doxygen updates
+tags: doxygen updates wiki
 ---
 
 Notes made while upgrading to [Doxygen 1.5.7.1](/wiki/Doxygen_1.5.7.1) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2.

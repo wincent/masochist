@@ -1,5 +1,6 @@
 ---
 title: WODockIcon class
+tags: blog
 ---
 
 When I first started [Synergy Advance](http://synergyadvance.com/) one of my early goals was to implement the ability for the user to show and hide the Dock icon at will. I also envisaged the ability to show the cover art of the currently playing track in the Dock. This was fairly simple, so I just stuck the code for it in the application's main controller class.

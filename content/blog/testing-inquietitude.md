@@ -1,6 +1,6 @@
 ---
 title: Testing inquietitude
-tags: rspec rails
+tags: rspec rails blog
 ---
 
 There's one thing in programming that provokes a sense of inquietitude in me more often than any other: testing. There's just something about it that makes you feel like there's something subtly wrong, and leaves you worrying about whether you might be imagining that smell or whether you really did leave the gas turned on. It's not so much that it makes you wonder whether you're coding things the right way; more often than not you're just plagued by the nagging doubt that you're somehow doing the entire testing thing the wrong way without realizing it.

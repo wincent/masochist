@@ -1,5 +1,6 @@
 ---
 title: Story Runner update
+tags: snippets
 ---
 
 David Chelimsky has put a lot of work into the new [RSpec story runner](http://blog.davidchelimsky.net/articles/2007/10/21/story-runner-in-plain-english), incorporating suggestions from a wide range of people and arriving at a solution that seems pretty much acceptable to everyone.

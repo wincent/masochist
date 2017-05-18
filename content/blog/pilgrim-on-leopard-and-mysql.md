@@ -1,5 +1,6 @@
 ---
 title: Pilgrim on Leopard and MySQL
+tags: blog
 ---
 
 > Jesus H. Christ, it must suck giant wet donkey balls to be stuck on an archaic OS where you need to be dropping into the terminal and tweaking configuration files and compiling shit all the time.

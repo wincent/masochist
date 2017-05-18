@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.143
-tags: site updates
+tags: site updates snippets
 ---
+
 f3b7cfb Work around validation issue

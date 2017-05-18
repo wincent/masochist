@@ -1,5 +1,5 @@
 ---
-tags: syntax
+tags: syntax wiki
 ---
 
 This is a relatively new prerequisite for running the `pre_commit` [Rake](/wiki/Rake) task for [RSpec](/wiki/RSpec) (required before submitting patches.

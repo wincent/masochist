@@ -1,6 +1,6 @@
 ---
 title: Getting ready for Rails 3
-tags: rails
+tags: rails blog
 ---
 
 The second beta of [Rails](/wiki/Rails) 3 [came out](http://weblog.rubyonrails.org/2010/4/1/rails-3-0-second-beta-release) at the start of this month, and was followed up by a third beta [only yesterday](http://weblog.rubyonrails.org/2010/4/13/rails-3-0-third-beta-release), so soon enough we'll be seeing release candidates and a final release.

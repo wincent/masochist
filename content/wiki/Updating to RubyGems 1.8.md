@@ -1,5 +1,5 @@
 ---
-tags: rubygems
+tags: rubygems wiki
 cache_breaker: 1
 ---
 
@@ -20,4 +20,3 @@ $ sudo gem pristine json
 # See also
 
 -   <http://blog.zenspider.com/2011/05/rubygems-18-is-coming.html>
-

@@ -1,5 +1,6 @@
 ---
 title: Sanitize link targets when rolling back failed internal links (wikitext, 8da0a08)
+tags: snippets
 ---
 
 We have to do this because the parser is actually just a simple stream-based transformer. It doesn't (and can't) have any lookahead so it acts upon tokens as soon as they are received.

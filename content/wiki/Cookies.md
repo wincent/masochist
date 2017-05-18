@@ -1,6 +1,6 @@
 ---
 redirect: [[Cookie]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: unicorn
+tags: unicorn wiki
 ---
 
 From the official release announcement:

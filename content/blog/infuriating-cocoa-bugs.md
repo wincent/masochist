@@ -1,5 +1,6 @@
 ---
 title: Infuriating Cocoa bugs
+tags: blog
 ---
 
 Every now and again I come up against an infuriating Cocoa bug. Today I've just spent a few hours struggling against one in particular. It could be that it's a bug or it could be "intended behaviour" (sigh). It's days like these that I don't like my job...

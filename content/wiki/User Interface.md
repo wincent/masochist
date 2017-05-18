@@ -1,6 +1,6 @@
 ---
 redirect: [[UI]]
-tags: 
+tags: wiki
 ---
 
 

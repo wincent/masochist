@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 This article lists the known [command-line](/wiki/command-line) options for the [ANTLR](/wiki/ANTLR) tool, as of version 3.0.

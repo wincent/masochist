@@ -1,5 +1,5 @@
 ---
-tags: textmate ragel
+tags: textmate ragel wiki
 ---
 
 # Installation

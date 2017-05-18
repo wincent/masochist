@@ -1,5 +1,5 @@
 ---
-tags: mediawiki
+tags: mediawiki wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 ## See also
 
 -   <http://wikipedia.org/>
-

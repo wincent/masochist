@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 # `git log A..B` (two dots)
@@ -78,4 +78,3 @@ So, if we start development at `S` on the master branch, branch a topic off at `
 # See also
 
 -   <http://stackoverflow.com/questions/462974/whats-the-difference-between-and-in-git-commit-ranges>
-

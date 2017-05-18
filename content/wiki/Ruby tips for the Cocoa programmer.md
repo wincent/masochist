@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 This article describes things that were not immediately obvious to me as a [Cocoa](/wiki/Cocoa) programmer when I started learning [Ruby](/wiki/Ruby). For more general tips, see [Ruby recipes](/wiki/Ruby_recipes).

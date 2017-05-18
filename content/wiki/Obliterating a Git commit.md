@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Sometimes you accidentally commit a change to a [Git](/wiki/Git) repository and you later want to literally obliterate (remove all traces) of it.

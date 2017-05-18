@@ -1,5 +1,5 @@
 ---
-tags: ruby red.hat updates
+tags: ruby red.hat updates wiki
 cache_breaker: 1
 ---
 
@@ -46,4 +46,3 @@ It's possible that this second test fails because of the version of OpenSSL inst
 
 -   [Building and installing RubyGems 0.9.0 on Red Hat Enterprise Linux ES 3](/wiki/Building_and_installing_RubyGems_0.9.0_on_Red_Hat_Enterprise_Linux_ES_3)
 -   [Building and installing Ruby 1.8.4 on Mac OS X Tiger](/wiki/Building_and_installing_Ruby_1.8.4_on_Mac_OS_X_Tiger)
-

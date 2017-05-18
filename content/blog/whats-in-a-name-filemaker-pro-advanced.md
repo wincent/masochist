@@ -1,5 +1,6 @@
 ---
 title: What's in a name? FileMaker Pro Advanced
+tags: blog
 ---
 
 I just read [this article](http://www.thinksecret.com/news/0505fm8.html) at rumor site [Think Secret](http://www.thinksecret.com/), where they claim that "FileMaker Developer 7" will be renamed to "FileMaker Pro 8 Advanced" in its next version.

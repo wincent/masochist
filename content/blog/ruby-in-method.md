@@ -1,6 +1,6 @@
 ---
 title: Ruby "in" method
-tags: ruby
+tags: ruby blog
 cache_breaker: 1
 ---
 

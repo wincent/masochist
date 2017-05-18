@@ -1,6 +1,6 @@
 ---
 title: Weekly progress report #1
-tags: progress
+tags: progress blog
 ---
 
 I've just whipped together a quick script to iterate over my local repositories (ones I control, not clones of upstream projects) and produce a brief summary of the recent commits. I'm going to try and run this script on a weekly basis to give a basic overview of what I've been working on that week.

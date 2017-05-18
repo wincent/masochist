@@ -1,5 +1,6 @@
 ---
 title: Test process improvements
+tags: blog
 ---
 
 Yesterday and today I've been working on improving the automated testing process used when building products like [Synergy Advance](http://advance.wincent.com/) and [Hextrapolate](http://hextrapolate.wincent.com/).

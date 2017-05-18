@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # Installing [Rails 1.2.4](/wiki/Rails_1.2.4)

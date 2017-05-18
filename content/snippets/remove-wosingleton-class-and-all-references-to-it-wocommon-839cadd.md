@@ -1,5 +1,6 @@
 ---
 title: Remove WOSingleton class and all references to it (WOCommon, 839cadd)
+tags: snippets
 ---
 
 All singleton classes now use independent, non-abstracts implementations of the singleton pattern, so this commit removes the WOSingleton class itself, the accompanying unit tests, and updates the documentation to remove all references to WOSingleton as well explaining the rationale for its removal.

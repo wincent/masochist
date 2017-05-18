@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 cache_breaker: 1
 ---
 
@@ -224,4 +224,3 @@ In the case where a user sets a new passphrase the cycle looks like this:
 # See also
 
 -   [Rails "gotchas"](/wiki/Rails_%22gotchas%22)
-

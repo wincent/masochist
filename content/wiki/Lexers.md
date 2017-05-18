@@ -1,6 +1,6 @@
 ---
 redirect: [[Lexer]]
-tags: 
+tags: wiki
 ---
 
 

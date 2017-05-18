@@ -1,5 +1,5 @@
 ---
-tags: red.hat nginx updates nginx.upload.module
+tags: red.hat nginx updates nginx.upload.module wiki
 cache_breaker: 1
 ---
 
@@ -48,4 +48,3 @@ $ sudo -i
 # See also
 
 -   [Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_nginx_0.7.61_on_Mac_OS_X_10.6_Snow_Leopard)
-

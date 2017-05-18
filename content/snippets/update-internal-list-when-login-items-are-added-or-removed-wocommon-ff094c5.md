@@ -1,5 +1,6 @@
 ---
 title: Update internal list when login items are added or removed (WOCommon, ff094c5)
+tags: snippets
 ---
 
 Add a refreshList method (internal use only) which is called whenever we add or remove a login item.

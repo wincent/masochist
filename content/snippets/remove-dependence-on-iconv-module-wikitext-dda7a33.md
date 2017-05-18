@@ -1,5 +1,6 @@
 ---
 title: Remove dependence on Iconv module (wikitext, dda7a33)
+tags: snippets
 ---
 
 So as to depend on one less module, perform the UCS-2/UTF-8 conversion using a pair of custom methods written in C. The code would be easy to extend to handle UTF-32 when/if I move to it.

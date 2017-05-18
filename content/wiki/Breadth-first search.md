@@ -1,5 +1,5 @@
 ---
-tags: algorithms graphs
+tags: algorithms graphs wiki
 cache_breaker: 1
 ---
 
@@ -11,4 +11,3 @@ It is commonly implemented using a [queue](/wiki/queue) data structure, and runs
 
 -   [Wikipedia](/wiki/Wikipedia) article on [breadth-first search](/wiki/breadth-first_search): <http://en.wikipedia.org/wiki/Breadth-first_search>
 -   [Depth-first search](/wiki/Depth-first_search)
-

@@ -1,5 +1,5 @@
 ---
-tags: git github
+tags: git github wiki
 cache_breaker: 1
 ---
 
@@ -22,4 +22,3 @@ Hit `y`; the URL updates to:
 # Source
 
 -   <https://help.github.com/articles/getting-permanent-links-to-files/>
-

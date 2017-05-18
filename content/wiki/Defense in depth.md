@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [Defense in depth](/wiki/Defense_in_depth) is a security paradigm in which multiple layers of defense are engineered into a system so that if an attacker breaches one or more levels within a system, there is still a chance that the remaining levels will prevent a successful attack.

@@ -1,6 +1,6 @@
 ---
 title: DNS changes
-tags: site
+tags: site blog
 ---
 
 In preparation for some pretty big changes to the hosting arrangements for this site, today the nameservers ([DNS](/wiki/DNS)) for wincent.com were migrated away from a [INetU](/wiki/INetU) (the current webhost) to [Nettica](http://nettica.com). I'll be writing more about what these hosting changes will be on another occasion, but in the meantime I just wanted to post notice of the nameserver migration.

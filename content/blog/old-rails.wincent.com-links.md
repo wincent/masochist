@@ -1,6 +1,6 @@
 ---
 title: Old rails.wincent.com links
-tags: site
+tags: site blog
 ---
 
 If you have any bookmarks pointing at rails.wincent.com, now would be a good time to update them to point at wincent.com instead.

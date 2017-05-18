@@ -1,5 +1,5 @@
 ---
-tags: memcached
+tags: memcached wiki
 cache_breaker: 1
 ---
 

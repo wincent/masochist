@@ -1,5 +1,5 @@
 ---
-tags: nginx.upload.module
+tags: nginx.upload.module wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
 -   Example update instructions:
     -   [Installing nginx 0.7.65 on Mac OS X 10.6.2 Snow Leopard](/wiki/Installing_nginx_0.7.65_on_Mac_OS_X_10.6.2_Snow_Leopard)
     -   [Installing nginx 0.7.61 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_nginx_0.7.61_on_Mac_OS_X_10.6_Snow_Leopard)
-

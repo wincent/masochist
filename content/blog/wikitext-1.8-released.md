@@ -1,6 +1,6 @@
 ---
 title: Wikitext 1.8 released
-tags: wikitext
+tags: wikitext blog
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.8, is now available. It adds one new feature — the ability to specify a CSS class on `<pre></pre>` blocks so that they can be targeted by [JavaScript](/wiki/JavaScript), or other, syntax-highliters — and some performance enhancements. See the [high-level](http://wikitext.rubyforge.org/files/doc/RELEASE-NOTES.html) or [low-level release notes](http://rubyforge.org/frs/shownotes.php?group_id=5483&release_id=34957) for more details.

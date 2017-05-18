@@ -1,5 +1,5 @@
 ---
-tags: ipfw dummynet
+tags: ipfw dummynet wiki
 cache_breaker: 1
 ---
 
@@ -54,4 +54,3 @@ While this example is relatively simplistic it gets the job done. It is possible
 # See also
 
 -   `man ipfw`
-

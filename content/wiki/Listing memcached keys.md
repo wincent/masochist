@@ -1,5 +1,5 @@
 ---
-tags: memcached
+tags: memcached wiki
 cache_breaker: 1
 ---
 
@@ -36,4 +36,3 @@ And you can retrieve using the listed key(s):
 # See also
 
 -   Ruby script implementing this technique: <https://gist.github.com/bkimble/1365005>
-

@@ -1,5 +1,5 @@
 ---
-tags: algorithms dynamic.programming
+tags: algorithms dynamic.programming wiki
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ An example of a dynamic programming algorithm is [Computing the Maximum Weighted
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [dynamic programming](/wiki/dynamic_programming): <http://en.wikipedia.org/wiki/Dynamic_programming>
-

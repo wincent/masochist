@@ -1,6 +1,6 @@
 ---
 redirect: [[home directory]]
-tags: 
+tags: wiki
 ---
 
 

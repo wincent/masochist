@@ -1,5 +1,6 @@
 ---
 title: Old age
+tags: blog
 ---
 
 Perhaps I am getting old and my vision is failing, perhaps I've been seeing too many "Web 2.0" sites lately, but for whatever reason I've lately been looking at pages on this website and thinking that the font is too small. I've even gone so far as to hitting the "bigger" button in my Safari toolbar when reading long articles like [this one](http://www.wincent.com/a/about/wincent/weblog/archives/2006/10/kagi_a_recommen.php) that I just published.

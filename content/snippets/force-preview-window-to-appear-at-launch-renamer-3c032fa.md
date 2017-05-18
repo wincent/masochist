@@ -1,5 +1,6 @@
 ---
 title: Force preview window to appear at launch (REnamer, 3c032fa)
+tags: snippets
 ---
 
 The preview window won't necessarily appear at launch time unless we force it's associated window to become the main window.

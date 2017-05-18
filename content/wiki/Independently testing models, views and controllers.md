@@ -1,5 +1,5 @@
 ---
-tags: rspec rails development
+tags: rspec rails development wiki
 cache_breaker: 1
 ---
 
@@ -22,4 +22,3 @@ But one further caveat: although [mocks](/wiki/mocks) *can* in theory deliver al
 -   [Behaviour-Driven Development of Rails models](/wiki/Behaviour-Driven_Development_of_Rails_models)
 -   [Behaviour-Driven Development of Rails views](/wiki/Behaviour-Driven_Development_of_Rails_views)
 -   [Behaviour-Driven Development of Rails controllers](/wiki/Behaviour-Driven_Development_of_Rails_controllers)
-

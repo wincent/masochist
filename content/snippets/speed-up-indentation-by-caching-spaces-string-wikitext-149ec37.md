@@ -1,5 +1,6 @@
 ---
 title: Speed up indentation by caching spaces string (wikitext, 149ec37)
+tags: snippets
 ---
 
 We lazily create a string struct on demand the first time it is needed, and as larger indent levels are required we grow the buffer and populate it with spaces. We never shrink the buffer and so never have to re-populate it. It is freed only at the end of the parsing operation.

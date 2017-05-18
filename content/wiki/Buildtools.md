@@ -1,5 +1,5 @@
 ---
-tags: buildtools
+tags: buildtools wiki
 cache_breaker: 1
 ---
 

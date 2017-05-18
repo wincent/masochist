@@ -1,5 +1,6 @@
 ---
 title: Upgrade Xcode project bundle (login-tool, fdbb4cb)
+tags: snippets
 ---
 
 For Xcode 3.

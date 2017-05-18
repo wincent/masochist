@@ -1,5 +1,5 @@
 ---
-tags: haskell
+tags: haskell wiki
 ---
 
 # Comments
@@ -106,4 +106,3 @@ These are reserved keywords which cannot be used as function names:
 -   `type`
 -   `where`
 -   `_`
-

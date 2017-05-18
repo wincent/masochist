@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #39
+tags: blog
 ---
 
 In an endless Build-Debug-Edit, Build-Debug-Edit cycle for [Synergy Advance](http://synergyadvance.com/), click "Debug" and wait for 10 seconds while Xcode thinks. Notice that the music has stopped. Switch to Safari, which has a list of MP3 files in a window. Command-Click a couple of MP3s with the intention of opening them in tabs and previewing them (using the Quicktime plug-in). Safari beachballs.

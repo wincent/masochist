@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.95
-tags: site updates
+tags: site updates snippets
 ---
+
 6f1d6a0 Move JavaScript to the very bottom of the `body` element

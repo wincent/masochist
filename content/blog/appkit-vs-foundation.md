@@ -1,5 +1,6 @@
 ---
 title: AppKit vs Foundation
+tags: blog
 ---
 
 Without a doubt I have a love-hate relationship with AppKit and Foundation. Basically it boils down to loving working with Foundation and hating working with AppKit. They're both amazing frameworks, but it's almost always AppKit that has me pulling my hair out in frustration.

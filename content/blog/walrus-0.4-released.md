@@ -1,6 +1,6 @@
 ---
 title: Walrus 0.4 released
-tags: walrus releases
+tags: walrus releases blog
 ---
 
 Version 0.4 of the [Walrus](/wiki/Walrus) gem has just been released. Walrus is an [object-oriented templating](/wiki/object-oriented_templating) system written in [Ruby](/wiki/Ruby) and heavily inspired by the [Cheetah template engine](/wiki/Cheetah_template_engine) (which is written in [Python](/wiki/Python)). It doesn't set out to be a full clone of Cheetah, but it does implement a very large subset of its functionality, and it employs the same directive syntax wherever possible.

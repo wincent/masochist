@@ -1,5 +1,5 @@
 ---
-tags: objective.c
+tags: objective.c wiki
 ---
 
 Messages are logged to `/tmp/msgSends-<pid>`:
@@ -60,4 +60,3 @@ There are two ways of turning on logging:
 -   <http://www.dribin.org/dave/blog/archives/2006/04/22/tracing_objc/>
 -   <http://unixjunkie.blogspot.com/2006/08/tracing-objective-c-messages.html>
 -   <http://www.robertblum.com/articles/2006/01/09/the-making-of-icalfix>
-

@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [MVC](/wiki/MVC) or [Model-View-Controller](/wiki/Model-View-Controller) is an approach to [object-oriented programming](/wiki/object-oriented_programming) which divides the concerns of an application into three separate types, each corresponding to a class:
@@ -14,4 +14,3 @@ Examples of popular systems that are designed to use the [MVC](/wiki/MVC) patter
 
 -   [Apple](/wiki/Apple)'s [Cocoa](/wiki/Cocoa) [API](/wiki/API), as seen in [Mac OS X](/wiki/Mac_OS_X)
 -   [Ruby on Rails](/wiki/Ruby_on_Rails)
-

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 # Maintainer's public repository
@@ -13,4 +13,3 @@ tags: git
 # See also
 
 -   [Structure of git.git](/wiki/Structure_of_git.git)
-

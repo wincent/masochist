@@ -1,5 +1,5 @@
 ---
-tags: snow.leopard haproxy
+tags: snow.leopard haproxy wiki
 ---
 
 ```shell

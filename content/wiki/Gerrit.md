@@ -1,5 +1,5 @@
 ---
-tags: gerrit
+tags: gerrit wiki
 ---
 
 [Gerrit](/wiki/Gerrit) is a [Git](/wiki/Git)-based code review system.
@@ -8,4 +8,3 @@ tags: gerrit
 
 -   <http://code.google.com/p/gerrit/>
 -   <https://android-review.googlesource.com/> (Gerrit install where all Android development takes place)
-

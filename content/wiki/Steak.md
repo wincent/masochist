@@ -1,5 +1,5 @@
 ---
-tags: steak
+tags: steak wiki
 cache_breaker: 1
 ---
 
@@ -24,4 +24,3 @@ Up until February 2011, Steak and Capybara made a great combination. As of [this
 # External resources
 
 -   A tutorial: <http://jeffkreeftmeijer.com/2010/steak-because-cucumber-is-for-vegetarians/>
-

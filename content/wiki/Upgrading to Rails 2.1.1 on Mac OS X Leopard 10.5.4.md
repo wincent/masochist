@@ -1,5 +1,5 @@
 ---
-tags: rails updates
+tags: rails updates wiki
 cache_breaker: 1
 ---
 
@@ -46,4 +46,3 @@ cache_breaker: 1
 ## See also
 
 -   [Rails 2.1.1](/wiki/Rails_2.1.1)
-

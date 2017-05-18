@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #29
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 ---
 
 Some nervous moments.
@@ -17,4 +17,3 @@ But the story doesn't end there; the machine was dead like a slab of rock for se
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 677 days
 -   Average time between failures: 23.34 days
-

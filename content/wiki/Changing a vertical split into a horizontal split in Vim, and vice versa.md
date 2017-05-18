@@ -1,5 +1,5 @@
 ---
-tags: vim recipe
+tags: vim recipe wiki
 cache_breaker: 1
 ---
 
@@ -25,4 +25,3 @@ Source:
 
 -   <http://stackoverflow.com/questions/1269603/to-switch-from-vertical-split-to-horizontal-split-fast-in-vim>
 -   <http://www.mail-archive.com/vim@vim.org/msg11206.html>
-

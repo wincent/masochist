@@ -1,5 +1,5 @@
 ---
-tags: iterm
+tags: iterm wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Git hooks
+tags: blog
 ---
 
 Earlier this month I [wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/musings_on_subv.php):

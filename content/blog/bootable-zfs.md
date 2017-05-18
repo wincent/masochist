@@ -1,5 +1,6 @@
 ---
 title: Bootable ZFS
+tags: blog
 ---
 
 It's nice to have [official confirmation](http://trac.macosforge.org/projects/zfs/wiki/faq) from an Apple employee that progress is being made towards making [ZFS](http://www.wincent.com/knowledge-base/ZFS) an option for formatting [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) startup disks:

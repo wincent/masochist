@@ -1,5 +1,5 @@
 ---
-tags: aws ebs
+tags: aws ebs wiki
 cache_breaker: 1
 ---
 

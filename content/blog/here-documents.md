@@ -1,5 +1,6 @@
 ---
 title: Here documents
+tags: blog
 ---
 
 I [just added](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2007/02/walrus_r51_3_items_changed.php) "[here document](http://en.wikipedia.org/wiki/Here_document)" support to Walrus.

@@ -1,5 +1,5 @@
 ---
-tags: rails mysql
+tags: rails mysql wiki
 ---
 
 Some time has passed since I first began experimenting with [Rails](/wiki/Rails) (see "[First Ruby on Rails project on Mac OS X](/wiki/First_Ruby_on_Rails_project_on_Mac_OS_X)"). Since then [Rails](/wiki/Rails) has been updated several times, I haven't done any [Rails](/wiki/Rails) work at all, but I've learnt *a lot* of [Ruby](/wiki/Ruby) through my work on [Walrus](/wiki/Walrus). I'm going to maintain this article as a "best practice" recipe for starting a new [Rails](/wiki/Rails) application. I've further refined and extended upon this in the article, "[Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)".

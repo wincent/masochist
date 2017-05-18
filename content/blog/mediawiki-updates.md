@@ -1,5 +1,6 @@
 ---
 title: MediaWiki updates
+tags: blog
 ---
 
 Yesterday I updated my [MediaWiki](http://mediawiki.org/) install to the just-released 1.6.4. Today they rolled out 1.6.5. This is not the first time that they've let flaws slip out with a release, requiring a correction immediately afterwards. Let's look at the last month alone:

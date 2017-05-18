@@ -1,5 +1,5 @@
 ---
-tags: unicorn
+tags: unicorn wiki
 ---
 
 From the official announcement to the [Unicorn mailing list](/wiki/Unicorn_mailing_list):

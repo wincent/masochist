@@ -1,5 +1,5 @@
 ---
-tags: libevent memcached
+tags: libevent memcached wiki
 cache_breaker: 1
 ---
 
@@ -45,4 +45,3 @@ memcached running: stopping
 # See also
 
 -   [Updating to memcached 1.4.1 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_memcached_1.4.1_on_Red_Hat_Enterprise_Linux_5.3)
-

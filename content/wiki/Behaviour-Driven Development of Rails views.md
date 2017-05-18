@@ -1,5 +1,5 @@
 ---
-tags: rspec rails
+tags: rspec rails wiki
 cache_breaker: 1
 ---
 
@@ -112,4 +112,3 @@ But I think that going that far is not a wise investment of programmer time; suc
 
 -   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
 -   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
-

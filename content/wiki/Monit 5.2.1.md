@@ -1,5 +1,5 @@
 ---
-tags: monit
+tags: monit wiki
 ---
 
 From the official release announcement:

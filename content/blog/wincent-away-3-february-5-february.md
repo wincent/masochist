@@ -1,5 +1,6 @@
 ---
 title: Wincent away 3 February-5 February
+tags: blog
 ---
 
 I will be going to a conference starting Friday 3 February 2006 and ending Sunday 5 February 2006 and will not have access to email. There will therefore be some delay before replying if you email me during that period.

@@ -1,5 +1,6 @@
 ---
 title: Wincent away until 5 August 2007
+tags: blog
 ---
 
 This week I'll be departing for a short vacation and will have limited or no access to email while away. I'm not sure of the actual departure date just yet but it's likely to be Wednesday, 1 August 2007. I'll be returning late on Sunday, 5 August 2007.

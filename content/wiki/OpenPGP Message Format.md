@@ -1,6 +1,6 @@
 ---
 redirect: [[RFC 2440]]
-tags: 
+tags: wiki
 ---
 
 

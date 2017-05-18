@@ -1,5 +1,5 @@
 ---
-tags: rails vim
+tags: rails vim wiki
 ---
 
 # Find a file (with tab completion)

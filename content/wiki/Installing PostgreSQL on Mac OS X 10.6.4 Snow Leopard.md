@@ -1,5 +1,5 @@
 ---
-tags: snow.leopard postgresql
+tags: snow.leopard postgresql wiki
 cache_breaker: 1
 ---
 

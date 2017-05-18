@@ -1,5 +1,6 @@
 ---
 title: Run just-built copy by default (Wincent Strings Utility, 6646efa)
+tags: snippets
 ---
 
 When run from inside an Xcode shell script phase the TARGET\_BUILD\_DIR environment variable enables us to find the just-built copy for testing purposes. The same effect can be achieved by manually exporting the environment variable and running the specs by hand from the command line.

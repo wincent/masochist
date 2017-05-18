@@ -1,5 +1,6 @@
 ---
 title: Coding notes: optimization and plug-ins
+tags: blog
 ---
 
 Donald Knuth famously [said](http://en.wikiquote.org/wiki/Donald_Knuth) "premature optimization is the root of all evil". You can waste a lot of time optimizing code for negligible benefit. You can also waste your resources by optimizing the wrong thing; you generally can't be sure of where the bottlenecks will be until the entire project is done or at least near to completion.

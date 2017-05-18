@@ -1,5 +1,5 @@
 ---
-tags: zentest rubygems tiger updates
+tags: zentest rubygems tiger updates wiki
 cache_breaker: 1
 ---
 

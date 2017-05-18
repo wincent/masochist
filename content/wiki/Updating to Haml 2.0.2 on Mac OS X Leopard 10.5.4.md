@@ -1,8 +1,8 @@
 ---
-tags: haml updates
+tags: haml updates wiki
 ---
 
-    $ sudo gem install haml --no-ri
+$ sudo gem install haml --no-ri
     Password:
     Bulk updating Gem source index for: http://gems.rubyforge.org/
     Successfully installed haml-2.0.2

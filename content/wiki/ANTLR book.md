@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 There is some documentation on the official site but the best documentation by far is *The Definitive ANTLR Reference* by [Terence Parr](/wiki/Terence_Parr), the author of [ANTLR](/wiki/ANTLR):
@@ -11,4 +11,3 @@ There is some documentation on the official site but the best documentation by f
 You can also support by posting a review of the book at [Amazon](/wiki/Amazon), as your review may encourage others to make a purchase:
 
 -   <http://amazon.com/Definitive-ANTLR-Reference-Domain-Specific-Languages/dp/0978739256>
-

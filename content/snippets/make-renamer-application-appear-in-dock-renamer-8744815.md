@@ -1,5 +1,6 @@
 ---
 title: Make REnamer application appear in Dock (REnamer, 8744815)
+tags: snippets
 ---
 
 This is part of a general style change. In the prototype, the principal object of interest was the contextual menu plugin and the application was a helper that was embedded inside the plugin bundle.

@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 [ANTLR](/wiki/ANTLR)'s prediction mechanisms can make it behave in surprising ways if you don't know what it's doing under the covers.

@@ -1,5 +1,6 @@
 ---
 title: Handle multiple commits per post-receive invocation (snippets, 9dd5748)
+tags: snippets
 ---
 
 Handle a wider range of possible post-receive inputs:

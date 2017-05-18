@@ -1,5 +1,6 @@
 ---
 title: Synergy one-day sale: licenses for $4.50
+tags: blog
 ---
 
 In conjunction with MacUpdate, [Synergy](http://synergy.wincent.com) will be available for sale tomorrow for the steal price of only $4.50.

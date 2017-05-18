@@ -1,5 +1,5 @@
 ---
-tags: colemak
+tags: colemak wiki
 ---
 
 # Official site
@@ -13,4 +13,3 @@ This article was typed using the Colemak keyboard layout.
 # See also
 
 -   [Typing drill tools](/wiki/Typing_drill_tools)
-

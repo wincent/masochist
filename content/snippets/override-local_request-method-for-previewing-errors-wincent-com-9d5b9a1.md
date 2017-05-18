@@ -1,5 +1,6 @@
 ---
 title: Override local_request? method for previewing errors (wincent.com, 9d5b9a1)
+tags: snippets
 ---
 
 This is for testing what remote users would see in production mode in the event of an error.

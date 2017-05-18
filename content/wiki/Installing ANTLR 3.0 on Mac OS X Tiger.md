@@ -1,5 +1,5 @@
 ---
-tags: tiger antlr
+tags: tiger antlr wiki
 ---
 
 Having downloaded the [ANTLR 3.0](/wiki/ANTLR_3.0) distribution (`antlr-3.0.tar.gz`) from the [ANTLR](/wiki/ANTLR) website, installation is straightforward.

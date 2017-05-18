@@ -1,5 +1,6 @@
 ---
 title: Update to the "Drunken Batman is an asshole" story
+tags: blog
 ---
 
 First, as background if you haven't read the original story, [here it is](http://www.wincent.com/a/about/wincent/weblog/archives/2006/03/drukenbatman_ge.php).

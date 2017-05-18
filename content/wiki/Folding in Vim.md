@@ -1,5 +1,5 @@
 ---
-tags: vim folds
+tags: vim folds wiki
 ---
 
 # Overview
@@ -33,4 +33,3 @@ set foldlevelstart=1  " global
 # See also
 
 -   <http://www.linux.com/archive/feature/114138>
-

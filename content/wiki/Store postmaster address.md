@@ -1,5 +1,5 @@
 ---
-tags: sendmail
+tags: sendmail wiki
 ---
 
 The purpose of this custom ruleset is to extract the domain portion of the recipient address and use it as a basis for constructing a postmaster address of the form "postmaster@[example.com](/wiki/example.com)". The address is then stored in the `postmaster_addr` macro and is available for use in other rulesets.

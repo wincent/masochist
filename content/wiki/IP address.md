@@ -1,6 +1,6 @@
 ---
 redirect: [[IP]]
-tags: 
+tags: wiki
 ---
 
 

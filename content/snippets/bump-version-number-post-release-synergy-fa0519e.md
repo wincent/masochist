@@ -1,5 +1,6 @@
 ---
 title: Bump version number post-release (Synergy, fa0519e)
+tags: snippets
 ---
 
 Bump version number to 3.5a2+.

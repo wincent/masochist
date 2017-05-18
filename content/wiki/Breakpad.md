@@ -1,6 +1,6 @@
 ---
 redirect: [[Google Breakpad]]
-tags: 
+tags: wiki
 ---
 
 

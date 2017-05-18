@@ -1,5 +1,5 @@
 ---
-tags: ssl
+tags: ssl wiki
 cache_breaker: 1
 ---
 
@@ -23,4 +23,3 @@ cache_breaker: 1
     -   [SSL certificate renewal notes 2010](/wiki/SSL_certificate_renewal_notes_2010) (nginx; wincent.com)
     -   [SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008) (Apache, Cyrus, sendmail; secure.wincent.com)
 -   [Getting new SSL certificates for use with nginx](/wiki/Getting_new_SSL_certificates_for_use_with_nginx)
-

@@ -1,6 +1,6 @@
 ---
 redirect: [[Cheetah (template engine)]]
-tags: 
+tags: wiki
 ---
 
 

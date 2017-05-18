@@ -1,5 +1,6 @@
 ---
 title: WordPress follow-up
+tags: blog
 ---
 
 A few people have contacted me with comments about my [article on WordPress](http://www.wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_flaw.php), and among other things it ended up getting linked to on a series of sites ([1](http://mjtsai.com/blog/2007/06/21/wordpress-flaw/), [2](http://daringfireball.net/linked/), [3](http://photomatt.net/2007/06/22/on-wp-security/)) with [successively](http://www.alexa.com/data/details/traffic_details?url=mjtsai.com%2F) [higher](http://www.alexa.com/data/details/traffic_details?url=daringfireball.net%2F) [traffic](http://www.alexa.com/data/details/traffic_details?url=http%3A%2F%2Fphotomatt.net%2F) rankings, ultimately reaching the weblog of [WordPress](http://www.wincent.com/knowledge-base/WordPress) creator, Matthew Mullenweg, the [most important Matt](http://photomatt.net/about/) on the Internet (&lt;irony&gt;incidentally, I am the [most important Wincent](http://www.google.com/search?q=wincent), did you know?&lt;/irony&gt;).

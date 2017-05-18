@@ -1,5 +1,6 @@
 ---
 title: Initial version of post-receive hook (snippets, 60d726a)
+tags: snippets
 ---
 
 This is a Bash script modelled on the example post-receive-email hook script\

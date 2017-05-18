@@ -1,5 +1,5 @@
 ---
-tags: aws
+tags: aws wiki
 cache_breaker: 1
 ---
 
@@ -60,4 +60,3 @@ The second line is necessary to override the default ACL (which only allows the 
 # See also
 
 -   [Deleting old Amazon EBS snapshots](/wiki/Deleting_old_Amazon_EBS_snapshots): the `aws` tool is about 10 to 20 times faster than Amazon's Java-based [command line](/wiki/command_line) tools for batch jobs such as deleting snapshots
-

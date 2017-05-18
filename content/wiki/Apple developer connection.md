@@ -1,6 +1,6 @@
 ---
 redirect: [[ADC]]
-tags: 
+tags: wiki
 ---
 
 

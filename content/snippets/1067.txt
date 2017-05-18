@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.116
-tags: site updates
+tags: site updates snippets
 ---
+
 3f1504b Revert "Update db/schema.rb"
 c9d8769 Get shift-tab working in tag widget
 f2178d5 Fix a (cosmetic) typo in a code comment

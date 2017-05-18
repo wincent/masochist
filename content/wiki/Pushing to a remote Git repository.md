@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 # Tips

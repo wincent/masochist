@@ -1,5 +1,6 @@
 ---
 title: Piracy
+tags: blog
 ---
 
 Simplifying dramatically, there are basically two main views on piracy among software developers.

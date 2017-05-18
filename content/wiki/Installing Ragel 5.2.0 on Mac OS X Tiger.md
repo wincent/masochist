@@ -1,5 +1,5 @@
 ---
-tags: tiger ragel
+tags: tiger ragel wiki
 ---
 
 -   Get link to latest source code from: <http://www.cs.queensu.ca/~thurston/ragel/>

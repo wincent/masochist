@@ -1,5 +1,6 @@
 ---
 title: Product and site news
+tags: blog
 ---
 
 As part of the site redesign, there is a new section (which you are reading right now), "Product and site news". This section (together with the [Knowledge base](/a/knowledge-base/) section) takes over from the weblog at [wincent.org](http://wincent.org/), which has existed in one form or another since 1997. To make it easy to find the new section, requests for [wincent.org](http://wincent.org/) will be automatically redirected here. You can continue to access the archives of material posted on the old weblog by directing your browser to <http://wincent.org/article/frontpage/1>.

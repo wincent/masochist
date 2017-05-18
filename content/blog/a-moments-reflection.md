@@ -1,5 +1,6 @@
 ---
 title: A moment's reflection
+tags: blog
 ---
 
 **Q:** Why write yet another HOM implementation when there are already so many out there?

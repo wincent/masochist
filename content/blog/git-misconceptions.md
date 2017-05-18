@@ -1,6 +1,6 @@
 ---
 title: Git misconceptions
-tags: git
+tags: git blog
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 redirect: [[SQL]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.1b and 1.1b2 released
-tags: releases command.t
+tags: releases command.t blog
 ---
 
 Only a few days ago we hit the one-year anniversary of the first public release of [Command-T](/wiki/Command-T) for [Vim](/wiki/Vim). And to celebrate, I've just released version 1.1b2 of the plug-in. This is a powerful, [open source](/wiki/open_source) file and buffer-navigation plug-in inspired by the "Command-T" feature in [TextMate](/wiki/TextMate).

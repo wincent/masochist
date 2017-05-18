@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 An experiment with some leaking strings:
@@ -86,4 +86,3 @@ An experiment with some leaking strings:
 -   You can pass a buffer containing mid-string NULL bytes and provided the length is set correctly the string won't be truncated.
 -   If you try to print such a string containing a mid-string NULL byte using `NSLog` output will be incorrectly truncated at the NULL byte.
 -   Even so, the actual characters really are present in the created string.
-

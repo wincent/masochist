@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 # Using `sw_vers`

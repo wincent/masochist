@@ -1,5 +1,5 @@
 ---
-tags: ack snow.leopard
+tags: ack snow.leopard wiki
 cache_breaker: 1
 ---
 

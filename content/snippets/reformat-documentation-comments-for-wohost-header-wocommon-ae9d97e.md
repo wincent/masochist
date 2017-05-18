@@ -1,5 +1,6 @@
 ---
 title: Reformat documentation comments for WOHost header (WOCommon, ae9d97e)
+tags: snippets
 ---
 
 Update format to match rest of code base.

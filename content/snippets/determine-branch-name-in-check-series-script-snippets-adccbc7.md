@@ -1,5 +1,6 @@
 ---
 title: Determine branch name in check-series script (snippets, adccbc7)
+tags: snippets
 ---
 
 Previously we just made comparisons against the "origin", and while this worked fine for topic branches forked off of the "master" branch, it fell down for those forked off something else (like the "next" branch, for example).

@@ -1,5 +1,5 @@
 ---
-tags: znc
+tags: znc wiki
 ---
 
 # Installation

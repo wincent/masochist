@@ -1,5 +1,6 @@
 ---
 title: Let the compiler decide when to inline (wikitext, cf1128c)
+tags: snippets
 ---
 
 This change was initially prompted because I was getting duplicate symbol errors when linking for functions which should have been inlined on RHEL 5.1.

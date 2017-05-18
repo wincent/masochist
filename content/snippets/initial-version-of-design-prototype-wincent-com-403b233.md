@@ -1,5 +1,6 @@
 ---
 title: Initial version of design prototype (wincent.com, 403b233)
+tags: snippets
 ---
 
 At this stage this is just some basic Haml and graphics for the header, footer, and some notes on the navigation bar.

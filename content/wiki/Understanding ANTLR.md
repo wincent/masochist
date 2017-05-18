@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 In order to fully understand [ANTLR](/wiki/ANTLR) you need to master the following topics. Total mastery of all topics is not always necessary to build a working parser, but without it is very easy to build a non-working one, or fail to even build one at all.
@@ -15,4 +15,3 @@ In order to fully understand [ANTLR](/wiki/ANTLR) you need to master the followi
 # See also
 
 -   [ANTLR bird's eye view](/wiki/ANTLR_bird%27s_eye_view)
-

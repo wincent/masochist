@@ -1,5 +1,5 @@
 ---
-tags: tmux
+tags: tmux wiki
 cache_breaker: 1
 ---
 

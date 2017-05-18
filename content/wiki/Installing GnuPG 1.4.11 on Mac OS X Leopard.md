@@ -1,5 +1,5 @@
 ---
-tags: gpg
+tags: gpg wiki
 cache_breaker: 1
 ---
 

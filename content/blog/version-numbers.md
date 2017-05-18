@@ -1,5 +1,6 @@
 ---
 title: Version numbers
+tags: blog
 ---
 
 I've always been a little confused by [Apple](http://www.wincent.com/knowledge-base/Apple)'s "[Property List Key Reference](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/Articles/PListKeys.html)". It seemed that the documented purpose of some of the property list keys deviated from the actual behaviour of the OS, especial in relation with the display of version numbers in the Finder.

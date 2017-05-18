@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.62
-tags: site updates
+tags: site updates snippets
 ---
+
 4d93303 Turn on text-rendering: optimizeLegibility
 0643a3a Switch to new fonts

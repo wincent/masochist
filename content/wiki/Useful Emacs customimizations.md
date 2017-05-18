@@ -1,5 +1,5 @@
 ---
-tags: emacs
+tags: emacs wiki
 ---
 
 ## Keeping commit messages under length limits

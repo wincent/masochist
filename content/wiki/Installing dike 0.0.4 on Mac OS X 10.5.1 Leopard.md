@@ -1,5 +1,5 @@
 ---
-tags: dike
+tags: dike wiki
 ---
 
 I found out about [dike](/wiki/dike) in these posts:

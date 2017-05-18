@@ -1,6 +1,6 @@
 ---
 title: Wikitext 4.0 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new release of the [Wikitext](/wiki/Wikitext) gem, version 4.0, is out. The major version number has been bumped because this release breaks compatibility with versions of [Ruby](/wiki/Ruby) prior to 2.0.0. For older versions of Ruby the 3.x series will continue to be supported and available from RubyGems with a `[sudo] gem install wikitext --version 3.1` or similar.

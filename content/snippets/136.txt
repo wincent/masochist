@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.85
-tags: site updates
+tags: site updates snippets
 ---
+
 3a836c9 Quick fix for products#index overflow
 4a54a08 Simplify dimensions
 7ae9898 Use semantic "time" element rather than a "span"

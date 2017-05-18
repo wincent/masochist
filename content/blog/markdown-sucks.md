@@ -1,6 +1,6 @@
 ---
 title: Markdown sucks
-tags: wikitext
+tags: wikitext blog
 ---
 
 As the author of a [lightweight markup translator](http://wikitext.rubyforge.org/), it was with some interest that I read [this post](http://eigenclass.org/R2/writings/fast-extensible-simplified-markdown-in-ocaml) by Mauricio Fernández titled "On the sad state of markdown processors, and getting thousandfold speed-ups".

@@ -1,5 +1,6 @@
 ---
 title: A farewell to self-checksumming
+tags: blog
 ---
 
 When the first public preview of [Synergy Advance](http://synergyadvance.com/) came out in May 2005 it was the first [Wincent product](http://www.wincent.com/a/products/) to incorporate a self-checksumming feature. Call it "anti-corruption" if you will, or call it "anti-piracy"; the basic premise is that the executable uses a checksum to guard against corruption, modifications or tampering.

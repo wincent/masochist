@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -27,4 +27,3 @@ This is *considerably* easier than building the documentation yourself.
 
 -   [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard) (for those who really want to do things the hard way)
 -   [Git documentation](/wiki/Git_documentation)
-

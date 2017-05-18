@@ -1,6 +1,7 @@
 ---
-tags: lua
+tags: lua wiki
 ---
+
 # Official site
 
 * http://lua.org/

@@ -1,5 +1,5 @@
 ---
-tags: site
+tags: site wiki
 cache_breaker: 1
 ---
 
@@ -302,4 +302,3 @@ Here is a list of the commits made between 27 April 2008 and 1 February 2009:
 
 -   Use "fuzzy matching" for forum comment dates; this eliminates repetitious labels like "Posted 2 days ago, edited 2 days ago" (this would be reduced to just "Posted 2 days ago", or just "2 days ago" when combined with the other changes to make dates more concise)
 -   Use more concise date formats; cuts down on repeated "noise" words on the page
-

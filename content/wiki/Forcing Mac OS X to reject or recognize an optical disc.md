@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 Lately I've had some problems with Mac OS X 10.4.7 not recognizing or allowing me to eject optical discs.

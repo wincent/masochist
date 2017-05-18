@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 When writing a [C](/wiki/C) extension for [Ruby](/wiki/Ruby) it may be necessary to have knowledge about the [text encoding](/wiki/text_encoding) of strings used at runtime. In my specific case I needed to take an input string and convert it to [UCS-2](/wiki/UCS-2) before handing it off to an external library, because that is the encoding expected by the library. In order to perform the conversion, I needed to be sure of the source encoding as well. The question is, how?

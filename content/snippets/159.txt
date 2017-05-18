@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.102
-tags: site updates
+tags: site updates snippets
 ---
+
 26fd260 Remove redundant comment-{box,bubble} style imports

@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ cache_breaker: 1
 # Other tools, not Vim-specific:
 
 -   Expect: <http://expect.sourceforge.net/>
-

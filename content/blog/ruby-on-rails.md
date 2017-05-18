@@ -1,5 +1,6 @@
 ---
 title: Ruby on Rails
+tags: blog
 ---
 
 I've spent today getting to know Ruby on Rails and I must say I am very impressed with two things about it so far:

@@ -1,6 +1,6 @@
 ---
 title: Command-T 0.9 released
-tags: releases command.t
+tags: releases command.t blog
 ---
 
 I've just released version 0.9 of the [Command-T](/wiki/Command-T) plug-in for [Vim](/wiki/Vim). This is a powerful, [open source](/wiki/open_source) file-navigation plug-in inspired by the "Command-T" feature in [TextMate](/wiki/TextMate).

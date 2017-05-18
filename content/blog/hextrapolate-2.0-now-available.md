@@ -1,5 +1,6 @@
 ---
 title: Hextrapolate 2.0 now available
+tags: blog
 ---
 
 Following a [successful beta testing period](http://www.wincent.com/a/news/archives/2007/04/hextrapolate_20.php) the new version of [Hextrapolate](http://hextrapolate.wincent.com) (formerly WinHex), 2.0, is now available.

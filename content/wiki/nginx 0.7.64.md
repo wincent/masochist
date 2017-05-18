@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 cache_breaker: 1
 ---
 
@@ -32,4 +32,3 @@ From the official announcement posted to the [nginx](/wiki/nginx) mailing list:
 # See also
 
 -   [Updating to nginx 0.7.64 on Red Hat Enterprise Linux 5.4](/wiki/Updating_to_nginx_0.7.64_on_Red_Hat_Enterprise_Linux_5.4)
-

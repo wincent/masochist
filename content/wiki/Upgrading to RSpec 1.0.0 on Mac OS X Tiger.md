@@ -1,5 +1,5 @@
 ---
-tags: rspec tiger updates
+tags: rspec tiger updates wiki
 cache_breaker: 1
 ---
 
@@ -131,4 +131,3 @@ At this point I decided to see if I could install [Spec::UI](/wiki/Spec%3a%3aUI)
 # See also
 
 -   [Upgrading to Spec::UI 0.2.2 on Mac OS X Tiger](/wiki/Upgrading_to_Spec%3a%3aUI_0.2.2_on_Mac_OS_X_Tiger)
-

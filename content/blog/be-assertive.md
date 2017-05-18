@@ -1,5 +1,6 @@
 ---
 title: Be assertive
+tags: blog
 ---
 
 Most imperative programming consists of lists of instructions, where subsequent instructions tend to depend on the results of previous instructions:

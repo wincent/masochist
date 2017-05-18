@@ -1,5 +1,6 @@
 ---
 title: Updated packrat performance numbers
+tags: blog
 ---
 
 The packrat performance numbers I [published yesterday](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/putting_the_pac.php) were deficient in a couple of ways. Firstly, performance was a little slow; I've been able to improve this somewhat with some minor changes. Secondly, the "parse event" numbers with memoizing turned off were inaccurate (too low), leading to an understatement of the number of events "saved" due to memoization; I've now corrected this as well.

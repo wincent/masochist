@@ -1,5 +1,5 @@
 ---
-tags: ragel snow.leopard os.x
+tags: ragel snow.leopard os.x wiki
 ---
 
 ```shell

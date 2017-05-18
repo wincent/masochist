@@ -1,5 +1,5 @@
 ---
-tags: red.hat git updates
+tags: red.hat git updates wiki
 cache_breaker: 1
 ---
 
@@ -77,4 +77,3 @@ A quick search of the [Wayback Machine](/wiki/Wayback_Machine) indicates that th
 # See also
 
 -   Original installation notes: [Installing Git 1.5.2.3 on Red Hat Enterprise Linux](/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux)
-

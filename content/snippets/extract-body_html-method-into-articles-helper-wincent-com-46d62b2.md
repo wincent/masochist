@@ -1,5 +1,6 @@
 ---
 title: Extract body_html method into Articles helper (wincent.com, 46d62b2)
+tags: snippets
 ---
 
 This allows the "new", "edit" and "show" templates to all use the same method for showing the body text.

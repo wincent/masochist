@@ -1,5 +1,6 @@
 ---
 title: Improved Google search and AdSense
+tags: blog
 ---
 
 I've made some minor changes to the Google-powered [site search](http://www.wincent.com/a/site-map/search/) today, namely, adding a Wincent logo and header to the search results:

@@ -1,8 +1,7 @@
 ---
-tags: skitch
+tags: skitch wiki
 ---
 
 # Official site
 
 -   <http://skitch.com/>
-

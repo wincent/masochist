@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 Just making sure that [Git 1.6.2-rc0](/wiki/Git_1.6.2-rc0) builds and passes the test suite on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6:

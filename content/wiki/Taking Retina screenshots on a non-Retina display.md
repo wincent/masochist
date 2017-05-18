@@ -1,5 +1,5 @@
 ---
-tags: firefox chrome retina
+tags: firefox chrome retina wiki
 cache_breaker: 1
 ---
 
@@ -22,4 +22,3 @@ You can also do it in Chrome, but it is fiddlier:
 5.  Make sure "Emulate viewport" is unchecked (otherwise the content gets resized)
 6.  Uncheck "Shrink to fit" (it doesn't seem to do anything useful)
 7.  Uncheck "Enable text autosizing"
-

@@ -1,5 +1,5 @@
 ---
-tags: ssl
+tags: ssl wiki
 cache_breaker: 1
 ---
 
@@ -170,4 +170,3 @@ Restart the services so that the changes get picked up:
 ## See also
 
 -   [SSL certificate renewal notes](/wiki/SSL_certificate_renewal_notes)
-

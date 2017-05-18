@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 cache_breaker: 1
 ---
 
@@ -9,4 +9,3 @@ cache_breaker: 1
 -   [Stubs](/wiki/Stubs)
 -   [Proxies](/wiki/Proxies)
 -   [Spies](/wiki/Spies)
-

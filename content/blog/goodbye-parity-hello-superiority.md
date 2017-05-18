@@ -1,5 +1,6 @@
 ---
 title: Goodbye parity, hello superiority
+tags: blog
 ---
 
 With memoizing:

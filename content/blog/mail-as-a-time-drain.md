@@ -1,5 +1,6 @@
 ---
 title: Mail as a time drain
+tags: blog
 ---
 
 When I first got on the Internet I used to want to know about email as soon as it was sent to me. I always set the checking interval to the minimum available; I can't remember what this was at first, but it was in the ballpark of 5, 10 or 15 minutes. When I got a mail client that could check every minute I dropped the interval to a minute.

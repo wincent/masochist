@@ -1,5 +1,6 @@
 ---
 title: atosym
+tags: blog
 ---
 
 I've just released a new product — [atosym](http://www.wincent.com/a/products/atosym/) — which is an address-to-symbol conversion aid for developers working with Apple's new dSYM debugging information file format.

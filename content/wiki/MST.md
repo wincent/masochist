@@ -1,6 +1,6 @@
 ---
 redirect: [[minimum spanning tree]]
-tags: 
+tags: wiki
 ---
 
 

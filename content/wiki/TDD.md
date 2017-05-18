@@ -1,6 +1,6 @@
 ---
 redirect: [[Test-Driven Development]]
-tags: 
+tags: wiki
 ---
 
 

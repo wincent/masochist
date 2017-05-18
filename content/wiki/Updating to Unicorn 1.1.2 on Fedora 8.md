@@ -1,5 +1,5 @@
 ---
-tags: updates unicorn fedora
+tags: updates unicorn fedora wiki
 ---
 
 Installation:

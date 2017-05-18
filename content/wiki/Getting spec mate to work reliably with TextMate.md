@@ -1,5 +1,5 @@
 ---
-tags: rspec textmate
+tags: rspec textmate wiki
 ---
 
 I've been using the excellent `spec_mate` tool from within the [RSpec](/wiki/RSpec) [TextMate](/wiki/TextMate) bundle to run [RSpec](/wiki/RSpec) [specifications](/wiki/specifications) from within the editor. The trouble was that it didn't work reliably -- half the time it would fail to run at all -- so I attributed the intermittent problems to bugs in `spec_mate`.

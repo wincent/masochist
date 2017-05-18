@@ -1,6 +1,6 @@
 ---
 title: The joy of manual options parsing in C
-tags: c
+tags: c blog
 ---
 
 It's written, it compiles, but it's not tested yet.

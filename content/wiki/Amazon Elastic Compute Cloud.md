@@ -1,6 +1,6 @@
 ---
 redirect: [[EC2]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: tiger heckle updates
+tags: tiger heckle updates wiki
 cache_breaker: 1
 ---
 
@@ -65,4 +65,3 @@ At the same time I performed a couple of other upgrades for software by the same
 
 -   [Upgrading to ruby2ruby 1.1.6 on Mac OS X Tiger](/wiki/Upgrading_to_ruby2ruby_1.1.6_on_Mac_OS_X_Tiger)
 -   [Upgrading to ParseTree 1.7.1 on Mac OS X Tiger](/wiki/Upgrading_to_ParseTree_1.7.1_on_Mac_OS_X_Tiger)
-

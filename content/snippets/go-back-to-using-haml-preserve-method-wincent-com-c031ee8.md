@@ -1,5 +1,6 @@
 ---
 title: Go back to using Haml "preserve" method (wincent.com, c031ee8)
+tags: snippets
 ---
 
 Will soon follow up with a patch to undo the ugliness from inside the "render" method. Clearly a hack, and I'd love to be rid of it, but will have to be that way for now.

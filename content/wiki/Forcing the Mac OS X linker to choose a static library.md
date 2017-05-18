@@ -1,5 +1,5 @@
 ---
-tags: development os.x
+tags: development os.x wiki
 ---
 
 I am currently working on a [Ruby](/wiki/Ruby) extension written in [C](/wiki/C) which uses an [ANTLR](/wiki/ANTLR)-generated [parser](/wiki/parser) and must therefore link against the [C target](/wiki/C_target) runtime library.
@@ -30,4 +30,3 @@ Basically, the idea is:
 1.  Create symlink `libname_s.a` which points to the static lib `libname.a`.
 2.  Tell the compiler to link against `libname_s` (ie. `-lname_s`).
 3.  Depending on where you create the symlink, may be necessary to add a `-L` switch so linker knows where to find it (for example, if you don't have the administrator privileges necessary to write to `/usr/local/` or don't wish to modify that directory).
-

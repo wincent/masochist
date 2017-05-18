@@ -1,6 +1,6 @@
 ---
 redirect: [[Frequently Asked Question]]
-tags: 
+tags: wiki
 ---
 
 

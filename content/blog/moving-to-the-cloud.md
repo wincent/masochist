@@ -1,6 +1,6 @@
 ---
 title: Moving to the cloud
-tags: site aws
+tags: site aws blog
 ---
 
 In general I have a strong dislike for buzzwords. But from time to time one of them takes root so firmly that you have no choice but to give up and embrace it.

@@ -1,5 +1,6 @@
 ---
 title: Ignore ref_name (snippets, 22e4a24)
+tags: snippets
 ---
 
 Ignore ref\_name for now seeing as it is not used for any real purpose. If I\

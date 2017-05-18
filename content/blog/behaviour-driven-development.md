@@ -1,5 +1,6 @@
 ---
 title: Behaviour-Driven Development
+tags: blog
 ---
 
 Today I felt like showing off my stunning ignorance of Ruby on Rails by doing a screencast on Behaviour-Driven Development.

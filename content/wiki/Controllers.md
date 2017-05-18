@@ -1,6 +1,6 @@
 ---
 redirect: [[Controller]]
-tags: 
+tags: wiki
 ---
 
 

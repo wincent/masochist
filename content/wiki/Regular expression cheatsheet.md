@@ -1,5 +1,5 @@
 ---
-tags: regex
+tags: regex wiki
 ---
 
 # Perl-compatible regular expression syntax
@@ -8,4 +8,3 @@ tags: regex
 -   Negative lookbehind: `(?<!foo)bar`
 -   Positive lookahead: `foo(?=bar)`
 -   Positive lookbehind: `(?<=foo)bar`
-

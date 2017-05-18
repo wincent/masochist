@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.74
-tags: site updates
+tags: site updates snippets
 ---
+
 0026cf2 Make prompt unselectable in shell-syntax "pre" elements
 d2c39cc Add new version of libv8 gem to vendor/cache
 958619a Update to Ruby 1.9.3-p327

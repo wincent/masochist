@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 *** t7003-filter-branch.sh ***
 ok 1 - setup
 ok 2 - rewrite identically

@@ -1,5 +1,6 @@
 ---
 title: Cocoa Bindings
+tags: blog
 ---
 
 Sadly I think I am alone in the world in not understanding Cocoa Bindings. Panther, and Cocoa Bindings, came out in October of 2003, well over two years ago. And *still* I find myself pulling my hair out whenever I try to do anything but the simplest binding of user interface elements in the preferences to the `NSUserDefaults` system.

@@ -1,5 +1,6 @@
 ---
 title: Fix vertical tab detection (REnamer, 4c78079)
+tags: snippets
 ---
 
 Correct wrong value for vertical tab.

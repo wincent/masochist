@@ -1,5 +1,6 @@
 ---
 title: Rails and validates_uniqueness_of
+tags: blog
 ---
 
 I'm a [Rails](http://www.wincent.com/knowledge-base/Rails) dabbler who has never actually deployed an application yet but has been working in spare moments on a new version of this site that will be powered by Rails.

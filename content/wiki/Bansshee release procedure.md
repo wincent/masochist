@@ -1,5 +1,5 @@
 ---
-tags: bansshee
+tags: bansshee wiki
 ---
 
 -   Clean-up working copy and commit any remaining changes.
@@ -19,4 +19,3 @@ tags: bansshee
 
 -   Upload archive
 -   Update website
-

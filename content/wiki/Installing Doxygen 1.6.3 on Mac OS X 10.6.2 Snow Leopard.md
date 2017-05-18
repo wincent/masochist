@@ -1,5 +1,5 @@
 ---
-tags: doxygen snow.leopard
+tags: doxygen snow.leopard wiki
 ---
 
 ```shell

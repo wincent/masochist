@@ -1,5 +1,6 @@
 ---
 title: HOM update
+tags: blog
 ---
 
 A couple of days ago I [wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) about my first venture into HOM (Higher Order Messaging) in the form of a `ifResponds` selector.

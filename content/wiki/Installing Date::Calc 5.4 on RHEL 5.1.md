@@ -1,5 +1,5 @@
 ---
-tags: red.hat perl
+tags: red.hat perl wiki
 ---
 
 These notes were made while installing [Date::Calc 5.4](/wiki/Date%3a%3aCalc_5.4) on [RHEL 5.1](/wiki/RHEL_5.1). It has a fairly complex dependency hierarchy:

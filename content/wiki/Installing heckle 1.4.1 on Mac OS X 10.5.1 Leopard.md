@@ -1,5 +1,5 @@
 ---
-tags: heckle
+tags: heckle wiki
 ---
 
 These notes were made while installing [heckle 1.4.1](/wiki/heckle_1.4.1) on [Mac OS X](/wiki/Mac_OS_X) 10.5.1 [Leopard](/wiki/Leopard). [Heckle](/wiki/Heckle) is a prerequisite for running the [Rspec](/wiki/Rspec) `pre_commit` [Rake](/wiki/Rake) task (required in order to submit patches).

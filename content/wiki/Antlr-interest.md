@@ -1,6 +1,6 @@
 ---
 redirect: [[ANTLR mailing list]]
-tags: 
+tags: wiki
 ---
 
 

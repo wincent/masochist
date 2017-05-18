@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.81
-tags: site updates
+tags: site updates snippets
 ---
+
 3e7d572 Bust "redlink" cache when modifying articles
 91c1a91 Fix a (harmless) typo in a code comment
 3bbc3af Move known link concern into ArticleObserver

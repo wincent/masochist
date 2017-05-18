@@ -1,5 +1,6 @@
 ---
 title: Update project settings for Leopard (Synergy, da40c00)
+tags: snippets
 ---
 
 This commit makes a number of changes to the project bundle to bring it in line with conventions already in use for other projects targetting Xcode 3.0 and Leopard.

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -236,4 +236,3 @@ From the official announcement to the [Git mailing list](/wiki/Git_mailing_list)
 # See also
 
 -   [Updating to Git 1.7.0](/wiki/Updating_to_Git_1.7.0)
-

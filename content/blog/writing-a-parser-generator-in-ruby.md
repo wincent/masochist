@@ -1,5 +1,6 @@
 ---
 title: Writing a parser generator in Ruby
+tags: blog
 ---
 
 [Ruby](http://www.ruby-lang.org/es/) is my favorite scripting language. Let me clarify: I *like* Ruby; it generates warm fuzzy feelings in my thorax when I think about it. This is quite different from my response to other scripting languages: [Perl](http://www.perl.org/) tends to provoke anything from respect to mild irritation; [PHP](http://php.net/) generates scorn, contempt, sometimes even pity; and [Python](http://python.org/) provokes uncertainty because I don't understand it.

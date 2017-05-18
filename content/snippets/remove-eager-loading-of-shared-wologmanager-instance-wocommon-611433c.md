@@ -1,5 +1,6 @@
 ---
 title: Remove eager loading of shared WOLogManager instance (WOCommon, 611433c)
+tags: snippets
 ---
 
 For faster startup times and greater simplicity, remove the eager loading of the shared WOLogManager instance.

@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ cache_breaker: 1
 -   Performance comparison with hardware [RAID](/wiki/RAID):
     -   <http://milek.blogspot.com/2006/08/hw-raid-vs-zfs-software-raid.html>
     -   <http://milek.blogspot.com/2006/08/hw-raid-vs-zfs-software-raid-part-ii.html>
-

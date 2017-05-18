@@ -1,6 +1,6 @@
 ---
 title: Rails 3: worth the upgrade?
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

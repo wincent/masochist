@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.142
-tags: site updates
+tags: site updates snippets
 ---
+
 1478907 Silence `deliver` deprecation messages
 a76aab9 Put quotes around regexes for compatibility with RSpec 3.2.2
 2b75dff RSpec 3: `be_true` -> `== true`

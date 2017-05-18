@@ -1,6 +1,6 @@
 ---
 title: Firefox and self-signed SSL certificates
-tags: firefox rant
+tags: firefox rant blog
 cache_breaker: 1
 ---
 

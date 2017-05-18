@@ -1,5 +1,6 @@
 ---
 title: Open vs closed: secrecy, competition and business
+tags: blog
 ---
 
 Lately I've been thinking about a couple of binary oppositions: open source versus proprietary, and more generally, openness versus secrecy. Starting from the basic premise that if you're selling software you're doing so in the hope of making some money (a living, even!), what then is the most likely course to be successful? Should you side with openness or with secrecy, with competitiveness or co-operation?

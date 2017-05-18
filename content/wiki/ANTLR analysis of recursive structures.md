@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 On page 280 of the [ANTLR book](/wiki/ANTLR_book) the following example rule appears:
@@ -82,4 +82,3 @@ Notice that:
 -   Despite the fact that the number of paths grows exponentially, we're still only interested in the very first choice in our path tree: that is, when looking at the very first symbol of lookahead, that's the point where we want to make our prediction: whatever happens later on the many possible paths can be handled by other rule invocations
 -   If we were to see some other input like **L L Z** then neither alternative would be predicted
 -   Although the number of possible paths grows exponentially, the prediction [DFA](/wiki/DFA) ends up being very simple
-

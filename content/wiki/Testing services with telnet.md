@@ -1,5 +1,5 @@
 ---
-tags: smtp imap
+tags: smtp imap wiki
 cache_breaker: 1
 ---
 
@@ -60,4 +60,3 @@ $ openssl s_client -host smtp.gmail.com -port 587 -starttls smtp
 # See also
 
 -   [This page](http://www.unixreview.com/documents/s=9700/ur0504l/ur0504l.html) has lots of examples on how you can use [telnet](/wiki/telnet) to manually test various services \[February 2010, the link is now dead\].
-

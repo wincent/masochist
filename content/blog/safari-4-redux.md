@@ -1,6 +1,6 @@
 ---
 title: Safari 4 redux
-tags: safari
+tags: safari blog
 ---
 
 So, [Safari](/wiki/Safari) has been out for a while now so I thought I'd revisit my [original comments](/safari-4-comments) on the beta.

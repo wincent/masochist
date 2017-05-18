@@ -1,5 +1,6 @@
 ---
 title: Xcode "Input/Output Files" bug
+tags: blog
 ---
 
 The other day [I was lamenting](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/clicketyclick.php) that sometimes I spend far too much time doing non-coding tasks in Xcode when I'd rather be churning out reams of beautifully syntax highlighted, immaculately indented and [wrapped](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/to_wrap_or_not.php) Objective-C code. Today's non-coding efforts (requiring a couple of hours) were directed against the infamous "Input/Output Files Dependency Bug". I say "infamous" because it's a theme which keeps cropping up on the Xcode Users mailing list.

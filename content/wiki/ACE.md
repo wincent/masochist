@@ -1,6 +1,6 @@
 ---
 redirect: [[ACE file format]]
-tags: 
+tags: wiki
 ---
 
 

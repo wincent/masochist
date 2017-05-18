@@ -1,5 +1,6 @@
 ---
 title: Drop redundant authentication specs (wincent.com, 1545453)
+tags: snippets
 ---
 
 The authentication code is so intimately intertwined with the User model and all the rest that it doesn't make much sense to try and test it independently.

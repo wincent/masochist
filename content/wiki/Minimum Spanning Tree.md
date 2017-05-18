@@ -1,5 +1,5 @@
 ---
-tags: algorithms
+tags: algorithms wiki
 cache_breaker: 1
 ---
 
@@ -20,4 +20,3 @@ Algorithms for computing [minimum spanning trees](/wiki/minimum_spanning_trees) 
 
 -   [Wikipedia](/wiki/Wikipedia) article on [minimum spanning trees](/wiki/minimum_spanning_trees): <http://en.wikipedia.org/wiki/Minimum_spanning_tree>
 -   [Wikipedia](/wiki/Wikipedia) article on [Karger, Klein & Targen's Expected linear time MST algorithm](/wiki/Karger%2c_Klein_%26_Targen%27s_Expected_linear_time_MST_algorithm): <http://en.wikipedia.org/wiki/Expected_linear_time_MST_algorithm>
-

@@ -1,5 +1,5 @@
 ---
-tags: yum rpm
+tags: yum rpm wiki
 ---
 
 For example, to see the files installed by the `gitweb` package:
@@ -12,4 +12,3 @@ $ repoquery --list '*gitweb*'
 # Source
 
 -   <http://cimarron-taylor.appspot.com/html/0901/090107-yum.html>
-

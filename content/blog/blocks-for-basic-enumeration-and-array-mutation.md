@@ -1,6 +1,6 @@
 ---
 title: Blocks for basic enumeration and array mutation
-tags: ruby objective.c
+tags: ruby objective.c blog
 cache_breaker: 1
 ---
 

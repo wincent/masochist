@@ -1,5 +1,5 @@
 ---
-tags: leopard rake updates
+tags: leopard rake updates wiki
 cache_breaker: 1
 ---
 

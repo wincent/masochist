@@ -1,5 +1,5 @@
 ---
-tags: ruby os.x
+tags: ruby os.x wiki
 cache_breaker: 1
 ---
 

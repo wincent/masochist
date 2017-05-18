@@ -1,5 +1,5 @@
 ---
-tags: monit
+tags: monit wiki
 ---
 
 From the official announcement to the [Monit mailing list](/wiki/Monit_mailing_list):

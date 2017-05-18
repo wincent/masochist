@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 These notes were made during the upgrade from [Subversion](/wiki/Subversion) version 1.3.2 to the new version 1.4.0.
@@ -419,4 +419,3 @@ Given that I've been working on a post-commit hook script written in [Ruby](/wik
 
 -   <http://www.pjhyett.com/articles/2005/10/25/installing-ruby-svn-bindings>
 -   <http://svn.collab.net/repos/svn/trunk/subversion/bindings/swig/INSTALL>
-

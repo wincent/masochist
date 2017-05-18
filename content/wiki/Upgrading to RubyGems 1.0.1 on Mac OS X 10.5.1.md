@@ -1,5 +1,5 @@
 ---
-tags: leopard rubygems updates
+tags: leopard rubygems updates wiki
 cache_breaker: 1
 ---
 

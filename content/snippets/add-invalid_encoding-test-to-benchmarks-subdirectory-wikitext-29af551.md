@@ -1,5 +1,6 @@
 ---
 title: Add invalid_encoding test to benchmarks subdirectory (wikitext, 29af551)
+tags: snippets
 ---
 
 This isn't so much a benchmark as a test, but I don't want to include it in the specs directory because it is such a long-running script.

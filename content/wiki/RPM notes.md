@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 [RPM](/wiki/RPM) recipes.

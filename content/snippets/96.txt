@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.65
-tags: site updates
+tags: site updates snippets
 ---
+
 2b8c481 Switch to new CloudFront hosts

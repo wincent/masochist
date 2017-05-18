@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #15
+tags: blog
 ---
 
 There are some applications that when they crash are capable of taking the whole system down. [Xcode](http://www.wincent.com/knowledge-base/Xcode) is one of them. I have no idea why or how they can do this. And I don't think it is actually the application's fault but something in [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X). That's my intuition anyway.

@@ -1,5 +1,6 @@
 ---
 title: Wincent away from 28 April 2007
+tags: blog
 ---
 
 I will be away this weekend (starting 28 April 2007) and will not have access to email. I'll be returning late on Tuesday (1 May 2007). There will therefore be some delay before replying if you email me during that period.

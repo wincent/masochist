@@ -1,5 +1,6 @@
 ---
 title: Teach tool new ways to get input (gdiff, 64de21c)
+tags: snippets
 ---
 
 The tool now has three modes of operation:

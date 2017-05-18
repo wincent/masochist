@@ -1,6 +1,6 @@
 ---
 redirect: [[Spies]]
-tags: 
+tags: wiki
 ---
 
 

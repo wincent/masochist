@@ -1,5 +1,6 @@
 ---
 title: Darn GoDaddy
+tags: blog
 ---
 
 GoDaddy continues [to scam](http://www.wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) with respect to private registrations but I've found one way to get around it.

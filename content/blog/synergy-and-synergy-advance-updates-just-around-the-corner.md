@@ -1,5 +1,6 @@
 ---
 title: Synergy and Synergy Advance updates just around the corner
+tags: blog
 ---
 
 A few minor disasters and an unexpected event or two have taken place during this last month that have set back development a bit. Things are now getting back to normal; I'm making this post to let you know that a new version of [Synergy](http://www.wincent.com/a/products/synergy-classic/) is ready for release and the next public preview release of [Synergy Advance](http://synergyadvance.com/) will follow closely. Read on if you are interested in knowing what happened during this last month:

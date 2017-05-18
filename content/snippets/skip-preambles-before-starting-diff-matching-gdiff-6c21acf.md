@@ -1,5 +1,6 @@
 ---
 title: Skip preambles before starting diff matching (gdiff, 6c21acf)
+tags: snippets
 ---
 
 In setting up the test sample files I inadvertently included a sample file generated using "git-show COMMIT\_ID", thus producing a commit description including the commit message and other preamble prior to the diff (in contrast to the "naked" output that you would get from "git-diff").

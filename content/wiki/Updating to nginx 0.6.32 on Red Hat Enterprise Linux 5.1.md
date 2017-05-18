@@ -1,5 +1,5 @@
 ---
-tags: nginx updates
+tags: nginx updates wiki
 ---
 
 Although the [nginx](/wiki/nginx) wiki does [describe how to swap in a new binary](http://wiki.codemongers.com/NginxCommandLine#utnbotf) without dropping any connections, I decided that a more conservative approach would be to stop the server, move the entire old `/usr/local/nginx/` folder out of the way, install the new version, and restart. That way I could back out of the update fairly cleanly and easily if anything went wrong.

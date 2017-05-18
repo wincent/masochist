@@ -1,5 +1,5 @@
 ---
-tags: ruby irb
+tags: ruby irb wiki
 cache_breaker: 1
 ---
 

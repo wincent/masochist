@@ -1,6 +1,6 @@
 ---
 title: Cucumber's plain text stories
-tags: cucumber
+tags: cucumber blog
 cache_breaker: 1
 ---
 

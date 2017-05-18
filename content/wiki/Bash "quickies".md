@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 ---
 
 # Performing a task for all items in a directory
@@ -37,4 +37,3 @@ Another example:
 # See also
 
 -   [Zapping resource forks from the commandline](/wiki/Zapping_resource_forks_from_the_commandline)
-

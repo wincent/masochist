@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 Notes made while updating from [Git 1.6.1.2](/wiki/Git_1.6.1.2) to [Git 1.6.1.3](/wiki/Git_1.6.1.3) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6:
@@ -16,4 +16,4 @@ Notes made while updating from [Git 1.6.1.2](/wiki/Git_1.6.1.2) to [Git 1.6.1.3]
 
     # now for the man pages
     wget http://www.kernel.org/pub/software/scm/git/git-manpages-1.6.1.3.tar.bz2
-    sudo tar xjv -C /usr/local/man -f git-manpages-1.6.1.3.tar.bz2 
+    sudo tar xjv -C /usr/local/man -f git-manpages-1.6.1.3.tar.bz2

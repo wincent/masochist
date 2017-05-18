@@ -1,5 +1,6 @@
 ---
 title: YAHOMI
+tags: blog
 ---
 
 [Yet Another Higher Order Messaging Implementation](http://notahat.com/nhcollections) for Objective-C comes to light.

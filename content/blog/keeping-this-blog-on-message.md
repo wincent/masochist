@@ -1,6 +1,6 @@
 ---
 title: Keeping this blog "on message"
-tags: 
+tags: blog
 ---
 
 Lately I think I've been misusing this blog for the wrong kind of posts. I think I've been posting far too many pieces with the "[rant](/tags/rant)" tag on them, and even the posts without that tag are often just for the purposes of venting frustration at the little problems I've been encountering during development.

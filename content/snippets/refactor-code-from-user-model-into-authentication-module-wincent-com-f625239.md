@@ -1,5 +1,6 @@
 ---
 title: Refactor code from User model into Authentication module (wincent.com, f625239)
+tags: snippets
 ---
 
 At the moment the authentication logic is spread across several sites: the User model, the ApplicationController (and by inheritance all its subclasses), and the Authentication module itself.

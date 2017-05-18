@@ -1,5 +1,6 @@
 ---
 title: Move NSControl overrides to top of file (REnamer, 1f43be9)
+tags: snippets
 ---
 
 This was originally to be part of c4bdee5; I wanted the scroller itself to monitor for frame changes, and so I want the overrides to be up the top of the file (I would be overriding either initWithFrame: or awakeFromNib).

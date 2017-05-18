@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.131
-tags: site updates
+tags: site updates snippets
 ---
+
 a71a511 Update to React 0.11
 d313d54 Update reactify as well (to v0.14.0)
 79b6282 Update to Browserify 4.2.1

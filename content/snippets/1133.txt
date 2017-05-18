@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.166 and 0.167
-tags: site updates
+tags: site updates snippets
 ---
+
 5c36730 Remove repo browser
 cb74b8c Remove Word model
 d96c713 Kill off monitorships

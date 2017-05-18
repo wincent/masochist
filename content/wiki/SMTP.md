@@ -1,5 +1,5 @@
 ---
-tags: smtp
+tags: smtp wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ In November 2009 [I started](/blog/outgoing-mail-changes) using [AuthSMTP](/wiki
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [SMTP](/wiki/SMTP): <http://en.wikipedia.org/wiki/SMTP>
-

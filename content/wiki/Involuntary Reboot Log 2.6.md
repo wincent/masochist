@@ -1,5 +1,5 @@
 ---
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log wiki
 ---
 
 This time a hard reset. Safari crashed and then wouldn't relaunch. All other applications seemed unaffected. Then when running a software update the machine just hang indefinitely at a blank screen with a spinning progress indicator (no drive noise).
@@ -10,4 +10,3 @@ This time a hard reset. Safari crashed and then wouldn't relaunch. All other app
 -   Start of recording keeping: 17 March 2010
 -   Total days to date: 71 days
 -   Average time between failures: 13.5 days
-

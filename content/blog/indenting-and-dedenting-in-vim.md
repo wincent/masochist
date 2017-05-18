@@ -1,6 +1,6 @@
 ---
 title: Indenting and dedenting in Vim
-tags: vim
+tags: vim blog
 cache_breaker: 1
 ---
 

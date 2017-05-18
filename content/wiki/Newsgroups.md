@@ -1,6 +1,6 @@
 ---
 redirect: [[Usenet]]
-tags: 
+tags: wiki
 ---
 
 

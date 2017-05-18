@@ -1,5 +1,5 @@
 ---
-tags: nginx fedora
+tags: nginx fedora wiki
 cache_breaker: 1
 ---
 

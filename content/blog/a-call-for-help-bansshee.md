@@ -1,5 +1,6 @@
 ---
 title: A call for help: Bansshee
+tags: blog
 ---
 
 > *Update, 16 March 2007:* Charles Steinman has kindly donated to cover the registrations for all three domains (dot-org, dot-com and dot-net). I'm leaving the original text of the post below for the historical record.

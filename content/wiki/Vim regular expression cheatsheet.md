@@ -1,6 +1,6 @@
 ---
 redirect: [[Vim regexes]]
-tags: 
+tags: wiki
 ---
 
 

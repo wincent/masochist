@@ -1,6 +1,6 @@
 ---
 redirect: [[Rake]]
-tags: 
+tags: wiki
 ---
 
 

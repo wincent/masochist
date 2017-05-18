@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance 0.5b seeded to beta testers
+tags: blog
 ---
 
 If you've been monitoring the [nightly builds](http://www.wincent.com/s/nightlies/) then you'll know that [Synergy Advance](http://advance.wincent.com/) 0.5 has been nearing completion.

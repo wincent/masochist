@@ -1,5 +1,6 @@
 ---
 title: Porting to Objective-C 2.0
+tags: blog
 ---
 
 I am pleasantly suprised to report that it only took me 2 days to get [WOTest](http://test.wincent.com/) ported to Objective-C 2.0, and in reality not really 2 whole days because I've had a lot of other tasks and chores to do as well; we're probably talking about 6 to 8 hours of actual coding time to move replace deprecated runtime manipulation with calls to the new API, switching to properties, moving to fast enumeration, and finally migrating to garbage collection. There are still some minor issues and possible bugs in Leopard to solve (either bugs in Leopard or I'm misunderstanding the documentation), but the workarounds currently in place all work and all tests pass. There were various problems which slowed me down along the way, but that's what you get when you're working with pre-release software; the actual coding in itself was very straightforward.

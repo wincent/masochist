@@ -1,5 +1,5 @@
 ---
-tags: mogenerator
+tags: mogenerator wiki
 cache_breaker: 1
 ---
 

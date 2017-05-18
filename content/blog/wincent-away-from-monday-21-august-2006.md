@@ -1,5 +1,6 @@
 ---
 title: Wincent away from Monday 21 August 2006
+tags: blog
 ---
 
 I will be travelling starting Monday 21 August 2006 and will not have access to email. I don't yet know my exact return date but I estimate that I will be away for 5 to 7 days. There will therefore be some delay before replying if you email me during that period.

@@ -1,6 +1,6 @@
 ---
 redirect: [[greedy algorithm]]
-tags: 
+tags: wiki
 ---
 
 

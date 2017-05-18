@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.98
-tags: site updates
+tags: site updates snippets
 ---
+
 4ef2908 Apply some minor Ruby style fixes

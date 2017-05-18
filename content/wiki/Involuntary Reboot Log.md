@@ -1,5 +1,5 @@
 ---
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ Originally I used my weblog for the purposes of posting log entries, but later s
 # See also
 
 -   [All items tagged with "involuntary.reboot.log"](/tags/involuntary.reboot.log)
-

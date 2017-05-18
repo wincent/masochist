@@ -1,5 +1,5 @@
 ---
-tags: webkit
+tags: webkit wiki
 cache_breaker: 1
 ---
 

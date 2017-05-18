@@ -1,6 +1,6 @@
 ---
 redirect: [[Security in Rails]]
-tags: 
+tags: wiki
 ---
 
 

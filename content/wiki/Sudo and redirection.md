@@ -1,5 +1,5 @@
 ---
-tags: unix
+tags: unix wiki
 ---
 
 If you've ever wanted to write text to a root-owned file you may have been frustrated to see that:

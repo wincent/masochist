@@ -1,5 +1,5 @@
 ---
-tags: tmux
+tags: tmux wiki
 ---
 
 I previously had to do this on an old CentOS box (see "[Building tmux 1.7 on CentOS 5.8](/wiki/Building_tmux_1.7_on_CentOS_5.8)"), but now find myself having to do it on an even old box. Since then, however, a newer version of [tmux](/wiki/tmux) is out; the basic steps work just the same:

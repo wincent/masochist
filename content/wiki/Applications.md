@@ -1,6 +1,6 @@
 ---
 redirect: [[Application]]
-tags: 
+tags: wiki
 ---
 
 

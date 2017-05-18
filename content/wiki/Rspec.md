@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ cache_breaker: 1
 -   [Context](/wiki/Context)
 -   [Shoulda](/wiki/Shoulda)
 -   [Micronaut](/wiki/Micronaut) (used as the basis for [RSpec 2](/wiki/RSpec_2))
-

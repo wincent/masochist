@@ -1,6 +1,6 @@
 ---
 title: First impressions of the Apple Magic Trackpad
-tags: apple magic.trackpad magic.mouse
+tags: apple magic.trackpad magic.mouse blog
 cache_breaker: 1
 ---
 

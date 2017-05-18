@@ -1,6 +1,6 @@
 ---
 title: Mac OS X note-taking apps
-tags: notational.velocity
+tags: notational.velocity blog
 ---
 
 Having been burnt many times over the years by vendor lock-in, I've learnt to always prefer open formats. When it comes to note-taking, I've been using the most open format of them all — the plain text file — for years now. Stuff that may be of interest to others goes on the [wiki](/wiki/wiki), but there is a large class of jotted-down scribbles that ends up living in text files on my local filesystem only.

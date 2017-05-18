@@ -1,6 +1,6 @@
 ---
 redirect: [[adjacency matrix]]
-tags: 
+tags: wiki
 ---
 
 

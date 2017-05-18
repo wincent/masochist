@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.4 released
-tags: synergy releases
+tags: synergy releases blog
 ---
 
 I'm pleased to announce the availability of the latest release in the [Synergy](/wiki/Synergy) stable series (version 3.4). Synergy is a lightweight, customizable and reliable [iTunes](/wiki/iTunes) controller.

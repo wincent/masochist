@@ -1,5 +1,6 @@
 ---
 title: Update release procedure and development notes (Synergy, 10bd7f6)
+tags: snippets
 ---
 
 Lots has changed since these notes were originally written; there are still references to CVS in there, for example, and that was phased out a long time ago in favor of Subversion, then SVK and finally Git.

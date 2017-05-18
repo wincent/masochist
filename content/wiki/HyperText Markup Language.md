@@ -1,6 +1,6 @@
 ---
 redirect: [[HTML]]
-tags: 
+tags: wiki
 ---
 
 

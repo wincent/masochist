@@ -1,5 +1,6 @@
 ---
 title: Introduce parser_t struct (wikitext, f55c418)
+tags: snippets
 ---
 
 This will make passing parameters around much easier because we'll be able to pass a single pointer rather than a raft of variables. As a starting point, I've converted the "start para if necessary" function to accept a pointer to the new struct as one of its parameters.

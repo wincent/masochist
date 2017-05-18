@@ -1,6 +1,6 @@
 ---
 title: Xbox Live
-tags: microsoft
+tags: microsoft blog
 ---
 
 This is old news for most, but new for me thanks to the reminder email I just received that my "Xbox Live Gold" membership subscription will be expiring next month. This is something that I've had for 2 or 3 years now in order to watch Netflix from the Xbox, and I've hated it the whole time: shitty performance, wonky connections, and annoying forced updates. It was pretty routine for a typical viewing session to be interrupted, often multiple times, with invasive alerts advising me "You have been disconnected from Xbox Live" and requiring me to reconnect and restart Netflix. Yes, my router is correctly configured. No, the problem is not with Netflix.

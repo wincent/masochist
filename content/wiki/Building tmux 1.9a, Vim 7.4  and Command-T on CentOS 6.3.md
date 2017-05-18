@@ -1,5 +1,5 @@
 ---
-tags: ruby python vim libevent command.t tmux centos redhat ncurses
+tags: ruby python vim libevent command.t tmux centos redhat ncurses wiki
 cache_breaker: 1
 ---
 

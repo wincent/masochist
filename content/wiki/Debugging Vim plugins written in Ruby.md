@@ -1,5 +1,5 @@
 ---
-tags: ruby vim
+tags: ruby vim wiki
 cache_breaker: 1
 ---
 

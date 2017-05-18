@@ -1,5 +1,5 @@
 ---
-tags: dns chrome
+tags: dns chrome wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ Note that that page also has a handy list of what's currently in the cache, maki
 # Source
 
 -   <http://superuser.com/questions/203674/how-to-clear-flush-the-dns-cache-in-google-chrome>
-

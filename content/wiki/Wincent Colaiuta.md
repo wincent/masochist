@@ -1,5 +1,5 @@
 ---
-tags: wincent
+tags: wincent wiki
 ---
 
 About [Wincent Colaiuta](/wiki/Wincent_Colaiuta): <http://wincent.com/a/about/wincent/>

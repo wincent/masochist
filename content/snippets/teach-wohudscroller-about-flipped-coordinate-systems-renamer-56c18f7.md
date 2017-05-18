@@ -1,5 +1,6 @@
 ---
 title: Teach WOHUDScroller about flipped coordinate systems (REnamer, 56c18f7)
+tags: snippets
 ---
 
 Similiar to commit f19e388, here we teach WOHUDScroller to draw correctly depending on whether its coordinate system is flipped or not, in this case specifically with respect to the arrows.

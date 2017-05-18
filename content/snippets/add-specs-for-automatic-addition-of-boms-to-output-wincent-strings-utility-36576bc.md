@@ -1,5 +1,6 @@
 ---
 title: Add specs for automatic addition of BOMs to output (Wincent Strings Utility, 36576bc)
+tags: snippets
 ---
 
 Make sure that when the input file has no BOM, we automatically add one to the output stream.

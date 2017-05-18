@@ -1,5 +1,5 @@
 ---
-tags: mailman gnu
+tags: mailman gnu wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ I previously used it to host mailing lists, but I am currently (as of April 2008
 ## See also
 
 -   Official [Mailman](/wiki/Mailman) website: <http://www.gnu.org/software/mailman/index.html>
-

@@ -1,5 +1,6 @@
 ---
 title: Git changes
+tags: blog
 ---
 
 I've started adding more [Git](http://www.wincent.com/knowledge-base/Git) content to the [wiki](http://www.wincent.com/knowledge-base/wiki), and the more I explore, the more impressed I am.

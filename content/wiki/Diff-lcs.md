@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 <http://rubyforge.org/projects/ruwiki/>

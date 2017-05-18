@@ -1,6 +1,6 @@
 ---
 redirect: [[@executable path, @load path and @rpath]]
-tags: 
+tags: wiki
 ---
 
 

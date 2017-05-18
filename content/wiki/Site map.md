@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 There used to be a site map here, but it got so horribly out of date that I removed it.

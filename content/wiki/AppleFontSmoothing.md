@@ -1,5 +1,5 @@
 ---
-tags: consolas apple.font.smoothing
+tags: consolas apple.font.smoothing wiki
 ---
 
 These are screenshots of the different possible settings for `AppleFontSmoothing` that I took on my previous machine with [Consolas](/wiki/Consolas) 13. On my current machine I'm running with Consolas 12.

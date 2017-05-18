@@ -1,5 +1,5 @@
 ---
-tags: rspec rails
+tags: rspec rails wiki
 ---
 
 The general procedure for handling upgrades in the [Behaviour-Driven Development](/wiki/Behaviour-Driven_Development) cycle fits within the [continuous integration](/wiki/continuous_integration) style.
@@ -17,4 +17,3 @@ Finally, we resume [Autotest](/wiki/Autotest) and everything should just keep wo
 # See also
 
 -   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
-

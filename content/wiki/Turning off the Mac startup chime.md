@@ -1,5 +1,5 @@
 ---
-tags: mac startup.chime
+tags: mac startup.chime wiki
 cache_breaker: 1
 ---
 

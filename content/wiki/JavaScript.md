@@ -1,5 +1,5 @@
 ---
-tags: development javascript
+tags: development javascript wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ Furthermore, in recent years people have been using JavaScript for server-side c
 -   The (accurately titled), "JavaScript Semicolon Insertion: Everything you need to know": <http://inimino.org/~inimino/blog/javascript_semicolons>
 -   JavaScript Garden, "a growing collection of documentation about the most quirky parts of the JavaScript programming language": <http://bonsaiden.github.com/JavaScript-Garden/>
 -   How to load scripts: <http://www.html5rocks.com/en/tutorials/speed/script-loading/>
-

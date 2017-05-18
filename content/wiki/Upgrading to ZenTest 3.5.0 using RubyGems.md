@@ -1,5 +1,5 @@
 ---
-tags: zentest rubygems updates
+tags: zentest rubygems updates wiki
 cache_breaker: 1
 ---
 
@@ -51,4 +51,3 @@ cache_breaker: 1
 
 -   Direct download: <http://rubyforge.org/frs/download.php/19557/zentest-3.5.0.gem>
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11043>
-

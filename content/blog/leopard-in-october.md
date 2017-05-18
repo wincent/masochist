@@ -1,5 +1,6 @@
 ---
 title: Leopard in October
+tags: blog
 ---
 
 So it's [official](http://www.apple.com/hotnews/), not just [a rumor](http://www.appleinsider.com/articles/07/04/12/apple_delays_leopard_release_until_october.html).

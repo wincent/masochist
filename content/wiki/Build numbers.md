@@ -1,5 +1,5 @@
 ---
-tags: xcode development wincent
+tags: xcode development wincent wiki
 ---
 
 When writing up the article "[Setting up a nightly build system](/wiki/Setting_up_a_nightly_build_system)" I implemented a system that used a [build number](/wiki/build_number) based on the current [Subversion](/wiki/Subversion) revision of the code base. The revision number appeared in brackets after the main version number; for example:

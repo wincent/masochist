@@ -1,5 +1,5 @@
 ---
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log wiki
 ---
 
 -   Kernel panics: 1
@@ -8,4 +8,3 @@ tags: involuntary.reboot.log
 -   Start of recording keeping: 17 March 2010
 -   Total days to date: 66 days
 -   Average time between failures: 16.5 days
-

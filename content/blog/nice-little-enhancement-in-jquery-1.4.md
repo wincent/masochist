@@ -1,6 +1,6 @@
 ---
 title: Nice little enhancement in jQuery 1.4
-tags: jquery
+tags: jquery blog
 ---
 
 [jQuery](/wiki/jQuery) 1.3.2:

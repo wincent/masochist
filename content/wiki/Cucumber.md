@@ -1,5 +1,5 @@
 ---
-tags: testing cucumber
+tags: testing cucumber wiki
 cache_breaker: 1
 ---
 
@@ -24,4 +24,3 @@ cache_breaker: 1
 # See also
 
 -   Official site: <http://cukes.info/>
-

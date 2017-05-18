@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 cache_breaker: 1
 ---
 
@@ -15,4 +15,3 @@ cache_breaker: 1
 # Deprecated
 
 -   [SuperDuper!](/wiki/SuperDuper%21) backups of boot disk to encrypted external drive; no longer doing this because I divested myself of these ancient relics
-

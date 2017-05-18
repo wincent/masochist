@@ -1,5 +1,5 @@
 ---
-tags: development testing
+tags: development testing wiki
 cache_breaker: 1
 ---
 
@@ -24,4 +24,3 @@ An example of a [BDD](/wiki/BDD) framework is [RSpec](/wiki/RSpec). I've used it
 -   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
 -   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
 -   [Mocking in Rails](/wiki/Mocking_in_Rails)
-

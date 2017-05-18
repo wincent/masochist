@@ -1,5 +1,5 @@
 ---
-tags: screen
+tags: screen wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 # See also
 
 -   [GNU Screen cheatsheet](/wiki/GNU_Screen_cheatsheet)
-

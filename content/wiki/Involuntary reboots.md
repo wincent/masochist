@@ -1,6 +1,6 @@
 ---
 redirect: [[involuntary reboot]]
-tags: 
+tags: wiki
 ---
 
 

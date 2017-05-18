@@ -1,5 +1,6 @@
 ---
 title: Switch to WOPublic check and assert macros (WOCommon, c9571fb)
+tags: snippets
 ---
 
 Remove the old assertion macros defined in WOCommon and replace references to them with the new macros provided by WOPublic.

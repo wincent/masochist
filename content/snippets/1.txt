@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.22
-tags: site
+tags: site snippets
 ---
+
 d93802f Tidy up parse_tag_list implementation
 efacb1f Be more specific about ignored exception in add_tag method
 2545e27 Reformat ActsAsTaggable specs

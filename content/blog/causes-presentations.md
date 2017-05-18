@@ -1,6 +1,6 @@
 ---
 title: Causes presentations
-tags: rails git javascript sass jasmine causes compass prolog gerrit submodules
+tags: rails git javascript sass jasmine causes compass prolog gerrit submodules blog
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ In roughly reverse chronological order, they are:
 -   <http://ghurrell.github.com/gerrit-best-practices-tech-talk> (a follow-up on how to get the most out of Gerrit)
 -   <http://ghurrell.github.com/gerrit-intro-tech-talk> (an intro for the team made when we started using [Gerrit](/wiki/Gerrit) for code review)
 -   <http://ghurrell.github.com/git-submodules-tech-talk> (this one also covers some Git fundamentals)
-

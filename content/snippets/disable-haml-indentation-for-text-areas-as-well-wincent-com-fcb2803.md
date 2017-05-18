@@ -1,5 +1,6 @@
 ---
 title: Disable Haml indentation for text areas as well (wincent.com, fcb2803)
+tags: snippets
 ---
 
 In "edit" forms Haml was indenting the text that appeared inside &lt;textarea&gt;&lt;/textarea&gt; spans, which basically mangled the wikitext, making it impossible to edit any article without ruining it.

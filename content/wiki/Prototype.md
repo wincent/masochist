@@ -1,5 +1,5 @@
 ---
-tags: javascript prototype
+tags: javascript prototype wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 # Links
 
 -   Official site: <http://www.prototypejs.org/>
-

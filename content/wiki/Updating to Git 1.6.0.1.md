@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 cache_breaker: 1
 ---
 
@@ -138,4 +138,3 @@ Should have noticed that `git-shell` also got moved in the change to 1.6.0. So t
 
 1.  Change `/usr/local/bin/git-shell` to `/usr/local/libexec/git-core/git-shell` in `/etc/shells`
 2.  Change the shell for the user: `chsh -s /usr/local/libexec/git-core/git-shell wincenzo`
-

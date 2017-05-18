@@ -1,5 +1,6 @@
 ---
 title: Git traction
+tags: blog
 ---
 
 The barometer is on the move and it indicates a groundswell of interest in [Git](http://www.wincent.com/knowledge-base/Git). At first I wondered if this was just because *I* have become interested in Git lately (here's my [most recent post](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/git_hooks.php)) and so have been on the lookout for more Git-related content. Then I realized that this isn't just me looking for confirmation; the confirmation is actually coming knocking on my door with various people who are in my feeds list writing about Git.

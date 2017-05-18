@@ -1,5 +1,5 @@
 ---
-tags: sendmail git
+tags: sendmail git wiki
 ---
 
 While `git send-email` itself is a fairly simple, conservatively-written program, it is written in [Perl](/wiki/Perl) and depends on a number of [CPAN](/wiki/CPAN) modules and that in turn makes it fairly brittle and sensitive to changes in the system. In particular, if you move outside of the most basic usage patterns and start wanting to use things like [SMTP](/wiki/SMTP) authentication and [SSL](/wiki/SSL) then you're more likely to run into problems. For example, see "[Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3a%3aSMTP%3a%3aSSL_for_sending_patches_with_Git_over_secure_SMTP)", which describes the problems I had when first trying to get it to work.

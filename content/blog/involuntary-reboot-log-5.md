@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot log #5
+tags: blog
 ---
 
 Much like [last time]() but with an updated version of the OS, again a panic on boot. Tried unplugging the USB cable connecting the UPS and was able to boot.

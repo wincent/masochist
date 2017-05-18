@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -53,4 +53,3 @@ Or just use [Loupe](https://github.com/wincent/loupe).
 
 -   <http://briancarper.net/blog/176/vim-regexes> (nice list of regex inconsistencies)
 -   <http://briancarper.net/blog/448/vim-regexes-are-awesome> (list of regex Pro-Tips)
-

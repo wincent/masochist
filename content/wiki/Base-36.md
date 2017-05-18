@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [Base-36](/wiki/Base-36) is the highest base representable using only alphanumeric characters for each digit. The possible range for each digit is from 0 through to 9 then a through z (inclusive).

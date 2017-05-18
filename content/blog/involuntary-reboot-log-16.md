@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #16
+tags: blog
 ---
 
 Very similar to the problem I saw [back at the start of this month](http://www.wincent.com/a/about/wincent/weblog/archives/2007/09/anchor.php): after installing a preview release of a certain operating system the DVD *appeared* as being mounted on the Desktop but both the Finder and the [Terminal](http://www.wincent.com/knowledge-base/Terminal) reported it to have no contents at all. I didn't try ejecting the disk but instead went straight to the System Profiler application, which beachballed for a long time before telling me that no optical drives were connected to the machine. The putatively non-existent disk burner then spat out the disc without being asked to, accompanied by a horrible screeching sound.

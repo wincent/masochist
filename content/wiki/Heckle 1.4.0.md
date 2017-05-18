@@ -1,5 +1,5 @@
 ---
-tags: heckle
+tags: heckle wiki
 ---
 
 The new version of [Heckle](/wiki/Heckle), [Heckle 1.4.0](/wiki/Heckle_1.4.0), was released on 18 May 2007.
@@ -19,4 +19,3 @@ From: <http://rubyforge.org/frs/shownotes.php?release_id=11796>
 # See also
 
 -   [Upgrading to Heckle 1.4.0 on Mac OS X Tiger](/wiki/Upgrading_to_Heckle_1.4.0_on_Mac_OS_X_Tiger)
-

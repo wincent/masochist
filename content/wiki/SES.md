@@ -1,6 +1,6 @@
 ---
 redirect: [[Amazon Simple Email Service]]
-tags: 
+tags: wiki
 ---
 
 

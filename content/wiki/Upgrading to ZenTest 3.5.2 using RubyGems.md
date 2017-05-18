@@ -1,5 +1,5 @@
 ---
-tags: zentest updates
+tags: zentest updates wiki
 cache_breaker: 1
 ---
 
@@ -58,4 +58,3 @@ cache_breaker: 1
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11408>
-

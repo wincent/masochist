@@ -1,5 +1,6 @@
 ---
 title: Clever boolean return trick
+tags: blog
 ---
 
 I was just randomly browsing the [HexFiend](http://ridiculousfish.com/hexfiend/) source when the [following snippet](http://ridiculousfish.com/svn/HexFiend/trunk/sources/threading/FishThread.m) caught my eye:

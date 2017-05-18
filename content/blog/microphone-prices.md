@@ -1,5 +1,6 @@
 ---
 title: Microphone prices
+tags: blog
 ---
 
 I'm currently looking at getting a better microphone to do screencasts. The one I'm most interested in goes for between $84 and $100 in the US (57€ to 68€). Purchased locally here in Spain the mic goes for upwards of 130€.

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 You can use `git cherry` to see which commits on a topic branch have been merged into its upstream branch.
@@ -25,4 +25,3 @@ Notes:
 -   the list comprises all commits which exist on the topic (`rails3`) and do not exist on the upstream (`master`)
 -   commits whose equivalent change exists upstream are prefixed with a `-` (each change-set or diff has a patch ID; if a commit with the same patch ID exists upstream but has a different SHA-1 hash, it will be labelled like this)
 -   commits with no equivalent upstream are prefixed with a `+`
-

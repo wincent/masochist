@@ -1,6 +1,6 @@
 ---
 title: Synergy 5.0a release
-tags: synergy releases mountain.lion
+tags: synergy releases mountain.lion blog
 ---
 
 For the bold and adventurous, the new alpha preview of the next version of [Synergy](/wiki/Synergy) (5.0a) is now out. Synergy is a lightweight, highly-customizable [iTunes](/wiki/iTunes) controller.

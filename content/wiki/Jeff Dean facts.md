@@ -1,5 +1,5 @@
 ---
-tags: jeff.dean
+tags: jeff.dean wiki
 ---
 
 My favorite Jeff Dean facts (selected from [this Quora page](http://www.quora.com/Jeff-Dean/What-are-all-the-Jeff-Dean-facts)):
@@ -10,4 +10,3 @@ My favorite Jeff Dean facts (selected from [this Quora page](http://www.quora.co
 -   Jeff Dean puts his pants on one leg at a time, but if he had more legs, you would see that his approach is O(log n).
 -   The x86-64 spec includes several undocumented instructions marked 'private use'. They are actually for Jeff Dean's use.
 -   Jeff Dean once shifted a bit so hard, it ended up on another computer.
-

@@ -1,5 +1,5 @@
 ---
-tags: rsync
+tags: rsync wiki
 ---
 
 # Example
@@ -24,4 +24,3 @@ $ rsync -avhW --progress some_dir/ some_dest/
 -   `-h`: "human-readable" units
 -   `-W`: copy whole files at a time (avoid overhead of rsync diff algorithm)
 -   `--progress`: show progress during transfer
-

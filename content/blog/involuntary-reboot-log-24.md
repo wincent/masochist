@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #24
+tags: blog
 ---
 
 Only a few days since the last kernel panic and I've just had another hard reset. This time the machine just froze completely with no explanation (mouse pointer frozen, clock frozen, no visible movement on screen or sound from the hard drive). This machine may well be on its last legs.

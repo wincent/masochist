@@ -1,5 +1,6 @@
 ---
 title: FixtureReplacement
+tags: blog
 ---
 
 Just added a [FixtureReplacement cheatsheet](http://www.wincent.com/knowledge-base/FixtureReplacement%20cheatsheet) to the Knowledge Base, seeing as the only documentation for the plug-in at the moment is in the form of a screencast (which isn't too easy to consult!).

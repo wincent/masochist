@@ -1,5 +1,5 @@
 ---
-tags: rails memcached
+tags: rails memcached wiki
 cache_breaker: 1
 ---
 

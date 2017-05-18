@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 See the [SoX](/wiki/SoX) project page (<http://www.sourceforge.net/projects/sox>) at [SourceForge](/wiki/SourceForge) for an appropriate download link from a local mirror.

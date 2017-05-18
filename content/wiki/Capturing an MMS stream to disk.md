@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 I made these notes while attempting to save copies of the Bill Gates deposition videos, streamed over [MMS](/wiki/MMS), to the local drive.

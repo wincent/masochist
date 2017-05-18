@@ -1,5 +1,5 @@
 ---
-tags: rubygems updates
+tags: rubygems updates wiki
 ---
 
 Notes made while updating to [RubyGems 1.3.1](/wiki/RubyGems_1.3.1) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.5:

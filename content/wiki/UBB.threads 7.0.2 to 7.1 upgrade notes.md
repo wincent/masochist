@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads
+tags: ubb.threads wiki
 ---
 
 -   Log in to control panel and close board
@@ -53,4 +53,3 @@ tags: ubb.threads
     sudo rm -rf install
 
 -   Open the forums again
-

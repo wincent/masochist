@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.26
-tags: site
+tags: site snippets
 ---
+
 a3dc477 Update to Rails 3.0.1 (security fix) and RSpec 2.0.1
 6164861 Fix broken comment feeds on blog posts and wiki articles (Rails 3)
 b245733 Update specs to catch Atom feed problems like issue #1227

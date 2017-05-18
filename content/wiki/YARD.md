@@ -1,5 +1,5 @@
 ---
-tags: yard
+tags: yard wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
 # Example site using YARD-generated documentation
 
 -   <http://wikitext.rubyforge.org/>
-

@@ -1,5 +1,6 @@
 ---
 title: Darn PayPal
+tags: blog
 ---
 
 A customer just brought it to my attention that my PayPal order pages are showing up in Spanish, thus making it impossible or difficult for people who don't understand Spanish to complete the purchase. I don't know when this started, whether it is a matter of days or of weeks, nor how many sales might have been lost as a result.

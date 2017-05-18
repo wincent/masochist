@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 # First lines of defense (pre-backup)
@@ -62,4 +62,3 @@ Encryption
 # See also
 
 -   [Backup strategy](/wiki/Backup_strategy)
-

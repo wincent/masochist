@@ -1,5 +1,5 @@
 ---
-tags: leopard ruby.debug updates
+tags: leopard ruby.debug updates wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: leopard fastri updates
+tags: leopard fastri updates wiki
 cache_breaker: 1
 ---
 

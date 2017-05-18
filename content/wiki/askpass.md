@@ -1,6 +1,6 @@
 ---
 redirect: /products/askpass
-tags: 
+tags: wiki
 ---
 
 

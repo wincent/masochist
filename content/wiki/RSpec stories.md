@@ -1,5 +1,5 @@
 ---
-tags: rspec stories
+tags: rspec stories wiki
 cache_breaker: 1
 ---
 
@@ -20,4 +20,3 @@ At the time of writing (March 2008) the *official* documentation for the [story 
 -   Very short intro to [RSpec stories](/wiki/RSpec_stories): <http://times.usefulinc.com/2008/01/12-rspec-stories>
 -   *Beginner's guide to RSpec on Story Runner*: <http://www.vaporbase.com/postings/Beginners_Guide_to_Rspec_on_Story_Runner>
 -   Another brief intro: <http://marcricblog.blogspot.com/2008/03/ruby-from-testunit-to-rspec-part-3-of-3.html>
-

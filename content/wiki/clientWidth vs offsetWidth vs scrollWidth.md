@@ -1,5 +1,5 @@
 ---
-tags: css
+tags: css wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
     -   <https://developer.mozilla.org/en-US/docs/Web/API/Element.clientWidth>
     -   <https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement.offsetWidth>
     -   <https://developer.mozilla.org/en-US/docs/Web/API/Element.scrollWidth>
-

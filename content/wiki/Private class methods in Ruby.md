@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 The `private`, `public` and `protected` visibility methods have no effect for class methods:

@@ -1,5 +1,6 @@
 ---
 title: TextMate wins
+tags: blog
 ---
 
 I finally gave in and purchased a license for [TextMate](http://macromates.com/). I say "gave in" because I couldn't really justify purchasing yet another text editor when I already had a costly license for [BBEdit](http://www.barebones.com/products/bbedit/) (still my preferred tool for HTML editing); [TextEdit](http://www.apple.com/support/mac101/work/23/) is free, comes with Mac OS X, and is great for bashing out very quick and dirty plain text documents and notes; and [Xcode](http://www.apple.com/macosx/features/xcode/) is free and by far my favorite editor for working with Objective-C code (with excellent Code sense integration, split editor views, great global "find in project" interface and lots of other great things).

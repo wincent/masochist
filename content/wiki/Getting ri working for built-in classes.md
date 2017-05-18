@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 Ever since installing [Ruby](/wiki/Ruby) I was puzzled as to why [ri](/wiki/ri) couldn't find the basic documentation for built-in classes like `String`. Typing `ri String` would give me documentation for third-party additions to the `String` class (for example, from [Rails](/wiki/Rails)) but would show nothing about the standard methods.
@@ -39,4 +39,3 @@ So I went back and did this as described in "[Building and installing Ruby 1.8.5
 # See also
 
 -   [FastRI](/wiki/FastRI).
-

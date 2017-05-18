@@ -1,5 +1,6 @@
 ---
 title: Replace comment macros with literals (WOCommon, 096ce6e)
+tags: snippets
 ---
 
 Remove the comment start and end macros which were previoulsy necessary due to an auto-indentation bug in Xcode 2.2.1 (&lt;rdar://problem/4450544&gt;).

@@ -1,5 +1,6 @@
 ---
 title: Favorite changes in Xcode Tools 2.3
+tags: blog
 ---
 
 -   **`Info.plist` preprocessing has been improved:** you can now specify build settings using a "$(BUILD\_SETTING)"-style syntax (fixes [this complaint](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/urls_in_preproc.php); although with the `-traditional` switch it's not such a big deal anymore anyway).

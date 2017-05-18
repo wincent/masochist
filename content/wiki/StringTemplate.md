@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 From the [StringTemplate](/wiki/StringTemplate) website:
@@ -9,4 +9,3 @@ From the [StringTemplate](/wiki/StringTemplate) website:
 # Official site
 
 -   <http://stringtemplate.org/>
-

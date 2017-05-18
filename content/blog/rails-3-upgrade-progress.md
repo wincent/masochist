@@ -1,6 +1,6 @@
 ---
 title: Rails 3 upgrade progress
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

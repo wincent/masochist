@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.15)
-tags: site
+tags: site blog
 ---
 
 Deployed some minor updates to the site earlier this evening, with only a few miniscule user-visible changes. See below for a full list.

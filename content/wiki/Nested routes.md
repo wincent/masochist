@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 [Rails](/wiki/Rails) allows you to set up your routes (in `config/routes.rb`) so that one or more resources are nested inside another resource.

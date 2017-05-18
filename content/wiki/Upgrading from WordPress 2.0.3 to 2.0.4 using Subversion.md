@@ -1,5 +1,5 @@
 ---
-tags: wordpress subversion
+tags: wordpress subversion wiki
 ---
 
 # Prerequisites
@@ -159,4 +159,3 @@ One by one.
 
 -   [WordPress](/wiki/WordPress) 2.0.4 release announcement: <http://wordpress.org/development/2006/07/wordpress-204/>
 -   [Upgrading from WordPress 2.0.4 to 2.0.5 using Subversion](/wiki/Upgrading_from_WordPress_2.0.4_to_2.0.5_using_Subversion)
-

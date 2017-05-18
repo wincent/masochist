@@ -1,5 +1,5 @@
 ---
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log wiki
 ---
 
 The dreaded "Saf BB FQ KP"\* strikes again.
@@ -22,4 +22,3 @@ The average time between failures drops again with the incident, and this machin
 # Footnotes
 
 -   \*: "Safari beachball force-quit kernel panic"
-

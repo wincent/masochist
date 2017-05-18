@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 -   `:binary`
@@ -13,4 +13,3 @@ tags: rails
 -   `:text`
 -   `:time`
 -   `:timestamp`
-

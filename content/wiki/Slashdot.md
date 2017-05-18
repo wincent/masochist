@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 <http://slashdot.org/>

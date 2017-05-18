@@ -1,5 +1,5 @@
 ---
-tags: parsetree
+tags: parsetree wiki
 ---
 
 The new version of [ParseTree](/wiki/ParseTree), [ParseTree 2.0.0](/wiki/ParseTree_2.0.0), was released on 1 August 2007.
@@ -35,4 +35,3 @@ The new version of [ParseTree](/wiki/ParseTree), [ParseTree 2.0.0](/wiki/ParseTr
 
 -   Official [weblog](/wiki/weblog) announcement by the author ([Ryan Davis](/wiki/Ryan_Davis)): <http://blog.zenspider.com/archives/2007/08/parsetree_version_200_has_been_released.html>
 -   [RubyForge](/wiki/RubyForge) release notes: <http://rubyforge.org/frs/shownotes.php?release_id=13381>
-

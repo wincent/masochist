@@ -1,5 +1,6 @@
 ---
 title: Be encoding-agnostic with respect to paths (gdiff, cb1f777)
+tags: snippets
 ---
 
 While thinking about how to handle possible different, platform-dependent text encodings in path names I realized that the best thing to do would be to be encoding-agnostic and do what Git goes: display the raw bytes of the path using escape sequences for non-ASCII and non-printable characters.

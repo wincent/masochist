@@ -1,5 +1,6 @@
 ---
 title: Rackspace wins again
+tags: blog
 ---
 
 [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) again ranks as [most reliable hosting company](http://news.netcraft.com/archives/2007/05/09/rackspace_easynet_and_easyspace_most_reliable_hosting_companies_in_april_2007.html) this month.

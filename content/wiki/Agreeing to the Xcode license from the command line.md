@@ -1,5 +1,5 @@
 ---
-tags: xcode
+tags: xcode wiki
 cache_breaker: 1
 ---
 
@@ -30,4 +30,3 @@ $ sudo xcodebuild -license
 ## Source
 
 -   <https://intellij-support.jetbrains.com/entries/62745413-Mac-OSX-can-t-start-Git-after-updating-Mac-OS-XCode>
-

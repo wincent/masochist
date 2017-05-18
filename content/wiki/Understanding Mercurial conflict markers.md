@@ -1,5 +1,5 @@
 ---
-tags: hg
+tags: hg wiki
 ---
 
 When using the `ui.merge = internal:merge3` configuration [described here](https://www.mercurial-scm.org/wiki/MergeToolConfiguration), your merge conflict during a rebase will look like this:

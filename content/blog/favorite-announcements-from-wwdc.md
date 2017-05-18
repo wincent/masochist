@@ -1,5 +1,6 @@
 ---
 title: Favorite announcements from WWDC
+tags: blog
 ---
 
 Favorite stuff to come out of [WWDC](http://www.apple.com/quicktime/qtv/wwdc06/):

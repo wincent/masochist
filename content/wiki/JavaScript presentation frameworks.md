@@ -1,5 +1,5 @@
 ---
-tags: javascript html
+tags: javascript html wiki
 cache_breaker: 1
 ---
 
@@ -15,4 +15,3 @@ A list of others:
 The template I made using reveal.js:
 
 -   <https://github.com/ghurrell/presentation-template>
-

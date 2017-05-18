@@ -1,6 +1,6 @@
 ---
 title: Scaling Rails screencasts
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

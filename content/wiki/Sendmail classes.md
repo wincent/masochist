@@ -1,5 +1,5 @@
 ---
-tags: sendmail
+tags: sendmail wiki
 ---
 
 Based on <http://www.sendmail.org/m4/admin.details.html> (now inactive).
@@ -11,4 +11,3 @@ Based on <http://www.sendmail.org/m4/admin.details.html> (now inactive).
 -   `g`: domains that should be looked up in `genericstable`
 -   `l`: addresses that shouldn't be forwarded to `$R`
 -   `r`: domains system is willing to relay
-

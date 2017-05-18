@@ -1,5 +1,6 @@
 ---
 title: Ragel wins! Fatality!
+tags: blog
 ---
 
 One of my projects is a [fast wikitext-to-HTML translator](http://git.wincent.com/wikitext.git). It's a [Ruby](http://www.wincent.com/knowledge-base/Ruby) extension written in [C](http://www.wincent.com/knowledge-base/C) with speed being one of its top design goals (robustness, predictability and security being the others). I'm working on this because the [Rails](http://www.wincent.com/knowledge-base/Rails) rewrite of this site will use [wikitext markup](http://www.wincent.com/knowledge-base/wikitext%20markup) for basically everything. Rails has a bad reputation for being slow and resource hungry, and that's why one of my primary objectives is speed; I don't want my wikitext parser being a bottleneck.

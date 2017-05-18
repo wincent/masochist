@@ -1,5 +1,5 @@
 ---
-tags: fastri
+tags: fastri wiki
 ---
 
 # Release notes
@@ -9,4 +9,3 @@ tags: fastri
 # See also
 
 -   [Upgrading to FastRI 0.3.1 on Mac OS X Leopard](/wiki/Upgrading_to_FastRI_0.3.1_on_Mac_OS_X_Leopard)
-

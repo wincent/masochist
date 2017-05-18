@@ -1,5 +1,5 @@
 ---
-tags: subversion updates
+tags: subversion updates wiki
 cache_breaker: 1
 ---
 

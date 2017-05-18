@@ -1,6 +1,6 @@
 ---
 redirect: [[Asymmetric Digital Subscriber Line]]
-tags: 
+tags: wiki
 ---
 
 

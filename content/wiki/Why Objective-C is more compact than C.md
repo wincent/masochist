@@ -1,5 +1,5 @@
 ---
-tags: c objective.c
+tags: c objective.c wiki
 ---
 
 Often in C code your code will follow a pattern like this (or similar):

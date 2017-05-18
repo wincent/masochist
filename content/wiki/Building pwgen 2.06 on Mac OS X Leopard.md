@@ -1,8 +1,8 @@
 ---
-tags: leopard pwgen
+tags: leopard pwgen wiki
 ---
 
-    # get
+# get
     wget http://mesh.dl.sourceforge.net/sourceforge/pwgen/pwgen-2.06.tar.gz
     tar xzvf pwgen-2.06.tar.gz 
     cd pwgen-2.06

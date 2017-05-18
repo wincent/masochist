@@ -1,5 +1,5 @@
 ---
-tags: leopard ruby rails mysql
+tags: leopard ruby rails mysql wiki
 ---
 
 As noted in my [Leopard set-up notes](/wiki/Leopard_set-up_notes), I couldn't get [MySQL](/wiki/MySQL) to build on [Leopard](/wiki/Leopard) 10.5.0, but I could with 10.5.1.
@@ -341,4 +341,3 @@ Points of interest:
 
 -   The warnings in the [Rails](/wiki/Rails) log have gone away
 -   But notice that the reported version of the [gem](/wiki/gem) is still 2.7, just like the one that was already installed, and not 2.7.3 as is reported as being available by `gem list --remote`
-

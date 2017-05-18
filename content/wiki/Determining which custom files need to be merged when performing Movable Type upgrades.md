@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 [Movable Type](/wiki/Movable_Type)'s upgrade procedure effectively amounts to a performing a full reinstallation. This wouldn't be much of a problem if it weren't for the fact that custom files and modifications in an existing installation must be painstakingly identified and copied over into the new version prior to re-uploading the 1,100+ files that make up [Movable Type](/wiki/Movable_Type) (using `find . -type f | wc -l` from the top level of the [Movable Type](/wiki/Movable_Type) 3.35 archive counts 1,158 distinct files).

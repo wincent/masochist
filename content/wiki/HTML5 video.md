@@ -1,5 +1,5 @@
 ---
-tags: html5 video
+tags: html5 video wiki
 cache_breaker: 1
 ---
 
@@ -31,4 +31,3 @@ Necessary mime types for delivery:
 -   `video/ogg`: `.ogv`
 -   `video/mp4`: `.mp4`
 -   `video/webm`: `.webm`
-

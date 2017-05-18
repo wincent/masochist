@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log 2.3
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ Same symptoms as the [earlier](/blog/involuntary-reboot-log-2.1) [entries](/blog
 -   Start of recording keeping: 17 March 2010
 -   Total days to date: 35 days
 -   Average time between failures: 11.67 days
-

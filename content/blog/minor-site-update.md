@@ -1,6 +1,6 @@
 ---
 title: Minor site update
-tags: site
+tags: site blog
 ---
 
 Not too many user visible changes, but this update includes a database migration and I like to push out such updates fairly quickly, before too many other changes accumulate on top of them.

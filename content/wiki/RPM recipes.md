@@ -1,6 +1,6 @@
 ---
 redirect: [[RPM notes]]
-tags: 
+tags: wiki
 ---
 
 

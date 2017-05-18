@@ -1,6 +1,6 @@
 ---
 redirect: [[C language target (ANTLR)]]
-tags: 
+tags: wiki
 ---
 
 

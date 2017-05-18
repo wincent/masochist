@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -33,4 +33,3 @@ Putting all this together means that you can make some downright hideous referen
 -   `ref@{1}` is the immediate prior value of a ref (for example, `master@{1}`)
 -   `ref@{2}` is the second prior value, and so on
 -   `@{2}` would refer to the same thing if you were already on branch `ref`
-

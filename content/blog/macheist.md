@@ -1,5 +1,6 @@
 ---
 title: MacHeist
+tags: blog
 ---
 
 My take on the MacHeist [debacle](http://daringfireball.net/2006/12/macheist_lousy_tshirt): yes [all publicity is good publicity](http://wilshipley.com/blog/2006/12/marketing-irony.html) but I also think the support cost of selling somewhere in the ballpark of 10,000 to 15,000 licenses in a single week would be staggering. At fifty cents a pop you'd have made a quick five or six grand, but you'd have done so only by selling your product at a 80 or 90% discount, and then you have to provide customer service, technical support, and all the rest for literally thousands of new customers.

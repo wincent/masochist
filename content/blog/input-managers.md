@@ -1,5 +1,6 @@
 ---
 title: Input Managers
+tags: blog
 ---
 
 The ownership and permissions on my `InputManagers` folders (both inside my home folder and at system level):

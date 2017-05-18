@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.52
-tags: site updates
+tags: site updates snippets
 ---
+
 ea744d9 Add an .rvmrc file
 da599b4 Update to Rails 3.2.2
 841dcb4 Update wikitext gem to 3.0.1

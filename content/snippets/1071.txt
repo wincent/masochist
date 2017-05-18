@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.120
-tags: site updates
+tags: site updates snippets
 ---
+
 b745ada One more try at getting FontAwesome to work in Firefox

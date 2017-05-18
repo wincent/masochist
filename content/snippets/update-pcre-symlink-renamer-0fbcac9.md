@@ -1,5 +1,6 @@
 ---
 title: Update PCRE symlink (REnamer, 0fbcac9)
+tags: snippets
 ---
 
 Point to the new version, 7.5.

@@ -1,5 +1,5 @@
 ---
-tags: tiger ragel updates
+tags: tiger ragel updates wiki
 cache_breaker: 1
 ---
 

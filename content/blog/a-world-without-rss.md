@@ -1,5 +1,6 @@
 ---
 title: A world without RSS
+tags: blog
 ---
 
 After [yesterday's hard reset](http://www.wincent.com/a/about/wincent/weblog/archives/2007/11/involuntary_reb_17.php) it looked for a moment like I was going to have to live in a world without RSS. Possibly without mail too. Probably wouldn't be a bad thing.

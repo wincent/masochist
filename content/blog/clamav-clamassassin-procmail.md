@@ -1,5 +1,6 @@
 ---
 title: ClamAV + clamassassin + procmail
+tags: blog
 ---
 
 I've been so pleased with the combination of [ClamAV](http://www.clamav.net/), [clamassassin](http://drivel.com/clamassassin/) and [procmail](http://www.procmail.org/) that I've decided to "upgrade" the recipes on the server so as to delete incoming virus-bearing messages on the server.

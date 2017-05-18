@@ -1,6 +1,6 @@
 ---
 title: An attack of over-engineering
-tags: ruby
+tags: ruby blog
 ---
 
 I just had a horrible attack of over-engineering. Thankfully, I managed to pull out of it before it went too far. It was like a glimpse into the life of an fully-indoctrinated Java programmer (you know, the ones with hammer-shaped copies of the "[Design Patterns](http://en.wikipedia.org/wiki/Design_Patterns)" book by the Gang of Four, to whom every software problem looks like a nail).

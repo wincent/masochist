@@ -1,5 +1,5 @@
 ---
-tags: unicorn
+tags: unicorn wiki
 cache_breaker: 1
 ---
 

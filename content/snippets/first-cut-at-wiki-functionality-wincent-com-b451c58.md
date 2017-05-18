@@ -1,5 +1,6 @@
 ---
 title: First cut at wiki functionality (wincent.com, b451c58)
+tags: snippets
 ---
 
 This is a basic first cut at wiki functionality. At the moment we have a form for creating new articles; on submitting the form we create the article model and attach a first revision model as well with the initial content of the body.

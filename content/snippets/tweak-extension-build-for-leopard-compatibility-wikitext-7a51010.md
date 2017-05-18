@@ -1,5 +1,6 @@
 ---
 title: Tweak extension build for Leopard compatibility (wikitext, 7a51010)
+tags: snippets
 ---
 
 These tweaks fix the build breakage under Leopard caused by the fact that the ANTLR runtime is non-Universal and Ruby is Universal. We set the ARCHFLAGS environment variable to force a non-Universal extension to be built.

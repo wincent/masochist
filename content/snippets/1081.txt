@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 Installing capybara 2.1.0
 
 Gem::Installer::ExtensionBuildError: ERROR: Failed to build gem native extension.

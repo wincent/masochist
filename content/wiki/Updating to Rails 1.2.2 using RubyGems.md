@@ -1,8 +1,8 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
-    $ sudo gem update rails
+$ sudo gem update rails
     Password:
     Updating installed gems...
     Need to update 18 gems from http://gems.rubyforge.org

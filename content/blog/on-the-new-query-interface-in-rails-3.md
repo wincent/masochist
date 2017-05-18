@@ -1,6 +1,6 @@
 ---
 title: On the new query interface in Rails 3
-tags: ruby rails sql
+tags: ruby rails sql blog
 ---
 
 There's no doubt that [the new query interface](http://m.onkey.org/2010/1/22/active-record-query-interface) in [Rails](/wiki/Rails) 3 is nice for simple queries. For example:

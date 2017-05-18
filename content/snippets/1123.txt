@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.153
-tags: site updates
+tags: site updates snippets
 ---
+
 73c22f1 Lighten up product menu styling
 a0de357 Make nav bar less bold

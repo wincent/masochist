@@ -1,6 +1,6 @@
 ---
 redirect: [[modal editor]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,8 +1,8 @@
 ---
-tags: 
+tags: wiki
 ---
 
-             00    01    10    11
+00    01    10    11
     00000   NUL   Spc     @     `
     00001   SOH     !     A     a
     00010   STX     "     B     b

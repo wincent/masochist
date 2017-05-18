@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug
+tags: ruby.debug wiki
 ---
 
 Much like [last time](/wiki/Upgrading_to_ruby-debug_0.8.1) but with a twist:
@@ -63,4 +63,3 @@ Then update the [FastRI](/wiki/FastRI) index:
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=10832>
-

@@ -1,5 +1,5 @@
 ---
-tags: doxygen
+tags: doxygen wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 -   Official home page: <http://www.stack.nl/~dimitri/doxygen/index.html>
 -   [Wikipedia](/wiki/Wikipedia) article on [Doxygen](/wiki/Doxygen): <http://en.wikipedia.org/wiki/Doxygen>
 -   All resources on this site tagged with "[doxygen](/tags/doxygen)"
-

@@ -1,5 +1,5 @@
 ---
-tags: pkg os.x
+tags: pkg os.x wiki
 cache_breaker: 1
 ---
 

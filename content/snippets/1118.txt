@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.148
-tags: site updates
+tags: site updates snippets
 ---
+
 b1aaa26 Fix React key warning
 a6b79f4 Sort props in TagWidget
 8b62da9 Prefer arrow functions over bind in TagWidget

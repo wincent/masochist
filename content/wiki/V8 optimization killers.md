@@ -1,5 +1,5 @@
 ---
-tags: javascript v8
+tags: javascript v8 wiki
 ---
 
 Things which cause the entire containing function to be deoptimized (ie. compiled with the generic compiler instead of the optimizing compiler, which can be 100x slower):
@@ -25,4 +25,3 @@ Things which cause the entire containing function to be deoptimized (ie. compile
 # Source
 
 -   <https://github.com/petkaantonov/bluebird/wiki/Optimization-killers>
-

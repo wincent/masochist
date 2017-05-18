@@ -1,5 +1,6 @@
 ---
 title: Teach plug-in to launch using LSOpenItemsWithRole() (REnamer, 20661f5)
+tags: snippets
 ---
 
 This solves an issue with the old implementation which used execv() where it would allow multiple instances of the application to be launched.

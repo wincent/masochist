@@ -1,6 +1,6 @@
 ---
 redirect: [[Binary]]
-tags: 
+tags: wiki
 ---
 
 

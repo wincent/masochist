@@ -1,5 +1,5 @@
 ---
-tags: at os.x
+tags: at os.x wiki
 cache_breaker: 1
 ---
 
@@ -25,4 +25,3 @@ $ sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.atrun.plist
 
 -   `atq`: see what is in the `at` queue
 -   `atrm`: remove jobs from the `at` queue
-

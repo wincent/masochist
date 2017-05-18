@@ -1,5 +1,6 @@
 ---
 title: Special offer: Buy Synergy Advance and get a free Synergy license
+tags: blog
 ---
 
 To celebrate the holiday season and get more people on board testing the preview releases of Synergy Advance Wincent is announcing a special offer during the month of December: [buy](https://secure.wincent.com/a/products/synergy-advance/purchase/) a [Synergy Advance](http://synergyadvance.com/) license and get a free [Synergy](http://synergy.wincent.com/) license. This is a great opportunity to get a license for both products, or to use the complimentary Synergy license as a gift for somebody else.

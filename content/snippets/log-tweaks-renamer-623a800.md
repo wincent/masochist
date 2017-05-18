@@ -1,5 +1,6 @@
 ---
 title: Log tweaks (REnamer, 623a800)
+tags: snippets
 ---
 
 Prefix all log messages with "REnamer" so as to distinguish them from other messages emitted by the Finder to the console.

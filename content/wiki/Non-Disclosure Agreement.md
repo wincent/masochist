@@ -1,6 +1,6 @@
 ---
 redirect: [[NDA]]
-tags: 
+tags: wiki
 ---
 
 

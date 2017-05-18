@@ -1,5 +1,6 @@
 ---
 title: Let glue view pick up any pixel slack (gdiff, 50b3dbc)
+tags: snippets
 ---
 
 Previously we used the right view to pick up the one-pixel slack caused by dividing the window in two when there were on odd number of pixels available. This was slightly ugly because it introduced an arbitrary difference between the left and right views and therefore incurred a slight maintenance penalty.

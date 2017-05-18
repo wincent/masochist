@@ -1,5 +1,5 @@
 ---
-tags: terminal
+tags: terminal wiki
 ---
 
 Tim Wood posted instructions on how to do this [here](http://blog.omnigroup.com/2007/11/03/terminal-scripting-in-105/). This is extremely useful if you are working on different machines at the same time and you want to be able to distinguish between them at a glance, without having to scrutinize the [Terminal](/wiki/Terminal) prompt. I'm finding this particularly useful right now because I am doing a server migration and it helps me to avoid making silly mistakes.

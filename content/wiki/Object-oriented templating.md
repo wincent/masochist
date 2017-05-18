@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 cache_breaker: 1
 ---
 
@@ -18,4 +18,3 @@ Executing the compiled templates, otherwise known as "filling" them, produces th
 
 -   <http://www.wincent.com/a/about/wincent/weblog/archives/2006/10/objectoriented.php>
 -   <http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/payoff_time.php>
-

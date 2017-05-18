@@ -1,5 +1,5 @@
 ---
-tags: rails testing
+tags: rails testing wiki
 cache_breaker: 1
 ---
 

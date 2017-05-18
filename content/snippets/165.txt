@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.108
-tags: site updates
+tags: site updates snippets
 ---
+
 1f64292 Update to Rails 4.0.1

@@ -1,5 +1,5 @@
 ---
-tags: red.hat ee
+tags: red.hat ee wiki
 ---
 
 Notes made while building and installing [ee](/wiki/ee) version 1.4.2 on [Red Hat Enterprise Linux ES 3](/wiki/Red_Hat_Enterprise_Linux_ES_3):

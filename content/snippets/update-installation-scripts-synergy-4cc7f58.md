@@ -1,5 +1,6 @@
 ---
 title: Update installation scripts (Synergy, 4cc7f58)
+tags: snippets
 ---
 
 This is a fairly thorough rewrite of the installation scripts for their new context (run within the Synergy build rather than as a build in a separate project).

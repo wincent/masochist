@@ -1,5 +1,6 @@
 ---
 title: Synergy (revision 7ae6b07)
+tags: snippets
 ---
 
 -   *Download name*: Synergy3.5a2+(7ae6b07).zip

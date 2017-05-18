@@ -1,5 +1,6 @@
 ---
 title: AEGizmo, AEBuildAppleEvent and Mac OS X 10.4
+tags: blog
 ---
 
 "AEGizmos" (or more often, simply "AEGizmo") is the name for a set of APIs developed by Apple's Jens Peter Alfke between 1991 and 1995. He used to distribute the routines for free on his [website](http://www.mooseyard.com/Jens/) and they became fairly popular. Apple Developer Technical Support officially "supported" the use of the API.

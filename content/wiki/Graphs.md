@@ -1,6 +1,6 @@
 ---
 redirect: [[graph]]
-tags: 
+tags: wiki
 ---
 
 

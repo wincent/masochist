@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 To avoid a recurring "X is an application downloaded from the internet" warning:

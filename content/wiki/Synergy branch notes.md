@@ -1,5 +1,5 @@
 ---
-tags: version.control synergy
+tags: version.control synergy wiki
 ---
 
 # Trunk ([Leopard](/wiki/Leopard))
@@ -41,4 +41,3 @@ Towards the end of March 2007 and in conjunction with the move to [SVK](/wiki/SV
 
 -   `jaguar` branch created from trunk: r337 ([Subversion](/wiki/Subversion))/r2358 ([SVK](/wiki/SVK)), 23 March 2007
     -   Now a maintenance branch (versions 3.1+, possibly 3.2, 3.3 and 3.4 as well) with the intention of maintaining [Jaguar](/wiki/Jaguar) compatibility.
-

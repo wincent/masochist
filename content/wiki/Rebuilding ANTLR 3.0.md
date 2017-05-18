@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 While investigating a possible [ANTLR](/wiki/ANTLR) [bugfix](http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021243.html) I came to a point where I wanted to build a modified [ANTLR](/wiki/ANTLR) jar and try it out. The [instructions](http://www.antlr.org/wiki/pages/viewpage.action?pageId=732) on the [ANTLR](/wiki/ANTLR) [wiki](/wiki/wiki) were helpful but did not tell the full story.
@@ -127,4 +127,3 @@ The basic procedure then is:
 # See also
 
 -   "How do I rebuild ANTLR v3?": <http://www.antlr.org/wiki/pages/viewpage.action?pageId=732>
-

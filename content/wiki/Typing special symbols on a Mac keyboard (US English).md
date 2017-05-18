@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 -   ™ is Alt-2
@@ -8,4 +8,3 @@ tags: os.x
 -   © is Alt-G
 -   ® is Alt-R
 -   € is Shift-Alt-2
-

@@ -1,5 +1,6 @@
 ---
 title: WordPress 2.1.3 but not for me
+tags: blog
 ---
 
 After a cracker broke into the [WordPress](http://www.wincent.com/knowledge-base/WordPress) server last month and replaced the official download with a [trojan](http://www.wincent.com/knowledge-base/trojan) (an incident [described](http://wordpress.org/development/2007/04/wordpress-213-and-2010/) by the [WordPress](http://www.wincent.com/knowledge-base/WordPress) [public-relations team](http://photomatt.net/) as a "systems issue") I decided to give [WordPress](http://www.wincent.com/knowledge-base/WordPress) the flick, forever (see "[Removing a WordPress 2.1.1 installation and replacing it with a static mirror](http://www.wincent.com/knowledge-base/Removing%20a%20WordPress%202.1.1%20installation%20and%20replacing%20it%20with%20a%20static%20mirror)").

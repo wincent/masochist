@@ -1,6 +1,6 @@
 ---
 title: Testing overhead
-tags: rspec rails
+tags: rspec rails blog
 ---
 
 I've just had a very frustrating experience while adding a new "twitter"-like functionality to a Rails application. The "Tweet" model itself is very simple, obviously, and the controller is basically your standard RESTful deal. The code was so basic that I sat down and bashed it out in a couple of hours; that includes writing the migration, the model, the controller (with page caching and appropriate access control for administrative actions), the helper, the views (HTML and Atom format), a cache sweeper... all of this along with accompanying CSS, AJAX-powered live previews while editing, and visual feedback if the entered text exceeds the 140 character recommended limit.

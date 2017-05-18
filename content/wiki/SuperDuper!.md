@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ You can read how [SuperDuper!](/wiki/SuperDuper%21) saved my butt in [this weblo
 # See also
 
 -   Official site: <http://shirt-pocket.com/SuperDuper/>
-

@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 This article is a summary of information found here:

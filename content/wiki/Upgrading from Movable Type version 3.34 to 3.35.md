@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 # Background
@@ -113,4 +113,3 @@ See: <http://www.sixapart.com/movabletype/news/2007/04/mt335_released.html>
 # See also
 
 -   Notes for other versions: [Movable Type upgrade notes](/wiki/Movable_Type_upgrade_notes)
-

@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 This is a more conservative approach than that detailed in the Subversion book. Instead of dumping and using `svndumpfilter` to include only the relevant paths, we dump the repository, load the entire repository, and then delete excluded portions by hand:

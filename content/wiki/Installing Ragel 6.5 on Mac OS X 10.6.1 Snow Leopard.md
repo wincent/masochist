@@ -1,5 +1,5 @@
 ---
-tags: ragel snow.leopard
+tags: ragel snow.leopard wiki
 ---
 
 Notes made while installing [Ragel](/wiki/Ragel) on [Mac OS X](/wiki/Mac_OS_X) 10.6.1 [Snow Leopard](/wiki/Snow_Leopard).

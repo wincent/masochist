@@ -1,6 +1,6 @@
 ---
 title: Safari 4 comments
-tags: safari
+tags: safari blog
 ---
 
 I just got home and have had a look over [Apple's Safari 4 page](http://www.apple.com/safari/whats-new.html). Let me add my voice to the chorus which is doubtlessly ringing out now across the Internet.
@@ -29,4 +29,3 @@ Stuff I'm indifferent about:
 # Related links
 
 -   [Full feature listing](http://www.apple.com/safari/features.html)
-

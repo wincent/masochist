@@ -1,5 +1,5 @@
 ---
-tags: red.hat mysql
+tags: red.hat mysql wiki
 ---
 
 # Downloading
@@ -152,4 +152,3 @@ Check that [MySQL](/wiki/MySQL) is still configured to start automatically at bo
 # See also
 
 -   [Upgrading MySQL on Red Hat Enterprise Linux](/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux)
-

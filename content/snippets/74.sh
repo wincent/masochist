@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 #!/bin/sh -e
 # Copyright 2009-2011 Wincent Colaiuta. All rights reserved.
 #

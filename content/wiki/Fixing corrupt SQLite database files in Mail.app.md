@@ -1,5 +1,5 @@
 ---
-tags: sqlite mail.app
+tags: sqlite mail.app wiki
 cache_breaker: 1
 ---
 

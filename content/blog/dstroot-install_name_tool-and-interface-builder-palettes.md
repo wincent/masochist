@@ -1,5 +1,6 @@
 ---
 title: DSTROOT, install_name_tool and Interface Builder palettes
+tags: blog
 ---
 
 Yesterday I was working on getting [WinSwitch](http://winswitch.wincent.com/) up and running as a Universal Binary. One of the hold-ups has been that a couple of the frameworks that WinSwitch depends on, WOBezel and WOHotKey, have been under heavy development as part of my work on [Synergy Advance](http://synergyadvance.com/). This required some changes to WinSwitch to get the whole thing back into a buildable state.

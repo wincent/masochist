@@ -1,5 +1,5 @@
 ---
-tags: mongrel
+tags: mongrel wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ I personally used Mongrel to host this site from its initial deployment (in Marc
 # Official site
 
 -   Official site: <http://mongrel.rubyforge.org/>
-

@@ -1,5 +1,5 @@
 ---
-tags: bash zsh
+tags: bash zsh wiki
 ---
 
 -   `[`: alias for the `test` command, is POSIX and portable, supported by many shells
@@ -9,4 +9,3 @@ tags: bash zsh
 # See also
 
 -   <http://mywiki.wooledge.org/BashFAQ/031>
-

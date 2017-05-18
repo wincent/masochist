@@ -1,6 +1,6 @@
 ---
 title: Frequently used Terminal commands
-tags: bash zsh
+tags: bash zsh blog
 cache_breaker: 1
 ---
 

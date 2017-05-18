@@ -1,5 +1,5 @@
 ---
-tags: png
+tags: png wiki
 cache_breaker: 1
 ---
 
@@ -45,4 +45,3 @@ Although the savings are modest, and there were many files already compressed wi
 # See also
 
 -   Official website: <http://optipng.sourceforge.net/>
-

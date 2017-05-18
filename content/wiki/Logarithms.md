@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ Useful for the [OS X](/wiki/OS_X) Grapher application, which apparently only kno
 -   in general, for logarithm base "a":
     -   `ln x / ln a`
     -   `log x / log a`
-

@@ -1,6 +1,6 @@
 ---
 title: Back offline again
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

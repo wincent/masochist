@@ -1,6 +1,6 @@
 ---
 title: Running RSpec specs from inside Vim
-tags: rspec vim
+tags: rspec vim blog
 cache_breaker: 1
 ---
 

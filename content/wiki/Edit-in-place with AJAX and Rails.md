@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # External resources
@@ -11,4 +11,3 @@ tags: rails
 # See also
 
 -   [Using Scriptaculous with Rails](/wiki/Using_Scriptaculous_with_Rails)
-

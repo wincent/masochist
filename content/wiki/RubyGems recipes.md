@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 # List all locally installed [gems](/wiki/gems)

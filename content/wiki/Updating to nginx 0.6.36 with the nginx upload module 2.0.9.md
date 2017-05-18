@@ -1,5 +1,5 @@
 ---
-tags: leopard nginx nginx.upload.module
+tags: leopard nginx nginx.upload.module wiki
 cache_breaker: 1
 ---
 

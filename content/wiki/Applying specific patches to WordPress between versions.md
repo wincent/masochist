@@ -1,5 +1,5 @@
 ---
-tags: wordpress
+tags: wordpress wiki
 ---
 
 The [last WordPress upgrade](/wiki/Upgrading_from_WordPress_2.0.7_to_2.1_using_Subversion) (to version 2.1) introduced a [major bug](http://trac.wordpress.org/ticket/3642) that rendered the "Manage -&gt; Posts" section of the administration interface inoperable.

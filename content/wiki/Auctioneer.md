@@ -1,5 +1,5 @@
 ---
-tags: warcraft
+tags: warcraft wiki
 ---
 
 # Official site
@@ -10,4 +10,3 @@ tags: warcraft
 
 -   [World of Warcraft tips](/wiki/World_of_Warcraft_tips)
 -   [Warcraft gold guide](/wiki/Warcraft_gold_guide)
-

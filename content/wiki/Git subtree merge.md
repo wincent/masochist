@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Given other remote $OTHER and repo $REPO:
@@ -14,4 +14,3 @@ $ git commit -m "Merge $OTHER code into $OTHER directory"
 # See also
 
 -   <http://www.kernel.org/pub/software/scm/git/docs/howto/using-merge-subtree.html>
-

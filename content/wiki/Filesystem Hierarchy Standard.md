@@ -1,5 +1,5 @@
 ---
-tags: unix
+tags: unix wiki
 ---
 
 The [FHS](/wiki/FHS) or [Filesystem Hierarchy Standard](/wiki/Filesystem_Hierarchy_Standard) is:
@@ -9,4 +9,3 @@ The [FHS](/wiki/FHS) or [Filesystem Hierarchy Standard](/wiki/Filesystem_Hierarc
 # Official site
 
 -   <http://proton.pathname.com/fhs/>
-

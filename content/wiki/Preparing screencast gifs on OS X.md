@@ -1,5 +1,5 @@
 ---
-tags: screengif screencast
+tags: screengif screencast wiki
 ---
 
 # Installation

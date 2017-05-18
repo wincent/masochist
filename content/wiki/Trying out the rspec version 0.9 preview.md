@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 These are notes I made while trying out the [rspec](/wiki/rspec) 0.9 beta 1 preview [gem](/wiki/gem). I later updated to 0.9.2, skipping over 0.9.1: see "[Upgrading to RSpec 0.9.2](/wiki/Upgrading_to_RSpec_0.9.2)".
@@ -105,4 +105,3 @@ The bundle is really fantastic. It provides lots of shortcuts for writing specs 
 # See also
 
 -   Announcement: <http://rubyforge.org/pipermail/rspec-users/2007-April/001108.html>
-

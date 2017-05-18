@@ -1,6 +1,6 @@
 ---
 title: Weekly progress report #3
-tags: progress
+tags: progress blog
 ---
 
 It's been a while since I posted the last report, but now I am back online again it's time to resume. As always, the usual disclaimers apply. This is just an overview of commits on the currently checked-out branch in each repository, so any work done on side branches doesn't show up.

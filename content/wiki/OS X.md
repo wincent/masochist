@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 Considered by many to be the best operating system in the world (and by me to be the best *desktop* operating system in the world), [OS X](/wiki/OS_X) is [Apple](/wiki/Apple)'s current flagship operating system.

@@ -1,5 +1,6 @@
 ---
 title: Add convenience macro for double-checked locking pattern (WOCommon, c5ba560)
+tags: snippets
 ---
 
 In the most common usage case of the double-checked locking pattern (lazy initialization of shared resources such as singletons) we almost always use the exact same repetitive code.

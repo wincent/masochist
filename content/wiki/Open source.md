@@ -1,5 +1,5 @@
 ---
-tags: open.source
+tags: open.source wiki
 cache_breaker: 1
 ---
 

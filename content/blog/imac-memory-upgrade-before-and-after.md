@@ -1,5 +1,6 @@
 ---
 title: iMac memory upgrade: before and after
+tags: blog
 ---
 
 ### Command

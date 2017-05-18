@@ -1,5 +1,6 @@
 ---
 title: The move to Intel
+tags: blog
 ---
 
 So we're moving to Intel. If it means more powerful computers then I'm all for it. But I wince when I think about how painful the transition is going to be... It won't be painful for me as a developer; yes, I'll have to fork out the [$999 for the Developer Transition Kit](http://www.apple.com/pr/library/2005/jun/06intel.html) and spend some time making sure that everything works on both PowerPC and Intel but I think I'll survive. But it *will* be painful for me as an end user.

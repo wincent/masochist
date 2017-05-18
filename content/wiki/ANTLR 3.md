@@ -1,6 +1,6 @@
 ---
 redirect: [[ANTLR 3.0]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 cache_breaker: 1
 ---
 
@@ -9,4 +9,3 @@ cache_breaker: 1
 
 -   [Rails 3.0.0.rc2](/wiki/Rails_3.0.0.rc2) (aggregated changelog)
 -   [Rails 3.0.0.rc](/wiki/Rails_3.0.0.rc) (aggregated changelog)
-

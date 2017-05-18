@@ -1,5 +1,5 @@
 ---
-tags: capybara
+tags: capybara wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ Capybara looks set to either replace or merge with Webrat as the dominant means 
 # Official site
 
 -   <http://github.com/jnicklas/capybara>
-

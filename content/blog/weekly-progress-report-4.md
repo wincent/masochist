@@ -1,6 +1,6 @@
 ---
 title: Weekly progress report #4
-tags: progress
+tags: progress blog
 cache_breaker: 1
 ---
 

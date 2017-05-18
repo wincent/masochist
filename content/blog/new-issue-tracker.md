@@ -1,6 +1,6 @@
 ---
 title: New issue tracker
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

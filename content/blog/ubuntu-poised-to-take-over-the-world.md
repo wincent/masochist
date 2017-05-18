@@ -1,6 +1,6 @@
 ---
 title: Ubuntu poised to take over the world
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ios game.center
+tags: ios game.center wiki
 cache_breaker: 1
 ---
 

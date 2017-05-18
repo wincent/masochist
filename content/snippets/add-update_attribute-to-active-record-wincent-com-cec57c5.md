@@ -1,5 +1,6 @@
 ---
 title: Add update_attribute! to Active Record (wincent.com, cec57c5)
+tags: snippets
 ---
 
 Just like update\_attribute except calls save! instead of save.

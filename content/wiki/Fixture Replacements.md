@@ -1,6 +1,6 @@
 ---
 redirect: [[Object mother]]
-tags: 
+tags: wiki
 ---
 
 

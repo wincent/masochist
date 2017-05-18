@@ -1,5 +1,5 @@
 ---
-tags: tree os.x
+tags: tree os.x wiki
 ---
 
 ```shell

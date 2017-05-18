@@ -1,6 +1,6 @@
 ---
 redirect: [[Groupee]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: colemak
+tags: colemak wiki
 ---
 
 Here are some drilling/practice tools I used while learning [Colemak](/wiki/Colemak).

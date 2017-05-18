@@ -1,5 +1,5 @@
 ---
-tags: ssl csr
+tags: ssl csr wiki
 ---
 
 ```shell

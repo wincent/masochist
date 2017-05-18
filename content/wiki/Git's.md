@@ -1,6 +1,6 @@
 ---
 redirect: [[Git]]
-tags: 
+tags: wiki
 ---
 
 

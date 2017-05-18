@@ -1,5 +1,5 @@
 ---
-tags: rsync
+tags: rsync wiki
 ---
 
 Notes made in the upgrade from [rsync](/wiki/rsync) 2.6.9pre1 to 2.6.9pre2:

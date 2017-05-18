@@ -1,5 +1,5 @@
 ---
-tags: go
+tags: go wiki
 cache_breaker: 1
 ---
 
@@ -23,4 +23,3 @@ cache_breaker: 1
 -   <http://blog.golang.org/2013/05/advanced-go-concurrency-patterns.html>
 -   Rewriting dl.google.com in Go (port from C++): <http://talks.golang.org/2013/oscon-dl.slide>
 -   Twelve Go Best Practices: <http://talks.golang.org/2013/bestpractices.slide>
-

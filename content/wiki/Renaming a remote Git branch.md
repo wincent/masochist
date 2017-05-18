@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 ```shell
@@ -12,4 +12,3 @@ $ git push origin :oldname # delete old branch
 # See also
 
 -   <http://stackoverflow.com/questions/3981889/rename-remote-branch>
-

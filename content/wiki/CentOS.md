@@ -1,5 +1,5 @@
 ---
-tags: rhel centos
+tags: rhel centos wiki
 ---
 
 [CentOS](/wiki/CentOS) is a [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) clone:
@@ -9,4 +9,3 @@ tags: rhel centos
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) page on [CentOS](/wiki/CentOS): <http://en.wikipedia.org/wiki/CentOS>
-

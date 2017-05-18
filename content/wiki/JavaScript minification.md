@@ -1,6 +1,6 @@
 ---
 redirect: [[JavaScript minimization]]
-tags: 
+tags: wiki
 ---
 
 

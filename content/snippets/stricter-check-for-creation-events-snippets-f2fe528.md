@@ -1,5 +1,6 @@
 ---
 title: Stricter check for creation events (snippets, f2fe528)
+tags: snippets
 ---
 
 Instead of using a relatively loose regular expression to detect creation\

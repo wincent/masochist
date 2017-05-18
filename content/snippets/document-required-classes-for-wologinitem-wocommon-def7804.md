@@ -1,5 +1,6 @@
 ---
 title: Document required classes for WOLoginItem (WOCommon, def7804)
+tags: snippets
 ---
 
 Code-level documentation.

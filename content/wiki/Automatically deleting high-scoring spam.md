@@ -1,5 +1,5 @@
 ---
-tags: email sendmail procmail spamassassin
+tags: email sendmail procmail spamassassin wiki
 ---
 
 # Quarantining recipe

@@ -1,5 +1,6 @@
 ---
 title: The Movable Type upgrade procedure sucks
+tags: blog
 ---
 
 Just [upgraded](http://www.wincent.com/knowledge-base/Upgrading_from_Movable_Type_version_3.31_to_3.33) to the latest version of Movable type. It's one of my least-favorite upgrade procedures.

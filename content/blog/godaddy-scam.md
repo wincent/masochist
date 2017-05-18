@@ -1,5 +1,6 @@
 ---
 title: GoDaddy scam
+tags: blog
 ---
 
 [GoDaddy's renewal prices are too high](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php) for private registrations.

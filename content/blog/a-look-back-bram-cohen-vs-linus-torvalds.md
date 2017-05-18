@@ -1,5 +1,6 @@
 ---
 title: A look back: Bram Cohen vs Linus Torvalds
+tags: blog
 ---
 
 I just stumbled across a fascinating mailing list thread in which there's a fairly nasty exchange between two open source poster children, Bram Cohen (of BitTorrent fame, but in this case writing in his capacity as Codeville developer) and Linus Torvalds (of Linux fame, original author of [Git](http://www.wincent.com/knowledge-base/Git)).

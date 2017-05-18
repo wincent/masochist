@@ -1,5 +1,5 @@
 ---
-tags: mldonkey tiger updates
+tags: mldonkey tiger updates wiki
 cache_breaker: 1
 ---
 

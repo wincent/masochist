@@ -1,5 +1,5 @@
 ---
-tags: red.hat cyrus
+tags: red.hat cyrus wiki
 cache_breaker: 1
 ---
 

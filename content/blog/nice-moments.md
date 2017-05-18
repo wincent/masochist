@@ -1,5 +1,6 @@
 ---
 title: Nice moments
+tags: blog
 ---
 
 I just had one of those nice moments where you write some code and you know straight away that you've done the right thing. These moments usually follow a period of doubt, then something slips into place and you realize that you've found the correct solution.

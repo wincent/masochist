@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 [vi](/wiki/vi) is a ubiquitous text editor found on just about every [UNIX](/wiki/UNIX) operating system you're likely to run across. It has been copied and cloned many times, and now exists in much improved form under the guise of [Vim](/wiki/Vim), the most successful and powerful of the [vi](/wiki/vi) clones.

@@ -1,6 +1,6 @@
 ---
 title: Wikitext 3.0.1 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new release of the [Wikitext](/wiki/Wikitext) gem, version 3.0.1, is out. This is a minor bug-fix release which fixes [an issue](/issues/1955) with external links containing email addresses.

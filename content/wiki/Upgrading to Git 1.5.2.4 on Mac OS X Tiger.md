@@ -1,5 +1,5 @@
 ---
-tags: tiger git updates os.x
+tags: tiger git updates os.x wiki
 cache_breaker: 1
 ---
 

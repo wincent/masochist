@@ -1,6 +1,6 @@
 ---
 title: Clearing up confusion about Synergy version numbers
-tags: synergy
+tags: synergy blog
 cache_breaker: 1
 ---
 

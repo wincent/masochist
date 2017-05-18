@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # DWARF with dSYM and stripping

@@ -1,5 +1,5 @@
 ---
-tags: sendmail postfix
+tags: sendmail postfix wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Better handling when growlnotify is not installed (WOTest, f0adf26)
+tags: snippets
 ---
 
 Previouly when growlnotify was not installed env would issue an ugly error message to the standard error.

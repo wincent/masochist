@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 For posterity:
@@ -63,4 +63,3 @@ Examples (oldest first):
 
 -   [Red Hat kernel-2.4.21-40.EL to kernel-2.4.21-47.EL upgrade notes](/wiki/Red_Hat_kernel-2.4.21-40.EL_to_kernel-2.4.21-47.EL_upgrade_notes)
 -   [Red Hat kernel 2.4.21-47.EL to 2.4.21-47.0.1.EL upgrade notes](/wiki/Red_Hat_kernel_2.4.21-47.EL_to_2.4.21-47.0.1.EL_upgrade_notes)
-

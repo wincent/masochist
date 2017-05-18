@@ -1,5 +1,6 @@
 ---
 title: Responsible disclosure
+tags: blog
 ---
 
 [This time](http://projects.info-pull.com/moab/MOAB-09-01-2007.html) they actually did the right thing:

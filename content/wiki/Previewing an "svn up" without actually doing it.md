@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 Sometimes you have a working copy checked out and would like to see what would happen if you did an `svn up` without actually doing it.

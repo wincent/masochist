@@ -1,5 +1,5 @@
 ---
-tags: capybara
+tags: capybara wiki
 cache_breaker: 1
 ---
 

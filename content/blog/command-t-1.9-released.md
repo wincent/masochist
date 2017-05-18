@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.9 released
-tags: releases command.t
+tags: releases command.t blog
 ---
 
 I just released version 1.9 of [Command-T](/wiki/Command-T). Command-T is a powerful, [open source](/wiki/open_source) file and buffer-navigation plug-in inspired by the "Command-T" feature in [TextMate](/wiki/TextMate).

@@ -1,5 +1,6 @@
 ---
 title: Add tag search (wincent.com, 80753b1)
+tags: snippets
 ---
 
 We offer two kinds of search. The first one isn't really "search" at all; basically, if the user navigates to "/tags/foo" then we show a list of everything (if anything) that's been tagged with "foo".

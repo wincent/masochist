@@ -1,5 +1,6 @@
 ---
 title: Will it blend?
+tags: blog
 ---
 
 David Heinemeier Hansson is [again arguing](http://weblog.rubyonrails.com/2007/9/25/designing-scalable-architectures) that [Rails](http://www.wincent.com/knowledge-base/Rails) is, after all, scalable:

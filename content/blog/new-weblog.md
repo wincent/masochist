@@ -1,6 +1,6 @@
 ---
 title: New weblog
-tags: site
+tags: site blog
 ---
 
 This is the new [weblog](/wiki/weblog) for the updated website. Unlike the [wiki](/wiki/wiki), I haven't made any attempt at importing the old articles into the new system; I'll instead be uploading a static mirror of the old pages (and will provide the mirror [URL](/wiki/URL) here shortly). [Movable Type](/wiki/Movable_Type) (the system I used to use) essentially works by writing out static [HTML](/wiki/HTML) or [PHP](/wiki/PHP) files to disk, so I'll just be copying those files over, basically.

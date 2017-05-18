@@ -1,5 +1,6 @@
 ---
 title: Restore PRODUCT_NAME (WOHotKey, f9fa9cf)
+tags: snippets
 ---
 
 Restore PRODUCT\_NAME build setting to aggregate targets; it appears that it is necessary for dependency analysis.

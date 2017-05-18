@@ -1,5 +1,5 @@
 ---
-tags: development unix
+tags: development unix wiki
 ---
 
 I recently wanted to add a shell-script build phase to one of my projects to automatically collect all the [dSYM](/wiki/dSYM) bundles produced during the build into a separate folder. Rather than maintaining a fragile, brittle list of bundles to be copied I decided to use the `find` tool to locate all [dSYM](/wiki/dSYM) bundles and copy them automatically.
@@ -29,4 +29,3 @@ We work around the space problem by piping the output through [perl](/wiki/perl)
 # See also
 
 -   [Find tricks](/wiki/Find_tricks)
-

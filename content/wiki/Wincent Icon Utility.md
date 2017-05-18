@@ -1,5 +1,5 @@
 ---
-tags: wincent.icon.utility
+tags: wincent.icon.utility wiki
 cache_breaker: 1
 ---
 
@@ -9,4 +9,3 @@ cache_breaker: 1
 
 -   Web-based repository browser: <http://git.wincent.com/wincent-icon-util.git>
 -   [Wincent Icon Utility](/wiki/Wincent_Icon_Utility) version 2.0.1 [release announcement](/blog/wincent-icon-utility-2.0.1-released)
-

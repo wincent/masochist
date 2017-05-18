@@ -1,5 +1,5 @@
 ---
-tags: hfs os.x
+tags: hfs os.x wiki
 ---
 
 Files with extended attributes show up with `@` at the end of their mode string in the output of `ls -l`.

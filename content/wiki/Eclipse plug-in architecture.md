@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 These are notes taken based on the article, "Notes on the Eclipse Plug-in Architecture", at <http://www.eclipse.org/articles/Article-Plug-in-architecture/plugin_architecture.html>
@@ -52,4 +52,3 @@ These are notes taken based on the article, "Notes on the Eclipse Plug-in Archit
 -   A given extender plug-in may extend different extension points and even different host plug-ins.
 -   Extending a single extension point may lead to the instantiation of multiple callback objects.
 -   A plug-in can extend itself (defining extensions to its own extension points).
-

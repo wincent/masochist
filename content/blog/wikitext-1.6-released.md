@@ -1,6 +1,6 @@
 ---
 title: Wikitext 1.6 released
-tags: wikitext
+tags: wikitext blog
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.6, is now available. This is a minor feature and maintenance release ([release notes](http://wikitext.rubyforge.org/files/doc/RELEASE-NOTES.html)).

@@ -1,5 +1,5 @@
 ---
-tags: snow.leopard gpg
+tags: snow.leopard gpg wiki
 cache_breaker: 1
 ---
 

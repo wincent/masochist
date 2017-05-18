@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #30
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ Just lost the re-creation of the exact same thing I had been working on when the
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 677 days
 -   Average time between failures: 22.56 days
-

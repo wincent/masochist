@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Examples of operating systems
@@ -10,4 +10,3 @@ tags:
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [operating systems](/wiki/operating_systems): <http://en.wikipedia.org/wiki/Operating_system>
-

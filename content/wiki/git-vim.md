@@ -1,5 +1,5 @@
 ---
-tags: git vim
+tags: git vim wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: git snow.leopard
+tags: git snow.leopard wiki
 cache_breaker: 1
 ---
 

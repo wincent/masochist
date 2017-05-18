@@ -1,5 +1,6 @@
 ---
 title: Fix list indentation (wikitext, af34180)
+tags: snippets
 ---
 
 Quick a tricky one, this one, because the LI token is the only one which varies its behaviour depending on the context.

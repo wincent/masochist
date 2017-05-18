@@ -1,5 +1,6 @@
 ---
 title: Watch out for nil login item (WOCommon, 26afae1)
+tags: snippets
 ---
 
 Avoids crash at launch described in:

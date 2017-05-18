@@ -1,5 +1,6 @@
 ---
 title: A new WinSwitch tip
+tags: blog
 ---
 
 I was pleased to see that someone has posted [details](http://www.macosxhints.com/article.php?story=20061212090013611) of how [WinSwitch](http://www.wincent.com/a/products/winswitch/) can be used to make life easier when sharing iTunes or iPhoto libraries across multiple accounts.

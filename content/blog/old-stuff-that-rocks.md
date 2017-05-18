@@ -1,5 +1,5 @@
 ---
-tags: unix
+tags: unix blog
 title: Old stuff that rocks
 hn: https://news.ycombinator.com/item?id=10712482
 fb: https://www.facebook.com/glh/posts/10153075891566307

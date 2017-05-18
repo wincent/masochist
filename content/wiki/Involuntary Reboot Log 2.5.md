@@ -1,5 +1,5 @@
 ---
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log wiki
 ---
 
 This time a hard reset due to system lockup.
@@ -10,4 +10,3 @@ This time a hard reset due to system lockup.
 -   Start of recording keeping: 17 March 2010
 -   Total days to date: 71 days
 -   Average time between failures: 14.2 days
-

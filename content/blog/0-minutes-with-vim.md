@@ -1,6 +1,6 @@
 ---
 title: 0 minutes with Vim
-tags: textmate emacs vim
+tags: textmate emacs vim blog
 ---
 
 So lately I've been dabbling with [Emacs](/wiki/Emacs) trying to see whether I could make it my full-time coding editor. [At first](/blog/trying-emacs) I suspected that I wouldn't be able to make the jump, although [later](/blog/giving-up-on-emacs) I started to think that I might be able to make it work after all.

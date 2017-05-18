@@ -1,7 +1,7 @@
 ---
 title: Windows
+tags: blog
 ---
-
 
 ### USB stick contents *before* visit to local print shop
 

@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ cache_breaker: 1
 
 -   [MacVim](/wiki/MacVim): a [Mac OS X](/wiki/Mac_OS_X)-specific [GUI](/wiki/GUI) version of [Vim](/wiki/Vim)
 -   [Command-T](/wiki/Command-T): a plug-in I wrote for VIM that brings fast file navigation inspired by the "Command-T" feature in [TextMate](/wiki/TextMate)
-

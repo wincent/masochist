@@ -1,6 +1,6 @@
 ---
 redirect: [[Xcode Tools]]
-tags: 
+tags: wiki
 ---
 
 

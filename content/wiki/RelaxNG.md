@@ -1,8 +1,7 @@
 ---
-tags: xml relaxng
+tags: xml relaxng wiki
 ---
 
 ## See also
 
 -   Official site: <http://relaxng.org/>
-

@@ -1,6 +1,6 @@
 ---
 title: TextMate 2
-tags: textmate emacs vim
+tags: textmate emacs vim blog
 cache_breaker: 1
 ---
 

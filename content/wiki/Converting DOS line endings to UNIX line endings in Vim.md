@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 Open the file and check for brokenness:

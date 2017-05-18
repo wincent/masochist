@@ -1,5 +1,5 @@
 ---
-tags: clamav clamassassin
+tags: clamav clamassassin wiki
 ---
 
 # Introduction
@@ -146,4 +146,3 @@ And restart the service to confirm that it works:
 # See also
 
 -   Upgrade notes for last upgrade: "[ClamAV 0.88.6 to 0.88.7 upgrade notes](/wiki/ClamAV_0.88.6_to_0.88.7_upgrade_notes)"
-

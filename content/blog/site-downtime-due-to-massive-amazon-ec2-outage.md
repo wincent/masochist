@@ -1,6 +1,6 @@
 ---
 title: Site downtime due to massive Amazon EC2 outage
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

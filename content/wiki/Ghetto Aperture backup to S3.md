@@ -1,5 +1,5 @@
 ---
-tags: s3 aperture
+tags: s3 aperture wiki
 cache_breaker: 1
 ---
 
@@ -128,4 +128,3 @@ Note: another reason why we want a flat folder structure is because that is what
 2.  Edit, publish, share photos on Facebook or elsewhere as usual
 3.  When it's time to create a new Archive, use "Relocate Originals..." in the "File" menu to convert the managed photos to referenced ones; this is where you'll get a flat folder structure
 4.  Use Arq to upload, detach, and delete your new `~/Archives/Aperture/2015-03` archive
-

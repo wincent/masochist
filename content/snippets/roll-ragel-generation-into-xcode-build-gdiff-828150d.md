@@ -1,5 +1,6 @@
 ---
 title: Roll Ragel generation into Xcode build (gdiff, 828150d)
+tags: snippets
 ---
 
 Migrate the WODiffMachine class to the GUI application build as well using a custom build rule to generate the Objective-C (.m) file from the Ragel (.rl) source.

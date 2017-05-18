@@ -1,8 +1,8 @@
 ---
-tags: leopard subversion
+tags: leopard subversion wiki
 ---
 
-    wget http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2
+wget http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2
     wget http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2
     tar xjvf subversion-1.4.3.tar.bz2
     tar xjvf subversion-deps-1.4.3.tar.bz2

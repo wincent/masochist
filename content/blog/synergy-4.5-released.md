@@ -1,6 +1,6 @@
 ---
 title: Synergy 4.5 released
-tags: synergy releases snow.leopard
+tags: synergy releases snow.leopard blog
 cache_breaker: 1
 ---
 

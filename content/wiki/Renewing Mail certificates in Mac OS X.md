@@ -1,5 +1,5 @@
 ---
-tags: email
+tags: email wiki
 cache_breaker: 1
 ---
 
@@ -49,4 +49,3 @@ Repeat for any other email addresses.
 # See also
 
 -   "How to Set Up Encrypted Mail on Mac OS X": <http://www.macdevcenter.com/pub/a/mac/2003/01/20/mail.html?page=1> (written in 2004 but still useful and adaptable to the current version of [Mac OS X](/wiki/Mac_OS_X))
-

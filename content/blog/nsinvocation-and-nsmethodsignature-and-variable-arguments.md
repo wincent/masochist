@@ -1,5 +1,6 @@
 ---
 title: NSInvocation and NSMethodSignature and variable arguments
+tags: blog
 ---
 
 So what happens when you try to use `NSInvocation` and `NSMethodSignature` with methods that accept a variable number of arguments? This is a question that I was asking myself earlier this evening.

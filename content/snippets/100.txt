@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 insert into experiment_participations (user_id, experiment, `group`, created_at, updated_at)
 values (259, 'ticker_20120921', 'ticker',  utc_timestamp(), utc_timestamp()),
 (15031, 'ticker_20120921', 'ticker',  utc_timestamp(), utc_timestamp()),

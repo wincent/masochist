@@ -1,5 +1,5 @@
 ---
-tags: aws s3
+tags: aws s3 wiki
 cache_breaker: 1
 ---
 

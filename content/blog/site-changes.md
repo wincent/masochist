@@ -1,6 +1,6 @@
 ---
 title: Site changes
-tags: site
+tags: site blog
 ---
 
 The changes [mentioned yesterday](/blog/upcoming-site-changes) are now in place. The main points of interest are:

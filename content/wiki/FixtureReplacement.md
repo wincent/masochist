@@ -1,5 +1,5 @@
 ---
-tags: rspec rails object.mother fixture.replacement
+tags: rspec rails object.mother fixture.replacement wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
 # See also
 
 -   [FixtureReplacement cheatsheet](/wiki/FixtureReplacement_cheatsheet)
-

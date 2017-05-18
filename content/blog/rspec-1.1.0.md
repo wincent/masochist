@@ -1,5 +1,6 @@
 ---
 title: RSpec 1.1.0
+tags: blog
 ---
 
 The [release notes](http://rubyforge.org/frs/shownotes.php?release_id=17107) belie the scope of the changes in this [RSpec](http://www.wincent.com/knowledge-base/RSpec) release. It's been a long time, and this is a *huge* release with, for me, three big things:

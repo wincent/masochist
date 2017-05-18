@@ -1,5 +1,5 @@
 ---
-tags: rubygems updates
+tags: rubygems updates wiki
 ---
 
 These notes were made while upgrading to [RubyGems 1.1.0](/wiki/RubyGems_1.1.0) on my local machine running [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2, and on the remote server running [RHEL 5.1](/wiki/RHEL_5.1).

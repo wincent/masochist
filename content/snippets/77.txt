@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.54
-tags: site updates
+tags: site updates snippets
 ---
+
 743705d Add a local copy of the unicorn.rb script

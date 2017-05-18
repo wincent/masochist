@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.78
-tags: site updates
+tags: site updates snippets
 ---
+
 3115ae5 Update to Capybara 2.0.2
 bb94540 Update Rack to 1.4.5

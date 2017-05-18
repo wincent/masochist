@@ -1,5 +1,5 @@
 ---
-tags: mail.app gmail
+tags: mail.app gmail wiki
 ---
 
 There are plenty of articles on how to do this out there, as well as official instructions from Google, but the most useful write-up I've found is [this one](http://complexdiagrams.com/2009/01/imap-for-gmail-mailapp-iphone/).

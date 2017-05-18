@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.135
-tags: site updates
+tags: site updates snippets
 ---
+
 cc33c3b Don't let suspended users log in

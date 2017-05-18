@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 # Leverages existing [Subversion](/wiki/Subversion) infrastructure
@@ -43,4 +43,3 @@ tags: svk
 # See also
 
 -   [Git advantages](/wiki/Git_advantages)
-

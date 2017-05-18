@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.59
-tags: site updates
+tags: site updates snippets
 ---
+
 4648ca1 Collapse header/nav into a single row

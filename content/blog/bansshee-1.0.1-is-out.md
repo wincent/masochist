@@ -1,6 +1,6 @@
 ---
 title: Bansshee 1.0.1 is out
-tags: bansshee releases
+tags: bansshee releases blog
 ---
 
 I'm pleased to announce the release of a new version of [Bansshee](http://bansshee.wincent.com/), the lightweight daemon written in [Perl](/wiki/Perl) for defending against brute-force/dictionary attacks on [SSH](/wiki/SSH) servers.

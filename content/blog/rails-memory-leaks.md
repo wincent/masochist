@@ -1,6 +1,6 @@
 ---
 title: Rails memory leaks
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

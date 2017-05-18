@@ -1,5 +1,5 @@
 ---
-tags: cocoa
+tags: cocoa wiki
 ---
 
 # `bind:toObject:withKeyPath:options:`

@@ -1,6 +1,6 @@
 ---
 redirect: [[Object-oriented programming]]
-tags: 
+tags: wiki
 ---
 
 

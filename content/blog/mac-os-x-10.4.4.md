@@ -1,5 +1,6 @@
 ---
 title: Mac OS X 10.4.4
+tags: blog
 ---
 
 One of the coolest things about the [Mac OS X 10.4.4](http://docs.info.apple.com/article.html?artnum=302810.) update that was released today:

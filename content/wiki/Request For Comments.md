@@ -1,6 +1,6 @@
 ---
 redirect: [[RFC]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: Add specs for encoding methods (wikitext, 292af90)
+tags: snippets
 ---
 
 Although the encoding conversion methods already receive extensive indirect testing (because they are indirectly exercised by all of the parsing specs) this commit adds specific specs so as to test all the possible failure paths when passed invalidly encoding inputs.

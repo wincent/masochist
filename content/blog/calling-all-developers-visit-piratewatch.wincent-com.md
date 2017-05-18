@@ -1,5 +1,6 @@
 ---
 title: Calling all developers: visit piratewatch.wincent.com
+tags: blog
 ---
 
 Minimizing software piracy requires a balancing act. At one extreme, a developer could devote 100% of her time to fighting piracy but never have a marketable product because no time would be spent on developing features; at the other, a developer could make no efforts at all to stop piracy and find that the business never gets off the ground because too many sales are lost.

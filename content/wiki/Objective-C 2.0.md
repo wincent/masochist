@@ -1,5 +1,5 @@
 ---
-tags: objective.c
+tags: objective.c wiki
 cache_breaker: 1
 ---
 
@@ -13,4 +13,3 @@ cache_breaker: 1
 
 -   [Wikipedia](/wiki/Wikipedia) article on [Objective-C 2.0](/wiki/Objective-C_2.0): <http://en.wikipedia.org/wiki/Objective-C#Objective-C_2.0>
 -   [Objective-C 2.0 cheatsheet](/wiki/Objective-C_2.0_cheatsheet)
-

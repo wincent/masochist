@@ -1,5 +1,5 @@
 ---
-tags: haml
+tags: haml wiki
 ---
 
 # `%` (elements)
@@ -71,4 +71,3 @@ Yields:
 # See also
 
 -   Official [Haml](/wiki/Haml) documentation: <http://haml.hamptoncatlin.com/docs/haml>
-

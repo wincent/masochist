@@ -1,5 +1,6 @@
 ---
 title: Bump version number post-release (Wincent Strings Utility, 395d401)
+tags: snippets
 ---
 
 To 1.2+.

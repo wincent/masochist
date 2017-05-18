@@ -1,5 +1,5 @@
 ---
-tags: aws ec2
+tags: aws ec2 wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ The abbreviation is the result of turning "[Elastic Compute Cloud](/wiki/Elastic
 # Links
 
 -   Official [EC2](/wiki/EC2) site: <http://aws.amazon.com/ec2/>
-

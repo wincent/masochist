@@ -1,5 +1,6 @@
 ---
 title: Leopard update
+tags: blog
 ---
 
 I've just learned that [Apple](http://www.wincent.com/knowledge-base/Apple) has made the final release of [Leopard](http://www.wincent.com/knowledge-base/Leopard) available to developers (via download) several weeks earlier than expected (in the case of Tiger they didn't make a download available and developers had to wait for mailed copies).

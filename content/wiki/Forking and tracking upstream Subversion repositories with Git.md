@@ -1,5 +1,5 @@
 ---
-tags: subversion git
+tags: subversion git wiki
 cache_breaker: 1
 ---
 

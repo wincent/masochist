@@ -1,6 +1,6 @@
 ---
 title: Rails page caching vs nginx
-tags: rails nginx
+tags: rails nginx blog
 cache_breaker: 1
 ---
 

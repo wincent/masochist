@@ -1,5 +1,5 @@
 ---
-tags: ruby testing timecop delorean time.warp
+tags: ruby testing timecop delorean time.warp wiki
 cache_breaker: 1
 ---
 
@@ -75,4 +75,3 @@ While I like the simplicity of the Delorean implementation, I think Timecop has 
 
 -   partial list of Ruby "time warping" libraries: <http://ruby-toolbox.com/categories/time_warping.html>
 -   an example of a "roll your own" library: <http://snippets.dzone.com/posts/show/4776>
-

@@ -1,5 +1,6 @@
 ---
 title: GoDaddy vs Network Solutions
+tags: blog
 ---
 
 I first registered the wincent.org domain back in September 1999 (prior to that I ran the website using the webspace and domain provided by my ISP). Back then [Network Solutions](http://netsol.com/) was the only registrar. From memory, I paid $35 for the privilege.

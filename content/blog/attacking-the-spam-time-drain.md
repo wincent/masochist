@@ -1,5 +1,6 @@
 ---
 title: Attacking the spam time drain
+tags: blog
 ---
 
 The other day I [wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/mail_as_a_time.php) about how much time I waste each month on dealing with spam messages; specifically with training [SpamAssassin](http://www.wincent.com/knowledge-base/SpamAssassin) to learn from its mistakes. [Scott Guelich](http://guelich.net/) wrote in with a couple of suggestions to trim some time off the process:

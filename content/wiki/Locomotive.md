@@ -1,5 +1,5 @@
 ---
-tags: ruby rails
+tags: ruby rails wiki
 ---
 
 As an alternative to manually [installing Ruby on Rail on Mac OS X Tiger](/wiki/installing_Ruby_on_Rail_on_Mac_OS_X_Tiger) pre-package drag-and-drop installs of everything required are available in the form of [Locomotive](/wiki/Locomotive). See the [Locomotive](/wiki/Locomotive) website:

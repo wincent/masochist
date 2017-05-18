@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
-    zip -r target.zip source-dir
+zip -r target.zip source-dir

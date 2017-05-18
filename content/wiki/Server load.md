@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [Server load](/wiki/Server_load) or simply [load](/wiki/load) is a measure of resource usage commonly used to indicate the intensity of demands upon an [Internet](/wiki/Internet) server. The number is an indication of the number of waiting processes waiting to get a slice of the processor time at the moment the load measurement was taken. A load average close to 0.0 indicates that the machine is only very lightly loaded and (almost) no processes have to wait when they want a slice of processor time. Ideally load averages should be kept down near 0, 1 or 2. As the load average gets higher system responsiveness is reduced. Load averages over 10 are very high, and averages over 20 are extremely high.
@@ -32,4 +32,3 @@ This does the following:
 -   Replace spaces and semicolons with commas (useful for importing into a database or spreadsheet)
 -   Further cut the input, leaving only the 2nd and 3rd columns (now delimited by a comma)
 -   Mail the output to the specified email address
-

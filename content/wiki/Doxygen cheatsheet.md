@@ -1,5 +1,5 @@
 ---
-tags: doxygen
+tags: doxygen wiki
 ---
 
 # Documenting [Objective-C](/wiki/Objective-C) with [Doxygen](/wiki/Doxygen)
@@ -40,4 +40,3 @@ tags: doxygen
 # See also
 
 -   <http://developer.apple.com/tools/creatingdocsetswithdoxygen.html>: "Using Doxygen to Create Xcode Documentation Sets"
-

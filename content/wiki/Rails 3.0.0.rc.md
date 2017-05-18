@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 Pieced together from individual `CHANGELOG` files:

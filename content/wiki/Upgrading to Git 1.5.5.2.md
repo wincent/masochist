@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 These notes were made while doing the upgrade to [Git 1.5.5.2](/wiki/Git_1.5.5.2) on two machines:

@@ -1,5 +1,5 @@
 ---
-tags: c objective.c
+tags: c objective.c wiki
 ---
 
 I originally posted this to my [weblog](/wiki/weblog) as an article titled, "[Clever boolean return trick](http://wincent.com/a/about/wincent/weblog/archives/2007/05/clever_boolean.php)". I'm now reposting the contents here for completeness of the [wiki](/wiki/wiki).

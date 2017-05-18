@@ -1,6 +1,6 @@
 ---
 title: More on Python and Mercurial
-tags: git
+tags: git blog
 ---
 
 I [tweeted about this](/twitter/13) a couple of days ago, but now I have [more details](http://sayspy.blogspot.com/2009/03/why-python-is-switching-to-mercurial.html) on why Python chose Mercurial over Bzr or Git:

@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 # Mapping to show matching highlight rules at current position

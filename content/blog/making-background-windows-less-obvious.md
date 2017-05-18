@@ -1,6 +1,6 @@
 ---
 title: Making background windows less obvious
-tags: vim
+tags: vim blog
 cache_breaker: 1
 ---
 

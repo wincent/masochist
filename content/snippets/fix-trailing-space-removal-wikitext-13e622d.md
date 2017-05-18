@@ -1,5 +1,6 @@
 ---
 title: Fix trailing space removal (wikitext, 13e622d)
+tags: snippets
 ---
 
 This was an off-by-one error that was harmless under normal operation because both code paths ended up returning the same length.

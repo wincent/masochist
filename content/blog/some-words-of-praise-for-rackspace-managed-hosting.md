@@ -1,5 +1,6 @@
 ---
 title: Some words of praise for Rackspace managed hosting
+tags: blog
 ---
 
 A few months ago I had some server troubles and switched to [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) managed hosting and I can't praise the reliability and quality of the service enough.

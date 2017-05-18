@@ -1,5 +1,5 @@
 ---
-tags: ruby fedora
+tags: ruby fedora wiki
 ---
 
 ```shell

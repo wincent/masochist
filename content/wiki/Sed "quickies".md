@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Find and replace "in place"

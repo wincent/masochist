@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -56,4 +56,3 @@ So, with that in mind:
 ## Source
 
 -   <http://stackoverflow.com/a/5618692/2103996>
-

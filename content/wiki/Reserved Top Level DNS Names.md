@@ -1,6 +1,6 @@
 ---
 redirect: [[RFC 2606]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 redirect: [[FTP]]
-tags: 
+tags: wiki
 ---
 
 

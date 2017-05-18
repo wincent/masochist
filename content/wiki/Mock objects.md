@@ -1,5 +1,5 @@
 ---
-tags: rspec development
+tags: rspec development wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ An example of a testing framework that provides a [mocking](/wiki/mocking) [API]
 
 -   [Independently testing models, views and controllers](/wiki/Independently_testing_models%2c_views_and_controllers)
 -   [Mocking in Rails](/wiki/Mocking_in_Rails)
-

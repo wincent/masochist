@@ -1,5 +1,6 @@
 ---
 title: Putting the "packrat" into PEG: adding memoizing to my Ruby parser generator
+tags: blog
 ---
 
 I've previously written about writing a [basic parser generator](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) in Ruby and then [adding support](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) for [Abstract Syntax Trees](http://en.wikipedia.org/wiki/Abstract_syntax_tree).

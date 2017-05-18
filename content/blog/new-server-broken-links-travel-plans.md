@@ -1,5 +1,6 @@
 ---
 title: New server, broken links, travel plans
+tags: blog
 ---
 
 A hard drive failure a few days ago has forced a server migration on me a little sooner than I had planned. Since the [problems in June](http://www.wincent.com/a/news/archives/2005/06/synergy_and_syn.php) I've wanted to accelerate my plans to move to different hardware, but it's difficult because I am in Spain and the hardware is in Australia. On Thursday night the server stopped responding and wouldn't reboot, so since then I've been doing my best to migrate things to a new server in the USA.

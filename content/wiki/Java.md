@@ -1,5 +1,5 @@
 ---
-tags: java
+tags: java wiki
 ---
 
 [Java](/wiki/Java) is an [object-oriented](/wiki/object-oriented) programming language.
@@ -30,4 +30,3 @@ As an example, the [ANTLRWorks](/wiki/ANTLRWorks) instance I am currently runnin
 As another example, a just-launched copy of Azureus, when idle, consumes 53 MB of real memory (577 MB virtual) and spawns an astonishing 46 threads, with 877 Mach ports.
 
 -   `CLASSPATH`
-

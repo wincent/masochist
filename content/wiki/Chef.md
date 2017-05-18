@@ -1,5 +1,5 @@
 ---
-tags: chef
+tags: chef wiki
 cache_breaker: 1
 ---
 
@@ -13,4 +13,3 @@ cache_breaker: 1
 
 -   [Wikipedia](/wiki/Wikipedia) article on [Chef](/wiki/Chef): <http://en.wikipedia.org/wiki/Chef_(software>)
 -   Chef (formerly Opscode) company info on CrunchBase: <http://www.crunchbase.com/organization/opscode>
-

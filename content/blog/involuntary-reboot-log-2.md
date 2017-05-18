@@ -1,5 +1,6 @@
 ---
 title: Involuntary reboot log #2
+tags: blog
 ---
 
 The most unpleasant kind of kernel panic: you leave the machine idle, leave the office, and come back to find the machine has panicked. Sigh. Had a bunch of unsaved work ready for tomorrow too, the kind you can't save (stuff in browser windows), and documents open in Finder and BBEdit windows ready for uploading. Hope there was no damage to the file system or the files. Sigh.

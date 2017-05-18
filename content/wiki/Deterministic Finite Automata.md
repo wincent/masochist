@@ -1,6 +1,6 @@
 ---
 redirect: [[DFA]]
-tags: 
+tags: wiki
 ---
 
 

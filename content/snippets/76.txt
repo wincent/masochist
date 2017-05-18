@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.53
-tags: site updates
+tags: site updates snippets
 ---
+
 15174a5 Trial innod_flush_method=nosync in test environment
 9c5e177 Use an RVM gemset
 2508299 Add compass-rails to the Gemfile

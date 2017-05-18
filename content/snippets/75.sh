@@ -1,8 +1,9 @@
 ---
 title: git-daemon init.d script
-tags: git
+tags: git snippets
 cache_breaker: 1
 ---
+
 #!/bin/sh
 #
 # git git-daemon

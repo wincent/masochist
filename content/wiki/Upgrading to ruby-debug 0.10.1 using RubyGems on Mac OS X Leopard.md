@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug updates
+tags: ruby.debug updates wiki
 cache_breaker: 1
 ---
 
@@ -42,4 +42,3 @@ I actually had to try a few times before this worked:
 ## See also
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=21031>
-

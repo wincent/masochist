@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 A bunch of quick-and-dirty screencasts about [Vim](/wiki/Vim). My intention here is not to create yet another "here is why you should use Vim"/"see the power of modal editing" screencast, but rather a collection of short tips and demos for existing Vim users; basically the kind of content that I myself might want to see.

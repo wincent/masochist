@@ -1,5 +1,5 @@
 ---
-tags: clamav
+tags: clamav wiki
 ---
 
 -   Download `clamav-0.90.2.tar.gz` from <http://www.clamav.net/download/sources>
@@ -51,4 +51,3 @@ tags: clamav
 # See also
 
 -   Official upgrade instructions: <http://wiki.clamav.net/Main/UpgradeInstructions>
-

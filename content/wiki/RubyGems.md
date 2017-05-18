@@ -1,5 +1,5 @@
 ---
-tags: rubygems
+tags: rubygems wiki
 cache_breaker: 1
 ---
 

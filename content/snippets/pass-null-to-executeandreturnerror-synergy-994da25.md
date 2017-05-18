@@ -1,5 +1,6 @@
 ---
 title: Pass NULL to executeAndReturnError: (Synergy, 994da25)
+tags: snippets
 ---
 
 The only known crasher at the moment is happening NSAppleScript's executeAndReturnError: method.

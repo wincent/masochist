@@ -1,5 +1,6 @@
 ---
 title: Apple Design Awards 2007
+tags: blog
 ---
 
 So the winners of the Apple Design Awards for 2007 have been [announced](http://developer.apple.com/wwdc/ada/).

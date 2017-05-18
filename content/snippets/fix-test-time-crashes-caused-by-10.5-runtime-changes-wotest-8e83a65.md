@@ -1,5 +1,6 @@
 ---
 title: Fix test-time crashes caused by 10.5 runtime changes (WOTest, 8e83a65)
+tags: snippets
 ---
 
 The Objective-C 2.0 runtime in Leopard expects more methods to be implemented in root classes than was the case under Tiger.

@@ -1,5 +1,5 @@
 ---
-tags: vim snipmate
+tags: vim snipmate wiki
 ---
 
 :call ReloadAllSnippets()

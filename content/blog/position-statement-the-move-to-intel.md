@@ -1,5 +1,6 @@
 ---
 title: Position statement: the move to Intel
+tags: blog
 ---
 
 Yesterday Steve Jobs announced that Apple will transition to Intel processors. I'm very excited about the move and I think it will be the best for Apple customers in the long run. In fact, even in the short term I think we'll see some benefits; I just wish they'd done it sooner. I've written [a more personal response](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/the_move_to_int.php) on my [weblog](http://colaiuta.net/) but here I wanted to make an official statement on the position of Wincent Software with respect to the move.

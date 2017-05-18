@@ -1,5 +1,5 @@
 ---
-tags: wordpress subversion
+tags: wordpress subversion wiki
 ---
 
 # The upgrade
@@ -77,4 +77,3 @@ Finally, hit `wp-admin/upgrade.php` and re-enable plug-ins one by one.
 -   Release announcement: <http://wordpress.org/development/2007/02/new-releases/>
 -   2.1.1 tag in [Subversion](/wiki/Subversion) repository: <http://svn.automattic.com/wordpress/tags/2.1.1/>
 -   Upgrade notes from other versions: [Upgrading WordPress using Subversion](/wiki/Upgrading_WordPress_using_Subversion)
-

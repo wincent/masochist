@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance 0.4 beta 2
+tags: blog
 ---
 
 The second 0.4 beta release of [Synergy Advance](http://synergyadvance.com/) has been seeded to beta testers. See the [information for beta testers](http://www.wincent.com/a/knowledge-base/archives/2005/04/information_for.php), [how to file a good bug report](http://www.wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php), [the change log](/a/products/synergy-advance/history/#0.4b2) and [the downloads page](/a/products/synergy-advance/download/).

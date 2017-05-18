@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [Wincent wikitext](/wiki/Wincent_wikitext) is a specific flavor of [wikitext](/wiki/wikitext) based on the version implemented in the popular [MediaWiki](/wiki/MediaWiki) [wiki](/wiki/wiki) software.

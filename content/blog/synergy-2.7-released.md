@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.7 released
+tags: blog
 ---
 
 [Synergy](http://synergy.wincent.com/) 2.7 has just been released. This is a maintenance release. A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

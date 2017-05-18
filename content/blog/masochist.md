@@ -1,7 +1,8 @@
 ---
 title: Introducing Masochist
-tags: masochist relay graphql redis javascript site
+tags: masochist relay graphql redis javascript site blog
 ---
+
 > **masochist (noun)**<br>
 > A person who, on realizing she has painted herself into a corner, applies a second coat.
 

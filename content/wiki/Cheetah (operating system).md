@@ -1,5 +1,5 @@
 ---
-tags: cheetah
+tags: cheetah wiki
 ---
 
 "[Cheetah](/wiki/Cheetah)" is the popular name for [Mac OS X](/wiki/Mac_OS_X) version 10.0.

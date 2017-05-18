@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 Here are some notes that I made while performing the kernel upgrade on my [Red Hat](/wiki/Red_Hat) box from version 2.4.21-47.EL to 2.4.21-47.0.1.EL. These are based on the general upgrade procedure described in the article, [Red Hat Enterprise Linux kernel update procedure](/wiki/Red_Hat_Enterprise_Linux_kernel_update_procedure).

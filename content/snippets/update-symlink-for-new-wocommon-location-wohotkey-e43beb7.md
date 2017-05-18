@@ -1,5 +1,6 @@
 ---
 title: Update symlink for new WOCommon location (WOHotKey, e43beb7)
+tags: snippets
 ---
 
 Back in the days of Subversion externals each project that used code from WOCommon had a local copy of WOCommon incoporated by reference using the svn:externals mechanism.

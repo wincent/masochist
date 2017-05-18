@@ -1,5 +1,5 @@
 ---
-tags: atom rfc
+tags: atom rfc wiki
 cache_breaker: 1
 ---
 
@@ -15,4 +15,3 @@ cache_breaker: 1
     -   Nice summary: <http://www.atomenabled.org/developers/syndication/>
 -   [Atom Publishing Protocol](/wiki/Atom_Publishing_Protocol):
     -   RFC: [RFC 5023](/wiki/RFC_5023)
-

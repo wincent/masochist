@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance framework
+tags: blog
 ---
 
 From the very beginning I've wanted [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/) to be as modular as possible to maximize code reuse and make it easily extensible. The first thing I started by doing was splitting off code into reusable frameworks. The need to make the code reusable imposes a discipline that obliges you to think about writing a good API that will be useful in the general case. I now have a number of such frameworks: WODebug (the lowest-level framework), WOHotKey (hot key support), WOBezel (bezel windows), WOTest (unit testing) and WOBase (everything else, this is the most general of the frameworks). I've already used some of these in my other products (like [WinHex](http://www.wincent.com/a/products/winhex/) and [WinSwitch](http://www.wincent.com/a/products/winswitch/)).

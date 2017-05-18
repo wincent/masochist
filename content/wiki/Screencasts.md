@@ -1,5 +1,5 @@
 ---
-tags:
+tags: wiki
 ---
 
 [Screencasting](/wiki/Screencasting) is the process of capturing the video (and possibly audio) output of the computer for publication on the Internet.

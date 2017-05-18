@@ -1,6 +1,6 @@
 ---
 title: The Vim epiphany
-tags: vim
+tags: vim blog
 cache_breaker: 1
 ---
 

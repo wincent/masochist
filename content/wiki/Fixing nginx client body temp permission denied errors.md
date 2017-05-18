@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 cache_breaker: 1
 ---
 
@@ -39,4 +39,3 @@ It's worth commenting on my rationale for having two master processes rather tha
 -   [nginx](/wiki/nginx) processes are extremely lightweight so it is feasible to run separate processes for each user as an analogue to [Apache](/wiki/Apache)'s [suexec](/wiki/suexec) functionality; in my case I have two applications and therefore two users, so this is quite reasonable
 -   Having each process run as a different user brings all of the isolation and security benefits that [suexec](/wiki/suexec) brings to Apache
 -   In my case the two applications are actually just two instances of the same application, but one is for staging and one is for production; as a result, I only *sometimes* want to run both applications (ie. when testing a new version of the application in the staging environment) but most of the time only the production environment will be running, so it isn't at all wasteful to occasionally fire up another worker process
-

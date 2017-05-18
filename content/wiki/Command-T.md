@@ -1,6 +1,6 @@
 ---
 redirect: /products/command-t
-tags: 
+tags: wiki
 ---
 
 

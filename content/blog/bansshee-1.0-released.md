@@ -1,5 +1,6 @@
 ---
 title: Bansshee 1.0 released
+tags: blog
 ---
 
 After months of testing without skipping a beat I am proud to announce the public release of [Bansshee](http://bansshee.org/), a lightweight daemon written in Perl designed to thwart dictionary-based brute force SSH attacks.

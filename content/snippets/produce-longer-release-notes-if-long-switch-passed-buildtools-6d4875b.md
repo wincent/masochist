@@ -1,5 +1,6 @@
 ---
 title: Produce longer release notes if --long switch passed (buildtools, 6d4875b)
+tags: snippets
 ---
 
 Note also that we just use "git log --pretty=format" rather than piping through "git shortlog".

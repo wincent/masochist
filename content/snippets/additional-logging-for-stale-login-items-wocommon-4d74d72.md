@@ -1,5 +1,6 @@
 ---
 title: Additional logging for stale login items (WOCommon, 4d74d72)
+tags: snippets
 ---
 
 We now have confirmation that the problem described in bug \#636 is caused by stale entries in the login items (file not found on disk). Commit 26afae1 already fixes the crash caused by this, but here we add some additional logging for this case; informing the user of the stale entry makes the log entry more helpful than just reporting "error -43".

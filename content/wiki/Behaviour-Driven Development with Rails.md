@@ -1,5 +1,5 @@
 ---
-tags: rspec rails
+tags: rspec rails wiki
 cache_breaker: 1
 ---
 
@@ -313,4 +313,3 @@ Make sure that you are testing the behaviour of *your* application and not that 
 -   Nice article on doing Behaviour-Driven Development in Ruby on Rails: <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1> (now slightly out of date but still useful)
 -   [Behaviour-Driven Development with Rails: Handling upgrades](/wiki/Behaviour-Driven_Development_with_Rails%3a_Handling_upgrades)
 -   [Store user session data in the database instead of the filesystem on Rails](/wiki/Store_user_session_data_in_the_database_instead_of_the_filesystem_on_Rails)
-

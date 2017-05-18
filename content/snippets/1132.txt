@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.160 to 0.165
-tags: site updates
+tags: site updates snippets
 ---
+
 2c4e2c7 Import new static dump of forum code
 dae16a4 Revert "Revert removal of forum code" and friends
 fe9f6b2 Hack around link_to_user breakage on forum pages

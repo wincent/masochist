@@ -1,6 +1,6 @@
 ---
 redirect: [[Tidy]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: email
+tags: email wiki
 ---
 
 Confirm that there are hung [freshclam](/wiki/freshclam) processes on the system:

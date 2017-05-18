@@ -1,8 +1,8 @@
 ---
-tags: git
+tags: git wiki
 ---
 
-    Fixes since v1.6.0.3
+Fixes since v1.6.0.3
     --------------------
 
     * 'git add -p' said "No changes" when only binary files were changed.

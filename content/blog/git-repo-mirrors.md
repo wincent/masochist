@@ -1,6 +1,6 @@
 ---
 title: Git repo mirrors
-tags: git
+tags: git blog
 ---
 
 I've just set up a couple of [Git](/wiki/Git) repository mirrors for my [open source](/wiki/open_source) projects.
@@ -20,4 +20,3 @@ For the curious, here are some notes I made on the process:
 
 -   [Setting up backup (mirror) repositories on GitHub](/wiki/Setting_up_backup_%28mirror%29_repositories_on_GitHub)
 -   [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)
-

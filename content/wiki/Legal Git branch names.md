@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -93,4 +93,3 @@ So in addition to the summary posted above, we can also add that:
 -   the sequence `@{` is not allowed
 -   `?` and `[` are not allowed
 -   `*` is allowed only if it constitutes an entire path component (eg. `foo/*` or `bar/*/baz`), in which case it is interpreted as a wildcard and not as part of the actual ref name
-

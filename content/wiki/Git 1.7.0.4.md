@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -106,4 +106,3 @@ From the official announcement to the [Git mailing list](/wiki/Git_mailing_list)
 # See also
 
 -   [Updating to Git 1.7.0.4 on Mac OS X 10.6.2 Snow Leopard](/wiki/Updating_to_Git_1.7.0.4_on_Mac_OS_X_10.6.2_Snow_Leopard)
-

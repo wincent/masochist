@@ -1,5 +1,5 @@
 ---
-tags: tiger haml updates
+tags: tiger haml updates wiki
 cache_breaker: 1
 ---
 

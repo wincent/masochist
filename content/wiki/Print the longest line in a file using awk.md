@@ -1,5 +1,5 @@
 ---
-tags: awk
+tags: awk wiki
 ---
 
 ```shell

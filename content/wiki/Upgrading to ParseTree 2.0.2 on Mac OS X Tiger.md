@@ -1,5 +1,5 @@
 ---
-tags: tiger parsetree updates
+tags: tiger parsetree updates wiki
 cache_breaker: 1
 ---
 

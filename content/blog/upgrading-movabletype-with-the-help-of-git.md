@@ -1,5 +1,6 @@
 ---
 title: Upgrading MovableType with the help of Git
+tags: blog
 ---
 
 Just got this query via email and thought I'd post my answer here for others to see:

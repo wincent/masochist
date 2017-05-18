@@ -1,5 +1,6 @@
 ---
 title: Site improvements
+tags: blog
 ---
 
 Over the last month I've spent a few hours making minor improvements to the navigability of the site. Visitors should now find it a little bit easier to move around the site. These are minor polish details, the kind of stuff you might not even notice unless I told you about it; so here I am to, er, tell you about it.

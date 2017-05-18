@@ -1,5 +1,5 @@
 ---
-tags: ruby tiger updates
+tags: ruby tiger updates wiki
 cache_breaker: 1
 ---
 
@@ -31,4 +31,3 @@ Print out the version of the newly installed ruby interpreter:
 
 -   [Building and installing RubyGems 0.9.0 on Mac OS X Tiger](/wiki/Building_and_installing_RubyGems_0.9.0_on_Mac_OS_X_Tiger)
 -   [Building and installing Ruby 1.8.4 on Red Hat Enterprise Linux ES 3](/wiki/Building_and_installing_Ruby_1.8.4_on_Red_Hat_Enterprise_Linux_ES_3)
-

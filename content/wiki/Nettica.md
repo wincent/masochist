@@ -1,5 +1,5 @@
 ---
-tags: dns nettica
+tags: dns nettica wiki
 ---
 
 [Nettica](/wiki/Nettica) are [DNS](/wiki/DNS) service providers. I [started using them](/blog/dns-changes) in November 2009.
@@ -7,4 +7,3 @@ tags: dns nettica
 # See also
 
 -   Official site: <http://nettica.com/>
-

@@ -1,5 +1,6 @@
 ---
 title: WinSwitch 3.2b Universal Binary release
+tags: blog
 ---
 
 [WinSwitch](http://www.wincent.com/a/products/winswitch/) version 3.2b (beta) is now available for download. This is a beta release which offers native compatibility with both PowerPC and Intel processors ("Universal Binary"). In addition to the Universal Binary status this release brings a number of bugfixes as described in [the full change history](http://www.wincent.com/a/products/winswitch/history/).

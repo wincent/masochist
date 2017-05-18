@@ -1,5 +1,6 @@
 ---
 title: Update stripping procedure for Leopard (buildtools, 7ca1010)
+tags: snippets
 ---
 
 A number of changes have taken place in Leopard which allow the simplification of the stripping procedure.

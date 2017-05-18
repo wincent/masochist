@@ -1,5 +1,5 @@
 ---
-tags: sass
+tags: sass wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 ## Other articles
 
 -   `@extend` gotcha: <http://8gramgorilla.com/mastering-sass-extends-and-placeholders/>
-

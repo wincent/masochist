@@ -1,5 +1,5 @@
 ---
-tags: perl movabletype
+tags: perl movabletype wiki
 ---
 
 # The script
@@ -59,4 +59,3 @@ Here's the first version of my first [MovableType](/wiki/MovableType) plugin:
 -   [MovableType](/wiki/MovableType) API documentation: <http://www.sixapart.com/movabletype/docs/mtapi_mt.html>
 -   "How to Write a Plugin": <http://www.sixapart.com/movabletype/docs/plugin-tut>
 -   Accompanying article on weblog: <http://wincent.com/a/about/wincent/weblog/archives/2007/03/using_mediawiki.php>
-

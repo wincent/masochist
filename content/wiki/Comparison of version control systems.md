@@ -1,5 +1,5 @@
 ---
-tags: version.control
+tags: version.control wiki
 cache_breaker: 1
 ---
 
@@ -110,4 +110,3 @@ So as was the case in the "Learning curve" section above, Subversion might win o
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article: <http://en.wikipedia.org/wiki/Comparison_of_revision_control_software>
-

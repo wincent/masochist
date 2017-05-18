@@ -1,5 +1,6 @@
 ---
 title: Jobs would like to get rid of DRM, should software developers get rid of copy protection?
+tags: blog
 ---
 
 Steve Jobs would love to [abolish DRM on Apple's music downloads](http://www.apple.com/hotnews/thoughtsonmusic/). Am I surprised that he feels this way? Not really. Am I surprised that he went on the record and said it to the public? Very much so. This is a gutsy move because he's built up a dominant position in the music downloads marketplace and then basically defying the public to challenge his "allies" (the record labels). This is going to make some serious waves. I hope that they end up actually turning the tide. Could this be a revolution?

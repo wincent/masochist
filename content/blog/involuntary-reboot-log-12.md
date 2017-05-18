@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #12
+tags: blog
 ---
 
 Hot on the heels of the [last involuntary reboot](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/involuntary_reb_11.php) we have an absolute whopper today.

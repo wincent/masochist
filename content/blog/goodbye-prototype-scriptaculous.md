@@ -1,6 +1,6 @@
 ---
 title: Goodbye Prototype/Scriptaculous
-tags: scriptaculous jquery prototype
+tags: scriptaculous jquery prototype blog
 ---
 
 [Some lucky people](http://fukamachi.org/wp/2009/04/13/js-changeover/) are able to rip out [Prototype](/wiki/Prototype) and [Scriptaculous](/wiki/Scriptaculous) and replace them with [jQuery](/wiki/jQuery) in a single weekend.

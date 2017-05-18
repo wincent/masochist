@@ -1,5 +1,6 @@
 ---
 title: Free upgrades for life?
+tags: blog
 ---
 
 There's an interesting discussion about offering free upgrades "for life". Slava Karpenko [started it here](http://www.unsanity.org/archives/000448.php), saying that it's a bad idea:

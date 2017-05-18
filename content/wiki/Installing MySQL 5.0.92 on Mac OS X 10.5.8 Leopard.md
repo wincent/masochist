@@ -1,5 +1,5 @@
 ---
-tags: leopard mysql
+tags: leopard mysql wiki
 ---
 
 ```shell

@@ -1,5 +1,5 @@
 ---
-tags: ssh
+tags: ssh wiki
 ---
 
 Escape sequences only work at the start of a line.

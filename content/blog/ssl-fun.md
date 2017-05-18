@@ -1,5 +1,6 @@
 ---
 title: SSL fun
+tags: blog
 ---
 
 It was [just brought to my attention](http://fukamachi.org/wp/2007/01/04/ssl-scam-now-slightly-cheaper/) that [RapidSSL](http://www.rapidssl.com/index_ssl.htm) is running [a promotion](http://www.rapidssl.com/ssl-certificate-products/ssl-certificate-replace.htm) where you can extend your current [SSL]{} certificate for free by one year when you switch over from [Comodo](http://www.comodogroup.com/).

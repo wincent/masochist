@@ -1,5 +1,5 @@
 ---
-tags: objective.c
+tags: objective.c wiki
 ---
 
 [This is handy tip](http://blog.omnigroup.com/2007/03/11/catching-float-and-struct-returning-messages-to-nil/) that is worth repeating here.

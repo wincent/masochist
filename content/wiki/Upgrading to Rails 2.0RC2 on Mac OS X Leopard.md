@@ -1,8 +1,8 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
-    $ sudo gem install rails --source http://gems.rubyonrails.org --version 1.99.1
+$ sudo gem install rails --source http://gems.rubyonrails.org --version 1.99.1
     Password:
     Bulk updating Gem source index for: http://gems.rubyonrails.org
     Install required dependency activesupport? [Yn]  Y
@@ -36,4 +36,3 @@ tags: rails
 # See also
 
 -   Release announcement: <http://weblog.rubyonrails.com/2007/11/29/rails-2-0-release-candidate-2>
-

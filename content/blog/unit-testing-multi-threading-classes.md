@@ -1,5 +1,6 @@
 ---
 title: Unit testing multi-threading classes
+tags: blog
 ---
 
 It's proving tricky to write unit tests for all these thread-related classes I've been working on lately. The problem is that the whole testing model pretty much makes the assumption that tests will run on a single-thread, and my mock object implementation isn't flexible enough.

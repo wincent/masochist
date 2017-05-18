@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
 ```shell

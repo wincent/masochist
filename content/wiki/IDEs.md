@@ -1,6 +1,6 @@
 ---
 redirect: [[IDE]]
-tags: 
+tags: wiki
 ---
 
 

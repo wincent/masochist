@@ -1,5 +1,5 @@
 ---
-tags: rails scriptaculous
+tags: rails scriptaculous wiki
 ---
 
 # External resources
@@ -9,4 +9,3 @@ tags: rails scriptaculous
 -   "Ajaxariffic Autocomplete with Scriptaculous": <http://slash7.com/articles/2005/8/13/ajaxariffic-autocomplete-with-scriptaculous>
 -   "Scriptaculous Cheat Sheet \#1": <http://slash7.com/articles/2006/04/22/scriptaculous-cheat-sheet-1>
 -   "Scriptaculous Helpers": <http://pylonshq.com/WebHelpers/module-webhelpers.rails.scriptaculous.html>
-

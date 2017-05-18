@@ -1,5 +1,6 @@
 ---
 title: Provide menu item for bringing preferences window on screen (Synergy, c2adcef)
+tags: snippets
 ---
 
 Useful for when user dismisses preferences window and later decides that he/she wants it back.

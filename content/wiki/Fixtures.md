@@ -1,5 +1,5 @@
 ---
-tags: rspec rails
+tags: rspec rails wiki
 ---
 
 [Fixtures](/wiki/Fixtures), in [Rails](/wiki/Rails) parlance, are files containing sample data to be inserted into the test database for testing purposes.
@@ -29,4 +29,3 @@ But note that the [specs](/wiki/specs) *are* run inside a database transaction; 
 # See also
 
 -   [Fixtures considered harmful?](/wiki/Fixtures_considered_harmful%3f)
-

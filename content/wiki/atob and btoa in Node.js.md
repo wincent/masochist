@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 ---
 
 # Base-64 encode

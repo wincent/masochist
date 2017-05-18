@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.39
-tags: site updates
+tags: site updates snippets
 ---
+
 3f0045c Remove out-of-date "About" page

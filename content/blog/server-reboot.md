@@ -1,5 +1,6 @@
 ---
 title: Server reboot
+tags: blog
 ---
 
 Tonight I rebooted the server for the first time since moving to [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) back in August 2005. It [hasn't skipped a beat](http://www.wincent.com/a/about/wincent/weblog/archives/2005/11/some_words_of_p.php) since then (218 days of uptime with incredibly solid network connectivity) but it was nevertheless time to perform a kernel upgrade so as to pull down the latest security fixes from [Red Hat](http://www.redhat.com/).

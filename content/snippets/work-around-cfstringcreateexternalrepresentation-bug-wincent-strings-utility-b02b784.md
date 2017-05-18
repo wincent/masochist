@@ -1,5 +1,6 @@
 ---
 title: Work around CFStringCreateExternalRepresentation() bug (Wincent Strings Utility, b02b784)
+tags: snippets
 ---
 
 This commit adds some specs to test the operation of the -encode switch and in so doing has uncovered what looks to be a bug in the CFStringCreateExternalRepresentation() function.

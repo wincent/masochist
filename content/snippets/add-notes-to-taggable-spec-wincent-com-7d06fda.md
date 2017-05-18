@@ -1,5 +1,6 @@
 ---
 title: Add notes to Taggable spec (wincent.com, 7d06fda)
+tags: snippets
 ---
 
 Add extraction notes to the specs for the Taggable module.

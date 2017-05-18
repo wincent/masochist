@@ -1,6 +1,6 @@
 ---
 title: Wikitext speed improvements
-tags: wikitext
+tags: wikitext blog
 cache_breaker: 1
 ---
 

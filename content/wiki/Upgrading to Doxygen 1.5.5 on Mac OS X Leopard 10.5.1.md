@@ -1,5 +1,5 @@
 ---
-tags: leopard doxygen updates
+tags: leopard doxygen updates wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Non-contiguous selections in TextMate
+tags: blog
 ---
 
 I'm planning to start posting screencasts to show off features in my products. But this is totally new for me so, by way of practice, here's a really quick-and-dirty TextMate tip.

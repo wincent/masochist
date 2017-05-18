@@ -1,6 +1,6 @@
 ---
 title: Wincent Icon Utility 2.0.2 released
-tags: releases wincent.icon.util
+tags: releases wincent.icon.util blog
 cache_breaker: 1
 ---
 

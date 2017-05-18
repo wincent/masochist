@@ -1,6 +1,6 @@
 ---
 redirect: [[PNG]]
-tags: 
+tags: wiki
 ---
 
 

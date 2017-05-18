@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.157
-tags: site updates
+tags: site updates snippets
 ---
+
 74ef7ae Correct color codes

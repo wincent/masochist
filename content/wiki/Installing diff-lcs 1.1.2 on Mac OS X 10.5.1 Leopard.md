@@ -1,5 +1,5 @@
 ---
-tags: diff.lcs
+tags: diff.lcs wiki
 ---
 
 # Installation

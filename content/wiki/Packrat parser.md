@@ -1,6 +1,6 @@
 ---
 redirect: [[Packrat]]
-tags: 
+tags: wiki
 ---
 
 

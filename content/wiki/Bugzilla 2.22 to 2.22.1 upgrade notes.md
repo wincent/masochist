@@ -1,5 +1,5 @@
 ---
-tags: bugzilla updates
+tags: bugzilla updates wiki
 cache_breaker: 1
 ---
 
@@ -86,4 +86,3 @@ This process could be largely automated via a shell script.
 # See also
 
 -   <http://www.bugzilla.org/releases/2.22.1/release-notes.html>
-

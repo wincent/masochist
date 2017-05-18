@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads
+tags: ubb.threads wiki
 ---
 
 # Backup
@@ -185,4 +185,3 @@ Due to permissions errors I'm temporarily turning off [PHP](/wiki/PHP) [Safe Mo
 -   Remove old forum files
 -   Upload redirection scripts so that old links will continue to work
 -   Delete `importers` and `install` subdirectories
-

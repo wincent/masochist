@@ -1,6 +1,6 @@
 ---
 redirect: [[User agent string]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Website update
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

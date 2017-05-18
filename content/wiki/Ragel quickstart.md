@@ -1,5 +1,5 @@
 ---
-tags: ragel
+tags: ragel wiki
 cache_breaker: 1
 ---
 
@@ -60,4 +60,3 @@ execute = 0
 # See also
 
 -   [Ragel quickstart (2007)](/wiki/Ragel_quickstart_%282007%29): description of workflow using older versions of Ragel
-

@@ -1,5 +1,5 @@
 ---
-tags: rails mysql nginx memcached snow.leopard
+tags: rails mysql nginx memcached snow.leopard wiki
 cache_breaker: 1
 ---
 

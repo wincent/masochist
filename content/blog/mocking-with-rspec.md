@@ -1,6 +1,6 @@
 ---
 title: Mocking with RSpec
-tags: rspec
+tags: rspec blog
 ---
 
 It's been a while since I heaped any praise on [RSpec](/wiki/RSpec), but I just had a nice experience with mock objects provided by the framework and wanted to briefly mention it here.

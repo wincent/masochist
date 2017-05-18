@@ -1,5 +1,5 @@
 ---
-tags: dhaka
+tags: dhaka wiki
 ---
 
 [Dhaka 2.2.0](/wiki/Dhaka_2.2.0) was released on 29 May 2007.
@@ -16,4 +16,3 @@ tags: dhaka
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=12036>
 -   [Upgrading to Dhaka 2.2.0 on Mac OS X Tiger](/wiki/Upgrading_to_Dhaka_2.2.0_on_Mac_OS_X_Tiger)
-

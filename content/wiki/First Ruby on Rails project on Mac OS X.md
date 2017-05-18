@@ -1,5 +1,5 @@
 ---
-tags: ruby rails
+tags: ruby rails wiki
 ---
 
 These notes were made while trying to put together my first ever [Rails](/wiki/Rails) project. I recorded the steps taken so that it would be easier for me to repeat them in the future. I later expanded and improved upon these notes in "[Rails application bootstrapping](/wiki/Rails_application_bootstrapping)", and then went on to refine them further in "[Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)".
@@ -169,4 +169,3 @@ Create a file at `app/views/layouts/application.rhtml`, indicating where include
 -   "UnderstandingMigrations": <http://wiki.rubyonrails.com/rails/pages/UnderstandingMigrations>
 -   "Using migrations to evolve your database schema without loosing \[sic\] your data": <http://media.rubyonrails.org/video/migrations.mov>
 -   "Using Ruby on Rails for Web Development on Mac OS X": <http://developer.apple.com/tools/rubyonrails.html>
-

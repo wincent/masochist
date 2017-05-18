@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [Object Oriented Programming](/wiki/Object_Oriented_Programming) or [OOP](/wiki/OOP) is an [object-oriented](/wiki/object-oriented) approach to program design employed by languages such as [Ruby](/wiki/Ruby) and [Objective-C](/wiki/Objective-C).

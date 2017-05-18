@@ -1,5 +1,5 @@
 ---
-tags: screen
+tags: screen wiki
 ---
 
 # Create a new, named [Screen](/wiki/Screen) session

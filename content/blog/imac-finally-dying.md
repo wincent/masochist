@@ -1,5 +1,6 @@
 ---
 title: iMac finally dying?
+tags: blog
 ---
 
 I'm starting to get really worried about this machine.

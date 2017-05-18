@@ -1,6 +1,6 @@
 ---
 title: Loupe 0.1 released
-tags: releases vim loupe
+tags: releases vim loupe blog
 ---
 
 [Loupe](https://github.com/wincent/loupe) is a small [Vim](/wiki/Vim) plug-in that I just extracted from [my dotfiles](https://github.com/wincent/wincent).

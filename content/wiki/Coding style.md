@@ -1,6 +1,6 @@
 ---
 redirect: [[coding standards]]
-tags: 
+tags: wiki
 ---
 
 

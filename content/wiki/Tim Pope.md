@@ -1,5 +1,5 @@
 ---
-tags: vim tim.pope
+tags: vim tim.pope wiki
 ---
 
 [Tim Pope](/wiki/Tim_Pope) is the author of many near-indispensable [Vim](/wiki/Vim) plug-ins, among them:
@@ -17,4 +17,3 @@ Check out his wares on his [GitHub](/wiki/GitHub) profile:
 # Other links
 
 -   <http://tpo.pe/>
-

@@ -1,5 +1,5 @@
 ---
-tags: development ragel
+tags: development ragel wiki
 cache_breaker: 1
 ---
 
@@ -24,4 +24,3 @@ For a quick example of producing a very simple executable with [Ragel](/wiki/Rag
 -   Articles on [Xcode](/wiki/Xcode) integration:
     -   <http://www.entropy.ch/software/macosx/docs/ragel-xcode-graphviz/>
     -   <http://www.alanz.com/2006/08/ragel-xcode/>
-

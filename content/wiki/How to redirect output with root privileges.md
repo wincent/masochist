@@ -1,5 +1,5 @@
 ---
-tags: unix shell
+tags: unix shell wiki
 ---
 
 ```shell

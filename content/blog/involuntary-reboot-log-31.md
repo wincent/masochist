@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #31
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ Just had a kernel panic while mounting/dismounting disk images. Still one of the
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 709 days
 -   Average time between failures: 22.87 days
-

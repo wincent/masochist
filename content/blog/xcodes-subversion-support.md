@@ -1,5 +1,6 @@
 ---
 title: Xcode's Subversion support
+tags: blog
 ---
 
 I've been "using" Xcode's built-in [Subversion](http://subversion.tigris.org/) support for a long time now. Today I realized that lately I have been doing all my interaction with Subversion via the command line, even though I have the support turned on in Xcode. The reason? Xcode's support is flakey at best and although it gets less flakey with each Xcode update it is still a long way from being professional quality.

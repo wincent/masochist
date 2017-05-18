@@ -1,5 +1,6 @@
 ---
 title: Leopard product readiness
+tags: blog
 ---
 
 With [Leopard](http://www.wincent.com/knowledge-base/Leopard) only 15 hours from release it's time for a product status report:

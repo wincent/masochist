@@ -1,5 +1,6 @@
 ---
 title: Whitespace fix (wincent.com, df00cf2)
+tags: snippets
 ---
 
 Whitespace fix in Tagging migration.

@@ -1,5 +1,6 @@
 ---
 title: Moving to RHEL 5
+tags: blog
 ---
 
 In October last year I [wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/thinking_about.php) about changing UNIXes. Well, it's a new year now and it looks like it is going to happen.

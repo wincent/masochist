@@ -1,5 +1,5 @@
 ---
-tags: textmate
+tags: textmate wiki
 ---
 
 <http://macromates.com/>

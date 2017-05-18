@@ -1,5 +1,5 @@
 ---
-tags: rails mysql
+tags: rails mysql wiki
 cache_breaker: 1
 ---
 

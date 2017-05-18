@@ -1,5 +1,5 @@
 ---
-tags: watir
+tags: watir wiki
 ---
 
 These notes were made while installing [SafariWatir](/wiki/SafariWatir) version 0.2.3 on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger) version 10.4.9.

@@ -1,5 +1,6 @@
 ---
 title: Teach release notes script to take an optional prefix parameter (buildtools, d78a5bf)
+tags: snippets
 ---
 
 With this parameter and the help of a convention we can now produce release notes for projects spread across multiple repositories.

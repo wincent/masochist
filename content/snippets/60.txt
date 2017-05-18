@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.48
-tags: site updates
+tags: site updates snippets
 ---
+
 5181f6f Update to jQuery 1.7.1
 03da45b Add index to needles table
 6607063 Update to Rails 3.2.1 and Ruby 1.9.3

@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #25
+tags: blog
 ---
 
 Like I said the other day, looks like [this iMac is dying](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/imac_finally_dy.php). This time the machine simply turned itself off when I bumped the desk with my knee; it could barely even be called a bump.

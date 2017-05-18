@@ -1,6 +1,6 @@
 ---
 title: On the 80-column limit
-tags: development
+tags: development blog
 cache_breaker: 1
 ---
 

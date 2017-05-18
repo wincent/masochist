@@ -1,5 +1,6 @@
 ---
 title: Initial version of Git build number scripts (buildtools, bd6ad3d)
+tags: snippets
 ---
 
 This commit adds a simple Git utility module which doesn't do much yet, just reports "revision numbers" (corresponding to the abbreviated hash of the most recent commit), and a script intended for use in an Xcode Shell Script build phase that leverages this module and uses it to create or update a "build number" file that can then be used for as a header for Info.plist preprocessing or other purposes.

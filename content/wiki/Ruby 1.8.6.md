@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 [Ruby 1.8.6](/wiki/Ruby_1.8.6) was released on 12 March 2007.

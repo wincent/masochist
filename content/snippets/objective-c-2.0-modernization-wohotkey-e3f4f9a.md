@@ -1,5 +1,6 @@
 ---
 title: Objective-C 2.0 modernization (WOHotKey, e3f4f9a)
+tags: snippets
 ---
 
 Sweeping changes across the codebase to take advantage of new features in Objective-C 2.0; this is still not a complete revision and there are still more changes that can be made.

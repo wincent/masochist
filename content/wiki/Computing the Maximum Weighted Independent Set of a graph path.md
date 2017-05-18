@@ -1,5 +1,5 @@
 ---
-tags: algorithms dynamic.programming
+tags: algorithms dynamic.programming wiki
 cache_breaker: 1
 ---
 

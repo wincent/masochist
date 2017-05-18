@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ cache_breaker: 1
 # See also
 
 -   <http://wiki.bash-hackers.org/scripting/posparams>
-

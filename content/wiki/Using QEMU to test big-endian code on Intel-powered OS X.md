@@ -1,5 +1,5 @@
 ---
-tags: powerpc qemu
+tags: powerpc qemu wiki
 cache_breaker: 1
 ---
 

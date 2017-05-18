@@ -1,5 +1,5 @@
 ---
-tags: rspec rails fixture.replacement
+tags: rspec rails fixture.replacement wiki
 cache_breaker: 1
 ---
 

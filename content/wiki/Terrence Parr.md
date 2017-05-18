@@ -1,6 +1,6 @@
 ---
 redirect: [[Terence Parr]]
-tags: 
+tags: wiki
 ---
 
 

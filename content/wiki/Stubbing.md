@@ -1,6 +1,6 @@
 ---
 redirect: [[Stubs]]
-tags: 
+tags: wiki
 ---
 
 

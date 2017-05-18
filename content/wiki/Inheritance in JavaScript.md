@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 ---
 
 -   <http://javascript.crockford.com/inheritance.html>
@@ -7,4 +7,3 @@ tags: javascript
 -   <https://github.com/rauschma/class-js>
 -   <http://ejohn.org/blog/simple-javascript-inheritance/>
 -   <http://davidwalsh.name/javascript-objects>
-

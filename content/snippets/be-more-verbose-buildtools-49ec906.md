@@ -1,5 +1,6 @@
 ---
 title: Be more verbose (buildtools, 49ec906)
+tags: snippets
 ---
 
 While trying to debug a failure case I noticed that it was possible for the script to terminate early (due to the "set -e") but for no error message to be printed to the standard error.

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.100
-tags: site updates
+tags: site updates snippets
 ---
+
 88a3773 script/deploy: do graceful/rolling Unicorn restart with USR2 and friends
 9cba83e Tighten up date margins
 2adfd22 Don't detach HEAD in main repo when precompiling assets

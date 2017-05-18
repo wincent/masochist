@@ -1,5 +1,5 @@
 ---
-tags: site
+tags: site wiki
 cache_breaker: 1
 ---
 
@@ -129,4 +129,3 @@ These directories should allow index listings:
 
 -   <http://wincent.com/lgpl/> (working)
 -   <http://wincent.com/gpl/> (working)
-

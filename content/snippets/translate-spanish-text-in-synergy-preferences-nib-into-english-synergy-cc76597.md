@@ -1,5 +1,6 @@
 ---
 title: Translate Spanish text in Synergy Preferences nib into English (Synergy, cc76597)
+tags: snippets
 ---
 
 Leopard's Interface Builder has a new behaviour: when running on a non-English system new nibs are created in the current language rather than English. This true even when the development language is set to English and it's a deviation from the established behaviour in Tiger (and Panther, and Jaguar).

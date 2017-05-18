@@ -1,6 +1,6 @@
 ---
 redirect: [[CPAN]]
-tags: 
+tags: wiki
 ---
 
 

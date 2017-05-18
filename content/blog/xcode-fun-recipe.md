@@ -1,5 +1,6 @@
 ---
 title: Xcode Fun Recipe
+tags: blog
 ---
 
 For fun with Xcode, follow these steps:

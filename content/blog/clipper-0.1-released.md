@@ -1,6 +1,6 @@
 ---
 title: Clipper 0.1 released
-tags: clipper
+tags: clipper blog
 cache_breaker: 1
 ---
 

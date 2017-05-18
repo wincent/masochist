@@ -1,5 +1,6 @@
 ---
 title: Why Spaces is broken
+tags: blog
 ---
 
 Since seeing [this post](http://mjtsai.com/blog/2007/11/13/why-apple-spaces-is-broken/) by Michael Tsai linking to a couple of articles on "Why Spaces is broken" I've been wracking my brains trying to remember *where* the heck I wrote about this, seeing as I was quite sure I had already written about it about two weeks ago.

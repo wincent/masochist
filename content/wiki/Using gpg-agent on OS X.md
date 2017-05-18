@@ -1,5 +1,5 @@
 ---
-tags: gpg
+tags: gpg wiki
 ---
 
 I just started using `gpg-agent` for the first time on [OS X](/wiki/OS_X). Coming from my familiarity with `ssh-agent` and `ssh-add`, there were some surprises.

@@ -1,6 +1,6 @@
 ---
 redirect: [[CSRF]]
-tags: 
+tags: wiki
 ---
 
 

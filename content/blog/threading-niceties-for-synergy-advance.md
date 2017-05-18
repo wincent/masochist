@@ -1,5 +1,6 @@
 ---
 title: Threading niceties for Synergy Advance
+tags: blog
 ---
 
 ### Existing paradigms

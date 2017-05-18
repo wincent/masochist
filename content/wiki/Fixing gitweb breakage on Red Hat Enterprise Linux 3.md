@@ -1,5 +1,5 @@
 ---
-tags: red.hat git
+tags: red.hat git wiki
 ---
 
 One of the problems with [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) 3 is that it ships with a very old version of [Perl](/wiki/Perl) and the associated modules are very old too.

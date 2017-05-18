@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 For example, exporting the latest version of the trunk (at the time of writing, revision 35) and creating a zip archive of the export:

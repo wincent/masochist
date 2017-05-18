@@ -1,5 +1,6 @@
 ---
 title: Fix the n+1 select problem in the tags implementation (wincent.com, 513d102)
+tags: snippets
 ---
 
 When showing all items marked with a single tag (ie. the "show" action of the tags controller) or all items matching multiple tags (ie. the "search" action) we unfortunately had an n+1 SELECT problem because we had to inspect each Taggable instance to see if the user had access permissions to it.

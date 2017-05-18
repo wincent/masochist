@@ -1,5 +1,6 @@
 ---
 title: Huge whitespace cleanup (Synergy, 6705ceb)
+tags: snippets
 ---
 
 Massive whitespace cleanup throughout entire codebase (over 15,000 lines in the diff): substitute spaces for tabs, kill trailing whitespace, improve alignment in some places.

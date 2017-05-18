@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ Examples of [command line](/wiki/command_line) tools made by Wincent include:
 # See also
 
 -   [GUI](/wiki/GUI)
-

@@ -1,5 +1,5 @@
 ---
-tags: vim recipe bom
+tags: vim recipe bom wiki
 ---
 
 Show whether current file has a BOM:

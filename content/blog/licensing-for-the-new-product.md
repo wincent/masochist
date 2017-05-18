@@ -1,5 +1,6 @@
 ---
 title: Licensing for the new product
+tags: blog
 ---
 
 I like to experiment with different licensing models. In the past I've released applications as closed-source commercial software, shareware both with and without serial numbers, with and without product activation, open source free software (with the possibility of donations) under a variety of licenses (BSD, Omni Source License, the GPL), and binary-only "freeware" (public domain).

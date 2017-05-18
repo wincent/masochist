@@ -1,5 +1,5 @@
 ---
-tags: dvorak colemak workman minimak asset norman
+tags: dvorak colemak workman minimak asset norman wiki
 cache_breaker: 1
 ---
 
@@ -37,4 +37,3 @@ Below are what appear to be the main rivals.
 
 -   One Hacker News discussion on the topic: <https://news.ycombinator.com/item?id=6541167>
 -   Yak, a genetic layout optimizer that I wrote: <https://github.com/wincent/yak-layout>
-

@@ -1,5 +1,5 @@
 ---
-tags: snow.leopard lynx
+tags: snow.leopard lynx wiki
 cache_breaker: 1
 ---
 

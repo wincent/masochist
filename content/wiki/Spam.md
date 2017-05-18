@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [Spam](/wiki/Spam) is unsolicited commercial email.

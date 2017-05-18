@@ -1,5 +1,6 @@
 ---
 title: NSConnection weirdness
+tags: blog
 ---
 
 Today I present an episode in the Great Mysteries of Cocoa series.

@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 Localizing your application during its early development stages may reduce your ability to change and move forward quickly. Nevertheless, it may be useful to prepare the way for later localization; that is, lay down some infrastructure which won't require too much effort during the early stages but which will make the job of localizing in the future somewhat easier.

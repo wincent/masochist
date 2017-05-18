@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 From the [Kelbt](/wiki/Kelbt) project page:
@@ -13,4 +13,3 @@ From the [Kelbt](/wiki/Kelbt) project page:
 # See also
 
 -   [Ragel](/wiki/Ragel) (by the same author)
-

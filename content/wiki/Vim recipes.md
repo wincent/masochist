@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 # See also
 
 -   [All items tagged with "vim" and "recipe"](/tags/search?q=vim+recipe)
-

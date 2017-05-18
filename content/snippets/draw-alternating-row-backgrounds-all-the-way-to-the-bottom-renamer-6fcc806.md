@@ -1,5 +1,6 @@
 ---
 title: Draw alternating row backgrounds all the way to the bottom (REnamer, 6fcc806)
+tags: snippets
 ---
 
 No need to do any further subclassing, can just overdraw until we hit the edge of the clip rectangle.

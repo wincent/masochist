@@ -1,6 +1,6 @@
 ---
 title: Thoughts on the Ruby/Merb merge
-tags: rails merb
+tags: rails merb blog
 cache_breaker: 1
 ---
 

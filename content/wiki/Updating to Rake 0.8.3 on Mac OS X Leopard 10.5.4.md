@@ -1,5 +1,5 @@
 ---
-tags: rake updates
+tags: rake updates wiki
 cache_breaker: 1
 ---
 

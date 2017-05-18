@@ -1,5 +1,6 @@
 ---
 title: Add tokenization of mailto URIs (wikitext, c70f28a)
+tags: snippets
 ---
 
 We already had tokenization of email addresses, which in combination with autolinking gave us clickable email address links.

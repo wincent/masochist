@@ -1,5 +1,6 @@
 ---
 title: Add WOApplicationController class (REnamer, d5f6402)
+tags: snippets
 ---
 
 This is the first commit in a series which might turn out to be a somewhat painful migration. The end goal is to make a dedicated application controller class that works with per-window controllers, one for each rename operation in progress.

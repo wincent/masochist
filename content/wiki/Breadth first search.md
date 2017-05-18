@@ -1,6 +1,6 @@
 ---
 redirect: [[Breadth-first search]]
-tags: 
+tags: wiki
 ---
 
 

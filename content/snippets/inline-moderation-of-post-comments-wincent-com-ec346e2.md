@@ -1,5 +1,6 @@
 ---
 title: Inline moderation of post comments (wincent.com, ec346e2)
+tags: snippets
 ---
 
 Add two buttons underneath each comment, but only when logged in as an admin user. The "spam" button marks a message as spam and then fades out the offending comment; the "ham" button clears the "awaiting moderation" attribute of the comment and fades out the "spam"/"ham" buttons.

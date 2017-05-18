@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Example: cumulative total:
@@ -22,4 +22,3 @@ $ find . -regex '.+\.js$' | xargs wc -l
 # Alternatives
 
 -   <http://cloc.sourceforge.net/> ([Perl](/wiki/Perl) tool for counting source code)
-

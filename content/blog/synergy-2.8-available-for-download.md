@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.8 available for download
+tags: blog
 ---
 
 [Synergy](http://synergy.wincent.com/) 2.8 has just been released. This is a maintenance release. A full changelog of features, bugfixes and other changes appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

@@ -1,5 +1,6 @@
 ---
 title: More Mail.app suckage
+tags: blog
 ---
 
 $ cd ~/Library/Mail/Mailboxes/listas/xcode-users.mbox

@@ -1,5 +1,5 @@
 ---
-tags: git lion os.x
+tags: git lion os.x wiki
 cache_breaker: 1
 ---
 

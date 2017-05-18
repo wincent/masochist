@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 [WEB SECURITY] CSRF: Flash + 307 redirect = Game Over
 
 Phillip Purviance phillip.purviance at whitehatsec.com 

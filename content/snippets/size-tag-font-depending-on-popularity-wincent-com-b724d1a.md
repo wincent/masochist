@@ -1,5 +1,6 @@
 ---
 title: Size tag font depending on popularity (wincent.com, b724d1a)
+tags: snippets
 ---
 
 According to "Web 2.0" doctrine you need tags and you need to change the font size to indicate the popularity of a tag.

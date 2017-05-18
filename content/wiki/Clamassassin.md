@@ -1,5 +1,5 @@
 ---
-tags: clamassassin
+tags: clamassassin wiki
 ---
 
 <http://jameslick.com/clamassassin/>

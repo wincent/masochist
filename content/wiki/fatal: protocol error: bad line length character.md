@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -140,4 +140,3 @@ So, dropped the explicit `--exec-path` from the `server_args` and the `bad line 
 -   Entry on the official [Git](/wiki/Git) [FAQ](/wiki/FAQ) for the `protocol error: bad line length character` message (not really helpful/applicable to this specific case as it applies to [SSH](/wiki/SSH)-based access and I am talking about anonymous public access using the Git protocol): <http://git.or.cz/gitwiki/GitFaq#protocolerror.3Abadlinelengthcharacter>
 -   Mailing list thread: <http://kerneltrap.org/mailarchive/git/2007/1/20/236259>
 -   [Google search for '"protocol error: bad line length character" git'](http://www.google.com/search?client=safari&rls=en&q=%22protocol+error:+bad+line+length+character%22+git&ie=UTF-8&oe=UTF-8) (currently 209 results at time of writing)
-

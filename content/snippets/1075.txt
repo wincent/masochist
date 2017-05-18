@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 Process:         Synergy Preferences [851]
 Path:            /Applications/Synergy Preferences.app/Contents/MacOS/Synergy Preferences
 Identifier:      com.wincent.SynergyPreferences

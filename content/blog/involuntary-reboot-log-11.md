@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #11
+tags: blog
 ---
 
 You gotta love this. Actually, you gotta hate it. I just committed the sacrilege of daring to open Parallels and as my just comeuppance my machine immediately slowed to treacle speeds ultimately becoming unusable. In the end even the clock stopped updating and the mouse wouldn't move. At that point I had already waited through two songs (iTunes continued to play in the background) but when the third song should have started there was only silence.

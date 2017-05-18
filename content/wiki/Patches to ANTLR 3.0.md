@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 This page contains patches to [ANTLR 3](/wiki/ANTLR_3) that address some issues in version 3.0 for which there seem to be no other viable workarounds, or for which the difficulty of applying the patch is less than the inconvenience of applying a workaround.
@@ -65,4 +65,3 @@ Not sure when this one was applied but it made it into ANTLR 3.0.1.
 
 -   [Rebuilding ANTLR](/wiki/Rebuilding_ANTLR)
 -   [Patches to ANTLR 3.0.1](/wiki/Patches_to_ANTLR_3.0.1)
-

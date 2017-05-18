@@ -1,5 +1,5 @@
 ---
-tags: haskell
+tags: haskell wiki
 ---
 
 Notes made while (re-)learning Haskell in 2016.

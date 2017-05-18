@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads
+tags: ubb.threads wiki
 ---
 
 -   Log in to control panel and close board
@@ -66,4 +66,3 @@ It should read:
 # See also
 
 -   Bug and workaround: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/168866/page/1>
-

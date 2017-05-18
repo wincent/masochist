@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -382,4 +382,3 @@ From the official release announcement posted to the [Git mailing list](/wiki/Gi
 # See also
 
 -   [Updating to Git 1.7.1.1](/wiki/Updating_to_Git_1.7.1.1)
-

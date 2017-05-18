@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 # Docs
@@ -16,4 +16,3 @@ tags: movable.type
 -   Upload new files
 -   Hit `mt-upgrade.cgi`
 -   Delete `mt-upgrade.cgi`
-

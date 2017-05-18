@@ -1,5 +1,5 @@
 ---
-tags: subversion git
+tags: subversion git wiki
 cache_breaker: 1
 ---
 
@@ -148,4 +148,3 @@ Now I had a fully working local repository but I wanted an always-available, pub
 # See also
 
 -   [Doing a one-off migration from Subversion to Git](/wiki/Doing_a_one-off_migration_from_Subversion_to_Git)
-

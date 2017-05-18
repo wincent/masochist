@@ -1,6 +1,6 @@
 ---
 title: Bansshee's effect on brute force and dictionary-based SSH attacks
-tags: bansshee
+tags: bansshee blog
 ---
 
 So the other day I [mentioned](/twitter/90) that I had seen over 25,000 [SSH](/wiki/SSH) break-in attempts in a 24-hour period, and that it was probably time to get [Bansshee](/wiki/Bansshee) configured for [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) 5.3 and deployed.

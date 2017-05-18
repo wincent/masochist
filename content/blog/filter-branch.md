@@ -1,7 +1,7 @@
 ---
 description: The story of how I rewrote a slow git-filter-branch task, reducing the run-time from a projected 42 days down to around an hour.
 fb: https://www.facebook.com/glh/posts/10154279236886307
-tags: git site masochist
+tags: git site masochist blog
 title: A tale of three filter-branches
 twitter: https://twitter.com/wincent/status/863640786381922305
 ---

@@ -1,5 +1,5 @@
 ---
-tags: ack
+tags: ack wiki
 ---
 
 So I thought I'd give [Ack](/wiki/Ack) a try. I installed it manually rather than using [CPAN](/wiki/CPAN) because I like to do stuff like inspecting READMEs and what not when I unpack archives and chase up dependencies.

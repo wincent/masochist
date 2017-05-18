@@ -1,5 +1,5 @@
 ---
-tags: consolas
+tags: consolas wiki
 cache_breaker: 1
 ---
 

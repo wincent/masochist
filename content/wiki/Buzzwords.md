@@ -1,6 +1,6 @@
 ---
 redirect: [[buzzword]]
-tags: 
+tags: wiki
 ---
 
 

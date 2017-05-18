@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 So [SVK](/wiki/SVK) doesn't yet support [Subversion externals](/wiki/Subversion_externals). A number of possible workarounds are discussed in "[Working around the lack of svn:externals support in SVK](/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK)" but in this article I'd like to propose how I think the feature should be implemented in [SVK](/wiki/SVK).
@@ -56,4 +56,3 @@ From a user perspective, the [SVK](/wiki/SVK) commands which would need to be up
 
 -   [Working around the lack of svn:externals support in SVK](/wiki/Working_around_the_lack_of_svn%3aexternals_support_in_SVK)
 -   Initial response to this article by [Chia-Liang Kao](/wiki/Chia-Liang_Kao): <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000787.html>
-

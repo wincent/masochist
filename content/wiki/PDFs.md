@@ -1,6 +1,6 @@
 ---
 redirect: [[PDF]]
-tags: 
+tags: wiki
 ---
 
 

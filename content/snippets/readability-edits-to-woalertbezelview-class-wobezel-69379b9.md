@@ -1,5 +1,6 @@
 ---
 title: Readability edits to WOAlertBezelView class (WOBezel, 69379b9)
+tags: snippets
 ---
 
 Improve readability by eliminating unnecessary braces.

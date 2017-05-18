@@ -1,5 +1,5 @@
 ---
-tags: version.control
+tags: version.control wiki
 ---
 
 "[Microbranch](/wiki/Microbranch)" is a term that I invented to describe a short-lived branch, often local-only, created for the purposes of working on a single, small feature or bug fix without disturbing development on other branches or the trunk.

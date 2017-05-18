@@ -1,5 +1,6 @@
 ---
 title: Build Ragel scanner with -G2 switch (wikitext, 3cd4454)
+tags: snippets
 ---
 
 At the recommendation of Adrian Thurston I tried using the -G2 switch to turn on the "really fast goto-driven FSM" code generation style (as opposed to the default table-driven one).

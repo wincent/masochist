@@ -1,5 +1,5 @@
 ---
-tags: lion
+tags: lion wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Google gems
+tags: blog
 ---
 
 The [Google Mac Weblog](http://googlemac.blogspot.com/) continues to be an occasional source of some very interesting gems. [This time](http://googlemac.blogspot.com/2006/11/getting-loaded.html) it's about [module initializers](http://developer.apple.com/documentation/developertools/Conceptual/DynamicLibraries/Articles/DynamicLibraryDesignGuidelines.html), something which I didn't know existed. A handy replacement for the `load` method in categories with a better-defined execution order from which you can safely call methods in super classes and other classes.

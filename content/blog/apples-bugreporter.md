@@ -1,5 +1,6 @@
 ---
 title: Apple's bugreporter
+tags: blog
 ---
 
 [Use it](http://bugreporter.apple.com/). It's one way in which we can all help Mac OS X to get better. I'm not the most disciplined of bug reporters to Apple because I don't like their interface, but I have been filing more bug reports lately. Read on for some stats.

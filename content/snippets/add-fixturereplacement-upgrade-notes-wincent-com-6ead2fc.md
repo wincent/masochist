@@ -1,5 +1,6 @@
 ---
 title: Add FixtureReplacement upgrade notes (wincent.com, 6ead2fc)
+tags: snippets
 ---
 
 Include upgrade notes in application README.

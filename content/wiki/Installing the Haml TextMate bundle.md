@@ -1,5 +1,5 @@
 ---
-tags: textmate haml
+tags: textmate haml wiki
 ---
 
 This article describes how to install the [Haml](/wiki/Haml) bundle for [TextMate](/wiki/TextMate) via [Subversion](/wiki/Subversion).

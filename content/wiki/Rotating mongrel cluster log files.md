@@ -1,5 +1,5 @@
 ---
-tags: rails log.rotation mongrel
+tags: rails log.rotation mongrel wiki
 cache_breaker: 1
 ---
 
@@ -53,4 +53,3 @@ I opted to go with the `copytruncate` option because it enables me to rotate the
 
 -   [nginx log rotation](/wiki/nginx_log_rotation)
 -   [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)
-

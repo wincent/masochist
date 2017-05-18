@@ -1,5 +1,5 @@
 ---
-tags: apache nginx
+tags: apache nginx wiki
 cache_breaker: 1
 ---
 

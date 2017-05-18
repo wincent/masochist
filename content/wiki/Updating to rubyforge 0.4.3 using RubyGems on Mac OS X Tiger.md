@@ -1,5 +1,5 @@
 ---
-tags: tiger rubyforge updates
+tags: tiger rubyforge updates wiki
 cache_breaker: 1
 ---
 

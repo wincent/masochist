@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 When looking at [Git](/wiki/Git) conflict markers it can sometimes be confusing which half of the conflicting section belongs to which branch:
@@ -27,4 +27,3 @@ On the other hand, if you are doing something like `git rebase origin/master`, y
 
 -   [Git merge conflict cheatsheet](/wiki/Git_merge_conflict_cheatsheet)
 -   [Understanding Mercurial conflict markers](/wiki/Understanding_Mercurial_conflict_markers)
-

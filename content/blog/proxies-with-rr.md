@@ -1,6 +1,6 @@
 ---
 title: Proxies with RR
-tags: rspec rr
+tags: rspec rr blog
 cache_breaker: 1
 ---
 

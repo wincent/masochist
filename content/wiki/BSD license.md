@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 cache_breaker: 1
 ---
 
@@ -31,4 +31,3 @@ I've released many products under the [BSD license](/wiki/BSD_license), includin
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on the [BSD license](/wiki/BSD_license): <http://en.wikipedia.org/wiki/BSD_license>
-

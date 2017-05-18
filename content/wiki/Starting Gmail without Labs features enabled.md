@@ -1,5 +1,5 @@
 ---
-tags: gmail
+tags: gmail wiki
 ---
 
 I have a few Gmail accounts and suddenly this morning one of them started refusing to load. This wasn't browser-specific (tried it in multiple browsers), and my other accounts loaded just fine.

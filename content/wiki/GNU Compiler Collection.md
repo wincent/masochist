@@ -1,6 +1,6 @@
 ---
 redirect: [[GCC]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: rubygems
+tags: rubygems wiki
 ---
 
 Notes made while publishing the [Walrus](/wiki/Walrus) [gem](/wiki/gem) to [RubyForge](/wiki/RubyForge) for the first time.

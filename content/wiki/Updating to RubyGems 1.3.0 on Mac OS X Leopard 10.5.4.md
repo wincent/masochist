@@ -1,5 +1,5 @@
 ---
-tags: rubygems updates
+tags: rubygems updates wiki
 ---
 
 The standard update procedure yielded an error and didn't actually install the new version:

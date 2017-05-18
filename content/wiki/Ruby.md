@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 cache_breaker: 1
 ---
 
@@ -20,4 +20,3 @@ It's my scripting language of choice for anything that goes beyond trivial shell
 -   <http://www.ruby-doc.org/>
 -   <http://www.ruby-doc.org/core>
 -   <http://www.ruby-doc.org/stdlib/>
-

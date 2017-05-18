@@ -1,5 +1,5 @@
 ---
-tags: nginx updates fedora
+tags: nginx updates fedora wiki
 ---
 
 These are update notes. For more detail, see "[Updating to nginx 0.8.54 and nginx upload module 2.2.0 on Fedora 8](/wiki/Updating_to_nginx_0.8.54_and_nginx_upload_module_2.2.0_on_Fedora_8)".

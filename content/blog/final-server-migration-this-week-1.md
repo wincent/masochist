@@ -1,5 +1,6 @@
 ---
 title: Final server migration this week
+tags: blog
 ---
 
 I've been working on moving to the new server for [nearly a month now](http://www.wincent.com/a/about/wincent/weblog/archives/2008/02/server_migratio.php), a process which has been quite slow because all the data has to be exported from a number of "legacy" applications and imported into a brand new custom Rails application written especially for this site. It's slow going because it's the first time I've ever deployed a Rails application and I've had *a lot* to learn... but now I know a fair bit about nginx, capistrano, mongrel, monit, and of course Rails itself. The server too is totally different, with a different operating system, so it's all been quite time-consuming.

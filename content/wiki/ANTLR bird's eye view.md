@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 Learning [ANTLR](/wiki/ANTLR) has been one of the hardest programming challenges I've had to face, even with the help of the [ANTLR book](/wiki/ANTLR_book). The problem lies in the fact that [ANTLR](/wiki/ANTLR) offers a deceptively simple interface, but this is *only in appearance*. The reality is that under the surface [ANTLR](/wiki/ANTLR) is an incredibly complex beast. A beginner attempting even extremely simple tasks will face many failures and be frustrated to find that they don't work. Even the most basic goals cannot be achieved without a detailed understanding of what [ANTLR](/wiki/ANTLR) is doing under the covers.
@@ -50,4 +50,3 @@ This article is my attempt at providing a high-level overview of how [ANTLR](/wi
 
 -   [ANTLR lexers in depth](/wiki/ANTLR_lexers_in_depth)
 -   [ANTLR prediction](/wiki/ANTLR_prediction)
-

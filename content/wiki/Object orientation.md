@@ -1,6 +1,6 @@
 ---
 redirect: [[Object-orientation]]
-tags: 
+tags: wiki
 ---
 
 

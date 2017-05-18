@@ -1,5 +1,5 @@
 ---
-tags: nginx snow.leopard pcre nginx.upload.module
+tags: nginx snow.leopard pcre nginx.upload.module wiki
 cache_breaker: 1
 ---
 

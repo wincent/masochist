@@ -1,5 +1,6 @@
 ---
 title: Fix pending tests by using fallback encodings (Wincent Strings Utility, 3f897ce)
+tags: snippets
 ---
 
 Instead of using the deprecated NSString stringWithContentsOfFile: method (not sure why no deprecation warnings were being issued) instead use stringWithContentsOfFile:encoding:error:. The problem with the former is that any strings file without a BOM was being interpreted using the normal C string encoding, which was incorrect and would in turn cause parsing to fail.

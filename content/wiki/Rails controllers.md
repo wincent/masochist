@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # See also
@@ -12,4 +12,3 @@ tags: rails
 
 -   "RailsConf Recap: Skinny Controllers": <http://www.therailsway.com/2007/6/1/railsconf-recap-skinny-controllers>
     -   "Skinny Controller, Fat Model": <http://weblog.jamisbuck.org/2006/10/18/skinny-controller-fat-model>
-

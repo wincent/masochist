@@ -1,6 +1,6 @@
 ---
 title: Rails 3 deployment notes
-tags: rails site
+tags: rails site blog
 cache_breaker: 1
 ---
 

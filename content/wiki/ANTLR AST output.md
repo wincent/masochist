@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 These notes are about [ANTLR](/wiki/ANTLR)'s `output = AST;` option in the context of the [C language target](/wiki/C_language_target).

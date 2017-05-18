@@ -1,5 +1,6 @@
 ---
 title: Planned changes to development model
+tags: blog
 ---
 
 I've [commented elsewhere](http://www.wincent.com/a/support/forums/ubbthreads.php?ubb=showflatΝmber=1008&page=1) that I plan on approximating a [continuous integration](http://www.wincent.com/knowledge-base/continuous%20integration) model of development in future releases of [Synergy Advance](http://advance.wincent.com/) (and all my products in fact).

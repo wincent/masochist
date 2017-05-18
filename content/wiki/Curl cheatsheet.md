@@ -1,5 +1,5 @@
 ---
-tags: curl
+tags: curl wiki
 ---
 
 # Useful options
@@ -11,4 +11,3 @@ tags: curl
 -   `-H "X-example: header`: add a specific header to the request
 -   `-k`: bypass security checks (eg. certificate checks) for SSL downloads
 -   `-d key=value`: pass ASCII HTTP POST data of the form `key=value`
-

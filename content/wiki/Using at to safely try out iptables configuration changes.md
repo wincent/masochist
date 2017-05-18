@@ -1,5 +1,5 @@
 ---
-tags: iptables at
+tags: iptables at wiki
 cache_breaker: 1
 ---
 
@@ -63,4 +63,3 @@ Confirm that the queue is empty:
 # See also
 
 -   [iptables](/wiki/iptables)
-

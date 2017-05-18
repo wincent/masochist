@@ -1,5 +1,6 @@
 ---
 title: Parser generator update
+tags: blog
 ---
 
 One of the things that's been so good about [writing the parser generator](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) [for Walrus](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/abstract_syntax.php) is that it has made the code much more flexible, much easier to develop iteratively. In my original design I had a hand-coded parser and a simple grammar that imposed a number of restrictions to make the parser's job easier:

@@ -1,5 +1,5 @@
 ---
-tags: development os.x
+tags: development os.x wiki
 cache_breaker: 1
 ---
 

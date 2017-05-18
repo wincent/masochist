@@ -1,5 +1,5 @@
 ---
-tags: red.hat mysql
+tags: red.hat mysql wiki
 ---
 
 # The upgrade
@@ -117,4 +117,3 @@ Downtime was less than 60 seconds.
 # See also
 
 -   [Upgrading MySQL on Red Hat Enterprise Linux](/wiki/Upgrading_MySQL_on_Red_Hat_Enterprise_Linux)
-

@@ -1,5 +1,5 @@
 ---
-tags: javascript chrome
+tags: javascript chrome wiki
 cache_breaker: 1
 ---
 
@@ -25,4 +25,3 @@ cache_breaker: 1
 -   <https://developers.google.com/chrome-developer-tools/docs/commandline-api>
 -   [Chrome developer tools](/wiki/Chrome_developer_tools)
 -   an incredibly comprehensive cheatsheet: <http://anti-code.com/devtools-cheatsheet/>
-

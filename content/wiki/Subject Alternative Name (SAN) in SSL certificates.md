@@ -1,5 +1,5 @@
 ---
-tags: ssl
+tags: ssl wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ cache_breaker: 1
 
 -   <http://en.wikipedia.org/wiki/SubjectAltName>
 -   <http://en.wikipedia.org/wiki/Wildcard_certificate>
-

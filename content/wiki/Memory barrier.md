@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 One of the best overviews of [memory barriers](/wiki/memory_barriers) is [this documentation](http://repo.or.cz/w/linux-2.6.git?a=blob_plain;f=Documentation/memory-barriers.txt) contributed to the [Linux](/wiki/Linux) kernel. Here is a copy of the document as at the time of writing:

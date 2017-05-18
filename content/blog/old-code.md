@@ -1,5 +1,6 @@
 ---
 title: Old code
+tags: blog
 ---
 
 I was just looking at some very old code that I wrote several years ago when I didn't really understand the mysteries of Objective-C (or even straight C for that matter!). Quite laughable really:

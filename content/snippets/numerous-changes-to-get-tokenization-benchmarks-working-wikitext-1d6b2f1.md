@@ -1,5 +1,6 @@
 ---
 title: Numerous changes to get tokenization benchmarks working (wikitext, 1d6b2f1)
+tags: snippets
 ---
 
 Here I add a Wikitext::Parser::Token class to make debugging and testing a little more convenient and introduce the first version of the raw tokenization benchmark.

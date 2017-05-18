@@ -1,6 +1,6 @@
 ---
 title: Server migration coming up in February
-tags: site aws
+tags: site aws blog
 cache_breaker: 1
 ---
 

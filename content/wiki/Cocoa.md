@@ -1,5 +1,5 @@
 ---
-tags: cocoa
+tags: cocoa wiki
 ---
 
 [Cocoa](/wiki/Cocoa) is the umbrella term for a set of [Objective-C](/wiki/Objective-C) [APIs](/wiki/APIs) provided by [Apple](/wiki/Apple) for [Mac OS X](/wiki/Mac_OS_X).

@@ -1,6 +1,6 @@
 ---
 redirect: [[Proxy]]
-tags: 
+tags: wiki
 ---
 
 

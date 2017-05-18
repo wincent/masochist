@@ -1,5 +1,6 @@
 ---
 title: Using cross-development SDKs for configure/make-based UNIX tools and libraries
+tags: blog
 ---
 
 It's been a long time since I did a [WinHex](http://www.wincent.com/a/products/winhex/) release. One of the reasons has been that I've had trouble compiling the [GMP arbitrary precision arithmetic library](http://swox.com/gmp/) upon which WinSwitch depends. Since the last release, GMP has been updated a couple of times, the version of [GCC](http://gcc.gnu.org/) that Apple ships with Mac OS X Xcode tools has seen updates too, and the first Intel-based machines are now available to the public.

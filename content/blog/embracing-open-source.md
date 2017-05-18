@@ -1,6 +1,6 @@
 ---
 title: Embracing open source
-tags: development open.source
+tags: development open.source blog
 cache_breaker: 1
 ---
 

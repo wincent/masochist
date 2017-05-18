@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.106
-tags: site updates
+tags: site updates snippets
 ---
+
 e1d100d Soften black on global nav

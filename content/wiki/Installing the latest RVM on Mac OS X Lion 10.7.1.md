@@ -1,5 +1,5 @@
 ---
-tags: rvm os.x
+tags: rvm os.x wiki
 cache_breaker: 1
 ---
 

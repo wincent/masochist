@@ -1,6 +1,6 @@
 ---
 redirect: [[Store postmaster address]]
-tags: 
+tags: wiki
 ---
 
 

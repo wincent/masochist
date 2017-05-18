@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance added to the nightly builds schedule
+tags: blog
 ---
 
 Last month I began trialing the new [nightly builds system](http://www.wincent.com/a/news/archives/2007/03/nightly_builds.php) with [nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/synergy/) for [Synergy](http://synergy.wincent.com/). This is because I want to move towards a more [open development process](http://www.wincent.com/a/about/wincent/weblog/archives/2007/03/planned_changes.php).

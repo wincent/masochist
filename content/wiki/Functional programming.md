@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [Functional programming](/wiki/Functional_programming) is an approach to programming in which programs are composed of functions that are evaluated rather than executed in sequence. These are not functions in the [C](/wiki/C) sense but mathematical functions of the style `f(x) = y + 2`; that is, for a given input or set of inputs the function describes the result.

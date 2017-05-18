@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 From <http://www.gnu.org/software/libc/manual/html_mono/libc.html>:

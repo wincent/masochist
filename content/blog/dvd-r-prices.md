@@ -1,5 +1,6 @@
 ---
 title: DVD-R prices
+tags: blog
 ---
 
 Why is it that a spindle of 25 [Verbatim](http://verbatim.com/) DVD-Rs costs 38,95€ at my favorite local store ([FNAC](http://www.fnac.es/))? Yet I can buy the same(\*) spindle at the corner shop for 14,95€? (\* Ok, it's not exactly the same: the DVD-Rs sold at FNAC are certified for 16x burning and the corner shop ones only for 8x; but apart from that they both seem to be the genuine article).

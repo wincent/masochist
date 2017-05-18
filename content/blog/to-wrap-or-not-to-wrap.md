@@ -1,5 +1,6 @@
 ---
 title: To wrap or not to wrap?
+tags: blog
 ---
 
 For a long, long, long, long time now I've hard-wrapped all of my source code to 80 columns. Why might you do this when there is a lot of Objective-C code out there that doesn't use any limit at all? (examples: [Adium](http://trac.adiumx.com/browser/trunk/), [Camino](http://bonsai.mozilla.org/rview.cgi?dir=mozilla/camino&cvsroot=/cvsroot&module=default), [Colloquy](http://project.colloquy.info/trac/browser/trunk); there are many others). As [one coder says](http://www.sowbug.org/mt/archives/000192.html):

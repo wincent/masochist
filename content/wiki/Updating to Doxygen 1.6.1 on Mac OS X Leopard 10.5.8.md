@@ -1,5 +1,5 @@
 ---
-tags: leopard doxygen updates
+tags: leopard doxygen updates wiki
 cache_breaker: 1
 ---
 
@@ -18,4 +18,3 @@ $ unzip doxygen_manual-1.6.1.pdf.zip
 # See also
 
 -   <http://www.stack.nl/~dimitri/doxygen/changelog.html>
-

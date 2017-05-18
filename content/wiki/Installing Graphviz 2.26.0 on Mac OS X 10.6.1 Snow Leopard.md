@@ -1,5 +1,5 @@
 ---
-tags: doxygen graphviz snow.leopard
+tags: doxygen graphviz snow.leopard wiki
 ---
 
 ```shell

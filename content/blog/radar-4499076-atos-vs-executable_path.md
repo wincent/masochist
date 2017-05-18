@@ -1,5 +1,6 @@
 ---
 title: Radar #4499076: atos vs @executable_path
+tags: blog
 ---
 
 Using `atos` is a bit of a pain with anything that uses embedded frameworks. Unfortunately it's something I need to do in order to [decipher crash reports](http://www.wincent.com/a/about/wincent/weblog/archives/2006/03/automated_strip.php).

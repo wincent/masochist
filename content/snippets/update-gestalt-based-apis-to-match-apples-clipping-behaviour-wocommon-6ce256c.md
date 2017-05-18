@@ -1,5 +1,6 @@
 ---
 title: Update Gestalt-based APIs to match Apple's clipping behaviour (WOCommon, 6ce256c)
+tags: snippets
 ---
 
 Apple's gestaltSystemVersion wraps in such a way that Mac OS X 10.4.10, for example, is represented as 0x00001049. This commit updates the WOMachine API to match this clipping behaviour exactly.

@@ -1,5 +1,6 @@
 ---
 title: What is a "release candidate"?
+tags: blog
 ---
 
 A limited definition of "release candidate" is "these are the exact binary bits that we think we'll be shipping; and if no show-stopping bugs are reported we'll go ahead and ship these exact bits".

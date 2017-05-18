@@ -1,5 +1,6 @@
 ---
 title: Override ARCHFLAGS only temporarily (wikitext, 7b7504d)
+tags: snippets
 ---
 
 When building on Darwin rather than setting an environment variable permanently just set it for the duration of the mkmf run.

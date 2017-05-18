@@ -1,5 +1,6 @@
 ---
 title: WOTest improvements
+tags: blog
 ---
 
 I'm very happy with some improvements that I [checked in](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wotest_r129_5_items_changed.php) to [WOTest](http://test.wincent.com/) last night and which improve the readability and usefulness of test results.

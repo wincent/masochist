@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 In November 2006 I wrote an article called "[Son, don't repeat the same mistakes I made](http://wincent.com/a/about/wincent/weblog/archives/2006/11/son_dont_repeat.php)" describing some of the little development "gotchas" that I wish I had found out about earlier on.

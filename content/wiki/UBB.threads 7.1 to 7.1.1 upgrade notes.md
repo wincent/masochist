@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads
+tags: ubb.threads wiki
 ---
 
 A little tired of doing multi-step manual upgrades to [UBB.threads](/wiki/UBB.threads) (for example, see the notes for the last upgrade, "[UBB.threads 7.0.2 to 7.1 upgrade notes](/wiki/UBB.threads_7.0.2_to_7.1_upgrade_notes)"), I decided to come up with a shell script that would at least guide the process.
@@ -173,4 +173,3 @@ This found one other minor error elsewhere in the installation, so I recommend r
 -   Change log: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182824>
 -   Release discussion: <http://www.ubbcentral.com/forums/ubbthreads.php/ubb/showflat/Number/182202>
 -   Previous release list: <http://www.ubbcentral.com/support/version.php?product=UBB.threads>
-

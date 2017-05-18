@@ -1,5 +1,5 @@
 ---
-tags: nginx updates fedora
+tags: nginx updates fedora wiki
 cache_breaker: 1
 ---
 
@@ -26,4 +26,3 @@ $ sudo -s
 # See also
 
 -   [Updating to nginx 1.0.0 on Mac OS X 10.6.7 Snow Leopard](/wiki/Updating_to_nginx_1.0.0_on_Mac_OS_X_10.6.7_Snow_Leopard)
-

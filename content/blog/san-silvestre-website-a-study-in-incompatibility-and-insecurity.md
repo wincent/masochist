@@ -1,5 +1,6 @@
 ---
 title: San Silvestre website: a study in incompatibility and insecurity
+tags: blog
 ---
 
 For the past two years I've participated in the San Silvestre popular running race through Madrid on New Years Eve. This will be my third year in the 10Km race. As has been the case in previous years, this year's site is guilty of a number of heinous crimes against basic security and compatibility.

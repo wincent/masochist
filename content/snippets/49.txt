@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.42
-tags: site updates
+tags: site updates snippets
 ---
+
 82b0b1a Update to Rails 3.1.1rc1
 26b1cdd Update to Rails 3.1.1.rc2
 821c199 Update to Rails 3.1.1 (includes full bundle update)

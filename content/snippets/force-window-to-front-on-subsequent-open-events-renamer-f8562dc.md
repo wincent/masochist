@@ -1,5 +1,6 @@
 ---
 title: Force window to front on subsequent "open" events (REnamer, f8562dc)
+tags: snippets
 ---
 
 Now we force the main window to the front on subsequent "open" events, which means that when you drop more files on the Dock icon the associated window becomes main/key, and its preview becomes visible (if appropriate).

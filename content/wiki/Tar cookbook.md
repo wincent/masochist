@@ -1,5 +1,5 @@
 ---
-tags: tar
+tags: tar wiki
 cache_breaker: 1
 ---
 
@@ -50,4 +50,3 @@ $ tar cpf - -C $SRC_DIR . | tar xpf - -C $DEST_DIR
 ## See also
 
 -   [unzip cookbook](/wiki/unzip_cookbook)
-

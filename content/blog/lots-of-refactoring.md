@@ -1,5 +1,6 @@
 ---
 title: Lots of refactoring
+tags: blog
 ---
 
 Sometimes you make bad decisions that later come back to bite you. About three years ago when I started work on [Synergy Advance](http://synergyadvance.com/) I was still relatively new to [Subversion](http://subversion.tigris.org/). So, rather than creating a new repository I decided to store the Synergy Advance code within a subdirectory of the [Synergy](http://synergy.wincent.com/) repository.

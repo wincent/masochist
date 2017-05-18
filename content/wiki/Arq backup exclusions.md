@@ -1,5 +1,5 @@
 ---
-tags: arq time.machine
+tags: arq time.machine wiki
 ---
 
 [Arq](/wiki/Arq) comes with some standard exclusions, [listed here](http://www.haystacksoftware.com/support/arq_help/pages/adding_folder.html). At the time of writing, that list is:

@@ -1,5 +1,6 @@
 ---
 title: Set default cell text color to white (REnamer, d347fdf)
+tags: snippets
 ---
 
 White (or light grey) text is needed in HUD stlye windows, so change the text color to white in the table cells.

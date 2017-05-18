@@ -1,5 +1,6 @@
 ---
 title: Open source licensing
+tags: blog
 ---
 
 There is a lot of misinformation on the net about the different types of open source licenses so I just wanted to offer some clarification. I am not a lawyer but I am fairly familiar with the major licenses.

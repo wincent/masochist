@@ -1,5 +1,5 @@
 ---
-tags: hfs xattr extended.attributes
+tags: hfs xattr extended.attributes wiki
 ---
 
 Visible in `ls -l` output as "@" at the end of the mode string:

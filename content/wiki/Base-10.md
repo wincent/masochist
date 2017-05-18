@@ -1,6 +1,6 @@
 ---
 redirect: [[Decimal]]
-tags: 
+tags: wiki
 ---
 
 

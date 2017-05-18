@@ -1,5 +1,6 @@
 ---
 title: Temporarily override PBXBuildsContinueAfterErrors (snippets, 14ccc04)
+tags: snippets
 ---
 
 I like to have PBXBuildsContinueAfterErrors set to YES in my user defaults so as to catch the maximum number of errors possible in each build cycle.

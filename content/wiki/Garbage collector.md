@@ -1,6 +1,6 @@
 ---
 redirect: [[garbage collection]]
-tags: 
+tags: wiki
 ---
 
 

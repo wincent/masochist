@@ -1,8 +1,8 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
-    Changes with nginx 0.7.61                                        22 Jun 2009
+Changes with nginx 0.7.61                                        22 Jun 2009
 
        *) Bugfix: nginx could not be built on MacOSX 10.6. the bug had 
           appeared in 0.8.2.

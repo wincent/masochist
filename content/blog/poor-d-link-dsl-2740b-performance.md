@@ -1,6 +1,6 @@
 ---
 title: Poor D-Link DSL-2740B performance
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

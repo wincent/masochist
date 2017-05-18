@@ -1,6 +1,6 @@
 ---
 redirect: [[S3]]
-tags: 
+tags: wiki
 ---
 
 

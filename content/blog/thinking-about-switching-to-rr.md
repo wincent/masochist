@@ -1,6 +1,6 @@
 ---
 title: Thinking about switching to RR
-tags: rspec rr
+tags: rspec rr blog
 cache_breaker: 1
 ---
 

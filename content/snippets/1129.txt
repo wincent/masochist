@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.158
-tags: site updates
+tags: site updates snippets
 ---
+
 c4f143a Upgrade to Rails 4.2.2

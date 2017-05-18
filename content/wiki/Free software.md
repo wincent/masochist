@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [Free software](/wiki/Free_software) is a category of [open source](/wiki/open_source) software (the source code is available to public) that emphasizes "freeness" not only in the monetary sense (free as in gratis) but also in the freedom sense (free as in freedom).

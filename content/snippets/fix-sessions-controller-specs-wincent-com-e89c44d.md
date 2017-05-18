@@ -1,5 +1,6 @@
 ---
 title: Fix sessions controller specs (wincent.com, e89c44d)
+tags: snippets
 ---
 
 This was a tricky one, who to simulate a user login in the specs. The problem is that the testing machinery assumes one request per spec, so you can't do the obvious easy solution of doing a real login and then following it up with other specs.

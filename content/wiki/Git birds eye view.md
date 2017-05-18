@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Things you need to now about [Git](/wiki/Git) before starting to work with it.

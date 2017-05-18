@@ -1,6 +1,6 @@
 ---
 title: Synergy Christmas Promo 2009
-tags: synergy
+tags: synergy blog
 cache_breaker: 1
 ---
 

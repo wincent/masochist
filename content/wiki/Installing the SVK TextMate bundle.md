@@ -1,5 +1,5 @@
 ---
-tags: svk textmate
+tags: svk textmate wiki
 ---
 
 After seeing the excellent [Subversion](/wiki/Subversion) bundle for [TextMate](/wiki/TextMate) in [this Railscast](http://www.railscasts.com/episodes/36) I decided to find out if there is an [SVK](/wiki/SVK) bundle, seeing as [SVK](/wiki/SVK) is currently my [version control](/wiki/version_control) tool of choice. It turns out that there is and it can be installed as follows:

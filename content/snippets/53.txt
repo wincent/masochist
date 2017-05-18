@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.44
-tags: site updates
+tags: site updates snippets
 ---
+
 b20901f Don't pollute global namespace in application.js
 0a05a9a Update wikitext gem to version 3.0
 6bff66a Update to Rails 3.1.2, switching to assets pipeline at same time

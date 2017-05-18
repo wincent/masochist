@@ -1,5 +1,5 @@
 ---
-tags: subversion apache.portable.runtime
+tags: subversion apache.portable.runtime wiki
 ---
 
 These notes were made during the upgrade from [Subversion](/wiki/Subversion) version 1.4.2 to the new version 1.4.3.
@@ -180,4 +180,3 @@ This time it worked, so the moral of the story is: don't rely on the `--with-apr
 -   Release notes: <http://subversion.tigris.org/svn_1.4_releasenotes.html>
 -   Upgrade notes from other versions: [Subversion upgrades](/wiki/Subversion_upgrades).
 -   [Installing Subversion 1.4.3 on Mac OS X Leopard](/wiki/Installing_Subversion_1.4.3_on_Mac_OS_X_Leopard)
-

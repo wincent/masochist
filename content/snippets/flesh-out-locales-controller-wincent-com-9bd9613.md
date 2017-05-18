@@ -1,5 +1,6 @@
 ---
 title: Flesh out locales controller (wincent.com, 9bd9613)
+tags: snippets
 ---
 
 Basic index and show actions.

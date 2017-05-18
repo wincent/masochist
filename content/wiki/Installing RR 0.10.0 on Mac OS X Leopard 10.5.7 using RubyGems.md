@@ -1,5 +1,5 @@
 ---
-tags: rr
+tags: rr wiki
 ---
 
 ```shell

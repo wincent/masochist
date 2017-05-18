@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 When I first started working with [SVK](/wiki/SVK) I was working alone and from a single machine. My work cycle was basically:

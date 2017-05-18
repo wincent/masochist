@@ -1,5 +1,5 @@
 ---
-tags: appcast
+tags: appcast wiki
 cache_breaker: 1
 ---
 
@@ -7,4 +7,3 @@ cache_breaker: 1
 
 -   [Google search results for "appcast"](http://www.google.com/search?q=appcast)
     -   <http://connectedflow.com/appcasting/>
-

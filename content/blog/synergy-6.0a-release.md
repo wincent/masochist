@@ -1,6 +1,6 @@
 ---
 title: Synergy 6.0a release
-tags: synergy releases mavericks
+tags: synergy releases mavericks blog
 cache_breaker: 1
 ---
 

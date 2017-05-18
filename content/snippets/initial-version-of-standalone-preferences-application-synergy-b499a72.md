@@ -1,5 +1,6 @@
 ---
 title: Initial version of standalone preferences application (Synergy, b499a72)
+tags: snippets
 ---
 
 Now the Synergy prefPane is no longer loaded by the System Preferences and is instead hosted by a standalone application. This commit is an initial version of the application which loads the prefPane bundle and displays the window in the center of the screen on launch.

@@ -1,6 +1,6 @@
 ---
 title: Lack of stability in the Rails/Ruby ecosystem (rant)
-tags: rspec ruby rails capistrano
+tags: rspec ruby rails capistrano blog
 cache_breaker: 1
 ---
 

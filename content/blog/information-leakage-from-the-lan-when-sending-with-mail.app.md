@@ -1,5 +1,6 @@
 ---
 title: Information leakage from the LAN when sending with Mail.app
+tags: blog
 ---
 
 I was curious to find out why the internal IP address of my Mac OS X machine on my LAN was being leaked into the headers of all my outgoing email messages. Basically, all messages included a header that began like this:

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.144
-tags: site updates
+tags: site updates snippets
 ---
+
 52e62b2 Fix controller spec failures caused by Rails 4 API changes
 3bad3eb Fix stale snippets#index view spec
 7a15fb5 Silence some RSpec deprecation warnings

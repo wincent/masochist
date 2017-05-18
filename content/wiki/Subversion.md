@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 cache_breaker: 1
 ---
 
@@ -46,4 +46,3 @@ All of these projects have been migrated over to [Git](/wiki/Git) (see <http://g
 # See also
 
 -   Official [Subversion](/wiki/Subversion) website: <http://subversion.tigris.org/>
-

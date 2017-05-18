@@ -1,6 +1,6 @@
 ---
 redirect: [[Subversion]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 redirect: [[DSL]]
-tags: 
+tags: wiki
 ---
 
 

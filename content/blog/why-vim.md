@@ -1,6 +1,6 @@
 ---
 title: Why Vim
-tags: vim
+tags: vim blog
 cache_breaker: 1
 ---
 

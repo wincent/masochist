@@ -1,5 +1,5 @@
 ---
-tags: zentest updates
+tags: zentest updates wiki
 ---
 
 Notes made while updating to [ZenTest 3.11.0](/wiki/ZenTest_3.11.0) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.5:

@@ -1,5 +1,5 @@
 ---
-tags: xcode development
+tags: xcode development wiki
 ---
 
 # A preliminary note
@@ -84,4 +84,3 @@ Cleaning and re-building, as well as blowing away the "Build" and "Build-interme
 # See also
 
 -   Wincent nightlies information page: <http://wincent.com/s/nightlies/>
-

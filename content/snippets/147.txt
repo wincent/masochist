@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.90
-tags: site updates
+tags: site updates snippets
 ---
+
 0188c7a Swallow unknown format errors

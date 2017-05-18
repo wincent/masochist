@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ Here's a list of libraries, tools and Node modules that I like.
     -   <https://github.com/tj/n>
     -   <https://github.com/creationix/nvm>
     -   See also: [Discussion of the differences between n and nvm](http://www.mattpalmerlee.com/2013/03/23/installing-and-switching-between-multiple-versions-of-node-js-n-vs-nvm/)
-

@@ -1,8 +1,8 @@
 ---
-tags: leopard
+tags: leopard wiki
 ---
 
-    wget http://dfn.dl.sourceforge.net/sourceforge/flac/flac-1.2.1.tar.gz
+wget http://dfn.dl.sourceforge.net/sourceforge/flac/flac-1.2.1.tar.gz
     tar xzvf flac-1.2.1.tar.gz 
     cd flac-1.2.1
     ./configure --disable-asm-optimizations && make && make check

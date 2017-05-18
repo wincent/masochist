@@ -1,8 +1,8 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
-    # use a screen session in case we lose our connection
+# use a screen session in case we lose our connection
     screen
 
     # for posterity

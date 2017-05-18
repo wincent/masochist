@@ -1,5 +1,5 @@
 ---
-tags: rubygems
+tags: rubygems wiki
 ---
 
 In order to silence a raft of deprecation warnings in an environment where there are a lot of old gems and in which I can't update them:

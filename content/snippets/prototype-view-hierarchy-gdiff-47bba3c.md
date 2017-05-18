@@ -1,5 +1,6 @@
 ---
 title: Prototype view hierarchy (gdiff, 47bba3c)
+tags: snippets
 ---
 
 Introduce the basic view hierarchy, using the MyDocument class as a controller which instantiates and configures a WODiffView and its subviews.

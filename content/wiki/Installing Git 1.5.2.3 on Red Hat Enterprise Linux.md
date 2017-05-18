@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 For my [Red Hat](/wiki/Red_Hat) [Git](/wiki/Git) install I opted for a simpler, no-documentation installation (for notes on installing the documentation see "[Installing Git 1.5.2.3 on Mac OS X Tiger](/wiki/Installing_Git_1.5.2.3_on_Mac_OS_X_Tiger)"). Note that although [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux) already has a copy of the Expat library installed (in `/usr/lib/`) I decided to download the latest version and install it under `/usr/local/lib/`.
@@ -43,4 +43,3 @@ My first attempt at installing didn't work because of a period in my `CDPATH` en
 
 -   [Installing Git 1.5.2.3 on Mac OS X Tiger](/wiki/Installing_Git_1.5.2.3_on_Mac_OS_X_Tiger)
 -   [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)
-

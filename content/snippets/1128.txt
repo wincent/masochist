@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 Error detected while processing /Users/glh/code/wincent/roles/dotfiles/files/.vim/plugin/settings.vim:
 line   66:
 E487: Argument must be positive: softtabstop=-1

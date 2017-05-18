@@ -1,5 +1,6 @@
 ---
 title: Avoid NSGetSizeAndAlignment bug (WOTest, 1266032)
+tags: snippets
 ---
 
 Leopard has a bug in the NSGetSizeAndAlignment() function which prevents it from handling structs which have bitfields in them. This in turn breaks the +\[NSValue valueWithBytes:objCType:\] method when used with structs containing bitfields.

@@ -1,5 +1,6 @@
 ---
 title: Help!
+tags: blog
 ---
 
 I [previously wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/payoff_time.php) about how pleased I was with my new workflow for creating end-user help documentation. In that article I said:

@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug
+tags: ruby.debug wiki
 ---
 
 # Installing
@@ -88,4 +88,3 @@ Note that unlike [last time](/wiki/Upgrading_to_ruby-debug_0.9) it was not neces
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=10859>
-

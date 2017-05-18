@@ -1,5 +1,5 @@
 ---
-tags: red.hat git updates snow.leopard
+tags: red.hat git updates snow.leopard wiki
 cache_breaker: 1
 ---
 

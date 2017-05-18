@@ -1,5 +1,5 @@
 ---
-tags: warcraft
+tags: warcraft wiki
 ---
 
 # The basics

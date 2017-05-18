@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Set `NSUserDefaults` key `NSTraceEvents` to `YES`.

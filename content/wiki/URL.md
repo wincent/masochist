@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ A [URL](/wiki/URL) is a [Uniform Resource Locator](/wiki/Uniform_Resource_Locato
 -   [RFC 1630](/wiki/RFC_1630) ("Universal Resource Identifiers in WWW")
 -   [RFC 3986](/wiki/RFC_3986) ("Uniform Resource Identifier (URI): Generic Syntax")
 -   [RFC 3305](/wiki/RFC_3305) ("Report from the Joint W3C/IETF URI Planning Interest Group: Uniform Resource Identifiers (URIs), URLs, and Uniform Resource Names (URNs): Clarifications and Recommendations")
-

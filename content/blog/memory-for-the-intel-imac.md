@@ -1,5 +1,6 @@
 ---
 title: Memory for the Intel iMac
+tags: blog
 ---
 
 [With the last batch of trouble](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php) with my G5 I decided it was time to switch development over to my shiny new iMac. Although it is technically less powerful (only a 32-bit Intel Core Duo 1.83 GHz compared with a 64-bit dual 2.5 GHz G5) I suspect that performance will be almost as good for most things.

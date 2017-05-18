@@ -1,5 +1,5 @@
 ---
-tags: emacs
+tags: emacs wiki
 cache_breaker: 1
 ---
 
@@ -34,4 +34,3 @@ You would create an Emacs-compatible tags index, `tags`, with: `cd project_dir &
 -   ido.el, or IDO "interactively do" mode: <http://www.cua.dk/ido.html> -- provides enhanced versions of `C-x C-f` (`find-file`) and `C-x b` (`switch-to-buffer`) commands
 -   ECB, or Emacs Code Browser (speedbar replacement): <http://ecb.sourceforge.net/>
     -   CEDET, or Collection of Emacs Development Environment Tools, a dependency of ECB: <http://cedet.sourceforge.net/>
-

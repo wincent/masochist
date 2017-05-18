@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 # Tools
@@ -12,4 +12,3 @@ tags: os.x
 -   `/Library/SystemMigration` ([info](http://apple.stackexchange.com/a/208541))
 -   `/lost+found/*` ([info](http://unix.stackexchange.com/a/18157))
 -   `/cores/*` (\[<http://hints.macworld.com/article.php?story=20031001203255412>\])
-

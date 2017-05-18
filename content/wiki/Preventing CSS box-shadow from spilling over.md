@@ -1,5 +1,5 @@
 ---
-tags: css
+tags: css wiki
 cache_breaker: 1
 ---
 

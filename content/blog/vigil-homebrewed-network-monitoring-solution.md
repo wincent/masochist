@@ -1,6 +1,6 @@
 ---
 title: Vigil: homebrewed network monitoring solution
-tags: vigil
+tags: vigil blog
 cache_breaker: 1
 ---
 

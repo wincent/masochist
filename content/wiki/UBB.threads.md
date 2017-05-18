@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads ubb
+tags: ubb.threads ubb wiki
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ In March/April 2008 I replaced my own [UBB.threads](/wiki/UBB.threads) installs 
 # Official site
 
 -   <http://ubbcentral.com/>
-

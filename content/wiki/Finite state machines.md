@@ -1,6 +1,6 @@
 ---
 redirect: [[Finite state machine]]
-tags: 
+tags: wiki
 ---
 
 

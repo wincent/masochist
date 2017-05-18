@@ -1,5 +1,6 @@
 ---
 title: New keyboard
+tags: blog
 ---
 
 Lately the crusty old white keyboard that came with my iMac has been getting harder and harder to use. Key combinations were getting hard to type because the Command key would stick at the top unless you pushed down really hard or at a perfect 90 degree angle, presumably because of wear and built-up gunk. Apart from being annoying it's also not very healthy for someone who sits in front of a keyboard eight hours a day.

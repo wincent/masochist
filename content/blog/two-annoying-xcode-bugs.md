@@ -1,5 +1,6 @@
 ---
 title: Two annoying Xcode bugs
+tags: blog
 ---
 
 Last night between the hours of 4 and 5 AM I was battling against two annoying Xcode bugs (in fact, the late hour immediately upgraded them to "incredibly annoying").

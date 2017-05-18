@@ -1,5 +1,6 @@
 ---
 title: Add second of two scroll views (gdiff, 429df2e)
+tags: snippets
 ---
 
 Completing the work started in 390c5b3, the right hand side is now also located inside a scroll view with no vertical scroll bar. The NSScroller that was previously grouped along with the left file view and its gutter has now been move outside of the group (it makes no sense to have a scroller inside the document view of an NSScrollView).

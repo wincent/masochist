@@ -1,5 +1,5 @@
 ---
-tags: leopard git updates
+tags: leopard git updates wiki
 cache_breaker: 1
 ---
 

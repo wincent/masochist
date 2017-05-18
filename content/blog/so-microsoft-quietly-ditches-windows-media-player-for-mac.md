@@ -1,5 +1,6 @@
 ---
 title: So, Microsoft "quietly ditches" Windows Media Player for Mac
+tags: blog
 ---
 
 So, Microsoft "[quietly ditches](http://www.betanews.com/article/Microsoft_Quietly_Ditches_WMP_for_Mac/1137014055)" Windows Media Player for Mac:

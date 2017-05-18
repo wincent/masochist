@@ -1,5 +1,5 @@
 ---
-tags: ruby rails
+tags: ruby rails wiki
 ---
 
 # Ruby on Rails 1.1.4

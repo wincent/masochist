@@ -1,5 +1,5 @@
 ---
-tags: textmate antlr
+tags: textmate antlr wiki
 ---
 
 # Installation

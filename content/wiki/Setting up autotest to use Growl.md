@@ -1,5 +1,5 @@
 ---
-tags: zentest growl
+tags: zentest growl wiki
 ---
 
 # Introduction
@@ -69,4 +69,3 @@ This information based on the following three articles:
 
 -   Configure notifications from [autotest](/wiki/autotest) to display using the "Smoke" display.
 -   Set the "Emergency" color scheme for "Smoke" to show a red background.
-

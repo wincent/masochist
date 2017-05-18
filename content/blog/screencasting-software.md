@@ -1,5 +1,6 @@
 ---
 title: Screencasting software
+tags: blog
 ---
 
 Since posting [my first screencast](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/noncontiguous_s.php) yesterday I've received a couple of emails asking about the software used to make it.

@@ -1,5 +1,6 @@
 ---
 title: Involuntary reboot log #8
+tags: blog
 ---
 
 You could argue that this one is my fault but I like to blame it on the Mac OS X dependence on NetInfo for user information.

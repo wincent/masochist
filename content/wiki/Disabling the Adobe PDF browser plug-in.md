@@ -1,5 +1,5 @@
 ---
-tags: safari
+tags: safari wiki
 ---
 
 [Apple](/wiki/Apple)'s [Safari](/wiki/Safari) comes with lightning-fast built-in [PDF](/wiki/PDF) viewing support. If you ever make the mistake of installing Adobe's Acrobat software (in free or paid forms) then you'll find that Adobe has installed a bloated, slow, beachballing, almost unusable plug-in of its own which overrides the excellent built-in one.

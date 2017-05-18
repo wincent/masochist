@@ -1,5 +1,6 @@
 ---
 title: More than I ever wanted to know about Apple's Objective-C runtime
+tags: blog
 ---
 
 Some time ago I wrote about [adding mock objects to WOTest](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/mock_objects_in.php). Over the last couple of days I set about trying to improve them and make them more elegant and flexible. In the process I've learnt a lot of about message dispatch system in Apple's Objective-C runtime. Too much. Read on if you'd like to see the story of a journey from a position of relative ignorance to not-quite-as-much ignorance.

@@ -1,5 +1,5 @@
 ---
-tags: synergy last.fm
+tags: synergy last.fm wiki
 ---
 
 To turn it on, quit Synergy and do this in the Terminal:

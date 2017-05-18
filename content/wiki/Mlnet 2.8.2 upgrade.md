@@ -1,5 +1,5 @@
 ---
-tags: mlnet
+tags: mlnet wiki
 ---
 
 I first tried to make a static build and failed
@@ -26,4 +26,3 @@ The static build does work:
 -   Release notes: <https://sourceforge.net/project/shownotes.php?group_id=156414&release_id=467345>
 -   Changelog: <http://mldonkey.sourceforge.net/News>
 -   MLDonkey files: <https://sourceforge.net/project/showfiles.php?group_id=156414>
-

@@ -1,6 +1,6 @@
 ---
 title: The Twitter business model
-tags: 
+tags: blog
 ---
 
 [According](http://www.theregister.co.uk/2009/02/14/web20rhea_funding/) to [The Register](http://theregister.co.uk), Twitter's business model is basically "selling themselves to Google".

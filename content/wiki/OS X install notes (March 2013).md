@@ -1,5 +1,5 @@
 ---
-tags: homebrew os.x
+tags: homebrew os.x wiki
 cache_breaker: 1
 ---
 
@@ -120,4 +120,3 @@ $ ./bootstrap.rb
 -   iTerm:
     -   bind `Option-Left` to send the `\033B` escape sequence (move back one word)
     -   bind `Option-Right` to send the `\033f` escape sequence (move forward one word)
-

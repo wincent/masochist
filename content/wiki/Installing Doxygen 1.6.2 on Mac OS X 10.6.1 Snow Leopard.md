@@ -1,5 +1,5 @@
 ---
-tags: doxygen snow.leopard
+tags: doxygen snow.leopard wiki
 ---
 
 ```shell
@@ -18,4 +18,3 @@ $ unzip doxygen_manual-1.6.2.pdf.zip
 
 -   [Doxygen](/wiki/Doxygen) change log: <http://www.stack.nl/~dimitri/doxygen/changelog.html>
 -   [Installing GraphViz 2.26.0 on Mac OS X 10.6.1 Snow Leopard](/wiki/Installing_GraphViz_2.26.0_on_Mac_OS_X_10.6.1_Snow_Leopard)
-

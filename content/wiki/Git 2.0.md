@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Echoing the official release notes here for posterity:

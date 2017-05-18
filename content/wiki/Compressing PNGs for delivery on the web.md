@@ -1,5 +1,5 @@
 ---
-tags: png optipng pngquant
+tags: png optipng pngquant wiki
 cache_breaker: 1
 ---
 

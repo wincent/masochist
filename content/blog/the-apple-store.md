@@ -1,5 +1,6 @@
 ---
 title: The Apple Store
+tags: blog
 ---
 
 Just saw [this post](http://www.zeldman.com/2007/09/27/something-new-at-apple-store/) (via [Gruber](http://daringfireball.net/)):

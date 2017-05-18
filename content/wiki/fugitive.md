@@ -1,6 +1,6 @@
 ---
 redirect: [[fugitive.vim]]
-tags: 
+tags: wiki
 ---
 
 

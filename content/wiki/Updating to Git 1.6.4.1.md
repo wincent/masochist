@@ -1,5 +1,5 @@
 ---
-tags: leopard git updates
+tags: leopard git updates wiki
 ---
 
 # Local update

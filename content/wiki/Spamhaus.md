@@ -1,5 +1,5 @@
 ---
-tags: email
+tags: email wiki
 ---
 
 [Spamhaus](/wiki/Spamhaus) is one of the most reputable and accurate [DNS-based blacklists](/wiki/DNS-based_blacklists) used to [combat spam](/wiki/combat_spam).
@@ -10,4 +10,3 @@ Their [SBL Advisory](http://www.spamhaus.org/sbl/index.lasso) is "free for indiv
 
 -   Official website: <http://www.spamhaus.org/>
 -   "Guide to Effective Spam Filtering for Networks": <http://www.spamhaus.org/effective_filtering.html>
-

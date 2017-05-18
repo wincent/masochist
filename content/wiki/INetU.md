@@ -1,5 +1,5 @@
 ---
-tags: inetu
+tags: inetu wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ This website was hosting with [INetU](/wiki/INetU) from late February 2008 throu
 ## See also
 
 -   Official website: <http://inetu.net/>
-

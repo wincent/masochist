@@ -1,5 +1,5 @@
 ---
-tags: ragel
+tags: ragel wiki
 ---
 
 [Adrian Thurston](/wiki/Adrian_Thurston) is the mastermind behind [Ragel](/wiki/Ragel).
@@ -7,4 +7,3 @@ tags: ragel
 ## See also
 
 -   Official homepage: <http://www.cs.queensu.ca/home/thurston/>
-

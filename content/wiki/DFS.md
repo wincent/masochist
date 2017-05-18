@@ -1,6 +1,6 @@
 ---
 redirect: [[Depth First Search]]
-tags: 
+tags: wiki
 ---
 
 

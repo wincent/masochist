@@ -1,6 +1,6 @@
 ---
 title: Synergy 6.0a3 release
-tags: synergy releases mavericks
+tags: synergy releases mavericks blog
 ---
 
 [Synergy](/wiki/Synergy) version 6.0a3 is out, containing a fix for a crash ([bug \#2173](/issues/2173)).

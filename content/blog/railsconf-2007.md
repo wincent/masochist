@@ -1,5 +1,6 @@
 ---
 title: RailsConf 2007
+tags: blog
 ---
 
 I've been a little surprised to see so little coverage of [RailsConf](http://conferences.oreillynet.com/rails/). There's be no hint of activity on the [official Rails weblog](http://weblog.rubyonrails.org/), and if I hadn't been reminded about it by a mention on [railscasts.com](http://railscasts.com) I would have entirely forgotten that it was taking place.

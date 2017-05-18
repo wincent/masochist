@@ -1,5 +1,5 @@
 ---
-tags: ssl
+tags: ssl wiki
 cache_breaker: 1
 ---
 

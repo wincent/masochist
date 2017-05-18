@@ -1,5 +1,5 @@
 ---
-tags: mlnet
+tags: mlnet wiki
 ---
 
 # Static build attempt
@@ -89,4 +89,3 @@ At this point I gave up and just did a non-static build.
 # See also
 
 -   Release notes: <https://sourceforge.net/project/shownotes.php?group_id=156414&release_id=467566>
-

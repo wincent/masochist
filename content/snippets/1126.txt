@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.156
-tags: site updates
+tags: site updates snippets
 ---
+
 65903cb Improve appearance of issue pages
 0d8be05 Trim some fat from wiki index
 971c7ff Make <code> styling more obvious

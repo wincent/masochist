@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.12 released
-tags: releases command.t
+tags: releases command.t blog
 ---
 
 I just released [Command-T](/wiki/Command-T) version 1.12. It contains some fixes and minor feature additions. Quoting from [the docs](https://github.com/wincent/command-t/blob/master/doc/command-t.txt):

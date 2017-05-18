@@ -1,6 +1,6 @@
 ---
 redirect: [[ISP]]
-tags: 
+tags: wiki
 ---
 
 

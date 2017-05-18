@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Notes from this excellent post over at the WebKit log
@@ -28,4 +28,3 @@ In short, "HTML is probably what you want".
 -   "Use an HTML4 doctype declaration, ideally one that will trigger 'standards mode' in web browsers."
 -   "Serve your content with the text/html MIME type"
 -   "[Validate](http://validator.w3.org/) your content as HTML, not as XHTML"
-

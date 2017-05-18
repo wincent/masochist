@@ -1,6 +1,6 @@
 ---
 redirect: [[Watir]]
-tags: 
+tags: wiki
 ---
 
 

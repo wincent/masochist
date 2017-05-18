@@ -1,5 +1,5 @@
 ---
-tags: rr
+tags: rr wiki
 cache_breaker: 1
 ---
 
@@ -203,4 +203,3 @@ Whatever the cause, the lesson is clear: make sure your specs fail *first*, othe
 -   [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
 -   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
 -   [Steak cheatsheet](/wiki/Steak_cheatsheet)
-

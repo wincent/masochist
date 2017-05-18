@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.25)
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ Just deployed some updates to the site ([full change list here](/snippets/9)). M
 
 -   \[Fix\]: Restore missing submit button in new topic form
 -   \[Enhancement\]: Use [CSS](/wiki/CSS) to highlight "active fragment" if URL includes a fragment (for example, when linking to [a comment](/comments/6341), the comment gets highlighted)
-

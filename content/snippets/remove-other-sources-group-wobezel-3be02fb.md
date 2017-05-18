@@ -1,5 +1,6 @@
 ---
 title: Remove "Other Sources" group (WOBezel, 3be02fb)
+tags: snippets
 ---
 
 Remove the unused "Other Sources" group from the Xcode project.

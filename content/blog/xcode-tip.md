@@ -1,5 +1,6 @@
 ---
 title: Xcode tip
+tags: blog
 ---
 
 I've always had "Continue building after errors" turned off in Xcode for the same reason that I have warnings turned on in the first place: namely, I don't want to miss seeing any problems (or potential problems) in my code.

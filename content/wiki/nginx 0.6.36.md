@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
 # Release notes
@@ -55,4 +55,3 @@ I am not sure whether I will bother with this update, seeing as none of the feat
 # See also
 
 -   [try\_files documentation](http://wiki.nginx.org/NginxHttpMainModule#try_files)
-

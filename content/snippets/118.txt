@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.76
-tags: site updates
+tags: site updates snippets
 ---
+
 a6e361a Make page background fixed

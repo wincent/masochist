@@ -1,6 +1,6 @@
 ---
 title: RubyWatchman released
-tags: ruby watchman ruby.watchman
+tags: ruby watchman ruby.watchman blog
 cache_breaker: 1
 ---
 

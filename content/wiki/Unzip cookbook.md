@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Checking/listing archive contents
@@ -9,4 +9,3 @@ tags:
 # See also
 
 -   [tar cookbook](/wiki/tar_cookbook)
-

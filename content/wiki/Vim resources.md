@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -33,4 +33,3 @@ cache_breaker: 1
 -   <http://blog.interlinked.org/tutorials/vim_tutorial.html>: basic tutorial with diagrams
 -   <http://newbiedoc.sourceforge.net/text_editing/vim.html.en>: another tutorial
 -   "Scripting the Vim editor, Part 1: Variables, values, and expressions": <http://www.ibm.com/developerworks/linux/library/l-vim-script-1/index.html>
-

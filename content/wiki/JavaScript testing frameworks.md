@@ -1,5 +1,5 @@
 ---
-tags: testing javascript
+tags: testing javascript wiki
 ---
 
 # "[BDD](/wiki/BDD)" testing frameworks
@@ -13,4 +13,3 @@ tags: testing javascript
 # See also
 
 -   All items tagged with "[javascript](/tags/javascript)" and "[testing](/tags/testing)": <https://wincent.com/tags/search?q=javascript+testing>
-

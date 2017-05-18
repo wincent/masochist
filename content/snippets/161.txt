@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.104
-tags: site updates
+tags: site updates snippets
 ---
+
 f2c72a8 Mark session cookie as secure

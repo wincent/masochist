@@ -1,5 +1,5 @@
 ---
-tags: cocoa
+tags: cocoa wiki
 ---
 
 When I recently wrote a [weblog](/wiki/weblog) [entry](http://wincent.com/a/about/wincent/weblog/archives/2007/10/appkit_vs_found.php) about the difficulty of working with NSView subclasses Gus Mueller of [Flying Meat](http://flyingmeat.com/) was kind enough to send [this link](http://borkware.com/quickies/single?id=205) to me.

@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.17)
-tags: site
+tags: site blog
 ---
 
 Just deployed a minor site update, basically just to roll out the minor enhancement in [ticket \#1506](/issues/1506). For changelog appears below:

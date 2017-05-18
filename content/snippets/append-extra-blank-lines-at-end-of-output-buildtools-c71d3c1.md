@@ -1,5 +1,6 @@
 ---
 title: Append extra blank lines at end of output (buildtools, c71d3c1)
+tags: snippets
 ---
 
 When emitting release notes for a project that is spread out across multiple repositories we may end up invoking the ReleaseNotes.sh script several time, successively appending more and more output to the generated notes.

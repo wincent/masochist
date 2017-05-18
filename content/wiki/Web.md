@@ -1,6 +1,6 @@
 ---
 redirect: [[World Wide Web]]
-tags: 
+tags: wiki
 ---
 
 

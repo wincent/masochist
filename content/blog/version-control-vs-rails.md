@@ -1,5 +1,6 @@
 ---
 title: Version Control vs Rails
+tags: blog
 ---
 
 Version Control wins.

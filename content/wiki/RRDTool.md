@@ -1,5 +1,5 @@
 ---
-tags: network.monitoring rrdtool
+tags: network.monitoring rrdtool wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 ## Other sites
 
 -   Nice introduction to cooking up a script for network traffic monitoring using RRDTool: <http://martybugs.net/linux/rrdtool/traffic.cgi>
-

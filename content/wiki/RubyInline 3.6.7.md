@@ -1,5 +1,5 @@
 ---
-tags: rubyinline
+tags: rubyinline wiki
 cache_breaker: 1
 ---
 
@@ -21,4 +21,3 @@ cache_breaker: 1
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=20368>
 -   [Upgrading to RubyInline 3.6.7 on Mac OS X 10.5.2 Leopard](/wiki/Upgrading_to_RubyInline_3.6.7_on_Mac_OS_X_10.5.2_Leopard)
-

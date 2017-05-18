@@ -1,6 +1,6 @@
 ---
 redirect: [[kernel panic]]
-tags: 
+tags: wiki
 ---
 
 

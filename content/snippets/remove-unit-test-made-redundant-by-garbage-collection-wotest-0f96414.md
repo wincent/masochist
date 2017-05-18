@@ -1,5 +1,6 @@
 ---
 title: Remove unit test made redundant by garbage collection (WOTest, 0f96414)
+tags: snippets
 ---
 
 One of the unit tests expected an exception to be raised when working with objects that don't respond to the retain and release methods, but in a garbage collected world these messages become no-ops (and in fact I believe that the compiler literally optimizes them away to nothing).

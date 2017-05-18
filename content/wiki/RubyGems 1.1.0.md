@@ -1,5 +1,5 @@
 ---
-tags: rubygems
+tags: rubygems wiki
 cache_breaker: 1
 ---
 
@@ -9,4 +9,3 @@ cache_breaker: 1
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=20667>
 -   [Upgrading to RubyGems 1.1.0](/wiki/Upgrading_to_RubyGems_1.1.0)
-

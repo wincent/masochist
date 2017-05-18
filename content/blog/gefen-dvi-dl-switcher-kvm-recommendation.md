@@ -1,5 +1,6 @@
 ---
 title: Gefen DVI DL Switcher KVM recommendation
+tags: blog
 ---
 
 I just got hold of a Gefen [DVI DL Switcher](http://www.gefen.com/kvm/product.jsp?prod_id=2950) KVM today and wanted to post a recommendation. Gefen definitely don't make the cheapest KVMs out there but they could well make the best ones.

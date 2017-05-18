@@ -1,5 +1,6 @@
 ---
 title: Synergy (revision c7eb0af)
+tags: snippets
 ---
 
 -   *Download name*: Synergy3.5a2+(c7eb0af).zip

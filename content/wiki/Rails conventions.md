@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 [Rails](/wiki/Rails) argues for "convention over configuration" to minimize time spent by programmers worrying about menial details and maximize time spent on substantive problem solving.
@@ -35,4 +35,3 @@ Rails will expect a single table named `furniture` with a column named `type` th
 # View conventions
 
 -   If you create a file at `app/views/layouts/application.rhtml` it will automatically be used as a wrapper around all other layouts.
-

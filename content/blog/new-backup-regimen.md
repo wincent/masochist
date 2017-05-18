@@ -1,5 +1,6 @@
 ---
 title: New backup regimen
+tags: blog
 ---
 
 I've escaped from yesterday's [sudden hard disk failure](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/involuntary_reb_12.php) remarkably lightly, losing very little data and some time; it's taken me just over 24 hours to restore and get everything back into working order. Another reminder that [ZFS](http://www.wincent.com/knowledge-base/ZFS) can't come soon enough; fortunately the lesson that you can't really entrust your data to an HFS+ volume was much less painful compared to [last time](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php) (where I wasted literally days trying to get out of kernel panic hell, and eventually decided to sell my machine and migrate to the humble iMac).

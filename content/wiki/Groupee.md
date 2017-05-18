@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads ubb
+tags: ubb.threads ubb wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 ## Official site
 
 -   <http://groupee.com/> (formerly <http://infopop.com/>)
-

@@ -1,8 +1,7 @@
 ---
-tags: fedora
+tags: fedora wiki
 ---
 
 # Official site
 
 -   <http://fedoraproject.org/>
-

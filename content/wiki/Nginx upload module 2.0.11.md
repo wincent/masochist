@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
 From the official announcement published to the [nginx](/wiki/nginx) mailing list:

@@ -1,5 +1,5 @@
 ---
-tags: rspec rails
+tags: rspec rails wiki
 cache_breaker: 1
 ---
 
@@ -64,4 +64,3 @@ Using [mocks](/wiki/mocks) in [controller](/wiki/controller) [specs](/wiki/specs
 
 -   "Testing: Replace Mock with Stub": <http://blog.jayfields.com/2007/05/testing-replace-mock-with-stub.html>
 -   [David Chelimsky](/wiki/David_Chelimsky) on when to [mock](/wiki/mock) and when to [stub](/wiki/stub): <http://blog.davidchelimsky.net/articles/2006/11/09/tutorial-rspec-stubs-and-mocks>
-

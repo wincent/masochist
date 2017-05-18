@@ -1,5 +1,5 @@
 ---
-tags: s3 arq
+tags: s3 arq wiki
 cache_breaker: 1
 ---
 
@@ -11,4 +11,3 @@ The developer definitely seems to have the right idea: he "stole" the design for
 
 -   Official site: <http://www.haystacksoftware.com/arq/index.php>
 -   [Open source](/wiki/Open_source) restore tool: <http://sreitshamer.github.com/arq_restore/>
-

@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 In this article I describe a couple of the alternatives to [mkmf](/wiki/mkmf) that I learnt about while exploring some questions about [mkmf](/wiki/mkmf). The questions were:
@@ -24,4 +24,3 @@ The author has stated that he'd like to see [mkrf](/wiki/mkrf) absorbed into [Ra
 -   Official project page: <http://mkmf2.rubyforge.org/>
 -   [RDoc](/wiki/RDoc) documentation: <http://mkmf2.rubyforge.org/doc/>
 -   [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/mkmf2/>
-

@@ -1,5 +1,5 @@
 ---
-tags: ragel updates
+tags: ragel updates wiki
 cache_breaker: 1
 ---
 

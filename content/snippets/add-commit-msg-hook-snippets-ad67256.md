@@ -1,5 +1,6 @@
 ---
 title: Add commit-msg hook (snippets, ad67256)
+tags: snippets
 ---
 
 Very simple hook that does three things:

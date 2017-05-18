@@ -1,6 +1,6 @@
 ---
 redirect: [[Terminal]]
-tags: 
+tags: wiki
 ---
 
 

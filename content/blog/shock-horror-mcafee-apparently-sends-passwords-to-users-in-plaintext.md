@@ -1,6 +1,6 @@
 ---
 title: Shock/horror: "McAfee apparently sends passwords to users in plaintext"
-tags: rant
+tags: rant blog
 ---
 
 Just saw [this story](http://blog.dreid.org/2009/04/mcafee-apparently-sends-passwords-to.html) on [Reddit](http://www.reddit.com/r/programming/), which describes how "a so-called security company is storing and transmitting their customer's passwords in plaintext". The story cites an example email that contains something like this:

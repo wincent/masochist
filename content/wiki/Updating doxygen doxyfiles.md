@@ -1,5 +1,5 @@
 ---
-tags: doxygen
+tags: doxygen wiki
 ---
 
 To generate a new template without comments:

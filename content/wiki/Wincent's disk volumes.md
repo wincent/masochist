@@ -1,5 +1,5 @@
 ---
-tags: personal
+tags: personal wiki
 ---
 
 # Current layout

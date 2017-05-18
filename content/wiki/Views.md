@@ -1,6 +1,6 @@
 ---
 redirect: [[View]]
-tags: 
+tags: wiki
 ---
 
 

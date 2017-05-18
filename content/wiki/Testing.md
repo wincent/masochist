@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 # Types of testing
@@ -12,4 +12,3 @@ tags: development
 -   [Behaviour-Driven Development](/wiki/Behaviour-Driven_Development)
 -   [RSpec](/wiki/RSpec)
 -   [WOTest](/wiki/WOTest)
-

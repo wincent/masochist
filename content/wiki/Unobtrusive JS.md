@@ -1,6 +1,6 @@
 ---
 redirect: [[Unobtrusive JavaScript]]
-tags: 
+tags: wiki
 ---
 
 

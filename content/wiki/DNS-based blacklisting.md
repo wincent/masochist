@@ -1,5 +1,5 @@
 ---
-tags: email sendmail
+tags: email sendmail wiki
 cache_breaker: 1
 ---
 
@@ -49,4 +49,3 @@ For other efficacy statistics see [combatting spam](/wiki/combatting_spam).
 -   "postmaster.rfc-ignorant.org listing policy": <http://rfc-ignorant.org/policy-postmaster.php>
 -   <http://www.spamhaus.org/>
 -   List of DNS-based blacklists: <http://spamlinks.net/filter-dnsbl-lists.htm>
-

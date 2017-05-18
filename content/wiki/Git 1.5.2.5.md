@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 [Git 1.5.2.5](/wiki/Git_1.5.2.5) was released on 16 August 2007.
@@ -42,4 +42,3 @@ tags: git
 -   [Upgrading to Git 1.5.2.5](/wiki/Upgrading_to_Git_1.5.2.5)
 -   Tag for 1.5.2.5: <http://repo.or.cz/w/git.git?a=tag;h=43738ab9ed77af9f2427c010147e5215068d5af6>
 -   Release notes for 1.5.2.5: <http://repo.or.cz/w/git.git?a=blob;f=Documentation/RelNotes-1.5.2.5.txt;h=e8281c72a0b997e90cba2c9a2c4153f8607a7b76;hb=b13ef4916ac5a25cc5897f85ba0b4c5953cff609>
-

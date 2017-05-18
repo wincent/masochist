@@ -1,5 +1,5 @@
 ---
-tags: libevent memcached
+tags: libevent memcached wiki
 cache_breaker: 1
 ---
 
@@ -72,4 +72,3 @@ So the final installation incantation was:
 # See also
 
 -   [Testing memcached with telnet](/wiki/Testing_memcached_with_telnet)
-

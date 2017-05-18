@@ -1,7 +1,7 @@
 ---
 title: Memory management tips under Garbage Collection
+tags: blog
 ---
-
 
 ### The `CFRelease` function
 

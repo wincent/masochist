@@ -1,5 +1,6 @@
 ---
 title: Mighty Mouse design flaws
+tags: blog
 ---
 
 Since switching to the new iMac I've been using [the Apple Mighty Mouse](http://www.apple.com/mightymouse/). Things I like about it: looks great; lightweight; the scroll ball is brilliant.

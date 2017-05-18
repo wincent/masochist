@@ -1,6 +1,6 @@
 ---
 title: Terminal vs iTerm
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.35
-tags: site
+tags: site snippets
 ---
+
 7e0e77c Bundle update (rspec, database_cleaner, factory_girl)
 10c4529 Make sure autotest uses Bundler
 a615b26 Update to Rails 3.0.4 from 3.0.4.rc1

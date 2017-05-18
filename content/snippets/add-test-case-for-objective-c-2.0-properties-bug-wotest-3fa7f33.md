@@ -1,5 +1,6 @@
 ---
 title: Add test case for Objective-C 2.0 properties bug (WOTest, 3fa7f33)
+tags: snippets
 ---
 
 In a previous commit (f2d45e3) I noted what appears to be a bug in either the Objective-C 2.0 properties implementation (spurious compiler warnings) or in its documentation.

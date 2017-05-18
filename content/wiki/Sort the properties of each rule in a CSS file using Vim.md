@@ -1,8 +1,8 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
-    :g/{/ .+1,/}/-1 sort
+:g/{/ .+1,/}/-1 sort
 
 Explanation:
 

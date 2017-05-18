@@ -1,6 +1,6 @@
 ---
 title: Site updates
-tags: 
+tags: blog
 ---
 
 I just deployed a fairly big update to the site, the first one in about six months. Lots of things changed at all levels of the app (Rails 4.0, the beginnings of a responsive design etc).

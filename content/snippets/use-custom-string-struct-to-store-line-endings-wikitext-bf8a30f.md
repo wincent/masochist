@@ -1,5 +1,6 @@
 ---
 title: Use custom string struct to store line endings (wikitext, bf8a30f)
+tags: snippets
 ---
 
 This shaves off a sliver of time on longer inputs because it allows us to replace a number of calls to rb\_str\_append with the more efficient rb\_str\_cat.

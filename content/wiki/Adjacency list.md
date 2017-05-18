@@ -1,5 +1,5 @@
 ---
-tags: data.structures graph
+tags: data.structures graph wiki
 cache_breaker: 1
 ---
 
@@ -20,4 +20,3 @@ Edges may be directed (in which case the end points are ordered) or undirected (
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [adjacency lists](/wiki/adjacency_lists): <http://en.wikipedia.org/wiki/Adjacency_list>
-

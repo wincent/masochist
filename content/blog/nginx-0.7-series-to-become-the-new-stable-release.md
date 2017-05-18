@@ -1,6 +1,6 @@
 ---
 title: nginx 0.7 series to become the new "stable" release
-tags: nginx
+tags: nginx blog
 ---
 
 Igor Sysoev, the maintainer of [nginx](/wiki/nginx), has [just posted](http://article.gmane.org/gmane.comp.web.nginx.english/12430) to the mailing list:

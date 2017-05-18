@@ -1,8 +1,8 @@
 ---
-tags: rspec rcov
+tags: rspec rcov wiki
 ---
 
-    Spec::Rake::SpecTask.new("spec:rcov") do |t|
+Spec::Rake::SpecTask.new("spec:rcov") do |t|
       t.spec_files = FileList["spec/**/*_spec.rb"]
       t.rcov = true
       t.rcov_opts = ['--exclude', "spec"] # <-- this is the critical line

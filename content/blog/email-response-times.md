@@ -1,5 +1,6 @@
 ---
 title: Email response times
+tags: blog
 ---
 
 I'm currently switching ISPs so at some point this month I expect my Internet access will be cut and I am not sure when the new provider will become active. Today I sent a letter to my current provider asking them to close my account and I also lodged my application with the new provider. So I am really not sure when the changeover will take place but I expect it will be within the next 30 days. I do not know how much downtime will be involved so please be aware that my email response time might not be as speedy as usual, as I will have to make trips outside the office with my laptop to get access. The automated systems (for things like [lost license code retrieval](https://secure.wincent.com/a/support/registration/), [purchasing](https://secure.wincent.com/a/store/), [bug reporting](http://bugs.wincent.com/) and so forth) will remain fully operational. Thanks for your patience and understanding.

@@ -1,5 +1,6 @@
 ---
 title: Comments on weblogs
+tags: blog
 ---
 
 As the question of comments on weblogs has [come up](http://www.wincent.com/a/about/wincent/weblog/archives/2007/06/wordpress_follo.php) I thought I'd post an explanation of why this weblog doesn't have comments.

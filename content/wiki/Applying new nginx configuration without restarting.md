@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 cache_breaker: 1
 ---
 
@@ -24,4 +24,3 @@ Alternatively, you can instruct nginx to reload it's configuration file using th
 # See also
 
 -   <http://wiki.nginx.org/NginxCommandLine>
-

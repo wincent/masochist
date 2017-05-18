@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.20)
-tags: site
+tags: site blog
 ---
 
 Another round of tweaks were just applied to the server. Almost exclusively back-end stuff completely invisible to the user, with a couple of tiny exceptions: the alignment of checkboxes in forms in some browsers (Chrome on Windows, Firefox) has been fixed, as have some broken links on the [404 page](/404.html).

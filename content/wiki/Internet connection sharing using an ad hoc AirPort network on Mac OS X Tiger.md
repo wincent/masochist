@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Just a quick tip for something that may be non-obvious: **do not** try to set up Internet connection sharing in the following order:

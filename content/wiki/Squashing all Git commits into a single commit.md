@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -28,4 +28,3 @@ In both cases you'll need to set up your new remote (you don't want to push to t
 # Alernatives
 
 -   See "[Going public with previously proprietary code](/wiki/Going_public_with_previously_proprietary_code)"
-

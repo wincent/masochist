@@ -1,6 +1,6 @@
 ---
 title: On the hideousness of AppleScript
-tags: applescript
+tags: applescript blog
 cache_breaker: 1
 ---
 

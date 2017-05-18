@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 New in Ruby 2.0, this is used to capture all keyword arguments, or use a hash as keyword arguments.

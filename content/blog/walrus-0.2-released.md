@@ -1,6 +1,6 @@
 ---
 title: Walrus 0.2 released
-tags: walrus releases
+tags: walrus releases blog
 cache_breaker: 1
 ---
 

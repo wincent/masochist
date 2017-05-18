@@ -1,5 +1,6 @@
 ---
 title: WinSwitch 3.0 released
+tags: blog
 ---
 
 I am very pleased to announce the immediate availability of [WinSwitch](http://www.wincent.com/a/products/winswitch/) version 3.0. This is a major update to the popular replacement for Apple's Fast User Switching menu which packs in a large number of [great new features and fixes all known issues](http://www.wincent.com/a/products/winswitch/history/). Highlights that were introduced in the beta include a brand [new preferences panel](http://www.wincent.com/a/products/winswitch/screenshots/) and the ability to set a customizable hot key to take you back to the login window. See [the full list of changes](http://www.wincent.com/a/products/winswitch/history/).

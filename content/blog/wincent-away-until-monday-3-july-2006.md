@@ -1,5 +1,6 @@
 ---
 title: Wincent away until Monday (3 July 2006)
+tags: blog
 ---
 
 I will be travelling starting later today (Wednesday 28 June 2006) and ending Monday 3 July 2006 and will not have access to email. There will therefore be some delay before replying if you email me during that period.

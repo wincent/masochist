@@ -1,5 +1,6 @@
 ---
 title: Wincent dot-co
+tags: blog
 ---
 
 By far the most common typo I make while trying to get to wincent.com is "wincent.co". I'd love to have it as a domain name, not only because of the number of mistakes I make, but because I think it sounds cool.

@@ -1,5 +1,6 @@
 ---
 title: Bump version number (Wincent Strings Utility, 6715980)
+tags: snippets
 ---
 
 Bump version number (1.1+) in between releases.

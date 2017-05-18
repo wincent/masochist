@@ -1,6 +1,6 @@
 ---
 title: Site maintenance
-tags: site updates
+tags: site updates blog
 cache_breaker: 1
 ---
 

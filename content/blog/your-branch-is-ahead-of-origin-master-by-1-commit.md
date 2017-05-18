@@ -1,6 +1,6 @@
 ---
 title: Your branch is ahead of 'origin/master' by 1 commit
-tags: git
+tags: git blog
 cache_breaker: 1
 ---
 

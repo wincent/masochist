@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.37
-tags: site updates
+tags: site updates snippets
 ---
+
 e1ce564 Initial try at updating to Rails 3.1.0.beta1
 f90d4ba Note fruits of efforts to update mysql2 gem
 b678d47 Update mysql2 gem

@@ -1,5 +1,5 @@
 ---
-tags: objective.c
+tags: objective.c wiki
 cache_breaker: 1
 ---
 

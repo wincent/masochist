@@ -1,5 +1,5 @@
 ---
-tags: algorithms
+tags: algorithms wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ A [greedy algorithm](/wiki/greedy_algorithm) is one that seeks to solve a proble
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [greedy algorithms](/wiki/greedy_algorithms): <http://en.wikipedia.org/wiki/Greedy_algorithm>
-

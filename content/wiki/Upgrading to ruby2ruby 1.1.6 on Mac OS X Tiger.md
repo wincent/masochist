@@ -1,5 +1,5 @@
 ---
-tags: updates
+tags: updates wiki
 cache_breaker: 1
 ---
 

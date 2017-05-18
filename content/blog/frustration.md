@@ -1,5 +1,6 @@
 ---
 title: Frustration
+tags: blog
 ---
 
 Have just spent about six hours trying to track down a bug in my code that was causing a crash in [Synergy Advance](http://synergyadvance.com/). Turns out that it wasn't a bug in my code at all, rather it was a misunderstanding of the way `NSConnection` works. I was using an `NSConnection` to communicate between threads, passing a pointer to an `NSInvocation` from one thread to another. The receiving thread was testing for pointer equality prompting my assertion to fail. The reason I spent so much time before finding the cause is that I assumed it was an error in my code; it wasn't until the very end that I decided to test my assumptions about the way Cocoa works...

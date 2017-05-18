@@ -1,5 +1,5 @@
 ---
-tags: hoe
+tags: hoe wiki
 ---
 
 [hoe 1.2.1](/wiki/hoe_1.2.1) was released on 21 May 2007.
@@ -21,4 +21,3 @@ tags: hoe
 # See also
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?group_id=1513&release_id=11840>
-

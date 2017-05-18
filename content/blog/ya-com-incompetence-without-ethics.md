@@ -1,5 +1,6 @@
 ---
 title: Ya.com: incompetence without ethics
+tags: blog
 ---
 
 Ya.com seems to me to be one of the most unethical and incompetent Internet service providers in Spain and perhaps the world. Add the unpleasantness and difficulty of dealing with them to the mix and you have a recipe for a foul-tasting dish of broadband. My advice: steer as far clear of Ya.com as you can.

@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 [RSpec 1.0.4](/wiki/RSpec_1.0.4) is the new version of [RSpec](/wiki/RSpec) released on 29 May 2007. My installation notes can be found in "[Upgrading to RSpec 1.0.4 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.4_on_Mac_OS_X_Tiger)".
@@ -18,4 +18,3 @@ tags: rspec
 # See also
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=12037>
-

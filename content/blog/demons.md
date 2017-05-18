@@ -2,6 +2,7 @@
 title: Conquering my demons
 fb: https://www.facebook.com/glh/posts/10153386063386307
 twitter: https://twitter.com/wincent/status/732998780480454659
+tags: blog
 ---
 
 Three decades into my computer programming life I am still learning new things about how to use technology to solve problems. That's exciting. It never stops being rewarding. But this post isn't about that kind of learning. It's about learning about myself. That still happens too, even after all this time.

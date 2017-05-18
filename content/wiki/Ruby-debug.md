@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug
+tags: ruby.debug wiki
 ---
 
 From the [ruby-debug](/wiki/ruby-debug) \[<http://rubyforge.org/viewvc/trunk/README?revision=1&root=ruby-debug&view=markup>|`README` file\]:
@@ -10,4 +10,3 @@ From the [ruby-debug](/wiki/ruby-debug) \[<http://rubyforge.org/viewvc/trunk/REA
 
 -   [ruby-debug](/wiki/ruby-debug) project page: <http://rubyforge.org/projects/ruby-debug/>
 -   "Post-mortem debugging" with [ruby-debug](/wiki/ruby-debug): <http://www.datanoise.com/articles/2006/12/20/post-mortem-debugging>
-

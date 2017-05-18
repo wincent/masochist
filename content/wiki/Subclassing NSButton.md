@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 1.  Create `NSButton` subclass

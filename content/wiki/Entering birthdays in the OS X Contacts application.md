@@ -1,5 +1,5 @@
 ---
-tags: os.x contacts
+tags: os.x contacts wiki
 cache_breaker: 1
 ---
 

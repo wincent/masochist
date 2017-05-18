@@ -1,5 +1,5 @@
 ---
-tags: dike
+tags: dike wiki
 ---
 
 [dike](/wiki/dike) is a "a simple memory leak detector for ruby with preconfigured rails hooks".
@@ -7,4 +7,3 @@ tags: dike
 # See also
 
 -   <http://www.codeforpeople.com/lib/ruby/dike/>
-

@@ -1,5 +1,5 @@
 ---
-tags: haml updates
+tags: haml updates wiki
 cache_breaker: 1
 ---
 

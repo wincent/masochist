@@ -1,6 +1,6 @@
 ---
 title: Snow Leopard product compatibility
-tags: snow.leopard
+tags: snow.leopard blog
 cache_breaker: 1
 ---
 
@@ -50,4 +50,3 @@ I am currently working on making sure that all of my products work properly with
 
 -   Last status update: 28 August 2009.
 -   Works but making tweaks for [Snow Leopard](/wiki/Snow_Leopard).
-

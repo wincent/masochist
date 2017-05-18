@@ -1,5 +1,5 @@
 ---
-tags: find grep
+tags: find grep wiki
 ---
 
 While finding files containing a string is easy with `grep`, it is non-obvious how to do the opposite and list files which do *not* contain a given string.

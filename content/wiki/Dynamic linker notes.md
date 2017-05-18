@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Seeing which dynamic libraries get loaded

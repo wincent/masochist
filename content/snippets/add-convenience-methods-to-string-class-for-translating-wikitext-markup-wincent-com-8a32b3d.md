@@ -1,5 +1,6 @@
 ---
 title: Add convenience methods to String class for translating wikitext markup (wincent.com, 8a32b3d)
+tags: snippets
 ---
 
 I was originally planning on storing a copy of the wikitext source in the database and also a copy of the generated HTML too. But it turns out that the wikitext translator is even faster than I had hoped so I can just store the wikitext markup and convert it into HTML on the fly.

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.34
-tags: site
+tags: site snippets
 ---
+
 ec4cff0 Flush snippets cache when comment added or otherwise modified
 44cfed2 Teach #nested_comment_path to handle comments on snippets
 56b710e Teach #link_to_parent helper about snippets

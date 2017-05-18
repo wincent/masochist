@@ -1,5 +1,6 @@
 ---
 title: WOQueueConsumer
+tags: blog
 ---
 
 So the other day I wrote `WOQueue`, a thread-safe, multi-processor-aware FIFO (first-in-first-out) queue class. Today I've been working on `WOQueueConsumer`, which is designed to eliminate some of the repetitive work you would otherwise have to do every time you make use of such a queue.

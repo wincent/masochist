@@ -1,5 +1,5 @@
 ---
-tags: rails javascript jquery
+tags: rails javascript jquery wiki
 ---
 
 A compatibility layer for using [JQuery](/wiki/JQuery) as a drop-in replacement for [Prototype](/wiki/Prototype) in [Rails](/wiki/Rails) applications.
@@ -7,4 +7,3 @@ A compatibility layer for using [JQuery](/wiki/JQuery) as a drop-in replacement 
 # Links
 
 -   Official site: <http://ennerchi.com/projects/jrails>
-

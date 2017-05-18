@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [GNU](/wiki/GNU) is a recursive acronym which stands for [GNU's Not UNIX](/wiki/GNU%27s_Not_UNIX).

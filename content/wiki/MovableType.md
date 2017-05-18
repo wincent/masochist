@@ -1,5 +1,5 @@
 ---
-tags: movabletype
+tags: movabletype wiki
 ---
 
 [MovableType](/wiki/MovableType) is a weblogging system principally written in [Perl](/wiki/Perl).

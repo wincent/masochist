@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 Being relatively new to [Ruby](/wiki/Ruby) I am constantly forgetting the differences between the different kinds of equality comparisons, so here is a quick "cheat sheet":

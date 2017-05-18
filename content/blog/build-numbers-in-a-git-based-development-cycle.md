@@ -1,5 +1,6 @@
 ---
 title: Build numbers in a Git-based development cycle
+tags: blog
 ---
 
 Back when I exclusively used [Subversion](http://www.wincent.com/knowledge-base/Subversion) as my [version control system](http://www.wincent.com/knowledge-base/version%20control%20system) of choice I used the Subversion "revision number" as a basis for my build number. This was possible and desirable because Subversion revision numbers have a number of useful properties: they are uniformly increasing integers, they only increment when there are actual changes to the code base (in other words, merely rebuilding is not enough to increment the numbers), and the centralized client/server model used by Subversion guarantees that those build numbers are guaranteed unique and a definitive indication of the *exact* version of the source code used to construct a given build.

@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 Turn off viminfo-saving and then clear the "jumps" section of the viminfo file:

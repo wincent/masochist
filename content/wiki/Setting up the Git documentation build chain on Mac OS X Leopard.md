@@ -1,5 +1,5 @@
 ---
-tags: git asciidoc docs xmlto
+tags: git asciidoc docs xmlto wiki
 cache_breaker: 1
 ---
 
@@ -405,4 +405,3 @@ And we can try building the Git documentation again:
 # Alternatives to building the documentation manually
 
 -   [Installing pre-built Git documentation from the Git repo](/wiki/Installing_pre-built_Git_documentation_from_the_Git_repo)
-

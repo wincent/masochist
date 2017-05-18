@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.33
-tags: site
+tags: site snippets
 ---
+
 ecbdcb3 Update to Rails 3.0.4.rc1
 404af8e Revert workaround for Rails 3.0.3 routing bug
 5605ffe Add plain text format for snippets#show

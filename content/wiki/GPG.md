@@ -1,5 +1,5 @@
 ---
-tags: gpg
+tags: gpg wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 # Official site
 
 -   <http://www.gnupg.org/>
-

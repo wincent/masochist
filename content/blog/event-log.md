@@ -1,5 +1,6 @@
 ---
 title: Event log
+tags: blog
 ---
 
 I'll be continuing these entries in the "mini-log" on the left hand side of [my weblog](http://colaiuta.net/).

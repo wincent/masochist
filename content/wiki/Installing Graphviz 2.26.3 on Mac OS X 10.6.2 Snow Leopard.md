@@ -1,5 +1,5 @@
 ---
-tags: graphviz snow.leopard
+tags: graphviz snow.leopard wiki
 ---
 
 ```shell

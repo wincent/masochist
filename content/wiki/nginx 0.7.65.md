@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
 From the official release announcement:

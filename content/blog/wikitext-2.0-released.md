@@ -1,6 +1,6 @@
 ---
 title: Wikitext 2.0 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A major new version of the [Wikitext](/wiki/Wikitext) gem, version 2.0, is now available. This release offers full support for [Rails](/wiki/Rails) 3 (while retaining support for Rails 2) and conforms fully to the new HTML5 specification (while maintaining backwards compatibility with HTML4/XHTML).

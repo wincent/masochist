@@ -1,5 +1,6 @@
 ---
 title: Code cleanup
+tags: blog
 ---
 
 [A post](http://www.omnigroup.com/mailman/archive/macosx-dev/2006-September/059280.html) by Apple's Ali Ozer to the [Omni](http://www.omnigroup.com/)-run [macosx-dev mailing list](http://www.omnigroup.com/mailman/listinfo/macosx-dev) got me thinking about my current localization practices.

@@ -1,5 +1,5 @@
 ---
-tags: dhaka
+tags: dhaka wiki
 ---
 
 [Dhaka 2.2.1](/wiki/Dhaka_2.2.1) was released on 13 June 2007.
@@ -13,4 +13,3 @@ tags: dhaka
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=12317>
 -   [Upgrading to Dhaka 2.2.1](/wiki/Upgrading_to_Dhaka_2.2.1)
-

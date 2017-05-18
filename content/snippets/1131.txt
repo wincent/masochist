@@ -1,7 +1,8 @@
 ---
 title: Yubikey Colemak support
-tags: colemak yubikey
+tags: colemak yubikey snippets
 ---
+
 <?xml version="1.0"?>
 <root>
   <devicevendordef>

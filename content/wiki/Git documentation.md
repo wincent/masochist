@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -25,4 +25,3 @@ cache_breaker: 1
 
 -   [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)
 -   [Installing pre-built Git documentation from the Git repo](/wiki/Installing_pre-built_Git_documentation_from_the_Git_repo)
-

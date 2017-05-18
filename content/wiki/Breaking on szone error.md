@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Sometimes a programming error will cause a "double free" warning (or some other memory-related problem) to be printed to the console with the following advice:
@@ -11,4 +11,3 @@ This doesn't always work. In those cases, try setting a breakpoint on `malloc_pr
 # See also
 
 -   <http://www.cocoabuilder.com/archive/message/xcode/2005/10/12/43>
-

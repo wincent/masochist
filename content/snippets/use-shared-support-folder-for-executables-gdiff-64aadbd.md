@@ -1,5 +1,6 @@
 ---
 title: Use shared support folder for executables (gdiff, 64aadbd)
+tags: snippets
 ---
 
 Using the shared support folder rather than the localizable resources folder should be more secure as it reduces the number of possible sites in which an attacker could substitute a hostile binary.

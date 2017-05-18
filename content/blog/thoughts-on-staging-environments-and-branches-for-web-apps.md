@@ -1,6 +1,6 @@
 ---
 title: Thoughts on "staging" environments and branches for web apps
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

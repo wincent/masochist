@@ -1,6 +1,6 @@
 ---
 title: Weekly progress report #6
-tags: progress
+tags: progress blog
 ---
 
 Here comes another code-level progress report. As per usual, the standard disclaimers apply: this is just an overview of commits on the currently checked-out branch in each repository, so any work done on side branches doesn't show up. The time limits involved are also only approximate, so some overlap or gap relative to the [the last report](/blog/weekly-progress-report-5) is possible.

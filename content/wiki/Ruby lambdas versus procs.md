@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 Lambdas:
@@ -13,4 +13,3 @@ Procs:
 -   written using `proc {}` or `Proc.new {}` syntax
 -   do not check passed-in arguments against the arity of the block
 -   `return` returns from the enclosing scope
-

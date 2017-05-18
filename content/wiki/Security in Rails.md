@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Always use `attr_accessible`
@@ -51,4 +51,3 @@ Articles on session security:
 # See also
 
 -   "Securing your Rails application": <http://manuals.rubyonrails.org/read/book/8>
-

@@ -1,5 +1,5 @@
 ---
-tags: shell
+tags: shell wiki
 ---
 
 The quick and dirty way:

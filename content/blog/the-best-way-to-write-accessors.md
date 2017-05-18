@@ -1,5 +1,6 @@
 ---
 title: The best way to write accessors
+tags: blog
 ---
 
 As you learn Objective-C you'll come across lots of advice about *how*, *when* and *why* to write accessor methods and you'll see many, many different ways of writing them.

@@ -1,5 +1,5 @@
 ---
-tags: jruby os.x
+tags: jruby os.x wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ As noted in my initial installation notes, in order to use [JRuby](/wiki/JRuby) 
 # See also
 
 -   Initial installation notes: "[Installing JRuby 1.5.1 on Mac OS X 10.6.3 Snow Leopard](/wiki/Installing_JRuby_1.5.1_on_Mac_OS_X_10.6.3_Snow_Leopard)"
-

@@ -1,6 +1,6 @@
 ---
 redirect: [[MPC]]
-tags: 
+tags: wiki
 ---
 
 

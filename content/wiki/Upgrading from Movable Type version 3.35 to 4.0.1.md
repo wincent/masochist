@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 For such a large upgrade this was actually an amazing painless operation.

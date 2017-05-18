@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 The notion of [rebasing](/wiki/rebasing) isn't one that I had heard of prior to starting with [Git](/wiki/Git). I found [this](http://jbowes.dangerouslyinc.com/2007/01/26/git-rebase-keeping-your-branches-current/) [weblog](/wiki/weblog) post which explains it very clearly:
@@ -120,4 +120,3 @@ So the moral of the story is:
 # See also
 
 -   [Using git rebase](/wiki/Using_git_rebase)
-

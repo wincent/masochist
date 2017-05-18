@@ -1,5 +1,5 @@
 ---
-tags: nokia 5130
+tags: nokia 5130 wiki
 cache_breaker: 1
 ---
 

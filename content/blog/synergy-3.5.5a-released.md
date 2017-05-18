@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.5.5a released
-tags: synergy releases
+tags: synergy releases blog
 ---
 
 Version 3.5.5a of [Synergy](/wiki/Synergy), the lightweight, highly-customizable [iTunes](/wiki/iTunes) controller is now available.

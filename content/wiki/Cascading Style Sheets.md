@@ -1,6 +1,6 @@
 ---
 redirect: [[CSS]]
-tags: 
+tags: wiki
 ---
 
 

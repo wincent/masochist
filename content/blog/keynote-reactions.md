@@ -1,5 +1,6 @@
 ---
 title: Keynote reactions
+tags: blog
 ---
 
 Gruber was wrong on just about [all counts](http://daringfireball.net/2007/01/macworld_expo_predictions), but I've got to admit that prior to the keynote I thought that most of his predictions were pretty spot on (note: I haven't actually watched the keynote yet, only read some textual coverage of it):

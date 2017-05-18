@@ -1,5 +1,6 @@
 ---
 title: Fixture improvements
+tags: blog
 ---
 
 Just found out via [the Rails Envy podcast](http://www.railsenvy.com/2007/10/30/rails-envy-podcast-episode-005-10-30-2007) about [improvements](http://ryandaigle.com/articles/2007/10/26/what-s-new-in-edge-rails-fixtures-just-got-a-whole-lot-easier) to the much-derided [Rails](http://www.wincent.com/knowledge-base/Rails) fixture implementation, recently [added into the trunk](http://dev.rubyonrails.org/changeset/8036).

@@ -1,5 +1,5 @@
 ---
-tags: clamav email
+tags: clamav email wiki
 ---
 
 This is a sample of the messages blocked by [ClamAV](/wiki/ClamAV) at the [wincent.com](/wiki/wincent.com) server in a period of just under 4 days (about 96 hours) in July 2006. The output was obtained using the following:

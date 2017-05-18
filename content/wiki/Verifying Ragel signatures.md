@@ -1,5 +1,5 @@
 ---
-tags: ragel
+tags: ragel wiki
 ---
 
 In order to verify the signatures on the [Ragel](/wiki/Ragel) source distributions you'll need a copy of [Adrian Thurston](/wiki/Adrian_Thurston)'s public key.
@@ -13,4 +13,3 @@ But don't just take my word for it: go to the official [Ragel](/wiki/Ragel) webs
 
 -   Official [Ragel](/wiki/Ragel) website: <http://www.cs.queensu.ca/home/thurston/ragel/>
 -   [Adrian Thurston](/wiki/Adrian_Thurston)'s homepage: <http://www.cs.queensu.ca/home/thurston/>
-

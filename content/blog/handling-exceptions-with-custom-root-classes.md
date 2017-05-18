@@ -1,5 +1,6 @@
 ---
 title: Handling exceptions with custom root classes
+tags: blog
 ---
 
 Apple's Objective-C runtime allows you to throw any object as an exception. Most commonly you would throw an NSException object as shown below:

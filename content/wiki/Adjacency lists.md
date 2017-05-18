@@ -1,6 +1,6 @@
 ---
 redirect: [[adjacency list]]
-tags: 
+tags: wiki
 ---
 
 

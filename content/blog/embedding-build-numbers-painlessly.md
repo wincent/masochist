@@ -1,5 +1,6 @@
 ---
 title: Embedding build numbers painlessly
+tags: blog
 ---
 
 Earlier today I was lamenting in the "mini-log" that lives on the left-hand side of my [weblog](http://www.wincent.com/a/about/wincent/weblog/):

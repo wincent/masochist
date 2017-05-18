@@ -1,5 +1,5 @@
 ---
-tags: cheetah.template.engine
+tags: cheetah.template.engine wiki
 ---
 
 # Obtaining [Cheetah](/wiki/Cheetah)

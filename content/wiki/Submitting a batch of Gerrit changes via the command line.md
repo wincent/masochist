@@ -1,5 +1,5 @@
 ---
-tags: gerrit
+tags: gerrit wiki
 ---
 
 The Gerrit docs would suggest that you can do something like:

@@ -1,6 +1,6 @@
 ---
 title: Commit messages
-tags: subversion git
+tags: subversion git blog
 ---
 
 The other day there was a post on [writing good commit messages](http://lbrandy.com/blog/2009/03/writing-better-commit-messages/) on [Reddit](http://www.reddit.com/r/programming/), talking about the good, the bad and the ugly when it comes to commit messages.

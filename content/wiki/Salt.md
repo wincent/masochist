@@ -1,5 +1,5 @@
 ---
-tags: salt
+tags: salt wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 # See also
 
 -   SaltStack (company) info on CrunchBase: <http://www.crunchbase.com/organization/saltstack>
-

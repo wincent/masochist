@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 This page provides a broad overview of my product roadmaps and the development infrastructure that I plan to use in the move to Mac OS X [Leopard](/wiki/Leopard).

@@ -1,8 +1,9 @@
 ---
 title: Site updates 0.83
-tags: site updates
+tags: site updates snippets
 cache_breaker: 1
 ---
+
 623ad87 Bump Ruby to 1.9.3-p392
 a523368 Goodbye RVM
 d5af8de Switch to rbenv

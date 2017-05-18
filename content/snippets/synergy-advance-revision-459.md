@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance (revision 459)
+tags: snippets
 ---
 
 -   *Download name*: SynergyAdvanceNightly(459).dmg

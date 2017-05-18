@@ -1,5 +1,6 @@
 ---
 title: Why use version control?
+tags: blog
 ---
 
 Why use [version control](http://subversion.tigris.org/) if you a lone-developer working on a closed-source project? You don't have to collaborate with anyone, download the source or send patches, after all.

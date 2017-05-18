@@ -1,6 +1,6 @@
 ---
 title: Objective-C licensing engine for sale
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

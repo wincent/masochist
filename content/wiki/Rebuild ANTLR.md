@@ -1,6 +1,6 @@
 ---
 redirect: [[Rebuilding ANTLR]]
-tags: 
+tags: wiki
 ---
 
 

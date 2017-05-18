@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 Applying a similar trick to the one in "[Sorting functions by name in Vim](/wiki/Sorting_functions_by_name_in_Vim)", we can sort the entries inside a `.gitmodules` file as follows:

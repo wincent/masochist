@@ -1,9 +1,9 @@
 ---
-tags: git rebase
+tags: git rebase wiki
 cache_breaker: 1
 ---
 
-    From:           Linus Torvalds <torvalds-AT-linux-foundation.org>
+From:           Linus Torvalds <torvalds-AT-linux-foundation.org>
     To:             Dave Airlie <airlied-AT-linux.ie>
     Subject:        Re: [git pull] drm-next
     Date:           Sun, 29 Mar 2009 14:45:45 -0700 (PDT)
@@ -150,4 +150,3 @@ cache_breaker: 1
 # Source
 
 -   <http://lwn.net/Articles/328438/>
-

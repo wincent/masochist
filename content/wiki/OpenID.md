@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [OpenID](/wiki/OpenID) is a decentralized authentication system that provides an alternative to login systems that use username/password combinations.
@@ -16,4 +16,3 @@ As such, [OpenID](/wiki/OpenID) "identities" should always be taken with a grain
 
 -   Official site: <http://openid.net/>
 -   [Wikipedia](/wiki/Wikipedia) article on [OpenID](/wiki/OpenID): <http://en.wikipedia.org/wiki/OpenID>
-

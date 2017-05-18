@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 [rbenv](/wiki/rbenv) is an arguably simpler alternative to [RVM](/wiki/RVM) for managing multiple installations of (different versions of) [Ruby](/wiki/Ruby).
@@ -7,4 +7,3 @@ tags: ruby
 # See also
 
 -   [multiruby](/wiki/multiruby)
-

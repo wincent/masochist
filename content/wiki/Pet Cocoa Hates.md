@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 The `containsObject:` method in `NSArray` determines object equality using `isEqual:`.

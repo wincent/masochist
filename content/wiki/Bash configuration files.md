@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 cache_breaker: 1
 ---
 
@@ -68,4 +68,3 @@ A "non-interactive" shell may be:
 -   <http://en.wikipedia.org/wiki/Bash_(Unix_shell)#Startup_scripts>
 -   <http://en.wikipedia.org/wiki/Unix_shell>
 -   <http://www.solipsys.co.uk/new/BashInitialisationFiles.html> (flowchart)
-

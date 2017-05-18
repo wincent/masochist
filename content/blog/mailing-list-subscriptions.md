@@ -1,5 +1,6 @@
 ---
 title: Mailing list subscriptions
+tags: blog
 ---
 
 When I first got a home-based Internet connection 10 years ago Google didn't exist. Spam was an insignificant problem. I freely posted to news groups and mailing lists without fear of getting inundated with spam or forfeiting my privacy to an omniscient search engine or an [infinite memory that never forgets](http://web.archive.org/).

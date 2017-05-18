@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Counting the rows in a table

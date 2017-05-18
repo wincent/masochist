@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 This is a list of my patches to [RSpec](/wiki/RSpec).
@@ -18,4 +18,3 @@ This is a list of my patches to [RSpec](/wiki/RSpec).
 # See also
 
 -   [Submitting RSpec patches](/wiki/Submitting_RSpec_patches)
-

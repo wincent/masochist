@@ -1,5 +1,5 @@
 ---
-tags: gpg
+tags: gpg wiki
 ---
 
 Another day, another [GPG](/wiki/GPG) install. Different machine, and slightly different versions of [Mac OS X](/wiki/Mac_OS_X) and [GPG](/wiki/GPG).

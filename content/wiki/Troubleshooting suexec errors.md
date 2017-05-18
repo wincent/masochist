@@ -1,5 +1,5 @@
 ---
-tags: suexec apache
+tags: suexec apache wiki
 ---
 
 Sometimes you will see errors in your `error_log` which look like this:
@@ -23,4 +23,3 @@ The solution is to either change your `SuexecUserGroup` directive to another (no
 
 -   <http://httpd.apache.org/docs/2.2/programs/suexec.html>
 -   <http://httpd.apache.org/docs/2.2/mod/mod_suexec.html>
-

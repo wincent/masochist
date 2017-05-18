@@ -1,5 +1,6 @@
 ---
 title: The new Mac Pros
+tags: blog
 ---
 
 Looking at [the specs](http://www.macworld.com/article/131461/2008/01/macproupdate.html) on the new Mac Pros, nice to see the "grunt" factor rolling inexorably forward.

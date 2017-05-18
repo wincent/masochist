@@ -1,6 +1,6 @@
 ---
 title: Trying Emacs
-tags: textmate emacs
+tags: textmate emacs blog
 cache_breaker: 1
 ---
 

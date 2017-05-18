@@ -1,6 +1,6 @@
 ---
 redirect: /forums/
-tags: 
+tags: wiki
 ---
 
 

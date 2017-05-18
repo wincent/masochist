@@ -1,5 +1,6 @@
 ---
 title: Don't run Mac OS X as an administrator user
+tags: blog
 ---
 
 In the past my advice, and that of pretty much everyone that matters, has always been "don't run Mac OS X (log in to the graphical user interface) as the root user". It's just a basic security tenet that you should always run with the minimum privileges necessary and only elevate them, temporarily, when necessary.

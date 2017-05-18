@@ -1,6 +1,6 @@
 ---
 redirect: [[RCS]]
-tags: 
+tags: wiki
 ---
 
 

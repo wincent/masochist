@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 These notes made trying to figure out how to use the [C language target](/wiki/C_language_target) with the [ANTLR](/wiki/ANTLR) prerelease (prior to the release of [ANTLR 3.0](/wiki/ANTLR_3.0)). With the official 3.0 release extensive examples for the [C language target](/wiki/C_language_target) were made available, rendering these notes largely redundant. See [C language target](/wiki/C_language_target) for the most up-to-date information.

@@ -1,5 +1,5 @@
 ---
-tags: zentest
+tags: zentest wiki
 ---
 
 [ZenTest 3.6.0](/wiki/ZenTest_3.6.0) is an important new release of the [ZenTest](/wiki/ZenTest) testing framework for [Ruby](/wiki/Ruby) that brings an improved auto-discovery mechanism for better integration with tools like [RSpec](/wiki/RSpec). It was released on 25 May 2007.
@@ -29,4 +29,3 @@ tags: zentest
 -   [Using autotest with Rails](/wiki/Using_autotest_with_Rails)
 -   [Setting up autotest to use Growl](/wiki/Setting_up_autotest_to_use_Growl)
 -   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
-

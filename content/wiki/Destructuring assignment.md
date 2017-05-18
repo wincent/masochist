@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 ---
 
 I can never remember where to put the brackets:

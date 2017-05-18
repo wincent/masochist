@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 This is not an exhaustive list of [CSS selectors](/wiki/CSS_selectors) but it shows the basic patterns that are useful:

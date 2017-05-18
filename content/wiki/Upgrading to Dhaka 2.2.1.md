@@ -1,5 +1,5 @@
 ---
-tags: tiger dhaka updates
+tags: tiger dhaka updates wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 [bleak\_house](/wiki/bleak_house) is a library for finding memory leaks in [Ruby](/wiki/Ruby).
@@ -14,4 +14,3 @@ tags: ruby
 # See also
 
 -   [Installing bleak\_house 3.6 on Mac OS X Leopard 10.5.1](/wiki/Installing_bleak_house_3.6_on_Mac_OS_X_Leopard_10.5.1)
-

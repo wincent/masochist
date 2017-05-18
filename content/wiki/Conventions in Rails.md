@@ -1,6 +1,6 @@
 ---
 redirect: [[Rails conventions]]
-tags: 
+tags: wiki
 ---
 
 

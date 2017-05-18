@@ -1,5 +1,6 @@
 ---
 title: Command refactoring for better error detection (snippets, 098ddbc)
+tags: snippets
 ---
 
 Refactor most invocations of the git tool into separate methods to allow\

@@ -1,5 +1,5 @@
 ---
-tags: zentest updates
+tags: zentest updates wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Month of Apple Bugs
+tags: blog
 ---
 
 So the [Month of Apple Bugs](http://projects.info-pull.com/moab/) has [kicked off](http://projects.info-pull.com/moab/MOAB-01-01-2007.html) and I'm happy about it because I think it will have some positive effects; as the organizers state:

@@ -1,5 +1,6 @@
 ---
 title: Fix invisible character (wikitext, 4c107f0)
+tags: snippets
 ---
 
 Remove invisible non-ASCII character in wiki\_text.c source file.

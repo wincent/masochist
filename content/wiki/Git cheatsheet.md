@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -26,4 +26,3 @@ This just writes the file back out to the working tree without touching the HEAD
 # See also
 
 -   <http://jonas.nitro.dk/git/quick-reference.html>
-

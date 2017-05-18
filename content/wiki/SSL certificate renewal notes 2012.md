@@ -1,5 +1,5 @@
 ---
-tags: apache sendmail cyrus ssl
+tags: apache sendmail cyrus ssl wiki
 ---
 
 I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller ($50 for a 5/year renewal). Right now I have one cert for wincent.com and another for secure.wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to www.wincent.com and possibly other subdomains as well).

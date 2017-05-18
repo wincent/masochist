@@ -1,6 +1,6 @@
 ---
 title: Back online after over three weeks
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

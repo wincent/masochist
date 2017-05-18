@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.122
-tags: site updates
+tags: site updates snippets
 ---
+
 c2b3667 Update assets/deploy processes to automate Browserify bundling
 34609d7 Make deploy quieter for non-error case
 18fc8a7 Attempted workaround for annoying Sprockets/Sass bug

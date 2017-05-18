@@ -1,5 +1,5 @@
 ---
-tags: ack
+tags: ack wiki
 cache_breaker: 1
 ---
 
@@ -22,4 +22,3 @@ Add a `haml` type. Without this your `.haml` files won't get scanned unless you 
 ## See also
 
 -   My first-time install notes: "[Installing Ack 1.86 on Mac OS X Leopard 10.5.5](/wiki/Installing_Ack_1.86_on_Mac_OS_X_Leopard_10.5.5)"
-

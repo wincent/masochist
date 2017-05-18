@@ -1,6 +1,6 @@
 ---
 redirect: [[Git recipes]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 # Documentation
@@ -57,4 +57,3 @@ It is incredibly easy to start managing code with [Git](/wiki/Git). Unlike [Subv
 # See also
 
 -   [SVK advantages](/wiki/SVK_advantages)
-

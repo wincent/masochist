@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 These notes are made on the basis of publicly available information:

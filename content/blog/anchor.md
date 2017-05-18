@@ -1,5 +1,6 @@
 ---
 title: Anchor
+tags: blog
 ---
 
 If this weren't such a pain it would be hilarious: my embattled iMac's brand new Super Drive has given up the ghost after only a couple of weeks of operation.

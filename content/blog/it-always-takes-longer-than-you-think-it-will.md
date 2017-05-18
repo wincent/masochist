@@ -1,6 +1,6 @@
 ---
 title: It always takes longer than you think it will
-tags: ruby cheetah.template.engine walrus
+tags: ruby cheetah.template.engine walrus blog
 ---
 
 Looking back over some old posts I wrote I found [this one](http://wincent.com/a/about/wincent/weblog/archives/2006/10/objectoriented.php), dated 8 January 2007:

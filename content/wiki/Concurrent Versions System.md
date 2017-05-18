@@ -1,6 +1,6 @@
 ---
 redirect: [[CVS]]
-tags: 
+tags: wiki
 ---
 
 

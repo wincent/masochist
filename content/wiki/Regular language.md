@@ -1,6 +1,6 @@
 ---
 redirect: [[Regular languages]]
-tags: 
+tags: wiki
 ---
 
 

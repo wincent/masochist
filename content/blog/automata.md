@@ -1,5 +1,6 @@
 ---
 title: Automata
+tags: blog
 ---
 
 [Ragel](http://www.wincent.com/knowledge-base/Ragel) is a truly awesome tool for working with finite automata. It's really refreshing to immerse yourself in a deterministic world completely and rigorously upheld by mathematical underpinnings. And Ragel is an incredibly solid finite state machine compiler that implements the tried-and-tested patterns of automata theory in a robust and efficient matter.

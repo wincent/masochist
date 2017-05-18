@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # Resources
@@ -79,4 +79,3 @@ Note that:
 -   This time we use `cookies` and not `request.cookies`
 -   Again it is compulsory to use a `String` as a key, not a `Symbol`
 -   Use the `blank?` method because it [handles more cases](http://dev.rubyonrails.org/browser/trunk/activesupport/lib/active_support/core_ext/blank.rb) than `empty?`
-

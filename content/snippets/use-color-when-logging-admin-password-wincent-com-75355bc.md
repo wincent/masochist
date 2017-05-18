@@ -1,5 +1,6 @@
 ---
 title: Use color when logging admin password (wincent.com, 75355bc)
+tags: snippets
 ---
 
 When the application is first boot strapped we create an initial user account with admin privileges and log the result to the console and to the log.

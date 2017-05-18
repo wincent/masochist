@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.150
-tags: site updates
+tags: site updates snippets
 ---
+
 8d6b71b Steal better flash colors

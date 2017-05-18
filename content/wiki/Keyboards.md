@@ -1,5 +1,5 @@
 ---
-tags: keyboards
+tags: keyboards wiki
 ---
 
 # Mechanical keyboards I've owned
@@ -11,4 +11,3 @@ tags: keyboards
 -   This is the post that sparked my interest in mechanical keyboards: <http://www.overclock.net/t/491752/mechanical-keyboard-guide>
 -   Enormous, active forum community focused on keyboards: <http://geekhack.org/>
 -   Best keyboard wiki I've found so far: <http://deskthority.net/wiki/Main_Page>
-

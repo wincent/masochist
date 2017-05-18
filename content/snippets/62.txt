@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.49
-tags: site updates
+tags: site updates snippets
 ---
+
 5469df0 Make line numbers in gutter unselectable
 177252e Style fixes for acts as taggable

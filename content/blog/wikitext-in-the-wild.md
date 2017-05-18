@@ -1,6 +1,6 @@
 ---
 title: Wikitext in the wild
-tags: wikitext
+tags: wikitext blog
 ---
 
 I've never really known how many people use my [wikitext](/wiki/wikitext) extension, but today I got my first ever feature request for it! (If you're curious, you can check out the request in [ticket \#1268](/issues/1268).)

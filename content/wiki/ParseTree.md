@@ -1,5 +1,5 @@
 ---
-tags: parsetree
+tags: parsetree wiki
 ---
 
 From the [description](http://blog.zenspider.com/archives/2007/06/parsetree_version_171_has_been_released.html) by the author ([Ryan Davis](/wiki/Ryan_Davis)):
@@ -9,4 +9,3 @@ From the [description](http://blog.zenspider.com/archives/2007/06/parsetree_vers
 # See also
 
 -   Official [ParseTree](/wiki/ParseTree) page: <http://zenspider.com/ZSS/Products/ParseTree/index.html>
-

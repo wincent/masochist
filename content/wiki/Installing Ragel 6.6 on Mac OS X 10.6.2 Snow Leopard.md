@@ -1,5 +1,5 @@
 ---
-tags: ragel snow.leopard
+tags: ragel snow.leopard wiki
 cache_breaker: 1
 ---
 

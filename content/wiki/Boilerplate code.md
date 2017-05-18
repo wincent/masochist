@@ -1,6 +1,6 @@
 ---
 redirect: [[boilerplate]]
-tags: 
+tags: wiki
 ---
 
 

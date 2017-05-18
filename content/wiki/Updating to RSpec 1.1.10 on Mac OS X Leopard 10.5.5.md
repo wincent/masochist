@@ -1,5 +1,5 @@
 ---
-tags: rspec updates
+tags: rspec updates wiki
 ---
 
 Notes made while updating to [RSpec 1.1.10](/wiki/RSpec_1.1.10) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.5:

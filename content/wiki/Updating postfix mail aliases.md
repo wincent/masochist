@@ -1,5 +1,5 @@
 ---
-tags: postfix
+tags: postfix wiki
 ---
 
 ```shell

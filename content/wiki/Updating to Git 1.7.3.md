@@ -1,5 +1,5 @@
 ---
-tags: git updates snow.leopard fedora
+tags: git updates snow.leopard fedora wiki
 cache_breaker: 1
 ---
 

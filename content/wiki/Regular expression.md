@@ -1,5 +1,5 @@
 ---
-tags: regex
+tags: regex wiki
 cache_breaker: 1
 ---
 
@@ -7,4 +7,3 @@ cache_breaker: 1
 
 -   [Wikipedia](/wiki/Wikipedia) article on [regular expressions](/wiki/regular_expressions): <http://en.wikipedia.org/wiki/Regular_expressions>
 -   [Regular expression cheatsheet](/wiki/Regular_expression_cheatsheet)
-

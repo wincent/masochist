@@ -1,5 +1,6 @@
 ---
 title: On the cost of cellphone (SMS) text messages
+tags: blog
 ---
 
 Here in Spain it costs about 15 eurocents to send a single SMS (cellphone text message). Cross the 160 character limit and you'll have to pay another 15 cents for each additional block of 160 characters.

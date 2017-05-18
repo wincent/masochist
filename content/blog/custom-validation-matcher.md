@@ -1,5 +1,6 @@
 ---
 title: Custom validation matcher
+tags: blog
 ---
 
 Thanks to [FixtureReplacement](http://www.wincent.com/knowledge-base/FixtureReplacement) my [Rails](http://www.wincent.com/knowledge-base/Rails) model [specs](http://www.wincent.com/knowledge-base/specs) are looking awfully clean:

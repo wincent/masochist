@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 cache_breaker: 1
 ---
 
@@ -44,4 +44,3 @@ The guidelines in this article are general principles which should apply to all 
 -   [C coding standards](/wiki/C_coding_standards)
 -   [Objective-C coding standards](/wiki/Objective-C_coding_standards)
 -   [Ruby coding standards](/wiki/Ruby_coding_standards)
-

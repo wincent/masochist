@@ -1,5 +1,5 @@
 ---
-tags: gmp
+tags: gmp wiki
 ---
 
 From the official release announcement posted to the gmp-announce mailing list:

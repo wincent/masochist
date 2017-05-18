@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.3 release candidate
+tags: blog
 ---
 
 The release candidate for [Synergy](http://synergy.wincent.com/) 2.3 has just been released. The new version features some major architectural changes; Synergy is now a Universal Binary that can run natively on both Intel and PowerPC processors. A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

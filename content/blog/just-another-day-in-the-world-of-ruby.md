@@ -1,6 +1,6 @@
 ---
 title: Just another day in the world of Ruby
-tags: ruby rails passenger rack
+tags: ruby rails passenger rack blog
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Giving up on Emacs
-tags: textmate emacs
+tags: textmate emacs blog
 ---
 
 So I didn't actually give up on [Emacs](/wiki/Emacs) six days ago as I had indicated I would. The masochist in me kept me coming back for more punishment.

@@ -1,5 +1,5 @@
 ---
-tags: ssh
+tags: ssh wiki
 cache_breaker: 1
 ---
 
@@ -39,4 +39,3 @@ sys	0m0.009s
 
 -   <http://blogs.perl.org/users/smylers/2011/08/ssh-productivity-tips.html>
 -   <http://protempore.net/~calvins/howto/ssh-connection-sharing/>
-

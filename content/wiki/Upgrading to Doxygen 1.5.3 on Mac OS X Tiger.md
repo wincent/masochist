@@ -1,5 +1,5 @@
 ---
-tags: doxygen updates
+tags: doxygen updates wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Rule editor
+tags: blog
 ---
 
 Currently working on a rule editor like the one in Mail.app. This is necessary for a [Synergy Advance](http://synergyadvance.com/) plug-in that I'm hoping to finish this week.

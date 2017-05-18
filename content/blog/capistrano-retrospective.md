@@ -1,6 +1,6 @@
 ---
 title: Capistrano retrospective
-tags: capistrano
+tags: capistrano blog
 cache_breaker: 1
 ---
 

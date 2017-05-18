@@ -1,5 +1,6 @@
 ---
 title: Reference top-level nib objects for GC and clean localizations (Synergy, 28983e7)
+tags: snippets
 ---
 
 Add top-level strong references to a couple more nibs to ensure that objects don't get inopportunely garbage-collected.

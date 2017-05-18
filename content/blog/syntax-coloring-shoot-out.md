@@ -1,6 +1,6 @@
 ---
 title: Syntax coloring shoot-out
-tags: textmate emacs bbedit vim
+tags: textmate emacs bbedit vim blog
 cache_breaker: 1
 ---
 
@@ -85,4 +85,3 @@ Differences:
 -   Italic support (even in the terminal)
 -   Back to Consolas, now 13pt most of the time (and 15pt or more if I'm working with glasses, or on a bus with a bumpy ride etc); once I get a machine with a Retina display I think I'll take this down a notch
 -   Still using folding, but less of it
-

@@ -1,5 +1,6 @@
 ---
 title: Snap window size to table view row height (REnamer, 97148f1)
+tags: snippets
 ---
 
 When resizing, force window size to always coincide with the height of the rows in the table.

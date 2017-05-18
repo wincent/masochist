@@ -1,5 +1,5 @@
 ---
-tags: perl.one.liners ag ack
+tags: perl.one.liners ag ack wiki
 ---
 
 # Example: showing lines matching a regular expression

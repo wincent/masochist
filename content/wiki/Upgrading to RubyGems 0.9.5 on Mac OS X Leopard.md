@@ -1,5 +1,5 @@
 ---
-tags: leopard rubygems
+tags: leopard rubygems wiki
 ---
 
 As discovered [here](http://ruby.macosforge.org/?p=7) and noted [here](http://rubyforge.org/frs/shownotes.php?group_id=126&release_id=16500):
@@ -121,4 +121,3 @@ As discovered [here](http://ruby.macosforge.org/?p=7) and noted [here](http://ru
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?group_id=126&release_id=16500>
-

@@ -1,5 +1,5 @@
 ---
-tags: nginx updates fedora lion os.x
+tags: nginx updates fedora lion os.x wiki
 cache_breaker: 1
 ---
 

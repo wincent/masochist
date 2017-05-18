@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 # Preliminaries
@@ -851,4 +851,3 @@ Empty lexer rules are a "no no"; that is, `*` and `?` are bad in the lexer if th
 # See also
 
 -   [ANTLR prediction](/wiki/ANTLR_prediction)
-

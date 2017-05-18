@@ -1,5 +1,5 @@
 ---
-tags: hpricot
+tags: hpricot wiki
 cache_breaker: 1
 ---
 

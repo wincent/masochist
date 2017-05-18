@@ -1,5 +1,6 @@
 ---
 title: The Internet: a wretched hive of scum and villany
+tags: blog
 ---
 
 The Internet is an [unedifying](http://dictionary.reference.com/search?q=unedifying) place. If you regularly use email or read the web then you're constantly exposed to reminders of just how low the human race is capable of sinking. Every day I find myself shaking my head as I see the output of hordes of mindless, unoriginal, uncreative, greedy cretins spilling into my inbox or splashed across the web. In this brief article I want to list some of the most obvious offenders: pathetic individuals incapable of peacefully coexisting with others, incapable of a creative act or of contributing anything that could enrich others or the society in which they live, seeking only to line their own pockets or do damage to others.

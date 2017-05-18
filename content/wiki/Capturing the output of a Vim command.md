@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ Note that in scripts, it's useful to redirect to a variable (eg. `=> foo` instea
 # Source
 
 -   <http://vim.wikia.com/wiki/Capture_ex_command_output>
-

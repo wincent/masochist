@@ -1,6 +1,6 @@
 ---
 title: Wikitext 3.0b released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new beta release of the [Wikitext](/wiki/Wikitext) gem, version 3.0b, is out. The major version bump is because this release breaks backwards compatibility with versions of [Rails](/wiki/Rails) prior to 3.1. Given how volatile the Rails [APIs](/wiki/APIs) are, I decided it would be easier to support 3.1 in a new major version of the Wikitext gem, and continue to support older versions (specifically the 2.1.x series) for use with older versions of Rails.

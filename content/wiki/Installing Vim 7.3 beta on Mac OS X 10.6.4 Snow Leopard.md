@@ -1,5 +1,5 @@
 ---
-tags: vim snow.leopard
+tags: vim snow.leopard wiki
 ---
 
 If you don't have [Mercurial](/wiki/Mercurial) you can download it from: <http://mercurial.selenic.com/downloads>

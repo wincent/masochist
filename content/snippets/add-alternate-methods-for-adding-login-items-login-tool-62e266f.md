@@ -1,5 +1,6 @@
 ---
 title: Add alternate methods for adding login items (login-tool, 62e266f)
+tags: snippets
 ---
 
 It appears that System Events is broken on Leopard: telling it to add a new login item fails in all three ways that I tried to do so (using the scripting bridge, using raw Apple Events, and even trying from the Script Editor using the script that Apple itself documents as being the way to do it).

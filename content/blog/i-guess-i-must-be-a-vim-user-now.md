@@ -1,6 +1,6 @@
 ---
 title: I guess I must be a Vim user now
-tags: vim
+tags: vim blog
 cache_breaker: 1
 ---
 

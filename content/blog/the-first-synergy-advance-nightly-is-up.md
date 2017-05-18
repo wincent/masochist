@@ -1,5 +1,6 @@
 ---
 title: The first Synergy Advance nightly is up...
+tags: blog
 ---
 
 Still plenty to be fixed as [noted in the announcement](http://www.wincent.com/a/news/archives/2007/04/synergy_advance_9.php)... but I think I have to do something about my build times:

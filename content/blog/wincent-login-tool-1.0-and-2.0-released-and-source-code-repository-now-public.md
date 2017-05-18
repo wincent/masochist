@@ -1,6 +1,6 @@
 ---
 title: Wincent Login Tool 1.0 and 2.0 released and source code repository now public
-tags: releases login.tool open.source
+tags: releases login.tool open.source blog
 cache_breaker: 1
 ---
 
@@ -41,4 +41,3 @@ There are no official product pages yet, and perhaps there never will be, but pr
 
 -   <http://wincent.com/a/products/login-tool/download/login-tool-1.0.zip>
 -   <http://wincent.com/a/products/login-tool/download/login-tool-2.0.zip>
-

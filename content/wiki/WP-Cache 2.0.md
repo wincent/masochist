@@ -1,5 +1,5 @@
 ---
-tags: wordpress
+tags: wordpress wiki
 ---
 
 Official website:

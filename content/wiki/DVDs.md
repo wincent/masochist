@@ -1,6 +1,6 @@
 ---
 redirect: [[DVD]]
-tags: 
+tags: wiki
 ---
 
 

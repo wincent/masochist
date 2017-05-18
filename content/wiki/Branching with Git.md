@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 There are two types of branching that you might want to do with [Git](/wiki/Git):
@@ -62,4 +62,3 @@ This creates tracking refs not quite the same as the manually created ones above
 # See also
 
 -   [Branching](/wiki/Branching)
-

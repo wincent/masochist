@@ -1,5 +1,6 @@
 ---
 title: The view from the crow's nest
+tags: blog
 ---
 
 Over the last year I've tried to make my development process more and more [transparent and open](http://www.wincent.com/s/progress/), and I plan on continuing that trend.

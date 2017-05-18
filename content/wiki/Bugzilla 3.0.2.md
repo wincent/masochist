@@ -1,5 +1,5 @@
 ---
-tags: bugzilla
+tags: bugzilla wiki
 ---
 
 [Bugzilla 3.0.2](/wiki/Bugzilla_3.0.2) was released on 19 September 2007.
@@ -12,4 +12,3 @@ tags: bugzilla
 -   Vulnerability: <https://bugzilla.mozilla.org/show_bug.cgi?id=395632>
 -   Download page: <http://www.bugzilla.org/download/>
 -   My upgrade notes: [Upgrading to Bugzilla 3.0.2](/wiki/Upgrading_to_Bugzilla_3.0.2)
-

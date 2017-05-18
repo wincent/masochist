@@ -1,6 +1,6 @@
 ---
 title: Preparing WOBezel for release as open source
-tags: cocoa open.source
+tags: cocoa open.source blog
 ---
 
 I'm currently working on preparing a sizeable amount of source code for release as [open source](/wiki/open_source) and one of the first projects to be published is likely to be [WOBezel](/wiki/WOBezel).

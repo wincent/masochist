@@ -1,5 +1,5 @@
 ---
-tags: os.x keychain
+tags: os.x keychain wiki
 ---
 
 The recommended strategy is to set the password on the source keychain to an empty string, then drag the items from the source keychain into the new keychain.
@@ -7,4 +7,3 @@ The recommended strategy is to set the password on the source keychain to an emp
 # Source
 
 -   <http://hints.macworld.com/article.php?story=20101225081151172>
-

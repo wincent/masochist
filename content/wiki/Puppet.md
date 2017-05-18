@@ -1,5 +1,5 @@
 ---
-tags: puppet
+tags: puppet wiki
 cache_breaker: 1
 ---
 
@@ -13,4 +13,3 @@ The main advantage of this approach is that applying a set of Puppet recipes is 
 
 -   Official documentation: <http://docs.puppetlabs.com/>
 -   Puppet Labs (company) info on CrunchBase: <http://www.crunchbase.com/organization/puppet-labs>
-

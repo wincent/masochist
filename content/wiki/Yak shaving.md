@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 A term originally coined [by Carlin Vieri](http://projects.csail.mit.edu/gsb/old-archive/gsb-archive/gsb2000-02-11.html):
@@ -13,4 +13,3 @@ Alternatively [phrased thusly](http://www.catb.org/jargon/html/Y/yak-shaving.htm
 # See also
 
 -   <http://en.wiktionary.org/wiki/yak_shaving>
-

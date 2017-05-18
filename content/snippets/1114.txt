@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.145
-tags: site updates
+tags: site updates snippets
 ---
+
 952d4ea Make issues "open" or "closed" only

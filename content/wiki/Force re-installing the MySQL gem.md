@@ -1,5 +1,5 @@
 ---
-tags: gems ruby bundler mariadb
+tags: gems ruby bundler mariadb wiki
 ---
 
 I caused some problems for myself in an app by upgrading my Brew-managed copy of MariaDB:

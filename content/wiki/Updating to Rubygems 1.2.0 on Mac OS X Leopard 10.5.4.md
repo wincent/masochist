@@ -1,8 +1,8 @@
 ---
-tags: rubygems updates
+tags: rubygems updates wiki
 ---
 
-    $ sudo gem update --system
+$ sudo gem update --system
     Password:
     Updating RubyGems
     Bulk updating Gem source index for: http://gems.rubyforge.org/

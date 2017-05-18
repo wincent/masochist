@@ -1,5 +1,5 @@
 ---
-tags: rsync snow.leopard os.x
+tags: rsync snow.leopard os.x wiki
 ---
 
 ```shell

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Every now and again an enhancement will make it into the [Git](/wiki/Git) `master` branch that you'd like to start using immediately. As described in "[Structure of git.git](/wiki/Structure_of_git.git)", the `master` branch is "Reasonably tested and ready to be used in a production setting". Feature releases (eg 1.5.2, 1.5.3, 1.5.4) are occasionally cut from the tip of this branch. If you want to track the branch then the procedure is fairly straight forward.

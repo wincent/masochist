@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.13 released
-tags: releases command.t
+tags: releases command.t blog
 ---
 
 I just released [Command-T](/wiki/Command-T) version 1.13. It contains some fixes:

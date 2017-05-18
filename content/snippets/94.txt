@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.63
-tags: site updates
+tags: site updates snippets
 ---
+
 1196dfb Set new header font: Yanone Kaffeesatz

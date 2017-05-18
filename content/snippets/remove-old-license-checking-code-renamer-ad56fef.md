@@ -1,5 +1,6 @@
 ---
 title: Remove old license-checking code (REnamer, ad56fef)
+tags: snippets
 ---
 
 Will add in the new code later on.

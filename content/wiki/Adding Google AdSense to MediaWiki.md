@@ -1,5 +1,5 @@
 ---
-tags: google adsense
+tags: google adsense wiki
 ---
 
 I started off from [this article](http://www.dankohn.com/archives/000338.html) which offers an out-of-date but still helpful summary of one way of adding [Google AdSense](/wiki/Google_AdSense) to a [MediaWiki](/wiki/MediaWiki) installation.

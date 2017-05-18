@@ -1,5 +1,6 @@
 ---
 title: Drop PCRE library tests from test suite (REnamer, ccce3a5)
+tags: snippets
 ---
 
 The library gets tested at compile time, so there is no need to re-test it at runtime.

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 From the official announcement posted to the [Git mailing list](/wiki/Git_mailing_list):

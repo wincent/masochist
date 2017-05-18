@@ -1,5 +1,6 @@
 ---
 title: Build setting inheritance
+tags: blog
 ---
 
 Managing build settings in Xcode has always been a bit fiddley. You can have per-project build settings (called "Configurations"), and per-target settings (simply called "Build settings") which inherit from the per-project settings and can be used to override them. Things can get fairly complicated very quickly when you have multiple configurations, multiple targets and multiple projects. That's not even mentioning the possibility of passing settings on the command-line or in the environment, nor of [setting compiler flags on a per-file basis](http://developer.apple.com/documentation/DeveloperTools/Conceptual/XcodeUserGuide/Contents/Resources/en.lproj/05_04_bs_build_settings/chapter_31_section_8.html#//apple_ref/doc/uid/TP40002691-CHDBDDBI).

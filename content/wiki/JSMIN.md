@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 ---
 
 # Official site
@@ -9,4 +9,3 @@ tags: javascript
 # See also
 
 -   [JavaScript minimization](/wiki/JavaScript_minimization)
-

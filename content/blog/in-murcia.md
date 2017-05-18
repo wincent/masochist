@@ -1,5 +1,6 @@
 ---
 title: In Murcia
+tags: blog
 ---
 
 I will be at a congress starting today (16 March 2007) and will not have access to email. I'll be returning on Monday (19 March 2007). There will therefore be some delay before replying if you email me during that period.

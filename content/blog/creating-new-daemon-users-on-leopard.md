@@ -1,5 +1,6 @@
 ---
 title: Creating new daemon users on Leopard
+tags: blog
 ---
 
 I just made a curious realization while trying to build [MySQL](http://www.wincent.com/knowledge-base/MySQL) for [Leopard](http://www.wincent.com/knowledge-base/Leopard): I don't know how to create new daemon user. No doubt this is ridiculously easy with Mac OS X Server, but in the non-server version it's far from obvious.

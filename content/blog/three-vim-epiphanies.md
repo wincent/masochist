@@ -1,6 +1,6 @@
 ---
 title: Three Vim "epiphanies"
-tags: vim
+tags: vim blog
 ---
 
 A former colleague of mine was asking for advice on what to cover in a 5-minute lightning talk he's giving on [Vim](/wiki/Vim) at his new place of work.

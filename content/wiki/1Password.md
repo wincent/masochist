@@ -1,6 +1,7 @@
 ---
-tags: 1password
+tags: 1password wiki
 ---
+
 1Password is a secret-management solution for OS X, iOS and other platforms.
 
 # Official site

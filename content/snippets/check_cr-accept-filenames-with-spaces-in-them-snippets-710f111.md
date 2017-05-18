@@ -1,5 +1,6 @@
 ---
 title: check_cr(): accept filenames with spaces in them (snippets, 710f111)
+tags: snippets
 ---
 
 The check\_cr() function was misbehaving when the input files contained spaces in their names. This commit spawns a subshell so as to conveniently do a temporary override of the IFS (Internal Field Separator).

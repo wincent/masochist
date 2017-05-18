@@ -1,6 +1,6 @@
 ---
 title: mkdtemp 1.2 released
-tags: releases mkdtemp
+tags: releases mkdtemp blog
 ---
 
 Version 1.2 of the [mkdtemp](/wiki/mkdtemp) gem was just released. [mkdtemp](/wiki/mkdtemp) is a wrapper for the `mkdtemp()` function in the standard [C](/wiki/C) library, and it provides an easy means of securely creating temporary directories from within [Ruby](/wiki/Ruby) code.

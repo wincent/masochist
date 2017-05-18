@@ -1,5 +1,6 @@
 ---
 title: Involuntary reboot log #9
+tags: blog
 ---
 
 After a day spent trying to get the minimum number of development tools installed onto a clean install of a certain version of a certain OS, I finally decided to throw in the towel and give up. Unusable. The thing has a list of reproducible, hard-core bugs as long as your arm which I won't talk about here. When I tried to shut down the thing hung at a blank screen; after waiting about five minutes it was time for a hard reset. I am sure I could have waited five hours or five days and it would have still been stuck at that same point.

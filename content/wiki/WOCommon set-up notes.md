@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 # Setting up an empty repository

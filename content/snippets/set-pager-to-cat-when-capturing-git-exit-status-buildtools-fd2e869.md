@@ -1,5 +1,6 @@
 ---
 title: Set PAGER to cat when capturing git exit status (buildtools, fd2e869)
+tags: snippets
 ---
 
 This script worked but really only out of luck because of the way the environment is set up for commands run in backticks in a Ruby script run from Xcode. In normal operation "git diff" actually pipes all output through a pager, so even when using --quiet you won't get the exit code of git, but of the pager itself! This makes the "--exit-code" option to "git diff" useless, and the same is true for "--quiet" because it implies "--exit-code".

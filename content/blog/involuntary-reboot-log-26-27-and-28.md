@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #26, #27 and #28
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 ---
 
 I had a couple of these saved up, but now that I've just had another [kernel panic](/wiki/kernel_panic) I think it's time to catch up on the backlog of the [Involuntary Reboot Log](/wiki/Involuntary_Reboot_Log).

@@ -1,5 +1,5 @@
 ---
-tags: mogenerator
+tags: mogenerator wiki
 ---
 
 # See also
@@ -14,4 +14,3 @@ tags: mogenerator
 ## Local articles
 
 -   [Building mogenerator 1.13.1 on Mac OS X Leopard 10.5.6](/wiki/Building_mogenerator_1.13.1_on_Mac_OS_X_Leopard_10.5.6)
-

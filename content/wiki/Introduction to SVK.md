@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 # Creating a new depot
@@ -130,4 +130,3 @@ If you want to use `push` and `pull` without hitting the actual trunk you must c
 # See also
 
 -   <http://scottstuff.net/blog/articles/2005/07/07/distributed-development-with-svk>
-

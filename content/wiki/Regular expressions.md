@@ -1,6 +1,6 @@
 ---
 redirect: [[Regular expression]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: Make window draggable by background (REnamer, e1f154b)
+tags: snippets
 ---
 
 Seeing as the "background" of the window is actually the NSTableView subclass that fills the entire window, implementing this means overriding the mouseDown method in the subclass and running an event loop to allow the user to drag the window around.

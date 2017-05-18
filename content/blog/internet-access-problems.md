@@ -1,6 +1,6 @@
 ---
 title: Internet access problems
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

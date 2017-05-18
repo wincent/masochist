@@ -1,5 +1,6 @@
 ---
 title: Set up links/new (wincent.com, bae2447)
+tags: snippets
 ---
 
 And supporting CSS.

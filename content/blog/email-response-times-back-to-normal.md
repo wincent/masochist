@@ -1,5 +1,6 @@
 ---
 title: Email response times: back to normal
+tags: blog
 ---
 
 Just over a month ago I [advised](http://www.wincent.com/a/news/archives/2006/05/email_response.php) that I was switching ISPs and that the lack of net access would affect my email response times.

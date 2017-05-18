@@ -1,6 +1,6 @@
 ---
 redirect: [[Model]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.154
-tags: site updates
+tags: site updates snippets
 ---
+
 dac346d Add initial version of TagMapping
 a5c6063 Implement "soft" tag redirects in TagsController
 c6f2ee8 Implement TagMapping.canonicalize!

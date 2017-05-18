@@ -1,6 +1,6 @@
 ---
 title: More Rails breakage in 2.3.2
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

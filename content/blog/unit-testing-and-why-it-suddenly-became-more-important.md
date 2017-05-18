@@ -1,5 +1,6 @@
 ---
 title: Unit testing and why it suddenly became more important
+tags: blog
 ---
 
 I'm a big fan of unit testing. I admit that I was at first put off by the puritanical fanaticism of some of its most vocal advocates (the kind that MashWordsTogether even when they're not writing in programming wikis about their [favorite](http://www.xprogramming.com/xpmag/whatisxp.htm) [topic](http://www.extremeprogramming.org/)) but there was no arguing with the basic premise that automated testing should lead to more robust, bug-free software.

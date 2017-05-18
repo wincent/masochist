@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.9 available for download
+tags: blog
 ---
 
 [Synergy](http://synergy.wincent.com/) 2.9 is now on the servers and available for immediate download. A full changelog of features, bugfixes and other changes appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

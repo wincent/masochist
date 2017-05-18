@@ -1,5 +1,6 @@
 ---
 title: Bill Gates and Woody Allen
+tags: blog
 ---
 
 I found a link to Bill Gate's [WinHEC Keynote](http://www.microsoft.com/events/executives/billgates.mspx) in [this Slashot article](http://slashdot.org/articles/05/04/27/0422250.shtml) and was struck by three things:

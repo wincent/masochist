@@ -1,5 +1,5 @@
 ---
-tags: dns
+tags: dns wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ In November 2009 [I started](/blog/dns-changes) using [Nettica](/wiki/Nettica) a
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [DNS](/wiki/DNS): <http://en.wikipedia.org/wiki/Domain_Name_System>
-

@@ -1,5 +1,6 @@
 ---
 title: CoreData, weak linking and 10.3 support
+tags: blog
 ---
 
 Ok. So when I started work on [Synergy Advance](http://synergyadvance.com/) I decided to raise the bar on the minimum required OS version to Mac OS X 10.3 (Panther). It just made things easier to drop Jaguar (10.2) support and it allowed me to use delicious new technologies like [Cocoa Bindings](http://developer.apple.com/documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html). In the meantime I've continued to support Jaguar in [Synergy](http://synergy.wincent.com/) even though it's caused some difficulties along the way.

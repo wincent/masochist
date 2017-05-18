@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 ## Links
@@ -18,4 +18,3 @@ The official release notes were again garbled this time, so here is a cleaned-up
 > -   2 bug fixes
 >     -   fix --help output (had inaccurate info about 'nested' formatter)
 >     -   eliminate spicycode-rcov dev dependency for rubygems &lt; 1.3
-

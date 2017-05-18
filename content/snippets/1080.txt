@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.123
-tags: site updates
+tags: site updates snippets
 ---
+
 01a88e1 Break words nicely on small screens
 84cbd33 Use React tag widget on existing articles also
 6eac888 Work around contenteditable quirk when Ajax-editing tags

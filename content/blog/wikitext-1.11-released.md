@@ -1,6 +1,6 @@
 ---
 title: Wikitext 1.11 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.11, is now available. This is a maintenance release which includes a number of internal tweaks and cleanups in preparation for the imminent Rails 3 final release. This is still preliminary work, however, and it is almost certain that more changes will be required and will follow in a subsequent Wikitext update.

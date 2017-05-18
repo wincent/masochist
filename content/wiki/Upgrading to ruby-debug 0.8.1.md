@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug
+tags: ruby.debug wiki
 ---
 
 Update [ruby-debug](/wiki/ruby-debug):

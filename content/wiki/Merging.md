@@ -1,5 +1,5 @@
 ---
-tags: version.control
+tags: version.control wiki
 ---
 
 # Merging using [SVK](/wiki/SVK)
@@ -230,4 +230,3 @@ From this point on I'll be using [SVK](/wiki/SVK) to manage these branches as de
 
 -   [Branching](/wiki/Branching)
 -   [Tagging](/wiki/Tagging)
-

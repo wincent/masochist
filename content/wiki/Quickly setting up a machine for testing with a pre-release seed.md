@@ -1,5 +1,5 @@
 ---
-tags: leopard
+tags: leopard wiki
 ---
 
 # Note

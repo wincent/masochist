@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -54,4 +54,3 @@ Now create a new repository:
 1.  Fill in:
     1.   Name (for example, "WOHotKey")
     2.  Description (for example, "Mirror of the official WOHotKey repository at git.wincent.com")
-

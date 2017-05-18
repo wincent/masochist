@@ -1,6 +1,6 @@
 ---
 redirect: /products/mkdtemp
-tags: 
+tags: wiki
 ---
 
 

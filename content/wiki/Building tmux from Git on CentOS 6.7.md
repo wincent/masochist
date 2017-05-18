@@ -1,5 +1,5 @@
 ---
-tags: libevent tmux centos redhat ncurses
+tags: libevent tmux centos redhat ncurses wiki
 ---
 
 Notes from my latest foray:

@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.19)
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: vim-clipper 0.1 released
-tags: releases vim clipper vim.clipper
+tags: releases vim clipper vim.clipper blog
 cache_breaker: 1
 ---
 

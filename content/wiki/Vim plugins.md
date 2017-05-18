@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -49,4 +49,3 @@ Complementary to `surround.vim`, `repeat.vim` allows plugins to hook into the re
 
 -   rails.vim: <http://github.com/tpope/vim-rails> (see also <http://www.vim.org/scripts/script.php?script_id=1567>)
     -   screencast: <http://video.google.com/videoplay?docid=2139263225227275468>
-

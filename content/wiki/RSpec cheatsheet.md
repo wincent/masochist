@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 # Expecting an exception
@@ -25,4 +25,3 @@ lambda {
 -   [Rails controller testing cheatsheet](/wiki/Rails_controller_testing_cheatsheet)
 -   [Rails helper testing cheatsheet](/wiki/Rails_helper_testing_cheatsheet)
 -   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
-

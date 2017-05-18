@@ -1,6 +1,6 @@
 ---
 title: Ok, I give in, GitHub is actually good
-tags: git
+tags: git blog
 ---
 
 When [GitHub](/wiki/GitHub) first launched I was far from impressed with it. I had 3 main complaints about it:

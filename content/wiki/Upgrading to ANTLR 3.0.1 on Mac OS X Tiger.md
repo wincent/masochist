@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 I held off on this upgrade for a while because the 3.x series of [ANTLR](/wiki/ANTLR) is still fairly young and I had a working recognizer and didn't want to risk breaking it (in order to get my 3.0 recognizer working I'd had to make a couple of patches to the source and rebuild, and I wasn't sure if all or any of these patches had been accepted upstream into ANTLR for 3.0.1).
@@ -425,4 +425,3 @@ Fairly straightforward if you keep the modified tree lying around.
 
 -   [Patches to ANTLR 3.0.1](/wiki/Patches_to_ANTLR_3.0.1)
 -   [Installing ANTLR 3.0.1 on Red Hat Enterprise Linux](/wiki/Installing_ANTLR_3.0.1_on_Red_Hat_Enterprise_Linux)
-

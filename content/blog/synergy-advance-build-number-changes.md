@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance build number changes
+tags: blog
 ---
 
 As of today the build numbering system used in [Synergy Advance](http://advance.wincent.com/) has undergone a once-off change and I wanted to explain here to help clear up any confusion that it may cause.

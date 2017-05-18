@@ -1,5 +1,5 @@
 ---
-tags: tiger heckle updates
+tags: tiger heckle updates wiki
 cache_breaker: 1
 ---
 

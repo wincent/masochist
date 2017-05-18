@@ -1,5 +1,5 @@
 ---
-tags: zentest
+tags: zentest wiki
 ---
 
 [ZenTest 3.6.1](/wiki/ZenTest_3.6.1) was released on 23 July 2007.
@@ -16,4 +16,3 @@ tags: zentest
 
 -   [Upgrading to ZenTest 3.6.1 using RubyGems on Mac OS X Tiger](/wiki/Upgrading_to_ZenTest_3.6.1_using_RubyGems_on_Mac_OS_X_Tiger)
 -   Official release announcement: <http://blog.zenspider.com/archives/2007/07/zentest_version_361_has_been_released.html>
-

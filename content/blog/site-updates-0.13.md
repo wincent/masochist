@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.13)
-tags: site
+tags: site blog
 ---
 
 Just deployed some minor tweaks to the site:

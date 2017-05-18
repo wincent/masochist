@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 In order to sign or verify tags with [Git](/wiki/Git) it is necessary to have [GnuPG](/wiki/GnuPG) installed. Notes on how I installed it on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger) can be found in "[Git quickstart](/wiki/Git_quickstart)".

@@ -1,5 +1,6 @@
 ---
 title: Set up ignores in test subdirectory (wincent.com, 0169c6c)
+tags: snippets
 ---
 
 Set up a gitignore file to ignore everything inside the test subdirectory.

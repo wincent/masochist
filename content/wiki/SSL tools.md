@@ -1,6 +1,6 @@
 ---
 redirect: [[SSL]]
-tags: 
+tags: wiki
 ---
 
 

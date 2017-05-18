@@ -1,6 +1,6 @@
 ---
 redirect: [[rspec-users]]
-tags: 
+tags: wiki
 ---
 
 

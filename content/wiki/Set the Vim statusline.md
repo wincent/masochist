@@ -1,5 +1,5 @@
 ---
-tags: vim recipe
+tags: vim recipe wiki
 ---
 
 To customize the [Vim](/wiki/Vim) statusline, stick something like this in your `~/.vimrc`:

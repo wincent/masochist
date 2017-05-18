@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.117
-tags: site updates
+tags: site updates snippets
 ---
+
 db4bd76 Remove Twitter integration

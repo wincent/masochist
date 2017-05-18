@@ -1,6 +1,6 @@
 ---
 title: Automatic wrapping of Git commit messages using Vim
-tags: git vim
+tags: git vim blog
 ---
 
 I just noticed that since changing my `filetype` setting in my `~/.vimrc` from:

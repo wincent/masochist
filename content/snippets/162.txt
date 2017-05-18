@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.105
-tags: site updates
+tags: site updates snippets
 ---
+
 53bf00e Sync remote nginx config
 fe99bf1 Tiny tweak to display CSS

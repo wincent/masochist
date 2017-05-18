@@ -1,9 +1,9 @@
 ---
-tags: python os.x
+tags: python os.x wiki
 cache_breaker: 1
 ---
 
-    wget http://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2
+wget http://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2
     tar xjvf Python-2.5.tar.bz2 
     cd Python-2.5/
     ./configure

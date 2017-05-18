@@ -1,6 +1,6 @@
 ---
 title: Wikitext 1.10 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.10, is now available. This release adds one minor new feature, a `wikitext` [command line](/wiki/command_line) tool. See the [high-level](http://wikitext.rubyforge.org/files/doc/RELEASE-NOTES.html) or [low-level release notes](http://rubyforge.org/frs/shownotes.php?release_id=41033) for more details.

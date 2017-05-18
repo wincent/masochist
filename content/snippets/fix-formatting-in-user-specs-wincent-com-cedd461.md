@@ -1,5 +1,6 @@
 ---
 title: Fix formatting in user specs (wincent.com, cedd461)
+tags: snippets
 ---
 
 This is a whitespace-only fix (purely aesthetic).

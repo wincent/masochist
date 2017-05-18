@@ -1,5 +1,5 @@
 ---
-tags: monit
+tags: monit wiki
 ---
 
 Example of trying to debug a failure to start a [Unicorn](/wiki/Unicorn) process for a `rails` user:
@@ -17,4 +17,3 @@ $ /bin/env PATH=/rails-user-home/bin:/sbin:/bin:/usr/sbin:/usr/bin \
 # Source
 
 -   <http://stackoverflow.com/questions/3356476/debugging-monit>
-

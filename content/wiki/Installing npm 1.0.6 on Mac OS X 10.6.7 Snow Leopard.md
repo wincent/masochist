@@ -1,5 +1,5 @@
 ---
-tags: npm
+tags: npm wiki
 ---
 
 The [npm](/wiki/npm) site recommends installing the latest version by piping the output of a `curl` invocation into `sh`, but I prefer to review and install a specific version:

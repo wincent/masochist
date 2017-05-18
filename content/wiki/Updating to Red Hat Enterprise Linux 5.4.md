@@ -1,5 +1,5 @@
 ---
-tags: red.hat updates
+tags: red.hat updates wiki
 ---
 
 Update everything at once, including the kernel:

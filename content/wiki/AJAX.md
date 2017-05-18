@@ -1,5 +1,5 @@
 ---
-tags: development web
+tags: development web wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [AJAX](/wiki/AJAX): <http://en.wikipedia.org/wiki/AJAX>
-

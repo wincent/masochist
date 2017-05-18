@@ -1,6 +1,5 @@
 ---
-tags: gmail
+tags: gmail wiki
 ---
 
 -   [Wikipedia](/wiki/Wikipedia) article on [Gmail](/wiki/Gmail): <https://en.wikipedia.org/wiki/Gmail>
-

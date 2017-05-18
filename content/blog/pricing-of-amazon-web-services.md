@@ -1,6 +1,6 @@
 ---
 title: Pricing of Amazon Web Services
-tags: site aws
+tags: site aws blog
 cache_breaker: 1
 ---
 

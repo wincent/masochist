@@ -1,5 +1,5 @@
 ---
-tags: leopard git updates
+tags: leopard git updates wiki
 ---
 
 Notes made while updating to Git 1.6.3.1 on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.7:

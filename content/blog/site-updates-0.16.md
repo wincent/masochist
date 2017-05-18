@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.16)
-tags: site
+tags: site blog
 ---
 
 I've just deployed some updates to the site, which mean that I'll be able to start adding videos (generally screencasts) to the product pages in the form of lightboxes. This is an extension of the lightbox effect that you can already see on the [Synergy](/wiki/Synergy) product pages, for example.

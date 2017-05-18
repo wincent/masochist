@@ -1,5 +1,5 @@
 ---
-tags: gnome
+tags: gnome wiki
 ---
 
 Best suggestion for this I've seen so far is [here](http://wujingyue.blogspot.com/2012/06/let-ubuntu-gnome-terminal-support-256.html):

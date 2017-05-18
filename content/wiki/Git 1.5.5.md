@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 [Git 1.5.5](/wiki/Git_1.5.5) was released on or about 9 April 2008.
@@ -219,4 +219,3 @@ This is a local copy of the [official release notes](http://repo.or.cz/w/git.git
 ## See also
 
 -   [Upgrading to Git 1.5.5](/wiki/Upgrading_to_Git_1.5.5)
-

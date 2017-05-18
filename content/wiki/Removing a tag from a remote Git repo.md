@@ -1,5 +1,5 @@
 ---
-tags: git tag
+tags: git tag wiki
 ---
 
 ```shell

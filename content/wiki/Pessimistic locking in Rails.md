@@ -1,6 +1,6 @@
 ---
 redirect: [[Locking in Rails]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Looking for a more pleasant man-page authoring solution
-tags: perl documentation
+tags: perl documentation blog
 cache_breaker: 1
 ---
 

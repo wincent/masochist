@@ -1,5 +1,6 @@
 ---
 title: Add new instance variable, space_to_underscore (wikitext, adfcb69)
+tags: snippets
 ---
 
 This instance variable will permit the creation of MediaWiki-style links, where \[\[foo bar\]\] is a like to "/wiki/foo\_bar" rather than "/wiki/foo%20bar".

@@ -1,5 +1,6 @@
 ---
 title: Object-oriented templating
+tags: blog
 ---
 
 I'm in the process of falling in love with object-oriented templating, and specifically with the [Cheetah](http://cheetahtemplate.org/) Python-powered templating engine.

@@ -1,5 +1,5 @@
 ---
-tags: less
+tags: less wiki
 ---
 
 ```shell

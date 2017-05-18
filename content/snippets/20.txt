@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.31
-tags: site
+tags: site snippets
 ---
+
 0ce6830 Update to Mail 2.2.15 (security vulnerability)

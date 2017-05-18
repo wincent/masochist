@@ -1,5 +1,5 @@
 ---
-tags: gpg
+tags: gpg wiki
 ---
 
 # Installation

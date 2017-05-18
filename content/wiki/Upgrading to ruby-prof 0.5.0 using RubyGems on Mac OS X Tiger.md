@@ -1,5 +1,5 @@
 ---
-tags: tiger ruby.prof updates
+tags: tiger ruby.prof updates wiki
 cache_breaker: 1
 ---
 

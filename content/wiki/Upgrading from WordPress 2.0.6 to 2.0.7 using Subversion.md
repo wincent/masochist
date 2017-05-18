@@ -1,5 +1,5 @@
 ---
-tags: wordpress subversion
+tags: wordpress subversion wiki
 ---
 
 Last night the [WordPress](/wiki/WordPress) folks announced a rushed new release to address what is apparently a pretty major flaw in [PHP](/wiki/PHP)'s [Zend Engine](/wiki/Zend_Engine). I unfortunately didn't have a lot of time to do a thorough upgrade (with backups etc) but I felt that quickly patching was important given that I didn't have time to find out whether Red Hat had already pushed out a fix for the PHP flaw (there doesn't seem to be a [CVE](/wiki/CVE) number for this issue yet, not does it appear in the [Red Hat "Days of Risk Report"](/wiki/Red_Hat_%22Days_of_Risk_Report%22) yet); so I decided to bite the bullet and do the famous "Five second upgrade":
@@ -38,4 +38,3 @@ See the last upgrade notes for a more detailed procedure ("[Upgrading from WordP
 -   2.0.7 tag in [Subversion](/wiki/Subversion) repository: <http://svn.automattic.com/wordpress/tags/2.0.7/>
 -   [Zend Engine](/wiki/Zend_Engine) hashtable bug: <http://www.hardened-php.net/hphp/zend_hash_del_key_or_index_vulnerability.html>
 -   [WordPress](/wiki/WordPress) workaround for [Zend](/wiki/Zend) bug: <http://trac.wordpress.org/changeset/4717>
-

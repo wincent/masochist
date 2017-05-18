@@ -1,6 +1,6 @@
 ---
 redirect: [[Ruby on Rails]]
-tags: 
+tags: wiki
 ---
 
 

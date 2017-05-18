@@ -1,6 +1,6 @@
 ---
 redirect: [[buildtools]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 If you have the [Subversion](/wiki/Subversion) [Perl](/wiki/Perl) bindings installed then you can install [SVK](/wiki/SVK) with the following:
@@ -16,4 +16,3 @@ If you don't have the bindings installed then you will need to build them. In my
 # See also
 
 -   Alternate installation instructions: <http://www.bieberlabs.com/wordpress/archives/2004/11/30/using-svk>
-

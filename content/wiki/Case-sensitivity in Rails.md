@@ -1,5 +1,5 @@
 ---
-tags: rails mysql
+tags: rails mysql wiki
 ---
 
 Doing [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails) I recently discovered that [MySQL](/wiki/MySQL) does case-insensitive comparisons by default, and more importantly, that *even if you tell Rails to force case-sensitive comparisons you won't get them*.

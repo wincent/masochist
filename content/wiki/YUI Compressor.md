@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 cache_breaker: 1
 ---
 
@@ -147,4 +147,3 @@ From the official site:
 -   Official site:
     -   Current: <http://developer.yahoo.com/yui/compressor/>
     -   Old: <http://www.julienlecomte.net/yuicompressor/>
-

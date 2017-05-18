@@ -1,5 +1,6 @@
 ---
 title: Subversion maintenance
+tags: blog
 ---
 
 The Wincent public Subversion repository is currently down for maintenance. It will be up again shortly.

@@ -1,5 +1,5 @@
 ---
-tags: aws ebs ec2
+tags: aws ebs ec2 wiki
 ---
 
 These are notes made while creating a clone of an existing [EC2](/wiki/EC2) instance, based on [EBS](/wiki/EBS) snapshots, for testing purposes. Although the notes are specific to my set-up, they give an indication of the kind of procedure that could be applied to any EBS-backed EC2 instance.

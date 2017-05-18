@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.82
-tags: site updates
+tags: site updates snippets
 ---
+
 a510ed7 Update assets submodule with Clipper resources

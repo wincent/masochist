@@ -1,6 +1,6 @@
 ---
 title: Living in a world of bugs
-tags: rant
+tags: rant blog
 ---
 
 What a bug-plagued existence we lead. Let's take a look back over my last hour.

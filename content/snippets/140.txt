@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.88
-tags: site updates
+tags: site updates snippets
 ---
+
 a053d83 Use shorter URLs in tweets
 04bd957 Use base-36-encoded short IDs on /t/ links
 080c58f Use Base-79 in short links

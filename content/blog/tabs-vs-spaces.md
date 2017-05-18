@@ -1,5 +1,6 @@
 ---
 title: Tabs vs spaces
+tags: blog
 ---
 
 [Linus weighs in](http://marc.info/?l=git&m=119256283906643&w=2), in typical fashion, on the [tabs versus spaces](http://www.google.com/search?q=tabs+vs+spaces) debate:

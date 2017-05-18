@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 This page is intended to be a brief summary of [ANTLR](/wiki/ANTLR) grammar problems (warnings), what they mean, and how to solve them.

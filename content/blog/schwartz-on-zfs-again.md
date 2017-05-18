@@ -1,5 +1,6 @@
 ---
 title: Schwartz on ZFS, again
+tags: blog
 ---
 
 Jonathan Schwartz has [just remarked](http://blogs.sun.com/jonathan/entry/one_plus_one_is_fifty):

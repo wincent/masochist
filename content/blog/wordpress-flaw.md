@@ -1,5 +1,6 @@
 ---
 title: WordPress flaw
+tags: blog
 ---
 
 So a new [WordPress](http://www.wincent.com/knowledge-base/WordPress) release is out with the usual [spin](http://wordpress.org/development/2007/06/wordpress-221/):

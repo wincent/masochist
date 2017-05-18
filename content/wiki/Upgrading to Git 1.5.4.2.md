@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 cache_breaker: 1
 ---
 

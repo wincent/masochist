@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Disappointed with the [WordPress](/wiki/WordPress) security track record, I've decided to remove it from my systems. The straw that broke the camel's back was a [cracker replacing the official WordPress 2.1.1 archive on wordpress.org with a trojan](http://wordpress.org/development/2007/03/upgrade-212/).
@@ -19,4 +19,3 @@ And uploaded it to the server in the place of my [WordPress](/wiki/WordPress) in
 -   [Slashdot](/wiki/Slashdot) coverage of 2.1.1 incident: <http://it.slashdot.org/article.pl?sid=07/03/03/0427211>
 -   [Netcraft](/wiki/Netcraft) coverage: <http://news.netcraft.com/archives/2007/03/03/wordpress_distribution_compromised_update_released.html>
 -   Other reactions: <http://fukamachi.org/wp/2007/03/03/wordpress-211-dangerous-upgrade-to-212/>
-

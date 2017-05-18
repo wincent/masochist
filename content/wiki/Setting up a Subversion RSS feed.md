@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 In order to better communicate with users I've decided to set up a Subversion activity RSS feed. My plan is to use post-commit hook scripts to generate simple RSS feeds showing the repository name, revision number (in the title) and the commit log message (in the body). I don't plan on including any more detail seeing as some of the repositories in question are closed-source. Even for the open-source repositories I don't intend to include any additional information; the intention of the feed is not to drive people to the Subversion repository but to keep people aware of the changes that I'm working on in a general sense.
@@ -18,4 +18,3 @@ In the end I decided to send posts to Movable Type via XML-RPC (also supported i
 # See also
 
 -   <http://www.friday.com/bbum/2006/08/17/howto-adding-an-rss-feed-to-a-subversion-server/>
-

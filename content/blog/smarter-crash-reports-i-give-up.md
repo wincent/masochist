@@ -1,5 +1,6 @@
 ---
 title: Smarter crash reports: I give up
+tags: blog
 ---
 
 A long time ago, before Unsanity released "Smart Crash Reports", I tried to come up with my own version of Apple's crash reporter application. I did this because the existing third-party solutions that I saw looked like horrible kludges. They'd do things like watch for the launch of the Apple crash reporter (polling), kill it so that the window wouldn't bother the user, throw up their own window, wait for the crash report to be written to the disk (again polling), and finally let the user send the crash report.

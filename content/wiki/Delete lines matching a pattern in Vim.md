@@ -1,5 +1,5 @@
 ---
-tags: vim recipe
+tags: vim recipe wiki
 cache_breaker: 1
 ---
 
@@ -22,4 +22,3 @@ Or:
 # See also
 
 -   <http://vim.wikia.com/wiki/Delete_all_lines_containing_a_pattern>
-

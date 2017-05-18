@@ -1,6 +1,6 @@
 ---
 title: Synergy open source release
-tags: synergy open.source
+tags: synergy open.source blog
 cache_breaker: 1
 ---
 

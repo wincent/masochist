@@ -1,5 +1,5 @@
 ---
-tags: emacs
+tags: emacs wiki
 ---
 
 ## `align-regexp`

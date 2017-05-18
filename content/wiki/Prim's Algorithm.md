@@ -1,5 +1,5 @@
 ---
-tags: algorithms
+tags: algorithms wiki
 cache_breaker: 1
 ---
 
@@ -60,4 +60,3 @@ Unlike [Kruskal's Algorithm](/wiki/Kruskal%27s_Algorithm), [Prim's Algorithm](/w
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [Prim's Algorithm](/wiki/Prim%27s_Algorithm): <http://en.wikipedia.org/wiki/Prim%27s_algorithm>
-

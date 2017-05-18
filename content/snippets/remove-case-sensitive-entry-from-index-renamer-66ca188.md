@@ -1,5 +1,6 @@
 ---
 title: Remove case-sensitive entry from index (REnamer, 66ca188)
+tags: snippets
 ---
 
 Git exposes the problems in HFS+ with case sensitivity. In this case I renamed a folder from "Tool" to "tool", and because I wasn't careful Git wound up with two entries in the index which were actually the same file (Tool/main.m and tool/main.m).

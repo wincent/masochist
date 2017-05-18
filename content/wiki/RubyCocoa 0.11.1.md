@@ -1,5 +1,5 @@
 ---
-tags: leopard rubycocoa
+tags: leopard rubycocoa wiki
 ---
 
 [RubyCocoa 0.11.1](/wiki/RubyCocoa_0.11.1) was released on 4 June 2007.
@@ -17,4 +17,3 @@ The reason why I'm so excited about this is because I'm looking forward to speed
 -   Release notes: <https://sourceforge.net/project/shownotes.php?release_id=513482>
 -   Download: <https://sourceforge.net/project/showfiles.php?group_id=44114&release_id=513482>
 -   "The Sleeper Hit Feature in Leopard": <http://theocacao.com/document.page/373>
-

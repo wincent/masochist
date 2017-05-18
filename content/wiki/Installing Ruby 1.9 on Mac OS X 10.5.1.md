@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 [Ruby 1.9](/wiki/Ruby_1.9) is a development (not production) release so I wanted to install it in an isolated corner of the filesystem for testing purposes only, and leave the official (production) Ruby build untouched.

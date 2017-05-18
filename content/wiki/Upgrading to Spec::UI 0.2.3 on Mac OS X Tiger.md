@@ -1,5 +1,5 @@
 ---
-tags: rspec tiger updates
+tags: rspec tiger updates wiki
 cache_breaker: 1
 ---
 
@@ -68,4 +68,3 @@ I'd like to be able to install [Spec::UI](/wiki/Spec%3a%3aUI) as a [Rails](/wiki
 
 -   [Upgrading to RSpec 1.0.1 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.1_on_Mac_OS_X_Tiger)
 -   [Upgrading to RSpec 1.0.2 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.2_on_Mac_OS_X_Tiger)
-

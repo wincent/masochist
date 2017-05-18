@@ -1,5 +1,5 @@
 ---
-tags: tiger hoe updates
+tags: tiger hoe updates wiki
 cache_breaker: 1
 ---
 

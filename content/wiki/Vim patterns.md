@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -46,4 +46,3 @@ You can start the pattern with `\v` to activate "very magic" behavior, meaning t
 # See also
 
 -   [Delete lines matching a pattern in Vim](/wiki/Delete_lines_matching_a_pattern_in_Vim)
-

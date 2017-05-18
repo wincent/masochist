@@ -1,5 +1,6 @@
 ---
 title: WOCommon r649, 129 items changed
+tags: snippets
 ---
 
 Install Haml 1.7 backend

@@ -1,6 +1,6 @@
 ---
 title: MacBook or MacBook Air?
-tags: 
+tags: blog
 ---
 
 A totally hypothetical question right now, seeing as I don't have the money to buy a new machine; but I was browsing the Apple site comparing the specs and the prices, wondering about which one I would choose.

@@ -1,6 +1,6 @@
 ---
 title: Pinging from around the world
-tags: net
+tags: net blog
 ---
 
 A friend of mine just told me about [just-ping.com](http://just-ping.com/), a free site that will ping any domain name or IP address that you specify from multiple locations around the world. Not sure how scientific or reliable this is, but it can give a general indication of the "reachability" of your site from different places around the globe.

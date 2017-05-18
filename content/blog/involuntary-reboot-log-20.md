@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #20
+tags: blog
 ---
 
 Another hard reset, this time not due to a fault in [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) but rather due to my iMac's flakey construction (checking a USB cable at the back of the enclosure resulted in the wonky power socket temporarily cutting power to the machine). Another half hour lost while rebooting from the install DVD and running Disk First Aid.

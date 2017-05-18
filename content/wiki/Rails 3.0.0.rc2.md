@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # Release announcement
@@ -51,4 +51,3 @@ tags: rails
 <http://github.com/rails/rails/blob/8931dd17a9864728bd33d8f048f8f0096d5e64a8/railties/CHANGELOG>
 
 -   No material changes (see <http://github.com/rails/rails/compare/v3.0.0_RC...v3.0.0_RC2> for gory details)
-

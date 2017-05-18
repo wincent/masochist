@@ -1,6 +1,6 @@
 ---
 redirect: [[RFC 1893]]
-tags: 
+tags: wiki
 ---
 
 

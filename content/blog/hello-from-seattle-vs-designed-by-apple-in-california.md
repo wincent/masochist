@@ -1,5 +1,6 @@
 ---
 title: "Hello from Seattle" vs "Designed by Apple in California"
+tags: blog
 ---
 
 [Well said](http://www.joelonsoftware.com/items/2007/10/05.html):

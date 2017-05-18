@@ -1,5 +1,6 @@
 ---
 title: Kagi store prices now set in Euros
+tags: blog
 ---
 
 A number of changes have just gone live to the [Wincent store](https://secure.wincent.com/s/kagi/) hosted by the Kagi payment processor service:

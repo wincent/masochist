@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #59
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ I. Cannot. Wait. To. Replace. This. Machine.
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 1326 days
 -   Average time between failures: 22.48 days
-

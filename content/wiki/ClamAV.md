@@ -1,5 +1,5 @@
 ---
-tags: clamav
+tags: clamav wiki
 ---
 
 <http://clamav.net/>

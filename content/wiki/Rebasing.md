@@ -1,6 +1,6 @@
 ---
 redirect: [[Git rebase explained]]
-tags: 
+tags: wiki
 ---
 
 

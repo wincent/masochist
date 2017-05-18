@@ -1,5 +1,5 @@
 ---
-tags: mysql
+tags: mysql wiki
 ---
 
 # Example: one local [OS](/wiki/OS) partition to another

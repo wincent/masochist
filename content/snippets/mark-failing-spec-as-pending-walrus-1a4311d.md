@@ -1,5 +1,6 @@
 ---
 title: Mark failing spec as pending (Walrus, 1a4311d)
+tags: snippets
 ---
 
 This is a spec that has long failed because of limitations in the boundary checking in the current algorithm. It's a non-critical limitation though so I've always let it slide.

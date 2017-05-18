@@ -1,6 +1,6 @@
 ---
 title: Minor site updates
-tags: site
+tags: site blog
 ---
 
 Just deployed a new version of the site, mostly consisting of changes to the supporting infrastructure (testing frameworks and the like). About the only user visible change should be that [JavaScript](/wiki/JavaScript) is now minimized a little more efficiently using the [Google](/wiki/Google) [Closure](/wiki/Closure) compiler, so page loads should be about 1% faster.

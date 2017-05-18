@@ -1,5 +1,5 @@
 ---
-tags: unix worse.is.better
+tags: unix worse.is.better wiki
 cache_breaker: 1
 ---
 
@@ -13,4 +13,3 @@ cache_breaker: 1
 # See also
 
 -   <http://en.wikipedia.org/wiki/Perfect_is_the_enemy_of_good>
-

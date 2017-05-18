@@ -1,5 +1,5 @@
 ---
-tags: acl
+tags: acl wiki
 cache_breaker: 1
 ---
 
@@ -33,4 +33,3 @@ For a concerete example of setting up ACLs on Mac OS X, see "[Installing nginx 0
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [ACLs](/wiki/ACLs): <http://en.wikipedia.org/wiki/Access_control_list>
-

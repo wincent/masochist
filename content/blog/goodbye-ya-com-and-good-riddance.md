@@ -1,5 +1,6 @@
 ---
 title: Goodbye ya.com, and good riddance
+tags: blog
 ---
 
 [My saga](http://www.wincent.com/a/about/wincent/weblog/archives/2006/04/yacom_has_the_w.php) with my ISP [ya.com](http://ya.com/) is drawing to a close.

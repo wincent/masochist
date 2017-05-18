@@ -1,6 +1,6 @@
 ---
 redirect: [[Abstract Syntax Tree]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 redirect: [[object-oriented templating]]
-tags: 
+tags: wiki
 ---
 
 

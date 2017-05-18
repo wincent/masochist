@@ -1,5 +1,5 @@
 ---
-tags: centos silver.searcher
+tags: centos silver.searcher wiki
 ---
 
 I had conflicting packages on this box, so the simple version didn't work:

@@ -1,6 +1,6 @@
 ---
 title: New backup disk
-tags: backup
+tags: backup blog
 ---
 
 I used to have a pretty robust backup routine:

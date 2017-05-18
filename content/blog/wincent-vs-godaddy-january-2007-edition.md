@@ -1,5 +1,6 @@
 ---
 title: Wincent vs GoDaddy, January 2007 Edition
+tags: blog
 ---
 
 It's time to renew again and anyone who reads this blog knows how disappointed I am with GoDaddy's renewal prices ([1](http://www.wincent.com/a/about/wincent/weblog/archives/2005/05/godaddy_vs_netw.php), [2](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php), [3](http://www.wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php), [4](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/darn_godaddy.php), [5](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/fighting_godadd.php)).

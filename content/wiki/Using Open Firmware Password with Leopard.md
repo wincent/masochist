@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 See the following page for information about removing Open Firmware Password protection:

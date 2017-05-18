@@ -1,5 +1,6 @@
 ---
 title: Rewrapping in NSMutableString editing utilities (WOCommon, 2ca60b4)
+tags: snippets
 ---
 
 Rewrap for better readability.

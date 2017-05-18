@@ -1,8 +1,9 @@
 ---
 title: USB snapshot script
-tags:
+tags: snippets
 cache_breaker: 1
 ---
+
 #!/usr/bin/env ruby
 
 require 'date'

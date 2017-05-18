@@ -1,6 +1,6 @@
 ---
 redirect: [[Functional testing]]
-tags: 
+tags: wiki
 ---
 
 

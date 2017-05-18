@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.5 released
-tags: command.t
+tags: command.t blog
 ---
 
 Available from:

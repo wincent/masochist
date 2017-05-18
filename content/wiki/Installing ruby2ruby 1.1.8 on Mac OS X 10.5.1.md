@@ -1,5 +1,5 @@
 ---
-tags: ruby.ruby
+tags: ruby.ruby wiki
 ---
 
 Notes made while installing [ruby2ruby 1.1.8](/wiki/ruby2ruby_1.1.8) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).

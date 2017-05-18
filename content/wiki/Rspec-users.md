@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 The [rspec-users](/wiki/rspec-users) mailing list is hosted at: <http://rubyforge.org/mailman/listinfo/rspec-users>
@@ -16,4 +16,3 @@ Some questions and posts I've made to the list:
 -   "BDD screencast": <http://rubyforge.org/pipermail/rspec-users/2007-May/001647.html>
 -   "Specs for code stored in rails\_app/lib/": <http://rubyforge.org/pipermail/rspec-users/2007-May/001696.html>
 -   "Specs for ApplicationController, where to put them?": <http://rubyforge.org/pipermail/rspec-users/2007-May/001697.html>
-

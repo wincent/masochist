@@ -1,6 +1,6 @@
 ---
 redirect: [[cloud computing]]
-tags: 
+tags: wiki
 ---
 
 

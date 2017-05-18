@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 To hide an application from the Dock etc set to "1" (a string).

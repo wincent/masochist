@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 From the official release notes posted to the [rspec-users](/wiki/rspec-users) mailing list:
@@ -52,4 +52,3 @@ From the official release notes posted to the [rspec-users](/wiki/rspec-users) m
 # See also
 
 -   Release notes: <http://rubyforge.org/pipermail/rspec-users/2010-January/016219.html>
-

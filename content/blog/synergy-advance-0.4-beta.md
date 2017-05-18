@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance 0.4 beta
+tags: blog
 ---
 
 [Synergy Advance](http://synergyadvance.com/) version 0.4 beta has just been released to beta testers. [Purchase](https://secure.wincent.com/a/products/synergy-advance/purchase/), [donate](https://secure.wincent.com/a/products/synergy-advance/purchase/), [sponsor](https://secure.wincent.com/a/products/synergy-advance/purchase/), read the [changelog](http://www.wincent.com/a/products/synergy-advance/history/), or [download](http://www.wincent.com/download.php?item=SynergyAdvance0.4b.dmg) (2.9MB).

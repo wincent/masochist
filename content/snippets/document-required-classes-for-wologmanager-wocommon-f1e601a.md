@@ -1,5 +1,6 @@
 ---
 title: Document required classes for WOLogManager (WOCommon, f1e601a)
+tags: snippets
 ---
 
 Code-level documentation.

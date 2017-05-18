@@ -1,5 +1,5 @@
 ---
-tags: rdoc
+tags: rdoc wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ Principal criticisms of RDoc include:
 ## See also
 
 -   Official project page: <http://rubyforge.org/projects/rdoc/>
-

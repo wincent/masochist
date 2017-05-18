@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.6 released
+tags: blog
 ---
 
 [Synergy](http://synergy.wincent.com/) 2.6 has just been released. This is a maintenance release. A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

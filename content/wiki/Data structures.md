@@ -1,5 +1,5 @@
 ---
-tags: data.structures
+tags: data.structures wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ cache_breaker: 1
     -   [Binary tree](/wiki/Binary_tree)
     -   [Binary search tree](/wiki/Binary_search_tree)
 -   [Union-Find](/wiki/Union-Find)
-

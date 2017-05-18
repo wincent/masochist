@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
-    sh -n path_to_script.sh
+sh -n path_to_script.sh

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 [Gitweb](/wiki/Gitweb) or `gitweb.cgi` is a [CGI](/wiki/CGI) script included with [Git](/wiki/Git) that provides read-only browser-based access to a repository (or repositories).

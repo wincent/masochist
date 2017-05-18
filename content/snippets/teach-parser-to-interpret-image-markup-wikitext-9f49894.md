@@ -1,5 +1,6 @@
 ---
 title: Teach parser to interpret image markup (wikitext, 9f49894)
+tags: snippets
 ---
 
 Given wikitext input like:

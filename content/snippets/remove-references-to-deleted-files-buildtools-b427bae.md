@@ -1,5 +1,6 @@
 ---
 title: Remove references to deleted files (buildtools, b427bae)
+tags: snippets
 ---
 
 Remove documentation that references deleted files.

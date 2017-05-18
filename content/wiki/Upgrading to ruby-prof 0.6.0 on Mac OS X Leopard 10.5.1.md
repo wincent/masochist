@@ -1,5 +1,5 @@
 ---
-tags: leopard ruby.prof updates
+tags: leopard ruby.prof updates wiki
 cache_breaker: 1
 ---
 
@@ -36,4 +36,3 @@ cache_breaker: 1
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=18809>
-

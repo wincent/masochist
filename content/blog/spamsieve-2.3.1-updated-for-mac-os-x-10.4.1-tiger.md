@@ -1,5 +1,6 @@
 ---
 title: SpamSieve 2.3.1 updated for Mac OS X 10.4.1 Tiger
+tags: blog
 ---
 
 Yesterday's update to Mac OS X Tiger (now at version 10.4.1) broke compatibility with [SpamSieve](http://c-command.com/spamsieve/). Michael Tsai, the SpamSieve developer, had a 2.3.1 update ready to roll the same day to fix the problem.

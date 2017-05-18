@@ -1,5 +1,6 @@
 ---
 title: Synergy 1.6.1 released
+tags: blog
 ---
 
 I've just put an update to [Synergy](http://www.wincent.com/a/products/synergy-classic/), version 1.6.1, on the mirror servers. This is identical in all respects to the 1.6 release which went out this morning, but it corrects a display error in the Synergy Preferences. (Specifically, in the "About" tab the registration status was not correctly displayed.)

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 # Official release announcement
@@ -126,4 +126,3 @@ As posted to the [Git](/wiki/Git) mailing list:
 # See also
 
 -   [Updating to Git 1.6.2.4](/wiki/Updating_to_Git_1.6.2.4)
-

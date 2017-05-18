@@ -1,5 +1,6 @@
 ---
 title: Bansshee: my answer to SSH dictionary attacks
+tags: blog
 ---
 
 So SSH dictionary attacks are becoming increasingly common. Yesterday my server was hit 2,901 times by a pair of nincompoops trying brute-force dictionary attacks. I think the odds of such an attack succeeding are fairly small:

@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.0.1 released
-tags: releases command.t
+tags: releases command.t blog
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Big menus, really big menus, and frickin' huge menus
+tags: blog
 ---
 
 The submenus in [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/) can be pretty large if you have a large iTunes music library. There are submenus for Playlists, Genres and Artists. If your library has 50,000 songs in it then the submenu showing the library playlist alone will contain 50,000 menu items (and all of those items will appear in the Artists and Genres submenus too at various places). It's easy to see how this could get out of control. Furthermore, Cocoa won't allow you to use the same NSMenuItem in different NSMenus (at least the documentation tells you not to do it!) so if you want the same item to appear at multiple places in the menu hierarchy then you need to make a brand new copy of it for each place where you want it included.

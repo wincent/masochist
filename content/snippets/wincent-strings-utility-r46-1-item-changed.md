@@ -1,5 +1,6 @@
 ---
 title: Wincent Strings Utility r46, 1 item changed
+tags: snippets
 ---
 
 Set svn:ignore for \*.mode1 file(s) in Xcode project bundle

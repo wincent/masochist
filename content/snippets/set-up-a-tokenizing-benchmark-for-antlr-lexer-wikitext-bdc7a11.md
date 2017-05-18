@@ -1,5 +1,6 @@
 ---
 title: Set up a tokenizing benchmark for ANTLR lexer (wikitext, bdc7a11)
+tags: snippets
 ---
 
 This function doesn't actually do anything with the tokens, it just asks the lexer for tokens as fast as it can dish them out.

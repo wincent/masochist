@@ -1,5 +1,5 @@
 ---
-tags: git centos
+tags: git centos wiki
 ---
 
 On CentOS I install into my home directory:

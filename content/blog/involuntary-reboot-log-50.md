@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #50
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 ---
 
 Somewhat of an "anti-milestone", just had another [kernel panic](/wiki/kernel_panic), the 25th for this machine and the 50th involuntary reboot.
@@ -11,4 +11,3 @@ Somewhat of an "anti-milestone", just had another [kernel panic](/wiki/kernel_pa
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 959 days
 -   Average time between failures: 19.18 days
-

@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot log #6
+tags: blog
 ---
 
 This time it was my fault, kind of. Trying to do some low-level Mach stuff to work around a bug in Mac OS X, I ran into a different bug in Mac OS X, and this one was enough to cause a kernel panic. From a regular unprivileged process. Ouch. A strong deterrent from continuing that line of development...

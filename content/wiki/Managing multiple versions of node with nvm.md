@@ -1,5 +1,5 @@
 ---
-tags: javascript nvm node
+tags: javascript nvm node wiki
 cache_breaker: 1
 ---
 
@@ -21,4 +21,3 @@ I don't anticipate using it often, so I haven't yet modified my [dotfiles](/wiki
 # See also
 
 -   [nvm vs n](/wiki/nvm_vs_n)
-

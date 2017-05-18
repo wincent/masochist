@@ -1,5 +1,6 @@
 ---
 title: Hextrapolate (revision 91)
+tags: snippets
 ---
 
 -   *Download name*: HextrapolateNightly(91).dmg

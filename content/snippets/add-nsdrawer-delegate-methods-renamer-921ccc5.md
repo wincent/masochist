@@ -1,5 +1,6 @@
 ---
 title: Add NSDrawer delegate methods (REnamer, 921ccc5)
+tags: snippets
 ---
 
 It appears that the automatic resizing of open drawers when the parent window resizes is broken on Leopard (at least, I can't remember it being like this under Tiger and I have seen one mailing list post from someone describing the same problem on Leopard).

@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 An older version of these notes can be found at "[Setting up autotest (with ZenTest versions prior to 3.6.0)](/wiki/Setting_up_autotest_%28with_ZenTest_versions_prior_to_3.6.0%29)". These notes apply to [ZenTest 3.6.0](/wiki/ZenTest_3.6.0) or later.
@@ -31,4 +31,3 @@ No special tweaks are necessary, unlike in previous versions.
 -   For use with [Rails](/wiki/Rails): <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
 -   For use with non-[Rails](/wiki/Rails) [Ruby](/wiki/Ruby) projects: <http://blog.nicksieger.com/articles/2007/01/30/rspec-autotest-for-standalone-projects>
 -   [ZenTest](/wiki/ZenTest) [API](/wiki/API) docs: <http://zentest.rubyforge.org/ZenTest/>
-

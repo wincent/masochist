@@ -1,5 +1,6 @@
 ---
 title: WONotificationCenter
+tags: blog
 ---
 
 I've revised my `WONotificationCenter` class to more elegantly and transparently handle the delivery of notifications to specific threads.

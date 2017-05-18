@@ -1,6 +1,6 @@
 ---
 redirect: [[Dock]]
-tags: 
+tags: wiki
 ---
 
 

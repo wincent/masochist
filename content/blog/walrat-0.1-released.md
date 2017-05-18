@@ -1,6 +1,6 @@
 ---
 title: Walrat 0.1 released
-tags: releases walrat
+tags: releases walrat blog
 cache_breaker: 1
 ---
 

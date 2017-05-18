@@ -1,5 +1,5 @@
 ---
-tags: leopard haml updates
+tags: leopard haml updates wiki
 cache_breaker: 1
 ---
 

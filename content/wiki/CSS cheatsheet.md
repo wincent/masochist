@@ -1,5 +1,5 @@
 ---
-tags: css
+tags: css wiki
 cache_breaker: 1
 ---
 
@@ -130,4 +130,3 @@ Other pseudo-element selectors:
 # See also
 
 -   The best [CSS](/wiki/CSS) selector tutorial on the web: <http://css.maxdesign.com.au/selectutorial/index.htm>
-

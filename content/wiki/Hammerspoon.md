@@ -1,6 +1,7 @@
 ---
-tags: hammerspoon
+tags: hammerspoon wiki
 ---
+
 Hammerspoon is a programmable OS X automation and scripting tool. I [use it for](https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.hammerspoon/init.lua) positioning windows using hot keys and in response to events (eg. plugging in or unplugging an external display, or launching an app).
 
 ## Why Hammerspoon?

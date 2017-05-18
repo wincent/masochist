@@ -1,6 +1,6 @@
 ---
 redirect: [[HTTP]]
-tags: 
+tags: wiki
 ---
 
 

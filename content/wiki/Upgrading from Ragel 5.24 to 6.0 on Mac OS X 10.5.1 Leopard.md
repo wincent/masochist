@@ -1,5 +1,5 @@
 ---
-tags: leopard ragel updates
+tags: leopard ragel updates wiki
 cache_breaker: 1
 ---
 

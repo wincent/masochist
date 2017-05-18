@@ -1,5 +1,5 @@
 ---
-tags: leopard svk
+tags: leopard svk wiki
 ---
 
 # Background
@@ -174,4 +174,3 @@ To the `sudoers` file:
 # See also
 
 -   [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)
-

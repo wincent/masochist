@@ -1,6 +1,6 @@
 ---
 title: Horrible idiom in Rails 3
-tags: rails
+tags: rails blog
 cache_breaker: 1
 ---
 

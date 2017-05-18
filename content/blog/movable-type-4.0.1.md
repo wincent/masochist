@@ -1,5 +1,6 @@
 ---
 title: Movable Type 4.0.1
+tags: blog
 ---
 
 This is my first post from my new [Movable Type](http://www.wincent.com/knowledge-base/Movable%20Type) install after the upgrade from the old version 3.35 to the new 4.0.1. I really couldn't be more impressed with the ease of the upgrade process; easily the best I've ever seen in a large web application. My only doubt was over my custom [wikitext](http://www.wincent.com/knowledge-base/wikitext) plug-in that I use to format a lot of the entries, but it seems that it works without any modifications on the new 4.0 series.

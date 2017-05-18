@@ -1,5 +1,5 @@
 ---
-tags: bash here.doc
+tags: bash here.doc wiki
 cache_breaker: 1
 ---
 
@@ -52,4 +52,3 @@ cache_breaker: 1
 # See also
 
 -   [Here document](/wiki/Here_document) section from *Advanced Bash Scripting Guide* found at: <http://tldp.org/LDP/abs/html/here-docs.html>
-

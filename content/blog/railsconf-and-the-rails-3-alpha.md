@@ -1,6 +1,6 @@
 ---
 title: RailsConf and the Rails 3 alpha
-tags: rails
+tags: rails blog
 ---
 
 It's not possible for me to attend conferences like [RailsConf](http://en.oreilly.com/rails2009/) so I tend not to pay much attention to them.

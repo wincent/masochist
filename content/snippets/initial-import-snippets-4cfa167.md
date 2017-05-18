@@ -1,5 +1,6 @@
 ---
 title: Initial import (snippets, 4cfa167)
+tags: snippets
 ---
 
 Initial repositor import (contains only README file).

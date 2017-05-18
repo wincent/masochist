@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 ## Release notes
@@ -89,4 +89,3 @@ tags: git
 ## See also
 
 -   [Updating to Git 1.6.0.2](/wiki/Updating_to_Git_1.6.0.2)
-

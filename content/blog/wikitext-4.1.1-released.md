@@ -1,6 +1,6 @@
 ---
 title: Wikitext 4.1.1 and 4.1.2 released
-tags: releases wikitext
+tags: releases wikitext blog
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: On Perl's beauty
+tags: blog
 ---
 
 From a [comment](http://developers.slashdot.org/comments.pl?sid=382803&cid=21613555) on [this Slashdot story](http://developers.slashdot.org/article.pl?sid=07/12/07/1511240):

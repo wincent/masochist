@@ -1,5 +1,6 @@
 ---
 title: Subversion hassles
+tags: blog
 ---
 
 I've just spent several hours [working around a Subversion problem](http://www.wincent.com/knowledge-base/Repository_migration#Caveat). I don't know whether the fault lay with the Subversion internals, is limited to the `svnadmin` tool's `load` functionality, or is really the fault of the underlying filesystem on Red Hat Linux. Whatever the root cause, it's cost me a bunch of hours.

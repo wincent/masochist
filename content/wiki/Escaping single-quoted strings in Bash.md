@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 ---
 
 Counter to your intuition, you would not escape:
@@ -21,4 +21,3 @@ ie:
 -   close the first part of the string (That)
 -   insert a backslashed single quote (\\')
 -   re-open and terminate the rest of the string (s cool)
-

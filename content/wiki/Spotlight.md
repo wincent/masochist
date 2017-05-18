@@ -1,5 +1,5 @@
 ---
-tags: spotlight
+tags: spotlight wiki
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ cache_breaker: 1
 ## Dead links
 
 -   <http://episteme.arstechnica.com/eve/forums/a/tpc/f/8300945231/m/728001865731/p/3>
-

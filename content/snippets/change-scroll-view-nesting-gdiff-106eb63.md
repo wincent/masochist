@@ -1,5 +1,6 @@
 ---
 title: Change scroll view nesting (gdiff, 106eb63)
+tags: snippets
 ---
 
 Instead of putting the gutter views and file views inside a scroll view put only the file views inside; this change is apparently necessary because otherwise I can't get the autoresizing behaviour and auto-showing/hiding of the horizontal scroll bar to work.

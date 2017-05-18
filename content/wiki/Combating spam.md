@@ -1,5 +1,5 @@
 ---
-tags: email
+tags: email wiki
 ---
 
 # Server-level blocking

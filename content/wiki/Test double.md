@@ -1,5 +1,5 @@
 ---
-tags: testing
+tags: testing wiki
 cache_breaker: 1
 ---
 

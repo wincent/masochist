@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 Here are some "quickstart" notes made while learning [ANTLR](/wiki/ANTLR). Mostly stuff that I needed to know coming from experience with [Walrus](/wiki/Walrus) (which uses a custom [Ruby](/wiki/Ruby) [DSL](/wiki/DSL) to define [Parsing Expression Grammars](/wiki/Parsing_Expression_Grammars)), and [Ragel](/wiki/Ragel) (which creates state machines).
@@ -172,4 +172,3 @@ The [C](/wiki/C) language target doesn't yet seem to be documented and there are
 -   An excellent tutorial, unfortunately written for [ANTLR](/wiki/ANTLR) 2: <http://javadude.com/articles/antlrtut/>
 -   [ANTLR command line options](/wiki/ANTLR_command_line_options)
 -   Incredibly useful [ANTLR](/wiki/ANTLR)-centric glossary covering a large number of terms and concepts related to [lexing](/wiki/lexing) and [parsing](/wiki/parsing): <http://www.antlr.org/doc/glossary.html>
-

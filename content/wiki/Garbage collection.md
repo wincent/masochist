@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 cache_breaker: 1
 ---
 

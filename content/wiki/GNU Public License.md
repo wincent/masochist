@@ -1,6 +1,6 @@
 ---
 redirect: [[GPL]]
-tags: 
+tags: wiki
 ---
 
 

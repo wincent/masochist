@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 I was recently looking for a copy of the [GPL](/wiki/GPL) version 3 in [RTF](/wiki/RTF) format but the [FSF](/wiki/FSF) website only provides copies in plain text, [LaTeX](/wiki/LaTeX) or [Texinfo](/wiki/Texinfo) formats ([see here](http://www.gnu.org/licenses/gpl-3.0.html)).

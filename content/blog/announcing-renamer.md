@@ -1,5 +1,6 @@
 ---
 title: Announcing REnamer
+tags: blog
 ---
 
 If you look at the [products listing](http://www.wincent.com/a/products/) you'll see that there is now a new entry in the ranks, [REnamer](http://renamer.wincent.com/).

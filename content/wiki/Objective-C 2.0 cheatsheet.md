@@ -1,5 +1,5 @@
 ---
-tags: objective.c
+tags: objective.c wiki
 ---
 
 # Properties
@@ -54,4 +54,3 @@ Including "is" in the getter accessor for booleans:
 # See also
 
 -   <http://the-lazy-programmer.com/blog/files/Objective-C%20cheat%20sheet.pdf>
-

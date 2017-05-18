@@ -1,5 +1,5 @@
 ---
-tags: c
+tags: c wiki
 ---
 
 [C](/wiki/C) is a popular programming language.

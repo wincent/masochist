@@ -1,6 +1,6 @@
 ---
 title: Walrus Git repository moved
-tags: walrus
+tags: walrus blog
 ---
 
 Just a minor note. The [Walrus](/wiki/Walrus) [Git](/wiki/Git) repository is now at:

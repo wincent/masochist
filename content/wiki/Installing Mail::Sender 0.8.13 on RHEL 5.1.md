@@ -1,5 +1,5 @@
 ---
-tags: red.hat perl
+tags: red.hat perl wiki
 ---
 
 I decided to install this manually as I have a bit of an aversion to [CPAN](/wiki/CPAN):

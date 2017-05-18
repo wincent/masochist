@@ -1,5 +1,5 @@
 ---
-tags: clamav
+tags: clamav wiki
 ---
 
 These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/ClamAV) to version 0.88.5.
@@ -65,4 +65,3 @@ These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/C
 # See also
 
 -   Release notes: <http://sourceforge.net/project/shownotes.php?release_id=455799>
-

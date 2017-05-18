@@ -1,8 +1,8 @@
 ---
-tags: monit
+tags: monit wiki
 ---
 
-    Hi, all!
+Hi, all!
 
     We have just released Monit 5.2.4 You can download the new release from:
 

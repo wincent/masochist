@@ -1,6 +1,6 @@
 ---
 title: February server maintenance
-tags: site
+tags: site blog
 ---
 
 I just power-cycled the server in order to switch to a new kernel. Looks like the server was down for about 2 minutes, 15 seconds.

@@ -1,6 +1,6 @@
 ---
 redirect: [[Googling]]
-tags: 
+tags: wiki
 ---
 
 

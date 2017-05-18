@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 [This page at Red Hat](http://www.redhat.com/security/updates/errata/) outlines their support policy for their Red Hat Enterprise Linux products.

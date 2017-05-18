@@ -1,5 +1,6 @@
 ---
 title: More consistent normalization of Unicode forms (REnamer, a1ecf6e)
+tags: snippets
 ---
 
 This commit includes tests to probe the Unicode normalization issues and fixes to get them all passing. I believe that normalization is now applied everywhere it needs to be.

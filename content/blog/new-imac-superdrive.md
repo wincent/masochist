@@ -1,5 +1,6 @@
 ---
 title: New iMac "Superdrive"
+tags: blog
 ---
 
 The [replacement Superdrive](http://www.wincent.com/a/about/wincent/weblog/archives/2007/08/imac_reliabilit.php) for the iMac arrived today and I just finished installing it.

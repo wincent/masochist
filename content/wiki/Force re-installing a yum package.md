@@ -1,5 +1,5 @@
 ---
-tags: yum
+tags: yum wiki
 ---
 
 ```shell
@@ -10,4 +10,3 @@ $ sudo yum install package
 # Source
 
 -   <http://hacktux.com/yum/force/reinstall>
-

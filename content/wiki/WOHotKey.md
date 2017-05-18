@@ -1,5 +1,5 @@
 ---
-tags: wohotkey
+tags: wohotkey wiki
 cache_breaker: 1
 ---
 

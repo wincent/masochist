@@ -1,5 +1,5 @@
 ---
-tags: ansible
+tags: ansible wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 # See also
 
 -   Ansible (company) info on CrunchBase: <http://www.crunchbase.com/organization/ansible>
-

@@ -1,6 +1,6 @@
 ---
 title: 15 years of wincent.org
-tags: 
+tags: blog
 ---
 
 Just realized that it was 15 years ago that I registered my first ever domain name, wincent.org.

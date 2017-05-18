@@ -1,6 +1,6 @@
 ---
 title: Wikitext 4.0.3 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new release of the [Wikitext](/wiki/Wikitext) gem, version 4.0.3, is out. This version adds support for Ruby 2.1.0 (and continues to work on Ruby 2.0.x; for older versions of Ruby, you'll need to use the 3.x series of the Wikitext gem).

@@ -1,5 +1,5 @@
 ---
-tags: migration mail
+tags: migration mail wiki
 cache_breaker: 1
 ---
 

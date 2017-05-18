@@ -1,6 +1,6 @@
 ---
 redirect: [[RubyGems]]
-tags: 
+tags: wiki
 ---
 
 

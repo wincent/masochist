@@ -1,5 +1,5 @@
 ---
-tags: vigil
+tags: vigil wiki
 ---
 
 [Vigil](/wiki/Vigil) is a simple networking monitoring application that I am currently working on.

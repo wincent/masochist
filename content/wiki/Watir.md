@@ -1,5 +1,5 @@
 ---
-tags: watir
+tags: watir wiki
 ---
 
 [Watir](/wiki/Watir) or "[Web Application Testing in Ruby](/wiki/Web_Application_Testing_in_Ruby)" is a high-level integration testing tool.
@@ -10,4 +10,3 @@ I use it to perform automated in-browser testing of [Rails](/wiki/Rails) applica
 
 -   [Watir](/wiki/Watir) project page: <http://wtr.rubyforge.org/>
 -   [Safari](/wiki/Safari)-compatible [Watir](/wiki/Watir): <http://safariwatir.rubyforge.org/>
-

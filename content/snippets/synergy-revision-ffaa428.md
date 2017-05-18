@@ -1,5 +1,6 @@
 ---
 title: Synergy (revision ffaa428)
+tags: snippets
 ---
 
 -   *Download name*: Synergy3.5a4(ffaa428).zip

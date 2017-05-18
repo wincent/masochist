@@ -1,5 +1,6 @@
 ---
 title: Spam to be eliminated by 24 January 2006
+tags: blog
 ---
 
 Some good news at last: [according to Bill Gates](http://www.cbsnews.com/stories/2004/01/24/tech/main595595.shtml) all spam will be eliminated from the world in just under two weeks from now. This is what he said on 24 January 2004:

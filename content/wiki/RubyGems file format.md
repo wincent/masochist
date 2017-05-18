@@ -1,5 +1,5 @@
 ---
-tags: gems
+tags: gems wiki
 ---
 
 A `.gem` package is a `.tar` archive containing:

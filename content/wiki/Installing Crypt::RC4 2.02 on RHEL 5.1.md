@@ -1,5 +1,5 @@
 ---
-tags: red.hat perl
+tags: red.hat perl wiki
 cache_breaker: 1
 ---
 

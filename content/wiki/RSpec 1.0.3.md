@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 [RSpec 1.0.3](/wiki/RSpec_1.0.3) was released on 25 May 2007. It is a bugfix release.
@@ -19,4 +19,3 @@ tags: rspec
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11957>
 -   Mailing list announcement: <http://rubyforge.org/pipermail/rspec-users/2007-May/001742.html>
 -   [Upgrading to RSpec 1.0.3 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.3_on_Mac_OS_X_Tiger)
-

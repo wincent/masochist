@@ -1,5 +1,6 @@
 ---
 title: Update argument handling in main application (REnamer, 6340d58)
+tags: snippets
 ---
 
 First up, under Garbage Collection we can use a shorter idiom to initialize the mutable arguments array.

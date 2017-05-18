@@ -1,6 +1,6 @@
 ---
 redirect: [[Specs]]
-tags: 
+tags: wiki
 ---
 
 

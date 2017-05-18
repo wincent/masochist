@@ -1,5 +1,6 @@
 ---
 title: Deleting code
+tags: blog
 ---
 
 Sometimes deleting code is the best kind of enhancement you can make.

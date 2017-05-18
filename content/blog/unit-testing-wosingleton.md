@@ -1,5 +1,6 @@
 ---
 title: Unit testing WOSingleton
+tags: blog
 ---
 
 As part of the move to `WOCommon` I wrote some unit tests for `WOSingleton`. There is some behaviour that I can test entirely deterministically but in trying to test race conditions and concurrency issues I decided that one easy way to do it (if not totally scientific) was just to thrash the hell out of the class and see what happened.

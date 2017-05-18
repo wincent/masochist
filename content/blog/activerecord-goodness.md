@@ -1,6 +1,6 @@
 ---
 title: ActiveRecord goodness
-tags: rails
+tags: rails blog
 ---
 
 For once, ActiveRecord actually surprised me *in a good way* tonight. I'm used to pretty much the opposite happening: ActiveRecord is great for doing extremely simple stuff, but as soon as you need to do anything mildly sophisticated you find yourself dropping down to raw [SQL](/wiki/SQL):

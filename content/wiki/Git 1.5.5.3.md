@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 ## Official release announcement
@@ -56,4 +56,3 @@ tags: git
 ## See also
 
 -   [Upgrading to Git 1.5.5.3](/wiki/Upgrading_to_Git_1.5.5.3)
-

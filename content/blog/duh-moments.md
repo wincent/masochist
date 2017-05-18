@@ -1,5 +1,6 @@
 ---
 title: "Duh!" moments
+tags: blog
 ---
 
 Sometimes you are working on a thorny coding problem and find yourself feeling less and less happy with the number of kludgey hacks you're having to implement in order to get things working. Then comes a "duh!" moment in which you realize that there is a better way that avoids all of the kludges, is much cleaner, and works. It's usually blindingly obvious once you see it.

@@ -1,5 +1,5 @@
 ---
-tags: fonts
+tags: fonts wiki
 ---
 
 Free programming fonts worth checking out:

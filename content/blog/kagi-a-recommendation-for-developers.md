@@ -1,5 +1,6 @@
 ---
 title: Kagi: a recommendation for developers
+tags: blog
 ---
 
 I offer two [payment options](https://secure.wincent.com/a/store/) for customers: [Kagi](http://www.kagi.com/) and [PayPal](http://www.paypal.com/). I think it's important to offer multiple alternatives because people generally have strong preferences when it comes to making online payments.

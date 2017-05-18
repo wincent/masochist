@@ -1,5 +1,5 @@
 ---
-tags: leopard rcov updates
+tags: leopard rcov updates wiki
 cache_breaker: 1
 ---
 

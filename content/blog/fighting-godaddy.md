@@ -1,5 +1,6 @@
 ---
 title: Fighting GoDaddy
+tags: blog
 ---
 
 The [trick I previously described](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/darn_godaddy.php) for working around GoDaddy's galling [bait-and-switch scam](http://www.wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) on private registrations no longer works. I tried to remove privacy on an expiring domain and then renew it, adding private registration, and GoDaddy's interface allows me to specify privacy in the lead-up to the checkout but on getting there there is no privacy in my cart and no apparent way to add it.

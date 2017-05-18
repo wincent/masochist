@@ -1,6 +1,6 @@
 ---
 title: Upcoming site changes: repo browsing functionality
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 Here are notes I made during an extensive update (including a kernel update) to my [Red Hat](/wiki/Red_Hat) system. The upgrade was from [Red Hat](/wiki/Red_Hat) Enterprise Linux ES release 3 (Taroon Update 7) to Taroon Update 8. The kernel was bumped from 2.4.21-40.EL to 2.4.21-47.EL.
@@ -726,4 +726,3 @@ It turns out that the system update broke my [Bugzilla](/wiki/Bugzilla) install 
 # See also
 
 -   [Red Hat Enterprise Linux kernel update procedure](/wiki/Red_Hat_Enterprise_Linux_kernel_update_procedure)
-

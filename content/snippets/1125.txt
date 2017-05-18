@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.155
-tags: site updates
+tags: site updates snippets
 ---
+
 0dfcc8d Revamp pagination
 5ed57e0 Get rid of unwanted list styling on taggable results
 7b43c97 Fix unwanted array literals in flashes, multiple flashes

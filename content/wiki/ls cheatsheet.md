@@ -1,5 +1,5 @@
 ---
-tags: ls
+tags: ls wiki
 ---
 
 Sort by file size:

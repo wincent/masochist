@@ -1,5 +1,5 @@
 ---
-tags: rsync
+tags: rsync wiki
 cache_breaker: 1
 ---
 

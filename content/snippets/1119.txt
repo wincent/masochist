@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.149
-tags: site updates
+tags: site updates snippets
 ---
+
 2d2de16 Remove straggling references to Zeus
 eba20a9 Update tool list, a bit
 723d674 Remove never-used bootstrap

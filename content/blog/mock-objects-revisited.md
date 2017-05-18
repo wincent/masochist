@@ -1,5 +1,6 @@
 ---
 title: Mock objects revisited
+tags: blog
 ---
 
 This isn't the first time I've written about mock objects in WOTest.

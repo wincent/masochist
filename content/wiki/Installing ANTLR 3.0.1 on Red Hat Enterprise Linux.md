@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 This is really just an install of the [ANTLR](/wiki/ANTLR) [C](/wiki/C)-target runtime on [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux).

@@ -1,6 +1,6 @@
 ---
 redirect: [[CAPTCHA]]
-tags: 
+tags: wiki
 ---
 
 

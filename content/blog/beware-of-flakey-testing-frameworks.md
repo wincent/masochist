@@ -1,6 +1,6 @@
 ---
 title: Beware of flakey testing frameworks
-tags: rspec rant cucumber
+tags: rspec rant cucumber blog
 cache_breaker: 1
 ---
 

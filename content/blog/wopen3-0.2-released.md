@@ -1,6 +1,6 @@
 ---
 title: Wopen3 0.2 released
-tags: releases wopen3
+tags: releases wopen3 blog
 cache_breaker: 1
 ---
 

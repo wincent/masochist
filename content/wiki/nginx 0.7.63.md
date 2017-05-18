@@ -1,8 +1,8 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
-    Changes with nginx 0.7.63                                        26 Oct 2009
+Changes with nginx 0.7.63                                        26 Oct 2009
 
        *) Security: now "/../" are disabled in "Destination" request header 
           line.

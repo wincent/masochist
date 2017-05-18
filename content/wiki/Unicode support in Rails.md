@@ -1,5 +1,5 @@
 ---
-tags: rails mysql
+tags: rails mysql wiki
 ---
 
 As of [Rails](/wiki/Rails) 1.2 ([see here](http://weblog.rubyonrails.org/2007/1/19/rails-1-2-rest-admiration-http-lovefest-and-utf-8-celebrations)) [Unicode](/wiki/Unicode) support is included right out of the box.
@@ -118,4 +118,3 @@ Then your tables will have the appropriate charsets regardless of the database s
 -   <http://ruby.org.ee/wiki/Unicode_in_Ruby/Rails>
 -   <http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/>
 -   <http://www.devpals.com/showthread.php?t=136>
-

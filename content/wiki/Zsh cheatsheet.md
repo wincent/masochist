@@ -1,5 +1,5 @@
 ---
-tags: zsh
+tags: zsh wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ cache_breaker: 1
 ## See also
 
 -   <http://zsh.sourceforge.net/Doc/Release/Expansion.html#History-Expansion>
-

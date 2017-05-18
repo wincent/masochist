@@ -1,5 +1,6 @@
 ---
 title: Amending commits with Git
+tags: blog
 ---
 
 One of the nice frills that comes with the [distributed version control](http://www.wincent.com/knowledge-base/distributed%20version%20control) model of [Git](http://www.wincent.com/knowledge-base/Git) is the ability to amend unpublished commits.

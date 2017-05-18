@@ -1,5 +1,5 @@
 ---
-tags: cron
+tags: cron wiki
 cache_breaker: 1
 ---
 

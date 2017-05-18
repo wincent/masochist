@@ -1,5 +1,5 @@
 ---
-tags: red.hat updates
+tags: red.hat updates wiki
 cache_breaker: 1
 ---
 

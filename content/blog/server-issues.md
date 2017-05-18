@@ -1,5 +1,6 @@
 ---
 title: Server issues
+tags: blog
 ---
 
 Apologies to any who had trouble accessing the server earlier this evening. The file-system filled up due to a rogue process (or processes) run by another user on the system. The server continued to operate throughout the incident, but you may have had trouble connecting to the server during the period. I don't know if any mail got bounced but if it did I imagine it will be automatically redelivered. For the curious, you can read on for the full story of what happened.

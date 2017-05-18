@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.79
-tags: site updates
+tags: site updates snippets
 ---
+
 7d4183a Fix JS error on wiki pages with quotes in names
 2974fc3 Teach script/start to show usage information
 8267f2b Spec updates for new version of Capybara

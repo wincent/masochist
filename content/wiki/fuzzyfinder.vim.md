@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -51,4 +51,3 @@ Or from the [command line](/wiki/command_line):
 # See also
 
 -   [Vim plugins](/wiki/Vim_plugins)
-

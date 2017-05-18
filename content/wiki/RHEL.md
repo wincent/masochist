@@ -1,6 +1,6 @@
 ---
 redirect: [[Red Hat Enterprise Linux]]
-tags: 
+tags: wiki
 ---
 
 

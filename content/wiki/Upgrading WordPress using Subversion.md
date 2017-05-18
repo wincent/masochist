@@ -1,5 +1,5 @@
 ---
-tags: wordpress subversion
+tags: wordpress subversion wiki
 ---
 
 # Prerequisites
@@ -20,4 +20,3 @@ In reverse chronological order:
 # See also
 
 -   Manual update instructions: <http://codex.wordpress.org/Upgrading_WordPress>
-

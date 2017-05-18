@@ -1,5 +1,6 @@
 ---
 title: Involuntary reboot log #3 and #4
+tags: blog
 ---
 
 Two kernel panics while trying to boot from a just-installed copy of Mac OS X. I won't bother telling you what version of the OS it was...

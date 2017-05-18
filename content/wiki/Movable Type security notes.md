@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 # Turn off comments and search if you can

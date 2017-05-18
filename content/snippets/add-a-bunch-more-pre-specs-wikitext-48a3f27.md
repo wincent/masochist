@@ -1,5 +1,6 @@
 ---
 title: Add a bunch more PRE specs (wikitext, 48a3f27)
+tags: snippets
 ---
 
 I'm checking as many weird corner cases and exceptions here as I can think of.

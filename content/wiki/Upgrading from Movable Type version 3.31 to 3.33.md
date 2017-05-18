@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 These notes were made during the upgrade to [Movable Type](/wiki/Movable_Type) version 3.33.
@@ -269,4 +269,3 @@ One file that Interarchy did *not* delete even though it was not present on the 
 -   Release announcement: <http://www.sixapart.com/movabletype/news/2006/09/mt_333-mte_103_updates.html>
 -   "Professional Network blog" announcement: <http://www.sixapart.com/pronet/weblog/2006/09/mt_333-mte_103_patches.html>
 -   Previous upgrade notes: [Movable Type 3.2 to 3.31 upgrade notes](/wiki/Movable_Type_3.2_to_3.31_upgrade_notes)
-

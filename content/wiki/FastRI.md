@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 [FastRI](/wiki/FastRI) is a faster replacement for [ri](/wiki/ri) which produces colorized output. It can be installed as follows:
@@ -23,4 +23,3 @@ Note that in order to search the built-in classes you must explicitly install th
 # See also
 
 -   Official [FastRI](/wiki/FastRI) page: <http://eigenclass.org/hiki.rb?fastri>
-

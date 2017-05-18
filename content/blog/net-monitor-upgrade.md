@@ -1,5 +1,6 @@
 ---
 title: Net Monitor upgrade
+tags: blog
 ---
 
 I just bought an upgrade license for [Net Monitor](http://homepage.mac.com/rominar/net.html), seeing as the old version (4.1.1) I'm running won't work when I [get my hands](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/on_the_internal.php) on [Leopard](http://www.wincent.com/knowledge-base/Leopard).

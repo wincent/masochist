@@ -1,5 +1,6 @@
 ---
 title: Split Ragel generation into two phases (gdiff, 3e94d7d)
+tags: snippets
 ---
 
 In an effort to fix the spurious rebuilds mentioned in commit 828150d I split the Ragel generation into two phases, each with a separate build rule.

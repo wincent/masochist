@@ -1,5 +1,5 @@
 ---
-tags: xcode
+tags: xcode wiki
 ---
 
 In the [Tiger](/wiki/Tiger) version of [Xcode](/wiki/Xcode) there are some build settings which offer per-architecture variants and some which do not. An example of the latter is the `WARNING_CFLAGS` build setting:

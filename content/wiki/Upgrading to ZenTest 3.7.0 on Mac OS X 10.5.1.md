@@ -1,5 +1,5 @@
 ---
-tags: zentest leopard updates
+tags: zentest leopard updates wiki
 cache_breaker: 1
 ---
 

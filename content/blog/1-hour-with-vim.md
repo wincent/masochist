@@ -1,6 +1,6 @@
 ---
 title: 1 hour with Vim
-tags: vim
+tags: vim blog
 ---
 
 I'm gradually starting to flesh out my `~/.vimrc` with useful stuff.

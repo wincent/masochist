@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 cache_breaker: 1
 ---
 

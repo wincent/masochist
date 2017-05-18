@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 These are notes made while setting up my own single-user [OpenID](/wiki/OpenID) server. I wanted to set up my own server for the same reasons stated by [Christopher Niemira](/wiki/Christopher_Niemira), author of [phpMyID](/wiki/phpMyID), who [writes](http://siege.org/projects/phpMyID/):

@@ -1,6 +1,6 @@
 ---
 redirect: [[ANTLR predicates]]
-tags: 
+tags: wiki
 ---
 
 

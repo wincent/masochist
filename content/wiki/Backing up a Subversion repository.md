@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 # Options
@@ -18,4 +18,3 @@ In both cases you should run `svnadmin` as the owner of the repository. I chose 
 
 -   Repository size on disk: 65[MB](/wiki/MB)
 -   Backup size on disk: 78[MB](/wiki/MB) (note that this is actual two backups, "today's" and "yesterday's", because the backup script keeps a copy of the previous dump file; so the actual size per backup is really about 39[MB](/wiki/MB)).
-

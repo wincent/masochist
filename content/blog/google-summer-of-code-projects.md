@@ -1,5 +1,6 @@
 ---
 title: Google Summer of Code projects
+tags: blog
 ---
 
 Will be following these with interest:

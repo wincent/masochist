@@ -1,5 +1,6 @@
 ---
 title: Move session reset up into controller (wincent.com, ab81739)
+tags: snippets
 ---
 
 We must reset the session from inside the controller and not in authentication.rb (the current\_user= method).

@@ -1,5 +1,5 @@
 ---
-tags: rr
+tags: rr wiki
 cache_breaker: 1
 ---
 
@@ -20,4 +20,3 @@ cache_breaker: 1
 ## Third-party resources
 
 -   A nice intro to [RR](/wiki/RR): <http://technicalpickles.com/posts/ruby-stubbing-and-mocking-with-rr>
-

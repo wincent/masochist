@@ -1,5 +1,6 @@
 ---
 title: Spamhaus is good
+tags: blog
 ---
 
 [Spamhaus](http://www.spamhaus.org/) is an anti-spam DNS-based blacklisting service. Some people in business advise against using such blacklists on the grounds that they could potentially block legitimate email and thus harm the business.

@@ -1,6 +1,6 @@
 ---
 redirect: [[Karabiner]]
-tags: 
+tags: wiki
 ---
 
 

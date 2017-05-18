@@ -1,6 +1,6 @@
 ---
 title: Wikitext 3.1 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new release of the [Wikitext](/wiki/Wikitext) gem, version 3.1, is out. This is a minor update containing a bugfix for under-escaped ampersands in links, and a minor feature enhancement in which the `link_proc` parse-time option can now be set at initialization or via an accessor.

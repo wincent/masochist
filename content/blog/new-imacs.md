@@ -1,6 +1,6 @@
 ---
 title: New iMacs
-tags: apple imac
+tags: apple imac blog
 ---
 
 So the [updated iMacs](http://www.apple.com/imac/) are out. They deliver a nice bang-for-your-buck in a very attractive package. There are four models and prices range from $1,199 to $2,199 (999€ to 1,819€ in Spain).

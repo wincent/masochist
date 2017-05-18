@@ -1,5 +1,6 @@
 ---
 title: Yellow
+tags: blog
 ---
 
 I am spending a lot of hours staring at Xcode editor windows lately and I don't know if it's because I'm getting old, but it's getting harder and harder to look at the screen without feeling a minor sensation of irritation in the eyes.

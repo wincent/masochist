@@ -1,5 +1,6 @@
 ---
 title: MediaWiki drops PHP 4 support
+tags: blog
 ---
 
 Wasn't too happy [to read this](http://mail.wikipedia.org/pipermail/mediawiki-announce/2006-July/000049.html):

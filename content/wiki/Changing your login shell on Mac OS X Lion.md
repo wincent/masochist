@@ -1,5 +1,5 @@
 ---
-tags: bash lion zsh os.x
+tags: bash lion zsh os.x wiki
 ---
 
 # Via the [command line](/wiki/command_line)

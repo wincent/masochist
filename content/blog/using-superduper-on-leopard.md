@@ -1,5 +1,6 @@
 ---
 title: Using SuperDuper! on Leopard
+tags: blog
 ---
 
 So I've been using [SuperDuper!](http://www.wincent.com/knowledge-base/SuperDuper!) on [Leopard](http://www.wincent.com/knowledge-base/Leopard) despite the fact that it is [officially not compatible](http://www.shirt-pocket.com/SuperDuper/SuperDuperDescription.html). In fact, I didn't actually *know* it wasn't compatible until I went to the Shirt Pocket website in search of an explanation as to why my "Smart Updates" weren't so "Smart" anymore (basically, instead of copying across only new and modified files, each backup resulted in basically *all* files being copied across again).

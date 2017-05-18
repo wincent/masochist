@@ -1,5 +1,6 @@
 ---
 title: Fix object-to-pointer comparisons on Leopard (WOTest, a39fc79)
+tags: snippets
 ---
 
 The behaviour of the @encode directive has changed on Leopard and this breaks a number of the comparisons that previously worked in Tiger. For example, comparisons between object pointers and nil, or even between nil and nil, were broken.

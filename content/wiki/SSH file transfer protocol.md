@@ -1,6 +1,6 @@
 ---
 redirect: [[SFTP]]
-tags: 
+tags: wiki
 ---
 
 

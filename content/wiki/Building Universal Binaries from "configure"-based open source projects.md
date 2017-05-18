@@ -1,5 +1,5 @@
 ---
-tags: development os.x
+tags: development os.x wiki
 ---
 
 The official [Apple](/wiki/Apple) documentation comes in the form of [Technote 2137](/wiki/Technote_2137):
@@ -57,4 +57,3 @@ Syd Polk, who also works for [Apple](/wiki/Apple) further adds in [this post](ht
 # Other documentation
 
 -   "Compiling for Multiple CPU Architectures": <http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/compiling/chapter_4_section_3.html>
-

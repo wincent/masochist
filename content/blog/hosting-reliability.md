@@ -1,6 +1,6 @@
 ---
 title: Hosting reliability
-tags: 
+tags: blog
 ---
 
 I was just looking at [Netcraft's](http://netcraft.com/) [February 2009 hosting reliability survey](http://news.netcraft.com/archives/2009/03/02/new_york_internet_was_the_most_reliable_hosting_company_site_in_february_2009.html) and was impacted by just how many ultra-reliable offerings there are out there nowadays.

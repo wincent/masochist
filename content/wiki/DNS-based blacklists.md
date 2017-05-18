@@ -1,6 +1,6 @@
 ---
 redirect: [[DNS-based blacklisting]]
-tags: 
+tags: wiki
 ---
 
 

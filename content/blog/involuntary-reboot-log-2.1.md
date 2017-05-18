@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log 2.1
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ So in the end had to reluctantly perform a [hard reset](/wiki/hard_reset). Was n
 -   Start of recording keeping: 17 March 2010
 -   Total days to date: 34 days
 -   Average time between failures: 34 days
-

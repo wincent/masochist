@@ -1,5 +1,6 @@
 ---
 title: Whitespace fixes (Wincent Strings Utility, e9cff5a)
+tags: snippets
 ---
 
 Remove trailing whitespace.

@@ -1,5 +1,6 @@
 ---
 title: SpamSieve one year later
+tags: blog
 ---
 
 I've now been using [SpamSieve](http://c-command.com/spamsieve/) for just over one year. I'm fairly happy with the performance of it:

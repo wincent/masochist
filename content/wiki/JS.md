@@ -1,6 +1,6 @@
 ---
 redirect: [[JavaScript]]
-tags: 
+tags: wiki
 ---
 
 

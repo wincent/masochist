@@ -1,5 +1,6 @@
 ---
 title: Using MediaWiki markup from within MovableType
+tags: blog
 ---
 
 I like to keep an eye on [Gervase Markham's weblog](http://weblogs.mozillazine.org/gerv/). Today he published an article about [converting MediaWiki markup to HTML](http://weblogs.mozillazine.org/gerv/archives/2007/03/mediawiki2html.html).

@@ -1,6 +1,6 @@
 ---
 title: Maximizing windows in Vim
-tags: vim
+tags: vim blog
 ---
 
 I often work with a lot of splits, but sometimes you just want to focus on one file. This is especially true if you move from a large external display back to your laptop's internal screen. Suddenly your matrix of six 85-by-30 windows shrinks down to a collection of unusable 30-by-15 postage stamps.

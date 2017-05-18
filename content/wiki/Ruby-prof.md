@@ -1,5 +1,5 @@
 ---
-tags: ruby.prof
+tags: ruby.prof wiki
 ---
 
 [ruby-prof](/wiki/ruby-prof) is a profiler for [Ruby](/wiki/Ruby).
@@ -7,4 +7,3 @@ tags: ruby.prof
 # See also
 
 -   [RubyForge](/wiki/RubyForge) project page: <http://rubyforge.org/projects/ruby-prof/>
-

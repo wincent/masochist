@@ -1,6 +1,6 @@
 ---
 title: Site enhancements
-tags: site
+tags: site blog
 ---
 
 I've just deployed a new version of the site backend, so as always, please let me know (either by [ticket](/issues/new) or [email](mailto:win@wincent.com){.mailto}) if you spot any problems.
@@ -18,4 +18,3 @@ Among other user-visible enhancements and fixes in this deployment include:
 -   more obvious Atom feed links (via icons)
 -   removal of some stray divs on static HTML pages
 -   XHTML validation fix-ups
-

@@ -1,6 +1,6 @@
 ---
 title: On professionalism
-tags: rails
+tags: rails blog
 ---
 
 There's been a huge storm in a tea-cup lately over Matt Aimonetti's "[CouchDB: Perform like a pr0n star](http://www.slideshare.net/mattetti/couchdb-perform-like-a-pr0n-star)" presentation. It's been unexpectedly polemical. The responses have been exceptionally strong and polarized:

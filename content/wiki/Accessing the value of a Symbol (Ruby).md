@@ -1,5 +1,5 @@
 ---
-tags: ruby ruby.recipes
+tags: ruby ruby.recipes wiki
 ---
 
 # Short version

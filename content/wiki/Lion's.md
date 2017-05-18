@@ -1,6 +1,6 @@
 ---
 redirect: [[Lion]]
-tags: 
+tags: wiki
 ---
 
 

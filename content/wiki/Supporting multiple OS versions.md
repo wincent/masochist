@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Drop support for older OS versions
@@ -105,4 +105,3 @@ Each approach has its pros and cons, and the importance of each will vary accord
 # See also
 
 -   [Frameworks: pros and cons](/wiki/Frameworks%3a_pros_and_cons)
-

@@ -1,5 +1,5 @@
 ---
-tags: mysql snow.leopard
+tags: mysql snow.leopard wiki
 ---
 
 Unlike last time (see "[Installing MySQL 5.0.85 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_MySQL_5.0.85_on_Mac_OS_X_10.6_Snow_Leopard)"), there are now binary builds available for [Snow Leopard](/wiki/Snow_Leopard) on [the MySQL downloads page](http://dev.mysql.com/downloads/mysql/5.1.html).

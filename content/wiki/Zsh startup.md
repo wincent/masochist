@@ -1,5 +1,5 @@
 ---
-tags: zsh
+tags: zsh wiki
 ---
 
 # OS X

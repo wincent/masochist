@@ -1,6 +1,6 @@
 ---
 redirect: [[Subject Alternative Name (SAN) in SSL certificates]]
-tags: 
+tags: wiki
 ---
 
 

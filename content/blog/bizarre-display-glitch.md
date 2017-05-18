@@ -1,5 +1,6 @@
 ---
 title: Bizarre display glitch
+tags: blog
 ---
 
 The most bizarre drawing glitch I've ever seen, provoked by trying to resize the frontmost Safari window; another, unaffected Safari window is visible in the background:

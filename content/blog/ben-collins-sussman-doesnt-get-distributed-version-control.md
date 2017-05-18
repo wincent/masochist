@@ -1,5 +1,6 @@
 ---
 title: Ben Collins-Sussman doesn't "get" distributed version control
+tags: blog
 ---
 
 [Subversion](http://www.wincent.com/knowledge-base/Subversion) developer Ben Collins-Sussman has just posted [this piece of flamebait](http://blog.red-bean.com/sussman/?p=79) packed with emotionally-loaded mischaracterizations of people who use distributed version control systems like [Git](http://www.wincent.com/knowledge-base/Git).

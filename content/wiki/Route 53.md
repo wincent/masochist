@@ -1,6 +1,6 @@
 ---
 redirect: [[Amazon Route 53]]
-tags: 
+tags: wiki
 ---
 
 

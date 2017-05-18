@@ -1,6 +1,6 @@
 ---
 title: Interesting developments from Rackspace: OpenStack
-tags: rackspace cloud
+tags: rackspace cloud blog
 ---
 
 Was very surprised to see that [Rackspace](/wiki/Rackspace) has gone [open source](/wiki/open_source) with the software that powers their [cloud computing](/wiki/cloud_computing) offering, [Rackspace Cloud](http://www.rackspacecloud.com/). They're calling it [OpenStack](http://www.openstack.org/).

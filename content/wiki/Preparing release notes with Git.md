@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 I was wondering what Junio uses to produces the [release notes for Git](http://repo.or.cz/w/git.git?a=blob;f=Documentation/RelNotes-1.5.3.4.txt). Looking at the AsciiDoc source reveals the following:

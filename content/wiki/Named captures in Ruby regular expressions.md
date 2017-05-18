@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 cache_breaker: 1
 ---
 

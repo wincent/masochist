@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 I am a big fan of the [Subversion externals](/wiki/Subversion_externals) feature (also known as [svn:externals](/wiki/svn%3aexternals)). I use it to share code among my projects. It's heavily used by many popular open source projects including, for example, [Rails](/wiki/Rails).
@@ -98,4 +98,3 @@ This is a brute force way of making sure that changes made to one external get p
 
 -   Mailing list thread: <http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000741.html>
 -   [Implementing svn:externals support in SVK](/wiki/Implementing_svn%3aexternals_support_in_SVK)
-

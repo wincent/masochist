@@ -1,5 +1,5 @@
 ---
-tags: chrome
+tags: chrome wiki
 ---
 
 [Chrome](/wiki/Chrome) is the best web browser.
@@ -7,4 +7,3 @@ tags: chrome
 # Official site
 
 -   <https://ww.google.com/chrome>
-

@@ -1,5 +1,5 @@
 ---
-tags: perl.one.liners
+tags: perl.one.liners wiki
 ---
 
 # Removing spaces from the standard input, echoing to standard output
@@ -13,4 +13,3 @@ tags: perl.one.liners
 ## Related
 
 -   [Using Perl to filter standard input](/wiki/Using_Perl_to_filter_standard_input)
-

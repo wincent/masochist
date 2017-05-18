@@ -1,8 +1,7 @@
 ---
-tags: objective.c
+tags: objective.c wiki
 ---
 
 # See also
 
 -   [Coding standards](/wiki/Coding_standards)
-

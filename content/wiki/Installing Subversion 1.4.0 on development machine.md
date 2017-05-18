@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 Notes made while installing Subversion 1.4.0 (client-side only) on my development machine:

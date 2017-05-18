@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 This requires that [liba52](/wiki/liba52) be installed.

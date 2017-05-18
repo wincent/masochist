@@ -1,5 +1,6 @@
 ---
 title: Unit testing
+tags: blog
 ---
 
 I'm a big fan of [unit testing](http://www.wincent.com/knowledge-base/unit%20testing), and every now and again something happens which confirms my preference.

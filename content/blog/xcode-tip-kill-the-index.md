@@ -1,5 +1,6 @@
 ---
 title: Xcode tip: kill the index
+tags: blog
 ---
 
 Just now [Xcode](http://www.wincent.com/knowledge-base/Xcode) crashed while in the background. I immediately checked for `project.pbxproj` corruption but [Git](http://www.wincent.com/knowledge-base/Git) showed me that the file was unchanged. Each time I tried to open the project Xcode would beachball for a few seconds and then crash, 100% reproducibly.

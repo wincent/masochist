@@ -1,5 +1,6 @@
 ---
 title: Assigning keyboard shortcuts to user scripts in Xcode 3
+tags: blog
 ---
 
 You used to be able to do this prior to Xcode 3, but I can't see how to do this in the current release. Anyone know how? Without this feature the scripts menu becomes next to useless (for my usage patterns).

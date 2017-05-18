@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 cache_breaker: 1
 ---
 
@@ -79,4 +79,3 @@ Keywords available for use inside Ruby looping constructs:
 -   `next`: proceed to next round of the iteration
 -   `redo`: restart iteration from the beginning
 -   `retry`: retry current iteration
-

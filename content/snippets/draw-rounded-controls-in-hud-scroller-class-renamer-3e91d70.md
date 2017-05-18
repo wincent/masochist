@@ -1,5 +1,6 @@
 ---
 title: Draw rounded controls in HUD scroller class (REnamer, 3e91d70)
+tags: snippets
 ---
 
 This replaces the original behaviour of the scroller (rectangular scroll knob, triangular buttons) with better-looking controls which match those seen in Interface Builder (rounded rectangle scroll knob, circular buttons).

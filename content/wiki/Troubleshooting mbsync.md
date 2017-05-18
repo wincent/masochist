@@ -1,5 +1,5 @@
 ---
-tags: mbsync
+tags: mbsync wiki
 ---
 
 # Example

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.115
-tags: site updates
+tags: site updates snippets
 ---
+
 a41c5c0 Make it easier to use factories from the command line
 97a9ee4 Use Pry in development
 0243318 Set up .pryrc

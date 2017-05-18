@@ -1,5 +1,6 @@
 ---
 title: Java
+tags: blog
 ---
 
 Am I the only one who's not [excited about JRuby](http://www.rubyinside.com/jruby-11-beta-1-released-faster-than-the-regular-ruby-interpreter-642.html)? [Ruby](http://www.wincent.com/knowledge-base/Ruby) *is* slow but I don't think the right solution is translating it into [Java](http://www.wincent.com/knowledge-base/Java). Don't people find [Rails](http://www.wincent.com/knowledge-base/Rails) apps hard enough to deploy already? They want to add yet another incredibly bloated and complex dependency?

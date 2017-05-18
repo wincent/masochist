@@ -1,5 +1,6 @@
 ---
 title: RSpec changes
+tags: blog
 ---
 
 I've been using [RSpec](http://rspec.rubyforge.org/) a fair bit this year and have been trying to make some contributions back to the community because it is such a wonderful project.

@@ -1,5 +1,5 @@
 ---
-tags: libevent memcached snow.leopard
+tags: libevent memcached snow.leopard wiki
 cache_breaker: 1
 ---
 

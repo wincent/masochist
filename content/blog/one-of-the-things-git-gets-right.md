@@ -1,5 +1,6 @@
 ---
 title: One of the things Git gets right
+tags: blog
 ---
 
 There is an [interesting thread](http://marc.info/?l=git&m=119637184605851&w=2) on the [Git](http://www.wincent.com/knowledge-base/Git) mailing list going on right now which demonstrates exactly what it is that Git gets right about modelling history.

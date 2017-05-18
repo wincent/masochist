@@ -1,5 +1,6 @@
 ---
 title: Leopard
+tags: blog
 ---
 
 I know a few people have said that they're "underwhelmed" by Leopard but I for one am really looking forward to it.

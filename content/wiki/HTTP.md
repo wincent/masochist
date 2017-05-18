@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [HTTP](/wiki/HTTP) stands for [Hypertext Transfer Protocol](/wiki/Hypertext_Transfer_Protocol).
@@ -8,4 +8,3 @@ tags:
 
 -   [Wikipedia](/wiki/Wikipedia) article on [HTTP](/wiki/HTTP): <http://en.wikipedia.org/wiki/HTTP>
 -   Related protocol: [HTTPS](/wiki/HTTPS)
-

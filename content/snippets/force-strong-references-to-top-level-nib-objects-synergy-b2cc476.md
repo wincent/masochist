@@ -1,5 +1,6 @@
 ---
 title: Force strong references to top-level nib objects (Synergy, b2cc476)
+tags: snippets
 ---
 
 Set up some phoney outlets to the top-level objects in the nib so as to create strong references to them and thus avoid having them garbage collected.

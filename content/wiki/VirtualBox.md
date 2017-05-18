@@ -1,5 +1,5 @@
 ---
-tags: virtualbox
+tags: virtualbox wiki
 ---
 
 [VirtualBox](/wiki/VirtualBox) is free, [open source](/wiki/open_source) virtualization software that allows you to run a number of different operating systems on your [OS X](/wiki/OS_X) (or other) box.

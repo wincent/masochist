@@ -1,5 +1,6 @@
 ---
 title: Internal encoding conversion benchmarks
+tags: blog
 ---
 
 [Ruby](http://www.wincent.com/knowledge-base/Ruby) has a (somewhat justified) reputation for being slow but one of the great things about it is that it is easy to write extensions for it in lightening-fast [C](http://www.wincent.com/knowledge-base/C). Despite the fact that for some time now C has been "the new assembly", extensions written in C integrate remarkably well with Ruby's pure garbage-collected, object-oriented goodness.

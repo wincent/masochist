@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.84
-tags: site updates
+tags: site updates snippets
 ---
+
 46e2a72 Replace image-based blockquote pull quotes with pure CSS
 586fbec Swap out hand-rolled box-shadow mix-in for Compass one
 b812a65 Remove hand-rolled border-radius mix-in in favor of Compass one

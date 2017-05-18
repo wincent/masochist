@@ -1,5 +1,5 @@
 ---
-tags: rspec tiger updates
+tags: rspec tiger updates wiki
 cache_breaker: 1
 ---
 

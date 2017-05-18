@@ -1,6 +1,6 @@
 ---
 title: Unobtrusive inline administration
-tags: rails javascript
+tags: rails javascript blog
 ---
 
 Nearly a couple years ago [Ryan Bates](http://railscasts.com) did [a screencast](http://railscasts.com/episodes/19) titled, "Where Administration Goes". In it he makes a case for integrating administation UI within the standard templates that unprivileged users see.

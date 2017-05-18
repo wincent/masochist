@@ -1,5 +1,6 @@
 ---
 title: Throw away WOBundle and WOBaseCore (WOCommon, cbbe594)
+tags: snippets
 ---
 
 Apple deprecated some crucial API in Leopard and my options were as follows: ignore the deprecation warnings (thus making it impossible to insist on warning-free builds, and only deferring the inevitable moment when support is dropped entirely); switch to the new API (unfortunately not equivalent to the old API, and would have required a kludgey hack); or rip out the old code and forget about the functionality.

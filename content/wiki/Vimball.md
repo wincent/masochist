@@ -1,5 +1,5 @@
 ---
-tags: vim vimball
+tags: vim vimball wiki
 ---
 
 [Vimballs](/wiki/Vimballs) are files in the "[vimball](/wiki/vimball)" format which are intended to make installing and managing [Vim](/wiki/Vim) plugins easy.

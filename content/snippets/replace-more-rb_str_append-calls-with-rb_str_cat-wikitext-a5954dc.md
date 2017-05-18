@@ -1,5 +1,6 @@
 ---
 title: Replace more rb_str_append calls with rb_str_cat (wikitext, a5954dc)
+tags: snippets
 ---
 
 This time for token text, and it yields an even bigger speed-up. Before:

@@ -1,5 +1,5 @@
 ---
-tags: nginx updates
+tags: nginx updates wiki
 cache_breaker: 1
 ---
 

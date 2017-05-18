@@ -1,6 +1,6 @@
 ---
 redirect: [[World of Warcraft]]
-tags: 
+tags: wiki
 ---
 
 

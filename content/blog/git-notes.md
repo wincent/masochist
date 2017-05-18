@@ -1,5 +1,6 @@
 ---
 title: Git notes
+tags: blog
 ---
 
 You may have seen that I've made some [Git](http://www.wincent.com/knowledge-base/Git)-related posts lately ([1](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/musings_on_subv.php), [2](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/git_changes.php), [3](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/a_look_back_bra.php)) and if you've been [watching](http://www.wincent.com/knowledge-base/Special:Recentchanges) you'll have already noticed that I've been adding lots of Git content to the [Knowledge Base](http://www.wincent.com/knowledge-base/Knowledge%20Base). I've now done a shallow import (no history) of one public [Subversion](http://www.wincent.com/knowledge-base/Subversion) repository to Git, and last night got [gitweb](http://www.wincent.com/knowledge-base/gitweb) up and running at [git.wincent.com](http://git.wincent.com/). I've also done a non-shallow (full history) import locally; I've yet to decide whether I'll run with that one or the shallow one.

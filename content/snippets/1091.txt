@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.132
-tags: site updates
+tags: site updates snippets
 ---
+
 dede0c8 Don't let long URLs break responsive layout
 a3721ca Fix unwanted sideways scrolling when side menu is open

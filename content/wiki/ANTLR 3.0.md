@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 [ANTLR 3.0](/wiki/ANTLR_3.0) was released on 17 May 2007.
@@ -16,4 +16,3 @@ Finally examples demonstrating the use of the [C language target](/wiki/C_langua
 # See also
 
 -   [Installing ANTLR 3.0 on Mac OS X Tiger](/wiki/Installing_ANTLR_3.0_on_Mac_OS_X_Tiger)
-

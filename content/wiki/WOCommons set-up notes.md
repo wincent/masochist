@@ -1,6 +1,6 @@
 ---
 redirect: [[WOCommon set-up notes]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #35, #36, #37, #38 and #39
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 ---
 
 I've been too disappointed with this machine of late to post new entries to the [involuntary reboot log](/wiki/involuntary_reboot_log), but now that [HFS+](/wiki/HFS%2b) has failed me yet again and I'm waiting for [SuperDuper!](/wiki/SuperDuper%21) to finish restoring my boot volume (second time it's saved my skin) I may as well post this update. There are over 1.5 million files to be restored so I expect I'll be here twiddling my thumbs for quite some time.
@@ -15,4 +15,3 @@ Now more than ever I am hoping that my finances will permit purchasing a new mac
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 807 days
 -   Average time between failures: 20.69 days
-

@@ -1,6 +1,6 @@
 ---
 redirect: [[AAC]]
-tags: 
+tags: wiki
 ---
 
 

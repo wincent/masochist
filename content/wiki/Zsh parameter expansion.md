@@ -1,5 +1,5 @@
 ---
-tags: zsh
+tags: zsh wiki
 ---
 
 See `man zshexpn`.
@@ -8,4 +8,3 @@ See `man zshexpn`.
 -   `${VAR##prefix}`: same, but the pattern is matched greedily
 -   `${VAR%suffix}`: `$VAR`, with the *suffix* matched by the pattern "suffix" deleted
 -   `${VAR%%suffix}`: same, but the pattern is matched greedily
-

@@ -1,5 +1,5 @@
 ---
-tags: aws ec2
+tags: aws ec2 wiki
 ---
 
 Earlier today I had trouble with an [Amazon](/wiki/Amazon) [EC2](/wiki/EC2) instance on which the [Rails](/wiki/Rails) app had become unresponsive. [Monit](/wiki/Monit) usually restarts any [Unicorn](/wiki/Unicorn) or other processes which are having trouble, but for some reason the processes wouldn't come back up. I even tried quitting [nginx](/wiki/nginx), [memcached](/wiki/memcached) and [Monit](/wiki/Monit) itself, but they all refused to die and there were a couple of zombie [Ruby](/wiki/Ruby) processes visible in the process listing.

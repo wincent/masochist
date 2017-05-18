@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot log #7
+tags: blog
 ---
 
 This was a novel one and the first non-kernel panic involuntary reboot I've ever had with the iMac. Today I was waiting for a compile to finish and was wishing a friend a merry Christmas over IM when I noticed that my keypresses weren't resulting in any output. Mouseclicks didn't work either although I could still move the pointer. Mousing over the Dock yielded nothing. Yet iTunes continued to play and the seconds on the clock continued to update smoothly.

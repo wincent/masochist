@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ The editing experience is much like Vim on any other platform (or like Vim on th
 
 -   <http://weblog.jamisbuck.org/2008/10/10/coming-home-to-vim>: the article which prompted me to take a look at [MacVim](/wiki/MacVim)
     -   See also the follow-up post by the same author: <http://weblog.jamisbuck.org/2008/11/17/vim-follow-up>
-

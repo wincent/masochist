@@ -1,5 +1,6 @@
 ---
 title: More work on WOCommon
+tags: blog
 ---
 
 Pulled my `NSString` category out of `WODebug` and moved it into `WOCommon`, splitting it into several categories along the way to allow for finer-grained inclusion: `WOEmailUtilities`, `WOFileUtilities`, `WOTaskUtilities` and `WOURLUtilities`.

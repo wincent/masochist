@@ -1,5 +1,5 @@
 ---
-tags: akephalos
+tags: akephalos wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ Unfortunately, Akephalos now looks to be abandonware. Luckily, even nicer things
 # Official site
 
 -   <http://github.com/bernerdschaefer/akephalos>
-

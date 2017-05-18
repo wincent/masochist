@@ -1,5 +1,5 @@
 ---
-tags: version.control
+tags: version.control wiki
 cache_breaker: 1
 ---
 

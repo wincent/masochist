@@ -1,6 +1,6 @@
 ---
 title: Wikitext 1.1 released
-tags: wikitext
+tags: wikitext blog
 cache_breaker: 1
 ---
 

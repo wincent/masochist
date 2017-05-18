@@ -1,5 +1,5 @@
 ---
-tags: movable.type
+tags: movable.type wiki
 ---
 
 # Downloading
@@ -224,4 +224,3 @@ I am getting tired of having to keep abreast with security updates for so many w
 -   Upgrade notes for other versions: "[Movable Type upgrade notes](/wiki/Movable_Type_upgrade_notes)"
 -   Official release notes: <http://www.sixapart.com/movabletype/news/2007/01/mt334_released.html>
 -   Security vulnerabilties fixed: <http://www.sixapart.com/movabletype/beta/distros/MT-3.34-beta-Release-Notes.html>
-

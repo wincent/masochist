@@ -1,5 +1,6 @@
 ---
 title: Payoff time
+tags: blog
 ---
 
 Along with my other development work, since the start of the year I've been working on an object-oriented templating system called [Walrus](http://walrus.wincent.com). Its functionality is similar to that of the [Cheetah](http://www.wincent.com/knowledge-base/Cheetah) templating engine but it's written in [Ruby](http://www.wincent.com/knowledge-base/Ruby) instead of in Python. It's a wheel that I was forced to reinvent for two reasons: one, the fact that I don't know Python; and two, problems with Cheetah (missing features or undesired behaviours) which I couldn't correct because I don't know Python... At this stage it offers only a subset of the Cheetah functionality but it's powerful enough to do what I designed it for: making documentation for display in Apple's Help Viewer.

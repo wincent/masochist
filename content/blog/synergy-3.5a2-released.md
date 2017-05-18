@@ -1,5 +1,6 @@
 ---
 title: Synergy 3.5a2 released
+tags: blog
 ---
 
 Some users were unable to install the [Synergy](http://synergy.wincent.com) 3.5a release made available a [couple of hours ago](http://www.wincent.com/a/news/archives/2007/11/synergy_35a_rel.php). If you are one of these users, please download the [updated version](http://www.wincent.com/a/products/synergy-classic/history/#3.5a2) (3.5a2) which is now on the servers.

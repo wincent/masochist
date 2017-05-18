@@ -1,5 +1,6 @@
 ---
 title: The joy of deleting code
+tags: blog
 ---
 
 Things have been quiet here of late because I've been feverishly trying to get things ready in order for the server move coming up at the end of this month. It's a big move because it's not just moving the box from one place to another; I'm changing data centers, hosting companies, operating systems, and application software all at once, and there is a *lot* of work to be done.

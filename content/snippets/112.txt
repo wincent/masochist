@@ -1,7 +1,8 @@
 ---
 title: Arq S3 data format
-tags: arq
+tags: arq snippets
 ---
+
 Arq stores backup data in S3 in a format similar to that of the open-source
 version control system 'git'.  
 

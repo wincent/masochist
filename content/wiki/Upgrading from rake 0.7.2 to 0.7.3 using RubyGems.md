@@ -1,5 +1,5 @@
 ---
-tags: rubygems rake
+tags: rubygems rake wiki
 ---
 
 # Upgrading
@@ -99,4 +99,3 @@ tags: rubygems rake
     -- Jim Weirich
 
 -   <http://rubyforge.org/frs/shownotes.php?release_id=11243>
-

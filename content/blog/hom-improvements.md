@@ -1,5 +1,6 @@
 ---
 title: HOM improvements
+tags: blog
 ---
 
 One of the things which tricked me when I [first started](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r165_8_items_changed.php) with [HOM](http://www.wincent.com/a/about/wincent/weblog/archives/hom/) (an entire 6 days ago) was that I would see examples like this:

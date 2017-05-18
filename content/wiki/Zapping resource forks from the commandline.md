@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 ---
 
 Here's a short function that I just created in my [.bash\_profile](/wiki/.bash_profile):

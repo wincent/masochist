@@ -1,5 +1,5 @@
 ---
-tags: nginx updates snow.leopard fedora os.x
+tags: nginx updates snow.leopard fedora os.x wiki
 ---
 
 # Updating on [Fedora](/wiki/Fedora)

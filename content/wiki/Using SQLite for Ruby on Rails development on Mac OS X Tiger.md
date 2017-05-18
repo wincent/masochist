@@ -1,5 +1,5 @@
 ---
-tags: tiger rails os.x
+tags: tiger rails os.x wiki
 ---
 
 # Configuration file

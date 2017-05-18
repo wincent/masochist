@@ -1,6 +1,6 @@
 ---
 redirect: [[ZFS]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #34
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 cache_breaker: 1
 ---
 
@@ -13,4 +13,3 @@ Hot on the heels of [involuntary reboot](/wiki/involuntary_reboot) \#33 we have 
 -   Total days to date: 753 days
 -   Average time between failures: 22.14 days
 -   [Uptime](/wiki/Uptime) at time of failure: about 2 hours
-

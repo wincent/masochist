@@ -1,5 +1,6 @@
 ---
 title: Upcoming DNS changes
+tags: blog
 ---
 
 In preparation for [the server move](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php) at the end of this month I'll soon be migrating DNS servers.

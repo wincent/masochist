@@ -1,6 +1,6 @@
 ---
 title: New wiki
-tags: wiki site
+tags: wiki site blog
 ---
 
 The new [wiki](/wiki/wiki) is the first part of the updated site that's ready for action. All — well, *almost* all — of the content has been migrated across from the wiki on the old server. You can view it by clicking the "Wiki" link in the navigation bar that you see across the top of every page.

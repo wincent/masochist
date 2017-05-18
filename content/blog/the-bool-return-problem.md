@@ -1,5 +1,6 @@
 ---
 title: The BOOL return problem
+tags: blog
 ---
 
 The "select" HOM is one of the most frequently used patterns in any demonstration of HOM yet ironically it is also the most difficult to implement due to a quirk in the way the compiler and runtime work. Given code like the following:

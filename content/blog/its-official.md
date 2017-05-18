@@ -1,5 +1,6 @@
 ---
 title: It's official
+tags: blog
 ---
 
 ![](/system/images/legacy/8cores.png)

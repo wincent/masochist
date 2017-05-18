@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 These notes were made while building version 0.7.4 of [liba52](/wiki/liba52) on [Mac OS X](/wiki/Mac_OS_X):

@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Faking a [SIGBUS](/wiki/SIGBUS)

@@ -1,5 +1,5 @@
 ---
-tags: mailman export
+tags: mailman export wiki
 ---
 
 These notes were made while exporting addresses from the [Mailman](/wiki/Mailman) mailing list installation on my old web server, in preparation for the move to the new host.

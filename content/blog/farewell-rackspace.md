@@ -1,5 +1,6 @@
 ---
 title: Farewell Rackspace
+tags: blog
 ---
 
 I wrote the other day that I was going to be [moving to RHEL 5](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/moving_to_rhel.php) in the near future. What I wasn't sure at the time was exactly *how* I'd be making the move. At the time it seemed that the most likely pathway was going to be installing a new drive for RHEL 5 and migrating the data over afterwards; the exact mechanics of this were never really defined (would the drive have RHEL 5 *pre*-installed on it prior to being slotted in? would they need to take the machine down and do the install "in place"?).

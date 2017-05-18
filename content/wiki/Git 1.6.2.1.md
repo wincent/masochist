@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -45,4 +45,3 @@ As posted to the [Git](/wiki/Git) mailing list:
 # See also
 
 -   [Updating to Git 1.6.2.1](/wiki/Updating_to_Git_1.6.2.1)
-

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.125
-tags: site updates
+tags: site updates snippets
 ---
+
 bacc73c script/deploy: update user handling for new instance
 85e9757 script/deploy: fix bundler invocation on remote host
 47cb657 Short links, again

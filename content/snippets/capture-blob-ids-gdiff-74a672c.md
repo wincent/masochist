@@ -1,5 +1,6 @@
 ---
 title: Capture blob ids (gdiff, 74a672c)
+tags: snippets
 ---
 
 Update the state machine to capture blob ids and store them in the WOFile objects. This is a simple ASCII capture which requires a pointer to be set on seeing the start of the desired substring and then actually creating a new object based on the subtring upon reaching the end.

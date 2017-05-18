@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [CamelCase](/wiki/CamelCase) is the convention for forming compound words (words made up of other words) by capitalizing the first letter of each component word and joining them together without any intervening space.
@@ -17,4 +17,3 @@ And in the case of [Objective-C](/wiki/Objective-C) a variant in which the first
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [CamelCase](/wiki/CamelCase): <http://en.wikipedia.org/wiki/CamelCase>
-

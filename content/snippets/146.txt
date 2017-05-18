@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.89
-tags: site updates
+tags: site updates snippets
 ---
+
 3cf32e4 Make JS class inheritance simpler and more explicit
 ed13554 Use Active Relation and scopes better in Post and Tweet models
 6b68621 Ruby 1.9-ize a Hash

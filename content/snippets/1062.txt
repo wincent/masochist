@@ -1,8 +1,9 @@
 ---
 title: Site updates 0.114
-tags: site updates
+tags: site updates snippets
 cache_breaker: 1
 ---
+
 54cbbc8 Update to pre-release Compass
 3d861da Set up base vertical rhythm functionality
 435654b Split colors out from _variables.scss into separate file

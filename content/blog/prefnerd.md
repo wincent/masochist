@@ -1,6 +1,6 @@
 ---
 title: prefnerd
-tags: prefnerd
+tags: prefnerd blog
 ---
 
 A few days ago I released [prefnerd](https://github.com/wincent/prefnerd), a tool for understanding what writes are being made to the OS X prefs database.

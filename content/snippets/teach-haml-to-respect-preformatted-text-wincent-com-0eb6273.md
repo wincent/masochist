@@ -1,5 +1,6 @@
 ---
 title: Teach Haml to respect preformatted text (wincent.com, 0eb6273)
+tags: snippets
 ---
 
 This is not a pretty solution but it works for the time-being. Basically we insert markers wherever we want the input text to be passed through literally.

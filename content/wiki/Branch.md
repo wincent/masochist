@@ -1,6 +1,6 @@
 ---
 redirect: [[Branching]]
-tags: 
+tags: wiki
 ---
 
 

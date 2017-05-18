@@ -1,5 +1,6 @@
 ---
 title: Hook up new combine() and extract() functions (Wincent Strings Utility, 97d6426)
+tags: snippets
 ---
 
 These two functions can be used to help with incremental localization.

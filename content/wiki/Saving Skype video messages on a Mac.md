@@ -1,5 +1,5 @@
 ---
-tags: skype
+tags: skype wiki
 ---
 
 Grab the video URL from the local database:

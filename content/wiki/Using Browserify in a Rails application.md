@@ -1,5 +1,5 @@
 ---
-tags: rails javascript browserify
+tags: rails javascript browserify wiki
 cache_breaker: 1
 ---
 

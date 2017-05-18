@@ -1,5 +1,5 @@
 ---
-tags: node
+tags: node wiki
 ---
 
 ```shell

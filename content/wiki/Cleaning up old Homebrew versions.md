@@ -1,5 +1,5 @@
 ---
-tags: homebrew
+tags: homebrew wiki
 ---
 
 ```shell

@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # ppc
@@ -30,4 +30,3 @@ tags:
 -   first `id` argument: $rdx
 -   more `id` arguments: $rcx, $r8, $r9
 -   `id` result: $rax
-

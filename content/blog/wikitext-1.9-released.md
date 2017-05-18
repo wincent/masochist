@@ -1,6 +1,6 @@
 ---
 title: Wikitext 1.9 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 A new version of the [Wikitext](/wiki/Wikitext) gem, version 1.9, is now available. This release adds one major new feature — the ability to use custom `lambda` or `Proc` objects to apply custom [CSS](/wiki/CSS) styling to links to non-existent pages — and some minor [API](/wiki/API) enhancements. See the [high-level](http://wikitext.rubyforge.org/files/doc/RELEASE-NOTES.html) or [low-level release notes](http://rubyforge.org/frs/shownotes.php?release_id=37668) for more details.

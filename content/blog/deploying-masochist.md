@@ -1,6 +1,6 @@
 ---
 title: Deploying Masochist
-tags: masochist site
+tags: masochist site blog
 fb: https://www.facebook.com/glh/posts/10153087065236307
 reddit: https://www.reddit.com/r/git/comments/3xa91u/deploying_via_git_push/
 twitter: https://twitter.com/wincent/status/677636911800938496

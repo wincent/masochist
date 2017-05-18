@@ -1,6 +1,6 @@
 ---
 redirect: [[CamelCase]]
-tags: 
+tags: wiki
 ---
 
 

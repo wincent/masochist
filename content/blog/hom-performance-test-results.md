@@ -1,5 +1,6 @@
 ---
 title: HOM performance test results
+tags: blog
 ---
 
 The [promised](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/hom_improvement.php) test results. Totally unscientific and no substitute for proper testing and profiling in a real-world application, but they do give some orientative information. These results are for a completely unoptimized implementation; I won't be optimizing until (and if) a real performance bottleneck is discovered in a real-world application.

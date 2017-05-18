@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #44
-tags: involuntary.reboot.log
+tags: involuntary.reboot.log blog
 ---
 
 Another [kernel panic](/wiki/kernel_panic).
@@ -11,4 +11,3 @@ Another [kernel panic](/wiki/kernel_panic).
 -   Start of recording keeping: 21 May 2006
 -   Total days to date: 864 days
 -   Average time between failures: 19.67 days
-

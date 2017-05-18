@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Notes made while installing [Git 1.5.2.4](/wiki/Git_1.5.2.4) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).

@@ -1,5 +1,5 @@
 ---
-tags: gpg
+tags: gpg wiki
 cache_breaker: 1
 ---
 
@@ -125,4 +125,3 @@ $ gpg --edit-key user@example.com # at prompt: `passwd`, then `quit`
 # See also
 
 -   Another cheat sheet: <http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/gpg-cs.html>
-

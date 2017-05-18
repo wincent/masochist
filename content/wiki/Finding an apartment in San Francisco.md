@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Resources
@@ -8,4 +8,3 @@ tags:
 -   <http://sfbay.craigslist.org/sfc/>
 -   <http://earthquake.usgs.gov/regional/nca/soiltype/>
 -   <http://earthquake.usgs.gov/regional/nca/soiltype/map/>
-

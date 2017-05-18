@@ -1,6 +1,6 @@
 ---
 title: Beware of cute optimizations bearing gifts
-tags: command.t c
+tags: command.t c blog
 fb: https://www.facebook.com/glh/posts/10153216194746307
 twitter: https://twitter.com/wincent/status/704567011288838145
 ---

@@ -1,5 +1,5 @@
 ---
-tags: site
+tags: site blog
 title: Comments on commenting
 fb: https://www.facebook.com/glh/posts/10153086863026307
 twitter: https://twitter.com/wincent/status/677591039687790592

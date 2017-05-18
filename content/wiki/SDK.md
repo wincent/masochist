@@ -1,6 +1,6 @@
 ---
 redirect: [[Software Development Kit]]
-tags: 
+tags: wiki
 ---
 
 

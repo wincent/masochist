@@ -1,6 +1,6 @@
 ---
 redirect: [[last.fm]]
-tags: 
+tags: wiki
 ---
 
 

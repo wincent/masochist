@@ -1,5 +1,5 @@
 ---
-tags: rspec rails atom xml
+tags: rspec rails atom xml wiki
 cache_breaker: 1
 ---
 

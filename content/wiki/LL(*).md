@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 [LL(\*)](/wiki/LL%28%2a%29) is the new top-down recognition algorithm developed by [Terence Parr](/wiki/Terence_Parr) for [ANTLR 3](/wiki/ANTLR_3).
@@ -32,4 +32,3 @@ Although [LL(\*)](/wiki/LL%28%2a%29) is much more powerful than [LL(k)](/wiki/LL
 
 -   Turn on backtracking for a non-[LL(\*)](/wiki/LL%28%2a%29) decision; in this way [ANTLR](/wiki/ANTLR) doesn't have to predict the right alternative, it can instead just try it and rewind if it doesn't work out
 -   Use a semantic predicate to help [ANTLR](/wiki/ANTLR) resolve the decision
-

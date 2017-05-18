@@ -1,5 +1,6 @@
 ---
 title: O'Reilly Pocket References
+tags: blog
 ---
 
 Bought some [O'Reilly Pocket References](http://pocketrefs.oreilly.com/) yesterday. Actually, I only wanted one, but then I saw that they had a "[Buy 2, get a 3rd book free](http://www.oreilly.com/oreilly/cs/b2g1f.html)" offer.

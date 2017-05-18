@@ -1,5 +1,5 @@
 ---
-tags: perl
+tags: perl wiki
 ---
 
 I recently wanted to get a list of all [CPAN](/wiki/CPAN) modules installed on my system. Of the many possibly ways of doing this that I discovered by [Googling](/wiki/Googling), [this one](http://cygwin.com/ml/cygwin/2003-11/msg00545.html) seemed to be the best:

@@ -1,6 +1,6 @@
 ---
 redirect: [[here document]]
-tags: 
+tags: wiki
 ---
 
 

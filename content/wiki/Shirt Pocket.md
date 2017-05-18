@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Makers of [SuperDuper!](/wiki/SuperDuper%21)

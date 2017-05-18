@@ -1,6 +1,6 @@
 ---
 redirect: [[beachball]]
-tags: 
+tags: wiki
 ---
 
 

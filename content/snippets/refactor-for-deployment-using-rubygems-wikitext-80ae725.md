@@ -1,5 +1,6 @@
 ---
 title: Refactor for deployment using RubyGems (wikitext, 80ae725)
+tags: snippets
 ---
 
 On thinking about the need for this to run on multiple platforms I decided that it wasn't really suited to being used as a Rails plug-in:

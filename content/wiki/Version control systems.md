@@ -1,6 +1,6 @@
 ---
 redirect: [[Version control system]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,6 @@
 ---
 title: On the internal-only Leopard GM
+tags: blog
 ---
 
 In "Indies Roll the Dice on Final Leopard", [Steven Frank](http://stevenf.com/2007/10/indies_roll_the_dice_on_final_leopard.php) writes:

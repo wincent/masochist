@@ -1,5 +1,5 @@
 ---
-tags: xcode
+tags: xcode wiki
 ---
 
 [Project Builder](/wiki/Project_Builder) was the [IDE](/wiki/IDE) that shipped with [Apple](/wiki/Apple)'s original, free [Developer Tools](/wiki/Developer_Tools) for [Mac OS X](/wiki/Mac_OS_X).

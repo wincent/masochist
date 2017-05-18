@@ -1,5 +1,6 @@
 ---
 title: Support recursive substitution (Wincent Strings Utility, 93b954c)
+tags: snippets
 ---
 
 In updating my apps to match the latest documentation in Apple's "Property List Key Reference" I noticed that it would be useful to be able to do recursive substitution when using the --info and --strings switches; that is, have one key refer to the value of another key in an InfoPlist.strings file rather than one in the Info.plist.

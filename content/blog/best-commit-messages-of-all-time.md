@@ -1,5 +1,6 @@
 ---
 title: Best commit messages of all time
+tags: blog
 ---
 
 Well, not really:

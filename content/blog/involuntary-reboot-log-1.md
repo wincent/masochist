@@ -1,5 +1,6 @@
 ---
 title: Involuntary reboot log #1
+tags: blog
 ---
 
 Resetting the IRL counter to "celebrate" the first kernel panic on the new iMac (yes, that's irony). No idea what the cause was. Newly installed software that was running at the time included a custom Intel build I had just made of [MLDonkey](http://mldonkey.sourceforge.net/Main_Page) and [Civilization IV](http://www.firaxis.com/games/game_detail.php?gameid=10). One of the first things I did after recovering from the panic was trash Civilization IV, just in case — it's only a game — and if I get another panic while `mlnet` is running I'll be trashing that too and never using it again. This machine is far too important to my work to take any risks. Paranoia is the order of the day.

@@ -1,5 +1,6 @@
 ---
 title: Mail spring cleaning
+tags: blog
 ---
 
 *In general* I never throw out any mail, apart from spam that is. I have personal mails dating back as far as 1996; prior to that I only had email at my university and I never had an archive of the very oldest messages (which probably date from 1994).

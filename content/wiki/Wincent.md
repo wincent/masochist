@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Information about Wincent (the company):
@@ -13,4 +13,3 @@ Information about Wincent Colaiuta (the person):
 Information about [Wincent](/wiki/Wincent) products:
 
 -   [Wincent products](/wiki/Wincent_products)
-

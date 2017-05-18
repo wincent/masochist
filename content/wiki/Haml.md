@@ -1,5 +1,5 @@
 ---
-tags: haml
+tags: haml wiki
 cache_breaker: 1
 ---
 
@@ -27,4 +27,3 @@ Why a new templating system for [Rails](/wiki/Rails)? I think [this quote](http:
 
 -   [Installing Haml 1.5.2](/wiki/Installing_Haml_1.5.2) (first installation notes)
 -   [Installing the Haml TextMate bundle](/wiki/Installing_the_Haml_TextMate_bundle)
-

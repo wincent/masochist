@@ -1,6 +1,6 @@
 ---
 title: New site section: repos
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

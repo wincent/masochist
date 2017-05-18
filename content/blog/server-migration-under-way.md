@@ -1,5 +1,6 @@
 ---
 title: Server migration under way
+tags: blog
 ---
 
 The [server migration](http://www.wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php) from Rackspace to INetU is currently underway. My aim is do this very carefully, service by service, and keep downtime to a minimum; hopefully minutes rather than hours.

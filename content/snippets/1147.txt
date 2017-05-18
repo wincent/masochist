@@ -1,3 +1,7 @@
+---
+tags: snippets
+---
+
 Analysis of sampling tmux (pid 1857) every 1 millisecond
 Process:         tmux [1857]
 Path:            /usr/local/Cellar/tmux/2.4/bin/tmux

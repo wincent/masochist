@@ -1,6 +1,6 @@
 ---
 title: What kind of name is Wincent Colaiuta, anyway?
-tags: wincent
+tags: wincent blog
 ---
 
 Fairly regularly I'll get asked by colleagues why I publish so much online content under the wacky pseudonym, Wincent Colaiuta. I figured I'd put the answer here on my blog so that I can point people at it when the question comes up again in the future.

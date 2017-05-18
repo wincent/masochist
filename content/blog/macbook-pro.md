@@ -1,5 +1,6 @@
 ---
 title: MacBook Pro
+tags: blog
 ---
 
 I just organized a new MacBook Pro for my colleague with a very attractive developer discount (haven't read the terms and conditions but no doubt I'm forbidden to reveal the actual quantity). These machines, released [back in June](http://www.oreillynet.com/mac/blog/2007/06/macbook_pro_update.html) so still relatively "young", are darn nice.

@@ -1,5 +1,6 @@
 ---
 title: Synergy (revision 9848c4f)
+tags: snippets
 ---
 
 -   *Download name*: Synergy3.5a3+(9848c4f).zip

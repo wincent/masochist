@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 While [upgrading from Ragel 5.20 to 5.21 on Mac OS X Tiger](/wiki/upgrading_from_Ragel_5.20_to_5.21_on_Mac_OS_X_Tiger) I decided to try upgrading to a the new version of [Kelbt](/wiki/Kelbt) as well, [Kelbt 0.12](/wiki/Kelbt_0.12).

@@ -1,6 +1,6 @@
 ---
 redirect: [[Haml]]
-tags: 
+tags: wiki
 ---
 
 

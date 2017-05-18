@@ -1,5 +1,6 @@
 ---
 title: Rackspace customer service
+tags: blog
 ---
 
 I just opened a ticket asking [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) to make some changes to their DNS for me (rather than running my own DNS servers I let Rackspace do it).

@@ -1,6 +1,6 @@
 ---
 redirect: [[Directed Acyclic Graph]]
-tags: 
+tags: wiki
 ---
 
 

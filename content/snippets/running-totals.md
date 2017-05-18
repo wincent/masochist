@@ -1,5 +1,6 @@
 ---
 title: Running totals
+tags: snippets
 ---
 
 *Kernel panics since 22 May 2005*: 8

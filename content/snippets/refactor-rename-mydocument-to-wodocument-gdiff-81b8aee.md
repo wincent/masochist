@@ -1,5 +1,6 @@
 ---
 title: Refactor: rename MyDocument to WODocument (gdiff, 81b8aee)
+tags: snippets
 ---
 
 Replace default NSDocument subclass name with something more specific.

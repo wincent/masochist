@@ -1,6 +1,6 @@
 ---
 title: More minor site updates (0.11 and 0.12)
-tags: site
+tags: site blog
 ---
 
 Just deployed a couple of minor revisions to the site.

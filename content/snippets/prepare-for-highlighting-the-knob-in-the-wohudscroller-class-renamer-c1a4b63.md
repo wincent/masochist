@@ -1,5 +1,6 @@
 ---
 title: Prepare for highlighting the knob in the WOHUDScroller class (REnamer, c1a4b63)
+tags: snippets
 ---
 
 Add an instance variable to control the whether the knob is drawn highlighted or not in the WOHUDScroller class.

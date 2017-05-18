@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 [ri](/wiki/ri) is a documentation viewer for [Ruby](/wiki/Ruby).
@@ -95,4 +95,3 @@ Output of `ri --help`:
 # See also
 
 -   [FastRI](/wiki/FastRI)
-

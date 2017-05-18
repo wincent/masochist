@@ -1,5 +1,6 @@
 ---
 title: Intriguing plans for Ruby on Mac OS X in the future
+tags: blog
 ---
 
 It will probably be a long, long time before this comes to fruit, but Laurent Sansonetti has made [these](http://chopine.be/lrz/diary/2007-11-06_RubyConf-2007.html) very interesting comments:

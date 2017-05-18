@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.137
-tags: site updates
+tags: site updates snippets
 ---
+
 b346c2b Apply more visual tweaks

@@ -1,5 +1,5 @@
 ---
-tags: solarized
+tags: solarized wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
 # Other links
 
 -   Color presets for the [Mac OS X](/wiki/Mac_OS_X) [Lion](/wiki/Lion) [Terminal.app](/wiki/Terminal.app): <https://github.com/tomislav/osx-lion-terminal.app-colors-solarized>
-

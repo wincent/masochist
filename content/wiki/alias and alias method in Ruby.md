@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 ```ruby
@@ -47,4 +47,3 @@ Bar.new.hello3 # => puts "Hello from Bar"
 # Source
 
 -   <http://blog.bigbinary.com/2012/01/08/alias-vs-alias-method.html>
-

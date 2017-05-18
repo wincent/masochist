@@ -1,5 +1,6 @@
 ---
 title: In Barcelona
+tags: blog
 ---
 
 I'm in Barcelona for the weekend and have just organized 24 hours of WiFi access so that I can work from the hotel room and check in changes when necessary. Some of the work I want to do involves branching and merging so it's really an online thing.

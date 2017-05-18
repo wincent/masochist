@@ -1,5 +1,5 @@
 ---
-tags: ansible
+tags: ansible wiki
 cache_breaker: 1
 ---
 

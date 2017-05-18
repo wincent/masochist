@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 cache_breaker: 1
 ---
 
@@ -26,4 +26,3 @@ This is a list of useful editing commands available in the [Bash](/wiki/Bash) sh
 -   `<C-b>`: move back one character (equivalent to left cursor)
 -   `<C-f>`: move forward one character (equivalent to right cursor)
 -   `<C-d>`: delete character under cursor (equivalent to delete)
-

@@ -1,5 +1,5 @@
 ---
-tags: ruby.prof
+tags: ruby.prof wiki
 ---
 
 [ruby-prof 0.5.0](/wiki/ruby-prof_0.5.0) was released on 9 July 2007.
@@ -29,4 +29,3 @@ tags: ruby.prof
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=12873>
 -   Upgrade notes: [Upgrading to ruby-prof 0.5.0 using RubyGems on Mac OS X Tiger](/wiki/Upgrading_to_ruby-prof_0.5.0_using_RubyGems_on_Mac_OS_X_Tiger)
-

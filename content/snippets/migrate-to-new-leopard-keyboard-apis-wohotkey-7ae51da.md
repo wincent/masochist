@@ -1,5 +1,6 @@
 ---
 title: Migrate to new Leopard keyboard APIs (WOHotKey, 7ae51da)
+tags: snippets
 ---
 
 Some of the old APIs previously used are now deprecated in Leopard. To get a warning free build this commit gets rid of all uses of the old APIs and migrates to the new ones.

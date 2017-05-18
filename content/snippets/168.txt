@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.111
-tags: site updates
+tags: site updates snippets
 ---
+
 b1b2ddd Disable user scaling
 05c5fc3 Make most (or all?) buttons responsive
 1cee5d5 Replace last use of spinner.gif asset

@@ -1,6 +1,6 @@
 ---
 redirect: [[kernel]]
-tags: 
+tags: wiki
 ---
 
 

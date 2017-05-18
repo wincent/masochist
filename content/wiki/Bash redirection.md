@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 ---
 
 `man bash` has a wealth of information on redirection (grep for `REDIRECTION`) but here is a quick cheat sheet:

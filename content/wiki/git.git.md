@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 The official repository for the [Git](/wiki/Git) project:
@@ -14,4 +14,3 @@ The official repository for the [Git](/wiki/Git) project:
 -   <http://git.kernel.org/?p=git/git.git;a=summary>
 -   <http://repo.or.cz/w/git.git>
 -   <http://github.com/git/git/tree/master> (mirror)
-

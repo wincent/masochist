@@ -1,5 +1,6 @@
 ---
 title: Parsing/transforming nested lists from wiki markup to HTML
+tags: blog
 ---
 
 In working on my [wikitext](http://www.wincent.com/knowledge-base/wikitext)-to-HTML transformer I saved the ugliest bit for last: parsing/transforming nested lists. I started off with parsing simple span-level elements like `em` and `strong` tags, then moved on to block level items like paragraphs and `pre` blocks, and nesting containers like `blockquote` blocks. But I had to keep putting off lists.

@@ -1,5 +1,5 @@
 ---
-tags: data.structures algorithms trees
+tags: data.structures algorithms trees wiki
 ---
 
 # Types

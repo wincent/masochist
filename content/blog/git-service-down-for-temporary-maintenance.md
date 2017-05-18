@@ -1,6 +1,6 @@
 ---
 title: Git service down for temporary maintenance [updated]
-tags: site maintenance
+tags: site maintenance blog
 cache_breaker: 1
 ---
 

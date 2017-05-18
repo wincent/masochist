@@ -1,5 +1,6 @@
 ---
 title: Use non-dashed form of Git commands (buildtools, 43661e2)
+tags: snippets
 ---
 
 For consistency, use "git describe" rather than git-describe.

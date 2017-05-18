@@ -1,6 +1,6 @@
 ---
 title: Bringing TextMate-style "Command-T" to VIM
-tags: ruby textmate vim command.t
+tags: ruby textmate vim command.t blog
 cache_breaker: 1
 ---
 

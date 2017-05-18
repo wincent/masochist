@@ -1,5 +1,5 @@
 ---
-tags: rubyinline parsetree updates
+tags: rubyinline parsetree updates wiki
 ---
 
 Notes made while updating to [ruby2ruby 1.2.1](/wiki/ruby2ruby_1.2.1) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.5:

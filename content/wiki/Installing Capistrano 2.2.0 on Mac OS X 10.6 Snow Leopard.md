@@ -1,5 +1,5 @@
 ---
-tags: capistrano snow.leopard
+tags: capistrano snow.leopard wiki
 cache_breaker: 1
 ---
 

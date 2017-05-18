@@ -1,6 +1,6 @@
 ---
 title: Fuzzyfinder
-tags: vim
+tags: vim blog
 ---
 
 Frustrated with the flakiness of Jamis Buck's [FuzzyFinder: TextMate](http://github.com/jamis/fuzzyfinder_textmate/tree/master) plugin for [Vim](/wiki/Vim), and his accompanying [FuzzyFileFinder](http://github.com/jamis/fuzzy_file_finder/tree/master) I've found myself simply not using them at all over the last few weeks. One can get around fairly quickly using NERDTree, and `:e` with tab-completion.

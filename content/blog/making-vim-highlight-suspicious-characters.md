@@ -1,6 +1,6 @@
 ---
 title: Making Vim highlight "suspicious" characters
-tags: vim
+tags: vim blog
 cache_breaker: 1
 ---
 

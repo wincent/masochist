@@ -1,5 +1,6 @@
 ---
 title: Tighten up post Atom feed generation (wincent.com, 49fce76)
+tags: snippets
 ---
 
 Supply author -- it is required by the standard -- and use summary plus link-to-content rather than sticking the excerpt in the content.

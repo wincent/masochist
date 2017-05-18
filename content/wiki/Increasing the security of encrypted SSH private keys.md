@@ -1,5 +1,5 @@
 ---
-tags: ssh
+tags: ssh wiki
 ---
 
 From <http://martin.kleppmann.com/2013/05/24/improving-security-of-ssh-private-keys.html>:

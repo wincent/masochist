@@ -1,5 +1,5 @@
 ---
-tags: spotify
+tags: spotify wiki
 ---
 
 There is a long thread about this [here](http://community.spotify.com/t5/Help-Desktop-Linux-Mac-and/spotify-unable-to-initialize-the-storage-of-temporary-files/td-p/30293).

@@ -1,5 +1,6 @@
 ---
 title: Daring Fireball
+tags: blog
 ---
 
 Several months ago Gruber [made his full site feed](http://daringfireball.net/2007/07/regarding_df_feed) available to non-subscribers.

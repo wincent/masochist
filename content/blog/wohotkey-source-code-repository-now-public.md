@@ -1,6 +1,6 @@
 ---
 title: WOHotKey source code repository now public
-tags: wohotkey open.source
+tags: wohotkey open.source blog
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHu
 
 -   <http://github.com/wincent/WOHotKey/>
 -   <http://gitorious.org/wohotkey>
-

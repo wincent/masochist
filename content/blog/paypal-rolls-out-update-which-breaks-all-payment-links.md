@@ -1,5 +1,6 @@
 ---
 title: PayPal rolls out update which breaks all payment links
+tags: blog
 ---
 
 As of about 9 hours ago, PayPal has rolled out a new website and now anyone trying to [purchase](https://secure.wincent.com/a/store/) one of my products via PayPal will see a "Page not found" error upon arriving at PayPal.

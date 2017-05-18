@@ -1,6 +1,6 @@
 ---
 redirect: [[Mock objects]]
-tags: 
+tags: wiki
 ---
 
 

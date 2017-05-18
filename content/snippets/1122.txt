@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.152
-tags: site updates
+tags: site updates snippets
 ---
+
 251259d More color thievery, to make links in flashes look better

@@ -1,8 +1,8 @@
 ---
-tags: red.hat hpricot
+tags: red.hat hpricot wiki
 ---
 
-    $ sudo gem install hpricot
+$ sudo gem install hpricot
     Building native extensions.  This could take a while...
     Successfully installed hpricot-0.6
     1 gem installed

@@ -1,5 +1,5 @@
 ---
-tags: perl.one.liners
+tags: perl.one.liners wiki
 ---
 
 "[Search and replace in multiple files with a Perl one-liner](/wiki/Search_and_replace_in_multiple_files_with_a_Perl_one-liner)" showed how to search multiple files and perform in-line replacements in them, but sometimes you just want to know if a particular file matches something.

@@ -1,5 +1,5 @@
 ---
-tags: zentest updates
+tags: zentest updates wiki
 cache_breaker: 1
 ---
 
@@ -14,4 +14,3 @@ Update [FastRI](/wiki/FastRI) index:
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11173>
-

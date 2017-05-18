@@ -1,6 +1,6 @@
 ---
 redirect: [[Memory barrier]]
-tags: 
+tags: wiki
 ---
 
 

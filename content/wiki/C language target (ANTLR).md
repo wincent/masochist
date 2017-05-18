@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 These notes supersede the older notes in "[C language target (ANTLR 3.0 prerelease)](/wiki/C_language_target_%28ANTLR_3.0_prerelease%29)". Prior to the final release of [ANTLR 3.0](/wiki/ANTLR_3.0) there were no examples demonstrating the use of the [C language target](/wiki/C_language_target), but with the final release there are extensive examples which make the older notes redundant.
@@ -60,4 +60,3 @@ To overcome the thread-safety issues you'll need to allocate your own tracking s
 
 -   Official [C language target](/wiki/C_language_target) page on the [ANTLR](/wiki/ANTLR) [wiki](/wiki/wiki): <http://www.antlr.org/wiki/display/ANTLR3/ANTLR3+Code+Generation+-+C>
     -   Further usage notes: <http://www.antlr.org/wiki/display/ANTLR3/Using+the+ANTLR3+C+Target>
-

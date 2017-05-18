@@ -1,7 +1,8 @@
 ---
 title: Sample Command-T Makefile
-tags:
+tags: snippets
 ---
+
 SHELL = /bin/sh
 
 #### Start of system configuration section. ####

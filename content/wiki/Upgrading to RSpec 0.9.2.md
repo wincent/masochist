@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 Notes made while upgrading from the [rspec](/wiki/rspec) 0.9 beta preview [gem](/wiki/gem). (Note that there was [never any final release of 0.9](http://blog.davidchelimsky.net/articles/2007/05/01/rspec-0-9-is-finally-released), the team skipped straight ahead to 0.9.1; they then released 0.9.2 before I even had a chance to install 0.9.1.)
@@ -197,4 +197,3 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 
 -   Release notes for 0.9.2: <http://rubyforge.org/frs/shownotes.php?release_id=11471>
 -   Release notes for 0.9.1 (skipped): <http://rubyforge.org/frs/shownotes.php?release_id=11423>
-

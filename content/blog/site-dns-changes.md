@@ -1,6 +1,6 @@
 ---
 title: Site DNS changes
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

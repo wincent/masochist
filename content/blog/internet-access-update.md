@@ -1,6 +1,6 @@
 ---
 title: Internet access update
-tags: 
+tags: blog
 cache_breaker: 1
 ---
 

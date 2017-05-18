@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance Public Preview Release 0.4
+tags: blog
 ---
 
 After a successful beta-testing period the new public preview release of [Synergy Advance](http://synergyadvance.com/) (0.4) is now on the servers and it boasts an [extensive set](http://www.wincent.com/a/products/synergy-advance/history/#0.4) of new features, enhancements and bugfixes over the last public preview. It is a recommended update for all users. You can download it [here](http://www.wincent.com/a/products/synergy-advance/download/). Please see the [known issues](http://www.wincent.com/a/products/synergy-advance/known-issues/) page. If you discover any bugs please [file a report](http://bugs.wincent.com/) (see the bug reporting guidelines [here](http://www.wincent.com/a/knowledge-base/archives/2004/11/how_to_file_a_g.php) and the instructions for beta testers [here](http://www.wincent.com/a/knowledge-base/archives/2005/04/information_for.php)). You can purchase a license [here](https://secure.wincent.com/a/products/synergy-advance/purchase/) or support further development by [sponsoring](https://secure.wincent.com/a/products/synergy-advance/donate/) or making a [donation](https://secure.wincent.com/a/products/synergy-advance/donate/).

@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 [SVK](/wiki/SVK) is a pseudo-distributed [version control system](/wiki/version_control_system) with powerful [branching](/wiki/branching) and [merging](/wiki/merging) capabilities and built upon proven [Subversion](/wiki/Subversion) technologies.
@@ -19,4 +19,3 @@ SVK is only "psuedo-distributed" rather than "distributed" because it is basical
 -   The "[SVK](/wiki/SVK) book": <http://svkbook.elixus.org/nightly/en/index.html>
 -   [SVK](/wiki/SVK) Guide: <http://wiki.sourcemage.org/Svk_Guide>
 -   svk-dev mailing list: <http://lists.bestpractical.com/cgi-bin/mailman/listinfo/svk-devel>
-

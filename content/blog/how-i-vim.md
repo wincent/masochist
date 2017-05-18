@@ -1,6 +1,6 @@
 ---
 title: How I Vim
-tags: vim tmux
+tags: vim tmux blog
 ---
 
 _This article was originally published at [howivim.com](http://howivim.com/2016/wincent/)._

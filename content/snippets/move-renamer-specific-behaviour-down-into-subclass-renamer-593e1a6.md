@@ -1,5 +1,6 @@
 ---
 title: Move REnamer-specific behaviour down into subclass (REnamer, 593e1a6)
+tags: snippets
 ---
 
 As mentioned in 97148f1, there was a bit of highly-specific behaviour implemented in my WOHUDTableView subclass. I've now extracted this into a subclass of its own so that the parent class is more or less limited to clean, general functionality that would be usable in any application that wants to put a table view in a HUD.

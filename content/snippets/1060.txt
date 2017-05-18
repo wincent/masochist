@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.112
-tags: site updates
+tags: site updates snippets
 ---
+
 d565a77 Apply style fixes to comments#form partial
 fafa950 Remove zeus.json, in preparation for Rails 4.1 upgrade
 3f16a84 Update to Rails 4.1.0.beta1

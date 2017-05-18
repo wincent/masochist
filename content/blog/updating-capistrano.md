@@ -1,6 +1,6 @@
 ---
 title: Updating Capistrano
-tags: rails capistrano
+tags: rails capistrano blog
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Writing your own programming language
-tags: 
+tags: blog
 ---
 
 It just occurred to me that a *lot* of programmers out there with idle time on their hands decide to write their own programming language. Among the thousands who try, most are doomed to languish in obscurity forever, so if fame is your goal then you'd be ill-advised to try achieving it via programming language invention.

@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.29
-tags: site
+tags: site snippets
 ---
+
 dafb255 Update to Unicorn 1.1.5
 427684c Don't run specs outside of staging environment
 03c456b Update to Steak 1.0.0.rc.3

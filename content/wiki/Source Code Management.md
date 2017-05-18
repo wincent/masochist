@@ -1,6 +1,6 @@
 ---
 redirect: [[SCM]]
-tags: 
+tags: wiki
 ---
 
 

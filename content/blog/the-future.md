@@ -1,5 +1,6 @@
 ---
 title: The future
+tags: blog
 ---
 
 I haven't been posting updates to the "Mini-log" (visible in the box on the left-hand side of my [weblog](http://colaiuta.net/)) lately because I've been working on some big changes to the back end of the site (basically, a Rails re-write of *absolutely everything*). This is a huge task and I haven't wanted to make too many posts using the old tools knowing that I'd just have to migrate everything in the future anyway.

@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 In addition to using the debugger it can be useful to trace through a Ruby program or a section of it.

@@ -1,5 +1,5 @@
 ---
-tags: perl perl.one.liners
+tags: perl perl.one.liners wiki
 ---
 
 I recently needed to change all the occurrences of a string in a number of files. The following [perl one-liner](/wiki/perl_one-liner):

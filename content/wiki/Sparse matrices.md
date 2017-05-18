@@ -1,6 +1,6 @@
 ---
 redirect: [[sparse matrix]]
-tags: 
+tags: wiki
 ---
 
 

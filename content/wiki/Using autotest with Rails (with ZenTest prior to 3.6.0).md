@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 Newer versions of these notes (for use with versions of [ZenTest](/wiki/ZenTest) greater than or equal to [ZenTest 3.6.0](/wiki/ZenTest_3.6.0)) can be found at "[Using autotest with Rails](/wiki/Using_autotest_with_Rails)".
@@ -87,4 +87,3 @@ This prevents the tests from failing continuously when an example fails; [autote
 -   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
 -   Official plug-in announcement: <http://blog.nicksieger.com/articles/2006/11/15/rspec-autotest-now-a-rails-plugin>
 -   "Developing a Rails model using BDD and RSpec": <http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1>
-

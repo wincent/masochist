@@ -1,6 +1,6 @@
 ---
 redirect: [[MVC]]
-tags: 
+tags: wiki
 ---
 
 

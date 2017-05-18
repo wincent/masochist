@@ -1,5 +1,6 @@
 ---
 title: Synergy (revision 339)
+tags: snippets
 ---
 
 -   *Download name*: SynergyNightly(339).dmg

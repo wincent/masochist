@@ -1,6 +1,6 @@
 ---
 redirect: [[Ruby recipes]]
-tags: 
+tags: wiki
 ---
 
 

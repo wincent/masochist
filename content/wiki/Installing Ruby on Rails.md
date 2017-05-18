@@ -1,5 +1,5 @@
 ---
-tags: ruby rails
+tags: ruby rails wiki
 ---
 
 # Version and platform-specific notes
@@ -11,4 +11,3 @@ tags: ruby rails
 
 -   [Ruby on Rails](/wiki/Ruby_on_Rails)
 -   [Rails application bootstrapping](/wiki/Rails_application_bootstrapping)
-

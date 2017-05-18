@@ -1,6 +1,6 @@
 ---
 title: Rails update headaches
-tags: rails
+tags: rails blog
 ---
 
 In [my rant](/blog/lack-of-stability-in-the-rails-ruby-ecosystem-rant) from the other day I was complaining about how trying to build an application on top of Rails and friends is like building on quicksand.

@@ -1,5 +1,6 @@
 ---
 title: Update symlink for new WOCommon location (WODebug, 5dcece2)
+tags: snippets
 ---
 
 Back in the days of Subversion externals each project that used code from WOCommon had a local copy of WOCommon incoporated by reference using the svn:externals mechanism.

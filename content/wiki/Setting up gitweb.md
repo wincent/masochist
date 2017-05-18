@@ -1,5 +1,5 @@
 ---
-tags: git gitweb
+tags: git gitweb wiki
 cache_breaker: 1
 ---
 
@@ -163,4 +163,3 @@ And the browser displays the file rather than downloading it.
 # See also
 
 -   [Migrating Subversion repositories to Git](/wiki/Migrating_Subversion_repositories_to_Git)
-

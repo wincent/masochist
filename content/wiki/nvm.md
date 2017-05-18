@@ -1,5 +1,5 @@
 ---
-tags: javascript nvm node
+tags: javascript nvm node wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
 # See also
 
 -   [Managing multiple versions of node with nvm](/wiki/Managing_multiple_versions_of_node_with_nvm)
-

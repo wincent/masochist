@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance updates
+tags: blog
 ---
 
 The next Synergy Advance update will be coming out soon. Rather than releasing 0.5 I'm going to jump straight ahead to 0.5.1b because I want to include some minor new features.

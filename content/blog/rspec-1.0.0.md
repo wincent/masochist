@@ -1,5 +1,6 @@
 ---
 title: RSpec 1.0.0
+tags: blog
 ---
 
 [RSpec 1.0.0](http://www.wincent.com/knowledge-base/RSpec%201.0.0) is out. This is a big deal because it means there is now a firm commitment to keeping the [API](http://www.wincent.com/knowledge-base/API) stable, after a lot of changes in the lead-up to 1.0.0.

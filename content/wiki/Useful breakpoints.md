@@ -1,8 +1,8 @@
 ---
-tags: 
+tags: wiki
 ---
 
-    -[NSException raise]
+-[NSException raise]
     objc_exception_throw
     auto_zone_resurrect
     malloc_printf

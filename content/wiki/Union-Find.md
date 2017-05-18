@@ -1,5 +1,5 @@
 ---
-tags: data.structures
+tags: data.structures wiki
 cache_breaker: 1
 ---
 
@@ -55,4 +55,3 @@ In most implementations, an underlying array implementation would be used to sto
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [disjoint-sets](/wiki/disjoint-sets): <http://en.wikipedia.org/wiki/Disjoint-set_data_structure>
-

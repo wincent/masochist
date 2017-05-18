@@ -1,5 +1,6 @@
 ---
 title: Dreaming about the server upgrade
+tags: blog
 ---
 
 Since the disk corruption on the server [the other day](http://www.wincent.com/a/news/archives/2005/06/synergy_and_syn.php) I have done a lot of thinking about how I could minimize downtime and speed-up disaster recovery. Unfortunately, it all costs a lot of money so I will probably leave things at the "dreaming" stage for some time before I move onto the "action" phase.

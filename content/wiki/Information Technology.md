@@ -1,6 +1,6 @@
 ---
 redirect: [[IT]]
-tags: 
+tags: wiki
 ---
 
 

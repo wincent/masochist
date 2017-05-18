@@ -1,5 +1,5 @@
 ---
-tags: tiger rails
+tags: tiger rails wiki
 ---
 
 To install [Ruby on Rails](/wiki/Ruby_on_Rails) using [RubyGems](/wiki/RubyGems), the standard `PATH` environment variable must be overridden to ensure that the custom local copy of [Ruby](/wiki/Ruby) (version 1.8.4) is used instead of the default system install (version 1.8.2).

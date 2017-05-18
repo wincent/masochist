@@ -1,5 +1,6 @@
 ---
 title: Auto-generation of blog post permalinks (wincent.com, f71a66b)
+tags: snippets
 ---
 
 It would be nice if we could normalize everything to ASCII but Iconv can't be trusted to do the same thing across platforms so instead opt for an even lossier approach: basically everything that's not ASCII is converted into a hyphen.

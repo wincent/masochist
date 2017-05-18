@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 # Local update

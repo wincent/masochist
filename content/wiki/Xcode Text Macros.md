@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # C
@@ -90,4 +90,4 @@ To:
             Identifier = c; 
             IsMenu = YES; 
             Name = C; 
-        }, 
+        },

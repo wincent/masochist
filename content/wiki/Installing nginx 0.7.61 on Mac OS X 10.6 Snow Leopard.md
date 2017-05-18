@@ -1,5 +1,5 @@
 ---
-tags: nginx pcre upload
+tags: nginx pcre upload wiki
 cache_breaker: 1
 ---
 
@@ -108,4 +108,3 @@ As for the second one, commenting out the `text/html` in the `gzip_types` direct
 # See also
 
 -   [Updating to nginx 0.7.61 on Red Hat Enterprise Linux 5.3](/wiki/Updating_to_nginx_0.7.61_on_Red_Hat_Enterprise_Linux_5.3)
-

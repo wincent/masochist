@@ -1,5 +1,5 @@
 ---
-tags: svk growl
+tags: svk growl wiki
 ---
 
 # Rationale
@@ -64,4 +64,3 @@ In the nightly builds (and in regular development) a local copy can now be check
 # See also
 
 -   <http://growl.info/documentation/developer/growl-source-install.php>
-

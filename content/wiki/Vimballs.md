@@ -1,6 +1,6 @@
 ---
 redirect: [[vimball]]
-tags: 
+tags: wiki
 ---
 
 

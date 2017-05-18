@@ -1,5 +1,5 @@
 ---
-tags: red.hat mysql
+tags: red.hat mysql wiki
 ---
 
 # Specific examples
@@ -16,4 +16,3 @@ tags: red.hat mysql
 -   Documentation specific to 4.1-to-5.0 upgrades: <http://dev.mysql.com/doc/refman/5.0/en/upgrading-from-4-1.html>
 -   Change history: <http://dev.mysql.com/doc/refman/5.0/en/news.html>
 -   `mysql_upgrade` table upgrade tool: <http://dev.mysql.com/doc/refman/5.0/en/mysql-upgrade.html>
-

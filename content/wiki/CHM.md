@@ -1,6 +1,6 @@
 ---
 redirect: [[CHM file format]]
-tags: 
+tags: wiki
 ---
 
 

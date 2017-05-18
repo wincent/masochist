@@ -1,5 +1,5 @@
 ---
-tags: data.structures
+tags: data.structures wiki
 cache_breaker: 1
 ---
 
@@ -48,4 +48,3 @@ See:
 # Variants of binary trees
 
 -   [Rope](/wiki/Rope): <http://en.wikipedia.org/wiki/Rope_%28data_structure%29>
-

@@ -1,5 +1,6 @@
 ---
 title: iTunes Plus
+tags: blog
 ---
 
 So [iTunes Plus](http://www.apple.com/pr/library/2007/05/30itunesplus.html) has just become available here in Spain.

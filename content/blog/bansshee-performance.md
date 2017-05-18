@@ -1,5 +1,6 @@
 ---
 title: Bansshee performance
+tags: blog
 ---
 
 So [Bansshee](http://bansshee.org/) is out.

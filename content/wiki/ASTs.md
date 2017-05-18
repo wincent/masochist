@@ -1,6 +1,6 @@
 ---
 redirect: [[AST]]
-tags: 
+tags: wiki
 ---
 
 

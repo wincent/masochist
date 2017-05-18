@@ -1,5 +1,6 @@
 ---
 title: Address some TODO items (snippets, afe8572)
+tags: snippets
 ---
 
 This commit address a couple of TODO items:

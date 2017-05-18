@@ -1,5 +1,5 @@
 ---
-tags: leopard perl
+tags: leopard perl wiki
 ---
 
 I decided to install [Perl](/wiki/Perl) again in the hope of overcoming my problems trying to install [SVK](/wiki/SVK) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).

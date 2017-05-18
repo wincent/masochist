@@ -1,5 +1,5 @@
 ---
-tags: less
+tags: less wiki
 ---
 
 Something I always forget, but if you start `less` with multiple file arguments you can move between them with `:n` and `:p`.

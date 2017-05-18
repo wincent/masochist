@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.3 released
+tags: blog
 ---
 
 [Synergy](http://synergy.wincent.com/) 2.3 has just been released. This release fixes all remaining issues that were reported during the testing period; as a result Synergy is now a fully-fledged Universal Binary that will run identically (and natively) on both the Intel and PowerPC platforms. A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

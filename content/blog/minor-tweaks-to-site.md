@@ -1,6 +1,6 @@
 ---
 title: Minor tweaks to site
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

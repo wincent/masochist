@@ -1,6 +1,6 @@
 ---
 redirect: [[Movable Type]]
-tags: 
+tags: wiki
 ---
 
 

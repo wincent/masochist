@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 [Octal](/wiki/Octal) numbers are integers written in [base-8](/wiki/base-8). The possible range for each digit is from 0 through to 7.

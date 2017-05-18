@@ -1,6 +1,6 @@
 ---
 title: Bizarre Rails/RSpec/Haml problem
-tags: rspec rails git haml
+tags: rspec rails git haml blog
 cache_breaker: 1
 ---
 

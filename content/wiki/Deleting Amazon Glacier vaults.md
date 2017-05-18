@@ -1,5 +1,5 @@
 ---
-tags: aws amazon glacier
+tags: aws amazon glacier wiki
 cache_breaker: 1
 ---
 

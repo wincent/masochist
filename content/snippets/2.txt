@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.23
-tags: site
+tags: site snippets
 ---
+
 7ddd03d Fix nested list spacing in comments

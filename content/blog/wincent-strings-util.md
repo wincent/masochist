@@ -1,5 +1,6 @@
 ---
 title: Wincent Strings Util
+tags: blog
 ---
 
 Today I'm announcing a new product that may be of interest to developers, [Wincent Strings Utility](http://www.wincent.com/a/products/wincent-strings-util/), which is a derivative of Omni Development's stringsUtil. This is a tool that I have been using in-house for some time as part of my localization process, but I've decided to release it publicly now in preparation for some things to come.

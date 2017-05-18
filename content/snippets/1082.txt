@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.124
-tags: site updates
+tags: site updates snippets
 ---
+
 705b0b1 script/deploy: don't migrate all databases
 de49c77 Bump Bundler version requirement
 3fe3e63 Downgrade Ruby to version 2.0.0-p451

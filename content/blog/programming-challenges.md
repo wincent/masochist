@@ -1,5 +1,6 @@
 ---
 title: Programming challenges
+tags: blog
 ---
 
 There are two kinds of problems in computer programming: stimulating ones and annoying ones. The former are generally the problems you face when inventing something new; the latter are the ones you face when your development tools suddenly start behaving like unruly children.

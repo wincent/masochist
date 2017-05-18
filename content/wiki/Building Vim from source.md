@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -68,4 +68,3 @@ $ make install
 # See also
 
 -   [Building MacVim from source](/wiki/Building_MacVim_from_source)
-

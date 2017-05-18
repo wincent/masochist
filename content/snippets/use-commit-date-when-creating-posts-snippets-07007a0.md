@@ -1,5 +1,6 @@
 ---
 title: Use commit date when creating posts (snippets, 07007a0)
+tags: snippets
 ---
 
 Previously the Git post-receive hook just created new posts as commits were received; now the hook extacts the author date (not the committer date) from each commit and uses that to set the creation date on the post.

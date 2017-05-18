@@ -1,6 +1,6 @@
 ---
 title: Software release announcements moving to Twitter
-tags: releases
+tags: releases blog
 cache_breaker: 1
 ---
 

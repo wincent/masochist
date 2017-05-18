@@ -1,5 +1,6 @@
 ---
 title: My favorite programming book
+tags: blog
 ---
 
 My favorite programming text of all time is the [O'Reilly](http://oreilly.com/) [C Pocket Reference](http://www.oreilly.com/catalog/cpr) by Peter Prinz and Ulla Kirch-Prinz:

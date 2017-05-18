@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 [mppdec](/wiki/mppdec) is an [MPC](/wiki/MPC) decoder for [Mac OS X](/wiki/Mac_OS_X).
@@ -11,4 +11,3 @@ tags: os.x
 # Example
 
 -   [Converting MPC audio files to MP3](/wiki/Converting_MPC_audio_files_to_MP3)
-

@@ -1,5 +1,6 @@
 ---
 title: What I hate about the Mac OS X panic dialog
+tags: blog
 ---
 
 The wording:

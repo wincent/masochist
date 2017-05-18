@@ -1,5 +1,6 @@
 ---
 title: Why functional programming
+tags: blog
 ---
 
 So in my spare time I've started learning [Haskell](http://www.wincent.com/knowledge-base/Haskell) because I think it's the right time to learn [functional programming](http://www.wincent.com/knowledge-base/functional%20programming).

@@ -1,6 +1,6 @@
 ---
 redirect: [[PowerPC]]
-tags: 
+tags: wiki
 ---
 
 

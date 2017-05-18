@@ -1,6 +1,6 @@
 ---
 title: 20 minutes with Vim
-tags: emacs vim
+tags: emacs vim blog
 cache_breaker: 1
 ---
 

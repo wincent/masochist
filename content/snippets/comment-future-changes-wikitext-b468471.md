@@ -1,5 +1,6 @@
 ---
 title: Comment future changes (wikitext, b468471)
+tags: snippets
 ---
 
 Populate the wiki\_text.c file with comments indicating future planned changes.

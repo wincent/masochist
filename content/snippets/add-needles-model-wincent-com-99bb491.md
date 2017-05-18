@@ -1,5 +1,6 @@
 ---
 title: Add "needles" model (wincent.com, 99bb491)
+tags: snippets
 ---
 
 This is the model that provides site-wide search. "acts as ferret" gets good press but it is an external dependency; MySQL's own full-text search has a reputation for not scaling well.

@@ -1,5 +1,5 @@
 ---
-tags: aws
+tags: aws wiki
 cache_breaker: 1
 ---
 
@@ -30,4 +30,3 @@ Notes made while migrating from [INetU](/wiki/INetU) to [Amazon Web Services](/w
     -   tcp 443 (HTTPS)
 -   Launch a new instance based on "Basic Fedora Core 8" AMI using "generalpurpose" security group
 -   Associate elastic IP (zenyatta) with new instance
-

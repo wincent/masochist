@@ -1,5 +1,6 @@
 ---
 title: Spam will be "solved" as of tomorrow
+tags: blog
 ---
 
 I've already [written about this before](http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php) but [a new article](http://seattlepi.nwsource.com/business/256579_software23.asp) has been published and I wanted to comment on it.

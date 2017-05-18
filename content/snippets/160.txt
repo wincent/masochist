@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.103
-tags: site updates
+tags: site updates snippets
 ---
+
 ac3c440 Apply minor style fix
 8c160fc Fix stale manifest usage

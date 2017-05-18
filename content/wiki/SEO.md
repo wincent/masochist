@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 [SEO](/wiki/SEO) or [Search Engine Optimization](/wiki/Search_Engine_Optimization) is the practice of manipulating [web](/wiki/web) content to increase its page rank with popular search engines such as that provided by [Google](/wiki/Google).

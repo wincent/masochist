@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 Was just wondering how to do conditional compilation of a [Ruby](/wiki/Ruby) [C](/wiki/C) extension for Ruby 1.8/1.9.

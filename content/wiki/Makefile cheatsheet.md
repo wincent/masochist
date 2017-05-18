@@ -1,5 +1,5 @@
 ---
-tags: make
+tags: make wiki
 cache_breaker: 1
 ---
 
@@ -34,4 +34,3 @@ See also:
 
 -   List of automatic variables (`$@` etc): <https://www.gnu.org/software/make/manual/html_node/Automatic-Variables.html>
 -   <http://www.schacherer.de/frank/technology/tools/make.html>
-

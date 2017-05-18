@@ -1,5 +1,6 @@
 ---
 title: The SCO saga
+tags: blog
 ---
 
 I've long been an interested observer of the [SCO](http://www.groklaw.net/staticpages/index.php?page=20050315132709446) [saga](http://www.groklaw.net/staticpages/index.php?page=200310161622155662). I observed at first with indignation, but for well over a year now I've watched with the same kind of macabre fascination that a bystander finds him or herself unable to turn his head and look away from a traffic accident scene.

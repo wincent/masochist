@@ -1,5 +1,6 @@
 ---
 title: Xcode feature requests
+tags: blog
 ---
 
 Just filed a couple of feature requests/bug reports with Apple (see? this time I'm not [too](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/two_annoying_xc.php) [annoyed](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/xcode_inputoutp.php) to file a report):

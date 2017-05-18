@@ -1,5 +1,5 @@
 ---
-tags: emacs vim
+tags: emacs vim wiki
 ---
 
 Both are fantastic editors and they have a lot of strengths in common:
@@ -32,4 +32,3 @@ And they also have some weaknesses in common too:
 
 -   multiple competing [Mac OS X](/wiki/Mac_OS_X) implementations from different vendors; which one is "the" authoritative one?
 -   relatively heavyweight
-

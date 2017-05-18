@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 The [Knowledge Base](/wiki/Knowledge_Base) is a collection of useful information compiled by [Wincent Colaiuta](/wiki/Wincent_Colaiuta) about topics of interest to users of [Mac OS X](/wiki/Mac_OS_X). Many of the articles will be of particular interest to developers although the scope of the [Knowledge Base](/wiki/Knowledge_Base) extends beyond development and even beyond [Mac OS X](/wiki/Mac_OS_X) in many cases. Basically, I try to make a point of recording here useful stuff that I may want to remember in the future. I am making it publicly available because it may be of use to others as well.

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -54,4 +54,3 @@ The structure of the [main Git repository](/wiki/main_Git_repository) for [Git](
 -   Subject to rebasing in general
 -   When topics in `pu` reach "testable shape" they graduate to `next`
 -   Topics that turn out not to be promising may be dropped from `pu`
-

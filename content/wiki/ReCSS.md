@@ -1,5 +1,5 @@
 ---
-tags: css
+tags: css wiki
 ---
 
 [ReCSS](/wiki/ReCSS) is a bookmarklet that triggers an in-place reload of the CSS on the current page:

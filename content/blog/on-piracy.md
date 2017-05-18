@@ -1,6 +1,6 @@
 ---
 title: On piracy
-tags: piracy
+tags: piracy blog
 cache_breaker: 1
 ---
 

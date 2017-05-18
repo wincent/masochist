@@ -1,5 +1,5 @@
 ---
-tags: red.hat perl
+tags: red.hat perl wiki
 ---
 
 wget <http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/Mac-PropertyList-1.31.tar.gz>

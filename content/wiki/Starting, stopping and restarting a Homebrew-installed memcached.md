@@ -1,5 +1,5 @@
 ---
-tags: memcached homebrew
+tags: memcached homebrew wiki
 ---
 
 # Starting

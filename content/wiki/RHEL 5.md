@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 [Red Hat Enterprise Linux 5](/wiki/Red_Hat_Enterprise_Linux_5) or simply [RHEL 5](/wiki/RHEL_5) was released in March 2007, and will be supported by [Red Hat](/wiki/Red_Hat) in one way or another until 2014 (see "[Red Hat Enterprise Linux support policy (EOL dates)](/wiki/Red_Hat_Enterprise_Linux_support_policy_%28EOL_dates%29)").
@@ -48,4 +48,3 @@ There is some software which is included in neither [RHEL 5](/wiki/RHEL_5) nor [
 -   Comparison with previous versions: <http://www.redhat.com/rhel/compare/>
 -   Information on moving to [RHEL 5](/wiki/RHEL_5): <http://www.redhat.com/rhel/moving/>
 -   Package listing: <http://ftp.redhat.com/pub/redhat/linux/enterprise/5Server/en/os/SRPMS/>
-

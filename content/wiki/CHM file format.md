@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 See: <http://en.wikipedia.org/wiki/Microsoft_Compressed_HTML_Help>
@@ -18,4 +18,3 @@ My usual routine for decompiling [CHM](/wiki/CHM) archives is to do the followin
 
 -   **HtmlHelp.exe**: downloadable from: <http://www.microsoft.com/office/orkarchive/XPddl.htm>
 -   **hh.exe**: included with [Windows](/wiki/Windows)
-

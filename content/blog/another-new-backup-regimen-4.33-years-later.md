@@ -1,6 +1,6 @@
 ---
 title: Another new backup regimen, 4.33 years later
-tags: s3
+tags: s3 blog
 ---
 
 It's been a while since [I last wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/new_backup_regi.php) about my backup regimen. Having suffered countless hard drive failures and episodes of mysterious filesystem corruption over the years, I'd learnt to approach the subject of backups fairly obsessively.

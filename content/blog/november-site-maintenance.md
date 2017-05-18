@@ -1,6 +1,6 @@
 ---
 title: November site maintenance
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

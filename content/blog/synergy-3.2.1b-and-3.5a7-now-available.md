@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.2.1b and 3.5a7 now available
-tags: synergy releases
+tags: synergy releases blog
 ---
 
 I'm pleased to announce the availability of [Synergy](/wiki/Synergy) updates to both the stable 3.2 series (3.2.1b) and the experimental 3.5 alpha series (3.5a7). The principal change in both series is a workaround for the cover art breakage caused by iTunes 7.6.1 and 7.6.2.

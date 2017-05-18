@@ -1,5 +1,6 @@
 ---
 title: Operator precedence
+tags: blog
 ---
 
 Operator precedence still surprises me sometimes.

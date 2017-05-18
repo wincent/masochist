@@ -1,6 +1,6 @@
 ---
 title: Downtime
-tags: aws
+tags: aws blog
 ---
 
 I just had about 10 minutes of downtime. Sorry about that.

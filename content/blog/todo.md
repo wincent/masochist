@@ -1,5 +1,5 @@
 ---
-tags: wunderlist todoist
+tags: wunderlist todoist blog
 title: Goodbye Wunderlist, hello Todoist
 twitter: https://twitter.com/wincent/status/854994203843059712
 ---

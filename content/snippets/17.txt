@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.30
-tags: site
+tags: site snippets
 ---
+
 1303f6c Synch local nginx config with remote one
 5b061e5 Work around Rails 3.0.3 routing bug

@@ -1,5 +1,5 @@
 ---
-tags: watch
+tags: watch wiki
 cache_breaker: 1
 ---
 

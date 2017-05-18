@@ -1,5 +1,6 @@
 ---
 title: Synergy (revision 4e616e0)
+tags: snippets
 ---
 
 -   *Download name*: Synergy3.5a4(4e616e0).zip

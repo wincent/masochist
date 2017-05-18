@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 ---
 
 Many Ruby methods follow a "bang" pattern to differentiate destructive messages (which alter the object to which they are sent) from non-destructive ones (which do not alter the receiving object).

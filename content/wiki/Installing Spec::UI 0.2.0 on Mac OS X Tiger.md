@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 [Spec::UI](/wiki/Spec%3a%3aUI) version 0.2.0 was released alongside [Rspec](/wiki/Rspec) version 0.9.4. These notes were made while installing it for the first time.
@@ -57,4 +57,3 @@ tags: rspec
 # See also
 
 -   "[Using Watir with RSpec and Rails](/wiki/Using_Watir_with_RSpec_and_Rails)"
-

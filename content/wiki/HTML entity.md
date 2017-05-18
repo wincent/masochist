@@ -1,5 +1,5 @@
 ---
-tags: html
+tags: html wiki
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ They are also used for characters that would otherwise have special meaning with
 # Other examples
 
 -   `#`: `&#35;`
-

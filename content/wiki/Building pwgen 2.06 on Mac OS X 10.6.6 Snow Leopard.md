@@ -1,5 +1,5 @@
 ---
-tags: pwgen snow.leopard
+tags: pwgen snow.leopard wiki
 ---
 
 ```shell

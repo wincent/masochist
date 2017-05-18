@@ -1,5 +1,5 @@
 ---
-tags: development wincent
+tags: development wincent wiki
 ---
 
 The [GPL](/wiki/GPL) or [GNU Public License](/wiki/GNU_Public_License) is a popular license for free and open source software. It is the license used by a number of [Wincent products](/wiki/Wincent_products) such as the [Walrus](/wiki/Walrus), [Wincent Build Tools](/wiki/Wincent_Build_Tools), [Wincent Strings Utility](/wiki/Wincent_Strings_Utility) and [WOTest](/wiki/WOTest).

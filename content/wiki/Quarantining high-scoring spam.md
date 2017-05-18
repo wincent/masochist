@@ -1,6 +1,6 @@
 ---
 redirect: [[Automatically deleting high-scoring spam]]
-tags: 
+tags: wiki
 ---
 
 

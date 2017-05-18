@@ -1,5 +1,5 @@
 ---
-tags: mbsync mutt exchange
+tags: mbsync mutt exchange wiki
 ---
 
 I was getting errors like this when trying to sync to an Exchange server (ugh):

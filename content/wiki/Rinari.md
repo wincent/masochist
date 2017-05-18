@@ -1,8 +1,7 @@
 ---
-tags: emacs rinari
+tags: emacs rinari wiki
 ---
 
 ## Official site
 
 -   <http://rinari.rubyforge.org/>
-

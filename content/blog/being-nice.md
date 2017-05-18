@@ -1,5 +1,6 @@
 ---
 title: Being nice
+tags: blog
 ---
 
 Sometimes I think people in the open source world could learn to be a lot nicer. I often see negative or hostile attitudes from more experienced people within a community towards less-experienced newcomers.

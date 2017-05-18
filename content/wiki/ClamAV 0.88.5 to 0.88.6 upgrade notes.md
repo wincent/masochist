@@ -1,5 +1,5 @@
 ---
-tags: clamav
+tags: clamav wiki
 ---
 
 For more details about the nature and purpose of the various steps, see [ClamAV 0.88.4 to 0.88.5 upgrade notes](/wiki/ClamAV_0.88.4_to_0.88.5_upgrade_notes).

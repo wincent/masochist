@@ -1,5 +1,5 @@
 ---
-tags: rails subversion
+tags: rails subversion wiki
 ---
 
 Instructions can be found [here](http://wiki.rubyonrails.org/rails/pages/EdgeRails) for tracking [EdgeRails](/wiki/EdgeRails) using [Subversion](/wiki/Subversion), and [here](http://wiki.rubyonrails.org/rails/pages/HowtoUseRailsWithSubversion) for importing an [Rails](/wiki/Rails) application into a [Subversion](/wiki/Subversion) repository.

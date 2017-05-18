@@ -1,5 +1,6 @@
 ---
 title: When will non-WWDC-attendees get the Leopard beta?
+tags: blog
 ---
 
 So Apple has now [officially announced](http://developer.apple.com/wwdc/) that:

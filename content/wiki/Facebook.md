@@ -1,5 +1,5 @@
 ---
-tags: facebook
+tags: facebook wiki
 cache_breaker: 1
 ---
 
@@ -9,4 +9,3 @@ cache_breaker: 1
 
 -   <https://www.facebook.com/>
 -   <http://en.wikipedia.org/wiki/Facebook>
-

@@ -1,6 +1,6 @@
 ---
 title: Wikitext 4.0.2 released
-tags: releases wikitext
+tags: releases wikitext blog
 ---
 
 This release, version 4.0.2, fixes build problems present in version 4.0.1.

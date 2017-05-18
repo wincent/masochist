@@ -1,5 +1,6 @@
 ---
 title: Modernization and clean-up (login-tool, 8790dd9)
+tags: snippets
 ---
 
 Various clean-ups which don't alter the compiled code but improve the source:

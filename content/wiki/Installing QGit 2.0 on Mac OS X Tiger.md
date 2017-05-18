@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Notes made while updating from my existing installation of QGit (see "[Installing QGit 2.0rc1 on Mac OS X Tiger](/wiki/Installing_QGit_2.0rc1_on_Mac_OS_X_Tiger)") to the just-released QGit 2.0.

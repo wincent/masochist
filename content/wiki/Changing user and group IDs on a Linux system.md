@@ -1,5 +1,5 @@
 ---
-tags: unix shell
+tags: unix shell wiki
 ---
 
 Just say I want to change the user and group ID of a `git` user to 599 and 599, respectively, from their previous values of 507 and 509, respectively:

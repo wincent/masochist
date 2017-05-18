@@ -1,5 +1,6 @@
 ---
 title: Make duplicate keys a warning rather than an error (Wincent Strings Utility, 434fa5c)
+tags: snippets
 ---
 
 Instead of disallowing duplicate keys during a combine operation, issue a warning and allow the "target" version to take precedence.

@@ -1,5 +1,5 @@
 ---
-tags: keynote vim
+tags: keynote vim wiki
 ---
 
 The "easiest" way seems to be:

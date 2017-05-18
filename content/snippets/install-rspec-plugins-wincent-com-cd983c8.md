@@ -1,5 +1,6 @@
 ---
 title: Install RSpec plugins (wincent.com, cd983c8)
+tags: snippets
 ---
 
 Install RSpec 1.0.8.

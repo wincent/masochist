@@ -1,5 +1,6 @@
 ---
 title: Synergy Advance 0.4 beta 3
+tags: blog
 ---
 
 A new beta release of [Synergy Advance](http://synergyadvance.com/) has been seeded to beta testers, fixing the failure to launch problems ([bug \#387](http://www.wincent.com/a/support/bugs/show_bug.cgi?id=387) and [\#389](http://www.wincent.com/a/support/bugs/show_bug.cgi?id=389)). Thank you to those beta testers who helped to confirm the existence and nature of the problem.

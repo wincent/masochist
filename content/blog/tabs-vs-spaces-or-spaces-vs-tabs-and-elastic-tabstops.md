@@ -1,6 +1,6 @@
 ---
 title: Tabs vs spaces (or spaces vs tabs), and elastic tabstops
-tags: development
+tags: development blog
 cache_breaker: 1
 ---
 

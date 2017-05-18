@@ -1,5 +1,5 @@
 ---
-tags: courier
+tags: courier wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 # See also
 
 -   Official site: <http://www.courier-mta.org/>
-

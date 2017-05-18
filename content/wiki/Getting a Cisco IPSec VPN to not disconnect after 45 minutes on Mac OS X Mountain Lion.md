@@ -1,5 +1,5 @@
 ---
-tags: vpn cisco ipsec
+tags: vpn cisco ipsec wiki
 cache_breaker: 1
 ---
 

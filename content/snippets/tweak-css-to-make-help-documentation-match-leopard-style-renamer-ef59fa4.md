@@ -1,5 +1,6 @@
 ---
 title: Tweak CSS to make help documentation match Leopard style (REnamer, ef59fa4)
+tags: snippets
 ---
 
 These are simple, low-risk changes involving font size, color and weight.

@@ -1,5 +1,5 @@
 ---
-tags: puma
+tags: puma wiki
 ---
 
 "[Puma](/wiki/Puma)" is the popular name for [Mac OS X](/wiki/Mac_OS_X) version 10.1.

@@ -1,5 +1,5 @@
 ---
-tags: vim tags
+tags: vim tags wiki
 ---
 
 # Creating a tags file
@@ -38,4 +38,3 @@ For jumping back, `Ctrl-T` (or use `Ctrl-I`/`Ctrl-O` to move through the `:jump`
 
 -   <http://robots.thoughtbot.com/post/159805638/integrating-vim-into-a-life>
 -   <http://blog.bojica.com/2010/06/27/ctags-and-vim-for-ruby-on-rails-development>
-

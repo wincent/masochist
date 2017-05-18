@@ -1,6 +1,6 @@
 ---
 redirect: [[CVE]]
-tags: 
+tags: wiki
 ---
 
 

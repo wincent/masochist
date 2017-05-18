@@ -1,5 +1,6 @@
 ---
 title: Abstract Syntax Trees
+tags: blog
 ---
 
 In a previous article about [writing a parser generator in Ruby](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) I promised to talk about [Abstract Syntax Trees](http://en.wikipedia.org/wiki/Abstract_syntax_tree). The problem with the parsers previously described is that the literal results (strings arranged in a hierarchical, ordered tree with the aid of arrays) are not very information-rich and they are difficult to work with.

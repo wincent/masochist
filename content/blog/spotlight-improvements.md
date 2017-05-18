@@ -1,5 +1,6 @@
 ---
 title: Spotlight improvements
+tags: blog
 ---
 
 Not sure when this happened, but somewhere along the road to Mac OS X 10.4.3 Spotlight got a whole lot better.

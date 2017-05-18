@@ -1,6 +1,6 @@
 ---
 redirect: [[Weblog]]
-tags: 
+tags: wiki
 ---
 
 

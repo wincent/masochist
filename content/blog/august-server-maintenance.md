@@ -1,6 +1,6 @@
 ---
 title: August server maintenance
-tags: site maintenance
+tags: site maintenance blog
 cache_breaker: 1
 ---
 

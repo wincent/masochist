@@ -1,6 +1,6 @@
 ---
 title: Switching to JQuery
-tags: rails javascript jquery prototype
+tags: rails javascript jquery prototype blog
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 redirect: [[OS X "must haves"]]
-tags: 
+tags: wiki
 ---
 
 

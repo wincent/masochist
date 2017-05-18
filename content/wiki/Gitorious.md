@@ -1,5 +1,5 @@
 ---
-tags: gitorious
+tags: gitorious wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ In March 2015 [it was announced](https://about.gitlab.com/2015/03/03/gitlab-acqu
 # Official site
 
 -   <http://gitorious.org/>
-

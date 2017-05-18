@@ -1,5 +1,6 @@
 ---
 title: Stupid eBay Spain
+tags: blog
 ---
 
 A little over a month ago I sold something via eBay Spain and the winning bidder refused to pay. I went through the dispute process — dispute is "disputa" in Spanish — and after over a month of trying to get payment decided that it was fruitless to continue.

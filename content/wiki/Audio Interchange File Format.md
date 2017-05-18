@@ -1,6 +1,6 @@
 ---
 redirect: [[AIFF]]
-tags: 
+tags: wiki
 ---
 
 

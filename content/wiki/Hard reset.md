@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 A [hard reset](/wiki/hard_reset) is any kind of abrupt power-down in which a computer isn't allowed or able to go through the normal shutdown process of terminating applications and processes, closing files, completing pending filesystem transactions and so on.

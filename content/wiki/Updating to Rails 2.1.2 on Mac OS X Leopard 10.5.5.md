@@ -1,5 +1,5 @@
 ---
-tags: rails updates
+tags: rails updates wiki
 ---
 
 ## Updating the [gem](/wiki/gem)

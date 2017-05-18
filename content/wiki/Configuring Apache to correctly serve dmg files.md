@@ -1,5 +1,5 @@
 ---
-tags: apache dmg mime
+tags: apache dmg mime wiki
 ---
 
 Without appropriate configuration you may find that your [Apache](/wiki/Apache) [webserver](/wiki/webserver) delivers [dmg](/wiki/dmg) files to users as text in their browser windows rather than downloading them as binary files.

@@ -1,5 +1,5 @@
 ---
-tags: version.control
+tags: version.control wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ Those looking for a free, centralized (client/server) [version control system](/
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [CVS](/wiki/CVS): <http://en.wikipedia.org/wiki/Concurrent_Versions_System>
-

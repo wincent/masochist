@@ -1,6 +1,6 @@
 ---
 redirect: [[Cherry picking]]
-tags: 
+tags: wiki
 ---
 
 

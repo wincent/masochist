@@ -1,5 +1,5 @@
 ---
-tags: javascript react facebook
+tags: javascript react facebook wiki
 cache_breaker: 1
 ---
 
@@ -36,4 +36,3 @@ Additionally the synthetic events system obviates the need for maintaining bulky
 -   Testing React code: <http://myshareoftech.com/2013/12/unit-testing-react-dot-js-with-jasmine-and-karma.html>
 -   On React's DOM diffing algorithm: <http://calendar.perfplanet.com/2013/diff/>
 -   Comparison of Angular and React (Quora answer by Pete Hunt): <http://www.quora.com/Pete-Hunt/Posts/Facebooks-React-vs-AngularJS-A-Closer-Look?share=1>
-

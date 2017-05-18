@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 These notes were made during the upgrade from [Subversion](/wiki/Subversion) version 1.4.0 to the new version 1.4.2.
@@ -157,4 +157,3 @@ The resulting static builds work, but I wanted to get my non-static build workin
 
 -   Release notes: <http://subversion.tigris.org/svn_1.4_releasenotes.html>
 -   Change log: <http://svn.collab.net/repos/svn/tags/1.4.2/CHANGES>
-

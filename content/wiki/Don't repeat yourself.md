@@ -1,6 +1,6 @@
 ---
 redirect: [[DRY]]
-tags: 
+tags: wiki
 ---
 
 

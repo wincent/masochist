@@ -1,5 +1,5 @@
 ---
-tags: css
+tags: css wiki
 cache_breaker: 1
 ---
 
@@ -15,4 +15,3 @@ We can superimpose another scale (using a different base value and ratio) to pro
 -   Dead simple example of using [Sass](/wiki/Sass) mix-ins to produce modular scaling: <http://mrandmrsok.com/blog/modular-scale-calculator-using-scss>
 -   Full fledged Compass (RubyGem)/Sass (SCSS) modular scaling library: <https://github.com/scottkellum/modular-scale>
 -   Typeplate take on modular scaling: <http://typeplate.com/#base-type>
-

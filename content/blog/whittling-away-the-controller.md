@@ -1,5 +1,6 @@
 ---
 title: Whittling away the controller
+tags: blog
 ---
 
 Since [my post the other day](http://www.wincent.com/a/about/wincent/weblog/archives/2005/07/synergy_advance_1.php) about my monstrously large main controller class I've been working hard on adding new features to [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/).

@@ -1,5 +1,5 @@
 ---
-tags: rspec rails testing rr cheatsheet views
+tags: rspec rails testing rr cheatsheet views wiki
 cache_breaker: 1
 ---
 
@@ -226,4 +226,3 @@ Merely aesthetic or presentational aspects of the template *are* eligible for sp
 -   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
 -   [RR cheatsheet](/wiki/RR_cheatsheet)
 -   [Steak cheatsheet](/wiki/Steak_cheatsheet)
-

@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 cache_breaker: 1
 ---
 
@@ -68,4 +68,3 @@ At least on one level, the order in which things actually happen is reversed, se
 -   first, the `Flash` middleware stores the flash messages in the session
 -   second, the `CookieStore` middleware stores the session data in a cookie
 -   third, the `Cookies` middleware translates the cookie into the appropriate HTTP headers
-

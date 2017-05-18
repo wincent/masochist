@@ -1,5 +1,5 @@
 ---
-tags: data.structures graph
+tags: data.structures graph wiki
 ---
 
 Used to store [graphs](/wiki/graphs), especially dense graphs. (For sparse graphs, see "[Adjacency list](/wiki/Adjacency_list)").
@@ -21,4 +21,3 @@ The matrix itself can be stored in any convenient way; it could be a bit string,
 
 -   [Wikipedia](/wiki/Wikipedia) article on [sparse matrices](/wiki/sparse_matrices): <http://en.wikipedia.org/wiki/Sparse_matrix>
 -   Wikipedia article on [adjacency matrices](/wiki/adjacency_matrices): <http://en.wikipedia.org/wiki/Adjacency_matrix>
-

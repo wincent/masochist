@@ -1,5 +1,5 @@
 ---
-tags: rails administration interface
+tags: rails administration interface wiki
 cache_breaker: 1
 ---
 

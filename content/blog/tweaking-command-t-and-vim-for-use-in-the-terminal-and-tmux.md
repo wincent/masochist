@@ -1,6 +1,6 @@
 ---
 title: Tweaking Command-T and Vim for use in the terminal and tmux
-tags: vim command.t tmux
+tags: vim command.t tmux blog
 cache_breaker: 1
 ---
 

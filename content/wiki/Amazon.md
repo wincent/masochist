@@ -1,5 +1,5 @@
 ---
-tags: amazon
+tags: amazon wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ cache_breaker: 1
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [Amazon](/wiki/Amazon): <http://en.wikipedia.org/wiki/Amazon.com>
-

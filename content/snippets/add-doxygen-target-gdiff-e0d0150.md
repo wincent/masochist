@@ -1,5 +1,6 @@
 ---
 title: Add Doxygen target (gdiff, e0d0150)
+tags: snippets
 ---
 
 This commit adds a Doxygen target for producing code-level documentation. At the moment, the latest Doxygen release (1.5.3) doesn't build on Leopard although a pre-built binary does run. Doxygen does not yet understand the property syntax of Objective-C 2.0.

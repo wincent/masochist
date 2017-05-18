@@ -1,5 +1,5 @@
 ---
-tags: synergy last.fm
+tags: synergy last.fm wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ cache_breaker: 1
 # Official site
 
 -   <http://last.fm/>
-

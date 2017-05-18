@@ -1,5 +1,5 @@
 ---
-tags: ssl
+tags: ssl wiki
 ---
 
 Here is how I generated a worthless "throwaway" self-signed [SSL](/wiki/SSL) certificate for use with [nginx](/wiki/nginx) in my staging environment.
@@ -18,4 +18,3 @@ Here is how I generated a worthless "throwaway" self-signed [SSL](/wiki/SSL) cer
 ## See also
 
 -   For "real" [SSL](/wiki/SSL) certificates (signed by an issuer that most browsers will recognize), see "[Getting new SSL certificates for use with nginx](/wiki/Getting_new_SSL_certificates_for_use_with_nginx)"
-

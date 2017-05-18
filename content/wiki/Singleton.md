@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 cache_breaker: 1
 ---
 
@@ -27,4 +27,3 @@ It's funny how your choice of language and the language culture around it have a
 # See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [singletons](/wiki/singletons): <http://en.wikipedia.org/wiki/Singleton_pattern>
-

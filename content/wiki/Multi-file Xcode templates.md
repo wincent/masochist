@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Normally [Xcode](/wiki/Xcode) file templates only contain two files: a main file and an optional "counterpart" file. It is, however, possible to make file templates that contain more than two files:

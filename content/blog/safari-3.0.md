@@ -1,5 +1,6 @@
 ---
 title: Safari 3.0
+tags: blog
 ---
 
 Normally I don't install pre-release software on my production machine. I used to be a real dabbler, what I considered then to be a "Power User"; I had all the latest hacks and extensions, knew every trick and shortcut, and had my computer decked out like a custom dragster with flames painted down the sides of it.

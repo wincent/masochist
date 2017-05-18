@@ -1,5 +1,6 @@
 ---
 title: Synergy 2.3 release candidate 2
+tags: blog
 ---
 
 Release candidate 2 for [Synergy](http://synergy.wincent.com/) 2.3 has just been released. The new candidate fixes a problem with license code validation on the Intel platform caused by byte-ordering issues. A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/).

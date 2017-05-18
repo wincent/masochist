@@ -1,5 +1,6 @@
 ---
 title: Clickety-click
+tags: blog
 ---
 
 I've been pulling some long days lately. Right now it's 5 AM and I'm still going at it. At about 4 AM I realized that the water I was heating up hadn't boiled despite being on the stove for more than an hour; the stove wasn't turned on. Well the water now really is boiling and I'll soon be enjoying a bowl of steaming hot pasta.

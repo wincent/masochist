@@ -1,5 +1,6 @@
 ---
 title: Open source
+tags: blog
 ---
 
 This whole [MOAB thing](http://www.wincent.com/a/about/wincent/weblog/archives/apple/moab/) has piqued my interest in open source, again.

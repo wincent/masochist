@@ -1,6 +1,6 @@
 ---
 title: Wincent Strings Utility 2.0.1 released
-tags: releases wincent.strings.util
+tags: releases wincent.strings.util blog
 cache_breaker: 1
 ---
 

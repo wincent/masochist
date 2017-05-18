@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug
+tags: ruby.debug wiki
 ---
 
 These notes were made while installing [ruby-debug](/wiki/ruby-debug) for the first time:

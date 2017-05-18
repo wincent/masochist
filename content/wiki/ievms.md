@@ -1,5 +1,5 @@
 ---
-tags: ie windows virtualbox ievms
+tags: ie windows virtualbox ievms wiki
 cache_breaker: 1
 ---
 

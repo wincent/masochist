@@ -1,5 +1,5 @@
 ---
-tags: rubygems
+tags: rubygems wiki
 ---
 
 # All installed [gems](/wiki/gems)

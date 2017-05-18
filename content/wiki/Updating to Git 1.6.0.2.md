@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 These were notes made while updating to [Git 1.6.0.2](/wiki/Git_1.6.0.2).

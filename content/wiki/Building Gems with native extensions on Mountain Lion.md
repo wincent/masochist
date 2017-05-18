@@ -1,5 +1,5 @@
 ---
-tags: gem mountain.lion homebrew gcc
+tags: gem mountain.lion homebrew gcc wiki
 cache_breaker: 1
 ---
 
@@ -36,4 +36,3 @@ If it turns out that things break again in the future, a simple symlink as sugge
 
 -   <http://stackoverflow.com/questions/9027772>
 -   <http://stackoverflow.com/questions/12256616>
-

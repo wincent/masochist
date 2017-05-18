@@ -1,5 +1,6 @@
 ---
 title: Xcode 2.2 and Universal Binary goodness
+tags: blog
 ---
 
 [Xcode](http://www.apple.com/macosx/features/xcode/) 2.2 is out and it's got lots of improvements and bugfixes. The top two items for me are:

@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.41
-tags: site updates
+tags: site updates snippets
 ---
+
 d298333 Don't make issue annotations for description changes

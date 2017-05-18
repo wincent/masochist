@@ -1,6 +1,6 @@
 ---
 redirect: [[Operating system]]
-tags: 
+tags: wiki
 ---
 
 

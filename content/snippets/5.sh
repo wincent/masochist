@@ -1,7 +1,8 @@
 ---
 title: New test failure under Git v1.7.3-rc2 on Mac OS X 10.6.4
-tags: git
+tags: git snippets
 ---
+
 $ sh -x t7003-filter-branch.sh 
 + test_description='git filter-branch'
 + . ./test-lib.sh

@@ -1,5 +1,5 @@
 ---
-tags: mercurial
+tags: mercurial wiki
 ---
 
 ```shell

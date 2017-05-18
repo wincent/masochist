@@ -1,5 +1,5 @@
 ---
-tags: bansshee
+tags: bansshee wiki
 cache_breaker: 1
 ---
 

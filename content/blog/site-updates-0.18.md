@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.18)
-tags: site
+tags: site blog
 ---
 
 Here's the changelog related to today's [extended site maintenance](/blog/extended-site-maintenance). There are just under 1,000 commits in here, which correspond to several months of development coinciding with the move from [Rails](/wiki/Rails) 2 to [Rails 3](/wiki/Rails_3).

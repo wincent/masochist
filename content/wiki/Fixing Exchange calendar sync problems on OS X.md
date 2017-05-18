@@ -1,6 +1,7 @@
 ---
-tags: exchange calendar os.x
+tags: exchange calendar os.x wiki
 ---
+
 A variant of the solution proposed [here](https://discussions.apple.com/thread/6827023) worked for me:
 
 1. Quit any and all running calendar applications

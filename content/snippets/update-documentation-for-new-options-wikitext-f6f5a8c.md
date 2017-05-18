@@ -1,5 +1,6 @@
 ---
 title: Update documentation for new options (wikitext, f6f5a8c)
+tags: snippets
 ---
 
 Add documentation for space\_as\_underscore and img\_prefix.

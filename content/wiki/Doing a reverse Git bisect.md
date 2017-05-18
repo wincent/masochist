@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 Sometimes you want to identify which commit *fixed* a bug rather than which commit introduced it. In that case, the "bad" and "good" labels that you would usually apply need to be swapped, which may be a difficult mental feat.

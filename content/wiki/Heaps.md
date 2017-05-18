@@ -1,6 +1,6 @@
 ---
 redirect: [[heap]]
-tags: 
+tags: wiki
 ---
 
 

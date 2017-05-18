@@ -1,5 +1,5 @@
 ---
-tags: web performance
+tags: web performance wiki
 ---
 
 **Source:** <http://calendar.perfplanet.com/2013/the-runtime-performance-checklist/>
@@ -13,4 +13,3 @@ tags: web performance
 -   Avoid excessive repaints caused by large "dirty rectangles" eg. caused by fixed elements
     -   Do this by creating a new compositing layer `-webkit-transform: translateZ(0)` or `backface-visibility: hidden`
     -   But beware of doing this to excess (always profile)
-

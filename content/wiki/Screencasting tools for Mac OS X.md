@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 ---
 
 # Screen capture
@@ -18,4 +18,3 @@ tags: os.x
 # See also
 
 -   [Preparing screencast gifs on OS X](/wiki/Preparing_screencast_gifs_on_OS_X)
-

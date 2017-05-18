@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 The following program can be used:
@@ -478,4 +478,3 @@ Output on my system ([Mac OS X](/wiki/Mac_OS_X) 10.4.8) is as follows:
 # See also
 
 -   <http://developer.apple.com/documentation/Cocoa/Conceptual/DatesAndTimes/Articles/dtTimeZones.html>
-

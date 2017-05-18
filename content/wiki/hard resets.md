@@ -1,6 +1,6 @@
 ---
 redirect: [[hard reset]]
-tags: 
+tags: wiki
 ---
 
 

@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Changelog
@@ -79,4 +79,3 @@ Copied from:
 # See also
 
 -   [Upgrading from Ragel 5.24 to 6.0 on Mac OS X 10.5.1 Leopard](/wiki/Upgrading_from_Ragel_5.24_to_6.0_on_Mac_OS_X_10.5.1_Leopard)
-

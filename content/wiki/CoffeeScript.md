@@ -1,5 +1,5 @@
 ---
-tags: coffeescript
+tags: coffeescript wiki
 cache_breaker: 1
 ---
 
@@ -34,4 +34,3 @@ cache_breaker: 1
 -   CoffeeScript is simultaneously wonderful/horrible:
     -   <http://ruoyusun.com/2013/03/17/my-take-on-coffeescript.html> ([Reddit commentary](http://www.reddit.com/r/programming/comments/1agvpb/ruoyu_suns_take_on_coffeescript/))
 -   A bunch of smart JS people interviewed about CoffeeScript: <http://net.tutsplus.com/articles/interviews/should-you-learn-coffeescript/>
-

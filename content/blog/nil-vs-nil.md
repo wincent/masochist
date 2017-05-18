@@ -1,5 +1,6 @@
 ---
 title: Nil vs nil
+tags: blog
 ---
 
 I was just browsing the Objective-C documentation and I noticed something interesting that had thus far escaped my attention.

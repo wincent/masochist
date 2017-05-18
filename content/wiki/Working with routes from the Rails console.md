@@ -1,5 +1,5 @@
 ---
-tags: rails routes
+tags: rails routes wiki
 cache_breaker: 1
 ---
 

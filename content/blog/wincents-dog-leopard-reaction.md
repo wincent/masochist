@@ -1,5 +1,6 @@
 ---
 title: Wincent's dog: Leopard Reaction
+tags: blog
 ---
 
 Seeing as every man and his dog has or is going to opine on the [WWDC keynote](http://www.apple.com/quicktime/qtv/keynote/) I don't think it's necessary for me to add anything here.

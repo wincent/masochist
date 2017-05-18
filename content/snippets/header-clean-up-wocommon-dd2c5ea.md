@@ -1,5 +1,6 @@
 ---
 title: Header clean-up (WOCommon, dd2c5ea)
+tags: snippets
 ---
 
 Trim the fat off the headers in various classes and categories.

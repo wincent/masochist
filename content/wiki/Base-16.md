@@ -1,6 +1,6 @@
 ---
 redirect: [[Hexadecimal]]
-tags: 
+tags: wiki
 ---
 
 

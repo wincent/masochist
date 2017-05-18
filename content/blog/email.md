@@ -1,6 +1,6 @@
 ---
 title: Mutt
-tags: email
+tags: email blog
 twitter: https://twitter.com/wincent/status/807509662593495040
 ---
 

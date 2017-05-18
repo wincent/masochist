@@ -1,5 +1,6 @@
 ---
 title: Update copyright range (snippets, d398f3d)
+tags: snippets
 ---
 
 Update copyright span to 2007.

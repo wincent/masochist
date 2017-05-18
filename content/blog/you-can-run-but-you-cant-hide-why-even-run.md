@@ -1,5 +1,6 @@
 ---
 title: You can run but you can't hide; why even run?
+tags: blog
 ---
 
 Spammers.

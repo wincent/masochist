@@ -1,6 +1,6 @@
 ---
 redirect: [[MRI]]
-tags: 
+tags: wiki
 ---
 
 

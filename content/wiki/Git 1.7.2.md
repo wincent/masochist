@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -201,4 +201,3 @@ Of these, the highlights for me are:
 # See also
 
 -   [Updating to Git 1.7.2](/wiki/Updating_to_Git_1.7.2)
-

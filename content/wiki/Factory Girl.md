@@ -1,5 +1,5 @@
 ---
-tags: factory.girl object.mother
+tags: factory.girl object.mother wiki
 cache_breaker: 1
 ---
 
@@ -10,4 +10,3 @@ I've been a Factory Girl user since mid-2010, after a long period using [Fixture
 # Source code repo
 
 -   <http://github.com/thoughtbot/factory_girl>
-

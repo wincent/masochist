@@ -1,6 +1,7 @@
 ---
-tags:
+tags: snippets
 ---
+
 + echo ''
 + test_expect_success 'automatic remapping to ancestor with filename filters' '
 	git checkout master &&

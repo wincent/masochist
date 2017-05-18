@@ -1,5 +1,6 @@
 ---
 title: Synergy 1.5b released
+tags: blog
 ---
 
 I'm very pleased to announce the release of [Synergy 1.5b](http://www.wincent.com/a/products/synergy-classic/). The [full change log is here](http://www.wincent.com/a/products/synergy-classic/history/), but in brief, in the words of one user:

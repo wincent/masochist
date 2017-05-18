@@ -1,5 +1,6 @@
 ---
 title: Welcome fixes in Mac OS X 10.3.6 update
+tags: blog
 ---
 
 It was with some pleasure that I noted the following in the release notes for Mac OS X 10.3.6:

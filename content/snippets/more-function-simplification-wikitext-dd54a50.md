@@ -1,5 +1,6 @@
 ---
 title: More function simplification (wikitext, dd54a50)
+tags: snippets
 ---
 
 Here we are four more members to the parser struct to avoid having to pass so many parameters.

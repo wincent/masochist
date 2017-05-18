@@ -1,5 +1,6 @@
 ---
 title: mds crashes
+tags: blog
 ---
 
 Yesterday I started getting crash notifications for the `mds` (Spotlight) daemon that runs with root privileges on Mac OS X. These would occur every few minutes. Either some new file that I'd downloaded in the past 24 hours was causing Spotlight to choke, or some aspect of my Spotlight database was corrupt.

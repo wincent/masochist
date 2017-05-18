@@ -1,5 +1,5 @@
 ---
-tags: xcode vim
+tags: xcode vim wiki
 cache_breaker: 1
 ---
 
@@ -23,4 +23,3 @@ cache_breaker: 1
     -   <http://www.corsofamily.net/jcorso/vi/>: The Input Manager hack referenced in the above article
 -   <http://sg80bab.blogspot.com/2007/08/objective-c-syntax-in-gvim.html>: On activating syntax coloring for [Objective-C](/wiki/Objective-C) source files in Vim (`.m` files are interpreted as Matlab source files by default)
 -   <http://www.glsoftware.net/blog/archives/27-Integrating-Xcode-and-VIM.html>: On using AppleScript to perform "Build" and "Clean" without leaving Vim.
-

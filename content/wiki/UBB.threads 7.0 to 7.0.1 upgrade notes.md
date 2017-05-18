@@ -1,5 +1,5 @@
 ---
-tags: ubb.threads
+tags: ubb.threads wiki
 ---
 
 -   In control panel, close the forums
@@ -48,4 +48,3 @@ So after uploading it is necessary to re-establish the ownership and permissions
 
 -   Upgrade notes for 7.0 series: <http://www.ubbcentral.com/doc_upgrade7.php>
 -   Permissions notes: <http://www.ubbcentral.com/doc_install.php>
-

@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -52,4 +52,3 @@ From the official release announcement posted to the [Git mailing list](/wiki/Gi
 # See also
 
 -   [Updating to Git 1.6.4.3 on Mac OS X 10.6 Snow Leopard](/wiki/Updating_to_Git_1.6.4.3_on_Mac_OS_X_10.6_Snow_Leopard)
-

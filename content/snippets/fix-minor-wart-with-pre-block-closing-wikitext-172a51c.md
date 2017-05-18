@@ -1,5 +1,6 @@
 ---
 title: Fix minor wart with pre block closing (wikitext, 172a51c)
+tags: snippets
 ---
 
 Under some circumstances (unnested pre block followed by two consecutive newlines) we would emit a block that looked like this:

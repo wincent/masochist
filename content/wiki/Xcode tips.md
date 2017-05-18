@@ -1,5 +1,5 @@
 ---
-tags: xcode
+tags: xcode wiki
 ---
 
 # Keyboard navigation among methods

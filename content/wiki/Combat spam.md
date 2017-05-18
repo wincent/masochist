@@ -1,6 +1,6 @@
 ---
 redirect: [[Combating spam]]
-tags: 
+tags: wiki
 ---
 
 

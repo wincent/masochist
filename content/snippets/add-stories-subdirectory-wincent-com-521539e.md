@@ -1,5 +1,6 @@
 ---
 title: Add stories subdirectory (wincent.com, 521539e)
+tags: snippets
 ---
 
 Add base files provided by RSpec.

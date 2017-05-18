@@ -1,5 +1,6 @@
 ---
 title: Add public keys (snippets, da237b0)
+tags: snippets
 ---
 
 Store public SSH keys in snippets repository.

@@ -1,5 +1,6 @@
 ---
 title: More thoughts on HOM
+tags: blog
 ---
 
 Back in August [I wrote the following](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) about HOM (Higher Order Messaging):

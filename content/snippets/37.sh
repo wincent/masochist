@@ -1,7 +1,8 @@
 ---
 title: Coffee shop internet
-tags: starbucks
+tags: starbucks snippets
 ---
+
 $ ping wincent.com
 PING wincent.com (184.73.232.208): 56 data bytes
 Request timeout for icmp_seq 0

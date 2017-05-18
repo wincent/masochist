@@ -1,6 +1,7 @@
 ---
-tags: javascript
+tags: javascript snippets
 ---
+
 /**
  * Class.js: A class factory.
  *

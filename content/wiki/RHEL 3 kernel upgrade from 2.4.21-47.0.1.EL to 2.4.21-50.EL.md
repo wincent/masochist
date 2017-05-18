@@ -1,5 +1,5 @@
 ---
-tags: red.hat
+tags: red.hat wiki
 ---
 
 These notes made while performing a [RHEL](/wiki/RHEL) 3 kernel upgrade from version 2.4.21-47.0.1.EL to 2.4.21-50.EL (gotta love those version numbers!).

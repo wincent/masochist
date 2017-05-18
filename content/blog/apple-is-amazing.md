@@ -1,5 +1,6 @@
 ---
 title: Apple is amazing
+tags: blog
 ---
 
 In June last year I ordered a Developer Transition Kit (DTK). The idea is that you paid Apple $999 and they sent you an Intel-based Mac you could use for development and testing. The market value of the machine must have been way over $999 but the catch was that you'd have to return the unit to Apple before the end of 2006. In other words, you were effectively renting the machine, not purchasing it.

@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ cache_breaker: 1
 -   <http://www.quirksmode.org/dom/events/load.html>
 -   <http://stackoverflow.com/questions/6725272/dynamic-cross-browser-script-loading>
 -   <http://stackoverflow.com/questions/7718935/load-scripts-asynchronously>
-

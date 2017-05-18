@@ -1,5 +1,5 @@
 ---
-tags: ruby.debug
+tags: ruby.debug wiki
 ---
 
 I installed [ruby-debug](/wiki/ruby-debug) (see "[Installing ruby-debug 0.7.5](/wiki/Installing_ruby-debug_0.7.5)") because I was having trouble getting [RSpec](/wiki/RSpec) [specifications](/wiki/specifications) to run correctly under [Ruby](/wiki/Ruby)'s built-in debugger:

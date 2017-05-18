@@ -1,5 +1,5 @@
 ---
-tags: parsetree
+tags: parsetree wiki
 ---
 
 Notes on installing the [ParseTree 2.1.1](/wiki/ParseTree_2.1.1) release.

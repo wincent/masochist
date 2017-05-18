@@ -1,5 +1,5 @@
 ---
-tags: email sendmail
+tags: email sendmail wiki
 ---
 
 The → symbol (right-pointing arrow) is used to indicate a tab:

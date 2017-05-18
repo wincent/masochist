@@ -1,6 +1,6 @@
 ---
 title: mkdtemp 1.2.1 released
-tags: releases mkdtemp
+tags: releases mkdtemp blog
 cache_breaker: 1
 ---
 

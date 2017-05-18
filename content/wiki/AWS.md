@@ -1,5 +1,5 @@
 ---
-tags: aws amazon
+tags: aws amazon wiki
 cache_breaker: 1
 ---
 
@@ -24,4 +24,3 @@ cache_breaker: 1
     -   Announcement: <http://aws.typepad.com/aws/2013/09/new-aws-command-line-interface-cli.html>
     -   Source: <https://github.com/aws/aws-cli>
     -   Hacker News discussion: <https://news.ycombinator.com/item?id=6324797>
-

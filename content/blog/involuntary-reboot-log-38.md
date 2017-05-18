@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log: #38
+tags: blog
 ---
 
 Lesson of the day, never double-click the application you can find at `/Developer/Applications/Performance Tools/CHUD/Hardware Tools/Reggie SE`. I just made that mistake, out of curiosity, and it hard froze my system. By "hard freeze" I mean that not even the mouse pointer would move, the clock stopped updating, the machine did not respond to pings from elsewhere on the local network, and the only thing that seemed to be working well were the fans (roaring like hair dryers).

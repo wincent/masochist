@@ -1,5 +1,6 @@
 ---
 title: Rails usability improvement
+tags: blog
 ---
 
 [This](http://dev.rubyonrails.org/changeset/7215%20) is a nice example of a minor usability enhancement for Rails.

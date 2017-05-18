@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.58
-tags: site updates
+tags: site updates snippets
 ---
+
 4616ef1 Bump line-height from 18px to 1.75em
 57b8da8 Add style guide
 0dd23f3 deploy: don't sign deploy tags

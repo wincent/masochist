@@ -1,5 +1,6 @@
 ---
 title: Universal Binaries for Intel-based Macs
+tags: blog
 ---
 
 I've already received mail asking when [Synergy](http://www.wincent.com/a/products/synergy-classic/) will be made available as a Universal Binary that will run natively on both Intel-based and PowerPC-based Macs.

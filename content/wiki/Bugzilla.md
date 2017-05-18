@@ -1,5 +1,5 @@
 ---
-tags: bugzilla
+tags: bugzilla wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ In April 2008 I switched to a custom [issue tracker](/wiki/issue_tracker) built 
 ## See also
 
 -   Official site: <http://bugzilla.org/>
-

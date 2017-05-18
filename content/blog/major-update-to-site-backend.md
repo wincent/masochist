@@ -1,6 +1,6 @@
 ---
 title: Major update to site backend
-tags: site
+tags: site blog
 ---
 
 I've just deployed a rather large update to the [Rails](/wiki/Rails) [app](/wiki/app) which powers this site. There were *lots* of changes, so if anything is behaving strangely please get in touch with me by email (<win@wincent.com>) or by opening a [ticket](/wiki/ticket).

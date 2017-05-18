@@ -1,5 +1,6 @@
 ---
 title: Bansshee update
+tags: blog
 ---
 
 I [recently wrote](http://www.wincent.com/a/about/wincent/weblog/archives/2006/04/bansshee_my_ans.php) that I spent some time working on a countermeasure for SSH-dictionary attacks. Well, Bansshee has been in service on my server now for over a week and it's nice to see it working without skipping a beat.

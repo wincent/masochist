@@ -1,5 +1,6 @@
 ---
 title: Teach FixtureReplacement to avoid mass assignment (wincent.com, 80cf713)
+tags: snippets
 ---
 
 FixtureReplacement uses mass assignment under the hood to create new object instances and this can cause exceptions if any of the assigned attributes are protected. Given that the idea of FixtureReplacement is to quickly and easily set up valid objects (or object graphs) it makes sense to avoid these exceptions and allow all attributes to be specified in the example\_data.rb file whether they are protected or not.

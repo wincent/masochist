@@ -1,6 +1,6 @@
 ---
 redirect: /products/walrat
-tags: 
+tags: wiki
 ---
 
 

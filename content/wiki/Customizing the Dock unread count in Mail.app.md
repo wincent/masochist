@@ -1,5 +1,5 @@
 ---
-tags: mail.app
+tags: mail.app wiki
 ---
 
 Just found this sweet little tip [here](http://kuwayama.com/tip-set-the-unread-count-notice-in-mailapp).

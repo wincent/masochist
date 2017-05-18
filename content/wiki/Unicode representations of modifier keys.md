@@ -1,5 +1,5 @@
 ---
-tags: development
+tags: development wiki
 ---
 
 In the process of preparing a personalized "cheat sheet" for [TextMate](/wiki/TextMate) I wanted to include graphical representations of the different modifier keys (Command, Shift, Control etc). It is possible to find and view these from the [Mac OS X](/wiki/Mac_OS_X) character palette but the huge size of the [Unicode](/wiki/Unicode) space can make this difficult unless you store such characters in your favorites list.
@@ -47,4 +47,3 @@ To include these [Unicode](/wiki/Unicode) characters in the [HTML](/wiki/HTML) o
 # See also
 
 -   Source: <http://macbiblioblog.blogspot.com/2005/05/special-key-symbols.html>
-

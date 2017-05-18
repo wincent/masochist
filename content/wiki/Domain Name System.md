@@ -1,6 +1,6 @@
 ---
 redirect: [[DNS]]
-tags: 
+tags: wiki
 ---
 
 

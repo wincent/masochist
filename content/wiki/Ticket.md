@@ -1,6 +1,6 @@
 ---
 redirect: /issues/new
-tags: 
+tags: wiki
 ---
 
 

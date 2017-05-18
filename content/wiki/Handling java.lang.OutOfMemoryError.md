@@ -1,5 +1,5 @@
 ---
-tags: antlr java
+tags: antlr java wiki
 ---
 
 While working on an [ANTLR](/wiki/ANTLR) lexer for recognizing [RFC 3986](/wiki/RFC_3986)-compliant [URIs](/wiki/URIs) I ran into the following error:

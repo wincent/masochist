@@ -1,5 +1,5 @@
 ---
-tags: nginx snow.leopard
+tags: nginx snow.leopard wiki
 cache_breaker: 1
 ---
 

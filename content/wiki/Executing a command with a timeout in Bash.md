@@ -1,5 +1,5 @@
 ---
-tags: bash
+tags: bash wiki
 ---
 
 From <http://www.bashcookbook.com/bashinfo/source/bash-4.0/examples/scripts/timeout3>:

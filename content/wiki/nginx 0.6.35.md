@@ -1,5 +1,5 @@
 ---
-tags: nginx
+tags: nginx wiki
 ---
 
 ## Changelog
@@ -17,4 +17,3 @@ tags: nginx
 ## See also
 
 -   [Updating to nginx 0.6.35](/wiki/Updating_to_nginx_0.6.35)
-

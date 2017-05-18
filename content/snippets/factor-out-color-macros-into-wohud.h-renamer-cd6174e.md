@@ -1,5 +1,6 @@
 ---
 title: Factor out color macros into WOHUD.h (REnamer, cd6174e)
+tags: snippets
 ---
 
 The color macros were all defined in WOHUDTableView.h, seeing as that was the first class I made when starting work on the HUD controls.

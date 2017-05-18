@@ -1,6 +1,6 @@
 ---
 title: Getting rid of Capistrano
-tags: capistrano snow.leopard
+tags: capistrano snow.leopard blog
 ---
 
 For a long while now I've been rather dissatisfied with [Capistrano](/wiki/Capistrano). In a nutshell, updating Capistrano is like playing Russian roulette with your ability to deploy: every point release brings with it the risk of breakage. This is not what you want; if you have to suddenly deploy you want to be able to type `deploy` and have it work in a failsafe manner. With Capistrano there are no such guarantees.

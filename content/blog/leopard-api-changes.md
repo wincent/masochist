@@ -1,5 +1,6 @@
 ---
 title: Leopard API changes
+tags: blog
 ---
 
 I'm under NDA so I can't talk about the details, but I must say that I am really excited about the new APIs (and improvements to existing APIs) that Apple will be offering to developers in Leopard.

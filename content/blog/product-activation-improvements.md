@@ -1,5 +1,6 @@
 ---
 title: Product activation improvements
+tags: blog
 ---
 
 I've spent the day making improvements to my [product activation](http://www.wincent.com/a/support/activation/) systems and I am fairly pleased with the results. These changes should make the product activation experience (which is already pretty good) even better for customers (when talking about copy protection there are two kinds of improvements you can make: those which make life easier for your customers and those which make life harder for pirates; the changes I've made today belong to the former class).

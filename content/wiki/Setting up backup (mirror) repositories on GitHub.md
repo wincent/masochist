@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -291,4 +291,3 @@ Where `${HOME}/tools/github-mirror.sh` is a simple shell script that looks somet
 # See also
 
 -   [Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)
-

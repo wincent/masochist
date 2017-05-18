@@ -1,5 +1,5 @@
 ---
-tags: subversion git migration
+tags: subversion git migration wiki
 cache_breaker: 1
 ---
 
@@ -11,4 +11,3 @@ This page was previously about migrating a [Subversion](/wiki/Subversion) reposi
 
 -   [Migrating Subversion repositories to Git](/wiki/Migrating_Subversion_repositories_to_Git)
 -   [Doing a one-off migration from Subversion to Git](/wiki/Doing_a_one-off_migration_from_Subversion_to_Git)
-

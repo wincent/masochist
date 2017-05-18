@@ -1,6 +1,6 @@
 ---
 title: Code migration from Subversion to Git
-tags: site
+tags: site blog
 ---
 
 A couple more codebases have been moved across from the legacy [Subversion](/wiki/Subversion) repositories to new [Git](/wiki/Git) ones over the last week or so:
@@ -12,4 +12,3 @@ A couple of other Git repos were actually set up some months ago but I don't thi
 
 -   [mkdtemp](http://mkdtemp.rubyforge.org/) ([browse repository](http://git.wincent.com/mkdtemp.git))
 -   [wopen3](/wiki/wopen3) ([browse repository](http://git.wincent.com/wopen3.git))
-

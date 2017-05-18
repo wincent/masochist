@@ -1,5 +1,6 @@
 ---
 title: Hextrapolate added to the nightly builds schedule
+tags: blog
 ---
 
 [Hextrapolate](http://hextrapolate.wincent.com/) has now been added to the [nightly builds schedule](http://www.wincent.com/s/nightlies/) and the [first build](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/2007/04/hextrapolate_revision_91.php) is now up (see also the [full list of Hextrapolate nightlies](http://www.wincent.com/a/about/wincent/weblog/nightlog/archives/hextrapolate/)).

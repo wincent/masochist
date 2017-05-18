@@ -1,5 +1,6 @@
 ---
 title: Change of email address
+tags: blog
 ---
 
 At the end of June this year I will be changing my email address. I wanted to post this article to give people plenty of notice. I'm doing this for two reasons.

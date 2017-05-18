@@ -1,5 +1,5 @@
 ---
-tags: version.control
+tags: version.control wiki
 ---
 
 [Perforce](/wiki/Perforce) is a commercial, centralized (client/server) [version control system](/wiki/version_control_system).
@@ -7,4 +7,3 @@ tags: version.control
 # See also
 
 -   Official site: <http://www.perforce.com/>
-

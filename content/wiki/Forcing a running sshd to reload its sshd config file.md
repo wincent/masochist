@@ -1,5 +1,5 @@
 ---
-tags: ssh
+tags: ssh wiki
 ---
 
 Find the process ID for the master `sshd` process and send it a `HUP` signal.

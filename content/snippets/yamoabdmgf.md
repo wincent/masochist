@@ -1,5 +1,6 @@
 ---
 title: YAMOABDMGF
+tags: snippets
 ---
 
 Another day, another [MOAB](http://www.wincent.com/a/about/wincent/weblog/archives/apple/moab/) [DMG vulnerability](http://projects.info-pull.com/moab/MOAB-12-01-2007.html). Starting to get sick of them.

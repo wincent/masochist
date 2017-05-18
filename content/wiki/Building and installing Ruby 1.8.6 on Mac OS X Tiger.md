@@ -1,5 +1,5 @@
 ---
-tags: ruby tiger updates
+tags: ruby tiger updates wiki
 cache_breaker: 1
 ---
 
@@ -144,4 +144,3 @@ Of my installed gems, only `sqlite3-ruby` needed to be updated.
 -   Release announcement: <http://groups.google.com/group/comp.lang.ruby/browse_thread/thread/f2add90521cf106b/9a64ca26897fe75a>
 -   User-visible changes: <http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/NEWS>
 -   All changes: <http://svn.ruby-lang.org/repos/ruby/tags/v1_8_6/ChangeLog>
-

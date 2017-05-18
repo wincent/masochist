@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 The Xcode User Guide states that:

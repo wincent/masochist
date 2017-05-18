@@ -1,5 +1,6 @@
 ---
 title: The nine phases of paranoia
+tags: blog
 ---
 
 **Phase 1:** You select a password that "only you could know" and use it consistently everywhere.

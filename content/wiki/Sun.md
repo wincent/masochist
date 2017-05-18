@@ -1,6 +1,6 @@
 ---
 redirect: [[Sun Microsystems]]
-tags: 
+tags: wiki
 ---
 
 

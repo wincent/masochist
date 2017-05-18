@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 [RSpec 1.0.5](/wiki/RSpec_1.0.5) is the new version of [RSpec](/wiki/RSpec) released on 5 June 2007. It is principally a release that improves the integration with [autotest](/wiki/autotest), including a couple patches by me. I'm particularly happy about the fix for [issue \#11337](/issues/11337).
@@ -20,4 +20,3 @@ My installation notes can be found in "[Upgrading to RSpec 1.0.5 on Mac OS X Tig
 # See also
 
 -   Official release notes: <http://rubyforge.org/frs/shownotes.php?release_id=12187>
-

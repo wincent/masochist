@@ -1,6 +1,6 @@
 ---
 redirect: [[Octal]]
-tags: 
+tags: wiki
 ---
 
 

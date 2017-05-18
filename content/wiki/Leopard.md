@@ -1,5 +1,5 @@
 ---
-tags: leopard
+tags: leopard wiki
 ---
 
 "[Leopard](/wiki/Leopard)" is the popular name for [Mac OS X](/wiki/Mac_OS_X) version 10.5.

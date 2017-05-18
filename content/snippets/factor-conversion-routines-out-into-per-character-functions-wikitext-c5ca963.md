@@ -1,5 +1,6 @@
 ---
 title: Factor conversion routines out into per-character functions (wikitext, c5ca963)
+tags: snippets
 ---
 
 Extract two new functions, one for converting a single UCS-2 character into a (possibly multi-byte) UTF-8 representation, and another for performing the reverse operation.

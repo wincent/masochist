@@ -1,6 +1,6 @@
 ---
 title: Managing Side-effects With the Pub-Sub Model
-tags: ruby causes
+tags: ruby causes blog
 cache_breaker: 1
 ---
 

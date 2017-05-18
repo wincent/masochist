@@ -1,5 +1,5 @@
 ---
-tags: rspec tiger updates
+tags: rspec tiger updates wiki
 cache_breaker: 1
 ---
 
@@ -62,4 +62,3 @@ Note that with [Spec::UI 0.2.2](/wiki/Spec%3a%3aUI_0.2.2) I decided for the firs
 # See also
 
 -   [Upgrading to RSpec 1.0.0 on Mac OS X Tiger](/wiki/Upgrading_to_RSpec_1.0.0_on_Mac_OS_X_Tiger)
-

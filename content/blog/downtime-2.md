@@ -1,6 +1,6 @@
 ---
 title: Downtime
-tags: site
+tags: site blog
 ---
 
 > We have important news about your account. EC2 has detected degradation of the underlying hardware hosting one or more of your Amazon EC2 instances in the us-east-1 region. Due to this degradation, your instance(s) could already be unreachable. Running instances will be stopped or terminated after 12:00AM UTC on 2015-09-10.

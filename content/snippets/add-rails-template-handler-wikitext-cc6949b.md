@@ -1,5 +1,6 @@
 ---
 title: Add Rails template handler (wikitext, cc6949b)
+tags: snippets
 ---
 
 This allows you to create Rails view templates written in pure wikitext. It's intended for purely static content seeing as wikitext, by definition, can't have interpolated Ruby in it.

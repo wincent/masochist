@@ -1,6 +1,6 @@
 ---
 title: Synergy 4.0.1b released
-tags: synergy releases snow.leopard
+tags: synergy releases snow.leopard blog
 ---
 
 [Synergy](/wiki/Synergy), the lightweight, highly-customizable [iTunes](/wiki/iTunes) controller has been updated to version 4.0.1b. 4.0 is a brand new release especially for [Mac OS X](/wiki/Mac_OS_X) 10.6 [Snow Leopard](/wiki/Snow_Leopard). This release fixes a couple of minor bugs, and given feedback on the stability of the last release moves from "alpha" to "beta" status.

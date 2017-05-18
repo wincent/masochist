@@ -1,5 +1,5 @@
 ---
-tags: subversion svk
+tags: subversion svk wiki
 ---
 
 My thinking about [branching](/wiki/branching) has evolved recently thanks to the possibilities opened up by [SVK](/wiki/SVK). [Subversion](/wiki/Subversion) itself has no inherent limitations that prevent you from doing sophisticated [branching](/wiki/branching) and [merging](/wiki/merging), but neither does it actually provide you with tools to make it convenient. The main defect in [Subversion](/wiki/Subversion)'s [merging](/wiki/merging) capabilities is the lack of [merge tracking](/wiki/merge_tracking). This means that you must manually keep track of the merges so as not to re-merge the same changes at a later date; see "[Synergy branch notes](/wiki/Synergy_branch_notes)" for an example of this manual tracking. This manual work can be a time-consuming and error-prone procedure.
@@ -84,4 +84,3 @@ The `--verbatim` switch to `svk push` prevents it from including [SVK](/wiki/SVK
 ## Project-specific branch notes
 
 -   [Branch notes](/wiki/Branch_notes)
-

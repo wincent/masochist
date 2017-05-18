@@ -1,7 +1,8 @@
 ---
 title: win@wincent.com PGP public key (expires: 2017-07-07)
-tags: pgp
+tags: pgp snippets
 ---
+
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.11 (Darwin)
 

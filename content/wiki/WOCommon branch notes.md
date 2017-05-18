@@ -1,5 +1,5 @@
 ---
-tags: subversion
+tags: subversion wiki
 ---
 
 On 28 October 2006 I branched [WOCommon](/wiki/WOCommon). The existing codebase would continue development on the `tiger` branch and [Leopard](/wiki/Leopard)-related development would take place on the "trunk".

@@ -1,6 +1,6 @@
 ---
 title: 2 hours with Vim
-tags: vim ack
+tags: vim ack blog
 cache_breaker: 1
 ---
 

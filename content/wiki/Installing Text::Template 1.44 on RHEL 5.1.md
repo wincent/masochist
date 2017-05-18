@@ -1,5 +1,5 @@
 ---
-tags: perl rhel
+tags: perl rhel wiki
 ---
 
 wget <http://search.cpan.org/CPAN/authors/id/M/MJ/MJD/Text-Template-1.44.tar.gz>

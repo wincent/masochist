@@ -1,6 +1,6 @@
 ---
 title: Extremely annoying Apache problem
-tags: apache
+tags: apache blog
 cache_breaker: 1
 ---
 

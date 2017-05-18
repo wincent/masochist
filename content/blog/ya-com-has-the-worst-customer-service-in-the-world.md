@@ -1,5 +1,6 @@
 ---
 title: Ya.com has the worst customer service in the world
+tags: blog
 ---
 
 So [my battle with Ya.com](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/yacom_incompete.php) continues. Another month, another incorrect bill in which they have charged me double, another letter of complaint. It's funny (har, har, it is to laugh) seeing how my language has changed with each successive letter of complaint.

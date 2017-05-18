@@ -1,5 +1,5 @@
 ---
-tags: git updates snow.leopard
+tags: git updates snow.leopard wiki
 ---
 
 # Local update

@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 According to [Apple's Chris Espinosa](http://lists.apple.com/archives/Xcode-users/2005/Jul/msg00541.html):

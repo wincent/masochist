@@ -1,6 +1,6 @@
 ---
 redirect: [[Server load]]
-tags: 
+tags: wiki
 ---
 
 

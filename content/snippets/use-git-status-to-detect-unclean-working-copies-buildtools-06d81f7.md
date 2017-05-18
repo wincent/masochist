@@ -1,5 +1,6 @@
 ---
 title: Use "git status" to detect unclean working copies (buildtools, 06d81f7)
+tags: snippets
 ---
 
 Although parsing the textual output of "git status" in order to detect an unclean working copy doesn't strike me as the most elegant solution, it does seem to be about the only straightforward way to do so.

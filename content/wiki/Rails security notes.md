@@ -1,5 +1,5 @@
 ---
-tags: rails security
+tags: rails security wiki
 cache_breaker: 1
 ---
 
@@ -135,4 +135,3 @@ There are many, many techniques that can be applied, so I'll update this page wi
 -   Using the [Rails](/wiki/Rails) provided countermeasures, like `protect_from_forgery`
 -   Don't trust *any* user input, even in [cookies](/wiki/cookies)
 -   Don't put sensitive stuff in the session if you're using [cookie](/wiki/cookie)-based sessions
-

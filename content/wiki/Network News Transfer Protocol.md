@@ -1,6 +1,6 @@
 ---
 redirect: [[NNTP]]
-tags: 
+tags: wiki
 ---
 
 

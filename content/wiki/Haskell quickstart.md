@@ -1,5 +1,5 @@
 ---
-tags: haskell
+tags: haskell wiki
 ---
 
 # Installing the [TextMate](/wiki/TextMate) [Haskell](/wiki/Haskell) bundle

@@ -1,5 +1,5 @@
 ---
-tags: git centos
+tags: git centos wiki
 cache_breaker: 1
 ---
 

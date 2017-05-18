@@ -1,6 +1,6 @@
 ---
 redirect: [[Universal Binary]]
-tags: 
+tags: wiki
 ---
 
 

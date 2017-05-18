@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.57
-tags: site updates
+tags: site updates snippets
 ---
+
 77121fd Update dependencies on "about" page
 6d65fea Make button elements use "hand" cursor
 a679cbc Fix float issues on box-style comment boxes (issues, forums)

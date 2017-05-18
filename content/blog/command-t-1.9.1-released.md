@@ -1,6 +1,6 @@
 ---
 title: Command-T 1.9.1 released
-tags: releases command.t
+tags: releases command.t blog
 ---
 
 There was a missing file in the release vimball archive of version 1.9 (which [came out 5 days ago](/blog/command-t-1.9-released)). This release includes the missing file, but other than that there are no functional changes, so if things are working for you on 1.9 then there is no need to upgrade.

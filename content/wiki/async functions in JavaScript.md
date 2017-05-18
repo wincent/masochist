@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 cache_breaker: 1
 ---
 

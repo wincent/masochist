@@ -1,5 +1,6 @@
 ---
 title: Add tokenization of literal blockquote tags (wikitext, 8888a18)
+tags: snippets
 ---
 
 This is the first step in adding support for literal &lt;blockquote&gt; and &lt;/blockquote&gt; tags. The rationale for this is that when quoting large slabs of text it is much more convenient to use starting and ending tags rather than prefixing every single line with a greater-than sign.

@@ -1,5 +1,5 @@
 ---
-tags: zentest leopard updates
+tags: zentest leopard updates wiki
 cache_breaker: 1
 ---
 
@@ -34,4 +34,3 @@ Notes made while upgrading to [ZenTest 3.9.0](/wiki/ZenTest_3.9.0) on [Mac OS X]
 This release of [ZenTest](/wiki/ZenTest) breaks compatibility with [RSpec](/wiki/RSpec), so you should upgrade to the new release of the latter at the same time:
 
 -   [Upgrading to RSpec 1.1.3 on Mac OS X Leopard](/wiki/Upgrading_to_RSpec_1.1.3_on_Mac_OS_X_Leopard)
-

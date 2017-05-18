@@ -1,5 +1,5 @@
 ---
-tags: bleak.house
+tags: bleak.house wiki
 ---
 
 These notes were made while installing [bleak\_house](/wiki/bleak_house) 3.6 on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.

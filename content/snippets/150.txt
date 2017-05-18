@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.93
-tags: site updates
+tags: site updates snippets
 ---
+
 7ceff1b script/deploy: don't install binstubs
 f139679 script/deploy: provide better error message when static pages are stale
 256d0d4 Remove useless config.assets.paths setting

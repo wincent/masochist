@@ -1,5 +1,6 @@
 ---
 title: Things you learn from looking at the HexFiend source code
+tags: blog
 ---
 
 static BOOL isHex(unichar c) {

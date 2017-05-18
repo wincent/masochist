@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -17,4 +17,3 @@ It's been my [VCS](/wiki/VCS) of choice since mid-2007. (Before that I used [SVK
 -   [Git advantages](/wiki/Git_advantages)
 -   [Git quickstart](/wiki/Git_quickstart)
 -   [Git recipes](/wiki/Git_recipes)
-

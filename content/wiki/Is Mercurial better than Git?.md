@@ -1,5 +1,5 @@
 ---
-tags: git mercurial
+tags: git mercurial wiki
 ---
 
 No.

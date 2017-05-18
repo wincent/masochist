@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 The official instructions for contributing to [RSpec](/wiki/RSpec) can be found here:
@@ -39,4 +39,3 @@ I already had most of the prerequisites for running [RSpec](/wiki/RSpec)'s pre-c
 
 -   [Passwordless local MySQL access](/wiki/Passwordless_local_MySQL_access)
 -   [RSpec patches](/wiki/RSpec_patches)
-

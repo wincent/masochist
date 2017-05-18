@@ -1,5 +1,5 @@
 ---
-tags: wikitext
+tags: wikitext wiki
 cache_breaker: 1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Flash on the iPhone
-tags: 
+tags: blog
 ---
 
 Let me share with you my experience with Safari on Mac OS X.

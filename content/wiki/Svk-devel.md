@@ -1,5 +1,5 @@
 ---
-tags: svk
+tags: svk wiki
 ---
 
 [svk-devel](/wiki/svk-devel) is the [SVK](/wiki/SVK) development mailing list.

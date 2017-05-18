@@ -1,5 +1,6 @@
 ---
 title: Son, don't repeat the same mistakes I made
+tags: blog
 ---
 
 There are some things that I wish someone had told me when I got started programming Cocoa four years ago. There's a lot to learn, of course, so even if they *had* told me (and let's be honest, they probably *did* tell me) I may not have realized the importance of the advice.

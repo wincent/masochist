@@ -1,5 +1,5 @@
 ---
-tags: unix
+tags: unix wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 ## See also
 
 -   [Wikipedia](/wiki/Wikipedia) article on [cron](/wiki/cron): <http://en.wikipedia.org/wiki/Cron>
-

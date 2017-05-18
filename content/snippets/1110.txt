@@ -1,6 +1,7 @@
 ---
 title: Site updates 0.141
-tags: site updates
+tags: site updates snippets
 ---
+
 c573bf4 Abbreviate tags#show title
 af8f0bd Update Sass/Compass and friends

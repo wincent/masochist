@@ -1,5 +1,5 @@
 ---
-tags: rspec
+tags: rspec wiki
 ---
 
 # Pre-testing
@@ -158,4 +158,3 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=11541>
-

@@ -1,5 +1,6 @@
 ---
 title: Prune development notes (Synergy, dc7ef44)
+tags: snippets
 ---
 
 Remove section on login items (no longer relevant).

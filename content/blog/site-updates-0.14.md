@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.14)
-tags: site
+tags: site blog
 ---
 
 Just deployed some minor updates to the site (full list appears below). Nothing really exciting, just maintenance stuff like updating some dependencies and tweaking the deployment script to work with my new hosting arrangements in [the cloud](/wiki/the_cloud).

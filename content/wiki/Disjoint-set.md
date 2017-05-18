@@ -1,6 +1,6 @@
 ---
 redirect: [[Union-Find]]
-tags: 
+tags: wiki
 ---
 
 

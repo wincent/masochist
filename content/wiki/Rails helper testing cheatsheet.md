@@ -1,5 +1,5 @@
 ---
-tags: rspec rails testing rr cheatsheet helpers
+tags: rspec rails testing rr cheatsheet helpers wiki
 cache_breaker: 1
 ---
 
@@ -41,4 +41,3 @@ end
 -   [Rails mailer testing cheatsheet](/wiki/Rails_mailer_testing_cheatsheet)
 -   [RR cheatsheet](/wiki/RR_cheatsheet)
 -   [Steak cheatsheet](/wiki/Steak_cheatsheet)
-

@@ -1,6 +1,6 @@
 ---
 redirect: [[Apple]]
-tags: 
+tags: wiki
 ---
 
 

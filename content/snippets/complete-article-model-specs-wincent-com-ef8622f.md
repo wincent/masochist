@@ -1,5 +1,6 @@
 ---
 title: Complete Article model specs (wincent.com, ef8622f)
+tags: snippets
 ---
 
 This includes one change to the database schema required to make the specs pass.

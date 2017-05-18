@@ -1,5 +1,5 @@
 ---
-tags: rsync
+tags: rsync wiki
 ---
 
 # Copying a directory locally

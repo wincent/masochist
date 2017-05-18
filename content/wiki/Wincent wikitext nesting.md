@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 # Overview
@@ -174,4 +174,3 @@ As noted on the [Wincent wikitext](/wiki/Wincent_wikitext) page, nesting of inli
     -   Any inline element
 -   Elements that can be nested inside:
     -   Not applicable (`DEFAULT` is an atomic element, not a span)
-

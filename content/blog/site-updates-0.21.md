@@ -1,6 +1,6 @@
 ---
 title: Site updates (0.21)
-tags: site
+tags: site blog
 ---
 
 Just a few bits and pieces:

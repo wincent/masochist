@@ -1,6 +1,6 @@
 ---
 title: Capistrano
-tags: capistrano
+tags: capistrano blog
 cache_breaker: 1
 ---
 

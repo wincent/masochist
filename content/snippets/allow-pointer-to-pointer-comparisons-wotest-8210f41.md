@@ -1,5 +1,6 @@
 ---
 title: Allow pointer-to-pointer comparisons (WOTest, 8210f41)
+tags: snippets
 ---
 
 Found another case in which comparing nil to nil was leading to a failing test; ultimately the +\[NSValue WOTest\_compare:\] method was being called where both objects were encoded with type "pointer-to-void".

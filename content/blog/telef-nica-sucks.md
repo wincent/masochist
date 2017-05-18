@@ -1,5 +1,6 @@
 ---
 title: Telefónica sucks
+tags: blog
 ---
 
 It's amazing how hard it is to get temporary Internet access in Spain. Or permanent access for that matter. Earlier this month I decided to switch ISPs. On 9 May I sent a letter to my old provider notifying them of my desire to discontinue the service and on the same day I applied with a new provider.

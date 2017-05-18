@@ -1,5 +1,5 @@
 ---
-tags: ssl
+tags: ssl wiki
 cache_breaker: 1
 ---
 
@@ -19,4 +19,3 @@ cache_breaker: 1
 -   <http://www.rapidsslonline.com/rapidssl-certificates.php>
 -   <https://www.servertastic.com/rapidssl/>: the cheapest I've found ($10 per year for normal certificates, $135.20 per year for wildcard certificates)
 -   <http://certificatesforexchange.com/>: cheapest I've seen for [SAN](/wiki/SAN) certificates
-

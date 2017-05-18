@@ -1,5 +1,6 @@
 ---
 title: Add "dedent" helper for specs (wikitext, 54a7a69)
+tags: snippets
 ---
 
 I'm finding the multiline spec data hard to read because it breaks the flow of the indentation (where does one spec end and another begin? are we nested inside multiple "describe" blocks? etc).

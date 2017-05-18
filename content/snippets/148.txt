@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.91
-tags: site updates
+tags: site updates snippets
 ---
+
 7bcb70d Add Font Awesome
 687f627 Remove unused background image asset
 7094ae4 Switch out sprite icons for Font Awesome fonts

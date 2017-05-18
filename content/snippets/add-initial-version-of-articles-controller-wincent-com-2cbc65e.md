@@ -1,5 +1,6 @@
 ---
 title: Add initial version of Articles controller (wincent.com, 2cbc65e)
+tags: snippets
 ---
 
 Currently doesn't do anything; this is just an empty skeleton.

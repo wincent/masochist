@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 Frameworks allow you to package frequently-used functionality into an easily re-usable package.

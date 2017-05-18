@@ -1,6 +1,6 @@
 ---
 redirect: [[HTML entities]]
-tags: 
+tags: wiki
 ---
 
 

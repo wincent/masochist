@@ -1,5 +1,6 @@
 ---
 title: Add missing call to finalize (WOTest, 94a6adf)
+tags: snippets
 ---
 
 The finalize method in the WOMock class was missing a call to super's finalize method.

@@ -1,5 +1,6 @@
 ---
 title: Teach window controller to have cake and eat it too (REnamer, 457adee)
+tags: snippets
 ---
 
 The docs suggest that the window controller should be the nib owner, but if you follow that recommendation it is very hard to set up bindings. You either have to pollute your window controller with model-like properties (it is supposed to be a view-controller, not a model-controller like NSDocument), or provide some kind of key path which allows you to get at your model properties from within the nib.

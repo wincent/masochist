@@ -1,5 +1,6 @@
 ---
 title: Automated stripping
+tags: blog
 ---
 
 Back from the conference. Today I addressed the one remaining issue in my build chain ([previously mentioned here](http://www.wincent.com/a/about/wincent/weblog/archives/2006/03/dstroot_install.php)): an automated process to produce release builds with debugging symbols stripped while keeping an unstripped copy locally for the purposes of deciphering crash reports.

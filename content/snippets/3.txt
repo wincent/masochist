@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.24
-tags: site
+tags: site snippets
 ---
+
 b158ae0 script/deploy: add "summary" subcommand
 7ec8784 script/deploy: print summary only after enable subcommand is run
 0dcfb97 script/deploy: make unlock/lock subcommands non-chatty

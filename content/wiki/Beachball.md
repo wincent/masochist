@@ -1,5 +1,5 @@
 ---
-tags: os.x
+tags: os.x wiki
 cache_breaker: 1
 ---
 

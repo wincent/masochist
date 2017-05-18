@@ -1,5 +1,6 @@
 ---
 title: iMac reliability woes
+tags: blog
 ---
 
 Since I switched to this first-gen Intel iMac as my main desktop machine back in May 2006 I've had a pretty bad run with hardware reliability.

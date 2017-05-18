@@ -1,6 +1,6 @@
 ---
 title: New version of site backend
-tags: site
+tags: site blog
 cache_breaker: 1
 ---
 

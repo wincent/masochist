@@ -1,5 +1,6 @@
 ---
 title: Initial activation of indenting code (wikitext, ee665c4)
+tags: snippets
 ---
 
 At the moment this breaks some of the specs but I wanted to get it in the repository in any case as it looks to be very nearly complete.

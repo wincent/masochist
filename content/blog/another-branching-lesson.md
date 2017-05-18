@@ -1,5 +1,6 @@
 ---
 title: Another branching lesson
+tags: blog
 ---
 
 In the migration from [Tiger](http://www.wincent.com/knowledge-base/Tiger) to [Leopard](http://www.wincent.com/knowledge-base/Leopard) I learnt another, painfully obvious lesson about [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging).

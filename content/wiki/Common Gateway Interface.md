@@ -1,6 +1,6 @@
 ---
 redirect: [[CGI]]
-tags: 
+tags: wiki
 ---
 
 

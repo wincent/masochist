@@ -1,5 +1,5 @@
 ---
-tags: rsync
+tags: rsync wiki
 ---
 
 Notes made in the upgrade from [rsync](/wiki/rsync) 2.6.9pre2 to 2.6.9:
@@ -19,4 +19,3 @@ I then did a test remote backup using my `rsync-backup.sh` script and everything
 -   Manual pages:
     -   <http://rsync.samba.org/ftp/rsync/rsync.html>
     -   <http://rsync.samba.org/ftp/rsync/rsyncd.conf.html>
-

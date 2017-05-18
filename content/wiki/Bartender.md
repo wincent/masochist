@@ -1,5 +1,5 @@
 ---
-tags: os.x bartender
+tags: os.x bartender wiki
 ---
 
 # Official site
@@ -9,4 +9,3 @@ tags: os.x bartender
 # See also
 
 -   [Mac OS X "must haves"](/wiki/Mac_OS_X_%22must_haves%22)
-

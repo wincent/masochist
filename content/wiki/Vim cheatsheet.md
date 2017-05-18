@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 cache_breaker: 1
 ---
 
@@ -191,4 +191,3 @@ Funnily, you can easily open this by mistake by typing `q:` when you mean to typ
 # Special mappings
 
 -   `<C-w> <CR>`: open quickfix entry in a horizontal split
-

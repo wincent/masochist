@@ -1,9 +1,9 @@
 ---
-tags: rcov updates
+tags: rcov updates wiki
 cache_breaker: 1
 ---
 
-    $ sudo gem install rcov
+$ sudo gem install rcov
     Password:
     Bulk updating Gem source index for: http://gems.rubyforge.org
     Select which gem to install for your platform (universal-darwin9.0)
@@ -28,4 +28,3 @@ cache_breaker: 1
 # See also
 
 -   Release notes: <http://rubyforge.org/frs/shownotes.php?release_id=16494>
-

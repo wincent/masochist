@@ -1,5 +1,5 @@
 ---
-tags: javascript
+tags: javascript wiki
 ---
 
 [spin.js](/wiki/spin.js) is a net little library for producing spinners with pure [CSS](/wiki/CSS):

@@ -1,5 +1,5 @@
 ---
-tags: object.mother
+tags: object.mother wiki
 cache_breaker: 1
 ---
 

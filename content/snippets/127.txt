@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.80
-tags: site updates
+tags: site updates snippets
 ---
+
 f728ed3 Update to Haml 4.0.0
 0ceaff4 Don't bother telling Haml to output HTML5
 d3b3434 Ruby 1.9-ize some hash syntax

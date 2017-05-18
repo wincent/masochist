@@ -1,6 +1,6 @@
 ---
 title: Ruby refinements
-tags: ruby refinements
+tags: ruby refinements blog
 cache_breaker: 1
 ---
 

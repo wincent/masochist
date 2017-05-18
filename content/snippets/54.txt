@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.45
-tags: site updates
+tags: site updates snippets
 ---
+
 1798f3c script/deploy: suppress all assets:precompile output
 43fad6a Fix improper center of forms
 d220a96 Remove stale specs

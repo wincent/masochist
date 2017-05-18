@@ -1,5 +1,6 @@
 ---
 title: Verbatim
+tags: blog
 ---
 
 Currently running a huge merge between the [Tiger](http://www.wincent.com/knowledge-base/Tiger) and [Leopard](http://www.wincent.com/knowledge-base/Leopard) branches of one of my projects ([WOCommon](http://www.wincent.com/knowledge-base/WOCommon)). [SVK](http://www.wincent.com/knowledge-base/SVK) really makes this kind of thing a breeze... I was about to say, "I don't know how I ever lived without it", but the truth is I *do* know exactly how I lived without it: I basically avoided [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging) and did as little of it as possible.

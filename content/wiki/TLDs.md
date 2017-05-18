@@ -1,6 +1,6 @@
 ---
 redirect: [[TLD]]
-tags: 
+tags: wiki
 ---
 
 

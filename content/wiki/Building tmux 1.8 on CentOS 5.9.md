@@ -1,5 +1,5 @@
 ---
-tags: tmux centos
+tags: tmux centos wiki
 cache_breaker: 1
 ---
 

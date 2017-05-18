@@ -1,5 +1,6 @@
 ---
 title: Coming up with a company name
+tags: blog
 ---
 
 If you are an independent Mac software vendor it seems that *the* way to come up with a company name is to combine a modifier (adjective or adjectival noun) with a noun. Your algorithm for selecting a random modifier should be biased towards selecting a color (red, blue, yellow etc).

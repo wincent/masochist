@@ -1,5 +1,5 @@
 ---
-tags: javascript jquery
+tags: javascript jquery wiki
 cache_breaker: 1
 ---
 
@@ -8,4 +8,3 @@ cache_breaker: 1
 # Links
 
 -   Official site: <http://jquery.com/>
-

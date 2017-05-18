@@ -1,5 +1,5 @@
 ---
-tags: bugzilla updates
+tags: bugzilla updates wiki
 cache_breaker: 1
 ---
 

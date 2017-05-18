@@ -1,6 +1,6 @@
 ---
 redirect: [[SMTP]]
-tags: 
+tags: wiki
 ---
 
 

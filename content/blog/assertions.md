@@ -1,5 +1,6 @@
 ---
 title: Assertions
+tags: blog
 ---
 
 In "[Disable assertions and logging in your Release build](http://chanson.livejournal.com/169786.html)" [Chris Hanson](http://chanson.livejournal.com/) makes the case for, um, Disabling assertions and logging in your release builds. He later follows this up with "[Distinguish between checks and assertions](http://chanson.livejournal.com/170068.html)".

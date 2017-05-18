@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 The 11 May 2006 entry from [this page](http://www.antlr.org/blog/antlr3/lookahead.tml) describes one way of getting [PEG](/wiki/PEG)-like predicates in [ANTLR](/wiki/ANTLR).
@@ -61,4 +61,3 @@ In the thread [Jim Idle](/wiki/Jim_Idle) suggests the following workaround for t
 # See also
 
 -   [ANTLR predicates](/wiki/ANTLR_predicates)
-

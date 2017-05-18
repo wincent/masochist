@@ -1,5 +1,6 @@
 ---
 title: Custom NSScroller subclass (REnamer, 3fa4cd7)
+tags: snippets
 ---
 
 Now we draw scrollers that are suitable for display in a HUD window. This really is only a preliminary draft: the colors and geometry will almost certainly be tweaked in the future.

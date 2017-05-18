@@ -1,5 +1,5 @@
 ---
-tags: perl
+tags: perl wiki
 ---
 
 [Perl](/wiki/Perl) is a programming language.
@@ -7,4 +7,3 @@ tags: perl
 # See also
 
 -   <http://www.perl.org/>
-

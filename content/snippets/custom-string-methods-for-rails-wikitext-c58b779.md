@@ -1,5 +1,6 @@
 ---
 title: Custom string methods for Rails (wikitext, c58b779)
+tags: snippets
 ---
 
 These are the additions to the String class that I've been using in my Rails app. They consist of a "to\_wikitext" method and a shorter "w" alias for it.

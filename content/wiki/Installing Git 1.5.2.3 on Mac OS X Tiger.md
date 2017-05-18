@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 These notes were made while installing [Git](/wiki/Git) for the first time (version 1.5.2.3 is the latest version at the time of writing) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
@@ -298,4 +298,3 @@ After again performing the Git documentation build (this time successfully) I wa
 -   [Installing Git 1.5.2.3 on Red Hat Enterprise Linux](/wiki/Installing_Git_1.5.2.3_on_Red_Hat_Enterprise_Linux)
 -   [Installing Git 1.5.2.4 on Mac OS X Leopard](/wiki/Installing_Git_1.5.2.4_on_Mac_OS_X_Leopard)
 -   [Setting up the Git documentation build chain on Mac OS X Leopard](/wiki/Setting_up_the_Git_documentation_build_chain_on_Mac_OS_X_Leopard)
-

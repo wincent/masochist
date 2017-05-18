@@ -1,5 +1,6 @@
 ---
 title: Bad UI design in Rails
+tags: blog
 ---
 
 A minor peeve about the `rails` commandline tool.

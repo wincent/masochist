@@ -1,6 +1,6 @@
 ---
 title: State of the Spam-ion 2010 Address
-tags: spam
+tags: spam blog
 ---
 
 The spam "problem" is getting worse. Since [my last report](/blog/state-of-the-spam-ion-2009-address) in April 2009 there has been a considerable growth in the volume of spam.
@@ -36,4 +36,3 @@ The good news is that the tools used to handle the problem (in particular, [Spam
 -   The number of spam messages per day has continued to shoot up since the last report (from 235 per day to 281 per day)
 -   Spam now accounts for 58% of all mail I receive
 -   [SpamSieve](/wiki/SpamSieve) maintained its accuracy of 99.8% correct, and the number of detected false positives since the last report (8 months) was a very respectable 5.
-

@@ -1,6 +1,6 @@
 ---
 title: Walrus compatibility and performance on different Ruby implementations
-tags: walrus
+tags: walrus blog
 cache_breaker: 1
 ---
 

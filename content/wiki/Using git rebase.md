@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 # Basic use case
@@ -46,4 +46,3 @@ For information on sending out patches see "[Creating and submitting a patch via
 # See also
 
 -   [Git rebase explained](/wiki/Git_rebase_explained)
-

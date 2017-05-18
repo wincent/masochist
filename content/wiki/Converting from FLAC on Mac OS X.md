@@ -1,5 +1,5 @@
 ---
-tags: 
+tags: wiki
 ---
 
 To convert a bunch of [FLAC](/wiki/FLAC) files to [WAV](/wiki/WAV):

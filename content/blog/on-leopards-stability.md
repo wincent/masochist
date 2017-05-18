@@ -1,5 +1,6 @@
 ---
 title: On Leopard's stability
+tags: blog
 ---
 
 I was somewhat surprised to read in [Michael Tsai's summary](http://mjtsai.com/blog/2007/10/29/siracusa-on-leopard/) of John Siracusa's Leopard review (I'm not capable of wading my way through the entire, ridiculously prolix review) that he says it's stable:

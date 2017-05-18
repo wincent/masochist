@@ -1,5 +1,6 @@
 ---
 title: Move subview initialization into WODiffView (gdiff, 1cc773c)
+tags: snippets
 ---
 
 WODocument is a controller class which previously set up its own document window and all the subviews. Now all of the subview initialization has been moved into WODiffView.

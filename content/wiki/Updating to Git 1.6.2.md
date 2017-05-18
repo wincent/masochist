@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 Notes made while updating to [Git](/wiki/Git) 1.6.2 on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6 using a local clone of the upstream official Git repo:

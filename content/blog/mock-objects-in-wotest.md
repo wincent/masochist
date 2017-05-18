@@ -1,5 +1,6 @@
 ---
 title: Mock objects in WOTest
+tags: blog
 ---
 
 Well, continuing on from [my last post on the topic](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/handling_except.php) I'm blazing ahead with my [unit testing](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/unit_testing_an.php) framework, [WOTest](http://test.wincent.com/). I've gotten the custom root class support finished (and tested, of course!) and have now moved on to rolling in mock object support.

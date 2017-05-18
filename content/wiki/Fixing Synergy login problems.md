@@ -1,5 +1,5 @@
 ---
-tags: synergy
+tags: synergy wiki
 ---
 
 The number one [Synergy](/wiki/Synergy) support issue is the failure of the "Launch at login" checkbox to work.

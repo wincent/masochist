@@ -1,6 +1,6 @@
 ---
 redirect: [[Dropping back to the console]]
-tags: 
+tags: wiki
 ---
 
 

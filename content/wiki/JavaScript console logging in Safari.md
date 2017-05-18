@@ -1,5 +1,5 @@
 ---
-tags: safari javascript
+tags: safari javascript wiki
 ---
 
 ```js

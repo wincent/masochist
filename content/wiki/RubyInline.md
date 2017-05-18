@@ -1,5 +1,5 @@
 ---
-tags: rubyinline
+tags: rubyinline wiki
 ---
 
 From the [RubyInline](/wiki/RubyInline) project page:
@@ -9,4 +9,3 @@ From the [RubyInline](/wiki/RubyInline) project page:
 # See also
 
 -   Official project page: <http://rubyforge.org/projects/rubyinline/>
-

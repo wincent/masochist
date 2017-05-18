@@ -1,5 +1,5 @@
 ---
-tags: ssh
+tags: ssh wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,6 @@
 ---
 title: Is spam "solved"?
+tags: blog
 ---
 
 Just over a year ago I wrote about [Bill Gates' failed prediction](http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/spam_to_be_elim.php) that spam would be "solved" by the beginning of 2006. Microsoft tried to deny the demonstrable failure of this prediction by redefining the meaning of the word "solved" in a [way that does not bear inspection](http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/spam_will_be_so.php).

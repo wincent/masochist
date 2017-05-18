@@ -1,5 +1,5 @@
 ---
-tags: libevent memcached
+tags: libevent memcached wiki
 cache_breaker: 1
 ---
 
@@ -48,4 +48,3 @@ $ sudo monit status
 # See also
 
 -   [Installing memcached 1.4.1 on Mac OS X 10.6 Snow Leopard](/wiki/Installing_memcached_1.4.1_on_Mac_OS_X_10.6_Snow_Leopard)
-

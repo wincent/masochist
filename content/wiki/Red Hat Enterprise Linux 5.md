@@ -1,6 +1,6 @@
 ---
 redirect: [[RHEL 5]]
-tags: 
+tags: wiki
 ---
 
 

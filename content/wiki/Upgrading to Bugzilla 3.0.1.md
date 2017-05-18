@@ -1,5 +1,5 @@
 ---
-tags: bugzilla updates
+tags: bugzilla updates wiki
 cache_breaker: 1
 ---
 
@@ -341,4 +341,3 @@ This process could be largely automated via a shell script.
 # See also
 
 -   [Bugzilla 3.0.1](/wiki/Bugzilla_3.0.1) release notes: <http://www.bugzilla.org/releases/3.0.1/release-notes.html>
-

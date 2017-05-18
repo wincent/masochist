@@ -1,5 +1,6 @@
 ---
 title: Move progress text when resizing window (REnamer, b56f7e5)
+tags: snippets
 ---
 
 Was a fixed distance from the left edge of the window; instead, keep it centered underneath the progress bar.

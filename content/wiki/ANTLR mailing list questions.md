@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 Here are some of my questions posted to the [ANTLR mailing list](/wiki/ANTLR_mailing_list):
@@ -17,4 +17,3 @@ Here are some of my questions posted to the [ANTLR mailing list](/wiki/ANTLR_mai
 
 -   "C target: lexer rule precedence confusion": <http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021033.html>
 -   "java.lang.OutOfMemoryError: Java heap space": <http://www.antlr.org:8080/pipermail/antlr-interest/2007-June/021088.html> (see also related bug report: <http://www.antlr.org:8888/browse/ANTLR-130>)
-

@@ -1,6 +1,6 @@
 ---
 title: Synergy 3.4.1 released
-tags: synergy jaguar releases
+tags: synergy jaguar releases blog
 ---
 
 I've just prepared an update to the [Synergy](/wiki/Synergy) 3.4 series, version 3.4.1, whose sole purpose is to backport a bugfix (see [ticket \#1383](/issues/1383)) for the benefit of users who don't want to or can't upgrade to the 4.0 series yet, *but* still want to run on [Mac OS X](/wiki/Mac_OS_X) 10.6 [Snow Leopard](/wiki/Snow_Leopard).
@@ -15,4 +15,3 @@ See also:
 -   [FAQs for MacHeist users](/blog/frequently-asked-questions-about-synergy-and-macheist)
 -   [An explanation of the differences between the 3.4 and 4.0 series](/blog/clearing-up-confusion-about-synergy-version-numbers)
 -   [Changelog](/products/synergy/history)
-

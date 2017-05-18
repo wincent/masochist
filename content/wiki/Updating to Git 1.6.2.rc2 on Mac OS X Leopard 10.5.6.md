@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 Didn't install; just wanted to confirm that the build was error-free and that the test-suite passed.
@@ -15,4 +15,3 @@ Didn't install; just wanted to confirm that the build was error-free and that th
 # See also
 
 -   [Git 1.6.2.rc2](/wiki/Git_1.6.2.rc2)
-

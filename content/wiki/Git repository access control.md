@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -92,4 +92,3 @@ Personally I've never needed or wanted this level of control: in the projects I 
 -   overview of sharing methods (see comment by Jakub Narębski: <http://stackoverflow.com/questions/1662205/how-to-make-a-git-repository-read-only>
 -   `update-paranoid` hook: <http://git.kernel.org/?p=git/git.git;a=blob;f=contrib/hooks/update-paranoid;hb=HEAD>
 -   another overview: <http://www.jedi.be/blog/2009/05/06/8-ways-to-share-your-git-repository/>
-

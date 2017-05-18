@@ -1,5 +1,6 @@
 ---
 title: Extract arrowsTogether method and other cleanup (REnamer, 4ed8742)
+tags: snippets
 ---
 
 Things are slightly neater with the code that determines whether the scroll arrows are together or at opposite ends of the scroller is extracted out into a separate method.

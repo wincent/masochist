@@ -1,5 +1,5 @@
 ---
-tags: clamav
+tags: clamav wiki
 ---
 
 [ClamAV 0.90.3](/wiki/ClamAV_0.90.3) was released on 30 May 2007.
@@ -33,4 +33,3 @@ tags: clamav
 
 -   Official release notes: <http://sourceforge.net/project/shownotes.php?release_id=512356&group_id=86638>
 -   Download: <http://sourceforge.net/project/showfiles.php?group_id=86638&package_id=90197>
-

@@ -1,5 +1,5 @@
 ---
-tags: rspec rails watir
+tags: rspec rails watir wiki
 ---
 
 # Installation
@@ -59,4 +59,3 @@ All [specs](/wiki/specs) will require some special set-up and tear-down:
 
 -   An excellent article on using [Watir](/wiki/Watir), [RSpec](/wiki/RSpec) and [Rails](/wiki/Rails): <http://www.practicalguile.com/articles/ruby/rspec-your-functional-tests/>
 -   [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails)
-

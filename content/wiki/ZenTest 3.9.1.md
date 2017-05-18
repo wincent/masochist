@@ -1,5 +1,5 @@
 ---
-tags: zentest
+tags: zentest wiki
 ---
 
 # Release notes

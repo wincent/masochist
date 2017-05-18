@@ -1,5 +1,5 @@
 ---
-tags: mysql snow.leopard
+tags: mysql snow.leopard wiki
 cache_breaker: 1
 ---
 

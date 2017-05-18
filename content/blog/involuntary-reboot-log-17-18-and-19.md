@@ -1,5 +1,6 @@
 ---
 title: Involuntary Reboot Log #17, #18 and #19
+tags: blog
 ---
 
 I've been too busy of late to post reports to my much-loved [Involuntary Reboot Log](http://www.wincent.com/a/about/wincent/weblog/archives/involuntary_reboot_log/), but I'm finally catching up with my first three entries since upgrading to the final version of [Leopard](http://www.wincent.com/knowledge-base/Leopard).

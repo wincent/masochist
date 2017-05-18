@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ Free and [open source](/wiki/open_source) alternatives to GitHub include [Gitori
 # Official site
 
 -   <http://github.com/>
-

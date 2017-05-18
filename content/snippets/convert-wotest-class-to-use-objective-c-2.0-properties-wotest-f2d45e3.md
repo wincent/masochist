@@ -1,5 +1,6 @@
 ---
 title: Convert WOTest class to use Objective-C 2.0 properties (WOTest, f2d45e3)
+tags: snippets
 ---
 
 This commit converts most of the accessors for the instance variables in the WOTest class to Objective-C 2.0 properties.

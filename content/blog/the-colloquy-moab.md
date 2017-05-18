@@ -1,5 +1,6 @@
 ---
 title: The Colloquy MOAB
+tags: blog
 ---
 
 So today's [MOAB](http://www.wincent.com/a/about/wincent/weblog/archives/apple/moab/) entry is [a bug in Colloquy](http://projects.info-pull.com/moab/MOAB-16-01-2007.html), the [open source IRC client](http://colloquy.info/).

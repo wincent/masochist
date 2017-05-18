@@ -1,5 +1,6 @@
 ---
 title: Allan Odgaard on file type detection in TextMate
+tags: blog
 ---
 
 I've never been able to get [TextMate](http://www.wincent.com/knowledge-base/TextMate) to reliably detect [Ruby](http://www.wincent.com/knowledge-base/Ruby), [Rails](http://www.wincent.com/knowledge-base/Rails) and [RSpec](http://www.wincent.com/knowledge-base/RSpec) files. Allan Odgaard, the author of TextMate, [explains here](http://macromates.com/blog/2007/file-type-detection-rspec-rails) how to bend the system to your will.

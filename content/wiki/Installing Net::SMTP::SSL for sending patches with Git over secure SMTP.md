@@ -1,5 +1,5 @@
 ---
-tags: git
+tags: git wiki
 ---
 
 If you want to use Git to submit patches via email over secure [SMTP](/wiki/SMTP) you will need to install the Net::SMTP::SSL module, if you don't have it installed already on your system.
@@ -207,4 +207,3 @@ And everything works fine.
 
 -   [Git quickstart](/wiki/Git_quickstart)
 -   [Git recipes](/wiki/Git_recipes)
-

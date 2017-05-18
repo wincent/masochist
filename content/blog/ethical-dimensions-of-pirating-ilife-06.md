@@ -1,5 +1,6 @@
 ---
 title: Ethical dimensions of pirating iLife 06
+tags: blog
 ---
 
 Since [Apple](http://www.apple.com/) [announced](http://www.apple.com/pr/library/2006/jan/10ilife.html) [iLife 06](http://www.apple.com/ilife/) it seems that every man and his dog has set about to pirate it. I've done some thinking about the ethical dimensions of this sudden burst of activity.

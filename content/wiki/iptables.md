@@ -1,5 +1,5 @@
 ---
-tags: iptables firewall
+tags: iptables firewall wiki
 cache_breaker: 1
 ---
 
@@ -67,4 +67,3 @@ In short:
 # Related articles in this [wiki](/wiki)
 
 -   [Using at to safely try out iptables configuration changes](/wiki/Using_at_to_safely_try_out_iptables_configuration_changes)
-

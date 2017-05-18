@@ -1,5 +1,5 @@
 ---
-tags: ruby
+tags: ruby wiki
 cache_breaker: 1
 ---
 
@@ -12,4 +12,3 @@ The creators of REE have been criticized for producing a fork rather than submit
 # Official site
 
 -   <http://www.rubyenterpriseedition.com/>
-

@@ -1,5 +1,5 @@
 ---
-tags: vim
+tags: vim wiki
 ---
 
 I've seen this as a feature in other editors (Java IDEs, Sublime Text). You can achieve a similar effect using this trick:

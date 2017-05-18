@@ -1,5 +1,6 @@
 ---
 title: Huge news in SCOX vs NOVL
+tags: blog
 ---
 
 If you have SCO stock (I trust that no one reading this weblog does) the time to sell is now. Well, you may as well just burn all the paperwork and forget about it.

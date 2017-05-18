@@ -1,5 +1,6 @@
 ---
 title: Teach user interface about substitution errors (REnamer, 65c992a)
+tags: snippets
 ---
 
 Previously the user interface only knew about regular expression pattern compilation errors. Now it knows about invalid replacement strings as well.

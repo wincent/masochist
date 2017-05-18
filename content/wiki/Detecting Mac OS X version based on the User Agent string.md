@@ -1,5 +1,5 @@
 ---
-tags: development os.x
+tags: development os.x wiki
 ---
 
 In the past I've always offered a single version of my software products that runs on as many versions of [Mac OS X](/wiki/Mac_OS_X) as possible. This brings with it a certain simplicity (users don't have to care about which version to download and install) but it comes at a cost (tying your application to older versions of the operating system can make it difficult or even impossible to use newer [APIs](/wiki/APIs)).
@@ -43,4 +43,3 @@ Another minority browser probably not worth supporting.
 
 -   "Safari Developer FAQ": <http://developer.apple.com/internet/safari/faq.html>
 -   "Safari and WebKit Version Information": <http://developer.apple.com/internet/safari/uamatrix.html>
-

@@ -1,5 +1,6 @@
 ---
 title: Capthchas
+tags: blog
 ---
 
 When it comes to [CAPTCHAs](http://en.wikipedia.org/wiki/CAPTCHA), I really do think there is such a thing as being "too good".

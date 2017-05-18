@@ -1,5 +1,6 @@
 ---
 title: The Omni Source License
+tags: blog
 ---
 
 Today I released a new product, [Wincent Strings Utility](http://www.wincent.com/a/products/wincent-strings-util/) ([full release announcement here](http://www.wincent.com/a/news/archives/2006/02/wincent_strings.php)). It's a derivative work of the [Omni Group's](http://www.omnigroup.com/) [stringsUtil](http://www.omnigroup.com/ftp/pub/localization/) and I wanted to make a few comments about their license, the [Omni Source License](http://www.omnigroup.com/developer/sourcecode/sourcelicense/).

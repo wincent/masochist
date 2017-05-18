@@ -1,5 +1,6 @@
 ---
 title: Hextrapolate 2.0b released
+tags: blog
 ---
 
 The new version of [Hextrapolate](http://hextrapolate.wincent.com) (formerly WinHex), 2.0, is now in beta testing. The name-change took place to avoid confusion with a Windows product of the same name.

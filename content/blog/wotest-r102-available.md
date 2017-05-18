@@ -1,5 +1,6 @@
 ---
 title: WOTest (r102) available
+tags: blog
 ---
 
 As [detailed here](http://lists.wincent.com/pipermail/wincent-announce/2006-September/000017.html) the source code for the [WOTest Objective-C unit testing framework](http://test.wincent.com/) is now available in the Wincent Subversion repository. This is not an official "release" as such but does mark the first public availability of the source code. It is made available as free software under the terms of the GNU GPL (General Public License).

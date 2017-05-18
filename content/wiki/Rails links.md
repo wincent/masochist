@@ -1,5 +1,5 @@
 ---
-tags: rails
+tags: rails wiki
 ---
 
 # Rails [weblogs](/wiki/weblogs)
@@ -16,4 +16,3 @@ tags: rails
 # Screencasts
 
 -   <http://www.railscasts.com/> (free)
-

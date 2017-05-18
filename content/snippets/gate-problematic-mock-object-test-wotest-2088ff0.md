@@ -1,5 +1,6 @@
 ---
 title: Gate problematic mock object test (WOTest, 2088ff0)
+tags: snippets
 ---
 
 The handling of unrecognized selectors appears to have changed in Leopard in ways that cause one of the mock object tests to fail. Specifically, an NSInvalidArgumentException is raised and it appears that the -\[NSProxy doesNotRecognizeSelector:\] method is being called; setting breakpoints indicates that the -forward:: method on the WOMock class is no longer being invoked.

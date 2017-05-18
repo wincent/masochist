@@ -1,5 +1,6 @@
 ---
 title: Synergy 3.1.2 now available
+tags: blog
 ---
 
 After a successful [beta-testing cycle](http://www.wincent.com/a/news/archives/2007/04/synergy_312b_se.php) the final release version of [Synergy](http://synergy.wincent.com) 3.1.2 is now available for immediate download. This is primarily a maintenance release which delivers bugfixes, performance improvements and other minor enhancements. A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/#3.1.2).

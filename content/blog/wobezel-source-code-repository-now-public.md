@@ -1,6 +1,6 @@
 ---
 title: WOBezel source code repository now public
-tags: wobezel open.source
+tags: wobezel open.source blog
 cache_breaker: 1
 ---
 
@@ -16,4 +16,3 @@ Periodically-updated backup mirrors are already in place at [GitHub](/wiki/GitHu
 
 -   <http://github.com/wincent/WOBezel/>
 -   <http://gitorious.org/wobezel>
-

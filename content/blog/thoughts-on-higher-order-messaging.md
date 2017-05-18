@@ -1,5 +1,6 @@
 ---
 title: Thoughts on Higher Order Messaging
+tags: blog
 ---
 
 I've never used Higher Order Messaging (HOM) but I am familiar with what it is. The main benefit of HOM is that it allows you to reduce lengthy code sections like this:

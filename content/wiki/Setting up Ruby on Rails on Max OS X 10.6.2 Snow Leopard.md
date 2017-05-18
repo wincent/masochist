@@ -1,5 +1,5 @@
 ---
-tags: rails snow.leopard
+tags: rails snow.leopard wiki
 cache_breaker: 1
 ---
 

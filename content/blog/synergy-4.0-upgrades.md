@@ -1,6 +1,6 @@
 ---
 title: Synergy 4.0 upgrades
-tags: synergy
+tags: synergy blog
 cache_breaker: 1
 ---
 

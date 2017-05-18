@@ -1,5 +1,5 @@
 ---
-tags: ruby red.hat updates
+tags: ruby red.hat updates wiki
 cache_breaker: 1
 ---
 
@@ -49,4 +49,3 @@ Two tests fail identically (and harmlessly) as they did for [Ruby 1.8.4](/wiki/R
 -   [Building and installing Ruby 1.8.5 on Mac OS X Tiger](/wiki/Building_and_installing_Ruby_1.8.5_on_Mac_OS_X_Tiger)
 -   Release announcement: <http://www.ruby-lang.org/en/news/2006/08/29/ruby-1-8-5-released/>
 -   Change summary: <http://eigenclass.org/hiki.rb?ruby+1.8.5+changelog>
-

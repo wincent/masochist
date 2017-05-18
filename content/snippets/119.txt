@@ -1,5 +1,6 @@
 ---
 title: Site updates 0.77
-tags: site updates
+tags: site updates snippets
 ---
+
 1932553 Update to Rails 3.2.11

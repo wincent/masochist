@@ -1,5 +1,5 @@
 ---
-tags: antlr
+tags: antlr wiki
 ---
 
 Please note that this solution is only required with [ANTLR](/wiki/ANTLR) 3.0. Newer versions have built in stream stacking support which makes this considerably easier; see '[Implementing "include" functionality using ANTLR](/wiki/Implementing_%22include%22_functionality_using_ANTLR)'.

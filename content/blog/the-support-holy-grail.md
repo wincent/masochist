@@ -1,5 +1,6 @@
 ---
 title: The support holy grail
+tags: blog
 ---
 
 I'm getting closer to my support system "holy grail": the ability to have a web-based issue tracker (like [Bugzilla](http://www.wincent.com/knowledge-base/Bugzilla)) which you can control easily via email. Keeping everything on the web makes the development process much more visible and accessible to customers, but working from within the comfort of an email client is often a much more pleasant way of interacting with the system, especially seeing as 90% of developer and customer interaction with an issue tracking system consists of updating tickets with additional bits of information or short replies.

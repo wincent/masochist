@@ -1,7 +1,8 @@
 ---
 title: Site updates 0.25
-tags: site
+tags: site snippets
 ---
+
 9768824 script/deploy: fix "summary" subcommand with multiple commits
 353856e Remove unnecessary explicit 'self' receiver
 c22d0ae Use "git for-each-ref" rather than "git show-ref"

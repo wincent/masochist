@@ -1,6 +1,6 @@
 ---
 redirect: [[Merging]]
-tags: 
+tags: wiki
 ---
 
 

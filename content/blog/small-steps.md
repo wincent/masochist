@@ -1,5 +1,6 @@
 ---
 title: Small steps
+tags: blog
 ---
 
 $ irb -r wiki_text

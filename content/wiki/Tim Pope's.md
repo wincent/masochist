@@ -1,6 +1,6 @@
 ---
 redirect: [[Tim Pope]]
-tags: 
+tags: wiki
 ---
 
 

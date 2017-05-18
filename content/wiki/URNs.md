@@ -1,6 +1,6 @@
 ---
 redirect: [[URN]]
-tags: 
+tags: wiki
 ---
 
 

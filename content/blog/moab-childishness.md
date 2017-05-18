@@ -1,5 +1,6 @@
 ---
 title: MOAB childishness
+tags: blog
 ---
 
 I [wrote yesterday](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/month_of_apple_1.php):

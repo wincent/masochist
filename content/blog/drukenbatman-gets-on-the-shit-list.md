@@ -1,5 +1,6 @@
 ---
 title: "drukenbatman" gets on the shit list
+tags: blog
 ---
 
 ![](/system/images/legacy/drunken-scriptkiddie.jpg)"drunkenbatman", pictured on the right, has [just knowingly posted an article which crashes Safari](http://www.drunkenblog.com/drunkenblog-archives/000760.html) (**warning: do not read that article in Safari**) to his website, [drunkenblog.com](http://www.drunkenblog.com/). He has this to say:

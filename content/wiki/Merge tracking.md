@@ -1,5 +1,5 @@
 ---
-tags: subversion version.control svk perforce
+tags: subversion version.control svk perforce wiki
 ---
 
 [Merge tracking](/wiki/Merge_tracking) is a facility offered by some [version control systems](/wiki/version_control_systems). It is the ability of a [version control system](/wiki/version_control_system) to "remember" which changes have been [merged](/wiki/merged) from one line ([branch](/wiki/branch)) of development to another and act accordingly. Without [merge tracking](/wiki/merge_tracking) it is the responsibility of the user of the system to manually record which changes have been previously merged and act appropriately (for example, by not attempting to merge the same change twice).

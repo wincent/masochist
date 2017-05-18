@@ -1,5 +1,5 @@
 ---
-tags: git updates
+tags: git updates wiki
 ---
 
 I didn't update my local [Mac OS X](/wiki/Mac_OS_X) install because 1.6.1.1 still has failing tests on Mac OS X.

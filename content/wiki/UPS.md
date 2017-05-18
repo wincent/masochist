@@ -1,6 +1,6 @@
 ---
 redirect: [[Uninterruptable Power Supply]]
-tags: 
+tags: wiki
 ---
 
 

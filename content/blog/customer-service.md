@@ -1,5 +1,6 @@
 ---
 title: Customer service
+tags: blog
 ---
 
 Does this look like the website of a bank that actually cares about providing its customers with service?
