@@ -1,0 +1,374 @@
+Analysis of sampling tmux (pid 1857) every 1 millisecond
+Process:         tmux [1857]
+Path:            /usr/local/Cellar/tmux/2.4/bin/tmux
+Load Address:    0x10bdcc000
+Identifier:      tmux
+Version:         0
+Code Type:       X86-64
+Parent Process:  ??? [1]
+
+Date/Time:       2017-05-17 23:05:07.972 -0700
+Launch Time:     2017-05-16 09:44:02.569 -0700
+OS Version:      Mac OS X 10.12.4 (16E195)
+Report Version:  7
+Analysis Tool:   /usr/bin/sample
+----
+
+Call graph:
+    9246 Thread_27648   DispatchQueue_1: com.apple.main-thread  (serial)
+      9168 start  (in libdyld.dylib) + 1  [0x7fff8b46d235]
+      + 9168 main  (in tmux) + 1782  [0x10bdffee2]
+      +   9168 client_main  (in tmux) + 992  [0x10bdcfedc]
+      +     9168 server_start  (in tmux) + 361  [0x10bdf91db]
+      +       8172 proc_loop  (in tmux) + 40  [0x10bdf1209]
+      +       ! 6699 event_base_loop  (in libevent-2.1.6.dylib) + 786  [0x10be52519]
+      +       ! : 6499 select_dispatch  (in libevent-2.1.6.dylib) + 219  [0x10be5ae65]
+      +       ! : | 6499 __select  (in libsystem_kernel.dylib) + 10,20,...  [0x7fff8b59beb6,0x7fff8b59bec0,...]
+      +       ! : 142 select_dispatch  (in libevent-2.1.6.dylib) + 368,320,...  [0x10be5aefa,0x10be5aeca,...]
+      +       ! : 35 select_dispatch  (in libevent-2.1.6.dylib) + 386  [0x10be5af0c]
+      +       ! : | 22 evmap_io_active_  (in libevent-2.1.6.dylib) + 44,59,...  [0x10be55c08,0x10be55c17,...]
+      +       ! : | 13 evmap_io_active_  (in libevent-2.1.6.dylib) + 81  [0x10be55c2d]
+      +       ! : |   10 event_callback_activate_nolock_  (in libevent-2.1.6.dylib) + 205,241,...  [0x10be532e0,0x10be53304,...]
+      +       ! : |   3 event_active_nolock_  (in libevent-2.1.6.dylib) + 31,248,...  [0x10be52d4a,0x10be52e23,...]
+      +       ! : 19 select_dispatch  (in libevent-2.1.6.dylib) + 277  [0x10be5ae9f]
+      +       ! : | 19 evutil_weakrand_range_  (in libevent-2.1.6.dylib) + 13,43,...  [0x10be595de,0x10be595fc,...]
+      +       ! : 2 select_dispatch  (in libevent-2.1.6.dylib) + 144  [0x10be5ae1a]
+      +       ! : | 2 _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib) + 151,167  [0x7fff8b67ff37,0x7fff8b67ff47]
+      +       ! : 1 DYLD-STUB$$select$DARWIN_EXTSN  (in libevent-2.1.6.dylib) + 0  [0x10be6c7ea]
+      +       ! : 1 select_dispatch  (in libevent-2.1.6.dylib) + 161  [0x10be5ae2b]
+      +       ! :   1 _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib) + 167  [0x7fff8b67ff47]
+      +       ! 1271 event_base_loop  (in libevent-2.1.6.dylib) + 1170  [0x10be52699]
+      +       ! : 1234 event_process_active_single_queue  (in libevent-2.1.6.dylib) + 1003  [0x10be55337]
+      +       ! : | 1221 tty_read_callback  (in tmux) + 51  [0x10be01c4e]
+      +       ! : | + 613 evbuffer_read  (in libevent-2.1.6.dylib) + 223  [0x10be49326]
+      +       ! : | + ! 599 readv  (in libsystem_kernel.dylib) + 10,0  [0x7fff8b59d28e,0x7fff8b59d284]
+      +       ! : | + ! 11 cerror  (in libsystem_kernel.dylib) + 13  [0x7fff8b594ce1]
+      +       ! : | + ! : 7 _pthread_exit_if_canceled  (in libsystem_pthread.dylib) + 0,6  [0x7fff8b685cbf,0x7fff8b685cc5]
+      +       ! : | + ! : 4 _pthread_exit_if_canceled  (in libsystem_kernel.dylib) + 10  [0x7fff8b582c32]
+      +       ! : | + ! 2 cerror  (in libsystem_kernel.dylib) + 6,1  [0x7fff8b594cda,0x7fff8b594cd5]
+      +       ! : | + ! 1 cerror  (in libsystem_kernel.dylib) + 20  [0x7fff8b594ce8]
+      +       ! : | + !   1 cerror_nocancel  (in libsystem_kernel.dylib) + 22  [0x7fff8b594cc5]
+      +       ! : | + 553 evbuffer_read  (in libevent-2.1.6.dylib) + 109  [0x10be492b4]
+      +       ! : | + ! 548 ioctl  (in libsystem_kernel.dylib) + 159  [0x7fff8b597569]
+      +       ! : | + ! : 530 __ioctl  (in libsystem_kernel.dylib) + 10,0,...  [0x7fff8b59b5ee,0x7fff8b59b5e4,...]
+      +       ! : | + ! : 14 cerror  (in libsystem_kernel.dylib) + 13  [0x7fff8b594ce1]
+      +       ! : | + ! : | 8 _pthread_exit_if_canceled  (in libsystem_kernel.dylib) + 10,0  [0x7fff8b582c32,0x7fff8b582c28]
+      +       ! : | + ! : | 6 _pthread_exit_if_canceled  (in libsystem_pthread.dylib) + 0,42,...  [0x7fff8b685cbf,0x7fff8b685ce9,...]
+      +       ! : | + ! : 4 cerror  (in libsystem_kernel.dylib) + 6,1  [0x7fff8b594cda,0x7fff8b594cd5]
+      +       ! : | + ! 5 ioctl  (in libsystem_kernel.dylib) + 154,0,...  [0x7fff8b597564,0x7fff8b5974ca,...]
+      +       ! : | + 33 evbuffer_read  (in libevent-2.1.6.dylib) + 241,109,...  [0x10be49338,0x10be492b4,...]
+      +       ! : | + 12 evbuffer_read  (in libevent-2.1.6.dylib) + 169  [0x10be492f0]
+      +       ! : | + ! 12 evbuffer_expand_fast_  (in libevent-2.1.6.dylib) + 83,12,...  [0x10be4663d,0x10be465f6,...]
+      +       ! : | + 9 evbuffer_read  (in libevent-2.1.6.dylib) + 206  [0x10be49315]
+      +       ! : | + ! 9 evbuffer_read_setup_vecs_  (in libevent-2.1.6.dylib) + 201,12,...  [0x10be46f9b,0x10be46ede,...]
+      +       ! : | + 1 DYLD-STUB$$readv  (in libevent-2.1.6.dylib) + 0  [0x10be6c7d8]
+      +       ! : | 7 tty_read_callback  (in tmux) + 98,1,...  [0x10be01c7d,0x10be01c1c,...]
+      +       ! : | 5 tty_read_callback  (in tmux) + 28  [0x10be01c37]
+      +       ! : | + 5 evbuffer_get_length  (in libevent-2.1.6.dylib) + 0,17,...  [0x10be4648c,0x10be4649d,...]
+      +       ! : | 1 DYLD-STUB$$evbuffer_read  (in tmux) + 0  [0x10be12f44]
+      +       ! : 32 event_process_active_single_queue  (in libevent-2.1.6.dylib) + 152,1017,...  [0x10be54fe4,0x10be55345,...]
+      +       ! : 5 event_process_active_single_queue  (in libevent-2.1.6.dylib) + 129  [0x10be54fcd]
+      +       ! :   5 event_queue_remove_active  (in libevent-2.1.6.dylib) + 74,70,...  [0x10be53af3,0x10be53aef,...]
+      +       ! 70 event_base_loop  (in libevent-2.1.6.dylib) + 836  [0x10be5254b]
+      +       ! : 61 gettime  (in libevent-2.1.6.dylib) + 108  [0x10be505b3]
+      +       ! : | 54 evutil_gettime_monotonic_  (in libevent-2.1.6.dylib) + 32  [0x10be59c51]
+      +       ! : | + 38 clock_gettime  (in libsystem_c.dylib) + 198  [0x7fff8b4a42af]
+      +       ! : | + ! 23 _mach_boottime_usec  (in libsystem_c.dylib) + 57,40,...  [0x7fff8b4a41c5,0x7fff8b4a41b4,...]
+      +       ! : | + ! 9 _mach_boottime_usec  (in libsystem_c.dylib) + 50  [0x7fff8b4a41be]
+      +       ! : | + ! : 5 gettimeofday  (in libsystem_c.dylib) + 0,6,...  [0x7fff8b4b344a,0x7fff8b4b3450,...]
+      +       ! : | + ! : 2 gettimeofday  (in libsystem_c.dylib) + 62  [0x7fff8b4b3488]
+      +       ! : | + ! : | 2 __gettimeofday  (in libsystem_kernel.dylib) + 17  [0x7fff8b59b552]
+      +       ! : | + ! : 1 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 1  [0x7fff8b594511]
+      +       ! : | + ! : 1 gettimeofday  (in libsystem_c.dylib) + 48  [0x7fff8b4b347a]
+      +       ! : | + ! :   1 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 0  [0x7fff8b594510]
+      +       ! : | + ! 2 DYLD-STUB$$mach_boottime_usec  (in libsystem_c.dylib) + 0  [0x7fff8b528850]
+      +       ! : | + ! 2 _mach_boottime_usec  (in libsystem_c.dylib) + 21  [0x7fff8b4a41a1]
+      +       ! : | + ! : 2 mach_boottime_usec  (in libsystem_kernel.dylib) + 0,13  [0x7fff8b595c05,0x7fff8b595c12]
+      +       ! : | + ! 2 _mach_boottime_usec  (in libsystem_c.dylib) + 62  [0x7fff8b4a41ca]
+      +       ! : | + !   2 mach_boottime_usec  (in libsystem_kernel.dylib) + 0,13  [0x7fff8b595c05,0x7fff8b595c12]
+      +       ! : | + 16 clock_gettime  (in libsystem_c.dylib) + 37,368,...  [0x7fff8b4a420e,0x7fff8b4a4359,...]
+      +       ! : | 5 evutil_gettime_monotonic_  (in libevent-2.1.6.dylib) + 286,82,...  [0x10be59d4f,0x10be59c83,...]
+      +       ! : | 2 DYLD-STUB$$clock_gettime  (in libevent-2.1.6.dylib) + 0  [0x10be6c6d0]
+      +       ! : 9 gettime  (in libevent-2.1.6.dylib) + 1,6,...  [0x10be50548,0x10be5054d,...]
+      +       ! 62 event_base_loop  (in libevent-2.1.6.dylib) + 786,1170,...  [0x10be52519,0x10be52699,...]
+      +       ! 58 event_base_loop  (in libevent-2.1.6.dylib) + 382  [0x10be52385]
+      +       ! : 55 gettime  (in libevent-2.1.6.dylib) + 108  [0x10be505b3]
+      +       ! : | 49 evutil_gettime_monotonic_  (in libevent-2.1.6.dylib) + 32  [0x10be59c51]
+      +       ! : | + 39 clock_gettime  (in libsystem_c.dylib) + 198  [0x7fff8b4a42af]
+      +       ! : | + ! 25 _mach_boottime_usec  (in libsystem_c.dylib) + 57,40,...  [0x7fff8b4a41c5,0x7fff8b4a41b4,...]
+      +       ! : | + ! 10 _mach_boottime_usec  (in libsystem_c.dylib) + 50  [0x7fff8b4a41be]
+      +       ! : | + ! : 5 gettimeofday  (in libsystem_c.dylib) + 48,16,...  [0x7fff8b4b347a,0x7fff8b4b345a,...]
+      +       ! : | + ! : 3 gettimeofday  (in libsystem_c.dylib) + 62  [0x7fff8b4b3488]
+      +       ! : | + ! : | 3 __gettimeofday  (in libsystem_kernel.dylib) + 17,27  [0x7fff8b59b552,0x7fff8b59b55c]
+      +       ! : | + ! : 1 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 7  [0x7fff8b594517]
+      +       ! : | + ! : 1 gettimeofday  (in libsystem_c.dylib) + 48  [0x7fff8b4b347a]
+      +       ! : | + ! :   1 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 0  [0x7fff8b594510]
+      +       ! : | + ! 2 DYLD-STUB$$mach_boottime_usec  (in libsystem_c.dylib) + 0  [0x7fff8b528850]
+      +       ! : | + ! 1 _mach_boottime_usec  (in libsystem_c.dylib) + 21  [0x7fff8b4a41a1]
+      +       ! : | + ! : 1 mach_boottime_usec  (in libsystem_kernel.dylib) + 0  [0x7fff8b595c05]
+      +       ! : | + ! 1 _mach_boottime_usec  (in libsystem_c.dylib) + 62  [0x7fff8b4a41ca]
+      +       ! : | + !   1 mach_boottime_usec  (in libsystem_kernel.dylib) + 13  [0x7fff8b595c12]
+      +       ! : | + 10 clock_gettime  (in libsystem_c.dylib) + 198,0,...  [0x7fff8b4a42af,0x7fff8b4a41e9,...]
+      +       ! : | 4 evutil_gettime_monotonic_  (in libevent-2.1.6.dylib) + 65,82,...  [0x10be59c72,0x10be59c83,...]
+      +       ! : | 2 DYLD-STUB$$clock_gettime  (in libevent-2.1.6.dylib) + 0  [0x10be6c6d0]
+      +       ! : 3 gettime  (in libevent-2.1.6.dylib) + 220,13,...  [0x10be50623,0x10be50554,...]
+      +       ! 5 event_loop  (in libevent-2.1.6.dylib) + 0,15,...  [0x10be521e6,0x10be521f5,...]
+      +       ! 4 event_base_loop  (in libevent-2.1.6.dylib) + 156  [0x10be522a3]
+      +       ! : 4 evsig_set_base_  (in libevent-2.1.6.dylib) + 45,0,...  [0x10be5bdcd,0x10be5bda0,...]
+      +       ! 3 event_base_loop  (in libevent-2.1.6.dylib) + 859  [0x10be52562]
+      +       !   3 gettime  (in libevent-2.1.6.dylib) + 6,216  [0x10be5054d,0x10be5061f]
+      +       979 proc_loop  (in tmux) + 54  [0x10bdf1217]
+      +       ! 574 server_loop  (in tmux) + 74  [0x10bdf9728]
+      +       ! : 164 server_client_loop  (in tmux) + 873  [0x10bdf7c51]
+      +       ! : | 154 options_get_number  (in tmux) + 15  [0x10bdef473]
+      +       ! : | + 150 options_get  (in tmux) + 24  [0x10bdeeae7]
+      +       ! : | + ! 109 options_get_only  (in tmux) + 27  [0x10bdeeaad]
+      +       ! : | + ! : 109 _platform_strcmp  (in libsystem_platform.dylib) + 38,27,...  [0x7fff8b67c2a6,0x7fff8b67c29b,...]
+      +       ! : | + ! 40 options_get_only  (in tmux) + 19,15,...  [0x10bdeeaa5,0x10bdeeaa1,...]
+      +       ! : | + ! 1 DYLD-STUB$$strcmp  (in tmux) + 0  [0x10be1316c]
+      +       ! : | + 4 options_get  (in tmux) + 13,4,...  [0x10bdeeadc,0x10bdeead3,...]
+      +       ! : | 10 options_get_number  (in tmux) + 52,54,...  [0x10bdef498,0x10bdef49a,...]
+      +       ! : 103 server_client_loop  (in tmux) + 464,987,...  [0x10bdf7ab8,0x10bdf7cc3,...]
+      +       ! : 70 server_client_loop  (in tmux) + 948  [0x10bdf7c9c]
+      +       ! : | 63 options_get_number  (in tmux) + 15  [0x10bdef473]
+      +       ! : | + 55 options_get  (in tmux) + 24  [0x10bdeeae7]
+      +       ! : | + ! 30 options_get_only  (in tmux) + 27  [0x10bdeeaad]
+      +       ! : | + ! : 30 _platform_strcmp  (in libsystem_platform.dylib) + 27,38,...  [0x7fff8b67c29b,0x7fff8b67c2a6,...]
+      +       ! : | + ! 25 options_get_only  (in tmux) + 19,27,...  [0x10bdeeaa5,0x10bdeeaad,...]
+      +       ! : | + 8 options_get  (in tmux) + 33,4,...  [0x10bdeeaf0,0x10bdeead3,...]
+      +       ! : | 7 options_get_number  (in tmux) + 54,7,...  [0x10bdef49a,0x10bdef46b,...]
+      +       ! : 70 server_client_loop  (in tmux) + 1550  [0x10bdf7ef6]
+      +       ! : | 64 check_window_name  (in tmux) + 49  [0x10bdedc2e]
+      +       ! : | + 57 options_get_number  (in tmux) + 15  [0x10bdef473]
+      +       ! : | + ! 54 options_get  (in tmux) + 24  [0x10bdeeae7]
+      +       ! : | + ! : 39 options_get_only  (in tmux) + 27  [0x10bdeeaad]
+      +       ! : | + ! : | 39 _platform_strcmp  (in libsystem_platform.dylib) + 186,227,...  [0x7fff8b67c33a,0x7fff8b67c363,...]
+      +       ! : | + ! : 13 options_get_only  (in tmux) + 46,19,...  [0x10bdeeac0,0x10bdeeaa5,...]
+      +       ! : | + ! : 2 DYLD-STUB$$strcmp  (in tmux) + 0  [0x10be1316c]
+      +       ! : | + ! 3 options_get  (in tmux) + 6,13,...  [0x10bdeead5,0x10bdeeadc,...]
+      +       ! : | + 7 options_get_number  (in tmux) + 83,54,...  [0x10bdef4b7,0x10bdef49a,...]
+      +       ! : | 6 check_window_name  (in tmux) + 544,1,...  [0x10bdede1d,0x10bdedbfe,...]
+      +       ! : 59 server_client_loop  (in tmux) + 816  [0x10bdf7c18]
+      +       ! : | 57 options_get_number  (in tmux) + 15  [0x10bdef473]
+      +       ! : | + 54 options_get  (in tmux) + 24  [0x10bdeeae7]
+      +       ! : | + ! 33 options_get_only  (in tmux) + 27  [0x10bdeeaad]
+      +       ! : | + ! : 33 _platform_strcmp  (in libsystem_platform.dylib) + 45,27,...  [0x7fff8b67c2ad,0x7fff8b67c29b,...]
+      +       ! : | + ! 21 options_get_only  (in tmux) + 19,13,...  [0x10bdeeaa5,0x10bdeea9f,...]
+      +       ! : | + 3 options_get  (in tmux) + 13,24  [0x10bdeeadc,0x10bdeeae7]
+      +       ! : | 2 options_get_number  (in tmux) + 1,54  [0x10bdef465,0x10bdef49a]
+      +       ! : 29 server_client_loop  (in tmux) + 1094  [0x10bdf7d2e]
+      +       ! : | 26 options_get_number  (in tmux) + 15  [0x10bdef473]
+      +       ! : | + 24 options_get  (in tmux) + 24  [0x10bdeeae7]
+      +       ! : | + ! 13 options_get_only  (in tmux) + 27  [0x10bdeeaad]
+      +       ! : | + ! : 13 _platform_strcmp  (in libsystem_platform.dylib) + 27,43,...  [0x7fff8b67c29b,0x7fff8b67c2ab,...]
+      +       ! : | + ! 11 options_get_only  (in tmux) + 19,7,...  [0x10bdeeaa5,0x10bdeea99,...]
+      +       ! : | + 2 options_get  (in tmux) + 6,7  [0x10bdeead5,0x10bdeead6]
+      +       ! : | 3 options_get_number  (in tmux) + 7,6,...  [0x10bdef46b,0x10bdef46a,...]
+      +       ! : 19 server_client_loop  (in tmux) + 1048  [0x10bdf7d00]
+      +       ! : | 16 tty_update_mode  (in tmux) + 40  [0x10be025bd]
+      +       ! : | + 16 _platform_strcmp  (in libsystem_platform.dylib) + 0,213,...  [0x7fff8b67c280,0x7fff8b67c355,...]
+      +       ! : | 3 tty_update_mode  (in tmux) + 40,500,...  [0x10be025bd,0x10be02789,...]
+      +       ! : 19 server_client_loop  (in tmux) + 1056  [0x10bdf7d08]
+      +       ! : | 12 tty_reset  (in tmux) + 38  [0x10be05147]
+      +       ! : | + 10 grid_cells_equal  (in tmux) + 30,78,...  [0x10bde4432,0x10bde4462,...]
+      +       ! : | + 2 grid_cells_equal  (in tmux) + 68  [0x10bde4458]
+      +       ! : | +   2 _platform_memcmp  (in libsystem_platform.dylib) + 0  [0x7fff8b67b760]
+      +       ! : | 7 tty_reset  (in tmux) + 126,119,...  [0x10be0519f,0x10be05198,...]
+      +       ! : 12 server_client_loop  (in tmux) + 797  [0x10bdf7c05]
+      +       ! : | 10 tty_margin  (in tmux) + 221,29,...  [0x10be0535c,0x10be0529c,...]
+      +       ! : | 2 tty_margin_off  (in tmux) + 0  [0x10be02d9d]
+      +       ! : 8 server_client_loop  (in tmux) + 1114  [0x10bdf7d42]
+      +       ! : | 8 windows_RB_MINMAX  (in tmux) + 38,1,...  [0x10be0d254,0x10be0d22f,...]
+      +       ! : 7 server_client_loop  (in tmux) + 927  [0x10bdf7c87]
+      +       ! : | 7 tty_cursor  (in tmux) + 13,430,...  [0x10be02e54,0x10be02ff5,...]
+      +       ! : 6 server_client_loop  (in tmux) + 789  [0x10bdf7bfd]
+      +       ! : | 5 tty_region  (in tmux) + 0,9,...  [0x10be051fe,0x10be05207,...]
+      +       ! : | 1 tty_region_off  (in tmux) + 4  [0x10be02d90]
+      +       ! : 5 server_client_loop  (in tmux) + 827  [0x10bdf7c23]
+      +       ! : | 3 window_pane_visible  (in tmux) + 18  [0x10be0f44a]
+      +       ! : | + 3 window_pane_outside  (in tmux) + 4,33  [0x10be1049e,0x10be104bb]
+      +       ! : | 2 window_pane_visible  (in tmux) + 7,24  [0x10be0f43f,0x10be0f450]
+      +       ! : 2 server_client_loop  (in tmux) + 704  [0x10bdf7ba8]
+      +       ! : | 2 tty_update_mode  (in tmux) + 19,4  [0x10be025a8,0x10be02599]
+      +       ! : 1 server_client_loop  (in tmux) + 1558  [0x10bdf7efe]
+      +       ! :   1 windows_RB_NEXT  (in tmux) + 4  [0x10be0d182]
+      +       ! 347 server_loop  (in tmux) + 49  [0x10bdf970f]
+      +       ! : 325 cmdq_next  (in tmux) + 69  [0x10bdd8391]
+      +       ! : | 318 xsnprintf  (in tmux) + 120  [0x10be10ff6]
+      +       ! : | + 309 xvsnprintf  (in tmux) + 75  [0x10be1105f]
+      +       ! : | + ! 299 vsnprintf  (in libsystem_c.dylib) + 80  [0x7fff8b4f69d3]
+      +       ! : | + ! : 258 _vsnprintf  (in libsystem_c.dylib) + 586  [0x7fff8b4f692a]
+      +       ! : | + ! : | 249 __v2printf  (in libsystem_c.dylib) + 699  [0x7fff8b512423]
+      +       ! : | + ! : | + 144 __vfprintf  (in libsystem_c.dylib) + 428,10140,...  [0x7fff8b4e8563,0x7fff8b4eab53,...]
+      +       ! : | + ! : | + 54 __vfprintf  (in libsystem_c.dylib) + 17634  [0x7fff8b4ec899]
+      +       ! : | + ! : | + ! 32 __sfvwrite  (in libsystem_c.dylib) + 116,356,...  [0x7fff8b4e22f6,0x7fff8b4e23e6,...]
+      +       ! : | + ! : | + ! 16 __sfvwrite  (in libsystem_c.dylib) + 438  [0x7fff8b4e2438]
+      +       ! : | + ! : | + ! : 16 _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib) + 0,71,...  [0x7fff8b67fea0,0x7fff8b67fee7,...]
+      +       ! : | + ! : | + ! 3 DYLD-STUB$$_platform_memmove  (in libsystem_platform.dylib) + 0  [0x7fff8b681348]
+      +       ! : | + ! : | + ! 3 DYLD-STUB$$sigvec__  (in libsystem_c.dylib) + 0  [0x7fff8b5288a4]
+      +       ! : | + ! : | + 22 __vfprintf  (in libsystem_c.dylib) + 17820  [0x7fff8b4ec953]
+      +       ! : | + ! : | + ! 16 __sfvwrite  (in libsystem_c.dylib) + 532,116,...  [0x7fff8b4e2496,0x7fff8b4e22f6,...]
+      +       ! : | + ! : | + ! 4 __sfvwrite  (in libsystem_c.dylib) + 438  [0x7fff8b4e2438]
+      +       ! : | + ! : | + ! : 4 _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib) + 190,7,...  [0x7fff8b67ff5e,0x7fff8b67fea7,...]
+      +       ! : | + ! : | + ! 1 DYLD-STUB$$_platform_memmove  (in libsystem_platform.dylib) + 0  [0x7fff8b681348]
+      +       ! : | + ! : | + ! 1 DYLD-STUB$$sigvec__  (in libsystem_c.dylib) + 0  [0x7fff8b5288a4]
+      +       ! : | + ! : | + 18 __vfprintf  (in libsystem_c.dylib) + 8835  [0x7fff8b4ea63a]
+      +       ! : | + ! : | + ! 18 __ultoa  (in libsystem_c.dylib) + 96,87,...  [0x7fff8b4ece72,0x7fff8b4ece69,...]
+      +       ! : | + ! : | + 7 __vfprintf  (in libsystem_c.dylib) + 148  [0x7fff8b4e844b]
+      +       ! : | + ! : | + ! 7 localeconv_l  (in libsystem_c.dylib) + 47,0,...  [0x7fff8b4d7463,0x7fff8b4d7434,...]
+      +       ! : | + ! : | + 3 __vfprintf  (in libsystem_c.dylib) + 17876  [0x7fff8b4ec98b]
+      +       ! : | + ! : | + ! 3 free  (in libsystem_malloc.dylib) + 0,6,...  [0x7fff8b5f0dd5,0x7fff8b5f0ddb,...]
+      +       ! : | + ! : | + 1 DYLD-STUB$$free  (in libsystem_c.dylib) + 0  [0x7fff8b52873c]
+      +       ! : | + ! : | 9 __v2printf  (in libsystem_c.dylib) + 27,694,...  [0x7fff8b512183,0x7fff8b51241e,...]
+      +       ! : | + ! : 41 _vsnprintf  (in libsystem_c.dylib) + 550,494,...  [0x7fff8b4f6906,0x7fff8b4f68ce,...]
+      +       ! : | + ! 5 vsnprintf  (in libsystem_c.dylib) + 69,85,...  [0x7fff8b4f69c8,0x7fff8b4f69d8,...]
+      +       ! : | + ! 3 __vsnprintf_chk  (in libsystem_c.dylib) + 0  [0x7fff8b5284a1]
+      +       ! : | + ! 1 DYLD-STUB$$pthread_getspecific  (in libsystem_c.dylib) + 0  [0x7fff8b52897c]
+      +       ! : | + ! 1 vsnprintf  (in libsystem_c.dylib) + 39  [0x7fff8b4f69aa]
+      +       ! : | + !   1 pthread_getspecific  (in libsystem_pthread.dylib) + 0  [0x7fff8b684a4a]
+      +       ! : | + 7 xvsnprintf  (in tmux) + 100,14,...  [0x10be11078,0x10be11022,...]
+      +       ! : | + 2 DYLD-STUB$$__vsnprintf_chk  (in tmux) + 0  [0x10be12e48]
+      +       ! : | 7 xsnprintf  (in tmux) + 136,72,...  [0x10be11006,0x10be10fc6,...]
+      +       ! : 15 cmdq_next  (in tmux) + 81,64,...  [0x10bdd839d,0x10bdd838c,...]
+      +       ! : 7 cmdq_next  (in tmux) + 729  [0x10bdd8625]
+      +       ! :   5 log_debug  (in tmux) + 11,123,...  [0x10bded976,0x10bded9e6,...]
+      +       ! :   2 log_debug  (in tmux) + 128  [0x10bded9eb]
+      +       ! :     2 log_vwrite  (in tmux) + 1,152  [0x10bdeda0a,0x10bdedaa1]
+      +       ! 30 server_loop  (in tmux) + 39,32,...  [0x10bdf9705,0x10bdf96fe,...]
+      +       ! 20 server_loop  (in tmux) + 96  [0x10bdf973e]
+      +       ! : 20 options_get_number  (in tmux) + 15  [0x10bdef473]
+      +       ! :   20 options_get  (in tmux) + 24  [0x10bdeeae7]
+      +       ! :     13 options_get_only  (in tmux) + 27  [0x10bdeeaad]
+      +       ! :     | 13 _platform_strcmp  (in libsystem_platform.dylib) + 0,27,...  [0x7fff8b67c280,0x7fff8b67c29b,...]
+      +       ! :     7 options_get_only  (in tmux) + 15,60,...  [0x10bdeeaa1,0x10bdeeace,...]
+      +       ! 8 server_loop  (in tmux) + 24  [0x10bdf96f6]
+      +       !   5 cmdq_next  (in tmux) + 729  [0x10bdd8625]
+      +       !   | 3 log_debug  (in tmux) + 144,94,...  [0x10bded9fb,0x10bded9c9,...]
+      +       !   | 2 log_debug  (in tmux) + 128  [0x10bded9eb]
+      +       !   |   2 log_vwrite  (in tmux) + 1,0  [0x10bdeda0a,0x10bdeda09]
+      +       !   3 cmdq_next  (in tmux) + 81,677,...  [0x10bdd839d,0x10bdd85f1,...]
+      +       17 proc_loop  (in tmux) + 40,45,...  [0x10bdf1209,0x10bdf120e,...]
+      42 ???  (in <unknown binary>)  [0x7fff53e32538]
+      + 42 0x0
+      +   21 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 41  [0x7fff8b594539]
+      +   ! 21 mach_absolute_time  (in libsystem_kernel.dylib) + 28,65,...  [0x7fff8b593731,0x7fff8b593756,...]
+      +   21 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 83,69,...  [0x7fff8b594563,0x7fff8b594555,...]
+      36 ???  (in <unknown binary>)  [0x7f85ca506bd8]
+        36 0x0
+          21 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 41  [0x7fff8b594539]
+          ! 21 mach_absolute_time  (in libsystem_kernel.dylib) + 28,31,...  [0x7fff8b593731,0x7fff8b593734,...]
+          15 __commpage_gettimeofday  (in libsystem_kernel.dylib) + 83,69,...  [0x7fff8b594563,0x7fff8b594555,...]
+
+Total number in stack (recursive counted multiple, when >=5):
+        7       _platform_strcmp  (in libsystem_platform.dylib) + 0  [0x7fff8b67c280]
+        6       __commpage_gettimeofday  (in libsystem_kernel.dylib) + 0  [0x7fff8b594510]
+        6       options_get  (in tmux) + 24  [0x10bdeeae7]
+        6       options_get_number  (in tmux) + 15  [0x10bdef473]
+        6       options_get_only  (in tmux) + 0  [0x10bdeea92]
+        6       options_get_only  (in tmux) + 27  [0x10bdeeaad]
+        5       options_get  (in tmux) + 0  [0x10bdeeacf]
+        5       options_get_number  (in tmux) + 0  [0x10bdef464]
+
+Sort by top of stack, same collapsed (when >= 5):
+        __select  (in libsystem_kernel.dylib)        6499
+        readv  (in libsystem_kernel.dylib)        599
+        __ioctl  (in libsystem_kernel.dylib)        530
+        _platform_strcmp  (in libsystem_platform.dylib)        253
+        __vfprintf  (in libsystem_c.dylib)        144
+        select_dispatch  (in libevent-2.1.6.dylib)        142
+        options_get_only  (in tmux)        117
+        server_client_loop  (in tmux)        103
+        event_base_loop  (in libevent-2.1.6.dylib)        62
+        __sfvwrite  (in libsystem_c.dylib)        48
+        _mach_boottime_usec  (in libsystem_c.dylib)        48
+        mach_absolute_time  (in libsystem_kernel.dylib)        42
+        _vsnprintf  (in libsystem_c.dylib)        41
+        __commpage_gettimeofday  (in libsystem_kernel.dylib)        40
+        evbuffer_read  (in libevent-2.1.6.dylib)        33
+        event_process_active_single_queue  (in libevent-2.1.6.dylib)        32
+        server_loop  (in tmux)        30
+        options_get_number  (in tmux)        29
+        clock_gettime  (in libsystem_c.dylib)        26
+        _platform_memmove$VARIANT$Haswell  (in libsystem_platform.dylib)        23
+        evmap_io_active_  (in libevent-2.1.6.dylib)        22
+        options_get  (in tmux)        20
+        evutil_weakrand_range_  (in libevent-2.1.6.dylib)        19
+        __ultoa  (in libsystem_c.dylib)        18
+        cmdq_next  (in tmux)        18
+        proc_loop  (in tmux)        17
+        gettime  (in libevent-2.1.6.dylib)        15
+        _pthread_exit_if_canceled  (in libsystem_pthread.dylib)        13
+        _pthread_exit_if_canceled  (in libsystem_kernel.dylib)        12
+        evbuffer_expand_fast_  (in libevent-2.1.6.dylib)        12
+        event_callback_activate_nolock_  (in libevent-2.1.6.dylib)        10
+        gettimeofday  (in libsystem_c.dylib)        10
+        grid_cells_equal  (in tmux)        10
+        tty_margin  (in tmux)        10
+        __v2printf  (in libsystem_c.dylib)        9
+        evbuffer_read_setup_vecs_  (in libevent-2.1.6.dylib)        9
+        evutil_gettime_monotonic_  (in libevent-2.1.6.dylib)        9
+        log_debug  (in tmux)        8
+        windows_RB_MINMAX  (in tmux)        8
+        localeconv_l  (in libsystem_c.dylib)        7
+        tty_cursor  (in tmux)        7
+        tty_read_callback  (in tmux)        7
+        tty_reset  (in tmux)        7
+        xsnprintf  (in tmux)        7
+        xvsnprintf  (in tmux)        7
+        cerror  (in libsystem_kernel.dylib)        6
+        check_window_name  (in tmux)        6
+        mach_boottime_usec  (in libsystem_kernel.dylib)        6
+        __gettimeofday  (in libsystem_kernel.dylib)        5
+        evbuffer_get_length  (in libevent-2.1.6.dylib)        5
+        event_loop  (in libevent-2.1.6.dylib)        5
+        event_queue_remove_active  (in libevent-2.1.6.dylib)        5
+        ioctl  (in libsystem_kernel.dylib)        5
+        tty_region  (in tmux)        5
+        tty_update_mode  (in tmux)        5
+        vsnprintf  (in libsystem_c.dylib)        5
+
+Binary Images:
+       0x10bdcc000 -        0x10be1efff +tmux (0) <41A40AF9-643B-36ED-8255-26712F6FA048> /usr/local/bin/tmux
+       0x10be44000 -        0x10be71fff +libevent-2.1.6.dylib (0) <891F379E-D5F9-39EB-BECA-2E24F943B7B3> /usr/local/opt/libevent/lib/libevent-2.1.6.dylib
+       0x10be83000 -        0x10bff5af7 +libcrypto.1.0.0.dylib (0) <323A70A1-8F5C-3541-9570-B46743A8CD31> /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib
+       0x11a584000 -        0x11a5c1dc7  dyld (0.0 - ???) <8239D0D7-66F6-3C44-A77F-586F74525DA3> /usr/lib/dyld
+    0x7fff89ec5000 -     0x7fff89ec6ffb  libSystem.B.dylib (1238.51.1) <D9B20A4F-87BC-36CB-9405-80E105666725> /usr/lib/libSystem.B.dylib
+    0x7fff89fff000 -     0x7fff8a055ff7  libc++.1.dylib (307.5) <0B43BB5D-E6EB-3464-8DE9-B41AC8ED9D1C> /usr/lib/libc++.1.dylib
+    0x7fff8a056000 -     0x7fff8a080fff  libc++abi.dylib (307.3) <30199352-88BF-30BD-8CFF-2A4FBE247523> /usr/lib/libc++abi.dylib
+    0x7fff8aac6000 -     0x7fff8aaf7ffb  libncurses.5.4.dylib (51.30.1) <B03B1BD2-7080-3856-BB02-7E8238320C3B> /usr/lib/libncurses.5.4.dylib
+    0x7fff8ab73000 -     0x7fff8af45047  libobjc.A.dylib (709) <DC77AA6E-A4E4-326D-8D7F-82D63AA88F99> /usr/lib/libobjc.A.dylib
+    0x7fff8af9b000 -     0x7fff8afb7ffb  libresolv.9.dylib (64) <A244AE4C-00B0-396C-98FF-97FE4DB3DA30> /usr/lib/libresolv.9.dylib
+    0x7fff8b391000 -     0x7fff8b395ff7  libcache.dylib (79) <093A4DAB-8385-3D47-A350-E20CB7CCF7BF> /usr/lib/system/libcache.dylib
+    0x7fff8b396000 -     0x7fff8b3a0fff  libcommonCrypto.dylib (60092.50.5) <BE8380C5-C09D-3F48-A502-AEBB58231067> /usr/lib/system/libcommonCrypto.dylib
+    0x7fff8b3a1000 -     0x7fff8b3a8fff  libcompiler_rt.dylib (62) <55D47421-772A-32AB-B529-1A46C2F43B4D> /usr/lib/system/libcompiler_rt.dylib
+    0x7fff8b3a9000 -     0x7fff8b3b1fff  libcopyfile.dylib (138) <819BEA3C-DF11-3E3D-A1A1-5A51C5BF1961> /usr/lib/system/libcopyfile.dylib
+    0x7fff8b3b2000 -     0x7fff8b435fdf  libcorecrypto.dylib (442.50.19) <8A39EE06-121C-3731-A9E9-35847064B3EE> /usr/lib/system/libcorecrypto.dylib
+    0x7fff8b436000 -     0x7fff8b467fff  libdispatch.dylib (703.50.37) <D122E712-9593-31CA-BAC4-4A54410BF4A0> /usr/lib/system/libdispatch.dylib
+    0x7fff8b468000 -     0x7fff8b46dffb  libdyld.dylib (433.5) <129D3B44-FB21-3750-9A68-48B5C3DC632B> /usr/lib/system/libdyld.dylib
+    0x7fff8b46e000 -     0x7fff8b46effb  libkeymgr.dylib (28) <7AA011A9-DC21-3488-BF73-3B5B14D1FDD6> /usr/lib/system/libkeymgr.dylib
+    0x7fff8b47c000 -     0x7fff8b47cfff  liblaunch.dylib (972.50.27) <037D198D-9B02-3EF9-A8E9-6F43EA555A9E> /usr/lib/system/liblaunch.dylib
+    0x7fff8b47d000 -     0x7fff8b482ff3  libmacho.dylib (898) <17D5D855-F6C3-3B04-B680-E9BF02EF8AED> /usr/lib/system/libmacho.dylib
+    0x7fff8b483000 -     0x7fff8b485ff3  libquarantine.dylib (85.50.1) <7B32EA91-AB8B-32A4-8E52-9D3ED46CAC8E> /usr/lib/system/libquarantine.dylib
+    0x7fff8b486000 -     0x7fff8b487ffb  libremovefile.dylib (45) <38D4CB9C-10CD-30D3-8B7B-A515EC75FE85> /usr/lib/system/libremovefile.dylib
+    0x7fff8b488000 -     0x7fff8b4a0ff7  libsystem_asl.dylib (349.50.5) <096E4228-3B7C-30A6-8B13-EC909A64499A> /usr/lib/system/libsystem_asl.dylib
+    0x7fff8b4a1000 -     0x7fff8b4a1ff7  libsystem_blocks.dylib (67) <10DC5404-73AB-35B3-A277-A8AFECB476EB> /usr/lib/system/libsystem_blocks.dylib
+    0x7fff8b4a2000 -     0x7fff8b52ffef  libsystem_c.dylib (1158.50.2) <B03F8915-1E9B-3C84-AED5-68E2E0031630> /usr/lib/system/libsystem_c.dylib
+    0x7fff8b530000 -     0x7fff8b533ffb  libsystem_configuration.dylib (888.51.2) <872C8A42-0871-3424-830B-84E587A75D27> /usr/lib/system/libsystem_configuration.dylib
+    0x7fff8b534000 -     0x7fff8b537fff  libsystem_coreservices.dylib (41.4) <FD0915E8-9C43-3FCB-94E0-33C45DF028CD> /usr/lib/system/libsystem_coreservices.dylib
+    0x7fff8b538000 -     0x7fff8b550fff  libsystem_coretls.dylib (121.50.4) <EC6FCF07-DCFB-3A03-9CC9-6DD3709974C6> /usr/lib/system/libsystem_coretls.dylib
+    0x7fff8b551000 -     0x7fff8b557fff  libsystem_dnssd.dylib (765.50.9) <FF02A197-7CEF-3684-8155-E5E225051E44> /usr/lib/system/libsystem_dnssd.dylib
+    0x7fff8b558000 -     0x7fff8b581ff7  libsystem_info.dylib (503.50.4) <611DB84C-BF70-3F92-8702-B9F28A900920> /usr/lib/system/libsystem_info.dylib
+    0x7fff8b582000 -     0x7fff8b5a4ff7  libsystem_kernel.dylib (3789.51.2) <FC51D7B0-8292-3F6A-9231-64340B237EB7> /usr/lib/system/libsystem_kernel.dylib
+    0x7fff8b5a5000 -     0x7fff8b5ecfe7  libsystem_m.dylib (3121.6) <A790C9A5-DD24-32F5-8FD7-33BFCE79AC87> /usr/lib/system/libsystem_m.dylib
+    0x7fff8b5ed000 -     0x7fff8b60bff7  libsystem_malloc.dylib (116.50.8) <48D1BBA3-914E-3C65-AF70-C33B4A1B5233> /usr/lib/system/libsystem_malloc.dylib
+    0x7fff8b60c000 -     0x7fff8b665ffb  libsystem_network.dylib (856.50.56) <FDE14243-4328-3EFD-824C-C0D314D7B540> /usr/lib/system/libsystem_network.dylib
+    0x7fff8b666000 -     0x7fff8b66fff3  libsystem_networkextension.dylib (563.50.32) <D5381DA9-529C-3588-BE16-A2245DE93423> /usr/lib/system/libsystem_networkextension.dylib
+    0x7fff8b670000 -     0x7fff8b679ff3  libsystem_notify.dylib (165.20.1) <B8160190-A069-3B3A-BDF6-2AA408221FAE> /usr/lib/system/libsystem_notify.dylib
+    0x7fff8b67a000 -     0x7fff8b682fe7  libsystem_platform.dylib (126.50.8) <5940EAB7-84D6-34DC-9B38-111648B2B589> /usr/lib/system/libsystem_platform.dylib
+    0x7fff8b683000 -     0x7fff8b68dff7  libsystem_pthread.dylib (218.51.1) <62A84A68-431D-3B54-A7B6-31367CCF2884> /usr/lib/system/libsystem_pthread.dylib
+    0x7fff8b68e000 -     0x7fff8b691ff7  libsystem_sandbox.dylib (592.50.47) <87A2327D-B7A1-3E4C-A85D-D3D9484003DB> /usr/lib/system/libsystem_sandbox.dylib
+    0x7fff8b692000 -     0x7fff8b693ff3  libsystem_secinit.dylib (24.50.4) <F78B847B-3565-3E4B-98A6-F7AD40392E2D> /usr/lib/system/libsystem_secinit.dylib
+    0x7fff8b694000 -     0x7fff8b69bffb  libsystem_symptoms.dylib (532.50.47) <9CF6A47C-8343-3E85-9C27-A8D98E726A8B> /usr/lib/system/libsystem_symptoms.dylib
+    0x7fff8b69c000 -     0x7fff8b6afff7  libsystem_trace.dylib (518.51.1) <E1D540D8-CC88-3901-92BA-FC4B802FE0E8> /usr/lib/system/libsystem_trace.dylib
+    0x7fff8b6b0000 -     0x7fff8b6b5ffb  libunwind.dylib (35.3) <3D50D8A8-C460-334D-A519-2DA841102C6B> /usr/lib/system/libunwind.dylib
+    0x7fff8b6b6000 -     0x7fff8b6dfff7  libxpc.dylib (972.50.27) <ABC45890-DA23-3A4A-B50B-1384BD4CBBDF> /usr/lib/system/libxpc.dylib
