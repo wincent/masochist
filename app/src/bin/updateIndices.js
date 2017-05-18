@@ -31,20 +31,12 @@ import git from '../server/git';
 
 const LAST_INDEXED_HASH = common.redisKeys.lastIndexedHash;
 
-function log(format, ...args: Array<string>): void {
-  const time = new Date().toLocaleTimeString();
-  format = time + ': ' + format;
-  console.log(format, ...args);
-}
-
-function print(string: string): void {
-  process.stdout.write(string);
-}
-
 /**
  * Rather than printing out one long line (which will get buffered inside our
  * post-receive hook, preventing the user from seeing any progress until the
  * end) break it up over lines with explicit hard line breaks.
+ *
+ * Logging any message (with `log()`) resets the column counter to 0.
  */
 const maxColumnCount = parseInt(process.env.COLUMNS || 80, 10)
 let columnCount = 0;
@@ -55,6 +47,17 @@ function dot(): void {
     columnCount = 0;
     print('\n');
   }
+}
+
+function log(format, ...args: Array<string>): void {
+  const time = new Date().toLocaleTimeString();
+  format = time + ': ' + format;
+  console.log(format, ...args);
+  columnCount = 0;
+}
+
+function print(string: string): void {
+  process.stdout.write(string);
 }
 
 function extractFile(pathString: string, contentType: string): string {
