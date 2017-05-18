@@ -38,7 +38,7 @@ const LAST_INDEXED_HASH = common.redisKeys.lastIndexedHash;
  *
  * Logging any message (with `log()`) resets the column counter to 0.
  */
-const maxColumnCount = parseInt(process.env.COLUMNS || 80, 10)
+const maxColumnCount = parseInt(process.stdout.columns || 80, 10)
 let columnCount = 0;
 function dot(): void {
   columnCount++;
