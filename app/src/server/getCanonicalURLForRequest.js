@@ -3,9 +3,9 @@
  */
 
 import {toGlobalId} from 'graphql-relay';
-import {canonicalHost, canonicalScheme} from '../common/config';
 import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';
+import {HOST, SCHEME} from './constants';
 import runQuery from './runQuery';
 
 import type {$Request} from 'express';
@@ -57,7 +57,7 @@ export default (async function getCanonicalURLForRequest(
   }
 
   if (canonical) {
-    return canonicalScheme + canonicalHost + stripTrailingSlash(canonical);
+    return SCHEME + HOST + stripTrailingSlash(canonical);
   }
 
   return null;

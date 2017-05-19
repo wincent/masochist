@@ -9,7 +9,7 @@ import RSS from 'rss';
 
 import Cache from '../../common/Cache';
 import {array} from '../../common/checks';
-import {canonicalHost, canonicalScheme} from '../../common/config';
+import {HOST, SCHEME} from '../constants';
 import git from '../git';
 import runQuery from '../runQuery';
 import stripTags from '../stripTags';
@@ -70,9 +70,9 @@ export default (async function feed() {
   const key = `blog:rss:${FEED_VERSION}:${head}`;
   return await Cache.get(key, async () => {
     const feed = new RSS({
-      feed_url: canonicalScheme + canonicalHost + '/blog.rss',
+      feed_url: SCHEME + HOST + '/blog.rss',
       generator: 'Masochist',
-      site_url: canonicalScheme + canonicalHost + '/blog',
+      site_url: SCHEME + HOST + '/blog',
       title: 'wincent.com blog',
     });
     const result: any = await runQuery(feedQuery().text);
@@ -82,7 +82,7 @@ export default (async function feed() {
         date: node.createdAt,
         description: extractExcerpt(node.body.html),
         title: node.title,
-        url: canonicalScheme + canonicalHost + node.url,
+        url: SCHEME + HOST + node.url,
       });
     });
 
