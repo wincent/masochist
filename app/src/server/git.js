@@ -5,7 +5,7 @@
 import Promise from 'bluebird';
 import {spawn} from 'child_process';
 import path from 'path';
-import config from './config';
+import config from '../../config';
 
 // Why subclassing built-ins is hard:
 //   http://www.2ality.com/2011/12/subtyping-builtins.html
