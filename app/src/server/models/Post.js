@@ -2,6 +2,7 @@
  * @flow
  */
 
+import {REDIS_BLOG_INDEX_KEY} from '../constants';
 import readIndex from '../readIndex';
 
 import type {IndexResult} from '../readIndex';
@@ -17,7 +18,7 @@ export default class Post {
   tags: Array<string>;
 
   static async readIndex(count: number, offset: number): Promise<IndexResult> {
-    const results = await readIndex('blog-index', count, offset);
+    const results = await readIndex(REDIS_BLOG_INDEX_KEY, count, offset);
     return results;
   }
 

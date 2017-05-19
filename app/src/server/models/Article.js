@@ -2,12 +2,10 @@
  * @flow
  */
 
-import common from '../../../../shared/common';
+import {REDIS_WIKI_INDEX_KEY} from '../constants';
 import readIndex from '../readIndex';
 
 import type {IndexResult} from '../readIndex';
-
-const WIKI_INDEX = common.redisKeys.wikiIndex;
 
 export default class Article {
   id: string;
@@ -21,7 +19,7 @@ export default class Article {
   tags: Array<string>;
 
   static async readIndex(count: number, offset: number): Promise<IndexResult> {
-    const results = await readIndex(WIKI_INDEX, count, offset);
+    const results = await readIndex(REDIS_WIKI_INDEX_KEY, count, offset);
     return results;
   }
 

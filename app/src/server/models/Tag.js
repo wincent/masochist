@@ -4,6 +4,7 @@
 
 import {array, number} from '../../common/checks';
 import redis from '../../common/redis';
+import {REDIS_TAGS_INDEX_KEY} from '../constants';
 
 import type {IndexResult} from '../readIndex';
 import type {Taggable} from '../schema/fields/connections/taggableConnection';
@@ -18,7 +19,7 @@ export default class Tag {
     count: number,
     offset: number,
   ): Promise<[Array<Tag>, number]> {
-    const key = 'tags-index';
+    const key = REDIS_TAGS_INDEX_KEY;
     const results = await redis.multi([
       ['ZREVRANGE', key, offset, offset + count - 1, 'WITHSCORES'],
       ['ZCARD', key],

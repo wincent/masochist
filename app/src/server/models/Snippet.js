@@ -2,6 +2,7 @@
  * @flow
  */
 
+import {REDIS_SNIPPETS_INDEX_KEY} from '../constants';
 import readIndex from '../readIndex';
 
 import type {IndexResult} from '../readIndex';
@@ -18,8 +19,7 @@ export default class Snippet {
 
   static async readIndex(count: number, offset: number): Promise<IndexResult> {
     const results = await readIndex(
-      // TODO: centralize this (we have something similar in bin/updateIndices)
-      'snippets-index',
+      REDIS_SNIPPETS_INDEX_KEY,
       count,
       offset,
     );

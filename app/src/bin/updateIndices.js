@@ -17,19 +17,18 @@ import '../common/unhandledRejection';
 
 import Promise from 'bluebird';
 import path from 'path';
-import common from '../../../shared/common';
 import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
 import redis from '../common/redis';
 import Cache from '../common/Cache';
+import {LAST_INDEXED_HASH, REDIS_TAGS_INDEX_KEY} from '../server/constants';
+import getIndexNameForContentType from '../server/getIndexNameForContentType';
 import {
   getTimestamps,
   getTimestampsCacheKey,
   loadContent,
 } from '../server/loadContent';
 import git from '../server/git';
-
-const LAST_INDEXED_HASH = common.redisKeys.lastIndexedHash;
 
 /**
  * Rather than printing out one long line (which will get buffered inside our
@@ -250,9 +249,7 @@ function getFileUpdates(range, callback) {
       // when we see only [Delete, Add] and therefore omit step 3 above.
       dot();
       if (!seenFiles[file]) {
-        // Index names (for grep): blog-index, pages-index, snippets-index,
-        // wiki-index.
-        const indexName = contentType + '-index';
+        const indexName = getIndexNameForContentType(contentType);
         switch (status) {
           case 'A':
             updates.push(['ZADD', indexName, createdAt, file]);
@@ -279,10 +276,9 @@ function getFileUpdates(range, callback) {
   // These updates are relatively slow and expensive because they have to
   // load every blob into memory, but on the bright side, they prime our
   // memcached metadata cache as a result.
-  const TAGS_INDEX_KEY = 'tags-index';
 
   function addTag(tag, file, contentType, updatedAt) {
-    updates.unshift(['ZINCRBY', TAGS_INDEX_KEY, 1, tag]);
+    updates.unshift(['ZINCRBY', REDIS_TAGS_INDEX_KEY, 1, tag]);
     const setName = 'tag:' + tag;
     updates.unshift([
       'ZADD',
@@ -293,7 +289,7 @@ function getFileUpdates(range, callback) {
   }
 
   function removeTag(tag, file, contentType, updatedAt) {
-    updates.unshift(['ZINCRBY', TAGS_INDEX_KEY, -1, tag]);
+    updates.unshift(['ZINCRBY', REDIS_TAGS_INDEX_KEY, -1, tag]);
     const setName = 'tag:' + tag;
     updates.unshift(['ZREM', setName, contentType + ':' + file]);
   }
@@ -361,7 +357,7 @@ function getFileUpdates(range, callback) {
   print('\n');
 
   // In case any tag removals caused a tag's count to drop to 0.
-  updates.unshift(['ZREMRANGEBYSCORE', TAGS_INDEX_KEY, '-inf', 0]);
+  updates.unshift(['ZREMRANGEBYSCORE', REDIS_TAGS_INDEX_KEY, '-inf', 0]);
 
   // All done.
   updates.push(['SET', LAST_INDEXED_HASH, head]);
