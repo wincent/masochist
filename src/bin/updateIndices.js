@@ -69,9 +69,9 @@ const getWhatChanged = memoize(async (range: string, subdirectory: string) => {
   // Custom log format (^@ here represents the NUL \0 byte):
   //
   // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
-  // :100644 100644 6535626... ec6d229... M^@app/src/bin/updateIndices.js^@^@
+  // :100644 100644 6535626... ec6d229... M^@src/bin/updateIndices.js^@^@
   // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
-  // :100644 100644 12d2393... 600f5ef... M^@app/package.json^@
+  // :100644 100644 12d2393... 600f5ef... M^@package.json^@
   return await git(
     'log',
     '--pretty=format:%n%H %at %ct',

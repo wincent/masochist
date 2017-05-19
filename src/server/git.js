@@ -49,6 +49,6 @@ function run(command, ...args: Array<string>): Promise<string> {
 }
 
 export default function git(...args: Array<string>): Promise {
-  const repoPath = path.resolve(__dirname, '../../..', REPO);
+  const repoPath = path.resolve(__dirname, '../..', REPO);
   return run('git', '-C', repoPath, ...args);
 }
