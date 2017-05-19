@@ -150,10 +150,11 @@ appRoutes.forEach(route => {
           };
         });
     }
-    const {description, pageContent} = await resolve(history.location);
+    const resolved = await resolve(history.location);
     const title = DocumentTitle.peek();
     DocumentTitle.rewind();
-    if (pageContent) {
+    if (resolved) { // May be null if we had a redirect.
+      const {description, pageContent} = resolved;
       const locals = {
         cache: JSON.stringify(cache),
         description,
