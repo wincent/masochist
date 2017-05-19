@@ -41,7 +41,7 @@ const TagType = registerType(
         args: connectionArgs,
         resolve: async (tag, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
-          const count = Math.max(args.first, 10);
+          const count = Math.min(args.first, 10);
           const offset = getOffsetWithDefault(args.after, -1) + 1;
           const {loaders} = rootValue;
           const promisedContent = tag.taggables

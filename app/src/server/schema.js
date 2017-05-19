@@ -30,7 +30,7 @@ export default new GraphQLSchema({
         resolve: async (user, args, context, {rootValue}) => {
           // TODO: At the moment we're ignoring use of last/before; should we do something about it?
           // Cap count to avoid abuse.
-          const count = Math.max(args.first, 10);
+          const count = Math.min(args.first, 10);
           const offset = getOffsetWithDefault(args.after, -1) + 1;
           const [articles, totalCount] = await Article.readIndex(count, offset);
           return connectionFromPromisedArraySlice(
@@ -49,7 +49,7 @@ export default new GraphQLSchema({
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
-          const count = Math.max(args.first, 10);
+          const count = Math.min(args.first, 10);
           const offset = getOffsetWithDefault(args.after, -1) + 1;
           const [posts, totalCount] = await Post.readIndex(count, offset);
           return connectionFromPromisedArraySlice(
@@ -68,7 +68,7 @@ export default new GraphQLSchema({
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
-          const count = Math.max(args.first, 10);
+          const count = Math.min(args.first, 10);
           const offset = getOffsetWithDefault(args.after, -1) + 1;
           const [snippets, totalCount] = await Snippet.readIndex(count, offset);
           return connectionFromPromisedArraySlice(
@@ -86,8 +86,8 @@ export default new GraphQLSchema({
         description: 'All tags',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
-          // Cap count to avoid abuse.
-          const count = Math.max(args.first, 10);
+          // No count cap here; app actually needs to get all the tags.
+          const count = args.first;
           const offset = getOffsetWithDefault(args.after, -1) + 1;
           const [tags, totalCount] = await Tag.readIndex(count, offset);
           return {
@@ -111,7 +111,7 @@ export default new GraphQLSchema({
         },
         resolve: async (user, args, context, {rootValue}) => {
           // Cap count to avoid abuse.
-          const count = Math.max(args.first, 10);
+          const count = Math.min(args.first, 10);
           const offset = getOffsetWithDefault(args.after, -1) + 1;
           const results = await search(args.q);
           const {loaders} = rootValue;
