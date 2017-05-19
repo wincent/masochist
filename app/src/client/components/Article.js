@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
@@ -40,7 +44,7 @@ function softRedirect(target: string, router: mixed): null {
     // Let React finish rendering before running this; otherwise it will
     // complain "triggering nested component updates from render is not
     // allowed".
-    Promise.resolve().then(() => router.history.replace(article.redirect));
+    Promise.resolve().then(() => router.history.replace(target));
     return null;
   }
   return hardRedirect(target);
