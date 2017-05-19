@@ -1,11 +1,14 @@
 {
-  "name": "server",
+  "name": "masochist",
   "version": "0.0.1",
   "description": "Masochist server",
   "main": "dist/server/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/wincent/masochist.git"
+  },
+  "config": {
+    "content-repo": "."
   },
   "scripts": {
     "build": "gulp build",
@@ -15,8 +18,8 @@
     "pretty": "babel-node scripts/pretty.js",
     "pretty-check": "babel-node scripts/pretty.js --check",
     "relay": "relay-compiler --src ./src --schema schema.graphql",
-    "start": "babel-node src/server/main.js",
-    "start-prod": "NODE_ENV=production node dist/server/main.js",
+    "start": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/server/main.js",
+    "start-prod": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo NODE_ENV=production node dist/server/main.js",
     "test": "mocha --opts mocha/mocha.opts 'src/**/__mocks__/*.js' 'src/**/__tests__/*-test.js'",
     "update-indices": "babel-node src/bin/updateIndices.js",
     "update-schema": "babel-node src/bin/updateSchema.js"

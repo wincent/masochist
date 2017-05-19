@@ -1,26 +1,21 @@
 # Quickstart
 
-## Configuration
-
-```
-cp config.example.json config.json
-```
-
 ## Webpack-based hot-loading workflow
 
 ```
+git clone https://github.com/wincent/masochist.git
+cd masochist/app
 npm install
-npm run update-schema # same as `babel-node src/bin/updateSchema.js`
-npm run update-indices # whenever content changes
-npm run start # same as `babel-node src/server/main.js`
+npm run update-schema
+npm run update-indices # Whenever content changes.
+npm run start
 ```
 
 ## Running in production-like environment
 
 ```
-npm install
-gulp build # builds files under `dist/`
-npm run start-prod # same as `NODE_ENV=production node dist/server/main.js`
+npm run build # builds files under `dist/`
+npm run start-prod
 ```
 
 ## Running in production
@@ -29,14 +24,25 @@ npm run start-prod # same as `NODE_ENV=production node dist/server/main.js`
 export NODE_ENV=production
 npm install
 gulp build
-node dist/bin/updateIndices.js # whenever content changes
+node dist/bin/updateIndices.js # Whenever content changes.
 node dist/server/main.js
+```
+
+## Configuration
+
+In `__DEV__`, Masochist will look for content in the current repo (ie. ".").
+
+In production, it expects to find a content repo at "/var/masochist/content".
+
+In both cases, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the "content" branch checked out alongside it at "../masochist-pages" (see below for more details on this set-up). I can override the `__DEV__` default of "." with:
+
+```
+npm config set masochist:content-repo '../masochist-pages'
 ```
 
 ## Deployment cheatsheet
 
-You could do this in any number of ways but the way I'm doing it is using two
-local repositories as follows:
+You could do this in any number of ways but the way I'm doing it is using two local repositories as follows:
 
 ### Local "masochist" repository
 

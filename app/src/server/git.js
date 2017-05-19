@@ -5,7 +5,7 @@
 import Promise from 'bluebird';
 import {spawn} from 'child_process';
 import path from 'path';
-import config from '../../config';
+import {REPO} from './constants';
 
 // Why subclassing built-ins is hard:
 //   http://www.2ality.com/2011/12/subtyping-builtins.html
@@ -49,6 +49,6 @@ function run(command, ...args: Array<string>): Promise<string> {
 }
 
 export default function git(...args: Array<string>): Promise {
-  const repoPath = path.resolve(__dirname, '../../..', config.repo);
+  const repoPath = path.resolve(__dirname, '../../..', REPO);
   return run('git', '-C', repoPath, ...args);
 }
