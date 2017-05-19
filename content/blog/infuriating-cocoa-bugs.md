@@ -11,7 +11,7 @@ Every now and again I come up against an infuriating Cocoa bug. Today I've just 
 
 #### The problem
 
-I've been working on Dock icon stuff for [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/). You can do a number of things such as animate the Dock icon, show a progress indicator, show cover art, show the cover art as a badge, and so forth. Because the settings are independent of one another you can turn on none, one, or [more than one of them at a time](http://us.wincent.com/a/about/wincent/weblog/dock-icon-preview3.png). This means that sometimes I have to composite more than one thing into an NSImage.
+I've been working on Dock icon stuff for [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/). You can do a number of things such as animate the Dock icon, show a progress indicator, show cover art, show the cover art as a badge, and so forth. Because the settings are independent of one another you can turn on none, one, or [more than one of them at a time](/system/images/legacy/dock-icon-preview3.png). This means that sometimes I have to composite more than one thing into an NSImage.
 
 I was doing this using the `lockFocus` and `unlockFocus` methods of NSImage and drawing directly into the image. I have a number of utility methods that perform the compositing which have prototypes like this:
 
