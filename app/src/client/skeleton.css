@@ -158,9 +158,13 @@ p {
 /* Links
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 a {
-  color: #1EAEDB; }
+  color: #1EAEDB;
+  text-decoration-color: rgba(0, 0, 0, .1);
+}
 a:hover {
-  color: #0FA0CE; }
+  color: #0FA0CE;
+  text-decoration-color: #0FA0CE;
+}
 
 
 /* Buttons
