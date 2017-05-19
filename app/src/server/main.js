@@ -169,8 +169,15 @@ appRoutes.forEach(route => {
 app.use(bodyParser.json());
 app.use('/graphql', (request, response, next) => {
   // Totally hacked in persisted-query support:
+  let query;
   if (request.body && request.body.name) {
-    request.body.query = queryCache.getQuery(request.body.name);
+    query = queryCache.getQuery(request.body.name);
+    request.body.query = query;
+  }
+  if (!__DEV__ && !query) {
+    // In prod, we only accept persisted queries (to prevent abuse).
+    response.status(400).send('Bad Request');
+    return;
   }
   const options = {
     rootValue: {
