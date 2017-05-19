@@ -276,13 +276,13 @@ function getFileUpdates(range, callback) {
 
   // Update tags.
   //
-  // This update is relatively slow and expensive because it has to load every
-  // blob into memory, but on the bright side, it primes our memcached metadata
-  // cache as a result.
-  function addTag(tag, file, contentType, updatedAt) {
-    const indexName = 'tags-index';
-    updates.unshift(['ZINCRBY', indexName, 1, tag]);
+  // These updates are relatively slow and expensive because they have to
+  // load every blob into memory, but on the bright side, they prime our
+  // memcached metadata cache as a result.
+  const TAGS_INDEX_KEY = 'tags-index';
 
+  function addTag(tag, file, contentType, updatedAt) {
+    updates.unshift(['ZINCRBY', TAGS_INDEX_KEY, 1, tag]);
     const setName = 'tag:' + tag;
     updates.unshift([
       'ZADD',
@@ -293,9 +293,7 @@ function getFileUpdates(range, callback) {
   }
 
   function removeTag(tag, file, contentType, updatedAt) {
-    const indexName = 'tags-index';
-    updates.unshift(['ZINCRBY', indexName, -1, tag]);
-
+    updates.unshift(['ZINCRBY', TAGS_INDEX_KEY, -1, tag]);
     const setName = 'tag:' + tag;
     updates.unshift(['ZREM', setName, contentType + ':' + file]);
   }
@@ -361,6 +359,9 @@ function getFileUpdates(range, callback) {
     }
   });
   print('\n');
+
+  // In case any tag removals caused a tag's count to drop to 0.
+  updates.unshift(['ZREMRANGEBYSCORE', TAGS_INDEX_KEY, '-inf', 0]);
 
   // All done.
   updates.push(['SET', LAST_INDEXED_HASH, head]);
