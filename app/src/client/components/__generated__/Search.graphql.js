@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Search.graphql
- * @generated SignedSource<<2d00a4f3fed4693c424ae4b0f0f2ce40>>
+ * @generated SignedSource<<021942733628a14ba44f98313ec2d4d0>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Search = {|
-  +search: ?{|
+  +search: {|
     +count: ?number;
     +edges: ?$ReadOnlyArray<?{|
       +cursor: string;

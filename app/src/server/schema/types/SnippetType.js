@@ -28,7 +28,7 @@ const SnippetType = registerType(
         resolve: snippet => snippet.title || `Snippet #${snippet.id}`,
       },
       body: {
-        type: MarkupType,
+        type: new GraphQLNonNull(MarkupType),
         resolve(snippet) {
           return {
             raw: snippet.body,
@@ -46,7 +46,7 @@ const SnippetType = registerType(
         resolve: snippet => `/snippets/${snippet.id}`,
       },
       history: {
-        type: HistoryType,
+        type: new GraphQLNonNull(HistoryType),
         resolve: ({format, id}) => ({
           url: getHistoryURLForContentPath(`/snippets/${id}.${format}`),
         }),

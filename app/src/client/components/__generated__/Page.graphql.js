@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Page.graphql
- * @generated SignedSource<<aaef350c99459c38e404e174397c72e6>>
+ * @generated SignedSource<<a6c7691beee862eb2be26f88cbeb4de2>>
  * @flow
  * @nogrep
  */
@@ -18,7 +18,7 @@ export type Page = {|
   +id: string;
   +title: ?string;
   +url: string;
-  +body: ?{|
+  +body: {|
     +html: ?string;
   |};
 |};

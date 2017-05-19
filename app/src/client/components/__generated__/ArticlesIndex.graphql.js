@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule ArticlesIndex.graphql
- * @generated SignedSource<<121c221f125dcfdbd9c3d640fbe89c4f>>
+ * @generated SignedSource<<a50db50ec625c1917af15754dc675f88>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type ArticlesIndex = {|
-  +articles: ?{|
+  +articles: {|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string;

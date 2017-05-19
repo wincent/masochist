@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Post.graphql
- * @generated SignedSource<<4b3dc317e20064d029938afb8712341e>>
+ * @generated SignedSource<<e5f46204646dfadf491ac3f8f6d6851d>>
  * @flow
  * @nogrep
  */
@@ -18,7 +18,7 @@ export type Post = {|
   +id: string;
   +title: ?string;
   +url: string;
-  +body: ?{|
+  +body: {|
     +html: ?string;
   |};
 |};

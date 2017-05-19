@@ -75,9 +75,9 @@ export default (async function feed() {
       site_url: canonicalScheme + canonicalHost + '/blog',
       title: 'wincent.com blog',
     });
-    const result = await runQuery(feedQuery().text);
-    const posts: feedPosts = idx(result, _ => _.data.posts);
-    posts.edges.forEach(({node}) => {
+    const result: any = await runQuery(feedQuery().text);
+    const posts: feedPosts = result.data.posts;
+    posts.edges && posts.edges.forEach(({node}) => {
       feed.item({
         date: node.createdAt,
         description: extractExcerpt(node.body.html),

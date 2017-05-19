@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SnippetsIndexQuery.graphql
- * @generated SignedSource<<8be41b42e32afd34aad82a77a1a552a3>>
- * @relayHash fafbeac06f28653fbf144784403f9900
+ * @generated SignedSource<<6ba6e0d05b6ef9a637d245da5bb0b33d>>
+ * @relayHash 3745e2932903b50f75a0b964cf5a73fb
  * @flow
  * @nogrep
  */
@@ -34,15 +34,26 @@ fragment SnippetsIndex on Root {
       node {
         id
         ...Snippet
-        __typename
       }
-      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-      hasPreviousPage
-      startCursor
+    }
+    ... on SnippetConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
     }
   }
 }
@@ -255,22 +266,8 @@ const batch /*: ConcreteBatch*/ = {
                     "args": null,
                     "name": "updatedAt",
                     "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "__typename",
-                    "storageKey": null
                   }
                 ],
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "cursor",
                 "storageKey": null
               }
             ],
@@ -297,23 +294,76 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "hasNextPage",
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "hasPreviousPage",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "startCursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "SnippetConnection",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "SnippetEdge",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "cursor",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Snippet",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "startCursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ]
           }
         ],
         "storageKey": null
@@ -342,7 +392,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SnippetsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Snippet on Snippet {\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  id\n  url\n  title\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
+  "text": "query SnippetsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on SnippetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Snippet on Snippet {\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  id\n  url\n  title\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
 };
 
 module.exports = batch;

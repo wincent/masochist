@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SearchQuery.graphql
- * @generated SignedSource<<6225d0f3bfa31d19825c877ba727e900>>
- * @relayHash 27626e04ef73628b9168aa9d5a86271d
+ * @generated SignedSource<<8db0addc69cc997baf863d702ffeb342>>
+ * @relayHash 274704b69c998b84b4ea7ac384af3d50
  * @flow
  * @nogrep
  */
@@ -44,8 +44,23 @@ fragment Search on Root {
     pageInfo {
       endCursor
       hasNextPage
-      hasPreviousPage
-      startCursor
+    }
+    ... on SearchResultConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          ... on Node {
+            id
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
     }
   }
 }
@@ -528,23 +543,40 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "hasNextPage",
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "hasPreviousPage",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "startCursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "SearchResultConnection",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "startCursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ]
           }
         ],
         "storageKey": null
@@ -581,7 +613,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SearchQuery(\n  $count: Int!\n  $cursor: String\n  $q: String!\n) {\n  ...Search\n}\n\nfragment Search on Root {\n  search(first: $count, after: $cursor, q: $q) {\n    count\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PagePreview on Page {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PostPreview on Post {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment SnippetPreview on Snippet {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
+  "text": "query SearchQuery(\n  $count: Int!\n  $cursor: String\n  $q: String!\n) {\n  ...Search\n}\n\nfragment Search on Root {\n  search(first: $count, after: $cursor, q: $q) {\n    count\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on SearchResultConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          ... on Node {\n            id\n          }\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PagePreview on Page {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PostPreview on Post {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment SnippetPreview on Snippet {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
 };
 
 module.exports = batch;

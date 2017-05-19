@@ -2,7 +2,7 @@
  * @flow
  */
 
-import {GraphQLObjectType, GraphQLString} from 'graphql';
+import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
 
 const HistoryType = new GraphQLObjectType({
   description: 'Revision history for the object',
@@ -11,7 +11,7 @@ const HistoryType = new GraphQLObjectType({
     // Later, may wish to expose revision information here directly
     // through a "revisions" connection instead of linking offsite.
     url: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'URL showing revision history for the object',
     },
   },

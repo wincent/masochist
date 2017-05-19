@@ -2,7 +2,7 @@
  * @flow
  */
 
-import {GraphQLInterfaceType} from 'graphql';
+import {GraphQLInterfaceType, GraphQLNonNull} from 'graphql';
 import DateTimeType from '../types/DateTimeType';
 import HistoryType from '../types/HistoryType';
 
@@ -15,7 +15,7 @@ const versionedInterface = new GraphQLInterfaceType({
       description: 'When the content was first created',
     },
     history: {
-      type: HistoryType,
+      type: new GraphQLNonNull(HistoryType),
       description: 'Revision history for the object',
     },
     updatedAt: {

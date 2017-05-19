@@ -21,7 +21,7 @@ const PageType = registerType(
         description: "The page's title",
       },
       body: {
-        type: MarkupType,
+        type: new GraphQLNonNull(MarkupType),
         resolve(page) {
           return {
             raw: page.body,
@@ -39,7 +39,7 @@ const PageType = registerType(
         resolve: page => `/pages/${page.id}`,
       },
       history: {
-        type: HistoryType,
+        type: new GraphQLNonNull(HistoryType),
         resolve: ({format, id}) => ({
           url: getHistoryURLForContentPath(`/pages/${id}.${format}`),
         }),

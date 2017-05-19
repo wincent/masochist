@@ -15,7 +15,7 @@ type Article implements Node, Tagged, Versioned {
 
   # The destination ([[wiki article]] or URL) the article should redirect to
   redirect: String
-  body: Markup
+  body: Markup!
 
   # Succinct summary of the article content
   description: String
@@ -23,7 +23,7 @@ type Article implements Node, Tagged, Versioned {
   # URL for the article
   url: String!
   tags: [TagName]
-  history: History
+  history: History!
 
   # When the content was first created
   createdAt: DateTime
@@ -58,7 +58,7 @@ scalar DateTime
 # Revision history for the object
 type History {
   # URL showing revision history for the object
-  url: String
+  url: String!
 }
 
 # The textual markup for a piece of content
@@ -101,14 +101,14 @@ type Page implements Node, Tagged, Versioned {
 
   # The page's title
   title: String
-  body: Markup
+  body: Markup!
 
   # Succinct summary of the page content
   description: String
 
   # URL for the page
   url: String!
-  history: History
+  history: History!
   tags: [TagName]
 
   # When the content was first created
@@ -140,14 +140,14 @@ type Post implements Node, Tagged, Versioned {
 
   # The blog post's title
   title: String
-  body: Markup
+  body: Markup!
 
   # Succinct summary of the post content
   description: String
 
   # URL for the post
   url: String!
-  history: History
+  history: History!
   tags: [TagName]
 
   # When the content was first created
@@ -183,16 +183,16 @@ type Root {
   ): Node
 
   # All wiki articles
-  articles(after: String, first: Int, before: String, last: Int): ArticleConnection
+  articles(after: String, first: Int, before: String, last: Int): ArticleConnection!
 
   # All blog posts
-  posts(after: String, first: Int, before: String, last: Int): PostConnection
+  posts(after: String, first: Int, before: String, last: Int): PostConnection!
 
   # All snippets
-  snippets(after: String, first: Int, before: String, last: Int): SnippetConnection
+  snippets(after: String, first: Int, before: String, last: Int): SnippetConnection!
 
   # All tags
-  tags(after: String, first: Int, before: String, last: Int): TagConnection
+  tags(after: String, first: Int, before: String, last: Int): TagConnection!
 
   # Search results
   search(
@@ -203,7 +203,7 @@ type Root {
 
     # One or more search terms, separated by spaces
     q: String
-  ): SearchResultConnection
+  ): SearchResultConnection!
 }
 
 # A connection to a list of items.
@@ -234,14 +234,14 @@ type Snippet implements Node, Tagged, Versioned {
 
   # The snippet's title
   title: String
-  body: Markup
+  body: Markup!
 
   # Succinct summary of the snippet content
   description: String
 
   # URL for the snippet
   url: String!
-  history: History
+  history: History!
   tags: [TagName]
 
   # When the content was first created
@@ -341,7 +341,7 @@ interface Versioned {
   createdAt: DateTime
 
   # Revision history for the object
-  history: History
+  history: History!
 
   # When the content was last updated
   updatedAt: DateTime

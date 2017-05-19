@@ -21,7 +21,7 @@ const PostType = registerType(
         description: "The blog post's title",
       },
       body: {
-        type: MarkupType,
+        type: new GraphQLNonNull(MarkupType),
         resolve(post) {
           return {
             raw: post.body,
@@ -39,7 +39,7 @@ const PostType = registerType(
         resolve: post => `/blog/${post.id}`,
       },
       history: {
-        type: HistoryType,
+        type: new GraphQLNonNull(HistoryType),
         resolve: ({format, id}) => ({
           url: getHistoryURLForContentPath(`/blog/${id}.${format}`),
         }),

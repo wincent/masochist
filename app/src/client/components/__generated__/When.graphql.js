@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule When.graphql
- * @generated SignedSource<<18782cd9ae7ceb39551d56f5d3fa18f3>>
+ * @generated SignedSource<<01defabeab699e7b0829013e3a55b5f5>>
  * @flow
  * @nogrep
  */
@@ -16,8 +16,8 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type When = {|
   +createdAt: ?any;
-  +history: ?{|
-    +url: ?string;
+  +history: {|
+    +url: string;
   |};
   +updatedAt: ?any;
 |};

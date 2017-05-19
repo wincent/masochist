@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule ArticlesIndexQuery.graphql
- * @generated SignedSource<<36d4406d387903d510d65346428b5cb7>>
- * @relayHash 2e5640bd3c86f9fa68db6d8514b19ede
+ * @generated SignedSource<<43bb0c4f3d6abb7cb7e8cf2e562cc1f2>>
+ * @relayHash f653cee15fc6b612b9c1195fb0d002cc
  * @flow
  * @nogrep
  */
@@ -33,15 +33,26 @@ fragment ArticlesIndex on Root {
       node {
         id
         ...ArticlePreview
-        __typename
       }
-      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-      hasPreviousPage
-      startCursor
+    }
+    ... on ArticleConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
     }
   }
 }
@@ -221,22 +232,8 @@ const batch /*: ConcreteBatch*/ = {
                     "args": null,
                     "name": "updatedAt",
                     "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "__typename",
-                    "storageKey": null
                   }
                 ],
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "cursor",
                 "storageKey": null
               }
             ],
@@ -263,23 +260,76 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "hasNextPage",
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "hasPreviousPage",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "startCursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "ArticleConnection",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "ArticleEdge",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "cursor",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Article",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "startCursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ]
           }
         ],
         "storageKey": null
@@ -308,7 +358,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query ArticlesIndexQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
+  "text": "query ArticlesIndexQuery(\n  $count: Int!\n  $cursor: String\n) {\n  ...ArticlesIndex\n}\n\nfragment ArticlesIndex on Root {\n  articles(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...ArticlePreview\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on ArticleConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment ArticlePreview on Article {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
 };
 
 module.exports = batch;

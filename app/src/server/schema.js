@@ -1,4 +1,4 @@
-import {GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql';
+import {GraphQLNonNull, GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql';
 import {
   connectionArgs,
   connectionFromArraySlice,
@@ -24,7 +24,7 @@ export default new GraphQLSchema({
     fields: {
       node: nodeField,
       articles: {
-        type: articleConnection,
+        type: new GraphQLNonNull(articleConnection),
         description: 'All wiki articles',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
@@ -44,7 +44,7 @@ export default new GraphQLSchema({
         },
       },
       posts: {
-        type: postConnection,
+        type: new GraphQLNonNull(postConnection),
         description: 'All blog posts',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
@@ -63,7 +63,7 @@ export default new GraphQLSchema({
         },
       },
       snippets: {
-        type: snippetConnection,
+        type: new GraphQLNonNull(snippetConnection),
         description: 'All snippets',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
@@ -82,7 +82,7 @@ export default new GraphQLSchema({
         },
       },
       tags: {
-        type: tagConnection,
+        type: new GraphQLNonNull(tagConnection),
         description: 'All tags',
         args: connectionArgs,
         resolve: async (user, args, context, {rootValue}) => {
@@ -100,7 +100,7 @@ export default new GraphQLSchema({
         },
       },
       search: {
-        type: searchConnection,
+        type: new GraphQLNonNull(searchConnection),
         description: 'Search results',
         args: {
           ...connectionArgs,

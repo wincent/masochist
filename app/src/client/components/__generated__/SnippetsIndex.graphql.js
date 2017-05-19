@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule SnippetsIndex.graphql
- * @generated SignedSource<<6e48832fabb0715b545901c88f38115a>>
+ * @generated SignedSource<<5ece8856ce835e1db217b795ec981641>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type SnippetsIndex = {|
-  +snippets: ?{|
+  +snippets: {|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string;

@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule feedPosts.graphql
- * @generated SignedSource<<3233be7047382f6924a49dffdbc6a9e4>>
+ * @generated SignedSource<<df16b44a2517c031bfac8befb301e310>>
  * @flow
  * @nogrep
  */
@@ -15,10 +15,10 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type feedPosts = {|
-  +posts: ?{|
+  +posts: {|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
-        +body: ?{|
+        +body: {|
           +html: ?string;
         |};
         +createdAt: ?any;

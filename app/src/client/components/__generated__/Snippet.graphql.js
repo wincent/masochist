@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Snippet.graphql
- * @generated SignedSource<<aeeeab31df1d07f41a17b8a335050317>>
+ * @generated SignedSource<<cd6847c00ba5a62eaef9b3fa9c37cff5>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Snippet = {|
-  +body: ?{|
+  +body: {|
     +html: ?string;
   |};
   +id: string;

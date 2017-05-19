@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule PostsIndexQuery.graphql
- * @generated SignedSource<<b39cd9105741f8742612e1c10371b33f>>
- * @relayHash ada47bf517fd4b4d689738225f54bf79
+ * @generated SignedSource<<f58562e9bf96193130f494e2296dd16b>>
+ * @relayHash c3642ada54a9da988950e8246423da8d
  * @flow
  * @nogrep
  */
@@ -34,15 +34,26 @@ fragment PostsIndex on Root {
       node {
         id
         ...Post
-        __typename
       }
-      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-      hasPreviousPage
-      startCursor
+    }
+    ... on PostConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
     }
   }
 }
@@ -255,22 +266,8 @@ const batch /*: ConcreteBatch*/ = {
                     "args": null,
                     "name": "updatedAt",
                     "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "__typename",
-                    "storageKey": null
                   }
                 ],
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "cursor",
                 "storageKey": null
               }
             ],
@@ -297,23 +294,76 @@ const batch /*: ConcreteBatch*/ = {
                 "args": null,
                 "name": "hasNextPage",
                 "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "hasPreviousPage",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "startCursor",
-                "storageKey": null
               }
             ],
             "storageKey": null
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "PostConnection",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PostEdge",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "cursor",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Post",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "args": null,
+                    "name": "startCursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
+            ]
           }
         ],
         "storageKey": null
@@ -342,7 +392,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
+  "text": "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on PostConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
 };
 
 module.exports = batch;

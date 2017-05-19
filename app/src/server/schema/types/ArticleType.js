@@ -62,7 +62,7 @@ const ArticleType = registerType(
           'redirect to',
       },
       body: {
-        type: MarkupType,
+        type: new GraphQLNonNull(MarkupType),
         resolve: async (article, args, context, {rootValue}) => {
           article = await resolveRedirects(article, rootValue);
           return {
@@ -92,7 +92,7 @@ const ArticleType = registerType(
         },
       },
       history: {
-        type: HistoryType,
+        type: new GraphQLNonNull(HistoryType),
         resolve: ({format, id}) => ({
           url: getHistoryURLForContentPath(
             `/wiki/${encodeURIComponent(id)}.${format}`,
