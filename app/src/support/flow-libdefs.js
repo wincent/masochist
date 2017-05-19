@@ -8,7 +8,6 @@ declare module '../../../shared/common.json' {
     wikiIndex: string,
   };
 }
-
 declare module 'relay-runtime' {
   // Until these packages properly export Flow types, this is the minimal set-up
   // required to stop the exported types in the __generated__ artifacts from

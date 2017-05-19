@@ -77,14 +77,15 @@ export default (async function feed() {
     });
     const result: any = await runQuery(feedQuery().text);
     const posts: feedPosts = result.data.posts;
-    posts.edges && posts.edges.forEach(({node}) => {
-      feed.item({
-        date: node.createdAt,
-        description: extractExcerpt(node.body.html),
-        title: node.title,
-        url: SCHEME + HOST + node.url,
+    posts.edges &&
+      posts.edges.forEach(({node}) => {
+        feed.item({
+          date: node.createdAt,
+          description: extractExcerpt(node.body.html),
+          title: node.title,
+          url: SCHEME + HOST + node.url,
+        });
       });
-    });
 
     return feed.xml({indent: true});
   });

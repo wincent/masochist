@@ -1,4 +1,9 @@
-import {GraphQLNonNull, GraphQLObjectType, GraphQLSchema, GraphQLString} from 'graphql';
+import {
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLSchema,
+  GraphQLString,
+} from 'graphql';
 import {
   connectionArgs,
   connectionFromArraySlice,
