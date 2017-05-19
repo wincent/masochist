@@ -29,13 +29,13 @@ fs.readdirSync(BASE_DIR).filter(skipHidden).forEach(contentDir => {
   const dirname = path.join(BASE_DIR, contentDir);
   fs.readdirSync(dirname).filter(skipHidden).forEach(file => {
     const filePath = path.join(dirname, file);
-    const fileContents = fs.readFileSync(filePath).toString();
+    const fileContent = fs.readFileSync(filePath).toString();
     const type = path.basename(dirname);
 
     // Don't have destructuring with Object spread here, so not doing:
     //
-    //     const {body, tags, ...metadata} = unpackContent(fileContents);
-    const content = unpackContent(fileContents);
+    //     const {body, tags, ...metadata} = unpackContent(fileContent);
+    const content = unpackContent(fileContent);
     const body = content.body;
     const tags = content.tags || [];
 
@@ -59,8 +59,12 @@ fs.readdirSync(BASE_DIR).filter(skipHidden).forEach(contentDir => {
       body.trim() +
       '\n';
 
-    fs.writeFileSync(filePath, newContent);
-    process.stdout.write('.');
+    if (newContent !== fileContent) {
+      fs.writeFileSync(filePath, newContent);
+      process.stdout.write('*');
+    } else {
+      process.stdout.write('.');
+    }
   });
 });
 process.stdout.write('\n');
