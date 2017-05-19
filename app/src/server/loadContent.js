@@ -6,8 +6,8 @@ import path from 'path';
 import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import unpackContent from 'unpack-content';
-import Cache from '../common/Cache';
 import {object} from '../common/checks';
+import Cache from './Cache';
 import {Extensions} from './Markup';
 import git from './git';
 

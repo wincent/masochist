@@ -3,8 +3,8 @@
  */
 
 import {array, number} from '../../common/checks';
-import redis from '../../common/redis';
 import {REDIS_TAGS_INDEX_KEY} from '../constants';
+import redis from '../redis';
 
 import type {IndexResult} from '../readIndex';
 import type {Taggable} from '../schema/fields/connections/taggableConnection';

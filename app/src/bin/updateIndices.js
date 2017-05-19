@@ -19,16 +19,16 @@ import Promise from 'bluebird';
 import path from 'path';
 import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
-import redis from '../common/redis';
-import Cache from '../common/Cache';
+import Cache from '../server/Cache';
 import {LAST_INDEXED_HASH, REDIS_TAGS_INDEX_KEY} from '../server/constants';
 import getIndexNameForContentType from '../server/getIndexNameForContentType';
+import git from '../server/git';
 import {
   getTimestamps,
   getTimestampsCacheKey,
   loadContent,
 } from '../server/loadContent';
-import git from '../server/git';
+import redis from '../server/redis';
 
 /**
  * Rather than printing out one long line (which will get buffered inside our

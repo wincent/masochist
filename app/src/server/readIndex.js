@@ -3,7 +3,7 @@
  */
 
 import {array, number} from '../common/checks';
-import redis from '../common/redis';
+import redis from './redis';
 
 export type IndexResult = [Array<mixed>, number];
 

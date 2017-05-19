@@ -7,8 +7,8 @@ import idx from 'idx';
 import {graphql} from 'react-relay';
 import RSS from 'rss';
 
-import Cache from '../../common/Cache';
 import {array} from '../../common/checks';
+import Cache from '../Cache';
 import {HOST, SCHEME} from '../constants';
 import git from '../git';
 import runQuery from '../runQuery';

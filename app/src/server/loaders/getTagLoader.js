@@ -3,10 +3,10 @@
  */
 
 import DataLoader from 'dataloader';
-import redis from '../../common/redis';
 import {array} from '../../common/checks';
 import {loadContent} from '../loadContent';
 import Tag from '../models/Tag';
+import redis from '../redis';
 
 async function loadTags(keys: Array<string>): Promise<Array<Object | Error>> {
   const queries = keys.map(key => ['ZREVRANGE', 'tag:' + key, 0, -1]);

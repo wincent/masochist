@@ -16,7 +16,7 @@ function prefixKey(key: string): string {
   return REDIS_KEY_PREFIX + ':' + REDIS_CACHE_VERSION + ':' + key;
 }
 
-const client = {
+export default {
   get(key: string): mixed {
     return redisClient.getAsync(prefixKey(key));
   },
@@ -29,5 +29,3 @@ const client = {
     return redisClient.multi(commandsWithPrefixedKeys).execAsync();
   },
 };
-
-export default client;
