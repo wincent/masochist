@@ -29,7 +29,7 @@ while IFS= read -r -d '' CHANGE; do
     MISSING_TAGS=1
     error "file $CHANGE is missing \"tags: $TYPE\" metadata"
   fi
-done < <(git diff --cached --diff-filter=AM --name-only -z HEAD -- content)
+done < <(git diff --cached --diff-filter=AM --name-only -z HEAD -- content ':!content/images')
 
 if [ $MISSING_TAGS -eq 1 ]; then
   error "use --no-verify to force, or re-run 'scripts/tag-by-type'"
