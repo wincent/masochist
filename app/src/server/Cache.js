@@ -29,7 +29,7 @@ function getCacheBreaker(): string {
 
 // TODO: degrade more gracefully if memcached goes down (currently we just wait
 // forever(?))
-export default {
+const Cache = {
   set(key: string, value: mixed): Promise<mixed> {
     key = key + getCacheBreaker();
 
@@ -68,3 +68,5 @@ export default {
     });
   },
 };
+
+export default Cache;

@@ -5,7 +5,7 @@ if (inBrowser) {
   require('./ContentListing.css');
 }
 
-class ContentListing extends React.Component {
+export default class ContentListing extends React.Component {
   render() {
     return (
       <table className="content-listing u-full-width">
@@ -24,5 +24,3 @@ class ContentListing extends React.Component {
     );
   }
 }
-
-export default ContentListing;

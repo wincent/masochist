@@ -8,6 +8,6 @@ if (inBrowser) {
 /**
  * Fake loading indicator.
  */
-const Progress = () => <div className="progress" />;
-
-export default Progress;
+export default function Progress() {
+  return <div className="progress" />;
+}
