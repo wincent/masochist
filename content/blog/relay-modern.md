@@ -52,10 +52,10 @@ It was heresy, but we went through the exercise anyway, figuring out what each o
 On the flip side, rewriting would mean the ability to scratch some long-felt itches, like:
 
 - Switching to a purely POJO-based representation for cache data.
-- Abstracting all low-level record access behind a thin facade API that would allow us to plug-in different kinds of underlying storage (including native data structure mediated by a JavaScript-to-native bridge).
-- Aligning our terminology, API shape, and data-flow with the latest thinking on the iOS and Android side (for better interoperability).
+- Abstracting all low-level record access behind a thin facade API that would allow us to plug-in different kinds of underlying storage (including native data structures, mediated by a JavaScript-to-native bridge).
+- Aligning our terminology, API shape, and data-flow with the latest thinking on the iOS and Android side (for better interoperability and communication).
 - Dropping support for legacy GraphQL (pre-open source) syntax.
-- Splitting the code up into separate "core", generic "runtime" and "React" packages.
+- Splitting the code up into separate "compiler", generic "core/runtime" and "React" packages.
 - Implementing deterministic, performant garbage collection.
 - And many others.
 
