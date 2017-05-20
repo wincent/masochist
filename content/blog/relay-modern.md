@@ -2,6 +2,7 @@
 tags: relay blog
 title: Building Relay Modern
 twitter: https://twitter.com/wincent/status/865817774530088960
+description: The behind-the-scenes story of how we built Relay Modern.
 ---
 
 There's a long backstory about the development of [Relay Modern](http://facebook.github.io/relay/) that's been bubbling around in the back of my head for a while. As I write this, [version 1.0.0](https://github.com/facebook/relay/releases) is out, we've published [an official blog post](https://code.facebook.com/posts/1362748677097871/relay-modern-simpler-faster-more-extensible/) introducing the new version, and people out in the community have had time to write some [useful](https://www.graph.cool/docs/tutorials/migrating-to-relay-modern-eijooto4se/) [introductory](https://dev-blog.apollodata.com/exploring-relay-modern-276f5965f827) posts about it. There are already quadrillions of Facebook users getting their data delivered to them via Relay Modern, and even more importantly, I've ported my blog over to it. Seems like as good a time as any to tell this story, or at least part of it.
