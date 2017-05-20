@@ -1,6 +1,7 @@
 ---
 tags: relay blog
 title: Building Relay Modern
+twitter: https://twitter.com/wincent/status/865817774530088960
 ---
 
 There's a long backstory about the development of [Relay Modern](http://facebook.github.io/relay/) that's been bubbling around in the back of my head for a while. As I write this, [version 1.0.0](https://github.com/facebook/relay/releases) is out, we've published [an official blog post](https://code.facebook.com/posts/1362748677097871/relay-modern-simpler-faster-more-extensible/) introducing the new version, and people out in the community have had time to write some [useful](https://www.graph.cool/docs/tutorials/migrating-to-relay-modern-eijooto4se/) [introductory](https://dev-blog.apollodata.com/exploring-relay-modern-276f5965f827) posts about it. There are already quadrillions of Facebook users getting their data delivered to them via Relay Modern, and even more importantly, I've ported my blog over to it. Seems like as good a time as any to tell this story, or at least part of it.
@@ -80,3 +81,5 @@ Between finishing the new core and shipping 1.0.0 there has been a lot of thankl
 - Our manager [Alex](https://twitter.com/alex_langenfeld) was a roving support agent who tirelessly helped out with anything and everything.
 
 But this post is in large part a tribute to Joe Savona. Neither of us is working directly on Relay any more, but the experience will forever loom as an indelible and transformative part of my Facebook story. As a colleague, erstwhile neighbor, and friend, working on Relay with Joe was a once-in-a-lifetime experience. I'm sure that Relay will continue to be an important building block for teams at Facebook, and I hope that it's useful to teams in the external community as well, but no matter what direction the framework ends up evolving towards in the future, I know that the design and architecture will retain elements of Joe's brilliant touch for a long time to come. Thank you, Joe, and keep on hacking.
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/865817774530088960)</em></small>
