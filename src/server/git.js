@@ -5,20 +5,15 @@
 import Promise from 'bluebird';
 import {spawn} from 'child_process';
 import path from 'path';
+import createErrorClass from '../common/createErrorClass';
 import {REPO} from './constants';
 
-// Why subclassing built-ins is hard:
-//   http://www.2ality.com/2011/12/subtyping-builtins.html
-//
-// How to fake it:
-//   https://coderwall.com/p/m3-cqw/subclassing-error-in-javascript-is-harder-than-it-seems
-export function GitError(message: string, code: number) {
-  this.message = message;
-  this.code = code;
-  this.stack = new Error(message).stack;
-}
-GitError.prototype = Object.create(Error.prototype);
-GitError.prototype.constructor = GitError;
+const GitError = createErrorClass(
+  'GitError',
+  function (message: string, code: number) {
+    return {message, code};
+  }
+);
 
 // TODO: expose streamy version of this
 function run(command, ...args: Array<string>): Promise<string> {

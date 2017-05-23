@@ -16,7 +16,7 @@ function descriptionForCode(code: number): string {
 }
 
 export default createErrorClass(
-  'Redirect Error',
+  'RedirectError',
   function (target: string, code: number) {
     const message = `HTTP/1.1 ${code} ${descriptionForCode(code)} - Location: ${target}`;
     return {message, code, target};

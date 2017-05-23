@@ -4,7 +4,7 @@
 
 import createErrorClass from './createErrorClass';
 
-const message = 'Render Text Error';
+const message = 'RenderTextError';
 
 export default createErrorClass(
   message,
