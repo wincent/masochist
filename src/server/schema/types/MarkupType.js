@@ -68,7 +68,7 @@ function getMarkedRenderer(baseLevel: ?number) {
   return renderer;
 }
 
-const MarkupFormatType = new GraphQLEnumType({
+export const MarkupFormatType = new GraphQLEnumType({
   name: 'MARKUP_FORMAT_TYPE',
   values: {
     WIKITEXT: {value: 'wikitext'},

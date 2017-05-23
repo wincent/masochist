@@ -24,6 +24,7 @@ import {
 import App from '../client/components/App';
 import DocumentTitle from '../client/components/DocumentTitle';
 import HTTPError from '../client/components/HTTPError';
+import NotFoundError from '../common/NotFoundError';
 import RedirectError from '../common/RedirectError';
 import RenderTextError from '../common/RenderTextError';
 import getRequestBody from '../common/getRequestBody';
@@ -142,14 +143,16 @@ appRoutes.forEach(route => {
             response.redirect(error.code, error.target);
             return null;
           } else if (error instanceof RenderTextError) {
-            response.set('Content-Type', 'text/plain');
+            response.set('Content-Type', error.type);
             response.send(error.text);
             return null;
           }
+          const code = error instanceof NotFoundError ? 404 : 500;
+          response.status(code);
           return {
             pageContent: ReactDOMServer.renderToStaticMarkup(
               <App router={router}>
-                <HTTPError code={500} />
+                <HTTPError code={code} />
               </App>,
             ),
           };

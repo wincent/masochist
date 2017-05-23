@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule SnippetSourceRouteQuery.graphql
- * @generated SignedSource<<64a630ca250064480eaa671c000fde4d>>
- * @relayHash 3f0dd823f231d218ba06ff63dd5249ed
+ * @generated SignedSource<<10db91247481d3daf7adde92f3455a3d>>
+ * @relayHash d694b0a354bdc0cb4d205cf087e784cd
  * @flow
  * @nogrep
  */
@@ -21,12 +21,13 @@ import type {ConcreteBatch} from 'relay-runtime';
 
 /*
 query SnippetSourceRouteQuery(
+  $format: MARKUP_FORMAT_TYPE
   $id: ID!
 ) {
   node(id: $id) {
     __typename
     ... on Snippet {
-      source
+      source(format: $format)
     }
     id
   }
@@ -36,6 +37,12 @@ query SnippetSourceRouteQuery(
 const batch /*: ConcreteBatch*/ = {
   "fragment": {
     "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "format",
+        "type": "MARKUP_FORMAT_TYPE",
+        "defaultValue": null
+      },
       {
         "kind": "LocalArgument",
         "name": "id",
@@ -69,7 +76,14 @@ const batch /*: ConcreteBatch*/ = {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
+                "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "format",
+                    "variableName": "format",
+                    "type": "MARKUP_FORMAT_TYPE"
+                  }
+                ],
                 "name": "source",
                 "storageKey": null
               }
@@ -87,6 +101,12 @@ const batch /*: ConcreteBatch*/ = {
   "name": "SnippetSourceRouteQuery",
   "query": {
     "argumentDefinitions": [
+      {
+        "kind": "LocalArgument",
+        "name": "format",
+        "type": "MARKUP_FORMAT_TYPE",
+        "defaultValue": null
+      },
       {
         "kind": "LocalArgument",
         "name": "id",
@@ -134,7 +154,14 @@ const batch /*: ConcreteBatch*/ = {
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
+                "args": [
+                  {
+                    "kind": "Variable",
+                    "name": "format",
+                    "variableName": "format",
+                    "type": "MARKUP_FORMAT_TYPE"
+                  }
+                ],
                 "name": "source",
                 "storageKey": null
               }
@@ -145,7 +172,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query SnippetSourceRouteQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      source\n    }\n    id\n  }\n}\n"
+  "text": "query SnippetSourceRouteQuery(\n  $format: MARKUP_FORMAT_TYPE\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      source(format: $format)\n    }\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

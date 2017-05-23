@@ -7,8 +7,6 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
-// import './App.css';
-
 class Snippet extends React.Component {
   render() {
     const snippet = this.props.data;

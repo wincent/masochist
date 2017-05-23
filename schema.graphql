@@ -240,7 +240,7 @@ type Snippet implements Node, Tagged, Versioned {
   description: String
 
   # Raw source of snippet
-  source: String!
+  source(format: MARKUP_FORMAT_TYPE): String
 
   # URL for the snippet
   url: String!

@@ -8,7 +8,7 @@ const message = 'RenderTextError';
 
 export default createErrorClass(
   message,
-  function (text: string) {
-    return {message, text};
+  function (text: string, type: string) {
+    return {message, text, type};
   }
 );

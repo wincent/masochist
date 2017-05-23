@@ -14,6 +14,8 @@ import '../common/unhandledRejection';
 import './normalize.css';
 import './skeleton.css';
 
+import NotFoundError from '../common/NotFoundError';
+import RenderTextError from '../common/RenderTextError';
 import createRouter from '../common/createRouter';
 import getRequestBody from '../common/getRequestBody';
 import App from './components/App';
@@ -146,13 +148,14 @@ function resolve(location, data) {
       );
     })
     .catch(error => {
-      console.error(error);
+      if (error instanceof RenderTextError) {
+        window.location = location.pathname;
+        return null;
+      }
+      const code = error instanceof NotFoundError ? 404 : 500;
       ReactDOM.render(
         <App router={router}>
-          {/* 500 is almost certainly not the right error code, but if we
-            * get here things are already badly wrong.
-            */}
-          <HTTPError code={500} />
+          <HTTPError code={code} />
         </App>,
         root,
       );

@@ -12,7 +12,10 @@ import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import versionedInterface from '../interfaces/versionedInterface';
 import HistoryType from './HistoryType';
-import MarkupType from './MarkupType';
+import {
+  default as MarkupType,
+  MarkupFormatType,
+} from './MarkupType';
 
 const SnippetType = registerType(
   new GraphQLObjectType({
@@ -41,10 +44,19 @@ const SnippetType = registerType(
         description: 'Succinct summary of the snippet content',
       },
       source: {
-        type: new GraphQLNonNull(GraphQLString),
+        type: GraphQLString,
+        args: {
+          format: {
+            type: MarkupFormatType,
+          },
+        },
         description: 'Raw source of snippet',
-        resolve(snippet) {
-          return snippet.body.trim();
+        resolve(snippet, args) {
+          if (!args.format || args.format === snippet.format) {
+            return snippet.body.trim();
+          } else {
+            return null;
+          }
         },
       },
       url: {

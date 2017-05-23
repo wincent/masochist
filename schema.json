@@ -1442,15 +1442,22 @@
             {
               "name": "source",
               "description": "Raw source of snippet",
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
+              "args": [
+                {
+                  "name": "format",
+                  "description": null,
+                  "type": {
+                    "kind": "ENUM",
+                    "name": "MARKUP_FORMAT_TYPE",
+                    "ofType": null
+                  },
+                  "defaultValue": null
                 }
+              ],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
