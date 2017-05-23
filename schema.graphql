@@ -239,6 +239,9 @@ type Snippet implements Node, Tagged, Versioned {
   # Succinct summary of the snippet content
   description: String
 
+  # Raw source of snippet
+  source: String!
+
   # URL for the snippet
   url: String!
   history: History!

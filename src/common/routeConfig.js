@@ -8,6 +8,7 @@ import PageRoute from './routes/PageRoute';
 import PostRoute from './routes/PostRoute';
 import PostsRoute from './routes/PostsRoute';
 import SearchRoute from './routes/SearchRoute';
+import SnippetSourceRoute from './routes/SnippetSourceRoute';
 import SnippetRoute from './routes/SnippetRoute';
 import SnippetsRoute from './routes/SnippetsRoute';
 import TagsRoute from './routes/TagsRoute';
@@ -81,6 +82,11 @@ export default [
   {
     path: '/snippets',
     action: SnippetsRoute,
+  },
+  {
+    path: '/snippets/:id.txt',
+    action: SnippetSourceRoute,
+    prepare: getPrepareParams('Snippet'),
   },
   {
     // TODO: handle .txt on snippet

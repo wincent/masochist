@@ -25,6 +25,7 @@ import App from '../client/components/App';
 import DocumentTitle from '../client/components/DocumentTitle';
 import HTTPError from '../client/components/HTTPError';
 import RedirectError from '../common/RedirectError';
+import RenderTextError from '../common/RenderTextError';
 import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
 import createRouter from '../common/createRouter';
@@ -139,6 +140,10 @@ appRoutes.forEach(route => {
         .catch(error => {
           if (error instanceof RedirectError) {
             response.redirect(error.code, error.target);
+            return null;
+          } else if (error instanceof RenderTextError) {
+            response.set('Content-Type', 'text/plain');
+            response.send(error.text);
             return null;
           }
           return {

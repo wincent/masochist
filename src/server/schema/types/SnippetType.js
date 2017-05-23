@@ -31,7 +31,7 @@ const SnippetType = registerType(
         type: new GraphQLNonNull(MarkupType),
         resolve(snippet) {
           return {
-            raw: snippet.body,
+            raw: snippet.body.trim(),
             format: snippet.format,
           };
         },
@@ -39,6 +39,13 @@ const SnippetType = registerType(
       description: {
         type: GraphQLString,
         description: 'Succinct summary of the snippet content',
+      },
+      source: {
+        type: new GraphQLNonNull(GraphQLString),
+        description: 'Raw source of snippet',
+        resolve(snippet) {
+          return snippet.body.trim();
+        },
       },
       url: {
         type: new GraphQLNonNull(GraphQLString),
