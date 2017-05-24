@@ -18,7 +18,7 @@ Summary text taken from:
 > -   *Attribution*. You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).
 > -   *Share Alike*. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same, similar or a compatible license.
 >
-> &lt;hr /&gt;
+> <hr />
 >
 > -   For any reuse or distribution, you must make clear to others the license terms of this work. The best way to do this is with a link to this web page.
 > -   Any of the above conditions can be waived if you get permission from the copyright holder.
