@@ -11,8 +11,8 @@ class TagsIndex extends React.Component {
 
   render() {
     const {tags} = this.props.data;
+    const filters = this.state.filterString.toLowerCase().trim().split(/\s+/);
     const filteredTags = tags.edges.map(({node}) => node).filter(node => {
-      const filters = this.state.filterString.trim().split(/\s+/);
       return (
         filters === [] ||
         filters.every(filter => node.name.indexOf(filter) !== -1)
