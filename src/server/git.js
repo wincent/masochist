@@ -8,12 +8,12 @@ import path from 'path';
 import createErrorClass from '../common/createErrorClass';
 import {REPO} from './constants';
 
-export const GitError = createErrorClass(
-  'GitError',
-  function (message: string, code: number) {
-    return {message, code};
-  }
-);
+export const GitError = createErrorClass('GitError', function(
+  message: string,
+  code: number,
+) {
+  return {message, code};
+});
 
 // TODO: expose streamy version of this
 function run(command, ...args: Array<string>): Promise<string> {

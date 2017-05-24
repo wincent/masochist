@@ -4,9 +4,6 @@
 
 import createErrorClass from './createErrorClass';
 
-export default createErrorClass(
-  'NotFoundError',
-  function (message: string) {
-    return {message};
-  }
-);
+export default createErrorClass('NotFoundError', function(message: string) {
+  return {message};
+});

@@ -4,7 +4,9 @@ import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
-import type {ArticlePreview as ArticlePreviewData} from './__generated__/ArticlePreview.graphql';
+import type {
+  ArticlePreview as ArticlePreviewData,
+} from './__generated__/ArticlePreview.graphql';
 
 class ArticlePreview extends React.Component {
   props: {

@@ -15,10 +15,10 @@ function descriptionForCode(code: number): string {
   }
 }
 
-export default createErrorClass(
-  'RedirectError',
-  function (target: string, code: number) {
-    const message = `HTTP/1.1 ${code} ${descriptionForCode(code)} - Location: ${target}`;
-    return {message, code, target};
-  }
-);
+export default createErrorClass('RedirectError', function(
+  target: string,
+  code: number,
+) {
+  const message = `HTTP/1.1 ${code} ${descriptionForCode(code)} - Location: ${target}`;
+  return {message, code, target};
+});

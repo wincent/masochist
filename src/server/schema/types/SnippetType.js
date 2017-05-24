@@ -12,10 +12,7 @@ import timestampFields from '../fields/timestampFields';
 import taggedInterface from '../interfaces/taggedInterface';
 import versionedInterface from '../interfaces/versionedInterface';
 import HistoryType from './HistoryType';
-import {
-  default as MarkupType,
-  MarkupFormatType,
-} from './MarkupType';
+import {default as MarkupType, MarkupFormatType} from './MarkupType';
 
 const SnippetType = registerType(
   new GraphQLObjectType({

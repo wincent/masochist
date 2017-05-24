@@ -4,14 +4,14 @@ import {graphql} from 'react-relay';
 import Snippet from '../../client/components/Snippet';
 import {MarkupFormatType} from '../../server/schema/types/MarkupType';
 import NotFoundError from '../NotFoundError';
-import RenderTextError from '../RenderTextError'
+import RenderTextError from '../RenderTextError';
 import buildRoute from '../buildRoute';
 
 /**
  * A mapping from 'html' to "HTML" etc.
  */
 const FORMAT_TO_MARKUP_TYPE = new Map(
-  MarkupFormatType.getValues().map(({name, value}) => [value, name])
+  MarkupFormatType.getValues().map(({name, value}) => [value, name]),
 );
 
 /**
@@ -49,11 +49,11 @@ export default buildRoute(
     if (node && node.source !== null) {
       throw new RenderTextError(
         node.source,
-        FORMAT_TO_MIME_TYPE[format.toLowerCase()] || 'text/plain'
+        FORMAT_TO_MIME_TYPE[format.toLowerCase()] || 'text/plain',
       );
     }
     throw new NotFoundError(
-      `Snippet "${id}" source not found for format ${format}`
+      `Snippet "${id}" source not found for format ${format}`,
     );
-  }
+  },
 );

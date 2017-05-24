@@ -35,8 +35,8 @@ export default function createErrorClass(
           // Use a getter here because computing the stack is expensive;
           // do it lazily only when accessed.
           return error.stack;
-        }
-      }: Object)
+        },
+      }: Object),
     );
   }
 
@@ -44,7 +44,7 @@ export default function createErrorClass(
     constructor: {
       configurable: true,
       value: ErrorClass,
-      writable: true
+      writable: true,
     },
   });
 
