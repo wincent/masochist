@@ -10,7 +10,9 @@ import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 
 import type {RelayPaginationProp} from 'react-relay';
-import type {ArticlesIndex as ArticlesIndexData} from './__generated__/ArticlesIndex.graphql';
+import type {
+  ArticlesIndex as ArticlesIndexData,
+} from './__generated__/ArticlesIndex.graphql';
 
 if (inBrowser) {
   require('./ArticlesIndex.css');
@@ -65,12 +67,13 @@ class ArticlesIndex extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {edges && edges.map(edge => {
-                const node = edge && edge.node;
-                if (node) {
-                  return <ArticlePreview key={node.id} data={node} />;
-                }
-              })}
+              {edges &&
+                edges.map(edge => {
+                  const node = edge && edge.node;
+                  if (node) {
+                    return <ArticlePreview key={node.id} data={node} />;
+                  }
+                })}
             </tbody>
           </table>
           {this.props.relay.hasMore()
