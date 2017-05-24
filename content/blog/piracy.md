@@ -35,9 +35,7 @@ Another example; [Erik J. Barzeski](http://nslog.com/2005/06/26/qotd_piracy):
 > Things I know sell software:
 >
 > - Better software (features, aesthetics, usability, reliability).
->
 > - Word of mouth/buzz/publicity/press.
->
 > - Good customer service.
 >
 > There's so much work laid out for me right there, why bother working in an area (piracy control) that I'm not sure about? Yet many developers seem to make piracy-control their number one priority. It's because they're too fixated on the concept of a lost dollar. But a lost dollar from a pirate who uses your software is no more real than a lost dollar from a potential customer who hates that you never work on updates that matter to them, or who notices that your app requires activation, or who gets the impression from your sales rhetoric that you hate users, etc.
