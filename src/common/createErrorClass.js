@@ -16,52 +16,35 @@ export default function createErrorClass(
   name: string,
   getProperties: (...args: any) => {message: string, [string]: mixed},
 ) {
-  // Using `new Function` as a slightly less ugly `eval`, so that the error name
-  // gets correctly logged in the console.
-  //
-  // Due to use of babel-polyfill (and therefore core-js), no need to polyfill
-  // `Object.create`, `Object.defineProperty` etc.
-  return new Function('getProperties', `
-    function ${name}() {
-      var properties =  getProperties.apply(this, arguments);
-      var error = Error.call(this, properties.message);
-      error.name = this.name = '${name}';
-      this.message = error.message;
-      Object.entries(properties).forEach(function(pair) {
-        var key = pair[0];
-        var value = pair[1];
-        if (key !== 'message') {
-          Object.defineProperty(
-            this,
-            key,
-            {
-              value: value
-            }
-          );
-        }
-      }, this);
-      Object.defineProperty(
-        this,
-        'stack',
-        {
-          configurable: true,
-          get: function() {
-            // Use a getter here because computing the stack is expensive;
-            // do it lazily only when accessed.
-            return error.stack;
-          }
-        }
-      );
-    }
-
-    ${name}.prototype = Object.create(Error.prototype, {
-      constructor: {
-        configurable: true,
-        value: ${name},
-        writable: true
-      },
+  function ErrorClass() {
+    const {message, ...properties} = getProperties.apply(this, arguments);
+    const error = Error(message);
+    error.name = this.name = name;
+    this.message = error.message;
+    Object.entries(properties).forEach(([key, value]) => {
+      Object.defineProperty(this, key, {value});
     });
+    Object.defineProperty(
+      this,
+      'stack',
+      {
+        configurable: true,
+        get() {
+          // Use a getter here because computing the stack is expensive;
+          // do it lazily only when accessed.
+          return error.stack;
+        }
+      }
+    );
+  }
 
-    return ${name};
-  `)(getProperties);
+  ErrorClass.prototype = Object.create(Error.prototype, {
+    constructor: {
+      configurable: true,
+      value: ErrorClass,
+      writable: true
+    },
+  });
+
+  return ErrorClass;
 }
