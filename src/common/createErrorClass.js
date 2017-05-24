@@ -27,14 +27,16 @@ export default function createErrorClass(
     Object.defineProperty(
       this,
       'stack',
-      {
+      // Explicitly annotate as Object here to work around:
+      // https://github.com/facebook/flow/issues/285
+      ({
         configurable: true,
         get() {
           // Use a getter here because computing the stack is expensive;
           // do it lazily only when accessed.
           return error.stack;
         }
-      }
+      }: Object)
     );
   }
 
