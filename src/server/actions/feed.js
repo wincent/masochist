@@ -3,7 +3,6 @@
  */
 
 import entities from 'entities';
-import idx from 'idx';
 import {graphql} from 'react-relay';
 import RSS from 'rss';
 

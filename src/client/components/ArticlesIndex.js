@@ -1,9 +1,16 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
 import ArticlePreview from './ArticlePreview';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
+
+import type {RelayPaginationProp} from 'react-relay';
+import type {ArticlesIndex as ArticlesIndexData} from './__generated__/ArticlesIndex.graphql';
 
 if (inBrowser) {
   require('./ArticlesIndex.css');
@@ -12,6 +19,15 @@ if (inBrowser) {
 const PAGE_SIZE = 10;
 
 class ArticlesIndex extends React.Component {
+  props: {
+    data: ArticlesIndexData,
+    relay: RelayPaginationProp,
+  };
+  state: {
+    isLoading: boolean,
+  };
+  _disposable: ?{dispose: () => void};
+
   constructor(props) {
     super(props);
     this.state = {isLoading: false};
@@ -34,6 +50,7 @@ class ArticlesIndex extends React.Component {
   }
 
   render() {
+    const edges = this.props.data.articles.edges;
     return (
       <DocumentTitle title="wiki">
         <div>
@@ -48,9 +65,12 @@ class ArticlesIndex extends React.Component {
               </tr>
             </thead>
             <tbody>
-              {this.props.data.articles.edges.map(({node}) => (
-                <ArticlePreview key={node.id} data={node} />
-              ))}
+              {edges && edges.map(edge => {
+                const node = edge && edge.node;
+                if (node) {
+                  return <ArticlePreview key={node.id} data={node} />;
+                }
+              })}
             </tbody>
           </table>
           {this.props.relay.hasMore()
