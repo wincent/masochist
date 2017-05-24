@@ -16,6 +16,7 @@ import Tags from './Tags';
 import When from './When';
 
 import type {MasochistRouter} from '../../common/createRouter';
+import type {Article as ArticleData} from './__generated__/Article.graphql';
 
 if (inBrowser) {
   require('./Article.css');
@@ -53,6 +54,10 @@ function softRedirect(target: string, router: MasochistRouter): null {
 }
 
 class Article extends React.Component {
+  props: {
+    data: ArticleData,
+  };
+
   static contextTypes = {
     router: PropTypes.object,
   };
