@@ -15,6 +15,8 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
+import type {MasochistRouter} from '../../common/createRouter';
+
 if (inBrowser) {
   require('./Article.css');
 }
@@ -39,7 +41,7 @@ function hardRedirect(target: string): null {
  *
  * If the route in question cannot match, fall back to `hardRedirect()`.
  */
-function softRedirect(target: string, router: mixed): null {
+function softRedirect(target: string, router: MasochistRouter): null {
   if (matchRoute(target)) {
     // Let React finish rendering before running this; otherwise it will
     // complain "triggering nested component updates from render is not

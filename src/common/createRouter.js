@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import Router from 'universal-router';
 
 import routeConfig from './routeConfig';
@@ -24,7 +28,18 @@ function resolve(context, params) {
   return action(context, params);
 }
 
-export default function createRouter(history, resolver = resolve) {
+type History = {
+  replace: (target: string) => void,
+};
+
+export type MasochistRouter = {
+  history: History,
+};
+
+export default function createRouter(
+  history: mixed,
+  resolver: mixed = resolve,
+): MasochistRouter {
   const router = new Router(routeConfig, {
     resolveRoute: resolver,
   });
