@@ -8,6 +8,29 @@ type SearchResult = {
   id: string,
   type: string,
 };
+
+/**
+ * For ease of use, be liberal in what filters we accept.
+ */
+const NORMALIZED_FILTERS = {
+  article: 'wiki',
+  articles: 'wiki',
+  page: 'pages',
+  post: 'blog',
+  posts: 'blog',
+  snippet: 'snippets',
+};
+
+function getFilter(atom: string): ?string {
+  const filter = atom.match(/^type:(\w+)$/);
+  if (filter) {
+    const match = filter[1];
+    const normalized = NORMALIZED_FILTERS[match] || match;
+    return `content/${normalized}`;
+  }
+  return null;
+}
+
 /**
  * Uses `git grep` to search the content repo.
  */
@@ -28,7 +51,14 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
     return [];
   }
 
+  const directories = [];
+
   trimmed.split(/\s+/).forEach((atom, i) => {
+    const filter = getFilter(atom);
+    if (filter) {
+      directories.push(filter);
+      return;
+    }
     if (i) {
       args.push('--and'); // Multiple patterns must all match.
     }
@@ -37,12 +67,15 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
       atom,
     );
   });
+  if (!directories.length) {
+    directories.push('content');
+  }
 
   const head = (await git('rev-parse', 'content')).trim();
   const tree = (await git('show', '-s', '--format=%T', head)).trim();
   let hits = '';
   try {
-    hits = await git(...args, tree, '--', 'content');
+    hits = await git(...args, tree, '--', ...directories);
   } catch (e) {
     // `git grep` returns an exit status of 1 to indicate "nothing found".
     if (e instanceof GitError && e.code === 1) {
