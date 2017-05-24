@@ -9,8 +9,8 @@ Great. My existing Comodo-supplied certificate, the one that backs the [Wincent 
 
 Better still, RapidSSL certificates are directly signed by a root certificate rather than requiring an intermediate certificate chain. Although it makes no real difference for end users this is a [big deal](http://gagravarr.org/writing/openssl-certs/personal.shtml) for you if you're an administrator because it makes your set-up so much easier.
 
-> In some cases, the CA which signed your certificate is not a root CA, but is a CA signed by a CA (or signed by a CA who was signed by a CA who is a root CA, etc.) This is often known as a chained certificate, or a ca-bundle.\
-> \
+> In some cases, the CA which signed your certificate is not a root CA, but is a CA signed by a CA (or signed by a CA who was signed by a CA who is a root CA, etc.) This is often known as a chained certificate, or a ca-bundle.
+>
 > What makes things tricky is that the remote client will look at your certificate, and try to verify it against the root CAs it knows about. If there is an intermediate CA between you and the CA the client knows about, it will need this certificate to sucessfully verify your certificate. As such, the server needs to not only provide clients with its own certificate, but also those of the intermediate CAs.
 
 When I set up secure IMAP and POP access for the first time it was actually quite a tricky process because I had to not only ensure that I provided my server with my certificate, the signing certificate, and my private key, but I also had to make sure that the items were in the right order. This was entirely a trial-and-error process as I couldn't find any information about it on the web. In the end I found that the required order was:

@@ -77,7 +77,7 @@ The official [Apple Cross-Development Programming Guide](http://developer.apple.
 
 [Tech Note 2137](http://developer.apple.com/technotes/tn2005/tn2137.html), *Building Universal Binaries from "configure"-based Open Source Projects*, says:
 
-> The first approach is to simply have `configure` build a universal binary, by passing in the appropriate `CFLAGS` and `LDFLAGS` environment variables. This is done simply by running\
+> The first approach is to simply have `configure` build a universal binary, by passing in the appropriate `CFLAGS` and `LDFLAGS` environment variables. This is done simply by running
 >
 >     env CFLAGS="-O -g -isysroot /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc" \
 >       LDFLAGS="-Wl,-syslibroot,/Developer/SDKs/MacOSX10.4u.sdk" \

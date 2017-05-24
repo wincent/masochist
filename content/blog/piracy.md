@@ -22,26 +22,26 @@ Another example; [Erik J. Barzeski](http://nslog.com/2005/06/26/qotd_piracy):
 
 [Wil Shipley](http://wilshipley.com/blog/2005/06/piracy.html) says:
 
-> Don't worry much about piracy. If you spend more than a couple days a year worrying about it, you're fooling yourself.\
-> \
+> Don't worry much about piracy. If you spend more than a couple days a year worrying about it, you're fooling yourself.
+>
 > Here's the simple facts: pirates steal applications. They don't pay for them. It doesn't hurt you to have something "stolen" that (a) is virtual and (b) wasn't going to be purchased.
 
 [Daniel Jalkut](http://www.red-sweater.com/) adds:
 
-> What complicates this issue even more is that nobody can say definitively whether piracy hurts or helps a small-time startup software business.\
-> \
-> The complexity only hardens my determination to just keep building better software.\
-> \
-> Things I know sell software:\
-> \
-> - Better software (features, aesthetics, usability, reliability).\
-> \
-> - Word of mouth/buzz/publicity/press.\
-> \
-> - Good customer service.\
-> \
-> There's so much work laid out for me right there, why bother working in an area (piracy control) that I'm not sure about? Yet many developers seem to make piracy-control their number one priority. It's because they're too fixated on the concept of a lost dollar. But a lost dollar from a pirate who uses your software is no more real than a lost dollar from a potential customer who hates that you never work on updates that matter to them, or who notices that your app requires activation, or who gets the impression from your sales rhetoric that you hate users, etc.\
-> \
+> What complicates this issue even more is that nobody can say definitively whether piracy hurts or helps a small-time startup software business.
+>
+> The complexity only hardens my determination to just keep building better software.
+>
+> Things I know sell software:
+>
+> - Better software (features, aesthetics, usability, reliability).
+>
+> - Word of mouth/buzz/publicity/press.
+>
+> - Good customer service.
+>
+> There's so much work laid out for me right there, why bother working in an area (piracy control) that I'm not sure about? Yet many developers seem to make piracy-control their number one priority. It's because they're too fixated on the concept of a lost dollar. But a lost dollar from a pirate who uses your software is no more real than a lost dollar from a potential customer who hates that you never work on updates that matter to them, or who notices that your app requires activation, or who gets the impression from your sales rhetoric that you hate users, etc.
+>
 > I'm not successful enough at all this yet to really preach the truth, but my sales do go up every month, and it has nothing to do with anti-piracy measures, because I don't work on them at all.
 
 All of these positions are basically the same and amount to doing "nothing" or "almost nothing" with respect to piracy. In reality those that say "nothing" really mean "almost nothing" seeing as they all implement at least basic license code systems, so there really is a high degree of consensus here. These quotes come from developers who are successful and well-known to varying degrees within the Mac software development community, and it's hard to argue with the reasonableness of their positions.

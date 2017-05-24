@@ -21,10 +21,10 @@ Mr "Batman" failed to crash my Mail application because I stripped the attachmen
 
 He writes:
 
-> I think you'll find my argument quite compelling.\
-> \
-> thx,\
-> \
+> I think you'll find my argument quite compelling.
+>
+> thx,
+>
 > DB
 
 Unfortunately, I don't see any "argument" at all. All I see is an asshole who just tried, unsuccessfully, to remotely crash a program running on my computer. I think there are much better ways of making a point. Once again, I counsel anyone reading this to steer well clear of this guy's website. Is this really the sort of person whose writing you want to read?

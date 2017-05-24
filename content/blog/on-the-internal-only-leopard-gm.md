@@ -5,10 +5,10 @@ tags: blog
 
 In "Indies Roll the Dice on Final Leopard", [Steven Frank](http://stevenf.com/2007/10/indies_roll_the_dice_on_final_leopard.php) writes:
 
-> It increasingly looks like we won't be getting access to the final build of Leopard until the same day our customers do. We have a close-to-final seed, but not the actual shipping bits.\
-> \
-> This isn't a new thing. It was the same deal with Tiger, and other OS releases before it. Apple has not stated any reason why the final builds are withheld from developers.\
-> \
+> It increasingly looks like we won't be getting access to the final build of Leopard until the same day our customers do. We have a close-to-final seed, but not the actual shipping bits.
+>
+> This isn't a new thing. It was the same deal with Tiger, and other OS releases before it. Apple has not stated any reason why the final builds are withheld from developers.
+>
 > There has been speculation that it's to prevent prerelease piracy of the OS, but that argument doesn't hold much water -- in the best possible case, they are simply delaying piracy by about a week. The more likely scenario is that the final build will appear on BitTorrent trackers before it appears on store shelves despite this quaint measure. Such was certainly the case with Tiger.
 
 Well, I actually think it *is* to do with piracy. Apple knows that if they seeded a real release candidate, a release candidate which could end up being the GM, it would wind up on trackers a weeks (or weeks) before retail release. Literally tens of thousands would download it, and thousands of those weekend pirates are ultra-enthusiastic [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) users who would otherwise be in line at the Apple store on 26 October ready to hand over their $129. Apple has proven to be pretty effective at getting Mac OS X torrents taken down at high-profile sites in the past, but no amount of damage control can be perfect.

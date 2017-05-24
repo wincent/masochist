@@ -19,10 +19,10 @@ I was at first a little puzzled why this is the case. I had explicitly added 0.5
 
 But as [Chris Hanson notes](http://www.cocoabuilder.com/archive/message/cocoa/2004/2/14/97119) it is a little more complicated than that:
 
-> Of course, sometimes you want to do something device-specific like draw a hairline. You don't want to specify that the line is 1 point, or 0.5 points, or 0.1 points, or... So the PostScript imaging model gives you a shortcut; you can set the line width to 0.0, and this is interpreted as "the thinnest line you can draw on this device."\
-> \
-> Quartz complicates things further because right now its primary rendering target has a relatively low resolution (72dpi). It employs antialiasing to get a higher effective resolution out of the screen. Drawing on the coordinates means that a one-point line will half-cover two device pixels, which means it has to antialias to make the line appear correctly.\
-> \
+> Of course, sometimes you want to do something device-specific like draw a hairline. You don't want to specify that the line is 1 point, or 0.5 points, or 0.1 points, or... So the PostScript imaging model gives you a shortcut; you can set the line width to 0.0, and this is interpreted as "the thinnest line you can draw on this device."
+>
+> Quartz complicates things further because right now its primary rendering target has a relatively low resolution (72dpi). It employs antialiasing to get a higher effective resolution out of the screen. Drawing on the coordinates means that a one-point line will half-cover two device pixels, which means it has to antialias to make the line appear correctly.
+>
 > But on a 72dpi screen, that's not necessarily the effect you want. So you can shift the 72dpi user coordinate system by (0.5, 0.5) to make rendering occur down the center of the 72dpi device coordinate system. You need to be aware exactly why you're doing this, though, so you can avoid doing it in situations where the user and device coordinate systems aren't identical.
 
 It's all a bit confusing but with the aid of a few images all should become clear... First up, we have a simple rectangle with origin `0, 0` and size `9, 7` (width, height):

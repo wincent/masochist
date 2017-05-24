@@ -5,8 +5,8 @@ tags: blog
 
 Just saw [this post](http://www.zeldman.com/2007/09/27/something-new-at-apple-store/) (via [Gruber](http://daringfireball.net/)):
 
-> But while its beauty and usability have always run ahead of the pack, its underlying source code has not always kept pace. Now the online Apple Store’s inside is as beautiful as its exterior—and as far ahead of the mainstream in web development as a company like Apple needs to be.\
-> \
+> But while its beauty and usability have always run ahead of the pack, its underlying source code has not always kept pace. Now the online Apple Store’s inside is as beautiful as its exterior—and as far ahead of the mainstream in web development as a company like Apple needs to be.
+>
 > One day, all sites will be built like this. View Source for an inspiring glimpse of how semantic and accessible even a grid-based, image-intensive, pixel-perfect site can be.
 
 Although [the store front](http://store.apple.com/) looks absolutely magnificent I am not so sure about the source. There is a *lot* of superfluous whitespace which makes it much harder to read than it should be. [Tidy](http://www.wincent.com/knowledge-base/Tidy) reports these warnings (but no hard errors):

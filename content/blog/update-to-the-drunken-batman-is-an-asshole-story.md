@@ -170,7 +170,7 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > Perhaps you're simply a liar. Works for me.
 
-> "Wincent Colaitua is mental, and just making the emails up."\
+> "Wincent Colaitua is mental, and just making the emails up."
 > I find it revealing that this is the first place your mind went...
 
 > The JPG incident is not in good faith. It's a whole different kettle of fish. I find it deeply wrong, harmful to the general vibe of the Mac community, and something all good folks should condemn.
@@ -225,10 +225,10 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > 1 vote for db=dick
 
-> I recently started reading your blog and up until now I have enjoyed your writings. My Safari browser crashed when I tried to open your front page but luckily I did not lose any data as others have reported, but I took offence to your stunt. Subsequently reading articles written by you will not hold great importance to me in the future.\
-> \
-> My computer system is my property and I consider anyone who performs unsolicited manipulation of my computer system that result in my applications crashing to be a malware author and a mere crook. You are no different than the much hated spammers that send me unsolicited mail. I am not interested in your motives only the consequences of your actions.\
-> \
+> I recently started reading your blog and up until now I have enjoyed your writings. My Safari browser crashed when I tried to open your front page but luckily I did not lose any data as others have reported, but I took offence to your stunt. Subsequently reading articles written by you will not hold great importance to me in the future.
+>
+> My computer system is my property and I consider anyone who performs unsolicited manipulation of my computer system that result in my applications crashing to be a malware author and a mere crook. You are no different than the much hated spammers that send me unsolicited mail. I am not interested in your motives only the consequences of your actions.
+>
 > All this boils down to common courtesy and manners that you and your choir do not apparently possess.
 
 > As I have been programming in Cocoa for about a year now and I really enjoy reading the blogs of great software developers such as Wil Shipley, Gus Mueller and many more I would like to thank you for bringing to my attention the blog of Wincent Colaiuta. He has some very interesting articles on technical matters and sounds like a very rational person and a knowledgable Mac OS X developer.

@@ -15,13 +15,13 @@ I've resisted for this long because I was worried about how much I might spend a
 
 So what were the winning tracks? First up, [*Es por tí*, by Grupo Mamey](http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?playlistId=83096173&s=143454&i=83096114), which is a 2003 [bachata](http://en.wikipedia.org/wiki/Bachata) remake of the [original by Juanes](http://phobos.apple.com/WebObjects/MZStore.woa/wa/viewAlbum?playlistId=13433542&s=143454&i=13599733) (which I also purchased). The song features the breath-takingly honest and direct romantic lyrics that are a Juanes trademark:
 
-> Cada vez que me levanto y veo que a mi lado estás me siento renovado\
-> tus ojos me llevan lentamente al Sol\
-> y tu boca me habla del amor y el corazón\
-> tu piel tiene el color de un rojo atardecer\
-> y es por tí que late mi corazón\
-> y es por tí que he vuelto a hablar de amor\
-> y es por tí que brillan mis ojos hoy\
+> Cada vez que me levanto y veo que a mi lado estás me siento renovado
+> tus ojos me llevan lentamente al Sol
+> y tu boca me habla del amor y el corazón
+> tu piel tiene el color de un rojo atardecer
+> y es por tí que late mi corazón
+> y es por tí que he vuelto a hablar de amor
+> y es por tí que brillan mis ojos hoy
 > y es por tí que calma mi dolor
 
 There's something so brutally honest about the Juanes lyrics, the manner in which he lays bare his feelings and makes himself totally vulnerable which is touching. These are lyrics which can take you back in time to a period in which you had never been hurt, in which your faith in love was unshaken; it's nice to listen to this music and at least consider that one day it might be possible to have that kind of faith again, that willingness to recognise that you might get hurt but that "vale la pena". These lyrics ring true in Spanish, "llegan al alma", but translated into English they just don't sound right because I can't imagine any English singer ever uttering such words.

@@ -5,7 +5,7 @@ tags: blog
 
 I just got an email from [Uli Kusterer](http://www.zathras.de/angelweb/home.htm) asking me to expand on my [comments the other day](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php) that Ben Collins-Sussman doesn't "get" distributed version control:
 
-> Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting.\
+> Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting.
 > Does it make feature branches easier? Does it encourage people to do more refactoring? Just curious to hear someone's opinion on this.
 
 I'll answer this with specific reference to [Git](http://www.wincent.com/knowledge-base/Git) seeing that's the [distributed version control](http://www.wincent.com/knowledge-base/distributed%20version%20control) system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.

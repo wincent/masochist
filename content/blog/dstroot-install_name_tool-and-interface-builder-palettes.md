@@ -23,14 +23,14 @@ So in the past I've gotten around this problem by having two separate targets in
 
 But that wasn't the only reason it was bad. I also had a bit of trouble with Xcode's `DSTROOT` build setting. Xcode has this to say about `DSTROOT`:
 
-> The path at which all products will be rooted when performing an install build. For instance, to install your products on the system proper, set this path to '/'. Defaults to /tmp/$(PROJECT\_NAME).dst to prevent a "test" install build from accidentally overwriting valid and needed data in the ultimate install path.\
-> \
+> The path at which all products will be rooted when performing an install build. For instance, to install your products on the system proper, set this path to '/'. Defaults to /tmp/$(PROJECT\_NAME).dst to prevent a "test" install build from accidentally overwriting valid and needed data in the ultimate install path.
+>
 > Typically this path is not set per target, but is provided as an option on the command line when performing an 'xcodebuild install'. It may also be set in a build configuration in special circumstances. \[DSTROOT\]
 
 Now, reading this I said to myself, why not set it per-target? What's the difference between setting it per-target and passing it on the command line? Apple's Scott Tooker provides [this clarification](http://lists.apple.com/archives/xcode-users/2004/Jan/msg00534.html):
 
-> The idea is that by default, when "installing" a build that the products go into a separate location where you can verify the contents before dittoing or copying the result into place (since a bad framework could seriously hose your system). Another benefit of installing into a separate location is this gives you a sparse root that can be turned into a package for distribution.\
-> \
+> The idea is that by default, when "installing" a build that the products go into a separate location where you can verify the contents before dittoing or copying the result into place (since a bad framework could seriously hose your system). Another benefit of installing into a separate location is this gives you a sparse root that can be turned into a package for distribution.
+>
 > By default this separate location is set to be /tmp (the build setting that controls this is $DSTROOT). Currently there is no UI for $DSTROOT. Although we don't recommend it, you can set DSTROOT to "/" to have things install in place.
 
 Until I understood this I was setting my installable frameworks to be installed in `/Library/Frameworks/`. This had a number of undesirable side-effects:

@@ -23,12 +23,12 @@ The latest scam is that GoDaddy offers you a "special price" of $4.99 on private
 
 I contacted GoDaddy support about this:
 
-> I just tried to renew six domains. The bulk-pricing list shows me that when renewing more than 5 domains I should be able to renew my privacy for $4.99. But when I get to the checkout the system wants to charge me $8.99 for privacy. The advertised prices are here:\
-> \
-> https://dcc.godaddy.com/Domains/DomainBulkPriceDisplay.aspx\
-> \
-> I got to that link by clicking on a link which said "Renewing more than 5 domains at once will automatically qualify for special bulk pricing".\
-> \
+> I just tried to renew six domains. The bulk-pricing list shows me that when renewing more than 5 domains I should be able to renew my privacy for $4.99. But when I get to the checkout the system wants to charge me $8.99 for privacy. The advertised prices are here:
+>
+> https://dcc.godaddy.com/Domains/DomainBulkPriceDisplay.aspx
+>
+> I got to that link by clicking on a link which said "Renewing more than 5 domains at once will automatically qualify for special bulk pricing".
+>
 > So what do I have to do to get this special bulk pricing to apply to my order of 6 domains?
 
 And received this reply:
@@ -37,26 +37,26 @@ And received this reply:
 
 I subsequently complained but haven't yet received a reply (several days have passed):
 
-> It appears that the information on your site is misleading then:\
-> \
-> https://dcc.godaddy.com/Domains/DomainBulkPriceDisplay.aspx\
-> \
-> Note that the table is titled "Bulk \*Renewal\* Pricing" and the row that says "Privacy" indicates that the cost is $4.99 per year. That table clearly gives the impression that the price is $4.99 when renewing. The table does not list a separate, higher price for renewing privacy.\
-> \
-> Furthermore, if I do the following:\
-> \
-> 1. Log into my account\
-> 2. Click on "My Domain Names" from the "Domains" drop-down menu\
-> 3. Select more than 5 domains and press the "Renew Domains" button\
-> \
-> Your website shows me a message stating, "Renewing more than 5 domains at once will automatically qualify for special bulk pricing", and clicking on the link takes me to the price list for which I've already provide a link.\
-> \
-> Just below this the page says, "Choose a Public or Private Registration", and further down, "Today's Special! Just $4.99/yr. per domain" (screenshot attached as proof).\
-> \
-> Once again this clearly gives the impression that the price is $4.99. If that is not the case, why then does GoDaddy go out of it's way to make the offer? Your site is showing this offer to me as a logged in user who has indicated which domains he wishes to renew; there were no non-renewal domains selected and no non-private domains selected. If the offer does not apply to any of the selected domains then GoDaddy shouldn't be showing it only to later withdraw it.\
-> \
-> So basically this amounts to false advertising. What can I do to obtain the advertised price? It seems you should either withdraw the misleading offer or provide a means for customers to actually take you up on it.\
-> \
+> It appears that the information on your site is misleading then:
+>
+> https://dcc.godaddy.com/Domains/DomainBulkPriceDisplay.aspx
+>
+> Note that the table is titled "Bulk \*Renewal\* Pricing" and the row that says "Privacy" indicates that the cost is $4.99 per year. That table clearly gives the impression that the price is $4.99 when renewing. The table does not list a separate, higher price for renewing privacy.
+>
+> Furthermore, if I do the following:
+>
+> 1. Log into my account
+> 2. Click on "My Domain Names" from the "Domains" drop-down menu
+> 3. Select more than 5 domains and press the "Renew Domains" button
+>
+> Your website shows me a message stating, "Renewing more than 5 domains at once will automatically qualify for special bulk pricing", and clicking on the link takes me to the price list for which I've already provide a link.
+>
+> Just below this the page says, "Choose a Public or Private Registration", and further down, "Today's Special! Just $4.99/yr. per domain" (screenshot attached as proof).
+>
+> Once again this clearly gives the impression that the price is $4.99. If that is not the case, why then does GoDaddy go out of it's way to make the offer? Your site is showing this offer to me as a logged in user who has indicated which domains he wishes to renew; there were no non-renewal domains selected and no non-private domains selected. If the offer does not apply to any of the selected domains then GoDaddy shouldn't be showing it only to later withdraw it.
+>
+> So basically this amounts to false advertising. What can I do to obtain the advertised price? It seems you should either withdraw the misleading offer or provide a means for customers to actually take you up on it.
+>
 > I await your clarification on if there is anything I can to do obtain the advertised offer.
 
 #### The workaround

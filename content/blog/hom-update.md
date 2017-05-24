@@ -78,8 +78,8 @@ But that's not valid Objective-C. You can't pass a message as a parameter to ano
 
 Actually-existing HOM is not actually HOM at all, a point that even [the seminal paper on HOM](http://www.metaobject.com/papers/Higher_Order_Messaging_OOPSLA_2005.pdf) admits, although I didn't realize that it made this admission until I read the paper yesterday:
 
-> Objective-C ... \[doesn't\] support sending messages as a parameter to another message, not even syntactically. What is supported, however, is messages taking objects as arguments, so we need to somehow bridge this gap.\
-> \
+> Objective-C ... \[doesn't\] support sending messages as a parameter to another message, not even syntactically. What is supported, however, is messages taking objects as arguments, so we need to somehow bridge this gap.
+>
 > \[I\]nstead of passing the argument message to the prefix message directly, which isn't possible, \[in Higher Order Messaging\] the prefix message returns an object that is then sent the argument message.
 
 So HOM doesn't actually exist, except as a theoretical ideal. What does exist is an working model that is equivalent in functional terms to the theoretical ideal. No "higher order" messages are actually sent, but the end result is just the same as if they were. Knowing that this fact is acknowledged by the originators of the "HOM" moniker makes me feel a lot more comfortable than I [did before](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) with the whole idea.

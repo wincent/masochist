@@ -7,14 +7,14 @@ I continue to disapprove of the disclosure practices of the people running the [
 
 Reading [the transcript](http://projects.info-pull.com/moab/bug-files/landonf_bikemonkey.org-2007-01-07.html) of the discussion between "LMH" (who has been making the disclosures) and [Landon Fuller](http://landonf.bikemonkey.org/) (who has been providing fixes) is quite interesting.
 
-> **Fuller**: I'd like to coordinate on fix releases, but my concern (feel free to laugh at me) is an appearance of collusion -- I think a lot is gained by having you demonstrate that the vulnerabilities exist, are real, and exploitable, and having me separately demonstrate that they're easily fixable.\
-> \
+> **Fuller**: I'd like to coordinate on fix releases, but my concern (feel free to laugh at me) is an appearance of collusion -- I think a lot is gained by having you demonstrate that the vulnerabilities exist, are real, and exploitable, and having me separately demonstrate that they're easily fixable.
+>
 > **LMH:** Sounds like your trouble is appearing like if I'm not as evil as zealots want to say, right?
 
 Talk about miscommunication. Fuller raises a valid concern, and LMH responds in a totally paranoid/bipolar fashion. That transcript segment reads to me like this:
 
-> **Fuller:** I'm worried that it might rain.\
-> \
+> **Fuller:** I'm worried that it might rain.
+>
 > **LMH:** Sounds like your trouble is appearing like I'm not as evil as \[the\] zealots want to say, right?
 
 So in the end it looks like [there's not going to be any collaboration](http://groups-beta.google.com/group/moabfixes/browse_thread/thread/cf7fd155e01de2a4) and the truth is I think there probably shouldn't be. What's to be gained by giving the "moabfixes" team a few hours of head start? What should really be happening is that the *vendors* should be given a reasonable notification (30 days, I'd say, as I previously suggested). Giving a bunch of enthusiasts a few extra hours to prepare their "fixes" (really, "fixing" this stuff with APE is like using a radio-controlled robot to stick a band-aid on the arm of a running child) does little to shield users, and it's really the possible harm to users which concerns me, not Apple's wounded pride.

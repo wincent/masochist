@@ -5,8 +5,8 @@ tags: blog
 
 Back in August [I wrote the following](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) about HOM (Higher Order Messaging):
 
-> It reads like natural language but behind the scenes there's an invisible trampoline object that does the work. The first message returns this invisible object with which you never need interact knowingly, and that invisible object mysteriously captures the message that you send it, the message that you really want to send to the objects in the collection, and then it does something with it.\
-> \
+> It reads like natural language but behind the scenes there's an invisible trampoline object that does the work. The first message returns this invisible object with which you never need interact knowingly, and that invisible object mysteriously captures the message that you send it, the message that you really want to send to the objects in the collection, and then it does something with it.
+>
 > Yes, it works; yes, it allows you to write shorter, more compact code using a natural-language style. But it just feels wrong.
 
 I had already used a HOM-style syntax for my mock object implementation in my [WOTest](http://test.wincent.com/) Objective-C unit testing framework, although I never really felt convinced that it was the "right thing" to do.
