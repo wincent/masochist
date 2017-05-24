@@ -8,7 +8,7 @@ import path from 'path';
 import createErrorClass from '../common/createErrorClass';
 import {REPO} from './constants';
 
-const GitError = createErrorClass(
+export const GitError = createErrorClass(
   'GitError',
   function (message: string, code: number) {
     return {message, code};
