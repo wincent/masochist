@@ -3,7 +3,6 @@
  */
 
 import path from 'path';
-import process from 'process';
 import {toGlobalId} from 'graphql-relay';
 import unpackContent from 'unpack-content';
 import {object} from '../common/checks';
