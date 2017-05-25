@@ -1,12 +1,30 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
+import type {Disposable, RelayPaginationProp} from 'react-relay';
+import type {
+  SnippetsIndex as SnippetsIndexData,
+} from './__generated__/SnippetsIndex.graphql';
+
 const PAGE_SIZE = 3;
 
 class SnippetsIndex extends React.Component {
+  props: {
+    data: SnippetsIndexData,
+    relay: RelayPaginationProp,
+  };
+  state: {
+    isLoading: boolean,
+  };
+  _disposable: ?Disposable;
+
   constructor(props) {
     super(props);
     this.state = {isLoading: false};
@@ -29,12 +47,17 @@ class SnippetsIndex extends React.Component {
   }
 
   render() {
+    const edges = this.props.data.snippets.edges;
     return (
       <DocumentTitle title="snippets">
         <div>
-          {this.props.data.snippets.edges.map(({node}) => (
-            <Snippet key={node.id} data={node} />
-          ))}
+          {edges &&
+            edges.map(edge => {
+              const node = edge && edge.node;
+              if (node) {
+                return <Snippet key={node.id} data={node} />;
+              }
+            })}
           {this.props.data.snippets.pageInfo.hasNextPage
             ? <LoadMoreButton
                 isLoading={this.state.isLoading}

@@ -1,10 +1,22 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
+import type {
+  PagePreview as PagePreviewData,
+} from './__generated__/PagePreview.graphql';
+
 class PagePreview extends React.Component {
+  props: {
+    data: PagePreviewData,
+  };
+
   render() {
     const page = this.props.data;
     const {description, title, url} = page;

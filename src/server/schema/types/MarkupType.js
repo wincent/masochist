@@ -96,7 +96,7 @@ const MarkupType = new GraphQLObjectType({
       description: 'The format of the markup source',
     },
     html: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'HTML output of transformed markup',
       args: {
         baseHeadingLevel: {

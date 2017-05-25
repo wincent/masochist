@@ -1,4 +1,4 @@
-import {GraphQLInterfaceType, GraphQLList} from 'graphql';
+import {GraphQLInterfaceType, GraphQLList, GraphQLNonNull} from 'graphql';
 
 import TagNameType from '../types/TagNameType';
 
@@ -7,7 +7,9 @@ const taggedInterface = new GraphQLInterfaceType({
   description: 'An object with a tags field',
   fields: {
     tags: {
-      type: new GraphQLList(TagNameType),
+      type: new GraphQLNonNull(
+        new GraphQLList(new GraphQLNonNull(TagNameType)),
+      ),
       description: 'A list of tag names',
     },
   },

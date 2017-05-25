@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
@@ -12,9 +16,24 @@ import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';
 import SnippetPreview from './SnippetPreview';
 
+import type {Disposable, RelayPaginationProp} from 'react-relay';
+import type {Search as SearchData} from './__generated__/Search.graphql';
+
 const PAGE_SIZE = 10;
 
 class Search extends React.Component {
+  props: {
+    data: SearchData,
+    relay: RelayPaginationProp,
+  };
+  state: {
+    isLoading: boolean,
+    isSearching: boolean,
+    q: string,
+  };
+  _disposable: ?Disposable;
+  _searchInput: ?HTMLElement;
+
   static contextTypes = {
     router: PropTypes.object,
   };
@@ -38,7 +57,7 @@ class Search extends React.Component {
   };
 
   componentDidMount() {
-    this._searchInput.focus();
+    this._searchInput && this._searchInput.focus();
   }
 
   componentWillUnmount() {
@@ -51,6 +70,7 @@ class Search extends React.Component {
 
   render() {
     const {search} = this.props.data;
+    const {edges} = search;
     let searchURL = '/search';
     if (this.state.q.trim()) {
       searchURL += '/' + encodeURIComponent(this.state.q.trim());
@@ -93,9 +113,17 @@ class Search extends React.Component {
             <PluralText count={search.count} text="item" /> found
           </p>
           <ContentListing>
-            {search.edges.map(({cursor, node}, i) => (
-              <ContentPreview cursor={cursor} key={i} data={node} />
-            ))}
+            {edges &&
+              edges.map((edge, i) => {
+                if (edge) {
+                  const {cursor, node} = edge;
+                  if (node) {
+                    return (
+                      <ContentPreview cursor={cursor} key={i} data={node} />
+                    );
+                  }
+                }
+              })}
           </ContentListing>
           {search.pageInfo.hasNextPage
             ? <LoadMoreButton

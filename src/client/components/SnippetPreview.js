@@ -1,10 +1,22 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
+import type {
+  SnippetPreview as SnippetPreviewData,
+} from './__generated__/SnippetPreview.graphql';
+
 class SnippetPreview extends React.Component {
+  props: {
+    data: SnippetPreviewData,
+  };
+
   render() {
     const snippet = this.props.data;
     const {description, title, url} = snippet;

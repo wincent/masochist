@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import ContentListing from './ContentListing';
@@ -7,9 +11,21 @@ import LoadMoreButton from './LoadMoreButton';
 import Link from './Link';
 import PluralText from './PluralText';
 
+import type {Disposable, RelayPaginationProp} from 'react-relay';
+import type {Tag as TagData} from './__generated__/Tag.graphql';
+
 const PAGE_SIZE = 10;
 
 class Tag extends React.Component {
+  props: {
+    data: TagData,
+    relay: RelayPaginationProp,
+  };
+  state: {
+    isLoading: boolean,
+  };
+  _disposable: ?Disposable;
+
   constructor(props) {
     super(props);
     this.state = {isLoading: false};
@@ -34,6 +50,7 @@ class Tag extends React.Component {
   render() {
     const tag = this.props.data;
     const {count, name, taggables, url} = tag;
+    const {edges} = taggables;
     // this is the url that needs encoding
     return (
       <DocumentTitle title={name}>
@@ -48,9 +65,13 @@ class Tag extends React.Component {
             with <em>{name}</em>
           </p>
           <ContentListing>
-            {taggables.edges.map(({cursor, node}, i) => (
-              <ContentPreview cursor={cursor} key={i} data={node} />
-            ))}
+            {edges &&
+              edges.map((edge, i) => {
+                if (edge) {
+                  const {cursor, node} = edge;
+                  return <ContentPreview cursor={cursor} key={i} data={node} />;
+                }
+              })}
           </ContentListing>
           {taggables.pageInfo.hasNextPage
             ? <LoadMoreButton

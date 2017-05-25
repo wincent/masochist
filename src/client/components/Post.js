@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
@@ -7,7 +11,13 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
+import type {Post as PostData} from './__generated__/Post.graphql';
+
 class Post extends React.Component {
+  props: {
+    data: PostData,
+  };
+
   render() {
     const post = this.props.data;
 

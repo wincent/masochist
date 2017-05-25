@@ -27,7 +27,7 @@ const TagType = registerType(
         description: "The tag's name",
       },
       count: {
-        type: GraphQLInt,
+        type: new GraphQLNonNull(GraphQLInt),
         description: 'Count of items tagged with the tag',
       },
       url: {
@@ -36,7 +36,7 @@ const TagType = registerType(
         resolve: tag => `/tags/${tag.id}`,
       },
       taggables: {
-        type: taggableConnection,
+        type: new GraphQLNonNull(taggableConnection),
         description: 'Items tagged with a particular tag',
         args: connectionArgs,
         resolve: async (tag, args, context, {rootValue}) => {

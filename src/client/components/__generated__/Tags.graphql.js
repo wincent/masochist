@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Tags.graphql
- * @generated SignedSource<<b0677368ef67fe6ae14c1a9f5231baa0>>
+ * @generated SignedSource<<2abdd152bb7a33f88bdcab713241405c>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type Tags = {|
-  +tags: ?$ReadOnlyArray<?any>;
+  +tags: $ReadOnlyArray<any>;
 |};
 */
 

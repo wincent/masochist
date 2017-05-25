@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule TagPreview.graphql
- * @generated SignedSource<<48e627c4aa9bffa78a0ce55e2c08ffb8>>
+ * @generated SignedSource<<14439772cb7f4fc36bc457c9bae8861f>>
  * @flow
  * @nogrep
  */
@@ -15,7 +15,7 @@
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
 export type TagPreview = {|
-  +count: ?number;
+  +count: number;
   +name: any;
   +url: string;
 |};

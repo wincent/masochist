@@ -1,7 +1,15 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 
 export default class TrustedPrerenderedMarkup extends React.Component {
-  shouldComponentUpdate(nextProps, nextState) {
+  props: {
+    html: string,
+  };
+
+  shouldComponentUpdate(nextProps: {html: string}) {
     return this.props.html !== nextProps.html;
   }
 

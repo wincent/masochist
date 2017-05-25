@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import relativizeDate from '../relativizeDate';
 import inBrowser from '../inBrowser';
@@ -5,6 +9,8 @@ import inBrowser from '../inBrowser';
 let stateCounter = 0;
 
 export default class Time extends React.Component {
+  _updateTimer: mixed;
+
   _clearTimer = () => {
     if (this._updateTimer) {
       clearTimeout(this._updateTimer);
@@ -12,7 +18,7 @@ export default class Time extends React.Component {
     }
   };
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps() {
     this._clearTimer();
   }
 

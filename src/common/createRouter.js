@@ -29,6 +29,7 @@ function resolve(context, params) {
 }
 
 type History = {
+  push: (target: string) => void,
   replace: (target: string) => void,
 };
 

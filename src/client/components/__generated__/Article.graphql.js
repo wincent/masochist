@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule Article.graphql
- * @generated SignedSource<<6f422c00e827b15ac87d5b7c7ba19aea>>
+ * @generated SignedSource<<5cc621de7a8f8ad824c8bac3e87d1b01>>
  * @flow
  * @nogrep
  */
@@ -20,7 +20,7 @@ export type Article = {|
   +resolvedTitle: ?string;
   +url: string;
   +body: {|
-    +html: ?string;
+    +html: string;
   |};
 |};
 */

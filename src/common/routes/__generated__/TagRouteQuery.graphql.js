@@ -3,8 +3,8 @@
  *   relay-compiler
  *
  * @providesModule TagRouteQuery.graphql
- * @generated SignedSource<<7cd36e6582f097ebf8cad6788f339900>>
- * @relayHash 61612c6082bd5be260205aa132c6acc5
+ * @generated SignedSource<<30cb4544858766bcfd73c992071f5c55>>
+ * @relayHash 70b30f663625af56dc8ab72a8e856f5d
  * @flow
  * @nogrep
  */
@@ -53,8 +53,23 @@ fragment Tag on Tag {
     pageInfo {
       endCursor
       hasNextPage
-      hasPreviousPage
-      startCursor
+    }
+    ... on TaggableConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          ... on Node {
+            id
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
     }
   }
 }
@@ -602,23 +617,40 @@ const batch /*: ConcreteBatch*/ = {
                         "args": null,
                         "name": "hasNextPage",
                         "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "hasPreviousPage",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "startCursor",
-                        "storageKey": null
                       }
                     ],
                     "storageKey": null
+                  },
+                  {
+                    "kind": "InlineFragment",
+                    "type": "TaggableConnection",
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "args": null,
+                        "concreteType": "PageInfo",
+                        "name": "pageInfo",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "hasPreviousPage",
+                            "storageKey": null
+                          },
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "args": null,
+                            "name": "startCursor",
+                            "storageKey": null
+                          }
+                        ],
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ],
                 "storageKey": null
@@ -652,7 +684,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query TagRouteQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Tag {\n      ...Tag\n    }\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n      hasPreviousPage\n      startCursor\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PagePreview on Page {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PostPreview on Post {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment SnippetPreview on Snippet {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
+  "text": "query TagRouteQuery(\n  $count: Int!\n  $cursor: String\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Tag {\n      ...Tag\n    }\n    id\n  }\n}\n\nfragment Tag on Tag {\n  count\n  id\n  name\n  url\n  taggables(first: $count, after: $cursor) {\n    edges {\n      cursor\n      node {\n        __typename\n        ...ContentPreview\n        ... on Node {\n          id\n        }\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on TaggableConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          ... on Node {\n            id\n          }\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n        hasPreviousPage\n        startCursor\n      }\n    }\n  }\n}\n\nfragment ContentPreview on Content {\n  __typename\n  ...ArticlePreview\n  ...PagePreview\n  ...PostPreview\n  ...SnippetPreview\n}\n\nfragment ArticlePreview on Article {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PagePreview on Page {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment PostPreview on Post {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment SnippetPreview on Snippet {\n  description\n  title\n  url\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n"
 };
 
 module.exports = batch;

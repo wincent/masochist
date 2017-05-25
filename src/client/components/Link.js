@@ -1,16 +1,22 @@
-// TODO: Flow type this (tricky due to stateless functional component with
-// destructuring and context)
+/**
+ * @flow
+ */
 
 import PropTypes from 'prop-types';
 import React from 'react';
 import matchRoute from '../../common/matchRoute';
+
+import type {MasochistRouter} from '../../common/createRouter';
 
 const RouterLink = ({to, children, ...props}, context) => {};
 
 /**
  * Router-aware link component.
  */
-const Link = ({to, children, ...props}, context) => (
+const Link = (
+  {to, children, ...props}: any, // TODO: a better Flow type here.
+  context: {router: MasochistRouter},
+) => (
   <a
     href={to}
     onClick={event => {

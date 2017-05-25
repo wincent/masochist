@@ -9,7 +9,7 @@ import ArticlePreview from './ArticlePreview';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 
-import type {RelayPaginationProp} from 'react-relay';
+import type {Disposable, RelayPaginationProp} from 'react-relay';
 import type {
   ArticlesIndex as ArticlesIndexData,
 } from './__generated__/ArticlesIndex.graphql';
@@ -28,7 +28,7 @@ class ArticlesIndex extends React.Component {
   state: {
     isLoading: boolean,
   };
-  _disposable: ?{dispose: () => void};
+  _disposable: ?Disposable;
 
   constructor(props) {
     super(props);

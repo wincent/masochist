@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
@@ -7,7 +11,13 @@ import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
 
+import type {Snippet as SnippetData} from './__generated__/Snippet.graphql';
+
 class Snippet extends React.Component {
+  props: {
+    data: SnippetData,
+  };
+
   render() {
     const snippet = this.props.data;
 

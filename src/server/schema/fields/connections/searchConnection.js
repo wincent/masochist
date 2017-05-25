@@ -1,11 +1,11 @@
-import {GraphQLInt} from 'graphql';
+import {GraphQLInt, GraphQLNonNull} from 'graphql';
 import {connectionDefinitions} from 'graphql-relay';
 import ContentType from '../../types/ContentType';
 
 const {connectionType: searchConnection} = connectionDefinitions({
   connectionFields: {
     count: {
-      type: GraphQLInt,
+      type: new GraphQLNonNull(GraphQLInt),
       description: 'Total number of search results',
     },
   },

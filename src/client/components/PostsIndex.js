@@ -1,12 +1,30 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import Post from './Post';
 
+import type {Disposable, RelayPaginationProp} from 'react-relay';
+import type {
+  PostsIndex as PostsIndexData,
+} from './__generated__/PostsIndex.graphql';
+
 const PAGE_SIZE = 3;
 
 class PostsIndex extends React.Component {
+  props: {
+    data: PostsIndexData,
+    relay: RelayPaginationProp,
+  };
+  state: {
+    isLoading: boolean,
+  };
+  _disposable: ?Disposable;
+
   // TODO: DRY up this pagination pattern
   constructor(props) {
     super(props);
@@ -30,12 +48,17 @@ class PostsIndex extends React.Component {
   }
 
   render() {
+    const edges = this.props.data.posts.edges;
     return (
       <DocumentTitle title="blog">
         <div>
-          {this.props.data.posts.edges.map(({node}) => (
-            <Post key={node.id} data={node} />
-          ))}
+          {edges &&
+            edges.map(edge => {
+              const node = edge && edge.node;
+              if (node) {
+                return <Post key={node.id} data={node} />;
+              }
+            })}
           {this.props.data.posts.pageInfo.hasNextPage
             ? <LoadMoreButton
                 isLoading={this.state.isLoading}

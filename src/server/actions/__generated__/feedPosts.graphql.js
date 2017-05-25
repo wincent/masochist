@@ -3,7 +3,7 @@
  *   relay-compiler
  *
  * @providesModule feedPosts.graphql
- * @generated SignedSource<<df16b44a2517c031bfac8befb301e310>>
+ * @generated SignedSource<<5fdc207dc6e2dc0c633ede638502ae5d>>
  * @flow
  * @nogrep
  */
@@ -19,7 +19,7 @@ export type feedPosts = {|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
         +body: {|
-          +html: ?string;
+          +html: string;
         |};
         +createdAt: ?any;
         +title: ?string;

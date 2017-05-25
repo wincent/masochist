@@ -22,7 +22,7 @@ type Article implements Node, Tagged, Versioned {
 
   # URL for the article
   url: String!
-  tags: [TagName]
+  tags: [TagName!]!
   history: History!
 
   # When the content was first created
@@ -73,7 +73,7 @@ type Markup {
   html(
     # Base heading level [0-6]
     baseHeadingLevel: Int
-  ): String
+  ): String!
 }
 
 enum MARKUP_FORMAT_TYPE {
@@ -109,7 +109,7 @@ type Page implements Node, Tagged, Versioned {
   # URL for the page
   url: String!
   history: History!
-  tags: [TagName]
+  tags: [TagName!]!
 
   # When the content was first created
   createdAt: DateTime
@@ -148,7 +148,7 @@ type Post implements Node, Tagged, Versioned {
   # URL for the post
   url: String!
   history: History!
-  tags: [TagName]
+  tags: [TagName!]!
 
   # When the content was first created
   createdAt: DateTime
@@ -215,7 +215,7 @@ type SearchResultConnection {
   edges: [SearchResultEdge]
 
   # Total number of search results
-  count: Int
+  count: Int!
 }
 
 # An edge in a connection.
@@ -245,7 +245,7 @@ type Snippet implements Node, Tagged, Versioned {
   # URL for the snippet
   url: String!
   history: History!
-  tags: [TagName]
+  tags: [TagName!]!
 
   # When the content was first created
   createdAt: DateTime
@@ -281,13 +281,13 @@ type Tag implements Node {
   name: TagName!
 
   # Count of items tagged with the tag
-  count: Int
+  count: Int!
 
   # URL for the tag
   url: String!
 
   # Items tagged with a particular tag
-  taggables(after: String, first: Int, before: String, last: Int): TaggableConnection
+  taggables(after: String, first: Int, before: String, last: Int): TaggableConnection!
 }
 
 # A connection to a list of items.
@@ -299,7 +299,7 @@ type TagConnection {
   edges: [TagEdge]
 
   # Total number of tags
-  count: Int
+  count: Int!
 }
 
 # An edge in a connection.
@@ -318,6 +318,9 @@ type TaggableConnection {
 
   # A list of edges.
   edges: [TaggableEdge]
+
+  # Number of tags
+  count: Int!
 }
 
 # An edge in a connection.
@@ -332,7 +335,7 @@ type TaggableEdge {
 # An object with a tags field
 interface Tagged {
   # A list of tag names
-  tags: [TagName]
+  tags: [TagName!]!
 }
 
 # A tag name

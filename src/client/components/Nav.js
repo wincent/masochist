@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
@@ -34,16 +38,21 @@ function getActiveRoutePrefix(path) {
 }
 
 export default class Nav extends React.Component {
+  props: {};
+  state: {
+    isOpen: boolean,
+  };
+
   static contextTypes = {
     router: PropTypes.object,
   };
 
-  constructor(props) {
+  constructor(props: {}) {
     super(props);
     this.state = {isOpen: false};
   }
 
-  _handleToggle = event => {
+  _handleToggle = (event: SyntheticEvent) => {
     event.preventDefault();
     this.setState(({isOpen}) => ({isOpen: !isOpen}));
   };

@@ -1,10 +1,22 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
+import type {
+  PostPreview as PostPreviewData,
+} from './__generated__/PostPreview.graphql';
+
 class PostPreview extends React.Component {
+  props: {
+    data: PostPreviewData,
+  };
+
   render() {
     const post = this.props.data;
     const {description, title, url} = post;

@@ -85,7 +85,9 @@ const ArticleType = registerType(
         },
       },
       tags: {
-        type: new GraphQLList(TagNameType),
+        type: new GraphQLNonNull(
+          new GraphQLList(new GraphQLNonNull(TagNameType)),
+        ),
         resolve: async (article, args, context, {rootValue}) => {
           article = await resolveRedirects(article, rootValue);
           return article.tags;
