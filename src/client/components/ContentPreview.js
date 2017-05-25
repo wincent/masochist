@@ -9,7 +9,9 @@ import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';
 import SnippetPreview from './SnippetPreview';
 
-import type {ContentPreview as ContentPreviewData} from './__generated__/ContentPreview.graphql';
+import type {
+  ContentPreview as ContentPreviewData,
+} from './__generated__/ContentPreview.graphql';
 
 class ContentPreview extends React.Component {
   props: {
