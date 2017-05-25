@@ -1023,12 +1023,6 @@
           "interfaces": null,
           "enumValues": [
             {
-              "name": "WIKITEXT",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "TXT",
               "description": null,
               "isDeprecated": false,

@@ -71,7 +71,6 @@ function getMarkedRenderer(baseLevel: ?number) {
 export const MarkupFormatType = new GraphQLEnumType({
   name: 'MARKUP_FORMAT_TYPE',
   values: {
-    WIKITEXT: {value: 'wikitext'},
     TXT: {value: 'txt'},
     HTML: {value: 'html'},
     C: {value: 'c'},
@@ -106,12 +105,7 @@ const MarkupType = new GraphQLObjectType({
       },
       resolve(markup, {baseHeadingLevel}, context, {rootValue}) {
         const level = validateBaseHeadingLevel(baseHeadingLevel);
-        if (markup.format === 'wikitext') {
-          return rootValue.loaders.Wikitext.load({
-            wikitext: markup.raw,
-            baseHeadingLevel: level,
-          });
-        } else if (markup.format === 'md') {
+        if (markup.format === 'md') {
           const renderer = getMarkedRenderer(level);
           return marked(markup.raw, {renderer});
         } else if (

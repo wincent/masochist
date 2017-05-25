@@ -11,5 +11,4 @@ export const Extensions = {
   PLAINTEXT: 'txt',
   RUBY: 'rb',
   SHELL: 'sh',
-  WIKITEXT: 'wikitext',
 };

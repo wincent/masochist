@@ -77,7 +77,6 @@ type Markup {
 }
 
 enum MARKUP_FORMAT_TYPE {
-  WIKITEXT
   TXT
   HTML
   C

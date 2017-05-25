@@ -7,7 +7,6 @@ import getPageLoader from './loaders/getPageLoader';
 import getPostLoader from './loaders/getPostLoader';
 import getSnippetLoader from './loaders/getSnippetLoader';
 import getTagLoader from './loaders/getTagLoader';
-import getWikitextLoader from './loaders/getWikitextLoader';
 
 export default function getLoaders() {
   return {
@@ -16,6 +15,5 @@ export default function getLoaders() {
     Post: getPostLoader(),
     Snippet: getSnippetLoader(),
     Tag: getTagLoader(),
-    Wikitext: getWikitextLoader(),
   };
 }
