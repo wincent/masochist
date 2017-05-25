@@ -21,7 +21,7 @@
     "start": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/server/main.js",
     "start-prod": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo NODE_ENV=production node dist/server/main.js",
     "test": "mocha --opts mocha/mocha.opts 'src/**/__mocks__/*.js' 'src/**/__tests__/*-test.js'",
-    "update-indices": "babel-node src/bin/updateIndices.js",
+    "update-indices": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/bin/updateIndices.js",
     "update-schema": "babel-node src/bin/updateSchema.js"
   },
   "author": {
