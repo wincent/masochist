@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import inBrowser from '../inBrowser';
@@ -12,7 +16,7 @@ export default class LoadMoreButton extends React.Component {
     isLoading: PropTypes.bool,
   };
 
-  _handleLoadMore = event => {
+  _handleLoadMore = (event: SyntheticEvent) => {
     event.preventDefault();
     this.props.onLoadMore();
   };

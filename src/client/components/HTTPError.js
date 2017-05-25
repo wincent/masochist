@@ -1,15 +1,22 @@
+/**
+ * @flow
+ */
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import DocumentTitle from './DocumentTitle';
 
+import type {Element} from 'react';
+
 const StatusCodesToMessages = {
-  404: 'Not Found',
-  500: 'Internal Server Error',
+  '404': 'Not Found',
+  '500': 'Internal Server Error',
 };
 
 export default class HTTPError extends React.Component {
-  static propTypes = {
-    code: PropTypes.oneOf([404, 500]),
+  props: {
+    children?: Element<*>,
+    code: 404 | 500,
   };
 
   static defaultProps = {

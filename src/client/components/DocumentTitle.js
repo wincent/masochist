@@ -2,6 +2,7 @@
  * Like react-document-title, but produces nested titles: Foo · Bar · Baz
  *
  * @see https://github.com/gaearon/react-document-title/blob/master/index.js
+ * @flow
  */
 
 import PropTypes from 'prop-types';

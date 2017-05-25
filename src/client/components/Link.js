@@ -1,3 +1,6 @@
+// TODO: Flow type this (tricky due to stateless functional component with
+// destructuring and context)
+
 import PropTypes from 'prop-types';
 import React from 'react';
 import matchRoute from '../../common/matchRoute';

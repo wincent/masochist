@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import ArticlePreview from './ArticlePreview';
@@ -5,7 +9,14 @@ import PagePreview from './PagePreview';
 import PostPreview from './PostPreview';
 import SnippetPreview from './SnippetPreview';
 
+import type {ContentPreview as ContentPreviewData} from './__generated__/ContentPreview.graphql';
+
 class ContentPreview extends React.Component {
+  props: {
+    cursor: string,
+    data: ContentPreviewData,
+  };
+
   render() {
     const {cursor, data} = this.props;
     switch (data.__typename) {
