@@ -54,7 +54,7 @@ fi
 
 LAST_INDEX=last-indexed-hash
 PREFIX=masochist
-CACHE_BREAKER=$(cat $PWD/../masochist/shared/common.json | ruby -r json -e 'print JSON[$stdin.read]["redisCacheVersion"]')
+CACHE_BREAKER=$(grep REDIS_CACHE_VERSION $PWD/../masochist/src/server/constants.js | perl -pe "s/.+'(\d+)'.*/\\1/")
 
 if [ -z "$CACHE_BREAKER" ]; then
   warning "unable to get cache breaker"
