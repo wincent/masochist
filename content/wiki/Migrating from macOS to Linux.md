@@ -13,9 +13,9 @@ At its core, this is realistic because:
 
 # What's the motivation?
 
-* Apple has a penchant for breaking things in unexpected and arbitrary ways. For example, the introduction of S.I.P. (System Integrity Protection) — laudable it may be from a security perspective — basically broke all RubyGem installs by default. Or the way Sierra broke Karabiner, which I utterly rely on.
+* Apple has a penchant for breaking things in unexpected and arbitrary ways. For example, the introduction of S.I.P. (System Integrity Protection) — laudable though it may be from a security perspective — basically broke all RubyGem installs by default. Or the way Sierra broke Karabiner, which I utterly rely on.
 * iTerm is so slow, and it appears that macOS's own graphics APIs are the bottleneck; this is fine on the laptop screen, but a real killer when plugged into a 4K external display.
-* Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a "PC" laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous 
+* Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a "PC" laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous Touch Bar.
 
 # Gotchas
 
@@ -25,7 +25,7 @@ I would need (or strongly want) to find workable replacements for everything on 
 * **Hammerspoon (and Karabiner):** Probably screwed here; will likely be a lot of work to replace these.
 * **Homebrew:** Might miss the convenience here, but can get by without it, I think; as I haven't chosen a distro yet, not clear how good I can expect the native package management to be.
 * **Isolator:** No idea.
-* **Iterm 2:** Will have no trouble finding a performant replacement, but there may be some niche features that I miss.
+* **iTerm 2:** Will have no trouble finding a performant replacement, but there may be some niche features that I miss.
 * **Skitch:** Oh well, was nice knowing you. Will just have to settle for whatever is out there.
 * **OmniDiskSweeper:** No idea, but I expect there are viable alternatives out there.
 * **1Password:** Will be stuck with web view for foreseeable future.
@@ -51,3 +51,7 @@ Other apps that I haven't listed on that page but which I would miss:
 * **Xcode:** Ha ha, just joking.
 
 Losing some of these would hurt but be livable, but some of the others would be really, really big losses. This is why in that tweet that I linked to above, I put my chances of switching at "approaching 50%".
+
+# Doubts
+
+System upgrades, long term support, and stability. I've used Linux on the server for many years and very happy with it there, but hard to know what it would be like as a desktop platform, as I haven't really ever gone beyond playing with it in that capacity.
