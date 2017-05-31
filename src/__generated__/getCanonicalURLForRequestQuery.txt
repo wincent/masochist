@@ -1,0 +1,11 @@
+query getCanonicalURLForRequestQuery(
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Article {
+      url
+    }
+    id
+  }
+}

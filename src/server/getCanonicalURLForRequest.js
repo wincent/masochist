@@ -3,12 +3,26 @@
  */
 
 import {toGlobalId} from 'graphql-relay';
+import {graphql} from 'react-relay';
 import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';
+import QueryCache from './QueryCache';
 import {HOST, SCHEME} from './constants';
 import runQuery from './runQuery';
 
 import type {$Request} from 'express';
+
+const queryCache = new QueryCache();
+
+const canonicalURLQuery = graphql`
+  query getCanonicalURLForRequestQuery($id: ID!) {
+    node(id: $id) {
+      ... on Article {
+        url
+      }
+    }
+  }
+`;
 
 /**
  * Returns a canonical URL for the response, or null if there is not one.
@@ -39,17 +53,8 @@ export default (async function getCanonicalURLForRequest(
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
     const decoded = decodeURIComponent(match[1]);
     const id = toGlobalId('Article', decoded.replace(/_/g, ' '));
-    const result = await runQuery(
-      `
-      query ArticleQuery($id: ID!) {
-        node(id: $id) {
-          ... on Article {
-            url
-          }
-        }
-      }`,
-      {id},
-    );
+    const query = queryCache.getQuery(canonicalURLQuery().id);
+    const result = await runQuery(query, {id});
 
     if (result.data && result.data.node) {
       canonical = object(result.data.node).url;
