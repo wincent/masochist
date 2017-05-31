@@ -66,7 +66,18 @@ function buildWatchExpression() {
 /* eslint-disable no-console-disallow */
 
 function persistQuery(text: string): Promise<string> {
-  return Promise.resolve('text');
+  const match = text.match(/^query\s+(\w+Query)\(/);
+  if (!match) {
+    console.error('Failed to find query name in text:\n' + text);
+    throw new Error('Failed to find query name in text');
+  }
+  const name = match[1];
+  const queryDir = path.resolve(process.cwd(), 'src/__generated__');
+  if (!fs.existsSync(queryDir)) {
+    fs.mkdirSync(queryDir);
+  }
+  fs.writeFileSync(path.join(queryDir, name + '.json'), JSON.stringify({text}));
+  return Promise.resolve(name);
 }
 
 async function run() {
