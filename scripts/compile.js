@@ -23,15 +23,16 @@
 
 require('babel-polyfill');
 
-const RelayCodegenRunner = require('RelayCodegenRunner');
-const RelayFileIRParser = require('RelayFileIRParser');
-const RelayFileWriter = require('RelayFileWriter');
-const RelayIRTransforms = require('RelayIRTransforms');
+const {
+  Runner,
+  FileIRParser,
+  FileWriter,
+  IRTransforms,
+} = require('relay-compiler');
+const formatGeneratedModule = require('relay-compiler/lib/formatGeneratedModule');
 
-const formatGeneratedModule = require('formatGeneratedModule');
 const fs = require('fs');
 const path = require('path');
-const yargs = require('yargs');
 
 const {
   buildASTSchema,
@@ -46,15 +47,15 @@ const {
   printTransforms,
   queryTransforms,
   schemaExtensions,
-} = RelayIRTransforms;
+} = IRTransforms;
 
 import type {GraphQLSchema} from 'graphql';
 
-function buildWatchExpression(options: {extensions: Array<string>}) {
+function buildWatchExpression() {
   return [
     'allof',
     ['type', 'f'],
-    ['anyof', ...options.extensions.map(ext => ['suffix', ext])],
+    ['anyof', ['suffix', 'js']],
     ['not', ['match', '**/node_modules/**', 'wholename']],
     ['not', ['match', '**/__mocks__/**', 'wholename']],
     ['not', ['match', '**/__tests__/**', 'wholename']],
@@ -64,74 +65,45 @@ function buildWatchExpression(options: {extensions: Array<string>}) {
 
 /* eslint-disable no-console-disallow */
 
-async function run(options: {
-  schema: string,
-  src: string,
-  extensions: Array<string>,
-  persist?: string,
-  watch?: ?boolean,
-}) {
-  const schemaPath = path.resolve(process.cwd(), options.schema);
+function persistQuery(text: string): Promise<string> {
+  return Promise.resolve('text');
+}
+
+async function run() {
+  const schemaPath = path.resolve(process.cwd(), 'schema.graphql');
   if (!fs.existsSync(schemaPath)) {
     throw new Error(`--schema path does not exist: ${schemaPath}.`);
   }
-  const srcDir = path.resolve(process.cwd(), options.src);
+  const srcDir = path.resolve(process.cwd(), 'src');
   if (!fs.existsSync(srcDir)) {
     throw new Error(`--source path does not exist: ${srcDir}.`);
   }
-  const persistQuery = options.persist &&
-    require(path.resolve(process.cwd(), options.persist));
-  if (options.watch && !hasWatchmanRootFile(srcDir)) {
-    throw new Error(
-      `
---watch requires that the src directory have a valid watchman "root" file.
-
-Root files can include:
-- A .git/ Git folder
-- A .hg/ Mercurial folder
-- A .watchmanconfig file
-
-Ensure that one such file exists in ${srcDir} or its parents.
-    `.trim(),
-    );
-  }
-
   const parserConfigs = {
     default: {
       baseDir: srcDir,
-      getFileFilter: RelayFileIRParser.getFileFilter,
-      getParser: RelayFileIRParser.getParser,
+      getFileFilter: FileIRParser.getFileFilter,
+      getParser: FileIRParser.getParser,
       getSchema: () => getSchema(schemaPath),
-      watchmanExpression: buildWatchExpression(options),
+      watchmanExpression: buildWatchExpression(),
     },
   };
   const writerConfigs = {
     default: {
-      getWriter: getRelayFileWriter(srcDir, persistQuery),
+      getWriter: getRelayFileWriter(srcDir),
       parser: 'default',
     },
   };
-  const codegenRunner = new RelayCodegenRunner({
+  const codegenRunner = new Runner({
     parserConfigs,
     writerConfigs,
     onlyValidate: false,
-    skipPersist: true,
   });
-  if (options.watch) {
-    await codegenRunner.watchAll();
-  } else {
-    console.log('HINT: pass --watch to keep watching for changes.');
-    await codegenRunner.compileAll();
-  }
+  await codegenRunner.compileAll();
 }
 
-function getRelayFileWriter(
-  baseDir: string,
-  persistQuery: (text: string) => Promise<string>,
-) {
+function getRelayFileWriter(baseDir: string) {
   return (onlyValidate, schema, documents, baseDocuments) =>
-
-    new RelayFileWriter({
+    new FileWriter({
       config: {
         formatModule: formatGeneratedModule,
         compilerTransforms: {
@@ -176,59 +148,7 @@ ${error.stack}
   }
 }
 
-// Ensure that a watchman "root" file exists in the given directory
-// or a parent so that it can be watched
-const WATCHMAN_ROOT_FILES = ['.git', '.hg', '.watchmanconfig'];
-function hasWatchmanRootFile(testPath) {
-  while (path.dirname(testPath) !== testPath) {
-    if (
-      WATCHMAN_ROOT_FILES.some(file => {
-        return fs.existsSync(path.join(testPath, file));
-      })
-    ) {
-      return true;
-    }
-    testPath = path.dirname(testPath);
-  }
-  return false;
-}
-
-// Collect args
-const argv = yargs
-  .usage(
-    'Create Relay generated files\n\n' +
-      '$0 --schema <path> --src <path> [--persist <module-path>] [--watch]',
-  )
-  .options({
-    schema: {
-      describe: 'Path to schema.graphql or schema.json',
-      demandOption: true,
-      type: 'string',
-    },
-    src: {
-      describe: 'Root directory of application code',
-      demandOption: true,
-      type: 'string',
-    },
-    persist: {
-      describe: 'Path to module exporting a `persistQuery` function',
-      type: 'string',
-    },
-    extensions: {
-      array: true,
-      default: ['js'],
-      describe: 'File extensions to compile (--extensions js jsx)',
-      type: 'string',
-    },
-    watch: {
-      describe: 'If specified, watches files and regenerates on changes',
-      type: 'boolean',
-    },
-  })
-  .help().argv;
-
-// Run script with args
-run(argv).catch(error => {
+run().catch(error => {
   console.error(String(error.stack || error));
   process.exit(1);
 });
