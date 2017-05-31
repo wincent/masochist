@@ -38,7 +38,7 @@ function wrap(stream) {
   return stream;
 }
 
-gulp.task('build', ['pug', 'babel', 'webpack:build']);
+gulp.task('build', ['pug', 'babel', 'graphql', 'webpack:build']);
 
 gulp.task('webpack:build', callback => {
   webpack(productionConfig, (error, stats) => {
@@ -65,6 +65,12 @@ gulp.task('babel', () =>
     ])
     .pipe(wrap(babel(babelOptions)))
     .pipe(gulp.dest('dist')),
+);
+
+gulp.task('graphql', () =>
+  gulp
+    .src(['src/__generated__/*.txt'])
+    .pipe(gulp.dest('dist/__generated__'))
 );
 
 gulp.task('pug', () =>
