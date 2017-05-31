@@ -2,7 +2,7 @@
  * @flow
  */
 
-import {readdirSync} from 'fs';
+import {readFileSync, readdirSync} from 'fs';
 import {join} from 'path';
 
 type QueryMap = {
@@ -12,21 +12,22 @@ type QueryMap = {
 export default class QueryCache {
   _queries: QueryMap;
 
-  constructor(paths: Array<string>) {
-    this._queries = this._cacheQueriesFromPaths(paths);
+  constructor() {
+    this._queries = this._cacheQueries();
   }
 
-  _cacheQueriesFromPaths(paths: Array<string>): QueryMap {
-    return paths.reduce((queries, path) => {
-      readdirSync(path).forEach(file => {
-        const match = file.match(/^.+Query\.graphql\.js$/);
-        if (match) {
-          const {name, text} = require(join(path, file));
-          queries[name] = text;
-        }
-      });
-      return queries;
-    }, {});
+  _cacheQueries(): QueryMap {
+    const path = join(__dirname, '..', '__generated__');
+    const queries = {};
+    readdirSync(path).map(file => {
+      const match = file.match(/^(.+Query)\.txt/);
+      if (match) {
+        const name = match[1];
+        const text = readFileSync(join(path, file)).toString();
+        queries[name] = text;
+      }
+    });
+    return queries;
   }
 
   getQuery(name: string): any {

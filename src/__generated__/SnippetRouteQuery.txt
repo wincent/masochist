@@ -1,0 +1,36 @@
+query SnippetRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Snippet {
+      ...Snippet
+      description
+    }
+    id
+  }
+}
+
+fragment Snippet on Snippet {
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  id
+  url
+  title
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

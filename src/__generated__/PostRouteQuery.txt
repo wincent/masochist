@@ -1,0 +1,36 @@
+query PostRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Post {
+      ...Post
+      description
+    }
+    id
+  }
+}
+
+fragment Post on Post {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

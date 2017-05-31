@@ -1,0 +1,24 @@
+query TagsRouteQuery(
+  $count: Int!
+) {
+  ...TagsIndex
+}
+
+fragment TagsIndex on Root {
+  tags(first: $count) {
+    count
+    edges {
+      node {
+        id
+        name
+        ...TagPreview
+      }
+    }
+  }
+}
+
+fragment TagPreview on Tag {
+  count
+  name
+  url
+}

@@ -1,0 +1,37 @@
+query ArticleRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Article {
+      ...Article
+      description
+    }
+    id
+  }
+}
+
+fragment Article on Article {
+  title
+  redirect
+  resolvedTitle
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

@@ -111,7 +111,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "type": "Root"
   },
-  "id": "text",
+  "id": "PostRouteQuery",
   "kind": "Batch",
   "metadata": {},
   "name": "PostRouteQuery",

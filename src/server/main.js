@@ -44,10 +44,7 @@ const APP_PORT = 3000;
 
 const app = express();
 
-const queryCache = new QueryCache([
-  path.join(__dirname, '../common/routes/__generated__'),
-  path.join(__dirname, '../client/components/__generated__'),
-]);
+const queryCache = new QueryCache();
 
 app.disable('x-powered-by');
 
@@ -105,7 +102,7 @@ appRoutes.forEach(route => {
     const cache = {};
     const environment = new Environment({
       network: Network.create((operation, variables) => {
-        const query = queryCache.getQuery(operation.name);
+        const query = queryCache.getQuery(operation.id);
         return runQuery(query, variables)
           .then(result => {
             const key = getRequestBody(operation, variables);
@@ -180,8 +177,8 @@ app.use(bodyParser.json());
 app.use('/graphql', (request, response, next) => {
   // Totally hacked in persisted-query support:
   let query;
-  if (request.body && request.body.name) {
-    query = queryCache.getQuery(request.body.name);
+  if (request.body && request.body.id) {
+    query = queryCache.getQuery(request.body.id);
     request.body.query = query;
   }
   if (!__DEV__ && !query) {

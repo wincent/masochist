@@ -110,7 +110,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "type": "Root"
   },
-  "id": "text",
+  "id": "SnippetsIndexQuery",
   "kind": "Batch",
   "metadata": {},
   "name": "SnippetsIndexQuery",

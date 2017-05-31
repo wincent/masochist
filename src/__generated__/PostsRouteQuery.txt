@@ -1,0 +1,60 @@
+query PostsRouteQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...PostsIndex
+}
+
+fragment PostsIndex on Root {
+  posts(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...Post
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    ... on PostConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+}
+
+fragment Post on Post {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

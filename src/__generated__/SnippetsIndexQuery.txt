@@ -1,0 +1,60 @@
+query SnippetsIndexQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...SnippetsIndex
+}
+
+fragment SnippetsIndex on Root {
+  snippets(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...Snippet
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    ... on SnippetConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+}
+
+fragment Snippet on Snippet {
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  id
+  url
+  title
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

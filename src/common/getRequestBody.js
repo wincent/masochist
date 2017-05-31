@@ -1,6 +1,3 @@
-export default function getRequestBody(operation, variables) {
-  return JSON.stringify({
-    name: operation.name,
-    variables,
-  });
+export default function getRequestBody({id}, variables) {
+  return JSON.stringify({id, variables});
 }

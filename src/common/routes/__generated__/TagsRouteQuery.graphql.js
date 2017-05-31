@@ -62,7 +62,7 @@ const batch /*: ConcreteBatch*/ = {
     ],
     "type": "Root"
   },
-  "id": "text",
+  "id": "TagsRouteQuery",
   "kind": "Batch",
   "metadata": {},
   "name": "TagsRouteQuery",
