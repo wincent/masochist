@@ -1,0 +1,103 @@
+query TagQuery(
+  $count: Int!
+  $cursor: String
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ...Tag
+    id
+  }
+}
+
+fragment Tag on Tag {
+  count
+  id
+  name
+  url
+  taggables(first: $count, after: $cursor) {
+    edges {
+      cursor
+      node {
+        __typename
+        ...ContentPreview
+        ... on Node {
+          id
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    ... on TaggableConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          ... on Node {
+            id
+          }
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+}
+
+fragment ContentPreview on Content {
+  __typename
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PagePreview on Page {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PostPreview on Post {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment SnippetPreview on Snippet {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

@@ -1,0 +1,56 @@
+query ArticlesRouteQuery(
+  $count: Int!
+  $cursor: String
+) {
+  ...ArticlesIndex
+}
+
+fragment ArticlesIndex on Root {
+  articles(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...ArticlePreview
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+    ... on ArticleConnection {
+      edges {
+        cursor
+        node {
+          __typename
+          id
+        }
+      }
+      pageInfo {
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        startCursor
+      }
+    }
+  }
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}

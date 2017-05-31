@@ -76,7 +76,7 @@ function persistQuery(text: string): Promise<string> {
   if (!fs.existsSync(queryDir)) {
     fs.mkdirSync(queryDir);
   }
-  fs.writeFileSync(path.join(queryDir, name + '.json'), JSON.stringify({text}));
+  fs.writeFileSync(path.join(queryDir, name + '.txt'), text);
   return Promise.resolve(name);
 }
 
