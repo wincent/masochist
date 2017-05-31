@@ -24,12 +24,11 @@
 require('babel-polyfill');
 
 const {
-  Runner,
   FileIRParser,
   FileWriter,
   IRTransforms,
+  Runner,
 } = require('relay-compiler');
-const formatGeneratedModule = require('relay-compiler/lib/formatGeneratedModule');
 
 const fs = require('fs');
 const path = require('path');
@@ -46,7 +45,7 @@ const {
   fragmentTransforms,
   printTransforms,
   queryTransforms,
-  schemaExtensions,
+  schemaTransforms,
 } = IRTransforms;
 
 import type {GraphQLSchema} from 'graphql';
@@ -116,7 +115,7 @@ function getRelayFileWriter(baseDir: string) {
   return (onlyValidate, schema, documents, baseDocuments) =>
     new FileWriter({
       config: {
-        formatModule: formatGeneratedModule,
+        buildCommand: path.basename(__filename),
         compilerTransforms: {
           codegenTransforms,
           fragmentTransforms,
@@ -125,7 +124,7 @@ function getRelayFileWriter(baseDir: string) {
         },
         baseDir,
         persistQuery,
-        schemaExtensions,
+        schemaTransforms,
       },
       onlyValidate,
       schema,
