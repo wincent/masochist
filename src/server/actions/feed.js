@@ -8,6 +8,7 @@ import RSS from 'rss';
 
 import {array} from '../../common/checks';
 import Cache from '../Cache';
+import QueryCache from '../QueryCache';
 import {HOST, SCHEME} from '../constants';
 import git from '../git';
 import runQuery from '../runQuery';
@@ -17,6 +18,8 @@ import type {feedPosts} from './__generated__/feedPosts.graphql';
 
 const HELLIP = '\u2026';
 const FOUR_TWEETS = 140 * 4;
+
+const queryCache = new QueryCache();
 
 function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
   if (input.length >= limit - 3) {
@@ -74,7 +77,8 @@ export default (async function feed() {
       site_url: SCHEME + HOST + '/blog',
       title: 'wincent.com blog',
     });
-    const result: any = await runQuery(feedQuery().text);
+    const query = queryCache.getQuery(feedQuery().id);
+    const result: any = await runQuery(query);
     const posts: feedPosts = result.data.posts;
     posts.edges &&
       posts.edges.forEach(({node}) => {

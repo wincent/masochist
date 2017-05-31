@@ -66,7 +66,7 @@ function buildWatchExpression() {
 /* eslint-disable no-console-disallow */
 
 function persistQuery(text: string): Promise<string> {
-  const match = text.match(/^query\s+(\w+Query)\(/);
+  const match = text.match(/^\s*query\s+(\w+Query)\b/);
   if (!match) {
     console.error('Failed to find query name in text:\n' + text);
     throw new Error('Failed to find query name in text');

@@ -1,0 +1,19 @@
+query feedQuery {
+  ...feedPosts
+}
+
+fragment feedPosts on Root {
+  posts(first: 10) {
+    edges {
+      node {
+        body {
+          html
+        }
+        createdAt
+        title
+        url
+        id
+      }
+    }
+  }
+}
