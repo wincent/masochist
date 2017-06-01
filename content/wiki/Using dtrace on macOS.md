@@ -18,5 +18,5 @@ sudo syscallbypid.d
 sudo dtruss -p 63856
 
 # Same, logging to a file.
-sudo tee /tmp/log dtruss -p 63856
+sudo dtruss -p 63856 &> logfile
 ```
