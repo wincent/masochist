@@ -7,7 +7,6 @@ tags: wiki dtrace os.x
 Other scripts can be found in `/usr/bin/*.d`. Examples:
 
 ```sh
-
 # Show total number of syscalls per process, sorted by count.
 sudo syscallbyproc.d
 

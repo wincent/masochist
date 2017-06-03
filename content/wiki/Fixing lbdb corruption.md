@@ -11,4 +11,4 @@ sort: The strings compared were `[redacted]' and `[redacted]'.
 lbdbq: no matches
 ```
 
-LC_ALL='C' does indeed work, but I don't necessarily want to set that in the environment. So far, the workaround that has worked for me has just been to delete the problematic line from `~/.lbdb/m_inmail.utf-8`.
+`LC_ALL='C'` does indeed work, but I don't necessarily want to set that in the environment. So far, the workaround that has worked for me has just been to delete the problematic line from `~/.lbdb/m_inmail.utf-8`.
