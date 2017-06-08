@@ -52,6 +52,12 @@ Other apps that I haven't listed on that page but which I would miss:
 
 Losing some of these would hurt but be livable, but some of the others would be really, really big losses. This is why in that tweet that I linked to above, I put my chances of switching at "approaching 50%".
 
+# Workarounds
+
+An option to consider: dual-boot into macOS for those things that are super hard to replace. (Would require sticking with Apple hardware, that I am not super keen on given the nonsense with the lack of ports and the Touch Bar.)
+
 # Doubts
 
-System upgrades, long term support, and stability. I've used Linux on the server for many years and very happy with it there, but hard to know what it would be like as a desktop platform, as I haven't really ever gone beyond playing with it in that capacity.
+* System upgrades, long term support, and stability.
+* Choosing a distro? (Likely will go with [Arch Linux](https://www.archlinux.org/)).
+* I've used Linux on the server for many years and very happy with it there, but hard to know what it would be like as a desktop platform, as I haven't really ever gone beyond playing with it in that capacity.
