@@ -7,7 +7,7 @@ if tmux has-session -t masochist 2> /dev/null; then
   exit
 fi
 
-tmux new-session -d -s masochist -n vim
+tmux new-session -d -s masochist -n vim  -x $(tput cols) -y $(tput lines)
 
 # 1. Main window: vim, server, shell.
 tmux send-keys -t masochist:vim "vim -c CommandT" Enter
