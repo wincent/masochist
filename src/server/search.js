@@ -42,6 +42,7 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
     '-i', // Ignore case.
     '-l', // List matching file-names rather than the matches themselves.
     '-z', // Use NUL byte as file-name separator.
+    '--all-match', // Multiple patterns must all match.
     '--full-name', // Always print paths relative to top of repo.
   ];
 
@@ -53,14 +54,11 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
 
   const directories = [];
 
-  trimmed.split(/\s+/).forEach((atom, i) => {
+  trimmed.split(/\s+/).forEach(atom => {
     const filter = getFilter(atom);
     if (filter) {
       directories.push(filter);
       return;
-    }
-    if (i) {
-      args.push('--and'); // Multiple patterns must all match.
     }
     args.push(
       '-e', // Flag that next param is a search pattern.
