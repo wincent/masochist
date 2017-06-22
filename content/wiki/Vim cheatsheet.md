@@ -177,11 +177,17 @@ To open the command-line window (showing full command history in a buffer, which
 
 Funnily, you can easily open this by mistake by typing `q:` when you mean to type the quite-frequently-used `:q` instead.
 
-## Quickfix/Location list commands
+## Quickfix/Location list
+
+### Commands
 
 -   `:cclose` (`:ccl`): close quickfix window (`:lclose` and `:lcl` for location list)
 -   `:colder` (`:col`): show previous quickfix results (`:lolder` and `:lol` for location list)
 -   `:cnewer` (`:cnew`): show subsequent quickfix results (`:lnewer` and `:lnew` for location list)
+
+### Mappings
+
+- `CTRL-w Enter`: open current item in a split.
 
 ## Mappings available in command mode
 
