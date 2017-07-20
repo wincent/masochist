@@ -1,6 +1,7 @@
 ---
 tags: blog
 title: Searching for the Holy Grail
+twitter: https://twitter.com/wincent/status/888056462781538304
 ---
 
 I [recently came to the conclusion](https://twitter.com/wincent/status/887743724867903488) that, when it comes to programming languages, there is no Holy Grail, just a bunch of cups, and perhaps we should just get on with drinking.
@@ -55,3 +56,5 @@ I finally decided to go with Reason despite the relative lack of novelty, and th
 *All* languages are going to suck in some way. But the bright side is that we have *so* many choices available to us now that we can choose languages that suck in the ways that we can tolerate, and conversely, excel in the areas that really matter to us. For me, Reason is interesting because two of the things that it gets really right (having a solid type system, and language-level support for immutable records) happen to represent a couple of the things whose absence really annoys me about JavaScript. I can compromise a lot on the rest — take the good, and the bad — because ultimately it doesn't matter that much to me. I'm looking for a cup to drink out of, not a fountain of eternal youth.
 
 In closing, I want to make sure that this post doesn't end up being yet another "Why I'm rewriting everything from X to Y". I'll continue to use the other "cups" I have in my cupboard. The cup I choose at any particular moment will depend on the circumstances. I am sure that every now and again I'll want to try out a new vessel or two. But if you ever see me with a distant, glazed-over look in my eyes, and I look like I'm about to ride off towards the horizon in search of some mythical language that doesn't exist — or worse still, I start showing signs of wanting to design my own — please try to snap me out of it. A slap in the face and, if that doesn't work, a bucket of cold water should do the trick.
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/888056462781538304)</em></small>
