@@ -5,6 +5,8 @@ cache_breaker: 1
 
 * `map()` mutates the collection in place; if you want to avoid this you have to make a copy first.
 * `'some string' == 0` evaluates to true (`1`).
+* `'some string' && 1` evaluates to false (`0`).
+* Both of the preceding results are explained because all strings convert to the number 0 (ie. `+'foo'` is `0`); despite this, `'foo'` is truthy and `''` is falsey.
 * Line-continuation markers (`\`) occur at the beginning of the continuation instead of the end of the continued line, unlike every other language.
 * There are no implicit line-continuations (ie. you cannot split a long list over multiple lines after the commas; you have to use explicit line-continuation markers).
 * Lists and dictionaries do not permit optional trailing commas after the last item, unlike many other languages.
