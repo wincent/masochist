@@ -109,5 +109,10 @@
   "nyc": {
     "sourceMap": false,
     "instrument": false
+  },
+  "postcss": {
+    "plugins": {
+      "cssnano": {}
+    }
   }
 }
