@@ -68,9 +68,7 @@ gulp.task('babel', () =>
 );
 
 gulp.task('graphql', () =>
-  gulp
-    .src(['src/__generated__/*.txt'])
-    .pipe(gulp.dest('dist/__generated__'))
+  gulp.src(['src/__generated__/*.txt']).pipe(gulp.dest('dist/__generated__')),
 );
 
 gulp.task('pug', () =>

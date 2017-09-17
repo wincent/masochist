@@ -7,7 +7,8 @@ import getIndexNameForContentType from './getIndexNameForContentType';
 export const HOST = 'wincent.com';
 export const SCHEME = 'https://';
 
-export const REPO = __DEV__ && process.env.MASOCHIST_CONTENT_REPO || '/var/masochist/content';
+export const REPO =
+  (__DEV__ && process.env.MASOCHIST_CONTENT_REPO) || '/var/masochist/content';
 
 /**
  * Redis-related.
