@@ -34,8 +34,9 @@ function run(command, ...args: Array<string>): Promise<string> {
     child.on('close', code => {
       if (code) {
         if (promise.isPending()) {
+          const commandString = [command, ...args].join(' ');
           const message = [
-            `git error code (${code})`,
+            `git error code (${code}) running \`${commandString}\``,
             stdout,
             stderr,
           ].join('\n');
