@@ -17,7 +17,7 @@ html(lang='en')
     if (home)
       link(rel='home' type='application/rss+xml' href=home)
     if (styles)
-      style= !{styles}
+      style !{styles}
   body
     #relay-root !{pageContent}
     script.
