@@ -64,7 +64,11 @@ let styles = null;
 async function getStyles() {
   if (!styles && !__DEV__) {
     // Expect to be running out of dist.
-    const css = path.join(__dirname, require('../webpack-assets').main.css);
+    const css = path.join(
+      __dirname,
+      '../../public/static',
+      require('../webpack-assets').main.css,
+    );
     styles = await readFile(css);
   }
   return styles;
