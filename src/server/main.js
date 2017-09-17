@@ -61,7 +61,7 @@ if (__DEV__) {
 }
 
 let styles = null;
-async function getStyles() {
+const getStyles = async function() {
   if (!styles && !__DEV__) {
     // Expect to be running out of dist.
     const css = path.join(
@@ -72,7 +72,7 @@ async function getStyles() {
     styles = await readFile(css);
   }
   return styles;
-}
+};
 
 function jadeHandler(resource, extraLocals = {}) {
   return async (request, response) => {
