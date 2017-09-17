@@ -6,6 +6,6 @@ html(lang='en')
     title #{error} #{message} · wincent.com
     link(rel='icon', type='image/x-icon', href='favicon.ico')
     if (styles)
-      style= styles
+      style= !{styles}
   body
     #root !{pageContent}
