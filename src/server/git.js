@@ -19,8 +19,10 @@ export const GitError = createErrorClass('GitError', function(
 function run(command, ...args: Array<string>): Promise<string> {
   const promise = new Promise((resolve, reject) => {
     const child = spawn(command, args);
+    let stderr = '';
     let stdout = '';
 
+    child.stderr.on('data', data => (stderr += data));
     child.stdout.on('data', data => (stdout += data));
 
     child.on('error', error => {
@@ -32,7 +34,12 @@ function run(command, ...args: Array<string>): Promise<string> {
     child.on('close', code => {
       if (code) {
         if (promise.isPending()) {
-          reject(new GitError(`git error code (${code})`, code));
+          const message = [
+            `git error code (${code})`,
+            stdout,
+            stderr,
+          ].join('\n');
+          reject(new GitError(message, code));
         }
       } else {
         resolve(stdout);
