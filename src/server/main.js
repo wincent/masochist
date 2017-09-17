@@ -8,6 +8,7 @@ import Promise from 'bluebird';
 import bodyParser from 'body-parser';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
+import fs from 'fs';
 import path from 'path';
 import createHistory from 'history/createMemoryHistory';
 import React from 'react';
@@ -46,6 +47,9 @@ const app = express();
 
 const queryCache = new QueryCache();
 
+// TODO: upgrade to Node 8 so I can use util.promisify.
+const readFile = Promise.promisify(fs.readFile);
+
 app.disable('x-powered-by');
 
 app.set('views', path.join(__dirname, 'views'));
@@ -56,18 +60,27 @@ if (__DEV__) {
   app.engine('js', renderCompiledPug);
 }
 
+let styles = null;
+async function getStyles() {
+  if (!styles && !__DEV__) {
+    // Expect to be running out of dist.
+    const css = path.join(__dirname, require('../webpack-assets').main.css);
+    styles = await readFile(css);
+  }
+  return styles;
+}
+
 function jadeHandler(resource, extraLocals = {}) {
   return async (request, response) => {
     const canonical = await getCanonicalURLForRequest(request);
+    const styles = await getStyles();
     // TODO: if canonical is non-null and doesn't match actual, 301 redirect
     const locals = {
       bundle: getAssetURL(
         '/static/' +
           (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js),
       ),
-      styles: __DEV__
-        ? null
-        : getAssetURL('/static/' + require('../webpack-assets').main.css),
+      styles,
       canonical,
       production: !__DEV__,
       ...extraLocals,

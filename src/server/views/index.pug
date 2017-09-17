@@ -9,8 +9,6 @@ html(lang='en')
     meta(property='og:image', content='https://wincent.com/assets/static/logo.png')
     if (description)
       meta(property='og:description', content=description)
-    if (production)
-      link(rel='stylesheet', href=styles)
     if (canonical)
       link(rel='canonical', href=canonical)
       meta(property='og:url', content=canonical)
@@ -18,6 +16,8 @@ html(lang='en')
       link(rel='alternate' type='application/rss+xml' href=alternate)
     if (home)
       link(rel='home' type='application/rss+xml' href=home)
+    if (styles)
+      style= styles
   body
     #relay-root !{pageContent}
     script.
