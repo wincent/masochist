@@ -77,7 +77,7 @@ In `__DEV__`, Masochist will look for content in the current repo (ie. ".").
 
 In production, it expects to find a content repo at "/var/masochist/content".
 
-In both cases, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the "content" branch checked out alongside it at "../masochist-pages" (see below for more details on this set-up). I can override the `__DEV__` default of "." with:
+In `__DEV__`, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the "content" branch checked out alongside it at "../masochist-pages" (see below for more details on this set-up). I can override the `__DEV__` default of "." with:
 
 ```
 # Use npm, not yarn, for this:
