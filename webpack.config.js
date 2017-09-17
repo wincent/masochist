@@ -5,6 +5,7 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
+    'babel-polyfill',
     'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:3001/',
     path.resolve(__dirname, 'src', 'client', 'app.js'),
