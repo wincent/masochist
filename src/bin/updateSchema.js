@@ -4,13 +4,13 @@ import 'babel-polyfill';
 import '../common/unhandledRejection';
 
 import schema from '../server/schema';
-import Promise from 'bluebird';
 import fs from 'fs';
 import {graphql} from 'graphql';
 import {introspectionQuery, printSchema} from 'graphql/utilities';
 import path from 'path';
+import {promisify} from 'util';
 
-const writeFile = Promise.promisify(fs.writeFile);
+const writeFile = promisify(fs.writeFile);
 
 function prettify(stringifiable) {
   return JSON.stringify(stringifiable, null, 2);

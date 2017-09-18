@@ -4,7 +4,6 @@ import 'babel-polyfill';
 import '../common/devFallback';
 import '../common/unhandledRejection';
 
-import Promise from 'bluebird';
 import bodyParser from 'body-parser';
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
@@ -13,6 +12,7 @@ import path from 'path';
 import createHistory from 'history/createMemoryHistory';
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
+import {promisify} from 'util';
 
 import {
   Environment,
@@ -47,8 +47,7 @@ const app = express();
 
 const queryCache = new QueryCache();
 
-// TODO: upgrade to Node 8 so I can use util.promisify.
-const readFile = Promise.promisify(fs.readFile);
+const readFile = util.promisify(fs.readFile);
 
 app.disable('x-powered-by');
 
