@@ -47,7 +47,7 @@ const app = express();
 
 const queryCache = new QueryCache();
 
-const readFile = util.promisify(fs.readFile);
+const readFile = promisify(fs.readFile);
 
 app.disable('x-powered-by');
 
