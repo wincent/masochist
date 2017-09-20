@@ -8,7 +8,24 @@ import productionConfig from './webpack.production.config.js';
 let watching = false;
 
 const babelOptions = {
-  plugins: ['dev-expression'],
+  babelrc: false,
+  plugins: [
+    'dev-expression',
+    'relay',
+    'transform-object-rest-spread',
+    'transform-class-properties',
+  ],
+  presets: [
+    [
+      'env',
+      {
+        targets: {
+          node: '8.5.0',
+        },
+      },
+    ],
+    'react',
+  ],
 };
 
 /**

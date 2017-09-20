@@ -21,8 +21,6 @@
 
 'use strict';
 
-require('babel-polyfill');
-
 const {
   FileIRParser,
   FileWriter,

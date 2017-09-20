@@ -15,7 +15,15 @@ module.exports = {
       {
         exclude: /node_modules/,
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['es2015', 'react', 'stage-0'],
+              plugins: ['dev-expression', 'relay'],
+            },
+          },
+        ],
       },
       {
         include: path.resolve(__dirname, 'src'),

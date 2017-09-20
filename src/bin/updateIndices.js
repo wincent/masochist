@@ -11,7 +11,6 @@
  * ```
  */
 
-import 'babel-polyfill';
 import '../common/devFallback';
 import '../common/unhandledRejection';
 
