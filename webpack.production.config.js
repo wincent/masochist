@@ -1,11 +1,11 @@
 'use strict';
 
-var AssetsPlugin = require('assets-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var autoprefixer = require('autoprefixer');
-var fse = require('fs-extra');
-var path = require('path');
-var webpack = require('webpack');
+const AssetsPlugin = require('assets-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const fse = require('fs-extra');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: ['babel-polyfill', path.resolve(__dirname, 'src', 'client', 'app.js')],
