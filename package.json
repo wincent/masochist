@@ -44,6 +44,7 @@
     "babel-plugin-dev-expression": "*",
     "babel-plugin-relay": "^1.0.1",
     "babel-polyfill": "*",
+    "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "*",
     "babel-preset-react": "*",
     "babel-preset-stage-0": "*",
@@ -96,7 +97,6 @@
   },
   "devDependencies": {
     "babel-plugin-istanbul": "^4.1.3",
-    "babel-preset-env": "^1.6.0",
     "gulp-eslint": "*",
     "gulp-mocha": "^4.3.1",
     "gulp-shell": "*",
