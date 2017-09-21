@@ -138,7 +138,7 @@ appRoutes.forEach(route => {
       return router
         .resolve({
           api,
-          path: location.pathname,
+          pathname: location.pathname,
         })
         .then(({component, description}) => {
           return {

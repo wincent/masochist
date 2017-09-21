@@ -136,7 +136,7 @@ function resolve(location, data) {
   return router
     .resolve({
       api,
-      path: location.pathname,
+      pathname: location.pathname,
     })
     .then(({component}) => {
       ReactDOM.render(
