@@ -1,4 +1,4 @@
-import {pathToRegexp} from 'universal-router';
+import {pathToRegexp} from 'universal-router/browser';
 
 import routeConfig from './routeConfig';
 
