@@ -6,8 +6,6 @@ import React from 'react';
 import relativizeDate from '../relativizeDate';
 import inBrowser from '../inBrowser';
 
-let stateCounter = 0;
-
 export default class Time extends React.Component {
   _updateTimer: mixed;
 
@@ -18,8 +16,28 @@ export default class Time extends React.Component {
     }
   };
 
-  componentWillReceiveProps() {
+  _startTimer = () => {
+    const {ttl} = this.state;
+    if (inBrowser && isFinite(ttl)) {
+      this._updateTimer = setTimeout(
+        () => this.setState(relativizeDate(this.props.datetime)),
+        this.state.ttl * 1000,
+      );
+    }
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = relativizeDate(props.datetime);
+  }
+
+  componentDidMount() {
+    this._startTimer();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
     this._clearTimer();
+    this._startTimer();
   }
 
   componentWillUnmount() {
@@ -27,18 +45,7 @@ export default class Time extends React.Component {
   }
 
   render() {
-    const {humanReadable, date, ttl} = relativizeDate(this.props.datetime);
-
-    if (inBrowser) {
-      this._updateTimer = setTimeout(
-        () =>
-          this.setState(previousState => ({
-            stateCounter: previousState.stateCounter + 1,
-          })),
-        ttl * 1000,
-      );
-    }
-
+    const {date, humanReadable} = this.state;
     return (
       <time title={date.toLocaleString()} dateTime={date}>
         {humanReadable}
