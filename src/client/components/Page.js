@@ -27,7 +27,7 @@ class Page extends React.Component {
       return (
         <HTTPError code={404}>
           <p>
-            Try inspecting  <Link to="/tags">the tags listing</Link> or using {' '}
+            Try inspecting <Link to="/tags">the tags listing</Link> or using {' '}
             <Link to="/search">the site search</Link>.
           </p>
         </HTTPError>
