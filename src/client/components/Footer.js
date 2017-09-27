@@ -66,15 +66,21 @@ export default class Footer extends React.Component {
             <div className="four columns">
               <h6>Colophon</h6>
               <p>
-                Crafted lovingly by
-                {' '}<a href="mailto:greg@hurrell.net">Greg Hurrell</a>
-                {' '}using
-                {' '}<a href="https://facebook.github.io/react/">React</a>,
-                {' '}<a href="https://facebook.github.io/relay/">Relay</a> and
-                {' '}<a href="http://graphql.org/">GraphQL</a> (with help from
-                {' '}<a href="https://git-scm.com/">Git</a>,
-                {' '}<a href="http://redis.io/">Redis</a> and
-                {' '}<a href="https://github.com/vim/vim">Vim</a>).
+                {'Crafted lovingly by '}
+                <a href="mailto:greg@hurrell.net">Greg Hurrell</a>
+                {' using '}
+                <a href="https://facebook.github.io/react/">React</a>
+                {', '}
+                <a href="https://facebook.github.io/relay/">Relay</a>
+                {' and '}
+                <a href="http://graphql.org/">GraphQL</a>
+                {' (with help from '}
+                <a href="https://git-scm.com/">Git</a>
+                {', '}
+                <a href="http://redis.io/">Redis</a>
+                {' and '}
+                <a href="https://github.com/vim/vim">Vim</a>
+                {').'}
               </p>
               {/* TODO link to /pages/legal here */}
             </div>

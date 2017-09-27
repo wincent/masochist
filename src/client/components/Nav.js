@@ -66,13 +66,11 @@ export default class Nav extends React.Component {
         <ul>
           <li>
             <Link className="nav-link" to="/">Wincent</Link>
-            {inBrowser
-              ? <div className="nav-toggle-wrapper">
-                  <div className="nav-toggle" onClick={this._handleToggle}>
-                    {this.state.isOpen ? 'Close' : 'Open'}
-                  </div>
-                </div>
-              : null}
+            <div className="nav-toggle-wrapper">
+              <div className="nav-toggle" onClick={this._handleToggle}>
+                {this.state.isOpen ? 'Close' : 'Open'}
+              </div>
+            </div>
           </li>
           <NavLink target="/blog" text="Blog" active={active} />
           <NavLink target="/wiki" text="Wiki" active={active} />
