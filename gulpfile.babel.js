@@ -107,7 +107,10 @@ if (__DEV__) {
   gulp.task('js', ['babel', 'lint', 'test', 'typecheck']);
 
   gulp.task('lint', () =>
-    gulp.src('src/**/*.js').pipe(eslint()).pipe(eslint.format()),
+    gulp
+      .src('src/**/*.js')
+      .pipe(eslint())
+      .pipe(eslint.format()),
   );
 
   gulp.task('test', () =>

@@ -6,11 +6,7 @@ import buildRoute from '../buildRoute';
 
 export default buildRoute(
   graphql`
-    query TagRouteQuery(
-      $count: Int!
-      $cursor: String
-      $id: ID!
-    ) {
+    query TagRouteQuery($count: Int!, $cursor: String, $id: ID!) {
       node(id: $id) {
         ... on Tag {
           ...Tag

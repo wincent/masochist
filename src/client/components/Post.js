@@ -25,8 +25,7 @@ class Post extends React.Component {
       return (
         <HTTPError code={404}>
           <p>
-            Try inspecting {' '}
-            <Link to="/blog">the blog index</Link> and {' '}
+            Try inspecting  <Link to="/blog">the blog index</Link> and {' '}
             <Link to="/tags">the tags listing</Link>, or using {' '}
             <Link to="/search">the site search</Link>.
           </p>
@@ -36,22 +35,18 @@ class Post extends React.Component {
 
     return (
       // post.url encode?
-      (
-        <DocumentTitle isLeaf={true} title={post.title}>
-          <article>
-            <h1>
-              <Link to={post.url}>
-                {post.title}
-              </Link>
-            </h1>
-            <When data={post} />
-            <div>
-              <TrustedPrerenderedMarkup html={post.body.html} />
-            </div>
-            <Tags data={post} />
-          </article>
-        </DocumentTitle>
-      )
+      <DocumentTitle isLeaf={true} title={post.title}>
+        <article>
+          <h1>
+            <Link to={post.url}>{post.title}</Link>
+          </h1>
+          <When data={post} />
+          <div>
+            <TrustedPrerenderedMarkup html={post.body.html} />
+          </div>
+          <Tags data={post} />
+        </article>
+      </DocumentTitle>
     );
   }
 }

@@ -6,9 +6,7 @@ import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 
-import type {
-  TagPreview as TagPreviewData,
-} from './__generated__/TagPreview.graphql';
+import type {TagPreview as TagPreviewData} from './__generated__/TagPreview.graphql';
 
 class TagPreview extends React.Component {
   props: {
@@ -20,13 +18,9 @@ class TagPreview extends React.Component {
     return (
       <tr>
         <td>
-          <Link to={url}>
-            {name}
-          </Link>
+          <Link to={url}>{name}</Link>
         </td>
-        <td>
-          {count}
-        </td>
+        <td>{count}</td>
       </tr>
     );
   }

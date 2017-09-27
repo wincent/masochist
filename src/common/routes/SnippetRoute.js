@@ -6,10 +6,7 @@ import buildRoute from '../buildRoute';
 
 export default buildRoute(
   graphql`
-    query SnippetRouteQuery(
-      $baseHeadingLevel: Int!
-      $id: ID!
-    ) {
+    query SnippetRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
       node(id: $id) {
         ... on Snippet {
           ...Snippet

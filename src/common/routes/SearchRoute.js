@@ -6,11 +6,7 @@ import buildRoute from '../buildRoute';
 
 export default buildRoute(
   graphql`
-    query SearchRouteQuery(
-      $count: Int!
-      $cursor: String
-      $q: String!
-    ) {
+    query SearchRouteQuery($count: Int!, $cursor: String, $q: String!) {
       ...Search
     }
   `,

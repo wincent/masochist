@@ -58,7 +58,8 @@ const ArticleType = registerType(
       },
       redirect: {
         type: GraphQLString,
-        description: 'The destination ([[wiki article]] or URL) the article should ' +
+        description:
+          'The destination ([[wiki article]] or URL) the article should ' +
           'redirect to',
       },
       body: {

@@ -23,10 +23,7 @@ const FORMAT_TO_MIME_TYPE = {
 
 export default buildRoute(
   graphql`
-    query SnippetSourceRouteQuery(
-      $format: MARKUP_FORMAT_TYPE
-      $id: ID!
-    ) {
+    query SnippetSourceRouteQuery($format: MARKUP_FORMAT_TYPE, $id: ID!) {
       node(id: $id) {
         ... on Snippet {
           source(format: $format)

@@ -42,8 +42,8 @@ class When extends React.Component {
 
     return (
       <WhenWrapper url={url}>
-        Created <Time datetime={createdAt} />,
-        updated <Time datetime={updatedAt} />
+        Created <Time datetime={createdAt} />, updated{' '}
+        <Time datetime={updatedAt} />
       </WhenWrapper>
     );
   }

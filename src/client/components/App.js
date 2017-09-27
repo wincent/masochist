@@ -83,9 +83,7 @@ export default class App extends React.Component {
       <DocumentTitle title="wincent.com">
         <div className="app">
           <Nav />
-          <section className="app-content container">
-            {children}
-          </section>
+          <section className="app-content container">{children}</section>
           <Footer />
         </div>
       </DocumentTitle>

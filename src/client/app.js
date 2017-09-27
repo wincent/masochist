@@ -33,7 +33,7 @@ const router = createRouter(history);
 let render = function(element, container) {
   ReactDOM.hydrate(element, container);
   render = ReactDOM.render;
-}
+};
 
 // Simplest possible request-response cache.
 const cache = new Map();
@@ -145,12 +145,7 @@ function resolve(location, data) {
       pathname: location.pathname,
     })
     .then(({component}) => {
-      render(
-        <App router={router}>
-          {component}
-        </App>,
-        root,
-      );
+      render(<App router={router}>{component}</App>, root);
     })
     .catch(error => {
       if (error instanceof RenderTextError) {

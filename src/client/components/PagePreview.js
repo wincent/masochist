@@ -8,9 +8,7 @@ import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
-import type {
-  PagePreview as PagePreviewData,
-} from './__generated__/PagePreview.graphql';
+import type {PagePreview as PagePreviewData} from './__generated__/PagePreview.graphql';
 
 class PagePreview extends React.Component {
   props: {

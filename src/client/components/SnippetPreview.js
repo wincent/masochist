@@ -8,9 +8,7 @@ import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
-import type {
-  SnippetPreview as SnippetPreviewData,
-} from './__generated__/SnippetPreview.graphql';
+import type {SnippetPreview as SnippetPreviewData} from './__generated__/SnippetPreview.graphql';
 
 class SnippetPreview extends React.Component {
   props: {

@@ -6,10 +6,7 @@ import buildRoute from '../buildRoute';
 
 export default buildRoute(
   graphql`
-    query PostRouteQuery(
-      $baseHeadingLevel: Int!
-      $id: ID!
-    ) {
+    query PostRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
       node(id: $id) {
         ... on Post {
           ...Post

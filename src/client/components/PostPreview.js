@@ -8,9 +8,7 @@ import Link from './Link';
 import Tags from './Tags';
 import When from './When';
 
-import type {
-  PostPreview as PostPreviewData,
-} from './__generated__/PostPreview.graphql';
+import type {PostPreview as PostPreviewData} from './__generated__/PostPreview.graphql';
 
 class PostPreview extends React.Component {
   props: {

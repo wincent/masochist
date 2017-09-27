@@ -79,9 +79,7 @@ class Search extends React.Component {
       <DocumentTitle title="search">
         <div>
           <h1>
-            <Link to={searchURL}>
-              {this.state.q || 'Search'}
-            </Link>
+            <Link to={searchURL}>{this.state.q || 'Search'}</Link>
           </h1>
           <div className="row">
             <form
@@ -125,12 +123,12 @@ class Search extends React.Component {
                 }
               })}
           </ContentListing>
-          {search.pageInfo.hasNextPage
-            ? <LoadMoreButton
-                isLoading={this.state.isLoading}
-                onLoadMore={this._handleLoadMore}
-              />
-            : null}
+          {search.pageInfo.hasNextPage ? (
+            <LoadMoreButton
+              isLoading={this.state.isLoading}
+              onLoadMore={this._handleLoadMore}
+            />
+          ) : null}
         </div>
       </DocumentTitle>
     );
@@ -141,11 +139,8 @@ const SearchContainer = createPaginationContainer(
   Search,
   graphql`
     fragment Search on Root {
-      search(
-        first: $count
-        after: $cursor
-        q: $q
-      ) @connection(key: "Search_search") {
+      search(first: $count, after: $cursor, q: $q)
+        @connection(key: "Search_search") {
         count
         edges {
           cursor
@@ -175,11 +170,7 @@ const SearchContainer = createPaginationContainer(
       };
     },
     query: graphql`
-      query SearchQuery(
-        $count: Int!
-        $cursor: String
-        $q: String!
-      ) {
+      query SearchQuery($count: Int!, $cursor: String, $q: String!) {
         ...Search
       }
     `,

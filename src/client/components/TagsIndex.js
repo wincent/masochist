@@ -8,9 +8,7 @@ import DocumentTitle from './DocumentTitle';
 import TagPreview from './TagPreview';
 
 import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {
-  TagsIndex as TagsIndexData,
-} from './__generated__/TagsIndex.graphql';
+import type {TagsIndex as TagsIndexData} from './__generated__/TagsIndex.graphql';
 
 class TagsIndex extends React.Component {
   props: {
@@ -28,7 +26,10 @@ class TagsIndex extends React.Component {
 
   render() {
     const {tags} = this.props.data;
-    const filters = this.state.filterString.toLowerCase().trim().split(/\s+/);
+    const filters = this.state.filterString
+      .toLowerCase()
+      .trim()
+      .split(/\s+/);
     const edges = tags && tags.edges;
     if (!edges) {
       // In practice won't happen, but keep Flow happy.

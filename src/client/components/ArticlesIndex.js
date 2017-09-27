@@ -10,9 +10,7 @@ import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 
 import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {
-  ArticlesIndex as ArticlesIndexData,
-} from './__generated__/ArticlesIndex.graphql';
+import type {ArticlesIndex as ArticlesIndexData} from './__generated__/ArticlesIndex.graphql';
 
 if (inBrowser) {
   require('./ArticlesIndex.css');
@@ -76,12 +74,12 @@ class ArticlesIndex extends React.Component {
                 })}
             </tbody>
           </table>
-          {this.props.relay.hasMore()
-            ? <LoadMoreButton
-                isLoading={this.state.isLoading}
-                onLoadMore={this._handleLoadMore}
-              />
-            : null}
+          {this.props.relay.hasMore() ? (
+            <LoadMoreButton
+              isLoading={this.state.isLoading}
+              onLoadMore={this._handleLoadMore}
+            />
+          ) : null}
         </div>
       </DocumentTitle>
     );
@@ -92,10 +90,8 @@ const ArticlesIndexContainer = createPaginationContainer(
   ArticlesIndex,
   graphql`
     fragment ArticlesIndex on Root {
-      articles(
-        first: $count
-        after: $cursor
-      ) @connection(key: "ArticlesIndex_articles") {
+      articles(first: $count, after: $cursor)
+        @connection(key: "ArticlesIndex_articles") {
         edges {
           node {
             id
@@ -123,10 +119,7 @@ const ArticlesIndexContainer = createPaginationContainer(
       };
     },
     query: graphql`
-      query ArticlesIndexQuery(
-        $count: Int!
-        $cursor: String
-      ) {
+      query ArticlesIndexQuery($count: Int!, $cursor: String) {
         ...ArticlesIndex
       }
     `,

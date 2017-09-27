@@ -6,9 +6,7 @@ import buildRoute from '../buildRoute';
 
 export default buildRoute(
   graphql`
-    query TagsRouteQuery(
-      $count: Int!
-    ) {
+    query TagsRouteQuery($count: Int!) {
       ...TagsIndex
     }
   `,

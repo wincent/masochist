@@ -9,9 +9,7 @@ import LoadMoreButton from './LoadMoreButton';
 import Post from './Post';
 
 import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {
-  PostsIndex as PostsIndexData,
-} from './__generated__/PostsIndex.graphql';
+import type {PostsIndex as PostsIndexData} from './__generated__/PostsIndex.graphql';
 
 const PAGE_SIZE = 3;
 
@@ -59,12 +57,12 @@ class PostsIndex extends React.Component {
                 return <Post key={node.id} data={node} />;
               }
             })}
-          {this.props.data.posts.pageInfo.hasNextPage
-            ? <LoadMoreButton
-                isLoading={this.state.isLoading}
-                onLoadMore={this._handleLoadMore}
-              />
-            : null}
+          {this.props.data.posts.pageInfo.hasNextPage ? (
+            <LoadMoreButton
+              isLoading={this.state.isLoading}
+              onLoadMore={this._handleLoadMore}
+            />
+          ) : null}
         </div>
       </DocumentTitle>
     );
@@ -75,10 +73,8 @@ const PostsIndexContainer = createPaginationContainer(
   PostsIndex,
   graphql`
     fragment PostsIndex on Root {
-      posts(
-        first: $count
-        after: $cursor
-      ) @connection(key: "PostsIndex_posts") {
+      posts(first: $count, after: $cursor)
+        @connection(key: "PostsIndex_posts") {
         edges {
           node {
             id

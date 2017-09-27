@@ -21,9 +21,5 @@ export default function withContext(context, component) {
     ContextProvider.childContextTypes[key] = PropTypes.any.isRequired;
   });
 
-  return (
-    <ContextProvider>
-      {component}
-    </ContextProvider>
-  );
+  return <ContextProvider>{component}</ContextProvider>;
 }

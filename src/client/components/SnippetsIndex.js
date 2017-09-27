@@ -9,9 +9,7 @@ import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
 import type {Disposable, RelayPaginationProp} from 'react-relay';
-import type {
-  SnippetsIndex as SnippetsIndexData,
-} from './__generated__/SnippetsIndex.graphql';
+import type {SnippetsIndex as SnippetsIndexData} from './__generated__/SnippetsIndex.graphql';
 
 const PAGE_SIZE = 3;
 
@@ -58,12 +56,12 @@ class SnippetsIndex extends React.Component {
                 return <Snippet key={node.id} data={node} />;
               }
             })}
-          {this.props.data.snippets.pageInfo.hasNextPage
-            ? <LoadMoreButton
-                isLoading={this.state.isLoading}
-                onLoadMore={this._handleLoadMore}
-              />
-            : null}
+          {this.props.data.snippets.pageInfo.hasNextPage ? (
+            <LoadMoreButton
+              isLoading={this.state.isLoading}
+              onLoadMore={this._handleLoadMore}
+            />
+          ) : null}
         </div>
       </DocumentTitle>
     );
@@ -74,10 +72,8 @@ const SnippetsIndexContainer = createPaginationContainer(
   SnippetsIndex,
   graphql`
     fragment SnippetsIndex on Root {
-      snippets(
-        first: $count
-        after: $cursor
-      ) @connection(key: "SnippetsIndex_snippets") {
+      snippets(first: $count, after: $cursor)
+        @connection(key: "SnippetsIndex_snippets") {
         edges {
           node {
             id

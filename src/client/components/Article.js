@@ -69,8 +69,7 @@ class Article extends React.Component {
       return (
         <HTTPError code={404}>
           <p>
-            Try inspecting {' '}
-            <Link to="/wiki">the wiki index</Link> and {' '}
+            Try inspecting  <Link to="/wiki">the wiki index</Link> and {' '}
             <Link to="/tags">the tags listing</Link>, or using {' '}
             <Link to="/search">the site search</Link>.
           </p>
@@ -97,13 +96,11 @@ class Article extends React.Component {
       <DocumentTitle isLeaf={true} title={article.title}>
         <article>
           <h1>
-            <Link to={article.url}>
-              {article.resolvedTitle}
-            </Link>
+            <Link to={article.url}>{article.resolvedTitle}</Link>
           </h1>
-          {redirect
-            ? <p className="redirect-info">Redirected from {article.title}</p>
-            : null}
+          {redirect ? (
+            <p className="redirect-info">Redirected from {article.title}</p>
+          ) : null}
           <When data={article} />
           <div>
             <TrustedPrerenderedMarkup html={article.body.html} />

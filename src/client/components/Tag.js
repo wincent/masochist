@@ -56,13 +56,10 @@ class Tag extends React.Component {
       <DocumentTitle title={name}>
         <div>
           <h1>
-            <Link to={url}>
-              {name}
-            </Link>
+            <Link to={url}>{name}</Link>
           </h1>
           <p>
-            <PluralText count={count} text="item" /> tagged
-            with <em>{name}</em>
+            <PluralText count={count} text="item" /> tagged with <em>{name}</em>
           </p>
           <ContentListing>
             {edges &&
@@ -73,12 +70,12 @@ class Tag extends React.Component {
                 }
               })}
           </ContentListing>
-          {taggables.pageInfo.hasNextPage
-            ? <LoadMoreButton
-                isLoading={this.state.isLoading}
-                onLoadMore={this._handleLoadMore}
-              />
-            : null}
+          {taggables.pageInfo.hasNextPage ? (
+            <LoadMoreButton
+              isLoading={this.state.isLoading}
+              onLoadMore={this._handleLoadMore}
+            />
+          ) : null}
         </div>
       </DocumentTitle>
     );
@@ -93,10 +90,8 @@ const TagContainer = createPaginationContainer(
       id
       name
       url
-      taggables(
-        first: $count
-        after: $cursor
-      ) @connection(key: "Tag_taggables") {
+      taggables(first: $count, after: $cursor)
+        @connection(key: "Tag_taggables") {
         edges {
           cursor
           node {
@@ -125,11 +120,7 @@ const TagContainer = createPaginationContainer(
       };
     },
     query: graphql`
-      query TagQuery(
-        $count: Int!
-        $cursor: String
-        $id: ID!
-      ) {
+      query TagQuery($count: Int!, $cursor: String, $id: ID!) {
         node(id: $id) {
           ...Tag
         }

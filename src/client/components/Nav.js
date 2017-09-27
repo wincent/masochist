@@ -65,7 +65,9 @@ export default class Nav extends React.Component {
       <nav className={cx({'nav-open': this.state.isOpen})}>
         <ul>
           <li>
-            <Link className="nav-link" to="/">Wincent</Link>
+            <Link className="nav-link" to="/">
+              Wincent
+            </Link>
             <div className="nav-toggle-wrapper">
               <div className="nav-toggle" onClick={this._handleToggle}>
                 {this.state.isOpen ? 'Close' : 'Open'}

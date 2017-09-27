@@ -21,9 +21,7 @@ export default class ContentListing extends React.Component {
             <th>Tags</th>
           </tr>
         </thead>
-        <tbody>
-          {this.props.children}
-        </tbody>
+        <tbody>{this.props.children}</tbody>
       </table>
     );
   }

@@ -25,8 +25,7 @@ class Snippet extends React.Component {
       return (
         <HTTPError code={404}>
           <p>
-            Try inspecting {' '}
-            <Link to="/snippets">the snippets index</Link> and {' '}
+            Try inspecting  <Link to="/snippets">the snippets index</Link> and {' '}
             <Link to="/tags">the tags listing</Link>, or using {' '}
             <Link to="/search">the site search</Link>.
           </p>
@@ -36,22 +35,18 @@ class Snippet extends React.Component {
 
     return (
       // encode url?
-      (
-        <DocumentTitle isLeaf={true} title={snippet.title}>
-          <article>
-            <h1>
-              <Link to={snippet.url}>
-                {snippet.title}
-              </Link>
-            </h1>
-            <When data={snippet} />
-            <div>
-              <TrustedPrerenderedMarkup html={snippet.body.html} />
-            </div>
-            <Tags data={snippet} />
-          </article>
-        </DocumentTitle>
-      )
+      <DocumentTitle isLeaf={true} title={snippet.title}>
+        <article>
+          <h1>
+            <Link to={snippet.url}>{snippet.title}</Link>
+          </h1>
+          <When data={snippet} />
+          <div>
+            <TrustedPrerenderedMarkup html={snippet.body.html} />
+          </div>
+          <Tags data={snippet} />
+        </article>
+      </DocumentTitle>
     );
   }
 }

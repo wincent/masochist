@@ -31,7 +31,11 @@ function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
 
 function extractExcerpt(body: string): string {
   return ellipsize(
-    entities.decodeHTML(stripTags(body).trim().replace(/\s+/g, ' ')),
+    entities.decodeHTML(
+      stripTags(body)
+        .trim()
+        .replace(/\s+/g, ' '),
+    ),
   );
 }
 

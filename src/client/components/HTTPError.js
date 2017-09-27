@@ -34,8 +34,8 @@ export default class HTTPError extends React.Component {
             Think you've found a problem? Please {' '}
             <a href="https://github.com/wincent/masochist/issues/new">
               report it
-            </a>
-            {' '} on the Masochist issue tracker.
+            </a>{' '}
+             on the Masochist issue tracker.
           </p>
         </div>
       </DocumentTitle>

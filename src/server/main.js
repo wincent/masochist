@@ -144,9 +144,7 @@ appRoutes.forEach(route => {
           return {
             description,
             pageContent: ReactDOMServer.renderToStaticMarkup(
-              <App router={router}>
-                {component}
-              </App>,
+              <App router={router}>{component}</App>,
             ),
           };
         })
