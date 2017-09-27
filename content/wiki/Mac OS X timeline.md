@@ -1,6 +1,5 @@
 ---
-redirect: [[OS X timeline]]
-cache_breaker: 1
+redirect: [[macOS timeline]]
 tags: wiki
 ---
 
