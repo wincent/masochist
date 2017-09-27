@@ -29,6 +29,12 @@ import createHistory from 'history/createBrowserHistory';
 const history = createHistory();
 const router = createRouter(history);
 
+// First render comes from the server, subsequent renders happen on client.
+let render = function(element, container) {
+  ReactDOM.hydrate(element, container);
+  render = ReactDOM.render;
+}
+
 // Simplest possible request-response cache.
 const cache = new Map();
 const CACHE_SIZE = 20;
@@ -125,7 +131,7 @@ function resolve(location, data) {
     // but if we do one, probably want it to be nicely integrated
     // (would be nice to short-circuit if nothing needs to be fetched)
     // <App isLoading={true} /> to render previous or something
-    ReactDOM.render(
+    render(
       <App router={router}>
         <Progress />
       </App>,
@@ -139,7 +145,7 @@ function resolve(location, data) {
       pathname: location.pathname,
     })
     .then(({component}) => {
-      ReactDOM.render(
+      render(
         <App router={router}>
           {component}
         </App>,
@@ -152,7 +158,7 @@ function resolve(location, data) {
         return null;
       }
       const code = error instanceof NotFoundError ? 404 : 500;
-      ReactDOM.render(
+      render(
         <App router={router}>
           <HTTPError code={code} />
         </App>,
