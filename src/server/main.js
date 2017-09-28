@@ -169,8 +169,7 @@ appRoutes.forEach(route => {
         });
     }
     const resolved = await resolve(history.location);
-    const title = DocumentTitle.peek();
-    DocumentTitle.rewind();
+    const title = DocumentTitle.rewind();
     if (resolved) {
       // May be null if we had a redirect.
       const {description, pageContent} = resolved;
