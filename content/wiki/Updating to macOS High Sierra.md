@@ -71,3 +71,29 @@ rm ~/.passage.sock
 ```
 
 Note I didn't even need to restart it, `launchd` did it for me automatically.
+
+### Sending mail
+
+This was broken due to missing gems. I tried installing them:
+
+```bash
+sudo gem install mime-types-data mime-types mail
+```
+
+But they didn't match the lockfile and I hadn't bothered to pin explicit versions, so I tried to blow away the lockfile and install again, but Bundler was broken too and I couldn't install it:
+
+```bash
+sudo gem install bundler # no implicit conversion of nil into String
+sudo gem update --system
+sudo gem install bundler # You don't have write permissions for the /usr/bin directory.
+gem install bundler # You don't have write permissions for the /Library/Ruby/Gems/2.3.0 directory.
+```
+
+`gem environment` and `sudo gem environment` show the same thing:
+
+```
+INSTALLATION DIRECTORY: /Library/Ruby/Gems/2.3.0
+EXECUTABLE DIRECTORY: /usr/bin
+```
+
+Solution was to add `gem: --bindir /usr/local/bin` to the `~/.gemrc`, then `sudo gem install bundler` worked, and `bundle` did too.
