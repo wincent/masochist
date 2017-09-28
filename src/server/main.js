@@ -12,7 +12,6 @@ import createHistory from 'history/createMemoryHistory';
 import React from 'react';
 import {renderToStaticNodeStream} from 'react-dom/server';
 import {promisify} from 'util';
-import {Readable} from 'stream';
 
 import {
   Environment,
@@ -32,7 +31,6 @@ import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
 import createRouter from '../common/createRouter';
 import QueryCache from './QueryCache';
-import escapeHTML from './escapeHTML';
 import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
 import getLoaders from './getLoaders';
@@ -40,6 +38,8 @@ import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import feed from './actions/feed';
 import schema from './schema';
 import runQuery from './runQuery';
+import renderError from './views/renderError';
+import renderIndex from './views/renderIndex';
 
 const APP_PORT = 3000;
 
@@ -64,192 +64,6 @@ const getStyles = async function() {
   }
   return styles;
 };
-
-// TODO: move these into a separate file
-function squishWhitespace(string: string): string {
-  return string.replace(/\s*\n\s*/g, '');
-}
-
-function raw(string) {
-  return {__safe: string};
-}
-
-function template(strings, ...args) {
-  // Make one interpolated array of strings and args to make later processing
-  // easier.
-  const items = [];
-  for (let i = 0; i < strings.length; i++) {
-    items.push(raw(squishWhitespace(strings[i])));
-    if (i < args.length) {
-      items.push(args[i]);
-    }
-  }
-
-  let waiting = false;
-  const chunks = [];
-
-  return new Readable({
-    read(size) {
-      let buffering = false;
-
-      // Flush any previously dumped chunks.
-      while (chunks.length) {
-        if (!this.push(chunks.shift())) {
-          return;
-        }
-      }
-
-      const tick = () => {
-        while (items.length) {
-          if (waiting) {
-            return;
-          }
-
-          const item = items.shift();
-          if (item == null) {
-            continue;
-          } else if (typeof item === 'string') {
-            if (!this.push(escapeHTML(item))) {
-              return;
-            }
-          } else if (typeof item === 'object' && item.hasOwnProperty('__safe')) {
-            if (!this.push(item.__safe)) {
-              return;
-            }
-          } else if (typeof item.then === 'function') {
-            // Quacks like a Promise.
-            waiting = true;
-            item.then(value => {
-              waiting = false;
-              items.unshift(value);
-              process.nextTick(tick);
-            })
-            .catch(err => {
-              process.nextTick(() => this.emit('error', err));
-            });
-            return;
-          } else if (
-            typeof item.on === 'function' &&
-            typeof item.pipe === 'function'
-          ) {
-            // Quacks like a stream.
-            waiting = true;
-            item.on('data', data => {
-              const string = data.toString();
-              if (buffering) {
-                chunks.push(string);
-              } else {
-                if (!this.push(string)) {
-                  buffering = true;
-                }
-              }
-            });
-            item.on('end', () => {
-              waiting = false;
-              if (!buffering) {
-                process.nextTick(tick);
-              }
-            });
-            item.on('err', err => {
-              process.nextTick(() => this.emit('error', err));
-            });
-            return;
-          } else {
-            // User passed 0, false, NaN, or something truthy
-            // that didn't get caught by duck-typing checks; coerce to string.
-            const string = '' + item;
-            if (!this.push(string)) {
-              return;
-            }
-          }
-        }
-        this.push(null);
-      }
-
-      tick();
-    }
-  });
-}
-
-function renderError(locals) {
-  const {
-    error,
-    message,
-    styles,
-  } = locals;
-  return template`
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        ${
-          styles.then(s => s ? template`<style>${raw(s)}</style>` : null)
-        }
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${error} ${message} · wincent.com</title>
-      </head>
-      <body>
-        <div id="root">${pageContent}</div>
-  `;
-}
-
-function renderIndex(locals) {
-  const {
-    alternate,
-    bundle,
-    cache,
-    canonical,
-    description,
-    home,
-    pageContent,
-    styles,
-    title,
-  } = locals;
-  return template`
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8">
-        ${
-          styles.then(s => s ? template`<style>${raw(s)}</style>` : null)
-        }
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${title}</title>
-        <meta property="og:title" content="${title}">
-        <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
-        ${
-          description ?
-            template`<meta property="og:description" content="${description}">` :
-            null
-        }
-        ${
-          canonical.then(c => c ?
-            template`
-              <link rel="canonical" href="${canonical}">
-              <meta property="og:url" content="${canonical}">
-            ` :
-            null
-          )
-        }
-        ${
-          alternate ?
-            template`<link rel="alternate" type="application/rss+xml" href="${alternate}">` :
-            null
-        }
-        ${
-          home ?
-            template`<link rel="home" type="application/rss+xml" href="${home}">` :
-            null
-        }
-      </head>
-      <body>
-        <div id="relay-root">${pageContent}</div>
-        <script>var MasochistCache = ${raw(cache)};</script>
-        <script src="${bundle}" /></script>
-  `;
-}
 
 function templateHandler(renderer, locals = {}) {
   return (request, response) => {
