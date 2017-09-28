@@ -8,13 +8,6 @@ const INVERSE = '\x1b[7m';
 const RESET = '\x1b[0m';
 const YELLOW = '\x1b[33m';
 
-const options = [
-  '--jsx-bracket-same-line',
-  '--no-bracket-spacing',
-  '--parser=flow',
-  '--single-quote',
-  '--trailing-comma=all',
-];
 const paths = ['gulpfile.babel.js', '{scripts,src}/**/*.js', 'webpack.*.js'];
 const files = glob
   .sync('{' + paths.join(',') + '}')
@@ -26,11 +19,7 @@ const check = process.argv.indexOf('--check') !== -1;
 const mode = check ? '--list-different' : '--write';
 process.chdir(root);
 
-const {stdout, stderr, status, error} = spawnSync(executable, [
-  ...options,
-  mode,
-  ...files,
-]);
+const {stdout, stderr, status, error} = spawnSync(executable, [mode, ...files]);
 const out = stdout.toString().trim();
 const err = stdout.toString().trim();
 

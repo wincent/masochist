@@ -113,5 +113,12 @@
     "plugins": {
       "cssnano": {}
     }
+  },
+  "prettier": {
+    "bracket-spacing": false,
+    "jsx-bracket-same-line": true,
+    "parser": "flow",
+    "single-quote": true,
+    "trailing-comma": "all"
   }
 }
