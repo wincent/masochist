@@ -301,6 +301,6 @@ app.use((error, request, response, next) => {
   response.format(errorPage(500, 'Internal Server Error', request, response));
 });
 
-const server = app.listen(APP_PORT, () => {
+app.listen(APP_PORT, () => {
   console.log('Listening at http://localhost:%s', APP_PORT);
 });
