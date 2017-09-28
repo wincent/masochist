@@ -84,7 +84,6 @@ function jadeHandler(resource, extraLocals = {}) {
       ),
       styles,
       canonical,
-      production: !__DEV__,
       ...extraLocals,
     };
     response.render(resource, locals);
