@@ -13,7 +13,7 @@
   "scripts": {
     "build": "gulp build",
     "check": "gulp typecheck",
-    "coverage": "/bin/false",
+    "coverage": "jest --forceExit --coverage",
     "lint": "gulp lint",
     "pretty": "babel-node scripts/pretty.js",
     "pretty-check": "babel-node scripts/pretty.js --check",
@@ -98,6 +98,7 @@
     "webpack-dev-server": "^2.8.2"
   },
   "jest": {
+    "coverageDirectory": "coverage",
     "globals": {
       "__DEV__": true
     }
