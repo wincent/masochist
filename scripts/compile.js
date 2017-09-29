@@ -94,7 +94,7 @@ async function run() {
   };
   const writerConfigs = {
     default: {
-      getWriter: getRelayFileWriter(srcDir),
+      getWriter: getRelayFileWriter(srcDir, persistQuery),
       isGeneratedFile: (filePath: string) =>
         filePath.endsWith('.js') && filePath.includes('__generated__'),
       parser: 'default',
@@ -112,7 +112,7 @@ async function run() {
   }
 }
 
-function getRelayFileWriter(baseDir: string) {
+function getRelayFileWriter(baseDir: string, persistQuery: fn) {
   return (onlyValidate, schema, documents, baseDocuments) =>
     new RelayFileWriter({
       config: {
@@ -124,6 +124,7 @@ function getRelayFileWriter(baseDir: string) {
           queryTransforms,
         },
         baseDir,
+        persistQuery,
         schemaExtensions,
       },
       onlyValidate,
