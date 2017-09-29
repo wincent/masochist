@@ -66,6 +66,7 @@ const getStyles = async function() {
 
 function templateHandler(renderer, locals = {}) {
   return (request, response) => {
+    response.set('Content-Type', 'text/html');
     const stream = renderer({
       ...locals,
       bundle: getAssetURL(
