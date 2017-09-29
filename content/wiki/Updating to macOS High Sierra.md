@@ -48,6 +48,7 @@ After this, rebuild Command-T (ie. `make clean && ruby extconf.rb && make`). Did
 # Other steps
 
 * Turn on iCloud recovery key again (apparently, Apple got rid of this when they rolled out Two-Factor auth a while back because it was too easy for people to totally lock themselves out, but looks like it is back).
+* `brew doctor`, just in case.
 
 ## Clipper is broken
 
