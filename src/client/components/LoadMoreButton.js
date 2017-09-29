@@ -29,7 +29,7 @@ export default class LoadMoreButton extends React.Component {
           disabled={isLoading}
           href="#more"
           onClick={this._handleLoadMore}>
-          {isLoading ? 'Loading' : 'Load more'}…
+          {isLoading ? 'Loading…' : 'Load more…'}
         </button>
       </div>
     );
