@@ -98,3 +98,10 @@ EXECUTABLE DIRECTORY: /usr/bin
 ```
 
 Solution was to add `gem: --bindir /usr/local/bin` to the `~/.gemrc`, then `sudo gem install bundler` worked, and `bundle` did too.
+
+### Searching mail
+
+Broken because the `~/.mutt/tmp/notmuch.history` history file format needed to be updated as per [this Stack Overflow answer](https://stackoverflow.com/a/17824899/2103996):
+
+* Insert header of `_HiStOrY_V2_`.
+* Replaces spaces with `\040` (ie. `:%s/\v /\\040/g` in Vim).
