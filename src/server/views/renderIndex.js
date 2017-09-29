@@ -2,6 +2,7 @@
  * @flow
  */
 
+import formatTitle from '../../common/formatTitle';
 import raw from '../raw';
 import template from '../template';
 
@@ -25,7 +26,7 @@ export default function renderIndex(locals) {
         ${styles.then(s => (s ? template`<style>${raw(s)}</style>` : null))}
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${[...(title ? [title] : []), 'wincent.com'].join(' · ')}</title>
+        <title>${formatTitle(title)}</title>
         <meta property="og:title" content="${title}">
         <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
         ${description

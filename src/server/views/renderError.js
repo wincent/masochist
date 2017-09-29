@@ -2,11 +2,13 @@
  * @flow
  */
 
+import formatTitle from '../../common/formatTitle';
 import raw from '../raw';
 import template from '../template';
 
 export default function renderError(locals) {
   const {error, message, pageContent, styles} = locals;
+  const title = formatTitle(`${error} ${message}`);
   return template`
     <!DOCTYPE html>
     <html lang="en">
@@ -15,7 +17,7 @@ export default function renderError(locals) {
         ${styles.then(s => (s ? template`<style>${raw(s)}</style>` : null))}
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${error} ${message} · wincent.com</title>
+        <title>${title}</title>
       </head>
       <body>
         <div id="root">${pageContent}</div>

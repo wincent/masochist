@@ -1,4 +1,5 @@
 import inBrowser from '../client/inBrowser';
+import formatTitle from './formatTitle';
 import withContext from './withContext';
 
 export default function buildRoute(query, config) {
@@ -16,7 +17,7 @@ export default function buildRoute(query, config) {
     const description = config.description ? config.description(data) : null;
 
     if (inBrowser) {
-      document.title = [title, 'wincent.com'].join(' · ');
+      document.title = formatTitle(title);
     }
 
     const relay = {
