@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Fork of the Relay compiler that implements query persistence. Eventually will
- * make a PR to make existing Relay compiler support this workflow without
- * forking.
+ * Fork of the Relay compiler that implements crude form of query persistence.
  */
 
 /**
