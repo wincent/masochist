@@ -32,7 +32,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "private": true,
   "devEngines": {
-    "node": ">= 4.x",
+    "node": ">= 8.x",
     "npm": ">= 2.x"
   },
   "dependencies": {
