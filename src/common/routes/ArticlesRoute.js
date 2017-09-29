@@ -15,9 +15,11 @@ export default buildRoute(
     }
   `,
   {
-    count: ArticlesIndex.PAGE_SIZE,
-    cursor: null,
+    variables: {
+      count: ArticlesIndex.PAGE_SIZE,
+      cursor: null,
+    },
+    render: data => <ArticlesIndex data={data} />,
+    title: 'wiki',
   },
-  data => <ArticlesIndex data={data} />,
-  'wiki',
 );

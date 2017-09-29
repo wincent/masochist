@@ -31,26 +31,28 @@ export default buildRoute(
       }
     }
   `,
-  ({format, id}) => {
-    format = FORMAT_TO_MARKUP_TYPE.get(format.toLowerCase());
-    if (format !== 'TXT') {
-      return {format, id};
-    } else {
-      return {
-        format: null,
-        id,
-      };
-    }
-  },
-  ({node}, {format, id}) => {
-    if (node && node.source !== null) {
-      throw new RenderTextError(
-        node.source,
-        FORMAT_TO_MIME_TYPE[format.toLowerCase()] || 'text/plain',
+  {
+    variables: ({format, id}) => {
+      format = FORMAT_TO_MARKUP_TYPE.get(format.toLowerCase());
+      if (format !== 'TXT') {
+        return {format, id};
+      } else {
+        return {
+          format: null,
+          id,
+        };
+      }
+    },
+    render: ({node}, {format, id}) => {
+      if (node && node.source !== null) {
+        throw new RenderTextError(
+          node.source,
+          FORMAT_TO_MIME_TYPE[format.toLowerCase()] || 'text/plain',
+        );
+      }
+      throw new NotFoundError(
+        `Snippet "${id}" source not found for format ${format}`,
       );
-    }
-    throw new NotFoundError(
-      `Snippet "${id}" source not found for format ${format}`,
-    );
+    },
   },
 );

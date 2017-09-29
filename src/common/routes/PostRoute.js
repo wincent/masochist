@@ -16,11 +16,13 @@ export default buildRoute(
       }
     }
   `,
-  ({id}) => ({
-    baseHeadingLevel: 2,
-    id,
-  }),
-  ({node}) => <Post data={node} />,
-  ({node}) => (node ? node.title : null),
-  ({node}) => (node ? node.description : null),
+  {
+    variables: ({id}) => ({
+      baseHeadingLevel: 2,
+      id,
+    }),
+    render: ({node}) => <Post data={node} />,
+    title: ({node}) => (node ? node.title : null),
+    description: ({node}) => (node ? node.description : null),
+  },
 );

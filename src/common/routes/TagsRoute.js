@@ -11,8 +11,10 @@ export default buildRoute(
     }
   `,
   {
-    count: 2 ** 31 - 1,
+    variables: {
+      count: 2 ** 31 - 1,
+    },
+    render: data => <TagsIndex data={data} />,
+    title: 'tags',
   },
-  data => <TagsIndex data={data} />,
-  'tags',
 );

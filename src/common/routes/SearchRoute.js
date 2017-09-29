@@ -10,11 +10,13 @@ export default buildRoute(
       ...Search
     }
   `,
-  ({q}) => ({
-    count: Search.PAGE_SIZE,
-    cursor: null,
-    q: q || '',
-  }),
-  (data, {q}) => <Search q={q} data={data} />,
-  (data, {q}) => q,
+  {
+    variables: ({q}) => ({
+      count: Search.PAGE_SIZE,
+      cursor: null,
+      q: q || '',
+    }),
+    render: (data, {q}) => <Search q={q} data={data} />,
+    title: (data, {q}) => q,
+  },
 );

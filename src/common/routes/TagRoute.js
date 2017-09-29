@@ -15,11 +15,13 @@ export default buildRoute(
       }
     }
   `,
-  ({id}) => ({
-    count: Tag.PAGE_SIZE,
-    cursor: null,
-    id,
-  }),
-  ({node}) => <Tag data={node} />,
-  ({node}) => (node ? node.name : null),
+  {
+    variables: ({id}) => ({
+      count: Tag.PAGE_SIZE,
+      cursor: null,
+      id,
+    }),
+    render: ({node}) => <Tag data={node} />,
+    title: ({node}) => (node ? node.name : null),
+  },
 );

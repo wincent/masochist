@@ -1,22 +1,19 @@
 import inBrowser from '../client/inBrowser';
 import withContext from './withContext';
 
-export default function buildRoute(
-  query,
-  getVariables,
-  render,
-  getTitle,
-  getDescription,
-) {
+export default function buildRoute(query, config) {
   return async function action({api, params}) {
     const {environment} = api;
     const variables =
-      typeof getVariables === 'function' ? getVariables(params) : getVariables;
+      typeof config.variables === 'function'
+        ? config.variables(params)
+        : config.variables;
     const data = await api.fetchQuery(query, variables);
     const title =
-      (typeof getTitle === 'function' ? getTitle(data, params) : getTitle) ||
-      '';
-    const description = getDescription ? getDescription(data) : null;
+      (typeof config.title === 'function'
+        ? config.title(data, params)
+        : config.title) || '';
+    const description = config.description ? config.description(data) : null;
 
     if (inBrowser) {
       document.title = [title, 'wincent.com'].join(' · ');
@@ -27,7 +24,7 @@ export default function buildRoute(
       variables,
     };
     return {
-      component: withContext({relay}, render(data, params)),
+      component: withContext({relay}, config.render(data, params)),
       description,
       title,
     };

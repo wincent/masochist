@@ -15,10 +15,12 @@ export default buildRoute(
     }
   `,
   {
-    baseHeadingLevel: 2, // TODO: check this
-    count: PostsIndex.PAGE_SIZE,
-    cursor: null,
+    variables: {
+      baseHeadingLevel: 2, // TODO: check this
+      count: PostsIndex.PAGE_SIZE,
+      cursor: null,
+    },
+    render: data => <PostsIndex data={data} />,
+    title: 'blog',
   },
-  data => <PostsIndex data={data} />,
-  'blog',
 );
