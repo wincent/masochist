@@ -1,3 +1,4 @@
+import inBrowser from '../client/inBrowser';
 import withContext from './withContext';
 
 export default function buildRoute(
@@ -19,6 +20,11 @@ export default function buildRoute(
       getTitle(data, params) :
       getTitle) || '';
     const description = getDescription ? getDescription(data) : null;
+
+    if (inBrowser) {
+      document.title = [title, 'wincent.com'].join(' · ');
+    }
+
     const relay = {
       environment,
       variables,
