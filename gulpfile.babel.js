@@ -104,17 +104,7 @@ if (__DEV__) {
       .pipe(eslint.format()),
   );
 
-  // gulp.task('test', () =>
-  //   gulp
-  //     .src(['src#<{(||)}>#__mocks__#<{(|.js', 'src#<{(||)}>#__tests__#<{(|-test.js'], {
-  //       read: false,
-  //     })
-  //     .pipe(
-  //       wrap(
-  //       ),
-  //     ),
-  // );
-
+  gulp.task('test', shell.task(['jest --forceExit']));
   gulp.task('typecheck', shell.task(['flow check --color=always src']));
 
   gulp.task('watch', () => {

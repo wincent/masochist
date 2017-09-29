@@ -20,7 +20,7 @@
     "relay": "babel-node scripts/compile.js",
     "start": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/server/main.js",
     "start-prod": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo NODE_ENV=production node dist/server/main.js",
-    "test": "/bin/false",
+    "test": "jest --forceExit",
     "update-indices": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/bin/updateIndices.js",
     "update-schema": "babel-node src/bin/updateSchema.js"
   },
@@ -94,7 +94,13 @@
     "gulp-eslint": "*",
     "gulp-shell": "*",
     "http-proxy": "*",
+    "jest": "21.2.1",
     "webpack-dev-server": "^2.8.2"
+  },
+  "jest": {
+    "globals": {
+      "__DEV__": true
+    }
   },
   "postcss": {
     "plugins": {
