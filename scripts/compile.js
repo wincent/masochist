@@ -19,19 +19,15 @@
 
 'use strict';
 
-require('babel-polyfill');
+const CodegenRunner = require('relay-compiler/lib/CodegenRunner');
+const ConsoleReporter = require('relay-compiler/lib/ConsoleReporter');
+const WatchmanClient = require('relay-compiler/lib/WatchmanClient');
 
-const {
-  CodegenRunner,
-  ConsoleReporter,
-  WatchmanClient,
-} = require('../graphql-compiler/GraphQLCompilerPublic');
+const RelayJSModuleParser = require('relay-compiler/lib/RelayJSModuleParser');
+const RelayFileWriter = require('relay-compiler/lib/RelayFileWriter');
+const RelayIRTransforms = require('relay-compiler/lib/RelayIRTransforms');
 
-const RelayJSModuleParser = require('../core/RelayJSModuleParser');
-const RelayFileWriter = require('../codegen/RelayFileWriter');
-const RelayIRTransforms = require('../core/RelayIRTransforms');
-
-const formatGeneratedModule = require('../codegen/formatGeneratedModule');
+const formatGeneratedModule = require('relay-compiler/lib/formatGeneratedModule');
 const fs = require('fs');
 const path = require('path');
 const yargs = require('yargs');
