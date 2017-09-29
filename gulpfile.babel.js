@@ -90,7 +90,6 @@ gulp.task('graphql', () =>
 if (__DEV__) {
   const eslint = require('gulp-eslint');
   const shell = require('gulp-shell');
-  const mocha = require('gulp-mocha');
 
   gulp.task('default', ['watch']);
 
@@ -105,20 +104,16 @@ if (__DEV__) {
       .pipe(eslint.format()),
   );
 
-  gulp.task('test', () =>
-    gulp
-      .src(['src/**/__mocks__/*.js', 'src/**/__tests__/*-test.js'], {
-        read: false,
-      })
-      .pipe(
-        wrap(
-          mocha({
-            opts: 'mocha/mocha.opts',
-            reporter: watching ? 'mocha/watch-reporter' : 'list',
-          }),
-        ),
-      ),
-  );
+  // gulp.task('test', () =>
+  //   gulp
+  //     .src(['src#<{(||)}>#__mocks__#<{(|.js', 'src#<{(||)}>#__tests__#<{(|-test.js'], {
+  //       read: false,
+  //     })
+  //     .pipe(
+  //       wrap(
+  //       ),
+  //     ),
+  // );
 
   gulp.task('typecheck', shell.task(['flow check --color=always src']));
 
