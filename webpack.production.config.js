@@ -30,7 +30,7 @@ module.exports = {
       },
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({output: {comments: false}}),
     function() {
       this.plugin('done', function(stats) {
         stats.toJson().assetsByChunkName.main.forEach(function(asset) {
