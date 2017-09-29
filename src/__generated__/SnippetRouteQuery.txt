@@ -7,6 +7,7 @@ query SnippetRouteQuery(
     ... on Snippet {
       ...Snippet
       description
+      title
     }
     id
   }

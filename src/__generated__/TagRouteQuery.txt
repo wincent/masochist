@@ -7,6 +7,7 @@ query TagRouteQuery(
     __typename
     ... on Tag {
       ...Tag
+      name
     }
     id
   }
@@ -45,8 +46,6 @@ fragment Tag on Tag {
       pageInfo {
         endCursor
         hasNextPage
-        hasPreviousPage
-        startCursor
       }
     }
   }

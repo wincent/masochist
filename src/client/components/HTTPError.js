@@ -4,7 +4,6 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import DocumentTitle from './DocumentTitle';
 
 import type {Element} from 'react';
 
@@ -26,19 +25,17 @@ export default class HTTPError extends React.Component {
   render() {
     const message = StatusCodesToMessages[this.props.code];
     return (
-      <DocumentTitle title={`${this.props.code} ${message}`}>
-        <div>
-          <h1>{message}</h1>
-          {this.props.children}
-          <p>
-            Think you've found a problem? Please {' '}
-            <a href="https://github.com/wincent/masochist/issues/new">
-              report it
-            </a>{' '}
-            on the Masochist issue tracker.
-          </p>
-        </div>
-      </DocumentTitle>
+      <div>
+        <h1>{message}</h1>
+        {this.props.children}
+        <p>
+          Think you've found a problem? Please {' '}
+          <a href="https://github.com/wincent/masochist/issues/new">
+            report it
+          </a>{' '}
+          on the Masochist issue tracker.
+        </p>
+      </div>
     );
   }
 }

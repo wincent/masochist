@@ -6,7 +6,6 @@ import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
 import ArticlePreview from './ArticlePreview';
-import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 
 import type {Disposable, RelayPaginationProp} from 'react-relay';
@@ -52,36 +51,34 @@ class ArticlesIndex extends React.Component {
   render() {
     const edges = this.props.data.articles.edges;
     return (
-      <DocumentTitle title="wiki">
-        <div>
-          <h1>Wiki articles</h1>
-          <table className="article-listing u-full-width">
-            <thead>
-              <tr>
-                <th>What</th>
-                <th>Title</th>
-                <th>When</th>
-                <th>Tags</th>
-              </tr>
-            </thead>
-            <tbody>
-              {edges &&
-                edges.map(edge => {
-                  const node = edge && edge.node;
-                  if (node) {
-                    return <ArticlePreview key={node.id} data={node} />;
-                  }
-                })}
-            </tbody>
-          </table>
-          {this.props.relay.hasMore() ? (
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            />
-          ) : null}
-        </div>
-      </DocumentTitle>
+      <div>
+        <h1>Wiki articles</h1>
+        <table className="article-listing u-full-width">
+          <thead>
+            <tr>
+              <th>What</th>
+              <th>Title</th>
+              <th>When</th>
+              <th>Tags</th>
+            </tr>
+          </thead>
+          <tbody>
+            {edges &&
+              edges.map(edge => {
+                const node = edge && edge.node;
+                if (node) {
+                  return <ArticlePreview key={node.id} data={node} />;
+                }
+              })}
+          </tbody>
+        </table>
+        {this.props.relay.hasMore() ? (
+          <LoadMoreButton
+            isLoading={this.state.isLoading}
+            onLoadMore={this._handleLoadMore}
+          />
+        ) : null}
+      </div>
     );
   }
 }

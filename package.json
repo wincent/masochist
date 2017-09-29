@@ -83,7 +83,6 @@
     "react": "*",
     "react-dom": "*",
     "react-relay": "^1.0.0",
-    "react-side-effect": "*",
     "redis": "*",
     "relay-compiler": "^1.0.0",
     "relay-runtime": "^1.0.0",

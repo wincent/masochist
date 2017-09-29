@@ -43,8 +43,6 @@ fragment Tag on Tag {
       pageInfo {
         endCursor
         hasNextPage
-        hasPreviousPage
-        startCursor
       }
     }
   }

@@ -16,4 +16,5 @@ export default buildRoute(
     q: q || '',
   }),
   (data, {q}) => <Search q={q} data={data} />,
+  (data, {q}) => q,
 );

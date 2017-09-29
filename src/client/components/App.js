@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import DocumentTitle from './DocumentTitle';
 import Nav from './Nav';
 import Footer from './Footer';
 import inBrowser from '../inBrowser';
@@ -80,13 +79,11 @@ export default class App extends React.Component {
   render() {
     const {children} = this.props;
     return (
-      <DocumentTitle title="wincent.com">
-        <div className="app">
-          <Nav />
-          <section className="app-content container">{children}</section>
-          <Footer />
-        </div>
-      </DocumentTitle>
+      <div className="app">
+        <Nav />
+        <section className="app-content container">{children}</section>
+        <Footer />
+      </div>
     );
   }
 }

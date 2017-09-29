@@ -6,7 +6,6 @@ import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
-import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import Link from './Link';
 import PluralText from './PluralText';
@@ -53,31 +52,29 @@ class Tag extends React.Component {
     const {edges} = taggables;
     // this is the url that needs encoding
     return (
-      <DocumentTitle title={name}>
-        <div>
-          <h1>
-            <Link to={url}>{name}</Link>
-          </h1>
-          <p>
-            <PluralText count={count} text="item" /> tagged with <em>{name}</em>
-          </p>
-          <ContentListing>
-            {edges &&
-              edges.map((edge, i) => {
-                if (edge) {
-                  const {cursor, node} = edge;
-                  return <ContentPreview cursor={cursor} key={i} data={node} />;
-                }
-              })}
-          </ContentListing>
-          {taggables.pageInfo.hasNextPage ? (
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            />
-          ) : null}
-        </div>
-      </DocumentTitle>
+      <div>
+        <h1>
+          <Link to={url}>{name}</Link>
+        </h1>
+        <p>
+          <PluralText count={count} text="item" /> tagged with <em>{name}</em>
+        </p>
+        <ContentListing>
+          {edges &&
+            edges.map((edge, i) => {
+              if (edge) {
+                const {cursor, node} = edge;
+                return <ContentPreview cursor={cursor} key={i} data={node} />;
+              }
+            })}
+        </ContentListing>
+        {taggables.pageInfo.hasNextPage ? (
+          <LoadMoreButton
+            isLoading={this.state.isLoading}
+            onLoadMore={this._handleLoadMore}
+          />
+        ) : null}
+      </div>
     );
   }
 }

@@ -14,10 +14,11 @@ export default buildRoute(
       ...PostsIndex
     }
   `,
-  () => ({
+  {
     baseHeadingLevel: 2, // TODO: check this
     count: PostsIndex.PAGE_SIZE,
     cursor: null,
-  }),
+  },
   data => <PostsIndex data={data} />,
+  'blog',
 );

@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import DocumentTitle from './DocumentTitle';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
@@ -47,23 +46,21 @@ class SnippetsIndex extends React.Component {
   render() {
     const edges = this.props.data.snippets.edges;
     return (
-      <DocumentTitle title="snippets">
-        <div>
-          {edges &&
-            edges.map(edge => {
-              const node = edge && edge.node;
-              if (node) {
-                return <Snippet key={node.id} data={node} />;
-              }
-            })}
-          {this.props.data.snippets.pageInfo.hasNextPage ? (
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            />
-          ) : null}
-        </div>
-      </DocumentTitle>
+      <div>
+        {edges &&
+          edges.map(edge => {
+            const node = edge && edge.node;
+            if (node) {
+              return <Snippet key={node.id} data={node} />;
+            }
+          })}
+        {this.props.data.snippets.pageInfo.hasNextPage ? (
+          <LoadMoreButton
+            isLoading={this.state.isLoading}
+            onLoadMore={this._handleLoadMore}
+          />
+        ) : null}
+      </div>
     );
   }
 }

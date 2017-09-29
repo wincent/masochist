@@ -27,7 +27,7 @@ export default function renderIndex(locals) {
         }
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>${title}</title>
+        <title>${[...(title ? [title] : []), 'wincent.com'].join(' · ')}</title>
         <meta property="og:title" content="${title}">
         <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
         ${

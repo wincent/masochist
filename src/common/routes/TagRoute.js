@@ -10,6 +10,7 @@ export default buildRoute(
       node(id: $id) {
         ... on Tag {
           ...Tag
+          name
         }
       }
     }
@@ -19,5 +20,6 @@ export default buildRoute(
     cursor: null,
     id,
   }),
-  data => <Tag data={data.node} />,
+  ({node}) => <Tag data={node} />,
+  ({node}) => node ? node.name : null,
 );

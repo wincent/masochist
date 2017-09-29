@@ -29,8 +29,6 @@ fragment SnippetsIndex on Root {
       pageInfo {
         endCursor
         hasNextPage
-        hasPreviousPage
-        startCursor
       }
     }
   }

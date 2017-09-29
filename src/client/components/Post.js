@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
@@ -35,18 +34,16 @@ class Post extends React.Component {
 
     return (
       // post.url encode?
-      <DocumentTitle isLeaf={true} title={post.title}>
-        <article>
-          <h1>
-            <Link to={post.url}>{post.title}</Link>
-          </h1>
-          <When data={post} />
-          <div>
-            <TrustedPrerenderedMarkup html={post.body.html} />
-          </div>
-          <Tags data={post} />
-        </article>
-      </DocumentTitle>
+      <article>
+        <h1>
+          <Link to={post.url}>{post.title}</Link>
+        </h1>
+        <When data={post} />
+        <div>
+          <TrustedPrerenderedMarkup html={post.body.html} />
+        </div>
+        <Tags data={post} />
+      </article>
     );
   }
 }

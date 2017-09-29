@@ -36,8 +36,6 @@ fragment Search on Root {
       pageInfo {
         endCursor
         hasNextPage
-        hasPreviousPage
-        startCursor
       }
     }
   }

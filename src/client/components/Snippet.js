@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
@@ -35,18 +34,16 @@ class Snippet extends React.Component {
 
     return (
       // encode url?
-      <DocumentTitle isLeaf={true} title={snippet.title}>
-        <article>
-          <h1>
-            <Link to={snippet.url}>{snippet.title}</Link>
-          </h1>
-          <When data={snippet} />
-          <div>
-            <TrustedPrerenderedMarkup html={snippet.body.html} />
-          </div>
-          <Tags data={snippet} />
-        </article>
-      </DocumentTitle>
+      <article>
+        <h1>
+          <Link to={snippet.url}>{snippet.title}</Link>
+        </h1>
+        <When data={snippet} />
+        <div>
+          <TrustedPrerenderedMarkup html={snippet.body.html} />
+        </div>
+        <Tags data={snippet} />
+      </article>
     );
   }
 }

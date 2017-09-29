@@ -22,7 +22,6 @@ import {
 } from 'relay-runtime';
 
 import App from '../client/components/App';
-import DocumentTitle from '../client/components/DocumentTitle';
 import HTTPError from '../client/components/HTTPError';
 import NotFoundError from '../common/NotFoundError';
 import RedirectError from '../common/RedirectError';
@@ -128,12 +127,13 @@ appRoutes.forEach(route => {
           api,
           pathname: location.pathname,
         })
-        .then(({component, description}) => {
+        .then(({component, description, title}) => {
           return {
             description,
             pageContent: renderToStaticNodeStream(
               <App router={router}>{component}</App>,
             ),
+            title,
           };
         })
         .catch(error => {
@@ -157,12 +157,9 @@ appRoutes.forEach(route => {
         });
     }
     const resolved = await resolve(history.location);
-    // BUG: at the time we call rewind, we haven't actually rendered yet, so
-    // will need to move away from DocumentTitle.
-    const title = DocumentTitle.rewind();
     if (resolved) {
       // May be null if we had a redirect.
-      const {description, pageContent} = resolved;
+      const {description, pageContent, title} = resolved;
       const locals = {
         canonical: getCanonicalURLForRequest(request),
         cache: JSON.stringify(cache),

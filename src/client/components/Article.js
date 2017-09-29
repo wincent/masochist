@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
-import DocumentTitle from './DocumentTitle';
 import HTTPError from './HTTPError';
 import Link from './Link';
 import RedirectError from '../../common/RedirectError';
@@ -93,21 +92,19 @@ class Article extends React.Component {
     }
 
     return (
-      <DocumentTitle isLeaf={true} title={article.title}>
-        <article>
-          <h1>
-            <Link to={article.url}>{article.resolvedTitle}</Link>
-          </h1>
-          {redirect ? (
-            <p className="redirect-info">Redirected from {article.title}</p>
-          ) : null}
-          <When data={article} />
-          <div>
-            <TrustedPrerenderedMarkup html={article.body.html} />
-          </div>
-          <Tags data={article} />
-        </article>
-      </DocumentTitle>
+      <article>
+        <h1>
+          <Link to={article.url}>{article.resolvedTitle}</Link>
+        </h1>
+        {redirect ? (
+          <p className="redirect-info">Redirected from {article.title}</p>
+        ) : null}
+        <When data={article} />
+        <div>
+          <TrustedPrerenderedMarkup html={article.body.html} />
+        </div>
+        <Tags data={article} />
+      </article>
     );
   }
 }

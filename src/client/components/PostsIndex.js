@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import DocumentTitle from './DocumentTitle';
 import LoadMoreButton from './LoadMoreButton';
 import Post from './Post';
 
@@ -48,23 +47,21 @@ class PostsIndex extends React.Component {
   render() {
     const edges = this.props.data.posts.edges;
     return (
-      <DocumentTitle title="blog">
-        <div>
-          {edges &&
-            edges.map(edge => {
-              const node = edge && edge.node;
-              if (node) {
-                return <Post key={node.id} data={node} />;
-              }
-            })}
-          {this.props.data.posts.pageInfo.hasNextPage ? (
-            <LoadMoreButton
-              isLoading={this.state.isLoading}
-              onLoadMore={this._handleLoadMore}
-            />
-          ) : null}
-        </div>
-      </DocumentTitle>
+      <div>
+        {edges &&
+          edges.map(edge => {
+            const node = edge && edge.node;
+            if (node) {
+              return <Post key={node.id} data={node} />;
+            }
+          })}
+        {this.props.data.posts.pageInfo.hasNextPage ? (
+          <LoadMoreButton
+            isLoading={this.state.isLoading}
+            onLoadMore={this._handleLoadMore}
+          />
+        ) : null}
+      </div>
     );
   }
 }

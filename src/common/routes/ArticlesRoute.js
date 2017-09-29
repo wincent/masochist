@@ -14,9 +14,10 @@ export default buildRoute(
       ...ArticlesIndex
     }
   `,
-  () => ({
+  {
     count: ArticlesIndex.PAGE_SIZE,
     cursor: null,
-  }),
+  },
   data => <ArticlesIndex data={data} />,
+  'wiki',
 );

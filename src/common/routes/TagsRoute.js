@@ -10,8 +10,9 @@ export default buildRoute(
       ...TagsIndex
     }
   `,
-  () => ({
+  {
     count: 2 ** 31 - 1,
-  }),
+  },
   data => <TagsIndex data={data} />,
+  'tags',
 );

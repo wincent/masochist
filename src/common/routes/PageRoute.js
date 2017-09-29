@@ -11,6 +11,7 @@ export default buildRoute(
         ... on Page {
           ...Page
           description
+          title
         }
       }
     }
@@ -20,5 +21,6 @@ export default buildRoute(
     id,
   }),
   ({node}) => <Page data={node} />,
+  ({node}) => (node ? node.title : null),
   ({node}) => (node ? node.description : null),
 );

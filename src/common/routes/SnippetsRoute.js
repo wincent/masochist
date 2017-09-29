@@ -14,10 +14,11 @@ export default buildRoute(
       ...SnippetsIndex
     }
   `,
-  () => ({
+  {
     baseHeadingLevel: 2,
     count: SnippetsIndex.PAGE_SIZE,
     cursor: null,
-  }),
+  },
   data => <SnippetsIndex data={data} />,
+  'snippets'
 );
