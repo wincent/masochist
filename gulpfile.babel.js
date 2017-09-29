@@ -1,7 +1,6 @@
 import gulp from 'gulp';
 import babel from 'gulp-babel';
 import gutil from 'gulp-util';
-import pug from 'gulp-pug';
 import webpack from 'webpack';
 import productionConfig from './webpack.production.config.js';
 
@@ -55,7 +54,7 @@ function wrap(stream) {
   return stream;
 }
 
-gulp.task('build', ['pug', 'babel', 'graphql', 'webpack:build']);
+gulp.task('build', ['babel', 'graphql', 'webpack:build']);
 
 gulp.task('webpack:build', callback => {
   webpack(productionConfig, (error, stats) => {
@@ -86,13 +85,6 @@ gulp.task('babel', () =>
 
 gulp.task('graphql', () =>
   gulp.src(['src/__generated__/*.txt']).pipe(gulp.dest('dist/__generated__')),
-);
-
-gulp.task('pug', () =>
-  gulp
-    .src('src/server/views/*.pug')
-    .pipe(wrap(pug({client: true, compileDebug: false})))
-    .pipe(gulp.dest('dist/server/views')),
 );
 
 if (__DEV__) {
