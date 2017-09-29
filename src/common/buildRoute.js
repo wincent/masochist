@@ -11,14 +11,11 @@ export default function buildRoute(
   return async function action({api, params}) {
     const {environment} = api;
     const variables =
-      typeof getVariables === 'function' ?
-      getVariables(params) :
-      getVariables;
+      typeof getVariables === 'function' ? getVariables(params) : getVariables;
     const data = await api.fetchQuery(query, variables);
     const title =
-      (typeof getTitle === 'function' ?
-      getTitle(data, params) :
-      getTitle) || '';
+      (typeof getTitle === 'function' ? getTitle(data, params) : getTitle) ||
+      '';
     const description = getDescription ? getDescription(data) : null;
 
     if (inBrowser) {

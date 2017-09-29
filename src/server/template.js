@@ -48,21 +48,25 @@ export default function template(strings, ...args) {
             if (!this.push(escapeHTML(item))) {
               return;
             }
-          } else if (typeof item === 'object' && item.hasOwnProperty('__safe')) {
+          } else if (
+            typeof item === 'object' &&
+            item.hasOwnProperty('__safe')
+          ) {
             if (!this.push(item.__safe)) {
               return;
             }
           } else if (typeof item.then === 'function') {
             // Quacks like a Promise.
             waiting = true;
-            item.then(value => {
-              waiting = false;
-              items.unshift(value);
-              process.nextTick(tick);
-            })
-            .catch(err => {
-              process.nextTick(() => this.emit('error', err));
-            });
+            item
+              .then(value => {
+                waiting = false;
+                items.unshift(value);
+                process.nextTick(tick);
+              })
+              .catch(err => {
+                process.nextTick(() => this.emit('error', err));
+              });
             return;
           } else if (
             typeof item.on === 'function' &&
@@ -100,9 +104,9 @@ export default function template(strings, ...args) {
           }
         }
         this.push(null);
-      }
+      };
 
       tick();
-    }
+    },
   });
 }

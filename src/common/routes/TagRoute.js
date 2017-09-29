@@ -21,5 +21,5 @@ export default buildRoute(
     id,
   }),
   ({node}) => <Tag data={node} />,
-  ({node}) => node ? node.name : null,
+  ({node}) => (node ? node.name : null),
 );

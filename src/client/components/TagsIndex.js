@@ -71,9 +71,7 @@ class TagsIndex extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {filteredTags.map(node => (
-              <TagPreview key={node.id} data={node} />
-            ))}
+            {filteredTags.map(node => <TagPreview key={node.id} data={node} />)}
           </tbody>
         </table>
       </div>

@@ -20,5 +20,5 @@ export default buildRoute(
     cursor: null,
   },
   data => <SnippetsIndex data={data} />,
-  'snippets'
+  'snippets',
 );

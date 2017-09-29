@@ -88,8 +88,7 @@ class Search extends React.Component {
             <input
               className="eight columns"
               id="search-input"
-              onChange={event =>
-                this.setState({q: event.currentTarget.value})}
+              onChange={event => this.setState({q: event.currentTarget.value})}
               placeholder="Search..."
               type="search"
               ref={input => {
@@ -114,9 +113,7 @@ class Search extends React.Component {
               if (edge) {
                 const {cursor, node} = edge;
                 if (node) {
-                  return (
-                    <ContentPreview cursor={cursor} key={i} data={node} />
-                  );
+                  return <ContentPreview cursor={cursor} key={i} data={node} />;
                 }
               }
             })}

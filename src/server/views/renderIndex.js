@@ -22,38 +22,30 @@ export default function renderIndex(locals) {
     <html lang="en">
       <head>
         <meta charset="utf-8">
-        ${
-          styles.then(s => s ? template`<style>${raw(s)}</style>` : null)
-        }
+        ${styles.then(s => (s ? template`<style>${raw(s)}</style>` : null))}
         <link rel="icon" type="image/x-icon" href="favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${[...(title ? [title] : []), 'wincent.com'].join(' · ')}</title>
         <meta property="og:title" content="${title}">
         <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
-        ${
-          description ?
-            template`<meta property="og:description" content="${description}">` :
-            null
-        }
-        ${
-          canonical.then(c => c ?
-            template`
+        ${description
+          ? template`<meta property="og:description" content="${description}">`
+          : null}
+        ${canonical.then(
+          c =>
+            c
+              ? template`
               <link rel="canonical" href="${canonical}">
               <meta property="og:url" content="${canonical}">
-            ` :
-            null
-          )
-        }
-        ${
-          alternate ?
-            template`<link rel="alternate" type="application/rss+xml" href="${alternate}">` :
-            null
-        }
-        ${
-          home ?
-            template`<link rel="home" type="application/rss+xml" href="${home}">` :
-            null
-        }
+            `
+              : null,
+        )}
+        ${alternate
+          ? template`<link rel="alternate" type="application/rss+xml" href="${alternate}">`
+          : null}
+        ${home
+          ? template`<link rel="home" type="application/rss+xml" href="${home}">`
+          : null}
       </head>
       <body>
         <div id="relay-root">${pageContent}</div>
