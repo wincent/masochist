@@ -24,7 +24,7 @@ export default function renderIndex(locals) {
       <head>
         <meta charset="utf-8">
         ${styles.then(s => (s ? template`<style>${raw(s)}</style>` : null))}
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${formatTitle(title)}</title>
         <meta property="og:title" content="${title}">
