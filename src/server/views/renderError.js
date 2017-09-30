@@ -7,8 +7,8 @@ import raw from '../raw';
 import template from '../template';
 
 export default function renderError(locals) {
-  const {error, message, pageContent, styles} = locals;
-  const title = formatTitle(`${error} ${message}`);
+  const {code, message, pageContent, styles} = locals;
+  const title = formatTitle(`${code} ${message}`);
   return template`
     <!DOCTYPE html>
     <html lang="en">

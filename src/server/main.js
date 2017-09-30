@@ -154,7 +154,9 @@ appRoutes.forEach(route => {
           return {
             pageContent: renderToStaticNodeStream(
               <App router={router}>
-                <HTTPError code={code} />
+                <HTTPError code={code}>
+                  {error.component}
+                </HTTPError>
               </App>,
             ),
           };
@@ -262,7 +264,7 @@ app.use(
   }),
 );
 
-function errorPage(error, message, request, response) {
+function errorPage(code, message, request, response) {
   return {
     html: () => {
       const history = createHistory({
@@ -272,19 +274,19 @@ function errorPage(error, message, request, response) {
       const router = createRouter(history);
       const pageContent = renderToStaticNodeStream(
         <App router={router}>
-          <HTTPError code={error} />
+          <HTTPError code={code} />
         </App>,
       );
       const locals = {
-        error,
+        code,
         message,
         pageContent,
         styles: getStyles(),
       };
       templateHandler(renderError, locals)(request, response);
     },
-    json: () => response.send({error, message}),
-    text: () => response.send(`${error} ${message}`),
+    json: () => response.send({error: code, message}),
+    text: () => response.send(`${code} ${message}`),
   };
 }
 

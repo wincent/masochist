@@ -6,6 +6,7 @@ import React from 'react';
 import {graphql} from 'react-relay';
 
 import Article from '../../client/components/Article';
+import Link from '../../client/components/Link';
 import inBrowser from '../../client/inBrowser';
 import ExternalRedirectError from '../ExternalRedirectError';
 import InternalRedirectError from '../ExternalRedirectError';
@@ -76,7 +77,14 @@ export default buildRoute(
         }
         return <Article data={node} />;
       } else {
-        throw new NotFoundError(`No article found with title: ${id}`);
+        throw new NotFoundError(
+          `No article found with id: ${id}`,
+          <p>
+            Try inspecting <Link to="/wiki">the wiki index</Link> and {' '}
+            <Link to="/tags">the tags listing</Link>, or using {' '}
+            <Link to="/search">the site search</Link>.
+          </p>
+        );
       }
     },
     title: ({node}) => (node ? node.title : null),

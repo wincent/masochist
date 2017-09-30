@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
@@ -19,19 +18,6 @@ class Snippet extends React.Component {
 
   render() {
     const snippet = this.props.data;
-
-    if (!snippet) {
-      return (
-        <HTTPError code={404}>
-          <p>
-            Try inspecting <Link to="/snippets">the snippets index</Link> and {' '}
-            <Link to="/tags">the tags listing</Link>, or using {' '}
-            <Link to="/search">the site search</Link>.
-          </p>
-        </HTTPError>
-      );
-    }
-
     return (
       // encode url?
       <article>

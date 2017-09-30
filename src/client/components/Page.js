@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
@@ -19,20 +18,6 @@ class Page extends React.Component {
 
   render() {
     const page = this.props.data;
-
-    if (!page) {
-      // TODO: once search is implemented, link to that here (and in the other
-      // places we're rendering a 404) as well.
-      return (
-        <HTTPError code={404}>
-          <p>
-            Try inspecting <Link to="/tags">the tags listing</Link> or using {' '}
-            <Link to="/search">the site search</Link>.
-          </p>
-        </HTTPError>
-      );
-    }
-
     return (
       // may want to URL encode here too? page.url
       <article>

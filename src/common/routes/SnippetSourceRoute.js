@@ -1,6 +1,7 @@
 import React from 'react';
 import {graphql} from 'react-relay';
 
+import Link from '../../client/components/Link';
 import Snippet from '../../client/components/Snippet';
 import {MarkupFormatType} from '../../server/schema/types/MarkupType';
 import NotFoundError from '../NotFoundError';
@@ -52,6 +53,11 @@ export default buildRoute(
       }
       throw new NotFoundError(
         `Snippet "${id}" source not found for format ${format}`,
+        <p>
+          Try inspecting <Link to="/snippets">the snippets index</Link> and {' '}
+          <Link to="/tags">the tags listing</Link>, or using {' '}
+          <Link to="/search">the site search</Link>.
+        </p>,
       );
     },
   },
