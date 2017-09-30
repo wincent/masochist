@@ -15,7 +15,7 @@ function descriptionForCode(code: number): string {
   }
 }
 
-export default createErrorClass('RedirectError', function(
+export default createErrorClass('ExternalRedirectError', function(
   target: string,
   code: number,
 ) {

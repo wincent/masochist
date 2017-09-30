@@ -117,7 +117,7 @@ const unlisten = history.listen(async (location, action) => {
 
 resolve(history.location);
 
-function resolve(location, data) {
+function resolve(location) {
   if (window.MasochistCache) {
     // First time here, and we've come from server rendering.
     Object.entries(window.MasochistCache).forEach(([key, value]) => {
@@ -148,7 +148,9 @@ function resolve(location, data) {
       render(<App router={router}>{component}</App>, root);
     })
     .catch(error => {
-      if (error instanceof RenderTextError) {
+      if (error instanceof InternalRedirectError) {
+        return resolve(error.target);
+      } else if (error instanceof RenderTextError) {
         window.location = location.pathname;
         return null;
       }

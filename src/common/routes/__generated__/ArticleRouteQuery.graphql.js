@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 1506e85fec87623adaef931c2c118502
+ * @relayHash 697eb9bc7f5ac30ab2ffda6478290654
  */
 
 /* eslint-disable */
@@ -12,6 +12,7 @@ import type {ConcreteBatch} from 'relay-runtime';
 export type ArticleRouteQueryResponse = {|
   +node: ?{|
     +description?: ?string;
+    +redirect?: ?string;
     +title?: ?string;
   |};
 |};
@@ -28,6 +29,7 @@ query ArticleRouteQuery(
     ... on Article {
       ...Article
       description
+      redirect
       title
     }
     id
@@ -108,6 +110,13 @@ const batch /*: ConcreteBatch*/ = {
                 "alias": null,
                 "args": null,
                 "name": "description",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "redirect",
                 "storageKey": null
               },
               {
@@ -292,7 +301,7 @@ const batch /*: ConcreteBatch*/ = {
 
 
 if (__DEV__) {
-  batch['text'] = "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n      title\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
+  batch['text'] = "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n      redirect\n      title\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
 }
 
 module.exports = batch;

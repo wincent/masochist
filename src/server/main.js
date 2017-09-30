@@ -23,8 +23,9 @@ import {
 
 import App from '../client/components/App';
 import HTTPError from '../client/components/HTTPError';
+import ExternalRedirectError from '../common/ExternalRedirectError';
+import InternalRedirectError from '../common/InternalRedirectError';
 import NotFoundError from '../common/NotFoundError';
-import RedirectError from '../common/RedirectError';
 import RenderTextError from '../common/RenderTextError';
 import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
@@ -138,9 +139,11 @@ appRoutes.forEach(route => {
           };
         })
         .catch(error => {
-          if (error instanceof RedirectError) {
+          if (error instanceof ExternalRedirectError) {
             response.redirect(error.code, error.target);
             return null;
+          } else if (error instanceof InternalRedirectError) {
+            return resolve(error.target);
           } else if (error instanceof RenderTextError) {
             response.set('Content-Type', error.type);
             response.send(error.text);
