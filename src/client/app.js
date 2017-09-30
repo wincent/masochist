@@ -13,6 +13,7 @@ import '../common/unhandledRejection';
 import './normalize.css';
 import './skeleton.css';
 
+import InternalRedirectError from '../common/InternalRedirectError';
 import NotFoundError from '../common/NotFoundError';
 import RenderTextError from '../common/RenderTextError';
 import createRouter from '../common/createRouter';

@@ -8,6 +8,7 @@ import {graphql} from 'react-relay';
 import Article from '../../client/components/Article';
 import inBrowser from '../../client/inBrowser';
 import ExternalRedirectError from '../ExternalRedirectError';
+import InternalRedirectError from '../ExternalRedirectError';
 import buildRoute from '../buildRoute';
 import matchRoute from '../matchRoute';
 
