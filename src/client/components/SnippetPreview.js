@@ -6,6 +6,7 @@ import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
+import TagLozenge from './TagLozenge';
 import When from './When';
 
 import type {SnippetPreview as SnippetPreviewData} from './__generated__/SnippetPreview.graphql';
@@ -21,7 +22,7 @@ class SnippetPreview extends React.Component {
     return (
       <tr>
         <td>
-          <code>snippet</code>
+          <TagLozenge type="snippet" />
         </td>
         <td>
           <Link title={description} to={url}>

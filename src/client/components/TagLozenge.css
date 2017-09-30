@@ -1,0 +1,7 @@
+.lozenge,
+.lozenge:active,
+.lozenge:hover,
+.lozenge:visited {
+  color: inherit;
+  text-decoration: none;
+}

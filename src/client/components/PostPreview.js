@@ -5,6 +5,7 @@
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
+import TagLozenge from './TagLozenge';
 import Tags from './Tags';
 import When from './When';
 
@@ -21,7 +22,7 @@ class PostPreview extends React.Component {
     return (
       <tr>
         <td>
-          <code>blog</code>
+          <TagLozenge type="blog" />
         </td>
         <td>
           <Link title={description} to={url}>

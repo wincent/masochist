@@ -6,6 +6,7 @@ import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 import Tags from './Tags';
+import TagLozenge from './TagLozenge';
 import When from './When';
 
 import type {PagePreview as PagePreviewData} from './__generated__/PagePreview.graphql';
@@ -21,7 +22,7 @@ class PagePreview extends React.Component {
     return (
       <tr>
         <td>
-          <code>page</code>
+          <TagLozenge type="page" />
         </td>
         <td>
           <Link title={description} to={url}>
