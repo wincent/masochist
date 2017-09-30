@@ -62,8 +62,11 @@ gulp.task('webpack:build', callback => {
       ringBell();
       throw new gutil.PluginError('webpack:build', error);
     }
-    if (stats.compilation.errors) {
+    if (stats.compilation.errors && stats.compilation.errors.length) {
+      const [firstError, ...remainingErrors] = stats.compilation.errors;
+      remainingErrors.forEach(console.log.bind(console));
       ringBell();
+      throw new gutil.PluginError('webpack:build', firstError);
     }
     if (!watching) {
       gutil.log('[webpack:build]', stats.toString({colors: true}));
