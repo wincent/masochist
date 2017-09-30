@@ -14,6 +14,7 @@
     "build": "gulp build",
     "check": "gulp typecheck",
     "coverage": "jest --forceExit --coverage",
+    "gulp": "gulp",
     "lint": "gulp lint",
     "pretty": "babel-node scripts/pretty.js",
     "pretty-check": "babel-node scripts/pretty.js --check",
