@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import inBrowser from '../inBrowser';
-import HTTPError from './HTTPError';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
@@ -30,19 +29,6 @@ class Article extends React.Component {
 
   render() {
     const article = this.props.data;
-
-    if (!article) {
-      return (
-        <HTTPError code={404}>
-          <p>
-            Try inspecting <Link to="/wiki">the wiki index</Link> and {' '}
-            <Link to="/tags">the tags listing</Link>, or using {' '}
-            <Link to="/search">the site search</Link>.
-          </p>
-        </HTTPError>
-      );
-    }
-
     return (
       <article>
         <h1>

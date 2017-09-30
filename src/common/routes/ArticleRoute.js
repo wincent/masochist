@@ -9,6 +9,7 @@ import Article from '../../client/components/Article';
 import inBrowser from '../../client/inBrowser';
 import ExternalRedirectError from '../ExternalRedirectError';
 import InternalRedirectError from '../ExternalRedirectError';
+import NotFoundError from '../NotFoundError';
 import buildRoute from '../buildRoute';
 import matchRoute from '../matchRoute';
 
@@ -57,23 +58,26 @@ export default buildRoute(
       baseHeadingLevel: 2,
       id,
     }),
-    render: ({node}) => {
-      const {redirect} = node;
-      if (redirect) {
-        if (redirect.match(/^https?:/)) {
-          // External redirect.
-          return hardRedirect(redirect);
-        } else if (redirect.startsWith('/')) {
-          // Internal redirect.
-          return softRedirect(redirect);
-        } else {
-          // Nothing to do. `redirect` here is of the form "[[title]]" and the
-          // other fields will have been appropriately "dereferenced" by
-          // the GraphQL schema.
+    render: ({node}, {id}) => {
+      if (node) {
+        const {redirect} = node;
+        if (redirect) {
+          if (redirect.match(/^https?:/)) {
+            // External redirect.
+            return hardRedirect(redirect);
+          } else if (redirect.startsWith('/')) {
+            // Internal redirect.
+            return softRedirect(redirect);
+          } else {
+            // Nothing to do. `redirect` here is of the form "[[title]]" and the
+            // other fields will have been appropriately "dereferenced" by
+            // the GraphQL schema.
+          }
         }
+        return <Article data={node} />;
+      } else {
+        throw new NotFoundError(`No article found with title: ${id}`);
       }
-
-      return <Article data={node} />;
     },
     title: ({node}) => (node ? node.title : null),
     description: ({node}) => (node ? node.description : null),
