@@ -104,11 +104,6 @@
       "__DEV__": true
     }
   },
-  "postcss": {
-    "plugins": {
-      "cssnano": {}
-    }
-  },
   "prettier": {
     "bracket-spacing": false,
     "jsx-bracket-same-line": true,

@@ -2,7 +2,6 @@
 
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const fse = require('fs-extra');
 const path = require('path');
 const webpack = require('webpack');
@@ -42,15 +41,6 @@ module.exports = {
         });
       });
     },
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: function() {
-          // No arrow function, because we want `this` to be:
-          // http://webpack.github.io/docs/loaders.html#loader-context
-          return [autoprefixer];
-        },
-      },
-    }),
   ],
   module: {
     loaders: [
