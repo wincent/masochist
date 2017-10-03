@@ -31,8 +31,15 @@ module.exports = {
         test: /\.css$/,
       },
       {
-        loader: 'url-loader?limit=10000',
         test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+            },
+          },
+        ],
       },
     ],
   },
