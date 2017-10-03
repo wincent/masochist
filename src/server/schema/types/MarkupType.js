@@ -8,6 +8,7 @@ import {
 import marked from 'marked';
 import getAssetURL from '../../getAssetURL';
 import escapeHTML from '../../escapeHTML';
+import markupExtensions from '../../../common/markupExtensions';
 
 marked.setOptions({
   // There are all defaults, but re-set them here explicitly as documentation.
@@ -70,16 +71,11 @@ function getMarkedRenderer(baseLevel: ?number) {
 
 export const MarkupFormatType = new GraphQLEnumType({
   name: 'MARKUP_FORMAT_TYPE',
-  values: {
-    TXT: {value: 'txt'},
-    HTML: {value: 'html'},
-    C: {value: 'c'},
-    PATCH: {value: 'patch'},
-    M: {value: 'm'},
-    MD: {value: 'md'},
-    RB: {value: 'rb'},
-    SH: {value: 'sh'},
-  },
+  // Make an object with entries like: `TXT: {value: 'txt'}`
+  values: markupExtensions.reduce((values, value) => {
+    values[value.toUpperCase()] = {value};
+    return values;
+  }, {}),
 });
 
 const MarkupType = new GraphQLObjectType({
