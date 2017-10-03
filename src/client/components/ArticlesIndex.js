@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
-import inBrowser from '../inBrowser';
+import inBrowser from '../../common/inBrowser';
 import ArticlePreview from './ArticlePreview';
 import LoadMoreButton from './LoadMoreButton';
 

@@ -4,7 +4,7 @@
 
 import PropTypes from 'prop-types';
 import React from 'react';
-import inBrowser from '../inBrowser';
+import inBrowser from '../../common/inBrowser';
 
 if (inBrowser) {
   require('./LoadMoreButton.css');

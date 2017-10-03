@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import inBrowser from '../inBrowser';
+import inBrowser from '../../common/inBrowser';
 import Link from './Link';
 import cx from 'classnames';
 

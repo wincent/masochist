@@ -3,8 +3,8 @@
  */
 
 import React from 'react';
+import inBrowser from '../../common/inBrowser';
 import relativizeDate from '../relativizeDate';
-import inBrowser from '../inBrowser';
 
 export default class Time extends React.Component {
   _updateTimer: mixed;

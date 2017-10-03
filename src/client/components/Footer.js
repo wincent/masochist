@@ -3,8 +3,8 @@
  */
 
 import React from 'react';
+import inBrowser from '../../common/inBrowser';
 import Link from './Link';
-import inBrowser from '../inBrowser';
 
 if (inBrowser) {
   require('./Footer.css');

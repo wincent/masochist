@@ -4,9 +4,9 @@
 
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
-import Time from './Time';
-import inBrowser from '../inBrowser';
+import inBrowser from '../../common/inBrowser';
 import relativizeDate from '../relativizeDate';
+import Time from './Time';
 
 import type {When as WhenData} from './__generated__/When.graphql';
 

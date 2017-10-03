@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import inBrowser from '../inBrowser';
+import inBrowser from '../../common/inBrowser';
 
 if (inBrowser) {
   require('./ContentListing.css');

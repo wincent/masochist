@@ -2,7 +2,7 @@
  * @flow
  */
 
-import inBrowser from '../client/inBrowser';
+import inBrowser from './inBrowser';
 
 function base64(string: string) {
   // graphql-relay always uses `Buffer`, but we do environment detection.

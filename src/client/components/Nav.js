@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
 import Link from './Link';
-import inBrowser from '../inBrowser';
+import inBrowser from '../../common/inBrowser';
 
 if (inBrowser) {
   require('./Nav.css');

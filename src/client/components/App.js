@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Nav from './Nav';
 import Footer from './Footer';
-import inBrowser from '../inBrowser';
-
+import inBrowser from '../../common/inBrowser';
 import matchRoute from '../../common/matchRoute';
 
 if (inBrowser) {

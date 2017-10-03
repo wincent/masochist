@@ -1,5 +1,9 @@
-import inBrowser from '../client/inBrowser';
+/**
+ * @flow
+ */
+
 import formatTitle from './formatTitle';
+import inBrowser from './inBrowser';
 import withContext from './withContext';
 
 export default function buildRoute(query, config) {
