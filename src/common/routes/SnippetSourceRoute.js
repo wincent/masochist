@@ -3,16 +3,16 @@ import {graphql} from 'react-relay';
 
 import Link from '../../client/components/Link';
 import Snippet from '../../client/components/Snippet';
-import {MarkupFormatType} from '../../server/schema/types/MarkupType';
 import NotFoundError from '../NotFoundError';
 import RenderTextError from '../RenderTextError';
 import buildRoute from '../buildRoute';
+import markupExtensions from '../markupExtensions';
 
 /**
  * A mapping from 'html' to "HTML" etc.
  */
 const FORMAT_TO_MARKUP_TYPE = new Map(
-  MarkupFormatType.getValues().map(({name, value}) => [value, name]),
+  markupExtensions.map(extension => [extension, extension.toUpperCase()])
 );
 
 /**

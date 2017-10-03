@@ -2,7 +2,7 @@ import {toGlobalId} from 'graphql-relay';
 import React from 'react';
 
 import HTTPError from '../client/components/HTTPError';
-import {MarkupFormatType} from '../server/schema/types/MarkupType';
+import markupExtensions from './markupExtensions';
 import ArticleRoute from './routes/ArticleRoute';
 import ArticlesRoute from './routes/ArticlesRoute';
 import PageRoute from './routes/PageRoute';
@@ -53,8 +53,6 @@ function prepareTagParams(params) {
   };
 }
 
-const MARKUP_EXTENSIONS = MarkupFormatType.getValues().map(({value}) => value);
-
 export default [
   {
     path: '/',
@@ -87,7 +85,7 @@ export default [
     action: SnippetsRoute,
   },
   {
-    path: `/snippets/:id.:format(${MARKUP_EXTENSIONS.join('|')})`,
+    path: `/snippets/:id.:format(${markupExtensions.join('|')})`,
     action: SnippetSourceRoute,
     prepare: getPrepareParams('Snippet'),
   },
