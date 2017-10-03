@@ -29,7 +29,14 @@ module.exports = {
       },
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({output: {comments: false}}),
+    new webpack.optimize.UglifyJsPlugin({
+      // To debug failed dead code elimination, add `mangle: false` here and
+      // either `beautify: true` inside `output` (to visually inspect),
+      // or use `source-map-explorer bundle.js bundle.js.map` (to explore a
+      // treemap in a browser window).
+      sourceMap: true,
+      output: {comments: false}
+    }),
     function() {
       this.plugin('done', function(stats) {
         stats.toJson().assetsByChunkName.main.forEach(function(asset) {
