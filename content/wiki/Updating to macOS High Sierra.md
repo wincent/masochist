@@ -22,6 +22,15 @@ Fruit of the fact that I have a corp-managed laptop with a network account. Peop
 10. `sudo chefctl -i` (machine is managed by Chef).
 11. Remove local account.
 
+# New shells open with `$HOME` set to `/var/empty`
+
+This one happened a couple of days in a row, a few days after upgrading. More Active Directory weirdness, I presume.
+
+```
+sudo dscl localhost read /Local/Default/Users/$USER CopyTimestamp
+sudo dscl localhost delete /Local/Default/Users/$USER CopyTimestamp
+```
+
 # Other issues
 
 * Karabiner-Elements needs to be explicitly enabled in the Security pane of the System Preferences.
