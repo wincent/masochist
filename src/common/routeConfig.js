@@ -1,4 +1,3 @@
-import {toGlobalId} from 'graphql-relay';
 import React from 'react';
 
 import HTTPError from '../client/components/HTTPError';
@@ -14,6 +13,7 @@ import SnippetRoute from './routes/SnippetRoute';
 import SnippetsRoute from './routes/SnippetsRoute';
 import TagsRoute from './routes/TagsRoute';
 import TagRoute from './routes/TagRoute';
+import toGlobalId from './toGlobalId';
 
 /**
  * We use classical opaque GraphQL IDs internally ("Type:id", Base64-encoded)

@@ -2,10 +2,10 @@
  * @flow
  */
 
-import {toGlobalId} from 'graphql-relay';
 import {graphql} from 'react-relay';
 import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';
+import toGlobalId from '../common/toGlobalId';
 import QueryCache from './QueryCache';
 import {HOST, SCHEME} from './constants';
 import runQuery from './runQuery';
