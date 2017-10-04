@@ -1,6 +1,5 @@
 'use strict'; // eslint-disable-line
 
-import '../common/devFallback';
 import '../common/unhandledRejection';
 
 import bodyParser from 'body-parser';

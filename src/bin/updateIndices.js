@@ -11,7 +11,6 @@
  * ```
  */
 
-import '../common/devFallback';
 import '../common/unhandledRejection';
 
 import Promise from 'bluebird';

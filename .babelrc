@@ -1,6 +1,14 @@
 {
   "plugins": [
-    "dev-expression",
+    ["minify-replace", {
+      "replacements": [{
+        "identifierName": "__DEV__",
+        "replacement": {
+          "type": "booleanLiteral",
+          "value": true
+        }
+      }]
+    }],
     "relay",
     "transform-object-rest-spread",
     "transform-class-properties",

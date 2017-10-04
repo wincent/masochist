@@ -20,7 +20,18 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['es2015', 'react', 'stage-0'],
-              plugins: ['dev-expression', 'relay'],
+              plugins: [
+                ['minify-replace', {
+                  replacements: [{
+                    identifierName: '__DEV__',
+                    replacement: {
+                      type: 'booleanLiteral',
+                      value: true,
+                    },
+                  }],
+                }],
+                'relay',
+              ],
             },
           },
         ],

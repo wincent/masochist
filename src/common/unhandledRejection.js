@@ -1,3 +1,7 @@
-process.on('unhandledRejection', reason => {
-  throw reason;
-});
+import inBrowser from './inBrowser';
+
+if (!inBrowser) {
+  process.on('unhandledRejection', reason => {
+    throw reason;
+  });
+}

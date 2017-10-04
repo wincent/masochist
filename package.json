@@ -42,7 +42,7 @@
     "babel-cli": "*",
     "babel-eslint": "*",
     "babel-loader": "^7.1.2",
-    "babel-plugin-dev-expression": "*",
+    "babel-plugin-minify-replace": "0.2.0",
     "babel-plugin-relay": "^1.0.1",
     "babel-polyfill": "*",
     "babel-preset-env": "^1.6.0",

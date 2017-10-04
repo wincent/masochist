@@ -13,6 +13,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle-[hash].js',
   },
+  node: false,
   plugins: [
     new AssetsPlugin({
       fullPath: false,
@@ -59,7 +60,18 @@ module.exports = {
             loader: 'babel-loader',
             options: {
               presets: ['es2015', 'react', 'stage-0'],
-              plugins: ['dev-expression', 'relay'],
+              plugins: [
+                ['minify-replace', {
+                  replacements: [{
+                    identifierName: '__DEV__',
+                    replacement: {
+                      type: 'booleanLiteral',
+                      value: false,
+                    },
+                  }],
+                }],
+                'relay',
+              ],
             },
           },
         ],

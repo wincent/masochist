@@ -9,7 +9,15 @@ let watching = false;
 const babelOptions = {
   babelrc: false,
   plugins: [
-    'dev-expression',
+    ['minify-replace', {
+      replacements: [{
+        identifierName: '__DEV__',
+        replacement: {
+          type: 'booleanLiteral',
+          value: false,
+        },
+      }],
+    }],
     'relay',
     'transform-object-rest-spread',
     'transform-class-properties',
@@ -90,7 +98,7 @@ gulp.task('graphql', () =>
   gulp.src(['src/__generated__/*.txt']).pipe(gulp.dest('dist/__generated__')),
 );
 
-if (__DEV__) {
+if (process.env.NODE_ENV !== 'production') {
   const eslint = require('gulp-eslint');
   const shell = require('gulp-shell');
 
