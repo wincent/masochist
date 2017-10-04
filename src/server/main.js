@@ -207,6 +207,23 @@ app.use('/graphql', bodyParser.json(), (request, response, next) => {
   return graphqlHTTP(request => options)(request, response, next);
 });
 
+if (__DEV__) {
+  // (Ab)use express-graphql as a quick-and-dirty way to run GraphiQL in
+  // __DEV__. Note that (non-GraphiQL) POST requests (etc) will work at this
+  // endpoint too, even though we only actually want the GraphiQL
+  // functionality).
+  app.use('/graphiql', (request, response, next) => {
+    const options = {
+      rootValue: {
+        loaders: getLoaders(),
+      },
+      graphiql: true,
+      schema,
+    };
+    return graphqlHTTP(request => options)(request, response, next);
+  });
+}
+
 app.get('/blog.rss', async (request, response) => {
   const feedContent = await feed();
   response.set('Content-Type', 'application/rss+xml');
