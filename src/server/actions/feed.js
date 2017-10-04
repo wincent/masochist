@@ -8,9 +8,9 @@ import RSS from 'rss';
 
 import {array} from '../../common/checks';
 import Cache from '../Cache';
-import QueryCache from '../QueryCache';
 import {HOST, SCHEME} from '../constants';
 import git from '../git';
+import queryCache from '../queryCache';
 import runQuery from '../runQuery';
 import stripTags from '../stripTags';
 
@@ -18,8 +18,6 @@ import type {feedPosts} from './__generated__/feedPosts.graphql';
 
 const HELLIP = '\u2026';
 const FOUR_TWEETS = 140 * 4;
-
-const queryCache = new QueryCache();
 
 function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
   if (input.length >= limit - 3) {

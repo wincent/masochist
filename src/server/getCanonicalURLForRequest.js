@@ -6,13 +6,11 @@ import {graphql} from 'react-relay';
 import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';
 import toGlobalId from '../common/toGlobalId';
-import QueryCache from './QueryCache';
 import {HOST, SCHEME} from './constants';
+import queryCache from './queryCache';
 import runQuery from './runQuery';
 
 import type {$Request} from 'express';
-
-const queryCache = new QueryCache();
 
 const canonicalURLQuery = graphql`
   query getCanonicalURLForRequestQuery($id: ID!) {

@@ -29,22 +29,20 @@ import RenderTextError from '../common/RenderTextError';
 import getRequestBody from '../common/getRequestBody';
 import routeConfig from '../common/routeConfig';
 import createRouter from '../common/createRouter';
-import QueryCache from './QueryCache';
 import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
 import getLoaders from './getLoaders';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
 import feed from './actions/feed';
-import schema from './schema';
+import queryCache from './queryCache';
 import runQuery from './runQuery';
+import schema from './schema';
 import renderError from './views/renderError';
 import renderIndex from './views/renderIndex';
 
 const APP_PORT = 3000;
 
 const app = express();
-
-const queryCache = new QueryCache();
 
 const readFile = promisify(fs.readFile);
 

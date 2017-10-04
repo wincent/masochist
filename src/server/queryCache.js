@@ -9,7 +9,7 @@ type QueryMap = {
   [name: string]: any,
 };
 
-export default class QueryCache {
+class QueryCache {
   _queries: QueryMap;
 
   constructor() {
@@ -29,3 +29,7 @@ export default class QueryCache {
     return this._queries[name];
   }
 }
+
+const queryCache = new QueryCache();
+
+export default queryCache;
