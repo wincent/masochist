@@ -179,8 +179,7 @@ appRoutes.forEach(route => {
   });
 });
 
-app.use(bodyParser.json());
-app.use('/graphql', (request, response, next) => {
+app.use('/graphql', bodyParser.json(), (request, response, next) => {
   // Totally hacked in persisted-query support:
   let query;
   if (request.body && request.body.id) {
