@@ -21,7 +21,11 @@ const TagLozenge = ({type}) => {
     default:
       href = `/tags/${type}`;
   }
-  return <a className="lozenge" href={href}><code>{type}</code></a>
+  return (
+    <a className="lozenge" href={href}>
+      <code>{type}</code>
+    </a>
+  );
 };
 
 export default TagLozenge;

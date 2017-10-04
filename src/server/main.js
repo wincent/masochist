@@ -150,9 +150,7 @@ appRoutes.forEach(route => {
           return {
             pageContent: renderToStaticNodeStream(
               <App router={router}>
-                <HTTPError code={code}>
-                  {error.component}
-                </HTTPError>
+                <HTTPError code={code}>{error.component}</HTTPError>
               </App>,
             ),
           };

@@ -36,7 +36,7 @@ module.exports = {
       // or use `source-map-explorer bundle.js bundle.js.map` (to explore a
       // treemap in a browser window).
       sourceMap: true,
-      output: {comments: false}
+      output: {comments: false},
     }),
     function() {
       this.plugin('done', function(stats) {
@@ -61,15 +61,20 @@ module.exports = {
             options: {
               presets: ['es2015', 'react', 'stage-0'],
               plugins: [
-                ['minify-replace', {
-                  replacements: [{
-                    identifierName: '__DEV__',
-                    replacement: {
-                      type: 'booleanLiteral',
-                      value: false,
-                    },
-                  }],
-                }],
+                [
+                  'minify-replace',
+                  {
+                    replacements: [
+                      {
+                        identifierName: '__DEV__',
+                        replacement: {
+                          type: 'booleanLiteral',
+                          value: false,
+                        },
+                      },
+                    ],
+                  },
+                ],
                 'relay',
               ],
             },

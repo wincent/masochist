@@ -5,7 +5,7 @@
 import queryCache from './queryCache';
 import runQuery from './runQuery';
 
-export default async function graphQLMiddleware(request, response, next) {
+export default (async function graphQLMiddleware(request, response, next) {
   if (request.method !== 'POST') {
     response.setHeader('Allow', 'POST');
     response.status(405).send('Method Not Allowed');
@@ -27,4 +27,4 @@ export default async function graphQLMiddleware(request, response, next) {
   }
 
   response.json(result);
-}
+});

@@ -21,15 +21,20 @@ module.exports = {
             options: {
               presets: ['es2015', 'react', 'stage-0'],
               plugins: [
-                ['minify-replace', {
-                  replacements: [{
-                    identifierName: '__DEV__',
-                    replacement: {
-                      type: 'booleanLiteral',
-                      value: true,
-                    },
-                  }],
-                }],
+                [
+                  'minify-replace',
+                  {
+                    replacements: [
+                      {
+                        identifierName: '__DEV__',
+                        replacement: {
+                          type: 'booleanLiteral',
+                          value: true,
+                        },
+                      },
+                    ],
+                  },
+                ],
                 'relay',
               ],
             },

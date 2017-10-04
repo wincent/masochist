@@ -12,7 +12,7 @@ import markupExtensions from '../markupExtensions';
  * A mapping from 'html' to "HTML" etc.
  */
 const FORMAT_TO_MARKUP_TYPE = new Map(
-  markupExtensions.map(extension => [extension, extension.toUpperCase()])
+  markupExtensions.map(extension => [extension, extension.toUpperCase()]),
 );
 
 /**
@@ -53,11 +53,13 @@ export default buildRoute(
       }
       throw new NotFoundError(
         `Snippet "${id}" source not found for format ${format}`,
-        <p>
-          Try inspecting <Link to="/snippets">the snippets index</Link> and {' '}
-          <Link to="/tags">the tags listing</Link>, or using {' '}
-          <Link to="/search">the site search</Link>.
-        </p>,
+        (
+          <p>
+            Try inspecting <Link to="/snippets">the snippets index</Link> and {' '}
+            <Link to="/tags">the tags listing</Link>, or using {' '}
+            <Link to="/search">the site search</Link>.
+          </p>
+        ),
       );
     },
   },

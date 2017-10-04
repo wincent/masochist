@@ -9,15 +9,20 @@ let watching = false;
 const babelOptions = {
   babelrc: false,
   plugins: [
-    ['minify-replace', {
-      replacements: [{
-        identifierName: '__DEV__',
-        replacement: {
-          type: 'booleanLiteral',
-          value: false,
-        },
-      }],
-    }],
+    [
+      'minify-replace',
+      {
+        replacements: [
+          {
+            identifierName: '__DEV__',
+            replacement: {
+              type: 'booleanLiteral',
+              value: false,
+            },
+          },
+        ],
+      },
+    ],
     'relay',
     'transform-object-rest-spread',
     'transform-class-properties',

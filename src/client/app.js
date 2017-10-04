@@ -158,9 +158,7 @@ function resolve(location) {
       const code = error instanceof NotFoundError ? 404 : 500;
       render(
         <App router={router}>
-          <HTTPError code={code}>
-            {error.component}
-          </HTTPError>
+          <HTTPError code={code}>{error.component}</HTTPError>
         </App>,
         root,
       );
