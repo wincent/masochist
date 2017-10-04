@@ -23,7 +23,11 @@ export default function stableStringify(input) {
     }
     if (Array.isArray(mixed)) {
       seen.add(mixed);
-      return '[' + mixed.map(stableStringify).join(',') + ']';
+      const output = [];
+      for (let i = 0; i < mixed.length; i++) {
+        output.push(stableStringify(mixed[i] === undefined ? null : mixed[i]));
+      }
+      return '[' + output.join(',') + ']';
     } else if (isObject(mixed)) {
       seen.add(mixed);
       return (
@@ -32,10 +36,13 @@ export default function stableStringify(input) {
           .sort(([aKey, aValue], [bKey, bValue]) => {
             return aKey < bKey ? -1 : aKey > bKey ? 1 : 0;
           })
+          .filter(([key, value]) => value !== undefined)
           .map(([key, value]) => JSON.stringify(key) + ':' + stringify(value))
           .join(',') +
         '}'
       );
+    } else if (mixed === undefined) {
+      return;
     } else {
       // string (or String), integer, Date etc.
       return JSON.stringify(mixed);

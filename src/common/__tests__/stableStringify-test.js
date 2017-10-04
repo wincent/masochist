@@ -12,6 +12,19 @@ it('stringifies null', () => {
   expect(stableStringify(null)).toBe('null');
 });
 
+it('does not stringify undefined', () => {
+  // Same as `JSON.stringify`.
+  expect(stableStringify(undefined)).toBe(undefined);
+});
+
+it('stringifies true', () => {
+  expect(stableStringify(true)).toBe('true');
+});
+
+it('stringifies false', () => {
+  expect(stableStringify(false)).toBe('false');
+});
+
 it('stringifies an empty array', () => {
   expect(stableStringify([])).toBe('[]');
 });
@@ -42,6 +55,19 @@ it('stringifies an "exotic" object (eg. Date)', () => {
   // The month param is 0-indexed but the day param is not...
   expect(stableStringify(new Date(Date.UTC(2017, 0, 1))))
     .toBe('"2017-01-01T00:00:00.000Z"');
+});
+
+it('stringifies empty array slots as "null"', () => {
+  // Same as `JSON.stringify`.
+  const array = new Array(5);
+  array[2] = true;
+  expect(stableStringify(array)).toBe('[null,null,true,null,null]');
+});
+
+it('omits object slots with undefined values', () => {
+  // Same as `JSON.stringify`.
+  expect(stableStringify({a: true, b: null, c: undefined}))
+    .toBe('{"a":true,"b":null}');
 });
 
 it('throws given a circular references', () => {
