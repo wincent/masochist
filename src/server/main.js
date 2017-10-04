@@ -33,8 +33,8 @@ import gatherPaths from './gatherPaths';
 import getAssetURL from './getAssetURL';
 import getLoaders from './getLoaders';
 import getCanonicalURLForRequest from './getCanonicalURLForRequest';
+import graphQLMiddleware from './graphQLMiddleware';
 import feed from './actions/feed';
-import queryCache from './queryCache';
 import runQuery from './runQuery';
 import schema from './schema';
 import renderError from './views/renderError';
@@ -103,8 +103,7 @@ appRoutes.forEach(route => {
     const cache = {};
     const environment = new Environment({
       network: Network.create((operation, variables) => {
-        const query = queryCache.getQuery(operation.id);
-        return runQuery(query, variables)
+        return runQuery(operation.id, variables)
           .then(result => {
             const key = getRequestBody(operation, variables);
             cache[key] = result;
@@ -177,33 +176,7 @@ appRoutes.forEach(route => {
   });
 });
 
-app.use('/graphql', bodyParser.json(), (request, response, next) => {
-  // Totally hacked in persisted-query support:
-  let query;
-  if (request.body && request.body.id) {
-    query = queryCache.getQuery(request.body.id);
-    request.body.query = query;
-  }
-  if (!__DEV__ && !query) {
-    // In prod, we only accept persisted queries (to prevent abuse).
-    response.status(400).send('Bad Request');
-    return;
-  }
-  const options = {
-    rootValue: {
-      loaders: getLoaders(),
-    },
-    // TODO: something like this in __DEV__
-    // errorFormat: error => ({
-    //   message: error.message,
-    //   locations: error.locations,
-    //   stack: error.stack,
-    // }),
-    graphiql: __DEV__,
-    schema,
-  };
-  return graphqlHTTP(request => options)(request, response, next);
-});
+app.use('/graphql', bodyParser.json(), graphQLMiddleware);
 
 if (__DEV__) {
   // (Ab)use express-graphql as a quick-and-dirty way to run GraphiQL in

@@ -7,7 +7,6 @@ import stripTrailingSlash from '../common/stripTrailingSlash';
 import {object} from '../common/checks';
 import toGlobalId from '../common/toGlobalId';
 import {HOST, SCHEME} from './constants';
-import queryCache from './queryCache';
 import runQuery from './runQuery';
 
 import type {$Request} from 'express';
@@ -51,9 +50,7 @@ export default (async function getCanonicalURLForRequest(
   } else if ((match = path.match(/^\/wiki\/(.+)\/?/))) {
     const decoded = decodeURIComponent(match[1]);
     const id = toGlobalId('Article', decoded.replace(/_/g, ' '));
-    const query = queryCache.getQuery(canonicalURLQuery().id);
-    const result = await runQuery(query, {id});
-
+    const result = await runQuery(canonicalURLQuery().id, {id});
     if (result.data && result.data.node) {
       canonical = object(result.data.node).url;
     }

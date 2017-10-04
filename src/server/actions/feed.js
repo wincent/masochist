@@ -10,7 +10,6 @@ import {array} from '../../common/checks';
 import Cache from '../Cache';
 import {HOST, SCHEME} from '../constants';
 import git from '../git';
-import queryCache from '../queryCache';
 import runQuery from '../runQuery';
 import stripTags from '../stripTags';
 
@@ -79,8 +78,7 @@ export default (async function feed() {
       site_url: SCHEME + HOST + '/blog',
       title: 'wincent.com blog',
     });
-    const query = queryCache.getQuery(feedQuery().id);
-    const result: any = await runQuery(query);
+    const result: any = await runQuery(feedQuery().id);
     const posts: feedPosts = result.data.posts;
     posts.edges &&
       posts.edges.forEach(({node}) => {
