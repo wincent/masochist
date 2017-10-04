@@ -5,6 +5,7 @@
 import {LAST_INDEXED_HASH} from './constants';
 import {graphql} from 'graphql';
 import stableStringify from '../common/stableStringify';
+import LRUCache from './LRUCache';
 import getLoaders from './getLoaders';
 import queryCache from './queryCache';
 import redis from './redis';
@@ -13,7 +14,7 @@ import schema from './schema';
 function getCache(hash: string) {
   return {
     hash,
-    storage: new Map(),
+    storage: new LRUCache(),
   };
 }
 
