@@ -4,6 +4,7 @@
 
 import {LAST_INDEXED_HASH} from './constants';
 import {graphql} from 'graphql';
+import stableStringify from '../common/stableStringify';
 import getLoaders from './getLoaders';
 import queryCache from './queryCache';
 import redis from './redis';
@@ -28,7 +29,7 @@ export default async function runQuery(id: string, variables: ?Object) {
   if (cache.hash !== lastIndexedHash) {
     cache = getCache(lastIndexedHash);
   }
-  const key = JSON.stringify({
+  const key = stableStringify({
     id,
     variables,
   });
