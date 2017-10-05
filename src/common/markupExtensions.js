@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 // Client-side code needs these, so we declare them outside the schema to avoid

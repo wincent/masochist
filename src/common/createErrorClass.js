@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 /**
@@ -16,7 +16,7 @@ export default function createErrorClass(
   name: string,
   getProperties: (...args: any) => {message: string, [string]: mixed},
 ) {
-  function ErrorClass() {
+  function ErrorClass(...args: any) {
     const {message, ...properties} = getProperties.apply(this, arguments);
     const error = Error(message);
     error.name = this.name = name;

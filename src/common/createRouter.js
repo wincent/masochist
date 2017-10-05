@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import Router from 'universal-router';

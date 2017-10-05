@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import stableStringify from './stableStringify';
@@ -12,7 +12,9 @@ export default function memoize(fn: () => any): () => any {
       functions.set(fn, {});
     }
     const results: Object = (functions.get(fn): any);
-    const key = stableStringify(Array.prototype.slice.call(arguments));
+    const key: string = (stableStringify(
+      Array.prototype.slice.call(arguments),
+    ): any);
     if (!(key in results)) {
       results[key] = await fn.apply(null, arguments);
     }

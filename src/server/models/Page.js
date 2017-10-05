@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 export default class Page {
