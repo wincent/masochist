@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 export function array(maybeArray: mixed): Array<*> {
