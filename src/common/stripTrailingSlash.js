@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 export default function stripTrailingSlash(path: string): string {

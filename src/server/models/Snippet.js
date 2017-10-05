@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import {REDIS_SNIPPETS_INDEX_KEY} from '../constants';

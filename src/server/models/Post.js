@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import {REDIS_BLOG_INDEX_KEY} from '../constants';

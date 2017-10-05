@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import {GraphQLInt, GraphQLNonNull} from 'graphql';

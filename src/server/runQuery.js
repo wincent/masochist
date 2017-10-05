@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import {LAST_INDEXED_HASH} from './constants';

@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import PropTypes from 'prop-types';

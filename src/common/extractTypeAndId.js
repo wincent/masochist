@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 export default function extractTypeAndId(typeAndId: string): [string, string] {

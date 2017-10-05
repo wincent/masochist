@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import formatTitle from '../../common/formatTitle';

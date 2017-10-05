@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 function isObject(mixed) {

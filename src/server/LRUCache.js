@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 const DEFAULT_CAPACITY = 128;

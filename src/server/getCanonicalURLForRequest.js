@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 import {graphql} from 'react-relay';

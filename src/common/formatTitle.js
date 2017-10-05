@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 export default function formatTitle(title: ?string): string {

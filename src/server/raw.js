@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @noflow
  */
 
 export default function raw(string: string): {__safe: string} {
