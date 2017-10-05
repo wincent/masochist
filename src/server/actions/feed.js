@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import entities from 'entities';
