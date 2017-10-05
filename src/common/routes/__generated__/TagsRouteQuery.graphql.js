@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  * @relayHash 083ae950c0d634d8b9a3d4647cdb2dad
  */
 
