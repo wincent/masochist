@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import {readFileSync, existsSync} from 'fs';
