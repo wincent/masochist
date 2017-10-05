@@ -7,6 +7,9 @@
 ./flow-typed
 ./src/support/flow-libdefs.js
 
+[lints]
+all=warn
+
 [options]
 module.ignore_non_literal_requires=true
 suppress_type=$FlowIssue
