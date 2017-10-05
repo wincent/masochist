@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import {array, number} from '../common/checks';
