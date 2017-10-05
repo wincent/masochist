@@ -53,8 +53,9 @@ it('stringifies an "exotic" object (eg. String)', () => {
 it('stringifies an "exotic" object (eg. Date)', () => {
   // Using Date.UTC to get consistent tests irrespective of the local time zone.
   // The month param is 0-indexed but the day param is not...
-  expect(stableStringify(new Date(Date.UTC(2017, 0, 1))))
-    .toBe('"2017-01-01T00:00:00.000Z"');
+  expect(stableStringify(new Date(Date.UTC(2017, 0, 1)))).toBe(
+    '"2017-01-01T00:00:00.000Z"',
+  );
 });
 
 it('stringifies empty array slots as "null"', () => {
@@ -66,8 +67,9 @@ it('stringifies empty array slots as "null"', () => {
 
 it('omits object slots with undefined values', () => {
   // Same as `JSON.stringify`.
-  expect(stableStringify({a: true, b: null, c: undefined}))
-    .toBe('{"a":true,"b":null}');
+  expect(stableStringify({a: true, b: null, c: undefined})).toBe(
+    '{"a":true,"b":null}',
+  );
 });
 
 it('throws given a circular references', () => {

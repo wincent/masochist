@@ -40,7 +40,7 @@ export default function stableStringify(input: mixed): string | void {
           .map(([key, value]) => {
             // We know value !== undefined here,
             // so stringify will return a string.
-            return JSON.stringify(key) + ':' + (stringify(value): $FlowIssue)
+            return JSON.stringify(key) + ':' + (stringify(value): $FlowIssue);
           })
           .join(',') +
         '}'

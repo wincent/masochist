@@ -21,11 +21,7 @@ import Cache from '../server/Cache';
 import {LAST_INDEXED_HASH, REDIS_TAGS_INDEX_KEY} from '../server/constants';
 import getIndexNameForContentType from '../server/getIndexNameForContentType';
 import git from '../server/git';
-import {
-  getTimestamps,
-  getCacheKey,
-  loadContent,
-} from '../server/loadContent';
+import {getTimestamps, getCacheKey, loadContent} from '../server/loadContent';
 import redis from '../server/redis';
 
 /**
