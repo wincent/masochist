@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 type TimeInfo = {
   humanReadable: string,
   date: Date,
