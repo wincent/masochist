@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import getArticleLoader from './loaders/getArticleLoader';
