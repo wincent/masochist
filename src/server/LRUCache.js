@@ -25,7 +25,6 @@ export default class LRUCache {
       this._storage.set(key, value);
       return value;
     }
-    return this._storage.get(key);
   }
 
   set(key: mixed, value: mixed): LRUCache {
