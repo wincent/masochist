@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import git, {GitError} from './git';
