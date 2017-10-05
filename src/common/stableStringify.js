@@ -1,8 +1,8 @@
 /**
- * @noflow
+ * @flow
  */
 
-function isObject(mixed) {
+function isObject(mixed: mixed): boolean {
   return (
     mixed !== null &&
     Object.prototype.toString.call(mixed) === '[object Object]'
@@ -14,10 +14,10 @@ function isObject(mixed) {
  * is stable in major engines). Due to paranoia, we have this stable stringifier
  * which I have now written about three times in various projects.
  */
-export default function stableStringify(input) {
+export default function stableStringify(input: mixed): string | void {
   const seen = new Set();
 
-  function stringify(mixed) {
+  function stringify(mixed: mixed): string | void {
     if (seen.has(mixed)) {
       throw new TypeError('Converting circular structure to JSON');
     }
@@ -37,7 +37,11 @@ export default function stableStringify(input) {
             return aKey < bKey ? -1 : aKey > bKey ? 1 : 0;
           })
           .filter(([key, value]) => value !== undefined)
-          .map(([key, value]) => JSON.stringify(key) + ':' + stringify(value))
+          .map(([key, value]) => {
+            // We know value !== undefined here,
+            // so stringify will return a string.
+            return JSON.stringify(key) + ':' + (stringify(value): $FlowIssue)
+          })
           .join(',') +
         '}'
       );
