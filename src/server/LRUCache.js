@@ -1,10 +1,13 @@
 /**
- * @noflow
+ * @flow
  */
 
 const DEFAULT_CAPACITY = 128;
 
 export default class LRUCache {
+  _capacity: number;
+  _storage: Map<*, *>;
+
   constructor(capacity: number = DEFAULT_CAPACITY) {
     if (capacity <= 0) {
       throw new Error(`LRUCache: non-positive capacity ${capacity}`);
