@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import {Readable} from 'stream';
@@ -10,7 +10,10 @@ function squishWhitespace(string: string): string {
   return string.replace(/\s*\n\s*/g, '');
 }
 
-export default function template(strings, ...args) {
+export default function template(
+  strings: Array<string>,
+  ...args: Array<mixed>
+) {
   // Make one interpolated array of strings and args to make later processing
   // easier.
   const items = [];
@@ -73,8 +76,9 @@ export default function template(strings, ...args) {
             typeof item.pipe === 'function'
           ) {
             // Quacks like a stream.
+            const stream: stream$Stream = (item: any);
             waiting = true;
-            item.on('data', data => {
+            stream.on('data', data => {
               const string = data.toString();
               if (buffering) {
                 chunks.push(string);
@@ -84,20 +88,20 @@ export default function template(strings, ...args) {
                 }
               }
             });
-            item.on('end', () => {
+            stream.on('end', () => {
               waiting = false;
               if (!buffering) {
                 process.nextTick(tick);
               }
             });
-            item.on('err', err => {
+            stream.on('err', err => {
               process.nextTick(() => this.emit('error', err));
             });
             return;
           } else {
             // User passed 0, false, NaN, or something truthy
             // that didn't get caught by duck-typing checks; coerce to string.
-            const string = '' + item;
+            const string = '' + (item: any);
             if (!this.push(string)) {
               return;
             }
