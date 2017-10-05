@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 const GITHUB_BASE =
