@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import hashString from './hashString';
 
 const CDN_HOSTS = [
