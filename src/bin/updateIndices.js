@@ -23,7 +23,7 @@ import getIndexNameForContentType from '../server/getIndexNameForContentType';
 import git from '../server/git';
 import {
   getTimestamps,
-  getTimestampsCacheKey,
+  getCacheKey,
   loadContent,
 } from '../server/loadContent';
 import redis from '../server/redis';
@@ -177,44 +177,6 @@ function getFileUpdates(range, callback) {
     log('Index already up-to-date at revision %s', head);
     process.exit(0);
   }
-
-  // Pre-seed timestamp metadata cache (without this, our `loadContent` calls
-  // below will end up doing increasingly expensive `git-rev-list` operations
-  // over and over again).
-  log('Preparing timestamp cache for revision %s', head);
-  const timestamps = {};
-  await getFileUpdates(head, async ({file, status, contentType, commit}) => {
-    dot();
-    const id = contentType + ':' + file;
-    if (!timestamps[id]) {
-      timestamps[id] = {};
-    }
-    switch (status) {
-      case 'A':
-        timestamps[id].oldest = commit;
-        break;
-      case 'M':
-        timestamps[id].mostRecent = timestamps[id].mostRecent || commit;
-        break;
-    }
-  });
-  print('\n');
-
-  log('Writing timestamp cache for revision %s', head);
-  await async function() {
-    // Use Promise.map to limit concurrency and avoid exhausting file
-    // descriptors.
-    return Promise.map(
-      Object.keys(timestamps),
-      async id => {
-        const [contentType, file] = extractTypeAndId(id);
-        const {oldest, mostRecent} = timestamps[id];
-        const cacheKey = getTimestampsCacheKey(contentType, file, head);
-        await Cache.set(cacheKey, await getTimestamps(oldest, mostRecent));
-      },
-      {concurrency: 32},
-    );
-  };
 
   // Produce createdAt/updatedAt ordered indices.
   log('Creating ordered index');
