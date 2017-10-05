@@ -1,4 +1,8 @@
-export default function escapeHTML(html) {
+/**
+ * @flow
+ */
+
+export default function escapeHTML(html: string): string {
   return html
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
