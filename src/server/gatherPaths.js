@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 type RouteConfig = Array<{
