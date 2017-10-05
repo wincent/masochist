@@ -6,6 +6,16 @@ beforeEach(() => {
   cache = new LRUCache(3);
 });
 
+describe('constructor()', () => {
+  it('complains if initialized with capacity 0', () => {
+    expect(() => new LRUCache(0)).toThrow(/non-positive capacity/);
+  });
+
+  it('complains if initialized with a negative capacity', () => {
+    expect(() => new LRUCache(-1)).toThrow(/non-positive capacity/);
+  });
+});
+
 describe('get()', () => {
   it('returns undefined for unset keys', () => {
     expect(cache.get('foo')).toBe(undefined);
