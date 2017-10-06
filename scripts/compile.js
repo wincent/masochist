@@ -10,7 +10,7 @@
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  *
- * @noflow
+ * @flow
  * @providesModule RelayCompilerBin
  * @format
  */
@@ -112,7 +112,7 @@ async function run() {
   }
 }
 
-function getRelayFileWriter(baseDir: string, persistQuery: fn) {
+function getRelayFileWriter(baseDir: string, persistQuery: (text: string) => Promise<string>) {
   return (onlyValidate, schema, documents, baseDocuments) =>
     new RelayFileWriter({
       config: {

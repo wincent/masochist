@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import {connectionDefinitions} from 'graphql-relay';
 import PostType from '../../types/PostType';
 
