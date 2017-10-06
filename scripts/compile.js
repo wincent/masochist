@@ -112,7 +112,10 @@ async function run() {
   }
 }
 
-function getRelayFileWriter(baseDir: string, persistQuery: (text: string) => Promise<string>) {
+function getRelayFileWriter(
+  baseDir: string,
+  persistQuery: (text: string) => Promise<string>,
+) {
   return (onlyValidate, schema, documents, baseDocuments) =>
     new RelayFileWriter({
       config: {
