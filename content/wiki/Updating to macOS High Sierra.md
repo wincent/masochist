@@ -2,6 +2,8 @@
 tags: wiki
 ---
 
+> **NOTE:** I ended up having to downgrade to Sierra due to getting locked out by Active Directory issues, which suprisingly ended up with me losing the ability to unlock the encrypted volume. Good thing for backups.
+
 Foolishly decided to upgrade more or less immediately when High Sierra came out, even though I usually prefer to wait for a couple of point releases (sometimes more when waiting for updates to critical third-party software). The allure of being rid of HFS+ once and for all was just too great.
 
 Fair number of horror stories on Twitter about stuck installs etc but I fortunately didn't hit any of those snags. Instead, I had a few others.
