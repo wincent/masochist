@@ -33,7 +33,6 @@ module.exports = {
       new RegExp(
         '\\b(' +
         'applyOptimisticMutation|' +
-        'commitLocalUpdate|' +
         'commitRelayModernMutation|' +
         'requestRelaySubscriptions|' +
         'setRelayModernMutationConfigs' +
