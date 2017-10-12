@@ -29,6 +29,17 @@ module.exports = {
         NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new webpack.IgnorePlugin(
+      new RegExp(
+        '\\b(' +
+        'applyOptimisticMutation|' +
+        'commitLocalUpdate|' +
+        'commitRelayModernMutation|' +
+        'requestRelaySubscriptions|' +
+        'setRelayModernMutationConfigs' +
+        ')\\b'
+      ),
+    ),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       // To debug failed dead code elimination, add `mangle: false` here and
