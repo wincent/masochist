@@ -5,17 +5,23 @@ import {
   GraphQLObjectType,
   GraphQLString,
 } from 'graphql';
-import marked from 'marked';
+import hljs from 'highlight.js';
+import MarkdownIt from 'markdown-it';
 import getAssetURL from '../../getAssetURL';
 import escapeHTML from '../../escapeHTML';
 import markupExtensions from '../../../common/markupExtensions';
 
-marked.setOptions({
-  // There are all defaults, but re-set them here explicitly as documentation.
-  gfm: true,
-  sanitize: false, // Let HTML through.
-  smartypants: false,
-});
+const EXTENSION_TO_HLJS_LANGUAGE = {
+  // Some of these are aliases to the "canonical" highlight.js name, but it is
+  // smart enough to figure out what we mean.
+  c: 'c',
+  html: 'html',
+  m: 'objc',
+  patch: 'patch',
+  rb: 'ruby',
+  sh: 'shell',
+  txt: undefined,
+};
 
 function validateBaseHeadingLevel(level: ?number): ?number {
   if (level == null) {
@@ -27,46 +33,74 @@ function validateBaseHeadingLevel(level: ?number): ?number {
   return level;
 }
 
-function getMarkedRenderer(baseLevel: ?number) {
-  const renderer = new marked.Renderer();
+function highlight(str, lang) {
+  let language;
+  let value;
+  try {
+    if (lang === 'auto') {
+      const result = hljs.highlightAuto(str);
+      language = escapeHTML(result.language);
+      ({value} = result);
+    } else if (lang && hljs.getLanguage(lang)) {
+      const result = hljs.highlight(lang, str);
+      language = escapeHTML(lang.toLowerCase());
+      ({value} = result);
+    }
+  } catch (err) {
+    // Fall through.
+  }
+  if (language && value) {
+    // Explicitly not using "hljs" class on the <pre> element here because
+    // it futzes with our existing <pre> styling too much.
+    return (
+      `<pre class="language-${language}"><code>${value}</code></pre>`
+    );
+  }
+  return `<pre><code>${escapeHTML(str)}</code></pre>`;
+}
+
+function getMarkdownRenderer(baseLevel: ?number) {
+  const md = MarkdownIt({
+    highlight,
+    html: true, // Let HTML through.
+    linkify: true,
+    typographer: true, // (c), ... etc get transformed.
+    quotes: `""''`, // Death to "Smart" quotes.
+  });
 
   // Start headings at `baseLevel`.
   if (baseLevel) {
-    renderer.heading = (text, desiredLevel, raw) => {
+    md.renderer.rules.heading_open = (tokens, index, options, env, renderer) => {
+      const token = tokens[index];
+      const desiredLevel = parseInt(token.tag.slice(1), 10) || 1;
       const level = Math.min(baseLevel + desiredLevel, 6);
-      return marked.Renderer.prototype.heading.call(renderer, text, level, raw);
+      token.tag = `h${level}`;
+      return renderer.renderToken(tokens, index, options, env, renderer);
     };
   }
 
   // CDN-ize "src" attribute of `<img>` tags.
-  renderer.image = (href, title, text) => {
-    const src = getAssetURL(href);
-    return marked.Renderer.prototype.image.call(renderer, src, title, text);
+  md.renderer.rules.image = (tokens, index, options, env, renderer) => {
+    const token = tokens[index];
+    const src = token.attrGet('src');
+    token.attrSet('src', getAssetURL(src));
+    return renderer.renderToken(tokens, index, options, env, renderer);
   };
 
   // Add "external" class to `<a>` tags for off-site hrefs.
-  renderer.link = (href, title, text) => {
-    let className;
+  md.renderer.rules.link_open = (tokens, index, options, env, renderer) => {
+    const token = tokens[index];
+    const href = token.attrGet('href');
     if (
       href.charAt(0) !== '/' &&
       !href.match(/^https?:\/\/wincent\.com(\/|$)/i)
     ) {
-      className = 'external';
+      token.attrJoin('class', 'external');
     }
-    if (title) {
-      if (className) {
-        return `<a href="${href}" class="${className}" title="${title}">${text}</a>`;
-      } else {
-        return `<a href="${href}" title="${title}">${text}</a>`;
-      }
-    } else if (className) {
-      return `<a href="${href}" class="${className}">${text}</a>`;
-    } else {
-      return `<a href="${href}">${text}</a>`;
-    }
+    return renderer.renderToken(tokens, index, options, env, renderer);
   };
 
-  return renderer;
+  return md;
 }
 
 export const MarkupFormatType = new GraphQLEnumType({
@@ -102,8 +136,7 @@ const MarkupType = new GraphQLObjectType({
       resolve(markup, {baseHeadingLevel}, context, {rootValue}) {
         const level = validateBaseHeadingLevel(baseHeadingLevel);
         if (markup.format === 'md') {
-          const renderer = getMarkedRenderer(level);
-          return marked(markup.raw, {renderer});
+          return getMarkdownRenderer(level).render(markup.raw);
         } else if (
           markup.format === 'c' ||
           markup.format === 'html' ||
@@ -113,8 +146,8 @@ const MarkupType = new GraphQLObjectType({
           markup.format === 'sh' ||
           markup.format === 'txt'
         ) {
-          // TODO: syntax highlighting for languages
-          return '<pre><code>' + escapeHTML(markup.raw) + '</code></pre>';
+          const lang = EXTENSION_TO_HLJS_LANGUAGE[markup.format];
+          return highlight(markup.raw, lang);
         } else {
           throw new Error('Unsupported markup format `' + markup.format + '`');
         }

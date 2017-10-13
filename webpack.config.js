@@ -42,7 +42,10 @@ module.exports = {
         ],
       },
       {
-        include: path.resolve(__dirname, 'src'),
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/highlight.js/styles'),
+        ],
         loader: 'style-loader!css-loader!postcss-loader',
         test: /\.css$/,
       },

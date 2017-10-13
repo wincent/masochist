@@ -7,6 +7,7 @@ import matchRoute from '../../common/matchRoute';
 
 if (inBrowser) {
   require('./App.css');
+  require('highlight.js/styles/default.css');
 }
 
 export default class App extends React.Component {
