@@ -13,6 +13,7 @@ import '../common/unhandledRejection';
 import './normalize.css';
 import './skeleton.css';
 
+import {claimRefetchToken} from './RefetchTokenManager';
 import InternalRedirectError from '../common/InternalRedirectError';
 import NotFoundError from '../common/NotFoundError';
 import RenderTextError from '../common/RenderTextError';
@@ -112,6 +113,20 @@ const scrollBehavior = new ScrollBehavior({
 });
 
 const unlisten = history.listen(async (location, action) => {
+  if (location.state && location.state.refetchToken) {
+    // A refetch container wants to update the URL without triggering a
+    // full navigation (which would cause the compenent to unmount then
+    // remount).  So, it flags the refetch via the state allowing us
+    // to `return` early.  Alas, this breaks the back button, because
+    // the state with the `refetch` property comes in again at that
+    // time. Deleting/mutating the state doesn't work; adding the
+    // location object to a "seen" `Set` doesn't work (copies get made);
+    // so we have to use these once-only `refetchToken`s to decide
+    // whether to block the navigation.
+    if (claimRefetchToken(location.state.refetchToken)) {
+      return;
+    }
+  }
   await resolve(location);
   scrollBehavior.updateScroll();
 });

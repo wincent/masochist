@@ -5,6 +5,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
+import {getRefetchToken} from '../RefetchTokenManager';
 import ArticlePreview from './ArticlePreview';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
@@ -26,11 +27,12 @@ class Search extends React.Component {
     relay: RelayPaginationProp,
   };
   state: {
-    isLoading: boolean,
-    isSearching: boolean,
+    isLoadingMore: boolean,
+    isRefetching: boolean,
     q: string,
   };
-  _disposable: ?Disposable;
+  _loadMoreDisposable: ?Disposable;
+  _refetchDisposable: ?Disposable;
   _searchInput: ?HTMLElement;
 
   static contextTypes = {
@@ -40,18 +42,39 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoading: false, // Pagination.
-      isSearching: false, // Initial search.
+      isLoadingMore: false,
+      isRefetching: false,
       q: props.q || '',
     };
   }
 
   _handleLoadMore = () => {
-    this.setState({isLoading: true}, () => {
-      this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
-        this.setState({isLoading: this.props.relay.isLoading()});
-        this._disposable = null;
+    if (this._refetchDisposable) {
+      this._refetchDisposable.dispose();
+      this._refetchDisposable = null;
+    }
+    this.setState({isLoadingMore: true, isRefetching: false}, () => {
+      this._loadMoreDisposable = this.props.relay.loadMore(PAGE_SIZE, error => {
+        this.setState({isLoadingMore: false});
+        this._loadMoreDisposable = null;
       });
+    });
+  };
+
+  _handleRefetch = () => {
+    if (this._loadMoreDisposable) {
+      this._loadMoreDisposable.dispose();
+      this._loadMoreDisposable = null;
+    }
+    this.setState({isLoadingMore: false, isRefetching: true}, () => {
+      this._refetchDisposable = this.props.relay.refetchConnection(
+        PAGE_SIZE,
+        error => {
+          this.setState({isRefetching: false});
+          this._refetchDisposable = null;
+        },
+        {count: PAGE_SIZE, q: this.state.q.trim()},
+      );
     });
   };
 
@@ -60,9 +83,13 @@ class Search extends React.Component {
   }
 
   componentWillUnmount() {
-    if (this._disposable) {
-      this._disposable.dispose();
-      this._disposable = null;
+    if (this._loadMoreDisposable) {
+      this._loadMoreDisposable.dispose();
+      this._loadMoreDisposable = null;
+    }
+    if (this._refetchDisposable) {
+      this._refetchDisposable.dispose();
+      this._refetchDisposable = null;
     }
     this._searchInput = null;
   }
@@ -83,7 +110,8 @@ class Search extends React.Component {
           <form
             onSubmit={event => {
               event.preventDefault();
-              this.context.router.history.push(searchURL);
+              this.context.router.history.push(searchURL, {refetchToken: getRefetchToken()});
+              this._handleRefetch();
             }}>
             <input
               className="eight columns"
@@ -98,9 +126,9 @@ class Search extends React.Component {
             />
             <input
               className="four columns"
-              disabled={this.state.isSearching || !this.state.q.trim()}
+              disabled={this.state.isRefetching || !this.state.q.trim()}
               type="submit"
-              value={this.state.isSearching ? 'Searching\u2026' : 'Search'}
+              value={this.state.isRefetching ? 'Searching\u2026' : 'Search'}
             />
           </form>
         </div>
@@ -120,7 +148,7 @@ class Search extends React.Component {
         </ContentListing>
         {search.pageInfo.hasNextPage ? (
           <LoadMoreButton
-            isLoading={this.state.isLoading}
+            isLoading={this.state.isLoadingMore}
             onLoadMore={this._handleLoadMore}
           />
         ) : null}

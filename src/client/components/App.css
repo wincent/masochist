@@ -60,7 +60,8 @@ h1 a {
   color: #f00;
 }
 
-button:disabled {
+button:disabled,
+input:disabled {
   /* TODO: something nicer here; may want animation */
   opacity: .5;
 }
