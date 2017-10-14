@@ -135,4 +135,5 @@ These are mostly linear in nature, but there was some parallelism and back-and-f
     1. Schedule daily backups
     1. Set up email updates
     1. Set up exclusions in Time Machine (see exclusion list in Corpus, "Arq backup notes")
+    1. Back up only on selected devices, selected networks.
 1. Boot Isolator and set it to launch at login.
