@@ -194,11 +194,11 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
     };
   });
 
-  return {
+  return content ? {
     ...content,
 
     // `new Date()` here to handle stringified dates (read from memcached).
-    createdAt: content.createdAt ? new Date(content.createdAt) : null,
-    updatedAt: content.updatedAt ? new Date(content.updatedAt) : null,
-  };
+    createdAt: new Date(content.createdAt),
+    updatedAt: new Date(content.updatedAt),
+  } : null;
 }
