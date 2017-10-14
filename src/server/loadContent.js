@@ -23,23 +23,6 @@ const SubdirectoryToTypeName = {
   wiki: 'Article',
 };
 
-export async function getTimestamps(oldest: string, mostRecent: string) {
-  return {
-    createdAt: oldest
-      ? // Author date of earliest.
-        new Date(
-          (await git('show', '-s', '--format=%at', oldest)).trim() * 1000,
-        )
-      : null,
-    updatedAt: mostRecent
-      ? // Commit date of latest.
-        new Date(
-          (await git('show', '-s', '--format=%ct', mostRecent)).trim() * 1000,
-        )
-      : null,
-  };
-}
-
 export function getCacheKey(
   subdirectory: string,
   file: string,
@@ -55,12 +38,102 @@ function getFilenamesWithExtensions(subdirectory, file) {
   );
 }
 
+async function getWhatChanged(commit: string) {
+  // Custom log format (^@ here represents the NUL \0 byte):
+  //
+  // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
+  // :100644 100644 6535626... ec6d229... M^@src/bin/updateIndices.js^@^@
+  // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
+  // :100644 100644 12d2393... 600f5ef... M^@package.json^@
+  return await git(
+    'log',
+    '--pretty=format:%n%H %at %ct',
+    '--raw',
+    '-z',
+    commit,
+    '--',
+    'content',
+  );
+}
+
+const timestamps = {
+  head: null,
+  cache: {},
+};
+
+function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export async function loadContent(options: LoaderOptions): Promise<*> {
   const {subdirectory, file} = options;
   const head = (await git('rev-parse', 'content')).trim();
   const commit = options.commit || head;
   const tree = (await git('show', '-s', '--format=%T', commit)).trim();
-  const cacheKey = getCacheKey(subdirectory, file, head);
+  const cacheKey = getCacheKey(subdirectory, file, commit);
+
+  while (timestamps.head === undefined) {
+    // Another (parallel) load is initializing the cache.
+    await delay(1000);
+  }
+
+  if (timestamps.head !== head) {
+    // We are the first load for this HEAD; must initialize the cache.
+    // We avoid repeated expensive calls to rev-list by building up an
+    // in-memory index of everything up-front.
+    timestamps.head = undefined;
+    timestamps.cache = {};
+    const commits = await getWhatChanged(head);
+
+    // TODO: this is very similar to `getWhatChanged` in `updateIndices`;
+    // de-dupe.
+    const regExp = new RegExp(
+      // Commit SHA, author date, committer date.
+      '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
+        // Modes.
+        ':\\d{6} \\d{6} ' +
+        // Before/after tree or blob.
+        '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
+        // Added, Deleted or Modified.
+        '([ADM])\0' +
+        // Path, optional commit terminator.
+        '([^\0]+)\0\0?',
+      'g',
+    );
+
+    let match;
+    let commit;
+    let updatedAt;
+    let createdAt;
+    while ((match = regExp.exec(commits))) {
+      if (match[1] && match[2] && match[3]) {
+        commit = match[1];
+        updatedAt = match[2];
+        createdAt = match[3];
+      } else {
+        const status = match[4];
+        const file = match[5];
+        if (!status.match(/^[ADM]$/)) {
+          throw new Error(`Unrecognized status: '${status}'`);
+        }
+        timestamps.cache[file] = timestamps.cache[file] || {};
+        timestamps.cache[file].createdAt = Math.min(
+          createdAt,
+          timestamps.cache[file].createdAt || Infinity,
+        );
+        timestamps.cache[file].updatedAt = Math.max(
+          updatedAt,
+          timestamps.cache[file].updatedAt || -Infinity,
+        );
+      }
+    }
+    if (regExp.lastIndex) {
+      // We expect to get all the way to the end of the input, in which case
+      // `lastIndex` should reset to 0.
+      throw new Error('Failed to consume input');
+    }
+    timestamps.head = head;
+  }
 
   // Note at this point we haven't confirmed the canonical file name, so if we
   // get called again with a non-canonical name that points to the same content
@@ -106,33 +179,16 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
     const normalizedFile = path.basename(filename, '.' + extension);
     const blob = await git('cat-file', 'blob', hash);
     const {body, tags, ...metadata} = unpackContent(blob);
-
-    // This is the most expensive part by far. On my local machine, I can
-    // do all the Git and filesystem operations in about 50ms each (find the
-    // HEAD, get the tree object, find the matching blob, read the timestamps),
-    // but finding the oldest rev currently takes about 3,500ms with the current
-    // repo history. We do this in parallel, but it still ends up being painful:
-    // almost 4 seconds to load 10 snippets, for example.
-    const revs = await git(
-      'rev-list',
-      'content',
-      '--',
-      filename + '.' + extension,
-    );
-
-    const mostRecent = revs.slice(0, 40);
-    const oldest = revs.trim().slice(-40);
-    const timestamps = await getTimestamps(oldest, mostRecent);
+    const entry = filename + '.' + extension;
+    const createdAt = new Date(timestamps.cache[entry].createdAt * 1000);
+    const updatedAt = new Date(timestamps.cache[entry].updatedAt * 1000);
 
     return {
       id: normalizedFile,
       body,
       format: extension,
-
-      // `new Date()` here to handle real Date objects (cache miss), or
-      // stringified dates (read from memcached).
-      createdAt: timestamps.createdAt || null,
-      updatedAt: timestamps.updatedAt || null,
+      createdAt,
+      updatedAt,
       tags,
       ...metadata,
     };
