@@ -12,6 +12,7 @@
  */
 
 import '../common/unhandledRejection';
+import '../server/configureNpm';
 
 import Promise from 'bluebird';
 import path from 'path';

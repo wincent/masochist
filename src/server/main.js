@@ -1,6 +1,7 @@
 'use strict'; // eslint-disable-line
 
 import '../common/unhandledRejection';
+import '../server/configureNpm';
 
 import bodyParser from 'body-parser';
 import express from 'express';
