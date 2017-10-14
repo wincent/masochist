@@ -1,5 +1,5 @@
 ---
-tags: development os.x wiki
+tags: development macos wiki
 ---
 
 [Apple](/wiki/Apple) [Technote 2137](/wiki/Technote_2137), 'Building Universal Binaries from "configure"-based Open Source Projects', can be found at:

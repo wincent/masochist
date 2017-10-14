@@ -1,5 +1,5 @@
 ---
-tags: heckle os.x wiki
+tags: heckle macos wiki
 ---
 
 Notes made installing [Heckle 1.3.0](/wiki/Heckle_1.3.0) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).

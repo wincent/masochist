@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 # Using `sw_vers`

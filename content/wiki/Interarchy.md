@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [Interarchy](/wiki/Interarchy) is a robust file-transfer client for [Mac OS X](/wiki/Mac_OS_X).

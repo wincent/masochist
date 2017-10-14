@@ -1,5 +1,5 @@
 ---
-tags: os.x linux wiki
+tags: macos linux wiki
 ---
 
 At the of writing (May 2017) [I am thinking of switching to Linux](https://twitter.com/wincent/status/868726264357572608) for my next machine.

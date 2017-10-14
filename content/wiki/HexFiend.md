@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [HexFiend](/wiki/HexFiend) if an [open source](/wiki/open_source) hex editor for [Apple](/wiki/Apple)'s [Mac OS X](/wiki/Mac_OS_X), written in [Objective-C](/wiki/Objective-C).

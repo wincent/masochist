@@ -1,5 +1,5 @@
 ---
-tags: dynamic.linker os.x wiki
+tags: dynamic.linker macos wiki
 cache_breaker: 1
 ---
 

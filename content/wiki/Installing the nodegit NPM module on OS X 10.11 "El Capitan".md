@@ -1,5 +1,5 @@
 ---
-tags: node el.capitan os.x git javascript wiki
+tags: node el.capitan macos git javascript wiki
 ---
 
 My first naive attempt at this (`npm install --save nodegit`) didn't work, so I had to install the Xcode "Command Line Tools" first:

@@ -1,5 +1,5 @@
 ---
-tags: git lion os.x wiki
+tags: git lion macos wiki
 ---
 
 ```shell

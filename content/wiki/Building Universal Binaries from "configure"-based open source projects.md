@@ -1,5 +1,5 @@
 ---
-tags: development os.x wiki
+tags: development macos wiki
 ---
 
 The official [Apple](/wiki/Apple) documentation comes in the form of [Technote 2137](/wiki/Technote_2137):

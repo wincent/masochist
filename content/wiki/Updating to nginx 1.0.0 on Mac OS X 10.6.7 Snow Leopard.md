@@ -1,5 +1,5 @@
 ---
-tags: nginx updates snow.leopard os.x wiki
+tags: nginx updates snow.leopard macos wiki
 ---
 
 These are update notes.

@@ -1,5 +1,5 @@
 ---
-tags: consolas windows os.x wiki
+tags: consolas windows macos wiki
 cache_breaker: 1
 ---
 

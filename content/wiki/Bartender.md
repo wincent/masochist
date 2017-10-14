@@ -1,5 +1,5 @@
 ---
-tags: os.x bartender wiki
+tags: macos bartender wiki
 ---
 
 # Official site

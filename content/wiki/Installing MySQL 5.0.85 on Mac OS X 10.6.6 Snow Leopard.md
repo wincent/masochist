@@ -1,5 +1,5 @@
 ---
-tags: mysql snow.leopard os.x wiki
+tags: mysql snow.leopard macos wiki
 ---
 
 As I am using this for doing [Rails](/wiki/Rails) development which on the remote server is running [MySQL](/wiki/MySQL) 5.0 I decided to install the same version on my local machine, building from source seeing as there is no binary installer for version 5.0 and [Snow Leopard](/wiki/Snow_Leopard).

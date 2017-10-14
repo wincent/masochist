@@ -1,5 +1,5 @@
 ---
-tags: updates os.x wiki
+tags: updates macos wiki
 cache_breaker: 1
 ---
 

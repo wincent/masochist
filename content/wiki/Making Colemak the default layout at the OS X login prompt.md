@@ -1,5 +1,5 @@
 ---
-tags: colemak os.x wiki
+tags: colemak macos wiki
 ---
 
 Via [Ask Different](http://apple.stackexchange.com/a/108836):

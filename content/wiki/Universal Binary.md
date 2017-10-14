@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [Universal Binary](/wiki/Universal_Binary) is current [Apple](/wiki/Apple) parlance for what used to be known as a [Fat Binary](/wiki/Fat_Binary) (from back in the days when Apple started shipping [PowerPC](/wiki/PowerPC)-based machines and you could build binaries targeted for both the [PowerPC](/wiki/PowerPC) and the 680x0 series).

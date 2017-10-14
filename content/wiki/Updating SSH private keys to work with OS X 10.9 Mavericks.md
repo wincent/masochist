@@ -1,5 +1,5 @@
 ---
-tags: ssh os.x mavericks wiki
+tags: ssh macos mavericks wiki
 ---
 
 ```shell

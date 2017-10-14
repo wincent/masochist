@@ -1,5 +1,5 @@
 ---
-tags: snow.leopard source.highlight os.x wiki
+tags: snow.leopard source.highlight macos wiki
 ---
 
 After downloading [Boost](http://www.boost.org/):

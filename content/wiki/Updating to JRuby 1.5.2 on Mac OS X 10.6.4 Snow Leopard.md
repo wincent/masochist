@@ -1,5 +1,5 @@
 ---
-tags: jruby os.x wiki
+tags: jruby macos wiki
 cache_breaker: 1
 ---
 

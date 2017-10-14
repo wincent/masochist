@@ -1,5 +1,5 @@
 ---
-tags: development os.x wiki
+tags: development macos wiki
 ---
 
 I am currently working on a [Ruby](/wiki/Ruby) extension written in [C](/wiki/C) which uses an [ANTLR](/wiki/ANTLR)-generated [parser](/wiki/parser) and must therefore link against the [C target](/wiki/C_target) runtime library.

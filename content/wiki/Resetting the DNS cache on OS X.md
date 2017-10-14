@@ -1,5 +1,5 @@
 ---
-tags: dns os.x wiki
+tags: dns macos wiki
 ---
 
 Sometimes a process will claim that a host is unknown when trying to connect with one process (eg. `git push`) but others have no trouble doing so (eg. `ping`). The solution may be to bounce the DNS cache.

@@ -1,5 +1,5 @@
 ---
-tags: rhino os.x wiki
+tags: rhino macos wiki
 ---
 
 ```shell

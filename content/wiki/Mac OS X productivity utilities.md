@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 This is a list of stuff that I find helps increase my productivity on [Mac OS X](/wiki/Mac_OS_X):

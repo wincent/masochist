@@ -1,5 +1,5 @@
 ---
-tags: os.x keychain wiki
+tags: macos keychain wiki
 ---
 
 The recommended strategy is to set the password on the source keychain to an empty string, then drag the items from the source keychain into the new keychain.

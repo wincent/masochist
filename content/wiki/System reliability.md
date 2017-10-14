@@ -1,5 +1,5 @@
 ---
-tags: involuntary.reboot.log os.x reliability wiki
+tags: involuntary.reboot.log macos reliability wiki
 ---
 
 I keep an [involuntary reboot log](/wiki/involuntary_reboot_log) as a gauge of system reliability. Here are some historical notes.

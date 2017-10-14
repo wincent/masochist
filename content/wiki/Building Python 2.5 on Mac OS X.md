@@ -1,5 +1,5 @@
 ---
-tags: python os.x wiki
+tags: python macos wiki
 cache_breaker: 1
 ---
 

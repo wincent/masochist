@@ -1,5 +1,5 @@
 ---
-tags: leopard rubyinline rubygems updates os.x wiki
+tags: leopard rubyinline rubygems updates macos wiki
 ---
 
 These notes were made while upgrading to [RubyInline 3.6.7](/wiki/RubyInline_3.6.7) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2.

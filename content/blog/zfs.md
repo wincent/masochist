@@ -1,6 +1,6 @@
 ---
 title: ZFS
-tags: zfs os.x blog
+tags: zfs macos blog
 ---
 
 Just looked back over some words I wrote in 2007 (emphasis added):

@@ -1,5 +1,5 @@
 ---
-tags: finder os.x wiki
+tags: finder macos wiki
 cache_breaker: 1
 ---
 

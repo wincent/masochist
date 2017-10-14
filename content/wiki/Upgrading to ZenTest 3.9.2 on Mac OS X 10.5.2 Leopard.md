@@ -1,5 +1,5 @@
 ---
-tags: zentest leopard gems updates os.x wiki
+tags: zentest leopard gems updates macos wiki
 ---
 
 These notes were made while upgrading to [ZenTest 3.9.2](/wiki/ZenTest_3.9.2) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2 via [RubyGems](/wiki/RubyGems).

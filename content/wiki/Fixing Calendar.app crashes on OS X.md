@@ -1,5 +1,5 @@
 ---
-tags: calendar os.x wiki
+tags: calendar macos wiki
 ---
 
 Via [this page](https://miapple.me/fixing-mac-os-x-10-10-yosemite-app-crashes/):

@@ -1,5 +1,5 @@
 ---
-tags: core.dump os.x wiki
+tags: core.dump macos wiki
 ---
 
 ```

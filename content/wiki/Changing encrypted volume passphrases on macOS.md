@@ -1,5 +1,5 @@
 ---
-tags: wiki os.x
+tags: wiki macos
 ---
 
 I backup to multiple external volumes and occasionally have cause to change the passphrases, but can never remember how to do it because Apple makes it ridiculously obtuse.

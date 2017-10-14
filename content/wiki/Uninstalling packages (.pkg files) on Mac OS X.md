@@ -1,5 +1,5 @@
 ---
-tags: pkg os.x wiki
+tags: pkg macos wiki
 cache_breaker: 1
 ---
 

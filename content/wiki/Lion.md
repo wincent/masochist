@@ -1,5 +1,5 @@
 ---
-tags: lion os.x wiki
+tags: lion macos wiki
 ---
 
 [Lion](/wiki/Lion) is version 10.7 of [Mac OS X](/wiki/Mac_OS_X), released 20 July 2011.

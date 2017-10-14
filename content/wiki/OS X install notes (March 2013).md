@@ -1,5 +1,5 @@
 ---
-tags: homebrew os.x wiki
+tags: homebrew macos wiki
 cache_breaker: 1
 ---
 

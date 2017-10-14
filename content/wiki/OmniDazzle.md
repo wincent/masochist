@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [OmniDazzle](/wiki/OmniDazzle) is a visual mouse pointer enhancer for [Mac OS X](/wiki/Mac_OS_X). Its two principal uses are:

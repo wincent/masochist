@@ -1,5 +1,5 @@
 ---
-tags: lion tmux os.x wiki
+tags: lion tmux macos wiki
 ---
 
 ```shell

@@ -1,5 +1,5 @@
 ---
-tags: vpn os.x wiki
+tags: vpn macos wiki
 cache_breaker: 1
 ---
 

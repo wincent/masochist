@@ -1,5 +1,5 @@
 ---
-tags: leopard ragel updates os.x wiki
+tags: leopard ragel updates macos wiki
 ---
 
 These notes were made while upgrading to [Ragel 6.1](/wiki/Ragel_6.1) on [Mac OS X](/wiki/Mac_OS_X) 10.5.2 [Leopard](/wiki/Leopard).

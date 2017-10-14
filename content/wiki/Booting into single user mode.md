@@ -1,5 +1,5 @@
 ---
-tags: unix os.x wiki
+tags: unix macos wiki
 ---
 
 To boot into [single user mode](/wiki/single_user_mode) on [Mac OS X](/wiki/Mac_OS_X) hold down the Command+S keys while rebooting. This is *not* equivalent to [dropping back to the console](/wiki/dropping_back_to_the_console).

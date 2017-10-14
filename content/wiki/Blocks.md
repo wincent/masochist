@@ -1,5 +1,5 @@
 ---
-tags: c objective.c os.x wiki
+tags: c objective.c macos wiki
 cache_breaker: 1
 ---
 

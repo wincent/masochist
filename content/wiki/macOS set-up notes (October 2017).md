@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 Notes made getting a re-imaged machine set-up (running macOS Sierra; the previous High Sierra install imploded).

@@ -1,5 +1,5 @@
 ---
-tags: snow.leopard redis os.x wiki
+tags: snow.leopard redis macos wiki
 ---
 
 ```shell

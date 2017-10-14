@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [KeyCastr](/wiki/KeyCastr) is a freeware [screencasting](/wiki/screencasting) aid that overlays a semi-transparent bezel showing the keys being pressed during a [screencast](/wiki/screencast).

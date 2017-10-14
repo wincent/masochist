@@ -1,5 +1,5 @@
 ---
-tags: os.x karabiner wiki
+tags: macos karabiner wiki
 cache_breaker: 1
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: git centos mountain.lion os.x wiki
+tags: git centos mountain.lion macos wiki
 ---
 
 # Updating on [OS X](/wiki/OS_X) 10.8 [Mountain Lion](/wiki/Mountain_Lion)

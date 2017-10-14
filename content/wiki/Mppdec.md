@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [mppdec](/wiki/mppdec) is an [MPC](/wiki/MPC) decoder for [Mac OS X](/wiki/Mac_OS_X).

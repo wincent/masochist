@@ -1,5 +1,5 @@
 ---
-tags: exchange calendar os.x wiki
+tags: exchange calendar macos wiki
 ---
 
 A variant of the solution proposed [here](https://discussions.apple.com/thread/6827023) worked for me:

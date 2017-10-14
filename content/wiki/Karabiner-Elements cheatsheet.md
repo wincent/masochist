@@ -1,5 +1,5 @@
 ---
-tags: os.x karabiner wiki
+tags: macos karabiner wiki
 ---
 
 # `to_if_alone_timeout_milliseconds`

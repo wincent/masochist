@@ -1,5 +1,5 @@
 ---
-tags: wiki dtrace os.x
+tags: wiki dtrace macos
 ---
 
 `dtruss` is a `dtrace` script that is close in functionality to `strace` on Linux.

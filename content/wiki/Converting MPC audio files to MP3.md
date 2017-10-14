@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 Notes made while finding out how to convert [MPC](/wiki/MPC) files to another format suitable for encoding as [MP3](/wiki/MP3) or [AAC](/wiki/AAC).

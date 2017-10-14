@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [Mountain Lion](/wiki/Mountain_Lion) is the 10.8 release of [OS X](/wiki/OS_X), released on 25 July 2012.

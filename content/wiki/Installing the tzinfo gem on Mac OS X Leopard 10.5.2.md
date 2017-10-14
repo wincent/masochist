@@ -1,5 +1,5 @@
 ---
-tags: leopard gems tzinfo os.x wiki
+tags: leopard gems tzinfo macos wiki
 ---
 
 These notes were made while installing [tzinfo](/wiki/tzinfo) (specifically, (tzinfo 0.3.7\]\]) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.2 using [RubyGems](/wiki/RubyGems).

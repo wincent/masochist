@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 [Yosemite](/wiki/Yosemite) is the 10.10 release of [OS X](/wiki/OS_X), released on 16 October 2014.

@@ -1,5 +1,5 @@
 ---
-tags: mail.app os.x wiki
+tags: mail.app macos wiki
 cache_breaker: 1
 ---
 

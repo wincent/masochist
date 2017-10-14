@@ -1,5 +1,5 @@
 ---
-tags: os.x wiki
+tags: macos wiki
 ---
 
 "[The Dock](/wiki/The_Dock)" is part of [Mac OS X](/wiki/Mac_OS_X) that serves as an application and document launcher, application switcher and shortcut holder.

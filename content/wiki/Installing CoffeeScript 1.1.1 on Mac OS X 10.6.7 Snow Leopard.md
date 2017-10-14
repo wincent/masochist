@@ -1,5 +1,5 @@
 ---
-tags: coffeescript os.x wiki
+tags: coffeescript macos wiki
 ---
 
 We install via [npm](/wiki/npm), so we have a couple of prerequisites:
