@@ -24,6 +24,7 @@ const babelOptions = {
       },
     ],
     'relay',
+    'transform-object-rest-spread',
     'transform-class-properties',
   ],
   presets: [
