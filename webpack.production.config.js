@@ -32,10 +32,10 @@ module.exports = {
     new webpack.IgnorePlugin(
       new RegExp(
         '\\b(' +
-        'applyOptimisticMutation|' +
-        'requestRelaySubscriptions|' +
-        'setRelayModernMutationConfigs' +
-        ')\\b'
+          'applyOptimisticMutation|' +
+          'requestRelaySubscriptions|' +
+          'setRelayModernMutationConfigs' +
+          ')\\b',
       ),
     ),
     new webpack.optimize.ModuleConcatenationPlugin(),

@@ -110,7 +110,9 @@ class Search extends React.Component {
           <form
             onSubmit={event => {
               event.preventDefault();
-              this.context.router.history.push(searchURL, {refetchToken: getRefetchToken()});
+              this.context.router.history.push(searchURL, {
+                refetchToken: getRefetchToken(),
+              });
               this._handleRefetch();
             }}>
             <input

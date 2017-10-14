@@ -27,7 +27,7 @@ export function getRefetchToken(): Token {
  */
 export function claimRefetchToken(token: Token): boolean {
   if (token !== pendingClaim) {
-    return false
+    return false;
   }
   pendingClaim = null;
   return true;

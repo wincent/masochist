@@ -52,9 +52,7 @@ function highlight(str, lang) {
   if (language && value) {
     // Explicitly not using "hljs" class on the <pre> element here because
     // it futzes with our existing <pre> styling too much.
-    return (
-      `<pre class="language-${language}"><code>${value}</code></pre>`
-    );
+    return `<pre class="language-${language}"><code>${value}</code></pre>`;
   }
   return `<pre><code>${escapeHTML(str)}</code></pre>`;
 }
@@ -70,7 +68,13 @@ function getMarkdownRenderer(baseLevel: ?number) {
 
   // Start headings at `baseLevel`.
   if (baseLevel) {
-    md.renderer.rules.heading_open = (tokens, index, options, env, renderer) => {
+    md.renderer.rules.heading_open = (
+      tokens,
+      index,
+      options,
+      env,
+      renderer,
+    ) => {
       const token = tokens[index];
       const desiredLevel = parseInt(token.tag.slice(1), 10) || 1;
       const level = Math.min(baseLevel + desiredLevel, 6);
