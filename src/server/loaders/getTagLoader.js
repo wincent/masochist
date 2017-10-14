@@ -4,7 +4,6 @@
 
 import DataLoader from 'dataloader';
 import {array} from '../../common/checks';
-import {loadContent} from '../loadContent';
 import Tag from '../models/Tag';
 import redis from '../redis';
 
