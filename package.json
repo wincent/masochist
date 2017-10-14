@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "gulp build",
-    "check": "gulp typecheck",
+    "check": "flow",
     "coverage": "jest --forceExit --coverage",
     "gulp": "gulp",
     "lint": "gulp lint",
