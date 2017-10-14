@@ -21,6 +21,7 @@ import memoize from '../common/memoize';
 import Cache from '../server/Cache';
 import {LAST_INDEXED_HASH, REDIS_TAGS_INDEX_KEY} from '../server/constants';
 import getIndexNameForContentType from '../server/getIndexNameForContentType';
+import getWhatChanged, {forEachCommit} from '../server/getWhatChanged';
 import git from '../server/git';
 import {getTimestamps, getCacheKey, loadContent} from '../server/loadContent';
 import redis from '../server/redis';
@@ -60,23 +61,7 @@ function extractFile(pathString: string, contentType: string): string {
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-const getWhatChanged = memoize(async (range: string, subdirectory: string) => {
-  // Custom log format (^@ here represents the NUL \0 byte):
-  //
-  // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
-  // :100644 100644 6535626... ec6d229... M^@src/bin/updateIndices.js^@^@
-  // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
-  // :100644 100644 12d2393... 600f5ef... M^@package.json^@
-  return await git(
-    'log',
-    '--pretty=format:%n%H %at %ct',
-    '--raw',
-    '-z',
-    range,
-    '--',
-    path.join('content', subdirectory),
-  );
-});
+const getChanges = memoize(getWhatChanged);
 
 async function getIsAncestor(
   potentialAncestor: ?string,
@@ -95,7 +80,7 @@ async function getIsAncestor(
   return Promise.resolve(false);
 }
 
-function getFileUpdates(range, callback) {
+async function getFileUpdates(range, callback) {
   log(`Preparing list of file updates in ${range}.`);
   const promises = [
     {
@@ -115,53 +100,22 @@ function getFileUpdates(range, callback) {
       orderBy: 'updatedAt', // Arbitrary (there is no indexed view of pages).
     },
   ].map(async ({contentType, orderBy}) => {
-    const commits = await getWhatChanged(range, contentType);
-
-    const regExp = new RegExp(
-      // Commit SHA, author date, committer date.
-      '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
-        // Modes.
-        ':\\d{6} \\d{6} ' +
-        // Before/after tree or blob.
-        '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
-        // Added, Deleted or Modified.
-        '([ADM])\0' +
-        // Path, optional commit terminator.
-        '([^\0]+)\0\0?',
-      'g',
-    );
-
-    let match;
-    let commit;
-    let updatedAt;
-    let createdAt;
-    while ((match = regExp.exec(commits))) {
-      if (match[1] && match[2] && match[3]) {
-        commit = match[1];
-        updatedAt = match[2];
-        createdAt = match[3];
-      } else {
-        const status = match[4];
-        const file = extractFile(match[5], contentType);
-        if (!status.match(/^[ADM]$/)) {
-          throw new Error(`Unrecognized status: '${status}'`);
-        }
+    const subdirectory = path.join('content', contentType);
+    const commits = await getChanges(range, subdirectory);
+    await forEachCommit(
+      commits,
+      async ({commit, createdAt, file, status, updatedAt}) => {
         await callback({
-          file,
-          status,
-          createdAt,
-          updatedAt,
           commit,
           contentType,
+          createdAt,
+          file: extractFile(file, contentType),
           orderBy,
+          status,
+          updatedAt,
         });
-      }
-    }
-    if (regExp.lastIndex) {
-      // We expect to get all the way to the end of the input, in which case
-      // `lastIndex` should reset to 0.
-      throw new Error('Failed to consume input');
-    }
+      },
+    );
   });
 
   return Promise.all(promises);
@@ -183,7 +137,7 @@ function getFileUpdates(range, callback) {
   const seenFiles = {};
   await getFileUpdates(
     range,
-    async ({file, status, createdAt, updatedAt, contentType, orderBy}) => {
+    ({file, status, createdAt, updatedAt, contentType, orderBy}) => {
       // For articles, we want our index ordered by "updated at", so we only
       // touch the index the first time we see each path in our (reverse-
       // chronological order traversal).
@@ -252,65 +206,68 @@ function getFileUpdates(range, callback) {
   }
 
   log('Creating tag sets');
-  await getFileUpdates(range, async ({file, status, commit, contentType}) => {
-    // Callback will be called in reverse-chronological order, so we use
-    // `unshift` instead of `push` to handle cases like this:
-    //
-    //   1. Add article with tags "foo", "bar".
-    //   2. Switch tag "bar" for "baz".
-    //   3. Delete article.
-    //
-    // First thing we see is the deletion, then the edit, then the addition,
-    // so when we unshift our operations, our queue becomes:
-    //
-    //   1. Increment counts for "foo", "bar".
-    //   2. Decrement count for "bar", increment count for "baz".
-    //   3. Decrement counts for "foo", "baz".
-    //
-    dot();
-    const {tags, updatedAt} = await loadContent({
-      subdirectory: contentType,
-      file,
-      commit: status === 'D' ? commit + '~' : commit,
-    });
-    switch (status) {
-      case 'A':
-        // New file: add tags to index.
-        tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
-        break;
-      case 'D':
-        // Deleted file: remove tags from index.
-        tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
-        break;
-      case 'M':
-        // Modified file: check before and after tags and apply updates, if
-        // any.
-        {
-          const {tags: previousTags} = await loadContent({
-            subdirectory: contentType,
-            file,
-            commit: commit + '~',
-          });
+  await getFileUpdates(
+    range,
+    async ({file, status, commit, contentType}) => {
+      // Callback will be called in reverse-chronological order, so we use
+      // `unshift` instead of `push` to handle cases like this:
+      //
+      //   1. Add article with tags "foo", "bar".
+      //   2. Switch tag "bar" for "baz".
+      //   3. Delete article.
+      //
+      // First thing we see is the deletion, then the edit, then the addition,
+      // so when we unshift our operations, our queue becomes:
+      //
+      //   1. Increment counts for "foo", "bar".
+      //   2. Decrement count for "bar", increment count for "baz".
+      //   3. Decrement counts for "foo", "baz".
+      //
+      dot();
+      const {tags, updatedAt} = await loadContent({
+        subdirectory: contentType,
+        file,
+        commit: status === 'D' ? commit + '~' : commit,
+      });
+      switch (status) {
+        case 'A':
+          // New file: add tags to index.
+          tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
+          break;
+        case 'D':
+          // Deleted file: remove tags from index.
+          tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
+          break;
+        case 'M':
+          // Modified file: check before and after tags and apply updates, if
+          // any.
+          {
+            const {tags: previousTags} = await loadContent({
+              subdirectory: contentType,
+              file,
+              commit: commit + '~',
+            });
 
-          // Manual set intersection...
-          const tagsSet = new Set(tags);
-          const previousTagsSet = new Set(previousTags);
-          for (let existing of tagsSet) {
-            if (!previousTagsSet.has(existing)) {
-              // Tag was added.
-              addTag(existing, file, contentType, updatedAt);
+            // Manual set intersection...
+            const tagsSet = new Set(tags);
+            const previousTagsSet = new Set(previousTags);
+            for (let existing of tagsSet) {
+              if (!previousTagsSet.has(existing)) {
+                // Tag was added.
+                addTag(existing, file, contentType, updatedAt);
+              }
+            }
+            for (let previous of previousTagsSet) {
+              if (!tagsSet.has(previous)) {
+                // Tag was deleted.
+                removeTag(previous, file, contentType, updatedAt);
+              }
             }
           }
-          for (let previous of previousTagsSet) {
-            if (!tagsSet.has(previous)) {
-              // Tag was deleted.
-              removeTag(previous, file, contentType, updatedAt);
-            }
-          }
-        }
-        break;
-    }
-  });
+          break;
+      }
+    },
+  );
   print('\n');
 
   // In case any tag removals caused a tag's count to drop to 0.

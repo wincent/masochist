@@ -9,6 +9,7 @@ import toGlobalId from '../common/toGlobalId';
 import Cache from './Cache';
 import {Extensions} from './Markup';
 import delay from './delay';
+import getWhatChanged, {forEachCommit} from '../server/getWhatChanged';
 import git from './git';
 
 type LoaderOptions = {
@@ -39,24 +40,6 @@ function getFilenamesWithExtensions(subdirectory, file) {
   );
 }
 
-async function getWhatChanged(commit: string) {
-  // Custom log format (^@ here represents the NUL \0 byte):
-  //
-  // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
-  // :100644 100644 6535626... ec6d229... M^@src/bin/updateIndices.js^@^@
-  // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
-  // :100644 100644 12d2393... 600f5ef... M^@package.json^@
-  return await git(
-    'log',
-    '--pretty=format:%n%H %at %ct',
-    '--raw',
-    '-z',
-    commit,
-    '--',
-    'content',
-  );
-}
-
 const timestamps = {
   head: null,
   cache: {},
@@ -80,55 +63,18 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
     // in-memory index of everything up-front.
     timestamps.head = undefined;
     timestamps.cache = {};
-    const commits = await getWhatChanged(head);
-
-    // TODO: this is very similar to `getWhatChanged` in `updateIndices`;
-    // de-dupe.
-    const regExp = new RegExp(
-      // Commit SHA, author date, committer date.
-      '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
-        // Modes.
-        ':\\d{6} \\d{6} ' +
-        // Before/after tree or blob.
-        '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
-        // Added, Deleted or Modified.
-        '([ADM])\0' +
-        // Path, optional commit terminator.
-        '([^\0]+)\0\0?',
-      'g',
-    );
-
-    let match;
-    let commit;
-    let updatedAt;
-    let createdAt;
-    while ((match = regExp.exec(commits))) {
-      if (match[1] && match[2] && match[3]) {
-        commit = match[1];
-        updatedAt = match[2];
-        createdAt = match[3];
-      } else {
-        const status = match[4];
-        const file = match[5];
-        if (!status.match(/^[ADM]$/)) {
-          throw new Error(`Unrecognized status: '${status}'`);
-        }
-        timestamps.cache[file] = timestamps.cache[file] || {};
-        timestamps.cache[file].createdAt = Math.min(
-          createdAt,
-          timestamps.cache[file].createdAt || Infinity,
-        );
-        timestamps.cache[file].updatedAt = Math.max(
-          updatedAt,
-          timestamps.cache[file].updatedAt || -Infinity,
-        );
-      }
-    }
-    if (regExp.lastIndex) {
-      // We expect to get all the way to the end of the input, in which case
-      // `lastIndex` should reset to 0.
-      throw new Error('Failed to consume input');
-    }
+    const commits = await getWhatChanged(head, 'content');
+    await forEachCommit(commits, ({createdAt, file, updatedAt}) => {
+      timestamps.cache[file] = timestamps.cache[file] || {};
+      timestamps.cache[file].createdAt = Math.min(
+        createdAt,
+        timestamps.cache[file].createdAt || Infinity,
+      );
+      timestamps.cache[file].updatedAt = Math.max(
+        updatedAt,
+        timestamps.cache[file].updatedAt || -Infinity,
+      );
+    });
     timestamps.head = head;
   }
 
