@@ -133,6 +133,8 @@ const unlisten = history.listen(async (location, action) => {
 
 resolve(history.location);
 
+let cachedComponent;
+
 function resolve(location) {
   if (window.MasochistCache) {
     // First time here, and we've come from server rendering.
@@ -143,13 +145,10 @@ function resolve(location) {
     window.MasochistCache = undefined;
   } else {
     // Not first time here, so showing progress.
-    // TODO: decide what to do do here; may not even want a progress bar...
-    // but if we do one, probably want it to be nicely integrated
-    // (would be nice to short-circuit if nothing needs to be fetched)
-    // <App isLoading={true} /> to render previous or something
     render(
       <App router={router}>
         <Progress />
+        {cachedComponent}
       </App>,
       root,
     );
@@ -161,6 +160,7 @@ function resolve(location) {
       pathname: location.pathname,
     })
     .then(({component}) => {
+      cachedComponent = component;
       render(<App router={router}>{component}</App>, root);
     })
     .catch(error => {
