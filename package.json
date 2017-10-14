@@ -16,7 +16,7 @@
     "coverage": "jest --forceExit --coverage",
     "flow": "flow",
     "gulp": "gulp",
-    "lint": "gulp lint",
+    "lint": "yarn eslint src",
     "pretty": "babel-node scripts/pretty.js",
     "pretty-check": "babel-node scripts/pretty.js --check",
     "relay": "babel-node scripts/compile.js",
