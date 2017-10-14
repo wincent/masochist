@@ -8,6 +8,7 @@ import {object} from '../common/checks';
 import toGlobalId from '../common/toGlobalId';
 import Cache from './Cache';
 import {Extensions} from './Markup';
+import delay from './delay';
 import git from './git';
 
 type LoaderOptions = {
@@ -60,10 +61,6 @@ const timestamps = {
   head: null,
   cache: {},
 };
-
-function delay(ms: number): Promise<void> {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 export async function loadContent(options: LoaderOptions): Promise<*> {
   const {subdirectory, file} = options;
