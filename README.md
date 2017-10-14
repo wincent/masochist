@@ -43,22 +43,16 @@ Please see the introductory blog post, "[Introducing Masochist](https://github.c
 git clone https://github.com/wincent/masochist.git
 cd masochist
 yarn # Or `npm install`.
-yarn run update-schema
-
-# Use npm, not yarn, for this due to lack of "config"
-# support (https://github.com/yarnpkg/yarn/issues/2989).
-npm run update-indices # Whenever content changes.
-npm run start
+yarn update-schema # Or `npm run update-schema`.
+yarn update-indices # Whenever content changes.
+yarn start # Or `npm run start`.
 ```
 
 ### Running in production-like environment
 
 ```
-yarn run build # builds files under `dist/`
-
-# Use npm, not yarn, for this due to lack of "config"
-# support (https://github.com/yarnpkg/yarn/issues/2989).
-npm run start-prod
+yarn run build # Builds files under `dist/`.
+yarn start-prod # Or `npm run start-prod`.
 ```
 
 ### Running in production
