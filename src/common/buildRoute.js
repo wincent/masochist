@@ -22,6 +22,13 @@ export default function buildRoute(query, config) {
 
     if (inBrowser) {
       document.title = formatTitle(title);
+
+      const {
+          createOperationSelector,
+          getOperation,
+        } = environment.unstable_internal;
+      const operation = createOperationSelector(getOperation(query), variables);
+      environment.retain(operation.root);
     }
 
     const relay = {
