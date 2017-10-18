@@ -2,8 +2,10 @@
  * @noflow
  */
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
+import {getRefetchToken} from '../RefetchTokenManager';
 import LoadMoreButton from './LoadMoreButton';
 import Post from './Post';
 
@@ -11,6 +13,9 @@ import type {Disposable, RelayPaginationProp} from 'react-relay';
 import type {PostsIndex as PostsIndexData} from './__generated__/PostsIndex.graphql';
 
 const PAGE_SIZE = 3;
+
+// See note in `ArticlesIndex`.
+let fragmentVariables;
 
 class PostsIndex extends React.Component {
   props: {
@@ -21,6 +26,10 @@ class PostsIndex extends React.Component {
     isLoading: boolean,
   };
   _disposable: ?Disposable;
+
+  static contextTypes = {
+    router: PropTypes.object,
+  };
 
   // TODO: DRY up this pagination pattern
   constructor(props) {
@@ -33,6 +42,12 @@ class PostsIndex extends React.Component {
       this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
         this._disposable = null;
+
+        const route = window.location.pathname;
+        this.context.router.history.replace(route, {
+          refetchToken: getRefetchToken(),
+          variables: fragmentVariables,
+        });
       });
     });
   };
@@ -87,10 +102,11 @@ const PostsIndexContainer = createPaginationContainer(
   `,
   {
     getFragmentVariables(prevVars, totalCount) {
-      return {
+      fragmentVariables = {
         ...prevVars,
         count: totalCount,
       };
+      return fragmentVariables;
     },
     getVariables(props, {count, cursor}, fragmentVariables) {
       return {

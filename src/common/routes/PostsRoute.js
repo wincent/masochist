@@ -15,11 +15,11 @@ export default buildRoute(
     }
   `,
   {
-    variables: {
+    variables: ({count}) => ({
       baseHeadingLevel: 2, // TODO: check this
-      count: PostsIndex.PAGE_SIZE,
+      count: count || PostsIndex.PAGE_SIZE,
       cursor: null,
-    },
+    }),
     render: data => <PostsIndex data={data} />,
     title: 'blog',
   },
