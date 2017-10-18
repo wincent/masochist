@@ -2,8 +2,10 @@
  * @noflow
  */
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
+import {getRefetchToken} from '../RefetchTokenManager';
 import Snippet from './Snippet';
 import LoadMoreButton from './LoadMoreButton';
 
@@ -11,6 +13,9 @@ import type {Disposable, RelayPaginationProp} from 'react-relay';
 import type {SnippetsIndex as SnippetsIndexData} from './__generated__/SnippetsIndex.graphql';
 
 const PAGE_SIZE = 3;
+
+// See note in `ArticlesIndex`.
+let fragmentVariables;
 
 class SnippetsIndex extends React.Component {
   props: {
@@ -22,6 +27,10 @@ class SnippetsIndex extends React.Component {
   };
   _disposable: ?Disposable;
 
+  static contextTypes = {
+    router: PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {isLoading: false};
@@ -32,6 +41,13 @@ class SnippetsIndex extends React.Component {
       this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
         this._disposable = null;
+
+        // TODO: DRY up this pattern, now in a few places
+        const route = window.location.pathname;
+        this.context.router.history.replace(route, {
+          refetchToken: getRefetchToken(),
+          variables: fragmentVariables,
+        });
       });
     });
   };
@@ -86,10 +102,11 @@ const SnippetsIndexContainer = createPaginationContainer(
   `,
   {
     getFragmentVariables(prevVars, totalCount) {
-      return {
+      fragmentVariables = {
         ...prevVars,
         count: totalCount,
       };
+      return fragmentVariables;
     },
     getVariables(props, {count, cursor}, fragmentVariables) {
       return {
