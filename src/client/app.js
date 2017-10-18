@@ -20,7 +20,6 @@ import RenderTextError from '../common/RenderTextError';
 import createRouter from '../common/createRouter';
 import getRequestBody from '../common/getRequestBody';
 import App from './components/App';
-import Progress from './components/Progress';
 import HTTPError from './components/HTTPError';
 
 import React from 'react';
@@ -146,8 +145,7 @@ function resolve(location) {
   } else {
     // Not first time here, so showing progress.
     render(
-      <App router={router}>
-        <Progress />
+      <App router={router} showProgress={true}>
         {cachedComponent}
       </App>,
       root,

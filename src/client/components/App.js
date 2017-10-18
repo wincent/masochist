@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Nav from './Nav';
 import Footer from './Footer';
+import Nav from './Nav';
+import Progress from './Progress';
 import inBrowser from '../../common/inBrowser';
 import matchRoute from '../../common/matchRoute';
 
@@ -13,6 +14,7 @@ if (inBrowser) {
 export default class App extends React.Component {
   static propTypes = {
     router: PropTypes.object,
+    showProgress: PropTypes.bool,
   };
 
   static childContextTypes = {
@@ -77,11 +79,14 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {children} = this.props;
+    const {children, showProgress} = this.props;
     return (
       <div className="app">
         <Nav />
-        <section className="app-content container">{children}</section>
+        <section className="app-content container">
+          {showProgress ? <Progress /> : null}
+          {children}
+        </section>
         <Footer />
       </div>
     );
