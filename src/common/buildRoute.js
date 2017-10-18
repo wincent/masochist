@@ -22,6 +22,15 @@ export default function buildRoute(query, config) {
 
     if (inBrowser) {
       document.title = formatTitle(title);
+
+      // Disable garbage collection so that we can make back button work without
+      // having to go back to the server for data.
+      const {
+          createOperationSelector,
+          getOperation,
+        } = environment.unstable_internal;
+      const operation = createOperationSelector(getOperation(query), variables);
+      environment.retain(operation.root);
     }
 
     const relay = {
