@@ -7,13 +7,19 @@ import inBrowser from './inBrowser';
 import withContext from './withContext';
 
 export default function buildRoute(query, config) {
-  return async function action({api, params}) {
+  return async function action({api, params, variables: overrides}, extra) {
     const {environment} = api;
     const variables =
       typeof config.variables === 'function'
-        ? config.variables(params)
-        : config.variables;
-    const data = await api.fetchQuery(query, variables);
+        ? config.variables(overrides || params)
+        : {...config.variables, ...overrides};
+
+    // If we were supplied overrides, this is a back-button query that can be
+    // read straight out of the cache.
+    const data = overrides
+      ? api.readQuery(query, variables)
+      : await api.fetchQuery(query, variables);
+
     const title =
       (typeof config.title === 'function'
         ? config.title(data, params)

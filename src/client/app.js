@@ -73,6 +73,15 @@ const environment = new Environment({
 const api = {
   environment,
   fetchQuery: fetchQuery.bind(null, environment),
+  readQuery(query, variables) {
+    const {
+        createOperationSelector,
+        getOperation,
+      } = environment.unstable_internal;
+    const operation = createOperationSelector(getOperation(query), variables);
+    const snapshot = environment.lookup(operation.fragment, operation.variables);
+    return snapshot.data;
+  },
 };
 
 const root = document.getElementById('relay-root');
@@ -121,12 +130,13 @@ const unlisten = history.listen(async (location, action) => {
     // time. Deleting/mutating the state doesn't work; adding the
     // location object to a "seen" `Set` doesn't work (copies get made);
     // so we have to use these once-only `refetchToken`s to decide
-    // whether to block the navigation.
+    // whether to ignore the navigation.
     if (claimRefetchToken(location.state.refetchToken)) {
       return;
     }
   }
-  await resolve(location);
+  const variables = location.state && location.state.variables;
+  await resolve(location, variables);
   scrollBehavior.updateScroll();
 });
 
@@ -134,7 +144,7 @@ resolve(history.location);
 
 let cachedComponent;
 
-function resolve(location) {
+function resolve(location, variables) {
   if (window.MasochistCache) {
     // First time here, and we've come from server rendering.
     Object.entries(window.MasochistCache).forEach(([key, value]) => {
@@ -156,6 +166,7 @@ function resolve(location) {
     .resolve({
       api,
       pathname: location.pathname,
+      variables,
     })
     .then(({component}) => {
       cachedComponent = component;

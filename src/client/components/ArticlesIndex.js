@@ -2,9 +2,11 @@
  * @noflow
  */
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
 import inBrowser from '../../common/inBrowser';
+import {getRefetchToken} from '../RefetchTokenManager';
 import ArticlePreview from './ArticlePreview';
 import LoadMoreButton from './LoadMoreButton';
 
@@ -17,6 +19,12 @@ if (inBrowser) {
 
 const PAGE_SIZE = 10;
 
+// `getFragmentVariables` is called without context (no `this`), and Relay
+// doesn't expose fragment variables to components. Our component can
+// sneakily observe them though via this variable. This is safe because there is
+// only ever one mounted ArticlesIndex instance.
+let fragmentVariables;
+
 class ArticlesIndex extends React.Component {
   props: {
     data: ArticlesIndexData,
@@ -26,6 +34,10 @@ class ArticlesIndex extends React.Component {
     isLoading: boolean,
   };
   _disposable: ?Disposable;
+
+  static contextTypes = {
+    router: PropTypes.object,
+  };
 
   constructor(props) {
     super(props);
@@ -37,6 +49,13 @@ class ArticlesIndex extends React.Component {
       this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
         this._disposable = null;
+
+        // At this point we can "see" the new fragmentVariables.
+        const route = window.location.pathname;
+        this.context.router.history.replace(route, {
+          refetchToken: getRefetchToken(),
+          variables: fragmentVariables,
+        });
       });
     });
   };
@@ -104,10 +123,11 @@ const ArticlesIndexContainer = createPaginationContainer(
   `,
   {
     getFragmentVariables(prevVars, totalCount) {
-      return {
+      fragmentVariables = {
         ...prevVars,
         count: totalCount,
       };
+      return fragmentVariables;
     },
     getVariables(props, {count, cursor}, fragmentVariables) {
       return {
