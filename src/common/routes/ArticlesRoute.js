@@ -15,10 +15,10 @@ export default buildRoute(
     }
   `,
   {
-    variables: ({count}) => ({
-      count: count || ArticlesIndex.PAGE_SIZE,
+    variables: {
+      count: ArticlesIndex.PAGE_SIZE,
       cursor: null,
-    }),
+    },
     render: data => <ArticlesIndex data={data} />,
     title: 'wiki',
   },

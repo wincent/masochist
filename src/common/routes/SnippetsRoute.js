@@ -15,11 +15,11 @@ export default buildRoute(
     }
   `,
   {
-    variables: ({count}) => ({
+    variables: {
       baseHeadingLevel: 2,
-      count: count || SnippetsIndex.PAGE_SIZE,
+      count: SnippetsIndex.PAGE_SIZE,
       cursor: null,
-    }),
+    },
     render: data => <SnippetsIndex data={data} />,
     title: 'snippets',
   },
