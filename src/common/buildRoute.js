@@ -11,8 +11,8 @@ export default function buildRoute(query, config) {
     const {environment} = api;
     const variables =
       typeof config.variables === 'function'
-        ? config.variables(overrides || params)
-        : {...config.variables, ...overrides};
+        ? config.variables({...params, ...overrides})
+        : {...config.variables, ...params, ...overrides};
 
     // If we were supplied overrides, this is a back-button query that can be
     // read straight out of the cache.

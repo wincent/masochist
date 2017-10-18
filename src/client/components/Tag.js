@@ -2,8 +2,10 @@
  * @noflow
  */
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import {createPaginationContainer, graphql} from 'react-relay';
+import {getRefetchToken} from '../RefetchTokenManager';
 import ContentListing from './ContentListing';
 import ContentPreview from './ContentPreview';
 import LoadMoreButton from './LoadMoreButton';
@@ -15,6 +17,9 @@ import type {Tag as TagData} from './__generated__/Tag.graphql';
 
 const PAGE_SIZE = 10;
 
+// See note in `ArticlesIndex`.
+let fragmentVariables;
+
 class Tag extends React.Component {
   props: {
     data: TagData,
@@ -24,6 +29,10 @@ class Tag extends React.Component {
     isLoading: boolean,
   };
   _disposable: ?Disposable;
+
+  static contextTypes = {
+    router: PropTypes.object,
+  };
 
   constructor(props) {
     super(props);
@@ -35,6 +44,12 @@ class Tag extends React.Component {
       this._disposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoading: this.props.relay.isLoading()});
         this._disposable = null;
+
+        const route = window.location.pathname;
+        this.context.router.history.replace(route, {
+          refetchToken: getRefetchToken(),
+          variables: fragmentVariables,
+        });
       });
     });
   };
@@ -104,10 +119,11 @@ const TagContainer = createPaginationContainer(
   `,
   {
     getFragmentVariables(prevVars, totalCount) {
-      return {
+      fragmentVariables = {
         ...prevVars,
         count: totalCount,
       };
+      return fragmentVariables;
     },
     getVariables({data: {id}}, {count, cursor}, fragmentVariables) {
       return {

@@ -16,8 +16,8 @@ export default buildRoute(
     }
   `,
   {
-    variables: ({id}) => ({
-      count: Tag.PAGE_SIZE,
+    variables: ({count, id}) => ({
+      count: count || Tag.PAGE_SIZE,
       cursor: null,
       id,
     }),
