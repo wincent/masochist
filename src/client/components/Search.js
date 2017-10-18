@@ -21,6 +21,9 @@ import type {Search as SearchData} from './__generated__/Search.graphql';
 
 const PAGE_SIZE = 10;
 
+// See note in `ArticlesIndex`.
+let fragmentVariables;
+
 class Search extends React.Component {
   props: {
     data: SearchData,
@@ -57,6 +60,12 @@ class Search extends React.Component {
       this._loadMoreDisposable = this.props.relay.loadMore(PAGE_SIZE, error => {
         this.setState({isLoadingMore: false});
         this._loadMoreDisposable = null;
+
+        const route = window.location.pathname;
+        this.context.router.history.replace(route, {
+          refetchToken: getRefetchToken(),
+          variables: fragmentVariables,
+        });
       });
     });
   };
@@ -181,10 +190,11 @@ const SearchContainer = createPaginationContainer(
   `,
   {
     getFragmentVariables(prevVars, totalCount) {
-      return {
+      fragmentVariables = {
         ...prevVars,
         count: totalCount,
       };
+      return fragmentVariables;
     },
     getVariables(props, {count, cursor}, {q}) {
       return {

@@ -11,8 +11,8 @@ export default buildRoute(
     }
   `,
   {
-    variables: ({q}) => ({
-      count: Search.PAGE_SIZE,
+    variables: ({count, q}) => ({
+      count: count || Search.PAGE_SIZE,
       cursor: null,
       q: q || '',
     }),
