@@ -34,7 +34,7 @@ I would need (or strongly want) to find workable replacements for everything on 
 * **Net Monitor:** Sorry to see you go, after about 16 years of faithful service.
 * **Super Duper!** Not sure how many bootable backups I expect to make, but will have to find an alternative.
 * **xScope:** No idea.
-* **Spotify:** Web client?
+* **Spotify:** Web client? (There is an "unsupported" client [available](https://www.spotify.com/us/download/linux/) from Spotify.)
 * **iStat Menus:** Will miss these little suckers.
 * **Bartender:** Maybe not relevant?
 
@@ -42,12 +42,12 @@ Other apps that I haven't listed on that page but which I would miss:
 
 * **Screenflow**
 * **Fantastical**
-* **Dropbox:** No idea what the integration on Linux is like; maybe it is ok?
+* **Dropbox:** Not sure how good the integration on Linux is, [but it does exist](https://www.dropbox.com/install-linux).
 * **KeyCastr**
 * **Marked 2**
 * **Monodraw**
 * **Photos:** Yes, this sucks compared to Aperture, at least in terms of feature set, but I really can't imagine anything on Linux being as fast and robust.
-* **Todoist:** Not sure if there is a good native client on Linux; maybe stuck with web.
+* **Todoist:** There doesn't seem to be an official client for Linux (although there are third-party ones: [example](https://github.com/kamhix/todoist-linux)); maybe stuck with web.
 * **Xcode:** Ha ha, just joking.
 
 Losing some of these would hurt but be livable, but some of the others would be really, really big losses. This is why in that tweet that I linked to above, I put my chances of switching at "approaching 50%".
