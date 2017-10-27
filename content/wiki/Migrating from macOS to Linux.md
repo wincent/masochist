@@ -15,7 +15,7 @@ At its core, this is realistic because:
 
 * Apple has a penchant for breaking things in unexpected and arbitrary ways. For example, the introduction of S.I.P. (System Integrity Protection) — laudable though it may be from a security perspective — basically broke all RubyGem installs by default. Or the way Sierra broke Karabiner, which I utterly rely on.
 * iTerm is so slow, and it appears that macOS's own graphics APIs are the bottleneck; this is fine on the laptop screen, but a real killer when plugged into a 4K external display.
-* Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a "PC" laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous Touch Bar.
+* Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a "PC" laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous Touch Bar. The [System76 Oryx Pro](https://system76.com/laptops/oryx) looks good, and it comes with Linux installed by default.
 
 # Gotchas
 
@@ -46,7 +46,7 @@ Other apps that I haven't listed on that page but which I would miss:
 * **KeyCastr**
 * **Marked 2**
 * **Monodraw**
-* **Photos:** Yes, this sucks compared to Aperture, at least in terms of feature set, but I really can't imagine anything on Linux being as fast and robust.
+* **Photos:** Yes, this sucks compared to Aperture, at least in terms of feature set, but I really can't imagine anything on Linux being as fast and robust. Note there isn't even a Google Photos client for Linux at this time.
 * **Todoist:** There doesn't seem to be an official client for Linux (although there are third-party ones: [example](https://github.com/kamhix/todoist-linux)); maybe stuck with web.
 * **Xcode:** Ha ha, just joking.
 
