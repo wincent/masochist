@@ -2,7 +2,7 @@
 tags: macos linux wiki
 ---
 
-At the of writing (May 2017) [I am thinking of switching to Linux](https://twitter.com/wincent/status/868726264357572608) for my next machine.
+Around May 2017 I started [seriously thinking of switching to Linux](https://twitter.com/wincent/status/868726264357572608) for my next machine. These are some notes made while weighing it up.
 
 # Is this viable?
 
