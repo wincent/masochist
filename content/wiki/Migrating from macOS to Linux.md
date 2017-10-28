@@ -6,16 +6,27 @@ At the of writing (May 2017) [I am thinking of switching to Linux](https://twitt
 
 # Is this viable?
 
-At its core, this is realistic because:
+At its core, this may be realistic because:
 
 * I spend most of my working life in Chrome and the Terminal.
 * I have a [mutt](/blog/email)-based email set-up that I am pretty happy with.
+* You can get some very powerful hardware (with actual ports and a quality keyboard) on the Linux side.
+
+But there are some pretty big downsides:
+
+* Need to find replacements for indispensible software, and go without "dispensible-but-preferred" software.
+* Can't sync an iPhone with Linux, so would (*gasp!*) have to switch to Android.
+
+Are there alternatives to switching?
+
+* At least for now, Apple still sells refurbished 2015 MacBook Pros (the last "good" Apple laptops). You could buy one of these and hope that Apple unfucks their laptop line by the time the refurbished one dies.
 
 # What's the motivation?
 
 * Apple has a penchant for breaking things in unexpected and arbitrary ways. For example, the introduction of S.I.P. (System Integrity Protection) — laudable though it may be from a security perspective — basically broke all RubyGem installs by default. Or the way Sierra broke Karabiner, which I utterly rely on.
 * iTerm is so slow, and it appears that macOS's own graphics APIs are the bottleneck; this is fine on the laptop screen, but a real killer when plugged into a 4K external display.
-* Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a "PC" laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous Touch Bar. The [System76 Oryx Pro](https://system76.com/laptops/oryx) looks good, and it comes with Linux installed by default.
+* Apple is going nowhere fast with its hardware, with the last MacBook Pros being an insane cluster fuck of dongles, Touch Bars and no compelling performance or capacity upgrades in exchange for the lost convenience: I'd much rather have a "PC" laptop, even an ugly one, with a bunch of ports, an SD card slot, a bunch of RAM, and no ridiculous Touch Bar. The new keyboard is infamously prone to failure but basically can't be repaired (you have to replace the whole top plate, apparently). It also departs from the classic "inverted-T" cluster for the cursor keys. In short, it's a mess.
+* The [System76 Oryx Pro](https://system76.com/laptops/oryx) looks insanely powerful, and it comes with Linux installed by default (it also has a smaller, "sexier" sibling in the form of the [Galago Pro](https://system76.com/laptops/galago), which doesn't have the unnecessary number pad nor the ridiculously off-center trackpad).
 
 # Gotchas
 
