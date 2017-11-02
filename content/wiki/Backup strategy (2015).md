@@ -1,6 +1,5 @@
 ---
-tags: wiki
-cache_breaker: 1
+tags: wiki backup
 ---
 
 # Current backup targets

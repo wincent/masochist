@@ -1,6 +1,6 @@
 ---
 title: Backup obsession
-tags: blog
+tags: blog backup
 ---
 
 In light of my [last hard reset](http://www.wincent.com/a/about/wincent/weblog/archives/2007/11/involuntary_reb_17.php) and subsequent, albeit minor, [data loss](http://www.wincent.com/a/about/wincent/weblog/archives/2007/11/a_world_without.php), I've decided to ratchet up my backup regimen another notch.
