@@ -11,4 +11,4 @@ NEXT_ID=$(expr $LAST_ID + 1)
 LAST_LOG_ENTRY=$(git grep -l involuntary.reboot.log -- content/snippets | sed 's/^content\/snippets\///' | sort -n | tail -1)
 cp content/snippets/$LAST_LOG_ENTRY content/snippets/$NEXT_ID.$EXTENSION
 
-vim content/snippets/$NEXT_ID.$EXTENSION
+"$EDITOR" content/snippets/$NEXT_ID.$EXTENSION

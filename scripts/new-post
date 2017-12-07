@@ -8,9 +8,9 @@ if [ $# -ne 1 ]; then
 fi
 
 if [ -e "content/blog/$1.md" ]; then
-  vim "content/blog/$1.md"
+  "$EDITOR" "content/blog/$1.md"
 elif [ -e "content/blog/$1.wikitext" ]; then
-  vim "content/blog/$1.wikitext"
+  "$EDITOR" "content/blog/$1.wikitext"
 else
   cat > "content/blog/$1.md" <<HERE
 ---
@@ -20,5 +20,5 @@ title:
 
 
 HERE
-  vim "content/blog/$1.md"
+  "$EDITOR" "content/blog/$1.md"
 fi
