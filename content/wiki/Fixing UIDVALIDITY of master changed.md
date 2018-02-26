@@ -2,6 +2,8 @@
 tags: mbsync mutt exchange wiki
 ---
 
+# Episode 1
+
 I was getting errors like this when trying to sync to an Exchange server (ugh):
 
 ```
@@ -37,3 +39,32 @@ Work.Trash/.mbsyncstate:MasterUidValidity 12
 ```
 
 So, I went in, changed the numbers, ran the sync again, and everything seemed to work fine.
+
+# Episode 2
+
+This time messages like:
+
+```
+Error: channel Catchall, master Archive: UIDVALIDITY genuinely changed (at UID 438231).
+```
+
+[Mailing list thread](https://sourceforge.net/p/isync/mailman/message/36070604/):
+
+> 1. Locate the offending UID (zzz) in .mbsyncstate in Mailbox xxx/yyy - find
+zzz in the first column and note the corresponding local ID in the second
+column
+> 2. Locate the message file in the Mailbox (ls | grep "U=id", replacing id
+> with the ID found in step 1). Move it out of the way, e.g. into a temporary
+> directory outside the Maildir
+> 3. Run mbsync. This yields a message
+> Notice: channel xxx, master yyy: Recovered from change of UIDVALIDITY.
+> 4. Move the offending message back into the Maildir
+> 5. Run mbsync again.
+
+Apparently, bad advice (read the full thread). Didn't work.
+
+As only Exchange seems to break in this way, and most of the old archived messages aren't something I'll ever need to consult again, I removed the message *and* the line from the `.mbsyncstate` file. Didn't work.
+
+Second to last resort: blow away `.mbsyncstate` for that directory. Didn't work.
+
+Last resort: blow away all mail and resync.
