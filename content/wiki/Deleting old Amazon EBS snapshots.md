@@ -46,7 +46,7 @@ $ ec2-describe-snapshots | sort -k 5
 
 ## Using the [aws](/wiki/aws) script
 
-Using the [aws](/wiki/aws) script is literally an order of magnitude faster than using the Java command line tools. Not only is the rate at which snapshots can be deleted higher, the CPU usage during the run is less than half, making the machine much more pleasant to use while the process is going on.
+Using Tim Kay's [aws](https://github.com/timkay/aws) script is literally an order of magnitude faster than using the Java command line tools. Not only is the rate at which snapshots can be deleted higher, the CPU usage during the run is less than half, making the machine much more pleasant to use while the process is going on.
 
 ### Overview
 
