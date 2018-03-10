@@ -14,7 +14,7 @@ elif [ -e "content/blog/$1.wikitext" ]; then
 else
   cat > "content/blog/$1.md" <<HERE
 ---
-tags: 
+tags: blog
 title: 
 ---
 

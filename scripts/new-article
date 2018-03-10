@@ -14,7 +14,7 @@ elif [ -e "content/wiki/$1.wikitext" ]; then
 else
   cat > "content/wiki/$1.md" <<HERE
 ---
-tags: 
+tags: wiki
 ---
 
 
