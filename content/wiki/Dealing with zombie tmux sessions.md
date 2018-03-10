@@ -14,4 +14,4 @@ The thing that has worked for me is:
 - Detach (`<prefix>-d`).
 - Reattach with `-d` switch.
 
-Other commenters on the most recent issue suggested detaching the sending `SIGCONT` to the tmux process and/or hitting Control-Q (to deactivate flow control), but that didn't work for me,and I've [turned off flow control anyway](https://github.com/wincent/wincent/commit/59f1b46117bf235348df48c42c73e8b63efe8a94).
+Other commenters on the most recent issue suggested detaching the sending `SIGCONT` to the tmux process and/or hitting Control-Q (to deactivate flow control), but that didn't work for me, and I've [turned off flow control anyway](https://github.com/wincent/wincent/commit/59f1b46117bf235348df48c42c73e8b63efe8a94).
