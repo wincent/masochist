@@ -18,6 +18,7 @@ fragment Article on Article {
   title
   redirect
   resolvedTitle
+  editURL
   url
   body {
     html(baseHeadingLevel: $baseHeadingLevel)

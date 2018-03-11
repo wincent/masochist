@@ -31,8 +31,9 @@ class Article extends React.Component {
     const article = this.props.data;
     return (
       <article>
-        <h1>
+        <h1 className="article-header">
           <Link to={article.url}>{article.resolvedTitle}</Link>
+          <a className="button" href={article.editURL} title="Edit this article on GitHub">Edit</a>
         </h1>
         {article.redirect ? (
           <p className="redirect-info">Redirected from {article.title}</p>
@@ -54,6 +55,7 @@ export default createFragmentContainer(
       title
       redirect
       resolvedTitle
+      editURL
       url
       body {
         html(baseHeadingLevel: $baseHeadingLevel)

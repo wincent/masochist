@@ -6,6 +6,7 @@ import {
 } from 'graphql';
 import {globalIdField} from 'graphql-relay';
 import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
+import getEditURLForContentPath from '../../getEditURLForContentPath';
 import Article from '../../models/Article';
 import {nodeInterface, registerType} from '../definitions/node';
 import timestampFields from '../fields/timestampFields';
@@ -93,6 +94,13 @@ const ArticleType = registerType(
           article = await resolveRedirects(article, rootValue);
           return article.tags;
         },
+      },
+      editURL: {
+        type: new GraphQLNonNull(GraphQLString),
+        description: 'URL to edit the article',
+        resolve: ({format, id}) => getEditURLForContentPath(
+          `/wiki/${encodeURIComponent(id)}.${format}`,
+        ),
       },
       history: {
         type: new GraphQLNonNull(HistoryType),

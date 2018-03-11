@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 697eb9bc7f5ac30ab2ffda6478290654
+ * @relayHash a5aca365405324cf7d0d6c5fd324b511
  */
 
 /* eslint-disable */
@@ -40,6 +40,7 @@ fragment Article on Article {
   title
   redirect
   resolvedTitle
+  editURL
   url
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
@@ -194,28 +195,7 @@ const batch /*: ConcreteBatch*/ = {
                 "kind": "ScalarField",
                 "alias": null,
                 "args": null,
-                "name": "title",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
                 "name": "redirect",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "resolvedTitle",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "url",
                 "storageKey": null
               },
               {
@@ -241,6 +221,34 @@ const batch /*: ConcreteBatch*/ = {
                     "storageKey": null
                   }
                 ],
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "resolvedTitle",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "editURL",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "url",
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "args": null,
+                "name": "title",
                 "storageKey": null
               },
               {
@@ -301,7 +309,7 @@ const batch /*: ConcreteBatch*/ = {
 
 
 if (__DEV__) {
-  batch['text'] = "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n      redirect\n      title\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
+  batch['text'] = "query ArticleRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      ...Article\n      description\n      redirect\n      title\n    }\n    id\n  }\n}\n\nfragment Article on Article {\n  title\n  redirect\n  resolvedTitle\n  editURL\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
 }
 
 module.exports = batch;

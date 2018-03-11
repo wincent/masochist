@@ -23,6 +23,9 @@ type Article implements Node, Tagged, Versioned {
   # URL for the article
   url: String!
   tags: [TagName!]!
+
+  # URL to edit the article
+  editURL: String!
   history: History!
 
   # When the content was first created
@@ -77,14 +80,14 @@ type Markup {
 }
 
 enum MARKUP_FORMAT_TYPE {
-  TXT
-  HTML
   C
-  PATCH
+  HTML
   M
   MD
+  PATCH
   RB
   SH
+  TXT
 }
 
 # An object with an ID

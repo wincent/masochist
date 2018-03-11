@@ -12,6 +12,7 @@ export type Article = {|
   +title: ?string;
   +redirect: ?string;
   +resolvedTitle: ?string;
+  +editURL: string;
   +url: string;
   +body: {|
     +html: string;
@@ -51,6 +52,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "resolvedTitle",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "editURL",
       "storageKey": null
     },
     {

@@ -708,6 +708,22 @@
               "deprecationReason": null
             },
             {
+              "name": "editURL",
+              "description": "URL to edit the article",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "history",
               "description": null,
               "args": [],
@@ -1023,25 +1039,13 @@
           "interfaces": null,
           "enumValues": [
             {
-              "name": "TXT",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "HTML",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "C",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "PATCH",
+              "name": "HTML",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -1059,6 +1063,12 @@
               "deprecationReason": null
             },
             {
+              "name": "PATCH",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "RB",
               "description": null,
               "isDeprecated": false,
@@ -1066,6 +1076,12 @@
             },
             {
               "name": "SH",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "TXT",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

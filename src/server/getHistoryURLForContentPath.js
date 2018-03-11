@@ -2,10 +2,8 @@
  * @flow
  */
 
-const GITHUB_BASE =
-  'https://github.com/wincent/masochist/commits/content/content';
+import getURLForContentPath from './getURLForContentPath';
 
 export default function getHistoryURLForContentPath(path: string): string {
-  // TODO: possibly assert about `path` format here (expect /foo/etc).
-  return GITHUB_BASE + path;
+  return getURLForContentPath('commits', path);
 }
