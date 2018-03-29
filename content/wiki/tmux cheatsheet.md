@@ -39,3 +39,7 @@ Not a comprehensive cheatsheet, but stuff that I keep forgetting and want to rem
 I wanted to be super clever here and make use of, say `[prefix] [` and `[prefix] ]` to echo the familiar shortcuts for jumping between tabs, but that would class with the standard bindings for entering copy mode and pasting.
 
 I considered instead binding to `[prefix] C-[` and `[prefix] C-]`, but is too subtle and close to the copy mode bindings, making it easy to do the wrong thing. Oh well.
+
+# Miscellaneous
+
+- `:set -w synchronize-panes on`: send same input to all visible panes (except panes in a separate mode).
