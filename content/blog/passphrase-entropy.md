@@ -1,6 +1,7 @@
 ---
 tags: blog security
 title: Passphrase entropy
+twitter: https://twitter.com/wincent/status/979261675374198784
 ---
 
 A while back I was interested in coming up with a passphrase that would result in the same keypresses when typed on Colemak and Qwerty keyboard layouts. I concluded that it would be too hard to get a reasonable amount of entropy because there are only 13 keys that hold the same position in both layouts.
@@ -225,3 +226,5 @@ What can we conclude from all this?
 - I guess we could inject more entropy by adding numbers and symbols, but the base set of words to draw from is still sucky.
 
 I'm going to stick to my boring existing passphrase for now. For reference, and in case I forget it, it is "rosemary horde shotgun portrait".
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/979261675374198784)</em></small>
