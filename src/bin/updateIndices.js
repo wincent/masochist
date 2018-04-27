@@ -15,6 +15,7 @@ import '../common/unhandledRejection';
 import '../server/configureNpm';
 
 import Promise from 'bluebird';
+import os from 'os';
 import path from 'path';
 import extractTypeAndId from '../common/extractTypeAndId';
 import memoize from '../common/memoize';
@@ -80,45 +81,75 @@ async function getIsAncestor(
   return Promise.resolve(false);
 }
 
+async function parallelForEach(collection, callback, count = os.cpus().length) {
+  let id = 0;
+  const jobs = {};
+  while (collection.length) {
+    for (
+      let i = 0,
+      capacity = count - Object.keys(jobs).length,
+      max = Math.min(capacity, collection.length);
+      i < max;
+      i++
+    ) {
+      const item = collection.pop();
+      const job = id++;
+      jobs[job] = new Promise((resolve, reject) => {
+        callback(item).then(() => {
+          delete jobs[job];
+          resolve();
+        });
+      });
+    }
+
+    // Wait until one of the jobs is done.
+    await Promise.race(Object.values(jobs));
+  }
+
+  // Let any remaining jobs finish.
+  await Promise.all(Object.values(jobs));
+}
+
 async function getFileUpdates(range, callback) {
   log(`Preparing list of file updates in ${range}.`);
-  const promises = [
-    {
-      contentType: 'wiki',
-      orderBy: 'updatedAt',
-    },
-    {
-      contentType: 'snippets',
-      orderBy: 'createdAt',
-    },
-    {
-      contentType: 'blog',
-      orderBy: 'createdAt',
-    },
-    {
-      contentType: 'pages',
-      orderBy: 'updatedAt', // Arbitrary (there is no indexed view of pages).
-    },
-  ].map(async ({contentType, orderBy}) => {
-    const subdirectory = path.join('content', contentType);
-    const commits = await getChanges(range, subdirectory);
-    await forEachCommit(
-      commits,
-      async ({commit, createdAt, file, status, updatedAt}) => {
-        await callback({
-          commit,
-          contentType,
-          createdAt,
-          file: extractFile(file, contentType),
-          orderBy,
-          status,
-          updatedAt,
-        });
+  return parallelForEach(
+    [
+      {
+        contentType: 'wiki',
+        orderBy: 'updatedAt',
       },
-    );
-  });
-
-  return Promise.all(promises);
+      {
+        contentType: 'snippets',
+        orderBy: 'createdAt',
+      },
+      {
+        contentType: 'blog',
+        orderBy: 'createdAt',
+      },
+      {
+        contentType: 'pages',
+        orderBy: 'updatedAt', // Arbitrary (there is no indexed view of pages).
+      },
+    ],
+    (async ({contentType, orderBy}) => {
+      const subdirectory = path.join('content', contentType);
+      const commits = await getChanges(range, subdirectory);
+      await forEachCommit(
+        commits,
+        async ({commit, createdAt, file, status, updatedAt}) => {
+          await callback({
+            commit,
+            contentType,
+            createdAt,
+            file: extractFile(file, contentType),
+            orderBy,
+            status,
+            updatedAt,
+          });
+        },
+      );
+    })
+  );
 }
 
 (async () => {
