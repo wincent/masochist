@@ -105,11 +105,6 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
     directories.push('content');
   }
 
-  // Queries that only contain filters (eg. "type:blog") also return nothing.
-  if (!atoms.length) {
-    return [];
-  }
-
   // Put title-based results in first, as they are likely more relevant.
   const results = new Map();
   let entries = await getCorpus();
@@ -134,10 +129,9 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
     hits = await git(...args, tree, '--', ...directories);
   } catch (e) {
     // `git grep` returns an exit status of 1 to indicate "nothing found".
-    if (e instanceof GitError && e.code === 1) {
-      return [];
+    if (!(e instanceof GitError) || e.code !== 1) {
+      throw e;
     }
-    throw e;
   }
 
   // Extract hits into a more usable format.
