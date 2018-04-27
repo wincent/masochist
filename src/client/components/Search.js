@@ -128,7 +128,7 @@ class Search extends React.Component {
               className="eight columns"
               id="search-input"
               onChange={event => this.setState({q: event.currentTarget.value})}
-              placeholder="Search..."
+              placeholder="Search wincent.com"
               type="search"
               ref={input => {
                 this._searchInput = input;
