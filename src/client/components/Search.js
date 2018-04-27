@@ -24,6 +24,21 @@ const PAGE_SIZE = 10;
 // See note in `ArticlesIndex`.
 let fragmentVariables;
 
+function getSearchURL(query: string, options: {display?: boolean} = {}): string {
+  // Note that we may need to double-encode the search query, otherwise
+  // the "history" package will decode a query like "vim\b" which we
+  // have encoded as "vim%5Cb" back to "vim/b", which is hideously
+  // broken.
+  const encoder = options.display ?
+    encodeURIComponent :
+    component => encodeURIComponent(encodeURIComponent(component));
+  if (query) {
+    return '/search/' + encoder(query);
+  } else {
+    return '/search';
+  }
+}
+
 class Search extends React.Component {
   props: {
     data: SearchData,
@@ -106,20 +121,22 @@ class Search extends React.Component {
   render() {
     const {search} = this.props.data;
     const {edges} = search;
-    let searchURL = '/search';
-    if (this.state.q.trim()) {
-      searchURL += '/' + encodeURIComponent(this.state.q.trim());
-    }
+    const trimmedQuery = this.state.q.trim();
     return (
       <div>
         <h1>
-          <Link to={searchURL}>{this.state.q || 'Search'}</Link>
+          <Link
+            to={getSearchURL(trimmedQuery, {display: true})}
+            historyTo={getSearchURL(trimmedQuery)}
+          >
+            {trimmedQuery || 'Search'}
+          </Link>
         </h1>
         <div className="row">
           <form
             onSubmit={event => {
               event.preventDefault();
-              this.context.router.history.push(searchURL, {
+              this.context.router.history.push(getSearchURL(trimmedQuery), {
                 refetchToken: getRefetchToken(),
               });
               this._handleRefetch();

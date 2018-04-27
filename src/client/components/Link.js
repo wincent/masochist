@@ -14,7 +14,7 @@ const RouterLink = ({to, children, ...props}, context) => {};
  * Router-aware link component.
  */
 const Link = (
-  {to, children, ...props}: any, // TODO: a better Flow type here.
+  {to, historyTo, children, ...props}: any, // TODO: a better Flow type here.
   context: {router: MasochistRouter},
 ) => (
   <a
@@ -26,7 +26,7 @@ const Link = (
       }
       if (matchRoute(to)) {
         event.preventDefault();
-        context.router.history.push(to);
+        context.router.history.push(historyTo || to);
       }
     }}
     {...props}>
