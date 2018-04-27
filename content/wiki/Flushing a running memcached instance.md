@@ -2,7 +2,7 @@
 tags: memcached wiki
 ---
 
-I usually restored to a heavy-handed `sudo /etc/init.d/memcached restart` (or similar), but you can also do it with telnet:
+In the past I've resorted to a heavy-handed `sudo /etc/init.d/memcached restart` (or similar, depending on platform), but you can also do it with telnet:
 
 ```shell
 $ telnet localhost 11211
