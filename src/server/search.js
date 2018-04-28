@@ -11,7 +11,7 @@ type SearchResult = {
 
 let corpus = null;
 
-async function getCorpus(): Array<SearchResult> {
+async function getCorpus(): Promise<Array<SearchResult>> {
   if (!corpus) {
     const output = await git(
       'ls-tree',
