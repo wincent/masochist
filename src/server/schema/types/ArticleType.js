@@ -98,9 +98,8 @@ const ArticleType = registerType(
       editURL: {
         type: new GraphQLNonNull(GraphQLString),
         description: 'URL to edit the article',
-        resolve: ({format, id}) => getEditURLForContentPath(
-          `/wiki/${encodeURIComponent(id)}.${format}`,
-        ),
+        resolve: ({format, id}) =>
+          getEditURLForContentPath(`/wiki/${encodeURIComponent(id)}.${format}`),
       },
       history: {
         type: new GraphQLNonNull(HistoryType),

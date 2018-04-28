@@ -87,8 +87,8 @@ async function parallelForEach(collection, callback, count = os.cpus().length) {
   while (collection.length) {
     for (
       let i = 0,
-      capacity = count - Object.keys(jobs).length,
-      max = Math.min(capacity, collection.length);
+        capacity = count - Object.keys(jobs).length,
+        max = Math.min(capacity, collection.length);
       i < max;
       i++
     ) {
@@ -131,7 +131,7 @@ async function getFileUpdates(range, callback) {
         orderBy: 'updatedAt', // Arbitrary (there is no indexed view of pages).
       },
     ],
-    (async ({contentType, orderBy}) => {
+    async ({contentType, orderBy}) => {
       const subdirectory = path.join('content', contentType);
       const commits = await getChanges(range, subdirectory);
       await forEachCommit(
@@ -148,7 +148,7 @@ async function getFileUpdates(range, callback) {
           });
         },
       );
-    })
+    },
   );
 }
 
@@ -237,68 +237,65 @@ async function getFileUpdates(range, callback) {
   }
 
   log('Creating tag sets');
-  await getFileUpdates(
-    range,
-    async ({file, status, commit, contentType}) => {
-      // Callback will be called in reverse-chronological order, so we use
-      // `unshift` instead of `push` to handle cases like this:
-      //
-      //   1. Add article with tags "foo", "bar".
-      //   2. Switch tag "bar" for "baz".
-      //   3. Delete article.
-      //
-      // First thing we see is the deletion, then the edit, then the addition,
-      // so when we unshift our operations, our queue becomes:
-      //
-      //   1. Increment counts for "foo", "bar".
-      //   2. Decrement count for "bar", increment count for "baz".
-      //   3. Decrement counts for "foo", "baz".
-      //
-      dot();
-      const {tags, updatedAt} = await loadContent({
-        subdirectory: contentType,
-        file,
-        commit: status === 'D' ? commit + '~' : commit,
-      });
-      switch (status) {
-        case 'A':
-          // New file: add tags to index.
-          tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
-          break;
-        case 'D':
-          // Deleted file: remove tags from index.
-          tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
-          break;
-        case 'M':
-          // Modified file: check before and after tags and apply updates, if
-          // any.
-          {
-            const {tags: previousTags} = await loadContent({
-              subdirectory: contentType,
-              file,
-              commit: commit + '~',
-            });
+  await getFileUpdates(range, async ({file, status, commit, contentType}) => {
+    // Callback will be called in reverse-chronological order, so we use
+    // `unshift` instead of `push` to handle cases like this:
+    //
+    //   1. Add article with tags "foo", "bar".
+    //   2. Switch tag "bar" for "baz".
+    //   3. Delete article.
+    //
+    // First thing we see is the deletion, then the edit, then the addition,
+    // so when we unshift our operations, our queue becomes:
+    //
+    //   1. Increment counts for "foo", "bar".
+    //   2. Decrement count for "bar", increment count for "baz".
+    //   3. Decrement counts for "foo", "baz".
+    //
+    dot();
+    const {tags, updatedAt} = await loadContent({
+      subdirectory: contentType,
+      file,
+      commit: status === 'D' ? commit + '~' : commit,
+    });
+    switch (status) {
+      case 'A':
+        // New file: add tags to index.
+        tags.forEach(tag => addTag(tag, file, contentType, updatedAt));
+        break;
+      case 'D':
+        // Deleted file: remove tags from index.
+        tags.forEach(tag => removeTag(tag, file, contentType, updatedAt));
+        break;
+      case 'M':
+        // Modified file: check before and after tags and apply updates, if
+        // any.
+        {
+          const {tags: previousTags} = await loadContent({
+            subdirectory: contentType,
+            file,
+            commit: commit + '~',
+          });
 
-            // Manual set intersection...
-            const tagsSet = new Set(tags);
-            const previousTagsSet = new Set(previousTags);
-            for (let existing of tagsSet) {
-              if (!previousTagsSet.has(existing)) {
-                // Tag was added.
-                addTag(existing, file, contentType, updatedAt);
-              }
-            }
-            for (let previous of previousTagsSet) {
-              if (!tagsSet.has(previous)) {
-                // Tag was deleted.
-                removeTag(previous, file, contentType, updatedAt);
-              }
+          // Manual set intersection...
+          const tagsSet = new Set(tags);
+          const previousTagsSet = new Set(previousTags);
+          for (let existing of tagsSet) {
+            if (!previousTagsSet.has(existing)) {
+              // Tag was added.
+              addTag(existing, file, contentType, updatedAt);
             }
           }
-          break;
-      }
-    },
-  );
+          for (let previous of previousTagsSet) {
+            if (!tagsSet.has(previous)) {
+              // Tag was deleted.
+              removeTag(previous, file, contentType, updatedAt);
+            }
+          }
+        }
+        break;
+    }
+  });
   print('\n');
 
   // In case any tag removals caused a tag's count to drop to 0.

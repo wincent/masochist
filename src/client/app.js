@@ -75,11 +75,14 @@ const api = {
   fetchQuery: fetchQuery.bind(null, environment),
   readQuery(query, variables) {
     const {
-        createOperationSelector,
-        getOperation,
-      } = environment.unstable_internal;
+      createOperationSelector,
+      getOperation,
+    } = environment.unstable_internal;
     const operation = createOperationSelector(getOperation(query), variables);
-    const snapshot = environment.lookup(operation.fragment, operation.variables);
+    const snapshot = environment.lookup(
+      operation.fragment,
+      operation.variables,
+    );
     return snapshot.data;
   },
 };

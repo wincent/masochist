@@ -33,7 +33,12 @@ class Article extends React.Component {
       <article>
         <h1 className="article-header">
           <Link to={article.url}>{article.resolvedTitle}</Link>
-          <a className="button" href={article.editURL} title="Edit this article on GitHub">Edit</a>
+          <a
+            className="button"
+            href={article.editURL}
+            title="Edit this article on GitHub">
+            Edit
+          </a>
         </h1>
         {article.redirect ? (
           <p className="redirect-info">Redirected from {article.title}</p>

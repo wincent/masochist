@@ -24,14 +24,17 @@ const PAGE_SIZE = 10;
 // See note in `ArticlesIndex`.
 let fragmentVariables;
 
-function getSearchURL(query: string, options: {display?: boolean} = {}): string {
+function getSearchURL(
+  query: string,
+  options: {display?: boolean} = {},
+): string {
   // Note that we may need to double-encode the search query, otherwise
   // the "history" package will decode a query like "vim\b" which we
   // have encoded as "vim%5Cb" back to "vim/b", which is hideously
   // broken.
-  const encoder = options.display ?
-    encodeURIComponent :
-    component => encodeURIComponent(encodeURIComponent(component));
+  const encoder = options.display
+    ? encodeURIComponent
+    : component => encodeURIComponent(encodeURIComponent(component));
   if (query) {
     return '/search/' + encoder(query);
   } else {
@@ -127,8 +130,7 @@ class Search extends React.Component {
         <h1>
           <Link
             to={getSearchURL(trimmedQuery, {display: true})}
-            historyTo={getSearchURL(trimmedQuery)}
-          >
+            historyTo={getSearchURL(trimmedQuery)}>
             {trimmedQuery || 'Search'}
           </Link>
         </h1>

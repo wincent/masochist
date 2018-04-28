@@ -29,8 +29,8 @@ async function getCorpus(): Array<SearchResult> {
     const regExp = new RegExp(
       'content/' + // Prefix.
       '([^/]+)/' + // Content type.
-      '([^\0]+)\\.\\w+\0', // Filename match + extension + terminator.
-      'g' // Match repeatedly.
+        '([^\0]+)\\.\\w+\0', // Filename match + extension + terminator.
+      'g', // Match repeatedly.
     );
     let match;
     while ((match = regExp.exec(output))) {
