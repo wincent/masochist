@@ -10,9 +10,8 @@ function isObject(mixed: mixed): boolean {
 }
 
 /**
- * JSON.stringify doesn't guarantee output ordering (even though in practice it
- * is stable in major engines). Due to paranoia, we have this stable stringifier
- * which I have now written about three times in various projects.
+ * JSON.stringify output is dependent on insertion order, so we use this function
+ * to ensure consistent output irrespective of insertion order.
  */
 export default function stableStringify(input: mixed): string | void {
   const seen = new Set();
