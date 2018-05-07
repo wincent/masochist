@@ -27,6 +27,9 @@ export default (async function graphQLMiddleware(
 
   const result = await runQuery(id, body.variables);
   if (!result || result.data === null) {
+    if (result && result.errors) {
+      result.errors.forEach(error => console.log(error));
+    }
     response.status(500).send('Internal Server Error');
     return;
   }
