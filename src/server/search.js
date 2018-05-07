@@ -125,12 +125,14 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
   const head = (await git('rev-parse', 'content')).trim();
   const tree = (await git('show', '-s', '--format=%T', head)).trim();
   let hits = '';
-  try {
-    hits = await git(...args, tree, '--', ...directories);
-  } catch (e) {
-    // `git grep` returns an exit status of 1 to indicate "nothing found".
-    if (!(e instanceof GitError) || e.code !== 1) {
-      throw e;
+  if (atoms.length) {
+    try {
+      hits = await git(...args, tree, '--', ...directories);
+    } catch (e) {
+      // `git grep` returns an exit status of 1 to indicate "nothing found".
+      if (!(e instanceof GitError) || e.code !== 1) {
+        throw e;
+      }
     }
   }
 
