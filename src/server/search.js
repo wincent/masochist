@@ -115,10 +115,16 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
     });
     return entries.length;
   });
+  const filtering = directories.indexOf('content') === -1;
   entries.forEach(entry => {
     const {id, type} = entry;
     const key = `${type}/${id}`;
-    results.set(key, entry);
+    if (
+      !filtering ||
+      directories.some(directory => directory.indexOf(type) !== -1)
+    ) {
+      results.set(key, entry);
+    }
   });
 
   // Now add content-based results.
