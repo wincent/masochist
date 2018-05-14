@@ -12,6 +12,7 @@ I'll eventually publish a more comprehensive listing, but for now I just want to
 -   Indent current line: `CTRL-t` (mnemonic: "tab")
 -   Dedent current line: `CTRL-d` (mnemonic: "dedent")
 -   Insert a hard tab, even when it would normally be expanded to spaces: `CTRL-V <tab>`
+-   Insert current filename `CTRL-r %` (for related things that can be inserted with `CTRL-r`, see `:h i_CTRL-R`).
 
 # Normal mode commands
 
