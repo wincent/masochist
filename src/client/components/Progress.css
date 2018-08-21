@@ -1,42 +1,42 @@
 @keyframes progress {
   0% {
-    width: 10%;
+    transform: translateX(-90vw);
   }
   8% {
-    width: 40%;
+    transform: translateX(-60vw);
   }
   16% {
-    width: 80%;
+    transform: translateX(-20vw);
   }
   20% {
-    width: 90%;
+    transform: translateX(-10vw);
   }
   30% {
-    width: 91%;
+    transform: translateX(-9vw);
   }
   40% {
-    width: 92%;
+    transform: translateX(-8vw);
   }
   50% {
-    width: 93%;
+    transform: translateX(-7vw);
   }
   60% {
-    width: 94%;
+    transform: translateX(-6vw);
   }
   70% {
-    width: 95%;
+    transform: translateX(-5vw);
   }
   80% {
-    width: 96%;
+    transform: translateX(-4vw);
   }
   90% {
-    width: 97%;
+    transform: translateX(-3vw);
   }
   95% {
-    width: 98%;
+    transform: translateX(-2vw);
   }
   100% {
-    width: 99%;
+    transform: translateX(-1vw);
   }
 }
 
@@ -47,6 +47,6 @@
   left: 0;
   position: fixed;
   top: 0;
-  width: 99%;
+  transform: translateX(0);
   z-index: 1;
 }
