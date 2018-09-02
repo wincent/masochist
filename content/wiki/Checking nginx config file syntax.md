@@ -11,6 +11,10 @@ Note that the path to the config file must be an absolute one, or one relative t
 
     /usr/nginx/sbin/nginx -t -c conf/nginx.conf
 
+To test the default discovered config run:
+
+    /usr/nginx/sbin/nginx -t
+
 # See also
 
 -   [Applying new nginx configuration without restarting](/wiki/Applying_new_nginx_configuration_without_restarting)
