@@ -1,6 +1,7 @@
 ---
 tags: blog dropbox
 title: File system organization guidelines
+twitter: https://twitter.com/wincent/status/1044167354295480320
 ---
 
 The other day I was [lamenting on Twitter](https://twitter.com/wincent/status/1039961366600314880) how tricky it can be to do something as simple as organize your Dropbox folder:
@@ -245,3 +246,5 @@ So, with all that out the way, here's what we have:
 - Be as consistent as possible.
 
 And this will be my last word on the subject. Until, that is, I change my mind or forget.
+
+<small><em>Discuss: [Twitter](https://twitter.com/wincent/status/1044167354295480320)</em></small>
