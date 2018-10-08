@@ -2,7 +2,7 @@
 
 set -e
 
-if tmux has-session -t masochist 2> /dev/null; then
+if tmux has-session -t=masochist 2> /dev/null; then
   tmux attach -t masochist
   exit
 fi
