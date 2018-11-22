@@ -101,7 +101,9 @@ export function babel() {
 }
 
 export function graphql() {
-  return gulp.src(['src/__generated__/*.txt']).pipe(gulp.dest('dist/__generated__'));
+  return gulp
+    .src(['src/__generated__/*.txt'])
+    .pipe(gulp.dest('dist/__generated__'));
 }
 
 export const build = gulp.parallel(babel, graphql, webpack);
@@ -119,7 +121,7 @@ if (process.env.NODE_ENV !== 'production') {
   watch = function watch() {
     watching = true;
     gulp.watch('src/**/*.js', build);
-  }
+  };
 
   gulp.task('default', watch);
 
@@ -138,13 +140,30 @@ if (process.env.NODE_ENV !== 'production') {
       .pipe(gulp.dest('src'));
   };
 
-  test = function test() {
-    return child_process.execFile('jest', ['--forceExit']);
-  };
+  function exec(executable, args) {
+    return callback => {
+      child_process
+        .execFile(executable, args, (error, stdout, stderr) => {
+          if (stdout) {
+            log(stdout);
+          }
+          if (stderr) {
+            log(stderr);
+          }
+        })
+        .on('close', (code, signal) => {
+          callback(
+            code === 0
+              ? undefined
+              : new Error(`${executable} ${args.join(' ')}: exit ${code}`),
+          );
+        });
+    };
+  }
 
-  typecheck = function typecheck() {
-    return child_process.execFile('flow', ['check', '--color=always', 'src']);
-  };
+  test = exec('jest', ['--color', '--forceExit']);
+
+  typecheck = exec('flow', ['check', '--color=always', 'src']);
 
   gulp.task('js', gulp.parallel(babel, lint, test, typecheck));
 } else {
@@ -153,11 +172,4 @@ if (process.env.NODE_ENV !== 'production') {
 
 export const flow = typecheck;
 
-export {
-  fix,
-  js,
-  lint,
-  test,
-  typecheck,
-  watch,
-};
+export {fix, js, lint, test, typecheck, watch};
