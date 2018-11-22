@@ -56,61 +56,61 @@ function prepareTagParams(params) {
 export default [
   {
     path: '/',
-    action: PostsRoute,
+    ...PostsRoute,
   },
   {
     path: '/blog',
-    action: PostsRoute,
+    ...PostsRoute,
   },
   {
     path: '/blog/:id',
-    action: PostRoute,
     prepare: getPrepareParams('Post'),
+    ...PostRoute,
   },
   {
     path: '/pages/:id',
-    action: PageRoute,
     prepare: getPrepareParams('Page'),
+    ...PageRoute,
   },
   {
     path: '/search',
-    action: SearchRoute,
+    ...SearchRoute,
   },
   {
     path: '/search/:q',
-    action: SearchRoute,
+    ...SearchRoute,
   },
   {
     path: '/snippets',
-    action: SnippetsRoute,
+    ...SnippetsRoute,
   },
   {
     path: `/snippets/:id.:format(${markupExtensions.join('|')})`,
-    action: SnippetSourceRoute,
     prepare: getPrepareParams('Snippet'),
+    ...SnippetSourceRoute,
   },
   {
     path: '/snippets/:id',
-    action: SnippetRoute,
     prepare: getPrepareParams('Snippet'),
+    ...SnippetRoute,
   },
   {
     path: '/tags',
-    action: TagsRoute,
+    ...TagsRoute,
   },
   {
     path: '/tags/:id',
-    action: TagRoute,
     prepare: prepareTagParams,
+    ...TagRoute,
   },
   {
     path: '/wiki',
-    action: ArticlesRoute,
+    ...ArticlesRoute,
   },
   {
     path: '/wiki/:id',
-    action: ArticleRoute,
     prepare: prepareArticleParams,
+    ...ArticleRoute,
   },
   {
     // Catch-all.
