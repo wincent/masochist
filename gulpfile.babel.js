@@ -34,7 +34,7 @@ const babelOptions = {
       'env',
       {
         targets: {
-          node: '8.5.0',
+          node: '10.13.0',
         },
       },
     ],
