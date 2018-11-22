@@ -12,20 +12,12 @@ import routeConfig from './routeConfig';
  */
 function resolve(context, params) {
   const {action, prepare} = context.route;
-  if (typeof action !== 'function') {
-    return null;
-  }
-  if (typeof prepare === 'function') {
-    const preparedParams = prepare(params);
+  if (typeof action === 'function') {
     return action(
-      {
-        ...context,
-        params: preparedParams,
-      },
-      preparedParams,
+      context,
+      typeof prepare === 'function' ? prepare(params) : params,
     );
   }
-  return action(context, params);
 }
 
 type History = {

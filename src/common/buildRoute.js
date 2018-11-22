@@ -8,7 +8,7 @@ import withContext from './withContext';
 
 export default function buildRoute(query, config) {
   return {
-    action: async function action({api, params, variables: overrides}, extra) {
+    action: async function action({api, variables: overrides}, params) {
       const {environment} = api;
       const variables =
         typeof config.variables === 'function'
