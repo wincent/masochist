@@ -4,23 +4,28 @@ import routeConfig from './routeConfig';
 
 const CATCH_ALL_ROUTE = '*';
 
-let regexen = null;
+let routeMap = null;
 
-function getRegexen() {
-  if (!regexen) {
-    regexen = [];
-    routeConfig.forEach(({path}) => {
-      if (path !== CATCH_ALL_ROUTE) {
-        regexen.push(pathToRegexp(path));
-      }
-    });
+function getRouteMap() {
+  if (!routeMap) {
+    routeMap = new Map(
+      routeConfig.map(config => {
+        if (config.path !== CATCH_ALL_ROUTE) {
+          return [pathToRegexp(config.path), config];
+        }
+      }).filter(Boolean)
+    );
   }
-  return regexen;
+  return routeMap;
 }
 
 /**
  * Matches paths only.
  */
 export default function matchRoute(path) {
-  return getRegexen().findIndex(regex => regex.test(path)) !== -1;
+  for (let [regexp, route] of getRouteMap()) {
+    if (regexp.test(path)) {
+      return route;
+    }
+  }
 }
