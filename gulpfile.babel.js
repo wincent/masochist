@@ -1,3 +1,4 @@
+import colors from 'ansi-colors';
 import log from 'fancy-log';
 import gulp from 'gulp';
 import babel from 'gulp-babel';
@@ -54,13 +55,13 @@ function ringBell() {
  */
 function wrap(stream) {
   stream.on('error', error => {
-    log(gutil.colors.red(error.message));
+    log(colors.red(error.message));
     log(error.stack);
     if (watching) {
-      log(gutil.colors.yellow('[aborting]'));
+      log(colors.yellow('[aborting]'));
       stream.end();
     } else {
-      log(gutil.colors.yellow('[exiting]'));
+      log(colors.yellow('[exiting]'));
       process.exit(1);
     }
     ringBell();
