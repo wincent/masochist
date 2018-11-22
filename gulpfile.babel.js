@@ -1,9 +1,10 @@
 import colors from 'ansi-colors';
+import child_process from 'child_process';
 import log from 'fancy-log';
 import gulp from 'gulp';
-import babel from 'gulp-babel';
+import gulpBabel from 'gulp-babel';
 import PluginError from 'plugin-error';
-import webpack from 'webpack';
+import runWebpack from 'webpack';
 import productionConfig from './webpack.production.config.js';
 
 let watching = false;
@@ -69,66 +70,84 @@ function wrap(stream) {
   return stream;
 }
 
-gulp.task('build', ['babel', 'graphql', 'webpack:build']);
-
-gulp.task('webpack:build', callback => {
-  webpack(productionConfig, (error, stats) => {
+export function webpack(callback) {
+  runWebpack(productionConfig, (error, stats) => {
     if (error) {
       ringBell();
-      throw new PluginError('webpack:build', error);
+      throw new PluginError('webpack', error);
     }
     if (stats.compilation.errors && stats.compilation.errors.length) {
       const [firstError, ...remainingErrors] = stats.compilation.errors;
       remainingErrors.forEach(console.log.bind(console));
       ringBell();
-      throw new PluginError('webpack:build', firstError);
+      throw new PluginError('webpack', firstError);
     }
     if (!watching) {
       log('[webpack:build]', stats.toString({colors: true}));
     }
     callback();
   });
-});
+}
 
-gulp.task('babel', () =>
-  gulp
+export function babel() {
+  return gulp
     .src([
       'src/**/*.js',
       '!src/**/__tests__/**/*.js',
       '!src/**/__mocks__/**/*.js',
     ])
-    .pipe(wrap(babel(babelOptions)))
-    .pipe(gulp.dest('dist')),
-);
+    .pipe(wrap(gulpBabel(babelOptions)))
+    .pipe(gulp.dest('dist'));
+}
 
-gulp.task('graphql', () =>
-  gulp.src(['src/__generated__/*.txt']).pipe(gulp.dest('dist/__generated__')),
-);
+export function graphql() {
+  return gulp.src(['src/__generated__/*.txt']).pipe(gulp.dest('dist/__generated__'));
+}
+
+export const build = gulp.parallel(babel, graphql, webpack);
+
+let js;
+let lint;
+let test;
+let typecheck;
+let watch;
 
 if (process.env.NODE_ENV !== 'production') {
   const eslint = require('gulp-eslint');
-  const shell = require('gulp-shell');
 
-  gulp.task('default', ['watch']);
+  watch = function watch() {
+    watching = true;
+    gulp.watch('src/**/*.js', build);
+  }
 
-  gulp.task('flow', ['typecheck']);
+  gulp.task('default', watch);
 
-  gulp.task('js', ['babel', 'lint', 'test', 'typecheck']);
-
-  gulp.task('lint', () =>
-    gulp
+  lint = function lint() {
+    return gulp
       .src('src/**/*.js')
       .pipe(eslint())
-      .pipe(eslint.format()),
-  );
+      .pipe(eslint.format());
+  };
 
-  gulp.task('test', shell.task(['jest --forceExit']));
-  gulp.task('typecheck', shell.task(['flow check --color=always src']));
+  test = function test() {
+    return child_process.execFile('jest', ['--forceExit']);
+  };
 
-  gulp.task('watch', () => {
-    watching = true;
-    gulp.watch('src/**/*.js', ['build']);
-  });
+  typecheck = function typecheck() {
+    return child_process.execFile('flow', ['check', '--color=always', 'src']);
+  };
+
+  gulp.task('js', gulp.parallel(babel, lint, test, typecheck));
 } else {
-  gulp.task('default', ['build']);
+  gulp.task('default', build);
 }
+
+export const flow = typecheck;
+
+export {
+  js,
+  lint,
+  test,
+  typecheck,
+  watch,
+};

@@ -69,7 +69,7 @@
     "glob": "^7.1.2",
     "graphql": "*",
     "graphql-relay": "*",
-    "gulp": "*",
+    "gulp": "4.0.0",
     "gulp-babel": "*",
     "highlight.js": "9.12.0",
     "history": "*",
@@ -98,7 +98,6 @@
   },
   "devDependencies": {
     "gulp-eslint": "*",
-    "gulp-shell": "*",
     "http-proxy": "*",
     "jest": "*",
     "webpack-dev-server": "*"
