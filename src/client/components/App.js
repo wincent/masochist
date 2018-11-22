@@ -66,22 +66,10 @@ export default class App extends React.Component {
     }
   };
 
-  componentDidMount() {
-    document
-      .getElementById('relay-root')
-      .addEventListener('click', this._handleClick);
-  }
-
-  componentWillUnmount() {
-    document
-      .getElementById('relay-root')
-      .removeEventListener('click', this._handleClick);
-  }
-
   render() {
     const {children, showProgress} = this.props;
     return (
-      <div className="app">
+      <div className="app" onClick={this._handleClick}>
         <Nav />
         <section className="app-content container">
           {showProgress ? <Progress /> : null}
