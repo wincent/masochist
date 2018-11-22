@@ -100,7 +100,6 @@ appRoutes.forEach(route => {
       initialEntries: [request.originalUrl],
       initialIndex: 0,
     });
-    const router = createRouter(history);
     const cache = {};
     const environment = new Environment({
       network: Network.create((operation, variables) => {
@@ -119,11 +118,11 @@ appRoutes.forEach(route => {
       environment,
       fetchQuery: fetchQuery.bind(null, environment),
     };
+    const router = createRouter(history, api);
 
     function resolve(location) {
       return router
         .resolve({
-          api,
           pathname: location.pathname,
         })
         .then(({component, description, title}) => {

@@ -28,7 +28,6 @@ import ScrollBehavior from 'scroll-behavior';
 import createHistory from 'history/createBrowserHistory';
 
 const history = createHistory();
-const router = createRouter(history);
 
 // First render comes from the server, subsequent renders happen on client.
 let render = function(element, container) {
@@ -40,8 +39,6 @@ let render = function(element, container) {
 const cache = new Map();
 const CACHE_SIZE = 20;
 
-// TODO: extract a lot of this into a common place where it can be used on both
-// server and client?
 const environment = new Environment({
   network: Network.create((operation, variables) => {
     const body = getRequestBody(operation, variables);
@@ -86,6 +83,8 @@ const api = {
     return snapshot.data;
   },
 };
+
+const router = createRouter(history, api);
 
 const root = document.getElementById('relay-root');
 
@@ -167,7 +166,6 @@ function resolve(location, variables) {
 
   return router
     .resolve({
-      api,
       pathname: location.pathname,
       variables,
     })
