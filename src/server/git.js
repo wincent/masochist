@@ -16,7 +16,8 @@ export const GitError = createErrorClass('GitError', function(
 
 // TODO: expose streamy version of this
 function run(command, ...args: Array<string>): Promise<string> {
-  const promise = new Promise((resolve, reject) => {
+  let isPending = true;
+  return new Promise((resolve, reject) => {
     const child = spawn(command, args);
     let stderr = '';
     let stdout = '';
@@ -25,14 +26,16 @@ function run(command, ...args: Array<string>): Promise<string> {
     child.stdout.on('data', data => (stdout += data));
 
     child.on('error', error => {
-      if (promise.isPending()) {
+      if (isPending) {
+        isPending = false;
         reject(error);
       }
     });
 
     child.on('close', code => {
-      if (code) {
-        if (promise.isPending()) {
+      if (isPending) {
+        isPending = false;
+        if (code) {
           const commandString = [command, ...args].join(' ');
           const message = [
             `git error code (${code}) running \`${commandString}\``,
@@ -40,14 +43,12 @@ function run(command, ...args: Array<string>): Promise<string> {
             stderr,
           ].join('\n');
           reject(new GitError(message, code));
+        } else {
+          resolve(stdout);
         }
-      } else {
-        resolve(stdout);
       }
     });
   });
-
-  return promise;
 }
 
 export default function git(...args: Array<string>): Promise {
