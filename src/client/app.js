@@ -122,7 +122,7 @@ const scrollBehavior = new ScrollBehavior({
   },
 });
 
-const unlisten = history.listen(async (location, action) => {
+history.listen(async (location, action) => {
   if (location.state && location.state.refetchToken) {
     // A refetch container wants to update the URL without triggering a
     // full navigation (which would cause the compenent to unmount then
