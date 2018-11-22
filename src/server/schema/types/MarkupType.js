@@ -63,7 +63,7 @@ function getMarkdownRenderer(baseLevel: ?number) {
     html: true, // Let HTML through.
     linkify: true,
     typographer: true, // (c), ... etc get transformed.
-    quotes: `""''`, // Death to "Smart" quotes.
+    quotes: '""\'\'', // Death to "Smart" quotes.
   });
 
   // Start headings at `baseLevel`.

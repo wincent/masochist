@@ -106,6 +106,7 @@ export function graphql() {
 
 export const build = gulp.parallel(babel, graphql, webpack);
 
+let fix;
 let js;
 let lint;
 let test;
@@ -129,6 +130,14 @@ if (process.env.NODE_ENV !== 'production') {
       .pipe(eslint.format());
   };
 
+  fix = function fix() {
+    return gulp
+      .src('src/**/*.js')
+      .pipe(eslint({fix: true}))
+      .pipe(eslint.format())
+      .pipe(gulp.dest('src'));
+  };
+
   test = function test() {
     return child_process.execFile('jest', ['--forceExit']);
   };
@@ -145,6 +154,7 @@ if (process.env.NODE_ENV !== 'production') {
 export const flow = typecheck;
 
 export {
+  fix,
   js,
   lint,
   test,
