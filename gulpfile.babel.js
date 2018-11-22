@@ -2,7 +2,7 @@ import colors from 'ansi-colors';
 import log from 'fancy-log';
 import gulp from 'gulp';
 import babel from 'gulp-babel';
-import gutil from 'gulp-util';
+import PluginError from 'plugin-error';
 import webpack from 'webpack';
 import productionConfig from './webpack.production.config.js';
 
@@ -75,13 +75,13 @@ gulp.task('webpack:build', callback => {
   webpack(productionConfig, (error, stats) => {
     if (error) {
       ringBell();
-      throw new gutil.PluginError('webpack:build', error);
+      throw new PluginError('webpack:build', error);
     }
     if (stats.compilation.errors && stats.compilation.errors.length) {
       const [firstError, ...remainingErrors] = stats.compilation.errors;
       remainingErrors.forEach(console.log.bind(console));
       ringBell();
-      throw new gutil.PluginError('webpack:build', firstError);
+      throw new PluginError('webpack:build', firstError);
     }
     if (!watching) {
       log('[webpack:build]', stats.toString({colors: true}));
