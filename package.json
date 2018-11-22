@@ -75,6 +75,7 @@
     "isomorphic-fetch": "*",
     "markdown-it": "8.4.0",
     "memcached": "*",
+    "natives": "1.1.6",
     "postcss": "*",
     "postcss-loader": "*",
     "prettier": "*",
@@ -99,6 +100,9 @@
     "http-proxy": "*",
     "jest": "*",
     "webpack-dev-server": "*"
+  },
+  "resolutions": {
+    "natives": "1.1.6"
   },
   "jest": {
     "coverageDirectory": "coverage",
