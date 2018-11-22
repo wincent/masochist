@@ -71,7 +71,6 @@
     "graphql-relay": "*",
     "gulp": "*",
     "gulp-babel": "*",
-    "gulp-util": "*",
     "highlight.js": "9.12.0",
     "history": "*",
     "isomorphic-fetch": "*",
