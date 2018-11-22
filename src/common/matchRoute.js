@@ -1,8 +1,9 @@
-import {pathToRegexp} from 'universal-router/browser';
+import Router from 'universal-router';
 
 import routeConfig from './routeConfig';
 
 const CATCH_ALL_ROUTE = '*';
+const {pathToRegexp} = Router;
 
 let routeMap = null;
 
