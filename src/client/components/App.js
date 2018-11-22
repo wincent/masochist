@@ -66,10 +66,33 @@ export default class App extends React.Component {
     }
   };
 
+  _handleMouseOver = event => {
+    let element = event.target;
+    while (element) {
+      if (element.tagName === 'A') {
+        const href = element.getAttribute('href');
+        if (!href || !href.match(/^\//)) {
+          // Not a relatve URL; let the browser handle it.
+          return;
+        }
+        let route = matchRoute(href);
+        if (route) {
+          // Prefetch by resolving the route but not rendering.
+          this.props.router.resolve({pathname: href});
+        }
+        return;
+      }
+      element = element.parentNode;
+    }
+  };
+
   render() {
     const {children, showProgress} = this.props;
     return (
-      <div className="app" onClick={this._handleClick}>
+      <div
+        className="app"
+        onClick={this._handleClick}
+        onMouseOver={this._handleMouseOver}>
         <Nav />
         <section className="app-content container">
           {showProgress ? <Progress /> : null}
