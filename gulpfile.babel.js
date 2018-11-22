@@ -1,3 +1,4 @@
+import log from 'fancy-log';
 import gulp from 'gulp';
 import babel from 'gulp-babel';
 import gutil from 'gulp-util';
@@ -53,13 +54,13 @@ function ringBell() {
  */
 function wrap(stream) {
   stream.on('error', error => {
-    gutil.log(gutil.colors.red(error.message));
-    gutil.log(error.stack);
+    log(gutil.colors.red(error.message));
+    log(error.stack);
     if (watching) {
-      gutil.log(gutil.colors.yellow('[aborting]'));
+      log(gutil.colors.yellow('[aborting]'));
       stream.end();
     } else {
-      gutil.log(gutil.colors.yellow('[exiting]'));
+      log(gutil.colors.yellow('[exiting]'));
       process.exit(1);
     }
     ringBell();
@@ -82,7 +83,7 @@ gulp.task('webpack:build', callback => {
       throw new gutil.PluginError('webpack:build', firstError);
     }
     if (!watching) {
-      gutil.log('[webpack:build]', stats.toString({colors: true}));
+      log('[webpack:build]', stats.toString({colors: true}));
     }
     callback();
   });

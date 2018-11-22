@@ -60,6 +60,7 @@
     "express": "*",
     "express-graphql": "*",
     "extract-text-webpack-plugin": "*",
+    "fancy-log": "*",
     "file-loader": "*",
     "flow-bin": "*",
     "flow-typed": "*",
