@@ -77,8 +77,7 @@ export default class App extends React.Component {
         }
         let route = matchRoute(href);
         if (route) {
-          // Prefetch by resolving the route but not rendering.
-          this.props.router.resolve({pathname: href});
+          this.props.router.resolve({pathname: href, prefetch: true});
         }
         return;
       }

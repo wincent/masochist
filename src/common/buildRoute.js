@@ -8,7 +8,7 @@ import withContext from './withContext';
 
 export default function buildRoute(query, config) {
   return {
-    action: async function action({api, variables: overrides}, params) {
+    action: async function action({api, prefetch, variables: overrides}, params) {
       const {environment} = api;
       const variables =
         typeof config.variables === 'function'
@@ -27,7 +27,7 @@ export default function buildRoute(query, config) {
           : config.title) || '';
       const description = config.description ? config.description(data) : null;
 
-      if (inBrowser) {
+      if (inBrowser && !prefetch) {
         document.title = formatTitle(title);
 
         // Disable garbage collection so that we can make back button work without
