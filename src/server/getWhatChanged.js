@@ -3,6 +3,7 @@
  */
 
 import git from './git';
+import run from './run';
 
 opaque type CommitLog = string;
 
@@ -16,7 +17,7 @@ export default function getWhatChanged(
   // :100644 100644 6535626... ec6d229... M^@src/bin/updateIndices.js^@^@
   // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
   // :100644 100644 12d2393... 600f5ef... M^@package.json^@
-  return git(
+  return run(git(
     'log',
     '--no-renames',
     '--pretty=format:%n%H %at %ct',
@@ -25,7 +26,7 @@ export default function getWhatChanged(
     revisions,
     '--',
     path,
-  );
+  ));
 }
 
 export async function forEachCommit(

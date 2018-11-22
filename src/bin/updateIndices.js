@@ -25,6 +25,7 @@ import getWhatChanged, {forEachCommit} from '../server/getWhatChanged';
 import git from '../server/git';
 import {getTimestamps, getCacheKey, loadContent} from '../server/loadContent';
 import redis from '../server/redis';
+import run from '../server/run';
 
 /**
  * Rather than printing out one long line (which will get buffered inside our
@@ -69,7 +70,7 @@ async function getIsAncestor(
 ): Promise<boolean> {
   if (potentialAncestor) {
     try {
-      await git('merge-base', '--is-ancestor', potentialAncestor, commit);
+      await run(git('merge-base', '--is-ancestor', potentialAncestor, commit));
       // Exit code 0 means it's an ancestor.
       return Promise.resolve(true);
     } catch (error) {
@@ -152,7 +153,7 @@ async function getFileUpdates(range, callback) {
 }
 
 (async () => {
-  const head = (await git('rev-parse', 'content')).trim();
+  const head = (await run(git('rev-parse', 'content'))).trim();
   const lastIndexedHash = await redis.get(LAST_INDEXED_HASH);
   if (head === lastIndexedHash) {
     log('Index already up-to-date at revision %s', head);

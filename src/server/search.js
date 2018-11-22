@@ -3,6 +3,7 @@
  */
 
 import git, {GitError} from './git';
+import run from './run';
 
 type SearchResult = {
   id: string,
@@ -13,7 +14,7 @@ let corpus = null;
 
 async function getCorpus(): Promise<Array<SearchResult>> {
   if (!corpus) {
-    const output = await git(
+    const output = await run(git(
       'ls-tree',
       '-r', // Recurse.
       '-z', // NUL-terminate.
@@ -24,7 +25,7 @@ async function getCorpus(): Promise<Array<SearchResult>> {
       'content/pages',
       'content/snippets',
       'content/wiki',
-    );
+    ));
     corpus = [];
     const regExp = new RegExp(
       'content/' + // Prefix.
@@ -128,15 +129,15 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
   });
 
   // Now add content-based results.
-  const head = (await git('rev-parse', 'content')).trim();
-  const tree = (await git('show', '-s', '--format=%T', head)).trim();
+  const head = (await run(git('rev-parse', 'content'))).trim();
+  const tree = (await run(git('show', '-s', '--format=%T', head))).trim();
   let hits = '';
   if (atoms.length) {
     try {
-      hits = await git(...args, tree, '--', ...directories);
+      hits = await run(git(...args, tree, '--', ...directories));
     } catch (e) {
       // `git grep` returns an exit status of 1 to indicate "nothing found".
-      if (!(e instanceof GitError) || e.code !== 1) {
+      if (e.code !== 1) {
         throw e;
       }
     }

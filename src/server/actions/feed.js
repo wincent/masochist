@@ -10,6 +10,7 @@ import {array} from '../../common/checks';
 import Cache from '../Cache';
 import {HOST, SCHEME} from '../constants';
 import git from '../git';
+import run from '../run';
 import runQuery from '../runQuery';
 import stripTags from '../stripTags';
 
@@ -69,7 +70,7 @@ graphql`
 `;
 
 export default (async function feed() {
-  const head = (await git('rev-parse', 'content')).trim();
+  const head = (await run(git('rev-parse', 'content'))).trim();
   const key = `blog:rss:${FEED_VERSION}:${head}`;
   return await Cache.get(key, async () => {
     const feed = new RSS({

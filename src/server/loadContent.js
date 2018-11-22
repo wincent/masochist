@@ -11,6 +11,7 @@ import {Extensions} from './Markup';
 import delay from './delay';
 import getWhatChanged, {forEachCommit} from '../server/getWhatChanged';
 import git from './git';
+import run from './run';
 
 type LoaderOptions = {
   subdirectory: 'blog' | 'pages' | 'snippets' | 'wiki',
@@ -47,9 +48,9 @@ const timestamps = {
 
 export async function loadContent(options: LoaderOptions): Promise<*> {
   const {subdirectory, file} = options;
-  const head = (await git('rev-parse', 'content')).trim();
+  const head = (await run(git('rev-parse', 'content'))).trim();
   const commit = options.commit || head;
-  const tree = (await git('show', '-s', '--format=%T', commit)).trim();
+  const tree = (await run(git('show', '-s', '--format=%T', commit))).trim();
   const cacheKey = getCacheKey(subdirectory, file, commit);
 
   while (timestamps.head === undefined) {
@@ -100,7 +101,7 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
       possibleNames = getFilenamesWithExtensions(subdirectory, file);
     }
 
-    let treeEntry = (await git(
+    let treeEntry = (await run(git(
       'ls-tree',
       '--full-tree',
       '-r',
@@ -108,7 +109,7 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
       tree,
       '--',
       ...possibleNames,
-    )).match(/^\d+ (\w+) ([0-9a-f]+)\t(.+)\.(.+?)(\0|$)/);
+    ))).match(/^\d+ (\w+) ([0-9a-f]+)\t(.+)\.(.+?)(\0|$)/);
 
     if (!treeEntry) {
       return null;
@@ -120,7 +121,7 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
     }
 
     const normalizedFile = path.basename(filename, '.' + extension);
-    const blob = await git('cat-file', 'blob', hash);
+    const blob = await run(git('cat-file', 'blob', hash));
     const {body, tags, ...metadata} = unpackContent(blob);
     const entry = filename + '.' + extension;
     const createdAt = new Date(timestamps.cache[entry].createdAt * 1000);
