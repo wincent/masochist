@@ -29,7 +29,7 @@ export default class HTTPError extends React.Component {
         <h1>{message}</h1>
         {this.props.children}
         <p>
-          Think you've found a problem? Please {' '}
+          Think you've found a problem? Please{' '}
           <a href="https://github.com/wincent/masochist/issues/new">
             report it
           </a>{' '}

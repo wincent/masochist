@@ -19,8 +19,8 @@ export default createErrorClass('ExternalRedirectError', function(
   target: string,
   code: number,
 ) {
-  const message = `HTTP/1.1 ${code} ${descriptionForCode(
-    code,
-  )} - Location: ${target}`;
+  const message = `HTTP/1.1 ${code} ${descriptionForCode(code)} - Location: ${
+    target
+  }`;
   return {message, code, target};
 });

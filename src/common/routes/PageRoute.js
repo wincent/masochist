@@ -31,8 +31,8 @@ export default buildRoute(
           `No page found with id: ${id}`,
           (
             <p>
-              Try inspecting <Link to="/tags/pages">the pages index</Link> and {' '}
-              <Link to="/tags">the tags listing</Link>, or using {' '}
+              Try inspecting <Link to="/tags/pages">the pages index</Link> and{' '}
+              <Link to="/tags">the tags listing</Link>, or using{' '}
               <Link to="/search">the site search</Link>.
             </p>
           ),

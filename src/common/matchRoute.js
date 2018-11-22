@@ -9,11 +9,13 @@ let routeMap = null;
 function getRouteMap() {
   if (!routeMap) {
     routeMap = new Map(
-      routeConfig.map(config => {
-        if (config.path !== CATCH_ALL_ROUTE) {
-          return [pathToRegexp(config.path), config];
-        }
-      }).filter(Boolean)
+      routeConfig
+        .map(config => {
+          if (config.path !== CATCH_ALL_ROUTE) {
+            return [pathToRegexp(config.path), config];
+          }
+        })
+        .filter(Boolean),
     );
   }
   return routeMap;

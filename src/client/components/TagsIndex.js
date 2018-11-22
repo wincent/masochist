@@ -53,7 +53,8 @@ class TagsIndex extends React.Component {
           onChange={event =>
             this.setState({
               filterString: event.currentTarget.value,
-            })}
+            })
+          }
           placeholder="Tags..."
           type="text"
           value={this.state.filterString}

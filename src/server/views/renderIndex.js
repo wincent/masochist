@@ -39,9 +39,13 @@ export default function renderIndex(locals: {
         <title>${formatTitle(title)}</title>
         <meta property="og:title" content="${title}">
         <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
-        ${description
-          ? template`<meta property="og:description" content="${description}">`
-          : null}
+        ${
+          description
+            ? template`<meta property="og:description" content="${
+                description
+              }">`
+            : null
+        }
         ${canonical.then(
           c =>
             c
@@ -51,12 +55,20 @@ export default function renderIndex(locals: {
             `
               : null,
         )}
-        ${alternate
-          ? template`<link rel="alternate" type="application/rss+xml" href="${alternate}">`
-          : null}
-        ${home
-          ? template`<link rel="home" type="application/rss+xml" href="${home}">`
-          : null}
+        ${
+          alternate
+            ? template`<link rel="alternate" type="application/rss+xml" href="${
+                alternate
+              }">`
+            : null
+        }
+        ${
+          home
+            ? template`<link rel="home" type="application/rss+xml" href="${
+                home
+              }">`
+            : null
+        }
       </head>
       <body>
         <div id="relay-root">${pageContent}</div>
