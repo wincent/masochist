@@ -18,6 +18,7 @@ export default function getWhatChanged(
   // :100644 100644 12d2393... 600f5ef... M^@package.json^@
   return git(
     'log',
+    '--no-renames',
     '--pretty=format:%n%H %at %ct',
     '--raw',
     '-z',
