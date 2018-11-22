@@ -2,13 +2,13 @@
  * @flow
  */
 
-import Promise from 'bluebird';
 import redis from 'redis';
+import {promisify} from 'util';
 import {string} from '../common/checks';
 import {REDIS_CACHE_VERSION, REDIS_KEY_PREFIX} from '../server/constants';
 
-Promise.promisifyAll(redis.RedisClient.prototype);
-Promise.promisifyAll(redis.Multi.prototype);
+redis.RedisClient.prototype.getAsync = promisify(redis.RedisClient.prototype.get);
+redis.Multi.prototype.execAsync = promisify(redis.Multi.prototype.exec);
 
 const redisClient = redis.createClient();
 

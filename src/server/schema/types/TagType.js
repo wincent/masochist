@@ -1,4 +1,3 @@
-import Promise from 'bluebird';
 import {
   GraphQLInt,
   GraphQLNonNull,

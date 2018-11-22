@@ -2,7 +2,6 @@
  * @flow
  */
 
-import Promise from 'bluebird';
 import {spawn} from 'child_process';
 import path from 'path';
 import createErrorClass from '../common/createErrorClass';

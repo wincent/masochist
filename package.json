@@ -48,7 +48,6 @@
     "babel-preset-react": "*",
     "babel-preset-stage-0": "*",
     "babel-register": "*",
-    "bluebird": "*",
     "body-parser": "*",
     "classnames": "*",
     "css-loader": "*",

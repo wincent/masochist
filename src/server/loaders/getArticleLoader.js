@@ -2,7 +2,6 @@
  * @flow
  */
 
-import Promise from 'bluebird';
 import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Article from '../models/Article';
