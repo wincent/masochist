@@ -33,10 +33,6 @@
   },
   "license": "CC-BY-NC-SA-4.0",
   "private": true,
-  "devEngines": {
-    "node": ">= 8.x",
-    "npm": ">= 2.x"
-  },
   "dependencies": {
     "ansi-colors": "*",
     "assets-webpack-plugin": "*",
