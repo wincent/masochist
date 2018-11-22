@@ -45,7 +45,7 @@ export async function forEachCommit(
       // Modes.
       ':\\d{6} \\d{6} ' +
       // Before/after tree or blob.
-      '[a-f0-9]+\\.\\.\\. [a-f0-9]+\\.\\.\\. ' +
+      '[a-f0-9]+(?:\\.\\.\\.)? [a-f0-9]+(?:\\.\\.\\.)? ' +
       // Added, Deleted or Modified.
       '([ADM])\0' +
       // Path, optional commit terminator.
