@@ -39,6 +39,5 @@ export default function createRouter(
     },
   });
   router.history = history;
-  router.api = api;
   return router;
 }
