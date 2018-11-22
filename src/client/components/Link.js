@@ -29,7 +29,8 @@ const Link = (
         context.router.history.push(historyTo || to);
       }
     }}
-    {...props}>
+    {...props}
+  >
     {children}
   </a>
 );

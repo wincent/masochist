@@ -34,7 +34,9 @@ class Tags extends React.Component {
     });
     return (
       <ul className={classes}>
-        {tags.map(tag => <TagLink key={tag} tag={tag} />)}
+        {tags.map(tag => (
+          <TagLink key={tag} tag={tag} />
+        ))}
       </ul>
     );
   }

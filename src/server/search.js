@@ -14,18 +14,20 @@ let corpus = null;
 
 async function getCorpus(): Promise<Array<SearchResult>> {
   if (!corpus) {
-    const output = await run(git(
-      'ls-tree',
-      '-r', // Recurse.
-      '-z', // NUL-terminate.
-      '--name-only', // Ignore metadata.
-      'content', // Branch.
-      '--', // Subsequent arguments are paths.
-      'content/blog',
-      'content/pages',
-      'content/snippets',
-      'content/wiki',
-    ));
+    const output = await run(
+      git(
+        'ls-tree',
+        '-r', // Recurse.
+        '-z', // NUL-terminate.
+        '--name-only', // Ignore metadata.
+        'content', // Branch.
+        '--', // Subsequent arguments are paths.
+        'content/blog',
+        'content/pages',
+        'content/snippets',
+        'content/wiki',
+      ),
+    );
     corpus = [];
     const regExp = new RegExp(
       'content/' + // Prefix.

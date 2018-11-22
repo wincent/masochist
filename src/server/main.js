@@ -73,7 +73,10 @@ function templateHandler(renderer, locals = {}) {
           (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js),
       ),
     });
-    stream.pipe(response, {end: false});
+    stream.pipe(
+      response,
+      {end: false},
+    );
     stream.on('end', () => response.end());
   };
 }

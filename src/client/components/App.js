@@ -91,7 +91,8 @@ export default class App extends React.Component {
       <div
         className="app"
         onClick={this._handleClick}
-        onMouseOver={this._handleMouseOver}>
+        onMouseOver={this._handleMouseOver}
+      >
         <Nav />
         <section className="app-content container">
           {showProgress ? <Progress /> : null}

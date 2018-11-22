@@ -130,7 +130,8 @@ class Search extends React.Component {
         <h1>
           <Link
             to={getSearchURL(trimmedQuery, {display: true})}
-            historyTo={getSearchURL(trimmedQuery)}>
+            historyTo={getSearchURL(trimmedQuery)}
+          >
             {trimmedQuery || 'Search'}
           </Link>
         </h1>
@@ -142,7 +143,8 @@ class Search extends React.Component {
                 refetchToken: getRefetchToken(),
               });
               this._handleRefetch();
-            }}>
+            }}
+          >
             <input
               className="eight columns"
               id="search-input"

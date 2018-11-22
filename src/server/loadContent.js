@@ -101,15 +101,9 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
       possibleNames = getFilenamesWithExtensions(subdirectory, file);
     }
 
-    let treeEntry = (await run(git(
-      'ls-tree',
-      '--full-tree',
-      '-r',
-      '-z',
-      tree,
-      '--',
-      ...possibleNames,
-    ))).match(/^\d+ (\w+) ([0-9a-f]+)\t(.+)\.(.+?)(\0|$)/);
+    let treeEntry = (await run(
+      git('ls-tree', '--full-tree', '-r', '-z', tree, '--', ...possibleNames),
+    )).match(/^\d+ (\w+) ([0-9a-f]+)\t(.+)\.(.+?)(\0|$)/);
 
     if (!treeEntry) {
       return null;

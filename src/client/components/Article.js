@@ -36,7 +36,8 @@ class Article extends React.Component {
           <a
             className="button"
             href={article.editURL}
-            title="Edit this article on GitHub">
+            title="Edit this article on GitHub"
+          >
             Edit
           </a>
         </h1>

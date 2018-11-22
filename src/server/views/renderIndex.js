@@ -41,32 +41,25 @@ export default function renderIndex(locals: {
         <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
         ${
           description
-            ? template`<meta property="og:description" content="${
-                description
-              }">`
+            ? template`<meta property="og:description" content="${description}">`
             : null
         }
-        ${canonical.then(
-          c =>
-            c
-              ? template`
+        ${canonical.then(c =>
+          c
+            ? template`
               <link rel="canonical" href="${canonical}">
               <meta property="og:url" content="${canonical}">
             `
-              : null,
+            : null,
         )}
         ${
           alternate
-            ? template`<link rel="alternate" type="application/rss+xml" href="${
-                alternate
-              }">`
+            ? template`<link rel="alternate" type="application/rss+xml" href="${alternate}">`
             : null
         }
         ${
           home
-            ? template`<link rel="home" type="application/rss+xml" href="${
-                home
-              }">`
+            ? template`<link rel="home" type="application/rss+xml" href="${home}">`
             : null
         }
       </head>

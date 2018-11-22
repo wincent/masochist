@@ -28,7 +28,11 @@ class When extends React.Component {
   };
 
   render() {
-    const {createdAt, history: {url}, updatedAt} = this.props.data;
+    const {
+      createdAt,
+      history: {url},
+      updatedAt,
+    } = this.props.data;
     if (
       relativizeDate(createdAt).humanReadable ===
       relativizeDate(updatedAt).humanReadable

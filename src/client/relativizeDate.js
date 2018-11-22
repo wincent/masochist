@@ -38,31 +38,31 @@ export default function relativizeDate(dateString: string): TimeInfo {
   } else if (seconds < 3600) {
     // 60 minutes
     humanReadable = Math.floor(seconds / 60) + ' minutes ago';
-    ttl = 60 - seconds % 60;
+    ttl = 60 - (seconds % 60);
   } else if (seconds < 7200) {
     humanReadable = 'an hour ago';
     ttl = 7200 - seconds;
   } else if (seconds < 86400) {
     // 24 hours
     humanReadable = Math.floor(seconds / 3600) + ' hours ago';
-    ttl = 3600 - seconds % 3600;
+    ttl = 3600 - (seconds % 3600);
   } else {
     const days = Math.floor(seconds / 86400);
     if (days === 1) {
       humanReadable = 'yesterday';
-      ttl = 86400 - seconds % 86400;
+      ttl = 86400 - (seconds % 86400);
     } else if (days <= 7) {
       humanReadable = days + ' days ago';
-      ttl = 86400 - seconds % 86400;
+      ttl = 86400 - (seconds % 86400);
     } else {
       const secondsPerWeek = 86400 * 7;
       const weeks = Math.floor(days / 7);
       if (weeks === 1) {
         humanReadable = 'a week ago';
-        ttl = secondsPerWeek - seconds % secondsPerWeek;
+        ttl = secondsPerWeek - (seconds % secondsPerWeek);
       } else if (weeks <= 6) {
         humanReadable = weeks + ' weeks ago';
-        ttl = secondsPerWeek - seconds % secondsPerWeek;
+        ttl = secondsPerWeek - (seconds % secondsPerWeek);
       } else {
         humanReadable = date.toLocaleDateString();
         ttl = Infinity;

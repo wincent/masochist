@@ -7,7 +7,9 @@ import {spawn} from 'child_process';
 import type {Invocation} from './run';
 
 function getError(invocations: Array<Invocation>, code: number): Error {
-  const pipeline = invocations.map(({command, args}) => `${command} ${args.join(' ')}`).join(' | ');
+  const pipeline = invocations
+    .map(({command, args}) => `${command} ${args.join(' ')}`)
+    .join(' | ');
   const error = new Error(`${pipeline}: exit ${code}`);
   error.code = code;
   return error;
@@ -16,7 +18,9 @@ function getError(invocations: Array<Invocation>, code: number): Error {
 /**
  *     return pipe(git('rev-list', '...'), git('diff-tree', '...'));
  */
-export default function pipe(...invocations: Array<Invocation>): Promise<string> {
+export default function pipe(
+  ...invocations: Array<Invocation>
+): Promise<string> {
   let isPending = true;
   return new Promise((resolve, reject) => {
     let invocation = invocations.pop();
