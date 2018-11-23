@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -8,11 +8,7 @@ import Link from './Link';
 
 import type {TagPreview as TagPreviewData} from './__generated__/TagPreview.graphql';
 
-class TagPreview extends React.Component {
-  props: {
-    data: TagPreviewData,
-  };
-
+class TagPreview extends React.Component<{data: TagPreviewData}> {
   render() {
     const {count, name, url} = this.props.data;
     return (

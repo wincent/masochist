@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -22,17 +22,19 @@ const WhenWrapper = ({children, url}) => (
   </div>
 );
 
-class When extends React.Component {
-  props: {
-    data: WhenData,
-  };
-
+class When extends React.Component<{data: WhenData}> {
   render() {
     const {
       createdAt,
       history: {url},
       updatedAt,
     } = this.props.data;
+
+    if (!createdAt || !updatedAt) {
+      // Extremely unlikely but, you know, GraphQL.
+      return null;
+    }
+
     if (
       relativizeDate(createdAt).humanReadable ===
       relativizeDate(updatedAt).humanReadable

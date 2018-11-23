@@ -19,11 +19,11 @@ function prefixKey(key: string): string {
 }
 
 export default {
-  get(key: string): mixed {
+  get(key: string): Promise<mixed> {
     return redisClient.getAsync(prefixKey(key));
   },
 
-  multi(commands: Array<Array<mixed>>): Array<mixed> {
+  multi(commands: Array<Array<mixed>>): Promise<Array<mixed>> {
     const commandsWithPrefixedKeys = commands.map(
       // No Flow support yet for tuples with varags..
       ([command, key, ...args]) => [command, prefixKey(string(key)), ...args],

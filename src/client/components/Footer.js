@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -22,7 +22,7 @@ const StaticFooterLink = ({target, text}) => (
   </li>
 );
 
-export default class Footer extends React.Component {
+export default class Footer extends React.Component<{}> {
   render() {
     return (
       <footer>

@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import PropTypes from 'prop-types';
@@ -25,21 +25,22 @@ const PAGE_SIZE = 10;
 // only ever one mounted ArticlesIndex instance.
 let fragmentVariables;
 
-class ArticlesIndex extends React.Component {
-  props: {
-    data: ArticlesIndexData,
-    relay: RelayPaginationProp,
-  };
-  state: {
-    isLoading: boolean,
-  };
+type Props = {
+  data: ArticlesIndexData,
+  relay: RelayPaginationProp,
+};
+type State = {
+  isLoading: boolean,
+};
+
+class ArticlesIndex extends React.Component<Props, State> {
   _disposable: ?Disposable;
 
   static contextTypes = {
     router: PropTypes.object,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {isLoading: false};
   }

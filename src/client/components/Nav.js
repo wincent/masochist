@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import PropTypes from 'prop-types';
@@ -37,7 +37,7 @@ function getActiveRoutePrefix(path) {
   return '/blog';
 }
 
-export default class Nav extends React.Component {
+export default class Nav extends React.Component<{}, {isOpen: boolean}> {
   props: {};
   state: {
     isOpen: boolean,
@@ -52,7 +52,7 @@ export default class Nav extends React.Component {
     this.state = {isOpen: false};
   }
 
-  _handleToggle = (event: SyntheticEvent) => {
+  _handleToggle = (event: SyntheticEvent<HTMLDivElement>) => {
     event.preventDefault();
     this.setState(({isOpen}) => ({isOpen: !isOpen}));
   };

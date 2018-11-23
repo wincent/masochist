@@ -2,7 +2,7 @@
  * @flow
  */
 
-type TimeInfo = {
+export type TimeInfo = {
   humanReadable: string,
   date: Date,
   ttl: number,

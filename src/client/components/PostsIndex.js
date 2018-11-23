@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import PropTypes from 'prop-types';
@@ -17,14 +17,15 @@ const PAGE_SIZE = 3;
 // See note in `ArticlesIndex`.
 let fragmentVariables;
 
-class PostsIndex extends React.Component {
-  props: {
-    data: PostsIndexData,
-    relay: RelayPaginationProp,
-  };
-  state: {
-    isLoading: boolean,
-  };
+type Props = {
+  data: PostsIndexData,
+  relay: RelayPaginationProp,
+};
+type State = {
+  isLoading: boolean,
+};
+
+class PostsIndex extends React.Component<Props, State> {
   _disposable: ?Disposable;
 
   static contextTypes = {

@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -11,11 +11,7 @@ import When from './When';
 
 import type {Post as PostData} from './__generated__/Post.graphql';
 
-class Post extends React.Component {
-  props: {
-    data: PostData,
-  };
-
+class Post extends React.Component<{data: PostData}> {
   render() {
     const post = this.props.data;
     return (

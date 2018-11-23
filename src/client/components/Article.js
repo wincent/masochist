@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import PropTypes from 'prop-types';
@@ -18,11 +18,7 @@ if (inBrowser) {
   require('./Article.css');
 }
 
-class Article extends React.Component {
-  props: {
-    data: ArticleData,
-  };
-
+class Article extends React.Component<{data: ArticleData}> {
   static contextTypes = {
     router: PropTypes.object,
   };

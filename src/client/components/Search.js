@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import PropTypes from 'prop-types';
@@ -41,17 +41,18 @@ function getSearchURL(
     return '/search';
   }
 }
+type Props = {
+  data: SearchData,
+  q: string,
+  relay: RelayPaginationProp,
+};
+type State = {
+  isLoadingMore: boolean,
+  isRefetching: boolean,
+  q: string,
+};
 
-class Search extends React.Component {
-  props: {
-    data: SearchData,
-    relay: RelayPaginationProp,
-  };
-  state: {
-    isLoadingMore: boolean,
-    isRefetching: boolean,
-    q: string,
-  };
+class Search extends React.Component<Props, State> {
   _loadMoreDisposable: ?Disposable;
   _refetchDisposable: ?Disposable;
   _searchInput: ?HTMLElement;
@@ -60,7 +61,7 @@ class Search extends React.Component {
     router: PropTypes.object,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       isLoadingMore: false,

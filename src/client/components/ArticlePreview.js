@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -11,11 +11,7 @@ import When from './When';
 
 import type {ArticlePreview as ArticlePreviewData} from './__generated__/ArticlePreview.graphql';
 
-class ArticlePreview extends React.Component {
-  props: {
-    data: ArticlePreviewData,
-  };
-
+class ArticlePreview extends React.Component<{data: ArticlePreviewData}> {
   render() {
     const article = this.props.data;
     const {description, title, url} = article;

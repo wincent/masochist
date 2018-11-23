@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -11,11 +11,7 @@ import When from './When';
 
 import type {SnippetPreview as SnippetPreviewData} from './__generated__/SnippetPreview.graphql';
 
-class SnippetPreview extends React.Component {
-  props: {
-    data: SnippetPreviewData,
-  };
-
+class SnippetPreview extends React.Component<{data: SnippetPreviewData}> {
   render() {
     const snippet = this.props.data;
     const {description, title, url} = snippet;

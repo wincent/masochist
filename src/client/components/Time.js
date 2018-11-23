@@ -1,12 +1,20 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
 import inBrowser from '../../common/inBrowser';
 import relativizeDate from '../relativizeDate';
 
-export default class Time extends React.Component {
+import type {TimeInfo} from '../relativizeDate';
+
+type Props = {
+  datetime: string,
+};
+
+type State = TimeInfo;
+
+export default class Time extends React.Component<Props, State> {
   _updateTimer: mixed;
 
   _clearTimer = () => {
@@ -26,7 +34,7 @@ export default class Time extends React.Component {
     }
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.state = relativizeDate(props.datetime);
   }
@@ -35,7 +43,7 @@ export default class Time extends React.Component {
     this._startTimer();
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
     this._clearTimer();
     this._startTimer();
   }

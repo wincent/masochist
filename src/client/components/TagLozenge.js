@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -9,7 +9,11 @@ if (inBrowser) {
   require('./TagLozenge.css');
 }
 
-const TagLozenge = ({type}) => {
+type Props = {
+  type: string,
+};
+
+const TagLozenge = ({type}: Props) => {
   let href;
   switch (type) {
     case 'page':

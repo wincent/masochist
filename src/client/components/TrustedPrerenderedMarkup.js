@@ -1,15 +1,17 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
 
-export default class TrustedPrerenderedMarkup extends React.Component {
-  props: {
-    html: string,
-  };
+type Props = {
+  html: string,
+};
 
-  shouldComponentUpdate(nextProps: {html: string}) {
+// TODO: make this stateless functional (and probably others) -- will need
+// React.memo(fn)
+export default class TrustedPrerenderedMarkup extends React.Component<Props> {
+  shouldComponentUpdate(nextProps: Props) {
     return this.props.html !== nextProps.html;
   }
 

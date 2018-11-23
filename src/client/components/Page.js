@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -11,11 +11,7 @@ import When from './When';
 
 import type {Page as PageData} from './__generated__/Page.graphql';
 
-class Page extends React.Component {
-  props: {
-    data: PageData,
-  };
-
+class Page extends React.Component<{data: PageData}> {
   render() {
     const page = this.props.data;
     return (

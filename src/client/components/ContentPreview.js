@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -11,12 +11,10 @@ import SnippetPreview from './SnippetPreview';
 
 import type {ContentPreview as ContentPreviewData} from './__generated__/ContentPreview.graphql';
 
-class ContentPreview extends React.Component {
-  props: {
-    cursor: string,
-    data: ContentPreviewData,
-  };
-
+class ContentPreview extends React.Component<{
+  cursor: string,
+  data: ContentPreviewData,
+}> {
   render() {
     const {cursor, data} = this.props;
     switch (data.__typename) {

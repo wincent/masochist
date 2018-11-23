@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -9,16 +9,16 @@ import TagPreview from './TagPreview';
 import type {Disposable, RelayPaginationProp} from 'react-relay';
 import type {TagsIndex as TagsIndexData} from './__generated__/TagsIndex.graphql';
 
-class TagsIndex extends React.Component {
-  props: {
-    data: TagsIndexData,
-    relay: RelayPaginationProp,
-  };
-  state: {
-    filterString: string,
-  };
+type Props = {
+  data: TagsIndexData,
+  relay: RelayPaginationProp,
+};
+type State = {
+  filterString: string,
+};
 
-  constructor(props) {
+class TagsIndex extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {filterString: ''};
   }

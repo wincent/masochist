@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import {LAST_INDEXED_HASH} from './constants';
@@ -26,7 +26,7 @@ let cache = getCache('');
 export default (async function runQuery(id: string, variables: ?Object) {
   const query = queryCache.getQuery(id);
 
-  const lastIndexedHash = await redis.get(LAST_INDEXED_HASH);
+  const lastIndexedHash = String(await redis.get(LAST_INDEXED_HASH));
   if (cache.hash !== lastIndexedHash) {
     cache = getCache(lastIndexedHash);
   }

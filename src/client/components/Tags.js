@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -20,12 +20,12 @@ const TagLink = ({tag}) => (
   </li>
 );
 
-class Tags extends React.Component {
-  props: {
-    classes?: {[string]: boolean},
-    data: TagsData,
-  };
+type Props = {
+  classes?: {[string]: boolean},
+  data: TagsData,
+};
 
+class Tags extends React.Component<Props> {
   render() {
     const {tags} = this.props.data;
     const classes = cx({

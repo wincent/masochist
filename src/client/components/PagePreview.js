@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -11,11 +11,7 @@ import When from './When';
 
 import type {PagePreview as PagePreviewData} from './__generated__/PagePreview.graphql';
 
-class PagePreview extends React.Component {
-  props: {
-    data: PagePreviewData,
-  };
-
+class PagePreview extends React.Component<{data: PagePreviewData}> {
   render() {
     const page = this.props.data;
     const {description, title, url} = page;
