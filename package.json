@@ -63,7 +63,7 @@
     "fs-extra": "*",
     "glob": "^7.1.2",
     "graphql": "*",
-    "graphql-relay": "*",
+    "graphql-relay": "https://github.com/graphql/graphql-relay-js.git#da2801ab9e64006b1e41bcdb28c889799ee5c170",
     "gulp": "4.0.0",
     "gulp-babel": "*",
     "highlight.js": "*",
@@ -97,7 +97,8 @@
     "webpack-dev-server": "*"
   },
   "resolutions": {
-    "graphql": "14.0.2"
+    "graphql": "14.0.2",
+    "graphql-relay": "https://github.com/graphql/graphql-relay-js.git#da2801ab9e64006b1e41bcdb28c889799ee5c170"
   },
   "jest": {
     "coverageDirectory": "coverage",
