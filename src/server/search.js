@@ -2,7 +2,8 @@
  * @flow
  */
 
-import git, {GitError} from './git';
+import git from './git';
+import {RunError} from './pipe';
 import run from './run';
 
 type SearchResult = {
@@ -139,7 +140,7 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
       hits = await run(git(...args, tree, '--', ...directories));
     } catch (e) {
       // `git grep` returns an exit status of 1 to indicate "nothing found".
-      if (e.code !== 1) {
+      if (!(e instanceof RunError) || e.code !== 1) {
         throw e;
       }
     }

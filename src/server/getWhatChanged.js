@@ -5,12 +5,10 @@
 import git from './git';
 import pipe from './pipe';
 
-opaque type CommitLog = string;
-
 export default function getWhatChanged(
   revisions: string,
   path: string,
-): Promise<CommitLog> {
+): Promise<string> {
   // Custom log format (^@ here represents the NUL \0 byte):
   //
   // e31176b20bbb743c21c74a3a98128b759d62b999 1444055654 1444055654
@@ -32,7 +30,7 @@ export default function getWhatChanged(
 }
 
 export async function forEachCommit(
-  commits: CommitLog,
+  commits: string,
   callback: ({
     commit: string,
     createdAt: string,

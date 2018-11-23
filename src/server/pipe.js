@@ -6,13 +6,20 @@ import {spawn} from 'child_process';
 
 import type {Invocation} from './run';
 
-function getError(invocations: Array<Invocation>, code: number): Error {
+import createErrorClass from '../common/createErrorClass';
+
+export const RunError = createErrorClass('RunError', function(
+  message: string,
+  code: number,
+) {
+  return {message, code};
+});
+
+function getError(invocations: Array<Invocation>, code: number): RunError {
   const pipeline = invocations
     .map(({command, args}) => `${command} ${args.join(' ')}`)
     .join(' | ');
-  const error = new Error(`${pipeline}: exit ${code}`);
-  error.code = code;
-  return error;
+  return new RunError(`${pipeline}: exit ${code}`, code);
 }
 
 /**
