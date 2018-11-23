@@ -12,8 +12,11 @@ all=warn
 [options]
 module.ignore_non_literal_requires=true
 
-# Used in src to indicate Flow limitations.
+# Used to suppress errors caused by Flow limitations.
 suppress_type=$FlowIssue
 
-# Used internally in graphql package.
+# Used to suppress errors caused by our code.
 suppress_type=$FlowFixMe
+
+# Comment form of the above; requires a clarifying reason to be supplied.
+suppress_comment=\\(.\\|\n\\)*\\$\\(FlowFixMe\\|FlowIssue\\):.+
