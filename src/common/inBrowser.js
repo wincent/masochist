@@ -1,4 +1,8 @@
+/**
+ * @flow strict
+ */
+
 const inBrowser =
-  typeof process === 'undefined' || '' + process !== '[object process]';
+  typeof process === 'undefined' || String(process) !== '[object process]';
 
 export default inBrowser;
