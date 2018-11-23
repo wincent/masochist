@@ -6,7 +6,9 @@ import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Article from '../models/Article';
 
-function loadArticles(keys: Array<string>): Promise<Array<Object | Error>> {
+function loadArticles(
+  keys: $ReadOnlyArray<string>,
+): Promise<Array<Object | Error>> {
   const promises = keys
     .map(key => ({
       file: key,

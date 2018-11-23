@@ -6,7 +6,9 @@ import DataLoader from 'dataloader';
 import {loadContent} from '../loadContent';
 import Snippet from '../models/Snippet';
 
-function loadSnippets(keys: Array<string>): Promise<Array<Object | Error>> {
+function loadSnippets(
+  keys: $ReadOnlyArray<string>,
+): Promise<Array<Object | Error>> {
   const promises = keys
     .map(key => ({
       file: key,
