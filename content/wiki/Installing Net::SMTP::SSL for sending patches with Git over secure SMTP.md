@@ -2,6 +2,22 @@
 tags: git wiki
 ---
 
+## High Sierra notes
+
+`Net::SMTP::SSL` still doesn't come with macOS, so you'll need to install it:
+
+```sh
+sudo -H /usr/bin/cpan -f Net::SMTP::SSL
+```
+
+**Note the full path to `/usr/bin/cpan`**. This is necessary if you have other Perl installs floating around in your path (from Homebrew, for example), to ensure that the module gets installed for the system Perl (the one Git uses).
+
+My first attempt at this failed because [the Stack Overflow page](https://stackoverflow.com/questions/21306937/using-git-send-mail-but-i-am-getting-an-error) I found suggested that I use [cpanminus](http://metacpan.org/pod/App::cpanminus) to install the module. So, `brew install cpanminus`, and then `sudo cpanm Net::SMTP::SSL`, but that installs the module in the Homebrew-installed Perl directory (`/usr/local/Cellar/perl/5.28.0/lib/perl5/site_perl/5.28.0`) and Git can't see it because its shebang lines use a hard-coded `/usr/bin/perl` (even though this Git is itself installed by Homebrew).
+
+I saw that the error output from `git-send-email` showed `@INC` paths related to Perl 5.18 (the system Perl) but `perl -V` (Homebrew Perl) showed paths relating to 5.28. Forcing `git-send-mail` to see the installed module by prefixing it with `env PERL5LIB=/usr/local/Cellar/perl/5.28.0/lib/perl5/site_perl/5.28.0` naturally doesn't work, because the version mistmatch will crash the `perl` process. A bit of a wild goose chase that could have been avoided by following [this gist](https://gist.github.com/relaxdiego/be7b87cae8c2d51d5ee4) instead.
+
+## Older notes
+
 If you want to use Git to submit patches via email over secure [SMTP](/wiki/SMTP) you will need to install the Net::SMTP::SSL module, if you don't have it installed already on your system.
 
     sudo -H cpan Net::SMTP::SSL
@@ -13,7 +29,6 @@ You'll know that this is required if you see a message like the following on try
 After installing I got a new failure message:
 
     Unable to initialize SMTP properly.  Is there something wrong with your config? at /usr/local/bin/git-send-email line 629.
-
 A minimal test script showed that the problem wasn't in [Git](/wiki/Git):
 
     #! /usr/bin/env perl
@@ -46,13 +61,13 @@ My problem was that [Mac OS X](/wiki/Mac_OS_X) ships with an older version of IO
 
 But some of the tests failed (excerpt):
 
-    t/nonblock..............FAILED tests 26-27                                   
+    t/nonblock..............FAILED tests 26-27
     	Failed 2/27 tests, 92.59% okay
-    t/readline..............ok                                                   
-    t/sessions..............ok                                                   
-    t/start-stopssl.........ok                                                   
-    t/startssl..............ok                                                   
-    t/sysread_write.........ok                                                   
+    t/readline..............ok
+    t/sessions..............ok
+    t/start-stopssl.........ok
+    t/startssl..............ok
+    t/sysread_write.........ok
     Failed Test  Stat Wstat Total Fail  Failed  List of Failed
     -------------------------------------------------------------------------------
     t/nonblock.t               27    2   7.41%  26-27
@@ -66,9 +81,9 @@ So to gather more information I decided to run the tests manually:
 
     sudo -s -H
     cd /var/root/.cpan/sources/authors/id/S/SU/SULLR
-    tar xzvf IO-Socket-SSL-1.12.tar.gz 
+    tar xzvf IO-Socket-SSL-1.12.tar.gz
     cd IO-Socket-SSL-1.12
-    perl Makefile.PL 
+    perl Makefile.PL
     make
     make test
 
@@ -82,13 +97,13 @@ Curiously, this time even more tests failed:
     Use of uninitialized value in concatenation (.) or string at (eval 14) line 3.
     syswrite() on closed filehandle GEN2 at t/nonblock.t line 179.
     t/nonblock..............NOK 25sysread() on closed filehandle GEN2 at t/nonblock.t line 332.
-    t/nonblock..............FAILED tests 16, 19, 21-22, 24-27                    
+    t/nonblock..............FAILED tests 16, 19, 21-22, 24-27
     	Failed 8/27 tests, 70.37% okay
-    t/readline..............ok                                                   
-    t/sessions..............ok                                                   
-    t/start-stopssl.........ok                                                   
-    t/startssl..............ok                                                   
-    t/sysread_write.........ok                                                   
+    t/readline..............ok
+    t/sessions..............ok
+    t/start-stopssl.........ok
+    t/startssl..............ok
+    t/sysread_write.........ok
     Failed Test  Stat Wstat Total Fail  Failed  List of Failed
     -------------------------------------------------------------------------------
     t/nonblock.t               27    8  29.63%  16 19 21-22 24-27
@@ -105,13 +120,13 @@ On a subsequent run, yet another number of subtests failed:
     t/nonblock..............NOK 20Use of uninitialized value in concatenation (.) or string at (eval 14) line 3.
     syswrite() on closed filehandle GEN2 at t/nonblock.t line 179.
     t/nonblock..............NOK 24sysread() on closed filehandle GEN2 at t/nonblock.t line 332.
-    t/nonblock..............FAILED tests 13, 15, 18, 20-21, 23-27                
+    t/nonblock..............FAILED tests 13, 15, 18, 20-21, 23-27
     	Failed 10/27 tests, 62.96% okay
-    t/readline..............ok                                                   
-    t/sessions..............ok                                                   
-    t/start-stopssl.........ok                                                   
-    t/startssl..............ok                                                   
-    t/sysread_write.........ok                                                   
+    t/readline..............ok
+    t/sessions..............ok
+    t/start-stopssl.........ok
+    t/startssl..............ok
+    t/sysread_write.........ok
     Failed Test  Stat Wstat Total Fail  Failed  List of Failed
     -------------------------------------------------------------------------------
     t/nonblock.t               27   10  37.04%  13 15 18 20-21 23-27
@@ -121,20 +136,20 @@ On a subsequent run, yet another number of subtests failed:
 Out of curiosity I wanted to see if the version that ships with Leopard (0.999) also fails those tests:
 
     wget http://search.cpan.org/CPAN/authors/id/S/SU/SULLR/IO-Socket-SSL-0.999.tar.gz
-    tar xzvf IO-Socket-SSL-0.999.tar.gz 
+    tar xzvf IO-Socket-SSL-0.999.tar.gz
     cd IO-Socket-SSL-0.999
-    perl Makefile.PL 
+    perl Makefile.PL
     make
     make test
 
 The results:
 
-    t/nonblock.........FAILED tests 13, 26                                       
+    t/nonblock.........FAILED tests 13, 26
     	Failed 2/27 tests, 92.59% okay
-    t/readline.........ok                                                        
-    t/sessions.........ok                                                        
-    t/startssl.........ok                                                        
-    t/sysread_write....ok                                                        
+    t/readline.........ok
+    t/sessions.........ok
+    t/startssl.........ok
+    t/sysread_write....ok
     Failed Test  Stat Wstat Total Fail  Failed  List of Failed
     -------------------------------------------------------------------------------
     t/nonblock.t               27    2   7.41%  13 26
@@ -164,7 +179,7 @@ This also failed:
         CPAN_USERID  ANDK (Andreas J. Koenig <andreas.koenig@anima.de>)
         CALLED_FOR   CPAN
         CONTAINSMODS CPAN::Nox CPAN::FirstTime CPAN::Tarzip CPAN::DeferedCode CPAN::Debug CPAN::Kwalify CPAN::Version CPAN::Admin CPAN::Queue CPAN CPAN::HandleConfig
-        MD5_STATUS   
+        MD5_STATUS
         incommandcolor 1
         localfile    /var/root/.cpan/sources/authors/id/A/AN/ANDK/CPAN-1.9204.tar.gz
 
@@ -205,5 +220,6 @@ And everything works fine.
 
 # See also
 
--   [Git quickstart](/wiki/Git_quickstart)
--   [Git recipes](/wiki/Git_recipes)
+- [Git quickstart](/wiki/Git_quickstart)
+- [Git recipes](/wiki/Git_recipes)
+- [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)

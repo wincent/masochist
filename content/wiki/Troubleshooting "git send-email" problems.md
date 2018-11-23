@@ -31,9 +31,9 @@ My first trouble-shooting technique was seeing if [CPAN](/wiki/CPAN) updates -- 
 In the end, the only thing that would make `git send-email` work was to manually install `Scalar::List::Utils` after grabbing it manually from <http://search.cpan.org/dist/Scalar-List-Utils/>:
 
     wget http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/Scalar-List-Utils-1.19.tar.gz
-    tar xzvf Scalar-List-Utils-1.19.tar.gz 
+    tar xzvf Scalar-List-Utils-1.19.tar.gz
     cd Scalar-List-Utils-1.19
-    perl Makefile.PL 
+    perl Makefile.PL
     make
     make test
     make install
@@ -96,3 +96,8 @@ So here we see it's choosing the `DIGEST-MD5` authentication method. A quick(?) 
 Quickly disable those authentication methods with a quick `cd /etc/mail && vim sendmail.mc && make && service sendmail restart`, and sure enough, the debugging script works and so does `git send-email`.
 
 [The page](http://www.sendmail.org/~ca/email/auth.html) I've already linked to above contains instructions on how to set up the `sasldb` or `sasldb2` password file if you want to offer the `DIGEST-MD5` and `CRAM-MD5` methods.
+
+# See also
+
+- [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
+- [Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3A%3ASMTP%3A%3ASSL_for_sending_patches_with_Git_over_secure_SMTP)
