@@ -80,15 +80,21 @@ export default (async function feed() {
       title: 'wincent.com blog',
     });
     const result: any = await runQuery(feedQuery().id);
-    const posts: feedPosts = result.data.posts;
+    const data: feedPosts = result.data;
+    const posts = data.posts;
     posts.edges &&
-      posts.edges.forEach(({node}) => {
-        feed.item({
-          date: node.createdAt,
-          description: extractExcerpt(node.body.html),
-          title: node.title,
-          url: SCHEME + HOST + node.url,
-        });
+      posts.edges.forEach(edge => {
+        if (edge) {
+          const {node} = edge;
+          if (node) {
+            feed.item({
+              date: node.createdAt,
+              description: extractExcerpt(node.body.html),
+              title: node.title,
+              url: SCHEME + HOST + node.url,
+            });
+          }
+        }
       });
 
     return feed.xml({indent: true});
