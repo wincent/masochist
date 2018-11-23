@@ -5,13 +5,14 @@ var webpack = require('webpack');
 module.exports = {
   devtool: 'eval',
   entry: [
-    'babel-polyfill',
+    '@babel/polyfill',
     'webpack/hot/dev-server',
     'webpack-dev-server/client?http://localhost:3001/',
     path.resolve(__dirname, 'src', 'client', 'app.js'),
   ],
+  mode: 'development',
   module: {
-    loaders: [
+    rules: [
       {
         exclude: /node_modules/,
         test: /\.js$/,
@@ -19,7 +20,17 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['es2015', 'react', 'stage-0'],
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    useBuiltIns: 'usage',
+                    targets: 'defaults',
+                  },
+                ],
+                '@babel/preset-react',
+                '@babel/preset-flow',
+              ],
               plugins: [
                 [
                   'minify-replace',

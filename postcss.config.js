@@ -5,11 +5,7 @@ module.exports = {
   plugins: [
     autoprefixer,
     cssnano({
-      // NOTE: with cssnano >= 4, this will need to become:
-      // preset: ['default', {discardComments: {removeAll: true}}]
-      discardComments: {
-        removeAll: true,
-      },
+      preset: ['default', {discardComments: {removeAll: true}}],
     }),
   ],
 };

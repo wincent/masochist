@@ -8,7 +8,12 @@ const INVERSE = '\x1b[7m';
 const RESET = '\x1b[0m';
 const YELLOW = '\x1b[33m';
 
-const paths = ['gulpfile.babel.js', '{scripts,src}/**/*.js', 'webpack.*.js'];
+const paths = [
+  'gulpfile.babel.js',
+  'postcss.config.js',
+  '{scripts,src}/**/*.js',
+  'webpack.*.js',
+];
 const files = glob
   .sync('{' + paths.join(',') + '}')
   .filter(path => path.indexOf('/__generated__/') === -1);
