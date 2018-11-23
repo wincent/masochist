@@ -25,21 +25,14 @@ type Props = {
   data: TagsData,
 };
 
-class Tags extends React.Component<Props> {
-  render() {
-    const {tags} = this.props.data;
-    const classes = cx({
-      ...this.props.classes,
-      tags: true,
-    });
-    return (
-      <ul className={classes}>
-        {tags.map(tag => (
-          <TagLink key={tag} tag={tag} />
-        ))}
-      </ul>
-    );
-  }
+function Tags({classes, data: {tags}}: Props) {
+  return (
+    <ul className={cx({...classes, tags: true})}>
+      {tags.map(tag => (
+        <TagLink key={tag} tag={tag} />
+      ))}
+    </ul>
+  );
 }
 
 export default createFragmentContainer(
