@@ -3,7 +3,7 @@
  */
 
 import git from './git';
-import run from './run';
+import pipe from './pipe';
 
 opaque type CommitLog = string;
 
@@ -17,14 +17,14 @@ export default function getWhatChanged(
   // :100644 100644 6535626... ec6d229... M^@src/bin/updateIndices.js^@^@
   // 50bc13b5bc01eecf3a07f89c85fd3bb769e6eec1 1444054911 1444054911
   // :100644 100644 12d2393... 600f5ef... M^@package.json^@
-  return run(
+  return pipe(
+    git('rev-list', revisions, '--', path),
     git(
-      'log',
-      '--no-renames',
-      '--pretty=format:%n%H %at %ct',
-      '--raw',
+      'diff-tree',
+      '--stdin',
+      '--format="%n%H %at %ct"',
+      '-r',
       '-z',
-      revisions,
       '--',
       path,
     ),
@@ -45,11 +45,11 @@ export async function forEachCommit(
   // don't end up sharing state.
   const regExp = new RegExp(
     // Commit SHA, author date, committer date.
-    '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})\\n|' +
+    '\\n([a-f0-9]{40}) (\\d{1,10}) (\\d{1,10})|' +
       // Modes.
       ':\\d{6} \\d{6} ' +
       // Before/after tree or blob.
-      '[a-f0-9]+(?:\\.\\.\\.)? [a-f0-9]+(?:\\.\\.\\.)? ' +
+      '[a-f0-9]{40} [a-f0-9]{40} ' +
       // Added, Deleted or Modified.
       '([ADM])\0' +
       // Path, optional commit terminator.

@@ -42,21 +42,24 @@ export default function pipe(
       }
     });
 
-    while ((invocation = invocations.pop())) {
-      const child = spawn(invocation.command, invocation.args);
-      child.stderr.on('data', data => {
-        // TODO: may want to log this
-      });
-      child.stdout.on('data', data => {
-        last.stdin.write(data);
-      });
-      child.on('close', code => {
-        if (isPending && code) {
-          reject(getError(invocations, code));
-        }
-        last.stdin.end();
-      });
-      last = child;
+    while (invocations.length) {
+      invocation = invocations.pop();
+      last = (next => {
+        const child = spawn(invocation.command, invocation.args);
+        child.stderr.on('data', data => {
+          // TODO: may want to log this
+        });
+        child.stdout.on('data', data => {
+          next.stdin.write(data);
+        });
+        child.on('close', code => {
+          if (isPending && code) {
+            reject(getError(invocations, code));
+          }
+          next.stdin.end();
+        });
+        return child;
+      })(last);
     }
   });
 }
