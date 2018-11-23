@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
 /**
+ * @flow
+ */
+
+/**
  * Intended for use as a post-receive hook.
  *
  * Builds up indices that can be queried like this (eg. to get a list of the 10
@@ -62,7 +66,7 @@ function extractFile(pathString: string, contentType: string): string {
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-const getChanges = memoize(getWhatChanged);
+const getChanges = memoize/*:: <[string, string], Promise<string>> */(getWhatChanged);
 
 async function getIsAncestor(
   potentialAncestor: ?string,
@@ -154,7 +158,7 @@ async function getFileUpdates(range, callback) {
 
 (async () => {
   const head = (await run(git('rev-parse', 'content'))).trim();
-  const lastIndexedHash = await redis.get(LAST_INDEXED_HASH);
+  const lastIndexedHash = String(await redis.get(LAST_INDEXED_HASH));
   if (head === lastIndexedHash) {
     log('Index already up-to-date at revision %s', head);
     process.exit(0);
