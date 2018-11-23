@@ -19,6 +19,10 @@ function loadSnippets(
   return Promise.all(promises);
 }
 
+// TODO: remove this workaround once the version of the babylon parser used in
+// the webpack build no longer chokes on it being inline.
+type T = ?Snippet;
+
 export default function getSnippetLoader() {
-  return new DataLoader<string, ?Snippet>(loadSnippets);
+  return new DataLoader<string, T>(loadSnippets);
 }

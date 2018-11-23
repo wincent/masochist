@@ -28,6 +28,10 @@ function loadArticles(
   return Promise.all(promises);
 }
 
+// TODO: remove this workaround once the version of the babylon parser used in
+// the webpack build no longer chokes on it being inline.
+type T = ?Article;
+
 export default function getArticleLoader() {
-  return new DataLoader<string, ?Article>(loadArticles);
+  return new DataLoader<string, T>(loadArticles);
 }
