@@ -96,6 +96,9 @@
     "jest": "*",
     "webpack-dev-server": "*"
   },
+  "resolutions": {
+    "graphql": "14.0.2"
+  },
   "jest": {
     "coverageDirectory": "coverage",
     "globals": {
