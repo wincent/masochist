@@ -74,13 +74,13 @@ export function webpack(callback) {
   runWebpack(productionConfig, (error, stats) => {
     if (error) {
       ringBell();
-      throw new PluginError('webpack', error);
+      return callback(new PluginError('webpack', error)), void 0;
     }
     if (stats.compilation.errors && stats.compilation.errors.length) {
       const [firstError, ...remainingErrors] = stats.compilation.errors;
       remainingErrors.forEach(console.log.bind(console));
       ringBell();
-      throw new PluginError('webpack', firstError);
+      return callback(new PluginError('webpack', firstError)), void 0;
     }
     if (!watching) {
       log('[webpack:build]', stats.toString({colors: true}));
