@@ -4804,9 +4804,10 @@ graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-"graphql-relay@https://github.com/graphql/graphql-relay-js.git#da2801ab9e64006b1e41bcdb28c889799ee5c170":
+graphql-relay@*:
   version "0.5.5"
-  resolved "https://github.com/graphql/graphql-relay-js.git#da2801ab9e64006b1e41bcdb28c889799ee5c170"
+  resolved "https://registry.yarnpkg.com/graphql-relay/-/graphql-relay-0.5.5.tgz#d6815e6edd618e878d5d921c13fc66033ec867e2"
+  integrity sha1-1oFebt1hjoeNXZIcE/xmAz7IZ+I=
 
 graphql@*, graphql@14.0.2, graphql@^0.11.3:
   version "14.0.2"
