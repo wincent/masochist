@@ -20,3 +20,11 @@ suppress_type=$FlowFixMe
 
 # Comment form of the above; requires a clarifying reason to be supplied.
 suppress_comment=\\(.\\|\n\\)*\\$\\(FlowFixMe\\|FlowIssue\\):.+
+
+[strict]
+nonstrict-import
+sketchy-null
+unclear-type
+unsafe-getters-setters
+untyped-import
+untyped-type-import
