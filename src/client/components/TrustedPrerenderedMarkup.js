@@ -10,9 +10,6 @@ type Props = {
 
 export default React.memo(function TrustedPrerenderedMarkup({html}: Props) {
   return (
-    <div
-      className="prerendered"
-      dangerouslySetInnerHTML={{__html: html}}
-    />
+    <div className="prerendered" dangerouslySetInnerHTML={{__html: html}} />
   );
 });
