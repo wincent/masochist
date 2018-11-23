@@ -20,5 +20,5 @@ function loadPages(
 }
 
 export default function getPageLoader() {
-  return new DataLoader(loadPages);
+  return new DataLoader<string, ?Page>(loadPages);
 }

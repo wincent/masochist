@@ -20,5 +20,5 @@ function loadSnippets(
 }
 
 export default function getSnippetLoader() {
-  return new DataLoader(loadSnippets);
+  return new DataLoader<string, ?Snippet>(loadSnippets);
 }

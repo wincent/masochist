@@ -20,5 +20,5 @@ function loadPosts(
 }
 
 export default function getPostLoader() {
-  return new DataLoader(loadPosts);
+  return new DataLoader<string, ?Post>(loadPosts);
 }

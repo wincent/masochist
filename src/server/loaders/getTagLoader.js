@@ -24,5 +24,5 @@ async function loadTags(
 }
 
 export default function getTagLoader() {
-  return new DataLoader(loadTags);
+  return new DataLoader<string, Tag>(loadTags);
 }

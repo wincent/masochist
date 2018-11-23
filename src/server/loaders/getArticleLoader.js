@@ -29,5 +29,5 @@ function loadArticles(
 }
 
 export default function getArticleLoader() {
-  return new DataLoader(loadArticles);
+  return new DataLoader<string, ?Article>(loadArticles);
 }
