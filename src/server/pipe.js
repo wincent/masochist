@@ -16,7 +16,14 @@ function getError(invocations: Array<Invocation>, code: number): Error {
 }
 
 /**
+ * Spawns multiple invocations and connects the stdout of each one into the
+ * stdin of the next. For example:
+ *
  *     return pipe(git('rev-list', '...'), git('diff-tree', '...'));
+ *
+ * is equivalent to this shell pipeline:
+ *
+ *     git rev-list ... | git diff-tree ...
  */
 export default function pipe(
   ...invocations: Array<Invocation>

@@ -10,9 +10,13 @@ export type Invocation = {
 };
 
 /**
- * If given a single invocation, run
+ * Convenience method to spawn a single invocation. For example:
  *
  *     return run(git('log', '...'));
+ *
+ * is equivalent to the shell invocation:
+ *
+ *     git log ...
  */
 export default function run(invocation: Invocation): Promise<string> {
   return pipe(invocation);
