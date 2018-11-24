@@ -34,6 +34,17 @@ describe('with a synchronous function', () => {
     expect(double.callCount).toBe(1);
     expect(triple.callCount).toBe(2);
   });
+
+  it('propagates errors immediately', () => {
+    const explode = sinon.spy(object => object.nonexistent());
+    const memoizedExplode = memoize(explode);
+    expect(() => memoizedExplode({})).toThrow('nonexistent');
+    expect(explode.calledOnce).toBe(true);
+
+    // Nothing was memoized the first time; if we call again, count goes up:
+    expect(() => memoizedExplode({})).toThrow('nonexistent');
+    expect(explode.callCount).toBe(2);
+  });
 });
 
 describe('with an asynchronous function', () => {
@@ -76,5 +87,32 @@ describe('with an asynchronous function', () => {
       expect(result).toBe('https://example.net/ fetched');
       expect(fetch.calledOnce).toBe(true);
     });
+  });
+
+  it('memoizes errors', () => {
+    const explode = sinon.spy(object => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          try {
+            object.nonexistent();
+          } catch (error) {
+            reject(error);
+          }
+          resolve('unreachable');
+        }, delay);
+      });
+    });
+    const memoizedExplode = memoize(explode);
+    let promise = memoizedExplode();
+    clock.tick(delay);
+    expect(promise.then(fail)).rejects.toThrow('nonexistent');
+    expect(explode.calledOnce).toBe(true);
+
+    // Unlike the synchronous case, the memoize function *does* memoize
+    // the rejected promise, so our call count does *not* go up.
+    promise = memoizedExplode();
+    clock.tick(delay);
+    expect(promise.then(fail)).rejects.toThrow('nonexistent');
+    expect(explode.calledOnce).toBe(true);
   });
 });
