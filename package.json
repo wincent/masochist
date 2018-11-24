@@ -13,7 +13,7 @@
   "scripts": {
     "build": "gulp build",
     "check": "flow",
-    "coverage": "jest --forceExit --coverage",
+    "coverage": "jest --coverage --forceExit",
     "flow": "flow",
     "gulp": "gulp",
     "lint": "eslint src",
@@ -100,6 +100,7 @@
     "gulp-eslint": "*",
     "http-proxy": "*",
     "jest": "*",
+    "sinon": "*",
     "webpack-dev-server": "*"
   },
   "resolutions": {
@@ -108,8 +109,12 @@
   },
   "jest": {
     "coverageDirectory": "coverage",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/__mocks__/sinon.js",
     "globals": {
       "__DEV__": true
-    }
+    },
+    "roots": [
+      "<rootDir>/src"
+    ]
   }
 }

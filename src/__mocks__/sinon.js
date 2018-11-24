@@ -1,25 +1,38 @@
-import sinon from 'sinon';
+const sinon = require('sinon');
 
 let sandbox;
+let clock;
 
 beforeEach(() => {
-  sandbox = sinon.sandbox.create();
+  sandbox = sinon.createSandbox();
 });
 
 afterEach(() => {
   sandbox.restore();
+  if (clock) {
+    clock.restore();
+  }
+  clock = null;
 });
 
 global.sinon = {
-  spy() {
-    return sinon.spy(...arguments);
+  mock(...args) {
+    return sandbox.mock(...args);
   },
 
-  stub() {
-    return sandbox.stub(...arguments);
+  spy(...args) {
+    return sandbox.spy(...args);
   },
 
-  useFakeTimers() {
-    return sinon.useFakeTimers(...arguments);
+  stub(...args) {
+    return sandbox.stub(...args);
+  },
+
+  useFakeTimers(...args) {
+    if (clock) {
+      clock.restore();
+    }
+    clock = sinon.useFakeTimers(...args);
+    return clock;
   },
 };
