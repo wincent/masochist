@@ -82,9 +82,9 @@ describe('with an asynchronous function', () => {
     ];
     clock.tick(delay);
     return Promise.all(promises).then(results => {
-      expect(
-        results.every(result => result === 'https://example.net/ fetched'),
-      ).toBe(true);
+      results.forEach(result =>
+        expect(result).toBe('https://example.net/ fetched'),
+      );
       expect(fetch.calledOnce).toBe(true);
     });
   });
