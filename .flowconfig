@@ -19,7 +19,7 @@ suppress_type=$FlowIssue
 suppress_type=$FlowFixMe
 
 # Comment form of the above; requires a clarifying reason to be supplied.
-suppress_comment=\\(.\\|\n\\)*\\$\\(FlowFixMe\\|FlowIssue\\):.+
+suppress_comment=\\(.\\|\n\\)*\\$\\(FlowFixMe\\|FlowIssue\\).+
 
 [strict]
 nonstrict-import
