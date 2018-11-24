@@ -9,7 +9,6 @@ describe('with a synchronous function', () => {
     memoizedDouble = memoize(double);
   });
 
-
   it('returns a computed value', () => {
     expect(memoizedDouble(2)).toBe(4);
     expect(double.calledOnce).toBe(true);
@@ -47,7 +46,7 @@ describe('with an asynchronous function', () => {
   beforeEach(() => {
     clock = sinon.useFakeTimers();
 
-    fetch = sinon.spy((url) => {
+    fetch = sinon.spy(url => {
       return new Promise((resolve, reject) => {
         setTimeout(() => resolve(`${url} fetched`), delay);
       });
@@ -67,9 +66,11 @@ describe('with an asynchronous function', () => {
 
   it('handles repeated calls', () => {
     const promise = memoizedFetch('https://example.net/');
-    memoizedFetch('https://example.net/').then(result => {
-      expect(result).toBe('https://example.net/ fetched');
-    });
+    memoizedFetch('https://example.net/')
+      .then(result => {
+        expect(result).toBe('https://example.net/ fetched');
+      })
+      .catch(fail);
     clock.tick(delay);
     return promise.then(result => {
       expect(result).toBe('https://example.net/ fetched');
