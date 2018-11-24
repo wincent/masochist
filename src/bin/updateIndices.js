@@ -66,12 +66,14 @@ function extractFile(pathString: string, contentType: string): string {
     .replace(/\.\w+$/, ''); // Strip extension.
 }
 
-const getChanges = memoize/*:: <[string, string], Promise<string>> */(getWhatChanged);
+const getChanges = memoize<[string, string], Promise/*:: <string> */>(
+  getWhatChanged,
+);
 
 async function getIsAncestor(
   potentialAncestor: ?string,
   commit: string,
-): Promise<boolean> {
+): Promise/*:: <boolean> */ {
   if (potentialAncestor) {
     try {
       await run(git('merge-base', '--is-ancestor', potentialAncestor, commit));
