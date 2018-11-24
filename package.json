@@ -47,6 +47,7 @@
     "ansi-colors": "*",
     "assets-webpack-plugin": "*",
     "autoprefixer": "*",
+    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "*",
     "babel-loader": "*",
     "babel-plugin-minify-replace": "*",
@@ -102,6 +103,7 @@
     "webpack-dev-server": "*"
   },
   "resolutions": {
+    "babel-core": "7.0.0-bridge.0",
     "graphql": "14.0.2"
   },
   "jest": {
