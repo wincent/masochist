@@ -19,11 +19,7 @@ function loadPosts(
   return Promise.all(promises);
 }
 
-// TODO: remove this workaround once the version of the babylon parser used in
-// the webpack build no longer chokes on it being inline.
-type T = ?Post;
-
 export default function getPostLoader() {
   // BUG: webpack can't parse this syntax
-  return new DataLoader<string, T>(loadPosts);
+  return new DataLoader<string, ?Post>(loadPosts);
 }
