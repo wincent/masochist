@@ -76,15 +76,15 @@ describe('with an asynchronous function', () => {
   });
 
   it('handles repeated calls', () => {
-    const promise = memoizedFetch('https://example.net/');
-    memoizedFetch('https://example.net/')
-      .then(result => {
-        expect(result).toBe('https://example.net/ fetched');
-      })
-      .catch(fail);
+    const promises = [
+      memoizedFetch('https://example.net/'),
+      memoizedFetch('https://example.net/'),
+    ];
     clock.tick(delay);
-    return promise.then(result => {
-      expect(result).toBe('https://example.net/ fetched');
+    return Promise.all(promises).then(results => {
+      expect(
+        results.every(result => result === 'https://example.net/ fetched'),
+      ).toBe(true);
       expect(fetch.calledOnce).toBe(true);
     });
   });
