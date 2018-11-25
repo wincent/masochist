@@ -12,7 +12,7 @@ tmux new-session -d -s masochist -n vim  -x $(tput cols) -y $(tput lines)
 # 1. Main window: vim, server, shell.
 tmux send-keys -t masochist:vim "vim -c CommandTBoot" Enter
 tmux split-window -t masochist:vim -h
-tmux send-keys -t masochist:vim.right "npm run start" Enter
+tmux send-keys -t masochist:vim.right "yarn start" Enter
 tmux split-window -t masochist:vim.2
 tmux send-keys -t masochist:vim.bottom-right "git st" Enter
 
