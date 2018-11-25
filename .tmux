@@ -10,7 +10,7 @@ fi
 tmux new-session -d -s masochist -n vim  -x $(tput cols) -y $(tput lines)
 
 # 1. Main window: vim, server, shell.
-tmux send-keys -t masochist:vim "vim -c CommandT" Enter
+tmux send-keys -t masochist:vim "vim -c CommandTBoot" Enter
 tmux split-window -t masochist:vim -h
 tmux send-keys -t masochist:vim.right "npm run start" Enter
 tmux split-window -t masochist:vim.2
@@ -21,7 +21,8 @@ tmux new-window -t masochist
 
 # 3. Content.
 tmux new-window -t masochist -c "$PWD/../masochist-pages" -n content
-tmux send-keys -t masochist:content "vim -c CommandT" Enter
+tmux send-keys -t masochist:content "vim -c CommandTBoot" Enter
+
 tmux split-window -t masochist:content -h -c "$PWD/../masochist-pages"
 tmux send-keys -t masochist:content.right "git st" Enter
 
