@@ -2,7 +2,7 @@
 tags: wiki gmail
 ---
 
-# Targeting mailing list messages *except* those send directly to you
+# Targeting mailing list messages *except* those sent directly to you
 
 This allows me to move everything sent to the Git mailing list into a folder, except for messages sent directly to me (in the `to:`, `cc:` or `bcc:` fields), which stay in my inbox:
 
