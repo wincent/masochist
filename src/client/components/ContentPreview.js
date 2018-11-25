@@ -26,6 +26,8 @@ class ContentPreview extends React.Component<{
         return <PostPreview key={cursor} data={data} />;
       case 'Snippet':
         return <SnippetPreview key={cursor} data={data} />;
+      default:
+        return null;
     }
   }
 }

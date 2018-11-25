@@ -22,7 +22,7 @@ class ArticlePreview extends React.Component<{data: ArticlePreviewData}> {
         </td>
         <td>
           <Link title={description} to={url}>
-            {title}
+            {title || null}
           </Link>
         </td>
         <td>

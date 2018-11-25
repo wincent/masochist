@@ -28,7 +28,7 @@ class Article extends React.Component<{data: ArticleData}> {
     return (
       <article>
         <h1 className="article-header">
-          <Link to={article.url}>{article.resolvedTitle}</Link>
+          <Link to={article.url}>{article.resolvedTitle || null}</Link>
           <a
             className="button"
             href={article.editURL}
