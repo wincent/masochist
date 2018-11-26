@@ -137,3 +137,28 @@ No wonder people feel emotionally attached to Git, if it's our most frequently u
     363 find|grep  # More searching: where/what is that file?
     335 ls         # Less poking around, more time in (long-running) editor.
     302 tgrepd     # Another alias wrapper around ag.
+
+# Update: November 2018
+
+Note the need to tweak the command for my current Zsh configuration, otherwise `history` only shows the last 1,000 commands:
+
+```sh
+history 0 $HISTSIZE | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
+```
+
+The results:
+
+```
+824 git
+173 less
+166 cd
+153 yarn
+101 vim
+81 man
+75 brew
+72 ls
+65 rm
+56 npm
+```
+
+Numbers are lower than before despite my `$HISTSIZE` being 100,000. It is probably because of my use of `histignorealldups`, which I am now questioning the usefulness of. I think `histfindnodups` is probably much closer to what I want.
