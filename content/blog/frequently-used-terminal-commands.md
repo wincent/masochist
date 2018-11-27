@@ -140,7 +140,7 @@ No wonder people feel emotionally attached to Git, if it's our most frequently u
 
 # Update: November 2018
 
-Note the need to tweak the command for my current Zsh configuration, otherwise `history` only shows the last 1,000 commands:
+Note the need to tweak the command for my current Zsh configuration, otherwise `history` doesn't show the full command list; `fc -l 1` would also work:
 
 ```sh
 history 0 $HISTSIZE | awk '{a[$2]++}END{for(i in a){print a[i] " " i}}' | sort -rn | head
