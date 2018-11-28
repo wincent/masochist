@@ -26,6 +26,12 @@ const babelOptions = {
         ],
       },
     ],
+    [
+      './scripts/babel/invariant',
+      {
+        strip: true,
+      },
+    ],
     'relay',
     'transform-object-rest-spread',
     'transform-class-properties',

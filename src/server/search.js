@@ -5,13 +5,27 @@
 import git from './git';
 import {RunError} from './pipe';
 import run from './run';
+import invariant from '../common/invariant';
 
+type ContentType = 'blog' | 'pages' | 'snippets' | 'wiki';
 type SearchResult = {
   id: string,
-  type: 'blog' | 'pages' | 'snippets' | 'wiki',
+  type: ContentType,
 };
 
-let corpus = null;
+let corpus: ?Array<SearchResult> = null;
+
+function getContentType(string: string): ContentType {
+  invariant(
+    string === 'blog' ||
+      string === 'pages' ||
+      string === 'snippets' ||
+      string === 'wiki',
+    'getContentType(): Expected a ContentType, got %s',
+    string,
+  );
+  return string;
+}
 
 async function getCorpus(): Promise<Array<SearchResult>> {
   if (!corpus) {
@@ -32,7 +46,7 @@ async function getCorpus(): Promise<Array<SearchResult>> {
     corpus = [];
     const regExp = new RegExp(
       'content/' + // Prefix.
-      '([^/]+)/' + // Content type.
+      '(blog|pages|snippets|wiki)/' + // Content type.
         '([^\0]+)\\.\\w+\0', // Filename match + extension + terminator.
       'g', // Match repeatedly.
     );
@@ -40,7 +54,7 @@ async function getCorpus(): Promise<Array<SearchResult>> {
     while ((match = regExp.exec(output))) {
       corpus.push({
         id: match[2],
-        type: match[1],
+        type: getContentType(match[1]),
       });
     }
   }
