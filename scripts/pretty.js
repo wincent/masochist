@@ -9,6 +9,7 @@ const RESET = '\x1b[0m';
 const YELLOW = '\x1b[33m';
 
 const paths = [
+  'babel.config.js',
   'gulpfile.babel.js',
   'postcss.config.js',
   '{scripts,src}/**/*.js',
