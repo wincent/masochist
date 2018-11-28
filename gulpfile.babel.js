@@ -33,19 +33,20 @@ const babelOptions = {
       },
     ],
     'relay',
-    'transform-object-rest-spread',
-    'transform-class-properties',
+    '@babel/plugin-proposal-object-rest-spread',
+    '@babel/plugin-proposal-class-properties',
   ],
   presets: [
     [
-      'env',
+      '@babel/preset-env',
       {
         targets: {
           node: '10.13.0',
         },
       },
     ],
-    'react',
+    '@babel/preset-flow',
+    '@babel/preset-react',
   ],
 };
 
