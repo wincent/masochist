@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 083ae950c0d634d8b9a3d4647cdb2dad
+ * @relayHash c58e69b7637f076897d6ea3910a43b25
  */
 
 /* eslint-disable */
@@ -8,8 +8,18 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type TagsRouteQueryResponse = {| |};
+import type { ConcreteRequest } from 'relay-runtime';
+type TagsIndex$ref = any;
+export type TagsRouteQueryVariables = {|
+  count: number
+|};
+export type TagsRouteQueryResponse = {|
+  +$fragmentRefs: TagsIndex$ref
+|};
+export type TagsRouteQuery = {|
+  variables: TagsRouteQueryVariables,
+  response: TagsRouteQueryResponse,
+|};
 */
 
 
@@ -40,48 +50,53 @@ fragment TagPreview on Tag {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
+  }
+],
+v1 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "count",
+  "args": null,
+  "storageKey": null
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "TagsRouteQuery",
+  "id": "TagsRouteQuery",
+  "text": null,
+  "metadata": {},
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      }
-    ],
     "kind": "Fragment",
-    "metadata": null,
     "name": "TagsRouteQuery",
+    "type": "Root",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "TagsIndex",
         "args": null
       }
-    ],
-    "type": "Root"
+    ]
   },
-  "id": "TagsRouteQuery",
-  "kind": "Batch",
-  "metadata": {},
-  "name": "TagsRouteQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "operation": {
+    "kind": "Operation",
     "name": "TagsRouteQuery",
-    "operation": "query",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "tags",
+        "storageKey": null,
         "args": [
           {
             "kind": "Variable",
@@ -91,77 +106,59 @@ const batch /*: ConcreteBatch*/ = {
           }
         ],
         "concreteType": "TagConnection",
-        "name": "tags",
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "count",
-            "storageKey": null
-          },
+          v1,
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "TagEdge",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Tag",
-                "name": "node",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "id",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "name",
+                    "args": null,
                     "storageKey": null
                   },
+                  v1,
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
-                    "name": "count",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
                     "name": "url",
+                    "args": null,
                     "storageKey": null
                   }
-                ],
-                "storageKey": null
+                ]
               }
-            ],
-            "storageKey": null
+            ]
           }
-        ],
-        "storageKey": null
+        ]
       }
     ]
-  },
-  "text": null
+  }
 };
-
-
-if (__DEV__) {
-  batch['text'] = "query TagsRouteQuery(\n  $count: Int!\n) {\n  ...TagsIndex\n}\n\nfragment TagsIndex on Root {\n  tags(first: $count) {\n    count\n    edges {\n      node {\n        id\n        name\n        ...TagPreview\n      }\n    }\n  }\n}\n\nfragment TagPreview on Tag {\n  count\n  name\n  url\n}\n";
-}
-
-module.exports = batch;
+})();
+// prettier-ignore
+(node/*: any*/).hash = '9b2894785b3848427728e79818c64635';
+module.exports = node;

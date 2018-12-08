@@ -7,19 +7,30 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type Tags$ref = any;
+type When$ref = any;
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type Post$ref: FragmentReference;
 export type Post = {|
-  +id: string;
-  +title: ?string;
-  +url: string;
+  +id: string,
+  +title: ?string,
+  +url: string,
   +body: {|
-    +html: string;
-  |};
+    +html: string
+  |},
+  +readTime: number,
+  +$fragmentRefs: Tags$ref & When$ref,
+  +$refType: Post$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = {
+  "kind": "Fragment",
+  "name": "Post",
+  "type": "Post",
+  "metadata": null,
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
@@ -27,42 +38,41 @@ const fragment /*: ConcreteFragment*/ = {
       "type": "Int"
     }
   ],
-  "kind": "Fragment",
-  "metadata": null,
-  "name": "Post",
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "id",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "title",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "url",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "body",
+      "storageKey": null,
       "args": null,
       "concreteType": "Markup",
-      "name": "body",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "html",
           "args": [
             {
               "kind": "Variable",
@@ -71,10 +81,15 @@ const fragment /*: ConcreteFragment*/ = {
               "type": "Int"
             }
           ],
-          "name": "html",
           "storageKey": null
         }
-      ],
+      ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "readTime",
+      "args": null,
       "storageKey": null
     },
     {
@@ -87,8 +102,8 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "When",
       "args": null
     }
-  ],
-  "type": "Post"
+  ]
 };
-
-module.exports = fragment;
+// prettier-ignore
+(node/*: any*/).hash = '523fa3f7cf1a5574a65343be032bb7af';
+module.exports = node;

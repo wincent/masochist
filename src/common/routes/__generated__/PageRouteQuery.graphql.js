@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 80484e7a57f9bcb7980dff0958e343a2
+ * @relayHash bc8f9ef9b3f21a175600bdc7cf809473
  */
 
 /* eslint-disable */
@@ -8,12 +8,22 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
+type Page$ref = any;
+export type PageRouteQueryVariables = {|
+  baseHeadingLevel: number,
+  id: string,
+|};
 export type PageRouteQueryResponse = {|
   +node: ?{|
-    +description?: ?string;
-    +title?: ?string;
-  |};
+    +description?: ?string,
+    +title?: ?string,
+    +$fragmentRefs: Page$ref,
+  |}
+|};
+export type PageRouteQuery = {|
+  variables: PageRouteQueryVariables,
+  response: PageRouteQueryResponse,
 |};
 */
 
@@ -58,39 +68,71 @@ fragment When on Versioned {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "baseHeadingLevel",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "id",
+    "type": "ID!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "id",
+    "type": "ID!"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "description",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "title",
+  "args": null,
+  "storageKey": null
+},
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "PageRouteQuery",
+  "id": "PageRouteQuery",
+  "text": null,
+  "metadata": {},
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "baseHeadingLevel",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
     "kind": "Fragment",
-    "metadata": null,
     "name": "PageRouteQuery",
+    "type": "Root",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "id",
-            "variableName": "id",
-            "type": "ID!"
-          }
-        ],
-        "concreteType": null,
         "name": "node",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -102,109 +144,61 @@ const batch /*: ConcreteBatch*/ = {
                 "name": "Page",
                 "args": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "description",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "title",
-                "storageKey": null
-              }
+              v2,
+              v3
             ]
           }
-        ],
-        "storageKey": null
+        ]
       }
-    ],
-    "type": "Root"
+    ]
   },
-  "id": "PageRouteQuery",
-  "kind": "Batch",
-  "metadata": {},
-  "name": "PageRouteQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "baseHeadingLevel",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "operation": {
+    "kind": "Operation",
     "name": "PageRouteQuery",
-    "operation": "query",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "id",
-            "variableName": "id",
-            "type": "ID!"
-          }
-        ],
-        "concreteType": null,
         "name": "node",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
-            "args": null,
             "name": "__typename",
+            "args": null,
             "storageKey": null
           },
           {
             "kind": "ScalarField",
             "alias": null,
-            "args": null,
             "name": "id",
+            "args": null,
             "storageKey": null
           },
           {
             "kind": "InlineFragment",
             "type": "Page",
             "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "title",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "url",
-                "storageKey": null
-              },
+              v3,
+              v4,
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "body",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Markup",
-                "name": "body",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
+                    "name": "html",
                     "args": [
                       {
                         "kind": "Variable",
@@ -213,71 +207,52 @@ const batch /*: ConcreteBatch*/ = {
                         "type": "Int"
                       }
                     ],
-                    "name": "html",
                     "storageKey": null
                   }
-                ],
-                "storageKey": null
+                ]
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "tags",
+                "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "createdAt",
+                "args": null,
                 "storageKey": null
               },
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "history",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "History",
-                "name": "history",
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "url",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
+                  v4
+                ]
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "updatedAt",
+                "args": null,
                 "storageKey": null
               },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "description",
-                "storageKey": null
-              }
+              v2
             ]
           }
-        ],
-        "storageKey": null
+        ]
       }
     ]
-  },
-  "text": null
+  }
 };
-
-
-if (__DEV__) {
-  batch['text'] = "query PageRouteQuery(\n  $baseHeadingLevel: Int!\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Page {\n      ...Page\n      description\n      title\n    }\n    id\n  }\n}\n\nfragment Page on Page {\n  id\n  title\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
-}
-
-module.exports = batch;
+})();
+// prettier-ignore
+(node/*: any*/).hash = 'c2e0a5ac020844a4c748a5070bc211ae';
+module.exports = node;

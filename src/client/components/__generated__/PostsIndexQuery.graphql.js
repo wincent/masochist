@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 631482bcb8d7ca3ec54f65e5b843f81d
+ * @relayHash 8d710dca85bbeb27d7f2d38a12b4f0d4
  */
 
 /* eslint-disable */
@@ -8,8 +8,20 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type PostsIndexQueryResponse = {| |};
+import type { ConcreteRequest } from 'relay-runtime';
+type PostsIndex$ref = any;
+export type PostsIndexQueryVariables = {|
+  baseHeadingLevel: number,
+  count: number,
+  cursor?: ?string,
+|};
+export type PostsIndexQueryResponse = {|
+  +$fragmentRefs: PostsIndex$ref
+|};
+export type PostsIndexQuery = {|
+  variables: PostsIndexQueryVariables,
+  response: PostsIndexQueryResponse,
+|};
 */
 
 
@@ -28,24 +40,13 @@ fragment PostsIndex on Root {
       node {
         id
         ...Post
+        __typename
       }
+      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-    }
-    ... on PostConnection {
-      edges {
-        cursor
-        node {
-          __typename
-          id
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
   }
 }
@@ -57,6 +58,7 @@ fragment Post on Post {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
+  readTime
   ...Tags
   ...When
 }
@@ -74,138 +76,129 @@ fragment When on Versioned {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "baseHeadingLevel",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "cursor",
+    "type": "String",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor",
+    "type": "String"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "count",
+    "type": "Int"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "PostsIndexQuery",
+  "id": "PostsIndexQuery",
+  "text": null,
+  "metadata": {},
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "baseHeadingLevel",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "cursor",
-        "type": "String",
-        "defaultValue": null
-      }
-    ],
     "kind": "Fragment",
-    "metadata": null,
     "name": "PostsIndexQuery",
+    "type": "Root",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "PostsIndex",
         "args": null
       }
-    ],
-    "type": "Root"
+    ]
   },
-  "id": "PostsIndexQuery",
-  "kind": "Batch",
-  "metadata": {},
-  "name": "PostsIndexQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "baseHeadingLevel",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "cursor",
-        "type": "String",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "operation": {
+    "kind": "Operation",
     "name": "PostsIndexQuery",
-    "operation": "query",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "cursor",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "count",
-            "type": "Int"
-          }
-        ],
-        "concreteType": "PostConnection",
         "name": "posts",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "PostConnection",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "PostEdge",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Post",
-                "name": "node",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "id",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "title",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
                     "args": null,
-                    "name": "url",
                     "storageKey": null
                   },
+                  v2,
                   {
                     "kind": "LinkedField",
                     "alias": null,
+                    "name": "body",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "Markup",
-                    "name": "body",
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
+                        "name": "html",
                         "args": [
                           {
                             "kind": "Variable",
@@ -214,157 +207,108 @@ const batch /*: ConcreteBatch*/ = {
                             "type": "Int"
                           }
                         ],
-                        "name": "html",
                         "storageKey": null
                       }
-                    ],
+                    ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "readTime",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "tags",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "createdAt",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "LinkedField",
                     "alias": null,
+                    "name": "history",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "History",
-                    "name": "history",
                     "plural": false,
                     "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "url",
-                        "storageKey": null
-                      }
-                    ],
+                      v2
+                    ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "updatedAt",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
+                    "name": "__typename",
                     "args": null,
-                    "name": "updatedAt",
                     "storageKey": null
                   }
-                ],
+                ]
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "cursor",
+                "args": null,
                 "storageKey": null
               }
-            ],
-            "storageKey": null
+            ]
           },
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "pageInfo",
+            "storageKey": null,
             "args": null,
             "concreteType": "PageInfo",
-            "name": "pageInfo",
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "endCursor",
+                "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "hasNextPage",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "PostConnection",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
                 "args": null,
-                "concreteType": "PostEdge",
-                "name": "edges",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "cursor",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Post",
-                    "name": "node",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
                 "storageKey": null
               }
             ]
           }
-        ],
-        "storageKey": null
+        ]
       },
       {
         "kind": "LinkedHandle",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "cursor",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "count",
-            "type": "Int"
-          }
-        ],
-        "handle": "connection",
         "name": "posts",
+        "args": v1,
+        "handle": "connection",
         "key": "PostsIndex_posts",
         "filters": null
       }
     ]
-  },
-  "text": null
+  }
 };
-
-
-if (__DEV__) {
-  batch['text'] = "query PostsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...PostsIndex\n}\n\nfragment PostsIndex on Root {\n  posts(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Post\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on PostConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Post on Post {\n  id\n  title\n  url\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
-}
-
-module.exports = batch;
+})();
+// prettier-ignore
+(node/*: any*/).hash = '916c9e6f9d9012484d755c34727ea36f';
+module.exports = node;

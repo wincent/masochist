@@ -1221,6 +1221,22 @@
               "deprecationReason": null
             },
             {
+              "name": "readTime",
+              "description": "Estimate of time necessary to read the post, in minutes",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "description",
               "description": "Succinct summary of the post content",
               "args": [],

@@ -20,6 +20,7 @@ fragment Post on Post {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
+  readTime
   ...Tags
   ...When
 }

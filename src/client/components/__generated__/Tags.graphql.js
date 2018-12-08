@@ -7,28 +7,32 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type Tags$ref: FragmentReference;
 export type Tags = {|
-  +tags: $ReadOnlyArray<any>;
+  +tags: $ReadOnlyArray<any>,
+  +$refType: Tags$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "Tags",
+  "type": "Tagged",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "tags",
+      "args": null,
       "storageKey": null
     }
-  ],
-  "type": "Tagged"
+  ]
 };
-
-module.exports = fragment;
+// prettier-ignore
+(node/*: any*/).hash = '9a22c78c14f2e3414ac9c3cf1ebbb658';
+module.exports = node;

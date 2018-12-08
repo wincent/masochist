@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a8d56fb211616e022697e9d256025706
+ * @relayHash 0eb96f28262b12740b0bdd2d9c656843
  */
 
 /* eslint-disable */
@@ -8,11 +8,18 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
+export type getCanonicalURLForRequestQueryVariables = {|
+  id: string
+|};
 export type getCanonicalURLForRequestQueryResponse = {|
   +node: ?{|
-    +url?: string;
-  |};
+    +url?: string
+  |}
+|};
+export type getCanonicalURLForRequestQuery = {|
+  variables: getCanonicalURLForRequestQueryVariables,
+  response: getCanonicalURLForRequestQueryResponse,
 |};
 */
 
@@ -31,124 +38,99 @@ query getCanonicalURLForRequestQuery(
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "getCanonicalURLForRequestQuery",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "id",
-            "variableName": "id",
-            "type": "ID!"
-          }
-        ],
-        "concreteType": null,
-        "name": "node",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "InlineFragment",
-            "type": "Article",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "url",
-                "storageKey": null
-              }
-            ]
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Root"
-  },
-  "id": "getCanonicalURLForRequestQuery",
-  "kind": "Batch",
-  "metadata": {},
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "id",
+    "type": "ID!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "id",
+    "type": "ID!"
+  }
+],
+v2 = {
+  "kind": "InlineFragment",
+  "type": "Article",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "url",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
   "name": "getCanonicalURLForRequestQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "id": "getCanonicalURLForRequestQuery",
+  "text": null,
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
     "name": "getCanonicalURLForRequestQuery",
-    "operation": "query",
+    "type": "Root",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "id",
-            "variableName": "id",
-            "type": "ID!"
-          }
-        ],
-        "concreteType": null,
         "name": "node",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": null,
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "__typename",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "Article",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "url",
-                "storageKey": null
-              }
-            ]
-          }
-        ],
-        "storageKey": null
+          v2
+        ]
       }
     ]
   },
-  "text": null
+  "operation": {
+    "kind": "Operation",
+    "name": "getCanonicalURLForRequestQuery",
+    "argumentDefinitions": v0,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "node",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": null,
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          v2
+        ]
+      }
+    ]
+  }
 };
-
-
-if (__DEV__) {
-  batch['text'] = "query getCanonicalURLForRequestQuery(\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Article {\n      url\n    }\n    id\n  }\n}\n";
-}
-
-module.exports = batch;
+})();
+// prettier-ignore
+(node/*: any*/).hash = '21b6dbe83df90a643ee78370d4f5c155';
+module.exports = node;

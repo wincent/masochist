@@ -37,10 +37,10 @@ export default function buildRoute(query, config) {
         // having to go back to the server for data.
         const {
           createOperationSelector,
-          getOperation,
+          getRequest,
         } = environment.unstable_internal;
         const operation = createOperationSelector(
-          getOperation(query),
+          getRequest(query),
           variables,
         );
         environment.retain(operation.root);

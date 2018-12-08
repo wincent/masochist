@@ -11,24 +11,13 @@ fragment ArticlesIndex on Root {
       node {
         id
         ...ArticlePreview
+        __typename
       }
+      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-    }
-    ... on ArticleConnection {
-      edges {
-        cursor
-        node {
-          __typename
-          id
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
   }
 }

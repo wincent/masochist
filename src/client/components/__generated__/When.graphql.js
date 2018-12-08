@@ -7,57 +7,61 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type When$ref: FragmentReference;
 export type When = {|
-  +createdAt: ?any;
+  +createdAt: ?any,
   +history: {|
-    +url: string;
-  |};
-  +updatedAt: ?any;
+    +url: string
+  |},
+  +updatedAt: ?any,
+  +$refType: When$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "When",
+  "type": "Versioned",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "createdAt",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "history",
+      "storageKey": null,
       "args": null,
       "concreteType": "History",
-      "name": "history",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "args": null,
           "name": "url",
+          "args": null,
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "updatedAt",
+      "args": null,
       "storageKey": null
     }
-  ],
-  "type": "Versioned"
+  ]
 };
-
-module.exports = fragment;
+// prettier-ignore
+(node/*: any*/).hash = '6ac50e9dba4c3f8b117291f98265a577';
+module.exports = node;

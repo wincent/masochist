@@ -7,19 +7,29 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type Tags$ref = any;
+type When$ref = any;
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type Page$ref: FragmentReference;
 export type Page = {|
-  +id: string;
-  +title: ?string;
-  +url: string;
+  +id: string,
+  +title: ?string,
+  +url: string,
   +body: {|
-    +html: string;
-  |};
+    +html: string
+  |},
+  +$fragmentRefs: Tags$ref & When$ref,
+  +$refType: Page$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = {
+  "kind": "Fragment",
+  "name": "Page",
+  "type": "Page",
+  "metadata": null,
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
@@ -27,42 +37,41 @@ const fragment /*: ConcreteFragment*/ = {
       "type": "Int"
     }
   ],
-  "kind": "Fragment",
-  "metadata": null,
-  "name": "Page",
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "id",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "title",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "url",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "body",
+      "storageKey": null,
       "args": null,
       "concreteType": "Markup",
-      "name": "body",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "html",
           "args": [
             {
               "kind": "Variable",
@@ -71,11 +80,9 @@ const fragment /*: ConcreteFragment*/ = {
               "type": "Int"
             }
           ],
-          "name": "html",
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -87,8 +94,8 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "When",
       "args": null
     }
-  ],
-  "type": "Page"
+  ]
 };
-
-module.exports = fragment;
+// prettier-ignore
+(node/*: any*/).hash = '8791b9b30ebc301971b8fa7186004ca5';
+module.exports = node;

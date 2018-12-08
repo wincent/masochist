@@ -7,6 +7,7 @@ import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
+import Metadata from './Metadata';
 import When from './When';
 
 import type {Post as PostData} from './__generated__/Post.graphql';
@@ -20,7 +21,10 @@ class Post extends React.Component<{data: PostData}> {
         <h1>
           <Link to={post.url}>{post.title}</Link>
         </h1>
-        <When data={post} />
+        <Metadata>
+          <When data={post} />
+          <span>{post.readTime} minute read</span>
+        </Metadata>
         <div>
           <TrustedPrerenderedMarkup html={post.body.html} />
         </div>
@@ -40,6 +44,7 @@ export default createFragmentContainer(
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
       }
+      readTime
       ...Tags
       ...When
     }

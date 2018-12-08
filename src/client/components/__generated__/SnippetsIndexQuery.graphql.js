@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 582ad9ad0d976bdaa76950a228b90367
+ * @relayHash 213cfd281c682759f78f918dcd5ab767
  */
 
 /* eslint-disable */
@@ -8,8 +8,20 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type SnippetsIndexQueryResponse = {| |};
+import type { ConcreteRequest } from 'relay-runtime';
+type SnippetsIndex$ref = any;
+export type SnippetsIndexQueryVariables = {|
+  baseHeadingLevel: number,
+  count: number,
+  cursor?: ?string,
+|};
+export type SnippetsIndexQueryResponse = {|
+  +$fragmentRefs: SnippetsIndex$ref
+|};
+export type SnippetsIndexQuery = {|
+  variables: SnippetsIndexQueryVariables,
+  response: SnippetsIndexQueryResponse,
+|};
 */
 
 
@@ -28,24 +40,13 @@ fragment SnippetsIndex on Root {
       node {
         id
         ...Snippet
+        __typename
       }
+      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-    }
-    ... on SnippetConnection {
-      edges {
-        cursor
-        node {
-          __typename
-          id
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
   }
 }
@@ -74,124 +75,121 @@ fragment When on Versioned {
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "baseHeadingLevel",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "count",
+    "type": "Int!",
+    "defaultValue": null
+  },
+  {
+    "kind": "LocalArgument",
+    "name": "cursor",
+    "type": "String",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "cursor",
+    "type": "String"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "count",
+    "type": "Int"
+  }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "url",
+  "args": null,
+  "storageKey": null
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
+  "name": "SnippetsIndexQuery",
+  "id": "SnippetsIndexQuery",
+  "text": null,
+  "metadata": {},
   "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "baseHeadingLevel",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "cursor",
-        "type": "String",
-        "defaultValue": null
-      }
-    ],
     "kind": "Fragment",
-    "metadata": null,
     "name": "SnippetsIndexQuery",
+    "type": "Root",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "SnippetsIndex",
         "args": null
       }
-    ],
-    "type": "Root"
+    ]
   },
-  "id": "SnippetsIndexQuery",
-  "kind": "Batch",
-  "metadata": {},
-  "name": "SnippetsIndexQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "baseHeadingLevel",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "count",
-        "type": "Int!",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "cursor",
-        "type": "String",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "operation": {
+    "kind": "Operation",
     "name": "SnippetsIndexQuery",
-    "operation": "query",
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "cursor",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "count",
-            "type": "Int"
-          }
-        ],
-        "concreteType": "SnippetConnection",
         "name": "snippets",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "SnippetConnection",
         "plural": false,
         "selections": [
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "edges",
+            "storageKey": null,
             "args": null,
             "concreteType": "SnippetEdge",
-            "name": "edges",
             "plural": true,
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
+                "name": "node",
+                "storageKey": null,
                 "args": null,
                 "concreteType": "Snippet",
-                "name": "node",
                 "plural": false,
                 "selections": [
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "id",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "LinkedField",
                     "alias": null,
+                    "name": "body",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "Markup",
-                    "name": "body",
                     "plural": false,
                     "selections": [
                       {
                         "kind": "ScalarField",
                         "alias": null,
+                        "name": "html",
                         "args": [
                           {
                             "kind": "Variable",
@@ -200,171 +198,109 @@ const batch /*: ConcreteBatch*/ = {
                             "type": "Int"
                           }
                         ],
-                        "name": "html",
                         "storageKey": null
                       }
-                    ],
-                    "storageKey": null
+                    ]
                   },
+                  v2,
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
-                    "name": "url",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
                     "name": "title",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "tags",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
-                    "args": null,
                     "name": "createdAt",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "LinkedField",
                     "alias": null,
+                    "name": "history",
+                    "storageKey": null,
                     "args": null,
                     "concreteType": "History",
-                    "name": "history",
                     "plural": false,
                     "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "url",
-                        "storageKey": null
-                      }
-                    ],
+                      v2
+                    ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "updatedAt",
+                    "args": null,
                     "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
                     "alias": null,
+                    "name": "__typename",
                     "args": null,
-                    "name": "updatedAt",
                     "storageKey": null
                   }
-                ],
+                ]
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "cursor",
+                "args": null,
                 "storageKey": null
               }
-            ],
-            "storageKey": null
+            ]
           },
           {
             "kind": "LinkedField",
             "alias": null,
+            "name": "pageInfo",
+            "storageKey": null,
             "args": null,
             "concreteType": "PageInfo",
-            "name": "pageInfo",
             "plural": false,
             "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "endCursor",
+                "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "args": null,
                 "name": "hasNextPage",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "SnippetConnection",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
                 "args": null,
-                "concreteType": "SnippetEdge",
-                "name": "edges",
-                "plural": true,
-                "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "args": null,
-                    "name": "cursor",
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Snippet",
-                    "name": "node",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
                 "storageKey": null
               }
             ]
           }
-        ],
-        "storageKey": null
+        ]
       },
       {
         "kind": "LinkedHandle",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "after",
-            "variableName": "cursor",
-            "type": "String"
-          },
-          {
-            "kind": "Variable",
-            "name": "first",
-            "variableName": "count",
-            "type": "Int"
-          }
-        ],
-        "handle": "connection",
         "name": "snippets",
+        "args": v1,
+        "handle": "connection",
         "key": "SnippetsIndex_snippets",
         "filters": null
       }
     ]
-  },
-  "text": null
+  }
 };
-
-
-if (__DEV__) {
-  batch['text'] = "query SnippetsIndexQuery(\n  $baseHeadingLevel: Int!\n  $count: Int!\n  $cursor: String\n) {\n  ...SnippetsIndex\n}\n\nfragment SnippetsIndex on Root {\n  snippets(first: $count, after: $cursor) {\n    edges {\n      node {\n        id\n        ...Snippet\n      }\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n    ... on SnippetConnection {\n      edges {\n        cursor\n        node {\n          __typename\n          id\n        }\n      }\n      pageInfo {\n        endCursor\n        hasNextPage\n      }\n    }\n  }\n}\n\nfragment Snippet on Snippet {\n  body {\n    html(baseHeadingLevel: $baseHeadingLevel)\n  }\n  id\n  url\n  title\n  ...Tags\n  ...When\n}\n\nfragment Tags on Tagged {\n  tags\n}\n\nfragment When on Versioned {\n  createdAt\n  history {\n    url\n  }\n  updatedAt\n}\n";
-}
-
-module.exports = batch;
+})();
+// prettier-ignore
+(node/*: any*/).hash = '1ebd8e63e34163b6d487b53199e4e26b';
+module.exports = node;

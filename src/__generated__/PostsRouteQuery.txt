@@ -12,24 +12,13 @@ fragment PostsIndex on Root {
       node {
         id
         ...Post
+        __typename
       }
+      cursor
     }
     pageInfo {
       endCursor
       hasNextPage
-    }
-    ... on PostConnection {
-      edges {
-        cursor
-        node {
-          __typename
-          id
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
   }
 }
@@ -41,6 +30,7 @@ fragment Post on Post {
   body {
     html(baseHeadingLevel: $baseHeadingLevel)
   }
+  readTime
   ...Tags
   ...When
 }

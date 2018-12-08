@@ -1,9 +1,3 @@
-.when {
-  color: #bbb;
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
 .when:before {
   background-image: url(../../../vendor/icons/calendar.svg);
   background-size: cover;

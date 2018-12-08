@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 60eed6ce2295311893d19da30e414c78
+ * @relayHash 926e6fa7c402ba4565dbec8a2aaaf9a5
  */
 
 /* eslint-disable */
@@ -8,11 +8,20 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
+import type { ConcreteRequest } from 'relay-runtime';
+export type MARKUP_FORMAT_TYPE = "C" | "HTML" | "M" | "MD" | "PATCH" | "RB" | "SH" | "TXT" | "%future added value";
+export type SnippetSourceRouteQueryVariables = {|
+  format?: ?MARKUP_FORMAT_TYPE,
+  id: string,
+|};
 export type SnippetSourceRouteQueryResponse = {|
   +node: ?{|
-    +source?: ?string;
-  |};
+    +source?: ?string
+  |}
+|};
+export type SnippetSourceRouteQuery = {|
+  variables: SnippetSourceRouteQueryVariables,
+  response: SnippetSourceRouteQueryResponse,
 |};
 */
 
@@ -32,150 +41,112 @@ query SnippetSourceRouteQuery(
 }
 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "format",
-        "type": "MARKUP_FORMAT_TYPE",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "SnippetSourceRouteQuery",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "id",
-            "variableName": "id",
-            "type": "ID!"
-          }
-        ],
-        "concreteType": null,
-        "name": "node",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "InlineFragment",
-            "type": "Snippet",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": [
-                  {
-                    "kind": "Variable",
-                    "name": "format",
-                    "variableName": "format",
-                    "type": "MARKUP_FORMAT_TYPE"
-                  }
-                ],
-                "name": "source",
-                "storageKey": null
-              }
-            ]
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Root"
+const node/*: ConcreteRequest*/ = (function(){
+var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "format",
+    "type": "MARKUP_FORMAT_TYPE",
+    "defaultValue": null
   },
-  "id": "SnippetSourceRouteQuery",
-  "kind": "Batch",
-  "metadata": {},
+  {
+    "kind": "LocalArgument",
+    "name": "id",
+    "type": "ID!",
+    "defaultValue": null
+  }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "id",
+    "variableName": "id",
+    "type": "ID!"
+  }
+],
+v2 = {
+  "kind": "InlineFragment",
+  "type": "Snippet",
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "source",
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "format",
+          "variableName": "format",
+          "type": "MARKUP_FORMAT_TYPE"
+        }
+      ],
+      "storageKey": null
+    }
+  ]
+};
+return {
+  "kind": "Request",
+  "operationKind": "query",
   "name": "SnippetSourceRouteQuery",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "format",
-        "type": "MARKUP_FORMAT_TYPE",
-        "defaultValue": null
-      },
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
+  "id": "SnippetSourceRouteQuery",
+  "text": null,
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
     "name": "SnippetSourceRouteQuery",
-    "operation": "query",
+    "type": "Root",
+    "metadata": null,
+    "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "id",
-            "variableName": "id",
-            "type": "ID!"
-          }
-        ],
-        "concreteType": null,
         "name": "node",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": null,
         "plural": false,
         "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "__typename",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "Snippet",
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": [
-                  {
-                    "kind": "Variable",
-                    "name": "format",
-                    "variableName": "format",
-                    "type": "MARKUP_FORMAT_TYPE"
-                  }
-                ],
-                "name": "source",
-                "storageKey": null
-              }
-            ]
-          }
-        ],
-        "storageKey": null
+          v2
+        ]
       }
     ]
   },
-  "text": null
+  "operation": {
+    "kind": "Operation",
+    "name": "SnippetSourceRouteQuery",
+    "argumentDefinitions": v0,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "node",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": null,
+        "plural": false,
+        "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "id",
+            "args": null,
+            "storageKey": null
+          },
+          v2
+        ]
+      }
+    ]
+  }
 };
-
-
-if (__DEV__) {
-  batch['text'] = "query SnippetSourceRouteQuery(\n  $format: MARKUP_FORMAT_TYPE\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ... on Snippet {\n      source(format: $format)\n    }\n    id\n  }\n}\n";
-}
-
-module.exports = batch;
+})();
+// prettier-ignore
+(node/*: any*/).hash = 'eafb4479f75afbf0a082df476596408b';
+module.exports = node;

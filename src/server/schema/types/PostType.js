@@ -1,4 +1,4 @@
-import {GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
+import {GraphQLInt, GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
 import {globalIdField} from 'graphql-relay';
 import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import Post from '../../models/Post';
@@ -27,6 +27,13 @@ const PostType = registerType(
             raw: post.body,
             format: post.format,
           };
+        },
+      },
+      readTime: {
+        type: new GraphQLNonNull(GraphQLInt),
+        description: 'Estimate of time necessary to read the post, in minutes',
+        resolve(post) {
+          return Math.ceil(post.body.split(/\s+/).length / 250);
         },
       },
       description: {

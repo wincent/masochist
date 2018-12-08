@@ -12,31 +12,16 @@ fragment Search on Root {
     edges {
       cursor
       node {
-        __typename
         ...ContentPreview
         ... on Node {
           id
         }
+        __typename
       }
     }
     pageInfo {
       endCursor
       hasNextPage
-    }
-    ... on SearchResultConnection {
-      edges {
-        cursor
-        node {
-          __typename
-          ... on Node {
-            id
-          }
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
   }
 }

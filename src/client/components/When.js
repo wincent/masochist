@@ -15,11 +15,11 @@ if (inBrowser) {
 }
 
 const WhenWrapper = ({children, url}) => (
-  <div className="when">
+  <span className="when">
     <a className="when-link" href={url}>
       {children}
     </a>
-  </div>
+  </span>
 );
 
 class When extends React.Component<{data: WhenData}> {

@@ -22,31 +22,16 @@ fragment Tag on Tag {
     edges {
       cursor
       node {
-        __typename
         ...ContentPreview
         ... on Node {
           id
         }
+        __typename
       }
     }
     pageInfo {
       endCursor
       hasNextPage
-    }
-    ... on TaggableConnection {
-      edges {
-        cursor
-        node {
-          __typename
-          ... on Node {
-            id
-          }
-        }
-      }
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
     }
   }
 }

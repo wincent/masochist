@@ -7,40 +7,47 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type Tags$ref = any;
+type When$ref = any;
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type PagePreview$ref: FragmentReference;
 export type PagePreview = {|
-  +description: ?string;
-  +title: ?string;
-  +url: string;
+  +description: ?string,
+  +title: ?string,
+  +url: string,
+  +$fragmentRefs: Tags$ref & When$ref,
+  +$refType: PagePreview$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "PagePreview",
+  "type": "Page",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "description",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "title",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "url",
+      "args": null,
       "storageKey": null
     },
     {
@@ -53,8 +60,8 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "When",
       "args": null
     }
-  ],
-  "type": "Page"
+  ]
 };
-
-module.exports = fragment;
+// prettier-ignore
+(node/*: any*/).hash = '3c983af16a8c98ad3efc9edb90499c81';
+module.exports = node;

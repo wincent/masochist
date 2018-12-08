@@ -7,21 +7,31 @@
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
+import type { ConcreteFragment } from 'relay-runtime';
+type Tags$ref = any;
+type When$ref = any;
+import type { FragmentReference } from "relay-runtime";
+declare export opaque type Article$ref: FragmentReference;
 export type Article = {|
-  +title: ?string;
-  +redirect: ?string;
-  +resolvedTitle: ?string;
-  +editURL: string;
-  +url: string;
+  +title: ?string,
+  +redirect: ?string,
+  +resolvedTitle: ?string,
+  +editURL: string,
+  +url: string,
   +body: {|
-    +html: string;
-  |};
+    +html: string
+  |},
+  +$fragmentRefs: Tags$ref & When$ref,
+  +$refType: Article$ref,
 |};
 */
 
 
-const fragment /*: ConcreteFragment*/ = {
+const node/*: ConcreteFragment*/ = {
+  "kind": "Fragment",
+  "name": "Article",
+  "type": "Article",
+  "metadata": null,
   "argumentDefinitions": [
     {
       "kind": "RootArgument",
@@ -29,56 +39,55 @@ const fragment /*: ConcreteFragment*/ = {
       "type": "Int"
     }
   ],
-  "kind": "Fragment",
-  "metadata": null,
-  "name": "Article",
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "title",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "redirect",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "resolvedTitle",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "editURL",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "url",
+      "args": null,
       "storageKey": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
+      "name": "body",
+      "storageKey": null,
       "args": null,
       "concreteType": "Markup",
-      "name": "body",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "html",
           "args": [
             {
               "kind": "Variable",
@@ -87,11 +96,9 @@ const fragment /*: ConcreteFragment*/ = {
               "type": "Int"
             }
           ],
-          "name": "html",
           "storageKey": null
         }
-      ],
-      "storageKey": null
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -103,8 +110,8 @@ const fragment /*: ConcreteFragment*/ = {
       "name": "When",
       "args": null
     }
-  ],
-  "type": "Article"
+  ]
 };
-
-module.exports = fragment;
+// prettier-ignore
+(node/*: any*/).hash = 'efe468bd4fb17dba34ac63638c11c782';
+module.exports = node;

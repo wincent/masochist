@@ -146,6 +146,9 @@ type Post implements Node & Tagged & Versioned {
   title: String
   body: Markup!
 
+  """Estimate of time necessary to read the post, in minutes"""
+  readTime: Int!
+
   """Succinct summary of the post content"""
   description: String
 
