@@ -82,20 +82,19 @@ export default (async function feed() {
     const result: any = await runQuery(feedQuery().id);
     const data: feedPosts = result.data;
     const posts = data.posts;
-    posts.edges &&
-      posts.edges.forEach(edge => {
-        if (edge) {
-          const {node} = edge;
-          if (node) {
-            feed.item({
-              date: node.createdAt,
-              description: extractExcerpt(node.body.html),
-              title: node.title,
-              url: SCHEME + HOST + node.url,
-            });
-          }
+    posts.edges?.forEach(edge => {
+      if (edge) {
+        const {node} = edge;
+        if (node) {
+          feed.item({
+            date: node.createdAt,
+            description: extractExcerpt(node.body.html),
+            title: node.title,
+            url: SCHEME + HOST + node.url,
+          });
         }
-      });
+      }
+    });
 
     return feed.xml({indent: true});
   });
