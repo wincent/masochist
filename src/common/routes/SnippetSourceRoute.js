@@ -3,8 +3,8 @@ import {graphql} from 'react-relay';
 
 import Link from '../../client/components/Link';
 import Snippet from '../../client/components/Snippet';
-import NotFoundError from '../NotFoundError';
-import RenderTextError from '../RenderTextError';
+import {makeNotFound} from '../NotFoundError';
+import {makeRenderText} from '../RenderTextError';
 import buildRoute from '../buildRoute';
 import markupExtensions from '../markupExtensions';
 
@@ -46,12 +46,12 @@ export default buildRoute(
     },
     render: ({node}, {format, id}) => {
       if (node && node.source !== null) {
-        throw new RenderTextError(
+        throw makeRenderText(
           node.source,
           FORMAT_TO_MIME_TYPE[format.toLowerCase()] || 'text/plain',
         );
       }
-      throw new NotFoundError(
+      throw makeNotFound(
         `Snippet "${id}" source not found for format ${format}`,
         (
           <p>

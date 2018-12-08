@@ -1,11 +1,15 @@
 /**
- * @flow
+ * @flow strict
  */
 
-import createErrorClass from './createErrorClass';
+export default class RenderTextError extends Error {
+  constructor(text: string, type: string) {
+    super('RenderTextError');
+    this.text = text;
+    this.type = type;
+  }
+}
 
-const message = 'RenderTextError';
-
-export default createErrorClass(message, function(text: string, type: string) {
-  return {message, text, type};
-});
+export function makeRenderText(text: string, type: string): RenderTextError {
+  return new RenderTextError(text, type);
+}

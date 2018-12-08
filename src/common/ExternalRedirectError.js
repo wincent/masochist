@@ -1,8 +1,14 @@
 /**
- * @flow
+ * @flow strict
  */
 
-import createErrorClass from './createErrorClass';
+export default class ExternalRedirectError extends Error {
+  constructor(message: string, target: string, code: number) {
+    super(message);
+    this.target = target;
+    this.code = code;
+  }
+}
 
 function descriptionForCode(code: number): string {
   switch (code) {
@@ -15,12 +21,9 @@ function descriptionForCode(code: number): string {
   }
 }
 
-export default createErrorClass('ExternalRedirectError', function(
-  target: string,
-  code: number,
-) {
+export function makeExternalRedirect(target: string, code: number): ExternalRedirectError {
   const message = `HTTP/1.1 ${code} ${descriptionForCode(
     code,
   )} - Location: ${target}`;
-  return {message, code, target};
-});
+  return new ExternalRedirectError(message, target, code);
+}

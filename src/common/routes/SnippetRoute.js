@@ -3,7 +3,7 @@ import {graphql} from 'react-relay';
 
 import Link from '../../client/components/Link';
 import Snippet from '../../client/components/Snippet';
-import NotFoundError from '../NotFoundError';
+import makeNotFound from '../NotFoundError';
 import buildRoute from '../buildRoute';
 
 export default buildRoute(
@@ -27,7 +27,7 @@ export default buildRoute(
       if (node) {
         return <Snippet data={node} />;
       } else {
-        throw new NotFoundError(
+        throw makeNotFound(
           `No snippet found with id: ${id}`,
           (
             <p>

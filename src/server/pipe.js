@@ -6,14 +6,12 @@ import {spawn} from 'child_process';
 
 import type {Invocation} from './run';
 
-import createErrorClass from '../common/createErrorClass';
-
-export const RunError = createErrorClass('RunError', function(
-  message: string,
-  code: number,
-) {
-  return {message, code};
-});
+export class RunError extends Error {
+  constructor(message: string, code: number) {
+    super(`RunError: ${message}`);
+    this.code = code;
+  }
+}
 
 function getError(invocations: Array<Invocation>, code: number): RunError {
   const pipeline = invocations

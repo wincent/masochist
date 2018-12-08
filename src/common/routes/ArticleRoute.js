@@ -7,9 +7,9 @@ import {graphql} from 'react-relay';
 
 import Article from '../../client/components/Article';
 import Link from '../../client/components/Link';
-import ExternalRedirectError from '../ExternalRedirectError';
-import InternalRedirectError from '../ExternalRedirectError';
-import NotFoundError from '../NotFoundError';
+import {makeExternalRedirect} from '../ExternalRedirectError';
+import {makeInternalRedirect} from '../InternalRedirectError';
+import {makeNotFound} from '../NotFoundError';
 import buildRoute from '../buildRoute';
 import inBrowser from '../inBrowser';
 import matchRoute from '../matchRoute';
@@ -26,7 +26,7 @@ function hardRedirect(target: string): null {
     window.location = target;
     return null;
   }
-  throw new ExternalRedirectError(target, 301);
+  throw makeExternalRedirect(target, 301);
 }
 
 /**
@@ -36,7 +36,7 @@ function hardRedirect(target: string): null {
  */
 function softRedirect(target: string): null {
   if (matchRoute(target)) {
-    throw new InternalRedirectError(target);
+    throw makeInternalRedirect(target);
   }
   return hardRedirect(target);
 }
@@ -77,7 +77,7 @@ export default buildRoute(
         }
         return <Article data={node} />;
       } else {
-        throw new NotFoundError(
+        throw makeNotFoundError(
           `No article found with id: ${id}`,
           (
             <p>

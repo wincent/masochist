@@ -1,12 +1,16 @@
 /**
- * @flow
+ * @flow strict-local
  */
 
-import createErrorClass from './createErrorClass';
+export default class NotFoundError extends Error {
+  // TODO: improve on any annotation
+  constructor(message: string, component: any) {
+    super(message);
+    this.component = component;
+  }
+}
 
-export default createErrorClass('NotFoundError', function(
-  message: string,
-  component,
-) {
-  return {message, component};
-});
+// TODO: fix this too
+export function makeNotFound(message: string, component: any): NotFoundError {
+  return new NotFoundError(message, component);
+}

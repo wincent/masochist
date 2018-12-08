@@ -3,7 +3,7 @@ import {graphql} from 'react-relay';
 
 import Link from '../../client/components/Link';
 import Page from '../../client/components/Page';
-import NotFoundError from '../NotFoundError';
+import {makeNotFound} from '../NotFoundError';
 import buildRoute from '../buildRoute';
 
 export default buildRoute(
@@ -27,7 +27,7 @@ export default buildRoute(
       if (node) {
         return <Page data={node} />;
       } else {
-        throw new NotFoundError(
+        throw makeNotFoundError(
           `No page found with id: ${id}`,
           (
             <p>
