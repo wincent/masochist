@@ -175,7 +175,7 @@ export default (async function search(q: string): Promise<Array<SearchResult>> {
   );
   let match;
   while ((match = regExp.exec(hits))) {
-    const type = match[1];
+    const type = getContentType(match[1]);
     const id = match[2];
     const key = `${type}/${id}`;
     if (!results.has(key)) {
