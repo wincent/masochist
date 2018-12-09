@@ -53,13 +53,11 @@ export default buildRoute(
       }
       throw makeNotFound(
         `Snippet "${id}" source not found for format ${format}`,
-        (
-          <p>
-            Try inspecting <Link to="/snippets">the snippets index</Link> and{' '}
-            <Link to="/tags">the tags listing</Link>, or using{' '}
-            <Link to="/search">the site search</Link>.
-          </p>
-        ),
+        <p>
+          Try inspecting <Link to="/snippets">the snippets index</Link> and{' '}
+          <Link to="/tags">the tags listing</Link>, or using{' '}
+          <Link to="/search">the site search</Link>.
+        </p>,
       );
     },
   },

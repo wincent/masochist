@@ -71,10 +71,7 @@ const api = {
   environment,
   fetchQuery: fetchQuery.bind(null, environment),
   readQuery(query, variables) {
-    const {
-      createOperationSelector,
-      getRequest,
-    } = environment.unstable_internal;
+    const {createOperationSelector, getRequest} = environment.unstable_internal;
     const operation = createOperationSelector(getRequest(query), variables);
     const snapshot = environment.lookup(
       operation.fragment,

@@ -1,4 +1,9 @@
-import {GraphQLInt, GraphQLNonNull, GraphQLObjectType, GraphQLString} from 'graphql';
+import {
+  GraphQLInt,
+  GraphQLNonNull,
+  GraphQLObjectType,
+  GraphQLString,
+} from 'graphql';
 import {globalIdField} from 'graphql-relay';
 import getHistoryURLForContentPath from '../../getHistoryURLForContentPath';
 import Post from '../../models/Post';

@@ -39,10 +39,7 @@ export default function buildRoute(query, config) {
           createOperationSelector,
           getRequest,
         } = environment.unstable_internal;
-        const operation = createOperationSelector(
-          getRequest(query),
-          variables,
-        );
+        const operation = createOperationSelector(getRequest(query), variables);
         environment.retain(operation.root);
       }
 
