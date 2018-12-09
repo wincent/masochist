@@ -19,7 +19,7 @@ class Post extends React.Component<{data: PostData}> {
       // post.url encode?
       <article>
         <h1>
-          <Link to={post.url}>{post.title}</Link>
+          <Link to={post.url}>{post.title ?? 'Untitled'}</Link>
         </h1>
         <Metadata>
           <When data={post} />

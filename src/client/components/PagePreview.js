@@ -22,7 +22,7 @@ class PagePreview extends React.Component<{data: PagePreviewData}> {
         </td>
         <td>
           <Link title={description} to={url}>
-            {title}
+            {title ?? 'Untitled'}
           </Link>
         </td>
         <td>

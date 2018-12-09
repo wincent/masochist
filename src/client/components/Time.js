@@ -15,7 +15,7 @@ type Props = {
 type State = TimeInfo;
 
 export default class Time extends React.Component<Props, State> {
-  _updateTimer: mixed;
+  _updateTimer: ?TimeoutID;
 
   _clearTimer = () => {
     if (this._updateTimer) {

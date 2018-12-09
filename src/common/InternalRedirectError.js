@@ -3,6 +3,8 @@
  */
 
 export default class InternalRedirectError extends Error {
+  target: string;
+
   constructor(message: string, target: string) {
     super(message);
     this.target = target;

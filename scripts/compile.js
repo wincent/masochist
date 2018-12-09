@@ -50,7 +50,7 @@ import type {GraphQLSchema} from 'graphql';
 import type {
   PluginInitializer,
   PluginInterface,
-} from '../language/RelayLanguagePluginInterface';
+} from 'relay-compiler/lib/RelayLanguagePluginInterface';
 
 function persistQuery(text: string): Promise<string> {
   const match = text.match(/^\s*query\s+(\w+Query)\b/);

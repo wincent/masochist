@@ -22,7 +22,7 @@ class SnippetPreview extends React.Component<{data: SnippetPreviewData}> {
         </td>
         <td>
           <Link title={description} to={url}>
-            {title}
+            {title ?? 'Untitled'}
           </Link>
         </td>
         <td>

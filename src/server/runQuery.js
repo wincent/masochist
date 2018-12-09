@@ -4,6 +4,7 @@
 
 import {LAST_INDEXED_HASH} from './constants';
 import {graphql} from 'graphql';
+import invariant from '../common/invariant';
 import stableStringify from '../common/stableStringify';
 import LRUCache from './LRUCache';
 import getLoaders from './getLoaders';
@@ -14,7 +15,7 @@ import schema from './schema';
 function getCache(hash: string) {
   return {
     hash,
-    storage: new LRUCache(),
+    storage: new LRUCache<string>(),
   };
 }
 
@@ -34,6 +35,7 @@ export default (async function runQuery(id: string, variables: ?Object) {
     id,
     variables,
   });
+  invariant(key, 'Expected non-void key');
   if (cache.storage.has(key)) {
     return cache.storage.get(key);
   } else {

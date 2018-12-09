@@ -2,15 +2,20 @@
  * @flow strict-local
  */
 
+import * as React from 'react';
+
 export default class NotFoundError extends Error {
-  // TODO: improve on any annotation
-  constructor(message: string, component: any) {
+  component: React.Node;
+
+  constructor(message: string, component: React.Node) {
     super(message);
     this.component = component;
   }
 }
 
-// TODO: fix this too
-export function makeNotFound(message: string, component: any): NotFoundError {
+export function makeNotFound(
+  message: string,
+  component: React.Node,
+): NotFoundError {
   return new NotFoundError(message, component);
 }

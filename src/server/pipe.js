@@ -7,6 +7,8 @@ import {spawn} from 'child_process';
 import type {Invocation} from './run';
 
 export class RunError extends Error {
+  code: number;
+
   constructor(message: string, code: number) {
     super(`RunError: ${message}`);
     this.code = code;

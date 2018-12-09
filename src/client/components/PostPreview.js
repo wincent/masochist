@@ -22,7 +22,7 @@ class PostPreview extends React.Component<{data: PostPreviewData}> {
         </td>
         <td>
           <Link title={description} to={url}>
-            {title}
+            {title ?? 'Untitled'}
           </Link>
         </td>
         <td>

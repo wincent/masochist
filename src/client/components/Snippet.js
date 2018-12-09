@@ -18,7 +18,7 @@ class Snippet extends React.Component<{data: SnippetData}> {
       // encode url?
       <article>
         <h1>
-          <Link to={snippet.url}>{snippet.title}</Link>
+          <Link to={snippet.url}>{snippet.title ?? 'Untitled'}</Link>
         </h1>
         <When data={snippet} />
         <div>

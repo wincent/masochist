@@ -3,6 +3,9 @@
  */
 
 export default class ExternalRedirectError extends Error {
+  target: string;
+  code: number;
+
   constructor(message: string, target: string, code: number) {
     super(message);
     this.target = target;
@@ -21,7 +24,10 @@ function descriptionForCode(code: number): string {
   }
 }
 
-export function makeExternalRedirect(target: string, code: number): ExternalRedirectError {
+export function makeExternalRedirect(
+  target: string,
+  code: number,
+): ExternalRedirectError {
   const message = `HTTP/1.1 ${code} ${descriptionForCode(
     code,
   )} - Location: ${target}`;

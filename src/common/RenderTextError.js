@@ -3,6 +3,9 @@
  */
 
 export default class RenderTextError extends Error {
+  text: string;
+  type: string;
+
   constructor(text: string, type: string) {
     super('RenderTextError');
     this.text = text;

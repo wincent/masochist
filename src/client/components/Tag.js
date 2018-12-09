@@ -76,13 +76,15 @@ class Tag extends React.Component<Props, State> {
           <PluralText count={count} text="item" /> tagged with <em>{name}</em>
         </p>
         <ContentListing>
-          {edges &&
-            edges.map((edge, i) => {
-              if (edge) {
-                const {cursor, node} = edge;
-                return <ContentPreview cursor={cursor} key={i} data={node} />;
-              }
-            })}
+          {edges
+            ? edges.map((edge, i) => {
+                if (edge) {
+                  const {cursor, node} = edge;
+                  return <ContentPreview cursor={cursor} key={i} data={node} />;
+                }
+                return null;
+              })
+            : null}
         </ContentListing>
         {taggables.pageInfo.hasNextPage ? (
           <LoadMoreButton

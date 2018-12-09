@@ -18,7 +18,7 @@ class Page extends React.Component<{data: PageData}> {
       // may want to URL encode here too? page.url
       <article>
         <h1>
-          <Link to={page.url}>{page.title}</Link>
+          <Link to={page.url}>{page.title ?? 'Untitled'}</Link>
         </h1>
         <When data={page} />
         <div>

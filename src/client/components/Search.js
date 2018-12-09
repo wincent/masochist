@@ -169,15 +169,19 @@ class Search extends React.Component<Props, State> {
           <PluralText count={search.count} text="item" /> found
         </p>
         <ContentListing>
-          {edges &&
-            edges.map((edge, i) => {
-              if (edge) {
-                const {cursor, node} = edge;
-                if (node) {
-                  return <ContentPreview cursor={cursor} key={i} data={node} />;
+          {edges
+            ? edges.map((edge, i) => {
+                if (edge) {
+                  const {cursor, node} = edge;
+                  if (node) {
+                    return (
+                      <ContentPreview cursor={cursor} key={i} data={node} />
+                    );
+                  }
                 }
-              }
-            })}
+                return null;
+              })
+            : null}
         </ContentListing>
         {search.pageInfo.hasNextPage ? (
           <LoadMoreButton

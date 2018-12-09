@@ -7,5 +7,6 @@ declare module 'relay-runtime' {
   // - https://github.com/facebook/relay/issues/1689
   // - https://github.com/facebook/relay/issues/1758
   declare type ConcreteFragment = any;
-  declare type ConcreteBatch = any;
+  declare type ConcreteRequest = any;
+  declare type FragmentReference = any;
 }
