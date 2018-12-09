@@ -71,11 +71,11 @@ In `__DEV__`, Masochist will look for content in the current repo (ie. ".").
 
 In production, it expects to find a content repo at "/var/masochist/content".
 
-In `__DEV__`, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the "content" branch checked out alongside it at "../masochist-pages" (see below for more details on this set-up). I can override the `__DEV__` default of "." with:
+In `__DEV__`, you can override this with `npm config set`. For example, in my local development environment, I have the Masochist Git repo checked out in one folder, and a second copy of it with the "content" branch checked out within it (using `git-worktree`) at "./content" (see below for more details on this set-up). I can override the `__DEV__` default of "." with:
 
 ```
 # Use npm, not yarn, for this:
-npm config set masochist:content-repo '../masochist-pages'
+npm config set masochist:content-repo './content'
 ```
 
 ### Deployment cheatsheet
@@ -90,6 +90,7 @@ You could do this in any number of ways but the way I'm doing it is using two lo
 * `origin` remote pointing at git.wincent.com.
 * `github` remote pointing at [GitHub](https://github.com/wincent/masochist).
 * `masochist` remote set up to do Heroku-style deploy-on-push, pointing at an Amazon EC2 instance configured using Ansible.
+* `content` remote set up to do a Heroku-style update-on-push for content changes, pointing at the corresponding repository on EC2.
 
 ##### Commands
 
@@ -101,7 +102,7 @@ $ git push # Shorthand for `git push origin`.
 $ git push github # If you can't be bothered waiting for it to auto-replicate.
 ```
 
-#### Local "masochist-pages" repository
+#### Local "content" worktree
 
 ##### Structure
 

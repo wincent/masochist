@@ -20,10 +20,10 @@ tmux send-keys -t masochist:vim.bottom-right "git st" Enter
 tmux new-window -t masochist
 
 # 3. Content.
-tmux new-window -t masochist -c "$PWD/../masochist-pages" -n content
+tmux new-window -t masochist -c "$PWD/content" -n content
 tmux send-keys -t masochist:content "vim -c CommandTBoot" Enter
 
-tmux split-window -t masochist:content -h -c "$PWD/../masochist-pages"
+tmux split-window -t masochist:content -h -c "$PWD/content"
 tmux send-keys -t masochist:content.right "git st" Enter
 
 tmux attach -t masochist:vim.left
