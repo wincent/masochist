@@ -4,6 +4,7 @@
 
 import git from './git';
 import pipe from './pipe';
+import invariant from '../common/invariant';
 
 export default function getWhatChanged(
   revisions: string,
@@ -27,6 +28,16 @@ export default function getWhatChanged(
       path,
     ),
   );
+}
+
+// For Flow.
+function getStatus(status: string): 'A' | 'D' | 'M' {
+  invariant(
+    status === 'A' || status === 'D' || status === 'M',
+    `getWhatChanged(): Status '%s' must be A, D or M.`,
+    status,
+  );
+  return status;
 }
 
 export async function forEachCommit(
@@ -65,11 +76,8 @@ export async function forEachCommit(
       updatedAt = match[2];
       createdAt = match[3];
     } else {
-      const status = match[4];
+      const status = getStatus(match[4]);
       const file = match[5];
-      if (!status.match(/^[ADM]$/)) {
-        throw new Error(`getWhatChanged: Unrecognized status: '${status}'.`);
-      }
       if (!commit || !createdAt || !file || !updatedAt) {
         throw new Error(
           'getWhatChanged: Failed to extract all of: commit, createdAt, file, updatedAt.',
