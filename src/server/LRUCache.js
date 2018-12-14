@@ -1,12 +1,14 @@
 /**
- * @flow
+ * @flow strict
  */
 
 const DEFAULT_CAPACITY = 128;
 
-export default class LRUCache<TKey> {
+import nullthrows from '../common/nullthrows';
+
+export default class LRUCache<TKey, TValue> {
   _capacity: number;
-  _storage: Map<TKey, *>;
+  _storage: Map<TKey, TValue>;
 
   constructor(capacity: number = DEFAULT_CAPACITY) {
     if (capacity <= 0) {
@@ -20,17 +22,17 @@ export default class LRUCache<TKey> {
     return this._storage.has(key);
   }
 
-  get(key: TKey): mixed {
+  get(key: TKey): ?TValue {
     // Bump item in LRU list by removing and re-adding it.
     if (this._storage.has(key)) {
-      const value = this._storage.get(key);
+      const value = nullthrows(this._storage.get(key));
       this._storage.delete(key);
       this._storage.set(key, value);
       return value;
     }
   }
 
-  set(key: TKey, value: mixed): LRUCache<TKey> {
+  set(key: TKey, value: TValue): LRUCache<TKey, TValue> {
     // If necessary to stay under capacity, remove LRU items.
     if (this._storage.size >= this._capacity) {
       let countToRemove = this._storage.size - this._capacity;

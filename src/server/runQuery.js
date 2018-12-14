@@ -12,10 +12,12 @@ import queryCache from './queryCache';
 import redis from './redis';
 import schema from './schema';
 
+import type {ExecutionResult} from 'graphql/execution/execute';
+
 function getCache(hash: string) {
   return {
     hash,
-    storage: new LRUCache<string>(),
+    storage: new LRUCache<string, Promise<ExecutionResult>>(),
   };
 }
 
