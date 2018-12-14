@@ -11,9 +11,8 @@ type History = {
   replace: (target: string) => void,
 };
 
-export type MasochistRouter = {
+export type MasochistRouter = Router & {
   history: History,
-  api: mixed,
 };
 
 export default function createRouter(

@@ -1,4 +1,8 @@
 /**
+ * @flow
+ */
+
+/**
  * Via `useBuiltIns: 'entry'` in our @babel/preset-env settings in the
  * webpack configs, the following `import` should get transformed into
  * individual requires into core-js, reducing our bundle size.
@@ -28,6 +32,7 @@ import NotFoundError from '../common/NotFoundError';
 import RenderTextError from '../common/RenderTextError';
 import createRouter from '../common/createRouter';
 import getRequestBody from '../common/getRequestBody';
+import nullthrows from '../common/nullthrows';
 import App from './components/App';
 import HTTPError from './components/HTTPError';
 
@@ -40,7 +45,7 @@ const history = createHistory();
 
 // First render comes from the server, subsequent renders happen on client.
 let render = function(element, container) {
-  ReactDOM.hydrate(element, container);
+  ReactDOM.hydrate(element, nullthrows(container));
   render = ReactDOM.render;
 };
 
@@ -92,7 +97,7 @@ const api = {
 
 const router = createRouter(history, api);
 
-const root = document.getElementById('relay-root');
+const root = nullthrows(document.getElementById('relay-root'));
 
 const scrollStorage = {};
 

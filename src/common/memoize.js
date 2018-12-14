@@ -2,16 +2,10 @@
  * @flow strict
  */
 
+import nullthrows from './nullthrows';
 import stableStringify from './stableStringify';
 
 const functions = new Map();
-
-function nullthrows(object) {
-  if (object == null) {
-    throw new Error('Unexpected null-ish object');
-  }
-  return object;
-}
 
 export default function memoize<TArgs: Iterable<mixed>, TReturn>(
   fn: (...TArgs) => TReturn,
