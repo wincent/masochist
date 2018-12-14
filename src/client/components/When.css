@@ -1,3 +1,15 @@
+.when {
+  color: #bbb;
+  display: inline-block;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+/* Hack. Margin is usually what we want, but looks terrible in a table cell. */
+td .when {
+  margin: 0;
+}
+
 .when:before {
   background-image: url(../../../vendor/icons/calendar.svg);
   background-size: cover;

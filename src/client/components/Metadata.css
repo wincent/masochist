@@ -1,18 +1,13 @@
 .metadata {
   color: #bbb;
   font-style: italic;
-  margin-bottom: 1rem;
 }
 
 .metadata > *:after {
   content: '\00b7'; /* middot */
-  margin: 0 1rem 0 1rem;
+  margin: 0 .5rem;
 }
 
-.metadata:last-child:after {
+.metadata > *:last-child:after {
   content: none;
-}
-
-.metadata .separator {
-  margin: 0 .75rem;
 }
