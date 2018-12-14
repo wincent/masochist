@@ -15,10 +15,7 @@ export class RunError extends Error {
   }
 }
 
-function getError(invocations: Array<Invocation>, code: number): RunError {
-  const pipeline = invocations
-    .map(({command, args}) => `${command} ${args.join(' ')}`)
-    .join(' | ');
+function getError(pipeline: string, code: number): RunError {
   return new RunError(`${pipeline}: exit ${code}`, code);
 }
 
@@ -35,6 +32,9 @@ function getError(invocations: Array<Invocation>, code: number): RunError {
 export default function pipe(
   ...invocations: Array<Invocation>
 ): Promise<string> {
+  const pipeline = invocations
+    .map(({command, args}) => `${command} ${args.join(' ')}`)
+    .join(' | ');
   let isPending = true;
   return new Promise((resolve, reject) => {
     let invocation = invocations.pop();
@@ -49,7 +49,7 @@ export default function pipe(
       if (isPending) {
         isPending = false;
         if (code) {
-          reject(getError(invocations, code));
+          reject(getError(pipeline, code));
         } else {
           resolve(stdout);
         }
@@ -68,7 +68,7 @@ export default function pipe(
         });
         child.on('close', code => {
           if (isPending && code) {
-            reject(getError(invocations, code));
+            reject(getError(pipeline, code));
           }
           next.stdin.end();
         });
