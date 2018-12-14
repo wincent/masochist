@@ -9,7 +9,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    '@babel/polyfill',
+    '@babel/polyfill/noConflict',
     path.resolve(__dirname, 'src', 'client', 'app.js'),
   ],
   devtool: 'source-map',
