@@ -9,4 +9,10 @@ declare module 'relay-runtime' {
   declare type ConcreteFragment = any;
   declare type ConcreteRequest = any;
   declare type FragmentReference = any;
+
+  declare var Environment: any;
+  declare var Network: any;
+  declare var RecordSource: any;
+  declare var Store: any;
+  declare var fetchQuery: any;
 }
