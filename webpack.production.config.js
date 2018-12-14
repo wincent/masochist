@@ -9,7 +9,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    '@babel/polyfill/noConflict',
+    path.resolve(__dirname, 'src', 'client', 'polyfill.js'),
     path.resolve(__dirname, 'src', 'client', 'app.js'),
   ],
   devtool: 'source-map',
@@ -81,7 +81,7 @@ module.exports = {
                 [
                   '@babel/preset-env',
                   {
-                    useBuiltIns: 'usage',
+                    useBuiltIns: 'entry',
                     targets: 'defaults',
                   },
                 ],
