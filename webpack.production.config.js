@@ -9,7 +9,6 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: [
-    path.resolve(__dirname, 'src', 'client', 'polyfill.js'),
     path.resolve(__dirname, 'src', 'client', 'app.js'),
   ],
   devtool: 'source-map',

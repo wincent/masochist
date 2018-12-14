@@ -1,3 +1,12 @@
+/**
+ * Via `useBuiltIns: 'entry'` in our @babel/preset-env settings in the
+ * webpack configs, the following `import` should get transformed into
+ * individual requires into core-js, reducing our bundle size.
+ *
+ * See: https://babeljs.io/docs/en/babel-preset-env
+ */
+import "@babel/polyfill";
+
 import 'isomorphic-fetch';
 
 import {
