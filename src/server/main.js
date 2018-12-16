@@ -68,9 +68,13 @@ function templateHandler(renderer, locals = {}) {
     response.set('Content-Type', 'text/html');
     const stream = renderer({
       ...locals,
-      bundle: getAssetURL(
+      cjs: getAssetURL(
         '/static/' +
           (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js),
+      ),
+      mjs: getAssetURL(
+        '/static/' +
+          (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.mjs),
       ),
     });
     stream.pipe(

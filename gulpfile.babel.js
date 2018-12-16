@@ -80,14 +80,20 @@ function wrap(stream) {
 }
 
 export function webpack(callback) {
-  runWebpack(productionConfig, (error, stats) => {
+  runWebpack(productionConfig, (error, {stats}) => {
     if (error) {
       ringBell();
       return callback(new PluginError('webpack', error)), void 0;
     }
-    if (stats.compilation.errors && stats.compilation.errors.length) {
-      const [firstError, ...remainingErrors] = stats.compilation.errors;
-      remainingErrors.forEach(console.log.bind(console));
+    const errors = [];
+    stats.forEach(({compilation}) => {
+      if (compilation.errors) {
+        errors.push(...compilation.errors);
+      }
+    });
+    const [firstError, ...remainingErrors] = errors;
+    remainingErrors.forEach(console.log.bind(console));
+    if (firstError) {
       ringBell();
       return callback(new PluginError('webpack', firstError)), void 0;
     }

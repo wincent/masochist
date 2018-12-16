@@ -4,6 +4,10 @@
 /coverage/*
 /node_modules/*
 /public/static/bundle-*.js
+/public/static/bundle-*.js.LICENSE.txt
 /public/static/bundle-*.js.map
+/public/static/bundle-*.mjs
+/public/static/bundle-*.mjs.LICENSE.txt
+/public/static/bundle-*.mjs.map
 /public/static/styles-*.css
 /public/static/styles-*.css.map

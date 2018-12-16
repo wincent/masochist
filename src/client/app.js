@@ -9,7 +9,7 @@
  *
  * See: https://babeljs.io/docs/en/babel-preset-env
  */
-import "@babel/polyfill";
+import '@babel/polyfill';
 
 import 'isomorphic-fetch';
 

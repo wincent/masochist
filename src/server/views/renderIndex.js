@@ -8,22 +8,24 @@ import template from '../template';
 
 export default function renderIndex(locals: {
   alternate: ?string,
-  bundle: string,
+  cjs: string,
   cache: string,
   canonical: Promise<?string>,
   description: ?string,
   home: ?string,
+  mjs: string,
   pageContent: string,
   styles: Promise<?string>,
   title: ?string,
 }) {
   const {
     alternate,
-    bundle,
+    cjs,
     cache,
     canonical,
     description,
     home,
+    mjs,
     pageContent,
     styles,
     title,
@@ -66,6 +68,7 @@ export default function renderIndex(locals: {
       <body>
         <div id="relay-root">${pageContent}</div>
         <script>var MasochistCache = ${raw(cache)};</script>
-        <script src="${bundle}" /></script>
+        <script type="module" src="${mjs}" /></script>
+        <script nomodule src="${cjs}" /></script>
   `;
 }
