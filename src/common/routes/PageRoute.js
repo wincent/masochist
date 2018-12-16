@@ -1,3 +1,7 @@
+/**
+ * @noflow
+ */
+
 import React from 'react';
 import {graphql} from 'react-relay';
 
@@ -27,7 +31,7 @@ export default buildRoute(
       if (node) {
         return <Page data={node} />;
       } else {
-        throw makeNotFoundError(
+        throw makeNotFound(
           `No page found with id: ${id}`,
           <p>
             Try inspecting <Link to="/tags/pages">the pages index</Link> and{' '}

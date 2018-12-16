@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @flow strict
  */
 
 // Prepared regular expressions to eek out a couple % more perf; see:

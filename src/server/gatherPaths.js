@@ -1,8 +1,8 @@
 /**
- * @flow
+ * @flow strict
  */
 
-type RouteConfig = Array<{
+type RouteConfig = $ReadOnlyArray<{
   path: string,
 }>;
 
@@ -10,7 +10,7 @@ type RouteConfig = Array<{
  * Parses a RouteConfig object and returns a list of Express-style path
  * patterns ("/", "/blog", "/blog/*" etc).
  */
-export default function gatherPaths(config: RouteConfig): Array<string> {
+export default function gatherPaths(config: RouteConfig): $ReadOnlyArray<string> {
   const paths = [];
   config.forEach(route => {
     if (route.path === '*') {

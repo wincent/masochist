@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @flow strict
  */
 
 opaque type Token = number;
@@ -13,7 +13,7 @@ let pendingClaim: ?Token = null;
  * listener to be notified.
  */
 export function getRefetchToken(): Token {
-  if (pendingClaim) {
+  if (pendingClaim != null) {
     throw new Error('Only one refetch token may be outstanding at any time');
   }
   pendingClaim = tokenCounter++;

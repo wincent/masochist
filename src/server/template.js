@@ -101,7 +101,7 @@ export default function template(
           } else {
             // User passed 0, false, NaN, or something truthy
             // that didn't get caught by duck-typing checks; coerce to string.
-            const string = '' + (item: any);
+            const string = String('');
             if (!this.push(string)) {
               return;
             }

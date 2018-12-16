@@ -1,3 +1,7 @@
+/**
+ * @noflow
+ */
+
 import {
   GraphQLNonNull,
   GraphQLObjectType,

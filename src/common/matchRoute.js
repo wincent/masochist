@@ -1,3 +1,7 @@
+/**
+ * @flow strict-local
+ */
+
 import Router from 'universal-router';
 
 import routeConfig from './routeConfig';
@@ -25,7 +29,7 @@ function getRouteMap() {
 /**
  * Matches paths only.
  */
-export default function matchRoute(path) {
+export default function matchRoute(path: string) {
   for (let [regexp, route] of getRouteMap()) {
     if (regexp.test(path)) {
       return route;

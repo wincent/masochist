@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @flow strict
  */
 
 export const Extensions = {

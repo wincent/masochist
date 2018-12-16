@@ -1,5 +1,9 @@
 'use strict'; // eslint-disable-line
 
+/**
+ * @noflow
+ */
+
 import '../common/unhandledRejection';
 import '../server/configureNpm';
 

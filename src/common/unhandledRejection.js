@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import inBrowser from './inBrowser';
 
 if (!inBrowser) {

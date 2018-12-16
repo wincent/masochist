@@ -1,3 +1,7 @@
+/**
+ * @flow
+ */
+
 import React from 'react';
 import {graphql} from 'react-relay';
 
@@ -34,15 +38,11 @@ export default buildRoute(
   `,
   {
     variables: ({format, id}) => {
-      format = FORMAT_TO_MARKUP_TYPE.get(format.toLowerCase());
-      if (format !== 'TXT') {
-        return {format, id};
-      } else {
-        return {
-          format: null,
-          id,
-        };
-      }
+      const markupType = FORMAT_TO_MARKUP_TYPE.get(format.toLowerCase());
+      return {
+        format: markupType !== 'TXT' ? markupType : null,
+        id,
+      };
     },
     render: ({node}, {format, id}) => {
       if (node && node.source !== null) {

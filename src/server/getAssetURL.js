@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @flow strict
  */
 
 import hashString from './hashString';

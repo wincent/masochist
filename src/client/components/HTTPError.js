@@ -13,7 +13,7 @@ const StatusCodesToMessages = {
 };
 
 type Props = {
-  children: $ReadOnlyArray<ChildrenArray<ReactNode>>,
+  children?: $ReadOnlyArray<ChildrenArray<ReactNode>>,
   code: 404 | 500,
 };
 
