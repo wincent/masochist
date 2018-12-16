@@ -1,5 +1,9 @@
+/**
+ * @flow
+ */
+
 import PropTypes from 'prop-types';
-import React from 'react';
+import * as React from 'react';
 import Footer from './Footer';
 import Nav from './Nav';
 import Progress from './Progress';
@@ -11,12 +15,13 @@ if (inBrowser) {
   require('highlight.js/styles/default.css');
 }
 
-export default class App extends React.Component {
-  static propTypes = {
-    router: PropTypes.object,
-    showProgress: PropTypes.bool,
-  };
+type Props = {
+  children: React.Node,
+  router: $FlowFixMe,
+  showProgress?: boolean,
+};
 
+export default class App extends React.Component<Props> {
   static childContextTypes = {
     router: PropTypes.object,
   };
@@ -35,11 +40,14 @@ export default class App extends React.Component {
    * relative one that should be handled by the router, and if so, we hand it
    * off to the router; otherwise, the browser handles it.
    */
-  _handleClick = event => {
+  _handleClick = (event: SyntheticMouseEvent<HTMLDivElement>)  => {
     let href = null;
     let element = event.target;
+    if (!(element instanceof HTMLElement)) {
+      return;
+    }
     while (element) {
-      if (element.tagName === 'A') {
+      if (element instanceof HTMLAnchorElement) {
         href = element.getAttribute('href');
       }
       if (element.className === 'prerendered') {
@@ -62,14 +70,17 @@ export default class App extends React.Component {
         // browser.
         return;
       }
-      element = element.parentNode;
+      element = element.parentElement;
     }
   };
 
-  _handleMouseOver = event => {
+  _handleMouseOver = (event: SyntheticMouseEvent<HTMLDivElement>) => {
     let element = event.target;
+    if (!(element instanceof HTMLElement)) {
+      return;
+    }
     while (element) {
-      if (element.tagName === 'A') {
+      if (element instanceof HTMLAnchorElement) {
         const href = element.getAttribute('href');
         if (!href || !href.match(/^\//)) {
           // Not a relatve URL; let the browser handle it.
