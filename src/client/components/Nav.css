@@ -65,6 +65,7 @@ nav li {
   padding: 1rem 0;
   text-transform: uppercase;
   transition: .2s ease-in-out;
+  user-select: none;
   width: 32px;
 }
 
