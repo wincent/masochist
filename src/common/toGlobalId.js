@@ -9,7 +9,7 @@ function base64(string: string) {
   if (inBrowser) {
     return btoa(string);
   } else {
-    return new Buffer(string, 'utf8').toString('base64');
+    return Buffer.from(string, 'utf8').toString('base64');
   }
 }
 
