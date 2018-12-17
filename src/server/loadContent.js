@@ -68,11 +68,11 @@ export async function loadContent(options: LoaderOptions): Promise<*> {
     await forEachCommit(commits, ({createdAt, file, updatedAt}) => {
       timestamps.cache[file] = timestamps.cache[file] || {};
       timestamps.cache[file].createdAt = Math.min(
-        createdAt,
+        Number(createdAt),
         timestamps.cache[file].createdAt || Infinity,
       );
       timestamps.cache[file].updatedAt = Math.max(
-        updatedAt,
+        Number(updatedAt),
         timestamps.cache[file].updatedAt || -Infinity,
       );
     });
