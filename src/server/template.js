@@ -1,5 +1,5 @@
 /**
- * @flow
+ * @flow strict
  */
 
 import {Readable} from 'stream';
@@ -76,7 +76,8 @@ export default function template(
             typeof item.pipe === 'function'
           ) {
             // Quacks like a stream.
-            const stream: stream$Stream = (item: any);
+            // flowlint-next-line unclear-type:off
+            const stream: stream$Stream =(item: any);
             waiting = true;
             stream.on('data', data => {
               const string = data.toString();
