@@ -219,11 +219,11 @@ if (__DEV__) {
   const proxy = httpProxy.createProxyServer();
   const compiler = webpack(webpackConfig);
   let bundleStart = null;
-  compiler.plugin('compile', () => {
+  compiler.hooks.compilation.tap('compilation-started', () => {
     console.log('Starting bundle...');
     bundleStart = Date.now();
   });
-  compiler.plugin('done', () => {
+  compiler.hooks.done.tap('compilation-completed', () => {
     console.log('Bundle finished in ' + (Date.now() - bundleStart) + 'ms.');
   });
   const bundler = new WebpackDevServer(compiler, {
