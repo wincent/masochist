@@ -5,8 +5,8 @@ nav {
 }
 
 nav li:first-child {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
 nav li:first-child a {
@@ -21,6 +21,11 @@ a.nav-link {
   text-decoration: none;
   padding: 1rem 1rem;
   width: 100%;
+}
+
+a.nav-link.active {
+  background-color: #333;
+  border: 0;
 }
 
 .nav-link:focus,
@@ -59,13 +64,13 @@ nav li {
   overflow: hidden;
   padding: 1rem 0;
   text-transform: uppercase;
-  transition: .5s ease-in-out;
+  transition: .2s ease-in-out;
   width: 32px;
 }
 
 .nav-open .nav-toggle {
   transform: rotate(180deg);
-  transition: .5s ease-in-out;
+  transition: .2s ease-in-out;
 }
 
 .nav-open li {
@@ -105,7 +110,6 @@ nav li {
 
   a.nav-link.active {
     background-clip: padding-box;
-    background-color: #333;
     border-bottom: 4px solid rgba(191, 63, 191, .25);
     margin-bottom: -4px;
   }

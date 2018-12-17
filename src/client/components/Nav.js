@@ -7,6 +7,7 @@ import React from 'react';
 import cx from 'classnames';
 import Link from './Link';
 import inBrowser from '../../common/inBrowser';
+import nullthrows from '../../common/nullthrows';
 
 if (inBrowser) {
   require('./Nav.css');
@@ -51,6 +52,25 @@ export default class Nav extends React.Component<{}, {isOpen: boolean}> {
     super(props);
     this.state = {isOpen: false};
   }
+
+  componentDidMount() {
+    nullthrows(document.body).addEventListener('click', this._handleClick);
+  }
+
+  componentWillUnmount() {
+    nullthrows(document.body).removeEventListener('click', this._handleClick);
+  }
+
+  _handleClick = (event: Event) => {
+    const element = event.target;
+    if (
+      this.state.isOpen &&
+      element instanceof HTMLElement &&
+      element.className !== 'nav-toggle'
+    ) {
+      this.setState({isOpen: false});
+    }
+  };
 
   _handleToggle = (event: SyntheticEvent<HTMLDivElement>) => {
     event.preventDefault();
