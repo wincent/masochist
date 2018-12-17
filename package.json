@@ -20,7 +20,7 @@
     "pretty": "babel-node scripts/pretty.js",
     "pretty-check": "babel-node scripts/pretty.js --check",
     "relay": "babel-node scripts/compile.js",
-    "start": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/server/main.js",
+    "start": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node --trace-deprecation src/server/main.js",
     "start-prod": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo NODE_ENV=production node dist/server/main.js",
     "test": "jest --forceExit",
     "update-indices": "MASOCHIST_CONTENT_REPO=$npm_package_config_content_repo babel-node src/bin/updateIndices.js",
