@@ -9,7 +9,10 @@ import React from 'react';
  */
 export default function withContext(context, component) {
   class ContextProvider extends React.Component {
-    static childContextTypes = {};
+    static childContextTypes = Object.keys(context).reduce((acc, key) => {
+      acc[key] = PropTypes.any.isRequired;
+      return acc;
+    }, {});
 
     getChildContext() {
       return context;
@@ -19,10 +22,6 @@ export default function withContext(context, component) {
       return this.props.children;
     }
   }
-
-  Object.keys(context).forEach(key => {
-    ContextProvider.childContextTypes[key] = PropTypes.any.isRequired;
-  });
 
   return <ContextProvider>{component}</ContextProvider>;
 }
