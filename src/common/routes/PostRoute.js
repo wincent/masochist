@@ -1,5 +1,5 @@
 /**
- * @noflow
+ * @flow
  */
 
 import React from 'react';
@@ -7,7 +7,7 @@ import {graphql} from 'react-relay';
 
 import Link from '../../client/components/Link';
 import Post from '../../client/components/Post';
-import makeNotFound from '../NotFoundError';
+import {makeNotFound} from '../NotFoundError';
 import buildRoute from '../buildRoute';
 
 export default buildRoute(
