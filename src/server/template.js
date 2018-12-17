@@ -71,15 +71,9 @@ export default function template(
                 process.nextTick(() => this.emit('error', err));
               });
             return;
-          } else if (
-            typeof item.on === 'function' &&
-            typeof item.pipe === 'function'
-          ) {
-            // Quacks like a stream.
-            // flowlint-next-line unclear-type:off
-            const stream: stream$Stream =(item: any);
+          } else if (item instanceof Readable) {
             waiting = true;
-            stream.on('data', data => {
+            item.on('data', data => {
               const string = data.toString();
               if (buffering) {
                 chunks.push(string);
@@ -89,13 +83,13 @@ export default function template(
                 }
               }
             });
-            stream.on('end', () => {
+            item.on('end', () => {
               waiting = false;
               if (!buffering) {
                 process.nextTick(tick);
               }
             });
-            stream.on('err', err => {
+            item.on('err', err => {
               process.nextTick(() => this.emit('error', err));
             });
             return;
