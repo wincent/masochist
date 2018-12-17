@@ -40,7 +40,7 @@ export default class App extends React.Component<Props> {
    * relative one that should be handled by the router, and if so, we hand it
    * off to the router; otherwise, the browser handles it.
    */
-  _handleClick = (event: SyntheticMouseEvent<HTMLDivElement>)  => {
+  _handleClick = (event: SyntheticMouseEvent<HTMLDivElement>) => {
     let href = null;
     let element = event.target;
     if (!(element instanceof HTMLElement)) {

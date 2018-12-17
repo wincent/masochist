@@ -14,7 +14,8 @@ const BUILDS = [
     filename: 'bundle-[hash].js',
     targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
     terserOptions: {},
-  }, {
+  },
+  {
     name: 'mjs',
     filename: 'bundle-[hash].mjs',
     targets: {esmodules: true},
@@ -140,11 +141,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
         },
         {
           test: /\.css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'postcss-loader',
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.svg$/,
