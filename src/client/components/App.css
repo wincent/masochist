@@ -65,11 +65,3 @@ input:disabled {
   /* TODO: something nicer here; may want animation */
   opacity: .5;
 }
-
-/* > Phablet */
-@media (min-width: 550px) {
-  .app {
-    /* For fixed top-nav; see Nav.css */
-    padding-top: 3.5rem;
-  }
-}

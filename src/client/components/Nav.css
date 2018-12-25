@@ -80,13 +80,6 @@ nav li {
 
 /* > Phablet */
 @media (min-width: 550px) {
-  nav {
-    /* See corresponding .app padding-top in App.css */
-    margin-top: -3.5rem;
-    position: fixed;
-    z-index: 1;
-  }
-
   nav li:first-child {
     display: inline-block;
   }
