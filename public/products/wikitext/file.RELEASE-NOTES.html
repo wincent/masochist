@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: RELEASE-NOTES
+  
+    &mdash; Wikitext
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "RELEASE-NOTES";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: RELEASE-NOTES</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'>
+<p>This file describes changes with some user or developer impact (significant changes to the externally visible behaviour of the extension, or things which may require action on the part of users or developers). Minor bugfixes and tweaks which don&#39;t require any user or developer action are generally not included in these release notes. For a full listing of all changes see the source code repository at: <a href="http://git.wincent.com">git.wincent.com</a>.</p>
+
+<h1 id="label-Changes+in+4.6">Changes in 4.6</h1>
+<ul><li>
+<p>add official support for Ruby 2.6.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.5">Changes in 4.5</h1>
+<ul><li>
+<p>add official support for Ruby 2.5.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.4">Changes in 4.4</h1>
+<ul><li>
+<p>add official support for Ruby 2.4.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.3">Changes in 4.3</h1>
+<ul><li>
+<p>add official support for Ruby 2.3.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.2">Changes in 4.2</h1>
+<ul><li>
+<p>add <code>pre_code</code> parse option</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.1.2">Changes in 4.1.2</h1>
+<ul><li>
+<p>rebuild (no code changes) to replace broken executable in 4.1.1 release</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.1.1+-28yanked-29">Changes in 4.1.1 (yanked)</h1>
+<ul><li>
+<p>add official support for Ruby 2.2.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.1">Changes in 4.1</h1>
+<ul><li>
+<p>add a Haml filter; to use, require “wikitext/haml_filter”</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0.3">Changes in 4.0.3</h1>
+<ul><li>
+<p>permit building on Ruby 2.1.0</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0.2">Changes in 4.0.2</h1>
+<ul><li>
+<p>fix broken gemspec responsible for faulty builds in version 4.0.2</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0.1">Changes in 4.0.1</h1>
+<ul><li>
+<p>fix build issues on Linux machines (with GNU install)</p>
+</li><li>
+<p>the <code>wikitext</code> binary no longer has a hard dependency on the HighLine gem</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0">Changes in 4.0</h1>
+<ul><li>
+<p>requires Ruby 2.0.0; for older versions of Ruby please use a previous Wikitext release</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.1">Changes in 3.1</h1>
+<ul><li>
+<p>the <code>link_proc</code> parse option can now be set as an attribute on the parser at initialization or via an accessor</p>
+</li><li>
+<p>fix underescaping of ampersands in URIs</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.0.1">Changes in 3.0.1</h1>
+<ul><li>
+<p>fix bad output when emitting external links containing email addresses</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.0">Changes in 3.0</h1>
+<ul><li>
+<p>fix newline-swallowing bug which affected “PRE” blocks with lines beginning with a “PATH” token</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.0b">Changes in 3.0b</h1>
+<ul><li>
+<p>silence deprecation warnings triggered under Rails 3.1</p>
+</li><li>
+<p>note that this release supports only Rails 3.1; for older versions of Rails you should continue to use the Wikitext 2.1.x series, which continues to be supported</p>
+</li></ul>
+
+<h1 id="label-Changes+in+2.1.1">Changes in 2.1.1</h1>
+<ul><li>
+<p>fix a couple of token-swallowing bugs that manifested when certain invalid markup was fed into the translator</p>
+</li></ul>
+
+<h1 id="label-Changes+in+2.1">Changes in 2.1</h1>
+<ul><li>
+<p>the <code>external_link_rel</code> attribute can be used to include a “nofollow” <code>rel</code> attribute in external links (patch from Mike Stangel)</p>
+</li></ul>
+
+<h1 id="label-Changes+in+2.0">Changes in 2.0</h1>
+<ul><li>
+<p>compatibility with the Rails 3 template handler API</p>
+</li><li>
+<p>use Rails 3 hooks to auto-initialize when listed in Gemfile</p>
+</li><li>
+<p><code>code</code> tags are now emitted instead of <code>tt</code> tags for compliance with the HTML5 specification</p>
+</li><li>
+<p>new <code>output_style</code> setting to switch between HTML syntax (the new default) and XML syntax</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.12">Changes in 1.12</h1>
+<ul><li>
+<p>the String#w and String#to_wikitext methods mark their returned strings as html_safe under Rails 3</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.11">Changes in 1.11</h1>
+<ul><li>
+<p>extract Gem specification into separate file for compatibility with Bundler&#39;s “install from Git repository” functionality</p>
+</li><li>
+<p>updates for compatibility with Rails 3</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.10.1">Changes in 1.10.1</h1>
+<ul><li>
+<p>fix builds on 64-bit Darwin platforms</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.10">Changes in 1.10</h1>
+<ul><li>
+<p>a <code>wikitext</code> executable is now included for processing wikitext markup from the commandline: input may come from filename arguments specified on the commandline, piped in via standard input, or typed in interactively via a tty</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.9">Changes in 1.9</h1>
+<ul><li>
+<p>NilClass#w method now accepts an optional parameters hash</p>
+</li><li>
+<p>new <code>link_proc</code> option to Wikitext::Parser#parse allows you to dynamically apply a custom CSS class based on the link target; this can be used, for example, to provide “red links” for articles which do not exist yet</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.8">Changes in 1.8</h1>
+<ul><li>
+<p><code>pre</code> tags may now take an optional <code>lang</code> attribute to mark up the translated text for syntax-highlighting</p>
+</li><li>
+<p>optimize use of ary_includes function, yielding a boost in performance of several percent</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.7">Changes in 1.7</h1>
+<ul><li>
+<p>many optimizations for speed: performance has improved for all input types and in some cases has more than doubled (the biggest gains are for inputs with more multi-byte UTF-8 characters)</p>
+</li><li>
+<p>uses less memory and usage tends to remain more constant due to less creation of temporary objects</p>
+</li><li>
+<p>smaller memory footprint due to removal of dead code</p>
+</li><li>
+<p>handle blank link text such as <code>[[foo| ]]</code>, making behaviour consistent with existing handling of zero-width link text (<code>[[foo|]]</code>)</p>
+</li><li>
+<p>don&#39;t apply <code>external</code> CSS class when rolling back failed internal links</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.6">Changes in 1.6</h1>
+<ul><li>
+<p>zero-length image targets (<code>{{}}</code>) are now passed through unchanged rather than turned into <code>img</code> tags</p>
+</li><li>
+<p>“absolute” image targets (all targets beginning with a leading forward slash) such as <code>{{/foo.png}}</code> can be used to suppress the image prefix that would otherwise be automatically prepended</p>
+</li><li>
+<p>the <code>indent</code> option to the Wikitext::Parser#parse method now accepts <code>false</code> as a parameter to completely suppress all indentation</p>
+</li><li>
+<p>internal <code>require</code> statments now use absolute paths to ensure that files from other versions don&#39;t get pulled in inappropriately</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.3">Changes in 1.5.3</h1>
+<ul><li>
+<p>fixed broken handling of empty (zero-width) links such as <code>[[]]</code>, <code>[[|]]</code> and <code>[[|foo]]</code></p>
+</li><li>
+<p>improved handling of empty (whitespace-only) links such as <code>[[ ]]</code> and <code>[[   |foo]]</code></p>
+</li><li>
+<p>changed license from GPL v3 to the more permissive BSD license (specifically the Simplified or “2-clause” version of the BSD license, as used by FreeBSD)</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.2">Changes in 1.5.2</h1>
+<ul><li>
+<p>the <code>mailto</code> class is now consistently applied to all mailto URIs</p>
+</li><li>
+<p>works around a bug in Rails 2.3.2</p>
+</li><li>
+<p>fixes a minor bug with <code>pre</code> and <code>blockquote</code> start tags when they appear immediately after the shorthand notation of <code>pre</code> and <code>blockquote</code> blocks</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.1">Changes in 1.5.1</h1>
+<ul><li>
+<p>the <code>w</code> and <code>to_wikitext</code> methods now accept an options hash</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.0">Changes in 1.5.0</h1>
+<ul><li>
+<p>added <code>base_heading_level</code> parser option</p>
+</li><li>
+<p>changes for compatibility with Ruby 1.9 (compiles and all specs pass)</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.4.1">Changes in 1.4.1</h1>
+<ul><li>
+<p>include necessary file that was missing from 1.4.0 gem</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.4.0">Changes in 1.4.0</h1>
+<ul><li>
+<p>“special links” inside internal link spans (double square brackets) are no longer supported; instead use external link spans: where previously you used <code>[[issues/210 | ticket 210]]</code> you should now use <code>[/issues/210 ticket 210]</code></p>
+</li><li>
+<p>relatedly, the <code>treat_slash_as_special</code> attribute has been removed</p>
+</li></ul>
+
+<h1 id="label-Changes+prior+to+1.4.0">Changes prior to 1.4.0</h1>
+
+<p>Please see the source code repository browser at <a href="http://git.wincent.com">git.wincent.com</a>.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Tue Dec 25 13:57:55 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.16 (ruby-2.6.0).
+</div>
+
+    </div>
+  </body>
+</html>
