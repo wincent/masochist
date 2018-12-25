@@ -1,73 +1,2596 @@
-<!DOCTYPE html>
-<html lang='en-US'>
-<head>
-<meta content='text/html;charset=UTF-8' http-equiv='Content-Type'>
-<meta content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no' name='viewport'>
-<title>
-wikitext: About
-&middot; wincent.com
-</title>
-<link rel="stylesheet" media="screen" href="/assets/application-0d9a02c4fb8e7640a9f9ac96c9b73a4e.css" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Wikitext</title>
+    <style type="text/css">
+  html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-size: 13px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+}
 
-</head>
-<body>
-<div class='viewport menu-closed'>
-<div class='app'>
-<a id="top" name="top"></a>
-<nav class='global'>
-<a class='menu-icon' href='#'>&equiv;</a>
-<h1><a href="/">Wincent</a></h1>
-<ul class='navbar-links'>
-<li class='selected'>
-<a href="/products">Products</a>
-</li>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-</ul>
-</nav>
-<div id='content-wrapper'>
-<div id='content'>
-<div id="breadcrumbs"><a href="/">Home</a> &raquo; <a href="/products">Products</a> &raquo; wikitext</div>
-<div id='product'>
-<h1>Wikitext</h1>
-<p>The wikitext extension is a fast wikitext-to-HTML translator written in C and packaged as a Ruby extension.</p>
-<ul>
-<li><a href="/products/wikitext/doc/index.html">Documentation</a> (generated from source using <a href="/wiki/YARD">YARD</a>)</li>
-<li>A &quot;<a href="/misc/wikitext_cheatsheet">cheatsheet</a>&quot; showing some of the available markup</li>
-<li>Web-based source-code repository browser: <a href="http://git.wincent.com/wikitext.git" class="external">http://git.wincent.com/wikitext.git</a></li>
-</ul>
+#nav {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-right: 1px dotted #eee;
+  overflow: auto;
+}
+.nav_wrap {
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex: 1 0;
+}
+#resizer {
+  position: absolute;
+  right: -5px;
+  top: 0;
+  width: 10px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 9999;
+}
+#main {
+  flex: 5 1;
+  -webkit-flex: 5 1;
+  -ms-flex: 5 1;
+  outline: none;
+  position: relative;
+  background: #fff;
+  padding: 1.2em;
+  padding-top: 0.2em;
+}
 
+@media (max-width: 920px) {
+  .nav_wrap { width: 100%; top: 0; right: 0; overflow: visible; position: absolute; }
+  #resizer { display: none; }
+  #nav {
+    z-index: 9999;
+    background: #fff;
+    display: none;
+    position: absolute;
+    top: 40px;
+    right: 12px;
+    width: 500px;
+    max-width: 80%;
+    height: 80%;
+    overflow-y: scroll;
+    border: 1px solid #999;
+    border-collapse: collapse;
+    box-shadow: -7px 5px 25px #aaa;
+    border-radius: 2px;
+  }
+}
 
-</div>
+@media (min-width: 920px) {
+  body { height: 100%; overflow: hidden; }
+  #main { height: 100%; overflow: auto; }
+  #search { display: none; }
+}
 
-</div>
-</div>
-<footer class='global'>
-<ul>
-<li><a title="Email me at greg@hurrell.net" class="mailto" href="mailto:greg@hurrell.net">contact</a></li>
-<li><a href="/misc/legal">legal</a></li>
-</ul>
-</footer>
-</div>
-<div class='menu hide'>
-<div class='menu-inner'>
-<section>
-<h2>Menu</h2>
-<ul>
-<li><a href="/blog">Blog</a></li>
-<li><a href="/wiki">Wiki</a></li>
-<li><a href="/issues">Issues</a></li>
-<li><a href="/snippets">Snippets</a></li>
-</ul>
-</section>
-</div>
-</div>
-</div>
-<script src="/assets/application-b34e0204a9a743735737bc884cf5d4c2.js"></script>
+#main img { max-width: 100%; }
+h1 { font-size: 25px; margin: 1em 0 0.5em; padding-top: 4px; border-top: 1px dotted #d5d5d5; }
+h1.noborder { border-top: 0px; margin-top: 0; padding-top: 4px; }
+h1.title { margin-bottom: 10px; }
+h1.alphaindex { margin-top: 0; font-size: 22px; }
+h2 {
+  padding: 0;
+  padding-bottom: 3px;
+  border-bottom: 1px #aaa solid;
+  font-size: 1.4em;
+  margin: 1.8em 0 0.5em;
+  position: relative;
+}
+h2 small { font-weight: normal; font-size: 0.7em; display: inline; position: absolute; right: 0; }
+h2 small a {
+  display: block;
+  height: 20px;
+  border: 1px solid #aaa;
+  border-bottom: 0;
+  border-top-left-radius: 5px;
+  background: #f8f8f8;
+  position: relative;
+  padding: 2px 7px;
+}
+.clear { clear: both; }
+.inline { display: inline; }
+.inline p:first-child { display: inline; }
+.docstring, .tags, #filecontents { font-size: 15px; line-height: 1.5145em; }
+.docstring p > code, .docstring p > tt, .tags p > code, .tags p > tt {
+  color: #c7254e; background: #f9f2f4; padding: 2px 4px; font-size: 1em;
+  border-radius: 4px;
+}
+.docstring h1, .docstring h2, .docstring h3, .docstring h4 { padding: 0; border: 0; border-bottom: 1px dotted #bbb; }
+.docstring h1 { font-size: 1.2em; }
+.docstring h2 { font-size: 1.1em; }
+.docstring h3, .docstring h4 { font-size: 1em; border-bottom: 0; padding-top: 10px; }
+.summary_desc .object_link a, .docstring .object_link a {
+  font-family: monospace; font-size: 1.05em;
+  color: #05a; background: #EDF4FA; padding: 2px 4px; font-size: 1em;
+  border-radius: 4px;
+}
+.rdoc-term { padding-right: 25px; font-weight: bold; }
+.rdoc-list p { margin: 0; padding: 0; margin-bottom: 4px; }
+.summary_desc pre.code .object_link a, .docstring pre.code .object_link a {
+  padding: 0px; background: inherit; color: inherit; border-radius: inherit;
+}
 
-<script>
-  new Wincent.Menu();
+/* style for <table> */
+#filecontents table, .docstring table { border-collapse: collapse; }
+#filecontents table th, #filecontents table td,
+.docstring table th, .docstring table td { border: 1px solid #ccc; padding: 8px; padding-right: 17px; }
+#filecontents table tr:nth-child(odd),
+.docstring table tr:nth-child(odd) { background: #eee; }
+#filecontents table tr:nth-child(even),
+.docstring table tr:nth-child(even) { background: #fff; }
+#filecontents table th, .docstring table th { background: #fff; }
+
+/* style for <ul> */
+#filecontents li > p, .docstring li > p { margin: 0px; }
+#filecontents ul, .docstring ul { padding-left: 20px; }
+/* style for <dl> */
+#filecontents dl, .docstring dl { border: 1px solid #ccc; }
+#filecontents dt, .docstring dt { background: #ddd; font-weight: bold; padding: 3px 5px; }
+#filecontents dd, .docstring dd { padding: 5px 0px; margin-left: 18px; }
+#filecontents dd > p, .docstring dd > p { margin: 0px; }
+
+.note {
+  color: #222;
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  display: block;
+}
+.docstring .note {
+  border-left-color: #ccc;
+  border-left-width: 5px;
+}
+.note.todo { background: #ffffc5; border-color: #ececaa; }
+.note.returns_void { background: #efefef; }
+.note.deprecated { background: #ffe5e5; border-color: #e9dada; }
+.note.title.deprecated { background: #ffe5e5; border-color: #e9dada; }
+.note.private { background: #ffffc5; border-color: #ececaa; }
+.note.title { padding: 3px 6px; font-size: 0.9em; font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif; display: inline; }
+.summary_signature + .note.title { margin-left: 7px; }
+h1 .note.title { font-size: 0.5em; font-weight: normal; padding: 3px 5px; position: relative; top: -3px; text-transform: capitalize; }
+.note.title { background: #efefef; }
+.note.title.constructor { color: #fff; background: #6a98d6; border-color: #6689d6; }
+.note.title.writeonly { color: #fff; background: #45a638; border-color: #2da31d; }
+.note.title.readonly { color: #fff; background: #6a98d6; border-color: #6689d6; }
+.note.title.private { background: #d5d5d5; border-color: #c5c5c5; }
+.note.title.not_defined_here { background: transparent; border: none; font-style: italic; }
+.discussion .note { margin-top: 6px; }
+.discussion .note:first-child { margin-top: 0; }
+
+h3.inherited {
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Grande", Verdana, Arial, sans-serif;
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+  margin-top: 12px;
+  margin-bottom: 3px;
+  font-size: 13px;
+}
+p.inherited {
+  padding: 0;
+  margin: 0;
+  margin-left: 25px;
+}
+
+.box_info dl {
+  margin: 0;
+  border: 0;
+  width: 100%;
+  font-size: 1em;
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+}
+.box_info dl dt {
+  flex-shrink: 0;
+  -webkit-flex-shrink: 1;
+  -ms-flex-shrink: 1;
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+  border: 1px solid #aaa;
+  border-width: 1px 0px 0px 1px;
+  padding: 6px 0;
+  padding-right: 10px;
+}
+.box_info dl dd {
+  flex-grow: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex: 1;
+  max-width: 420px;
+  padding: 6px 0;
+  padding-right: 20px;
+  border: 1px solid #aaa;
+  border-width: 1px 1px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+.box_info dl:last-child > * {
+  border-bottom: 1px solid #aaa;
+}
+.box_info dl:nth-child(odd) > * { background: #eee; }
+.box_info dl:nth-child(even) > * { background: #fff; }
+.box_info dl > * { margin: 0; }
+
+ul.toplevel { list-style: none; padding-left: 0; font-size: 1.1em; }
+.index_inline_list { padding-left: 0; font-size: 1.1em; }
+
+.index_inline_list li {
+  list-style: none;
+  display: inline-block;
+  padding: 0 12px;
+  line-height: 30px;
+  margin-bottom: 5px;
+}
+
+dl.constants { margin-left: 10px; }
+dl.constants dt { font-weight: bold; font-size: 1.1em; margin-bottom: 5px; }
+dl.constants dd { width: 75%; white-space: pre; font-family: monospace; margin-bottom: 18px; }
+dl.constants .docstring .note:first-child { margin-top: 5px; }
+
+.summary_desc {
+  margin-left: 32px;
+  display: block;
+  font-family: sans-serif;
+  font-size: 1.1em;
+  margin-top: 8px;
+  line-height: 1.5145em;
+  margin-bottom: 0.8em;
+}
+.summary_desc tt { font-size: 0.9em; }
+dl.constants .note { padding: 2px 6px; padding-right: 12px; margin-top: 6px; }
+dl.constants .docstring { margin-left: 32px; font-size: 0.9em; font-weight: normal; }
+dl.constants .tags { padding-left: 32px; font-size: 0.9em; line-height: 0.8em; }
+dl.constants .discussion *:first-child { margin-top: 0; }
+dl.constants .discussion *:last-child { margin-bottom: 0; }
+
+.method_details { border-top: 1px dotted #ccc; margin-top: 25px; padding-top: 0; }
+.method_details.first { border: 0; margin-top: 5px; }
+.method_details.first h3.signature { margin-top: 1em; }
+p.signature, h3.signature {
+  font-size: 1.1em; font-weight: normal; font-family: Monaco, Consolas, Courier, monospace;
+  padding: 6px 10px; margin-top: 1em;
+  background: #E8F4FF; border: 1px solid #d8d8e5; border-radius: 5px;
+}
+p.signature tt,
+h3.signature tt { font-family: Monaco, Consolas, Courier, monospace; }
+p.signature .overload,
+h3.signature .overload { display: block; }
+p.signature .extras,
+h3.signature .extras { font-weight: normal; font-family: sans-serif; color: #444; font-size: 1em; }
+p.signature .not_defined_here,
+h3.signature .not_defined_here,
+p.signature .aliases,
+h3.signature .aliases { display: block; font-weight: normal; font-size: 0.9em; font-family: sans-serif; margin-top: 0px; color: #555; }
+p.signature .aliases .names,
+h3.signature .aliases .names { font-family: Monaco, Consolas, Courier, monospace; font-weight: bold; color: #000; font-size: 1.2em; }
+
+.tags .tag_title { font-size: 1.05em; margin-bottom: 0; font-weight: bold; }
+.tags .tag_title tt { color: initial; padding: initial; background: initial; }
+.tags ul { margin-top: 5px; padding-left: 30px; list-style: square; }
+.tags ul li { margin-bottom: 3px; }
+.tags ul .name { font-family: monospace; font-weight: bold; }
+.tags ul .note { padding: 3px 6px; }
+.tags { margin-bottom: 12px; }
+
+.tags .examples .tag_title { margin-bottom: 10px; font-weight: bold; }
+.tags .examples .inline p { padding: 0; margin: 0; font-weight: bold; font-size: 1em; }
+.tags .examples .inline p:before { content: "▸"; font-size: 1em; margin-right: 5px; }
+
+.tags .overload .overload_item { list-style: none; margin-bottom: 25px; }
+.tags .overload .overload_item .signature {
+  padding: 2px 8px;
+  background: #F1F8FF; border: 1px solid #d8d8e5; border-radius: 3px;
+}
+.tags .overload .signature { margin-left: -15px; font-family: monospace; display: block; font-size: 1.1em; }
+.tags .overload .docstring { margin-top: 15px; }
+
+.defines { display: none; }
+
+#method_missing_details .notice.this { position: relative; top: -8px; color: #888; padding: 0; margin: 0; }
+
+.showSource { font-size: 0.9em; }
+.showSource a, .showSource a:visited { text-decoration: none; color: #666; }
+
+#content a, #content a:visited { text-decoration: none; color: #05a; }
+#content a:hover { background: #ffffa5; }
+
+ul.summary {
+  list-style: none;
+  font-family: monospace;
+  font-size: 1em;
+  line-height: 1.5em;
+  padding-left: 0px;
+}
+ul.summary a, ul.summary a:visited {
+  text-decoration: none; font-size: 1.1em;
+}
+ul.summary li { margin-bottom: 5px; }
+.summary .summary_signature {
+  padding: 4px 8px;
+  background: #f8f8f8;
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+}
+.summary_signature:hover { background: #CFEBFF; border-color: #A4CCDA; cursor: pointer; }
+ul.summary.compact li { display: inline-block; margin: 0px 5px 0px 0px; line-height: 2.6em;}
+ul.summary.compact .summary_signature { padding: 5px 7px; padding-right: 4px; }
+#content .summary_signature:hover a,
+#content .summary_signature:hover a:visited {
+  background: transparent;
+  color: #049;
+}
+
+p.inherited a { font-family: monospace; font-size: 0.9em; }
+p.inherited { word-spacing: 5px; font-size: 1.2em; }
+
+p.children { font-size: 1.2em; }
+p.children a { font-size: 0.9em; }
+p.children strong { font-size: 0.8em; }
+p.children strong.modules { padding-left: 5px; }
+
+ul.fullTree { display: none; padding-left: 0; list-style: none; margin-left: 0; margin-bottom: 10px; }
+ul.fullTree ul { margin-left: 0; padding-left: 0; list-style: none; }
+ul.fullTree li { text-align: center; padding-top: 18px; padding-bottom: 12px; background: url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAAHtJREFUeNqMzrEJAkEURdGzuhgZbSoYWcAWoBVsB4JgZAGmphsZCZYzTQgWNCYrDN9RvMmHx+X916SUBFbo8CzD1idXrLErw1mQttgXtyrOcQ/Ny5p4Qh+2XqLYYazsPWNTiuMkRxa4vcV+evuNAUOLIx5+c2hyzv7hNQC67Q+/HHmlEwAAAABJRU5ErkJggg==) no-repeat top center; }
+ul.fullTree li:first-child { padding-top: 0; background: transparent; }
+ul.fullTree li:last-child { padding-bottom: 0; }
+.showAll ul.fullTree { display: block; }
+.showAll .inheritName { display: none; }
+
+#search { position: absolute; right: 12px; top: 0px; z-index: 9000; }
+#search a {
+  display: block; float: left;
+  padding: 4px 8px; text-decoration: none; color: #05a; fill: #05a;
+  border: 1px solid #d8d8e5;
+  border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;
+  background: #F1F8FF;
+  box-shadow: -1px 1px 3px #ddd;
+}
+#search a:hover { background: #f5faff; color: #06b; fill: #06b; }
+#search a.active {
+  background: #568; padding-bottom: 20px; color: #fff; fill: #fff;
+  border: 1px solid #457;
+  border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+#search a.inactive { color: #999; fill: #999; }
+.inheritanceTree, .toggleDefines {
+  float: right;
+  border-left: 1px solid #aaa;
+  position: absolute; top: 0; right: 0;
+  height: 100%;
+  background: #f6f6f6;
+  padding: 5px;
+  min-width: 55px;
+  text-align: center;
+}
+
+#menu { font-size: 1.3em; color: #bbb; }
+#menu .title, #menu a { font-size: 0.7em; }
+#menu .title a { font-size: 1em; }
+#menu .title { color: #555; }
+#menu a, #menu a:visited { color: #333; text-decoration: none; border-bottom: 1px dotted #bbd; }
+#menu a:hover { color: #05a; }
+
+#footer { margin-top: 15px; border-top: 1px solid #ccc; text-align: center; padding: 7px 0; color: #999; }
+#footer a, #footer a:visited { color: #444; text-decoration: none; border-bottom: 1px dotted #bbd; }
+#footer a:hover { color: #05a; }
+
+#listing ul.alpha { font-size: 1.1em; }
+#listing ul.alpha { margin: 0; padding: 0; padding-bottom: 10px; list-style: none; }
+#listing ul.alpha li.letter { font-size: 1.4em; padding-bottom: 10px; }
+#listing ul.alpha ul { margin: 0; padding-left: 15px; }
+#listing ul small { color: #666; font-size: 0.7em; }
+
+li.r1 { background: #f0f0f0; }
+li.r2 { background: #fafafa; }
+
+#content ul.summary li.deprecated .summary_signature a,
+#content ul.summary li.deprecated .summary_signature a:visited { text-decoration: line-through; font-style: italic; }
+
+#toc {
+  position: relative;
+  float: right;
+  overflow-x: auto;
+  right: -3px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  padding: 20px; padding-right: 30px;
+  max-width: 300px;
+  z-index: 5000;
+  background: #fefefe;
+  border: 1px solid #ddd;
+  box-shadow: -2px 2px 6px #bbb;
+}
+#toc .title { margin: 0; }
+#toc ol { padding-left: 1.8em; }
+#toc li { font-size: 1.1em; line-height: 1.7em; }
+#toc > ol > li { font-size: 1.1em; font-weight: bold; }
+#toc ol > ol { font-size: 0.9em; }
+#toc ol ol > ol { padding-left: 2.3em; }
+#toc ol + li { margin-top: 0.3em; }
+#toc.hidden { padding: 10px; background: #fefefe; box-shadow: none; }
+#toc.hidden:hover { background: #fafafa; }
+#filecontents h1 + #toc.nofloat { margin-top: 0; }
+@media (max-width: 560px) {
+  #toc {
+    margin-left: 0;
+    margin-top: 16px;
+    float: none;
+    max-width: none;
+  }
+}
+
+/* syntax highlighting */
+.source_code { display: none; padding: 3px 8px; border-left: 8px solid #ddd; margin-top: 5px; }
+#filecontents pre.code, .docstring pre.code, .source_code pre { font-family: monospace; }
+#filecontents pre.code, .docstring pre.code { display: block; }
+.source_code .lines { padding-right: 12px; color: #555; text-align: right; }
+#filecontents pre.code, .docstring pre.code,
+.tags pre.example {
+  padding: 9px 14px;
+  margin-top: 4px;
+  border: 1px solid #e1e1e8;
+  background: #f7f7f9;
+  border-radius: 4px;
+  font-size: 1em;
+  overflow-x: auto;
+  line-height: 1.2em;
+}
+pre.code { color: #000; tab-size: 2; }
+pre.code .info.file { color: #555; }
+pre.code .val { color: #036A07; }
+pre.code .tstring_content,
+pre.code .heredoc_beg, pre.code .heredoc_end,
+pre.code .qwords_beg, pre.code .qwords_end, pre.code .qwords_sep,
+pre.code .words_beg, pre.code .words_end, pre.code .words_sep,
+pre.code .qsymbols_beg, pre.code .qsymbols_end, pre.code .qsymbols_sep,
+pre.code .symbols_beg, pre.code .symbols_end, pre.code .symbols_sep,
+pre.code .tstring, pre.code .dstring { color: #036A07; }
+pre.code .fid, pre.code .rubyid_new, pre.code .rubyid_to_s,
+pre.code .rubyid_to_sym, pre.code .rubyid_to_f,
+pre.code .dot + pre.code .id,
+pre.code .rubyid_to_i pre.code .rubyid_each { color: #0085FF; }
+pre.code .comment { color: #0066FF; }
+pre.code .const, pre.code .constant { color: #585CF6; }
+pre.code .label,
+pre.code .symbol { color: #C5060B; }
+pre.code .kw,
+pre.code .rubyid_require,
+pre.code .rubyid_extend,
+pre.code .rubyid_include { color: #0000FF; }
+pre.code .ivar { color: #318495; }
+pre.code .gvar,
+pre.code .rubyid_backref,
+pre.code .rubyid_nth_ref { color: #6D79DE; }
+pre.code .regexp, .dregexp { color: #036A07; }
+pre.code a { border-bottom: 1px dotted #bbf; }
+/* inline code */
+p > code {
+	padding: 1px 3px 1px 3px;
+	border: 1px solid #E1E1E8;
+	background: #F7F7F9;
+	border-radius: 4px;
+}
+
+/* Color fix for links */
+#content .summary_desc pre.code .id > .object_link a, /* identifier */
+#content .docstring pre.code .id > .object_link a { color: #0085FF; }
+#content .summary_desc pre.code .const > .object_link a, /* constant */
+#content .docstring pre.code .const > .object_link a { color: #585CF6; }
+
+/* Override this file with custom rules */
+</style>
+<script type="text/javascript" charset="utf-8">
+  /*! jQuery v1.7.1 jquery.com | jquery.org/license */
+(function(a,b){function cy(a){return f.isWindow(a)?a:a.nodeType===9?a.defaultView||a.parentWindow:!1}function cv(a){if(!ck[a]){var b=c.body,d=f("<"+a+">").appendTo(b),e=d.css("display");d.remove();if(e==="none"||e===""){cl||(cl=c.createElement("iframe"),cl.frameBorder=cl.width=cl.height=0),b.appendChild(cl);if(!cm||!cl.createElement)cm=(cl.contentWindow||cl.contentDocument).document,cm.write((c.compatMode==="CSS1Compat"?"<!doctype html>":"")+"<html><body>"),cm.close();d=cm.createElement(a),cm.body.appendChild(d),e=f.css(d,"display"),b.removeChild(cl)}ck[a]=e}return ck[a]}function cu(a,b){var c={};f.each(cq.concat.apply([],cq.slice(0,b)),function(){c[this]=a});return c}function ct(){cr=b}function cs(){setTimeout(ct,0);return cr=f.now()}function cj(){try{return new a.ActiveXObject("Microsoft.XMLHTTP")}catch(b){}}function ci(){try{return new a.XMLHttpRequest}catch(b){}}function cc(a,c){a.dataFilter&&(c=a.dataFilter(c,a.dataType));var d=a.dataTypes,e={},g,h,i=d.length,j,k=d[0],l,m,n,o,p;for(g=1;g<i;g++){if(g===1)for(h in a.converters)typeof h=="string"&&(e[h.toLowerCase()]=a.converters[h]);l=k,k=d[g];if(k==="*")k=l;else if(l!=="*"&&l!==k){m=l+" "+k,n=e[m]||e["* "+k];if(!n){p=b;for(o in e){j=o.split(" ");if(j[0]===l||j[0]==="*"){p=e[j[1]+" "+k];if(p){o=e[o],o===!0?n=p:p===!0&&(n=o);break}}}}!n&&!p&&f.error("No conversion from "+m.replace(" "," to ")),n!==!0&&(c=n?n(c):p(o(c)))}}return c}function cb(a,c,d){var e=a.contents,f=a.dataTypes,g=a.responseFields,h,i,j,k;for(i in g)i in d&&(c[g[i]]=d[i]);while(f[0]==="*")f.shift(),h===b&&(h=a.mimeType||c.getResponseHeader("content-type"));if(h)for(i in e)if(e[i]&&e[i].test(h)){f.unshift(i);break}if(f[0]in d)j=f[0];else{for(i in d){if(!f[0]||a.converters[i+" "+f[0]]){j=i;break}k||(k=i)}j=j||k}if(j){j!==f[0]&&f.unshift(j);return d[j]}}function ca(a,b,c,d){if(f.isArray(b))f.each(b,function(b,e){c||bE.test(a)?d(a,e):ca(a+"["+(typeof e=="object"||f.isArray(e)?b:"")+"]",e,c,d)});else if(!c&&b!=null&&typeof b=="object")for(var e in b)ca(a+"["+e+"]",b[e],c,d);else d(a,b)}function b_(a,c){var d,e,g=f.ajaxSettings.flatOptions||{};for(d in c)c[d]!==b&&((g[d]?a:e||(e={}))[d]=c[d]);e&&f.extend(!0,a,e)}function b$(a,c,d,e,f,g){f=f||c.dataTypes[0],g=g||{},g[f]=!0;var h=a[f],i=0,j=h?h.length:0,k=a===bT,l;for(;i<j&&(k||!l);i++)l=h[i](c,d,e),typeof l=="string"&&(!k||g[l]?l=b:(c.dataTypes.unshift(l),l=b$(a,c,d,e,l,g)));(k||!l)&&!g["*"]&&(l=b$(a,c,d,e,"*",g));return l}function bZ(a){return function(b,c){typeof b!="string"&&(c=b,b="*");if(f.isFunction(c)){var d=b.toLowerCase().split(bP),e=0,g=d.length,h,i,j;for(;e<g;e++)h=d[e],j=/^\+/.test(h),j&&(h=h.substr(1)||"*"),i=a[h]=a[h]||[],i[j?"unshift":"push"](c)}}}function bC(a,b,c){var d=b==="width"?a.offsetWidth:a.offsetHeight,e=b==="width"?bx:by,g=0,h=e.length;if(d>0){if(c!=="border")for(;g<h;g++)c||(d-=parseFloat(f.css(a,"padding"+e[g]))||0),c==="margin"?d+=parseFloat(f.css(a,c+e[g]))||0:d-=parseFloat(f.css(a,"border"+e[g]+"Width"))||0;return d+"px"}d=bz(a,b,b);if(d<0||d==null)d=a.style[b]||0;d=parseFloat(d)||0;if(c)for(;g<h;g++)d+=parseFloat(f.css(a,"padding"+e[g]))||0,c!=="padding"&&(d+=parseFloat(f.css(a,"border"+e[g]+"Width"))||0),c==="margin"&&(d+=parseFloat(f.css(a,c+e[g]))||0);return d+"px"}function bp(a,b){b.src?f.ajax({url:b.src,async:!1,dataType:"script"}):f.globalEval((b.text||b.textContent||b.innerHTML||"").replace(bf,"/*$0*/")),b.parentNode&&b.parentNode.removeChild(b)}function bo(a){var b=c.createElement("div");bh.appendChild(b),b.innerHTML=a.outerHTML;return b.firstChild}function bn(a){var b=(a.nodeName||"").toLowerCase();b==="input"?bm(a):b!=="script"&&typeof a.getElementsByTagName!="undefined"&&f.grep(a.getElementsByTagName("input"),bm)}function bm(a){if(a.type==="checkbox"||a.type==="radio")a.defaultChecked=a.checked}function bl(a){return typeof a.getElementsByTagName!="undefined"?a.getElementsByTagName("*"):typeof a.querySelectorAll!="undefined"?a.querySelectorAll("*"):[]}function bk(a,b){var c;if(b.nodeType===1){b.clearAttributes&&b.clearAttributes(),b.mergeAttributes&&b.mergeAttributes(a),c=b.nodeName.toLowerCase();if(c==="object")b.outerHTML=a.outerHTML;else if(c!=="input"||a.type!=="checkbox"&&a.type!=="radio"){if(c==="option")b.selected=a.defaultSelected;else if(c==="input"||c==="textarea")b.defaultValue=a.defaultValue}else a.checked&&(b.defaultChecked=b.checked=a.checked),b.value!==a.value&&(b.value=a.value);b.removeAttribute(f.expando)}}function bj(a,b){if(b.nodeType===1&&!!f.hasData(a)){var c,d,e,g=f._data(a),h=f._data(b,g),i=g.events;if(i){delete h.handle,h.events={};for(c in i)for(d=0,e=i[c].length;d<e;d++)f.event.add(b,c+(i[c][d].namespace?".":"")+i[c][d].namespace,i[c][d],i[c][d].data)}h.data&&(h.data=f.extend({},h.data))}}function bi(a,b){return f.nodeName(a,"table")?a.getElementsByTagName("tbody")[0]||a.appendChild(a.ownerDocument.createElement("tbody")):a}function U(a){var b=V.split("|"),c=a.createDocumentFragment();if(c.createElement)while(b.length)c.createElement(b.pop());return c}function T(a,b,c){b=b||0;if(f.isFunction(b))return f.grep(a,function(a,d){var e=!!b.call(a,d,a);return e===c});if(b.nodeType)return f.grep(a,function(a,d){return a===b===c});if(typeof b=="string"){var d=f.grep(a,function(a){return a.nodeType===1});if(O.test(b))return f.filter(b,d,!c);b=f.filter(b,d)}return f.grep(a,function(a,d){return f.inArray(a,b)>=0===c})}function S(a){return!a||!a.parentNode||a.parentNode.nodeType===11}function K(){return!0}function J(){return!1}function n(a,b,c){var d=b+"defer",e=b+"queue",g=b+"mark",h=f._data(a,d);h&&(c==="queue"||!f._data(a,e))&&(c==="mark"||!f._data(a,g))&&setTimeout(function(){!f._data(a,e)&&!f._data(a,g)&&(f.removeData(a,d,!0),h.fire())},0)}function m(a){for(var b in a){if(b==="data"&&f.isEmptyObject(a[b]))continue;if(b!=="toJSON")return!1}return!0}function l(a,c,d){if(d===b&&a.nodeType===1){var e="data-"+c.replace(k,"-$1").toLowerCase();d=a.getAttribute(e);if(typeof d=="string"){try{d=d==="true"?!0:d==="false"?!1:d==="null"?null:f.isNumeric(d)?parseFloat(d):j.test(d)?f.parseJSON(d):d}catch(g){}f.data(a,c,d)}else d=b}return d}function h(a){var b=g[a]={},c,d;a=a.split(/\s+/);for(c=0,d=a.length;c<d;c++)b[a[c]]=!0;return b}var c=a.document,d=a.navigator,e=a.location,f=function(){function J(){if(!e.isReady){try{c.documentElement.doScroll("left")}catch(a){setTimeout(J,1);return}e.ready()}}var e=function(a,b){return new e.fn.init(a,b,h)},f=a.jQuery,g=a.$,h,i=/^(?:[^#<]*(<[\w\W]+>)[^>]*$|#([\w\-]*)$)/,j=/\S/,k=/^\s+/,l=/\s+$/,m=/^<(\w+)\s*\/?>(?:<\/\1>)?$/,n=/^[\],:{}\s]*$/,o=/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,p=/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,q=/(?:^|:|,)(?:\s*\[)+/g,r=/(webkit)[ \/]([\w.]+)/,s=/(opera)(?:.*version)?[ \/]([\w.]+)/,t=/(msie) ([\w.]+)/,u=/(mozilla)(?:.*? rv:([\w.]+))?/,v=/-([a-z]|[0-9])/ig,w=/^-ms-/,x=function(a,b){return(b+"").toUpperCase()},y=d.userAgent,z,A,B,C=Object.prototype.toString,D=Object.prototype.hasOwnProperty,E=Array.prototype.push,F=Array.prototype.slice,G=String.prototype.trim,H=Array.prototype.indexOf,I={};e.fn=e.prototype={constructor:e,init:function(a,d,f){var g,h,j,k;if(!a)return this;if(a.nodeType){this.context=this[0]=a,this.length=1;return this}if(a==="body"&&!d&&c.body){this.context=c,this[0]=c.body,this.selector=a,this.length=1;return this}if(typeof a=="string"){a.charAt(0)!=="<"||a.charAt(a.length-1)!==">"||a.length<3?g=i.exec(a):g=[null,a,null];if(g&&(g[1]||!d)){if(g[1]){d=d instanceof e?d[0]:d,k=d?d.ownerDocument||d:c,j=m.exec(a),j?e.isPlainObject(d)?(a=[c.createElement(j[1])],e.fn.attr.call(a,d,!0)):a=[k.createElement(j[1])]:(j=e.buildFragment([g[1]],[k]),a=(j.cacheable?e.clone(j.fragment):j.fragment).childNodes);return e.merge(this,a)}h=c.getElementById(g[2]);if(h&&h.parentNode){if(h.id!==g[2])return f.find(a);this.length=1,this[0]=h}this.context=c,this.selector=a;return this}return!d||d.jquery?(d||f).find(a):this.constructor(d).find(a)}if(e.isFunction(a))return f.ready(a);a.selector!==b&&(this.selector=a.selector,this.context=a.context);return e.makeArray(a,this)},selector:"",jquery:"1.7.1",length:0,size:function(){return this.length},toArray:function(){return F.call(this,0)},get:function(a){return a==null?this.toArray():a<0?this[this.length+a]:this[a]},pushStack:function(a,b,c){var d=this.constructor();e.isArray(a)?E.apply(d,a):e.merge(d,a),d.prevObject=this,d.context=this.context,b==="find"?d.selector=this.selector+(this.selector?" ":"")+c:b&&(d.selector=this.selector+"."+b+"("+c+")");return d},each:function(a,b){return e.each(this,a,b)},ready:function(a){e.bindReady(),A.add(a);return this},eq:function(a){a=+a;return a===-1?this.slice(a):this.slice(a,a+1)},first:function(){return this.eq(0)},last:function(){return this.eq(-1)},slice:function(){return this.pushStack(F.apply(this,arguments),"slice",F.call(arguments).join(","))},map:function(a){return this.pushStack(e.map(this,function(b,c){return a.call(b,c,b)}))},end:function(){return this.prevObject||this.constructor(null)},push:E,sort:[].sort,splice:[].splice},e.fn.init.prototype=e.fn,e.extend=e.fn.extend=function(){var a,c,d,f,g,h,i=arguments[0]||{},j=1,k=arguments.length,l=!1;typeof i=="boolean"&&(l=i,i=arguments[1]||{},j=2),typeof i!="object"&&!e.isFunction(i)&&(i={}),k===j&&(i=this,--j);for(;j<k;j++)if((a=arguments[j])!=null)for(c in a){d=i[c],f=a[c];if(i===f)continue;l&&f&&(e.isPlainObject(f)||(g=e.isArray(f)))?(g?(g=!1,h=d&&e.isArray(d)?d:[]):h=d&&e.isPlainObject(d)?d:{},i[c]=e.extend(l,h,f)):f!==b&&(i[c]=f)}return i},e.extend({noConflict:function(b){a.$===e&&(a.$=g),b&&a.jQuery===e&&(a.jQuery=f);return e},isReady:!1,readyWait:1,holdReady:function(a){a?e.readyWait++:e.ready(!0)},ready:function(a){if(a===!0&&!--e.readyWait||a!==!0&&!e.isReady){if(!c.body)return setTimeout(e.ready,1);e.isReady=!0;if(a!==!0&&--e.readyWait>0)return;A.fireWith(c,[e]),e.fn.trigger&&e(c).trigger("ready").off("ready")}},bindReady:function(){if(!A){A=e.Callbacks("once memory");if(c.readyState==="complete")return setTimeout(e.ready,1);if(c.addEventListener)c.addEventListener("DOMContentLoaded",B,!1),a.addEventListener("load",e.ready,!1);else if(c.attachEvent){c.attachEvent("onreadystatechange",B),a.attachEvent("onload",e.ready);var b=!1;try{b=a.frameElement==null}catch(d){}c.documentElement.doScroll&&b&&J()}}},isFunction:function(a){return e.type(a)==="function"},isArray:Array.isArray||function(a){return e.type(a)==="array"},isWindow:function(a){return a&&typeof a=="object"&&"setInterval"in a},isNumeric:function(a){return!isNaN(parseFloat(a))&&isFinite(a)},type:function(a){return a==null?String(a):I[C.call(a)]||"object"},isPlainObject:function(a){if(!a||e.type(a)!=="object"||a.nodeType||e.isWindow(a))return!1;try{if(a.constructor&&!D.call(a,"constructor")&&!D.call(a.constructor.prototype,"isPrototypeOf"))return!1}catch(c){return!1}var d;for(d in a);return d===b||D.call(a,d)},isEmptyObject:function(a){for(var b in a)return!1;return!0},error:function(a){throw new Error(a)},parseJSON:function(b){if(typeof b!="string"||!b)return null;b=e.trim(b);if(a.JSON&&a.JSON.parse)return a.JSON.parse(b);if(n.test(b.replace(o,"@").replace(p,"]").replace(q,"")))return(new Function("return "+b))();e.error("Invalid JSON: "+b)},parseXML:function(c){var d,f;try{a.DOMParser?(f=new DOMParser,d=f.parseFromString(c,"text/xml")):(d=new ActiveXObject("Microsoft.XMLDOM"),d.async="false",d.loadXML(c))}catch(g){d=b}(!d||!d.documentElement||d.getElementsByTagName("parsererror").length)&&e.error("Invalid XML: "+c);return d},noop:function(){},globalEval:function(b){b&&j.test(b)&&(a.execScript||function(b){a.eval.call(a,b)})(b)},camelCase:function(a){return a.replace(w,"ms-").replace(v,x)},nodeName:function(a,b){return a.nodeName&&a.nodeName.toUpperCase()===b.toUpperCase()},each:function(a,c,d){var f,g=0,h=a.length,i=h===b||e.isFunction(a);if(d){if(i){for(f in a)if(c.apply(a[f],d)===!1)break}else for(;g<h;)if(c.apply(a[g++],d)===!1)break}else if(i){for(f in a)if(c.call(a[f],f,a[f])===!1)break}else for(;g<h;)if(c.call(a[g],g,a[g++])===!1)break;return a},trim:G?function(a){return a==null?"":G.call(a)}:function(a){return a==null?"":(a+"").replace(k,"").replace(l,"")},makeArray:function(a,b){var c=b||[];if(a!=null){var d=e.type(a);a.length==null||d==="string"||d==="function"||d==="regexp"||e.isWindow(a)?E.call(c,a):e.merge(c,a)}return c},inArray:function(a,b,c){var d;if(b){if(H)return H.call(b,a,c);d=b.length,c=c?c<0?Math.max(0,d+c):c:0;for(;c<d;c++)if(c in b&&b[c]===a)return c}return-1},merge:function(a,c){var d=a.length,e=0;if(typeof c.length=="number")for(var f=c.length;e<f;e++)a[d++]=c[e];else while(c[e]!==b)a[d++]=c[e++];a.length=d;return a},grep:function(a,b,c){var d=[],e;c=!!c;for(var f=0,g=a.length;f<g;f++)e=!!b(a[f],f),c!==e&&d.push(a[f]);return d},map:function(a,c,d){var f,g,h=[],i=0,j=a.length,k=a instanceof e||j!==b&&typeof j=="number"&&(j>0&&a[0]&&a[j-1]||j===0||e.isArray(a));if(k)for(;i<j;i++)f=c(a[i],i,d),f!=null&&(h[h.length]=f);else for(g in a)f=c(a[g],g,d),f!=null&&(h[h.length]=f);return h.concat.apply([],h)},guid:1,proxy:function(a,c){if(typeof c=="string"){var d=a[c];c=a,a=d}if(!e.isFunction(a))return b;var f=F.call(arguments,2),g=function(){return a.apply(c,f.concat(F.call(arguments)))};g.guid=a.guid=a.guid||g.guid||e.guid++;return g},access:function(a,c,d,f,g,h){var i=a.length;if(typeof c=="object"){for(var j in c)e.access(a,j,c[j],f,g,d);return a}if(d!==b){f=!h&&f&&e.isFunction(d);for(var k=0;k<i;k++)g(a[k],c,f?d.call(a[k],k,g(a[k],c)):d,h);return a}return i?g(a[0],c):b},now:function(){return(new Date).getTime()},uaMatch:function(a){a=a.toLowerCase();var b=r.exec(a)||s.exec(a)||t.exec(a)||a.indexOf("compatible")<0&&u.exec(a)||[];return{browser:b[1]||"",version:b[2]||"0"}},sub:function(){function a(b,c){return new a.fn.init(b,c)}e.extend(!0,a,this),a.superclass=this,a.fn=a.prototype=this(),a.fn.constructor=a,a.sub=this.sub,a.fn.init=function(d,f){f&&f instanceof e&&!(f instanceof a)&&(f=a(f));return e.fn.init.call(this,d,f,b)},a.fn.init.prototype=a.fn;var b=a(c);return a},browser:{}}),e.each("Boolean Number String Function Array Date RegExp Object".split(" "),function(a,b){I["[object "+b+"]"]=b.toLowerCase()}),z=e.uaMatch(y),z.browser&&(e.browser[z.browser]=!0,e.browser.version=z.version),e.browser.webkit&&(e.browser.safari=!0),j.test(" ")&&(k=/^[\s\xA0]+/,l=/[\s\xA0]+$/),h=e(c),c.addEventListener?B=function(){c.removeEventListener("DOMContentLoaded",B,!1),e.ready()}:c.attachEvent&&(B=function(){c.readyState==="complete"&&(c.detachEvent("onreadystatechange",B),e.ready())});return e}(),g={};f.Callbacks=function(a){a=a?g[a]||h(a):{};var c=[],d=[],e,i,j,k,l,m=function(b){var d,e,g,h,i;for(d=0,e=b.length;d<e;d++)g=b[d],h=f.type(g),h==="array"?m(g):h==="function"&&(!a.unique||!o.has(g))&&c.push(g)},n=function(b,f){f=f||[],e=!a.memory||[b,f],i=!0,l=j||0,j=0,k=c.length;for(;c&&l<k;l++)if(c[l].apply(b,f)===!1&&a.stopOnFalse){e=!0;break}i=!1,c&&(a.once?e===!0?o.disable():c=[]:d&&d.length&&(e=d.shift(),o.fireWith(e[0],e[1])))},o={add:function(){if(c){var a=c.length;m(arguments),i?k=c.length:e&&e!==!0&&(j=a,n(e[0],e[1]))}return this},remove:function(){if(c){var b=arguments,d=0,e=b.length;for(;d<e;d++)for(var f=0;f<c.length;f++)if(b[d]===c[f]){i&&f<=k&&(k--,f<=l&&l--),c.splice(f--,1);if(a.unique)break}}return this},has:function(a){if(c){var b=0,d=c.length;for(;b<d;b++)if(a===c[b])return!0}return!1},empty:function(){c=[];return this},disable:function(){c=d=e=b;return this},disabled:function(){return!c},lock:function(){d=b,(!e||e===!0)&&o.disable();return this},locked:function(){return!d},fireWith:function(b,c){d&&(i?a.once||d.push([b,c]):(!a.once||!e)&&n(b,c));return this},fire:function(){o.fireWith(this,arguments);return this},fired:function(){return!!e}};return o};var i=[].slice;f.extend({Deferred:function(a){var b=f.Callbacks("once memory"),c=f.Callbacks("once memory"),d=f.Callbacks("memory"),e="pending",g={resolve:b,reject:c,notify:d},h={done:b.add,fail:c.add,progress:d.add,state:function(){return e},isResolved:b.fired,isRejected:c.fired,then:function(a,b,c){i.done(a).fail(b).progress(c);return this},always:function(){i.done.apply(i,arguments).fail.apply(i,arguments);return this},pipe:function(a,b,c){return f.Deferred(function(d){f.each({done:[a,"resolve"],fail:[b,"reject"],progress:[c,"notify"]},function(a,b){var c=b[0],e=b[1],g;f.isFunction(c)?i[a](function(){g=c.apply(this,arguments),g&&f.isFunction(g.promise)?g.promise().then(d.resolve,d.reject,d.notify):d[e+"With"](this===i?d:this,[g])}):i[a](d[e])})}).promise()},promise:function(a){if(a==null)a=h;else for(var b in h)a[b]=h[b];return a}},i=h.promise({}),j;for(j in g)i[j]=g[j].fire,i[j+"With"]=g[j].fireWith;i.done(function(){e="resolved"},c.disable,d.lock).fail(function(){e="rejected"},b.disable,d.lock),a&&a.call(i,i);return i},when:function(a){function m(a){return function(b){e[a]=arguments.length>1?i.call(arguments,0):b,j.notifyWith(k,e)}}function l(a){return function(c){b[a]=arguments.length>1?i.call(arguments,0):c,--g||j.resolveWith(j,b)}}var b=i.call(arguments,0),c=0,d=b.length,e=Array(d),g=d,h=d,j=d<=1&&a&&f.isFunction(a.promise)?a:f.Deferred(),k=j.promise();if(d>1){for(;c<d;c++)b[c]&&b[c].promise&&f.isFunction(b[c].promise)?b[c].promise().then(l(c),j.reject,m(c)):--g;g||j.resolveWith(j,b)}else j!==a&&j.resolveWith(j,d?[a]:[]);return k}}),f.support=function(){var b,d,e,g,h,i,j,k,l,m,n,o,p,q=c.createElement("div"),r=c.documentElement;q.setAttribute("className","t"),q.innerHTML="   <link/><table></table><a href='/a' style='top:1px;float:left;opacity:.55;'>a</a><input type='checkbox'/>",d=q.getElementsByTagName("*"),e=q.getElementsByTagName("a")[0];if(!d||!d.length||!e)return{};g=c.createElement("select"),h=g.appendChild(c.createElement("option")),i=q.getElementsByTagName("input")[0],b={leadingWhitespace:q.firstChild.nodeType===3,tbody:!q.getElementsByTagName("tbody").length,htmlSerialize:!!q.getElementsByTagName("link").length,style:/top/.test(e.getAttribute("style")),hrefNormalized:e.getAttribute("href")==="/a",opacity:/^0.55/.test(e.style.opacity),cssFloat:!!e.style.cssFloat,checkOn:i.value==="on",optSelected:h.selected,getSetAttribute:q.className!=="t",enctype:!!c.createElement("form").enctype,html5Clone:c.createElement("nav").cloneNode(!0).outerHTML!=="<:nav></:nav>",submitBubbles:!0,changeBubbles:!0,focusinBubbles:!1,deleteExpando:!0,noCloneEvent:!0,inlineBlockNeedsLayout:!1,shrinkWrapBlocks:!1,reliableMarginRight:!0},i.checked=!0,b.noCloneChecked=i.cloneNode(!0).checked,g.disabled=!0,b.optDisabled=!h.disabled;try{delete q.test}catch(s){b.deleteExpando=!1}!q.addEventListener&&q.attachEvent&&q.fireEvent&&(q.attachEvent("onclick",function(){b.noCloneEvent=!1}),q.cloneNode(!0).fireEvent("onclick")),i=c.createElement("input"),i.value="t",i.setAttribute("type","radio"),b.radioValue=i.value==="t",i.setAttribute("checked","checked"),q.appendChild(i),k=c.createDocumentFragment(),k.appendChild(q.lastChild),b.checkClone=k.cloneNode(!0).cloneNode(!0).lastChild.checked,b.appendChecked=i.checked,k.removeChild(i),k.appendChild(q),q.innerHTML="",a.getComputedStyle&&(j=c.createElement("div"),j.style.width="0",j.style.marginRight="0",q.style.width="2px",q.appendChild(j),b.reliableMarginRight=(parseInt((a.getComputedStyle(j,null)||{marginRight:0}).marginRight,10)||0)===0);if(q.attachEvent)for(o in{submit:1,change:1,focusin:1})n="on"+o,p=n in q,p||(q.setAttribute(n,"return;"),p=typeof q[n]=="function"),b[o+"Bubbles"]=p;k.removeChild(q),k=g=h=j=q=i=null,f(function(){var a,d,e,g,h,i,j,k,m,n,o,r=c.getElementsByTagName("body")[0];!r||(j=1,k="position:absolute;top:0;left:0;width:1px;height:1px;margin:0;",m="visibility:hidden;border:0;",n="style='"+k+"border:5px solid #000;padding:0;'",o="<div "+n+"><div></div></div>"+"<table "+n+" cellpadding='0' cellspacing='0'>"+"<tr><td></td></tr></table>",a=c.createElement("div"),a.style.cssText=m+"width:0;height:0;position:static;top:0;margin-top:"+j+"px",r.insertBefore(a,r.firstChild),q=c.createElement("div"),a.appendChild(q),q.innerHTML="<table><tr><td style='padding:0;border:0;display:none'></td><td>t</td></tr></table>",l=q.getElementsByTagName("td"),p=l[0].offsetHeight===0,l[0].style.display="",l[1].style.display="none",b.reliableHiddenOffsets=p&&l[0].offsetHeight===0,q.innerHTML="",q.style.width=q.style.paddingLeft="1px",f.boxModel=b.boxModel=q.offsetWidth===2,typeof q.style.zoom!="undefined"&&(q.style.display="inline",q.style.zoom=1,b.inlineBlockNeedsLayout=q.offsetWidth===2,q.style.display="",q.innerHTML="<div style='width:4px;'></div>",b.shrinkWrapBlocks=q.offsetWidth!==2),q.style.cssText=k+m,q.innerHTML=o,d=q.firstChild,e=d.firstChild,h=d.nextSibling.firstChild.firstChild,i={doesNotAddBorder:e.offsetTop!==5,doesAddBorderForTableAndCells:h.offsetTop===5},e.style.position="fixed",e.style.top="20px",i.fixedPosition=e.offsetTop===20||e.offsetTop===15,e.style.position=e.style.top="",d.style.overflow="hidden",d.style.position="relative",i.subtractsBorderForOverflowNotVisible=e.offsetTop===-5,i.doesNotIncludeMarginInBodyOffset=r.offsetTop!==j,r.removeChild(a),q=a=null,f.extend(b,i))});return b}();var j=/^(?:\{.*\}|\[.*\])$/,k=/([A-Z])/g;f.extend({cache:{},uuid:0,expando:"jQuery"+(f.fn.jquery+Math.random()).replace(/\D/g,""),noData:{embed:!0,object:"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000",applet:!0},hasData:function(a){a=a.nodeType?f.cache[a[f.expando]]:a[f.expando];return!!a&&!m(a)},data:function(a,c,d,e){if(!!f.acceptData(a)){var g,h,i,j=f.expando,k=typeof c=="string",l=a.nodeType,m=l?f.cache:a,n=l?a[j]:a[j]&&j,o=c==="events";if((!n||!m[n]||!o&&!e&&!m[n].data)&&k&&d===b)return;n||(l?a[j]=n=++f.uuid:n=j),m[n]||(m[n]={},l||(m[n].toJSON=f.noop));if(typeof c=="object"||typeof c=="function")e?m[n]=f.extend(m[n],c):m[n].data=f.extend(m[n].data,c);g=h=m[n],e||(h.data||(h.data={}),h=h.data),d!==b&&(h[f.camelCase(c)]=d);if(o&&!h[c])return g.events;k?(i=h[c],i==null&&(i=h[f.camelCase(c)])):i=h;return i}},removeData:function(a,b,c){if(!!f.acceptData(a)){var d,e,g,h=f.expando,i=a.nodeType,j=i?f.cache:a,k=i?a[h]:h;if(!j[k])return;if(b){d=c?j[k]:j[k].data;if(d){f.isArray(b)||(b in d?b=[b]:(b=f.camelCase(b),b in d?b=[b]:b=b.split(" ")));for(e=0,g=b.length;e<g;e++)delete d[b[e]];if(!(c?m:f.isEmptyObject)(d))return}}if(!c){delete j[k].data;if(!m(j[k]))return}f.support.deleteExpando||!j.setInterval?delete j[k]:j[k]=null,i&&(f.support.deleteExpando?delete a[h]:a.removeAttribute?a.removeAttribute(h):a[h]=null)}},_data:function(a,b,c){return f.data(a,b,c,!0)},acceptData:function(a){if(a.nodeName){var b=f.noData[a.nodeName.toLowerCase()];if(b)return b!==!0&&a.getAttribute("classid")===b}return!0}}),f.fn.extend({data:function(a,c){var d,e,g,h=null;if(typeof a=="undefined"){if(this.length){h=f.data(this[0]);if(this[0].nodeType===1&&!f._data(this[0],"parsedAttrs")){e=this[0].attributes;for(var i=0,j=e.length;i<j;i++)g=e[i].name,g.indexOf("data-")===0&&(g=f.camelCase(g.substring(5)),l(this[0],g,h[g]));f._data(this[0],"parsedAttrs",!0)}}return h}if(typeof a=="object")return this.each(function(){f.data(this,a)});d=a.split("."),d[1]=d[1]?"."+d[1]:"";if(c===b){h=this.triggerHandler("getData"+d[1]+"!",[d[0]]),h===b&&this.length&&(h=f.data(this[0],a),h=l(this[0],a,h));return h===b&&d[1]?this.data(d[0]):h}return this.each(function(){var b=f(this),e=[d[0],c];b.triggerHandler("setData"+d[1]+"!",e),f.data(this,a,c),b.triggerHandler("changeData"+d[1]+"!",e)})},removeData:function(a){return this.each(function(){f.removeData(this,a)})}}),f.extend({_mark:function(a,b){a&&(b=(b||"fx")+"mark",f._data(a,b,(f._data(a,b)||0)+1))},_unmark:function(a,b,c){a!==!0&&(c=b,b=a,a=!1);if(b){c=c||"fx";var d=c+"mark",e=a?0:(f._data(b,d)||1)-1;e?f._data(b,d,e):(f.removeData(b,d,!0),n(b,c,"mark"))}},queue:function(a,b,c){var d;if(a){b=(b||"fx")+"queue",d=f._data(a,b),c&&(!d||f.isArray(c)?d=f._data(a,b,f.makeArray(c)):d.push(c));return d||[]}},dequeue:function(a,b){b=b||"fx";var c=f.queue(a,b),d=c.shift(),e={};d==="inprogress"&&(d=c.shift()),d&&(b==="fx"&&c.unshift("inprogress"),f._data(a,b+".run",e),d.call(a,function(){f.dequeue(a,b)},e)),c.length||(f.removeData(a,b+"queue "+b+".run",!0),n(a,b,"queue"))}}),f.fn.extend({queue:function(a,c){typeof a!="string"&&(c=a,a="fx");if(c===b)return f.queue(this[0],a);return this.each(function(){var b=f.queue(this,a,c);a==="fx"&&b[0]!=="inprogress"&&f.dequeue(this,a)})},dequeue:function(a){return this.each(function(){f.dequeue(this,a)})},delay:function(a,b){a=f.fx?f.fx.speeds[a]||a:a,b=b||"fx";return this.queue(b,function(b,c){var d=setTimeout(b,a);c.stop=function(){clearTimeout(d)}})},clearQueue:function(a){return this.queue(a||"fx",[])},promise:function(a,c){function m(){--h||d.resolveWith(e,[e])}typeof a!="string"&&(c=a,a=b),a=a||"fx";var d=f.Deferred(),e=this,g=e.length,h=1,i=a+"defer",j=a+"queue",k=a+"mark",l;while(g--)if(l=f.data(e[g],i,b,!0)||(f.data(e[g],j,b,!0)||f.data(e[g],k,b,!0))&&f.data(e[g],i,f.Callbacks("once memory"),!0))h++,l.add(m);m();return d.promise()}});var o=/[\n\t\r]/g,p=/\s+/,q=/\r/g,r=/^(?:button|input)$/i,s=/^(?:button|input|object|select|textarea)$/i,t=/^a(?:rea)?$/i,u=/^(?:autofocus|autoplay|async|checked|controls|defer|disabled|hidden|loop|multiple|open|readonly|required|scoped|selected)$/i,v=f.support.getSetAttribute,w,x,y;f.fn.extend({attr:function(a,b){return f.access(this,a,b,!0,f.attr)},removeAttr:function(a){return this.each(function(){f.removeAttr(this,a)})},prop:function(a,b){return f.access(this,a,b,!0,f.prop)},removeProp:function(a){a=f.propFix[a]||a;return this.each(function(){try{this[a]=b,delete this[a]}catch(c){}})},addClass:function(a){var b,c,d,e,g,h,i;if(f.isFunction(a))return this.each(function(b){f(this).addClass(a.call(this,b,this.className))});if(a&&typeof a=="string"){b=a.split(p);for(c=0,d=this.length;c<d;c++){e=this[c];if(e.nodeType===1)if(!e.className&&b.length===1)e.className=a;else{g=" "+e.className+" ";for(h=0,i=b.length;h<i;h++)~g.indexOf(" "+b[h]+" ")||(g+=b[h]+" ");e.className=f.trim(g)}}}return this},removeClass:function(a){var c,d,e,g,h,i,j;if(f.isFunction(a))return this.each(function(b){f(this).removeClass(a.call(this,b,this.className))});if(a&&typeof a=="string"||a===b){c=(a||"").split(p);for(d=0,e=this.length;d<e;d++){g=this[d];if(g.nodeType===1&&g.className)if(a){h=(" "+g.className+" ").replace(o," ");for(i=0,j=c.length;i<j;i++)h=h.replace(" "+c[i]+" "," ");g.className=f.trim(h)}else g.className=""}}return this},toggleClass:function(a,b){var c=typeof a,d=typeof b=="boolean";if(f.isFunction(a))return this.each(function(c){f(this).toggleClass(a.call(this,c,this.className,b),b)});return this.each(function(){if(c==="string"){var e,g=0,h=f(this),i=b,j=a.split(p);while(e=j[g++])i=d?i:!h.hasClass(e),h[i?"addClass":"removeClass"](e)}else if(c==="undefined"||c==="boolean")this.className&&f._data(this,"__className__",this.className),this.className=this.className||a===!1?"":f._data(this,"__className__")||""})},hasClass:function(a){var b=" "+a+" ",c=0,d=this.length;for(;c<d;c++)if(this[c].nodeType===1&&(" "+this[c].className+" ").replace(o," ").indexOf(b)>-1)return!0;return!1},val:function(a){var c,d,e,g=this[0];{if(!!arguments.length){e=f.isFunction(a);return this.each(function(d){var g=f(this),h;if(this.nodeType===1){e?h=a.call(this,d,g.val()):h=a,h==null?h="":typeof h=="number"?h+="":f.isArray(h)&&(h=f.map(h,function(a){return a==null?"":a+""})),c=f.valHooks[this.nodeName.toLowerCase()]||f.valHooks[this.type];if(!c||!("set"in c)||c.set(this,h,"value")===b)this.value=h}})}if(g){c=f.valHooks[g.nodeName.toLowerCase()]||f.valHooks[g.type];if(c&&"get"in c&&(d=c.get(g,"value"))!==b)return d;d=g.value;return typeof d=="string"?d.replace(q,""):d==null?"":d}}}}),f.extend({valHooks:{option:{get:function(a){var b=a.attributes.value;return!b||b.specified?a.value:a.text}},select:{get:function(a){var b,c,d,e,g=a.selectedIndex,h=[],i=a.options,j=a.type==="select-one";if(g<0)return null;c=j?g:0,d=j?g+1:i.length;for(;c<d;c++){e=i[c];if(e.selected&&(f.support.optDisabled?!e.disabled:e.getAttribute("disabled")===null)&&(!e.parentNode.disabled||!f.nodeName(e.parentNode,"optgroup"))){b=f(e).val();if(j)return b;h.push(b)}}if(j&&!h.length&&i.length)return f(i[g]).val();return h},set:function(a,b){var c=f.makeArray(b);f(a).find("option").each(function(){this.selected=f.inArray(f(this).val(),c)>=0}),c.length||(a.selectedIndex=-1);return c}}},attrFn:{val:!0,css:!0,html:!0,text:!0,data:!0,width:!0,height:!0,offset:!0},attr:function(a,c,d,e){var g,h,i,j=a.nodeType;if(!!a&&j!==3&&j!==8&&j!==2){if(e&&c in f.attrFn)return f(a)[c](d);if(typeof a.getAttribute=="undefined")return f.prop(a,c,d);i=j!==1||!f.isXMLDoc(a),i&&(c=c.toLowerCase(),h=f.attrHooks[c]||(u.test(c)?x:w));if(d!==b){if(d===null){f.removeAttr(a,c);return}if(h&&"set"in h&&i&&(g=h.set(a,d,c))!==b)return g;a.setAttribute(c,""+d);return d}if(h&&"get"in h&&i&&(g=h.get(a,c))!==null)return g;g=a.getAttribute(c);return g===null?b:g}},removeAttr:function(a,b){var c,d,e,g,h=0;if(b&&a.nodeType===1){d=b.toLowerCase().split(p),g=d.length;for(;h<g;h++)e=d[h],e&&(c=f.propFix[e]||e,f.attr(a,e,""),a.removeAttribute(v?e:c),u.test(e)&&c in a&&(a[c]=!1))}},attrHooks:{type:{set:function(a,b){if(r.test(a.nodeName)&&a.parentNode)f.error("type property can't be changed");else if(!f.support.radioValue&&b==="radio"&&f.nodeName(a,"input")){var c=a.value;a.setAttribute("type",b),c&&(a.value=c);return b}}},value:{get:function(a,b){if(w&&f.nodeName(a,"button"))return w.get(a,b);return b in a?a.value:null},set:function(a,b,c){if(w&&f.nodeName(a,"button"))return w.set(a,b,c);a.value=b}}},propFix:{tabindex:"tabIndex",readonly:"readOnly","for":"htmlFor","class":"className",maxlength:"maxLength",cellspacing:"cellSpacing",cellpadding:"cellPadding",rowspan:"rowSpan",colspan:"colSpan",usemap:"useMap",frameborder:"frameBorder",contenteditable:"contentEditable"},prop:function(a,c,d){var e,g,h,i=a.nodeType;if(!!a&&i!==3&&i!==8&&i!==2){h=i!==1||!f.isXMLDoc(a),h&&(c=f.propFix[c]||c,g=f.propHooks[c]);return d!==b?g&&"set"in g&&(e=g.set(a,d,c))!==b?e:a[c]=d:g&&"get"in g&&(e=g.get(a,c))!==null?e:a[c]}},propHooks:{tabIndex:{get:function(a){var c=a.getAttributeNode("tabindex");return c&&c.specified?parseInt(c.value,10):s.test(a.nodeName)||t.test(a.nodeName)&&a.href?0:b}}}}),f.attrHooks.tabindex=f.propHooks.tabIndex,x={get:function(a,c){var d,e=f.prop(a,c);return e===!0||typeof e!="boolean"&&(d=a.getAttributeNode(c))&&d.nodeValue!==!1?c.toLowerCase():b},set:function(a,b,c){var d;b===!1?f.removeAttr(a,c):(d=f.propFix[c]||c,d in a&&(a[d]=!0),a.setAttribute(c,c.toLowerCase()));return c}},v||(y={name:!0,id:!0},w=f.valHooks.button={get:function(a,c){var d;d=a.getAttributeNode(c);return d&&(y[c]?d.nodeValue!=="":d.specified)?d.nodeValue:b},set:function(a,b,d){var e=a.getAttributeNode(d);e||(e=c.createAttribute(d),a.setAttributeNode(e));return e.nodeValue=b+""}},f.attrHooks.tabindex.set=w.set,f.each(["width","height"],function(a,b){f.attrHooks[b]=f.extend(f.attrHooks[b],{set:function(a,c){if(c===""){a.setAttribute(b,"auto");return c}}})}),f.attrHooks.contenteditable={get:w.get,set:function(a,b,c){b===""&&(b="false"),w.set(a,b,c)}}),f.support.hrefNormalized||f.each(["href","src","width","height"],function(a,c){f.attrHooks[c]=f.extend(f.attrHooks[c],{get:function(a){var d=a.getAttribute(c,2);return d===null?b:d}})}),f.support.style||(f.attrHooks.style={get:function(a){return a.style.cssText.toLowerCase()||b},set:function(a,b){return a.style.cssText=""+b}}),f.support.optSelected||(f.propHooks.selected=f.extend(f.propHooks.selected,{get:function(a){var b=a.parentNode;b&&(b.selectedIndex,b.parentNode&&b.parentNode.selectedIndex);return null}})),f.support.enctype||(f.propFix.enctype="encoding"),f.support.checkOn||f.each(["radio","checkbox"],function(){f.valHooks[this]={get:function(a){return a.getAttribute("value")===null?"on":a.value}}}),f.each(["radio","checkbox"],function(){f.valHooks[this]=f.extend(f.valHooks[this],{set:function(a,b){if(f.isArray(b))return a.checked=f.inArray(f(a).val(),b)>=0}})});var z=/^(?:textarea|input|select)$/i,A=/^([^\.]*)?(?:\.(.+))?$/,B=/\bhover(\.\S+)?\b/,C=/^key/,D=/^(?:mouse|contextmenu)|click/,E=/^(?:focusinfocus|focusoutblur)$/,F=/^(\w*)(?:#([\w\-]+))?(?:\.([\w\-]+))?$/,G=function(a){var b=F.exec(a);b&&(b[1]=(b[1]||"").toLowerCase(),b[3]=b[3]&&new RegExp("(?:^|\\s)"+b[3]+"(?:\\s|$)"));return b},H=function(a,b){var c=a.attributes||{};return(!b[1]||a.nodeName.toLowerCase()===b[1])&&(!b[2]||(c.id||{}).value===b[2])&&(!b[3]||b[3].test((c["class"]||{}).value))},I=function(a){return f.event.special.hover?a:a.replace(B,"mouseenter$1 mouseleave$1")};
+f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3||a.nodeType===8||!c||!d||!(h=f._data(a)))){d.handler&&(p=d,d=p.handler),d.guid||(d.guid=f.guid++),j=h.events,j||(h.events=j={}),i=h.handle,i||(h.handle=i=function(a){return typeof f!="undefined"&&(!a||f.event.triggered!==a.type)?f.event.dispatch.apply(i.elem,arguments):b},i.elem=a),c=f.trim(I(c)).split(" ");for(k=0;k<c.length;k++){l=A.exec(c[k])||[],m=l[1],n=(l[2]||"").split(".").sort(),s=f.event.special[m]||{},m=(g?s.delegateType:s.bindType)||m,s=f.event.special[m]||{},o=f.extend({type:m,origType:l[1],data:e,handler:d,guid:d.guid,selector:g,quick:G(g),namespace:n.join(".")},p),r=j[m];if(!r){r=j[m]=[],r.delegateCount=0;if(!s.setup||s.setup.call(a,e,n,i)===!1)a.addEventListener?a.addEventListener(m,i,!1):a.attachEvent&&a.attachEvent("on"+m,i)}s.add&&(s.add.call(a,o),o.handler.guid||(o.handler.guid=d.guid)),g?r.splice(r.delegateCount++,0,o):r.push(o),f.event.global[m]=!0}a=null}},global:{},remove:function(a,b,c,d,e){var g=f.hasData(a)&&f._data(a),h,i,j,k,l,m,n,o,p,q,r,s;if(!!g&&!!(o=g.events)){b=f.trim(I(b||"")).split(" ");for(h=0;h<b.length;h++){i=A.exec(b[h])||[],j=k=i[1],l=i[2];if(!j){for(j in o)f.event.remove(a,j+b[h],c,d,!0);continue}p=f.event.special[j]||{},j=(d?p.delegateType:p.bindType)||j,r=o[j]||[],m=r.length,l=l?new RegExp("(^|\\.)"+l.split(".").sort().join("\\.(?:.*\\.)?")+"(\\.|$)"):null;for(n=0;n<r.length;n++)s=r[n],(e||k===s.origType)&&(!c||c.guid===s.guid)&&(!l||l.test(s.namespace))&&(!d||d===s.selector||d==="**"&&s.selector)&&(r.splice(n--,1),s.selector&&r.delegateCount--,p.remove&&p.remove.call(a,s));r.length===0&&m!==r.length&&((!p.teardown||p.teardown.call(a,l)===!1)&&f.removeEvent(a,j,g.handle),delete o[j])}f.isEmptyObject(o)&&(q=g.handle,q&&(q.elem=null),f.removeData(a,["events","handle"],!0))}},customEvent:{getData:!0,setData:!0,changeData:!0},trigger:function(c,d,e,g){if(!e||e.nodeType!==3&&e.nodeType!==8){var h=c.type||c,i=[],j,k,l,m,n,o,p,q,r,s;if(E.test(h+f.event.triggered))return;h.indexOf("!")>=0&&(h=h.slice(0,-1),k=!0),h.indexOf(".")>=0&&(i=h.split("."),h=i.shift(),i.sort());if((!e||f.event.customEvent[h])&&!f.event.global[h])return;c=typeof c=="object"?c[f.expando]?c:new f.Event(h,c):new f.Event(h),c.type=h,c.isTrigger=!0,c.exclusive=k,c.namespace=i.join("."),c.namespace_re=c.namespace?new RegExp("(^|\\.)"+i.join("\\.(?:.*\\.)?")+"(\\.|$)"):null,o=h.indexOf(":")<0?"on"+h:"";if(!e){j=f.cache;for(l in j)j[l].events&&j[l].events[h]&&f.event.trigger(c,d,j[l].handle.elem,!0);return}c.result=b,c.target||(c.target=e),d=d!=null?f.makeArray(d):[],d.unshift(c),p=f.event.special[h]||{};if(p.trigger&&p.trigger.apply(e,d)===!1)return;r=[[e,p.bindType||h]];if(!g&&!p.noBubble&&!f.isWindow(e)){s=p.delegateType||h,m=E.test(s+h)?e:e.parentNode,n=null;for(;m;m=m.parentNode)r.push([m,s]),n=m;n&&n===e.ownerDocument&&r.push([n.defaultView||n.parentWindow||a,s])}for(l=0;l<r.length&&!c.isPropagationStopped();l++)m=r[l][0],c.type=r[l][1],q=(f._data(m,"events")||{})[c.type]&&f._data(m,"handle"),q&&q.apply(m,d),q=o&&m[o],q&&f.acceptData(m)&&q.apply(m,d)===!1&&c.preventDefault();c.type=h,!g&&!c.isDefaultPrevented()&&(!p._default||p._default.apply(e.ownerDocument,d)===!1)&&(h!=="click"||!f.nodeName(e,"a"))&&f.acceptData(e)&&o&&e[h]&&(h!=="focus"&&h!=="blur"||c.target.offsetWidth!==0)&&!f.isWindow(e)&&(n=e[o],n&&(e[o]=null),f.event.triggered=h,e[h](),f.event.triggered=b,n&&(e[o]=n));return c.result}},dispatch:function(c){c=f.event.fix(c||a.event);var d=(f._data(this,"events")||{})[c.type]||[],e=d.delegateCount,g=[].slice.call(arguments,0),h=!c.exclusive&&!c.namespace,i=[],j,k,l,m,n,o,p,q,r,s,t;g[0]=c,c.delegateTarget=this;if(e&&!c.target.disabled&&(!c.button||c.type!=="click")){m=f(this),m.context=this.ownerDocument||this;for(l=c.target;l!=this;l=l.parentNode||this){o={},q=[],m[0]=l;for(j=0;j<e;j++)r=d[j],s=r.selector,o[s]===b&&(o[s]=r.quick?H(l,r.quick):m.is(s)),o[s]&&q.push(r);q.length&&i.push({elem:l,matches:q})}}d.length>e&&i.push({elem:this,matches:d.slice(e)});for(j=0;j<i.length&&!c.isPropagationStopped();j++){p=i[j],c.currentTarget=p.elem;for(k=0;k<p.matches.length&&!c.isImmediatePropagationStopped();k++){r=p.matches[k];if(h||!c.namespace&&!r.namespace||c.namespace_re&&c.namespace_re.test(r.namespace))c.data=r.data,c.handleObj=r,n=((f.event.special[r.origType]||{}).handle||r.handler).apply(p.elem,g),n!==b&&(c.result=n,n===!1&&(c.preventDefault(),c.stopPropagation()))}}return c.result},props:"attrChange attrName relatedNode srcElement altKey bubbles cancelable ctrlKey currentTarget eventPhase metaKey relatedTarget shiftKey target timeStamp view which".split(" "),fixHooks:{},keyHooks:{props:"char charCode key keyCode".split(" "),filter:function(a,b){a.which==null&&(a.which=b.charCode!=null?b.charCode:b.keyCode);return a}},mouseHooks:{props:"button buttons clientX clientY fromElement offsetX offsetY pageX pageY screenX screenY toElement".split(" "),filter:function(a,d){var e,f,g,h=d.button,i=d.fromElement;a.pageX==null&&d.clientX!=null&&(e=a.target.ownerDocument||c,f=e.documentElement,g=e.body,a.pageX=d.clientX+(f&&f.scrollLeft||g&&g.scrollLeft||0)-(f&&f.clientLeft||g&&g.clientLeft||0),a.pageY=d.clientY+(f&&f.scrollTop||g&&g.scrollTop||0)-(f&&f.clientTop||g&&g.clientTop||0)),!a.relatedTarget&&i&&(a.relatedTarget=i===a.target?d.toElement:i),!a.which&&h!==b&&(a.which=h&1?1:h&2?3:h&4?2:0);return a}},fix:function(a){if(a[f.expando])return a;var d,e,g=a,h=f.event.fixHooks[a.type]||{},i=h.props?this.props.concat(h.props):this.props;a=f.Event(g);for(d=i.length;d;)e=i[--d],a[e]=g[e];a.target||(a.target=g.srcElement||c),a.target.nodeType===3&&(a.target=a.target.parentNode),a.metaKey===b&&(a.metaKey=a.ctrlKey);return h.filter?h.filter(a,g):a},special:{ready:{setup:f.bindReady},load:{noBubble:!0},focus:{delegateType:"focusin"},blur:{delegateType:"focusout"},beforeunload:{setup:function(a,b,c){f.isWindow(this)&&(this.onbeforeunload=c)},teardown:function(a,b){this.onbeforeunload===b&&(this.onbeforeunload=null)}}},simulate:function(a,b,c,d){var e=f.extend(new f.Event,c,{type:a,isSimulated:!0,originalEvent:{}});d?f.event.trigger(e,null,b):f.event.dispatch.call(b,e),e.isDefaultPrevented()&&c.preventDefault()}},f.event.handle=f.event.dispatch,f.removeEvent=c.removeEventListener?function(a,b,c){a.removeEventListener&&a.removeEventListener(b,c,!1)}:function(a,b,c){a.detachEvent&&a.detachEvent("on"+b,c)},f.Event=function(a,b){if(!(this instanceof f.Event))return new f.Event(a,b);a&&a.type?(this.originalEvent=a,this.type=a.type,this.isDefaultPrevented=a.defaultPrevented||a.returnValue===!1||a.getPreventDefault&&a.getPreventDefault()?K:J):this.type=a,b&&f.extend(this,b),this.timeStamp=a&&a.timeStamp||f.now(),this[f.expando]=!0},f.Event.prototype={preventDefault:function(){this.isDefaultPrevented=K;var a=this.originalEvent;!a||(a.preventDefault?a.preventDefault():a.returnValue=!1)},stopPropagation:function(){this.isPropagationStopped=K;var a=this.originalEvent;!a||(a.stopPropagation&&a.stopPropagation(),a.cancelBubble=!0)},stopImmediatePropagation:function(){this.isImmediatePropagationStopped=K,this.stopPropagation()},isDefaultPrevented:J,isPropagationStopped:J,isImmediatePropagationStopped:J},f.each({mouseenter:"mouseover",mouseleave:"mouseout"},function(a,b){f.event.special[a]={delegateType:b,bindType:b,handle:function(a){var c=this,d=a.relatedTarget,e=a.handleObj,g=e.selector,h;if(!d||d!==c&&!f.contains(c,d))a.type=e.origType,h=e.handler.apply(this,arguments),a.type=b;return h}}}),f.support.submitBubbles||(f.event.special.submit={setup:function(){if(f.nodeName(this,"form"))return!1;f.event.add(this,"click._submit keypress._submit",function(a){var c=a.target,d=f.nodeName(c,"input")||f.nodeName(c,"button")?c.form:b;d&&!d._submit_attached&&(f.event.add(d,"submit._submit",function(a){this.parentNode&&!a.isTrigger&&f.event.simulate("submit",this.parentNode,a,!0)}),d._submit_attached=!0)})},teardown:function(){if(f.nodeName(this,"form"))return!1;f.event.remove(this,"._submit")}}),f.support.changeBubbles||(f.event.special.change={setup:function(){if(z.test(this.nodeName)){if(this.type==="checkbox"||this.type==="radio")f.event.add(this,"propertychange._change",function(a){a.originalEvent.propertyName==="checked"&&(this._just_changed=!0)}),f.event.add(this,"click._change",function(a){this._just_changed&&!a.isTrigger&&(this._just_changed=!1,f.event.simulate("change",this,a,!0))});return!1}f.event.add(this,"beforeactivate._change",function(a){var b=a.target;z.test(b.nodeName)&&!b._change_attached&&(f.event.add(b,"change._change",function(a){this.parentNode&&!a.isSimulated&&!a.isTrigger&&f.event.simulate("change",this.parentNode,a,!0)}),b._change_attached=!0)})},handle:function(a){var b=a.target;if(this!==b||a.isSimulated||a.isTrigger||b.type!=="radio"&&b.type!=="checkbox")return a.handleObj.handler.apply(this,arguments)},teardown:function(){f.event.remove(this,"._change");return z.test(this.nodeName)}}),f.support.focusinBubbles||f.each({focus:"focusin",blur:"focusout"},function(a,b){var d=0,e=function(a){f.event.simulate(b,a.target,f.event.fix(a),!0)};f.event.special[b]={setup:function(){d++===0&&c.addEventListener(a,e,!0)},teardown:function(){--d===0&&c.removeEventListener(a,e,!0)}}}),f.fn.extend({on:function(a,c,d,e,g){var h,i;if(typeof a=="object"){typeof c!="string"&&(d=c,c=b);for(i in a)this.on(i,c,d,a[i],g);return this}d==null&&e==null?(e=c,d=c=b):e==null&&(typeof c=="string"?(e=d,d=b):(e=d,d=c,c=b));if(e===!1)e=J;else if(!e)return this;g===1&&(h=e,e=function(a){f().off(a);return h.apply(this,arguments)},e.guid=h.guid||(h.guid=f.guid++));return this.each(function(){f.event.add(this,a,e,d,c)})},one:function(a,b,c,d){return this.on.call(this,a,b,c,d,1)},off:function(a,c,d){if(a&&a.preventDefault&&a.handleObj){var e=a.handleObj;f(a.delegateTarget).off(e.namespace?e.type+"."+e.namespace:e.type,e.selector,e.handler);return this}if(typeof a=="object"){for(var g in a)this.off(g,c,a[g]);return this}if(c===!1||typeof c=="function")d=c,c=b;d===!1&&(d=J);return this.each(function(){f.event.remove(this,a,d,c)})},bind:function(a,b,c){return this.on(a,null,b,c)},unbind:function(a,b){return this.off(a,null,b)},live:function(a,b,c){f(this.context).on(a,this.selector,b,c);return this},die:function(a,b){f(this.context).off(a,this.selector||"**",b);return this},delegate:function(a,b,c,d){return this.on(b,a,c,d)},undelegate:function(a,b,c){return arguments.length==1?this.off(a,"**"):this.off(b,a,c)},trigger:function(a,b){return this.each(function(){f.event.trigger(a,b,this)})},triggerHandler:function(a,b){if(this[0])return f.event.trigger(a,b,this[0],!0)},toggle:function(a){var b=arguments,c=a.guid||f.guid++,d=0,e=function(c){var e=(f._data(this,"lastToggle"+a.guid)||0)%d;f._data(this,"lastToggle"+a.guid,e+1),c.preventDefault();return b[e].apply(this,arguments)||!1};e.guid=c;while(d<b.length)b[d++].guid=c;return this.click(e)},hover:function(a,b){return this.mouseenter(a).mouseleave(b||a)}}),f.each("blur focus focusin focusout load resize scroll unload click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave change select submit keydown keypress keyup error contextmenu".split(" "),function(a,b){f.fn[b]=function(a,c){c==null&&(c=a,a=null);return arguments.length>0?this.on(b,null,a,c):this.trigger(b)},f.attrFn&&(f.attrFn[b]=!0),C.test(b)&&(f.event.fixHooks[b]=f.event.keyHooks),D.test(b)&&(f.event.fixHooks[b]=f.event.mouseHooks)}),function(){function x(a,b,c,e,f,g){for(var h=0,i=e.length;h<i;h++){var j=e[h];if(j){var k=!1;j=j[a];while(j){if(j[d]===c){k=e[j.sizset];break}if(j.nodeType===1){g||(j[d]=c,j.sizset=h);if(typeof b!="string"){if(j===b){k=!0;break}}else if(m.filter(b,[j]).length>0){k=j;break}}j=j[a]}e[h]=k}}}function w(a,b,c,e,f,g){for(var h=0,i=e.length;h<i;h++){var j=e[h];if(j){var k=!1;j=j[a];while(j){if(j[d]===c){k=e[j.sizset];break}j.nodeType===1&&!g&&(j[d]=c,j.sizset=h);if(j.nodeName.toLowerCase()===b){k=j;break}j=j[a]}e[h]=k}}}var a=/((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,d="sizcache"+(Math.random()+"").replace(".",""),e=0,g=Object.prototype.toString,h=!1,i=!0,j=/\\/g,k=/\r\n/g,l=/\W/;[0,0].sort(function(){i=!1;return 0});var m=function(b,d,e,f){e=e||[],d=d||c;var h=d;if(d.nodeType!==1&&d.nodeType!==9)return[];if(!b||typeof b!="string")return e;var i,j,k,l,n,q,r,t,u=!0,v=m.isXML(d),w=[],x=b;do{a.exec(""),i=a.exec(x);if(i){x=i[3],w.push(i[1]);if(i[2]){l=i[3];break}}}while(i);if(w.length>1&&p.exec(b))if(w.length===2&&o.relative[w[0]])j=y(w[0]+w[1],d,f);else{j=o.relative[w[0]]?[d]:m(w.shift(),d);while(w.length)b=w.shift(),o.relative[b]&&(b+=w.shift()),j=y(b,j,f)}else{!f&&w.length>1&&d.nodeType===9&&!v&&o.match.ID.test(w[0])&&!o.match.ID.test(w[w.length-1])&&(n=m.find(w.shift(),d,v),d=n.expr?m.filter(n.expr,n.set)[0]:n.set[0]);if(d){n=f?{expr:w.pop(),set:s(f)}:m.find(w.pop(),w.length===1&&(w[0]==="~"||w[0]==="+")&&d.parentNode?d.parentNode:d,v),j=n.expr?m.filter(n.expr,n.set):n.set,w.length>0?k=s(j):u=!1;while(w.length)q=w.pop(),r=q,o.relative[q]?r=w.pop():q="",r==null&&(r=d),o.relative[q](k,r,v)}else k=w=[]}k||(k=j),k||m.error(q||b);if(g.call(k)==="[object Array]")if(!u)e.push.apply(e,k);else if(d&&d.nodeType===1)for(t=0;k[t]!=null;t++)k[t]&&(k[t]===!0||k[t].nodeType===1&&m.contains(d,k[t]))&&e.push(j[t]);else for(t=0;k[t]!=null;t++)k[t]&&k[t].nodeType===1&&e.push(j[t]);else s(k,e);l&&(m(l,h,e,f),m.uniqueSort(e));return e};m.uniqueSort=function(a){if(u){h=i,a.sort(u);if(h)for(var b=1;b<a.length;b++)a[b]===a[b-1]&&a.splice(b--,1)}return a},m.matches=function(a,b){return m(a,null,null,b)},m.matchesSelector=function(a,b){return m(b,null,null,[a]).length>0},m.find=function(a,b,c){var d,e,f,g,h,i;if(!a)return[];for(e=0,f=o.order.length;e<f;e++){h=o.order[e];if(g=o.leftMatch[h].exec(a)){i=g[1],g.splice(1,1);if(i.substr(i.length-1)!=="\\"){g[1]=(g[1]||"").replace(j,""),d=o.find[h](g,b,c);if(d!=null){a=a.replace(o.match[h],"");break}}}}d||(d=typeof b.getElementsByTagName!="undefined"?b.getElementsByTagName("*"):[]);return{set:d,expr:a}},m.filter=function(a,c,d,e){var f,g,h,i,j,k,l,n,p,q=a,r=[],s=c,t=c&&c[0]&&m.isXML(c[0]);while(a&&c.length){for(h in o.filter)if((f=o.leftMatch[h].exec(a))!=null&&f[2]){k=o.filter[h],l=f[1],g=!1,f.splice(1,1);if(l.substr(l.length-1)==="\\")continue;s===r&&(r=[]);if(o.preFilter[h]){f=o.preFilter[h](f,s,d,r,e,t);if(!f)g=i=!0;else if(f===!0)continue}if(f)for(n=0;(j=s[n])!=null;n++)j&&(i=k(j,f,n,s),p=e^i,d&&i!=null?p?g=!0:s[n]=!1:p&&(r.push(j),g=!0));if(i!==b){d||(s=r),a=a.replace(o.match[h],"");if(!g)return[];break}}if(a===q)if(g==null)m.error(a);else break;q=a}return s},m.error=function(a){throw new Error("Syntax error, unrecognized expression: "+a)};var n=m.getText=function(a){var b,c,d=a.nodeType,e="";if(d){if(d===1||d===9){if(typeof a.textContent=="string")return a.textContent;if(typeof a.innerText=="string")return a.innerText.replace(k,"");for(a=a.firstChild;a;a=a.nextSibling)e+=n(a)}else if(d===3||d===4)return a.nodeValue}else for(b=0;c=a[b];b++)c.nodeType!==8&&(e+=n(c));return e},o=m.selectors={order:["ID","NAME","TAG"],match:{ID:/#((?:[\w\u00c0-\uFFFF\-]|\\.)+)/,CLASS:/\.((?:[\w\u00c0-\uFFFF\-]|\\.)+)/,NAME:/\[name=['"]*((?:[\w\u00c0-\uFFFF\-]|\\.)+)['"]*\]/,ATTR:/\[\s*((?:[\w\u00c0-\uFFFF\-]|\\.)+)\s*(?:(\S?=)\s*(?:(['"])(.*?)\3|(#?(?:[\w\u00c0-\uFFFF\-]|\\.)*)|)|)\s*\]/,TAG:/^((?:[\w\u00c0-\uFFFF\*\-]|\\.)+)/,CHILD:/:(only|nth|last|first)-child(?:\(\s*(even|odd|(?:[+\-]?\d+|(?:[+\-]?\d*)?n\s*(?:[+\-]\s*\d+)?))\s*\))?/,POS:/:(nth|eq|gt|lt|first|last|even|odd)(?:\((\d*)\))?(?=[^\-]|$)/,PSEUDO:/:((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?:\((['"]?)((?:\([^\)]+\)|[^\(\)]*)+)\2\))?/},leftMatch:{},attrMap:{"class":"className","for":"htmlFor"},attrHandle:{href:function(a){return a.getAttribute("href")},type:function(a){return a.getAttribute("type")}},relative:{"+":function(a,b){var c=typeof b=="string",d=c&&!l.test(b),e=c&&!d;d&&(b=b.toLowerCase());for(var f=0,g=a.length,h;f<g;f++)if(h=a[f]){while((h=h.previousSibling)&&h.nodeType!==1);a[f]=e||h&&h.nodeName.toLowerCase()===b?h||!1:h===b}e&&m.filter(b,a,!0)},">":function(a,b){var c,d=typeof b=="string",e=0,f=a.length;if(d&&!l.test(b)){b=b.toLowerCase();for(;e<f;e++){c=a[e];if(c){var g=c.parentNode;a[e]=g.nodeName.toLowerCase()===b?g:!1}}}else{for(;e<f;e++)c=a[e],c&&(a[e]=d?c.parentNode:c.parentNode===b);d&&m.filter(b,a,!0)}},"":function(a,b,c){var d,f=e++,g=x;typeof b=="string"&&!l.test(b)&&(b=b.toLowerCase(),d=b,g=w),g("parentNode",b,f,a,d,c)},"~":function(a,b,c){var d,f=e++,g=x;typeof b=="string"&&!l.test(b)&&(b=b.toLowerCase(),d=b,g=w),g("previousSibling",b,f,a,d,c)}},find:{ID:function(a,b,c){if(typeof b.getElementById!="undefined"&&!c){var d=b.getElementById(a[1]);return d&&d.parentNode?[d]:[]}},NAME:function(a,b){if(typeof b.getElementsByName!="undefined"){var c=[],d=b.getElementsByName(a[1]);for(var e=0,f=d.length;e<f;e++)d[e].getAttribute("name")===a[1]&&c.push(d[e]);return c.length===0?null:c}},TAG:function(a,b){if(typeof b.getElementsByTagName!="undefined")return b.getElementsByTagName(a[1])}},preFilter:{CLASS:function(a,b,c,d,e,f){a=" "+a[1].replace(j,"")+" ";if(f)return a;for(var g=0,h;(h=b[g])!=null;g++)h&&(e^(h.className&&(" "+h.className+" ").replace(/[\t\n\r]/g," ").indexOf(a)>=0)?c||d.push(h):c&&(b[g]=!1));return!1},ID:function(a){return a[1].replace(j,"")},TAG:function(a,b){return a[1].replace(j,"").toLowerCase()},CHILD:function(a){if(a[1]==="nth"){a[2]||m.error(a[0]),a[2]=a[2].replace(/^\+|\s*/g,"");var b=/(-?)(\d*)(?:n([+\-]?\d*))?/.exec(a[2]==="even"&&"2n"||a[2]==="odd"&&"2n+1"||!/\D/.test(a[2])&&"0n+"+a[2]||a[2]);a[2]=b[1]+(b[2]||1)-0,a[3]=b[3]-0}else a[2]&&m.error(a[0]);a[0]=e++;return a},ATTR:function(a,b,c,d,e,f){var g=a[1]=a[1].replace(j,"");!f&&o.attrMap[g]&&(a[1]=o.attrMap[g]),a[4]=(a[4]||a[5]||"").replace(j,""),a[2]==="~="&&(a[4]=" "+a[4]+" ");return a},PSEUDO:function(b,c,d,e,f){if(b[1]==="not")if((a.exec(b[3])||"").length>1||/^\w/.test(b[3]))b[3]=m(b[3],null,null,c);else{var g=m.filter(b[3],c,d,!0^f);d||e.push.apply(e,g);return!1}else if(o.match.POS.test(b[0])||o.match.CHILD.test(b[0]))return!0;return b},POS:function(a){a.unshift(!0);return a}},filters:{enabled:function(a){return a.disabled===!1&&a.type!=="hidden"},disabled:function(a){return a.disabled===!0},checked:function(a){return a.checked===!0},selected:function(a){a.parentNode&&a.parentNode.selectedIndex;return a.selected===!0},parent:function(a){return!!a.firstChild},empty:function(a){return!a.firstChild},has:function(a,b,c){return!!m(c[3],a).length},header:function(a){return/h\d/i.test(a.nodeName)},text:function(a){var b=a.getAttribute("type"),c=a.type;return a.nodeName.toLowerCase()==="input"&&"text"===c&&(b===c||b===null)},radio:function(a){return a.nodeName.toLowerCase()==="input"&&"radio"===a.type},checkbox:function(a){return a.nodeName.toLowerCase()==="input"&&"checkbox"===a.type},file:function(a){return a.nodeName.toLowerCase()==="input"&&"file"===a.type},password:function(a){return a.nodeName.toLowerCase()==="input"&&"password"===a.type},submit:function(a){var b=a.nodeName.toLowerCase();return(b==="input"||b==="button")&&"submit"===a.type},image:function(a){return a.nodeName.toLowerCase()==="input"&&"image"===a.type},reset:function(a){var b=a.nodeName.toLowerCase();return(b==="input"||b==="button")&&"reset"===a.type},button:function(a){var b=a.nodeName.toLowerCase();return b==="input"&&"button"===a.type||b==="button"},input:function(a){return/input|select|textarea|button/i.test(a.nodeName)},focus:function(a){return a===a.ownerDocument.activeElement}},setFilters:{first:function(a,b){return b===0},last:function(a,b,c,d){return b===d.length-1},even:function(a,b){return b%2===0},odd:function(a,b){return b%2===1},lt:function(a,b,c){return b<c[3]-0},gt:function(a,b,c){return b>c[3]-0},nth:function(a,b,c){return c[3]-0===b},eq:function(a,b,c){return c[3]-0===b}},filter:{PSEUDO:function(a,b,c,d){var e=b[1],f=o.filters[e];if(f)return f(a,c,b,d);if(e==="contains")return(a.textContent||a.innerText||n([a])||"").indexOf(b[3])>=0;if(e==="not"){var g=b[3];for(var h=0,i=g.length;h<i;h++)if(g[h]===a)return!1;return!0}m.error(e)},CHILD:function(a,b){var c,e,f,g,h,i,j,k=b[1],l=a;switch(k){case"only":case"first":while(l=l.previousSibling)if(l.nodeType===1)return!1;if(k==="first")return!0;l=a;case"last":while(l=l.nextSibling)if(l.nodeType===1)return!1;return!0;case"nth":c=b[2],e=b[3];if(c===1&&e===0)return!0;f=b[0],g=a.parentNode;if(g&&(g[d]!==f||!a.nodeIndex)){i=0;for(l=g.firstChild;l;l=l.nextSibling)l.nodeType===1&&(l.nodeIndex=++i);g[d]=f}j=a.nodeIndex-e;return c===0?j===0:j%c===0&&j/c>=0}},ID:function(a,b){return a.nodeType===1&&a.getAttribute("id")===b},TAG:function(a,b){return b==="*"&&a.nodeType===1||!!a.nodeName&&a.nodeName.toLowerCase()===b},CLASS:function(a,b){return(" "+(a.className||a.getAttribute("class"))+" ").indexOf(b)>-1},ATTR:function(a,b){var c=b[1],d=m.attr?m.attr(a,c):o.attrHandle[c]?o.attrHandle[c](a):a[c]!=null?a[c]:a.getAttribute(c),e=d+"",f=b[2],g=b[4];return d==null?f==="!=":!f&&m.attr?d!=null:f==="="?e===g:f==="*="?e.indexOf(g)>=0:f==="~="?(" "+e+" ").indexOf(g)>=0:g?f==="!="?e!==g:f==="^="?e.indexOf(g)===0:f==="$="?e.substr(e.length-g.length)===g:f==="|="?e===g||e.substr(0,g.length+1)===g+"-":!1:e&&d!==!1},POS:function(a,b,c,d){var e=b[2],f=o.setFilters[e];if(f)return f(a,c,b,d)}}},p=o.match.POS,q=function(a,b){return"\\"+(b-0+1)};for(var r in o.match)o.match[r]=new RegExp(o.match[r].source+/(?![^\[]*\])(?![^\(]*\))/.source),o.leftMatch[r]=new RegExp(/(^(?:.|\r|\n)*?)/.source+o.match[r].source.replace(/\\(\d+)/g,q));var s=function(a,b){a=Array.prototype.slice.call(a,0);if(b){b.push.apply(b,a);return b}return a};try{Array.prototype.slice.call(c.documentElement.childNodes,0)[0].nodeType}catch(t){s=function(a,b){var c=0,d=b||[];if(g.call(a)==="[object Array]")Array.prototype.push.apply(d,a);else if(typeof a.length=="number")for(var e=a.length;c<e;c++)d.push(a[c]);else for(;a[c];c++)d.push(a[c]);return d}}var u,v;c.documentElement.compareDocumentPosition?u=function(a,b){if(a===b){h=!0;return 0}if(!a.compareDocumentPosition||!b.compareDocumentPosition)return a.compareDocumentPosition?-1:1;return a.compareDocumentPosition(b)&4?-1:1}:(u=function(a,b){if(a===b){h=!0;return 0}if(a.sourceIndex&&b.sourceIndex)return a.sourceIndex-b.sourceIndex;var c,d,e=[],f=[],g=a.parentNode,i=b.parentNode,j=g;if(g===i)return v(a,b);if(!g)return-1;if(!i)return 1;while(j)e.unshift(j),j=j.parentNode;j=i;while(j)f.unshift(j),j=j.parentNode;c=e.length,d=f.length;for(var k=0;k<c&&k<d;k++)if(e[k]!==f[k])return v(e[k],f[k]);return k===c?v(a,f[k],-1):v(e[k],b,1)},v=function(a,b,c){if(a===b)return c;var d=a.nextSibling;while(d){if(d===b)return-1;d=d.nextSibling}return 1}),function(){var a=c.createElement("div"),d="script"+(new Date).getTime(),e=c.documentElement;a.innerHTML="<a name='"+d+"'/>",e.insertBefore(a,e.firstChild),c.getElementById(d)&&(o.find.ID=function(a,c,d){if(typeof c.getElementById!="undefined"&&!d){var e=c.getElementById(a[1]);return e?e.id===a[1]||typeof e.getAttributeNode!="undefined"&&e.getAttributeNode("id").nodeValue===a[1]?[e]:b:[]}},o.filter.ID=function(a,b){var c=typeof a.getAttributeNode!="undefined"&&a.getAttributeNode("id");return a.nodeType===1&&c&&c.nodeValue===b}),e.removeChild(a),e=a=null}(),function(){var a=c.createElement("div");a.appendChild(c.createComment("")),a.getElementsByTagName("*").length>0&&(o.find.TAG=function(a,b){var c=b.getElementsByTagName(a[1]);if(a[1]==="*"){var d=[];for(var e=0;c[e];e++)c[e].nodeType===1&&d.push(c[e]);c=d}return c}),a.innerHTML="<a href='#'></a>",a.firstChild&&typeof a.firstChild.getAttribute!="undefined"&&a.firstChild.getAttribute("href")!=="#"&&(o.attrHandle.href=function(a){return a.getAttribute("href",2)}),a=null}(),c.querySelectorAll&&function(){var a=m,b=c.createElement("div"),d="__sizzle__";b.innerHTML="<p class='TEST'></p>";if(!b.querySelectorAll||b.querySelectorAll(".TEST").length!==0){m=function(b,e,f,g){e=e||c;if(!g&&!m.isXML(e)){var h=/^(\w+$)|^\.([\w\-]+$)|^#([\w\-]+$)/.exec(b);if(h&&(e.nodeType===1||e.nodeType===9)){if(h[1])return s(e.getElementsByTagName(b),f);if(h[2]&&o.find.CLASS&&e.getElementsByClassName)return s(e.getElementsByClassName(h[2]),f)}if(e.nodeType===9){if(b==="body"&&e.body)return s([e.body],f);if(h&&h[3]){var i=e.getElementById(h[3]);if(!i||!i.parentNode)return s([],f);if(i.id===h[3])return s([i],f)}try{return s(e.querySelectorAll(b),f)}catch(j){}}else if(e.nodeType===1&&e.nodeName.toLowerCase()!=="object"){var k=e,l=e.getAttribute("id"),n=l||d,p=e.parentNode,q=/^\s*[+~]/.test(b);l?n=n.replace(/'/g,"\\$&"):e.setAttribute("id",n),q&&p&&(e=e.parentNode);try{if(!q||p)return s(e.querySelectorAll("[id='"+n+"'] "+b),f)}catch(r){}finally{l||k.removeAttribute("id")}}}return a(b,e,f,g)};for(var e in a)m[e]=a[e];b=null}}(),function(){var a=c.documentElement,b=a.matchesSelector||a.mozMatchesSelector||a.webkitMatchesSelector||a.msMatchesSelector;if(b){var d=!b.call(c.createElement("div"),"div"),e=!1;try{b.call(c.documentElement,"[test!='']:sizzle")}catch(f){e=!0}m.matchesSelector=function(a,c){c=c.replace(/\=\s*([^'"\]]*)\s*\]/g,"='$1']");if(!m.isXML(a))try{if(e||!o.match.PSEUDO.test(c)&&!/!=/.test(c)){var f=b.call(a,c);if(f||!d||a.document&&a.document.nodeType!==11)return f}}catch(g){}return m(c,null,null,[a]).length>0}}}(),function(){var a=c.createElement("div");a.innerHTML="<div class='test e'></div><div class='test'></div>";if(!!a.getElementsByClassName&&a.getElementsByClassName("e").length!==0){a.lastChild.className="e";if(a.getElementsByClassName("e").length===1)return;o.order.splice(1,0,"CLASS"),o.find.CLASS=function(a,b,c){if(typeof b.getElementsByClassName!="undefined"&&!c)return b.getElementsByClassName(a[1])},a=null}}(),c.documentElement.contains?m.contains=function(a,b){return a!==b&&(a.contains?a.contains(b):!0)}:c.documentElement.compareDocumentPosition?m.contains=function(a,b){return!!(a.compareDocumentPosition(b)&16)}:m.contains=function(){return!1},m.isXML=function(a){var b=(a?a.ownerDocument||a:0).documentElement;return b?b.nodeName!=="HTML":!1};var y=function(a,b,c){var d,e=[],f="",g=b.nodeType?[b]:b;while(d=o.match.PSEUDO.exec(a))f+=d[0],a=a.replace(o.match.PSEUDO,"");a=o.relative[a]?a+"*":a;for(var h=0,i=g.length;h<i;h++)m(a,g[h],e,c);return m.filter(f,e)};m.attr=f.attr,m.selectors.attrMap={},f.find=m,f.expr=m.selectors,f.expr[":"]=f.expr.filters,f.unique=m.uniqueSort,f.text=m.getText,f.isXMLDoc=m.isXML,f.contains=m.contains}();var L=/Until$/,M=/^(?:parents|prevUntil|prevAll)/,N=/,/,O=/^.[^:#\[\.,]*$/,P=Array.prototype.slice,Q=f.expr.match.POS,R={children:!0,contents:!0,next:!0,prev:!0};f.fn.extend({find:function(a){var b=this,c,d;if(typeof a!="string")return f(a).filter(function(){for(c=0,d=b.length;c<d;c++)if(f.contains(b[c],this))return!0});var e=this.pushStack("","find",a),g,h,i;for(c=0,d=this.length;c<d;c++){g=e.length,f.find(a,this[c],e);if(c>0)for(h=g;h<e.length;h++)for(i=0;i<g;i++)if(e[i]===e[h]){e.splice(h--,1);break}}return e},has:function(a){var b=f(a);return this.filter(function(){for(var a=0,c=b.length;a<c;a++)if(f.contains(this,b[a]))return!0})},not:function(a){return this.pushStack(T(this,a,!1),"not",a)},filter:function(a){return this.pushStack(T(this,a,!0),"filter",a)},is:function(a){return!!a&&(typeof a=="string"?Q.test(a)?f(a,this.context).index(this[0])>=0:f.filter(a,this).length>0:this.filter(a).length>0)},closest:function(a,b){var c=[],d,e,g=this[0];if(f.isArray(a)){var h=1;while(g&&g.ownerDocument&&g!==b){for(d=0;d<a.length;d++)f(g).is(a[d])&&c.push({selector:a[d],elem:g,level:h});g=g.parentNode,h++}return c}var i=Q.test(a)||typeof a!="string"?f(a,b||this.context):0;for(d=0,e=this.length;d<e;d++){g=this[d];while(g){if(i?i.index(g)>-1:f.find.matchesSelector(g,a)){c.push(g);break}g=g.parentNode;if(!g||!g.ownerDocument||g===b||g.nodeType===11)break}}c=c.length>1?f.unique(c):c;return this.pushStack(c,"closest",a)},index:function(a){if(!a)return this[0]&&this[0].parentNode?this.prevAll().length:-1;if(typeof a=="string")return f.inArray(this[0],f(a));return f.inArray(a.jquery?a[0]:a,this)},add:function(a,b){var c=typeof a=="string"?f(a,b):f.makeArray(a&&a.nodeType?[a]:a),d=f.merge(this.get(),c);return this.pushStack(S(c[0])||S(d[0])?d:f.unique(d))},andSelf:function(){return this.add(this.prevObject)}}),f.each({parent:function(a){var b=a.parentNode;return b&&b.nodeType!==11?b:null},parents:function(a){return f.dir(a,"parentNode")},parentsUntil:function(a,b,c){return f.dir(a,"parentNode",c)},next:function(a){return f.nth(a,2,"nextSibling")},prev:function(a){return f.nth(a,2,"previousSibling")},nextAll:function(a){return f.dir(a,"nextSibling")},prevAll:function(a){return f.dir(a,"previousSibling")},nextUntil:function(a,b,c){return f.dir(a,"nextSibling",c)},prevUntil:function(a,b,c){return f.dir(a,"previousSibling",c)},siblings:function(a){return f.sibling(a.parentNode.firstChild,a)},children:function(a){return f.sibling(a.firstChild)},contents:function(a){return f.nodeName(a,"iframe")?a.contentDocument||a.contentWindow.document:f.makeArray(a.childNodes)}},function(a,b){f.fn[a]=function(c,d){var e=f.map(this,b,c);L.test(a)||(d=c),d&&typeof d=="string"&&(e=f.filter(d,e)),e=this.length>1&&!R[a]?f.unique(e):e,(this.length>1||N.test(d))&&M.test(a)&&(e=e.reverse());return this.pushStack(e,a,P.call(arguments).join(","))}}),f.extend({filter:function(a,b,c){c&&(a=":not("+a+")");return b.length===1?f.find.matchesSelector(b[0],a)?[b[0]]:[]:f.find.matches(a,b)},dir:function(a,c,d){var e=[],g=a[c];while(g&&g.nodeType!==9&&(d===b||g.nodeType!==1||!f(g).is(d)))g.nodeType===1&&e.push(g),g=g[c];return e},nth:function(a,b,c,d){b=b||1;var e=0;for(;a;a=a[c])if(a.nodeType===1&&++e===b)break;return a},sibling:function(a,b){var c=[];for(;a;a=a.nextSibling)a.nodeType===1&&a!==b&&c.push(a);return c}});var V="abbr|article|aside|audio|canvas|datalist|details|figcaption|figure|footer|header|hgroup|mark|meter|nav|output|progress|section|summary|time|video",W=/ jQuery\d+="(?:\d+|null)"/g,X=/^\s+/,Y=/<(?!area|br|col|embed|hr|img|input|link|meta|param)(([\w:]+)[^>]*)\/>/ig,Z=/<([\w:]+)/,$=/<tbody/i,_=/<|&#?\w+;/,ba=/<(?:script|style)/i,bb=/<(?:script|object|embed|option|style)/i,bc=new RegExp("<(?:"+V+")","i"),bd=/checked\s*(?:[^=]|=\s*.checked.)/i,be=/\/(java|ecma)script/i,bf=/^\s*<!(?:\[CDATA\[|\-\-)/,bg={option:[1,"<select multiple='multiple'>","</select>"],legend:[1,"<fieldset>","</fieldset>"],thead:[1,"<table>","</table>"],tr:[2,"<table><tbody>","</tbody></table>"],td:[3,"<table><tbody><tr>","</tr></tbody></table>"],col:[2,"<table><tbody></tbody><colgroup>","</colgroup></table>"],area:[1,"<map>","</map>"],_default:[0,"",""]},bh=U(c);bg.optgroup=bg.option,bg.tbody=bg.tfoot=bg.colgroup=bg.caption=bg.thead,bg.th=bg.td,f.support.htmlSerialize||(bg._default=[1,"div<div>","</div>"]),f.fn.extend({text:function(a){if(f.isFunction(a))return this.each(function(b){var c=f(this);c.text(a.call(this,b,c.text()))});if(typeof a!="object"&&a!==b)return this.empty().append((this[0]&&this[0].ownerDocument||c).createTextNode(a));return f.text(this)},wrapAll:function(a){if(f.isFunction(a))return this.each(function(b){f(this).wrapAll(a.call(this,b))});if(this[0]){var b=f(a,this[0].ownerDocument).eq(0).clone(!0);this[0].parentNode&&b.insertBefore(this[0]),b.map(function(){var a=this;while(a.firstChild&&a.firstChild.nodeType===1)a=a.firstChild;return a}).append(this)}return this},wrapInner:function(a){if(f.isFunction(a))return this.each(function(b){f(this).wrapInner(a.call(this,b))});return this.each(function(){var b=f(this),c=b.contents();c.length?c.wrapAll(a):b.append(a)})},wrap:function(a){var b=f.isFunction(a);return this.each(function(c){f(this).wrapAll(b?a.call(this,c):a)})},unwrap:function(){return this.parent().each(function(){f.nodeName(this,"body")||f(this).replaceWith(this.childNodes)}).end()},append:function(){return this.domManip(arguments,!0,function(a){this.nodeType===1&&this.appendChild(a)})},prepend:function(){return this.domManip(arguments,!0,function(a){this.nodeType===1&&this.insertBefore(a,this.firstChild)})},before:function(){if(this[0]&&this[0].parentNode)return this.domManip(arguments,!1,function(a){this.parentNode.insertBefore(a,this)});if(arguments.length){var a=f.clean(arguments);a.push.apply(a,this.toArray());return this.pushStack(a,"before",arguments)}},after:function(){if(this[0]&&this[0].parentNode)return this.domManip(arguments,!1,function(a){this.parentNode.insertBefore(a,this.nextSibling)});if(arguments.length){var a=this.pushStack(this,"after",arguments);a.push.apply(a,f.clean(arguments));return a}},remove:function(a,b){for(var c=0,d;(d=this[c])!=null;c++)if(!a||f.filter(a,[d]).length)!b&&d.nodeType===1&&(f.cleanData(d.getElementsByTagName("*")),f.cleanData([d])),d.parentNode&&d.parentNode.removeChild(d);return this},empty:function()
+{for(var a=0,b;(b=this[a])!=null;a++){b.nodeType===1&&f.cleanData(b.getElementsByTagName("*"));while(b.firstChild)b.removeChild(b.firstChild)}return this},clone:function(a,b){a=a==null?!1:a,b=b==null?a:b;return this.map(function(){return f.clone(this,a,b)})},html:function(a){if(a===b)return this[0]&&this[0].nodeType===1?this[0].innerHTML.replace(W,""):null;if(typeof a=="string"&&!ba.test(a)&&(f.support.leadingWhitespace||!X.test(a))&&!bg[(Z.exec(a)||["",""])[1].toLowerCase()]){a=a.replace(Y,"<$1></$2>");try{for(var c=0,d=this.length;c<d;c++)this[c].nodeType===1&&(f.cleanData(this[c].getElementsByTagName("*")),this[c].innerHTML=a)}catch(e){this.empty().append(a)}}else f.isFunction(a)?this.each(function(b){var c=f(this);c.html(a.call(this,b,c.html()))}):this.empty().append(a);return this},replaceWith:function(a){if(this[0]&&this[0].parentNode){if(f.isFunction(a))return this.each(function(b){var c=f(this),d=c.html();c.replaceWith(a.call(this,b,d))});typeof a!="string"&&(a=f(a).detach());return this.each(function(){var b=this.nextSibling,c=this.parentNode;f(this).remove(),b?f(b).before(a):f(c).append(a)})}return this.length?this.pushStack(f(f.isFunction(a)?a():a),"replaceWith",a):this},detach:function(a){return this.remove(a,!0)},domManip:function(a,c,d){var e,g,h,i,j=a[0],k=[];if(!f.support.checkClone&&arguments.length===3&&typeof j=="string"&&bd.test(j))return this.each(function(){f(this).domManip(a,c,d,!0)});if(f.isFunction(j))return this.each(function(e){var g=f(this);a[0]=j.call(this,e,c?g.html():b),g.domManip(a,c,d)});if(this[0]){i=j&&j.parentNode,f.support.parentNode&&i&&i.nodeType===11&&i.childNodes.length===this.length?e={fragment:i}:e=f.buildFragment(a,this,k),h=e.fragment,h.childNodes.length===1?g=h=h.firstChild:g=h.firstChild;if(g){c=c&&f.nodeName(g,"tr");for(var l=0,m=this.length,n=m-1;l<m;l++)d.call(c?bi(this[l],g):this[l],e.cacheable||m>1&&l<n?f.clone(h,!0,!0):h)}k.length&&f.each(k,bp)}return this}}),f.buildFragment=function(a,b,d){var e,g,h,i,j=a[0];b&&b[0]&&(i=b[0].ownerDocument||b[0]),i.createDocumentFragment||(i=c),a.length===1&&typeof j=="string"&&j.length<512&&i===c&&j.charAt(0)==="<"&&!bb.test(j)&&(f.support.checkClone||!bd.test(j))&&(f.support.html5Clone||!bc.test(j))&&(g=!0,h=f.fragments[j],h&&h!==1&&(e=h)),e||(e=i.createDocumentFragment(),f.clean(a,i,e,d)),g&&(f.fragments[j]=h?e:1);return{fragment:e,cacheable:g}},f.fragments={},f.each({appendTo:"append",prependTo:"prepend",insertBefore:"before",insertAfter:"after",replaceAll:"replaceWith"},function(a,b){f.fn[a]=function(c){var d=[],e=f(c),g=this.length===1&&this[0].parentNode;if(g&&g.nodeType===11&&g.childNodes.length===1&&e.length===1){e[b](this[0]);return this}for(var h=0,i=e.length;h<i;h++){var j=(h>0?this.clone(!0):this).get();f(e[h])[b](j),d=d.concat(j)}return this.pushStack(d,a,e.selector)}}),f.extend({clone:function(a,b,c){var d,e,g,h=f.support.html5Clone||!bc.test("<"+a.nodeName)?a.cloneNode(!0):bo(a);if((!f.support.noCloneEvent||!f.support.noCloneChecked)&&(a.nodeType===1||a.nodeType===11)&&!f.isXMLDoc(a)){bk(a,h),d=bl(a),e=bl(h);for(g=0;d[g];++g)e[g]&&bk(d[g],e[g])}if(b){bj(a,h);if(c){d=bl(a),e=bl(h);for(g=0;d[g];++g)bj(d[g],e[g])}}d=e=null;return h},clean:function(a,b,d,e){var g;b=b||c,typeof b.createElement=="undefined"&&(b=b.ownerDocument||b[0]&&b[0].ownerDocument||c);var h=[],i;for(var j=0,k;(k=a[j])!=null;j++){typeof k=="number"&&(k+="");if(!k)continue;if(typeof k=="string")if(!_.test(k))k=b.createTextNode(k);else{k=k.replace(Y,"<$1></$2>");var l=(Z.exec(k)||["",""])[1].toLowerCase(),m=bg[l]||bg._default,n=m[0],o=b.createElement("div");b===c?bh.appendChild(o):U(b).appendChild(o),o.innerHTML=m[1]+k+m[2];while(n--)o=o.lastChild;if(!f.support.tbody){var p=$.test(k),q=l==="table"&&!p?o.firstChild&&o.firstChild.childNodes:m[1]==="<table>"&&!p?o.childNodes:[];for(i=q.length-1;i>=0;--i)f.nodeName(q[i],"tbody")&&!q[i].childNodes.length&&q[i].parentNode.removeChild(q[i])}!f.support.leadingWhitespace&&X.test(k)&&o.insertBefore(b.createTextNode(X.exec(k)[0]),o.firstChild),k=o.childNodes}var r;if(!f.support.appendChecked)if(k[0]&&typeof (r=k.length)=="number")for(i=0;i<r;i++)bn(k[i]);else bn(k);k.nodeType?h.push(k):h=f.merge(h,k)}if(d){g=function(a){return!a.type||be.test(a.type)};for(j=0;h[j];j++)if(e&&f.nodeName(h[j],"script")&&(!h[j].type||h[j].type.toLowerCase()==="text/javascript"))e.push(h[j].parentNode?h[j].parentNode.removeChild(h[j]):h[j]);else{if(h[j].nodeType===1){var s=f.grep(h[j].getElementsByTagName("script"),g);h.splice.apply(h,[j+1,0].concat(s))}d.appendChild(h[j])}}return h},cleanData:function(a){var b,c,d=f.cache,e=f.event.special,g=f.support.deleteExpando;for(var h=0,i;(i=a[h])!=null;h++){if(i.nodeName&&f.noData[i.nodeName.toLowerCase()])continue;c=i[f.expando];if(c){b=d[c];if(b&&b.events){for(var j in b.events)e[j]?f.event.remove(i,j):f.removeEvent(i,j,b.handle);b.handle&&(b.handle.elem=null)}g?delete i[f.expando]:i.removeAttribute&&i.removeAttribute(f.expando),delete d[c]}}}});var bq=/alpha\([^)]*\)/i,br=/opacity=([^)]*)/,bs=/([A-Z]|^ms)/g,bt=/^-?\d+(?:px)?$/i,bu=/^-?\d/,bv=/^([\-+])=([\-+.\de]+)/,bw={position:"absolute",visibility:"hidden",display:"block"},bx=["Left","Right"],by=["Top","Bottom"],bz,bA,bB;f.fn.css=function(a,c){if(arguments.length===2&&c===b)return this;return f.access(this,a,c,!0,function(a,c,d){return d!==b?f.style(a,c,d):f.css(a,c)})},f.extend({cssHooks:{opacity:{get:function(a,b){if(b){var c=bz(a,"opacity","opacity");return c===""?"1":c}return a.style.opacity}}},cssNumber:{fillOpacity:!0,fontWeight:!0,lineHeight:!0,opacity:!0,orphans:!0,widows:!0,zIndex:!0,zoom:!0},cssProps:{"float":f.support.cssFloat?"cssFloat":"styleFloat"},style:function(a,c,d,e){if(!!a&&a.nodeType!==3&&a.nodeType!==8&&!!a.style){var g,h,i=f.camelCase(c),j=a.style,k=f.cssHooks[i];c=f.cssProps[i]||i;if(d===b){if(k&&"get"in k&&(g=k.get(a,!1,e))!==b)return g;return j[c]}h=typeof d,h==="string"&&(g=bv.exec(d))&&(d=+(g[1]+1)*+g[2]+parseFloat(f.css(a,c)),h="number");if(d==null||h==="number"&&isNaN(d))return;h==="number"&&!f.cssNumber[i]&&(d+="px");if(!k||!("set"in k)||(d=k.set(a,d))!==b)try{j[c]=d}catch(l){}}},css:function(a,c,d){var e,g;c=f.camelCase(c),g=f.cssHooks[c],c=f.cssProps[c]||c,c==="cssFloat"&&(c="float");if(g&&"get"in g&&(e=g.get(a,!0,d))!==b)return e;if(bz)return bz(a,c)},swap:function(a,b,c){var d={};for(var e in b)d[e]=a.style[e],a.style[e]=b[e];c.call(a);for(e in b)a.style[e]=d[e]}}),f.curCSS=f.css,f.each(["height","width"],function(a,b){f.cssHooks[b]={get:function(a,c,d){var e;if(c){if(a.offsetWidth!==0)return bC(a,b,d);f.swap(a,bw,function(){e=bC(a,b,d)});return e}},set:function(a,b){if(!bt.test(b))return b;b=parseFloat(b);if(b>=0)return b+"px"}}}),f.support.opacity||(f.cssHooks.opacity={get:function(a,b){return br.test((b&&a.currentStyle?a.currentStyle.filter:a.style.filter)||"")?parseFloat(RegExp.$1)/100+"":b?"1":""},set:function(a,b){var c=a.style,d=a.currentStyle,e=f.isNumeric(b)?"alpha(opacity="+b*100+")":"",g=d&&d.filter||c.filter||"";c.zoom=1;if(b>=1&&f.trim(g.replace(bq,""))===""){c.removeAttribute("filter");if(d&&!d.filter)return}c.filter=bq.test(g)?g.replace(bq,e):g+" "+e}}),f(function(){f.support.reliableMarginRight||(f.cssHooks.marginRight={get:function(a,b){var c;f.swap(a,{display:"inline-block"},function(){b?c=bz(a,"margin-right","marginRight"):c=a.style.marginRight});return c}})}),c.defaultView&&c.defaultView.getComputedStyle&&(bA=function(a,b){var c,d,e;b=b.replace(bs,"-$1").toLowerCase(),(d=a.ownerDocument.defaultView)&&(e=d.getComputedStyle(a,null))&&(c=e.getPropertyValue(b),c===""&&!f.contains(a.ownerDocument.documentElement,a)&&(c=f.style(a,b)));return c}),c.documentElement.currentStyle&&(bB=function(a,b){var c,d,e,f=a.currentStyle&&a.currentStyle[b],g=a.style;f===null&&g&&(e=g[b])&&(f=e),!bt.test(f)&&bu.test(f)&&(c=g.left,d=a.runtimeStyle&&a.runtimeStyle.left,d&&(a.runtimeStyle.left=a.currentStyle.left),g.left=b==="fontSize"?"1em":f||0,f=g.pixelLeft+"px",g.left=c,d&&(a.runtimeStyle.left=d));return f===""?"auto":f}),bz=bA||bB,f.expr&&f.expr.filters&&(f.expr.filters.hidden=function(a){var b=a.offsetWidth,c=a.offsetHeight;return b===0&&c===0||!f.support.reliableHiddenOffsets&&(a.style&&a.style.display||f.css(a,"display"))==="none"},f.expr.filters.visible=function(a){return!f.expr.filters.hidden(a)});var bD=/%20/g,bE=/\[\]$/,bF=/\r?\n/g,bG=/#.*$/,bH=/^(.*?):[ \t]*([^\r\n]*)\r?$/mg,bI=/^(?:color|date|datetime|datetime-local|email|hidden|month|number|password|range|search|tel|text|time|url|week)$/i,bJ=/^(?:about|app|app\-storage|.+\-extension|file|res|widget):$/,bK=/^(?:GET|HEAD)$/,bL=/^\/\//,bM=/\?/,bN=/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,bO=/^(?:select|textarea)/i,bP=/\s+/,bQ=/([?&])_=[^&]*/,bR=/^([\w\+\.\-]+:)(?:\/\/([^\/?#:]*)(?::(\d+))?)?/,bS=f.fn.load,bT={},bU={},bV,bW,bX=["*/"]+["*"];try{bV=e.href}catch(bY){bV=c.createElement("a"),bV.href="",bV=bV.href}bW=bR.exec(bV.toLowerCase())||[],f.fn.extend({load:function(a,c,d){if(typeof a!="string"&&bS)return bS.apply(this,arguments);if(!this.length)return this;var e=a.indexOf(" ");if(e>=0){var g=a.slice(e,a.length);a=a.slice(0,e)}var h="GET";c&&(f.isFunction(c)?(d=c,c=b):typeof c=="object"&&(c=f.param(c,f.ajaxSettings.traditional),h="POST"));var i=this;f.ajax({url:a,type:h,dataType:"html",data:c,complete:function(a,b,c){c=a.responseText,a.isResolved()&&(a.done(function(a){c=a}),i.html(g?f("<div>").append(c.replace(bN,"")).find(g):c)),d&&i.each(d,[c,b,a])}});return this},serialize:function(){return f.param(this.serializeArray())},serializeArray:function(){return this.map(function(){return this.elements?f.makeArray(this.elements):this}).filter(function(){return this.name&&!this.disabled&&(this.checked||bO.test(this.nodeName)||bI.test(this.type))}).map(function(a,b){var c=f(this).val();return c==null?null:f.isArray(c)?f.map(c,function(a,c){return{name:b.name,value:a.replace(bF,"\r\n")}}):{name:b.name,value:c.replace(bF,"\r\n")}}).get()}}),f.each("ajaxStart ajaxStop ajaxComplete ajaxError ajaxSuccess ajaxSend".split(" "),function(a,b){f.fn[b]=function(a){return this.on(b,a)}}),f.each(["get","post"],function(a,c){f[c]=function(a,d,e,g){f.isFunction(d)&&(g=g||e,e=d,d=b);return f.ajax({type:c,url:a,data:d,success:e,dataType:g})}}),f.extend({getScript:function(a,c){return f.get(a,b,c,"script")},getJSON:function(a,b,c){return f.get(a,b,c,"json")},ajaxSetup:function(a,b){b?b_(a,f.ajaxSettings):(b=a,a=f.ajaxSettings),b_(a,b);return a},ajaxSettings:{url:bV,isLocal:bJ.test(bW[1]),global:!0,type:"GET",contentType:"application/x-www-form-urlencoded",processData:!0,async:!0,accepts:{xml:"application/xml, text/xml",html:"text/html",text:"text/plain",json:"application/json, text/javascript","*":bX},contents:{xml:/xml/,html:/html/,json:/json/},responseFields:{xml:"responseXML",text:"responseText"},converters:{"* text":a.String,"text html":!0,"text json":f.parseJSON,"text xml":f.parseXML},flatOptions:{context:!0,url:!0}},ajaxPrefilter:bZ(bT),ajaxTransport:bZ(bU),ajax:function(a,c){function w(a,c,l,m){if(s!==2){s=2,q&&clearTimeout(q),p=b,n=m||"",v.readyState=a>0?4:0;var o,r,u,w=c,x=l?cb(d,v,l):b,y,z;if(a>=200&&a<300||a===304){if(d.ifModified){if(y=v.getResponseHeader("Last-Modified"))f.lastModified[k]=y;if(z=v.getResponseHeader("Etag"))f.etag[k]=z}if(a===304)w="notmodified",o=!0;else try{r=cc(d,x),w="success",o=!0}catch(A){w="parsererror",u=A}}else{u=w;if(!w||a)w="error",a<0&&(a=0)}v.status=a,v.statusText=""+(c||w),o?h.resolveWith(e,[r,w,v]):h.rejectWith(e,[v,w,u]),v.statusCode(j),j=b,t&&g.trigger("ajax"+(o?"Success":"Error"),[v,d,o?r:u]),i.fireWith(e,[v,w]),t&&(g.trigger("ajaxComplete",[v,d]),--f.active||f.event.trigger("ajaxStop"))}}typeof a=="object"&&(c=a,a=b),c=c||{};var d=f.ajaxSetup({},c),e=d.context||d,g=e!==d&&(e.nodeType||e instanceof f)?f(e):f.event,h=f.Deferred(),i=f.Callbacks("once memory"),j=d.statusCode||{},k,l={},m={},n,o,p,q,r,s=0,t,u,v={readyState:0,setRequestHeader:function(a,b){if(!s){var c=a.toLowerCase();a=m[c]=m[c]||a,l[a]=b}return this},getAllResponseHeaders:function(){return s===2?n:null},getResponseHeader:function(a){var c;if(s===2){if(!o){o={};while(c=bH.exec(n))o[c[1].toLowerCase()]=c[2]}c=o[a.toLowerCase()]}return c===b?null:c},overrideMimeType:function(a){s||(d.mimeType=a);return this},abort:function(a){a=a||"abort",p&&p.abort(a),w(0,a);return this}};h.promise(v),v.success=v.done,v.error=v.fail,v.complete=i.add,v.statusCode=function(a){if(a){var b;if(s<2)for(b in a)j[b]=[j[b],a[b]];else b=a[v.status],v.then(b,b)}return this},d.url=((a||d.url)+"").replace(bG,"").replace(bL,bW[1]+"//"),d.dataTypes=f.trim(d.dataType||"*").toLowerCase().split(bP),d.crossDomain==null&&(r=bR.exec(d.url.toLowerCase()),d.crossDomain=!(!r||r[1]==bW[1]&&r[2]==bW[2]&&(r[3]||(r[1]==="http:"?80:443))==(bW[3]||(bW[1]==="http:"?80:443)))),d.data&&d.processData&&typeof d.data!="string"&&(d.data=f.param(d.data,d.traditional)),b$(bT,d,c,v);if(s===2)return!1;t=d.global,d.type=d.type.toUpperCase(),d.hasContent=!bK.test(d.type),t&&f.active++===0&&f.event.trigger("ajaxStart");if(!d.hasContent){d.data&&(d.url+=(bM.test(d.url)?"&":"?")+d.data,delete d.data),k=d.url;if(d.cache===!1){var x=f.now(),y=d.url.replace(bQ,"$1_="+x);d.url=y+(y===d.url?(bM.test(d.url)?"&":"?")+"_="+x:"")}}(d.data&&d.hasContent&&d.contentType!==!1||c.contentType)&&v.setRequestHeader("Content-Type",d.contentType),d.ifModified&&(k=k||d.url,f.lastModified[k]&&v.setRequestHeader("If-Modified-Since",f.lastModified[k]),f.etag[k]&&v.setRequestHeader("If-None-Match",f.etag[k])),v.setRequestHeader("Accept",d.dataTypes[0]&&d.accepts[d.dataTypes[0]]?d.accepts[d.dataTypes[0]]+(d.dataTypes[0]!=="*"?", "+bX+"; q=0.01":""):d.accepts["*"]);for(u in d.headers)v.setRequestHeader(u,d.headers[u]);if(d.beforeSend&&(d.beforeSend.call(e,v,d)===!1||s===2)){v.abort();return!1}for(u in{success:1,error:1,complete:1})v[u](d[u]);p=b$(bU,d,c,v);if(!p)w(-1,"No Transport");else{v.readyState=1,t&&g.trigger("ajaxSend",[v,d]),d.async&&d.timeout>0&&(q=setTimeout(function(){v.abort("timeout")},d.timeout));try{s=1,p.send(l,w)}catch(z){if(s<2)w(-1,z);else throw z}}return v},param:function(a,c){var d=[],e=function(a,b){b=f.isFunction(b)?b():b,d[d.length]=encodeURIComponent(a)+"="+encodeURIComponent(b)};c===b&&(c=f.ajaxSettings.traditional);if(f.isArray(a)||a.jquery&&!f.isPlainObject(a))f.each(a,function(){e(this.name,this.value)});else for(var g in a)ca(g,a[g],c,e);return d.join("&").replace(bD,"+")}}),f.extend({active:0,lastModified:{},etag:{}});var cd=f.now(),ce=/(\=)\?(&|$)|\?\?/i;f.ajaxSetup({jsonp:"callback",jsonpCallback:function(){return f.expando+"_"+cd++}}),f.ajaxPrefilter("json jsonp",function(b,c,d){var e=b.contentType==="application/x-www-form-urlencoded"&&typeof b.data=="string";if(b.dataTypes[0]==="jsonp"||b.jsonp!==!1&&(ce.test(b.url)||e&&ce.test(b.data))){var g,h=b.jsonpCallback=f.isFunction(b.jsonpCallback)?b.jsonpCallback():b.jsonpCallback,i=a[h],j=b.url,k=b.data,l="$1"+h+"$2";b.jsonp!==!1&&(j=j.replace(ce,l),b.url===j&&(e&&(k=k.replace(ce,l)),b.data===k&&(j+=(/\?/.test(j)?"&":"?")+b.jsonp+"="+h))),b.url=j,b.data=k,a[h]=function(a){g=[a]},d.always(function(){a[h]=i,g&&f.isFunction(i)&&a[h](g[0])}),b.converters["script json"]=function(){g||f.error(h+" was not called");return g[0]},b.dataTypes[0]="json";return"script"}}),f.ajaxSetup({accepts:{script:"text/javascript, application/javascript, application/ecmascript, application/x-ecmascript"},contents:{script:/javascript|ecmascript/},converters:{"text script":function(a){f.globalEval(a);return a}}}),f.ajaxPrefilter("script",function(a){a.cache===b&&(a.cache=!1),a.crossDomain&&(a.type="GET",a.global=!1)}),f.ajaxTransport("script",function(a){if(a.crossDomain){var d,e=c.head||c.getElementsByTagName("head")[0]||c.documentElement;return{send:function(f,g){d=c.createElement("script"),d.async="async",a.scriptCharset&&(d.charset=a.scriptCharset),d.src=a.url,d.onload=d.onreadystatechange=function(a,c){if(c||!d.readyState||/loaded|complete/.test(d.readyState))d.onload=d.onreadystatechange=null,e&&d.parentNode&&e.removeChild(d),d=b,c||g(200,"success")},e.insertBefore(d,e.firstChild)},abort:function(){d&&d.onload(0,1)}}}});var cf=a.ActiveXObject?function(){for(var a in ch)ch[a](0,1)}:!1,cg=0,ch;f.ajaxSettings.xhr=a.ActiveXObject?function(){return!this.isLocal&&ci()||cj()}:ci,function(a){f.extend(f.support,{ajax:!!a,cors:!!a&&"withCredentials"in a})}(f.ajaxSettings.xhr()),f.support.ajax&&f.ajaxTransport(function(c){if(!c.crossDomain||f.support.cors){var d;return{send:function(e,g){var h=c.xhr(),i,j;c.username?h.open(c.type,c.url,c.async,c.username,c.password):h.open(c.type,c.url,c.async);if(c.xhrFields)for(j in c.xhrFields)h[j]=c.xhrFields[j];c.mimeType&&h.overrideMimeType&&h.overrideMimeType(c.mimeType),!c.crossDomain&&!e["X-Requested-With"]&&(e["X-Requested-With"]="XMLHttpRequest");try{for(j in e)h.setRequestHeader(j,e[j])}catch(k){}h.send(c.hasContent&&c.data||null),d=function(a,e){var j,k,l,m,n;try{if(d&&(e||h.readyState===4)){d=b,i&&(h.onreadystatechange=f.noop,cf&&delete ch[i]);if(e)h.readyState!==4&&h.abort();else{j=h.status,l=h.getAllResponseHeaders(),m={},n=h.responseXML,n&&n.documentElement&&(m.xml=n),m.text=h.responseText;try{k=h.statusText}catch(o){k=""}!j&&c.isLocal&&!c.crossDomain?j=m.text?200:404:j===1223&&(j=204)}}}catch(p){e||g(-1,p)}m&&g(j,k,m,l)},!c.async||h.readyState===4?d():(i=++cg,cf&&(ch||(ch={},f(a).unload(cf)),ch[i]=d),h.onreadystatechange=d)},abort:function(){d&&d(0,1)}}}});var ck={},cl,cm,cn=/^(?:toggle|show|hide)$/,co=/^([+\-]=)?([\d+.\-]+)([a-z%]*)$/i,cp,cq=[["height","marginTop","marginBottom","paddingTop","paddingBottom"],["width","marginLeft","marginRight","paddingLeft","paddingRight"],["opacity"]],cr;f.fn.extend({show:function(a,b,c){var d,e;if(a||a===0)return this.animate(cu("show",3),a,b,c);for(var g=0,h=this.length;g<h;g++)d=this[g],d.style&&(e=d.style.display,!f._data(d,"olddisplay")&&e==="none"&&(e=d.style.display=""),e===""&&f.css(d,"display")==="none"&&f._data(d,"olddisplay",cv(d.nodeName)));for(g=0;g<h;g++){d=this[g];if(d.style){e=d.style.display;if(e===""||e==="none")d.style.display=f._data(d,"olddisplay")||""}}return this},hide:function(a,b,c){if(a||a===0)return this.animate(cu("hide",3),a,b,c);var d,e,g=0,h=this.length;for(;g<h;g++)d=this[g],d.style&&(e=f.css(d,"display"),e!=="none"&&!f._data(d,"olddisplay")&&f._data(d,"olddisplay",e));for(g=0;g<h;g++)this[g].style&&(this[g].style.display="none");return this},_toggle:f.fn.toggle,toggle:function(a,b,c){var d=typeof a=="boolean";f.isFunction(a)&&f.isFunction(b)?this._toggle.apply(this,arguments):a==null||d?this.each(function(){var b=d?a:f(this).is(":hidden");f(this)[b?"show":"hide"]()}):this.animate(cu("toggle",3),a,b,c);return this},fadeTo:function(a,b,c,d){return this.filter(":hidden").css("opacity",0).show().end().animate({opacity:b},a,c,d)},animate:function(a,b,c,d){function g(){e.queue===!1&&f._mark(this);var b=f.extend({},e),c=this.nodeType===1,d=c&&f(this).is(":hidden"),g,h,i,j,k,l,m,n,o;b.animatedProperties={};for(i in a){g=f.camelCase(i),i!==g&&(a[g]=a[i],delete a[i]),h=a[g],f.isArray(h)?(b.animatedProperties[g]=h[1],h=a[g]=h[0]):b.animatedProperties[g]=b.specialEasing&&b.specialEasing[g]||b.easing||"swing";if(h==="hide"&&d||h==="show"&&!d)return b.complete.call(this);c&&(g==="height"||g==="width")&&(b.overflow=[this.style.overflow,this.style.overflowX,this.style.overflowY],f.css(this,"display")==="inline"&&f.css(this,"float")==="none"&&(!f.support.inlineBlockNeedsLayout||cv(this.nodeName)==="inline"?this.style.display="inline-block":this.style.zoom=1))}b.overflow!=null&&(this.style.overflow="hidden");for(i in a)j=new f.fx(this,b,i),h=a[i],cn.test(h)?(o=f._data(this,"toggle"+i)||(h==="toggle"?d?"show":"hide":0),o?(f._data(this,"toggle"+i,o==="show"?"hide":"show"),j[o]()):j[h]()):(k=co.exec(h),l=j.cur(),k?(m=parseFloat(k[2]),n=k[3]||(f.cssNumber[i]?"":"px"),n!=="px"&&(f.style(this,i,(m||1)+n),l=(m||1)/j.cur()*l,f.style(this,i,l+n)),k[1]&&(m=(k[1]==="-="?-1:1)*m+l),j.custom(l,m,n)):j.custom(l,h,""));return!0}var e=f.speed(b,c,d);if(f.isEmptyObject(a))return this.each(e.complete,[!1]);a=f.extend({},a);return e.queue===!1?this.each(g):this.queue(e.queue,g)},stop:function(a,c,d){typeof a!="string"&&(d=c,c=a,a=b),c&&a!==!1&&this.queue(a||"fx",[]);return this.each(function(){function h(a,b,c){var e=b[c];f.removeData(a,c,!0),e.stop(d)}var b,c=!1,e=f.timers,g=f._data(this);d||f._unmark(!0,this);if(a==null)for(b in g)g[b]&&g[b].stop&&b.indexOf(".run")===b.length-4&&h(this,g,b);else g[b=a+".run"]&&g[b].stop&&h(this,g,b);for(b=e.length;b--;)e[b].elem===this&&(a==null||e[b].queue===a)&&(d?e[b](!0):e[b].saveState(),c=!0,e.splice(b,1));(!d||!c)&&f.dequeue(this,a)})}}),f.each({slideDown:cu("show",1),slideUp:cu("hide",1),slideToggle:cu("toggle",1),fadeIn:{opacity:"show"},fadeOut:{opacity:"hide"},fadeToggle:{opacity:"toggle"}},function(a,b){f.fn[a]=function(a,c,d){return this.animate(b,a,c,d)}}),f.extend({speed:function(a,b,c){var d=a&&typeof a=="object"?f.extend({},a):{complete:c||!c&&b||f.isFunction(a)&&a,duration:a,easing:c&&b||b&&!f.isFunction(b)&&b};d.duration=f.fx.off?0:typeof d.duration=="number"?d.duration:d.duration in f.fx.speeds?f.fx.speeds[d.duration]:f.fx.speeds._default;if(d.queue==null||d.queue===!0)d.queue="fx";d.old=d.complete,d.complete=function(a){f.isFunction(d.old)&&d.old.call(this),d.queue?f.dequeue(this,d.queue):a!==!1&&f._unmark(this)};return d},easing:{linear:function(a,b,c,d){return c+d*a},swing:function(a,b,c,d){return(-Math.cos(a*Math.PI)/2+.5)*d+c}},timers:[],fx:function(a,b,c){this.options=b,this.elem=a,this.prop=c,b.orig=b.orig||{}}}),f.fx.prototype={update:function(){this.options.step&&this.options.step.call(this.elem,this.now,this),(f.fx.step[this.prop]||f.fx.step._default)(this)},cur:function(){if(this.elem[this.prop]!=null&&(!this.elem.style||this.elem.style[this.prop]==null))return this.elem[this.prop];var a,b=f.css(this.elem,this.prop);return isNaN(a=parseFloat(b))?!b||b==="auto"?0:b:a},custom:function(a,c,d){function h(a){return e.step(a)}var e=this,g=f.fx;this.startTime=cr||cs(),this.end=c,this.now=this.start=a,this.pos=this.state=0,this.unit=d||this.unit||(f.cssNumber[this.prop]?"":"px"),h.queue=this.options.queue,h.elem=this.elem,h.saveState=function(){e.options.hide&&f._data(e.elem,"fxshow"+e.prop)===b&&f._data(e.elem,"fxshow"+e.prop,e.start)},h()&&f.timers.push(h)&&!cp&&(cp=setInterval(g.tick,g.interval))},show:function(){var a=f._data(this.elem,"fxshow"+this.prop);this.options.orig[this.prop]=a||f.style(this.elem,this.prop),this.options.show=!0,a!==b?this.custom(this.cur(),a):this.custom(this.prop==="width"||this.prop==="height"?1:0,this.cur()),f(this.elem).show()},hide:function(){this.options.orig[this.prop]=f._data(this.elem,"fxshow"+this.prop)||f.style(this.elem,this.prop),this.options.hide=!0,this.custom(this.cur(),0)},step:function(a){var b,c,d,e=cr||cs(),g=!0,h=this.elem,i=this.options;if(a||e>=i.duration+this.startTime){this.now=this.end,this.pos=this.state=1,this.update(),i.animatedProperties[this.prop]=!0;for(b in i.animatedProperties)i.animatedProperties[b]!==!0&&(g=!1);if(g){i.overflow!=null&&!f.support.shrinkWrapBlocks&&f.each(["","X","Y"],function(a,b){h.style["overflow"+b]=i.overflow[a]}),i.hide&&f(h).hide();if(i.hide||i.show)for(b in i.animatedProperties)f.style(h,b,i.orig[b]),f.removeData(h,"fxshow"+b,!0),f.removeData(h,"toggle"+b,!0);d=i.complete,d&&(i.complete=!1,d.call(h))}return!1}i.duration==Infinity?this.now=e:(c=e-this.startTime,this.state=c/i.duration,this.pos=f.easing[i.animatedProperties[this.prop]](this.state,c,0,1,i.duration),this.now=this.start+(this.end-this.start)*this.pos),this.update();return!0}},f.extend(f.fx,{tick:function(){var a,b=f.timers,c=0;for(;c<b.length;c++)a=b[c],!a()&&b[c]===a&&b.splice(c--,1);b.length||f.fx.stop()},interval:13,stop:function(){clearInterval(cp),cp=null},speeds:{slow:600,fast:200,_default:400},step:{opacity:function(a){f.style(a.elem,"opacity",a.now)},_default:function(a){a.elem.style&&a.elem.style[a.prop]!=null?a.elem.style[a.prop]=a.now+a.unit:a.elem[a.prop]=a.now}}}),f.each(["width","height"],function(a,b){f.fx.step[b]=function(a){f.style(a.elem,b,Math.max(0,a.now)+a.unit)}}),f.expr&&f.expr.filters&&(f.expr.filters.animated=function(a){return f.grep(f.timers,function(b){return a===b.elem}).length});var cw=/^t(?:able|d|h)$/i,cx=/^(?:body|html)$/i;"getBoundingClientRect"in c.documentElement?f.fn.offset=function(a){var b=this[0],c;if(a)return this.each(function(b){f.offset.setOffset(this,a,b)});if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return f.offset.bodyOffset(b);try{c=b.getBoundingClientRect()}catch(d){}var e=b.ownerDocument,g=e.documentElement;if(!c||!f.contains(g,b))return c?{top:c.top,left:c.left}:{top:0,left:0};var h=e.body,i=cy(e),j=g.clientTop||h.clientTop||0,k=g.clientLeft||h.clientLeft||0,l=i.pageYOffset||f.support.boxModel&&g.scrollTop||h.scrollTop,m=i.pageXOffset||f.support.boxModel&&g.scrollLeft||h.scrollLeft,n=c.top+l-j,o=c.left+m-k;return{top:n,left:o}}:f.fn.offset=function(a){var b=this[0];if(a)return this.each(function(b){f.offset.setOffset(this,a,b)});if(!b||!b.ownerDocument)return null;if(b===b.ownerDocument.body)return f.offset.bodyOffset(b);var c,d=b.offsetParent,e=b,g=b.ownerDocument,h=g.documentElement,i=g.body,j=g.defaultView,k=j?j.getComputedStyle(b,null):b.currentStyle,l=b.offsetTop,m=b.offsetLeft;while((b=b.parentNode)&&b!==i&&b!==h){if(f.support.fixedPosition&&k.position==="fixed")break;c=j?j.getComputedStyle(b,null):b.currentStyle,l-=b.scrollTop,m-=b.scrollLeft,b===d&&(l+=b.offsetTop,m+=b.offsetLeft,f.support.doesNotAddBorder&&(!f.support.doesAddBorderForTableAndCells||!cw.test(b.nodeName))&&(l+=parseFloat(c.borderTopWidth)||0,m+=parseFloat(c.borderLeftWidth)||0),e=d,d=b.offsetParent),f.support.subtractsBorderForOverflowNotVisible&&c.overflow!=="visible"&&(l+=parseFloat(c.borderTopWidth)||0,m+=parseFloat(c.borderLeftWidth)||0),k=c}if(k.position==="relative"||k.position==="static")l+=i.offsetTop,m+=i.offsetLeft;f.support.fixedPosition&&k.position==="fixed"&&(l+=Math.max(h.scrollTop,i.scrollTop),m+=Math.max(h.scrollLeft,i.scrollLeft));return{top:l,left:m}},f.offset={bodyOffset:function(a){var b=a.offsetTop,c=a.offsetLeft;f.support.doesNotIncludeMarginInBodyOffset&&(b+=parseFloat(f.css(a,"marginTop"))||0,c+=parseFloat(f.css(a,"marginLeft"))||0);return{top:b,left:c}},setOffset:function(a,b,c){var d=f.css(a,"position");d==="static"&&(a.style.position="relative");var e=f(a),g=e.offset(),h=f.css(a,"top"),i=f.css(a,"left"),j=(d==="absolute"||d==="fixed")&&f.inArray("auto",[h,i])>-1,k={},l={},m,n;j?(l=e.position(),m=l.top,n=l.left):(m=parseFloat(h)||0,n=parseFloat(i)||0),f.isFunction(b)&&(b=b.call(a,c,g)),b.top!=null&&(k.top=b.top-g.top+m),b.left!=null&&(k.left=b.left-g.left+n),"using"in b?b.using.call(a,k):e.css(k)}},f.fn.extend({position:function(){if(!this[0])return null;var a=this[0],b=this.offsetParent(),c=this.offset(),d=cx.test(b[0].nodeName)?{top:0,left:0}:b.offset();c.top-=parseFloat(f.css(a,"marginTop"))||0,c.left-=parseFloat(f.css(a,"marginLeft"))||0,d.top+=parseFloat(f.css(b[0],"borderTopWidth"))||0,d.left+=parseFloat(f.css(b[0],"borderLeftWidth"))||0;return{top:c.top-d.top,left:c.left-d.left}},offsetParent:function(){return this.map(function(){var a=this.offsetParent||c.body;while(a&&!cx.test(a.nodeName)&&f.css(a,"position")==="static")a=a.offsetParent;return a})}}),f.each(["Left","Top"],function(a,c){var d="scroll"+c;f.fn[d]=function(c){var e,g;if(c===b){e=this[0];if(!e)return null;g=cy(e);return g?"pageXOffset"in g?g[a?"pageYOffset":"pageXOffset"]:f.support.boxModel&&g.document.documentElement[d]||g.document.body[d]:e[d]}return this.each(function(){g=cy(this),g?g.scrollTo(a?f(g).scrollLeft():c,a?c:f(g).scrollTop()):this[d]=c})}}),f.each(["Height","Width"],function(a,c){var d=c.toLowerCase();f.fn["inner"+c]=function(){var a=this[0];return a?a.style?parseFloat(f.css(a,d,"padding")):this[d]():null},f.fn["outer"+c]=function(a){var b=this[0];return b?b.style?parseFloat(f.css(b,d,a?"margin":"border")):this[d]():null},f.fn[d]=function(a){var e=this[0];if(!e)return a==null?null:this;if(f.isFunction(a))return this.each(function(b){var c=f(this);c[d](a.call(this,b,c[d]()))});if(f.isWindow(e)){var g=e.document.documentElement["client"+c],h=e.document.body;return e.document.compatMode==="CSS1Compat"&&g||h&&h["client"+c]||g}if(e.nodeType===9)return Math.max(e.documentElement["client"+c],e.body["scroll"+c],e.documentElement["scroll"+c],e.body["offset"+c],e.documentElement["offset"+c]);if(a===b){var i=f.css(e,d),j=parseFloat(i);return f.isNumeric(j)?j:i}return this.css(d,typeof a=="string"?a:a+"px")}}),a.jQuery=a.$=f,typeof define=="function"&&define.amd&&define.amd.jQuery&&define("jquery",[],function(){return f})})(window);(function() {
+
+var localStorage = {}, sessionStorage = {};
+try { localStorage = window.localStorage; } catch (e) { }
+try { sessionStorage = window.sessionStorage; } catch (e) { }
+
+function createSourceLinks() {
+    $('.method_details_list .source_code').
+        before("<span class='showSource'>[<a href='#' class='toggleSource'>View source</a>]</span>");
+    $('.toggleSource').toggle(function() {
+       $(this).parent().nextAll('.source_code').slideDown(100);
+       $(this).text("Hide source");
+    },
+    function() {
+        $(this).parent().nextAll('.source_code').slideUp(100);
+        $(this).text("View source");
+    });
+}
+
+function createDefineLinks() {
+    var tHeight = 0;
+    $('.defines').after(" <a href='#' class='toggleDefines'>more...</a>");
+    $('.toggleDefines').toggle(function() {
+        tHeight = $(this).parent().prev().height();
+        $(this).prev().css('display', 'inline');
+        $(this).parent().prev().height($(this).parent().height());
+        $(this).text("(less)");
+    },
+    function() {
+        $(this).prev().hide();
+        $(this).parent().prev().height(tHeight);
+        $(this).text("more...");
+    });
+}
+
+function createFullTreeLinks() {
+    var tHeight = 0;
+    $('.inheritanceTree').toggle(function() {
+        tHeight = $(this).parent().prev().height();
+        $(this).parent().toggleClass('showAll');
+        $(this).text("(hide)");
+        $(this).parent().prev().height($(this).parent().height());
+    },
+    function() {
+        $(this).parent().toggleClass('showAll');
+        $(this).parent().prev().height(tHeight);
+        $(this).text("show all");
+    });
+}
+
+function searchFrameButtons() {
+  $('.full_list_link').click(function() {
+    toggleSearchFrame(this, $(this).attr('href'));
+    return false;
+  });
+  window.addEventListener('message', function(e) {
+    if (e.data === 'navEscape') {
+      $('#nav').slideUp(100);
+      $('#search a').removeClass('active inactive');
+      $(window).focus();
+    }
+  });
+
+  $(window).resize(function() {
+    if ($('#search:visible').length === 0) {
+      $('#nav').removeAttr('style');
+      $('#search a').removeClass('active inactive');
+      $(window).focus();
+    }
+  });
+}
+
+function toggleSearchFrame(id, link) {
+  var frame = $('#nav');
+  $('#search a').removeClass('active').addClass('inactive');
+  if (frame.attr('src') === link && frame.css('display') !== "none") {
+    frame.slideUp(100);
+    $('#search a').removeClass('active inactive');
+  }
+  else {
+    $(id).addClass('active').removeClass('inactive');
+    if (frame.attr('src') !== link) frame.attr('src', link);
+    frame.slideDown(100);
+  }
+}
+
+function linkSummaries() {
+  $('.summary_signature').click(function() {
+    document.location = $(this).find('a').attr('href');
+  });
+}
+
+function summaryToggle() {
+  $('.summary_toggle').click(function(e) {
+    e.preventDefault();
+    localStorage.summaryCollapsed = $(this).text();
+    $('.summary_toggle').each(function() {
+      $(this).text($(this).text() == "collapse" ? "expand" : "collapse");
+      var next = $(this).parent().parent().nextAll('ul.summary').first();
+      if (next.hasClass('compact')) {
+        next.toggle();
+        next.nextAll('ul.summary').first().toggle();
+      }
+      else if (next.hasClass('summary')) {
+        var list = $('<ul class="summary compact" />');
+        list.html(next.html());
+        list.find('.summary_desc, .note').remove();
+        list.find('a').each(function() {
+          $(this).html($(this).find('strong').html());
+          $(this).parent().html($(this)[0].outerHTML);
+        });
+        next.before(list);
+        next.toggle();
+      }
+    });
+    return false;
+  });
+  if (localStorage.summaryCollapsed == "collapse") {
+    $('.summary_toggle').first().click();
+  } else { localStorage.summaryCollapsed = "expand"; }
+}
+
+function generateTOC() {
+  if ($('#filecontents').length === 0) return;
+  var _toc = $('<ol class="top"></ol>');
+  var show = false;
+  var toc = _toc;
+  var counter = 0;
+  var tags = ['h2', 'h3', 'h4', 'h5', 'h6'];
+  var i;
+  if ($('#filecontents h1').length > 1) tags.unshift('h1');
+  for (i = 0; i < tags.length; i++) { tags[i] = '#filecontents ' + tags[i]; }
+  var lastTag = parseInt(tags[0][1], 10);
+  $(tags.join(', ')).each(function() {
+    if ($(this).parents('.method_details .docstring').length != 0) return;
+    if (this.id == "filecontents") return;
+    show = true;
+    var thisTag = parseInt(this.tagName[1], 10);
+    if (this.id.length === 0) {
+      var proposedId = $(this).attr('toc-id');
+      if (typeof(proposedId) != "undefined") this.id = proposedId;
+      else {
+        var proposedId = $(this).text().replace(/[^a-z0-9-]/ig, '_');
+        if ($('#' + proposedId).length > 0) { proposedId += counter; counter++; }
+        this.id = proposedId;
+      }
+    }
+    if (thisTag > lastTag) {
+      for (i = 0; i < thisTag - lastTag; i++) {
+        var tmp = $('<ol/>'); toc.append(tmp); toc = tmp;
+      }
+    }
+    if (thisTag < lastTag) {
+      for (i = 0; i < lastTag - thisTag; i++) toc = toc.parent();
+    }
+    var title = $(this).attr('toc-title');
+    if (typeof(title) == "undefined") title = $(this).text();
+    toc.append('<li><a href="#' + this.id + '">' + title + '</a></li>');
+    lastTag = thisTag;
+  });
+  if (!show) return;
+  html = '<div id="toc"><p class="title hide_toc"><a href="#"><strong>Table of Contents</strong></a></p></div>';
+  $('#content').prepend(html);
+  $('#toc').append(_toc);
+  $('#toc .hide_toc').toggle(function() {
+    $('#toc .top').slideUp('fast');
+    $('#toc').toggleClass('hidden');
+    $('#toc .title small').toggle();
+  }, function() {
+    $('#toc .top').slideDown('fast');
+    $('#toc').toggleClass('hidden');
+    $('#toc .title small').toggle();
+  });
+}
+
+function navResizeFn(e) {
+  if (e.which !== 1) {
+    navResizeFnStop();
+    return;
+  }
+
+  sessionStorage.navWidth = e.pageX.toString();
+  $('.nav_wrap').css('width', e.pageX);
+  $('.nav_wrap').css('-ms-flex', 'inherit');
+}
+
+function navResizeFnStop() {
+  $(window).unbind('mousemove', navResizeFn);
+  window.removeEventListener('message', navMessageFn, false);
+}
+
+function navMessageFn(e) {
+  if (e.data.action === 'mousemove') navResizeFn(e.data.event);
+  if (e.data.action === 'mouseup') navResizeFnStop();
+}
+
+function navResizer() {
+  $('#resizer').mousedown(function(e) {
+    e.preventDefault();
+    $(window).mousemove(navResizeFn);
+    window.addEventListener('message', navMessageFn, false);
+  });
+  $(window).mouseup(navResizeFnStop);
+
+  if (sessionStorage.navWidth) {
+    navResizeFn({which: 1, pageX: parseInt(sessionStorage.navWidth, 10)});
+  }
+}
+
+function navExpander() {
+  var done = false, timer = setTimeout(postMessage, 500);
+  function postMessage() {
+    if (done) return;
+    clearTimeout(timer);
+    var opts = { action: 'expand', path: pathId };
+    document.getElementById('nav').contentWindow.postMessage(opts, '*');
+    done = true;
+  }
+
+  window.addEventListener('message', function(event) {
+    if (event.data === 'navReady') postMessage();
+    return false;
+  }, false);
+}
+
+function mainFocus() {
+  var hash = window.location.hash;
+  if (hash !== '' && $(hash)[0]) {
+    $(hash)[0].scrollIntoView();
+  }
+
+  setTimeout(function() { $('#main').focus(); }, 10);
+}
+
+$(document).ready(function() {
+  navResizer();
+  navExpander();
+  createSourceLinks();
+  createDefineLinks();
+  createFullTreeLinks();
+  searchFrameButtons();
+  linkSummaries();
+  summaryToggle();
+  generateTOC();
+  mainFocus();
+});
+
+})();
+
 </script>
-</body>
+
+  </head>
+  <body>
+    <div id="content">
+      <h1>Wikitext</h1>
+      <div id="readme">
+  
+<h1 id="label-Wikitext">Wikitext</h1>
+
+<p>The Wikitext extension is a fast wikitext-to-HTML translator written in C and packaged as a Ruby extension.</p>
+
+<p>Usage is straightforward:</p>
+
+<pre class="code plain"><code class="plain">$ irb -r wikitext
+&gt;&gt; Wikitext::Parser.new.parse(&quot;hello world!&quot;)
+=&gt; &quot;&lt;p&gt;hello world!&lt;/p&gt;\n&quot;
+</code></pre>
+
+<h1 id="label-Design+goals">Design goals</h1>
+
+<p>I needed a wikitext-to-HTML translator for a Rails application; a number of design goals flowed on from this:</p>
+<ul><li>
+<p><em>fast</em>: Rails has a reputation for being slow, so the translator had to be part of the solution, not part of the problem</p>
+</li><li>
+<p><em>efficient</em>: again, given how much memory Rails likes to use, the translator had to be very memory-efficient</p>
+</li><li>
+<p><em>robust</em>: on a public-facing web application that had to be up for long periods, the translator had to be stable (no crashes, no resource leaks)</p>
+</li><li>
+<p><em>secure</em>: again, accepting input from untrusted sources meant that the translator had to sanitize or reject unsafe input</p>
+</li><li>
+<p><em>easy to use</em>: for end users, the translator should provide a simple, familiar markup as close as possible to what they already know from other applications (such as MediaWiki, the wiki software that powers Wikipedia)</p>
+</li><li>
+<p><em>forgiving</em>: wikitext is presentation markup, not source code, so the translator should do a reasonable job of formatting even the most invalid markup rather than giving up</p>
+</li><li>
+<p><em>informative</em>: when provided invalid markup the translator should fail gracefully and emit HTML that provides useful visual feedback about where the errors are in the input</p>
+</li><li>
+<p><em>multilingual-friendly</em>: the translator should handle input beyond printable ASCII in a compatible fashion</p>
+</li><li>
+<p><em>attractive</em>: the emitted HTML source should be consistent and attractive</p>
+</li><li>
+<p><em>valid output</em>: regardless of the input, the translator should always produce valid HTML5 output</p>
+</li><li>
+<p><em>well-tested</em>: the translator should have a comprehensive test suite to ensure that its behaviour is not only correct but also stable over time</p>
+</li><li>
+<p><em>cross-platform</em>: should work identically on Mac OS X, Linux (explicitly tested platforms) and perhaps others as well</p>
+</li></ul>
+
+<p>Some notable things that were <em>not</em> design goals:</p>
+<ul><li>
+<p>implement <em>all</em> of the MediaWiki syntax (tables etc)</p>
+</li></ul>
+
+<h1 id="label-Markup">Markup</h1>
+
+<p>The markup is very close to that used by MediaWiki, the most popular wiki software and the one that powers Wikipedia.</p>
+
+<h2 id="label-Headings">Headings</h2>
+
+<pre class="code wikitext"><code class="wikitext">= Heading 1 =
+== Heading 2 ==
+=== Heading 3 ===
+==== Heading 4 ====
+===== Heading 5 =====
+====== Heading 6 ======
+</code></pre>
+
+<p>Are marked up as:</p>
+
+<pre class="code html"><code class="html">&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;
+</code></pre>
+
+<h2 id="label-Paragraphs">Paragraphs</h2>
+
+<p>Consecutive linebreaks are converted into paragraph breaks.</p>
+
+<pre class="code wikitext"><code class="wikitext">This is one paragraph.
+Another line.
+
+And this is another.
+</code></pre>
+
+<p>Would be marked up as:</p>
+
+<pre class="code html"><code class="html">&lt;p&gt;This is one paragraph. Another line.&lt;/p&gt;
+&lt;p&gt;And this is another.&lt;/p&gt;
+</code></pre>
+
+<h2 id="label-Emphasis-2C+Strong">Emphasis, Strong</h2>
+
+<p>Emphasis is marked up as follows:</p>
+
+<pre class="code wikitext"><code class="wikitext">&#39;&#39;emphasized&#39;&#39;
+</code></pre>
+
+<p>Which gets translated into:</p>
+
+<pre class="code html"><code class="html">&lt;em&gt;emphasized&lt;/em&gt;
+</code></pre>
+
+<p>Strong is marked up like this:</p>
+
+<pre class="code wikitext"><code class="wikitext">&#39;&#39;&#39;strong text&#39;&#39;&#39;
+</code></pre>
+
+<p>And transformed into:</p>
+
+<pre class="code html"><code class="html">&lt;strong&gt;strong text&lt;/strong&gt;
+</code></pre>
+
+<p>You can nest spans inside one another, provided you don&#39;t try to produce invalid HTML (for example, nesting strong inside strong). Here is a valid example:</p>
+
+<pre class="code wikitext"><code class="wikitext">&#39;&#39;&#39;&#39;&#39;foo&#39;&#39; bar&#39;&#39;&#39; baz
+</code></pre>
+
+<p>This would become:</p>
+
+<pre class="code html"><code class="html">&lt;strong&gt;&lt;em&gt;foo&lt;/em&gt; bar&lt;/strong&gt; baz
+</code></pre>
+
+<p>Note that the translator emits HTML on the fly, so when it sees the first run of five apostrophes it has no way of knowing what will come afterwards and so doesn&#39;t know whether you mean to say “strong em” or “em strong”; it therefore always assumes “strong em”. If you wish to force the alternative interpretation you can do one of the following:</p>
+
+<pre class="code wikitext"><code class="wikitext">&#39;&#39; &#39;&#39;&#39;foo&#39;&#39;&#39; bar&#39;&#39; baz (ie. use whitespace)
+&#39;&#39;&lt;nowiki&gt;&lt;/nowiki&gt;&#39;&#39;&#39;foo&#39;&#39;&#39; bar&#39;&#39; baz (ie. insert an empty nowiki span)
+&lt;em&gt;&lt;strong&gt;foo&lt;/strong&gt; bar&lt;/em&gt; baz (ie. use explicit HTML tags instead)
+&lt;em&gt;&#39;&#39;&#39;foo&#39;&#39;&#39; bar&lt;/em&gt; baz (ie. use explicit HTML tags instead)
+</code></pre>
+
+<p>Note that to avoid ambiguity, the translator will not let you intermix the shorthand style with the literal HTML tag style.</p>
+
+<pre class="code wikitext"><code class="wikitext">&lt;em&gt;foo&#39;&#39; (ie. intermixed, invalid)
+</code></pre>
+
+<h2 id="label-Teletype">Teletype</h2>
+
+<p>The translator recognizes both standard HTML <code>tt</code> tags and the backtick (`) as a shorthand. These two are equivalent:</p>
+
+<pre class="code wikitext"><code class="wikitext">&lt;tt&gt;fixed&lt;/tt&gt;
+`fixed`
+</code></pre>
+
+<p>As of version 2.0, this markup is actually translated to <code>code</code> tags in the output because the <code>tt</code> tag was removed from the HTML5 standard.</p>
+
+<p>If you need to insert a literal backtick in your text you use a <code>nowiki</code> span:</p>
+
+<pre class="code wikitext"><code class="wikitext">here follows a literal &lt;nowiki&gt;`&lt;/nowiki&gt; backtick
+</code></pre>
+
+<p>To avoid ambiguity, the translator will not let you intermix the two styles.</p>
+
+<h2 id="label-nowiki+spans"><code>nowiki</code> spans</h2>
+
+<p>Already mentioned above, you can use <code>nowiki</code> tags to temporarily disable wikitext markup. As soon as the translator sees the opening <code>nowiki</code> tag it starts emitting a literal copy of everything it sees up until the closing <code>nowiki</code> tag:</p>
+
+<pre class="code wikitext"><code class="wikitext">Hello &lt;nowiki&gt;&#39;&#39;world&#39;&#39;&lt;/nowiki&gt;
+</code></pre>
+
+<p>Would be emitted as:</p>
+
+<pre class="code html"><code class="html">Hello &#39;&#39;world&#39;&#39;
+</code></pre>
+
+<h2 id="label-Blockquotes">Blockquotes</h2>
+
+<pre class="code wikitext"><code class="wikitext">&gt; Hello world!
+&gt; Bye for now.
+</code></pre>
+
+<p>Would be emitted as:</p>
+
+<pre class="code html"><code class="html">&lt;blockquote&gt;&lt;p&gt;Hello world! Bye for now.&lt;/p&gt;&lt;/blockquote&gt;
+</code></pre>
+
+<p>You can nest blockquotes or any other kind of block or span inside blockquotes. For example:</p>
+
+<pre class="code wikitext"><code class="wikitext">&gt; first quote
+&gt;&gt; quote inside a quote
+</code></pre>
+
+<h2 id="label-Preformatted+text">Preformatted text</h2>
+
+<p>Any line indented with whitespace will be interpreted as part of a <code>pre</code> block. Wikitext markup inside <code>pre</code> blocks has no special meaning. For example, consider the following block indented by a single space:</p>
+
+<pre class="code wikitext"><code class="wikitext"> // source code listing
+ void foo(void)
+ {
+     x++;
+ }
+</code></pre>
+
+<p>Would be translated into:</p>
+
+<pre class="code html"><code class="html">&lt;pre&gt;// source code listing
+void foo(void)
+{
+    x++;
+}&lt;/pre&gt;
+</code></pre>
+
+<p><code>pre</code> blocks may be nested inside <code>blockquote</code> blocks.</p>
+
+<h2 id="label-Internal+links">Internal links</h2>
+
+<pre class="code wikitext"><code class="wikitext">[[article title]]
+</code></pre>
+
+<p>Would become:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;/wiki/article_title&quot;&gt;article title&lt;/a&gt;
+</code></pre>
+
+<p>And:</p>
+
+<pre class="code wikitext"><code class="wikitext">[[title|link text]]
+</code></pre>
+
+<p>Would become:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;/wiki/article&quot;&gt;link text&lt;/a&gt;
+</code></pre>
+
+<p>See the Wikitext::Parser attributes documentation for how you can override the default link prefix (<em>/wiki/</em> as shown in the example), and how “red links” can be implemented by applying custom CSS depending on the link target (this can be used to make links to non-existent pages appear in a different color).</p>
+
+<h2 id="label-Alternative+blockquote+and+preformatted+block+syntax">Alternative blockquote and preformatted block syntax</h2>
+
+<p>For <code>blockquote</code> and <code>pre</code> blocks that go on for many lines it may be more convenient to use the alternative syntax which uses standard HTML tags rather than special prefixes at the beginning of each line.</p>
+
+<pre class="code wikitext"><code class="wikitext">&lt;blockquote&gt;This is
+a blockquote!&lt;/blockquote&gt;
+
+&lt;pre&gt;And this is
+preformatted text&lt;/pre&gt;
+</code></pre>
+
+<p><code>blockquote</code> and <code>pre</code> blocks may nest inside other <code>blockquote</code> blocks.</p>
+
+<p>Note that to avoid ambiguity, the translator will not let you intermix the two styles (HTML markup and wikitext markup).</p>
+
+<p><code>pre</code> blocks may also contain a custom <code>lang</code> attribute for the purposes of marking up a block for syntax-highlighting (note that the highlighting itself would be provided by JavaScript in the browser and is not actually part of the Wikitext extension). For example:</p>
+
+<pre class="code wikitext"><code class="wikitext">&lt;pre lang=&quot;ruby&quot;&gt;puts @person.name&lt;/pre&gt;
+</code></pre>
+
+<p>Would be translated into:</p>
+
+<pre class="code html"><code class="html">&lt;pre class=&quot;ruby-syntax&quot;&gt;puts @person.name&lt;/pre&gt;
+</code></pre>
+
+<p>The <code>lang</code> attribute may only contain letters, so “Objective-C”, for example would need to be written as “objc” or similar.</p>
+
+<h2 id="label-External+links">External links</h2>
+
+<pre class="code wikitext"><code class="wikitext">[http://example.com/ this site]
+</code></pre>
+
+<p>Would become:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;http://example.com/&quot; class=&quot;external&quot;&gt;this site&lt;/a&gt;
+</code></pre>
+
+<p>See the <span class='object_link'><a href="index.html" title="Wikitext::Parser (class)">Wikitext::Parser</a></span> attributes documentation for information on overriding the default external link class (<code>external</code> in this example), or including a <code>rel</code> attribute of “nofollow” (which may be useful for search-engine optimization).</p>
+
+<p>Note that in addition to providing a fully-qualified URL including a protocol (such as “http://” or “ftp://”) you also have the option of using an unqualified “path”-style URL. This is useful for making links to other pages still on the same site, but outside of the wiki:</p>
+
+<pre class="code wikitext"><code class="wikitext">[/issues/1024 ticket #1024]
+</code></pre>
+
+<p>Would become:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;/issues/1024&quot;&gt;ticket #1024&lt;/a&gt;
+</code></pre>
+
+<p>Note that no “external” class is included in the generated link.</p>
+
+<p>To avoid false positives, what constitutes a “path” is narrowly-defined as a string that begins with a slash, optionally followed by zero or more “path components” consisting of upper and lowercase letters, numbers, underscores, hyphens or periods. Path components are separated by a slash, and the trailing slash after the last path component is optional.</p>
+
+<h2 id="label-Images">Images</h2>
+
+<pre class="code wikitext"><code class="wikitext">{{foo.png}}
+</code></pre>
+
+<p>When outputting using HTML syntax (the default), this would become:</p>
+
+<pre class="code html"><code class="html">&lt;img src=&quot;/images/foo.png&quot; alt=&quot;foo.png&quot;&gt;
+</code></pre>
+
+<p>When outputting using XML syntax, this would become a self-closing tag:</p>
+
+<pre class="code html"><code class="html">&lt;img src=&quot;/images/foo.png&quot; alt=&quot;foo.png&quot; /&gt;
+</code></pre>
+
+<p>See the Wikitext::Parser documentation for information on setting the output syntax.</p>
+
+<p>You can override the “/images/” prefix using the <code>img_prefix</code> attribute of the Parser.</p>
+
+<p>You can also specify “absolute” image “src” attributes regardless of the current prefix setting by starting the image path with a forward slash; that is:</p>
+
+<pre class="code wikitext"><code class="wikitext">{{/foo.png}}
+</code></pre>
+
+<p>Would become:</p>
+
+<pre class="code html"><code class="html">&lt;img src=&quot;/foo.png&quot; alt=&quot;/foo.png&quot;&gt;
+</code></pre>
+
+<h2 id="label-Lists">Lists</h2>
+
+<p>Lists come in both unordered (“ul”):</p>
+
+<pre class="code wikitext"><code class="wikitext">* item
+* item
+* item
+</code></pre>
+
+<p>And ordered (“ol”) forms:</p>
+
+<pre class="code wikitext"><code class="wikitext"># first
+# second
+# third
+</code></pre>
+
+<p>These would produce, respectively:</p>
+
+<pre class="code html"><code class="html">&lt;ul&gt;
+  &lt;li&gt;item&lt;/li&gt;
+  &lt;li&gt;item&lt;/li&gt;
+  &lt;li&gt;item&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>And:</p>
+
+<pre class="code html"><code class="html">&lt;ol&gt;
+  &lt;li&gt;first&lt;/li&gt;
+  &lt;li&gt;second&lt;/li&gt;
+  &lt;li&gt;third&lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<p>Lists may be nested inside one another as needed. For example:</p>
+
+<pre class="code wikitext"><code class="wikitext"># outer a
+# outer b
+#* nested 1
+#* nested 2
+# outer c
+## nested foo
+## nested bar
+##* x
+##* y
+##** z
+</code></pre>
+
+<p>Would produce:</p>
+
+<pre class="code html"><code class="html">&lt;ol&gt;
+  &lt;li&gt;outer a&lt;/li&gt;
+  &lt;li&gt;outer b
+    &lt;ul&gt;
+      &lt;li&gt;nested 1&lt;/li&gt;
+      &lt;li&gt;nested 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;outer c
+    &lt;ol&gt;
+      &lt;li&gt;nested foo&lt;/li&gt;
+      &lt;li&gt;nested bar
+        &lt;ul&gt;
+          &lt;li&gt;x&lt;/li&gt;
+          &lt;li&gt;y
+            &lt;ul&gt;
+              &lt;li&gt;z&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+</code></pre>
+
+<h1 id="label-Ruby+support">Ruby support</h1>
+
+<p>Version 4.0.0 and above target Ruby 2.0.0 or higher.</p>
+
+<p>For older versions of Ruby, you may use the 3.1 release or older.</p>
+
+<h1 id="label-Rails+support">Rails support</h1>
+
+<p>The Wikitext extension provides a template handler so that templates named following the <code>template_name.html.wikitext</code> format will automatically be translated from wikitext markup into HTML when rendered.</p>
+
+<p>Additionally, an optional Haml filter is available if you <code>require &quot;wikitext/haml_filter&quot;</code>, which enables you to write wikitext markup inline (in Haml):</p>
+
+<pre class="code ruby"><code class="ruby">:wikitext
+  = Here is some [[wikitext]] =
+</code></pre>
+
+<p>Likewise, a <code>to_wikitext</code> method (aliased as <code>w</code>) is added to the <code>String</code> class (and also <code>NilClass</code>, for convenience) so that content can be easily translated from inside view templates following patterns like:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='ivar'>@post</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_w'>w</span>
+</code></pre>
+
+<p>The <code>to_wikitext</code> method will preprocess its string using the String#wikitext_preprocess method, if it is defined, before feeding the string through the parser. This can be used to add application-specific behavior such as converting special strings like:</p>
+
+<pre class="code wikitext"><code class="wikitext">ticket #1234
+</code></pre>
+
+<p>into links. An example preprocessor is included with the extension but it is not active by default; it can be activated with:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext/preprocess</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Finally, a Wikitext::Parser#shared_parser method is added to provide convenient access to a shared singleton instance of the parser so as to avoid repeatedly instantiating and setting up new parser instances as part of every request.</p>
+
+<h2 id="label-Rails+2.3">Rails 2.3</h2>
+
+<p>For Rails 2.3.x support, use version 2.1.x of the Wikitext gem.</p>
+
+<p>The plug-in can be activated with an appropriate <code>config.gem</code> statement in your <code>config/environment.rb</code>:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_config'>config</span><span class='period'>.</span><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>2.1.1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h2 id="label-Rails+3.0">Rails 3.0</h2>
+
+<p>For Rails 3.0.x support, use version 2.1.x of the Wikitext gem.</p>
+
+<p>Add a line like the following to your Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>~&gt; 2.1.1</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Note that while older versions of Wikitext do work with Rails 3 to some degree, for full compatibility Wikitext version 2.0 or higher should be used.</p>
+
+<h2 id="label-Rails+3.1">Rails 3.1</h2>
+
+<p>Add a line like the following to your Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>wikitext</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<h1 id="label-Links">Links</h1>
+<ul><li>
+<p>Website: <a href="https://wincent.com/products/wikitext">wincent.com/products/wikitext</a></p>
+</li><li>
+<p>RDoc: <a href="https://wincent.com/products/wikitext/doc">wincent.com/products/wikitext/doc</a>/</p>
+</li><li>
+<p>Source: <a href="https://github.com/wincent/wikitext">github.com/wincent/wikitext</a></p>
+</li></ul>
+
+<h1 id="label-Author">Author</h1>
+
+<p>Wikitext is written and maintained by Greg Hurrell (greg@hurrell.net). Other contributors that have submitted patches include:</p>
+<ul><li>
+<p>Mike Stangel</p>
+</li></ul>
+
+<h1 id="label-License">License</h1>
+
+<p>Copyright 2007-present Greg Hurrell. All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+<ol><li>
+<p>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
+</li><li>
+<p>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
+</li></ol>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS “AS IS” AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+
+<h1 id="label-Feedback">Feedback</h1>
+
+<p>Please let me know if you&#39;re using the Wikitext extension in your project. If you have any bug reports or feature requests please open a ticket in the issue tracker at <a href="https://wincent.com/issues">wincent.com/issues</a>.</p>
+
+</div>
+  
+  <h2>RELEASE-NOTES</h2>
+  <div id='filecontents'>
+<p>This file describes changes with some user or developer impact (significant changes to the externally visible behaviour of the extension, or things which may require action on the part of users or developers). Minor bugfixes and tweaks which don&#39;t require any user or developer action are generally not included in these release notes. For a full listing of all changes see the source code repository at: <a href="http://git.wincent.com">git.wincent.com</a>.</p>
+
+<h1 id="label-Changes+in+4.6">Changes in 4.6</h1>
+<ul><li>
+<p>add official support for Ruby 2.6.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.5">Changes in 4.5</h1>
+<ul><li>
+<p>add official support for Ruby 2.5.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.4">Changes in 4.4</h1>
+<ul><li>
+<p>add official support for Ruby 2.4.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.3">Changes in 4.3</h1>
+<ul><li>
+<p>add official support for Ruby 2.3.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.2">Changes in 4.2</h1>
+<ul><li>
+<p>add <code>pre_code</code> parse option</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.1.2">Changes in 4.1.2</h1>
+<ul><li>
+<p>rebuild (no code changes) to replace broken executable in 4.1.1 release</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.1.1+-28yanked-29">Changes in 4.1.1 (yanked)</h1>
+<ul><li>
+<p>add official support for Ruby 2.2.x</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.1">Changes in 4.1</h1>
+<ul><li>
+<p>add a Haml filter; to use, require “wikitext/haml_filter”</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0.3">Changes in 4.0.3</h1>
+<ul><li>
+<p>permit building on Ruby 2.1.0</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0.2">Changes in 4.0.2</h1>
+<ul><li>
+<p>fix broken gemspec responsible for faulty builds in version 4.0.2</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0.1">Changes in 4.0.1</h1>
+<ul><li>
+<p>fix build issues on Linux machines (with GNU install)</p>
+</li><li>
+<p>the <code>wikitext</code> binary no longer has a hard dependency on the HighLine gem</p>
+</li></ul>
+
+<h1 id="label-Changes+in+4.0">Changes in 4.0</h1>
+<ul><li>
+<p>requires Ruby 2.0.0; for older versions of Ruby please use a previous Wikitext release</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.1">Changes in 3.1</h1>
+<ul><li>
+<p>the <code>link_proc</code> parse option can now be set as an attribute on the parser at initialization or via an accessor</p>
+</li><li>
+<p>fix underescaping of ampersands in URIs</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.0.1">Changes in 3.0.1</h1>
+<ul><li>
+<p>fix bad output when emitting external links containing email addresses</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.0">Changes in 3.0</h1>
+<ul><li>
+<p>fix newline-swallowing bug which affected “PRE” blocks with lines beginning with a “PATH” token</p>
+</li></ul>
+
+<h1 id="label-Changes+in+3.0b">Changes in 3.0b</h1>
+<ul><li>
+<p>silence deprecation warnings triggered under Rails 3.1</p>
+</li><li>
+<p>note that this release supports only Rails 3.1; for older versions of Rails you should continue to use the Wikitext 2.1.x series, which continues to be supported</p>
+</li></ul>
+
+<h1 id="label-Changes+in+2.1.1">Changes in 2.1.1</h1>
+<ul><li>
+<p>fix a couple of token-swallowing bugs that manifested when certain invalid markup was fed into the translator</p>
+</li></ul>
+
+<h1 id="label-Changes+in+2.1">Changes in 2.1</h1>
+<ul><li>
+<p>the <code>external_link_rel</code> attribute can be used to include a “nofollow” <code>rel</code> attribute in external links (patch from Mike Stangel)</p>
+</li></ul>
+
+<h1 id="label-Changes+in+2.0">Changes in 2.0</h1>
+<ul><li>
+<p>compatibility with the Rails 3 template handler API</p>
+</li><li>
+<p>use Rails 3 hooks to auto-initialize when listed in Gemfile</p>
+</li><li>
+<p><code>code</code> tags are now emitted instead of <code>tt</code> tags for compliance with the HTML5 specification</p>
+</li><li>
+<p>new <code>output_style</code> setting to switch between HTML syntax (the new default) and XML syntax</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.12">Changes in 1.12</h1>
+<ul><li>
+<p>the String#w and String#to_wikitext methods mark their returned strings as html_safe under Rails 3</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.11">Changes in 1.11</h1>
+<ul><li>
+<p>extract Gem specification into separate file for compatibility with Bundler&#39;s “install from Git repository” functionality</p>
+</li><li>
+<p>updates for compatibility with Rails 3</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.10.1">Changes in 1.10.1</h1>
+<ul><li>
+<p>fix builds on 64-bit Darwin platforms</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.10">Changes in 1.10</h1>
+<ul><li>
+<p>a <code>wikitext</code> executable is now included for processing wikitext markup from the commandline: input may come from filename arguments specified on the commandline, piped in via standard input, or typed in interactively via a tty</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.9">Changes in 1.9</h1>
+<ul><li>
+<p>NilClass#w method now accepts an optional parameters hash</p>
+</li><li>
+<p>new <code>link_proc</code> option to Wikitext::Parser#parse allows you to dynamically apply a custom CSS class based on the link target; this can be used, for example, to provide “red links” for articles which do not exist yet</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.8">Changes in 1.8</h1>
+<ul><li>
+<p><code>pre</code> tags may now take an optional <code>lang</code> attribute to mark up the translated text for syntax-highlighting</p>
+</li><li>
+<p>optimize use of ary_includes function, yielding a boost in performance of several percent</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.7">Changes in 1.7</h1>
+<ul><li>
+<p>many optimizations for speed: performance has improved for all input types and in some cases has more than doubled (the biggest gains are for inputs with more multi-byte UTF-8 characters)</p>
+</li><li>
+<p>uses less memory and usage tends to remain more constant due to less creation of temporary objects</p>
+</li><li>
+<p>smaller memory footprint due to removal of dead code</p>
+</li><li>
+<p>handle blank link text such as <code>[[foo| ]]</code>, making behaviour consistent with existing handling of zero-width link text (<code>[[foo|]]</code>)</p>
+</li><li>
+<p>don&#39;t apply <code>external</code> CSS class when rolling back failed internal links</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.6">Changes in 1.6</h1>
+<ul><li>
+<p>zero-length image targets (<code>{{}}</code>) are now passed through unchanged rather than turned into <code>img</code> tags</p>
+</li><li>
+<p>“absolute” image targets (all targets beginning with a leading forward slash) such as <code>{{/foo.png}}</code> can be used to suppress the image prefix that would otherwise be automatically prepended</p>
+</li><li>
+<p>the <code>indent</code> option to the Wikitext::Parser#parse method now accepts <code>false</code> as a parameter to completely suppress all indentation</p>
+</li><li>
+<p>internal <code>require</code> statments now use absolute paths to ensure that files from other versions don&#39;t get pulled in inappropriately</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.3">Changes in 1.5.3</h1>
+<ul><li>
+<p>fixed broken handling of empty (zero-width) links such as <code>[[]]</code>, <code>[[|]]</code> and <code>[[|foo]]</code></p>
+</li><li>
+<p>improved handling of empty (whitespace-only) links such as <code>[[ ]]</code> and <code>[[   |foo]]</code></p>
+</li><li>
+<p>changed license from GPL v3 to the more permissive BSD license (specifically the Simplified or “2-clause” version of the BSD license, as used by FreeBSD)</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.2">Changes in 1.5.2</h1>
+<ul><li>
+<p>the <code>mailto</code> class is now consistently applied to all mailto URIs</p>
+</li><li>
+<p>works around a bug in Rails 2.3.2</p>
+</li><li>
+<p>fixes a minor bug with <code>pre</code> and <code>blockquote</code> start tags when they appear immediately after the shorthand notation of <code>pre</code> and <code>blockquote</code> blocks</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.1">Changes in 1.5.1</h1>
+<ul><li>
+<p>the <code>w</code> and <code>to_wikitext</code> methods now accept an options hash</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.5.0">Changes in 1.5.0</h1>
+<ul><li>
+<p>added <code>base_heading_level</code> parser option</p>
+</li><li>
+<p>changes for compatibility with Ruby 1.9 (compiles and all specs pass)</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.4.1">Changes in 1.4.1</h1>
+<ul><li>
+<p>include necessary file that was missing from 1.4.0 gem</p>
+</li></ul>
+
+<h1 id="label-Changes+in+1.4.0">Changes in 1.4.0</h1>
+<ul><li>
+<p>“special links” inside internal link spans (double square brackets) are no longer supported; instead use external link spans: where previously you used <code>[[issues/210 | ticket 210]]</code> you should now use <code>[/issues/210 ticket 210]</code></p>
+</li><li>
+<p>relatedly, the <code>treat_slash_as_special</code> attribute has been removed</p>
+</li></ul>
+
+<h1 id="label-Changes+prior+to+1.4.0">Changes prior to 1.4.0</h1>
+
+<p>Please see the source code repository browser at <a href="http://git.wincent.com">git.wincent.com</a>.</p>
+</div>
+<h1>Top Level Namespace
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+</div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="index.html" title="Wikitext (module)">Wikitext</a></span>
+    
+  
+    
+  
+</p>
+
+
+
+
+
+
+
+
+
+
+<h1>Module: Wikitext
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>doc/rdoc.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The Wikitext module provides a namespace for all of the extension. In practice, all your interaction will be with the Wikitext::Parser class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="" title="Wikitext::Parser (class)">Parser</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+
+
+
+<h1>Class: Wikitext::Parser
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Wikitext::Parser</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>doc/rdoc.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<h1 id="label-Attributes">Attributes</h1>
+
+<h2 id="label-line_ending+-28String-29"><code>line_ending</code> (String)</h2>
+
+<p>The line ending to be used in the generated HTML (defaults to “n”).</p>
+
+<h2 id="label-internal_link_prefix+-28String-29"><code>internal_link_prefix</code> (String)</h2>
+
+<p>The prefix to be prepended to internal links (defaults to “/wiki/”). For example, given an <code>internal_link_prefix</code> of “/wiki/”, the internal link:</p>
+
+<pre class="code wikitext"><code class="wikitext">[[Apple]]
+</code></pre>
+
+<p>would be transformed into:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;/wiki/Apple&quot;&gt;Apple&lt;/a&gt;
+</code></pre>
+
+<h2 id="label-external_link_class+-28String-29"><code>external_link_class</code> (String)</h2>
+
+<p>The CSS class to be applied to external links (defaults to “external”). For example, given an <code>external_link_class</code> of “external”, the external link:</p>
+
+<pre class="code wikitext"><code class="wikitext">[http://www.google.com/ the best search engine]
+</code></pre>
+
+<p>would be transformed into:</p>
+
+<pre class="code html"><code class="html">&lt;a class=&quot;external&quot; href=&quot;http://www.google.com/&quot;&gt;the best search engine&lt;/a&gt;
+</code></pre>
+
+<h2 id="label-external_link_rel+-28String-29"><code>external_link_rel</code> (String)</h2>
+
+<p>The <code>rel</code> attribute to be applied to external links (defaults to <code>nil</code>, meaning that no <code>rel</code> attribute is applied). Setting a <code>rel</code> attribute of “nofollow” may be useful for search-engine optimization (see <a href="http://en.wikipedia.org/wiki/Nofollow">en.wikipedia.org/wiki/Nofollow</a> for more details).</p>
+
+<p>This attribute can be set during initialization:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span> <span class='symbol'>:external_link_rel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nofollow</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Or via setting an attribute on the parser:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_external_link_rel'>external_link_rel</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nofollow</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Or at parse time:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_input'>input</span><span class='comma'>,</span> <span class='symbol'>:external_link_rel</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>nofollow</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Setting <code>external_link_rel</code> to <code>nil</code> suppresses the emission of any previously configured <code>rel</code> attribute:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_input'>input</span><span class='comma'>,</span> <span class='symbol'>:external_link_rel</span> <span class='op'>=&gt;</span> <span class='kw'>nil</span>
+</code></pre>
+
+<h2 id="label-mailto_class+-28String-29"><code>mailto_class</code> (String)</h2>
+
+<p>The CSS class to be applied to external “mailto” links (defaults to “mailto”). For example:</p>
+
+<pre class="code wikitext"><code class="wikitext">[mailto:user@example.com user@example.com]
+</code></pre>
+
+<p>or if autolinking of email addresses is turned on, just:</p>
+
+<pre class="code wikitext"><code class="wikitext">user@example.com
+</code></pre>
+
+<p>would be transformed into:</p>
+
+<pre class="code html"><code class="html">&lt;a class=&quot;mailto&quot; href=&quot;mailto:user@example.com&quot;&gt;user@example.com&lt;/a&gt;
+</code></pre>
+
+<h2 id="label-img_prefix+-28String-29"><code>img_prefix</code> (String)</h2>
+
+<p>The prefix to be prepended to image tags (defaults to “/images/”). For example, given this image markup:</p>
+
+<pre class="code wikitext"><code class="wikitext">{{foo.png}}
+</code></pre>
+
+<p>The following <code>img</code> tag would be produced:</p>
+
+<pre class="code html"><code class="html">&lt;img src=&quot;/images/foo.png&quot; alt=&quot;foo.png&quot; /&gt;
+</code></pre>
+
+<h2 id="label-autolink+-28boolean-29"><code>autolink</code> (boolean)</h2>
+
+<p>Whether to autolink URIs found in the plain scope. When true:</p>
+
+<pre class="code wikitext"><code class="wikitext">http://apple.com/
+</code></pre>
+
+<p>will be transformed to:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;http://apple.com/&quot;&gt;http://apple.com/&lt;/a&gt;
+</code></pre>
+
+<p>and if an external_link_class is set (to “external”, for example) then the transformation will be:</p>
+
+<pre class="code html"><code class="html">&lt;a class=&quot;external&quot; href=&quot;http://apple.com/&quot;&gt;http://apple.com/&lt;/a&gt;
+</code></pre>
+
+<p>When false, no transformation will be applied and the link will be echoed literally:</p>
+
+<pre class="code html"><code class="html">http://apple.com/
+</code></pre>
+
+<h2 id="label-pre_code+-28boolean-29"><code>pre_code</code> (boolean)</h2>
+
+<p>When true, “pre” blocks are formatted using “code” elements. For example:</p>
+
+<pre class="code wikitext"><code class="wikitext">&lt;pre&gt;foo&lt;/pre&gt;
+</code></pre>
+
+<p>Produces:</p>
+
+<pre class="code html"><code class="html">&lt;pre&gt;&lt;code&gt;foo&lt;/code&gt;&lt;/pre&gt;
+</code></pre>
+
+<p>When <code>false</code> (the default), it produces:</p>
+
+<pre class="code html"><code class="html">&lt;pre&gt;foo&lt;/pre&gt;
+</code></pre>
+
+<h2 id="label-space_to_underscore+-28boolean-29"><code>space_to_underscore</code> (boolean)</h2>
+
+<p>Whether spaces in link targets should be encoded normally or transformed into underscores.</p>
+
+<p>When false, an internal link like:</p>
+
+<pre class="code wikitext"><code class="wikitext">[[foo bar]]
+</code></pre>
+
+<p>Would be converted into:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;/wiki/foo%20bar&quot;&gt;foo bar&lt;/a&gt;
+</code></pre>
+
+<p>But when true (the default), it would be converted into:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;/wiki/foo_bar&quot;&gt;foo bar&lt;/a&gt;
+</code></pre>
+
+<p>Converting spaces to underscores makes most URLs prettier, but it comes at a cost: when this mode is true the articles “foo bar” and “foo_bar” can no longer be disambiguated, and a link to “foo_bar” will actually resolve to “foo bar”; it is therefore recommended that you explicitly disallow underscores in titles at the application level so as to avoid this kind of confusion.</p>
+
+<h2 id="label-base_heading_level+-28integer-29"><code>base_heading_level</code> (integer)</h2>
+
+<p>An integer between 0 and 6 denoting the current “heading level”. This can be used to inform the parser of the “context” in which it is translating markup.</p>
+
+<p>For example, the parser might be translating blog post excerpts on a page where there is an “h1” title element for the page itself and an “h2” title element for each excerpt. In this context it is useful to set <code>base_heading_level</code> to 2, so that any “top level” headings in the markup (that is “h1” elements) can be automatically transformed into “h3” elements so that they appear to be appropriately “nested” inside the containing page elements.</p>
+
+<p>In this way, markup authors can be freed from thinking about which header size they should use and just always start from “h1” for their most general content and work their way down.</p>
+
+<p>An additional benefit is that markup can be used in different contexts at different levels of nesting and the headings will be adjusted to suit automatically with no intervention from the markup author.</p>
+
+<p>Finally, it&#39;s worth noting that in contexts where the user input is not necessarily trusted, this setting can be used to prevent users from inappropriately employing “h1” tags in deeply-nested contexts where they would otherwise disturb the visual harmony of the page.</p>
+
+<h2 id="label-output_style+-28Symbol-29"><code>output_style</code> (Symbol)</h2>
+
+<p>Wikitext emits valid HTML5 fragments. By default, the output syntax is HTML. Optionally, the output syntax can be changed to XML by setting the <code>output_style</code> to “:xml”.</p>
+
+<p>This can be done during initialization:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span> <span class='symbol'>:output_style</span> <span class='op'>=&gt;</span> <span class='symbol'>:xml</span>
+</code></pre>
+
+<p>Or via setting an attribute on the parser:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_output_style'>output_style</span> <span class='op'>=</span> <span class='symbol'>:xml</span>
+</code></pre>
+
+<p>Or at parse time:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_input'>input</span><span class='comma'>,</span> <span class='symbol'>:output_style</span> <span class='op'>=&gt;</span> <span class='symbol'>:xml</span>
+</code></pre>
+
+<p>In practice the only difference between the two output syntaxes is that the XML syntax uses self closing <code>img</code> tags:</p>
+
+<pre class="code html"><code class="html">&lt;img src=&quot;foo.png&quot; alt=&quot;Foo&quot; /&gt;
+</code></pre>
+
+<p>While the HTML syntax does not:</p>
+
+<pre class="code html"><code class="html">&lt;img src=&quot;foo.png&quot; alt=&quot;Foo&quot;&gt;
+</code></pre>
+
+<h2 id="label-link_proc+-28lambda+or+Proc+object-29"><code>link_proc</code> (lambda or Proc object)</h2>
+
+<p>“Red links” can be implemented by providing a custom <code>link_proc</code> block at parse time. This can be used to check for existing or non-existent link targets and apply custom CSS styling accordingly. For example, consider:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_link_proc'>link_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_lambda'>lambda</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_target'>target</span><span class='op'>|</span> <span class='id identifier rubyid_target'>target</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span> <span class='op'>?</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>redlink</span><span class='tstring_end'>&#39;</span></span> <span class='op'>:</span> <span class='kw'>nil</span> <span class='rbrace'>}</span>
+<span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span><span class='period'>.</span><span class='id identifier rubyid_parse'><span class='object_link'><a href="#parse-instance_method" title="Wikitext::Parser#parse (method)">parse</a></span></span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>[[foo]] [[bar]]</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='symbol'>:link_proc</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_link_proc'>link_proc</span>
+</code></pre>
+
+<p>This would add the “redlink” CSS class to the “bar” link but not the “foo” link. Please note that if your <code>link_proc</code> involves database queries then you should implement an appropriate caching strategy to ensure that markup with many links does not overwhelm your database.</p>
+
+<p>A <code>link_proc</code> may also be set during initialization:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span> <span class='symbol'>:link_proc</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_link_proc'>link_proc</span>
+</code></pre>
+
+<p>Or via setting an attribute on the parser:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'>Parser</span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="#initialize-instance_method" title="Wikitext::Parser#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_link_proc'>link_proc</span> <span class='op'>=</span> <span class='id identifier rubyid_link_proc'>link_proc</span>
+</code></pre>
+
+<p>Many more examples of link procs can be found in the spec suite:</p>
+<ul><li>
+<p><a href="http://git.wincent.com/wikitext.git/blob/HEAD:/spec/internal_link_spec.rb">git.wincent.com/wikitext.git/blob/HEAD:/spec/internal_link_spec.rb</a></p>
+</li></ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><h2>Defined Under Namespace</h2>
+<p class="children">
+  
+    
+  
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="" title="Wikitext::Parser::Error (class)">Error</a></span>, <span class='object_link'><a href="" title="Wikitext::Parser::Token (class)">Token</a></span>
+    
+  
+</p>
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#encode_link_target-class_method" title="encode_link_target (class method)">.<strong>encode_link_target</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>URL-encodes an internal link target for use as an href attribute in an anchor.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sanitize_link_target-class_method" title="sanitize_link_target (class method)">.<strong>sanitize_link_target</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Sanitizes an internal link target for inclusion within the HTML stream.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#benchmarking_tokenize-instance_method" title="#benchmarking_tokenize (instance method)">#<strong>benchmarking_tokenize</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Like the tokenize method feeds <code>string</code> into the scanner to obtain the corresponding tokens, but unlike the tokenize method it does not return them because its sole purpose is to measure the speed of the scanner.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(options = {})  &#x21d2; Parser </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Prepares a Parser instance.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parse-instance_method" title="#parse (instance method)">#<strong>parse</strong>(string, options = {})  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Parses and transforms the UTF-8 wikitext markup input string into HTML.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tokenize-instance_method" title="#tokenize (instance method)">#<strong>tokenize</strong>(string)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Feeds the UTF-8-encoded <code>string</code> into the scanner and returns an array of recognized tokens.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(options = {})  &#x21d2; <tt><span class='object_link'><a href="" title="Wikitext::Parser (class)">Parser</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Prepares a Parser instance.</p>
+
+<p>There are a number of attributes that you can set on the returned parser to customize its behaviour. See the attributes documentation in the Parser class. You also have the option of overriding the attributes at initialization time passing in the attribute name in symbol form together with the overridden value.</p>
+
+<p>In other words, both:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Wikitext::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_autolink'>autolink</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_parser'>parser</span><span class='period'>.</span><span class='id identifier rubyid_mailto_class'>mailto_class</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mail</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>And:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_parser'>parser</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="Wikitext (module)">Wikitext</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="Wikitext::Parser (class)">Parser</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='symbol'>:autolink</span> <span class='op'>=&gt;</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='symbol'>:mailto_class</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>mail</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>Are equivalent.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+332
+333
+334
+335</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 332</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See parser.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="encode_link_target-class_method">
+  
+    .<strong>encode_link_target</strong>(string)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>URL-encodes an internal link target for use as an href attribute in an anchor. Expects <code>string</code> to be UTF-8-encoded.</p>
+
+<p>For example, the link target:</p>
+
+<pre class="code wikitext"><code class="wikitext">foo, &quot;bar&quot; &amp; baz €
+</code></pre>
+
+<p>would be encoded as:</p>
+
+<pre class="code html"><code class="html">foo%2c%20%22bar%22%20%26%20baz%e2%82%ac
+</code></pre>
+
+<p>The encoding is based on RFCs 2396 and 2718. The “unreserved” characters a..z, a..Z, 0..9, “-”, “_”, “.” and “~” are passed through unchanged and all others are converted into percent escapes.</p>
+
+<p>When combined with sanitize_link_target this method can be used to emit the following link for the example article:</p>
+
+<pre class="code html"><code class="html">&lt;a href=&quot;foo%2c%20%22bar%22%20%26%20baz%e2%82%ac&quot;&gt;foo, &amp;quot;bar&amp;quot; &amp;amp; baz &amp;#x20ac;&lt;/a&gt;
+</code></pre>
+
+<p>Note that when <code>space_to_underscore</code> is <code>true</code> spaces are treated specially, and are converted to “_” rather than “%20”. For the majority of links this yields much prettier URLs at the cost of some reduction in the namespace of possible titles (this is because when using <code>space_to_underscore</code> you should disallow underscores in article titles to avoid ambiguity between titles like “foo bar” and “foo_bar”).</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+308
+309
+310
+311</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 308</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_encode_link_target'>encode_link_target</span> <span class='id identifier rubyid_string'>string</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See parser.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sanitize_link_target-class_method">
+  
+    .<strong>sanitize_link_target</strong>(string)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Sanitizes an internal link target for inclusion within the HTML stream. Expects <code>string</code> to be UTF-8-encoded.</p>
+
+<p>For example, a link target for the article titled:</p>
+
+<pre class="code wikitext"><code class="wikitext">foo, &quot;bar&quot; &amp; baz €
+</code></pre>
+
+<p>would be sanitized as:</p>
+
+<pre class="code html"><code class="html">foo, &amp;quot;bar&amp;quot; &amp;amp; baz &amp;#x20ac;
+</code></pre>
+
+<p>Note that characters which have special meaning within HTML such as quotes and ampersands are turned into named entities, and characters outside of the printable ASCII range are turned into hexadecimal entities.</p>
+
+<p>See also encode_link_target.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+274
+275
+276
+277</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 274</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_sanitize_link_target'>sanitize_link_target</span> <span class='id identifier rubyid_string'>string</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See parser.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="benchmarking_tokenize-instance_method">
+  
+    #<strong>benchmarking_tokenize</strong>(string)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Like the tokenize method feeds <code>string</code> into the scanner to obtain the corresponding tokens, but unlike the tokenize method it does not return them because its sole purpose is to measure the speed of the scanner.</p>
+
+<p>Just like the tokenize method raises a Wikitext::Parser::Error if passed invalid UTF-8 input.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+357
+358
+359
+360</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 357</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_benchmarking_tokenize'>benchmarking_tokenize</span> <span class='id identifier rubyid_string'>string</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See parser.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parse-instance_method">
+  
+    #<strong>parse</strong>(string, options = {})  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Parses and transforms the UTF-8 wikitext markup input string into HTML. Raises a Wikitext::Parser::Error if passed invalid UTF-8. You can customize some aspects of the transformation by setting attributes on the parser instance before calling this method (see the attributes documentation for the Parser class), or by passing in an (optional) options hash.</p>
+
+<p>Options that can be overridden at parse-time include:</p>
+<dl class="rdoc-list note-list"><dt><code>indent</code>
+<dd>
+<p>A non-negative number (to add an arbitrary amount of indentation to all lines in the output) or false (to disable indentation entirely).</p>
+</dd><dt><code>base_heading_level</code>
+<dd>
+<p>An integer between 0 and 6 denoting the current “heading level” (documented above).</p>
+</dd><dt><code>output_style</code>
+<dd>
+<p>A symbol, “:xml”, to emit XML syntax (by default HTML syntax is emitted)</p>
+</dd><dt><code>link_proc</code>
+<dd>
+<p>A lambda that can be used to apply custom CSS to links to produce “red links” (documented above)</p>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+382
+383
+384
+385</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 382</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parse'>parse</span> <span class='id identifier rubyid_string'>string</span><span class='comma'>,</span> <span class='id identifier rubyid_options'>options</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See parser.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="tokenize-instance_method">
+  
+    #<strong>tokenize</strong>(string)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Feeds the UTF-8-encoded <code>string</code> into the scanner and returns an array of recognized tokens. Raises a Wikitext::Parser::Error exception if the input string is not valid UTF-8.</p>
+
+<p>Normally you don&#39;t need to invoke this method manually because the parse method automatically sets up a scanner and obtains tokens as it needs them. This method exists for testing and introspection only.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+345
+346
+347
+348</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 345</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_tokenize'>tokenize</span> <span class='id identifier rubyid_string'>string</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See parser.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+<h1>Exception: Wikitext::Parser::Error
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Exception</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Exception</li>
+          
+            <li class="next">Wikitext::Parser::Error</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>doc/rdoc.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Exception raised when an error occurs during parsing. As the parser is designed to gracefully cope with bad syntax, the only reason you should see this exception is if you pass invalidly-encoded UTF-8 to the parse method.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+
+  
+
+
+<h1>Class: Wikitext::Parser::Token
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Wikitext::Parser::Token</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>doc/rdoc.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Token object representing a symbol found in the input stream during scanning. When you invoke the tokenize method you receive an array of Token instances.</p>
+
+<p>This class exists purely for testing and diagnostic purposes; it is actually just a wrapper for the real token structure that is used internally.  (In actual use the Wikitext extension doesn&#39;t even use this class; it instead uses lightweight C structs under the hood for maximum speed and memory efficiency.)</p>
+
+<h1 id="label-Attributes">Attributes</h1>
+<dl class="rdoc-list note-list"><dt><code>start</code>
+<dd>
+<p>the location in memory (a character pointer into the input stream) where the token begins</p>
+</dd><dt><code>stop</code>
+<dd>
+<p>the location in memory (a character pointer) where the token ends</p>
+</dd><dt><code>line_start</code>
+<dd>
+<p>the line number where the token starts; numbering begins at line 1 (there is no line 0)</p>
+</dd><dt><code>line_stop</code>
+<dd>
+<p>the line number where the token ends</p>
+</dd><dt><code>column_start</code>
+<dd>
+<p>the column number where the token start; numbering beings at column 1 (there is no column 0)</p>
+</dd><dt><code>column_stop</code>
+<dd>
+<p>the column number where the token ends</p>
+</dd><dt><code>code_point</code>
+<dd>
+<p>for tokens outside the range of printable ASCII the UTF-32 code point corresponding to the token</p>
+</dd><dt><code>token_type</code>
+<dd>
+<p>the type of the token, from the possible set of token types returned by the types method</p>
+</dd><dt><code>string_value</code>
+<dd>
+<p>the textal content of the token as a Ruby String</p>
+</dd></dl>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#types-class_method" title="types (class method)">.<strong>types</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns a hashof all token types by (numeric) value and (human-readable) name.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="types-class_method">
+  
+    .<strong>types</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns a hashof all token types by (numeric) value and (human-readable) name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+424
+425
+426
+427</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'doc/rdoc.rb', line 424</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_types'>types</span>
+  <span class='comment'># This is just a placeholder.
+</span>  <span class='comment'># See token.c for the C source code to this method.
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+    </div>
+
+    <div id="footer">
+  Generated on Tue Dec 25 13:37:09 2018 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.12 (ruby-2.6.0).
+</div>
+
+  </body>
 </html>
