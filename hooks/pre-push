@@ -28,6 +28,6 @@ fi
 while read LOCAL_REF LOCAL_SHA REMOTE_REF REMOTE_SHA
 do
   if [ "$LOCAL_REF" = "$CONTENT_REF" -a "$REMOTE_REF" = "$CONTENT_REF" ]; then
-    git tag "$TIMESTAMP"
+    git tag "$TIMESTAMP" "$LOCAL_REF"
   fi
 done
