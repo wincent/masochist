@@ -1,6 +1,6 @@
 ---
 title: Involuntary reboot log #10
-tags: blog
+tags: involuntary.reboot.log blog
 ---
 
 [Twice in one day...](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/involuntary_reb_9.php)

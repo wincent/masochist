@@ -1,6 +1,6 @@
 ---
 title: Involuntary Reboot Log #13 and #14
-tags: blog
+tags: involuntary.reboot.log blog
 ---
 
 Today is not a good day as far as this computer is concerned.
