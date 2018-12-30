@@ -13,11 +13,13 @@ fi
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 CONTENT_REF=refs/heads/content
 
-HOOK="$(git rev-parse --git-dir)/hooks/pre-push"
-HOOK_FINGERPRINT=$(shasum -a 512 "$HOOK" | awk '{ print $1 }')
-REPO_FINGERPINT=$(shasum -a 512 hooks/pre-push | awk '{ print $1 }')
+INSTALLED_HOOK="$(git rev-parse --git-common-dir)/hooks/pre-push"
+MAIN_WORKTREE_INFO=$(git worktree list --porcelain | head -1)
+MAIN_WORKTREE_HOOK="${MAIN_WORKTREE_INFO/#worktree /}/hooks/pre-push"
+HOOK_FINGERPRINT=$(shasum -a 512 "$INSTALLED_HOOK" | awk '{ print $1 }')
+REPO_FINGERPRINT=$(shasum -a 512 "$MAIN_WORKTREE_HOOK" | awk '{ print $1 }')
 
-if [ "$HOOK_FINGERPRINT" != "$REPO_FINGERPINT" ]; then
+if [ "$HOOK_FINGERPRINT" != "$REPO_FINGERPRINT" ]; then
   error "installed hook does not match repo copy"
   error "freshen with scripts/set-up-hooks or use --no-verify to force"
   exit 1
