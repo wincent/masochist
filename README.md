@@ -2,11 +2,12 @@
 
 The content and history of this branch may be re-written at any time.
 
+## Setup
+
+For editing, use `git worktree add content content` to create a nested checkout of the "content" branch inside the main repo. Run `hooks/install` in the main repo to set up hooks which prevent accidental amending of published/indexed content and tag deployments with timestamps.
+
 ## Scripts
 
-* `scripts/set-up-hooks`: sets up Git hooks that:
-  * Prevent accidental amending of published/indexed history.
-  * Tag deployments with timestamps.
 * `scripts/new-article`: create a new wiki article.
 * `scripts/new-irl-entry`: create a new (snippet) entry in the "[Involuntary Reboot Log](https://wincent.com/tags/involuntary.reboot.log)".
 * `scripts/new-snippet`: create a new snippet.
