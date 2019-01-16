@@ -107,8 +107,7 @@
     "webpack-dev-server": "*"
   },
   "resolutions": {
-    "babel-core": "7.0.0-bridge.0",
-    "graphql": "14.0.2"
+    "babel-core": "7.0.0-bridge.0"
   },
   "jest": {
     "coverageDirectory": "coverage",
