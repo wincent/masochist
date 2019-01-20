@@ -17,6 +17,14 @@ cache_breaker: 1
     bar
     baz
 
+# Indenting
+
+This can be useful in a shell script where you want to nest the here-doc (eg. inside an `if` block):
+
+    cat <<-HERE
+    <Tab><Tab>Stuff
+    <Tab>HERE
+
 # Echoing to a file
 
     cat > file.txt <<HERE
