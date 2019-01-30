@@ -1029,6 +1029,11 @@
     "@webassemblyjs/wast-parser" "1.7.11"
     "@xtuc/long" "4.2.1"
 
+"@wincent/escape-html@*":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@wincent/escape-html/-/escape-html-0.0.1.tgz#e0315b7c1896dc4fa330edf474275b49882af1ba"
+  integrity sha512-p5qY8KiCo0DRBL4rqsTNakD9//eK55+br3YIH91TN4s93b/5tqd06hkgZVDA/BDRwTEONNpET1wGkLebAer7nA==
+
 "@wincent/is-object@0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@wincent/is-object/-/is-object-0.0.1.tgz#bf782dcedf7cc054dd42430d86ade56361321813"

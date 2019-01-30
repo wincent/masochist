@@ -7,8 +7,8 @@ import {
 } from 'graphql';
 import hljs from 'highlight.js';
 import MarkdownIt from 'markdown-it';
+import escapeHTML from '@wincent/escape-html';
 import getAssetURL from '../../getAssetURL';
-import escapeHTML from '../../escapeHTML';
 import markupExtensions from '../../../common/markupExtensions';
 
 const EXTENSION_TO_HLJS_LANGUAGE = {

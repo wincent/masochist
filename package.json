@@ -46,6 +46,7 @@
     "@babel/preset-flow": "*",
     "@babel/preset-react": "*",
     "@babel/register": "*",
+    "@wincent/escape-html": "*",
     "@wincent/nullthrows": "*",
     "@wincent/stable-stringify": "*",
     "ansi-colors": "*",

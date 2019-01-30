@@ -3,7 +3,7 @@
  */
 
 import {Readable} from 'stream';
-import escapeHTML from './escapeHTML';
+import escapeHTML from '@wincent/escape-html';
 import raw from './raw';
 
 function squishWhitespace(string: string): string {
