@@ -2,10 +2,10 @@
  * @flow
  */
 
+import stableStringify from '@wincent/stable-stringify';
 import {LAST_INDEXED_HASH} from './constants';
 import {graphql} from 'graphql';
 import invariant from '../common/invariant';
-import stableStringify from '../common/stableStringify';
 import LRUCache from './LRUCache';
 import getLoaders from './getLoaders';
 import queryCache from './queryCache';

@@ -3,7 +3,7 @@
  */
 
 import nullthrows from '@wincent/nullthrows';
-import stableStringify from './stableStringify';
+import stableStringify from '@wincent/stable-stringify';
 
 const functions = new Map();
 

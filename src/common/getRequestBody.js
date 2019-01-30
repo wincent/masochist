@@ -2,7 +2,7 @@
  * @flow strict
  */
 
-import stableStringify from './stableStringify';
+import stableStringify from '@wincent/stable-stringify';
 
 export default function getRequestBody(
   {id}: {id: string},

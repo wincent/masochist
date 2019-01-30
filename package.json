@@ -47,6 +47,7 @@
     "@babel/preset-react": "*",
     "@babel/register": "*",
     "@wincent/nullthrows": "*",
+    "@wincent/stable-stringify": "*",
     "ansi-colors": "*",
     "assets-webpack-plugin": "*",
     "autoprefixer": "*",

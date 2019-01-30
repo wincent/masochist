@@ -758,6 +758,14 @@
     pirates "^4.0.0"
     source-map-support "^0.5.9"
 
+"@babel/runtime-corejs2@7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.3.1.tgz#0c113242e2328f9674d42703a89bee6ebebe9a82"
+  integrity sha512-YpO13776h3e6Wy8dl2J8T9Qwlvopr+b4trCEhHE+yek6yIqV8sx6g3KozdHMbXeBpjosbPi+Ii5Z7X9oXFHUKA==
+  dependencies:
+    core-js "^2.5.7"
+    regenerator-runtime "^0.12.0"
+
 "@babel/runtime@^7.1.2":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.1.5.tgz#4170907641cf1f61508f563ece3725150cc6fe39"
@@ -1021,10 +1029,23 @@
     "@webassemblyjs/wast-parser" "1.7.11"
     "@xtuc/long" "4.2.1"
 
+"@wincent/is-object@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@wincent/is-object/-/is-object-0.0.1.tgz#bf782dcedf7cc054dd42430d86ade56361321813"
+  integrity sha512-C9gfb5LEmEgrS6+vglY1BUeKLa1mR4B2IuaWypJjqKH/6OP8glFTN14yEbdaIRG7bkiGy5v5f+i4eQ8mDjbDEA==
+
 "@wincent/nullthrows@*":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@wincent/nullthrows/-/nullthrows-0.0.1.tgz#223bc350f7d47a701faceb521f87ca27e63add65"
   integrity sha512-GYhEiT4N5dKg6iZtPsQ4XHU/sjKTAwYOz2MOgpLx4wy/1DAWM5/Q7JpKkYgEcSubwCp9N7OYqf+wlyf4OBrwTQ==
+
+"@wincent/stable-stringify@*":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@wincent/stable-stringify/-/stable-stringify-0.0.1.tgz#b3feca0c0b4d6f2a14c933fc489e3fcabc828dda"
+  integrity sha512-o+WAs4MjxrbS8m0APRVI9TdIpB2CdBZO79QsdkubaL9RnDeTksAywArjQPnalEAWAgA+xq+5OGPa04P4p0nZuw==
+  dependencies:
+    "@babel/runtime-corejs2" "7.3.1"
+    "@wincent/is-object" "0.0.1"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
