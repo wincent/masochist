@@ -1021,6 +1021,11 @@
     "@webassemblyjs/wast-parser" "1.7.11"
     "@xtuc/long" "4.2.1"
 
+"@wincent/nullthrows@*":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@wincent/nullthrows/-/nullthrows-0.0.1.tgz#223bc350f7d47a701faceb521f87ca27e63add65"
+  integrity sha512-GYhEiT4N5dKg6iZtPsQ4XHU/sjKTAwYOz2MOgpLx4wy/1DAWM5/Q7JpKkYgEcSubwCp9N7OYqf+wlyf4OBrwTQ==
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"

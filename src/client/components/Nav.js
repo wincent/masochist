@@ -5,9 +5,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import cx from 'classnames';
+import nullthrows from '@wincent/nullthrows';
 import Link from './Link';
 import inBrowser from '../../common/inBrowser';
-import nullthrows from '../../common/nullthrows';
 
 if (inBrowser) {
   require('./Nav.css');

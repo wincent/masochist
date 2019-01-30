@@ -4,7 +4,7 @@
 
 const DEFAULT_CAPACITY = 128;
 
-import nullthrows from '../common/nullthrows';
+import nullthrows from '@wincent/nullthrows';
 
 export default class LRUCache<TKey, TValue> {
   _capacity: number;

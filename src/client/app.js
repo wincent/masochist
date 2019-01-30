@@ -20,6 +20,7 @@ import {
   Store,
   fetchQuery,
 } from 'relay-runtime';
+import nullthrows from '@wincent/nullthrows';
 
 import '../common/unhandledRejection';
 
@@ -32,7 +33,6 @@ import NotFoundError from '../common/NotFoundError';
 import RenderTextError from '../common/RenderTextError';
 import createRouter from '../common/createRouter';
 import getRequestBody from '../common/getRequestBody';
-import nullthrows from '../common/nullthrows';
 import App from './components/App';
 import HTTPError from './components/HTTPError';
 

@@ -2,7 +2,7 @@
  * @flow strict
  */
 
-import nullthrows from './nullthrows';
+import nullthrows from '@wincent/nullthrows';
 import stableStringify from './stableStringify';
 
 const functions = new Map();
