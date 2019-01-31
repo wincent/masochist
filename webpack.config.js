@@ -13,8 +13,49 @@ module.exports = {
   module: {
     rules: [
       {
-        exclude: /node_modules/,
+        type: 'javascript/auto',
         test: /\.js$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: '> 0.5%, last 2 versions, Firefox ESR, not dead',
+                    useBuiltIns: 'entry',
+                  },
+                ],
+                '@babel/preset-react',
+                '@babel/preset-flow',
+              ],
+              plugins: [
+                [
+                  'minify-replace',
+                  {
+                    replacements: [
+                      {
+                        identifierName: '__DEV__',
+                        replacement: {
+                          type: 'booleanLiteral',
+                          value: true,
+                        },
+                      },
+                    ],
+                  },
+                ],
+                'relay',
+              ],
+            },
+          },
+        ],
+      },
+      {
+        type: 'javascript/esm',
+        test: /\.mjs$/,
+        resolve: {mainFields: ['module', 'main']},
         use: [
           {
             loader: 'babel-loader',

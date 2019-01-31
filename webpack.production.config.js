@@ -100,8 +100,50 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
     module: {
       rules: [
         {
+          type: 'javascript/auto',
           test: /\.js$/,
           exclude: /node_modules/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      debug: false,
+                      targets,
+                      useBuiltIns: 'entry',
+                    },
+                  ],
+                  '@babel/preset-react',
+                  '@babel/preset-flow',
+                ],
+                plugins: [
+                  [
+                    'minify-replace',
+                    {
+                      replacements: [
+                        {
+                          identifierName: '__DEV__',
+                          replacement: {
+                            type: 'booleanLiteral',
+                            value: false,
+                          },
+                        },
+                      ],
+                    },
+                  ],
+                  'relay',
+                ],
+              },
+            },
+          ],
+        },
+        {
+          type: 'javascript/esm',
+          test: /\.mjs$/,
+          resolve: {mainFields: ['module', 'main']},
           use: [
             {
               loader: 'babel-loader',
