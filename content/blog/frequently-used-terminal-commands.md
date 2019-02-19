@@ -162,3 +162,20 @@ The results:
 ```
 
 Numbers are lower than before despite my `$HISTSIZE` being 100,000. It is probably because of my use of `histignorealldups`, which I am now questioning the usefulness of. I think `histfindnodups` is probably much closer to what I want.
+
+# Update: February 2019
+
+Having tweaked my shell settings I can now report a more illustrative example. This one from my personal laptop:
+
+```
+4890 git
+2034 yarn # using yarn to run scripts in projects
+856 vim # open up mostly long-lived vim sessions
+726 cd
+535 less
+480 exit # always opening and closing tmux splits
+358 ls
+299 ll # alias for `ls -laF`
+250 o # alias for `git log --oneline` with a few other options added
+222 man
+```
