@@ -23,13 +23,13 @@ Not a comprehensive cheatsheet, but stuff that I keep forgetting and want to rem
 
 ## Move current window to the left/right =
 
--   `:move-window -t +1`: move to the right
--   `:move-window -t -1`: move to the left
+-   `:swap-window -t +1`: move to the right
+-   `:swap-window -t -1`: move to the left
 
 ## Swap the current window with another
 
--   `:move-window -t N`: swaps current window with window at N
--   `:move-window -s N -t M`: swaps window at M with window at N
+-   `:swap-window -t N`: swaps current window with window at N
+-   `:swap-window -s N -t M`: swaps window at M with window at N
 
 ## Jump to previous/next window =
 
