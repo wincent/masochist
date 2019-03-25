@@ -29,6 +29,7 @@ I'll eventually publish a more comprehensive listing, but for now I just want to
 -   `ga`: show ASCII info for character under cursor
 -   `g8`: show UTF-8 info for character under cursor
 -   `CTRL-w f`: open the file under the cursor in a split (`gf` will do this without the split)
+-   `]c`/`[c`: next/previous change/conflict.
 
 ## Window and tab-related commands
 
