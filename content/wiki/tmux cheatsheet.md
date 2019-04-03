@@ -21,6 +21,10 @@ Not a comprehensive cheatsheet, but stuff that I keep forgetting and want to rem
 
 # Recipes
 
+## Go back to previous layout
+
+-   `:select-layout -o` ([source](https://github.com/tmux/tmux/issues/859))
+
 ## Move current window to the left/right =
 
 -   `:swap-window -t +1`: move to the right
