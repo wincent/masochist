@@ -23,6 +23,16 @@ Equivalent in this case is:
 
 This just writes the file back out to the working tree without touching the HEAD.
 
+# Negative pathspecs
+
+`:!` (or `:^`)` ([source](https://stackoverflow.com/questions/5685007/making-git-log-ignore-changes-for-certain-paths)).
+
+Example; examining a diff that contains a bunch of copies and renames as well as abundant changes to "package-lock.json" files:
+
+```sh
+git diff develop -C10 -M20 -b --find-copies-harder -- ':!*-lock.json'`
+```
+
 # See also
 
 -   <http://jonas.nitro.dk/git/quick-reference.html>
