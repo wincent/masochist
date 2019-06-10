@@ -45,6 +45,6 @@ On the strength of that success, pretty much everything else I went on to releas
 
 # The future
 
-It seems likely that I'll continue publishing code under what has effectively become my tech nickname. My [wincent profile](https://github.com/wincent) on [GitHub](/wiki/GitHub) is far more interesting than my "glhurrell" one, so I consolidated their contents under the former and deleted the later some time ago.
+It seems likely that I'll continue publishing code under what has effectively become my tech nickname. My [wincent profile](https://github.com/wincent) on [GitHub](/wiki/GitHub) is far more interesting than my "glhurrell" one, so I consolidated their contents under the former and deleted the latter some time ago.
 
 Trying to maintain two separate identities, even if one of them is fairly neatly defined as your "tech/online" identity, is a cumbersome endeavour. Long ago I gave up on trying to keep them really separate, but it looks like Wincent Colaiuta is here to stay, at least for the foreseeable future.
