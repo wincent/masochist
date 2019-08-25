@@ -19,20 +19,20 @@ After visually inspecting the list of files you can do something like:
 ```shell
 $ pkgutil --pkg-info the-package-name.pkg # check the location
 $ cd / # assuming the package is rooted at /...
-$ pkgutil --only-files --files the-package-name.pkg | tr '\n' '\0' | xargs -n 1 -0 sudo rm -i
+$ pkgutil --only-files --files the-package-name.pkg | tr '\n' '\0' | xargs -o -n 1 -0 sudo rm -i
 ```
 
-You can list the directories from the package using
+To remove directories as well as files, list the directories from the package using:
 
 ```shell
 $ pkgutil --only-dirs --files the-package-name.pkg
 ```
 
-Do not remove all directories associated with the package since quite often packages install to system directories such as /usr, /usr/local and /usr/share. Removal of these directories would be a disaster! Usually there will be only one specific directory to remove, located in /Applications with a similar name to the package.
+The following command could the be used to attempt removal of each directory, although be aware that when [System Integrity Protection](https://en.wikipedia.org/wiki/System_Integrity_Protection) is active, there are some file paths that not even the root user may modify. *Nevertheless &mdash; and needless to say &mdash; **extreme** care should always be taken when removing files with root privileges. Particularly, be aware that some packages may update shared system components, so uninstalling them can actually break your system by removing a necessary component. For smaller packages it is probably safer to just manually remove the files after visually inspecting the package file listing.*
 
-Needless to say, *extreme* care should always be taken when removing files with root privileges. Particularly, be aware that some packages may update shared system components, so uninstalling them can actually break your system by removing a necessary component.
-
-For smaller packages it is probably safer to just manually remove the files after visually inspecting the package file listing.
+```shell
+$ pkgutil --only-dirs --files the-package-name.pkg | tr '\n' '\0' | xargs -o -n 1 -0 sudo rm -ir
+```
 
 Apparently, there was once an `--unlink` option available in `pkgutil`, but as of [Lion](/wiki/Lion) it is not mentioned in the man page. Perhaps it was removed because it was deemed too dangerous.
 
