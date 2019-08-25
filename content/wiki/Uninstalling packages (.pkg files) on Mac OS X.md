@@ -20,8 +20,13 @@ After visually inspecting the list of files you can do something like:
 $ pkgutil --pkg-info the-package-name.pkg # check the location
 $ cd / # assuming the package is rooted at /...
 $ pkgutil --only-files --files the-package-name.pkg | tr '\n' '\0' | xargs -n 1 -0 sudo rm -i
-$ pkgutil --only-dirs --files the-package-name.pkg | tr '\n' '\0' | xargs -n 1 -0 sudo rm -ir
 ```
+
+You can list the directories from the package using 
+```shell
+$ pkgutil --only-dirs --files the-package-name.pkg
+```
+Do not remove all directories associated with the package since quite often packages install to system directories such as /usr, /usr/local and /usr/share. Removal of these directories would be a disaster! Usually there will be only one specific directory to remove, located in /Applications with a similar name to the package.
 
 Needless to say, *extreme* care should always be taken when removing files with root privileges. Particularly, be aware that some packages may update shared system components, so uninstalling them can actually break your system by removing a necessary component.
 
