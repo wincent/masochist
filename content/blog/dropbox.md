@@ -68,6 +68,16 @@ mdfind -onlyin ~/Dropbox kMDItemKind=Alias
 
 respectively.
 
+> **Update (2019-09):** Dropbox is currently [on the record](https://help.dropbox.com/installs-integrations/sync-uploads/symlinks) as saying:
+>
+> > As of mid-2019, Dropbox no longer follows items outside of your Dropbox account that are linked to by a symlink.
+>
+> So it seems that the practice of symlinking to stuff outside your Dropbox folder is officially off the table now, and that symlinking inside the folder should be fine. However, in my testing I've found that it is basically useless.
+>
+> If you make a relative symlink, the link won't even show up when you look at the folder from iOS or the web. If you make an absolute symlink, it will show up but it won't work: on iOS, you'll get a "Symbolic links can't be followed" message ("To follow this link, open it on your computer"); on web, it will say "Empty files can't be previewed". If you use a macOS alias instead, you'll see a message like ".pdf files are supported but something went wrong"; on iOS you'll see "No preview available" ("This file type can't be viewed").
+>
+> It's frustrating that the behavior of the apps doesn't match what is claimed in the documentation, and even more so when you consider that the messages shown in the UI don't even match up across platforms.
+
 A corollary to this first recommendation is this:
 
 > **Corollary:** Files and folders must exist in one place and one place only in your Dropbox folder.
