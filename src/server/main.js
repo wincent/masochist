@@ -12,7 +12,7 @@ import express from 'express';
 import graphqlHTTP from 'express-graphql';
 import fs from 'fs';
 import path from 'path';
-import createHistory from 'history/createMemoryHistory';
+import {createMemoryHistory} from 'history';
 import React from 'react';
 import {renderToStaticNodeStream} from 'react-dom/server';
 import {promisify} from 'util';
@@ -107,7 +107,7 @@ const extraLocals = {
 
 appRoutes.forEach(route => {
   app.get(route, async (request, response) => {
-    const history = createHistory({
+    const history = createMemoryHistory({
       initialEntries: [request.originalUrl],
       initialIndex: 0,
     });
@@ -262,7 +262,7 @@ app.use(
 function errorPage(code, message, request, response) {
   return {
     html: () => {
-      const history = createHistory({
+      const history = createMemoryHistory({
         initialEntries: [request.originalUrl],
         initialIndex: 0,
       });
