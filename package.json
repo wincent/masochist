@@ -52,7 +52,6 @@
     "ansi-colors": "*",
     "assets-webpack-plugin": "*",
     "autoprefixer": "*",
-    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "*",
     "babel-loader": "*",
     "babel-plugin-minify-replace": "*",
@@ -109,12 +108,11 @@
     "sinon": "*",
     "webpack-dev-server": "*"
   },
-  "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
-  },
   "jest": {
     "coverageDirectory": "coverage",
-    "setupFilesAfterEnv": ["<rootDir>/src/__mocks__/sinon.js"],
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/__mocks__/sinon.js"
+    ],
     "globals": {
       "__DEV__": true
     },
