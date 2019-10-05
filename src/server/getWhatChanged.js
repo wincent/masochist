@@ -34,7 +34,7 @@ export default function getWhatChanged(
 function getStatus(status: string): 'A' | 'D' | 'M' {
   invariant(
     status === 'A' || status === 'D' || status === 'M',
-    'getWhatChanged(): Status \'%s\' must be A, D or M.',
+    "getWhatChanged(): Status '%s' must be A, D or M.",
     status,
   );
   return status;
