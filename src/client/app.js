@@ -39,9 +39,9 @@ import HTTPError from './components/HTTPError';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ScrollBehavior from 'scroll-behavior';
-import createHistory from 'history/createBrowserHistory';
+import {createBrowserHistory} from 'history';
 
-const history = createHistory();
+const history = createBrowserHistory();
 
 // First render comes from the server, subsequent renders happen on client.
 let render = function(element, container) {
