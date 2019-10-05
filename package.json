@@ -114,7 +114,7 @@
   },
   "jest": {
     "coverageDirectory": "coverage",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/__mocks__/sinon.js",
+    "setupFilesAfterEnv": ["<rootDir>/src/__mocks__/sinon.js"],
     "globals": {
       "__DEV__": true
     },
