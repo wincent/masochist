@@ -50,6 +50,10 @@ export default class Footer extends React.Component<{}> {
                   text="Twitter"
                 />
                 <StaticFooterLink
+                  target="https://www.youtube.com/c/GregHurrell"
+                  text="YouTube"
+                />
+                <StaticFooterLink
                   target="https://facebook.com/glh"
                   text="Facebook"
                 />
