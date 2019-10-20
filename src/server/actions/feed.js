@@ -2,7 +2,7 @@
  * @flow
  */
 
-import entities from 'entities';
+import {decodeHTML} from 'entities';
 import {graphql} from 'react-relay';
 import RSS from 'rss';
 
@@ -29,7 +29,7 @@ function ellipsize(input: string, limit: number = FOUR_TWEETS): string {
 
 function extractExcerpt(body: string): string {
   return ellipsize(
-    entities.decodeHTML(
+    decodeHTML(
       stripTags(body)
         .trim()
         .replace(/\s+/g, ' '),
