@@ -73,7 +73,7 @@
     "glob": "*",
     "graphql": "*",
     "graphql-relay": "*",
-    "gulp": "4.0.0",
+    "gulp": "*",
     "gulp-babel": "*",
     "highlight.js": "*",
     "history": "*",
