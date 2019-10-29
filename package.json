@@ -10,6 +10,12 @@
     "packages/*"
   ],
   "devDependencies": {
+    "@types/jest": "*",
+    "jest": "*",
+    "ts-jest": "*",
     "typescript": "3.7.1-rc"
+  },
+  "scripts": {
+    "test": "jest"
   }
 }
