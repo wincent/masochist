@@ -5,3 +5,4 @@ Points of interest and areas for exploration:
 - Extremely minimal GraphQL client/compiler/server.
 - Streaming responses.
 - TypeScript.
+- Minimal dependency footprint.
