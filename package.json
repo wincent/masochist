@@ -5,5 +5,8 @@
   "main": "index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }

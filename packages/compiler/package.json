@@ -1,0 +1,9 @@
+{
+  "name": "@masochist/compiler",
+  "version": "0.0.1",
+  "description": "Masochist compiler",
+  "main": "index.js",
+  "author": "Greg Hurrell <greg@hurrell.net>",
+  "license": "MIT",
+  "private": false
+}
