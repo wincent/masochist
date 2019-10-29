@@ -16,6 +16,11 @@
     "typescript": "3.7.1-rc"
   },
   "scripts": {
+    "build": "tsc --build",
+    "build:clean": "tsc --build --clean",
+    "build:dry": "tsc --build --dry",
+    "build:force": "tsc --build --force",
+    "build:watch": "tsc --build --watch",
     "test": "jest"
   }
 }
