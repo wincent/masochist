@@ -1,15 +1,15 @@
 const {defaults} = require('jest-config');
 
 module.exports = {
-  "moduleNameMapper": {
-    "@masochist/(.+)$": "<rootDir>packages/$1/src"
+  moduleNameMapper: {
+    '@masochist/(.+)$': '<rootDir>packages/$1/src',
   },
-  "testPathIgnorePatterns": [
+  testPathIgnorePatterns: [
     ...defaults.testPathIgnorePatterns,
-    '<rootDir>/packages/[^/]+/lib/'
+    '<rootDir>/packages/[^/]+/lib/',
   ],
-  "timers": 'fake',
-  "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+  timers: 'fake',
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
   },
 };

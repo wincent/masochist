@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/jest": "*",
     "jest": "*",
+    "prettier": "*",
     "ts-jest": "*",
     "typescript": "3.7.1-rc"
   },
@@ -21,6 +22,8 @@
     "build:dry": "tsc --build --dry",
     "build:force": "tsc --build --force",
     "build:watch": "tsc --build --watch",
+    "format": "prettier --write '**/*.{js,json,md,ts}'",
+    "format:check": "prettier --check '**/*.{js,json,md,ts}'",
     "test": "jest"
   }
 }

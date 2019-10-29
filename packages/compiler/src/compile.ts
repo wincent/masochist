@@ -1,2 +1,1 @@
-export default function compile() {
-}
+export default function compile() {}
