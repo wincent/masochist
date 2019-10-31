@@ -1,4 +1,4 @@
-import Lexer from './Lexer';
+import Lexer, {Token} from './Lexer';
 
 /**
  * @see https://graphql.github.io/graphql-spec/draft/
@@ -7,31 +7,14 @@ export default function lex(input: string) {
   const lexer = new Lexer(api => {
     const {a, an, choose, match, maybe, oneOf, repeat, sequence} = api;
 
-    const PUNCTUATORS = {
-      BANG: match('!'),
-      DOLLAR: match('$'),
-      AMPERSAND: match('&'),
-      OPEN_PAREN: match('('),
-      CLOSE_PAREN: match(')'),
-      ELLIPSIS: match('...'),
-      COLON: match(':'),
-      EQUALS: match('='),
-      AT: match('@'),
-      OPEN_BRACKET: match('['),
-      CLOSE_BRACKET: match(']'),
-      OPEN_BRACES: match('{'),
-      BAR: match('|'),
-      CLOSE_BRACES: match('}'),
-    };
-
     oneOf(
       match('\\"""'),
-      a('SOURCE_CHARACTER').until(oneOf(match('"""'), match('\\"""'))),
+      a('SOURCE_CHARACTER').except(oneOf(match('"""'), match('\\"""'))),
     ).name('BLOCK_STRING_CHARACTER');
 
-    sequence(match('#'), a('SOURCE_CHARACTER').until('LINE_TERMINATOR')).name(
-      'COMMENT',
-    ).name('COMMENT');
+    sequence(match('#'), a('SOURCE_CHARACTER').until('LINE_TERMINATOR'))
+      .name('COMMENT')
+      .name('COMMENT');
 
     match(/\\["\\\/bfnrt]/).name('ESCAPED_CHARACTER');
     match(/\\u[0-9A-Fa-f]{4}/i).name('ESCAPED_UNICODE');
@@ -59,19 +42,38 @@ export default function lex(input: string) {
     );
     const INT_VALUE = an('INTEGER_PART');
     const NAME = match(/[_A-Za-z][_0-9A-Za-z]*/);
-    const PUNCTUATOR = oneOf(...Object.values(PUNCTUATORS));
     const STRING_VALUE = oneOf(
-      sequence(match('"'), maybe(repeat('STRING_CHARACTER')), match('"')),
       sequence(
         match('"""'),
         maybe(repeat('BLOCK_STRING_CHARACTER')),
         match('"""'),
       ),
+      sequence(match('"'), maybe(repeat('STRING_CHARACTER')), match('"')),
     );
 
+    // TODO: add metadata to ignorable tokens? or just hardcode the list?
     return choose({
+      //
       // Lexical tokens (2.1.6).
-      PUNCTUATOR,
+      //
+
+      // Punctuators (2.1.8).
+      BANG: match('!'),
+      DOLLAR: match('$'),
+      AMPERSAND: match('&'),
+      OPEN_PAREN: match('('),
+      CLOSE_PAREN: match(')'),
+      ELLIPSIS: match('...'),
+      COLON: match(':'),
+      EQUALS: match('='),
+      AT: match('@'),
+      OPEN_BRACKET: match('['),
+      CLOSE_BRACKET: match(']'),
+      OPEN_BRACES: match('{'),
+      BAR: match('|'),
+      CLOSE_BRACES: match('}'),
+
+      // Other lexical tokens.
       NAME,
       FLOAT_VALUE,
       INT_VALUE,
@@ -87,4 +89,16 @@ export default function lex(input: string) {
   });
 
   return lexer.lex(input);
+}
+
+const IGNORED = new Set([
+  'UNICODE_BOM',
+  'WHITESPACE',
+  'LINE_TERMINATOR',
+  'COMMENT',
+  'COMMA',
+]);
+
+export function isIgnored(token: Token) {
+  return IGNORED.has(token.name);
 }

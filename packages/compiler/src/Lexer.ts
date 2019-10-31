@@ -80,7 +80,7 @@ interface API<K, V> {
   when(predicate: (string: string) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V>): Matcher<K, V>;
 }
 
-interface Token {
+export interface Token {
   contents: string;
 
   index: number;
