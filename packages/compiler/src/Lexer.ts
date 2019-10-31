@@ -13,7 +13,7 @@ interface Matcher<K, V> {
 
   description: string;
 
-  except(predicate: Matcher<K, V>): Matcher<K, V>;
+  except(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
   exec(string: string): RegExpExecArray | null;
 
@@ -25,11 +25,11 @@ interface Matcher<K, V> {
 
   test(string: string): boolean;
 
-  to(predicate: Matcher<K, V>): Matcher<K, V>;
+  to(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
-  until(predicate: Matcher<K, V>): Matcher<K, V>;
+  until(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
-  when(predicate: (string: string) => boolean, matcher: Matcher<K, V>, alternate: Matcher<K, V>): Matcher<K, V>;
+  when(predicate: (string: string) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V>): Matcher<K, V>;
 }
 
 interface API<K, V> {
