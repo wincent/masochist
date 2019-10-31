@@ -139,8 +139,6 @@ describe('ReversibleMap()', () => {
   });
 
   describe('commit()', () => {
-    let map: ReversibleMap<string, number | boolean>;
-
     it('makes all pending changes final', () => {
       map.set('done', true);
 

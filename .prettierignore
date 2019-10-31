@@ -1,0 +1,2 @@
+# See: https://github.com/prettier/prettier/pull/6657
+packages/compiler/src/Lexer.ts
