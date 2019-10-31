@@ -51,7 +51,6 @@ export default function lex(input: string) {
       sequence(match('"'), maybe(repeat('STRING_CHARACTER')), match('"')),
     );
 
-    // TODO: add metadata to ignorable tokens? or just hardcode the list?
     return choose({
       //
       // Lexical tokens (2.1.6).
