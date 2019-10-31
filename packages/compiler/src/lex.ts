@@ -31,7 +31,7 @@ export default function lex(input: string) {
 
     sequence(match('#'), a('SOURCE_CHARACTER').until('LINE_TERMINATOR')).name(
       'COMMENT',
-    );
+    ).name('COMMENT');
 
     match(/\\["\\\/bfnrt]/).name('ESCAPED_CHARACTER');
     match(/\\u[0-9A-Fa-f]{4}/i).name('ESCAPED_UNICODE');
