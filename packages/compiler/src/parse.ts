@@ -4,8 +4,10 @@ import lex, {TokenName, Tokens, isIgnored} from './lex';
 namespace GraphQL {
   export type Definition = Operation; // | ... | ...
 
+  export type Directive = 'TBD';
+
   export interface Document {
-    definitions: Array<any>;
+    definitions: Array<Definition>;
     kind: 'DOCUMENT';
   }
 
@@ -17,13 +19,15 @@ namespace GraphQL {
   export interface Operation {
     kind: 'OPERATION';
     name?: string;
-    directives?: Array<any>;
-    selections: Array<any>;
+    directives?: Array<Directive>;
+    selections: Array<Selection>;
     type: 'MUTATION' | 'SUBSCRIPTION' | 'QUERY';
-    variables?: Array<any>;
+    variables?: Array<Variable>;
   }
 
   export type Selection = Field; // | ... | ...
+
+  export type Variable = 'TBD';
 }
 
 /**
@@ -168,7 +172,7 @@ class Parser {
   /**
    * 2.2
    */
-  parseDocument(): GraphQL.Document {
+  private parseDocument(): GraphQL.Document {
     return {
       definitions: this.list(this.parseDefinition),
       kind: 'DOCUMENT',
@@ -178,7 +182,7 @@ class Parser {
   /**
    * 2.2.
    */
-  parseDefinition(): GraphQL.Definition | null {
+  private parseDefinition(): GraphQL.Definition | null {
     if (this.at(Tokens.OPENING_BRACE)) {
       return {
         kind: 'OPERATION',
@@ -218,7 +222,7 @@ class Parser {
     return null;
   }
 
-  parseSelectionSet(): Array<GraphQL.Selection> {
+  private parseSelectionSet(): Array<GraphQL.Selection> {
     this.consume(Tokens.OPENING_BRACE);
 
     const selections = this.list(this.parseSelection);
@@ -228,7 +232,7 @@ class Parser {
     return selections;
   }
 
-  parseSelection(): GraphQL.Selection | null {
+  private parseSelection(): GraphQL.Selection | null {
     if (this.at(Tokens.NAME)) {
       return this.parseField();
       // } else if (this.at(Tokens.ELLIPSIS)) {
@@ -238,7 +242,7 @@ class Parser {
     return null;
   }
 
-  parseField(): GraphQL.Field {
+  private parseField(): GraphQL.Field {
     const name = this.consume(Tokens.NAME).contents;
 
     return {
