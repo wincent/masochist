@@ -9,3 +9,33 @@ test('parsing an empty document', () => {
     /Document must contain at least one definition/,
   );
 });
+
+test('parsing a document with an anonymous operation', () => {
+  expect(
+    parse(`
+      {
+        foo
+        bar
+      }
+  `),
+  ).toEqual({
+    definitions: [
+      {
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            kind: 'FIELD',
+            name: 'foo',
+          },
+          {
+            kind: 'FIELD',
+            name: 'bar',
+          },
+        ],
+        type: 'QUERY',
+      },
+    ],
+    kind: 'DOCUMENT',
+  });
+});
