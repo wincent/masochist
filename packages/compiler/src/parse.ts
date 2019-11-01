@@ -46,11 +46,7 @@ class Parser {
 
   private advance(name: TokenName, contents?: string): Token | null {
     if (this.at(name, contents)) {
-      const token = this._token;
-
-      this._token = null;
-
-      return token!;
+      return this.consume();
     }
 
     return null;
@@ -61,20 +57,18 @@ class Parser {
    * optionally verifies that its contents match the specified `contents` value.
    */
   private at(name: TokenName, contents?: string): boolean {
-    if (this._token === null) {
-      this._token = this.next();
-    }
+    const token = this.current();
 
-    if (!this._token) {
+    if (!token) {
       return false;
     }
 
-    if (this._token.name !== name) {
+    if (token.name !== name) {
       return false;
     }
 
     if (contents) {
-      return this._token.contents === contents;
+      return token.contents === contents;
     }
 
     return true;
@@ -101,7 +95,30 @@ class Parser {
    * Returns the current token.
    */
   private current(): Token | null {
-    return this._token || this.next();
+    if (!this._token) {
+      this._token = this.next();
+    }
+
+    return this._token;
+  }
+
+  /**
+   * Returns a non-empty array of T.
+   */
+  private list<T>(fn: () => T | null): Array<T> {
+    const items: Array<T> = [];
+
+    let item: T | null;
+
+    while ((item = fn.call(this))) {
+      items.push(item);
+    }
+
+    if (!items.length) {
+      throw new Error(`Expected at least one result from ${fn.name}()`);
+    }
+
+    return items;
   }
 
   /**
@@ -125,10 +142,6 @@ class Parser {
 
   parse(): GraphQL.Document {
     const document = this.parseDocument();
-
-    if (!document.definitions.length) {
-      throw new Error('Document must contain at least one definition');
-    }
 
     let anonymous = 0;
     let operations = 0;
@@ -156,19 +169,10 @@ class Parser {
    * 2.2
    */
   parseDocument(): GraphQL.Document {
-    const document: GraphQL.Document = {
-      definitions: [],
+    return {
+      definitions: this.list(this.parseDefinition),
       kind: 'DOCUMENT',
     };
-
-    // BUG: this has type "any"
-    let definition;
-
-    while ((definition = this.parseDefinition())) {
-      document.definitions.push(definition);
-    }
-
-    return document;
   }
 
   /**
@@ -217,25 +221,21 @@ class Parser {
   parseSelectionSet(): Array<GraphQL.Selection> {
     this.consume(Tokens.OPENING_BRACE);
 
-    const selections = [];
-
-    let selection;
-
-    while ((selection = this.parseSelection())) {
-      selections.push(selection);
-    }
+    const selections = this.list(this.parseSelection);
 
     this.consume(Tokens.CLOSING_BRACE);
 
     return selections;
   }
 
-  parseSelection() {
+  parseSelection(): GraphQL.Selection | null {
     if (this.at(Tokens.NAME)) {
       return this.parseField();
-    } else if (this.at(Tokens.ELLIPSIS)) {
-      this.consume();
+      // } else if (this.at(Tokens.ELLIPSIS)) {
+      //   this.consume();
     }
+
+    return null;
   }
 
   parseField(): GraphQL.Field {
