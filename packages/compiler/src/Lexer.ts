@@ -1,7 +1,7 @@
 import permute from './permute';
 import ReversibleMap from './ReversibleMap';
 
-interface Matcher<K, V> {
+export interface Matcher<K, V> {
   _description?: string;
 
   _onEnter?: (meta: ReversibleMap<K, V>) => void;
@@ -86,6 +86,10 @@ export interface Token {
   index: number;
 
   name: string;
+
+  next?: Token;
+
+  previous?: Token;
 }
 
 type Advance = () => Token;
@@ -114,12 +118,12 @@ type Init<K, V> = (api: API<K, V>) => Advance;
  * any time.
  */
 export default class Lexer<K, V> {
-  _init: Init<K, V>;
+  private _init: Init<K, V>;
 
   /**
    * All matchers keyed by name.
    */
-  _matchers: Map<string, Matcher<K, V>>;
+  private _matchers: Map<string, Matcher<K, V>>;
 
   constructor(init: Init<K, V>) {
     this._init = init;
@@ -127,7 +131,7 @@ export default class Lexer<K, V> {
     this._matchers = new Map();
   }
 
-  *lex(input: string) {
+  *lex(input: string): Generator<Token> {
     const lookup = (matcher: string | Matcher<K, V>) => this.lookup(matcher);
 
     const setMatcher = (name: string, matcher: Matcher<K, V>) => this._matchers.set(name, matcher);

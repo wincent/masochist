@@ -1,10 +1,38 @@
-import Lexer, {Token} from './Lexer';
+import Lexer, {Matcher, Token} from './Lexer';
+
+export const Tokens = {
+  AMPERSAND: 'AMPERSAND',
+  AT: 'AT',
+  BANG: 'BANG',
+  BAR: 'BAR',
+  CLOSING_BRACE: 'CLOSING_BRACE',
+  CLOSING_BRACKET: 'CLOSING_BRACKET',
+  CLOSING_PAREN: 'CLOSING_PAREN',
+  COLON: 'COLON',
+  COMMA: 'COMMA',
+  COMMENT: 'COMMENT',
+  DOLLAR: 'DOLLAR',
+  ELLIPSIS: 'ELLIPSIS',
+  EQUALS: 'EQUALS',
+  FLOAT_VALUE: 'FLOAT_VALUE',
+  INT_VALUE: 'INT_VALUE',
+  LINE_TERMINATOR: 'LINE_TERMINATOR',
+  NAME: 'NAME',
+  OPENING_BRACE: 'OPENING_BRACE',
+  OPENING_BRACKET: 'OPENING_BRACKET',
+  OPENING_PAREN: 'OPENING_PAREN',
+  STRING_VALUE: 'STRING_VALUE',
+  UNICODE_BOM: 'UNICODE_BOM',
+  WHITESPACE: 'WHITESPACE',
+} as const;
+
+export type TokenName = keyof typeof Tokens;
 
 /**
  * @see https://graphql.github.io/graphql-spec/draft/
  */
 export default function lex(input: string) {
-  const lexer = new Lexer(api => {
+  const lexer = new Lexer<unknown, unknown>(api => {
     const {a, an, choose, match, maybe, oneOf, repeat, sequence} = api;
 
     oneOf(
@@ -40,8 +68,11 @@ export default function lex(input: string) {
         'FRACTIONAL_PART',
       ),
     );
+
     const INT_VALUE = an('INTEGER_PART');
+
     const NAME = match(/[_A-Za-z][_0-9A-Za-z]*/);
+
     const STRING_VALUE = oneOf(
       sequence(
         match('"""'),
@@ -51,51 +82,55 @@ export default function lex(input: string) {
       sequence(match('"'), maybe(repeat('STRING_CHARACTER')), match('"')),
     );
 
-    return choose({
+    const choices: {[K in TokenName]: Matcher<unknown, unknown>} = {
       //
-      // Lexical tokens (2.1.6).
-      //
-
       // Punctuators (2.1.8).
+      //
       BANG: match('!'),
       DOLLAR: match('$'),
       AMPERSAND: match('&'),
-      OPEN_PAREN: match('('),
-      CLOSE_PAREN: match(')'),
+      OPENING_PAREN: match('('),
+      CLOSING_PAREN: match(')'),
       ELLIPSIS: match('...'),
       COLON: match(':'),
       EQUALS: match('='),
       AT: match('@'),
-      OPEN_BRACKET: match('['),
-      CLOSE_BRACKET: match(']'),
-      OPEN_BRACES: match('{'),
+      OPENING_BRACKET: match('['),
+      CLOSING_BRACKET: match(']'),
+      OPENING_BRACE: match('{'),
       BAR: match('|'),
-      CLOSE_BRACES: match('}'),
+      CLOSING_BRACE: match('}'),
 
-      // Other lexical tokens.
+      //
+      // (Other) lexical tokens (2.1.6).
+      //
       NAME,
       FLOAT_VALUE,
       INT_VALUE,
       STRING_VALUE,
 
+      //
       // Ignored tokens (2.1.7).
+      //
       UNICODE_BOM: match('\ufeff'),
       WHITESPACE: match(/[\t ]/),
       LINE_TERMINATOR: a('LINE_TERMINATOR'),
       COMMENT: a('COMMENT'),
       COMMA: match(','),
-    });
+    };
+
+    return choose(choices);
   });
 
   return lexer.lex(input);
 }
 
-const IGNORED = new Set([
-  'UNICODE_BOM',
-  'WHITESPACE',
-  'LINE_TERMINATOR',
-  'COMMENT',
-  'COMMA',
+const IGNORED = new Set<string>([
+  Tokens.COMMA,
+  Tokens.COMMENT,
+  Tokens.LINE_TERMINATOR,
+  Tokens.UNICODE_BOM,
+  Tokens.WHITESPACE,
 ]);
 
 export function isIgnored(token: Token) {
