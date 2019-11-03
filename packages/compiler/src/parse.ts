@@ -12,6 +12,7 @@ namespace GraphQL {
   }
 
   export interface Field {
+    alias?: string;
     kind: 'FIELD';
     name: string;
   }
@@ -40,7 +41,7 @@ export default function parse(input: string) {
 }
 
 class Parser {
-  private _iterator: Generator<Token>;
+  private _iterator: Generator<Token, Token>;
   private _token: Token | null;
 
   constructor(input: string) {
@@ -243,11 +244,28 @@ class Parser {
   }
 
   private parseField(): GraphQL.Field {
-    const name = this.consume(Tokens.NAME).contents;
+    const aliasOrName = this.consume(Tokens.NAME).contents;
+
+    const alias = this.at(Tokens.COLON) ? aliasOrName : undefined;
+
+    const name = this.at(Tokens.COLON)
+      ? (this.consume(), this.consume(Tokens.NAME).contents)
+      : aliasOrName;
+
+    if (this.at(Tokens.OPENING_PAREN)) {
+      this.consume();
+      const args = this.list(this.parseArgument);
+      this.consume(Tokens.CLOSING_PAREN);
+    }
+
+    // TODO: directives
 
     return {
+      alias,
       kind: 'FIELD',
       name,
     };
   }
+
+  private parseArgument() {}
 }
