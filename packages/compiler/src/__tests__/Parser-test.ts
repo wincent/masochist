@@ -1,11 +1,16 @@
 import Parser, {Grammar, choice, plus, sequence, t} from '../Parser';
 import lex, {Tokens, isIgnored} from '../lex';
 
+/**
+ * Simplified type for GraphQL AST nodes.
+ */
+type ASTNode = any;
+
 test('blinking light', () => {
-  const grammar: Grammar = {
+  const grammar: Grammar<ASTNode> = {
     document: [
       plus('operation'),
-      operations => ({
+      (operations: any): ASTNode => ({
         type: 'DOCUMENT',
         operations,
       }),
@@ -15,7 +20,7 @@ test('blinking light', () => {
 
     anonymousOperation: [
       'selectionSet',
-      selections => ({
+      (selections: any): ASTNode => ({
         kind: 'QUERY',
         type: 'OPERATION',
         selections,
@@ -36,12 +41,12 @@ test('blinking light', () => {
         choice('field', 'fragmentSpread', 'inlineFragment').plus,
         t(Tokens.CLOSING_BRACE),
       ),
-      ([, selections]) => selections,
+      ([, selections]: [unknown, any]): ASTNode => selections,
     ],
 
     field: [
       t(Tokens.NAME),
-      name => ({
+      (name: string): ASTNode => ({
         name,
         type: 'FIELD',
       }),
@@ -52,7 +57,7 @@ test('blinking light', () => {
     inlineFragment: t(Tokens.ELLIPSIS),
   };
 
-  const parser = new Parser(grammar, isIgnored);
+  const parser = new Parser<Grammar<ASTNode>>(grammar, isIgnored);
 
   const tokens = lex(`
     # An anonymous operation with one field.

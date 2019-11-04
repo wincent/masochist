@@ -116,6 +116,9 @@ type Init<K, V> = (api: API<K, V>) => Advance;
  * object. Arbitrary data can be written to the `meta` object (often this will
  * happen in an `onMatch()` callback once a matcher has succeeded) and read at
  * any time.
+ *
+ * The type parameters `K` and `V` refer to the type of the keys for the `meta`
+ * object, and the type of its values, respectively.
  */
 export default class Lexer<K, V> {
   private _init: Init<K, V>;

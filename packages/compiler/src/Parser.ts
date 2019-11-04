@@ -1,6 +1,11 @@
-export type Grammar = {
-  // TODO: improve types here; should probably be generic?
-  [symbolName: string]: Expression | [Expression, (result: any) => any];
+import {Token} from './Lexer';
+
+/**
+ * The type parameter `A` is the type of the AST nodes produced by the Grammar.
+ */
+export type Grammar<A> = {
+  // TODO: improve types here
+  [symbolName: string]: Expression | [Expression, (result: any) => A];
 };
 
 interface ExpressionOperators {
@@ -73,20 +78,23 @@ type NonTerminalSymbol =
 
 /**
  * Packrat PEG parser.
+ *
+ * The type parameter, `A` is the type of AST nodes returned by the production
+ * functions in the Grammar.
  */
-export default class Parser<T> {
-  private _grammar: Grammar;
-  private _isIgnored: (token: T) => boolean;
-  private _iterator: Generator<T, T> | null;
+export default class Parser<A> {
+  private _grammar: Grammar<A>;
+  private _isIgnored: (token: Token) => boolean;
+  private _iterator: Generator<Token, Token> | null;
 
-  constructor(grammar: Grammar, isIgnored: (token: T) => boolean) {
+  constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
     this._grammar = grammar;
     this._isIgnored = isIgnored;
     this._iterator = null;
   }
 
   // TODO: provide return type here, should be generic
-  parse(iterator: Generator<T, T>): any {
+  parse(iterator: Generator<Token, Token>): any {
     this._iterator = iterator;
 
     const rules = Object.keys(this._grammar);
@@ -113,8 +121,8 @@ export default class Parser<T> {
   // TODO: error handling
   private evaluate(
     start: Expression,
-    current: T | null,
-  ): [any, T | null] | null {
+    current: Token | null,
+  ): [A, Token | null] | null {
     if (!current) {
       return null;
     }
@@ -147,11 +155,11 @@ export default class Parser<T> {
 
         case 'CHOICE':
           {
-            let next = current;
+            let next: Token | null = current;
 
             for (let i = 0; i < expression.expressions.length; i++) {
-              const maybe = this.evaluate(expression.expressions[i], next);
               let result;
+              const maybe = this.evaluate(expression.expressions[i], next);
 
               if (maybe) {
                 [result, next] = maybe;
@@ -173,7 +181,7 @@ export default class Parser<T> {
         case 'PLUS':
           {
             const results = [];
-            let next = current;
+            let next: Token | null = current;
 
             while (true) {
               const maybe = this.evaluate(expression.expression, next);
@@ -196,7 +204,7 @@ export default class Parser<T> {
 
         case 'SEQUENCE': {
           const results = [];
-          let next = current;
+          let next: Token | null = current;
 
           for (let i = 0; i < expression.expressions.length; i++) {
             const maybe = this.evaluate(expression.expressions[i], next);
@@ -240,8 +248,9 @@ export default class Parser<T> {
    * Returns the next lexical (non-ignored) Token after `token`, or
    * `null` if there isn't one.
    */
-  private next(token: T | null): T | null {
+  private next(token: Token | null): Token | null {
     let current = token;
+
     if (current === null) {
       const {done, value} = this._iterator!.next();
 
@@ -252,7 +261,7 @@ export default class Parser<T> {
     }
 
     while (true) {
-      current = current.next;
+      current = current.next ?? null;
 
       if (!current) {
         return null;
@@ -375,31 +384,30 @@ export function t(
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
   return withProperties({
-    kind: 'TOKEN',
-    name: tokenName,
+    kind: 'TOKEN', name: tokenName,
     predicate,
   });
 }
 
-function withProperties<T extends Expression>(
+function withProperties<T extends unknown> (
   base: T,
 ): T & ExpressionOperators {
   Object.defineProperties(base, {
     optional: {
       get() {
-        return withProperties(optional(base));
+        return withProperties(optional(base as Expression));
       },
     },
 
     plus: {
       get() {
-        return withProperties(plus(base));
+        return withProperties(plus(base as Expression));
       },
     },
 
     star: {
       get() {
-        return withProperties(star(base));
+        return withProperties(star(base as Expression));
       },
     },
   });
