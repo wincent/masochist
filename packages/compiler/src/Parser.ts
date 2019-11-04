@@ -261,7 +261,7 @@ export default class Parser<A> {
     }
 
     while (true) {
-      current = current.next ?? null;
+      current = current.next || null;
 
       if (!current) {
         return null;
@@ -384,14 +384,13 @@ export function t(
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
   return withProperties({
-    kind: 'TOKEN', name: tokenName,
+    kind: 'TOKEN',
+    name: tokenName,
     predicate,
   });
 }
 
-function withProperties<T extends unknown> (
-  base: T,
-): T & ExpressionOperators {
+function withProperties<T extends unknown>(base: T): T & ExpressionOperators {
   Object.defineProperties(base, {
     optional: {
       get() {
