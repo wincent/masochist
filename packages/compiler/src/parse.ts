@@ -1,7 +1,10 @@
 import {Token} from './Lexer';
+import Parser, {Grammar, choice, plus, sequence, t} from './Parser';
 import lex, {TokenName, Tokens, isIgnored} from './lex';
 
 namespace GraphQL {
+  export type Node = Document | Field | Operation;
+
   export type Definition = Operation; // | ... | ...
 
   export type Directive = 'TBD';
@@ -31,241 +34,85 @@ namespace GraphQL {
   export type Variable = 'TBD';
 }
 
+// TODO: move this into a separate file
+const GRAMMAR: Grammar<GraphQL.Node> = {
+  document: [
+    plus('definition'),
+    (definitions: any): GraphQL.Document => {
+      if (!definitions.length) {
+        throw new Error('Document must contain at least one definition');
+      }
+
+      return {
+        definitions,
+        kind: 'DOCUMENT',
+      };
+    },
+  ],
+
+  definition: choice('operation'),
+
+  operation: choice('anonymousOperation', 'queryOperation'),
+
+  anonymousOperation: [
+    'selectionSet',
+    (selections: any): GraphQL.Operation => ({
+      kind: 'OPERATION',
+      selections,
+      type: 'QUERY',
+    }),
+  ],
+
+  queryOperation: [
+    sequence(
+      t(Tokens.NAME, contents => contents === 'query'),
+      t(Tokens.NAME),
+      'selectionSet',
+    ),
+    // TODO: add .silent/ignore/omit() helper...? (to avoid this ugly destructuring)
+    ([, name, selections]) => ({
+      kind: 'OPERATION',
+      name,
+      selections,
+      type: 'QUERY',
+    }),
+  ],
+
+  selectionSet: [
+    sequence(
+      t(Tokens.OPENING_BRACE),
+      choice('field', 'fragmentSpread', 'inlineFragment').plus,
+      t(Tokens.CLOSING_BRACE),
+    ),
+    ([, selections]: [unknown, any]): any => selections,
+  ],
+
+  field: [
+    t(Tokens.NAME),
+    (name: string): GraphQL.Field => ({
+      kind: 'FIELD',
+      name,
+    }),
+  ],
+
+  // TODO: flesh these out
+  fragmentSpread: t(Tokens.ELLIPSIS),
+  inlineFragment: t(Tokens.ELLIPSIS),
+};
+
 /**
  * @see https://graphql.github.io/graphql-spec/draft/
  */
-export default function parse(input: string) {
-  const parser = new Parser(input);
+export default function parse(input: string): GraphQL.Node {
+  const parser = new Parser<GraphQL.Node>(GRAMMAR, isIgnored);
 
-  return parser.parse();
-}
+  const tokens = lex(input);
 
-class Parser {
-  private _iterator: Generator<Token, Token>;
-  private _token: Token | null;
+  const result = parser.parse(tokens);
 
-  constructor(input: string) {
-    this._iterator = lex(input);
-    this._token = null;
+  if (!result) {
+    throw new Error('Failed to parse document');
   }
 
-  private advance(name: TokenName, contents?: string): Token | null {
-    if (this.at(name, contents)) {
-      return this.consume();
-    }
-
-    return null;
-  }
-
-  /**
-   * Returns true if the current token is of the type indicated by `name`, and
-   * optionally verifies that its contents match the specified `contents` value.
-   */
-  private at(name: TokenName, contents?: string): boolean {
-    const token = this.current();
-
-    if (!token) {
-      return false;
-    }
-
-    if (token.name !== name) {
-      return false;
-    }
-
-    if (contents) {
-      return token.contents === contents;
-    }
-
-    return true;
-  }
-
-  /**
-   * Attempt to consume the current token.
-   *
-   * Throws if the current token does not match the type specified by `name`.
-   */
-  private consume(name?: TokenName): Token {
-    if (name && !this.at(name)) {
-      throw new Error(`Expected ${name} at $LOCATION`);
-    }
-
-    const token = this._token;
-
-    this._token = null;
-
-    return token!;
-  }
-
-  /**
-   * Returns the current token.
-   */
-  private current(): Token | null {
-    if (!this._token) {
-      this._token = this.next();
-    }
-
-    return this._token;
-  }
-
-  /**
-   * Returns a non-empty array of T.
-   */
-  private list<T>(fn: () => T | null): Array<T> {
-    const items: Array<T> = [];
-
-    let item: T | null;
-
-    while ((item = fn.call(this))) {
-      items.push(item);
-    }
-
-    if (!items.length) {
-      throw new Error(`Expected at least one result from ${fn.name}()`);
-    }
-
-    return items;
-  }
-
-  /**
-   * Returns the next lexical (non-ignored) Token, or `null` if there isn't one.
-   */
-  private next(): Token | null {
-    while (true) {
-      const {done, value} = this._iterator.next();
-
-      if (done) {
-        return null;
-      }
-
-      if (isIgnored(value)) {
-        continue;
-      }
-
-      return value;
-    }
-  }
-
-  parse(): GraphQL.Document {
-    const document = this.parseDocument();
-
-    let anonymous = 0;
-    let operations = 0;
-
-    document.definitions.forEach(definition => {
-      if (definition.kind === 'OPERATION') {
-        operations++;
-
-        if (definition.name === undefined) {
-          anonymous++;
-        }
-      }
-    });
-
-    if (anonymous && operations > 1) {
-      throw new Error(
-        'Anonymous operation must be the only operation in the document',
-      );
-    }
-
-    return document;
-  }
-
-  /**
-   * 2.2
-   */
-  private parseDocument(): GraphQL.Document {
-    return {
-      definitions: this.list(this.parseDefinition),
-      kind: 'DOCUMENT',
-    };
-  }
-
-  /**
-   * 2.2.
-   */
-  private parseDefinition(): GraphQL.Definition | null {
-    if (this.at(Tokens.OPENING_BRACE)) {
-      return {
-        kind: 'OPERATION',
-        name: undefined,
-        selections: this.parseSelectionSet(),
-        type: 'QUERY',
-      };
-    } else if (this.advance(Tokens.NAME, 'mutation')) {
-      const name = this.consume(Tokens.NAME).contents;
-
-      return {
-        kind: 'OPERATION',
-        name,
-        selections: this.parseSelectionSet(),
-        type: 'MUTATION',
-      };
-    } else if (this.advance(Tokens.NAME, 'query')) {
-      const name = this.consume(Tokens.NAME).contents;
-
-      return {
-        kind: 'OPERATION',
-        name,
-        selections: this.parseSelectionSet(),
-        type: 'QUERY',
-      };
-    } else if (this.advance(Tokens.NAME, 'subscription')) {
-      const name = this.consume(Tokens.NAME).contents;
-
-      return {
-        kind: 'OPERATION',
-        name,
-        selections: this.parseSelectionSet(),
-        type: 'SUBSCRIPTION',
-      };
-    }
-
-    return null;
-  }
-
-  private parseSelectionSet(): Array<GraphQL.Selection> {
-    this.consume(Tokens.OPENING_BRACE);
-
-    const selections = this.list(this.parseSelection);
-
-    this.consume(Tokens.CLOSING_BRACE);
-
-    return selections;
-  }
-
-  private parseSelection(): GraphQL.Selection | null {
-    if (this.at(Tokens.NAME)) {
-      return this.parseField();
-      // } else if (this.at(Tokens.ELLIPSIS)) {
-      //   this.consume();
-    }
-
-    return null;
-  }
-
-  private parseField(): GraphQL.Field {
-    const aliasOrName = this.consume(Tokens.NAME).contents;
-
-    const alias = this.at(Tokens.COLON) ? aliasOrName : undefined;
-
-    const name = this.at(Tokens.COLON)
-      ? (this.consume(), this.consume(Tokens.NAME).contents)
-      : aliasOrName;
-
-    if (this.at(Tokens.OPENING_PAREN)) {
-      this.consume();
-      const args = this.list(this.parseArgument);
-      this.consume(Tokens.CLOSING_PAREN);
-    }
-
-    // TODO: directives
-
-    return {
-      alias,
-      kind: 'FIELD',
-      name,
-    };
-  }
-
-  private parseArgument() {}
+  return result;
 }

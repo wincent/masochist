@@ -93,8 +93,7 @@ export default class Parser<A> {
     this._iterator = null;
   }
 
-  // TODO: provide return type here, should be generic
-  parse(iterator: Generator<Token, Token>): any {
+  parse(iterator: Generator<Token, Token>): A | null {
     this._iterator = iterator;
 
     const rules = Object.keys(this._grammar);
@@ -116,6 +115,8 @@ export default class Parser<A> {
 
       return result;
     }
+
+    return null;
   }
 
   // TODO: error handling
@@ -159,6 +160,7 @@ export default class Parser<A> {
 
             for (let i = 0; i < expression.expressions.length; i++) {
               let result;
+
               const maybe = this.evaluate(expression.expressions[i], next);
 
               if (maybe) {
@@ -203,6 +205,7 @@ export default class Parser<A> {
           break;
 
         case 'SEQUENCE': {
+          // TODO: report rightmost error
           const results = [];
           let next: Token | null = current;
 

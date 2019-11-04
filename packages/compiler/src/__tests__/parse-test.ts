@@ -2,13 +2,11 @@ import parse from '../parse';
 
 test('parsing an empty document', () => {
   expect(() => parse('')).toThrow(
-    /Expected at least one result from parseDefinition()/,
-    ///Document must contain at least one definition/,
+    /Document must contain at least one definition/,
   );
 
   expect(() => parse('# just a comment')).toThrow(
-    /Expected at least one result from parseDefinition()/,
-    ///Document must contain at least one definition/,
+    /Document must contain at least one definition/,
   );
 });
 
