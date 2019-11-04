@@ -1,6 +1,20 @@
 export type Grammar = {
-  [symbolName: string]: Expression;
+  // TODO: improve types here; should probably be generic?
+  [symbolName: string]: Expression | [Expression, (result: any) => any];
 };
+
+interface ExpressionOperators {
+  optional: Expression;
+
+  // TODO: consider writing these like this instead:
+  // foo['?']
+  // baz['+']
+  // bar['*']
+
+  plus: Expression;
+
+  star: Expression;
+}
 
 type Expression = TerminalSymbol | NonTerminalSymbol;
 
@@ -8,7 +22,7 @@ type TerminalSymbol = {
   kind: 'TOKEN';
   name: string;
   predicate?: (contents: string) => boolean;
-};
+} & ExpressionOperators;
 
 type AndExpression = {
   kind: 'AND';
@@ -18,7 +32,7 @@ type AndExpression = {
 type ChoiceExpression = {
   kind: 'CHOICE';
   expressions: Array<Expression>;
-};
+} & ExpressionOperators;
 
 type NotExpression = {
   kind: 'NOT';
@@ -35,7 +49,10 @@ type PlusExpression = {
   expression: Expression;
 };
 
-type SequenceExpression = Array<Expression>;
+type SequenceExpression = {
+  kind: 'SEQUENCE';
+  expressions: Array<Expression>;
+} & ExpressionOperators;
 
 type StarExpression = {
   kind: 'STAR';
@@ -80,57 +97,183 @@ export default class Parser<T> {
 
     const startRule = rules[0];
 
-    return this.evaluate(startRule);
-  }
+    const maybe = this.evaluate(startRule, this.next(null));
 
-  private evaluate(rule: string) {
-    console.log('eval', rule);
-    const expression = this._grammar[rule];
+    if (maybe) {
+      const [result, next] = maybe;
 
-    if (typeof expression === 'string') {
-      return this.evaluate(expression);
-    } else if (Array.isArray(expression)) {
-      // try in sequence
-    } else {
-      switch (expression.kind) {
-        case 'CHOICE':
-          // try one after another
-          for (let i = 0; i < expression.expressions.length; i++) {
-            const x = expression.expressions[i];
-            return this.evaluate(x);
-          }
-          break;
-        case 'PLUS':
-          break;
-        case 'TOKEN':
-          break;
+      if (this.next(next) !== null) {
+        throw new Error('Failed to consume all input');
       }
+
+      return result;
     }
   }
 
+  // TODO: error handling
+  private evaluate(
+    start: Expression,
+    current: T | null,
+  ): [any, T | null] | null {
+    if (!current) {
+      return null;
+    }
+
+    const rule = typeof start === 'string' ? this._grammar[start] : start;
+
+    if (!rule) {
+      throw new Error(
+        `Failed to resolve symbol reference ${JSON.stringify(rule)}`,
+      );
+    }
+
+    const [expression, production] = Array.isArray(rule)
+      ? rule
+      : [rule, identity];
+
+    if (typeof expression === 'string') {
+      const maybe = this.evaluate(expression, current);
+
+      if (maybe) {
+        const [result, next] = maybe;
+
+        return [production(result), next];
+      }
+    } else {
+      switch (expression.kind) {
+        case 'AND':
+          // TODO
+          break;
+
+        case 'CHOICE':
+          {
+            let next = current;
+
+            for (let i = 0; i < expression.expressions.length; i++) {
+              const maybe = this.evaluate(expression.expressions[i], next);
+              let result;
+
+              if (maybe) {
+                [result, next] = maybe;
+
+                return [production(result), next];
+              }
+            }
+          }
+          break;
+
+        case 'NOT':
+          // TODO
+          break;
+
+        case 'OPTIONAL':
+          // TODO
+          break;
+
+        case 'PLUS':
+          {
+            const results = [];
+            let next = current;
+
+            while (true) {
+              const maybe = this.evaluate(expression.expression, next);
+              let result;
+
+              if (maybe) {
+                [result, next] = maybe;
+
+                results.push(result);
+              } else {
+                break;
+              }
+            }
+
+            if (results.length) {
+              return [production(results), next];
+            }
+          }
+          break;
+
+        case 'SEQUENCE': {
+          const results = [];
+          let next = current;
+
+          for (let i = 0; i < expression.expressions.length; i++) {
+            const maybe = this.evaluate(expression.expressions[i], next);
+            let result;
+
+            if (maybe) {
+              [result, next] = maybe;
+
+              results.push(result);
+            } else {
+              return null;
+            }
+          }
+
+          return [production(results), next];
+        }
+
+        case 'STAR':
+          // TODO
+          break;
+
+        case 'TOKEN':
+          if (current && current.name === expression.name) {
+            if (
+              expression.predicate &&
+              !expression.predicate(current.contents)
+            ) {
+              return null;
+            }
+
+            return [production(current.contents), this.next(current)];
+          }
+          break;
+      }
+    }
+
+    return null;
+  }
+
   /**
-   * Returns the next lexical (non-ignored) Token, or `null` if there isn't one.
-   *
-   * TODO: may need/want to do this with next/previous accessors that ihave on
-   * the tokens so that I can do rewind and restart etc
+   * Returns the next lexical (non-ignored) Token after `token`, or
+   * `null` if there isn't one.
    */
-  private next(): T | null {
-    while (true) {
-      const {done, value} = this._iterator.next();
+  private next(token: T | null): T | null {
+    let current = token;
+    if (current === null) {
+      const {done, value} = this._iterator!.next();
 
       if (done) {
         return null;
       }
+      current = value;
+    }
 
-      if (this._isIgnored(value)) {
+    while (true) {
+      current = current.next;
+
+      if (!current) {
+        return null;
+      }
+
+      // TODO: may want to memoize list of non-ignored tokens so that we don't
+      // have to repeatedly scan through ignored tokens.
+      if (this._isIgnored(current)) {
         continue;
       }
 
-      return value;
+      return current;
     }
   }
 }
 
+/**
+ * "And" predicate.
+ *
+ * Succeeds when `expression` succeeds, but does not consume any input.
+ */
 export function and(expression: Expression): AndExpression {
   return {
     expression,
@@ -138,13 +281,31 @@ export function and(expression: Expression): AndExpression {
   };
 }
 
+/**
+ * Ordered choice.
+ *
+ * Tries each expression in `expressions`, succeeding as soon as encountering a
+ * successful expression. After each unsuccessful match, backtracks.
+ */
 export function choice(...expressions: Array<Expression>): ChoiceExpression {
-  return {
+  return withProperties({
     expressions,
     kind: 'CHOICE',
-  };
+  });
 }
 
+/**
+ * Identity function that returns its argument unmodified.
+ */
+function identity<T extends any>(id: T): T {
+  return id;
+}
+
+/**
+ * "Not" predicate.
+ *
+ * Succeeds when `expression` does not succeed, but does not consume any input.
+ */
 export function not(expression: Expression): NotExpression {
   return {
     expression,
@@ -152,6 +313,11 @@ export function not(expression: Expression): NotExpression {
   };
 }
 
+/**
+ * Optional combinator.
+ *
+ * Succeeds when 0 or 1 repetitions of `expression` succeed.
+ */
 export function optional(expression: Expression): OptionalExpression {
   return {
     expression,
@@ -161,6 +327,8 @@ export function optional(expression: Expression): OptionalExpression {
 
 /**
  * Kleene plus.
+ *
+ * Succeeds when 1 or more repetitions of `expression` succeed.
  */
 export function plus(expression: Expression): PlusExpression {
   return {
@@ -170,7 +338,24 @@ export function plus(expression: Expression): PlusExpression {
 }
 
 /**
+ * Sequence.
+ *
+ * Tries each expression in `expressions`, succeeding if all expressions are
+ * successful. Fails on any unsuccessful match.
+ */
+export function sequence(
+  ...expressions: Array<Expression>
+): SequenceExpression {
+  return withProperties({
+    expressions,
+    kind: 'SEQUENCE',
+  });
+}
+
+/**
  * Kleene star.
+ *
+ * Succeeds when 0 or more repetitions of `expression` succeed.
  */
 export function star(expression: Expression): StarExpression {
   return {
@@ -179,13 +364,45 @@ export function star(expression: Expression): StarExpression {
   };
 }
 
+/**
+ * Represents a terminal symbol of the type identified by `tokenName`.
+ *
+ * The optional `predicate` function allows an arbitrary check of the token
+ * contents to be specified to gate success.
+ */
 export function t(
   tokenName: string,
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
-  return {
+  return withProperties({
     kind: 'TOKEN',
     name: tokenName,
     predicate,
-  };
+  });
+}
+
+function withProperties<T extends Expression>(
+  base: T,
+): T & ExpressionOperators {
+  Object.defineProperties(base, {
+    optional: {
+      get() {
+        return withProperties(optional(base));
+      },
+    },
+
+    plus: {
+      get() {
+        return withProperties(plus(base));
+      },
+    },
+
+    star: {
+      get() {
+        return withProperties(star(base));
+      },
+    },
+  });
+
+  return base as T & ExpressionOperators;
 }
