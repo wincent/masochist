@@ -4,26 +4,52 @@ import lex, {Tokens, isIgnored} from '../lex';
 /**
  * Simplified type for GraphQL AST nodes.
  */
-type ASTNode = any;
+type ASTNode = Definition | Document | Field | Operation | Selection;
+
+type Definition = Operation;
+
+type Document = {
+  definitions: Array<Definition>;
+  kind: 'DOCUMENT';
+};
+
+type Field = {
+  kind: 'FIELD';
+  name: string;
+};
+
+type Operation = {
+  kind: 'OPERATION';
+  selections: Array<Selection>;
+  type: 'MUTATION' | 'QUERY' | 'SUBSCRIPTION';
+};
+
+type Selection = Field;
 
 test('blinking light', () => {
   const grammar: Grammar<ASTNode> = {
     document: [
-      plus('operation'),
-      (operations: any): ASTNode => ({
-        type: 'DOCUMENT',
-        operations,
+      // TODO: i think this will read better as:
+      // r('definition')['+'],
+      // or:
+      // r('definition').plus,
+      plus('definition'),
+      (definitions: any): ASTNode => ({
+        definitions,
+        kind: 'DOCUMENT',
       }),
     ],
+
+    definition: choice('operation'),
 
     operation: choice('anonymousOperation', 'queryOperation'),
 
     anonymousOperation: [
       'selectionSet',
       (selections: any): ASTNode => ({
-        kind: 'QUERY',
-        type: 'OPERATION',
+        kind: 'OPERATION',
         selections,
+        type: 'QUERY',
       }),
     ],
 
@@ -47,8 +73,8 @@ test('blinking light', () => {
     field: [
       t(Tokens.NAME),
       (name: string): ASTNode => ({
+        kind: 'FIELD',
         name,
-        type: 'FIELD',
       }),
     ],
 
@@ -57,7 +83,7 @@ test('blinking light', () => {
     inlineFragment: t(Tokens.ELLIPSIS),
   };
 
-  const parser = new Parser<Grammar<ASTNode>>(grammar, isIgnored);
+  const parser = new Parser<ASTNode>(grammar, isIgnored);
 
   const tokens = lex(`
     # An anonymous operation with one field.
@@ -67,18 +93,18 @@ test('blinking light', () => {
   `);
 
   expect(parser.parse(tokens)).toEqual({
-    operations: [
+    definitions: [
       {
-        kind: 'QUERY',
+        type: 'QUERY',
         selections: [
           {
+            kind: 'FIELD',
             name: 'foo',
-            type: 'FIELD',
           },
         ],
-        type: 'OPERATION',
+        kind: 'OPERATION',
       },
     ],
-    type: 'DOCUMENT',
+    kind: 'DOCUMENT',
   });
 });

@@ -4,7 +4,7 @@ import {Token} from './Lexer';
  * The type parameter `A` is the type of the AST nodes produced by the Grammar.
  */
 export type Grammar<A> = {
-  // TODO: improve types here
+  // TODO: see if I can get rid of `any` type here.
   [symbolName: string]: Expression | [Expression, (result: any) => A];
 };
 
