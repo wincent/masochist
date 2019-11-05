@@ -368,6 +368,7 @@ test('parsing fields with directives', () => {
         foo
         bar @defer
         baz @include(if: true)
+        bing @skip(if: false)
       }
   `),
   ).toEqual({
@@ -420,6 +421,29 @@ test('parsing fields with directives', () => {
             ],
             kind: 'FIELD',
             name: 'baz',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: [
+              {
+                arguments: [
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'if',
+                    value: {
+                      kind: 'BOOLEAN',
+                      value: false,
+                    },
+                  },
+                ],
+                kind: 'DIRECTIVE',
+                name: 'skip',
+              },
+            ],
+            kind: 'FIELD',
+            name: 'bing',
             selections: undefined,
           },
         ],
