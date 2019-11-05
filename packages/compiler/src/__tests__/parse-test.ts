@@ -18,10 +18,15 @@ test('parsing a document with a named query', () => {
         foo
         bar
       }
+
+      query LiveQuery @live {
+        fancy
+      }
   `),
   ).toEqual({
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: 'MyQuery',
         selections: [
@@ -44,6 +49,28 @@ test('parsing a document with a named query', () => {
         ],
         type: 'QUERY',
       },
+      {
+        directives: [
+          {
+            arguments: undefined,
+            kind: 'DIRECTIVE',
+            name: 'live',
+          },
+        ],
+        kind: 'OPERATION',
+        name: 'LiveQuery',
+        selections: [
+          {
+            alias: undefined,
+            arguments: undefined,
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'fancy',
+            selections: undefined,
+          },
+        ],
+        type: 'QUERY',
+      },
     ],
     kind: 'DOCUMENT',
   });
@@ -60,6 +87,7 @@ test('parsing a document with an anonymous operation', () => {
   ).toEqual({
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: undefined,
         selections: [
@@ -161,6 +189,7 @@ test('parsing a document with trailing ignored tokens', () => {
   ).toEqual({
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: undefined,
         selections: [
@@ -191,6 +220,7 @@ test('parsing fields with aliases', () => {
     kind: 'DOCUMENT',
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: undefined,
         selections: [
@@ -224,6 +254,7 @@ test('parsing fields with nested selections', () => {
     kind: 'DOCUMENT',
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: undefined,
         selections: [
@@ -287,6 +318,7 @@ test('parsing fields with arguments', () => {
     kind: 'DOCUMENT',
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: undefined,
         selections: [
@@ -447,6 +479,7 @@ test('parsing fields with directives', () => {
     kind: 'DOCUMENT',
     definitions: [
       {
+        directives: undefined,
         kind: 'OPERATION',
         name: undefined,
         selections: [

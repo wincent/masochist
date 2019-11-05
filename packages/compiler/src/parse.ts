@@ -112,7 +112,6 @@ namespace GraphQL {
   export interface Operation {
     kind: 'OPERATION';
     name?: string;
-    // TODO: actual support directives here
     directives?: Array<Directive>;
     selections: Array<Selection>;
     type: 'MUTATION' | 'SUBSCRIPTION' | 'QUERY';
@@ -184,6 +183,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     sequence(
       t(Tokens.NAME, contents => contents === 'query'),
       t(Tokens.NAME),
+      star('directive'),
       'selectionSet',
     ),
     /*
@@ -207,7 +207,8 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
      *
      * first seems like less work
      */
-    ([, name, selections]) => ({
+    ([, name, directives, selections]) => ({
+      directives,
       kind: 'OPERATION',
       name,
       selections,
