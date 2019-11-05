@@ -62,14 +62,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
         definitions,
         kind: 'DOCUMENT',
       };
-    },
-
-    // TODO: decide whether this is a good idea or not
-    // may want to be able to return a fallback node... (also may not be a good
-    // idea)
-    () => {
-      // throw new Error('Document must contain at least one definition')
-    },
+    }
   ],
 
   definition: choice('operation'),
