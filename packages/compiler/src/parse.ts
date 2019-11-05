@@ -1,13 +1,24 @@
 import {Token} from './Lexer';
-import Parser, {Grammar, choice, optional, plus, sequence, t} from './Parser';
+import Parser, {
+  Grammar,
+  choice,
+  optional,
+  plus,
+  sequence,
+  star,
+  t,
+} from './Parser';
 import lex, {TokenName, Tokens, isIgnored} from './lex';
 
 namespace GraphQL {
-  export type Node = Document | Field | Operation;
+  export type Node = Directive | Document | Field | Operation;
 
   export type Definition = Operation; // | ... | ...
 
-  export type Directive = 'TBD';
+  export interface Directive {
+    kind: 'DIRECTIVE';
+    name: string;
+  }
 
   export interface Document {
     definitions: Array<Definition>;
@@ -16,6 +27,7 @@ namespace GraphQL {
 
   export interface Field {
     alias?: string;
+    directives?: Array<Directive>;
     kind: 'FIELD';
     name: string;
     selections?: Array<Selection>;
@@ -24,9 +36,11 @@ namespace GraphQL {
   export interface Operation {
     kind: 'OPERATION';
     name?: string;
+    // TODO: actual support directives here
     directives?: Array<Directive>;
     selections: Array<Selection>;
     type: 'MUTATION' | 'SUBSCRIPTION' | 'QUERY';
+    // TODO: actually support variables here
     variables?: Array<Variable>;
   }
 
@@ -124,9 +138,15 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   field: [
-    sequence(optional('alias'), t(Tokens.NAME), optional('selectionSet')),
-    ([alias, name, selections]): GraphQL.Field => ({
+    sequence(
+      optional('alias'),
+      t(Tokens.NAME),
+      star('directive'),
+      optional('selectionSet'),
+    ),
+    ([alias, name, directives, selections]): GraphQL.Field => ({
       alias,
+      directives,
       kind: 'FIELD',
       name,
       selections,
@@ -134,6 +154,14 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   alias: [sequence(t(Tokens.NAME), t(Tokens.COLON)), ([name]) => name],
+
+  directive: [
+    sequence(t(Tokens.AT), t(Tokens.NAME)),
+    ([, name]): GraphQL.Directive => ({
+      kind: 'DIRECTIVE',
+      name,
+    }),
+  ],
 
   // TODO: flesh these out
   fragmentSpread: t(Tokens.ELLIPSIS),

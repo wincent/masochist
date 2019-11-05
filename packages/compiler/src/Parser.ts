@@ -299,7 +299,6 @@ export default class Parser<A> {
             break;
 
           case 'SEQUENCE': {
-            // TODO: report rightmost error
             const results = [];
             let next: Token | null = current;
 
@@ -320,9 +319,26 @@ export default class Parser<A> {
             return [production(results), next];
           }
 
-          case 'STAR':
-            // TODO
-            break;
+          case 'STAR': {
+            const results = [];
+            let next: Token | null = current;
+
+            while (true) {
+              const maybe = this.evaluate(expression.expression, next);
+              let result;
+
+              if (maybe) {
+                [result, next] = maybe;
+
+                results.push(result);
+              } else {
+                break;
+              }
+            }
+
+            this._parseStack.pop();
+            return [production(results.length ? results : undefined), next];
+          }
 
           case 'TOKEN':
             if (current && current.name === expression.name) {
