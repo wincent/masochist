@@ -12,11 +12,6 @@ export type Grammar<A> = {
 };
 
 interface ExpressionOperators {
-  // TODO: consider writing these like this instead:
-  // foo['?']
-  // baz['+']
-  // bar['*']
-
   optional: Expression;
 
   plus: Expression;

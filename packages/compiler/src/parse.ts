@@ -327,7 +327,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   null: [
     t(Tokens.NAME, contents => contents === 'null'),
-    (): GraphQL.Null => ({
+    (): GraphQL.NullValue => ({
       kind: 'NULL',
     }),
   ],
