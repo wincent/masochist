@@ -98,6 +98,16 @@ test('parsing a document with a non-exclusive anonymous operation', () => {
 
 test('parsing an empty selection set', () => {
   expect(() => parse('{}')).toThrow(
-    /Expected at least one result from parseSelection()/,
+    'Parse error:\n' +
+    '\n' +
+    '  Expected: field\n' +
+    '\n' +
+    '  Parsing: document \u00bb definition \u00bb operation \u00bb ' +
+    'anonymousOperation \u00bb field\n' +
+    '\n' +
+    '  At: index 1 (line 1, column 2)\n' +
+    '\n' +
+    '> 1   |    {}\n' +
+    '      |     ^'
   );
 });

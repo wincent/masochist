@@ -90,7 +90,6 @@ type NonTerminalSymbol =
 export default class Parser<A> {
   private _grammar: Grammar<A>;
   private _isIgnored: (token: Token) => boolean;
-  private _iterator: Generator<Token, Token> | null;
 
   // TODO: better types
   private _errorIndex: any;
@@ -100,45 +99,101 @@ export default class Parser<A> {
   constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
     this._grammar = grammar;
     this._isIgnored = isIgnored;
-    this._iterator = null;
 
     // Remember rightmost index.
     // this._index = 0;
     this._errorIndex = 0;
     this._errorStack = [];
     this._parseStack = [];
+
+    if (!Object.keys(grammar).length) {
+      throw new Error('Grammar must have at least one rule');
+    }
   }
 
   parse(iterator: Generator<Token, Token>): A | null {
-    this._iterator = iterator;
+    const {done, value} = iterator.next();
+
+    if (done) {
+      // TODO: Let caller decide whether empty input should be a hard error or not?
+      return null;
+    }
+
+    let startToken = this._isIgnored(value) ? this.next(value) : value;
+
+    if (!startToken) {
+      return null;
+    }
 
     const rules = Object.keys(this._grammar);
 
-    if (!rules.length) {
-      throw new Error('Grammar must have at least one rule');
-    }
-
     const startRule = rules[0];
 
-    const maybe = this.evaluate(startRule, this.next(null));
+    const maybe = this.evaluate(startRule, startToken);
 
     if (maybe) {
       const [result, next] = maybe;
 
       if (this.next(next) !== null) {
-        // TODO report stack here
+        // TODO report error stack here too?
         throw new Error('Failed to consume all input');
       }
 
-      console.log('at end', this._parseStack, this._errorStack, this._errorIndex);
       return result;
     }
 
-// console.log('bad', this._index, this._expected);
-    return null;
+    // Reconstruct input from tokens.
+    let input = '';
+    let token: Token | undefined = startToken;
+    while (token) {
+      input += token.contents;
+      token = token.next;
+    }
+
+    // Derive line and column information from input.
+    let column = 1;
+    let line = 1;
+
+    for (let i = 0; i < input.length; i++) {
+      if (i === this._errorIndex) {
+        break;
+      }
+
+      const c = input[i];
+
+      if (c === '\r') {
+        column = 1;
+        line++;
+
+        if (input[i + 1] === '\n') {
+          i++;
+        }
+      } else if (c === '\n') {
+        column = 1;
+        line++;
+      } else {
+        column++;
+      }
+    }
+
+    // TODO: cheating for now; replace with real code
+    const excerpt =
+      `> 1   |    ${input}\n` +
+      '      |     ^';
+
+    throw new Error(
+      'Parse error:\n' +
+      '\n' +
+      `  Expected: ${this._errorStack[this._errorStack.length - 1]}\n` +
+      '\n' +
+      `  Parsing: ${this._errorStack.join(' \u00bb ')}\n` +
+      '\n' +
+      `  At: index ${this._errorIndex} (line ${line}, column ${column})\n` +
+      '\n' +
+      excerpt
+    );
   }
 
-  // TODO: error handling
   private evaluate(
     start: Expression,
     current: Token | null,
@@ -285,7 +340,6 @@ export default class Parser<A> {
     }
 
     if (index > this._errorIndex) {
-    // if (this._parseStack.length > this._errorStack.length) {
       this._errorIndex = index;
       this._errorStack = [...this._parseStack];
     }
@@ -305,17 +359,8 @@ export default class Parser<A> {
   private next(token: Token | null): Token | null {
     let current = token;
 
-    if (current === null) {
-      const {done, value} = this._iterator!.next();
-
-      if (done) {
-        return null;
-      }
-      current = value;
-    }
-
     while (true) {
-      current = current.next || null;
+      current = current && current.next || null;
 
       if (!current) {
         return null;

@@ -68,7 +68,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     // may want to be able to return a fallback node... (also may not be a good
     // idea)
     () => {
-      throw new Error('Document must contain at least one definition')
+      // throw new Error('Document must contain at least one definition')
     }
   ],
 
@@ -153,7 +153,10 @@ export default function parse(input: string): GraphQL.Node {
   const result = parser.parse(tokens);
 
   if (!result) {
-    throw new Error('Failed to parse document');
+    throw new Error(
+      'Failed to parse document: ' +
+      'Document must contain at least one definition'
+    );
   }
 
   return result;
