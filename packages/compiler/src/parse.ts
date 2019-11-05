@@ -22,6 +22,8 @@ namespace GraphQL {
     | IntValue
     | ListValue
     | NullValue
+    | ObjectField
+    | ObjectValue
     | Operation
     | StringValue
     | Value;
@@ -83,6 +85,17 @@ namespace GraphQL {
     kind: 'NULL';
   }
 
+  export interface ObjectField {
+    kind: 'OBJECT_FIELD';
+    name: string;
+    value: Value;
+  }
+
+  export interface ObjectValue {
+    kind: 'OBJECT';
+    fields: Array<ObjectField>;
+  }
+
   export type ScalarValue =
     | IntValue
     | FloatValue
@@ -109,7 +122,12 @@ namespace GraphQL {
 
   export type Selection = Field; // | ... | ...
 
-  export type Value = Variable | ScalarValue | EnumValue | ListValue; // | ObjectValue;
+  export type Value =
+    | Variable
+    | ScalarValue
+    | EnumValue
+    | ListValue
+    | ObjectValue;
 
   export interface Variable {
     kind: 'VARIABLE';
@@ -255,7 +273,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     'null',
     'enum',
     'list',
-    // 'object',
+    'object',
   ),
 
   boolean: [
@@ -310,6 +328,27 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     t(Tokens.NAME, contents => contents === 'null'),
     (): GraphQL.Null => ({
       kind: 'NULL',
+    }),
+  ],
+
+  object: [
+    sequence(
+      t(Tokens.OPENING_BRACE),
+      star('objectField'),
+      t(Tokens.CLOSING_BRACE),
+    ),
+    ([, fields]): GraphQL.ObjectValue => ({
+      kind: 'OBJECT',
+      fields: fields || [],
+    }),
+  ],
+
+  objectField: [
+    sequence(t(Tokens.NAME), t(Tokens.COLON), 'value'),
+    ([name, , value]): GraphQL.ObjectField => ({
+      kind: 'OBJECT_FIELD',
+      name,
+      value,
     }),
   ],
 

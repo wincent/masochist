@@ -278,6 +278,9 @@ test('parsing fields with arguments', () => {
           order: DESC
           dimensions: [100, 50],
         )
+        nearby(
+          location: {latitude: -50.1, longitude: 22.3}
+        )
       }
   `),
   ).toEqual({
@@ -387,6 +390,40 @@ test('parsing fields with arguments', () => {
             directives: undefined,
             kind: 'FIELD',
             name: 'thing',
+            selections: undefined,
+          },
+          {
+            alias: undefined,
+            arguments: [
+              {
+                name: 'location',
+                kind: 'ARGUMENT',
+                value: {
+                  kind: 'OBJECT',
+                  fields: [
+                    {
+                      kind: 'OBJECT_FIELD',
+                      name: 'latitude',
+                      value: {
+                        kind: 'FLOAT',
+                        value: '-50.1',
+                      },
+                    },
+                    {
+                      kind: 'OBJECT_FIELD',
+                      name: 'longitude',
+                      value: {
+                        kind: 'FLOAT',
+                        value: '22.3',
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'nearby',
             selections: undefined,
           },
         ],
