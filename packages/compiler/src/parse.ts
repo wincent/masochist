@@ -16,6 +16,7 @@ namespace GraphQL {
     | BooleanValue
     | Directive
     | Document
+    | EnumValue
     | Field
     | FloatValue
     | IntValue
@@ -57,6 +58,11 @@ namespace GraphQL {
     selections?: Array<Selection>;
   }
 
+  export interface EnumValue {
+    kind: 'ENUM';
+    value: string;
+  }
+
   export interface FloatValue {
     kind: 'FLOAT';
     value: string;
@@ -76,7 +82,8 @@ namespace GraphQL {
     | FloatValue
     | StringValue
     | BooleanValue
-    | NullValue
+    | NullValue;
+
   // EnumValue |
   // ListValue |
   // ObjectValue;
@@ -100,7 +107,7 @@ namespace GraphQL {
 
   export type Selection = Field; // | ... | ...
 
-  export type Value = Variable | ScalarValue; // list, object, enum
+  export type Value = Variable | ScalarValue | EnumValue; // list, object
 
   export interface Variable {
     kind: 'VARIABLE';
@@ -108,7 +115,8 @@ namespace GraphQL {
   }
 }
 
-// TODO: move this into a separate file
+// TODO: move all this into a separate file
+
 const GRAMMAR: Grammar<GraphQL.Node> = {
   document: [
     plus('definition'),
@@ -233,13 +241,14 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       t(Tokens.COLON),
       choice(
         'variable',
-        // ...
         'float',
         'int',
         'string',
         'boolean',
         'null',
-        // ...
+        'enum',
+        // 'list',
+        // 'object',
       ),
     ),
     ([name, , value]) => ({
@@ -250,10 +259,22 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   boolean: [
-    t(Tokens.NAME, contents => contents === 'true' || contents === 'false'),
+    t(Tokens.NAME, contents => contents === 'false' || contents === 'true'),
     (contents): GraphQL.BooleanValue => ({
       kind: 'BOOLEAN',
       value: contents === 'true',
+    }),
+  ],
+
+  enum: [
+    t(Tokens.NAME, contents => (
+        contents !== 'false' &&
+        contents !== 'null' &&
+        contents !== 'true'
+    )),
+    (contents): GraphQL.EnumValue => ({
+      kind: 'ENUM',
+      value: contents,
     }),
   ],
 

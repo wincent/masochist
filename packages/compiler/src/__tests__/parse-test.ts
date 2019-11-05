@@ -273,7 +273,10 @@ test('parsing fields with arguments', () => {
         ) {
           result
         }
-        thing(arg: null)
+        thing(
+          arg: null
+          order: DESC
+        )
       }
   `),
   ).toEqual({
@@ -347,6 +350,13 @@ test('parsing fields with arguments', () => {
               name: 'arg',
               value: {
                 kind: 'NULL',
+              }
+            }, {
+              kind: 'ARGUMENT',
+              name: 'order',
+              value: {
+                kind: 'ENUM',
+                value: 'DESC',
               }
             }],
             directives: undefined,
