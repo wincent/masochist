@@ -20,6 +20,7 @@ namespace GraphQL {
     | Field
     | FloatValue
     | IntValue
+    | ListValue
     | NullValue
     | Operation
     | StringValue
@@ -73,6 +74,11 @@ namespace GraphQL {
     value: number;
   }
 
+  export interface ListValue {
+    kind: 'LIST';
+    value: Array<Value>;
+  }
+
   export interface NullValue {
     kind: 'NULL';
   }
@@ -83,10 +89,6 @@ namespace GraphQL {
     | StringValue
     | BooleanValue
     | NullValue;
-
-  // EnumValue |
-  // ListValue |
-  // ObjectValue;
 
   export interface StringValue {
     block: boolean;
@@ -107,7 +109,7 @@ namespace GraphQL {
 
   export type Selection = Field; // | ... | ...
 
-  export type Value = Variable | ScalarValue | EnumValue; // list, object
+  export type Value = Variable | ScalarValue | EnumValue | ListValue; // | ObjectValue;
 
   export interface Variable {
     kind: 'VARIABLE';
@@ -236,27 +238,25 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   argument: [
-    sequence(
-      t(Tokens.NAME),
-      t(Tokens.COLON),
-      choice(
-        'variable',
-        'float',
-        'int',
-        'string',
-        'boolean',
-        'null',
-        'enum',
-        // 'list',
-        // 'object',
-      ),
-    ),
+    sequence(t(Tokens.NAME), t(Tokens.COLON), 'value'),
     ([name, , value]) => ({
       kind: 'ARGUMENT',
       name,
       value,
     }),
   ],
+
+  value: choice(
+    'variable',
+    'float',
+    'int',
+    'string',
+    'boolean',
+    'null',
+    'enum',
+    'list',
+    // 'object',
+  ),
 
   boolean: [
     t(Tokens.NAME, contents => contents === 'false' || contents === 'true'),
@@ -267,11 +267,11 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   enum: [
-    t(Tokens.NAME, contents => (
-        contents !== 'false' &&
-        contents !== 'null' &&
-        contents !== 'true'
-    )),
+    t(
+      Tokens.NAME,
+      contents =>
+        contents !== 'false' && contents !== 'null' && contents !== 'true',
+    ),
     (contents): GraphQL.EnumValue => ({
       kind: 'ENUM',
       value: contents,
@@ -291,6 +291,18 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     (contents): GraphQL.IntValue => ({
       kind: 'INT',
       value: parseInt(contents, 10),
+    }),
+  ],
+
+  list: [
+    sequence(
+      t(Tokens.OPENING_BRACKET),
+      star('value'),
+      t(Tokens.CLOSING_BRACKET),
+    ),
+    ([, values]): GraphQL.ListValue => ({
+      kind: 'LIST',
+      value: values || [],
     }),
   ],
 
@@ -315,7 +327,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
         kind: 'STRING',
         value,
       };
-    }),
+    },
   ],
 
   variable: [

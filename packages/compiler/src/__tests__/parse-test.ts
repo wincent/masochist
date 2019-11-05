@@ -119,7 +119,7 @@ test('parsing an empty selection set', () => {
 
       Expected: alias
 
-      Parsing: document » definition » operation » anonymousOperation » field » alias
+      Parsing: document » definition » operation » anonymousOperation » selectionSet » field » alias
 
       At: index 1 (line 1, column 2)
 
@@ -276,6 +276,7 @@ test('parsing fields with arguments', () => {
         thing(
           arg: null
           order: DESC
+          dimensions: [100, 50],
         )
       }
   `),
@@ -313,57 +314,81 @@ test('parsing fields with arguments', () => {
           },
           {
             alias: undefined,
-            arguments: [{
-              kind: 'ARGUMENT',
-              name: 'locale',
-              value: {
-                block: true,
-                kind: 'STRING',
-                value: 'en-US',
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'locale',
+                value: {
+                  block: true,
+                  kind: 'STRING',
+                  value: 'en-US',
+                },
               },
-            },
-            {
-              kind: 'ARGUMENT',
-              name: 'query',
-              value: {
-                block: false,
-                kind: 'STRING',
-                value: 'cat pics',
+              {
+                kind: 'ARGUMENT',
+                name: 'query',
+                value: {
+                  block: false,
+                  kind: 'STRING',
+                  value: 'cat pics',
+                },
               },
-            }],
+            ],
             directives: undefined,
             kind: 'FIELD',
             name: 'search',
-            selections: [{
-              alias: undefined,
-              arguments: undefined,
-              directives: undefined,
-              kind: 'FIELD',
-              name: 'result',
-              selections: undefined
-            }]
+            selections: [
+              {
+                alias: undefined,
+                arguments: undefined,
+                directives: undefined,
+                kind: 'FIELD',
+                name: 'result',
+                selections: undefined,
+              },
+            ],
           },
           {
             alias: undefined,
-            arguments: [{
-              kind: 'ARGUMENT',
-              name: 'arg',
-              value: {
-                kind: 'NULL',
-              }
-            }, {
-              kind: 'ARGUMENT',
-              name: 'order',
-              value: {
-                kind: 'ENUM',
-                value: 'DESC',
-              }
-            }],
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'arg',
+                value: {
+                  kind: 'NULL',
+                },
+              },
+              {
+                kind: 'ARGUMENT',
+                name: 'order',
+                value: {
+                  kind: 'ENUM',
+                  value: 'DESC',
+                },
+              },
+              {
+                kind: 'ARGUMENT',
+                name: 'dimensions',
+                value: {
+                  kind: 'LIST',
+                  value: [
+                    {
+                      kind: 'INT',
+                      value: 100,
+                    },
+                    {
+                      kind: 'INT',
+                      value: 50,
+                    },
+                  ],
+                },
+              },
+            ],
             directives: undefined,
             kind: 'FIELD',
             name: 'thing',
             selections: undefined,
-          }
+          },
         ],
         type: 'QUERY',
       },

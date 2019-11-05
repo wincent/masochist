@@ -200,6 +200,8 @@ export default class Parser<A> {
 
     if (typeof start === 'string') {
       this._parseStack.push(start);
+    } else {
+      this._parseStack.push(null);
     }
 
     if (!rule) {
@@ -359,7 +361,7 @@ export default class Parser<A> {
 
     if (index > this._errorIndex) {
       this._errorIndex = index;
-      this._errorStack = [...this._parseStack];
+      this._errorStack = this._parseStack.filter(Boolean);
     }
 
     if (onFailure) {
