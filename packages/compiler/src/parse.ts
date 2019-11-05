@@ -54,7 +54,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
       if (anonymous && operations > 1) {
         throw new Error(
-          'Anonymous operation must be the only operation in the document'
+          'Anonymous operation must be the only operation in the document',
         );
       }
 
@@ -69,7 +69,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     // idea)
     () => {
       // throw new Error('Document must contain at least one definition')
-    }
+    },
   ],
 
   definition: choice('operation'),
@@ -155,7 +155,7 @@ export default function parse(input: string): GraphQL.Node {
   if (!result) {
     throw new Error(
       'Failed to parse document: ' +
-      'Document must contain at least one definition'
+        'Document must contain at least one definition',
     );
   }
 

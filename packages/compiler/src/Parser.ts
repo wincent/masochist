@@ -6,11 +6,9 @@ import {Token} from './Lexer';
 export type Grammar<A> = {
   // TODO: see if I can get rid of `any` type here.
   [symbolName: string]:
-    Expression |
-
-    [Expression, (result: any) => A] |
-
-    [Expression, (result: any) => A, () => never];
+    | Expression
+    | [Expression, (result: any) => A]
+    | [Expression, (result: any) => A, () => never];
 };
 
 interface ExpressionOperators {
@@ -177,20 +175,18 @@ export default class Parser<A> {
     }
 
     // TODO: cheating for now; replace with real code
-    const excerpt =
-      `> 1   |    ${input}\n` +
-      '      |     ^';
+    const excerpt = `> 1   |    ${input}\n` + '      |     ^';
 
     throw new Error(
       'Parse error:\n' +
-      '\n' +
-      `  Expected: ${this._errorStack[this._errorStack.length - 1]}\n` +
-      '\n' +
-      `  Parsing: ${this._errorStack.join(' \u00bb ')}\n` +
-      '\n' +
-      `  At: index ${this._errorIndex} (line ${line}, column ${column})\n` +
-      '\n' +
-      excerpt
+        '\n' +
+        `  Expected: ${this._errorStack[this._errorStack.length - 1]}\n` +
+        '\n' +
+        `  Parsing: ${this._errorStack.join(' \u00bb ')}\n` +
+        '\n' +
+        `  At: index ${this._errorIndex} (line ${line}, column ${column})\n` +
+        '\n' +
+        excerpt,
     );
   }
 
@@ -360,7 +356,7 @@ export default class Parser<A> {
     let current = token;
 
     while (true) {
-      current = current && current.next || null;
+      current = (current && current.next) || null;
 
       if (!current) {
         return null;
