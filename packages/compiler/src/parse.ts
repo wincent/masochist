@@ -20,6 +20,7 @@ namespace GraphQL {
     | FloatValue
     | IntValue
     | Operation
+    | StringValue
     | Value;
 
   export interface Argument {
@@ -68,12 +69,17 @@ namespace GraphQL {
   export type ScalarValue =
     | IntValue
     | FloatValue
-    // StringValue |
+    | StringValue
     | BooleanValue; //|
   // NullValue |
   // EnumValue |
   // ListValue |
   // ObjectValue;
+
+  export interface StringValue {
+    kind: 'STRING';
+    value: string;
+  }
 
   export interface Operation {
     kind: 'OPERATION';
@@ -225,6 +231,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
         'float',
         'int',
         'boolean',
+        'string',
         // ...
       ),
     ),
@@ -256,6 +263,14 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     (contents): GraphQL.IntValue => ({
       kind: 'INT',
       value: parseInt(contents, 10),
+    }),
+  ],
+
+  string: [
+    t(Tokens.STRING_VALUE),
+    (contents): GraphQL.StringValue => ({
+      kind: 'STRING',
+      value: contents,
     }),
   ],
 

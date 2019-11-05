@@ -267,6 +267,12 @@ test('parsing fields with arguments', () => {
           opacity: 0.5
           size: 100
         )
+        search(
+          locale: """en-US"""
+          query: "cat pics"
+        ) {
+          result
+        }
       }
   `),
   ).toEqual({
@@ -301,6 +307,36 @@ test('parsing fields with arguments', () => {
             name: 'profilePic',
             selections: undefined,
           },
+          {
+            alias: undefined,
+            arguments: [{
+              kind: 'ARGUMENT',
+              name: 'locale',
+              value: {
+                kind: 'STRING',
+                value: '"""en-US"""',
+              },
+            },
+            {
+              kind: 'ARGUMENT',
+              name: 'query',
+              value: {
+                kind: 'STRING',
+                value: '"cat pics"',
+              },
+            }],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'search',
+            selections: [{
+              alias: undefined,
+              arguments: undefined,
+              directives: undefined,
+              kind: 'FIELD',
+              name: 'result',
+              selections: undefined
+            }]
+          }
         ],
         type: 'QUERY',
       },
