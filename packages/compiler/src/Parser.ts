@@ -93,10 +93,9 @@ export default class Parser<A> {
   private _grammar: Grammar<A>;
   private _isIgnored: (token: Token) => boolean;
 
-  // TODO: better types
-  private _errorIndex: any;
-  private _errorStack: any;
-  private _parseStack: any;
+  private _errorIndex: number;
+  private _errorStack: Array<string>;
+  private _parseStack: Array<string | null>;
 
   constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
     this._grammar = grammar;
@@ -387,7 +386,7 @@ export default class Parser<A> {
 
     if (index > this._errorIndex) {
       this._errorIndex = index;
-      this._errorStack = this._parseStack.filter(Boolean);
+      this._errorStack = this._parseStack.filter(isNonNull);
     }
 
     if (onFailure) {
@@ -497,6 +496,10 @@ export function ignore(expression: Expression): IgnoreExpression {
     expression,
     kind: 'IGNORE',
   };
+}
+
+function isNonNull<T>(value: T | null): value is T {
+  return value !== null;
 }
 
 /**
