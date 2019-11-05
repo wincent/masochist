@@ -273,6 +273,7 @@ test('parsing fields with arguments', () => {
         ) {
           result
         }
+        thing(arg: null)
       }
   `),
   ).toEqual({
@@ -338,6 +339,20 @@ test('parsing fields with arguments', () => {
               name: 'result',
               selections: undefined
             }]
+          },
+          {
+            alias: undefined,
+            arguments: [{
+              kind: 'ARGUMENT',
+              name: 'arg',
+              value: {
+                kind: 'NULL',
+              }
+            }],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'thing',
+            selections: undefined,
           }
         ],
         type: 'QUERY',

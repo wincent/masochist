@@ -19,6 +19,7 @@ namespace GraphQL {
     | Field
     | FloatValue
     | IntValue
+    | NullValue
     | Operation
     | StringValue
     | Value;
@@ -66,12 +67,16 @@ namespace GraphQL {
     value: number;
   }
 
+  export interface NullValue {
+    kind: 'NULL';
+  }
+
   export type ScalarValue =
     | IntValue
     | FloatValue
     | StringValue
-    | BooleanValue; //|
-  // NullValue |
+    | BooleanValue
+    | NullValue
   // EnumValue |
   // ListValue |
   // ObjectValue;
@@ -231,8 +236,9 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
         // ...
         'float',
         'int',
-        'boolean',
         'string',
+        'boolean',
+        'null',
         // ...
       ),
     ),
@@ -264,6 +270,13 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     (contents): GraphQL.IntValue => ({
       kind: 'INT',
       value: parseInt(contents, 10),
+    }),
+  ],
+
+  null: [
+    t(Tokens.NAME, contents => contents === 'null'),
+    (): GraphQL.Null => ({
+      kind: 'NULL',
     }),
   ],
 
