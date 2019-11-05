@@ -1,6 +1,6 @@
 import ReversibleMap from '../ReversibleMap';
 
-function call(fn: any) {
+function call(fn: unknown) {
   if (typeof fn === 'function') {
     fn();
   } else {

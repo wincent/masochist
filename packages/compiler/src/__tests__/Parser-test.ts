@@ -29,12 +29,8 @@ type Selection = Field;
 test('blinking light', () => {
   const grammar: Grammar<ASTNode> = {
     document: [
-      // TODO: i think this will read better as:
-      // r('definition')['+'],
-      // or:
-      // r('definition').plus,
       plus('definition'),
-      (definitions: any): ASTNode => ({
+      (definitions): ASTNode => ({
         definitions,
         kind: 'DOCUMENT',
       }),
@@ -46,7 +42,7 @@ test('blinking light', () => {
 
     anonymousOperation: [
       'selectionSet',
-      (selections: any): ASTNode => ({
+      (selections): ASTNode => ({
         kind: 'OPERATION',
         selections,
         type: 'QUERY',
@@ -63,11 +59,11 @@ test('blinking light', () => {
 
     selectionSet: [
       sequence(
-        t(Tokens.OPENING_BRACE),
+        t(Tokens.OPENING_BRACE).ignore,
         choice('field', 'fragmentSpread', 'inlineFragment').plus,
-        t(Tokens.CLOSING_BRACE),
+        t(Tokens.CLOSING_BRACE).ignore,
       ),
-      ([, selections]: [unknown, any]): ASTNode => selections,
+      ([selections]): ASTNode => selections,
     ],
 
     field: [

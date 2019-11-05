@@ -476,7 +476,7 @@ function excerpt(text: string, line: number, column: number): string {
 /**
  * Identity function that returns its argument unmodified.
  */
-function identity<T extends any>(id: T): T {
+function identity<T extends unknown>(id: T): T {
   return id;
 }
 

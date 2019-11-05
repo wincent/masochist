@@ -139,7 +139,7 @@ namespace GraphQL {
 const GRAMMAR: Grammar<GraphQL.Node> = {
   document: [
     plus('definition'),
-    (definitions: any): GraphQL.Document => {
+    (definitions): GraphQL.Document => {
       let anonymous = 0;
       let operations = 0;
 
@@ -172,7 +172,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   anonymousOperation: [
     'selectionSet',
-    (selections: any): GraphQL.Operation => ({
+    (selections): GraphQL.Operation => ({
       kind: 'OPERATION',
       selections,
       type: 'QUERY',
@@ -201,7 +201,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       choice('field', 'fragmentSpread', 'inlineFragment').plus,
       t(Tokens.CLOSING_BRACE).ignore,
     ),
-    ([selections]: [unknown, any]): any => selections,
+    ([selections]) => selections,
   ],
 
   field: [
