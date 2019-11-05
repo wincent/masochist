@@ -18,6 +18,7 @@ namespace GraphQL {
     alias?: string;
     kind: 'FIELD';
     name: string;
+    selections?: Array<Selection>;
   }
 
   export interface Operation {
@@ -62,7 +63,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
         definitions,
         kind: 'DOCUMENT',
       };
-    }
+    },
   ],
 
   definition: choice('operation'),
@@ -123,24 +124,16 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   field: [
-    sequence(
-      optional('alias'),
-      t(Tokens.NAME),
-    ),
-    ([alias, name]: [string | undefined, string]): GraphQL.Field => ({
+    sequence(optional('alias'), t(Tokens.NAME), optional('selectionSet')),
+    ([alias, name, selections]): GraphQL.Field => ({
       alias,
       kind: 'FIELD',
       name,
+      selections,
     }),
   ],
 
-  alias: [
-    sequence(
-      t(Tokens.NAME),
-      t(Tokens.COLON)
-    ),
-    ([name]) => name
-  ],
+  alias: [sequence(t(Tokens.NAME), t(Tokens.COLON)), ([name]) => name],
 
   // TODO: flesh these out
   fragmentSpread: t(Tokens.ELLIPSIS),

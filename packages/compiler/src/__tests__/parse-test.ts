@@ -29,11 +29,13 @@ test('parsing a document with a named query', () => {
             alias: undefined,
             kind: 'FIELD',
             name: 'foo',
+            selections: undefined,
           },
           {
             alias: undefined,
             kind: 'FIELD',
             name: 'bar',
+            selections: undefined,
           },
         ],
         type: 'QUERY',
@@ -61,11 +63,13 @@ test('parsing a document with an anonymous operation', () => {
             alias: undefined,
             kind: 'FIELD',
             name: 'foo',
+            selections: undefined,
           },
           {
             alias: undefined,
             kind: 'FIELD',
             name: 'bar',
+            selections: undefined,
           },
         ],
         type: 'QUERY',
@@ -125,15 +129,64 @@ test('parsing fields with aliases', () => {
   `),
   ).toEqual({
     kind: 'DOCUMENT',
-    definitions: [{
-      kind: 'OPERATION',
-      name: undefined,
-      selections: [{
-        alias: 'label',
-        kind: 'FIELD',
-        name: 'foo'
-      }],
-      type: 'QUERY',
-    }]
+    definitions: [
+      {
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: 'label',
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
+        ],
+        type: 'QUERY',
+      },
+    ],
+  });
+});
+
+test('parsing fields with nested selections', () => {
+  expect(
+    parse(dedent`
+      {
+        foo {
+          bar {
+            baz
+          }
+        }
+      }
+  `),
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [
+      {
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: [
+              {
+                alias: undefined,
+                kind: 'FIELD',
+                name: 'bar',
+                selections: [
+                  {
+                    alias: undefined,
+                    kind: 'FIELD',
+                    name: 'baz',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+        type: 'QUERY',
+      },
+    ],
   });
 });

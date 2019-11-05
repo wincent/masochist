@@ -86,6 +86,7 @@ type NonTerminalSymbol =
  * functions in the Grammar.
  */
 export default class Parser<A> {
+  // TODO: add memoization, otherwise it isn't actually a packrat parser
   private _grammar: Grammar<A>;
   private _isIgnored: (token: Token) => boolean;
 

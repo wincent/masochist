@@ -4,12 +4,12 @@ export default function dedent(
 ): string {
   // Insert interpolations in template.
   const text: string = strings.reduce((acc, string, i) => {
-      if (i < interpolations.length) {
-        return acc + string + String(interpolations[i]);
-      } else {
-        return acc + string;
-      }
-    }, '');
+    if (i < interpolations.length) {
+      return acc + string + String(interpolations[i]);
+    } else {
+      return acc + string;
+    }
+  }, '');
 
   // Collapse totally blank lines to empty strings.
   const lines = text.split(/\r\n?|\n/).map((line: string) => {
@@ -44,7 +44,6 @@ export default function dedent(
 
   if (dedented[dedented.length - 1] === '') {
     dedented.pop();
-
   }
   return dedented.join('\n');
 }
