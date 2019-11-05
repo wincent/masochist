@@ -5,16 +5,21 @@ import {Token} from './Lexer';
  */
 export type Grammar<A> = {
   // TODO: see if I can get rid of `any` type here.
-  [symbolName: string]: Expression | [Expression, (result: any) => A];
+  [symbolName: string]:
+    Expression |
+
+    [Expression, (result: any) => A] |
+
+    [Expression, (result: any) => A, () => never];
 };
 
 interface ExpressionOperators {
-  optional: Expression;
-
   // TODO: consider writing these like this instead:
   // foo['?']
   // baz['+']
   // bar['*']
+
+  optional: Expression;
 
   plus: Expression;
 
@@ -87,10 +92,21 @@ export default class Parser<A> {
   private _isIgnored: (token: Token) => boolean;
   private _iterator: Generator<Token, Token> | null;
 
+  // TODO: better types
+  private _errorIndex: any;
+  private _errorStack: any;
+  private _parseStack: any;
+
   constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
     this._grammar = grammar;
     this._isIgnored = isIgnored;
     this._iterator = null;
+
+    // Remember rightmost index.
+    // this._index = 0;
+    this._errorIndex = 0;
+    this._errorStack = [];
+    this._parseStack = [];
   }
 
   parse(iterator: Generator<Token, Token>): A | null {
@@ -110,12 +126,15 @@ export default class Parser<A> {
       const [result, next] = maybe;
 
       if (this.next(next) !== null) {
+        // TODO report stack here
         throw new Error('Failed to consume all input');
       }
 
+      console.log('at end', this._parseStack, this._errorStack, this._errorIndex);
       return result;
     }
 
+// console.log('bad', this._index, this._expected);
     return null;
   }
 
@@ -124,11 +143,13 @@ export default class Parser<A> {
     start: Expression,
     current: Token | null,
   ): [A, Token | null] | null {
-    if (!current) {
-      return null;
-    }
-
     const rule = typeof start === 'string' ? this._grammar[start] : start;
+
+    const index = current ? current.index : 0;
+
+    if (typeof start === 'string') {
+      this._parseStack.push(start);
+    }
 
     if (!rule) {
       throw new Error(
@@ -136,57 +157,97 @@ export default class Parser<A> {
       );
     }
 
-    const [expression, production] = Array.isArray(rule)
+    const [expression, production, onFailure] = Array.isArray(rule)
       ? rule
       : [rule, identity];
 
-    if (typeof expression === 'string') {
-      const maybe = this.evaluate(expression, current);
-
-      if (maybe) {
-        const [result, next] = maybe;
-
-        return [production(result), next];
+    // TODO: instead of esoteric label and break statements, just repeat code
+    outer: {
+      if (!current) {
+        break outer;
       }
-    } else {
-      switch (expression.kind) {
-        case 'AND':
-          // TODO
-          break;
 
-        case 'CHOICE':
-          {
-            let next: Token | null = current;
+      // if (current.index >= this._index) {
+      //   this._index = current.index;
+      //   this._expected = expression;
+      //   // console.log('updatde index', current.index, this._expected);
+      // }
 
-            for (let i = 0; i < expression.expressions.length; i++) {
-              let result;
+      if (typeof expression === 'string') {
+        const maybe = this.evaluate(expression, current);
 
-              const maybe = this.evaluate(expression.expressions[i], next);
+        if (maybe) {
+          const [result, next] = maybe;
 
-              if (maybe) {
-                [result, next] = maybe;
+          // TODO: refactor to avoid this repetition
+          this._parseStack.pop();
+          return [production(result), next];
+        }
+      } else {
+        switch (expression.kind) {
+          case 'AND':
+            // TODO
+            break;
 
-                return [production(result), next];
+          case 'CHOICE':
+            {
+              let next: Token | null = current;
+
+              for (let i = 0; i < expression.expressions.length; i++) {
+                let result;
+
+                const maybe = this.evaluate(expression.expressions[i], next);
+
+                if (maybe) {
+                  [result, next] = maybe;
+
+                  this._parseStack.pop();
+                  return [production(result), next];
+                }
               }
             }
-          }
-          break;
+            break;
 
-        case 'NOT':
-          // TODO
-          break;
+          case 'NOT':
+            // TODO
+            break;
 
-        case 'OPTIONAL':
-          // TODO
-          break;
+          case 'OPTIONAL':
+            // TODO
+            break;
 
-        case 'PLUS':
-          {
+          case 'PLUS':
+            {
+              const results = [];
+              let next: Token | null = current;
+
+              while (true) {
+                const maybe = this.evaluate(expression.expression, next);
+                let result;
+
+                if (maybe) {
+                  [result, next] = maybe;
+
+                  results.push(result);
+                } else {
+                  break;
+                }
+              }
+
+              if (results.length) {
+                this._parseStack.pop();
+                return [production(results), next];
+              }
+            }
+            break;
+
+          case 'SEQUENCE': {
+            // TODO: report rightmost error
             const results = [];
             let next: Token | null = current;
 
-            while (true) {
-              const maybe = this.evaluate(expression.expression, next);
+            for (let i = 0; i < expression.expressions.length; i++) {
+              const maybe = this.evaluate(expression.expressions[i], next);
               let result;
 
               if (maybe) {
@@ -194,56 +255,46 @@ export default class Parser<A> {
 
                 results.push(result);
               } else {
-                break;
+                break outer;
               }
             }
 
-            if (results.length) {
-              return [production(results), next];
-            }
-          }
-          break;
-
-        case 'SEQUENCE': {
-          // TODO: report rightmost error
-          const results = [];
-          let next: Token | null = current;
-
-          for (let i = 0; i < expression.expressions.length; i++) {
-            const maybe = this.evaluate(expression.expressions[i], next);
-            let result;
-
-            if (maybe) {
-              [result, next] = maybe;
-
-              results.push(result);
-            } else {
-              return null;
-            }
+            this._parseStack.pop();
+            return [production(results), next];
           }
 
-          return [production(results), next];
+          case 'STAR':
+            // TODO
+            break;
+
+          case 'TOKEN':
+            if (current && current.name === expression.name) {
+              if (
+                expression.predicate &&
+                !expression.predicate(current.contents)
+              ) {
+                break outer;
+              }
+
+              this._parseStack.pop();
+              return [production(current.contents), this.next(current)];
+            }
+            break;
         }
-
-        case 'STAR':
-          // TODO
-          break;
-
-        case 'TOKEN':
-          if (current && current.name === expression.name) {
-            if (
-              expression.predicate &&
-              !expression.predicate(current.contents)
-            ) {
-              return null;
-            }
-
-            return [production(current.contents), this.next(current)];
-          }
-          break;
       }
     }
 
+    if (index > this._errorIndex) {
+    // if (this._parseStack.length > this._errorStack.length) {
+      this._errorIndex = index;
+      this._errorStack = [...this._parseStack];
+    }
+
+    if (onFailure) {
+      onFailure();
+    }
+
+    this._parseStack.pop();
     return null;
   }
 

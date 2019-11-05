@@ -39,8 +39,23 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   document: [
     plus('definition'),
     (definitions: any): GraphQL.Document => {
-      if (!definitions.length) {
-        throw new Error('Document must contain at least one definition');
+      let anonymous = 0;
+      let operations = 0;
+
+      definitions.forEach((definition: GraphQL.Definition) => {
+        if (definition.kind === 'OPERATION') {
+          operations++;
+        }
+
+        if (definition.name === undefined) {
+          anonymous++;
+        }
+      });
+
+      if (anonymous && operations > 1) {
+        throw new Error(
+          'Anonymous operation must be the only operation in the document'
+        );
       }
 
       return {
@@ -48,6 +63,13 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
         kind: 'DOCUMENT',
       };
     },
+
+    // TODO: decide whether this is a good idea or not
+    // may want to be able to return a fallback node... (also may not be a good
+    // idea)
+    () => {
+      throw new Error('Document must contain at least one definition')
+    }
   ],
 
   definition: choice('operation'),
@@ -69,7 +91,27 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       t(Tokens.NAME),
       'selectionSet',
     ),
-    // TODO: add .silent/ignore/omit() helper...? (to avoid this ugly destructuring)
+    /*
+     * TODO: add .silent/ignore/omit() helper...? (to avoid this ugly destructuring)
+     *
+     * either want to do:
+     *
+     *    sequence(
+     *      t(...).ignore,
+     *      t(...)
+     *      'selectionSet'
+     *    )
+     *
+     * or:
+     *
+     *    sequence(
+     *      t(...),
+     *      t(...).as('name'),
+     *      r('selectionSet').as('selections'),
+     *    )
+     *
+     * first seems like less work
+     */
     ([, name, selections]) => ({
       kind: 'OPERATION',
       name,
