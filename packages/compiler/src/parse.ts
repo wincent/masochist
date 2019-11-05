@@ -77,6 +77,7 @@ namespace GraphQL {
   // ObjectValue;
 
   export interface StringValue {
+    block: boolean;
     kind: 'STRING';
     value: string;
   }
@@ -267,10 +268,19 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   string: [
-    t(Tokens.STRING_VALUE),
-    (contents): GraphQL.StringValue => ({
-      kind: 'STRING',
-      value: contents,
+    choice(t(Tokens.STRING_VALUE), t(Tokens.BLOCK_STRING_VALUE)),
+    (contents): GraphQL.StringValue => {
+      // TODO: deal with block string semantics as specified here:
+      // https://graphql.github.io/graphql-spec/draft/#BlockStringValue()
+      // (probably want to do that in the lexer).
+      const block = contents.startsWith('"""');
+      const value = block ? contents.slice(3, -3) : contents.slice(1, -1);
+
+      return {
+        block,
+        kind: 'STRING',
+        value,
+      };
     }),
   ],
 

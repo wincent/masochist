@@ -5,6 +5,7 @@ export const Tokens = {
   AT: 'AT',
   BANG: 'BANG',
   BAR: 'BAR',
+  BLOCK_STRING_VALUE: 'BLOCK_STRING_VALUE',
   CLOSING_BRACE: 'CLOSING_BRACE',
   CLOSING_BRACKET: 'CLOSING_BRACKET',
   CLOSING_PAREN: 'CLOSING_PAREN',
@@ -73,13 +74,16 @@ export default function lex(input: string) {
 
     const NAME = match(/[_A-Za-z][_0-9A-Za-z]*/);
 
-    const STRING_VALUE = oneOf(
-      sequence(
-        match('"""'),
-        maybe(repeat('BLOCK_STRING_CHARACTER')),
-        match('"""'),
-      ),
-      sequence(match('"'), maybe(repeat('STRING_CHARACTER')), match('"')),
+    const BLOCK_STRING_VALUE = sequence(
+      match('"""'),
+      maybe(repeat('BLOCK_STRING_CHARACTER')),
+      match('"""'),
+    );
+
+    const STRING_VALUE = sequence(
+      match('"'),
+      maybe(repeat('STRING_CHARACTER')),
+      match('"'),
     );
 
     const choices: {[K in TokenName]: Matcher<unknown, unknown>} = {
@@ -107,6 +111,7 @@ export default function lex(input: string) {
       NAME,
       FLOAT_VALUE,
       INT_VALUE,
+      BLOCK_STRING_VALUE,
       STRING_VALUE,
 
       //

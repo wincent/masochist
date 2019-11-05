@@ -149,7 +149,7 @@ test('lexing strings', () => {
 
 test('lexing block strings', () => {
   expect([...lex('"""a block string"""')]).toEqual([
-    {contents: '"""a block string"""', index: 0, name: 'STRING_VALUE'},
+    {contents: '"""a block string"""', index: 0, name: 'BLOCK_STRING_VALUE'},
   ]);
 
   expect([
@@ -162,7 +162,7 @@ test('lexing block strings', () => {
       a multiline block string
     """`,
       index: 0,
-      name: 'STRING_VALUE',
+      name: 'BLOCK_STRING_VALUE',
     },
   ]);
 });

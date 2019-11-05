@@ -313,16 +313,18 @@ test('parsing fields with arguments', () => {
               kind: 'ARGUMENT',
               name: 'locale',
               value: {
+                block: true,
                 kind: 'STRING',
-                value: '"""en-US"""',
+                value: 'en-US',
               },
             },
             {
               kind: 'ARGUMENT',
               name: 'query',
               value: {
+                block: false,
                 kind: 'STRING',
-                value: '"cat pics"',
+                value: 'cat pics',
               },
             }],
             directives: undefined,
