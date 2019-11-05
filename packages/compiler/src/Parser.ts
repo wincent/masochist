@@ -174,9 +174,6 @@ export default class Parser<A> {
       }
     }
 
-    // TODO: cheating for now; replace with real code
-    const excerpt = `> 1   |    ${input}\n` + '      |     ^';
-
     throw new Error(
       'Parse error:\n' +
         '\n' +
@@ -186,7 +183,8 @@ export default class Parser<A> {
         '\n' +
         `  At: index ${this._errorIndex} (line ${line}, column ${column})\n` +
         '\n' +
-        excerpt,
+        excerpt(input, line, column) +
+        '\n',
     );
   }
 
@@ -217,12 +215,6 @@ export default class Parser<A> {
       if (!current) {
         break outer;
       }
-
-      // if (current.index >= this._index) {
-      //   this._index = current.index;
-      //   this._expected = expression;
-      //   // console.log('updatde index', current.index, this._expected);
-      // }
 
       if (typeof expression === 'string') {
         const maybe = this.evaluate(expression, current);
@@ -396,6 +388,32 @@ export function choice(...expressions: Array<Expression>): ChoiceExpression {
     expressions,
     kind: 'CHOICE',
   });
+}
+
+function excerpt(text: string, line: number, column: number): string {
+  let output = '';
+
+  const lines = text.split(/\r\n?|\n/g);
+
+  const gutter = (line + 2).toString().length;
+
+  for (let i = line - 3; i < line + 2; i++) {
+    if (i >= 0 && i < lines.length) {
+      if (i === line - 1) {
+        output += '> ';
+      } else {
+        output += '  ';
+      }
+
+      output += `${(i + 1).toString().padStart(gutter)} | ${lines[i]}\n`;
+
+      if (i === line - 1) {
+        output += `  ${' '.repeat(gutter)} | ${' '.repeat(column - 1)}^\n`;
+      }
+    }
+  }
+
+  return output;
 }
 
 /**

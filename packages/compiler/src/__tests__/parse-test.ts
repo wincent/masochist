@@ -107,7 +107,7 @@ test('parsing an empty selection set', () => {
       '\n' +
       '  At: index 1 (line 1, column 2)\n' +
       '\n' +
-      '> 1   |    {}\n' +
-      '      |     ^',
+      '> 1 | {}\n' +
+      '    |  ^\n',
   );
 });
