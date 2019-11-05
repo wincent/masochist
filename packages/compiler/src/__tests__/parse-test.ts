@@ -103,7 +103,7 @@ test('parsing an empty selection set', () => {
 
       Expected: field
 
-      Parsing: document \u00bb definition \u00bb operation \u00bb anonymousOperation \u00bb field
+      Parsing: document » definition » operation » anonymousOperation » field
 
       At: index 1 (line 1, column 2)
 
