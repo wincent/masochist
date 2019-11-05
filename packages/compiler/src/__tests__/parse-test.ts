@@ -120,6 +120,56 @@ test('parsing an empty selection set', () => {
   `);
 });
 
+test('parsing a document with trailing lexical tokens', () => {
+  expect(() =>
+    parse(dedent`
+    {
+      foo
+    }} # <-- Note excess parenthesis here.
+  `),
+  ).toThrow(dedent`
+    Parse error:
+
+      Expected: end of input
+
+      Parsing: document
+
+      At: index 9 (line 3, column 2)
+
+      1 | {
+      2 |   foo
+    > 3 | }} # <-- Note excess parenthesis here.
+        |  ^
+  `);
+});
+
+test('parsing a document with trailing ignored tokens', () => {
+  expect(
+    parse(dedent`
+    {
+      foo
+    } # This comment is fine.
+  `),
+  ).toEqual({
+    definitions: [
+      {
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            kind: 'FIELD',
+            name: 'foo',
+            selections: undefined,
+          },
+        ],
+        type: 'QUERY',
+      },
+    ],
+    kind: 'DOCUMENT',
+  });
+});
+
 test('parsing fields with aliases', () => {
   expect(
     parse(dedent`

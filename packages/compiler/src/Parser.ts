@@ -114,7 +114,6 @@ export default class Parser<A> {
     const {done, value} = iterator.next();
 
     if (done) {
-      // TODO: Let caller decide whether empty input should be a hard error or not?
       return null;
     }
 
@@ -133,12 +132,13 @@ export default class Parser<A> {
     if (maybe) {
       const [result, next] = maybe;
 
-      if (this.next(next) !== null) {
-        // TODO report error stack here too?
-        throw new Error('Failed to consume all input');
+      if (next) {
+        // Failed to consume all input.
+        this._errorIndex = next.index;
+        this._errorStack = [];
+      } else {
+        return result;
       }
-
-      return result;
     }
 
     // Reconstruct input from tokens.
@@ -178,9 +178,10 @@ export default class Parser<A> {
     throw new Error(
       'Parse error:\n' +
         '\n' +
-        `  Expected: ${this._errorStack[this._errorStack.length - 1]}\n` +
+        `  Expected: ${this._errorStack[this._errorStack.length - 1] ||
+          'end of input'}\n` +
         '\n' +
-        `  Parsing: ${this._errorStack.join(' \u00bb ')}\n` +
+        `  Parsing: ${this._errorStack.join(' \u00bb ') || startRule}\n` +
         '\n' +
         `  At: index ${this._errorIndex} (line ${line}, column ${column})\n` +
         '\n' +
