@@ -1,5 +1,5 @@
 import {Token} from './Lexer';
-import Parser, {Grammar, choice, plus, sequence, t} from './Parser';
+import Parser, {Grammar, choice, optional, plus, sequence, t} from './Parser';
 import lex, {TokenName, Tokens, isIgnored} from './lex';
 
 namespace GraphQL {
@@ -123,11 +123,23 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   field: [
-    t(Tokens.NAME),
-    (name: string): GraphQL.Field => ({
+    sequence(
+      optional('alias'),
+      t(Tokens.NAME),
+    ),
+    ([alias, name]: [string | undefined, string]): GraphQL.Field => ({
+      alias,
       kind: 'FIELD',
       name,
     }),
+  ],
+
+  alias: [
+    sequence(
+      t(Tokens.NAME),
+      t(Tokens.COLON)
+    ),
+    ([name]) => name
   ],
 
   // TODO: flesh these out

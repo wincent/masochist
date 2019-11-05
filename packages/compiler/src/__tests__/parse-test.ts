@@ -26,10 +26,12 @@ test('parsing a document with a named query', () => {
         name: 'MyQuery',
         selections: [
           {
+            alias: undefined,
             kind: 'FIELD',
             name: 'foo',
           },
           {
+            alias: undefined,
             kind: 'FIELD',
             name: 'bar',
           },
@@ -56,10 +58,12 @@ test('parsing a document with an anonymous operation', () => {
         name: undefined,
         selections: [
           {
+            alias: undefined,
             kind: 'FIELD',
             name: 'foo',
           },
           {
+            alias: undefined,
             kind: 'FIELD',
             name: 'bar',
           },
@@ -101,13 +105,35 @@ test('parsing an empty selection set', () => {
   expect(() => parse('{}')).toThrow(dedent`
     Parse error:
 
-      Expected: field
+      Expected: alias
 
-      Parsing: document » definition » operation » anonymousOperation » field
+      Parsing: document » definition » operation » anonymousOperation » field » alias
 
       At: index 1 (line 1, column 2)
 
     > 1 | {}
         |  ^
   `);
+});
+
+test('parsing fields with aliases', () => {
+  expect(
+    parse(dedent`
+      {
+        label: foo
+      }
+  `),
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [{
+      kind: 'OPERATION',
+      name: undefined,
+      selections: [{
+        alias: 'label',
+        kind: 'FIELD',
+        name: 'foo'
+      }],
+      type: 'QUERY',
+    }]
+  });
 });

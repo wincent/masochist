@@ -256,7 +256,19 @@ export default class Parser<A> {
             break;
 
           case 'OPTIONAL':
-            // TODO
+            {
+              const maybe = this.evaluate(expression.expression, current);
+
+              this._parseStack.pop();
+
+              if (maybe) {
+                const [result, next] = maybe;
+
+                return [production(result), next];
+              } else {
+                return [production(undefined), current];
+              }
+            }
             break;
 
           case 'PLUS':
