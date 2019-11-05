@@ -181,33 +181,12 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   queryOperation: [
     sequence(
-      t(Tokens.NAME, contents => contents === 'query'),
+      t(Tokens.NAME, contents => contents === 'query').ignore,
       t(Tokens.NAME),
       star('directive'),
       'selectionSet',
     ),
-    /*
-     * TODO: add .silent/ignore/omit() helper...? (to avoid this ugly destructuring)
-     *
-     * either want to do:
-     *
-     *    sequence(
-     *      t(...).ignore,
-     *      t(...)
-     *      'selectionSet'
-     *    )
-     *
-     * or:
-     *
-     *    sequence(
-     *      t(...),
-     *      t(...).as('name'),
-     *      r('selectionSet').as('selections'),
-     *    )
-     *
-     * first seems like less work
-     */
-    ([, name, directives, selections]) => ({
+    ([name, directives, selections]) => ({
       directives,
       kind: 'OPERATION',
       name,
@@ -218,11 +197,11 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   selectionSet: [
     sequence(
-      t(Tokens.OPENING_BRACE),
+      t(Tokens.OPENING_BRACE).ignore,
       choice('field', 'fragmentSpread', 'inlineFragment').plus,
-      t(Tokens.CLOSING_BRACE),
+      t(Tokens.CLOSING_BRACE).ignore,
     ),
-    ([, selections]: [unknown, any]): any => selections,
+    ([selections]: [unknown, any]): any => selections,
   ],
 
   field: [
@@ -247,18 +226,18 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   arguments: [
     sequence(
-      t(Tokens.OPENING_PAREN),
+      t(Tokens.OPENING_PAREN).ignore,
       plus('argument'),
-      t(Tokens.CLOSING_PAREN),
+      t(Tokens.CLOSING_PAREN).ignore,
     ),
-    ([, args]): Array<GraphQL.Argument> => {
+    ([args]): Array<GraphQL.Argument> => {
       return args;
     },
   ],
 
   argument: [
-    sequence(t(Tokens.NAME), t(Tokens.COLON), 'value'),
-    ([name, , value]) => ({
+    sequence(t(Tokens.NAME), t(Tokens.COLON).ignore, 'value'),
+    ([name, value]) => ({
       kind: 'ARGUMENT',
       name,
       value,
@@ -315,11 +294,11 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   list: [
     sequence(
-      t(Tokens.OPENING_BRACKET),
+      t(Tokens.OPENING_BRACKET).ignore,
       star('value'),
-      t(Tokens.CLOSING_BRACKET),
+      t(Tokens.CLOSING_BRACKET).ignore,
     ),
-    ([, values]): GraphQL.ListValue => ({
+    ([values]): GraphQL.ListValue => ({
       kind: 'LIST',
       value: values || [],
     }),
@@ -334,19 +313,19 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   object: [
     sequence(
-      t(Tokens.OPENING_BRACE),
+      t(Tokens.OPENING_BRACE).ignore,
       star('objectField'),
-      t(Tokens.CLOSING_BRACE),
+      t(Tokens.CLOSING_BRACE).ignore,
     ),
-    ([, fields]): GraphQL.ObjectValue => ({
+    ([fields]): GraphQL.ObjectValue => ({
       kind: 'OBJECT',
       fields: fields || [],
     }),
   ],
 
   objectField: [
-    sequence(t(Tokens.NAME), t(Tokens.COLON), 'value'),
-    ([name, , value]): GraphQL.ObjectField => ({
+    sequence(t(Tokens.NAME), t(Tokens.COLON).ignore, 'value'),
+    ([name, value]): GraphQL.ObjectField => ({
       kind: 'OBJECT_FIELD',
       name,
       value,
@@ -371,16 +350,16 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   variable: [
-    sequence(t(Tokens.DOLLAR), t(Tokens.NAME)),
-    ([, name]) => ({
+    sequence(t(Tokens.DOLLAR).ignore, t(Tokens.NAME)),
+    ([name]) => ({
       kind: 'VARIABLE',
       name,
     }),
   ],
 
   directive: [
-    sequence(t(Tokens.AT), t(Tokens.NAME), optional('arguments')),
-    ([, name, args]): GraphQL.Directive => ({
+    sequence(t(Tokens.AT).ignore, t(Tokens.NAME), optional('arguments')),
+    ([name, args]): GraphQL.Directive => ({
       arguments: args,
       kind: 'DIRECTIVE',
       name,

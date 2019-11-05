@@ -12,6 +12,8 @@ export type Grammar<A> = {
 };
 
 interface ExpressionOperators {
+  ignore: Expression;
+
   optional: Expression;
 
   plus: Expression;
@@ -36,6 +38,11 @@ type ChoiceExpression = {
   kind: 'CHOICE';
   expressions: Array<Expression>;
 } & ExpressionOperators;
+
+type IgnoreExpression = {
+  kind: 'IGNORE';
+  expression: Expression;
+};
 
 type NotExpression = {
   kind: 'NOT';
@@ -67,6 +74,7 @@ type SymbolReference = string;
 type NonTerminalSymbol =
   | AndExpression
   | ChoiceExpression
+  | IgnoreExpression
   | NotExpression
   | OptionalExpression
   | PlusExpression
@@ -250,6 +258,21 @@ export default class Parser<A> {
             }
             break;
 
+          case 'IGNORE':
+            {
+              const maybe = this.evaluate(expression.expression, current);
+
+              if (maybe) {
+                const [result, next] = maybe;
+
+                // Note that we don't actually ignore the result; it is up to
+                // the caller to do that (see the SEQUENCE case).
+                this._parseStack.pop();
+                return [production(result), next];
+              }
+            }
+            break;
+
           case 'NOT':
             // TODO
             break;
@@ -300,13 +323,21 @@ export default class Parser<A> {
             let next: Token | null = current;
 
             for (let i = 0; i < expression.expressions.length; i++) {
-              const maybe = this.evaluate(expression.expressions[i], next);
+              const subExpression = expression.expressions[i];
+
+              const maybe = this.evaluate(subExpression, next);
+
               let result;
 
               if (maybe) {
                 [result, next] = maybe;
 
-                results.push(result);
+                if (
+                  typeof subExpression === 'string' ||
+                  subExpression.kind !== 'IGNORE'
+                ) {
+                  results.push(result);
+                }
               } else {
                 break outer;
               }
@@ -451,6 +482,24 @@ function identity<T extends any>(id: T): T {
 }
 
 /**
+ * Succeeds when the wrapped `expression` succeeds, and marks the result to be
+ * consumed but not propagated.
+ *
+ * The typical use case is to recognize a syntatic construct like a list, where
+ * you want to recognize but discard the opening and closing brackets, but
+ * capture the inner contents.
+ *
+ * Note: currently only the `sequence` functionality pays attention to this
+ * modifier.
+ */
+export function ignore(expression: Expression): IgnoreExpression {
+  return {
+    expression,
+    kind: 'IGNORE',
+  };
+}
+
+/**
  * "Not" predicate.
  *
  * Succeeds when `expression` does not succeed, but does not consume any input.
@@ -532,6 +581,12 @@ export function t(
 
 function withProperties<T extends unknown>(base: T): T & ExpressionOperators {
   Object.defineProperties(base, {
+    ignore: {
+      get() {
+        return withProperties(ignore(base as Expression));
+      },
+    },
+
     optional: {
       get() {
         return withProperties(optional(base as Expression));
