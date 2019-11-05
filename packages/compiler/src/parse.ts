@@ -11,11 +11,30 @@ import Parser, {
 import lex, {TokenName, Tokens, isIgnored} from './lex';
 
 namespace GraphQL {
-  export type Node = Directive | Document | Field | Operation;
+  export type Node =
+    | Argument
+    | BooleanValue
+    | Directive
+    | Document
+    | Field
+    | Operation
+    | Value;
+
+  export interface Argument {
+    kind: 'ARGUMENT';
+    name: string;
+    value: Value;
+  }
+
+  export interface BooleanValue {
+    kind: 'BOOLEAN';
+    value: boolean;
+  }
 
   export type Definition = Operation; // | ... | ...
 
   export interface Directive {
+    arguments?: Array<Argument>;
     kind: 'DIRECTIVE';
     name: string;
   }
@@ -33,6 +52,16 @@ namespace GraphQL {
     selections?: Array<Selection>;
   }
 
+  export type LiteralValue =
+    // IntValue |
+    // FloatValue |
+    // StringValue |
+    BooleanValue; //|
+  // NullValue |
+  // EnumValue |
+  // ListValue |
+  // ObjectValue;
+
   export interface Operation {
     kind: 'OPERATION';
     name?: string;
@@ -46,7 +75,12 @@ namespace GraphQL {
 
   export type Selection = Field; // | ... | ...
 
-  export type Variable = 'TBD';
+  export type Value = Variable | LiteralValue;
+
+  export interface Variable {
+    kind: 'VARIABLE';
+    name: string;
+  }
 }
 
 // TODO: move this into a separate file
@@ -141,11 +175,13 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     sequence(
       optional('alias'),
       t(Tokens.NAME),
+      optional('arguments'),
       star('directive'),
       optional('selectionSet'),
     ),
-    ([alias, name, directives, selections]): GraphQL.Field => ({
+    ([alias, name, args, directives, selections]): GraphQL.Field => ({
       alias,
+      arguments: args,
       directives,
       kind: 'FIELD',
       name,
@@ -155,9 +191,55 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   alias: [sequence(t(Tokens.NAME), t(Tokens.COLON)), ([name]) => name],
 
+  arguments: [
+    sequence(
+      t(Tokens.OPENING_PAREN),
+      plus('argument'),
+      t(Tokens.CLOSING_PAREN),
+    ),
+    ([, args]): Array<GraphQL.Argument> => {
+      return args;
+    },
+  ],
+
+  argument: [
+    sequence(
+      t(Tokens.NAME),
+      t(Tokens.COLON),
+      choice(
+        'variable',
+        // ...
+        'boolean',
+        // ...
+      ),
+    ),
+    ([name, , value]) => ({
+      kind: 'ARGUMENT',
+      name,
+      value,
+    }),
+  ],
+
+  boolean: [
+    t(Tokens.NAME, contents => contents === 'true' || contents === 'false'),
+    (contents): GraphQL.BooleanValue => ({
+      kind: 'BOOLEAN',
+      value: contents === 'true',
+    }),
+  ],
+
+  variable: [
+    sequence(t(Tokens.DOLLAR), t(Tokens.NAME)),
+    ([, name]) => ({
+      kind: 'VARIABLE',
+      name,
+    }),
+  ],
+
   directive: [
-    sequence(t(Tokens.AT), t(Tokens.NAME)),
-    ([, name]): GraphQL.Directive => ({
+    sequence(t(Tokens.AT), t(Tokens.NAME), optional('arguments')),
+    ([, name, args]): GraphQL.Directive => ({
+      arguments: args,
       kind: 'DIRECTIVE',
       name,
     }),

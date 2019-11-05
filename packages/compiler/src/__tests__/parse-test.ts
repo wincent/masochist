@@ -256,6 +256,7 @@ test('parsing fields with directives', () => {
       {
         foo
         bar @defer
+        baz @include(if: true)
       }
   `),
   ).toEqual({
@@ -276,6 +277,7 @@ test('parsing fields with directives', () => {
             alias: undefined,
             directives: [
               {
+                arguments: undefined,
                 kind: 'DIRECTIVE',
                 name: 'defer',
               },
@@ -284,8 +286,30 @@ test('parsing fields with directives', () => {
             name: 'bar',
             selections: undefined,
           },
+          {
+            alias: undefined,
+            directives: [
+              {
+                arguments: [
+                  {
+                    kind: 'ARGUMENT',
+                    name: 'if',
+                    value: {
+                      kind: 'BOOLEAN',
+                      value: true,
+                    },
+                  },
+                ],
+                kind: 'DIRECTIVE',
+                name: 'include',
+              },
+            ],
+            kind: 'FIELD',
+            name: 'baz',
+            selections: undefined,
+          },
         ],
-        type: 'QUERY'
+        type: 'QUERY',
       },
     ],
   });
