@@ -27,6 +27,7 @@ test('parsing a document with a named query', () => {
         selections: [
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'foo',
@@ -34,6 +35,7 @@ test('parsing a document with a named query', () => {
           },
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'bar',
@@ -63,6 +65,7 @@ test('parsing a document with an anonymous operation', () => {
         selections: [
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'foo',
@@ -70,6 +73,7 @@ test('parsing a document with an anonymous operation', () => {
           },
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'bar',
@@ -162,6 +166,7 @@ test('parsing a document with trailing ignored tokens', () => {
         selections: [
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'foo',
@@ -191,6 +196,7 @@ test('parsing fields with aliases', () => {
         selections: [
           {
             alias: 'label',
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'foo',
@@ -223,18 +229,21 @@ test('parsing fields with nested selections', () => {
         selections: [
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'foo',
             selections: [
               {
                 alias: undefined,
+                arguments: undefined,
                 directives: undefined,
                 kind: 'FIELD',
                 name: 'bar',
                 selections: [
                   {
                     alias: undefined,
+                    arguments: undefined,
                     directives: undefined,
                     kind: 'FIELD',
                     name: 'baz',
@@ -242,6 +251,44 @@ test('parsing fields with nested selections', () => {
                 ],
               },
             ],
+          },
+        ],
+        type: 'QUERY',
+      },
+    ],
+  });
+});
+
+test('parsing fields with arguments', () => {
+  expect(
+    parse(dedent`
+      {
+        profilePic(size: 100)
+      }
+  `),
+  ).toEqual({
+    kind: 'DOCUMENT',
+    definitions: [
+      {
+        kind: 'OPERATION',
+        name: undefined,
+        selections: [
+          {
+            alias: undefined,
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'size',
+                value: {
+                  kind: 'INT',
+                  value: 100,
+                },
+              },
+            ],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'profilePic',
+            selections: undefined,
           },
         ],
         type: 'QUERY',
@@ -268,6 +315,7 @@ test('parsing fields with directives', () => {
         selections: [
           {
             alias: undefined,
+            arguments: undefined,
             directives: undefined,
             kind: 'FIELD',
             name: 'foo',
@@ -275,6 +323,7 @@ test('parsing fields with directives', () => {
           },
           {
             alias: undefined,
+            arguments: undefined,
             directives: [
               {
                 arguments: undefined,
@@ -288,6 +337,7 @@ test('parsing fields with directives', () => {
           },
           {
             alias: undefined,
+            arguments: undefined,
             directives: [
               {
                 arguments: [

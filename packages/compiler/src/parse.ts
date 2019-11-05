@@ -17,6 +17,7 @@ namespace GraphQL {
     | Directive
     | Document
     | Field
+    | IntValue
     | Operation
     | Value;
 
@@ -46,17 +47,23 @@ namespace GraphQL {
 
   export interface Field {
     alias?: string;
+    arguments?: Array<Argument>;
     directives?: Array<Directive>;
     kind: 'FIELD';
     name: string;
     selections?: Array<Selection>;
   }
 
-  export type LiteralValue =
-    // IntValue |
+  export interface IntValue {
+    kind: 'INT';
+    value: number;
+  }
+
+  export type ScalarValue =
+    | IntValue
     // FloatValue |
     // StringValue |
-    BooleanValue; //|
+    | BooleanValue; //|
   // NullValue |
   // EnumValue |
   // ListValue |
@@ -75,7 +82,7 @@ namespace GraphQL {
 
   export type Selection = Field; // | ... | ...
 
-  export type Value = Variable | LiteralValue;
+  export type Value = Variable | ScalarValue; // list, object, enum
 
   export interface Variable {
     kind: 'VARIABLE';
@@ -209,6 +216,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       choice(
         'variable',
         // ...
+        'int',
         'boolean',
         // ...
       ),
@@ -225,6 +233,14 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     (contents): GraphQL.BooleanValue => ({
       kind: 'BOOLEAN',
       value: contents === 'true',
+    }),
+  ],
+
+  int: [
+    t(Tokens.INT_VALUE),
+    (contents): GraphQL.IntValue => ({
+      kind: 'INT',
+      value: parseInt(contents, 10),
     }),
   ],
 
