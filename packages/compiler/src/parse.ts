@@ -17,6 +17,7 @@ namespace GraphQL {
     | Directive
     | Document
     | Field
+    | FloatValue
     | IntValue
     | Operation
     | Value;
@@ -54,6 +55,11 @@ namespace GraphQL {
     selections?: Array<Selection>;
   }
 
+  export interface FloatValue {
+    kind: 'FLOAT';
+    value: string;
+  }
+
   export interface IntValue {
     kind: 'INT';
     value: number;
@@ -61,7 +67,7 @@ namespace GraphQL {
 
   export type ScalarValue =
     | IntValue
-    // FloatValue |
+    | FloatValue
     // StringValue |
     | BooleanValue; //|
   // NullValue |
@@ -216,6 +222,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       choice(
         'variable',
         // ...
+        'float',
         'int',
         'boolean',
         // ...
@@ -233,6 +240,14 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     (contents): GraphQL.BooleanValue => ({
       kind: 'BOOLEAN',
       value: contents === 'true',
+    }),
+  ],
+
+  float: [
+    t(Tokens.FLOAT_VALUE),
+    (contents): GraphQL.FloatValue => ({
+      kind: 'FLOAT',
+      value: contents,
     }),
   ],
 

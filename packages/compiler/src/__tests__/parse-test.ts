@@ -263,7 +263,10 @@ test('parsing fields with arguments', () => {
   expect(
     parse(dedent`
       {
-        profilePic(size: 100)
+        profilePic(
+          opacity: 0.5
+          size: 100
+        )
       }
   `),
   ).toEqual({
@@ -276,6 +279,14 @@ test('parsing fields with arguments', () => {
           {
             alias: undefined,
             arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'opacity',
+                value: {
+                  kind: 'FLOAT',
+                  value: '0.5',
+                },
+              },
               {
                 kind: 'ARGUMENT',
                 name: 'size',
