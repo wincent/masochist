@@ -286,7 +286,6 @@ export default class Parser<A> {
                 return [production(undefined), current];
               }
             }
-            break;
 
           case 'PLUS':
             {
