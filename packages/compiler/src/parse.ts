@@ -137,27 +137,12 @@ namespace GraphQL {
 
 // TODO: move all this into a separate file
 
-/*
-function assertDefinitions(definitions: unknown): asserts definitions is Array<GraphQL.Definition> {
-  if (!Array.isArray(definitions) || definitions.some(definition => {
-    return (
-      !definition ||
-      typeof definition !== 'object' ||
-      definition.kind !== 'OPERATION'
-    );
-  })) {
-    throw new Error('Expected Array<GraphQL.Definition>');
-  }
-}*/
-
 const GRAMMAR: Grammar<GraphQL.Node> = {
   document: [
     plus('definition'),
-    (definitions/*: unknown*/): GraphQL.Document => {
+    (definitions): GraphQL.Document => {
       let anonymous = 0;
       let operations = 0;
-
-      // assertDefinitions(definitions);
 
       definitions.forEach((definition: GraphQL.Definition) => {
         if (definition.kind === 'OPERATION') {
