@@ -12,8 +12,9 @@ import lex, {TokenName, Tokens, isIgnored} from './lex';
 
 namespace GraphQL {
   export type Node =
-    | Argument
     | Array<Argument>
+    | Array<Selection>
+    | Argument
     | BooleanValue
     | Directive
     | Document
@@ -187,7 +188,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       star('directive'),
       'selectionSet',
     ),
-    ([name, directives, selections]) => ({
+    ([name, directives, selections]): GraphQL.Operation => ({
       directives,
       kind: 'OPERATION',
       name,
@@ -202,7 +203,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       choice('field', 'fragmentSpread', 'inlineFragment').plus,
       t(Tokens.CLOSING_BRACE).ignore,
     ),
-    ([selections]) => selections,
+    ([selections]): Array<GraphQL.Selection> => selections,
   ],
 
   field: [
@@ -223,7 +224,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     }),
   ],
 
-  alias: [sequence(t(Tokens.NAME), t(Tokens.COLON)), ([name]) => name],
+  alias: [sequence(t(Tokens.NAME), t(Tokens.COLON).ignore), ([name]) => name],
 
   arguments: [
     sequence(
@@ -352,7 +353,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   variable: [
     sequence(t(Tokens.DOLLAR).ignore, t(Tokens.NAME)),
-    ([name]) => ({
+    ([name]): GraphQL.Variable => ({
       kind: 'VARIABLE',
       name,
     }),
