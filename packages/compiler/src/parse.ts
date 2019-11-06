@@ -1,4 +1,3 @@
-import {Token} from './Lexer';
 import Parser, {
   Grammar,
   choice,
@@ -8,7 +7,7 @@ import Parser, {
   star,
   t,
 } from './Parser';
-import lex, {TokenName, Tokens, isIgnored} from './lex';
+import lex, {Tokens, isIgnored} from './lex';
 
 namespace GraphQL {
   export type Node =
