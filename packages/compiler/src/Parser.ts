@@ -5,8 +5,24 @@ import {Token} from './Lexer';
  */
 export type Grammar<A> = {
   // TODO: see if I can get rid of `any` type here.
+  // ideas for how to do that? technically it shold be "unknown" but that will
+  // require a lot of runtime checks so satisfy TS (shudder)
+  // i suspect that even if I add another type parameter, i'll still need lots
+  // of checks
+  // making it "A" isn't enough...
+  // for t() we end up calling callback with a string
+  // in most cases we call it with "results", whatever they were (often A, but not always)
+  // in two cases we call it with an array of results (again, often Array<A>, but not always)
+  // in a couple cases we call it with undefined
+  // if I reflect that in the types (see commented out code below), we get 42
+  // errors, even more than I would get with "unknown" (29)
+  // I think we'll need a lot of checks there
   [symbolName: string]:
     | Expression
+    // | [Expression, (result: A | string | undefined | Array<A | string | undefined>) => A]
+    // | [Expression, (result: A | string | undefined | Array<A | string | undefined>) => A, () => never];
+    // | [Expression, (result: unknown) => A]
+    // | [Expression, (result: unknown) => A, () => never];
     | [Expression, (result: any) => A]
     | [Expression, (result: any) => A, () => never];
 };
