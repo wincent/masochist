@@ -13,6 +13,7 @@ import lex, {TokenName, Tokens, isIgnored} from './lex';
 namespace GraphQL {
   export type Node =
     | Argument
+    | Array<Argument>
     | BooleanValue
     | Directive
     | Document
