@@ -1,30 +1,35 @@
 import {Token} from './Lexer';
 
+export type VirtualNode<A> =
+  | VirtualNodeUndefined
+  | VirtualNodeString
+  | VirtualNodeArray<A>;
+
+export interface VirtualNodeUndefined {
+  kind: 'VIRTUAL_UNDEFINED';
+}
+
+export interface VirtualNodeString {
+  kind: 'VIRTUAL_STRING';
+  value: string;
+}
+
+export interface VirtualNodeArray<A> {
+  kind: 'VIRTUAL_ARRAY';
+  value: Array<A | VirtualNode<A>>;
+}
+
 /**
  * The type parameter `A` is the type of the AST nodes produced by the Grammar.
+ *
+ * The `VirtualNode<A>` type refers to the "virtual node" wrapper objects that
+ * may be produced by intermediate parser rules, but which should not wind up in
+ * the final AST.
  */
 export type Grammar<A> = {
-  // TODO: see if I can get rid of `any` type here.
-  // ideas for how to do that? technically it shold be "unknown" but that will
-  // require a lot of runtime checks so satisfy TS (shudder)
-  // i suspect that even if I add another type parameter, i'll still need lots
-  // of checks
-  // making it "A" isn't enough...
-  // for t() we end up calling callback with a string
-  // in most cases we call it with "results", whatever they were (often A, but not always)
-  // in two cases we call it with an array of results (again, often Array<A>, but not always)
-  // in a couple cases we call it with undefined
-  // if I reflect that in the types (see commented out code below), we get 42
-  // errors, even more than I would get with "unknown" (29)
-  // I think we'll need a lot of checks there
   [symbolName: string]:
     | Expression
-    // | [Expression, (result: A | string | undefined | Array<A | string | undefined>) => A]
-    // | [Expression, (result: A | string | undefined | Array<A | string | undefined>) => A, () => never];
-    // | [Expression, (result: unknown) => A]
-    // | [Expression, (result: unknown) => A, () => never];
-    | [Expression, (result: any) => A]
-    | [Expression, (result: any) => A, () => never];
+    | [Expression, (result: A | VirtualNode<A>) => A | VirtualNode<A>]
 };
 
 interface ExpressionOperators {
@@ -154,6 +159,8 @@ export default class Parser<A> {
         // Failed to consume all input.
         this._errorIndex = next.index;
         this._errorStack = [];
+      } else if (this.isVirtualNode(result)) {
+        throw new Error(`Expected non-virtual node but got ${result.kind}`);
       } else {
         return result;
       }
@@ -208,10 +215,21 @@ export default class Parser<A> {
     );
   }
 
+  private isVirtualNode(node: A | VirtualNode<A>): node is VirtualNode<A> {
+    return (
+      node &&
+      'kind' in node && (
+        node.kind === 'VIRTUAL_ARRAY' ||
+        node.kind === 'VIRTUAL_STRING' ||
+        node.kind === 'VIRTUAL_UNDEFINED'
+      )
+    );
+  }
+
   private evaluate(
     start: Expression,
     current: Token | null,
-  ): [A, Token | null] | null {
+  ): [A | VirtualNode<A>, Token | null] | null {
     const rule = typeof start === 'string' ? this._grammar[start] : start;
 
     const index = current ? current.index : 0;
@@ -228,7 +246,7 @@ export default class Parser<A> {
       );
     }
 
-    const [expression, production, onFailure] = Array.isArray(rule)
+    const [expression, production] = Array.isArray(rule)
       ? rule
       : [rule, identity];
 
@@ -303,18 +321,18 @@ export default class Parser<A> {
 
                 return [production(result), next];
               } else {
-                return [production(undefined), current];
+                return [production({kind: 'VIRTUAL_UNDEFINED'}), current];
               }
             }
-            break;
 
           case 'PLUS':
             {
-              const results = [];
+              const results: Array<A | VirtualNode<A>> = [];
               let next: Token | null = current;
 
               while (true) {
                 const maybe = this.evaluate(expression.expression, next);
+
                 let result;
 
                 if (maybe) {
@@ -328,13 +346,16 @@ export default class Parser<A> {
 
               if (results.length) {
                 this._parseStack.pop();
-                return [production(results), next];
+                return [
+                  production({kind: 'VIRTUAL_ARRAY', value: results}),
+                  next
+                ];
               }
             }
             break;
 
           case 'SEQUENCE': {
-            const results = [];
+            const results: Array<A | VirtualNode<A>> = [];
             let next: Token | null = current;
 
             for (let i = 0; i < expression.expressions.length; i++) {
@@ -359,11 +380,14 @@ export default class Parser<A> {
             }
 
             this._parseStack.pop();
-            return [production(results), next];
+            return [
+              production({kind: 'VIRTUAL_ARRAY', value: results}),
+              next
+            ];
           }
 
           case 'STAR': {
-            const results = [];
+            const results: Array<A | VirtualNode<A>> = [];
             let next: Token | null = current;
 
             while (true) {
@@ -380,7 +404,17 @@ export default class Parser<A> {
             }
 
             this._parseStack.pop();
-            return [production(results.length ? results : undefined), next];
+            if (results.length) {
+              return [
+                production({
+                  kind: 'VIRTUAL_ARRAY',
+                  value: results,
+                }),
+                next
+              ];
+            } else {
+              return [production({kind: 'VIRTUAL_UNDEFINED'}), next];
+            }
           }
 
           case 'TOKEN':
@@ -393,7 +427,10 @@ export default class Parser<A> {
               }
 
               this._parseStack.pop();
-              return [production(current.contents), this.next(current)];
+              return [
+                production({kind: 'VIRTUAL_STRING', value: current.contents}),
+                this.next(current)
+              ];
             }
             break;
         }
@@ -403,10 +440,6 @@ export default class Parser<A> {
     if (index > this._errorIndex) {
       this._errorIndex = index;
       this._errorStack = this._parseStack.filter(isNonNull);
-    }
-
-    if (onFailure) {
-      onFailure();
     }
 
     this._parseStack.pop();
