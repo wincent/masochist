@@ -196,6 +196,19 @@ export default class Parser<A> {
 
     const index = current ? current.index : 0;
 
+    // if (!this._memo) {
+    //   this._memo = new Map();
+    // }
+    // if (!this._memo.has(rule)) {
+    //   this._memo.set(rule, new Map());
+    // }
+    // let r = this._memo.get(rule);
+    // if (!this._memo.get(rule).has(index)) {
+    //   this._memo.get(rule).set(index, 0);
+    // }
+    // let count = this._memo.get(rule).get(index);
+    // this._memo.get(rule).set(index, count + 1);
+
     if (typeof start === 'string') {
       this._parseStack.push(start);
     } else {

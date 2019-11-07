@@ -9,10 +9,13 @@ import Parser, {
 } from './Parser';
 import lex, {Tokens, isIgnored} from './lex';
 
+// TODO: move all this into a separate file
+
 namespace GraphQL {
   export type Node =
     | Array<Argument>
     | Array<Selection>
+    | Array<VariableDefinition>
     | Argument
     | BooleanValue
     | Directive
@@ -21,13 +24,17 @@ namespace GraphQL {
     | Field
     | FloatValue
     | IntValue
+    | ListType
     | ListValue
+    | NamedType
+    | NonNullType
     | NullValue
     | ObjectField
     | ObjectValue
     | Operation
     | StringValue
-    | Value;
+    | Value
+    | VariableDefinition;
 
   export interface Argument {
     kind: 'ARGUMENT';
@@ -78,8 +85,26 @@ namespace GraphQL {
   }
 
   export interface ListValue {
+    // TODO maybe call this LIST_VALUE to distinguish it from LIST_TYPE
     kind: 'LIST';
     value: Array<Value>;
+  }
+
+  export type Type = NamedType | ListType | NonNullType;
+
+  export interface ListType {
+    kind: 'LIST_TYPE',
+    type: Type,
+  }
+
+  export interface NonNullType {
+    kind: 'NON_NULL_TYPE',
+    type: NamedType | ListType,
+  }
+
+  export interface NamedType {
+    kind: 'NAMED_TYPE',
+    name: string;
   }
 
   export interface NullValue {
@@ -116,8 +141,7 @@ namespace GraphQL {
     directives?: Array<Directive>;
     selections: Array<Selection>;
     type: 'MUTATION' | 'SUBSCRIPTION' | 'QUERY';
-    // TODO: actually support variables here
-    variables?: Array<Variable>;
+    variables?: Array<VariableDefinition>;
   }
 
   export type Selection = Field; // | ... | ...
@@ -133,9 +157,15 @@ namespace GraphQL {
     kind: 'VARIABLE';
     name: string;
   }
-}
 
-// TODO: move all this into a separate file
+  export interface VariableDefinition {
+    defaultValue?: Value;
+    directives?: Array<Directive>;
+    kind: 'VARIABLE_DEFINITION';
+    type: Type;
+    variable: Variable;
+  }
+}
 
 const GRAMMAR: Grammar<GraphQL.Node> = {
   document: [
@@ -184,15 +214,17 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     sequence(
       t(Tokens.NAME, contents => contents === 'query').ignore,
       t(Tokens.NAME),
+      optional('variableDefinitions'),
       star('directive'),
       'selectionSet',
     ),
-    ([name, directives, selections]): GraphQL.Operation => ({
+    ([name, variables, directives, selections]): GraphQL.Operation => ({
       directives,
       kind: 'OPERATION',
       name,
       selections,
       type: 'QUERY',
+      variables,
     }),
   ],
 
@@ -356,6 +388,64 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       kind: 'VARIABLE',
       name,
     }),
+  ],
+
+  variableDefinitions: [
+    sequence(
+      t(Tokens.OPENING_PAREN).ignore,
+      plus('variableDefinition'),
+      t(Tokens.CLOSING_PAREN).ignore,
+    ),
+    ([variableDefinitions]): Array<GraphQL.VariableDefinition> => variableDefinitions,
+  ],
+
+  variableDefinition: [
+    sequence(
+      'variable',
+      t(Tokens.COLON).ignore,
+      'type',
+      // default value (optional) -- TODO implement
+      star('directive')
+    ),
+    ([variable, type, directives]): GraphQL.VariableDefinition => ({
+      directives,
+      kind: 'VARIABLE_DEFINITION',
+      type,
+      variable,
+    })
+  ],
+
+  type: choice('namedType', 'listType', 'nonNullType'),
+
+  namedType: [
+    t(Tokens.NAME),
+    (name): GraphQL.NamedType => ({
+      kind: 'NAMED_TYPE',
+      name,
+    })
+  ],
+
+  listType: [
+    sequence(
+      t(Tokens.OPENING_BRACKET).ignore,
+      'type',
+      t(Tokens.CLOSING_BRACKET).ignore,
+    ),
+    ([type]): GraphQL.ListType => ({
+      kind: 'LIST_TYPE',
+      type,
+    })
+  ],
+
+  nonNullType: [
+    sequence(
+      choice('namedType', 'listType'),
+      t(Tokens.BANG).ignore,
+    ),
+    ([type]): GraphQL.NonNullType => ({
+      kind: 'NON_NULL_TYPE',
+      type,
+    })
   ],
 
   directive: [

@@ -22,6 +22,10 @@ test('parsing a document with a named query', () => {
       query LiveQuery @live {
         fancy
       }
+
+      query WithVariables($size: Int) {
+        pic(width: $size)
+      }
   `),
   ).toEqual({
     definitions: [
@@ -70,6 +74,40 @@ test('parsing a document with a named query', () => {
           },
         ],
         type: 'QUERY',
+      },
+      {
+        directives: undefined,
+        kind: 'OPERATION',
+        name: 'WithVariables',
+        selections: [
+          {
+            alias: undefined,
+            arguments: [{
+              kind: 'ARGUMENT',
+              name: 'width',
+              value: {
+                kind: 'VARIABLE',
+                name: 'size',
+              },
+            }],
+            directives: undefined,
+            kind: 'FIELD',
+            name: 'pic',
+            selections: undefined,
+          },
+        ],
+        type: 'QUERY',
+        variables: [{
+          kind: 'VARIABLE_DEFINITION',
+          variable: {
+            kind: 'VARIABLE',
+            name: 'size'
+          },
+          type: {
+            kind: 'NAMED_TYPE',
+            name: 'Int',
+          }
+        }]
       },
     ],
     kind: 'DOCUMENT',
