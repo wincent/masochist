@@ -74,7 +74,9 @@ export default function skein(text: string | Array<number>): string {
     ),
   );
 
-  block(c, tweak, buffer, 0);
+  let position = 0;
+
+  block(c, tweak, buffer, position);
 
   tweak = [
     [0, 0],
@@ -89,7 +91,6 @@ export default function skein(text: string | Array<number>): string {
   ];
 
   let length = message.length;
-  let position = 0;
 
   for (; length > 64; length -= 64, position += 64) {
     tweak[0][1] += 64; // Bytes processed so far (including pending block).
@@ -123,6 +124,11 @@ export default function skein(text: string | Array<number>): string {
 
   return hash.join('');
 }
+
+function rotateLeft(x: [number, number], n: number): [number, number] {
+  return xor(shiftLeft(x, n), shiftRight(x, 64 - n));
+}
+
 function shiftLeft(
   x: [number, number] | undefined,
   n: number,
@@ -145,6 +151,7 @@ function shiftLeft(
 
   return [(x[0] << n) | (x[1] >>> (32 - n)), x[1] << n];
 }
+
 function shiftRight(
   x: [number, number] | undefined,
   n: number,
@@ -203,6 +210,10 @@ function block(
   b: Array<number>,
   offset: number,
 ) {
+  // Section 3.3.1 "MIX functions" (see Table 4).
+  //
+  // `R` defines rotation constants used to rotate-left.
+  //
   // prettier-ignore
   const R = [
     46, 36, 19, 37, 33, 42, 14, 27, 17, 49, 36, 39, 44, 56, 54, 9, 39,
@@ -213,6 +224,7 @@ function block(
 
   const t: Array<[number, number]> = [];
 
+  // Section 3.3.2 "The Key Schedule".
   c[8] = [0x1bd11bda, 0xa9fc1a22];
 
   for (let i = 0; i < 8; i++) {
@@ -238,8 +250,9 @@ function block(
       const n = (1 + i + i) & 7;
       const r = R[p + i];
 
+      // Section 3.3.1 "MIX function".
       x[m] = add(x[m], x[n]);
-      x[n] = xor(shiftLeft(x[n], r), shiftRight(x[n], 64 - r));
+      x[n] = rotateLeft(x[n], r);
       x[n] = xor(x[n], x[m]);
     }
 
