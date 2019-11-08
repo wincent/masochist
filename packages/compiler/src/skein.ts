@@ -5,34 +5,7 @@ import utf8 from './utf8';
  *
  * @see http://www.h2database.com/skein/
  */
-var selfTestAlreadyRun = false;
-
-function selfTest() {
-  if (selfTestAlreadyRun) {
-    return;
-  }
-  selfTestAlreadyRun = true;
-  if (
-    skein('FF').toUpperCase() !=
-    '71B7BCE6FE6452227B9CED6014249E5BF9A9754C3AD618CCC4E0AAE16B316CC8CA698D864307ED3E80B6EF1570812AC5272DC409B5A012DF2A579102F340617A'
-  ) {
-    console.log('Self test failed; hash FF=' + skein('FF'));
-  }
-}
-function hex2string(s) {
-  for (var c = [], len = s.length, i = 0; i < len; i += 2)
-    c.push(String.fromCharCode(parseInt(s.substring(i, i + 2), 16)));
-  return c.join('');
-}
-function string2hex(s) {
-  for (var p = [], len = s.length, i = 0; i < len; i++) {
-    p.push((256 + s.charCodeAt(i)).toString(16).substring(1));
-  }
-  return p.join('');
-}
-
 export default function skein(s) {
-  // selfTest();
   var msg = Array.from(utf8(s));
   // final: 0x80; first: 0x40; conf: 0x4; msg: 0x30; out: 0x3f
   var tweak = [[0, 32], [(0x80 + 0x40 + 0x4) << 24, 0]],
