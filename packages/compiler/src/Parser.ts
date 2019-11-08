@@ -4,7 +4,7 @@ import {Token} from './Lexer';
  * The type parameter `A` is the type of the AST nodes produced by the Grammar.
  */
 export type Grammar<A> = {
-  [symbolName: string]: | Expression | [Expression, (result: any) => A];
+  [symbolName: string]: Expression | [Expression, (result: any) => A];
 };
 
 interface ExpressionOperators {
@@ -135,6 +135,18 @@ export default class Parser<A> {
         this._errorIndex = next.index;
         this._errorStack = [];
       } else {
+        // if (this._memo) {
+        //   Array.from(this._memo.entries()).forEach(([r, counts], i) => {
+        //     const desc = Math.max(...Array.from(counts.values()));
+        //     if (desc > 1) {
+        // we hardly ever visit the same place twice...
+        // because we hardly ever backtrack
+        // i see 5 of these in the test run, for example:
+        // rule 1 {"expressions":["operation"],"kind":"CHOICE"}: 2
+        // console.log(`rule ${i} ${JSON.stringify(r)}: ${desc}`);
+        //     }
+        //   });
+        // }
         return result;
       }
     }
@@ -285,20 +297,19 @@ export default class Parser<A> {
             // TODO
             break;
 
-          case 'OPTIONAL':
-            {
-              const maybe = this.evaluate(expression.expression, current);
+          case 'OPTIONAL': {
+            const maybe = this.evaluate(expression.expression, current);
 
-              this._parseStack.pop();
+            this._parseStack.pop();
 
-              if (maybe) {
-                const [result, next] = maybe;
+            if (maybe) {
+              const [result, next] = maybe;
 
-                return [production(result), next];
-              } else {
-                return [production(undefined), current];
-              }
+              return [production(result), next];
+            } else {
+              return [production(undefined), current];
             }
+          }
 
           case 'PLUS':
             {
@@ -555,6 +566,10 @@ export function sequence(
     expressions,
     kind: 'SEQUENCE',
   });
+  // TODO use md5 hash to generate memoization keys
+  // seq: + hash(expressionHashes.join(':'))
+  // and for t() it would be toString on the function too
+  // (note disclaimer about closing over state not being memoization-friendly)
 }
 
 /**

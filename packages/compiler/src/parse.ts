@@ -93,17 +93,17 @@ namespace GraphQL {
   export type Type = NamedType | ListType | NonNullType;
 
   export interface ListType {
-    kind: 'LIST_TYPE',
-    type: Type,
+    kind: 'LIST_TYPE';
+    type: Type;
   }
 
   export interface NonNullType {
-    kind: 'NON_NULL_TYPE',
-    type: NamedType | ListType,
+    kind: 'NON_NULL_TYPE';
+    type: NamedType | ListType;
   }
 
   export interface NamedType {
-    kind: 'NAMED_TYPE',
+    kind: 'NAMED_TYPE';
     name: string;
   }
 
@@ -396,7 +396,8 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       plus('variableDefinition'),
       t(Tokens.CLOSING_PAREN).ignore,
     ),
-    ([variableDefinitions]): Array<GraphQL.VariableDefinition> => variableDefinitions,
+    ([variableDefinitions]): Array<GraphQL.VariableDefinition> =>
+      variableDefinitions,
   ],
 
   variableDefinition: [
@@ -405,14 +406,14 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
       t(Tokens.COLON).ignore,
       'type',
       // default value (optional) -- TODO implement
-      star('directive')
+      star('directive'),
     ),
     ([variable, type, directives]): GraphQL.VariableDefinition => ({
       directives,
       kind: 'VARIABLE_DEFINITION',
       type,
       variable,
-    })
+    }),
   ],
 
   type: choice('namedType', 'listType', 'nonNullType'),
@@ -422,7 +423,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     (name): GraphQL.NamedType => ({
       kind: 'NAMED_TYPE',
       name,
-    })
+    }),
   ],
 
   listType: [
@@ -434,18 +435,15 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     ([type]): GraphQL.ListType => ({
       kind: 'LIST_TYPE',
       type,
-    })
+    }),
   ],
 
   nonNullType: [
-    sequence(
-      choice('namedType', 'listType'),
-      t(Tokens.BANG).ignore,
-    ),
+    sequence(choice('namedType', 'listType'), t(Tokens.BANG).ignore),
     ([type]): GraphQL.NonNullType => ({
       kind: 'NON_NULL_TYPE',
       type,
-    })
+    }),
   ],
 
   directive: [

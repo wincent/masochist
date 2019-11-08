@@ -82,14 +82,16 @@ test('parsing a document with a named query', () => {
         selections: [
           {
             alias: undefined,
-            arguments: [{
-              kind: 'ARGUMENT',
-              name: 'width',
-              value: {
-                kind: 'VARIABLE',
-                name: 'size',
+            arguments: [
+              {
+                kind: 'ARGUMENT',
+                name: 'width',
+                value: {
+                  kind: 'VARIABLE',
+                  name: 'size',
+                },
               },
-            }],
+            ],
             directives: undefined,
             kind: 'FIELD',
             name: 'pic',
@@ -97,17 +99,19 @@ test('parsing a document with a named query', () => {
           },
         ],
         type: 'QUERY',
-        variables: [{
-          kind: 'VARIABLE_DEFINITION',
-          variable: {
-            kind: 'VARIABLE',
-            name: 'size'
+        variables: [
+          {
+            kind: 'VARIABLE_DEFINITION',
+            variable: {
+              kind: 'VARIABLE',
+              name: 'size',
+            },
+            type: {
+              kind: 'NAMED_TYPE',
+              name: 'Int',
+            },
           },
-          type: {
-            kind: 'NAMED_TYPE',
-            name: 'Int',
-          }
-        }]
+        ],
       },
     ],
     kind: 'DOCUMENT',
