@@ -193,6 +193,7 @@ function add(
 
   return [highOrder, lowOrder];
 }
+
 function xor(
   a: [number, number],
   b: [number, number] | undefined,
@@ -242,8 +243,13 @@ function block(
 
   tweak[2] = xor(tweak[0], tweak[1]);
 
+  // 72 rounds total: 18 in loop here * 4 MIX functions of two 64-bit
+  // words each (+ a permutation) = 72. A new subkey is injected every 4
+  // rounds.
   for (let round = 1; round <= 18; round++) {
+    // p: 16, 0, 16, 0, 16, 0...
     const p = 16 - ((round & 1) << 4);
+
     for (let i = 0; i < 16; i++) {
       // m: 0, 2, 4, 6, 2, 0, 6, 4, 4, 6, 0, 2, 6, 4, 2, 0
       const m = 2 * ((i + (1 + i + i) * (i >> 2)) & 3);
@@ -256,6 +262,7 @@ function block(
       x[n] = xor(x[n], x[m]);
     }
 
+    // Inject subkey.
     for (let i = 0; i < 8; i++) {
       x[i] = add(x[i], c[(round + i) % 9]);
     }
