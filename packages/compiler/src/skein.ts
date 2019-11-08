@@ -1,13 +1,18 @@
 import utf8 from './utf8';
 
 /**
+ * Skein 512-512 (v1.3) algorithm.
+ *
  * Based on public domain sample code at:
  *
  * @see http://www.h2database.com/skein/
+ *
+ * For full description:
+ *
+ * @see http://www.skein-hash.info/sites/default/files/skein1.3.pdf
  */
-export default function skein(text: string): string {
-  const message = Array.from(utf8(text));
-  // final: 0x80; first: 0x40; conf: 0x4; message: 0x30; out: 0x3f
+export default function skein(text: string | Array<number>): string {
+  const message = typeof text === 'string' ? Array.from(utf8(text)) : text;
 
   let tweak: Array<[number, number]> = [
     [0, 32],
