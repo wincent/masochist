@@ -7,12 +7,10 @@ test('hashing the empty string', () => {
 });
 
 test('small differences in input lead to large differences in output', () => {
-  return;
-  // TODO: plug in actual values
   expect(skein('The quick brown fox jumps over the lazy dog')).toBe(
-    '9e107d9d372bb6826bd81d3542a419d6',
+    '94c2ae036dba8783d0b3f7d6cc111ff810702f5c77707999be7e1c9486ff238a7044de734293147359b4ac7e1d09cd247c351d69826b78dcddd951f0ef912713',
   );
   expect(skein('The quick brown fox jumps over the lazy dog.')).toBe(
-    'e4d909c290d0fb1ca068ffaddf22cbd0',
+    '658223cb3d69b5e76e3588ca63feffba0dc2ead38a95d0650564f2a39da8e83fbb42c9d6ad9e03fbfde8a25a880357d457dbd6f74cbcb5e728979577dbce5436',
   );
 });
