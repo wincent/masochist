@@ -599,3 +599,221 @@ test('parsing fields with directives', () => {
     ],
   });
 });
+
+test('parsing a fragment definition', () => {
+  expect(
+    parse(dedent`
+      fragment Post on Post {
+        id
+        title
+        url
+        body {
+          html(baseHeadingLevel: $baseHeadingLevel)
+        }
+        readTime
+        ...Tags
+        ...When
+      }
+    `),
+  ).toMatchInlineSnapshot(`
+    Object {
+      "definitions": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT",
+          "name": "Post",
+          "on": "Post",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "id",
+              "selections": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "title",
+              "selections": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "url",
+              "selections": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "body",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": Array [
+                    Object {
+                      "kind": "ARGUMENT",
+                      "name": "baseHeadingLevel",
+                      "value": Object {
+                        "kind": "VARIABLE",
+                        "name": "baseHeadingLevel",
+                      },
+                    },
+                  ],
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "html",
+                  "selections": undefined,
+                },
+              ],
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "readTime",
+              "selections": undefined,
+            },
+            Object {
+              "directives": undefined,
+              "kind": "FRAGMENT_SPREAD",
+              "name": "Tags",
+            },
+            Object {
+              "directives": undefined,
+              "kind": "FRAGMENT_SPREAD",
+              "name": "When",
+            },
+          ],
+        },
+      ],
+      "kind": "DOCUMENT",
+    }
+  `);
+});
+
+test('parsing a query with an inline fragment', () => {
+  expect(
+    parse(dedent`
+      query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+        node(id: $id) {
+          ... on Article {
+            # As a bonus, this also shows that we can parse fragment spreads.
+            ...Article
+            description
+            redirect
+            title
+          }
+        }
+      }
+    `),
+  ).toMatchInlineSnapshot(`
+    Object {
+      "definitions": Array [
+        Object {
+          "directives": undefined,
+          "kind": "OPERATION",
+          "name": "ArticleRouteQuery",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "id",
+                  "value": Object {
+                    "kind": "VARIABLE",
+                    "name": "id",
+                  },
+                },
+              ],
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "node",
+              "selections": Array [
+                Object {
+                  "directives": undefined,
+                  "kind": "INLINE_FRAGMENT",
+                  "on": "Article",
+                  "selections": Array [
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "Article",
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "description",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "redirect",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "title",
+                      "selections": undefined,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+          "type": "QUERY",
+          "variables": Array [
+            Object {
+              "directives": undefined,
+              "kind": "VARIABLE_DEFINITION",
+              "type": Object {
+                "kind": "NON_NULL_TYPE",
+                "type": Object {
+                  "kind": "NAMED_TYPE",
+                  "name": "Int",
+                },
+              },
+              "variable": Object {
+                "kind": "VARIABLE",
+                "name": "baseHeadingLevel",
+              },
+            },
+            Object {
+              "directives": undefined,
+              "kind": "VARIABLE_DEFINITION",
+              "type": Object {
+                "kind": "NON_NULL_TYPE",
+                "type": Object {
+                  "kind": "NAMED_TYPE",
+                  "name": "ID",
+                },
+              },
+              "variable": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+        },
+      ],
+      "kind": "DOCUMENT",
+    }
+  `);
+});

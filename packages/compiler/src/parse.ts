@@ -23,6 +23,9 @@ namespace GraphQL {
     | EnumValue
     | Field
     | FloatValue
+    | Fragment
+    | FragmentSpread
+    | InlineFragment
     | IntValue
     | ListType
     | ListValue
@@ -47,7 +50,7 @@ namespace GraphQL {
     value: boolean;
   }
 
-  export type Definition = Operation; // | ... | ...
+  export type Definition = Operation | Fragment; // | ...
 
   export interface Directive {
     arguments?: Array<Argument>;
@@ -77,6 +80,27 @@ namespace GraphQL {
   export interface FloatValue {
     kind: 'FLOAT';
     value: string;
+  }
+
+  export interface Fragment {
+    directives?: Array<Directive>;
+    kind: 'FRAGMENT';
+    name: string;
+    on: string;
+    selections: Array<Selection>;
+  }
+
+  export interface FragmentSpread {
+    directives?: Array<Directive>;
+    kind: 'FRAGMENT_SPREAD';
+    name: string;
+  }
+
+  export interface InlineFragment {
+    directives?: Array<Directive>;
+    kind: 'INLINE_FRAGMENT';
+    on?: string;
+    selections: Array<Selection>;
   }
 
   export interface IntValue {
@@ -144,7 +168,7 @@ namespace GraphQL {
     variables?: Array<VariableDefinition>;
   }
 
-  export type Selection = Field; // | ... | ...
+  export type Selection = Field | FragmentSpread | InlineFragment;
 
   export type Value =
     | Variable
@@ -197,7 +221,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     },
   ],
 
-  definition: choice('operation'),
+  definition: choice('operation', 'fragment'),
 
   operation: choice('anonymousOperation', 'queryOperation'),
 
@@ -231,7 +255,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   selectionSet: [
     sequence(
       t(Tokens.OPENING_BRACE).ignore,
-      choice('field', 'fragmentSpread', 'inlineFragment').plus,
+      choice('field', 'inlineFragment', 'fragmentSpread').plus,
       t(Tokens.CLOSING_BRACE).ignore,
     ),
     ([selections]): Array<GraphQL.Selection> => selections,
@@ -416,7 +440,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     }),
   ],
 
-  type: choice('namedType', 'listType', 'nonNullType'),
+  type: choice('nonNullType', 'namedType', 'listType'),
 
   namedType: [
     t(Tokens.NAME),
@@ -455,9 +479,58 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
     }),
   ],
 
-  // TODO: flesh these out
-  fragmentSpread: t(Tokens.ELLIPSIS),
-  inlineFragment: t(Tokens.ELLIPSIS),
+  fragment: [
+    sequence(
+      t(Tokens.NAME, contents => contents === 'fragment').ignore,
+      t(Tokens.NAME, contents => contents !== 'on'),
+      'typeCondition',
+      star('directive'),
+      'selectionSet',
+    ),
+    ([name, on, directives, selections]): GraphQL.Fragment => ({
+      directives,
+      kind: 'FRAGMENT',
+      name,
+      on,
+      selections,
+    }),
+  ],
+
+  inlineFragment: [
+    sequence(
+      t(Tokens.ELLIPSIS).ignore, // BUG: not being ignored?
+      optional('typeCondition'),
+      star('directive'),
+      'selectionSet',
+    ),
+    ([on, directives, selections]): GraphQL.InlineFragment => ({
+      kind: 'INLINE_FRAGMENT',
+      directives,
+      on,
+      selections,
+    }),
+  ],
+
+  typeCondition: [
+    sequence(
+      t(Tokens.NAME, contents => contents === 'on').ignore,
+      t(Tokens.NAME),
+    ),
+    ([on]) => on,
+  ],
+
+  fragmentSpread: [
+    sequence(
+      t(Tokens.ELLIPSIS).ignore,
+      t(Tokens.NAME, contents => contents !== 'on'),
+      star('directive'),
+    ),
+    ([name, directives]): GraphQL.FragmentSpread => ({
+      directives,
+      kind: 'FRAGMENT_SPREAD',
+      name,
+    }),
+  ],
 };
 
 /**
