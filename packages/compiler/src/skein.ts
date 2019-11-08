@@ -17,10 +17,36 @@ export default function skein(text: string | Array<number>): string {
   /**
    * Skein is defined in terms of 64-bit numbers, which we represent in JS as
    * tuples containing a high-order and low-order word, each of 32 bits.
+   *
+   * Section 3.3 "A Full Specification of Threefish" and
+   * Section 3.4 "A Full Specification of UBI"
+   *
+   * Tweak `T` is a string of 16 bytes (128 bits), represented here by two
+   * 64-bit tuples:
+   *
+   * - Bits 0-95: Position (bytes in input processed so far).
+   * - Bits 96-111: Reserved (set to 0).
+   * - Bits 112-118: Tree level (set to 0).
+   * - Bit 119: Bit pad (used for non-integral inputs; set to 0).
+   * - Bits 120-125: Type (see Section 3.5.1; start with 4, "configuration block").
+   * - Bit 126: Set when processing first block.
+   * - Bit 127: Set when processing last block.
+   *
+   * Note that the position count always includes the "current" (ie. pending)
+   * block's contents: that is, the block that will be processed in the next
+   * `block()` call.
    */
   let tweak: Array<[number, number]> = [
-    [0, 32],
-    [(0x80 + 0x40 + 0x4) << 24, 0],
+    [0, 32], // Bytes processed so far; will be 32-bytes (configuration string).
+    // prettier-ignore
+    [
+      (
+        0x80 + // Last = 1.
+        0x40 + // First = 1.
+        0x4 // Type = 4 (Configuration block).
+      ) << 24,
+      0
+    ],
   ];
 
   const c: Array<[number, number]> = [];
@@ -49,24 +75,41 @@ export default function skein(text: string | Array<number>): string {
   );
 
   block(c, tweak, buffer, 0);
-  tweak = [[0, 0], [(0x40 + 0x30) << 24, 0]];
+
+  tweak = [
+    [0, 0],
+    // prettier-ignore
+    [
+      (
+        0x40 + // First = 1.
+        0x30 // Type = 48 (Message).
+      ) << 24,
+      0
+    ],
+  ];
 
   let length = message.length;
   let position = 0;
 
   for (; length > 64; length -= 64, position += 64) {
-    tweak[0][1] += 64;
+    tweak[0][1] += 64; // Bytes processed so far (including pending block).
     block(c, tweak, message, position);
-    tweak[1][0] = 0x30 << 24;
+    tweak[1][0] = 0x30 << 24; // Type = 48 (Message); First/Last both 0 now.
   }
 
-  tweak[0][1] += length;
-  tweak[1][0] |= 0x80 << 24;
+  tweak[0][1] += length; // Increase bytes processed so far.
+  tweak[1][0] |= 0x80 << 24; // Last = 1, First = preserved.
 
   block(c, tweak, message, position);
 
-  tweak[0][1] = 8;
-  tweak[1][0] = (0x80 + 0x40 + 0x3f) << 24;
+  tweak[0][1] = 8; // Bytes processed so far (including pending block).
+  tweak[1][0] =
+    // prettier-ignore
+    (
+      0x80 + // Last = 1.
+      0x40 + // First = 1.
+      0x3f // Type = 63 (Output).
+    ) << 24;
 
   block(c, tweak, [], 0);
 
