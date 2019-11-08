@@ -26,59 +26,59 @@ type Operation = {
 
 type Selection = Field;
 
-test('blinking light', () => {
-  const grammar: Grammar<ASTNode> = {
-    document: [
-      plus('definition'),
-      (definitions): ASTNode => ({
-        definitions,
-        kind: 'DOCUMENT',
-      }),
-    ],
+const grammar: Grammar<ASTNode> = {
+  document: [
+    plus('definition'),
+    (definitions): ASTNode => ({
+      definitions,
+      kind: 'DOCUMENT',
+    }),
+  ],
 
-    definition: choice('operation'),
+  definition: choice('operation'),
 
-    operation: choice('anonymousOperation', 'queryOperation'),
+  operation: choice('anonymousOperation', 'queryOperation'),
 
-    anonymousOperation: [
-      'selectionSet',
-      (selections): ASTNode => ({
-        kind: 'OPERATION',
-        selections,
-        type: 'QUERY',
-      }),
-    ],
+  anonymousOperation: [
+    'selectionSet',
+    (selections): ASTNode => ({
+      kind: 'OPERATION',
+      selections,
+      type: 'QUERY',
+    }),
+  ],
 
-    queryOperation: sequence(
-      t(Tokens.NAME, contents => contents === 'query'),
-      t(Tokens.NAME),
-      t(Tokens.OPENING_BRACE),
-      'selectionSet',
-      t(Tokens.CLOSING_BRACE),
+  queryOperation: sequence(
+    t(Tokens.NAME, contents => contents === 'query'),
+    t(Tokens.NAME),
+    t(Tokens.OPENING_BRACE),
+    'selectionSet',
+    t(Tokens.CLOSING_BRACE),
+  ),
+
+  selectionSet: [
+    sequence(
+      t(Tokens.OPENING_BRACE).ignore,
+      choice('field', 'fragmentSpread', 'inlineFragment').plus,
+      t(Tokens.CLOSING_BRACE).ignore,
     ),
+    ([selections]): ASTNode => selections,
+  ],
 
-    selectionSet: [
-      sequence(
-        t(Tokens.OPENING_BRACE).ignore,
-        choice('field', 'fragmentSpread', 'inlineFragment').plus,
-        t(Tokens.CLOSING_BRACE).ignore,
-      ),
-      ([selections]): ASTNode => selections,
-    ],
+  field: [
+    t(Tokens.NAME),
+    (name: string): ASTNode => ({
+      kind: 'FIELD',
+      name,
+    }),
+  ],
 
-    field: [
-      t(Tokens.NAME),
-      (name: string): ASTNode => ({
-        kind: 'FIELD',
-        name,
-      }),
-    ],
+  // TODO: flesh these out
+  fragmentSpread: t(Tokens.ELLIPSIS),
+  inlineFragment: t(Tokens.ELLIPSIS),
+};
 
-    // TODO: flesh these out
-    fragmentSpread: t(Tokens.ELLIPSIS),
-    inlineFragment: t(Tokens.ELLIPSIS),
-  };
-
+test('blinking light', () => {
   const parser = new Parser<ASTNode>(grammar, isIgnored);
 
   const tokens = lex(`
@@ -103,4 +103,39 @@ test('blinking light', () => {
     ],
     kind: 'DOCUMENT',
   });
+});
+
+test('grammar hashes', () => {
+  // Not an exhaustive check, but an illustrative example.
+  expect(grammar).toEqual(expect.objectContaining({
+    definition: expect.objectContaining({
+      hash: expect.stringMatching(/^choice:597a15af/)
+    }),
+    document: expect.objectContaining({
+      0: expect.objectContaining({
+        hash: expect.stringMatching(/^plus:c5bbd282/),
+      }),
+    }),
+    operation: expect.objectContaining({
+      hash: expect.stringMatching(/^choice:7ef948db/),
+    }),
+    queryOperation: expect.objectContaining({
+      expressions: expect.arrayContaining([
+        expect.objectContaining({
+          hash: expect.stringMatching(/^t:e78b55be/),
+        }),
+      ]),
+      hash: expect.stringMatching(/^sequence:705c123b/),
+    }),
+    selectionSet: expect.objectContaining({
+      0: expect.objectContaining({
+        hash: expect.stringMatching(/^sequence:d3cf0b32/),
+      }),
+    }),
+    field: expect.objectContaining({
+      0: expect.objectContaining({
+        hash: expect.stringMatching(/^t:f5667b4e/),
+      }),
+    }),
+  }));
 });

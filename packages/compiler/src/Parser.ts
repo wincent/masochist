@@ -1,4 +1,5 @@
 import {Token} from './Lexer';
+import skein from './skein';
 
 /**
  * The type parameter `A` is the type of the AST nodes produced by the Grammar.
@@ -20,47 +21,56 @@ interface ExpressionOperators {
 type Expression = TerminalSymbol | NonTerminalSymbol;
 
 type TerminalSymbol = {
+  hash: string;
   kind: 'TOKEN';
   name: string;
   predicate?: (contents: string) => boolean;
 } & ExpressionOperators;
 
 type AndExpression = {
+  hash: string;
   kind: 'AND';
   expression: Expression;
 };
 
 type ChoiceExpression = {
+  hash: string;
   kind: 'CHOICE';
   expressions: Array<Expression>;
 } & ExpressionOperators;
 
 type IgnoreExpression = {
+  hash: string;
   kind: 'IGNORE';
   expression: Expression;
 };
 
 type NotExpression = {
+  hash: string;
   kind: 'NOT';
   expression: Expression;
 };
 
 type OptionalExpression = {
+  hash: string;
   kind: 'OPTIONAL';
   expression: Expression;
 };
 
 type PlusExpression = {
+  hash: string;
   kind: 'PLUS';
   expression: Expression;
 };
 
 type SequenceExpression = {
+  hash: string;
   kind: 'SEQUENCE';
   expressions: Array<Expression>;
 } & ExpressionOperators;
 
 type StarExpression = {
+  hash: string;
   kind: 'STAR';
   expression: Expression;
 };
@@ -444,6 +454,7 @@ export default class Parser<A> {
  */
 export function and(expression: Expression): AndExpression {
   return {
+    hash: `and:${hash(expression)}`,
     expression,
     kind: 'AND',
   };
@@ -457,6 +468,7 @@ export function and(expression: Expression): AndExpression {
  */
 export function choice(...expressions: Array<Expression>): ChoiceExpression {
   return withProperties({
+    hash: `choice:${skein(expressions.map(hash).join(':'))}`,
     expressions,
     kind: 'CHOICE',
   });
@@ -489,6 +501,16 @@ function excerpt(text: string, line: number, column: number): string {
 }
 
 /**
+ * Returns a hash for `expression`.
+ */
+function hash(expression: Expression): string {
+  return typeof expression === 'string' ?
+    skein(`string:${expression}`) :
+    expression.hash;
+}
+
+
+/**
  * Identity function that returns its argument unmodified.
  */
 function identity<T extends unknown>(id: T): T {
@@ -508,6 +530,7 @@ function identity<T extends unknown>(id: T): T {
  */
 export function ignore(expression: Expression): IgnoreExpression {
   return {
+    hash: `ignore:${hash(expression)}`,
     expression,
     kind: 'IGNORE',
   };
@@ -524,6 +547,7 @@ function isNonNull<T>(value: T | null): value is T {
  */
 export function not(expression: Expression): NotExpression {
   return {
+    hash: `not:${hash(expression)}`,
     expression,
     kind: 'NOT',
   };
@@ -536,6 +560,7 @@ export function not(expression: Expression): NotExpression {
  */
 export function optional(expression: Expression): OptionalExpression {
   return {
+    hash: `optional:${hash(expression)}`,
     expression,
     kind: 'OPTIONAL',
   };
@@ -548,6 +573,7 @@ export function optional(expression: Expression): OptionalExpression {
  */
 export function plus(expression: Expression): PlusExpression {
   return {
+    hash: `plus:${hash(expression)}`,
     expression,
     kind: 'PLUS',
   };
@@ -563,13 +589,10 @@ export function sequence(
   ...expressions: Array<Expression>
 ): SequenceExpression {
   return withProperties({
+    hash: `sequence:${skein(expressions.map(hash).join(':'))}`,
     expressions,
     kind: 'SEQUENCE',
   });
-  // TODO use md5 hash to generate memoization keys
-  // seq: + hash(expressionHashes.join(':'))
-  // and for t() it would be toString on the function too
-  // (note disclaimer about closing over state not being memoization-friendly)
 }
 
 /**
@@ -579,6 +602,7 @@ export function sequence(
  */
 export function star(expression: Expression): StarExpression {
   return {
+    hash: `star:${hash(expression)}`,
     expression,
     kind: 'STAR',
   };
@@ -589,12 +613,16 @@ export function star(expression: Expression): StarExpression {
  *
  * The optional `predicate` function allows an arbitrary check of the token
  * contents to be specified to gate success.
+ *
+ * TODO: add disclaimer here about hashes assuming predicate doesn't close over
+ * anything...
  */
 export function t(
   tokenName: string,
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
   return withProperties({
+    hash: `t:${skein([name, predicate?.toString() ?? ''].map(hash).join(':'))}`,
     kind: 'TOKEN',
     name: tokenName,
     predicate,
