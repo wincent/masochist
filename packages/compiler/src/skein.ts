@@ -14,6 +14,10 @@ import utf8 from './utf8';
 export default function skein(text: string | Array<number>): string {
   const message = typeof text === 'string' ? Array.from(utf8(text)) : text;
 
+  /**
+   * Skein is defined in terms of 64-bit numbers, which we represent in JS as
+   * tuples containing a high-order and low-order word, each of 32 bits.
+   */
   let tweak: Array<[number, number]> = [
     [0, 32],
     [(0x80 + 0x40 + 0x4) << 24, 0],
