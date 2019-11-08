@@ -107,35 +107,37 @@ test('blinking light', () => {
 
 test('grammar hashes', () => {
   // Not an exhaustive check, but an illustrative example.
-  expect(grammar).toEqual(expect.objectContaining({
-    definition: expect.objectContaining({
-      hash: expect.stringMatching(/^choice:597a15af/)
-    }),
-    document: expect.objectContaining({
-      0: expect.objectContaining({
-        hash: expect.stringMatching(/^plus:c5bbd282/),
+  expect(grammar).toEqual(
+    expect.objectContaining({
+      definition: expect.objectContaining({
+        hash: expect.stringMatching(/^choice:597a15af/),
       }),
-    }),
-    operation: expect.objectContaining({
-      hash: expect.stringMatching(/^choice:7ef948db/),
-    }),
-    queryOperation: expect.objectContaining({
-      expressions: expect.arrayContaining([
-        expect.objectContaining({
-          hash: expect.stringMatching(/^t:e78b55be/),
+      document: expect.objectContaining({
+        0: expect.objectContaining({
+          hash: expect.stringMatching(/^plus:c5bbd282/),
         }),
-      ]),
-      hash: expect.stringMatching(/^sequence:705c123b/),
-    }),
-    selectionSet: expect.objectContaining({
-      0: expect.objectContaining({
-        hash: expect.stringMatching(/^sequence:d3cf0b32/),
+      }),
+      operation: expect.objectContaining({
+        hash: expect.stringMatching(/^choice:7ef948db/),
+      }),
+      queryOperation: expect.objectContaining({
+        expressions: expect.arrayContaining([
+          expect.objectContaining({
+            hash: expect.stringMatching(/^t:e78b55be/),
+          }),
+        ]),
+        hash: expect.stringMatching(/^sequence:705c123b/),
+      }),
+      selectionSet: expect.objectContaining({
+        0: expect.objectContaining({
+          hash: expect.stringMatching(/^sequence:d3cf0b32/),
+        }),
+      }),
+      field: expect.objectContaining({
+        0: expect.objectContaining({
+          hash: expect.stringMatching(/^t:f5667b4e/),
+        }),
       }),
     }),
-    field: expect.objectContaining({
-      0: expect.objectContaining({
-        hash: expect.stringMatching(/^t:f5667b4e/),
-      }),
-    }),
-  }));
+  );
 });
