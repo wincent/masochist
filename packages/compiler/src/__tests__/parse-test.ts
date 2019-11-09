@@ -1,5 +1,11 @@
+import fs from 'fs';
+import path from 'path';
+import {promisify} from 'util';
+
 import dedent from '../dedent';
 import parse from '../parse';
+
+const readFile = promisify(fs.readFile);
 
 test('parsing an empty document', () => {
   expect(() => parse('')).toThrow(
@@ -816,4 +822,10 @@ test('parsing a query with an inline fragment', () => {
       "kind": "DOCUMENT",
     }
   `);
+});
+
+test('integration', async () => {
+  const source = await readFile(path.join(__dirname, '../../../../support/corpus.graphql'), 'utf8');
+
+  expect(parse(source)).toMatchSnapshot();
 });
