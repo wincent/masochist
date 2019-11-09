@@ -826,7 +826,7 @@ test('parsing a query with an inline fragment', () => {
 
 test('integration', async () => {
   const source = await readFile(
-    path.join(__dirname, '../../../../support/corpus.graphql'),
+    path.join(__dirname, '../../../../support/server-corpus.graphql'),
     'utf8',
   );
 
