@@ -5,5 +5,10 @@
   "main": "index.js",
   "author": "Greg Hurrell <greg@hurrell.net>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "benchmark": "node lib/benchmark.js",
+    "build": "cd ../.. && yarn build",
+    "test": "cd ../.. && yarn test packages/compiler"
+  }
 }
