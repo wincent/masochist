@@ -1,313 +1,303 @@
-    fragment Article on Article {
-      title
+fragment Article on Article {
+  title
+  redirect
+  resolvedTitle
+  editURL
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+fragment ArticlesIndex on Root {
+  articles(first: $count, after: $cursor)
+    @connection(key: "ArticlesIndex_articles") {
+    edges {
+      node {
+        id
+        ...ArticlePreview
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+query ArticlesIndexQuery($count: Int!, $cursor: String) {
+  ...ArticlesIndex
+}
+fragment ContentPreview on Content {
+  __typename
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
+}
+fragment Page on Page {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+fragment PagePreview on Page {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+fragment Post on Post {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  readTime
+  ...Tags
+  ...When
+}
+fragment PostPreview on Post {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+fragment PostsIndex on Root {
+  posts(first: $count, after: $cursor) @connection(key: "PostsIndex_posts") {
+    edges {
+      node {
+        id
+        ...Post
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+query PostsIndexQuery($baseHeadingLevel: Int!, $count: Int!, $cursor: String) {
+  ...PostsIndex
+}
+fragment Search on Root {
+  search(first: $count, after: $cursor, q: $q)
+    @connection(key: "Search_search") {
+    count
+    edges {
+      cursor
+      node {
+        ...ContentPreview
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+query SearchQuery($count: Int!, $cursor: String, $q: String!) {
+  ...Search
+}
+fragment Snippet on Snippet {
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  id
+  url
+  title
+  ...Tags
+  ...When
+}
+fragment SnippetPreview on Snippet {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+fragment SnippetsIndex on Root {
+  snippets(first: $count, after: $cursor)
+    @connection(key: "SnippetsIndex_snippets") {
+    edges {
+      node {
+        id
+        ...Snippet
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+query SnippetsIndexQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...SnippetsIndex
+}
+fragment Tag on Tag {
+  count
+  id
+  name
+  url
+  taggables(first: $count, after: $cursor) @connection(key: "Tag_taggables") {
+    edges {
+      cursor
+      node {
+        ...ContentPreview
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+query TagQuery($count: Int!, $cursor: String, $id: ID!) {
+  node(id: $id) {
+    ...Tag
+  }
+}
+fragment TagPreview on Tag {
+  count
+  name
+  url
+}
+fragment Tags on Tagged {
+  tags
+}
+fragment TagsIndex on Root {
+  tags(first: $count) {
+    count
+    edges {
+      node {
+        id
+        name
+        ...TagPreview
+      }
+    }
+  }
+}
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+  node(id: $id) {
+    ... on Article {
+      ...Article
+      description
       redirect
-      resolvedTitle
-      editURL
-      url
-      body {
-        html(baseHeadingLevel: $baseHeadingLevel)
-      }
-      ...Tags
-      ...When
-    }
-    fragment ArticlePreview on Article {
-      description
       title
-      url
-      ...Tags
-      ...When
-    }
-    fragment ArticlesIndex on Root {
-      articles(first: $count, after: $cursor)
-        @connection(key: "ArticlesIndex_articles") {
-        edges {
-          node {
-            id
-            ...ArticlePreview
-          }
-        }
-        pageInfo {
-          endCursor
-          hasNextPage
-        }
-      }
-    }
-      query ArticlesIndexQuery($count: Int!, $cursor: String) {
-        ...ArticlesIndex
-      }
-    fragment ContentPreview on Content {
-      __typename
-      ...ArticlePreview
-      ...PagePreview
-      ...PostPreview
-      ...SnippetPreview
-    }
-    fragment Page on Page {
-      id
-      title
-      url
-      body {
-        html(baseHeadingLevel: $baseHeadingLevel)
-      }
-      ...Tags
-      ...When
-    }
-    fragment PagePreview on Page {
-      description
-      title
-      url
-      ...Tags
-      ...When
-    }
-    fragment Post on Post {
-      id
-      title
-      url
-      body {
-        html(baseHeadingLevel: $baseHeadingLevel)
-      }
-      readTime
-      ...Tags
-      ...When
-    }
-    fragment PostPreview on Post {
-      description
-      title
-      url
-      ...Tags
-      ...When
-    }
-    fragment PostsIndex on Root {
-      posts(first: $count, after: $cursor)
-        @connection(key: "PostsIndex_posts") {
-        edges {
-          node {
-            id
-            ...Post
-          }
-        }
-        pageInfo {
-          endCursor
-          hasNextPage
-        }
-      }
-    }
-      query PostsIndexQuery(
-        $baseHeadingLevel: Int!
-        $count: Int!
-        $cursor: String
-      ) {
-        ...PostsIndex
-      }
-    fragment Search on Root {
-      search(first: $count, after: $cursor, q: $q)
-        @connection(key: "Search_search") {
-        count
-        edges {
-          cursor
-          node {
-            ...ContentPreview
-          }
-        }
-        pageInfo {
-          endCursor
-          hasNextPage
-        }
-      }
-    }
-      query SearchQuery($count: Int!, $cursor: String, $q: String!) {
-        ...Search
-      }
-    fragment Snippet on Snippet {
-      body {
-        html(baseHeadingLevel: $baseHeadingLevel)
-      }
-      id
-      url
-      title
-      ...Tags
-      ...When
-    }
-    fragment SnippetPreview on Snippet {
-      description
-      title
-      url
-      ...Tags
-      ...When
-    }
-    fragment SnippetsIndex on Root {
-      snippets(first: $count, after: $cursor)
-        @connection(key: "SnippetsIndex_snippets") {
-        edges {
-          node {
-            id
-            ...Snippet
-          }
-        }
-        pageInfo {
-          endCursor
-          hasNextPage
-        }
-      }
-    }
-      query SnippetsIndexQuery(
-        $baseHeadingLevel: Int!
-        $count: Int!
-        $cursor: String
-      ) {
-        ...SnippetsIndex
-      }
-    fragment Tag on Tag {
-      count
-      id
-      name
-      url
-      taggables(first: $count, after: $cursor)
-        @connection(key: "Tag_taggables") {
-        edges {
-          cursor
-          node {
-            ...ContentPreview
-          }
-        }
-        pageInfo {
-          endCursor
-          hasNextPage
-        }
-      }
-    }
-      query TagQuery($count: Int!, $cursor: String, $id: ID!) {
-        node(id: $id) {
-          ...Tag
-        }
-      }
-    fragment TagPreview on Tag {
-      count
-      name
-      url
-    }
-    fragment Tags on Tagged {
-      tags
-    }
-    fragment TagsIndex on Root {
-      tags(first: $count) {
-        count
-        edges {
-          node {
-            id
-            name
-            ...TagPreview
-          }
-        }
-      }
-    }
-    fragment When on Versioned {
-      createdAt
-      history {
-        url
-      }
-      updatedAt
-    }
-    query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
-      node(id: $id) {
-        ... on Article {
-          ...Article
-          description
-          redirect
-          title
-        }
-      }
-    }
-    query ArticlesRouteQuery(
-      $count: Int!
-      # TODO: make cursors ID type
-      $cursor: String
-    ) {
-      ...ArticlesIndex
-    }
-    query PageRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
-      node(id: $id) {
-        ... on Page {
-          ...Page
-          description
-          title
-        }
-      }
-    }
-    query PostRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
-      node(id: $id) {
-        ... on Post {
-          ...Post
-          description
-          title
-        }
-      }
-    }
-    query PostsRouteQuery(
-      $baseHeadingLevel: Int!
-      $count: Int!
-      $cursor: String
-    ) {
-      ...PostsIndex
-    }
-    query SearchRouteQuery($count: Int!, $cursor: String, $q: String!) {
-      ...Search
-    }
-    query SnippetRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
-      node(id: $id) {
-        ... on Snippet {
-          ...Snippet
-          description
-          title
-        }
-      }
-    }
-    query SnippetSourceRouteQuery($format: MARKUP_FORMAT_TYPE, $id: ID!) {
-      node(id: $id) {
-        ... on Snippet {
-          source(format: $format)
-        }
-      }
-    }
-    query SnippetsRouteQuery(
-      $baseHeadingLevel: Int!
-      $count: Int!
-      $cursor: String
-    ) {
-      ...SnippetsIndex
-    }
-    query TagRouteQuery($count: Int!, $cursor: String, $id: ID!) {
-      node(id: $id) {
-        ... on Tag {
-          ...Tag
-          name
-        }
-      }
-    }
-    query TagsRouteQuery($count: Int!) {
-      ...TagsIndex
-    }
-  query feedQuery {
-    ...feedPosts
-  }
-  fragment feedPosts on Root {
-    posts(first: 10) {
-      edges {
-        node {
-          body {
-            html
-          }
-          createdAt
-          title
-          url
-        }
-      }
     }
   }
-  query getCanonicalURLForRequestQuery($id: ID!) {
-    node(id: $id) {
-      ... on Article {
+}
+query ArticlesRouteQuery(
+  $count: Int!
+  # TODO: make cursors ID type
+  $cursor: String
+) {
+  ...ArticlesIndex
+}
+query PageRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+  node(id: $id) {
+    ... on Page {
+      ...Page
+      description
+      title
+    }
+  }
+}
+query PostRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+  node(id: $id) {
+    ... on Post {
+      ...Post
+      description
+      title
+    }
+  }
+}
+query PostsRouteQuery($baseHeadingLevel: Int!, $count: Int!, $cursor: String) {
+  ...PostsIndex
+}
+query SearchRouteQuery($count: Int!, $cursor: String, $q: String!) {
+  ...Search
+}
+query SnippetRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+  node(id: $id) {
+    ... on Snippet {
+      ...Snippet
+      description
+      title
+    }
+  }
+}
+query SnippetSourceRouteQuery($format: MARKUP_FORMAT_TYPE, $id: ID!) {
+  node(id: $id) {
+    ... on Snippet {
+      source(format: $format)
+    }
+  }
+}
+query SnippetsRouteQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...SnippetsIndex
+}
+query TagRouteQuery($count: Int!, $cursor: String, $id: ID!) {
+  node(id: $id) {
+    ... on Tag {
+      ...Tag
+      name
+    }
+  }
+}
+query TagsRouteQuery($count: Int!) {
+  ...TagsIndex
+}
+query feedQuery {
+  ...feedPosts
+}
+fragment feedPosts on Root {
+  posts(first: 10) {
+    edges {
+      node {
+        body {
+          html
+        }
+        createdAt
+        title
         url
       }
     }
   }
+}
+query getCanonicalURLForRequestQuery($id: ID!) {
+  node(id: $id) {
+    ... on Article {
+      url
+    }
+  }
+}
