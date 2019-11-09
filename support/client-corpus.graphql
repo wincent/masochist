@@ -1,4 +1,3 @@
-  graphql`
     fragment Article on Article {
       title
       redirect
@@ -11,8 +10,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment ArticlePreview on Article {
       description
       title
@@ -20,8 +17,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment ArticlesIndex on Root {
       articles(first: $count, after: $cursor)
         @connection(key: "ArticlesIndex_articles") {
@@ -37,13 +32,9 @@
         }
       }
     }
-  `,
-    query: graphql`
       query ArticlesIndexQuery($count: Int!, $cursor: String) {
         ...ArticlesIndex
       }
-    `,
-  graphql`
     fragment ContentPreview on Content {
       __typename
       ...ArticlePreview
@@ -51,8 +42,6 @@
       ...PostPreview
       ...SnippetPreview
     }
-  `,
-  graphql`
     fragment Page on Page {
       id
       title
@@ -63,8 +52,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment PagePreview on Page {
       description
       title
@@ -72,8 +59,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment Post on Post {
       id
       title
@@ -85,8 +70,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment PostPreview on Post {
       description
       title
@@ -94,8 +77,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment PostsIndex on Root {
       posts(first: $count, after: $cursor)
         @connection(key: "PostsIndex_posts") {
@@ -111,8 +92,6 @@
         }
       }
     }
-  `,
-    query: graphql`
       query PostsIndexQuery(
         $baseHeadingLevel: Int!
         $count: Int!
@@ -120,8 +99,6 @@
       ) {
         ...PostsIndex
       }
-    `,
-  graphql`
     fragment Search on Root {
       search(first: $count, after: $cursor, q: $q)
         @connection(key: "Search_search") {
@@ -138,13 +115,9 @@
         }
       }
     }
-  `,
-    query: graphql`
       query SearchQuery($count: Int!, $cursor: String, $q: String!) {
         ...Search
       }
-    `,
-  graphql`
     fragment Snippet on Snippet {
       body {
         html(baseHeadingLevel: $baseHeadingLevel)
@@ -155,8 +128,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment SnippetPreview on Snippet {
       description
       title
@@ -164,8 +135,6 @@
       ...Tags
       ...When
     }
-  `,
-  graphql`
     fragment SnippetsIndex on Root {
       snippets(first: $count, after: $cursor)
         @connection(key: "SnippetsIndex_snippets") {
@@ -181,8 +150,6 @@
         }
       }
     }
-  `,
-    query: graphql`
       query SnippetsIndexQuery(
         $baseHeadingLevel: Int!
         $count: Int!
@@ -190,8 +157,6 @@
       ) {
         ...SnippetsIndex
       }
-    `,
-  graphql`
     fragment Tag on Tag {
       count
       id
@@ -211,27 +176,19 @@
         }
       }
     }
-  `,
-    query: graphql`
       query TagQuery($count: Int!, $cursor: String, $id: ID!) {
         node(id: $id) {
           ...Tag
         }
       }
-    `,
-  graphql`
     fragment TagPreview on Tag {
       count
       name
       url
     }
-  `,
-  graphql`
     fragment Tags on Tagged {
       tags
     }
-  `,
-  graphql`
     fragment TagsIndex on Root {
       tags(first: $count) {
         count
@@ -244,8 +201,6 @@
         }
       }
     }
-  `,
-  graphql`
     fragment When on Versioned {
       createdAt
       history {
@@ -253,8 +208,6 @@
       }
       updatedAt
     }
-  `,
-  graphql`
     query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
       node(id: $id) {
         ... on Article {
@@ -265,8 +218,6 @@
         }
       }
     }
-  `,
-  graphql`
     query ArticlesRouteQuery(
       $count: Int!
       # TODO: make cursors ID type
@@ -274,8 +225,6 @@
     ) {
       ...ArticlesIndex
     }
-  `,
-  graphql`
     query PageRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
       node(id: $id) {
         ... on Page {
@@ -285,8 +234,6 @@
         }
       }
     }
-  `,
-  graphql`
     query PostRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
       node(id: $id) {
         ... on Post {
@@ -296,8 +243,6 @@
         }
       }
     }
-  `,
-  graphql`
     query PostsRouteQuery(
       $baseHeadingLevel: Int!
       $count: Int!
@@ -305,13 +250,9 @@
     ) {
       ...PostsIndex
     }
-  `,
-  graphql`
     query SearchRouteQuery($count: Int!, $cursor: String, $q: String!) {
       ...Search
     }
-  `,
-  graphql`
     query SnippetRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
       node(id: $id) {
         ... on Snippet {
@@ -321,8 +262,6 @@
         }
       }
     }
-  `,
-  graphql`
     query SnippetSourceRouteQuery($format: MARKUP_FORMAT_TYPE, $id: ID!) {
       node(id: $id) {
         ... on Snippet {
@@ -330,8 +269,6 @@
         }
       }
     }
-  `,
-  graphql`
     query SnippetsRouteQuery(
       $baseHeadingLevel: Int!
       $count: Int!
@@ -339,8 +276,6 @@
     ) {
       ...SnippetsIndex
     }
-  `,
-  graphql`
     query TagRouteQuery($count: Int!, $cursor: String, $id: ID!) {
       node(id: $id) {
         ... on Tag {
@@ -349,17 +284,12 @@
         }
       }
     }
-  `,
-  graphql`
     query TagsRouteQuery($count: Int!) {
       ...TagsIndex
     }
-  `,
-// Could have just used an untagged template literal, but by using `graphql` we
-// get validation at compile-time instead of runtime, and also some handy Flow
-// types.
-const feedQuery = graphql`
-graphql`
+  query feedQuery {
+    ...feedPosts
+  }
   fragment feedPosts on Root {
     posts(first: 10) {
       edges {
@@ -374,8 +304,6 @@ graphql`
       }
     }
   }
-`;
-const canonicalURLQuery = graphql`
   query getCanonicalURLForRequestQuery($id: ID!) {
     node(id: $id) {
       ... on Article {
@@ -383,4 +311,3 @@ const canonicalURLQuery = graphql`
       }
     }
   }
-`;
