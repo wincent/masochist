@@ -824,11 +824,14 @@ test('parsing a query with an inline fragment', () => {
   `);
 });
 
-test('integration', async () => {
-  const source = await readFile(
-    path.join(__dirname, '../../../../support/server-corpus.graphql'),
-    'utf8',
-  );
+test.each([['client-corpus.graphql'], ['server-corpus.graphql']])(
+  'integration with %s',
+  async corpus => {
+    const source = await readFile(
+      path.join(__dirname, '../../../../support', corpus),
+      'utf8',
+    );
 
-  expect(parse(source)).toMatchSnapshot();
-});
+    expect(parse(source)).toMatchSnapshot();
+  },
+);

@@ -1,6 +1,2463 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`integration 1`] = `
+exports[`integration with client-corpus.graphql 1`] = `
+Object {
+  "definitions": Array [
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Article",
+      "on": "Article",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "redirect",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "resolvedTitle",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "editURL",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "body",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "baseHeadingLevel",
+                  "value": Object {
+                    "kind": "VARIABLE",
+                    "name": "baseHeadingLevel",
+                  },
+                },
+              ],
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "html",
+              "selections": undefined,
+            },
+          ],
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "ArticlePreview",
+      "on": "Article",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "description",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "ArticlesIndex",
+      "on": "Root",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "count",
+              },
+            },
+            Object {
+              "kind": "ARGUMENT",
+              "name": "after",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "cursor",
+              },
+            },
+          ],
+          "directives": Array [
+            Object {
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "key",
+                  "value": Object {
+                    "block": false,
+                    "kind": "STRING",
+                    "value": "ArticlesIndex_articles",
+                  },
+                },
+              ],
+              "kind": "DIRECTIVE",
+              "name": "connection",
+            },
+          ],
+          "kind": "FIELD",
+          "name": "articles",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "id",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "ArticlePreview",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "pageInfo",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "endCursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "hasNextPage",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "ArticlesIndexQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "ArticlesIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "ContentPreview",
+      "on": "Content",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "__typename",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "ArticlePreview",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "PagePreview",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "PostPreview",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "SnippetPreview",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Page",
+      "on": "Page",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "id",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "body",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "baseHeadingLevel",
+                  "value": Object {
+                    "kind": "VARIABLE",
+                    "name": "baseHeadingLevel",
+                  },
+                },
+              ],
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "html",
+              "selections": undefined,
+            },
+          ],
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "PagePreview",
+      "on": "Page",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "description",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Post",
+      "on": "Post",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "id",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "body",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "baseHeadingLevel",
+                  "value": Object {
+                    "kind": "VARIABLE",
+                    "name": "baseHeadingLevel",
+                  },
+                },
+              ],
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "html",
+              "selections": undefined,
+            },
+          ],
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "readTime",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "PostPreview",
+      "on": "Post",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "description",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "PostsIndex",
+      "on": "Root",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "count",
+              },
+            },
+            Object {
+              "kind": "ARGUMENT",
+              "name": "after",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "cursor",
+              },
+            },
+          ],
+          "directives": Array [
+            Object {
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "key",
+                  "value": Object {
+                    "block": false,
+                    "kind": "STRING",
+                    "value": "PostsIndex_posts",
+                  },
+                },
+              ],
+              "kind": "DIRECTIVE",
+              "name": "connection",
+            },
+          ],
+          "kind": "FIELD",
+          "name": "posts",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "id",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "Post",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "pageInfo",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "endCursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "hasNextPage",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "PostsIndexQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "PostsIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Search",
+      "on": "Root",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "count",
+              },
+            },
+            Object {
+              "kind": "ARGUMENT",
+              "name": "after",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "cursor",
+              },
+            },
+            Object {
+              "kind": "ARGUMENT",
+              "name": "q",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "q",
+              },
+            },
+          ],
+          "directives": Array [
+            Object {
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "key",
+                  "value": Object {
+                    "block": false,
+                    "kind": "STRING",
+                    "value": "Search_search",
+                  },
+                },
+              ],
+              "kind": "DIRECTIVE",
+              "name": "connection",
+            },
+          ],
+          "kind": "FIELD",
+          "name": "search",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "count",
+              "selections": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "cursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "ContentPreview",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "pageInfo",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "endCursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "hasNextPage",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "SearchQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Search",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "q",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Snippet",
+      "on": "Snippet",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "body",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "baseHeadingLevel",
+                  "value": Object {
+                    "kind": "VARIABLE",
+                    "name": "baseHeadingLevel",
+                  },
+                },
+              ],
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "html",
+              "selections": undefined,
+            },
+          ],
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "id",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "SnippetPreview",
+      "on": "Snippet",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "description",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "title",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Tags",
+        },
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "When",
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "SnippetsIndex",
+      "on": "Root",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "count",
+              },
+            },
+            Object {
+              "kind": "ARGUMENT",
+              "name": "after",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "cursor",
+              },
+            },
+          ],
+          "directives": Array [
+            Object {
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "key",
+                  "value": Object {
+                    "block": false,
+                    "kind": "STRING",
+                    "value": "SnippetsIndex_snippets",
+                  },
+                },
+              ],
+              "kind": "DIRECTIVE",
+              "name": "connection",
+            },
+          ],
+          "kind": "FIELD",
+          "name": "snippets",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "id",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "Snippet",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "pageInfo",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "endCursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "hasNextPage",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "SnippetsIndexQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "SnippetsIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Tag",
+      "on": "Tag",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "count",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "id",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "name",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "count",
+              },
+            },
+            Object {
+              "kind": "ARGUMENT",
+              "name": "after",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "cursor",
+              },
+            },
+          ],
+          "directives": Array [
+            Object {
+              "arguments": Array [
+                Object {
+                  "kind": "ARGUMENT",
+                  "name": "key",
+                  "value": Object {
+                    "block": false,
+                    "kind": "STRING",
+                    "value": "Tag_taggables",
+                  },
+                },
+              ],
+              "kind": "DIRECTIVE",
+              "name": "connection",
+            },
+          ],
+          "kind": "FIELD",
+          "name": "taggables",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "cursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "ContentPreview",
+                    },
+                  ],
+                },
+              ],
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "pageInfo",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "endCursor",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "hasNextPage",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "TagQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "FRAGMENT_SPREAD",
+              "name": "Tag",
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "TagPreview",
+      "on": "Tag",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "count",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "name",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "url",
+          "selections": undefined,
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "Tags",
+      "on": "Tagged",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "tags",
+          "selections": undefined,
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "TagsIndex",
+      "on": "Root",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "count",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "tags",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "count",
+              "selections": undefined,
+            },
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "id",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "name",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "directives": undefined,
+                      "kind": "FRAGMENT_SPREAD",
+                      "name": "TagPreview",
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "When",
+      "on": "Versioned",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "createdAt",
+          "selections": undefined,
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "history",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "url",
+              "selections": undefined,
+            },
+          ],
+        },
+        Object {
+          "alias": undefined,
+          "arguments": undefined,
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "updatedAt",
+          "selections": undefined,
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "ArticleRouteQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Article",
+              "selections": Array [
+                Object {
+                  "directives": undefined,
+                  "kind": "FRAGMENT_SPREAD",
+                  "name": "Article",
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "description",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "redirect",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "title",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "ArticlesRouteQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "ArticlesIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "PageRouteQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Page",
+              "selections": Array [
+                Object {
+                  "directives": undefined,
+                  "kind": "FRAGMENT_SPREAD",
+                  "name": "Page",
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "description",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "title",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "PostRouteQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Post",
+              "selections": Array [
+                Object {
+                  "directives": undefined,
+                  "kind": "FRAGMENT_SPREAD",
+                  "name": "Post",
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "description",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "title",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "PostsRouteQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "PostsIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "SearchRouteQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "Search",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "String",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "q",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "SnippetRouteQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Snippet",
+              "selections": Array [
+                Object {
+                  "directives": undefined,
+                  "kind": "FRAGMENT_SPREAD",
+                  "name": "Snippet",
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "description",
+                  "selections": undefined,
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "title",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "SnippetSourceRouteQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Snippet",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": Array [
+                    Object {
+                      "kind": "ARGUMENT",
+                      "name": "format",
+                      "value": Object {
+                        "kind": "VARIABLE",
+                        "name": "format",
+                      },
+                    },
+                  ],
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "source",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "MARKUP_FORMAT_TYPE",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "format",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "SnippetsRouteQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "SnippetsIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "baseHeadingLevel",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "TagRouteQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Tag",
+              "selections": Array [
+                Object {
+                  "directives": undefined,
+                  "kind": "FRAGMENT_SPREAD",
+                  "name": "Tag",
+                },
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "name",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NAMED_TYPE",
+            "name": "String",
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "cursor",
+          },
+        },
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "TagsRouteQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "TagsIndex",
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "Int",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "count",
+          },
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "feedQuery",
+      "selections": Array [
+        Object {
+          "directives": undefined,
+          "kind": "FRAGMENT_SPREAD",
+          "name": "feedPosts",
+        },
+      ],
+      "type": "QUERY",
+      "variables": undefined,
+    },
+    Object {
+      "directives": undefined,
+      "kind": "FRAGMENT",
+      "name": "feedPosts",
+      "on": "Root",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "first",
+              "value": Object {
+                "kind": "INT",
+                "value": 10,
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "posts",
+          "selections": Array [
+            Object {
+              "alias": undefined,
+              "arguments": undefined,
+              "directives": undefined,
+              "kind": "FIELD",
+              "name": "edges",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "node",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "body",
+                      "selections": Array [
+                        Object {
+                          "alias": undefined,
+                          "arguments": undefined,
+                          "directives": undefined,
+                          "kind": "FIELD",
+                          "name": "html",
+                          "selections": undefined,
+                        },
+                      ],
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "createdAt",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "title",
+                      "selections": undefined,
+                    },
+                    Object {
+                      "alias": undefined,
+                      "arguments": undefined,
+                      "directives": undefined,
+                      "kind": "FIELD",
+                      "name": "url",
+                      "selections": undefined,
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+    Object {
+      "directives": undefined,
+      "kind": "OPERATION",
+      "name": "getCanonicalURLForRequestQuery",
+      "selections": Array [
+        Object {
+          "alias": undefined,
+          "arguments": Array [
+            Object {
+              "kind": "ARGUMENT",
+              "name": "id",
+              "value": Object {
+                "kind": "VARIABLE",
+                "name": "id",
+              },
+            },
+          ],
+          "directives": undefined,
+          "kind": "FIELD",
+          "name": "node",
+          "selections": Array [
+            Object {
+              "directives": undefined,
+              "kind": "INLINE_FRAGMENT",
+              "on": "Article",
+              "selections": Array [
+                Object {
+                  "alias": undefined,
+                  "arguments": undefined,
+                  "directives": undefined,
+                  "kind": "FIELD",
+                  "name": "url",
+                  "selections": undefined,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+      "type": "QUERY",
+      "variables": Array [
+        Object {
+          "directives": undefined,
+          "kind": "VARIABLE_DEFINITION",
+          "type": Object {
+            "kind": "NON_NULL_TYPE",
+            "type": Object {
+              "kind": "NAMED_TYPE",
+              "name": "ID",
+            },
+          },
+          "variable": Object {
+            "kind": "VARIABLE",
+            "name": "id",
+          },
+        },
+      ],
+    },
+  ],
+  "kind": "DOCUMENT",
+}
+`;
+
+exports[`integration with server-corpus.graphql 1`] = `
 Object {
   "definitions": Array [
     Object {
