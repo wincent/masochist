@@ -95,17 +95,17 @@ type NonTerminalSymbol =
  * functions in the Grammar.
  */
 export default class Parser<A> {
-  // TODO: add memoization, otherwise it isn't actually a packrat parser
-  private _grammar: Grammar<A>;
-  private _isIgnored: (token: Token) => boolean;
-
   private _errorIndex: number;
   private _errorStack: Array<string>;
+  private _grammar: Grammar<A>;
+  private _isIgnored: (token: Token) => boolean;
+  private _memo: Map<string, Map<number, number /* but will be A */>> | null;
   private _parseStack: Array<string | null>;
 
   constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
     this._grammar = grammar;
     this._isIgnored = isIgnored;
+    this._memo = null;
 
     // Remember rightmost index.
     // this._index = 0;
@@ -131,6 +131,10 @@ export default class Parser<A> {
       return null;
     }
 
+    if (!this._memo) {
+      this._memo = new Map();
+    }
+
     const rules = Object.keys(this._grammar);
 
     const startRule = rules[0];
@@ -145,18 +149,18 @@ export default class Parser<A> {
         this._errorIndex = next.index;
         this._errorStack = [];
       } else {
-        // if (this._memo) {
-        //   Array.from(this._memo.entries()).forEach(([r, counts], i) => {
-        //     const desc = Math.max(...Array.from(counts.values()));
-        //     if (desc > 1) {
-        // we hardly ever visit the same place twice...
-        // because we hardly ever backtrack
-        // i see 5 of these in the test run, for example:
-        // rule 1 {"expressions":["operation"],"kind":"CHOICE"}: 2
-        // console.log(`rule ${i} ${JSON.stringify(r)}: ${desc}`);
-        //     }
-        //   });
-        // }
+        let hits = 0;
+        let misses = 0;
+        Array.from(this._memo.entries()).forEach(([r, counts], i) => {
+          const desc = Math.max(...Array.from(counts.values()));
+          if (desc > 1) {
+            hits += desc;
+            console.log(`rule ${i} ${r.slice(0, 10) + '...'}: ${desc} hits`);
+          } else {
+            misses++;
+          }
+        });
+        console.log('hits', hits, '"misses"', misses);
         return result;
       }
     }
@@ -218,19 +222,6 @@ export default class Parser<A> {
 
     const index = current ? current.index : 0;
 
-    // if (!this._memo) {
-    //   this._memo = new Map();
-    // }
-    // if (!this._memo.has(rule)) {
-    //   this._memo.set(rule, new Map());
-    // }
-    // let r = this._memo.get(rule);
-    // if (!this._memo.get(rule).has(index)) {
-    //   this._memo.get(rule).set(index, 0);
-    // }
-    // let count = this._memo.get(rule).get(index);
-    // this._memo.get(rule).set(index, count + 1);
-
     if (typeof start === 'string') {
       this._parseStack.push(start);
     } else {
@@ -246,6 +237,20 @@ export default class Parser<A> {
     const [expression, production] = Array.isArray(rule)
       ? rule
       : [rule, identity];
+
+    const key = typeof expression === 'string' ? expression : expression.hash;
+
+    if (!this._memo!.has(key)) {
+      this._memo!.set(key, new Map());
+    }
+
+    if (!this._memo!.get(key)!.has(index)) {
+      this._memo!.get(key)!.set(index, 0);
+    }
+
+    let count = this._memo!.get(key)!.get(index)!;
+
+    this._memo!.get(key)!.set(index, count + 1);
 
     // TODO: instead of esoteric label and break statements, just repeat code
     outer: {
