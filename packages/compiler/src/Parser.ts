@@ -99,7 +99,7 @@ export default class Parser<A> {
   private _errorStack: Array<string>;
   private _grammar: Grammar<A>;
   private _isIgnored: (token: Token) => boolean;
-  private _memo: Map<string, Map<number, A>> | null;
+  private _memo: Map<string, Map<number, [A, Token | null] | null>> | null;
   private _parseStack: Array<string | null>;
 
   constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
@@ -131,9 +131,7 @@ export default class Parser<A> {
       return null;
     }
 
-    if (!this._memo) {
-      this._memo = new Map();
-    }
+    this._memo = new Map();
 
     const rules = Object.keys(this._grammar);
 
@@ -149,6 +147,7 @@ export default class Parser<A> {
         this._errorIndex = next.index;
         this._errorStack = [];
       } else {
+        this._memo = null;
         return result;
       }
     }
@@ -228,12 +227,17 @@ export default class Parser<A> {
 
     const key = typeof expression === 'string' ? expression : expression.hash;
 
-    if (!this._memo!.has(key)) {
-      this._memo!.set(key, new Map());
+    let map: Map<number, [A, Token | null] | null>;
+
+    if (this._memo!.has(key)) {
+      map = this._memo!.get(key)!;
+    } else {
+      map = new Map();
+      this._memo!.set(key, map);
     }
 
-    if (!this._memo!.get(key)!.has(index)) {
-      // Could use memoized result here.
+    if (map.has(index)) {
+      return map.get(index)!;
     }
 
     // TODO: instead of esoteric label and break statements, just repeat code
@@ -250,7 +254,9 @@ export default class Parser<A> {
 
           // TODO: refactor to avoid this repetition
           this._parseStack.pop();
-          return [production(result), next];
+          const tuple: [A, Token | null] = [production(result), next];
+          map.set(index, tuple);
+          return tuple;
         }
       } else {
         switch (expression.kind) {
@@ -271,7 +277,9 @@ export default class Parser<A> {
                   [result, next] = maybe;
 
                   this._parseStack.pop();
-                  return [production(result), next];
+                  const tuple: [A, Token | null] = [production(result), next];
+                  map.set(index, tuple);
+                  return tuple;
                 }
               }
             }
@@ -287,7 +295,9 @@ export default class Parser<A> {
                 // Note that we don't actually ignore the result; it is up to
                 // the caller to do that (see the SEQUENCE case).
                 this._parseStack.pop();
-                return [production(result), next];
+                const tuple: [A, Token | null] = [production(result), next];
+                map.set(index, tuple);
+                return tuple;
               }
             }
             break;
@@ -304,9 +314,13 @@ export default class Parser<A> {
             if (maybe) {
               const [result, next] = maybe;
 
-              return [production(result), next];
+              const tuple: [A, Token | null] = [production(result), next];
+              map.set(index, tuple);
+              return tuple;
             } else {
-              return [production(undefined), current];
+              const tuple: [A, Token | null] = [production(undefined), current];
+              map.set(index, tuple);
+              return tuple;
             }
           }
 
@@ -323,6 +337,13 @@ export default class Parser<A> {
                   [result, next] = maybe;
 
                   results.push(result);
+
+                  // TODO: refactor to remove the need for this hack:
+                  // Only needed under memoization, otherwise we end up wrapping
+                  // around to index zero.
+                  if (!next) {
+                    break;
+                  }
                 } else {
                   break;
                 }
@@ -330,7 +351,9 @@ export default class Parser<A> {
 
               if (results.length) {
                 this._parseStack.pop();
-                return [production(results), next];
+                const tuple: [A, Token | null] = [production(results), next];
+                map.set(index, tuple);
+                return tuple;
               }
             }
             break;
@@ -361,7 +384,9 @@ export default class Parser<A> {
             }
 
             this._parseStack.pop();
-            return [production(results), next];
+            const tuple: [A, Token | null] = [production(results), next];
+            map.set(index, tuple);
+            return tuple;
           }
 
           case 'STAR': {
@@ -376,13 +401,21 @@ export default class Parser<A> {
                 [result, next] = maybe;
 
                 results.push(result);
+
+                // Only needed under memoization, otherwise we end up wrapping
+                // around to index zero.
+                if (!next) {
+                  break;
+                }
               } else {
                 break;
               }
             }
 
             this._parseStack.pop();
-            return [production(results.length ? results : undefined), next];
+            const tuple: [A, Token | null] = [production(results.length ? results : undefined), next];
+            map.set(index, tuple);
+            return tuple;
           }
 
           case 'TOKEN':
@@ -395,7 +428,9 @@ export default class Parser<A> {
               }
 
               this._parseStack.pop();
-              return [production(current.contents), this.next(current)];
+              const tuple: [A, Token | null] = [production(current.contents), this.next(current)];
+              map.set(index, tuple);
+              return tuple;
             }
             break;
         }
@@ -408,6 +443,7 @@ export default class Parser<A> {
     }
 
     this._parseStack.pop();
+    map.set(index, null);
     return null;
   }
 

@@ -498,7 +498,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   inlineFragment: [
     sequence(
-      t(Tokens.ELLIPSIS).ignore, // BUG: not being ignored?
+      t(Tokens.ELLIPSIS).ignore,
       optional('typeCondition'),
       star('directive'),
       'selectionSet',
