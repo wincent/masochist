@@ -203,11 +203,11 @@ export default class Parser<A> {
 
   private evaluate(
     start: Expression,
-    current: Token | null,
+    current: Token,
   ): [A, Token | null] | null {
     const rule = typeof start === 'string' ? this._grammar[start] : start;
 
-    const index = current ? current.index : 0;
+    const index = current.index;
 
     if (typeof start === 'string') {
       this._parseStack.push(start);
@@ -242,10 +242,6 @@ export default class Parser<A> {
 
     // TODO: instead of esoteric label and break statements, just repeat code
     outer: {
-      if (!current) {
-        break outer;
-      }
-
       if (typeof expression === 'string') {
         const maybe = this.evaluate(expression, current);
 
@@ -270,6 +266,13 @@ export default class Parser<A> {
 
               for (let i = 0; i < expression.expressions.length; i++) {
                 let result;
+
+                if (!next) {
+                  // same edge case here, although less likely: next choice is
+                  // optional expression (in practice, those should always
+                  // include a non-optional part).
+                  break;
+                }
 
                 const maybe = this.evaluate(expression.expressions[i], next);
 
@@ -329,7 +332,7 @@ export default class Parser<A> {
               const results = [];
               let next: Token | null = current;
 
-              while (true) {
+              while (next) {
                 const maybe = this.evaluate(expression.expression, next);
                 let result;
 
@@ -337,13 +340,6 @@ export default class Parser<A> {
                   [result, next] = maybe;
 
                   results.push(result);
-
-                  // TODO: refactor to remove the need for this hack:
-                  // Only needed under memoization, otherwise we end up wrapping
-                  // around to index zero.
-                  if (!next) {
-                    break;
-                  }
                 } else {
                   break;
                 }
@@ -363,6 +359,11 @@ export default class Parser<A> {
             let next: Token | null = current;
 
             for (let i = 0; i < expression.expressions.length; i++) {
+              if (!next) {
+                // edge case here: no next token, but next expression(s) is/are optional...
+                break;
+              }
+
               const subExpression = expression.expressions[i];
 
               const maybe = this.evaluate(subExpression, next);
@@ -393,7 +394,7 @@ export default class Parser<A> {
             const results = [];
             let next: Token | null = current;
 
-            while (true) {
+            while (next) {
               const maybe = this.evaluate(expression.expression, next);
               let result;
 
@@ -401,12 +402,6 @@ export default class Parser<A> {
                 [result, next] = maybe;
 
                 results.push(result);
-
-                // Only needed under memoization, otherwise we end up wrapping
-                // around to index zero.
-                if (!next) {
-                  break;
-                }
               } else {
                 break;
               }
@@ -422,7 +417,7 @@ export default class Parser<A> {
           }
 
           case 'TOKEN':
-            if (current && current.name === expression.name) {
+            if (current.name === expression.name) {
               if (
                 expression.predicate &&
                 !expression.predicate(current.contents)
