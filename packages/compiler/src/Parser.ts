@@ -99,7 +99,7 @@ export default class Parser<A> {
   private _errorStack: Array<string>;
   private _grammar: Grammar<A>;
   private _isIgnored: (token: Token) => boolean;
-  private _memo: Map<string, Map<number, number /* but will be A */>> | null;
+  private _memo: Map<string, Map<number, A>> | null;
   private _parseStack: Array<string | null>;
 
   constructor(grammar: Grammar<A>, isIgnored: (token: Token) => boolean) {
@@ -149,18 +149,6 @@ export default class Parser<A> {
         this._errorIndex = next.index;
         this._errorStack = [];
       } else {
-        let hits = 0;
-        let misses = 0;
-        Array.from(this._memo.entries()).forEach(([r, counts], i) => {
-          const desc = Math.max(...Array.from(counts.values()));
-          if (desc > 1) {
-            hits += desc;
-            console.log(`rule ${i} ${r.slice(0, 10) + '...'}: ${desc} hits`);
-          } else {
-            misses++;
-          }
-        });
-        console.log('hits', hits, '"misses"', misses);
         return result;
       }
     }
@@ -245,12 +233,8 @@ export default class Parser<A> {
     }
 
     if (!this._memo!.get(key)!.has(index)) {
-      this._memo!.get(key)!.set(index, 0);
+      // Could use memoized result here.
     }
-
-    let count = this._memo!.get(key)!.get(index)!;
-
-    this._memo!.get(key)!.set(index, count + 1);
 
     // TODO: instead of esoteric label and break statements, just repeat code
     outer: {
