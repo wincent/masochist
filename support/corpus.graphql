@@ -1,0 +1,827 @@
+query ArticleRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Article {
+      ...Article
+      description
+      redirect
+      title
+    }
+    id
+  }
+}
+
+fragment Article on Article {
+  title
+  redirect
+  resolvedTitle
+  editURL
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query ArticlesIndexQuery(
+  $count: Int!
+  $cursor: String
+) {
+  ...ArticlesIndex
+}
+
+fragment ArticlesIndex on Root {
+  articles(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...ArticlePreview
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query ArticlesRouteQuery(
+  $count: Int!
+  $cursor: String
+) {
+  ...ArticlesIndex
+}
+
+fragment ArticlesIndex on Root {
+  articles(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...ArticlePreview
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query PageRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Page {
+      ...Page
+      description
+      title
+    }
+    id
+  }
+}
+
+fragment Page on Page {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query PostRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Post {
+      ...Post
+      description
+      title
+    }
+    id
+  }
+}
+
+fragment Post on Post {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  readTime
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query PostsIndexQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...PostsIndex
+}
+
+fragment PostsIndex on Root {
+  posts(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...Post
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment Post on Post {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  readTime
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query PostsRouteQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...PostsIndex
+}
+
+fragment PostsIndex on Root {
+  posts(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...Post
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment Post on Post {
+  id
+  title
+  url
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  readTime
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query SearchQuery(
+  $count: Int!
+  $cursor: String
+  $q: String!
+) {
+  ...Search
+}
+
+fragment Search on Root {
+  search(first: $count, after: $cursor, q: $q) {
+    count
+    edges {
+      cursor
+      node {
+        ...ContentPreview
+        ... on Node {
+          id
+        }
+        __typename
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment ContentPreview on Content {
+  __typename
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PagePreview on Page {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PostPreview on Post {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment SnippetPreview on Snippet {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query SearchRouteQuery(
+  $count: Int!
+  $cursor: String
+  $q: String!
+) {
+  ...Search
+}
+
+fragment Search on Root {
+  search(first: $count, after: $cursor, q: $q) {
+    count
+    edges {
+      cursor
+      node {
+        ...ContentPreview
+        ... on Node {
+          id
+        }
+        __typename
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment ContentPreview on Content {
+  __typename
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PagePreview on Page {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PostPreview on Post {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment SnippetPreview on Snippet {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query SnippetRouteQuery(
+  $baseHeadingLevel: Int!
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Snippet {
+      ...Snippet
+      description
+      title
+    }
+    id
+  }
+}
+
+fragment Snippet on Snippet {
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  id
+  url
+  title
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query SnippetSourceRouteQuery(
+  $format: MARKUP_FORMAT_TYPE
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Snippet {
+      source(format: $format)
+    }
+    id
+  }
+}
+query SnippetsIndexQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...SnippetsIndex
+}
+
+fragment SnippetsIndex on Root {
+  snippets(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...Snippet
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment Snippet on Snippet {
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  id
+  url
+  title
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query SnippetsRouteQuery(
+  $baseHeadingLevel: Int!
+  $count: Int!
+  $cursor: String
+) {
+  ...SnippetsIndex
+}
+
+fragment SnippetsIndex on Root {
+  snippets(first: $count, after: $cursor) {
+    edges {
+      node {
+        id
+        ...Snippet
+        __typename
+      }
+      cursor
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment Snippet on Snippet {
+  body {
+    html(baseHeadingLevel: $baseHeadingLevel)
+  }
+  id
+  url
+  title
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query TagQuery(
+  $count: Int!
+  $cursor: String
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ...Tag
+    id
+  }
+}
+
+fragment Tag on Tag {
+  count
+  id
+  name
+  url
+  taggables(first: $count, after: $cursor) {
+    edges {
+      cursor
+      node {
+        ...ContentPreview
+        ... on Node {
+          id
+        }
+        __typename
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment ContentPreview on Content {
+  __typename
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PagePreview on Page {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PostPreview on Post {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment SnippetPreview on Snippet {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query TagRouteQuery(
+  $count: Int!
+  $cursor: String
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Tag {
+      ...Tag
+      name
+    }
+    id
+  }
+}
+
+fragment Tag on Tag {
+  count
+  id
+  name
+  url
+  taggables(first: $count, after: $cursor) {
+    edges {
+      cursor
+      node {
+        ...ContentPreview
+        ... on Node {
+          id
+        }
+        __typename
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+
+fragment ContentPreview on Content {
+  __typename
+  ...ArticlePreview
+  ...PagePreview
+  ...PostPreview
+  ...SnippetPreview
+}
+
+fragment ArticlePreview on Article {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PagePreview on Page {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment PostPreview on Post {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment SnippetPreview on Snippet {
+  description
+  title
+  url
+  ...Tags
+  ...When
+}
+
+fragment Tags on Tagged {
+  tags
+}
+
+fragment When on Versioned {
+  createdAt
+  history {
+    url
+  }
+  updatedAt
+}
+query TagsRouteQuery(
+  $count: Int!
+) {
+  ...TagsIndex
+}
+
+fragment TagsIndex on Root {
+  tags(first: $count) {
+    count
+    edges {
+      node {
+        id
+        name
+        ...TagPreview
+      }
+    }
+  }
+}
+
+fragment TagPreview on Tag {
+  count
+  name
+  url
+}
+query feedQuery {
+  ...feedPosts
+}
+
+fragment feedPosts on Root {
+  posts(first: 10) {
+    edges {
+      node {
+        body {
+          html
+        }
+        createdAt
+        title
+        url
+        id
+      }
+    }
+  }
+}
+query getCanonicalURLForRequestQuery(
+  $id: ID!
+) {
+  node(id: $id) {
+    __typename
+    ... on Article {
+      url
+    }
+    id
+  }
+}
