@@ -1,0 +1,386 @@
+  graphql`
+    fragment Article on Article {
+      title
+      redirect
+      resolvedTitle
+      editURL
+      url
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
+      }
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment ArticlePreview on Article {
+      description
+      title
+      url
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment ArticlesIndex on Root {
+      articles(first: $count, after: $cursor)
+        @connection(key: "ArticlesIndex_articles") {
+        edges {
+          node {
+            id
+            ...ArticlePreview
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  `,
+    query: graphql`
+      query ArticlesIndexQuery($count: Int!, $cursor: String) {
+        ...ArticlesIndex
+      }
+    `,
+  graphql`
+    fragment ContentPreview on Content {
+      __typename
+      ...ArticlePreview
+      ...PagePreview
+      ...PostPreview
+      ...SnippetPreview
+    }
+  `,
+  graphql`
+    fragment Page on Page {
+      id
+      title
+      url
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
+      }
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment PagePreview on Page {
+      description
+      title
+      url
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment Post on Post {
+      id
+      title
+      url
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
+      }
+      readTime
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment PostPreview on Post {
+      description
+      title
+      url
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment PostsIndex on Root {
+      posts(first: $count, after: $cursor)
+        @connection(key: "PostsIndex_posts") {
+        edges {
+          node {
+            id
+            ...Post
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  `,
+    query: graphql`
+      query PostsIndexQuery(
+        $baseHeadingLevel: Int!
+        $count: Int!
+        $cursor: String
+      ) {
+        ...PostsIndex
+      }
+    `,
+  graphql`
+    fragment Search on Root {
+      search(first: $count, after: $cursor, q: $q)
+        @connection(key: "Search_search") {
+        count
+        edges {
+          cursor
+          node {
+            ...ContentPreview
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  `,
+    query: graphql`
+      query SearchQuery($count: Int!, $cursor: String, $q: String!) {
+        ...Search
+      }
+    `,
+  graphql`
+    fragment Snippet on Snippet {
+      body {
+        html(baseHeadingLevel: $baseHeadingLevel)
+      }
+      id
+      url
+      title
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment SnippetPreview on Snippet {
+      description
+      title
+      url
+      ...Tags
+      ...When
+    }
+  `,
+  graphql`
+    fragment SnippetsIndex on Root {
+      snippets(first: $count, after: $cursor)
+        @connection(key: "SnippetsIndex_snippets") {
+        edges {
+          node {
+            id
+            ...Snippet
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  `,
+    query: graphql`
+      query SnippetsIndexQuery(
+        $baseHeadingLevel: Int!
+        $count: Int!
+        $cursor: String
+      ) {
+        ...SnippetsIndex
+      }
+    `,
+  graphql`
+    fragment Tag on Tag {
+      count
+      id
+      name
+      url
+      taggables(first: $count, after: $cursor)
+        @connection(key: "Tag_taggables") {
+        edges {
+          cursor
+          node {
+            ...ContentPreview
+          }
+        }
+        pageInfo {
+          endCursor
+          hasNextPage
+        }
+      }
+    }
+  `,
+    query: graphql`
+      query TagQuery($count: Int!, $cursor: String, $id: ID!) {
+        node(id: $id) {
+          ...Tag
+        }
+      }
+    `,
+  graphql`
+    fragment TagPreview on Tag {
+      count
+      name
+      url
+    }
+  `,
+  graphql`
+    fragment Tags on Tagged {
+      tags
+    }
+  `,
+  graphql`
+    fragment TagsIndex on Root {
+      tags(first: $count) {
+        count
+        edges {
+          node {
+            id
+            name
+            ...TagPreview
+          }
+        }
+      }
+    }
+  `,
+  graphql`
+    fragment When on Versioned {
+      createdAt
+      history {
+        url
+      }
+      updatedAt
+    }
+  `,
+  graphql`
+    query ArticleRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+      node(id: $id) {
+        ... on Article {
+          ...Article
+          description
+          redirect
+          title
+        }
+      }
+    }
+  `,
+  graphql`
+    query ArticlesRouteQuery(
+      $count: Int!
+      # TODO: make cursors ID type
+      $cursor: String
+    ) {
+      ...ArticlesIndex
+    }
+  `,
+  graphql`
+    query PageRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+      node(id: $id) {
+        ... on Page {
+          ...Page
+          description
+          title
+        }
+      }
+    }
+  `,
+  graphql`
+    query PostRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+      node(id: $id) {
+        ... on Post {
+          ...Post
+          description
+          title
+        }
+      }
+    }
+  `,
+  graphql`
+    query PostsRouteQuery(
+      $baseHeadingLevel: Int!
+      $count: Int!
+      $cursor: String
+    ) {
+      ...PostsIndex
+    }
+  `,
+  graphql`
+    query SearchRouteQuery($count: Int!, $cursor: String, $q: String!) {
+      ...Search
+    }
+  `,
+  graphql`
+    query SnippetRouteQuery($baseHeadingLevel: Int!, $id: ID!) {
+      node(id: $id) {
+        ... on Snippet {
+          ...Snippet
+          description
+          title
+        }
+      }
+    }
+  `,
+  graphql`
+    query SnippetSourceRouteQuery($format: MARKUP_FORMAT_TYPE, $id: ID!) {
+      node(id: $id) {
+        ... on Snippet {
+          source(format: $format)
+        }
+      }
+    }
+  `,
+  graphql`
+    query SnippetsRouteQuery(
+      $baseHeadingLevel: Int!
+      $count: Int!
+      $cursor: String
+    ) {
+      ...SnippetsIndex
+    }
+  `,
+  graphql`
+    query TagRouteQuery($count: Int!, $cursor: String, $id: ID!) {
+      node(id: $id) {
+        ... on Tag {
+          ...Tag
+          name
+        }
+      }
+    }
+  `,
+  graphql`
+    query TagsRouteQuery($count: Int!) {
+      ...TagsIndex
+    }
+  `,
+// Could have just used an untagged template literal, but by using `graphql` we
+// get validation at compile-time instead of runtime, and also some handy Flow
+// types.
+const feedQuery = graphql`
+graphql`
+  fragment feedPosts on Root {
+    posts(first: 10) {
+      edges {
+        node {
+          body {
+            html
+          }
+          createdAt
+          title
+          url
+        }
+      }
+    }
+  }
+`;
+const canonicalURLQuery = graphql`
+  query getCanonicalURLForRequestQuery($id: ID!) {
+    node(id: $id) {
+      ... on Article {
+        url
+      }
+    }
+  }
+`;
