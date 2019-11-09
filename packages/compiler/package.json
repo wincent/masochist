@@ -9,6 +9,7 @@
   "scripts": {
     "benchmark": "node lib/benchmark.js",
     "build": "cd ../.. && yarn build",
+    "format": "cd ../.. && yarn format",
     "test": "cd ../.. && yarn test packages/compiler"
   }
 }
