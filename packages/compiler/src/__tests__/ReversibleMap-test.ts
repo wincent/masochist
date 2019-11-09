@@ -12,7 +12,11 @@ describe('ReversibleMap()', () => {
   let map: ReversibleMap<string, unknown>;
 
   beforeEach(() => {
-    map = new ReversibleMap([['a', 1], ['b', 2], ['c', 3]]);
+    map = new ReversibleMap([
+      ['a', 1],
+      ['b', 2],
+      ['c', 3],
+    ]);
   });
 
   describe('undo', () => {
@@ -28,7 +32,11 @@ describe('ReversibleMap()', () => {
 
       call(map.undo[3]);
 
-      expect([...map.entries()]).toEqual([['a', 0], ['c', 3], ['d', 4]]);
+      expect([...map.entries()]).toEqual([
+        ['a', 0],
+        ['c', 3],
+        ['d', 4],
+      ]);
 
       call(map.undo[2]);
 
@@ -50,7 +58,11 @@ describe('ReversibleMap()', () => {
 
       call(map.undo[0]);
 
-      expect([...map.entries()]).toEqual([['a', 1], ['b', 2], ['c', 3]]);
+      expect([...map.entries()]).toEqual([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3],
+      ]);
     });
   });
 
@@ -103,7 +115,11 @@ describe('ReversibleMap()', () => {
 
       expect(map.undo.length).toBe(0);
 
-      expect([...map.entries()]).toEqual([['a', 1], ['b', 2], ['c', 3]]);
+      expect([...map.entries()]).toEqual([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3],
+      ]);
     });
 
     it('removes the checkpoint if already at one', () => {
@@ -134,7 +150,11 @@ describe('ReversibleMap()', () => {
 
       expect(map.undo.length).toBe(0);
 
-      expect([...map.entries()]).toEqual([['a', 1], ['b', 2], ['c', 3]]);
+      expect([...map.entries()]).toEqual([
+        ['a', 1],
+        ['b', 2],
+        ['c', 3],
+      ]);
     });
   });
 

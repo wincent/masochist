@@ -413,7 +413,10 @@ export default class Parser<A> {
             }
 
             this._parseStack.pop();
-            const tuple: [A, Token | null] = [production(results.length ? results : undefined), next];
+            const tuple: [A, Token | null] = [
+              production(results.length ? results : undefined),
+              next,
+            ];
             map.set(index, tuple);
             return tuple;
           }
@@ -428,7 +431,10 @@ export default class Parser<A> {
               }
 
               this._parseStack.pop();
-              const tuple: [A, Token | null] = [production(current.contents), this.next(current)];
+              const tuple: [A, Token | null] = [
+                production(current.contents),
+                this.next(current),
+              ];
               map.set(index, tuple);
               return tuple;
             }
@@ -529,11 +535,10 @@ function excerpt(text: string, line: number, column: number): string {
  * Returns a hash for `expression`.
  */
 function hash(expression: Expression): string {
-  return typeof expression === 'string' ?
-    skein(`string:${expression}`) :
-    expression.hash;
+  return typeof expression === 'string'
+    ? skein(`string:${expression}`)
+    : expression.hash;
 }
-
 
 /**
  * Identity function that returns its argument unmodified.
