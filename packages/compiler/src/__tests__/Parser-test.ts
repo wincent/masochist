@@ -114,7 +114,7 @@ test('grammar hashes', () => {
       }),
       document: expect.objectContaining({
         0: expect.objectContaining({
-          hash: expect.stringMatching(/^plus:c5bbd282/),
+          hash: expect.stringMatching(/^plus:8ef29a08/),
         }),
       }),
       operation: expect.objectContaining({
@@ -123,19 +123,19 @@ test('grammar hashes', () => {
       queryOperation: expect.objectContaining({
         expressions: expect.arrayContaining([
           expect.objectContaining({
-            hash: expect.stringMatching(/^t:e78b55be/),
+            hash: expect.stringMatching(/^t:757722ed/),
           }),
         ]),
-        hash: expect.stringMatching(/^sequence:705c123b/),
+        hash: expect.stringMatching(/^sequence:3bd7e48e/),
       }),
       selectionSet: expect.objectContaining({
         0: expect.objectContaining({
-          hash: expect.stringMatching(/^sequence:d3cf0b32/),
+          hash: expect.stringMatching(/^sequence:7a2d22ae/),
         }),
       }),
       field: expect.objectContaining({
         0: expect.objectContaining({
-          hash: expect.stringMatching(/^t:f5667b4e/),
+          hash: expect.stringMatching(/^t:a2e43bfe/),
         }),
       }),
     }),

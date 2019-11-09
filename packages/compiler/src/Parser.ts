@@ -443,7 +443,7 @@ export default class Parser<A> {
  */
 export function and(expression: Expression): AndExpression {
   return {
-    hash: `and:${hash(expression)}`,
+    hash: `and:${skein(hash(expression))}`,
     expression,
     kind: 'AND',
   };
@@ -519,7 +519,7 @@ function identity<T extends unknown>(id: T): T {
  */
 export function ignore(expression: Expression): IgnoreExpression {
   return {
-    hash: `ignore:${hash(expression)}`,
+    hash: `ignore:${skein(hash(expression))}`,
     expression,
     kind: 'IGNORE',
   };
@@ -536,7 +536,7 @@ function isNonNull<T>(value: T | null): value is T {
  */
 export function not(expression: Expression): NotExpression {
   return {
-    hash: `not:${hash(expression)}`,
+    hash: `not:${skein(hash(expression))}`,
     expression,
     kind: 'NOT',
   };
@@ -549,7 +549,7 @@ export function not(expression: Expression): NotExpression {
  */
 export function optional(expression: Expression): OptionalExpression {
   return {
-    hash: `optional:${hash(expression)}`,
+    hash: `optional:${skein(hash(expression))}`,
     expression,
     kind: 'OPTIONAL',
   };
@@ -562,7 +562,7 @@ export function optional(expression: Expression): OptionalExpression {
  */
 export function plus(expression: Expression): PlusExpression {
   return {
-    hash: `plus:${hash(expression)}`,
+    hash: `plus:${skein(hash(expression))}`,
     expression,
     kind: 'PLUS',
   };
@@ -591,14 +591,14 @@ export function sequence(
  */
 export function star(expression: Expression): StarExpression {
   return {
-    hash: `star:${hash(expression)}`,
+    hash: `star:${skein(hash(expression))}`,
     expression,
     kind: 'STAR',
   };
 }
 
 /**
- * Represents a terminal symbol of the type identified by `tokenName`.
+ * Represents a terminal symbol of the type identified by `name`.
  *
  * The optional `predicate` function allows an arbitrary check of the token
  * contents to be specified to gate success.
@@ -607,13 +607,13 @@ export function star(expression: Expression): StarExpression {
  * anything...
  */
 export function t(
-  tokenName: string,
+  name: string,
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
   return withProperties({
     hash: `t:${skein([name, predicate?.toString() ?? ''].map(hash).join(':'))}`,
     kind: 'TOKEN',
-    name: tokenName,
+    name,
     predicate,
   });
 }
