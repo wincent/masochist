@@ -32,7 +32,7 @@ async function main() {
   const scriptSource = await readFile(script, 'utf8');
 
   const modifiedSource = scriptSource
-    .replace("require('./parse')", "require('graphql').parse")
+    .replace('require("./parse")', 'require("graphql").parse')
     .replace('../../../support', '.');
 
   await writeFile('benchmark.js', modifiedSource);

@@ -11,10 +11,17 @@ async function read(file: string): Promise<string> {
   return readFile(path.join(__dirname, '../../../support', file), 'utf8');
 }
 
+function memory() {
+  console.log('Memory:');
+  console.log(process.memoryUsage());
+}
+
 async function main() {
   const source = await read('client-corpus.graphql');
 
   console.log(`Read ${source.length} bytes`); // Assuming ASCII.
+
+  memory();
 
   const obs = new PerformanceObserver(items => {
     console.log(items.getEntries()[0].duration);
@@ -62,6 +69,8 @@ async function main() {
   parse(source);
   performance.mark('B');
   performance.measure('A to B', 'A', 'B');
+
+  memory();
 }
 
 main().catch(error => {
