@@ -15,14 +15,20 @@ function mb(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
-function memory(heading: string) {
-  const {heapTotal, heapUsed} = process.memoryUsage();
+function tableize(data: {[key: string]: NodeJS.MemoryUsage}): any {
+  const table: {[key: string]: {[key: string]: string}} = {};
 
-  console.log(`Memory: ${heading}`);
-  console.table({
-    heapTotal: mb(heapTotal),
-    heapUsed: mb(heapUsed),
+  Object.entries(data).forEach(([label, usage]) => {
+    const subtable: {[key: string]: string} = {};
+
+    Object.entries(usage).forEach(([category, bytes]) => {
+      subtable[category] = mb(bytes);
+    });
+
+    table[label] = subtable;
   });
+
+  return table;
 }
 
 async function main() {
@@ -30,7 +36,9 @@ async function main() {
 
   console.log(`Read ${source.length} bytes`); // Assuming ASCII.
 
-  memory('Start');
+  const memory: {[key: string]: NodeJS.MemoryUsage} = {
+    start: process.memoryUsage(),
+  };
 
   const obs = new PerformanceObserver(items => {
     console.log(items.getEntries()[0].duration);
@@ -79,7 +87,9 @@ async function main() {
   performance.mark('B');
   performance.measure('A to B', 'A', 'B');
 
-  memory('End');
+  memory.finish = process.memoryUsage();
+
+  console.table(tableize(memory));
 }
 
 main().catch(error => {
