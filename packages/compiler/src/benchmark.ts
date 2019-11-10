@@ -11,9 +11,18 @@ async function read(file: string): Promise<string> {
   return readFile(path.join(__dirname, '../../../support', file), 'utf8');
 }
 
-function memory() {
-  console.log('Memory:');
-  console.log(process.memoryUsage());
+function mb(bytes: number): string {
+  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+}
+
+function memory(heading: string) {
+  const {heapTotal, heapUsed} = process.memoryUsage();
+
+  console.log(`Memory: ${heading}`);
+  console.table({
+    heapTotal: mb(heapTotal),
+    heapUsed: mb(heapUsed),
+  });
 }
 
 async function main() {
@@ -21,7 +30,7 @@ async function main() {
 
   console.log(`Read ${source.length} bytes`); // Assuming ASCII.
 
-  memory();
+  memory('Start');
 
   const obs = new PerformanceObserver(items => {
     console.log(items.getEntries()[0].duration);
@@ -70,7 +79,7 @@ async function main() {
   performance.mark('B');
   performance.measure('A to B', 'A', 'B');
 
-  memory();
+  memory('End');
 }
 
 main().catch(error => {
