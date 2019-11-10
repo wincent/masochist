@@ -1,6 +1,10 @@
 import permute from './permute';
 import ReversibleMap from './ReversibleMap';
 
+/**
+ * An object with an `exec()` method for recognizing a unit of text, and other
+ * methods for composing matchers together (eg. `to()`, `when()` etc).
+ */
 export interface Matcher<K, V> {
   _description?: string;
 
@@ -15,15 +19,13 @@ export interface Matcher<K, V> {
 
   except(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
-  exec(string: string): RegExpExecArray | null;
+  exec(): RegExpExecArray | null;
 
   name(string: string): Matcher<K, V>;
 
   onEnter(callback: (meta: ReversibleMap<K, V>) => void): Matcher<K, V>;
 
   onMatch(callback: (match: RegExpExecArray, meta: ReversibleMap<K, V>) => void): Matcher<K, V>;
-
-  test(string: string): boolean;
 
   to(predicate: string | Matcher<K, V>): Matcher<K, V>;
 
@@ -167,8 +169,8 @@ export default class Lexer<K, V> {
 
       except,
 
-      exec(string: string) {
-        return getMatchObject('', string);
+      exec() {
+        return getMatchObject('', index, input);
       },
 
       name: function() {
@@ -181,10 +183,6 @@ export default class Lexer<K, V> {
 
       onMatch: function() {
         throw new Error('onMatch() called on `pass` singleton');
-      },
-
-      test(_: string) {
-        return true;
       },
 
       to,
@@ -202,7 +200,7 @@ export default class Lexer<K, V> {
 
       except,
 
-      exec(_: string) {
+      exec() {
         return null;
       },
 
@@ -216,10 +214,6 @@ export default class Lexer<K, V> {
 
       onMatch: function() {
         throw new Error('onMatch() called on `never` singleton');
-      },
-
-      test(_: string) {
-        return false;
       },
 
       to,
@@ -240,7 +234,7 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string: string) {
+        exec() {
           const matcher = lookup(matcherName);
 
           if (!matcher) {
@@ -251,7 +245,7 @@ export default class Lexer<K, V> {
             this._onEnter(meta);
           }
 
-          const match = matcher.exec(string);
+          const match = matcher.exec();
 
           if (match !== null) {
             if (this._onMatch) {
@@ -267,8 +261,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -311,8 +303,8 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
-          return matcher.exec(string);
+        exec() {
+          return matcher.exec();
         },
 
         name,
@@ -320,8 +312,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -345,16 +335,23 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
-          const match = parent.exec(string);
+        exec() {
+          const initialIndex = index;
+
+          const match = parent.exec();
 
           if (match !== null) {
-            const negated = lookup(predicate).exec(string);
+            let pendingIndex = index;
+            index = initialIndex;
+
+            const negated = lookup(predicate).exec();
 
             if (negated !== null) {
+              index = initialIndex;
               return null;
             }
 
+            index = pendingIndex;
             return match;
           }
 
@@ -366,8 +363,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -386,7 +381,7 @@ export default class Lexer<K, V> {
           ? escape(stringOrRegExp)
           : stringOrRegExp.source;
 
-      const regexp = new RegExp(`^(?:${pattern})`, 'u');
+      const regExp = new RegExp(`(?:${pattern})`, 'uy');
 
       return {
         get description() {
@@ -400,10 +395,14 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
-          const match = regexp.exec(string);
+        exec() {
+          regExp.lastIndex = index;
+
+          const match = regExp.exec(input);
 
           if (match !== null) {
+            index = regExp.lastIndex;
+
             if (this._onMatch) {
               this._onMatch(match, meta);
             }
@@ -417,8 +416,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -442,14 +439,14 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string: string) {
-          const match = lookup(matcher).exec(string);
+        exec() {
+          const match = lookup(matcher).exec();
 
           if (match !== null) {
             return match;
           } else {
             // Fake a zero-width match.
-            return getMatchObject('', string);
+            return getMatchObject('', index, input);
           }
         },
 
@@ -458,8 +455,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -519,7 +514,7 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
+        exec() {
           if (this._onEnter) {
             this._onEnter(meta);
           }
@@ -529,7 +524,7 @@ export default class Lexer<K, V> {
 
             const matcher = lookup(matchers[i]);
 
-            const match = matcher.exec(string);
+            const match = matcher.exec();
 
             if (match !== null) {
               if (this._onMatch) {
@@ -550,8 +545,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -575,16 +568,14 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string: string) {
-          let remaining = string;
+        exec() {
           let consumed = '';
+          const initialIndex = index;
 
-          while (remaining !== '') {
-            const match = lookup(matcher).exec(remaining);
+          while (index !== input.length) {
+            const match = lookup(matcher).exec();
 
             if (match !== null) {
-              remaining = remaining.slice(match[0].length);
-
               consumed += match[0];
             } else {
               break;
@@ -592,7 +583,7 @@ export default class Lexer<K, V> {
           }
 
           if (consumed) {
-            return getMatchObject(consumed, string);
+            return getMatchObject(consumed, initialIndex, input);
           } else {
             return null;
           }
@@ -603,8 +594,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -629,32 +618,32 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
+        exec() {
+          const initialIndex = index;
+
           meta.checkpoint();
 
           if (this._onEnter) {
             this._onEnter(meta);
           }
 
-          let remaining = string;
           let matched = '';
 
           for (let i = 0; i < matchers.length; i++) {
             const matcher = lookup(matchers[i]);
-            const match = matcher.exec(remaining);
+            const match = matcher.exec();
 
             if (match !== null) {
-              remaining = remaining.slice(match[0].length);
-
               matched += match[0];
             } else {
               meta.rollback();
 
+              index = initialIndex;
               return null;
             }
           }
 
-          const match = getMatchObject(matched, string);
+          const match = getMatchObject(matched, initialIndex, input);
 
           if (this._onMatch) {
             this._onMatch(match, meta);
@@ -669,18 +658,12 @@ export default class Lexer<K, V> {
 
         onMatch,
 
-        test,
-
         to,
 
         until,
 
         when,
       };
-    }
-
-    function test(this: Matcher<K, V>, string: string): boolean {
-      return this.exec(string) !== null;
     }
 
     /**
@@ -704,32 +687,29 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
+        exec() {
+          const initialIndex = index;
           const matcher = lookup(predicate);
 
-          let remaining = string;
           let consumed = '';
 
-          while (remaining !== '') {
-            let match = matcher.exec(remaining);
+          while (index !== input.length) {
+            let match = matcher.exec();
 
             if (match !== null) {
-              remaining = remaining.slice(match[0].length);
-
-              return getMatchObject(consumed + match[0], string);
+              return getMatchObject(consumed + match[0], initialIndex, input);
             }
 
-            match = parent.exec(remaining);
+            match = parent.exec();
 
             if (match !== null) {
-              remaining = remaining.slice(match[0].length);
-
               consumed += match[0];
             } else {
               break;
             }
           }
 
+          index = initialIndex;
           return null;
         },
 
@@ -738,8 +718,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -770,31 +748,32 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
+        exec() {
+          const initialIndex = index;
           const matcher = lookup(predicate);
 
-          let remaining = string;
           let consumed = '';
 
-          while (remaining !== '') {
-            let match = matcher.exec(remaining);
+          while (index !== input.length) {
+            const innerIndex = index;
+
+            let match = matcher.exec();
 
             if (match !== null) {
+              index = innerIndex;
               break;
             }
 
-            match = parent.exec(remaining);
+            match = parent.exec();
 
             if (match === null) {
               break;
             } else {
-              remaining = remaining.slice(match[0].length);
-
               consumed += match[0];
             }
           }
 
-          return getMatchObject(consumed, string);
+          return getMatchObject(consumed, initialIndex, input);
         },
 
         name,
@@ -802,8 +781,6 @@ export default class Lexer<K, V> {
         onEnter,
 
         onMatch,
-
-        test,
 
         to,
 
@@ -820,7 +797,7 @@ export default class Lexer<K, V> {
      * If no explicit `alternate` is provided, uses the `pass` matcher which
      * always matches with a 0-length match.
      */
-    function when(predicate: (string: string) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V> = pass): Matcher<K, V> {
+    function when(predicate: (input: string, index: number) => boolean, matcher: string | Matcher<K, V>, alternate: string | Matcher<K, V> = pass): Matcher<K, V> {
       return {
         get description() {
           return (
@@ -833,11 +810,11 @@ export default class Lexer<K, V> {
 
         except,
 
-        exec(string) {
-          if (predicate(string)) {
-            return lookup(matcher).exec(string);
+        exec() {
+          if (predicate(input, index)) {
+            return lookup(matcher).exec();
           } else {
-            return lookup(alternate).exec(string);
+            return lookup(alternate).exec();
           }
         },
 
@@ -847,8 +824,6 @@ export default class Lexer<K, V> {
 
         onMatch,
 
-        test,
-
         to,
 
         until,
@@ -857,9 +832,7 @@ export default class Lexer<K, V> {
       };
     }
 
-    let remaining = input;
-
-    const atEnd = () => remaining.length === 0;
+    const atEnd = () => index === input.length;
 
     /**
      * Convenience function for building simple lexers from a map (object
@@ -928,10 +901,11 @@ export default class Lexer<K, V> {
           );
         }
       } else {
-        if (peeked !== null) {
+        if (peeked != null) {
           // We previously peeked but aren't consuming the memoized
           // result, so we need to rollback the peek's side-effects.
           meta.rollback();
+          index = peek.index;
         }
 
         if (matchers.length === 1) {
@@ -945,14 +919,12 @@ export default class Lexer<K, V> {
           matcher = sequence(...matchers);
         }
 
-        result = matcher.exec(remaining);
+        result = matcher.exec();
 
         if (result === null) {
           fail(matcher);
         }
       }
-
-      remaining = remaining.slice(result![0].length);
 
       meta.commit();
 
@@ -973,7 +945,7 @@ export default class Lexer<K, V> {
 
       // TODO: report index, maybe.
       const context =
-        remaining.length > 20 ? `${remaining.slice(0, 20)}...` : remaining;
+        input.length - index > 20 ? `${input.slice(index, index + 20)}...` : input.slice(index);
 
       throw new Error(`${reason} at: ${JSON.stringify(context)}`);
     };
@@ -1010,7 +982,7 @@ export default class Lexer<K, V> {
         }
 
         // Memoize the result so that we can `consume()` it if desired.
-        peek.peeked = matcher.exec(remaining);
+        peek.peeked = matcher.exec();
 
         if (peek.peeked === null) {
           meta.rollback();
@@ -1019,9 +991,10 @@ export default class Lexer<K, V> {
         return peek.peeked !== null;
       },
 
-      // Mix this in with `Object.assign` so that TypeScript can infer the
+      // Mix these in with `Object.assign` so that TypeScript can infer the
       // correct type for `peek`.
-      {peeked: undefined as undefined | null | RegExpExecArray}
+      {peeked: undefined as undefined | null | RegExpExecArray},
+      {index}
     );
 
     /**
@@ -1031,7 +1004,7 @@ export default class Lexer<K, V> {
     const token = (name: string, contents: string): Token => {
       return {
         contents,
-        index: input.length - remaining.length - contents.length,
+        index: index - contents.length,
         name,
       };
     };
@@ -1086,8 +1059,6 @@ export default class Lexer<K, V> {
     });
 
     const produceToken = () => {
-      index = input.length - remaining.length;
-
       const token = advance();
 
       if (!token) {
@@ -1172,11 +1143,11 @@ function escape(literal: string) {
  * Creates a fake "match" object that mimics what you would get from a call to
  * RegExp.prototype.exec().
  */
-function getMatchObject(string: string, input: string) {
+function getMatchObject(string: string, index: number, input: string) {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec
   const object = [string] as RegExpExecArray;
 
-  object.index = 0;
+  object.index = index;
   object.input = input;
 
   return object;

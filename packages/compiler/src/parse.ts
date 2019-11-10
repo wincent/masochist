@@ -1,3 +1,5 @@
+import {performance} from 'perf_hooks';
+
 import Parser, {
   Grammar,
   choice,
