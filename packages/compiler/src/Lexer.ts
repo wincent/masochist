@@ -139,6 +139,8 @@ export default class Lexer<K, V> {
   *lex(input: string): Generator<Token> {
     let index = 0;
 
+    const cachedMatchers: Map<string | RegExp, Matcher<K, V>> = new Map();
+
     /**
      * Look up a matcher by name.
      */
@@ -154,7 +156,11 @@ export default class Lexer<K, V> {
       throw new Error('Unable to look up matcher');
     }
 
-    const setMatcher = (name: string, matcher: Matcher<K, V>) => this._matchers.set(name, matcher);
+    const setMatcher = (name: string, matcher: Matcher<K, V>) => {
+      this._matchers.set(name, matcher);
+
+      return matcher;
+    }
 
     /**
      * Arbitrary metadata passed to matchers' `onMatch()` callbacks.
@@ -376,6 +382,10 @@ export default class Lexer<K, V> {
      * Turns `stringOrRegExp` into a Matcher.
      */
     function match(stringOrRegExp: string | RegExp): Matcher<K, V> {
+      if (cachedMatchers.has(stringOrRegExp)) {
+        return cachedMatchers.get(stringOrRegExp)!;
+      }
+
       const pattern =
         typeof stringOrRegExp === 'string'
           ? escape(stringOrRegExp)
@@ -383,7 +393,7 @@ export default class Lexer<K, V> {
 
       const regExp = new RegExp(`(?:${pattern})`, 'uy');
 
-      return {
+      const matcher: Matcher<K, V> = {
         get description() {
           return (
             this._description ||
@@ -411,11 +421,29 @@ export default class Lexer<K, V> {
           return match;
         },
 
-        name,
+        name(string) {
+          return setMatcher(string, {
+            ...this,
+            _description: string,
+            name,
+          });
+        },
 
-        onEnter,
+        onEnter(callback) {
+          return {
+            ...this,
+            _onEnter: callback,
+            onEnter,
+          };
+        },
 
-        onMatch,
+        onMatch(callback) {
+          return {
+            ...this,
+            _onMatch: callback,
+            onMatch,
+          };
+        },
 
         to,
 
@@ -423,6 +451,10 @@ export default class Lexer<K, V> {
 
         when,
       };
+
+      cachedMatchers.set(stringOrRegExp, matcher);
+
+      return matcher;
     }
 
     /**
@@ -473,9 +505,7 @@ export default class Lexer<K, V> {
     function name(this: Matcher<K, V>, string: string): Matcher<K, V> {
       this._description = string;
 
-      setMatcher(string, this);
-
-      return this;
+      return setMatcher(string, this);
     }
 
     /**
