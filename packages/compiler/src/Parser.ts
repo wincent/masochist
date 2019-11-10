@@ -75,7 +75,11 @@ type StarExpression = {
   expression: Expression;
 };
 
-type SymbolReference = string;
+type SymbolReference = {
+  hash: string;
+  kind: 'SYMBOL';
+  name: string;
+};
 
 type NonTerminalSymbol =
   | AndExpression
@@ -202,7 +206,7 @@ export default class Parser<A> {
   }
 
   private evaluate(
-    start: Expression,
+    start: Expression | string,
     current: Token,
   ): [A, Token | null] | null {
     const rule = typeof start === 'string' ? this._grammar[start] : start;
@@ -225,7 +229,7 @@ export default class Parser<A> {
       ? rule
       : [rule, identity];
 
-    const key = typeof expression === 'string' ? expression : expression.hash;
+    const key = expression.hash;
 
     let map: Map<number, [A, Token | null] | null>;
 
@@ -242,155 +246,80 @@ export default class Parser<A> {
 
     // TODO: instead of esoteric label and break statements, just repeat code
     outer: {
-      if (typeof expression === 'string') {
-        const maybe = this.evaluate(expression, current);
+      switch (expression.kind) {
+        case 'AND':
+          // TODO
+          break;
 
-        if (maybe) {
-          const [result, next] = maybe;
+        case 'CHOICE':
+          {
+            let next: Token | null = current;
 
-          // TODO: refactor to avoid this repetition
-          this._parseStack.pop();
-          const tuple: [A, Token | null] = [production(result), next];
-          map.set(index, tuple);
-          return tuple;
-        }
-      } else {
-        switch (expression.kind) {
-          case 'AND':
-            // TODO
-            break;
+            for (let i = 0; i < expression.expressions.length; i++) {
+              let result;
 
-          case 'CHOICE':
-            {
-              let next: Token | null = current;
-
-              for (let i = 0; i < expression.expressions.length; i++) {
-                let result;
-
-                if (!next) {
-                  // same edge case here, although less likely: next choice is
-                  // optional expression (in practice, those should always
-                  // include a non-optional part).
-                  break;
-                }
-
-                const maybe = this.evaluate(expression.expressions[i], next);
-
-                if (maybe) {
-                  [result, next] = maybe;
-
-                  this._parseStack.pop();
-                  const tuple: [A, Token | null] = [production(result), next];
-                  map.set(index, tuple);
-                  return tuple;
-                }
+              if (!next) {
+                // same edge case here, although less likely: next choice is
+                // optional expression (in practice, those should always
+                // include a non-optional part).
+                break;
               }
-            }
-            break;
 
-          case 'IGNORE':
-            {
-              const maybe = this.evaluate(expression.expression, current);
+              const maybe = this.evaluate(expression.expressions[i], next);
 
               if (maybe) {
-                const [result, next] = maybe;
+                [result, next] = maybe;
 
-                // Note that we don't actually ignore the result; it is up to
-                // the caller to do that (see the SEQUENCE case).
                 this._parseStack.pop();
                 const tuple: [A, Token | null] = [production(result), next];
                 map.set(index, tuple);
                 return tuple;
               }
             }
-            break;
+          }
+          break;
 
-          case 'NOT':
-            // TODO
-            break;
-
-          case 'OPTIONAL': {
+        case 'IGNORE':
+          {
             const maybe = this.evaluate(expression.expression, current);
-
-            this._parseStack.pop();
 
             if (maybe) {
               const [result, next] = maybe;
 
+              // Note that we don't actually ignore the result; it is up to
+              // the caller to do that (see the SEQUENCE case).
+              this._parseStack.pop();
               const tuple: [A, Token | null] = [production(result), next];
               map.set(index, tuple);
               return tuple;
-            } else {
-              const tuple: [A, Token | null] = [production(undefined), current];
-              map.set(index, tuple);
-              return tuple;
             }
           }
+          break;
 
-          case 'PLUS':
-            {
-              const results = [];
-              let next: Token | null = current;
+        case 'NOT':
+          // TODO
+          break;
 
-              while (next) {
-                const maybe = this.evaluate(expression.expression, next);
-                let result;
+        case 'OPTIONAL': {
+          const maybe = this.evaluate(expression.expression, current);
 
-                if (maybe) {
-                  [result, next] = maybe;
+          this._parseStack.pop();
 
-                  results.push(result);
-                } else {
-                  break;
-                }
-              }
+          if (maybe) {
+            const [result, next] = maybe;
 
-              if (results.length) {
-                this._parseStack.pop();
-                const tuple: [A, Token | null] = [production(results), next];
-                map.set(index, tuple);
-                return tuple;
-              }
-            }
-            break;
-
-          case 'SEQUENCE': {
-            const results = [];
-            let next: Token | null = current;
-
-            for (let i = 0; i < expression.expressions.length; i++) {
-              if (!next) {
-                // edge case here: no next token, but next expression(s) is/are optional...
-                break;
-              }
-
-              const subExpression = expression.expressions[i];
-
-              const maybe = this.evaluate(subExpression, next);
-
-              let result;
-
-              if (maybe) {
-                [result, next] = maybe;
-
-                if (
-                  typeof subExpression === 'string' ||
-                  subExpression.kind !== 'IGNORE'
-                ) {
-                  results.push(result);
-                }
-              } else {
-                break outer;
-              }
-            }
-
-            this._parseStack.pop();
-            const tuple: [A, Token | null] = [production(results), next];
+            const tuple: [A, Token | null] = [production(result), next];
+            map.set(index, tuple);
+            return tuple;
+          } else {
+            const tuple: [A, Token | null] = [production(undefined), current];
             map.set(index, tuple);
             return tuple;
           }
+        }
 
-          case 'STAR': {
+        case 'PLUS':
+          {
             const results = [];
             let next: Token | null = current;
 
@@ -407,34 +336,111 @@ export default class Parser<A> {
               }
             }
 
+            if (results.length) {
+              this._parseStack.pop();
+              const tuple: [A, Token | null] = [production(results), next];
+              map.set(index, tuple);
+              return tuple;
+            }
+          }
+          break;
+
+        case 'SEQUENCE': {
+          const results = [];
+          let next: Token | null = current;
+
+          for (let i = 0; i < expression.expressions.length; i++) {
+            if (!next) {
+              // edge case here: no next token, but next expression(s) is/are optional...
+              break;
+            }
+
+            const subExpression = expression.expressions[i];
+
+            const maybe = this.evaluate(subExpression, next);
+
+            let result;
+
+            if (maybe) {
+              [result, next] = maybe;
+
+              if (
+                typeof subExpression === 'string' ||
+                subExpression.kind !== 'IGNORE'
+              ) {
+                results.push(result);
+              }
+            } else {
+              break outer;
+            }
+          }
+
+          this._parseStack.pop();
+          const tuple: [A, Token | null] = [production(results), next];
+          map.set(index, tuple);
+          return tuple;
+        }
+
+        case 'STAR': {
+          const results = [];
+          let next: Token | null = current;
+
+          while (next) {
+            const maybe = this.evaluate(expression.expression, next);
+            let result;
+
+            if (maybe) {
+              [result, next] = maybe;
+
+              results.push(result);
+            } else {
+              break;
+            }
+          }
+
+          this._parseStack.pop();
+          const tuple: [A, Token | null] = [
+            production(results.length ? results : undefined),
+            next,
+          ];
+          map.set(index, tuple);
+          return tuple;
+        }
+
+        case 'SYMBOL':
+          {
+            const maybe = this.evaluate(expression.name, current);
+
+            if (maybe) {
+              const [result, next] = maybe;
+
+              // TODO: refactor to avoid this repetition
+              this._parseStack.pop();
+              const tuple: [A, Token | null] = [production(result), next];
+              map.set(index, tuple);
+              return tuple;
+            }
+          }
+          break;
+
+        case 'TOKEN':
+          if (current.name === expression.name) {
+            if (
+              expression.predicate &&
+              !expression.predicate(current.contents)
+            ) {
+              break outer;
+            }
+
             this._parseStack.pop();
             const tuple: [A, Token | null] = [
-              production(results.length ? results : undefined),
-              next,
+              production(current.contents),
+              this.next(current),
             ];
             map.set(index, tuple);
             return tuple;
           }
-
-          case 'TOKEN':
-            if (current.name === expression.name) {
-              if (
-                expression.predicate &&
-                !expression.predicate(current.contents)
-              ) {
-                break outer;
-              }
-
-              this._parseStack.pop();
-              const tuple: [A, Token | null] = [
-                production(current.contents),
-                this.next(current),
-              ];
-              map.set(index, tuple);
-              return tuple;
-            }
-            break;
-        }
+          break;
       }
     }
 
@@ -478,9 +484,11 @@ export default class Parser<A> {
  *
  * Succeeds when `expression` succeeds, but does not consume any input.
  */
-export function and(expression: Expression): AndExpression {
+export function and(value: Expression | string): AndExpression {
+  const expression = wrap(value);
+
   return {
-    hash: `and:${skein(hash(expression))}`,
+    hash: `and:${skein(expression.hash)}`,
     expression,
     kind: 'AND',
   };
@@ -492,12 +500,28 @@ export function and(expression: Expression): AndExpression {
  * Tries each expression in `expressions`, succeeding as soon as encountering a
  * successful expression. After each unsuccessful match, backtracks.
  */
-export function choice(...expressions: Array<Expression>): ChoiceExpression {
+export function choice(
+  ...values: Array<Expression | string>
+): ChoiceExpression {
+  const expressions = values.map(wrap);
+
   return withProperties({
     hash: `choice:${skein(expressions.map(hash).join(':'))}`,
     expressions,
     kind: 'CHOICE',
   });
+}
+
+/**
+ * Takes something that may be a symbol reference (ie. a string referencing
+ * another rule) and turns it into an expression.
+ */
+function wrap(maybeReference: string | Expression): Expression {
+  if (typeof maybeReference === 'string') {
+    return r(maybeReference);
+  } else {
+    return maybeReference;
+  }
 }
 
 function excerpt(text: string, line: number, column: number): string {
@@ -528,11 +552,18 @@ function excerpt(text: string, line: number, column: number): string {
 
 /**
  * Returns a hash for `expression`.
+ *
+ * This is a function to facilitate easy mapping over an array; eg:
+ *
+ *    expressions.map(hash)
+ *
+ * as opposed to:
+ *
+ *    expressions.map(expression => expression.hash)
+ *
  */
 function hash(expression: Expression): string {
-  return typeof expression === 'string'
-    ? skein(`string:${expression}`)
-    : expression.hash;
+  return expression.hash;
 }
 
 /**
@@ -553,9 +584,11 @@ function identity<T extends unknown>(id: T): T {
  * Note: currently only the `sequence` functionality pays attention to this
  * modifier.
  */
-export function ignore(expression: Expression): IgnoreExpression {
+export function ignore(value: Expression | string): IgnoreExpression {
+  const expression = wrap(value);
+
   return {
-    hash: `ignore:${skein(hash(expression))}`,
+    hash: `ignore:${skein(expression.hash)}`,
     expression,
     kind: 'IGNORE',
   };
@@ -570,9 +603,11 @@ function isNonNull<T>(value: T | null): value is T {
  *
  * Succeeds when `expression` does not succeed, but does not consume any input.
  */
-export function not(expression: Expression): NotExpression {
+export function not(value: Expression | string): NotExpression {
+  const expression = wrap(value);
+
   return {
-    hash: `not:${skein(hash(expression))}`,
+    hash: `not:${skein(expression.hash)}`,
     expression,
     kind: 'NOT',
   };
@@ -583,9 +618,11 @@ export function not(expression: Expression): NotExpression {
  *
  * Succeeds when 0 or 1 repetitions of `expression` succeed.
  */
-export function optional(expression: Expression): OptionalExpression {
+export function optional(value: Expression | string): OptionalExpression {
+  const expression = wrap(value);
+
   return {
-    hash: `optional:${skein(hash(expression))}`,
+    hash: `optional:${skein(expression.hash)}`,
     expression,
     kind: 'OPTIONAL',
   };
@@ -596,9 +633,11 @@ export function optional(expression: Expression): OptionalExpression {
  *
  * Succeeds when 1 or more repetitions of `expression` succeed.
  */
-export function plus(expression: Expression): PlusExpression {
+export function plus(value: Expression | string): PlusExpression {
+  const expression = wrap(value);
+
   return {
-    hash: `plus:${skein(hash(expression))}`,
+    hash: `plus:${skein(expression.hash)}`,
     expression,
     kind: 'PLUS',
   };
@@ -611,8 +650,10 @@ export function plus(expression: Expression): PlusExpression {
  * successful. Fails on any unsuccessful match.
  */
 export function sequence(
-  ...expressions: Array<Expression>
+  ...values: Array<Expression | string>
 ): SequenceExpression {
+  const expressions = values.map(wrap);
+
   return withProperties({
     hash: `sequence:${skein(expressions.map(hash).join(':'))}`,
     expressions,
@@ -625,11 +666,24 @@ export function sequence(
  *
  * Succeeds when 0 or more repetitions of `expression` succeed.
  */
-export function star(expression: Expression): StarExpression {
+export function star(value: Expression | string): StarExpression {
+  const expression = wrap(value);
+
   return {
-    hash: `star:${skein(hash(expression))}`,
+    hash: `star:${skein(expression.hash)}`,
     expression,
     kind: 'STAR',
+  };
+}
+
+/**
+ * Creates a symbol that references another rule.
+ */
+export function r(name: string): SymbolReference {
+  return {
+    hash: `r:${skein(name)}`,
+    kind: 'SYMBOL',
+    name,
   };
 }
 
@@ -647,7 +701,9 @@ export function t(
   predicate?: (contents: string) => boolean,
 ): TerminalSymbol {
   return withProperties({
-    hash: `t:${skein([name, predicate?.toString() ?? ''].map(hash).join(':'))}`,
+    hash: `t:${skein(
+      [name, predicate?.toString() ?? ''].map(skein).join(':'),
+    )}`,
     kind: 'TOKEN',
     name,
     predicate,

@@ -5,6 +5,7 @@ import Parser, {
   plus,
   sequence,
   star,
+  r,
   t,
 } from './Parser';
 import lex, {Tokens, isIgnored} from './lex';
@@ -226,7 +227,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   operation: choice('anonymousOperation', 'queryOperation'),
 
   anonymousOperation: [
-    'selectionSet',
+    r('selectionSet'),
     (selections): GraphQL.Operation => ({
       kind: 'OPERATION',
       selections,

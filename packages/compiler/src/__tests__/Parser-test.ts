@@ -1,4 +1,4 @@
-import Parser, {Grammar, choice, plus, sequence, t} from '../Parser';
+import Parser, {Grammar, choice, plus, sequence, r, t} from '../Parser';
 import lex, {Tokens, isIgnored} from '../lex';
 
 /**
@@ -40,7 +40,7 @@ const grammar: Grammar<ASTNode> = {
   operation: choice('anonymousOperation', 'queryOperation'),
 
   anonymousOperation: [
-    'selectionSet',
+    r('selectionSet'),
     (selections): ASTNode => ({
       kind: 'OPERATION',
       selections,
@@ -110,32 +110,32 @@ test('grammar hashes', () => {
   expect(grammar).toEqual(
     expect.objectContaining({
       definition: expect.objectContaining({
-        hash: expect.stringMatching(/^choice:597a15af/),
+        hash: expect.stringMatching(/^choice:[a-f0-9]{128}/),
       }),
       document: expect.objectContaining({
         0: expect.objectContaining({
-          hash: expect.stringMatching(/^plus:8ef29a08/),
+          hash: expect.stringMatching(/^plus:[a-f0-9]{128}/),
         }),
       }),
       operation: expect.objectContaining({
-        hash: expect.stringMatching(/^choice:7ef948db/),
+        hash: expect.stringMatching(/^choice:[a-f0-9]{128}/),
       }),
       queryOperation: expect.objectContaining({
         expressions: expect.arrayContaining([
           expect.objectContaining({
-            hash: expect.stringMatching(/^t:757722ed/),
+            hash: expect.stringMatching(/^t:[a-f0-9]{128}/),
           }),
         ]),
-        hash: expect.stringMatching(/^sequence:3bd7e48e/),
+        hash: expect.stringMatching(/^sequence:[a-f0-9]{128}/),
       }),
       selectionSet: expect.objectContaining({
         0: expect.objectContaining({
-          hash: expect.stringMatching(/^sequence:7a2d22ae/),
+          hash: expect.stringMatching(/^sequence:[a-f0-9]{128}/),
         }),
       }),
       field: expect.objectContaining({
         0: expect.objectContaining({
-          hash: expect.stringMatching(/^t:a2e43bfe/),
+          hash: expect.stringMatching(/^t:[a-f0-9]{128}/),
         }),
       }),
     }),
