@@ -42,7 +42,6 @@ export default function lex(input: string) {
     ).name('BLOCK_STRING_CHARACTER');
 
     sequence(match('#'), a('SOURCE_CHARACTER').until('LINE_TERMINATOR'))
-      .name('COMMENT')
       .name('COMMENT');
 
     match(/\\["\\\/bfnrt]/).name('ESCAPED_CHARACTER');
