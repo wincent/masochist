@@ -15,7 +15,7 @@
     "jest": "*",
     "prettier": "*",
     "ts-jest": "*",
-    "typescript": "3.7.1-rc"
+    "typescript": "*"
   },
   "scripts": {
     "build": "tsc --build",
