@@ -112,7 +112,6 @@ export default class Parser<A> {
     this._memo = null;
 
     // Remember rightmost index.
-    // this._index = 0;
     this._errorIndex = 0;
     this._errorStack = [];
     this._parseStack = [];

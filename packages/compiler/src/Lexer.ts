@@ -135,7 +135,22 @@ export default class Lexer<K, V> {
   }
 
   *lex(input: string): Generator<Token> {
-    const lookup = (matcher: string | Matcher<K, V>) => this.lookup(matcher);
+    let index = 0;
+
+    /**
+     * Look up a matcher by name.
+     */
+    const lookup = (matcher: string | Matcher<K, V>) => {
+      if (typeof matcher === 'string') {
+        if (this._matchers.has(matcher)) {
+          return this._matchers.get(matcher)!;
+        }
+      } else if (typeof matcher.exec === 'function') {
+        return matcher;
+      }
+
+      throw new Error('Unable to look up matcher');
+    }
 
     const setMatcher = (name: string, matcher: Matcher<K, V>) => this._matchers.set(name, matcher);
 
@@ -1028,7 +1043,7 @@ export default class Lexer<K, V> {
      */
     const __DEBUG__ = {
       get index() {
-        return input.length - remaining.length;
+        return index;
       },
 
       get meta() {
@@ -1036,7 +1051,7 @@ export default class Lexer<K, V> {
       },
 
       get remaining() {
-        return remaining;
+        return input.slice(index);
       },
     };
 
@@ -1069,8 +1084,6 @@ export default class Lexer<K, V> {
       token,
       when,
     });
-
-    let index = 0;
 
     const produceToken = () => {
       index = input.length - remaining.length;
@@ -1144,21 +1157,6 @@ export default class Lexer<K, V> {
         yield token;
       }
     }
-  }
-
-  /**
-   * Look up a matcher by name.
-   */
-  lookup(matcher: string | Matcher<K, V>): Matcher<K, V> {
-    if (typeof matcher === 'string') {
-      if (this._matchers.has(matcher)) {
-        return this._matchers.get(matcher)!;
-      }
-    } else if (typeof matcher.exec === 'function') {
-      return matcher;
-    }
-
-    throw new Error('Unable to look up matcher');
   }
 }
 
