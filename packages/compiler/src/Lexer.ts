@@ -282,7 +282,7 @@ export default class Lexer<K, V> {
      *
      * This is an order-insensitive analog of `sequence()`.
      *
-     * Note that permutating has O(!N) runtime, so should be used sparingly.
+     * Note that permutating has O(N!) runtime, so should be used sparingly.
      */
     function allOf(...matchers: Array<string | Matcher<K, V>>): Matcher<K, V> {
       // Given matchers [a, b], permute them (eg. [[a, b], [b, a]])...
