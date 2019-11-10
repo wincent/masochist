@@ -118,7 +118,7 @@ export default function lex(input: string) {
       // Ignored tokens (2.1.7).
       //
       UNICODE_BOM: match('\ufeff'),
-      WHITESPACE: match(/[\t ]/),
+      WHITESPACE: match(/[\t ]+/),
       LINE_TERMINATOR: a('LINE_TERMINATOR'),
       COMMENT: a('COMMENT'),
       COMMA: match(','),
