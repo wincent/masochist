@@ -11,6 +11,7 @@
     "benchmark:graphql": "node lib/benchmark-graphql.js",
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
+    "inspect": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark.js",
     "profile": "node --prof --no-logfile-per-isolate lib/benchmark.js && node --prof-process v8.log",
     "test": "cd ../.. && yarn test packages/compiler"
   }
