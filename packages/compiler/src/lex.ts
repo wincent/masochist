@@ -41,8 +41,9 @@ export default function lex(input: string) {
       a('SOURCE_CHARACTER').except(oneOf(match('"""'), match('\\"""'))),
     ).name('BLOCK_STRING_CHARACTER');
 
-    sequence(match('#'), a('SOURCE_CHARACTER').until('LINE_TERMINATOR'))
-      .name('COMMENT');
+    sequence(match('#'), a('SOURCE_CHARACTER').until('LINE_TERMINATOR')).name(
+      'COMMENT',
+    );
 
     match(/\\["\\\/bfnrt]/).name('ESCAPED_CHARACTER');
     match(/\\u[0-9A-Fa-f]{4}/i).name('ESCAPED_UNICODE');
