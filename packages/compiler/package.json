@@ -11,7 +11,7 @@
     "benchmark:graphql": "node lib/benchmark-graphql.js",
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
-    "profile": "node --prof lib/benchmark.js && node --prof-process $(ls -t isolate-0x*-v8.log | head -1)",
+    "profile": "node --prof --no-logfile-per-isolate lib/benchmark.js && node --prof-process v8.log",
     "test": "cd ../.. && yarn test packages/compiler"
   }
 }
