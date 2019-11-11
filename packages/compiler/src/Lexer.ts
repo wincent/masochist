@@ -1036,6 +1036,8 @@ export default class Lexer<K, V> {
         contents,
         index: index - contents.length,
         name,
+        next: undefined,
+        previous: undefined,
       };
     };
 
@@ -1123,6 +1125,8 @@ export default class Lexer<K, V> {
     const defineProperties = (token: Token, counter: number) => {
       Object.defineProperties(token, {
         next: {
+          enumerable: false,
+
           // Lazy because token N+1 doesn't exist yet when
           // token N is produced.
           get() {
@@ -1138,6 +1142,8 @@ export default class Lexer<K, V> {
           },
         },
         previous: {
+          enumerable: false,
+
           // Non-enumerable so that tokens can be
           // introspected without the clutter.
           value: tokens.get(counter - 1),
