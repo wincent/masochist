@@ -1117,7 +1117,7 @@ export default class Lexer<K, V> {
      */
     let counter = 0;
 
-    const tokens = new Map();
+    const tokens: Array<Token> = [];
 
     /**
      * Defines "next" and "previous" properties on `token`.
@@ -1130,15 +1130,15 @@ export default class Lexer<K, V> {
           // Lazy because token N+1 doesn't exist yet when
           // token N is produced.
           get() {
-            if (!atEnd() && !tokens.has(counter + 1)) {
+            if (!atEnd() && tokens.length <= counter + 1) {
               const nextToken = produceToken();
 
               defineProperties(nextToken, counter + 1);
 
-              tokens.set(counter + 1, nextToken);
+              tokens.push(nextToken);
             }
 
-            return tokens.get(counter + 1);
+            return tokens[counter + 1];
           },
         },
         previous: {
@@ -1146,20 +1146,20 @@ export default class Lexer<K, V> {
 
           // Non-enumerable so that tokens can be
           // introspected without the clutter.
-          value: tokens.get(counter - 1),
+          value: tokens[counter - 1],
         },
       });
     };
 
     while (!atEnd()) {
-      if (tokens.has(counter + 1)) {
-        yield tokens.get(++counter);
+      if (tokens.length > counter) {
+        yield tokens[counter++];
       } else {
         const token = produceToken();
 
-        tokens.set(++counter, token);
+        defineProperties(token, counter++);
 
-        defineProperties(token, counter);
+        tokens.push(token);
 
         yield token;
       }
