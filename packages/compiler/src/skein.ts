@@ -36,47 +36,20 @@ export default function skein(text: string | Array<number>): string {
    * block's contents: that is, the block that will be processed in the next
    * `block()` call.
    */
-  let tweak: Array<[number, number]> = [
-    [0, 32], // Bytes processed so far; will be 32-bytes (configuration string).
-    // prettier-ignore
-    [
-      (
-        0x80 + // Last = 1.
-        0x40 + // First = 1.
-        0x4 // Type = 4 (Configuration block).
-      ) << 24,
-      0
-    ],
+  let tweak: Array<[number, number]> = [];
+
+  const c: Array<[number, number]> = [
+    [0x4903adff, 0x749c51ce],
+    [0x0d95de39, 0x9746df03],
+    [0x8fd19341, 0x27c79bce],
+    [0x9a255629, 0xff352cb1],
+    [0x5db62599, 0xdf6ca7b0],
+    [0xeabe394c, 0xa9d5c3f4],
+    [0x991112c7, 0x1a75b523],
+    [0xae18a40b, 0x660fcc33],
   ];
 
-  const c: Array<[number, number]> = [];
-
-  // Section 3.5.2 "The Configuration String"
-  //
-  // 32 bytes in all:
-  //
-  // - Bytes 0-3 (4 bytes): Schema identifier ("SHA3")
-  // - Bytes 4-5 (2 bytes): Version number (0x01).
-  // - Bytes 6-7 (2 bytes): Reserved (set to 0).
-  // - Bytes 8-15 (8 bytes): `N0` Output length in bits.
-  // - Byte 16 (1 byte): `Yl`, Tree leaf size encoding (0 because not used).
-  // - Byte 17 (1 byte): `Yf`, Tree fan-out encoding (0 because not used).
-  // - Byte 18 (1 byte): `Ym`, Maximum tree height (0 because not used).
-  // - Bytes 19-32 (13 bytes): Reserved (set to 0).
-  //
-  const buffer = Array.from(
-    // prettier-ignore
-    utf8(
-      'SHA3' + // 4-byte schema identifier.
-      '\x01\x00' + // 2-byte version (1), in little-endian order.
-      '\x00\x00' + // 2 reserved bytes.
-      '\x00\x02' // Output length (512 bits), again in little-endian order.
-    ),
-  );
-
   let position = 0;
-
-  block(c, tweak, buffer, position);
 
   tweak = [
     [0, 0],
