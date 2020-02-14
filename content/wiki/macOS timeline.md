@@ -21,6 +21,7 @@ tags: ruby macos wiki
 - macOS 10.12: Sierra, released 20 September 2016 (356 days after El Capitan).
 - macOS 10.13: High Sierra, released 26 September 2017 (370 days after Sierra).
 - macOS 10.14: Mojave, released 24 September 2018 (363 days after High Sierra).
+- macOS 10.15: Catalina, released 7 October 2019 (378 days after Mojave).
 
 The date calculations above were done with [Ruby](/wiki/Ruby):
 
