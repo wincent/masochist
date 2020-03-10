@@ -1,5 +1,5 @@
 ---
-redirect: [[OS X "must haves"]]
+redirect: [[macOS "must haves"]]
 tags: wiki
 ---
 
