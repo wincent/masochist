@@ -3,6 +3,7 @@ tags: red.hat wiki
 ---
 
 # use a screen session in case we lose our connection
+
     screen
 
     # for posterity
@@ -10,7 +11,7 @@ tags: red.hat wiki
 
     # for comparison with after the upgrade
     uname -a
-    cat /etc/redhat-release 
+    cat /etc/redhat-release
 
     # from here on basically everything has to be done as root
     sudo -s
@@ -28,7 +29,7 @@ tags: red.hat wiki
     ls -laF /boot
 
     # confirm that new kernel is first entry in grub.conf
-    cat /boot/grub/grub.conf 
+    cat /boot/grub/grub.conf
 
     # check disk usage on /boot partition
     df -h
@@ -38,7 +39,7 @@ tags: red.hat wiki
 
     # 73 seconds later, after logging in again
     uname -a
-    cat /etc/redhat-release 
+    cat /etc/redhat-release
 
     # check that all desired services are running or active
     sudo -s

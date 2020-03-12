@@ -48,7 +48,7 @@ The lexer header contains information about how to actually use it; for example,
      * which will invoke the code for the associated rule in the source grammar
      * assuming that the input stream is pointing to a token/text stream that could begin
      * this rule.
-     * 
+     *
      * For instance if you call the first (topmost) rule in a parser grammar, you will
      * get the results of a full parse, but calling a rule half way through the grammar will
      * allow you to pass part of a full token stream to the parser, such as for syntax checking
@@ -75,7 +75,7 @@ And here is the parser header for an extremely simple parser with only one rule:
      * which will invoke the code for the associated rule in the source grammar
      * assuming that the input stream is pointing to a token/text stream that could begin
      * this rule.
-     * 
+     *
      * For instance if you call the first (topmost) rule in a parser grammar, you will
      * get the results of a full parse, but calling a rule half way through the grammar will
      * allow you to pass part of a full token stream to the parser, such as for syntax checking
@@ -149,7 +149,7 @@ Now an example which actually does something:
     {
         pANTLR3_UINT8               input_string = "hello world";
         pANTLR3_INPUT_STREAM        stream = antlr3NewAsciiStringInPlaceStream(input_string, strlen(input_string), "input text stream");
-        
+
         if (stream == (pANTLR3_INPUT_STREAM)ANTLR3_ERR_NOMEM)
         {
           fprintf(stderr, "no memory\n");
@@ -160,17 +160,17 @@ Now an example which actually does something:
           fprintf(stderr, "file not found\n");
           exit(EXIT_FAILURE);
         }
-        
+
         pWalrusLexer                lexer  = WalrusLexerNew(stream);
         pANTLR3_COMMON_TOKEN_STREAM	tokens = antlr3CommonTokenStreamSourceNew(ANTLR3_SIZE_HINT, lexer->pLexer->tokSource);
-        
+
         pANTLR3_COMMON_TOKEN        token;
         while ((token = tokens->tstream->LT(tokens->tstream, 1))->getType(token) != ANTLR3_TOKEN_EOF)
         {
           printf("Token: %s\n", token->toString(token)->chars);
           tokens->tstream->istream->consume(tokens->tstream->istream);
         }
-            
+
         /*pWalrusParser               parser = WalrusParserNew(tokens);
         parser->anything(parser);*/
         return 0;

@@ -15,7 +15,7 @@ Grab the latest version:
 
 Inspect archive contents:
 
-    $ unzip -l /tmp/vim-fuzzyfinder.zip 
+    $ unzip -l /tmp/vim-fuzzyfinder.zip
     Archive:  vim-fuzzyfinder.zip
       Length     Date   Time    Name
      --------    ----   ----    ----
@@ -35,8 +35,8 @@ Go ahead and install:
 
     $ unzip /tmp/vim-fuzzyfinder.zip -d ~/.vim
     Archive:  vim-fuzzyfinder.zip
-      inflating: ./doc/fuzzyfinder.jax   
-      inflating: ./doc/fuzzyfinder.txt   
+      inflating: ./doc/fuzzyfinder.jax
+      inflating: ./doc/fuzzyfinder.txt
     replace ./plugin/fuzzyfinder.vim? [y]es, [n]o, [A]ll, [N]one, [r]ename: y
       inflating: ./plugin/fuzzyfinder.vim
 

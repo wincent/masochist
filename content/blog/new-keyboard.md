@@ -11,7 +11,6 @@ Time will tell how well the keyboard stands up to abuse, but if the reliability 
 
 Spent one microsecond looking at the wireless model and rejected it outright; I'm just not interested in a keyboard that doesn't have a proper numeric keypad.
 
-
 ### Update: One day later
 
 After a full day's intensive typing I'm pleased to report that this little keyboard exceeds my expectations in every way. Typing on this thing is effortless due to the reduced key travel and lower resistance; you can definitely type faster on this thing, and more easily. I whole-heartedly recommend it.

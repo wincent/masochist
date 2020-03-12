@@ -60,7 +60,7 @@ The `--skip-migration` switch is needed because without it `script/generate rspe
 In fact, creating the `Session` model may not be necessary at all, unless you wish to add some custom behaviour. A basic controller similar to the following may be all that is needed:
 
     class SessionsController < ApplicationController
-      
+
       def create
         if current_user = User.authenticate(params[:login_name], params[:password])
           flash[:notice]  = 'Successfully logged in.'
@@ -70,11 +70,11 @@ In fact, creating the `Session` model may not be necessary at all, unless you wi
           render :action => 'new'
         end
       end
-      
+
       def destroy
         session.delete
         flash[:notice]  = 'You have logged out successfully.'
         redirect_to home_path
       end
-      
+
     end

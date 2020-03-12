@@ -29,7 +29,7 @@ $ cd ..
 $ wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.12.tar.gz \
        http://nginx.org/download/nginx-0.7.65.tar.gz \
        http://nginx.org/download/nginx-0.7.65.tar.gz.asc
-$ tar xzvf nginx_upload_module-2.0.12.tar.gz 
+$ tar xzvf nginx_upload_module-2.0.12.tar.gz
 $ gpg --recv-keys --keyserver keys.gnupg.net A524C53E # first time only
 $ gpg --verify nginx-0.7.65.tar.gz.asc nginx-0.7.65.tar.gz
 $ tar xzvf nginx-0.7.65.tar.gz

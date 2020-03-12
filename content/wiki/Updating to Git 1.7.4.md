@@ -48,4 +48,4 @@ See "[Updating to Git 1.7.2](/wiki/Updating_to_Git_1.7.2)" for the update notes 
 
 ## Updating [GitWeb](/wiki/GitWeb)
 
-As I am have now rolled out a built-in repo browser and will retire [GitWeb](/wiki/GitWeb) eventually I opted not to update it for this release. There *were* changes in GitWeb between 1.7.3 and 1.7.4 (which can be reviewed with `git diff v1.7.3..v1.7.4 -- gitweb`) but no "show-stoppers", so the update can be safely skipped.
+As I am have now rolled out a built-in repo browser and will retire [GitWeb](/wiki/GitWeb) eventually I opted not to update it for this release. There _were_ changes in GitWeb between 1.7.3 and 1.7.4 (which can be reviewed with `git diff v1.7.3..v1.7.4 -- gitweb`) but no "show-stoppers", so the update can be safely skipped.

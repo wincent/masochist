@@ -8,7 +8,7 @@ Switching from the world of easy-to-use modeless editors (Notepad, [TextMate](/w
 
 If you're one of the lucky ones, this won't happen to you and you will instead arrive at an "epiphany moment" (or perhaps a series of small epiphanies) in which you feel like you finally understand what all the fuss is about, and decide that this is the editor that you would like to take for your lawfully wedded wife, or husband as the case may be.
 
-Some people never experience that moment, and some experience it in entirely different ways with an entirely different editor, like [Emacs](/wiki/Emacs). Others never have an "epiphany" with *any* editor, but instead settle in comfortably with an editor like [TextMate](/wiki/TextMate) or an [IDE](/wiki/IDE) like Eclipse.
+Some people never experience that moment, and some experience it in entirely different ways with an entirely different editor, like [Emacs](/wiki/Emacs). Others never have an "epiphany" with _any_ editor, but instead settle in comfortably with an editor like [TextMate](/wiki/TextMate) or an [IDE](/wiki/IDE) like Eclipse.
 
 In this brief article I'm going to try to convey the essence of my personal "epiphany" with [Vim](/wiki/Vim) in a way that will be understandable to anybody, even someone who's never touched Vim, as long as it is read with a receptiveness and a desire to "get it" and find out what all the fuss is about.
 
@@ -16,7 +16,7 @@ In this brief article I'm going to try to convey the essence of my personal "epi
 
 [Vim](/wiki/Vim) is extremely powerful, but that's not what this is about. [Emacs](/wiki/Emacs) is extremely powerful too, as is any number of [IDEs](/wiki/IDEs). Being able to do super-complicated stuff isn't something that can set an editing environment head and shoulders above the rest, but is rather a minimum base-line requirement.
 
-For me the thing that matters about Vim is actually the simple stuff. The basic, repetitive editing actions which you do literally a thousand times a day. If an editor can make *those* things as easy as possible for me, then it's won my heart.
+For me the thing that matters about Vim is actually the simple stuff. The basic, repetitive editing actions which you do literally a thousand times a day. If an editor can make _those_ things as easy as possible for me, then it's won my heart.
 
 This is why [Emacs](/wiki/Emacs) could never truly win me over. The easy stuff just didn't feel easy enough; the key combinations too uncomfortable and the customization (using Emacs Lisp) had too high a barrier to entry.
 
@@ -32,7 +32,7 @@ if (foo)
 }
 ```
 
-Imagine you're editing the above snippet and the cursor is at the end of the fourth line (shown with a vertical bar, `|`) and you decide that you want to insert an additional function call *above* that line.
+Imagine you're editing the above snippet and the cursor is at the end of the fourth line (shown with a vertical bar, `|`) and you decide that you want to insert an additional function call _above_ that line.
 
 With a "normal" text editor your typical pattern will be:
 
@@ -57,11 +57,11 @@ In a normal editor on the other hand, the cognitive gap is larger. We can make t
 2.  Hold down "Command" and the "right" cursor key to jump to the end of the line
 3.  Hit "Return" to open up a new line
 
-So that's three steps and only *one* of them actually matches up with our final intention (opening a new line); the first two steps instead have us thinking about completely unrelated things, like moving to the previous line (a line we don't even want to edit) and jumping to the end of a line (again, not even one we want to edit).
+So that's three steps and only _one_ of them actually matches up with our final intention (opening a new line); the first two steps instead have us thinking about completely unrelated things, like moving to the previous line (a line we don't even want to edit) and jumping to the end of a line (again, not even one we want to edit).
 
-If you give Vim a try and start analyzing how you do things in Vim and how you do them in your old text editor, you will see this kind of pattern emerge again and again. The distance between *what* you want to do and *how* you do it tends to be so much shorter in Vim.
+If you give Vim a try and start analyzing how you do things in Vim and how you do them in your old text editor, you will see this kind of pattern emerge again and again. The distance between _what_ you want to do and _how_ you do it tends to be so much shorter in Vim.
 
-And the reason this is *so* important is because it applies to operations which are *so* common while editing code. Things like:
+And the reason this is _so_ important is because it applies to operations which are _so_ common while editing code. Things like:
 
 -   opening up a new line before the current line
 -   opening up a new line after the current line

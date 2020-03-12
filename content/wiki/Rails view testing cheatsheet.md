@@ -117,7 +117,7 @@ before do
 end
 ```
 
-Note that the `render` call that we stub out here must *exactly* match the call as it is made in the view. For example, if the view passes in its `:locals` implicitly, the stub should also:
+Note that the `render` call that we stub out here must _exactly_ match the call as it is made in the view. For example, if the view passes in its `:locals` implicitly, the stub should also:
 
 ```ruby
 # in view
@@ -127,7 +127,7 @@ render 'foo/bar', :thing => '2', :other_thing => 'bar'
 stub(view).render 'foo/bar', :thing => '2', :other_thing => 'bar'
 ```
 
-Likewise, if the view uses a literal underscore (eg. `issues/_summary`), the stub should also; if the view does *not* use a literal underscore (eg. `issues/summary`, trusting Rails to find the actual template on disk which has an underscore in the name), the stub should not either.
+Likewise, if the view uses a literal underscore (eg. `issues/_summary`), the stub should also; if the view does _not_ use a literal underscore (eg. `issues/summary`, trusting Rails to find the actual template on disk which has an underscore in the name), the stub should not either.
 
 We also include an example block for each partial with a mock to confirm that the partial is actually called as we expect:
 
@@ -172,7 +172,7 @@ Described earlier.
 
 Within the [Behavior-Driven Development](/wiki/Behavior-Driven_Development) approach, some people argue for "outside-in" development, starting with high-level acceptance tests, then drilling down to view specs (and their corresponding views), and finally completing the picture with controllers and models (specs first, of course).
 
-This type of development often *requires* mocks and stubs to used seeing as the other parts of the system don't necessarily exist yet. Within this development style, use of test doubles may be viewed as a temporary design tool to be used while fleshing out the initial form of the application, with the option of later switching over to real models once they are implemented.
+This type of development often _requires_ mocks and stubs to used seeing as the other parts of the system don't necessarily exist yet. Within this development style, use of test doubles may be viewed as a temporary design tool to be used while fleshing out the initial form of the application, with the option of later switching over to real models once they are implemented.
 
 There is also a milder variant of "outside-in" BDD, which doesn't require you to get the specs for the outer levels passing with test doubles before moving to the inner levels. In this style, the failing outer-level tests merely prompt you to write a lower-level failing test (which may itself prompt you to write an even lower level test). You effectively end up moving back and forth among the various levels as part of getting any single top-level spec to pass.
 
@@ -192,7 +192,7 @@ Downsides of using object mothers here are:
 -   They couple view specs to real model instances, so model failures can cascade and cause view spec failures
 -   Involving real model instances may be noticeably slower for extremely large test suites
 
-In general I prefer the state-based testing approach for views because of the speed and ease of writing specs. I also like the fact that the specs are "pure" in the sense that they are *only* interested in the externally-observable behavior of the application, which is, by definition, the reason why we write code; this can actually be a useful design tool (if you find yourself writing code that has no externally-observable behavior, then it's quite possible that you shouldn't be writing the code). If and when performance starts to become a problem, emphasis can be shifted away from state-based testing.
+In general I prefer the state-based testing approach for views because of the speed and ease of writing specs. I also like the fact that the specs are "pure" in the sense that they are _only_ interested in the externally-observable behavior of the application, which is, by definition, the reason why we write code; this can actually be a useful design tool (if you find yourself writing code that has no externally-observable behavior, then it's quite possible that you shouldn't be writing the code). If and when performance starts to become a problem, emphasis can be shifted away from state-based testing.
 
 The basic pattern is:
 
@@ -216,7 +216,7 @@ Instead, I add specs for all "significant" aspects of the template's behavior. "
 -   conditional display (ie. if the template should look significantly different depending on some variable criterion)
 -   edge cases: things that might behave differently given extreme inputs
 
-Merely aesthetic or presentational aspects of the template *are* eligible for speccing if they can be considered actual bugs in the application.
+Merely aesthetic or presentational aspects of the template _are_ eligible for speccing if they can be considered actual bugs in the application.
 
 # Related
 

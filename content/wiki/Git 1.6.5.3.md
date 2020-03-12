@@ -3,8 +3,7 @@ tags: git wiki
 cache_breaker: 1
 ---
 
-The latest maintenance release GIT 1.6.5.3 is available at the
-    usual places:
+The latest maintenance release GIT 1.6.5.3 is available at the usual places:
 
      http://www.kernel.org/pub/software/scm/git/
 

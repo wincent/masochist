@@ -29,10 +29,10 @@ The README at [the official repo](http://github.com/motemen/git-vim/tree/master)
 -   `<leader>gd`: calls `:GitDiff` with no args (shows unstaged changes; same as `git diff`)
 -   `<leader>gD`: calls `:GitDiff --cached` (shows staged changes; same as `git diff --cached`)
 -   `<leader>gs`: calls `:GitStatus` (`git status`)
--   `<leader>gl`: calls `:GitLog` (calls `git log` *for the current file*; to get the repo-wide log you have to manually do `:GitLog HEAD`)
+-   `<leader>gl`: calls `:GitLog` (calls `git log` _for the current file_; to get the repo-wide log you have to manually do `:GitLog HEAD`)
 -   `<leader>ga`: calls `:GitAdd` with no args (stages the current file using `git add`)
 -   `<leader>gA`: calls `:GitAdd` with filename completion (stages the specified file using `git add`)
--   `<leader>gc`: calls `:GitCommit` (same as `git commit`; ***but note*** that *if you have no staged changes then it will assume `git commit -a`*)
+-   `<leader>gc`: calls `:GitCommit` (same as `git commit`; **_but note_** that _if you have no staged changes then it will assume `git commit -a`_)
 
 In practice I use `:GitCommit -s` to sign off my commits; `<leader>gc` is really only good for "throw-away" commits because it produces commits without signoffs.
 

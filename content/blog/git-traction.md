@@ -3,24 +3,22 @@ title: Git traction
 tags: blog
 ---
 
-The barometer is on the move and it indicates a groundswell of interest in [Git](http://www.wincent.com/knowledge-base/Git). At first I wondered if this was just because *I* have become interested in Git lately (here's my [most recent post](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/git_hooks.php)) and so have been on the lookout for more Git-related content. Then I realized that this isn't just me looking for confirmation; the confirmation is actually coming knocking on my door with various people who are in my feeds list writing about Git.
+The barometer is on the move and it indicates a groundswell of interest in [Git](http://www.wincent.com/knowledge-base/Git). At first I wondered if this was just because _I_ have become interested in Git lately (here's my [most recent post](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/git_hooks.php)) and so have been on the lookout for more Git-related content. Then I realized that this isn't just me looking for confirmation; the confirmation is actually coming knocking on my door with various people who are in my feeds list writing about Git.
 
 These aren't "version control people", they're Mac programmers just like me. A few days ago there was [Michael Tsai](http://mjtsai.com/blog/2007/07/15/subversion-to-git/), then today I noticed these posts from [Fraser Speirs](http://speirs.org/2007/07/19/a-subversion-user-looks-at-git/) and [Bill Bumgarner](http://www.friday.com/bbum/2007/07/19/git-will-eat-subversions-lunch/).
 
-My gut feeling is that [Linus Torvalds' git talk](http://www.youtube.com/watch?v=4XpnKHJAok8) showing up on YouTube has been a large factor in the recent build-up (currently shows about 87,000 views). (Ugh, the thought that YouTube could change *anybody's* life makes me feel distinctly uncomfortable...)
+My gut feeling is that [Linus Torvalds' git talk](http://www.youtube.com/watch?v=4XpnKHJAok8) showing up on YouTube has been a large factor in the recent build-up (currently shows about 87,000 views). (Ugh, the thought that YouTube could change _anybody's_ life makes me feel distinctly uncomfortable...)
 
 But whatever the reason, it's good to see it.
-
 
 ## Fraser's take
 
 Fraser seems to have spent the time digging into [Git](http://www.wincent.com/knowledge-base/Git) so as to gain an appreciation for its architecture.
 
--   The index: Fraser seems to "get" the index but I would add that I think the key concept here is that the index is not a cache, it's a *staging area*. When you start thinking about it in those terms you start to see its possibilities rather than worrying about the inconvenience of the "additional step".
+-   The index: Fraser seems to "get" the index but I would add that I think the key concept here is that the index is not a cache, it's a _staging area_. When you start thinking about it in those terms you start to see its possibilities rather than worrying about the inconvenience of the "additional step".
 -   Merging nibs: Good points on that; I haven't done a merge involving nibs yet, so I'll have to reserve judgement on that.
 -   Externals: I've come to realize that this is a non-problem thanks to the fact that I had to face this issue and workaround it with [SVK](http://www.wincent.com/knowledge-base/SVK); and in doing so I realized that a combination of separate checkouts and symbolic links is conceptually and architecturally much cleaner than Subversion externals anyway: the only downside is that your "externals" don't hitch along for the ride automatically, you have to remember to update/commit them. Fraser's hypothesized solution is an interesting one.
 -   Repository layout: spot on, the `.svn` directories littered throughout a Subversion checkout are a hideous mess; "litter" is the operative word.
-
 
 ## Bill's take
 
@@ -53,8 +51,7 @@ Bill finishes with:
 
 > Personally, I desperately hope Subversion fixes this particular problem. Subversion is really and truly awesome in so many ways and I do not want to have to migrate repository software for at least another decade.
 
-I agree: Subversion is awesome, in its own way, but it ain't going anywhere. Git, on the other hand, definitely *is* going somewhere, and in fact has already gotten so far ahead of Subversion that I can't imagine Subversion ever catching up. If you doubt this then just look at the treacle-like process they're making towards merge tracking (and note, at this stage we're still only talking about *tracking* merges, not actually doing anything interesting with them). I honestly think that if you jump ship now you won't regret it.
-
+I agree: Subversion is awesome, in its own way, but it ain't going anywhere. Git, on the other hand, definitely _is_ going somewhere, and in fact has already gotten so far ahead of Subversion that I can't imagine Subversion ever catching up. If you doubt this then just look at the treacle-like process they're making towards merge tracking (and note, at this stage we're still only talking about _tracking_ merges, not actually doing anything interesting with them). I honestly think that if you jump ship now you won't regret it.
 
 ### Parting words
 

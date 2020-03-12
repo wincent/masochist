@@ -9,7 +9,7 @@ From the [official weblog](http://weblog.rubyonrails.org/2009/3/13/this-week-in-
 
 > Things have been pretty busy on the development side since the release of Rails 2.3 RC2. The core team has been making a serious effort to review all of the open bugs and patches with an eye towards getting us a solid release. At this point, the bar for new features is set fairly high, but even so, there have been an incredible 94 commits in the week since RC2 – mostly fixes to ensure expected behavior and stability.
 
-So, we've already seen two of these so-called "release candidates", and they're *still* open to new features being added? I don't really care how "high the bar" is at this point; it's just crazy to be talking about new features at all at this stage.
+So, we've already seen two of these so-called "release candidates", and they're _still_ open to new features being added? I don't really care how "high the bar" is at this point; it's just crazy to be talking about new features at all at this stage.
 
 Back when I was complaining about this the last time (December 2007), I wrote this:
 

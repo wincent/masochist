@@ -8,7 +8,7 @@ These notes were made while upgrading to [MLDonkey 2.9.0](/wiki/MLDonkey_2.9.0) 
 # Building and installing
 
     wget "http://surfnet.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.9.0.tar.bz2"
-    tar xjvf mldonkey-2.9.0.tar.bz2 
+    tar xjvf mldonkey-2.9.0.tar.bz2
     cd mldonkey-2.9.0
     ./configure && make
     sudo make install

@@ -10,13 +10,13 @@ After [my post](/blog/on-the-80-column-limit) on the 80-column limit it's time f
 
 Some people say you should use tabs for everything. They love their freedom. They love the fact that you can use a tab-stop of 4 and they can use a tab-stop of 8 and they'll see the code with the indentation that they like, not the one that you do.
 
-Basically, it's all about the personal freedom of *the reader* of the code.
+Basically, it's all about the personal freedom of _the reader_ of the code.
 
 # Spaces forever
 
 Some people say you should use spaces for everything. They care less about freedom and more about ensuring that the code looks they way they want it to, no matter who's reading and on what machine.
 
-In short, it's all about the control of *the writer* of the code.
+In short, it's all about the control of _the writer_ of the code.
 
 # Tabs for indentation, spaces for alignment
 
@@ -93,7 +93,7 @@ A while ago "elastic tabstops" [came onto the scene](http://nickgravgaard.com/el
 
 It certainly sounds wonderful in theory, although there are a couple of things which I don't really like about the proposal.
 
-One is that to make our example align nicely we'd actually need to insert whitespace *before* the first function parameter, `param1`, which feels a little unnatural:
+One is that to make our example align nicely we'd actually need to insert whitespace _before_ the first function parameter, `param1`, which feels a little unnatural:
 
     for (x in y)
     {
@@ -119,16 +119,16 @@ Perhaps the most important objection of all is the one raised by [TextMate](/wik
 
 > \[H\]ere would be too big a compatibility problem with actually saving such files, since all renderings of the file (`cat` it in terminal, paste it in an email, on the web, etc.) would be wrong — and it's not easily fixable, e.g. by piping the text through something like `expand`, which would normally fix presenting a file with the wrong tab size.
 
-There's the rub. Even if the *editing* experience with elastic tabstops were the best thing in the world, there would be tremendous interoperability problems. *Even if* all the editors in the world suddenly started supporting them, how would your code look when viewed in the [Terminal](/wiki/Terminal) with `cat` or `less`? How would your changes look when inspected with `git diff`? How would patches look when sent via email?
+There's the rub. Even if the _editing_ experience with elastic tabstops were the best thing in the world, there would be tremendous interoperability problems. _Even if_ all the editors in the world suddenly started supporting them, how would your code look when viewed in the [Terminal](/wiki/Terminal) with `cat` or `less`? How would your changes look when inspected with `git diff`? How would patches look when sent via email?
 
 Even if you believe that all the editors in the world could be changed, and all the command-line tools, and all programmers could be convinced of the utility of switching, can you imagine the [Apple](/wiki/Apple) will ever update [Mail.app](/wiki/Mail.app) to display your patches accurately?
 
 This looks like it might be one of those almost-great ideas, still-born and destined to fail.
 
-Auto-conversion to and from spaces doesn't really look viable (easy enough to convert *to*, but *from*? How could that possibly be done reliably?). So in the end we have to chalk up elastic tabstops as just another option, but certainly not a clear winner.
+Auto-conversion to and from spaces doesn't really look viable (easy enough to convert _to_, but _from_? How could that possibly be done reliably?). So in the end we have to chalk up elastic tabstops as just another option, but certainly not a clear winner.
 
 # So, the winner is?
 
-In the end there *is* no winner. No matter which option you prefer you'll always have to abide by the conventions set out by the community in which you're working. By all means, set a standard for your own projects (I chose "spaces for everything" many years ago, probably because I wanted to be sure that things displayed nicely everywhere *and* because I didn't have faith in my fellow human beings to actually follow more complicated conventions, and now I stick to it out of habit more than anything else) but in the end you're going to have to learn to be flexible.
+In the end there _is_ no winner. No matter which option you prefer you'll always have to abide by the conventions set out by the community in which you're working. By all means, set a standard for your own projects (I chose "spaces for everything" many years ago, probably because I wanted to be sure that things displayed nicely everywhere _and_ because I didn't have faith in my fellow human beings to actually follow more complicated conventions, and now I stick to it out of habit more than anything else) but in the end you're going to have to learn to be flexible.
 
-The truth is that even if you are a lover of personal freedom *and* you have great faith in your fellow human beings, the "freedom of choice" that you get from the "tabs for indentation, spaces for alignment" convention is ultimately only an illusion. Even if you do get to control that one tiny aspect of your coding (your tabstop), you'll still have to abide by the conventions of the project and the community for things like placement of braces, variable naming, and many, many other things.
+The truth is that even if you are a lover of personal freedom _and_ you have great faith in your fellow human beings, the "freedom of choice" that you get from the "tabs for indentation, spaces for alignment" convention is ultimately only an illusion. Even if you do get to control that one tiny aspect of your coding (your tabstop), you'll still have to abide by the conventions of the project and the community for things like placement of braces, variable naming, and many, many other things.

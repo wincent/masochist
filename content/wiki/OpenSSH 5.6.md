@@ -53,7 +53,7 @@ From the official release announcement:
            Hostname %h.example.org
 
     * Allow ssh-keygen(1) to import (-i) and export (-e) of PEM and PKCS#8
-      keys in addition to RFC4716 (SSH.COM) encodings via a new -m option 
+      keys in addition to RFC4716 (SSH.COM) encodings via a new -m option
       (bz#1749)
 
     * sshd(8) will now queue debug messages for bad ownership or
@@ -187,7 +187,7 @@ From the official release announcement:
       to 512 characters (bz#1579)
 
     * Initialize the values to be returned from PAM to sane values in
-      case the PAM method doesn't write to them. (bz#1795) 
+      case the PAM method doesn't write to them. (bz#1795)
 
     * Let configure find OpenSSL libraries in a lib64 subdirectory.
       (bz#1756)

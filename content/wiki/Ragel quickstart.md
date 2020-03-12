@@ -10,24 +10,24 @@ This article demonstrates the basic work flow for [Ragel](/wiki/Ragel) developme
 Start with the simplest code possible, a recognizer for strings of letters (taken from the [Ragel](/wiki/Ragel) user guide):
 
     #include <stdio.h>
-     
-    %% machine foo; 
 
-    int main(int argc, char **argv) 
-    { 
-        %% write data noerror nofinal; 
-        int cs, res = 0; 
+    %% machine foo;
+
+    int main(int argc, char **argv)
+    {
+        %% write data noerror nofinal;
+        int cs, res = 0;
         if (argc > 1)
         {
-            char *p = argv[1]; 
-            %%{ 
+            char *p = argv[1];
+            %%{
                 main := [a-z]+ 0 @{ res = 1; fbreak; };
-                write init; 
-                write exec noend; 
-            }%% 
-        } 
-        printf("execute = %i\n", res ); 
-        return 0; 
+                write init;
+                write exec noend;
+            }%%
+        }
+        printf("execute = %i\n", res );
+        return 0;
     }
 
 # Run `ragel`
@@ -49,7 +49,7 @@ $ gcc simple.c -o simple
 A sample session; 0 is printed if no match occurs, 1 is printed on success:
 
 ```shell
-$ ./simple 
+$ ./simple
 execute = 0
 $ ./simple foo
 execute = 1

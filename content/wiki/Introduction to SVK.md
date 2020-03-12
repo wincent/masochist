@@ -119,13 +119,13 @@ Until you become familiar with the way `push` and `pull` work it is highly recom
 
 See [this mailing list thread](http://lists.bestpractical.com/pipermail/svk-devel/2007-March/000692.html) for some very helpful clarification on the way `push` and `pull` work. Specifically:
 
--   Working on an [SVK](/wiki/SVK) mirror is identical to working directly with the remote repository (apart from the extra layer of indirection) so *you don't need to use `push` and `pull` at all' in that case.*
+-   Working on an [SVK](/wiki/SVK) mirror is identical to working directly with the remote repository (apart from the extra layer of indirection) so _you don't need to use `push` and `pull` at all' in that case._
 -   `svk push BRANCH` merges all changes from `BRANCH` back into the stream that `BRANCH` came from.
 -   `svk pull` is the reverse of `svk push`; in other words, it pulls all changes from the stream that the branch came from.
 
 Consequently, if you check out a local working copy of a branch and then use `push` all of the changes made to the branch will be merged back onto the `trunk` (or wherever the branch originated). This may not be what you want. Here is [another mailing list thread](http://lists.bestpractical.com/pipermail/svk-devel/2006-October/000176.html) describing the unexpected merging that can take place as the result of `push`/`pull` if you don't understand the way it works.
 
-If you want to use `push` and `pull` without hitting the actual trunk you must create a *local* branch (using `svk cp`) from the mirrored remote branch. Then `push` and `pull` will only affect/interoperate with the mirrored remote branch (not the trunk).
+If you want to use `push` and `pull` without hitting the actual trunk you must create a _local_ branch (using `svk cp`) from the mirrored remote branch. Then `push` and `pull` will only affect/interoperate with the mirrored remote branch (not the trunk).
 
 # See also
 

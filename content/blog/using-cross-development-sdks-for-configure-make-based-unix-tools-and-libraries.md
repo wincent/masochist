@@ -7,10 +7,6 @@ It's been a long time since I did a [WinHex](http://www.wincent.com/a/products/w
 
 For a while newer versions of GCC were incapable of compiling GMP, but Apple's default compiler changed from GCC 2.95 to 3.3 and later to 4.0. Mixing applications and libraries built by different versions of GCC is not always a good idea. At some point (with the final 4.0 release, I believe) it became possible to compile GMP on a Mac again. GMP itself was updated to 4.1.4 and then to 4.2. As things currently stand, GMP will compile fine out of the box on a PowerPC platform running Mac OS X 10.4. It will only compile on Intel-based machines if you force it to use generic (but slower) C code rather than assembly.
 
-
-
-
-
 #### Building for Intel/Mac OS X 10.4
 
 To build GMP on my Intel iMac I had to use the following commands:
@@ -75,7 +71,7 @@ The official [Apple Cross-Development Programming Guide](http://developer.apple.
 
 > To select an SDK for a makefile, you add the appropriate options to your project's compile and link commands. For the compiler, you add the `-isysroot` option. For the linker, you add the `-syslibroot` option. If you are using GCC 4.0 to compile and link, you should add both commands to the command line.
 
-[Tech Note 2137](http://developer.apple.com/technotes/tn2005/tn2137.html), *Building Universal Binaries from "configure"-based Open Source Projects*, says:
+[Tech Note 2137](http://developer.apple.com/technotes/tn2005/tn2137.html), _Building Universal Binaries from "configure"-based Open Source Projects_, says:
 
 > The first approach is to simply have `configure` build a universal binary, by passing in the appropriate `CFLAGS` and `LDFLAGS` environment variables. This is done simply by running
 >

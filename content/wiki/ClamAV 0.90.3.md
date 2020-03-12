@@ -10,8 +10,8 @@ tags: clamav wiki
 -   fresclam/manager.c: add sanity check for %v (bb\#463)
 -   libclamav/unrar/unrar.c: improve handling of corrupted/handcrafted headers (bb\#511, patch from Trog)
 -   libclamav/unsp.c: fix end of buffer calculation (bb\#464, patch from aCaB)
--   libclamav/others.c: use strict permissions (0600) for temporary files created in cli\_gentempstream() (bb\#517). Reported by Christoph Probst.
--   libclamav/ole2\_extract.c: detect block list loop (bb\#466), patch from Trog
+-   libclamav/others.c: use strict permissions (0600) for temporary files created in cli_gentempstream() (bb\#517). Reported by Christoph Probst.
+-   libclamav/ole2_extract.c: detect block list loop (bb\#466), patch from Trog
 -   libclamav/phishcheck.c: bb \#497
 -   libclamav/unrar/unrar.c: [Bug \#521](/issues/521), \#368
 -   configure: handle FreeBSD 7.x
@@ -21,7 +21,7 @@ tags: clamav wiki
 -   libclamav/matcher-ac.c: fix segfault on OOM (bb\#515)
 -   libclamav/pdf.c: Fix OOM, pointed out by TK
 -   libclamav/others.c: Bug 520
--   libclamav/others.c: fix cli\_malloc() call in C\_WINDOWS (bb\#477)
+-   libclamav/others.c: fix cli_malloc() call in C_WINDOWS (bb\#477)
 -   libclamav/htmlnorm.c: fix uninitialized value warning
 -   libclamav/htmlnorm.c: fix URL truncation
 -   libclamav/matcher-ac.c: optimize memory allocation, patch from Anton Yuzhaninov

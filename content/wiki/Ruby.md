@@ -3,7 +3,7 @@ tags: ruby wiki
 cache_breaker: 1
 ---
 
-[Ruby](/wiki/Ruby) is an interpreted, object-oriented scripting language that is often compared to [Python](/wiki/Python) and [Smalltalk](/wiki/Smalltalk). It has a very "pure" object model in the sense that *everything* is an object, even literal values like `1`, `2` and `3`, and values such as `nil`, `true` and `false`.
+[Ruby](/wiki/Ruby) is an interpreted, object-oriented scripting language that is often compared to [Python](/wiki/Python) and [Smalltalk](/wiki/Smalltalk). It has a very "pure" object model in the sense that _everything_ is an object, even literal values like `1`, `2` and `3`, and values such as `nil`, `true` and `false`.
 
 It features a very clean syntax which is light on punctuation and often offers various forms of expressing the same construct, which enables you to select the clearest option in a given circumstance and produce very readable (and therefore maintainable) code. I personally find it to be less idiosyncratic and "schizophrenic" than [Perl](/wiki/Perl) as there are fewer quirks to remember and the Ruby community tends to have a more consistent notion of what constitutes good "Ruby style".
 

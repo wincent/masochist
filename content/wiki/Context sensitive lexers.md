@@ -70,7 +70,7 @@ This is very simple, but its drawback is that it clutters up the grammar with ac
 
 An alternative approach is to override the `nextToken()` implementation so that it does the following:
 
-1.  Call the *original* nextToken implementation, which returns the token.
+1.  Call the _original_ nextToken implementation, which returns the token.
 2.  Store the token for use by the `LAST_TOKEN` macro.
 3.  Return the token to the caller.
 
@@ -105,11 +105,11 @@ Finally, here is the implementation of the override itself:
     {
         // grab token using the generated function
         pANTLR3_COMMON_TOKEN token = original_next_token(toksource);
-        
+
         // store it in last-matched field
         pANTLR3_LEXER lexer = (pANTLR3_LEXER)(toksource->super);
         lexer->rec->userp = (void *)token->type;
-        
+
         // return token as per usual
         return token;
     }

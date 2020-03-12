@@ -3,7 +3,7 @@ title: Synergy 3.4.1 released
 tags: synergy jaguar releases blog
 ---
 
-I've just prepared an update to the [Synergy](/wiki/Synergy) 3.4 series, version 3.4.1, whose sole purpose is to backport a bugfix (see [ticket \#1383](/issues/1383)) for the benefit of users who don't want to or can't upgrade to the 4.0 series yet, *but* still want to run on [Mac OS X](/wiki/Mac_OS_X) 10.6 [Snow Leopard](/wiki/Snow_Leopard).
+I've just prepared an update to the [Synergy](/wiki/Synergy) 3.4 series, version 3.4.1, whose sole purpose is to backport a bugfix (see [ticket \#1383](/issues/1383)) for the benefit of users who don't want to or can't upgrade to the 4.0 series yet, _but_ still want to run on [Mac OS X](/wiki/Mac_OS_X) 10.6 [Snow Leopard](/wiki/Snow_Leopard).
 
 If you are a 3.4 user and aren't using [Snow Leopard](/wiki/Snow_Leopard) yet then there is absolutely no reason to update to 3.4.1.
 

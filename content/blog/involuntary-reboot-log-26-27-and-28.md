@@ -30,7 +30,7 @@ This [kernel panic](/wiki/kernel_panic) happened several hours into an export fr
 -   Operating system version: 10.5.2
 -   Uptime at moment of failure(s): several days
 
-Another kernel panic when the machine was under heavy load. A zillion apps open and lots of work in progress (luckily almost all of it saved to disk, I just hope nothing got corrupted but it is too early to say). Curiously, whenever my machine panics I *never* get a panic log with any diagnostic information.
+Another kernel panic when the machine was under heavy load. A zillion apps open and lots of work in progress (luckily almost all of it saved to disk, I just hope nothing got corrupted but it is too early to say). Curiously, whenever my machine panics I _never_ get a panic log with any diagnostic information.
 
 I'll definitely be continuing with my daily whole-disk backups to an external volume (done with [SuperDuper!](/wiki/SuperDuper%21)) and my two-hourly [home dir](/wiki/home_dir) backups (done with `tar` and `bzip` from [cron](/wiki/cron), also to an external volume).
 

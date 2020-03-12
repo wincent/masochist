@@ -42,4 +42,4 @@ Well, the verdict is in, and the problem is indeed continuing to get worse.
 -   Spam now accounts for 53% of all mail I receive (up from 24% and bringing me in line with the average for the Internet as a whole).
 -   [SpamSieve](/wiki/SpamSieve) is gradually getting more accurate (99.8% correct, up from 99.6% correct last time) and the number of detected false positives since data collection began (nearly 5 years ago) is still a very respectable 284.
 
-In reality, although the problem is getting much worse, I find myself spending less time looking at spam now than ever. I think this is mostly because I am trusting tools like SpamSieve now to do the right thing; but I *am* sure that there are definitely some legitimate messages getting lost along the way, drowned out by the ever-growing avalanche of spam.
+In reality, although the problem is getting much worse, I find myself spending less time looking at spam now than ever. I think this is mostly because I am trusting tools like SpamSieve now to do the right thing; but I _am_ sure that there are definitely some legitimate messages getting lost along the way, drowned out by the ever-growing avalanche of spam.

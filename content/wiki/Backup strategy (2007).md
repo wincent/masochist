@@ -32,7 +32,7 @@ I use [SuperDuper!](/wiki/SuperDuper%21) to perform a daily, bootable backup of 
 
 ## DVD corruption
 
-## Failure of primary *and* backup drives
+## Failure of primary _and_ backup drives
 
 ## Theft
 

@@ -42,7 +42,7 @@ If you have an appropriate `/etc/mime.types` file the `aws` tool will automatica
 
 The main bucket I use for public distribution via [HTTP](/wiki/HTTP) is `s3.wincent.com`. (See "[HTTPS access to Amazon S3 buckets](/wiki/HTTPS_access_to_Amazon_S3_buckets)" for info on distribution via [HTTPS](/wiki/HTTPS).)
 
-"Objects" uploaded into the bucket (really files) are identified by textual keys. Keys can have path-like names to give the appearance of hierarchical organization, but in reality buckets are just shallow/flat collections. This means that the following "paths" all refer to objects in the "top" (and *only*) level in the bucket:
+"Objects" uploaded into the bucket (really files) are identified by textual keys. Keys can have path-like names to give the appearance of hierarchical organization, but in reality buckets are just shallow/flat collections. This means that the following "paths" all refer to objects in the "top" (and _only_) level in the bucket:
 
 -   `synergy/releases/synergy-4.3.zip`
 -   `wikitext/releases/wikitext-2.0.gem.bz2`

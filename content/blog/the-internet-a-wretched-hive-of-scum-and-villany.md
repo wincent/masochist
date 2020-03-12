@@ -5,10 +5,6 @@ tags: blog
 
 The Internet is an [unedifying](http://dictionary.reference.com/search?q=unedifying) place. If you regularly use email or read the web then you're constantly exposed to reminders of just how low the human race is capable of sinking. Every day I find myself shaking my head as I see the output of hordes of mindless, unoriginal, uncreative, greedy cretins spilling into my inbox or splashed across the web. In this brief article I want to list some of the most obvious offenders: pathetic individuals incapable of peacefully coexisting with others, incapable of a creative act or of contributing anything that could enrich others or the society in which they live, seeking only to line their own pockets or do damage to others.
 
-
-
-
-
 #### Full-time litigators
 
 Most notoriously exemplified by the once-UNIX-company now-litigation-firm [SCO](http://www.sco.com/), headed by the repulsive Darl McBride. Their multiple, spurious lawsuits are [well documented here](http://groklaw.net/). In and out of the courtroom this company and its legal team have repeatedly demonstrated that there is no limit to the depths to which they'll stoop or the dirtiness with which they'll play the game in a transparent and desperate attempt to extort profits from the endeavors of others.
@@ -17,9 +13,9 @@ I've got nothing against litigation per se — sometimes there are good reasons 
 
 #### Abusers of monopoly
 
-[Big, old, bad, MS](http://www.microsoft.com/). No sense in rehashing their litany of sins here. Is MS bad because they're a monopoly? Not at all. Their crime is *abuse* of that monopoly to unfairly smother competition and stifle innovation. To make matters worse their underhanded, anti-competitive efforts are shrouded by a sickening cloud of rhetoric and marketing about how innovative they are.
+[Big, old, bad, MS](http://www.microsoft.com/). No sense in rehashing their litany of sins here. Is MS bad because they're a monopoly? Not at all. Their crime is _abuse_ of that monopoly to unfairly smother competition and stifle innovation. To make matters worse their underhanded, anti-competitive efforts are shrouded by a sickening cloud of rhetoric and marketing about how innovative they are.
 
-I don't hold anything against them for wanting them to maximise their profits but I do object to the fact that they insist on doing it in a way that harms consumers rather than benefits them. I think it's possible to do both, maximise profits *and* benefit consumers, but evidently MS doesn't share that philosophy.
+I don't hold anything against them for wanting them to maximise their profits but I do object to the fact that they insist on doing it in a way that harms consumers rather than benefits them. I think it's possible to do both, maximise profits _and_ benefit consumers, but evidently MS doesn't share that philosophy.
 
 #### Rip-offers (Riper-offerers?)
 
@@ -41,7 +37,7 @@ Spamming is based on both greed and logic. Greed because the spammers want to ma
 
 Greed is a fairly common human vice and I won't be the one to cast the first stone. What makes these spammers' actions most reprehensible (and definitely worthy of having a few stones cast in their direction) is not that they're greedy but that they blatantly and overtly try to circumvent people's desire for privacy and to be left alone.
 
-Analyze any spam mail in your inbox and you'll see all sorts of evidence that the spammer *knows* that you didn't want to receive it, that they decided to send it anyway, and that they used all sorts of devious technical trickery in an effort to get past the barriers you put in place to block the spam. The spammer therefore not only knows that you're not interested in receiving spam but also that you've explicitly done your best to prevent it from being delivered. That is, you've expressed a preference *and* you've taken steps to ensure that it's respected. Well, the spammers couldn't give a damn about lofty ethical concepts like "respect" so they decide to side-step your decision and fill your mailbox anyway.
+Analyze any spam mail in your inbox and you'll see all sorts of evidence that the spammer _knows_ that you didn't want to receive it, that they decided to send it anyway, and that they used all sorts of devious technical trickery in an effort to get past the barriers you put in place to block the spam. The spammer therefore not only knows that you're not interested in receiving spam but also that you've explicitly done your best to prevent it from being delivered. That is, you've expressed a preference _and_ you've taken steps to ensure that it's respected. Well, the spammers couldn't give a damn about lofty ethical concepts like "respect" so they decide to side-step your decision and fill your mailbox anyway.
 
 #### Scammers
 
@@ -71,9 +67,9 @@ A new category of euphemistically-named scum, these are people who will use any 
 
 #### Leechers
 
-If you've ever used BitTorrent you'll know that the idea behind distributing files using the "swarm" is that everybody shares a bit of the load of distribution. Unfortunately there are a lot of people out there who for some unknown reason believe that they have a greater entitlement to the content being distributed (and less of an obligation to share in the work of distributing it). The leechers I refer to here are not the "leechers" in the technical sense of "downloaders" that are referred to in the BitTorrent documentation; these are people who *dedicate* their attention to avoiding their social responsibility and actively work to exploit the system in their favour.
+If you've ever used BitTorrent you'll know that the idea behind distributing files using the "swarm" is that everybody shares a bit of the load of distribution. Unfortunately there are a lot of people out there who for some unknown reason believe that they have a greater entitlement to the content being distributed (and less of an obligation to share in the work of distributing it). The leechers I refer to here are not the "leechers" in the technical sense of "downloaders" that are referred to in the BitTorrent documentation; these are people who _dedicate_ their attention to avoiding their social responsibility and actively work to exploit the system in their favour.
 
-I'm sorry, but as Tyler Durden says in the movie *Fight Club*, "You are not special. You are not a beautiful or unique snowflake." I couldn't agree more.
+I'm sorry, but as Tyler Durden says in the movie _Fight Club_, "You are not special. You are not a beautiful or unique snowflake." I couldn't agree more.
 
 #### Summary
 

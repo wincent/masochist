@@ -52,7 +52,7 @@ Yields:
     /usr/lib/libmysqlclient_r.so.12 26 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient_r.so.12.0.0
     /usr/lib/libmysqlclient_r.so.12.0.0 259501 1162837883 ab26ebef4759527211545190ccedebb5 0100755 root root 0 0 0 X
     /usr/lib/libmysqlclient_r.so.14 26 1162837883 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient_r.so.14.0.0
-    /usr/lib/libmysqlclient_r.so.14.0.0 1182664 1162837883 722f2db76712ee48801b36c0bbe052f7 0100755 root root 0 0 0 X 
+    /usr/lib/libmysqlclient_r.so.14.0.0 1182664 1162837883 722f2db76712ee48801b36c0bbe052f7 0100755 root root 0 0 0 X
 
 So it appears that they are all there.
 

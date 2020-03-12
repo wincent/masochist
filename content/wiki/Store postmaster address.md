@@ -27,7 +27,7 @@ The `K` indicates that this line is a key file declaration. Key file declaration
 
     Kmapname mapclass arguments
 
-The *mapname* is the handle by which the map is referenced in the rewriting rules. The *mapclass* indicates the type of the map, and the *arguments* vary according to the *mapclass*. In the current example the *mapname* is `storage` and the *mapclass* is `macro`, which means that the map can be used to set or clear macro values. Key file declarations that use the `macro` *mapclass* take no arguments.
+The _mapname_ is the handle by which the map is referenced in the rewriting rules. The _mapclass_ indicates the type of the map, and the _arguments_ vary according to the _mapclass_. In the current example the _mapname_ is `storage` and the _mapclass_ is `macro`, which means that the map can be used to set or clear macro values. Key file declarations that use the `macro` _mapclass_ take no arguments.
 
     LOCAL_RULESETS
     SStore_postmaster_address
@@ -54,7 +54,7 @@ The `postmaster_addr` macro is set using the value passed as the first argument 
 
     $(map key $@ arguments $: default $)
 
-In the current example the *map* is the `storage` map declared previously, the *key* is `postmaster_addr`, the `$@` introduces the argument list, which in this case contains only one element, `postmaster@$2` where `$2` will be expanded to the host name of the recipient email address. In the current example there is no *default* value and the default value marker (`$:`) is omitted.
+In the current example the _map_ is the `storage` map declared previously, the _key_ is `postmaster_addr`, the `$@` introduces the argument list, which in this case contains only one element, `postmaster@$2` where `$2` will be expanded to the host name of the recipient email address. In the current example there is no _default_ value and the default value marker (`$:`) is omitted.
 
     R$*             →$@ $(storage {postmaster_addr} $@ postmaster@example.com $)
 

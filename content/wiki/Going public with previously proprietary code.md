@@ -85,7 +85,7 @@ Quoting Junio's message:
                     X---C---C---C---C oss
                      \           \
           o---o---A---B-----------* oss-base
-         /             \           \ 
+         /             \           \
      ---o---o---o---o---Y---P---P---*---P---P master
 
     with community commits C (either contributed from the public or you
@@ -128,7 +128,7 @@ The safest way to do this seems to be to have two separate remotes:
 -   a new "public" remote is created pointing at an entirely different repo, and with a default push refspec configured to only ever publish the `opensource` branch
 
 ```shell
-$ git remote add public git.example.com:/path/to/public/repo.git 
+$ git remote add public git.example.com:/path/to/public/repo.git
 $ git config remote.public.push opensource
 $ git config branch.opensource.remote public
 $ git config branch.opensource.merge refs/heads/opensource

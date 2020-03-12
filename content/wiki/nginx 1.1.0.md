@@ -8,10 +8,10 @@ From the official release announcement:
 
        *) Feature: cache loader run time decrease.
 
-       *) Feature: "loader_files", "loader_sleep", and "loader_threshold" 
+       *) Feature: "loader_files", "loader_sleep", and "loader_threshold"
           options of the "proxy/fastcgi/scgi/uwsgi_cache_path" directives.
 
-       *) Feature: loading time decrease of configuration with large number of 
+       *) Feature: loading time decrease of configuration with large number of
           HTTPS sites.
 
        *) Feature: now nginx supports ECDHE key exchange ciphers.
@@ -23,22 +23,22 @@ From the official release announcement:
        *) Bugfix: in closing connection for pipelined requests.
           Thanks to Maxim Dounin.
 
-       *) Bugfix: nginx did not disable gzipping if client sent "gzip;q=0" in 
+       *) Bugfix: nginx did not disable gzipping if client sent "gzip;q=0" in
           "Accept-Encoding" request header line.
 
        *) Bugfix: in timeout in unbuffered proxied mode.
           Thanks to Maxim Dounin.
 
-       *) Bugfix: memory leaks when a "proxy_pass" directive contains 
+       *) Bugfix: memory leaks when a "proxy_pass" directive contains
           variables and proxies to an HTTPS backend.
           Thanks to Maxim Dounin.
 
-       *) Bugfix: in parameter validaiton of a "proxy_pass" directive with 
+       *) Bugfix: in parameter validaiton of a "proxy_pass" directive with
           variables.
           Thanks to Lanshun Zhou.
 
        *) Bugfix: SSL did not work on QNX.
           Thanks to Maxim Dounin.
 
-       *) Bugfix: SSL modules could not be built by gcc 4.6 without 
+       *) Bugfix: SSL modules could not be built by gcc 4.6 without
           --with-debug option.

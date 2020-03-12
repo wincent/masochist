@@ -28,9 +28,9 @@ Likewise, unless you pass the `--enable-pthread` you'll get this warning during 
 
     *****************************************************************************
     **
-    ** PTHREAD SUPPORT MODE ERROR: 
+    ** PTHREAD SUPPORT MODE ERROR:
     **
-    **   Ruby is not compiled with --enable-pthread, but your Tcl/Tk 
+    **   Ruby is not compiled with --enable-pthread, but your Tcl/Tk
     **   library seems to be compiled with pthread support. This
     **   combination may cause frequent hang or segmentation fault
     **   errors when Ruby/Tk is working. We recommend that you NEVER
@@ -95,7 +95,7 @@ Sure enough, the file at `/usr/local/lib/ruby/1.8/i686-darwin8.8.1/rbconfig.rb` 
 I tried downloading [RubyGems](/wiki/RubyGems) and reinstalling it:
 
     wget http://rubyforge.org/frs/download.php/17190/rubygems-0.9.2.tgz
-    tar xzf rubygems-0.9.2.tgz 
+    tar xzf rubygems-0.9.2.tgz
     cd rubygems-0.9.2
     sudo ruby setup.rb
 

@@ -7,7 +7,6 @@ Another hard reset, this time not due to a fault in [Mac OS X](http://www.wincen
 
 On a related note, my external USB speakers (SoundSticks) are no longer recognized by the system.
 
-
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.5

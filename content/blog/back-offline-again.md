@@ -6,7 +6,7 @@ cache_breaker: 1
 
 Looks like [I spoke](/blog/back-online-after-over-three-weeks) too soon. Back offline again after just over an hour of connectivity.
 
-It appears that they gave me a dud router, as it very quickly fell to pieces: first I lost connectivity to the net, then I noticed that the red "alarm" light was on and the ADSL light was off. I tried all the usual things (power cycling, trying other power outlets), but the thing is dead and the "on" light is completely off. In fact, apart from a brief flash when you first turn it on, *all* the lights are permanently off. I even tried with a beefier AC transformer as these cheap routers have notoriously flakey transformers which fail to deliver power at the first sign of hot weather.
+It appears that they gave me a dud router, as it very quickly fell to pieces: first I lost connectivity to the net, then I noticed that the red "alarm" light was on and the ADSL light was off. I tried all the usual things (power cycling, trying other power outlets), but the thing is dead and the "on" light is completely off. In fact, apart from a brief flash when you first turn it on, _all_ the lights are permanently off. I even tried with a beefier AC transformer as these cheap routers have notoriously flakey transformers which fail to deliver power at the first sign of hot weather.
 
 The most exasperating thing is the phone call farse I had to play out in order to get any help:
 

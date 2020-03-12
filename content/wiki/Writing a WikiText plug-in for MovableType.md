@@ -40,7 +40,7 @@ Here's the first version of my first [MovableType](/wiki/MovableType) plugin:
             my $text        = shift;
             my $context     = shift;
             my $converted   = Text::MediawikiFormat::format($text, {}, { prefix => 'http://wincent.com/knowledge-base/' });
-            $converted; 
+            $converted;
         }
     });
 

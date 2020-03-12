@@ -7,17 +7,13 @@ I just read [this article](http://www.thinksecret.com/news/0505fm8.html) at rumo
 
 I know that some have questioned why I chose to name my new product "[Synergy Advance](http://synergyadvance.com/)", but this move by FileMaker seems a little bit ridiculous to me. In this short article I want to make some comments about the rumored move and also explain why my own products are named the way they are.
 
-
-
-
-
 #### Why so many adjectives?
 
 It's fairly common in this industry to tape adjectives onto the end of product names to make them sound more impressive; "Pro", "Plus", "Professional", "Extra", pretty much anything which will sound good. In some cases these additions serve to differentiate one version of a product from another with more or less features. You can choose to run the "Pro" version or the "Lite" (sic) or "Standard" versions.
 
 In the case of "FileMaker Pro" there is no "non-pro" version so the "Pro" doesn't actually serve to differentiate the product from another. In this modern age of minimalism perhaps the name "FileMaker" would be better for marketing purposes, and certainly easier to type.
 
-But adding *yet another* adjective to form "FileMaker Pro 8 Advanced" when there is already one redundant adjective in the name seems to be going too far. What's next? "FileMaker Pro MX Advanced XP Plus 2006"? When will it stop?
+But adding _yet another_ adjective to form "FileMaker Pro 8 Advanced" when there is already one redundant adjective in the name seems to be going too far. What's next? "FileMaker Pro MX Advanced XP Plus 2006"? When will it stop?
 
 Here's my free advice to FileMaker Inc: simplify your naming and center on the FileMaker brand. Dump the word "Pro" from the entire product range. In fact, dump the version number as well. It's good to know that you're currently shipping version 7, and that 8 will be coming out in the future, but there's no need to use the version number on every single page on your website. If you insist on having multiple versions of the same product go with this lineup:
 
@@ -57,6 +53,6 @@ I think I got this one right, as you can't get much simpler than "Install". I wa
 
 #### Branding
 
-Branding is important, the company brand that is. "Wincent" is not a very pretty name but neither is it a common one so it makes for a good brand. I'm far from famous but it *is* a name that is relatively well known among Mac users, mostly due to the articles I published before Mac OS X 10.0 came out; in those days wincent.org used to get half a million page views per month (a significant amount in those days, although today a truly popular site would need to rack up that kind of hit count every day). I don't write those sensationalistic articles any more but wincent.com still gets well over a quarter of a million page views per month; miles away from the most popular Mac sites but still enough to qualify as a blip on the radar.
+Branding is important, the company brand that is. "Wincent" is not a very pretty name but neither is it a common one so it makes for a good brand. I'm far from famous but it _is_ a name that is relatively well known among Mac users, mostly due to the articles I published before Mac OS X 10.0 came out; in those days wincent.org used to get half a million page views per month (a significant amount in those days, although today a truly popular site would need to rack up that kind of hit count every day). I don't write those sensationalistic articles any more but wincent.com still gets well over a quarter of a million page views per month; miles away from the most popular Mac sites but still enough to qualify as a blip on the radar.
 
 "Synergy", although known to a lot of Mac users isn't so useful as a brand name because its meaning is diluted by use for so many other purposes. Consider that if you search Google for "synergy mac" you'll get about half a million hits (out of about eight million hits that use the word "synergy"). In comparison "wincent mac" gets you over 50,000 hits out of about 130,000 pages that use the word "wincent". If you compare the ratios you'll see that the word "wincent" is much more densely/strongly associated with me and my company, which is exactly what you want when you are trying to build up a brand in people's mindspace.

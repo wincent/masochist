@@ -55,7 +55,7 @@ index 4f05194..2cb8327 100755
 Note that `git oneline` is an alias for `log --pretty=format:'%Cgreen%h%Creset %s'`:
 
 ```shell
-$ git oneline v1.6.4.1..v1.6.4.2 
+$ git oneline v1.6.4.1..v1.6.4.2
 82c3e21 GIT 1.6.4.2
 e71c008 Remove unused t/t8005/iso8859-5.txt
 48ae73b Merge branch 'rc/maint-http-fix' into maint
@@ -97,7 +97,7 @@ c4593fa apply: notice creation/removal patches produced by GNU diff
 For more detail, run `git log -p v1.6.4.1..v1.6.4.2`; the changes are small enough to make reviewing feasible:
 
 ```shell
-$ git diff --stat v1.6.4.1..v1.6.4.2 
+$ git diff --stat v1.6.4.1..v1.6.4.2
  Documentation/RelNotes-1.6.4.2.txt     |   32 +++++++++++
  Documentation/git-archive.txt          |    2 +-
  Documentation/git-clean.txt            |    3 +

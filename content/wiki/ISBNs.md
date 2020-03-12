@@ -2,5 +2,3 @@
 redirect: [[ISBN]]
 tags: wiki
 ---
-
-

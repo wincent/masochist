@@ -5,7 +5,7 @@ cache_breaker: 1
 
 ## Books
 
--   *Vim Recipes*: <http://vim.runpaint.org/>
+-   _Vim Recipes_: <http://vim.runpaint.org/>
 
 ## Screencasts
 

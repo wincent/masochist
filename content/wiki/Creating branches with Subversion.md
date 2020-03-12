@@ -67,4 +67,4 @@ It would be possible to check out a copy of the trunk into another directory and
 
 1.  Do at least 1 or 2 more Jaguar-compatible releases; all this work will occur in the "panther" branch
 2.  When ready to switch to Leopard-centric development, check out a copy of the trunk and merge in changes from the "panther" branch
-3.   Continue new feature-related work in the "trunk"; only bug-fixes and maintenance will continue in the "panther" branch
+3.  Continue new feature-related work in the "trunk"; only bug-fixes and maintenance will continue in the "panther" branch

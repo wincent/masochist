@@ -5,10 +5,6 @@ tags: involuntary.reboot.log blog
 
 In an endless Build-Debug-Edit, Build-Debug-Edit cycle for [Synergy Advance](http://synergyadvance.com/), click "Debug" and wait for 10 seconds while Xcode thinks. Notice that the music has stopped. Switch to Safari, which has a list of MP3 files in a window. Command-Click a couple of MP3s with the intention of opening them in tabs and previewing them (using the Quicktime plug-in). Safari beachballs.
 
-
-
-
-
 Wait a few seconds. Notice that Toast is still running and in the Dock. Control-click with the intention of quitting it seeing as the daily backup to DVD is now complete. No response. Dock freezes. "Toast Titanium" tool-tip frozen above its icon.
 
 Don't bother trying to use the Command-Tab application switcher because that's provided by the now-frozen Dock. Notice that the Toast window is partially visible so bring it to the front by clicking on it. Click on the "File" menu so as to select "Quit". Witness as the menu does not open and Toast also freezes.

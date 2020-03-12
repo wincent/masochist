@@ -13,9 +13,9 @@ Although I have tried the upload module previously on my development machine (se
 
 ```shell
 $ wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.10.tar.gz
-$ tar xzvf nginx_upload_module-2.0.10.tar.gz 
+$ tar xzvf nginx_upload_module-2.0.10.tar.gz
 $ wget http://sysoev.ru/nginx/nginx-0.7.61.tar.gz
-$ tar xzvf nginx-0.7.61.tar.gz 
+$ tar xzvf nginx-0.7.61.tar.gz
 $ cd nginx-0.7.61
 $ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx_upload_module-2.0.10
 $ make

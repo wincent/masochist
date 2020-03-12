@@ -5,7 +5,7 @@ tags: progress blog
 
 I've just whipped together a quick script to iterate over my local repositories (ones I control, not clones of upstream projects) and produce a brief summary of the recent commits. I'm going to try and run this script on a weekly basis to give a basic overview of what I've been working on that week.
 
-There may be some minor errors — gaps or overlaps — depending on which time of day I run the script (and I *do* want to run it manually so that I can review the results), but the script should be fine for its intended purpose: giving a general overview of what's been happening.
+There may be some minor errors — gaps or overlaps — depending on which time of day I run the script (and I _do_ want to run it manually so that I can review the results), but the script should be fine for its intended purpose: giving a general overview of what's been happening.
 
 # leopard/REnamer
 

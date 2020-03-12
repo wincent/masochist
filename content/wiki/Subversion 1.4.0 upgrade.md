@@ -196,9 +196,9 @@ Now back to Subversion:
 Startup again fails with pretty much the same error message:
 
     Syntax error on line 234 of /usr/local/apache2/conf/httpd.conf:
-    Cannot load /usr/local/apache2/modules/mod_dav_svn.so into server: 
-    Library not loaded: /usr/local/lib/libsvn_subr-1.0.dylib\n  
-    Referenced from: /usr/local/apache2/modules/mod_dav_svn.so\n  
+    Cannot load /usr/local/apache2/modules/mod_dav_svn.so into server:
+    Library not loaded: /usr/local/lib/libsvn_subr-1.0.dylib\n
+    Referenced from: /usr/local/apache2/modules/mod_dav_svn.so\n
     Reason: image not found
 
 I notice that the modification date on the `mod_dav_svn.so` module is quite old, only a couple of days [after 1.3.2](http://subversion.tigris.org/project_status.html) came out. It is as though the 1.4.0 installation is failing to install an updated module:
@@ -238,7 +238,7 @@ So I am going to try again removing the subdirectories and explicitly setting th
     sudo rm -f /usr/local/lib/libsvn*
     sudo rm -f /usr/local/lib/libapr*
     sudo rm -f /usr/local/lib/libexpat*
-    sh autogen.sh 
+    sh autogen.sh
     ./configure --with-apxs=/usr/local/apache2/bin/apxs \
                 --with-apr=/usr/local/apache2/bin/apr-config \
                 --with-apr-util=/usr/local/apache2/bin/apu-config \
@@ -278,7 +278,7 @@ Trying again; it seems that unlike the `--with-apr` and `--with-apr-util` option
     sudo make install
     sudo /usr/local/apache2/bin/apachectl start
 
-Looks as though I should have passed `--disable-mod-activation` ("Do not enable mod\_dav\_svn in httpd.conf") to `configure`:
+Looks as though I should have passed `--disable-mod-activation` ("Do not enable mod_dav_svn in httpd.conf") to `configure`:
 
     [Wed Sep 13 14:11:05 2006] [warn] module dav_svn_module is already loaded, skipping
     [Wed Sep 13 14:11:05 2006] [warn] module authz_svn_module is already loaded, skipping
@@ -317,7 +317,7 @@ These notes apply to the upgrade performed on the remote (Red Hat) server.
     tar xjvf subversion-1.4.0.tar.bz2
     tar xjvf subversion-deps-1.4.0.tar.bz2
     cd subversion-1.4.0
-    sudo chkconfig svn off   
+    sudo chkconfig svn off
     sudo rm -f /usr/local/lib/libsvn*
     sh ./autogen.sh
 

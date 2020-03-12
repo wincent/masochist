@@ -88,7 +88,7 @@ Ultimately, we bisect down to this:
     Date:   Sun Jan 18 13:00:13 2009 +0100
 
         Modify setup_path() to only add git_exec_path() to PATH
-        
+
         Searching git programs only in the highest priority location is
         sufficient.  It does not make sense that some of the required
         programs are located at the highest priority location but other
@@ -96,7 +96,7 @@ Ultimately, we bisect down to this:
         exec-path is overridden a complete set of commands should be
         provided, otherwise several different versions could get mixed,
         which is likely to cause confusion.
-        
+
         If a user explicitly overrides the default location (by --exec-path
         or GIT_EXEC_PATH), we now expect that all the required programs are
         found there.  Instead of adding the directories "argv_exec_path",
@@ -104,7 +104,7 @@ Ultimately, we bisect down to this:
         to PATH, we now rely on git_exec_path(), which implements the same
         order, but only returns the highest priority location to search for
         executables.
-        
+
         Accessing only the location with highest priority is also required
         for testing executables built with RUNTIME_PREFIX.  The call to
         system_path() should be avoided if RUNTIME_PREFIX is set and the
@@ -113,7 +113,7 @@ Ultimately, we bisect down to this:
         during tests.  The modifications in this commit avoid calling
         system_path(GIT_EXEC_PATH) if a higher-priority location is
         provided, which is the case when running the tests.
-        
+
         Signed-off-by: Steffen Prohaska <prohaska@zib.de>
         Acked-by: Johannes Sixt <j6t@kdbg.org>
         Signed-off-by: Junio C Hamano <gitster@pobox.com>

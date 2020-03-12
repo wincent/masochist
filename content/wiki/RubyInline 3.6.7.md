@@ -8,7 +8,7 @@ cache_breaker: 1
 # Changes
 
 -   3 minor enhancements:
-    -   Added ability to work entirely without .ruby\_inline dir. Thanks Kevin Clark!
+    -   Added ability to work entirely without .ruby_inline dir. Thanks Kevin Clark!
     -   Updated history, readme, and rakefile for new hoe abilities.
     -   Cleaned up some really ugly schlock. Man, compiling sucks!
 -   2 bug fixes:

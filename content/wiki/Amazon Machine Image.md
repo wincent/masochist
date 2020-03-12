@@ -2,5 +2,3 @@
 redirect: [[AMI]]
 tags: wiki
 ---
-
-

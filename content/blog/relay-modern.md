@@ -16,9 +16,9 @@ I started working on Relay back in early 2014 when it wasn't open source, wasn't
 
 Like any emergent technology, GraphQL had some growing pains. Because of this, Relay set out not just to bring GraphQL to JavaScript — and note that that meant not just the web but also mobile, via the still-secret React Native project — but to rethink some of the assumptions that had been made in the native apps up to that point.
 
-- One of the big ideas was **query colocation** — the notion that you should be able to specify your data requirements for each view component inside the view itself and that the framework should transparently handle aggregation and efficient fetching.
-- Another was that we could totally eliminate overfetching by **dynamically constructing queries** at runtime based on a comparison of what data the developer had asked for in their component and the data that the framework had already stashed away in the cache as the result of previous queries.
-- Finally, we figured that GraphQL fragments — the basic unit of re-use that allows developers to assemble queries out of a bunch of otherwise redundant parts — should be parameterizable; that is, **fragments should be able to take arguments, just like functions do**, so that they could be used flexibly in multiple places without duplication.
+-   One of the big ideas was **query colocation** — the notion that you should be able to specify your data requirements for each view component inside the view itself and that the framework should transparently handle aggregation and efficient fetching.
+-   Another was that we could totally eliminate overfetching by **dynamically constructing queries** at runtime based on a comparison of what data the developer had asked for in their component and the data that the framework had already stashed away in the cache as the result of previous queries.
+-   Finally, we figured that GraphQL fragments — the basic unit of re-use that allows developers to assemble queries out of a bunch of otherwise redundant parts — should be parameterizable; that is, **fragments should be able to take arguments, just like functions do**, so that they could be used flexibly in multiple places without duplication.
 
 This was a super exciting time to be at Facebook. React was taking off, and React Native, Relay, Flow and GraphQL were all angling towards open source release. There was a real sense that we had something awesome to share with the world.
 
@@ -40,7 +40,7 @@ We still had that long backlog of ideas, but we knew that we were adding to the 
 
 I can still remember the day in early 2016 when Joe and I grabbed a room in MPK 20, that [fancy, Frank Gehry-designed thing with a park on the roof](https://www.level10gc.com/project/facebook-mpk-20/), and stood in front of a whiteboard wall to try and imagine what "Relay 2" would look like if we let go of all our previously held assumptions.
 
-> What if *every* query in Relay were statically known?
+> What if _every_ query in Relay were statically known?
 
 Woah, that's crazy talk, Joe. What are you talking about? I'd been spending too long inside the bubble of the Relay philosophy — the one with the tenets about query colocation, dynamic query construction, and fragment parametrization — that I'd never really considered this. Those tenets were already in place before I joined the team, and I assumed — perhaps naively — that they must have been there for a good reason; people who'd been at Facebook much longer than I and had witnessed the birth and evolution of GraphQL had decided that there must be a better way, and something new should be tried. It never occurred to me that embracing the static, the rigid, the "inflexible" could be a step forward. Funny that I hadn't, seeing as I had just prior to this built a new static API for writing Relay mutations (data updates) that aimed to replace the magical dynamism of the existing Relay mutations with something more predictable, debuggable and teachable.
 
@@ -48,19 +48,19 @@ But Joe hadn't just considered it; he'd had the idea circling around in his conc
 
 So, back to that question.
 
-> What if *every* query in Relay were statically known?
+> What if _every_ query in Relay were statically known?
 
 It was heresy, but we went through the exercise anyway, figuring out what each of the existing APIs would look like if we wiped the slate clean and started from scratch without dynamic, runtime query construction. It meant giving up some features, jettisoning some magic. In return, users would get predictability, performance, and an execution model that mere mortals could understand. There would be a cost though: instead of having Relay figure out a minimal set of data to refetch when parameters change, we'd require users to specify a static query ahead of time. And we'd have to rewrite everything, again, in order to implement this.
 
 On the flip side, rewriting would mean the ability to scratch some long-felt itches, like:
 
-- Switching to a purely POJO-based representation for cache data.
-- Abstracting all low-level record access behind a thin facade API that would allow us to plug-in different kinds of underlying storage (including native data structures, mediated by a JavaScript-to-native bridge).
-- Aligning our terminology, API shape, and data-flow with the latest thinking on the iOS and Android side (for better interoperability and communication).
-- Dropping support for legacy GraphQL (pre-open source) syntax.
-- Splitting the code up into separate "compiler", generic "core/runtime" and "React" packages.
-- Implementing deterministic, performant garbage collection.
-- And many others.
+-   Switching to a purely POJO-based representation for cache data.
+-   Abstracting all low-level record access behind a thin facade API that would allow us to plug-in different kinds of underlying storage (including native data structures, mediated by a JavaScript-to-native bridge).
+-   Aligning our terminology, API shape, and data-flow with the latest thinking on the iOS and Android side (for better interoperability and communication).
+-   Dropping support for legacy GraphQL (pre-open source) syntax.
+-   Splitting the code up into separate "compiler", generic "core/runtime" and "React" packages.
+-   Implementing deterministic, performant garbage collection.
+-   And many others.
 
 # Relay Modern
 
@@ -76,11 +76,11 @@ All this happened in the first half of 2016. We actually thought we were on the 
 
 Between finishing the new core and shipping 1.0.0 there has been a lot of thankless grunt work done by a bunch of people on the team. It was a group effort, but in particular:
 
-- [Yuzhi](https://twitter.com/yuzhiz) lead an amazing effort to migrate thousands of Classic components and educate teams.
-- [Jennifer](https://twitter.com/Jennifer_JYW) built out prefetching (the ability to have native code on a mobile start fetching a query for a React Native app before the JavaScript VM has even finished booting).
-- [Jan](https://twitter.com/kassens) did a fantastic job of making sure we had a great migration strategy and compatibility API for moving existing apps over from Relay Classic to Relay Modern.
-- [Lee](https://twitter.com/leeb) helped us prepare and package everything for an open source release.
-- Our manager [Alex](https://twitter.com/alex_langenfeld) was a roving support agent who tirelessly helped out with anything and everything.
+-   [Yuzhi](https://twitter.com/yuzhiz) lead an amazing effort to migrate thousands of Classic components and educate teams.
+-   [Jennifer](https://twitter.com/Jennifer_JYW) built out prefetching (the ability to have native code on a mobile start fetching a query for a React Native app before the JavaScript VM has even finished booting).
+-   [Jan](https://twitter.com/kassens) did a fantastic job of making sure we had a great migration strategy and compatibility API for moving existing apps over from Relay Classic to Relay Modern.
+-   [Lee](https://twitter.com/leeb) helped us prepare and package everything for an open source release.
+-   Our manager [Alex](https://twitter.com/alex_langenfeld) was a roving support agent who tirelessly helped out with anything and everything.
 
 But this post is in large part a tribute to Joe Savona. Neither of us is working directly on Relay any more, but the experience will forever loom as an indelible and transformative part of my Facebook story. As a colleague, erstwhile neighbor, and friend, working on Relay with Joe was a once-in-a-lifetime experience. I'm sure that Relay will continue to be an important building block for teams at Facebook, and I hope that it's useful to teams in the external community as well, but no matter what direction the framework ends up evolving towards in the future, I know that the design and architecture will retain elements of Joe's brilliant touch for a long time to come. Thank you, Joe, and keep on hacking.
 

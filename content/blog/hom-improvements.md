@@ -17,11 +17,7 @@ It turns out that you have to write this:
 
 This is an unfortunate breakdown of a couple of the key principles that underlie HOM: "think about intentions, don't get distracted by implementation details", and "make your intentions clear". You have to worry about two different HOM patterns "select" and "select where" for what is essentially exactly the same operation: selecting items from a collection based on a yes/no criteria. You have one variation which consists of a prefix message followed by an argument message, and you have another that consists of a prefix message followed by two argument messages.
 
-In my implementation of this pattern that means having one class for handling the first variation (`WOHOMSelectProxy`) and another pair of classes for handling the second one (`WOHOMSelectWhereProxy` and `WOHOMWhereProxy`). This works but you're probably wondering what you do if you ever want to send more than two argument messages... (And yes, I've chosen to use different classes for different types of trampoline behaviour; this allows me to keep my source files shorter and more manageable, group my unit tests into smaller, more manageable groups, and import *only* the HOM functionality that I am interested in for any given project rather than having to link to a gigantic framework.)
-
-
-
-
+In my implementation of this pattern that means having one class for handling the first variation (`WOHOMSelectProxy`) and another pair of classes for handling the second one (`WOHOMSelectWhereProxy` and `WOHOMWhereProxy`). This works but you're probably wondering what you do if you ever want to send more than two argument messages... (And yes, I've chosen to use different classes for different types of trampoline behaviour; this allows me to keep my source files shorter and more manageable, group my unit tests into smaller, more manageable groups, and import _only_ the HOM functionality that I am interested in for any given project rather than having to link to a gigantic framework.)
 
 So last night it occurred to me that this distinction between the two variations was unnecessary. I've [just checked in](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2006/11/wocommon_r186_14_items_changed.php) a new HOM class, `WOHOMChainedSelectProxy`, that allows you to use a single HOM regardless of whether you're doing a straight "select" or a "select where". It's "chained" because you can chain as many levels together as you want: one, two, three, four, the sky is the (non-arbitrary) limit. In other words, all of the following work:
 
@@ -30,7 +26,7 @@ So last night it occurred to me that this distinction between the two variations
     [[[[collection select] stringValue] uppercaseString] hasPrefix:@"FOO"];
     [[[[[collection select] stringValue] uppercaseString] substringWithRange:NSMakeRange(2, 3)] isEqualToString:@"FOO"];
 
-Don't ask me *why* you'd ever want to nest things that deeply; the important thing is that you *can* if you want to. Just as Objective-C allows (and even encourages) you to nest message sends, and key-value coding allows you to create path chains by writing things like @"stringValue.lowercaseString", and Objective-C 2.0 will feature a property syntax that allows you to chain your property accesses by writing things like `stringValue.length`, I think HOM should allow you to do the same too when you want.
+Don't ask me _why_ you'd ever want to nest things that deeply; the important thing is that you _can_ if you want to. Just as Objective-C allows (and even encourages) you to nest message sends, and key-value coding allows you to create path chains by writing things like @"stringValue.lowercaseString", and Objective-C 2.0 will feature a property syntax that allows you to chain your property accesses by writing things like `stringValue.length`, I think HOM should allow you to do the same too when you want.
 
 Previously the only way to hack this kind of arbitrarily long chain together would be to mix in "collect" messages between your other argument messages, which would be terribly inefficient, terribly ugly, and terribly cumbersome, thus throwing the whole simplifying purpose of HOM out the window:
 

@@ -5,10 +5,6 @@ tags: blog
 
 The [promised](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/hom_improvement.php) test results. Totally unscientific and no substitute for proper testing and profiling in a real-world application, but they do give some orientative information. These results are for a completely unoptimized implementation; I won't be optimizing until (and if) a real performance bottleneck is discovered in a real-world application.
 
-
-
-
-
 #### "If responds" performance
 
 As [noted previously](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/hom_update.php) this is pretty much a worst case scenario for [HOM](http://www.wincent.com/a/about/wincent/weblog/archives/hom/).
@@ -71,14 +67,11 @@ Those figures are for the case where the target actually does respond. In the ca
 
 These numbers are pretty much the same as [reported last time](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/hom_update.php), although there are minor improvements across the board because of lower memory consumption (a new autorelease pool is now created for each test and destroyed before moving on to the next test):
 
-  Array size   HOM relative speed (unoptimized)
-  ------------ ----------------------------------
-  1            765%
-  10           212%
-  100          157%
-  1000         136%
-  10000        139%
-  100000       142%
+Array size HOM relative speed (unoptimized)
+
+---
+
+1 765% 10 212% 100 157% 1000 136% 10000 139% 100000 142%
 
 Performance improves as the array size increases, reaching the optimum performance with arrays of about 1,000 elements. After that performance drops off slightly; a possible cause of this is that as the array size increases demand for memory also increases and eventually paging starts to negatively impact the speed.
 

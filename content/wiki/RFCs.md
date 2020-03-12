@@ -2,5 +2,3 @@
 redirect: [[RFC]]
 tags: wiki
 ---
-
-

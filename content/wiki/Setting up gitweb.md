@@ -48,7 +48,7 @@ A `VirtualHost` block similar to the following needs to be added to the [Apache]
       DocumentRoot "/pub/git/public_html"
       ServerName git.example.com
       SuexecUserGroup git git
-      
+
       <Directory "/pub/git/public_html">
         Options Indexes FollowSymlinks ExecCGI
         AllowOverride None
@@ -60,11 +60,11 @@ A `VirtualHost` block similar to the following needs to be added to the [Apache]
         RewriteCond	%{REQUEST_FILENAME}	!-d
         RewriteRule	^.*	/gitweb.cgi/$0 [L,PT]
       </Directory>
-      
+
       # for debugging rewrite rules
       [/tags/RewriteLog #RewriteLog] /pub/git/logs/rewrite_log
       [/tags/RewriteLogLevel #RewriteLogLevel] 9
-      
+
       ErrorLog /pub/git/logs/error_log
       LogLevel warn
       CustomLog /pub/git/logs/access_log "combined"

@@ -2,5 +2,3 @@
 redirect: [[heap]]
 tags: wiki
 ---
-
-

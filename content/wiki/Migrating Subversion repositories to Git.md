@@ -7,7 +7,7 @@ I used to host a number of public [Subversion](/wiki/Subversion) repositories fo
 
 But although SVK is very good, it is written in [Perl](/wiki/Perl) and has proved to be quite slow. SVK's local mirroring eliminates the network bottleneck for some operations, but still proves to be quite slow overall. [Git](/wiki/Git) on the other hand delivers most of the advantages of SVK (see "[Git advantages](/wiki/Git_advantages)" and "[SVK advantages](/wiki/SVK_advantages)") but additionally offers unrivalled speed for most operations, is more powerful and more robust in my judgement, and offers excellent documentation (see "[Git documentation](/wiki/Git_documentation)" on par or better than Subversion's and far in advance of SVK's).
 
-Although Git, like SVK, can be used as a gateway to/from a central Subversion server, I've decided to simplify my infrastructure by eventually *replacing* my existing Subversion repositories with Git ones rather than just layering Git over the top.
+Although Git, like SVK, can be used as a gateway to/from a central Subversion server, I've decided to simplify my infrastructure by eventually _replacing_ my existing Subversion repositories with Git ones rather than just layering Git over the top.
 
 Once the initial set-up is done (describe below) migrating additional repositories is very easy. The basic pattern for a shallow (no-history) import is:
 
@@ -219,7 +219,7 @@ I later also tried the approach of creating a repository on my local machine wit
     # extract the repository
     cd path_to_git_repositories
     sudo -u git cp ~/walrus.zip .
-    sudo -u git unzip walrus.zip 
+    sudo -u git unzip walrus.zip
     sudo rm walrus.zip
     sudo -u git mv walrus/.git Walrus.git
     sudo rm -r walrus
@@ -227,11 +227,11 @@ I later also tried the approach of creating a repository on my local machine wit
     # repository set-up
     cd Walrus.git
     sudo -u git touch git-daemon-export-ok
-    echo "Walrus.git win@wincent.com" | sudo tee -a path_to_conf_dir/gitweb-projects 
-    echo "Object-oriented templating system" | sudo tee description 
+    echo "Walrus.git win@wincent.com" | sudo tee -a path_to_conf_dir/gitweb-projects
+    echo "Object-oriented templating system" | sudo tee description
 
     # remove local junk
-    sudo rm qgit_cache.dat svn2git svn-authors 
+    sudo rm qgit_cache.dat svn2git svn-authors
 
     # remove now irrelevant "origin" head
     sudo rm refs/heads/origin
@@ -314,4 +314,4 @@ My initial attempts at importing were done on the remote server directly, so I a
     sudo -H -u git git config --global user.email win@wincent.com
     sudo -H -u git git config --global user.name "Wincent Colaiuta"
 
-I suspect that this information is not actually required when pushing from an appropriately configured *local* repository, because the author information from the local repository should be used.
+I suspect that this information is not actually required when pushing from an appropriately configured _local_ repository, because the author information from the local repository should be used.

@@ -14,7 +14,7 @@ I later discovered not only one, but two drawbacks, to my decision to eschew [St
 
 Firstly, I observed information leakage across the boundaries of my internal [LAN](/wiki/LAN). This is a necessary evil required by [RFC 2821](/wiki/RFC_2821); the connecting mail client must send a host name or address along with it's `EHLO` message. This is described in [| this article](http://wincent.com/a/about/wincent/weblog/archives/2007/01/information_lea.php).
 
-Secondly, after switching to a new [ISP](/wiki/ISP), [Jazztel](/wiki/Jazztel), I discovered that the `Received` headers in all my outgoing mails had ugly "may be forged" warnings in them because the [Jazztel](/wiki/Jazztel)'s administrators have a broken [DNS](/wiki/DNS) set-up in which they don't provide reverse look-up for clients with dynamic IPs. In fact, [Jazztel](/wiki/Jazztel) doesn't even provide reverse lookups for some of their *static* [IP](/wiki/IP)s; even their own nameserver's IP address doesn't reverse resolve. One of the few [Jazztel](/wiki/Jazztel) addresses which does resolve in both directions is www.jazztel.es.
+Secondly, after switching to a new [ISP](/wiki/ISP), [Jazztel](/wiki/Jazztel), I discovered that the `Received` headers in all my outgoing mails had ugly "may be forged" warnings in them because the [Jazztel](/wiki/Jazztel)'s administrators have a broken [DNS](/wiki/DNS) set-up in which they don't provide reverse look-up for clients with dynamic IPs. In fact, [Jazztel](/wiki/Jazztel) doesn't even provide reverse lookups for some of their _static_ [IP](/wiki/IP)s; even their own nameserver's IP address doesn't reverse resolve. One of the few [Jazztel](/wiki/Jazztel) addresses which does resolve in both directions is www.jazztel.es.
 
 These "may be forged" warnings are undesirable because they may increase the likelihood of false positives when outgoing messages hit spam filters elsewhere. One of the reasons for running one's own mail server is precisely to avoid this kind of problem, but in this case my ISP was thwarting my plans. Switching to [Stunnel](/wiki/Stunnel) would allow me to avoid at least one of these issues (the unwanted "may be forged" warnings).
 
@@ -84,7 +84,7 @@ This decision renders my earlier preparation (creating the [Stunnel](/wiki/Stunn
 
 If every is set up correctly, all that's required to get the mail client to use the new set up is to change the port that it connects on from 25 to 465.
 
-Apparently there is a bug in [Mail.app](/wiki/Mail.app) that requires you to re-enter your passwords when you change the port from 25 to 465. When you first change the port number it will *appear* that your password remains intact, but if you click "OK" and then later go back to look at your outgoing server configuration you'll see that your password field has been wiped, so you'll need to re-enter it. This should be a once-only process.
+Apparently there is a bug in [Mail.app](/wiki/Mail.app) that requires you to re-enter your passwords when you change the port from 25 to 465. When you first change the port number it will _appear_ that your password remains intact, but if you click "OK" and then later go back to look at your outgoing server configuration you'll see that your password field has been wiped, so you'll need to re-enter it. This should be a once-only process.
 
 ## Final testing
 

@@ -58,9 +58,9 @@ When you install Git 1.6.0 or later for the first time you might see a message l
     !! Mixing two versions of Git will lead to problems.
     !! Please remove old version commands in bindir now.
 
-Unfortunately the release notes aren't specific about exactly *which* commands should continue to live in the `bindir` (`/usr/local/bin/` on my system):
+Unfortunately the release notes aren't specific about exactly _which_ commands should continue to live in the `bindir` (`/usr/local/bin/` on my system):
 
-> With the default Makefile settings, most of the programs are now installed outside your $PATH, except for "git", "gitk" and some server side programs that need to be accessible for technical reasons.
+> With the default Makefile settings, most of the programs are now installed outside your \$PATH, except for "git", "gitk" and some server side programs that need to be accessible for technical reasons.
 
 As a first approximation, I thought, "well, let's just try removing everything from `/usr/local/bin/` that's duplicated in `/usr/local/libexec/git-core/`".
 
@@ -105,7 +105,7 @@ Likewise on the remote server I had to remove a couple of files, although not as
 
     cd /usr/local/bin
     sudo rm git-help--browse \
-            git-merge-stupid 
+            git-merge-stupid
 
 So at this point I'd removed all the old stuff, but I'd also removed some of the new stuff too because some of it is installed in both places. Looking at the `make install` transcript I could see the following:
 

@@ -13,10 +13,6 @@ I had already used a HOM-style syntax for my mock object implementation in my [W
 
 Yesterday, I allowed true HOM to creep into WOCommon in the form of an `ifResponds` implementation.
 
-
-
-
-
 #### The problem
 
 Sick of writing things like:
@@ -34,7 +30,7 @@ Two object parameters? Whip up a `performSelectorIfResponds:withObject:withObjec
 
 But if you want to go beyond three object parameters things start to feel distinctly kludgy (if they didn't already!). We can't keep on adding additional "withObject:" parameters forever. Ideally, it would be nice to have a method which took a variable number of arguments:
 
-    - (id)performSelectorIfResponds:(SEL)aSelector 
+    - (id)performSelectorIfResponds:(SEL)aSelector
                         withObjects:(id)firstObject, ...
 
 But writing such a method is not as easy as you might think. The first step (checking to see if an object responds to a selector) is easy, but the second step (dispatching the message) is not as straightforward.

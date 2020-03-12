@@ -40,10 +40,10 @@ See:
 
 Potentially useful gems:
 
--   acts\_as\_taggable: "An acts-as Mixin for easy applying and searching tags/folksnomies on Active Record objects."
+-   acts_as_taggable: "An acts-as Mixin for easy applying and searching tags/folksnomies on Active Record objects."
 -   fcgi: "FastCGI library for Ruby."
 -   htmltokenizer: "A class to tokenize HTML."
--   login\_generator: "\[Rails\] Login generator."
+-   login_generator: "\[Rails\] Login generator."
 -   mongrel: "A small fast HTTP library and server that runs Rails, Camping, and Nitro apps."
 -   paypal: "Paypal IPN integration library for rails and other web applications."
 -   pdf-writer: "A pure Ruby PDF document creation library."
@@ -52,8 +52,8 @@ Potentially useful gems:
 
 Engines:
 
--   login\_engine: <http://www.rails-engines.org/login_engine>
--   user\_engine: <http://www.rails-engines.org/user_engine>
+-   login_engine: <http://www.rails-engines.org/login_engine>
+-   user_engine: <http://www.rails-engines.org/user_engine>
 
 # See also
 

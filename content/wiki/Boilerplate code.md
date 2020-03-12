@@ -2,5 +2,3 @@
 redirect: [[boilerplate]]
 tags: wiki
 ---
-
-

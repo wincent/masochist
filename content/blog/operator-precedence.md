@@ -5,10 +5,6 @@ tags: blog
 
 Operator precedence still surprises me sometimes.
 
-
-
-
-
 I started off with this code:
 
     digit -= 'a';

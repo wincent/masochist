@@ -3,7 +3,7 @@ title: Perfection
 tags: snippets
 ---
 
-*Il semble que la perfection soit atteinte non quand il n'y a plus rien à ajouter, mais quand il n'y a plus rien á retrancher.*
+_Il semble que la perfection soit atteinte non quand il n'y a plus rien à ajouter, mais quand il n'y a plus rien á retrancher._
 
 Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.
 

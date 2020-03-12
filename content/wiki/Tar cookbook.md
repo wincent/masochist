@@ -35,7 +35,7 @@ For example, to move `/home/jenkins` to `/var/lib/jenkins`:
 # sudo -u jenkins tar -cpf - /home/jenkins | tar xpf -
 ```
 
-# Copying the *contents* of a folder into another
+# Copying the _contents_ of a folder into another
 
 ```shell
 $ tar cpf - -C $SRC_DIR . | tar xpf - -C $DEST_DIR

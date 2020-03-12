@@ -2,8 +2,7 @@
 tags: git wiki
 ---
 
-A release candidate GIT 1.6.2.rc2 is available at the usual places
-    for testing:
+A release candidate GIT 1.6.2.rc2 is available at the usual places for testing:
 
      http://www.kernel.org/pub/software/scm/git/
 

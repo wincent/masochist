@@ -13,10 +13,6 @@ But even with good anti-spam tech that still left me with a lot of email. I'm no
 
 Last night and today I took a step further, unsubscribing from some non-essential lists and putting pretty much all the high-volume ones into digest mode. I don't like digests -- they're hard to read and hard to search -- but I need to do something to free myself from the time tyranny that email has had over me up until now. The truth is that in most cases I am a lurker, a reader; I tune in in the hope of picking up tips, keeping up to date and learning about stuff. But even skimming and scanning, quickly glancing at about 5% of all that comes in, still takes too much time when you're dealing with large volumes. If you're not an active participant then a digest is probably good enough.
 
-
-
-
-
 ### Is spam getting better or worse?
 
 Comparing with [the numbers](http://www.wincent.com/a/about/wincent/weblog/archives/2007/02/is_spam_solved.php) from the last time (about 8 months ago) things look decidedly worse; these are the numbers at the client level, excluding spam that was blocked by the server:

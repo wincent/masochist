@@ -27,10 +27,6 @@ So `h` forces an overwrite. Not very helpful.
 
 So one is forced to dig into `/usr/local/lib/ruby/gems/1.8/gems/rails-1.2.4.7794/lib/rails_generator/commands.rb` and inspect the source code in order to figure out what's going on.
 
-
-
-
-
 Here's the code:
 
     def force_file_collision?(destination, src, dst, file_options = {}, &block)
@@ -57,7 +53,7 @@ Here's the code:
       retry
     end
 
-So here we see what the various options do and we also see why `h` caused things to be overwritten: the *default* action is to force an overwrite. Whoever thought that *that* was a bright idea? Good thing we all use version control, eh? Also note that the regular expressions used in the `case` statement will match the letters *anywhere* they appear in the input string, so if you type "xxxazzz" then that's equivalent to typing "a".
+So here we see what the various options do and we also see why `h` caused things to be overwritten: the _default_ action is to force an overwrite. Whoever thought that _that_ was a bright idea? Good thing we all use version control, eh? Also note that the regular expressions used in the `case` statement will match the letters _anywhere_ they appear in the input string, so if you type "xxxazzz" then that's equivalent to typing "a".
 
 How could this have been done better? Well, first up it should display a more helpful prompt:
 

@@ -16,7 +16,7 @@ At the moment the whole file is nearly 6,000 lines long. This is one hell of a c
 
 I generally favour breaking things up into smaller, more manageable units. I like small, simple classes that do one job and do it well (the implementation of my iChat controller class, for example, is only 177 lines long). But the truth is that the main controller doesn't really lend itself to being broken up into smaller units. I could split some functionality into categories in separate files but that wouldn't really change the fact that the class as a whole is one logical unit.
 
-But it's not really as bad as it sounds. 2,000 of those lines are accessor methods, all of which were generated using [Accessorizer](http://www.kevincallahan.org/software/accessorizer.html). Yes, the class has *a lot* of instance variables, but creating the accessors for them was relatively painless.
+But it's not really as bad as it sounds. 2,000 of those lines are accessor methods, all of which were generated using [Accessorizer](http://www.kevincallahan.org/software/accessorizer.html). Yes, the class has _a lot_ of instance variables, but creating the accessors for them was relatively painless.
 
 You can subtract another few hundred lines for defines, constant declarations and other such stuff which isn't really code in the sense that it doesn't actually execute, it's just there to support the rest of the class.
 

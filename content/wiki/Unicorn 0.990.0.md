@@ -77,5 +77,5 @@ From the official release announcement:
     [9] - mailto:mongrel-unicorn@rubyforge.org
     [a] - mailto:unicorn@bogomips.org
 
-    -- 
+    --
     Eric Wong

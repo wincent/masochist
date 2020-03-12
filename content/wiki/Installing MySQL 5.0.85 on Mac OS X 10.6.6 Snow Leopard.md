@@ -6,9 +6,9 @@ As I am using this for doing [Rails](/wiki/Rails) development which on the remot
 
 ```shell
 $ curl -O http://mysql.he.net/Downloads/MySQL-5.0/mysql-5.0.92.tar.gz
-$ tar xzvf mysql-5.0.92.tar.gz 
+$ tar xzvf mysql-5.0.92.tar.gz
 $ cd mysql-5.0.92
-$ ./configure 
+$ ./configure
 $ make
 $ make test # bails due to a failure, hopefully not too serious
 $ sudo make install

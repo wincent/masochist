@@ -7,7 +7,7 @@ These notes were made while migrating my mail server server from my old host, [R
 
 ## Strategy
 
-The two main goals are to keep downtime to a minimum and to not lose any incoming email during the move. Luckily the Internet's mail infrastructure copes well with transitory failures and unreliable connections; this means that we can afford a small window of inaccessibility in which neither the old server nor the new server will be online accepting incoming mail. During that window we transfer the mailboxes from the old server to the new, and [MTAs](/wiki/MTAs) trying to deliver mail will get temporary bounce messages; in this way when the new server comes back online and the MTAs retry delivery, the mail will get through and there won't be any messages that got inappropriately routed to the old server *after* we transferred the mailboxes.
+The two main goals are to keep downtime to a minimum and to not lose any incoming email during the move. Luckily the Internet's mail infrastructure copes well with transitory failures and unreliable connections; this means that we can afford a small window of inaccessibility in which neither the old server nor the new server will be online accepting incoming mail. During that window we transfer the mailboxes from the old server to the new, and [MTAs](/wiki/MTAs) trying to deliver mail will get temporary bounce messages; in this way when the new server comes back online and the MTAs retry delivery, the mail will get through and there won't be any messages that got inappropriately routed to the old server _after_ we transferred the mailboxes.
 
 ## Method
 
@@ -23,13 +23,13 @@ We do as much preparation on the new machine here as possible:
 
 We'll also want to do some trial runs at this point, and make sure that we have working scripts for doing stuff like importing mailboxes. Developing such scripts may not be a trivial task if your migration is between machines with different operating systems and different software, so they should be prepared well in advance.
 
-To provoke the actual move we update the [MX](/wiki/MX) record for the domain to point to an [IP](/wiki/IP) on the new server *on which [sendmail](/wiki/sendmail) is **not** listening*. This point is key. We *want* remote [MTAs](/wiki/MTAs) that try connecting to the server to get connection failures at this moment, as these will be identified as temporary failures and the MTA will retry again later.
+To provoke the actual move we update the [MX](/wiki/MX) record for the domain to point to an [IP](/wiki/IP) on the new server _on which [sendmail](/wiki/sendmail) is **not** listening_. This point is key. We _want_ remote [MTAs](/wiki/MTAs) that try connecting to the server to get connection failures at this moment, as these will be identified as temporary failures and the MTA will retry again later.
 
 We don't want to start accepting email yet, even though we've already set up the accounts and mailboxes, because we want to import the old messages first.
 
 ### The "during" window
 
-So once the DNS change goes live we wait about 10 minutes (or whatever interval we have as a TTL). This should be enough time to minimize the risk of a machine attempting delivery to the old machine *after* we've done the mailbox export/transfer/import.
+So once the DNS change goes live we wait about 10 minutes (or whatever interval we have as a TTL). This should be enough time to minimize the risk of a machine attempting delivery to the old machine _after_ we've done the mailbox export/transfer/import.
 
 After this interval, we export the mailboxes from the old server and transfer them to the new server, where we import them. Importing is done with a script for speed.
 
@@ -41,11 +41,11 @@ One trick you can apply here (if you have no control over how fast your host upd
 
 On the old server it is worth setting up some forwarding just in case any [MTAs](/wiki/MTAs) with stale [DNS](/wiki/DNS) information try connecting and delivering old mail.
 
-The major crunch is now over so you can now going about doing the rest of the migration. I had a *lot* of things to move over, so I did the mail first and only later followed through with things like the web server.
+The major crunch is now over so you can now going about doing the rest of the migration. I had a _lot_ of things to move over, so I did the mail first and only later followed through with things like the web server.
 
 ## Monitoring for [DNS](/wiki/DNS) changes
 
-My hosts manage the [DNS](/wiki/DNS) for me and that means that I don't have precise control over *when* the changes that I've requested will go live, although I have an approximate idea. In my case I wanted the [MX](/wiki/MX) records updated for both wincent.com and wincent.org. I used the following [shell](/wiki/shell) snippet to query their nameservers every 60 seconds to see when the changes went live:
+My hosts manage the [DNS](/wiki/DNS) for me and that means that I don't have precise control over _when_ the changes that I've requested will go live, although I have an approximate idea. In my case I wanted the [MX](/wiki/MX) records updated for both wincent.com and wincent.org. I used the following [shell](/wiki/shell) snippet to query their nameservers every 60 seconds to see when the changes went live:
 
     while true
     do

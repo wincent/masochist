@@ -10,7 +10,7 @@ tags: objective.c wiki
 
 Or:
 
-    @property(attributes) type name; 
+    @property(attributes) type name;
 
 For example:
 

@@ -9,10 +9,6 @@ I've been living with the uncomfortable consequences of that decision ever since
 
 It also means that the relative paths in the Synergy Advance project look different to the same paths in Synergy (and just about every other project I have). For example, the relative path to the build directory is `../../build` for Synergy but `../../../build` for Synergy Advance. That lack of consistency makes sharing components with other project difficult.
 
-
-
-
-
 So finally, yesterday, after putting it off and simply "living with it" for years, I finally extracted Synergy Advance into a repository of its own and it now lives as a peer alongside Synergy, WOBase, WOBezel, WOCommon, WODebug, WOHotKey, WOTest and every other project in my portfolio, all with the same relative path to a shared built products folder.
 
 I decided to finally bite the bullet because there's a lot of other breakage at the moment so I may as well deal with it in one fell swoop, seeing as the project is not in a buildable state right now anyway. The major change I'm dealing with is the result of another "correction" that I made recently; [the decision](http://www.wincent.com/knowledge-base/Frameworks:_pros_and_cons) to start putting share code in WOCommon where appropriate rather than in the existing shared frameworks. This means that code is getting migrated out of the frameworks with varying degrees of violence, sometimes merely forked and copied over, and other times ripped out directly. New code can start using WOCommon without any problems, but the frameworks themselves need modifications as do the applications that use them in order to build correctly.

@@ -13,7 +13,7 @@ To celebrate the holiday season and get more people on board testing the preview
 
 #### Getting the free license
 
-To get your free Synergy license you fill out [this form](https://secure.wincent.com/a/store/synergy-offer/) *after* purchasing Synergy Advance. The form will ask you to enter the following information:
+To get your free Synergy license you fill out [this form](https://secure.wincent.com/a/store/synergy-offer/) _after_ purchasing Synergy Advance. The form will ask you to enter the following information:
 
 -   Your name.
 -   Your Synergy Advance registration email address.

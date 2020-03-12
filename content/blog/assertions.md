@@ -20,10 +20,6 @@ I haven't yet shipped a product with assertions disabled, but I have been thinki
 
 > You might be tempted to implement this using a form of assertion, since by default assertions in Cocoa will throw an exception. But remember, this is part of the API contract of your class, not just an internal detail that should never go wrong! Thus if you do implement this using an assertion, and you disable assertions in your Release build, your Release build will wind up implementing your API incorrectly.
 
-
-
-
-
 My problem is that I have been using `NSParameterAssert` extensively for a long time now to enforce the [API](http://www.wincent.com/knowledge-base/API) contract of my classes. That is, I generally have three aspects that must all match up:
 
 1.  Inline [Doxygen](http://www.wincent.com/knowledge-base/Doxygen) documentation which states, "If passed `X` raises `Y`".
@@ -37,7 +33,7 @@ So drat, I now have to make a new macro, let's call it `WOParameterCheck` and us
 My code already had a very clean division between assertions, error conditions and exceptions.
 
 -   Assertions are for checking for programming errors: a failed assertion is evidence of a programming error or an incorrect assumption (which itself is just a class of programming error). That is, a failed assertion is always "my fault".
--   Exceptions are for signalling unexpected conditions outside the control of the programmer: you should be prepared to catch exceptions and deal with them appropriately. Exceptions are for things that are *not* "my fault", but I should be prepared to deal with them (and failure to do so is once again "my fault").
+-   Exceptions are for signalling unexpected conditions outside the control of the programmer: you should be prepared to catch exceptions and deal with them appropriately. Exceptions are for things that are _not_ "my fault", but I should be prepared to deal with them (and failure to do so is once again "my fault").
 -   Error conditions: every time you make a call to another API you should be prepared to check the return value for an error code or `nil` return value. Error conditions are just like exceptions in the sense that they signal unexpected conditions outside of your control. Likewise, even though the error condition is not "your fault", failure to handle it makes it so.
 
 Evidently my use of `NSParameterAssert` made the separation not clean enough, by blurring the line between assertions and exceptions. I guess we'll just have to add this to the "[Don't repeat the mistakes I made](http://www.wincent.com/knowledge-base/Don%27t_repeat_the_mistakes_I_made)" list.

@@ -52,7 +52,7 @@ As this is not-very-sensitive data (family photos), the protection provided by t
 Other useful commands:
 
 ```shell
-$ s3cmd du s3://yourbucket/ # show disk usage                                                            
+$ s3cmd du s3://yourbucket/ # show disk usage
 $ s3cmd info s3://yourbucket/ # show metadata about a bucket, including ACLs
 ```
 

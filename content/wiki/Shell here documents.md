@@ -59,4 +59,4 @@ This can be useful in a shell script where you want to nest the here-doc (eg. in
 
 # See also
 
--   [Here document](/wiki/Here_document) section from *Advanced Bash Scripting Guide* found at: <http://tldp.org/LDP/abs/html/here-docs.html>
+-   [Here document](/wiki/Here_document) section from _Advanced Bash Scripting Guide_ found at: <http://tldp.org/LDP/abs/html/here-docs.html>

@@ -49,14 +49,14 @@ Instead, I'll include a link at the bottom of each new post to a place (or place
 
 The idea is that with this set-up:
 
-- My blog remains a place for my voice without the distracting din of mass internet participation.
-- Rather than opening up my site for commenting by random bunch of individuals, people can discuss it elsewhere within an active (and self-organizing, somewhat homogenous, cohesive) community of their choosing; this makes sense: I am a nerd engineer type writing content for people like me, and nerd engineer types tend to hang out on places like Hacker News.
+-   My blog remains a place for my voice without the distracting din of mass internet participation.
+-   Rather than opening up my site for commenting by random bunch of individuals, people can discuss it elsewhere within an active (and self-organizing, somewhat homogenous, cohesive) community of their choosing; this makes sense: I am a nerd engineer type writing content for people like me, and nerd engineer types tend to hang out on places like Hacker News.
 
 Downsides:
 
-- I have to add these links manually, which implies a two-step process &mdash; publish then amend with links &mdash; and as I don't intend on always submitting these posts to multiple sites, there is a chance that I won't be aware of a discussion in progress and so won't add the link.
-- I obviously won't be going back to older content and doing this retroactively.
-- This will only apply to blog posts, so a bunch of wiki content that could benefit from commenting functionality won't have it (my email address is in the footer of every page on the site though, so I'm open to receiving corrections or supplements to any page; heck, seeing as all the content is in Git I'd be happy to take pull requests too).
+-   I have to add these links manually, which implies a two-step process &mdash; publish then amend with links &mdash; and as I don't intend on always submitting these posts to multiple sites, there is a chance that I won't be aware of a discussion in progress and so won't add the link.
+-   I obviously won't be going back to older content and doing this retroactively.
+-   This will only apply to blog posts, so a bunch of wiki content that could benefit from commenting functionality won't have it (my email address is in the footer of every page on the site though, so I'm open to receiving corrections or supplements to any page; heck, seeing as all the content is in Git I'd be happy to take pull requests too).
 
 Overall I feel pretty happy with this. It may not be optimal and I could certainly end up changing my mind in the future, but the cost of this decision is low, there are no barriers to revising it later, and it's hard to argue with the simplicity.
 

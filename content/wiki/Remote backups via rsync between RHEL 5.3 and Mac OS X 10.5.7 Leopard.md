@@ -67,20 +67,20 @@ Installing:
 
 Transaction Summary
 =====================================================================================================================================
-Install      1 Package(s)         
-Update       0 Package(s)         
-Remove       0 Package(s)         
+Install      1 Package(s)
+Update       0 Package(s)
+Remove       0 Package(s)
 
 Total download size: 229 k
 Is this ok [y/N]: y
 Downloading Packages:
-rsync-2.6.8-3.1.i386.rpm                                                                                      | 229 kB     00:00     
+rsync-2.6.8-3.1.i386.rpm                                                                                      | 229 kB     00:00
 Running rpm_check_debug
 Running Transaction Test
 Finished Transaction Test
 Transaction Test Succeeded
 Running Transaction
-  Installing     : rsync                                             [1/1] 
+  Installing     : rsync                                             [1/1]
 
 Installed: rsync.i386 0:2.6.8-3.1
 Complete!
@@ -146,7 +146,7 @@ Try a simpler test case:
 
 ```shell
 $ rsync -e ssh -avzxn --numeric-ids --delete --progress non-root-user@example.com:/ /tmp/rsync-test
-receiving file list ... 
+receiving file list ...
 rsync: opendir "/package/admin/clear/supervise" failed: Permission denied (13)
 ...
 sent 55244 bytes  received 267877 bytes  34012.74 bytes/sec
@@ -162,7 +162,7 @@ Create `/root/debug.sh`:
 And stick that in the forced command specification of the `authorized_keys` file before trying the `rsync` invocation again. Now inspect the output of `/tmp/debug.out`:
 
 ```shell
-# cat /tmp/debug.out 
+# cat /tmp/debug.out
 rsync --server --sender -vnlogDtprxz --numeric-ids . /
 ```
 
@@ -170,9 +170,9 @@ So this is identical to the output that I saw back in 2006. Update the forced co
 
 It works. Note that my first test run, still using the `-n` switch, produced this:
 
-    receiving file list ... 
+    receiving file list ...
     9778 files to consider
-    ./                  
+    ./
     Invalid checksum length -1610612736 [sender]
     rsync error: protocol incompatibility (code 2) at io.c(958) [sender=2.6.8]
     rsync: connection unexpectedly closed (223620 bytes received so far) [receiver]
@@ -184,9 +184,9 @@ Which basically was the exact same problem we saw in 2006.
 
 But removing the `-n` switch we instead get:
 
-    receiving file list ... 
+    receiving file list ...
     9778 files to consider
-    ./                  
+    ./
     .autofsck
                0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=9776/9778)
     .mysql_history

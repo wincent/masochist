@@ -9,7 +9,7 @@ Sure, this sucks, and I suspect that the true cost to the network operators for 
 
 But there is a bright side. The cost of sending an SMS message largely explains why I only get around one SMS "spam" per month.
 
-Compare this with electronic mail (referred to as *email* by some) which is free. I get a few thousand spam in that medium per month; almost all are filtered into a spam box where I don't have to think about them and several hundred per day are blocked at the server before delivery is even completed. But even though the spam epidemic is largely "under control", there's no denying that the quantities involved are almost absurdly large.
+Compare this with electronic mail (referred to as _email_ by some) which is free. I get a few thousand spam in that medium per month; almost all are filtered into a spam box where I don't have to think about them and several hundred per day are blocked at the server before delivery is even completed. But even though the spam epidemic is largely "under control", there's no denying that the quantities involved are almost absurdly large.
 
 Now think about what would happen if sending each message cost the spammer 15 cents. A spam run with 5 million victims would suddenly cost a whopping 750,000 euros. The amount of email-borne spam would fall drastically.
 

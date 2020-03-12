@@ -15,10 +15,6 @@ I'll be continuing these entries in the "mini-log" on the left hand side of [my 
 -   "Show preview" now defaults to "on" by default; the preview is just too useful...
 -   Optional transparency for preview window.
 
-
-
-
-
 #### Tuesday 8 August
 
 -   Upgrade to ClamAV 0.88.4.

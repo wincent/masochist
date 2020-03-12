@@ -7,7 +7,7 @@ Notes made while installing Subversion 1.4.0 (client-side only) on my developmen
     curl -O http://subversion.tigris.org/downloads/subversion-1.4.0.tar.bz2
     mkdir trabajo/subversion
     mv subversion-* trabajo/subversion/
-    cd trabajo/subversion/ 
+    cd trabajo/subversion/
     tar xjvf subversion-1.4.0.tar.bz2
     cd subversion-1.4.0
     sh ./autogen.sh && ./configure && make

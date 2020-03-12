@@ -5,7 +5,7 @@ tags: leopard perl wiki
 I decided to install [Perl](/wiki/Perl) again in the hope of overcoming my problems trying to install [SVK](/wiki/SVK) on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard).
 
     wget http://search.cpan.org/CPAN/authors/id/N/NW/NWCLARK/perl-5.8.8.tar.gz
-    tar xzvf perl-5.8.8.tar.gz 
+    tar xzvf perl-5.8.8.tar.gz
     cd perl-5.8.8/
     sh Configure -de
     make
@@ -33,7 +33,7 @@ I the tried to get more information:
 
 This yielded:
 
-    op/pwent....................................FAILED test 1                    
+    op/pwent....................................FAILED test 1
     	Failed 1/2 tests, 50.00% okay
 
 And:
@@ -89,7 +89,7 @@ And:
     # tested okay.
     #
     # None of your locales were broken.
-    ../lib/locale...............................FAILED test 99                   
+    ../lib/locale...............................FAILED test 99
     	Failed 1/117 tests, 99.15% okay
 
 Note that the summary now shows only two failed tests, not three:
@@ -121,7 +121,7 @@ Output:
     # entries of /etc/passwd
     # with the results of getpwuid() and getpwnam() call.  If it finds no
     # matches at all, it suspects something is wrong.
-    # 
+    #
     not ok 1	# (not necessarily serious: run t/op/pwent.t by itself)
     ok 2
 

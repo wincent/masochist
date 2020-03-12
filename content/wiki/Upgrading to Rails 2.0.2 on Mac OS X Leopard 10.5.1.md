@@ -401,4 +401,4 @@ Now hand-update `config/environment.rb` to include:
 
     RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 
-So it all seems to be fine now, but it's certainly left a bad taste in my mouth. This should have been a very basic, routine upgrade. Did I shoot myself in the foot by cleaning up the old [gems](/wiki/gems) before trying to freeze the new version of [Rails](/wiki/Rails)? Should that kind of thing *matter*? How can you deploy this teetering stack in any kind of "enterprise" environment and feel secure about it?
+So it all seems to be fine now, but it's certainly left a bad taste in my mouth. This should have been a very basic, routine upgrade. Did I shoot myself in the foot by cleaning up the old [gems](/wiki/gems) before trying to freeze the new version of [Rails](/wiki/Rails)? Should that kind of thing _matter_? How can you deploy this teetering stack in any kind of "enterprise" environment and feel secure about it?

@@ -51,7 +51,7 @@ So the basic characteristics here are:
 
 As a one-man shop I don't have the time or the resources to actively work on multiple long-lived branches. This does not mean, however, that long-lived branches don't have their usefulness; rather, it means that the branches tend to fall into two categories:
 
--    **Active branches**: typically there is only *one* active branch, the trunk.
+-   **Active branches**: typically there is only _one_ active branch, the trunk.
 -   **Maintenance branches**: long-lived but not very active branches. These correspond to stable points in the development which may need to receive minimal updates periodically.
 
 These branches are typically created as in the following example. This is a project, `project_x` which has just released version 2.8. Development work is to continue on the trunk (for version 3.0) and a maintenance branch will be created for the 2.8 series:
@@ -61,7 +61,7 @@ These branches are typically created as in the following example. This is a proj
 
 Note that the created branch is not a remote, non-local branch. We also create a tag for the release. The tag and the branch are very similar; the tag is basically like a read-only branch.
 
-The kind of merging that typically gets done between the active branch and the maintenance branch is called "[Cherry picking](/wiki/Cherry_picking)". Rather than merging *all* of the work that's being done on the trunk into the maintenance branch we are typically interested in an isolated bugfix or minor feature addition. This kind of merge would usually be done as follows; in this example we merge only the change corresponding to revision 2200 (strictly speaking the difference between 2199 and 2200):
+The kind of merging that typically gets done between the active branch and the maintenance branch is called "[Cherry picking](/wiki/Cherry_picking)". Rather than merging _all_ of the work that's being done on the trunk into the maintenance branch we are typically interested in an isolated bugfix or minor feature addition. This kind of merge would usually be done as follows; in this example we merge only the change corresponding to revision 2200 (strictly speaking the difference between 2199 and 2200):
 
     # from inside the 2.8-branch working copy
     svk merge -c 2200 //mirrors/project_x/trunk
@@ -90,7 +90,6 @@ I am not sure, but I believe that [SVK](/wiki/SVK) is smart enough to not re-app
 The following example is based on the [procedure described in the Subversion book](http://svnbook.red-bean.com/nightly/en/svn.branchmerge.commonuses.html#svn.branchmerge.commonuses.wholebr). The objective is to merge all the changes that have been made on the `panther` branch into the `trunk`.
 
 Assume we have a working copy of the `panther` branch at `project-name/panther/` and a copy of the `trunk` at `project-name/trunk/`. Both copies must be up to date.
-
 
     # either checkout the trunk
     svn co svn+ssh://svn.example.com/project-name/trunk trunk

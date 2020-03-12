@@ -6,7 +6,7 @@ cache_breaker: 1
 
 An oft-repeated prerequisite of any coding editor is that it should have a fast way of jumping around files in a project (like Command-T in [TextMate](/wiki/TextMate)) and that it needs a nice "Find in project" interface.
 
-In my [last post](/blog/1-hour-with-vim) I mentioned meeting the first of those criteria using fuzzy\_file\_finder, Fuzzyfinder and fuzzyfinder\_textmate. Installing these is a little bit brittle and flakey (particularly fuzzyfinder\_textmate, which is intimately tied to Fuzzyfinder and easily broken by changes in the latter), but it works. I think the ideal solution would actually be to rewrite fuzzy\_file\_finder entirely in the [Vim](/wiki/Vim) scripting language (it's currently written in [Ruby](/wiki/Ruby)) and directly incorporate it into fuzzyfinder\_textmate, which itself would should become just a fork of Fuzzyfinder instead of a add-on that monkey patches itself into place.
+In my [last post](/blog/1-hour-with-vim) I mentioned meeting the first of those criteria using fuzzy_file_finder, Fuzzyfinder and fuzzyfinder_textmate. Installing these is a little bit brittle and flakey (particularly fuzzyfinder_textmate, which is intimately tied to Fuzzyfinder and easily broken by changes in the latter), but it works. I think the ideal solution would actually be to rewrite fuzzy_file_finder entirely in the [Vim](/wiki/Vim) scripting language (it's currently written in [Ruby](/wiki/Ruby)) and directly incorporate it into fuzzyfinder_textmate, which itself would should become just a fork of Fuzzyfinder instead of a add-on that monkey patches itself into place.
 
 For the second criteria, a nice "Find in project" interface, I've looked at a few different things and have just settled on one that I think I'll be quite happy with.
 
@@ -16,7 +16,7 @@ In the [Terminal](/wiki/Terminal) it prints neatly organized results, colorized 
 
 I'd recommend this tool to any programmer for daily use on the [command line](/wiki/command_line) in any case, but I'm mentioning it here because it works particularly well when integrated into Vim.
 
-You can actually drop it in as a *replacement* for `grep`, but I instead chose to set up a separate command that would specifically use Ack.
+You can actually drop it in as a _replacement_ for `grep`, but I instead chose to set up a separate command that would specifically use Ack.
 
 Here's the function I added to my `~/.vimrc`, taken from [this article](http://www.perladvent.org/2006/5/):
 

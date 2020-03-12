@@ -11,10 +11,6 @@ Just got this query via email and thought I'd post my answer here for others to 
 >
 > It'll be great if you could write an article on upgrading MovableType using git for us newbies.
 
-
-
-
-
 The reason why I never used to upgrade my Movable Type via Subversion is that [Six Apart](http://www.wincent.com/knowledge-base/Six%20Apart) (the makers of Movable Type) don't provide public access to their [version control system](http://www.wincent.com/knowledge-base/version%20control%20system); they instead distribute new releases of Movable Type as tarballs or zip archives.
 
 As such, it wasn't possible to update an existing, customized install using Subversion (see "[Upgrading WordPress using Subversion](http://www.wincent.com/knowledge-base/Upgrading%20WordPress%20using%20Subversion)"). I did make some notes on making the upgrade as smooth as possible with the aid of things like [Interarchy](http://www.wincent.com/knowledge-base/Interarchy)'s "mirror upload" feature (see "[Movable Type upgrade notes](http://www.wincent.com/knowledge-base/Movable%20Type%20upgrade%20notes)"), but it was never going to be as convenient as a Subversion-based upgrade.

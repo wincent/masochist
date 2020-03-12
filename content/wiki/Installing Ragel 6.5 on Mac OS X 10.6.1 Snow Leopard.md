@@ -17,7 +17,7 @@ $ gpg --verify ragel-6.5.tar.gz.asc ragel-6.5.tar.gz
 # Build
 
 ```shell
-$ tar xzvf ragel-6.5.tar.gz 
+$ tar xzvf ragel-6.5.tar.gz
 $ cd ragel-6.5
 $ ./configure
 $ make
@@ -30,7 +30,7 @@ As before, I had to make a tweak to a test header file in order to get the suite
 ```shell
 $ cd test
 $ ./runtests
-$ vi cppscan1.h 
+$ vi cppscan1.h
 $ ./runtests
 ```
 

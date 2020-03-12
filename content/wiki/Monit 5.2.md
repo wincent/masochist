@@ -24,7 +24,7 @@ From the official release announcement:
      process name with arguments as provided by the 'ps' utility. If the
      pattern matches multiple processes, the first match is used.
      Example:
-         check process debian 
+         check process debian
                matching "/usr/lib/vmware/bin/vmware-vmx .*deb.vmx"
 
     * Added support for swap monitoring. Example:

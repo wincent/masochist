@@ -7,7 +7,7 @@ The beta-testing period is over and [Synergy](/wiki/Synergy), the lightweight, h
 
 This release has been tested with the new-released iTunes 9.0.0, and given feedback on the stability of the last release moves from "beta" to "final" status.
 
-Note that the 4.0 series will *only* run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
+Note that the 4.0 series will _only_ run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
 
 For many users this release will be a free upgrade: see [this blog post](/blog/synergy-4.0-upgrades) to find out whether you qualify. If you got Synergy through the MacHeist Giving Tree bundle see [the MacHeist FAQ](/blog/frequently-asked-questions-about-synergy-and-macheist).
 

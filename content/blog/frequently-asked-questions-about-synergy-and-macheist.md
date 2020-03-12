@@ -26,7 +26,7 @@ I chose to produce a fully unlocked build rather than issue serial numbers becau
 
 As mentioned above, the Macheist build didn't actually use registration info.
 
-If you install a different version of Synergy, it will behave as un unregistered version. It *won't* delete your Macheist registration info because there isn't actually any info to delete.
+If you install a different version of Synergy, it will behave as un unregistered version. It _won't_ delete your Macheist registration info because there isn't actually any info to delete.
 
 # How do I update to a newer version?
 

@@ -4,7 +4,7 @@ tags: rails blog
 cache_breaker: 1
 ---
 
-In my post from a few weeks back, "[Rails 3: worth the upgrade?](/blog/rails-3-worth-the-upgrade)", I basically argued that you don't really have a choice but to upgrade, because [Rails](/wiki/Rails) development culture is such that all eyes are on the master branch and "legacy" releases aren't really maintained in any serious way. I noted, however, that on the bright side there are *a lot* of significant improvements that will positively impact your development. You should upgrade.
+In my post from a few weeks back, "[Rails 3: worth the upgrade?](/blog/rails-3-worth-the-upgrade)", I basically argued that you don't really have a choice but to upgrade, because [Rails](/wiki/Rails) development culture is such that all eyes are on the master branch and "legacy" releases aren't really maintained in any serious way. I noted, however, that on the bright side there are _a lot_ of significant improvements that will positively impact your development. You should upgrade.
 
 The cost, however, is high.
 
@@ -14,7 +14,7 @@ If you have anything beyond a trivial toy app, you'll find that the upgrade will
 
 In my case after the update the application wouldn't even run, nor could I even start the spec suite or load the console. I gradually triaged the breakage, and got it to the point where the application would at least boot and (some) requests would succeed, but it soon because evident that nothing short of a careful review of the entire code base and spec suite would be sufficient to get things back to how they were before.
 
-This is partly because so much has changed in Rails itself. It is also because [RSpec 2](/wiki/RSpec_2), the new version under development to coincide with the release of Rails 3, is itself a complete rewrite of the original [RSpec](/wiki/RSpec), based on [Micronaut](/wiki/Micronaut). We are talking enormous changes here to not only the framework under test, but also the test framework itself. My app had a spec suite of close to 3,000 examples, so there was *plenty* of room for breakage to manifest itself.
+This is partly because so much has changed in Rails itself. It is also because [RSpec 2](/wiki/RSpec_2), the new version under development to coincide with the release of Rails 3, is itself a complete rewrite of the original [RSpec](/wiki/RSpec), based on [Micronaut](/wiki/Micronaut). We are talking enormous changes here to not only the framework under test, but also the test framework itself. My app had a spec suite of close to 3,000 examples, so there was _plenty_ of room for breakage to manifest itself.
 
 # Time to knock down some walls
 
@@ -24,7 +24,7 @@ I tend not to incorporate any of these "re-invented wheels" into my set-up until
 
 So, I'm a conservative person with respect to the software that I use in the server environment, and here I was with a thoroughly broken application built on a web application framework and testing library that had both been effectively rewritten from the ground up.
 
-I decided that if *everything* was broken anyway, I may as well take the time to make a few changes.
+I decided that if _everything_ was broken anyway, I may as well take the time to make a few changes.
 
 Time to give [RR](/wiki/RR) a try as an alternative mocking framework. Its concise, elegant syntax had caught my attention a while back, but it was still very new. As I went through my specs, fixing breakage, I tried out RR to see if it was really as expressive and powerful as I hoped it would be. After passing some tricky edge case tests, I decided to continue with it.
 

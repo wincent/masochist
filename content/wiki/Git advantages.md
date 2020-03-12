@@ -4,7 +4,7 @@ tags: git wiki
 
 # Documentation
 
-The documentation for [Git](/wiki/Git) is *stunningly* good, ranging from its concise and useful [man pages](/wiki/man_pages) through to tutorials and the user manual:
+The documentation for [Git](/wiki/Git) is _stunningly_ good, ranging from its concise and useful [man pages](/wiki/man_pages) through to tutorials and the user manual:
 
 -   Man pages: <http://www.kernel.org/pub/software/scm/git/docs/>
 -   Tutorial:
@@ -28,13 +28,13 @@ The [mailing list](http://marc.info/?l=git) often provides very interesting back
 
 # Active development
 
-[Git](/wiki/Git) is a excellent [version control system](/wiki/version_control_system) *and* it was written by [Linus Torvalds](/wiki/Linus_Torvalds); these two factors make Git extremely attractive to [Linux](/wiki/Linux) enthusiasts, already renowned for their enthusiasm. As a result Git boasts probably the single most active developer community among the [open source](/wiki/open_source) version control systems, streets ahead of [SVK](/wiki/SVK) (which is mostly developed and maintained by a single person) and possibly even more than [Subversion](/wiki/Subversion) (which numerically speaking probably has a significantly higher number of *users* but not *developers*).
+[Git](/wiki/Git) is a excellent [version control system](/wiki/version_control_system) _and_ it was written by [Linus Torvalds](/wiki/Linus_Torvalds); these two factors make Git extremely attractive to [Linux](/wiki/Linux) enthusiasts, already renowned for their enthusiasm. As a result Git boasts probably the single most active developer community among the [open source](/wiki/open_source) version control systems, streets ahead of [SVK](/wiki/SVK) (which is mostly developed and maintained by a single person) and possibly even more than [Subversion](/wiki/Subversion) (which numerically speaking probably has a significantly higher number of _users_ but not _developers_).
 
 Git is being constantly updated and improved. It very rapidly achieved a high level of sophistication, feature-completeness, and it's proved its mettle managing large projects such as the Linux kernel itself. Despite already being a very capable and efficient tool, [improvement is rapid and ongoing](http://repo.or.cz/w/git.git/).
 
 # Content-tracking rather than file-tracking
 
-Whereas every other [version control system](/wiki/version_control_system) in the world tracks file history (when lines were added to a file, when lines were removed, when a file was renamed, added or deleted etc) [Git](/wiki/Git) doesn't explicitly track this information in any way at all. It instead tracks *content* within a repository. By walking the repository history Git *can* reconstruct what happened to a particular file, but this is an *extrapolation* from the data rather than something explicitly encoded.
+Whereas every other [version control system](/wiki/version_control_system) in the world tracks file history (when lines were added to a file, when lines were removed, when a file was renamed, added or deleted etc) [Git](/wiki/Git) doesn't explicitly track this information in any way at all. It instead tracks _content_ within a repository. By walking the repository history Git _can_ reconstruct what happened to a particular file, but this is an _extrapolation_ from the data rather than something explicitly encoded.
 
 This is a radical departure that means that when you do something like cutting a method from one file and pasting it into another then the history of the method goes along with it (think `svn blame`). This is explained by [Linus Torvalds](/wiki/Linus_Torvalds) in [this post](http://article.gmane.org/gmane.comp.version-control.git/37975); see also [this separate post](http://marc.info/?l=git&m=114123702826251) on tracking renames.
 

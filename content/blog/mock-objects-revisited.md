@@ -11,10 +11,6 @@ That was in [February of this year](http://www.wincent.com/a/about/wincent/weblo
 
 I haven't yet reached my goal, but I did at least have an idea for how to get there, kind of. I made a couple of very simple test programs and looked at the generated assembly, confirming that for unknown selectors the compiler does not generate a type string that could be used to generate a method signature. Now that I was utterly convinced that this true and that I haven't overlooked anything I was free to consider alternative pathways... If there was no way of prying the method signature out of information in the runtime or compiled into the program (because the information just isn't there... period) then there might be a way of getting this information into the runtime by other means.
 
-
-
-
-
 I realized that I could supply a type string to the mock in advance. So instead of having to write a skeletal method implementation if you want the mock to handle a not-yet-written method you can just tell the mock in advance to expect a particular selector. It looks something like this:
 
     [mock setObjCTypes:@"@@:@" forSelector:@selector(mysterySelector:)];

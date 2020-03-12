@@ -8,7 +8,7 @@ First we check what updated kernel packages are available:
     $ sudo yum --disableexcludes=all check-update 'kernel*'
     Password:
     Loading "rhnplugin" plugin
-    rhel-i386-server-5        100% |=========================| 1.4 kB    00:00     
+    rhel-i386-server-5        100% |=========================| 1.4 kB    00:00
 
     kernel.i686                              2.6.18-92.1.13.el5     rhel-i386-server
     kernel-headers.i386                      2.6.18-92.1.13.el5     rhel-i386-server
@@ -17,7 +17,7 @@ Then perform the actual update:
 
     $ sudo yum --disableexcludes=all update 'kernel*'
     Loading "rhnplugin" plugin
-    rhel-i386-server-5        100% |=========================| 1.4 kB    00:00     
+    rhel-i386-server-5        100% |=========================| 1.4 kB    00:00
     Setting up Update Process
     Resolving Dependencies
     --> Running transaction check
@@ -28,7 +28,7 @@ Then perform the actual update:
     Dependencies Resolved
 
     =============================================================================
-     Package                 Arch       Version          Repository        Size 
+     Package                 Arch       Version          Repository        Size
     =============================================================================
     Installing:
      kernel                  i686       2.6.18-92.1.13.el5  rhel-i386-server-5   14 M
@@ -37,23 +37,23 @@ Then perform the actual update:
 
     Transaction Summary
     =============================================================================
-    Install      1 Package(s)         
-    Update       1 Package(s)         
-    Remove       0 Package(s)         
+    Install      1 Package(s)
+    Update       1 Package(s)
+    Remove       0 Package(s)
 
     Total download size: 15 M
     Is this ok [y/N]: y
     Downloading Packages:
-    (1/2): kernel-2.6.18-92.1 100% |=========================|  14 MB    00:24     
-    (2/2): kernel-headers-2.6 100% |=========================| 848 kB    00:01     
+    (1/2): kernel-2.6.18-92.1 100% |=========================|  14 MB    00:24
+    (2/2): kernel-headers-2.6 100% |=========================| 848 kB    00:01
     Running rpm_check_debug
     Running Transaction Test
     Finished Transaction Test
     Transaction Test Succeeded
     Running Transaction
-      Installing: kernel                       ######################### [1/3] 
-      Updating  : kernel-headers               ######################### [2/3] 
-      Cleanup   : kernel-headers               ######################### [3/3] 
+      Installing: kernel                       ######################### [1/3]
+      Updating  : kernel-headers               ######################### [2/3]
+      Cleanup   : kernel-headers               ######################### [3/3]
 
     Installed: kernel.i686 0:2.6.18-92.1.13.el5
     Updated: kernel-headers.i386 0:2.6.18-92.1.13.el5

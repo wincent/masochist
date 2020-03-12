@@ -21,23 +21,19 @@ But I think that ethical responsibility cuts both ways. I think software compani
 
 So that's the background, and it sheds some light on why I always take an interest when Apple makes a product announcement of this kind. The last time there was this much activity in the pirate community was probably with the [release](http://www.apple.com/pr/library/2005/apr/12tiger.html) of [Mac OS X Tiger (10.4)](http://www.apple.com/macosx/). Here follow some reflections on the ethical dimensions of pirating, or not pirating, iLife 06.
 
-
-
-
-
 #### iLife 06 won't be available in my country for three weeks; I'll buy it later
 
-On first examination this position appears to be technically illegal but morally defensible. It *is* copyright infringement *but* if you're going to buy it later anyway you're really only just starting to use your "fair use" rights a little bit sooner than you should. No harm done, right?
+On first examination this position appears to be technically illegal but morally defensible. It _is_ copyright infringement _but_ if you're going to buy it later anyway you're really only just starting to use your "fair use" rights a little bit sooner than you should. No harm done, right?
 
 The problem is that the most popular mechanism for distributing large files like iLife is [BitTorrent](http://www.bittorrent.com/), and an integral part of the BitTorrent protocol is that you don't just download files; you assist in distributing them to others. As you download pieces of a file from other peers in the swarm your computer sends out pieces to those peers too. You upload to others while you're downloading. As such, if you think that your decision to download iLife won't hurt Apple then perhaps you should think again; not only are you committing copyright infringement yourself but you're also helping others to infringe copyright too, and it's highly likely that you are distributing the file to people who have no intention of ever paying for iLife.
 
 #### Apple is forcing me to pay for .Mac; this is my revenge
 
-There are two problems with this position. One is that it is based on a false postulate (that Apple is "forcing" the user to pay for [.Mac](http://www.apple.com/dotmac/)). Apple is clearly *not* forcing anyone to pay for .Mac, they're merely encouraging people to do so. iLife will work without .Mac.
+There are two problems with this position. One is that it is based on a false postulate (that Apple is "forcing" the user to pay for [.Mac](http://www.apple.com/dotmac/)). Apple is clearly _not_ forcing anyone to pay for .Mac, they're merely encouraging people to do so. iLife will work without .Mac.
 
 The second problem takes us into the ground of moral philosophy; the claim that any kind of "revenge" is somehow morally justifiable. Almost all credible, modern religious and ethical frameworks make the opposite case. The "eye for an eye" philosophy is just so "Old Testament". Our modern judicial system is built on the notion of "just retribution" rather than "revenge", and the emphasis is much more on rehabilitation than on punishment (at least in theory).
 
-#### I *need* iLife 06 right *now*
+#### I _need_ iLife 06 right _now_
 
 Confusion between "needing" something and merely "wanting" it doesn't change the ethicality of piracy. It's quite clear that the people who say they "need" iLife 06 in reality only "want" it, and that misunderstanding does not in any way change the underlying ethical (or unethical) dimensions of their conduct.
 
@@ -47,9 +43,9 @@ And anyway, what's wrong with iLife 05?
 
 I said above that I think software vendors should behave ethically too. By and large Apple does this: they give away lots of applications for free with every copy of Mac OS X, and they also make many of them available for free download to anybody at anytime (applications like Safari, QuickTime and of course iTunes; which is itself part of iLife); they also give away a copy of iLife with every new Mac sold.
 
-This seems more than reasonable on their part. In short, they do very little in the way of "driving people to piracy", and they do a lot in the way of getting iLife into people's hands for free. For those who must pay, Apple sells the product of $79 (less if you're eligible for an educational discount); not bad for a set of applications which allows you to make near-professional quality CDs, DVDs, movies, songs, podcasts, webpages, greeting cards, calendars and much more.
+This seems more than reasonable on their part. In short, they do very little in the way of "driving people to piracy", and they do a lot in the way of getting iLife into people's hands for free. For those who must pay, Apple sells the product of \$79 (less if you're eligible for an educational discount); not bad for a set of applications which allows you to make near-professional quality CDs, DVDs, movies, songs, podcasts, webpages, greeting cards, calendars and much more.
 
-But there is something that people are complaining about: those who purchased Macs just prior to the iLife 06 announcement will find that they're stuck with iLife 05. Those who purchased *after* will be able to upgrade, effectively for free, via the [Up-To-Date](http://www.apple.com/ilife/uptodate/) program.
+But there is something that people are complaining about: those who purchased Macs just prior to the iLife 06 announcement will find that they're stuck with iLife 05. Those who purchased _after_ will be able to upgrade, effectively for free, via the [Up-To-Date](http://www.apple.com/ilife/uptodate/) program.
 
 So imagine if you bought a Mac on 9 January, received iLife 05, and missed out on being eligible for the Up-To-Date program by one measly day. You'd probably be quite annoyed. If you went out and pirated iLife 06 you'd be doing something illegal in the technical sense (copyright infringement) and immoral in the ethical sense (failing to respect the wishes of the author of a creative work), but there's a moral grey area here because Apple's decision to set the cut-off date for the Up-To-Date program at 10 January really starts to stretch the limits of "reasonableness".
 

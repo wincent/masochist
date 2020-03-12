@@ -7,7 +7,7 @@ So I didn't actually give up on [Emacs](/wiki/Emacs) six days ago as I had indic
 
 I've now "gotten up to speed" somewhat, by which I mean I've customized the environment and practised enough that I can do most things at about 80% of their former speed. I guess it's foreseeable that I could get to 100% and even exceed that within a couple of weeks.
 
-Do I miss [TextMate](/wiki/TextMate)? Well, I miss the *feel* of it. But I don't miss the resource issues it has. The customizability of Emacs is great, but it's not the be all and end all (there's no `make-emacs-stop-looking-ugly` command, after all). The real issue is the difference in resource usage.
+Do I miss [TextMate](/wiki/TextMate)? Well, I miss the _feel_ of it. But I don't miss the resource issues it has. The customizability of Emacs is great, but it's not the be all and end all (there's no `make-emacs-stop-looking-ugly` command, after all). The real issue is the difference in resource usage.
 
 You can fire up Emacs. It's neither hideously slow nor blazingly fast. It basically goes as fast as you need it to (that is, it can keep up with you no matter how fast you type). You can leave it running for a week and over the course of that week open several hundred documents. At the end of that period it will still be running just as fast as it was when you first launched it.
 

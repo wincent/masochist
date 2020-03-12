@@ -3,7 +3,7 @@ title: Open Source economics for the small guy
 tags: blog
 ---
 
-I like the open source model. I really do think it has the potential to produce better software. Note that I said *potential*; survey the market place and you'll find examples of open source projects which are best-of-class and others which are severely lacking.
+I like the open source model. I really do think it has the potential to produce better software. Note that I said _potential_; survey the market place and you'll find examples of open source projects which are best-of-class and others which are severely lacking.
 
 I currently make a bit of open source software available but also work on closed source stuff. If I thought i could make everything open source and still survive economically then I'd do it in a heartbeat. I suspect I'm not alone in feeling this way; as Brent Simmons [recently said](http://inessential.com/?comments=1&postid=3461):
 

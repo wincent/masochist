@@ -165,7 +165,7 @@ stub.instance_of(User).save { false }
 
 # General observations
 
-Sometimes doubles can interact in bizarre and unpredictable ways, so it is absolutely important to check that your specs properly fail when the message expectations are violated. That is, you *must* ensure you've got "red" specs in place before you add or correct the implementation to turn them "green".
+Sometimes doubles can interact in bizarre and unpredictable ways, so it is absolutely important to check that your specs properly fail when the message expectations are violated. That is, you _must_ ensure you've got "red" specs in place before you add or correct the implementation to turn them "green".
 
 ## Example
 
@@ -193,7 +193,7 @@ stub(Snippet).recent.mock!.offset(10)
 
 This is puzzling because the `published` call is not at all related to the `recent` call (ie. `published` does not call `recent` internally), so I can't see how or why it might interfere with the other stub.
 
-Whatever the cause, the lesson is clear: make sure your specs fail *first*, otherwise you may end up with an implementation that is incorrect but your mocks won't alert you to the problem.
+Whatever the cause, the lesson is clear: make sure your specs fail _first_, otherwise you may end up with an implementation that is incorrect but your mocks won't alert you to the problem.
 
 # Related
 

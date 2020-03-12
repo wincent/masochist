@@ -7,7 +7,7 @@ This is a simple example of a [dynamic programming](/wiki/dynamic_programming) a
 
 # Problem statement
 
-Given a set of vertexes ***V*** describing a path in a graph, with each vertex assigned a weight, the *Maximum Weighted Independent Set* is the subset of vertices whose weights sum to the maximum possible value without any two vertices being adjacent to one another (hence "independent" set).
+Given a set of vertexes **_V_** describing a path in a graph, with each vertex assigned a weight, the _Maximum Weighted Independent Set_ is the subset of vertices whose weights sum to the maximum possible value without any two vertices being adjacent to one another (hence "independent" set).
 
 # Runtime
 
@@ -19,8 +19,8 @@ Given a set of vertexes ***V*** describing a path in a graph, with each vertex a
 # Basis
 
 -   An optimal solution can have one of two properties:
-    1.  Either the last element in the path *is not* part of the maximum weighted independent set (in which case we know that the solution is equally valid for the subgraph ***V'*** formed by popping the last vertex off the path)
-    2.  Or the last element *is* part of the set (in which case we know that the predecessor cannot be part of the set, and the solution minus the last vertex is equally valid for the subgraph ***V''*** formed by popping off the last two vertices of the path)
+    1.  Either the last element in the path _is not_ part of the maximum weighted independent set (in which case we know that the solution is equally valid for the subgraph **_V'_** formed by popping the last vertex off the path)
+    2.  Or the last element _is_ part of the set (in which case we know that the predecessor cannot be part of the set, and the solution minus the last vertex is equally valid for the subgraph **_V''_** formed by popping off the last two vertices of the path)
 -   If we could presciently know which of these properties applied we could walk backwards down the path in linear time and compute the solution
 -   We don't have that prescience, however; if we could test both alternatives and recurse then we could arrive at a solution but it would be exponential
 -   The expense of the recursion comes from the fact that we end up re-solving the same subproblems over and over again; if we memoize, then we can amortize that cost and produce a linear runtime
@@ -33,8 +33,8 @@ We'll walk through the path from left to right, using memoized knowledge of the 
     -   For the empty set, the weight is zero
     -   For the one-element set, the element is in the set and its weight is the maximum weight; store this in the array at `A[0]`
 -   When looking at element `A[i]`, the memoized maximum weight must be:
-    -   `A[i - 1]` (this corresponds to the case when the last vertex, `i`, *is not* in the set)
-    -   `A[i - 2]` + `weight of i` (this correspond to the case when the last vertex, `i`, *is* in the set)
+    -   `A[i - 1]` (this corresponds to the case when the last vertex, `i`, _is not_ in the set)
+    -   `A[i - 2]` + `weight of i` (this correspond to the case when the last vertex, `i`, _is_ in the set)
     -   We pick whichever is biggest and store it in `A[i]`
 
 # Reconstruction

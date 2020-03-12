@@ -14,7 +14,7 @@ Likewise, the actual [HTTP](/wiki/HTTP) headers returned to the browser will be 
 
 Note the `charset=utf-8` in the returned header:
 
-    HTTP/1.1 200 OK 
+    HTTP/1.1 200 OK
     Cache-Control: no-cache
     Connection: Keep-Alive
     Date: Mon, 02 Apr 2007 19:10:27 GMT
@@ -36,7 +36,7 @@ Confirming this, I installed the latest version from the 4.1 series on my [Mac O
 
     ENGINE=InnoDB DEFAULT CHARSET=latin1
 
-[InnoDB](/wiki/InnoDB) tables are fairly nice, offering transactions, row-level locking, and foreign-key constraints (see <http://dev.mysql.com/doc/refman/4.1/en/innodb-overview.html>), but the charset value is not what we want. I have seen [some posts](http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/) that claim that [InnoDB](/wiki/InnoDB) tables don't support full-text searching if [UTF-8](/wiki/UTF-8) is used, but [the MySQL documentation](http://dev.mysql.com/doc/refman/4.1/en/fulltext-restrictions.html) clarifies this further stating that full-text searching is not support in [InnoDB](/wiki/InnoDB) tables with *any* encoding at all.
+[InnoDB](/wiki/InnoDB) tables are fairly nice, offering transactions, row-level locking, and foreign-key constraints (see <http://dev.mysql.com/doc/refman/4.1/en/innodb-overview.html>), but the charset value is not what we want. I have seen [some posts](http://ruphus.com/blog/2005/06/23/getting-unicode-mysql-and-rails-to-cooperate/) that claim that [InnoDB](/wiki/InnoDB) tables don't support full-text searching if [UTF-8](/wiki/UTF-8) is used, but [the MySQL documentation](http://dev.mysql.com/doc/refman/4.1/en/fulltext-restrictions.html) clarifies this further stating that full-text searching is not support in [InnoDB](/wiki/InnoDB) tables with _any_ encoding at all.
 
 ## Database creation time
 

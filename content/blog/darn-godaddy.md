@@ -5,15 +5,11 @@ tags: blog
 
 GoDaddy continues [to scam](http://www.wincent.com/a/about/wincent/weblog/archives/2006/07/godaddy_scam.php) with respect to private registrations but I've found one way to get around it.
 
-
-
-
-
 I used to have 32 domains registered with GoDaddy. A while back I [let one of them go](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/godaddys_renewa.php) due to my dissatisfaction with GoDaddy's "bait and switch" pricing policy: get 'em in with cheap prices and then gouge 'em on renewal. I preferred to forgo the domain rather than give in to their bandit tactics.
 
 This is manifested at its worst in their private registration scams, recently taken to new heights. Back when I first wrote about this I got some feedback from a GoDaddy employee:
 
-> Hello, i currently work for godaddy dot com so i have a baiesd opinion. bassicly i read the part about privacy, i agree. it is actually an icann policy that forces who is infromation to be avalible. the process of keeping domains private can get costly though. not for your everyday account, but we do have to offer the infromation to certan groups (the police, people with court orders, ect..). thus fieling and going over paperwork for thousands of requests can cost some money. $2 is a fair price i suppose. anyway have a nice day, your site is really cool. (i work tech support so we may talk one day.)
+> Hello, i currently work for godaddy dot com so i have a baiesd opinion. bassicly i read the part about privacy, i agree. it is actually an icann policy that forces who is infromation to be avalible. the process of keeping domains private can get costly though. not for your everyday account, but we do have to offer the infromation to certan groups (the police, people with court orders, ect..). thus fieling and going over paperwork for thousands of requests can cost some money. \$2 is a fair price i suppose. anyway have a nice day, your site is really cool. (i work tech support so we may talk one day.)
 
 He has a valid point: providing privacy is a service and it's not reasonable to expect that service to be free. In addition to the costs he mentions there is also the cost of maintaining an email forwarding service with effective spam filtering for millions of domains. Admittedly this running cost must be fairly small, but I think $2 per year is a fair price to pay. But $8.99? I don't think so...
 
@@ -51,9 +47,9 @@ I subsequently complained but haven't yet received a reply (several days have pa
 >
 > Your website shows me a message stating, "Renewing more than 5 domains at once will automatically qualify for special bulk pricing", and clicking on the link takes me to the price list for which I've already provide a link.
 >
-> Just below this the page says, "Choose a Public or Private Registration", and further down, "Today's Special! Just $4.99/yr. per domain" (screenshot attached as proof).
+> Just below this the page says, "Choose a Public or Private Registration", and further down, "Today's Special! Just \$4.99/yr. per domain" (screenshot attached as proof).
 >
-> Once again this clearly gives the impression that the price is $4.99. If that is not the case, why then does GoDaddy go out of it's way to make the offer? Your site is showing this offer to me as a logged in user who has indicated which domains he wishes to renew; there were no non-renewal domains selected and no non-private domains selected. If the offer does not apply to any of the selected domains then GoDaddy shouldn't be showing it only to later withdraw it.
+> Once again this clearly gives the impression that the price is \$4.99. If that is not the case, why then does GoDaddy go out of it's way to make the offer? Your site is showing this offer to me as a logged in user who has indicated which domains he wishes to renew; there were no non-renewal domains selected and no non-private domains selected. If the offer does not apply to any of the selected domains then GoDaddy shouldn't be showing it only to later withdraw it.
 >
 > So basically this amounts to false advertising. What can I do to obtain the advertised price? It seems you should either withdraw the misleading offer or provide a means for customers to actually take you up on it.
 >
@@ -65,7 +61,7 @@ Well, it turns out there is a workaround. This time around the domains in questi
 
 I figured I would renew the domains for one year without privacy and then renew them again shortly after with privacy added back on.
 
-I checked the "public listing" box on the way to the checkout, and lo and behold, GoDaddy wanted to charge me $8.99 for "privacy renewal". It is to laugh.
+I checked the "public listing" box on the way to the checkout, and lo and behold, GoDaddy wanted to charge me \$8.99 for "privacy renewal". It is to laugh.
 
 Off to [Domains By Proxy](http://domainsbyproxy.com/) (really just another GoDaddy website) to cancel the privacy on the domains. Then back to GoDaddy to renew the domains; but this time seeing as they were "public" I was able to "add" privacy for $4.99. That combined with the `TODD` 10%-off coupon code that I found [here](http://www.dealtaker.com/GoDaddy-coupon-code-a528-c40.html) meant that I was able to renew 6 domains with privacy for $79.97. In the end it worked out better this way because I didn't have to do the double-renewal trick that I was contemplating and my domains were only non-private for a couple of minutes. Immediately after renewing I checked the WHOIS database and all the domains had been extended by a year and all of them had the private registration information intact.
 

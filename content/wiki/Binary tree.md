@@ -5,7 +5,7 @@ cache_breaker: 1
 
 # Accessing child elements
 
-To access the children of an element *n*.
+To access the children of an element _n_.
 
 ## For a 1-indexed tree
 
@@ -23,7 +23,7 @@ To access the children of an element *n*.
 
 # Accessing parent elements
 
-To access the parent of an element *n*.
+To access the parent of an element _n_.
 
 ## For a 1-indexed tree
 
@@ -43,7 +43,7 @@ To access the parent of an element *n*.
 
 See:
 
--   *Tidier drawings of trees*: <http://emr.cs.iit.edu/~reingold/tidier-drawings.pdf>
+-   _Tidier drawings of trees_: <http://emr.cs.iit.edu/~reingold/tidier-drawings.pdf>
 
 # Variants of binary trees
 

@@ -8,7 +8,7 @@ tags: data.structures algorithms trees wiki
 
 This is a self-balancing [binary search tree](/wiki/binary_search_tree).
 
-The longest path from the root node to a leaf is no more than twice as long as the shortest path. This makes search a guaranteed *O(log n)* operation (insertion and deletion are also *O(log n)*).
+The longest path from the root node to a leaf is no more than twice as long as the shortest path. This makes search a guaranteed _O(log n)_ operation (insertion and deletion are also _O(log n)_).
 
 # [AVL Tree](/wiki/AVL_Tree)
 

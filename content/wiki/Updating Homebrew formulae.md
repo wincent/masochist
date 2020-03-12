@@ -4,7 +4,7 @@ tags: homebrew wiki
 
 These are some notes made trying to update [the Clipper recipe](https://github.com/Homebrew/homebrew-core/blob/63966af9c41a16540cfedad660689ef0420cf3a4/Formula/clipper.rb) for the v2.0.0 release.
 
-After testing the build and ensuring the release was tagged *and published* in the releases tab on GitHub, I confirmed the download URL:
+After testing the build and ensuring the release was tagged _and published_ in the releases tab on GitHub, I confirmed the download URL:
 
 ```shell
 wget https://github.com/wincent/clipper/archive/2.0.0.tar.gz

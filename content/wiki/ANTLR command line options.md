@@ -30,7 +30,7 @@ Obtained using `java org.antlr.Tool`:
 Obtained using `java org.antlr.Tool -X`:
 
       -Xgrtree               print the grammar AST
-      -Xdfa                  print DFA as text 
+      -Xdfa                  print DFA as text
       -Xnoprune              test lookahead against EBNF block exit branches
       -Xnocollapse           collapse incident edges into DFA states
       -Xdbgconversion        dump lots of info during NFA conversion

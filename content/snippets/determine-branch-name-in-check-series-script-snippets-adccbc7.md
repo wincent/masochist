@@ -7,6 +7,6 @@ Previously we just made comparisons against the "origin", and while this worked 
 
 In order to get the list of commits that really belong to the topic branch and only the topic branch we would need to compare against "origin/next" in the case of the "next" example.
 
-This commit adds code for automatically detecting what branch we are on (by reading and parsing GIT\_DIR/HEAD), finding out the "remote" and "merge" values for that branch, and then using them to get an accurate list of the commits unique to the topic branch.
+This commit adds code for automatically detecting what branch we are on (by reading and parsing GIT_DIR/HEAD), finding out the "remote" and "merge" values for that branch, and then using them to get an accurate list of the commits unique to the topic branch.
 
 Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;

@@ -10,7 +10,7 @@ I wasn't going to update to [nginx 0.6.36](/wiki/nginx_0.6.36) but seeing as I a
 ## Build process
 
     wget http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.9.tar.gz
-    tar xzvf nginx_upload_module-2.0.9.tar.gz 
+    tar xzvf nginx_upload_module-2.0.9.tar.gz
     wget http://sysoev.ru/nginx/nginx-0.6.36.tar.gz
     tar xzvf nginx-0.6.36.tar.gz
     cd nginx-0.6.36

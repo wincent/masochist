@@ -2,5 +2,3 @@
 redirect: [[GPL]]
 tags: wiki
 ---
-
-

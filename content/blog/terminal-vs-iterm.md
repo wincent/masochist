@@ -18,7 +18,7 @@ While the [Mac OS X](/wiki/Mac_OS_X) [Terminal](/wiki/Terminal) (10.5.8) gives:
 
 Shame, seeing as unlike the Terminal, iTerm actually has non-[broken tab titles](/twitter/157). Looks like I am going to have to try out [this ghastly hack](http://pseudogreen.org/blog/set_tab_names_in_leopard_terminal.html).
 
-Wonder if [Apple](/wiki/Apple) has fixed this in [Snow Leopard](/wiki/Snow_Leopard)... The [AppleScript](/wiki/AppleScript) dictionary at least suggests that this kind of thing is *supposed* to work:
+Wonder if [Apple](/wiki/Apple) has fixed this in [Snow Leopard](/wiki/Snow_Leopard)... The [AppleScript](/wiki/AppleScript) dictionary at least suggests that this kind of thing is _supposed_ to work:
 
     tell application "Terminal"
     	set title displays custom title of first tab of first window to true

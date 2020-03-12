@@ -15,7 +15,7 @@ A major new version of the [Wikitext](/wiki/Wikitext) gem, version 2.0, is now a
 ## HTML5 compliance
 
 -   all output is now a valid HTML5 fragment (while retaining compliance with HTML4/XHTML)
--   while `<tt>` tags may still be used in the *input*, we no longer *emit* `<tt>` tags in the *output* (`<tt>` was removed from HTML5); we instead output `<code>` tags
+-   while `<tt>` tags may still be used in the _input_, we no longer _emit_ `<tt>` tags in the _output_ (`<tt>` was removed from HTML5); we instead output `<code>` tags
 -   explicit support for the two HTML5 output syntaxes, HTML (the new default) and XML (available via the new `output_style` setting)
 
 # About the extension

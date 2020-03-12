@@ -40,7 +40,7 @@ Using this as a model, and consulting the `logrotate` [man page](/wiki/man_page)
         sharedscripts
         postrotate
             test ! -f /var/run/nginx.pid || kill -USR1 `cat /var/run/nginx.pid`
-        endscript  
+        endscript
     }
 
     /home/path_to_rails_app_2/deploy/shared/log/*_log {
@@ -49,7 +49,7 @@ Using this as a model, and consulting the `logrotate` [man page](/wiki/man_page)
         sharedscripts
         postrotate
             test ! -f /var/run/nginx-staging.pid || kill -USR1 `cat /var/run/nginx-staging.pid`
-        endscript  
+        endscript
     }
 
 I'm actually quite glad that I looked into this because in doing so I noticed that having [nginx](/wiki/nginx) write its log files to the same location as [Apache](/wiki/Apache) wouldn't be a good thing (this is the way I initially had it set up). As you can see, these log files would be rotated according to the rules in the `/etc/logrotate.d/httpd` file and nginx would never receive the required[USR1](/wiki/USR1) signal.
@@ -62,7 +62,7 @@ I'm actually quite glad that I looked into this because in doing so I noticed th
     # if the debug output looks good, proceed with a real rotation (-v turns on verbose output)
     sudo logrotate -v /etc/logrotate.conf /etc/logrotate.d/nginx
 
-In my initial testing this log rotation did *not* work as expected; the verbose output ended with lines like the following:
+In my initial testing this log rotation did _not_ work as expected; the verbose output ended with lines like the following:
 
     renaming /home/path_to_app/deploy/shared/log/access_log to /home/path_to_app/deploy/shared/log/access_log.1
     disposeName will be /home/path_to_app/deploy/shared/log/access_log.1
@@ -89,9 +89,9 @@ For each permutation is is necessary to hit the website (to make sure the log is
 
 # Rotating other [Rails](/wiki/Rails) log files
 
-The [nginx](/wiki/nginx) log files are only part of the situation. When you run [mongrel\_cluster](/wiki/mongrel_cluster) you'll get another log file `mongrel.12345.log` (where `12345` is the port number the [mongrel](/wiki/mongrel) instance is listening on) for each mongrel instance in the cluster, as well as the traditional `production.log`, `development.log`, `test.log` and any others that your application might produce.
+The [nginx](/wiki/nginx) log files are only part of the situation. When you run [mongrel_cluster](/wiki/mongrel_cluster) you'll get another log file `mongrel.12345.log` (where `12345` is the port number the [mongrel](/wiki/mongrel) instance is listening on) for each mongrel instance in the cluster, as well as the traditional `production.log`, `development.log`, `test.log` and any others that your application might produce.
 
 See:
 
--   [Rotating mongrel\_cluster log files](/wiki/Rotating_mongrel_cluster_log_files)
+-   [Rotating mongrel_cluster log files](/wiki/Rotating_mongrel_cluster_log_files)
 -   [Rotating Rails application log files](/wiki/Rotating_Rails_application_log_files)

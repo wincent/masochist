@@ -9,7 +9,7 @@ These notes were made while installing [QGit](/wiki/QGit) for the first time on 
     wget http://wftp.tu-chemnitz.de/pub/Qt/qt/source/qt-mac-opensource-src-4.3.0.tar.gz
 
     # extract
-    tar xzvf qt-mac-opensource-src-4.3.0.tar.gz 
+    tar xzvf qt-mac-opensource-src-4.3.0.tar.gz
     cd qt-mac-opensource-src-4.3.0/
 
     # build
@@ -22,14 +22,14 @@ These notes were made while installing [QGit](/wiki/QGit) for the first time on 
     wget "http://dfn.dl.sourceforge.net/sourceforge/qgit/qgit-2.0rc1.tar.bz2"
 
     # extract
-    tar xjvf qgit-2.0rc1.tar.bz2 
+    tar xjvf qgit-2.0rc1.tar.bz2
     cd qgit
 
     # ensure that qmake is in path
     export PATH="/usr/local/Trolltech/Qt-4.3.0/bin/:$PATH"
 
     # build
-    qmake qgit.pro 
+    qmake qgit.pro
     make
 
     # test built application

@@ -7,10 +7,10 @@ tags: dhaka wiki
 # Changes
 
 -   Parsers are now generated much faster.
--   LexerSpecification\#for\_symbol method now handles escaping automatically on metacharacters (thanks to Florian Gross for suggesting this).
--   LexerSpecification\#for\_pattern accepts Ruby regular expression literals in addition to strings (thanks to Bruce Williams and Florian Gross for suggesting this).
+-   LexerSpecification\#for_symbol method now handles escaping automatically on metacharacters (thanks to Florian Gross for suggesting this).
+-   LexerSpecification\#for_pattern accepts Ruby regular expression literals in addition to strings (thanks to Bruce Williams and Florian Gross for suggesting this).
 -   Carriage returns now supported in the regular expression grammar.
--   Evaluator no longer throws exceptions for undefined rules unless the :raise\_error option is set to true.
+-   Evaluator no longer throws exceptions for undefined rules unless the :raise_error option is set to true.
 
 # See also
 

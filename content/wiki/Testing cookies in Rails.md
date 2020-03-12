@@ -29,16 +29,16 @@ Adapting the available information for use with [RSpec](/wiki/RSpec), we have:
 
     before do
       request.cookies['foo'] = CGI::Cookie.new('name' => 'foo', 'value' => '12')
-      
+
       # shorter alternative
       request.cookies['foo'] = CGI::Cookie.new('foo', '12')
     end
 
 Note that:
 
--   You *must* use `request.cookies`, not `cookies`
--   You *must* use a `String` key, not a `Symbol`
--   You *must* set a `CGI::Cookie` value, not just a `String`
+-   You _must_ use `request.cookies`, not `cookies`
+-   You _must_ use a `String` key, not a `Symbol`
+-   You _must_ set a `CGI::Cookie` value, not just a `String`
 
 If you get any of those things wrong then your controller won't be able to get the cookies that you've set in your [specs](/wiki/specs).
 

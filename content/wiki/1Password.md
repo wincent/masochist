@@ -6,8 +6,8 @@ tags: 1password wiki
 
 # Official site
 
-* https://agilebits.com/onepassword
+-   https://agilebits.com/onepassword
 
 # See also
 
-* Blog post on moving to 1Password: "[Betting on the wrong horse](/blog/betting-on-the-wrong-horse)".
+-   Blog post on moving to 1Password: "[Betting on the wrong horse](/blog/betting-on-the-wrong-horse)".

@@ -30,9 +30,9 @@ That's all. No more detail provided. No references to the non-enterprise version
 
 # Detailed upgrade procedure
 
-1.   Backup the Movable Type database and installed files on the remote host.
-2.   Rename old Movable Type installation on the local host (for example, to `mt-old`).
-3.   Put the new files in place on the local host as `mt`.
+1.  Backup the Movable Type database and installed files on the remote host.
+2.  Rename old Movable Type installation on the local host (for example, to `mt-old`).
+3.  Put the new files in place on the local host as `mt`.
 4.  Copy custom files into `mt`.
 5.  Use [Interarchy](/wiki/Interarchy) to perform a mirror upload (uploading in-place over the old files should preserve their permissions). The purchase price of Interarchy is probably justified by the usefulness of this feature alone (together with "Auto Uploads", it is an amazing time saver). Interarchy provides a detailed transcript of activity so that you can monitor progress, as well as a report of what was actually changed (see below).
 6.  Hit `mt-upgrade.cgi` in your web browser
@@ -72,7 +72,7 @@ Of these deleted files, some were custom files that I neglected to copy into my 
 -   mt-config.cgi
 -   plugins/Markdown.pl
 
-One file that Interarchy did *not* delete even though it was not present on the local side was the `.htaccess` file that I use to limit access to the `mt-config.cgi` file:
+One file that Interarchy did _not_ delete even though it was not present on the local side was the `.htaccess` file that I use to limit access to the `mt-config.cgi` file:
 
     <Files mt-config.cgi>
         <Limit GET>

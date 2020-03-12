@@ -3,16 +3,7 @@ tags: tiger ragel updates wiki
 cache_breaker: 1
 ---
 
-wget http://www.cs.queensu.ca/~thurston/ragel/ragel-5.24.tar.gz http://www.cs.queensu.ca/~thurston/ragel/ragel-5.24.tar.gz.asc
-    gpg --verify ragel-5.24.tar.gz.asc ragel-5.24.tar.gz
-    tar xzvf ragel-5.24.tar.gz
-    cd ragel-5.24/
-    ./configure
-    make
-    cd test/
-    ./runtests 
-    cd ..
-    sudo make install
+wget http://www.cs.queensu.ca/~thurston/ragel/ragel-5.24.tar.gz http://www.cs.queensu.ca/~thurston/ragel/ragel-5.24.tar.gz.asc gpg --verify ragel-5.24.tar.gz.asc ragel-5.24.tar.gz tar xzvf ragel-5.24.tar.gz cd ragel-5.24/ ./configure make cd test/ ./runtests cd .. sudo make install
 
 Note that in order to verify the signature you will require the public key:
 

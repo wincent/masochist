@@ -5,10 +5,6 @@ tags: blog
 
 So what happens when you try to use `NSInvocation` and `NSMethodSignature` with methods that accept a variable number of arguments? This is a question that I was asking myself earlier this evening.
 
-
-
-
-
 ### The results
 
 Given a method:
@@ -23,15 +19,13 @@ Prints (timestamp, process name and ID omitted for brevity):
 
     NSMethodSignature: types=v@:@ nargs=3 sizeOfParams=160 returnValueLength=0;
 
-This method:
-    - (void)testMethod2:(NSString *)something otherThing:(id)thing
+This method: - (void)testMethod2:(NSString \*)something otherThing:(id)thing
 
 Prints:
 
     NSMethodSignature: types=v@:@@ nargs=4 sizeOfParams=160 returnValueLength=0;
 
-And this one:
-    - (void)testMethod3:(NSString *)something
+And this one: - (void)testMethod3:(NSString \*)something
 
 Prints:
 
@@ -43,7 +37,7 @@ Methods that take variable numbers of arguments appear no different to the runti
 
 What kind of refactoring? Basically you have to do the same as Apple has done with functions like `NSLog` and `NSLogv`. One takes a variable number of arguments and the other takes a `va_list` as its last parameter. To avoid code duplication you can have the first form prepare the `va_list` and invoke the other.
 
-And yes, the fact that `NSInvocation` does not support methods with a variable number of arguments *is* noted in the documentation:
+And yes, the fact that `NSInvocation` does not support methods with a variable number of arguments _is_ noted in the documentation:
 
 > NSInvocation does not support invocations of methods with either variable numbers of arguments or union arguments.
 

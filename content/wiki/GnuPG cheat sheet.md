@@ -72,7 +72,7 @@ gpg: sending key 134D9429 to hkp server keys.gnupg.net
 # Importing a key from a key server
 
 ```shell
-$ gpg --keyserver pgp.mit.edu --recv-keys 0x134D9429 
+$ gpg --keyserver pgp.mit.edu --recv-keys 0x134D9429
 gpg: requesting key 134D9429 from hkp server pgp.mit.edu
 gpg: key 134D9429: "Wincent Colaiuta <win@wincent.com>" not changed
 gpg: Total number processed: 1

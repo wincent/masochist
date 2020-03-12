@@ -23,10 +23,6 @@ Instead of working backwards a much better approach is to start at the beginning
 
 The way you do this is with assertions.
 
-
-
-
-
 ### Assertions
 
     01 get A

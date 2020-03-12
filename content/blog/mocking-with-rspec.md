@@ -8,7 +8,7 @@ It's been a while since I heaped any praise on [RSpec](/wiki/RSpec), but I just 
 First up, the problem; the following buggy code in the admin interface for moderating issues:
 
     def index
-      @paginator  = Paginator.new params, 
+      @paginator  = Paginator.new params,
                                   Issue.count(:conditions => { :awaiting_moderation => true }),
                                   admin_issues_url
       @issues     = Issue.find :all,
@@ -22,7 +22,7 @@ The `Paginator` instance by default assumes 10 records per page, but the corresp
 So the fix will be to add a `:limit` clause to the `find` statement. While we're at it we'll raise the per-page record count from its default of 10 up to 20:
 
     def index
-      @paginator  = Paginator.new params, 
+      @paginator  = Paginator.new params,
                                   Issue.count(:conditions => { :awaiting_moderation => true }),
                                   admin_issues_url,
                                   20

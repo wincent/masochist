@@ -8,7 +8,7 @@ The new version of [ruby2ruby](/wiki/ruby2ruby), [ruby2ruby 1.1.6](/wiki/ruby2ru
 
 -   2 minor enhancements:
     -   Extended tests for dstr/dsym/drgx to test against embedded slashes and quotes.
-    -   Updated for dasgn\_curr changes to PT.
+    -   Updated for dasgn_curr changes to PT.
 -   2 bug fixes:
     -   Fixed a bug with begin/rescue/ensure.
     -   Fixed argscat and blockpass bug. blah(42, \*args, &block) handled.

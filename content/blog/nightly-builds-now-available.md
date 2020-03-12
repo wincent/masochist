@@ -11,16 +11,11 @@ First up, what is a nightly build? The folks at [Mozilla](http://mozilla.org/) (
 
 Nightly builds are produced by many great open source projects such as [WebKit](http://nightly.webkit.org/) and [VLC](http://nightlies.videolan.org/) (as well as other [not-so-great ones](http://wordpress.org/download/nightly/)). But I think they can be beneficial to closed-source projects as well.
 
-
 ### Benefits
 
 -   Users can confirm that [bugs](http://bugs.wincent.com/) are fixed soon after [changes](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/index.php) are committed to the source code repository.
 -   Users don't have to wait for an official release in order to start benefitting from new features under development.
 -   Greater transparency of the development process: users can see progress as it is being made.
-
-
-
-
 
 ### How it works
 
@@ -30,7 +25,7 @@ I've written a [Ruby](http://www.wincent.com/knowledge-base/Ruby) script that pe
 2.  If changes have been made checks out (clones) a complete copy of the latest version of the codebase.
 3.  Performs a full build of the software; this may be a multi-step process.
 4.  Runs any automated tests.
-5.  Uploads the built software to the server. Each nightly will be identified by a unique combination of product name and Git hash: for example, the first Synergy nightly was labelled as "Synergy (revision 325)"; note that the revision number is *not* the same as the official version number used to label official releases.
+5.  Uploads the built software to the server. Each nightly will be identified by a unique combination of product name and Git hash: for example, the first Synergy nightly was labelled as "Synergy (revision 325)"; note that the revision number is _not_ the same as the official version number used to label official releases.
 6.  Publishes a new entry to the [Nightlog](http://www.wincent.com/a/about/wincent/weblog/nightlog/) ([feed](http://www.wincent.com/a/about/wincent/weblog/nightlog/atom.xml)) including basic information about the build (name, size, checksum, download URL and so forth).
 
 Although the builds are called "nightlies" there are a number of reasons why a new nightly might not appear on any given day:

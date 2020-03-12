@@ -24,10 +24,6 @@ Given input like the following (using the same syntax as that used by [MediaWiki
 
 We want a corresponding nested list described in valid [HTML](http://www.wincent.com/knowledge-base/HTML).
 
-
-
-
-
 As this is wikitext, we want to handle the last item (the invalid) one gracefully. It mustn't break the validity of the HTML but we don't want a silent failure either. We don't want to increase the nesting level several times in one go (probably not what the author intended); it really only makes sense to increase the nesting-level once per line. So the solution will be to handle it the same way Wikipedia does and consider the first `*` to mark the beginning of a nested list and subsequent (invalid) `*` to belong to the first item of that list; this is important because it means they will be displayed back to the user and hopefully alert him/her of the error.
 
 Looking at this HTML makes my brain hurt, but this is what we want to produce:

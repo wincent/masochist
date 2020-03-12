@@ -3,7 +3,7 @@ title: Allow pointer-to-pointer comparisons (WOTest, 8210f41)
 tags: snippets
 ---
 
-Found another case in which comparing nil to nil was leading to a failing test; ultimately the +\[NSValue WOTest\_compare:\] method was being called where both objects were encoded with type "pointer-to-void".
+Found another case in which comparing nil to nil was leading to a failing test; ultimately the +\[NSValue WOTest_compare:\] method was being called where both objects were encoded with type "pointer-to-void".
 
 This commit adds a special case for such comparisons: truly equal pointers are considered to be NSOrderedSame; all others fall through to the default path and an exception is raised.
 

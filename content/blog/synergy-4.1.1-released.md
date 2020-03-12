@@ -7,7 +7,7 @@ tags: synergy releases snow.leopard blog
 
 This is a minor maintenance update which improves compatibility with [Mac OS X](/wiki/Mac_OS_X)'s "Spaces" feature.
 
-Note that the 4.0 series will *only* run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
+Note that the 4.0 series will _only_ run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
 
 For many users this release will be a free upgrade: see [this blog post](/blog/synergy-4.0-upgrades) to find out whether you qualify. If you got Synergy through the MacHeist Giving Tree bundle see [the MacHeist FAQ](/blog/frequently-asked-questions-about-synergy-and-macheist).
 

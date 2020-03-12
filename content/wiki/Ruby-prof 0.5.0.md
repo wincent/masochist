@@ -19,7 +19,7 @@ tags: ruby.prof wiki
 
 ## Bugfixes
 
--   Fixes bug when the type of an attached object (singleton) is inherited from T\_OBJECT as opposed to being a T\_OBJECT (identified by Francis Cianfrocca)
+-   Fixes bug when the type of an attached object (singleton) is inherited from T_OBJECT as opposed to being a T_OBJECT (identified by Francis Cianfrocca)
 -   ruby-prof now works in IRB.
 -   Fix sort order in reports.
 -   Fixed rdoc compile error.

@@ -7,11 +7,11 @@ cache_breaker: 1
 
 ```shell
 $ curl -O ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.9.tar.bz2
-$ openssl sha1 gnupg-1.4.9.tar.bz2 
+$ openssl sha1 gnupg-1.4.9.tar.bz2
 SHA1(gnupg-1.4.9.tar.bz2)= 826f4bef1effce61c3799c8f7d3cc8313b340b55
-$ tar xjvf gnupg-1.4.9.tar.bz2 
+$ tar xjvf gnupg-1.4.9.tar.bz2
 $ cd gnupg-1.4.9
-$ ./configure 
+$ ./configure
 $ make
 $ make check
 $ sudo make install

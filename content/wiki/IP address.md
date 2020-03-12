@@ -2,5 +2,3 @@
 redirect: [[IP]]
 tags: wiki
 ---
-
-

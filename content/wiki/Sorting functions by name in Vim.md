@@ -17,17 +17,17 @@ Given some JavaScript methods in an object:
 
 ```javascript
 const methods = {
-  foo() {
-    // contents
-  },
+    foo() {
+        // contents
+    },
 
-  bar() {
-    // contents
-  },
+    bar() {
+        // contents
+    },
 
-  baz() {
-    // contents
-  },
+    baz() {
+        // contents
+    }
 };
 ```
 

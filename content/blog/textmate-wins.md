@@ -16,7 +16,7 @@ I finally decided to throw some money Allan's way today for the following reason
 -   The very liberal trial policy which has allowed me to try out different versions of TextMate on many different occasions over the course of the last year.
 -   Fair price; 39€ seems a fair enough charge for a reliable, extensible text editor in which you do a lot of work.
 -   [Up front](http://macromates.com/license_policy), fair upgrade policy: free upgrades for a year, and 2.0 will be free.
--   [CamelCase word movement](http://macromates.com/ticket/show?ticket_id=11746E04) using Control plus the arrow keys was added a while back, I just didn't know about it; something I used literally hundreds of times *per hour*.
+-   [CamelCase word movement](http://macromates.com/ticket/show?ticket_id=11746E04) using Control plus the arrow keys was added a while back, I just didn't know about it; something I used literally hundreds of times _per hour_.
 
 So I decided to get a license. I don't need one but I feel a lot better about giving Allan my 39€ than I would about given even one red cent to the master-minds behind the [heist](http://macheist.com/) scam.
 

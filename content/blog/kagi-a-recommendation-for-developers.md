@@ -7,10 +7,6 @@ I offer two [payment options](https://secure.wincent.com/a/store/) for customers
 
 In this article I want to talk about my recommendations to customers looking to buy a product and to developers looking to sell. The service that is best for you may vary according to which position you occupy.
 
-
-
-
-
 #### Customer recommendations
 
 If a customer asks me which service I recommend I [point out](http://www.wincent.com/a/support/faq/#which) that PayPal can generally offer more competitive prices because their fees are lower and because they don't charge VAT to European customers. So for customers, in many cases PayPal works out better; nevertheless some don't like it and chose to go with Kagi.
@@ -27,7 +23,7 @@ Kagi's fees are probably the real killer here and the single biggest disincentiv
 
 For each 5€ license I sell via PayPal, they take about 55 cents in fees. I can withdraw the money to my bank account for free. I don't have to pay currency conversion fees because the price of the software is set in euros, payments are made in euros, and the money is deposited into my account in euros. Funds are available instantly. This works out to just over 10% in fees.
 
-[Kagi's fees](http://www.kagi.com/solutions/pricing.html), on the other hand, work out to between 15% and 16%. Although prices are now set in euros, payments are sent from Kagi in US dollars and I am then at the mercy of my bank that sets its currency exchange rates as it pleases and where I also have to pay additional conversion fees at my end. Kagi levies a $15 "Wire Transfer" fee in order to obtain the money that they have collected on your behalf, and transfers are significantly delayed: in any given month you are not paid for the purchases made in that month until the 20th day of the following month, and your bank may impose a 28 day clearance delay on the incoming funds because they are in a foreign currency. If you're unlucky enough that the transfers coincide with weekends when banks are close then you could end up waiting as long as 83 days before receiving the money for a sale. When you take this delay into account and factor in the interest cost, this can easily drive up the Kagi fees to 20% or more, depending on your sales volume.
+[Kagi's fees](http://www.kagi.com/solutions/pricing.html), on the other hand, work out to between 15% and 16%. Although prices are now set in euros, payments are sent from Kagi in US dollars and I am then at the mercy of my bank that sets its currency exchange rates as it pleases and where I also have to pay additional conversion fees at my end. Kagi levies a \$15 "Wire Transfer" fee in order to obtain the money that they have collected on your behalf, and transfers are significantly delayed: in any given month you are not paid for the purchases made in that month until the 20th day of the following month, and your bank may impose a 28 day clearance delay on the incoming funds because they are in a foreign currency. If you're unlucky enough that the transfers coincide with weekends when banks are close then you could end up waiting as long as 83 days before receiving the money for a sale. When you take this delay into account and factor in the interest cost, this can easily drive up the Kagi fees to 20% or more, depending on your sales volume.
 
 It's even worse than that though; the percentages above are calculated on the basis of the already-adjusted prices: that is, Kagi's fees are 15% to 16% when you sell your software for 10€. If you want to make the comparison totally fair then would have to calculate the percentage that you would pay if you kept the software at the lower price of 5€; in that case the fees go up to 32%. Add the wire transfer fees, currency conversion fees, and the interest cost of the delayed payment to you and your real fees can easily break the 35% or 40% barrier.
 

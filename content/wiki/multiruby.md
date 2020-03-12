@@ -145,7 +145,7 @@ Which yielded:
     TOTAL RESULT = 0 failures out of 2
 
     Passed: 1.9.1-rc2, 1.8.7-p72
-    Failed: 
+    Failed:
 
 So you can see here how it installed two versions of Ruby and then tried to execute `ruby --help` for each one.
 
@@ -179,7 +179,7 @@ So here I install RubyGems manually in one of the environments:
     export PATH=~/.multiruby/install/v1_9_1_0/bin:$PATH
     ruby -v
     wget http://rubyforge.org/frs/download.php/45905/rubygems-1.3.1.tgz
-    tar xzvf rubygems-1.3.1.tgz 
+    tar xzvf rubygems-1.3.1.tgz
     cd rubygems-1.3.1
     ruby setup.rb
 
@@ -225,7 +225,7 @@ Nevertheless, a cursory manual test of the extension indicates that it basically
     gcc -I. -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1/i386-darwin9.6.0 -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1/ruby/backward -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common  -O2 -g -Wall -Wno-parentheses -pipe -fno-common  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -o token.o -c token.c
     gcc -I. -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1/i386-darwin9.6.0 -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1/ruby/backward -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common  -O2 -g -Wall -Wno-parentheses -pipe -fno-common  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -o wikitext.o -c wikitext.c
     gcc -I. -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1/i386-darwin9.6.0 -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1/ruby/backward -I/Users/wincent/.multiruby/install/v1_9_1_0/include/ruby-1.9.1 -I. -DHAVE_RUBY_H  -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE   -fno-common  -O2 -g -Wall -Wno-parentheses -pipe -fno-common  -std=gnu99 -Wall -Wextra -Wno-unused-parameter -o wikitext_ragel.o -c wikitext_ragel.c
-    cc -dynamic -bundle -undefined suppress -flat_namespace -o wikitext.bundle ary.o parser.o str.o token.o wikitext.o wikitext_ragel.o -L. -L/Users/wincent/.multiruby/install/v1_9_1_0/lib -L. -L/usr/local/lib    -lpthread -ldl -lobjc  
+    cc -dynamic -bundle -undefined suppress -flat_namespace -o wikitext.bundle ary.o parser.o str.o token.o wikitext.o wikitext_ragel.o -L. -L/Users/wincent/.multiruby/install/v1_9_1_0/lib -L. -L/usr/local/lib    -lpthread -ldl -lobjc
     $ irb -r ext/wikitext
     irb(main):001:0> Wikitext::Parser
     => Wikitext::Parser

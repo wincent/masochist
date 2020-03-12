@@ -2,5 +2,3 @@
 redirect: [[graph]]
 tags: wiki
 ---
-
-

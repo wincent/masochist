@@ -15,7 +15,6 @@ Adios, 10 Terminal windows with open SSH sessions and work in progress.
 
 Sigh.
 
-
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.4.10

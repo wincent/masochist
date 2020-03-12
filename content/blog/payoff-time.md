@@ -9,10 +9,6 @@ It turns out that what started out as a simple project ended up becoming quite a
 
 Walrus is essentially a compiler that reads files written in a special templating markup (almost identical to that used by Cheetah) and compiles them down to Ruby code. The final output is produced by "filling" (running) the compiled templates. There is a `walrus` [command line](http://www.wincent.com/knowledge-base/command%20line) tool that serves as a front end and makes it easy to process templates in batch style. At its core Walrus employs a [packrat](http://www.wincent.com/knowledge-base/packrat) parser which can recognize any [PEG](http://www.wincent.com/knowledge-base/PEG) and even accepts constructs that wouldn't usually be legal in a [PEG](http://www.wincent.com/knowledge-base/PEG) such as left-recursive productions. The parser is capable of producing arbitrarily complex [ASTs](http://www.wincent.com/knowledge-base/ASTs). Although I'm using it to produce help documentation the design is general enough to be used in any situation where you want to transform text from one format to another. All this means that it is a tool that could end up proving quite useful.
 
-
-
-
-
 ## The output
 
 It's been very gratifying over the last few days to see it finally come to the point where I can start leveraging it for use in my own applications. [Click here for a screenshot](http://www.wincent.com/a/about/wincent/weblog/hextrapolate_help_screenshot.png) of the help pages for [Hextrapolate](http://hextrapolate.wincent.com).
@@ -32,14 +28,14 @@ I want the documentation to look beautiful to the user, so the style sheets are 
     </head>
     <body>
     <a name="resetting_the_preferences" id="resetting_the_preferences"></a>
-    
-    
-    
-    
+
+
+
+
     <h1>Resetting the preferences</h1>
-    
+
     <p>To reset Hextrapolate’s preferences perform the following steps.</p>
-    
+
     <ol>
     <li>Quit Hextrapolate</li>
     <li>Using the Finder, go to your home directory and open the <tt>Library folder</li>
@@ -47,13 +43,13 @@ I want the documentation to look beautiful to the user, so the style sheets are 
     <li>Drag the file <tt>com.wincent.Hextrapolate.plist from the <tt>Preferences folder to your Desktop, or to the Trash if you wish to dispose of it permanently</li>
     </ol>
     <p>The next time you launch Hextrapolate it will automatically create a new preferences file.</p>
-    
-    
+
+
     <h2>See also</h2>
     <p><a href="help:anchor='troubleshooting_tips' bookID=Hextrapolate Help">troubleshooting tips</a></p>
     <p><a href="help:anchor='quitting' bookID=Hextrapolate Help">quitting</a></p>
-    
-    
+
+
     </body>
     </html>
 
@@ -93,7 +89,7 @@ Below you can see the Walrus source used to produce the document. Things to note
 
     To reset Hextrapolate's preferences perform the following steps.
 
-    
+
 
     ` Quit Hextrapolate
     ` Using the Finder, go to your home directory and open the <tt>Library folder
@@ -102,7 +98,7 @@ Below you can see the Walrus source used to produce the document. Things to note
 
     The next time you launch Hextrapolate it will automatically create a new preferences file.
 
-    
+
 
     #end
 
@@ -158,18 +154,18 @@ For the curious, this is what the Ruby source for the compiled template looks li
                     # Comment: appliction-wide default settings go in here
                     # Comment:
                     accumulate('' + "\n") # RawText
-                    set_value("book_id", instance_eval { 'Hextrapolate Help' }) # Set directive 
-                    set_value("book_icon", instance_eval { 'Hextrapolate Help/gfx/icon16.png' }) # Set directive 
+                    set_value("book_id", instance_eval { 'Hextrapolate Help' }) # Set directive
+                    set_value("book_icon", instance_eval { 'Hextrapolate Help/gfx/icon16.png' }) # Set directive
                     accumulate('' + "\n") # RawText
                     # Comment:
                     # Comment: the page_title should be overridden on a per-page basis
                     # Comment:
                     accumulate('' + "\n") # RawText
-                    set_value("page_title", instance_eval { 'Help' }) # Set directive 
+                    set_value("page_title", instance_eval { 'Help' }) # Set directive
             accumulate('  ') # RawText
-            set_value("page_title", instance_eval { "Resetting the preferences" }) # Set directive 
+            set_value("page_title", instance_eval { "Resetting the preferences" }) # Set directive
             accumulate('  ') # RawText
-            set_value("tag", instance_eval { 'resetting_the_preferences' }) # Set directive 
+            set_value("tag", instance_eval { 'resetting_the_preferences' }) # Set directive
             accumulate('  ') # RawText
             lookup_and_accumulate_placeholder(:abstract, "Resetting the preferences")
             accumulate('' + "\n") # RawText
@@ -180,7 +176,7 @@ For the curious, this is what the Ruby source for the compiled template looks li
             lookup_and_accumulate_placeholder(:see_also, lookup_and_return_placeholder(:link_to, 'quitting', 'quitting'))
             accumulate('' + "\n") # RawText
           end
-          
+
           def content
             accumulate('' + "\n") # RawText
             accumulate('To reset Hextrapolate\'s preferences perform the following steps.' + "\n") # RawText (continued)
@@ -197,8 +193,8 @@ For the curious, this is what the Ruby source for the compiled template looks li
             accumulate('' + "\n") # RawText (continued)
             accumulate('' + "\n") # RawText (continued)
           end
-          
-        
+
+
           if __FILE__ == $0   # when run from the command line the default action is to call 'run'
             new.run
           end
@@ -217,7 +213,7 @@ The key thing to note here is that the content above the row of hash markers is 
 
     To reset Hextrapolate's preferences perform the following steps.
 
-    
+
 
     ` Quit Hextrapolate
     ` Using the Finder, go to your home directory and open the <tt>Library folder
@@ -226,11 +222,11 @@ The key thing to note here is that the content above the row of hash markers is 
 
     The next time you launch Hextrapolate it will automatically create a new preferences file.
 
-    
+
 
     #end
 
-In other words, most of the time you only have to focus on the true *content* of each document. You don't have to think about the headers, the footers, the styles or anything else. What happens if Apple changes the way its help documentation looks in Leopard? It's easy enough to change the CSS but what if they make deep structural changes as well? With object-oriented templating this is dead easy: just change the parent classes higher up in the inheritance hierarchy and all the children will automatically be updated.
+In other words, most of the time you only have to focus on the true _content_ of each document. You don't have to think about the headers, the footers, the styles or anything else. What happens if Apple changes the way its help documentation looks in Leopard? It's easy enough to change the CSS but what if they make deep structural changes as well? With object-oriented templating this is dead easy: just change the parent classes higher up in the inheritance hierarchy and all the children will automatically be updated.
 
 ### The "PHP" model
 

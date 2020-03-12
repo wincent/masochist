@@ -8,9 +8,9 @@ tags: rspec wiki
 
 # Changes in version 1.0.0
 
--   Fixed \#10923 have\_text matcher does not support should\_not
+-   Fixed \#10923 have_text matcher does not support should_not
 -   Fixed \#10673 should &gt; and should &gt;= broken
--   Applied \#10921 Allow verify\_rcov to accept greater than threshold coverage %'s via configuration
+-   Applied \#10921 Allow verify_rcov to accept greater than threshold coverage %'s via configuration
 -   Applied \#10920 Added support for not implemented examples (Patch from Chad Humphries)
 -   Patch to allow not implemented examples. This works by not providing a block to the example. (Patch from Chad Humphries, Ken Barker)
 -   Yanked support for Rails 1.1.6 in Spec::Rails
@@ -20,7 +20,7 @@ tags: rspec wiki
 -   Fixed \#10753 Global before and after
 -   Fixed \#10774 Allow before and after to be specified in config II
 -   Refactored Spec::Ui examples to use new global before and after blocks.
--   Added instructions about how to get Selenium working with Spec::Ui (spec\_ui/examples/selenium/README.txt)
+-   Added instructions about how to get Selenium working with Spec::Ui (spec_ui/examples/selenium/README.txt)
 -   Fixed \#10805 selenium.rb missing from gem?
 -   Added rdocs explaining how to deal with errors in Rails' controller actions
 -   Applied \#10770 Finer grained includes.

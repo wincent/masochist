@@ -31,7 +31,7 @@ Appropriate entries should be added to the `/etc/mail/access` file to ensure tha
 
 To test that the blacklisting works correctly, messages can be sent to <nelson-sbl-test@crynwr.com> and <nelson-xbl-test@crynwr.com>.
 
-To test that the postmaster address is *not* being subjected to DNS-based blacklisting (a requirement of [RFC 2821](/wiki/RFC_2821)) you can connect via telnet from the server to be tested to:
+To test that the postmaster address is _not_ being subjected to DNS-based blacklisting (a requirement of [RFC 2821](/wiki/RFC_2821)) you can connect via telnet from the server to be tested to:
 
 telnet://ns1.crynwr.com
 

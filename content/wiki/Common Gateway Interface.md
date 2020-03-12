@@ -2,5 +2,3 @@
 redirect: [[CGI]]
 tags: wiki
 ---
-
-

@@ -36,7 +36,7 @@ Next tactic was to try the aforementioned "second set of update instructions":
     $ sudo gem install rubygems-update
     Successfully installed rubygems-update-1.3.0
     1 gem installed
-    $ sudo update_rubygems 
+    $ sudo update_rubygems
     Installing RubyGems 1.3.0
     mkdir -p /Library/Ruby/Site/1.8
     mkdir -p /System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin

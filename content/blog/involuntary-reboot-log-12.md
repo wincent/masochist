@@ -5,7 +5,7 @@ tags: involuntary.reboot.log blog
 
 Hot on the heels of the [last involuntary reboot](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/involuntary_reb_11.php) we have an absolute whopper today.
 
-At about 3 PM today my machine started to get suspiciously slow after having been up for only a couple of hours. Within a few minutes it had become completely unresponsive, except for the updating of the clock. Normally if this goes on long enough I end up reluctantly performing a hard reset, but in this case there were still signs of life: namely, every few minutes the machine would show *some* evidence that it was still alive "down there" and would respond to my instructions, albeit tardily.
+At about 3 PM today my machine started to get suspiciously slow after having been up for only a couple of hours. Within a few minutes it had become completely unresponsive, except for the updating of the clock. Normally if this goes on long enough I end up reluctantly performing a hard reset, but in this case there were still signs of life: namely, every few minutes the machine would show _some_ evidence that it was still alive "down there" and would respond to my instructions, albeit tardily.
 
 So over the course of the next hour and a half I managed to painfully exit all of my applications. At its worst this entailed a wait of 15 minutes between clicking on a Dock icon and the corresponding menu popping onto the screen. But the idea was to give all of those applications a chance to write out their state to disk; I hate yanking the plug at the best of times, but when apps like Mail are open with their fingers in the mulit-gigabyte pie that is my mail folder I hate it even more.
 
@@ -20,7 +20,6 @@ I wiped the volume and fired up SuperDuper! It's 9:15 PM here now and it's curre
 I seem to have very bad luck with hard disks, despite my myriad precautions. This reminds me all too much of my [painful experiences](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php) with HFS+ "RAID" back in 2005 (which actually lead me to sell that machine, I just got too sick of wasting literally days battling against data loss).
 
 So I'll be watching this disk very carefully over the next few days and possibly increasing the frequency of my backups (I already do a once-per-day mirror of my startup volume to an external disk, as well as a daily burn of my entire home folder to DVD). I'll also be committing my work even more frequently to my remote repositories.
-
 
 ### Involuntary reboot stats to date
 

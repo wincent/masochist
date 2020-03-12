@@ -29,7 +29,7 @@ See below for more information on hiding your [Movable Type](/wiki/Movable_Type)
       <input type="hidden" name="domains" value="example.com" />
       <input type="hidden" name="sitesearch" value="example.com" />
       <input type="hidden" name="ie" value="UTF-8" />
-      <input type="hidden" name="oe" value="UTF-8" />          
+      <input type="hidden" name="oe" value="UTF-8" />
       <input type="submit" name="btnG" value="Search" />
     </form>
 

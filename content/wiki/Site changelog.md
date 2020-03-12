@@ -3,7 +3,7 @@ tags: site wiki
 cache_breaker: 1
 ---
 
-This is a list of user-visible changes to the custom [Rails](/wiki/Rails) application running this site since it went public. These really are only the *user-visible* changes; there are generally *lots* of other modifications made "under the hood".
+This is a list of user-visible changes to the custom [Rails](/wiki/Rails) application running this site since it went public. These really are only the _user-visible_ changes; there are generally _lots_ of other modifications made "under the hood".
 
 Eventually I plan to make the code for the site [open source](/wiki/open_source), so I won't need to manually maintain this list any more.
 

@@ -61,7 +61,7 @@ Store all your code in a shared folder and `#include` or `#import` the desired f
 
 ## [Subversion](/wiki/Subversion) externals
 
-My recent [Rails](/wiki/Rails) experiments introduced me to a feature of [Subversion](/wiki/Subversion) that I'd never used before and which I believe is *the* answer. By using [Subversion](/wiki/Subversion) externals you can store your commonly used code in a central repository, and reference it from multiple projects without having to worry about drag-and-drop, copying-by-hand, or hard-coded or relative paths.
+My recent [Rails](/wiki/Rails) experiments introduced me to a feature of [Subversion](/wiki/Subversion) that I'd never used before and which I believe is _the_ answer. By using [Subversion](/wiki/Subversion) externals you can store your commonly used code in a central repository, and reference it from multiple projects without having to worry about drag-and-drop, copying-by-hand, or hard-coded or relative paths.
 
 From the Subversion book:
 
@@ -97,7 +97,7 @@ I'm planning to make multiple branches in the [WOCommon](/wiki/WOCommon) reposit
 
 I originally thought that thanks to [two-level namespaces](/wiki/two-level_namespaces) multiple frameworks would be able to use code from [WOCommon](/wiki/WOCommon) if necessary without causing link-time errors. Although this is true for some types of symbol there are still some run-time complications. Thanks to the way that classes and categories are in the global namespace in the Objective-C runtime you really can't load the same class or category into memory more than once.
 
-Let's take an example such as a simple [NSString](/wiki/NSString) category. You can't include the category in both [WOCommon](/wiki/WOCommon) and [WOBase](/wiki/WOBase), although you might want to. If you get [WOBase](/wiki/WOBase) to pull the category in from [WOCommon](/wiki/WOCommon) then you can no longer use it from other code; that is, you'd have to put it in [WOBase](/wiki/WOBase) *instead of* in [WOCommon](/wiki/WOCommon) and that kind of defeats the purpose of [WOCommon](/wiki/WOCommon). You could also try to use the [BUNDLE\_LOADER](/wiki/BUNDLE_LOADER) build setting to allow you to use the code from [WOCommon](/wiki/WOCommon) within the framework without linking to it at build time, but that would require you to explicitly add the code to the bundle loader target (the host application) and would negatively impact the usability of the framework (the framework should be "just drop in and go" otherwise it is probably not worth packaging it up in that way).
+Let's take an example such as a simple [NSString](/wiki/NSString) category. You can't include the category in both [WOCommon](/wiki/WOCommon) and [WOBase](/wiki/WOBase), although you might want to. If you get [WOBase](/wiki/WOBase) to pull the category in from [WOCommon](/wiki/WOCommon) then you can no longer use it from other code; that is, you'd have to put it in [WOBase](/wiki/WOBase) _instead of_ in [WOCommon](/wiki/WOCommon) and that kind of defeats the purpose of [WOCommon](/wiki/WOCommon). You could also try to use the [BUNDLE_LOADER](/wiki/BUNDLE_LOADER) build setting to allow you to use the code from [WOCommon](/wiki/WOCommon) within the framework without linking to it at build time, but that would require you to explicitly add the code to the bundle loader target (the host application) and would negatively impact the usability of the framework (the framework should be "just drop in and go" otherwise it is probably not worth packaging it up in that way).
 
 This leads to best practice paradigm: that frameworks should be very small and very compact and do one thing and one thing only ([WOHotKey](/wiki/WOHotKey) and [WOBezel](/wiki/WOBezel) are good examples). Pretty much everything else belongs in [WOCommon](/wiki/WOCommon). This means that eventually [WOBase](/wiki/WOBase) will go away.
 
@@ -105,7 +105,7 @@ This leads to best practice paradigm: that frameworks should be very small and v
 
 A problem I've yet to overcome is the question of how to handle localization in [WOCommon](/wiki/WOCommon). Frameworks allow you to easily bundle `Localizable.strings` files inside the frameworks, but where would you store localizable strings in code that uses [WOCommon](/wiki/WOCommon)? To date only four alternatives come to mind and none of them are particularly attractive:
 
-1.   Use [NSLocalizedString](/wiki/NSLocalizedString) in [WOCommon](/wiki/WOCommon) source files and expect each including project to maintain localizable strings files independently (downside: you lose the benefits of localizing once, centrally)
+1.  Use [NSLocalizedString](/wiki/NSLocalizedString) in [WOCommon](/wiki/WOCommon) source files and expect each including project to maintain localizable strings files independently (downside: you lose the benefits of localizing once, centrally)
 2.  Restrict [WOCommon](/wiki/WOCommon) code to a low level, below the user interface, such that it never needs to display any user-visible strings (downside: severely limits the scope of [WOCommon](/wiki/WOCommon))
 3.  Include localizable strings files in [WOCommon](/wiki/WOCommon), which programmers would then need to remember to include in their projects (downside: centralized but untidy as it increases the number of files involved)
 4.  Don't make any provisions for localization (not acceptable)

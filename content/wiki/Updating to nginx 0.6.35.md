@@ -6,7 +6,7 @@ cache_breaker: 1
 Notes made while updating my local [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.6 install to [nginx 0.6.35](/wiki/nginx_0.6.35):
 
     wget http://sysoev.ru/nginx/nginx-0.6.35.tar.gz
-    tar xzvf nginx-0.6.35.tar.gz 
+    tar xzvf nginx-0.6.35.tar.gz
     cd nginx-0.6.35
     ./configure --prefix=/usr/local/nginx --with-http_ssl_module
     make
@@ -17,7 +17,7 @@ And corresponding notes made while updating remote [Red Hat Enterprise Linux](/w
 
     # build as normal user
     wget wget http://sysoev.ru/nginx/nginx-0.6.35.tar.gz
-    tar xzvf nginx-0.6.35.tar.gz 
+    tar xzvf nginx-0.6.35.tar.gz
     cd nginx-0.6.35
     ./configure --prefix=/usr/local/nginx --with-http_ssl_module
     make
@@ -56,7 +56,7 @@ And corresponding notes made while updating remote [Red Hat Enterprise Linux](/w
 
     # check config file syntax again
     sbin/nginx -t -c conf/nginx.conf
-    sbin/nginx -t -c conf/nginx-staging.conf 
+    sbin/nginx -t -c conf/nginx-staging.conf
 
     # start it all up
     /usr/local/bin/monit start all

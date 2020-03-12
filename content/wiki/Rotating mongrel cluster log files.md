@@ -5,10 +5,10 @@ cache_breaker: 1
 
 In my set-up both [mongrel cluster](/wiki/mongrel_cluster) and my [Rails](/wiki/Rails) application itself log to the same directory, and I wind up with a bunch of log files that look like this:
 
--   access\_log
--   access\_log.1
+-   access_log
+-   access_log.1
 -   development.log
--   error\_log
+-   error_log
 -   migrations.log
 -   mongrel.123.log
 -   mongrel.124.log
@@ -21,7 +21,7 @@ The files ending in `_log` are actually [nginx](/wiki/nginx) log files and are h
 
 The files of the form `mongrel.123.log`, where 123 is the port number a particular [mongrel](/wiki/mongrel) instance is listening on, are created by [mongrel cluster](/wiki/mongrel_cluster) and are generally very small.
 
-Finally, the remaining `.log` files are produced by the [Rails](/wiki/Rails) application itself and can get *huge*.
+Finally, the remaining `.log` files are produced by the [Rails](/wiki/Rails) application itself and can get _huge_.
 
 ## Setting up [logrotate](/wiki/logrotate)
 

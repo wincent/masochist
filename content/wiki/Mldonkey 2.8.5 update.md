@@ -3,13 +3,7 @@ tags: mldonkey updates wiki
 cache_breaker: 1
 ---
 
-wget http://switch.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.8.5.tar.bz2
-    tar xjvf mldonkey-2.8.5.tar.bz2
-    cd mldonkey-2.8.5
-    ls
-    ./configure
-    make
-    sudo make install
+wget http://switch.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.8.5.tar.bz2 tar xjvf mldonkey-2.8.5.tar.bz2 cd mldonkey-2.8.5 ls ./configure make sudo make install
 
 # See also
 

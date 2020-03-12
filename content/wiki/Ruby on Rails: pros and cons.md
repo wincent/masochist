@@ -57,14 +57,14 @@ From IRC:
      <tpope> wincent: plural is conventional but not required like singular models are
     <motion> wincent; name the controller BillyBob if you want
      <tpope> wincent: and yeah, it doesn't have to match up with a model
-     <tpope> wincent: actually script/generate scaffold generates a singular model name. it then pluralizes 
+     <tpope> wincent: actually script/generate scaffold generates a singular model name. it then pluralizes
              that model name if no controller name is specified
 
 So the rules of thumb are:
 
 1.  Call your controllers whatever you want
 2.  When using `generate scaffold`, Rails will create a singular model (compulsory) and a plural controller
-3.   When using `generate controller`, Rails will use whatever name you pass in
+3.  When using `generate controller`, Rails will use whatever name you pass in
 4.  Therefore for consistency it is a good idea to pass a plural controller name in to `generate controller`
 
 ## Documentation shortcomings

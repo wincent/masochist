@@ -2,22 +2,7 @@
 tags: leopard subversion wiki
 ---
 
-wget http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2
-    wget http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2
-    tar xjvf subversion-1.4.3.tar.bz2
-    tar xjvf subversion-deps-1.4.3.tar.bz2
-    wget http://apache.rediris.es/apr/apr-1.2.8.tar.bz2
-    wget http://apache.rediris.es/apr/apr-util-1.2.8.tar.bz2
-    tar xjvf apr-1.2.8.tar.bz2
-    tar xjvf apr-util-1.2.8.tar.bz2
-    rm -r subversion-1.4.3/apr
-    rm -r subversion-1.4.3/apr-util
-    mv apr-1.2.8 subversion-1.4.3/apr
-    mv apr-util-1.2.8 subversion-1.4.3/apr-util
-    cd subversion-1.4.3/apr
-    ./buildconf
-    ./configure
-    make
+wget http://subversion.tigris.org/downloads/subversion-1.4.3.tar.bz2 wget http://subversion.tigris.org/downloads/subversion-deps-1.4.3.tar.bz2 tar xjvf subversion-1.4.3.tar.bz2 tar xjvf subversion-deps-1.4.3.tar.bz2 wget http://apache.rediris.es/apr/apr-1.2.8.tar.bz2 wget http://apache.rediris.es/apr/apr-util-1.2.8.tar.bz2 tar xjvf apr-1.2.8.tar.bz2 tar xjvf apr-util-1.2.8.tar.bz2 rm -r subversion-1.4.3/apr rm -r subversion-1.4.3/apr-util mv apr-1.2.8 subversion-1.4.3/apr mv apr-util-1.2.8 subversion-1.4.3/apr-util cd subversion-1.4.3/apr ./buildconf ./configure make
 
 This yields the following error:
 
@@ -34,7 +19,7 @@ After changing `APR_HAS_SENDFILE` in `include/apr.h` to `0`:
     sudo make install
     cd ../apr-util
     ./buildconf
-    ./configure --with-apr=/usr/local/apr/bin/apr-1-config 
+    ./configure --with-apr=/usr/local/apr/bin/apr-1-config
     make
     sudo make install
     make check

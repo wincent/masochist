@@ -98,7 +98,7 @@ So in a case like this (testing for uniqueness) I think that defining a new cont
 
     # this in spec/spec_helper.rb
     module HashExtensions
-      
+
       # for excluding keys
       def except(*exclusions)
         self.reject { |key, value| exclusions.include? key.to_sym }

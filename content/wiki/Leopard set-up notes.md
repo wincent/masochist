@@ -70,13 +70,13 @@ In most cases I already had a copy of the source archive for the latest version 
     sudo make install
 
     cd ../../aee
-    tar xzvf aee-2.2.15b.tar.gz 
+    tar xzvf aee-2.2.15b.tar.gz
     cd aee-2.2.15b
     make
     sudo make install
 
     cd ../../ee
-    tar xzvf ee-1.4.6.src.tgz 
+    tar xzvf ee-1.4.6.src.tgz
     cd easyedit-1.4.6
     make
     sudo make install
@@ -87,14 +87,14 @@ In most cases I already had a copy of the source archive for the latest version 
     ./configure
     make
     cd test
-    ./runtests 
+    ./runtests
     cd ..
     sudo make install
 
     # a new version of Doxygen is now available
     cd ../../doxygen
     wget http://ftp.stack.nl/pub/users/dimitri/Doxygen-1.5.4.dmg
-    hdiutil attach Doxygen-1.5.4.dmg 
+    hdiutil attach Doxygen-1.5.4.dmg
     sudo ditto /Volumes/Doxygen /Applications/Doxygen
     sudo mv /Applications/Doxygen/Doxygen.app /Applications/
     sudo rm -r /Applications/Doxygen
@@ -102,7 +102,7 @@ In most cases I already had a copy of the source archive for the latest version 
     wget ftp://ftp.stack.nl/pub/users/dimitri/doxygen_manual-1.5.4.pdf.zip
 
     cd ../git
-    tar xjvf gnupg-1.4.7.tar.bz2 
+    tar xjvf gnupg-1.4.7.tar.bz2
     cd gnupg-1.4.7
     ./configure
     make
@@ -110,7 +110,7 @@ In most cases I already had a copy of the source archive for the latest version 
     sudo make install
 
     cd ..
-    tar xjvf git-1.5.3.4.tar.bz2 
+    tar xjvf git-1.5.3.4.tar.bz2
     cd git-1.5.3.4
     make prefix=/usr/local all
     make prefix=/usr/local test
@@ -136,7 +136,7 @@ Get public key from:
     cd mysql
     wget "http://mysql.rediris.es/Downloads/MySQL-5.0/mysql-5.0.45.tar.gz"
     wget http://dev.mysql.com/Downloads/MySQL-5.0/mysql-5.0.45.tar.gz.asc
-    gpg --import mysql_public_key.asc 
+    gpg --import mysql_public_key.asc
     gpg --verify mysql-5.0.45.tar.gz.asc mysql-5.0.45.tar.gz
 
 Unfortunately this wouldn't build in 10.5.0:
@@ -345,7 +345,7 @@ For more notes on installing MySQL on Leopard, see:
 # JUnit
 
     wget http://switch.dl.sourceforge.net/sourceforge/junit/junit4.4.zip
-    unzip junit4.4.zip 
+    unzip junit4.4.zip
     sudo mv junit4.4 /usr/local
     cd /usr/local
     sudo ln -s junit4.4 junit
@@ -376,7 +376,7 @@ Diagnosis:
 Inspection reveal the system has an `ant-antlr-1.7.0.pom`, but no `ant-antlr.jar`:
 
     wget http://ftp.udc.es/apache-dist/ant/binaries/apache-ant-1.7.0-bin.tar.bz2
-    tar xjvf apache-ant-1.7.0-bin.tar.bz2 
+    tar xjvf apache-ant-1.7.0-bin.tar.bz2
     sudo cp apache-ant-1.7.0/lib/ant-antlr.jar /usr/share/ant/lib/
 
 After that it builds fine.

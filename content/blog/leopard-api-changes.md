@@ -5,7 +5,7 @@ tags: blog
 
 I'm under NDA so I can't talk about the details, but I must say that I am really excited about the new APIs (and improvements to existing APIs) that Apple will be offering to developers in Leopard.
 
-Some of the stuff is *annoyingly* good, in fact; annoying because in many cases I spent days or weeks implementing stuff myself which Apple will be offering "for free" in Leopard.
+Some of the stuff is _annoyingly_ good, in fact; annoying because in many cases I spent days or weeks implementing stuff myself which Apple will be offering "for free" in Leopard.
 
 The rest is just plain good. Rather than hold back as I have in the past I think I'll be upping the minimum requirements for most (if not all) of my apps. I will continue to support the older versions of Mac OS X, but only for bug fixes; most of the new feature work will go into the Leopard-only versions.
 

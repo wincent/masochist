@@ -10,11 +10,11 @@ tags: rspec wiki
 
 # Changelog
 
--   Renamed Spec::Rails' rspec\_resource generator to rspec\_scaffold.
--   Removed Spec::Rails' be\_feed matcher since it's based on assert\_select\_feed which is not part of Rails (despite that docs for assert\_select\_encoded says it is).
+-   Renamed Spec::Rails' rspec_resource generator to rspec_scaffold.
+-   Removed Spec::Rails' be_feed matcher since it's based on assert_select_feed which is not part of Rails (despite that docs for assert_select_encoded says it is).
 -   describe(SomeModule) will include that module in the examples. Like for Spec::Rails helpers, but now also in core.
 -   Header in HTML report will be yellow instead of red if there is one failed example
--   Applied \#10951 Odd instance variable name in rspec\_model template (patch from Kyle Hargraves)
+-   Applied \#10951 Odd instance variable name in rspec_model template (patch from Kyle Hargraves)
 -   Improved integration with autotest (Patches from Ryan Davis and David Goodland)
 -   Some small fixes to make all specs run on JRuby.
 

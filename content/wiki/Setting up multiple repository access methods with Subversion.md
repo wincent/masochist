@@ -63,10 +63,10 @@ I also had to add the following to my `.ssh/config` to prevent [SSH](/wiki/SSH) 
 
 Edit the `authorized_keys` file to include the public key (`~/.ssh/id_dsa_subversion`) created above; the following is split across multiple lines for readability but in the actual file it must appear all on the same line. Additional users would each have their own line in the file.
 
-    command="/usr/local/bin/svnserve -t 
+    command="/usr/local/bin/svnserve -t
                                      --tunnel-user=wincent
                                      -r /var/lib/svn/repositories",
-    no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty 
+    no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty
     ssh-dss AA...WA== wincent@cuzco.local
 
 Note that there are no spaces between the quoted `command`, the trailing commas, and the `no-port-forwarding` specification and the other restrictions.
@@ -90,7 +90,7 @@ There are two ways to avoid these repeated prompts:
 1.  Do not protect your private key with a passphrase: with appropriate filesystem permissions, this is probably about as secure as the standard Subversion method of storing your passwords as plaintext in your `~/.subversion/` directory (although as of Subversion 1.4.0 passwords are stored securely in the keychain; see "[Keychain-based storage of Subversion passwords](/wiki/Keychain-based_storage_of_Subversion_passwords)").
 2.  Use `ssh-agent` and `ssh-add`: this is the more secure option, detailed below.
 
-You can launch `ssh-agent` from a Terminal window and it will set the required environment variables, `SSH_AUTH_SOCK` and `SSH_AGENT_PID`. The problem with this approach is that such environment variables won't be available to window-based programs like [Xcode](/wiki/Xcode). Modifying the `~/.MacOSX/environment.plist` file doesn't necessarily help either; for one thing, the value of `SSH_AUTH_SOCK` will randomly vary (incorporating both a random string component as well as the process ID number of the `ssh-agent` process; for example, `/tmp/ssh-A4yghslTsh/agent.10578`) and the file is read only once at login (that is, if you make changes *after* login they will only be read upon the *next* login by which time the information will be out of date).
+You can launch `ssh-agent` from a Terminal window and it will set the required environment variables, `SSH_AUTH_SOCK` and `SSH_AGENT_PID`. The problem with this approach is that such environment variables won't be available to window-based programs like [Xcode](/wiki/Xcode). Modifying the `~/.MacOSX/environment.plist` file doesn't necessarily help either; for one thing, the value of `SSH_AUTH_SOCK` will randomly vary (incorporating both a random string component as well as the process ID number of the `ssh-agent` process; for example, `/tmp/ssh-A4yghslTsh/agent.10578`) and the file is read only once at login (that is, if you make changes _after_ login they will only be read upon the _next_ login by which time the information will be out of date).
 
 A possible workaround is to set only the `SSH_AUTH_SOCK` variable and use the `-a` switch to force the `ssh-agent` to use that (known ahead of time) value, something like `~/.ssh/agent.sock`, and forget about the `SSH_AGENT_PID` variable seeing as it can't be known ahead of time (although this may break certain commands such as `ssh-agent -k`). If the appropriate permission are set on the `~/.ssh/` directory (700, for example) then the use of a fixed socket file should not pose any security risk. The `SSH_AUTH_SOCK` variable should also be set in your `~/.bash_profile`.
 
@@ -101,7 +101,7 @@ You could put such settings in place with the following commands:
 
 Once that set-up is in place all that's required is to actually run the `ssh-agent` process at login and kill it off at logout. There are three possible ways of doing this:
 
-1.   Launch it manually from the terminal once and once only per session.
+1.  Launch it manually from the terminal once and once only per session.
 2.  Launch it using [launchd](/wiki/launchd) (see [example](http://www.opendarwin.org/~landonf/misc/launchd-sshagent/); this example shows how to patch `ssh-agent` for use with `launchd` but it is not suitable for use here because the `SSH_AUTH_SOCK` environment variable can't be known prior to login time).
 3.  Write a wrapper script or program to launch it, and add the wrapper to your login items.
 

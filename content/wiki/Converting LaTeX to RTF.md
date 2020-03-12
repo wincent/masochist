@@ -10,7 +10,7 @@ I found [this](http://sourceforge.net/projects/latex2rtf/) handy tool, `latex2rt
 
     # download and extract
     curl -O "http://jaist.dl.sourceforge.net/sourceforge/latex2rtf/latex2rtf-1.9.16a.tar.gz"
-    tar xzvf latex2rtf-1.9.16a.tar.gz 
+    tar xzvf latex2rtf-1.9.16a.tar.gz
     cd latex2rtf-1.9.16a
 
     # build
@@ -21,7 +21,7 @@ I found [this](http://sourceforge.net/projects/latex2rtf/) handy tool, `latex2rt
 
     # try it out on the GPL (fails miserably)
     curl -O http://www.gnu.org/licenses/gpl-3.0.tex
-    ./latex2rtf gpl-3.0.tex 
+    ./latex2rtf gpl-3.0.tex
 
     # seems you have to install it first to get it to work
     sudo make install

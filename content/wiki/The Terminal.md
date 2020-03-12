@@ -2,5 +2,3 @@
 redirect: [[Terminal]]
 tags: wiki
 ---
-
-

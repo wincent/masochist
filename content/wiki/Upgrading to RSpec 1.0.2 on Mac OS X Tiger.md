@@ -11,7 +11,7 @@ I used the same installation procedure that I employed when upgrading to [RSpec 
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec
@@ -127,7 +127,7 @@ Seeing as I am using [version control](/wiki/version_control) and can revert pai
      --colour
      --format
      progress
-    +--format 
+    +--format
     +failing_examples:previous_failures.txt
     +--example
     +previous_failures.txt

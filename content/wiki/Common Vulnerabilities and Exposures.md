@@ -2,5 +2,3 @@
 redirect: [[CVE]]
 tags: wiki
 ---
-
-

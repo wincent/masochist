@@ -2,9 +2,7 @@
 tags: mysql wiki
 ---
 
-> SET SESSION old_passwords=0;
-    > SET PASSWORD FOR 'foo'@'bar' = password('blah');
-    > FLUSH PRIVILEGES;
+> SET SESSION old_passwords=0; SET PASSWORD FOR 'foo'@'bar' = password('blah'); FLUSH PRIVILEGES;
 
 # See also
 

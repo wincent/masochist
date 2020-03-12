@@ -18,12 +18,7 @@ $ sudo gem install rcov
     Successfully installed rcov-0.8.1.0
     Installing ri documentation for rcov-0.8.1.0...
     Installing RDoc documentation for rcov-0.8.1.0...
-    $ fastri-server -b
-    Building index.
-    Indexed:
-    * 7710 methods
-    * 1364 classes/modules
-    Needed 1.562214 seconds
+    $ fastri-server -b Building index. Indexed: _ 7710 methods _ 1364 classes/modules Needed 1.562214 seconds
 
 # See also
 

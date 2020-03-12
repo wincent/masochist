@@ -20,7 +20,7 @@ Of course, that won't work, even though it reads nicely as English ("if foo is x
 
 The first alternative does do what we want, but it doesn't read as nicely in English ("if foo is x or foo is y"); no native English speaker would ever use such a repetitive construction.
 
-Of course, programming is *not* about speaking English, although it is sometimes tempting to make our code "read nicely" when spoken out loud.
+Of course, programming is _not_ about speaking English, although it is sometimes tempting to make our code "read nicely" when spoken out loud.
 
 So perhaps you consider this alternative to get rid of the reptition:
 

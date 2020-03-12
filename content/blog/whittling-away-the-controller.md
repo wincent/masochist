@@ -7,7 +7,7 @@ Since [my post the other day](http://www.wincent.com/a/about/wincent/weblog/arch
 
 But working on a large body of code is like moulding pottery from clay: even as you go along adding new bits you continue to work with the already-existing clay, moulding it, reforming it, smoothing it and so on. In programming parlance this translates to a lot of refactoring.
 
-I've been quite satisfied to see that even though I've been *adding* new features to the software the controller has been getting *smaller* as I go along. The truth is that Xcode 2.1 is pretty zippy and doesn't have too much trouble even with a 6,000 line source file, but there *is* a noticeable lag when it comes to saving, and saving is something I do often (hitting Command-S at the end of every line is a reflex for me, bred in by years of working with unreliable computers and software!).
+I've been quite satisfied to see that even though I've been _adding_ new features to the software the controller has been getting _smaller_ as I go along. The truth is that Xcode 2.1 is pretty zippy and doesn't have too much trouble even with a 6,000 line source file, but there _is_ a noticeable lag when it comes to saving, and saving is something I do often (hitting Command-S at the end of every line is a reflex for me, bred in by years of working with unreliable computers and software!).
 
 Some of the refactoring is just moving source to different places (to where it should be) and some of it is folding oft-used functionality into somewhere that it can be re-used with minimal code duplication (real refactoring), but either way the end result is a more manageable and maintainable codebase.
 

@@ -14,7 +14,7 @@ For years now I've used my `~/.bash_profile` to give me a custom, colorized [Bas
     NOCOLOR="\[\e[0m\]"
 
     #
-    # Prompt                                                
+    # Prompt
     #
 
     OPENTITLEBAR="\[\033]0;"
@@ -36,7 +36,7 @@ For years now I've used my `~/.bash_profile` to give me a custom, colorized [Bas
 On seeing [this hint](http://www.macosxhints.com/article.php?story=20070628002730528) I learned that my old hack (customizing the title from within the prompt) was no longer necessary:
 
     #
-    # Prompt                                                
+    # Prompt
     #
 
     PROMPT="${GREEN}\h:${BLUE}\W${RED}\$ ${NOCOLOR}"

@@ -11,10 +11,6 @@ It's astonishing to see Gates, surely an individual of well above average intell
 
 In any case, you really have to see it to believe it. It's so astounding that it's actually funny at times. I'm including below an illustrative section from the transcript, one of my favorite parts.
 
-
-
-
-
 > **Boies:** Okay. Now, let me go on to another paragraph and see whether you remember writing that or not. And that is the second paragraph, which reads, "Apparently a lot of OEMs are bundling non-Microsoft browsers and coming up with offerings together with Internet Service providers that get displayed on their machines in a FAR" and you've capitalized each of the letters in far "more prominent way than MSN or our Internet browser." Do you see that?
 >
 > **Gates:** Uh-huh.

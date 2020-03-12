@@ -19,7 +19,7 @@ Examples of login shells:
     -   open a new tab in a terminal window
     -   open a new pane in a [tmux](/wiki/tmux) session
 
-*Note:* This behavior may vary according to your terminal program; it is true for [Mac OS X](/wiki/Mac_OS_X), but [this article claims](http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html) the behavior is the opposite in some Linux distros.
+_Note:_ This behavior may vary according to your terminal program; it is true for [Mac OS X](/wiki/Mac_OS_X), but [this article claims](http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html) the behavior is the opposite in some Linux distros.
 
 An "interactive" shell may be:
 

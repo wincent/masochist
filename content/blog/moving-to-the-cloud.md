@@ -23,7 +23,7 @@ The hype has been building up for a while, but it's recently reached a tipping p
 
 And it looks like I am not the only one. High-profile [Rails](/wiki/Rails) host [Engine Yard](http://www.engineyard.com/) have reinvented themselves as a cloud-based hosting solution provider whose offerings are built on top of [Amazon Web Services](/wiki/Amazon_Web_Services). [Rackspace](/wiki/Rackspace), the poster-child of the managed, dedicated hosting market is now pushing [their own cloud-flavoured hosting](http://www.rackspacecloud.com/). High-traffic sites like Reddit have decommissioned all their "old fashioned" hosting infrastructure (dedicated servers in data centers) and have [migrated wholesale to Amazon](http://blog.reddit.com/2009/11/moving-to-cloud.html).
 
-Cloud computing really *is* the future and the hosting companies which are leading the way now by embracing it are the ones whose survival is guaranteed in the medium to long term. Those who don't heed this warning do so at their peril.
+Cloud computing really _is_ the future and the hosting companies which are leading the way now by embracing it are the ones whose survival is guaranteed in the medium to long term. Those who don't heed this warning do so at their peril.
 
 Before I get into explaining why all this has come to be, and why I think the "tipping point" has been reached, I want to make a brief historical digression looking at how webhosting has changed over the last 10 or 15 years.
 
@@ -35,7 +35,7 @@ Like many users, my first experience publishing a website was back in the 1990s,
 
 My first "real" website — one with its own domain name — was actually wincent.org, which if the WHOIS results don't deceive me, was registered back in September 1999. My chosen webhost had just about the best name you could hope to have: [webhosting.com](http://webhosting.com/). (Despite this auspicious beginning, the company in question eventually dwindled out of existence, and the webhosting.com domain now takes you to an AT&T page.)
 
-This was a shared hosting environment, costing about $24.95 per month. I remember logging in via [SSH](/wiki/SSH) ([shell](/wiki/shell) access was permitted), doing a `cd .. && ls`, and observing the literally *thousands* of other customers that were cohabiting on the poor, overloaded server. It was no wonder that performance would occasionally drop through the floor when one of those customers had a runaway [PHP](/wiki/PHP) or [Perl](/wiki/Perl) app which exhausted all of the available connections to the database server. The [POP](/wiki/POP) and [SMTP](/wiki/SMTP) server was another machine and was similarly unreliable; I didn't have shell access to that one, but the regular outages lead me to expect that once again thousands of users were all competing for the scarce resources on the poor little server.
+This was a shared hosting environment, costing about \$24.95 per month. I remember logging in via [SSH](/wiki/SSH) ([shell](/wiki/shell) access was permitted), doing a `cd .. && ls`, and observing the literally _thousands_ of other customers that were cohabiting on the poor, overloaded server. It was no wonder that performance would occasionally drop through the floor when one of those customers had a runaway [PHP](/wiki/PHP) or [Perl](/wiki/Perl) app which exhausted all of the available connections to the database server. The [POP](/wiki/POP) and [SMTP](/wiki/SMTP) server was another machine and was similarly unreliable; I didn't have shell access to that one, but the regular outages lead me to expect that once again thousands of users were all competing for the scarce resources on the poor little server.
 
 It seemed that the general trend in the market was for companies to engage in a "race to the bottom"; that is, drive down the price as a matter of priority, even when it inevitably compromised the quality of the service. It became commonplace for hosting packages to be offered for less than $10 or $5 per month. Evidently the solution to my problems did not lie that way.
 
@@ -43,7 +43,7 @@ It seemed that the general trend in the market was for companies to engage in a 
 
 Frustration at the lack of reliability of shared hosting drove me towards dedicated hosting in 2002. Having a machine all to myself would solve two problems: resource scarcity would be a thing of the past without thousands of competing customers installing CPU and database-hungry applications; and I would no longer depend on clueless system administrators to set things up the right way (goodbye security holes, hello [RFC](/wiki/RFC)-compliance).
 
-Costs for dedicated hosting in the USA were outside my budget at the time. In Australia however, I could purchase a 1-RU IBM server for a couple thousand dollars and then rent space in a local data center for about A$200 per month. Traffic charges were the largest part of that bill, funnily enough, but at least my traffic was predictable. (I eventually organized some additional, shared hosting in the US via [pair.com](http://pair.com/) in order to host large files like software downloads, and I also accepted the offers of volunteers to host download mirrors.)
+Costs for dedicated hosting in the USA were outside my budget at the time. In Australia however, I could purchase a 1-RU IBM server for a couple thousand dollars and then rent space in a local data center for about A\$200 per month. Traffic charges were the largest part of that bill, funnily enough, but at least my traffic was predictable. (I eventually organized some additional, shared hosting in the US via [pair.com](http://pair.com/) in order to host large files like software downloads, and I also accepted the offers of volunteers to host download mirrors.)
 
 The benefits of dedicated hosting were tremendous: rock solid reliability, excellent performance, full control over DNS, mail and all other configuration, total customization of installed software to suit exact needs, security.
 
@@ -63,11 +63,11 @@ With Rackspace I had the same benefits I had already enjoyed with my do-it-yours
 
 ## The road not taken: Virtual Private Servers
 
-At this point I should probably mention the option that I *didn't* take up: Virtual Private Servers. These offer the pretty much the same level of control as dedicated servers (i.e. root access) but at about half the cost or less.
+At this point I should probably mention the option that I _didn't_ take up: Virtual Private Servers. These offer the pretty much the same level of control as dedicated servers (i.e. root access) but at about half the cost or less.
 
-In the end though they are just another form of shared hosting: you end up sharing the actual physical machine with an unknown number of other clients. In *theory* the isolation from them is much more complete than in a traditional shared hosting environment, but it is still possible that a rogue client could degrade machine performance in a way that will negatively impact your own service. Ultimately, if you *really* cared about performance and robustness, you'd eschew such virtual servers and go for a dedicated machine of your own.
+In the end though they are just another form of shared hosting: you end up sharing the actual physical machine with an unknown number of other clients. In _theory_ the isolation from them is much more complete than in a traditional shared hosting environment, but it is still possible that a rogue client could degrade machine performance in a way that will negatively impact your own service. Ultimately, if you _really_ cared about performance and robustness, you'd eschew such virtual servers and go for a dedicated machine of your own.
 
-I guess one of my misgivings about Virtual Private Servers was that, unsurprisingly, they are *virtual* rather than *real*. A problem on the host machine running a VPS can cause that VPS to just go "poof" and disappear in way that an actual physical server never could (outlandish scenarios involving cat-burglars and tidal waves aside). Despite the fact that VPSs are marketed as though they were your very own machine, the fact remains that they are nothing more than a collection of ephemeral bits with access to some network and computing resources, and at the end of the day their robustness is always going to be somewhat limited.
+I guess one of my misgivings about Virtual Private Servers was that, unsurprisingly, they are _virtual_ rather than _real_. A problem on the host machine running a VPS can cause that VPS to just go "poof" and disappear in way that an actual physical server never could (outlandish scenarios involving cat-burglars and tidal waves aside). Despite the fact that VPSs are marketed as though they were your very own machine, the fact remains that they are nothing more than a collection of ephemeral bits with access to some network and computing resources, and at the end of the day their robustness is always going to be somewhat limited.
 
 Another concern with these Virtual Private Servers is that, being shared resources, the amount of memory available per client tends to be somewhat modest. If you require a larger memory allocation then you'll find that your prices will rapidly trend upwards towards the point where you'll end up saying, I might as well just go dedicated for this price...
 
@@ -75,7 +75,7 @@ Another concern with these Virtual Private Servers is that, being shared resourc
 
 In early 2008 I moved to INetU because I [was dissatisfied](http://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php) with Rackspace's upgrade pathways. Basically I was starting to outgrow my two-and-a-half-year-old machine and Rackspace couldn't provide any means of switching to up-to-date hardware without making my already expensive hosting costs balloon prohibitively.
 
-If you sign a contract for $400 a month with Rackspace in 2005 you'll get 2005 hardware and 2005 software. If another person signs up for $400 a month in 2007 they'll get 2007 hardware and 2007 software. As the older client do you think there might be a way for you to get the same value for money that the new client is getting? It would seem that with Rackspace, no. Your loyalty means nothing to them and the only way you can update your hardware or perform major OS upgrades is paying hefty once-off charges and then higher ongoing fees as well. As I noted in my ["Farewell Rackspace" article](http://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php), the upgrades they offered — like swapping in a larger hard drive at a cost of $75 set-up plus *$600 per year* — were completely out of touch with my actual needs (I was not short on diskspace).
+If you sign a contract for $400 a month with Rackspace in 2005 you'll get 2005 hardware and 2005 software. If another person signs up for $400 a month in 2007 they'll get 2007 hardware and 2007 software. As the older client do you think there might be a way for you to get the same value for money that the new client is getting? It would seem that with Rackspace, no. Your loyalty means nothing to them and the only way you can update your hardware or perform major OS upgrades is paying hefty once-off charges and then higher ongoing fees as well. As I noted in my ["Farewell Rackspace" article](http://wincent.com/a/about/wincent/weblog/archives/2008/01/farewell_racksp.php), the upgrades they offered — like swapping in a larger hard drive at a cost of $75 set-up plus *$600 per year\* — were completely out of touch with my actual needs (I was not short on diskspace).
 
 INetU's offering was slightly dearer than Rackspace's, while promising the same levels of network quality and support. The key difference was that they were willing to commit to providing periodic hardware upgrades in the agreed-upon price. Rackspace got in touch with me multiple times begging for me to stay, but they wouldn't address any of my concerns about their upgrade pricing; no amount of begging and pleading that "we wish you'd stay" can compensate painful price hikes.
 
@@ -105,7 +105,7 @@ This kind of rapid, easy and cheap creation and destruction of instances on the 
 
 I said earlier that the problem with VPSs is that they're not real. Would you prefer to rent a house that was made out of software, software which might have bugs in it and disappear behind a sudden "blue screen of death", or one that was made out of bricks? I imagine that you're probably thinking you'd go for the bricks...
 
-The breakthrough with Amazon's EC2 is that the VPSs are finally recognized for exactly what they are: disposable. You shouldn't have to depend on your VPS as though it were a rock solid piece of physical hardware from a reputable vendor, because it is *not*.
+The breakthrough with Amazon's EC2 is that the VPSs are finally recognized for exactly what they are: disposable. You shouldn't have to depend on your VPS as though it were a rock solid piece of physical hardware from a reputable vendor, because it is _not_.
 
 Amazon's VPSs are so easily created, configured, cloned and destroyed, that the ephemeral nature of virtual machines is no longer a handicap and in fact becomes a strength because of the flexibility that comes with it. Swapping an instance is as easy (and easier) than changing a light bulb.
 
@@ -121,11 +121,11 @@ In a nutshell, AWS isolates you from hardware, and you'll never have to worry ab
 
 ## 6. No vendor lock-in
 
-Your EC2 instances are running standard Linux distributions, so you don't have to worry about vendor lock-in. If Amazon were to go broke tomorrow — unlikely, I know, given their success — you could take your existing configuration and migrate it to any of thousands of Linux hosting providers out there (you *are* running some kind of off-site, off-Amazon backup, aren't you?).
+Your EC2 instances are running standard Linux distributions, so you don't have to worry about vendor lock-in. If Amazon were to go broke tomorrow — unlikely, I know, given their success — you could take your existing configuration and migrate it to any of thousands of Linux hosting providers out there (you _are_ running some kind of off-site, off-Amazon backup, aren't you?).
 
-## 7. Ease of migration *to* AWS
+## 7. Ease of migration _to_ AWS
 
-Just as there is no real friction if you ever want to migrate away from AWS, migrating *to* AWS is easy for exactly the same reason. The standard [Apache](/wiki/Apache), [Sendmail](/wiki/Sendmail), [MySQL](/wiki/MySQL) and other tools which we are all familiar with are the ones that you'll be using in your EC2 instance.
+Just as there is no real friction if you ever want to migrate away from AWS, migrating _to_ AWS is easy for exactly the same reason. The standard [Apache](/wiki/Apache), [Sendmail](/wiki/Sendmail), [MySQL](/wiki/MySQL) and other tools which we are all familiar with are the ones that you'll be using in your EC2 instance.
 
 Not only that, but because of Amazon's flexible and cheap per-hour pricing, you can get started preparing your migration ahead of time at very little cost. I've already started by [moving my DNS nameservers](/blog/dns-changes) away from [INetU](/wiki/INetU), and [my outgoing mail](/blog/outgoing-mail-changes) as well.
 
@@ -137,7 +137,7 @@ My current plan is to replace my existing dedicated server with two EC2 instance
 
 ## 9. Removal of technical barriers
 
-When AWS first started there *were* some technical barriers — things like the lack of static IP addresses and persistent storage — which made it a poor choice for replacing traditional webhosting arrangements. But these have largely gone away now with "Elastic IP addresses" (static IPs) and reliable, fast, easily-cloned persistent storage (Amazon's "Elastic Block Store").
+When AWS first started there _were_ some technical barriers — things like the lack of static IP addresses and persistent storage — which made it a poor choice for replacing traditional webhosting arrangements. But these have largely gone away now with "Elastic IP addresses" (static IPs) and reliable, fast, easily-cloned persistent storage (Amazon's "Elastic Block Store").
 
 Now for most general purpose hosting needs (serving web pages, running web applications, databases, mail exchanges, source code repositories etc) AWS is a practical, viable and downright attractive solution.
 

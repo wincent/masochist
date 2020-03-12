@@ -6,12 +6,12 @@ tags: wiki
 
 Example screencasts:
 
-* [Vim screencasts](/wiki/Vim_screencasts)
+-   [Vim screencasts](/wiki/Vim_screencasts)
 
 An older [screencasts](/wiki/screencasts) archive can be found at:
 
-* http://www.wincent.com/a/about/wincent/weblog/archives/screencasts/
+-   http://www.wincent.com/a/about/wincent/weblog/archives/screencasts/
 
 # See also
 
-* [Wikipedia](/wiki/Wikipedia) article on [screencasting](/wiki/screencasting): http://en.wikipedia.org/wiki/Screencasting
+-   [Wikipedia](/wiki/Wikipedia) article on [screencasting](/wiki/screencasting): http://en.wikipedia.org/wiki/Screencasting

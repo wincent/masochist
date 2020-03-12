@@ -53,14 +53,14 @@ Once we've proposed to do our inline admin UI this way, a couple of conclusions 
     -   A really fast static page load.
     -   A dynamic JavaScript request which doesn't do much work (just does one database query to check whether the user is an admin or not).
 -   For 1% of visitors (the admins), we'll expect the same, except:
-    -   Our dynamic JavaScript request will do a *little* more work (still only one database query though); because there will be more JavaScript to generate, we'll be spending a little more time evaluating our templates.
+    -   Our dynamic JavaScript request will do a _little_ more work (still only one database query though); because there will be more JavaScript to generate, we'll be spending a little more time evaluating our templates.
 -   Our HTML templates, free of JavaScript and helpers, will be much easier to test.
 -   On the other hand, we'll now have a separate set of JavaScript templates to test.
 -   Luckily, the overall amount of testing to be done is roughly the same; but there is now a very clean separation now between HTML view content and JavaScript view logic, so this testing should be easier.
 
-So we know we need to generate the JavaScript dynamically. The question is *where* should we do it?
+So we know we need to generate the JavaScript dynamically. The question is _where_ should we do it?
 
-Add it to each controller? *Meh*.
+Add it to each controller? _Meh_.
 
 The obvious answer is to stick all this in a custom "JavaScript" controller. We could set up the routing for this controller to serve our dynamic JavaScript from under `/javascripts/`, but I prefer to keep a clean separation between the static JavaScript files stored in `public/javascripts` and dynamically generated JavaScript accessed via `/js/`.
 
@@ -76,7 +76,7 @@ We'll add a quick helper that generates the appropriate `<script>` tag to the `<
 
     <script src="/js/issues/show.js" type="text/javascript"></script>
 
-Notice that we can't really include a timestamp here like Rails normally does on its JavaScript links. By definition, our objective is to generate *dynamic* JavaScript which could change from request to request, for example, when the user logs in or logs out.
+Notice that we can't really include a timestamp here like Rails normally does on its JavaScript links. By definition, our objective is to generate _dynamic_ JavaScript which could change from request to request, for example, when the user logs in or logs out.
 
 And why not make things a little sweeter with some syntactic sugar for use in our controllers?
 

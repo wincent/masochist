@@ -5,20 +5,15 @@ tags: blog
 
 Simplifying dramatically, there are basically two main views on piracy among software developers.
 
-
 ### Take 1
 
-The first is simply, *don't worry about it*. Let's take some examples. [Kevin Hoctor](http://nothirst.com/) writes:
+The first is simply, _don't worry about it_. Let's take some examples. [Kevin Hoctor](http://nothirst.com/) writes:
 
 > After years of being forced to design stronger and stronger activation/protection systems for the software I created, I'm very done with all that. If a small percentage of my potential customer base are thieves, then they can steal my software and I'm not losing sleep over it. I'm just going to continue to use moderate protection (AquaticPrime combined with limiting functionality prior to licensing) to promote a quicker sales decision and not to pretend I can stop the crackers that will take it no matter what protection I write.
 
 Another example; [Erik J. Barzeski](http://nslog.com/2005/06/26/qotd_piracy):
 
 > Freshly Squeezed Software's approach to piracy... is, basically, to ignore piracy. We always tried, at FSS, to make sure honest people paid up, but nothing more. None of our software even blocked pirated codes -- it wasn't worth the effort to maintain such a list. The pirates would simply generate a new code, and we'd add that to the list, and it'd become a vicious cycle that took development time away from actual features.
-
-
-
-
 
 [Wil Shipley](http://wilshipley.com/blog/2005/06/piracy.html) says:
 
@@ -34,9 +29,9 @@ Another example; [Erik J. Barzeski](http://nslog.com/2005/06/26/qotd_piracy):
 >
 > Things I know sell software:
 >
-> - Better software (features, aesthetics, usability, reliability).
-> - Word of mouth/buzz/publicity/press.
-> - Good customer service.
+> -   Better software (features, aesthetics, usability, reliability).
+> -   Word of mouth/buzz/publicity/press.
+> -   Good customer service.
 >
 > There's so much work laid out for me right there, why bother working in an area (piracy control) that I'm not sure about? Yet many developers seem to make piracy-control their number one priority. It's because they're too fixated on the concept of a lost dollar. But a lost dollar from a pirate who uses your software is no more real than a lost dollar from a potential customer who hates that you never work on updates that matter to them, or who notices that your app requires activation, or who gets the impression from your sales rhetoric that you hate users, etc.
 >
@@ -46,7 +41,7 @@ All of these positions are basically the same and amount to doing "nothing" or "
 
 ### Take 2
 
-The other perspective on piracy is that you *should* "worry" about piracy. There is plenty of evidence that lots of developers think this way, as evidenced by the number of mailing list posts from people asking about how to implement license code schemes, how to implement activation, whether they should let their apps "phone home" or not, how to obfuscate their executables and so forth. I won't provide concrete quotes to illustrate this but if you spend time observing the developer community sooner or later you'll see the evidence for yourself.
+The other perspective on piracy is that you _should_ "worry" about piracy. There is plenty of evidence that lots of developers think this way, as evidenced by the number of mailing list posts from people asking about how to implement license code schemes, how to implement activation, whether they should let their apps "phone home" or not, how to obfuscate their executables and so forth. I won't provide concrete quotes to illustrate this but if you spend time observing the developer community sooner or later you'll see the evidence for yourself.
 
 ### My take
 
@@ -54,7 +49,7 @@ I basically agree with the first camp. You should encourage honest users to pay 
 
 I think that under concrete circumstances a lax approach to piracy really can affect your sales, and measurably, but those concrete examples almost never arise; specifically, if you sell the only product that fills a certain niche, and there are no free competitors, and no cheaper commercial competitors. Nowadays those circumstances only turn up for brief moments; as soon as you have a good idea it is guaranteed that free and commercial competitors copying the idea will pop up. What this means is that in basically all cases piracy is going to hurt your sales much less than competition from other products will; and that in turn means that you should divert your resources towards competing (improving your product) and away from combatting piracy.
 
-This is something I've learnt in my own business. When [Synergy](http://synergy.wincent.com/) first came out back in 2002 it featured some really original ideas. Competitors quickly sprung up and copied those ideas but they didn't have the same "mindshare" and so they weren't really an issue at first. In those days piracy *did* have a measurable effect. Basically you could watch the sales graph respond to two factors: releasing a new version produced an upwards bump in sales followed by a gradual tapering off, and the publication of a new pirate serial number produced a sudden downwards drop in sales. So in that case blacklisting pirate serial numbers really did make sense (and it probably does anyway seeing as it is so darn easy, literally a question of only a couple of minutes' work, and I think there are a significant number of honest people that will readily pay if they can't find a license code; these aren't hardcore pirates bent on getting stuff for free at any cost, but people who will use a pirate serial to get an "extended trial" if it's easy enough, and checking Serial Box is definitely easy).
+This is something I've learnt in my own business. When [Synergy](http://synergy.wincent.com/) first came out back in 2002 it featured some really original ideas. Competitors quickly sprung up and copied those ideas but they didn't have the same "mindshare" and so they weren't really an issue at first. In those days piracy _did_ have a measurable effect. Basically you could watch the sales graph respond to two factors: releasing a new version produced an upwards bump in sales followed by a gradual tapering off, and the publication of a new pirate serial number produced a sudden downwards drop in sales. So in that case blacklisting pirate serial numbers really did make sense (and it probably does anyway seeing as it is so darn easy, literally a question of only a couple of minutes' work, and I think there are a significant number of honest people that will readily pay if they can't find a license code; these aren't hardcore pirates bent on getting stuff for free at any cost, but people who will use a pirate serial to get an "extended trial" if it's easy enough, and checking Serial Box is definitely easy).
 
 Now, five years later I am convinced that the impact of piracy has dropped off to the point where it is really irrelevant compared to other factors like marketplace competition. Now there really is no measurable effect. You could speculate, but it would be awfully hard to measure or prove anything.
 

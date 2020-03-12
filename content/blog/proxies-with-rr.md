@@ -8,13 +8,13 @@ Back in November I wrote about how I was [thinking of switching to RR](/blog/thi
 
 In addition, one could argue that the concise syntax is nicer too, and that setting up test doubles is more elegant because it looks more like the method invocations that are being specified.
 
-Well, I'm pleased to report that having dabbled with RR in the last week, it has addressed one of my key frustrations with other mocking solutions: namely, the difficulty of specifying *one* piece of pertinent behavior while ignoring the rest.
+Well, I'm pleased to report that having dabbled with RR in the last week, it has addressed one of my key frustrations with other mocking solutions: namely, the difficulty of specifying _one_ piece of pertinent behavior while ignoring the rest.
 
 # [RR](/wiki/RR) proxies in action
 
 Here's an example from a view spec that I just wrote.
 
-This is the assertion that I *wanted* to write:
+This is the assertion that I _wanted_ to write:
 
 ```ruby
 it 'renders the tags partial' do
@@ -23,9 +23,9 @@ it 'renders the tags partial' do
 end
 ```
 
-The problem here is that in order to test that the view makes the desired `render` call, I have to render the view, and guess what: I do that by calling `render` and *that* initial call gets intercepted by the mock and is considered an unexpected message.
+The problem here is that in order to test that the view makes the desired `render` call, I have to render the view, and guess what: I do that by calling `render` and _that_ initial call gets intercepted by the mock and is considered an unexpected message.
 
-With RR, we can use a proxy to let that call through to the original object without raising an exception. Unfortunately, when we do this we get *another* exception, because under the hood RSpec's `render` call is just handing off to another `render` method inside Rails. This inner `render` call includes an empty hash parameter, which I don't really care about but will have to include in my mock set-up anyway.
+With RR, we can use a proxy to let that call through to the original object without raising an exception. Unfortunately, when we do this we get _another_ exception, because under the hood RSpec's `render` call is just handing off to another `render` method inside Rails. This inner `render` call includes an empty hash parameter, which I don't really care about but will have to include in my mock set-up anyway.
 
 ```ruby
 stub.proxy(view).render(anything, anything)
@@ -34,7 +34,7 @@ mock(view).render('shared/tags', anything)
 
 Note that here RR has already come to the rescue by providing us with a proxy rather than just a stub. If we used a normal stub it would just intercept the message send and nothing would be rendered at all. Here, it intercepts the call, considers it to be ok, and passes it on to the real object.
 
-But then there's another problem: the view actually has *another* call to a partial (an errors partial), which we have to stub out too.
+But then there's another problem: the view actually has _another_ call to a partial (an errors partial), which we have to stub out too.
 
 ```ruby
 stub.proxy(view).render(anything, anything)
@@ -51,7 +51,7 @@ stub(view).render('shared/preview', anything)
 mock(view).render('shared/tags', anything)
 ```
 
-Considering that we only wanted to make an assertion about *one* particular message send, that is an *awful* lot of extraneous rubbish we've had to specify just to get things working. It's the kind of thing that makes you feel unhappy, like you'd given birth to a hideously deformed baby or something.
+Considering that we only wanted to make an assertion about _one_ particular message send, that is an _awful_ lot of extraneous rubbish we've had to specify just to get things working. It's the kind of thing that makes you feel unhappy, like you'd given birth to a hideously deformed baby or something.
 
 This is where RR really shines though, because by combining the proxy with lax argument expectations we can actually reduce all that down to this:
 

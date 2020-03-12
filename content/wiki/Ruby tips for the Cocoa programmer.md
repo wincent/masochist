@@ -10,7 +10,7 @@ See [Avoiding mutual/circular/recursive requires](/wiki/Avoiding_mutual%2fcircul
 
 # Private methods and `self`
 
-Private methods are available only from within the instances of the class to which they belong. You may not send to private methods from outside. In fact, the protection is so strict that private methods are not allowed to have an explicit receiver at all, *not even `self`*! This means that the following won't work (yields a `NoMethodError`):
+Private methods are available only from within the instances of the class to which they belong. You may not send to private methods from outside. In fact, the protection is so strict that private methods are not allowed to have an explicit receiver at all, _not even `self`_! This means that the following won't work (yields a `NoMethodError`):
 
     class A
       def initialize
@@ -46,7 +46,7 @@ Source: <http://www.caliban.org/ruby/rubyguide.shtml>
 
 # Subclassing `Object`
 
-*All* classes ultimately inherit from `Object` so this:
+_All_ classes ultimately inherit from `Object` so this:
 
     class Foo
     end

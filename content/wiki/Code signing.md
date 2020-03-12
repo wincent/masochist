@@ -11,12 +11,12 @@ Self-signed certificates:
 -   a self-signed Certificate Authority can be created using Keychain Access
 -   certificates can then be generated at will and signed by the Certificate Authority, for free
 -   adequate for providing a stable proof of application "identity" across versions (for example, if a user authorizes access to an item in the keychain by version 1.0 of an application, version 2.0 will also have access)
--   *users are not bothered with warnings about the nature of the certificate authority*
+-   _users are not bothered with warnings about the nature of the certificate authority_
 
 "Trusted" Certificate Authorities:
 
 -   expensive (prices in the $200-$300 per year range are normal)
--   useful if your application is expected to receive incoming network connections *and* the user has the application firewall turned on *and* has also checked the "Automatically allow signed software to receive incoming connections" checkbox in the "Advanced" tab of the "Firewall" settings in the "Security" preference pane
+-   useful if your application is expected to receive incoming network connections _and_ the user has the application firewall turned on _and_ has also checked the "Automatically allow signed software to receive incoming connections" checkbox in the "Advanced" tab of the "Firewall" settings in the "Security" preference pane
 
 In my view, commercially available code signing certificates simply aren't worth it for Mac OS X. The system, thankfully, doesn't treat self-signed certificates as second-class citizens for most code signing purposes. (This is not the case with SSL certificates, but it certainly is for code signing certificates.)
 

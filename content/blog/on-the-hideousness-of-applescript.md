@@ -53,10 +53,10 @@ All actually-used scripting languages ([Ruby](/wiki/Ruby), [Perl](/wiki/Perl), [
 
 ```applescript
 "TITLE HERE
-			
+
 Date: " & (day of (current date)) & "/" & (month of (current date) as integer) & "/" & (year of (current date)) & "
 Time: " & (time string of (current date)) & "
-			
+
 Rest of content here..."
 ```
 

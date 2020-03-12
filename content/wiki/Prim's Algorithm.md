@@ -7,51 +7,51 @@ cache_breaker: 1
 
 # Algorithm description
 
-Given a graph *G* described by a set of vertices *V* and edges between those vertices *E*:
+Given a graph _G_ described by a set of vertices _V_ and edges between those vertices _E_:
 
-1.  Pick a vertex *s* arbitrarily from *V*
-2.  Create set *X*, containing only *s*; *X* is the set of vertices spanned so far
-3.  Create empty tree *T*; *T* is the partial MST that will be built up as the "while" loop executes
-4.  While *X* != *V*
-    1.  Pick an edge *e* between points *u* and *v* that is the cheapest edge of the graph, where *u* is in *X* and *v* is not in *X* (ie. crossing the boundary between the already-connected and not-yet-connected parts of the graph)
-    2.  Add *e* to *T*
-    3.  Add *v* to *X*
+1.  Pick a vertex _s_ arbitrarily from _V_
+2.  Create set _X_, containing only _s_; _X_ is the set of vertices spanned so far
+3.  Create empty tree _T_; _T_ is the partial MST that will be built up as the "while" loop executes
+4.  While _X_ != _V_
+    1.  Pick an edge _e_ between points _u_ and _v_ that is the cheapest edge of the graph, where _u_ is in _X_ and _v_ is not in _X_ (ie. crossing the boundary between the already-connected and not-yet-connected parts of the graph)
+    2.  Add _e_ to _T_
+    3.  Add _v_ to _X_
 
 ## Runtime of naïve implementation
 
 In the naïve implementation:
 
--   *O(n)* iterations of the "while" loop (where *n* is the number of vertices)
--   *O(m)* time per iteration (where *m* is the number of edges)
--   *O(mn)* overall
+-   _O(n)_ iterations of the "while" loop (where _n_ is the number of vertices)
+-   _O(m)_ time per iteration (where _m_ is the number of edges)
+-   _O(mn)_ overall
 
 ## Performance improvements using the [heap](/wiki/heap) data structure
 
-The [heap](/wiki/heap) data structure is good for doing repeated "extract min" operations, so if we use a heap to store the edges, with the keys being the edge costs, we can get our runtime down to *O(m log n)*.
+The [heap](/wiki/heap) data structure is good for doing repeated "extract min" operations, so if we use a heap to store the edges, with the keys being the edge costs, we can get our runtime down to _O(m log n)_.
 
 Two invariants must be maintained:
 
-1.  The heap contains the vertices of *V* less those already pulled into *X* (ie. *V - X*)
-2.  For an element *v* in the *V - X* heap, the key for *v* must be the cheapest edge *(u, v)* with *u* in *X*; if no such edge exists, then cost is *+infinity*
+1.  The heap contains the vertices of _V_ less those already pulled into _X_ (ie. _V - X_)
+2.  For an element _v_ in the _V - X_ heap, the key for _v_ must be the cheapest edge _(u, v)_ with _u_ in _X_; if no such edge exists, then cost is _+infinity_
 
-With those in place, doing an extract-min produces the next vertex *v* that is not in *X* and corresponding edge *(u, v)* crossing from *X* to *V - X* that should be added to *X* and *T* respectively.
+With those in place, doing an extract-min produces the next vertex _v_ that is not in _X_ and corresponding edge _(u, v)_ crossing from _X_ to _V - X_ that should be added to _X_ and _T_ respectively.
 
-In order to maintain the second invariant, we do the following when adding *v* to *X*:
+In order to maintain the second invariant, we do the following when adding _v_ to _X_:
 
-1.  For each edge *(v, w)* in *E*
-    1.  If *w* is in *V - X*
-        1.  Delete *w* from the heap (requires some additional book-keeping, so that we know the position of each vertex within the heap)
-        2.  Recompute the key for *w* to be the lesser of its former value or cost of the edge *(v, w)*
-        3.  Reinsert *w* into the heap
+1.  For each edge _(v, w)_ in _E_
+    1.  If _w_ is in _V - X_
+        1.  Delete _w_ from the heap (requires some additional book-keeping, so that we know the position of each vertex within the heap)
+        2.  Recompute the key for _w_ to be the lesser of its former value or cost of the edge _(v, w)_
+        3.  Reinsert _w_ into the heap
 
 ## Runtime of [heap](/wiki/heap)-based implementation
 
 -   Heap operations dominate:
-    -   *n - 1* inserts during preprocessing
-    -   *n - 1* "extract-min" operations (one for each iteration of "while" loop)
-    -   *m* delete + insert operations (one for each edge, as its first endpoint gets pulled into *X*)
+    -   _n - 1_ inserts during preprocessing
+    -   _n - 1_ "extract-min" operations (one for each iteration of "while" loop)
+    -   _m_ delete + insert operations (one for each edge, as its first endpoint gets pulled into _X_)
 
-So we're looking at *O(m)* for heap operations (as *m &gt;= n - 1* in a connected graph), and an overall runtime of *O(m log n*).
+So we're looking at _O(m)_ for heap operations (as _m &gt;= n - 1_ in a connected graph), and an overall runtime of _O(m log n_).
 
 # Notes
 

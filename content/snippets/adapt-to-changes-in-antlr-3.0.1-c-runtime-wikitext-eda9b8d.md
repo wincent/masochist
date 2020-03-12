@@ -3,7 +3,7 @@ title: Adapt to changes in ANTLR 3.0.1 C runtime (wikitext, eda9b8d)
 tags: snippets
 ---
 
-In version 3.0 of the ANTLR runtime the "start" field in the ANTLR3\_COMMON\_TOKEN\_struct was a character index (the number of characters, not bytes, relative to the start of the input stream). Likewise for the "stop" field.
+In version 3.0 of the ANTLR runtime the "start" field in the ANTLR3_COMMON_TOKEN_struct was a character index (the number of characters, not bytes, relative to the start of the input stream). Likewise for the "stop" field.
 
 In version 3.0.1 the "start" field is now an absolute pointer, as is the "stop" field.
 

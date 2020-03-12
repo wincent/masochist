@@ -30,13 +30,13 @@ end
 
 Upon making a change to the model, the controller spec broke. The new behaviour was the result of calling `save` on the model during the `comments#update` action, which in turn caused a complex callback to be fired which did a number of updates on cached fields, and necessarily called `Comment.find` in order to do so.
 
-All of this was desired behaviour, but it broke my controller spec because the mock expectation is too rigid. It basically says, "`Comment` should receive `find` with exactly these parameters and return this object, *and it should not receive anything else*".
+All of this was desired behaviour, but it broke my controller spec because the mock expectation is too rigid. It basically says, "`Comment` should receive `find` with exactly these parameters and return this object, _and it should not receive anything else_".
 
 None of my options for solving the problem are particularly attractive.
 
 # Solution 1: mock more
 
-In this solution we add additional `Comment.should_receive` specifications catering for the other calls. This seems perverse and brittle, tying the *controller* specs to the internal implementation details of the *model*.
+In this solution we add additional `Comment.should_receive` specifications catering for the other calls. This seems perverse and brittle, tying the _controller_ specs to the internal implementation details of the _model_.
 
 # Solution 2: mock something else
 
@@ -52,7 +52,7 @@ This works fine in part, but we've now lost some behaviour which almost certainl
 controller.should_receive(:get_comment) { @comment = Comment.find params[:id] }
 ```
 
-This too seems utterly perverse, literally replicating via copy-and-paste the code from the controller in order to keep the specs passing. I confess that I didn't even try this method so can't even affirm that it would work. *Even if* you argue that the copied-and-pasted code is "acceptably trivial" to justify itself, it breaks down as soon as you start writing specs for methods which are even a little more complicated (and in fact, in reality the `get_comment` method used in this example is more complex in practice in the real version because it modifies its behaviour depending on which kind of user is connected).
+This too seems utterly perverse, literally replicating via copy-and-paste the code from the controller in order to keep the specs passing. I confess that I didn't even try this method so can't even affirm that it would work. _Even if_ you argue that the copied-and-pasted code is "acceptably trivial" to justify itself, it breaks down as soon as you start writing specs for methods which are even a little more complicated (and in fact, in reality the `get_comment` method used in this example is more complex in practice in the real version because it modifies its behaviour depending on which kind of user is connected).
 
 In any case note how the level of specificity of our expectation has changed. In our original implementation we specified an interaction that we expected to see with the `Comment` model. In the new version we're just checking to see that a method internal to the controller class has been called. When we add the block syntax we not only perform that check, but we actually replicate internal implementation details to greater or lesser degree. This doesn't seem like a good thing.
 
@@ -125,7 +125,7 @@ assigns[:comment].should == @comment
 
 # Conclusion
 
-Ultimately, almost all of my gripes boil down to me not being able to assert precisely what I want to assert; that is, "that this message with these parameters should be received, *but I literally don't care about what other messages are sent, nor whether the same message is sent multiple times, nor the order of the messages, nor anything else, and I certainly don't care about substituting a fake return value or preventing the real behaviour of the involved classes from being exercised*". In short, I just want to set a message expectation with no strings attached. Is it really so hard?
+Ultimately, almost all of my gripes boil down to me not being able to assert precisely what I want to assert; that is, "that this message with these parameters should be received, _but I literally don't care about what other messages are sent, nor whether the same message is sent multiple times, nor the order of the messages, nor anything else, and I certainly don't care about substituting a fake return value or preventing the real behaviour of the involved classes from being exercised_". In short, I just want to set a message expectation with no strings attached. Is it really so hard?
 
 I guess in my dream world I'm really wishing that I could write something like this, to test for interaction with ActiveRecord:
 
@@ -143,7 +143,7 @@ do_put
 controller.should have_received.get_comment
 ```
 
-Actually implementing this magical `record` method might not be so straight-forward, to say the least. It would require intercepting *all* method calls to the observed object, passing them on to the real method, recording the message-parameters-result tuple, and tight integration with RSpec so that it would know that it should stop "recording" when the current example (`it` block) or perhaps `describe` block goes out of scope. Not sure if this is entirely feasible or even technically possible.
+Actually implementing this magical `record` method might not be so straight-forward, to say the least. It would require intercepting _all_ method calls to the observed object, passing them on to the real method, recording the message-parameters-result tuple, and tight integration with RSpec so that it would know that it should stop "recording" when the current example (`it` block) or perhaps `describe` block goes out of scope. Not sure if this is entirely feasible or even technically possible.
 
 In any case, while I am not sure whether [RR](/wiki/RR) will ease all the pain of this kind of testing, I think it might be worth giving it a try. The one thing I am not sure about is whether I can gradually migrate over to it, or whether I'll run into troubles with [RR](/wiki/RR) and the existing [RSpec](/wiki/RSpec) mocking framework treading on one another's toes.
 

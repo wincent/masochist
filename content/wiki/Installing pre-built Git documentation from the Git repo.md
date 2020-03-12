@@ -19,7 +19,7 @@ $ make quick-install-man
 $ make quick-install-html
 ```
 
-This is *considerably* easier than building the documentation yourself.
+This is _considerably_ easier than building the documentation yourself.
 
 **Note:** This only works from inside a clone of the "git.git" repository, because it works by grabbing the docs from the other branches in the repository. It won't work if run from inside a downloaded tarball of the source tree.
 

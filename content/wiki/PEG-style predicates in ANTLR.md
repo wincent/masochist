@@ -6,7 +6,7 @@ The 11 May 2006 entry from [this page](http://www.antlr.org/blog/antlr3/lookahea
 
 # [PEG](/wiki/PEG) "not" predicates
 
-In a [PEG](/wiki/PEG) a "not" predicate is used to indicate *match **X** as long as it is not followed by **Y***. A [PEG](/wiki/PEG)-like syntax for this would involve using `!` as a prefix operator:
+In a [PEG](/wiki/PEG) a "not" predicate is used to indicate \*match **X** as long as it is not followed by **Y\***. A [PEG](/wiki/PEG)-like syntax for this would involve using `!` as a prefix operator:
 
     // match any "bar" not followed by "baz"
     foo
@@ -33,7 +33,7 @@ Paraphrased, this means:
 
 # [PEG](/wiki/PEG) "and" predicates
 
-In a [PEG](/wiki/PEG) an "and" predicate is used to indicate *match **X** as long as it is followed by **Y***. Although the **Y** must be present it is not actually included in the match. A standard [PEG](/wiki/PEG) notation for this would involve using `&` as a prefix operator:
+In a [PEG](/wiki/PEG) an "and" predicate is used to indicate \*match **X** as long as it is followed by **Y\***. Although the **Y** must be present it is not actually included in the match. A standard [PEG](/wiki/PEG) notation for this would involve using `&` as a prefix operator:
 
     // match any "bar" followed by "baz" (the "baz" is not consumed)
     foo

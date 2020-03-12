@@ -15,4 +15,4 @@ Note that you can also do this with [`ack`](/wiki/ack) or `ag`:
 
 # Related
 
-* [Using Perl to filter standard input](/wiki/Using_Perl_to_filter_standard_input)
+-   [Using Perl to filter standard input](/wiki/Using_Perl_to_filter_standard_input)

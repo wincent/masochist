@@ -10,7 +10,7 @@ Earlier today I had trouble with an [Amazon](/wiki/Amazon) [EC2](/wiki/EC2) inst
 $ ec2-describe-instances # figure out instance id, eg. i-72eba2a1
 $ ec2-stop-instances i-72eba2a1
 $ ec2-start-instances i-72eba2a1
-$ ec2-describe-instances 
+$ ec2-describe-instances
 $ ec2-associate-address 184.73.232.208 -i i-72eba2a1 # set up elastic IP again
 ```
 

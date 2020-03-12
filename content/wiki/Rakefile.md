@@ -2,5 +2,3 @@
 redirect: [[Rake]]
 tags: wiki
 ---
-
-

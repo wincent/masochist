@@ -29,10 +29,9 @@ I used Solarized Light as my color scheme for years, but about a year ago switch
 
 Space is my leader key. Of interest, I switched cold-turkey to the Colemak keyboard layout last year and decided to do it without changing any Vim bindings. That was a long hard road to follow, but I'm finally getting back close to my former speed.
 
-If you look [elsewhere in my dotfiles](https://github.com/wincent/wincent/tree/master/roles/keyboard/files) you'll see some interesting keyboard tweaks for Karabiner. These allow me to do things like use Caps Lock as Backspace when tapped or held, but Control when chorded (and symmetrically, I can tap Return to get "Return", hold it to get repeated "Return", or chord it with another key to get Control). Likewise, I have a "Space layer" where I can hold down Space in conjunction with other keys and get cursor movement without having to move my hand away from the home row; this is great for those times when you're *not* in Vim.
+If you look [elsewhere in my dotfiles](https://github.com/wincent/wincent/tree/master/roles/keyboard/files) you'll see some interesting keyboard tweaks for Karabiner. These allow me to do things like use Caps Lock as Backspace when tapped or held, but Control when chorded (and symmetrically, I can tap Return to get "Return", hold it to get repeated "Return", or chord it with another key to get Control). Likewise, I have a "Space layer" where I can hold down Space in conjunction with other keys and get cursor movement without having to move my hand away from the home row; this is great for those times when you're _not_ in Vim.
 
-The other thing to note is that I've spent a lot of time closing the gap between the terminal Vim experience and what you get in the GUI. The mouse works. I can paste without any special mappings or `:set paste` antics because I set up Bracketed Paste Mode. Italics work. I can change the cursor shape when in Insert mode. I get focus events when I enter and leave Vim, even when I'm running inside tmux. I made a tool called [Clipper](https://github.com/wincent/clipper) that gives my remote Vim and tmux processes access to my local clipboard. It all basically works so well that I actually *prefer* it to GUI Vim now.
-
+The other thing to note is that I've spent a lot of time closing the gap between the terminal Vim experience and what you get in the GUI. The mouse works. I can paste without any special mappings or `:set paste` antics because I set up Bracketed Paste Mode. Italics work. I can change the cursor shape when in Insert mode. I get focus events when I enter and leave Vim, even when I'm running inside tmux. I made a tool called [Clipper](https://github.com/wincent/clipper) that gives my remote Vim and tmux processes access to my local clipboard. It all basically works so well that I actually _prefer_ it to GUI Vim now.
 
 # What have been the most useful resources for you to learn Vim?
 
@@ -41,7 +40,6 @@ I learned from first principles and not by "copy-pasta". I started with a blank 
 I enjoyed Drew Neil's Vimcasts, and I also picked up a copy of his "Practical Vim". But still most of the things I learn end up coming piecemeal via Google and GitHub.
 
 I think the key thing that has helped me learn is discipline. I figure out more optimal replacements for inefficient habits, then I make cheatsheets of things I want to remember and practice them resolutely. I still have plenty of bad habits, but I'm still getting monotonically better over time.
-
 
 # What's the most recent thing you've learned about Vim?
 
@@ -61,7 +59,7 @@ Over the years with all the tinkering I ended up with some pretty nice bells and
 
 # Share a snippet of Vim script that you've written and talk about what it does
 
-One of my favorite little parts of my config is [this section](https://github.com/wincent/wincent/blob/65b500270b1167454bf996f2abd1d803df894aee/roles/dotfiles/files/.vim/plugin/autocmds.vim#L12-L23) which makes the currently focused Vim window stand out by subduing the appearance of all other windows. This is super useful to me because I use *a lot* of splits.
+One of my favorite little parts of my config is [this section](https://github.com/wincent/wincent/blob/65b500270b1167454bf996f2abd1d803df894aee/roles/dotfiles/files/.vim/plugin/autocmds.vim#L12-L23) which makes the currently focused Vim window stand out by subduing the appearance of all other windows. This is super useful to me because I use _a lot_ of splits.
 
 Most or the real functionality is in [this autoloaded file](https://github.com/wincent/wincent/blob/65b500270b1167454bf996f2abd1d803df894aee/roles/dotfiles/files/.vim/autoload/autocmds.vim). One amusing part is this conditional here:
 

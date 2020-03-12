@@ -6,7 +6,7 @@ tags: movable.type wiki
 
 Amazingly, downloading was even more painful than ever. Not only did the [tar](/wiki/tar) archive refuse to extract (as was the case with version 3.33, and the version before that; I am basically resigned to the fact that their system is broken and that they'll never fix it):
 
-    tar xzvf MT-3.34-en.tar.gz 
+    tar xzvf MT-3.34-en.tar.gz
     tar: This does not look like a tar archive
     tar: Skipping to next header
     tar: Archive contains obsolescent base-64 headers
@@ -217,7 +217,7 @@ For security, I then removed the `mt-upgrade.cgi` file from the server.
 
 # Security
 
-I am getting tired of having to keep abreast with security updates for so many web-facing applications; this week alone I've had to install new versions of [WordPress](/wiki/WordPress), [MediaWiki](/wiki/MediaWiki) and now [Movable Type](/wiki/Movable_Type). I new release of [Bugzilla](/wiki/Bugzilla) is also just around the corner. Unfortunately due to the security flaws in the packages these upgrades are all "no choice", "do it your hosed" kinds of upgrades. I'm definitely looking forward to the day when I can retire *all* of these packages and replace them with a single, monstrous, custom web app written in [Ruby on Rails](/wiki/Ruby_on_Rails). Of course, there are two things stopping me doing that right now: one is lack of time, and the other is lack of maturity in the framework (something to be taken very seriously when you are talking about founding your entire online business presence upon it); but hopefully by the time [Rails](/wiki/Rails) hits 2.0 I'll be prepared to migrate to it.
+I am getting tired of having to keep abreast with security updates for so many web-facing applications; this week alone I've had to install new versions of [WordPress](/wiki/WordPress), [MediaWiki](/wiki/MediaWiki) and now [Movable Type](/wiki/Movable_Type). I new release of [Bugzilla](/wiki/Bugzilla) is also just around the corner. Unfortunately due to the security flaws in the packages these upgrades are all "no choice", "do it your hosed" kinds of upgrades. I'm definitely looking forward to the day when I can retire _all_ of these packages and replace them with a single, monstrous, custom web app written in [Ruby on Rails](/wiki/Ruby_on_Rails). Of course, there are two things stopping me doing that right now: one is lack of time, and the other is lack of maturity in the framework (something to be taken very seriously when you are talking about founding your entire online business presence upon it); but hopefully by the time [Rails](/wiki/Rails) hits 2.0 I'll be prepared to migrate to it.
 
 # See also
 

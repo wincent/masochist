@@ -22,10 +22,6 @@ So this is a case where we need a single consumer (model 3 above), and there may
 
 The idea is that `WOQueueConsumer` implements and neatly encapsulates all the things you usually would need to do when working with a `WOQueue`. You just write a subclass and override the `- (void)processQueueItem:(id)item` method and you're done.
 
-
-
-
-
 ### And tangentially...
 
 One of the things I like most about programming is that you're constantly forced to learn new things. Rather than repeatedly solving problems you've already solved in the past you're exposed to new problems and must acquire new knowledge in order to solve them.

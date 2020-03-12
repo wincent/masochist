@@ -12,18 +12,18 @@ Note that I am not using [Seil](https://pqrs.org/osx/karabiner/seil.html.en), fr
 # Settings
 
 -   "Change Key" tab:
-    -   "Change Shift\_L Key (Left Shift)
-        -   "Shift\_R+Shift\_L to CapsLock (+ Shift\_L to turn CapsLock off)"
-    -   "Change Shift\_R Key (Right Shift)
-        -   "Shift\_R+Shift\_L to CapsLock (+ Shift\_L to turn CapsLock off)"
+    -   "Change Shift_L Key (Left Shift)
+        -   "Shift_R+Shift_L to CapsLock (+ Shift_L to turn CapsLock off)"
+    -   "Change Shift_R Key (Right Shift)
+        -   "Shift_R+Shift_L to CapsLock (+ Shift_L to turn CapsLock off)"
 
 This is great. No more accidental Caps Lock, and I don't miss the sticky feature (mentioned below under "Old settings") at all.
 
 After switching to [Colemak](/wiki/Colemak), I wanted to try life with a variant on the so-called killer feature of turning CapsLock into a Backspace key:
 
 -   "Change Key" tab:
-    -   "Change Control\_L key (Left Control)"
-        -   "Control\_L to Control\_L (+ When you type Control\_L only, send Delete) + \[KeyRepeat\]" (this is a slightly custom setting defined [in my dotfiles](https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml))
+    -   "Change Control_L key (Left Control)"
+        -   "Control_L to Control_L (+ When you type Control_L only, send Delete) + \[KeyRepeat\]" (this is a slightly custom setting defined [in my dotfiles](https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml))
 
 So, we're giving up that faster access to the `<Escape>` key (super useful for [Vim](/wiki/Vim)) for the famed "Caps Lock as Delete" behavior which so many Colemak users rave about. You still have a Delete key on the right side of the keyboard, so you can use whichever one makes most sense (ie. dependent on the next character you have to type after the correction). For `<Escape>` in Vim, just use `<C-[>` or the actual `<Escape>` key.
 
@@ -33,7 +33,7 @@ Finally, we have:
 
 -   "Change Key" tab:
     -   "Change Return key"
-        -   "Return to Control\_L (+When you type Return only, send Return) + \[KeyRepeat\]" (this is a slightly custom setting defined [in my dotfiles](https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml))
+        -   "Return to Control_L (+When you type Return only, send Return) + \[KeyRepeat\]" (this is a slightly custom setting defined [in my dotfiles](https://github.com/wincent/wincent/blob/1770b6c55075e1bb2c333a78fc2811def001e93a/roles/keyboard/files/modifiers.xml))
 
 This gives us nice symmetry on the right side, mirroring the easy access to the Control key that we have on the left. Note that this is particularly useful on the laptop keyboard, which normally doesn't even have a Control key anywhere on the right side at all.
 
@@ -57,14 +57,14 @@ Custom "SpaceFN" layout: [config](https://github.com/wincent/wincent/blob/master
 This is the killer setting I ran with for a long time:
 
 -   "Change Key" tab:
-    -   "Change Control\_L key (Left Control)"
-        -   "Control\_L to Control\_L (+ When you type Control\_L only, send Escape)"
+    -   "Change Control_L key (Left Control)"
+        -   "Control_L to Control_L (+ When you type Control_L only, send Escape)"
 
 It was usefully combined with (so that you can keep Control as Control, so that menu modifiers work as before, while still having Caps Lock functionality available somewhere else, and "sticky" shift functionality as a bonus):
 
 -   "Change Key" tab:
-    -   "Change Shift\_L Key (Left Shift)"
-        -   "Shift\_L to Shift\_L (+ When you type Shift\_L only, Sticky Shift\_L) (+ When you type Shift\_L twice, Capslock)"
+    -   "Change Shift_L Key (Left Shift)"
+        -   "Shift_L to Shift_L (+ When you type Shift_L only, Sticky Shift_L) (+ When you type Shift_L twice, Capslock)"
 
 I ended up getting rid of the sticky shift because I found that I'd end up activating it without meaning to, and sometimes I'd end up activating Capslock by mistake and then triggering an unwanted sticky shift when trying to deactivate it.
 

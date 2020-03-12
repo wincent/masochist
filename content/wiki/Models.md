@@ -2,5 +2,3 @@
 redirect: [[Model]]
 tags: wiki
 ---
-
-

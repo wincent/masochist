@@ -13,13 +13,9 @@ So, another Disk First Aid run, this time without errors, and another installati
 
 Several days later came my third hard reset under Leopard, this time brought on by Leopard's lack of support for my Pioneer DVR-K06 drive (a replacement I installed because the Apple-supplied drive flaked out after only a year of use). This was an issue which cropped up in a number of forms in the seed builds and which I had hoped would be resolved in final, but alas, it was not to be.
 
-Ironically, Leopard obviously *can* support the drive (I installed Leopard from it!) but it doesn't work in practice. Basically, the System Profiler reports that there is no burner installed most of the time, but the other day I thought I'd stick in a disc and see what happened and much to my surprise it actually mounted the contained volume!
+Ironically, Leopard obviously _can_ support the drive (I installed Leopard from it!) but it doesn't work in practice. Basically, the System Profiler reports that there is no burner installed most of the time, but the other day I thought I'd stick in a disc and see what happened and much to my surprise it actually mounted the contained volume!
 
 Alas, trying to copy a file from it resulted in a Finder hang (beachballing) after only 4 MB. I tried firing up the Disk Utility but that hang too, and in a cascade effect more and more applications hung or refused to launch until the machine became totally useless. Luckily I had a Terminal window still open so I was able to issue a `sudo reboot`, but that ended up being useless too (infinite spinner) and I had to hard reset. So from here on I'll have to boot back into Tiger whenever I want to read from or write to an optical disc.
-
-
-
-
 
 ### Involuntary reboot stats to date
 

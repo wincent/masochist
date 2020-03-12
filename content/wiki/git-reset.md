@@ -2,13 +2,13 @@
 tags: wiki git
 ---
 
-| Mode      | Default? | Updates HEAD? | Touches worktree?  | Touches index?       | Notes     |
-| --------- | -------- | ------------- | ------------------ | -------------------- | --------- |
-| `--soft`  | ❌       | ✅            | ❌                 | ❌                   |           |
-| `--mixed` | ✅       | ✅            | ❌                 | ❌                   |           |
-| `--hard`  | ❌       | ✅            | ❌                 | ✅                   |           |
-| `--merge` | ❌       | ✅            | ✅ (keeps changes) | ✅ (discards staged) | May abort |
-| `--keep`  | ❌       | ✅            | ✅ (keeps changes) | ✅                   | May abort |
+| Mode | Default? | Updates HEAD? | Touches worktree? | Touches index? | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `--soft` | ❌ | ✅ | ❌ | ❌ |  |
+| `--mixed` | ✅ | ✅ | ❌ | ❌ |  |
+| `--hard` | ❌ | ✅ | ❌ | ✅ |  |
+| `--merge` | ❌ | ✅ | ✅ (keeps changes) | ✅ (discards staged) | May abort |
+| `--keep` | ❌ | ✅ | ✅ (keeps changes) | ✅ | May abort |
 
 ## Notes
 

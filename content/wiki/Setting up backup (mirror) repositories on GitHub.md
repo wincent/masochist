@@ -39,7 +39,7 @@ I typically work with a few of local repositories (one on my old iMac desktop ma
 
 In "[Setting up backup (mirror) repositories on Gitorious](/wiki/Setting_up_backup_%28mirror%29_repositories_on_Gitorious)" I describe adding an additional backup/mirror repo.
 
-It should be noted that these "backups" *are* intended to provide some data redundancy but there are *not* intended to protect against data loss in the "authoritative" repo caused by user stupidity (for example, destructive re-writing of history, or deleting branches).
+It should be noted that these "backups" _are_ intended to provide some data redundancy but there are _not_ intended to protect against data loss in the "authoritative" repo caused by user stupidity (for example, destructive re-writing of history, or deleting branches).
 
 In the event of user stupidity, the mirrors will be duly updated and the data will be truly gone: branches deleted from the "authoritative" repo will be deleted on the mirrors automatically from within a cron job.
 
@@ -67,15 +67,15 @@ If there isn't a key pair already, make one thusly:
 
     # sudo -u user ssh-keygen -t dsa
     Generating public/private dsa key pair.
-    Enter file in which to save the key (/path/to/git/home/.ssh/id_dsa): 
-    Enter passphrase (empty for no passphrase): 
-    Enter same passphrase again: 
+    Enter file in which to save the key (/path/to/git/home/.ssh/id_dsa):
+    Enter passphrase (empty for no passphrase):
+    Enter same passphrase again:
     Your identification has been saved in /path/to/git/home/.ssh/id_dsa.
     Your public key has been saved in /path/to/git/home/.ssh/id_dsa.pub.
     The key fingerprint is:
     00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00 user@example.com
 
-**A note about passphraseless key files:** Seeing as this key is *only* for pushing to the backup/mirror repository, *and* you want such backups to run automatically (unattended), *and* you're not going to be around every time the server reboots to feed a passphrase into `ssh-agent`, *and* the backup is not supposed to be "authoritative" (it's just there for some data redundancy) so you literally don't care about security, you *might* want to hit "enter" for no passphrase above.
+**A note about passphraseless key files:** Seeing as this key is _only_ for pushing to the backup/mirror repository, _and_ you want such backups to run automatically (unattended), _and_ you're not going to be around every time the server reboots to feed a passphrase into `ssh-agent`, _and_ the backup is not supposed to be "authoritative" (it's just there for some data redundancy) so you literally don't care about security, you _might_ want to hit "enter" for no passphrase above.
 
 1.  Visit: <http://github.com/account#keys>
 2.  Click on the "add another public key" link
@@ -106,7 +106,7 @@ Instead of the longer:
 # Creating the repository on GitHub
 
 1.  Log in to [GitHub](https://github.com/)
-2.   Under "Your Repositories", click "New Repository"
+2.  Under "Your Repositories", click "New Repository"
 3.  Fill out the "Project Name", "Description" and "Homepage URL" fields:
     1.  "Project Name", for example, might be something like "Wikitext"
     2.  "Description" could be something like "Mirror of the official Wikitext repository at git.wincent.com"
@@ -181,7 +181,7 @@ The `git-push` [man](/wiki/man) page describes the handy `--mirror` option that 
 
 > Instead of naming each ref to push, specifies that all refs under `$GIT_DIR/refs/` (which includes but is not limited to `refs/heads/`, `refs/remotes/`, and `refs/tags/`) be mirrored to the remote repository. Newly created local refs will be pushed to the remote end, locally updated refs will be force updated on the remote end, and deleted refs will be removed from the remote end. This is the default if the configuration option `remote.<remote>.mirror` is set.
 
-The `--mirror` option has the advantage that the [GitWeb](/wiki/GitWeb) *won't* show tags for the `github/master` (etc) refs.
+The `--mirror` option has the advantage that the [GitWeb](/wiki/GitWeb) _won't_ show tags for the `github/master` (etc) refs.
 
 So let's undo our former `git remote` invocation:
 

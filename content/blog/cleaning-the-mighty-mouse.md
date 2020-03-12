@@ -5,7 +5,7 @@ tags: blog
 
 I've tried almost every trick in the book when it comes to cleaning the [Mighty Mouse's](http://www.apple.com/mightymouse/) non-functioning scroll ball.
 
-Ultimately though, no matter what you do, there *will* come a day in which the ball stops working completely no matter what you do and the only thing that can resurrect it will be invasive surgery.
+Ultimately though, no matter what you do, there _will_ come a day in which the ball stops working completely no matter what you do and the only thing that can resurrect it will be invasive surgery.
 
 When that happens to you, I recommend you check out [this video](http://www.veoh.com/videos/v378809PrA5a3pg) showing you how to take it apart and put it back together. Once you get right down inside the scroll ball component and see the black gunk bonded to the magnetic rollers, you'll see that there is no way to clean it without taking it apart.
 

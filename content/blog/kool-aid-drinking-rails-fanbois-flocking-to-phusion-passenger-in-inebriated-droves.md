@@ -12,4 +12,4 @@ No doubt most, if not all of the 14,955 sites which abandoned nginx where Rails 
 
 I'm told Passenger is pretty easy to set up and manage. I hope for the sake of the nginx developers that this is not a permanent downwards trend, and that they start making modest market share gains again in the future.
 
-Me, I'm sticking with nginx. Although setting it up *does* require some research for the uninitiated, there's simply nothing out there that can touch it for performance or memory efficiency. The memory usage in particular, is just *insanely* low (680KB resident, 10MB virtual, and leak free so it can run for months without bloating).
+Me, I'm sticking with nginx. Although setting it up _does_ require some research for the uninitiated, there's simply nothing out there that can touch it for performance or memory efficiency. The memory usage in particular, is just _insanely_ low (680KB resident, 10MB virtual, and leak free so it can run for months without bloating).

@@ -5,10 +5,6 @@ tags: blog
 
 Ya.com seems to me to be one of the most unethical and incompetent Internet service providers in Spain and perhaps the world. Add the unpleasantness and difficulty of dealing with them to the mix and you have a recipe for a foul-tasting dish of broadband. My advice: steer as far clear of Ya.com as you can.
 
-
-
-
-
 ### History
 
 When I moved to my current residence in 2004 I set up an [ADSL connection with Ya.com](https://acceso.ya.com/). I chose them because they offered the fastest plans at that time (4Mb) at a reasonable price (about 75€ per month). This price was about double the market-average for ADSL connections at that time, but the speed was about eight times the market-average, so it seemed like a good offer.
@@ -23,13 +19,13 @@ So I call Ya.com. They tell me they can't halve the price because they've alread
 
 ### Lack of competence
 
-Perhaps I was wrong to blame Ya.com for lacking ethics. The more I deal with them the more it seems that *stupidity* is to blame.
+Perhaps I was wrong to blame Ya.com for lacking ethics. The more I deal with them the more it seems that _stupidity_ is to blame.
 
 When I called them back in November to sort this out they told three contradictory pieces of information in the same phone call:
 
 #### 1. That my service speed had been doubled to 8Mb and that it couldn't be lowered
 
-This was untrue. The service speed was still capped at 4Mb. I know this from the running network tests. I have some corroborating evidence that the consultant was either knowingly or unwittingly deceiving me because the bills I received showed that the service at that time was still 4Mb. (Ya.com later did actually duplicate the service speed, confirmed by network tests and bills, but they did so *after* I had explicitly requested that they switch me to a "4Mb + calls" plan. With all the phone calls and letters that have been exchanged since then I am not sure what speed my connection actually is; I know they're charging me for an 8Mb connection but I no longer ever see transfers faster than about 400KB.)
+This was untrue. The service speed was still capped at 4Mb. I know this from the running network tests. I have some corroborating evidence that the consultant was either knowingly or unwittingly deceiving me because the bills I received showed that the service at that time was still 4Mb. (Ya.com later did actually duplicate the service speed, confirmed by network tests and bills, but they did so _after_ I had explicitly requested that they switch me to a "4Mb + calls" plan. With all the phone calls and letters that have been exchanged since then I am not sure what speed my connection actually is; I know they're charging me for an 8Mb connection but I no longer ever see transfers faster than about 400KB.)
 
 #### 2. That they didn't actually offer 8Mb after all
 

@@ -99,5 +99,5 @@ Quickly disable those authentication methods with a quick `cd /etc/mail && vim s
 
 # See also
 
-- [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
-- [Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3A%3ASMTP%3A%3ASSL_for_sending_patches_with_Git_over_secure_SMTP)
+-   [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
+-   [Installing Net::SMTP::SSL for sending patches with Git over secure SMTP](/wiki/Installing_Net%3A%3ASMTP%3A%3ASSL_for_sending_patches_with_Git_over_secure_SMTP)

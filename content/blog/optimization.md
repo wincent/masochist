@@ -27,7 +27,7 @@ To this end, Command-T burns some of those hard-won cycles computing not just th
 
 ## Memoize
 
-Exhaustively computing all possible match scores means the algorithm is doing a *lot* more work. In fact, done naively, the algorithm can exhibit extreme degenerate behavior searching for a needle like "aaaaaaaaaaa" in a haystack like "aaaaaaaaaaaaaaaaaaaaaa". Make strings like that long enough and you'll witness the heat death of the universe before the search finishes running.
+Exhaustively computing all possible match scores means the algorithm is doing a _lot_ more work. In fact, done naively, the algorithm can exhibit extreme degenerate behavior searching for a needle like "aaaaaaaaaaa" in a haystack like "aaaaaaaaaaaaaaaaaaaaaa". Make strings like that long enough and you'll witness the heat death of the universe before the search finishes running.
 
 Fortunately, a dynamic programming approach using memoization allows us to handle even those "pathological" inputs with ease.
 
@@ -189,7 +189,7 @@ const index = needle_idx * needle_len + haystack_idx;
 
 This has a very interesting property of filling up the cells as follows:
 
-- Assume cells contain values "A" through "Z" and then "a" through "d" (ie. the 30 valid values):
+-   Assume cells contain values "A" through "Z" and then "a" through "d" (ie. the 30 valid values):
 
 ```
 label needle haystack cell         label needle haystack cell
@@ -272,8 +272,7 @@ One way to visualize what's happening here is to go back to our original diagram
 
 In other words we fill in from top to bottom, and left to right, avoiding cells which we know should be marked with a "#".
 
-Now imagine "chopping off" the corner triangles leaving only the rhomboidal
-section which contains valid values:
+Now imagine "chopping off" the corner triangles leaving only the rhomboidal section which contains valid values:
 
 ```
 +-----------+
@@ -289,8 +288,7 @@ section which contains valid values:
         +-----------+
 ```
 
-And then "straightening" the shape back up into a rectangle using a shear
-transformation:
+And then "straightening" the shape back up into a rectangle using a shear transformation:
 
 ```
 +-----------+
@@ -425,4 +423,4 @@ Time to move on to instruction-level profiling and start porting bits of this su
 
 <small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153216194746307) - [Twitter](https://twitter.com/wincent/status/704567011288838145)</em></small>
 
-[Vim]: /wiki/vim
+[vim]: /wiki/vim

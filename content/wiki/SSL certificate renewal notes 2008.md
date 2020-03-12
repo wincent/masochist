@@ -16,7 +16,7 @@ The basic process for renewal is:
 
 ## Generating the CSR
 
-Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/freessl-csr.html), and for [Apache](/wiki/Apache) with [mod\_ssl](/wiki/mod_ssl) specifically [here](http://www.rapidssl.com/resources/csr/apache_mod_ssl.htm).
+Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/freessl-csr.html), and for [Apache](/wiki/Apache) with [mod_ssl](/wiki/mod_ssl) specifically [here](http://www.rapidssl.com/resources/csr/apache_mod_ssl.htm).
 
     cd path/to/ssl/certs/and/keys
 
@@ -56,7 +56,7 @@ Here is how I answered the questions during CSR generation:
 
 ### Apache
 
-[RapidSSL](/wiki/RapidSSL) provides [installation instructions](http://www.rapidssl.com/ssl-certificate-support/install-ssl-certificate/apache_apache_ssl.htm) for [Apache](/wiki/Apache) running [mod\_ssl](/wiki/mod_ssl).
+[RapidSSL](/wiki/RapidSSL) provides [installation instructions](http://www.rapidssl.com/ssl-certificate-support/install-ssl-certificate/apache_apache_ssl.htm) for [Apache](/wiki/Apache) running [mod_ssl](/wiki/mod_ssl).
 
     # move old certificate backup out of the way
     mv secure.wincent.com.crt.rapidssl secure.wincent.com.crt.rapidssl.2007

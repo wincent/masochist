@@ -12,12 +12,12 @@ These notes are superseded by the article, "[Building and installing Ruby 1.8.5 
 First, download, extract, configure and build:
 
     wget ftp://ftp.ruby-lang.org/pub/ruby/ruby-1.8.4.tar.gz
-    tar zxvf ruby-1.8.4.tar.gz 
+    tar zxvf ruby-1.8.4.tar.gz
     cd ruby-1.8.4/
-    ./configure 
+    ./configure
     make
 
-Second, run the tests and install. Note that the full test suite (`make check`) can only be run *after* installing:
+Second, run the tests and install. Note that the full test suite (`make check`) can only be run _after_ installing:
 
     make test
     sudo make install

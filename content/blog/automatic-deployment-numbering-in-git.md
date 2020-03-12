@@ -8,13 +8,13 @@ A frequently-asked [Git](/wiki/Git) question is, "How do I get Git to embed an 
 
 Invariably the answer is, you can't (easily) do this and it fact it doesn't even make sense to even try in a [distributed version control](/wiki/distributed_version_control) system.
 
-Usually protests follow: "but I *have* to have automatically and atomically-increasing revision numbers!".
+Usually protests follow: "but I _have_ to have automatically and atomically-increasing revision numbers!".
 
-"So, *why* do you need these numbers?"
+"So, _why_ do you need these numbers?"
 
 "Because we've always had them".
 
-"*Why* have you always had them?"
+"_Why_ have you always had them?"
 
 "Because they're necessary to uniquely and unambiguously identify the version of the product."
 
@@ -22,23 +22,23 @@ Usually protests follow: "but I *have* to have automatically and atomically-incr
 
 "But I don't want a hash; I want an integer in base-10."
 
-"*Why* do you want an integer in base-10?"
+"_Why_ do you want an integer in base-10?"
 
 "Because it needs to be human readable."
 
-"*Why* does it need to be "human readable"?"
+"_Why_ does it need to be "human readable"?"
 
 "Because you can't do marketing with hexadecimal version numbers."
 
-"*Why* are you trying to do marketing with a *build* number anyway?"
+"_Why_ are you trying to do marketing with a _build_ number anyway?"
 
-Basically, if you continue asking these "why" questions eventually the argument boils down to "because we've always done it that way". In many situations a [DVCS](/wiki/DVCS) will allow you to work in a wide variety of ways, including some of the ways that you may already be used to from your experiences with centralized [version control systems](/wiki/version_control_systems). But just because they *can* work in that way doesn't necessarily mean that you *should* make them work in that way, and this apparent "need" for automatically and atomically-incrementing, base-10 integer "revision numbers" is one of those cases.
+Basically, if you continue asking these "why" questions eventually the argument boils down to "because we've always done it that way". In many situations a [DVCS](/wiki/DVCS) will allow you to work in a wide variety of ways, including some of the ways that you may already be used to from your experiences with centralized [version control systems](/wiki/version_control_systems). But just because they _can_ work in that way doesn't necessarily mean that you _should_ make them work in that way, and this apparent "need" for automatically and atomically-incrementing, base-10 integer "revision numbers" is one of those cases.
 
-Even so, many people insist and end up jumping through hoops using [gitattributes](http://www.kernel.org/pub/software/scm/git/docs/gitattributes.html), [githooks](http://www.kernel.org/pub/software/scm/git-core/docs/githooks.html) and other such devilry to impose a broken, old, unnecessary workflow on a new system which doesn't need or benefit from it. Some people go so far as to *tag* every single commit just so that they can get their precious incrementing base-10 "revision numbers".
+Even so, many people insist and end up jumping through hoops using [gitattributes](http://www.kernel.org/pub/software/scm/git/docs/gitattributes.html), [githooks](http://www.kernel.org/pub/software/scm/git-core/docs/githooks.html) and other such devilry to impose a broken, old, unnecessary workflow on a new system which doesn't need or benefit from it. Some people go so far as to _tag_ every single commit just so that they can get their precious incrementing base-10 "revision numbers".
 
 So today when I saw a link to [this article](http://blog.rfwatson.net/2009/06/03/automatic-version-numbering-using-git/) titled, "Automatic version numbering using Git", I thought, oh no, here we go again.
 
-It turns out, however, that the title is a little bit misleading. It's actually about "automatic *deployment* numbering". The author is indeed aware of the nonsensicality of trying to impose atomic, automatic, unique, incrementing revision numbers on a distributed system:
+It turns out, however, that the title is a little bit misleading. It's actually about "automatic _deployment_ numbering". The author is indeed aware of the nonsensicality of trying to impose atomic, automatic, unique, incrementing revision numbers on a distributed system:
 
 > This means that the version number changes, dependent on whose machine the application is running on. This is confusing for clients and developers alike, and quite frankly pretty useless.
 

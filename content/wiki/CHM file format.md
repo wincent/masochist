@@ -8,7 +8,7 @@ See: <http://en.wikipedia.org/wiki/Microsoft_Compressed_HTML_Help>
 
 My usual routine for decompiling [CHM](/wiki/CHM) archives is to do the following:
 
-1.   Fire up [Windows XP](/wiki/Windows_XP) in [Parallels](/wiki/Parallels).
+1.  Fire up [Windows XP](/wiki/Windows_XP) in [Parallels](/wiki/Parallels).
 2.  From the "Start" menu, navigate to "All Programs", "HTML Help Workshop", "HTML Help Workshop" (see download link below).
 3.  From the "File" menu, select "Decompile".
 4.  Choose source [CHM](/wiki/CHM) file and desired output folder and hit the "OK" button.

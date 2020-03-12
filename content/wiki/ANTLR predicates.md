@@ -61,7 +61,7 @@ This will match `\r\n`, `\r` or `\n`, even in the same file (even if a file has 
 -   When evaluating to false, effectively disable the alternative, making it invisible to the recognizer (no exception is thrown)
 -   Put another way, they dynamically "turn on" or "turn off" portions of a grammar
 -   Always hoisted, even when decisions are deterministic
--   Useful when you want to distinguish between alternatives that are *not* syntactically ambiguous
+-   Useful when you want to distinguish between alternatives that are _not_ syntactically ambiguous
 -   May only appear in rules that actually have multiple alternatives
 -   May be used in [lexer](/wiki/lexer) and [parser](/wiki/parser) rules
 

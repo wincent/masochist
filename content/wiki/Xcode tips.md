@@ -14,7 +14,7 @@ About once a day I find myself unexpectedly provoking a build by pressing Comman
 
 Peter Hosey reveals another way of cancelling an in progress build in [this post](http://boredzo.org/blog/archives/2006-04-11/know-your-xcode):
 
-> Most commands that start an operation stop it as well. ⌘B, for example, starts *and stops* a build.
+> Most commands that start an operation stop it as well. ⌘B, for example, starts _and stops_ a build.
 
 He goes further to describe the general pattern employed:
 

@@ -19,15 +19,15 @@ In `spec/lib/kernel_spec.rb` add a [spec](/wiki/spec) like this:
     require File.dirname(__FILE__) + '/../spec_helper'
 
     describe 'The "_" localization method' do
-      
+
       it 'should return the passed-in string' do
         _('foobar').should == 'foobar'
       end
-      
+
       it 'should return nil if passed nil' do
         _(nil).should be_nil
       end
-      
+
     end
 
 # Implement desired behaviour

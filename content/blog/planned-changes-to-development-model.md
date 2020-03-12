@@ -9,17 +9,13 @@ In my comment I wrote:
 
 > After several months of positively "seismic" changes to the codebase (massive upheaval) the code is finally back in a buildable state... Almost every file has been touched, every project, every target... thousands of lines of changes and major structural reorganization. A lot of this has been mind-numbing work, a necessary evil to enable future growth, but with no short-term reward (no build-and-run gratification). But it finally runs again after hundreds of hours of the most boring type of development work there is. Still some issues to iron out, but my plan now is to keep it in a very-near-to-release state from here on; that is, I will be approximating the "continuous integration" model of development, where the software will always be in a releasable or almost-releasable state. At any point in time I should be able to decide, ok, I want to package up a release for tomorrow, and be able to do it.
 
-
-
-
-
-This makes sense for business reasons (customers get their hands on releases more often) but it also makes sense for philosophical *and* technical reasons. Philosophical because openness is the right thing to do (by letting your customers see what you're doing you're treating them as you yourself would like to be treated). Technical because an open process produces better software (code is tested sooner, bugs reported more quickly, and having to produce builds which must always be acceptable for public viewing imposes a discipline on your coding).
+This makes sense for business reasons (customers get their hands on releases more often) but it also makes sense for philosophical _and_ technical reasons. Philosophical because openness is the right thing to do (by letting your customers see what you're doing you're treating them as you yourself would like to be treated). Technical because an open process produces better software (code is tested sooner, bugs reported more quickly, and having to produce builds which must always be acceptable for public viewing imposes a discipline on your coding).
 
 I've been taking small steps towards a more open development model for many months now:
 
 -   Making more of my projects open source: [WOTest](http://test.wincent.com), [Bansshee](http://bansshee.wincent.com/), [WinSwitch](http://winswitch.wincent.com), [atosym](http://www.wincent.com/a/products/atosym/), [Wincent Build Tools](http://www.wincent.com/a/products/buildtools/), and [Wincent Strings Utility](http://strings.wincent.com/).
 -   Moving the code for these open source projects into a publicly accessible [Subversion](http://www.wincent.com/knowledge-base/Subversion) repository.
--   Publishing an [RSS feed](http://www.wincent.com/a/about/wincent/weblog/svn-log/atom.xml) of *all* commits so that customers can see source code changes even in closed-source products.
+-   Publishing an [RSS feed](http://www.wincent.com/a/about/wincent/weblog/svn-log/atom.xml) of _all_ commits so that customers can see source code changes even in closed-source products.
 -   Putting bug reports and feature requests out in the open in a [publicly accessible database](http://bugs.wincent.com/).
 -   Having open-to-all [beta-testing mailing lists](http://lists.wincent.com).
 
@@ -33,7 +29,7 @@ I already have a highly automated build process where I can build Synergy Advanc
 
 But we can go further.
 
-If we can do a one-step build, why not extend things and automate that build so it runs at the same time every day *and* uploads the built product to the server? So I was partly inspired by Joel's article and partly by the Ruby gems I've been looking at lately and whose Rakefiles (think Makefiles) include tasks to upload new releases.
+If we can do a one-step build, why not extend things and automate that build so it runs at the same time every day _and_ uploads the built product to the server? So I was partly inspired by Joel's article and partly by the Ruby gems I've been looking at lately and whose Rakefiles (think Makefiles) include tasks to upload new releases.
 
 So that's my intention. I'm going to extend my build process and automate it so that it checks out a clean copy of the latest version of the source code for each product, builds and uploads to the server.
 

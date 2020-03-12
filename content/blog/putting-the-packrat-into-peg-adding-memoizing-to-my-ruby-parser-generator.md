@@ -13,10 +13,6 @@ Parsing Expression Grammars go hand-in-hand with so-called "packrat parsers". Bo
 
 Ruby rocks, and I've got quite a clean Object-Oriented design in my parser generator, so I was able to add automatic, optional memoization in only a few hours today (and most of that time was spent thinking rather than coding). Here are some initial performance numbers.
 
-
-
-
-
 Memoization avoids exponential backtracking by trading storage (memory use) for speed. Every intermediate parse result is "remembered" in case it is needed again in the future, requiring more and more memory as the size of the input text grows, and also incurring some processing overhead (to "remember" the results and look them up as required). This processing overhead, however, should be roughly linear rather than exponential.
 
 My implementation memoizes all kinds of "results"; perhaps "outcomes" would be a better term. Outcomes may include raised exceptions, thrown symbols, literal strings, arrays, or AST nodes may be returned. What this means is that basically all possible success and failure outcomes are captured.

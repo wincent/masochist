@@ -8,7 +8,7 @@ cache_breaker: 1
 First we install [libevent](/wiki/libevent), a prerequisite for installing [memcached](/wiki/memcached):
 
     wget http://www.monkey.org/~provos/libevent-1.4.9-stable.tar.gz
-    tar xzvf libevent-1.4.9-stable.tar.gz 
+    tar xzvf libevent-1.4.9-stable.tar.gz
     cd libevent-1.4.9-stable
     ./configure
     make
@@ -19,7 +19,7 @@ Now moving on to [memcached](/wiki/memcached) itself:
 
     cd ..
     wget http://www.danga.com/memcached/dist/memcached-1.2.6.tar.gz
-    tar xzvf memcached-1.2.6.tar.gz 
+    tar xzvf memcached-1.2.6.tar.gz
     cd memcached-1.2.6
     ./configure
     make
@@ -54,7 +54,7 @@ In the end I decided that installing [libevent](/wiki/libevent) into `/usr/lib` 
 So the final installation incantation was:
 
     wget http://www.monkey.org/~provos/libevent-1.4.9-stable.tar.gz
-    tar xzvf libevent-1.4.9-stable.tar.gz 
+    tar xzvf libevent-1.4.9-stable.tar.gz
     cd libevent-1.4.9-stable
     ./configure --libdir=/usr/lib
     make
@@ -62,7 +62,7 @@ So the final installation incantation was:
     sudo make install
     cd ..
     wget http://www.danga.com/memcached/dist/memcached-1.2.6.tar.gz
-    tar xzvf memcached-1.2.6.tar.gz 
+    tar xzvf memcached-1.2.6.tar.gz
     cd memcached-1.2.6
     ./configure
     make

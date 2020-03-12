@@ -23,10 +23,10 @@ Notes made while performing the update to Git 1.6.5.1 on my local [Mac OS X](/wi
     sudo make prefix=/usr/local quick-install-man
 
     # check for changes in the Bash completion script
-    diff -u ~/.git-completion.sh contrib/completion/git-completion.bash 
+    diff -u ~/.git-completion.sh contrib/completion/git-completion.bash
 
     # there were changes, so install the new version
-    cp contrib/completion/git-completion.bash ~/.git-completion.sh 
+    cp contrib/completion/git-completion.bash ~/.git-completion.sh
 
     # go back to master branch rather than hanging around on detached HEAD
     git co master

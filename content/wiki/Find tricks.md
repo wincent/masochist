@@ -3,6 +3,7 @@ tags: unix wiki
 ---
 
 # find files with these exact permissions
+
     find . -perm 755
 
     # find files with any executable bit set (note the minus sign)

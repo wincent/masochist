@@ -3,7 +3,7 @@ tags: rspec rails atom xml wiki
 cache_breaker: 1
 ---
 
-It's actually quite hard to find information about testing feeds because *so* many pages out there feature the words "feed" nowadays, but some of the first results that I turned up talked about the [FeedValidator](/wiki/FeedValidator) [gem](/wiki/gem).
+It's actually quite hard to find information about testing feeds because _so_ many pages out there feature the words "feed" nowadays, but some of the first results that I turned up talked about the [FeedValidator](/wiki/FeedValidator) [gem](/wiki/gem).
 
 The gem actually hits the W3C Feed Validation service, although it uses caching to minimize redundant queries. This approach doesn't really appeal to me because of the latency of performing a query across the network, as well as the reliance on a third-party service (if the service goes down you can't run your specs). Also, the need to avoid hammering the service, even with caching, makes running really comprehensive specs prohibitive.
 
@@ -25,17 +25,17 @@ So I downloaded [Trang](/wiki/Trang) to try converting the compact schema into a
 
     $ curl -O http://www.thaiopensource.com/download/trang-20030619.zip
     $ curl -O http://www.thaiopensource.com/download/jing-20030619.zip
-    $ unzip trang-20030619.zip 
-    $ unzip jing-20030619.zip 
+    $ unzip trang-20030619.zip
+    $ unzip jing-20030619.zip
     $ java -jar trang-20030619/trang.jar spec/2005-08-17-atom.rnc spec/2005-08-17-atom.xsd
-    $ xmllint --schema spec/2005-08-17-atom.xsd public/wiki.atom 
+    $ xmllint --schema spec/2005-08-17-atom.xsd public/wiki.atom
     spec/2005-08-17-atom.xsd:83: element complexType: Schemas parser error : CT local: The content model is not determinist.
     spec/2005-08-17-atom.xsd:107: element complexType: Schemas parser error : CT local: The content model is not determinist.
     spec/2005-08-17-atom.xsd:258: element complexType: Schemas parser error : CT local: The content model is not determinist.
     spec/2005-08-17-atom.xsd:61: element complexType: Schemas parser error : CT 'atomPersonConstruct': The content model is not determinist.
     WXS schema spec/2005-08-17-atom.xsd failed to compile
 
-Googling for information on these "non determinist" errors suggested that this *might* be a bug in the version of libxml I was using, but seeing as it was a bit of a long shot and I don't really want to go changing that on either of my machines I decided to continue looking for alternative solutions.
+Googling for information on these "non determinist" errors suggested that this _might_ be a bug in the version of libxml I was using, but seeing as it was a bit of a long shot and I don't really want to go changing that on either of my machines I decided to continue looking for alternative solutions.
 
 Trying another format:
 
@@ -47,7 +47,7 @@ And many more errors omitted from the excerpt... Evidently a DTD cannot express 
 
 So my next attempt was to use [Jing](/wiki/Jing), which [Trang](/wiki/Trang) depends on, to do the validation instead of `xmllint`:
 
-    $ java -jar jing-20030619/bin/jing.jar spec/2005-08-17-atom.rnc public/wiki.atom 
+    $ java -jar jing-20030619/bin/jing.jar spec/2005-08-17-atom.rnc public/wiki.atom
     spec/2005-08-17-atom.rnc:1:1: fatal: Content is not allowed in prolog.
 
 Evidently `jing` doesn't like the compact syntax either (although it would have if I had read the manual and seen the `-c` switch!), so we try the XML syntax and voila it works:

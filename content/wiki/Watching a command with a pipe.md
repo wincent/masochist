@@ -15,7 +15,7 @@ This is considerably easier than my first attempt at this:
 $ watch 'bash -c "ps auxwww|grep ec2-user"'
 ```
 
-Of course, in this case, there *is* an option you can pass that allows you to do this without a pipe, so that's the optimal case:
+Of course, in this case, there _is_ an option you can pass that allows you to do this without a pipe, so that's the optimal case:
 
 ```shell
 $ watch ps -U ec2-user uxwww

@@ -5,10 +5,6 @@ tags: blog
 
 For the past two years I've participated in the San Silvestre popular running race through Madrid on New Years Eve. This will be my third year in the 10Km race. As has been the case in previous years, this year's site is guilty of a number of heinous crimes against basic security and compatibility.
 
-
-
-
-
 #### Compatibility
 
 The website this year is the worst ever. It displayed without errors in both Safari and Firefox, but just like last year, the payment page only works in Internet Explorer running on Windows.
@@ -29,7 +25,7 @@ Compatibility crimes summary:
 -   iberCaja payment page only works in Internet Explorer running on Windows.
 -   iberCaja payment page doesn't explicitly state its requirements anywhere.
 -   iberCaja payment page doesn't degrade or fail gracefully in other browsers, or if you try with JavaScript turned off.
--   iberCaja payment page also gets bonus points for allowing the user to uselessly invest time filling out forms before failing, and *bonus* bonus points for overriding the default movement behaviour between text fields (make an error typing in your credit card number and you'll find that you can't shift-tab back in order to correct it).
+-   iberCaja payment page also gets bonus points for allowing the user to uselessly invest time filling out forms before failing, and _bonus_ bonus points for overriding the default movement behaviour between text fields (make an error typing in your credit card number and you'll find that you can't shift-tab back in order to correct it).
 
 #### Security
 
@@ -47,7 +43,7 @@ After trying many times I noted with some alarm that there were less than 1,000 
 
 The 902 (high cost) phone number listed on the San Silvestre website didn't work (calls simply dropped out mid-way through). By the time I got home the website had been updated to indicate that places were no longer available at any of the outlets and that the only way to register was via the Internet.
 
-In my desperation I thought I'd give it one more try. Turns out that the solution in the end was to *not* use the "sign up again" link that the organizers had emailed me weeks before. This was a link that prepopulated the form for me with my details from the previous year. By forgetting about this link and going in directly from the front page and typing in the form details from scratch I found that things finally worked: Internet Explorer on Windows XP SP2 finally allowed me to open up the payment page and make my payment.
+In my desperation I thought I'd give it one more try. Turns out that the solution in the end was to _not_ use the "sign up again" link that the organizers had emailed me weeks before. This was a link that prepopulated the form for me with my details from the previous year. By forgetting about this link and going in directly from the front page and typing in the form details from scratch I found that things finally worked: Internet Explorer on Windows XP SP2 finally allowed me to open up the payment page and make my payment.
 
 In switching to this alternate method I also noticed that several bugs which manifested themselves in the prepopulated version of the form were no longer present. For example, the website no longer informed me that I had to specify my sex even though it was clearly already specified. Yet more evidence that this site is inadequately-tested, incompatible, insecure, poorly-designed trash. However got pad for developing the site is little better than an incompetent con-artist.
 

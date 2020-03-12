@@ -71,23 +71,23 @@ Style any `img` element whose `alt` attribute has the exact value `foo`:
 
     img[alt="foo"] { ... }
 
-Style any `img` element whose `alt` attribute *contains* the space-delimited word `foo`:
+Style any `img` element whose `alt` attribute _contains_ the space-delimited word `foo`:
 
     img[alt~="foo"] { ... }
 
-Style any `img` element whose `alt` attribute *contains* the hyphen-delimited word `foo` (in other words, the attribute must contain the substring, `foo-`):
+Style any `img` element whose `alt` attribute _contains_ the hyphen-delimited word `foo` (in other words, the attribute must contain the substring, `foo-`):
 
     img[alt|="foo"] { ... }
 
 Other selectors:
 
--   `a[href^="http:"]`: attribute *starts with* "http:"
--   `a[href$=".png"]`: attribute *ends with* ".png"
--   `a[href*="foo"]`: attribute *contains* "foo"
+-   `a[href^="http:"]`: attribute _starts with_ "http:"
+-   `a[href$=".png"]`: attribute _ends with_ ".png"
+-   `a[href*="foo"]`: attribute _contains_ "foo"
 
 Note that selectors can be combined; eg:
 
--   `a[href^="http:"][href$=".png"]`: attribute *starts with* "http:" and *ends with* ".png"
+-   `a[href^="http:"][href$=".png"]`: attribute _starts with_ "http:" and _ends with_ ".png"
 
 See also:
 

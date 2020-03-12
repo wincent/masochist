@@ -79,8 +79,8 @@ Note that unlike [last time](/wiki/Upgrading_to_ruby-debug_0.9) it was not neces
 # Changes for [0.9.1](/wiki/ruby-debug_0.9.1)
 
 -   Fixed incorrent stack calculation.
--   Context\#stop\_next= method aliased as Context\#step.
--   Added the 'force' parameter to Context\#step\_over.
+-   Context\#stop_next= method aliased as Context\#step.
+-   Added the 'force' parameter to Context\#step_over.
 -   Added the 'force' parameter to Context\#step.
 -   'next+/step+' commands forces to move to another line
 -   Added a new 'forcestep' setting.

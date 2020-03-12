@@ -5,19 +5,19 @@ cache_breaker: 1
 
 Most communities — both "language communities" like "the [Ruby](/wiki/Ruby) community", "the [Objective-C](/wiki/Objective-C) community", and to a lesser-extent "the [C](/wiki/C) community"; and "project-based communities" like "the [Git](/wiki/Git) community" and "the [Rails](/wiki/Rails) community" and so on — have a set of relatively stable conventions and notions about coding standards.
 
-It's obviously advisable to be flexible and adapt to the coding standards of the community in which you're working at any given time. Not only will you feel less "friction" when you have to work with code written by others, but your own code will produce less friction for *them*, which in turn will make it more likely that it be used by others, or accepted for inclusion in upstream projects.
+It's obviously advisable to be flexible and adapt to the coding standards of the community in which you're working at any given time. Not only will you feel less "friction" when you have to work with code written by others, but your own code will produce less friction for _them_, which in turn will make it more likely that it be used by others, or accepted for inclusion in upstream projects.
 
 So this means things like learning how to configure your editor to use tabs or spaces in the right places, and learning the brace and indent styles, comment conventions and what not for the community in question.
 
 The guidelines expressed in this article aren't about any particular community; rather, they're the guidelines I try to follow in my own code when I'm working independently.
 
-You could never argue that these, or any other, guidelines were *the* right way to write code, but I do think they represent a fairly sensible, commonsense set of conventions based on valuing readability, maintainability, efficiency, robustness and correctness.
+You could never argue that these, or any other, guidelines were _the_ right way to write code, but I do think they represent a fairly sensible, commonsense set of conventions based on valuing readability, maintainability, efficiency, robustness and correctness.
 
 # Line lengths
 
 **Readability is king**, so there are no line length limits, only guidelines.
 
-Shorter lines (less than 80 columns) are *generally* easier to read, so keeping things short is a good goal, *but* there are many cases where keeping under 80 columns — and even a more liberal 132-column limit — can actually make code *less* readable because of the required contortions and gymnastics. I blogged about this in my post, "[On the 80-column limit](/blog/on-the-80-column-limit)".
+Shorter lines (less than 80 columns) are _generally_ easier to read, so keeping things short is a good goal, _but_ there are many cases where keeping under 80 columns — and even a more liberal 132-column limit — can actually make code _less_ readable because of the required contortions and gymnastics. I blogged about this in my post, "[On the 80-column limit](/blog/on-the-80-column-limit)".
 
 ## [Doxygen](/wiki/Doxygen) code comments
 

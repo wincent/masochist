@@ -7,7 +7,7 @@ tags: subversion wiki
 There are two main ways of backing up a live [Subversion](/wiki/Subversion) repository:
 
 1.  Using `svnadmin hotcopy`
-2.   Using `svnadmin dump`
+2.  Using `svnadmin dump`
 
 In both cases you should run `svnadmin` as the owner of the repository. I chose to go with the second option for two reasons:
 

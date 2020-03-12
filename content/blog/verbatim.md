@@ -3,15 +3,11 @@ title: Verbatim
 tags: blog
 ---
 
-Currently running a huge merge between the [Tiger](http://www.wincent.com/knowledge-base/Tiger) and [Leopard](http://www.wincent.com/knowledge-base/Leopard) branches of one of my projects ([WOCommon](http://www.wincent.com/knowledge-base/WOCommon)). [SVK](http://www.wincent.com/knowledge-base/SVK) really makes this kind of thing a breeze... I was about to say, "I don't know how I ever lived without it", but the truth is I *do* know exactly how I lived without it: I basically avoided [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging) and did as little of it as possible.
+Currently running a huge merge between the [Tiger](http://www.wincent.com/knowledge-base/Tiger) and [Leopard](http://www.wincent.com/knowledge-base/Leopard) branches of one of my projects ([WOCommon](http://www.wincent.com/knowledge-base/WOCommon)). [SVK](http://www.wincent.com/knowledge-base/SVK) really makes this kind of thing a breeze... I was about to say, "I don't know how I ever lived without it", but the truth is I _do_ know exactly how I lived without it: I basically avoided [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging) and did as little of it as possible.
 
 That's a shame because if I had known about [SVK](http://www.wincent.com/knowledge-base/SVK) sooner I could have kept my development process much more nimble: with branches for long-running, disruptive changes on the one hand, and others for stable, release-worthy snapshots at any time.
 
 I'm afraid I slipped up on this merge by forgetting to pass the `--verbatim` switch to `svk`... So there have been a couple of hundred log messages like [this one](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2007/04/wocommon_r490_2_items_changed.php) which are prepended by some [SVK](http://www.wincent.com/knowledge-base/SVK) metadata (`r1485@cuzco (orig r239): wincent | 2006-12-22 20:17:52 +0100` in this case) that I don't really want cluttering up my log messages... ah well.
-
-
-
-
 
 ### Bugs
 

@@ -7,9 +7,9 @@ These notes were made while upgrading to [Doxygen 1.5.3](/wiki/Doxygen_1.5.3) on
 
     # get and extract source
     wget http://ftp.stack.nl/pub/users/dimitri/doxygen-1.5.3.src.tar.gz
-    tar xzvf doxygen-1.5.3.src.tar.gz 
+    tar xzvf doxygen-1.5.3.src.tar.gz
     cd doxygen-1.5.3
-    sh ./configure 
+    sh ./configure
     make
     make docs
     sudo make install

@@ -5,9 +5,9 @@ tags: git blog
 
 I've just set up a couple of [Git](/wiki/Git) repository mirrors for my [open source](/wiki/open_source) projects.
 
-The *authoritative, official* repositories continue to be hosted at [git.wincent.com](http://git.wincent.com/).
+The _authoritative, official_ repositories continue to be hosted at [git.wincent.com](http://git.wincent.com/).
 
-But now there are *mirror, backup* repositories hosted at:
+But now there are _mirror, backup_ repositories hosted at:
 
 -   <http://gitorious.org/~wincent>; and
 -   <http://github.com/wincent/>

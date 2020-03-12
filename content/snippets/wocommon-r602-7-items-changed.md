@@ -3,4 +3,4 @@ title: WOCommon r602, 7 items changed
 tags: snippets
 ---
 
-Rename generated\_list to master\_generated\_list, once again for subclass convenience
+Rename generated_list to master_generated_list, once again for subclass convenience

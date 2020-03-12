@@ -13,7 +13,7 @@ For example, [Vim](/wiki/Vim) has various modes such as:
 -   Command mode: this is the mode you use for issuing commands, such as opening and closing files, writing files to disk, and performing find-and-replace.
 -   Search mode: probably requires no explanation.
 
-The idea here is that you make a trade-off of complexity for power. (To be more precise, each mode is often more *simple* because it is generally optimized for a specific task of reduced scope, but the number of different modes can make the system as a whole seem more complex.)
+The idea here is that you make a trade-off of complexity for power. (To be more precise, each mode is often more _simple_ because it is generally optimized for a specific task of reduced scope, but the number of different modes can make the system as a whole seem more complex.)
 
 [Vi](/wiki/Vi) and [Vim](/wiki/Vim) are probably the most famous [modal editors](/wiki/modal_editors).
 

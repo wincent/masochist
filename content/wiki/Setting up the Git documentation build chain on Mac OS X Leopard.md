@@ -31,7 +31,7 @@ Since my last experience with [AsciiDoc](/wiki/AsciiDoc) it has been updated fro
     sudo ./install.sh
 
     # test
-    rm doc/asciidoc.html 
+    rm doc/asciidoc.html
     asciidoc doc/asciidoc.txt
     open doc/asciidoc.html
 
@@ -121,9 +121,9 @@ So:
 
     cd ..
     wget http://software.frodo.looijaard.name/getopt/files/getopt-1.1.4.tar.gz
-    tar xzvf getopt-1.1.4.tar.gz 
+    tar xzvf getopt-1.1.4.tar.gz
     cd getopt-1.1.4
-    less README 
+    less README
     make
 
 Dies as follows:
@@ -161,7 +161,7 @@ So off to install another prerequisite:
 
     cd ..
     wget http://mirrors.kernel.org/gnu/gettext/gettext-0.17.tar.gz
-    tar xzvf gettext-0.17.tar.gz 
+    tar xzvf gettext-0.17.tar.gz
     cd gettext-0.17
     ./configure
     make
@@ -208,7 +208,7 @@ Given that the previous version of gettext had built successfully on [Tiger](/wi
 
     cd ..
     wget http://mirrors.kernel.org/gnu/gettext/gettext-0.16.1.tar.gz
-    tar xzvf gettext-0.16.1.tar.gz 
+    tar xzvf gettext-0.16.1.tar.gz
     cd gettext-0.16.1
     ./configure
     make
@@ -338,7 +338,7 @@ So:
     sudo mkdir -p /usr/local/share/docbook/xsl
     cd /usr/local/share/docbook/xsl
     sudo wget http://surfnet.dl.sourceforge.net/sourceforge/docbook/docbook-xsl-1.73.2.tar.bz2
-    sudo tar xjvf docbook-xsl-1.73.2.tar.bz2 
+    sudo tar xjvf docbook-xsl-1.73.2.tar.bz2
 
     # would have liked to install this in /usr/local/etc, but only /etc works
     sudo xmlcatalog --noout --add 'nextCatalog' '' 'file:///usr/local/share/docbook/docbook-xsl-1.73.2/catalog.xml' --create /etc/xml/catalog

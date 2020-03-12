@@ -9,10 +9,6 @@ I started thinking about this earlier this month when a [Synergy Advance](http:/
 
 > Is there no way to "deactivate" authentication on a system you're departing?
 
-
-
-
-
 The user in question works in the press and changes machines frequently. My response at the time was this:
 
 > Knowing that there would be cases like this, when I designed the system I included the ability to reset or increase activation limits. For example, if someone needed to do 100 legitimate reinstalls I could assign a very high limit to their license. I had to rule out the activate-and-deactivate pattern and stick with activate-only for the reasons described further down.

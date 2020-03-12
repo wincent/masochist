@@ -2,5 +2,3 @@
 redirect: [[buzzword]]
 tags: wiki
 ---
-
-

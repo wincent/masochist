@@ -26,12 +26,7 @@ $ sudo gem install rails --source http://gems.rubyonrails.org --version 1.99.0
     Installing RDoc documentation for actionpack-1.99.0...
     Installing RDoc documentation for actionmailer-1.99.0...
     Installing RDoc documentation for activeresource-1.99.0...
-    $ fastri-server -b
-    Building index.
-    Indexed:
-    * 7710 methods
-    * 1364 classes/modules
-    Needed 1.628137 seconds
+    $ fastri-server -b Building index. Indexed: _ 7710 methods _ 1364 classes/modules Needed 1.628137 seconds
 
 # See also
 

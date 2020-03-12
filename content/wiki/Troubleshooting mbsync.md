@@ -18,7 +18,7 @@ To make debugging easy, set:
 
     PipelineDepth 1
 
-Run with full debug flags (may produce a *lots* of output):
+Run with full debug flags (may produce a _lots_ of output):
 
     mbsync -V -DCmMNs $ACCOUNT_NAME
 
@@ -49,4 +49,4 @@ Eventually broadened the search and found 3 files of encoding "data". Visually i
 
 ## See also
 
-- [Corresponding mailing list thread](https://sourceforge.net/p/isync/mailman/message/35628449/) on [isync-devel](https://lists.sourceforge.net/lists/listinfo/isync-devel).
+-   [Corresponding mailing list thread](https://sourceforge.net/p/isync/mailman/message/35628449/) on [isync-devel](https://lists.sourceforge.net/lists/listinfo/isync-devel).

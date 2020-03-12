@@ -8,6 +8,6 @@ There are a bunch of old posts out there such as [this one](http://blog.grapii.c
 
 [This Stack Overflow post](https://apple.stackexchange.com/a/99599/158927) says that `touch` won't fix creation dates, but that wasn't the problem I was seeing (I was seeing it basically ignore the argument and create files called `-t` and `YYYYMMDDhhmm`). Nevertheless, the post does contain the answer, which is to use `SetFile` which comes with the Xcode tools.
 
- ```
- SetFile -d '03/10/2018 10:00:00 AM' $FILENAME
- ```
+```
+SetFile -d '03/10/2018 10:00:00 AM' $FILENAME
+```

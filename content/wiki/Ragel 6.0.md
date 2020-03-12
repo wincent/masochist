@@ -25,7 +25,7 @@ Copied from:
      -Restructured the Java driver; a switch statement with fallthrough cases are
       now used to emulate gotos.
      -Ruby code generation was also restructured. Gotos are elmulated using a
-      series of if tests. 
+      series of if tests.
      -Went back to 3.X semantics for >, % and error actions. The > operator also
       embeds a leaving action/priority into the start state if it is final. If EOF
       happens in a state with a leaving operator then the leaving action is
@@ -51,7 +51,7 @@ Copied from:
      -Dot file generation can now be invoked using the -V option to ragel. We
       now require an input file. If standard in is used then we don't have a file
       name on which to base the output.
-     -Able to build native windows executables using Cygwin+MinGW. 
+     -Able to build native windows executables using Cygwin+MinGW.
      -Patch from David Waite: Large arrays are now created by copying in the data
       from smaller arrays using System.arraycopy(). This eliminates the debug data
       associated with explicit initialization statements. It is also much easier

@@ -2,7 +2,7 @@
 tags: ruby testing time.warp wiki
 ---
 
-**Note:** the actual name of the gem is "time\_warp"; this wiki article is titled "time warp" only because wiki article titles may not contain underscores.
+**Note:** the actual name of the gem is "time_warp"; this wiki article is titled "time warp" only because wiki article titles may not contain underscores.
 
 # Official site
 

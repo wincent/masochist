@@ -12,7 +12,7 @@ The [nginx upload module](/wiki/nginx_upload_module) was already in extracted in
 
 ```shell
 $ wget http://sysoev.ru/nginx/nginx-0.7.63.tar.gz
-$ tar xzvf nginx-0.7.63.tar.gz 
+$ tar xzvf nginx-0.7.63.tar.gz
 $ cd nginx-0.7.63
 ```
 

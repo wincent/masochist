@@ -8,7 +8,7 @@ These notes were made while upgrading to [MLDonkey 2.9.3](/wiki/MLDonkey_2.9.3) 
 # Building
 
     wget http://garr.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.9.3.tar.bz2
-    tar xjvf mldonkey-2.9.3.tar.bz2 
+    tar xjvf mldonkey-2.9.3.tar.bz2
     cd mldonkey-2.9.3
     ./configure
 

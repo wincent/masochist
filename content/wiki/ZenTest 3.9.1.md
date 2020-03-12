@@ -34,7 +34,7 @@ Can't find a live repository to look at what changed between 3.9.0 and 3.9.1 (th
     +  * OMG I'm so dumb... fixed memory leak.
     +
      === 3.9.0 / 2008-01-30
-     
+
      * 15 minor enhancements:
     diff -r -u ZenTest-3.9.0/lib/autotest.rb ZenTest-3.9.1/lib/autotest.rb
     --- ZenTest-3.9.0/lib/autotest.rb	2008-01-31 10:50:16.000000000 +0100
@@ -58,11 +58,11 @@ Can't find a live repository to look at what changed between 3.9.0 and 3.9.1 (th
          result = {}
          targets = self.find_directories + self.extra_files
     +    self.find_order.clear
-     
+
          targets.each do |target|
            order = []
     @@ -508,9 +506,7 @@
-     
+
        def wait_for_changes
          hook :waiting
     -    begin
@@ -70,18 +70,18 @@ Can't find a live repository to look at what changed between 3.9.0 and 3.9.1 (th
     -    end until find_files_to_test
     +    Kernel.sleep self.sleep until find_files_to_test
        end
-     
+
        ############################################################
     diff -r -u ZenTest-3.9.0/lib/zentest.rb ZenTest-3.9.1/lib/zentest.rb
     --- ZenTest-3.9.0/lib/zentest.rb	2008-01-31 10:50:16.000000000 +0100
     +++ ZenTest-3.9.1/lib/zentest.rb	2008-02-01 04:26:41.000000000 +0100
     @@ -56,7 +56,7 @@
-     
+
      class ZenTest
-     
+
     -  VERSION = '3.9.0'
     +  VERSION = '3.9.1'
-     
+
        include ZenTestMapping
 
 So that missing `self.find_order.clear` could indeed explain the memory leak that I saw. Doesn't look like the code being tested is responsible for the leak (thank goodness, I hate trying to find memory leaks in Garbage Collected code). I've been running the test suite every second now for a few minutes and the memory usage is constant.

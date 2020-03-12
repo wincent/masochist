@@ -86,7 +86,7 @@ Before verifying the signature some set-up of [GPG](/wiki/GPG) is necessary; see
 
 When `git daemon` handles incoming connections it will try to launch other [Git](/wiki/Git) commands such as `git upload-pack`, `git upload-archive` and `git receive-pack`.
 
-A change in 1.5.4 means that Git now only looks in the `PATH` for such commands, not in the directory of the currently running Git executable. This in turn broke my `git daemon` set-up because I install Git into `/usr/local`, and I launch `git daemon` from within `xinetd`, but the `PATH` environment provided by `xinetd` does *not* include `/usr/local/bin`.
+A change in 1.5.4 means that Git now only looks in the `PATH` for such commands, not in the directory of the currently running Git executable. This in turn broke my `git daemon` set-up because I install Git into `/usr/local`, and I launch `git daemon` from within `xinetd`, but the `PATH` environment provided by `xinetd` does _not_ include `/usr/local/bin`.
 
 In other words, incoming connections work because I specified an absolute path (`/usr/local/bin/git-daemon`) in the `xinetd` configuration. But as soon as the client attempts to send or receive any data, the daemon tries to launch one of the other processes and fails because `/usr/local/bin` is not in the `PATH`. So it worked under 1.5.3.8 and in previous versions, but it wouldn't work under 1.5.4.
 

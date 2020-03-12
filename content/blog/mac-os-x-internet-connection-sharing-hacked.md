@@ -3,11 +3,7 @@ title: Mac OS X Internet connection sharing hacked
 tags: blog
 ---
 
-Don't mean to be alarmist, perhaps that title should have read, "*my* Mac OS X Internet connection sharing hacked". For a few minutes there I was wondering whether I'd discovered the first really nasty piece of Mac OS X spyware; but after a few minutes of investigation it looks like it's one of my neighbours that has the spyware, and he or she had somehow hacked into my local wireless network (provided via Mac OS X's Internet connection sharing).
-
-
-
-
+Don't mean to be alarmist, perhaps that title should have read, "_my_ Mac OS X Internet connection sharing hacked". For a few minutes there I was wondering whether I'd discovered the first really nasty piece of Mac OS X spyware; but after a few minutes of investigation it looks like it's one of my neighbours that has the spyware, and he or she had somehow hacked into my local wireless network (provided via Mac OS X's Internet connection sharing).
 
 This started about 20 minutes ago when I noticed (thanks to the [Net Monitor](http://homepage.mac.com/rominar/net.html) icon in my Dock) a steady 80-100KB/s of incoming data despite the fact that I wasn't actively downloading anything. I checked to make sure that this traffic wasn't caused by iTunes downloading new podcasts in the background. It wasn't. My curiosity was piqued. [Little Snitch](http://www.obdev.at/products/littlesnitch/) hadn't reported any unauthorized connection attempts. I fired up [Interarchy](http://www.interarchy.com/main/) so that I could watch the traffic and get a clue as to what it was.
 

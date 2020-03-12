@@ -10,12 +10,12 @@ tags: wiki javascript
 6. Other exports.
 
 ```javascript
-import fs from 'fs';
-import thing from './thing';
-import other from '../other';
+import fs from "fs";
+import thing from "./thing";
+import other from "../other";
 
-import type {X} from './X';
-import type {A} from '../A';
+import type { X } from "./X";
+import type { A } from "../A";
 
 export type T = string;
 
@@ -27,16 +27,16 @@ The rationale for moving from NPM packages, to the current directory, to the par
 Note that when accessing items in subdirectories, we sort lexicographically and not by depth:
 
 ```javascript
-import a from './a/something/very/very/deeply/nested';
-import b from './b/something/shallow';
+import a from "./a/something/very/very/deeply/nested";
+import b from "./b/something/shallow";
 ```
 
 Uppercase sorts before lowercase. Note in this example how, even though we're importing `thing`, `z` and `a` here, the order is dictated by the source string on the right:
 
 ```javascript
-import thing from 'Somewhere';
-import {z} from 'bar';
-import {a} from 'foo';
+import thing from "Somewhere";
+import { z } from "bar";
+import { a } from "foo";
 ```
 
 Part of the rationale is that we shouldn't have to move an import just because we add to or remove from the list of specifiers on the left-hand-side; this keeps diffs small; eg:

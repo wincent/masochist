@@ -95,13 +95,13 @@ Development occurs in parallel branches. The word "branches" is used because of 
 
 Releases such as 3.2, 3.3 and 3.4 all belong to the "[Jaguar](/wiki/Jaguar)" branch. The branch is named like that because all the releases on that branch are designed to run on any version of [Mac OS X](/wiki/Mac_OS_X) from 10.2.8 [Jaguar](/wiki/Jaguar) onwards. At the time of writing that means that they'll even work as far up as [Snow Leopard](/wiki/Snow_Leopard). It is unlikely that any further development will occur on this branch.
 
-Releases in 3.5 series belong to the "[Leopard](/wiki/Leopard)" branch. This was the experimental, cutting-edge of development during the [Leopard](/wiki/Leopard) product cycle. It was a complete rewrite which used new technologies and *only* ran on [Mac OS X](/wiki/Mac_OS_X) 10.5 [Leopard](/wiki/Leopard) and up. Due to an [Apple](/wiki/Apple) bug in Leopard (see [bug \#640](/issues/640)), this series could occasionally suffer from crashes, so all releases in the series were labelled as "alpha" status. No further development work will occur on this branch.
+Releases in 3.5 series belong to the "[Leopard](/wiki/Leopard)" branch. This was the experimental, cutting-edge of development during the [Leopard](/wiki/Leopard) product cycle. It was a complete rewrite which used new technologies and _only_ ran on [Mac OS X](/wiki/Mac_OS_X) 10.5 [Leopard](/wiki/Leopard) and up. Due to an [Apple](/wiki/Apple) bug in Leopard (see [bug \#640](/issues/640)), this series could occasionally suffer from crashes, so all releases in the series were labelled as "alpha" status. No further development work will occur on this branch.
 
 Releases in the 4.0 series belong to the "[Snow Leopard](/wiki/Snow_Leopard)" branch. This is where current development efforts are targeted. Releases from this series will only run on Snow Leopard and up.
 
 Note that strictly speaking version 3.3 isn't part of the linear development of the "[Jaguar](/wiki/Jaguar)" branch; rather it's off on a side branch. This was a special version made especially for the MacHeist "Giving Tree" promotion. It required special changes to be made to the code, so development work was done on its own branch. See the [MacHeist FAQ](/blog/frequently-asked-questions-about-synergy-and-macheist) for more information.
 
-You'll notice in the above diagram that within each branch the version numbers do always increment and they never "go backwards", *but* that if you look at things in a strictly date-based chronological order then sometimes the version numbers may seem to be going up and down.
+You'll notice in the above diagram that within each branch the version numbers do always increment and they never "go backwards", _but_ that if you look at things in a strictly date-based chronological order then sometimes the version numbers may seem to be going up and down.
 
 # What does all this mean for me?
 

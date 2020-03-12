@@ -24,11 +24,11 @@ The other day I was [lamenting on Twitter](https://twitter.com/wincent/status/10
 >
 > The idea is that the search should be so good — and it generally is — that you can find what you are looking for based on what it is and not where it is. This idea of tagging first came up on sites like Digg (I think?), AFAIK one of the early great examples of a "folksonomy".
 >
-> These tag-based classification systems work great IMO. Unlike hierarchies, which you have to pretty much get right from the get-go (because they are hard to change, because major conceptual flaws are difficult to correct, because some stuff *is* intrinsically ambiguous) ...
+> These tag-based classification systems work great IMO. Unlike hierarchies, which you have to pretty much get right from the get-go (because they are hard to change, because major conceptual flaws are difficult to correct, because some stuff _is_ intrinsically ambiguous) ...
 >
-> ...tag-based schemes are easily modified and lend themselves well to incremental improvement. Major conceptual deadlocks are rare. You can *invest* in a tag-based system and it will become more valuable over time. The investment still makes sense even if the search technology...
+> ...tag-based schemes are easily modified and lend themselves well to incremental improvement. Major conceptual deadlocks are rare. You can _invest_ in a tag-based system and it will become more valuable over time. The investment still makes sense even if the search technology...
 >
-> ...is weak, because the latent value of the tagging can be capitalized upon "for free" whenever the technology improves. They're great. Alas, none of this helps much with the question of how to organize your Dropbox, because you still have to decide *where* to put your stuff.
+> ...is weak, because the latent value of the tagging can be capitalized upon "for free" whenever the technology improves. They're great. Alas, none of this helps much with the question of how to organize your Dropbox, because you still have to decide _where_ to put your stuff.
 >
 > Some illustrative examples: should I create folders for my kids and nest their stuff inside it? (eg. a folder for health insurance, a folder for doctor visits) or should I create top level folders for insurance and per-person folders within those?
 >
@@ -82,13 +82,13 @@ A corollary to this first recommendation is this:
 
 > **Corollary:** Files and folders must exist in one place and one place only in your Dropbox folder.
 
-As such, this means that your unavoidable choice in the whole taxonomy vs folksonomy question is taxonomy. Hierarchy. A place for every thing, and every thing in its place. A bunch of rules and guidelines for deciding *which* place applies will follow.
+As such, this means that your unavoidable choice in the whole taxonomy vs folksonomy question is taxonomy. Hierarchy. A place for every thing, and every thing in its place. A bunch of rules and guidelines for deciding _which_ place applies will follow.
 
-An exception to the "must exist in one place" rule is that you may wish to place a *copy* of something in another place. Clearly, doing this with anything that you might edit later is a recipe for madness due to divergence. This leads to a second recommendation:
+An exception to the "must exist in one place" rule is that you may wish to place a _copy_ of something in another place. Clearly, doing this with anything that you might edit later is a recipe for madness due to divergence. This leads to a second recommendation:
 
 > **Recommendation:** Only make duplicates of files that are immutable in nature, to avoid the headaches caused by divergence.
 
-Examples of files that you could make redundant copies of without harm: long-lived documents like your birth certificate; documents which you will never edit (eg. scans of inbound email); and so on... Of course, the question remains, *why* would you want to make redundant copies of any of these things? After all, they'll eat into your quota, and if they proliferate, they may lead to a counterproductive sense of clutter and make things harder to find.
+Examples of files that you could make redundant copies of without harm: long-lived documents like your birth certificate; documents which you will never edit (eg. scans of inbound email); and so on... Of course, the question remains, _why_ would you want to make redundant copies of any of these things? After all, they'll eat into your quota, and if they proliferate, they may lead to a counterproductive sense of clutter and make things harder to find.
 
 Nevertheless, I can see that you might want to create copies under some circumstances: for instance, you might want to have a folder (or a series of date-based folders) that constitute a kind of "append-only log" where you drag copies of all the things you've printed, or processed in a given period. Or maybe you have a document that you tend to need to use over and over in combination with other documents, so you allow multiple copies of it to exist where needed (a good example of this one for me would be the proof of my government-issued ID number which I end up needing to include in almost every official application or bureaucratic process that I go through).
 
@@ -96,9 +96,9 @@ Nevertheless, I can see that you might want to create copies under some circumst
 
 Sadly, most of the top search results I landed on in my search for best practices contained some really terrible advice, including tips such as:
 
-- *Put the last modified date in file name.*
-- *Put the name of the last user to edit the file in file name.*
-- *Number folders and files to enforce sort order.*
+-   _Put the last modified date in file name._
+-   _Put the name of the last user to edit the file in file name._
+-   _Number folders and files to enforce sort order._
 
 But perhaps there is some good that we can spin out from this web of bad advice. Let's talk about dates and sorting.
 
@@ -140,7 +140,7 @@ The obvious options here are to put the date at the beginning or the end of the 
 
 > **Recommendation:** If multiple items of the same type, differentiated only by their date, are grouped together in a folder, put the date at the beginning. Otherwise put the date at the end, to preserve sortability by name as well as by date.
 
-One exception to this guideline would be items where the year is usually a prefix *as a matter of convention*; here again we recur to the example of the tax return, which we would unconditionally prefer to store as "2018 Tax return.pdf" rather than "Tax return 2018.pdf", because the former is how people would generally talk or write about the document.
+One exception to this guideline would be items where the year is usually a prefix _as a matter of convention_; here again we recur to the example of the tax return, which we would unconditionally prefer to store as "2018 Tax return.pdf" rather than "Tax return 2018.pdf", because the former is how people would generally talk or write about the document.
 
 # When to use capital letters
 
@@ -182,7 +182,7 @@ So, "Company — Topic.pdf" becomes "Company, topic.pdf". In fact in many cases,
 
 # Subordination
 
-Why did we talk about "Company, topic" above and not "Topic, company"? In what sense is the thing on the right subordinate to the thing on the left? The truth is, it could have been either way, depending on the context. In general, we want the thing that is *most discriminating* to go on the left, because that means we can leverage a lexicographical sort to most quickly find the item we're looking for.
+Why did we talk about "Company, topic" above and not "Topic, company"? In what sense is the thing on the right subordinate to the thing on the left? The truth is, it could have been either way, depending on the context. In general, we want the thing that is _most discriminating_ to go on the left, because that means we can leverage a lexicographical sort to most quickly find the item we're looking for.
 
 > **Recommendation:** Place the information with the most discriminating power at the beginning. This applies to both files and paths.
 
@@ -212,7 +212,7 @@ Often, you'll get a document from another source and it will, naturally, be name
 
 > **Recommendation:** Preserve original file names by placing documents from other sources inside a folder that you name according to your own conventions.
 
-In this way, if you ever need to find a document by its original name — for example, because it is referenced by name in an email — you can still look it up, but you can *also* find it by using words of your own that describe it, or by looking for it in the location within the hierarchy that these conventions indicate it should occupy.
+In this way, if you ever need to find a document by its original name — for example, because it is referenced by name in an email — you can still look it up, but you can _also_ find it by using words of your own that describe it, or by looking for it in the location within the hierarchy that these conventions indicate it should occupy.
 
 # Keep it simple
 
@@ -224,7 +224,7 @@ We don't want too much nesting. It is probably better to have an "Invoices/2018"
 
 # Be consistent
 
-There are a lot of rules here and a lot of subtlety. It can be easy to forget what rules should apply in a given situation, and sometimes a judgment call may be required. The point is not to apply the guidelines with flawless perfection, but to make your best effort. *Try* to be consistent, and while it won't be perfect, it will be *good enough*.
+There are a lot of rules here and a lot of subtlety. It can be easy to forget what rules should apply in a given situation, and sometimes a judgment call may be required. The point is not to apply the guidelines with flawless perfection, but to make your best effort. _Try_ to be consistent, and while it won't be perfect, it will be _good enough_.
 
 > **Recommendation:** Be as consistent as possible.
 
@@ -232,28 +232,28 @@ There are a lot of rules here and a lot of subtlety. It can be easy to forget wh
 
 So, with all that out the way, here's what we have:
 
-- Never use symlinks or aliases inside Dropbox folders.
-- Items should exist in exactly one place.
-- If you must duplicate a file redundantly, make sure it is an immutable one.
-- Use dates only when they are intrinsic to the nature of the document, or necessary to disambiguate multiple items which would otherwise have the same name.
-- When a date applies to a group of items, put the date in the containing folder.
-- Only encode the date redundantly in the file name if you expect to be searching for the document by date and by name.
-- Base all dates on the YYYY-MM-DD format.
-- Use the briefest date format that provides sufficient specificity for a given need (eg. prefer YYYY over YYYY-MM, and YYYY-MM over YYYY-MM-DD).
-- Break dates up into nested folders (eg. "YYYY/MM/DD") only when the total volume of contained items makes the alternative (eg. "YYYY-MM-DD") impractical.
-- If multiple items of the same type, differentiated only by their date, are grouped together in a folder, put the date at the beginning. Otherwise put the date at the end, to preserve sortability by name as well as by date.
-- File and folder names should start with capital letters, but subsequent words need not start with capital letters unless required by grammar or convention.
-- Use spaces freely in file and folder names.
-- Using Unicode in file names as required.
-- Use whatever language you want, but be consistent.
-- If you must use a separator, use a comma.
-- Don't use a separator unless you must.
-- Place the information with the most discriminating power at the beginning of files and paths.
-- Don't organize by people; organize by topic.
-- Keep the top-level topic list short.
-- Preserve original file names by placing documents from other sources inside folders.
-- Keep things as simple as possible: don't go too far with structure.
-- Be as consistent as possible.
+-   Never use symlinks or aliases inside Dropbox folders.
+-   Items should exist in exactly one place.
+-   If you must duplicate a file redundantly, make sure it is an immutable one.
+-   Use dates only when they are intrinsic to the nature of the document, or necessary to disambiguate multiple items which would otherwise have the same name.
+-   When a date applies to a group of items, put the date in the containing folder.
+-   Only encode the date redundantly in the file name if you expect to be searching for the document by date and by name.
+-   Base all dates on the YYYY-MM-DD format.
+-   Use the briefest date format that provides sufficient specificity for a given need (eg. prefer YYYY over YYYY-MM, and YYYY-MM over YYYY-MM-DD).
+-   Break dates up into nested folders (eg. "YYYY/MM/DD") only when the total volume of contained items makes the alternative (eg. "YYYY-MM-DD") impractical.
+-   If multiple items of the same type, differentiated only by their date, are grouped together in a folder, put the date at the beginning. Otherwise put the date at the end, to preserve sortability by name as well as by date.
+-   File and folder names should start with capital letters, but subsequent words need not start with capital letters unless required by grammar or convention.
+-   Use spaces freely in file and folder names.
+-   Using Unicode in file names as required.
+-   Use whatever language you want, but be consistent.
+-   If you must use a separator, use a comma.
+-   Don't use a separator unless you must.
+-   Place the information with the most discriminating power at the beginning of files and paths.
+-   Don't organize by people; organize by topic.
+-   Keep the top-level topic list short.
+-   Preserve original file names by placing documents from other sources inside folders.
+-   Keep things as simple as possible: don't go too far with structure.
+-   Be as consistent as possible.
 
 And this will be my last word on the subject. Until, that is, I change my mind or forget.
 

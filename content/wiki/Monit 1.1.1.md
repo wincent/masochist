@@ -23,7 +23,7 @@ From the official announcement to the [Monit mailing list](/wiki/Monit_mailing_l
 
     * Fixed FTP protocol test. Thanks to Axel Reinhold for report.
 
-    * Fixed the hostheader option in the HTTP protocol test, which was 
+    * Fixed the hostheader option in the HTTP protocol test, which was
      added in Monit 5.1. Thanks to Naoya Nakazawa for report.
 
     * Removed an erroneous warning message about missing system service check.

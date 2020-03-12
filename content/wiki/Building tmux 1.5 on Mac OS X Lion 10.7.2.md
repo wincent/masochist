@@ -4,7 +4,7 @@ tags: lion tmux macos wiki
 
 ```shell
 $ curl -O http://iweb.dl.sourceforge.net/project/tmux/tmux/tmux-1.5/tmux-1.5.tar.gz
-$ tar xzf tmux-1.5.tar.gz 
+$ tar xzf tmux-1.5.tar.gz
 $ cd tmux-1.5
 $ export LDFLAGS=-lresolv
 $ ./configure

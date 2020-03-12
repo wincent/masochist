@@ -9,7 +9,7 @@ I [tweeted about this](/twitter/13) a couple of days ago, but now I have [more d
 
 I'm not a Python developer so this has absolutely zero impact for me, but I was still disappointed to see a relatively high-profile project like Python choose their SCM on such emotional rather than technical grounds.
 
--   **Reason 1:** they don't "like" Git. Um, ok. How about giving some technical reasons *why*?
+-   **Reason 1:** they don't "like" Git. Um, ok. How about giving some technical reasons _why_?
 -   **Reason 2:** "weak" Windows support. Not a Windows user myself, but my understanding is that Git actually has excellent Windows support nowadays.
 -   **Reason 3:** "not ... implemented in Python"... This one is the most bizarre of all. Should Ruby reject Git because it's not written in Ruby? Should Apple refuse to store their Objective-C source code using Perforce (or any other SCM) because it's not written in Objective-C?
 

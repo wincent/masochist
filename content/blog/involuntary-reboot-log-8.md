@@ -24,10 +24,6 @@ Nothing `sudo` worked because it couldn't look up my credentials and complained 
 
 Right now performing my customary boot-from-DVD and repair with Disk First Aid trick... One of the drives claims to need minor repair. Another hour down the gurgler...
 
-
-
-
-
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.4.9

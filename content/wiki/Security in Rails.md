@@ -34,7 +34,7 @@ When you try to access such a URL [Rails](/wiki/Rails) will look for a view temp
       end
 
     protected
-      
+
       def nuke_database
         User.destroy_all
       end

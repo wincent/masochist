@@ -17,13 +17,13 @@ In general I create all my frameworks as embedded frameworks for the following r
 -   There's no possibility of a version mismatch between an application and older, installed frameworks.
 -   The diskspace and bandwidth overheads are negligible in this day of cheap, massive hard disks and widespread broadband access.
 
-But the trouble with embedded frameworks is that they require you to hardwire their install path to `@executable_path/../Frameworks`. Because of the hard-wiring you can't move those frameworks somewhere else (such as `/Library/Frameworks/`) and expect them to work. There *is* the new `@loader_path` macro which affords some flexibility but that only works on 10.4 and so it's not suitable for use with my frameworks (which at the time of writing must all run on 10.3 as well).
+But the trouble with embedded frameworks is that they require you to hardwire their install path to `@executable_path/../Frameworks`. Because of the hard-wiring you can't move those frameworks somewhere else (such as `/Library/Frameworks/`) and expect them to work. There _is_ the new `@loader_path` macro which affords some flexibility but that only works on 10.4 and so it's not suitable for use with my frameworks (which at the time of writing must all run on 10.3 as well).
 
 So in the past I've gotten around this problem by having two separate targets in each of my framework projects: one for the embedded version and one for the installed version. This sucked because it was yet another thing to worry about keeping in synch; if I made a change to one target I'd have to remember to make a change to the other. It also doubled the effective build time if I wanted to build both the embeddable and installable variants of a framework.
 
 But that wasn't the only reason it was bad. I also had a bit of trouble with Xcode's `DSTROOT` build setting. Xcode has this to say about `DSTROOT`:
 
-> The path at which all products will be rooted when performing an install build. For instance, to install your products on the system proper, set this path to '/'. Defaults to /tmp/$(PROJECT\_NAME).dst to prevent a "test" install build from accidentally overwriting valid and needed data in the ultimate install path.
+> The path at which all products will be rooted when performing an install build. For instance, to install your products on the system proper, set this path to '/'. Defaults to /tmp/\$(PROJECT_NAME).dst to prevent a "test" install build from accidentally overwriting valid and needed data in the ultimate install path.
 >
 > Typically this path is not set per target, but is provided as an option on the command line when performing an 'xcodebuild install'. It may also be set in a build configuration in special circumstances. \[DSTROOT\]
 
@@ -35,7 +35,7 @@ Now, reading this I said to myself, why not set it per-target? What's the differ
 
 Until I understood this I was setting my installable frameworks to be installed in `/Library/Frameworks/`. This had a number of undesirable side-effects:
 
--   It's not just that the products were being *installed* there, they were actually being *built* there; this means that a failed build would cause a previous, working version of the framework to be damaged or overwritten.
+-   It's not just that the products were being _installed_ there, they were actually being _built_ there; this means that a failed build would cause a previous, working version of the framework to be damaged or overwritten.
 -   In many cases doing a "Clean All" would remove installed versions of all your frameworks, which can wreak havoc if you have applications running that depend on those frameworks (Interface Builder, for example).
 -   Xcode puts a symbolic link to the installed framework in the `TARGET_BUILD_DIR`, thus making it impossible to have both an embeddable version in your `TARGET_BUILD_DIR` and an installed version in your `/Library/Frameworks/` directory.
 -   Xcode had a lot of trouble find private headers for installed frameworks (which I like to store in my `TARGET_BUILD_DIR` rather than in inside the framework itself so that I don't have to worry about stripping them out before shipping the framework to users).
@@ -50,17 +50,13 @@ But that leaves the `@executable_path` problem to solve. This information was ha
 
 Obviously this is much, much faster than building a whole new version of the framework. It also neatly sidesteps all the problems mentioned above: there are no troublesome symbolic links left in your `TARGET_BUILD_DIR`, Xcode has no trouble finding private header files, and the frameworks are only copied into place (overwriting previously installed versions) if the build completes successfully so you won't have any problems "pulling the rug out from under" running applications.
 
-
-
-
-
 ### The last remaining problem to solve...
 
 With this change I am very happy with my build process. If you've been reading this weblog with any regularity you'll see that over the past few weeks I've been [working hard at addressing](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/xcode_inputoutp.php) [bugs in Xcode's Input/Output Files functionality](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/two_annoying_xc.php), reducing excessive build times caused by [automatic build number embedding](http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/embedding_build.php), implementing a [home-made version of `InfoPlist.strings` file preprocessing](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/xcode_feature_r.php), rolling out a [configuration file](http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/build_setting_i.php) infrastructure across all my projects, and converting many, many dependent sub-projects into mere targets within their parent projects (for less overhead, faster builds, better dependency analysis, easier management and better searchability).
 
 As a result of all this work my builds are faster than ever, more deterministic and reliable, and my maintenance load is way down. I've been rolling as much useful stuff as possible into my "[buildtools](http://www.wincent.com/a/news/archives/2006/02/wincent_strings.php)" tool set. I've finally achieved the holy grail of version numbering: the ability to set the version number in a single place and have it propagate everywhere it's needed (the `Info.plist` and all `InfoPlist.strings` files, and embedded in the application itself in places like the "About" box and visible on the command line via the `what` tool).
 
-All of this has required literally weeks of work, but the long-term benefits will be obvious. From here on it will be much less time spent doing [the clickety-click dance in Xcode](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/clicketyclick.php) and waiting for builds to complete, and more time spent coding! There are currently no major Xcode bugs which are draining my productivity because I've implemented satisfactory workarounds in all cases. (There *are* still *minor* productivity-draining bugs, but I've filed bug reports, they've been marked as duplicates, and I am confident that Apple will eliminate them in the not-too-distant future.)
+All of this has required literally weeks of work, but the long-term benefits will be obvious. From here on it will be much less time spent doing [the clickety-click dance in Xcode](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/clicketyclick.php) and waiting for builds to complete, and more time spent coding! There are currently no major Xcode bugs which are draining my productivity because I've implemented satisfactory workarounds in all cases. (There _are_ still _minor_ productivity-draining bugs, but I've filed bug reports, they've been marked as duplicates, and I am confident that Apple will eliminate them in the not-too-distant future.)
 
 There is now only one last remaining problem to solve: how to integrate the automatic production of unstripped release builds in the build process. At the moment I have two configurations, "Debug" and "Release". The "Debug" builds are gigantic because they contain an immense quantity of symbols. These cannot be shipped to customers due to their size; they may also be slower, and they are more vulnerable to reverse engineering. The "Release" builds are slim because the symbols have been stripped but the stripping makes crash reports hard to read.
 
@@ -120,4 +116,4 @@ Most likely I'll have to turn off linker support for symbol stripping and instea
 
 So will report back here if I gain any useful insights while working on the problem.
 
-\[**Update:** *22 March 2006*; [Andy O'Meara](http://www.55ware.com/about-andy.html) (of [G-Force](http://www.55ware.com/g-force/index.html) fame) has made an [interesting post](http://lists.apple.com/archives/Xcode-users/2006/Mar/msg00552.html) to the [Xcode users mailing list](http://lists.apple.com/mailman/listinfo/xcode-users) about his own approach to tackling this problem.\]
+\[**Update:** _22 March 2006_; [Andy O'Meara](http://www.55ware.com/about-andy.html) (of [G-Force](http://www.55ware.com/g-force/index.html) fame) has made an [interesting post](http://lists.apple.com/archives/Xcode-users/2006/Mar/msg00552.html) to the [Xcode users mailing list](http://lists.apple.com/mailman/listinfo/xcode-users) about his own approach to tackling this problem.\]

@@ -7,7 +7,7 @@ tags: blog
 
 > I'm aware many people who have the site in their feeds will be trying to access it via something based on WebKit/WebCore. Safari may have crashed, and you lost all your open tabs. You may have had your RSS reader up, and opened up some links in tabs, and down it all went. Read whatever you will into the fact that while these things did occur to me, I'm attaching it inline instead of linking to it separately anyways.
 
-Mister "Batman", you are now officially on my shit list. In some countries it's illegal to knowingly exploit that kind of vulnerability (akin to writing a virus or trojan). You could be opening yourself to civil prosecution as well for wilful and malicious destruction of other people's data. In all countries it's just plain bad form, and even worse when you *know* that your readership is almost exclusively Mac users, a large portion of them running Safari. I'm removing you from my list of "weekly rounds", I'll never be visiting your site again, and I'll be advising anyone that asks me to avoid your website and all its self-important, opinionated ramblings like the plague.
+Mister "Batman", you are now officially on my shit list. In some countries it's illegal to knowingly exploit that kind of vulnerability (akin to writing a virus or trojan). You could be opening yourself to civil prosecution as well for wilful and malicious destruction of other people's data. In all countries it's just plain bad form, and even worse when you _know_ that your readership is almost exclusively Mac users, a large portion of them running Safari. I'm removing you from my list of "weekly rounds", I'll never be visiting your site again, and I'll be advising anyone that asks me to avoid your website and all its self-important, opinionated ramblings like the plague.
 
 #### Update (20 April 2006)
 
@@ -31,22 +31,18 @@ Unfortunately, I don't see any "argument" at all. All I see is an asshole who ju
 
 \[Later on...\]
 
-Drunken "Hacker" Batman has just made *another* attempt at crashing my mail application, this time trying to conceal his attack using the name "Customer Support" and the subject, "Enrol to beta test the new version of Adobe DreamWeaver today!". This guy has all the cleverness of an idiot spammer and just as much charm. I must admit to being surprised at the levels of pigheaded arrogance that this fellow is capable of attaining. How low will this guy sink? What is his point exactly? That Apple has a vulnerability in one of their frameworks? (*Gasp!*) That it can be remotely triggered? (*Wow!*) That not only can it be remotely triggered, but that he, *the one and only Drunken Batman*, is so clever and hardcore that he's prepared to break the law and risk litigation in order to show it? (*Awesome!*) I guess that his motivation must be in their somewhere, but the only thing he's achieved so far is to demonstrate what an asshole he is (oh, and to waste my time... please, Mr Batman, fuck off and stop bugging me; I've got much better things to do than tell the world what a dick you are).
+Drunken "Hacker" Batman has just made _another_ attempt at crashing my mail application, this time trying to conceal his attack using the name "Customer Support" and the subject, "Enrol to beta test the new version of Adobe DreamWeaver today!". This guy has all the cleverness of an idiot spammer and just as much charm. I must admit to being surprised at the levels of pigheaded arrogance that this fellow is capable of attaining. How low will this guy sink? What is his point exactly? That Apple has a vulnerability in one of their frameworks? (_Gasp!_) That it can be remotely triggered? (_Wow!_) That not only can it be remotely triggered, but that he, _the one and only Drunken Batman_, is so clever and hardcore that he's prepared to break the law and risk litigation in order to show it? (_Awesome!_) I guess that his motivation must be in their somewhere, but the only thing he's achieved so far is to demonstrate what an asshole he is (oh, and to waste my time... please, Mr Batman, fuck off and stop bugging me; I've got much better things to do than tell the world what a dick you are).
 
 Thank god for filters. Set your mail client to route all messages from **drunkenb@gmail.com** to the trash and you'll be fine; better yet block it at the sendmail level. Of course, that might not protect you in the event that he decides to use another address (and he does seem to be the sort of puerile jackass who'd be inclined to try), but it's a step at least.
 
 Seeing as it hasn't yet gotten through Mr "Batman's" thickened skull, I'll share with him what I believe are the appropriate means of disclosing a vulnerability. Here are some simple steps in "do's and don'ts" format:
 
-1.  *Do* report the vulnerability to the vendor.
-2.  *Do* make a public announcement at an appropriate time if and only if you feel it's in the public interest.
-3.  *Do* provide a reproducible test case, but only to those who are interested: don't ram it down people's throats by trying to remotely exploit vulnerabilities on their computers without warning.
-4.  *Don't* send emails to specific individuals that disapprove of your conduct (see point 3) in an attempt to cause crashes; for the braindead (that's you, Mr "Batman): this is just as nasty as writing a virus, worm or a trojan.
-5.  If you fail in your first attempt to cause a crash on your target's computer, *don't* come trying again using low-level spammer tricks; you shouldn't be doing it in the first place.
-6.  If you're upset with your vendor, *do* feel free to complain about it or write a rational criticism; but being upset is no excuse to start acting like an asshole.
-
-
-
-
+1.  _Do_ report the vulnerability to the vendor.
+2.  _Do_ make a public announcement at an appropriate time if and only if you feel it's in the public interest.
+3.  _Do_ provide a reproducible test case, but only to those who are interested: don't ram it down people's throats by trying to remotely exploit vulnerabilities on their computers without warning.
+4.  _Don't_ send emails to specific individuals that disapprove of your conduct (see point 3) in an attempt to cause crashes; for the braindead (that's you, Mr "Batman): this is just as nasty as writing a virus, worm or a trojan.
+5.  If you fail in your first attempt to cause a crash on your target's computer, _don't_ come trying again using low-level spammer tricks; you shouldn't be doing it in the first place.
+6.  If you're upset with your vendor, _do_ feel free to complain about it or write a rational criticism; but being upset is no excuse to start acting like an asshole.
 
 The first message in full:
 
@@ -70,7 +66,7 @@ The first message in full:
     Subject: My reply
     In-Reply-To: <f11040660603311046l3eacb261u9226f5975594e2db@mail.gmail.com>
     MIME-Version: 1.0
-    Content-Type: multipart/mixed; 
+    Content-Type: multipart/mixed;
         boundary="----=_Part_8971_25485783.1143830897572"
     References: <f11040660603311043o17588b79y46c8c69eff1a2b56@mail.gmail.com>
          <f11040660603311046l3eacb261u9226f5975594e2db@mail.gmail.com>
@@ -79,7 +75,7 @@ The first message in full:
     X-Spam-Status: No, hits=0.0 required=5.0
         tests=HTML_30_40,HTML_MESSAGE,IN_REP_TO,REFERENCES
         version=2.55
-    X-Spam-Level: 
+    X-Spam-Level:
     X-Spam-Checker-Version: SpamAssassin 2.55 (1.174.2.19-2003-05-19-exp)
 
 
@@ -166,14 +162,14 @@ The second:
     To: win@wincent.com
     Subject: Enrol to beta test the new version of Adobe DreamWeaver today!
     MIME-Version: 1.0
-    Content-Type: multipart/mixed; 
+    Content-Type: multipart/mixed;
         boundary="----=_Part_4194_10700580.1144181239721"
     X-Virus-Status: No
     X-Virus-Checker-Version: clamassassin 1.2.3 with clamdscan / ClamAV 0.88/1375/Tue Apr  4 09:55:06 2006
     X-Spam-Status: No, hits=0.0 required=5.0
         tests=none
         version=2.55
-    X-Spam-Level: 
+    X-Spam-Level:
     X-Spam-Checker-Version: SpamAssassin 2.55 (1.174.2.19-2003-05-19-exp)
 
 
@@ -205,7 +201,5 @@ The second:
 
 
     ------=_Part_4194_10700580.1144181239721--
-
-
 
 </div>

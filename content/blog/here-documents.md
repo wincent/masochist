@@ -12,13 +12,9 @@ This is an extension to the normal syntax for the `raw` directive:
     are treated as normal characters inside the #raw block.
     #end
 
-Notice how the string, `#raw`, inside the raw block does *not* have the effect of opening a new, nested raw block. This is because the `#` character loses its special meaning inside the block. This effect holds true up until the next `#end` directive.
+Notice how the string, `#raw`, inside the raw block does _not_ have the effect of opening a new, nested raw block. This is because the `#` character loses its special meaning inside the block. This effect holds true up until the next `#end` directive.
 
 But what if you want to include a literal `#end` inside the block without terminating it. You could try escaping it (`\#end`) but then you'd be breaking the idea that special characters should be treated as normal characters inside the raw block (that is, you'd be granting `\` a special function inside the block).
-
-
-
-
 
 The solution is to allow here documents:
 

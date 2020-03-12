@@ -14,11 +14,11 @@ But there are a couple of things I want to clarify. Matt seems to have missed my
 
 He says, "I think the real issue though is not that WP has bugs which are sometimes security related ... but that the mechanisms for updating complex web software are a pain."
 
-Totally true, all software has bugs. Also true that updating web software is a pain. But that's not my complaint. My complaint is that the WordPress team needs to improve their *process*.
+Totally true, all software has bugs. Also true that updating web software is a pain. But that's not my complaint. My complaint is that the WordPress team needs to improve their _process_.
 
 > I suppose we could act more like our proprietary competitors and try to downplay or hide security issues instead of trumpeting them loudly in our blog, but I think the benefit of having people well-informed outweighs the PR lumps we take for doing the right thing.
 
-I wouldn't accuse the WordPress team of hiding security issues (although I *do* believe that they downplay them), but I *do* think they need to change what they're doing. My beliefs on this are pretty much exactly what I said [last time](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php):
+I wouldn't accuse the WordPress team of hiding security issues (although I _do_ believe that they downplay them), but I _do_ think they need to change what they're doing. My beliefs on this are pretty much exactly what I said [last time](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php):
 
 > The WordPress team needs to change the way they work with respect to security. This is a very popular, public-facing web application. Instead of springing these forced security updates ("upgrade now or else") on the masses they should do three or four things:
 >
@@ -27,7 +27,7 @@ I wouldn't accuse the WordPress team of hiding security issues (although I *do* 
 > 3.  Implement a mandatory review process in which every single check-in must pass a security review by another team member; this security-specific review should be in addition to any existing review procedures they might have (emphasis on the might).
 > 4.  Appoint a security officer whose responsibilities include a coordinating regular, pro-active audits of the code base.
 
-[Open source](http://www.wincent.com/knowledge-base/Open%20source) is great, but that doesn't mean that total transparency at every single moment is the best thing. Consider one of the iconic open source stars, the [Mozilla](http://www.wincent.com/knowledge-base/Mozilla) project: almost everything is out in the open but security issues are tracked privately and only exposed to the public eye *after* the release of the updated software containing the fix. They do this because they know that attackers would otherwise mine the [Bugzilla database](http://bugzilla.mozilla.org) looking for information that will help them craft exploits.
+[Open source](http://www.wincent.com/knowledge-base/Open%20source) is great, but that doesn't mean that total transparency at every single moment is the best thing. Consider one of the iconic open source stars, the [Mozilla](http://www.wincent.com/knowledge-base/Mozilla) project: almost everything is out in the open but security issues are tracked privately and only exposed to the public eye _after_ the release of the updated software containing the fix. They do this because they know that attackers would otherwise mine the [Bugzilla database](http://bugzilla.mozilla.org) looking for information that will help them craft exploits.
 
 This approach would be doubly appropriate for WordPress because unlike a web browser, a WordPress weblog is always on, always exposed. No exploit can attack a flawed copy of Firefox if your computer is turned off and you're living it up in a disco in Ibiza; but if you're running WordPress and go off on a camping trip then your server is beyond your reach, naked, on the Internet with nothing but the guarantees of the WordPress team that the code has been audited and is hopefully vulnerability free, "fingers crossed".
 
@@ -37,4 +37,4 @@ One last thing; Matt says:
 
 > Wincent Colaiuta has no problem throwing flames at WordPress, but doesn't see fit to enable comments. (Apparently disabled to make Movable Type more secure.)
 
-It's not that I disabled comments *in order to* increase security; it's that I didn't want comments in the first place, and then *later* recognized that a side-effect of this was the possibility of locking down an installation. I understand that for many people comments are a quintessential part of weblogging — I myself have run weblogs in the past with comments enabled — but there are also plenty of examples of sites that explicitly choose not to enable comments because they're not looking for a "conversation" with anonymous strangers. [Daring Fireball](http://www.wincent.com/knowledge-base/Daring%20Fireball) is a relatively high-profile example of this latter school.
+It's not that I disabled comments _in order to_ increase security; it's that I didn't want comments in the first place, and then _later_ recognized that a side-effect of this was the possibility of locking down an installation. I understand that for many people comments are a quintessential part of weblogging — I myself have run weblogs in the past with comments enabled — but there are also plenty of examples of sites that explicitly choose not to enable comments because they're not looking for a "conversation" with anonymous strangers. [Daring Fireball](http://www.wincent.com/knowledge-base/Daring%20Fireball) is a relatively high-profile example of this latter school.

@@ -2,5 +2,3 @@
 redirect: [[SQL]]
 tags: wiki
 ---
-
-

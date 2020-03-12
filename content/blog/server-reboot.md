@@ -5,10 +5,6 @@ tags: blog
 
 Tonight I rebooted the server for the first time since moving to [Rackspace](http://service.bfast.com/bfast/click?bfmid=30735717&siteid=41506187&bfpage=hosting_headaches) back in August 2005. It [hasn't skipped a beat](http://www.wincent.com/a/about/wincent/weblog/archives/2005/11/some_words_of_p.php) since then (218 days of uptime with incredibly solid network connectivity) but it was nevertheless time to perform a kernel upgrade so as to pull down the latest security fixes from [Red Hat](http://www.redhat.com/).
 
-
-
-
-
 ### How it works
 
 As part of the [Red Hat Network](https://rhn.redhat.com/help/about.pxt) you get automated security updates on a daily basis. Since switching to Rackspace I've received daily email reports informing me of automated updates applied to [Apache](http://httpd.apache.org/), [PHP](http://www.php.net/) and many other pieces of software on the server. These may not be the bleeding-edge latest versions of the software, but Red Hat makes a point of back-porting security fixes.

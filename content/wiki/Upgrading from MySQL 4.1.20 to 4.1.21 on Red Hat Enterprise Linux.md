@@ -67,7 +67,7 @@ Sure enough, the required compatibility library does not exist:
 
 Inspect the supplied RPM and verify that it is incomplete:
 
-    $ rpm -q --dump --package MySQL-shared-compat-4.1.21-0.rhel3.i386.rpm 
+    $ rpm -q --dump --package MySQL-shared-compat-4.1.21-0.rhel3.i386.rpm
     warning: MySQL-shared-compat-4.1.21-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
     /usr/lib/libmysqlclient.so 24 1153391670 00000000000000000000000000000000 0120777 root root 0 0 1793 libmysqlclient.so.14.0.0
     /usr/lib/libmysqlclient.so.14 24 1153391670 00000000000000000000000000000000 0120777 root root 0 0 2560 libmysqlclient.so.14.0.0
@@ -79,7 +79,7 @@ Inspect the supplied RPM and verify that it is incomplete:
 Try downloading the 5.0.x RPM and see if it contains the missing file:
 
     $ wget http://dev.mysql.com/get/Downloads/MySQL-5.0/MySQL-shared-compat-5.0.23-0.rhel3.i386.rpm/from/http://mysql.rediris.es/
-    $ rpm -q --dump --package MySQL-shared-compat-5.0.23-0.rhel3.i386.rpm 
+    $ rpm -q --dump --package MySQL-shared-compat-5.0.23-0.rhel3.i386.rpm
     warning: MySQL-shared-compat-5.0.23-0.rhel3.i386.rpm: V3 DSA signature: NOKEY, key ID 5072e1f5
     /usr/lib/libmysqlclient.so 24 1152109532 00000000000000000000000000000000 0120777 root root 0 0 0 libmysqlclient.so.15.0.0
     /usr/lib/libmysqlclient.so.14 24 1152109532 00000000000000000000000000000000 0120777 root root 0 0 12549 libmysqlclient.so.14.0.0

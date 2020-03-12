@@ -34,7 +34,7 @@ Get a list of updates:
     Fetching rpm headers...
     ########################################
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
     The following Packages were marked to be skipped by your configuration:
@@ -69,18 +69,18 @@ Perform the actual upgrade:
 
     Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
     kernel                                  2.4.21         50.EL             athlon
-    kernel-doc                              2.4.21         50.EL             i386  
-    kernel-source                           2.4.21         50.EL             i386  
+    kernel-doc                              2.4.21         50.EL             i386
+    kernel-source                           2.4.21         50.EL             i386
 
 
     Testing package set / solving RPM inter-dependencies...
     ########################################
-    kernel-2.4.21-50.EL.athlon. ########################## Done.                   
-    kernel-doc-2.4.21-50.EL.i38 ########################## Done.                   
-    kernel-source-2.4.21-50.EL. ############################# Done.                   
+    kernel-2.4.21-50.EL.athlon. ########################## Done.
+    kernel-doc-2.4.21-50.EL.i38 ########################## Done.
+    kernel-source-2.4.21-50.EL. ############################# Done.
     Preparing              ########################################### [100%]
 
     Installing...
@@ -182,7 +182,7 @@ And check that `up2date` is satisfied:
     Fetching rpm headers...
     ########################################
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
     The following Packages were marked to be skipped by your configuration:
@@ -191,7 +191,7 @@ And check that `up2date` is satisfied:
     -------------------------------------------------------------------------------
     ntp                                     4.1.2          5.el3Config modified
 
-Optional clean-up; you could install the previous version of the kernel but I like to keep it around. On the *next* upgrade I'll get rid of the oldest versions:
+Optional clean-up; you could install the previous version of the kernel but I like to keep it around. On the _next_ upgrade I'll get rid of the oldest versions:
 
     $ rpm -qa | grep kernel
     kernel-2.4.21-50.EL

@@ -2,11 +2,11 @@
 tags: apache sendmail cyrus ssl wiki
 ---
 
-I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller ($50 for a 5/year renewal). Right now I have one cert for wincent.com and another for secure.wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to www.wincent.com and possibly other subdomains as well).
+I've been using [RapidSSL](/wiki/RapidSSL) for my [SSL](/wiki/SSL) certificates for a few years now, using [ServerTastic](http://www.servertastic.com/) because it's been the cheapest reseller (\$50 for a 5/year renewal). Right now I have one cert for wincent.com and another for secure.wincent.com (buying two separate certs is still considerably cheaper than getting a wildcard cert, although one day I'll probably cave in and get a wildcard cert in order to gracefully handle and redirect HTTPS requests coming in to www.wincent.com and possibly other subdomains as well).
 
 This year I was forced into renewing a little early because Chrome started complaining about the signature algorithm used on the older of my two certs (the certificate in question was for secure.wincent.com, and set to expire on 23 May 2013; just under 11 months from now). I had originally thought that by the time it expired I might have migrated all my SSL traffic onto wincent.com, but that hasn't happened. This is the first time I've been "bitten" by my selection of cheaper certificates.
 
-This time I went with [Namecheap](http://namecheap.com), as they offered a marginally better deal ($9.49/year for 4 years).
+This time I went with [Namecheap](http://namecheap.com), as they offered a marginally better deal (\$9.49/year for 4 years).
 
 In many ways the process here was similar to the last time I renewed this certificate (see "[SSL certificate renewal notes 2008](/wiki/SSL_certificate_renewal_notes_2008)"). The only catches were that, since last time:
 
@@ -167,11 +167,11 @@ As noted earlier, Cyrus is the one thing that required some additional hoop-jump
 After setting up the bundled cert file, symlinks, permissions/ownership:
 
     -r-------- 1 cyrus root 3590 2012-06-30 19:28 cyrus-imapd-bundle.pem.rapidssl.2012
-    lrwxrwxrwx 1 root  root   29 2012-06-30 19:24 cyrus-imapd.key -> cyrus-imapd.key.rapidssl.2012       
-    -r-------- 1 cyrus root  887 2012-06-30 16:04 cyrus-imapd.key.rapidssl.2007                          
-    -r-------- 1 cyrus root 3243 2012-06-30 16:05 cyrus-imapd.key.rapidssl.2012                          
+    lrwxrwxrwx 1 root  root   29 2012-06-30 19:24 cyrus-imapd.key -> cyrus-imapd.key.rapidssl.2012
+    -r-------- 1 cyrus root  887 2012-06-30 16:04 cyrus-imapd.key.rapidssl.2007
+    -r-------- 1 cyrus root 3243 2012-06-30 16:05 cyrus-imapd.key.rapidssl.2012
     lrwxrwxrwx 1 root  root   36 2012-06-30 19:24 cyrus-imapd.pem -> cyrus-imapd-bundle.pem.rapidssl.2012
-    -r-------- 1 cyrus root 1212 2012-06-30 16:05 cyrus-imapd.pem.rapidssl.2008                          
+    -r-------- 1 cyrus root 1212 2012-06-30 16:05 cyrus-imapd.pem.rapidssl.2008
     -r-------- 1 cyrus root 2199 2012-06-30 16:20 cyrus-imapd.pem.rapidssl.2012
 
 The relevant lines from `/etc/imapd.conf` look like this:

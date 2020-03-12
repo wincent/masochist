@@ -150,11 +150,11 @@ To the `sudoers` file:
     ./configure
     make
     cd test
-    ./runtests 
+    ./runtests
     cd ..
     sudo make install
     cd ../../doxygen
-    hdiutil attach Doxygen-1.5.3.dmg 
+    hdiutil attach Doxygen-1.5.3.dmg
     sudo ditto /Volumes/Doxygen /Applications/Doxygen
     sudo mv /Applications/Doxygen/Doxygen.app /Applications/
     sudo rm -r /Applications/Doxygen

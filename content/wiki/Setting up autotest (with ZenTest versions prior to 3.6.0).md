@@ -37,10 +37,10 @@ Start the autotest:
 
 Or if you really want a [Rake](/wiki/Rake) task for the job, add this to the `Rakefile`:
 
-    namespace :spec do	 
-      task :autotest do	 
-        system 'autotest'	 
-      end	 
+    namespace :spec do
+      task :autotest do
+        system 'autotest'
+      end
     end
 
 And start using:

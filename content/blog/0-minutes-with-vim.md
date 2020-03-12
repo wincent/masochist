@@ -23,6 +23,6 @@ My very first impression on launching [MacVim](/wiki/MacVim) for the first time 
 
 Will Vim prove to be better than Emacs?
 
-Who cares, really? In my opinion getting into an editor war is one of the most imbecilic things you could possibly do with your time. Both Emacs and Vim are clearly amazing, powerful, extensible pieces of software that can be used by skilled people to edit in an extremely efficient manner. Debating the wisdom of architectural and design choices in these two coherent, highly-evolved pieces of software really is a waste of time. At the end of the day you can basically do everything in one that you can in the other; the only difference is *how* you get there and that's where personal, subjective preferences start to come in.
+Who cares, really? In my opinion getting into an editor war is one of the most imbecilic things you could possibly do with your time. Both Emacs and Vim are clearly amazing, powerful, extensible pieces of software that can be used by skilled people to edit in an extremely efficient manner. Debating the wisdom of architectural and design choices in these two coherent, highly-evolved pieces of software really is a waste of time. At the end of the day you can basically do everything in one that you can in the other; the only difference is _how_ you get there and that's where personal, subjective preferences start to come in.
 
-The important question for each person to ask is *not*, "Which is better?", but "Which is better *for me*?".
+The important question for each person to ask is _not_, "Which is better?", but "Which is better _for me_?".

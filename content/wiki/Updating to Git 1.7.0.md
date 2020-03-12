@@ -21,8 +21,8 @@ Notes made while performing the update to [Git 1.7.0](/wiki/Git_1.7.0) on my loc
     sudo make prefix=/usr/local install quick-install-man
 
     # check for changes in the Bash completion script and install it
-    diff -u ~/.git-completion.sh contrib/completion/git-completion.bash 
-    cp contrib/completion/git-completion.bash ~/.git-completion.sh 
+    diff -u ~/.git-completion.sh contrib/completion/git-completion.bash
+    cp contrib/completion/git-completion.bash ~/.git-completion.sh
 
     # go back to master branch rather than hanging around on detached HEAD
     git co master

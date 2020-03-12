@@ -15,7 +15,7 @@ Note that in order to verify the signature on the downloaded archive you'll need
     gpg --verify ragel-6.4.tar.gz.asc ragel-6.4.tar.gz
     tar xzvf ragel-6.4.tar.gz
     cd ragel-6.4
-    ./configure 
+    ./configure
     make
 
 ## Testing

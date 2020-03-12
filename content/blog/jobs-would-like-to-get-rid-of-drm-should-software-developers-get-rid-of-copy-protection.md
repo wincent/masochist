@@ -9,17 +9,13 @@ Why do I care? I personally don't mind the iTMS DRM because it doesn't really im
 
 But I think there's an interesting question here: is there an analogy between DRM on music and copy-protection on software? I think there is, but the distribution models are currently different.
 
-
-
-
-
 #### Why it wouldn't work for software
 
 Let me explain: when you download music from the iTMS it is protected by DRM; when you download software like [Synergy](http://synergy.wincent.com/) it is protected by a serial number system.
 
 Jobs is basically saying that he'd embrace a model in which you could download DRM-free music from the iTMS. Does that mean that I could or should start distributing software without any serial number system?
 
-I think the answer is no because the distribution models are different. Ask yourself this, do you think Jobs would advocate a system in which people could download music from the iTMS without paying for it? That is, that the music would be like shareware; you'd download it and *then* pay for it. I don't think so...
+I think the answer is no because the distribution models are different. Ask yourself this, do you think Jobs would advocate a system in which people could download music from the iTMS without paying for it? That is, that the music would be like shareware; you'd download it and _then_ pay for it. I don't think so...
 
 That's really the reason why Jobs' proposal for DRM-free music downloads would work; because it's predicated on the distribution model being a pay-to-download one. Most Internet-distributed commercial software today does not use that model; it instead uses a pay-to-authenticate or a pay-to-unlock model, or a "pay to switch from trial to full ownership" model.
 
@@ -61,12 +57,12 @@ Another viewpoint emailed to me by [Pierce Wetter](%20http://www.opinionatedbast
 >
 > The other side of DRM, especially for software is that software companies always forget the R in DRM.
 >
-> If you shell out $400 for a piece of software, and you lose the disk, how do you prove that you used to own the software?
+> If you shell out \$400 for a piece of software, and you lose the disk, how do you prove that you used to own the software?
 >
 > Most insurance companies won't insure software.
 >
 > Something we've learned over in iLok land is that when you start enabling features purely for the end users (multiple licenses per dongle, secure transfers of licenses, backups of licenses, etc.) users don't mind DRM so much.
 >
-> Perhaps its worth $.99/song for Apple to be effectively backing up every song I own. (You can re-download your music library once/customer.)
+> Perhaps its worth \$.99/song for Apple to be effectively backing up every song I own. (You can re-download your music library once/customer.)
 >
 > Just some thoughts.

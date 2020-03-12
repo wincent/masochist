@@ -38,12 +38,12 @@ To make it pass we make a minor change to the `cppscan1.h` file:
     +++ cppscan1.h	2008-01-30 23:58:36.000000000 +0100
     @@ -2,7 +2,7 @@
      [/tags/define #define] _CPPSCAN1_H
-     
+
      [/tags/include #include] <iostream>
     -#include <malloc.h>
     +#include <malloc/malloc.h>
      [/tags/include #include] <string.h>
-     
+
      using namespace std;
 
 Now we can proceed with the install:

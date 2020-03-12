@@ -8,7 +8,7 @@ I've just released version 0.8b of the [Command-T](/wiki/Command-T) plug-in for 
 
 # Highlights
 
-Long-term users may notice that this is the first release that I've ever labelled with "b" for "beta". The reason is that this release features a *major* overhaul of the scoring algorithm which is used to sort matches. I am very excited about this change because it makes the order in which results are returned much more intuitive, and has a noticeable impact on the usability of the plug-in.
+Long-term users may notice that this is the first release that I've ever labelled with "b" for "beta". The reason is that this release features a _major_ overhaul of the scoring algorithm which is used to sort matches. I am very excited about this change because it makes the order in which results are returned much more intuitive, and has a noticeable impact on the usability of the plug-in.
 
 Previously to get the most out of the plug-in you had to understand how the algorithm worked in order to get the best results. With these changes, it now seems almost as though the plug-in can "read your mind" and deduce what file you're looking for. If people are interested, I can write a blog post going into more details about this.
 

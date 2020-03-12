@@ -2,5 +2,3 @@
 redirect: [[PowerPC]]
 tags: wiki
 ---
-
-

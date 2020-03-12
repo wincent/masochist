@@ -49,7 +49,7 @@ Add the following to your `~/.autotest` file:
     Autotest.add_hook :initialize do |autotest|
       if autotest.is_a? RspecRailsAutotest
         autotest.spec_command = 'script/spec --options spec/spec.opts' if File.exist? 'script/spec'
-      end  
+      end
     end
 
 # Starting [autotest](/wiki/autotest)

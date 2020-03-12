@@ -9,7 +9,7 @@ This is the latest release in the 3.5 alpha/experimental series. Until [Apple](/
 
 This release offers a new menu item in the Synergy Global Menu for conveniently disabling/enabling last.fm "scrobbling" on the fly, a bug fix for scrobbling of consecutively repeated tracks, and a slimmer disk footprint.
 
-Please note, this release, like the last one, ***has a minimum system version requirement of Mac OS X 10.5.8***; if you run an older version of [Mac OS X](/wiki/Mac_OS_X) you can use the 3.4 stable series, which runs on all versions of Mac OS X right back to 10.2.8.
+Please note, this release, like the last one, **_has a minimum system version requirement of Mac OS X 10.5.8_**; if you run an older version of [Mac OS X](/wiki/Mac_OS_X) you can use the 3.4 stable series, which runs on all versions of Mac OS X right back to 10.2.8.
 
 A full changelog appears [here](http://wincent.com/a/products/synergy-classic/history/#3.5.5a).
 

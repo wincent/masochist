@@ -111,7 +111,7 @@ This didn't work:
 A [Google](/wiki/Google) search yielded [this message](http://www.issociate.de/board/post/404840/HTML::Parser_on_older_perl_versions.html) indicating that 3.56 won't work with [Perl](/wiki/Perl) 5.8.0. So I manually installed 3.55:
 
     wget http://search.cpan.org/CPAN/authors/id/G/GA/GAAS/HTML-Parser-3.55.tar.gz
-    tar xzvf HTML-Parser-3.55.tar.gz 
+    tar xzvf HTML-Parser-3.55.tar.gz
     cd HTML-Parser-3.55
     perl Makefile.PL
     make
@@ -800,7 +800,7 @@ Partial output:
              it ***WILL BE DELETED*** by this process. So, before
              you continue with checksetup.pl, if you have any non-UTF-8
              data (or even if you're not sure) you should press Ctrl-C now
-             to interrupt checksetup.pl, and run contrib/recode.pl to make all 
+             to interrupt checksetup.pl, and run contrib/recode.pl to make all
              the data in your database into UTF-8. You should also back up your
              database before continuing. This will affect every single table
              in the database, even non-Bugzilla tables.

@@ -5,10 +5,6 @@ tags: blog
 
 Sometimes deleting code is the best kind of enhancement you can make.
 
-
-
-
-
 Here's a quick example trimmed down to show only the relevant context. In this case we're talking about replacing this:
 
     - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -71,7 +67,7 @@ Here's a quick example trimmed down to show only the relevant context. In this c
                     [sudo release];
                     close(fd);
                 }
-                else    
+                else
                     failed = YES;                       // could not create temporary plist file
             }
             else                                        // not on writeable volume

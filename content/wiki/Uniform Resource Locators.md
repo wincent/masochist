@@ -2,5 +2,3 @@
 redirect: [[URL]]
 tags: wiki
 ---
-
-

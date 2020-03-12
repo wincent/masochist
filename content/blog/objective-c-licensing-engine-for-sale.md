@@ -22,7 +22,7 @@ This is a low-level system which provides facilities for generating and verifyin
 -   Secure license keys generated using public key cryptography
 -   Short license keys (39 characters long) thanks to use of Elliptic Key cryptography
 -   Ambiguous characters (like 0 and O) never appear in license codes, reducing support queries
--   License codes are *not* tied to user email addresses, again to reduce support queries and streamline the purchasing process
+-   License codes are _not_ tied to user email addresses, again to reduce support queries and streamline the purchasing process
 -   Extensive inlining and basic symbol obfuscation are used to make cracking more difficult
 -   Includes extensive test suite
 -   Includes [command line](/wiki/command_line) tool for generating keys and license codes
@@ -33,9 +33,9 @@ This is a low-level system which provides facilities for generating and verifyin
 -   Optional version-limited licenses (valid only for certain versions)
 -   Optional "bundle" licenses (use of a single license code to unlock a bundle containing multiple software products)
 
-As I've written [elsewhere](/blog/on-piracy), I think developers often spend too much time worrying about piracy. The goal of this system is to make a *reasonable* effort to deter software piracy, but not to go crazy trying to be "uncrackable" or win what is essentially an unwinnable war.
+As I've written [elsewhere](/blog/on-piracy), I think developers often spend too much time worrying about piracy. The goal of this system is to make a _reasonable_ effort to deter software piracy, but not to go crazy trying to be "uncrackable" or win what is essentially an unwinnable war.
 
-The person who commissioned this work was of the same opinion, which is why the system does *not* include features that are sometimes found in other systems, like tying license codes to user identities. In fact, it does not even include a blacklisting facility, although one could be added easily enough.
+The person who commissioned this work was of the same opinion, which is why the system does _not_ include features that are sometimes found in other systems, like tying license codes to user identities. In fact, it does not even include a blacklisting facility, although one could be added easily enough.
 
 # How much for all this?
 

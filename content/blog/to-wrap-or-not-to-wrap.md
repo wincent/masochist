@@ -7,10 +7,6 @@ For a long, long, long, long time now I've hard-wrapped all of my source code to
 
 > We're stocking new engineers with dual 1920x1200 widescreens. That's the equivalent of six side-by-side VGA screens! In spite of this growth over the years, my basic monitor real-estate coding rules haven't changed: stay within 80 columns, and try to keep each function short enough to fit vertically on a single screen.
 
-
-
-
-
 ### Arguments for wrapping
 
 Most of the arguments for wrapping boil down to the same basic idea: anything you can do to increase the readability of your code (the ease with which you can take in a slab of code at a glance) is going to help you develop better code (more robust, better designed, less buggy code) and develop it faster.
@@ -47,7 +43,7 @@ For this very reason some time ago I introduced an exception into my "80-column 
 
 What's more readable? This (wrapped to 80 columns)?:
 
-    NSString *executable = 
+    NSString *executable =
             [self objectForInfoDictionaryKey:(NSString *)kCFBundleExecutableKey];
 
 Or this (not wrapped)?:

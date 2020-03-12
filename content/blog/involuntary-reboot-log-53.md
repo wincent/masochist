@@ -5,7 +5,7 @@ tags: involuntary.reboot.log blog
 
 Is this a new record? It's been over two months since [the last](/blog/involuntary-reboot-log-52) [involuntary reboot](/wiki/involuntary_reboot). This time it was the flakey hardware again; a bump to the desk was enough to prompt sparks and a power cut in the wonky power socket.
 
-This is the now the second time in a while that my "average time between failures" has actually gone *up* rather than down.
+This is the now the second time in a while that my "average time between failures" has actually gone _up_ rather than down.
 
 -   Kernel panics: 26
 -   Hard resets: 27

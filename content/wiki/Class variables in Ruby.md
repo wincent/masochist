@@ -19,7 +19,7 @@ class Parent
     def bar
       @bar ||= 10
     end
-  end 
+  end
 end
 
 class Child < Parent
@@ -29,7 +29,7 @@ class Child < Parent
 
   def self.bar
     @bar ||= 20 # not shared with superclass
-  end 
+  end
 end
 
 Parent.bar # => 10

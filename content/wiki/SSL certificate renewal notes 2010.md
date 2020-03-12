@@ -19,7 +19,7 @@ The basic process for renewal is:
 
 # Generating the CSR
 
-Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/freessl-csr.html), and for [Apache](/wiki/Apache) with [mod\_ssl](/wiki/mod_ssl) specifically [here](http://www.rapidssl.com/resources/csr/apache_mod_ssl.htm).
+Instructions for how to do this appear [here](http://www.rapidssl.com/freessl/freessl-csr.html), and for [Apache](/wiki/Apache) with [mod_ssl](/wiki/mod_ssl) specifically [here](http://www.rapidssl.com/resources/csr/apache_mod_ssl.htm).
 
     cd path/to/ssl/certs/and/keys
     # for my older certs, which were only used with Apache this was a subdirectory of:
@@ -62,7 +62,7 @@ Here is how I answered the questions during CSR generation:
 
 # The checkout process
 
-This time I'll be renewing for a full 5-years in order to get the maximum discount. The total cost is US$50 (€34.89).
+This time I'll be renewing for a full 5-years in order to get the maximum discount. The total cost is US\$50 (€34.89).
 
 # Installing the new certificate
 

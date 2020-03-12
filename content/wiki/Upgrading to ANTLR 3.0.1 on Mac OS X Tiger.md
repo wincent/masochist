@@ -8,7 +8,7 @@ I held off on this upgrade for a while because the 3.x series of [ANTLR](/wiki/A
 
     # grab the source
     wget "http://antlr.org/download/antlr-3.0.1.tar.gz"
-    tar xzvf antlr-3.0.1.tar.gz 
+    tar xzvf antlr-3.0.1.tar.gz
 
     # move it into place
     sudo mv antlr-3.0.1 /usr/local/
@@ -25,9 +25,9 @@ I held off on this upgrade for a while because the 3.x series of [ANTLR](/wiki/A
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.1b1.jar"
 
     # now build C target runtime
-    tar xzvf antlr-3.0.1.tar.gz 
+    tar xzvf antlr-3.0.1.tar.gz
     cd antlr-3.0.1/runtime/C/dist
-    tar xzvf libantlr3c-3.0.1.tar.gz 
+    tar xzvf libantlr3c-3.0.1.tar.gz
     cd libantlr3c-3.0.1
     ./configure
     make
@@ -44,7 +44,7 @@ Unfortunately the new version does break my existing recognizer.
 
 ## Before
 
-    $ ./wiki_text_spec.rb 
+    $ ./wiki_text_spec.rb
     ............................................................................................................................................................
 
     Finished in 0.075629 seconds
@@ -53,7 +53,7 @@ Unfortunately the new version does break my existing recognizer.
 
 ## After
 
-    $ ./wiki_text_spec.rb 
+    $ ./wiki_text_spec.rb
     ../wiki_text_spec.rb:21: [BUG] Segmentation fault
     ruby 1.8.6 (2007-03-13) [i686-darwin8.8.1]
 
@@ -145,7 +145,7 @@ First thing I decided to do was look and see if any of the patches described in 
     --- runtime/C/dist/libantlr3c-3.0.1/src/antlr3inputstream.c.old 2007-08-10 21:23:05.000000000 +0200
     +++ runtime/C/dist/libantlr3c-3.0.1/src/antlr3inputstream.c     2007-10-16 00:17:51.000000000 +0200
     @@ -180,7 +180,7 @@
-     
+
          input->nextChar            = input->data;  /* Input at first character */
          input->line                        = 1;            /* starts at line 1         */
     -    input->charPositionInLine  = -1;
@@ -161,7 +161,7 @@ First thing I decided to do was look and see if any of the patches described in 
     +++ src/org/antlr/codegen/CodeGenerator.java    2007-10-16 00:22:18.000000000 +0200
     @@ -298,7 +298,8 @@
                     }
-     
+
                     boolean filterMode = grammar.getOption("filter")!=null &&
     -                                                         grammar.getOption("filter").equals("true");
     +                                                         grammar.getOption("filter").equals("true") &&
@@ -348,7 +348,7 @@ So with my zero knowledge of how `ant` works I decided to try a number of quick 
       mv $FILE $FILE.disabled
     done
 
--   Instead of moving *those* files out the way, move the other ones: works
+-   Instead of moving _those_ files out the way, move the other ones: works
 
 <!-- -->
 
@@ -374,7 +374,7 @@ Install the custom jar:
 And update my `CLASSPATH` export:
 
     export CLASSPATH=".:/usr/local/antlr/lib/antlr-3.0.1-custom.jar"
-    export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar" 
+    export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar"
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-runtime-3.0.1.jar"
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.1b1.jar"
 
@@ -416,7 +416,7 @@ And do another rebuild (this with the existing, modified source tree with the du
     unset CLASSPATH
     export CLASSPATH="/usr/local/junit/junit.jar"
     ant build
-    sudo cp build/antlr.jar /usr/local/antlr-3.0.1/lib/antlr-3.0.1-custom.jar 
+    sudo cp build/antlr.jar /usr/local/antlr-3.0.1/lib/antlr-3.0.1-custom.jar
     export CLASSPATH=$OLD_CLASSPATH
 
 Fairly straightforward if you keep the modified tree lying around.

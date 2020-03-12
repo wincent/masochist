@@ -2,5 +2,3 @@
 redirect: [[EBS]]
 tags: wiki
 ---
-
-

@@ -7,7 +7,7 @@ tags: antlr wiki
 These simple examples demonstrate some [lexer](/wiki/lexer) basics for [ANTLR](/wiki/ANTLR). They assume that [ANTLR 3](/wiki/ANTLR_3) is installed and in the `CLASSPATH`; likewise the current directory should also be in the `CLASSPATH`:
 
     export CLASSPATH=".:/usr/local/antlr/lib/antlr-3.0.jar"
-    export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar" 
+    export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar"
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-runtime-3.0.jar"
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar"
 
@@ -23,17 +23,17 @@ An executable can then be produced with:
 
 This requires a `Simple.java` file containing a `main` method:
 
-    import org.antlr.runtime.*; 
+    import org.antlr.runtime.*;
 
     public class Simple {
       public static void main(String[] args) throws Exception {
-        ANTLRInputStream input = new ANTLRInputStream(System.in); 
-        SimpleLexer lexer = new SimpleLexer(input); 
-        CommonTokenStream tokens = new CommonTokenStream(lexer); 
-        SimpleParser parser = new SimpleParser(tokens); 
+        ANTLRInputStream input = new ANTLRInputStream(System.in);
+        SimpleLexer lexer = new SimpleLexer(input);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        SimpleParser parser = new SimpleParser(tokens);
         System.out.println("\n"); // blank line before printing other output
-        parser.thing(); 
-      } 
+        parser.thing();
+      }
     }
 
 Note that the start rule in these examples is `thing`.
@@ -398,7 +398,7 @@ Changing the order:
 
 Note how when the the input can match `FOO` or `BAR`, [ANTLR](/wiki/ANTLR) prefers `BAR` because it appears first **but** in the case where [ANTLR](/wiki/ANTLR) could match the input as two tokens (`BAR` followed by `FOO`) or as a single, longer token (just `FOO`), it opts for the greedy match.
 
-So ordering is critical for non-literal lexer rules, but in general *this ordering is only relevant during the analysis phase*; the following example rules should make this clear:
+So ordering is critical for non-literal lexer rules, but in general _this ordering is only relevant during the analysis phase_; the following example rules should make this clear:
 
     LETTERS: 'a'..'z'+;
     LETTERS_SUBSET: 'a'..'f'+; // unreachable according to analysis
@@ -417,7 +417,7 @@ If we take the two number-matching rules, note that the ordering was important d
             # alternatively, could just match one NUMBERS token
             # ANTLR chooses the greedy match (one NUMBERS token)
 
-The only case in which strict ordering is preserved at both analysis and runtime *regardless of length* is when filtering is turned on; (see the section on filtering below).
+The only case in which strict ordering is preserved at both analysis and runtime _regardless of length_ is when filtering is turned on; (see the section on filtering below).
 
 # Prediction
 
@@ -470,7 +470,7 @@ Note that with even less input (before seeing even the semi-colon), the lexer ha
     EVERYTHING_ELSE
     done
 
-Now we try a different input before the semi-colon to see if the lexer will identify this as `EVERYTHING_ELSE` or not; evidently when it sees the `ba` it has *already* predicted that this will be a `FOO` token, and so fails. Note that even though it throws the exception, it continues on and scans one more character. If we chop one more letter off the input, not that it doesn't continue scanning one character:
+Now we try a different input before the semi-colon to see if the lexer will identify this as `EVERYTHING_ELSE` or not; evidently when it sees the `ba` it has _already_ predicted that this will be a `FOO` token, and so fails. Note that even though it throws the exception, it continues on and scans one more character. If we chop one more letter off the input, not that it doesn't continue scanning one character:
 
     # input
     baz:
@@ -557,7 +557,7 @@ This grammar will handle things input strings like `....foobaaaaa....bar:baz...`
 
 As already mentioned above, filtering mode changes the precedence and matching behaviour of the generated lexer in the following ways:
 
--   ANTLR synthesizes a `Tokens` rule that will try the lexer rules one at a time *in the exact order that they appear in the grammar*.
+-   ANTLR synthesizes a `Tokens` rule that will try the lexer rules one at a time _in the exact order that they appear in the grammar_.
 -   Greedy matching does not apply; the first match found wins regardless of length.
 -   If no rules match, the lexer skips a character (throwing it away) and tries again, restarting from the top of the rules list.
 -   This behaviour is equivalent to having backtracking turned on (failing options do not result in an exception message being emitted; the lexer merely rewinds ready to try the next option) with a fixed lookahead of `k = 1`, combined with a strict ordering of the alternatives.
@@ -650,7 +650,7 @@ In other words:
     # or (written in a different way):
     BAR: (options { greedy = true; }: '\u0000'..'\uFFFE')+;
 
-Setting `greedy = true` to this kind of subrule doesn't make sense because "what lies beyond the subrule" is not specified (there *is* no subrule in fact). A counter example will make this clear:
+Setting `greedy = true` to this kind of subrule doesn't make sense because "what lies beyond the subrule" is not specified (there _is_ no subrule in fact). A counter example will make this clear:
 
     # here a non-greedy subrule (really the ".*") makes sense
     # because the "what lies beyond" is clearly stated
@@ -659,7 +659,7 @@ Setting `greedy = true` to this kind of subrule doesn't make sense because "what
 
 In fact, it is never correct to have `greedy = false` on the right edge of a rule and ANTLR will always warn about it:
 
-    FOO: (options { greedy = false; } : 'foo')+; 
+    FOO: (options { greedy = false; } : 'foo')+;
 
 This explains why a rule like `.+` is described as containing an unreachable alternative; although I'd still like someone wiser in the ways of ANTLR to confirm my hypothesis.
 
@@ -842,7 +842,7 @@ This is discussed on pages 283 and 285 of the [ANTLR book](/wiki/ANTLR_book), di
 
 > The solution is to either make semicolons required or make them only statements. Semicolons should not be both statement terminators and statements as shown previously. Naturally, a good language designer would simply fix the language. With the grammar as is, though, ANTLR automatically resolves the nondeterminism greedily.
 >
-> *ANTLR generates a warning, but you can safely ignore it. At some point ANTLR will let you silence warnings for decisions that ANTLR properly* resolves.**
+> _ANTLR generates a warning, but you can safely ignore it. At some point ANTLR will let you silence warnings for decisions that ANTLR properly_ resolves.\*\*
 
 # Empty lexer rules
 

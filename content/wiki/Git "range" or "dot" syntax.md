@@ -6,8 +6,8 @@ tags: git wiki
 
 While this syntax looks like a "range" of commits from `A` to `B`, it is actually a short hand for `git log ^A B`; ie:
 
--   show all commits reachable from `B`; `B` itself is *included*
--   excluding those reachable from `A`; `A` itself is *excluded*
+-   show all commits reachable from `B`; `B` itself is _included_
+-   excluding those reachable from `A`; `A` itself is _excluded_
 
 So given the following history (with the oldest commits on the left, the newest on the right):
 

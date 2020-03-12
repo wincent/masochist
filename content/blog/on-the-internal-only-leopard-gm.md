@@ -11,15 +11,15 @@ In "Indies Roll the Dice on Final Leopard", [Steven Frank](http://stevenf.com/20
 >
 > There has been speculation that it's to prevent prerelease piracy of the OS, but that argument doesn't hold much water -- in the best possible case, they are simply delaying piracy by about a week. The more likely scenario is that the final build will appear on BitTorrent trackers before it appears on store shelves despite this quaint measure. Such was certainly the case with Tiger.
 
-Well, I actually think it *is* to do with piracy. Apple knows that if they seeded a real release candidate, a release candidate which could end up being the GM, it would wind up on trackers a weeks (or weeks) before retail release. Literally tens of thousands would download it, and thousands of those weekend pirates are ultra-enthusiastic [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) users who would otherwise be in line at the Apple store on 26 October ready to hand over their $129. Apple has proven to be pretty effective at getting Mac OS X torrents taken down at high-profile sites in the past, but no amount of damage control can be perfect.
+Well, I actually think it _is_ to do with piracy. Apple knows that if they seeded a real release candidate, a release candidate which could end up being the GM, it would wind up on trackers a weeks (or weeks) before retail release. Literally tens of thousands would download it, and thousands of those weekend pirates are ultra-enthusiastic [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) users who would otherwise be in line at the Apple store on 26 October ready to hand over their \$129. Apple has proven to be pretty effective at getting Mac OS X torrents taken down at high-profile sites in the past, but no amount of damage control can be perfect.
 
 So when the stakes are this high (a million dollars' worth of lost sales would be worth worrying about even for an economic behemoth like Apple), you can see the reason they care about pre-release piracy.
 
 On the other hand, they're screwing their developers.
 
-I've been a $500-per-year ADC Select member for some time now and one of the benefits is access to pre-release versions of the OS *and* the final version too ([note](http://developer.apple.com/products/select.html) that members "receive shipping versions of Mac OS X and Xcode via mail").
+I've been a \$500-per-year ADC Select member for some time now and one of the benefits is access to pre-release versions of the OS _and_ the final version too ([note](http://developer.apple.com/products/select.html) that members "receive shipping versions of Mac OS X and Xcode via mail").
 
-Getting the retail version, not on the day your customers can buy it (as Frank mistakenly claims), but weeks after is pretty useless for a developer. Worse still, Apple makes no promises about *when* they'll send out the final version. What are your options?
+Getting the retail version, not on the day your customers can buy it (as Frank mistakenly claims), but weeks after is pretty useless for a developer. Worse still, Apple makes no promises about _when_ they'll send out the final version. What are your options?
 
 Forget installing, forget testing, and hope that your customers don't run into compatibility trouble?
 
@@ -30,7 +30,6 @@ Do you drop $129 (in addition to you $500 Select membership) on 26 October in or
 Do you just jump on a pirate torrent as soon as one becomes available (probably sometime on 26 October)? What's the legality of "[time-shifting](http://en.wikipedia.org/wiki/Time_shifting)" intellectual property that someone has promised to mail to you anyway? If illegal (likely, seeing as in downloading the IP that Apple has promised to give you anyway you're still uploading pieces of it to other people in the swarm, and that's "contributory infringement", I'd imagine), and if you get caught (unlikely), what are the odds of you being prosecuted?
 
 So yes, it sucks. Yes, complaining to Apple about it is almost certainly useless. Yes, Apple did exactly the same with Tiger. I seem to recall the same was true with Panther although my memory's a bit hazy on that one now; one thing I do remember is that you couldn't even buy a retail copy of Mac OS X on release day in Spain. I think I ended up buying my retail copy a few weeks later.
-
 
 ### Update (28 October 2007)
 

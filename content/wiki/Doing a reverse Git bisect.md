@@ -2,7 +2,7 @@
 tags: git wiki
 ---
 
-Sometimes you want to identify which commit *fixed* a bug rather than which commit introduced it. In that case, the "bad" and "good" labels that you would usually apply need to be swapped, which may be a difficult mental feat.
+Sometimes you want to identify which commit _fixed_ a bug rather than which commit introduced it. In that case, the "bad" and "good" labels that you would usually apply need to be swapped, which may be a difficult mental feat.
 
 Instead, you can use "fixed" and "broken" terms like this:
 

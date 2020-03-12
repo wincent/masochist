@@ -5,10 +5,6 @@ tags: blog
 
 Some time ago I wrote about [adding mock objects to WOTest](http://www.wincent.com/a/about/wincent/weblog/archives/2005/06/mock_objects_in.php). Over the last couple of days I set about trying to improve them and make them more elegant and flexible. In the process I've learnt a lot of about message dispatch system in Apple's Objective-C runtime. Too much. Read on if you'd like to see the story of a journey from a position of relative ignorance to not-quite-as-much ignorance.
 
-
-
-
-
 Mock objects in WOTest are basically used like this:
 
     WOMock *mock = [WOMock mockForClass:[NSString class]];
@@ -107,7 +103,7 @@ A little further hunting (this time through [the Darwin source code](http://darw
 
     - forward:(SEL)sel :(marg_list)args;
 
-So the question then becomes, what kind of useful information can we extract from this marg\_list parameter, and can we use it to construct a method signature?
+So the question then becomes, what kind of useful information can we extract from this marg_list parameter, and can we use it to construct a method signature?
 
 #### Trying to find out more about the `marg_list` type
 
@@ -115,7 +111,7 @@ According to the documentation a `marg_list` is a "reference to an argument list
 
     typedef void * marg_list;
 
-I started looking at the Darwin source to see if I could figure out what was being pointed at by this marg\_list parameter. The `_objc_msgForward` interface itself adopts one of two forms depending on the contents of the r11 register (on ppc; on i386 the secret flag is in edx):
+I started looking at the Darwin source to see if I could figure out what was being pointed at by this marg_list parameter. The `_objc_msgForward` interface itself adopts one of two forms depending on the contents of the r11 register (on ppc; on i386 the secret flag is in edx):
 
     id _objc_msgForward(id self, SEL   sel, ...);
     struct_type _objc_msgForward(id self, SEL   sel, ...);
@@ -196,7 +192,7 @@ I made a small foundation tool that created an instance of a `NSProxy` subclass 
 
     [TestProxy message:@"foobar"];
 
-It turns out that the compiler generates type strings like "@8@0:4\\0" with labels such as `L_OBJC_METH_VAR_TYPE_0` for methods that *are* implemented. For methods that are messaged but *not* implemented no such type information is stored, although the compiler still does generate a call to `objc_msgSend`. Here is a partial listing which shows the salient bits of the generated code:
+It turns out that the compiler generates type strings like "@8@0:4\\0" with labels such as `L_OBJC_METH_VAR_TYPE_0` for methods that _are_ implemented. For methods that are messaged but _not_ implemented no such type information is stored, although the compiler still does generate a call to `objc_msgSend`. Here is a partial listing which shows the salient bits of the generated code:
 
     L_OBJC_METH_VAR_NAME_0:
         .ascii "message:\0"

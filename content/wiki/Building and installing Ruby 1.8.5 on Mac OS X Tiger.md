@@ -11,7 +11,7 @@ These notes were made during the upgrade from [Ruby 1.8.4](/wiki/Ruby_1.8.4) to 
     tar zxvf ruby-1.8.5.tar.gz
     cd ruby-1.8.5
     ./configure
-    make 
+    make
     make test
     sudo make install
     make check
@@ -21,7 +21,7 @@ These notes were made during the upgrade from [Ruby 1.8.4](/wiki/Ruby_1.8.4) to 
 Unlike the last version, this version fails catastrophically at the `make check` phase:
 
     test succeeded
-    ./miniruby ./runruby.rb --extout=.ext -- -C "./test" runner.rb --runner=console 
+    ./miniruby ./runruby.rb --extout=.ext -- -C "./test" runner.rb --runner=console
     dyld: NSLinkModule() error
     dyld: Symbol not found: _rl_filename_completion_function
       Referenced from: /Users/wincent/trabajo/ruby/ruby-1.8.5/.ext/i686-darwin8.7.1/readline.bundle

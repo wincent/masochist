@@ -82,10 +82,10 @@ Which looked fine, so I tried upgrading the old `Encode` [CPAN](/wiki/CPAN) modu
 
 Unfortunately this failed due to failing tests:
 
-    t/Aliases..................ok                                                
-    t/at-cn....................ok                                                
-    t/at-tw....................ok                                                
-    t/CJKT.....................ok                                                
+    t/Aliases..................ok
+    t/at-cn....................ok
+    t/at-tw....................ok
+    t/CJKT.....................ok
     t/enc_data.................skipped
             all skipped: Perl 5.8.1 or later required
     t/enc_eucjp................skipped
@@ -108,27 +108,27 @@ Unfortunately this failed due to failing tests:
     #     expected: 'テスト文字列
     # '
     # Looks like you failed 3 tests of 3.
-    t/enc_module...............dubious                                           
+    t/enc_module...............dubious
             Test returned status 3 (wstat 768, 0x300)
     DIED. FAILED tests 1-3
             Failed 3/3 tests, 0.00% okay
-    t/enc_utf8.................ok                                                
-    t/Encode...................ok                                                
-    t/Encoder..................ok                                                
-    t/encoding.................ok                                                
-    t/fallback.................ok                                                
-    t/from_to..................ok                                                
-    t/grow.....................ok                                                
-    t/gsm0338..................ok                                                
-    t/guess....................ok                                                
-    t/jis7-fallback............ok                                                
-    t/jperl....................ok                                                
-    t/mime-header..............ok                                                
-    t/mime-name................ok                                                
-    t/mime_header_iso2022jp....ok                                                
-    t/perlio...................ok                                                
+    t/enc_utf8.................ok
+    t/Encode...................ok
+    t/Encoder..................ok
+    t/encoding.................ok
+    t/fallback.................ok
+    t/from_to..................ok
+    t/grow.....................ok
+    t/gsm0338..................ok
+    t/guess....................ok
+    t/jis7-fallback............ok
+    t/jperl....................ok
+    t/mime-header..............ok
+    t/mime-name................ok
+    t/mime_header_iso2022jp....ok
+    t/perlio...................ok
             6/38 skipped: various reasons
-    t/Unicode..................ok                                                
+    t/Unicode..................ok
     t/utf8strict...............skipped
             all skipped: Perl 5.8.1 or later required
     Failed Test    Stat Wstat Total Fail  List of Failed

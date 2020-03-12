@@ -5,10 +5,6 @@ tags: blog
 
 A while ago [I wrote about double-checked locking and memory barriers](http://www.wincent.com/a/knowledge-base/archives/2006/01/locking_doublec.php). There are plenty of articles about this on the net. They generally show three examples.
 
-
-
-
-
 #### No locking
 
     if (!condition)
@@ -44,9 +40,9 @@ A while ago [I wrote about double-checked locking and memory barriers](http://ww
 
 These articles fall into two categories: those that say double-checked locking is the bomb, and those that point out that double-checked locking is an "anti-pattern" and doesn't actually work. The articles in this latter category often go on to explain how the use of memory barriers can cure the brokenness of the double-checked locking "anti-pattern".
 
-I was thinking (yet again) about all this and I suddenly realized why double-checked locking appears so attractive, and why it can be so hard to accept that it doesn't work. The problem is one of intuition. Look at the last two code examples again. The second one is identical to the first, except that it encloses everything in an *additional* check. How on earth could something that imposes an additional safety check actually end up being less safe? That's the point where your intuition may become your enemy.
+I was thinking (yet again) about all this and I suddenly realized why double-checked locking appears so attractive, and why it can be so hard to accept that it doesn't work. The problem is one of intuition. Look at the last two code examples again. The second one is identical to the first, except that it encloses everything in an _additional_ check. How on earth could something that imposes an additional safety check actually end up being less safe? That's the point where your intuition may become your enemy.
 
-Put simply, the reason why the third example is dangerous is that the first check of the condition *is not synchronized* with the actual setting of the condition. The fact that there's a second check that *is* synchronized doesn't matter at all because that unprotected first check is enough to send your program into the danger zone.
+Put simply, the reason why the third example is dangerous is that the first check of the condition _is not synchronized_ with the actual setting of the condition. The fact that there's a second check that _is_ synchronized doesn't matter at all because that unprotected first check is enough to send your program into the danger zone.
 
 The peril is well-explained in many places ([here, for example](http://www.oaklib.org/docs/oak/singleton.html)) so I will only briefly state the problem here.
 

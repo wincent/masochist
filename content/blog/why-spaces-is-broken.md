@@ -3,7 +3,7 @@ title: Why Spaces is broken
 tags: blog
 ---
 
-Since seeing [this post](http://mjtsai.com/blog/2007/11/13/why-apple-spaces-is-broken/) by Michael Tsai linking to a couple of articles on "Why Spaces is broken" I've been wracking my brains trying to remember *where* the heck I wrote about this, seeing as I was quite sure I had already written about it about two weeks ago.
+Since seeing [this post](http://mjtsai.com/blog/2007/11/13/why-apple-spaces-is-broken/) by Michael Tsai linking to a couple of articles on "Why Spaces is broken" I've been wracking my brains trying to remember _where_ the heck I wrote about this, seeing as I was quite sure I had already written about it about two weeks ago.
 
 Finally found it, in [a comment](http://fukamachi.org/wp/2007/10/31/leopard/#comment-17683) on [Sho Fukamachi's weblog](http://fukamachi.org/wp/):
 

@@ -7,7 +7,7 @@ Bought some [O'Reilly Pocket References](http://pocketrefs.oreilly.com/) yesterd
 
 I really only wanted a quick [HTML reference](http://www.oreilly.com/catalog/htmlpr3/), but seeing as the offer was there I had a quick look to see if any other pocket references would come in handy, and ended up picking the [JavaScript](http://www.oreilly.com/catalog/jscriptpr2/) and [CSS](http://www.oreilly.com/catalog/csspr2/) references as well.
 
-On proceeding to the checkout I saw that the prices were actually lower than the ones on the pages linked to above: $6.49 and $4.99. So getting one of them for free yielded a total of $11.48.
+On proceeding to the checkout I saw that the prices were actually lower than the ones on the pages linked to above: $6.49 and $4.99. So getting one of them for free yielded a total of \$11.48.
 
 I can't recommend the O'Reilly Pocket References highly enough. I have a [worn, paper copy](http://www.wincent.com/a/about/wincent/weblog/archives/2006/01/my_favorite_pro.php) of the [C reference](http://www.oreilly.com/catalog/cpr/). It's never lead me astray. I also have a paper copy (somewhat less worn) of the [C++ reference](http://www.oreilly.com/catalog/cpluspluspr/).
 

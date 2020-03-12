@@ -7,7 +7,7 @@ tags: hoe wiki
 # Changes
 
 -   2 minor enhancement:
-    -   Added exclude parameter for check\_manifest filtering to .hoerc.
+    -   Added exclude parameter for check_manifest filtering to .hoerc.
     -   Documented .hoerc stuffs.
 -   1 bug fix:
     -   Various (untested) fixes for windows compatibility.

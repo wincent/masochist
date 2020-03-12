@@ -9,6 +9,6 @@ Just got this in the mail:
 >
 > Note that you can continue to release gems (and other files) at RubyForge; it's just that gems won't automatically make it into the main gem index.
 
-So while GemCutter is undoubtedly nicer infrastructure for easily publishing gems, this change will result in more work for gem publishers. As GemCutter doesn't even provide a mechanism for including release notes with gems, we are basically forced to perform a two-step process to publish a new version of a gem: push the gem to GemCutter *and* continue to publish to RubyForge as well so that users can actually see release notes and decide whether or not to update (or failing that, publish a changelog to some other project page as an independent step).
+So while GemCutter is undoubtedly nicer infrastructure for easily publishing gems, this change will result in more work for gem publishers. As GemCutter doesn't even provide a mechanism for including release notes with gems, we are basically forced to perform a two-step process to publish a new version of a gem: push the gem to GemCutter _and_ continue to publish to RubyForge as well so that users can actually see release notes and decide whether or not to update (or failing that, publish a changelog to some other project page as an independent step).
 
 I really hope that GemCutter adds at least a release notes feature in the near future.

@@ -4,7 +4,7 @@ tags: rspec wiki
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec
@@ -89,8 +89,8 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 -   Reactivated --timeout, which had mysteriously been deactivated in a recent release.
 -   Fixed \#10669 Kernel\#describe override does not cover Kernel\#context
 -   Applied \#10636 Added spec for OptionParser in Runner (Patch from Scott Taylor)
--   Added \#10516 should\_include should be able to accept multiple items
--   Applied \#10631 redirect\_to matcher doesn't respect request.host (Patch from Tim Lucas)
+-   Added \#10516 should_include should be able to accept multiple items
+-   Applied \#10631 redirect_to matcher doesn't respect request.host (Patch from Tim Lucas)
 -   Each formatter now flushes their own IO. This is to avoid buffering of output.
 -   Fixed \#10670 IVarProxy\#delete raises exception when instance variable does not exist
 

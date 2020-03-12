@@ -11,7 +11,7 @@ I used the [weblog](/wiki/weblog) format from November 2004 through to August 20
 
 When the [wincent.com](http://wincent.com/) site redesign went live in April 2008 the old [Knowledge Base](/wiki/Knowledge_Base) was replaced with the custom [wiki](/wiki/wiki) that you're reading right now. A static mirror of the old [MediaWiki](/wiki/MediaWiki) content will continue to be available at <http://kbase.wincent.com/old/> while requests for <http://kbase.wincent.com/> will be redirected to this wiki.
 
-In addition, the old content was exported from the [MediaWiki](/wiki/MediaWiki) installation via an [XML](/wiki/XML) dump and imported into the new [wiki](/wiki/wiki). The export/import was fairly straightforward and *most* of the content has made it through with only minor glitches or omissions, largely due to the fact that the [wikitext](/wiki/wikitext) markup used in the new wiki was designed from the beginning with a large degree of MediaWiki compatibility in mind.
+In addition, the old content was exported from the [MediaWiki](/wiki/MediaWiki) installation via an [XML](/wiki/XML) dump and imported into the new [wiki](/wiki/wiki). The export/import was fairly straightforward and _most_ of the content has made it through with only minor glitches or omissions, largely due to the fact that the [wikitext](/wiki/wikitext) markup used in the new wiki was designed from the beginning with a large degree of MediaWiki compatibility in mind.
 
 As time permits I intend to clean up the old content in a couple of key areas:
 

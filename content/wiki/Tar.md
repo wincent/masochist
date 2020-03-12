@@ -9,4 +9,4 @@ cache_breaker: 1
 
 # External links
 
--    [Wikipedia](/wiki/Wikipedia) article on the [tar](/wiki/tar) archive format: <http://en.wikipedia.org/wiki/Tar_%28file_format%29>
+-   [Wikipedia](/wiki/Wikipedia) article on the [tar](/wiki/tar) archive format: <http://en.wikipedia.org/wiki/Tar_%28file_format%29>

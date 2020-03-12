@@ -5,10 +5,6 @@ tags: blog
 
 There a number of official channels for keeping up-to-date with what's happening with Wincent products, both the public face of things (product releases and updates) and the behind-the-scenes aspects (development activity, technical articles).
 
-
-
-
-
 #### Official product and site news
 
 The official product and site news weblog is located at <http://www.wincent.com/a/news/>. You can get to it from almost every page on this website by clicking the "News" button in the navigation bar that spans to the top of most pages. As a shortcut, you can also get there via automatic redirection when you visit [wincent.org](http://wincent.org/), a historical wink to the fact that before entering the software business I edited a popular news, rumors and commentary weblog at wincent.org.

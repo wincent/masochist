@@ -23,8 +23,8 @@ Notes made while performing the update to [Git 1.6.6.1](/wiki/Git_1.6.6.1) on my
     sudo make prefix=/usr/local quick-install-man
 
     # check for changes in the Bash completion script and install it
-    diff -u ~/.git-completion.sh contrib/completion/git-completion.bash 
-    cp contrib/completion/git-completion.bash ~/.git-completion.sh 
+    diff -u ~/.git-completion.sh contrib/completion/git-completion.bash
+    cp contrib/completion/git-completion.bash ~/.git-completion.sh
 
     # go back to master branch rather than hanging around on detached HEAD
     git co master

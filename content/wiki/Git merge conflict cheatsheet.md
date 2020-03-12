@@ -36,7 +36,7 @@ Conflict markers look like this:
 
 -   stage 1: common ancestor; see with `git show :1:file`
 -   stage 2: (local) HEAD; see with `git show :2:file`
--   stage 3: MERGE\_HEAD; see with `git show :3:file`
+-   stage 3: MERGE_HEAD; see with `git show :3:file`
 
 `git ls-files -u` shows the index metadata (paths, blob IDs) for all stages of unmerged paths.
 

@@ -46,4 +46,4 @@ I considered instead binding to `[prefix] C-[` and `[prefix] C-]`, but is too su
 
 # Miscellaneous
 
-- `:set -w synchronize-panes on`: send same input to all visible panes (except panes in a separate mode).
+-   `:set -w synchronize-panes on`: send same input to all visible panes (except panes in a separate mode).

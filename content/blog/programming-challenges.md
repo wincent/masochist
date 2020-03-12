@@ -7,10 +7,6 @@ There are two kinds of problems in computer programming: stimulating ones and an
 
 Tonight I've had to deal with an annoying one.
 
-
-
-
-
 Code that's been working for months suddenly stops working. The first thing you try to do is run it under the debugger to see what's going wrong. It works perfectly. So you realize that this is a problem which only happens in release builds.
 
 This is annoying because the code in question is identical. There are no `#ifdef` directives or anything else which would cause the generated code to be different in the release build.
@@ -29,6 +25,6 @@ To:
 
 `nm` now confirms that the symbols are there and the release build starts working again. It's now 5 AM. Sure, perhaps I should have realized sooner, but one does one's best. Better still I would have written the `EXPORT` macro like that the first time around.
 
-This kind of problem is annoying rather than stimulating because there's no logic involved in it. It's not an intriguing puzzle. It's not like a game of Sudoku or trying to figure out a new algorithm. It doesn't involve writing any code (except for the ugly `NSLog` statements with which you are obliged to pepper your code). It doesn't feel like a creative struggle; rather, it feels like a struggle *against* the tools which are supposed to be enabling you, and pointless struggle too because you're doing all this stuff just to fix something broken that used to work fine last month, and you hadn't touched anything to break it. Instead of having a couple-hundred lines of new code to look back at the end of your labours all you have is an empty feeling and a slight headache.
+This kind of problem is annoying rather than stimulating because there's no logic involved in it. It's not an intriguing puzzle. It's not like a game of Sudoku or trying to figure out a new algorithm. It doesn't involve writing any code (except for the ugly `NSLog` statements with which you are obliged to pepper your code). It doesn't feel like a creative struggle; rather, it feels like a struggle _against_ the tools which are supposed to be enabling you, and pointless struggle too because you're doing all this stuff just to fix something broken that used to work fine last month, and you hadn't touched anything to break it. Instead of having a couple-hundred lines of new code to look back at the end of your labours all you have is an empty feeling and a slight headache.
 
 You can point the finger at the Apple documentation which suggested you write your macro like that (inadequately) in the first place. Or you can blame yourself for not reading the dead-code stripping documentation carefully enough, or for not having it in mind when the problem started. Or you can blame the fact that you're working with a large and complex system, and it's just been luck that you've not run into this issue in the past. Whatever the case, it's not fun.

@@ -24,7 +24,7 @@ tags: wiki
 
 <!-- -->
 
-    * <tt></tt>: 
+    * <tt></tt>:
 
 # Doxygen
 
@@ -36,7 +36,7 @@ tags: wiki
 
 ## Xcode 3.x
 
-According to [this post](http://www.cocoabuilder.com/archive/message/xcode/2007/11/29/17777) this actually *is* a documented feature, but seeing as the [Xcode](/wiki/Xcode) release notes don't actually appear to be shipped with Xcode (at least, nothing comes up when you search for "Xcode release notes" in the documentation window) I guess this qualifies as an undocumented feature; your templates now need to be stored here:
+According to [this post](http://www.cocoabuilder.com/archive/message/xcode/2007/11/29/17777) this actually _is_ a documented feature, but seeing as the [Xcode](/wiki/Xcode) release notes don't actually appear to be shipped with Xcode (at least, nothing comes up when you search for "Xcode release notes" in the documentation window) I guess this qualifies as an undocumented feature; your templates now need to be stored here:
 
     ~/Library/Application Support/Developer/Shared/Xcode/Specifications
 
@@ -63,31 +63,31 @@ Open the copied file in [Property List Editor](/wiki/Property_List_Editor) and s
 Now you can override Apple's definitions, delete those you don't wish to override, and add your own. Settings "cascade". For example, I changed the C `BlockSeparator` setting and all the C-language block definitions inherited the new behaviour (after restarting [Xcode](/wiki/Xcode)):
 
         {
-            ComputerLanguages = (c); 
+            ComputerLanguages = (c);
             DefaultSettings = {
-                BlockSeparator = "\n"; 
-                CaseStatementSpacing = ""; 
-                InExpressionsSpacing = ""; 
-                PostBlockSeparator = "\n"; 
-                PreExpressionsSpacing = " "; 
-            }; 
-            Identifier = c; 
-            IsMenu = YES; 
-            Name = C; 
-        }, 
+                BlockSeparator = "\n";
+                CaseStatementSpacing = "";
+                InExpressionsSpacing = "";
+                PostBlockSeparator = "\n";
+                PreExpressionsSpacing = " ";
+            };
+            Identifier = c;
+            IsMenu = YES;
+            Name = C;
+        },
 
 To:
 
         {
-            ComputerLanguages = (c); 
+            ComputerLanguages = (c);
             DefaultSettings = {
-                BlockSeparator = " "; 
-                CaseStatementSpacing = ""; 
-                InExpressionsSpacing = ""; 
-                PostBlockSeparator = "\n"; 
-                PreExpressionsSpacing = " "; 
-            }; 
-            Identifier = c; 
-            IsMenu = YES; 
-            Name = C; 
+                BlockSeparator = " ";
+                CaseStatementSpacing = "";
+                InExpressionsSpacing = "";
+                PostBlockSeparator = "\n";
+                PreExpressionsSpacing = " ";
+            };
+            Identifier = c;
+            IsMenu = YES;
+            Name = C;
         },

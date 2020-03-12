@@ -2,5 +2,3 @@
 redirect: [[kernel]]
 tags: wiki
 ---
-
-

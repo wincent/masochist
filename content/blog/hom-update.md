@@ -7,10 +7,6 @@ A couple of days ago I [wrote](http://www.wincent.com/a/about/wincent/weblog/arc
 
 I included some results that showed that the HOM implementation was about 100 times slower than the non-HOM version, but I probably should have added that the "if responds" HOM is pretty much a worst-case scenario. You go through all the set-up and overhead for a once-off message send. Compare that to the collection HOMs where you can incur that set-up cost once and then iterate cheaply over a collection that may contain hundreds, thousands or even millions of items.
 
-
-
-
-
 #### Performance
 
 So I went ahead and implemented some more HOM selectors, `detach`, `perform` (I chose "perform" rather than "do" because the latter is a C language keyword, and besides, "perform" is common Objective-C parlance), and `collect`. The "collect" HOM is the first that can iterate over a collection, so here are some updated test results:
@@ -55,20 +51,17 @@ While the "if responds" HOM is about 100 times slower than the non-HOM equivalen
 
 It's interesting to compare these speed figures with the results reported in Marcel Weiher's [HOM paper](http://www.metaobject.com/papers/Higher_Order_Messaging_OOPSLA_2005.pdf) (co-authored with Stéphane Ducasse), which were collected using "techniques for optimizing message sends":
 
-  Array size   HOM relative speed (optimized)   HOM relative speed (unoptimized)
-  ------------ -------------------------------- ----------------------------------
-  1            Not tested                       1133%
-  10           218%                             238%
-  100          122%                             148%
-  1000         98%                              139%
-  10000        94%                              141%
-  100000       Not tested                       134%
+Array size HOM relative speed (optimized) HOM relative speed (unoptimized)
 
-So for very small collections the performance difference is negligible, but as the collection size grows the optimized HOM implementation approaches better-than-100% performance penalty whereas the non-optimized case tends towards somewhere between 130 and 140% performance penalty. [Premature optimization is the root of all evil](http://en.wikipedia.org/wiki/Optimization_(computer_science)), so I think I'll leave things the way they are until real-application profiling indicates that I should be optimizing my HOM stuff or replacing it with non-HOM alternatives.
+---
+
+1 Not tested 1133% 10 218% 238% 100 122% 148% 1000 98% 139% 10000 94% 141% 100000 Not tested 134%
+
+So for very small collections the performance difference is negligible, but as the collection size grows the optimized HOM implementation approaches better-than-100% performance penalty whereas the non-optimized case tends towards somewhere between 130 and 140% performance penalty. [Premature optimization is the root of all evil](<http://en.wikipedia.org/wiki/Optimization_(computer_science)>), so I think I'll leave things the way they are until real-application profiling indicates that I should be optimizing my HOM stuff or replacing it with non-HOM alternatives.
 
 #### Is HOM really HOM?
 
-In [my last article](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) on HOM, I asked, is HOM really HOM? The "higher order" part of HOM refers to the fact that you're sending a message to a message. Well, actually, that's only what you *want* to do:
+In [my last article](http://www.wincent.com/a/about/wincent/weblog/archives/2006/11/more_thoughts_o.php) on HOM, I asked, is HOM really HOM? The "higher order" part of HOM refers to the fact that you're sending a message to a message. Well, actually, that's only what you _want_ to do:
 
     [collection select: hasPrefix:@"foo"];
 
@@ -84,7 +77,7 @@ Actually-existing HOM is not actually HOM at all, a point that even [the seminal
 
 So HOM doesn't actually exist, except as a theoretical ideal. What does exist is an working model that is equivalent in functional terms to the theoretical ideal. No "higher order" messages are actually sent, but the end result is just the same as if they were. Knowing that this fact is acknowledged by the originators of the "HOM" moniker makes me feel a lot more comfortable than I [did before](http://www.wincent.com/a/about/wincent/weblog/archives/2006/08/thoughts_on_hig.php) with the whole idea.
 
-Still, I think there *may* be a problem here. It's entirely suitable to invent a new term to describe a different kind of messaging (messages that take messages as parameters). But it probably causes confusion when you then apply that term to something that doesn't actually exist yet; what we call "HOM" today isn't HOM: it's Traditional Messaging That Allows Us To Obtain A Result That's Approximately Equivalent To What We'd Get If We Had A Real HOM Implementation. I guess that "TMTAUTOARTAETWWGIWHARHI" is not as catchy as HOM. I think the cognitive dissonance provoked by the gap between the term and the reality goes a long way to explaining my resistance to HOM in the past.
+Still, I think there _may_ be a problem here. It's entirely suitable to invent a new term to describe a different kind of messaging (messages that take messages as parameters). But it probably causes confusion when you then apply that term to something that doesn't actually exist yet; what we call "HOM" today isn't HOM: it's Traditional Messaging That Allows Us To Obtain A Result That's Approximately Equivalent To What We'd Get If We Had A Real HOM Implementation. I guess that "TMTAUTOARTAETWWGIWHARHI" is not as catchy as HOM. I think the cognitive dissonance provoked by the gap between the term and the reality goes a long way to explaining my resistance to HOM in the past.
 
 I can partly explain my response in the following manner. The part of HOM which is indisputably true is the "Messaging" part. Messaging is definitely occurring. But what is "higher order" about actually-existing implementations of HOM? There's a trampoline involved, but the trampoline is just a good old fashioned proxy. There is nothing at all new about sending a message to something (a proxy) and having the proxy forward that message the real recipient.
 
@@ -103,7 +96,7 @@ Existing implementations of HOM feel more like "abstraction" than anything "high
     [[[myArray selectWhere] valueForKey:@"capitalizedString.lastPathComponent"] hasPrefix:@"a"];    // "traditional" HOM
     [myArray selectWhere:MSG(capitalizedString), MSG(lastPathComponent), MSG(hasPrefix:@"a"), nil]; // Wolfus version
 
-Compare that with [Marcel Weiher's version](http://www.metaobject.com/Research.html): the intention is clear even if the mechanism is not. Clear because the thing reads similar to natural language and it's not cluttered with visible secondary implementation details. But the mechanism is not clear because it's all happening with secret behind-the-scenes sauce. You don't have to bundle up the message, you just send it like you would anyway. There is less of an obstacle between formulating your intention and actually expressing it; you just do it. In other words, your intention is to send a message to the items in a collection, so what do you do? You send the message! The actual recipient of the message you send is an invisible proxy, but at least at a cursory glance it looks like you're sending the message to the collection itself if you overlook the nitty gritty syntax; so you're working with the collection as a whole in a way that affects the individual components. It's therefore *like* Higher Order Messaging even if there is nothing *actually* "higher order" about it.
+Compare that with [Marcel Weiher's version](http://www.metaobject.com/Research.html): the intention is clear even if the mechanism is not. Clear because the thing reads similar to natural language and it's not cluttered with visible secondary implementation details. But the mechanism is not clear because it's all happening with secret behind-the-scenes sauce. You don't have to bundle up the message, you just send it like you would anyway. There is less of an obstacle between formulating your intention and actually expressing it; you just do it. In other words, your intention is to send a message to the items in a collection, so what do you do? You send the message! The actual recipient of the message you send is an invisible proxy, but at least at a cursory glance it looks like you're sending the message to the collection itself if you overlook the nitty gritty syntax; so you're working with the collection as a whole in a way that affects the individual components. It's therefore _like_ Higher Order Messaging even if there is nothing _actually_ "higher order" about it.
 
 #### Next...
 

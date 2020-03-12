@@ -22,7 +22,7 @@ These are notes taken based on the article, "Notes on the Eclipse Plug-in Archit
 
 # Relationships
 
--   A plug-in may have a *dependency* relationship with another plug-in (the dependent plug-in depends on the functionality of the prerequisite plug-in).
+-   A plug-in may have a _dependency_ relationship with another plug-in (the dependent plug-in depends on the functionality of the prerequisite plug-in).
 -   A plug-in may also have an "extension" relationship with another plug-in (the host plug-in is extended by the extender plug-in).
 -   Both types of relationship are specified in the manifest file, using the `requires` and `extension-point` specifiers.
 -   In order to be activated a plug-in must be reachable from the core via a chain of dependency and/or extension relationships.

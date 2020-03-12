@@ -2,5 +2,3 @@
 redirect: [[CAPTCHA]]
 tags: wiki
 ---
-
-

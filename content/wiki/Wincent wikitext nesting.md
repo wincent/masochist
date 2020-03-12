@@ -57,7 +57,7 @@ As noted on the [Wincent wikitext](/wiki/Wincent_wikitext) page, nesting of inli
     -   `H1`, `H2`, `H3`, `H4`, `H5`, `H6`
     -   `P`
 
-**Note**: Although `BLOCKQUOTE` sections are introduced using the relatively common `>` character, the [lexer](/wiki/lexer) screens out false positives by only emitting `BLOCKQUOTE` tokens when they appear in the first column of the input *or* are immediately preceded by other `BLOCKQUOTE` token(s).
+**Note**: Although `BLOCKQUOTE` sections are introduced using the relatively common `>` character, the [lexer](/wiki/lexer) screens out false positives by only emitting `BLOCKQUOTE` tokens when they appear in the first column of the input _or_ are immediately preceded by other `BLOCKQUOTE` token(s).
 
 ### `PRE`
 
@@ -67,7 +67,7 @@ As noted on the [Wincent wikitext](/wiki/Wincent_wikitext) page, nesting of inli
 -   Elements that can be nested inside:
     -   Any (but note that all elements lose their special meaning inside a `PRE`)
 
-**Note**: Although `PRE` sections are introduced using the relatively common space character, the [lexer](/wiki/lexer) screens out false positives by only emitting `PRE` tokens when they appear in the first column of the input *or* are immediately preceded by one or more `BLOCKQUOTE` tokens.
+**Note**: Although `PRE` sections are introduced using the relatively common space character, the [lexer](/wiki/lexer) screens out false positives by only emitting `PRE` tokens when they appear in the first column of the input _or_ are immediately preceded by one or more `BLOCKQUOTE` tokens.
 
 ### `OL`
 
@@ -79,7 +79,7 @@ As noted on the [Wincent wikitext](/wiki/Wincent_wikitext) page, nesting of inli
     -   `OL` (indirect recursive nesting)
     -   `UL`
 
-**Note**: Although `OL` sections are introduced using the relatively common `#` character, the [lexer](/wiki/lexer) screens out false positives by only emitting `OL` tokens when they appear in the first column of the input *or* are immediately preceded by `OL`, `UL` or `BLOCKQUOTE` token(s).
+**Note**: Although `OL` sections are introduced using the relatively common `#` character, the [lexer](/wiki/lexer) screens out false positives by only emitting `OL` tokens when they appear in the first column of the input _or_ are immediately preceded by `OL`, `UL` or `BLOCKQUOTE` token(s).
 
 ### `UL`
 
@@ -91,7 +91,7 @@ As noted on the [Wincent wikitext](/wiki/Wincent_wikitext) page, nesting of inli
     -   `OL`
     -   `UL` (indirect recursive nesting)
 
-**Note**: Although `UL` sections are introduced using the relatively common `*` character, the [lexer](/wiki/lexer) screens out false positives by only emitting `UL` tokens when they appear in the first column of the input *or* are immediately preceded by `OL`, `UL` or `BLOCKQUOTE` token(s).
+**Note**: Although `UL` sections are introduced using the relatively common `*` character, the [lexer](/wiki/lexer) screens out false positives by only emitting `UL` tokens when they appear in the first column of the input _or_ are immediately preceded by `OL`, `UL` or `BLOCKQUOTE` token(s).
 
 ### `LI`
 

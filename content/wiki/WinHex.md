@@ -2,5 +2,3 @@
 redirect: [[Hextrapolate]]
 tags: wiki
 ---
-
-

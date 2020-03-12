@@ -11,7 +11,7 @@ Favorite stuff to come out of [WWDC](http://www.apple.com/quicktime/qtv/wwdc06/)
 -   Intel kernel sources [available in full](http://kernel.macosforge.org/) and [Xcode 3.0](http://kernel.macosforge.org/intel-build-instructions.html%3Every%20easy%20to%20build%3C/a%3E.%3C/li%3E%0A%3Cli%3E%3Ca%20href=) (so, we've got our hands on 2.4 already but nothing overwhelming there).
 -   Objective-C 2.0 with garbage collection and "syntax improvements" (wonder what they are).
 -   [Display](http://www.apple.com/displays/) prices have dropped massively.
--   The new [Mac Pros](http://www.apple.com/macpro/): I'll be trying to save money for one of these before Leopard ships. The performance of my iMac is great; the performance of the new machines must be *stunning*.
+-   The new [Mac Pros](http://www.apple.com/macpro/): I'll be trying to save money for one of these before Leopard ships. The performance of my iMac is great; the performance of the new machines must be _stunning_.
 
 And finally:
 

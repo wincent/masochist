@@ -24,6 +24,6 @@ Most of these are just back-end refactoring with no user-visible impact, but the
 
 > This article is over 1 year old (to check for a more recent resource see the [wiki](/wiki) index, the [tag cloud](/tags), the [tag search](/tags/search), or the [search](/search) page)
 
-This change was prompted by my concern that people might be stumbling across really old, out-of-date stuff that I haven't touched in *ages*. I know there are some really old articles in there which don't represent my current thinking at all, or which apply to very old versions of software which nobody is using any more.
+This change was prompted by my concern that people might be stumbling across really old, out-of-date stuff that I haven't touched in _ages_. I know there are some really old articles in there which don't represent my current thinking at all, or which apply to very old versions of software which nobody is using any more.
 
 Hopefully this little change won't be too obtrusive and will make the wiki much more useful to visitors.

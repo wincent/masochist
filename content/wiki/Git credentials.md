@@ -6,4 +6,4 @@ On macOS, `git config credential.helper` defaults to "osxkeychain". The first ti
 
 # See also
 
-* Upstream docs: https://git-scm.com/docs/gitcredentials
+-   Upstream docs: https://git-scm.com/docs/gitcredentials

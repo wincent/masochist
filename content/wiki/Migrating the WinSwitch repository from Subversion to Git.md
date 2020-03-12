@@ -5,7 +5,7 @@ cache_breaker: 1
 
 # Local import
 
-    $ cat ~/.svn-authors 
+    $ cat ~/.svn-authors
     wincent = Wincent Colaiuta <win@wincent.com>
     $ git svn clone --stdlayout -A ~/.svn-authors svn+ssh://svn.wincent.com/WinSwitch src
 
@@ -17,7 +17,7 @@ cache_breaker: 1
     $ sudo -H -u git git --bare init
     $ sudo -u git touch git-daemon-export-ok
     $ echo "Fast User Switching menu replacement for Mac OS X" | sudo -u git tee description
-    $ echo "WinSwitch.git win@wincent.com" | sudo -u git tee -a /pub/git/conf/gitweb-projects 
+    $ echo "WinSwitch.git win@wincent.com" | sudo -u git tee -a /pub/git/conf/gitweb-projects
 
 # Initial push
 

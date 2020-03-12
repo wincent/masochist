@@ -8,7 +8,7 @@ cache_breaker: 1
 ## The obvious reasons
 
 -   **Confirm correct behavior of code:** in other words, confirm that the code does what you think it does
--   **Conversely, detect bugs:** when the code *doesn't* do what you think it does, you've probably discovered a bug
+-   **Conversely, detect bugs:** when the code _doesn't_ do what you think it does, you've probably discovered a bug
 -   **Once a bug is detected and fixed, be alerted if it ever comes back:** otherwise known as "regression tests"
 -   **Freedom to refactor without fear:** the tests serve as a "safety net" to catch unintended changes in behavior when you refactor the code
 

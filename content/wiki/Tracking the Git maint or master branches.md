@@ -10,7 +10,7 @@ You have two options.
 
 You could [cherry pick](/wiki/cherry_pick) those specific changes in your local repository, [merging](/wiki/merging) them into a local branch forked off from the last official release.
 
-Alternatively, you could just track the "maint" or "master" branches directly. Tracking the "maint" branch means tracking the branch from which *maintenance* releases are periodically cut, while tracking "master" means tracking the branch from which *feature* releases are cut.
+Alternatively, you could just track the "maint" or "master" branches directly. Tracking the "maint" branch means tracking the branch from which _maintenance_ releases are periodically cut, while tracking "master" means tracking the branch from which _feature_ releases are cut.
 
 Of these two approaches I prefer to simply track one of the branches rather than cherry pick. This is because changes may be complex and have subtle interdependencies with other changes on the branches, and picking out one change in isolation may have unpredictable side-effects. In contrast, following the branch as a whole means following something fairly cohesive and widely tested (it seems that a large number of developers within the Git community run these pre-release versions on their local systems).
 
@@ -25,7 +25,7 @@ Here is how you might produce a build based on the current "master" branch.
     git checkout master
     git fetch
 
-    # visualize what's been happening upstream 
+    # visualize what's been happening upstream
     gitk --all
 
     # or
@@ -36,7 +36,7 @@ Here is how you might produce a build based on the current "master" branch.
 
     # update local master
     git merge origin/master
-     
+
     # or
     git checkout -b my_master origin/master
 

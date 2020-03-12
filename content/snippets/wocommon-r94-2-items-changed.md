@@ -3,4 +3,4 @@ title: WOCommon r94, 2 items changed
 tags: snippets
 ---
 
-Move WO\_LOG\_METHOD\_DETAILS from WOLogManager header to WODebugMacros header
+Move WO_LOG_METHOD_DETAILS from WOLogManager header to WODebugMacros header

@@ -7,7 +7,7 @@ tags: clamav wiki
 
 <!-- -->
 
-    tar xzvf clamav-0.90.2.tar.gz 
+    tar xzvf clamav-0.90.2.tar.gz
     cd clamav-0.90.2
     ./configure --sysconfdir=/etc
     make

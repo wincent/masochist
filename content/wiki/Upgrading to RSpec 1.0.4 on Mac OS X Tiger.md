@@ -9,7 +9,7 @@ Like the last upgrade (see "[Upgrading to RSpec 1.0.3 on Mac OS X Tiger](/wiki/U
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec
@@ -110,7 +110,7 @@ See if any other changes are necessary:
     +  config.before(:each, :behaviour_type => :controller) do
     +    raise_controller_errors
     +  end
-     
+
        # You can declare fixtures for each behaviour like this:
        #   describe "...." do
     \ No newline at end of file

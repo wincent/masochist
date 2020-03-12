@@ -11,7 +11,7 @@ Can you guess the "archaic" OS that Pilgrim is [talking about](http://diveintoma
 
 Yeah, pretty much.
 
-The article itself is mostly troll but there is one seed of truth underneath it all: [MySQL](http://www.wincent.com/knowledge-base/MySQL) *is* unnecessarily hard to install on Leopard. Of course, it's still not that hard. This should be enough:
+The article itself is mostly troll but there is one seed of truth underneath it all: [MySQL](http://www.wincent.com/knowledge-base/MySQL) _is_ unnecessarily hard to install on Leopard. Of course, it's still not that hard. This should be enough:
 
     # from inside the source tree
     ./configure --prefix=/usr/local/mysql &&
@@ -21,10 +21,6 @@ The article itself is mostly troll but there is one seed of truth underneath it 
 In other words basically the exact same steps that work for any open source project out there. MySQL will hopefully update their binary installers soon so that even that much [commandline](http://www.wincent.com/knowledge-base/commandline) interaction can be dispensed with.
 
 But in short, Pilgrim is exaggerating and most of his complaints are total non-issues; why?
-
-
-
-
 
 Firstly, there are multiple package managers for Mac OS X. I choose not to use any of them because I actually like the control afforded to me by micromanaging it myself. For the amount of such software that I install it's really not a significant effort.
 

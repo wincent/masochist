@@ -3,4 +3,4 @@ title: snippets r83, 1 item changed
 tags: snippets
 ---
 
-get\_mt\_cats.rb helper script
+get_mt_cats.rb helper script

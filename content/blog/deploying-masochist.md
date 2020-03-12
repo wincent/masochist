@@ -10,7 +10,7 @@ A couple posts back, I [introduced Masochist](/blog/masochist), the software tha
 
 # The old way
 
-The site was a [Rails] app running on an [EC2] instance. There were a few moving pieces &mdash;  [memcached], [nginx], [Git] repo mirrors, [Monit] monitoring, the app itself etc &mdash; so the provisioning of the instance was powered by [Ansible].
+The site was a [Rails] app running on an [EC2] instance. There were a few moving pieces &mdash; [memcached], [nginx], [Git] repo mirrors, [Monit] monitoring, the app itself etc &mdash; so the provisioning of the instance was powered by [Ansible].
 
 Most of the data was stored in a MySQL database, some of it was on the filesystem (uploaded images, for example), and some of it came from a Git repo. As such, there were multiple sources of truth, and at least a couple of them resided on the instance itself. This in turn meant that the instance was stateful, that state was important, and regular backups were critical.
 
@@ -137,9 +137,9 @@ Even though the code for the two apps resides in [a single repo](https://github.
 
 On the remote machine, Ansible sets up two users so that the Node.js and Ruby apps can run as separate users, out of separate directories. There is a third repo set up as well that is dedicated to content alone. In this way, I have three different Git "remotes" that I can push to and thus have granular control over what gets pushed and when:
 
-- Push to the "masochist" remote to deploy a new version of the app (ie. `git push masochist`).
-- Push to the "wikiserve" remote to deploy a new version of the wikiserve microservice (ie. `git push wikiserve`).
-- Push to the "origin" remote (ie. `git push origin`, or simply `git push`) to do a code-only push without a deploy; this sends the code up to git.wincent.com, and from there it gets mirrored to GitHub, GitLab and Bitbucket automatically.
+-   Push to the "masochist" remote to deploy a new version of the app (ie. `git push masochist`).
+-   Push to the "wikiserve" remote to deploy a new version of the wikiserve microservice (ie. `git push wikiserve`).
+-   Push to the "origin" remote (ie. `git push origin`, or simply `git push`) to do a code-only push without a deploy; this sends the code up to git.wincent.com, and from there it gets mirrored to GitHub, GitLab and Bitbucket automatically.
 
 A nice perk of this is that the `--decorate` functionality of `git-log` can show me at a glance what I have deployed and to where:
 
@@ -157,14 +157,14 @@ Sounds like a terrible idea? Sign me up right away!
 
 <small><em>Discuss: [Facebook](https://www.facebook.com/glh/posts/10153087065236307) - [Twitter](https://twitter.com/wincent/status/677636911800938496) - [Reddit](https://www.reddit.com/r/git/comments/3xa91u/deploying_via_git_push/)</em></small>
 
-[Ansible]: /wiki/Ansible
-[Capistrano]: /wiki/Capistrano
-[EC2]: /wiki/EC2
-[Git]: /wiki/Git
-[Monit]: /wiki/Monit
-[Node.js]: /wiki/Node.js
-[Rails]: /wiki/Rails
-[Redis]: /wiki/Redis
-[Ruby]: /wiki/Ruby
+[ansible]: /wiki/Ansible
+[capistrano]: /wiki/Capistrano
+[ec2]: /wiki/EC2
+[git]: /wiki/Git
+[monit]: /wiki/Monit
+[node.js]: /wiki/Node.js
+[rails]: /wiki/Rails
+[redis]: /wiki/Redis
+[ruby]: /wiki/Ruby
 [memcached]: /wiki/memcached
 [nginx]: /wiki/nginx

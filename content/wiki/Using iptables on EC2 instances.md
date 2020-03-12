@@ -24,13 +24,13 @@ First up, check the existing rules; by default they will allow all traffic:
 ```shell
 # iptables -L
 Chain INPUT (policy ACCEPT)
-target     prot opt source               destination         
+target     prot opt source               destination
 
 Chain FORWARD (policy ACCEPT)
-target     prot opt source               destination         
+target     prot opt source               destination
 
 Chain OUTPUT (policy ACCEPT)
-target     prot opt source               destination     
+target     prot opt source               destination
 ```
 
 Now set up a rule to drop all packets from the attacker; you can run `iptables -L` again to see the results:
@@ -39,14 +39,14 @@ Now set up a rule to drop all packets from the attacker; you can run `iptables -
 # iptables -I INPUT -s 174.132.223.252 -j DROP
 # iptables -L
 Chain INPUT (policy ACCEPT)
-target     prot opt source               destination         
-DROP       all  --  fc.df.84ae.static.theplanet.com  anywhere            
+target     prot opt source               destination
+DROP       all  --  fc.df.84ae.static.theplanet.com  anywhere
 
 Chain FORWARD (policy ACCEPT)
-target     prot opt source               destination         
+target     prot opt source               destination
 
 Chain OUTPUT (policy ACCEPT)
-target     prot opt source               destination     
+target     prot opt source               destination
 ```
 
 See the iptables man page for details on the other kinds of rules you can specify. You can do things like rate-limiting, and matching on specific ports, and a lot of much more complicated variations than just dropping all packets like in the example above.

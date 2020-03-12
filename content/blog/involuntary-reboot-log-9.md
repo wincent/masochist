@@ -9,10 +9,6 @@ Then the usual time-draining recovery routine: boot off the install DVD and chec
 
 I had hoped I could tolerate the bugs and with a bit of perseverance get some work done. But it's totally unusable.
 
-
-
-
-
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** undisclosed

@@ -23,7 +23,7 @@ And configure username and password pairs:
 
     # may be able to copy a passwd file from an existing repository as a starting point
     sudo -u svn cp /var/lib/svn/repositories/other-project-name/conf/passwd \
-                   /var/lib/svn/repositories/project-name/conf/passwd 
+                   /var/lib/svn/repositories/project-name/conf/passwd
     # edit the passwd file by hand if necessary
     sudo nano /var/lib/svn/repositories/project-name/conf/passwd
 

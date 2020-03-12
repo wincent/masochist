@@ -67,7 +67,7 @@ The complication, however, is that previously Unicorn was installed in the syste
 
     You have already activated rack 1.0.1, but your Gemfile requires rack 1.2.1. Consider using bundle exec
 
-Well, this is exactly the problem Bundler is designed to solve, so what the heck, let's throw Unicorn in the bundle as well. (Sure, I *could* remove rack 1.0.1 from my system, but then I couldn't rollback without also having to re-install rack 1.0.1. It's better to just use Bundler.)
+Well, this is exactly the problem Bundler is designed to solve, so what the heck, let's throw Unicorn in the bundle as well. (Sure, I _could_ remove rack 1.0.1 from my system, but then I couldn't rollback without also having to re-install rack 1.0.1. It's better to just use Bundler.)
 
 So this makes the upgrade pattern look like this:
 
@@ -128,7 +128,7 @@ As the gem is preinstalled, Bundler won't try to rebuild it, and it works.
 
 ## The final solution
 
-The maintainer of the memcache gem was kind enough to make a tweak and release a new version, 1.2.13, which *does* take notice of any extra arguments you pass in via `gem install memcache -- --other-args`, and therefore, by extension, `bundle config build.memcache ...` as well.
+The maintainer of the memcache gem was kind enough to make a tweak and release a new version, 1.2.13, which _does_ take notice of any extra arguments you pass in via `gem install memcache -- --other-args`, and therefore, by extension, `bundle config build.memcache ...` as well.
 
 So while my first deployment required manual intervention before I could go ahead with it, subsequent deployments work without any special set-up other than:
 

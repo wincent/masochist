@@ -2,5 +2,3 @@
 redirect: [[IBM]]
 tags: wiki
 ---
-
-

@@ -3,7 +3,7 @@ tags: rsync wiki
 cache_breaker: 1
 ---
 
-***Note:** these notes were made with older versions of [RHEL](/wiki/RHEL) and [Mac OS X](/wiki/Mac_OS_X). See "[Remote backups via rsync](/wiki/Remote_backups_via_rsync)" for links to other articles using other [operating system](/wiki/operating_system) versions.*
+**\*Note:** these notes were made with older versions of [RHEL](/wiki/RHEL) and [Mac OS X](/wiki/Mac_OS_X). See "[Remote backups via rsync](/wiki/Remote_backups_via_rsync)" for links to other articles using other [operating system](/wiki/operating_system) versions.\*
 
 These are notes I made while setting up an [rsync](/wiki/rsync)-based backup mechanism between my remote server (running [Red Hat Enterprise Linux](/wiki/Red_Hat_Enterprise_Linux)) and my local machine (running [Mac OS X](/wiki/Mac_OS_X)).
 
@@ -111,7 +111,7 @@ And the local machine:
 
 Given that the protocol versions are different, that leaves me with three options:
 
-1.   Build a custom version of `rsync` on the server that uses the newer protocol
+1.  Build a custom version of `rsync` on the server that uses the newer protocol
 2.  Build a custom version on the local machine that uses the older protocol
 3.  A combination of both, build new versions on the server and the local machine that use the latest protocol
 4.  And another option, discovered too late, the `--protocol=NUM` command line switch
@@ -183,7 +183,7 @@ Still works. Try running with root privileges (still same user):
                               -avzxn --numeric-ids --delete --progress \
                               non_root_user@example.com:/ /tmp/test/
 
-Works. Now the *only* difference is that one invocation connects as root and the other does not. Swap `root` for `non_root_user` in the invocation above and we're back into "protocol mismatch" territory again...
+Works. Now the _only_ difference is that one invocation connects as root and the other does not. Swap `root` for `non_root_user` in the invocation above and we're back into "protocol mismatch" territory again...
 
 Try removing the `command` restriction entirely from the `authorized_keys` file, setting `PermitRootLogin` to `yes` and sending the `SIGHUP` signal to the `sshd` daemon again.
 
@@ -214,14 +214,14 @@ Real ("non-dry" runs) all fail with messages like this:
 
     Invalid file index: -1610612736 (count=9406) [sender]
     rsync error: protocol incompatibility (code 2) at sender.c(169) [sender=2.6.8]
-    rsync: writefd_unbuffered failed to write 4092 bytes [generator]: 
+    rsync: writefd_unbuffered failed to write 4092 bytes [generator]:
     Broken pipe (32)rsync: connection unexpectedly closed (195901 bytes received so far) [receiver]
     rsync error: error in rsync protocol data stream (code 12) at io.c(463) [receiver=2.6.8]
     rsync error: error in rsync protocol data stream (code 12) at io.c(1119) [generator=2.6.8]
 
 [This mailing list post](http://lists.samba.org/archive/rsync/2006-June/015828.html) by the creator of `rsync` suggests that this might be a byte-ordering issue:
 
-> This number is exactly 0x60000000, so another possibility that comes to mind is that the byte-order messed up somehow. Look in byteorder.h and make sure that CAREFUL\_ALIGNMENT is being defined on any system that uses most-significant-byte-first ordering.
+> This number is exactly 0x60000000, so another possibility that comes to mind is that the byte-order messed up somehow. Look in byteorder.h and make sure that CAREFUL_ALIGNMENT is being defined on any system that uses most-significant-byte-first ordering.
 
 Now, the i386 is not a big-endian system, but I thought I'd try setting `CAREFUL_ALIGNMENT` anyway and rebuilding. No effect:
 

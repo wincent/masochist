@@ -8,7 +8,7 @@ tags: git snow.leopard wiki
 $ curl -O http://kernel.org/pub/software/scm/git/git-1.7.0.2.tar.bz2
 $ curl -O http://kernel.org/pub/software/scm/git/git-1.7.0.2.tar.bz2.sign
 $ gpg --verify git-1.7.0.2.tar.bz2.sign git-1.7.0.2.tar.bz2
-$ tar xjvf git-1.7.0.2.tar.bz2 
+$ tar xjvf git-1.7.0.2.tar.bz2
 $ cd git-1.7.0.2
 $ make prefix=/usr/local test
 $ sudo make prefix=/usr/local install

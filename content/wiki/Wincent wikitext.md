@@ -8,7 +8,7 @@ tags: wiki
 
 Over the years I've had to edit text in a number of [markup](/wiki/markup) formats, including [Markdown](/wiki/Markdown) (often), [Textile](/wiki/Textile) (sometimes) and [HTML](/wiki/HTML) itself (often). Upon installing [MediaWiki](/wiki/MediaWiki) and working with it I gradually came to warm to its [wikitext](/wiki/wikitext) [markup](/wiki/markup) and it is now my preferred markup format when the target output is [HTML](/wiki/HTML).
 
-So when working on a [Rails](/wiki/Rails) rewrite of my website I decided that [wikitext](/wiki/wikitext) would be *the* markup format used ubiquitously throughout. As it would be heavily used I wanted it to be fast, so I wanted a [C](/wiki/C) solution rather than a pure [Ruby](/wiki/Ruby) one.
+So when working on a [Rails](/wiki/Rails) rewrite of my website I decided that [wikitext](/wiki/wikitext) would be _the_ markup format used ubiquitously throughout. As it would be heavily used I wanted it to be fast, so I wanted a [C](/wiki/C) solution rather than a pure [Ruby](/wiki/Ruby) one.
 
 So I started working on an [ANTLR](/wiki/ANTLR) grammar for [parsing](/wiki/parsing) [wikitext](/wiki/wikitext) and transforming it to [HTML](/wiki/HTML). This page contains notes on the grammar design.
 
@@ -30,7 +30,7 @@ As the target output of the parser is [HTML](/wiki/HTML) the [HTML](/wiki/HTML) 
 
 Some nesting of block-level elements is permitted:
 
--   *Any* block-level element may be nested inside &lt;blockquote&gt;, including other &lt;blockquote&gt; elements.
+-   _Any_ block-level element may be nested inside &lt;blockquote&gt;, including other &lt;blockquote&gt; elements.
 -   List block-level elements (&lt;ol&gt; and &lt;ul&gt;) may be nested inside list items (&lt;li&gt;); this allows nested, multi-level lists.
 
 All other nesting of block-level elements is disallowed.
@@ -39,7 +39,7 @@ In general, nesting of inline elements is allowed provided the same element is n
 
 -   An &lt;em&gt; span may be nested inside a &lt;strong&gt; span
 -   A &lt;strong&gt; span may be nested inside an &lt;em&gt; span
--   An &lt;em&gt; span may *not* be nested inside another &lt;em&gt; span, directly or indirectly; neither may a &lt;strong&gt; span be nested inside another &lt;strong&gt; span
+-   An &lt;em&gt; span may _not_ be nested inside another &lt;em&gt; span, directly or indirectly; neither may a &lt;strong&gt; span be nested inside another &lt;strong&gt; span
 
 This complex, context-sensitive nesting requirement made it prohibitively difficult to produce an [ANTLR](/wiki/ANTLR) [parser](/wiki/parser), especially when combined with the need for the parser to accept and reasonably handle even the most malformed input. So I decided to use a filtering [ANTLR](/wiki/ANTLR) [lexer](/wiki/lexer) to tokenize the input and process it with a hand-written [parser](/wiki/parser).
 
@@ -62,7 +62,7 @@ In this example an unexpected tag in the input is output literally using [HTML e
 
     # input
     this tag is </em> unexpected!
-     
+
     # output
     this tag is &lt;/em&gt; unexpected!
 

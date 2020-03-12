@@ -2,5 +2,3 @@
 redirect: [[MTA]]
 tags: wiki
 ---
-
-

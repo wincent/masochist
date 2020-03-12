@@ -7,11 +7,11 @@ When [GitHub](/wiki/GitHub) first launched I was far from impressed with it. I h
 
 1.  It was little more than a prettified [GitWeb](/wiki/GitWeb) replacement written in [Ruby on Rails](/wiki/Ruby_on_Rails) and with some attractive [CSS](/wiki/CSS).
 2.  It seemed absurd to me that people would pay for the service when [Git](/wiki/Git) itself comes with everything you need to reliably, securely serve repositories. (And if you make a living off your development work, why would you entrust your most prized asset, your code, to an unknown third-party with a non-existent track record?)
-3.  Its "fork-happy" design encouraged a veritable forking-frenzy that seemed to be an overexcited reaction to the "D" in [DVCS](/wiki/DVCS) (and just because you *can* splinter a project into a thousand public forks doesn't necessarily mean that you *should*).
+3.  Its "fork-happy" design encouraged a veritable forking-frenzy that seemed to be an overexcited reaction to the "D" in [DVCS](/wiki/DVCS) (and just because you _can_ splinter a project into a thousand public forks doesn't necessarily mean that you _should_).
 
-Within the [Ruby](/wiki/Ruby) community, ever quick to embrace the latest and greatest, it took off absolutely explosively once Rails itself switched to Git and chose GitHub as its home. For many newcomers to Git, GitHub *was* Git.
+Within the [Ruby](/wiki/Ruby) community, ever quick to embrace the latest and greatest, it took off absolutely explosively once Rails itself switched to Git and chose GitHub as its home. For many newcomers to Git, GitHub _was_ Git.
 
-I have to hand it to them, though. They haven't rested on their laurels. They've tirelessly added feature upon feature to the site, and while some of those features can be dismissed as irrelevant frills and crud, there *are* some absolutely core pieces of functionality that have brought the site to new levels as a collaboration tool.
+I have to hand it to them, though. They haven't rested on their laurels. They've tirelessly added feature upon feature to the site, and while some of those features can be dismissed as irrelevant frills and crud, there _are_ some absolutely core pieces of functionality that have brought the site to new levels as a collaboration tool.
 
 # On forking
 
@@ -25,9 +25,9 @@ Things like mailing lists, `git format-patch`, and the myriad ways of pushing, p
 
 In the old days we only had a centralized model. Then came the distributed systems and we enjoyed the ability to have our local clones containing the full history of upstream projects, and we published them when it made sense to do so.
 
-Under GitHub, we have go far beyond this initial distributed model, to one in which a popular project has 1,000 *public* forks. Why on earth do all these forks need to be public? Why can't most of them just be local private clones?
+Under GitHub, we have go far beyond this initial distributed model, to one in which a popular project has 1,000 _public_ forks. Why on earth do all these forks need to be public? Why can't most of them just be local private clones?
 
-There *is* a time and a place for public forks, but I don't think it need be the norm. There are many times when it is simpler to just:
+There _is_ a time and a place for public forks, but I don't think it need be the norm. There are many times when it is simpler to just:
 
 1.  `git clone` the upstream project
 2.  Prepare your patch, then run `git format-patch` to submit it (via email, or issue tracker ticket) upstream
@@ -43,7 +43,7 @@ Public forks are great for long-running feature development, but in most cases w
 
 I am sure that, for many projects, the humble, old-fashioned mailing list would provide a higher-quality code review process for incoming submissions. Mailing lists provide a focal point which all members on a team can read and reply on proposed changes in an ordered, threaded fashion. Compare that to a diaspora of forks, which people in general will only go to look at it you explicitly ask them to, and in a way that makes them think it will be worth their time.
 
-There *are* uses for public forking — like being able to get an overview of the "ecosystem" of a project — and as such I think it's great that GitHub makes it so easy to fork. The problem is that the emphasis on it is such that the alternatives just fade away into the background.
+There _are_ uses for public forking — like being able to get an overview of the "ecosystem" of a project — and as such I think it's great that GitHub makes it so easy to fork. The problem is that the emphasis on it is such that the alternatives just fade away into the background.
 
 # Collaboration goodness
 

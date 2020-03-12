@@ -43,7 +43,7 @@ checking for cc... cc
 checking for C compiler default output file name... a.out
 checking whether the C compiler works... yes
 checking whether we are cross compiling... no
-checking for suffix of executables... 
+checking for suffix of executables...
 checking for suffix of object files... o
 checking whether we are using the GNU C compiler... yes
 checking whether cc accepts -g... yes
@@ -239,12 +239,12 @@ I found [this mailing list thread](http://www.spinics.net/lists/git/msg107834.ht
     Date:   Fri Jul 10 12:10:45 2009 -0500
 
         Makefile: add NEEDS_LIBGEN to optionally add -lgen to compile arguments
-        
+
         Commit 003b33a8 recently added a call to basename().  On IRIX 6.5, this
         function resides in libgen and -lgen is required for the linker.
-        
+
         Update configure.ac too.
-        
+
         Signed-off-by: Brandon Casey <casey@nrlssc.navy.mil>
         Signed-off-by: Junio C Hamano <gitster@pobox.com>
 
@@ -278,7 +278,7 @@ I found [this mailing list thread](http://www.spinics.net/lists/git/msg107834.ht
     @@ -485,6 +485,12 @@ AC_CHECK_LIB([resolv], [hstrerror],
      AC_SUBST(NEEDS_RESOLV)
      test -n "$NEEDS_RESOLV" && LIBS="$LIBS -lresolv"
-     
+
     +AC_CHECK_LIB([gen], [basename],
     +[NEEDS_LIBGEN=],
     +[NEEDS_LIBGEN=YesPlease])

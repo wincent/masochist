@@ -3,6 +3,6 @@ title: Rename link encoding and sanitization methods for consistency (wikitext, 
 tags: snippets
 ---
 
-Now all the public methods in Wikitext::Parser begin with "Wikitext\_parser".
+Now all the public methods in Wikitext::Parser begin with "Wikitext_parser".
 
 Signed-off-by: Wincent Colaiuta &lt;win@wincent.com&gt;

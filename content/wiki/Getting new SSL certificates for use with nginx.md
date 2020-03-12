@@ -42,13 +42,13 @@ This is how I answered the questions:
 
 Inspect the CSR:
 
-    # openssl req -noout -text -in ../certs/wincent.com.csr 
+    # openssl req -noout -text -in ../certs/wincent.com.csr
 
 ## Getting the actual signed certificate
 
 Follow issuer's instructions (basically, go to their website and past in the CSR):
 
-    # cat ../certs/wincent.com.csr 
+    # cat ../certs/wincent.com.csr
 
 Once you get the signed certificate, copy and paste it into a file:
 
@@ -65,7 +65,7 @@ Now repeat all the same steps, this time for rails.wincent.com:
     # openssl genrsa -des3 -out rails.wincent.com.key 1024
     # openssl req -new -key rails.wincent.com.key -out ../certs/rails.wincent.com.csr
     # openssl req -noout -text -in ../certs/rails.wincent.com.csr
-    # cat ../certs/rails.wincent.com.csr 
+    # cat ../certs/rails.wincent.com.csr
     # nano ../certs/rails.wincent.com.crt
 
 ## See also

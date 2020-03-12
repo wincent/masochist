@@ -3,7 +3,7 @@ tags: aws wiki
 cache_breaker: 1
 ---
 
-**Update:** *[IAM roles](http://aws.typepad.com/aws/2012/06/iam-roles-for-ec2-instances-simplified-secure-access-to-aws-service-apis-from-ec2.html) are a new feature added to EC2 which make much of the following discussion mostly moot; these enable you to set up a predefined set of relatively fine-grained access privileges that will be made transparently available to an instance that you launch. The original content of this article follows below for historical reference.*
+**Update:** _[IAM roles](http://aws.typepad.com/aws/2012/06/iam-roles-for-ec2-instances-simplified-secure-access-to-aws-service-apis-from-ec2.html) are a new feature added to EC2 which make much of the following discussion mostly moot; these enable you to set up a predefined set of relatively fine-grained access privileges that will be made transparently available to an instance that you launch. The original content of this article follows below for historical reference._
 
 [This article](http://www.shlomoswidler.com/2009/08/how-to-keep-your-aws-credentials-on-ec2.html) goes into great detail weighing up the pros and cons of storing your [AWS](/wiki/AWS) credentials on your [EC2](/wiki/EC2) instances (although it was written before the introduction of AMIs bootable from [EBS](/wiki/EBS) volumes it is still highly relevant), and [this one](http://www.elastician.com/2009/06/managing-your-aws-credentials-part-2.html) proposes an approach which at least mitigates some of the most insecure aspects of the alternatives.
 
@@ -11,7 +11,7 @@ Note that there really is no way to "cheat" and "hide" the keys on the instance 
 
 # Example scenario: Backup via [EBS](/wiki/EBS) snapshot
 
-**Scenario:** *in order to backup the [EBS](/wiki/EBS) volumes attached to an [EC2](/wiki/EC2) instance you need your [AWS](/wiki/AWS) credentials.*
+**Scenario:** _in order to backup the [EBS](/wiki/EBS) volumes attached to an [EC2](/wiki/EC2) instance you need your [AWS](/wiki/AWS) credentials._
 
 In order for the backup to be fully automatic, unattended, and initiated via a [cron](/wiki/cron) job within the instance, you need to somehow store the credentials inside the instance in some way.
 

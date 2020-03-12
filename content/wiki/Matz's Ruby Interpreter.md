@@ -2,5 +2,3 @@
 redirect: [[MRI]]
 tags: wiki
 ---
-
-

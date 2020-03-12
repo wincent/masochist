@@ -40,7 +40,7 @@ Redirecting to a command rather than a file or device:
 $ command 2>&1 | mail username@localhost
 ```
 
-Redirecting *and* displaying, using `tee`:
+Redirecting _and_ displaying, using `tee`:
 
 ```shell
 $ command 2>&1 | tee target

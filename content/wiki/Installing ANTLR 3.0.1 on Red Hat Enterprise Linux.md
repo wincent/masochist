@@ -11,9 +11,9 @@ I use the C target so that I can incorporate the code in Ruby extensions written
 # Practice run
 
     wget "http://antlr.org/download/antlr-3.0.1.tar.gz"
-    tar xzvf antlr-3.0.1.tar.gz 
+    tar xzvf antlr-3.0.1.tar.gz
     cd antlr-3.0.1/runtime/C/dist/
-    tar xzvf libantlr3c-3.0.1.tar.gz 
+    tar xzvf libantlr3c-3.0.1.tar.gz
     cd libantlr3c-3.0.1
     ./configure
     make
@@ -39,7 +39,7 @@ The following patch needs to be applied to `runtime/C/dist/libantlr3c-3.0.1/src/
     --- runtime/C/dist/libantlr3c-3.0.1/src/antlr3inputstream.c    2007-08-10 21:23:05.000000000 +0200
     +++ runtime/C/dist/libantlr3c-3.0.1/src/antlr3inputstream.c    2007-10-16 00:17:51.000000000 +0200
     @@ -180,7 +180,7 @@
-     
+
          input->nextChar            = input->data;  /* Input at first character */
          input->line                        = 1;            /* starts at line 1         */
     -    input->charPositionInLine  = -1;

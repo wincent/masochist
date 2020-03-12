@@ -35,8 +35,8 @@ sudo dscl localhost delete /Local/Default/Users/$USER CopyTimestamp
 
 # Other issues
 
-* Karabiner-Elements needs to be explicitly enabled in the Security pane of the System Preferences.
-* `xcode-select --install` didn't work for me, claiming the command-line tools were not available to download; nevertheless, I have Xcode 9 on the system.
+-   Karabiner-Elements needs to be explicitly enabled in the Security pane of the System Preferences.
+-   `xcode-select --install` didn't work for me, claiming the command-line tools were not available to download; nevertheless, I have Xcode 9 on the system.
 
 ## `vim`, `nvim` are broken
 
@@ -58,8 +58,8 @@ After this, rebuild Command-T (ie. `make clean && ruby extconf.rb && make`). Did
 
 # Other steps
 
-* Turn on iCloud recovery key again (apparently, Apple got rid of this when they rolled out Two-Factor auth a while back because it was too easy for people to totally lock themselves out, but looks like it is back).
-* `brew doctor`, just in case.
+-   Turn on iCloud recovery key again (apparently, Apple got rid of this when they rolled out Two-Factor auth a while back because it was too easy for people to totally lock themselves out, but looks like it is back).
+-   `brew doctor`, just in case.
 
 ## Clipper is broken
 
@@ -114,5 +114,5 @@ Solution was to add `gem: --bindir /usr/local/bin` to the `~/.gemrc`, then `sudo
 
 Broken because the `~/.mutt/tmp/notmuch.history` history file format needed to be updated as per [this Stack Overflow answer](https://stackoverflow.com/a/17824899/2103996):
 
-* Insert header of `_HiStOrY_V2_`.
-* Replaces spaces with `\040` (ie. `:%s/\v /\\040/g` in Vim).
+-   Insert header of `_HiStOrY_V2_`.
+-   Replaces spaces with `\040` (ie. `:%s/\v /\\040/g` in Vim).

@@ -13,11 +13,7 @@ The bug is, in short, that "Input/Output Files" don't work, or if they do, they 
 
 In my experiences, the bug manifests itself in some projects and not in others. It manifests itself some of the time but not always. I tried all of the solutions and addressed all of the possible causes suggested on the[Xcode Users mailing list](http://lists.apple.com/mailman/listinfo/xcode-users) but none of them worked. My "Input/Output Files" didn't have any errant newlines trailing them; the files themselves had the correct dates on them and no weirdness (like future dates); I wasn't using a Jam-based target; the paths as revealed in the environment variables listing of the shell script phases showed that exactly the right paths (absolute ones at that) were being passed to the scripts; and even in projects when the "Input/Output Files" checking did seem to be working correctly the dependency information wasn't shared across Debug and Release build styles at all (that is, even if the shell script was correctly skipped in the Debug build, it would always run in the Release build the first time you did it).
 
-In short, the behavior is entirely inconsistent, utterly baffling, and annoying. It may be that Xcode didn't like the fact that both my Input *and* my Output Files were in the `${SOURCE_ROOT}` (rather than the latter being in the `${DERIVED_FILE_DIR}`) but even if that's the case it's still a bug.
-
-
-
-
+In short, the behavior is entirely inconsistent, utterly baffling, and annoying. It may be that Xcode didn't like the fact that both my Input _and_ my Output Files were in the `${SOURCE_ROOT}` (rather than the latter being in the `${DERIVED_FILE_DIR}`) but even if that's the case it's still a bug.
 
 ### The workaround
 
@@ -51,6 +47,6 @@ Notice the use of the `||` operator: if `CheckInputOutputFiles.sh` returns 0 the
 
 Xcode (and before it, Project Builder) has a long history of dependency related bugs but it's really no surprise considering the hideous complexity of the task. On the whole Xcode does pretty well. And with each release Apple generally makes things a little better. The pleasure of setting up target-level dependencies by dragging-and-dropping pretty icons in the Xcode GUI is a dream beyond the wildest imaginings of the people who originally wrote `make`. Nevertheless, this "Input/Output File" issue has been a problem for as long as I can remember using it.
 
-This is a classic example of an attempt at saving time ends up backfiring. Here I had an automated process in place that was designed to keep my localized strings files up to date. In reality the automation didn't work, it has slowed down hundreds of builds, and I've ended up having to implement a workaround. From now on hopefully it *will* save me time.
+This is a classic example of an attempt at saving time ends up backfiring. Here I had an automated process in place that was designed to keep my localized strings files up to date. In reality the automation didn't work, it has slowed down hundreds of builds, and I've ended up having to implement a workaround. From now on hopefully it _will_ save me time.
 
 In situations like this, do you file a bug report with Apple? They'll probably want a test case: what do I do? Zip up my entire proprietary source tree and send it to them? And then do I have to check to see if it's fixed (or broken) in every new Xcode release that they do? Seeing as I've already got a robust and relatively elegant workaround, I think I'll just leave this one as it is and get back to working on my own products...

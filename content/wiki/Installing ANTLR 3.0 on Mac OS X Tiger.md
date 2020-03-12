@@ -19,7 +19,7 @@ Having downloaded the [ANTLR 3.0](/wiki/ANTLR_3.0) distribution (`antlr-3.0.tar.
 To actually use [ANTLR](/wiki/ANTLR) the jars must be in your classpath:
 
     export CLASSPATH="/usr/local/antlr/lib/antlr-3.0.jar"
-    export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar" 
+    export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-2.7.7.jar"
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/antlr-runtime-3.0.jar"
     export CLASSPATH="$CLASSPATH:/usr/local/antlr/lib/stringtemplate-3.0.jar"
 

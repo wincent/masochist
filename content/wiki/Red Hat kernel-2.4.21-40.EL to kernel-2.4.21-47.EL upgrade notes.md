@@ -18,141 +18,141 @@ Here are notes I made during an extensive update (including a kernel update) to 
     Fetching rpm headers...
     ########################################
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
-    XFree86                                 4.3.0          110.EL            i386  
-    XFree86-100dpi-fonts                    4.3.0          110.EL            i386  
-    XFree86-75dpi-fonts                     4.3.0          110.EL            i386  
-    XFree86-Mesa-libGL                      4.3.0          110.EL            i386  
-    XFree86-Mesa-libGLU                     4.3.0          110.EL            i386  
-    XFree86-Xnest                           4.3.0          110.EL            i386  
-    XFree86-Xvfb                            4.3.0          110.EL            i386  
-    XFree86-base-fonts                      4.3.0          110.EL            i386  
-    XFree86-font-utils                      4.3.0          110.EL            i386  
-    XFree86-libs                            4.3.0          110.EL            i386  
-    XFree86-libs-data                       4.3.0          110.EL            i386  
-    XFree86-tools                           4.3.0          110.EL            i386  
-    XFree86-twm                             4.3.0          110.EL            i386  
-    XFree86-xauth                           4.3.0          110.EL            i386  
-    XFree86-xdm                             4.3.0          110.EL            i386  
-    XFree86-xfs                             4.3.0          110.EL            i386  
-    aspell                                  0.33.7.1       25.3.rhel3        i386  
-    aspell-config                           0.33.7.1       25.3.rhel3        i386  
-    aspell-devel                            0.33.7.1       25.3.rhel3        i386  
-    authconfig                              4.3.7          4                 i386  
-    autofs                                  4.1.3          186               i386  
-    bash                                    2.05b          41.7              i386  
-    bind                                    9.2.4          14_EL3            i386  
-    bind-libs                               9.2.4          14_EL3            i386  
-    bind-utils                              9.2.4          14_EL3            i386  
-    chkconfig                               1.3.13.4       0.3               i386  
-    comps                                   3ES            0.20060712        i386  
-    coreutils                               4.5.3          28.1              i386  
-    cpp                                     3.2.3          56                i386  
-    crash                                   4.0            2.29              i386  
-    curl                                    7.10.6         8.rhel3           i386  
-    curl-devel                              7.10.6         8.rhel3           i386  
-    e2fsprogs                               1.32           15.3              i386  
-    e2fsprogs-devel                         1.32           15.3              i386  
-    elfutils                                0.94.1         2                 i386  
-    elfutils-devel                          0.94.1         2                 i386  
-    elfutils-libelf                         0.94.1         2                 i386  
-    elfutils-libelf-devel                   0.94.1         2                 i386  
-    expect                                  5.38.0         92.7              i386  
-    file                                    3.39           9.EL3.4           i386  
-    ftp                                     0.17           17.2              i386  
-    gcc                                     3.2.3          56                i386  
-    gcc-c++                                 3.2.3          56                i386  
-    gcc-java                                3.2.3          56                i386  
-    gcc-objc                                3.2.3          56                i386  
-    gdb                                     6.3.0.0        1.132.EL3         i386  
-    glibc                                   2.3.2          95.44             i686  
-    glibc-common                            2.3.2          95.44             i386  
-    glibc-devel                             2.3.2          95.44             i386  
-    glibc-headers                           2.3.2          95.44             i386  
-    glibc-profile                           2.3.2          95.44             i386  
-    glibc-utils                             2.3.2          95.44             i386  
-    grep                                    2.5.1          24.6              i386  
-    groff                                   1.18.1         28.EL3.3          i386  
-    httpd                                   2.0.46         57.ent            i386  
-    httpd-devel                             2.0.46         57.ent            i386  
+    XFree86                                 4.3.0          110.EL            i386
+    XFree86-100dpi-fonts                    4.3.0          110.EL            i386
+    XFree86-75dpi-fonts                     4.3.0          110.EL            i386
+    XFree86-Mesa-libGL                      4.3.0          110.EL            i386
+    XFree86-Mesa-libGLU                     4.3.0          110.EL            i386
+    XFree86-Xnest                           4.3.0          110.EL            i386
+    XFree86-Xvfb                            4.3.0          110.EL            i386
+    XFree86-base-fonts                      4.3.0          110.EL            i386
+    XFree86-font-utils                      4.3.0          110.EL            i386
+    XFree86-libs                            4.3.0          110.EL            i386
+    XFree86-libs-data                       4.3.0          110.EL            i386
+    XFree86-tools                           4.3.0          110.EL            i386
+    XFree86-twm                             4.3.0          110.EL            i386
+    XFree86-xauth                           4.3.0          110.EL            i386
+    XFree86-xdm                             4.3.0          110.EL            i386
+    XFree86-xfs                             4.3.0          110.EL            i386
+    aspell                                  0.33.7.1       25.3.rhel3        i386
+    aspell-config                           0.33.7.1       25.3.rhel3        i386
+    aspell-devel                            0.33.7.1       25.3.rhel3        i386
+    authconfig                              4.3.7          4                 i386
+    autofs                                  4.1.3          186               i386
+    bash                                    2.05b          41.7              i386
+    bind                                    9.2.4          14_EL3            i386
+    bind-libs                               9.2.4          14_EL3            i386
+    bind-utils                              9.2.4          14_EL3            i386
+    chkconfig                               1.3.13.4       0.3               i386
+    comps                                   3ES            0.20060712        i386
+    coreutils                               4.5.3          28.1              i386
+    cpp                                     3.2.3          56                i386
+    crash                                   4.0            2.29              i386
+    curl                                    7.10.6         8.rhel3           i386
+    curl-devel                              7.10.6         8.rhel3           i386
+    e2fsprogs                               1.32           15.3              i386
+    e2fsprogs-devel                         1.32           15.3              i386
+    elfutils                                0.94.1         2                 i386
+    elfutils-devel                          0.94.1         2                 i386
+    elfutils-libelf                         0.94.1         2                 i386
+    elfutils-libelf-devel                   0.94.1         2                 i386
+    expect                                  5.38.0         92.7              i386
+    file                                    3.39           9.EL3.4           i386
+    ftp                                     0.17           17.2              i386
+    gcc                                     3.2.3          56                i386
+    gcc-c++                                 3.2.3          56                i386
+    gcc-java                                3.2.3          56                i386
+    gcc-objc                                3.2.3          56                i386
+    gdb                                     6.3.0.0        1.132.EL3         i386
+    glibc                                   2.3.2          95.44             i686
+    glibc-common                            2.3.2          95.44             i386
+    glibc-devel                             2.3.2          95.44             i386
+    glibc-headers                           2.3.2          95.44             i386
+    glibc-profile                           2.3.2          95.44             i386
+    glibc-utils                             2.3.2          95.44             i386
+    grep                                    2.5.1          24.6              i386
+    groff                                   1.18.1         28.EL3.3          i386
+    httpd                                   2.0.46         57.ent            i386
+    httpd-devel                             2.0.46         57.ent            i386
     hwdata                                  0.101.27       1                 noarch
-    initscripts                             7.31.31.EL     1                 i386  
-    ipsec-tools                             0.2.5          0.7.rhel3.4       i386  
-    iputils                                 20020927       11.30.5           i386  
-    kbd                                     1.08           10.6              i386  
-    krb5-devel                              1.2.7          56                i386  
-    krb5-libs                               1.2.7          56                i386  
-    krb5-workstation                        1.2.7          56                i386  
-    kudzu                                   1.1.22.15      1                 i386  
-    kudzu-devel                             1.1.22.15      1                 i386  
-    lftp                                    2.6.3          6                 i386  
-    libaio                                  0.3.96         7                 i386  
-    libaio-devel                            0.3.96         7                 i386  
-    libgcc                                  3.2.3          56                i386  
-    libgcj                                  3.2.3          56                i386  
-    libgcj-devel                            3.2.3          56                i386  
-    libobjc                                 3.2.3          56                i386  
-    libstdc++                               3.2.3          56                i386  
-    libstdc++-devel                         3.2.3          56                i386  
-    lockdev                                 1.0.1          5.1               i386  
-    lockdev-devel                           1.0.1          5.1               i386  
-    logrotate                               3.6.9          2.RHEL3           i386  
+    initscripts                             7.31.31.EL     1                 i386
+    ipsec-tools                             0.2.5          0.7.rhel3.4       i386
+    iputils                                 20020927       11.30.5           i386
+    kbd                                     1.08           10.6              i386
+    krb5-devel                              1.2.7          56                i386
+    krb5-libs                               1.2.7          56                i386
+    krb5-workstation                        1.2.7          56                i386
+    kudzu                                   1.1.22.15      1                 i386
+    kudzu-devel                             1.1.22.15      1                 i386
+    lftp                                    2.6.3          6                 i386
+    libaio                                  0.3.96         7                 i386
+    libaio-devel                            0.3.96         7                 i386
+    libgcc                                  3.2.3          56                i386
+    libgcj                                  3.2.3          56                i386
+    libgcj-devel                            3.2.3          56                i386
+    libobjc                                 3.2.3          56                i386
+    libstdc++                               3.2.3          56                i386
+    libstdc++-devel                         3.2.3          56                i386
+    lockdev                                 1.0.1          5.1               i386
+    lockdev-devel                           1.0.1          5.1               i386
+    logrotate                               3.6.9          2.RHEL3           i386
     logwatch                                4.3.2          3.rhel3           noarch
-    losetup                                 2.11y          31.18             i386  
-    ltrace                                  0.4            1.7.EL3           i386  
+    losetup                                 2.11y          31.18             i386
+    ltrace                                  0.4            1.7.EL3           i386
     man-pages                               1.60           5.rhel3           noarch
-    mdadm                                   1.5.0          9.1               i386  
-    mod_ssl                                 2.0.46         57.ent            i386  
-    mount                                   2.11y          31.18             i386  
-    net-snmp                                5.0.9          2.30E.20          i386  
-    net-snmp-devel                          5.0.9          2.30E.20          i386  
-    net-snmp-libs                           5.0.9          2.30E.20          i386  
-    netdump                                 0.7.16         1.1               i386  
-    nfs-utils                               1.0.6          44EL              i386  
-    nptl-devel                              2.3.2          95.44             i686  
-    nscd                                    2.3.2          95.44             i386  
-    ntsysv                                  1.3.13.4       0.3               i386  
-    openssh                                 3.6.1p2        33.30.9           i386  
-    openssh-clients                         3.6.1p2        33.30.9           i386  
-    openssh-server                          3.6.1p2        33.30.9           i386  
-    pam                                     0.75           69                i386  
-    pam-devel                               0.75           69                i386  
-    pciutils                                2.1.10         7.EL3.1           i386  
-    pciutils-devel                          2.1.10         7.EL3.1           i386  
-    perl                                    5.8.0          94.EL3            i386  
-    perl-CGI                                2.89           94.EL3            i386  
-    perl-CPAN                               1.61           94.EL3            i386  
-    perl-DBD-MySQL                          2.1021         4.EL3             i386  
-    perl-DB_File                            1.806          94.EL3            i386  
-    popt                                    1.8.2          30_nonptl         i386  
-    procps                                  2.0.17         13.10             i386  
-    psmisc                                  21.3           2.1               i386  
-    python                                  2.2.3          6.3               i386  
-    python-devel                            2.2.3          6.3               i386  
-    quota                                   3.10           8                 i386  
+    mdadm                                   1.5.0          9.1               i386
+    mod_ssl                                 2.0.46         57.ent            i386
+    mount                                   2.11y          31.18             i386
+    net-snmp                                5.0.9          2.30E.20          i386
+    net-snmp-devel                          5.0.9          2.30E.20          i386
+    net-snmp-libs                           5.0.9          2.30E.20          i386
+    netdump                                 0.7.16         1.1               i386
+    nfs-utils                               1.0.6          44EL              i386
+    nptl-devel                              2.3.2          95.44             i686
+    nscd                                    2.3.2          95.44             i386
+    ntsysv                                  1.3.13.4       0.3               i386
+    openssh                                 3.6.1p2        33.30.9           i386
+    openssh-clients                         3.6.1p2        33.30.9           i386
+    openssh-server                          3.6.1p2        33.30.9           i386
+    pam                                     0.75           69                i386
+    pam-devel                               0.75           69                i386
+    pciutils                                2.1.10         7.EL3.1           i386
+    pciutils-devel                          2.1.10         7.EL3.1           i386
+    perl                                    5.8.0          94.EL3            i386
+    perl-CGI                                2.89           94.EL3            i386
+    perl-CPAN                               1.61           94.EL3            i386
+    perl-DBD-MySQL                          2.1021         4.EL3             i386
+    perl-DB_File                            1.806          94.EL3            i386
+    popt                                    1.8.2          30_nonptl         i386
+    procps                                  2.0.17         13.10             i386
+    psmisc                                  21.3           2.1               i386
+    python                                  2.2.3          6.3               i386
+    python-devel                            2.2.3          6.3               i386
+    quota                                   3.10           8                 i386
     redhat-config-users                     1.1.18         8                 noarch
-    redhat-release                          3ES            13.8.3            i386  
+    redhat-release                          3ES            13.8.3            i386
     redhat-rpm-config                       8.0.28         4                 noarch
     rhnlib                                  1.8.7          3                 noarch
-    rpm                                     4.2.3          30_nonptl         i386  
-    rpm-build                               4.2.3          30_nonptl         i386  
-    rpm-devel                               4.2.3          30_nonptl         i386  
-    rpm-libs                                4.2.3          30_nonptl         i386  
-    rpm-python                              4.2.3          30_nonptl         i386  
-    rpmdb-redhat                            3              0.20060712        i386  
-    sed                                     4.0.7          8.EL3             i386  
-    strace                                  4.5.14         0.EL3.1           i386  
+    rpm                                     4.2.3          30_nonptl         i386
+    rpm-build                               4.2.3          30_nonptl         i386
+    rpm-devel                               4.2.3          30_nonptl         i386
+    rpm-libs                                4.2.3          30_nonptl         i386
+    rpm-python                              4.2.3          30_nonptl         i386
+    rpmdb-redhat                            3              0.20060712        i386
+    sed                                     4.0.7          8.EL3             i386
+    strace                                  4.5.14         0.EL3.1           i386
     sysreport                               1.3.7.2        15                noarch
-    tcl                                     8.3.5          92.7              i386  
-    tcsh                                    6.12           13.EL3            i386  
-    tk                                      8.3.5          92.7              i386  
-    up2date                                 4.4.69         20                i386  
-    util-linux                              2.11y          31.18             i386  
-    vixie-cron                              4.1            11.EL3            i386  
-    vsftpd                                  1.2.1          3E.6              i386  
+    tcl                                     8.3.5          92.7              i386
+    tcsh                                    6.12           13.EL3            i386
+    tk                                      8.3.5          92.7              i386
+    up2date                                 4.4.69         20                i386
+    util-linux                              2.11y          31.18             i386
+    vixie-cron                              4.1            11.EL3            i386
+    vsftpd                                  1.2.1          3E.6              i386
     xinitrc                                 3.32.2         1                 noarch
-    xterm                                   179            6.EL3             i386  
+    xterm                                   179            6.EL3             i386
 
     The following Packages were marked to be skipped by your configuration:
 
@@ -165,7 +165,7 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
     $ uname -a
     Linux s69819.wincent.com 2.4.21-40.EL #1 Thu Feb 2 22:22:40 EST 2006 i686 athlon i386 GNU/Linux
-    $ cat /etc/redhat-release 
+    $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 7)
     $ sudo up2date --nox -u
 
@@ -180,15 +180,15 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
     Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
-    up2date                                 4.4.69         20                i386  
+    up2date                                 4.4.69         20                i386
 
 
     Testing package set / solving RPM inter-dependencies...
     ########################################
-    up2date-4.4.69-20.i386.rpm: ########################## Done.                   
-    rhnlib-1.8.7-3.noarch.rpm:  ########################## Done.                   
+    up2date-4.4.69-20.i386.rpm: ########################## Done.
+    rhnlib-1.8.7-3.noarch.rpm:  ########################## Done.
     New Up2date available
     Preparing              ########################################### [100%]
 
@@ -200,11 +200,11 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
     Name                                    Version        Release
     --------------------------------------------------------------
-    rhnlib                                  1.8.7          3                   
+    rhnlib                                  1.8.7          3
 
     Restarting up2date
     Restarting up2date
-    $ 
+    $
     Fetching Obsoletes list for channel: rhel-i386-es-3...
 
     Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
@@ -212,274 +212,274 @@ Here are notes I made during an extensive update (including a kernel update) to 
     Fetching rpm headers...
     ########################################
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
-    XFree86                                 4.3.0          110.EL            i386  
-    XFree86-100dpi-fonts                    4.3.0          110.EL            i386  
-    XFree86-75dpi-fonts                     4.3.0          110.EL            i386  
-    XFree86-Mesa-libGL                      4.3.0          110.EL            i386  
-    XFree86-Mesa-libGLU                     4.3.0          110.EL            i386  
-    XFree86-Xnest                           4.3.0          110.EL            i386  
-    XFree86-Xvfb                            4.3.0          110.EL            i386  
-    XFree86-base-fonts                      4.3.0          110.EL            i386  
-    XFree86-font-utils                      4.3.0          110.EL            i386  
-    XFree86-libs                            4.3.0          110.EL            i386  
-    XFree86-libs-data                       4.3.0          110.EL            i386  
-    XFree86-tools                           4.3.0          110.EL            i386  
-    XFree86-twm                             4.3.0          110.EL            i386  
-    XFree86-xauth                           4.3.0          110.EL            i386  
-    XFree86-xdm                             4.3.0          110.EL            i386  
-    XFree86-xfs                             4.3.0          110.EL            i386  
-    aspell                                  0.33.7.1       25.3.rhel3        i386  
-    aspell-config                           0.33.7.1       25.3.rhel3        i386  
-    aspell-devel                            0.33.7.1       25.3.rhel3        i386  
-    authconfig                              4.3.7          4                 i386  
-    autofs                                  4.1.3          186               i386  
-    bash                                    2.05b          41.7              i386  
-    bind                                    9.2.4          14_EL3            i386  
-    bind-libs                               9.2.4          14_EL3            i386  
-    bind-utils                              9.2.4          14_EL3            i386  
-    chkconfig                               1.3.13.4       0.3               i386  
-    comps                                   3ES            0.20060712        i386  
-    coreutils                               4.5.3          28.1              i386  
-    cpp                                     3.2.3          56                i386  
-    crash                                   4.0            2.29              i386  
-    curl                                    7.10.6         8.rhel3           i386  
-    curl-devel                              7.10.6         8.rhel3           i386  
-    e2fsprogs                               1.32           15.3              i386  
-    e2fsprogs-devel                         1.32           15.3              i386  
-    elfutils                                0.94.1         2                 i386  
-    elfutils-devel                          0.94.1         2                 i386  
-    elfutils-libelf                         0.94.1         2                 i386  
-    elfutils-libelf-devel                   0.94.1         2                 i386  
-    expect                                  5.38.0         92.7              i386  
-    file                                    3.39           9.EL3.4           i386  
-    ftp                                     0.17           17.2              i386  
-    gcc                                     3.2.3          56                i386  
-    gcc-c++                                 3.2.3          56                i386  
-    gcc-java                                3.2.3          56                i386  
-    gcc-objc                                3.2.3          56                i386  
-    gdb                                     6.3.0.0        1.132.EL3         i386  
-    glibc                                   2.3.2          95.44             i686  
-    glibc-common                            2.3.2          95.44             i386  
-    glibc-devel                             2.3.2          95.44             i386  
-    glibc-headers                           2.3.2          95.44             i386  
-    glibc-profile                           2.3.2          95.44             i386  
-    glibc-utils                             2.3.2          95.44             i386  
-    grep                                    2.5.1          24.6              i386  
-    groff                                   1.18.1         28.EL3.3          i386  
-    httpd                                   2.0.46         57.ent            i386  
-    httpd-devel                             2.0.46         57.ent            i386  
+    XFree86                                 4.3.0          110.EL            i386
+    XFree86-100dpi-fonts                    4.3.0          110.EL            i386
+    XFree86-75dpi-fonts                     4.3.0          110.EL            i386
+    XFree86-Mesa-libGL                      4.3.0          110.EL            i386
+    XFree86-Mesa-libGLU                     4.3.0          110.EL            i386
+    XFree86-Xnest                           4.3.0          110.EL            i386
+    XFree86-Xvfb                            4.3.0          110.EL            i386
+    XFree86-base-fonts                      4.3.0          110.EL            i386
+    XFree86-font-utils                      4.3.0          110.EL            i386
+    XFree86-libs                            4.3.0          110.EL            i386
+    XFree86-libs-data                       4.3.0          110.EL            i386
+    XFree86-tools                           4.3.0          110.EL            i386
+    XFree86-twm                             4.3.0          110.EL            i386
+    XFree86-xauth                           4.3.0          110.EL            i386
+    XFree86-xdm                             4.3.0          110.EL            i386
+    XFree86-xfs                             4.3.0          110.EL            i386
+    aspell                                  0.33.7.1       25.3.rhel3        i386
+    aspell-config                           0.33.7.1       25.3.rhel3        i386
+    aspell-devel                            0.33.7.1       25.3.rhel3        i386
+    authconfig                              4.3.7          4                 i386
+    autofs                                  4.1.3          186               i386
+    bash                                    2.05b          41.7              i386
+    bind                                    9.2.4          14_EL3            i386
+    bind-libs                               9.2.4          14_EL3            i386
+    bind-utils                              9.2.4          14_EL3            i386
+    chkconfig                               1.3.13.4       0.3               i386
+    comps                                   3ES            0.20060712        i386
+    coreutils                               4.5.3          28.1              i386
+    cpp                                     3.2.3          56                i386
+    crash                                   4.0            2.29              i386
+    curl                                    7.10.6         8.rhel3           i386
+    curl-devel                              7.10.6         8.rhel3           i386
+    e2fsprogs                               1.32           15.3              i386
+    e2fsprogs-devel                         1.32           15.3              i386
+    elfutils                                0.94.1         2                 i386
+    elfutils-devel                          0.94.1         2                 i386
+    elfutils-libelf                         0.94.1         2                 i386
+    elfutils-libelf-devel                   0.94.1         2                 i386
+    expect                                  5.38.0         92.7              i386
+    file                                    3.39           9.EL3.4           i386
+    ftp                                     0.17           17.2              i386
+    gcc                                     3.2.3          56                i386
+    gcc-c++                                 3.2.3          56                i386
+    gcc-java                                3.2.3          56                i386
+    gcc-objc                                3.2.3          56                i386
+    gdb                                     6.3.0.0        1.132.EL3         i386
+    glibc                                   2.3.2          95.44             i686
+    glibc-common                            2.3.2          95.44             i386
+    glibc-devel                             2.3.2          95.44             i386
+    glibc-headers                           2.3.2          95.44             i386
+    glibc-profile                           2.3.2          95.44             i386
+    glibc-utils                             2.3.2          95.44             i386
+    grep                                    2.5.1          24.6              i386
+    groff                                   1.18.1         28.EL3.3          i386
+    httpd                                   2.0.46         57.ent            i386
+    httpd-devel                             2.0.46         57.ent            i386
     hwdata                                  0.101.27       1                 noarch
-    initscripts                             7.31.31.EL     1                 i386  
-    ipsec-tools                             0.2.5          0.7.rhel3.4       i386  
-    iputils                                 20020927       11.30.5           i386  
-    kbd                                     1.08           10.6              i386  
-    krb5-devel                              1.2.7          56                i386  
-    krb5-libs                               1.2.7          56                i386  
-    krb5-workstation                        1.2.7          56                i386  
-    kudzu                                   1.1.22.15      1                 i386  
-    kudzu-devel                             1.1.22.15      1                 i386  
-    lftp                                    2.6.3          6                 i386  
-    libaio                                  0.3.96         7                 i386  
-    libaio-devel                            0.3.96         7                 i386  
-    libgcc                                  3.2.3          56                i386  
-    libgcj                                  3.2.3          56                i386  
-    libgcj-devel                            3.2.3          56                i386  
-    libobjc                                 3.2.3          56                i386  
-    libstdc++                               3.2.3          56                i386  
-    libstdc++-devel                         3.2.3          56                i386  
-    lockdev                                 1.0.1          5.1               i386  
-    lockdev-devel                           1.0.1          5.1               i386  
-    logrotate                               3.6.9          2.RHEL3           i386  
+    initscripts                             7.31.31.EL     1                 i386
+    ipsec-tools                             0.2.5          0.7.rhel3.4       i386
+    iputils                                 20020927       11.30.5           i386
+    kbd                                     1.08           10.6              i386
+    krb5-devel                              1.2.7          56                i386
+    krb5-libs                               1.2.7          56                i386
+    krb5-workstation                        1.2.7          56                i386
+    kudzu                                   1.1.22.15      1                 i386
+    kudzu-devel                             1.1.22.15      1                 i386
+    lftp                                    2.6.3          6                 i386
+    libaio                                  0.3.96         7                 i386
+    libaio-devel                            0.3.96         7                 i386
+    libgcc                                  3.2.3          56                i386
+    libgcj                                  3.2.3          56                i386
+    libgcj-devel                            3.2.3          56                i386
+    libobjc                                 3.2.3          56                i386
+    libstdc++                               3.2.3          56                i386
+    libstdc++-devel                         3.2.3          56                i386
+    lockdev                                 1.0.1          5.1               i386
+    lockdev-devel                           1.0.1          5.1               i386
+    logrotate                               3.6.9          2.RHEL3           i386
     logwatch                                4.3.2          3.rhel3           noarch
-    losetup                                 2.11y          31.18             i386  
-    ltrace                                  0.4            1.7.EL3           i386  
+    losetup                                 2.11y          31.18             i386
+    ltrace                                  0.4            1.7.EL3           i386
     man-pages                               1.60           5.rhel3           noarch
-    mdadm                                   1.5.0          9.1               i386  
-    mod_ssl                                 2.0.46         57.ent            i386  
-    mount                                   2.11y          31.18             i386  
-    net-snmp                                5.0.9          2.30E.20          i386  
-    net-snmp-devel                          5.0.9          2.30E.20          i386  
-    net-snmp-libs                           5.0.9          2.30E.20          i386  
-    netdump                                 0.7.16         1.1               i386  
-    nfs-utils                               1.0.6          44EL              i386  
-    nptl-devel                              2.3.2          95.44             i686  
-    nscd                                    2.3.2          95.44             i386  
-    ntsysv                                  1.3.13.4       0.3               i386  
-    openssh                                 3.6.1p2        33.30.9           i386  
-    openssh-clients                         3.6.1p2        33.30.9           i386  
-    openssh-server                          3.6.1p2        33.30.9           i386  
-    pam                                     0.75           69                i386  
-    pam-devel                               0.75           69                i386  
-    pciutils                                2.1.10         7.EL3.1           i386  
-    pciutils-devel                          2.1.10         7.EL3.1           i386  
-    perl                                    5.8.0          94.EL3            i386  
-    perl-CGI                                2.89           94.EL3            i386  
-    perl-CPAN                               1.61           94.EL3            i386  
-    perl-DBD-MySQL                          2.1021         4.EL3             i386  
-    perl-DB_File                            1.806          94.EL3            i386  
-    popt                                    1.8.2          30_nonptl         i386  
-    procps                                  2.0.17         13.10             i386  
-    psmisc                                  21.3           2.1               i386  
-    python                                  2.2.3          6.3               i386  
-    python-devel                            2.2.3          6.3               i386  
-    quota                                   3.10           8                 i386  
+    mdadm                                   1.5.0          9.1               i386
+    mod_ssl                                 2.0.46         57.ent            i386
+    mount                                   2.11y          31.18             i386
+    net-snmp                                5.0.9          2.30E.20          i386
+    net-snmp-devel                          5.0.9          2.30E.20          i386
+    net-snmp-libs                           5.0.9          2.30E.20          i386
+    netdump                                 0.7.16         1.1               i386
+    nfs-utils                               1.0.6          44EL              i386
+    nptl-devel                              2.3.2          95.44             i686
+    nscd                                    2.3.2          95.44             i386
+    ntsysv                                  1.3.13.4       0.3               i386
+    openssh                                 3.6.1p2        33.30.9           i386
+    openssh-clients                         3.6.1p2        33.30.9           i386
+    openssh-server                          3.6.1p2        33.30.9           i386
+    pam                                     0.75           69                i386
+    pam-devel                               0.75           69                i386
+    pciutils                                2.1.10         7.EL3.1           i386
+    pciutils-devel                          2.1.10         7.EL3.1           i386
+    perl                                    5.8.0          94.EL3            i386
+    perl-CGI                                2.89           94.EL3            i386
+    perl-CPAN                               1.61           94.EL3            i386
+    perl-DBD-MySQL                          2.1021         4.EL3             i386
+    perl-DB_File                            1.806          94.EL3            i386
+    popt                                    1.8.2          30_nonptl         i386
+    procps                                  2.0.17         13.10             i386
+    psmisc                                  21.3           2.1               i386
+    python                                  2.2.3          6.3               i386
+    python-devel                            2.2.3          6.3               i386
+    quota                                   3.10           8                 i386
     redhat-config-users                     1.1.18         8                 noarch
-    redhat-release                          3ES            13.8.3            i386  
+    redhat-release                          3ES            13.8.3            i386
     redhat-rpm-config                       8.0.28         4                 noarch
-    rpm                                     4.2.3          30_nonptl         i386  
-    rpm-build                               4.2.3          30_nonptl         i386  
-    rpm-devel                               4.2.3          30_nonptl         i386  
-    rpm-libs                                4.2.3          30_nonptl         i386  
-    rpm-python                              4.2.3          30_nonptl         i386  
-    rpmdb-redhat                            3              0.20060712        i386  
-    sed                                     4.0.7          8.EL3             i386  
-    strace                                  4.5.14         0.EL3.1           i386  
+    rpm                                     4.2.3          30_nonptl         i386
+    rpm-build                               4.2.3          30_nonptl         i386
+    rpm-devel                               4.2.3          30_nonptl         i386
+    rpm-libs                                4.2.3          30_nonptl         i386
+    rpm-python                              4.2.3          30_nonptl         i386
+    rpmdb-redhat                            3              0.20060712        i386
+    sed                                     4.0.7          8.EL3             i386
+    strace                                  4.5.14         0.EL3.1           i386
     sysreport                               1.3.7.2        15                noarch
-    tcl                                     8.3.5          92.7              i386  
-    tcsh                                    6.12           13.EL3            i386  
-    tk                                      8.3.5          92.7              i386  
-    util-linux                              2.11y          31.18             i386  
-    vixie-cron                              4.1            11.EL3            i386  
-    vsftpd                                  1.2.1          3E.6              i386  
+    tcl                                     8.3.5          92.7              i386
+    tcsh                                    6.12           13.EL3            i386
+    tk                                      8.3.5          92.7              i386
+    util-linux                              2.11y          31.18             i386
+    vixie-cron                              4.1            11.EL3            i386
+    vsftpd                                  1.2.1          3E.6              i386
     xinitrc                                 3.32.2         1                 noarch
-    xterm                                   179            6.EL3             i386  
+    xterm                                   179            6.EL3             i386
 
 
     Testing package set / solving RPM inter-dependencies...
     ########################################
-    XFree86-4.3.0-110.EL.i386.r ########################## Done.                   
-    XFree86-100dpi-fonts-4.3.0- ########################## Done.                   
-    XFree86-75dpi-fonts-4.3.0-1 ########################## Done.                   
-    XFree86-Mesa-libGL-4.3.0-11 ########################## Done.                   
-    XFree86-Mesa-libGLU-4.3.0-1 ########################## Done.                   
-    XFree86-Xnest-4.3.0-110.EL. ########################## Done.                   
-    XFree86-Xvfb-4.3.0-110.EL.i ########################## Done.                   
-    XFree86-base-fonts-4.3.0-11 ########################## Done.                   
-    XFree86-font-utils-4.3.0-11 ########################## Done.                   
-    XFree86-libs-4.3.0-110.EL.i ########################## Done.                   
-    XFree86-libs-data-4.3.0-110 ########################## Done.                   
-    XFree86-tools-4.3.0-110.EL. ########################## Done.                   
-    XFree86-twm-4.3.0-110.EL.i3 ########################## Done.                   
-    XFree86-xauth-4.3.0-110.EL. ########################## Done.                   
-    XFree86-xdm-4.3.0-110.EL.i3 ########################## Done.                   
-    XFree86-xfs-4.3.0-110.EL.i3 ########################## Done.                   
-    aspell-0.33.7.1-25.3.rhel3. ########################## Done.                   
-    aspell-config-0.33.7.1-25.3 ########################## Done.                   
-    aspell-devel-0.33.7.1-25.3. ########################## Done.                   
-    authconfig-4.3.7-4.i386.rpm ########################## Done.                   
-    autofs-4.1.3-186.i386.rpm:  ########################## Done.                   
-    bash-2.05b-41.7.i386.rpm:   ########################## Done.                   
-    bind-9.2.4-14_EL3.i386.rpm: ########################## Done.                   
-    bind-libs-9.2.4-14_EL3.i386 ########################## Done.                   
-    bind-utils-9.2.4-14_EL3.i38 ########################## Done.                   
-    chkconfig-1.3.13.4-0.3.i386 ########################## Done.                   
-    comps-3ES-0.20060712.i386.r ########################## Done.                   
-    coreutils-4.5.3-28.1.i386.r ########################## Done.                   
-    cpp-3.2.3-56.i386.rpm:      ########################## Done.                   
-    crash-4.0-2.29.i386.rpm:    ########################## Done.                   
-    curl-7.10.6-8.rhel3.i386.rp ########################## Done.                   
-    curl-devel-7.10.6-8.rhel3.i ########################## Done.                   
-    e2fsprogs-1.32-15.3.i386.rp ########################## Done.                   
-    e2fsprogs-devel-1.32-15.3.i ########################## Done.                   
-    elfutils-0.94.1-2.i386.rpm: ########################## Done.                   
-    elfutils-devel-0.94.1-2.i38 ########################## Done.                   
-    elfutils-libelf-0.94.1-2.i3 ########################## Done.                   
-    elfutils-libelf-devel-0.94. ########################## Done.                   
-    expect-5.38.0-92.7.i386.rpm ########################## Done.                   
-    file-3.39-9.EL3.4.i386.rpm: ########################## Done.                   
-    ftp-0.17-17.2.i386.rpm:     ########################## Done.                   
-    gcc-3.2.3-56.i386.rpm:      ########################## Done.                   
-    gcc-c++-3.2.3-56.i386.rpm:  ########################## Done.                   
-    gcc-java-3.2.3-56.i386.rpm: ########################## Done.                   
-    gcc-objc-3.2.3-56.i386.rpm: ########################## Done.                   
-    gdb-6.3.0.0-1.132.EL3.i386. ########################## Done.                   
-    glibc-2.3.2-95.44.i686.rpm: ########################## Done.                   
-    glibc-common-2.3.2-95.44.i3 ########################## Done.                   
-    glibc-devel-2.3.2-95.44.i38 ########################## Done.                   
-    glibc-headers-2.3.2-95.44.i ########################## Done.                   
-    glibc-profile-2.3.2-95.44.i ########################## Done.                   
-    glibc-utils-2.3.2-95.44.i38 ########################## Done.                   
-    grep-2.5.1-24.6.i386.rpm:   ########################## Done.                   
-    groff-1.18.1-28.EL3.3.i386. ########################## Done.                   
-    httpd-2.0.46-57.ent.i386.rp ########################## Done.                   
-    httpd-devel-2.0.46-57.ent.i ########################## Done.                   
-    hwdata-0.101.27-1.noarch.rp ########################## Done.                   
-    initscripts-7.31.31.EL-1.i3 ########################## Done.                   
-    ipsec-tools-0.2.5-0.7.rhel3 ########################## Done.                   
-    iputils-20020927-11.30.5.i3 ########################## Done.                   
-    kbd-1.08-10.6.i386.rpm:     ########################## Done.                   
-    krb5-devel-1.2.7-56.i386.rp ########################## Done.                   
-    krb5-libs-1.2.7-56.i386.rpm ########################## Done.                   
-    krb5-workstation-1.2.7-56.i ########################## Done.                   
-    kudzu-1.1.22.15-1.i386.rpm: ########################## Done.                   
-    kudzu-devel-1.1.22.15-1.i38 ########################## Done.                   
-    lftp-2.6.3-6.i386.rpm:      ########################## Done.                   
-    libaio-0.3.96-7.i386.rpm:   ########################## Done.                   
-    libaio-devel-0.3.96-7.i386. ########################## Done.                   
-    libgcc-3.2.3-56.i386.rpm:   ########################## Done.                   
-    libgcj-3.2.3-56.i386.rpm:   ########################## Done.                   
-    libgcj-devel-3.2.3-56.i386. ########################## Done.                   
-    libobjc-3.2.3-56.i386.rpm:  ########################## Done.                   
-    libstdc++-3.2.3-56.i386.rpm ########################## Done.                   
-    libstdc++-devel-3.2.3-56.i3 ########################## Done.                   
-    lockdev-1.0.1-5.1.i386.rpm: ########################## Done.                   
-    lockdev-devel-1.0.1-5.1.i38 ########################## Done.                   
-    logrotate-3.6.9-2.RHEL3.i38 ########################## Done.                   
-    logwatch-4.3.2-3.rhel3.noar ########################## Done.                   
-    losetup-2.11y-31.18.i386.rp ########################## Done.                   
-    ltrace-0.4-1.7.EL3.i386.rpm ########################## Done.                   
-    man-pages-1.60-5.rhel3.noar ########################## Done.                   
-    mdadm-1.5.0-9.1.i386.rpm:   ########################## Done.                   
-    mod_ssl-2.0.46-57.ent.i386. ########################## Done.                   
-    mount-2.11y-31.18.i386.rpm: ########################## Done.                   
-    net-snmp-5.0.9-2.30E.20.i38 ########################## Done.                   
-    net-snmp-devel-5.0.9-2.30E. ########################## Done.                   
-    net-snmp-libs-5.0.9-2.30E.2 ########################## Done.                   
-    netdump-0.7.16-1.1.i386.rpm ########################## Done.                   
-    nfs-utils-1.0.6-44EL.i386.r ########################## Done.                   
-    nptl-devel-2.3.2-95.44.i686 ########################## Done.                   
-    nscd-2.3.2-95.44.i386.rpm:  ########################## Done.                   
-    ntsysv-1.3.13.4-0.3.i386.rp ########################## Done.                   
-    openssh-3.6.1p2-33.30.9.i38 ########################## Done.                   
-    openssh-clients-3.6.1p2-33. ########################## Done.                   
-    openssh-server-3.6.1p2-33.3 ########################## Done.                   
-    pam-0.75-69.i386.rpm:       ########################## Done.                   
-    pam-devel-0.75-69.i386.rpm: ########################## Done.                   
-    pciutils-2.1.10-7.EL3.1.i38 ########################## Done.                   
-    pciutils-devel-2.1.10-7.EL3 ########################## Done.                   
-    perl-5.8.0-94.EL3.i386.rpm: ########################## Done.                   
-    perl-CGI-2.89-94.EL3.i386.r ########################## Done.                   
-    perl-CPAN-1.61-94.EL3.i386. ########################## Done.                   
-    perl-DBD-MySQL-2.1021-4.EL3 ########################## Done.                   
-    perl-DB_File-1.806-94.EL3.i ########################## Done.                   
-    popt-1.8.2-30_nonptl.i386.r ########################## Done.                   
-    procps-2.0.17-13.10.i386.rp ########################## Done.                   
-    psmisc-21.3-2.1.i386.rpm:   ########################## Done.                   
-    python-2.2.3-6.3.i386.rpm:  ########################## Done.                   
-    python-devel-2.2.3-6.3.i386 ########################## Done.                   
-    quota-3.10-8.i386.rpm:      ########################## Done.                   
-    redhat-config-users-1.1.18- ########################## Done.                   
-    redhat-release-3ES-13.8.3.i ########################## Done.                   
-    redhat-rpm-config-8.0.28-4. ########################## Done.                   
-    rpm-4.2.3-30_nonptl.i386.rp ########################## Done.                   
-    rpm-build-4.2.3-30_nonptl.i ########################## Done.                   
-    rpm-devel-4.2.3-30_nonptl.i ########################## Done.                   
-    rpm-libs-4.2.3-30_nonptl.i3 ########################## Done.                   
-    rpm-python-4.2.3-30_nonptl. ########################## Done.                   
-    rpmdb-redhat-3-0.20060712.i ########################## Done.                   
-    sed-4.0.7-8.EL3.i386.rpm:   ########################## Done.                   
-    strace-4.5.14-0.EL3.1.i386. ########################## Done.                   
-    sysreport-1.3.7.2-15.noarch ########################## Done.                   
-    tcl-8.3.5-92.7.i386.rpm:    ########################## Done.                   
-    tcsh-6.12-13.EL3.i386.rpm:  ########################## Done.                   
-    tk-8.3.5-92.7.i386.rpm:     ########################## Done.                   
-    util-linux-2.11y-31.18.i386 ########################## Done.                   
-    vixie-cron-4.1-11.EL3.i386. ########################## Done.                   
-    vsftpd-1.2.1-3E.6.i386.rpm: ########################## Done.                   
-    xinitrc-3.32.2-1.noarch.rpm ########################## Done.                   
-    xterm-179-6.EL3.i386.rpm:   ########################## Done.                   
+    XFree86-4.3.0-110.EL.i386.r ########################## Done.
+    XFree86-100dpi-fonts-4.3.0- ########################## Done.
+    XFree86-75dpi-fonts-4.3.0-1 ########################## Done.
+    XFree86-Mesa-libGL-4.3.0-11 ########################## Done.
+    XFree86-Mesa-libGLU-4.3.0-1 ########################## Done.
+    XFree86-Xnest-4.3.0-110.EL. ########################## Done.
+    XFree86-Xvfb-4.3.0-110.EL.i ########################## Done.
+    XFree86-base-fonts-4.3.0-11 ########################## Done.
+    XFree86-font-utils-4.3.0-11 ########################## Done.
+    XFree86-libs-4.3.0-110.EL.i ########################## Done.
+    XFree86-libs-data-4.3.0-110 ########################## Done.
+    XFree86-tools-4.3.0-110.EL. ########################## Done.
+    XFree86-twm-4.3.0-110.EL.i3 ########################## Done.
+    XFree86-xauth-4.3.0-110.EL. ########################## Done.
+    XFree86-xdm-4.3.0-110.EL.i3 ########################## Done.
+    XFree86-xfs-4.3.0-110.EL.i3 ########################## Done.
+    aspell-0.33.7.1-25.3.rhel3. ########################## Done.
+    aspell-config-0.33.7.1-25.3 ########################## Done.
+    aspell-devel-0.33.7.1-25.3. ########################## Done.
+    authconfig-4.3.7-4.i386.rpm ########################## Done.
+    autofs-4.1.3-186.i386.rpm:  ########################## Done.
+    bash-2.05b-41.7.i386.rpm:   ########################## Done.
+    bind-9.2.4-14_EL3.i386.rpm: ########################## Done.
+    bind-libs-9.2.4-14_EL3.i386 ########################## Done.
+    bind-utils-9.2.4-14_EL3.i38 ########################## Done.
+    chkconfig-1.3.13.4-0.3.i386 ########################## Done.
+    comps-3ES-0.20060712.i386.r ########################## Done.
+    coreutils-4.5.3-28.1.i386.r ########################## Done.
+    cpp-3.2.3-56.i386.rpm:      ########################## Done.
+    crash-4.0-2.29.i386.rpm:    ########################## Done.
+    curl-7.10.6-8.rhel3.i386.rp ########################## Done.
+    curl-devel-7.10.6-8.rhel3.i ########################## Done.
+    e2fsprogs-1.32-15.3.i386.rp ########################## Done.
+    e2fsprogs-devel-1.32-15.3.i ########################## Done.
+    elfutils-0.94.1-2.i386.rpm: ########################## Done.
+    elfutils-devel-0.94.1-2.i38 ########################## Done.
+    elfutils-libelf-0.94.1-2.i3 ########################## Done.
+    elfutils-libelf-devel-0.94. ########################## Done.
+    expect-5.38.0-92.7.i386.rpm ########################## Done.
+    file-3.39-9.EL3.4.i386.rpm: ########################## Done.
+    ftp-0.17-17.2.i386.rpm:     ########################## Done.
+    gcc-3.2.3-56.i386.rpm:      ########################## Done.
+    gcc-c++-3.2.3-56.i386.rpm:  ########################## Done.
+    gcc-java-3.2.3-56.i386.rpm: ########################## Done.
+    gcc-objc-3.2.3-56.i386.rpm: ########################## Done.
+    gdb-6.3.0.0-1.132.EL3.i386. ########################## Done.
+    glibc-2.3.2-95.44.i686.rpm: ########################## Done.
+    glibc-common-2.3.2-95.44.i3 ########################## Done.
+    glibc-devel-2.3.2-95.44.i38 ########################## Done.
+    glibc-headers-2.3.2-95.44.i ########################## Done.
+    glibc-profile-2.3.2-95.44.i ########################## Done.
+    glibc-utils-2.3.2-95.44.i38 ########################## Done.
+    grep-2.5.1-24.6.i386.rpm:   ########################## Done.
+    groff-1.18.1-28.EL3.3.i386. ########################## Done.
+    httpd-2.0.46-57.ent.i386.rp ########################## Done.
+    httpd-devel-2.0.46-57.ent.i ########################## Done.
+    hwdata-0.101.27-1.noarch.rp ########################## Done.
+    initscripts-7.31.31.EL-1.i3 ########################## Done.
+    ipsec-tools-0.2.5-0.7.rhel3 ########################## Done.
+    iputils-20020927-11.30.5.i3 ########################## Done.
+    kbd-1.08-10.6.i386.rpm:     ########################## Done.
+    krb5-devel-1.2.7-56.i386.rp ########################## Done.
+    krb5-libs-1.2.7-56.i386.rpm ########################## Done.
+    krb5-workstation-1.2.7-56.i ########################## Done.
+    kudzu-1.1.22.15-1.i386.rpm: ########################## Done.
+    kudzu-devel-1.1.22.15-1.i38 ########################## Done.
+    lftp-2.6.3-6.i386.rpm:      ########################## Done.
+    libaio-0.3.96-7.i386.rpm:   ########################## Done.
+    libaio-devel-0.3.96-7.i386. ########################## Done.
+    libgcc-3.2.3-56.i386.rpm:   ########################## Done.
+    libgcj-3.2.3-56.i386.rpm:   ########################## Done.
+    libgcj-devel-3.2.3-56.i386. ########################## Done.
+    libobjc-3.2.3-56.i386.rpm:  ########################## Done.
+    libstdc++-3.2.3-56.i386.rpm ########################## Done.
+    libstdc++-devel-3.2.3-56.i3 ########################## Done.
+    lockdev-1.0.1-5.1.i386.rpm: ########################## Done.
+    lockdev-devel-1.0.1-5.1.i38 ########################## Done.
+    logrotate-3.6.9-2.RHEL3.i38 ########################## Done.
+    logwatch-4.3.2-3.rhel3.noar ########################## Done.
+    losetup-2.11y-31.18.i386.rp ########################## Done.
+    ltrace-0.4-1.7.EL3.i386.rpm ########################## Done.
+    man-pages-1.60-5.rhel3.noar ########################## Done.
+    mdadm-1.5.0-9.1.i386.rpm:   ########################## Done.
+    mod_ssl-2.0.46-57.ent.i386. ########################## Done.
+    mount-2.11y-31.18.i386.rpm: ########################## Done.
+    net-snmp-5.0.9-2.30E.20.i38 ########################## Done.
+    net-snmp-devel-5.0.9-2.30E. ########################## Done.
+    net-snmp-libs-5.0.9-2.30E.2 ########################## Done.
+    netdump-0.7.16-1.1.i386.rpm ########################## Done.
+    nfs-utils-1.0.6-44EL.i386.r ########################## Done.
+    nptl-devel-2.3.2-95.44.i686 ########################## Done.
+    nscd-2.3.2-95.44.i386.rpm:  ########################## Done.
+    ntsysv-1.3.13.4-0.3.i386.rp ########################## Done.
+    openssh-3.6.1p2-33.30.9.i38 ########################## Done.
+    openssh-clients-3.6.1p2-33. ########################## Done.
+    openssh-server-3.6.1p2-33.3 ########################## Done.
+    pam-0.75-69.i386.rpm:       ########################## Done.
+    pam-devel-0.75-69.i386.rpm: ########################## Done.
+    pciutils-2.1.10-7.EL3.1.i38 ########################## Done.
+    pciutils-devel-2.1.10-7.EL3 ########################## Done.
+    perl-5.8.0-94.EL3.i386.rpm: ########################## Done.
+    perl-CGI-2.89-94.EL3.i386.r ########################## Done.
+    perl-CPAN-1.61-94.EL3.i386. ########################## Done.
+    perl-DBD-MySQL-2.1021-4.EL3 ########################## Done.
+    perl-DB_File-1.806-94.EL3.i ########################## Done.
+    popt-1.8.2-30_nonptl.i386.r ########################## Done.
+    procps-2.0.17-13.10.i386.rp ########################## Done.
+    psmisc-21.3-2.1.i386.rpm:   ########################## Done.
+    python-2.2.3-6.3.i386.rpm:  ########################## Done.
+    python-devel-2.2.3-6.3.i386 ########################## Done.
+    quota-3.10-8.i386.rpm:      ########################## Done.
+    redhat-config-users-1.1.18- ########################## Done.
+    redhat-release-3ES-13.8.3.i ########################## Done.
+    redhat-rpm-config-8.0.28-4. ########################## Done.
+    rpm-4.2.3-30_nonptl.i386.rp ########################## Done.
+    rpm-build-4.2.3-30_nonptl.i ########################## Done.
+    rpm-devel-4.2.3-30_nonptl.i ########################## Done.
+    rpm-libs-4.2.3-30_nonptl.i3 ########################## Done.
+    rpm-python-4.2.3-30_nonptl. ########################## Done.
+    rpmdb-redhat-3-0.20060712.i ########################## Done.
+    sed-4.0.7-8.EL3.i386.rpm:   ########################## Done.
+    strace-4.5.14-0.EL3.1.i386. ########################## Done.
+    sysreport-1.3.7.2-15.noarch ########################## Done.
+    tcl-8.3.5-92.7.i386.rpm:    ########################## Done.
+    tcsh-6.12-13.EL3.i386.rpm:  ########################## Done.
+    tk-8.3.5-92.7.i386.rpm:     ########################## Done.
+    util-linux-2.11y-31.18.i386 ########################## Done.
+    vixie-cron-4.1-11.EL3.i386. ########################## Done.
+    vsftpd-1.2.1-3E.6.i386.rpm: ########################## Done.
+    xinitrc-3.32.2-1.noarch.rpm ########################## Done.
+    xterm-179-6.EL3.i386.rpm:   ########################## Done.
     Preparing              ########################################### [100%]
 
     Installing...
@@ -633,20 +633,20 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
     Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
     kernel                                  2.4.21         47.EL             athlon
-    kernel-doc                              2.4.21         47.EL             i386  
-    kernel-source                           2.4.21         47.EL             i386  
-    kernel-utils                            2.4            8.37.15           i386  
+    kernel-doc                              2.4.21         47.EL             i386
+    kernel-source                           2.4.21         47.EL             i386
+    kernel-utils                            2.4            8.37.15           i386
 
 
     Testing package set / solving RPM inter-dependencies...
     ########################################
-    kernel-2.4.21-47.EL.athlon. ########################## Done.                   
-    kernel-doc-2.4.21-47.EL.i38 ########################## Done.                   
-    kernel-source-2.4.21-47.EL. ########################## Done.                   
-    kernel-utils-2.4-8.37.15.i3 ########################## Done.                   
+    kernel-2.4.21-47.EL.athlon. ########################## Done.
+    kernel-doc-2.4.21-47.EL.i38 ########################## Done.
+    kernel-source-2.4.21-47.EL. ########################## Done.
+    kernel-utils-2.4-8.37.15.i3 ########################## Done.
     Preparing              ########################################### [100%]
 
     Installing...
@@ -658,7 +658,7 @@ Here are notes I made during an extensive update (including a kernel update) to 
     $ cd /boot
     $ ll
     $ rpm -qa | grep kernel
-    $ cat grub/grub.conf 
+    $ cat grub/grub.conf
     $ df -h
     $ sudo reboot
     Password:
@@ -671,10 +671,10 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
 # Perform post-install checks
 
-    $ ssh user@wincent.com 
+    $ ssh user@wincent.com
     $ uname -a
     Linux s69819.wincent.com 2.4.21-47.EL #1 Wed Jul 5 20:39:00 EDT 2006 i686 athlon i386 GNU/Linux
-    $ cat /etc/redhat-release 
+    $ cat /etc/redhat-release
     Red Hat Enterprise Linux ES release 3 (Taroon Update 8)
     $ sudo service --status-all
     Password:
@@ -686,7 +686,7 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
     Fetching rpm headers...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
     $ sudo chkconfig --list
@@ -699,18 +699,18 @@ Here are notes I made during an extensive update (including a kernel update) to 
 
     Fetching rpm headers...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
 # Repair [Bugzilla](/wiki/Bugzilla) breakage
 
 It turns out that the system update broke my [Bugzilla](/wiki/Bugzilla) install because it overwrote some updated [Perl](/wiki/Perl) [CPAN](/wiki/CPAN) modules with older versions. I had to reinstall the newer versions in order to fix the breakage. Unfortunately, running `checksetup.pl` changes the permissions required for [Bugzilla](/wiki/Bugzilla) to work correctly with [Apache](/wiki/Apache)'s [suEXEC](/wiki/suEXEC), so I had to reset the permissions as well.
 
-    $ sudo ./checksetup.pl 
+    $ sudo ./checksetup.pl
     $ sudo /usr/bin/perl -MCPAN -e 'install "MIME::Base64"'
     $ sudo /usr/bin/perl -MCPAN -e 'install "CGI"'
     $ sudo /usr/bin/perl -MCPAN -e 'install "CPAN"'
-    $ sudo ./checksetup.pl 
+    $ sudo ./checksetup.pl
     $ sudo chown -R wincent.com:wincent.com .
     $ sudo chmod 644 .htaccess
     $ sudo chmod -R 644 skins

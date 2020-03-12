@@ -5,15 +5,15 @@ tags: antlr wiki
 On page 280 of the [ANTLR book](/wiki/ANTLR_book) the following example rule appears:
 
     a
-      : L a R 
-      | L L X 
+      : L a R
+      | L L X
       ;
 
 And is explained as follows:
 
 > The analysis sees that **L** begins both alternatives and looks past it in both alternatives to see whether there is something that follows that will distinguish the two. In the first alternative, therefore, the analysis must enter rule **a** again. The first symbol that it can see upon reentry is **L**. Hence, the algorithm must continue again past that **L** recursively into rule **a** hoping for a lookahead symbol that will distinguish the two alternatives. Ultimately, the algorithm sees the **X** in the second alternative, which allows it to distinguish the two alternatives. Clearly, though, if the second alternative were recursive as well, this process would never terminate without a threshold.
 
-Although on first reading I could accept that this was true, the explanation didn't give me any sense of exactly *what* was meant by phrases such as "must enter rule **a** again" and "must continue again past that **L** recursively into rule **a**"; exactly *what* is [ANTLR](/wiki/ANTLR) *doing* in this case?
+Although on first reading I could accept that this was true, the explanation didn't give me any sense of exactly _what_ was meant by phrases such as "must enter rule **a** again" and "must continue again past that **L** recursively into rule **a**"; exactly _what_ is [ANTLR](/wiki/ANTLR) _doing_ in this case?
 
 In order to make this clear, the following is my current understanding of exactly what is happening when [ANTLR](/wiki/ANTLR) tries to analyze a rule like this. Here, "analysis" basically consists of looking at rule **a** and trying to construct a [DFA](/wiki/DFA) that predicts whether the first or second alternative will succeed. Once one of the alternatives is predicted then the recognizer will proceed and actually attempt to match the input against that alternative.
 
@@ -75,7 +75,7 @@ Notice that:
 -   Finally we have a path that doesn't require seeing **L** (the last path, where we expect to see an **X**)
 -   Having seen that **X**, we can predict alternative 2 on seeing **L L X**
 -   If we don't see **X** and instead see **L** then we are still on one of the other alternative paths
--   Even though we don't know *which* alternative path we are on in the case of seeing **L L L** , we can still predict that alternative 1 will match because *all* of the possible paths that span out from alternative one share that common beginning
+-   Even though we don't know _which_ alternative path we are on in the case of seeing **L L L** , we can still predict that alternative 1 will match because _all_ of the possible paths that span out from alternative one share that common beginning
 -   The recursive nature of alternative 1 means that our prediction can never "finish"; it will always be possible for another layer of recursion to be nested inside
 -   The non-terminating nature of alternative 1 doesn't prevent analysis from completing; after only three iterations we see enough input to distinguish the two alternatives
 -   As we "re-enter" rule **a** during analysis the number of possible paths grows exponentially

@@ -11,7 +11,7 @@ Posted to the [Git](/wiki/Git) mailing list by Adeodato Simó:
                   vcs-message-mode))
 
     (define-derived-mode vcs-message-mode text-mode "VCS-message"
-     "Major mode for editing commit and tag messages." 
+     "Major mode for editing commit and tag messages."
      (auto-fill-mode 1)
      (set (make-local-variable 'tab-stop-list)
           (number-sequence 4 100 4))

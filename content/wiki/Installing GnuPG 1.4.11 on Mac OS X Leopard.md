@@ -8,7 +8,7 @@ Notes made while installing [GnuPG](/wiki/GnuPG) on a very old PowerBook. For co
 ```shell
 $ curl -O ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.11.tar.bz2
 $ openssl sha1 gnupg-1.4.11.tar.bz2 # for now just verify the SHA-1 hash
-$ tar xjvf gnupg-1.4.11.tar.bz2 
+$ tar xjvf gnupg-1.4.11.tar.bz2
 $ cd gnupg-1.4.11
 $ ./configure
 $ make && make check

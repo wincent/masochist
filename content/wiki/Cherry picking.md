@@ -2,7 +2,7 @@
 tags: subversion version.control svk wiki
 ---
 
-"[Cherry picking](/wiki/Cherry_picking)" is the practice of taking a specific change from one [branch](/wiki/branch) of development and [merging](/wiki/merging) it into another. It is different from a wholesale merge of one branch into another (where *all* changes are merged). [Cherry picking](/wiki/Cherry_picking) is easier with a [version control system](/wiki/version_control_system) like [SVK](/wiki/SVK) that supports automatic [merge tracking](/wiki/merge_tracking) than with a system that doesn't, like [Subversion](/wiki/Subversion).
+"[Cherry picking](/wiki/Cherry_picking)" is the practice of taking a specific change from one [branch](/wiki/branch) of development and [merging](/wiki/merging) it into another. It is different from a wholesale merge of one branch into another (where _all_ changes are merged). [Cherry picking](/wiki/Cherry_picking) is easier with a [version control system](/wiki/version_control_system) like [SVK](/wiki/SVK) that supports automatic [merge tracking](/wiki/merge_tracking) than with a system that doesn't, like [Subversion](/wiki/Subversion).
 
 For [cherry picking](/wiki/cherry_picking) to be effective you need to make sure that there are actually "cherries" to be picked; that is, you need to have one changeset per meaningful change: if you have more than one meaningful change in a single changeset then you are no longer free to [cherry pick](/wiki/cherry_pick) only one of those changes.
 

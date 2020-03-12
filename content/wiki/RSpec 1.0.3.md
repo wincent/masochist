@@ -7,10 +7,10 @@ tags: rspec wiki
 # Changes
 
 -   Fixed \#11104 Website uses old specify notation
--   Applied \#11101 StringHelpers.starts\_with?(prefix) assumes a string parameter for \_prefix\_
+-   Applied \#11101 StringHelpers.starts_with?(prefix) assumes a string parameter for \_prefix\_
 -   Removed 'rescue nil' which was hiding errors in controller examples.
--   Fixed \#11075 controller specs fail when using mocha without integrated\_views
--   Fixed problem with redirect\_to failing incorrectly against edge rails.
+-   Fixed \#11075 controller specs fail when using mocha without integrated_views
+-   Fixed problem with redirect_to failing incorrectly against edge rails.
 -   Fixed \#11082 RspecResourceGenerator should be RspecScaffoldGenerator
 -   Fixed \#10959 Focused Examples do not work for Behaviour defined with constant with modules
 

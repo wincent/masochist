@@ -17,7 +17,7 @@ I was puzzled at first to find that I could never verify signatures using [Git 1
 
     # add some content
     echo 'hello, world!' > greeting.txt
-    git add greeting.txt 
+    git add greeting.txt
     git-commit
 
     # add tag

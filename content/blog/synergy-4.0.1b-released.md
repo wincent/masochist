@@ -5,7 +5,7 @@ tags: synergy releases snow.leopard blog
 
 [Synergy](/wiki/Synergy), the lightweight, highly-customizable [iTunes](/wiki/iTunes) controller has been updated to version 4.0.1b. 4.0 is a brand new release especially for [Mac OS X](/wiki/Mac_OS_X) 10.6 [Snow Leopard](/wiki/Snow_Leopard). This release fixes a couple of minor bugs, and given feedback on the stability of the last release moves from "alpha" to "beta" status.
 
-Note that 4.0 will *only* run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
+Note that 4.0 will _only_ run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
 
 For many users this release will be a free upgrade: see [this blog post](/blog/synergy-4.0-upgrades) to find out whether you qualify. If you got Synergy through the MacHeist Giving Tree bundle see [the MacHeist FAQ](/blog/frequently-asked-questions-about-synergy-and-macheist).
 

@@ -3,7 +3,7 @@ title: ActiveRecord goodness
 tags: rails blog
 ---
 
-For once, ActiveRecord actually surprised me *in a good way* tonight. I'm used to pretty much the opposite happening: ActiveRecord is great for doing extremely simple stuff, but as soon as you need to do anything mildly sophisticated you find yourself dropping down to raw [SQL](/wiki/SQL):
+For once, ActiveRecord actually surprised me _in a good way_ tonight. I'm used to pretty much the opposite happening: ActiveRecord is great for doing extremely simple stuff, but as soon as you need to do anything mildly sophisticated you find yourself dropping down to raw [SQL](/wiki/SQL):
 
     SELECT topics.id, topics.title, topics.comments_count, topics.view_count, topics.updated_at, topics.last_comment_id,
            users.id AS last_active_user_id,

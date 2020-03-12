@@ -27,7 +27,7 @@ Output:
     wget "http://rspec.rubyforge.org/rspec-0.9.0.gem"
 
     # install
-    sudo gem install rspec-0.9.0.gem 
+    sudo gem install rspec-0.9.0.gem
 
     # update fast doc index
     fastri-server -b

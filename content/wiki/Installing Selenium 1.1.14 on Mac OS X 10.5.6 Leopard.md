@@ -29,7 +29,7 @@ As [noted here](http://www.spacevatican.org/2008/9/27/selenium-and-firefox-3), t
 
     mkdir /tmp/selenium
     cd /tmp/selenium
-    jar xf /Library/Ruby/Gems/1.8/gems/Selenium-1.1.14/lib/selenium/openqa/selenium-server.jar.txt 
+    jar xf /Library/Ruby/Gems/1.8/gems/Selenium-1.1.14/lib/selenium/openqa/selenium-server.jar.txt
 
     # could have used sed, but wanted to visually inspect the files:
     find . -name '*.rdf' -exec vim {} \;

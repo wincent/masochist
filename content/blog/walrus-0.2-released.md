@@ -12,7 +12,7 @@ Object-oriented templating is one of those brilliant, flash-of-insight kind of i
 
 # Future plans
 
-Walrus development has been quiet (almost dead) for the last few years because with the 0.1 release it was already where I needed it to be for the purposes of generating help documentation for my apps. There *are* things that could be done to improve it — things like Ruby 1.9 support or a faster parser — but seeing as Walrus is just a tool that is part of the build process, and is neither performance-critical nor does it require any dazzling new functionality, I couldn't really justify spending any more time on it.
+Walrus development has been quiet (almost dead) for the last few years because with the 0.1 release it was already where I needed it to be for the purposes of generating help documentation for my apps. There _are_ things that could be done to improve it — things like Ruby 1.9 support or a faster parser — but seeing as Walrus is just a tool that is part of the build process, and is neither performance-critical nor does it require any dazzling new functionality, I couldn't really justify spending any more time on it.
 
 Nevertheless, now that I've been using [Wikitext](/wiki/Wikitext) markup on this website for years now, I have become so dependent on it that I just can't stomach the idea of having to maintain documentation using Textile markup. So that is at least one change (Wikitext markup support) that is definitely in the wind for Walrus. I still need to decide how I am going to go about doing this, but I am thinking that a plug-in system might actually be the way to go (ie. a plugin mechanism would be used to add an entirely new `#wikitext` directive to the parser).
 

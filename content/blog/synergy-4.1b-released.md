@@ -7,7 +7,7 @@ tags: synergy releases snow.leopard blog
 
 The 4.1 release features a major overhaul of the Amazon cover art download engine. It uses lighter network requests, parses the information returned by Amazon more robustly, and handles tracks with incomplete [ID3](/wiki/ID3) tags much better than before. The 4.1b release includes a bug fix for the "Transfer cover to iTunes" menu item.
 
-Note that the 4.0 series will *only* run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
+Note that the 4.0 series will _only_ run on [Snow Leopard](/wiki/Snow_Leopard). (Version 3.4.1, the last release in the stable series will run on all versions of Mac OS X from 10.2.8 upwards.) A full changelog appears [here](/products/synergy/history).
 
 For many users this release will be a free upgrade: see [this blog post](/blog/synergy-4.0-upgrades) to find out whether you qualify. If you got Synergy through the MacHeist Giving Tree bundle see [the MacHeist FAQ](/blog/frequently-asked-questions-about-synergy-and-macheist).
 

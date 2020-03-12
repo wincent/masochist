@@ -7,16 +7,16 @@ So I thought I'd give [Ack](/wiki/Ack) a try. I installed it manually rather tha
     mkdir ack
     cd ack
     wget http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/ack-1.86.tar.gz
-    tar xzvf ack-1.86.tar.gz 
+    tar xzvf ack-1.86.tar.gz
     wget http://search.cpan.org/CPAN/authors/id/P/PE/PETDANCE/File-Next-1.02.tar.gz
-    tar zxvf File-Next-1.02.tar.gz 
+    tar zxvf File-Next-1.02.tar.gz
     cd File-Next-1.02
-    perl Makefile.PL 
+    perl Makefile.PL
     make
     make test
     sudo make install
     cd ../ack-1.86/
-    perl Makefile.PL 
+    perl Makefile.PL
     make
     make test
     sudo make install

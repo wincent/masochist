@@ -10,12 +10,12 @@ From the official announcement posted to the [nginx](/wiki/nginx) mailing list:
        *) Security: now SSL/TLS renegotiation is disabled.
           Thanks to Maxim Dounin.
 
-       *) Bugfix: nginx sent gzipped responses to clients those do not support 
-          gzip, if "gzip_static on" and "gzip_vary off"; the bug had appeared 
+       *) Bugfix: nginx sent gzipped responses to clients those do not support
+          gzip, if "gzip_static on" and "gzip_vary off"; the bug had appeared
           in 0.7.63.
 
-       *) Bugfix: if names .domain.tld, .sub.domain.tld, and .domain-some.tld 
-          were defined, then the name .sub.domain.tld was matched by 
+       *) Bugfix: if names .domain.tld, .sub.domain.tld, and .domain-some.tld
+          were defined, then the name .sub.domain.tld was matched by
           .domain.tld.
 
        *) Bugfix: segmentation fault and infinite looping in resolver.

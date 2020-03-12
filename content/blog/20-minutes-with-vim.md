@@ -8,7 +8,7 @@ Is [Vim](/wiki/Vim) better than [Emacs](/wiki/Emacs)?
 
 No frickin' way!
 
-But I *like* it better.
+But I _like_ it better.
 
 How has it won me over so quickly? Well, basically because as I use it I feel like I am working with a wise and reliable friend that's trying to help me get stuff done in the most efficient manner possible.
 

@@ -25,13 +25,13 @@ cache_breaker: 1
     #       to create new branch and checkout in one step
 
     # make a change
-    echo "more docs" >> greeting.txt 
-    git add greeting.txt 
+    echo "more docs" >> greeting.txt
+    git add greeting.txt
     git commit -m "More docs"
 
     # one more change
     echo "even more docs" >> greeting.txt
-    git add greeting.txt 
+    git add greeting.txt
     git commit -m "Even more"
 
     # switch back to master branch
@@ -94,7 +94,7 @@ For example, making a simple change to [Git](/wiki/Git) itself:
     git send-email --to me@example.com patch_file
 
     # send the email (for real)
-    git send-email --to git@vger.kernel.org patch_file 
+    git send-email --to git@vger.kernel.org patch_file
 
 For submitting patches to [Git](/wiki/Git) itself I've set up some aliases as described in "[Git quickstart](/wiki/Git_quickstart)". These would be used as follows:
 

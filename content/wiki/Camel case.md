@@ -2,5 +2,3 @@
 redirect: [[CamelCase]]
 tags: wiki
 ---
-
-

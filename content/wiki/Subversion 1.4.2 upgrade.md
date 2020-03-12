@@ -20,7 +20,7 @@ These notes were made during the upgrade from [Subversion](/wiki/Subversion) ver
     sudo rm -f /usr/local/lib/libneon*
 
     # build, test, install
-    ./configure --with-ssl 
+    ./configure --with-ssl
     make
     make check
     sudo make install
@@ -82,8 +82,8 @@ The resulting static builds work, but I wanted to get my non-static build workin
 
     # clean out subversion and start again
     rm -rf subversion-1.4.2
-    tar xjvf subversion-1.4.2.tar.bz2 
-    tar xjvf subversion-deps-1.4.2.tar.bz2 
+    tar xjvf subversion-1.4.2.tar.bz2
+    tar xjvf subversion-deps-1.4.2.tar.bz2
     cd subversion-1.4.2
     rm -r apr apr-util
     ./configure --with-apr=/usr/local/apr/bin/apr-1-config       \

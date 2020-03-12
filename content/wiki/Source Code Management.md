@@ -2,5 +2,3 @@
 redirect: [[SCM]]
 tags: wiki
 ---
-
-

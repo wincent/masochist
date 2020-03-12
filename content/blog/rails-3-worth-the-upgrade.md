@@ -6,7 +6,7 @@ cache_breaker: 1
 
 It's a trick question, really, as you don't actually have any choice.
 
-The reality is that the [Rails](/wiki/Rails) team has neither the *resources* nor the *culture* to provide solid support for previous releases. Rails is not Apache, or MySQL. Those are projects where you can safely ignore the bleeding edge and confidently sit back using the "stable" release and receiving a reliable stream of security fixes, rigorously backported, for years.
+The reality is that the [Rails](/wiki/Rails) team has neither the _resources_ nor the _culture_ to provide solid support for previous releases. Rails is not Apache, or MySQL. Those are projects where you can safely ignore the bleeding edge and confidently sit back using the "stable" release and receiving a reliable stream of security fixes, rigorously backported, for years.
 
 I remember using Apache 1.3 for years after 2.0 was already out and labelled as "production-ready". By the time I finally switched, 2.0 had received years of testing in the field, and I had received years of immaculately-prepared security updates for the 1.3 series.
 
@@ -18,9 +18,9 @@ For the "enterprise", the solidity and robustness of the platform is absolutely 
 
 Unlike "old school" projects like Apache and MySQL, Rails has a culture driven by fads and fashions. Rails is the world of "rockstar" programmers and rockstar wannabes. It's the world of conference circuits, microcelebrities, and almost obligatory use of Apple portables. It's a world where aesthetics are everything and "new", by definition, beats "old".
 
-Sounds terribly superficial and shallow? Sure, but nobody actually cares because Rails culture is *fun*. Ask the people giving the presentations at the conferences, hacking on apps on their laptops while sipping coffee in Starbucks, and participating in the forking/merging/pushing/pulling frenzy at GitHub, and they'll tell you that they're having a hell of a lot of fun. People *like* working with Rails and they *like* talking about it in a way that far exceeds what you observe in other more "enterprise-y" communities.
+Sounds terribly superficial and shallow? Sure, but nobody actually cares because Rails culture is _fun_. Ask the people giving the presentations at the conferences, hacking on apps on their laptops while sipping coffee in Starbucks, and participating in the forking/merging/pushing/pulling frenzy at GitHub, and they'll tell you that they're having a hell of a lot of fun. People _like_ working with Rails and they _like_ talking about it in a way that far exceeds what you observe in other more "enterprise-y" communities.
 
-And no matter how full of shit it may all seem at times, the truth is that among the crap *some* good code, maybe even a lot, is being written.
+And no matter how full of shit it may all seem at times, the truth is that among the crap _some_ good code, maybe even a lot, is being written.
 
 So, from a technical standpoint, the great upside of all this is that you get a fast-moving platform with constant innovation. Something good has to come out of that.
 
@@ -36,7 +36,7 @@ Like it or hate it, this is what it means to live in the world of Rails. If you 
 
 So we've established that you don't have a choice about upgrading. Now for the bad news...
 
-If the app you're upgrading is anything more than an incredibly simplistic "micro-app", you are likely to have a *lot* of problems in moving to Rails 3. The scale of the changes is simply immense.
+If the app you're upgrading is anything more than an incredibly simplistic "micro-app", you are likely to have a _lot_ of problems in moving to Rails 3. The scale of the changes is simply immense.
 
 My own app is of moderate size. Definitely not massive, but neither is it a "toy" app. We're talking about 20 or so model classes, 7 mailers, 30 controllers, 22 helpers, and 113 view templates. The amount of work has been considerable, and the changes required completely non-trivial (while some of the changes fall into the mindless "find-and-replace" category, many others require concentrated debugging or contemplation of fundamental design issues).
 
@@ -48,7 +48,7 @@ Long-term readers of this blog will know that I assiduously eschew the word "upg
 
 For me, if I am going to label something as an "upgrade", it had better have damn well earned it.
 
-Well, having fought with Rails 3 for over two months now (I knew it would be a long battle, so I started early), having worked through many frustrating problems, and with no doubt many many more days of work still to be done, I am decidedly describing Rails 3 as an "upgrade". That Rails 3 has inflicted so much pain and that I'm *still* prepared to heap praise on it rather than spitting on the ground each time I utter its name, is a testament to just how impressive a release it is.
+Well, having fought with Rails 3 for over two months now (I knew it would be a long battle, so I started early), having worked through many frustrating problems, and with no doubt many many more days of work still to be done, I am decidedly describing Rails 3 as an "upgrade". That Rails 3 has inflicted so much pain and that I'm _still_ prepared to heap praise on it rather than spitting on the ground each time I utter its name, is a testament to just how impressive a release it is.
 
 I am not going to go into detail and rave about all the wonderful new stuff in Rails 3 — there are already a plethora of blog posts out there that do that — but I will briefly list some of the changes that I have most appreciated so far:
 

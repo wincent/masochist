@@ -28,7 +28,7 @@ It's not only green or better items that are worth posting in the auction house.
 
 ## Always set a buy-out price
 
-Whenever posting an auction always set a buy-out price so that those who want stuff right-here-right-know can make an immediate purchase. If you don't do this they may instead select a more expensive item from another seller who *does* offer the option of immediate purchase.
+Whenever posting an auction always set a buy-out price so that those who want stuff right-here-right-know can make an immediate purchase. If you don't do this they may instead select a more expensive item from another seller who _does_ offer the option of immediate purchase.
 
 ## Don't round off your prices
 

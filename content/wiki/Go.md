@@ -11,8 +11,9 @@ cache_breaker: 1
 -   [Vim](/wiki/Vim) plug-ins: <https://github.com/jnwhiteh/vim-golang>
 -   Context-sensitive auto-completion: <https://github.com/nsf/gocode>
 -   5-week tutorial series in Dr Dobbs:
+
     1.  2.  3.  "Go Introduction: How Go Handles Objects": <http://www.drdobbs.com/article/print?articleId=240005949&siteSectionName=open-source>
-    4.  5.  "A Brief Tour of the Go Standard Library": <http://www.drdobbs.com/article/print?articleId=240006639&siteSectionName=open-source>
+    2.  5.  "A Brief Tour of the Go Standard Library": <http://www.drdobbs.com/article/print?articleId=240006639&siteSectionName=open-source>
 
 -   Rob Pike Google I/O 2012 talk, "Go Concurrency Patterns": <http://www.youtube.com/watch?feature=player_embedded&v=f6kdp27TYZs>
 -   Andrew Gerrand Google I/O 2012 talk, "Go in Production": <http://www.youtube.com/watch?v=kKQLhGZVN4A&feature=relmfu>

@@ -7,10 +7,6 @@ First, as background if you haven't read the original story, [here it is](http:/
 
 Now for the update.
 
-
-
-
-
 "Drunken Batman" has now (well, on 6 April actually, but its only just come to my attention) publicly stated that one of two things is the case. Either:
 
 > Wincent Colaiuta is mental, and just making the emails up. People that delusional are pretty rare, so I consider this to be a very low probability.
@@ -31,7 +27,7 @@ I accept him at his word. If he says he didn't send them, then I believe him.
 
 #### He suggests that I might be a liar and/or "delusional"
 
-I am neither a liar nor delusional. I disapproved of his posting of the crasher image, and when I received the attack emails I was surprised and updated my article accordingly with information about the emails. I don't think there's anything delusional about my article but I *do* think that Mr "Batman's" tone is offensive, condescending and insulting.
+I am neither a liar nor delusional. I disapproved of his posting of the crasher image, and when I received the attack emails I was surprised and updated my article accordingly with information about the emails. I don't think there's anything delusional about my article but I _do_ think that Mr "Batman's" tone is offensive, condescending and insulting.
 
 #### He accuses me of "jumping to hysterical conclusions"
 
@@ -97,14 +93,14 @@ After posting my article I did receive a couple of emails from people who have p
 
 We'll he's wrong about that too. I am not the delusional retard that he implies. It's always only been my intention to post the facts and now that I have more facts I'm posting them here. As I stated in reply to one of the people who emailed me:
 
-    Like you, if it really is him who's been doing it I'm astounded. But  
-    if I found out that it's not him I'll edit what I've written  
-    accordingly. I'm not so much upset as utterly astounded that someone  
+    Like you, if it really is him who's been doing it I'm astounded. But
+    if I found out that it's not him I'll edit what I've written
+    accordingly. I'm not so much upset as utterly astounded that someone
     so highly regarded would act like this guy is acting.
 
 "Mr Batman" helpfully provides a PDF of my original article "in case it goes away", but I don't have anything to hide; in light of this new information I've made the following edits to my original article:
 
--   Changed "*the guy whose ugly mug you can see pictured on the right*" to "*pictured on the right*"; I only added that in after I received the attack emails, but given that they apparently were not from him I'll tone it down (no need to impugn his looks).
+-   Changed "_the guy whose ugly mug you can see pictured on the right_" to "_pictured on the right_"; I only added that in after I received the attack emails, but given that they apparently were not from him I'll tone it down (no need to impugn his looks).
 -   Added a note and a link to back to this update.
 -   Inserted "or someone purporting to be him" in the description of the attack emails.
 
@@ -112,7 +108,7 @@ We'll he's wrong about that too. I am not the delusional retard that he implies.
 
 The article is still about "Drunken Batman" getting on "the shit list". His original act (knowingly posting the crashing image) still stands.
 
-The original article stated something like, "*I'll be advising any that asks to avoid your website like the plague*". After receiving the attack emails I later upgraded this to:
+The original article stated something like, "_I'll be advising any that asks to avoid your website like the plague_". After receiving the attack emails I later upgraded this to:
 
 > I'll be advising anyone that asks me to avoid your website and all its self-important, opinionated ramblings like the plague.
 
@@ -126,21 +122,21 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > You act like a dick, then you're surprised than people think you're a dick? Your name is now associated with malware, deal with it.
 
-*To be clear, posting a crasher image in a weblog article isn't the same as writing "malware". Malware is software that runs on your computer with a destructive intent. What "Mr Batman" posted was an exploit for an existing vulnerability. It's not the same as malware even if the destructive intent is the same (and it is). So if we're disciplined with our use of terminology we can't really accuse "Mr Batman" of propagating "malware" but we **can** lump him in the same moral basket as those that do write and knowingly distribute malware.*
+_To be clear, posting a crasher image in a weblog article isn't the same as writing "malware". Malware is software that runs on your computer with a destructive intent. What "Mr Batman" posted was an exploit for an existing vulnerability. It's not the same as malware even if the destructive intent is the same (and it is). So if we're disciplined with our use of terminology we can't really accuse "Mr Batman" of propagating "malware" but we **can** lump him in the same moral basket as those that do write and knowingly distribute malware._
 
 > Looks like old Wince read to much unserfriendly lately and got an inspiration how to generate some traffic for his b-list blog. Just leave the blighter alone.
 
-*To be clear: I'm not trying to generate traffic to my "b-list blog". Look on my website (<http://www.wincent.com/>) for links to the weblog; you'll find **one** buried in the never-visited backwaters of the site. I'm a software developer, not a "weblogger". My personal weblog is where I post articles about stuff that I'm working on for people that want a behind-the-scenes look at my software development. I also post the occasional rant that I think may be of interest to the one or two friends that I know read the weblog. I don't promote the weblog in any way. I don't try to drive traffic to it. When I posted the original "Batman on the shitlist" article I didn't make any attempt to contact the "Batman" himself; I merely posted it because I felt his conduct deserved comment. If one wants traffic I really think there are better ways to go about getting it; I see about 1,000 referrals from "Mr Batman" in my server logs: big deal.*
+_To be clear: I'm not trying to generate traffic to my "b-list blog". Look on my website (<http://www.wincent.com/>) for links to the weblog; you'll find **one** buried in the never-visited backwaters of the site. I'm a software developer, not a "weblogger". My personal weblog is where I post articles about stuff that I'm working on for people that want a behind-the-scenes look at my software development. I also post the occasional rant that I think may be of interest to the one or two friends that I know read the weblog. I don't promote the weblog in any way. I don't try to drive traffic to it. When I posted the original "Batman on the shitlist" article I didn't make any attempt to contact the "Batman" himself; I merely posted it because I felt his conduct deserved comment. If one wants traffic I really think there are better ways to go about getting it; I see about 1,000 referrals from "Mr Batman" in my server logs: big deal._
 
-*I don't really care that you don't like my weblog or consider it "b-list"; what I don't like is that you mistakenly think that I aspire for it to be anything else but that. My website gets a modest quarter of a million page views per month; of that figure the weblog accounts for a measly 5,000 page views. It's just not something that is in any way important to me. My weblogging days are in the past; I was a "weblogger" years before "Mr Batman" started his website, before the term "weblog" had even been coined. I had my "five minutes of fame" when Mac OS X came out, attracting about 50,000 page views per day. I even got "real work" out of it, receiving payment for writing articles for a number of sites. I was even invited to write books. But years ago I decided that I was much more interested in software development and that's my principal activity.*
+_I don't really care that you don't like my weblog or consider it "b-list"; what I don't like is that you mistakenly think that I aspire for it to be anything else but that. My website gets a modest quarter of a million page views per month; of that figure the weblog accounts for a measly 5,000 page views. It's just not something that is in any way important to me. My weblogging days are in the past; I was a "weblogger" years before "Mr Batman" started his website, before the term "weblog" had even been coined. I had my "five minutes of fame" when Mac OS X came out, attracting about 50,000 page views per day. I even got "real work" out of it, receiving payment for writing articles for a number of sites. I was even invited to write books. But years ago I decided that I was much more interested in software development and that's my principal activity._
 
 > He is a dick because of the way he choose to report it.
 
 > Thanks DB, for pointing out a stupid bug to the teeming masses, and possibly actually getting something done. :)
 
-*That's not how bugs should be "pointed out". If he really wanted to expose the vulnerability he should have posted a link to the image rather than inlining it and crashing the browsers of any unsuspecting sods unfortunate enough to hit his front page.*
+_That's not how bugs should be "pointed out". If he really wanted to expose the vulnerability he should have posted a link to the image rather than inlining it and crashing the browsers of any unsuspecting sods unfortunate enough to hit his front page._
 
-*Let's be utterly clear: "Mr Batman's" conduct is not responsible for getting anything "done". Apple will fix this flaw. "Mr Batman's" behaviour will not be the cause of the correction.*
+_Let's be utterly clear: "Mr Batman's" conduct is not responsible for getting anything "done". Apple will fix this flaw. "Mr Batman's" behaviour will not be the cause of the correction._
 
 > But the second time it wiped out my preferences and fucked with my bookmarks. Great. Nice work, asshole.
 
@@ -150,13 +146,13 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > He was wrong to underestimate his readers. He was wrong to crash their browsers. I know that for most people it was not a hardship, but given the size of his audience, I guarantee that it was a problem for someone. He should apologize.
 
-*Not only has "Drunken Batman" not apologized, he has left the offending image intact on his front page and gone on to post **another** article (also on the front page) that causes Safari to crash. I think this says a lot about his personality.*
+_Not only has "Drunken Batman" not apologized, he has left the offending image intact on his front page and gone on to post **another** article (also on the front page) that causes Safari to crash. I think this says a lot about his personality._
 
-*Evidently he's on some kind of power trip in which he thinks pissing a lot of people off is the only way to get something done. When Apple fixes these vulnerabilities he'll feel confirmed that he somehow "made it happen". In reality the only thing he will have "made happen" is that he will have lost some of his readership.*
+_Evidently he's on some kind of power trip in which he thinks pissing a lot of people off is the only way to get something done. When Apple fixes these vulnerabilities he'll feel confirmed that he somehow "made it happen". In reality the only thing he will have "made happen" is that he will have lost some of his readership._
 
 > apparently you've angered this wincent guy enough to make him remove all mention of you from all other pages of his site.
 
-*That's correct. I previously had a link back to an article that "Drunken Batman" had written concerning a GPL violation. Once he posted the crasher I removed the link. Why would I direct my readers (few though they may be) to a site that knowingly attempts to crash their browsers?*
+_That's correct. I previously had a link back to an article that "Drunken Batman" had written concerning a GPL violation. Once he posted the crasher I removed the link. Why would I direct my readers (few though they may be) to a site that knowingly attempts to crash their browsers?_
 
 > I've come to this blog for a couple of years. Attended Evening at Adler (which was a hoot and very informative), but this is disrespectful and ignorant. Really shows his true colors.
 
@@ -170,8 +166,7 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > Perhaps you're simply a liar. Works for me.
 
-> "Wincent Colaitua is mental, and just making the emails up."
-> I find it revealing that this is the first place your mind went...
+> "Wincent Colaitua is mental, and just making the emails up." I find it revealing that this is the first place your mind went...
 
 > The JPG incident is not in good faith. It's a whole different kettle of fish. I find it deeply wrong, harmful to the general vibe of the Mac community, and something all good folks should condemn.
 
@@ -193,35 +188,35 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > Wincent should have known better than to believe information from an obvious attempt to spam him. He is no fool and surely knows how this works.
 
-*Well, as I said above, I think I quite rationally concluded that the emails most likely came from "Drunken Batman" himself. How, exactly, is "this" supposed to work? What seems more probable to you?*
+_Well, as I said above, I think I quite rationally concluded that the emails most likely came from "Drunken Batman" himself. How, exactly, is "this" supposed to work? What seems more probable to you?_
 
-***Option A:** Person indiscriminately crashes a bunch of people's browsers; when challenged, shows no remorse or repentfulness; I criticize him; I receive two emails signed with his initials and with an address matching his name that attempt to crash my client. Given that I am dealing with an article written by asshole and an email written by an asshole, I assume that they're actually the same asshole.*
+**\*Option A:** Person indiscriminately crashes a bunch of people's browsers; when challenged, shows no remorse or repentfulness; I criticize him; I receive two emails signed with his initials and with an address matching his name that attempt to crash my client. Given that I am dealing with an article written by asshole and an email written by an asshole, I assume that they're actually the same asshole.\*
 
-***Option B:** Person indiscriminately crashes a bunch of people's browsers; when challenged, shows no remorse or repentfulness; I criticize him; a third party, who happens to read both the crasher's weblog **and** mine (how likely is that, given the tiny number of people who read my weblog?), decides to register a Gmail account and impersonate the crasher for his own amusement. All of this occurs within the same 24 hour period. I am somehow expected to conclude that I'm dealing with two entirely separate assholes, one impersonating the other.*
+**\*Option B:** Person indiscriminately crashes a bunch of people's browsers; when challenged, shows no remorse or repentfulness; I criticize him; a third party, who happens to read both the crasher's weblog **and** mine (how likely is that, given the tiny number of people who read my weblog?), decides to register a Gmail account and impersonate the crasher for his own amusement. All of this occurs within the same 24 hour period. I am somehow expected to conclude that I'm dealing with two entirely separate assholes, one impersonating the other.\*
 
-*Seriously, I just don't see how anyone would consider "Option B" to be the more probable one. Remember that I have never had any contact with "Mr Batman" and so I had no way of knowing if he was a Gmail user or not. I find it indicative of the unpleasantness of "Mr Batman's" personality that he would use my quite reasonable assessment of the probabilities as an excuse to label me as an ignorant "tool" who knows nothing about security. Laughable.*
+_Seriously, I just don't see how anyone would consider "Option B" to be the more probable one. Remember that I have never had any contact with "Mr Batman" and so I had no way of knowing if he was a Gmail user or not. I find it indicative of the unpleasantness of "Mr Batman's" personality that he would use my quite reasonable assessment of the probabilities as an excuse to label me as an ignorant "tool" who knows nothing about security. Laughable._
 
 > I don't really fucking care my browser crashed. I can get over that. DB is still a dick for posting the image inline.
 
-*Precisely my opinion. I don't care either that my browser crashed. I lost a bunch of open pages in tabs, easy enough to get back via bookmarks. I didn't lose any work in progress. As such as I wasn't actually angry at "Mr Batman" (although many people got that impression from my post); but I **did** strongly disapprove of his decision. My low opinion of him has only been confirmed by his stubborn insistence on maintaining the offending image on the front page of his site, where it continues to this day (along with **another** article which will crash anyone unfortunate enough to visit that site in Safari).*
+_Precisely my opinion. I don't care either that my browser crashed. I lost a bunch of open pages in tabs, easy enough to get back via bookmarks. I didn't lose any work in progress. As such as I wasn't actually angry at "Mr Batman" (although many people got that impression from my post); but I **did** strongly disapprove of his decision. My low opinion of him has only been confirmed by his stubborn insistence on maintaining the offending image on the front page of his site, where it continues to this day (along with **another** article which will crash anyone unfortunate enough to visit that site in Safari)._
 
-*He's not only an asshole for doing this, but a fool as well as it's both harming his reputation and reducing his readership.*
+_He's not only an asshole for doing this, but a fool as well as it's both harming his reputation and reducing his readership._
 
 > Wincent Colaitua posted some of the first truly useful information about Mac OS X when it was released five years ago. I don't know if he's a hothead or not but I can safely say that his blog is not a b-list blog and his contributions to the general understand of Mac OS X is as important as John Welch's, John Gruber's, or even Mark Liyanage's. So, DB being a newcomer in comparison to Wincent might not know him, but Wincent does deserve props for his seminal web site for those of us who were just getting our feet wet with Mac OS X.
 
-*Nice to know that people still remember my rumor-mongering days. The truth is though I am much happier now working as a software developer rather than a rumor-monger. Any Tom, Dick or Harry can post rumors; I don't have a lot of respect for people that do it, and even less for people who try to make a living off it. I have much more respect for people which are truly creative, produce software, or write educational, useful articles. I used to include "Mr Batman" in this latter category, but not any more.*
+_Nice to know that people still remember my rumor-mongering days. The truth is though I am much happier now working as a software developer rather than a rumor-monger. Any Tom, Dick or Harry can post rumors; I don't have a lot of respect for people that do it, and even less for people who try to make a living off it. I have much more respect for people which are truly creative, produce software, or write educational, useful articles. I used to include "Mr Batman" in this latter category, but not any more._
 
 > Wincent Colaitua may know a lot about OS X, but he knows shocking little about mail headers.
 
-*Two things: Firstly, I didn't even bother to inspect the headers for evidence of forgery. Why would anyone bother to forge a Gmail email address? The accounts are free and can be obtained by anyone. Why forge email from "someone@gmail.com" when you can just go and register it yourself? When you receive an email from "johnz23123@hotmail.com" do you bother to inspect the headers to make sure it's **really** from John Z "23123"?*
+_Two things: Firstly, I didn't even bother to inspect the headers for evidence of forgery. Why would anyone bother to forge a Gmail email address? The accounts are free and can be obtained by anyone. Why forge email from "someone@gmail.com" when you can just go and register it yourself? When you receive an email from "johnz23123@hotmail.com" do you bother to inspect the headers to make sure it's **really** from John Z "23123"?_
 
-*Secondly, there is no evidence of forgery in the headers. Look at email sent from a Gmail address; the headers look exactly like that. It seems to be the poster of that comment who knows "shocking little about mail headers".*
+_Secondly, there is no evidence of forgery in the headers. Look at email sent from a Gmail address; the headers look exactly like that. It seems to be the poster of that comment who knows "shocking little about mail headers"._
 
 > As to DB, well... I find your blog entertaining and all, but posting that last image inline? Yeah, a tad immature. Intentionally exploiting a bug is never ok.
 
 > yes, DB was a bit of a dick, but the point was worth making.
 
-*Agreed, he was "a bit of a dick". I also believe that the vulnerability needed to be brought to Apple's attention. What I do **not** believe is that this guy has a right to "make a point" by crashing other people's applications. That's just not how it's done.*
+_Agreed, he was "a bit of a dick". I also believe that the vulnerability needed to be brought to Apple's attention. What I do **not** believe is that this guy has a right to "make a point" by crashing other people's applications. That's just not how it's done._
 
 > 1 vote for db=dick
 
@@ -233,7 +228,7 @@ One thing I will say for "Mr Batman", he doesn't censor people's negative commen
 
 > As I have been programming in Cocoa for about a year now and I really enjoy reading the blogs of great software developers such as Wil Shipley, Gus Mueller and many more I would like to thank you for bringing to my attention the blog of Wincent Colaiuta. He has some very interesting articles on technical matters and sounds like a very rational person and a knowledgable Mac OS X developer.
 
-*Thanks.*
+_Thanks._
 
 > lately I find DB turning into a bit of a prick
 

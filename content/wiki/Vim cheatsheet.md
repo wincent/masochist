@@ -16,7 +16,7 @@ I'll eventually publish a more comprehensive listing, but for now I just want to
 
 # Normal mode commands
 
--   `==`: intelligently indent selection (or currently line if no selection); *note that what is actually happening here is that we're using the "filter" functionality with no filter, so [Vim](/wiki/Vim) just uses the standard builtin "C indenting" functionality* (for more information see `:h filter`)
+-   `==`: intelligently indent selection (or currently line if no selection); _note that what is actually happening here is that we're using the "filter" functionality with no filter, so [Vim](/wiki/Vim) just uses the standard builtin "C indenting" functionality_ (for more information see `:h filter`)
 -   `gq{motion}`: reformat (rewrap); eg:
     -   `gqq`: reformat (rewrap) current line
 -   `gu{motion}`: lowercase
@@ -50,18 +50,18 @@ For more see `:h window-moving`
 For lots of documentation see `:h motion.txt`.
 
 -   `h`, `j`, `k`, `l`: per-character/per-line movement through file (left, down, up, right)
--   `gj`, `gk`: per-line movement through buffer, operating on *display lines* (which may be wrapped) not actual lines in the file (down, up)
--   `w`: forward a word (mnemonic: "word"); here "word" is an "keyword" (identifier) like "foo9" or "h\_go" and the movement is to the *beginning* of the next word
--   `W`: forward a "big" word; here a "word" is *anything* other than whitespace
--   `b`: back a word (mnemonic: "back"); again the movement is to the *beginning* of the word
+-   `gj`, `gk`: per-line movement through buffer, operating on _display lines_ (which may be wrapped) not actual lines in the file (down, up)
+-   `w`: forward a word (mnemonic: "word"); here "word" is an "keyword" (identifier) like "foo9" or "h*go" and the movement is to the \_beginning* of the next word
+-   `W`: forward a "big" word; here a "word" is _anything_ other than whitespace
+-   `b`: back a word (mnemonic: "back"); again the movement is to the _beginning_ of the word
 -   `B`: back a "big" word
--   `e`: forward to the *end* of a word (mnemonic: "end")
--   `E`: forward to the *end* of a "big" word
--   `ge`: back to the *end* of the last word
--   `gE`: back to the *end* of the last "big" word
+-   `e`: forward to the _end_ of a word (mnemonic: "end")
+-   `E`: forward to the _end_ of a "big" word
+-   `ge`: back to the _end_ of the last word
+-   `gE`: back to the _end_ of the last "big" word
 -   `f{character}`: forward to the next occurrence of `character` (mnemonic: "find/foward")
 -   `F{character}`: same as `f{character}`, but search in the opposite direction
--   `t{character}`: forward *til* (until) the next occurrence of `character` (mnemonic: "til/to"); the cursor is place immediately *before* and not on the character
+-   `t{character}`: forward _til_ (until) the next occurrence of `character` (mnemonic: "til/to"); the cursor is place immediately _before_ and not on the character
 -   `T{character}`: same as `t{character}`, but search in the opposite direction
 -   `;`: repeat last `f`, `F`, `t` or `T` operation
 -   `,`: repeat last `f`, `F`, `t` or `T` operation, but in the opposite direction
@@ -109,7 +109,7 @@ Example commands:
 -   `'{letter}`: jump to specified mark (first non-whitespace character on line)
 -   `` `{letter} ``: jump to specified mark (to column where mark was set)
 -   `''`: jump back to the last line jumped from
--   ``` `` ```: jump back to the last position jumped from
+-   ` `` `: jump back to the last position jumped from
 -   `` `. ``: jump to position where last change occurred in current buffer
 -   `` `[ `` and `` `] ``: jump to beginning/end of last changed or yanked text
 -   `` `< `` and `` `> ``: jump to beginning/end of last visual selection
@@ -138,13 +138,13 @@ Example commands:
 
 -   `zr`: decrement `'foldlevel'` A.K.A. "fold less" (mnemonic: reduce)
 -   `zm`: increment `'foldlevel'` A.K.A. "fold more" (mnemonic: more)
--   `zR`: decrement `'foldlevel'` to zero A.K.A. "unfold everything" (mnemonic: *reduce*)
--   `zM`: increment `'foldlevel'` to maximum A.K.A&gt; "fold everything" (mnemonic: *more*)
+-   `zR`: decrement `'foldlevel'` to zero A.K.A. "unfold everything" (mnemonic: _reduce_)
+-   `zM`: increment `'foldlevel'` to maximum A.K.A&gt; "fold everything" (mnemonic: _more_)
 -   `zo`: open current fold
 -   `zO`: open current fold recursively
 -   `zc`: close current fold
 -   `zC`: close current fold recursively
--   `zv`: view cursor line A.K.A. "open just enough folds to make cursor line visible" (mnemonic: *view*/*visible*)
+-   `zv`: view cursor line A.K.A. "open just enough folds to make cursor line visible" (mnemonic: _view_/_visible_)
 -   `zi`: toggle value of `'foldenable'` (mnemonic: invert)
 
 # Visual mode commands
@@ -189,7 +189,7 @@ Funnily, you can easily open this by mistake by typing `q:` when you mean to typ
 
 ### Mappings
 
-- `CTRL-w Enter`: open current item in a split.
+-   `CTRL-w Enter`: open current item in a split.
 
 ## Mappings available in command mode
 

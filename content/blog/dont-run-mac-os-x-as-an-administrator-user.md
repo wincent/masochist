@@ -7,15 +7,11 @@ In the past my advice, and that of pretty much everyone that matters, has always
 
 Nevertheless, I've always run Mac OS X (logged in to the graphical UI, that is) as an administrator user (but not root) rather than a regular, unprivileged user because root-privileged operations still require a password. That is, nothing should run with root privileges without you first being prompted for authorization.
 
-But after reading [this article](http://www.macgeekery.com/tips/security/how_a_malformed_installer_package_can_crack_mac_os_x) my advice has changed. Turns out that there is a security hole in the Mac OS X installer (and yes, it is a security hole in my opinion) that allows an installer to perform tasks as root *without prompting for authorization*. It's not the root-powers thing that bothers me, it's the fact that privilege escalation happens silently, automatically and without prompting.
-
-
-
-
+But after reading [this article](http://www.macgeekery.com/tips/security/how_a_malformed_installer_package_can_crack_mac_os_x) my advice has changed. Turns out that there is a security hole in the Mac OS X installer (and yes, it is a security hole in my opinion) that allows an installer to perform tasks as root _without prompting for authorization_. It's not the root-powers thing that bothers me, it's the fact that privilege escalation happens silently, automatically and without prompting.
 
 [The article points](http://www.macgeekery.com/tips/security/how_a_malformed_installer_package_can_crack_mac_os_x) to an [Apple discussion board topic](http://discussions.apple.com/thread.jspa?threadID=575176) that brought the issue to the author's attention. Paraphrasing, the short version is this:
 
-> An installer package which asks for *administrator privileges* (not root privileges), if run by an administrator, can actually get *root* privileges without the user being prompted for a password. This is because `sudo`, or its low-level API equivalent, `AuthorizationExecuteWithPrivileges`, is used to run pre- and post-flight scripts in the installer package as root. In other words, anything you can do in a script, you can do as root, and the user will have no idea.
+> An installer package which asks for _administrator privileges_ (not root privileges), if run by an administrator, can actually get _root_ privileges without the user being prompted for a password. This is because `sudo`, or its low-level API equivalent, `AuthorizationExecuteWithPrivileges`, is used to run pre- and post-flight scripts in the installer package as root. In other words, anything you can do in a script, you can do as root, and the user will have no idea.
 
 The [Apple Documentation](http://developer.apple.com/documentation/DeveloperTools/Conceptual/SoftwareDistribution4/Concepts/sd_permissions_author.html#//apple_ref/doc/uid/20001769-1038171) doesn't fully confirm the problem, but it does note that installer packages asking for "Administrator" privileges get them, "Authorization not required", when run as an admin user. What it fails to mention is that the shell-script portions of the installer package will be run with root privileges, not administrator privileges.
 
@@ -23,7 +19,7 @@ Why does this matter? It means you now have to care a lot more about the place w
 
 Don't get me wrong: the basic principle of not running executables or installing packages from untrusted sources has always applied. The difference is in the level of potential damage that can be done without warning. In the past you stood to lose only those files for which you had write privileges; but thanks to this hole you now stand to lose absolutely everything. That is a lot to risk.
 
-So my new advice is now the following: don't log in to your administrator account, ever. Create a new account with administrator privileges and then demote your existing account to a regular, unprivileged user. It's the only way to guarantee that when an installer package wants administrator *or* root privileges that you'll be prompted for a password.
+So my new advice is now the following: don't log in to your administrator account, ever. Create a new account with administrator privileges and then demote your existing account to a regular, unprivileged user. It's the only way to guarantee that when an installer package wants administrator _or_ root privileges that you'll be prompted for a password.
 
 Given that Apple's default policy is to grant administrator privileges to the first account created on a machine this is alarming problem and many people could be vulnerable. I hope that they fix the problem very, very soon; the fix should be simple: don't run installer shell scripts as root when they only request "administrator privileges" and an administrator is logged in, run then as the administrator user instead.
 

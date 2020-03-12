@@ -49,7 +49,7 @@ Here is the first draft of the script. It is customized for my own setup and not
 
     upload_instructions()
     {
-      echo 
+      echo
       echo "Upload all files/folders except for these directories:"
       echo "  - includes"
       echo "  - languages"
@@ -90,12 +90,12 @@ Here is the first draft of the script. It is customized for my own setup and not
       sudo chmod -v 777 styles
       sudo chmod -v 666 styles/*.php styles/*.css
       sudo chown -Rv $APACHE:$APACHE *
-      
+
       echo
       echo "Now run the upgrade script (install/upgrade.php) from within the browser."
       echo "Please indicate that you have finished running the script:"
       continue_or_abort
-      
+
       echo
       echo "Will remove the installation directory:"
       sudo rm -rf install

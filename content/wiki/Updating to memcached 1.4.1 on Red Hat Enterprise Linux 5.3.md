@@ -9,7 +9,7 @@ Will take the opportunity to update [libevent](/wiki/libevent) as well, from the
 
 ```shell
 $ wget http://www.monkey.org/~provos/libevent-1.4.12-stable.tar.gz
-$ tar xzvf libevent-1.4.12-stable.tar.gz 
+$ tar xzvf libevent-1.4.12-stable.tar.gz
 $ cd libevent-1.4.12-stable
 $ ./configure --libdir=/usr/lib
 $ make
@@ -23,7 +23,7 @@ For reasoning on why we install into `/usr/lib/` see the notes on my initial ins
 
 ```shell
 $ wget http://memcached.googlecode.com/files/memcached-1.4.1.tar.gz
-$ tar xzvf memcached-1.4.1.tar.gz 
+$ tar xzvf memcached-1.4.1.tar.gz
 $ cd memcached-1.4.1
 $ ./configure
 $ make

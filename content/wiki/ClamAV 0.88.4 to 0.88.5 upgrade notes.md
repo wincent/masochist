@@ -50,7 +50,7 @@ These notes were made during the upgrade from version 0.88.4 of [ClamAV](/wiki/C
     # check version
     sudo freshclam -v
     # do a manual update
-    sudo freshclam 
+    sudo freshclam
     # restart the service
     sudo service clamd restart
     sudo service --status-all | grep clamd

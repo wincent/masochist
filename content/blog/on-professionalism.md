@@ -16,7 +16,7 @@ I'm firmly in the third camp. I think the people who have invested their energie
 
 My two line take on the issue:
 
-> The presentation was evidently inappropriate, offensive, in bad taste, and he should have known better. But *big deal*; Matt's lack of good taste is hardly worth the amount of energy that has been poured into discussing it, *even if* he is a Rails "[Activist](http://rubyonrails.org/activists)".
+> The presentation was evidently inappropriate, offensive, in bad taste, and he should have known better. But _big deal_; Matt's lack of good taste is hardly worth the amount of energy that has been poured into discussing it, _even if_ he is a Rails "[Activist](http://rubyonrails.org/activists)".
 
 "Professionalism" isn't a dirty word. It [isn't](http://twitter.com/dhh/status/1631100714) "façade, fake sincerity, political correctness, not offending anyone, and everything else that makes life lifeless". On the contrary it's just focussing on doing your job well; and if the task at hand happens to be making a technical presentation to a heterogenous audience then that means doing so with a modicum of respect, good taste, and an awareness of what kind of message is appropriate.
 

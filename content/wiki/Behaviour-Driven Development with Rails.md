@@ -207,15 +207,15 @@ For example, let's start with a simple requirement for our `User` model:
 We express this with the following [spec](/wiki/spec) in `user_spec.rb`:
 
     describe User, 'without a login name' do
-      
+
       before(:each) do
         @user = User.new
       end
-      
+
       it 'should be invalid' do
         @user.should_not be_valid
       end
-      
+
     end
 
 This spec fails because we don't have any code to make a user without a login name be considered invalid. We correct this by editing the `user.rb` file and adding a `validates_presence_of` call:
@@ -224,7 +224,7 @@ This spec fails because we don't have any code to make a user without a login na
       validates_presence_of :login_name
     end
 
-Now the *other* spec in the `user_spec.rb` file will start failing because the previously valid instance is no longer considered to be valid:
+Now the _other_ spec in the `user_spec.rb` file will start failing because the previously valid instance is no longer considered to be valid:
 
     describe User do
       before(:each) do
@@ -280,7 +280,7 @@ Development will now continue iteratively:
 2.  Write a spec for it (should fail)
 3.  Write code (or take other actions such as performing database migrations as shown above) to make spec pass
 4.  Check changes into [version control](/wiki/version_control)
-5.   Repeat
+5.  Repeat
 
 Periodically we will also do the following
 
@@ -302,11 +302,11 @@ For more information see "[Independently testing models, views and controllers](
 
 ## Test the coupling too
 
-I know I just said that it's a good thing to keep coupling to a minimum, but you *also* need to separately test that all of the components work effectively together. In [Rails](/wiki/Rails) parlance this is called "integration testing". [RSpec](/wiki/RSpec) doesn't directly support that yet (as of version 0.9.4, the latest at the time of writing) but it *does* allow you to use third-party add-ons to perform high-level testing. For more information see "[Using Watir with RSpec and Rails](/wiki/Using_Watir_with_RSpec_and_Rails)".
+I know I just said that it's a good thing to keep coupling to a minimum, but you _also_ need to separately test that all of the components work effectively together. In [Rails](/wiki/Rails) parlance this is called "integration testing". [RSpec](/wiki/RSpec) doesn't directly support that yet (as of version 0.9.4, the latest at the time of writing) but it _does_ allow you to use third-party add-ons to perform high-level testing. For more information see "[Using Watir with RSpec and Rails](/wiki/Using_Watir_with_RSpec_and_Rails)".
 
 ## Don't test [Rails](/wiki/Rails)
 
-Make sure that you are testing the behaviour of *your* application and not that of [Rails](/wiki/Rails) itself. [Rails](/wiki/Rails) is already pretty thoroughly tested. In the example above, we are *not* testing the functionality of [Rails](/wiki/Rails)' ` validates_presence_of` method; we take it as a given that it works as advertised. What we *are* testing is the required behaviour of our application, as specified in the example, a "User without a login name should be invalid". That is the externally visible behaviour that we care about and it is what we use [RSpec](/wiki/RSpec) to confirm; the internal implementation details are not relevant and your [specs](/wiki/specs) should be written in an implementation-detail-neutral way (that is, when the implementation details change the [spec](/wiki/spec) should continue to pass).
+Make sure that you are testing the behaviour of _your_ application and not that of [Rails](/wiki/Rails) itself. [Rails](/wiki/Rails) is already pretty thoroughly tested. In the example above, we are _not_ testing the functionality of [Rails](/wiki/Rails)' `validates_presence_of` method; we take it as a given that it works as advertised. What we _are_ testing is the required behaviour of our application, as specified in the example, a "User without a login name should be invalid". That is the externally visible behaviour that we care about and it is what we use [RSpec](/wiki/RSpec) to confirm; the internal implementation details are not relevant and your [specs](/wiki/specs) should be written in an implementation-detail-neutral way (that is, when the implementation details change the [spec](/wiki/spec) should continue to pass).
 
 # See also
 

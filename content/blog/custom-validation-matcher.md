@@ -35,10 +35,6 @@ And I've just whipped together a custom validation matcher to make it this kind 
 
     end
 
-
-
-
-
 Here's the custom matcher, which I've stuck in my `spec/spec_helper.rb` file:
 
     module Spec
@@ -73,7 +69,7 @@ Here's the custom matcher, which I've stuck in my `spec/spec_helper.rb` file:
                 'invalid'
               end
             end
-            
+
             def errors
               if @model.valid?
                 'no errors'

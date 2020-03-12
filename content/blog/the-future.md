@@ -3,11 +3,7 @@ title: The future
 tags: blog
 ---
 
-I haven't been posting updates to the "Mini-log" (visible in the box on the left-hand side of my [weblog](http://colaiuta.net/)) lately because I've been working on some big changes to the back end of the site (basically, a Rails re-write of *absolutely everything*). This is a huge task and I haven't wanted to make too many posts using the old tools knowing that I'd just have to migrate everything in the future anyway.
-
-
-
-
+I haven't been posting updates to the "Mini-log" (visible in the box on the left-hand side of my [weblog](http://colaiuta.net/)) lately because I've been working on some big changes to the back end of the site (basically, a Rails re-write of _absolutely everything_). This is a huge task and I haven't wanted to make too many posts using the old tools knowing that I'd just have to migrate everything in the future anyway.
 
 #### The problem
 
@@ -27,7 +23,7 @@ I looked at Drupal (not for the first time) and decided it wasn't exactly what I
 
 But my desire for unifying everything into a single piece of software was as strong as ever and perhaps even stronger given that I had recently added [MediaWiki](http://www.mediawiki.org/) to the line-up of software powering my website (I finally gave in and admitted that a wiki would be a much better engine for the [Knowledge Base](http://www.wincent.com/a/knowledge-base/) part of the website; the new Knowledge Base is a fresh install of MediaWiki, almost empty, but you can [take a sneak peek at it here](http://www.wincent.com/knowledge-base/) if you're interested).
 
-[Ruby on Rails](http://www.rubyonrails.org/) is a powerful web framework with the emphasis on *rapid* application development. Would it live up to the hype? Could I use it to write an entirely new website back end — tantamount to writing my own issue tracker, forums software, weblog software, wiki software... a huge task in anyone's book — in a not-inordinate amount of time?
+[Ruby on Rails](http://www.rubyonrails.org/) is a powerful web framework with the emphasis on _rapid_ application development. Would it live up to the hype? Could I use it to write an entirely new website back end — tantamount to writing my own issue tracker, forums software, weblog software, wiki software... a huge task in anyone's book — in a not-inordinate amount of time?
 
 I decided to give it a try. So over the last few weeks I have been experimenting with Rails (ironically, requiring me to learn Ruby at the same time, but I can already see Ruby becoming my favorite scripting language). If the experiment works then you'll eventually see a brand new, unified website for which you can use a single account to access absolutely everything: forums, wikis, weblogs, issues (support tickets, bug reports, feature requests) and so on.
 

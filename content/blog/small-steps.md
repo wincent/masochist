@@ -3,9 +3,7 @@ title: Small steps
 tags: blog
 ---
 
-$ irb -r wiki_text
-    irb(main):001:0> WikiText::Parser.new.parse("foobar")
-    => "<p>foobar</p>\n"
+\$ irb -r wiki_text irb(main):001:0> WikiText::Parser.new.parse("foobar") => "<p>foobar</p>\n"
 
 A small step for man, a [giant]{style="text-decoration: line-through;"} small step for mankind...
 

@@ -4,7 +4,7 @@ tags: version.control wiki
 
 [Microbranching](/wiki/Microbranching), better known as "[using topic branches](/wiki/using_topic_branches)", is a technique that I use when I wish to develop a specific, small feature without distrupting the main line of development or degrading its stability. It is also commonly used when submitting patches to an "upstream" project which you do not control; you group together a logical set of changes on a "topic branch" where they can be easily managed (revised, or kept up to date using [rebasing](/wiki/rebasing)) and then submitted as a patch series (see "[Creating and submitting a patch via email with Git](/wiki/Creating_and_submitting_a_patch_via_email_with_Git)").
 
-The technique consists of creating a local-only branch using a branch-savvy [version control system](/wiki/version_control_system) such as [Git](/wiki/Git) or [SVK](/wiki/SVK), working on the feature, and then using `git merge`, `svk push` or similar to propagate the changes back to the trunk, *or* publishing them upstream as a patch series sent via email (for projects which you don't control directly). These [topic branches](/wiki/topic_branches) or [microbranches](/wiki/microbranches) are short-lived.
+The technique consists of creating a local-only branch using a branch-savvy [version control system](/wiki/version_control_system) such as [Git](/wiki/Git) or [SVK](/wiki/SVK), working on the feature, and then using `git merge`, `svk push` or similar to propagate the changes back to the trunk, _or_ publishing them upstream as a patch series sent via email (for projects which you don't control directly). These [topic branches](/wiki/topic_branches) or [microbranches](/wiki/microbranches) are short-lived.
 
 # An example using [SVK](/wiki/SVK)
 

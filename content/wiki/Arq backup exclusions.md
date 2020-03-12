@@ -4,18 +4,18 @@ tags: arq time.machine wiki
 
 [Arq](/wiki/Arq) comes with some standard exclusions, [listed here](http://www.haystacksoftware.com/support/arq_help/pages/adding_folder.html). At the time of writing, that list is:
 
-- `.Trash`
-- `Library/Caches`
-- `Library/Logs`
-- `Library/Mail/V2/MailData/AvailableFeeds`
-- `Library/Mail/V2/MailData/Envelope Index`
-- `Library/Mail/V2/MailData/Envelope Index-shm`
-- `Library/Mail/V2/MailData/Envelope Index-wal`
-- `Library/Safari/WebpageIcons.db`
-- `Library/Saved Application State`
-- `Library/iTunes/iPad Software Updates`
-- `Library/iTunes/iPhone Software Updates`
-- `Library/iTunes/iPod Software Updates`
+-   `.Trash`
+-   `Library/Caches`
+-   `Library/Logs`
+-   `Library/Mail/V2/MailData/AvailableFeeds`
+-   `Library/Mail/V2/MailData/Envelope Index`
+-   `Library/Mail/V2/MailData/Envelope Index-shm`
+-   `Library/Mail/V2/MailData/Envelope Index-wal`
+-   `Library/Safari/WebpageIcons.db`
+-   `Library/Saved Application State`
+-   `Library/iTunes/iPad Software Updates`
+-   `Library/iTunes/iPhone Software Updates`
+-   `Library/iTunes/iPod Software Updates`
 
 # Time Machine
 

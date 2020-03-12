@@ -8,7 +8,7 @@ I found a bug in Rails 3.0.0.rc, specifically in Action Dispatch, and in order t
 ```shell
 $ wget http://wwwmaster.postgresql.org/redir/149/h/source/v8.4.4/postgresql-8.4.4.tar.bz2
 $ wget http://wwwmaster.postgresql.org/redir/149/h/source/v8.4.4/postgresql-8.4.4.tar.bz2.md5
-$ cat postgresql-8.4.4.tar.bz2.md5 
+$ cat postgresql-8.4.4.tar.bz2.md5
 $ md5 postgresql-8.4.4.tar.bz2
 $ tar xjvf postgresql-8.4.4.tar.bz2
 $ cd postgresql-8.4.4

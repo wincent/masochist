@@ -4,7 +4,7 @@ tags: development wiki
 
 [MVC](/wiki/MVC) or [Model-View-Controller](/wiki/Model-View-Controller) is an approach to [object-oriented programming](/wiki/object-oriented_programming) which divides the concerns of an application into three separate types, each corresponding to a class:
 
--   [Model](/wiki/Model): a class that describes the *what* or thing being modelled.
+-   [Model](/wiki/Model): a class that describes the _what_ or thing being modelled.
 -   [View](/wiki/View): a class that provides a user with a way of interacting with the thing being modelled; it both shows a representation of the model and (possibly) allows the user to make changes to the model. Multiple different views may simultaneously offer different representations of the same underlying model object.
 -   [Controller](/wiki/Controller): a class that mediates between the model and its view or views.
 

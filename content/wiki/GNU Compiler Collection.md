@@ -2,5 +2,3 @@
 redirect: [[GCC]]
 tags: wiki
 ---
-
-

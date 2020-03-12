@@ -9,8 +9,8 @@ The [trick I previously described](http://www.wincent.com/a/about/wincent/weblog
 
 1.  [Search Google](http://www.google.com/search?q=godaddy+%22promo+code%22&ie=UTF-8&oe=UTF-8) for 'godaddy "promo code"'.
 2.  Remove privacy on the domain to be renewed.
-3.  Renew it using a promo code. Today I was able to get a 10% discount by entering `HASH3` (found [here](http://www.hostingadvices.com/godaddy-cheap-domain.php)); so that's a one-year dot-com renewal for US$7.20, including the ICANN fee.
-4.  After renewal is complete, add privacy again as a separate transaction; this will work. Again, try to find the best promo code you can; today I got 10% off using `SAVENOW` (found on [the same page](http://www.hostingadvices.com/godaddy-cheap-domain.php)), yielding private registration for US$4.49, all inclusive.
+3.  Renew it using a promo code. Today I was able to get a 10% discount by entering `HASH3` (found [here](http://www.hostingadvices.com/godaddy-cheap-domain.php)); so that's a one-year dot-com renewal for US\$7.20, including the ICANN fee.
+4.  After renewal is complete, add privacy again as a separate transaction; this will work. Again, try to find the best promo code you can; today I got 10% off using `SAVENOW` (found on [the same page](http://www.hostingadvices.com/godaddy-cheap-domain.php)), yielding private registration for US\$4.49, all inclusive.
 
 #### Drawbacks
 

@@ -13,7 +13,7 @@ I know of [some people](http://fukamachi.org/) who will no doubt be delighted to
 
 Mauricio takes the Markdown README, concatenates it 32 times, and feeds it through a number of translators. Gruber's "reference" implementation crashes ignominiously with a segfault on the 10,912-line file. The "standard" [Ruby](/wiki/Ruby) implementation, Bluecloth, takes 2.16 seconds. The [Python](/wiki/Python) equivalent requires 0.35 seconds. Pandoc, written in [Haskell](/wiki/Haskell), takes 0.55 seconds.
 
-Mauricio runs the same test against his own implementation written in OCaml, "Simple\_markup", and it clocks in at about 43 milliseconds on his 3 GHz AMD64 test box.
+Mauricio runs the same test against his own implementation written in OCaml, "Simple_markup", and it clocks in at about 43 milliseconds on his 3 GHz AMD64 test box.
 
 Seeing as one of the primary design goals in my own [wikitext](/wiki/wikitext) translator is speed, I thought I'd compare its throughput. Sure, this is wikitext, not Markdown, but I can still measure the raw throughput anyway, can't I?
 

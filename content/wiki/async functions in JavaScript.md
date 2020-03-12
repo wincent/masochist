@@ -8,20 +8,20 @@ cache_breaker: 1
 ```javascript
 #!/usr/bin/env node
 
-require('babel/polyfill');
+require("babel/polyfill");
 
-import Promise from 'bluebird';
+import Promise from "bluebird";
 
 async function other() {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve('value'), 3000);
-  });;
+    return new Promise((resolve, reject) => {
+        setTimeout(() => resolve("value"), 3000);
+    });
 }
 
 (async function() {
-  console.log('Hello, world!');
-  console.log(await other());
-  console.log('Hello, world!');
+    console.log("Hello, world!");
+    console.log(await other());
+    console.log("Hello, world!");
 })();
 ```
 
@@ -52,10 +52,9 @@ Beware of using (the non-standard) `done()` on the promise; this will cause the 
 
 ```javascript
 new Promise((resolve, reject) => {
-  setTimeout(() => reject('value'), 1000);
-})
-.catch(error => {
-  throw 'Error: ' + error;
+    setTimeout(() => reject("value"), 1000);
+}).catch(error => {
+    throw "Error: " + error;
 });
 ```
 
@@ -74,7 +73,7 @@ If you're using Bluebird, you'll want something like this, which gives you basic
 ```javascript
 // see: https://github.com/petkaantonov/bluebird/blob/master/API.md#global-rejection-events
 // see also: http://jamesknelson.com/are-es6-promises-swallowing-your-errors/
-process.on('unhandledRejection', (reason, promise) => {
-  throw reason;
+process.on("unhandledRejection", (reason, promise) => {
+    throw reason;
 });
 ```

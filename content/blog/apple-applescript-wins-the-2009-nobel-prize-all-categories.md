@@ -3,7 +3,7 @@ title: Apple: AppleScript wins the 2009 Nobel Prize (all categories)
 tags: applescript blog
 ---
 
-> Since its introduction in 1992, [AppleScript](/wiki/AppleScript) has proven to be *the best tool for making life with a computer a productive experience*.
+> Since its introduction in 1992, [AppleScript](/wiki/AppleScript) has proven to be _the best tool for making life with a computer a productive experience_.
 
 Well, at least that's what [Apple](/wiki/Apple)'s marketing people [tell us](http://www.apple.com/applescript/).
 

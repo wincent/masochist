@@ -11,7 +11,7 @@ Up to this point, all good. But from that point on it starts to get into science
 
 > With the new PCI Express, the Mac Pro supports the latest generation of graphics cards from NVIDIA, such as the NVIDIA GeForce 8800 GT with 512MB of video memory, or the NVIDIA Quadro FX 5600 with 1.5GB of video memory and a 3D stereo port for stereo-in-a-window applications.
 
-*1.5 Gigabytes of video memory*? That's almost as much main memory as I have on this iMac (where I have 2GB). But that's not the end of it... This last sentence is just *insane*:
+_1.5 Gigabytes of video memory_? That's almost as much main memory as I have on this iMac (where I have 2GB). But that's not the end of it... This last sentence is just _insane_:
 
 > With support for up to four graphics cards, the new Mac Pro can drive up to eight 30-inch displays at once for advanced visualization and large display walls.
 

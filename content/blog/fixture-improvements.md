@@ -14,4 +14,4 @@ This addresses some of the problems that [FixtureReplacement](http://www.wincent
     -   The selective overriding capability allows you to make the attributes that are relevant to a particular situation really stand out (see [this example](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/custom_validation_matcher.php))
     -   FixtureReplacement is great for experimenting in the `script/console`
 
-I think there's room for both "Foxy Fixtures" (ugh) *and* something like FixtureReplacement in core Rails. I'd like to see the latter merged in some day.
+I think there's room for both "Foxy Fixtures" (ugh) _and_ something like FixtureReplacement in core Rails. I'd like to see the latter merged in some day.

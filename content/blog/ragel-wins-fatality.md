@@ -11,17 +11,13 @@ Up until now the scanner used a [ANTLR](http://www.wincent.com/knowledge-base/AN
 
 And the results were quite snappy. But for some time I've had the sneaking suspicion that a [Ragel](http://www.wincent.com/knowledge-base/Ragel)-generated scanner would be faster. I suspected this even though ANTLR uses all sorts of clever tricks like trying to predict which path to take and only backtracking if prediction fails.
 
-You see, Ragel generates simple state machines: the building blocks of regular expressions. Whereas ANTLR is like a complex and unpredictable magic clock, Ragel state machines are totally transparent and predictable. I've spent many months trying to use ANTLR on a number of different projects and in every case *except* for this wikitext translator I've ended up putting it aside because I couldn't divine the incantations required to make it do its black magic. Ragel, on the other hand, is absurdly simple. You can build complex things out of it, but the base components are easily comprehensible. Compared to ANTLR, Ragel is incredibly easy to learn.
-
-
-
-
+You see, Ragel generates simple state machines: the building blocks of regular expressions. Whereas ANTLR is like a complex and unpredictable magic clock, Ragel state machines are totally transparent and predictable. I've spent many months trying to use ANTLR on a number of different projects and in every case _except_ for this wikitext translator I've ended up putting it aside because I couldn't divine the incantations required to make it do its black magic. Ragel, on the other hand, is absurdly simple. You can build complex things out of it, but the base components are easily comprehensible. Compared to ANTLR, Ragel is incredibly easy to learn.
 
 ### Why Ragel should be better
 
 So I suspected that Ragel might be a bit quicker. No amount of prediction in a predictive lexer can beat a pure state machine, which by definition is going to run in constant time because it simultaneously explores all possible paths. When you add backtracking into the mix (as a result of trying to always favor the longest match) then you lose your constant time but it should still be fast because the state machines themselves are so efficient.
 
-One of Ragel's key advantages is that there is absolutely zero internal function call overhead. This is because the *are* no internal function calls; everything is done with basic [C](http://www.wincent.com/knowledge-base/C) control structures (`for` loops, `gotos`, `case` statements and the like). Once you're in the Ragel machine you can stay there until you've scanned all the text.
+One of Ragel's key advantages is that there is absolutely zero internal function call overhead. This is because the _are_ no internal function calls; everything is done with basic [C](http://www.wincent.com/knowledge-base/C) control structures (`for` loops, `gotos`, `case` statements and the like). Once you're in the Ragel machine you can stay there until you've scanned all the text.
 
 Another advantage is that it's trivial to do everything in [UTF-8](http://www.wincent.com/knowledge-base/UTF-8) using Ragel. [ANTLR](http://www.wincent.com/knowledge-base/ANTLR) is a [Java](http://www.wincent.com/knowledge-base/Java) tool and so it uses [UTF-16](http://www.wincent.com/knowledge-base/UTF-16), which means twice the memory most of the time. The C target makes the unfortunate decision of using the obsolete [UCS-2](http://www.wincent.com/knowledge-base/UCS-2) encoding (basically the same as UTF-16 but without surrogates which means that it can't represent all Unicode codepoints and is no longer recommended for use) because that's what maps most easily onto UTF-16. I looked at overriding it to use some other encoding but it looked non-trivial and error prone, and likely to break with every new ANTLR release.
 
@@ -33,15 +29,15 @@ Let me give one quick example of how ANTLR can be a difficult beast to tame. Con
 
     URI : HTTP URI_CHARS (SPECIAL_URI_CHARS URI_CHARS)*;
 
-This basically says you want to recognize as a URI a sequence that looks like "http", following by a bunch of "URI chars" (things like letters, numbers, and so on). And you also want to include "special URI chars" (things like the period) *provided* that they are followed by more "URI chars".
+This basically says you want to recognize as a URI a sequence that looks like "http", following by a bunch of "URI chars" (things like letters, numbers, and so on). And you also want to include "special URI chars" (things like the period) _provided_ that they are followed by more "URI chars".
 
 This is what allows you to correctly tokenize sentences like the following:
 
 > My website is <http://www.wincent.com/>.
 
-You *don't* want that last period to be included in the URI when you turn it into a hyperlink, but you *do* want the first period to be included because it's followed by "com".
+You _don't_ want that last period to be included in the URI when you turn it into a hyperlink, but you _do_ want the first period to be included because it's followed by "com".
 
-Well, it turns out that the above rule won't work in ANTLR. Upon seeing "`SPECIAL_URI_CHARS`" it will try to be clever — *too* clever in this case — and predicts that what it is about to scan is in fact "`SPECIAL_URI_CHARS` followed by `URI_CHARS`". If you feed in a text like the above ANTLR will throw a recognition exception because its prediction turns out to be incorrect.
+Well, it turns out that the above rule won't work in ANTLR. Upon seeing "`SPECIAL_URI_CHARS`" it will try to be clever — _too_ clever in this case — and predicts that what it is about to scan is in fact "`SPECIAL_URI_CHARS` followed by `URI_CHARS`". If you feed in a text like the above ANTLR will throw a recognition exception because its prediction turns out to be incorrect.
 
 So you have to write the rule like this using a predicate:
 
@@ -49,13 +45,13 @@ So you have to write the rule like this using a predicate:
 
 That last bit says, "recognize `SPECIAL_URI_CHARS` followed by `URI_CHARS`, but only if you've first checked to see that there really are `SPECIAL_URI_CHARS` followed by `URI_CHARS`". In other words, ANTLR scans ahead, and then goes back and rescans the same piece of text again.
 
-It would be nice if you could use ANTLR without having to know these little tricks. But even if you are fortunate enough to know them, you're still in a less than desirable position; backtracking in the event of a failed match is expensive, but this kind of backtracking and *re*-scanning in the case of a successful match seems just plain wrong.
+It would be nice if you could use ANTLR without having to know these little tricks. But even if you are fortunate enough to know them, you're still in a less than desirable position; backtracking in the event of a failed match is expensive, but this kind of backtracking and _re_-scanning in the case of a successful match seems just plain wrong.
 
 Now let's look at the equivalent rule in Ragel:
 
     uri = http uri_chars (special_uri_chars uri_chars)* ;
 
-I think that speaks for itself, but I'll make an additional comment anyway. You can look at such a rule and know *exactly* what kind of state machine it maps to. Entirely predictable, and no black magic or fancy prediction logic under the hood.
+I think that speaks for itself, but I'll make an additional comment anyway. You can look at such a rule and know _exactly_ what kind of state machine it maps to. Entirely predictable, and no black magic or fancy prediction logic under the hood.
 
 ### The numbers
 
@@ -85,11 +81,11 @@ But the cost brings a benefit too. Check out the corresponding numbers for the A
 
 As you can see, Ragel wipes the floor with it. While ANTLR doesn't suffer any speed hit at all when you start using multibyte characters, its absolute processing speed is nearly 38 times slower than that of Ragel. It tokenizes the same input text at a rate of about 1.14 megabytes per second. That sounds pretty good, until you compare it to Ragel's 42+ megabytes per second.
 
-A side note: when I originally published this article I reported figures for Ragel that showed it was "only" 10 times faster than ANTLR; turning on fast goto-driven FSM with the `-G2` switch (as opposed to the default table-driven one) yielded a basically four-fold increase in speed. Now this really starts to get into the "mind-boggling" zone, how Ragel can produce scanners *so* much faster than the equivalent lexers in ANTLR's fastest target language. Can internal function call overhead explain such a large gap?
+A side note: when I originally published this article I reported figures for Ragel that showed it was "only" 10 times faster than ANTLR; turning on fast goto-driven FSM with the `-G2` switch (as opposed to the default table-driven one) yielded a basically four-fold increase in speed. Now this really starts to get into the "mind-boggling" zone, how Ragel can produce scanners _so_ much faster than the equivalent lexers in ANTLR's fastest target language. Can internal function call overhead explain such a large gap?
 
-To be fair to ANTLR, not all of the time in the benchmark is spent inside the ANTLR lexer itself; some of it is spent converting the input from UTF-8 to UCS-2 before feeding it in to the lexer. Seeing as we're only testing how fast the lexer can spit out tokens, we let it off we don't worry about converting back to UTF-8 at the end (in the real, non-benchmark scenario, that *is* a penalty that we'd have to pay).
+To be fair to ANTLR, not all of the time in the benchmark is spent inside the ANTLR lexer itself; some of it is spent converting the input from UTF-8 to UCS-2 before feeding it in to the lexer. Seeing as we're only testing how fast the lexer can spit out tokens, we let it off we don't worry about converting back to UTF-8 at the end (in the real, non-benchmark scenario, that _is_ a penalty that we'd have to pay).
 
-Is it fair to penalize the ANTLR lexer in this way? I think so; it *is* asking for UCS-2 input after all, so if that's what it wants...
+Is it fair to penalize the ANTLR lexer in this way? I think so; it _is_ asking for UCS-2 input after all, so if that's what it wants...
 
 And to put things in perspective, 10% or less of the time in those numbers is due to the encoding conversion. As I said above, modern CPUs are well suited to doing the basic bit-shuffling required to convert to and from UTF-8, and the benchmark is using a hand-coded converter that I wrote in C.
 

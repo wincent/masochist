@@ -22,7 +22,7 @@ Sure enough, I found that performance was fine for small projects but sluggish f
 
 Ironically, despite being initially slow, Ruby actually offers one of the better performance optimization pathways: you can analyze the slow parts of the program and selectively port them to [C](/wiki/C) in the form of an extension.
 
-I decided to do this rather than pursue the unknown avenue of porting the Ruby parts gradually over to vimscript itself. Due to my lack of experience with vimscript I really didn't know if it would be worth it, whereas with C I *knew* the speedups would be tremendous.
+I decided to do this rather than pursue the unknown avenue of porting the Ruby parts gradually over to vimscript itself. Due to my lack of experience with vimscript I really didn't know if it would be worth it, whereas with C I _knew_ the speedups would be tremendous.
 
 The downside of this is that distribution might be a little trickier. I was planning on distributing it as a "vimball", but now I might have to split it up into an easy-to-install vimball which depends on a separate, easy-to-install [gem](/wiki/gem).
 

@@ -39,7 +39,7 @@ The results I get for Mac OS X 10.4.7 (Intel) running version 2.4 of the Xcode t
     [/tags/define #define] __DBL_DIG__ 15
     [/tags/define #define] __FLT_EPSILON__ 1.19209290e-7F
     [/tags/define #define] __LDBL_MIN__ 3.36210314311209350626e-4932L
-    [/tags/define #define] __strong 
+    [/tags/define #define] __strong
     [/tags/define #define] __APPLE__ 1
     [/tags/define #define] __DECIMAL_DIG__ 21
     [/tags/define #define] __LDBL_HAS_QUIET_NAN__ 1
@@ -48,7 +48,7 @@ The results I get for Mac OS X 10.4.7 (Intel) running version 2.4 of the Xcode t
     [/tags/define #define] __MMX__ 1
     [/tags/define #define] __DBL_MAX__ 1.7976931348623157e+308
     [/tags/define #define] __DBL_HAS_INFINITY__ 1
-    [/tags/define #define] __weak 
+    [/tags/define #define] __weak
     [/tags/define #define] __DBL_MAX_EXP__ 1024
     [/tags/define #define] __SSE2_MATH__ 1
     [/tags/define #define] __LONG_LONG_MAX__ 9223372036854775807LL
@@ -56,7 +56,7 @@ The results I get for Mac OS X 10.4.7 (Intel) running version 2.4 of the Xcode t
     [/tags/define #define] __FLT_MIN_EXP__ (-125)
     [/tags/define #define] __DBL_MIN__ 2.2250738585072014e-308
     [/tags/define #define] __DBL_HAS_QUIET_NAN__ 1
-    [/tags/define #define] __REGISTER_PREFIX__ 
+    [/tags/define #define] __REGISTER_PREFIX__
     [/tags/define #define] __NO_INLINE__ 1
     [/tags/define #define] __i386 1
     [/tags/define #define] __FLT_MANT_DIG__ 24

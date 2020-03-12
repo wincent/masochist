@@ -9,7 +9,7 @@ Once gain, like the last upgrade (see "[Upgrading to RSpec 1.0.4 on Mac OS X Tig
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec

@@ -22,7 +22,7 @@ From the email we can deduce that McAfee is either storing user passwords in pla
 
 Sure, it would be better to instead store the password in some kind of salted and hashed form instead, but let's not lose perspective here. Storing password hashes is only marginally more secure than storing them in plaintext. (If your database is compromised you are usually hosed anyway, regardless of how your passwords are stored.)
 
-Using properly salted hashes is but one layer in a solid "[defense in depth](/wiki/defense_in_depth)" strategy. You *should* be doing it. But if the rest of the system is well-engineered then failing to implement *one* layer is a lost opportunity and not necessarily a grievous security shortcoming. In any case, it's certainly not worth making a fuss about on one's blog. (As you can see, I actually care more about the *response* to McAfee's design than the design itself.)
+Using properly salted hashes is but one layer in a solid "[defense in depth](/wiki/defense_in_depth)" strategy. You _should_ be doing it. But if the rest of the system is well-engineered then failing to implement _one_ layer is a lost opportunity and not necessarily a grievous security shortcoming. In any case, it's certainly not worth making a fuss about on one's blog. (As you can see, I actually care more about the _response_ to McAfee's design than the design itself.)
 
 # Sending passwords in plaintext
 
@@ -32,9 +32,9 @@ Really the same argument applies here. This is another lost opportunity to make 
 
 Compare it with the alternative: sending a link to a special page that the user can use to reset their password. Those links are equally amenable to snooping and if intercepted can just as easily be used to take control of someone else's account.
 
-My general impression as a user of a number of different web apps is that while only a small number of them commit the *faux pas* of sending passwords in plaintext, the *immense majority* choose the equally insecure method of sending out links that can be exploited to the same effect. Why then all the fuss about McAfee?
+My general impression as a user of a number of different web apps is that while only a small number of them commit the _faux pas_ of sending passwords in plaintext, the _immense majority_ choose the equally insecure method of sending out links that can be exploited to the same effect. Why then all the fuss about McAfee?
 
-# Making things more secure (or at least, less *insecure*)
+# Making things more secure (or at least, less _insecure_)
 
 I know of two more layers that can be fairly easily added to the "defense in depth" strategy used to turn the "forgot password" functionality from something only very weakly secure (basically a form of "[security through obscurity](/wiki/security_through_obscurity)"; hoping that nobody will happen to snoop on your email traffic, and if they do that they won't care enough about your insignificant account to actually do anything about it) into something somewhat more secure.
 
@@ -51,4 +51,4 @@ Here I'm talking about those dreaded "security questions", like "what was your m
 
 I guess my point here is that we need to keep things in perspective. Good security is about being thorough and trying to eliminate or minimise insecurity at every level of a multi-layered system. The most common thing is for even the best-engineered systems to fall down on at least one level, perhaps more.
 
-But if one *does* happen to discover a flaw on one of these layers, there's no need to run off screaming into the blogosphere ringing alarm bells and decrying "FUCKING SECURITY FAIL". It's really just par for the course and nothing remarkable at all.
+But if one _does_ happen to discover a flaw on one of these layers, there's no need to run off screaming into the blogosphere ringing alarm bells and decrying "FUCKING SECURITY FAIL". It's really just par for the course and nothing remarkable at all.

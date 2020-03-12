@@ -2,11 +2,7 @@
 tags: unicorn wiki
 ---
 
-tldr:
-    2.0.0 - cleanups for Rainbows!, but should be ready for general use
-           barring portability issues
-    1.1.5 - bug fixes
-    1.0.2 - bug fixes
+tldr: 2.0.0 - cleanups for Rainbows!, but should be ready for general use barring portability issues 1.1.5 - bug fixes 1.0.2 - bug fixes
 
     Please send any and all feedback to the mailing list.  Do not waste
     bandwidth with HTML or signature attachments.

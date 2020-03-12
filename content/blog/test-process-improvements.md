@@ -5,10 +5,6 @@ tags: blog
 
 Yesterday and today I've been working on improving the automated testing process used when building products like [Synergy Advance](http://advance.wincent.com/) and [Hextrapolate](http://hextrapolate.wincent.com/).
 
-
-
-
-
 ### Goodbye failing tests
 
 I had some failing tests in place (`WO_TEST_FAIL`) to serve as reminders to go ahead and implement real tests at a later date. This is mostly in cases where the tests are fiendishly difficult to write (testing [GUI](http://www.wincent.com/knowledge-base/GUI) elements, for example) and I wasn't sure how to proceed.
@@ -66,8 +62,7 @@ There's nothing wrong with the [Objective-C](http://www.wincent.com/knowledge-ba
 
 When I saw [RSpec](http://www.wincent.com/knowledge-base/RSpec) I wanted to modify WOTest to use a similar syntax (`should` and `shouldNot` messages added via a category on `NSObject`) using [Higher Order Messaging](http://www.wincent.com/knowledge-base/Higher%20Order%20Messaging) to allow expressions like:
 
-\[\[thing should\] equal:@"foo"\];
-But this could fall down if `thing` were `nil` and wouldn't work if `thing` were not an `NSObject` subclass.
+\[\[thing should\] equal:@"foo"\]; But this could fall down if `thing` were `nil` and wouldn't work if `thing` were not an `NSObject` subclass.
 
 Note that I use a `should` method that returns an anonymous proxy that captures the `equal:` method and then forwards it back to `thing` rather than using a single `shouldEqual:` method. This is to avoid cluttering the `NSObject` namespace.
 

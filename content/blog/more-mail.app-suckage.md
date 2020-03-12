@@ -4,14 +4,9 @@ tags: blog
 ---
 
 $ cd ~/Library/Mail/Mailboxes/listas/xcode-users.mbox
-    $ ls -lh Messages
-    total 48
-    -rw-r--r--   1 wincent  wincent    3K Oct  4 23:37 1722199.emlx
-    -rw-r--r--   1 wincent  wincent    2K Oct  4 23:37 1722200.emlx
-    -rw-r--r--   1 wincent  wincent    3K Oct  4 23:37 1722201.emlx
-    -rw-r--r--   1 wincent  wincent    8K Oct  4 23:37 1722202.emlx
+    $ ls -lh Messages total 48 -rw-r--r-- 1 wincent wincent 3K Oct 4 23:37 1722199.emlx -rw-r--r-- 1 wincent wincent 2K Oct 4 23:37 1722200.emlx -rw-r--r-- 1 wincent wincent 3K Oct 4 23:37 1722201.emlx -rw-r--r-- 1 wincent wincent 8K Oct 4 23:37 1722202.emlx
 
-That's my xcode-users mailing list folder after cleaning it out, emptying the trash *and* rebuilding the mailbox. But get this:
+That's my xcode-users mailing list folder after cleaning it out, emptying the trash _and_ rebuilding the mailbox. But get this:
 
     $ ls -lh
     total 78640
@@ -25,7 +20,7 @@ That's my xcode-users mailing list folder after cleaning it out, emptying the tr
     -rw-r--r--   1 wincent  wincent        0B Dec  2  2003 mbox.SKindex.isValid
     -rw-r--r--   1 wincent  wincent        1M Mar 30  2005 table_of_contents
 
-Notice how the mbox file is still *30 megabytes*, the index is 5 meg, and the table of contents is another meg. All this for a mailbox with only 4 puny messages which don't even add up to 20K:
+Notice how the mbox file is still _30 megabytes_, the index is 5 meg, and the table of contents is another meg. All this for a mailbox with only 4 puny messages which don't even add up to 20K:
 
     $ wc Messages/*
          103     367    3960 Messages/1722199.emlx
@@ -35,7 +30,6 @@ Notice how the mbox file is still *30 megabytes*, the index is 5 meg, and the ta
          507    1974   18376 total
 
 How do I trim the mbox down to size? Do I have to open a 700,000-line file in BBEdit and trim it by hand?
-
 
 ### Update
 

@@ -41,18 +41,18 @@ This "before" and "after" language is actually a little misleading however, as t
 -   each layer in the stack calls the next layer (ie. set-up performed in "earlier" layers can be passed through to "later" layers)
 -   as layers finish processing, their responses are made visible to the layers which called them (ie. modifications performed by "later" layers are passed back to "earlier" layers)
 
-This can be quite confusing, and it may appear at times that *the effective execution order is reversed*, depending on how you look at it. This is because each piece of middleware is being called by the item before it in the stack, and ends up doing a `call` on the next item in the stack. So while "earlier" items in the stack *start* before "later" items, "later" items *finish* before "earlier" ones.
+This can be quite confusing, and it may appear at times that _the effective execution order is reversed_, depending on how you look at it. This is because each piece of middleware is being called by the item before it in the stack, and ends up doing a `call` on the next item in the stack. So while "earlier" items in the stack _start_ before "later" items, "later" items _finish_ before "earlier" ones.
 
 As an example, the `ÀctionDispatch::Cookies` middleware:
 
--   appears *before* the `ActionDispatch::Session::CookieStore` middleware in the list
--   *begins* executing *before* the `CookieStore` middleware
--   *but* effectively does nothing important before calling the `CookieStore` middleware
+-   appears _before_ the `ActionDispatch::Session::CookieStore` middleware in the list
+-   _begins_ executing _before_ the `CookieStore` middleware
+-   _but_ effectively does nothing important before calling the `CookieStore` middleware
 
 The `CookieStore` middleware, on the other hand:
 
--   is called *after* the `Cookies`middleware
--   but *finishes* execution *before* the `Cookies` middleware
+-   is called _after_ the `Cookies`middleware
+-   but _finishes_ execution _before_ the `Cookies` middleware
 -   then returns control to the `Cookies` middleware
 
 Note that any changes made to the environment by the `CookieStore` middleware will be "visible" to the `Cookies` middleware.

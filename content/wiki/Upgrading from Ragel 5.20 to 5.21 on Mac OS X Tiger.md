@@ -22,11 +22,11 @@ I tried to install via [Subversion](/wiki/Subversion):
 But the server was down, so I fell back to using the tarball instead:
 
     wget 'http://www.cs.queensu.ca/~thurston/ragel/ragel-5.21.tar.gz'
-    tar xzvf ragel-5.21.tar.gz 
+    tar xzvf ragel-5.21.tar.gz
     cd ragel-5.21/
-    ./configure 
+    ./configure
     make
     cd test
-    ./runtests 
+    ./runtests
     cd ..
     sudo make install

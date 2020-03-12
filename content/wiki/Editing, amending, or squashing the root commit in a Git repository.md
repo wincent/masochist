@@ -28,7 +28,7 @@ Based on this history:
 
     old
     root
-    v 
+    v
     A---B---C---D---etc
         ^
         new

@@ -28,12 +28,12 @@ Just as in the previous upgrade (see "[Upgrading from Ragel 5.24 to 6.0 on Mac O
     +++ cppscan1.h	2008-03-27 00:56:06.000000000 +0100
     @@ -2,7 +2,7 @@
      [/tags/define #define] _CPPSCAN1_H
-     
+
      [/tags/include #include] <iostream>
     -#include <malloc.h>
     +#include <malloc/malloc.h>
      [/tags/include #include] <string.h>
-     
+
      using namespace std;
 
 And then run the test suite again (with `./runtests`) and it should pass fine.

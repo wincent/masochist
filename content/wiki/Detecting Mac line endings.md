@@ -30,7 +30,7 @@ If you have Bash version 3 or later you can use its built-in [regular expression
     for FILE in $(find . -type f)
     do
       TYPE=$(file -b "$FILE")
-      if [[ "$TYPE" =~ 'text' ]]; then  
+      if [[ "$TYPE" =~ 'text' ]]; then
         if ! perl -ne "exit 1 if m/\r/;" "$FILE"; then
           echo "CR detected in : $FILE"
         else

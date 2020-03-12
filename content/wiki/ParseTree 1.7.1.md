@@ -9,7 +9,7 @@ The new version of [ParseTree](/wiki/ParseTree), [ParseTree 1.7.1](/wiki/ParseTr
 -   3 bug fixes:
     -   Add [zentest](/wiki/zentest) as a heckle dependency. Closes \#10996
     -   Fixed heckling of call with blocks.
-    -   Fix test\_unit\_heckler's test\_pass? so it returns the result of the run rather than ARGV.clear
+    -   Fix test_unit_heckler's test_pass? so it returns the result of the run rather than ARGV.clear
 
 # See also
 

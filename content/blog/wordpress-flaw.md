@@ -11,9 +11,9 @@ But wait, there's more! A little further down we see:
 
 > Unfortunately, 2.2.1 is not just a bug fix release. Some security issues came to light during 2.2.1 development, making 2.2.1 a required upgrade.
 
-This is not the first [security disgrace](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php) for [WordPress](http://www.wincent.com/knowledge-base/WordPress) and it's exactly this kind of flaw which makes it impossible to recommend [WordPress](http://www.wincent.com/knowledge-base/WordPress) as a public-facing [web](http://www.wincent.com/knowledge-base/web) application. In fact, it's not just that I can't recommend installing it; it's that it would be irresponsible to do anything but recommend that people *uninstall* it.
+This is not the first [security disgrace](http://www.wincent.com/a/about/wincent/weblog/archives/2007/04/wordpress_213_b.php) for [WordPress](http://www.wincent.com/knowledge-base/WordPress) and it's exactly this kind of flaw which makes it impossible to recommend [WordPress](http://www.wincent.com/knowledge-base/WordPress) as a public-facing [web](http://www.wincent.com/knowledge-base/web) application. In fact, it's not just that I can't recommend installing it; it's that it would be irresponsible to do anything but recommend that people _uninstall_ it.
 
-An [exploit](http://www.milw0rm.com/exploits/4039) for one of the flaws was published on 6 June. The exploit demonstrates how any user with an account can get the login names, password hashes, and authentication cookies for *every user in the database*. The exploit describes the flaw as "bastante tonto por cierto" ("pretty dumb, that's for sure").
+An [exploit](http://www.milw0rm.com/exploits/4039) for one of the flaws was published on 6 June. The exploit demonstrates how any user with an account can get the login names, password hashes, and authentication cookies for _every user in the database_. The exploit describes the flaw as "bastante tonto por cierto" ("pretty dumb, that's for sure").
 
 The flaw was publicly disclosed on 6 June. It turns out that the security researcher in question privately notified the WordPress developers beforehand, and a [patch](http://trac.wordpress.org/changeset/5570) was checked into the trunk on 28 May.
 

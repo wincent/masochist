@@ -18,10 +18,6 @@ Disk Utility reported one error on the volume containing the fresh install, "Inc
 -   **Average time between failures:** 29 days
 -   **Uptime at moment of failure(s):** Less than one minute
 
-
-
-
-
 #### Notes about day calculations
 
 Rather than hurting my brain by trying to manually work out date intervals and mean time between failures, I used the interactive Ruby interpreter, `irb`:

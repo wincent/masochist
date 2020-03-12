@@ -7,7 +7,6 @@ I've always been a little confused by [Apple](http://www.wincent.com/knowledge-b
 
 The documentation seems to have undergone a number of [revisions](http://developer.apple.com/documentation/MacOSX/Conceptual/BPRuntimeConfig/RevisionHistory.html) lately ("Undocumented the CFBundleGetInfoString key", "Added details on the new purpose of the CFBundleGetInfoString key", "Reintroduced the CFBundleGetInfoString key") and this is the current state of affairs under [Leopard](http://www.wincent.com/knowledge-base/Leopard):
 
-
 ## Behaviour
 
 This is really the only thing you need to care about.
@@ -17,10 +16,6 @@ The value of `CFBundleGetInfoString` is shown in Finder "Get Info" window. An ap
 A string consisting of "`CFBundleShortVersionString (CFBundleVersion)`" is shown in your application "About" box. A typical value for `CFBundleShortVersionString` would be something like "Version 1.2". This key can and often is localized, principally because of the presence of the word "Version". The `CFBundleVersion` is usually a build number, like "332" in the example above. There's no reason to localize this and in fact Apple's docs say that the key isn't localizable.
 
 The `NSHumanReadableCopyright` key is used to provide a localized copyright notice which appears under the version number in the standard Cocoa About box (thanks to Jean-Daniel Dupas for pointing this out to me).
-
-
-
-
 
 ## The docs
 
@@ -44,7 +39,7 @@ Finally it's worth mentioning this one:
 
 > This key contains a string with the copyright notice for the bundle; for example, "� 2006, My Company". You can load this string and display it in an About dialog box. This key can be localized by including it in your InfoPlist.strings files. This key replaces the obsolete CFBundleGetInfoString key.
 
-More information can be found in the documentation for the ` orderFrontStandardAboutPanelWithOptions:` method in `NSApplication`:
+More information can be found in the documentation for the `orderFrontStandardAboutPanelWithOptions:` method in `NSApplication`:
 
 > ...this method then looks for the value of NSHumanReadableCopyright in the localized version infoDictionary.
 

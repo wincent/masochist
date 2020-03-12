@@ -22,9 +22,9 @@ It is true that they are "set up" by the time you hit the `before` block. That i
 
 But what you may think from the example is that after the `after` block they get removed from the database. This is not the case. I don't know what "torn down" actually means in this context; I suspect it means that the contents of the local `people` variable get cleaned out or reset.
 
-If you run your specs and then check the database you'll see that the fixture data is still present, and the "tear down" does *not* include wiping clean the database.
+If you run your specs and then check the database you'll see that the fixture data is still present, and the "tear down" does _not_ include wiping clean the database.
 
-But note that the [specs](/wiki/specs) *are* run inside a database transaction; on leaving the `describe` block the contents of the database will revert back to how things were when the fixtures were first declared.
+But note that the [specs](/wiki/specs) _are_ run inside a database transaction; on leaving the `describe` block the contents of the database will revert back to how things were when the fixtures were first declared.
 
 # See also
 

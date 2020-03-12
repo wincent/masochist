@@ -36,14 +36,14 @@ As the application has evolved I've gradually trimmed down and refined the list 
 
 ### Example: a weblog with "index" and "show" actions
 
-The weblog index page might be very expensive to generate and so [page caching](/wiki/page_caching) it might be attractive. But if you've got an integrated interface then you *can't* page cache it because it has variable (per-user) content.
+The weblog index page might be very expensive to generate and so [page caching](/wiki/page_caching) it might be attractive. But if you've got an integrated interface then you _can't_ page cache it because it has variable (per-user) content.
 
 In this case you should consider creating a separate administrative name space and keep the index free of admin-only special cases so that the page can be the same for all visitors and you can page cache it.
 
-The page where you actually display a single post, however, might be much lighter. On that page you *can* integrate admin-only bells and whistles if the page is lightweight enough that you don't have to worry about page caching it.
+The page where you actually display a single post, however, might be much lighter. On that page you _can_ integrate admin-only bells and whistles if the page is lightweight enough that you don't have to worry about page caching it.
 
-Does this violate "[DRY](/wiki/DRY)"? Yes, in a sense, but you can actually turn this into a value-added proposition by providing *different* administrative interfaces (that is, interfaces that meet different administrative needs) in each context.
+Does this violate "[DRY](/wiki/DRY)"? Yes, in a sense, but you can actually turn this into a value-added proposition by providing _different_ administrative interfaces (that is, interfaces that meet different administrative needs) in each context.
 
-For example, the admin-only "index" view might offer an extremely concise tabular representation of the posts with in-place editor fields for things like title, permalink and so on, checkboxes for "is\_public" and "accepts\_comments", and sortable table headers which allow you to view the data in many different ways.
+For example, the admin-only "index" view might offer an extremely concise tabular representation of the posts with in-place editor fields for things like title, permalink and so on, checkboxes for "is_public" and "accepts_comments", and sortable table headers which allow you to view the data in many different ways.
 
 Your per-page "show" view, on the other hand, will meet different administrative needs, like moderating individual comments, or editing and deleting content.

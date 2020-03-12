@@ -9,7 +9,7 @@ Today brings [another update](http://wordpress.org/development/2007/04/wordpress
 
 > This update is highly recommend for all users of both branches.
 
-*Translation:* upgrade immediately or get owned.
+_Translation:_ upgrade immediately or get owned.
 
 > These releases include fixes for several publicly known minor XSS issues, one major XML-RPC issue, and a proactive full sweep of the WordPress codebase to protect against future problems.
 
@@ -17,7 +17,7 @@ The [WordPress](http://www.wincent.com/knowledge-base/WordPress) team needs to c
 
 1.  Adopt a regular, public update schedule for security updates so that people can plan and be ready for security updates. Something simple like "first Tuesday of every month".
 2.  Have a core-team-only security branch which is merged into the publicly-viewable branches only just before release. More on this point below.
-3.  Implement a mandatory review process in which every single check-in must pass a security review by another team member; this security-specific review should be in addition to any existing review procedures they might have (emphasis on the *might*).
+3.  Implement a mandatory review process in which every single check-in must pass a security review by another team member; this security-specific review should be in addition to any existing review procedures they might have (emphasis on the _might_).
 4.  Appoint a security officer whose responsibilities include a coordinating regular, pro-active audits of the code base.
 
 Now to address the second point above; I love the open source development model and I think it's great to develop stuff out in the open. But when it comes to security fixes for vulnerabilities need to be kept secret until they are released. With [WordPress](http://www.wincent.com/knowledge-base/WordPress) we currently have the worst of both worlds: throughout the entire development cycle attackers can monitor the [WordPress trac](http://trac.wordpress.org/) for vulnerability reports and the corresponding fixes and start working on exploits; meanwhile, users are exposed to risk and then on release day told to upgrade as quickly as possible or face the consequences.

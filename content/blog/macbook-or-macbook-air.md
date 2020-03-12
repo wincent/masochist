@@ -18,14 +18,14 @@ So, it's fairly clear that if you have to lug this thing around in your bag then
 
 The question is, is this increased portability worth the price difference?
 
--   The cheapest Air is a full $200 more than the dearest MacBook
--   The upper Air model is a whopping $900 more than the dearest MacBook
+-   The cheapest Air is a full \$200 more than the dearest MacBook
+-   The upper Air model is a whopping \$900 more than the dearest MacBook
 
-So perhaps you can justify dropping $200 more if you really, really value portability, but it's hard to see how you could rationalize a massive $900 gap to get the best Air model. Looking at the spec differences, it's also very hard to justify the $700 premium for the better model: your hard-earned dosh will buy you a 16% faster processor (1.86 GHZ, up from 1.6 GHz), and a solid state hard drive which will give you silent operation and better battery life too, but the memory, graphics, and everything else remain the same.
+So perhaps you can justify dropping $200 more if you really, really value portability, but it's hard to see how you could rationalize a massive $900 gap to get the best Air model. Looking at the spec differences, it's also very hard to justify the \$700 premium for the better model: your hard-earned dosh will buy you a 16% faster processor (1.86 GHZ, up from 1.6 GHz), and a solid state hard drive which will give you silent operation and better battery life too, but the memory, graphics, and everything else remain the same.
 
 As much as I love performance, I'd still be hard-pressed to justify getting the better model here. Things look even worse when you compare the specs of the heavy, bigger, but cheaper MacBook line.
 
-The upper-level MacBook, a full $900 cheaper than the upper-level Air, has the same graphics, twice the hard drive space, the same memory, and a significantly beefier CPU (clocking in at 2.4 GHz). When you start factoring in performance and the comparison is no longer just about size and weight, the MacBook really does start to look very good indeed.
+The upper-level MacBook, a full \$900 cheaper than the upper-level Air, has the same graphics, twice the hard drive space, the same memory, and a significantly beefier CPU (clocking in at 2.4 GHz). When you start factoring in performance and the comparison is no longer just about size and weight, the MacBook really does start to look very good indeed.
 
 If you compare the Air with a similarly priced MacBook Pro then you're looking at an even bigger performance difference; the processor is faster, it has twice the memory, better graphics, and a 320 GB hard drive.
 

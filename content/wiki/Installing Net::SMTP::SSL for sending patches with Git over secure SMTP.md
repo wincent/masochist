@@ -29,6 +29,7 @@ You'll know that this is required if you see a message like the following on try
 After installing I got a new failure message:
 
     Unable to initialize SMTP properly.  Is there something wrong with your config? at /usr/local/bin/git-send-email line 629.
+
 A minimal test script showed that the problem wasn't in [Git](/wiki/Git):
 
     #! /usr/bin/env perl
@@ -220,6 +221,6 @@ And everything works fine.
 
 # See also
 
-- [Git quickstart](/wiki/Git_quickstart)
-- [Git recipes](/wiki/Git_recipes)
-- [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)
+-   [Git quickstart](/wiki/Git_quickstart)
+-   [Git recipes](/wiki/Git_recipes)
+-   [Troubleshooting "git send-email" problems](/wiki/Troubleshooting_"git_send-email"_problems)

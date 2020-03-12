@@ -15,7 +15,7 @@ $ NO_GETTEXT=1 make prefix=/usr/local
 $ sudo env NO_GETTEXT=1 make prefix=/usr/local install quick-install-man
 ```
 
-**Note:** the `quick-install-man` target requires a copy of [the git-manpages repo](http://git.kernel.org/?p=git/git-manpages.git;a=summary) to be cloned, *without an explicit `.git` extension*, at the same level as the checkout of `git.git`. In order to get the latest man pages I had to manually fetch and checkout the latest `HEAD` of the git-manpages repo.
+**Note:** the `quick-install-man` target requires a copy of [the git-manpages repo](http://git.kernel.org/?p=git/git-manpages.git;a=summary) to be cloned, _without an explicit `.git` extension_, at the same level as the checkout of `git.git`. In order to get the latest man pages I had to manually fetch and checkout the latest `HEAD` of the git-manpages repo.
 
 # Updating on [CentOS](/wiki/CentOS) 5.8
 

@@ -5,20 +5,15 @@ tags: blog
 
 I just got an email from [Uli Kusterer](http://www.zathras.de/angelweb/home.htm) asking me to expand on my [comments the other day](http://www.wincent.com/a/about/wincent/weblog/archives/2007/10/ben_collinssuss.php) that Ben Collins-Sussman doesn't "get" distributed version control:
 
-> Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting.
-> Does it make feature branches easier? Does it encourage people to do more refactoring? Just curious to hear someone's opinion on this.
+> Could you maybe elaborate on your reasons as to why distributed version control is great? You said it'd take pages, but even just a short rundown would be interesting. Does it make feature branches easier? Does it encourage people to do more refactoring? Just curious to hear someone's opinion on this.
 
 I'll answer this with specific reference to [Git](http://www.wincent.com/knowledge-base/Git) seeing that's the [distributed version control](http://www.wincent.com/knowledge-base/distributed%20version%20control) system with which I have the most experience. Although I could rave on about how Git is the best thing since sliced bread for so many reasons, I'll try to limit myself specifically to its distributed nature.
 
-
-
-
-
 ### History
 
-Every "checkout" is actually a full copy of the entire remote repository (all its branches, all its history). After a while you just get used to the idea that you can rapidly look back at any previous tag (previous releases for example) and look at any of the branches that are currently under development (unlike Subversion where the typical workflow is to check out only the tip of the "trunk"). This also means that every checkout is a full backup of *everything* in the history of a project. And once you've done this initial "checkout" (called a "clone" in Git terminology for obvious reasons) you can do all this stuff (look at previous releases, switch branches, explore the history) without any network access.
+Every "checkout" is actually a full copy of the entire remote repository (all its branches, all its history). After a while you just get used to the idea that you can rapidly look back at any previous tag (previous releases for example) and look at any of the branches that are currently under development (unlike Subversion where the typical workflow is to check out only the tip of the "trunk"). This also means that every checkout is a full backup of _everything_ in the history of a project. And once you've done this initial "checkout" (called a "clone" in Git terminology for obvious reasons) you can do all this stuff (look at previous releases, switch branches, explore the history) without any network access.
 
-Worried about size and speed? Don't. Git has an extremely efficient network transfer protocol and repository format which makes checkouts comparable in terms of time and space to their Subversion counterparts; you'll often be surprised to see that an entire Git repository with *all* the history is as small or smaller than the equivalent Subversion checkout (which is just the tip of the development history).
+Worried about size and speed? Don't. Git has an extremely efficient network transfer protocol and repository format which makes checkouts comparable in terms of time and space to their Subversion counterparts; you'll often be surprised to see that an entire Git repository with _all_ the history is as small or smaller than the equivalent Subversion checkout (which is just the tip of the development history).
 
 ### Offline operations
 
@@ -26,7 +21,7 @@ I already touched on this above, but the fact that your local "checkout" is a fu
 
 The oft-cited example is that you can take your work with you on the road (in a plane with no network connectivity, for example), but you'll enjoy an enormous benefit in working offline even when you're in your office with your always-on net connection: the reasons are simple:
 
--   Working offline is *fast*.
+-   Working offline is _fast_.
 -   Working offline provides you with an additional "staging area" (your local, private repository): if you commit something by mistake you can fix it up before anyone else sees it; this in turn means that you can make your history cleaner, keep the "noise" down, and can make your development easier to understand for others (and for yourself when you come back to look at it six months down the track). I use this functionality many times a day; you can fix a spelling error or add a file that you forget about and update the previous commit with `git commit --amend` (the commit message editor is conveniently populated with the original commit message so if you want you can just accept that and exit the editor).
 
 ### Simplicity
@@ -48,9 +43,9 @@ This is the point I took special exception with with Collins-Sussman the other d
 
 > DVCS ... encourages anti-social behavior ... In a nutshell: with a centralized system, people are forced to collaborate and review each other's work; in a decentralized system, the default behavior is for each developer to privately fork the project. They have to put in some extra effort to share code and organize themselves into some sort of collaborative structure. Yes, I'm aware that a DVCS is able to emulate a centralized system; but defaults matter. The default action is to fork, not to collaborate! This encourages people to crawl into caves and write huge new features, then "dump" these code-bombs on their peers, at which point the code is unreviewable.
 
-His point is totally bogus. Centralized systems don't force people to collaborate and review; good policies do. You can work well with others with a centralized *or* distributed system, just like you can have a terrible community process with a centralized or distributed system.
+His point is totally bogus. Centralized systems don't force people to collaborate and review; good policies do. You can work well with others with a centralized _or_ distributed system, just like you can have a terrible community process with a centralized or distributed system.
 
-The default isn't to "privately fork" at all. That's nonsense. The default is to *clone*, and all that means is that you get a free copy of all the history and branches. At the end of the day the way you interact with "upstream" is still most likely to be `git diff` and sending a patch to the maintainer (although Git actually makes it easier than that by providing you with the `git format-patch` and `git send-email` tools; you can set-up custom per-user or per-repository aliases that make it totally easy to send patches to different projects without having to think about who should be in the "To:" field and who in the "CC:").
+The default isn't to "privately fork" at all. That's nonsense. The default is to _clone_, and all that means is that you get a free copy of all the history and branches. At the end of the day the way you interact with "upstream" is still most likely to be `git diff` and sending a patch to the maintainer (although Git actually makes it easier than that by providing you with the `git format-patch` and `git send-email` tools; you can set-up custom per-user or per-repository aliases that make it totally easy to send patches to different projects without having to think about who should be in the "To:" field and who in the "CC:").
 
 Putting in extra effort to share code? Collins-Sussman has evidently never seriously tried out a DVCS. Git in particular provides a host of mechanisms that actually make it easier to share code "upstream".
 
@@ -86,7 +81,7 @@ I've tried to restrict my points above to the aspects in which distributed versi
 
 To finish up I'll just briefly mention some points about Git that don't really have anything to do with its distributed nature but which make it a great version control system.
 
--   Speed: *apart* from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean [C](http://www.wincent.com/knowledge-base/C) code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.
+-   Speed: _apart_ from the fast offline access already mentioned, Git itself is a speed-demon. Most of it is written in lean-and-mean [C](http://www.wincent.com/knowledge-base/C) code, with some high-level user-interface stuff written using scripting languages. This isn't just a coincidence; from the very beginning it was designed to be quick and it's one of the things that will most impact you when you try it out.
 -   Simplicity: repositories use a simple data model (four object types, history represented as a directed acyclic graph) that you can grok with a few minutes of study; this means that you can actually understand how Git works under the covers.
 -   Robustness: The simplicity makes for fewer bugs and a codebase that you can really trust.
 -   Maturity: Git's already at 1.5+ and it shows...

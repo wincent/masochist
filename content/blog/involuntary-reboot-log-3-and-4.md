@@ -5,10 +5,6 @@ tags: involuntary.reboot.log blog
 
 Two kernel panics while trying to boot from a just-installed copy of Mac OS X. I won't bother telling you what version of the OS it was...
 
-
-
-
-
 #### Panic \#1
 
 Installed with all the defaults, except added the X11 package and deselected the printer drivers package. On rebooting got a kernel panic while still looking at the spinning progress indicator. Rebooted from the OS DVD and ran Disk First Aid, just to be safe.
@@ -38,6 +34,6 @@ Why the crash? Why nothing written to `/Library/Logs/panic.log`? Doesn't the OS 
 
 #### Leopard update
 
-On a *completely* unrelated note, looks like my plans for starting some Leopard-specific development work have been postponed indefinitely. You see, to do that kind of work I'd need a machine with a bootable Leopard install on it... I wonder if Apple will provide ADC Select members with a later version of Leopard prior to it being released, or whether we're stuck with the WWDC preview; I sure hope so, and I hope they get it to us with enough time to enable us to actually do something useful with it.
+On a _completely_ unrelated note, looks like my plans for starting some Leopard-specific development work have been postponed indefinitely. You see, to do that kind of work I'd need a machine with a bootable Leopard install on it... I wonder if Apple will provide ADC Select members with a later version of Leopard prior to it being released, or whether we're stuck with the WWDC preview; I sure hope so, and I hope they get it to us with enough time to enable us to actually do something useful with it.
 
 I guess I could try installing the WWDC preview on my 3-year-old laptop. Maybe that would work.

@@ -13,5 +13,5 @@ $ GIT_COMMITTER_DATE="$D" git amend --date="$D" --no-edit
 
 ## Notes
 
-- `amend` here is just an alias for `git commit --amend`.
-- `ts` is [a script](https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.shells/bin/ts) from [my dot-files repo](https://github.com/wincent/wincent).
+-   `amend` here is just an alias for `git commit --amend`.
+-   `ts` is [a script](https://github.com/wincent/wincent/blob/master/roles/dotfiles/files/.shells/bin/ts) from [my dot-files repo](https://github.com/wincent/wincent).

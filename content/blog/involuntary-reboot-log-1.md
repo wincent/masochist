@@ -5,10 +5,6 @@ tags: involuntary.reboot.log blog
 
 Resetting the IRL counter to "celebrate" the first kernel panic on the new iMac (yes, that's irony). No idea what the cause was. Newly installed software that was running at the time included a custom Intel build I had just made of [MLDonkey](http://mldonkey.sourceforge.net/Main_Page) and [Civilization IV](http://www.firaxis.com/games/game_detail.php?gameid=10). One of the first things I did after recovering from the panic was trash Civilization IV, just in case — it's only a game — and if I get another panic while `mlnet` is running I'll be trashing that too and never using it again. This machine is far too important to my work to take any risks. Paranoia is the order of the day.
 
-
-
-
-
 The old machine, the G5, gave me 39 involuntary reboots in its short lifetime (18 months). And funnily enough, the day I started using the new iMac was the day of [the last involuntary hard reset](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php) of the G5. The whole reason I made the switch was because of that last scary episode, one scary episode too many... (Little did I know about the [performance benefits](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/imac_memory_upg.php).) So that was 21 May 2006 (confirmed by looking at the volume creation date on the startup disk and also the creation date on `/var/log/OSInstall.custom`); the new machine didn't even get to the two month mark before hitting its first panic.
 
 -   **Operating system version:** Mac OS X 10.4.7

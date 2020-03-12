@@ -5,7 +5,7 @@ tags: blog
 
 The [replacement Superdrive](http://www.wincent.com/a/about/wincent/weblog/archives/2007/08/imac_reliabilit.php) for the iMac arrived today and I just finished installing it.
 
-There's only one word to describe the job: *nasty*.
+There's only one word to describe the job: _nasty_.
 
 These iMacs really don't have any "user serviceable" parts inside. To get [access to the innards](http://home.comcast.net/~woojo/DFFA53A0-F23D-4541-9015-481FD3B6532E/iMac_Disassembly.html) you need to remove a bunch of screws; all but two of them are "torx" screws, which serves as the first "KEEP OUT" sign.
 
@@ -18,10 +18,6 @@ I put everything back together and the drive is recognized by the system profile
 All of this didn't come without a scare. I [previously mentioned](http://www.wincent.com/a/about/wincent/weblog/archives/2007/07/involuntary_reb_12.php) that the machine's power socket (or whatever it's attached to) is at the end of its life. After reassembling the machine it wouldn't turn on. For a few minutes I feared I'd fried or damaged something inside. Reseating the power cable "fixed" it.
 
 So will be treating the machine with kid gloves from here on, trying not to touch it and trying not to even bump the desk, and hope that it continues to work until I save up the money for a replacement machine.
-
-
-
-
 
 ### Update
 

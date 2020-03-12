@@ -23,13 +23,13 @@ I already had most of the prerequisites for running [RSpec](/wiki/RSpec)'s pre-c
     rake rspec:generate_mysql_config
 
     # requires passwordless local access for root
-    mysql -u root < db/mysql_setup.sql 
+    mysql -u root < db/mysql_setup.sql
     cd ..
 
     # this failed the first time because of a not-yet-documented dependence on hpricot
     rake pre_commit
 
-    # 
+    #
     sudo gem install hpricot
 
     # now it works

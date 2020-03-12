@@ -11,7 +11,7 @@ Tonight on a whim I went back to perform a more precise calculation using this q
 ```javascript
 #!/usr/bin/env node
 
-const {readFileSync} = require('fs');
+const { readFileSync } = require("fs");
 
 const qwerty = `
   qwertyuiop
@@ -25,39 +25,39 @@ const colemak = `
   zxcvbkm,./
 `;
 
-const normalize = layout => layout.replace(/\s+/g, '').split('');
+const normalize = layout => layout.replace(/\s+/g, "").split("");
 const getCommon = (a, b) => a.filter((char, index) => char === b[index]);
-const escape = char => char === '.' ? '\\.' : char;
+const escape = char => (char === "." ? "\\." : char);
 
 const chars = getCommon(normalize(qwerty), normalize(colemak));
-const regexp = new RegExp('^[' + chars.map(escape).join('') + ']+$');
+const regexp = new RegExp("^[" + chars.map(escape).join("") + "]+$");
 
-const words = readFileSync('/usr/share/dict/words')
-  .toString()
-  .split(/\s+/)
-  .map(s => s.toLowerCase());
+const words = readFileSync("/usr/share/dict/words")
+    .toString()
+    .split(/\s+/)
+    .map(s => s.toLowerCase());
 
 const filtered = words.filter(word => word.match(regexp));
 
 console.log(
-  `Of ${words.length} words,\n` +
-  `${filtered.length} words contain only ${chars.length} common keys\n` +
-  `(${chars.join(', ')}).\n`
+    `Of ${words.length} words,\n` +
+        `${filtered.length} words contain only ${chars.length} common keys\n` +
+        `(${chars.join(", ")}).\n`
 );
 
 filtered.forEach(word => {
-  console.log(`  ${word}`);
+    console.log(`  ${word}`);
 });
 
-console.log('\nEntropy (bits) for an n-word passphrase:\n');
+console.log("\nEntropy (bits) for an n-word passphrase:\n");
 const bitsPerWord = Math.floor(Math.log2(filtered.length));
 for (let i = 1; i < 10; i++) {
-  console.log(`${i} word${i > 1 ? 's': ''}: ${bitsPerWord * i} bits`);
+    console.log(`${i} word${i > 1 ? "s" : ""}: ${bitsPerWord * i} bits`);
 }
 
 console.log(
-  '\nFor comparison, dictionary words each have about 14 bits of entropy\n' +
-  '(source: https://security.stackexchange.com/a/62911/151988).'
+    "\nFor comparison, dictionary words each have about 14 bits of entropy\n" +
+        "(source: https://security.stackexchange.com/a/62911/151988)."
 );
 ```
 
@@ -221,9 +221,9 @@ For comparison, dictionary words each have about 14 bits of entropy
 
 What can we conclude from all this?
 
-- If we drew words directly from `/usr/share/dict/words` without regard to layout, we could get an excellent 17 bits of entropy per word (for comparison, the word list used by 1Password is apparently only large enough to deliver about 14 bits per word). Unfortunately, many of the words in this list aren't practical to use (consider an early example like "abdominohysterectomy", which nobody is ever going to accept), so we're not really claiming 17 bits of entropy in the real world.
-- Our Colemak/Qwerty hybrid words have about half the entropy per word (a measly 7 bits), meaning that you need your passphrase to be twice as long to match the entropy you'd get with standard dictionary words: for 56 bits of entropy, for example, you'd need an 8-word passphrase instead of a 4-word one. It's not going to be particularly memorable either, as it will end up being something like "mamba waxhaw zax macaca habab cachaza wab azha". I'll grant that that's pretty fun to say out loud, but that's not a redeeming quality for a passphrase.
-- I guess we could inject more entropy by adding numbers and symbols, but the base set of words to draw from is still sucky.
+-   If we drew words directly from `/usr/share/dict/words` without regard to layout, we could get an excellent 17 bits of entropy per word (for comparison, the word list used by 1Password is apparently only large enough to deliver about 14 bits per word). Unfortunately, many of the words in this list aren't practical to use (consider an early example like "abdominohysterectomy", which nobody is ever going to accept), so we're not really claiming 17 bits of entropy in the real world.
+-   Our Colemak/Qwerty hybrid words have about half the entropy per word (a measly 7 bits), meaning that you need your passphrase to be twice as long to match the entropy you'd get with standard dictionary words: for 56 bits of entropy, for example, you'd need an 8-word passphrase instead of a 4-word one. It's not going to be particularly memorable either, as it will end up being something like "mamba waxhaw zax macaca habab cachaza wab azha". I'll grant that that's pretty fun to say out loud, but that's not a redeeming quality for a passphrase.
+-   I guess we could inject more entropy by adding numbers and symbols, but the base set of words to draw from is still sucky.
 
 I'm going to stick to my boring existing passphrase for now. For reference, and in case I forget it, it is "rosemary horde shotgun portrait".
 

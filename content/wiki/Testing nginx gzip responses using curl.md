@@ -7,7 +7,7 @@ Example session diagnosing a failure of \[\[nginx\] to gzip compress static asse
 
 ```shell
 $ curl --silent --write-out 'size_download=%{size_download}\n' \
-  --output /dev/null https://wincent.com/assets/application-d25d354c71d9829a020f5c20e9a75365.css 
+  --output /dev/null https://wincent.com/assets/application-d25d354c71d9829a020f5c20e9a75365.css
 size_download=35565
 $ curl --silent --write-out 'size_download=%{size_download}\n' \
   --output /dev/null https://wincent.com/assets/application-d25d354c71d9829a020f5c20e9a75365.css.gz

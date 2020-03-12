@@ -164,7 +164,7 @@ From inside the local repository:
      contrib/completion/git-completion.bash             |  106 +++-
      contrib/emacs/git.el                               |  262 ++++---
      git-tag.sh => contrib/examples/git-tag.sh          |    2 +-
-     .../examples/git-verify-tag.sh                     |    0 
+     .../examples/git-verify-tag.sh                     |    0
      contrib/fast-import/git-p4                         |  292 +++++----
      contrib/hooks/update-paranoid                      |  179 ++++-
      contrib/patches/docbook-xsl-manpages-charmap.patch |   21 +

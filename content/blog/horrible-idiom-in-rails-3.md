@@ -47,7 +47,7 @@ The documentation for the method says the following:
             File.expand_path("~oracle/bin")           #=> "/home/oracle/bin"
             File.expand_path("../../bin", "/tmp/x")   #=> "/bin"
 
-So the first uncomfortable thing about the idiom is that it's passing in a *file* path where the method is actually asking for a "dir\_string". This is the first bit of code smell: use of an API that seems to run counter the use intended by the API's authors.
+So the first uncomfortable thing about the idiom is that it's passing in a _file_ path where the method is actually asking for a "dir_string". This is the first bit of code smell: use of an API that seems to run counter the use intended by the API's authors.
 
 The second uncomfortable thing about it is that in order for this trick to actually work, the idiom needs to prepend `../` to the first parameter, effectively compensating for the fact that what we really wanted to pass in as the second parameter was the directory of the current file, but we passed in the file itself instead.
 

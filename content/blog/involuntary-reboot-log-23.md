@@ -5,7 +5,6 @@ tags: involuntary.reboot.log blog
 
 Just went out for two hours and when I came back the machine was displaying the grey screen of death (kernel panic), with the screen saver password prompt visible in the background.
 
-
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.5.1

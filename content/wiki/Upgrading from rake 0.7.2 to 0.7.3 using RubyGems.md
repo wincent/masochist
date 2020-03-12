@@ -65,11 +65,11 @@ tags: rubygems rake wiki
         require 'rake'
 
         Rake.application.init('myrake')
-       
+
         task :default do
           something_interesting
         end
-        
+
         Rake.application.top_level
 
     == What is Rake

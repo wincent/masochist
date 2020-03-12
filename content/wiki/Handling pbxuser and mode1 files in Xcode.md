@@ -47,7 +47,7 @@ After closing Xcode:
 Although it appears that Xcode ignores the `default.mode1` file. So consider this instead:
 
     cd path_to_project_bundle
-    svn commit -m "Pre-rename pbxuser commit" 
+    svn commit -m "Pre-rename pbxuser commit"
     svn mv wincent.pbxuser default.pbxuser
     svn commit -m "Create default.pbxuser"
     svn propset svn:ignore 'wincent.*' .

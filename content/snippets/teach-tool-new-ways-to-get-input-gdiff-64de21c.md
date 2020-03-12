@@ -21,7 +21,7 @@ git-diff foo bar
 
 And capture the output.
 
-The git-diff tool is searched for in the locations defined by the PATH environment variable, and if no PATH is set the search falls back to the locations specified by the user.cs\_path sysctl setting.
+The git-diff tool is searched for in the locations defined by the PATH environment variable, and if no PATH is set the search falls back to the locations specified by the user.cs_path sysctl setting.
 
 At the moment the tool doesn't actually do anything with the input. A future commit will add the ability to locate the GUI application and pass the input to it for processing.
 

@@ -5,11 +5,11 @@ tags: snippets
 
 On thinking about the need for this to run on multiple platforms I decided that it wasn't really suited to being used as a Rails plug-in:
 
-- Rails plugins are usually deployed by simply unpacking them into the "vendor/plugins" directory; given that this is actually a C extension this means that a second step is required (compilation)
+-   Rails plugins are usually deployed by simply unpacking them into the "vendor/plugins" directory; given that this is actually a C extension this means that a second step is required (compilation)
 
-- I looked at cross-compiling here locally before deploying the plugin but that seems awfully brittle with plenty of scope for breakage when one of the target systems is upgraded
+-   I looked at cross-compiling here locally before deploying the plugin but that seems awfully brittle with plenty of scope for breakage when one of the target systems is upgraded
 
-- There is already a system designed to handle exactly this deployment problem: RubyGems
+-   There is already a system designed to handle exactly this deployment problem: RubyGems
 
 So even though I would prefer to have all of the dependencies of my Rails applications frozen into the "vendor" directory, it seems that deployment as a RubyGem is the most robust solution. I can still tie my application to a particular version of the gem by doing something like:
 

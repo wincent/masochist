@@ -16,7 +16,7 @@ If you purchased your license on or after 5 September 2006 (the release date of 
 
 # Upgrading from versions older than 3.0
 
-If you purchased your license more than 3 years ago (prior to 5 September 2006 and the release of version 3.0) then your license will not work with version 4.0. You can either [purchase a new license](https://secure.wincent.com/a/products/synergy-classic/purchase/), or continue to use an older version of Synergy: your license will always be valid for all versions of Synergy *prior* to 4.0.
+If you purchased your license more than 3 years ago (prior to 5 September 2006 and the release of version 3.0) then your license will not work with version 4.0. You can either [purchase a new license](https://secure.wincent.com/a/products/synergy-classic/purchase/), or continue to use an older version of Synergy: your license will always be valid for all versions of Synergy _prior_ to 4.0.
 
 If you decide not to upgrade yet, don't worry: Synergy 3.4 does work on [Snow Leopard](/wiki/Snow_Leopard).
 

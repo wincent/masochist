@@ -80,9 +80,9 @@ tags: ubb.threads wiki
 <!-- -->
 
     Importing Banned Host: NULL
-    Script: 
-    Line#: 
-    SQL Error: 
+    Script:
+    Line#:
+    SQL Error:
     SQL Error #: 0
     Query: insert into ubbt_BANNED_HOSTS values ( NULL )
 

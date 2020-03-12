@@ -13,10 +13,6 @@ No mention of trigraphs. No mention of comments. (Bad GNU!) But in short, it all
 
 Continue reading to see my initial approaches to working around the problems...
 
-
-
-
-
 \
 Today Xcode's `Info.plist` preprocessing feature started producing invalid XML for me, thus preventing any of my builds from completing. Source XML like this:
 
@@ -34,7 +30,7 @@ Was getting turned into this:
 
 Evidently the preprocessor was seeing the `//` in the property list as a comment and was discarding it and everything following it (up to the end-of-line). I hadn't run into this problem before because up until today I had never had to put a URL into a preprocessed property list.
 
-Using the `-C` switch to GCC was not an option as that would prevent *all* comments from being discarded, and I only wanted the not-really-a-comment URL to be preserved. I did not fancy the idea of removing all comments from the header file that I include prior to preprocessing.
+Using the `-C` switch to GCC was not an option as that would prevent _all_ comments from being discarded, and I only wanted the not-really-a-comment URL to be preserved. I did not fancy the idea of removing all comments from the header file that I include prior to preprocessing.
 
 The solution in the end was to pass the `-ansi` switch to the preprocessor. This causes `//` to not be treated as a comment marker. Traditional C-style comments (delineated with `/*` and `*/`) continue to be discarded. All I had to do then was convert the Objective-C style comments in my header to C-style comments, and add the following to my build configuration file:
 

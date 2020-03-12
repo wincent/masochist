@@ -82,13 +82,13 @@ I later (March 2007) found that this `RUBYLIB` export prevented my new [Ruby 1.8
 
 Using the already downloaded archives:
 
-    tar zxvf readline-5.1.tar.gz 
+    tar zxvf readline-5.1.tar.gz
     cd readline-5.1/
     ./configure
     make
     sudo make install
 
-    tar zxvf ruby-1.8.4.tar.gz 
+    tar zxvf ruby-1.8.4.tar.gz
     cd ruby-1.8.4/
     ./configure --enable-pthread --with-readline-dir=/usr/local
     make
@@ -120,7 +120,7 @@ And I get this error:
 
     Bulk updating Gem source index for: http://gems.rubyforge.org
     ERROR:  While executing gem ... (ArgumentError)
-        syntax error on line 153073, col 20: ` 
+        syntax error on line 153073, col 20: `
         executables:'
 
 Which is the same error as I was getting before when trying to do any remote operations with gem. Funnily enough this was working a few days ago. Now neither my hand-installed copy of RubyGems nor the version bundled with [Locomotive](/wiki/Locomotive) works.

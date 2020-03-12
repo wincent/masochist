@@ -23,10 +23,6 @@ Which is clearly more readable and easier to maintain. HOM advocates will tell y
 
 But it's not all roses. The compiler will issue a warning when it sees that above statement because as far as it is concerned (unless you tell it otherwise with category declarations in headers, macros, or casts) the `hasPrefix:` method returns a `BOOL` (an integer type) rather than an object (a pointer type). Not just a warning in fact, the compiler and the runtime may even go so far as to conspire and mangle the returned object for you to the extent that the example doesn't even work without some hideous runtime hackery. The problem is so bad that one of the most oft-cited and celebrated uses for HOM (the "select" pattern) simply cannot be implemented in a clean, non-kludgey way.
 
-
-
-
-
 But it's not just the compiler that feels uncomfortable with this construction. I don't either, even though I understand what's happening behind the scenes. You see, with a language that supports HOM as a fundamental part of the language (Smalltalk, for example), HOM looks "right". A similar paradigm is the block syntax offered by Ruby, although strictly speaking that's not really HOM; rather it's anonymous inline functions which allow you to achieve a similar effect.
 
 But in Objective-C where HOM effectively has to be shoehorned into the language things don't look "right" to me. You see, when I see messages chained together in Objective-C I've learnt to recognize a basic pattern:
@@ -50,12 +46,12 @@ I know that this is what proxies do. I use them myself in my WOTest framework (t
 A long-winded alternative, something like the following, doesn't set off those same alarm bells:
 
     [mock expectSelector:@selector(substringFromIndex:)
-                  return:@"foo" 
+                  return:@"foo"
                arguments:3];
 
 (Although in reality such a method — one that accepts a variable number of arguments — would come up against the [same problems](http://www.wincent.com/a/about/wincent/weblog/archives/2006/02/more_than_i_eve.php) that any `NSInvocation`-based mechanism comes up against when it comes to trying to forward messages when working with variable numbers of arguments.)
 
-That's why I haven't embraced HOM yet. That, and the fact that it works at such a low level that Apple could break it at any time in a future OS update. (To be fair, I should qualify that statement and say that "most *existing* implementations could be broken at any time in a future OS update"; it is possible to implement most HOM patterns in an unoptimized way without relying on too many low-level runtime details.)
+That's why I haven't embraced HOM yet. That, and the fact that it works at such a low level that Apple could break it at any time in a future OS update. (To be fair, I should qualify that statement and say that "most _existing_ implementations could be broken at any time in a future OS update"; it is possible to implement most HOM patterns in an unoptimized way without relying on too many low-level runtime details.)
 
 #### Addendum
 

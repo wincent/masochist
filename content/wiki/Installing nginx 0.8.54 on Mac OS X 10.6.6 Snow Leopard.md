@@ -11,11 +11,11 @@ cache_breaker: 1
 
 ```shell
 $ curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.12.tar.gz \
-       -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.12.tar.gz.sig 
-$ gpg --verify pcre-8.12.tar.gz.sig 
-$ tar xzvf pcre-8.12.tar.gz 
+       -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.12.tar.gz.sig
+$ gpg --verify pcre-8.12.tar.gz.sig
+$ tar xzvf pcre-8.12.tar.gz
 $ cd pcre-8.12
-$ ./configure 
+$ ./configure
 $ make
 $ make check
 $ sudo make install
@@ -27,10 +27,10 @@ $ cd ..
 ```shell
 $ curl -O http://nginx.org/download/nginx-0.8.54.tar.gz \
        -O http://nginx.org/download/nginx-0.8.54.tar.gz.asc
-$ gpg --verify nginx-0.8.54.tar.gz.asc 
-$ tar xzvf nginx-0.8.54.tar.gz 
+$ gpg --verify nginx-0.8.54.tar.gz.asc
+$ tar xzvf nginx-0.8.54.tar.gz
 $ curl -L https://github.com/vkholodkov/nginx-upload-module/tarball/2.2.0 -o nginx_upload_module-2.2.0.tar.gz
-$ tar xzvf nginx_upload_module-2.2.0.tar.gz 
+$ tar xzvf nginx_upload_module-2.2.0.tar.gz
 $ cd nginx-0.8.54
 $ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../vkholodkov-nginx-upload-module-2ec4e4f
 $ make

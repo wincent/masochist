@@ -7,6 +7,6 @@ My take on the MacHeist [debacle](http://daringfireball.net/2006/12/macheist_lou
 
 If you're a one-man shop like I am you're likely to spend all your time communicating with customers and no time at all working on your products in the weeks immediately after the aptly-named heist, and you wouldn't have to spend too long on each support transaction to nullify the benefit of the 50 cents you made selling the license. In the mean time, if Gruber's calculations are correct, the organizers and not the developers walk off with a cool half-a-million dollars in their pockets.
 
-Those developers who participated have lost in the short term, in my opinion. In the long term they *might* come out in front, but only if the "mindspace" that they've earned in this show lasts for long enough for them to get some full-price sales out of it.
+Those developers who participated have lost in the short term, in my opinion. In the long term they _might_ come out in front, but only if the "mindspace" that they've earned in this show lasts for long enough for them to get some full-price sales out of it.
 
 If the organizers had approached me to participate I would have thought about it. The numbers in my case are not as scandalous seeing as [Synergy](http://synergy.wincent.com/) only costs 5€ anyway, but if I was selling a higher-priced app like TextMate (which currently goes for 39€) there's no way I would've participated, not in a million years.

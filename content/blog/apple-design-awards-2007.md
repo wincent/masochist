@@ -5,7 +5,6 @@ tags: blog
 
 So the winners of the Apple Design Awards for 2007 have been [announced](http://developer.apple.com/wwdc/ada/).
 
-
 ### Leopard
 
 For me, the most remarkable thing about the awards this year is that there is a category for applications which run on an operating system that won't even be released until October this year.

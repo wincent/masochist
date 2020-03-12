@@ -6,9 +6,9 @@ I installed [lighttpd](/wiki/lighttpd) because it was the path of least resistan
 
 ```shell
 $ wget http://download.lighttpd.net/lighttpd/releases-1.4.x/lighttpd-1.4.28.tar.gz
-$ tar xzvf lighttpd-1.4.28.tar.gz 
+$ tar xzvf lighttpd-1.4.28.tar.gz
 $ cd lighttpd-1.4.28
-$ ./configure 
+$ ./configure
 $ make
 $ make install
 $ sudo make install

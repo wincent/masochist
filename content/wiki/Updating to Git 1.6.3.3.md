@@ -41,21 +41,21 @@ This is because of a change implemented in commit 5ae93df:
     Date:   Mon May 18 18:44:38 2009 -0500
 
         t3900: use ancient iconv names for backward compatibility
-        
+
         Some old iconv implementations do not have many alternate names and/or
         do not match character encoding names case insensitively.  These
         implementations can not tell that utf-8 and UTF-8 are the same encoding
         and fail when trying to do the conversion.  So use the old names, which
         modern implementations still support.
-        
+
         The following conversions were performed:
-        
+
                  utf-8 --> UTF-8
             ISO-8859-1 --> ISO8859-1
                  EUCJP --> eucJP
-        
+
         Also update t9129 and t9500 which make use of the test files in t/t3900.
-        
+
         Signed-off-by: Brandon Casey <casey@nrlssc.navy.mil>
         Signed-off-by: Junio C Hamano <gitster@pobox.com>
 

@@ -17,46 +17,46 @@ The other day I [tweeted](https://twitter.com/wincent/status/672894777541525504)
 
 That got me to thinking about other cool stuff that has endured over the years. Here's a short timeline. Criteria to get on the list: must be at least 10 years old, with a reasonable prognosis of sticking around for much longer:
 
-* [Git](/wiki/Git) (2005)
-* [OS X](/wiki/OS_X) (2001)
-* [SSH](/wiki/SSH) (1999)
-* [curl](/wiki/curl) (1997)
-* [rsync](/wiki/rsync) (1996)
-* [Vim](/wiki/Vim) (1991)
-* [Cron](/wiki/Cron) (1979)
-* [tar](/wiki/tar) (1979)
-* [vi](/wiki/vi) (1976)
-* [grep](/wiki/grep) (1973)
-* [Unix](/wiki/UNIX) (1970)
+-   [Git](/wiki/Git) (2005)
+-   [OS X](/wiki/OS_X) (2001)
+-   [SSH](/wiki/SSH) (1999)
+-   [curl](/wiki/curl) (1997)
+-   [rsync](/wiki/rsync) (1996)
+-   [Vim](/wiki/Vim) (1991)
+-   [Cron](/wiki/Cron) (1979)
+-   [tar](/wiki/tar) (1979)
+-   [vi](/wiki/vi) (1976)
+-   [grep](/wiki/grep) (1973)
+-   [Unix](/wiki/UNIX) (1970)
 
 So both the 70s and the 90s were great decades for computing. Not sure what happened in the 80s as I struggled to find anything there; perhaps we were all just off playing video games. Feels odd to think that some of these are four decades old now, nearly as long as computing itself (or at least, what we'd recognize as "computing"). Vi will turn 40 next year. Grep 43. And despite the existence of some spiritual successors like [Ack](/wiki/Ack) and friends, it's still just as useful &mdash; indispensable even &mdash; as ever.
 
 # What about `$my_favorite_language`?
 
-Notable omissions from the above are languages. They come and go, and even the ones that stick around tend to change so much over time that I'm not sure it's really fair to call them the same language any more (a particularly stark example of this would be a comparison of original 1995 and current 2015 JavaScript). At the same time, I've learnt quite a few of them over the years and there is a certain sameness and a sense of substitutability about them that makes them seem somehow unremarkable. 
+Notable omissions from the above are languages. They come and go, and even the ones that stick around tend to change so much over time that I'm not sure it's really fair to call them the same language any more (a particularly stark example of this would be a comparison of original 1995 and current 2015 JavaScript). At the same time, I've learnt quite a few of them over the years and there is a certain sameness and a sense of substitutability about them that makes them seem somehow unremarkable.
 
 Nevertheless, if, for the sake of the argument, we take a glance at some of the notable languages, here again we see that the 90s was a particularly productive era:
 
-* OCaml (1996)
-* Ruby (1995)
-* PHP (1995)
-* Java (1995)
-* JavaScript (1995)
-* Lua (1993)
-* Python (1991)
-* Haskell (1990)
-* Perl (1987)
-* Erlang (1986)
-* Objective-C (1986)
+-   OCaml (1996)
+-   Ruby (1995)
+-   PHP (1995)
+-   Java (1995)
+-   JavaScript (1995)
+-   Lua (1993)
+-   Python (1991)
+-   Haskell (1990)
+-   Perl (1987)
+-   Erlang (1986)
+-   Objective-C (1986)
 
 Most of these languages are still thriving today, to [greater](/wiki/JavaScript) or [lesser](/wiki/Perl) degrees. If we look at the more recent generation of new languages, how confident can we be that they'll be "mainstream" 10 years from now? I'm not a gambler, but if I were I'd probably put my money on about half of these:
 
-* Dart (2013)
-* Elm (2012)
-* Elixir (2012)
-* Rust (2010)
-* Go (2009)
-* Clojure (2007)
+-   Dart (2013)
+-   Elm (2012)
+-   Elixir (2012)
+-   Rust (2010)
+-   Go (2009)
+-   Clojure (2007)
 
 # Notable omissions
 

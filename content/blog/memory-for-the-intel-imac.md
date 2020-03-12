@@ -5,10 +5,6 @@ tags: blog
 
 [With the last batch of trouble](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/involuntary_reb_1.php) with my G5 I decided it was time to switch development over to my shiny new iMac. Although it is technically less powerful (only a 32-bit Intel Core Duo 1.83 GHz compared with a 64-bit dual 2.5 GHz G5) I suspect that performance will be almost as good for most things.
 
-
-
-
-
 It's a good time to sell a G5 in any case, before the new Intel-based pro-desktop machines come out and make the current crop of G5s look like undesirable, noisy paperweights.
 
 Ah the noise... or rather, the silence. The silence using the new iMac is golden, the noise of the hard drives purring almost imperceptible. If the machine has fans I've never heard them. Now isn't that a great compliment? Not even knowing if the machine has fans at all?
@@ -53,6 +49,6 @@ The 2 GB for the iMac, ordered just over a year and a half later, costs $225.00,
 
 > 2.0GB Matched Pair (1024MB (1GB) x 2) PC5300 DDR2 667MHz 200 pin SO-DIMM Modules
 
-I've seen it even cheaper (as low as $80) elsewhere, but OWC is a reputable vendor with good service and I know them, so I preferred to stick with what I know.
+I've seen it even cheaper (as low as \$80) elsewhere, but OWC is a reputable vendor with good service and I know them, so I preferred to stick with what I know.
 
 So it appears that memory has roughly halved in price over the last 18 months, in addition to getting smaller and faster, so "Moore's Law" is definitely holding true with respect to memory (even though the "law" as such was never conceived to be applied to memory).

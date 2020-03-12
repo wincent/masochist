@@ -5,7 +5,7 @@ tags: blog
 
 I'm pleased to announce the availability of version 3.5a5 of [Synergy](http://synergy.wincent.com), the fifth alpha release in the brand new 3.5 series. The last release, version 3.2, was [Leopard](http://www.wincent.com/knowledge-base/Leopard)-compatible but would also run on all versions of [Mac OS X](http://www.wincent.com/knowledge-base/Mac%20OS%20X) from [Jaguar](http://www.wincent.com/knowledge-base/Jaguar) onwards.
 
-The 3.5 series, on the other hand, is a total rewrite in Objective-C 2.0 which will run *only* on Leopard and as such it is somewhat experimental in nature. If you want stability then I recommend that you stick with 3.2 for now, but if you like to live on the edge and see the latest then by all means try out the 3.5 series. This release fixes some minor issues found in the last alpha; the sporadic crashes caused by using `NSAppleScript` under Garbage Collection are still being investigated.
+The 3.5 series, on the other hand, is a total rewrite in Objective-C 2.0 which will run _only_ on Leopard and as such it is somewhat experimental in nature. If you want stability then I recommend that you stick with 3.2 for now, but if you like to live on the edge and see the latest then by all means try out the 3.5 series. This release fixes some minor issues found in the last alpha; the sporadic crashes caused by using `NSAppleScript` under Garbage Collection are still being investigated.
 
 A full changelog appears [here](http://www.wincent.com/a/products/synergy-classic/history/#3.5a5).
 

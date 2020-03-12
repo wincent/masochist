@@ -14,9 +14,9 @@ So out with the old:
 And in with the new:
 
     - (int)numberOfItemsInMenu:(NSMenu *)menu;
-    - (BOOL)menu:(NSMenu *)menu 
+    - (BOOL)menu:(NSMenu *)menu
       updateItem:(NSMenuItem *)item
-         atIndex:(int)index 
+         atIndex:(int)index
     shouldCancel:(BOOL)shouldCancel;
 
 I'm hoping that this won't be too painful.

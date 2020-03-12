@@ -6,7 +6,7 @@ tags: rspec wiki
 
 # Release notes
 
-> This is just to align the version numbers in rspec and rspec\_on\_rails.
+> This is just to align the version numbers in rspec and rspec_on_rails.
 
 -   <http://rubyforge.org/frs/shownotes.php?release_id=11901>
 

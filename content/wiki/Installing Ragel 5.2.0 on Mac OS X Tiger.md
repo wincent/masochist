@@ -38,7 +38,7 @@ Likewise you need [Kelbt](/wiki/Kelbt): <http://www.cs.queensu.ca/~thurston/kelb
     wget http://www.cs.queensu.ca/~thurston/kelbt/kelbt-0.11.tar.gz
     tar kelbt-0.11.tar.gz
     ./configure
-    make 
+    make
     cd tests
     ./runtests
     cd ..

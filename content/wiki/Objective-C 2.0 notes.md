@@ -4,10 +4,10 @@ tags: wiki
 
 These notes are made on the basis of publicly available information:
 
--    <http://www.apple.com/macosx/leopard/xcode.html>
--    <http://developer.apple.com/leopard/overview/>
--    <http://lists.apple.com/archives/objc-language/2006/Aug/msg00039.html>
--    <http://lists.apple.com/archives/objc-language/2006/Aug/msg00003.html>
+-   <http://www.apple.com/macosx/leopard/xcode.html>
+-   <http://developer.apple.com/leopard/overview/>
+-   <http://lists.apple.com/archives/objc-language/2006/Aug/msg00039.html>
+-   <http://lists.apple.com/archives/objc-language/2006/Aug/msg00003.html>
 
 Points for converting code to Objective-C 2.0 (with Garbage Collection):
 
@@ -17,7 +17,7 @@ Points for converting code to Objective-C 2.0 (with Garbage Collection):
 -   `var` on its own will be a undeclared symbol error
 -   you should avoid using accessors before an object is fully initialized (ie. in an `init` or `copyWithZone:` method)
 -   in such cases use direct access (eg. `self->_var`)
--   with [GC](/wiki/GC), `retain`/`release` *et al* are ignored
+-   with [GC](/wiki/GC), `retain`/`release` _et al_ are ignored
 -   so your `init` methods should look like this:
 
 <!-- -->

@@ -3,7 +3,7 @@ title: Bugzilla's future
 tags: bugzilla blog
 ---
 
-I think [this bug](https://bugzilla.mozilla.org/show_bug.cgi?id=540#c95) is a typical indication that [Bugzilla](/wiki/Bugzilla)'s days a numbered, despite the fact that it was once "*the*" bug-tracking king and is *still* "*the*" bug tracker used by [many](http://www.bugzilla.org/installation-list/) enormously popular software projects (like lots of Linux distros, Open Office and myriad other [open source](/wiki/open_source) projects):
+I think [this bug](https://bugzilla.mozilla.org/show_bug.cgi?id=540#c95) is a typical indication that [Bugzilla](/wiki/Bugzilla)'s days a numbered, despite the fact that it was once "_the_" bug-tracking king and is _still_ "_the_" bug tracker used by [many](http://www.bugzilla.org/installation-list/) enormously popular software projects (like lots of Linux distros, Open Office and myriad other [open source](/wiki/open_source) projects):
 
 > It's coming up to the 10 year mark since this bug was created...
 

@@ -4,8 +4,8 @@ tags: data.structures graph wiki
 
 Used to store [graphs](/wiki/graphs), especially dense graphs. (For sparse graphs, see "[Adjacency list](/wiki/Adjacency_list)").
 
--   for a graph with *n* vertices and *m* edges, we store an *n* by *n* matrix
--   a 1 or similar value at position *i, j* in the matrix is used to indicate the presence of an edge between vertices *i* and *j*
+-   for a graph with _n_ vertices and _m_ edges, we store an _n_ by _n_ matrix
+-   a 1 or similar value at position _i, j_ in the matrix is used to indicate the presence of an edge between vertices _i_ and _j_
 -   alternatively, for a weighted graph, we can use the edge weight as the value
 -   directed graphs can use the sign of the value (positive or negative) to indicate the direction of the edge
 -   for maximal density, we can use as little as a single bit to encode each value (in the case of an undirected, unweighted graph)

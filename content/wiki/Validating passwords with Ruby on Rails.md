@@ -24,7 +24,7 @@ These requirements lead to the following validations:
 
       MINIMUM_PASSPHRASE_LENGTH     = 8
       MAXIMUM_PASSPHRASE_LENGTH     = 64
-      
+
       validates_presence_of         :passphrase,
                                     :on         => :create
       validates_length_of           :passphrase,
@@ -51,9 +51,9 @@ There are a few other things we can do to reduce risk of cookie capture attacks:
 
 -   Change session keys as often as practically possible (without inconveniencing the user).
 -   Use [SSL](/wiki/SSL) for logged in users, so that their cookies don't get sent in the clear:
-    -   [RFC 2109](/wiki/RFC_2109) defines the `Secure` attribute that you can set on cookies (in [Rails](/wiki/Rails) you would do this by passing `:secure => true` when you set the cookie); this *advises* the user agent (the browser) to only send the cookie over a secure channel (effectively "secure" here means [HTTPS](/wiki/HTTPS)). Not that this is only advisory, so it's still possible that the user agent may send the cookie in the clear.
-    -   If a user agent respects the `Secure` attribute, then you can redirect users to the secure login page over HTTPS, and on *that* page the user agent will send the cookie so you can automatically log in the user without them having to enter their credentials.
-    -   In order to *completely* rule out the possibility of cookie capture in the face of user agents which may not respect the `Secure` attribute, the only watertight solution is to *never* permit access to your site via [HTTP](/wiki/HTTP) and serve absolutely everything over [HTTPS](/wiki/HTTPS); depending on the site, this may be resource intensive because SSL traffic generates more load on the CPU.
+    -   [RFC 2109](/wiki/RFC_2109) defines the `Secure` attribute that you can set on cookies (in [Rails](/wiki/Rails) you would do this by passing `:secure => true` when you set the cookie); this _advises_ the user agent (the browser) to only send the cookie over a secure channel (effectively "secure" here means [HTTPS](/wiki/HTTPS)). Not that this is only advisory, so it's still possible that the user agent may send the cookie in the clear.
+    -   If a user agent respects the `Secure` attribute, then you can redirect users to the secure login page over HTTPS, and on _that_ page the user agent will send the cookie so you can automatically log in the user without them having to enter their credentials.
+    -   In order to _completely_ rule out the possibility of cookie capture in the face of user agents which may not respect the `Secure` attribute, the only watertight solution is to _never_ permit access to your site via [HTTP](/wiki/HTTP) and serve absolutely everything over [HTTPS](/wiki/HTTPS); depending on the site, this may be resource intensive because SSL traffic generates more load on the CPU.
 
 ## First, flawed attempt at validation
 
@@ -65,7 +65,7 @@ My first attempt at validation was as follows, and it seemed to work at first:
 
       validates_each                :old_passphrase,
                                     :on         => :update,
-                                    :allow_nil  => true, 
+                                    :allow_nil  => true,
                                     :if         => Proc.new { |u| !u.passphrase.blank? } do |model, attribute, value|
         database_record = User.find(model.id)
         if User.digest(value, database_record.passphrase_salt) != database_record.passphrase_digest
@@ -90,7 +90,7 @@ So in my next revision I aimed to avoid the supposed conflict between `:on` and 
                                     :if         => Proc.new { |u| !u.new_record? and !u.passphrase.blank? }
 
       validates_each                :old_passphrase,
-                                    :allow_nil  => true, 
+                                    :allow_nil  => true,
                                     :if         => Proc.new { |u| !u.new_record? and !u.passphrase.blank? } do |model, attribute, value|
         database_record = User.find(model.id)
         if User.digest(value, database_record.passphrase_salt) != database_record.passphrase_digest
@@ -109,10 +109,10 @@ Digging a little deeper I discovered the real cause of the problem. The problem 
 
     777:     def valid?
     778:       errors.clear
-    779: 
+    779:
     780:       run_validations(:validate)
     781:       validate
-    782: 
+    782:
     783:       if new_record?
     784:         run_validations(:validate_on_create)
     785:         validate_on_create
@@ -120,19 +120,19 @@ Digging a little deeper I discovered the real cause of the problem. The problem 
     787:         run_validations(:validate_on_update)
     788:         validate_on_update
     789:       end
-    790: 
+    790:
     791:       errors.empty?
     792:     end
 
 Analysis of this method reveals why the previous workaround didn't work. Intuition and the fact that you can use the `:on` clause to restrict validation to `:save` (the default), `:create`, or `:update` might lead you to believe that the `valid?` method will call the validations in one of three cases:
 
--   Whenever saving (the default); *or*
--   Only when creating; *or*
+-   Whenever saving (the default); _or_
+-   Only when creating; _or_
 -   Only when updating
 
 In reality however, the real options are:
 
--   Whenever saving; *and*
+-   Whenever saving; _and_
 -   One of the following:
     -   When creating; or
     -   Any other time
@@ -218,7 +218,7 @@ In the case where a user sets a new passphrase the cycle looks like this:
 1.  [Rails](/wiki/Rails) runs the `:save` validations:
     1.  Here the `validates_length_of :passphrase` validation runs (and will pass if the user satisfies the length requirements); a missing password will cause a failure here, so it doesn't matter that the `validates_presence_of :passphrase` validation is not performed
 2.  [Rails](/wiki/Rails) runs the `:update` validations:
-    1.  This time our custom `validates_each :old_password` validation is considered and this time it *does* run because `@passphrase` is set
+    1.  This time our custom `validates_each :old_password` validation is considered and this time it _does_ run because `@passphrase` is set
 3.  At this point validation has completed (successfully or unsuccessfully, depending on the input provided by the user)
 
 # See also

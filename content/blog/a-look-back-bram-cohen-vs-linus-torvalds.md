@@ -13,10 +13,6 @@ But the really interesting thing about [their interchange](http://www.gelato.uns
 
 Source: [Bram Cohen](http://bramcohen.livejournal.com/17319.html).
 
-
-
-
-
 ### On merge algorithms
 
 The [Codeville website](http://www.codeville.org/) has this to say:
@@ -57,7 +53,7 @@ Git breaks the mould because it thinks about content, not files. It doesn't trac
 
 As a result of this fundamental design decision, the structure of a Git repository is stunningly simple. It's so simple in fact, that you'll be surprised at the sophistication of the things you can do with it. But that's the way the best code will always be: simple, solid premises out of which complex applications arise.
 
-The other fundamentally smart design decision is how Git does merges. The merging algorithms *are* smart but they don't try to be *too* smart. Unambiguous decisions are made automatically, but when there's doubt it's up to the user to decide. This is the way it should be. You don't want a machine making those decisions for you. You never will want it. That's the fundamental insight in the Git approach to merging: while every other version control system is trying to get smarter, Git is happily self-described as the "stupid content manager", and it's better for it.
+The other fundamentally smart design decision is how Git does merges. The merging algorithms _are_ smart but they don't try to be _too_ smart. Unambiguous decisions are made automatically, but when there's doubt it's up to the user to decide. This is the way it should be. You don't want a machine making those decisions for you. You never will want it. That's the fundamental insight in the Git approach to merging: while every other version control system is trying to get smarter, Git is happily self-described as the "stupid content manager", and it's better for it.
 
 ### Footnote
 
@@ -67,7 +63,7 @@ If you try the tricky merge issue described by the Monotone dev [above](http://a
     cd playground
     git init
     echo "hello, world" > greeting
-    git add greeting 
+    git add greeting
     git commit -m "Add greeting"
     git checkout -b left
     git mv greeting saludo
@@ -82,4 +78,4 @@ Git responds with:
     CONFLICT (rename/delete): Renamed greeting->saludo in left and deleted in HEAD
     Automatic merge failed; fix conflicts and then commit the result.
 
-In my opinion this is exactly the right behaviour. This is a clearly ambiguous merge and it simply wouldn't be right for your version control system to try "resolving" it for you. You actually want it to be a "dumb" content tracker and handle automatically only the simplest, non-ambiguous cases; in an instance like this one you *want* it to ask you what to do. And as you can see, Git does an excellent job of describing the nature of the conflict, which will make it easier for you to solve it.
+In my opinion this is exactly the right behaviour. This is a clearly ambiguous merge and it simply wouldn't be right for your version control system to try "resolving" it for you. You actually want it to be a "dumb" content tracker and handle automatically only the simplest, non-ambiguous cases; in an instance like this one you _want_ it to ask you what to do. And as you can see, Git does an excellent job of describing the nature of the conflict, which will make it easier for you to solve it.

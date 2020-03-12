@@ -34,7 +34,7 @@ Calls `str_new` and uses it to create a standard `String` instance. Expects a po
 
 ## `rb_str_new2`
 
-Expects a pointer to a null-terminated string. Calls `strlen` to determine string length. `strlen` should be encoding-agnostic insofar as it just counts bytes until it hits a terminating `NUL` character. This means that all standard [C](/wiki/C) strings should work. Non-[ASCII](/wiki/ASCII) encodings *might* work unless it contains embedded (non-terminating) `NUL` bytes.
+Expects a pointer to a null-terminated string. Calls `strlen` to determine string length. `strlen` should be encoding-agnostic insofar as it just counts bytes until it hits a terminating `NUL` character. This means that all standard [C](/wiki/C) strings should work. Non-[ASCII](/wiki/ASCII) encodings _might_ work unless it contains embedded (non-terminating) `NUL` bytes.
 
 # Analysis of `io.c`
 

@@ -10,7 +10,7 @@ On upgrading to Rails 2.0RC2 (see "[Upgrading to Rails 2.0RC2 on Mac OS X Leopar
 
 Looks like this advice probably originated from [here](http://trac.macosforge.org/projects/ruby/wiki/Troubleshooting).
 
-But note, when I just did a plain `./configure && make` for MySQL, the `mysql_config` tool was *not* installed at that path, but at `/usr/local/bin/mysql_config` instead.
+But note, when I just did a plain `./configure && make` for MySQL, the `mysql_config` tool was _not_ installed at that path, but at `/usr/local/bin/mysql_config` instead.
 
 So, in my case, I had to do this (note the different value for `--with-mysql-config`):
 
@@ -91,7 +91,7 @@ A quick [Google](/wiki/Google) (too quick, seeing as I didn't find this page aga
 
     make
     gcc -I. -I. -I/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/1.8/universal-darwin9.0 -I. -DHAVE_MYSQL_H  -I/usr/local/mysql/include/mysql -fno-common -arch ppc -arch i386 -Os -pipe -fno-common  -c mysql.c
-    cc -arch ppc -arch i386 -pipe -bundle -o mysql.bundle mysql.o -L"." -L"/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib" -L. -arch ppc -arch i386    -lruby -L/usr/local/mysql/lib/mysql -lmysqlclient -lz -lm  -lpthread -ldl -lm  
+    cc -arch ppc -arch i386 -pipe -bundle -o mysql.bundle mysql.o -L"." -L"/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib" -L. -arch ppc -arch i386    -lruby -L/usr/local/mysql/lib/mysql -lmysqlclient -lz -lm  -lpthread -ldl -lm
     ld: warning in /usr/local/mysql/lib/mysql/libmysqlclient.dylib, file is not of required architecture
     Undefined symbols for architecture ppc:
       "_mysql_store_result", referenced from:
@@ -328,7 +328,7 @@ Finally I found a bunch of other results which indicated what the real solution 
 
 The `install_name_tool` trick doesn't seem to be necessary with this version of the [gem](/wiki/gem) because the reference to the `libmysqlclient.15.dylib` is already pointing to the right place:
 
-    bash-3.2# otool -L /usr/local/mysql/lib/mysql/libmysqlclient.15.0.0.dylib 
+    bash-3.2# otool -L /usr/local/mysql/lib/mysql/libmysqlclient.15.0.0.dylib
     /usr/local/mysql/lib/mysql/libmysqlclient.15.0.0.dylib:
     	/usr/local/mysql/lib/mysql/libmysqlclient.15.dylib (compatibility version 16.0.0, current version 16.0.0)
     	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 111.0.0)

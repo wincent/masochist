@@ -9,7 +9,7 @@ Basically, it doesn't worry about storing metadata about file renames, file move
 
 The model is rock solid and infallible because it is simple.
 
-Git *does* do fancy file rename and copy detection, but it deduces it merely by looking at the commit graph. It doesn't need any metadata to be stored. This is exactly the way it should be done. If you store metadata, you're locking yourself into the best algorithms you had at the time of storage; if you forget metadata and instead deduce you can always use the very best algorithms available at the time you examine the history.
+Git _does_ do fancy file rename and copy detection, but it deduces it merely by looking at the commit graph. It doesn't need any metadata to be stored. This is exactly the way it should be done. If you store metadata, you're locking yourself into the best algorithms you had at the time of storage; if you forget metadata and instead deduce you can always use the very best algorithms available at the time you examine the history.
 
 This is not just a theoretical benefit. The [thread I'm linking to](http://marc.info/?l=git&m=119637184605851&w=2) is a great example of algorithmic improvements being made which increase Git's accuracy and sophistication without requiring repositories to be rebuilt and metadata to be re-calculated and re-stored.
 
@@ -17,8 +17,8 @@ As Torvalds sums up in [this post](http://marc.info/?l=git&m=119638337122721&w=2
 
 > The thing to take away from this is:
 >
-> -   git really doesn't even *care* about the whole "rename detection" internally, and any commits you have done with renames are totally independent of the heuristics we then use to *show* the renames.
+> -   git really doesn't even _care_ about the whole "rename detection" internally, and any commits you have done with renames are totally independent of the heuristics we then use to _show_ the renames.
 > -   the rename detection really is for just two reasons:
 >     -   keep humans happy, and keep the diffs small and
 >     -   help automatic merging across renames. So getting renames right is certainly good, but it's more of a "politeness" issue than a "correctness" issue, although the merge portion of it does matter a lot sometimes.
-> -   the important thing here is that you can commit your changes and not worry about them being somehow "corrupted" by lack of rename detection, even if you commit them with a version of git that doesn't do rename detection the way you expected it. The rename detection is an "after-the-fact" thing, not something that actually gets saved in the repository, which is why we can change the heuristics *after* seeing examples, and the examples magically correct themselves!
+> -   the important thing here is that you can commit your changes and not worry about them being somehow "corrupted" by lack of rename detection, even if you commit them with a version of git that doesn't do rename detection the way you expected it. The rename detection is an "after-the-fact" thing, not something that actually gets saved in the repository, which is why we can change the heuristics _after_ seeing examples, and the examples magically correct themselves!

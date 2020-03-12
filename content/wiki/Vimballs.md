@@ -2,5 +2,3 @@
 redirect: [[vimball]]
 tags: wiki
 ---
-
-

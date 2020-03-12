@@ -2,7 +2,7 @@
 tags: bleak.house wiki
 ---
 
-These notes were made while installing [bleak\_house](/wiki/bleak_house) 3.6 on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
+These notes were made while installing [bleak_house](/wiki/bleak_house) 3.6 on [Mac OS X](/wiki/Mac_OS_X) [Leopard](/wiki/Leopard) 10.5.1.
 
 My initial attempt failed:
 
@@ -103,7 +103,7 @@ Output:
     ---
     >   TOPDIR = File.dirname(__FILE__).chomp!("/lib/ruby/1.8/i686-darwin9.1.0")
     11,18d10
-    <   ARCHFLAGS = 
+    <   ARCHFLAGS =
     <     if e = ENV['ARCHFLAGS']
     <       e
     <     elsif e = ENV['RC_ARCHS']
@@ -209,7 +209,7 @@ Output:
 So we really have a few problems here:
 
 -   Stock `ruby` on [Leopard](/wiki/Leopard) is a different version
--   Stock `ruby` on [Leopard](/wiki/Leopard) is a [Universal Binary](/wiki/Universal_Binary), but the [bleak\_house](/wiki/bleak_house) version is not
+-   Stock `ruby` on [Leopard](/wiki/Leopard) is a [Universal Binary](/wiki/Universal_Binary), but the [bleak_house](/wiki/bleak_house) version is not
 -   This mismatch could be an obstacle to testing compiled extensions
 -   Stock `ruby` looks in completely different places to find things
 
@@ -234,11 +234,11 @@ We have a backup copy, so now apply this patch:
     -          system("./configure --prefix=#{binary_dir[0..-5]} > ../configure.log 2>&1") # --with-static-linked-ext
     +          system("./configure --prefix=/usr/local/ruby-bleak-house > ../configure.log 2>&1") # --with-static-linked-ext
                system("make > ../make.log 2>&1")
-    -  
+    -
     -          binary = "#{binary_dir}/ruby-bleak-house"
-    -  
+    -
     -          # Install binary
-    -          if File.exist? "ruby"        
+    -          if File.exist? "ruby"
     -            # Avoid "Text file busy" error
     -            File.delete binary if File.exist? binary
     -            exec("cp ./ruby #{binary}; chmod 755 #{binary}")
@@ -247,7 +247,7 @@ We have a backup copy, so now apply this patch:
     -          end
     +          system("make install >> ../make.log 2>&1")
              end
-             
+
            end
 
 Now try rebuilding again:
@@ -277,7 +277,7 @@ And that works. So, I tried running `sudo gem install bleak_house` again but tha
     --- extconf.rb.orig	2008-01-15 14:42:42.000000000 +0100
     +++ extconf.rb	2008-01-15 14:46:33.000000000 +0100
     @@ -1,3 +1,6 @@
-     
+
      system('ruby build_ruby.rb &> /dev/null')
     -exec('ruby-bleak-house build_logger.rb')
     +old_path=ENV['PATH']
@@ -331,7 +331,7 @@ For this sandbox to actually be useful you'll probably want to bootstrap it with
     # run the specs
     rake spec
 
-And that all works, so I can now proceed to start playing with it using bleak\_house. Note that the sandbox is so pristine that it doesn't even have bleak\_house in it; address that like this:
+And that all works, so I can now proceed to start playing with it using bleak_house. Note that the sandbox is so pristine that it doesn't even have bleak_house in it; address that like this:
 
     sudo gem install bleak_house
 

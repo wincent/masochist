@@ -12,7 +12,7 @@ For fun with Xcode, follow these steps:
 5.  Notice that bug is still present
 6.  Spend 30 to 60 minutes in the debugger trying to work out why the bug is still present
 7.  Discover through low-level debugger chicanery that Xcode is running the old code, not the fixed code
-8.  Inspect the build log and confirm that Xcode *did* compile the modified file containing the bug fix
+8.  Inspect the build log and confirm that Xcode _did_ compile the modified file containing the bug fix
 9.  Scratch head, baffled
 10. Clean
 11. Build
@@ -21,10 +21,6 @@ For fun with Xcode, follow these steps:
 14. Curse Apple for wasting your time at Step 6 above
 15. Forget about filing a bug report because the likelihood of isolating a reproducible test case for a bizarre bug like this must be close to nil
 16. Vent frustrations by writing recipe for weblog
-
-
-
-
 
 #### Update: 7 April 2006
 

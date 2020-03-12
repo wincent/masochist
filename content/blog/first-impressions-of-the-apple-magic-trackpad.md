@@ -50,9 +50,9 @@ In fact, it works so well that it has me doubting the long-term survival of the 
 
 You can physically click the MT in the lower corners in order to produce a left or right click but I don't use that capability at all, preferring to tap to perform a left click and do a two-finger tap to perform a "right" or secondary click.
 
-This works impressively well. The device and the drivers to a marvelous job of differentiating between a tap (a click) and different movements like swipes and drags. This is the kind of technology which would be a downright pain in the ass to use if it wasn't perfectly executed, but the truth is, it seems that it *is* perfectly executed and it makes it an effortless pleasure to use.
+This works impressively well. The device and the drivers to a marvelous job of differentiating between a tap (a click) and different movements like swipes and drags. This is the kind of technology which would be a downright pain in the ass to use if it wasn't perfectly executed, but the truth is, it seems that it _is_ perfectly executed and it makes it an effortless pleasure to use.
 
-And the absence of audible clicks when you use it this way make it completely silent. (As I said above, you *can* do physical clicks if you want, but I chose not to). I'm finding it incredibly relaxing to work in this way, as it makes me feel more like I am working with the machine rather than bending it to my will.
+And the absence of audible clicks when you use it this way make it completely silent. (As I said above, you _can_ do physical clicks if you want, but I chose not to). I'm finding it incredibly relaxing to work in this way, as it makes me feel more like I am working with the machine rather than bending it to my will.
 
 ## Games
 
@@ -62,6 +62,6 @@ But for your standard first-person shooter, I think the mouse is going to be the
 
 # Summary
 
-So those are my first impressions of the device. It builds on Apple's experience in laptop control surfaces and multi-touch displays (where it seems they are the undisputed leaders in the industry) and brings those lessons to the desktop space. It may not be as "sexy" as the Magic Mouse, but it is certainly *much* more practical, usable and ergonomic. I can see myself becoming more proficient with this device, and using less energy to boot.
+So those are my first impressions of the device. It builds on Apple's experience in laptop control surfaces and multi-touch displays (where it seems they are the undisputed leaders in the industry) and brings those lessons to the desktop space. It may not be as "sexy" as the Magic Mouse, but it is certainly _much_ more practical, usable and ergonomic. I can see myself becoming more proficient with this device, and using less energy to boot.
 
 Construction is solid and the build quality is immaculate. If you're thinking of giving one a try, I wholeheartedly encourage you to take the plunge. It's well worth the asking price.

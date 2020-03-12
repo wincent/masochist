@@ -5,11 +5,7 @@ tags: blog
 
 It's amazing how hard it is to get temporary Internet access in Spain. Or permanent access for that matter. Earlier this month I decided to switch ISPs. On 9 May I sent a letter to my old provider notifying them of my desire to discontinue the service and on the same day I applied with a new provider.
 
-
-
-
-
-9 days later I got a letter from the new provider, signed the enclosed form and returned it. They advise that setting up new connections usually takes 30 days from the date on which they receive the signed form. So, best case scenario: 9 days to receive the form, 1 more day for them to get it back, plus 30 days to establish the connection; 40 days to get an ADSL connection. Last time I checked, Spain was not a developing nation but a developed one, and this *is* the 21st century, right?
+9 days later I got a letter from the new provider, signed the enclosed form and returned it. They advise that setting up new connections usually takes 30 days from the date on which they receive the signed form. So, best case scenario: 9 days to receive the form, 1 more day for them to get it back, plus 30 days to establish the connection; 40 days to get an ADSL connection. Last time I checked, Spain was not a developing nation but a developed one, and this _is_ the 21st century, right?
 
 On 21 May my old provider notified me that I'd be able to enjoy the benefits of my access until the end of the billing period shown on my last bill. That meant that my access would be cut off at the end of 26 May.
 

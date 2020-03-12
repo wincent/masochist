@@ -35,7 +35,7 @@ Commenters on that post add the following opinions:
 -   People are "too obsessed" with "pretty" [URLs](/wiki/URLs) and "normal users" don't pay attention
 -   There are instances ([wikis](/wiki/wikis) for example) where "hackable" [URLs](/wiki/URLs) add value
 
-## "SEO Optimization of URLs in Rails with to\_param"
+## "SEO Optimization of URLs in Rails with to_param"
 
 Referenced by the above article is [this post](http://jroller.com/page/obie?entry=seo_optimization_of_urls_in) by [Obie Fernandez](http://jroller.com/page/obie) which explains the technical details behind getting [URL](/wiki/URL) permalinks to work as previously advocated.
 
@@ -65,13 +65,13 @@ Nothing new to see there, although the commenters do provide a couple of ways of
 
 [A summary](http://gabrito.com/post/search-engine-friendly-urls-in-rails) of approaches and plug-ins for implementing so-called "search engine friendly" [URLs](/wiki/URLs):
 
--   acts\_as\_sluggable: <http://tore.darell.no/pages/5-acts-as-sluggable>
--   acts\_as\_urlnameable: <http://gabriel.gironda.org/articles/2006/03/09/acts_as_urlnameable-released>
--   acts\_as\_slugable: <http://multi-up.ca/code/>
--   acts\_as\_friendly\_param: <http://www.chrisfarms.com/2007/2/11/seo-friendly-urls-in-rails>
--   permalink\_fu: <http://mephistoblog.com/2007/1/14/improved-url-escaping-for-permalinks>
+-   acts_as_sluggable: <http://tore.darell.no/pages/5-acts-as-sluggable>
+-   acts_as_urlnameable: <http://gabriel.gironda.org/articles/2006/03/09/acts_as_urlnameable-released>
+-   acts_as_slugable: <http://multi-up.ca/code/>
+-   acts_as_friendly_param: <http://www.chrisfarms.com/2007/2/11/seo-friendly-urls-in-rails>
+-   permalink_fu: <http://mephistoblog.com/2007/1/14/improved-url-escaping-for-permalinks>
 
-## "Even better looking URLs with permalink\_fu"
+## "Even better looking URLs with permalink_fu"
 
 Source: <http://www.seoonrails.com/even-better-looking-urls-with-permalink_fu>
 
@@ -89,7 +89,7 @@ While not specifically related to [Rails](/wiki/Rails), [John Gruber](/wiki/John
 > -   The number is meaningful only to the software, not to the reader. Additionally, this structure makes it difficult to switch to different software while continuing to use the same URLs.
 > -   The .html extension is unsightly and needless.
 >
-> DF’s article URLs look like this: /2007/03/blank\_slate, following a very simple and self-evident pattern: /year/month/slug. I considered the perhaps more obvious /year/month/date/slug, but decided against it. Including the day of the month would add three extra characters to each URL, and add very little useful information – monthly granularity is good enough in the long run for a web site where I seldom publish more than one article on any given day (unless I wished to repeat the same slug line within the same month, which strikes me as counter to the purpose of including a slug within the URL). The year, month, and slug provide useful context – just by looking at the URL alone, you know when it was written and perhaps have a rough idea what it is about. I can usually look at one of DF’s URLs and remember which specific article it refers to.
+> DF’s article URLs look like this: /2007/03/blank_slate, following a very simple and self-evident pattern: /year/month/slug. I considered the perhaps more obvious /year/month/date/slug, but decided against it. Including the day of the month would add three extra characters to each URL, and add very little useful information – monthly granularity is good enough in the long run for a web site where I seldom publish more than one article on any given day (unless I wished to repeat the same slug line within the same month, which strikes me as counter to the purpose of including a slug within the URL). The year, month, and slug provide useful context – just by looking at the URL alone, you know when it was written and perhaps have a rough idea what it is about. I can usually look at one of DF’s URLs and remember which specific article it refers to.
 
 # My take
 

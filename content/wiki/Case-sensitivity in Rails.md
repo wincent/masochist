@@ -2,7 +2,7 @@
 tags: rails mysql wiki
 ---
 
-Doing [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails) I recently discovered that [MySQL](/wiki/MySQL) does case-insensitive comparisons by default, and more importantly, that *even if you tell Rails to force case-sensitive comparisons you won't get them*.
+Doing [Behaviour-Driven Development with Rails](/wiki/Behaviour-Driven_Development_with_Rails) I recently discovered that [MySQL](/wiki/MySQL) does case-insensitive comparisons by default, and more importantly, that _even if you tell Rails to force case-sensitive comparisons you won't get them_.
 
 This means that if you have validations like the following in your `ActiveRecord` subclasses:
 
@@ -12,7 +12,7 @@ Then you'll get case-insensitive comparisons. But if you change this to:
 
     validates_uniqueness_of :login_name, :case_sensitive => true
 
-Then you *will still get case-insensitive comparisons*. Note that `case_sensitive` defaults to `true`.
+Then you _will still get case-insensitive comparisons_. Note that `case_sensitive` defaults to `true`.
 
 I discovered this because the [BDD](/wiki/BDD) development model gets you to work in a cycle:
 

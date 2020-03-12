@@ -7,7 +7,7 @@ The official [downloads page](http://dev.mysql.com/downloads/mysql/5.0.html) doe
 
 ```shell
 $ curl -O http://mysql.rediris.es/Downloads/MySQL-5.0/mysql-5.0.85.tar.gz
-$ tar xzvf mysql-5.0.85.tar.gz 
+$ tar xzvf mysql-5.0.85.tar.gz
 $ cd mysql-5.0.85
 $ ./configure --prefix=/usr/local/mysql
 $ make
@@ -21,9 +21,9 @@ Unfortunately one of the tests fails:
     --- /Users/wincent/trabajo/vendor/mysql/mysql-5.0.85/mysql-test/r/view.result	2009-08-11 14:18:01.000000000 +0300
     +++ /Users/wincent/trabajo/vendor/mysql/mysql-5.0.85/mysql-test/r/view.reject	2009-08-31 15:39:36.000000000 +0300
     @@ -3659,6 +3659,51 @@
-     
+
      # -- End of test case for Bug#34337.
-     
+
     +# -----------------------------------------------------------------
     +# -- Bug#35193 VIEW query is rewritten without "FROM DUAL",
     +# --           causing syntax error
@@ -69,9 +69,9 @@ Unfortunately one of the tests fails:
     +ERROR HY000: Key 'c2' doesn't exist in table 'v1'
     +DROP VIEW v1;
     +DROP TABLE t1;
-     # 
+     #
      # [/issues/45806 Bug #45806] crash when replacing into a view with a join!
-     # 
+     #
     @@ -3771,51 +3816,6 @@
      DROP TABLE t1;
      # -- End of test case for Bug#45806
@@ -121,13 +121,13 @@ Unfortunately one of the tests fails:
     -DROP VIEW v1;
     -DROP TABLE t1;
     -# -----------------------------------------------------------------
-     # -- Bug#40825: Error 1356 while selecting from a view 
+     # -- Bug#40825: Error 1356 while selecting from a view
      # --            with a "HAVING" clause though query works
      # -----------------------------------------------------------------
 
     mysqltest: Result content mismatch
 
-    Aborting: view failed in default mode. 
+    Aborting: view failed in default mode.
     To continue, re-run with '--force'.
     Stopping All Servers
     make: *** [test-ns] Error 1
@@ -143,7 +143,7 @@ $ sudo chown -R mysql:mysql .
 $ sudo bin/mysql_install_db --user=mysql
 $ sudo chown -R root:wheel .
 $ sudo chown -R mysql:mysql var
-$ sudo -u mysql -b bin/mysqld_safe 
+$ sudo -u mysql -b bin/mysqld_safe
 $ mysql
 ```
 
@@ -178,8 +178,8 @@ There is no `mysql` database listed when logged in using the client:
     +--------------------+
     | Database           |
     +--------------------+
-    | information_schema | 
-    | test               | 
+    | information_schema |
+    | test               |
     +--------------------+
     2 rows in set (0,00 sec)
 
@@ -194,22 +194,22 @@ Looks like the info formerly held in the `mysql` database is now held in `inform
     +---------------------------------------+
     | Tables_in_information_schema          |
     +---------------------------------------+
-    | CHARACTER_SETS                        | 
-    | COLLATIONS                            | 
-    | COLLATION_CHARACTER_SET_APPLICABILITY | 
-    | COLUMNS                               | 
-    | COLUMN_PRIVILEGES                     | 
-    | KEY_COLUMN_USAGE                      | 
-    | PROFILING                             | 
-    | ROUTINES                              | 
-    | SCHEMATA                              | 
-    | SCHEMA_PRIVILEGES                     | 
-    | STATISTICS                            | 
-    | TABLES                                | 
-    | TABLE_CONSTRAINTS                     | 
-    | TABLE_PRIVILEGES                      | 
-    | TRIGGERS                              | 
-    | USER_PRIVILEGES                       | 
-    | VIEWS                                 | 
+    | CHARACTER_SETS                        |
+    | COLLATIONS                            |
+    | COLLATION_CHARACTER_SET_APPLICABILITY |
+    | COLUMNS                               |
+    | COLUMN_PRIVILEGES                     |
+    | KEY_COLUMN_USAGE                      |
+    | PROFILING                             |
+    | ROUTINES                              |
+    | SCHEMATA                              |
+    | SCHEMA_PRIVILEGES                     |
+    | STATISTICS                            |
+    | TABLES                                |
+    | TABLE_CONSTRAINTS                     |
+    | TABLE_PRIVILEGES                      |
+    | TRIGGERS                              |
+    | USER_PRIVILEGES                       |
+    | VIEWS                                 |
     +---------------------------------------+
     17 rows in set (0,00 sec)

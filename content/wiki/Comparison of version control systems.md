@@ -11,7 +11,7 @@ This article provides a comparative overview of the major [version control syste
 -   [SVK](/wiki/SVK): user since early 2007, but retired soon after
 -   [Git](/wiki/Git): user since mid-2007
 
-**Spoiler:** The clear "winner" of this comparison is Git. I've now switched permanently to Git for all of the projects which I control, which basically means that I no longer use SVK (or CVS or Perforce either, obviously) and *only* use Subversion when forced to because an upstream project uses it. I am happy to make Subversion checkouts and exports if I am basically just a "read-only" consumer of the code, but if I have to make changes to the code I prefer to get it into Git by some means. Fortunately for me, almost all the projects I care about have moved or are moving to Git.
+**Spoiler:** The clear "winner" of this comparison is Git. I've now switched permanently to Git for all of the projects which I control, which basically means that I no longer use SVK (or CVS or Perforce either, obviously) and _only_ use Subversion when forced to because an upstream project uses it. I am happy to make Subversion checkouts and exports if I am basically just a "read-only" consumer of the code, but if I have to make changes to the code I prefer to get it into Git by some means. Fortunately for me, almost all the projects I care about have moved or are moving to Git.
 
 # Price
 
@@ -23,7 +23,7 @@ Here the clear loser is Perforce.
 
 Once again, [Perforce](/wiki/Perforce) is the odd one out here, being the only one that is not [open source](/wiki/open_source). [CVS](/wiki/CVS) is effectively dead, however, having long since been trounced by [Subversion](/wiki/Subversion) which has one of the most active communities (as of April 2007 CollabNet [claims](http://www.collab.net/products/open_source_subversion/subversion-history.html) "over 100,000 publicly accessible production servers" and "more that 1.5 million users"). [SVK](/wiki/SVK) is used by a minority of Subversion users and is effectively developed by just one person, [Chia-Liang Kao](/wiki/Chia-Liang_Kao). [Git](/wiki/Git) is not yet as widely deployed as Subversion, probably due to its steep learning curve, but its developer community seems to be as active as that of Subversion, if not more.
 
-Not only are Git's feature set and usability leaping forward at an impressive pace, it appears to be gaining traction and its adoption rate with many popular projects is on the increase, while Subversion is really struggling due to its inertia (slowness to introduce new features). Although Subversion is very entrenched and will take a long time to recede off into the background, it now (in March 2008) seems inevitable that Git will overtake it as *the* premiere [open source](/wiki/open_source) [version control system](/wiki/version_control_system).
+Not only are Git's feature set and usability leaping forward at an impressive pace, it appears to be gaining traction and its adoption rate with many popular projects is on the increase, while Subversion is really struggling due to its inertia (slowness to introduce new features). Although Subversion is very entrenched and will take a long time to recede off into the background, it now (in March 2008) seems inevitable that Git will overtake it as _the_ premiere [open source](/wiki/open_source) [version control system](/wiki/version_control_system).
 
 The clear winners in this section are Subversion and Git.
 
@@ -65,7 +65,7 @@ The clear winner in this section is Subversion, for its power, flexibility and e
 
 [SVK](/wiki/SVK) is written in [Perl](/wiki/Perl) and so is very slow for some operations, although its distributed nature does compensate for this in some cases.
 
-[Git](/wiki/Git) is the clear winner in this category because its simple architecture was designed with speed and large projects in mind. All of the lower-level "plumbing" which does the heavy lifting is written in [C](/wiki/C) *and* its distributed nature removes network bottlenecks.
+[Git](/wiki/Git) is the clear winner in this category because its simple architecture was designed with speed and large projects in mind. All of the lower-level "plumbing" which does the heavy lifting is written in [C](/wiki/C) _and_ its distributed nature removes network bottlenecks.
 
 # Architectural complexity
 
@@ -75,9 +75,9 @@ The clear winner in this section is Subversion, for its power, flexibility and e
 
 Many of [Perforce](/wiki/Perforce)'s concepts will be relatively familiar due to its client-serve base, but its command set naming conventions are quite different, requiring some learning; fortunately, it's documentation is quite good.
 
-[Git](/wiki/Git) is the hardest to learn because it has the most radically different conceptual underpinnings *and* a huge number of commands with many options. To get the most out of Git it is desirable to learn how it works "under the covers" too, so to get started with Git you are looking at a couple of weeks of study and experimentation.
+[Git](/wiki/Git) is the hardest to learn because it has the most radically different conceptual underpinnings _and_ a huge number of commands with many options. To get the most out of Git it is desirable to learn how it works "under the covers" too, so to get started with Git you are looking at a couple of weeks of study and experimentation.
 
-It's hard to pick winners and losers in this section because it's not clear that "being familiar" is actually a merit that deserves highlighting. Subversion scores highly because it is familiar, well-documented, and largely easy to use. Git, on the other hand, is unfamiliar (but still well-documented) and only becomes easy to use after an initial apprenticeship has been completed. Having said that, once you've passed the "trial by fire" you'll be able to do things which you couldn't even contemplate doing with the other tools, and you'll be able to do them *extremely easily*.
+It's hard to pick winners and losers in this section because it's not clear that "being familiar" is actually a merit that deserves highlighting. Subversion scores highly because it is familiar, well-documented, and largely easy to use. Git, on the other hand, is unfamiliar (but still well-documented) and only becomes easy to use after an initial apprenticeship has been completed. Having said that, once you've passed the "trial by fire" you'll be able to do things which you couldn't even contemplate doing with the other tools, and you'll be able to do them _extremely easily_.
 
 # Documentation
 
@@ -97,7 +97,7 @@ I know nothing about [Perforce](/wiki/Perforce) revision numbers, although I bel
 
 [Git](/wiki/Git) uses [SHA-1](/wiki/SHA-1) hashes to name all objects, of which revisions ("commits" in Git parlance) are only one type. The advantage to this approach is that revisions can be tagged and cryptographically signed, and the integrity of the repository history is verificable because the hashes are immutable.
 
-It is true that Subversion-style revision numbers would be more readable and easier to use, but the hash approach is necessitated by the distributed nature of Git; without unique revision numbers distributed Git repositories could enter into conflict (where the same number would refer to different repository states). Concessions are made to ease-of-use by allowing minimal unique hash substrings, tags and *many* other ways of identifying revisions (for examples and additional information see the manual page for `git-rev-parse`).
+It is true that Subversion-style revision numbers would be more readable and easier to use, but the hash approach is necessitated by the distributed nature of Git; without unique revision numbers distributed Git repositories could enter into conflict (where the same number would refer to different repository states). Concessions are made to ease-of-use by allowing minimal unique hash substrings, tags and _many_ other ways of identifying revisions (for examples and additional information see the manual page for `git-rev-parse`).
 
 So as was the case in the "Learning curve" section above, Subversion might win on ease-of-use at first glance, but Git's harder-to-use alternative approach also enables things which wouldn't otherwise be possible.
 

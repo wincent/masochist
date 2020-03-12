@@ -8,7 +8,7 @@ One of the most common arguments for why [Vim](/wiki/Vim) is worth learning is t
 
 While that may be true, I don't think it applies always.
 
-# Editing speed *is* important
+# Editing speed _is_ important
 
 Maintaining "flow" is important. Staying "in the zone" makes you more productive. The more you can minimize the delay between conceiving an idea and executing it, the better you'll be able to maintain flow.
 

@@ -50,7 +50,7 @@ From a user perspective, the [SVK](/wiki/SVK) commands which would need to be up
 -   `svk co`: The client should check out any `svn:externals` referenced in the code that is being checked out.
 -   `svk st`: The client should separately show the status of the checked out working copy and that of any nested `svn:externals`.
 -   `svk up`: The client should update not only the checked out working copy but also any nested `svn:externals`.
--   `svk ci`: When checking in code the client should act on only one thing at a time: either the checked out working copy *or* a nested `svn:externals`; this matches the behaviours of the [Subversion](/wiki/Subversion) client which insists that all commits be atomic and cannot guarantee that a commit to more than two repositories will be atomic.
+-   `svk ci`: When checking in code the client should act on only one thing at a time: either the checked out working copy _or_ a nested `svn:externals`; this matches the behaviours of the [Subversion](/wiki/Subversion) client which insists that all commits be atomic and cannot guarantee that a commit to more than two repositories will be atomic.
 
 # See also
 

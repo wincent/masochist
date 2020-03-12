@@ -39,26 +39,26 @@ Actually install:
 
     Transaction Summary
     ====================================================================================================================================
-    Install      1 Package(s)         
-    Update       1 Package(s)         
-    Remove       1 Package(s)         
+    Install      1 Package(s)
+    Update       1 Package(s)
+    Remove       1 Package(s)
 
     Total download size: 16 M
     Is this ok [y/N]: y
     Downloading Packages:
-    (1/2): kernel-headers-2.6.18-128.1.1.el5.i386.rpm                                                            | 913 kB     00:01     
-    (2/2): kernel-2.6.18-128.1.1.el5.i686.rpm                                                                    |  15 MB     00:22     
+    (1/2): kernel-headers-2.6.18-128.1.1.el5.i386.rpm                                                            | 913 kB     00:01
+    (2/2): kernel-2.6.18-128.1.1.el5.i686.rpm                                                                    |  15 MB     00:22
     ------------------------------------------------------------------------------------------------------------------------------------
-    Total                                                                                               682 kB/s |  16 MB     00:23     
+    Total                                                                                               682 kB/s |  16 MB     00:23
     Running rpm_check_debug
     Running Transaction Test
     Finished Transaction Test
     Transaction Test Succeeded
     Running Transaction
-      Installing     : kernel                                            [1/4] 
-      Updating       : kernel-headers                                    [2/4] 
-      Cleanup        : kernel-headers                                    [3/4] 
-      Cleanup        : kernel                                            [4/4] 
+      Installing     : kernel                                            [1/4]
+      Updating       : kernel-headers                                    [2/4]
+      Cleanup        : kernel-headers                                    [3/4]
+      Cleanup        : kernel                                            [4/4]
 
     Removed: kernel.i686 0:2.6.18-92.1.13.el5
     Installed: kernel.i686 0:2.6.18-128.1.1.el5

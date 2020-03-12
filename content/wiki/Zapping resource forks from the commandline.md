@@ -2,7 +2,7 @@
 tags: bash wiki
 ---
 
-Here's a short function that I just created in my [.bash\_profile](/wiki/.bash_profile):
+Here's a short function that I just created in my [.bash_profile](/wiki/.bash_profile):
 
     # zap resource forks
     zap()
@@ -10,7 +10,7 @@ Here's a short function that I just created in my [.bash\_profile](/wiki/.bash_p
       # loop through the args
       while [ -n "$1" ]
       do
-        /bin/cp -v /dev/null "$1/..namedfork/rsrc" 
+        /bin/cp -v /dev/null "$1/..namedfork/rsrc"
         shift
       done
     }

@@ -7,10 +7,6 @@ I've just spent several hours [working around a Subversion problem](http://www.w
 
 The short version: I was trying to migrate a repository from my local Subversion server (on Mac OS X) to a remote Subversion server (on Red Hat Linux). A number of pesky files in old revisions of the repository were preventing the `load` from working, thus derailing the entire process.
 
-
-
-
-
 Google was of no help, only indicating that Subversion has historically had problems with filenames containing certain characters in the names. But there was no indication of whether this had been addressed, what a workaround might be, and whether this was a limitation of only the `svnadmin load` functionality or something deeper down in the Subversion internals or the limitations of the default Red Hat filesystem (ext3, I believe), and most puzzlingly of all how these files managed to get into my repository in the first place if Subversion wasn't capable of handling them. So the time spent searching Google was essentially wasted time.
 
 So I started trying to get rid of the troublesome paths. This was done by filtering the 90 megabyte repository dump file through `svndumpfilter` to pare out the offending nodes. I'd filter, try the load again, discover another problematic path and repeat the process. Annoyingly, every time the load failed I ended up with a half-written, invalid repository, so I had to painfully delete the new repository, recreate it, reestablish access permissions, set passwords, and tighten filesystem permissions.

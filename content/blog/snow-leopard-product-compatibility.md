@@ -9,7 +9,7 @@ I am currently working on making sure that all of my products work properly with
 # Synergy
 
 -   Last status update: 1 September 2009.
--   [Version 4.0.1a released](/blog/synergy-4.0.1a-released) especially for [Snow Leopard](/wiki/Snow_Leopard) (*requires* 10.6) on 1 September 2009.
+-   [Version 4.0.1a released](/blog/synergy-4.0.1a-released) especially for [Snow Leopard](/wiki/Snow_Leopard) (_requires_ 10.6) on 1 September 2009.
 -   3.4 stable series appears to work correctly on [Snow Leopard](/wiki/Snow_Leopard) also.
 
 # Synergy Advance

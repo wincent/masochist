@@ -14,7 +14,7 @@ So, how's it going? At this point I am about 90% certain that I can make this th
 
 # Where I'm coming from
 
-The last time I seriously used a command-line email client was in the 1990s on the university Unix machines, and if I recall correctly it was [elm](https://en.wikipedia.org/wiki/Elm_(email_client)). Its [now ancient website](http://www.instinct.org/elm/) assures us that:
+The last time I seriously used a command-line email client was in the 1990s on the university Unix machines, and if I recall correctly it was [elm](<https://en.wikipedia.org/wiki/Elm_(email_client)>). Its [now ancient website](http://www.instinct.org/elm/) assures us that:
 
 > The program is still being slowly developed, and the release (March 24, 1999) of elm 2.5 is promising.
 
@@ -38,23 +38,23 @@ Nevertheless, maybe it was time for another look, so I started to look around, a
 
 # The rig
 
-Now, Steve recommends a complicated constellation of multiple programs, of which `mutt` is but one. He's not alone in doing this either ([here](https://wiki.archlinux.org/index.php/mutt) is one high-quality example), and I can only assume that not *everybody* recommending a combination like this is doing so just because they read Steve's blog. Nevertheless, I wanted to start out my experiment by making the smallest possible investment.
+Now, Steve recommends a complicated constellation of multiple programs, of which `mutt` is but one. He's not alone in doing this either ([here](https://wiki.archlinux.org/index.php/mutt) is one high-quality example), and I can only assume that not _everybody_ recommending a combination like this is doing so just because they read Steve's blog. Nevertheless, I wanted to start out my experiment by making the smallest possible investment.
 
 That meant doing a `brew install mutt` (thank goodness for [Homebrew](http://brew.sh/), which has formulae for just about every piece of software I needed to put this all together) and setting Mutt up to talk to my Gmail account over IMAP. But first, a brief stop at the Gmail account settings to set up an app-specific password because Mutt &mdash; obviously, perhaps &mdash; doesn't have built-in support for 2-factor authentication.
 
 A couple of days of play with Mutt installed in this way convinced me that it was worth delving deeper, so I continued to add pieces to the rig:
 
-* [mutt](http://www.mutt.org/): For reading email.
-* [offlineimap](http://www.offlineimap.org/) and then [mbsync](http://isync.sourceforge.net/): For maintaining a local cache of messages for offline access.
-* [notmuch](https://notmuchmail.org/): For fast search.
-* [msmtp](http://msmtp.sourceforge.net/): For sending email.
-* [w3m](http://w3m.sourceforge.net/) and then [elinks](http://elinks.or.cz/): For viewing HTML emails.
-* [urlview](https://packages.debian.org/sid/misc/urlview): For opening URLs from inside mutt.
-* [contacts](http://www.gnufoo.org/contacts/contacts.html) and then [lbdb](http://www.spinnaker.de/lbdb/): For integration with the macOS Contacts.
-* [reattach-to-user-name-space](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard): So that `lbdbq` works correctly inside `tmux`.
-* [terminal-notifier](https://github.com/julienXX/terminal-notifier): For notifications.
-* [imapfilter](https://github.com/lefcha/imapfilter/): For filtering.
-* [passage](https://github.com/wincent/passage): For mediating interaction with the macOS keychain.
+-   [mutt](http://www.mutt.org/): For reading email.
+-   [offlineimap](http://www.offlineimap.org/) and then [mbsync](http://isync.sourceforge.net/): For maintaining a local cache of messages for offline access.
+-   [notmuch](https://notmuchmail.org/): For fast search.
+-   [msmtp](http://msmtp.sourceforge.net/): For sending email.
+-   [w3m](http://w3m.sourceforge.net/) and then [elinks](http://elinks.or.cz/): For viewing HTML emails.
+-   [urlview](https://packages.debian.org/sid/misc/urlview): For opening URLs from inside mutt.
+-   [contacts](http://www.gnufoo.org/contacts/contacts.html) and then [lbdb](http://www.spinnaker.de/lbdb/): For integration with the macOS Contacts.
+-   [reattach-to-user-name-space](https://github.com/ChrisJohnsen/tmux-MacOSX-pasteboard): So that `lbdbq` works correctly inside `tmux`.
+-   [terminal-notifier](https://github.com/julienXX/terminal-notifier): For notifications.
+-   [imapfilter](https://github.com/lefcha/imapfilter/): For filtering.
+-   [passage](https://github.com/wincent/passage): For mediating interaction with the macOS keychain.
 
 Yes, the horror of discovering that the software package that you're downloading is [still hosted on SourceForge](https://twitter.com/wincent/status/804856280007327744). But it's ok. Each of these tools is designed to do one thing and do it well in a hopefully composable way. They are unlikely to break, and they aren't desperately in need of additional development. [Unix philosophy](https://en.wikipedia.org/wiki/Unix_philosophy) FTW.
 
@@ -82,7 +82,7 @@ I've been able to fine-tune this thing through configuration, getting it pretty 
 
 In other cases I had to get creative to make a workflow comfortable, like [setting up Vim to run as a viewer in a tmux split](https://github.com/wincent/wincent/commit/da55e4cb7f49004c5b4fdc8dbc3bb26864072419) in order to view multiple emails at the same time.
 
-A couple of examples of things I've had to patch to get them to behave how I like include [this PR](https://github.com/honza/mutt-notmuch-py/pull/9) to [`mutt-notmuch-py`](https://github.com/honza/mutt-notmuch-py) to make it employ readline history to remember and recall past searches ([now merged](https://github.com/honza/mutt-notmuch-py/commit/ae921a602e3)), or [this iTerm2 issue](https://gitlab.com/gnachman/iterm2/issues/5389) where I suggest a patch to make `mailto` URLs openable with a Command-Click (it already has the ability to *open* `mailto` URLs, although it is [not well-documented](https://groups.google.com/forum/#!msg/iterm2-discuss/TFPl1D_miIU/uDVV2ZZpYWQJ)). Since initially publishing this, [a fix](https://github.com/gnachman/iTerm2/commit/56cccde9ecc85058bfcfcc021fd9064e2f95bf98) has been applied for that too.
+A couple of examples of things I've had to patch to get them to behave how I like include [this PR](https://github.com/honza/mutt-notmuch-py/pull/9) to [`mutt-notmuch-py`](https://github.com/honza/mutt-notmuch-py) to make it employ readline history to remember and recall past searches ([now merged](https://github.com/honza/mutt-notmuch-py/commit/ae921a602e3)), or [this iTerm2 issue](https://gitlab.com/gnachman/iterm2/issues/5389) where I suggest a patch to make `mailto` URLs openable with a Command-Click (it already has the ability to _open_ `mailto` URLs, although it is [not well-documented](https://groups.google.com/forum/#!msg/iterm2-discuss/TFPl1D_miIU/uDVV2ZZpYWQJ)). Since initially publishing this, [a fix](https://github.com/gnachman/iTerm2/commit/56cccde9ecc85058bfcfcc021fd9064e2f95bf98) has been applied for that too.
 
 Finally, I had to make a caching proxy daemon for the macOS keychain in order to achieve the balance between security and convenience that I desired. (Ok, not really "had to"; more like "felt like".) It's called [Passage](https://github.com/wincent/passage), it is a tiny Go Launch Agent (like [Clipper](https://github.com/wincent/clipper)), and it proved the usefulness of my long commute from Menlo Park up to San Francisco every night (90 minutes of uninterrupted hacking time).
 

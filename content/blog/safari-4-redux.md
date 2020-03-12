@@ -17,7 +17,7 @@ From the "Stuff I'm pleased with" list:
 
 From the "Stuff that sucks" list:
 
--   **"Smart" Address Field:** Unlike in the beta screenshots, it actually *is* smart and doesn't hide [URLs](/wiki/URLs). Definitely doesn't suck any more.
+-   **"Smart" Address Field:** Unlike in the beta screenshots, it actually _is_ smart and doesn't hide [URLs](/wiki/URLs). Definitely doesn't suck any more.
 
 From the "Stuff I'm indifferent about" list:
 

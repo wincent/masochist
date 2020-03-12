@@ -24,6 +24,6 @@ env PKG_CONFIG_PATH=$HOME/lib/pkgconfig CPPFLAGS="-I$HOME/include -I$HOME/includ
 
 Observations:
 
-- Updated to ncurses 6.0 (last time was 5.9).
-- Updated to libevent 2.0.22 (last time was 2.0.21).
-- tmux failed to find ncurses until I built the latter with explicit `--enable-pc-files` and `--with-pkg-config-libdir`.
+-   Updated to ncurses 6.0 (last time was 5.9).
+-   Updated to libevent 2.0.22 (last time was 2.0.21).
+-   tmux failed to find ncurses until I built the latter with explicit `--enable-pc-files` and `--with-pkg-config-libdir`.

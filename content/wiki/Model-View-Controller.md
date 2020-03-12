@@ -2,5 +2,3 @@
 redirect: [[MVC]]
 tags: wiki
 ---
-
-

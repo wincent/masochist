@@ -17,7 +17,7 @@ The solution is to either change your `SuexecUserGroup` directive to another (no
 
 # `command not in docroot`
 
-[suexec](/wiki/suexec) requires the CGI script to be under the *server's* [DocumentRoot](/wiki/DocumentRoot) (not the [VirtualHost](/wiki/VirtualHost) DocumentRoot). It is permitted, however, for the VirtualHost DocumentRoot to be a [symlink](/wiki/symlink) to a directory that appears under the real DocumentRoot.
+[suexec](/wiki/suexec) requires the CGI script to be under the _server's_ [DocumentRoot](/wiki/DocumentRoot) (not the [VirtualHost](/wiki/VirtualHost) DocumentRoot). It is permitted, however, for the VirtualHost DocumentRoot to be a [symlink](/wiki/symlink) to a directory that appears under the real DocumentRoot.
 
 # See also
 

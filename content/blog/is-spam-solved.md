@@ -7,10 +7,6 @@ Just over a year ago I wrote about [Bill Gates' failed prediction](http://www.wi
 
 So it's time for my annual review of the spam situation (in fact, I'm a few weeks late). What's the view on spam like from here a year later?
 
-
-
-
-
 #### Countermeasures
 
 During 2006 I [gradually toughened up my anti-spam arsenal](http://www.wincent.com/a/knowledge-base/archives/2006/06/clamping_down_o.php) by introducing a number of new measures at the server level which reduce the amount of spam getting downloaded to the local machine and increase the likelihood that the spam which does get through will be tagged as such before it even hits Mail.app's filters:
@@ -67,7 +63,7 @@ Observations:
 
 -   67,000 good messages where received in the last year.
 -   46,000 spam messages where received in the last year.
--   Spam now accounts for 24% of all mail *ever received* (since statistic recording began), up from 11% at the same time last year; of the messages received in the last year, nearly 41% were spam.
+-   Spam now accounts for 24% of all mail _ever received_ (since statistic recording began), up from 11% at the same time last year; of the messages received in the last year, nearly 41% were spam.
 -   There were only 48 false positives in the last year, and 378 false negatives. False negatives accounted for a larger proportion of the mistakes: 76%, up from 66% last year (this is an improvement because false positives are more undesirable than false negatives).
 -   Overall the accuracy of SpamSieve remained solid at 99.6%.
 -   SpamSieve's corpus of good messages grew by nearly 50%; the corpus of spam message nearly doubled.

@@ -5,10 +5,6 @@ tags: blog
 
 Over the last month I've spent a few hours making minor improvements to the navigability of the site. Visitors should now find it a little bit easier to move around the site. These are minor polish details, the kind of stuff you might not even notice unless I told you about it; so here I am to, er, tell you about it.
 
-
-
-
-
 #### Down with Movable Type search, long live Google search
 
 [Google](http://google.com/) is now so good that it does a better job of searching this site than does the built-in [Movable Type](http://www.movabletype.org/) search functionality. It's better because it's quick, the index is frequently updated, and it allows me to provide a [unified site-wide search](http://www.wincent.com/a/site-map/search/) that returns results from all areas of [wincent.com](http://www.wincent.com/), not just the parts that a powered by Movable Type (the Movable Type only search engine probably caused more confusion than anything else, as it wouldn't find pages in the [forums](http://forums.wincent.com/), in the [bugs and feature requests database](http://bugs.wincent.com/), in the [mailing list archives](http://lists.wincent.com/) or in the [Knowledge Base wiki](http://www.wincent.com/knowledge-base/)).

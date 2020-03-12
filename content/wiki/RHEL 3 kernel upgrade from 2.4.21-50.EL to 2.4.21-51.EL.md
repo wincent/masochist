@@ -33,7 +33,7 @@ Get a list of updates:
 
     Fetching rpm headers...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
     The following Packages were marked to be skipped by your configuration:
@@ -68,18 +68,18 @@ Perform the actual upgrade:
 
     Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
     kernel                                  2.4.21         51.EL             athlon
-    kernel-doc                              2.4.21         51.EL             i386  
-    kernel-source                           2.4.21         51.EL             i386  
+    kernel-doc                              2.4.21         51.EL             i386
+    kernel-source                           2.4.21         51.EL             i386
 
 
     Testing package set / solving RPM inter-dependencies...
     ########################################
-    kernel-2.4.21-51.EL.athlon. ########################## Done.                   
-    kernel-doc-2.4.21-51.EL.i38 ########################## Done.                   
-    kernel-source-2.4.21-51.EL. ############################## Done.                   
+    kernel-2.4.21-51.EL.athlon. ########################## Done.
+    kernel-doc-2.4.21-51.EL.i38 ########################## Done.
+    kernel-source-2.4.21-51.EL. ############################## Done.
     Preparing              ########################################### [100%]
 
     Installing...
@@ -189,7 +189,7 @@ And check that `up2date` is satisfied:
 
     Fetching rpm headers...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
 Optional clean-up; you could install the previous version of the kernel but I like to keep it around.

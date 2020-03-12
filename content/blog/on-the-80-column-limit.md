@@ -35,7 +35,7 @@ So I settled on a new limit, 132 columns, the next standard terminal size up fro
 
 # The 80..132-column limit
 
-In recent years I've been doing a fair bit of coding in [C](/wiki/C) and [Ruby](/wiki/Ruby) in addition to [Objective-C](/wiki/Objective-C). These languages aren't afflicted by Long Method Signature Syndrome and even though it *is* fairly common to "chain" message sends in Ruby the method names are usually short enough that most code can fit under the 80-column limit fairly easily.
+In recent years I've been doing a fair bit of coding in [C](/wiki/C) and [Ruby](/wiki/Ruby) in addition to [Objective-C](/wiki/Objective-C). These languages aren't afflicted by Long Method Signature Syndrome and even though it _is_ fairly common to "chain" message sends in Ruby the method names are usually short enough that most code can fit under the 80-column limit fairly easily.
 
 C, of course, is the easiest because by convention it uses fairly short function and variable names, and "chaining" in the form of nested function calls isn't such a common pattern.
 
@@ -58,7 +58,7 @@ Or this (70 columns):
                 ID2SYM(rb_intern("minimum"))) == Qtrue)
                 min = rb_hash_aref(options, ID2SYM(rb_intern("minimum")));
 
-Evidently the first one is easier for a human to parse because it has a line-break in the logical place (*after* the `if` condition) rather than in the awkward place (inside a list of function arguments inside the `if`).
+Evidently the first one is easier for a human to parse because it has a line-break in the logical place (_after_ the `if` condition) rather than in the awkward place (inside a list of function arguments inside the `if`).
 
 To avoid that awkward line-break we could introduce a temporary variable:
 
@@ -90,11 +90,11 @@ If we don't want any of those less-than-ideal line-breaks we could introduce eve
 
 Now we're under the length limit, but we've cluttered things up with three temporary variables and it's now necessary to read 5 lines instead of 2 in order to figure out what's happening.
 
-It *is* true that narrow lines are generally easier to read for the human eye (which is why newspaper's publish their stories in multiple columns instead of a single wide slab), but for me the most readable of all these alternatives is actually the original, 97-column version.
+It _is_ true that narrow lines are generally easier to read for the human eye (which is why newspaper's publish their stories in multiple columns instead of a single wide slab), but for me the most readable of all these alternatives is actually the original, 97-column version.
 
 So, for me, my current thinking is that we shouldn't be talking about "column limits" but rather "column guidelines". That is, I think an "80-column guideline" is great for C and Ruby, and a "132-column guideline" is great for Objective-C.
 
-It's a *guideline*, a recommendation and not a hard limit, and before inserting line-breaks, introducing temporary variables, or otherwise refactoring the code, you should look at any line which exceeds the guideline and ask yourself "is this the most readable way of formatting this particular line?". If the answer is "yes", then you should keep the "long" line even though it exceeds the "limit". By all means, play around splitting the line and juggling things around, but in the end you should always choose the most *readable* alternative. Nothing else matters.
+It's a _guideline_, a recommendation and not a hard limit, and before inserting line-breaks, introducing temporary variables, or otherwise refactoring the code, you should look at any line which exceeds the guideline and ask yourself "is this the most readable way of formatting this particular line?". If the answer is "yes", then you should keep the "long" line even though it exceeds the "limit". By all means, play around splitting the line and juggling things around, but in the end you should always choose the most _readable_ alternative. Nothing else matters.
 
 Since I discovered [how to highlight overlength lines in Vim](/blog/highlighting-overlength-lines-in-vim) a few weeks ago, it's been quite pleasant to play with these guidelines because rather than having a single limit/guideline, Vim allows me to highlight the text in arbitrarily complex ways.
 

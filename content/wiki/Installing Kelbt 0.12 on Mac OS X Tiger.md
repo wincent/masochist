@@ -9,9 +9,9 @@ Unfortunately, the tests did not pass, so I decided not to proceed with the inst
 # Building
 
     wget http://www.cs.queensu.ca/~thurston/kelbt/kelbt-0.12.tar.gz
-    tar xzvf kelbt-0.12.tar.gz 
+    tar xzvf kelbt-0.12.tar.gz
     cd kelbt-0.12/
-    ./configure 
+    ./configure
     make
     cd test
     ./runtests

@@ -9,20 +9,19 @@ The NetInfo Manager utility has finally be laid to rest, but so have [command li
 
     ##
     # User Database
-    # 
+    #
     # Note that this file is consulted directly only when the system is running
     # in single-user mode.  At other times this information is provided by
     # Open Directory.
     #
     # This file will not be consulted for authentication unless the BSD local node
     # is enabled via /Applications/Utilities/Directory Utility.app
-    # 
+    #
     # See the DirectoryService(8) man page for additional information about
     # Open Directory.
     ##
 
 So what am I supposed to do? Use the Directory Utility application to turn on the BSD local node and then manually edit `/etc/passwd` and set a password using the `passwd` tool (for which there is no longer a manpage, but at least `password --foo` causes usage information to be printed)? Is there a more elegant way than this? What does Mac OS X Server do under the hood?
-
 
 ### Update
 
@@ -30,7 +29,7 @@ So what am I supposed to do? Use the Directory Utility application to turn on th
 -   <http://docs.info.apple.com/article.html?artnum=306494>
 -   <http://www.royhooper.ca/blog/articles/2007/10/27/creating-os-only-users-on-leopard>
 
-So it looks like something like this *would* probably work:
+So it looks like something like this _would_ probably work:
 
     sudo dscl localhost -create /Local/Default/Users/_mysql
     sudo dscl localhost -create /Local/Default/Users/_mysql NFSHomeDirectory /var/empty
@@ -40,7 +39,7 @@ So it looks like something like this *would* probably work:
     sudo dscl localhost -create /Local/Default/Users/_mysql UniqueID: 74
     sudo dscl localhost -create /Local/Default/Users/_mysql UserShell: /usr/bin/false
 
-*But*, having started to snoop around using `dscl` I saw that there already is a MySQL user, it's just that it appears as `_mysql`. Information about it can be printed by issuing one of the following commands:
+_But_, having started to snoop around using `dscl` I saw that there already is a MySQL user, it's just that it appears as `_mysql`. Information about it can be printed by issuing one of the following commands:
 
     # with leading underscore
     dscl localhost -cat /Local/Default/Users/_mysql
@@ -61,6 +60,6 @@ The output is:
     UniqueID: 74
     UserShell: /usr/bin/false
 
-I have no way of knowing whether this user is created by default when installing Leopard or if this was migrated over automatically when I performed my archive install. (Update: Martin Maciaszek wrote in to say that he did a clean install and the `_mysql` user, along with others like `_svn`, *is* created during installation; he also notes that "almost all the user ids below 100 are taken now".)
+I have no way of knowing whether this user is created by default when installing Leopard or if this was migrated over automatically when I performed my archive install. (Update: Martin Maciaszek wrote in to say that he did a clean install and the `_mysql` user, along with others like `_svn`, _is_ created during installation; he also notes that "almost all the user ids below 100 are taken now".)
 
 The `_mysql` and `mysql` user names appear to be completely equivalent in use (ie. `chown mysql foo` is identical to `chown _mysql foo`).

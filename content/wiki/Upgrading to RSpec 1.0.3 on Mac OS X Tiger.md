@@ -9,7 +9,7 @@ Unlike the last upgrade (see "[Upgrading to RSpec 1.0.2 on Mac OS X Tiger](/wiki
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec
@@ -137,7 +137,7 @@ There were no significant changes:
 
 [RSpec 1.0.3](/wiki/RSpec_1.0.3) is listed as a bugfix release and so at first I thought it doesn't bring any new features. But [ZenTest 3.6.0](/wiki/ZenTest_3.6.0) is out and it incorporates a new mechanism that offers better integration with [RSpec](/wiki/RSpec). [David Chelimsky](/wiki/David_Chelimsky) had [previously said](http://rubyforge.org/pipermail/rspec-users/2007-May/001700.html) on the [rspec-users](/wiki/rspec-users) mailing list that the next release after this new [ZenTest](/wiki/ZenTest) version will include changes to work with thew new mechanism. This will involve undoing some of the set-up work previously undertaken and described in "[Setting up autotest](/wiki/Setting_up_autotest)" and "[Using autotest with Rails](/wiki/Using_autotest_with_Rails)".
 
-To my surprise, I found out from the [mailing list post](http://rubyforge.org/pipermail/rspec-users/2007-May/001742.html) that [RSpec 1.0.3](/wiki/RSpec_1.0.3) *is* the release that brings better [autotest](/wiki/autotest) integration.
+To my surprise, I found out from the [mailing list post](http://rubyforge.org/pipermail/rspec-users/2007-May/001742.html) that [RSpec 1.0.3](/wiki/RSpec_1.0.3) _is_ the release that brings better [autotest](/wiki/autotest) integration.
 
 > ZenTest-3.6.0 boasts a new autodiscovery and plugin model that other frameworks can register with and plug into. RSpec-1.0.3 ships with the necessary plugin code, so all you need to do is download and go.
 

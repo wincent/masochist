@@ -51,7 +51,7 @@ index 1882cf6..8b78443 100644
 --- a/spec/routing/posts_routing_spec.rb
 +++ b/spec/routing/posts_routing_spec.rb
 @@ -2,72 +2,72 @@ require 'spec_helper'
- 
+
  describe PostsController do
    describe 'routing' do
 -    specify { get('/blog').should have_routing('posts#index') }
@@ -68,21 +68,21 @@ index 1882cf6..8b78443 100644
 +    specify { expect(put: '/blog/synergy-5.0-released').to route_to('posts#update', id: 'synergy-5.0-released') }
 +    specify { expect(delete: '/blog/synergy-5.0-released').to route_to('posts#destroy', id: 'synergy-5.0-released') }
 +    specify { expect(post: '/blog').to route_to('posts#create') }
- 
+
      describe 'index pagination' do
 -      specify { get('/blog/page/2').should map_to('posts#index', :page => '2') }
 +      specify { expect(get: '/blog/page/2').to route_to('posts#index', page: '2') }
- 
+
        # note how we can still have an post titled "Page"
 -      specify { get('/blog/page').should have_routing('posts#show', :id => 'page') }
 +      specify { expect(get: '/blog/page').to route_to('posts#show', id: 'page') }
- 
+
        it 'rejects non-numeric :page params' do
 -        get('/blog/page/foo').should_not be_recognized
 +        expect(get: '/blog/page/foo').to_not be_routable
        end
      end
- 
+
      describe 'comments' do
        # only [/tags/new #new], [/tags/create #create] and [/tags/update #update] are implemented while nested
 -      specify { get('/blog/synergy-5.0-released/comments/new').should have_routing('comments#new', :post_id => 'synergy-5.0-released') }
@@ -91,7 +91,7 @@ index 1882cf6..8b78443 100644
 +      specify { expect(get: '/blog/synergy-5.0-released/comments/new').to route_to('comments#new', post_id: 'synergy-5.0-released') }
 +      specify { expect(post: '/blog/synergy-5.0-released/comments').to route_to('comments#create', post_id: 'synergy-5.0-released') }
 +      specify { expect(put: '/blog/synergy-5.0-released/comments/123').to route_to('comments#update', post_id: 'synergy-5.0-released', id: '123') }
- 
+
        # all other RESTful actions are no-ops
 -      specify { get('/blog/synergy-5.0-released/comments').should_not be_recognized }
 -      specify { get('/blog/synergy-5.0-released/comments/456').should_not be_recognized }
@@ -102,7 +102,7 @@ index 1882cf6..8b78443 100644
 +      specify { expect(get: '/blog/synergy-5.0-released/comments/456/edit').to_not be_routable }
 +      specify { expect(delete: '/blog/synergy-5.0-released/comments/456').to_not be_routable }
      end
- 
+
      describe 'regressions' do
        it 'handles trailing slashes on resources declared using ":as"' do
          # bug appeared in Rails 2.3.0 RC1; see:
@@ -110,14 +110,14 @@ index 1882cf6..8b78443 100644
 -        get('/blog/').should map_to('posts#index')
 +        expect(get: '/blog/').to route_to('posts#index')
        end
- 
+
        it 'handles comment creation on posts with periods in the title' do
          # see: https://wincent.com/issues/1410
 -        post('/blog/foo.bar/comments').should map_to('comments#create', :post_id => 'foo.bar')
 +        expect(post: '/blog/foo.bar/comments').to route_to('comments#create', post_id: 'foo.bar')
        end
      end
- 
+
      describe 'helpers' do
 -      before do
 +      let(:post) do
@@ -126,22 +126,22 @@ index 1882cf6..8b78443 100644
 -        @post = Post.stub :permalink => 'synergy-5.0-released'
 +        Post.stub permalink: 'synergy-5.0-released'
        end
- 
+
        describe 'posts_path' do
 -        specify { posts_path.should == '/blog' }
 +        specify { expect(posts_path).to eq('/blog') }
        end
- 
+
        describe 'new_post_path' do
 -        specify { new_post_path.should == '/blog/new' }
 +        specify { expect(new_post_path).to eq('/blog/new') }
        end
- 
+
        describe 'post_path' do
 -        specify { post_path(@post).should == '/blog/synergy-5.0-released' }
 +        specify { expect(post_path(post)).to eq('/blog/synergy-5.0-released') }
        end
- 
+
        describe 'edit_post_path' do
 -        specify { edit_post_path(@post).should == '/blog/synergy-5.0-released/edit' }
 +        specify { expect(edit_post_path(post)).to eq('/blog/synergy-5.0-released/edit') }

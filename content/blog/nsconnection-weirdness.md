@@ -5,10 +5,6 @@ tags: blog
 
 Today I present an episode in the Great Mysteries of Cocoa series.
 
-
-
-
-
 ### The mystery
 
 Set up an `NSConnection` like this:

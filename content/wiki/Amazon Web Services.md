@@ -2,5 +2,3 @@
 redirect: [[AWS]]
 tags: wiki
 ---
-
-

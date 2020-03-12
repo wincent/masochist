@@ -263,7 +263,7 @@ This seems to yield the closest thing to an error/warning-free build possible:
     make  all-am
     if gcc -DHAVE_CONFIG_H -I. -I. -I.     -g -O2 -MT xmlif/xmlif.o -MD -MP -MF "xmlif/.deps/xmlif.Tpo" -c -o xmlif/xmlif.o `test -f 'xmlif/xmlif.c' || echo './'`xmlif/xmlif.c; \
     then mv -f "xmlif/.deps/xmlif.Tpo" "xmlif/.deps/xmlif.Po"; else rm -f "xmlif/.deps/xmlif.Tpo"; exit 1; fi
-    gcc  -g -O2   -o xmlif/xmlif  xmlif/xmlif.o  
+    gcc  -g -O2   -o xmlif/xmlif  xmlif/xmlif.o
     for xml in xmlif.xml xmlto.xml; do \
       FORMAT_DIR=./format XSL_DIR=./xsl \
        bash ./xmlto -o man/man1 man ./doc/$xml ; \

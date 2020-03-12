@@ -2,5 +2,3 @@
 redirect: [[Git]]
 tags: wiki
 ---
-
-

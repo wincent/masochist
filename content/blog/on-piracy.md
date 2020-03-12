@@ -4,9 +4,9 @@ tags: piracy blog
 cache_breaker: 1
 ---
 
-Obviously every developer, product, and market is different, *but...*
+Obviously every developer, product, and market is different, _but..._
 
-*As a general guideline*, if a developer asks "How much effort should I be investing in fighting piracy?", then the answer should almost always be "None".
+_As a general guideline_, if a developer asks "How much effort should I be investing in fighting piracy?", then the answer should almost always be "None".
 
 If you observe any community of developers trying to make a living from their products you'll see two main factions:
 
@@ -15,21 +15,21 @@ If you observe any community of developers trying to make a living from their pr
 
 That's a gross simplification, of course, but those are the general tendencies.
 
-The majority of customers, I suspect, would hope that the developers who work on the products they buy would adopt a healthy balance: that is, spending *most* of their time on features and enhancements (at least 90% and hopefully more than 95%), and a bare minimum on anti-piracy stuff to prevent themselves from going out of business. They want the programs they buy to be as good as possible, but they understand that the developer does actually need to make a living from it or those products will stop improving.
+The majority of customers, I suspect, would hope that the developers who work on the products they buy would adopt a healthy balance: that is, spending _most_ of their time on features and enhancements (at least 90% and hopefully more than 95%), and a bare minimum on anti-piracy stuff to prevent themselves from going out of business. They want the programs they buy to be as good as possible, but they understand that the developer does actually need to make a living from it or those products will stop improving.
 
-As a developer, I've mostly tried to maintain that kind of balance. You could say that I didn't really belong fully to either of the "factions" I mentioned above, but that I thought that if I could spend *less* than 5% of my time combatting piracy and in turn improve sales by *more* than 5% then it was obviously the right thing to do. In other words, use a small amount of time, but use it cleverly.
+As a developer, I've mostly tried to maintain that kind of balance. You could say that I didn't really belong fully to either of the "factions" I mentioned above, but that I thought that if I could spend _less_ than 5% of my time combatting piracy and in turn improve sales by _more_ than 5% then it was obviously the right thing to do. In other words, use a small amount of time, but use it cleverly.
 
 # Is 5% too much?
 
 Lately (by which I mean, over recent years) I've found the demands on my time to be increasingly hard to cope with. Spending 5% on piracy started seeming like too much. Nowadays I think 1% is probably more appropriate.
 
-In 1% of your development time you can easily implement a serial number system. That's really all you need: make your software easy to buy and don't penalise honest users with complicated protection systems. In this way, most of the people who *would* pay for your software if they couldn't get it for free *will* pay for it.
+In 1% of your development time you can easily implement a serial number system. That's really all you need: make your software easy to buy and don't penalise honest users with complicated protection systems. In this way, most of the people who _would_ pay for your software if they couldn't get it for free _will_ pay for it.
 
 I don't have hard number on this, but let's just make an estimate that 75% of the market is basically "honest" and is prepared to pay for software if there isn't a free alternative. The remaining 25% are the "hardcore" believers that software should be free: here we're talking about people who think that [open source](/wiki/open_source) is the only acceptable choice (these people usually have strong convictions about this based on quite elaborate philosophical and technical grounds), and also about people who simply aren't prepared to pay (these people usually have much simpler belief systems about personal entitlement, or the contrary, belief in the non-entitlement of the developer to compensation).
 
 Your target market is the large, 75% pool. Forget about the 25%. With a simple serial number system you've basically already maximised the number of people you're going to reach from the big pool. These are people who might use pirate serial numbers to try software out for extended periods, but if they can't get a serial number and they like the product they will pay for it. **Your job is to make it easy for those people to buy your software.**
 
-Your job is *not* to make it hard for the "hardcore" 25% to use your product without paying. You could spend hours, days, weeks, fighting those people and you won't be able to wring a single cent out of them. You may as well take your precious time, douse it with gasoline, and set fire to it.
+Your job is _not_ to make it hard for the "hardcore" 25% to use your product without paying. You could spend hours, days, weeks, fighting those people and you won't be able to wring a single cent out of them. You may as well take your precious time, douse it with gasoline, and set fire to it.
 
 I honestly think that 1% is enough time for you to reach the 75%. If you spend more time, like 5% say, you won't have much, if any, effect on sales. Sure, you might have some fun — it might be intellectually stimulating to work on solutions — but it is not going to help your bottom line much.
 

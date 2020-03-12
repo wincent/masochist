@@ -5,9 +5,9 @@ tags: gpg wiki
 # Installation
 
 ```shell
-$ curl -O ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.10.tar.bz2 
-$ openssl sha1 gnupg-1.4.10.tar.bz2 
-$ tar xjvf gnupg-1.4.10.tar.bz2 
+$ curl -O ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-1.4.10.tar.bz2
+$ openssl sha1 gnupg-1.4.10.tar.bz2
+$ tar xjvf gnupg-1.4.10.tar.bz2
 $ cd gnupg-1.4.10
 $ ./configure --disable-asm
 $ make && make check

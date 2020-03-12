@@ -4,7 +4,7 @@ tags: rspec wiki
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec
@@ -97,7 +97,7 @@ Should be (and is) identical to the pre-intallation output:
 David Chelimsky [here describes](http://blog.davidchelimsky.net/articles/2007/05/01/rspec-0-9-1-and-autotest-zentest-3-5-2) a patch that you can apply to get [ZenTest 3.5.2](/wiki/ZenTest_3.5.2) working without any further modifications. I'm hoping that 3.5.3 will incorporate the patch. In the meantime I decided to reinstall a patched version of [ZenTest](/wiki/ZenTest) over my existing unpatched 3.5.2 installation.
 
     wget http://rubyforge.org/frs/download.php/20212/ZenTest-3.5.2.tgz
-    tar xzvf ZenTest-3.5.2.tgz 
+    tar xzvf ZenTest-3.5.2.tgz
     cd ZenTest-3.5.2/
     wget http://blog.davidchelimsky.net/files/ZenTest-3.5.2-rspec.patch
     patch -p0 < ZenTest-3.5.2-rspec.patch
@@ -152,7 +152,7 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 -   Fixed \#10594 Failing Custom Matcher show NAME NOT GENERATED description
 -   describe(SomeType, "\#message") will not add a space: "SomeType\#message" (likewise for '.')
 -   describe(SomeType, "message") will have a decription with a space: "SomeType message"
--   Applied \#10566 prepend\_before and prepend\_after callbacks
+-   Applied \#10566 prepend_before and prepend_after callbacks
 -   Applied \#10567 Call setup and teardown using before and after callbacks
 
 # See also

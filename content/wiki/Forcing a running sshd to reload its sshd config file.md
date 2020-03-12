@@ -9,4 +9,4 @@ $ ps auxwww|grep sshd
 $ sudo kill -HUP 1234
 ```
 
-**Note:** This article should be titled "Forcing a running sshd to reload its sshd\_config file", but underscores are not allowed in wiki article titles.
+**Note:** This article should be titled "Forcing a running sshd to reload its sshd_config file", but underscores are not allowed in wiki article titles.

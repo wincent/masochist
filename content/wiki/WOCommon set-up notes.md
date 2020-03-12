@@ -23,7 +23,7 @@ First set up the `svn:externals` property:
     svn commit -m "Set up WOCommon external"
     svn up
 
-Then add `WOCommon` *as a folder reference* to your Xcode project; this allows you to automatically see any new files that get added to [WOCommon](/wiki/WOCommon) from within Xcode. Unfortunately to be able to actually use a file you must drag a copy of it into your Xcode project (the folder reference is not enough in itself). For this reason create a separate "WOCommon" group to which you can drag used files; this has the added benefit of allowing you to see the in-use files at a glance.
+Then add `WOCommon` _as a folder reference_ to your Xcode project; this allows you to automatically see any new files that get added to [WOCommon](/wiki/WOCommon) from within Xcode. Unfortunately to be able to actually use a file you must drag a copy of it into your Xcode project (the folder reference is not enough in itself). For this reason create a separate "WOCommon" group to which you can drag used files; this has the added benefit of allowing you to see the in-use files at a glance.
 
 In order for Xcode to find the files you'll need to change your `HEADER_SEARCH_PATHS` in your [xcconfig](/wiki/xcconfig) file from this (assuming you're using [buildtools](/wiki/buildtools)):
 

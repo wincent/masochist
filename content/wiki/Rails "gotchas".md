@@ -36,7 +36,7 @@ Source: "Rails Cookies Mangles the Hash Interface", <http://www.40withegg.com/20
 
 ## Beware of returning `false` from a `before_filter`
 
-See ["before\_filter" in Ruby on Rails](/wiki/%22before_filter%22_in_Ruby_on_Rails).
+See ["before_filter" in Ruby on Rails](/wiki/%22before_filter%22_in_Ruby_on_Rails).
 
 ## Validation
 

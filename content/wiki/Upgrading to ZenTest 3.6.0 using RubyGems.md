@@ -38,7 +38,7 @@ Output:
     HTTP request sent, awaiting response... 200 OK
     Length: 60,416 (59K) [text/plain]
 
-    100%[========================================================================================>] 60,416        64.24K/s             
+    100%[========================================================================================>] 60,416        64.24K/s
 
     01:56:03 (64.17 KB/s) - `ZenTest-3.6.0.gem' saved [60416/60416]
 
@@ -98,7 +98,7 @@ At the same time I upgraded to the latest release of [RSpec](/wiki/RSpec), [RSpe
 
 # Cleaning up older versions
 
-Normally older versions could be cleaned up using `sudo gem cleanup` as described in "[Removing older versions of installed gems](/wiki/Removing_older_versions_of_installed_gems)". This won't work for [ZenTest](/wiki/ZenTest) because up until [ZenTest 3.5.0](/wiki/ZenTest_3.5.0) the [gem](/wiki/gem) was named `zentest-3.5.0` (all lowercase) whereas subsequent versions where named in [CamelCase](/wiki/CamelCase) (`ZenTest-3.6.0`). As such, doing a `sudo gem cleanup` will leave both [ZenTest 3.6.0](/wiki/ZenTest_3.6.0) *and* [ZenTest 3.5.0](/wiki/ZenTest_3.5.0) on your system; it is necessary to manually uninstall [ZenTest 3.5.0](/wiki/ZenTest_3.5.0) in this case:
+Normally older versions could be cleaned up using `sudo gem cleanup` as described in "[Removing older versions of installed gems](/wiki/Removing_older_versions_of_installed_gems)". This won't work for [ZenTest](/wiki/ZenTest) because up until [ZenTest 3.5.0](/wiki/ZenTest_3.5.0) the [gem](/wiki/gem) was named `zentest-3.5.0` (all lowercase) whereas subsequent versions where named in [CamelCase](/wiki/CamelCase) (`ZenTest-3.6.0`). As such, doing a `sudo gem cleanup` will leave both [ZenTest 3.6.0](/wiki/ZenTest_3.6.0) _and_ [ZenTest 3.5.0](/wiki/ZenTest_3.5.0) on your system; it is necessary to manually uninstall [ZenTest 3.5.0](/wiki/ZenTest_3.5.0) in this case:
 
     # explicitly specify version, just in case
     sudo gem uninstall zentest --version '3.5.0'

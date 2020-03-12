@@ -6,7 +6,7 @@ Many Ruby methods follow a "bang" pattern to differentiate destructive messages 
 
 # Example
 
-The `capitalize` method of the `String` class returns a capitalized *copy* of a string, but the `capitalize!` (bang variant) method directly modifies the string object itself.
+The `capitalize` method of the `String` class returns a capitalized _copy_ of a string, but the `capitalize!` (bang variant) method directly modifies the string object itself.
 
 # See also
 

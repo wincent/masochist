@@ -29,9 +29,9 @@ At that point I felt that "shit just got real". The almost randomly-selected pse
 
 The culmination of this epoch was when I ended up [publishing an encrypted review](http://www.wired.com/culture/lifestyle/news/2001/03/42506) of the final release of Mac OS X days before the OS came out, sharing the decryption key days later (once the release was made public). In hindsight it may look awfully like a lame publicity stunt, but at the time it really was just me trying to avoid trouble with Apple legal.
 
-"Wincent Colaiuta" became a *nom de plum* and I ended up using it when I went on to do paid work as a columnist for Lycos (Web Monkey) and The Mac Observer. When asked to supply a portrait photo for my "by line" I went with a pseudo-randomly selected stock photo:
+"Wincent Colaiuta" became a _nom de plum_ and I ended up using it when I went on to do paid work as a columnist for Lycos (Web Monkey) and The Mac Observer. When asked to supply a portrait photo for my "by line" I went with a pseudo-randomly selected stock photo:
 
-![wcolaiuta\_stock.png](/system/images/wcolaiuta_stock.png)
+![wcolaiuta_stock.png](/system/images/wcolaiuta_stock.png)
 
 Bald, black, bespectacled; in short, nothing like me. I thought it was quite funny at the time.
 

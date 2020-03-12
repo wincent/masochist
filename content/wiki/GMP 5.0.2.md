@@ -67,7 +67,7 @@ From the official release announcement:
     Torbjörn's work on GMP is sponsored by "Stiftelsen för Strategisk
     Forskning", through CIAM at KTH, http://www.ciam.kth.se/.
 
-    -- 
+    --
     Torbjörn
     _______________________________________________
     gmp-announce mailing list

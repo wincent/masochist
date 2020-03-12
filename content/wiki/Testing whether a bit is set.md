@@ -24,7 +24,7 @@ This will work, kind of, for most cases. Maybe you like being explicit (as I do)
 
     (BOOL)(variable & mask)
 
-Bzzzzt... You've just made a hidden bug a little bit more visible. `BOOL` is actually just an `unsigned char` and so any time the expression overflows the 8-bit limit of `unsigned char` your cast to `BOOL` *will throw away the most significant bits*. Let's say `variable & mask` evaluates to 8192; casting (`(BOOL)8192`) returns `0` (`NO`)... most likely not what you wanted...
+Bzzzzt... You've just made a hidden bug a little bit more visible. `BOOL` is actually just an `unsigned char` and so any time the expression overflows the 8-bit limit of `unsigned char` your cast to `BOOL` _will throw away the most significant bits_. Let's say `variable & mask` evaluates to 8192; casting (`(BOOL)8192`) returns `0` (`NO`)... most likely not what you wanted...
 
 The explicit cast makes this overflow risk easier to spot, but the same bug is present if the expression is in a method:
 

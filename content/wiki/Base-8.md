@@ -2,5 +2,3 @@
 redirect: [[Octal]]
 tags: wiki
 ---
-
-

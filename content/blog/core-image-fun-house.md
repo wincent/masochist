@@ -9,7 +9,7 @@ Products that I released later on, such as [Synergy Advance](http://synergyadvan
 
 But it's a game I don't want to play any more. Avoiding the newer APIs is literally holding these products back. Time to make the jump forwards. The update to Synergy Advance that I am currently working on makes use of Tiger-only APIs and I've bumped the version requirement up from 10.3.9 to 10.4. In 2007 I plan to switch to pretty much Leopard-only development.
 
-In recent months I've been making new plug-ins for Synergy Advance and some of these used 10.4-only features like `NSDatePicker` and `NSTreeController` (which *so* should have been rolled out with the other Cocoa Bindings stuff in 10.3): but being plug-ins it didn't really matter if they broke compatibility; they could just refuse to load on older versions of the operating system.
+In recent months I've been making new plug-ins for Synergy Advance and some of these used 10.4-only features like `NSDatePicker` and `NSTreeController` (which _so_ should have been rolled out with the other Cocoa Bindings stuff in 10.3): but being plug-ins it didn't really matter if they broke compatibility; they could just refuse to load on older versions of the operating system.
 
 The first 10.4-only API to sneak into the core application was the Apple System Log facility (see `man asl`). In fact, I started to make some changes and it was only after committing them that I realized that they depended on Tiger. Now ASL is not a very glamorous API, but it is a useful one, and it has opened the flood gates to using Tiger APIs.
 

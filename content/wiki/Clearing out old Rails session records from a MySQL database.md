@@ -17,7 +17,7 @@ You can also use the [Rails](/wiki/Rails)-provided `rake db:sessions:clear` task
 
     DELETE FROM sessions;
 
-When I first tried these techniques I found that the query took *forever* on my rather large sessions table (2.5 million rows), presumably due to lock contention with visitors to the site resulting in updates to the `sessions` table and interrupting the `DELETE` query:
+When I first tried these techniques I found that the query took _forever_ on my rather large sessions table (2.5 million rows), presumably due to lock contention with visitors to the site resulting in updates to the `sessions` table and interrupting the `DELETE` query:
 
     $ mysqladmin processlist -u root -p
     Enter password:
@@ -44,9 +44,9 @@ But the corresponding thread lingered on in the MySQL instance for a long time. 
 So I tried killing the thread:
 
     $ mysqladmin -u root -p kill 446
-    Enter password: 
+    Enter password:
     $ mysqladmin processlist -u root -p
-    Enter password: 
+    Enter password:
     +-----+----------+-----------+----------+---------+-------+-------+----------------------+
     | Id  | User     | Host      | db       | Command | Time  | State | Info                 |
     +-----+----------+-----------+----------+---------+-------+-------+----------------------+
@@ -63,7 +63,7 @@ But even after killing the thread took a long, long time to disappear:
     | 482 | root     | localhost |          | Query   | 0     |       | show processlist     |
     +-----+----------+-----------+----------+---------+-------+-------+----------------------+
 
-Finally, the thread finalized when I tried running a `TRUNCATE sessions` and then aborted *that* query with Control-C; I'm not sure if this was a coincidence or not.
+Finally, the thread finalized when I tried running a `TRUNCATE sessions` and then aborted _that_ query with Control-C; I'm not sure if this was a coincidence or not.
 
 In the end, once the unwanted thread finally went away and the lock contention issues were over I was able to disable public access to the site, shut down the [Mongrel](/wiki/Mongrel) instances, and perform the `TRUNCATE` very rapidly:
 

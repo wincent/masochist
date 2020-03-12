@@ -3,15 +3,11 @@ title: Writing a parser generator in Ruby
 tags: blog
 ---
 
-[Ruby](http://www.ruby-lang.org/es/) is my favorite scripting language. Let me clarify: I *like* Ruby; it generates warm fuzzy feelings in my thorax when I think about it. This is quite different from my response to other scripting languages: [Perl](http://www.perl.org/) tends to provoke anything from respect to mild irritation; [PHP](http://php.net/) generates scorn, contempt, sometimes even pity; and [Python](http://python.org/) provokes uncertainty because I don't understand it.
-
-
-
-
+[Ruby](http://www.ruby-lang.org/es/) is my favorite scripting language. Let me clarify: I _like_ Ruby; it generates warm fuzzy feelings in my thorax when I think about it. This is quite different from my response to other scripting languages: [Perl](http://www.perl.org/) tends to provoke anything from respect to mild irritation; [PHP](http://php.net/) generates scorn, contempt, sometimes even pity; and [Python](http://python.org/) provokes uncertainty because I don't understand it.
 
 #### Why I like Ruby
 
-So I have an emotional attachment to Ruby even though I've never really done any big projects in it and I am far from being an expert. I like it because everything in Ruby is an object, even literal numbers like `1` and `2` are instances of the `Fixnum` class. `nil`, `true` and `false` are all objects. *Everything*, absolutely everything inherits from `Object`.
+So I have an emotional attachment to Ruby even though I've never really done any big projects in it and I am far from being an expert. I like it because everything in Ruby is an object, even literal numbers like `1` and `2` are instances of the `Fixnum` class. `nil`, `true` and `false` are all objects. _Everything_, absolutely everything inherits from `Object`.
 
 Ruby comes with a solid and comprehensive standard library, and the core language itself has implementations of all the primitive object types you're likely to care about: strings, numbers, arrays, hashes, regular expressions and so forth.
 
@@ -29,7 +25,7 @@ I'm putting together a new [Synergy Advance](http://advance.wincent.com/) releas
 
 Part of this involved hand-coding a parser for processing the template language. But as [Terence Parr](http://www.parr.us/terence) (of [ANTLR](http://www.antlr.org/) fame) says (with some irony!), "Why program by hand in five days what you can spend five years of your life automating?".
 
-The thing is, however, Ruby is such a good language that not only can you probably hand-code a parser in five days (while simultaneously learning the language), it makes it feasible to develop a parser *generator* in five-days.
+The thing is, however, Ruby is such a good language that not only can you probably hand-code a parser in five days (while simultaneously learning the language), it makes it feasible to develop a parser _generator_ in five-days.
 
 #### An object-oriented parser generator
 
@@ -75,7 +71,7 @@ You could also have `RegexpParslets` which specialize in matching regular expres
     parslet.parse('11223344...') # succeeds
     parslet.parse('') # fails
 
-The first line in the example above would succeed, consuming the digits "11223344" and stopping (the idea is that parsing the remainder of the string would be handed off to another parslet). The second line in the example would fail because there are no digits to consume and the regular expression requires "*at least one* digit" in order to produce a match.
+The first line in the example above would succeed, consuming the digits "11223344" and stopping (the idea is that parsing the remainder of the string would be handed off to another parslet). The second line in the example would fail because there are no digits to consume and the regular expression requires "_at least one_ digit" in order to produce a match.
 
 Parslets are very simple objects and they are designed to do a limited task well. To the basic behaviour of parsing (recognizing and consuming characters) we can add simple error reporting (the exception thrown in response to a parsing failure can contain embedded information about exactly where the failure occurred, and how the actual input differed from the expected input).
 
@@ -133,7 +129,7 @@ This will match "foo" as long as it is followed by "bar" (but note, the parser o
 
     'foo' & /\d/.not!
 
-This will match "foo" as long as it is *not* followed by a digit. Once again, it's just lookahead and nothing is actually consumed beyond the "foo".
+This will match "foo" as long as it is _not_ followed by a digit. Once again, it's just lookahead and nothing is actually consumed beyond the "foo".
 
 Strictly speaking these method names break slightly with standard Ruby practice that `!` should be used to indicate a message that has some kind of mutating effect on the receiver itself and `?` would normally indicate a message that returns `true` or `false`. Despite the downside of breaking with convention (potentially violating expectations) the readability benefits for the domain-specific language we are developing are just too great to pass up.
 
@@ -165,7 +161,7 @@ In the previous example you'll notice that each rule was identified by a symbol 
       rule            :comment,         comment_marker & comment_body.optional
     end
 
-But there is one *huge* advantage to using symbols to refer to other rules: it allows us to specify recursive (self-referential) rules, or rules which refer to one another in a circular fashion:
+But there is one _huge_ advantage to using symbols to refer to other rules: it allows us to specify recursive (self-referential) rules, or rules which refer to one another in a circular fashion:
 
     grammar = Grammar.subclass('NestedGrammar') do
       starting_symbol :bracket_expression
@@ -239,15 +235,15 @@ There are three levels on which you can write tests:
 
 This last level of testing is actually a bit of an anti-pattern. Just as users of an API shouldn't have to have knowledge of its private implementation details in order to use it, I don't think your tests should be based on or written for "private" knowledge. Your tests should really be about behaviour.
 
-This is where the term "bolt-on" testing comes it. "Bolt-on" testing is what you do when you write tests *after* you write your methods. You look at what the methods do and then "bolt" some tests onto them to try them out. "Bolt-on" testing is an anti-pattern, really, although it is better than no testing at all.
+This is where the term "bolt-on" testing comes it. "Bolt-on" testing is what you do when you write tests _after_ you write your methods. You look at what the methods do and then "bolt" some tests onto them to try them out. "Bolt-on" testing is an anti-pattern, really, although it is better than no testing at all.
 
-Sometimes it can be tempting to "bolt-on" too many tests, tests that verify irrelevant details that have little to do with the desired behaviour of the class. As one example, before you write a test to verify that the method you call really does return a `String`, ask yourself, "Does this really matter to the behaviour that I'm looking to implement?". Working with Ruby I've learnt to loosen my tests up a fair bit. Rubyists love the flexibility of "Duck typing" and that often means that writing tests for specific classes like `String` is a bad idea. All you want is something that acts (quacks) like a string, so you should really be testing *how it quacks*, not *what* it is. [This is a great article](http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1) that discusses this economy of testing in the context of Rails.
+Sometimes it can be tempting to "bolt-on" too many tests, tests that verify irrelevant details that have little to do with the desired behaviour of the class. As one example, before you write a test to verify that the method you call really does return a `String`, ask yourself, "Does this really matter to the behaviour that I'm looking to implement?". Working with Ruby I've learnt to loosen my tests up a fair bit. Rubyists love the flexibility of "Duck typing" and that often means that writing tests for specific classes like `String` is a bad idea. All you want is something that acts (quacks) like a string, so you should really be testing _how it quacks_, not _what_ it is. [This is a great article](http://www.lukeredpath.co.uk/2006/8/29/developing-a-rails-model-using-bdd-and-rspec-part-1) that discusses this economy of testing in the context of Rails.
 
 Unlike "bolt-on testing", Behaviour-Driven Development (BDD) helps developers avoid these pitfalls by using language that concentrates on the desired behaviour of the code rather than the implementation details. Whereas a "bolt-on" tester will write code to test each method in a class ("unit" testing in the purest sense because methods are generally the smallest atomic units visible from outside of a class), a behaviour-driven tester will write code that confirms only the externally required behaviour of a class. Code coverage tools can (and probably should) be used to confirm that all code paths are actually being touched, but writing exhaustive per-method tests is often not necessary and can actually be harmful when it comes to refactoring.
 
 BDD is more agile because it is not wedded to implementation details. If the implementation changes the tests (called "specifications" or "specs") shouldn't need to change.
 
-After a few days of working with Test::Unit I decided to switch to RSpec, a fantastic BDD framework for Ruby development. When you use RSpec you write your tests in "contexts", and you "specify" what should happen. This language helps you to test the right things because it focusses your attention on the desired behaviour, the desired *functionality*, rather than the nitty gritty (and in a sense meaningless) *operation* of the code. Behaviour Driven Development is no different than already existing best practice in Test Driven Development, but the language in the framework helps you to do the right thing and the framework itself has some beautiful dynamic code in it that makes your specifications unbelieveably readable.
+After a few days of working with Test::Unit I decided to switch to RSpec, a fantastic BDD framework for Ruby development. When you use RSpec you write your tests in "contexts", and you "specify" what should happen. This language helps you to test the right things because it focusses your attention on the desired behaviour, the desired _functionality_, rather than the nitty gritty (and in a sense meaningless) _operation_ of the code. Behaviour Driven Development is no different than already existing best practice in Test Driven Development, but the language in the framework helps you to do the right thing and the framework itself has some beautiful dynamic code in it that makes your specifications unbelieveably readable.
 
 Where you would write this contrived example in Test::Unit:
 
@@ -289,7 +285,7 @@ I've got [an RSpec feature request](http://rubyforge.org/tracker/index.php?func=
         example 'for the zero-match case' do ... end
         example 'for the one-match case' do ... end
         example 'for the two-match case' do ... end
-      end      
+      end
     end
 
 Basically, RSpec is a pleasure to work with, helps you to write the right kind of tests, and boasts excellent integration with [Rake](http://rspec.rubyforge.org/tools/rake.html) (Ruby-style "Makefiles") and [Rcov](http://rspec.rubyforge.org/tools/rcov.html) (code coverage reports). I'm so impressed with it that I am going to see how far I can morph my own Objective-C testing framework, [WOTest](http://test.wincent.com/), towards the behaviour-driven development model.

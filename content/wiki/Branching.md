@@ -64,7 +64,7 @@ Given that the trunk is intended for [Leopard](/wiki/Leopard) releases I want to
     svk pull
 
     # after the work is complete, merge it back to the trunk
-    svk push --verbatim 
+    svk push --verbatim
 
     # this short-lived branch is effectively done with now
     svk co --detach

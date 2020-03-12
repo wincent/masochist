@@ -7,10 +7,6 @@ Over the last year I've tried to make my development process more and more [tran
 
 But I think that sometimes the zoomed-in view on all the details -- the commit logs, the various feeds, the [Subversion](http://www.wincent.com/knowledge-base/Subversion) (and now [Git](http://www.wincent.com/knowledge-base/Git)) source code repositories, the bug reports, the mailing lists, the forums, the nightly builds -- can actually be quite confusing. In this post I hope to give a bird's eye view of what's been going on and where I'm headed.
 
-
-
-
-
 ### What I've been up to lately
 
 #### This year
@@ -28,13 +24,13 @@ Apart from these visible releases there have been a few key areas of "behind the
 
 #### This month
 
-The most significant project of interest this month has been learning about [Git](http://www.wincent.com/knowledge-base/Git) and starting my migration to it. I had previously started using [SVK](http://www.wincent.com/knowledge-base/SVK) in order to take advantage of its much superior [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging) capabilities but the truth is that it is *slow* despite the fact that its distributed nature gives it a head start on many operations.
+The most significant project of interest this month has been learning about [Git](http://www.wincent.com/knowledge-base/Git) and starting my migration to it. I had previously started using [SVK](http://www.wincent.com/knowledge-base/SVK) in order to take advantage of its much superior [branching](http://www.wincent.com/knowledge-base/branching) and [merging](http://www.wincent.com/knowledge-base/merging) capabilities but the truth is that it is _slow_ despite the fact that its distributed nature gives it a head start on many operations.
 
 So I started to explore [Git](http://www.wincent.com/knowledge-base/Git) and gradually built up the assessment that it was: (a) robust, (b) mature, (c) well-suited to my workflow, (d) well-documented, (e) dead fast, (f) backed by an innovative developer community with a promising future, (g) very easy to use once you've learnt the basic patterns.
 
 Changing [version control systems](http://www.wincent.com/knowledge-base/version%20control%20systems) is a big move but it didn't take too many days of exploration and experimentation to see that moving to [Git](http://www.wincent.com/knowledge-base/Git) is the right thing and that there is no better moment than right now.
 
-It *is* a disruptive change but I *am* at a natural juncture in my development: Apple is about to release Leopard, and with it comes a whole new language: Objective-C 2.0. My new (Objective-C 2.0) codebase is going to diverge farther and farther from the old code base, so this seems like the perfect moment to wipe the slate clean and make a fresh start.
+It _is_ a disruptive change but I _am_ at a natural juncture in my development: Apple is about to release Leopard, and with it comes a whole new language: Objective-C 2.0. My new (Objective-C 2.0) codebase is going to diverge farther and farther from the old code base, so this seems like the perfect moment to wipe the slate clean and make a fresh start.
 
 ### Where I'm headed
 
@@ -46,6 +42,6 @@ I'd like to get Synergy Advance to 1.0 by the time Leopard comes out, but there 
 
 It would be nice to take the wraps off the new website before the end of the year, but before that there is still quite a bit of work to be done and I want to upgrade the server to the latest version of [Red Hat Enterprise Linux](http://www.wincent.com/knowledge-base/Red%20Hat%20Enterprise%20Linux) which require both time and money.
 
-Finally, I'd like to release more of my code as [open source](http://www.wincent.com/knowledge-base/open%20source) but first need to find a viable business model for it. I don't know if there is one, but if there is I would love to find it. Why? I *like* the ideas behind both open source and [free software](http://www.wincent.com/knowledge-base/free%20software), and I think they have the potential to produce superior, more secure code. The only missing piece is how to do this as a small vendor and still make a living.
+Finally, I'd like to release more of my code as [open source](http://www.wincent.com/knowledge-base/open%20source) but first need to find a viable business model for it. I don't know if there is one, but if there is I would love to find it. Why? I _like_ the ideas behind both open source and [free software](http://www.wincent.com/knowledge-base/free%20software), and I think they have the potential to produce superior, more secure code. The only missing piece is how to do this as a small vendor and still make a living.
 
 As always, any relevant news will be posted here.

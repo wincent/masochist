@@ -2,8 +2,7 @@
 tags: git wiki
 ---
 
-The latest maintenance release GIT 1.6.3.2 is available at the
-    usual places:
+The latest maintenance release GIT 1.6.3.2 is available at the usual places:
 
       http://www.kernel.org/pub/software/scm/git/
 

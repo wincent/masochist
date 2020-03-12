@@ -9,7 +9,7 @@ There are lots of possibilities discussed in [this question](http://stackoverflo
 -   use a specialized time-stubbing library which provides convenience methods for stubbing `Time.now`; examples include:
     -   Delorean: <https://github.com/bebanjo/delorean>
     -   Timecop: <https://github.com/jtrupiano/timecop>
-    -   time\_warp: <https://github.com/harvesthq/time-warp>
+    -   time_warp: <https://github.com/harvesthq/time-warp>
 -   roll your own time-stubbing library
 -   set up your test fixtures or factories to create objects with the desired timestamps already in place
 -   don't stub; instead refactor your code so that you can pass in the "clock" that will be queried for what the time is
@@ -48,7 +48,7 @@ Both take a parameter which may be:
 -   a numeric offset in seconds to move forwards (or backwards) in time
 -   a year, month, day, hour, minute, second tuple (all values are optional, defaulting to 0 if not present)
 
-## time\_warp
+## time_warp
 
 This is probably the simplest of the three, having only one method in the API, `pretend_now_is`, which takes a block and twiddles with the time for the duration of the block.
 
@@ -65,7 +65,7 @@ This is probably the simplest of the three, having only one method in the API, `
         -   more features (eg. `#freeze` method)
         -   more complete coverage of time sources (ie. of `Date.today` and `DateTime.now` in addition to `Time.now`)
     -   cons: more complex implementation
--   time\_warp:
+-   time_warp:
     -   pros: \*sound of crickets\*
     -   cons: extremely limited feature set
 

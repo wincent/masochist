@@ -14,10 +14,6 @@ One of the things that's been so good about [writing the parser generator](http:
 
 The notion of "what is a Ruby expression" was extremely simplified. The basic idea was that when expecting a Ruby expression the lexer would drop into a mode where it would blindly consume characters until it hit something that marked the end of the expression; it would do this without analysing the internal structure of the expression in anything but the simplest of ways.
 
-
-
-
-
 ### Manually parsing Ruby expressions
 
 To illustrate, consider the case of parsing a placeholder:
@@ -88,7 +84,7 @@ In addition to the improvements to the Walrus grammar itself, I made a couple of
 
 First up, I made a `ParsletRepetitionDefault` class that makes it easy to specify what value should be returned if an `optional` component is not present. By default, these optional structures are simply omitted from the output if they are not present, but with `ParsletRepetitionDefault` you can state exactly what object should be returned as a placeholder if the component is missing.
 
-Consider the following rules. In the first example there is no problem even if the optional `parameter_list` is not present in the input. The fact that another component follows the optional one ensures that at least *something* will be returned by the parser (in this case an empty array) and so there will be *something* to populate the Abstract Syntax Tree.
+Consider the following rules. In the first example there is no problem even if the optional `parameter_list` is not present in the input. The fact that another component follows the optional one ensures that at least _something_ will be returned by the parser (in this case an empty array) and so there will be _something_ to populate the Abstract Syntax Tree.
 
 In the second example there is no trailing component so we must employ an ugly hack, a "no-op" component (an empty regular expression) that as a side effect ensures that something will be returned (again an empty array) even when the optional `method_parameter_list` is missing.
 

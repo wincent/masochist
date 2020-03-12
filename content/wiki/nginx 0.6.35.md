@@ -6,7 +6,7 @@ tags: nginx wiki
 
     Changes with nginx 0.6.35                                        26 Jan 2009
 
-       *) Bugfix: in shared memory allocations if nginx was built without 
+       *) Bugfix: in shared memory allocations if nginx was built without
           debugging.
           Thanks to Andrey Kvasov.
 

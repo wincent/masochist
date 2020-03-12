@@ -35,7 +35,7 @@ So how to get this working?
 
 # Versions of RSpec prior to 2.0
 
-**Note:** *when I originally wrote this post I was using an older version of RSpec — I am not sure whether it was 1.3.x or 1.2.x or perhaps even older. For an updated version for RSpec 2.4.0 see further down.*
+**Note:** _when I originally wrote this post I was using an older version of RSpec — I am not sure whether it was 1.3.x or 1.2.x or perhaps even older. For an updated version for RSpec 2.4.0 see further down._
 
 First we need a custom RSpec formatter class to emit the results in a format suitable for display in the quicklist buffer. Here's my first shot at it:
 
@@ -115,7 +115,7 @@ Thanks to the use of the quickfix buffer this is already nicer than the output t
 Note also that I've added some code for displaying a Growl notification at the end of the spec run. This will only work if you have the `growlnotify` executable installed on your system. It expects to find icon graphics called `pass.png`, `fail.png` and `pending.png` in the `.autotest` directory at the project root.
 
 ```ruby
-# this file: spec/support/vim_formatter.rb 
+# this file: spec/support/vim_formatter.rb
 require 'rspec/core/formatters/base_text_formatter'
 
 # Format spec results for display in the Vim quickfix window

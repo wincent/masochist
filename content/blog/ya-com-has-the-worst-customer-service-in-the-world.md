@@ -15,7 +15,7 @@ So [my battle with Ya.com](http://www.wincent.com/a/about/wincent/weblog/archive
 
 #### Letter 3: Pissed off
 
-> The fact that this figure is double the most expensive plan currently published on Ya.com's website, given that I am a client that fulfilled the terms of his contract many months ago, and that my repeated complaints have gone unheeded is nothing less than an insult to my intelligence. In summary, the service provided by Ya.com and its handling of this complaint have been up until now frankly *disgraceful*, the worst I have ever had the misfortune to encounter.
+> The fact that this figure is double the most expensive plan currently published on Ya.com's website, given that I am a client that fulfilled the terms of his contract many months ago, and that my repeated complaints have gone unheeded is nothing less than an insult to my intelligence. In summary, the service provided by Ya.com and its handling of this complaint have been up until now frankly _disgraceful_, the worst I have ever had the misfortune to encounter.
 
 I wonder what Letter 4 will be like, if there is one (and knowing Ya.com, there will be.... grrrrrrr....).
 

@@ -9,10 +9,6 @@ Well, [I fixed](http://www.wincent.com/a/about/wincent/weblog/svn-log/archives/2
 
 The fix was very simple. First, I took some screenshots and was inspecting them at high zoom trying to work out the exact nature of the fault. Once I had some initial predictions in place I decided to remove some minor adjustments and see if the fault at best went away or at least was shown any more clearly; turns out the fault went away entirely and as you can see both the border around the cover art badge and the track progress bar are much clearer and sharper now, with no unnecessary anti-aliasing.
 
-
-
-
-
 I was at first a little puzzled why this is the case. I had explicitly added 0.5 to some of the coordinates used during the drawing process because I want to make sure that my lines coincided with screen pixels rather than abstract coordinate system pixels. Evidently my understanding of the Cocoa drawing system was a little misguided; [Apple's docs](http://developer.apple.com/documentation/Cocoa/Conceptual/CocoaDrawingGuide/Transforms/chapter_4_section_2.html) say:
 
 > Once in device space, you can manipulate your coordinates as needed to make them look the way you want. In the example, the object boundaries are normalized to integer coordinates and then shifted by 0.5 units to produce crisper boundary lines.

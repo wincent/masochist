@@ -9,7 +9,6 @@ Seeing as my SuperDrive isn't supported in Leopard I had no choice but to boot i
 
 Didn't quite work, spewing lots of flickering white text on a black screen; I could see a command prompt but it would get repeatedly painted over by other text. On typing I could only get a single character at a time reflected on the screen before it got repainted over. Tried `reboot`, `shutdown` and all that jazz but eventually things froze and had to hard reset.
 
-
 ### Involuntary reboot stats to date
 
 -   **Operating system version:** 10.5

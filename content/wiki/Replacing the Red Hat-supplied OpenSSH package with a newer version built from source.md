@@ -89,11 +89,11 @@ This wasn't a very satisfactory situation because it shows how brittle the syste
     {
       if [ $# -ne 1 ]; then
         die "createdir() requires exactly one argument"
-      fi 
+      fi
       if [ ! -d "$1" ]; then
        if [ -e "$1" ]; then
          die "createdir(): $1 already exists and is not a directory"
-       else 
+       else
         mkdir -p -v "$1" || die "createdir() failed for path: $1"
        fi
       fi
@@ -164,10 +164,10 @@ This wasn't a very satisfactory situation because it shows how brittle the syste
     COUNT=$(wc -l "$BASE$PASSWD" | awk '{print $1}')
     if [ $COUNT -ne 1 ]; then
       die "error creating $BASE$PASSWD from $PASSWD"
-    fi 
+    fi
 
     # Get an up-to-date list of libraries linked to by sftp-server:
-    LIBS=$(lib_list $SFTPSERVER) 
+    LIBS=$(lib_list $SFTPSERVER)
     for LIB in ${LIBS}; do
       link "${LIB}" "${BASE}"
     done
@@ -205,9 +205,9 @@ This wasn't a very satisfactory situation because it shows how brittle the syste
 
 # The decision to update
 
-At this time I became aware of a new option added to [OpenSSH](/wiki/OpenSSH) around version 4.9, the `ChrootDirectory` setting which largely renders [rssh](/wiki/rssh) unnecessary. [Red Hat](/wiki/Red_Hat) actually backported this feature to the older version that they currently ship with [RHEL](/wiki/RHEL) 5.4 (they are currently shipping OpenSSH version 4.3; the latest version available is 5.3), but it is basically useless without the `Match` directive which they *didn't* backport and which is necessary in order to selectively apply the jail only to certain users.
+At this time I became aware of a new option added to [OpenSSH](/wiki/OpenSSH) around version 4.9, the `ChrootDirectory` setting which largely renders [rssh](/wiki/rssh) unnecessary. [Red Hat](/wiki/Red_Hat) actually backported this feature to the older version that they currently ship with [RHEL](/wiki/RHEL) 5.4 (they are currently shipping OpenSSH version 4.3; the latest version available is 5.3), but it is basically useless without the `Match` directive which they _didn't_ backport and which is necessary in order to selectively apply the jail only to certain users.
 
-As such, jailing [SFTP](/wiki/SFTP) users isn't really practical under the Red Hat-supplied OpenSSH because doing so would effectively jail *all* users, even system administrators, rendering remote administration impossible. (The possible workaround of setting the home directory of administrators to the root of the filesystem, `/`, seems like a hideous kludge and I immediately dismissed it.)
+As such, jailing [SFTP](/wiki/SFTP) users isn't really practical under the Red Hat-supplied OpenSSH because doing so would effectively jail _all_ users, even system administrators, rendering remote administration impossible. (The possible workaround of setting the home directory of administrators to the root of the filesystem, `/`, seems like a hideous kludge and I immediately dismissed it.)
 
 I like sticking to the stock-standard Red Hat packages wherever it is practical to do so because of the automated, quality-controlled security fixes, but in this case I felt like the advantages of switching to a hand-compiled, newer version of OpenSSH (robust, easy-to-configure chroot jails for [SFTP](/wiki/SFTP) users) outweighed the costs (having to monitor another mailing list for security advisories).
 
@@ -221,7 +221,7 @@ Grab the latest version from <http://www.openssh.org/portable.html>.
 
 ```shell
 $ wget ftp://ftp.OpenBSD.org/pub/OpenBSD/OpenSSH/portable/openssh-5.3p1.tar.gz
-$ tar xzvf openssh-5.3p1.tar.gz 
+$ tar xzvf openssh-5.3p1.tar.gz
 $ cd openssh-5.3p1
 ```
 

@@ -16,7 +16,7 @@ In recent days I've been working on compatibility with Ruby 1.9 and JRuby, and w
 
 I'm not going to post numbers for MRI here because, due to the crippling memory bloat problem, it is not possible to actually batch process all the templates at once using `walrus compile *.tmpl`; memory usage just climbs and climbs until the entire physical memory (2GB on this machine) is saturated and the virtual memory subsystem is thrashing.
 
-It's true that the batch run *would* eventually finish if I let it run for long enough, but I'm afraid I have too many useful things to do with my machine to permit rendering it unusable for minutes or hours while I wait for the batch job to finish.
+It's true that the batch run _would_ eventually finish if I let it run for long enough, but I'm afraid I have too many useful things to do with my machine to permit rendering it unusable for minutes or hours while I wait for the batch job to finish.
 
 # JRuby
 
@@ -68,6 +68,6 @@ Pleasingly, 1.9.1 evidently no longer suffers from the crippling GC bug that MRI
 
 This one was the real surprise for me. REE evidently has much better memory characteristics than 1.9.1, at least for this testing scenario. Despite being a "slower" VM in terms of raw processing power, the REE build of 1.8.7 ends up wiping the floor with 1.9.1.
 
-The [REE website](http://www.rubyenterpriseedition.com/) says that it includes a better (higher performance) memory allocator, [TCMalloc](http://code.google.com/p/google-perftools/), and a "copy-on-write friendly garbage collector". Whatever the reason, the impact is huge for a memory-intensive application like a Walrus and its memoizing packrat parser. (In a typical run literally *millions* of string objects are created, as shown in [this memprof dump](http://memprof.com/dump/4c77fdc37fdeb64582000001).)
+The [REE website](http://www.rubyenterpriseedition.com/) says that it includes a better (higher performance) memory allocator, [TCMalloc](http://code.google.com/p/google-perftools/), and a "copy-on-write friendly garbage collector". Whatever the reason, the impact is huge for a memory-intensive application like a Walrus and its memoizing packrat parser. (In a typical run literally _millions_ of string objects are created, as shown in [this memprof dump](http://memprof.com/dump/4c77fdc37fdeb64582000001).)
 
 Peak memory usage was around 1GB for the nasty full index file, but then it dropped back to under 400MB after that and stayed that low for the remainder of the run.

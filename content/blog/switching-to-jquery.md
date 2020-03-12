@@ -16,7 +16,7 @@ The other issue you'll have to deal with is that fact that all Rails helpers and
 
 The other option, and I think the better one, is to eschew those Rails helpers entirely and just do everything in JQuery. Basically, you can make the transition from "obtrusive" to [Unobtrusive JavaScript](/wiki/Unobtrusive_JavaScript) at the same time as you move from Prototype to JQuery.
 
-This option is a fair bit more appealing than another which I haven't mentioned yet: waiting until Rails 3 comes out, and *apparently* makes it much easier to swap things like ORMs and JavaScript libraries in and out. We'll see just how far they take this modularization, and whether the built-in helpers will work seamlessly with any of the major libraries.
+This option is a fair bit more appealing than another which I haven't mentioned yet: waiting until Rails 3 comes out, and _apparently_ makes it much easier to swap things like ORMs and JavaScript libraries in and out. We'll see just how far they take this modularization, and whether the built-in helpers will work seamlessly with any of the major libraries.
 
 The problem with this option is that if you continue to use helpers like that you're missing the opportunity to move to Unobtrusive JavaScript and clean up your markup. Your pages will continue to be an ugly, tangled knot of HTML/JavaScript spaghetti.
 

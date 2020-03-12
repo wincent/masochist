@@ -17,10 +17,10 @@ This information based on the following three articles:
 ## Growl 1.1.2
 
     wget http://growl.info/files/Growl-1.1.2.dmg
-    open Growl-1.1.2.dmg 
+    open Growl-1.1.2.dmg
     cd /Volumes/Growl\ 1.1.2/Extras/growlnotify
     less install.sh
-    sudo ./install.sh 
+    sudo ./install.sh
     cd
     hdiutil detach /Volumes/Growl\ 1.1.2
 
@@ -46,7 +46,7 @@ This information based on the following three articles:
 (Last updated 21 December 2007 to handle new [RSpec](/wiki/RSpec) "pending" notifications):
 
     module Autotest::Growl
-      
+
       def self.growl title, msg, img, pri=0, sticky=""
         system "growlnotify -n autotest --image #{img} -p #{pri} -m #{msg.inspect} #{title} #{sticky}"
       end
@@ -62,7 +62,7 @@ This information based on the following three articles:
           end
         end
       end
-        
+
     end
 
 # Configure [Growl](/wiki/Growl)

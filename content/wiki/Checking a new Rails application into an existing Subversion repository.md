@@ -71,7 +71,7 @@ When I first did this I preferred to use a different method; rather than import/
     svn commit -m "Add log directory, ignoring contents"
 
     # add the rest of the simple files and folders
-    svn add test app Rakefile components migrate README script doc lib public 
+    svn add test app Rakefile components migrate README script doc lib public
     svn commit -m "Initial commit of bulk of Rails application"
 
     # now into the "config" directory
@@ -79,12 +79,12 @@ When I first did this I preferred to use a different method; rather than import/
     svn propset svn:ignore "database.yml" config
     svn add config/routes.rb config/boot.rb config/environment.rb config/environments
     cp config/database.yml config/database.example
-    svn add config/database.example 
+    svn add config/database.example
 
     # and the "db" directory
     svn add --non-recursive db
     svn add db/migrate
-    svn add db/schema.rb 
+    svn add db/schema.rb
     svn propset svn:ignore "*.sqlite3" db
     svn commit -m "Add db and config dirs, ignoring database files"
     svn add vendor
@@ -101,9 +101,9 @@ In the future, this could be done as a single commit; something like this:
     svn propset svn:ignore "database.yml" config
     svn add config/routes.rb config/boot.rb config/environment.rb config/environments
     cp config/database.yml config/database.example
-    svn add config/database.example 
+    svn add config/database.example
     svn add --non-recursive db
-    svn add db/migrate db/schema.rb 
+    svn add db/migrate db/schema.rb
     svn propset svn:ignore "*.sqlite3" db
     svn commit -m "Add vendor directory"
 
@@ -121,7 +121,7 @@ Or, using [SVK](/wiki/SVK):
     svk propset svn:ignore 'database.yml' config
     svk add config/routes.rb config/boot.rb config/environment.rb config/environments
     cp config/database.yml config/database.example
-    svk add config/database.example 
+    svk add config/database.example
     svk add -N db
     svk propset svn:ignore '*.sqlite3' db
 

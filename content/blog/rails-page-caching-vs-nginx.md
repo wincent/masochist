@@ -11,9 +11,9 @@ Just ran into a surprising conflict between [the "canonical", recommended way](h
           # this is the meat of the rails page caching config
           # it adds .html to the end of the url and then checks
           # the filesystem for that file. If it exists, then we
-          # rewite the url to have explicit .html on the end 
+          # rewite the url to have explicit .html on the end
           # and then send it on its way to the next config rule.
-          # if there is no file on the fs then it sets all the 
+          # if there is no file on the fs then it sets all the
           # necessary headers and proxies to our upstream mongrels
           if (-f $request_filename.html) {
             rewrite (.*) $1.html break;
@@ -103,7 +103,7 @@ So yes, there is a bit of repetition in there for non-GET requests because we en
 
 But even with the repetition, at least we don't have any unsightly fake `location` blocks in there.
 
-The only remaining question, and it's one which I've always had with the original config, is whether that last `!-f` check is required. After all, we are checking for the existence of `$request_filename` *yet again* there (even if it's phrased in terms of non-existence). Could we not just move the `proxy_pass` directive outside the scope of the `if` block and be done with it?
+The only remaining question, and it's one which I've always had with the original config, is whether that last `!-f` check is required. After all, we are checking for the existence of `$request_filename` _yet again_ there (even if it's phrased in terms of non-existence). Could we not just move the `proxy_pass` directive outside the scope of the `if` block and be done with it?
 
 ### Update
 

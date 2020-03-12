@@ -6,7 +6,7 @@ Notes made while upgrading from the [rspec](/wiki/rspec) 0.9 beta preview [gem](
 
 # Pre-testing
 
-First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a *lot* of specifications, many of them containing numerous assertions:
+First double check that all [specs](/wiki/specs) are passing for [Walrus](/wiki/Walrus). This is a good check because there are a _lot_ of specifications, many of them containing numerous assertions:
 
     # from the top-level directory of the Walrus source tree:
     rake spec
@@ -93,22 +93,22 @@ This produces a bunch of changes like these (excerpt only):
     --- spec/compiler_spec.rb       (revision 6831)
     +++ spec/compiler_spec.rb       (local)
     @@ -15,7 +15,7 @@
-         
+
          describe 'using the Compiler class' do
-           
+
     -      context_setup do
     +      before(:all) do
              @parser = Parser.new
            end
-           
+
     === spec/grammar/additions/string_spec.rb
     ==================================================================
     --- spec/grammar/additions/string_spec.rb       (revision 6831)
     +++ spec/grammar/additions/string_spec.rb       (local)
     @@ -35,7 +35,7 @@
-         
+
          describe 'working with Unicode strings' do
-           
+
     -      setup do
     +      before(:each) do
              @string = 'Unicode €!' # € (Euro) is a three-byte UTF-8 glyph: "\342\202\254"
@@ -137,13 +137,13 @@ So, no regressions at least!
     Autotest.add_hook :initialize do |autotest|
       if autotest.is_a? RspecRailsAutotest
         autotest.spec_command = 'script/spec --options spec/spec.opts' if File.exist? 'script/spec'
-      end  
+      end
     end
 
 Leaving only this (see "[Setting up autotest to use Growl](/wiki/Setting_up_autotest_to_use_Growl)" for more information):
 
     module Autotest::Growl
-      
+
       def self.growl title, msg, img, pri=0, sticky=""
         system "growlnotify -n autotest --image #{img} -p #{pri} -m #{msg.inspect} #{title} #{sticky}"
       end
@@ -159,7 +159,7 @@ Leaving only this (see "[Setting up autotest to use Growl](/wiki/Setting_up_auto
           end
         end
       end
-        
+
     end
 
 Before proceeding I also upgraded to the latest version of [ZenTest](/wiki/ZenTest); see "[Upgrading to ZenTest 3.5.2 using RubyGems](/wiki/Upgrading_to_ZenTest_3.5.2_using_RubyGems)". To confirm that [Autotest](/wiki/Autotest) is still working:
@@ -190,7 +190,7 @@ I have a [Rails](/wiki/Rails) project where [rspec](/wiki/rspec) is installed as
 -   Added some website love
 -   Fixed \#10542 reverse predicate matcher syntax
 -   Added a spec:translate Rake task to make 0.9 translation easier with Spec:Rails
--   Better translation of should\_redirect\_to
+-   Better translation of should_redirect_to
 -   Fixed --colour support for Windows. This is a regression that was introduced in 0.9.1
 
 # See also

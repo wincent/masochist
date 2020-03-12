@@ -2,5 +2,3 @@
 redirect: [[GPG]]
 tags: wiki
 ---
-
-

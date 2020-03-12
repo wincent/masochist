@@ -7,7 +7,7 @@ Version 3.5.4a of [Synergy](/wiki/Synergy), the lightweight, highly-customizable
 
 This is the latest release in the 3.5 alpha/experimental series. Until [Apple](/wiki/Apple) fixes the bugs in NSAppleScript running under Garbage Collection (see [bug \#640](/issues/640)) the 3.5 series may suffer from occasional crashes; in the meantime, the 3.4 stable series does not use Garbage Collection and so should be rock-solid.
 
-This release incorporates minor size and performance optimizations as well as some changes to improve robustness. Please note, ***this release bumps the minimum system version requirement to Mac OS X 10.5.8***; if you run an older version of [Mac OS X](/wiki/Mac_OS_X) you can use the 3.4 stable series, which runs on all versions of Mac OS X right back to 10.2.8.
+This release incorporates minor size and performance optimizations as well as some changes to improve robustness. Please note, **_this release bumps the minimum system version requirement to Mac OS X 10.5.8_**; if you run an older version of [Mac OS X](/wiki/Mac_OS_X) you can use the 3.4 stable series, which runs on all versions of Mac OS X right back to 10.2.8.
 
 A full changelog appears [here](http://wincent.com/a/products/synergy-classic/history/#3.5.4a).
 

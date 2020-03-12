@@ -8,7 +8,7 @@ This probably won't be of much interest to anybody, but keeping these notes here
 2. **SSH private key pass:** `ssh-keygen -f ~/.ssh/$PRIVATE_KEY_FILE -p`
 3. **macOS login pass:** System Preferences &raquo; Users & Groups &raquo; Change Password...
 4. **Backup volume passphrases:**
-    * An HFS+ backup volume on a USB stick: Using "Change Password..." in the Disk Utility "File" menu.
-    * An AFPS backup volume on an external drive: Using "Change Password..." in the Disk Utility "File" menu.
-    * A disk image on disk: `hdiutil chpass ~/Backups/$PATH_TO.sparseimage`
+    - An HFS+ backup volume on a USB stick: Using "Change Password..." in the Disk Utility "File" menu.
+    - An AFPS backup volume on an external drive: Using "Change Password..." in the Disk Utility "File" menu.
+    - A disk image on disk: `hdiutil chpass ~/Backups/$PATH_TO.sparseimage`
 5. **GPG private keys:** `gpg --edit-key user@example.com` (at the interactive prompt: `passwd`, then `save`).

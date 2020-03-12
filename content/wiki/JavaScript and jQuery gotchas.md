@@ -25,20 +25,20 @@ cache_breaker: 1
 -   in a jQuery event handler `currentTarget` refers to the element to which the event handler was originally bound; `target` refers to the element that triggered the event (ie. via clicking or other interaction); due to event capturing/bubbling, these may not actually be the same thing (source: [1](http://stackoverflow.com/questions/5921413/difference-between-e-target-and-e-currenttarget), [2](http://www.quirksmode.org/js/events_order.html), [3](http://stackoverflow.com/questions/12632426/is-there-a-difference-between-e-currenttarget-and-this)); as an additional nuance, event `delegateTarget` is delegation-aware, so when event delegation is in effect it will reference the item to which event handling was delegated, otherwise it will be the same as `currentTarget`; also note that while `$(this)` in a jQuery event handler is usually the same as `currentTarget`, it could quite easily be something else due to the use of `bind()` to enforce a specific `this`
 
 ```javascript
-$('body').on('click', 'table', function(event) {
-  // on clicking on an element inside the `table`
-  console.log(event.delegateTarget); // body
-  console.log(event.currentTarget); // table
-  console.log(this); // table
-  console.log(event.target); // element inside table
+$("body").on("click", "table", function(event) {
+    // on clicking on an element inside the `table`
+    console.log(event.delegateTarget); // body
+    console.log(event.currentTarget); // table
+    console.log(this); // table
+    console.log(event.target); // element inside table
 });
 
-$('body').on('click', function(event) {
-  // on clicking on an element inside the `table`
-  console.log(event.delegateTarget); // body
-  console.log(event.currentTarget); // body
-  console.log(this); // body
-  console.log(event.target); // element inside table
+$("body").on("click", function(event) {
+    // on clicking on an element inside the `table`
+    console.log(event.delegateTarget); // body
+    console.log(event.currentTarget); // body
+    console.log(this); // body
+    console.log(event.target); // element inside table
 });
 ```
 

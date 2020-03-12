@@ -15,7 +15,7 @@ Starting in 2011, however, I've spent a fair bit of time beating the [command li
 
 # The Terminal
 
-[iTerm 2](/wiki/iTerm_2) is really the only way to go here. It is not as fast as [Terminal.app](/wiki/Terminal.app), the search highlighting is infuriatingly hard to read (and there appears to be no way to set a preference for the direction of the search), and it is *very* occasionally unstable (but not often enough to really interfere with you getting your work done), but it has 256-color support (more importantly than this though, it has easily configurable and loadable color schemes, which means you can get color schemes like [Solarized](/wiki/Solarized) up and running and looking nice with ease) and does all the right things as far as things like mouse support are concerned.
+[iTerm 2](/wiki/iTerm_2) is really the only way to go here. It is not as fast as [Terminal.app](/wiki/Terminal.app), the search highlighting is infuriatingly hard to read (and there appears to be no way to set a preference for the direction of the search), and it is _very_ occasionally unstable (but not often enough to really interfere with you getting your work done), but it has 256-color support (more importantly than this though, it has easily configurable and loadable color schemes, which means you can get color schemes like [Solarized](/wiki/Solarized) up and running and looking nice with ease) and does all the right things as far as things like mouse support are concerned.
 
 I have iTerm 2 set up to report itself as `xterm-256color` and also do "Xterm mouse reporting".
 

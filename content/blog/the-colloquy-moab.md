@@ -11,7 +11,7 @@ As was the case with the [earlier VLC bug](http://projects.info-pull.com/moab/MO
 
 > Colloquy development people fortunately fixed the issue promptly in the changeset 3558. Thanks to Joe for bringing this to our attention. Kudos to the Colloquy development team, that's the way to go!
 
-*Fortunately* fixed the issue promptly? If they're so happy to see it fixed, why didn't they just send a fix to the team themselves?
+_Fortunately_ fixed the issue promptly? If they're so happy to see it fixed, why didn't they just send a fix to the team themselves?
 
 Check out [the stated goals](http://projects.info-pull.com/moab/index.html#about) of the project:
 
@@ -21,4 +21,4 @@ This vulnerability, like the VLC one, is a case of "uncovering and finding" a se
 
 I grudgingly concede that publishing the advisory may help produce a "more concerned (security-wise) user base" (ask yourself, what would have happened if they just quietly submitted a fix?) but the choice of Colloquy as a target seems to be more about making the ["MOAB Fixes" group](http://groups.google.com/group/moabfixes?lnk=oa) look like fools by targeting one of the tools they use.
 
-There is no doubt in my mind that the people behind MOAB know much more about security than the bulk of the developers in the fixes group; I don't think there's any need to go around proving it or "teaching lessons". Wouldn't focussing on *Apple* vulnerabilities be much more congruent with the stated aims of the project?
+There is no doubt in my mind that the people behind MOAB know much more about security than the bulk of the developers in the fixes group; I don't think there's any need to go around proving it or "teaching lessons". Wouldn't focussing on _Apple_ vulnerabilities be much more congruent with the stated aims of the project?

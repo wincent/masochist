@@ -2,5 +2,3 @@
 redirect: [[weblog]]
 tags: wiki
 ---
-
-

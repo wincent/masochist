@@ -69,7 +69,7 @@ The answer may be to use syntactic predicates (see <http://www.doc.ic.ac.uk/lab/
 
     INSTANCE_VARIABLE : '@' IDENTIFIER ;
 
--   May *not* refer to parser rules.
+-   May _not_ refer to parser rules.
 -   Precedence is determined by order in which they appear:
 
 <!-- -->
@@ -129,7 +129,7 @@ The method for recognizing `FOO` will still exist separately in the lexer, but i
     	|	multi_line_comment ;
 
 -   The `EOF` token may be used to match the end-of-file.
--   A dot is a wildcard for "any token", *not* "any character"
+-   A dot is a wildcard for "any token", _not_ "any character"
 
 <!-- -->
 
@@ -144,7 +144,7 @@ The method for recognizing `FOO` will still exist separately in the lexer, but i
 <!-- -->
 
     // here the result of a subrule expression is assigned to "e";
-    // it can then be referenced in actions using "$e": 
+    // it can then be referenced in actions using "$e":
     escape_sequence
         : e=(ESCAPED_HASH | ESCAPED_DOLLAR | ESCAPED_BACKSLASH)
         { System.out.println("PARSER: escape sequence " + $e.text); }

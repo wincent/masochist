@@ -18,7 +18,7 @@ Stuff I'm pleased with:
 
 Stuff that sucks:
 
--   "Smart" Address Field: Check out [this image](http://images.apple.com/safari/images/features-browsing-smartaddress-20090217.jpg) from the [feature listing](http://www.apple.com/safari/features.html); Apple now *hides* [URLs](/wiki/URLs) when it offers auto-complete suggestions. Who in *hell* thought that hiding the frickin' **URLs** from the *address* bar would be a good idea?
+-   "Smart" Address Field: Check out [this image](http://images.apple.com/safari/images/features-browsing-smartaddress-20090217.jpg) from the [feature listing](http://www.apple.com/safari/features.html); Apple now _hides_ [URLs](/wiki/URLs) when it offers auto-complete suggestions. Who in _hell_ thought that hiding the frickin' **URLs** from the _address_ bar would be a good idea?
 
 Stuff I'm indifferent about:
 

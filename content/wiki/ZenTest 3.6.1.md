@@ -6,9 +6,9 @@ tags: zentest wiki
 
 # Changes
 
--   Test::Rails::ViewTestCase now uses assert\_select.
--   assert\_form and friends now work with blocks like assert\_select does.
--   Allow path\_parameters in view tests to be ammended, making working with routes easier.
+-   Test::Rails::ViewTestCase now uses assert_select.
+-   assert_form and friends now work with blocks like assert_select does.
+-   Allow path_parameters in view tests to be ammended, making working with routes easier.
 -   New version of autotest/notify.rb uses notify-send.
 -   Fixed rdoc formatting on autotest and a couple plugins.
 

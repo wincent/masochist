@@ -22,8 +22,8 @@ This is a list of [Vim](/wiki/Vim) plugins which I find useful and robust enough
 
 These are plug-ins which I tried out for a while but eventually got rid of due to [insatisfaction](/blog/fuzzyfinder):
 
--   fuzzy\_file\_finder (similar to `Command-T` in [TextMate](/wiki/TextMate)): <http://github.com/jamis/fuzzy_file_finder/tree/master>
--   fuzzyfinder\_textmate (extends Fuzzyfinder to use fuzzy\_file\_finder): <http://github.com/jamis/fuzzyfinder_textmate/tree/master>
+-   fuzzy_file_finder (similar to `Command-T` in [TextMate](/wiki/TextMate)): <http://github.com/jamis/fuzzy_file_finder/tree/master>
+-   fuzzyfinder_textmate (extends Fuzzyfinder to use fuzzy_file_finder): <http://github.com/jamis/fuzzyfinder_textmate/tree/master>
 
 # Editing
 

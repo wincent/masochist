@@ -3,7 +3,7 @@ title: A call for help: Bansshee
 tags: blog
 ---
 
-> *Update, 16 March 2007:* Charles Steinman has kindly donated to cover the registrations for all three domains (dot-org, dot-com and dot-net). I'm leaving the original text of the post below for the historical record.
+> _Update, 16 March 2007:_ Charles Steinman has kindly donated to cover the registrations for all three domains (dot-org, dot-com and dot-net). I'm leaving the original text of the post below for the historical record.
 
 Ooooh, I hope the title of this post isn't too dramatic. I just got a GoDaddy renewal notice for the [Bansshee](http://www.wincent.com/a/products/bansshee/) domain names (bansshee.com, bansshee.net, bansshee.org) and I'm looking for donations to fund their renewal.
 

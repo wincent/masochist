@@ -104,14 +104,14 @@ Adding columns to a table:
 In the file, `config/environment.rb`, change:
 
       # Use SQL instead of Active Record's schema dumper when creating the test database.
-      # This is necessary if your schema can't be completely dumped by the schema dumper, 
+      # This is necessary if your schema can't be completely dumped by the schema dumper,
       # like if you have constraints or database-specific column types
       # config.active_record.schema_format = :sql
 
 To:
 
       # Use SQL instead of Active Record's schema dumper when creating the test database.
-      # This is necessary if your schema can't be completely dumped by the schema dumper, 
+      # This is necessary if your schema can't be completely dumped by the schema dumper,
       # like if you have constraints or database-specific column types
       config.active_record.schema_format = :ruby
 

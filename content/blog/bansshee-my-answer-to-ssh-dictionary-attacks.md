@@ -17,10 +17,6 @@ So the risks of a break-in are low but I decided to do something about it anyway
 
 I evaluated some of the available solutions but in the end I whipped together my own. It's called Bansshee.
 
-
-
-
-
 #### DenyHosts
 
 Written in Python, [DenyHosts](http://denyhosts.sourceforge.net/), scans your log files for break-in attempts and blacklists attacking IP addresses by putting them in your `/etc/hosts.deny` file. I rejected this option because I don't like the way it works by manipulating a flat-file, and because it apparently requires a version of Python newer than the one I have on my server. When it comes to things like that I prefer not to upgrade; I'd rather leave it in the hands of trusty old [Red Hat](http://www.redhat.com/) to push out security updates and fixes as required.
@@ -44,7 +40,7 @@ I ended up writing my own, as I always do (do I suffer from "Not Invented Here" 
 -   **Perl, not Python:** Not because I think one is better than the other but for the same reason that I write this weblog in English instead of Chinese.
 -   **Short:** The first completed version is 214 lines long, easy to comprehend, easy to audit. I am sure a Perl veteran could re-write the script into five lines or less of obfuscated code but my goal is readability and simplicity.
 -   **Uses the [File::Tail](http://search.cpan.org/~mgrabnar/File-Tail-0.99.3/Tail.pm) module from [CPAN](http://cpan.org/):** which means that it can "tail" the `/var/log/secure` logfile in a relatively efficient manner and automatically catch things like rotating logs.
--   **Homegrown regular expressions:** written by me based on my analysis of the logfiles on my Red Hat Enterprise Linux ES release 3 system, so I *know* that they're right for my system.
+-   **Homegrown regular expressions:** written by me based on my analysis of the logfiles on my Red Hat Enterprise Linux ES release 3 system, so I _know_ that they're right for my system.
 -   **Safe:** Blocked IPs are periodically unblocked, thus eliminating the possibility of a legitimate user getting blocked forever by mistake.
 -   **Very simple implementation:** the main thread watches for attacks and blocks IPs; a background thread periodically removes the blocks.
 -   **Configurable:** Configure the number of "unknown account" attacks allowed from a given IP address before blocking it (defaults to 5); the number of "incorrect password" attacks allowed from a single IP (defaults to 5); the minimum number of seconds an IP must wait before it gets removed from the blocklist (defaults to 1 hour); the number of seconds that must pass before prior illegal/incorrect attempts are forgotten (defaults to 1 hour); the number of seconds between flushes of the blocklist, removing old IPs (defaults to 5 minutes).

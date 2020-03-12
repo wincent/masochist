@@ -29,9 +29,9 @@ Here's what my work over the last few hours has looked like:
     4.  Perform the search again and make the substitutions
 16. Run the specs and note that there are zillions of failures, all of them relating to [RSpec](/wiki/RSpec)'s mocks returning `nil` values rather than the requested return values
 17. Drop back to previous commit and note that those specs fail as well (these were the same specs and the same code that previously worked)
-18. Note that the specs *do* work when run from a single file within [TextMate](/wiki/TextMate); `ruby the_spec.rb` and `spec the_spec.rb` also work, although `spec the_spec_dir` doesn't
+18. Note that the specs _do_ work when run from a single file within [TextMate](/wiki/TextMate); `ruby the_spec.rb` and `spec the_spec.rb` also work, although `spec the_spec_dir` doesn't
 19. Note that hitting the app in the web browser shows that it works and isn't failing where the specs say there is a problem
-20. Run `git bisect` and note that *all* commits are failing
+20. Run `git bisect` and note that _all_ commits are failing
 21. Go back to a really old commit (one month old) and note that the specs are failing
 22. Try a fresh clone of the remote repo, which has none of the new changes, and note that the specs are failing
 23. Try cleaning out old [gem](/wiki/gem) versions; specs still failing

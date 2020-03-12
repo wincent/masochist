@@ -6,7 +6,7 @@ cache_breaker: 1
 These notes were made while performing the upgrade to [mldonkey 2.8.6](/wiki/mldonkey_2.8.6) on [Mac OS X](/wiki/Mac_OS_X) [Tiger](/wiki/Tiger).
 
     wget "http://puzzle.dl.sourceforge.net/sourceforge/mldonkey/mldonkey-2.8.6.tar.bz2"
-    tar xjvf mldonkey-2.8.6.tar.bz2 
+    tar xjvf mldonkey-2.8.6.tar.bz2
     cd mldonkey-2.8.6
     ./configure
     make

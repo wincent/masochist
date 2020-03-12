@@ -2,5 +2,3 @@
 redirect: [[IRB]]
 tags: wiki
 ---
-
-

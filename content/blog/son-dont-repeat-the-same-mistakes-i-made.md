@@ -3,15 +3,11 @@ title: Son, don't repeat the same mistakes I made
 tags: blog
 ---
 
-There are some things that I wish someone had told me when I got started programming Cocoa four years ago. There's a lot to learn, of course, so even if they *had* told me (and let's be honest, they probably *did* tell me) I may not have realized the importance of the advice.
+There are some things that I wish someone had told me when I got started programming Cocoa four years ago. There's a lot to learn, of course, so even if they _had_ told me (and let's be honest, they probably _did_ tell me) I may not have realized the importance of the advice.
 
 So as you go you do your best to adhere to the "best practices". Sometimes you find out you made a mistake and have to go back. Other times you find out that the "best practice" wasn't really the best practice for a given situation. And as you look back over the years you see work that needs to be redone, and perhaps you wish you could have done it the "right way" the first time. Sometimes code that works isn't good enough; sometimes, even if you're not a perfectionist, you have to rewrite working code or restructure a working build process in order to enable or accommodate future growth. Sometimes, even if you think "if it ain't broke don't fix it", you still have to go back in and "fix" it.
 
 So I'd like to offer some very brief advice in this post for Cocoa beginners which may or may not save some effort later on down the track.
-
-
-
-
 
 #### Subversion from Day 1
 
@@ -47,11 +43,11 @@ Writing a program is really a three-fold thing, comprising three interdependent 
 
 In reality, the three are closely interwoven and you often go back and forth between writing each. For example, sometimes the things you've specified in the documentation provide you with a guide for what you should test in your unit tests; and in turn, your unit tests help you decide what to write (and when to stop writing) in the code.
 
-Clearly, if you code is not for a public audience nor for use in a team your documentation need not be like Apple's, but it is probably a good idea to at a minimum provide a one-line description for each class and method; this will enforce a discipline, requiring you to think more about the *design* of your classes. Likewise, you should document, at a minimum, the expectations each method has with respect to input parameters, what gets returned from the method, and what kinds of exception might be thrown and when/why.
+Clearly, if you code is not for a public audience nor for use in a team your documentation need not be like Apple's, but it is probably a good idea to at a minimum provide a one-line description for each class and method; this will enforce a discipline, requiring you to think more about the _design_ of your classes. Likewise, you should document, at a minimum, the expectations each method has with respect to input parameters, what gets returned from the method, and what kinds of exception might be thrown and when/why.
 
 #### Branching
 
-Branching enables you to do stuff like release one version of your software for Tiger and another for Leopard. You can optionally merge changes *en masse* or selectively ("cherry picking") between branches.
+Branching enables you to do stuff like release one version of your software for Tiger and another for Leopard. You can optionally merge changes _en masse_ or selectively ("cherry picking") between branches.
 
 Branches are useful, but the key advice here is: branch late. Each branch means more work, so branch as late as possible and only when you're sure that it's the right moment to do so.
 

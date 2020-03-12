@@ -136,7 +136,7 @@ This compares with the messages I was initially seeing when I first tested (prio
 
 Note that this correctly only has one certificate in the chain, but that it fails to verify.
 
-The [sendmail docs](http://www.sendmail.org/~ca/email/starttls.html) say that you should install "*one or more* CA certs in `confCACERT`" and "*zero or more* CA certs in confCACERT\_PATH". This explains why I can't remove `confCACERT` (it requires one or more certificates). Regardless of whether I install anything in `confCACERT_PATH` I still get the too-long chain.
+The [sendmail docs](http://www.sendmail.org/~ca/email/starttls.html) say that you should install "_one or more_ CA certs in `confCACERT`" and "_zero or more_ CA certs in confCACERT_PATH". This explains why I can't remove `confCACERT` (it requires one or more certificates). Regardless of whether I install anything in `confCACERT_PATH` I still get the too-long chain.
 
 I later received an email offering the following clarification:
 

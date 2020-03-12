@@ -8,8 +8,8 @@ cache_breaker: 1
 [PCRE](/wiki/PCRE) is a required by the [nginx](/wiki/nginx) [HTTP](/wiki/HTTP) rewrite module, so it must be installed before building nginx:
 
 ```shell
-$ curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.9.tar.bz2 
-$ tar xjvf pcre-7.9.tar.bz2 
+$ curl -O ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-7.9.tar.bz2
+$ tar xjvf pcre-7.9.tar.bz2
 $ cd pcre-7.9
 $ ./configure
 $ make
@@ -21,9 +21,9 @@ $ sudo make install
 
 ```shell
 $ curl -O http://www.grid.net.ru/nginx/download/nginx_upload_module-2.0.10.tar.gz
-$ tar xzvf nginx_upload_module-2.0.10.tar.gz 
+$ tar xzvf nginx_upload_module-2.0.10.tar.gz
 $ curl -O http://sysoev.ru/nginx/nginx-0.7.61.tar.gz
-$ tar xzvf nginx-0.7.61.tar.gz 
+$ tar xzvf nginx-0.7.61.tar.gz
 $ cd nginx-0.7.61
 $ ./configure --prefix=/usr/local/nginx --with-http_ssl_module --add-module=../nginx_upload_module-2.0.10
 $ make
@@ -47,7 +47,7 @@ The first error is a permissions error and is expected because we are running [n
 
 ```shell
 $ sudo chown wincent /usr/local/nginx/logs
-$ script/nginx 
+$ script/nginx
 nginx not running: starting
 [emerg]: open() "/usr/local/nginx/tmp/nginx-local.conf" failed (2: No such file or directory)
 ```
@@ -55,7 +55,7 @@ nginx not running: starting
 So the second error remains: it is looking for the config file at `/usr/local/nginx/tmp/nginx-local.conf` when it should be looking in `RAILS_ROOT/tmp/nginx-local.conf`. We fix that by modifying the `script/nginx` script to pass in absolute rather than relative paths. Now retry:
 
 ```shell
-$ script/nginx 
+$ script/nginx
 nginx not running: starting
 [emerg]: open() "/Users/wincent/trabajo/unversioned/wincent.com/src/tmp/mime.types" failed (2: No such file or directory) in /Users/wincent/trabajo/unversioned/wincent.com/src/tmp/nginx-local.conf:11
 ```
@@ -76,7 +76,7 @@ Looking a little deeper, the reason why things were broken is found [here](http:
 
 > Note that until version 0.6.7, paths are relative to what was specified to configure via the --prefix=&lt;PATH&gt; directive, which by default is /usr/local/nginx. If you didn't set this when you compiled Nginx, then use absolute paths.
 >
-> Since version 0.6.7, ***paths are relative to directory of nginx configuration file nginx.conf***, but not to nginx prefix directory.
+> Since version 0.6.7, **_paths are relative to directory of nginx configuration file nginx.conf_**, but not to nginx prefix directory.
 
 Now let's look at the remaining warnings. The message for the first one isn't very helpful, seeing as line 25 corresponds to this part of the configuration file, where there are no obvious defects:
 

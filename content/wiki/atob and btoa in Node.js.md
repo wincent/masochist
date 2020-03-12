@@ -16,4 +16,4 @@ new Buffer('SGVsbG8gV29ybGQh', 'base64').toString(); // Hello World!
 
 # Source
 
-* http://stackoverflow.com/questions/23097928/node-js-btoa-is-not-defined-error
+-   http://stackoverflow.com/questions/23097928/node-js-btoa-is-not-defined-error

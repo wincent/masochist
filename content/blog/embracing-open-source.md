@@ -14,7 +14,7 @@ I'm firmly convinced of this, but it's an affirmation that requires some explana
 
 As a desktop OS, most users would agree that Mac OS X (mostly closed) is "better" than Linux (mostly open); note that here "better" really refers to the "user experience" for the average user. I've never used it, but they say that Oracle (closed) is better than even the most popular (MySQL) and most serious (PostgreSQL) open source databases. Although it has its flaws, few would disagree that Photoshop (closed) is better than Gimp (open). I could go on...
 
-As a software developer who has worked on both closed and open source projects, I don't think these examples of superior closed source products undermine the claim that the open source *process* is superior.
+As a software developer who has worked on both closed and open source projects, I don't think these examples of superior closed source products undermine the claim that the open source _process_ is superior.
 
 There are many counter examples. The best [version control system](/wiki/version_control_system), in my opinion, is [Git](/wiki/Git), which is open source. (Some may prefer others, but ask anybody what the best version control system is and chances are they'll tell you an open source one.) The best web server software (either [Apache](/wiki/Apache) or [nginx](/wiki/nginx), depending on your needs) is open source. The best programming language implementations (take your pick among [Ruby](/wiki/Ruby), [C](/wiki/C), [Haskell](/wiki/Haskell), [Python](/wiki/Python); pretty much any language you might choose) are all open source.
 
@@ -30,11 +30,11 @@ I've been watching this trend now from my perspective as both a user and a produ
 
 What does this actually mean? In practical terms, it means that the number of open source projects will continue to grow; as a proportion of all software and with a corresponding growth in its relative userbase. It also means that the number of open source projects which attain "best of class" status in their field will continue to grow too.
 
-But more profoundly than this, it also means that the way people think about software has changed and will continue to change. In the not-too-distant future, it will become *unthinkable* to propose a closed source solution rather than an open source one, akin to proposing making cars out of wood instead of metals and plastic. More and more people will start to think of open source software as inherently, technically superior, and more and more people will consider the open source process as "the" only sensible way to produce software.
+But more profoundly than this, it also means that the way people think about software has changed and will continue to change. In the not-too-distant future, it will become _unthinkable_ to propose a closed source solution rather than an open source one, akin to proposing making cars out of wood instead of metals and plastic. More and more people will start to think of open source software as inherently, technically superior, and more and more people will consider the open source process as "the" only sensible way to produce software.
 
 There are people that have thought this way for a long time now; the Richard Stallmans of the world who didn't so much foresee that this would inevitably take place as actually make it happen.
 
-What we're seeing now is how the everyday programmer on the street is starting to realize that people like Stallman were right. You no longer have to be a visionary to realize that the open source *process* is "the way" that software should be written.
+What we're seeing now is how the everyday programmer on the street is starting to realize that people like Stallman were right. You no longer have to be a visionary to realize that the open source _process_ is "the way" that software should be written.
 
 The next domino to fall will be the various strata of business, management, marketing, investors, government. In the not too distant future open source will enjoy its new, unquestioned status. Scientific knowledge is developed collaboratively, "out in the open". "Software knowledge" is really no different, and as time goes by more and more people are going to accept that fact.
 
@@ -46,7 +46,7 @@ I don't think the strategy that Microsoft is currently employing is a very prude
 
 But it doesn't look like this is going to work. Open source so far has proved resilient to attacks on the legal/patent front, and on a technical level as well. The only playing ground on which companies like Microsoft can still hope to win some battles is the marketing one, and even there they are fighting an uphill battle in the face of open source's advances and growing acceptance in so many areas. Microsoft has near-unlimited funds for marketing, but open source has near-unlimited programming resources.
 
-The trouble with Microsoft's strategy is that they are painting themselves into a corner. A "fight to the death" strategy isn't such a bright idea when you're on the losing side. Each day that passes and Microsoft doesn't follow the examples of companies like Apple and Google is a lost opportunity. They are making nominal, symbolic movements towards open source and open standards, but they need to move *much* faster. Mere window-dressing will not be enough to ensure their affluence, or even their survival, indefinitely.
+The trouble with Microsoft's strategy is that they are painting themselves into a corner. A "fight to the death" strategy isn't such a bright idea when you're on the losing side. Each day that passes and Microsoft doesn't follow the examples of companies like Apple and Google is a lost opportunity. They are making nominal, symbolic movements towards open source and open standards, but they need to move _much_ faster. Mere window-dressing will not be enough to ensure their affluence, or even their survival, indefinitely.
 
 # Consecuences for the small guy
 
@@ -54,8 +54,8 @@ So what does this all mean for the independent softare vendor, the lone programm
 
 If the open source process is "the" most sensible method for creating software, then a couple of decisions need to be made:
 
-1.  *What* license should code be made available under?
-2.  *How* (or *how much*) and *what* code should be made available as open source?
+1.  _What_ license should code be made available under?
+2.  _How_ (or _how much_) and _what_ code should be made available as open source?
 
 ## What license should be used?
 
@@ -77,11 +77,11 @@ This is an approach that's been used fairly successfully by [Hog Bay Software](h
 
 The Hog Bay "user-powered approach" was described in detail in the [September 2009 edition of ATPM](http://www.atpm.com/12.09/atpo.shtml) in an article titled, "Examining New Business Models".
 
-An alternative approach is the one tried by [Alexander Stigsen](http://e-texteditor.com/), creator of the "E" [TextMate](/wiki/TextMate) clone. In an original and somewhat controversial fashion ([initial announcement](http://e-texteditor.com/blog/2009/opencompany), [source code release](http://e-texteditor.com/blog/2009/releasing-the-source)) he decided to open up everything under a modified BSD license which basically said that people could do whatever they wanted *except* alter or remove the application's serial number system. Even more than the Hog Bay approach, this puts power to change the software in the hands of the users, but it did draw criticism for introducing yet another license, and one which was confusingly similar to the BSD license while incorporating a distinctly "non-free" clause.
+An alternative approach is the one tried by [Alexander Stigsen](http://e-texteditor.com/), creator of the "E" [TextMate](/wiki/TextMate) clone. In an original and somewhat controversial fashion ([initial announcement](http://e-texteditor.com/blog/2009/opencompany), [source code release](http://e-texteditor.com/blog/2009/releasing-the-source)) he decided to open up everything under a modified BSD license which basically said that people could do whatever they wanted _except_ alter or remove the application's serial number system. Even more than the Hog Bay approach, this puts power to change the software in the hands of the users, but it did draw criticism for introducing yet another license, and one which was confusingly similar to the BSD license while incorporating a distinctly "non-free" clause.
 
 Neither of these approaches is an ideal solution but rather they are practical compromises. My advice would be to follow the "closed source, minimal core with extensive open source plug-in/framework architecture" approach for now. I think it's ideologically more coherent, and definitely more marketable and less likely to generate friction with the user base, because the code that you're giving away, you really are giving away with total freedom, "no strings attached" (other than the extremely liberal requirements imposed by the BSD license), and under the terms of a widely-used and well-understood license. If the market and ecosystem evolve in the future in such a way that you can open source absolutely everything while still adequately monetizing your efforts then that would be fantastic and you should leap at the opportunity.
 
-## *How* should code be opened up?
+## _How_ should code be opened up?
 
 This is perhaps the most difficult question of all, because as they say, "the devil's in the details".
 
@@ -104,6 +104,6 @@ I believe in open source, not really because of the "politics of freedom", but b
 
 So while I've often talked on this weblog (and on [my old one](http://wincent.com/a/about/wincent/weblog/)) about how I like open source, and while I've already released a lot of code (much of which you can browse at <http://git.wincent.com/>), behind the scenes for a long time I've actually been working towards a much more comprehensive commitment to open source. (If you want, you can go back and read articles that I wrote in [July 2005](http://wincent.com/a/about/wincent/weblog/archives/2005/07/open_source_lic.php), [April 2006](http://wincent.com/a/about/wincent/weblog/archives/2006/04/open_source_a_w.php), [September 2006](http://wincent.com/a/about/wincent/weblog/archives/2006/09/open_vs_closed.php) and [January 2007](http://wincent.com/a/about/wincent/weblog/archives/2007/01/open_source.php) to see how my position has gradually evolved.)
 
-I've been whipping frameworks into shape, making them fit for public consumption, and gradually rearchitecting my applications so as to whittle them down to lean cores and be able to move the bulk of their functionality out into plug-ins that can be made open source. *All* of my applications are going down that road. *All* of them have already begun the journey. And I am determined to push *all* of them as far as I can down that path while still remaining viable as a business.
+I've been whipping frameworks into shape, making them fit for public consumption, and gradually rearchitecting my applications so as to whittle them down to lean cores and be able to move the bulk of their functionality out into plug-ins that can be made open source. _All_ of my applications are going down that road. _All_ of them have already begun the journey. And I am determined to push _all_ of them as far as I can down that path while still remaining viable as a business.
 
-And on the process level I've been improving the website to lower barriers to participation (and as I've alluded [elsewhere](/misc/legal), the source code for the site itself will eveventually be going public; from the very first commit back in 2007 the code has been prepared with that eventuality in mind). This post has largely been about *code*, but my interest is in open processes and open companies in general. I'll have more to say on that topic in future posts.
+And on the process level I've been improving the website to lower barriers to participation (and as I've alluded [elsewhere](/misc/legal), the source code for the site itself will eveventually be going public; from the very first commit back in 2007 the code has been prepared with that eventuality in mind). This post has largely been about _code_, but my interest is in open processes and open companies in general. I'll have more to say on that topic in future posts.

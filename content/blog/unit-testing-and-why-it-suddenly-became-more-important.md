@@ -5,10 +5,6 @@ tags: blog
 
 I'm a big fan of unit testing. I admit that I was at first put off by the puritanical fanaticism of some of its most vocal advocates (the kind that MashWordsTogether even when they're not writing in programming wikis about their [favorite](http://www.xprogramming.com/xpmag/whatisxp.htm) [topic](http://www.extremeprogramming.org/)) but there was no arguing with the basic premise that automated testing should lead to more robust, bug-free software.
 
-
-
-
-
 #### What's so good about unit testing?
 
 I don't agree that "Test Driven Development" is the only way to write software but it's clear that once you start to unit test, no matter what your personal style is, you will find that your development patterns do start to incorporate moments of "test-drivenness", even if only fleetingly. In reality there's an interplay between writing code, writing tests and writing documentation. I do all three, not always in the same order and often moving back and forth between them. Writing code is the most important, of course, because without it you wouldn't have a product, but the other two (testing and documenting) help you to write better code and often to come up with better designs. I write code-level API documentation even for code that I doubt anyone else will ever see because I find that doing so provides me with a discipline that leads to code that's better thought out (it's that open source idea that you'll write better code if you imagine you're writing for an audience than if you're not writing for anyone) and I think it also forces me to come up with more usable, better designed APIs. As an added benefit that documentation might come in handy in the future if I ever have to revisit very old code, or if I decide to open source it.
@@ -21,7 +17,7 @@ And as I said, you'll be more ready to refactor code if you've got a battery of 
 
 #### Why unit testing suddenly became more important...
 
-I've used unit testing for some time in my products but for a long while I've fallen short of what I would consider to be a "comprehensive" level of testing. In other words, I test some things that can be easily tested but neglect many things that I probably could and therefore should be testing. I did most of my testing with homegrown macros but I knew that there was scope for improvement so I started work on my own fully-fledged testing framework. There are already a number of frameworks out there but this was one particular wheel that I wanted to reinvent because I wanted a tool that exactly matched my requirements and way of working. Testing style and methodology for me is an intimately personal thing which had to just *feel right* if I was to practise it in a disciplined and methodical fashion. So I set about writing [WOTest](http://test.wincent.com/).
+I've used unit testing for some time in my products but for a long while I've fallen short of what I would consider to be a "comprehensive" level of testing. In other words, I test some things that can be easily tested but neglect many things that I probably could and therefore should be testing. I did most of my testing with homegrown macros but I knew that there was scope for improvement so I started work on my own fully-fledged testing framework. There are already a number of frameworks out there but this was one particular wheel that I wanted to reinvent because I wanted a tool that exactly matched my requirements and way of working. Testing style and methodology for me is an intimately personal thing which had to just _feel right_ if I was to practise it in a disciplined and methodical fashion. So I set about writing [WOTest](http://test.wincent.com/).
 
 I had left WOTest on the back burner for a while though to work on more important things (well, at least [things that customers felt were more important](http://synergyadvance.com/)). Apple's recent announcement that it will be moving to Intel processors has dramatically changed my priorities.
 
@@ -35,7 +31,7 @@ I've bitten the bullet and ordered the Developer Transition Kit (my credit card 
     Tests failed:        0 + 0 unexpected passes (0.00% failure rate)
     Uncaught exceptions: 0
 
-Because it's a test framework I have to be sure that it not only knows how to handle success cases but failure cases as well. That's why you see two numbers in the "Tests passed" row above; one is the number of tests that passed (and which I expected to pass) and the other is the number which failed (and which I expected to fail). It's necessary to verify that tests not only work when you expect them to work but also that they *don't* work when you don't expect them to work.
+Because it's a test framework I have to be sure that it not only knows how to handle success cases but failure cases as well. That's why you see two numbers in the "Tests passed" row above; one is the number of tests that passed (and which I expected to pass) and the other is the number which failed (and which I expected to fail). It's necessary to verify that tests not only work when you expect them to work but also that they _don't_ work when you don't expect them to work.
 
 I still have a few more days of work before I'll consider it to be "finished" to 1.0 level, but the major design work has been tackled and now all that remains is writing tests and handling some implementation details. It's quite a powerful framework with a lot of functionality, and seeing as I have to have an extreme degree of confidence in the framework itself I will be writing lots and lots and lots of tests for it. I've written over 500 so far but I expect the final figure could easily top 2,000 or more. It's not as bad as it sounds as they are quite easy to write, but still there are a lot of them...
 

@@ -12,9 +12,9 @@ See "[Installing ANTLR 3.0 on Mac OS X Tiger](/wiki/Installing_ANTLR_3.0_on_Mac_
 
 Given a clean copy of the [ANTLR](/wiki/ANTLR) source archive, `antlr-3.0.tar.gz`:
 
-    tar xvzf antlr-3.0.tar.gz 
+    tar xvzf antlr-3.0.tar.gz
     cd antlr-3.0/runtime/C/dist
-    tar xzvf libantlr3c-3.0.0-rc8.tar.gz 
+    tar xzvf libantlr3c-3.0.0-rc8.tar.gz
     cd libantlr3c-3.0.0-rc8
     ./configure
     make

@@ -35,7 +35,7 @@ No, I'm afraid that's not right. With that line in place, Apache refuses to star
     no listening sockets available, shutting down
     Unable to open logs
 
-I'm at a total loss to explain why this is the case. If you ask it to bind to all interfaces it says, "Sure, no problem!" but if you ask it to bind to only one it says, "Sorry! Somebody else beat me to it!". The thing is, there *is* no "somebody else", only Apache.
+I'm at a total loss to explain why this is the case. If you ask it to bind to all interfaces it says, "Sure, no problem!" but if you ask it to bind to only one it says, "Sorry! Somebody else beat me to it!". The thing is, there _is_ no "somebody else", only Apache.
 
 I can confirm that there are no lingering Apache processes hanging around (inspected with `ps auxww | grep httpd`), and no other rogue processes suddenly latching on to port 443 when Apache's back is turned (inspected with `netstat -l`).
 

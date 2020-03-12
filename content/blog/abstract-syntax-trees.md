@@ -5,10 +5,6 @@ tags: blog
 
 In a previous article about [writing a parser generator in Ruby](http://www.wincent.com/a/about/wincent/weblog/archives/2007/01/writing_a_parse.php) I promised to talk about [Abstract Syntax Trees](http://en.wikipedia.org/wiki/Abstract_syntax_tree). The problem with the parsers previously described is that the literal results (strings arranged in a hierarchical, ordered tree with the aid of arrays) are not very information-rich and they are difficult to work with.
 
-
-
-
-
 Take, for example, the statement:
 
     foo = bar + 1
@@ -71,7 +67,7 @@ In natural language this means we're looking to parse "a word followed by zero o
 
 Due to the simplifications already described above, this will yield a single element (`'foo'`) in the one-match case and a two-element array (`['foo', 'bar']`) in the two-match case. But in the three and four match cases things break down and we get results which are not in a very usable form (for example, `['foo', ['bar', 'abc', 'xyz']]`; note the nested array). The undesirable nesting takes place because the `zero_or_more` construct itself returns an array when there are multiple matches.
 
-There is no way for the parser to "know" what our intentions are here. Are we interested in the *contents* of the array (multiple objects), or are we after a single container object (the array itself)? The solution is to define another pseudo-operator to explicitly indicate when we're interested in the contents of an array rather than the container itself:
+There is no way for the parser to "know" what our intentions are here. Are we interested in the _contents_ of the array (multiple objects), or are we after a single container object (the array itself)? The solution is to define another pseudo-operator to explicitly indicate when we're interested in the contents of an array rather than the container itself:
 
     /\w+/ >> (/\s*,\s*/.skip & /\w+/).zero_or_more
 

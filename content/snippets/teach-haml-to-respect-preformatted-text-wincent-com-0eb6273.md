@@ -9,7 +9,7 @@ This is necessary because of the way template nesting works. For example, if you
 
 So the only way to communicate back to higher levels that you want your formatting preserved is to insert marker tags and act upon them accordingly.
 
-Note that this is different than what the "find\_and\_preserve" method does; that merely looks for pre blocks and filters them through preserve before passing them on.
+Note that this is different than what the "find_and_preserve" method does; that merely looks for pre blocks and filters them through preserve before passing them on.
 
 In the meantime I am going to continue looking for a more elegant solution.
 

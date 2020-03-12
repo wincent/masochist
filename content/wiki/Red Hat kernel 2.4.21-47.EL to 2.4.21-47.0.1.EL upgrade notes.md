@@ -15,7 +15,7 @@ Here are some notes that I made while performing the kernel upgrade on my [Red H
 
     Fetching rpm headers...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
 
     The following Packages were marked to be skipped by your configuration:
@@ -48,18 +48,18 @@ There were no non-kernel RPMs to update, so I skipped the `up2date --nox -u` ste
 
     Fetching Obsoletes list for channel: rhel-i386-es-3-extras...
 
-    Name                                    Version        Rel     
+    Name                                    Version        Rel
     ----------------------------------------------------------
     kernel                                  2.4.21         47.0.1.EL         athlon
-    kernel-doc                              2.4.21         47.0.1.EL         i386  
-    kernel-source                           2.4.21         47.0.1.EL         i386  
+    kernel-doc                              2.4.21         47.0.1.EL         i386
+    kernel-source                           2.4.21         47.0.1.EL         i386
 
 
     Testing package set / solving RPM inter-dependencies...
     ########################################
-    kernel-2.4.21-47.0.1.EL.ath ########################## Done.                   
-    kernel-doc-2.4.21-47.0.1.EL ########################## Done.                   
-    kernel-source-2.4.21-47.0.1 ########################## Done.                   
+    kernel-2.4.21-47.0.1.EL.ath ########################## Done.
+    kernel-doc-2.4.21-47.0.1.EL ########################## Done.
+    kernel-source-2.4.21-47.0.1 ########################## Done.
     Preparing              ########################################### [100%]
 
     Installing...

@@ -2,5 +2,3 @@
 redirect: [[Hexadecimal]]
 tags: wiki
 ---
-
-

@@ -3,12 +3,11 @@ title: Windows
 tags: blog
 ---
 
-### USB stick contents *before* visit to local print shop
+### USB stick contents _before_ visit to local print shop
 
 -   5 PDF documents
 
-
-### USB stick contents *after* visit to local print shop
+### USB stick contents _after_ visit to local print shop
 
 -   5 PDF documents
 -   `AutoRun.inf` (with `arch`, `uchg`, `hidden` attributes all set; requires root privileges to delete)
@@ -22,4 +21,4 @@ tags: blog
 -   `.Spotlight-V100/Store-V1/Store-V1.exe`
 -   `.Spotlight-V100/Store-V1/Stores/929365BA-861C-404D-BF69-F1ED71E2B3ED/929365BA-861C-404D-BF69-F1ED71E2B3ED.exe`
 
-And I got those extra files for *free*!
+And I got those extra files for _free_!

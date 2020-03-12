@@ -17,14 +17,14 @@ Example of a right rotation:
 
 Note the traversal order (A, B, C, D, E) of an in-order [depth-first search](/wiki/depth-first_search) is the same for both trees. Likewise, if this is a [binary search tree](/wiki/binary_search_tree), the invariant — that the left subtree contains only nodes less than or equal to the subtree's root, and the right subtree contains only nodes greater than or equal to the subtree's root — is maintained.
 
-The pseudo code shows that rotation is a constant time (*O(1)*) operation:
+The pseudo code shows that rotation is a constant time (_O(1)_) operation:
 
     # right rotation:
     pivot = root.left_child             # ie. the "pivot" (the new root) will be B
     root.left_child = pivot.right_child # ie. C
     pivot.right_child = root            # ie. root gets transplanted beneath pivot
     root = pivot                        # pivot becomes new root
-      
+
     # left rotation (reversing the process):
     pivot = root.right_child            # this time D is the pivot
     root.right_child = pivot.left_child # ie. C

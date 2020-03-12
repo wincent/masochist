@@ -11,7 +11,7 @@ I guess they've done the numbers on it, and must figure that they can compete wi
 
 According to the marketing that accompanies the launch, the main reason they're doing this is that they don't like the "vendor lock-in" that comes with choosing a particular cloud provider. This is evidently a jab at the 500-pound gorilla that currently dominates the cloud marketplace, Amazon.
 
-For the small fish in the pond, like me, however, this vendor lock-in thing is irrelevant. I was never going to run my own cloud, and was always going to end up paying someone else for time on *their* cloud. I ended up choosing Amazon because of their economies of scale. For my particular use case, literally nobody could beat them on price.
+For the small fish in the pond, like me, however, this vendor lock-in thing is irrelevant. I was never going to run my own cloud, and was always going to end up paying someone else for time on _their_ cloud. I ended up choosing Amazon because of their economies of scale. For my particular use case, literally nobody could beat them on price.
 
 And as the leaders in the marketplace, they had both the expertise in doing the cloud thing right, and also the certainty of sticking around for a long, long time.
 
@@ -21,7 +21,7 @@ Likewise, my backup strategy is tied to Amazon because its based on taking [EBS]
 
 # The real reason Rackspace is doing this
 
-Wild speculation, of course, but it seems to me that Rackspace's *real* motivation here has nothing to do with keeping things open. Keeping things open is only a means to an end.
+Wild speculation, of course, but it seems to me that Rackspace's _real_ motivation here has nothing to do with keeping things open. Keeping things open is only a means to an end.
 
 On the one hand they get some nice PR for being a good, open citizen, at the same time as making nasty old closed Amazon look like a big baddie in contrast.
 

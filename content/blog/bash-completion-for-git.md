@@ -27,11 +27,11 @@ Examples:
 
     # autocompletion of options
     $ git diff --<tab>
-    --abbrev                --diff-filter           --ignore-space-at-eol   --no-renames            --shortstat 
-    --binary                --exit-code             --ignore-space-change   --numstat               --stat 
-    --cached                --ext-diff              --name-only             --patch-with-stat       --summary 
-    --check                 --find-copies-harder    --name-status           --pickaxe-all           --text 
-    --color                 --full-index            --no-color              --pickaxe-regex         
+    --abbrev                --diff-filter           --ignore-space-at-eol   --no-renames            --shortstat
+    --binary                --exit-code             --ignore-space-change   --numstat               --stat
+    --cached                --ext-diff              --name-only             --patch-with-stat       --summary
+    --check                 --find-copies-harder    --name-status           --pickaxe-all           --text
+    --color                 --full-index            --no-color              --pickaxe-regex
     --color-words           --ignore-all-space      --no-ext-diff           --quiet
 
 I'm sure that that's only just scratching the surface, but even that small subset of the completion functionality is an impressive usability enhancement that will help you dozens or hundreds of times per day.

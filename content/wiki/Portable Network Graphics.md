@@ -2,5 +2,3 @@
 redirect: [[PNG]]
 tags: wiki
 ---
-
-

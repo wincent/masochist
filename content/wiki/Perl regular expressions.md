@@ -8,6 +8,6 @@ tags: perl wiki
 
 Matches "bar" only if not preceded by "foo".
 
-# Match only *horizontal* whitespace
+# Match only _horizontal_ whitespace
 
     \h

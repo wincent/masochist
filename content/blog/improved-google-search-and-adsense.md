@@ -11,8 +11,4 @@ I've also added some Google AdSense advertising to the [Knowledge Base](http://k
 
 You can read [this article](http://www.wincent.com/knowledge-base/Adding_Google_AdSense_to_MediaWiki) for more information on how to add AdSense to a MediaWiki installation.
 
-
-
-
-
 ![](/system/images/legacy/adsense.png)

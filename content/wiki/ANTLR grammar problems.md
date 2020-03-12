@@ -8,7 +8,7 @@ This page is intended to be a brief summary of [ANTLR](/wiki/ANTLR) grammar prob
 
 [ANTLR](/wiki/ANTLR) generates top-down recursive descent parsers and so left-recursion is not allowed. Given a rule like:
 
-    foo 
+    foo
       : foo ';' ;
 
 [ANTLR](/wiki/ANTLR) will complain with:

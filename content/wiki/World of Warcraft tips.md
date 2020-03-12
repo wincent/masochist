@@ -22,7 +22,7 @@ Pretty much exactly the same point here. There is no need to agonize over this c
 
 # Start on your professions early
 
-When I started with my first character I made the mistake of focussing too much on levelling up, relegating my professions to the backburner. This soon turned into a problem because I found myself being sent to new areas with higher level missions and enemies, but I didn't have the required skill to exercise my professions in those tougher areas. I was a *herborista* that didn't realize that as your enemies got tougher the plants in the areas get tougher to collect too, and so I got stuck, unable to advance in my profession.
+When I started with my first character I made the mistake of focussing too much on levelling up, relegating my professions to the backburner. This soon turned into a problem because I found myself being sent to new areas with higher level missions and enemies, but I didn't have the required skill to exercise my professions in those tougher areas. I was a _herborista_ that didn't realize that as your enemies got tougher the plants in the areas get tougher to collect too, and so I got stuck, unable to advance in my profession.
 
 But the problems didn't end there. I elected alchemy because it completed my herb-gathering, but when I finally got my herb skills up to a decent level I found that my alchemy had lagged behind. My alchemy skills were so poor that they couldn't use the plants that I was now capable of collecting.
 
@@ -52,7 +52,7 @@ The second combination that I tried was enchanter and tailor. This is another of
 
 When you are a level 5 enchanter you probably don't get your hands on many green items. Your only hope to get your skill off the ground is to get your tailoring up to the point where you can produce green items yourself. You then disenchant them to extract components for your enchanting.
 
-But if you are a tailor and are developing your first aid at the same time you will need an *insane* amount of cloth. I soon got tired of killing low level humanoids in order to get it (literally hundreds) and I was getting all too little experience from it, so at that point I got my higher-level character druid to go out and do the killing for me. Obviously the level-42 druid got no experience at all from killing mobs in the 5 to 20 range, but he was able to go much faster and get the much-needed cloth many times faster. I mailed the cloth to my low-level enchanter.
+But if you are a tailor and are developing your first aid at the same time you will need an _insane_ amount of cloth. I soon got tired of killing low level humanoids in order to get it (literally hundreds) and I was getting all too little experience from it, so at that point I got my higher-level character druid to go out and do the killing for me. Obviously the level-42 druid got no experience at all from killing mobs in the 5 to 20 range, but he was able to go much faster and get the much-needed cloth many times faster. I mailed the cloth to my low-level enchanter.
 
 Is this somehow "cheating"? I don't think so. Just as guild members help one another, there is nothing wrong with one of your characters helping another one of your characters.
 

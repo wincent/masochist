@@ -3,7 +3,7 @@ tags: macos wiki
 cache_breaker: 1
 ---
 
-The "[beachball](/wiki/beachball)" is the colloquial term for the busy mouse cursor displayed by [Mac OS X](/wiki/Mac_OS_X) when an application stops responding. In reality, the animated cursor *does not* depict a spinning beach ball but in fact shows a spinning optical disc with a multi-colored rainbow effect caused by refraction; nevertheless the term "beachball" is extremely popular among users, perhaps because of its ironic connotations (a beachball is a cheap, plastic toy without much functional merit).
+The "[beachball](/wiki/beachball)" is the colloquial term for the busy mouse cursor displayed by [Mac OS X](/wiki/Mac_OS_X) when an application stops responding. In reality, the animated cursor _does not_ depict a spinning beach ball but in fact shows a spinning optical disc with a multi-colored rainbow effect caused by refraction; nevertheless the term "beachball" is extremely popular among users, perhaps because of its ironic connotations (a beachball is a cheap, plastic toy without much functional merit).
 
 It has also given rise to a verb form, "[to beachball](/wiki/to_beachball)" (in the infinitive), or "[beachballing](/wiki/beachballing)" (the gerund).
 

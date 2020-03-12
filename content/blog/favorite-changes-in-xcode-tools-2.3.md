@@ -3,9 +3,9 @@ title: Favorite changes in Xcode Tools 2.3
 tags: blog
 ---
 
--   **`Info.plist` preprocessing has been improved:** you can now specify build settings using a "$(BUILD\_SETTING)"-style syntax (fixes [this complaint](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/urls_in_preproc.php); although with the `-traditional` switch it's not such a big deal anymore anyway).
+-   **`Info.plist` preprocessing has been improved:** you can now specify build settings using a "\$(BUILD_SETTING)"-style syntax (fixes [this complaint](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/urls_in_preproc.php); although with the `-traditional` switch it's not such a big deal anymore anyway).
 -   **`atos` now works with Universal Binaries:** thanks to the `-arch` switch.
--   **Better tracking of breakpoints across dependent projects:** at last you can see *all* the breakpoints in the application in a single window even when they are spread across multiple dependent projects (such as framework projects).
+-   **Better tracking of breakpoints across dependent projects:** at last you can see _all_ the breakpoints in the application in a single window even when they are spread across multiple dependent projects (such as framework projects).
 -   **Cleaning dependencies is now optional:** handy for when you just want to flush out a single target's resources (for example) and not have to rebuild a long chain of dependencies. You can also elect to skip cleaning precompiled headers.
 -   **Option-double-click now works on symbols names in documentation windows:** making it much, much faster to zoom around the documentation.
 -   **Clicking on symbols in the API listing now requires only a single click:** thus fixing a long-standing regression in which you had to click twice (once to switch documents and then again to scroll the document to the appropriate anchor).

@@ -9,10 +9,6 @@ tags: blog
 
 Now, in my opinion this is a bit of [a bikeshed argument](http://en.wikipedia.org/wiki/Color_of_the_bikeshed). I have my own preferences which I apply to projects that I control, and I try to adhere to the standards set by other projects when making contributions to them, but I don't bother pouring more fuel on the fire when this kind of debate is raging on a mailing list.
 
-
-
-
-
 If you check out the top [Google](http://www.wincent.com/knowledge-base/Google) hits on the subject you'll get some nice arguments on both sides, some interesting proposals, as well as some questionable affirmations:
 
 1.  <http://www.jwz.org/doc/tabs-vs-spaces.html>
@@ -32,6 +28,6 @@ Kind of like sending a PDF rather than a proprietary Word document. But it's als
 
 > Tabs allow the viewer to determine how code looks when they view it.
 
-Using tabs for indentation (to show scope) and then spaces for additional alignment might produce code that looks pretty good everywhere *and* has a degree of viewer-configurability, *but* it suffers from what is in my view a fatal flaw: it requires users editing the text to manipulate invisible symbols. Sure, smart editors can help, and turning on the display of invisibles can help (but at the cost of aesthetics), but it's never going to be ideal.
+Using tabs for indentation (to show scope) and then spaces for additional alignment might produce code that looks pretty good everywhere _and_ has a degree of viewer-configurability, _but_ it suffers from what is in my view a fatal flaw: it requires users editing the text to manipulate invisible symbols. Sure, smart editors can help, and turning on the display of invisibles can help (but at the cost of aesthetics), but it's never going to be ideal.
 
 But fundamentally I just don't care. It's not worth getting all upset arguing about any of these perspectives because, no matter you do, you're going to have to deal with code that has mangled whitespace in it. Do your best to play by the rules of the community that you're in, always try to be consistent, but don't be obsessive because trying to win the tabs versus spaces debate is like trying to put the genie back in the bottle. It's entropy.

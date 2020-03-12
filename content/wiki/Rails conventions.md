@@ -22,7 +22,7 @@ tags: rails wiki
 Given a class hierarchy that looks like this:
 
 -   `ActiveRecord::Base`
-    -    `Furniture`
+    -   `Furniture`
         1.  `Chair`
         2.  `Table`
 

@@ -20,9 +20,12 @@ Sample:
 
 ```html
 <video width="640" height="480" controls preload>
-  <source src="screencast.mp4"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
-  <source src="screencast.webm" type='video/webm; codecs="vp8, vorbis"'>
-  <source src="screencast.ogv"  type='video/ogg; codecs="theora, vorbis"'>
+    <source
+        src="screencast.mp4"
+        type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'
+    />
+    <source src="screencast.webm" type='video/webm; codecs="vp8, vorbis"' />
+    <source src="screencast.ogv" type='video/ogg; codecs="theora, vorbis"' />
 </video>
 ```
 

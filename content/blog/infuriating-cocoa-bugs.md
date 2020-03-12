@@ -5,10 +5,6 @@ tags: blog
 
 Every now and again I come up against an infuriating Cocoa bug. Today I've just spent a few hours struggling against one in particular. It could be that it's a bug or it could be "intended behaviour" (sigh). It's days like these that I don't like my job...
 
-
-
-
-
 #### The problem
 
 I've been working on Dock icon stuff for [Synergy Advance](http://www.wincent.com/a/products/synergy-advance/). You can do a number of things such as animate the Dock icon, show a progress indicator, show cover art, show the cover art as a badge, and so forth. Because the settings are independent of one another you can turn on none, one, or [more than one of them at a time](/system/images/legacy/dock-icon-preview3.png). This means that sometimes I have to composite more than one thing into an NSImage.

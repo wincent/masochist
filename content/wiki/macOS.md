@@ -2,7 +2,7 @@
 tags: macos wiki
 ---
 
-Considered by many to be the best operating system in the world (and by me to be the best *desktop* operating system in the world), [macOS](/wiki/macOS) is [Apple](/wiki/Apple)'s current flagship operating system.
+Considered by many to be the best operating system in the world (and by me to be the best _desktop_ operating system in the world), [macOS](/wiki/macOS) is [Apple](/wiki/Apple)'s current flagship operating system.
 
 See: <http://www.apple.com/macos/>
 

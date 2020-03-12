@@ -6,7 +6,7 @@ Things you need to now about [Git](/wiki/Git) before starting to work with it.
 
 # Distributed version control
 
-[Git](/wiki/Git) is a distributed [version control system](/wiki/version_control_system) like [SVK](/wiki/SVK) and unlike [Subversion](/wiki/Subversion) (which uses a server-client model). In fact it goes one step further than SVK in that every single checkout (every *clone* or *cloned repository* in Git terminology) is a complete copy of the entire repository and all its history; SVK on the other hand creates only a single mirror and each new checkout is just a shallow working copy.
+[Git](/wiki/Git) is a distributed [version control system](/wiki/version_control_system) like [SVK](/wiki/SVK) and unlike [Subversion](/wiki/Subversion) (which uses a server-client model). In fact it goes one step further than SVK in that every single checkout (every _clone_ or _cloned repository_ in Git terminology) is a complete copy of the entire repository and all its history; SVK on the other hand creates only a single mirror and each new checkout is just a shallow working copy.
 
 This may seem wasteful at first glance but Git uses very efficient compression such that in many cases the entire repository and all its history is similar in size to a shallow Subversion checkout. If space is a concern you can do shallow clones if you wish, or just checkout submodules of a larger project, but for local clones (on the same filesystem) the default is to create hard links anyway which yields a massive space saving (note that if you are worried about filesystem integrity and are making a local clone for backup purposes then you probably want to pass the `--no-hardlinks` switch to `git clone`). It most cases you don't need to worry about space and just enjoy the benefits that having full local access to the history brings, such as excellent speed when viewing the history.
 
@@ -18,19 +18,19 @@ And revisions are identified by steadily increasing integers: 1, 2, 3, 4 and 5 i
 
     A -> B -> F -> G-> H -> I
           \           /
-           C -> D -> E 
+           C -> D -> E
 
-Here revisions (*commits* in Git-speak) are identified by [SHA-1](/wiki/SHA-1) hashes which are based on their content. Imagine that another developer clones this repository; they now receive an exact copy of the entire history, and can continue development as they please:
+Here revisions (_commits_ in Git-speak) are identified by [SHA-1](/wiki/SHA-1) hashes which are based on their content. Imagine that another developer clones this repository; they now receive an exact copy of the entire history, and can continue development as they please:
 
     A -> B -> F -> G-> H -> I -> J -> K
           \           /
-           C -> D -> E 
+           C -> D -> E
 
 At the same time the original author may have made other, independent changes:
 
     A -> B -> F -> G-> H -> I -> L -> M
           \           /
-           C -> D -> E 
+           C -> D -> E
 
 It's clear here that the distributed nature of Git makes integral revision numbers like those used in Subversion meaningless. Here we see that in one repo development produce revisions `J` and `K`, and in another `L` and `M`, and that they share some common history. It would be useless to refer to these as revisions 10 and 11 because they clearly refer to different things. The only way to uniquely identify such revisions is with a cryptographic hash.
 
@@ -40,7 +40,7 @@ Sounds like chaos? Not really. Because of these cryptographic underpinnings, eit
           \           /      \
            C -> D -> E        L -> M
 
-The development history is modelled as a [DAG](/wiki/DAG) ([Directed Acyclic Graph](/wiki/Directed_Acyclic_Graph)) which means that it cannot ever contain any cyclic structures: this means that merely sharing revisions between repositories can never lead to any conflicts; you can literally fetch revisions from *any* Git repository out there and add them to your local object graph.
+The development history is modelled as a [DAG](/wiki/DAG) ([Directed Acyclic Graph](/wiki/Directed_Acyclic_Graph)) which means that it cannot ever contain any cyclic structures: this means that merely sharing revisions between repositories can never lead to any conflicts; you can literally fetch revisions from _any_ Git repository out there and add them to your local object graph.
 
 And because Git is so good at merging the history is easily unified to create a new revision, here labelled `N`:
 
@@ -80,6 +80,6 @@ Whereas in Git you must explicitly tell it to "add" the changes to the index:
 
 At first this may seem like an unnecessary additional step, but it allows for some new workflows not possible with other version control systems; for example, the ability to have a "dirty" working copy (with temporary changes) while performing selective "clean" commits. It also allows for more nuanced `diff` and `status` operations because it permits you to distinguish between "finalized changes ready to be committed" and "local modifications not yet ready to be committed".
 
-Note that the semantics of "add" are different in Git than they are in systems like Subversion. In the latter "add" means "add these new files/directories to the repository" while in Git it means "add *the modifications* in these files/directories to the index" (and "the index" itself means "the content of the next commit").
+Note that the semantics of "add" are different in Git than they are in systems like Subversion. In the latter "add" means "add these new files/directories to the repository" while in Git it means "add _the modifications_ in these files/directories to the index" (and "the index" itself means "the content of the next commit").
 
 It is still possible to work according to the old paradigm by using `git commit -a`, which automatically adds modified files in the working tree to the index before performing the commit.

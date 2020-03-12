@@ -19,12 +19,12 @@ The new version of [ParseTree](/wiki/ParseTree), [ParseTree 2.0.0](/wiki/ParseTr
             -   resbody unified with itself (lots of different forms)
 -   5 minor enhancements:
     -   Add [\#modules](/tags/modules) to Module.
-    -   Add Sexp::for shortcut for Sexp.from\_array ParseTree.translate(...).
+    -   Add Sexp::for shortcut for Sexp.from_array ParseTree.translate(...).
     -   Add parens for :block nodes as appropriate. May be overzealous.
-    -   Made add\_to\_parse\_tree global for reuse by other C extensions.
-    -   Made test\_ruby2ruby MUCH more rigorous with circular testing.
+    -   Made add_to_parse_tree global for reuse by other C extensions.
+    -   Made test_ruby2ruby MUCH more rigorous with circular testing.
 -   6 bug fixes:
-    -   Added $TESTING = true to pt\_testcase.rb. OOPS!
+    -   Added \$TESTING = true to pt_testcase.rb. OOPS!
     -   Fixed some circular bugs, mostly by hacking them out, wrt operator precidence.
     -   Fixed splat arg processing when arg has no name.
     -   Fixed trinary operator.

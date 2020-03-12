@@ -33,7 +33,7 @@ To set up a "pipe" that will limit all traffic that flows through it:
 
     sudo ipfw pipe 1 config bw 10KByte/s
 
-To apply that pipe to *all* outgoing traffic over the default ethernet interface (`en0`):
+To apply that pipe to _all_ outgoing traffic over the default ethernet interface (`en0`):
 
     sudo ipfw add 1 pipe 1 ip from any to any xmit en0
 
@@ -47,7 +47,7 @@ And replace it with this one:
 
     sudo ipfw add 1 pipe 1 ip from any to any xmit en0 not dst-port 80,443
 
-This limits all outbound traffic that is *not* bound for a destination port of 80 or 443. This means that web pages should still load relatively fast, but other outbound traffic will be limited.
+This limits all outbound traffic that is _not_ bound for a destination port of 80 or 443. This means that web pages should still load relatively fast, but other outbound traffic will be limited.
 
 While this example is relatively simplistic it gets the job done. It is possible to set up much more complex rulesets, including having multiple pipes, sharing pipes according to weighted queues (for example, it is possible to "weight" web traffic as twice as important as other traffic, ensuring that it gets double the bandwidth when bandwidth is saturated), and simulating dial-up connections and packet loss for the purposes of site testing.
 

@@ -22,7 +22,7 @@ Below is the text of the old version of the script, just prior to modification. 
     # buildtools
     #
     # Created by Wincent Colaiuta on Fri Dec 30 2003.
-    # 
+    #
     # Copyright 2003-2007 Wincent Colaiuta.
     # This program is distributed in the hope that it will be useful, but WITHOUT
     # ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
@@ -72,11 +72,11 @@ Below is the text of the old version of the script, just prior to modification. 
     {
       builtin echo "Updating file timestamp"
       STAMP=`/bin/date`
-      
+
       /bin/cat ${SOURCE_ROOT}/${WO_VERSION_FILE} | /usr/bin/sed \
         -e "s#^/\* Last automatic update: .* \*/#/* Last automatic update: ${STAMP} */#" \
         > ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp
-      
+
       if [ $? -eq 0 ]; then
         cp -f ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp \
               ${SOURCE_ROOT}/${WO_VERSION_FILE}
@@ -84,17 +84,17 @@ Below is the text of the old version of the script, just prior to modification. 
         builtin echo "Exiting due to error during timestamping (phase 1)"
         exit 1
       fi
-      
+
       builtin echo "Updating WO_BUILDDATE entry"
-      
+
       # search for:   [/tags/define #define] WO_BUILDDATE "..."
       BUILDDATE_REGEX='^\(#define[ ][ ]*WO_BUILDDATE[ ][ ]*"\).*\("\)'
-      
+
       # update to reflect date and time of build
       /bin/cat ${SOURCE_ROOT}/${WO_VERSION_FILE} | /usr/bin/sed \
         -e "s/${BUILDDATE_REGEX}/\1${STAMP}\2/" \
         > ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp
-      
+
       if [ $? -eq 0 ]; then
         cp -f ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp \
               ${SOURCE_ROOT}/${WO_VERSION_FILE}
@@ -107,15 +107,15 @@ Below is the text of the old version of the script, just prior to modification. 
     update_copyright_years()
     {
       builtin echo "Updating WO_COPYRIGHT_YEAR entry"
-      
+
       # get current year
       YEAR=`/bin/date +%Y`
-      
+
       # in the line : [/tags/define #define] WO_COPYRIGHT_YEAR ... update: "... XXXX ..."
       /bin/cat ${SOURCE_ROOT}/${WO_VERSION_FILE} | /usr/bin/sed \
         -e "/^#define[ ][ ]*WO_COPYRIGHT_YEAR[ ]/s/\(.*\)[0-9]\{4\}\([^\-]*\)/\1${YEAR}\2/" \
         > ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp
-      
+
       if [ $? -eq 0 ]; then
         cp -f ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp \
               ${SOURCE_ROOT}/${WO_VERSION_FILE}
@@ -140,7 +140,7 @@ Below is the text of the old version of the script, just prior to modification. 
 
           # handle all 9s case eg. 9., 99., 999. -> 0%., 0%%., 0%%%.
           s/\([^0-9%]\)\(%\)\(%*\)\./\10\2\3./
-      
+
           # reset test flag before continuing
           s/./&/; tr
 
@@ -161,7 +161,7 @@ Below is the text of the old version of the script, just prior to modification. 
           y/%/0/
         }
       ' > ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp
-      
+
       if [ $? -eq 0 ]; then
         cp -f ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp \
               ${SOURCE_ROOT}/${WO_VERSION_FILE}
@@ -181,10 +181,10 @@ Below is the text of the old version of the script, just prior to modification. 
 
           # replace numbers after decimal point with a single 0
           s/\.[0-9]*/.0/
-          
+
         }
       ' > ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp
-      
+
       if [ $? -eq 0 ]; then
         cp -f ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp \
               ${SOURCE_ROOT}/${WO_VERSION_FILE}
@@ -214,7 +214,7 @@ Below is the text of the old version of the script, just prior to modification. 
 
           # handle all 9s case eg. .9, .99, .999 -> .0%, .0%%, .0%%%
           s/\.\(%\)\(%*\)\([^0-9%]\)/.0\1\2\3/
-      
+
           # handle all 9s case in a number immediately before a newline
           s/\.\(%\)\(%*\)$/.0\1\2/
 
@@ -249,7 +249,7 @@ Below is the text of the old version of the script, just prior to modification. 
           y/%/0/
         }
       ' > ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp
-      
+
       if [ $? -eq 0 ]; then
         cp -f ${SOURCE_ROOT}/${WO_VERSION_FILE}.temp \
               ${SOURCE_ROOT}/${WO_VERSION_FILE}
@@ -274,7 +274,7 @@ Below is the text of the old version of the script, just prior to modification. 
 
     #
     # Main
-    # 
+    #
 
     set -e
 
@@ -311,7 +311,7 @@ Below is the text of the old version of the script, just prior to modification. 
           # diff always returns an exit code of 1 here (files diff), hence the ||
           builtin echo "${TREEINFO}" | /usr/bin/diff "${INFOFILE}" - || cd .
         fi
-      fi  
+      fi
     fi
 
     # Backup old version of file

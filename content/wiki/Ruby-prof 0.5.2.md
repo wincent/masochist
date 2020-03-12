@@ -6,8 +6,8 @@ tags: ruby.prof wiki
 
 # Changes in 0.5.2
 
--   This release includes a rails\_plugin that makes it easier to profile Rails applications. The plugin was mistakenly left out of the 0.5.1 release.
--   Add rails\_plugin into release.
+-   This release includes a rails_plugin that makes it easier to profile Rails applications. The plugin was mistakenly left out of the 0.5.1 release.
+-   Add rails_plugin into release.
 
 # Changes in 0.5.1
 
@@ -18,9 +18,9 @@ I include the 0.5.1 change list here as well because 0.5.2 came hot on the heels
 -   Fixes
     -   Properly escape method names in HTML reports
     -   Fix use of -m and --min-percent command line switches
-    -   Default source file information to ruby\_runtime\#0 for c calls
-    -   Moved rails\_plugin to top level so it is more obvious
-    -   Updated rails\_plugin to write reports to the current Rails log directory
+    -   Default source file information to ruby_runtime\#0 for c calls
+    -   Moved rails_plugin to top level so it is more obvious
+    -   Updated rails_plugin to write reports to the current Rails log directory
     -   Added additional tests
 
 Source: <http://rubyforge.org/frs/shownotes.php?release_id=13053>

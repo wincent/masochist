@@ -38,7 +38,7 @@ I headed over to the [JUnit website](http://www.junit.org/index.htm) and downloa
 
 Then, with the help of the [JUnit](/wiki/JUnit) [FAQ](/wiki/FAQ) ("[How do I install JUnit?](http://junit.sourceforge.net/doc/faq/faq.htm#started_2)") I installed into `/usr/local/`:
 
-    unzip junit4.3.1.zip 
+    unzip junit4.3.1.zip
     sudo mv junit4.3.1 /usr/local/
     cd /usr/local
     sudo ln -s junit4.3.1 junit

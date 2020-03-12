@@ -8,6 +8,6 @@ There are a number of possible variations of the [hard reset](/wiki/hard_reset),
 
 -   the external power failure (which can be largely mitigated with a [UPS](/wiki/UPS))
 -   the "forced reset", where the [operating system](/wiki/operating_system) becomes unsalvageably frozen and the user is obliged to force an immediate power-down with the power button or physical reset switch
--   the "plug yank", in which the system becomes so throughly wedged that even the power button and physical reset switch stop working; in this case literally *yanking* the power lead may have some therapeutic value
+-   the "plug yank", in which the system becomes so throughly wedged that even the power button and physical reset switch stop working; in this case literally _yanking_ the power lead may have some therapeutic value
 
 I maintain a journal of my experiences with such failures in the [Involuntary Reboot Log](/wiki/Involuntary_Reboot_Log).

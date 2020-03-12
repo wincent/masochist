@@ -25,8 +25,8 @@ Note that if you already have an ssh-agent process running or if you have one ot
 
 Now connect to the iMac in the Finder and mount my other home directory so that the necessary pieces can be copied over:
 
-    mkdir bin  
-    cp -R /Volumes/wincent/bin/SSHPassKey.app bin/ 
+    mkdir bin 
+    cp -R /Volumes/wincent/bin/SSHPassKey.app bin/
     open bin/SSHPassKey.app
     cp /Volumes/wincent/.ssh/id_dsa_subversion .ssh/
 

@@ -18,7 +18,7 @@ tags: vim folds wiki
 -   `zm`: increase fold level by one (mnemonic: "\[m\]ore folds")
 -   `zM`: increase fold level to maximum, closing all folds
 -   `zr`: reduce fold level by one (mnemonic: "\[r\]educe folds")
--   `zR`: reduce fold level to zero, opening and removing *all* folds
+-   `zR`: reduce fold level to zero, opening and removing _all_ folds
 -   `zd`: delete fold at cursor
 -   `zi`: enable/disable folding (same as `:set foldenable` or `:set nofoldenable`)
 

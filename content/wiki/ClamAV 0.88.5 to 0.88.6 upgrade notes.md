@@ -11,8 +11,8 @@ For more details about the nature and purpose of the various steps, see [ClamAV 
     make
     make check
     sudo cp /etc/freshclam.conf /etc/freshclam.conf.old
-    sudo cp /etc/clamd.conf /etc/clamd.conf.old 
-    diff contrib/init/RedHat/clamd /etc/init.d/clamd 
+    sudo cp /etc/clamd.conf /etc/clamd.conf.old
+    diff contrib/init/RedHat/clamd /etc/init.d/clamd
     sudo make install
     whereis freshclam
     sudo freshclam -v
@@ -20,5 +20,5 @@ For more details about the nature and purpose of the various steps, see [ClamAV 
     sudo service clamd restart
     sudo service --status-all | grep clamd
     cd /etc
-    diff freshclam.conf freshclam.conf.old 
+    diff freshclam.conf freshclam.conf.old
     diff clamd.conf clamd.conf.old

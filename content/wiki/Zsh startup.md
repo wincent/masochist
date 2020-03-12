@@ -21,5 +21,5 @@ tags: zsh wiki
 
 # See also
 
-- http://zsh.sourceforge.net/Intro/intro_3.html
-- http://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
+-   http://zsh.sourceforge.net/Intro/intro_3.html
+-   http://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout

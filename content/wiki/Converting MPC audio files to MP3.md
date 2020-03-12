@@ -22,7 +22,7 @@ At the time of writing version 1.95z2 is the latest available version of [mppdec
 To show available options I simply typed `./mppdec`. The output was:
 
     MPC Decoder  SV7  1.95z2     (C) 1999-2005 Buschmann/Klemm/Piecha/Wolf/MDT
-         
+
     usage:
       mppdec [--options] <Input_File> <Output_File>
       mppdec [--options] <List_of_Input_Files> <Output_File>

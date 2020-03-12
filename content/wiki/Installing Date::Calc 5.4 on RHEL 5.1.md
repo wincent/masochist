@@ -19,9 +19,9 @@ So these have to be installed in reverse order.
 ## Test::Simple
 
     wget http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/Test-Simple-0.78.tar.gz
-    tar xzvf Test-Simple-0.78.tar.gz 
+    tar xzvf Test-Simple-0.78.tar.gz
     cd Test-Simple-0.78
-    perl Makefile.PL 
+    perl Makefile.PL
     make
     make test
     sudo make install
@@ -29,7 +29,7 @@ So these have to be installed in reverse order.
 ## Sub::Uplevel
 
     wget http://search.cpan.org/CPAN/authors/id/D/DA/DAGOLDEN/Sub-Uplevel-0.1901.tar.gz
-    tar xzvf Sub-Uplevel-0.1901.tar.gz 
+    tar xzvf Sub-Uplevel-0.1901.tar.gz
     cd Sub-Uplevel-0.1901
     perl Makefile.PL
     make
@@ -39,9 +39,9 @@ So these have to be installed in reverse order.
 ## Test::Exception
 
     wget http://search.cpan.org/CPAN/authors/id/A/AD/ADIE/Test-Exception-0.27.tar.gz
-    tar xzvf Test-Exception-0.27.tar.gz 
+    tar xzvf Test-Exception-0.27.tar.gz
     cd Test-Exception-0.27
-    less README 
+    less README
     perl Makefile.PL
     make
     make test
@@ -50,7 +50,7 @@ So these have to be installed in reverse order.
 ## Carp::Clan
 
     wget http://search.cpan.org/CPAN/authors/id/J/JJ/JJORE/Carp-Clan-6.00.tar.gz
-    tar xzvf Carp-Clan-6.00.tar.gz 
+    tar xzvf Carp-Clan-6.00.tar.gz
     cd Carp-Clan-6.00
     perl Makefile.PL
     make
@@ -60,7 +60,7 @@ So these have to be installed in reverse order.
 ## Bit::Vector
 
     wget http://search.cpan.org/CPAN/authors/id/S/ST/STBEY/Bit-Vector-6.4.tar.gz
-    tar xzvf Bit-Vector-6.4.tar.gz 
+    tar xzvf Bit-Vector-6.4.tar.gz
     cd Bit-Vector-6.4
     perl Makefile.PL
     make
@@ -70,7 +70,7 @@ So these have to be installed in reverse order.
 ## Date::Calc itself
 
     wget http://search.cpan.org/CPAN/authors/id/S/ST/STBEY/Date-Calc-5.4.tar.gz
-    tar xzvf Date-Calc-5.4.tar.gz 
+    tar xzvf Date-Calc-5.4.tar.gz
     cd Date-Calc-5.4
     perl Makefile.PL
     make

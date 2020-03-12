@@ -17,7 +17,7 @@ $ gpg --recv-keys 9E629EAC
 $ gpg --verify source-highlight-3.1.tar.gz.sig
 $ tar xzvf source-highlight-3.1.tar.gz
 $ cd source-highlight-3.1
-$ ./configure 
+$ ./configure
 $ make
 $ sudo make install
 ```

@@ -10,7 +10,7 @@ The key line of the script is this one:
 
     find . -name "*.dSYM" -exec mv {} "${DSYM_FOLDER}/" \;
 
-This works, but prints an error message for every bundle and causes `find` to return a non-zero exit status. Evidently this is because `find` first performs the `-exec` and *then* tries to access the file in some way, presumably to retrieve some kind of information about it. This fails because the file has already moved by the time this access attempt takes place.
+This works, but prints an error message for every bundle and causes `find` to return a non-zero exit status. Evidently this is because `find` first performs the `-exec` and _then_ tries to access the file in some way, presumably to retrieve some kind of information about it. This fails because the file has already moved by the time this access attempt takes place.
 
 # Second attempt
 

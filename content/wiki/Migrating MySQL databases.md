@@ -26,6 +26,6 @@ And import the tables and data:
 
 ```shell
 $ mysql -u root app_development < dev.sql
-$ mysql -u root app_production < prod.sql 
+$ mysql -u root app_production < prod.sql
 $ mysql -u root app_test < test.sql
 ```

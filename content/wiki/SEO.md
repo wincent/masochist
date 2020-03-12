@@ -19,6 +19,6 @@ This is a very healthy symbiotic relationship in which users, advertisers, and [
 
 I personally believe that [SEO](/wiki/SEO) is detrimental to users because it explicitly seeks to subvert [Google](/wiki/Google)'s goal (of locating the content that users want to find) and instead cause [Google](/wiki/Google) to return the results that the [SEO](/wiki/SEO) consultant wants them to see. If a [SEO](/wiki/SEO) consultant succeeds in increasing the page rank of content beyond its real merits, then the user is harmed because he or she doesn't get access to the best possible results.
 
-Rather than waste money on [SEO](/wiki/SEO) services, I recommend that people follow the single most important bit of [search engine optimization](/wiki/search_engine_optimization) advice: *publish worthwhile content*. If you do that, then people will come.
+Rather than waste money on [SEO](/wiki/SEO) services, I recommend that people follow the single most important bit of [search engine optimization](/wiki/search_engine_optimization) advice: _publish worthwhile content_. If you do that, then people will come.
 
 And to people considering getting into the [SEO](/wiki/SEO) business, I recommend you look into a less ethically dubious line of work; there are plenty of interesting, rewarding, financially lucrative fields in [IT](/wiki/IT) that don't have that kind of question mark hanging over them.

@@ -56,7 +56,7 @@ To run the [spec](/wiki/spec) under [ruby-debug](/wiki/ruby-debug) from the `tru
 
     rdebug spec/parser_spec.rb
 
-To set a breakpoint *just before* the failing [spec](/wiki/spec):
+To set a breakpoint _just before_ the failing [spec](/wiki/spec):
 
     b 101
 
@@ -72,7 +72,7 @@ To continue execution up to the breakpoint:
 
 ## Moving to next line
 
-This *doesn't* go into methods:
+This _doesn't_ go into methods:
 
     n
 
@@ -82,7 +82,7 @@ The full help for the `next` command is:
 
 ## Stepping into the next line
 
-This *does* go into methods:
+This _does_ go into methods:
 
     s
 

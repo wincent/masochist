@@ -18,22 +18,22 @@ These notes were made while upgrading from [Subversion](/wiki/Subversion) 1.4.3 
     # checksum should be: 85f5ec38794f4350432c32dc581f4f9f898d171e
     openssl sha1 subversion-deps-1.4.4.tar.bz2
 
-    tar xjvf subversion-1.4.4.tar.bz2 
-    tar xjvf subversion-deps-1.4.4.tar.bz2 
+    tar xjvf subversion-1.4.4.tar.bz2
+    tar xjvf subversion-deps-1.4.4.tar.bz2
 
     # ensure that Subversion uses the latest version of the Apache Portable Runtime
     wget http://ftp.udc.es/apache-dist/apr/apr-1.2.8.tar.bz2
 
     # verify checksum; should be: C5 73 F1 B3 04 69 91 A2  62 40 02 39 8B 07 8A D5
-    md5 apr-1.2.8.tar.bz2 
+    md5 apr-1.2.8.tar.bz2
 
     wget http://ftp.udc.es/apache-dist/apr/apr-util-1.2.8.tar.bz2
 
     # verify checksum; should be: B1 22 F3 5E E6 88 3A 21  6C D2 E7 D4 45 04 52 1E
-    md5 apr-util-1.2.8.tar.bz2 
+    md5 apr-util-1.2.8.tar.bz2
 
-    tar xjvf apr-1.2.8.tar.bz2 
-    tar xjvf apr-util-1.2.8.tar.bz2 
+    tar xjvf apr-1.2.8.tar.bz2
+    tar xjvf apr-util-1.2.8.tar.bz2
 
     # clean out old libraries
     sudo rm -f /usr/local/lib/libsvn*
@@ -43,13 +43,13 @@ These notes were made while upgrading from [Subversion](/wiki/Subversion) 1.4.3 
 
     # the APR build
     cd apr-1.2.8
-    ./buildconf 
+    ./buildconf
     ./configure
     make && make check
     sudo make install
     cd ../apr-util-1.2.8
     ./buildconf --with-apr=../apr-1.2.8
-    ./configure --with-apr=/usr/local/apr/bin/apr-1-config 
+    ./configure --with-apr=/usr/local/apr/bin/apr-1-config
     make
 
     # unfortunately, "make check" will fail unless you install first
@@ -114,7 +114,7 @@ I was very pleased to see that the issues with APR that I encountered last time 
     sudo make install
     cd ../apr-util-1.2.8
     ./buildconf --with-apr=../apr-1.2.8
-    ./configure --with-apr=/usr/local/apr/bin/apr-1-config 
+    ./configure --with-apr=/usr/local/apr/bin/apr-1-config
     make && make check
     sudo make install
 

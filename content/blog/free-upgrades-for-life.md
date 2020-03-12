@@ -15,15 +15,11 @@ Andrew Stone [strongly disagrees](http://www.stone.com/Philosophy):
 
 > Be just like the NON-indies - do what they do - charge for your bugs and call it an upgrade. And you still call yourself an INDY? Ok to THIN \[sic\] different but not BE different
 
-
-
-
-
 The truth is that I agree with parts of what all three developers say. Here are my thoughts on the "free upgrades for life" question:
 
 ### It's a mistake to offer free upgrades for life
 
-It's *not* going to drive you out of business; there are millions of Mac users out there after all and most of them are connected to the Internet. Even the most wildly successful piece of shareware could never hope to reach "saturation" (where there were no more users left to purchase licenses).
+It's _not_ going to drive you out of business; there are millions of Mac users out there after all and most of them are connected to the Internet. Even the most wildly successful piece of shareware could never hope to reach "saturation" (where there were no more users left to purchase licenses).
 
 But it's still a mistake because working for free doesn't pay the bills. Every free upgrade you offer costs you time, an ever-increasing bandwidth bill as your user base grows, and you have more users to support. Your costs grow exponentially but your income continues to come in linearly. You can survive offering free upgrades but you'll make more money if you charge for them. And if you make more money then be able to hire more programmers (if you're a multi-programmer shop) or spend more time on writing the software; it's a win-win situation because the extra money provides the motivation and the means to deliver better software to the customer.
 
@@ -31,7 +27,7 @@ But it's still a mistake because working for free doesn't pay the bills. Every f
 
 Nothing leaves a fouler taste in one's mouth than the when you get burnt by a developer who promises free upgrades and later changes policy and starts charging for them. Once you've made a statement on the public record like that — where it will remain forever preserved in the Google cache, or in the ˝Wayback machine" at web.archive.org, or most importantly in the minds of your customers — you must abide by it.
 
-I made this mistake when I released Synergy in 2002, promising free upgrades for life. I did that because I had no idea it would become what it has become. Since then — nearly four years now — I've been providing free upgrades at the rhythm of about one per month. I know that if I'd not had that upgrade policy that Synergy would be an even better product than it is today (it comes back to what I said above: motivation *and* means).
+I made this mistake when I released Synergy in 2002, promising free upgrades for life. I did that because I had no idea it would become what it has become. Since then — nearly four years now — I've been providing free upgrades at the rhythm of about one per month. I know that if I'd not had that upgrade policy that Synergy would be an even better product than it is today (it comes back to what I said above: motivation _and_ means).
 
 There are a small number of Mac developers who have earned places in my mental "Hall of Shame" for making promises and then breaking them, and I will never purchase a license from those companies again, nor will I recommend them to anyone else. Developers like that might rake in a bit of extra cash, but they also burn any good will that they might have built up.
 
@@ -41,7 +37,7 @@ In order to strike a balance between increased revenue (motivation and means) an
 
 -   Paid upgrades should be few and far between.
 -   Paid upgrades should be reasonably priced (not like buying the software all over again).
--   Paid upgrades should be *major* upgrades incorporating new features.
+-   Paid upgrades should be _major_ upgrades incorporating new features.
 -   You should offer a lenient grace period (if a user purchases version 2.0 a couple of weeks before 3.0 comes out he or she most likely won't be too happy at the idea of being forced to pay for the upgrade); I think that at least 3 and as many as 6 months is about right.
 -   Free upgrades should be often, but not so often as to annoy customers.
 -   Bug fixes should be free.

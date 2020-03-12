@@ -19,11 +19,7 @@ Compare these with the single threaded-paradigm:
 
 This last paradigm is probably the fastest because it avoids thread-associated overheads. It is also the easiest to implement because it does not require the developer to worry about resource contention between threads, nor is there any need to implement methods to handle callback notifications.
 
-Ironically this paradigm (the fastest) may *seem* to be the slowest because of the UI responsiveness issues. If the user sees the "spinning beachball of death" then he or she may think the program has hung (entered an infinite loop) even though the program is working away. For this reason "beachballs" should be avoided at all costs, and that's why you sometimes have to go down a multi-threaded path even though you might prefer not to.
-
-
-
-
+Ironically this paradigm (the fastest) may _seem_ to be the slowest because of the UI responsiveness issues. If the user sees the "spinning beachball of death" then he or she may think the program has hung (entered an infinite loop) even though the program is working away. For this reason "beachballs" should be avoided at all costs, and that's why you sometimes have to go down a multi-threaded path even though you might prefer not to.
 
 ### A new paradigm
 

@@ -27,7 +27,7 @@ Change your `config/database.yml` file from:
       adapter: mysql
       database: DatabaseName_production
       username: root
-      password: 
+      password:
       host: localhost
 
 To:

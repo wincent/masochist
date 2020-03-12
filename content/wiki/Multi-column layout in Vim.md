@@ -41,13 +41,13 @@ Put the tabstop back the way it was before:
 
     :set tabstop=2
 
-*Note:* the exact selection obtained by `gv` in these examples sometimes needs to be nudged up or down a line, but it is general close enough to what you want.
+_Note:_ the exact selection obtained by `gv` in these examples sometimes needs to be nudged up or down a line, but it is general close enough to what you want.
 
 # As a macro
 
 Here's the above, recording as a macro, then assigned to a mapping, with some refinements:
 
-    vnoremap <leader>zc 
+    vnoremap <leader>zc
       \:s/\v^ +//g<CR>
       \gv:s/\v  +/\r/g<CR>
       \gvj:sort<CR>

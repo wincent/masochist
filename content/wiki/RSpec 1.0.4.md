@@ -6,14 +6,14 @@ tags: rspec wiki
 
 # Changes
 
--   Fixed \#11181 behaviour\_type scoping of config.before(:each) is not working
--   added mock argument constraint matchers (anything(), boolean(), an\_instance\_of(Type)) which work with rspec or mocha
--   added mock argument constraint matchers (any\_args(), no\_args()) which only work with rspec
--   deprecated rspec's symbol mock argument constraint matchers (:any\_args, :no\_args, :anything, :boolean, :numeric, :string)
--   Added tarball of rspec\_on\_rails to the release build to support folks working behind a firewall that blocks svn access.
+-   Fixed \#11181 behaviour_type scoping of config.before(:each) is not working
+-   added mock argument constraint matchers (anything(), boolean(), an_instance_of(Type)) which work with rspec or mocha
+-   added mock argument constraint matchers (any_args(), no_args()) which only work with rspec
+-   deprecated rspec's symbol mock argument constraint matchers (:any_args, :no_args, :anything, :boolean, :numeric, :string)
+-   Added tarball of rspec_on_rails to the release build to support folks working behind a firewall that blocks svn access.
 -   Fixed \#11137 rspec incorrectly handles flash after resetting the session
 -   Fixed \#11143 Views code for ActionController::Base\#render broke between 1.0.0 and 1.0.3 on Rails Edge r6731
--   Added raise\_controller\_errors for controller examples in Spec::Rails
+-   Added raise_controller_errors for controller examples in Spec::Rails
 
 # See also
 

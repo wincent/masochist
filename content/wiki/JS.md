@@ -2,5 +2,3 @@
 redirect: [[JavaScript]]
 tags: wiki
 ---
-
-

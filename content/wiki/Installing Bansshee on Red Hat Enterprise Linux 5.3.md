@@ -17,10 +17,10 @@ $ sudo make install
 $ perl -c /usr/local/sbin/bansshee
 Can't locate Proc/Daemon.pm in @INC
 $ sudo -H cpan Proc::Daemon
-$ perl -c /usr/local/sbin/bansshee 
+$ perl -c /usr/local/sbin/bansshee
 Can't locate File/Tail.pm in @INC
 $ sudo -H cpan File::Tail
-$ perl -c /usr/local/sbin/bansshee 
+$ perl -c /usr/local/sbin/bansshee
 /usr/local/sbin/bansshee syntax OK
 ```
 

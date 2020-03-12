@@ -6,7 +6,7 @@ cache_breaker: 1
 
 Over the last year and a half at [Causes](/wiki/Causes) I've given a number of tech and lightning talks. I've just spent some time putting them online under my "work" [GitHub](/wiki/GitHub) profile, <https://github.com/ghurrell> (my other profile containing non-work projects is <https://github.com/wincent>).
 
-**Update:** *Since writing this posted I've consolidated those GitHub accounts into [one](https://github.com/wincent). The links below are therefore out of date, but the repos can all be found [in the consolidated account](https://github.com/wincent?tab=repositories).*
+**Update:** _Since writing this posted I've consolidated those GitHub accounts into [one](https://github.com/wincent). The links below are therefore out of date, but the repos can all be found [in the consolidated account](https://github.com/wincent?tab=repositories)._
 
 In roughly reverse chronological order, they are:
 

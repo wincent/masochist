@@ -7,10 +7,6 @@ Since switching to the new iMac I've been using [the Apple Mighty Mouse](http://
 
 Two problems, however...
 
-
-
-
-
 ### 1. Right clicking
 
 This is a zero-button mouse but in theory you can produce left and right clicks by pressing the appropriate side of the device. The problem is that it's fairly easy to get "false lefts" when what you actually mean to do is get a right click. Most common manifestation of this: when you right-click on an icon in the Dock hoping to get quick access to the item's Dock menu and you inadvertently end up switching apps. Switching apps is an annoying bottleneck that can rob you of precious seconds through disk-churning when you're using a [memory-starved machine](http://www.wincent.com/a/about/wincent/weblog/archives/2006/05/memory_for_the.php).

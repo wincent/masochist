@@ -2,10 +2,7 @@
 tags: ruby wiki
 ---
 
-wget http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz
-    tar zxvf rubygems-0.9.0.tgz
-    cd rubygems-0.9.0
-    sudo ruby setup.rb
+wget http://rubyforge.org/frs/download.php/11289/rubygems-0.9.0.tgz tar zxvf rubygems-0.9.0.tgz cd rubygems-0.9.0 sudo ruby setup.rb
 
 # See also
 

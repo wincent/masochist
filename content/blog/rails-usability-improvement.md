@@ -7,11 +7,7 @@ tags: blog
 
 But an otherwise nice change is marred by a useless comment which clutters the source and impedes readability:
 
-
-
-
-
-    # Don't validate when there is an :if condition and that condition is false or there is an :unless condition and that condition is true 
+    # Don't validate when there is an :if condition and that condition is false or there is an :unless condition and that condition is true
     unless (options[:if] && !evaluate_condition(options[:if], record)) || (options[:unless] && evaluate_condition(options[:unless], record))
       ...
 

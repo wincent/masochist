@@ -124,8 +124,8 @@ For more information type:
     # verify integrity of download
     openssl sha1 gnupg-1.4.7.tar.bz2
 
-    # extract 
-    tar xjvf gnupg-1.4.7.tar.bz2 
+    # extract
+    tar xjvf gnupg-1.4.7.tar.bz2
     cd gnupg-1.4.7
 
     # build

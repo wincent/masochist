@@ -9,7 +9,7 @@ Well, I did that the other day and [released Bansshee 1.0.1](/blog/bansshee-1.0.
 
 Now instead of 25,000+ break-in attempts this is what I'm seeing in my daily report:
 
-    --------------------- Bansshee (secure-log) Begin ------------------------ 
+    --------------------- Bansshee (secure-log) Begin ------------------------
 
     Failed password attempts: 15 time(s).
 
@@ -20,9 +20,9 @@ Now instead of 25,000+ break-in attempts this is what I'm seeing in my daily rep
         190.144.121.90 : 1 time(s).
         218.108.235.86 : 1 time(s).
 
-    ---------------------- Bansshee (secure-log) End ------------------------- 
+    ---------------------- Bansshee (secure-log) End -------------------------
 
-    --------------------- SSHD Begin ------------------------ 
+    --------------------- SSHD Begin ------------------------
 
     Failed logins from:
        80.33.250.28 (28.Red-80-33-250.staticIP.rima-tde.net): 2 times

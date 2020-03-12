@@ -2,5 +2,3 @@
 redirect: [[RubyGems]]
 tags: wiki
 ---
-
-

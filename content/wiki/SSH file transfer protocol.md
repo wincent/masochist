@@ -2,5 +2,3 @@
 redirect: [[SFTP]]
 tags: wiki
 ---
-
-

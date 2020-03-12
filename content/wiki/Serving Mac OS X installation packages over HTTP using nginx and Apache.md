@@ -13,7 +13,7 @@ $ curl -O -D header-dump \
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 23488  100 23488    0     0  16723      0  0:00:01  0:00:01 --:--:-- 20213
-$ cat header-dump 
+$ cat header-dump
 HTTP/1.1 200 OK
 Server: nginx/0.6.35
 Date: Sat, 29 Aug 2009 15:04:21 GMT

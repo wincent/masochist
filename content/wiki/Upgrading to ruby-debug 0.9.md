@@ -51,11 +51,11 @@ Then update the [FastRI](/wiki/FastRI) index:
 # Changelog for 0.9
 
 -   Kernel\#debugger method will start the debugger if it's not running.
--   Added Context\#stop\_reason method.
+-   Added Context\#stop_reason method.
 -   Calling a method with a block will create a new frame. This changes the behavior of 'next' command. So in order to step into a block, 'step' command must be used. That fixes [bug \#9629](/issues/9629).
--   Added the possibility to add a temporary context-specific breakpoint. Context\#breakpoint and Context\#set\_breakpoint methods are added.
+-   Added the possibility to add a temporary context-specific breakpoint. Context\#breakpoint and Context\#set_breakpoint methods are added.
 -   'cont' command now accepts a numerical parameter which implements 'Continue until line' behavior.
--   Added new Context.frame\_class method
+-   Added new Context.frame_class method
 -   Added new 'framefullpath' setting.
 -   Added new 'frameclassname' setting.
 -   All Ruby's 'eval' and require/load methods create a new frame. Fixes [bug \#9686](/issues/9686).

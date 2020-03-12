@@ -3,7 +3,7 @@ title: Mail spring cleaning
 tags: blog
 ---
 
-*In general* I never throw out any mail, apart from spam that is. I have personal mails dating back as far as 1996; prior to that I only had email at my university and I never had an archive of the very oldest messages (which probably date from 1994).
+_In general_ I never throw out any mail, apart from spam that is. I have personal mails dating back as far as 1996; prior to that I only had email at my university and I never had an archive of the very oldest messages (which probably date from 1994).
 
 Lately my homedir backups have been getting uncomfortably large because my `~/Library/Mail/` folder alone was weighing in at over 6GB.
 
@@ -21,6 +21,6 @@ Along the way some information has been lost of mangled. After rebuilding I noti
 
 Presumably the October 2000 datestamp is corresponds to one of my imports because lots of emails shared that date. The April 2000 datestamp looks to be correct one.
 
-I was pleased to see that if I replaced the string `???@???` with a valid address then the timestamp showed up correctly in Mail.app again, even without rebuilding. This is a relatively simple change to make and can be semi-automated; unfortunately only *semi*, so I won't be doing it for all my mailboxes just yet.
+I was pleased to see that if I replaced the string `???@???` with a valid address then the timestamp showed up correctly in Mail.app again, even without rebuilding. This is a relatively simple change to make and can be semi-automated; unfortunately only _semi_, so I won't be doing it for all my mailboxes just yet.
 
 **Update:** Looks like I spoke to soon. Although my test modification worked, going back and fixing and the occurrences in the mailbox didn't have any effect at all, even after rebuilding.

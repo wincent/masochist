@@ -86,24 +86,24 @@ Actual relevant changes (`svn diff -r 2075:2076 rspec/lib/autotest/rspec.rb`):
     +++ rspec/lib/autotest/rspec.rb (revision 2076)
     @@ -47,21 +47,7 @@
        end
-     
+
        def make_test_cmd(files_to_test)
     -    cmds = []
     -    full, partial = files_to_test.partition { |k,v| v.empty? }
-    -  
+    -
     -    unless full.empty? then
     -      files = full.map {|k,v| k}.flatten.join(' ')
     -      cmds << "#{ruby} -S #{@spec_command} #{add_options_if_present}#{files}"
     -    end
-    -  
+    -
     -    partial.each do |f, methods|
     -      cmds.push(*methods.map { |meth|
     -        "#{ruby} -S #{@spec_command} #{add_options_if_present} #{f}"
     -      })
     -    end
-    -  
+    -
     -    return cmds.join('; ')
     +    return "#{ruby} -S #{@spec_command} #{add_options_if_present} #{files_to_test.keys.flatten.join(' ')}"
        end
-       
+
        def add_options_if_present

@@ -9,4 +9,4 @@ But that's not what I'm writing this entry for. I'm writing this entry because l
 
 I'm hoping that over the next few days I will get past this little mountain of non-coding work and get into some pure coding.
 
-\[*Update, 24 February 2006*: spent hours yesterday trying to figure out why some of my projects weren't being properly stripped, leading to binaries between 10 and 100 times their normal size! I still don't fully understand the interaction between dead code stripping and normal symbol stripping; some target types seem very sensitive about the combination of settings.\]
+\[_Update, 24 February 2006_: spent hours yesterday trying to figure out why some of my projects weren't being properly stripped, leading to binaries between 10 and 100 times their normal size! I still don't fully understand the interaction between dead code stripping and normal symbol stripping; some target types seem very sensitive about the combination of settings.\]
