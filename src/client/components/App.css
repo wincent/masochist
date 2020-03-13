@@ -47,6 +47,10 @@ h1 a {
   width: 12px;
 }
 
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
 .prerendered img {
   max-width: 100%;
 }

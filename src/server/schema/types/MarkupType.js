@@ -79,7 +79,7 @@ function getMarkdownRenderer(baseLevel: ?number) {
       const desiredLevel = parseInt(token.tag.slice(1), 10) || 1;
       const level = Math.min(baseLevel + desiredLevel, 6);
       token.tag = `h${level}`;
-      return renderer.renderToken(tokens, index, options, env, renderer);
+      return renderer.renderToken(tokens, index, options);
     };
   }
 
@@ -88,7 +88,7 @@ function getMarkdownRenderer(baseLevel: ?number) {
     const token = tokens[index];
     const src = token.attrGet('src');
     token.attrSet('src', getAssetURL(src));
-    return renderer.renderToken(tokens, index, options, env, renderer);
+    return renderer.renderToken(tokens, index, options);
   };
 
   // Add "external" class to `<a>` tags for off-site hrefs.
@@ -101,7 +101,16 @@ function getMarkdownRenderer(baseLevel: ?number) {
     ) {
       token.attrJoin('class', 'external');
     }
-    return renderer.renderToken(tokens, index, options, env, renderer);
+    return renderer.renderToken(tokens, index, options);
+  };
+
+  // Prevent wide tables from breaking layout on small screens.
+  md.renderer.rules.table_open = (tokens, index, options, env, renderer) => {
+    return '<div class="overflow-x-auto">' + renderer.renderToken(tokens, index, options);
+  };
+
+  md.renderer.rules.table_close = (tokens, index, options, env, renderer) => {
+    return renderer.renderToken(tokens, index, options) + '</div>';
   };
 
   return md;
