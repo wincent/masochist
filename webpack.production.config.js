@@ -191,6 +191,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
             {
               loader: 'url-loader',
               options: {
+                esModule: false,
                 limit: 10000,
               },
             },
