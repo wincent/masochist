@@ -106,7 +106,10 @@ function getMarkdownRenderer(baseLevel: ?number) {
 
   // Prevent wide tables from breaking layout on small screens.
   md.renderer.rules.table_open = (tokens, index, options, env, renderer) => {
-    return '<div class="overflow-x-auto">' + renderer.renderToken(tokens, index, options);
+    return (
+      '<div class="overflow-x-auto">' +
+      renderer.renderToken(tokens, index, options)
+    );
   };
 
   md.renderer.rules.table_close = (tokens, index, options, env, renderer) => {

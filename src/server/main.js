@@ -81,10 +81,7 @@ function templateHandler(renderer, locals = {}) {
           (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.mjs),
       ),
     });
-    stream.pipe(
-      response,
-      {end: false},
-    );
+    stream.pipe(response, {end: false});
     stream.on('end', () => response.end());
   };
 }
