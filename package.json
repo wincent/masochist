@@ -76,6 +76,7 @@
     "markdown-it": "*",
     "memcached": "*",
     "mini-css-extract-plugin": "*",
+    "path-to-regexp": "^6.1.0",
     "plugin-error": "*",
     "postcss": "*",
     "postcss-loader": "*",

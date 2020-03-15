@@ -2,12 +2,11 @@
  * @flow strict-local
  */
 
-import Router from 'universal-router';
+import {pathToRegexp} from 'path-to-regexp';
 
 import routeConfig from './routeConfig';
 
 const CATCH_ALL_ROUTE = '*';
-const {pathToRegexp} = Router;
 
 let routeMap = null;
 
