@@ -12,9 +12,7 @@
   },
   "scripts": {
     "build": "gulp build",
-    "check": "flow",
     "coverage": "jest --coverage --forceExit",
-    "flow": "flow",
     "gulp": "gulp",
     "lint": "eslint src",
     "pretty": "babel-node scripts/pretty.js",
@@ -66,8 +64,6 @@
     "express-graphql": "*",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "fancy-log": "*",
-    "flow-bin": "*",
-    "flow-typed": "*",
     "fs-extra": "*",
     "glob": "*",
     "graphql": "*",

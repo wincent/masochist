@@ -127,7 +127,6 @@ let fix;
 let js;
 let lint;
 let test;
-let typecheck;
 let watch;
 
 if (process.env.NODE_ENV !== 'production') {
@@ -178,13 +177,9 @@ if (process.env.NODE_ENV !== 'production') {
 
   test = exec('jest', ['--color', '--forceExit']);
 
-  typecheck = exec('flow', ['check', '--color=always', 'src']);
-
-  gulp.task('js', gulp.parallel(babel, lint, test, typecheck));
+  gulp.task('js', gulp.parallel(babel, lint, test));
 } else {
   gulp.task('default', build);
 }
 
-export const flow = typecheck;
-
-export {fix, js, lint, test, typecheck, watch};
+export {fix, js, lint, test, watch};
