@@ -59,8 +59,11 @@ export default buildRoute(
       baseHeadingLevel: 2,
       id,
     }),
-    render: ({node}, {id}) => {
-      if (node) {
+    render: ({node}, {id}, {prefetch}) => {
+      if (prefetch) {
+        // Dummy render result to avoid potential actual redirect.
+        return <span></span>;
+      } else if (node) {
         const {redirect} = node;
         if (redirect) {
           if (redirect.match(/^https?:/)) {
@@ -74,8 +77,9 @@ export default buildRoute(
             // other fields will have been appropriately "dereferenced" by
             // the GraphQL schema.
           }
+
+          return <Article data={node} />;
         }
-        return <Article data={node} />;
       } else {
         throw makeNotFound(
           `No article found with id: ${id}`,

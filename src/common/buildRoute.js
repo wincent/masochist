@@ -48,7 +48,10 @@ export default function buildRoute(query, config) {
         variables,
       };
       return {
-        component: withContext({relay}, config.render(data, params)),
+        component: withContext(
+          {relay},
+          config.render(data, params, {prefetch}),
+        ),
         description,
         title,
       };
