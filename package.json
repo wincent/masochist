@@ -104,6 +104,9 @@
     "sinon": "*",
     "webpack-dev-server": "*"
   },
+  "resolutions": {
+    "path-to-regexp": "6.1.0"
+  },
   "jest": {
     "coverageDirectory": "coverage",
     "setupFilesAfterEnv": [
