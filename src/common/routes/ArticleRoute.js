@@ -77,9 +77,8 @@ export default buildRoute(
             // other fields will have been appropriately "dereferenced" by
             // the GraphQL schema.
           }
-
-          return <Article data={node} />;
         }
+        return <Article data={node} />;
       } else {
         throw makeNotFound(
           `No article found with id: ${id}`,
