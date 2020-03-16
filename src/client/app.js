@@ -29,6 +29,7 @@ import './skeleton.css';
 
 import {claimRefetchToken} from './RefetchTokenManager';
 import InternalRedirectError from '../common/InternalRedirectError';
+import LRUCache from '../common/LRUCache';
 import NotFoundError from '../common/NotFoundError';
 import RenderTextError from '../common/RenderTextError';
 import createRouter from '../common/createRouter';
@@ -50,33 +51,40 @@ let render = function(element, container) {
 };
 
 // Simplest possible request-response cache.
-const cache = new Map();
 const CACHE_SIZE = 20;
+const cache = new LRUCache(CACHE_SIZE);
 
 const environment = new Environment({
   network: Network.create((operation, variables) => {
     const body = getRequestBody(operation, variables);
-    if (cache.has(body)) {
-      return Promise.resolve(cache.get(body));
+
+    if (!cache.has(body)) {
+      cache.set(
+        body,
+        fetch('/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body,
+        })
+          .then(response => {
+            const json = response.json();
+
+            if (response.ok) {
+              return json;
+            } else {
+              throw new Error('Bad response');
+            }
+          })
+          .catch(error => {
+            console.error(error);
+            cache.delete(body);
+          }),
+      );
     }
-    return fetch('/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body,
-    }).then(response => {
-      const json = response.json();
-      if (response.ok) {
-        if (cache.size > CACHE_SIZE) {
-          Array.from(cache.keys())
-            .slice(CACHE_SIZE)
-            .forEach(key => cache.delete(key));
-        }
-        cache.set(body, json);
-      }
-      return json;
-    });
+
+    return cache.get(body);
   }),
   store: new Store(new RecordSource()),
 });

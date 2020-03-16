@@ -18,6 +18,10 @@ export default class LRUCache<TKey, TValue> {
     this._storage = new Map();
   }
 
+  delete(key: TKey): boolean {
+    return this._storage.delete(key);
+  }
+
   has(key: TKey): boolean {
     return this._storage.has(key);
   }
