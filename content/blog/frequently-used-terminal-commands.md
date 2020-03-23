@@ -179,3 +179,39 @@ Having tweaked my shell settings I can now report a more illustrative example. T
 250 o # alias for `git log --oneline` with a few other options added
 222 man
 ```
+
+# Update: March 2020
+
+I have been running with `NO_HIST_IGNORE_ALL_DUPS`, `NO_HIST_IGNORE_DUPS` and `HIST_FIND_NO_DUPS` for a while so have captured some more "exhaustive" data (ie. includes duplicates, so really counts all usage):
+
+```
+# Personal machine
+12919 git
+ 5951 yarn      # mostly running scripts in projects
+ 2583 vim
+ 1782 cd
+ 1650 exit      # `exit` now beats `less`
+ 1094 less      # (last time, `less` beat `exit`)
+  602 ls
+  587 ll        # alias for `ls -laF`
+  585 o         # alias for `git log --oneline`
+  548 t         # "tmux" wrapper, knocking "man" out of 10th place
+
+
+# Work machine
+43359 git       # new job, so no more `hg`
+ 8015 yarn      # mostly running scripts in projects
+ 6239 cd
+ 5655 portool   # tool that wraps up a bunch of common work operations
+ 4314 exit
+ 3657 vim       # Vim sessions tend to be long-lived
+ 2888 less
+ 1927 npm
+ 1721 o         # alias for `git log --oneline`
+ 1395 ls
+```
+
+Observations:
+
+- Clearly doing more on work machine than personal machine.
+- I'm going to get rid of `NO_HIST_IGNORE_DUPS` because the consecutive duplicates are driving me up the wall when I hit "up" in the terminal (`HIST_FIND_NO_DUPS` stops you from seeing duplicates when you *search*, but just tapping "up" is not considered a search), so that will affect the numbers somewhat next time around.
