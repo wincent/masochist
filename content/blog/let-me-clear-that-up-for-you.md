@@ -31,11 +31,11 @@ You should be using Adobe's [Source Code Pro](http://adobe-fonts.github.io/sourc
 
 ## Color scheme
 
-You should use the "Dark Ocean" scheme from [Base16](http://chriskempson.github.com/base16). Under extremely bright ambient conditions, you may switch to "Light Ocean" or "Light Grayscale". Other color schemes are factual errors and should be erased.
+You should use the "Default Dark" scheme from [Base16](http://chriskempson.com/projects/base16/). Under extremely bright ambient conditions, you may switch to "Light Ocean" or "Light Grayscale". Other color schemes are factual errors and should be erased.
 
 ## Operating systems
 
-OS X is the best desktop operating system. It is permitted to install Windows only for playing games. You may install Linux only if your employer forces you to use a non-Apple laptop. (Oh, that reminds me: it is a logical fallacy to buy a non-Apple laptop.)
+macOS is the best desktop operating system. It is permitted to install Windows only for playing games. You may install Linux only if your employer forces you to use a non-Apple laptop. (Oh, that reminds me: it is a logical fallacy to buy a non-Apple laptop.)
 
 For mobile, [iOS](http://www.apple.com/ios/) is the only logical choice (all other choices are illogical, especially Android). Note the corollary here, which is that [the iPhone](http://www.apple.com/iphone/) itself is the only logical choice of mobile phone.
 
@@ -59,9 +59,9 @@ You should be using [Ansible](http://docs.ansible.com/)`*`. Using Puppet or Chef
 
 ## Calendar, Mail and "Todos"
 
-After an exhaustive search, I have established that [Fantastical](https://flexibits.com/fantastical) is the best calendar, [MailMate](https://freron.com/) is the best mail client for work purposes (for other email, use [Google Inbox](https://www.google.com/inbox/) on iOS and [Gmail](https://mail.google.com/) inside [Chrome](https://www.google.com/chrome/browser/desktop/) on the desktop), and [Wunderlist](http://wunderlist.com/) is the best todo list.
+After an exhaustive search, I have established that [Fantastical](https://flexibits.com/fantastical) is the best calendar, the [Gmail iOS app](https://apps.apple.com/us/app/gmail-email-by-google/id422689480) and the [Gmail website](https://mail.google.com/) inside [Firefox](https://www.mozilla.org/firefox/) on the desktop) are the only way to read and send email, and [Things](https://culturedcode.com/things/) is the best todo list.
 
-Beware of your choices here: choosing to use Microsoft Outlook is as bad as using child labor to produce internet-enabled home thermostats, and picking any email provider other than Google is morally equivalent to destroying the Amazonian rain forest.
+Beware of your choices here: choosing to use Microsoft Outlook is as bad as using child labor to produce internet-enabled home thermostats, and picking any email provider other than Google is morally equivalent to destroying the Amazonian rain forest. (To be honest, I wished I'd chosen something else, like [Fastmail](https://www.fastmail.com/), but it's hard to extricate oneself from Google's loving embrace. [Chrome](https://www.google.com/chrome/browser/desktop/) is actually the best web browser, but I'm recommending Firefox instead as a first baby step away.)
 
 ## Backup solution
 
@@ -75,7 +75,7 @@ You should be using [Colemak](/tags/colemak). Any other layout is incorrect, wit
 
 ### Customization
 
-[Karabiner](/wiki/Karabiner) is the only right way to configure your keyboard. Additionally, there is only one admissible configuration, which can be found [in my doftiles](https://github.com/wincent/wincent/tree/master/roles/keyboard).
+[Karabiner](/wiki/Karabiner) is the only right way to configure your keyboard. Additionally, there is only one admissible configuration, which can be found [in my dotfiles](https://github.com/wincent/wincent/blob/master/roles/dotfiles/support/karabiner.js).
 
 ### Hardware
 
