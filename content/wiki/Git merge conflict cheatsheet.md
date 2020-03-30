@@ -11,13 +11,13 @@ Summarizing "[Understanding Git conflict markers](/wiki/Understanding_Git_confli
 
 ## Normal merges
 
--   Top shows local changes
--   Bottom shows upstream changes
+-   Top shows local changes (AKA "ours")
+-   Bottom shows upstream changes (AKA "theirs")
 
 ## Rebases
 
--   Top shows upstream changes
--   Bottom shows "local" (to topic branch) changes
+-   Top shows upstream changes (AKA "ours")
+-   Bottom shows "local" (to topic branch) changes (AKA "theirs")
 
 ## Stashes
 
@@ -39,6 +39,20 @@ Conflict markers look like this:
 -   stage 3: MERGE_HEAD; see with `git show :3:file`
 
 `git ls-files -u` shows the index metadata (paths, blob IDs) for all stages of unmerged paths.
+
+# Scenario: picking one side of the merge
+
+This can be useful when dealing with conflicts due to things like formatting changes. Say you have a topic branch and run a source formatter on it. You rebase that topic branch onto `master` and get conflicts because somebody changed the code that you formatted. The easiest solution here is not to solve the merge conflict by hand, but rather take the `master` changes and then re-run the source formatting operation.
+
+```sh
+git checkout --ours -- path/to/conflicting-file
+sh format-source.sh
+```
+
+Again, note that during rebasing the "ours"/"theirs" distinction is reversed:
+
+- During rebase: "ours" is the upstream branch, "theirs" is the topic branch.
+- During a normal merge: "ours" is the current branch, "theirs" is the other branch being merged in.
 
 # Scenario: `git stash pop`
 
