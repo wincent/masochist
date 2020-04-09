@@ -52,13 +52,17 @@ Has some killer features, like after mapping the Caps Lock key to serve as a Con
 
 For more details about this and other super useful settings, see the "[Karabiner](/wiki/Karabiner)" article.
 
-## [Skitch](/wiki/Skitch)
+## CleanShot
 
--   <http://skitch.com/>
+-   [CleanShot](https://getcleanshot.com/)
 
-The quickest and easiest way to not only take screenshots, but annotate them and share them. It also has some nice frills, like history, and not spewing temporary files all over your desktop (like Mac OS X's built-in screenshot capability does).
+I used to recommend [Skitch](http://skitch.com/) as:
 
-This is free but not [open source](/wiki/open_source). It hooks in to Evernote.
+> The quickest and easiest way to not only take screenshots, but annotate them and share them. It also has some nice frills, like history, and not spewing temporary files all over your desktop (like Mac OS X's built-in screenshot capability does).
+
+However, the company that made Skitch was [acquired by Evernote in 2011](https://en.wikipedia.org/wiki/Evernote#Skitch), and I never fully trusted their cloud integration given their [history](https://en.wikipedia.org/wiki/Evernote#Incidents).
+
+CleanShot carries none of that baggage, has a delightful UX, and if you need history synced across multiple machines, it is easy enough to save your screenshots to a shared folder.
 
 ## [VLC](/wiki/VLC)
 
