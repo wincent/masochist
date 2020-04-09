@@ -37,7 +37,7 @@ I would need (or strongly want) to find workable replacements for everything on 
 -   **Homebrew:** Might miss the convenience here, but can get by without it, I think; as I haven't chosen a distro yet, not clear how good I can expect the native package management to be.
 -   **Isolator:** No idea.
 -   **iTerm 2:** Will have no trouble finding a performant replacement, but there may be some niche features that I miss.
--   **~Skitch~ CleanShot:** Oh well, was nice knowing you. Will just have to settle for whatever is out there.
+-   **CleanShot:** Oh well, was nice knowing you. Will just have to settle for whatever is out there.
 -   **OmniDiskSweeper:** No idea, but I expect there are viable alternatives out there.
 -   **1Password:** Will be stuck with web view for foreseeable future.
 -   **Alfred:** Will miss the snippets support and the auto-text expansion. There is a project called Albert, but I suspect it is missing a bunch of features.
