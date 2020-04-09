@@ -37,7 +37,7 @@ I would need (or strongly want) to find workable replacements for everything on 
 -   **Homebrew:** Might miss the convenience here, but can get by without it, I think; as I haven't chosen a distro yet, not clear how good I can expect the native package management to be.
 -   **Isolator:** No idea.
 -   **iTerm 2:** Will have no trouble finding a performant replacement, but there may be some niche features that I miss.
--   **Skitch:** Oh well, was nice knowing you. Will just have to settle for whatever is out there.
+-   **~Skitch~ CleanShot:** Oh well, was nice knowing you. Will just have to settle for whatever is out there.
 -   **OmniDiskSweeper:** No idea, but I expect there are viable alternatives out there.
 -   **1Password:** Will be stuck with web view for foreseeable future.
 -   **Alfred:** Will miss the snippets support and the auto-text expansion. There is a project called Albert, but I suspect it is missing a bunch of features.
@@ -53,12 +53,13 @@ Other apps that I haven't listed on that page but which I would miss:
 
 -   **Screenflow**
 -   **Fantastical**
--   **Dropbox:** Not sure how good the integration on Linux is, [but it does exist](https://www.dropbox.com/install-linux).
+-   **Sync:** Seems that only [web-based access is available for now](https://www.sync.com/help/general-limits-when-using-sync/#glinux).
 -   **KeyCastr**
 -   **Marked 2**
 -   **Monodraw**
 -   **Photos:** Yes, this sucks compared to Aperture, at least in terms of feature set, but I really can't imagine anything on Linux being as fast and robust. Note there isn't even a Google Photos client for Linux at this time.
--   **Todoist:** There doesn't seem to be an official client for Linux (although there are third-party ones: [example](https://github.com/kamhix/todoist-linux)); maybe stuck with web.
+-   **Capture One 12:** [No Linux client](https://support.captureone.com/hc/en-us/articles/360002902958-Do-you-have-Capture-One-for-Linux-).
+-   **Things:** Would have to find an alternative
 -   **Xcode:** Ha ha, just joking.
 
 Losing some of these would hurt but be livable, but some of the others would be really, really big losses. This is why in that tweet that I linked to above, I put my chances of switching at "approaching 50%".
