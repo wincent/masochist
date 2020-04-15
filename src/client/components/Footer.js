@@ -70,7 +70,7 @@ export default class Footer extends React.Component<{}> {
             <div className="four columns">
               <h6>Colophon</h6>
               <p>
-                {'Crafted lovingly by '}
+                {'Made by '}
                 <a href="mailto:greg@hurrell.net">Greg Hurrell</a>
                 {' using '}
                 <a href="https://facebook.github.io/react/">React</a>
