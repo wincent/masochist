@@ -10,14 +10,20 @@ import Tags from './Tags';
 import Metadata from './Metadata';
 import When from './When';
 
+import inBrowser from '../../common/inBrowser';
+
 import type {Post as PostData} from './__generated__/Post.graphql';
+
+if (inBrowser) {
+  require('./Post.css');
+}
 
 class Post extends React.Component<{data: PostData}> {
   render() {
     const post = this.props.data;
     return (
       // post.url encode?
-      <article>
+      <article className="readability">
         <h1>
           <Link to={post.url}>{post.title ?? 'Untitled'}</Link>
         </h1>

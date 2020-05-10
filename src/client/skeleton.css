@@ -229,6 +229,7 @@ td:last-child {
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 button,
 .button {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin-bottom: 1rem; }
 input {
   margin-bottom: 1.5rem; }

@@ -19,6 +19,8 @@ html {
 
 .app-content {
   flex: 1;
+  font-family: Georgia, Palatino, serif;
+  font-size: 2rem;
 }
 
 article,
