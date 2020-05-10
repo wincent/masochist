@@ -33,7 +33,7 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 
 - *Italics*
 - **Bold**
-- ~Strikethrough~
+- ~~Strikethrough~~
 
 # Blocks
 
