@@ -206,6 +206,7 @@ code {
   border-radius: 4px; }
 pre > code {
   display: block;
+  overflow: auto;
   padding: 1rem 1.5rem;
   white-space: pre; }
 
