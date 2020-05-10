@@ -212,6 +212,9 @@ pre > code {
 
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+table {
+  font-size: 1.7rem;
+}
 th,
 td {
   padding: 12px 15px;
