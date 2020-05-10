@@ -1,6 +1,7 @@
 .metadata {
   color: #bbb;
   font-style: italic;
+  margin-bottom: 1rem;
 }
 
 .metadata > *:after {

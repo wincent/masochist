@@ -5,6 +5,7 @@
 import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import Link from './Link';
+import Metadata from './Metadata';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
@@ -20,7 +21,9 @@ class Snippet extends React.Component<{data: SnippetData}> {
         <h1>
           <Link to={snippet.url}>{snippet.title ?? 'Untitled'}</Link>
         </h1>
-        <When data={snippet} />
+        <Metadata>
+          <When data={snippet} />
+        </Metadata>
         <div>
           <TrustedPrerenderedMarkup html={snippet.body.html} />
         </div>

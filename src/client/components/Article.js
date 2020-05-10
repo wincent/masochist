@@ -7,6 +7,7 @@ import React from 'react';
 import {createFragmentContainer, graphql} from 'react-relay';
 import inBrowser from '../../common/inBrowser';
 import Link from './Link';
+import Metadata from './Metadata';
 import TrustedPrerenderedMarkup from './TrustedPrerenderedMarkup';
 import Tags from './Tags';
 import When from './When';
@@ -40,7 +41,9 @@ class Article extends React.Component<{data: ArticleData}> {
         {article.redirect ? (
           <p className="redirect-info">Redirected from {article.title}</p>
         ) : null}
-        <When data={article} />
+        <Metadata>
+          <When data={article} />
+        </Metadata>
         <div>
           <TrustedPrerenderedMarkup html={article.body.html} />
         </div>
