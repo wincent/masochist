@@ -7,19 +7,19 @@ This is a sample article show-casing how different kinds of Markdown syntax get 
 
 # Heading 1
 
-**Note**: Because this is a wiki article, it gets rendered as an `<h3>` instead of an `<h1>`. An actual example of an `<h1>` can be seen above in the title of this article.
+**Note**: Because this is a wiki article, it gets rendered as an `<h2>` instead of an `<h1>`. An actual example of an `<h1>` can be seen above in the title of this article.
 
 ## Heading 2
 
-**Note**: Because this is a wiki article, it gets rendered as an `<h4>` instead of an `<h2>`.
+**Note**: Because this is a wiki article, it gets rendered as an `<h3>` instead of an `<h2>`.
 
 ### Heading 3
 
-**Note**: Because this is a wiki article, it gets rendered as an `<h5>` instead of an `<h3>`.
+**Note**: Because this is a wiki article, it gets rendered as an `<h4>` instead of an `<h3>`.
 
 #### Heading 4
 
-**Note**: Because this is a wiki article, it gets rendered as an `<h6>` instead of an `<h4>`.
+**Note**: Because this is a wiki article, it gets rendered as an `<h5>` instead of an `<h4>`.
 
 ##### Heading 5
 
