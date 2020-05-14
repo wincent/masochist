@@ -20,7 +20,7 @@ export default buildRoute(
   `,
   {
     variables: {
-      baseHeadingLevel: 2, // TODO: check this
+      baseHeadingLevel: 1,
       count: PostsIndex.PAGE_SIZE,
       cursor: null,
     },

@@ -56,7 +56,7 @@ export default buildRoute(
   `,
   {
     variables: ({id}) => ({
-      baseHeadingLevel: 2,
+      baseHeadingLevel: 1,
       id,
     }),
     render: ({node}, {id}, {prefetch}) => {

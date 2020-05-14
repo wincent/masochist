@@ -20,7 +20,7 @@ export default buildRoute(
   `,
   {
     variables: {
-      baseHeadingLevel: 2,
+      baseHeadingLevel: 1,
       count: SnippetsIndex.PAGE_SIZE,
       cursor: null,
     },
