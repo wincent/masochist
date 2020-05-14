@@ -41,7 +41,7 @@ export default function renderIndex(locals: {
         <title>${formatTitle(title)}</title>
         <meta property="og:title" content="${title}">
         <meta property="og:type" content="article">
-        <meta property="og:image" content="https://wincent.com/assets/static/logo.png">
+        <meta property="og:image" content="https://wincent.com/assets/static/wincent.jpg">
         ${
           description
             ? template`<meta property="og:description" content="${description}">`
