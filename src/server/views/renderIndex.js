@@ -40,7 +40,11 @@ export default function renderIndex(locals: {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>${formatTitle(title)}</title>
         <meta property="og:title" content="${title}">
-        <meta property="og:type" content="article">
+        ${
+          description
+            ? template`<meta property="og:type" content="article">`
+            : template`<meta property="og:type" content="website">`
+        }
         <meta property="og:image" content="https://wincent.com/assets/static/wincent.jpg">
         ${
           description
