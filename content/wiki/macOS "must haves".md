@@ -1,5 +1,6 @@
 ---
 tags: macos wiki
+title: macOS "must haves"
 ---
 
 This is a list of software which I consider to be pretty much a "must have" on any Mac I own. I'm not mentioning here command-line apps like [Git](/wiki/Git), [tmux](/wiki/tmux) and [Vim](/wiki/Vim) — which I also consider to be essential — but am instead confining myself to [GUI](/wiki/GUI) apps only.
@@ -44,11 +45,11 @@ Makes the frontmost application stand out and the others fade into the backgroun
 
 More features than you need, but I'll bet it also has the ones you do need and can't get anywhere else. The sole gripe: it's slower than [Apple's](/wiki/Apple%27s) own [Terminal](/wiki/Terminal).
 
-## [Karabiner](/wiki/Karabiner) (formerly [KeyRemap4MacBook](/wiki/KeyRemap4MacBook))
+## [Karabiner-Elements](https://karabiner-elements.pqrs.org/) (formerly [Karabiner](/wiki/Karabiner), itself formerly [KeyRemap4MacBook](/wiki/KeyRemap4MacBook))
 
--   <https://pqrs.org/osx/karabiner/> (old site: <https://pqrs.org/macosx/keyremap4macbook/index.html.en>)
+-   <https://karabiner-elements.pqrs.org/>
 
-Has some killer features, like after mapping the Caps Lock key to serve as a Control key (using the standard OS X System Preferences), you can use Karabiner to change its behavior: pressing and holding Caps Lock in combination with another key makes it serve as a Control key, but pressing and releasing it immediately serves as an Escape key (idea from [this article](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/)).
+Has some killer features, like after mapping the Caps Lock key to serve as a Control key (using the standard OS X System Preferences), you can use Karabiner-Elements to change its behavior: pressing and holding Caps Lock in combination with another key makes it serve as a Control key, but pressing and releasing it immediately serves as an Escape key (idea from [this article](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/)).
 
 For more details about this and other super useful settings, see the "[Karabiner](/wiki/Karabiner)" article.
 
