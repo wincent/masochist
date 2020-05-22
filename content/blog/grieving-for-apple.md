@@ -4,7 +4,7 @@ tags: blog apple
 title: Grieving for Apple
 ---
 
-At the risk of sounding melodramatic, it's becoming increasingly obvious that the Apple I once loved is moribund, on the brink of becoming a thriving, trillion-dollar parody of its former self, even as its soul leaves its body and, as I write these words, drifts slowly upwards, looking down on itself from above and wondering what the hell happened.
+At the risk of sounding melodramatic, it's becoming increasingly obvious that the Apple I once loved is moribund, on the brink of becoming a thriving, trillion-dollar parody of its former self, even as its soul leaves its body and drifts slowly upwards, looking down on itself from above and wondering what the hell happened.
 
 I've been an Apple user for my entire adult life, but I don't know how much longer that's going to be the case.
 
