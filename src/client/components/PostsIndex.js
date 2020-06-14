@@ -111,7 +111,7 @@ const PostsIndexContainer = createPaginationContainer(
     },
     getVariables(props, {count, cursor}, fragmentVariables) {
       return {
-        baseHeadingLevel: 2,
+        baseHeadingLevel: 1,
         count,
         cursor,
       };
