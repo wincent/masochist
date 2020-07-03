@@ -111,6 +111,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
                   [
                     '@babel/preset-env',
                     {
+                      corejs: 2,
                       debug: false,
                       targets,
                       useBuiltIns: 'entry',
@@ -152,6 +153,7 @@ module.exports = BUILDS.map(({name, filename, targets, terserOptions}) => {
                   [
                     '@babel/preset-env',
                     {
+                      corejs: 2,
                       debug: false,
                       targets,
                       useBuiltIns: 'entry',
