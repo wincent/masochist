@@ -14,7 +14,7 @@ import fs from 'fs';
 import path from 'path';
 import {createMemoryHistory} from 'history';
 import React from 'react';
-import {renderToStaticNodeStream} from 'react-dom/server';
+import {renderToNodeStream} from 'react-dom/server';
 import {promisify} from 'util';
 
 import {
@@ -136,7 +136,7 @@ appRoutes.forEach(route => {
         .then(({component, description, title}) => {
           return {
             description,
-            pageContent: renderToStaticNodeStream(
+            pageContent: renderToNodeStream(
               <App router={router}>{component}</App>,
             ),
             title,
@@ -156,7 +156,7 @@ appRoutes.forEach(route => {
           const code = error instanceof NotFoundError ? 404 : 500;
           response.status(code);
           return {
-            pageContent: renderToStaticNodeStream(
+            pageContent: renderToNodeStream(
               <App router={router}>
                 <HTTPError code={code}>{error.component}</HTTPError>
               </App>,
@@ -264,7 +264,7 @@ function errorPage(code, message, request, response) {
         initialIndex: 0,
       });
       const router = createRouter(history);
-      const pageContent = renderToStaticNodeStream(
+      const pageContent = renderToNodeStream(
         <App router={router}>
           <HTTPError code={code} />
         </App>,
