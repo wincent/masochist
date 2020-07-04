@@ -10,6 +10,7 @@ export default function renderIndex(locals: {
   alternate: ?string,
   cjs: string,
   cache: string,
+  context: string,
   canonical: Promise<?string>,
   description: ?string,
   home: ?string,
@@ -23,6 +24,7 @@ export default function renderIndex(locals: {
     cjs,
     cache,
     canonical,
+    context,
     description,
     home,
     mjs,
@@ -72,7 +74,10 @@ export default function renderIndex(locals: {
       </head>
       <body>
         <div id="relay-root">${pageContent}</div>
-        <script>var MasochistCache = ${raw(cache)};</script>
+        <script>
+          var MasochistCache = ${raw(cache)};
+          var MasochistContext = ${raw(context)};
+        </script>
         <script type="module" src="${mjs}" /></script>
         <script nomodule src="${cjs}" /></script>
   `;

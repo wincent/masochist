@@ -25,6 +25,6 @@ export default function renderError(locals: {
         <title>${title}</title>
       </head>
       <body>
-        <div id="root">${pageContent}</div>
+        <div id="relay-root">${pageContent}</div>
   `;
 }

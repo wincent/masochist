@@ -2,6 +2,7 @@
  * @flow strict
  */
 
+import PropTypes from 'prop-types';
 import React from 'react';
 import inBrowser from '../../common/inBrowser';
 import relativizeDate from '../relativizeDate';
@@ -16,6 +17,10 @@ type State = TimeInfo;
 
 export default class Time extends React.Component<Props, State> {
   _updateTimer: ?TimeoutID;
+
+  static contextTypes = {
+    acceptsLanguages: PropTypes.arrayOf(PropTypes.string),
+  };
 
   _clearTimer = () => {
     if (this._updateTimer) {
@@ -55,7 +60,10 @@ export default class Time extends React.Component<Props, State> {
   render() {
     const {date, humanReadable} = this.state;
     return (
-      <time title={date.toLocaleString()} dateTime={date}>
+      <time
+        title={date.toLocaleString(this.context.acceptsLanguages[0])}
+        dateTime={date}
+      >
         {humanReadable}
       </time>
     );

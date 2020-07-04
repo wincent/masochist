@@ -69,9 +69,11 @@ const getStyles = async function() {
 
 function templateHandler(renderer, locals = {}) {
   return (request, response) => {
+    const acceptsLanguages = request.acceptsLanguages();
     response.set('Content-Type', 'text/html');
     const stream = renderer({
       ...locals,
+      context: JSON.stringify({acceptsLanguages}),
       cjs: getAssetURL(
         '/static/' +
           (__DEV__ ? 'bundle.js' : require('../webpack-assets').main.js),
@@ -126,6 +128,7 @@ appRoutes.forEach(route => {
       environment,
       fetchQuery: fetchQuery.bind(null, environment),
     };
+    const acceptsLanguages = request.acceptsLanguages();
     const router = createRouter(history, api);
 
     function resolve(location) {
@@ -137,7 +140,9 @@ appRoutes.forEach(route => {
           return {
             description,
             pageContent: renderToNodeStream(
-              <App router={router}>{component}</App>,
+              <App acceptsLanguages={acceptsLanguages} router={router}>
+                {component}
+              </App>,
             ),
             title,
           };
@@ -157,7 +162,7 @@ appRoutes.forEach(route => {
           response.status(code);
           return {
             pageContent: renderToNodeStream(
-              <App router={router}>
+              <App acceptsLanguages={acceptsLanguages} router={router}>
                 <HTTPError code={code}>{error.component}</HTTPError>
               </App>,
             ),
@@ -263,9 +268,10 @@ function errorPage(code, message, request, response) {
         initialEntries: [request.originalUrl],
         initialIndex: 0,
       });
+      const acceptsLanguages = request.acceptsLanguages();
       const router = createRouter(history);
       const pageContent = renderToNodeStream(
-        <App router={router}>
+        <App acceptsLanguages={acceptsLanguages} router={router}>
           <HTTPError code={code} />
         </App>,
       );

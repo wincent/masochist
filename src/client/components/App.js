@@ -17,17 +17,20 @@ if (inBrowser) {
 
 type Props = {
   children: React.Node,
+  acceptsLanguages: Array<string>,
   router: $FlowFixMe,
   showProgress?: boolean,
 };
 
 export default class App extends React.Component<Props> {
   static childContextTypes = {
+    acceptsLanguages: PropTypes.arrayOf(PropTypes.string),
     router: PropTypes.object,
   };
 
   getChildContext() {
     return {
+      acceptsLanguages: this.props.acceptsLanguages,
       router: this.props.router,
     };
   }

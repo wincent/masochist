@@ -166,6 +166,8 @@ resolve(history.location);
 let cachedComponent;
 
 function resolve(location, variables) {
+  const {acceptsLanguages} = window.MasochistContext;
+
   if (window.MasochistCache) {
     // First time here, and we've come from server rendering.
     Object.entries(window.MasochistCache).forEach(([key, value]) => {
@@ -176,7 +178,11 @@ function resolve(location, variables) {
   } else {
     // Not first time here, so showing progress.
     render(
-      <App router={router} showProgress={true}>
+      <App
+        acceptsLanguages={acceptsLanguages}
+        router={router}
+        showProgress={true}
+      >
         {cachedComponent}
       </App>,
       root,
@@ -190,7 +196,12 @@ function resolve(location, variables) {
     })
     .then(({component}) => {
       cachedComponent = component;
-      render(<App router={router}>{component}</App>, root);
+      render(
+        <App acceptsLanguages={acceptsLanguages} router={router}>
+          {component}
+        </App>,
+        root,
+      );
     })
     .catch(error => {
       if (error instanceof InternalRedirectError) {
@@ -201,7 +212,7 @@ function resolve(location, variables) {
       }
       const code = error instanceof NotFoundError ? 404 : 500;
       render(
-        <App router={router}>
+        <App acceptsLanguages={acceptsLanguages} router={router}>
           <HTTPError code={code}>{error.component}</HTTPError>
         </App>,
         root,
