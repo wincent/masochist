@@ -83,11 +83,15 @@ function getMarkdownRenderer(baseLevel: ?number) {
     };
   }
 
-  // CDN-ize "src" attribute of `<img>` tags.
+  // 1. CDN-ize "src" attribute of `<img>` tags.
+  // 2. Mark images as: loading="lazy"
+  //
+  //    @see https://web.dev/native-lazy-loading/
   md.renderer.rules.image = (tokens, index, options, env, renderer) => {
     const token = tokens[index];
     const src = token.attrGet('src');
     token.attrSet('src', getAssetURL(src));
+    token.attrSet('loading', 'lazy');
     return renderer.renderToken(tokens, index, options);
   };
 
