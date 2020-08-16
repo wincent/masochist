@@ -97,6 +97,21 @@ test('lexing float values', () => {
   expect([...lex('-0.10E+2')]).toEqual([
     {contents: '-0.10E+2', index: 0, name: 'FLOAT_VALUE'},
   ]);
+
+  // TODO: these are all supposed to fail now
+  // https://github.com/graphql/graphql-spec/pull/601#issuecomment-518954455
+  expect([...lex('1.23f')]).toEqual([
+    {contents: '1.23', index: 0, name: 'FLOAT_VALUE'},
+    {contents: 'f', index: 4, name: 'NAME'},
+  ]);
+
+  expect([...lex('1.234_5')]).toEqual([
+    {contents: '1.234', index: 0, name: 'FLOAT_VALUE'},
+    {contents: '_5', index: 5, name: 'NAME'},
+  ]);
+
+  // This one was always supposed to be an error.
+  expect(() => [...lex('1.2ß')]).toThrowError('Failed to consume all input');
 });
 
 test('lexing integer values', () => {
@@ -113,6 +128,28 @@ test('lexing integer values', () => {
   expect([...lex('-200')]).toEqual([
     {contents: '-200', index: 0, name: 'INT_VALUE'},
   ]);
+
+  // TODO: these are all supposed to fail now
+  // https://github.com/graphql/graphql-spec/pull/601#issuecomment-518954455
+  expect([...lex('0xF1')]).toEqual([
+    {contents: '0', index: 0, name: 'INT_VALUE'},
+    {contents: 'xF1', index: 1, name: 'NAME'},
+  ]);
+  expect([...lex('0b10')]).toEqual([
+    {contents: '0', index: 0, name: 'INT_VALUE'},
+    {contents: 'b10', index: 1, name: 'NAME'},
+  ]);
+  expect([...lex('123abc')]).toEqual([
+    {contents: '123', index: 0, name: 'INT_VALUE'},
+    {contents: 'abc', index: 3, name: 'NAME'},
+  ]);
+  expect([...lex('1_234')]).toEqual([
+    {contents: '1', index: 0, name: 'INT_VALUE'},
+    {contents: '_234', index: 1, name: 'NAME'},
+  ]);
+
+  // This one was always supposed to be an error.
+  expect(() => [...lex('1ß')]).toThrowError('Failed to consume all input');
 });
 
 test('lexing strings', () => {
