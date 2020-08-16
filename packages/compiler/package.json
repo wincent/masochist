@@ -13,6 +13,7 @@
     "format": "cd ../.. && yarn format",
     "inspect": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark.js",
     "profile": "node --prof --no-logfile-per-isolate lib/benchmark.js && node --prof-process v8.log",
+    "profile:deopt": "node --trace-opt --trace-deopt lib/benchmark.js",
     "test": "cd ../.. && yarn test packages/compiler"
   }
 }
