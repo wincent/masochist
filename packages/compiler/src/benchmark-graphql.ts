@@ -11,49 +11,52 @@ const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
 async function main() {
-  const scratch = await mkdtemp(path.join(os.tmpdir(), 'bench-'));
+    const scratch = await mkdtemp(path.join(os.tmpdir(), 'bench-'));
 
-  process.chdir(scratch);
+    process.chdir(scratch);
 
-  const corpus = path.join(__dirname, '../../../support/client-corpus.graphql');
-  const script = path.join(__dirname, '../lib/benchmark.js');
-
-  try {
-    await access(script, fs.constants.R_OK);
-  } catch (error) {
-    console.log(
-      `Unable to access ${script}; did you forget to run "yarn build"?`,
+    const corpus = path.join(
+        __dirname,
+        '../../../support/client-corpus.graphql',
     );
-    return;
-  }
+    const script = path.join(__dirname, '../lib/benchmark.js');
 
-  await copyFile(corpus, 'client-corpus.graphql');
+    try {
+        await access(script, fs.constants.R_OK);
+    } catch (error) {
+        console.log(
+            `Unable to access ${script}; did you forget to run "yarn build"?`,
+        );
+        return;
+    }
 
-  const scriptSource = await readFile(script, 'utf8');
+    await copyFile(corpus, 'client-corpus.graphql');
 
-  const modifiedSource = scriptSource
-    .replace('require("./parse")', 'require("graphql").parse')
-    .replace('../../../support', '.');
+    const scriptSource = await readFile(script, 'utf8');
 
-  await writeFile('benchmark.js', modifiedSource);
+    const modifiedSource = scriptSource
+        .replace('require("./parse")', 'require("graphql").parse')
+        .replace('../../../support', '.');
 
-  spawn('yarn', 'init', '-y');
-  spawn('yarn', 'add', 'graphql');
-  spawn('node', 'benchmark.js');
+    await writeFile('benchmark.js', modifiedSource);
+
+    spawn('yarn', 'init', '-y');
+    spawn('yarn', 'add', 'graphql');
+    spawn('node', 'benchmark.js');
 }
 
 function spawn(command: string, ...args: Array<string>) {
-  const {error, signal, status, stdout} = spawnSync(command, args, {
-    stdio: 'inherit',
-  });
+    const {error, signal, status, stdout} = spawnSync(command, args, {
+        stdio: 'inherit',
+    });
 
-  if (status !== 0 || signal !== null || error) {
-    throw new Error('Something bad happened');
-  }
+    if (status !== 0 || signal !== null || error) {
+        throw new Error('Something bad happened');
+    }
 
-  return stdout;
+    return stdout;
 }
 
 main().catch((error) => {
-  console.log(error);
+    console.log(error);
 });

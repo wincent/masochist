@@ -6,84 +6,84 @@ const CHECKPOINT = Symbol('CHECKPOINT');
  * mutations.
  */
 export default class ReversibleMap<K, V> extends Map<K, V> {
-  undo: Array<(() => void) | typeof CHECKPOINT>;
+    undo: Array<(() => void) | typeof CHECKPOINT>;
 
-  constructor(iterable?: (readonly [K, V])[] | null) {
-    super(iterable);
+    constructor(iterable?: (readonly [K, V])[] | null) {
+        super(iterable);
 
-    // A stack of operations that can be applied to reverse mutations.
-    this.undo = [];
-  }
-
-  /**
-   * Creates a snapshot of the internal storage and adds an operation to the
-   * internal `undo` array that can be used to reverse the effects of a
-   * mutation.
-   *
-   * When making snapshots, we always recreate all entries in order to
-   * preserve entry ordering.
-   */
-  _snapshot() {
-    // If called from constructor, this.undo won't be set yet.
-    if (this.undo) {
-      const entries = [...this.entries()];
-
-      this.undo.push(() => {
-        Map.prototype.clear.call(this);
-
-        entries.forEach(([key, value]) => {
-          Map.prototype.set.call(this, key, value);
-        });
-      });
+        // A stack of operations that can be applied to reverse mutations.
+        this.undo = [];
     }
-  }
 
-  clear() {
-    this._snapshot();
+    /**
+     * Creates a snapshot of the internal storage and adds an operation to the
+     * internal `undo` array that can be used to reverse the effects of a
+     * mutation.
+     *
+     * When making snapshots, we always recreate all entries in order to
+     * preserve entry ordering.
+     */
+    _snapshot() {
+        // If called from constructor, this.undo won't be set yet.
+        if (this.undo) {
+            const entries = [...this.entries()];
 
-    super.clear();
-  }
+            this.undo.push(() => {
+                Map.prototype.clear.call(this);
 
-  /**
-   * Records a checkpoint that will be the target for the next `rollback()`
-   * operation.
-   */
-  checkpoint() {
-    this.undo.push(CHECKPOINT);
-  }
-
-  /**
-   * Commits and clears all pending changes. After commiting, no rollback is
-   * possible.
-   */
-  commit() {
-    this.undo = [];
-  }
-
-  delete(key: K): boolean {
-    this._snapshot();
-
-    return super.delete(key);
-  }
-
-  /**
-   * Rolls back to the last checkpoint.
-   */
-  rollback() {
-    while (this.undo.length) {
-      const operation = this.undo.pop()!;
-
-      if (operation === CHECKPOINT) {
-        break;
-      } else {
-        operation();
-      }
+                entries.forEach(([key, value]) => {
+                    Map.prototype.set.call(this, key, value);
+                });
+            });
+        }
     }
-  }
 
-  set(key: K, value: V): this {
-    this._snapshot();
+    clear() {
+        this._snapshot();
 
-    return super.set(key, value);
-  }
+        super.clear();
+    }
+
+    /**
+     * Records a checkpoint that will be the target for the next `rollback()`
+     * operation.
+     */
+    checkpoint() {
+        this.undo.push(CHECKPOINT);
+    }
+
+    /**
+     * Commits and clears all pending changes. After commiting, no rollback is
+     * possible.
+     */
+    commit() {
+        this.undo = [];
+    }
+
+    delete(key: K): boolean {
+        this._snapshot();
+
+        return super.delete(key);
+    }
+
+    /**
+     * Rolls back to the last checkpoint.
+     */
+    rollback() {
+        while (this.undo.length) {
+            const operation = this.undo.pop()!;
+
+            if (operation === CHECKPOINT) {
+                break;
+            } else {
+                operation();
+            }
+        }
+    }
+
+    set(key: K, value: V): this {
+        this._snapshot();
+
+        return super.set(key, value);
+    }
 }

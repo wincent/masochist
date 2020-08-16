@@ -1,9 +1,9 @@
 {
-  "name": "@masochist/client",
-  "version": "0.0.1",
-  "description": "Masochist client",
-  "main": "index.js",
-  "author": "Greg Hurrell <greg@hurrell.net>",
-  "license": "MIT",
-  "private": false
+    "name": "@masochist/client",
+    "version": "0.0.1",
+    "description": "Masochist client",
+    "main": "index.js",
+    "author": "Greg Hurrell <greg@hurrell.net>",
+    "license": "MIT",
+    "private": false
 }

@@ -1,9 +1,9 @@
 {
-  "name": "@masochist/common",
-  "version": "0.0.1",
-  "description": "Masochist code shared across client, compiler and server",
-  "main": "index.js",
-  "author": "Greg Hurrell <greg@hurrell.net>",
-  "license": "MIT",
-  "private": false
+    "name": "@masochist/common",
+    "version": "0.0.1",
+    "description": "Masochist code shared across client, compiler and server",
+    "main": "index.js",
+    "author": "Greg Hurrell <greg@hurrell.net>",
+    "license": "MIT",
+    "private": false
 }

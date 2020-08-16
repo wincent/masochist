@@ -8,90 +8,90 @@ import parse from './parse';
 const readFile = promisify(fs.readFile);
 
 async function read(file: string): Promise<string> {
-  return readFile(path.join(__dirname, '../../../support', file), 'utf8');
+    return readFile(path.join(__dirname, '../../../support', file), 'utf8');
 }
 
 function mb(bytes: number): string {
-  return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
 }
 
 function tableize(data: {[key: string]: NodeJS.MemoryUsage}): any {
-  const table: {[key: string]: {[key: string]: string}} = {};
+    const table: {[key: string]: {[key: string]: string}} = {};
 
-  Object.entries(data).forEach(([label, usage]) => {
-    const subtable: {[key: string]: string} = {};
+    Object.entries(data).forEach(([label, usage]) => {
+        const subtable: {[key: string]: string} = {};
 
-    Object.entries(usage).forEach(([category, bytes]) => {
-      subtable[category] = mb(bytes);
+        Object.entries(usage).forEach(([category, bytes]) => {
+            subtable[category] = mb(bytes);
+        });
+
+        table[label] = subtable;
     });
 
-    table[label] = subtable;
-  });
-
-  return table;
+    return table;
 }
 
 async function main() {
-  const source = await read('client-corpus.graphql');
+    const source = await read('client-corpus.graphql');
 
-  console.log(`Read ${source.length} bytes`); // Assuming ASCII.
+    console.log(`Read ${source.length} bytes`); // Assuming ASCII.
 
-  const memory: {[key: string]: NodeJS.MemoryUsage} = {
-    start: process.memoryUsage(),
-  };
+    const memory: {[key: string]: NodeJS.MemoryUsage} = {
+        start: process.memoryUsage(),
+    };
 
-  const obs = new PerformanceObserver((items) => {
-    console.log(items.getEntries()[0].duration);
-    performance.clearMarks();
-  });
-  obs.observe({entryTypes: ['measure']});
+    const obs = new PerformanceObserver((items) => {
+        console.log(items.getEntries()[0].duration);
+        performance.clearMarks();
+    });
+    obs.observe({entryTypes: ['measure']});
 
-  performance.mark('A');
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  parse(source);
-  performance.mark('B');
-  performance.measure('A to B', 'A', 'B');
+    performance.mark('A');
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    parse(source);
+    performance.mark('B');
+    performance.measure('A to B', 'A', 'B');
 
-  memory.finish = process.memoryUsage();
+    memory.finish = process.memoryUsage();
 
-  console.table(tableize(memory));
+    console.table(tableize(memory));
 }
 
 main().catch((error) => {
-  console.log(error);
+    console.log(error);
 });
