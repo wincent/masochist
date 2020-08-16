@@ -88,8 +88,6 @@ export interface Token {
   index: number;
 
   name: string;
-
-  next?: Token;
 }
 
 type Advance = () => Token;
@@ -1034,7 +1032,6 @@ export default class Lexer<K, V> {
         contents,
         index: index - contents.length,
         name,
-        next: undefined,
       };
     };
 
@@ -1109,50 +1106,8 @@ export default class Lexer<K, V> {
       return token;
     };
 
-    /**
-     * Count of tokens produced by the iterator so far.
-     */
-    let counter = 0;
-
-    const tokens: Array<Token> = [];
-
-    /**
-     * Defines "next" property on `token`.
-     */
-    const defineProperties = (token: Token, counter: number) => {
-      Object.defineProperties(token, {
-        next: {
-          enumerable: false,
-
-          // Lazy because token N+1 doesn't exist yet when
-          // token N is produced.
-          get() {
-            if (!atEnd() && tokens.length <= counter + 1) {
-              const nextToken = produceToken();
-
-              defineProperties(nextToken, counter + 1);
-
-              tokens.push(nextToken);
-            }
-
-            return tokens[counter + 1];
-          },
-        },
-      });
-    };
-
     while (!atEnd()) {
-      if (tokens.length > counter) {
-        yield tokens[counter++];
-      } else {
-        const token = produceToken();
-
-        defineProperties(token, counter++);
-
-        tokens.push(token);
-
-        yield token;
-      }
+      yield produceToken();
     }
   }
 }

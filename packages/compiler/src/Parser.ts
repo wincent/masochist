@@ -103,6 +103,7 @@ export default class Parser<A> {
   private _errorStack: Array<string>;
   private _grammar: Grammar<A>;
   private _isIgnored: (token: Token) => boolean;
+  private _iterator?: Generator<Token, Token>;
   private _memo: Map<string, Map<number, [A, Token | null] | null>> | null;
   private _parseStack: Array<string | null>;
 
@@ -122,13 +123,9 @@ export default class Parser<A> {
   }
 
   parse(iterator: Generator<Token, Token>): A | null {
-    const {done, value} = iterator.next();
+    this._iterator = iterator;
 
-    if (done) {
-      return null;
-    }
-
-    let startToken = this._isIgnored(value) ? this.next(value) : value;
+    const startToken = this.next();
 
     if (!startToken) {
       return null;
@@ -155,40 +152,6 @@ export default class Parser<A> {
       }
     }
 
-    // Reconstruct input from tokens.
-    let input = '';
-    let token: Token | undefined = startToken;
-    while (token) {
-      input += token.contents;
-      token = token.next;
-    }
-
-    // Derive line and column information from input.
-    let column = 1;
-    let line = 1;
-
-    for (let i = 0; i < input.length; i++) {
-      if (i === this._errorIndex) {
-        break;
-      }
-
-      const c = input[i];
-
-      if (c === '\r') {
-        column = 1;
-        line++;
-
-        if (input[i + 1] === '\n') {
-          i++;
-        }
-      } else if (c === '\n') {
-        column = 1;
-        line++;
-      } else {
-        column++;
-      }
-    }
-
     throw new Error(
       'Parse error:\n' +
         '\n' +
@@ -198,10 +161,7 @@ export default class Parser<A> {
         '\n' +
         `  Parsing: ${this._errorStack.join(' \u00bb ') || startRule}\n` +
         '\n' +
-        `  At: index ${this._errorIndex} (line ${line}, column ${column})\n` +
-        '\n' +
-        excerpt(input, line, column) +
-        '\n',
+        `  At: index ${this._errorIndex}\n`,
     );
   }
 
@@ -435,7 +395,7 @@ export default class Parser<A> {
             this._parseStack.pop();
             const tuple: [A, Token | null] = [
               production(current.contents),
-              this.next(current),
+              this.next(),
             ];
             map.set(index, tuple);
             return tuple;
@@ -458,24 +418,22 @@ export default class Parser<A> {
    * Returns the next lexical (non-ignored) Token after `token`, or
    * `null` if there isn't one.
    */
-  private next(token: Token | null): Token | null {
-    let current = token;
-
+  private next(): Token | null {
     while (true) {
-      current = (current && current.next) || null;
+      const {done, value} = this._iterator!.next();
 
-      if (!current) {
-        return null;
+      if (done) {
+        break;
+      } else {
+        if (this._isIgnored(value)) {
+          continue;
+        }
+
+        return value;
       }
-
-      // TODO: may want to memoize list of non-ignored tokens so that we don't
-      // have to repeatedly scan through ignored tokens.
-      if (this._isIgnored(current)) {
-        continue;
-      }
-
-      return current;
     }
+
+    return null;
   }
 }
 

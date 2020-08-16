@@ -197,10 +197,7 @@ test('parsing an empty selection set', () => {
 
       Parsing: document » definition » operation » anonymousOperation » selectionSet » field » alias
 
-      At: index 1 (line 1, column 2)
-
-    > 1 | {}
-        |  ^
+      At: index 1
   `);
 });
 
@@ -218,12 +215,7 @@ test('parsing a document with trailing lexical tokens', () => {
 
       Parsing: document
 
-      At: index 9 (line 3, column 2)
-
-      1 | {
-      2 |   foo
-    > 3 | }} # <-- Note excess parenthesis here.
-        |  ^
+      At: index 9
   `);
 });
 
