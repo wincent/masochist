@@ -9,6 +9,7 @@
   "scripts": {
     "benchmark": "node lib/benchmark.js",
     "benchmark:graphql": "node lib/benchmark-graphql.js",
+    "benchmark:lexer": "node lib/benchmark-lexer.js",
     "build": "cd ../.. && yarn build",
     "format": "cd ../.. && yarn format",
     "inspect": "echo 'Go to chrome://inspect' && node --inspect-brk lib/benchmark.js",
