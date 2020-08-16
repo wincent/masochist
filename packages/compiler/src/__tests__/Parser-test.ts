@@ -49,7 +49,7 @@ const grammar: Grammar<ASTNode> = {
   ],
 
   queryOperation: sequence(
-    t(Tokens.NAME, contents => contents === 'query'),
+    t(Tokens.NAME, (contents) => contents === 'query'),
     t(Tokens.NAME),
     t(Tokens.OPENING_BRACE),
     'selectionSet',

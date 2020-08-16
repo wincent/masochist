@@ -66,7 +66,7 @@ test('lexing names', () => {
     {contents: 'baz', index: 8, name: 'NAME'},
   ]);
 
-  expect(tokens.filter(token => !isIgnored(token))).toEqual([
+  expect(tokens.filter((token) => !isIgnored(token))).toEqual([
     {contents: 'foo', index: 0, name: 'NAME'},
     {contents: 'bar', index: 4, name: 'NAME'},
     {contents: 'baz', index: 8, name: 'NAME'},

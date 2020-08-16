@@ -33,7 +33,7 @@ export type TokenName = keyof typeof Tokens;
  * @see https://graphql.github.io/graphql-spec/draft/
  */
 export default function lex(input: string) {
-  const lexer = new Lexer<unknown, unknown>(api => {
+  const lexer = new Lexer<unknown, unknown>((api) => {
     const {a, an, choose, match, maybe, oneOf, repeat, sequence} = api;
 
     oneOf(

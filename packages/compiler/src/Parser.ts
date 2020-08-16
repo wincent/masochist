@@ -192,8 +192,9 @@ export default class Parser<A> {
     throw new Error(
       'Parse error:\n' +
         '\n' +
-        `  Expected: ${this._errorStack[this._errorStack.length - 1] ||
-          'end of input'}\n` +
+        `  Expected: ${
+          this._errorStack[this._errorStack.length - 1] || 'end of input'
+        }\n` +
         '\n' +
         `  Parsing: ${this._errorStack.join(' \u00bb ') || startRule}\n` +
         '\n' +

@@ -40,7 +40,7 @@ async function main() {
     start: process.memoryUsage(),
   };
 
-  const obs = new PerformanceObserver(items => {
+  const obs = new PerformanceObserver((items) => {
     console.log(items.getEntries()[0].duration);
     performance.clearMarks();
   });
@@ -92,6 +92,6 @@ async function main() {
   console.table(tableize(memory));
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.log(error);
 });

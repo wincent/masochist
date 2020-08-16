@@ -54,6 +54,6 @@ function spawn(command: string, ...args: Array<string>) {
   return stdout;
 }
 
-main().catch(error => {
+main().catch((error) => {
   console.log(error);
 });

@@ -5,7 +5,7 @@ describe('Lexer()', () => {
     // The idea is to bail out of infinite loops that would be produced by
     // use of combinators like repeat() combined with a matcher that matches
     // a zero-width string.
-    const lexer = new Lexer(api => {
+    const lexer = new Lexer((api) => {
       const {consume, match, oneOf, token} = api;
 
       return () => {
@@ -26,7 +26,7 @@ describe('Lexer()', () => {
   });
 
   it('produces tokens with a non-enumerable "previous" property', () => {
-    const lexer = new Lexer(api => {
+    const lexer = new Lexer((api) => {
       const {choose, match} = api;
 
       return choose({
@@ -48,7 +48,7 @@ describe('Lexer()', () => {
   });
 
   it('produces tokens with a lazy "next" property', () => {
-    const lexer = new Lexer(api => {
+    const lexer = new Lexer((api) => {
       const {choose, match} = api;
 
       return choose({
@@ -134,7 +134,7 @@ describe('Lexer()', () => {
 
   describe('a()/an()', () => {
     it('can reference a named matcher that gets defined elsewhere', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {a, consume, match, token} = api;
 
         const THING = match('thing').name('THING');
@@ -161,7 +161,7 @@ describe('Lexer()', () => {
     it('wraps a matcher so it can be augmented without mutation', () => {
       const calls: Array<string> = [];
 
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {an, consume, match, sequence, token} = api;
 
         const ORIGINAL = match('foo')
@@ -198,7 +198,7 @@ describe('Lexer()', () => {
     let lexer: Lexer<unknown, unknown>;
 
     beforeEach(() => {
-      lexer = new Lexer(api => {
+      lexer = new Lexer((api) => {
         const {allOf, consume, match, token} = api;
 
         return () => {
@@ -240,7 +240,7 @@ describe('Lexer()', () => {
     it('returns a boolean', () => {
       const atEndValues: Array<boolean> = [];
 
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {atEnd, consume, match, token} = api;
 
         return () => {
@@ -266,7 +266,7 @@ describe('Lexer()', () => {
 
   describe('choose()', () => {
     it('produces tokens using matchers defined in an object', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {choose, match} = api;
 
         const BAR = match('bar');
@@ -302,7 +302,7 @@ describe('Lexer()', () => {
     });
 
     it('produces tokens using matchers defined in a Map', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {choose, match} = api;
 
         const BAR = match('bar');
@@ -340,7 +340,7 @@ describe('Lexer()', () => {
 
   describe('consume()', () => {
     it('automatically uses sequence() if given multiple argumetns', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, token} = api;
 
         return () => {
@@ -365,7 +365,7 @@ describe('Lexer()', () => {
 
     describe('lexing strings', () => {
       beforeEach(() => {
-        lexer = new Lexer(api => {
+        lexer = new Lexer((api) => {
           const {consume, match, token} = api;
 
           return () => {
@@ -409,7 +409,7 @@ describe('Lexer()', () => {
 
     describe('lexing regular expressions', () => {
       beforeEach(() => {
-        lexer = new Lexer(api => {
+        lexer = new Lexer((api) => {
           const {consume, match, token} = api;
 
           return () => {
@@ -442,7 +442,7 @@ describe('Lexer()', () => {
 
   describe('maybe()', () => {
     it('produces an optional match', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, maybe, sequence, token} = api;
 
         return () => {
@@ -474,7 +474,7 @@ describe('Lexer()', () => {
 
   describe('peek()', () => {
     it('automatically uses sequence() if given multiple argumetns', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, peek, token} = api;
 
         return () => {
@@ -498,7 +498,7 @@ describe('Lexer()', () => {
 
   describe('never', () => {
     it('never matches anything', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, never, token} = api;
 
         return () => {
@@ -516,7 +516,7 @@ describe('Lexer()', () => {
     it('is useful as the alternate in a `when()` matcher', () => {
       let active = false;
 
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, never, oneOf, repeat, token, when} = api;
 
         return () => {
@@ -568,7 +568,7 @@ describe('Lexer()', () => {
 
       let meta;
 
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, meta: passedMeta, token} = api;
 
         meta = passedMeta;
@@ -592,7 +592,7 @@ describe('Lexer()', () => {
     it('may produce side effects that can be rolled back', () => {
       const snapshots: Array<[string, Array<[unknown, unknown]>]> = [];
 
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, meta, oneOf, sequence, token} = api;
 
         const record = (match: RegExpExecArray) => {
@@ -735,7 +735,7 @@ describe('Lexer()', () => {
 
   describe('oneOf()', () => {
     it('matches using the first matching matcher in a collection', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, oneOf, token} = api;
 
         return () => {
@@ -757,7 +757,7 @@ describe('Lexer()', () => {
 
   describe('pass', () => {
     it('matches an empty string', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, pass, sequence, token} = api;
 
         return () => {
@@ -779,7 +779,7 @@ describe('Lexer()', () => {
 
   describe('repeat()', () => {
     it('matches a matcher one or more times', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, repeat, token} = api;
 
         return () => {
@@ -809,7 +809,7 @@ describe('Lexer()', () => {
 
   describe('sequence()', () => {
     it('matches a series of matchers', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, sequence, token} = api;
 
         return () => {
@@ -835,7 +835,7 @@ describe('Lexer()', () => {
     let lexer: Lexer<unknown, unknown>;
 
     beforeEach(() => {
-      lexer = new Lexer(api => {
+      lexer = new Lexer((api) => {
         const {consume, match, token} = api;
 
         return () => {
@@ -880,7 +880,7 @@ describe('Lexer()', () => {
     let lexer: Lexer<unknown, unknown>;
 
     beforeEach(() => {
-      lexer = new Lexer(api => {
+      lexer = new Lexer((api) => {
         const {consume, match, peek, token} = api;
 
         return () => {
@@ -935,7 +935,7 @@ describe('Lexer()', () => {
 
   describe('when()', () => {
     it('chooses a matcher based on a predicate', () => {
-      const lexer = new Lexer(api => {
+      const lexer = new Lexer((api) => {
         const {consume, match, repeat, token, when} = api;
 
         let count = 0;

@@ -239,7 +239,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   queryOperation: [
     sequence(
-      t(Tokens.NAME, contents => contents === 'query').ignore,
+      t(Tokens.NAME, (contents) => contents === 'query').ignore,
       t(Tokens.NAME),
       optional('variableDefinitions'),
       star('directive'),
@@ -317,7 +317,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ),
 
   boolean: [
-    t(Tokens.NAME, contents => contents === 'false' || contents === 'true'),
+    t(Tokens.NAME, (contents) => contents === 'false' || contents === 'true'),
     (contents): GraphQL.BooleanValue => ({
       kind: 'BOOLEAN',
       value: contents === 'true',
@@ -327,7 +327,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   enum: [
     t(
       Tokens.NAME,
-      contents =>
+      (contents) =>
         contents !== 'false' && contents !== 'null' && contents !== 'true',
     ),
     (contents): GraphQL.EnumValue => ({
@@ -365,7 +365,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   ],
 
   null: [
-    t(Tokens.NAME, contents => contents === 'null'),
+    t(Tokens.NAME, (contents) => contents === 'null'),
     (): GraphQL.NullValue => ({
       kind: 'NULL',
     }),
@@ -484,8 +484,8 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   fragment: [
     sequence(
-      t(Tokens.NAME, contents => contents === 'fragment').ignore,
-      t(Tokens.NAME, contents => contents !== 'on'),
+      t(Tokens.NAME, (contents) => contents === 'fragment').ignore,
+      t(Tokens.NAME, (contents) => contents !== 'on'),
       'typeCondition',
       star('directive'),
       'selectionSet',
@@ -516,7 +516,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
 
   typeCondition: [
     sequence(
-      t(Tokens.NAME, contents => contents === 'on').ignore,
+      t(Tokens.NAME, (contents) => contents === 'on').ignore,
       t(Tokens.NAME),
     ),
     ([on]) => on,
@@ -525,7 +525,7 @@ const GRAMMAR: Grammar<GraphQL.Node> = {
   fragmentSpread: [
     sequence(
       t(Tokens.ELLIPSIS).ignore,
-      t(Tokens.NAME, contents => contents !== 'on'),
+      t(Tokens.NAME, (contents) => contents !== 'on'),
       star('directive'),
     ),
     ([name, directives]): GraphQL.FragmentSpread => ({
