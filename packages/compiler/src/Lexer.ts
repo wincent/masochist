@@ -90,8 +90,6 @@ export interface Token {
   name: string;
 
   next?: Token;
-
-  previous?: Token;
 }
 
 type Advance = () => Token;
@@ -1037,7 +1035,6 @@ export default class Lexer<K, V> {
         index: index - contents.length,
         name,
         next: undefined,
-        previous: undefined,
       };
     };
 
@@ -1120,7 +1117,7 @@ export default class Lexer<K, V> {
     const tokens: Array<Token> = [];
 
     /**
-     * Defines "next" and "previous" properties on `token`.
+     * Defines "next" property on `token`.
      */
     const defineProperties = (token: Token, counter: number) => {
       Object.defineProperties(token, {
@@ -1140,13 +1137,6 @@ export default class Lexer<K, V> {
 
             return tokens[counter + 1];
           },
-        },
-        previous: {
-          enumerable: false,
-
-          // Non-enumerable so that tokens can be
-          // introspected without the clutter.
-          value: tokens[counter - 1],
         },
       });
     };

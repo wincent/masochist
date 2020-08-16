@@ -25,28 +25,6 @@ describe('Lexer()', () => {
     );
   });
 
-  it('produces tokens with a non-enumerable "previous" property', () => {
-    const lexer = new Lexer((api) => {
-      const {choose, match} = api;
-
-      return choose({
-        A: match('a'),
-        B: match('b'),
-      });
-    });
-
-    const tokens = [...lexer.lex('abab')];
-
-    expect(tokens.length).toBe(4);
-
-    expect(tokens[3].previous).toBe(tokens[2]);
-    expect(tokens[2].previous).toBe(tokens[1]);
-    expect(tokens[1].previous).toBe(tokens[0]);
-    expect(tokens[0].previous).toBe(undefined);
-
-    expect(Object.keys(tokens[3]).includes('previous')).toBe(false);
-  });
-
   it('produces tokens with a lazy "next" property', () => {
     const lexer = new Lexer((api) => {
       const {choose, match} = api;
@@ -76,8 +54,6 @@ describe('Lexer()', () => {
       name: 'B',
     });
 
-    // Tokens are doubly linked:
-    expect(tokens[1].previous).toBe(tokens[0]);
     expect(tokens[0].next).toBe(tokens[1]);
 
     tokens.push(tokens[1].next);
@@ -88,7 +64,6 @@ describe('Lexer()', () => {
       name: 'A',
     });
 
-    expect(tokens[2].previous).toBe(tokens[1]);
     expect(tokens[1].next).toBe(tokens[2]);
 
     // Note that that was just lookahead; iterator did not advance:
@@ -125,11 +100,6 @@ describe('Lexer()', () => {
     expect(tokens[4].next).toBe(tokens[5]);
     expect(tokens[3].next).toBe(tokens[4]);
     expect(tokens[5].next).toBe(undefined);
-
-    // And same for "previous" links.
-    expect(tokens[3].previous).toBe(tokens[2]);
-    expect(tokens[5].previous).toBe(tokens[4]);
-    expect(tokens[4].previous).toBe(tokens[3]);
   });
 
   describe('a()/an()', () => {
