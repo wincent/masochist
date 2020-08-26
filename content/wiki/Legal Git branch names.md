@@ -1,18 +1,19 @@
 ---
 tags: git wiki
 cache_breaker: 1
+title: Legal Git branch names
 ---
 
 # Overview
 
 A [Git](/wiki/Git) branch name can not:
 
--   Have a path component that begins with "."
--   Have a double dot ".."
--   Have an ASCII control character, "\~", "\^", ":" or SP, anywhere
--   End with a "/"
--   End with ".lock"
--   Contain a "\\" (backslash)
+-   Have a path component that begins with `.`
+-   Have a double dot `..`
+-   Have an ASCII control character, `~`, `^`, `:` or SP, anywhere
+-   End with a `/`
+-   End with `.lock`
+-   Contain a `\` (backslash)
 
 Source: <http://www.spinics.net/lists/git/msg133704.html>
 
