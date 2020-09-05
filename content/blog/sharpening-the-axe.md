@@ -4,7 +4,7 @@ tags: blog
 title: Sharpening the axe
 ---
 
-> Transcript from my talk at VimConf 2020 ([slides](https://docs.google.com/presentation/d/1fEc71ZtM69dZPd8CGe3eqiHj18FAOw3sRoOtkUto5SQ/edit?usp=sharing)).
+> Transcript from my talk at VimConf 2020 ([video](https://youtu.be/iEShYRRVZOE), [slides](https://docs.google.com/presentation/d/1fEc71ZtM69dZPd8CGe3eqiHj18FAOw3sRoOtkUto5SQ/edit?usp=sharing)).
 
 # 1
 
