@@ -52,9 +52,10 @@ But there are some pretty big downsides:
 
      But, it's hard to _migrate_; that's what this whole document is about, after all. There are some things that suck about Apple hardware and macOS, but going to Linux isn't a panacea because it means accepting the things that suck about that instead, while leaving behind the things that were really great about Apple.
 
-     So, given this unsavory proposal, might we consider a compromise position? For example, have a powerful Linux desktop (it need not even be a laptop) optimized for demainding "work" type activities: coding, recording screencasts etc, and keep the Apple laptop around for those things that would be really unpleasant to do on Linux (eg. managing a photo library, editing screencasts and photos etc).
+     So, given this unsavory proposal, might we consider a compromise position? For example, have a powerful Linux desktop (it need not even be a laptop) optimized for demanding "work" type activities: coding, recording screencasts etc, and keep the Apple laptop around for those things that would be really unpleasant to do on Linux (eg. managing a photo library, editing screencasts and photos etc), and critically, I could stick with the iPhone, syncing it to the Apple laptop.
 
      If you do this, you can optimize for a no-compromise machine that is _really_ good at its dedicated task. I'm thinking here of a machine that would optimize first and foremost for quiet operation, then consistently powerful performance (ie. not bursts of performance alternating with thermal throttling), and finally for price. The only remaining hurdle to overcome would be finding adequate replacements for tools like Karabiner-Elements. We might be able to get some of the way there, but I believe the only way to truly replace it would be to write my own, which would be rather difficult.
+
 
 
 # Gotchas
