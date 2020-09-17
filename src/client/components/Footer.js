@@ -83,7 +83,7 @@ export default class Footer extends React.Component<{}> {
                 {', '}
                 <a href="http://redis.io/">Redis</a>
                 {' and '}
-                <a href="https://github.com/vim/vim">Vim</a>
+                <a href="https://neovim.io/">Neovim</a>
                 {').'}
               </p>
               {/* TODO link to /pages/legal here */}
