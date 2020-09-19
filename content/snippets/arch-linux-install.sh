@@ -46,12 +46,19 @@ mkdir /mnt/etc
 genfstab -U -p /mnt >> /mnt/etc/fstab
 
 log "Installing base packages"
-pacstrap -i /mnt base base-devel
+pacstrap /mnt base base-devel
 
 log "Installing kernel and other packages"
-arch-chroot /mnt
 
-# I guess this works... (ie. inside chroot)
+chmod +x arch-install-chroot.sh
+
+cat << HERE > arch-install-chroot.sh
+set -e
+
+function log {
+  echo "[arch-linux-install] \$*"
+}
+
 pacman -S --noconfirm linux linux-lts linux-headers linux-lts-headers
 
 # Enable this if you want to be able to SSH into the box.
@@ -106,7 +113,13 @@ log "Applying other settings"
 echo KEYMAP=colemak >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 
-exit # leave chroot env.
+exit
+HERE
+
+log "Entering chroot environment"
+arch-chroot /mnt ./arch-install-chroot.sh
+
+log "Finished: rebooting"
 umount -a
 reboot
 
