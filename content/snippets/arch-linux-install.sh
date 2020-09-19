@@ -48,10 +48,6 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 log "Installing base packages"
 pacstrap /mnt base base-devel
 
-log "Installing kernel and other packages"
-
-chmod +x arch-install-chroot.sh
-
 cat << HERE > arch-install-chroot.sh
 set -e
 
@@ -59,6 +55,7 @@ function log {
   echo "[arch-linux-install] \$*"
 }
 
+log "Installing kernel and other packages"
 pacman -S --noconfirm linux linux-lts linux-headers linux-lts-headers
 
 # Enable this if you want to be able to SSH into the box.
@@ -115,6 +112,8 @@ ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 
 exit
 HERE
+
+chmod +x arch-install-chroot.sh
 
 log "Entering chroot environment"
 arch-chroot /mnt ./arch-install-chroot.sh
