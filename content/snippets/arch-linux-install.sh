@@ -48,7 +48,7 @@ genfstab -U -p /mnt >> /mnt/etc/fstab
 log "Installing base packages"
 pacstrap /mnt base base-devel
 
-cat << HERE > arch-install-chroot.sh
+cat << HERE > /mnt/tmp/arch-install-chroot.sh
 set -e
 
 function log {
@@ -113,12 +113,11 @@ ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 exit
 HERE
 
-chmod +x arch-install-chroot.sh
-
 log "Entering chroot environment"
-arch-chroot /mnt bash arch-install-chroot.sh
+arch-chroot /mnt bash /tmp/arch-install-chroot.sh
 
 log "Finished: rebooting"
+rm /mnt/tmp/arch-install-chroot.sh
 umount -a
 reboot
 
