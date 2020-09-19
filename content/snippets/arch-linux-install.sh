@@ -39,7 +39,7 @@ mount /dev/sda2 /mnt
 
 log "Mounting /dev/sda3 at /home"
 mkdir /mnt/home
-mount /dev/sda3/ /mnt/home
+mount /dev/sda3 /mnt/home
 
 log "Creating /etc/fstab"
 mkdir /mnt/etc
