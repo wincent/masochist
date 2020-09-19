@@ -5,7 +5,7 @@ tags: arch.linux snippets
 
 # loadkeys colemak
 # curl -O https://wincent.com/snippets/arch-linux-install.sh
-# sh arch-linux-install.sh
+# bash arch-linux-install.sh
 
 set -e
 
@@ -116,7 +116,7 @@ HERE
 chmod +x arch-install-chroot.sh
 
 log "Entering chroot environment"
-arch-chroot /mnt ./arch-install-chroot.sh
+arch-chroot /mnt bash arch-install-chroot.sh
 
 log "Finished: rebooting"
 umount -a
@@ -129,3 +129,4 @@ reboot
 #startx
 
 # next have to set up colemak in settings
+# and change password
