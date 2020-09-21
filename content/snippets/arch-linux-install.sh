@@ -58,13 +58,8 @@ function log {
 log "Installing kernel and other packages"
 pacman -S --noconfirm linux linux-lts linux-headers linux-lts-headers
 
-# Enable this if you want to be able to SSH into the box.
-# log "Installing sshd"
-# pacman -S --noconfirm openssh
-# systemctl enable sshd
-
 log "Installing other packages you want"
-pacman -S --noconfirm man-db neovim
+pacman -S --noconfirm man-db
 
 log "Preparing ramdisks for kernel boot"
 # Note: this might be redundant; pacman already did it?
@@ -118,14 +113,9 @@ arch-chroot /mnt /bin/bash arch-install-chroot.sh
 
 log "Finished: rebooting"
 rm /mnt/arch-install-chroot.sh
+
+# Ignoring errors about unmounting...
+set +e
 umount -a
+
 reboot
-
-# set-up script
-#pacman -S xorg-xinit xorg xfce4 lightdm lightdm-gtk-greeter
-#echo "exec startxfce4" > ~/.xinitrc
-#systemctl enable lightdm
-#startx
-
-# next have to set up colemak in settings
-# and change password
