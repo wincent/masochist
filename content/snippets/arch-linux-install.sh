@@ -3,7 +3,7 @@ title: Arch Linux install script
 tags: arch.linux snippets
 ---
 
-# loadkeys colemak
+# loadkeys colemak -- (ie. "iyasefjr cyifmae" typing colemak-style on qwerty)
 # curl -O https://wincent.com/snippets/arch-linux-install.sh
 # bash arch-linux-install.sh
 
