@@ -91,7 +91,7 @@ mkswap /swapfile
 echo -e '\n/swapfile none swap sw 0 0' >> /etc/fstab
 
 log "Installing other dependencies"
-pacman -S --noconfirm git ruby tmux vim xorg-server
+pacman -S --noconfirm git neovim ruby tmux vi vim xorg-server
 
 log "Installing VirtualBox support"
 pacman -S --noconfirm virtualbox-guest-utils xf86-video-vmware # just in VirtualBox
