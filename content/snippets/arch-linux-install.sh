@@ -67,7 +67,9 @@ mkinitcpio -p linux
 mkinitcpio -p linux-lts
 
 log "Setting up locale"
-sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+sed -i \
+  -e 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' \
+  -e 's/^#en_AU.UTF-8 UTF-8/en_AU.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 
 log "Setting up users"
