@@ -9,7 +9,7 @@ title: Lua development in Neovim
 -   But really, it's [LuaJIT](https://luajit.org/) 2.1.0-beta3; see this with `:lua print(jit.version)`.
 -   In the Neovim repo after building (which is as easy as `make`), you can find a REPL at `.deps/usr/bin/luajit`.
     -   The LuaJIT REPL [doesn't use readline](http://lua-users.org/lists/lua-l/2011-05/msg00331.html), which is annoying.
-    -   Use `brew install rlwrap` to [add fake readline support](https://github.com/hanslub42/rlwrap); invoke with `rlwrap .deps/usr/bin/luajit`; I've added an alias for this to my dotfiles (`neolua`).
+    -   Use `brew install rlwrap` to [add fake readline support](https://github.com/hanslub42/rlwrap); invoke with `rlwrap .deps/usr/bin/luajit`; I've added [a crude alias for this](https://github.com/wincent/wincent/blob/9c1b2d0e31b2415fa4416e027e219d8718edee84/aspects/dotfiles/files/.zsh/aliases#L25) to my dotfiles (`nlua`).
 -   Lua 5.x updates include breaking changes, so be wary of reading the documentation for the wrong version.
     -   An example breaking change: `...` is the vararg operator for LuaJIT, but other versions use (used?) `arg`.
 
@@ -26,7 +26,7 @@ title: Lua development in Neovim
     -   Can't write `a ? b : c`
     -   Can't write `if a then b else c`
     -   _Can_ write `a and b or c` (but beware, if `b` is false, expression will _always_ evaluate to `c`)
--   `0` is falsey, so functions in the Vim API that return 0 or 1 need an explicit `==` check; eg:
+-   `0` is truthy, so functions in the Vim API that return 0 or 1 need an explicit `==` check; eg:
 
     ```
     -- Passes conditonally:
@@ -88,9 +88,19 @@ title: Lua development in Neovim
 
 ## Shortcuts
 
--   `vim.o.hidden` (or `vim.o.hid`) etc is shorthand for `vim.api.nvim_get_option('hidden')`.
--   `vim.bo.filetype` (or `vim.bo.ft`) etc is shorthand for `vim.api.nvim_buf_get_option(0, 'filetype')`.
--   `vim.wo.list` etc is shorthand for `vim.api.nvim_win_get_option(0, 'list')`.
+### Reading options
+
+-   `vim.o[option]` (eg. `vim.o.hidden` or `vim.o.hid` etc) is shorthand for `vim.api.nvim_get_option('hidden')`.
+-   `vim.bo[option]` (eg. `vim.bo.filetype` or `vim.bo.ft` etc) is shorthand for `vim.api.nvim_buf_get_option(0, 'filetype')`.
+-   `vim.wo[option]` (eg. `vim.wo.list` etc) is shorthand for `vim.api.nvim_win_get_option(0, 'list')`.
+
+### Calling Vimscript functions
+
+-   `vim.fn[name]` (eg. `vim.fn.exists` etc) runs a Vimscript function of the same name.
+
+### Running Vim commands
+
+-   `vim.cmd(string)` (eg. `vim.cmd('highlight clear')`) runs a Vim command.
 
 # String methods
 
