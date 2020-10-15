@@ -123,6 +123,10 @@ class Search extends React.Component<Props, State> {
   }
 
   render() {
+    if (!this.props.data) {
+      return null;
+    }
+
     const {search} = this.props.data;
     const {edges} = search;
     const trimmedQuery = this.state.q.trim();
