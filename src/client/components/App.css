@@ -70,6 +70,16 @@ h1 a {
   max-width: 100%;
 }
 
+@media (prefers-color-scheme: dark) {
+  .prerendered img {
+    opacity: .8;
+  }
+
+  .prerendered img:hover {
+    opacity: 1;
+  }
+}
+
 .prerendered ol,
 .prerendered ul {
   padding-left: 1em;
