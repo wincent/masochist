@@ -4,6 +4,12 @@ footer {
   padding-top: 1.5rem;
 }
 
+@media (prefers-color-scheme: dark) {
+  footer {
+    background: #111;
+  }
+}
+
 footer ul {
   list-style: none;
 }

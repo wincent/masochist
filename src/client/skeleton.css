@@ -270,3 +270,42 @@ hr {
   content: "";
   display: table;
   clear: both; }
+
+@media (prefers-color-scheme: dark) {
+  a {
+    color: #48c4f6;
+    text-decoration-color: rgba(0, 0, 0, .1);
+  }
+  a:hover {
+    color: #4ff4ff;
+    text-decoration-color: #4ff4ff;
+  }
+  body {
+    background-color: #222;
+    color: #bbb;
+  }
+  .button,
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    color: #aaa;
+  }
+  input[type="search"],
+  input[type="text"] {
+    background-color: #000;
+  }
+  .button:hover,
+  button:hover,
+  input[type="submit"]:hover,
+  input[type="button"]:hover,
+  .button:focus,
+  button:focus,
+  input[type="submit"]:focus,
+  input[type="button"]:focus {
+    color: #ccc;
+    border-color: #777;
+  }
+  code {
+    background: #0e0e0e;
+  }
+}

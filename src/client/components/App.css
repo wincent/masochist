@@ -60,6 +60,12 @@ h1 a {
   overflow-x: auto;
 }
 
+@media (prefers-color-scheme: dark) {
+  .overflow-x-auto {
+    background: initial;
+  }
+}
+
 .prerendered img {
   max-width: 100%;
 }

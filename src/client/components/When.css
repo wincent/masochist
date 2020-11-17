@@ -3,6 +3,12 @@
   font-style: italic;
 }
 
+@media (prefers-color-scheme: dark) {
+  .when {
+    color: #888787;
+  }
+}
+
 .when:before {
   background-image: url(../../../vendor/icons/calendar.svg);
   background-size: cover;
