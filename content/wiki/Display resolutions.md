@@ -5,7 +5,7 @@ title: Display resolutions
 
 -   **8K:** approximately 8,000 horizontal pixels; example (**8K UHD**) is 7,680 × 4,320.
 -   **5K:** approximately 5,000 horizontal pixels; example: 5,120 x 2,880 (16:9 aspect ratio, 218 ppi at 27") as seen on iMac Retina 5K etc; generally these displays require a special connector such as dual [DisplayPort](https://en.wikipedia.org/wiki/DisplayPort).
--   **4K:** approximately 4,000 horizontal pixels; in **4K UHD** stanadrd that means 3,840 × 2,160; the 4K Retina iMac uses the non-standard size of 4,096 x 2,304 (16:9 aspect ratio).
+-   **4K:** approximately 4,000 horizontal pixels; in **4K UHD** standard that means 3,840 × 2,160; the 4K Retina iMac uses the non-standard size of 4,096 x 2,304 (16:9 aspect ratio, 219 ppi at 21.5").
 -   **1440p (AKA "WQHD", "QHD", "Wide Quad HD" or "Quad HD")**: 2,560 x 1,440 (16:9 aspect ratio).
 -   **1080p (AKA "FHD" or "Full HD"):** 1,920 x 1,080 pixels (16:9 aspect ratio).
     -   **Ultrawide HD:** 2,560 x 1,080 (21:9 aspect ratio).
