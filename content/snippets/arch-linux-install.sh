@@ -101,9 +101,6 @@ echo -e '\n/swapfile none swap sw 0 0' >> /etc/fstab
 log "Installing other dependencies"
 pacman -S --noconfirm git neovim ruby tmux vi vim xorg-server
 
-log "Installing VirtualBox support"
-pacman -S --noconfirm virtualbox-guest-utils xf86-video-vmware # just in VirtualBox
-
 log "Installing network support"
 pacman -S --noconfirm networkmanager wpa_supplicant wireless_tools netctl
 pacman -S --noconfirm dialog # for wifi-menu
@@ -112,6 +109,7 @@ systemctl enable NetworkManager
 log "Applying other settings"
 echo KEYMAP=colemak >> /etc/vconsole.conf
 ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
+hwclock --systohc
 
 exit
 HERE
