@@ -4,6 +4,10 @@ tags: arch.linux snippets
 ---
 
 # loadkeys colemak -- (ie. "iyasefjr cyifmae" typing colemak-style on qwerty)
+# iwctl device list
+# iwctl station wlan0 scan
+# iwctl station wlan0 get-networks
+# iwctl station wlan0 connect $SSID
 # curl -O https://wincent.com/snippets/arch-linux-install.sh
 # bash arch-linux-install.sh
 
@@ -16,30 +20,32 @@ function log {
 log "Checking network reachability"
 ping -c 3 google.com
 
+timedatectl set-ntp true
+
 log "Refreshing packages"
 pacman -Syy
 
 log "Partitioning disk"
-cat << HERE | sfdisk /dev/sda
+cat << HERE | sfdisk /dev/nvme0n1
 label: gpt
-device: /dev/sda
+device: /dev/nvme0n1
 
-/dev/sda1: size=500MiB, type=uefi
-/dev/sda2: size=10GiB, type=linux
-/dev/sda3: type=linux
+/dev/nvme0n1p1: size=500MiB, type=uefi
+/dev/nvme0n1p2: size=50GiB, type=linux
+/dev/nvme0n1p3: type=linux
 HERE
 
 log "Formatting partitions"
-mkfs.fat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
-mkfs.ext4 /dev/sda3
+mkfs.fat -F32 /dev/nvme0n1p1
+mkfs.ext4 /dev/nvme0n1p2
+mkfs.ext4 /dev/nvme0n1p3
 
-log "Mounting /dev/sda2 at /"
-mount /dev/sda2 /mnt
+log "Mounting /dev/nvme0n1p2 at /"
+mount /dev/nvme0n1p2 /mnt
 
-log "Mounting /dev/sda3 at /home"
+log "Mounting /dev/nvme0n1p3 at /home"
 mkdir /mnt/home
-mount /dev/sda3 /mnt/home
+mount /dev/nvme0n1p3 /mnt/home
 
 log "Creating /etc/fstab"
 mkdir /mnt/etc
@@ -81,7 +87,7 @@ echo '%wheel ALL=(ALL) ALL' > /etc/sudoers.d/wheel
 log "Setting up boot"
 pacman -S --noconfirm grub efibootmgr dosfstools os-prober mtools
 mkdir -p /boot/EFI
-mount /dev/sda1 /boot/EFI
+mount /dev/nvme0n1p1 /boot/EFI
 grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck
 cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo
 grub-mkconfig -o /boot/grub/grub.cfg
