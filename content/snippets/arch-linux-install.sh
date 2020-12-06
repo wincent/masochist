@@ -169,9 +169,11 @@ sudo -u glh git clone --recursive https://github.com/wincent/wincent.git /home/g
 
 log "Setting up /etc/motd"
 echo "Suggested actions:" >> /etc/motd
+echo "  sudo -s" >> /etc/motd
 echo "  mkdir /home/glh_" >> /etc/motd
-echo "  chown glh:glh /home/glh_" >> /etc/motd
+echo "  chown glh:users /home/glh_" >> /etc/motd
 echo "  fscrypt encrypt /home/glh_ --user=glh" >> /etc/motd
+echo "  exit" >> /etc/motd
 echo "  cp -a -T /home/glh /home/glh_" >> /etc/motd
 echo "  reboot" >> /etc/motd
 echo "" >> /etc/motd
@@ -180,7 +182,7 @@ echo "" >> /etc/motd
 echo "  fscrypt status /home/glh_" >> /etc/motd
 echo "  mv /home/glh /home/glh_plaintext" >> /etc/motd
 echo "  mv /home/glh_ /home/glh" >> /etc/motd
-echo "  reboot" >> /etc/motd
+echo "  sudo reboot" >> /etc/motd
 echo "" >> /etc/motd
 echo "And finally:" >> /etc/motd
 echo "" >> /etc/motd
